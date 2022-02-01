@@ -10,7 +10,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotWithoutChildren } from '@fluentui/react-utilities';
+import type { SlotNoChildren } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;
@@ -37,8 +37,8 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & Partial<A
 
 // @public (undocumented)
 export type AvatarSlots = {
-    root: SlotWithoutChildren<'span'>;
-    image?: SlotWithoutChildren<'img'>;
+    root: SlotNoChildren<'span'>;
+    image?: SlotNoChildren<'img'>;
     initials?: Slot<'span'>;
     icon?: Slot<'span'>;
     badge?: Slot<typeof PresenceBadge>;

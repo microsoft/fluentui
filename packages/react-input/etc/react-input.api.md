@@ -9,7 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotWithoutChildren } from '@fluentui/react-utilities';
+import type { SlotNoChildren } from '@fluentui/react-utilities';
 
 // @public
 export const Input: ForwardRefComponent<InputProps>;
@@ -37,7 +37,7 @@ export type InputProps = Omit<ComponentProps<Partial<InputSlots>, 'input'>, 'chi
 // @public (undocumented)
 export type InputSlots = {
     root: NonNullable<Slot<'span'>>;
-    input: NonNullable<SlotWithoutChildren<'input'>>;
+    input: NonNullable<SlotNoChildren<'input'>>;
     contentBefore?: Slot<'span'>;
     contentAfter?: Slot<'span'>;
 };
