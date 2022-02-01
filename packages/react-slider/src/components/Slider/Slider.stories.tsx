@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Slider } from '../../index';
 import type { Meta } from '@storybook/react';
+import descriptionMd from './SliderDescription.md';
 
 export * from './stories/SliderDefault.stories';
 export * from './stories/SliderSize.stories';
@@ -11,8 +12,15 @@ export * from './stories/SliderVertical.stories';
 export * from './stories/SliderDisabled.stories';
 
 export default {
-  title: 'Components/Slider',
+  title: 'Components/Slider [ALPHA]',
   component: Slider,
+  parameters: {
+    docs: {
+      description: {
+        component: [descriptionMd].join('\n'),
+      },
+    },
+  },
   decorators: [
     Story => (
       <div
