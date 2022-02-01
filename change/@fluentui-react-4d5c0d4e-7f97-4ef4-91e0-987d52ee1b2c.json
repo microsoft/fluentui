@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "remove aria-colindex from DetailsList columns by default, fix aria-label and aria-description on column headers",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

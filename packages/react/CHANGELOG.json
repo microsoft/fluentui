@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 01 Feb 2022 07:26:25 GMT",
+      "tag": "@fluentui/react_v8.52.1",
+      "version": "8.52.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "c4912723213bb1a15b4af2f6c7962bc32064bf4a",
+            "comment": "remove aria-colindex from DetailsList columns by default, fix aria-label and aria-description on column headers"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4eed0e64965ed4e5675079c6bdfb5ccdc3b1f402",
+            "comment": "fix Textfield to include prefix/suffix in the accessible name"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "077011a435e06cf1c4f5d39fce038846282fcd69",
+            "comment": "fix DetailsList high contrast link selector hierarchy"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 31 Jan 2022 07:27:29 GMT",
       "tag": "@fluentui/react_v8.52.0",
       "version": "8.52.0",

@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 31 Jan 2022 07:27:30 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Feb 2022 07:26:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.7.7)
+
+Tue, 01 Feb 2022 07:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.7.6..@fluentui/react-charting_v5.7.7)
+
+### Patches
+
+- OverflowProp styles override issue solved for legend ([PR #21487](https://github.com/microsoft/fluentui/pull/21487) by v-scharde@microsoft.com)
+- only active circle will be visible when custom radius is passed ([PR #21473](https://github.com/microsoft/fluentui/pull/21473) by v-scharde@microsoft.com)
+- Bump @fluentui/react to v8.52.1 ([PR #21344](https://github.com/microsoft/fluentui/pull/21344) by beachball)
 
 ## [5.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.7.6)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "only active circle will be visible when custom radius is passed",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

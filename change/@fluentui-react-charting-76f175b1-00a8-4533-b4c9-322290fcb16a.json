@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "OverflowProp styles override issue solved for legend",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}
