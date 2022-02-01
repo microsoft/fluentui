@@ -35,6 +35,7 @@
       "types": "./lib/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
-    }
+    },
+    "./lib/data/AllIconNames.json": "./lib/data/AllIconNames.json"
   }
 }

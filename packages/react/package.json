@@ -73,11 +73,6 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "exports": {
-    "./lib/common/DocPage.types": {
-      "types": "./lib/common/DocPage.types.d.ts",
-      "import": "./lib/common/DocPage.types.js",
-      "require": "./lib-commonjs/common/DocPage.types.js"
-    },
     "./lib/ActivityItem": {
       "types": "./lib/ActivityItem.d.ts",
       "import": "./lib/ActivityItem.js",
@@ -547,6 +542,12 @@
       "types": "./lib/WindowProvider.d.ts",
       "import": "./lib/WindowProvider.js",
       "require": "./lib-commonjs/WindowProvider.js"
-    }
+    },
+    "./lib/common/DocPage.types": {
+      "types": "./lib/common/DocPage.types.d.ts",
+      "import": "./lib/common/DocPage.types.js",
+      "require": "./lib-commonjs/common/DocPage.types.js"
+    },
+    "./package.json": "./package.json"
   }
 }
