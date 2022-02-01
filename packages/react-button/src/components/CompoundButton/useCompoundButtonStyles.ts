@@ -91,19 +91,19 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.padding(buttonSpacing.medium),
+    ...shorthands.padding(buttonSpacing.medium, buttonSpacing.medium, '10px', buttonSpacing.medium),
 
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
   },
   medium: {
-    ...shorthands.padding(buttonSpacing.large),
+    ...shorthands.padding('14px', buttonSpacing.large, buttonSpacing.larger, buttonSpacing.large),
 
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.padding(buttonSpacing.larger),
+    ...shorthands.padding('18px', buttonSpacing.larger, '20px', buttonSpacing.larger),
 
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
@@ -173,7 +173,6 @@ const useSecondaryContentStyles = makeStyles({
   // Base styles
   base: {
     lineHeight: '100%',
-    marginTop: '4px',
     fontWeight: tokens.fontWeightRegular,
   },
 
