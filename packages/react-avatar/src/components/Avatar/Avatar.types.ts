@@ -4,18 +4,18 @@ import type {
   ComponentProps,
   ComponentSlotProps,
   ComponentState,
-  IntrinsicShorthandProps,
-  ShorthandRenderFunction,
+  IntrinsicSlotProps,
+  SlotRenderFunction,
 } from '@fluentui/react-utilities';
 
 export type AvatarSlots = {
-  root: Omit<IntrinsicShorthandProps<'span'>, 'color'> & { children?: never };
+  root: Omit<IntrinsicSlotProps<'span'>, 'color'> & { children?: never };
 
   /**
    * This overidden in the component's props, it's only here to make `getSlots` work
    * `img`  is an exception since it should never accept children, but can accept a children render function
    */
-  image?: IntrinsicShorthandProps<'img'>;
+  image?: IntrinsicSlotProps<'img'>;
 
   /**
    * (optional) Custom initials.
@@ -25,14 +25,14 @@ export type AvatarSlots = {
    *
    * The initials are displayed when there is no image (including while the image is loading).
    */
-  initials?: IntrinsicShorthandProps<'span'>;
+  initials?: IntrinsicSlotProps<'span'>;
 
   /**
    * Icon to be displayed when the avatar doesn't have an image or initials.
    *
    * @defaultvalue `PersonRegular` (the default icon's size depends on the Avatar's size)
    */
-  icon?: IntrinsicShorthandProps<'span'>;
+  icon?: IntrinsicSlotProps<'span'>;
 
   /**
    * Badge to show the avatar's presence status.
@@ -150,8 +150,8 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'image'> &
      * The Avatar's image. Cannot be typed as a normal slot since it should not accept any children
      * but can accept a children render function.
      */
-    image?: Omit<IntrinsicShorthandProps<'img'>, 'children'> & {
-      children?: ShorthandRenderFunction<React.HTMLAttributes<HTMLImageElement>>;
+    image?: Omit<IntrinsicSlotProps<'img'>, 'children'> & {
+      children?: SlotRenderFunction<React.HTMLAttributes<HTMLImageElement>>;
     };
   };
 

@@ -1,23 +1,12 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 
 /**
  * Slot properties for Tooltip
  */
 export type TooltipSlots = {
-  root: Omit<IntrinsicShorthandProps<'div'>, 'children'> & {
-    /**
-     * The child is the element that triggers the Tooltip. It will have additional properties added,
-     * including events and aria properties.
-     * Alternatively, children can be a render function that takes the props and adds
-     * them to the appropriate elements.
-     */
-    children?:
-      | (React.ReactElement<React.HTMLAttributes<HTMLElement>> & { ref?: React.Ref<unknown> })
-      | ((props: TooltipTriggerProps) => React.ReactNode)
-      | null;
-  };
+  content: IntrinsicSlotProps<'div'>;
 };
 
 /**
@@ -32,11 +21,6 @@ export type TooltipCommons = {
    * @defaultvalue normal
    */
   appearance?: 'normal' | 'inverted';
-
-  /**
-   * The content displayed inside the tooltip.
-   */
-  content: React.ReactNode;
 
   /**
    * Render an arrow pointing to the target element
@@ -116,15 +100,23 @@ export type OnVisibleChangeData = {
 /**
  * Properties for Tooltip
  */
-export type TooltipProps = ComponentProps<TooltipSlots> &
-  Partial<Omit<TooltipCommons, 'content' | 'relationship'>> &
-  Pick<TooltipCommons, 'content' | 'relationship'>;
+export type TooltipProps = Omit<ComponentProps<TooltipSlots>, 'content'> &
+  Required<Pick<ComponentProps<TooltipSlots>, 'content'>> &
+  Partial<Omit<TooltipCommons, 'relationship'>> &
+  Pick<TooltipCommons, 'relationship'> & {
+    children?:
+      | (React.ReactElement & { ref?: React.Ref<unknown> })
+      | ((props: TooltipTriggerProps) => React.ReactNode)
+      | null;
+  };
 
 /**
  * State used in rendering Tooltip
  */
 export type TooltipState = ComponentState<TooltipSlots> &
   TooltipCommons & {
+    children?: React.ReactNode;
+
     /**
      * Whether the tooltip should be rendered to the DOM.
      */

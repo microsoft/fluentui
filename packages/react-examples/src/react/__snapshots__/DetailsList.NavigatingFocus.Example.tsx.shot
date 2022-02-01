@@ -87,7 +87,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -357,7 +356,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
             Toggle selection for all items
           </label>
           <div
-            aria-colindex={2}
             aria-labelledby="header1-filepath-name"
             aria-sort="none"
             className=
@@ -490,7 +488,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
             </span>
           </div>
           <div
-            aria-colindex={3}
             aria-labelledby="header1-size-name"
             aria-sort="none"
             className=
@@ -771,7 +768,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -1018,7 +1014,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -1149,7 +1144,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           </button>
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -1323,7 +1317,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -1570,7 +1563,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -1701,7 +1693,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           </button>
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -1875,7 +1866,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -2122,7 +2112,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -2253,7 +2242,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           </button>
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -2427,7 +2415,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -2674,7 +2661,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -2805,7 +2791,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           </button>
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -2979,7 +2964,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -3226,7 +3210,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -3357,7 +3340,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           </button>
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -3531,7 +3513,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -3778,7 +3759,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -3909,7 +3889,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           </button>
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -4083,7 +4062,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -4330,7 +4308,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -4461,7 +4438,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           </button>
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -4635,7 +4611,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -4882,7 +4857,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -5013,7 +4987,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           </button>
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -5187,7 +5160,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -5434,7 +5406,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -5565,7 +5536,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           </button>
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
