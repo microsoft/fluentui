@@ -5,6 +5,7 @@ import type { TabState, TabSlots } from './Tab.types';
 /**
  * Render the final JSX of Tab
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const renderTab_unstable = (state: TabState) => {
   const { slots, slotProps } = getSlots<TabSlots>(state);
 
