@@ -14,7 +14,7 @@ export * from './InputUncontrolled.stories';
 export * from './InputControlled.stories';
 
 const meta: Meta = {
-  title: 'Components/Input',
+  title: 'Components-alpha/Input',
   component: Input,
 
   decorators: [
