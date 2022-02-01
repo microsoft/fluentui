@@ -23,7 +23,6 @@ export const useOrderedGroup = (children: React.ReactNode): OrderedGroupState =>
   const groupData: OptionGroupValue = React.useMemo(() => {
     const options = getValidOptions(children);
 
-    // TODO: will need to make these work with nested groups; kept simple for testing ATM
     const getIdAtIndex = (index: number) => options[index];
     const getIndexOfId = (id: string) => options.indexOf(id);
 

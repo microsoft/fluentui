@@ -1,17 +1,13 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
-// import { OptionGroupContext } from '../../contexts/OptionGroupContext';
 import { ListboxContext } from '../../contexts/ListboxContext';
 import type { OptionProps, OptionSlots, OptionState } from './Option.types';
 
 /**
  * Array of all shorthand properties listed in OptionSlots
  */
-export const optionShorthandProps: (keyof OptionSlots)[] = [
-  'root',
-  // TODO add shorthand property names
-];
+export const optionShorthandProps: (keyof OptionSlots)[] = ['root', 'check'];
 
 // TODO: refine this more
 function getValueString(value: string | undefined, children: React.ReactNode) {
@@ -63,7 +59,7 @@ export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): Opti
 
   // register option data with context
   React.useEffect(() => {
-    // TODO: fix types for id
+    // TODO: fix types for id/move to using required itemKey prop
     const optionValue = getValueString(value, props.children);
     registerOption({ id: id as string, value: optionValue });
 
@@ -75,13 +71,22 @@ export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): Opti
   return {
     components: {
       root: 'div',
+      check: 'span',
     },
     root: getNativeElementProps('div', {
       ref,
       role: 'option',
+      'aria-selected': `${selected}`,
       id,
       ...props,
       onClick,
+    }),
+    check: resolveShorthand(props.check, {
+      required: true,
+      defaultProps: {
+        'aria-hidden': 'true',
+        children: 'x',
+      },
     }),
     isActive: id === activeId,
     selected,

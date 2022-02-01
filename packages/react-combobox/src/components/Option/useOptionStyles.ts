@@ -7,18 +7,32 @@ export const optionClassName = 'fui-Option';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {},
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '4px 6px',
+    borderRadius: '4px',
 
-  // these are testing-only styles
-  active: {
-    backgroundColor: 'slategray',
-    color: '#fff',
+    '&:hover': {
+      backgroundColor: '#f5f5f5',
+    },
   },
 
   // these are testing-only styles
-  selected: {
-    backgroundColor: 'black',
-    color: '#fff',
+  active: {
+    outline: '2px solid black',
+  },
+
+  // these are testing-only styles
+  selected: {},
+
+  check: {
+    padding: '4px',
+    visibility: 'hidden',
+  },
+
+  selectedCheck: {
+    visibility: 'visible',
   },
 });
 
@@ -34,6 +48,8 @@ export const useOptionStyles = (state: OptionState): OptionState => {
     selected && styles.selected,
     isActive && styles.active,
   );
+
+  state.check.className = mergeClasses(styles.check, state.check.className, selected && styles.selectedCheck);
 
   return state;
 };

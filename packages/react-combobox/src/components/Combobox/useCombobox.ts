@@ -57,8 +57,6 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLElement>): 
   const selectOption = (optionKey: string) => {
     const selectedIndex = getIndexOfId(optionKey);
     const selectedOption = getOptionAtId(optionKey);
-    console.log('options is', options);
-    console.log('select option', selectedOption);
 
     if (multiselect) {
       if (selectedIndex) {
