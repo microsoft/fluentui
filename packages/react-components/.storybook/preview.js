@@ -21,6 +21,8 @@ const options = {
       ],
       'Theme',
       'Components',
+      'Components-Alpha',
+      ['Overview'],
       'Migrations',
     ],
   },
