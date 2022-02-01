@@ -4,21 +4,21 @@
 
 ```ts
 
-import { AnimationStyles } from '@fluentui/theme/lib/motion/AnimationStyles';
-import { AnimationVariables } from '@fluentui/theme/lib/motion/AnimationStyles';
+import { AnimationStyles } from '@fluentui/theme';
+import { AnimationVariables } from '@fluentui/theme';
 import { concatStyleSets } from '@fluentui/merge-styles';
 import { concatStyleSetsWithProps } from '@fluentui/merge-styles';
-import { createFontStyles } from '@fluentui/theme/lib/fonts/index';
-import { createTheme } from '@fluentui/theme/lib/createTheme';
+import { createFontStyles } from '@fluentui/theme';
+import { createTheme } from '@fluentui/theme';
 import { DefaultEffects } from '@fluentui/theme';
-import { DefaultFontStyles } from '@fluentui/theme/lib/fonts/DefaultFontStyles';
+import { DefaultFontStyles } from '@fluentui/theme';
 import { DefaultPalette } from '@fluentui/theme';
 import { fontFace } from '@fluentui/merge-styles';
-import { FontSizes } from '@fluentui/theme/lib/fonts/index';
-import { FontWeights } from '@fluentui/theme/lib/fonts/index';
+import { FontSizes } from '@fluentui/theme';
+import { FontWeights } from '@fluentui/theme';
 import { IAnimationStyles } from '@fluentui/theme';
 import { IAnimationVariables } from '@fluentui/theme';
-import { IconFontSizes } from '@fluentui/theme/lib/fonts/index';
+import { IconFontSizes } from '@fluentui/theme';
 import { ICSPSettings } from '@fluentui/merge-styles';
 import type { ICustomizerContext } from '@fluentui/utilities';
 import { IEffects } from '@fluentui/theme';
@@ -42,7 +42,7 @@ import { ITheme } from '@fluentui/theme';
 import { keyframes } from '@fluentui/merge-styles';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { mergeStyleSets } from '@fluentui/merge-styles';
-import { registerDefaultFontFaces } from '@fluentui/theme/lib/fonts/DefaultFontStyles';
+import { registerDefaultFontFaces } from '@fluentui/theme';
 import { Stylesheet } from '@fluentui/merge-styles';
 
 // @public (undocumented)
