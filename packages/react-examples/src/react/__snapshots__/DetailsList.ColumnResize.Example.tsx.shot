@@ -976,7 +976,6 @@ Array [
               role="row"
             >
               <div
-                aria-colindex={1}
                 aria-labelledby="header17-0-name"
                 aria-sort="none"
                 className=
@@ -1165,7 +1164,6 @@ Array [
                 role="button"
               />
               <div
-                aria-colindex={2}
                 aria-labelledby="header17-1-name"
                 aria-sort="none"
                 className=
@@ -1354,7 +1352,6 @@ Array [
                 role="button"
               />
               <div
-                aria-colindex={3}
                 aria-labelledby="header17-2-name"
                 aria-sort="none"
                 className=
@@ -1543,7 +1540,6 @@ Array [
                 role="button"
               />
               <div
-                aria-colindex={4}
                 aria-labelledby="header17-3-name"
                 aria-sort="none"
                 className=
@@ -1886,7 +1882,6 @@ Array [
                             role="presentation"
                           >
                             <div
-                              aria-colindex={1}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -1943,7 +1938,6 @@ Array [
                               A-0
                             </div>
                             <div
-                              aria-colindex={2}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -2000,7 +1994,6 @@ Array [
                               A-1
                             </div>
                             <div
-                              aria-colindex={3}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -2057,7 +2050,6 @@ Array [
                               A-2
                             </div>
                             <div
-                              aria-colindex={4}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -2287,7 +2279,6 @@ Array [
               role="row"
             >
               <div
-                aria-colindex={1}
                 aria-labelledby="header21-0-name"
                 aria-sort="none"
                 className=
@@ -2476,7 +2467,6 @@ Array [
                 role="button"
               />
               <div
-                aria-colindex={2}
                 aria-labelledby="header21-1-name"
                 aria-sort="none"
                 className=
@@ -2665,7 +2655,6 @@ Array [
                 role="button"
               />
               <div
-                aria-colindex={3}
                 aria-labelledby="header21-2-name"
                 aria-sort="none"
                 className=
@@ -2854,7 +2843,6 @@ Array [
                 role="button"
               />
               <div
-                aria-colindex={4}
                 aria-labelledby="header21-3-name"
                 aria-sort="none"
                 className=
@@ -3197,7 +3185,6 @@ Array [
                             role="presentation"
                           >
                             <div
-                              aria-colindex={1}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -3254,7 +3241,6 @@ Array [
                               A-0
                             </div>
                             <div
-                              aria-colindex={2}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -3311,7 +3297,6 @@ Array [
                               A-1
                             </div>
                             <div
-                              aria-colindex={3}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -3368,7 +3353,6 @@ Array [
                               A-2
                             </div>
                             <div
-                              aria-colindex={4}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
