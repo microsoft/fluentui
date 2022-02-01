@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "move slider to unstable, update storybook to denote alpha release",
+  "packageName": "@fluentui/react-slider",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
