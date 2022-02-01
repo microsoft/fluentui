@@ -184,21 +184,21 @@ export type ResolveShorthandOptions<Props, Required extends boolean> = {
 // @public
 export const selectProperties: Record<string, number>;
 
-// @public (undocumented)
+// @public
 export type ShorthandValue = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal;
 
 // @public
 export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.KeyboardEvent): boolean;
 
-// @public (undocumented)
-export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType, AlternateAs extends keyof JSX.IntrinsicElements = never> = WithSlotRenderFunction<SlotPropsObject<Type, AlternateAs>> | ShorthandValue | null;
+// @public
+export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType, AlternateAs extends keyof JSX.IntrinsicElements = never> = ShorthandValue | null | WithSlotRenderFunction<SlotPropsObject<Type, AlternateAs>>;
 
-// @public (undocumented)
-export type SlotNoChildren<Type extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = WithSlotRenderFunction<IntrinsicSlotPropsObject<Type, AlternateAs> & {
+// @public
+export type SlotNoChildren<Type extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = null | WithSlotRenderFunction<IntrinsicSlotPropsObject<Type, AlternateAs> & {
     children?: never;
-}> | null;
+}>;
 
-// @public (undocumented)
+// @public
 export type SlotPropsObject<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType, AlternateAs extends keyof JSX.IntrinsicElements = never> = Type extends keyof JSX.IntrinsicElements ? IntrinsicSlotPropsObject<Type, AlternateAs> : Type extends React_2.ComponentType<infer Props> ? Props : never;
 
 // @public (undocumented)

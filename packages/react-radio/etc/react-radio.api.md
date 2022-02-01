@@ -11,7 +11,7 @@ import type { InputHTMLAttributes } from 'react';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotWithoutChildren } from '@fluentui/react-utilities';
+import type { SlotNoChildren } from '@fluentui/react-utilities';
 
 // @public
 export const Radio: ForwardRefComponent<RadioProps>;
@@ -40,7 +40,7 @@ export type RadioItemProps = ComponentProps<Partial<RadioItemSlots>> & RadioItem
 export type RadioItemSlots = {
     root: Slot<'span'>;
     indicator: NonNullable<Slot<'div'>>;
-    input: NonNullable<SlotWithoutChildren<'input'>>;
+    input: NonNullable<SlotNoChildren<'input'>>;
     label: NonNullable<Slot<typeof Label>>;
     subtext?: Slot<'span'>;
 };
