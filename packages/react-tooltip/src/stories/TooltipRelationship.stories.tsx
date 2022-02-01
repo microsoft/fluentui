@@ -3,7 +3,7 @@ import { ChatRegular } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-button';
 import { Tooltip } from '../Tooltip';
 
-export const Aria = () => (
+export const Relationship = () => (
   <>
     <Tooltip content="Label for the button" relationship="label">
       <Button icon={<ChatRegular />} />
@@ -14,13 +14,12 @@ export const Aria = () => (
   </>
 );
 
-Aria.parameters = {
+Relationship.parameters = {
   docs: {
     description: {
       story:
-        'The `triggerAriaAttribute` can be used to tell screen readers whether the tooltip is the label or ' +
-        'description for the element. By default, the tooltip is the label for the target, and the text of ' +
-        'the tooltip will be read by screen readers for the target element.',
+        'The `relationship` prop is required, and controls whether the tooltip is labeling or describing its trigger ' +
+        'element. This affects which aria props are set on the trigger, and  primarily affects screen readers.',
     },
   },
 };

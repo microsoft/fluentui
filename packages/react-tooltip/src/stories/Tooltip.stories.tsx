@@ -2,8 +2,11 @@ import * as React from 'react';
 import { Meta } from '@storybook/react';
 import { Tooltip } from '../index';
 import descriptionMd from './TooltipDescription.md';
-export * from './TooltipDefault.stories';
-export { Aria } from './TooltipAria.stories';
+export { Default } from './TooltipDefault.stories';
+export { Inverted } from './TooltipInverted.stories';
+export { WithArrow } from './TooltipWithArrow.stories';
+export { Target } from './TooltipTarget.stories';
+export { Relationship } from './TooltipRelationship.stories';
 export { Controlled } from './TooltipControlled.stories';
 export { Positioning } from './TooltipPositioning.stories';
 
