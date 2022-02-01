@@ -43,7 +43,7 @@ export const colGroupProperties: Record<string, number>;
 export const colProperties: Record<string, number>;
 
 // @public
-export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<NonShorthand<Slots[Primary]>>;
+export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
 
 // @public
 export type ComponentSlotPropsObject<Component extends React_2.ComponentType> = Component extends React_2.ComponentType<infer Props> ? WithSlotRenderFunction<Props> : never;
@@ -51,7 +51,7 @@ export type ComponentSlotPropsObject<Component extends React_2.ComponentType> = 
 // @public
 export type ComponentState<Slots extends SlotPropsRecord> = {
     components: {
-        [Key in keyof Slots]-?: React_2.ComponentType<NonShorthand<Slots[Key]>> | (NonShorthand<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+        [Key in keyof Slots]-?: React_2.ComponentType<ExtractSlotProps<Slots[Key]>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     };
 } & {
     [Key in keyof Slots]: Exclude<Slots[Key], ShorthandValue | (Key extends 'root' ? null : never)>;
@@ -64,6 +64,9 @@ export const defaultSSRContextValue: SSRContextValue;
 
 // @public
 export const divProperties: Record<string, number>;
+
+// @public
+export type ExtractSlotProps<TSlot> = Exclude<TSlot, ShorthandValue | null | undefined>;
 
 // @public
 export const formProperties: Record<string, number>;
@@ -136,9 +139,6 @@ export const labelProperties: Record<string, number>;
 // @public
 export const liProperties: Record<string, number>;
 
-// @public (undocumented)
-export type NonShorthand<TSlot> = Exclude<TSlot, ShorthandValue | null | undefined>;
-
 // @public
 export const nullRender: () => null;
 
@@ -194,6 +194,11 @@ export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.Keyboar
 export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType, AlternateAs extends keyof JSX.IntrinsicElements = never> = WithSlotRenderFunction<SlotPropsObject<Type, AlternateAs>> | ShorthandValue | null;
 
 // @public (undocumented)
+export type SlotNoChildren<Type extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = WithSlotRenderFunction<IntrinsicSlotPropsObject<Type, AlternateAs> & {
+    children?: never;
+}> | null;
+
+// @public (undocumented)
 export type SlotPropsObject<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType, AlternateAs extends keyof JSX.IntrinsicElements = never> = Type extends keyof JSX.IntrinsicElements ? IntrinsicSlotPropsObject<Type, AlternateAs> : Type extends React_2.ComponentType<infer Props> ? Props : never;
 
 // @public (undocumented)
@@ -204,13 +209,8 @@ export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, 
 
 // @public (undocumented)
 export type Slots<S extends SlotPropsRecord> = {
-    [K in keyof S]-?: NonShorthand<S[K]> extends AsIntrinsicElement<infer As> ? As : NonShorthand<S[K]> extends ComponentSlotPropsObject<infer P> ? React_2.ElementType<P> : React_2.ElementType<NonShorthand<S[K]>>;
+    [K in keyof S]-?: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As> ? As : ExtractSlotProps<S[K]> extends ComponentSlotPropsObject<infer P> ? React_2.ElementType<P> : React_2.ElementType<ExtractSlotProps<S[K]>>;
 };
-
-// @public (undocumented)
-export type SlotWithoutChildren<Type extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = WithSlotRenderFunction<IntrinsicSlotPropsObject<Type, AlternateAs> & {
-    children?: never;
-}> | null;
 
 // Warning: (ae-incompatible-release-tags) The symbol "SSRContext" is marked as @public, but its signature references "SSRContextValue" which is marked as @internal
 //

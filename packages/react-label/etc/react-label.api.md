@@ -25,7 +25,7 @@ export type LabelCommons = {
 
 // @public
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommons> & {
-    required?: boolean | Slot<'span'> | React_2.ReactNode;
+    required?: boolean | Slot<'span'>;
 };
 
 // @public (undocumented)
