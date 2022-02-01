@@ -156,12 +156,9 @@ describe('DetailsList', () => {
         expect(component).toBeTruthy();
         component!.focusIndex(2);
         setTimeout(() => {
-          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[aria-colindex]');
-          elements.forEach((element: Element) => {
-            const itemKey = element.getAttribute('aria-colindex')!;
-            expect(itemKey).toBeDefined();
-
-            if (itemKey === '1') {
+          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[role=columnheader]');
+          elements.forEach((element: Element, index: number) => {
+            if (index === 0) {
               return;
             }
 
@@ -172,14 +169,14 @@ describe('DetailsList', () => {
             expect(width).toBeDefined();
             expect(width[0]).toBeDefined();
 
-            if (itemKey === '2') {
+            if (index === 1) {
               expect(width[0]).toBe('121');
-            } else if (itemKey === '3') {
+            } else if (index === 2) {
               expect(width[0]).toBe('348');
-            } else if (itemKey === '4') {
+            } else if (index === 3) {
               expect(width[0]).toBe('123');
             } else {
-              fail('Unexpected itemKey.');
+              fail('Unexpected index.');
             }
           });
         }, 0);
@@ -210,12 +207,9 @@ describe('DetailsList', () => {
         expect(component).toBeTruthy();
         component!.focusIndex(2);
         setTimeout(() => {
-          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[aria-colindex]');
-          elements.forEach((element: Element) => {
-            const itemKey = element.getAttribute('aria-colindex')!;
-            expect(itemKey).toBeDefined();
-
-            if (itemKey === '1') {
+          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[role=columnheader]');
+          elements.forEach((element: Element, index: number) => {
+            if (index === 0) {
               return;
             }
 
@@ -226,12 +220,12 @@ describe('DetailsList', () => {
             expect(width).toBeDefined();
             expect(width[0]).toBeDefined();
 
-            if (itemKey === '2') {
+            if (index === 1) {
               expect(width[0]).toBe('336');
-            } else if (itemKey === '3') {
+            } else if (index === 2) {
               expect(width[0]).toBe('255');
             } else {
-              fail('Unexpected itemKey.');
+              fail('Unexpected index.');
             }
           });
         }, 0);
@@ -263,12 +257,9 @@ describe('DetailsList', () => {
         expect(component).toBeTruthy();
         component!.focusIndex(2);
         setTimeout(() => {
-          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[aria-colindex]');
-          elements.forEach((element: Element) => {
-            const itemKey = element.getAttribute('aria-colindex')!;
-            expect(itemKey).toBeDefined();
-
-            if (itemKey === '1') {
+          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[role=columnheader]');
+          elements.forEach((element: Element, index: number) => {
+            if (index === 0) {
               return;
             }
 
@@ -279,12 +270,12 @@ describe('DetailsList', () => {
             expect(width).toBeDefined();
             expect(width[0]).toBeDefined();
 
-            if (itemKey === '2') {
+            if (index === 1) {
               expect(width[0]).toBe('336');
-            } else if (itemKey === '3') {
+            } else if (index === 2) {
               expect(width[0]).toBe('255');
             } else {
-              fail('Unexpected itemKey.');
+              fail('Unexpected index.');
             }
           });
         }, 0);

@@ -301,7 +301,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
               role="row"
             >
               <div
-                aria-colindex={1}
                 aria-labelledby="header6-checkTooltip"
                 className=
                     ms-DetailsHeader-cell
@@ -571,7 +570,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                 Toggle selection for all items
               </label>
               <div
-                aria-colindex={2}
                 aria-labelledby="header6-column1-name"
                 aria-sort="none"
                 className=
@@ -760,7 +758,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                 role="button"
               />
               <div
-                aria-colindex={3}
                 aria-labelledby="header6-column2-name"
                 aria-sort="none"
                 className=
@@ -1097,7 +1094,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           }
                         >
                           <div
-                            aria-colindex={1}
                             className=
                                 ms-DetailsRow-cell
                                 ms-DetailsRow-cellCheck
@@ -1344,7 +1340,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                             role="presentation"
                           >
                             <div
-                              aria-colindex={2}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -1401,7 +1396,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               Item 0
                             </div>
                             <div
-                              aria-colindex={3}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -1575,7 +1569,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           }
                         >
                           <div
-                            aria-colindex={1}
                             className=
                                 ms-DetailsRow-cell
                                 ms-DetailsRow-cellCheck
@@ -1822,7 +1815,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                             role="presentation"
                           >
                             <div
-                              aria-colindex={2}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -1879,7 +1871,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               Item 1
                             </div>
                             <div
-                              aria-colindex={3}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -2053,7 +2044,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           }
                         >
                           <div
-                            aria-colindex={1}
                             className=
                                 ms-DetailsRow-cell
                                 ms-DetailsRow-cellCheck
@@ -2300,7 +2290,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                             role="presentation"
                           >
                             <div
-                              aria-colindex={2}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -2357,7 +2346,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               Item 2
                             </div>
                             <div
-                              aria-colindex={3}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -2531,7 +2519,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           }
                         >
                           <div
-                            aria-colindex={1}
                             className=
                                 ms-DetailsRow-cell
                                 ms-DetailsRow-cellCheck
@@ -2778,7 +2765,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                             role="presentation"
                           >
                             <div
-                              aria-colindex={2}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -2835,7 +2821,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               Item 3
                             </div>
                             <div
-                              aria-colindex={3}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -3009,7 +2994,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           }
                         >
                           <div
-                            aria-colindex={1}
                             className=
                                 ms-DetailsRow-cell
                                 ms-DetailsRow-cellCheck
@@ -3256,7 +3240,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                             role="presentation"
                           >
                             <div
-                              aria-colindex={2}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -3313,7 +3296,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               Item 4
                             </div>
                             <div
-                              aria-colindex={3}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -3487,7 +3469,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           }
                         >
                           <div
-                            aria-colindex={1}
                             className=
                                 ms-DetailsRow-cell
                                 ms-DetailsRow-cellCheck
@@ -3734,7 +3715,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                             role="presentation"
                           >
                             <div
-                              aria-colindex={2}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -3791,7 +3771,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               Item 5
                             </div>
                             <div
-                              aria-colindex={3}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -3965,7 +3944,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           }
                         >
                           <div
-                            aria-colindex={1}
                             className=
                                 ms-DetailsRow-cell
                                 ms-DetailsRow-cellCheck
@@ -4212,7 +4190,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                             role="presentation"
                           >
                             <div
-                              aria-colindex={2}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -4269,7 +4246,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               Item 6
                             </div>
                             <div
-                              aria-colindex={3}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -4443,7 +4419,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           }
                         >
                           <div
-                            aria-colindex={1}
                             className=
                                 ms-DetailsRow-cell
                                 ms-DetailsRow-cellCheck
@@ -4690,7 +4665,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                             role="presentation"
                           >
                             <div
-                              aria-colindex={2}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -4747,7 +4721,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               Item 7
                             </div>
                             <div
-                              aria-colindex={3}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -4921,7 +4894,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           }
                         >
                           <div
-                            aria-colindex={1}
                             className=
                                 ms-DetailsRow-cell
                                 ms-DetailsRow-cellCheck
@@ -5168,7 +5140,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                             role="presentation"
                           >
                             <div
-                              aria-colindex={2}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -5225,7 +5196,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               Item 8
                             </div>
                             <div
-                              aria-colindex={3}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -5399,7 +5369,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           }
                         >
                           <div
-                            aria-colindex={1}
                             className=
                                 ms-DetailsRow-cell
                                 ms-DetailsRow-cellCheck
@@ -5646,7 +5615,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                             role="presentation"
                           >
                             <div
-                              aria-colindex={2}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
@@ -5703,7 +5671,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               Item 9
                             </div>
                             <div
-                              aria-colindex={3}
                               aria-readonly={true}
                               className=
                                   ms-DetailsRow-cell
