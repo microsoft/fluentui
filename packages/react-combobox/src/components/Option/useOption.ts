@@ -13,6 +13,21 @@ export const optionShorthandProps: (keyof OptionSlots)[] = [
   // TODO add shorthand property names
 ];
 
+// TODO: refine this more
+function getValueString(value: string | undefined, children: React.ReactNode) {
+  if (value) {
+    return value;
+  }
+
+  let valueString = '';
+  React.Children.map(children, child => {
+    if (typeof child === 'string') {
+      valueString += child;
+    }
+  });
+  return valueString;
+}
+
 /**
  * Create the state required to render Option.
  *
@@ -33,7 +48,7 @@ export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): Opti
       unRegisterOption: ctx.unRegisterOption,
     }),
   );
-  const { id, disabled } = props;
+  const { id, disabled, value } = props;
   const selected = id ? selectedKeys.indexOf(id) > -1 : false;
 
   const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -49,12 +64,13 @@ export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): Opti
   // register option data with context
   React.useEffect(() => {
     // TODO: fix types for id
-    registerOption({ id: id as string, value: 'placeholder' });
+    const optionValue = getValueString(value, props.children);
+    registerOption({ id: id as string, value: optionValue });
 
     return () => {
       unRegisterOption(id as string);
     };
-  }, [registerOption, unRegisterOption, id]);
+  }, [registerOption, unRegisterOption, id, value, props.children]);
 
   return {
     components: {

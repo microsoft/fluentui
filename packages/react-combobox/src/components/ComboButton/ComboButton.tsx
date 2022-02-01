@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { useComboButton_unstable } from './useComboButton';
-import { renderComboButton_unstable } from './renderComboButton';
-import { useComboButtonStyles_unstable } from './useComboButtonStyles';
+import { useComboButton } from './useComboButton';
+import { renderComboButton } from './renderComboButton';
+import { useComboButtonStyles } from './useComboButtonStyles';
 import type { ComboButtonProps } from './ComboButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * ComboButton component initial component build
+ * ComboButton component
  */
 export const ComboButton: ForwardRefComponent<ComboButtonProps> = React.forwardRef((props, ref) => {
-  const state = useComboButton_unstable(props, ref);
+  const state = useComboButton(props, ref);
 
-  useComboButtonStyles_unstable(state);
-  return renderComboButton_unstable(state);
+  useComboButtonStyles(state);
+  return renderComboButton(state);
 });
 
 ComboButton.displayName = 'ComboButton';

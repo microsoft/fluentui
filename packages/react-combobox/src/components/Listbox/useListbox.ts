@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { getNativeElementProps, useControllableState } from '@fluentui/react-utilities';
+import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
 import { useOrderedGroup } from '../../utils/useOrderedGroup';
 import { DropdownActions, getDropdownActionFromKey } from '../../utils/getDropdownActionFromKey';
+import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ListboxProps, ListboxSlots, ListboxState } from './Listbox.types';
 
 /**
@@ -24,7 +26,21 @@ export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): Li
   const {
     groupData: { count, getIdAtIndex, getIndexOfId },
   } = orderedGroup;
-  const [activeId, setActiveId] = React.useState<string | undefined>();
+
+  // get state from parent combobox, if it exists
+  const hasComboboxContext = useHasParentContext(ComboboxContext);
+  const contextValues = useContextSelector(ComboboxContext, ctx => ({
+    activeId: ctx.activeId,
+    onOptionClick: ctx.onOptionClick,
+    registerOption: ctx.registerOption,
+    selectedKeys: ctx.selectedKeys,
+    unRegisterOption: ctx.unRegisterOption,
+  }));
+
+  const [activeId, setActiveId] = useControllableState<string | undefined>({
+    state: contextValues.activeId,
+    initialState: undefined,
+  });
 
   const [selectedKeys, setSelectedKeys] = useControllableState({
     state: props.selectedKeys,
@@ -32,11 +48,7 @@ export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): Li
     initialState: [],
   });
 
-  // just for testing
-  // const ids = Array.from(Array(count)).map((num, index) => getIdAtIndex(index));
-  // console.log('group info:', count, ...ids);
-  // end testing
-
+  // TODO: will split this out to hook shared with Combobox
   const selectOption = (optionKey: string) => {
     if (multiselect) {
       const selectedIndex = selectedKeys.indexOf(optionKey);
@@ -124,5 +136,6 @@ export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): Li
     activeId,
     onOptionClick,
     selectedKeys,
+    ...(hasComboboxContext ? contextValues : {}),
   };
 };

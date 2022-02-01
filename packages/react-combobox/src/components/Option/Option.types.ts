@@ -15,7 +15,11 @@ export type OptionCommons = {
 /**
  * Option Props
  */
-export type OptionProps = ComponentProps<OptionSlots> & OptionCommons;
+export type OptionProps = ComponentProps<OptionSlots> &
+  OptionCommons & {
+    /* define a string value if the children are not a string */
+    value?: string;
+  };
 
 /**
  * State used in rendering Option

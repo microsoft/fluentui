@@ -1,15 +1,13 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { ComboButtonState } from './ComboButton.types';
-
-export const comboButtonClassName = 'fui-ComboButton';
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
+  root: theme => ({
     // TODO Add default styles for the root element
-  },
+  }),
 
   // TODO add additional classes for different states and/or slots
 });
@@ -17,9 +15,9 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the ComboButton slots based on the state
  */
-export const useComboButtonStyles_unstable = (state: ComboButtonState): ComboButtonState => {
+export const useComboButtonStyles = (state: ComboButtonState): ComboButtonState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(comboButtonClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

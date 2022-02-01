@@ -3,33 +3,37 @@ import type { Context } from '@fluentui/react-context-selector';
 import { OptionGroupContextValue } from './OptionGroupContext';
 
 /**
- * Context shared with all Listbox Options
+ * Context shared with Combobox, Listbox, & Options
  */
-export type ListboxContextValue = OptionGroupContextValue & {
+export type ComboboxContextValue = OptionGroupContextValue & {
   /* id of active option */
   activeId: string | undefined;
 
-  /* selection handler */
-  selectedKeys: string[];
+  /* open/close state of the listbox */
+  open: boolean;
 
   /* option click callback */
   onOptionClick: (optionKey: string) => void;
+
+  /* selection handler */
+  selectedKeys: string[];
 };
 
-export type ListboxContextValues = {
-  listbox: ListboxContextValue;
+export type ComboboxContextValues = {
+  combobox: ComboboxContextValue;
 };
 
-export const ListboxContext: Context<ListboxContextValue> = createContext<ListboxContextValue>({
+export const ComboboxContext: Context<ComboboxContextValue> = createContext<ComboboxContextValue>({
   activeId: undefined,
   onOptionClick() {
     // noop
   },
+  open: false,
+  selectedKeys: [],
   registerOption() {
     // noop
   },
   unRegisterOption() {
     // noop
   },
-  selectedKeys: [],
 });

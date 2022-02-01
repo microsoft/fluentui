@@ -1,19 +1,30 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type ComboButtonSlots = {
-  root: Slot<'div'>;
+  root: IntrinsicShorthandProps<'div'>;
+
+  content: IntrinsicShorthandProps<'button'>;
+
+  dropdownIcon: IntrinsicShorthandProps<'span'>;
 };
 
 export type ComboButtonCommons = {
-  // TODO Add things shared between props and state here
+  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+
+  placeholder?: string;
+
+  value?: string;
 };
 
 /**
  * ComboButton Props
  */
-export type ComboButtonProps = ComponentProps<ComboButtonSlots> & ComboButtonCommons;
+export type ComboButtonProps = ComponentProps<ComboButtonSlots, 'content'> & ComboButtonCommons;
 
 /**
  * State used in rendering ComboButton
  */
-export type ComboButtonState = ComponentState<ComboButtonSlots> & ComboButtonCommons;
+export type ComboButtonState = ComponentState<ComboButtonSlots> &
+  ComboButtonCommons & {
+    open: boolean;
+  };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { OrderedGroupState, OptionGroupValue, OptionData } from './OrderedGroup.types';
+import type { OrderedGroupState, OptionGroupValue, OptionValue, OptionData } from './OrderedGroup.types';
 
 function getValidOptions(children: React.ReactNode): string[] {
   const ids: string[] = [];
@@ -27,11 +27,15 @@ export const useOrderedGroup = (children: React.ReactNode): OrderedGroupState =>
     const getIdAtIndex = (index: number) => options[index];
     const getIndexOfId = (id: string) => options.indexOf(id);
 
+    // TODO: will be removing nested groups, so this typing will then work out
+    const getOptionAtId = (id: string) => optionData.current[id] as OptionValue;
+
     return {
       count: options.length,
       id: 'test',
       getIdAtIndex,
       getIndexOfId,
+      getOptionAtId,
     };
   }, [children]);
 

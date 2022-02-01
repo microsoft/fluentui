@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { ComboButtonProps, ComboButtonState } from './ComboButton.types';
+import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
+// import { ChevronDown20Regular as ChevronDownIcon } from '@fluentui/react-icons';
+import type { ComboButtonProps, ComboButtonSlots, ComboButtonState } from './ComboButton.types';
+
+/**
+ * Array of all shorthand properties listed in ComboButtonSlots
+ */
+export const comboButtonShorthandProps: (keyof ComboButtonSlots)[] = ['root', 'content', 'dropdownIcon'];
 
 /**
  * Create the state required to render ComboButton.
@@ -11,18 +17,41 @@ import type { ComboButtonProps, ComboButtonState } from './ComboButton.types';
  * @param props - props from this instance of ComboButton
  * @param ref - reference to root HTMLElement of ComboButton
  */
-export const useComboButton_unstable = (props: ComboButtonProps, ref: React.Ref<HTMLElement>): ComboButtonState => {
+export const useComboButton = (props: ComboButtonProps, ref: React.Ref<HTMLButtonElement>): ComboButtonState => {
+  const { placeholder, value } = props;
+
+  const nativeProps = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'button',
+  });
+
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
+      content: 'button',
+      dropdownIcon: 'span',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
+    root: resolveShorthand(props.root, {
+      required: true,
+      defaultProps: nativeProps.root,
     }),
+    content: resolveShorthand(props.content, {
+      required: true,
+      defaultProps: {
+        ref,
+        role: 'combobox',
+        type: 'button',
+        'aria-expanded': 'false',
+        children: value ? value : placeholder,
+        ...nativeProps.primary,
+      },
+    }),
+    dropdownIcon: resolveShorthand(props.dropdownIcon, {
+      required: true,
+      defaultProps: {
+        children: '>',
+      },
+    }),
+    open: false,
   };
 };

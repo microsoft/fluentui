@@ -11,6 +11,8 @@ export type OptionGroupValue = {
   getIdAtIndex(index: number): string;
 
   getIndexOfId(id: string): number;
+
+  getOptionAtId(id: string): OptionValue;
 };
 
 export type OptionData = {

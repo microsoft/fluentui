@@ -1,25 +1,19 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { ComboboxState } from './Combobox.types';
-
-export const comboboxClassName = 'fui-Combobox';
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
-  },
-
-  // TODO add additional classes for different states and/or slots
+  root: {},
 });
 
 /**
  * Apply styling to the Combobox slots based on the state
  */
-export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
+export const useComboboxStyles = (state: ComboboxState): ComboboxState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(comboboxClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
