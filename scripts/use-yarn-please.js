@@ -8,9 +8,9 @@ const COMMAND_PREFIX = `\x1B[36m>\x1B[39m \x1B[7m\x1B[1m\x1B[36m PACKAGE MANAGER
 const Strings = {
   useYarnInstead: `
 - 🚨 Looks like you are trying to run "npm install". This repository has migrated to use Yarn as its package manager.
-- 📜 Please install the latest stable version of Yarn@1 following the instructions at https://yarnpkg.com/getting-started/install or by running "npm install -g yarn@1
+- 📜 Please install the latest stable version of Yarn@1 following the instructions at https://classic.yarnpkg.com/en/docs/install or by running "npm install -g yarn@1
 `,
-  installYarn: `You currently do not have an installation of Yarn in your PATH. Please install the latest stable version of Yarn@1 following the instructions at https://yarnpkg.com/getting-started/install or by running "npm install -g yarn@1".
+  installYarn: `You currently do not have an installation of Yarn in your PATH. Please install the latest stable version of Yarn@1 following the instructions at https://classic.yarnpkg.com/en/docs/install or by running "npm install -g yarn@1".
 `,
 };
 
@@ -40,6 +40,6 @@ function userInvokedNpmInstall() {
 }
 
 function detectYarnInstallation() {
-  const yarnResult = spawnSync('yarn', ['--version']);
+  const yarnResult = spawnSync('yarn', ['--version'], { shell: true }); // Need to execute this in a shell for Windows:  https://nodejs.org/api/child_process.html#spawning-bat-and-cmd-files-on-windows
   return { exists: yarnResult.status === 0, version: yarnResult.stdout };
 }
