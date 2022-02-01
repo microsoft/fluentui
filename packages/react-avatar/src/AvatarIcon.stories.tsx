@@ -1,16 +1,18 @@
 import * as React from 'react';
 import { GuestRegular } from '@fluentui/react-icons';
 
-import { Avatar, AvatarProps } from './index';
+import { Avatar } from './index';
 
-export const Icon = (props: Partial<AvatarProps>) => {
-  return <Avatar {...props} icon={<GuestRegular />} />;
+export const Icon = () => {
+  return <Avatar icon={<GuestRegular />} aria-label="Guest icon" />;
 };
 
 Icon.parameters = {
   docs: {
     description: {
-      story: 'An avatar can display an icon.',
+      story:
+        'An avatar can display a custom icon. ' +
+        'The icon will only be shown when there is no image or initals available.',
     },
   },
 };

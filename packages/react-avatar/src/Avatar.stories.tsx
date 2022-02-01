@@ -1,14 +1,14 @@
+import * as React from 'react';
 import { Avatar } from './index';
+import { Meta } from '@storybook/react';
 
 export { Default } from './AvatarDefault.stories';
 export { Active } from './AvatarActive.stories';
 export { ActiveAppearance } from './AvatarActiveAppearance.stories';
 export { Badge } from './AvatarBadge.stories';
-export { Color } from './AvatarColor.stories';
 export { ColorBrand } from './AvatarColorBrand.stories';
 export { ColorColorful } from './AvatarColorColorful.stories';
-export { ColorNeutral } from './AvatarColorNeutral.stories';
-export { IdForColor } from './AvatarIdForColor.stories';
+export { ColorPalette } from './AvatarColorPalette.stories';
 export { Icon } from './AvatarIcon.stories';
 export { Image } from './AvatarImage.stories';
 export { Name } from './AvatarName.stories';
@@ -28,4 +28,11 @@ export default {
       },
     },
   },
-};
+  decorators: [
+    Story => (
+      // <div style={{ display: 'flex', gap: '4px' }}>
+      <Story />
+      // </div>
+    ),
+  ],
+} as Meta;

@@ -3,11 +3,9 @@ import { Avatar, AvatarProps } from './index';
 
 export const ActiveAppearance = (props: Partial<AvatarProps>) => (
   <div style={{ display: 'flex', gap: '32px' }}>
-    <Avatar {...props} active="active" activeAppearance="ring" />
-    <Avatar {...props} active="active" activeAppearance="shadow" />
-    <Avatar {...props} active="active" activeAppearance="glow" />
-    <Avatar {...props} active="active" activeAppearance="ring-shadow" />
-    <Avatar {...props} active="active" activeAppearance="ring-glow" />
+    <Avatar active="active" activeAppearance="ring" />
+    <Avatar active="active" activeAppearance="shadow" />
+    <Avatar active="active" activeAppearance="ring-shadow" />
   </div>
 );
 
