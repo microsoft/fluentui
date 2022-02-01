@@ -1,5 +1,5 @@
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
-import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ARIAButtonSlot } from '@fluentui/react-aria';
 
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
@@ -16,19 +16,19 @@ export type AccordionHeaderContextValues = {
 };
 
 export type AccordionHeaderSlots = {
-  root: IntrinsicSlotProps<'div'>;
+  root: Slot<'div'>;
   /**
    * The component to be used as button in heading
    */
-  button: ARIAButtonSlotProps;
+  button: NonNullable<ARIAButtonSlot>;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  expandIcon: IntrinsicSlotProps<'span'>;
+  expandIcon: Slot<'span'>;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  icon?: IntrinsicSlotProps<'div'>;
+  icon?: Slot<'div'>;
 };
 
 export type AccordionHeaderCommons = {
@@ -46,7 +46,7 @@ export type AccordionHeaderCommons = {
   inline: boolean;
 };
 
-export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
+export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & Partial<AccordionHeaderCommons>;
 
 export type AccordionHeaderState = ComponentState<AccordionHeaderSlots> &
   AccordionHeaderCommons &

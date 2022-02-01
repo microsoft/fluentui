@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { resolveShorthand } from './resolveShorthand';
-import type { ShorthandProps } from './types';
+import type { Slot } from './types';
 
 type TestProps = {
-  slotA?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  slotB?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  slotC?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  slotA?: Slot<'div'>;
+  slotB?: Slot<'div'>;
+  slotC?: Slot<'div'>;
   notASlot?: string;
   alsoNotASlot?: number;
 };
 
-describe('resolveShorthandProps', () => {
+describe('resolveShorthand', () => {
   it('resolves a string', () => {
     const props: TestProps = { slotA: 'hello' };
     const resolvedProps = resolveShorthand(props.slotA);
@@ -35,8 +35,8 @@ describe('resolveShorthandProps', () => {
   it('resolves "null" without creating a child element', () => {
     const props: TestProps = { slotA: null, slotB: null };
 
-    expect(resolveShorthand(props.slotA)).toEqual(undefined);
-    expect(resolveShorthand(null, { required: true })).toEqual(undefined);
+    expect(resolveShorthand(props.slotA)).toEqual(null);
+    expect(resolveShorthand(null, { required: true })).toEqual(null);
   });
 
   it('resolves undefined without creating a child element', () => {

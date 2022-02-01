@@ -1,36 +1,36 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot, SlotWithoutChildren } from '@fluentui/react-utilities';
 
 export type SwitchSlots = {
   /**
    * The root of the Switch.
    */
-  root: IntrinsicSlotProps<'div'>;
+  root: Slot<'div'>;
 
   /**
    * The bar indicating the status of the Switch.
    */
-  track: IntrinsicSlotProps<'div'>;
+  track: NonNullable<Slot<'div'>>;
 
   /**
    * The wrapper around the thumb. It is used as the active area for the thumb to position itself.
    */
-  thumbWrapper: IntrinsicSlotProps<'div'>;
+  thumbWrapper: NonNullable<Slot<'div'>>;
 
   /**
    * The circular icon indicating the status of the Switch.
    */
-  thumb: IntrinsicSlotProps<'div'>;
+  thumb: NonNullable<Slot<'div'>>;
 
   /**
    * The hidden input that handles the Switch's internal functionality.
    */
-  input: IntrinsicSlotProps<'input'>;
+  input: NonNullable<SlotWithoutChildren<'input'>>;
 
   /**
    * The area in which the Switch's rail allows for the thumb to be dragged.
    */
-  activeRail: IntrinsicSlotProps<'div'>;
+  activeRail: NonNullable<Slot<'div'>>;
 };
 
 export interface SwitchCommons {
@@ -66,6 +66,6 @@ export interface SwitchCommons {
   ) => void;
 }
 
-export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange'>, SwitchCommons {}
+export interface SwitchProps extends Omit<ComponentProps<Partial<SwitchSlots>>, 'onChange'>, SwitchCommons {}
 
 export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommons {}

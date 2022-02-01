@@ -7,8 +7,8 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const renderTab_unstable: (state: TabState) => JSX.Element;
@@ -70,20 +70,20 @@ export type TabListProps = ComponentProps<TabListSlots> & TabListCommons & {
 
 // @public (undocumented)
 export type TabListSlots = {
-    root: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public
 export type TabListState = ComponentState<TabListSlots> & TabListContextValue;
 
 // @public
-export type TabProps = ComponentProps<TabSlots> & TabCommons;
+export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
 
 // @public (undocumented)
 export type TabSlots = {
-    root: IntrinsicSlotProps<'div'>;
-    icon?: IntrinsicSlotProps<'span'>;
-    content: IntrinsicSlotProps<'span'>;
+    root: Slot<'div'>;
+    icon?: Slot<'span'>;
+    content: NonNullable<Slot<'span'>>;
 };
 
 // @public

@@ -1,21 +1,20 @@
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps, ResolveShorthandOptions, ShorthandProps } from '@fluentui/react-utilities';
+import type { SlotPropsObject, ResolveShorthandFunction, ShorthandValue } from '@fluentui/react-utilities';
 
-export type ARIAButtonSlotProps = IntrinsicSlotProps<'button', 'a'> & {
+export type ARIAButtonSlotProps = SlotPropsObject<'button', 'a'> & {
   disabled?: boolean;
   disabledFocusable?: boolean;
 };
+
+export type ARIAButtonSlot = ARIAButtonSlotProps | ShorthandValue | null;
 
 /**
  * Button keyboard handling, role, disabled and tabIndex implementation that ensures ARIA spec
  * for multiple scenarios of shorthand properties. Ensuring 1st rule of ARIA for cases
  * where no attribute addition is required.
  */
-export function useARIAButton<Required extends boolean = false>(
-  shorthand: ShorthandProps<ARIAButtonSlotProps>,
-  options?: ResolveShorthandOptions<ARIAButtonSlotProps, Required>,
-): Required extends false ? ARIAButtonSlotProps | undefined : ARIAButtonSlotProps {
+export const useARIAButton: ResolveShorthandFunction<ARIAButtonSlotProps> = (shorthand, options) => {
   const shorthandProps = resolveShorthand(shorthand, options);
 
   const { disabled, disabledFocusable, onClick, onKeyDown, onKeyUp, tabIndex } = (shorthandProps ||
@@ -96,9 +95,9 @@ export function useARIAButton<Required extends boolean = false>(
     else {
       delete shorthandProps.disabled;
       shorthandProps['aria-disabled'] = disabled || disabledFocusable;
-      (shorthandProps as IntrinsicSlotProps<'a'>).href = disabled
+      (shorthandProps as SlotPropsObject<'a'>).href = disabled
         ? undefined
-        : (shorthandProps as IntrinsicSlotProps<'a'>).href;
+        : (shorthandProps as SlotPropsObject<'a'>).href;
       shorthandProps.onClick = onClickHandler;
       shorthandProps.onKeyDown = onKeyDownHandler;
       shorthandProps.onKeyUp = onKeyupHandler;
@@ -111,4 +110,4 @@ export function useARIAButton<Required extends boolean = false>(
   }
 
   return shorthandProps;
-}
+};

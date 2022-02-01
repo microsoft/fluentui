@@ -7,8 +7,8 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Badge: ForwardRefComponent<BadgeProps>;
@@ -26,12 +26,12 @@ export type BadgeCommons = {
 };
 
 // @public (undocumented)
-export type BadgeProps = ComponentProps<Partial<BadgeSlots>> & Partial<BadgeCommons>;
+export type BadgeProps = Omit<ComponentProps<Partial<BadgeSlots>>, 'color'> & Partial<BadgeCommons>;
 
 // @public (undocumented)
 export type BadgeSlots = {
-    root: Omit<IntrinsicSlotProps<'div'>, 'color'>;
-    icon?: IntrinsicSlotProps<'span'>;
+    root: Slot<'div'>;
+    icon?: Slot<'span'>;
 };
 
 // @public (undocumented)
@@ -73,7 +73,7 @@ export type PresenceBadgeCommons = {
 } & BadgeCommons;
 
 // @public (undocumented)
-export type PresenceBadgeProps = ComponentProps<Partial<Pick<BadgeSlots, 'root'>>> & Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
+export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root'>>, 'color'> & Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
 
 // @public (undocumented)
 export type PresenceBadgeState = PresenceBadgeCommons & ComponentState<BadgeSlots>;

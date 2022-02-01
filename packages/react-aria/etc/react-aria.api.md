@@ -4,27 +4,27 @@
 
 ```ts
 
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
-import * as React_2 from 'react';
-import type { ResolveShorthandOptions } from '@fluentui/react-utilities';
-import type { ShorthandProps } from '@fluentui/react-utilities';
-import { SlotProps } from '@fluentui/react-utilities';
+import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
+import type { ShorthandValue } from '@fluentui/react-utilities';
+import type { SlotPropsObject } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type ARIAButtonSlotProps = IntrinsicSlotProps<'button', 'a'> & {
+export type ARIAButtonSlot = ARIAButtonSlotProps | ShorthandValue | null;
+
+// @public (undocumented)
+export type ARIAButtonSlotProps = SlotPropsObject<'button', 'a'> & {
     disabled?: boolean;
     disabledFocusable?: boolean;
 };
 
 // @public
-export function mergeARIADisabled(shorthand: SlotProps<{
+export function mergeARIADisabled(shorthand: {
     'aria-disabled'?: string | boolean;
-    children?: React_2.ReactNode;
     disabled?: boolean;
-}>): boolean;
+}): boolean;
 
 // @public
-export function useARIAButton<Required extends boolean = false>(shorthand: ShorthandProps<ARIAButtonSlotProps>, options?: ResolveShorthandOptions<ARIAButtonSlotProps, Required>): Required extends false ? ARIAButtonSlotProps | undefined : ARIAButtonSlotProps;
+export const useARIAButton: ResolveShorthandFunction<ARIAButtonSlotProps>;
 
 // (No @packageDocumentation comment for this package)
 

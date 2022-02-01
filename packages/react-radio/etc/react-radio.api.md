@@ -5,13 +5,13 @@
 ```ts
 
 import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InputHTMLAttributes } from 'react';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotWithoutChildren } from '@fluentui/react-utilities';
 
 // @public
 export const Radio: ForwardRefComponent<RadioProps>;
@@ -32,17 +32,17 @@ export type RadioItemCommons = InputHTMLAttributes<HTMLInputElement> & {
 };
 
 // @public
-export type RadioItemProps = ComponentProps<RadioItemSlots> & RadioItemCommons & {
+export type RadioItemProps = ComponentProps<Partial<RadioItemSlots>> & RadioItemCommons & {
     id?: string;
 };
 
 // @public (undocumented)
 export type RadioItemSlots = {
-    root: IntrinsicSlotProps<'span'>;
-    indicator: IntrinsicSlotProps<'div'>;
-    input: IntrinsicSlotProps<'input'>;
-    label: ComponentSlotProps<typeof Label>;
-    subtext?: IntrinsicSlotProps<'span'>;
+    root: Slot<'span'>;
+    indicator: NonNullable<Slot<'div'>>;
+    input: NonNullable<SlotWithoutChildren<'input'>>;
+    label: NonNullable<Slot<typeof Label>>;
+    subtext?: Slot<'span'>;
 };
 
 // @public
@@ -53,7 +53,7 @@ export type RadioProps = ComponentProps<RadioSlots>;
 
 // @public (undocumented)
 export type RadioSlots = {
-    root: IntrinsicSlotProps<'span'>;
+    root: Slot<'span'>;
 };
 
 // @public
