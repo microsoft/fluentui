@@ -12,18 +12,19 @@ import type {
 } from './types';
 
 export type Slots<S extends SlotPropsRecord> = {
-  // For slots with an `as` prop, the slot will be any one of the possible values of `as`.
-  // Otherwise, the slot is a component with the given props.
   [K in keyof S]-?: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
-    ? As
-    : React.ComponentType<ExtractSlotProps<S[K]>>;
+    ? // for slots with an `as` prop, the slot will be any one of the possible values of `as`
+      As
+    : ExtractSlotProps<S[K]> extends React.ComponentType<infer P>
+    ? React.ElementType<NonNullable<P>>
+    : React.ElementType<ExtractSlotProps<S[K]>>;
 };
 
 type ObjectSlotProps<S extends SlotPropsRecord> = {
-  // For intrinsic element types, return the intersection of all possible element's props
-  // Otherwise, the slot props are the props of the slot's component
   [K in keyof S]-?: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
-    ? UnionToIntersection<JSX.IntrinsicElements[As]>
+    ? // For intrinsic element types, return the intersection of all possible
+      // element's props, to be compatible with the As type returned by Slots<>
+      UnionToIntersection<JSX.IntrinsicElements[As]>
     : ExtractSlotProps<S[K]> extends React.ComponentType<infer P>
     ? P
     : never;
