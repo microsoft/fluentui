@@ -22,6 +22,11 @@ Users can set any slot of any of our components to `null` to make that slot not 
 
 Additionally, some slots may be critical to the functionality of a component (for example, `Input`'s `input` slot), and it is not reasonable to allow them to be not rendered.
 
+```jsx
+// This shouldn't be allowed:
+<Input input={null} />
+```
+
 ### Secondary issue: There is no way to control the types added to slots by `ComponentProps`
 
 The helper type `ComponentProps` adds ShorthandProps to every slot, which includes `null` and other shorthand values. In addition to `null` not being appropriate for every slot, shorthand values aren't appropriate for every slot either. For example, a slot of type `img` should not allow shorthand because the `img` tag can never have children.
