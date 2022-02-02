@@ -44,3 +44,14 @@ export {
   useInputStyles_unstable,
 } from '@fluentui/react-input';
 export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
+
+export {
+  Slider,
+  sliderClassName,
+  useSliderState_unstable,
+  useSliderStyles_unstable,
+  useSlider_unstable,
+  renderSlider_unstable,
+} from '@fluentui/react-slider';
+
+export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
