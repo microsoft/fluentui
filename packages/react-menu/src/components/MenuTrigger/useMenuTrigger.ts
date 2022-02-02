@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
+import { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -126,25 +126,20 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
   };
 
-  const overrideProps: MenuTriggerChildProps = {
-    'aria-haspopup': 'menu',
-    'aria-expanded': open,
-    id: child?.props?.id || triggerId,
-    ref: useMergedRefs(triggerRef, child?.ref),
-    onClick: useMergedEventCallbacks(child?.props?.onClick, onClick),
-    onMouseEnter: useMergedEventCallbacks(child?.props?.onMouseEnter, onMouseEnter),
-    onMouseLeave: useMergedEventCallbacks(child?.props?.onMouseLeave, onMouseLeave),
-    onKeyDown: useMergedEventCallbacks(child?.props?.onKeyDown, onKeyDown),
-    onContextMenu: useMergedEventCallbacks(child?.props?.onContextMenu, onContextMenu),
-    onMouseMove: useMergedEventCallbacks(child?.props?.onMouseMove, onMouseMove),
-  };
-
-  if (!open && !isSubmenu) {
-    overrideProps['aria-expanded'] = undefined;
-  }
-
   return {
-    children: applyTriggerPropsToChildren(children, overrideProps),
+    children: applyTriggerPropsToChildren<MenuTriggerChildProps>(children, {
+      'aria-haspopup': 'menu',
+      'aria-expanded': !open && !isSubmenu ? undefined : open,
+      id: triggerId,
+      ...child?.props,
+      ref: useMergedRefs(triggerRef, child?.ref),
+      onClick: useMergedEventCallbacks(child?.props?.onClick, onClick),
+      onMouseEnter: useMergedEventCallbacks(child?.props?.onMouseEnter, onMouseEnter),
+      onMouseLeave: useMergedEventCallbacks(child?.props?.onMouseLeave, onMouseLeave),
+      onKeyDown: useMergedEventCallbacks(child?.props?.onKeyDown, onKeyDown),
+      onContextMenu: useMergedEventCallbacks(child?.props?.onContextMenu, onContextMenu),
+      onMouseMove: useMergedEventCallbacks(child?.props?.onMouseMove, onMouseMove),
+    }),
   };
 };
 
