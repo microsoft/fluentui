@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Dropdown: Headers and Dividers marked as hidden are now actually hidden.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
