@@ -361,7 +361,6 @@ export {
   usePortal_unstable,
 } from '@fluentui/react-portal';
 export type { PortalProps, PortalState } from '@fluentui/react-portal';
-
 export {
   Body,
   Caption,
