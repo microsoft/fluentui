@@ -1,13 +1,13 @@
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
-import type { SlotPropsObject, ResolveShorthandFunction, ShorthandValue } from '@fluentui/react-utilities';
+import type { SlotPropsObject, ResolveShorthandFunction, SlotShorthandValue } from '@fluentui/react-utilities';
 
 export type ARIAButtonSlotProps = SlotPropsObject<'button', 'a'> & {
   disabled?: boolean;
   disabledFocusable?: boolean;
 };
 
-export type ARIAButtonSlot = ARIAButtonSlotProps | ShorthandValue | null;
+export type ARIAButtonSlot = ARIAButtonSlotProps | SlotShorthandValue | null;
 
 /**
  * Button keyboard handling, role, disabled and tabIndex implementation that ensures ARIA spec

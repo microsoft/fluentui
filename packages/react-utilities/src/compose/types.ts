@@ -11,12 +11,12 @@ export type SlotRenderFunction<Props> = (
  * This should ONLY be used in type templates as in `extends SlotPropsRecord`;
  * it shouldn't be used as a component's Slots type.
  */
-export type SlotPropsRecord = Record<string, UnknownSlotProps | ShorthandValue | null | undefined>;
+export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandValue | null | undefined>;
 
 /**
  * The shorthand value of a slot allows specifying its child
  */
-export type ShorthandValue = React.ReactChild | React.ReactNodeArray | React.ReactPortal;
+export type SlotShorthandValue = React.ReactChild | React.ReactNodeArray | React.ReactPortal;
 
 /**
  * Matches any slot props type.
@@ -89,7 +89,7 @@ export type SlotPropsObject<
 export type Slot<
   Type extends keyof JSX.IntrinsicElements | React.ComponentType,
   AlternateAs extends keyof JSX.IntrinsicElements = never
-> = ShorthandValue | null | SlotPropsObject<Type, AlternateAs>;
+> = SlotShorthandValue | null | SlotPropsObject<Type, AlternateAs>;
 
 /**
  * Similar to {@link Slot}, but doesn't allow children to be specified through shorthand or props.
@@ -136,9 +136,9 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
 export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
 /**
- * Removes ShorthandValue and null from the slot type, extracting just the SlotPropsObject.
+ * Removes SlotShorthandValue and null from the slot type, extracting just the SlotPropsObject.
  */
-export type ExtractSlotProps<S> = Exclude<S, ShorthandValue | null | undefined>;
+export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
 
 /**
  * Defines the Props type for a component given its slots and the definition of which one is the primary slot,
@@ -166,9 +166,9 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
       | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   };
 } & {
-  // Include a prop for each slot, with the ShorthandValue resolved to a props object
+  // Include a prop for each slot, with the shorthand resolved to a props object
   // The root slot can never be null, so also exclude null from it
-  [Key in keyof Slots]: Exclude<Slots[Key], ShorthandValue | (Key extends 'root' ? null : never)>;
+  [Key in keyof Slots]: Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>;
 };
 
 /**
