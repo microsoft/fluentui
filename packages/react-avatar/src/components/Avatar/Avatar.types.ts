@@ -80,7 +80,7 @@ export type AvatarCommons = {
    *
    * @defaultvalue ring
    */
-  activeAppearance: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+  activeAppearance: 'ring' | 'shadow' | 'ring-shadow';
 
   /**
    * The color when displaying either an icon or initials.

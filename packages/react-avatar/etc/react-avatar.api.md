@@ -24,7 +24,7 @@ export type AvatarCommons = {
     size: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
     shape: 'circular' | 'square';
     active: 'active' | 'inactive' | 'unset';
-    activeAppearance: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+    activeAppearance: 'ring' | 'shadow' | 'ring-shadow';
     color: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
     idForColor: string | undefined;
 };

@@ -66,10 +66,8 @@ export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 // @public (undocumented)
 export const menuButtonClassName = "fui-MenuButton";
 
-// Warning: (ae-forgotten-export) The symbol "MenuTriggerChildProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<ButtonCommons, 'iconPosition'>> & Partial<MenuTriggerChildProps>;
+export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<ButtonCommons, 'iconPosition'>>;
 
 // @public (undocumented)
 export type MenuButtonSlots = ButtonSlots & {

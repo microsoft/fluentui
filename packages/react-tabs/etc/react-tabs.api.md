@@ -10,6 +10,21 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
+// @public (undocumented)
+export const indicatorLengthVar = "--selection-indicator-length";
+
+// @public (undocumented)
+export const indicatorOffsetVar = "--selection-indicator-offset";
+
+// @public (undocumented)
+export type RegisterTabData = {
+    value: TabValue;
+    ref: React_2.RefObject<HTMLElement>;
+};
+
+// @public (undocumented)
+export type RegisterTabEventHandler = (data: RegisterTabData) => void;
+
 // @public
 export const renderTab_unstable: (state: TabState) => JSX.Element;
 
@@ -39,6 +54,14 @@ export type TabCommons = {
 };
 
 // @public
+export type TabContentRect = {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+};
+
+// @public
 export const TabList: ForwardRefComponent<TabListProps>;
 
 // @public (undocumented)
@@ -55,6 +78,8 @@ export type TabListCommons = {
 
 // @public (undocumented)
 export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical'>> & {
+    onRegister: RegisterTabEventHandler;
+    onUnregister: RegisterTabEventHandler;
     onSelect: SelectTabEventHandler;
 };
 
@@ -69,12 +94,17 @@ export type TabListProps = ComponentProps<TabListSlots> & TabListCommons & {
 };
 
 // @public (undocumented)
+export const tabListSelectionIndicatorName = "fui-TabList_SelectionIndicator";
+
+// @public (undocumented)
 export type TabListSlots = {
     root: Slot<'div'>;
 };
 
 // @public
-export type TabListState = ComponentState<TabListSlots> & TabListContextValue;
+export type TabListState = ComponentState<Required<TabListSlots>> & TabListContextValue & {
+    selectedTabRect?: TabContentRect;
+};
 
 // @public
 export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
