@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add Preview Components section to Storybook, replace vNext term",
+  "packageName": "@fluentui/react-components",
+  "email": "me@levithomason.com",
+  "dependentChangeType": "none"
+}
