@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Avatar } from './index';
 
-export const ColorBrand = () => <Avatar color="brand" aria-label="brand color avatar" />;
+export const ColorBrand = () => <Avatar color="brand" initials="BR" name="brand color avatar" />;
 
 ColorBrand.storyName = 'Color: brand';
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar } from './index';
 
 export const Badge = () => (
-  <div style={{ display: 'grid', gap: '10px', gridTemplateColumns: 'repeat(6, 32px)' }}>
+  <>
     <Avatar name="Lydia Bauer" badge={{ status: 'available', 'aria-label': 'available' }} />
     <Avatar name="Amanda Brady" badge={{ status: 'busy', 'aria-label': 'busy' }} />
     <Avatar name="Henry Brill" badge={{ status: 'outOfOffice', 'aria-label': 'out of office' }} />
@@ -24,7 +24,7 @@ export const Badge = () => (
       name="Elliot Woodward"
       badge={{ status: 'doNotDisturb', outOfOffice: true, 'aria-label': 'do not disturb out of office' }}
     />
-  </div>
+  </>
 );
 
 Badge.parameters = {
