@@ -122,6 +122,30 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     },
   ];
 
+  const dropdownHeaderStyle: IStyle = [
+    globalClassnames.dropdownItemHeader,
+    {
+      ...fonts.medium,
+      fontWeight: FontWeights.semibold,
+      color: semanticColors.menuHeader,
+      background: 'none',
+      backgroundColor: 'transparent',
+      border: 'none',
+      height: DROPDOWN_ITEM_HEIGHT,
+      lineHeight: DROPDOWN_ITEM_HEIGHT,
+      cursor: 'default',
+      padding: '0 8px',
+      userSelect: 'none',
+      textAlign: 'left',
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText',
+          ...getHighContrastNoAdjustStyle(),
+        },
+      },
+    },
+  ];
+
   const selectedItemBackgroundColor = semanticColors.menuItemBackgroundPressed;
 
   const itemSelectors = (isSelected: boolean = false) => {
@@ -366,6 +390,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     dropdownItemSelectedAndDisabled: [dropdownItemSelected, dropdownItemDisabled, { backgroundColor: 'transparent' }],
     dropdownItemHidden: [...dropdownItemStyle, { display: 'none' }],
     dropdownDivider: [globalClassnames.dropdownDivider, { height: 1, backgroundColor: semanticColors.bodyDivider }],
+    dropdownDividerHidden: [globalClassnames.dropdownDivider, { display: 'none' }],
     dropdownOptionText: [
       globalClassnames.dropdownOptionText,
       {
@@ -379,29 +404,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         margin: '1px',
       },
     ],
-    dropdownItemHeader: [
-      globalClassnames.dropdownItemHeader,
-      {
-        ...fonts.medium,
-        fontWeight: FontWeights.semibold,
-        color: semanticColors.menuHeader,
-        background: 'none',
-        backgroundColor: 'transparent',
-        border: 'none',
-        height: DROPDOWN_ITEM_HEIGHT,
-        lineHeight: DROPDOWN_ITEM_HEIGHT,
-        cursor: 'default',
-        padding: '0 8px',
-        userSelect: 'none',
-        textAlign: 'left',
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'GrayText',
-            ...getHighContrastNoAdjustStyle(),
-          },
-        },
-      },
-    ],
+    dropdownItemHeader: [...dropdownHeaderStyle],
+    dropdownItemHeaderHidden: [...dropdownHeaderStyle, { display: 'none' }],
     subComponentStyles: {
       label: { root: { display: 'inline-block' } },
       multiSelectItem: {
