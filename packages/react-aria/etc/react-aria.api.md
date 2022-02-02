@@ -4,15 +4,16 @@
 
 ```ts
 
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
-import type { ShorthandValue } from '@fluentui/react-utilities';
-import type { SlotPropsObject } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotShorthandValue } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type ARIAButtonSlot = ARIAButtonSlotProps | ShorthandValue | null;
+export type ARIAButtonSlot = ARIAButtonSlotProps | SlotShorthandValue | null;
 
 // @public (undocumented)
-export type ARIAButtonSlotProps = SlotPropsObject<'button', 'a'> & {
+export type ARIAButtonSlotProps = ExtractSlotProps<Slot<'button', 'a'>> & {
     disabled?: boolean;
     disabledFocusable?: boolean;
 };

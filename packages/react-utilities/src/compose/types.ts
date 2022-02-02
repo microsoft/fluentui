@@ -34,31 +34,9 @@ export type UnknownSlotProps = WithSlotRenderFunction<
  * Takes the props we want to support for a slot and adds the ability for `children` to be a render function that takes
  * those props.
  */
-type WithSlotRenderFunction<Props> = Props & Props extends { children?: infer Children }
-  ? { children?: Children | SlotRenderFunction<Props> }
-  : { children?: SlotRenderFunction<Props> };
-
-/**
- * The props object for a slot, without any shorthand or child render function.
- *
- * This generally should not be used on its own, and {@link Slot} should be used instead, as it allows shorthand values.
- */
-export type SlotPropsObject<
-  Type extends keyof JSX.IntrinsicElements | React.ComponentType,
-  AlternateAs extends keyof JSX.IntrinsicElements = never
-> = WithSlotRenderFunction<
-  Type extends keyof JSX.IntrinsicElements
-    ? IsSingleton<Type> extends false
-      ? 'Error: first parameter to SlotPropsObject must be a single element type, not a union of types'
-      :
-          | ({ as?: Type } & React.PropsWithRef<JSX.IntrinsicElements[Type]>)
-          | {
-              [As in AlternateAs]: { as: As } & React.PropsWithRef<JSX.IntrinsicElements[As]>;
-            }[AlternateAs]
-    : Type extends React.ComponentType<infer Props>
-    ? Props
-    : Type
->;
+type WithSlotRenderFunction<Props extends { children?: React.ReactNode } = {}> = Props & {
+  children?: Props['children'] | SlotRenderFunction<Props>;
+};
 
 /**
  * The props type and shorthand value for a slot.
@@ -89,7 +67,14 @@ export type SlotPropsObject<
 export type Slot<
   Type extends keyof JSX.IntrinsicElements | React.ComponentType,
   AlternateAs extends keyof JSX.IntrinsicElements = never
-> = SlotShorthandValue | null | SlotPropsObject<Type, AlternateAs>;
+> =
+  | (Type extends keyof JSX.IntrinsicElements
+      ? IntrinsicSlotProps<Type, AlternateAs>
+      : Type extends React.ComponentType
+      ? ComponentSlotProps<Type>
+      : Type)
+  | SlotShorthandValue
+  | null;
 
 /**
  * Similar to {@link Slot}, but doesn't allow children to be specified through shorthand or props.
@@ -99,7 +84,37 @@ export type Slot<
 export type SlotNoChildren<
   Type extends keyof JSX.IntrinsicElements,
   AlternateAs extends keyof JSX.IntrinsicElements = never
-> = null | WithSlotRenderFunction<Omit<SlotPropsObject<Type, AlternateAs>, 'children'>>;
+> =
+  | (Omit<IntrinsicSlotProps<Type, AlternateAs>, 'children'> & {
+      children?: SlotRenderFunction<IntrinsicSlotProps<Type, AlternateAs>>;
+    })
+  | null;
+
+/**
+ * The props object type for a slot that is a Component type.
+ *
+ * This should not be used on its own. Use {@link Slot} instead, as it allows shorthand values.
+ */
+type ComponentSlotProps<Component extends React.ComponentType> = Component extends React.ComponentType<infer Props>
+  ? WithSlotRenderFunction<Props>
+  : never;
+
+/**
+ * The props object type for a slot that is an intrinsic element type.
+ *
+ * This should not be used on its own. Use {@link Slot} or {@link SlotNoChildren} instead,
+ * as they allow shorthand values.
+ */
+type IntrinsicSlotProps<
+  DefaultAs extends keyof JSX.IntrinsicElements,
+  AlternateAs extends keyof JSX.IntrinsicElements = never
+> = IsSingleton<DefaultAs> extends false
+  ? 'Error: first parameter to IntrinsicSlotProps must be a single element type, not a union of types'
+  :
+      | ({ as?: DefaultAs } & WithSlotRenderFunction<React.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>)
+      | {
+          [As in AlternateAs]: { as: As } & WithSlotRenderFunction<React.PropsWithRef<JSX.IntrinsicElements[As]>>;
+        }[AlternateAs];
 
 /**
  * Evaluates to true if the given type contains exactly one string, or false if it is a union of strings.
@@ -128,7 +143,7 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
 
 /**
  * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
- * SlotPropsObject). This allows SlotPropsObject to be used with React.forwardRef.
+ * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
  *
  * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
  * types, to prevent unions from being expanded.
@@ -136,7 +151,7 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
 export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
 /**
- * Removes SlotShorthandValue and null from the slot type, extracting just the SlotPropsObject.
+ * Removes SlotShorthandValue and null from the slot type, extracting just the slot's Props object.
  */
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
 
