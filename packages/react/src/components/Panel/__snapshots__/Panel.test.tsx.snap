@@ -168,6 +168,7 @@ exports[`Panel allows the consumer to pass through popup props 1`] = `
             className=
                 ms-Panel-contentInner
                 {
+                  background: inherit;
                   display: flex;
                   flex-direction: column;
                   flex-grow: 1;
@@ -178,6 +179,7 @@ exports[`Panel allows the consumer to pass through popup props 1`] = `
               className=
                   ms-Panel-scrollableContent
                   {
+                    background: inherit;
                     overflow-y: auto;
                   }
               data-is-scrollable={true}
@@ -186,10 +188,10 @@ exports[`Panel allows the consumer to pass through popup props 1`] = `
                 className=
                     ms-Panel-commands
                     {
+                      background: inherit;
                       margin-top: 18px;
                     }
                     @media (min-height: 480px){& {
-                      background-color: #ffffff;
                       position: sticky;
                       top: 0px;
                       z-index: 1;
@@ -571,6 +573,7 @@ exports[`Panel renders Panel correctly 1`] = `
             className=
                 ms-Panel-contentInner
                 {
+                  background: inherit;
                   display: flex;
                   flex-direction: column;
                   flex-grow: 1;
@@ -581,6 +584,7 @@ exports[`Panel renders Panel correctly 1`] = `
               className=
                   ms-Panel-scrollableContent
                   {
+                    background: inherit;
                     overflow-y: auto;
                   }
               data-is-scrollable={true}
@@ -589,10 +593,10 @@ exports[`Panel renders Panel correctly 1`] = `
                 className=
                     ms-Panel-commands
                     {
+                      background: inherit;
                       margin-top: 18px;
                     }
                     @media (min-height: 480px){& {
-                      background-color: #ffffff;
                       position: sticky;
                       top: 0px;
                       z-index: 1;

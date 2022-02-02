@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { SwitchState } from './Switch.types';
@@ -247,7 +247,7 @@ const useInputStyle = makeStyles({
 /**
  * Apply styling to the Switch slots based on the state
  */
-export const useSwitchStyles = (state: SwitchState): SwitchState => {
+export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   const { checked, disabled } = state.input;
 
   const rootStyles = useRootStyles();

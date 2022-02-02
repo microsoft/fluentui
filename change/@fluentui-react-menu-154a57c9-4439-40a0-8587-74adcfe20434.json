@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: MenuTrigger should work correctly when `aria-disabled=\"true\"`",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

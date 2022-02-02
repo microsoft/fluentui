@@ -11,5 +11,6 @@ export * from './useOnClickOutside';
 export * from './useOnScrollOutside';
 export * from './usePrevious';
 export * from './useTimeout';
+export * from './useTriggerElement';
 export * from './useUnmount';
 export * from './useForceUpdate';

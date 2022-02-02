@@ -5,7 +5,7 @@ import type { MenuButtonSlots, MenuButtonState } from './MenuButton.types';
 /**
  * Renders a MenuButton component by passing the state defined props to the appropriate slots.
  */
-export const renderMenuButton = (state: MenuButtonState) => {
+export const renderMenuButton_unstable = (state: MenuButtonState) => {
   const { slots, slotProps } = getSlots<MenuButtonSlots>(state);
   const { icon, iconOnly } = state;
 

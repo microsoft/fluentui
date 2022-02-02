@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { LabelState } from './Label.types';
 
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Label slots based on the state
  */
-export const useLabelStyles = (state: LabelState): LabelState => {
+export const useLabelStyles_unstable = (state: LabelState): LabelState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     labelClassName,

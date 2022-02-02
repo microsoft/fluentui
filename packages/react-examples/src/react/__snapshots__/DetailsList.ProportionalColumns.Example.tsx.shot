@@ -88,7 +88,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -358,7 +357,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
             Toggle selection for all items
           </label>
           <div
-            aria-colindex={2}
             aria-labelledby="header1-column1-name"
             aria-sort="none"
             className=
@@ -643,7 +641,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
             role="button"
           />
           <div
-            aria-colindex={3}
             aria-labelledby="header1-column2-name"
             aria-sort="none"
             className=
@@ -832,7 +829,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
             role="button"
           />
           <div
-            aria-colindex={4}
             aria-labelledby="header1-column3-name"
             aria-sort="none"
             className=
@@ -1169,7 +1165,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -1416,7 +1411,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -1473,7 +1467,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           Item 0
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -1530,7 +1523,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           0
                         </div>
                         <div
-                          aria-colindex={4}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -1704,7 +1696,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -1951,7 +1942,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -2008,7 +1998,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           Item 1
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -2065,7 +2054,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           1
                         </div>
                         <div
-                          aria-colindex={4}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -2239,7 +2227,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -2486,7 +2473,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -2543,7 +2529,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           Item 2
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -2600,7 +2585,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           2
                         </div>
                         <div
-                          aria-colindex={4}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -2774,7 +2758,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -3021,7 +3004,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -3078,7 +3060,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           Item 3
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -3135,7 +3116,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           3
                         </div>
                         <div
-                          aria-colindex={4}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -3309,7 +3289,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -3556,7 +3535,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -3613,7 +3591,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           Item 4
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -3670,7 +3647,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           4
                         </div>
                         <div
-                          aria-colindex={4}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -3844,7 +3820,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -4091,7 +4066,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -4148,7 +4122,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           Item 5
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -4205,7 +4178,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           5
                         </div>
                         <div
-                          aria-colindex={4}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -4379,7 +4351,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -4626,7 +4597,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -4683,7 +4653,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           Item 6
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -4740,7 +4709,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           6
                         </div>
                         <div
-                          aria-colindex={4}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -4914,7 +4882,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -5161,7 +5128,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -5218,7 +5184,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           Item 7
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -5275,7 +5240,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           7
                         </div>
                         <div
-                          aria-colindex={4}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -5449,7 +5413,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -5696,7 +5659,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -5753,7 +5715,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           Item 8
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -5810,7 +5771,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           8
                         </div>
                         <div
-                          aria-colindex={4}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -5984,7 +5944,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -6231,7 +6190,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -6288,7 +6246,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           Item 9
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -6345,7 +6302,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           9
                         </div>
                         <div
-                          aria-colindex={4}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell

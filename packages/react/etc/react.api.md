@@ -269,6 +269,8 @@ import { keyframes } from '@fluentui/style-utilities';
 import { labelProperties } from '@fluentui/utilities';
 import { liProperties } from '@fluentui/utilities';
 import { loadTheme } from '@fluentui/style-utilities';
+import { LocalizedFontFamilies } from '@fluentui/theme';
+import { LocalizedFontNames } from '@fluentui/theme';
 import { mapEnumByName } from '@fluentui/utilities';
 import { memoize } from '@fluentui/utilities';
 import { memoizeFunction } from '@fluentui/utilities';
@@ -282,6 +284,9 @@ import { mergeStyleSets } from '@fluentui/style-utilities';
 import { mergeThemes } from '@fluentui/theme';
 import { modalize } from '@fluentui/utilities';
 import { MonthOfYear } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
+import { MotionAnimations } from '@fluentui/theme';
+import { MotionDurations } from '@fluentui/theme';
+import { MotionTimings } from '@fluentui/theme';
 import { NeutralColors } from '@fluentui/theme';
 import { normalize } from '@fluentui/style-utilities';
 import { noWrap } from '@fluentui/style-utilities';
@@ -847,7 +852,7 @@ export class BreadcrumbBase extends React_2.Component<IBreadcrumbProps, any> {
 export { buildClassMap }
 
 // @public (undocumented)
-export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean): IColumn[];
+export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean, columnActionsMode?: ColumnActionsMode): IColumn[];
 
 // @public
 export function buildKeytipConfigMap(config: IKeytipConfig): IKeytipConfigMap;
@@ -1284,6 +1289,11 @@ export class DetailsListBase extends React_2.Component<IDetailsListProps, IDetai
     render(): JSX.Element;
     // (undocumented)
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
+    // (undocumented)
+    updateColumn(column: IColumn, options: {
+        width?: number;
+        newColumnIndex?: number;
+    }): void;
 }
 
 // @public (undocumented)
@@ -2339,6 +2349,8 @@ export interface IBreadcrumbItem extends React_2.AllHTMLAttributes<HTMLElement> 
     isCurrentItem?: boolean;
     key: string;
     onClick?: (ev?: React_2.MouseEvent<HTMLElement>, item?: IBreadcrumbItem) => void;
+    onRender?: IRenderFunction<IBreadcrumbItem>;
+    onRenderContent?: IRenderFunction<IBreadcrumbItem>;
     role?: string;
     text: string;
 }
@@ -2355,6 +2367,7 @@ export interface IBreadcrumbProps extends React_2.HTMLAttributes<HTMLElement> {
     onGrowData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onRenderItem?: IRenderFunction<IBreadcrumbItem>;
+    onRenderItemContent?: IRenderFunction<IBreadcrumbItem>;
     onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
     overflowAriaLabel?: string;
     overflowButtonAs?: IComponentAs<IButtonProps>;
@@ -4477,6 +4490,10 @@ export interface IDetailsList extends IList {
     focusIndex: (index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
     forceUpdate: () => void;
     getStartItemIndexInView: () => number;
+    updateColumn: (column: IColumn, options: {
+        width?: number;
+        newColumnIndex?: number;
+    }) => void;
 }
 
 // @public (undocumented)
@@ -6684,10 +6701,12 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     delayedRender?: boolean;
     dismissButtonAriaLabel?: string;
     dismissIconProps?: IIconProps;
+    expandButtonProps?: IButtonProps;
     isMultiline?: boolean;
     messageBarIconProps?: IIconProps;
     messageBarType?: MessageBarType;
     onDismiss?: (ev?: React_2.MouseEvent<HTMLElement | BaseButton | Button>) => any;
+    // @deprecated
     overflowButtonAriaLabel?: string;
     role?: 'alert' | 'status' | 'none';
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
@@ -6828,6 +6847,7 @@ export interface INavLinkGroup {
     collapseByDefault?: boolean;
     expandAriaLabel?: string;
     groupData?: any;
+    isExpanded?: boolean;
     links: INavLink[];
     name?: string;
     onHeaderClick?: (ev?: React_2.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
@@ -9079,10 +9099,12 @@ export interface IThemeSlotRule {
 }
 
 // @public (undocumented)
-export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text'> {
+export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'defaultValue' | 'onChange'> {
     allowFreeform?: boolean;
+    defaultValue?: Date;
     increments?: number;
     label?: string;
+    onChange?: (event: React_2.FormEvent<IComboBox>, time: Date) => void;
     onFormatDate?: (date: Date) => string;
     onValidateUserInput?: (userInput: string) => string;
     showSeconds?: boolean;
@@ -9551,6 +9573,10 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
 
 export { loadTheme }
 
+export { LocalizedFontFamilies }
+
+export { LocalizedFontNames }
+
 // @public @deprecated
 export function makeStyles<TStyleSet extends {
     [key in keyof TStyleSet]: IStyle;
@@ -9661,6 +9687,12 @@ export const ModalBase: React_2.FunctionComponent<IModalProps>;
 export { modalize }
 
 export { MonthOfYear }
+
+export { MotionAnimations }
+
+export { MotionDurations }
+
+export { MotionTimings }
 
 // @public (undocumented)
 export const Nav: React_2.FunctionComponent<INavProps>;

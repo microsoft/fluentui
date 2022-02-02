@@ -7,8 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -26,26 +25,26 @@ export type LabelCommons = {
 
 // @public
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommons> & {
-    required?: boolean | ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>> | React_2.ReactNode;
+    required?: boolean | IntrinsicSlotProps<'span'> | React_2.ReactNode;
 };
 
 // @public (undocumented)
 export type LabelSlots = {
-    root: IntrinsicShorthandProps<'label'>;
-    required?: IntrinsicShorthandProps<'span'>;
+    root: IntrinsicSlotProps<'label'>;
+    required?: IntrinsicSlotProps<'span'>;
 };
 
 // @public
 export type LabelState = ComponentState<LabelSlots> & LabelCommons;
 
 // @public
-export const renderLabel: (state: LabelState) => JSX.Element;
+export const renderLabel_unstable: (state: LabelState) => JSX.Element;
 
 // @public
-export const useLabel: (props: LabelProps, ref: React_2.Ref<HTMLElement>) => LabelState;
+export const useLabel_unstable: (props: LabelProps, ref: React_2.Ref<HTMLElement>) => LabelState;
 
 // @public
-export const useLabelStyles: (state: LabelState) => LabelState;
+export const useLabelStyles_unstable: (state: LabelState) => LabelState;
 
 // (No @packageDocumentation comment for this package)
 

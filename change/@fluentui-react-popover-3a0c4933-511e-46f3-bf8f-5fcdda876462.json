@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Set `aria-modal` on Popover if focus trap is enabled",
+  "packageName": "@fluentui/react-popover",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

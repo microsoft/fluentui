@@ -87,7 +87,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -357,7 +356,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             Toggle selection for all items
           </label>
           <div
-            aria-colindex={2}
             aria-labelledby="header1-column1-name"
             aria-sort="none"
             className=
@@ -546,7 +544,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             role="button"
           />
           <div
-            aria-colindex={3}
             aria-labelledby="header1-column2-name"
             aria-sort="none"
             className=
@@ -883,7 +880,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -1130,7 +1126,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -1187,7 +1182,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           Item 0
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -1361,7 +1355,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -1608,7 +1601,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -1665,7 +1657,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           Item 1
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -1839,7 +1830,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -2086,7 +2076,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -2143,7 +2132,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           Item 2
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -2317,7 +2305,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -2564,7 +2551,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -2621,7 +2607,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           Item 3
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -2795,7 +2780,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       }
                     >
                       <div
-                        aria-colindex={1}
                         className=
                             ms-DetailsRow-cell
                             ms-DetailsRow-cellCheck
@@ -3042,7 +3026,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                         role="presentation"
                       >
                         <div
-                          aria-colindex={2}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -3099,7 +3082,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           Item 4
                         </div>
                         <div
-                          aria-colindex={3}
                           aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
@@ -3269,7 +3251,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
         }
       >
         <div
-          aria-colindex={1}
           className=
               ms-DetailsRow-cell
               ms-DetailsRow-cellCheck
@@ -3381,7 +3362,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
           role="presentation"
         >
           <div
-            aria-colindex={2}
             aria-readonly={true}
             className=
                 ms-DetailsRow-cell
@@ -3442,7 +3422,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             </div>
           </div>
           <div
-            aria-colindex={3}
             aria-readonly={true}
             className=
                 ms-DetailsRow-cell

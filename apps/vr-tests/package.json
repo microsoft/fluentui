@@ -1,5 +1,5 @@
 {
-  "name": "vr-tests",
+  "name": "@fluentui/vr-tests",
   "version": "1.0.0",
   "private": true,
   "description": "Visual regression tests for Fluent UI React",
@@ -15,14 +15,12 @@
     "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/make-styles-webpack-loader": "9.0.0-beta.4"
+    "@fluentui/eslint-plugin": "*"
   },
   "dependencies": {
-    "@fluentui/babel-make-styles": "9.0.0-beta.4",
     "@fluentui/example-data": "^8.3.0",
     "@fluentui/font-icons-mdl2": "^8.1.20",
-    "@fluentui/react": "^8.49.7",
+    "@fluentui/react": "^8.52.1",
     "@fluentui/react-accordion": "9.0.0-beta.5",
     "@fluentui/react-avatar": "9.0.0-beta.4",
     "@fluentui/react-badge": "9.0.0-beta.4",
@@ -30,7 +28,7 @@
     "@fluentui/react-card": "9.0.0-beta.5",
     "@fluentui/react-checkbox": "^9.0.0-beta.5",
     "@fluentui/react-divider": "9.0.0-beta.4",
-    "@fluentui/react-experiments": "^8.4.19",
+    "@fluentui/react-experiments": "^8.4.25",
     "@fluentui/react-hooks": "^8.3.9",
     "@fluentui/react-icons": "^2.0.154-beta.5",
     "@fluentui/react-icons-mdl2": "^1.2.12",

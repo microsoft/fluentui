@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@fluentui/react-shared-contexts": "9.0.0-beta.4",
-    "@fluentui/make-styles": "9.0.0-beta.3",
+    "@griffel/core": "1.0.7",
     "@fluentui/react-theme": "9.0.0-beta.4",
     "@fluentui/react-utilities": "9.0.0-beta.4",
     "tslib": "^2.1.0"

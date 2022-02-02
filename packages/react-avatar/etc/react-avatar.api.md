@@ -5,13 +5,13 @@
 ```ts
 
 import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
-import type { PresenceBadgeProps } from '@fluentui/react-badge';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
+import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
-import type { ShorthandRenderFunction } from '@fluentui/react-utilities';
+import type { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;
@@ -21,12 +21,11 @@ export const avatarClassName = "fui-Avatar";
 
 // @public (undocumented)
 export type AvatarCommons = Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> & {
-    name: string;
-    getInitials: (name: string, isRtl: boolean) => string;
+    name?: string;
     size: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
     shape: 'circular' | 'square';
     active: 'active' | 'inactive' | 'unset';
-    activeAppearance: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+    activeAppearance: 'ring' | 'shadow' | 'ring-shadow';
     color: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
     idForColor: string | undefined;
 };
@@ -36,20 +35,20 @@ export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'pe
 
 // @public
 export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'image'> & Partial<AvatarCommons> & {
-    image?: Omit<IntrinsicShorthandProps<'img'>, 'children'> & {
-        children?: ShorthandRenderFunction<React_2.HTMLAttributes<HTMLImageElement>>;
+    image?: Omit<IntrinsicSlotProps<'img'>, 'children'> & {
+        children?: SlotRenderFunction<React_2.HTMLAttributes<HTMLImageElement>>;
     };
 };
 
 // @public (undocumented)
 export type AvatarSlots = {
-    root: Omit<IntrinsicShorthandProps<'span'>, 'color'> & {
+    root: Omit<IntrinsicSlotProps<'span'>, 'color'> & {
         children?: never;
     };
-    image?: IntrinsicShorthandProps<'img'>;
-    label?: IntrinsicShorthandProps<'span'>;
-    icon?: IntrinsicShorthandProps<'span'>;
-    badge?: ObjectShorthandProps<PresenceBadgeProps>;
+    image?: IntrinsicSlotProps<'img'>;
+    initials?: IntrinsicSlotProps<'span'>;
+    icon?: IntrinsicSlotProps<'span'>;
+    badge?: ComponentSlotProps<typeof PresenceBadge>;
 };
 
 // @public
@@ -57,14 +56,17 @@ export type AvatarState = ComponentState<AvatarSlots> & AvatarCommons & {
     color: Exclude<AvatarCommons['color'], 'colorful'>;
 };
 
-// @public (undocumented)
-export const renderAvatar: (state: AvatarState) => JSX.Element;
+// @public
+export function getInitials(displayName: string | undefined | null, isRtl: boolean, allowPhoneInitials?: boolean): string;
 
 // @public (undocumented)
-export const useAvatar: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
+export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
 
 // @public (undocumented)
-export const useAvatarStyles: (state: AvatarState) => AvatarState;
+export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
+
+// @public (undocumented)
+export const useAvatarStyles_unstable: (state: AvatarState) => AvatarState;
 
 // (No @packageDocumentation comment for this package)
 
