@@ -7,12 +7,12 @@ export const Controlled = () => {
   const [enabled, setEnabled] = React.useState(false);
   return (
     <Tooltip
-      content="Tooltip with controlled visibility"
+      content="The checkbox controls whether the tooltip can show on hover"
       relationship="description"
       visible={visible && enabled}
       onVisibleChange={(_ev, data) => setVisible(data.visible)}
     >
-      <Checkbox label="Tooltip enabled" onChange={(_ev, { checked }) => setEnabled(!!checked)} />
+      <Checkbox label="Enable the tooltip" onChange={(_ev, { checked }) => setEnabled(!!checked)} />
     </Tooltip>
   );
 };
@@ -20,9 +20,9 @@ export const Controlled = () => {
 Controlled.parameters = {
   docs: {
     description: {
-      story:
-        'The visibility of the tooltip can be controlled using the `visible` prop and `onVisibleChange` event. ' +
-        'In this example, the tooltip will show on hover _only if_ the checkbox is checked.',
+      story: `The visibility of the tooltip can be controlled using the \`visible\` and \`onVisibleChange\` props.
+        <br />
+        In this example, the tooltip will show on hover or focus _only if_ the checkbox is checked.`,
     },
   },
 };

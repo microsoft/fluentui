@@ -1,18 +1,19 @@
 import * as React from 'react';
 
-import { Tooltip } from '../Tooltip';
+import { Tooltip, TooltipProps } from '../Tooltip';
 import { Button } from '@fluentui/react-button';
+import { SlideTextRegular } from '@fluentui/react-icons';
 
-export const Default = () => (
-  <Tooltip content="This is an example" relationship="description">
-    <Button>Button with a tooltip</Button>
+export const Default = (props: Partial<TooltipProps>) => (
+  <Tooltip content="Example tooltip" relationship="label" {...props}>
+    <Button icon={<SlideTextRegular />} size="large" />
   </Tooltip>
 );
 
 Default.parameters = {
   docs: {
     description: {
-      story: 'By default, Tooltip appears above its target element, when it is focused or hovered.',
+      story: `By default, Tooltip appears above its target element, when it is focused or hovered.`,
     },
   },
 };

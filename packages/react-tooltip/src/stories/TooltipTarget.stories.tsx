@@ -1,48 +1,27 @@
 import * as React from 'react';
 import { Tooltip } from '../Tooltip';
 import { Button } from '@fluentui/react-button';
-import { tokens } from '@fluentui/react-theme';
-import { InfoRegular } from '@fluentui/react-icons';
+import { ArrowRoutingRegular } from '@fluentui/react-icons';
 
 export const Target = () => {
-  const [targetContainer, setTargetContainer] = React.useState<HTMLDivElement | null>(null);
-  const [targetIcon, setTargetIcon] = React.useState<HTMLSpanElement | null>(null);
+  const [icon, setIconRef] = React.useState<HTMLSpanElement | null>(null);
   return (
-    <div
-      ref={setTargetContainer}
-      style={{
-        display: 'flex',
-        gap: '10px',
-        padding: '10px',
-        border: `1px solid ${tokens.colorPaletteCharcoalBorder1}`,
-        background: tokens.colorPaletteCharcoalBackground1,
-      }}
+    <Tooltip
+      positioning={{ target: icon }}
+      withArrow
+      content="This tooltip points to the icon"
+      relationship="description"
     >
-      <Tooltip
-        positioning={{ target: targetContainer }}
-        content="This tooltip targets the container"
-        relationship="description"
-      >
-        <Button>Container</Button>
-      </Tooltip>
-      <Tooltip
-        withArrow
-        positioning={{ target: targetIcon }}
-        content="This tooltip points to the icon"
-        relationship="description"
-      >
-        <Button icon={{ ref: setTargetIcon, children: <InfoRegular /> }}>Icon</Button>
-      </Tooltip>
-    </div>
+      <Button icon={{ ref: setIconRef, children: <ArrowRoutingRegular /> }}>Button with icon</Button>
+    </Tooltip>
   );
 };
 
 Target.parameters = {
   docs: {
     description: {
-      story:
-        'Use the `target` attribute of the `positioning` prop to place the tooltip ' +
-        'relative to an element other than its trigger.',
+      story: `The tooltip can be placed relative to a custom element using \`positioning.target\`. In this example, the
+        tooltip points to the icon inside the button, but it could point to any element.`,
     },
   },
 };

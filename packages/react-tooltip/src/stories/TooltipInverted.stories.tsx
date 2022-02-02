@@ -1,17 +1,20 @@
 import * as React from 'react';
 import { Tooltip } from '../Tooltip';
 import { Button } from '@fluentui/react-button';
+import { SlideTextFilled } from '@fluentui/react-icons';
 
 export const Inverted = () => (
-  <Tooltip appearance="inverted" content="This has an inverted appearance" relationship="description">
-    <Button>Inverted appearance</Button>
+  <Tooltip appearance="inverted" content="Example inverted tooltip" relationship="label">
+    <Button icon={<SlideTextFilled />} size="large" />
   </Tooltip>
 );
 
+Inverted.storyName = 'Appearance: inverted';
 Inverted.parameters = {
   docs: {
     description: {
-      story: 'The `appearance` prop can be set to `inverted`.',
+      story: `The \`appearance\` prop can be set to \`inverted\` to use the theme's inverted colors.<br />
+        Hover or focus the button in the example to see its tooltip.`,
     },
   },
 };
