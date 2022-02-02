@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updating testing-library deps to latest",
+  "packageName": "@fluentui/cra-template",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

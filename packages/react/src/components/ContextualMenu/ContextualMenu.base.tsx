@@ -509,6 +509,10 @@ function useMouseHandlers(
   const { target: menuTarget } = props;
 
   const onItemMouseEnterBase = (item: any, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement): void => {
+    if (shouldUpdateFocusOnMouseEvent.current) {
+      gotMouseMove.current = true;
+    }
+
     if (shouldIgnoreMouseEvent()) {
       return;
     }
