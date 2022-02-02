@@ -53,6 +53,7 @@
     "@fluentui/react-popover": "9.0.0-beta.5",
     "@fluentui/react-portal": "9.0.0-beta.5",
     "@fluentui/react-provider": "9.0.0-beta.5",
+    "@fluentui/react-slider": "9.0.0-beta.5",
     "@fluentui/react-theme": "9.0.0-beta.4",
     "@fluentui/react-tooltip": "9.0.0-beta.5",
     "@fluentui/react-utilities": "9.0.0-beta.4",
