@@ -161,13 +161,10 @@ export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlo
 };
 
 // @public (undocumented)
-export type ResolveShorthandOptions<Props, Required extends boolean> = {
-    defaultProps?: Props;
-} & (Required extends true ? {
-    required: true;
-} : {
+export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
     required?: Required;
-});
+    defaultProps?: Props;
+};
 
 // @public
 export const selectProperties: Record<string, number>;
