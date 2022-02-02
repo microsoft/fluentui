@@ -5,7 +5,7 @@ export { ActionCard } from './stories/CardAction.stories';
 export { GridCard } from './stories/CardGrid.stories';
 
 export default {
-  title: 'Components-Alpha/Card',
+  title: 'Preview Components/Card',
   component: Card,
   subcomponents: { CardHeader, CardPreview, CardFooter },
 };

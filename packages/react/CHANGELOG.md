@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 31 Jan 2022 07:27:29 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Feb 2022 07:26:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.52.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.52.1)
+
+Tue, 01 Feb 2022 07:26:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.52.0..@fluentui/react_v8.52.1)
+
+### Patches
+
+- remove aria-colindex from DetailsList columns by default, fix aria-label and aria-description on column headers ([PR #21344](https://github.com/microsoft/fluentui/pull/21344) by sarah.higley@microsoft.com)
+- fix Textfield to include prefix/suffix in the accessible name ([PR #21467](https://github.com/microsoft/fluentui/pull/21467) by sarah.higley@microsoft.com)
+- fix DetailsList high contrast link selector hierarchy ([PR #21465](https://github.com/microsoft/fluentui/pull/21465) by sarah.higley@microsoft.com)
 
 ## [8.52.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.52.0)
 

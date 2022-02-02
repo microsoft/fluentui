@@ -1,6 +1,5 @@
 // Utilities
 export {
-  RendererContext,
   RendererProvider,
   __styles,
   createDOMRenderer,
@@ -9,9 +8,7 @@ export {
   mergeClasses,
   renderToStyleElements,
   shorthands,
-  useRenderer,
-} from '@fluentui/react-make-styles';
-export type { RendererProviderProps } from '@fluentui/react-make-styles';
+} from '@griffel/react';
 export {
   FluentProvider,
   fluentProviderClassName,

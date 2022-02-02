@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Meta } from '@storybook/react';
 import { Input } from '../index';
 
+import descriptionMd from './InputDescription.md';
 export * from './InputDefault.stories';
 export * from './InputAppearance.stories';
 export * from './InputContentBeforeAfter.stories';
@@ -14,9 +15,18 @@ export * from './InputUncontrolled.stories';
 export * from './InputControlled.stories';
 
 const meta: Meta = {
-  title: 'Components-alpha/Input',
+  title: 'Preview Components/Input',
   component: Input,
-
+  parameters: {
+    docs: {
+      // The provided typing is wrong, ignore it
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      description: {
+        component: [descriptionMd].join('\n'),
+      },
+    },
+  },
   decorators: [
     (Story, context) => (
       <div
