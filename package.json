@@ -85,7 +85,7 @@
     "@babel/register": "7.14.5",
     "@babel/standalone": "7.14.8",
     "@ctrl/tinycolor": "3.3.4",
-    "@fluentui/react-icons": "^2.0.154-beta.5",
+    "@fluentui/react-icons": "^2.0.159-beta.10",
     "@griffel/babel-preset": "1.0.0",
     "@griffel/jest-serializer": "1.0.0",
     "@griffel/react": "1.0.0",
