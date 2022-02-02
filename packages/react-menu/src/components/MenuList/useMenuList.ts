@@ -7,14 +7,14 @@ import {
 } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useHasParentContext } from '@fluentui/react-context-selector';
-import { useMenuContext } from '../../contexts/menuContext';
+import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MenuContext } from '../../contexts/menuContext';
 import type { MenuListProps, MenuListState, UninitializedMenuListState } from './MenuList.types';
 
 /**
  * Returns the props and state required to render the component
  */
-export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
+export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
   const focusAttributes = useArrowNavigationGroup({ circular: true });
   const { findAllFocusable } = useFocusFinders();
   const menuContext = useMenuContextSelectors();
@@ -133,12 +133,12 @@ export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): 
  * Adds some sugar to fetching multiple context selector values
  */
 const useMenuContextSelectors = () => {
-  const checkedValues = useMenuContext(context => context.checkedValues);
-  const onCheckedValueChange = useMenuContext(context => context.onCheckedValueChange);
-  const defaultCheckedValues = useMenuContext(context => context.defaultCheckedValues);
-  const triggerId = useMenuContext(context => context.triggerId);
-  const hasIcons = useMenuContext(context => context.hasIcons);
-  const hasCheckmarks = useMenuContext(context => context.hasCheckmarks);
+  const checkedValues = useMenuContext_unstable(context => context.checkedValues);
+  const onCheckedValueChange = useMenuContext_unstable(context => context.onCheckedValueChange);
+  const defaultCheckedValues = useMenuContext_unstable(context => context.defaultCheckedValues);
+  const triggerId = useMenuContext_unstable(context => context.triggerId);
+  const hasIcons = useMenuContext_unstable(context => context.hasIcons);
+  const hasCheckmarks = useMenuContext_unstable(context => context.hasCheckmarks);
 
   return {
     checkedValues,

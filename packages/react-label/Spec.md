@@ -96,8 +96,8 @@ export type LabelCommons = {
 };
 
 export type LabelSlots = {
-  root: IntrinsicShorthandProps<'label'>;
-  required?: IntrinsicShorthandProps<'span'>;
+  root: IntrinsicSlotProps<'label'>;
+  required?: IntrinsicSlotProps<'span'>;
 };
 
 /**
@@ -115,7 +115,7 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
      * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
      * @defaultvalue false
      */
-    required?: boolean | ObjectShorthandProps<React.HTMLAttributes<HTMLElement>> | React.ReactNode;
+    required?: boolean | IntrinsicSlotProps<'span'> | React.ReactNode;
   };
 ```
 

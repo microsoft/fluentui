@@ -37,6 +37,7 @@ export type AttachmentVariables = {
   actionLoaderSize: string;
   actionLoaderSvgHeight: string;
   actionLoaderSvgAnimationHeight: string;
+  actionFocusBorderRadius: string;
 };
 
 export const attachmentVariables = (siteVariables: any): AttachmentVariables => ({
@@ -76,4 +77,5 @@ export const attachmentVariables = (siteVariables: any): AttachmentVariables => 
   actionLoaderSize: pxToRem(20),
   actionLoaderSvgHeight: pxToRem(1220),
   actionLoaderSvgAnimationHeight: pxToRem(-1200),
+  actionFocusBorderRadius: siteVariables.borderRadiusMedium,
 });

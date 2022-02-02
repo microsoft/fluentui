@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { cardPreviewClassName } from '../CardPreview/index';
 import type { CardState } from './Card.types';
@@ -48,7 +48,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Card slots based on the state
  */
-export const useCardStyles = (state: CardState): CardState => {
+export const useCardStyles_unstable = (state: CardState): CardState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     cardClassName,

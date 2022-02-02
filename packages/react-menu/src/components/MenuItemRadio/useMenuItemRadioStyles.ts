@@ -1,13 +1,13 @@
-import { mergeClasses } from '@fluentui/react-make-styles';
-import { useCheckmarkStyles } from '../../selectable/index';
-import { useMenuItemStyles } from '../MenuItem/useMenuItemStyles';
+import { mergeClasses } from '@griffel/react';
+import { useCheckmarkStyles_unstable } from '../../selectable/index';
+import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles';
 import type { MenuItemRadioState } from './MenuItemRadio.types';
 
 export const menuItemRadioClassName = 'fui-MenuItemRadio';
 
-export const useMenuItemRadioStyles = (state: MenuItemRadioState) => {
+export const useMenuItemRadioStyles_unstable = (state: MenuItemRadioState) => {
   state.root.className = mergeClasses(menuItemRadioClassName, state.root.className);
 
-  useMenuItemStyles(state);
-  useCheckmarkStyles(state);
+  useMenuItemStyles_unstable(state);
+  useCheckmarkStyles_unstable(state);
 };

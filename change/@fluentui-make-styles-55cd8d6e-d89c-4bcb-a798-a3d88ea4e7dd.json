@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "remove inline-style-expand-shorthand from tsconfigs",
+  "packageName": "@fluentui/make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

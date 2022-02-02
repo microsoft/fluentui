@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { AccordionHeaderState } from './AccordionHeader.types';
@@ -43,9 +43,18 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',
+    fontSize: tokens.fontSizeBase300,
+    fontFamily: tokens.fontFamilyBase,
   },
   buttonSmall: {
     height: '32px',
+    fontSize: tokens.fontSizeBase200,
+  },
+  buttonLarge: {
+    fontSize: tokens.fontSizeBase400,
+  },
+  buttonExtraLarge: {
+    fontSize: tokens.fontSizeBase500,
   },
   buttonInline: {
     display: 'inline-flex',
@@ -72,26 +81,10 @@ const useStyles = makeStyles({
   iconExpandIconEnd: {
     marginLeft: '10px',
   },
-  children: {
-    fontSize: tokens.fontSizeBase300,
-    fontFamily: tokens.fontFamilyBase,
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-    ...shorthands.overflow('hidden'),
-  },
-  childrenSmall: {
-    fontSize: tokens.fontSizeBase200,
-  },
-  childrenLarge: {
-    fontSize: tokens.fontSizeBase400,
-  },
-  childrenExtraLarge: {
-    fontSize: tokens.fontSizeBase500,
-  },
 });
 
 /** Applies style classnames to slots */
-export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
+export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     accordionHeaderClassName,
@@ -107,6 +100,8 @@ export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
     styles.focusIndicator,
     state.inline && styles.buttonInline,
     state.size === 'small' && styles.buttonSmall,
+    state.size === 'large' && styles.buttonLarge,
+    state.size === 'extra-large' && styles.buttonExtraLarge,
     state.button.className,
   );
 
@@ -118,16 +113,6 @@ export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
       state.expandIcon.className,
     );
   }
-  if (state.children) {
-    state.children.className = mergeClasses(
-      styles.children,
-      state.size === 'small' && styles.childrenSmall,
-      state.size === 'large' && styles.childrenLarge,
-      state.size === 'extra-large' && styles.childrenExtraLarge,
-      state.children.className,
-    );
-  }
-
   if (state.icon) {
     state.icon.className = mergeClasses(
       styles.icon,

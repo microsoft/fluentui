@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { CardHeaderState } from './CardHeader.types';
 
 export const cardHeaderClassName = 'fui-CardHeader';
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the CardHeader slots based on the state
  */
-export const useCardHeaderStyles = (state: CardHeaderState): CardHeaderState => {
+export const useCardHeaderStyles_unstable = (state: CardHeaderState): CardHeaderState => {
   const styles = useStyles();
   state.root.className = mergeClasses(cardHeaderClassName, styles.root, state.root.className);
 

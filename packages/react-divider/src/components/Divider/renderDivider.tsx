@@ -5,7 +5,7 @@ import { DividerSlots, DividerState } from './Divider.types';
 /**
  * Renders a Divider component by passing the slot props (defined in `state`) to the appropriate slots.
  */
-export const renderDivider = (state: DividerState) => {
+export const renderDivider_unstable = (state: DividerState) => {
   const { slots, slotProps } = getSlots<DividerSlots>(state);
   return (
     <slots.root {...slotProps.root}>

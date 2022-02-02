@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import type { BadgeState, BadgeSlots } from './Badge.types';
 
-export const renderBadge = (state: BadgeState) => {
+export const renderBadge_unstable = (state: BadgeState) => {
   const { slots, slotProps } = getSlots<BadgeSlots>(state);
 
   return (

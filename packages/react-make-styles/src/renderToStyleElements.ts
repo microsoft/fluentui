@@ -1,6 +1,6 @@
-import { styleBucketOrdering } from '@fluentui/make-styles';
+import { styleBucketOrdering } from '@griffel/core';
 import * as React from 'react';
-import type { MakeStylesRenderer, StyleBucketName } from '@fluentui/make-styles';
+import type { GriffelRenderer, StyleBucketName } from '@griffel/core';
 
 type CSSRulesGroupedByStyleBucket = Record<StyleBucketName, string[]>;
 
@@ -9,7 +9,7 @@ type CSSRulesGroupedByStyleBucket = Record<StyleBucketName, string[]>;
  *
  * @public
  */
-export function renderToStyleElements(renderer: MakeStylesRenderer): React.ReactElement[] {
+export function renderToStyleElements(renderer: GriffelRenderer): React.ReactElement[] {
   const styles = styleBucketOrdering.reduce<CSSRulesGroupedByStyleBucket>((acc, bucketName) => {
     return { ...acc, [bucketName]: [] };
   }, {} as CSSRulesGroupedByStyleBucket);

@@ -1,5 +1,5 @@
-import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { useBadgeStyles } from '../Badge/useBadgeStyles';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { useBadgeStyles_unstable } from '../Badge/useBadgeStyles';
 import type { CounterBadgeState } from './CounterBadge.types';
 
 export const counterBadgeClassName = 'fui-CounterBadge';
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 /**
  * Applies style classnames to slots
  */
-export const useCounterBadgeStyles = (state: CounterBadgeState): CounterBadgeState => {
+export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): CounterBadgeState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     counterBadgeClassName,
@@ -27,5 +27,5 @@ export const useCounterBadgeStyles = (state: CounterBadgeState): CounterBadgeSta
     !state.showZero && state.count === 0 && !state.dot && styles.hide,
     state.root.className,
   );
-  return useBadgeStyles(state) as CounterBadgeState;
+  return useBadgeStyles_unstable(state) as CounterBadgeState;
 };

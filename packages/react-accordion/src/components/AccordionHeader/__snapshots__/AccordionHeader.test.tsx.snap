@@ -31,11 +31,7 @@ exports[`AccordionHeader renders a default state 1`] = `
         />
       </svg>
     </span>
-    <div
-      className=""
-    >
-      Default AccordionHeader
-    </div>
+    Default AccordionHeader
   </button>
 </div>
 `;

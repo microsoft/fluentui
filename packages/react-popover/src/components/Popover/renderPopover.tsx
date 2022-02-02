@@ -5,7 +5,7 @@ import type { PopoverState } from './Popover.types';
 /**
  * Render the final JSX of Popover
  */
-export const renderPopover = (state: PopoverState) => {
+export const renderPopover_unstable = (state: PopoverState) => {
   const {
     open,
     setOpen,

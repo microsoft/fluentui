@@ -32,9 +32,7 @@ function main() {
       description: 'fluentui storybook addon that adds functionality to storybook',
     },
   ];
-  const dependencies = [
-    { name: '@fluentui/babel-make-styles', description: 'custom babel plugin that compiles make-styles definitions' },
-  ];
+  const dependencies = [];
 
   /**
    * @type {{name:string;devDependencies: Record<string,string>,[key:string]:unknown}}
@@ -59,10 +57,10 @@ function main() {
   if (shouldExecPreBuild) {
     printDependencies();
 
-    execSync(dependencyBuildCommand, { stdio: [0, 1, 2] });
+    execSync(dependencyBuildCommand, { stdio: 'inherit' });
   }
 
-  execSync(storybookCommand, { stdio: [0, 1, 2] });
+  execSync(storybookCommand, { stdio: 'inherit' });
 
   function printTitle() {
     console.log(

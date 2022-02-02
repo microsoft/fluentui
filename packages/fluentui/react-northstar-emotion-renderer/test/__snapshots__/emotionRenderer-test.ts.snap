@@ -104,7 +104,6 @@ exports[`emotionRenderer prefixes required styles 1`] = `
   -webkit-filter: blur(5px);
   filter: blur(5px);
   height: min-content;
-  -webkit-position: sticky;
   position: sticky;
   -webkit-transition: width 2s, height 2s, background-color 2s,
     -webkit-transform 2s;
