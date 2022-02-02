@@ -5431,9 +5431,11 @@ export interface IDropdownStyles {
     caretDownWrapper: IStyle;
     dropdown: IStyle;
     dropdownDivider: IStyle;
+    dropdownDividerHidden: IStyle;
     dropdownItem: IStyle;
     dropdownItemDisabled: IStyle;
     dropdownItemHeader: IStyle;
+    dropdownItemHeaderHidden: IStyle;
     dropdownItemHidden: IStyle;
     dropdownItems: IStyle;
     dropdownItemSelected: IStyle;
