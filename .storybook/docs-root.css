@@ -394,6 +394,13 @@ h1.fluent {
   letter-spacing: -0.16px;
 }
 
+h1 .fluent-version {
+  display: block;
+  font-size: 24px; /* --font-size-base-600 */
+  line-height: 32px;
+  color: #707070; /* --color-neutral-foreground-3 */
+}
+
 h2.fluent {
   font-weight: 600;
   font-size: 24px;

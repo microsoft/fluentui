@@ -20,7 +20,6 @@ export const useAccordionPanel_unstable = (
     },
     root: getNativeElementProps('div', {
       ref,
-      role: 'region',
       ...props,
     }),
   };
