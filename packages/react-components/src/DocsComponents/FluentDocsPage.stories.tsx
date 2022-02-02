@@ -11,7 +11,6 @@ import {
   Stories,
 } from '@storybook/addon-docs';
 import { makeStyles, shorthands } from '@griffel/react';
-
 import { Toc, nameToHash } from './Toc.stories';
 import { isHosted } from './isHosted';
 
