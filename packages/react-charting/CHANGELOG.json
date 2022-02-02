@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 01 Feb 2022 07:26:26 GMT",
+      "tag": "@fluentui/react-charting_v5.7.7",
+      "version": "5.7.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-scharde@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9b67adbeec36a99f9153fba2996567429205f9b8",
+            "comment": "OverflowProp styles override issue solved for legend"
+          },
+          {
+            "author": "v-scharde@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bd0c64547fb2c2d0baa6fc5b5e5085cb03c6c100",
+            "comment": "only active circle will be visible when custom radius is passed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.52.1",
+            "commit": "c4912723213bb1a15b4af2f6c7962bc32064bf4a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 31 Jan 2022 07:27:30 GMT",
       "tag": "@fluentui/react-charting_v5.7.6",
       "version": "5.7.6",

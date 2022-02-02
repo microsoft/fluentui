@@ -5,17 +5,6 @@ import type { ButtonState } from './Button.types';
 
 export const buttonClassName = 'fui-Button';
 
-// TODO: These are named in design specs but not hoisted to global/alias yet.
-//       We're tracking these here to determine how we can hoist them.
-export const buttonSpacing = {
-  smallest: '2px',
-  smaller: '4px',
-  small: '6px',
-  medium: '8px',
-  large: '12px',
-  larger: '16px',
-};
-
 const useRootStyles = makeStyles({
   // Base styles
   base: {
@@ -140,8 +129,8 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.gap(buttonSpacing.smaller),
-    ...shorthands.padding('0', buttonSpacing.medium),
+    ...shorthands.gap('4px'),
+    ...shorthands.padding('0', '8px'),
 
     height: '24px',
     minWidth: '64px',
@@ -153,8 +142,8 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase200,
   },
   medium: {
-    ...shorthands.gap(buttonSpacing.small),
-    ...shorthands.padding('0', buttonSpacing.large),
+    ...shorthands.gap('6px'),
+    ...shorthands.padding('0', '12px'),
 
     height: '32px',
     minWidth: '96px',
@@ -166,8 +155,8 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.gap(buttonSpacing.small),
-    ...shorthands.padding('0', buttonSpacing.larger),
+    ...shorthands.gap('6px'),
+    ...shorthands.padding('0', '16px'),
 
     height: '40px',
     minWidth: '96px',
@@ -309,19 +298,19 @@ const useRootFocusStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    ...shorthands.padding(buttonSpacing.smaller),
+    ...shorthands.padding('4px'),
 
     minWidth: '28px',
     maxWidth: '28px',
   },
   medium: {
-    ...shorthands.padding(buttonSpacing.smaller),
+    ...shorthands.padding('4px'),
 
     minWidth: '32px',
     maxWidth: '32px',
   },
   large: {
-    ...shorthands.padding(buttonSpacing.small),
+    ...shorthands.padding('6px'),
 
     minWidth: '40px',
     maxWidth: '40px',

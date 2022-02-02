@@ -2,7 +2,8 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { Tab } from '../Tab/index';
-import { TabList, TabListProps } from './index';
+import { TabList } from './index';
+import { ResizeObserver } from './__mocks__/mockResizeObserver';
 
 describe('TabList', () => {
   isConformant({
@@ -10,21 +11,20 @@ describe('TabList', () => {
     displayName: 'TabList',
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
+  let oldResizeObserver: typeof window.ResizeObserver;
 
-  it.each([
-    ['default', {}],
-    ['subtle appearance', { appearance: 'subtle' }],
-    ['vertical', { vertical: true }],
-    ['small size', { size: 'small' }],
-    ['small size and vertical', { size: 'small', vertical: true }],
-    ['second selected', { selectedValue: '2' }],
-    ['second selected (default)', { defaultSelectedValue: '2' }],
-  ])('renders %s correctly', (_testName, props) => {
-    const tabListProps = props as TabListProps;
+  beforeAll(() => {
+    oldResizeObserver = window.ResizeObserver;
+    window.ResizeObserver = ResizeObserver;
+  });
 
+  afterAll(() => {
+    window.ResizeObserver = oldResizeObserver;
+  });
+
+  it('renders with tabs', () => {
     const result = render(
-      <TabList {...tabListProps}>
+      <TabList>
         <Tab value="1">First</Tab>
         <Tab value="2">Second</Tab>
         <Tab value="3">Third</Tab>

@@ -102,7 +102,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
     const chartData = {
       chartTitle: 'Area chart styled example',
       lineChartData: chartPoints,
-      pointOptions: { radius: 8, strokeWidth: 3, opacity: 1, stroke: DefaultPalette.blueDark },
+      pointOptions: { r: 10, strokeWidth: 3, opacity: 1, stroke: DefaultPalette.blueDark },
       pointLineOptions: { strokeWidth: 2, strokeDasharray: '10 10', stroke: DefaultPalette.blueDark },
     };
 

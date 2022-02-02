@@ -1,6 +1,21 @@
 {
-  "name": "perf-test",
+  "name": "@fluentui/perf-test",
   "entries": [
+    {
+      "date": "Tue, 01 Feb 2022 07:26:26 GMT",
+      "tag": "@fluentui/perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/perf-test",
+            "comment": "Bump @fluentui/react to v8.52.1",
+            "commit": "c4912723213bb1a15b4af2f6c7962bc32064bf4a"
+          }
+        ]
+      }
+    },
     {
       "date": "Mon, 31 Jan 2022 07:27:30 GMT",
       "tag": "perf-test_v1.0.0",

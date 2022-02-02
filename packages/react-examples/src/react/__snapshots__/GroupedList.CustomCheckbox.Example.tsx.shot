@@ -558,7 +558,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             }
                           >
                             <div
-                              aria-colindex={1}
                               className=
                                   ms-DetailsRow-cell
                                   ms-DetailsRow-cellCheck
@@ -812,7 +811,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -869,7 +867,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //via.placeholder.com/150x150
                               </div>
                               <div
-                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -926,7 +923,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-0 Lorem ipsum dolor sit amet
                               </div>
                               <div
-                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -1101,7 +1097,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             }
                           >
                             <div
-                              aria-colindex={1}
                               className=
                                   ms-DetailsRow-cell
                                   ms-DetailsRow-cellCheck
@@ -1355,7 +1350,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -1412,7 +1406,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //via.placeholder.com/150x150
                               </div>
                               <div
-                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -1469,7 +1462,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-1 Lorem ipsum dolor sit amet
                               </div>
                               <div
-                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -1644,7 +1636,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             }
                           >
                             <div
-                              aria-colindex={1}
                               className=
                                   ms-DetailsRow-cell
                                   ms-DetailsRow-cellCheck
@@ -1898,7 +1889,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -1955,7 +1945,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //via.placeholder.com/150x150
                               </div>
                               <div
-                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -2012,7 +2001,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-2 Lorem ipsum dolor sit amet
                               </div>
                               <div
-                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -2591,7 +2579,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             }
                           >
                             <div
-                              aria-colindex={1}
                               className=
                                   ms-DetailsRow-cell
                                   ms-DetailsRow-cellCheck
@@ -2845,7 +2832,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -2902,7 +2888,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //via.placeholder.com/150x150
                               </div>
                               <div
-                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -2959,7 +2944,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-3 Lorem ipsum dolor sit amet
                               </div>
                               <div
-                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -3134,7 +3118,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             }
                           >
                             <div
-                              aria-colindex={1}
                               className=
                                   ms-DetailsRow-cell
                                   ms-DetailsRow-cellCheck
@@ -3388,7 +3371,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -3445,7 +3427,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //via.placeholder.com/150x150
                               </div>
                               <div
-                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -3502,7 +3483,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-4 Lorem ipsum dolor sit amet
                               </div>
                               <div
-                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -3677,7 +3657,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             }
                           >
                             <div
-                              aria-colindex={1}
                               className=
                                   ms-DetailsRow-cell
                                   ms-DetailsRow-cellCheck
@@ -3931,7 +3910,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -3988,7 +3966,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //via.placeholder.com/150x150
                               </div>
                               <div
-                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -4045,7 +4022,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-5 Lorem ipsum dolor sit amet
                               </div>
                               <div
-                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -4624,7 +4600,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             }
                           >
                             <div
-                              aria-colindex={1}
                               className=
                                   ms-DetailsRow-cell
                                   ms-DetailsRow-cellCheck
@@ -4878,7 +4853,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -4935,7 +4909,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //via.placeholder.com/150x150
                               </div>
                               <div
-                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -4992,7 +4965,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-6 Lorem ipsum dolor sit amet
                               </div>
                               <div
-                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -5167,7 +5139,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             }
                           >
                             <div
-                              aria-colindex={1}
                               className=
                                   ms-DetailsRow-cell
                                   ms-DetailsRow-cellCheck
@@ -5421,7 +5392,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -5478,7 +5448,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //via.placeholder.com/150x150
                               </div>
                               <div
-                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -5535,7 +5504,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-7 Lorem ipsum dolor sit amet
                               </div>
                               <div
-                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -5710,7 +5678,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             }
                           >
                             <div
-                              aria-colindex={1}
                               className=
                                   ms-DetailsRow-cell
                                   ms-DetailsRow-cellCheck
@@ -5964,7 +5931,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               role="presentation"
                             >
                               <div
-                                aria-colindex={3}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -6021,7 +5987,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 //via.placeholder.com/150x150
                               </div>
                               <div
-                                aria-colindex={4}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
@@ -6078,7 +6043,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 item-8 Lorem ipsum dolor sit amet
                               </div>
                               <div
-                                aria-colindex={5}
                                 aria-readonly={true}
                                 className=
                                     ms-DetailsRow-cell
