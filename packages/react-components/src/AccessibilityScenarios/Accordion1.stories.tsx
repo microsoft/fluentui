@@ -23,7 +23,7 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
       <h1>Personal form</h1>
       <Accordion defaultOpenItems="basicInfo">
         <AccordionItem value="basicInfo">
-          <AccordionHeader as="h2">Basic information, 1 of 3</AccordionHeader>
+          <AccordionHeader as="h2">Basic information</AccordionHeader>
           <AccordionPanel>
             <Label htmlFor="name">Name:</Label>
             <input type="text" id="name" name="name" />
@@ -41,7 +41,7 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="residence">
-          <AccordionHeader as="h2">Residence, 2 of 3</AccordionHeader>
+          <AccordionHeader as="h2">Residence</AccordionHeader>
           <AccordionPanel>
             <Label htmlFor="street">Street:</Label>
             <input type="text" id="street" name="street" />
@@ -52,7 +52,7 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="hobbies">
-          <AccordionHeader as="h2">Hobbies, 3 of 3</AccordionHeader>
+          <AccordionHeader as="h2">Hobbies</AccordionHeader>
           <AccordionPanel>
             <div role="group" aria-label="Hobbies">
               <input type="checkbox" id="books" name="hobbies" value="books" />
