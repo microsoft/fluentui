@@ -22,6 +22,7 @@ describe('DatePicker', () => {
 
   afterEach(() => {
     jest.useRealTimers();
+    jest.resetAllMocks();
   });
 
   it('renders default DatePicker correctly', () => {

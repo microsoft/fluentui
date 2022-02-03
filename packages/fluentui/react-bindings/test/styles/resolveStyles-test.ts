@@ -74,6 +74,10 @@ const resolveStylesOptions = (options?: {
 };
 
 describe('resolveStyles', () => {
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
   test('resolves styles', () => {
     const { resolvedStyles } = resolveStyles(resolveStylesOptions(), resolvedVariables);
 
