@@ -34,7 +34,7 @@ export type AccordionHeaderSlots = {
   icon?: IntrinsicSlotProps<'div'>;
 };
 
-export type AccordionHeaderCommons = {
+export type AccordionHeaderCommonsUnstable = {
   /**
    * Size of spacing in the heading
    */
@@ -49,8 +49,8 @@ export type AccordionHeaderCommons = {
   inline: boolean;
 };
 
-export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
+export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommonsUnstable>;
 
 export type AccordionHeaderState = ComponentState<AccordionHeaderSlots> &
-  AccordionHeaderCommons &
+  AccordionHeaderCommonsUnstable &
   AccordionHeaderContextValue;

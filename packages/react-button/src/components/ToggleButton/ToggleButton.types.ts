@@ -1,6 +1,6 @@
 import type { ButtonProps, ButtonState } from '../Button/Button.types';
 
-export type ToggleButtonCommons = {
+export type ToggleButtonCommonsUnstable = {
   /**
    * Defines the controlled checked state of the `ToggleButton`.
    * If passed, `ToggleButton` ignores the `defaultChecked` property.
@@ -12,7 +12,7 @@ export type ToggleButtonCommons = {
 };
 
 export type ToggleButtonProps = ButtonProps &
-  Partial<ToggleButtonCommons> & {
+  Partial<ToggleButtonCommonsUnstable> & {
     /**
      * Defines whether the `ToggleButton` is initially in a checked state or not when rendered.
      * @default false
@@ -20,4 +20,4 @@ export type ToggleButtonProps = ButtonProps &
     defaultChecked?: boolean;
   };
 
-export type ToggleButtonState = ButtonState & ToggleButtonCommons;
+export type ToggleButtonState = ButtonState & ToggleButtonCommonsUnstable;

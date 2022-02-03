@@ -7,7 +7,7 @@ export type TextSlots = {
   root: IntrinsicSlotProps<'span', 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre'>;
 };
 
-export type TextCommons = {
+export type TextCommonsUnstable = {
   /**
    * Wraps the text content on white spaces.
    *
@@ -82,9 +82,9 @@ export type TextCommons = {
 /**
  * Text Props
  */
-export type TextProps = ComponentProps<TextSlots> & Partial<TextCommons>;
+export type TextProps = ComponentProps<TextSlots> & Partial<TextCommonsUnstable>;
 
 /**
  * State used in rendering Text
  */
-export type TextState = ComponentState<TextSlots> & TextCommons;
+export type TextState = ComponentState<TextSlots> & TextCommonsUnstable;

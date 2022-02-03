@@ -12,7 +12,7 @@ export type MenuCheckedValueChangeData = {
   checkedItems: string[];
 };
 
-export type MenuListCommons = {
+export type MenuListCommonsUnstable = {
   /**
    * Callback when checked items change for value with a name
    *
@@ -46,10 +46,10 @@ export type MenuListSlots = {
   root: IntrinsicSlotProps<'div'>;
 };
 
-export type MenuListProps = ComponentProps<MenuListSlots> & Partial<MenuListCommons>;
+export type MenuListProps = ComponentProps<MenuListSlots> & Partial<MenuListCommonsUnstable>;
 
 export type MenuListState = ComponentState<MenuListSlots> &
-  MenuListCommons & {
+  MenuListCommonsUnstable & {
     /**
      * Callback to set focus on the next menu item by first character
      */

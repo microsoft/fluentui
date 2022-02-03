@@ -7,7 +7,7 @@ export type BadgeSlots = {
   icon?: IntrinsicSlotProps<'span'>;
 };
 
-export type BadgeCommons = {
+export type BadgeCommonsUnstable = {
   /**
    * A Badge can be filled, outline, ghost, inverted
    * @defaultvalue filled
@@ -39,5 +39,5 @@ export type BadgeCommons = {
   size: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 };
 
-export type BadgeProps = ComponentProps<Partial<BadgeSlots>> & Partial<BadgeCommons>;
-export type BadgeState = ComponentState<BadgeSlots> & BadgeCommons;
+export type BadgeProps = ComponentProps<Partial<BadgeSlots>> & Partial<BadgeCommonsUnstable>;
+export type BadgeState = ComponentState<BadgeSlots> & BadgeCommonsUnstable;

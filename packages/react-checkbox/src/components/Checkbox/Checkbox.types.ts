@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { ComponentProps, ComponentSlotProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 
-export interface CheckboxCommons {
+export interface CheckboxCommonsUnstable {
   /**
    * Whether to render the checkbox in a circular shape instead of square.
    * This variant is only recommended to be used in a tasks-style UI (checklist),
@@ -72,7 +72,7 @@ export type CheckboxProps = Omit<
   ComponentProps<CheckboxSlots, 'input'>,
   'size' | 'checked' | 'defaultChecked' | 'onChange'
 > &
-  Partial<CheckboxCommons> & {
+  Partial<CheckboxCommonsUnstable> & {
     /**
      * Checkboxes don't support children. To add a label, use the `label` prop.
      */
@@ -92,4 +92,4 @@ export type CheckboxProps = Omit<
 /**
  * State used in rendering Checkbox
  */
-export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;
+export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommonsUnstable;

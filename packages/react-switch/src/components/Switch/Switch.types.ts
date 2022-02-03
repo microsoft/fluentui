@@ -33,7 +33,7 @@ export type SwitchSlots = {
   activeRail: IntrinsicSlotProps<'div'>;
 };
 
-export interface SwitchCommons {
+export interface SwitchCommonsUnstable {
   /**
    * The starting value for a uncontrolled Switch. If `true` then the Switch will be enabled.
    * Mutually exclusive with `checked` prop.
@@ -66,6 +66,6 @@ export interface SwitchCommons {
   ) => void;
 }
 
-export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange'>, SwitchCommons {}
+export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange'>, SwitchCommonsUnstable {}
 
-export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommons {}
+export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommonsUnstable {}

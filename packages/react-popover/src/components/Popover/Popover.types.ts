@@ -7,7 +7,7 @@ import type { PortalProps } from '@fluentui/react-portal';
  */
 export type PopoverSize = 'small' | 'medium' | 'large';
 
-export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
+export type PopoverCommonsUnstable = Pick<PortalProps, 'mountNode'> & {
   /**
    * Controls the opening of the Popover
    */
@@ -59,7 +59,7 @@ export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
 /**
  * Popover Props
  */
-export type PopoverProps = Partial<PopoverCommons> & {
+export type PopoverProps = Partial<PopoverCommonsUnstable> & {
   /**
    * Can contain two children including {@link PopoverTrigger} and {@link PopoverSurface}.
    * Alternatively can only contain {@link PopoverSurface} if using a custom `target`.
@@ -70,7 +70,7 @@ export type PopoverProps = Partial<PopoverCommons> & {
 /**
  * Popover State
  */
-export type PopoverState = PopoverCommons &
+export type PopoverState = PopoverCommonsUnstable &
   Pick<PopoverProps, 'children'> & {
     /**
      * Callback to open/close the Popover

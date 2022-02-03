@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
-import type { ButtonCommons, ButtonSlots, ButtonState } from '../Button/Button.types';
+import type { ButtonCommonsUnstable, ButtonSlots, ButtonState } from '../Button/Button.types';
 
 export type CompoundButtonSlots = ButtonSlots & {
   /**
@@ -13,7 +13,7 @@ export type CompoundButtonSlots = ButtonSlots & {
   contentContainer: IntrinsicSlotProps<'span'>;
 };
 
-export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommons>;
+export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommonsUnstable>;
 
 export type CompoundButtonState = ComponentState<CompoundButtonSlots> &
   Omit<ButtonState, keyof ButtonSlots | 'components'>;

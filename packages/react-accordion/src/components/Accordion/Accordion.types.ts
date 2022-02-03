@@ -8,7 +8,7 @@ export type AccordionToggleEvent<E = HTMLElement> = React.MouseEvent<E> | React.
 
 export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 
-export type AccordionCommons = {
+export type AccordionCommonsUnstable = {
   /**
    * Indicates if keyboard navigation is available
    */
@@ -23,7 +23,7 @@ export type AccordionCommons = {
   collapsible: boolean;
 };
 
-export type AccordionContextValue = Omit<AccordionCommons, 'multiple'> & {
+export type AccordionContextValue = Omit<AccordionCommonsUnstable, 'multiple'> & {
   /**
    * The list of opened panels by index
    */
@@ -48,7 +48,7 @@ export type AccordionToggleData = {
 };
 
 export type AccordionProps = ComponentProps<AccordionSlots> &
-  Partial<AccordionCommons> & {
+  Partial<AccordionCommonsUnstable> & {
     /**
      * Controls the state of the panel
      */
@@ -60,4 +60,4 @@ export type AccordionProps = ComponentProps<AccordionSlots> &
     onToggle?: AccordionToggleEventHandler;
   };
 
-export type AccordionState = ComponentState<AccordionSlots> & AccordionCommons & AccordionContextValue;
+export type AccordionState = ComponentState<AccordionSlots> & AccordionCommonsUnstable & AccordionContextValue;

@@ -13,7 +13,7 @@ export type ButtonSlots = {
   icon?: IntrinsicSlotProps<'span'>;
 };
 
-export type ButtonCommons = {
+export type ButtonCommonsUnstable = {
   /**
    * A button can have its content and borders styled for greater emphasis or to be subtle.
    * - 'primary': Emphasizes the button as a primary action.
@@ -62,10 +62,10 @@ export type ButtonCommons = {
   size: 'small' | 'medium' | 'large';
 };
 
-export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommons>;
+export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommonsUnstable>;
 
 export type ButtonState = ComponentState<ButtonSlots> &
-  ButtonCommons & {
+  ButtonCommonsUnstable & {
     /**
      * A button can contain only an icon.
      * @default false

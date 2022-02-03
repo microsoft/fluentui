@@ -10,7 +10,7 @@ export type FluentProviderSlots = {
   root: IntrinsicSlotProps<'div'>;
 };
 
-export interface FluentProviderCommons {
+export interface FluentProviderCommonsUnstable {
   /** Sets the direction of text & generated styles. */
   dir: 'ltr' | 'rtl';
 
@@ -20,11 +20,11 @@ export interface FluentProviderCommons {
 
 export interface FluentProviderProps
   extends Omit<ComponentProps<FluentProviderSlots>, 'dir'>,
-    Partial<FluentProviderCommons> {
+    Partial<FluentProviderCommonsUnstable> {
   theme?: PartialTheme;
 }
 
-export interface FluentProviderState extends ComponentState<FluentProviderSlots>, FluentProviderCommons {
+export interface FluentProviderState extends ComponentState<FluentProviderSlots>, FluentProviderCommonsUnstable {
   theme: Theme | Partial<Theme> | undefined;
   themeClassName: string;
 }

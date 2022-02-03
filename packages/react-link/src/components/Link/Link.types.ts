@@ -7,7 +7,7 @@ export type LinkSlots = {
   root: IntrinsicSlotProps<'a', 'button'>;
 };
 
-export type LinkCommons = {
+export type LinkCommonsUnstable = {
   /**
    * A link can appear either with its default style or subtle.
    * If not specified, the link appears with its default styling.
@@ -34,6 +34,6 @@ export type LinkCommons = {
   inline?: boolean;
 };
 
-export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
+export type LinkProps = ComponentProps<LinkSlots> & LinkCommonsUnstable;
 
-export type LinkState = ComponentState<LinkSlots> & LinkCommons;
+export type LinkState = ComponentState<LinkSlots> & LinkCommonsUnstable;

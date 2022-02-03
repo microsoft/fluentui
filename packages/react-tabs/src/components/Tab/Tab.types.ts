@@ -23,7 +23,7 @@ export type TabSlots = {
   content: IntrinsicSlotProps<'span'>;
 };
 
-export type TabCommons = {
+export type TabCommonsUnstable = {
   /**
    * The value that identifies this tab when selected.
    */
@@ -33,13 +33,13 @@ export type TabCommons = {
 /**
  * Tab Props
  */
-export type TabProps = ComponentProps<TabSlots> & TabCommons;
+export type TabProps = ComponentProps<TabSlots> & TabCommonsUnstable;
 
 /**
  * State used in rendering Tab
  */
 export type TabState = ComponentState<TabSlots> &
-  TabCommons & {
+  TabCommonsUnstable & {
     /**
      * A tab supports 'transparent' and 'subtle' appearance.
      */

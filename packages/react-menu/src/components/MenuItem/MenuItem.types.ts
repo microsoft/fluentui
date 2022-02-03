@@ -31,7 +31,7 @@ export type MenuItemSlots = {
   secondaryContent?: IntrinsicSlotProps<'span'>;
 };
 
-type MenuItemCommons = {
+type MenuItemCommonsUnstable = {
   /**
    * If the menu item is a trigger for a submenu
    */
@@ -48,6 +48,6 @@ type MenuItemCommons = {
   persistOnClick?: boolean;
 };
 
-export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & MenuItemCommons;
+export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & MenuItemCommonsUnstable;
 
-export type MenuItemState = ComponentState<MenuItemSlots> & MenuItemCommons;
+export type MenuItemState = ComponentState<MenuItemSlots> & MenuItemCommonsUnstable;

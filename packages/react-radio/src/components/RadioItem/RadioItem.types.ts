@@ -26,7 +26,7 @@ export type RadioItemSlots = {
   subtext?: IntrinsicSlotProps<'span'>;
 };
 
-export type RadioItemCommons = InputHTMLAttributes<HTMLInputElement> & {
+export type RadioItemCommonsUnstable = InputHTMLAttributes<HTMLInputElement> & {
   /**
    * Determines whether the label should be positioned bellow the indicator or next to it.
    * @defaultvalue 'inline'
@@ -43,7 +43,7 @@ export type RadioItemCommons = InputHTMLAttributes<HTMLInputElement> & {
  * RadioItem Props
  */
 export type RadioItemProps = ComponentProps<RadioItemSlots> &
-  RadioItemCommons & {
+  RadioItemCommonsUnstable & {
     /**
      * ID of the native element that represents the checkbox.
      */
@@ -53,4 +53,4 @@ export type RadioItemProps = ComponentProps<RadioItemSlots> &
 /**
  * State used in rendering RadioItem
  */
-export type RadioItemState = ComponentState<RadioItemSlots> & RadioItemCommons;
+export type RadioItemState = ComponentState<RadioItemSlots> & RadioItemCommonsUnstable;

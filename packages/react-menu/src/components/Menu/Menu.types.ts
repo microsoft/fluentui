@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import { usePopperMouseTarget, PositioningShorthand } from '@fluentui/react-positioning';
-import { MenuListCommons } from '../MenuList/index';
+import { MenuListCommonsUnstable } from '../MenuList/index';
 import { MenuContextValue } from '../../contexts/menuContext';
 
-type MenuCommons = MenuListCommons & {
+type MenuCommonsUnstable = MenuListCommonsUnstable & {
   /**
    * Whether the popup is open
    */
@@ -53,7 +53,7 @@ export type MenuSlots = {};
 /**
  * Extends and drills down Menulist props to simplify API
  */
-export type MenuProps = Partial<MenuCommons> &
+export type MenuProps = Partial<MenuCommonsUnstable> &
   ComponentProps<MenuSlots> & {
     /**
      * Can contain two children including {@link MenuTrigger} and {@link MenuPopover}.
@@ -67,7 +67,7 @@ export type MenuProps = Partial<MenuCommons> &
     positioning?: PositioningShorthand;
   };
 
-export type MenuState = MenuCommons &
+export type MenuState = MenuCommonsUnstable &
   ComponentState<MenuSlots> & {
     /**
      * Callback to open/close the popup

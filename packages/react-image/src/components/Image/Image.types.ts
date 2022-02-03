@@ -4,7 +4,7 @@ export type ImageSlots = {
   root: IntrinsicSlotProps<'img'>;
 };
 
-export type ImageCommons = {
+export type ImageCommonsUnstable = {
   /**
    * An image can appear with rectangular border.
    */
@@ -32,6 +32,6 @@ export type ImageCommons = {
   shadow?: boolean;
 };
 
-export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
+export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommonsUnstable>;
 
-export type ImageState = ComponentState<ImageSlots> & ImageCommons;
+export type ImageState = ComponentState<ImageSlots> & ImageCommonsUnstable;

@@ -1,6 +1,6 @@
 import type { BadgeProps, BadgeState } from '../Badge/index';
 
-export type CounterBadgeCommons = {
+export type CounterBadgeCommonsUnstable = {
   /**
    * Max number to be displayed
    * @default 99
@@ -44,6 +44,7 @@ export type CounterBadgeCommons = {
   color: Extract<BadgeProps['color'], 'brand' | 'danger' | 'important' | 'informative'>;
 };
 
-export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape' | 'color'> & Partial<CounterBadgeCommons>;
+export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape' | 'color'> &
+  Partial<CounterBadgeCommonsUnstable>;
 
-export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'shape' | 'color'> & CounterBadgeCommons;
+export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'shape' | 'color'> & CounterBadgeCommonsUnstable;

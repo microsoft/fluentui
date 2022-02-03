@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type PortalCommons = {
+export type PortalCommonsUnstable = {
   /**
    * React children
    */
@@ -12,9 +12,9 @@ export type PortalCommons = {
   mountNode: HTMLDivElement | undefined;
 };
 
-export type PortalProps = Partial<PortalCommons>;
+export type PortalProps = Partial<PortalCommonsUnstable>;
 
-export type PortalState = PortalCommons & {
+export type PortalState = PortalCommonsUnstable & {
   /** Indicates if a Portal should be rendered. */
   shouldRender: boolean;
 

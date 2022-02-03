@@ -23,7 +23,7 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<FluentProviderPro
 export const fluentProviderClassName = "fui-FluentProvider";
 
 // @public (undocumented)
-export interface FluentProviderCommons {
+export interface FluentProviderCommonsUnstable {
     dir: 'ltr' | 'rtl';
     targetDocument: Document | undefined;
 }
@@ -41,7 +41,7 @@ export interface FluentProviderContextValues extends Pick<FluentProviderState, '
 }
 
 // @public (undocumented)
-export interface FluentProviderProps extends Omit<ComponentProps<FluentProviderSlots>, 'dir'>, Partial<FluentProviderCommons> {
+export interface FluentProviderProps extends Omit<ComponentProps<FluentProviderSlots>, 'dir'>, Partial<FluentProviderCommonsUnstable> {
     // (undocumented)
     theme?: PartialTheme;
 }
@@ -52,7 +52,7 @@ export type FluentProviderSlots = {
 };
 
 // @public (undocumented)
-export interface FluentProviderState extends ComponentState<FluentProviderSlots>, FluentProviderCommons {
+export interface FluentProviderState extends ComponentState<FluentProviderSlots>, FluentProviderCommonsUnstable {
     // (undocumented)
     theme: Theme | Partial<Theme> | undefined;
     // (undocumented)

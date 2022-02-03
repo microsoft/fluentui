@@ -12,7 +12,7 @@ export type TooltipSlots = {
 /**
  * Properties and state for Tooltip
  */
-export type TooltipCommons = {
+export type TooltipCommonsUnstable = {
   /**
    * The tooltip's visual appearance.
    * * `normal` - Uses the theme's background and text colors.
@@ -102,8 +102,8 @@ export type OnVisibleChangeData = {
  */
 export type TooltipProps = Omit<ComponentProps<TooltipSlots>, 'content'> &
   Required<Pick<ComponentProps<TooltipSlots>, 'content'>> &
-  Partial<Omit<TooltipCommons, 'relationship'>> &
-  Pick<TooltipCommons, 'relationship'> & {
+  Partial<Omit<TooltipCommonsUnstable, 'relationship'>> &
+  Pick<TooltipCommonsUnstable, 'relationship'> & {
     children?:
       | (React.ReactElement & { ref?: React.Ref<unknown> })
       | ((props: TooltipTriggerProps) => React.ReactNode)
@@ -114,7 +114,7 @@ export type TooltipProps = Omit<ComponentProps<TooltipSlots>, 'content'> &
  * State used in rendering Tooltip
  */
 export type TooltipState = ComponentState<TooltipSlots> &
-  TooltipCommons & {
+  TooltipCommonsUnstable & {
     children?: React.ReactNode;
 
     /**

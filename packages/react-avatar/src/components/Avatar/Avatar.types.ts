@@ -40,7 +40,7 @@ export type AvatarSlots = {
   badge?: ComponentSlotProps<typeof PresenceBadge>;
 };
 
-export type AvatarCommons = Omit<React.HTMLAttributes<HTMLElement>, 'children'> & {
+export type AvatarCommonsUnstable = Omit<React.HTMLAttributes<HTMLElement>, 'children'> & {
   /**
    * The name of the person or entity represented by this Avatar. This should always be provided if it is available.
    *
@@ -145,7 +145,7 @@ export type AvatarNamedColor =
  * Properties for Avatar
  */
 export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'image'> &
-  Partial<AvatarCommons> & {
+  Partial<AvatarCommonsUnstable> & {
     /**
      * The Avatar's image. Cannot be typed as a normal slot since it should not accept any children
      * but can accept a children render function.
@@ -159,9 +159,9 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'image'> &
  * State used in rendering Avatar
  */
 export type AvatarState = ComponentState<AvatarSlots> &
-  AvatarCommons & {
+  AvatarCommonsUnstable & {
     /**
      * The Avatar's color, with `'colorful'` resolved to a named color
      */
-    color: Exclude<AvatarCommons['color'], 'colorful'>;
+    color: Exclude<AvatarCommonsUnstable['color'], 'colorful'>;
   };

@@ -12,7 +12,7 @@ export type DividerSlots = {
   wrapper: IntrinsicSlotProps<'div'>;
 };
 
-export type DividerCommons = {
+export type DividerCommonsUnstable = {
   /**
    * Determines the alignment of the content within the divider.
    * @defaultvalue 'center'
@@ -38,6 +38,6 @@ export type DividerCommons = {
   vertical: boolean;
 };
 
-export type DividerProps = ComponentProps<DividerSlots> & Partial<DividerCommons>;
+export type DividerProps = ComponentProps<DividerSlots> & Partial<DividerCommonsUnstable>;
 
-export type DividerState = ComponentState<DividerSlots> & DividerCommons;
+export type DividerState = ComponentState<DividerSlots> & DividerCommonsUnstable;

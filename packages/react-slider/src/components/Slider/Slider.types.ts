@@ -37,7 +37,7 @@ export type SliderSlots = {
   };
 };
 
-export type SliderCommons = {
+export type SliderCommonsUnstable = {
   /**
    * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
@@ -110,6 +110,6 @@ export type SliderOnChangeData = {
 };
 
 export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> &
-  SliderCommons;
+  SliderCommonsUnstable;
 
-export type SliderState = ComponentState<SliderSlots> & SliderCommons;
+export type SliderState = ComponentState<SliderSlots> & SliderCommonsUnstable;
