@@ -31,7 +31,7 @@ export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTM
 export const Popover: React_2.FC<PopoverProps>;
 
 // @public (undocumented)
-export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
+export type PopoverCommonsUnstable = Pick<PortalProps, 'mountNode'> & {
     open: boolean;
     defaultOpen?: boolean;
     onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
@@ -51,7 +51,7 @@ export const PopoverContext: Context<PopoverContextValue>;
 export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus'>;
 
 // @public
-export type PopoverProps = Partial<PopoverCommons> & {
+export type PopoverProps = Partial<PopoverCommonsUnstable> & {
     children: [JSX.Element, JSX.Element] | JSX.Element;
 };
 
@@ -59,7 +59,7 @@ export type PopoverProps = Partial<PopoverCommons> & {
 export type PopoverSize = 'small' | 'medium' | 'large';
 
 // @public
-export type PopoverState = PopoverCommons & Pick<PopoverProps, 'children'> & {
+export type PopoverState = PopoverCommonsUnstable & Pick<PopoverProps, 'children'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     triggerRef: React_2.MutableRefObject<HTMLElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;

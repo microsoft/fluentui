@@ -18,7 +18,7 @@ export { Image_2 as Image }
 export const imageClassName = "fui-Image";
 
 // @public (undocumented)
-export type ImageCommons = {
+export type ImageCommonsUnstable = {
     bordered?: boolean;
     fit?: 'none' | 'center' | 'contain' | 'cover';
     block?: boolean;
@@ -27,7 +27,7 @@ export type ImageCommons = {
 };
 
 // @public (undocumented)
-export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
+export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommonsUnstable>;
 
 // @public (undocumented)
 export type ImageSlots = {
@@ -35,7 +35,7 @@ export type ImageSlots = {
 };
 
 // @public (undocumented)
-export type ImageState = ComponentState<ImageSlots> & ImageCommons;
+export type ImageState = ComponentState<ImageSlots> & ImageCommonsUnstable;
 
 // @public
 export const renderImage_unstable: (state: ImageState) => JSX.Element;

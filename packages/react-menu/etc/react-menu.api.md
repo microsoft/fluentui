@@ -125,10 +125,10 @@ export type MenuItemCheckboxState = MenuItemState & MenuItemSelectableState;
 // @public (undocumented)
 export const menuItemClassName = "fui-MenuItem";
 
-// Warning: (ae-forgotten-export) The symbol "MenuItemCommons" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "MenuItemCommonsUnstable" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & MenuItemCommons;
+export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & MenuItemCommonsUnstable;
 
 // @public
 export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps>;
@@ -166,7 +166,7 @@ export type MenuItemSlots = {
 };
 
 // @public (undocumented)
-export type MenuItemState = ComponentState<MenuItemSlots> & MenuItemCommons;
+export type MenuItemState = ComponentState<MenuItemSlots> & MenuItemCommonsUnstable;
 
 // @public
 export const MenuList: ForwardRefComponent<MenuListProps>;
@@ -175,7 +175,7 @@ export const MenuList: ForwardRefComponent<MenuListProps>;
 export const menuListClassName = "fui-MenuList";
 
 // @public (undocumented)
-export type MenuListCommons = {
+export type MenuListCommonsUnstable = {
     onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
     checkedValues: Record<string, string[]>;
     defaultCheckedValues?: Record<string, string[]>;
@@ -199,7 +199,7 @@ export type MenuListContextValues = {
 };
 
 // @public (undocumented)
-export type MenuListProps = ComponentProps<MenuListSlots> & Partial<MenuListCommons>;
+export type MenuListProps = ComponentProps<MenuListSlots> & Partial<MenuListCommonsUnstable>;
 
 // @public (undocumented)
 export const MenuListProvider: React_2.Provider<MenuListContextValue> & React_2.FC<React_2.ProviderProps<MenuListContextValue>>;
@@ -210,7 +210,7 @@ export type MenuListSlots = {
 };
 
 // @public (undocumented)
-export type MenuListState = ComponentState<MenuListSlots> & MenuListCommons & {
+export type MenuListState = ComponentState<MenuListSlots> & MenuListCommonsUnstable & {
     setFocusByFirstCharacter: NonNullable<MenuListContextValue['setFocusByFirstCharacter']>;
     toggleCheckbox: SelectableHandler;
     selectRadio: SelectableHandler;
@@ -245,10 +245,10 @@ export type MenuPopoverState = ComponentState<MenuPopoverSlots> & {
     inline: boolean;
 };
 
-// Warning: (ae-forgotten-export) The symbol "MenuCommons" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "MenuCommonsUnstable" needs to be exported by the entry point index.d.ts
 //
 // @public
-export type MenuProps = Partial<MenuCommons> & ComponentProps<MenuSlots> & {
+export type MenuProps = Partial<MenuCommonsUnstable> & ComponentProps<MenuSlots> & {
     children: [JSX.Element, JSX.Element] | JSX.Element;
     positioning?: PositioningShorthand;
 };
@@ -266,10 +266,10 @@ export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
 export const menuSplitGroupClassName = "fui-MenuSplitGroup";
 
 // @public (undocumented)
-export type MenuSplitGroupCommons = {};
+export type MenuSplitGroupCommonsUnstable = {};
 
 // @public
-export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots> & MenuSplitGroupCommons;
+export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots> & MenuSplitGroupCommonsUnstable;
 
 // @public (undocumented)
 export type MenuSplitGroupSlots = {
@@ -277,10 +277,10 @@ export type MenuSplitGroupSlots = {
 };
 
 // @public
-export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots> & MenuSplitGroupCommons;
+export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots> & MenuSplitGroupCommonsUnstable;
 
 // @public (undocumented)
-export type MenuState = MenuCommons & ComponentState<MenuSlots> & {
+export type MenuState = MenuCommonsUnstable & ComponentState<MenuSlots> & {
     setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
     menuPopover: React_2.ReactNode;
     menuTrigger: React_2.ReactNode;

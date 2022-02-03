@@ -20,7 +20,7 @@ export const Slider: ForwardRefComponent<SliderProps>;
 export const sliderClassName = "fui-Slider";
 
 // @public (undocumented)
-export type SliderCommons = {
+export type SliderCommonsUnstable = {
     defaultValue?: number;
     value?: number;
     min?: number;
@@ -40,7 +40,7 @@ export type SliderOnChangeData = {
 };
 
 // @public (undocumented)
-export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommons;
+export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommonsUnstable;
 
 // @public (undocumented)
 export type SliderSlots = {
@@ -53,7 +53,7 @@ export type SliderSlots = {
 };
 
 // @public (undocumented)
-export type SliderState = ComponentState<SliderSlots> & SliderCommons;
+export type SliderState = ComponentState<SliderSlots> & SliderCommonsUnstable;
 
 // @public
 export const useSlider_unstable: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;

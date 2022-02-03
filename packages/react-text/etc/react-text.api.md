@@ -61,7 +61,7 @@ export { Text_2 as Text }
 export const textClassName = "fui-Text";
 
 // @public (undocumented)
-export type TextCommons = {
+export type TextCommonsUnstable = {
     wrap: boolean;
     truncate: boolean;
     block: boolean;
@@ -75,7 +75,7 @@ export type TextCommons = {
 };
 
 // @public
-export type TextProps = ComponentProps<TextSlots> & Partial<TextCommons>;
+export type TextProps = ComponentProps<TextSlots> & Partial<TextCommonsUnstable>;
 
 // @public
 export type TextSlots = {
@@ -83,7 +83,7 @@ export type TextSlots = {
 };
 
 // @public
-export type TextState = ComponentState<TextSlots> & TextCommons;
+export type TextState = ComponentState<TextSlots> & TextCommonsUnstable;
 
 // @public
 export const Title1: FunctionComponent<TextWrapperProps>;

@@ -19,7 +19,7 @@ export const Accordion: ForwardRefComponent<AccordionProps>;
 export const accordionClassName = "fui-Accordion";
 
 // @public (undocumented)
-export type AccordionCommons = {
+export type AccordionCommonsUnstable = {
     navigable: boolean;
     multiple: boolean;
     collapsible: boolean;
@@ -29,7 +29,7 @@ export type AccordionCommons = {
 export const AccordionContext: Context<AccordionContextValue>;
 
 // @public (undocumented)
-export type AccordionContextValue = Omit<AccordionCommons, 'multiple'> & {
+export type AccordionContextValue = Omit<AccordionCommonsUnstable, 'multiple'> & {
     openItems: AccordionItemValue[];
     requestToggle: (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 };
@@ -46,7 +46,7 @@ export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
 export const accordionHeaderClassName = "fui-AccordionHeader";
 
 // @public (undocumented)
-export type AccordionHeaderCommons = {
+export type AccordionHeaderCommonsUnstable = {
     size: AccordionHeaderSize;
     expandIconPosition: AccordionHeaderExpandIconPosition;
     inline: boolean;
@@ -69,7 +69,7 @@ export type AccordionHeaderContextValues = {
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
 // @public (undocumented)
-export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
+export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommonsUnstable>;
 
 // @public (undocumented)
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
@@ -83,7 +83,7 @@ export type AccordionHeaderSlots = {
 };
 
 // @public (undocumented)
-export type AccordionHeaderState = ComponentState<AccordionHeaderSlots> & AccordionHeaderCommons & AccordionHeaderContextValue;
+export type AccordionHeaderState = ComponentState<AccordionHeaderSlots> & AccordionHeaderCommonsUnstable & AccordionHeaderContextValue;
 
 // @public (undocumented)
 export type AccordionIndex = number | number[];
@@ -95,7 +95,7 @@ export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 export const accordionItemClassName = "fui-AccordionItem";
 
 // @public (undocumented)
-export type AccordionItemCommons = {
+export type AccordionItemCommonsUnstable = {
     disabled: boolean;
     value: AccordionItemValue;
 };
@@ -104,7 +104,7 @@ export type AccordionItemCommons = {
 export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
 
 // @public (undocumented)
-export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
+export type AccordionItemContextValue = Omit<AccordionItemCommonsUnstable, 'value'> & {
     open: boolean;
     onHeaderClick(ev: React_2.MouseEvent | React_2.KeyboardEvent): void;
 };
@@ -115,7 +115,7 @@ export type AccordionItemContextValues = {
 };
 
 // @public (undocumented)
-export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<AccordionItemCommons> & Pick<AccordionItemCommons, 'value'>;
+export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<AccordionItemCommonsUnstable> & Pick<AccordionItemCommonsUnstable, 'value'>;
 
 // @public (undocumented)
 export type AccordionItemSlots = {
@@ -123,7 +123,7 @@ export type AccordionItemSlots = {
 };
 
 // @public (undocumented)
-export type AccordionItemState = ComponentState<AccordionItemSlots> & AccordionItemCommons & AccordionItemContextValue;
+export type AccordionItemState = ComponentState<AccordionItemSlots> & AccordionItemCommonsUnstable & AccordionItemContextValue;
 
 // @public (undocumented)
 export type AccordionItemValue = unknown;
@@ -148,7 +148,7 @@ export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
 };
 
 // @public (undocumented)
-export type AccordionProps = ComponentProps<AccordionSlots> & Partial<AccordionCommons> & {
+export type AccordionProps = ComponentProps<AccordionSlots> & Partial<AccordionCommonsUnstable> & {
     openItems?: AccordionItemValue | AccordionItemValue[];
     defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
     onToggle?: AccordionToggleEventHandler;
@@ -160,7 +160,7 @@ export type AccordionSlots = {
 };
 
 // @public (undocumented)
-export type AccordionState = ComponentState<AccordionSlots> & AccordionCommons & AccordionContextValue;
+export type AccordionState = ComponentState<AccordionSlots> & AccordionCommonsUnstable & AccordionContextValue;
 
 // @public (undocumented)
 export type AccordionToggleData = {

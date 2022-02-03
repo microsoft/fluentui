@@ -19,7 +19,7 @@ export const Button: ForwardRefComponent<ButtonProps>;
 export const buttonClassName = "fui-Button";
 
 // @public (undocumented)
-export type ButtonCommons = {
+export type ButtonCommonsUnstable = {
     appearance?: 'primary' | 'outline' | 'subtle' | 'transparent';
     block: boolean;
     disabledFocusable: boolean;
@@ -30,7 +30,7 @@ export type ButtonCommons = {
 };
 
 // @public (undocumented)
-export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommons>;
+export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommonsUnstable>;
 
 // @public (undocumented)
 export type ButtonSlots = {
@@ -39,7 +39,7 @@ export type ButtonSlots = {
 };
 
 // @public (undocumented)
-export type ButtonState = ComponentState<ButtonSlots> & ButtonCommons & {
+export type ButtonState = ComponentState<ButtonSlots> & ButtonCommonsUnstable & {
     iconOnly: boolean;
 };
 
@@ -50,7 +50,7 @@ export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 export const compoundButtonClassName = "fui-CompoundButton";
 
 // @public (undocumented)
-export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommons>;
+export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommonsUnstable>;
 
 // @public (undocumented)
 export type CompoundButtonSlots = ButtonSlots & {
@@ -68,7 +68,7 @@ export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 export const menuButtonClassName = "fui-MenuButton";
 
 // @public (undocumented)
-export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<ButtonCommons, 'iconPosition'>>;
+export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<ButtonCommonsUnstable, 'iconPosition'>>;
 
 // @public (undocumented)
 export type MenuButtonSlots = ButtonSlots & {
@@ -118,17 +118,17 @@ export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
 export const toggleButtonClassName = "fui-ToggleButton";
 
 // @public (undocumented)
-export type ToggleButtonCommons = {
+export type ToggleButtonCommonsUnstable = {
     checked: boolean;
 };
 
 // @public (undocumented)
-export type ToggleButtonProps = ButtonProps & Partial<ToggleButtonCommons> & {
+export type ToggleButtonProps = ButtonProps & Partial<ToggleButtonCommonsUnstable> & {
     defaultChecked?: boolean;
 };
 
 // @public (undocumented)
-export type ToggleButtonState = ButtonState & ToggleButtonCommons;
+export type ToggleButtonState = ButtonState & ToggleButtonCommonsUnstable;
 
 // @public
 export const useButton_unstable: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;

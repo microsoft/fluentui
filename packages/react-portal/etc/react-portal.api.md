@@ -13,16 +13,16 @@ export function elementContains(parent: HTMLElement | null, child: HTMLElement |
 export const Portal: React_2.FC<PortalProps>;
 
 // @public (undocumented)
-export type PortalCommons = {
+export type PortalCommonsUnstable = {
     children: React_2.ReactNode;
     mountNode: HTMLDivElement | undefined;
 };
 
 // @public (undocumented)
-export type PortalProps = Partial<PortalCommons>;
+export type PortalProps = Partial<PortalCommonsUnstable>;
 
 // @public (undocumented)
-export type PortalState = PortalCommons & {
+export type PortalState = PortalCommonsUnstable & {
     shouldRender: boolean;
     virtualParentRootRef: React_2.MutableRefObject<HTMLSpanElement | null>;
 };

@@ -17,7 +17,7 @@ export const Link: ForwardRefComponent<LinkProps>;
 export const linkClassName = "fui-Link";
 
 // @public (undocumented)
-export type LinkCommons = {
+export type LinkCommonsUnstable = {
     appearance?: 'subtle';
     disabled?: boolean;
     disabledFocusable?: boolean;
@@ -25,7 +25,7 @@ export type LinkCommons = {
 };
 
 // @public (undocumented)
-export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
+export type LinkProps = ComponentProps<LinkSlots> & LinkCommonsUnstable;
 
 // @public (undocumented)
 export type LinkSlots = {
@@ -33,7 +33,7 @@ export type LinkSlots = {
 };
 
 // @public (undocumented)
-export type LinkState = ComponentState<LinkSlots> & LinkCommons;
+export type LinkState = ComponentState<LinkSlots> & LinkCommonsUnstable;
 
 // @public
 export const renderLink_unstable: (state: LinkState) => JSX.Element;

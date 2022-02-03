@@ -17,7 +17,7 @@ export const Divider: ForwardRefComponent<DividerProps>;
 export const dividerClassName = "fui-Divider";
 
 // @public (undocumented)
-export type DividerCommons = {
+export type DividerCommonsUnstable = {
     alignContent: 'start' | 'center' | 'end';
     appearance?: 'brand' | 'strong' | 'subtle';
     inset: boolean;
@@ -25,7 +25,7 @@ export type DividerCommons = {
 };
 
 // @public (undocumented)
-export type DividerProps = ComponentProps<DividerSlots> & Partial<DividerCommons>;
+export type DividerProps = ComponentProps<DividerSlots> & Partial<DividerCommonsUnstable>;
 
 // @public (undocumented)
 export type DividerSlots = {
@@ -34,7 +34,7 @@ export type DividerSlots = {
 };
 
 // @public (undocumented)
-export type DividerState = ComponentState<DividerSlots> & DividerCommons;
+export type DividerState = ComponentState<DividerSlots> & DividerCommonsUnstable;
 
 // @public
 export const renderDivider_unstable: (state: DividerState) => JSX.Element;

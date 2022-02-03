@@ -17,14 +17,14 @@ export const Label: ForwardRefComponent<LabelProps>;
 export const labelClassName = "fui-Label";
 
 // @public (undocumented)
-export type LabelCommons = {
+export type LabelCommonsUnstable = {
     disabled: boolean;
     size: 'small' | 'medium' | 'large';
     strong: boolean;
 };
 
 // @public
-export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommons> & {
+export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommonsUnstable> & {
     required?: boolean | IntrinsicSlotProps<'span'> | React_2.ReactNode;
 };
 
@@ -35,7 +35,7 @@ export type LabelSlots = {
 };
 
 // @public
-export type LabelState = ComponentState<LabelSlots> & LabelCommons;
+export type LabelState = ComponentState<LabelSlots> & LabelCommonsUnstable;
 
 // @public
 export const renderLabel_unstable: (state: LabelState) => JSX.Element;

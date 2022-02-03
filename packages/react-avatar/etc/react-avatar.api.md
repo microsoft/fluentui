@@ -20,7 +20,7 @@ export const Avatar: ForwardRefComponent<AvatarProps>;
 export const avatarClassName = "fui-Avatar";
 
 // @public (undocumented)
-export type AvatarCommons = Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> & {
+export type AvatarCommonsUnstable = Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> & {
     name?: string;
     size: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
     shape: 'circular' | 'square';
@@ -34,7 +34,7 @@ export type AvatarCommons = Omit<React_2.HTMLAttributes<HTMLElement>, 'children'
 export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
 
 // @public
-export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'image'> & Partial<AvatarCommons> & {
+export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'image'> & Partial<AvatarCommonsUnstable> & {
     image?: Omit<IntrinsicSlotProps<'img'>, 'children'> & {
         children?: SlotRenderFunction<React_2.HTMLAttributes<HTMLImageElement>>;
     };
@@ -52,8 +52,8 @@ export type AvatarSlots = {
 };
 
 // @public
-export type AvatarState = ComponentState<AvatarSlots> & AvatarCommons & {
-    color: Exclude<AvatarCommons['color'], 'colorful'>;
+export type AvatarState = ComponentState<AvatarSlots> & AvatarCommonsUnstable & {
+    color: Exclude<AvatarCommonsUnstable['color'], 'colorful'>;
 };
 
 // @public
