@@ -18,7 +18,9 @@ export const FAQAccordionAccessibilityScenario: React.FunctionComponent = () => 
       <h1>Frequently asked questions about Windows</h1>
       <Accordion multiple>
         <AccordionItem value="faq1">
-          <AccordionHeader>What's the difference between 32-bit and 64-bit versions of Windows?</AccordionHeader>
+          <AccordionHeader as="h2">
+            What's the difference between 32-bit and 64-bit versions of Windows?
+          </AccordionHeader>
           <AccordionPanel>
             <p>
               The terms 32-bit and 64-bit refer to the way a computer's processor (also called a CPU) handles
@@ -28,7 +30,7 @@ export const FAQAccordionAccessibilityScenario: React.FunctionComponent = () => 
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="faq2">
-          <AccordionHeader>How do I tell if my computer can run a 64-bit version of Windows?</AccordionHeader>
+          <AccordionHeader as="h2">How do I tell if my computer can run a 64-bit version of Windows?</AccordionHeader>
           <AccordionPanel>
             <p>If you have a Windows operating system installed, open File Explorer or This PC.</p>
             <ol>
@@ -46,7 +48,7 @@ export const FAQAccordionAccessibilityScenario: React.FunctionComponent = () => 
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="faq3">
-          <AccordionHeader>How do I find my Windows product key?</AccordionHeader>
+          <AccordionHeader as="h2">How do I find my Windows product key?</AccordionHeader>
           <AccordionPanel>
             <p>
               The product key is located inside the product packaging, on the receipt or confirmation page for a digital
