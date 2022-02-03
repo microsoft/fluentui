@@ -3,7 +3,6 @@
 exports[`AccordionHeader renders a default state 1`] = `
 <div
   className="fui-AccordionHeader"
-  role="heading"
 >
   <button
     aria-disabled={false}

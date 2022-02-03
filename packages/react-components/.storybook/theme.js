@@ -33,7 +33,7 @@ const theme = create({
   inputBorderRadius: 4,
 
   // Use the fluent branding for the upper left image
-  brandTitle: 'Fluent UI React vNext Components',
+  brandTitle: 'Fluent UI React Components',
   brandUrl: 'https://github.com/microsoft/fluentui',
   brandImage: logo,
 });

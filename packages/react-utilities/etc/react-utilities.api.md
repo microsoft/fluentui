@@ -66,6 +66,11 @@ export const defaultSSRContextValue: SSRContextValue;
 export const divProperties: Record<string, number>;
 
 // @public
+export type FluentTriggerComponent = {
+    isFluentTriggerComponent?: boolean;
+};
+
+// @public
 export const formProperties: Record<string, number>;
 
 // Warning: (ae-forgotten-export) The symbol "ObscureEventName" needs to be exported by the entry point index.d.ts
@@ -102,6 +107,11 @@ export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
 };
 
 // @public
+export const getTriggerChild: (children: React_2.ReactNode) => React_2.ReactElement & {
+    ref?: React_2.Ref<unknown>;
+};
+
+// @public
 export const htmlElementProperties: Record<string, number>;
 
 // @public
@@ -126,6 +136,9 @@ export type IntrinsicSlotProps<DefaultAs extends keyof JSX.IntrinsicElements, Al
 }[AlternateAs];
 
 // @public
+export const isFluentTrigger: (element: React_2.ReactElement) => boolean | undefined;
+
+// @public
 export type IsSingleton<T extends string> = {
     [K in T]: Exclude<T, K> extends never ? true : false;
 }[T];
@@ -144,9 +157,6 @@ export const olProperties: Record<string, number>;
 
 // @public
 export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
-
-// @public
-export const onlyChild: <P>(child: boolean | React_2.ReactText | React_2.ReactFragment | React_2.ReactPortal | React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>> | null | undefined) => React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>>;
 
 // @public (undocumented)
 export const optionProperties: Record<string, number>;
@@ -276,6 +286,9 @@ export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 export function useIsSSR(): boolean;
 
 // @public
+export function useMergedEventCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
+
+// @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @public
@@ -306,17 +319,6 @@ export function useSSRContext(): SSRContextValue;
 
 // @public
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
-
-// @public
-export function useTriggerElement<TriggerProps extends React_2.HTMLProps<unknown>>(options: UseTriggerElementOptions<TriggerProps>): React_2.ReactNode;
-
-// @public (undocumented)
-export type UseTriggerElementOptions<TriggerProps> = {
-    children: React_2.ReactElement | ((props: TriggerProps) => React_2.ReactNode) | null | undefined;
-    ref: React_2.Ref<unknown> | undefined;
-    outerProps: React_2.HTMLProps<unknown>;
-    overrideProps: TriggerProps;
-};
 
 // @public
 export const useUnmount: (callback: () => void) => void;

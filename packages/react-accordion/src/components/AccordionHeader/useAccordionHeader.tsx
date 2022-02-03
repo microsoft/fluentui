@@ -17,7 +17,7 @@ export const useAccordionHeader_unstable = (
   props: AccordionHeaderProps,
   ref: React.Ref<HTMLElement>,
 ): AccordionHeaderState => {
-  const { icon, button, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
+  const { as, icon, button, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
   const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext_unstable();
 
   /**
@@ -62,9 +62,8 @@ export const useAccordionHeader_unstable = (
       expandIcon: 'span',
       icon: 'div',
     },
-    root: getNativeElementProps('div', {
+    root: getNativeElementProps(as || 'div', {
       ref,
-      role: 'heading',
       ...props,
     }),
     icon: resolveShorthand(icon),
