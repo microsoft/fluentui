@@ -17,10 +17,10 @@ export const Dialog: ForwardRefComponent<DialogProps>;
 export const dialogClassName = "fui-Dialog";
 
 // @public (undocumented)
-export type DialogCommons = {};
+export type DialogCommonsUnstable = {};
 
 // @public
-export type DialogProps = ComponentProps<DialogSlots> & DialogCommons;
+export type DialogProps = ComponentProps<DialogSlots> & DialogCommonsUnstable;
 
 // @public (undocumented)
 export type DialogSlots = {
@@ -28,7 +28,7 @@ export type DialogSlots = {
 };
 
 // @public
-export type DialogState = ComponentState<DialogSlots> & DialogCommons;
+export type DialogState = ComponentState<DialogSlots> & DialogCommonsUnstable;
 
 // @public
 export const renderDialog_unstable: (state: DialogState) => JSX.Element;
