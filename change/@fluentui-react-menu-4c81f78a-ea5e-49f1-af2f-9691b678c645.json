@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "change commons type to be unstable",
+  "packageName": "@fluentui/react-menu",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
