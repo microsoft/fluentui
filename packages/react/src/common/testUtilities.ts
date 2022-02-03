@@ -54,5 +54,5 @@ export function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEve
  * https://github.com/facebook/jest/issues/2157#issuecomment-279171856
  */
 export function flushPromises() {
-  return new Promise<void>(resolve => setImmediate(resolve));
+  return new Promise<void>(resolve => setTimeout(resolve, 0));
 }

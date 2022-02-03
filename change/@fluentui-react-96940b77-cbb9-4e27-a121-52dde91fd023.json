@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Update tests to remove deprecated API usage",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}
