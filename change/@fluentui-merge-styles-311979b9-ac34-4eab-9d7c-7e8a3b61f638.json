@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add logical margins CSS properties to IRawStyleBase",
-  "packageName": "@fluentui/merge-styles",
-  "email": "beavi@microsoft.com",
-  "dependentChangeType": "patch"
-}
