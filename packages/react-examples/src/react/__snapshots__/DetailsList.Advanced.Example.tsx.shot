@@ -778,7 +778,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
             role="row"
           >
             <div
-              aria-colindex={1}
               aria-labelledby="header11-checkTooltip"
               className=
                   ms-DetailsHeader-cell
@@ -1048,7 +1047,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               Toggle selection for all items
             </label>
             <div
-              aria-colindex={2}
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -1127,8 +1125,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     }
               >
                 <span
-                  aria-describedby="header11-thumbnail-tooltip"
-                  aria-label="thumbnail"
+                  aria-label="Operations for thumbnail"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -1237,29 +1234,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                 </span>
               </span>
             </div>
-            <label
-              className=
-
-                  {
-                    border: 0px;
-                    height: 1px;
-                    margin-bottom: -1px;
-                    margin-left: -1px;
-                    margin-right: -1px;
-                    margin-top: -1px;
-                    overflow: hidden;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    position: absolute;
-                    white-space: nowrap;
-                    width: 1px;
-                  }
-              id="header11-thumbnail-tooltip"
-            >
-              Operations for thumbnail
-            </label>
             <span
               className=
 
@@ -1339,9 +1313,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   }
             />
             <div
-              aria-colindex={3}
-              aria-describedby="header11-key-tooltip"
-              aria-labelledby="header11-key-name"
+              aria-label="Operations for key"
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -1463,29 +1435,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                 </span>
               </span>
             </div>
-            <label
-              className=
-
-                  {
-                    border: 0px;
-                    height: 1px;
-                    margin-bottom: -1px;
-                    margin-left: -1px;
-                    margin-right: -1px;
-                    margin-top: -1px;
-                    overflow: hidden;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    position: absolute;
-                    white-space: nowrap;
-                    width: 1px;
-                  }
-              id="header11-key-tooltip"
-            >
-              Operations for key
-            </label>
             <span
               className=
 
@@ -1565,7 +1514,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   }
             />
             <div
-              aria-colindex={4}
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -1644,8 +1592,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     }
               >
                 <span
-                  aria-describedby="header11-name-tooltip"
-                  aria-labelledby="header11-name-name"
+                  aria-label="Operations for name"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -1699,29 +1646,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                 </span>
               </span>
             </div>
-            <label
-              className=
-
-                  {
-                    border: 0px;
-                    height: 1px;
-                    margin-bottom: -1px;
-                    margin-left: -1px;
-                    margin-right: -1px;
-                    margin-top: -1px;
-                    overflow: hidden;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    position: absolute;
-                    white-space: nowrap;
-                    width: 1px;
-                  }
-              id="header11-name-tooltip"
-            >
-              Operations for name
-            </label>
             <span
               className=
 
@@ -1801,7 +1725,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   }
             />
             <div
-              aria-colindex={5}
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -1880,8 +1803,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     }
               >
                 <span
-                  aria-describedby="header11-description-tooltip"
-                  aria-labelledby="header11-description-name"
+                  aria-label="Operations for description"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -1935,29 +1857,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                 </span>
               </span>
             </div>
-            <label
-              className=
-
-                  {
-                    border: 0px;
-                    height: 1px;
-                    margin-bottom: -1px;
-                    margin-left: -1px;
-                    margin-right: -1px;
-                    margin-top: -1px;
-                    overflow: hidden;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    position: absolute;
-                    white-space: nowrap;
-                    width: 1px;
-                  }
-              id="header11-description-tooltip"
-            >
-              Operations for description
-            </label>
             <span
               className=
 
@@ -2037,7 +1936,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   }
             />
             <div
-              aria-colindex={6}
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -2116,8 +2014,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     }
               >
                 <span
-                  aria-describedby="header11-color-tooltip"
-                  aria-labelledby="header11-color-name"
+                  aria-label="Operations for color"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -2171,29 +2068,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                 </span>
               </span>
             </div>
-            <label
-              className=
-
-                  {
-                    border: 0px;
-                    height: 1px;
-                    margin-bottom: -1px;
-                    margin-left: -1px;
-                    margin-right: -1px;
-                    margin-top: -1px;
-                    overflow: hidden;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    position: absolute;
-                    white-space: nowrap;
-                    width: 1px;
-                  }
-              id="header11-color-tooltip"
-            >
-              Operations for color
-            </label>
             <span
               className=
 
@@ -2273,7 +2147,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   }
             />
             <div
-              aria-colindex={7}
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -2352,8 +2225,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     }
               >
                 <span
-                  aria-describedby="header11-shape-tooltip"
-                  aria-labelledby="header11-shape-name"
+                  aria-label="Operations for shape"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -2407,29 +2279,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                 </span>
               </span>
             </div>
-            <label
-              className=
-
-                  {
-                    border: 0px;
-                    height: 1px;
-                    margin-bottom: -1px;
-                    margin-left: -1px;
-                    margin-right: -1px;
-                    margin-top: -1px;
-                    overflow: hidden;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    position: absolute;
-                    white-space: nowrap;
-                    width: 1px;
-                  }
-              id="header11-shape-tooltip"
-            >
-              Operations for shape
-            </label>
             <span
               className=
 
@@ -2509,7 +2358,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   }
             />
             <div
-              aria-colindex={8}
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -2588,8 +2436,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     }
               >
                 <span
-                  aria-describedby="header11-location-tooltip"
-                  aria-labelledby="header11-location-name"
+                  aria-label="Operations for location"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -2643,29 +2490,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                 </span>
               </span>
             </div>
-            <label
-              className=
-
-                  {
-                    border: 0px;
-                    height: 1px;
-                    margin-bottom: -1px;
-                    margin-left: -1px;
-                    margin-right: -1px;
-                    margin-top: -1px;
-                    overflow: hidden;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    position: absolute;
-                    white-space: nowrap;
-                    width: 1px;
-                  }
-              id="header11-location-tooltip"
-            >
-              Operations for location
-            </label>
             <span
               className=
 
@@ -2745,7 +2569,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   }
             />
             <div
-              aria-colindex={9}
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -2824,8 +2647,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     }
               >
                 <span
-                  aria-describedby="header11-width-tooltip"
-                  aria-labelledby="header11-width-name"
+                  aria-label="Operations for width"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -2879,29 +2701,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                 </span>
               </span>
             </div>
-            <label
-              className=
-
-                  {
-                    border: 0px;
-                    height: 1px;
-                    margin-bottom: -1px;
-                    margin-left: -1px;
-                    margin-right: -1px;
-                    margin-top: -1px;
-                    overflow: hidden;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    position: absolute;
-                    white-space: nowrap;
-                    width: 1px;
-                  }
-              id="header11-width-tooltip"
-            >
-              Operations for width
-            </label>
             <span
               className=
 
@@ -2981,7 +2780,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   }
             />
             <div
-              aria-colindex={10}
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -3060,8 +2858,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     }
               >
                 <span
-                  aria-describedby="header11-height-tooltip"
-                  aria-labelledby="header11-height-name"
+                  aria-label="Operations for height"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -3115,29 +2912,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                 </span>
               </span>
             </div>
-            <label
-              className=
-
-                  {
-                    border: 0px;
-                    height: 1px;
-                    margin-bottom: -1px;
-                    margin-left: -1px;
-                    margin-right: -1px;
-                    margin-top: -1px;
-                    overflow: hidden;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    position: absolute;
-                    white-space: nowrap;
-                    width: 1px;
-                  }
-              id="header11-height-tooltip"
-            >
-              Operations for height
-            </label>
             <span
               className=
 
@@ -3365,7 +3139,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -3612,7 +3385,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3669,7 +3441,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             //via.placeholder.com/150x150
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3787,7 +3558,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3901,7 +3671,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3998,7 +3767,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Lorem ipsum dolor sit amet
                           </div>
                           <div
-                            aria-colindex={6}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4055,7 +3823,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             red
                           </div>
                           <div
-                            aria-colindex={7}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4112,7 +3879,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             circle
                           </div>
                           <div
-                            aria-colindex={8}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4169,7 +3935,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Seattle
                           </div>
                           <div
-                            aria-colindex={9}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4226,7 +3991,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             150
                           </div>
                           <div
-                            aria-colindex={10}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4400,7 +4164,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -4647,7 +4410,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4704,7 +4466,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             //via.placeholder.com/150x150
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4822,7 +4583,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4936,7 +4696,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5033,7 +4792,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Lorem ipsum dolor sit amet
                           </div>
                           <div
-                            aria-colindex={6}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5090,7 +4848,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             red
                           </div>
                           <div
-                            aria-colindex={7}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5147,7 +4904,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             circle
                           </div>
                           <div
-                            aria-colindex={8}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5204,7 +4960,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Seattle
                           </div>
                           <div
-                            aria-colindex={9}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5261,7 +5016,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             150
                           </div>
                           <div
-                            aria-colindex={10}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5435,7 +5189,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -5682,7 +5435,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5739,7 +5491,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             //via.placeholder.com/150x150
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5857,7 +5608,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5971,7 +5721,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -6068,7 +5817,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Lorem ipsum dolor sit amet
                           </div>
                           <div
-                            aria-colindex={6}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -6125,7 +5873,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             red
                           </div>
                           <div
-                            aria-colindex={7}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -6182,7 +5929,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             circle
                           </div>
                           <div
-                            aria-colindex={8}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -6239,7 +5985,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Seattle
                           </div>
                           <div
-                            aria-colindex={9}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -6296,7 +6041,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             150
                           </div>
                           <div
-                            aria-colindex={10}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -6470,7 +6214,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -6717,7 +6460,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -6774,7 +6516,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             //via.placeholder.com/150x150
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -6892,7 +6633,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -7006,7 +6746,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -7103,7 +6842,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Lorem ipsum dolor sit amet
                           </div>
                           <div
-                            aria-colindex={6}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -7160,7 +6898,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             red
                           </div>
                           <div
-                            aria-colindex={7}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -7217,7 +6954,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             circle
                           </div>
                           <div
-                            aria-colindex={8}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -7274,7 +7010,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Seattle
                           </div>
                           <div
-                            aria-colindex={9}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -7331,7 +7066,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             150
                           </div>
                           <div
-                            aria-colindex={10}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -7505,7 +7239,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -7752,7 +7485,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -7809,7 +7541,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             //via.placeholder.com/150x150
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -7927,7 +7658,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -8041,7 +7771,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -8138,7 +7867,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Lorem ipsum dolor sit amet
                           </div>
                           <div
-                            aria-colindex={6}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -8195,7 +7923,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             red
                           </div>
                           <div
-                            aria-colindex={7}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -8252,7 +7979,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             circle
                           </div>
                           <div
-                            aria-colindex={8}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -8309,7 +8035,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Seattle
                           </div>
                           <div
-                            aria-colindex={9}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -8366,7 +8091,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             150
                           </div>
                           <div
-                            aria-colindex={10}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -8540,7 +8264,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -8787,7 +8510,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -8844,7 +8566,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             //via.placeholder.com/150x150
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -8962,7 +8683,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -9076,7 +8796,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -9173,7 +8892,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Lorem ipsum dolor sit amet
                           </div>
                           <div
-                            aria-colindex={6}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -9230,7 +8948,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             red
                           </div>
                           <div
-                            aria-colindex={7}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -9287,7 +9004,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             circle
                           </div>
                           <div
-                            aria-colindex={8}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -9344,7 +9060,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Seattle
                           </div>
                           <div
-                            aria-colindex={9}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -9401,7 +9116,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             150
                           </div>
                           <div
-                            aria-colindex={10}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -9575,7 +9289,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -9822,7 +9535,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -9879,7 +9591,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             //via.placeholder.com/150x150
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -9997,7 +9708,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -10111,7 +9821,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -10208,7 +9917,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Lorem ipsum dolor sit amet
                           </div>
                           <div
-                            aria-colindex={6}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -10265,7 +9973,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             red
                           </div>
                           <div
-                            aria-colindex={7}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -10322,7 +10029,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             circle
                           </div>
                           <div
-                            aria-colindex={8}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -10379,7 +10085,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Seattle
                           </div>
                           <div
-                            aria-colindex={9}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -10436,7 +10141,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             150
                           </div>
                           <div
-                            aria-colindex={10}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -10610,7 +10314,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -10857,7 +10560,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -10914,7 +10616,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             //via.placeholder.com/150x150
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -11032,7 +10733,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -11146,7 +10846,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -11243,7 +10942,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Lorem ipsum dolor sit amet
                           </div>
                           <div
-                            aria-colindex={6}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -11300,7 +10998,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             red
                           </div>
                           <div
-                            aria-colindex={7}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -11357,7 +11054,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             circle
                           </div>
                           <div
-                            aria-colindex={8}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -11414,7 +11110,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Seattle
                           </div>
                           <div
-                            aria-colindex={9}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -11471,7 +11166,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             150
                           </div>
                           <div
-                            aria-colindex={10}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -11645,7 +11339,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -11892,7 +11585,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -11949,7 +11641,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             //via.placeholder.com/150x150
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -12067,7 +11758,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -12181,7 +11871,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -12278,7 +11967,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Lorem ipsum dolor sit amet
                           </div>
                           <div
-                            aria-colindex={6}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -12335,7 +12023,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             red
                           </div>
                           <div
-                            aria-colindex={7}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -12392,7 +12079,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             circle
                           </div>
                           <div
-                            aria-colindex={8}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -12449,7 +12135,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Seattle
                           </div>
                           <div
-                            aria-colindex={9}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -12506,7 +12191,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             150
                           </div>
                           <div
-                            aria-colindex={10}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -12680,7 +12364,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -12927,7 +12610,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -12984,7 +12666,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             //via.placeholder.com/150x150
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -13102,7 +12783,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -13216,7 +12896,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             </a>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -13313,7 +12992,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Lorem ipsum dolor sit amet
                           </div>
                           <div
-                            aria-colindex={6}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -13370,7 +13048,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             red
                           </div>
                           <div
-                            aria-colindex={7}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -13427,7 +13104,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             circle
                           </div>
                           <div
-                            aria-colindex={8}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -13484,7 +13160,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             Seattle
                           </div>
                           <div
-                            aria-colindex={9}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -13541,7 +13216,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             150
                           </div>
                           <div
-                            aria-colindex={10}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell

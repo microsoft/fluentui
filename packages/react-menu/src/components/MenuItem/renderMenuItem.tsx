@@ -5,7 +5,7 @@ import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
 /**
  * Function that renders the final JSX of the component
  */
-export const renderMenuItem = (state: MenuItemState) => {
+export const renderMenuItem_unstable = (state: MenuItemState) => {
   const { slots, slotProps } = getSlots<MenuItemSlots>(state);
 
   return (

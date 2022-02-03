@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Using ComponentSlotProps instead of ObjectShorthandProps.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

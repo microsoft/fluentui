@@ -1,24 +1,24 @@
 import * as React from 'react';
 import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
-import { usePopoverContext } from '../../popoverContext';
+import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 
 /**
  * Create the state required to render PopoverTrigger.
  *
  * The returned state can be modified with hooks such as usePopoverTriggerStyles,
- * before being passed to renderPopoverTrigger.
+ * before being passed to renderPopoverTrigger_unstable.
  *
  * @param props - props from this instance of PopoverTrigger
  */
-export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerState => {
-  const setOpen = usePopoverContext(context => context.setOpen);
-  const open = usePopoverContext(context => context.open);
-  const triggerRef = usePopoverContext(context => context.triggerRef);
-  const openOnHover = usePopoverContext(context => context.openOnHover);
-  const openOnContext = usePopoverContext(context => context.openOnContext);
-  const trapFocus = usePopoverContext(context => context.trapFocus);
+export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverTriggerState => {
+  const setOpen = usePopoverContext_unstable(context => context.setOpen);
+  const open = usePopoverContext_unstable(context => context.open);
+  const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
+  const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
+  const openOnContext = usePopoverContext_unstable(context => context.openOnContext);
+  const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
   const { triggerAttributes } = useModalAttributes();
 
   const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {

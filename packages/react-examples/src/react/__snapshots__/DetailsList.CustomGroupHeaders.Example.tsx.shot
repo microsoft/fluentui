@@ -293,7 +293,6 @@ Array [
             role="row"
           >
             <div
-              aria-colindex={1}
               aria-labelledby="header2-checkTooltip"
               className=
                   ms-DetailsHeader-cell
@@ -649,7 +648,6 @@ Array [
               </i>
             </div>
             <div
-              aria-colindex={2}
               aria-labelledby="header2-thumbnail-name"
               aria-sort="none"
               className=
@@ -838,7 +836,6 @@ Array [
               role="button"
             />
             <div
-              aria-colindex={3}
               aria-labelledby="header2-key-name"
               aria-sort="none"
               className=
@@ -1027,7 +1024,6 @@ Array [
               role="button"
             />
             <div
-              aria-colindex={4}
               aria-labelledby="header2-name-name"
               aria-sort="none"
               className=
@@ -1216,7 +1212,6 @@ Array [
               role="button"
             />
             <div
-              aria-colindex={5}
               aria-labelledby="header2-description-name"
               aria-sort="none"
               className=
@@ -1405,7 +1400,6 @@ Array [
               role="button"
             />
             <div
-              aria-colindex={6}
               aria-labelledby="header2-color-name"
               aria-sort="none"
               className=
@@ -1594,7 +1588,6 @@ Array [
               role="button"
             />
             <div
-              aria-colindex={7}
               aria-labelledby="header2-shape-name"
               aria-sort="none"
               className=
@@ -1783,7 +1776,6 @@ Array [
               role="button"
             />
             <div
-              aria-colindex={8}
               aria-labelledby="header2-location-name"
               aria-sort="none"
               className=
@@ -1972,7 +1964,6 @@ Array [
               role="button"
             />
             <div
-              aria-colindex={9}
               aria-labelledby="header2-width-name"
               aria-sort="none"
               className=
@@ -2161,7 +2152,6 @@ Array [
               role="button"
             />
             <div
-              aria-colindex={10}
               aria-labelledby="header2-height-name"
               aria-sort="none"
               className=
@@ -2741,7 +2731,6 @@ Array [
                                   }
                                 >
                                   <div
-                                    aria-colindex={1}
                                     className=
                                         ms-DetailsRow-cell
                                         ms-DetailsRow-cellCheck
@@ -2998,7 +2987,6 @@ Array [
                                     role="presentation"
                                   >
                                     <div
-                                      aria-colindex={3}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -3055,7 +3043,6 @@ Array [
                                       //via.placeholder.com/150x150
                                     </div>
                                     <div
-                                      aria-colindex={4}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -3112,7 +3099,6 @@ Array [
                                       item-0 Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={5}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -3169,7 +3155,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={6}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -3226,7 +3211,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={7}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -3283,7 +3267,6 @@ Array [
                                       red
                                     </div>
                                     <div
-                                      aria-colindex={8}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -3340,7 +3323,6 @@ Array [
                                       circle
                                     </div>
                                     <div
-                                      aria-colindex={9}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -3397,7 +3379,6 @@ Array [
                                       Seattle
                                     </div>
                                     <div
-                                      aria-colindex={10}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -3454,7 +3435,6 @@ Array [
                                       150
                                     </div>
                                     <div
-                                      aria-colindex={11}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -3629,7 +3609,6 @@ Array [
                                   }
                                 >
                                   <div
-                                    aria-colindex={1}
                                     className=
                                         ms-DetailsRow-cell
                                         ms-DetailsRow-cellCheck
@@ -3886,7 +3865,6 @@ Array [
                                     role="presentation"
                                   >
                                     <div
-                                      aria-colindex={3}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -3943,7 +3921,6 @@ Array [
                                       //via.placeholder.com/150x150
                                     </div>
                                     <div
-                                      aria-colindex={4}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -4000,7 +3977,6 @@ Array [
                                       item-1 Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={5}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -4057,7 +4033,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={6}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -4114,7 +4089,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={7}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -4171,7 +4145,6 @@ Array [
                                       red
                                     </div>
                                     <div
-                                      aria-colindex={8}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -4228,7 +4201,6 @@ Array [
                                       circle
                                     </div>
                                     <div
-                                      aria-colindex={9}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -4285,7 +4257,6 @@ Array [
                                       Seattle
                                     </div>
                                     <div
-                                      aria-colindex={10}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -4342,7 +4313,6 @@ Array [
                                       150
                                     </div>
                                     <div
-                                      aria-colindex={11}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -4517,7 +4487,6 @@ Array [
                                   }
                                 >
                                   <div
-                                    aria-colindex={1}
                                     className=
                                         ms-DetailsRow-cell
                                         ms-DetailsRow-cellCheck
@@ -4774,7 +4743,6 @@ Array [
                                     role="presentation"
                                   >
                                     <div
-                                      aria-colindex={3}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -4831,7 +4799,6 @@ Array [
                                       //via.placeholder.com/150x150
                                     </div>
                                     <div
-                                      aria-colindex={4}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -4888,7 +4855,6 @@ Array [
                                       item-2 Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={5}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -4945,7 +4911,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={6}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -5002,7 +4967,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={7}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -5059,7 +5023,6 @@ Array [
                                       red
                                     </div>
                                     <div
-                                      aria-colindex={8}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -5116,7 +5079,6 @@ Array [
                                       circle
                                     </div>
                                     <div
-                                      aria-colindex={9}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -5173,7 +5135,6 @@ Array [
                                       Seattle
                                     </div>
                                     <div
-                                      aria-colindex={10}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -5230,7 +5191,6 @@ Array [
                                       150
                                     </div>
                                     <div
-                                      aria-colindex={11}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -5405,7 +5365,6 @@ Array [
                                   }
                                 >
                                   <div
-                                    aria-colindex={1}
                                     className=
                                         ms-DetailsRow-cell
                                         ms-DetailsRow-cellCheck
@@ -5662,7 +5621,6 @@ Array [
                                     role="presentation"
                                   >
                                     <div
-                                      aria-colindex={3}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -5719,7 +5677,6 @@ Array [
                                       //via.placeholder.com/150x150
                                     </div>
                                     <div
-                                      aria-colindex={4}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -5776,7 +5733,6 @@ Array [
                                       item-3 Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={5}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -5833,7 +5789,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={6}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -5890,7 +5845,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={7}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -5947,7 +5901,6 @@ Array [
                                       red
                                     </div>
                                     <div
-                                      aria-colindex={8}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -6004,7 +5957,6 @@ Array [
                                       circle
                                     </div>
                                     <div
-                                      aria-colindex={9}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -6061,7 +6013,6 @@ Array [
                                       Seattle
                                     </div>
                                     <div
-                                      aria-colindex={10}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -6118,7 +6069,6 @@ Array [
                                       150
                                     </div>
                                     <div
-                                      aria-colindex={11}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -6293,7 +6243,6 @@ Array [
                                   }
                                 >
                                   <div
-                                    aria-colindex={1}
                                     className=
                                         ms-DetailsRow-cell
                                         ms-DetailsRow-cellCheck
@@ -6550,7 +6499,6 @@ Array [
                                     role="presentation"
                                   >
                                     <div
-                                      aria-colindex={3}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -6607,7 +6555,6 @@ Array [
                                       //via.placeholder.com/150x150
                                     </div>
                                     <div
-                                      aria-colindex={4}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -6664,7 +6611,6 @@ Array [
                                       item-4 Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={5}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -6721,7 +6667,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={6}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -6778,7 +6723,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={7}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -6835,7 +6779,6 @@ Array [
                                       red
                                     </div>
                                     <div
-                                      aria-colindex={8}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -6892,7 +6835,6 @@ Array [
                                       circle
                                     </div>
                                     <div
-                                      aria-colindex={9}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -6949,7 +6891,6 @@ Array [
                                       Seattle
                                     </div>
                                     <div
-                                      aria-colindex={10}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -7006,7 +6947,6 @@ Array [
                                       150
                                     </div>
                                     <div
-                                      aria-colindex={11}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -7181,7 +7121,6 @@ Array [
                                   }
                                 >
                                   <div
-                                    aria-colindex={1}
                                     className=
                                         ms-DetailsRow-cell
                                         ms-DetailsRow-cellCheck
@@ -7438,7 +7377,6 @@ Array [
                                     role="presentation"
                                   >
                                     <div
-                                      aria-colindex={3}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -7495,7 +7433,6 @@ Array [
                                       //via.placeholder.com/150x150
                                     </div>
                                     <div
-                                      aria-colindex={4}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -7552,7 +7489,6 @@ Array [
                                       item-5 Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={5}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -7609,7 +7545,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={6}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -7666,7 +7601,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={7}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -7723,7 +7657,6 @@ Array [
                                       red
                                     </div>
                                     <div
-                                      aria-colindex={8}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -7780,7 +7713,6 @@ Array [
                                       circle
                                     </div>
                                     <div
-                                      aria-colindex={9}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -7837,7 +7769,6 @@ Array [
                                       Seattle
                                     </div>
                                     <div
-                                      aria-colindex={10}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -7894,7 +7825,6 @@ Array [
                                       150
                                     </div>
                                     <div
-                                      aria-colindex={11}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -8069,7 +7999,6 @@ Array [
                                   }
                                 >
                                   <div
-                                    aria-colindex={1}
                                     className=
                                         ms-DetailsRow-cell
                                         ms-DetailsRow-cellCheck
@@ -8326,7 +8255,6 @@ Array [
                                     role="presentation"
                                   >
                                     <div
-                                      aria-colindex={3}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -8383,7 +8311,6 @@ Array [
                                       //via.placeholder.com/150x150
                                     </div>
                                     <div
-                                      aria-colindex={4}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -8440,7 +8367,6 @@ Array [
                                       item-6 Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={5}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -8497,7 +8423,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={6}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -8554,7 +8479,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={7}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -8611,7 +8535,6 @@ Array [
                                       red
                                     </div>
                                     <div
-                                      aria-colindex={8}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -8668,7 +8591,6 @@ Array [
                                       circle
                                     </div>
                                     <div
-                                      aria-colindex={9}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -8725,7 +8647,6 @@ Array [
                                       Seattle
                                     </div>
                                     <div
-                                      aria-colindex={10}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -8782,7 +8703,6 @@ Array [
                                       150
                                     </div>
                                     <div
-                                      aria-colindex={11}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -8957,7 +8877,6 @@ Array [
                                   }
                                 >
                                   <div
-                                    aria-colindex={1}
                                     className=
                                         ms-DetailsRow-cell
                                         ms-DetailsRow-cellCheck
@@ -9214,7 +9133,6 @@ Array [
                                     role="presentation"
                                   >
                                     <div
-                                      aria-colindex={3}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -9271,7 +9189,6 @@ Array [
                                       //via.placeholder.com/150x150
                                     </div>
                                     <div
-                                      aria-colindex={4}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -9328,7 +9245,6 @@ Array [
                                       item-7 Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={5}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -9385,7 +9301,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={6}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -9442,7 +9357,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={7}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -9499,7 +9413,6 @@ Array [
                                       red
                                     </div>
                                     <div
-                                      aria-colindex={8}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -9556,7 +9469,6 @@ Array [
                                       circle
                                     </div>
                                     <div
-                                      aria-colindex={9}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -9613,7 +9525,6 @@ Array [
                                       Seattle
                                     </div>
                                     <div
-                                      aria-colindex={10}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -9670,7 +9581,6 @@ Array [
                                       150
                                     </div>
                                     <div
-                                      aria-colindex={11}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -9845,7 +9755,6 @@ Array [
                                   }
                                 >
                                   <div
-                                    aria-colindex={1}
                                     className=
                                         ms-DetailsRow-cell
                                         ms-DetailsRow-cellCheck
@@ -10102,7 +10011,6 @@ Array [
                                     role="presentation"
                                   >
                                     <div
-                                      aria-colindex={3}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -10159,7 +10067,6 @@ Array [
                                       //via.placeholder.com/150x150
                                     </div>
                                     <div
-                                      aria-colindex={4}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -10216,7 +10123,6 @@ Array [
                                       item-8 Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={5}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -10273,7 +10179,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={6}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -10330,7 +10235,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={7}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -10387,7 +10291,6 @@ Array [
                                       red
                                     </div>
                                     <div
-                                      aria-colindex={8}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -10444,7 +10347,6 @@ Array [
                                       circle
                                     </div>
                                     <div
-                                      aria-colindex={9}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -10501,7 +10403,6 @@ Array [
                                       Seattle
                                     </div>
                                     <div
-                                      aria-colindex={10}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -10558,7 +10459,6 @@ Array [
                                       150
                                     </div>
                                     <div
-                                      aria-colindex={11}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -10733,7 +10633,6 @@ Array [
                                   }
                                 >
                                   <div
-                                    aria-colindex={1}
                                     className=
                                         ms-DetailsRow-cell
                                         ms-DetailsRow-cellCheck
@@ -10990,7 +10889,6 @@ Array [
                                     role="presentation"
                                   >
                                     <div
-                                      aria-colindex={3}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -11047,7 +10945,6 @@ Array [
                                       //via.placeholder.com/150x150
                                     </div>
                                     <div
-                                      aria-colindex={4}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -11104,7 +11001,6 @@ Array [
                                       item-9 Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={5}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -11161,7 +11057,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={6}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -11218,7 +11113,6 @@ Array [
                                       Lorem ipsum dolor sit amet
                                     </div>
                                     <div
-                                      aria-colindex={7}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -11275,7 +11169,6 @@ Array [
                                       red
                                     </div>
                                     <div
-                                      aria-colindex={8}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -11332,7 +11225,6 @@ Array [
                                       circle
                                     </div>
                                     <div
-                                      aria-colindex={9}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -11389,7 +11281,6 @@ Array [
                                       Seattle
                                     </div>
                                     <div
-                                      aria-colindex={10}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
@@ -11446,7 +11337,6 @@ Array [
                                       150
                                     </div>
                                     <div
-                                      aria-colindex={11}
                                       aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell

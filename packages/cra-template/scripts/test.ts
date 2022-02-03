@@ -77,14 +77,6 @@ async function runE2ETest() {
 
   logger('STEP 2. Create test React app from template');
   await prepareCreateReactApp(tempPaths, `file:${templatePath}`);
-  /**
-   * This is a temporary quick-fix solution. Remove once issue with mini-css-extract-plugin
-   * is resolved @see https://github.com/facebook/create-react-app/issues/11930
-   */
-  const parsedJSON = JSON.parse(fs.readFileSync(`${tempPaths.testApp}/package.json`, 'utf-8'));
-  parsedJSON.resolutions['mini-css-extract-plugin'] = '2.4.5';
-  fs.writeFileSync(`${tempPaths.testApp}/package.json`, JSON.stringify(parsedJSON));
-
   await shEcho('yarn add cross-env', tempPaths.testApp);
   logger(`✔️ Test React app is successfully created: ${tempPaths.testApp}`);
 

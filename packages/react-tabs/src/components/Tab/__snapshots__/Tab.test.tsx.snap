@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tab renders default correctly 1`] = `
+exports[`Tab renders correctly 1`] = `
 <div>
   <div
     class="fui-Tab"
@@ -49,54 +49,6 @@ exports[`Tab renders default correctly with icon slotted 1`] = `
 </div>
 `;
 
-exports[`Tab renders not selected correctly 1`] = `
-<div>
-  <div
-    class="fui-Tab"
-    role="tab"
-    tabindex="0"
-  >
-    <span
-      class=""
-    >
-      Default Tab
-    </span>
-  </div>
-</div>
-`;
-
-exports[`Tab renders selected correctly 1`] = `
-<div>
-  <div
-    class="fui-Tab"
-    role="tab"
-    tabindex="0"
-  >
-    <span
-      class=""
-    >
-      Default Tab
-    </span>
-  </div>
-</div>
-`;
-
-exports[`Tab renders small size and vertical correctly 1`] = `
-<div>
-  <div
-    class="fui-Tab"
-    role="tab"
-    tabindex="0"
-  >
-    <span
-      class=""
-    >
-      Default Tab
-    </span>
-  </div>
-</div>
-`;
-
 exports[`Tab renders small size and vertical correctly with icon slotted 1`] = `
 <div>
   <div
@@ -121,22 +73,6 @@ exports[`Tab renders small size and vertical correctly with icon slotted 1`] = `
         />
       </svg>
     </span>
-    <span
-      class=""
-    >
-      Default Tab
-    </span>
-  </div>
-</div>
-`;
-
-exports[`Tab renders small size correctly 1`] = `
-<div>
-  <div
-    class="fui-Tab"
-    role="tab"
-    tabindex="0"
-  >
     <span
       class=""
     >
@@ -179,22 +115,6 @@ exports[`Tab renders small size correctly with icon slotted 1`] = `
 </div>
 `;
 
-exports[`Tab renders subtle appearance correctly 1`] = `
-<div>
-  <div
-    class="fui-Tab"
-    role="tab"
-    tabindex="0"
-  >
-    <span
-      class=""
-    >
-      Default Tab
-    </span>
-  </div>
-</div>
-`;
-
 exports[`Tab renders subtle appearance correctly with icon slotted 1`] = `
 <div>
   <div
@@ -219,22 +139,6 @@ exports[`Tab renders subtle appearance correctly with icon slotted 1`] = `
         />
       </svg>
     </span>
-    <span
-      class=""
-    >
-      Default Tab
-    </span>
-  </div>
-</div>
-`;
-
-exports[`Tab renders vertical correctly 1`] = `
-<div>
-  <div
-    class="fui-Tab"
-    role="tab"
-    tabindex="0"
-  >
     <span
       class=""
     >

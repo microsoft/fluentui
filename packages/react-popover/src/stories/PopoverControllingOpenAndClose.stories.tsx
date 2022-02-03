@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles } from '@griffel/react';
 
 import { PopoverProps, Popover, PopoverTrigger, PopoverSurface } from '../index';
 

@@ -7,7 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -29,23 +29,23 @@ export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
 
 // @public (undocumented)
 export type LinkSlots = {
-    root: IntrinsicShorthandProps<'a', 'button'>;
+    root: IntrinsicSlotProps<'a', 'button'>;
 };
 
 // @public (undocumented)
 export type LinkState = ComponentState<LinkSlots> & LinkCommons;
 
 // @public
-export const renderLink: (state: LinkState) => JSX.Element;
+export const renderLink_unstable: (state: LinkState) => JSX.Element;
 
 // @public
-export const useLink: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement>) => LinkState;
+export const useLink_unstable: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement>) => LinkState;
 
 // @public
-export const useLinkState: (state: LinkState) => LinkState;
+export const useLinkState_unstable: (state: LinkState) => LinkState;
 
 // @public (undocumented)
-export const useLinkStyles: (state: LinkState) => LinkState;
+export const useLinkStyles_unstable: (state: LinkState) => LinkState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -8,8 +8,9 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { usePopperMouseTarget } from '@fluentui/react-positioning';
@@ -51,7 +52,7 @@ export type MenuDividerProps = ComponentProps<MenuDividerSlots>;
 
 // @public (undocumented)
 export type MenuDividerSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public (undocumented)
@@ -87,7 +88,7 @@ export type MenuGroupHeaderProps = ComponentProps<MenuGroupHeaderSlots>;
 
 // @public (undocumented)
 export type MenuGroupHeaderSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public (undocumented)
@@ -98,7 +99,7 @@ export type MenuGroupProps = ComponentProps<MenuGroupSlots>;
 
 // @public (undocumented)
 export type MenuGroupSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public (undocumented)
@@ -156,12 +157,12 @@ export type MenuItemSelectableState = MenuItemSelectableProps & {
 
 // @public (undocumented)
 export type MenuItemSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    icon?: IntrinsicShorthandProps<'span'>;
-    checkmark?: IntrinsicShorthandProps<'span'>;
-    submenuIndicator?: IntrinsicShorthandProps<'span'>;
-    content?: IntrinsicShorthandProps<'span'>;
-    secondaryContent?: IntrinsicShorthandProps<'span'>;
+    root: IntrinsicSlotProps<'div'>;
+    icon?: IntrinsicSlotProps<'span'>;
+    checkmark?: IntrinsicSlotProps<'span'>;
+    submenuIndicator?: IntrinsicSlotProps<'span'>;
+    content?: IntrinsicSlotProps<'span'>;
+    secondaryContent?: IntrinsicSlotProps<'span'>;
 };
 
 // @public (undocumented)
@@ -205,7 +206,7 @@ export const MenuListProvider: React_2.Provider<MenuListContextValue> & React_2.
 
 // @public (undocumented)
 export type MenuListSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public (undocumented)
@@ -236,7 +237,7 @@ export type MenuPopoverProps = ComponentProps<MenuPopoverSlots>;
 
 // @public (undocumented)
 export type MenuPopoverSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public
@@ -272,7 +273,7 @@ export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots> & MenuSpli
 
 // @public (undocumented)
 export type MenuSplitGroupSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public
@@ -292,10 +293,10 @@ export type MenuState = MenuCommons & ComponentState<MenuSlots> & {
 };
 
 // @public
-export const MenuTrigger: React_2.FC<MenuTriggerProps>;
+export const MenuTrigger: React_2.FC<MenuTriggerProps> & FluentTriggerComponent;
 
 // @public
-export type MenuTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'id'>> & {
+export type MenuTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onMouseMove' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'id'>> & {
     ref?: React_2.Ref<never>;
     'aria-expanded': boolean | undefined;
 };
@@ -311,40 +312,42 @@ export type MenuTriggerProps = {
 };
 
 // @public (undocumented)
-export type MenuTriggerState = MenuTriggerProps;
+export type MenuTriggerState = {
+    children: React_2.ReactNode;
+};
 
 // @public
-export const renderMenu: (state: MenuState, contextValues: MenuContextValues) => JSX.Element;
+export const renderMenu_unstable: (state: MenuState, contextValues: MenuContextValues) => JSX.Element;
 
 // @public
-export const renderMenuDivider: (state: MenuDividerState) => JSX.Element;
+export const renderMenuDivider_unstable: (state: MenuDividerState) => JSX.Element;
 
 // @public
-export const renderMenuGroup: (state: MenuGroupState, contextValues: MenuGroupContextValues) => JSX.Element;
+export const renderMenuGroup_unstable: (state: MenuGroupState, contextValues: MenuGroupContextValues) => JSX.Element;
 
 // @public
-export const renderMenuGroupHeader: (state: MenuGroupHeaderState) => JSX.Element;
+export const renderMenuGroupHeader_unstable: (state: MenuGroupHeaderState) => JSX.Element;
 
 // @public
-export const renderMenuItem: (state: MenuItemState) => JSX.Element;
+export const renderMenuItem_unstable: (state: MenuItemState) => JSX.Element;
 
 // @public
-export const renderMenuItemCheckbox: (state: MenuItemCheckboxState) => JSX.Element;
+export const renderMenuItemCheckbox_unstable: (state: MenuItemCheckboxState) => JSX.Element;
 
 // @public
-export const renderMenuItemRadio: (state: MenuItemRadioState) => JSX.Element;
+export const renderMenuItemRadio_unstable: (state: MenuItemRadioState) => JSX.Element;
 
 // @public
-export const renderMenuList: (state: MenuListState, contextValues: MenuListContextValues) => JSX.Element;
+export const renderMenuList_unstable: (state: MenuListState, contextValues: MenuListContextValues) => JSX.Element;
 
 // @public
-export const renderMenuPopover: (state: MenuPopoverState) => JSX.Element;
+export const renderMenuPopover_unstable: (state: MenuPopoverState) => JSX.Element;
 
 // @public
-export const renderMenuSplitGroup: (state: MenuSplitGroupState) => JSX.Element;
+export const renderMenuSplitGroup_unstable: (state: MenuSplitGroupState) => JSX.Element;
 
 // @public
-export const renderMenuTrigger: (state: MenuTriggerState) => JSX.Element;
+export const renderMenuTrigger_unstable: (state: MenuTriggerState) => JSX.Element;
 
 // @public (undocumented)
 export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, name: string, value: string, checked: boolean) => void;
@@ -353,88 +356,88 @@ export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, 
 export type UninitializedMenuListState = Omit<MenuListState, 'setFocusByFirstCharacter' | 'toggleCheckbox' | 'selectRadio' | 'checkedValues'> & Partial<Pick<MenuListState, 'checkedValues'>>;
 
 // @public
-export const useCheckmarkStyles: (state: MenuItemSelectableState & Pick<MenuItemSlots, 'checkmark'>) => void;
+export const useCheckmarkStyles_unstable: (state: MenuItemSelectableState & Pick<MenuItemSlots, 'checkmark'>) => void;
 
 // @public
-export const useMenu: (props: MenuProps) => MenuState;
+export const useMenu_unstable: (props: MenuProps) => MenuState;
 
 // @public (undocumented)
-export const useMenuContext: <T>(selector: ContextSelector<MenuContextValue, T>) => T;
+export const useMenuContext_unstable: <T>(selector: ContextSelector<MenuContextValue, T>) => T;
 
 // @public (undocumented)
-export function useMenuContextValues(state: MenuState): MenuContextValues;
+export function useMenuContextValues_unstable(state: MenuState): MenuContextValues;
 
 // @public
-export const useMenuDivider: (props: MenuDividerProps, ref: React_2.Ref<HTMLElement>) => MenuDividerState;
+export const useMenuDivider_unstable: (props: MenuDividerProps, ref: React_2.Ref<HTMLElement>) => MenuDividerState;
 
 // @public (undocumented)
-export const useMenuDividerStyles: (state: MenuDividerState) => MenuDividerState;
+export const useMenuDividerStyles_unstable: (state: MenuDividerState) => MenuDividerState;
 
 // @public
-export function useMenuGroup(props: MenuGroupProps, ref: React_2.Ref<HTMLElement>): MenuGroupState;
+export function useMenuGroup_unstable(props: MenuGroupProps, ref: React_2.Ref<HTMLElement>): MenuGroupState;
 
 // @public (undocumented)
-export const useMenuGroupContext: () => MenuGroupContextValue;
+export const useMenuGroupContext_unstable: () => MenuGroupContextValue;
 
 // @public (undocumented)
-export function useMenuGroupContextValues(state: MenuGroupState): MenuGroupContextValues;
+export function useMenuGroupContextValues_unstable(state: MenuGroupState): MenuGroupContextValues;
 
 // @public
-export function useMenuGroupHeader(props: MenuGroupHeaderProps, ref: React_2.Ref<HTMLElement>): MenuGroupHeaderState;
+export function useMenuGroupHeader_unstable(props: MenuGroupHeaderProps, ref: React_2.Ref<HTMLElement>): MenuGroupHeaderState;
 
 // @public (undocumented)
-export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => MenuGroupHeaderState;
+export const useMenuGroupHeaderStyles_unstable: (state: MenuGroupHeaderState) => MenuGroupHeaderState;
 
 // @public (undocumented)
-export const useMenuGroupStyles: (state: MenuGroupState) => MenuGroupState;
+export const useMenuGroupStyles_unstable: (state: MenuGroupState) => MenuGroupState;
 
 // @public
-export const useMenuItem: (props: MenuItemProps, ref: React_2.Ref<HTMLElement>) => MenuItemState;
+export const useMenuItem_unstable: (props: MenuItemProps, ref: React_2.Ref<HTMLElement>) => MenuItemState;
 
 // @public
-export const useMenuItemCheckbox: (props: MenuItemCheckboxProps, ref: React_2.Ref<HTMLElement>) => MenuItemCheckboxState;
+export const useMenuItemCheckbox_unstable: (props: MenuItemCheckboxProps, ref: React_2.Ref<HTMLElement>) => MenuItemCheckboxState;
 
 // @public (undocumented)
-export const useMenuItemCheckboxStyles: (state: MenuItemCheckboxState) => void;
+export const useMenuItemCheckboxStyles_unstable: (state: MenuItemCheckboxState) => void;
 
 // @public
-export const useMenuItemRadio: (props: MenuItemRadioProps, ref: React_2.Ref<HTMLElement>) => MenuItemRadioState;
+export const useMenuItemRadio_unstable: (props: MenuItemRadioProps, ref: React_2.Ref<HTMLElement>) => MenuItemRadioState;
 
 // @public (undocumented)
-export const useMenuItemRadioStyles: (state: MenuItemRadioState) => void;
+export const useMenuItemRadioStyles_unstable: (state: MenuItemRadioState) => void;
 
 // @public
-export const useMenuItemStyles: (state: MenuItemState) => void;
+export const useMenuItemStyles_unstable: (state: MenuItemState) => void;
 
 // @public
-export const useMenuList: (props: MenuListProps, ref: React_2.Ref<HTMLElement>) => MenuListState;
+export const useMenuList_unstable: (props: MenuListProps, ref: React_2.Ref<HTMLElement>) => MenuListState;
 
 // @public (undocumented)
-export const useMenuListContext: <T>(selector: ContextSelector<MenuListContextValue, T>) => T;
+export const useMenuListContext_unstable: <T>(selector: ContextSelector<MenuListContextValue, T>) => T;
 
 // @public (undocumented)
-export function useMenuListContextValues(state: MenuListState): MenuListContextValues;
+export function useMenuListContextValues_unstable(state: MenuListState): MenuListContextValues;
 
 // @public
-export const useMenuListStyles: (state: MenuListState) => MenuListState;
+export const useMenuListStyles_unstable: (state: MenuListState) => MenuListState;
 
 // @public
-export const useMenuPopover: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElement>) => MenuPopoverState;
+export const useMenuPopover_unstable: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElement>) => MenuPopoverState;
 
 // @public
-export const useMenuPopoverStyles: (state: MenuPopoverState) => MenuPopoverState;
+export const useMenuPopoverStyles_unstable: (state: MenuPopoverState) => MenuPopoverState;
 
 // @public
-export const useMenuSplitGroup: (props: MenuSplitGroupProps, ref: React_2.Ref<HTMLElement>) => MenuSplitGroupState;
+export const useMenuSplitGroup_unstable: (props: MenuSplitGroupProps, ref: React_2.Ref<HTMLElement>) => MenuSplitGroupState;
 
 // @public
-export const useMenuSplitGroupStyles: (state: MenuSplitGroupState) => MenuSplitGroupState;
+export const useMenuSplitGroupStyles_unstable: (state: MenuSplitGroupState) => MenuSplitGroupState;
 
 // @public
-export const useMenuTrigger: (props: MenuTriggerProps) => MenuTriggerState;
+export const useMenuTrigger_unstable: (props: MenuTriggerProps) => MenuTriggerState;
 
 // @public (undocumented)
-export const useMenuTriggerContext: () => boolean;
+export const useMenuTriggerContext_unstable: () => boolean;
 
 // (No @packageDocumentation comment for this package)
 

@@ -30,20 +30,20 @@ export async function createReactApp() {
 
   await prepareCreateReactApp(tempPaths, 'typescript');
   const testAppPath = config.paths.withRootAt(tempPaths.testApp);
+
+  // TODO: remove once babel issue is fixed (tracked by https://github.com/microsoft/fluentui/issues/21546)
+  logger('Add resolution to work around @babel/core issue');
+  const packageJson = fs.readJSONSync(testAppPath('package.json'));
+  packageJson.resolutions = { '@babel/core': '7.16.12' };
+  fs.writeJSONSync(testAppPath('package.json'), packageJson, { spaces: 2 });
+  await shEcho('yarn', testAppPath());
+
   logger(`Test React project is successfully created: ${testAppPath()}`);
 
   logger('STEP 2. Add Fluent UI dependency to test project..');
 
   const packedPackages = await packProjectPackages(logger, config.paths.packages(), ['@fluentui/react-northstar']);
   await addResolutionPathsForProjectPackages(testAppPath());
-
-  /**
-   * This is a temporary quick-fix solution. Remove once issue with mini-css-extract-plugin
-   * is resolved @see https://github.com/facebook/create-react-app/issues/11930
-   */
-  const parsedJSON = JSON.parse(fs.readFileSync(`${tempPaths.testApp}/package.json`, 'utf-8'));
-  parsedJSON.resolutions['mini-css-extract-plugin'] = '2.4.5';
-  fs.writeFileSync(`${tempPaths.testApp}/package.json`, JSON.stringify(parsedJSON));
 
   await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, testAppPath());
   logger(`✔️ Fluent UI packages were added to dependencies`);

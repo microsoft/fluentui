@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "CompoundButton: Updating styles to match latest design spec.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

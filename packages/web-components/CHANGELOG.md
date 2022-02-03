@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 12 Jan 2022 07:32:29 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Jan 2022 07:34:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.2)
+
+Thu, 27 Jan 2022 07:34:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.2.1..@fluentui/web-components_v2.2.2)
+
+### Patches
+
+- Updating fast-foundation to v2.32.0 ([PR #21443](https://github.com/microsoft/fluentui/pull/21443) by robarb@microsoft.com)
 
 ## [2.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.1)
 

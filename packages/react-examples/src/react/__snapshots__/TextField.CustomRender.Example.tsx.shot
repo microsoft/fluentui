@@ -146,7 +146,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 color: #005a9e;
               }
           data-is-focusable={true}
-          id="iconButton5"
+          id="iconButton7"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -408,8 +408,8 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                   padding-top: 5px;
                   word-wrap: break-word;
                 }
-            htmlFor="TextField9"
-            id="TextFieldLabel11"
+            htmlFor="TextField11"
+            id="TextFieldLabel13"
           >
             Wrapping default label renderer
           </label>
@@ -470,7 +470,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
       >
         <input
           aria-invalid={false}
-          aria-labelledby="TextFieldLabel11"
+          aria-labelledby="TextFieldLabel13"
           className=
               ms-TextField-field
               {
@@ -536,7 +536,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                 color: GrayText;
               }
-          id="TextField9"
+          id="TextField11"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -596,8 +596,8 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="TextField12"
-        id="TextFieldLabel14"
+        htmlFor="TextField16"
+        id="TextFieldLabel18"
       >
         Custom description rendering
       </label>
@@ -635,9 +635,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             }
       >
         <input
-          aria-describedby="TextFieldDescription13"
+          aria-describedby="TextFieldDescription17"
           aria-invalid={false}
-          aria-labelledby="TextFieldLabel14"
+          aria-labelledby="TextFieldLabel18"
           className=
               ms-TextField-field
               {
@@ -703,7 +703,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                 color: GrayText;
               }
-          id="TextField12"
+          id="TextField16"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -714,7 +714,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
       </div>
     </div>
     <span
-      id="TextFieldDescription13"
+      id="TextFieldDescription17"
     >
       <span
         className=

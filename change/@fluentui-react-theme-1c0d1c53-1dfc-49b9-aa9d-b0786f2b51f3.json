@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(react-theme): Add colorNeutralForeground1Static token",
+  "packageName": "@fluentui/react-theme",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { AccordionHeaderState } from './AccordionHeader.types';
@@ -24,6 +24,7 @@ const useStyles = makeStyles({
   root: {
     color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.margin(0),
     ...shorthands.borderRadius('2px'),
   },
   rootDisabled: {
@@ -84,7 +85,7 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
+export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     accordionHeaderClassName,
