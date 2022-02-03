@@ -6,7 +6,7 @@ export { ActionCard } from './stories/CardAction.stories';
 export { GridCard } from './stories/CardGrid.stories';
 
 export default {
-  title: 'Components/Card [ALPHA]',
+  title: 'Preview Components/Card',
   component: Card,
   parameters: {
     docs: {

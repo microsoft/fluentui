@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { applyTriggerPropsToChildren } from './applyTriggerPropsToChildren';
+import { TestTrigger } from './getTriggerChild.test';
 
 describe('applyTriggerPropsToChildren', () => {
   const dataTestId = 'dataTestId';
@@ -9,18 +10,6 @@ describe('applyTriggerPropsToChildren', () => {
 
   it('returns the child with the props applied if a React element is sent as the child', () => {
     const result = applyTriggerPropsToChildren(child, triggerProps);
-    const div = render(result as React.ReactElement).getByTestId(dataTestId);
-
-    expect(div.tagName).toBe('DIV');
-    expect(div.id).toBe(triggerProps.id);
-    expect(div.className).toBe(triggerProps.className);
-    expect(div.getAttribute('data-testattr')).toBe(triggerProps['data-testattr']);
-  });
-
-  it(`returns the child of the fragment with the props applied if a React fragment with a single child is sent as the
-      child`, () => {
-    const fragment = <>{child}</>;
-    const result = applyTriggerPropsToChildren(fragment, triggerProps);
     const div = render(result as React.ReactElement).getByTestId(dataTestId);
 
     expect(div.tagName).toBe('DIV');
@@ -68,6 +57,11 @@ describe('applyTriggerPropsToChildren', () => {
     expect(span.getAttribute('data-testattr')).toBe(triggerProps['data-testattr']);
   });
 
+  it(`throws an error if a React fragment with a single child is sent as the child`, () => {
+    const fragment = <>{child}</>;
+    expect(() => applyTriggerPropsToChildren(fragment, triggerProps)).toThrow();
+  });
+
   it('throws an error if a React fragment with multiple children is sent as the child', () => {
     const fragment = (
       <>
@@ -77,5 +71,64 @@ describe('applyTriggerPropsToChildren', () => {
       </>
     );
     expect(() => applyTriggerPropsToChildren(fragment, triggerProps)).toThrow();
+  });
+
+  it('applies props to the child if a valid element is sent as the child', () => {
+    const trigger = <div id="child" />;
+    const result = applyTriggerPropsToChildren(<div id="child" />, { 'data-test': 'test-value' });
+
+    expect(result).not.toBe(trigger);
+    expect(result).toEqual(<div id="child" data-test="test-value" />);
+  });
+
+  it('applies props to the child of a trigger', () => {
+    const result = applyTriggerPropsToChildren(
+      <TestTrigger id="trigger">
+        <div id="child" />
+      </TestTrigger>,
+      { 'data-test': 'test-value' },
+    );
+
+    expect(result).toEqual(
+      <TestTrigger id="trigger">
+        <div id="child" data-test="test-value" />
+      </TestTrigger>,
+    );
+  });
+
+  it('applies props to the child of nested triggers', () => {
+    const result = applyTriggerPropsToChildren(
+      <TestTrigger id="a">
+        <TestTrigger id="b">
+          <TestTrigger id="c">
+            <div id="child" />
+          </TestTrigger>
+        </TestTrigger>
+      </TestTrigger>,
+      { 'data-test': 'test-value' },
+    );
+
+    expect(result).toEqual(
+      <TestTrigger id="a">
+        <TestTrigger id="b">
+          <TestTrigger id="c">
+            <div id="child" data-test="test-value" />
+          </TestTrigger>
+        </TestTrigger>
+      </TestTrigger>,
+    );
+  });
+
+  it('throws an error if a render function is sent as the child of nested triggers', () => {
+    expect(() =>
+      applyTriggerPropsToChildren(
+        <TestTrigger>
+          <TestTrigger>
+            <TestTrigger>{() => <div />}</TestTrigger>
+          </TestTrigger>
+        </TestTrigger>,
+        {},
+      ),
+    ).toThrow();
   });
 });
