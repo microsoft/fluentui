@@ -18,6 +18,7 @@ const GlobalClassNames = {
 const labelWrapperLineHeight = 15;
 const labelWrapperHeight = labelWrapperLineHeight * 2 + 2; // adding 2px height to ensure text doesn't get cutoff
 const iconSize = 32;
+const labelIndent = '26px';
 const choiceFieldSize = 20;
 const choiceFieldTransitionDuration = '200ms';
 const choiceFieldTransitionTiming = 'cubic-bezier(.4, 0, .23, 1)';
@@ -265,7 +266,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         !hasImage && {
           selectors: {
             '.ms-ChoiceFieldLabel': {
-              paddingLeft: '26px',
+              paddingLeft: labelIndent,
             },
           },
         },
@@ -418,6 +419,14 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         maxWidth: imageSize!.width * 2,
         overflow: 'hidden',
         whiteSpace: 'pre-wrap',
+      },
+    ],
+    subtext: [
+      classNames.labelWrapper,
+      fonts.medium,
+      {
+        paddingTop: '6px',
+        paddingLeft: labelIndent,
       },
     ],
   };

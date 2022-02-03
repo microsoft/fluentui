@@ -10,6 +10,7 @@ const options: IChoiceGroupOption[] = [
   { key: 'B', text: 'Option B' },
   { key: 'C', text: 'Option C', disabled: true },
   { key: 'D', text: 'Option D' },
+  { key: 'E', text: 'Option E', subtext: 'Option E with subtext' },
 ];
 
 export const ChoiceGroupLabelExample: React.FunctionComponent = () => {

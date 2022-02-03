@@ -114,4 +114,5 @@ export interface IChoiceGroupOptionStyles {
   selectedImageWrapper?: IStyle;
   iconWrapper?: IStyle;
   labelWrapper?: IStyle;
+  subtext?: IStyle;
 }

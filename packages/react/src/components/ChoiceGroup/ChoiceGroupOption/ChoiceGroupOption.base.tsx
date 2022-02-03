@@ -42,6 +42,7 @@ export const ChoiceGroupOptionBase: React.FunctionComponent<IChoiceGroupOptionPr
     id,
     styles,
     name,
+    subtext,
     ...rest
   } = props;
 
@@ -95,6 +96,7 @@ export const ChoiceGroupOptionBase: React.FunctionComponent<IChoiceGroupOptionPr
           </div>
         )}
         {imageSrc || iconProps ? <div className={classNames.labelWrapper}>{label}</div> : label}
+        {!imageSrc && subtext && <div className={classNames.subtext}>{subtext}</div>}
       </label>
     );
   };
