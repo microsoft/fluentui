@@ -11,24 +11,35 @@ import {
   Stories,
 } from '@storybook/addon-docs';
 import { makeStyles, shorthands } from '@griffel/react';
-
 import { Toc, nameToHash } from './Toc.stories';
+import { isHosted } from './isHosted';
 
 const useStyles = makeStyles({
+  divider: {
+    height: '1px',
+    backgroundColor: '#e1dfdd',
+    ...shorthands.border('0px', 'none'),
+    ...shorthands.margin('48px', '0px'),
+  },
   wrapper: {
     display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'row-reverse',
-    justifyContent: 'flex-end',
     ...shorthands.gap('16px'),
   },
   toc: {
     flexBasis: '200px',
     flexShrink: 0,
+    [`@media screen and (max-width: 1000px)`]: {
+      display: 'none',
+    },
   },
   container: {
-    flexBasis: '700px',
     flexGrow: 1,
+  },
+  // style overrides for when hosted in website
+  hosted: {
+    '& h1': {
+      marginTop: '-12px !important',
+    },
   },
 });
 
@@ -36,6 +47,7 @@ export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
   const stories = context.storyStore.getStoriesForKind(context.kind);
   const primaryStory = stories[0];
+  const hosted = isHosted();
   const styles = useStyles();
   // DEBUG
   // console.log('FluentDocsPage', context);
@@ -50,16 +62,14 @@ export const FluentDocsPage = () => {
   // );
 
   return (
-    <>
+    <div className={hosted ? styles.hosted : ''}>
       <Title />
 
       <div className={styles.wrapper}>
-        <div className={styles.toc}>
-          <Toc stories={stories} />
-        </div>
         <div className={styles.container}>
           <Subtitle />
           <Description />
+          <hr className={styles.divider} />
           <HeaderMdx as="h3" id={nameToHash(primaryStory.name)}>
             {primaryStory.name}
           </HeaderMdx>
@@ -67,7 +77,10 @@ export const FluentDocsPage = () => {
           <ArgsTable story={PRIMARY_STORY} />
           <Stories />
         </div>
+        <div className={styles.toc}>
+          <Toc stories={stories} />
+        </div>
       </div>
-    </>
+    </div>
   );
 };

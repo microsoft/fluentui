@@ -385,13 +385,6 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-make-styles": {
-      "root": "packages/react-make-styles",
-      "projectType": "library",
-      "sourceRoot": "packages/react-make-styles/src",
-      "tags": ["vNext", "platform:web"],
-      "implicitDependencies": []
-    },
     "@fluentui/react-menu": {
       "root": "packages/react-menu",
       "projectType": "library",

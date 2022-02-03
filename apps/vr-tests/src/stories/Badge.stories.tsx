@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { Badge, BadgeCommons } from '@fluentui/react-badge';
 import { CircleRegular } from '@fluentui/react-icons';
-import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
 const badgeColors: BadgeCommons['color'][] = [
