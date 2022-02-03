@@ -4,7 +4,7 @@
 
 ```ts
 
-import type { ARIAButtonSlot } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
@@ -76,10 +76,10 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    root: IntrinsicSlotProps<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-    button: ARIAButtonSlotProps;
-    expandIcon: IntrinsicSlotProps<'span'>;
-    icon?: IntrinsicSlotProps<'div'>;
+    root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+    button: NonNullable<Slot<ARIAButtonSlotProps>>;
+    expandIcon: Slot<'span'>;
+    icon?: Slot<'div'>;
 };
 
 // @public (undocumented)

@@ -63,6 +63,9 @@ export const defaultSSRContextValue: SSRContextValue;
 export const divProperties: Record<string, number>;
 
 // @public
+export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
+
+// @public
 export type FluentTriggerComponent = {
     isFluentTriggerComponent?: boolean;
 };
@@ -122,15 +125,6 @@ export const imgProperties: Record<string, number>;
 
 // @public
 export const inputProperties: Record<string, number>;
-
-// @public
-export type IntrinsicSlotProps<DefaultAs extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<DefaultAs> extends false ? 'Error: first parameter to IntrinsicSlotProps must be a single element type, not a union of types' : ({
-    as?: DefaultAs;
-} & SlotProps<React_2.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>) | {
-    [As in AlternateAs]: {
-        as: As;
-    } & SlotProps<React_2.PropsWithRef<JSX.IntrinsicElements[As]>>;
-}[AlternateAs];
 
 // @public
 export const isFluentTrigger: (element: React_2.ReactElement) => boolean | undefined;
@@ -193,16 +187,13 @@ export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.Keyboar
 // Warning: (ae-forgotten-export) The symbol "IntrisicElementProps" needs to be exported by the entry point index.d.ts
 //
 // @public
-export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | UnknownSlotProps> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<WithSlotRenderFunction<Type extends keyof JSX.IntrinsicElements ? {
+export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
     as?: Type;
-} & IntrisicElementProps<Type> : Type extends React_2.ComponentType<infer Props> ? Props : Type>> | null : 'Error: First parameter to Slot must not be not a union of types. See the SlotAs type.';
-
-// @public
-export type SlotAs<AsTypes extends keyof JSX.IntrinsicElements> = {
-    [Type in AsTypes]: {
-        as: Type;
-    } & IntrisicElementProps<Type>;
-}[AsTypes];
+} & WithSlotRenderFunction<IntrisicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? WithSlotRenderFunction<Props> : Type> | {
+    [As in AlternateAs]: {
+        as: As;
+    } & WithSlotRenderFunction<IntrisicElementProps<As>>;
+}[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
 // @public
 export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandValue | null | undefined>;

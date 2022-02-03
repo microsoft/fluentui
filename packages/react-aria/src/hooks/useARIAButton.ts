@@ -1,8 +1,8 @@
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
-import type { ExtractSlotProps, ResolveShorthandFunction, Slot, SlotAs } from '@fluentui/react-utilities';
+import type { ExtractSlotProps, ResolveShorthandFunction, Slot } from '@fluentui/react-utilities';
 
-export type ARIAButtonSlotProps = ExtractSlotProps<Slot<'button'> | SlotAs<'a'>> & {
+export type ARIAButtonSlotProps = ExtractSlotProps<Slot<'button', 'a'>> & {
   disabled?: boolean;
   disabledFocusable?: boolean;
 };
@@ -15,7 +15,8 @@ export type ARIAButtonSlotProps = ExtractSlotProps<Slot<'button'> | SlotAs<'a'>>
 export const useARIAButton: ResolveShorthandFunction<ARIAButtonSlotProps> = (shorthand, options) => {
   const shorthandProps = resolveShorthand(shorthand, options);
 
-  const { disabled, disabledFocusable, onClick, onKeyDown, onKeyUp, tabIndex } = shorthandProps || {};
+  const { disabled, disabledFocusable, onClick, onKeyDown, onKeyUp, tabIndex } = (shorthandProps ||
+    {}) as ARIAButtonSlotProps;
 
   const onClickHandler: ARIAButtonSlotProps['onClick'] = useEventCallback(ev => {
     if (disabled || disabledFocusable) {

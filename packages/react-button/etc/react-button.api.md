@@ -33,7 +33,7 @@ export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommons>;
 
 // @public (undocumented)
 export type ButtonSlots = {
-    root: ARIAButtonSlotProps;
+    root: Slot<ARIAButtonSlotProps>;
     icon?: Slot<'span'>;
 };
 
