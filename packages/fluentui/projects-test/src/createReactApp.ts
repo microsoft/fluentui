@@ -30,6 +30,14 @@ export async function createReactApp() {
 
   await prepareCreateReactApp(tempPaths, 'typescript');
   const testAppPath = config.paths.withRootAt(tempPaths.testApp);
+
+  // TODO: remove once babel issue is fixed (tracked by https://github.com/microsoft/fluentui/issues/21546)
+  logger('Add resolution to work around @babel/core issue');
+  const packageJson = fs.readJSONSync(testAppPath('package.json'));
+  packageJson.resolutions = { '@babel/core': '7.16.12' };
+  fs.writeJSONSync(testAppPath('package.json'), packageJson, { spaces: 2 });
+  await shEcho('yarn', testAppPath());
+
   logger(`Test React project is successfully created: ${testAppPath()}`);
 
   logger('STEP 2. Add Fluent UI dependency to test project..');
