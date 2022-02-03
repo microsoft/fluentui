@@ -150,9 +150,6 @@ export const labelProperties: Record<string, number>;
 export const liProperties: Record<string, number>;
 
 // @public
-export const nullRender: () => null;
-
-// @public
 export const olProperties: Record<string, number>;
 
 // @public
@@ -203,7 +200,7 @@ export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, 
 
 // @public (undocumented)
 export type Slots<S extends SlotPropsRecord> = {
-    [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As> ? As : S[K] extends SlotProps<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<NonNullable<S[K]>>;
+    [K in keyof S]: NonNullable<S[K]> extends AsIntrinsicElement<infer As> ? As : S[K] extends SlotProps<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<NonNullable<S[K]>>;
 };
 
 // Warning: (ae-incompatible-release-tags) The symbol "SSRContext" is marked as @public, but its signature references "SSRContextValue" which is marked as @internal
