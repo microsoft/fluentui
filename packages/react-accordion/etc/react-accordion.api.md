@@ -76,10 +76,10 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    root: Slot<'div'>;
-    button: NonNullable<ARIAButtonSlot>;
-    expandIcon: Slot<'span'>;
-    icon?: Slot<'div'>;
+    root: IntrinsicSlotProps<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+    button: ARIAButtonSlotProps;
+    expandIcon: IntrinsicSlotProps<'span'>;
+    icon?: IntrinsicSlotProps<'div'>;
 };
 
 // @public (undocumented)

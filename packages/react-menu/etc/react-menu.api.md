@@ -8,6 +8,7 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
@@ -292,7 +293,7 @@ export type MenuState = MenuCommons & ComponentState<MenuSlots> & {
 };
 
 // @public
-export const MenuTrigger: React_2.ForwardRefExoticComponent<MenuTriggerProps & React_2.RefAttributes<HTMLElement>>;
+export const MenuTrigger: React_2.FC<MenuTriggerProps> & FluentTriggerComponent;
 
 // @public
 export type MenuTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onMouseMove' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'id'>> & {
@@ -433,7 +434,7 @@ export const useMenuSplitGroup_unstable: (props: MenuSplitGroupProps, ref: React
 export const useMenuSplitGroupStyles_unstable: (state: MenuSplitGroupState) => MenuSplitGroupState;
 
 // @public
-export const useMenuTrigger_unstable: (props: MenuTriggerProps, ref: React_2.Ref<HTMLElement>) => MenuTriggerState;
+export const useMenuTrigger_unstable: (props: MenuTriggerProps) => MenuTriggerState;
 
 // @public (undocumented)
 export const useMenuTriggerContext_unstable: () => boolean;
