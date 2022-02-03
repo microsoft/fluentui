@@ -5,7 +5,7 @@ export type ButtonSlots = {
   /**
    * Root of the component that renders as either a `<button>` tag or an `<a>` tag.
    */
-  root: ARIAButtonSlotProps;
+  root: Slot<ARIAButtonSlotProps>;
 
   /**
    * Icon that renders either before or after the `children` as specified by the `iconPosition` prop.

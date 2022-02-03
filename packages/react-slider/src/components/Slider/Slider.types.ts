@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentState, ComponentProps, Slot, SlotNoChildren } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
 
 export type SliderSlots = {
   /**
@@ -26,7 +26,7 @@ export type SliderSlots = {
    * except `className` and `style`, which remain on the root slot.
    *
    */
-  input: NonNullable<SlotNoChildren<'input'>> & {
+  input: NonNullable<Slot<'input'>> & {
     /**
      * Orient is a non standard attribute that allows for vertical orientation in Firefox. It is set internally
      * when `vertical` is set to true.

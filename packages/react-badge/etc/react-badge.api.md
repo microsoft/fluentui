@@ -26,7 +26,7 @@ export type BadgeCommons = {
 };
 
 // @public (undocumented)
-export type BadgeProps = Omit<ComponentProps<Partial<BadgeSlots>>, 'color'> & Partial<BadgeCommons>;
+export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & Partial<BadgeCommons>;
 
 // @public (undocumented)
 export type BadgeSlots = {

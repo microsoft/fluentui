@@ -172,16 +172,21 @@ export const selectProperties: Record<string, number>;
 // @public
 export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.KeyboardEvent): boolean;
 
-// Warning: (ae-forgotten-export) The symbol "IntrinsicSlotProps" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "ComponentSlotProps" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "WithSlotShorthandValue" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "WithSlotRenderFunction" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "IntrisicElementProps" needs to be exported by the entry point index.d.ts
 //
 // @public
-export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType, AlternateAs extends keyof JSX.IntrinsicElements = never> = (Type extends keyof JSX.IntrinsicElements ? IntrinsicSlotProps<Type, AlternateAs> : Type extends React_2.ComponentType ? ComponentSlotProps<Type> : Type) | SlotShorthandValue | null;
+export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | UnknownSlotProps> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<WithSlotRenderFunction<Type extends keyof JSX.IntrinsicElements ? {
+    as?: Type;
+} & IntrisicElementProps<Type> : Type extends React_2.ComponentType<infer Props> ? Props : Type>> | null : 'Error: First parameter to Slot must not be not a union of types. See the SlotAs type.';
 
 // @public
-export type SlotNoChildren<Type extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = (Omit<IntrinsicSlotProps<Type, AlternateAs>, 'children'> & {
-    children?: SlotRenderFunction<IntrinsicSlotProps<Type, AlternateAs>>;
-}) | null;
+export type SlotAs<AsTypes extends keyof JSX.IntrinsicElements> = {
+    [Type in AsTypes]: {
+        as: Type;
+    } & IntrisicElementProps<Type>;
+}[AsTypes];
 
 // @public
 export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandValue | null | undefined>;
@@ -230,12 +235,10 @@ export const trProperties: Record<string, number>;
 // @public
 export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
 
-// Warning: (ae-forgotten-export) The symbol "WithSlotRenderFunction" needs to be exported by the entry point index.d.ts
-//
 // @public
-export type UnknownSlotProps = WithSlotRenderFunction<Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
     as?: keyof JSX.IntrinsicElements;
-}>;
+};
 
 // @public
 export function useBoolean(initialState: boolean): [boolean, UseBooleanCallbacks];

@@ -39,5 +39,5 @@ export type BadgeCommons = {
 
 // react has a non-standard `color` attribute in its types
 // https://github.com/DefinitelyTyped/DefinitelyTyped/blob/a4ab0fa432320e70da9e51c8ae2e47377f65804b/types/react/index.d.ts#L1868
-export type BadgeProps = Omit<ComponentProps<Partial<BadgeSlots>>, 'color'> & Partial<BadgeCommons>;
+export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & Partial<BadgeCommons>;
 export type BadgeState = ComponentState<BadgeSlots> & BadgeCommons;

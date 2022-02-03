@@ -10,7 +10,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import { Slot } from '@fluentui/react-utilities';
-import { SlotNoChildren } from '@fluentui/react-utilities';
 
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
@@ -43,7 +42,7 @@ export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>
 export type CheckboxSlots = {
     root: NonNullable<Slot<'span'>>;
     label?: Slot<typeof Label>;
-    input: NonNullable<SlotNoChildren<'input'>>;
+    input: NonNullable<Slot<'input'>>;
     indicator: Slot<'div'>;
 };
 

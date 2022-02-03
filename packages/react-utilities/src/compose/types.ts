@@ -19,102 +19,109 @@ export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandVal
 export type SlotShorthandValue = React.ReactChild | React.ReactNodeArray | React.ReactPortal;
 
 /**
+ *
+ */
+type WithSlotShorthandValue<Props extends { children?: unknown }> =
+  | Props
+  | Extract<SlotShorthandValue, Props['children']>;
+
+/**
  * Matches any slot props type.
  *
  * This should ONLY be used in type templates as in `extends UnknownSlotProps`;
  * it shouldn't be used as the type of a slot.
  */
-export type UnknownSlotProps = WithSlotRenderFunction<
-  Pick<React.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
-    as?: keyof JSX.IntrinsicElements;
-  }
->;
+export type UnknownSlotProps = Pick<React.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+  as?: keyof JSX.IntrinsicElements;
+};
 
 /**
  * Takes the props we want to support for a slot and adds the ability for `children` to be a render function that takes
  * those props.
  */
-type WithSlotRenderFunction<Props extends { children?: React.ReactNode } = {}> = Props & {
+type WithSlotRenderFunction<Props extends { children?: unknown }> = Props & {
   children?: Props['children'] | SlotRenderFunction<Props>;
 };
 
 /**
- * The props type and shorthand value for a slot.
+ * HTML element types that are not allowed to have children.
  *
- * The slot type can be either an intrinsic element like `'div'`, or a component like `typeof Button`.
+ * Reference: https://developer.mozilla.org/en-US/docs/Glossary/Empty_element
+ */
+type EmptyIntrisicElements =
+  | 'area'
+  | 'base'
+  | 'br'
+  | 'col'
+  | 'embed'
+  | 'hr'
+  | 'img'
+  | 'input'
+  | 'link'
+  | 'meta'
+  | 'param'
+  | 'source'
+  | 'track'
+  | 'wbr';
+
+/**
+ * Augments `JSX.IntrinsicElements[Type]`:
+ * * Removes legacy string ref.
+ * * Disallows children for empty tags like 'img'.
+ */
+type IntrisicElementProps<Type extends keyof JSX.IntrinsicElements> = React.PropsWithRef<JSX.IntrinsicElements[Type]> &
+  (Type extends EmptyIntrisicElements ? { children?: never } : {});
+
+/**
+ * The props type and shorthand value for a slot. Type is either a single intrinsic element like `'div'`,
+ * or a component like `typeof Button`.
  *
- * For intrinsic elements:
- * * The first param is the slot's default type if no `as` prop is specified.
- * * The second param is an optional union of alternative types that can be specified for the `as` prop.
+ * If a slot needs to support multiple intrinsic element types, combine with {@link SlotAs} (see example below).
  *
- * For components:
- * * The first param is the component's type, like `typeof Button`
- * * The second param is ignored and should not be specified
+ * By default, Slots can be set to `null` to prevent them from being rendered. If a slot must always be rendered,
+ * wrap with `NonNullable` (see example below).
  *
  * @example
  * ```
  * // Intrinsic element examples:
  * Slot<'div'> // Slot is always div
- * Slot<'button', 'a'> // Defaults to button, but allows as="a" with anchor-specific props
- * Slot<'label', 'span' | 'div'> // Defaults to label, but allows as="span" or as="div"
- * NonNullable<Slot<'div'>> // Slot that will always be rendered and can't be set to null by the user
+ * Slot<'button'> | SlotAs<'a'> // Defaults to button, but allows as="a" with anchor-specific props
+ * Slot<'span'> | SlotAs<'div' | 'pre'> // Defaults to span, but allows as="div" or as="pre"
+ * NonNullable<Slot<'div'>> // Slot that will always be rendered (can't be set to null by the user)
  *
  * // Component examples:
  * Slot<typeof Button> // Slot is always a Button, and accepts all of Button's Props
  * NonNullable<Slot<typeof Label>> // Slot is a Label and will always be rendered (can't be set to null by the user)
  * ```
  */
-export type Slot<
-  Type extends keyof JSX.IntrinsicElements | React.ComponentType,
-  AlternateAs extends keyof JSX.IntrinsicElements = never
-> =
-  | (Type extends keyof JSX.IntrinsicElements
-      ? IntrinsicSlotProps<Type, AlternateAs>
-      : Type extends React.ComponentType
-      ? ComponentSlotProps<Type>
-      : Type)
-  | SlotShorthandValue
-  | null;
+export type Slot<Type extends keyof JSX.IntrinsicElements | React.ComponentType | UnknownSlotProps> =
+  // IsSingleton checks that the given type is not a union like 'div' | 'span'
+  IsSingleton<Extract<Type, string>> extends true
+    ? WithSlotShorthandValue<
+        WithSlotRenderFunction<
+          Type extends keyof JSX.IntrinsicElements
+            ? { as?: Type } & IntrisicElementProps<Type>
+            : Type extends React.ComponentType<infer Props>
+            ? Props
+            : Type
+        >
+      > | null
+    : 'Error: First parameter to Slot must not be not a union of types. See the SlotAs type.';
 
 /**
- * Similar to {@link Slot}, but doesn't allow children to be specified through shorthand or props.
+ * Defines additional intrinsic element types that a slot supports.
  *
- * This is intended to be used for element types that don't allow children, like `'input'` or `'img'`.
- */
-export type SlotNoChildren<
-  Type extends keyof JSX.IntrinsicElements,
-  AlternateAs extends keyof JSX.IntrinsicElements = never
-> =
-  | (Omit<IntrinsicSlotProps<Type, AlternateAs>, 'children'> & {
-      children?: SlotRenderFunction<IntrinsicSlotProps<Type, AlternateAs>>;
-    })
-  | null;
-
-/**
- * The props object type for a slot that is a Component type.
+ * The slot must use {@link Slot} with its default type, and then add `SlotAs` for _additional_ types (see example).
  *
- * This should not be used on its own. Use {@link Slot} instead, as it allows shorthand values.
+ * @example
+ * ```ts
+ * // Root defaults to span, but allows as="div" or as="pre"
+ * root?: Slot<'span'> | SlotAs<'div' | 'pre'>
+ * ```
  */
-type ComponentSlotProps<Component extends React.ComponentType> = Component extends React.ComponentType<infer Props>
-  ? WithSlotRenderFunction<Props>
-  : never;
-
-/**
- * The props object type for a slot that is an intrinsic element type.
- *
- * This should not be used on its own. Use {@link Slot} or {@link SlotNoChildren} instead,
- * as they allow shorthand values.
- */
-type IntrinsicSlotProps<
-  DefaultAs extends keyof JSX.IntrinsicElements,
-  AlternateAs extends keyof JSX.IntrinsicElements = never
-> = IsSingleton<DefaultAs> extends false
-  ? 'Error: first parameter to IntrinsicSlotProps must be a single element type, not a union of types'
-  :
-      | ({ as?: DefaultAs } & WithSlotRenderFunction<React.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>)
-      | {
-          [As in AlternateAs]: { as: As } & WithSlotRenderFunction<React.PropsWithRef<JSX.IntrinsicElements[As]>>;
-        }[AlternateAs];
+export type SlotAs<AsTypes extends keyof JSX.IntrinsicElements> = {
+  [Type in AsTypes]: { as: Type } & IntrisicElementProps<Type>;
+}[AsTypes];
 
 /**
  * Evaluates to true if the given type contains exactly one string, or false if it is a union of strings.
@@ -160,7 +167,7 @@ export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefin
  * defaulting to root if one is not provided.
  */
 export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> =
-  // Include a prop for each slot (see note below)
+  // Include a prop for each slot (see note below about the Omit)
   Omit<Slots, Primary & 'root'> &
     // Include all of the props of the primary slot inline in the component's props
     PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;

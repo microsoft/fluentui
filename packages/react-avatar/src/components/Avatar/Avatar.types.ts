@@ -1,15 +1,15 @@
 import { PresenceBadge } from '@fluentui/react-badge';
-import type { ComponentProps, ComponentState, SlotNoChildren, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AvatarSlots = {
-  root: SlotNoChildren<'span'>;
+  root: Slot<'span'>;
 
   /**
    * The Avatar's image.
    *
    * Usage e.g.: `image={{ src: '...' }}`
    */
-  image?: SlotNoChildren<'img'>;
+  image?: Slot<'img'>;
 
   /**
    * (optional) Custom initials.

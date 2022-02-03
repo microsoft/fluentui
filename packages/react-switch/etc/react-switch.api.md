@@ -9,7 +9,6 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotNoChildren } from '@fluentui/react-utilities';
 
 // @public
 export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
@@ -40,7 +39,7 @@ export type SwitchSlots = {
     track: NonNullable<Slot<'div'>>;
     thumbWrapper: NonNullable<Slot<'div'>>;
     thumb: NonNullable<Slot<'div'>>;
-    input: NonNullable<SlotNoChildren<'input'>>;
+    input: NonNullable<Slot<'input'>>;
     activeRail: NonNullable<Slot<'div'>>;
 };
 

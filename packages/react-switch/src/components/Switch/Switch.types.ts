@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot, SlotNoChildren } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type SwitchSlots = {
   /**
@@ -25,7 +25,7 @@ export type SwitchSlots = {
   /**
    * The hidden input that handles the Switch's internal functionality.
    */
-  input: NonNullable<SlotNoChildren<'input'>>;
+  input: NonNullable<Slot<'input'>>;
 
   /**
    * The area in which the Switch's rail allows for the thumb to be dragged.
