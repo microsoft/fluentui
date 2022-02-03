@@ -48,7 +48,6 @@
     "@fluentui/react-input": "9.0.0-beta.0",
     "@fluentui/react-label": "9.0.0-beta.4",
     "@fluentui/react-link": "9.0.0-beta.5",
-    "@griffel/react": "1.0.0",
     "@fluentui/react-menu": "9.0.0-beta.5",
     "@fluentui/react-popover": "9.0.0-beta.5",
     "@fluentui/react-portal": "9.0.0-beta.5",
