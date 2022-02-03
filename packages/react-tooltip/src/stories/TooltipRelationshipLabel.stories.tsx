@@ -21,9 +21,11 @@ RelationshipLabel.storyName = 'Relationship: label';
 RelationshipLabel.parameters = {
   docs: {
     description: {
-      story: `A tooltip can be used as the label of its trigger. For example, this is used for buttons that have only
-        an icon and no visible label text. The tooltip sets its \`content\` as the trigger's \`aria-label\`, so the
-        tooltip is accessible to screen readers and other assistive technology.`,
+      story: `A tooltip can be used as the label of its trigger. For example, a label tooltip can be used for buttons
+        that have only an icon and no visible label text.
+        <br />
+        The tooltip sets its \`content\` as the trigger's \`aria-label\`, so the tooltip is accessible to screen
+        readers and other assistive technology.`,
     },
   },
 };

@@ -4,7 +4,7 @@ import { Button } from '@fluentui/react-button';
 import { ArrowStepInRegular } from '@fluentui/react-icons';
 
 export const WithArrow = () => (
-  <Tooltip withArrow content="Example of a tooltip with an arrow" relationship="label">
+  <Tooltip withArrow content="Example tooltip with an arrow" relationship="label">
     <Button icon={<ArrowStepInRegular />} size="large" />
   </Tooltip>
 );

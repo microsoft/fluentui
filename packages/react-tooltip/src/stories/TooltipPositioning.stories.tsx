@@ -49,8 +49,9 @@ export const Positioning = () => {
 Positioning.parameters = {
   docs: {
     description: {
-      story: `The positioning attribute can be used to change the relative placement of the tooltip to its anchor.<br />
-        Hover or focus the buttons in the example to see the tooltip's placement relative to it.`,
+      story: `The positioning attribute can be used to change the relative placement of the tooltip to its anchor.
+        <br />
+        Hover or focus the buttons in the example to see the tooltip's placement.`,
     },
   },
 };

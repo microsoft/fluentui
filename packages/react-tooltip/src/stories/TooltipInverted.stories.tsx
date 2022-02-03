@@ -13,8 +13,7 @@ Inverted.storyName = 'Appearance: inverted';
 Inverted.parameters = {
   docs: {
     description: {
-      story: `The \`appearance\` prop can be set to \`inverted\` to use the theme's inverted colors.<br />
-        Hover or focus the button in the example to see its tooltip.`,
+      story: "The `appearance` prop can be set to `inverted` to use the theme's inverted colors.",
     },
   },
 };

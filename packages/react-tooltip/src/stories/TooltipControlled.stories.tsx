@@ -7,7 +7,7 @@ export const Controlled = () => {
   const [enabled, setEnabled] = React.useState(false);
   return (
     <Tooltip
-      content="The checkbox controls whether the tooltip can show on hover"
+      content="The checkbox controls whether the tooltip can show on hover or focus"
       relationship="description"
       visible={visible && enabled}
       onVisibleChange={(_ev, data) => setVisible(data.visible)}
