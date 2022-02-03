@@ -425,7 +425,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       classNames.labelWrapper,
       fonts.medium,
       {
-        paddingTop: '6px',
+        paddingTop: '4px',
         paddingLeft: labelIndent,
       },
     ],
