@@ -16,6 +16,9 @@ export type AccordionHeaderContextValues = {
 };
 
 export type AccordionHeaderSlots = {
+  /**
+   * The element wrapping the button. By default this is a div, but can be a heading.
+   */
   root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
   /**
    * The component to be used as button in heading

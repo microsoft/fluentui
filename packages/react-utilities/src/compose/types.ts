@@ -68,7 +68,6 @@ type EmptyIntrisicElements =
  * Helper type for {@link Slot}. Modifies `JSX.IntrinsicElements[Type]`:
  * * Removes legacy string ref.
  * * Disallows children for empty tags like 'img'.
- *   Reference: https://developer.mozilla.org/en-US/docs/Glossary/Empty_element
  */
 type IntrisicElementProps<Type extends keyof JSX.IntrinsicElements> = React.PropsWithRef<JSX.IntrinsicElements[Type]> &
   (Type extends EmptyIntrisicElements ? { children?: never } : {});
