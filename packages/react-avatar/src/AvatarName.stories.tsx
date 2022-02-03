@@ -7,7 +7,7 @@ Name.storyName = 'Name';
 Name.parameters = {
   docs: {
     description: {
-      story: 'An avatar can display initials based on the name.',
+      story: 'The name is used to determine the initials displayed by the Avatar. It is also read by screen readers.',
     },
   },
 };

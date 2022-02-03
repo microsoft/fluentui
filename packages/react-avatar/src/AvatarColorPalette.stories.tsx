@@ -2,114 +2,47 @@ import * as React from 'react';
 import { Avatar } from './index';
 
 export const ColorPalette = () => (
-  <div
-    style={{
-      display: 'grid',
-      gap: '5px',
-      // gridAutoFlow: 'column',
-      gridTemplateColumns: 'repeat(auto-fill, 125px)',
-      // gridTemplateRows: 'repeat(5, auto)',
-    }}
-  >
-    <span>
-      <Avatar color="darkRed" aria-label="darkRed color avatar" /> darkRed
-    </span>
-    <span>
-      <Avatar color="cranberry" aria-label="cranberry color avatar" /> cranberry
-    </span>
-    <span>
-      <Avatar color="red" aria-label="red color avatar" /> red
-    </span>
-    <span>
-      <Avatar color="pumpkin" aria-label="pumpkin color avatar" /> pumpkin
-    </span>
-    <span>
-      <Avatar color="peach" aria-label="peach color avatar" /> peach
-    </span>
-    <span>
-      <Avatar color="marigold" aria-label="marigold color avatar" /> marigold
-    </span>
-    <span>
-      <Avatar color="gold" aria-label="gold color avatar" /> gold
-    </span>
-    <span>
-      <Avatar color="brass" aria-label="brass color avatar" /> brass
-    </span>
-    <span>
-      <Avatar color="brown" aria-label="brown color avatar" /> brown
-    </span>
-    <span>
-      <Avatar color="forest" aria-label="forest color avatar" /> forest
-    </span>
-    <span>
-      <Avatar color="seafoam" aria-label="seafoam color avatar" /> seafoam
-    </span>
-    <span>
-      <Avatar color="darkGreen" aria-label="darkGreen color avatar" /> darkGreen
-    </span>
-    <span>
-      <Avatar color="lightTeal" aria-label="lightTeal color avatar" /> lightTeal
-    </span>
-    <span>
-      <Avatar color="teal" aria-label="teal color avatar" /> teal
-    </span>
-    <span>
-      <Avatar color="steel" aria-label="steel color avatar" /> steel
-    </span>
-    <span>
-      <Avatar color="blue" aria-label="blue color avatar" /> blue
-    </span>
-    <span>
-      <Avatar color="royalBlue" aria-label="royalBlue color avatar" /> royalBlue
-    </span>
-    <span>
-      <Avatar color="cornflower" aria-label="cornflower color avatar" /> cornflower
-    </span>
-    <span>
-      <Avatar color="navy" aria-label="navy color avatar" /> navy
-    </span>
-    <span>
-      <Avatar color="lavender" aria-label="lavender color avatar" /> lavender
-    </span>
-    <span>
-      <Avatar color="purple" aria-label="purple color avatar" /> purple
-    </span>
-    <span>
-      <Avatar color="grape" aria-label="grape color avatar" /> grape
-    </span>
-    <span>
-      <Avatar color="lilac" aria-label="lilac color avatar" /> lilac
-    </span>
-    <span>
-      <Avatar color="pink" aria-label="pink color avatar" /> pink
-    </span>
-    <span>
-      <Avatar color="magenta" aria-label="magenta color avatar" /> magenta
-    </span>
-    <span>
-      <Avatar color="plum" aria-label="plum color avatar" /> plum
-    </span>
-    <span>
-      <Avatar color="beige" aria-label="beige color avatar" /> beige
-    </span>
-    <span>
-      <Avatar color="mink" aria-label="mink color avatar" /> mink
-    </span>
-    <span>
-      <Avatar color="platinum" aria-label="platinum color avatar" /> platinum
-    </span>
-    <span>
-      <Avatar color="anchor" aria-label="anchor color avatar" /> anchor
-    </span>
-  </div>
+  <>
+    <Avatar initials="DR" color="darkRed" name="darkRed avatar" />
+    <Avatar initials="CR" color="cranberry" name="cranberry avatar" />
+    <Avatar initials="RE" color="red" name="red avatar" />
+    <Avatar initials="PU" color="pumpkin" name="pumpkin avatar" />
+    <Avatar initials="PE" color="peach" name="peach avatar" />
+    <Avatar initials="MA" color="marigold" name="marigold avatar" />
+    <Avatar initials="GO" color="gold" name="gold avatar" />
+    <Avatar initials="BS" color="brass" name="brass avatar" />
+    <Avatar initials="BR" color="brown" name="brown avatar" />
+    <Avatar initials="FO" color="forest" name="forest avatar" />
+    <Avatar initials="SE" color="seafoam" name="seafoam avatar" />
+    <Avatar initials="DG" color="darkGreen" name="darkGreen avatar" />
+    <Avatar initials="LT" color="lightTeal" name="lightTeal avatar" />
+    <Avatar initials="TE" color="teal" name="teal avatar" />
+    <Avatar initials="ST" color="steel" name="steel avatar" />
+    <Avatar initials="BL" color="blue" name="blue avatar" />
+    <Avatar initials="RB" color="royalBlue" name="royalBlue avatar" />
+    <Avatar initials="CO" color="cornflower" name="cornflower avatar" />
+    <Avatar initials="NA" color="navy" name="navy avatar" />
+    <Avatar initials="LA" color="lavender" name="lavender avatar" />
+    <Avatar initials="PU" color="purple" name="purple avatar" />
+    <Avatar initials="GR" color="grape" name="grape avatar" />
+    <Avatar initials="LI" color="lilac" name="lilac avatar" />
+    <Avatar initials="PI" color="pink" name="pink avatar" />
+    <Avatar initials="MA" color="magenta" name="magenta avatar" />
+    <Avatar initials="PL" color="plum" name="plum avatar" />
+    <Avatar initials="BE" color="beige" name="beige avatar" />
+    <Avatar initials="MI" color="mink" name="mink avatar" />
+    <Avatar initials="PL" color="platinum" name="platinum avatar" />
+    <Avatar initials="AN" color="anchor" name="anchor avatar" />
+  </>
 );
 
+ColorPalette.storyName = 'Color: named color';
 ColorPalette.parameters = {
   docs: {
     description: {
       story:
         "An avatar can have a specific named color from the theme's color palette " +
-        ' (e.g. `seaFoam`, `grape`, or `pumpkin`)',
+        ' (e.g. `seafoam`, `grape`, or `pumpkin`)',
     },
   },
 };

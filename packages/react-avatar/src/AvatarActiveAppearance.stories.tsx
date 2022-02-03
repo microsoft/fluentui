@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar } from './index';
 
 export const ActiveAppearance = () => (
-  <div style={{ display: 'flex', gap: '32px' }}>
+  <div style={{ display: 'flex', gap: '20px' }}>
     <Avatar active="active" activeAppearance="ring" aria-label="ring activeAppearance" />
     <Avatar active="active" activeAppearance="shadow" aria-label="shadow activeAppearance" />
     <Avatar active="active" activeAppearance="ring-shadow" aria-label="ring-shadow activeAppearance" />

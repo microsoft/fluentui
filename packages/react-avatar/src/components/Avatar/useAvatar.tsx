@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
 import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types';
 import { PersonRegular } from '@fluentui/react-icons';
@@ -16,20 +16,6 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     color = avatarColors[getHashCode(idForColor ?? name ?? '') % avatarColors.length];
   }
 
-  const baseId = useId('avatar-');
-
-  const root: AvatarState['root'] = getNativeElementProps(
-    'span',
-    {
-      role: 'img',
-      id: baseId,
-      // aria-label and/or aria-labelledby are resolved below
-      ...props,
-      ref,
-    },
-    /* excludedPropNames: */ ['name'],
-  );
-
   // Resolve the initials slot, defaulted to getInitials.
   let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
     required: true,
@@ -39,7 +25,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     },
   });
 
-  // Render the icon slot *only if* there aren't any initials to display.
+  // Resolve the icon slot only if there aren't any initials to display.
   let icon: AvatarState['icon'] = undefined;
   if (!initials?.children) {
     initials = undefined;
@@ -52,36 +38,22 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     });
   }
 
-  const image: AvatarState['image'] = resolveShorthand(props.image, {
-    defaultProps: {
-      alt: '',
-      role: 'presentation',
-      'aria-hidden': true,
-    },
-  });
+  // The image's alt text should be the name, but if name is missing, fall back to the initials
+  let alt = name;
+  if (!alt && typeof initials?.children === 'string') {
+    alt = initials.children;
+  }
 
-  const badge: AvatarState['badge'] = resolveShorthand(props.badge, {
-    defaultProps: {
-      size: getBadgeSize(size),
-      role: 'presentation',
-      'aria-hidden': true,
-      id: baseId + '-badge',
-    },
-  });
+  // Resolve the image slot
+  const image = resolveShorthand(props.image, { defaultProps: { alt } });
 
-  // Resolve aria-label and/or aria-labelledby if not provided by the user
-  if (!root['aria-label'] && !root['aria-labelledby']) {
-    if (name) {
-      root['aria-label'] = name;
-
-      // Include the badge in labelledby if it exists
-      if (badge) {
-        root['aria-labelledby'] = root.id + ' ' + badge.id;
-      }
-    } else if (initials) {
-      // root's aria-label should be the name, but fall back to being labelledby the initials if name is missing
-      initials.id ??= baseId + '-initials';
-      root['aria-labelledby'] = initials.id + (badge ? ' ' + badge.id : '');
+  // If there's no image, make either the initials or icon have role="img" and aria-label={alt}
+  if (!image) {
+    const fallbackSlot = initials || icon;
+    if (fallbackSlot) {
+      fallbackSlot.role ??= 'img';
+      fallbackSlot['aria-label'] ??= alt;
+      delete fallbackSlot['aria-hidden'];
     }
   }
 
@@ -102,11 +74,13 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       badge: PresenceBadge,
     },
 
-    root,
+    root: getNativeElementProps('span', { ...props, ref }, /* excludedPropNames: */ ['name']),
     initials,
     icon,
     image,
-    badge,
+    badge: resolveShorthand(props.badge, {
+      defaultProps: { size: getBadgeSize(size) },
+    }),
   };
 };
 
