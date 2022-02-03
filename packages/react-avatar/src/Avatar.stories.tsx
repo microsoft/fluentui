@@ -7,7 +7,7 @@ export { Name } from './AvatarName.stories';
 export { Image } from './AvatarImage.stories';
 export { Icon } from './AvatarIcon.stories';
 export { Badge } from './AvatarBadge.stories';
-export { Shape } from './AvatarShape.stories';
+export { Square } from './AvatarSquare.stories';
 export { ColorBrand } from './AvatarColorBrand.stories';
 export { ColorColorful } from './AvatarColorColorful.stories';
 export { ColorPalette } from './AvatarColorPalette.stories';

@@ -26,7 +26,7 @@ export const Icon = () => (
 Icon.parameters = {
   docs: {
     description: {
-      story: 'An avatar can display an icon. The icon will only be shown when there is no image or initals available.',
+      story: 'An avatar can display an icon. The icon will only be shown when there is no image or initials available.',
     },
   },
 };
