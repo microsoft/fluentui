@@ -37,7 +37,7 @@ export const ButtonIconWithTooltipExample: React.FunctionComponent<IButtonExampl
         styles={hostStyles}
         setAriaDescribedBy={false}
       >
-        <IconButton iconProps={emojiIcon} aria-describedby={tooltipId} disabled={disabled} checked={checked} />
+        <IconButton iconProps={emojiIcon} aria-label="Emoji" disabled={disabled} checked={checked} />
       </TooltipHost>
       <p>
         For now, we advise you to take this approach of wrapping IconButton with a Tooltip. We'll address providing this
