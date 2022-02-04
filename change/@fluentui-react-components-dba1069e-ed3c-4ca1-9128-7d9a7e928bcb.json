@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Upgrade chromatic to latest",
+  "packageName": "@fluentui/react-components",
+  "email": "me@levithomason.com",
+  "dependentChangeType": "none"
+}
