@@ -20,10 +20,10 @@ export const Spinner: ForwardRefComponent<SpinnerProps>;
 export const spinnerClassName = "fui-Spinner";
 
 // @public (undocumented)
-export type SpinnerCommons = {};
+export type SpinnerCommonsUnstable = {};
 
 // @public
-export type SpinnerProps = ComponentProps<SpinnerSlots> & SpinnerCommons;
+export type SpinnerProps = ComponentProps<SpinnerSlots> & SpinnerCommonsUnstable;
 
 // @public (undocumented)
 export type SpinnerSlots = {
@@ -31,7 +31,7 @@ export type SpinnerSlots = {
 };
 
 // @public
-export type SpinnerState = ComponentState<SpinnerSlots> & SpinnerCommons;
+export type SpinnerState = ComponentState<SpinnerSlots> & SpinnerCommonsUnstable;
 
 // @public
 export const useSpinner_unstable: (props: SpinnerProps, ref: React_2.Ref<HTMLElement>) => SpinnerState;
