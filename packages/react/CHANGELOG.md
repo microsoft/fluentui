@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 03 Feb 2022 07:29:41 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Feb 2022 07:31:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.52.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.52.3)
+
+Fri, 04 Feb 2022 07:31:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.52.2..@fluentui/react_v8.52.3)
+
+### Patches
+
+- Moved the navigatedDayRef to td element ([PR #21123](https://github.com/microsoft/fluentui/pull/21123) by tkrasniqi@microsoft.com)
+- Changed shouldFocusOnContainer default value to false ([PR #20601](https://github.com/microsoft/fluentui/pull/20601) by tkrasniqi@microsoft.com)
 
 ## [8.52.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.52.2)
 
