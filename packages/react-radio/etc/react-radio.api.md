@@ -26,13 +26,13 @@ export const RadioItem: ForwardRefComponent<RadioItemProps>;
 export const radioItemClassName = "fui-RadioItem";
 
 // @public (undocumented)
-export type RadioItemCommons = InputHTMLAttributes<HTMLInputElement> & {
+export type RadioItemCommonsUnstable = InputHTMLAttributes<HTMLInputElement> & {
     labelPosition?: 'bottom' | 'inline';
     containerClassName?: string;
 };
 
 // @public
-export type RadioItemProps = ComponentProps<RadioItemSlots> & RadioItemCommons & {
+export type RadioItemProps = ComponentProps<RadioItemSlots> & RadioItemCommonsUnstable & {
     id?: string;
 };
 
@@ -46,7 +46,7 @@ export type RadioItemSlots = {
 };
 
 // @public
-export type RadioItemState = ComponentState<RadioItemSlots> & RadioItemCommons;
+export type RadioItemState = ComponentState<RadioItemSlots> & RadioItemCommonsUnstable;
 
 // @public
 export type RadioProps = ComponentProps<RadioSlots>;
