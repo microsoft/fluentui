@@ -39,6 +39,7 @@ export const ButtonsWithTooltipAccessibilityScenario: React.FunctionComponent = 
       <h2>Tooltip as a password requirements</h2>
       <Label htmlFor="password">Password</Label>
       <Tooltip
+        relationship="label"
         onVisibleChange={onVisibleChange}
         visible={tooltipVisible}
         content="Password must be at least 8 characters long, contain a capital letter, and a number."
@@ -48,20 +49,20 @@ export const ButtonsWithTooltipAccessibilityScenario: React.FunctionComponent = 
       <input type="password" id="password" name="password" />
 
       <h2>Tooltips for text formatting icon-only buttons</h2>
-      <Tooltip content="Make text bold" triggerAriaAttribute="label">
+      <Tooltip relationship="label" content="Make text bold">
         <Button icon={<TextBold24Regular />} />
       </Tooltip>
 
-      <Tooltip content="Make text underline" triggerAriaAttribute="label">
+      <Tooltip relationship="label" content="Make text underline">
         <Button icon={<TextUnderline24Regular />} />
       </Tooltip>
 
-      <Tooltip content="Make text italic" triggerAriaAttribute="label">
+      <Tooltip relationship="label" content="Make text italic">
         <Button icon={<TextItalic24Regular />} />
       </Tooltip>
 
       <h2>Tooltip as an additional button description</h2>
-      <Tooltip content="App and account settings, status and more" triggerAriaAttribute="describedby">
+      <Tooltip relationship="description" content="App and account settings, status and more">
         <Button>Settings</Button>
       </Tooltip>
     </Scenario>
