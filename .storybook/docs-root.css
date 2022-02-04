@@ -408,3 +408,10 @@ h2.fluent {
   line-height: 36px;
   letter-spacing: -0.16px;
 }
+
+/* Hosted styles - overrides for when storybook iframe is hosted inside of the Fluent UI website  */
+
+#docs-root .hosted .sbdocs-wrapper {
+  padding-left: 0;
+  padding-right: 0;
+}

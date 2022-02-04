@@ -24,7 +24,9 @@ export const FluentDocsContainer: React.FC<FluentDocsContainerProps> = ({ childr
       )}
 
       {/** TODO add table of contents */}
-      <DocsContainer context={context}>{children}</DocsContainer>
+      <div className={hosted ? 'hosted' : ''}>
+        <DocsContainer context={context}>{children}</DocsContainer>
+      </div>
     </>
   );
 };
