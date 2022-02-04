@@ -16,7 +16,7 @@ exports[`Component Examples renders Button.IconWithTooltip.Example.tsx correctly
     role="none"
   >
     <button
-      aria-describedby="tooltip0"
+      aria-label="Emoji"
       className=
           ms-Button
           ms-Button--icon
