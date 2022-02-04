@@ -32,7 +32,6 @@
       "@fluentui/react-input": ["packages/react-input/src/index.ts"],
       "@fluentui/react-label": ["packages/react-label/src/index.ts"],
       "@fluentui/react-link": ["packages/react-link/src/index.ts"],
-      "@fluentui/react-make-styles": ["packages/react-make-styles/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-menu/src/index.ts"],
       "@fluentui/react-popover": ["packages/react-popover/src/index.ts"],
       "@fluentui/react-portal": ["packages/react-portal/src/index.ts"],

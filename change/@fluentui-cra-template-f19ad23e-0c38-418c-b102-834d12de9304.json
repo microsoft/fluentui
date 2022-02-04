@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Temporarily add resolution for `@babel/core` to work around bug",
+  "comment": "Revert adding resolution for babel because bug is fixed",
   "packageName": "@fluentui/cra-template",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch"

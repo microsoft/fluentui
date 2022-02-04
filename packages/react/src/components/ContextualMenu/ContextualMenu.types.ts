@@ -149,6 +149,8 @@ export interface IContextualMenuProps
 
   /**
    * Whether to focus on the contextual menu container (as opposed to the first menu item).
+   *
+   * Avoid using as it breaks the default focus behaviour when using assistive technologies.
    */
   shouldFocusOnContainer?: boolean;
 
