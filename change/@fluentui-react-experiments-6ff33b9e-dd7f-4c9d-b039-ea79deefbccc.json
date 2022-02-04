@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Mark raiseClick deprecated in react-experiments",
+  "packageName": "@fluentui/react-experiments",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
