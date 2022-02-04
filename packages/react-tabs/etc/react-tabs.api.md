@@ -49,7 +49,7 @@ export const Tab: ForwardRefComponent<TabProps>;
 export const tabClassName = "fui-Tab";
 
 // @public (undocumented)
-export type TabCommons = {
+export type TabCommonsUnstable = {
     value: TabValue;
 };
 
@@ -68,7 +68,7 @@ export const TabList: ForwardRefComponent<TabListProps>;
 export const tabListClassName = "fui-TabList";
 
 // @public (undocumented)
-export type TabListCommons = {
+export type TabListCommonsUnstable = {
     appearance?: 'transparent' | 'subtle';
     onTabSelect?: SelectTabEventHandler;
     selectedValue?: TabValue;
@@ -77,7 +77,7 @@ export type TabListCommons = {
 };
 
 // @public (undocumented)
-export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical'>> & {
+export type TabListContextValue = Pick<TabListCommonsUnstable, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListCommonsUnstable, 'appearance' | 'size' | 'vertical'>> & {
     onRegister: RegisterTabEventHandler;
     onUnregister: RegisterTabEventHandler;
     onSelect: SelectTabEventHandler;
@@ -89,7 +89,7 @@ export type TabListContextValues = {
 };
 
 // @public
-export type TabListProps = ComponentProps<TabListSlots> & TabListCommons & {
+export type TabListProps = ComponentProps<TabListSlots> & TabListCommonsUnstable & {
     defaultSelectedValue?: TabValue;
 };
 
@@ -107,7 +107,7 @@ export type TabListState = ComponentState<Required<TabListSlots>> & TabListConte
 };
 
 // @public
-export type TabProps = ComponentProps<TabSlots> & TabCommons;
+export type TabProps = ComponentProps<TabSlots> & TabCommonsUnstable;
 
 // @public (undocumented)
 export type TabSlots = {
@@ -117,7 +117,7 @@ export type TabSlots = {
 };
 
 // @public
-export type TabState = ComponentState<TabSlots> & TabCommons & {
+export type TabState = ComponentState<TabSlots> & TabCommonsUnstable & {
     appearance?: string;
     selected?: boolean;
     size: 'small' | 'medium';
