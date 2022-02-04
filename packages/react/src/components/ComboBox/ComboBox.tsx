@@ -143,6 +143,8 @@ function useOptionsState({ options, defaultSelectedKey, selectedKey }: IComboBox
       const indices: number[] = getSelectedIndices(options, selectedKeys);
 
       setSelectedIndices(indices);
+    } else {
+      setSelectedIndices([]);
     }
     setCurrentOptions(options);
   }, [options, selectedKey]);

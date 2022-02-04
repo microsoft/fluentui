@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "ComboBox: Properly reset selected indices in freeform",
+  "packageName": "@fluentui/react",
+  "email": "rezha@microsoft.com",
+  "dependentChangeType": "patch"
+}
