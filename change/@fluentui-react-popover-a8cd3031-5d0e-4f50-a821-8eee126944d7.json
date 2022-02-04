@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "update trigger implementation",
+  "comment": "standardize trigger implementation & cloning",
   "packageName": "@fluentui/react-popover",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
