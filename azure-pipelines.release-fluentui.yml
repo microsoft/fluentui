@@ -98,7 +98,16 @@ jobs:
           ContainerName: nightly-builds
           BlobPrefix: $(date) # upload tarballs to folder named by today's date
           Gzip: true
-
+      - task: ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest
+        inputs:
+          BuildDropPath: $(System.DefaultWorkingDirectory)
+      # These publish task push direclty to npm so manually archive the sbom package
+      - task: PublishPipelineArtifact@1
+        displayName: 📒 Publish Manifest
+        inputs:
+          artifactName: SBom-$(System.JobAttempt)
+          targetPath: $(System.DefaultWorkingDirectory)/_manifest
       - task: CmdLine@2
         displayName: '[NPM] Publish to NPM'
         condition: and(succeeded(), eq(variables.publishOfficial, true))

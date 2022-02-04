@@ -128,7 +128,16 @@ steps:
       artifactName: 'fabric-website-resources'
       publishLocation: 'Container'
     displayName: 'Publish artifact: fabric-website-resources (public-docsite-resources)'
-
+  - task: ManifestGeneratorTask@0
+    displayName: 📒 Generate Manifest
+    inputs:
+      BuildDropPath: $(System.DefaultWorkingDirectory)
+  # These publish task push direclty to npm so manually archive the sbom package
+  - task: PublishPipelineArtifact@1
+    displayName: 📒 Publish Manifest
+    inputs:
+      artifactName: SBom-$(System.JobAttempt)
+      targetPath: $(System.DefaultWorkingDirectory)/_manifest
   # Generate the homepage.htm file used to load developer.microsoft.com/fluentui. Note that the
   # generated file must be manually checked in to an internal repo, it's just generated as a build
   # artifact for convenience and tracking.
