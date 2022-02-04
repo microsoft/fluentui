@@ -1,11 +1,11 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { Badge, BadgeCommons } from '@fluentui/react-badge';
+import { Badge, BadgeCommonsUnstable } from '@fluentui/react-badge';
 import { CircleRegular } from '@fluentui/react-icons';
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
-const badgeColors: BadgeCommons['color'][] = [
+const badgeColors: BadgeCommonsUnstable['color'][] = [
   'brand',
   'danger',
   'important',
@@ -16,7 +16,12 @@ const badgeColors: BadgeCommons['color'][] = [
   'warning',
 ];
 
-const badgeAppearances: BadgeCommons['appearance'][] = ['filled', 'outline', 'tint', 'ghost'];
+const badgeAppearances: BadgeCommonsUnstable['appearance'][] = [
+  'filled',
+  'outline',
+  'tint',
+  'ghost',
+];
 
 const useStyles = makeStyles({
   container: {
@@ -40,12 +45,12 @@ const useStyles = makeStyles({
   },
 });
 
-const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance'] }> = ({
+const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommonsUnstable['appearance'] }> = ({
   appearance,
 }) => {
   const styles = useStyles();
 
-  const badges = new Map<BadgeCommons['color'], JSX.Element[]>();
+  const badges = new Map<BadgeCommonsUnstable['color'], JSX.Element[]>();
   badges.set('brand', []);
   badges.set('danger', []);
   badges.set('severe', []);
@@ -109,7 +114,7 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance']
 
   return (
     <div>
-      {Array.from(badges.keys()).map((color: BadgeCommons['color'], i) => (
+      {Array.from(badges.keys()).map((color: BadgeCommonsUnstable['color'], i) => (
         <div key={i} className={styles.container}>
           <div
             className={mergeClasses(
@@ -148,7 +153,7 @@ storiesOf('Badge Converged - sizes', module).addStory(
         'medium',
         'large',
         'extra-large',
-      ] as BadgeCommons['size'][]).map(size => (
+      ] as BadgeCommonsUnstable['size'][]).map(size => (
         <Badge key={size} size={size} />
       ))}
     </div>
