@@ -81,7 +81,6 @@ export * from './SwatchColorPicker';
 export * from './TeachingBubble';
 export * from './Text';
 export * from './TextField';
-export * from './Theme';
 export * from './ThemeGenerator';
 export * from './TimePicker';
 export * from './Toggle';
@@ -89,5 +88,26 @@ export * from './Tooltip';
 export * from './Utilities';
 export * from './WeeklyDayPicker';
 export * from './WindowProvider';
+/**
+ * Styles and Theme both exported the same variables which causes conflicting
+ * star exports with webpack5. See here: https://github.com/microsoft/fluentui/issues/21601
+ * Now explicitly declaring Theme exports that are NOT also being exported from Styles.
+ */
+export * from './utilities/ThemeProvider/index';
+export {
+  CommunicationColors,
+  DefaultSpacing,
+  Depths,
+  FluentTheme,
+  LocalizedFontFamilies,
+  LocalizedFontNames,
+  mergeThemes,
+  MotionDurations,
+  MotionTimings,
+  MotionAnimations,
+  NeutralColors,
+  SharedColors,
+} from './Theme';
+export type { ComponentStyles, ComponentsStyles, PartialTheme, Theme } from './Theme';
 
 import './version';
