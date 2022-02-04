@@ -20,7 +20,7 @@ export const Switch: ForwardRefComponent<SwitchProps>;
 export const switchClassName = "fui-Switch";
 
 // @public (undocumented)
-export interface SwitchCommons {
+export interface SwitchCommonsUnstable {
     checked?: boolean;
     defaultChecked?: boolean;
     disabled?: boolean;
@@ -30,7 +30,7 @@ export interface SwitchCommons {
 }
 
 // @public (undocumented)
-export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange'>, SwitchCommons {
+export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange'>, SwitchCommonsUnstable {
 }
 
 // @public (undocumented)
@@ -44,7 +44,7 @@ export type SwitchSlots = {
 };
 
 // @public (undocumented)
-export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommons {
+export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommonsUnstable {
 }
 
 // @public
