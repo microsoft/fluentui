@@ -13,7 +13,7 @@ Image.parameters = {
     description: {
       story:
         'An avatar can display an image.<br/>' +
-        'It is strongly recommended to also include a name in addition to the image: the initials from the name are ' +
+        'It is recommended to also include a name in addition to the image: the initials from the name are ' +
         'displayed while the image is loading, and the name makes the Avatar accessible to screen readers.',
     },
   },

@@ -30,7 +30,7 @@ export const Badge = () => (
 Badge.parameters = {
   docs: {
     description: {
-      story: 'An avatar can have a badge to indicate presence status.',
+      story: 'An avatar can have a badge to indicate presence status. See the PresenceBadge component for more info.',
     },
   },
 };
