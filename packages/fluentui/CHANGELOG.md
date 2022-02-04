@@ -19,7 +19,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Fixes
-- Update `FocusZone` to properly pass through event modifiers (`ctrlKey`, etc.) when raising a click event ([#21547](https://github.com/microsoft/fluentui/pull/21547))
+- Update `FocusZone` to properly pass through event modifiers (`ctrlKey`, etc.) when raising a click event @spmonahan ([#21547](https://github.com/microsoft/fluentui/pull/21547))
 - Fix `AccordionTitle` focus styles @petr-duda ([#21400](https://github.com/microsoft/fluentui/pull/21400))
 - Add border to `Card` in high contrast rest state @jurokapsiar ([#21315](https://github.com/microsoft/fluentui/pull/21315))
 - Use shadow8 for better contrast of `Tooltip` @jurokapsiar ([#21316](https://github.com/microsoft/fluentui/pull/21316))
