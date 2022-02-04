@@ -19,19 +19,14 @@ export type SpinButtonSlots = {
   input: Slot<'input'>;
 
   /**
-   * Renders the increment button.
+   * Renders the increment control.
    */
-  incrementButton: Slot<'button'>;
+  incrementControl: Slot<'button'>;
 
   /**
-   * Renders the decrement button.
+   * Renders the decrement control.
    */
-  decrementButton: Slot<'button'>;
-
-  /**
-   * Renders the label.
-   */
-  label: Slot<'label'>;
+  decrementControl: Slot<'button'>;
 };
 
 export type SpinButtonChangeData = {
@@ -40,27 +35,10 @@ export type SpinButtonChangeData = {
    * E.g., `1`
    */
   value: number;
-
-  /**
-   * New formatted value after the change.
-   * E.g., `"$1.00"`
-   */
-  formattedValue: string;
-
-  /**
-   * Previous value, before the change.
-   */
-  prevValue: number;
-
-  /**
-   * Previous formatted value, before the change.
-   */
-  prevFormattedValue: string;
 };
 
 export type SpinButtonFormatter = (value: number) => string;
 export type SpinButtonParser = (formattedValue: string) => number;
-export type SpinButtonKeyboardDirection = 'none' | 'up' | 'down';
 
 export type SpinButtonCommons = {
   /**
@@ -100,16 +78,6 @@ export type SpinButtonCommons = {
   step: number;
 
   /**
-   * Custom className for the control.
-   */
-  className: string;
-
-  /**
-   * Descriptive label for the control.
-   */
-  label: string;
-
-  /**
    * Function used to format the displayed value in the component.
    * This allows for things like:
    * - Displaying the value as a monetary value: $1.00
@@ -129,13 +97,13 @@ export type SpinButtonCommons = {
   parser: SpinButtonParser;
 
   /**
-   * Callback for when the committed/validated value changes. This is called _after_ `onValidate`.
+   * Callback for when the committed value changes.
    * - User presses the up/down buttons (on single press or every spin)
    * - User presses the up/down arrow keys (on single press or every spin)
    * - User *commits* edits to the input text by focusing away (blurring) or pressing enter.
    *   Note that this is NOT called for every key press while the user is editing.
    */
-  onChange: (event: React.SyntheticEvent<HTMLElement>, newValue: SpinButtonChangeData) => void;
+  onChange: (event: React.SyntheticEvent<HTMLElement>, data: SpinButtonChangeData) => void;
 
   /**
    * How many decimal places the value should be rounded to.

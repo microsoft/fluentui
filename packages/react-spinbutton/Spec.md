@@ -2,7 +2,7 @@
 
 ## Background
 
-SpinButtons are used to allow numeric input bounded between minimum and maximum values with button controls to increment and decrement the input value by some step amount.
+SpinButtons are used to allow numeric input bounded between minimum and maximum values with button controls to increment and decrement the input value by some step amount. Values can also be manipulated via the keyboard.
 
 ## Prior Art
 
@@ -37,6 +37,8 @@ This specification recommends `SpinButton` as the name for this component. Given
 2. **Helper text**: extra text in addition to the label to provide "help", perhaps by offering an example. Typically appears below the input.
 3. **Formatted value**: optional formatting applied to the input value. For example, turning "12" into "12 pt" for a font size picker.
 
+Note that labels and helper text are included here for completeness but will be omitted from the converged `SpinButton` as there is an [open RFC discussing how to handle these elements for vNext](https://github.com/microsoft/fluentui/issues/19627#issuecomment-1022646775).
+
 #### Base `SpinButton` Anatomy
 
 ![Base SpinButton Anatomy (annotated)](./spec-assets/spec-spinbutton-anatomy.png)
@@ -50,8 +52,9 @@ This specification recommends `SpinButton` as the name for this component. Given
 #### Attributes
 
 1. **min**: the minimum valid value for the control
-2. **max**: the maximum value value for the control
+2. **max**: the maximum valid value for the control
 3. **step**: the step size or amount the value is changed by one increment or decrement
+4. **value**: the current value for the control
 
 #### Direct Input
 
@@ -83,7 +86,7 @@ Fluent UI v8 (Fabric) ships a `SpinButton` control. This control supports direct
 
 One interesting aspect of `SpinButton` in v8 is that the `value` prop (the prop that dictacts the actual current value of the control) is a string but `min`, `max` and `step` are all numbers. This is in keeping with `<input type="number">` where the `value` attribute is also a string but it feels odd for a React component that works with numeric values to take in a string `value` prop.
 
-v8 supports an optional icon that appears before the label. None of the other v8 input controls support adding an icon next to the label as part of the component API so this feature will be omitted from this proposed API. This can be achieved by aligning an icon with the control or perhaps by updating the vNext `Label` component to support icons.
+v8 supports an optional icon that appears before the label. As none of the other v8 input controls support adding an icon next to the label as part of their component APIs and how [labeling will work for vNext inputs is still an open question](https://github.com/microsoft/fluentui/issues/19627#issuecomment-1022646775) this feature will be omitted from this spec. Having an icon by the control can be achieved by aligning an icon with the control or perhaps by updating the vNext `Label` component to support icons.
 
 #### Props
 
@@ -159,17 +162,14 @@ Inspecting a native number input with devtools shows that it implements the [spi
 ### Uncontrolled Example
 
 ```tsx
-<SpinButton label="Uncontrolled Example" defaultValue="1" />
+<SpinButton defaultValue="1" />
 ```
 
 ### Controlled Example
 
 ```tsx
 type SpinButtonChangeData = {
-  value: number; // The "raw value", e.g., 2
-  formattedValue: string; // The "formatted value", e.g., "$2.00"
-  prevValue: number;
-  prevFormattedValue: string;
+  value: number;
 };
 
 const [value, setValue] = useState<number>(2);
@@ -177,7 +177,7 @@ const onControlledExampleChange = (_event, data: SpinButtonChangeData) => {
   setValue(data.value);
 };
 
-<SpinButton label="Controlled Example" value={value} onChange={onControlledExampleChange} />;
+<SpinButton value={value} onChange={onControlledExampleChange} />;
 ```
 
 ### Custom Display Format Example
@@ -185,9 +185,6 @@ const onControlledExampleChange = (_event, data: SpinButtonChangeData) => {
 ```tsx
 type SpinButtonChangeData = {
   value: number;
-  formattedValue: string;
-  prevValue: number;
-  prevFormattedValue: string;
 };
 
 type SpinButtonFormatter = (value: number) => string;
@@ -210,16 +207,16 @@ const fontParser: SpinButtonParser = formattedValue => {
   return parseFloat(formattedValue);
 };
 
+// Controlled
 <SpinButton
-  label="Controlled Formatted Example"
   value={value}
   formatter={fontFormatter}
   parser={fontParser}
   onChange={onControlledExampleChange}
 />
 
+// Uncontrolled
 <SpinButton
-  label="Uncontrolled Formatted Example"
   defaultValue={4}
   formatter={fontFormatter}
   parser={fontParser}
@@ -231,10 +228,6 @@ const fontParser: SpinButtonParser = formattedValue => {
 A very basic example to demonstrate how formatting will work in practice.
 
 [Link to example on Codesandbox](https://codesandbox.io/s/spinbutton-example-formatted-values-66pou?file=/src/SpinButton/SpinButton.js)
-
-## Variants
-
-[The native HTML number input can be associated with a list](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#offering_suggested_values) to provide suggested values in the `SpinButton`. This fits nicely when a scenario where a `SpinButton` is used as a font size selector however it seems to have some overlap with a `ComboBox`. As the existing v8 `SpinButton` lacks this feature it will be left off the initial implementation.
 
 ## API
 
@@ -249,19 +242,16 @@ const formatter = (value: number): string => {
   return `${$value.toFixed(2)}`;
 };
 
-<SpinButton label="Example SpinButton" value={10} min={1} max={100} step={5} formatter={formatter} />;
+<SpinButton value={10} min={1} max={100} step={5} formatter={formatter} />;
 ```
 
 - _**Internal**_
 
 ```tsx
 <slots.root {...slotProps.root}>
-  <slots.label {...slotProps.label} />
-  <div className={state.spinButtonWrapper}>
-    <slots.input {...slotProps.input} />
-    <slots.incrementButton {...slots.incrementButton} />
-    <slots.decrementButton {...slots.decrementButton} />
-  </div>
+  <slots.input {...slotProps.input} />
+  <slots.incrementControl {...slots.incrementControl} />
+  <slots.decrementControl {...slots.decrementControl} />
 </slots.root>
 ```
 
@@ -272,27 +262,22 @@ Note that `aria-valuetext` is conditionally rendered. In this case it is rendere
 ```html
 <!-- root slot -->
 <div class="fui-SpinButton">
-  <!-- label slot -->
-  <label class="fui-SpinButton-label" id="unique-spinbutton-id">Example SpinButton</label>
-  <div class="fui-SpinButton-wrapper">
-    <!-- input slot -->
-    <input
-      type="text"
-      role="spinbutton"
-      class="fui-SpinButton-input"
-      value="$10.00"
-      aria-valuenow="10"
-      aria-valuemin="1"
-      aria-valuemax="100"
-      aria-valuetext="$10.00"
-      aria-labeledby="unique-spinbutton-id"
-    />
-    <!-- increment button slot -->
-    <!-- note we'll probably using icons rather than "+" and "-" inside the buttons -->
-    <button tabindex="-1" type="button" class="fui-SpinButton-button fui-SpinButton-increment-button">+</button>
-    <!-- decrement button slot -->
-    <button tabindex="-1" type="button" class="fui-SpinButton-button fui-SpinButton-decrement-button">-</button>
-  </div>
+  <!-- input slot -->
+  <input
+    type="text"
+    role="spinbutton"
+    class="fui-SpinButton-input"
+    value="$10.00"
+    aria-valuenow="10"
+    aria-valuemin="1"
+    aria-valuemax="100"
+    aria-valuetext="$10.00"
+  />
+  <!-- increment button slot -->
+  <!-- note we'll probably using icons rather than "+" and "-" inside the buttons -->
+  <button tabindex="-1" type="button" class="fui-SpinButton-button fui-SpinButton-increment-button">+</button>
+  <!-- decrement button slot -->
+  <button tabindex="-1" type="button" class="fui-SpinButton-button fui-SpinButton-decrement-button">-</button>
 </div>
 ```
 
@@ -317,7 +302,7 @@ Not applicable as v0 does not implement this component or one like it.
 
 ## Behaviors
 
-`SpinButton`'s `value` prop is always a number, in contrast to the v8 implementation that gave `value` a string typez. `SpinButton`s manipulate numeric values and making `value` a number aligns it with the other related props: `min`, `max` and `step`. `SpinButton`'s `value` is always displayed as a string which is determined with the `formatter()` function. By default this function stringifies `value` but it can do more sophisticated formatting like apply currency formatting. The inverse of `formatter()` is `parser()` which takes the stringified display value and converts it back to a number. The default implementation calls `parseFloat()` on the display value. `parser()` is called when a user directly types a value into `SpinButton`'s `<input>` element so this value can be converted to a number for computation. If `parser()` returns a non-number value (e.g., `NaN`, `undefined`, `null`) `value` will not be changed.
+`SpinButton`'s `value` prop is always a number, in contrast to the v8 implementation that gave `value` a string type. `SpinButton`s manipulate numeric values and making `value` a number aligns it with the other related props: `min`, `max` and `step`. `SpinButton`'s `value` is always displayed as a string which is determined with the `formatter()` function. By default this function stringifies `value` but it can do more sophisticated formatting like apply currency formatting. The inverse of `formatter()` is `parser()` which takes the stringified display value and converts it back to a number. The default implementation calls `parseFloat()` on the display value. `parser()` is called when a user directly types a value into `SpinButton`'s `<input>` element so this value can be converted to a number for computation. If `parser()` returns a non-number value (e.g., `NaN`, `undefined`, `null`) `value` will not be changed.
 
 `formatter()` and `parser()` allow users to hook into `SpinButton`'s display behavior without having to reimplement features like clamping `value` between `min` and `max` which is required when adding [custom suffixes in v8](https://codepen.io/seanms/pen/QWqpQWp).
 
@@ -330,7 +315,7 @@ No error states are currently implemented.
 `SpinButton`'s `onChange` callback is invoked every time a change is committed. A change is committed when:
 
 1. A step button is activated
-2. When a user presses the `Up` or `Down` arrow keys while focused on the component.
+2. When a user presses the `Arrow Up`, `Arrow Down`, `Home` or `End` keys while focused on the component.
 3. When a user presses the `Enter` key while focused on the `<input>`
 4. When the `blur` event is fired from the `<input>`
 
@@ -338,7 +323,7 @@ The `onChange` callback is not invoked while a user is focused on the `<input>` 
 
 ### Component States
 
-- Normal (no value or valid value, not focused)
+- Rest (no value or valid value, not focused)
 - Focused
 - Disabled
 - Error/Warning (value is invalid in some way). NB: error and validation are not currently supported.
