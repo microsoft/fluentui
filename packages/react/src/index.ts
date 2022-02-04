@@ -89,7 +89,7 @@ export * from './Utilities';
 export * from './WeeklyDayPicker';
 export * from './WindowProvider';
 /**
- * Styles and Theme both exported the same variables which causes conflicting
+ * Styles and Theme both exported the same name which causes conflicting
  * star exports with webpack5. See here: https://github.com/microsoft/fluentui/issues/21601
  * Now explicitly declaring Theme exports that are NOT also being exported from Styles.
  */
