@@ -1,5 +1,5 @@
 import { isValidElement } from 'react';
-import type { UnknownSlotProps, SlotShorthandValue } from './types';
+import type { UnknownSlotProps, SlotShorthandValue, ReplaceNullWithUndefined } from './types';
 
 export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
   required?: Required;
@@ -7,9 +7,12 @@ export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
 };
 
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-  <P extends Props | null>(value: P | SlotShorthandValue | undefined, options?: ResolveShorthandOptions<P, true>): P;
+  <P extends Props | null>(
+    value: P | SlotShorthandValue | undefined,
+    options?: ResolveShorthandOptions<P, true>,
+  ): ReplaceNullWithUndefined<P>;
   <P extends Props | null>(value: P | SlotShorthandValue | undefined, options?: ResolveShorthandOptions<P, boolean>):
-    | P
+    | ReplaceNullWithUndefined<P>
     | undefined;
 };
 
@@ -21,10 +24,7 @@ export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlo
  */
 export const resolveShorthand: ResolveShorthandFunction = (value, options) => {
   const { required = false, defaultProps } = options || {};
-  if (value === null) {
-    return null;
-  }
-  if (value === undefined && !required) {
+  if (value === null || (value === undefined && !required)) {
     return undefined;
   }
 

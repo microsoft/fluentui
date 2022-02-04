@@ -69,7 +69,7 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
   state: ComponentState<R>,
   slotName: K,
 ): readonly [React.ElementType<R[K]>, R[K]] {
-  if (state[slotName] === undefined || state[slotName] === null) {
+  if (state[slotName] === undefined) {
     return [nullRender, undefined!];
   }
   const { children, as: asProp, ...rest } = state[slotName]!;

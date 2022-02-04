@@ -35,8 +35,8 @@ describe('resolveShorthand', () => {
   it('resolves "null" without creating a child element', () => {
     const props: TestProps = { slotA: null, slotB: null };
 
-    expect(resolveShorthand(props.slotA)).toEqual(null);
-    expect(resolveShorthand(null, { required: true })).toEqual(null);
+    expect(resolveShorthand(props.slotA)).toEqual(undefined);
+    expect(resolveShorthand(null, { required: true })).toEqual(undefined);
   });
 
   it('resolves undefined without creating a child element', () => {

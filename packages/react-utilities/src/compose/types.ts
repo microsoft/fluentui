@@ -168,6 +168,11 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
 //   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
 
 /**
+ * If type T includes `null`, remove it and add `undefined` instead.
+ */
+export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | undefined : T;
+
+/**
  * Defines the State object of a component given its slots.
  */
 export type ComponentState<Slots extends SlotPropsRecord> = {
@@ -179,7 +184,9 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 } & {
   // Include a prop for each slot, with the shorthand resolved to a props object
   // The root slot can never be null, so also exclude null from it
-  [Key in keyof Slots]: Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>;
+  [Key in keyof Slots]: ReplaceNullWithUndefined<
+    Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>
+  >;
 };
 
 /**
