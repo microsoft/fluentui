@@ -70,7 +70,7 @@ describe('Dropdown', () => {
 
     it('Renders correctly when open', () => {
       // Mock createPortal so that the options list ends up inside the wrapper for snapshotting
-      jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
+      spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
       // There's intermittent variation (maybe measurement-related) on different computers,
       // so use fake timers to make it more predictable even though we never advance the timers.
       jest.useFakeTimers();
@@ -509,7 +509,7 @@ describe('Dropdown', () => {
 
     it('Renders correctly when open', () => {
       // Mock createPortal so that the options list ends up inside the wrapper for snapshotting
-      jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
+      spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
       // There's intermittent variation (maybe measurement-related) on different computers,
       // so use fake timers to make it more predictable even though we never advance the timers.
       jest.useFakeTimers();
