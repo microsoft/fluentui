@@ -8,6 +8,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import type { PopperVirtualElement } from '@fluentui/react-positioning';
@@ -89,15 +90,24 @@ export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<Pop
 };
 
 // @public
-export const PopoverTrigger: React_2.FC<PopoverTriggerProps>;
+export const PopoverTrigger: React_2.FC<PopoverTriggerProps> & FluentTriggerComponent;
+
+// @public (undocumented)
+export type PopoverTriggerChildProps = {
+    ref?: React_2.Ref<never>;
+} & Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-haspopup' | 'onClick' | 'onMouseEnter' | 'onKeyDown' | 'onMouseLeave' | 'onContextMenu'>;
 
 // @public
 export type PopoverTriggerProps = {
-    children: React_2.ReactElement;
+    children: (React_2.ReactElement & {
+        ref?: React_2.Ref<unknown>;
+    }) | ((props: PopoverTriggerChildProps) => React_2.ReactNode);
 };
 
 // @public
-export type PopoverTriggerState = PopoverTriggerProps;
+export type PopoverTriggerState = {
+    children: React_2.ReactNode;
+};
 
 // @public
 export const renderPopover_unstable: (state: PopoverState) => JSX.Element;
