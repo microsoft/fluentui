@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Changed shouldFocusOnContainer default value to false",
-  "packageName": "@fluentui/react",
-  "email": "tkrasniqi@microsoft.com",
-  "dependentChangeType": "patch"
-}

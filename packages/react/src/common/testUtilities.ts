@@ -54,5 +54,6 @@ export function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEve
  * https://github.com/facebook/jest/issues/2157#issuecomment-279171856
  */
 export function flushPromises() {
+  // TODO: in jest 27, change to `new Promise(process.nextTick)` per https://stackoverflow.com/a/51045733
   return new Promise<void>(resolve => setImmediate(resolve));
 }

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/cra-template
 
-This log was last generated on Thu, 03 Feb 2022 07:29:40 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Feb 2022 07:31:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.65](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.65)
+
+Fri, 04 Feb 2022 07:31:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.64..@fluentui/cra-template_v8.0.65)
+
+### Patches
+
+- Revert adding resolution for babel because bug is fixed ([PR #21550](https://github.com/microsoft/fluentui/pull/21550) by elcraig@microsoft.com)
+- Bump @fluentui/react to v8.52.3 ([PR #21519](https://github.com/microsoft/fluentui/pull/21519) by beachball)
 
 ## [8.0.64](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.64)
 

@@ -2,6 +2,27 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Fri, 04 Feb 2022 07:31:42 GMT",
+      "tag": "@fluentui/cra-template_v8.0.65",
+      "version": "8.0.65",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/cra-template",
+            "commit": "c5059e141fcfbdbe1366cdd173d289728dc429b9",
+            "comment": "Revert adding resolution for babel because bug is fixed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.52.3",
+            "commit": "e1926bfeca2a0ae5a469133a0c8257a7e4883332"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Feb 2022 07:29:40 GMT",
       "tag": "@fluentui/cra-template_v8.0.64",
       "version": "8.0.64",
