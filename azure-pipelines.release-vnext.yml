@@ -71,7 +71,7 @@ steps:
     inputs:
       artifactName: SBom-$(System.JobAttempt)
       targetPath: $(System.DefaultWorkingDirectory)/_manifest
-      
+
   # TODO update release notes script for v9
   # - script: |
   #     node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
