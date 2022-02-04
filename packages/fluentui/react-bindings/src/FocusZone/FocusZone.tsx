@@ -80,36 +80,14 @@ const ALLOW_VIRTUAL_ELEMENTS = false;
  * Raises a click on a target element based on a keyboard event.
  */
 function _raiseClickFromKeyboardEvent(target: Element, ev?: React.KeyboardEvent<HTMLElement>): void {
-  let event;
-  if (typeof MouseEvent === 'function') {
-    event = new MouseEvent('click', {
-      ctrlKey: ev?.ctrlKey,
-      metaKey: ev?.metaKey,
-      shiftKey: ev?.shiftKey,
-      altKey: ev?.altKey,
-      bubbles: ev?.bubbles,
-      cancelable: ev?.cancelable,
-    });
-  } else {
-    event = document.createEvent('MouseEvents');
-    event.initMouseEvent(
-      'click',
-      ev ? ev.bubbles : false,
-      ev ? ev.cancelable : false,
-      window, // not using getWindow() since this can only be run client side
-      0, // detail
-      0, // screen x
-      0, // screen y
-      0, // client x
-      0, // client y
-      ev ? ev.ctrlKey : false,
-      ev ? ev.altKey : false,
-      ev ? ev.shiftKey : false,
-      ev ? ev.metaKey : false,
-      0, // button
-      null, // relatedTarget
-    );
-  }
+  const event = new MouseEvent('click', {
+    ctrlKey: ev?.ctrlKey,
+    metaKey: ev?.metaKey,
+    shiftKey: ev?.shiftKey,
+    altKey: ev?.altKey,
+    bubbles: ev?.bubbles,
+    cancelable: ev?.cancelable,
+  });
 
   target.dispatchEvent(event);
 }
