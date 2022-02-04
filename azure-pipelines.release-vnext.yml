@@ -61,7 +61,17 @@ steps:
     env:
       GITHUB_PAT: $(githubPAT)
     displayName: Publish changes and bump versions
-
+  - task: ManifestGeneratorTask@0
+    displayName: 📒 Generate Manifest
+    inputs:
+      BuildDropPath: $(System.DefaultWorkingDirectory)
+  # These publish task push direclty to npm so manually archive the sbom package
+  - task: PublishPipelineArtifact@1
+    displayName: 📒 Publish Manifest
+    inputs:
+      artifactName: SBom-$(System.JobAttempt)
+      targetPath: $(System.DefaultWorkingDirectory)/_manifest
+      
   # TODO update release notes script for v9
   # - script: |
   #     node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
