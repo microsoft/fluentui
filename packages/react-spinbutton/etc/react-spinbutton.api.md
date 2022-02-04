@@ -20,10 +20,10 @@ export const SpinButton: ForwardRefComponent<SpinButtonProps>;
 export const spinButtonClassName = "fui-SpinButton";
 
 // @public (undocumented)
-export type SpinButtonCommons = {};
+export type SpinButtonCommonsUnstable = {};
 
 // @public
-export type SpinButtonProps = ComponentProps<SpinButtonSlots> & SpinButtonCommons;
+export type SpinButtonProps = ComponentProps<SpinButtonSlots> & SpinButtonCommonsUnstable;
 
 // @public (undocumented)
 export type SpinButtonSlots = {
@@ -31,7 +31,7 @@ export type SpinButtonSlots = {
 };
 
 // @public
-export type SpinButtonState = ComponentState<SpinButtonSlots> & SpinButtonCommons;
+export type SpinButtonState = ComponentState<SpinButtonSlots> & SpinButtonCommonsUnstable;
 
 // @public
 export const useSpinButton_unstable: (props: SpinButtonProps, ref: React_2.Ref<HTMLElement>) => SpinButtonState;
