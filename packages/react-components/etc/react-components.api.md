@@ -271,6 +271,7 @@ import { TextProps } from '@fluentui/react-text';
 import { TextSlots } from '@fluentui/react-text';
 import { TextState } from '@fluentui/react-text';
 import { Theme } from '@fluentui/react-theme';
+import { themeToTokensObject } from '@fluentui/react-theme';
 import { Title1 } from '@fluentui/react-text';
 import { title1ClassName } from '@fluentui/react-text';
 import { Title2 } from '@fluentui/react-text';
@@ -904,6 +905,8 @@ export { TextSlots }
 export { TextState }
 
 export { Theme }
+
+export { themeToTokensObject }
 
 export { Title1 }
 

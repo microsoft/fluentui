@@ -90,7 +90,6 @@ exports[`Component Examples renders Button.IconWithTooltip.Example.tsx correctly
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      title="Emoji"
       type="button"
     >
       <span

@@ -1,6 +1,7 @@
 export * from './themes/index';
 export * from './utils/index';
 
+export { themeToTokensObject } from './themeToTokensObject';
 export { tokens } from './tokens';
 
 export type {
