@@ -113,14 +113,14 @@ describe('Dropdown', () => {
         />,
       );
 
-      const titleElement = within(getByRole('combobox')).getByText('1');
+      const titleElement = within(getByRole('combobox')).queryByText('1');
       expect(titleElement).toBeTruthy();
     });
 
     it('Renders a selected item in uncontrolled case', () => {
       const { getByRole } = render(<Dropdown defaultSelectedKey="1" options={DEFAULT_OPTIONS} />);
 
-      const titleElement = within(getByRole('combobox')).getByText('1');
+      const titleElement = within(getByRole('combobox')).queryByText('1');
       expect(titleElement).toBeTruthy();
     });
 
@@ -145,7 +145,7 @@ describe('Dropdown', () => {
 
     it('Renders a selected item in controlled case', () => {
       const { getByRole } = render(<Dropdown selectedKey="1" options={DEFAULT_OPTIONS} />);
-      const titleElement = within(getByRole('combobox')).getByText('1');
+      const titleElement = within(getByRole('combobox')).queryByText('1');
       expect(titleElement).toBeTruthy();
     });
 
@@ -174,7 +174,7 @@ describe('Dropdown', () => {
       expect(secondItemElement?.getAttribute('title')).toEqual('test');
 
       fireEvent.click(secondItemElement);
-      const titleElement = within(getByRole('combobox')).getByText('2');
+      const titleElement = within(getByRole('combobox')).queryByText('2');
       expect(titleElement).toBeTruthy();
     });
 
@@ -271,7 +271,6 @@ describe('Dropdown', () => {
 
       const dropdownRoot = getByRole('combobox');
       const titleElement = within(dropdownRoot).getByText('3');
-      expect(titleElement).toBeTruthy();
 
       userEvent.type(dropdownRoot, '{arrowdown}', { skipClick: true });
       expect(titleElement.textContent).toEqual('3');
@@ -287,7 +286,6 @@ describe('Dropdown', () => {
       userEvent.tab();
       const dropdownRoot = getByRole('combobox');
       const titleElement = within(dropdownRoot).getByText('3');
-      expect(titleElement).toBeTruthy();
 
       userEvent.type(dropdownRoot, '{arrowdown}', { skipClick: true });
       expect(titleElement.textContent).toEqual('4');
@@ -310,8 +308,6 @@ describe('Dropdown', () => {
     it('can be programmatically focused when tabIndex=-1, and will not automatically select an item', () => {
       const dropdown = React.createRef<IDropdown>();
 
-      // in enzyme, when we call the programmatic focus(), it does not trigger the onFocus callback of the div
-      // being focused. Utilize JSDOM instead.
       const { getByRole } = render(<Dropdown componentRef={dropdown} tabIndex={-1} options={DEFAULT_OPTIONS} />);
 
       dropdown.current!.focus(false);
@@ -341,7 +337,7 @@ describe('Dropdown', () => {
       const dropdownRoot = getByRole('combobox');
       userEvent.type(dropdownRoot, '{home}');
 
-      const titleElement = within(dropdownRoot).getByText('1');
+      const titleElement = within(dropdownRoot).queryByText('1');
       expect(titleElement).toBeTruthy();
     });
 
@@ -351,7 +347,7 @@ describe('Dropdown', () => {
       const dropdownRoot = getByRole('combobox');
       userEvent.type(dropdownRoot, '{end}');
 
-      const titleElement = within(dropdownRoot).getByText('6');
+      const titleElement = within(dropdownRoot).queryByText('6');
       expect(titleElement).toBeTruthy();
     });
 
@@ -382,27 +378,27 @@ describe('Dropdown', () => {
     });
 
     it('opens on focus if openOnKeyboardFocus is true', () => {
-      const { getByRole } = render(<Dropdown openOnKeyboardFocus options={DEFAULT_OPTIONS} />);
+      const { queryByRole } = render(<Dropdown openOnKeyboardFocus options={DEFAULT_OPTIONS} />);
 
       userEvent.tab();
 
-      expect(getByRole('listbox')).toBeTruthy();
+      expect(queryByRole('listbox')).toBeTruthy();
     });
 
     it('opens on click if openOnKeyboardFocus is true', () => {
-      const { getByRole } = render(<Dropdown openOnKeyboardFocus options={DEFAULT_OPTIONS} />);
+      const { getByRole, queryByRole } = render(<Dropdown openOnKeyboardFocus options={DEFAULT_OPTIONS} />);
 
       userEvent.click(getByRole('combobox'));
 
-      expect(getByRole('listbox')).toBeTruthy();
+      expect(queryByRole('listbox')).toBeTruthy();
     });
 
     it('closes on blur when openOnKeyboardFocus is true', () => {
-      const { getByRole } = render(<Dropdown openOnKeyboardFocus options={DEFAULT_OPTIONS} />);
+      const { getByRole, queryByRole } = render(<Dropdown openOnKeyboardFocus options={DEFAULT_OPTIONS} />);
 
       userEvent.tab();
 
-      expect(getByRole('listbox')).toBeTruthy();
+      expect(queryByRole('listbox')).toBeTruthy();
 
       // blur, force the dropdown to close, then focus again
       // the second focus is simulating the behavior of the Callout when closed
@@ -411,7 +407,7 @@ describe('Dropdown', () => {
       fireEvent.keyDown(dropdownRoot, { which: KeyCodes.escape });
       fireEvent.focus(dropdownRoot);
 
-      expect(() => getByRole('listbox')).toThrow();
+      expect(queryByRole('listbox')).toBeFalsy();
     });
 
     it('uses item title attribute if provided', () => {
@@ -455,11 +451,11 @@ describe('Dropdown', () => {
     });
 
     it('Renders correctly when options change', () => {
-      const { getByRole, getAllByRole, getByText, rerender } = render(
+      const { getByRole, getAllByRole, queryByText, rerender } = render(
         <Dropdown options={DEFAULT_OPTIONS} multiSelect defaultSelectedKeys={['1', '4']} />,
       );
 
-      expect(getByText('1, 4')).toBeTruthy(); // expected initial title text
+      expect(queryByText('1, 4')).toBeTruthy(); // expected initial title text
 
       rerender(<Dropdown options={DEFAULT_OPTIONS.slice(2)} multiSelect defaultSelectedKeys={['1', '4']} />);
 
@@ -486,7 +482,7 @@ describe('Dropdown', () => {
         />,
       );
 
-      const titleElement = within(getByRole('combobox')).getByText('1');
+      const titleElement = within(getByRole('combobox')).queryByText('1');
       expect(titleElement).toBeTruthy();
     });
 
@@ -528,14 +524,14 @@ describe('Dropdown', () => {
         />,
       );
 
-      const titleElement = within(getByRole('combobox')).getByText('1, 2');
+      const titleElement = within(getByRole('combobox')).queryByText('1, 2');
       expect(titleElement).toBeTruthy();
     });
 
     it('Renders a selected item in uncontrolled case', () => {
       const { getByRole } = render(<Dropdown defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />);
 
-      const titleElement = within(getByRole('combobox')).getByText('1, 2');
+      const titleElement = within(getByRole('combobox')).queryByText('1, 2');
       expect(titleElement).toBeTruthy();
     });
 
@@ -554,8 +550,8 @@ describe('Dropdown', () => {
     it('Renders selected items in controlled case', () => {
       const { getByRole } = render(<Dropdown selectedKeys={['1', '3']} multiSelect options={DEFAULT_OPTIONS} />);
 
-      const titleElement = within(getByRole('combobox')).getByText('1, 3');
-      expect(titleElement.textContent).toEqual('1, 3');
+      const titleElement = within(getByRole('combobox')).queryByText('1, 3');
+      expect(titleElement).toBeTruthy();
     });
 
     it('changes selected items in controlled case', () => {
@@ -570,17 +566,16 @@ describe('Dropdown', () => {
     });
 
     it("Preserves selected items in controlled case if they don't change", () => {
-      const { getByRole, getAllByRole } = render(<Dropdown selectedKey={'1'} options={DEFAULT_OPTIONS} />);
+      const { getByRole, getAllByRole, queryByRole } = render(<Dropdown selectedKey={'1'} options={DEFAULT_OPTIONS} />);
       const dropdownRoot = getByRole('combobox');
       const titleElement = within(dropdownRoot).getByText('1');
-      expect(titleElement).toBeTruthy();
 
       userEvent.click(dropdownRoot);
 
       const secondItemElement = getAllByRole('option')[1];
       fireEvent.click(secondItemElement);
 
-      expect(() => getByRole('listbox')).toThrow(); // verify menu closed
+      expect(queryByRole('listbox')).toBeFalsy(); // verify menu closed
       expect(titleElement.textContent).toEqual('1');
     });
 
@@ -595,7 +590,7 @@ describe('Dropdown', () => {
       const secondItemElement = getAllByRole('option')[1];
       fireEvent.click(secondItemElement);
 
-      const titleElement = within(dropdownRoot).getByText('1, 2');
+      const titleElement = within(dropdownRoot).queryByText('1, 2');
       expect(titleElement).toBeTruthy();
     });
 
@@ -737,13 +732,13 @@ describe('Dropdown', () => {
 
     it('respects defaultSelectedKey if options change (single-select)', () => {
       const { getByRole } = render(<DropdownWithChangingProps multi={false} />);
-      const titleElement = within(getByRole('combobox')).getByText('Option b');
+      const titleElement = within(getByRole('combobox')).queryByText('Option b');
       expect(titleElement).toBeTruthy();
     });
 
     it('respects defaultSelectedKeys if options change (multi-select)', () => {
       const { getByRole } = render(<DropdownWithChangingProps multi={true} />);
-      const titleElement = within(getByRole('combobox')).getByText('Option b, Option d');
+      const titleElement = within(getByRole('combobox')).queryByText('Option b, Option d');
       expect(titleElement).toBeTruthy();
     });
   });
