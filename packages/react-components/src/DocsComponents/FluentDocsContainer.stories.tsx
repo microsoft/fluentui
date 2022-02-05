@@ -16,7 +16,7 @@ export const FluentDocsContainer: React.FC<FluentDocsContainerProps> = ({ childr
   const selectedTheme = themes.find(theme => theme.id === context.globals[THEME_ID]);
   const hosted = isHosted();
   return (
-    <>
+    <div className={hosted ? 'hosted' : ''}>
       {!hosted && (
         <FluentProvider theme={selectedTheme?.theme ?? webLightTheme}>
           <FluentDocsHeader storybookGlobals={context.globals} />
@@ -24,9 +24,7 @@ export const FluentDocsContainer: React.FC<FluentDocsContainerProps> = ({ childr
       )}
 
       {/** TODO add table of contents */}
-      <div className={hosted ? 'hosted' : ''}>
-        <DocsContainer context={context}>{children}</DocsContainer>
-      </div>
-    </>
+      <DocsContainer context={context}>{children}</DocsContainer>
+    </div>
   );
 };
