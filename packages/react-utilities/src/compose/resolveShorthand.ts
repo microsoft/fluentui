@@ -1,5 +1,5 @@
 import { isValidElement } from 'react';
-import type { UnknownSlotProps, SlotShorthandValue, ReplaceNullWithUndefined } from './types';
+import type { ReplaceNullWithUndefined, SlotShorthandValue, UnknownSlotProps } from './types';
 
 export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
   required?: Required;

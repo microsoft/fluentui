@@ -5,10 +5,10 @@ import { omit } from '../utils/omit';
 import type {
   AsIntrinsicElement,
   ComponentState,
+  ExtractSlotProps,
   SlotPropsRecord,
   SlotRenderFunction,
   UnionToIntersection,
-  ExtractSlotProps,
 } from './types';
 
 export type Slots<S extends SlotPropsRecord> = {
