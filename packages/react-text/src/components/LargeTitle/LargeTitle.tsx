@@ -1,5 +1,5 @@
 import type { FunctionComponent } from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles } from '@griffel/react';
 import { typographyStyles } from '../../typographyStyles/index';
 import { createWrapper, TextWrapperProps } from '../wrapper';
 

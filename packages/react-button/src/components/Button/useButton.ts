@@ -8,7 +8,10 @@ import type { ButtonProps, ButtonState } from './Button.types';
  * @param props - User provided props to the Button component.
  * @param ref - User provided ref to be passed to the Button component.
  */
-export const useButton = (props: ButtonProps, ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>): ButtonState => {
+export const useButton_unstable = (
+  props: ButtonProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+): ButtonState => {
   const {
     appearance,
     as,

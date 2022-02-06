@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Made checkmark opacity 0 for indeterminate",
-  "packageName": "@fluentui/react",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

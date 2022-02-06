@@ -7,7 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -16,38 +16,42 @@ export const Input: ForwardRefComponent<InputProps>;
 // @public (undocumented)
 export const inputClassName = "fui-Input";
 
+// @public
+export type InputOnChangeData = {
+    value: string;
+};
+
 // @public (undocumented)
-export type InputCommons = {
+export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
+    children?: never;
     size?: 'small' | 'medium' | 'large';
     inline?: boolean;
     appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    defaultValue?: string;
+    value?: string;
+    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+    type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'number' | 'time' | 'week';
 };
-
-// @public
-export type InputProps = InputCommons & Omit<ComponentProps<InputSlots>, 'children'>;
-
-// @public
-export const inputShorthandProps: (keyof InputSlots)[];
 
 // @public (undocumented)
 export type InputSlots = {
-    root: IntrinsicShorthandProps<'span'>;
-    input: Omit<IntrinsicShorthandProps<'input'>, 'size'>;
-    contentBefore?: IntrinsicShorthandProps<'span'>;
-    contentAfter?: IntrinsicShorthandProps<'span'>;
+    root: IntrinsicSlotProps<'span'>;
+    input: IntrinsicSlotProps<'input'>;
+    contentBefore?: IntrinsicSlotProps<'span'>;
+    contentAfter?: IntrinsicSlotProps<'span'>;
 };
 
 // @public
-export type InputState = InputCommons & ComponentState<InputSlots>;
+export type InputState = Required<Pick<InputProps, 'appearance' | 'inline' | 'size'>> & ComponentState<InputSlots>;
 
 // @public
-export const renderInput: (state: InputState) => JSX.Element;
+export const renderInput_unstable: (state: InputState) => JSX.Element;
 
 // @public
-export const useInput: (props: InputProps, ref: React_2.Ref<HTMLElement>) => InputState;
+export const useInput_unstable: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;
 
 // @public
-export const useInputStyles: (state: InputState) => InputState;
+export const useInputStyles_unstable: (state: InputState) => InputState;
 
 // (No @packageDocumentation comment for this package)
 

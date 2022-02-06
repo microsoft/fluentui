@@ -1,14 +1,6 @@
-import type {
-  ComponentProps,
-  ComponentState,
-  IntrinsicShorthandProps,
-  ObjectShorthandProps,
-} from '@fluentui/react-utilities';
 import * as React from 'react';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 
-/**
- * Label Props
- */
 export type LabelCommons = {
   /**
    * Renders the label as disabled
@@ -30,8 +22,8 @@ export type LabelCommons = {
 };
 
 export type LabelSlots = {
-  root: IntrinsicShorthandProps<'label'>;
-  required?: IntrinsicShorthandProps<'span'>;
+  root: IntrinsicSlotProps<'label'>;
+  required?: IntrinsicSlotProps<'span'>;
 };
 
 /**
@@ -39,6 +31,9 @@ export type LabelSlots = {
  */
 export type LabelState = ComponentState<LabelSlots> & LabelCommons;
 
+/**
+ * Label Props
+ */
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
   Partial<LabelCommons> & {
     /**
@@ -46,5 +41,5 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
      * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
      * @defaultvalue false
      */
-    required?: boolean | ObjectShorthandProps<React.HTMLAttributes<HTMLElement>> | React.ReactNode;
+    required?: boolean | IntrinsicSlotProps<'span'> | React.ReactNode;
   };

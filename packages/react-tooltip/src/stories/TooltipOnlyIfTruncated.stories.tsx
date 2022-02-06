@@ -11,6 +11,7 @@ export const OnlyIfTruncated = () => {
       <button onClick={() => setWide(w => !w)}>Toggle container width</button>
       <Tooltip
         content={text}
+        relationship="description"
         visible={tooltipVisible}
         positioning="below"
         onVisibleChange={(_ev, { visible }) => {

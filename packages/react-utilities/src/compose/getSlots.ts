@@ -1,31 +1,31 @@
 import * as React from 'react';
 
-import {
-  AsIntrinsicElement,
-  ComponentState,
-  ShorthandRenderFunction,
-  ObjectShorthandPropsRecord,
-  ObjectShorthandProps,
-  UnionToIntersection,
-} from './types';
 import { nullRender } from './nullRender';
 import { omit } from '../utils/omit';
+import type {
+  AsIntrinsicElement,
+  ComponentState,
+  SlotProps,
+  SlotPropsRecord,
+  SlotRenderFunction,
+  UnionToIntersection,
+} from './types';
 
-export type Slots<S extends ObjectShorthandPropsRecord> = {
+export type Slots<S extends SlotPropsRecord> = {
   [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As>
     ? // for slots with an `as` prop, the slot will be any one of the possible values of `as`
       As
-    : S[K] extends ObjectShorthandProps<infer P>
+    : S[K] extends SlotProps<infer P>
     ? React.ElementType<NonNullable<P>>
     : React.ElementType<NonNullable<S[K]>>;
 };
 
-type SlotProps<S extends ObjectShorthandPropsRecord> = {
+type ObjectSlotProps<S extends SlotPropsRecord> = {
   [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As>
     ? // For intrinsic element types, return the intersection of all possible
       // element's props, to be compatible with the As type returned by Slots<>
       UnionToIntersection<JSX.IntrinsicElements[As]>
-    : NonNullable<S[K]> extends ObjectShorthandProps<infer P>
+    : NonNullable<S[K]> extends SlotProps<infer P>
     ? P
     : never;
 };
@@ -45,28 +45,27 @@ type SlotProps<S extends ObjectShorthandPropsRecord> = {
  * runtime code filtering props in this function.
  *
  * @param state - State including slot definitions
- * @param slotNames - Name of which props are slots
  * @returns An object containing the `slots` map and `slotProps` map.
  */
-export function getSlots<R extends ObjectShorthandPropsRecord>(
+export function getSlots<R extends SlotPropsRecord>(
   state: ComponentState<R>,
-  slotNames: (keyof R)[] = ['root'],
 ): {
   slots: Slots<R>;
-  slotProps: SlotProps<R>;
+  slotProps: ObjectSlotProps<R>;
 } {
   const slots = {} as Slots<R>;
   const slotProps = {} as R;
 
+  const slotNames: (keyof R)[] = Object.keys(state.components);
   for (const slotName of slotNames) {
     const [slot, props] = getSlot(state, slotName);
     slots[slotName] = slot as Slots<R>[typeof slotName];
     slotProps[slotName] = props;
   }
-  return { slots, slotProps: (slotProps as unknown) as SlotProps<R> };
+  return { slots, slotProps: (slotProps as unknown) as ObjectSlotProps<R> };
 }
 
-function getSlot<R extends ObjectShorthandPropsRecord, K extends keyof R>(
+function getSlot<R extends SlotPropsRecord, K extends keyof R>(
   state: ComponentState<R>,
   slotName: K,
 ): readonly [React.ElementType<R[K]>, R[K]] {
@@ -80,7 +79,7 @@ function getSlot<R extends ObjectShorthandPropsRecord, K extends keyof R>(
     : state.components[slotName]) as React.ElementType<R[K]>;
 
   if (typeof children === 'function') {
-    const render = children as ShorthandRenderFunction<R[K]>;
+    const render = children as SlotRenderFunction<R[K]>;
     return [
       React.Fragment,
       ({

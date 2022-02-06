@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shorthands, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles } from '@griffel/react';
 
 import { Tooltip } from '../Tooltip';
 
@@ -22,13 +22,13 @@ export const Default = () => {
     <>
       Hover or focus the buttons to show their tooltips:
       <div className={styles.exampleList}>
-        <Tooltip content="Default tooltip">
+        <Tooltip content="Default tooltip" relationship="description">
           <button>Default</button>
         </Tooltip>
-        <Tooltip content="Inverted tooltip" appearance="inverted">
+        <Tooltip content="Inverted tooltip" appearance="inverted" relationship="description">
           <button>Inverted</button>
         </Tooltip>
-        <Tooltip content="Tooltip pointing to its target" withArrow>
+        <Tooltip content="Tooltip pointing to its target" withArrow relationship="description">
           <button>With an arrow</button>
         </Tooltip>
         <Tooltip
@@ -37,10 +37,16 @@ export const Default = () => {
               <u>Formatted</u> <i>content</i>
             </>
           }
+          relationship="description"
         >
           <button>Formatted content</button>
         </Tooltip>
-        <Tooltip content="Tooltip pointing to a custom target" positioning={{ target: exampleTarget }} withArrow>
+        <Tooltip
+          content="Tooltip pointing to a custom target"
+          positioning={{ target: exampleTarget }}
+          withArrow
+          relationship="description"
+        >
           <button>
             Custom target:{' '}
             <div
@@ -49,7 +55,7 @@ export const Default = () => {
             />
           </button>
         </Tooltip>
-        <Tooltip content="Trigger button using a render function">
+        <Tooltip content="Trigger button using a render function" relationship="description">
           {triggerProps => (
             <div>
               <button {...triggerProps}>Custom trigger</button>

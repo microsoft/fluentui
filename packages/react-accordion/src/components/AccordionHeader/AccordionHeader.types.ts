@@ -1,12 +1,5 @@
-import * as React from 'react';
-import type {
-  ComponentProps,
-  ComponentState,
-  IntrinsicShorthandProps,
-  ObjectShorthandProps,
-} from '@fluentui/react-utilities';
-import type { AccordionHeaderExpandIconProps } from './AccordionHeaderExpandIcon';
-import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
@@ -23,20 +16,22 @@ export type AccordionHeaderContextValues = {
 };
 
 export type AccordionHeaderSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  /**
+   * The element wrapping the button. By default this is a div, but can be a heading.
+   */
+  root: IntrinsicSlotProps<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
   /**
    * The component to be used as button in heading
    */
-  button: ARIAButtonShorthandProps;
+  button: ARIAButtonSlotProps;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  expandIcon: AccordionHeaderExpandIconProps;
+  expandIcon: IntrinsicSlotProps<'span'>;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  icon?: IntrinsicShorthandProps<'div'>;
-  children: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  icon?: IntrinsicSlotProps<'div'>;
 };
 
 export type AccordionHeaderCommons = {

@@ -1,12 +1,12 @@
 import { getSlots } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useARIAButton } from './useARIAButton';
-import type { ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ARIAButtonShorthandProps } from './useARIAButton';
+import type { ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ARIAButtonSlotProps } from './useARIAButton';
 
 type Slots = {
-  root: IntrinsicShorthandProps<'div'>;
-  button: ARIAButtonShorthandProps;
+  root: IntrinsicSlotProps<'div'>;
+  button: ARIAButtonSlotProps;
 };
 
 interface State extends ComponentState<Slots> {}
@@ -17,13 +17,14 @@ interface DefaultArgs {
 
 export const Default = (args: DefaultArgs) => {
   const state: State = {
+    components: { root: 'div', button: 'button' },
     root: {},
     button: {
       ...useARIAButton({ as: 'button', onClick: args.onClick }, { required: true }),
       children: React.Fragment,
     },
   };
-  const { slots, slotProps } = getSlots<Slots>(state, ['button', 'root']);
+  const { slots, slotProps } = getSlots<Slots>(state);
   return (
     <slots.root {...slotProps.root}>
       <slots.button {...slotProps.button}>this is a button</slots.button>
@@ -32,6 +33,9 @@ export const Default = (args: DefaultArgs) => {
 };
 
 export const Anchor = (args: DefaultArgs) => {
+  type AnchorSlots = {
+    root: ARIAButtonSlotProps;
+  };
   const props = useARIAButton(
     {
       as: 'a',
@@ -43,7 +47,10 @@ export const Anchor = (args: DefaultArgs) => {
     },
     { required: true },
   );
-  const { slots, slotProps } = getSlots({ root: props }, ['root']);
+  const { slots, slotProps } = getSlots<AnchorSlots>({
+    components: { root: 'a' },
+    root: props,
+  });
   return <slots.root {...slotProps.root}>this is an anchor</slots.root>;
 };
 

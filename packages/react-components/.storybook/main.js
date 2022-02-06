@@ -9,11 +9,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     '../src/**/*.stories.@(ts|tsx)',
     ...utils.getVnextStories(),
   ],
-  addons: [
-    ...rootMain.addons,
-    // Should be re-enabled, see https://github.com/microsoft/fluentui/issues/20896
-    // '@fluentui/react-storybook-addon'
-  ],
+  addons: [...rootMain.addons],
   webpackFinal: (config, options) => {
     const localConfig = { ...rootMain.webpackFinal(config, options) };
 

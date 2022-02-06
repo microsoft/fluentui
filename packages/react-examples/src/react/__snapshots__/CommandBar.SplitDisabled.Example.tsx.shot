@@ -335,6 +335,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   <button
                     aria-expanded={false}
                     aria-haspopup={true}
+                    aria-label="More New options"
                     className=
                         ms-Button
                         {
@@ -497,6 +498,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 aria-disabled={true}
                 aria-expanded={false}
                 aria-haspopup={true}
+                aria-label="Upload"
                 className=
 
                     {
@@ -576,6 +578,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 >
                   <button
                     aria-disabled={true}
+                    aria-label="Upload"
                     className=
                         ms-Button
                         ms-Button--commandBar
@@ -751,6 +754,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     aria-disabled={true}
                     aria-expanded={false}
                     aria-haspopup={true}
+                    aria-label="More Upload options"
                     className=
                         ms-Button
                         is-disabled

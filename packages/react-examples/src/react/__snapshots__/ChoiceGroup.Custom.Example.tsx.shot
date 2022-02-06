@@ -76,7 +76,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
           className="ms-ChoiceField-wrapper"
         >
           <input
-            aria-label="Mark displayed items as read after - Press tab for further action"
+            aria-label="A label with a cat icon"
             checked={false}
             className=
                 ms-ChoiceField-input
@@ -103,8 +103,9 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
             className=
 
                 {
-                  align-items: baseline;
+                  align-items: center;
                   display: flex;
+                  gap: 5px;
                 }
           >
             <label
@@ -187,180 +188,24 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 className="ms-ChoiceFieldLabel"
                 id="ChoiceGroupLabel1-A"
               >
-                Mark displayed items as read after
+                A label with an icon
               </span>
             </label>
-            <div
-              className=
-                  ms-Dropdown-container
-                  {
-                    margin-bottom: 0px;
-                    margin-left: 5px;
-                  }
+            <span
+              aria-hidden={true}
+              className=""
+              style={Object {}}
             >
-              <div
-                aria-disabled={true}
-                aria-expanded="false"
-                aria-haspopup="listbox"
-                aria-label="Select a time span"
-                className=
-                    ms-Dropdown
-                    is-disabled
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      border-color: #605e5c;
-                      box-shadow: none;
-                      box-sizing: border-box;
-                      color: #323130;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
-                      outline: 0px;
-                      padding-bottom: 0px;
-                      padding-left: 0px;
-                      padding-right: 0px;
-                      padding-top: 0px;
-                      position: relative;
-                      user-select: none;
-                    }
-                    &:hover .ms-Dropdown-title {
-                      border-color: #323130;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Dropdown-title {
-                      border-color: Highlight;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-title {
-                      color: Highlight;
-                    }
-                    &:focus:after {
-                      border-radius: 2px;
-                      border: none;
-                      box-sizing: border-box;
-                      content: '';
-                      height: 100%;
-                      left: 0px;
-                      pointer-events: none;
-                      position: absolute;
-                      top: 0px;
-                      width: 100%;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
-                      color: Highlight;
-                    }
-                    &:active .ms-Dropdown-title {
-                      border-color: #0078d4;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Dropdown-title {
-                      border-color: Highlight;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-caretDown {
-                      color: Highlight;
-                    }
-                    &:hover .ms-Dropdown-title--hasError {
-                      border-color: #a4262c;
-                    }
-                    &:active .ms-Dropdown-title--hasError {
-                      border-color: #a4262c;
-                    }
-                data-is-focusable={false}
-                data-ktp-target={true}
-                id="Dropdown2"
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                role="combobox"
-                tabIndex={-1}
+              <svg
+                focusable="false"
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <span
-                  aria-invalid={false}
-                  className=
-                      ms-Dropdown-title
-                      {
-                        background-color: #f3f2f1;
-                        border-color: #605e5c;
-                        border-radius: 2px;
-                        border-style: solid;
-                        border-width: 1px;
-                        border: none;
-                        box-shadow: none;
-                        box-sizing: border-box;
-                        color: #a19f9d;
-                        cursor: default;
-                        display: block;
-                        height: 32px;
-                        line-height: 30px;
-                        margin-bottom: 0px;
-                        margin-left: 0px;
-                        margin-right: 0px;
-                        margin-top: 0px;
-                        overflow: hidden;
-                        padding-bottom: 0;
-                        padding-left: 8px;
-                        padding-right: 28px;
-                        padding-top: 0;
-                        position: relative;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                        -ms-high-contrast-adjust: none;
-                        background-color: Window;
-                        border: 1px solid GrayText;
-                        color: GrayText;
-                        forced-color-adjust: none;
-                      }
-                  id="Dropdown2-option"
-                >
-                  5 seconds
-                </span>
-                <span
-                  className=
-                      ms-Dropdown-caretDownWrapper
-                      {
-                        height: 32px;
-                        line-height: 30px;
-                        padding-top: 1px;
-                        position: absolute;
-                        right: 8px;
-                        top: 0px;
-                      }
-                >
-                  <i
-                    aria-hidden={true}
-                    className=
-                        ms-Dropdown-caretDown
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #a19f9d;
-                          display: inline-block;
-                          font-family: "FabricMDL2Icons";
-                          font-size: 12px;
-                          font-style: normal;
-                          font-weight: normal;
-                          pointer-events: none;
-                          speak: none;
-                        }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                          -ms-high-contrast-adjust: none;
-                          color: GrayText;
-                          forced-color-adjust: none;
-                        }
-                    data-icon-name="ChevronDown"
-                  >
-                    
-                  </i>
-                </span>
-              </div>
-            </div>
+                <path
+                  d="M2048 576q0 40-15 75t-41 61-61 41-75 15h-64v640q0 66 11 131t34 129q46 8 84 31t67 56 44 76 16 89v40q0 22-4 42t-18 33-42 13H512q-106 0-199-40t-162-110-110-163-41-199q0-79 30-149t82-122 122-83 150-30q26 0 49-10t41-27 28-41 10-50q0-27-10-50t-27-40-41-28-50-10V768q53 0 99 20t82 55 55 81 20 100q0 53-20 99t-55 82-81 55-100 20q-53 0-99 20t-82 55-55 81-20 100q0 80 30 149t82 122 122 83 150 30q26 0 49-10t41-27 28-41 10-50q0-198 69-369t205-315q117-124 177-274t61-322V384q0-79 30-149t82-122 122-83 150-30h128v113q0 17 9 33t26 24q61 30 121 60t122 61q49 25 77 71t29 101v113zm-128 1344q0-26-10-49t-27-41-41-28-50-10q-21 0-35-10t-24-29q-18-34-31-78t-21-90-13-93-4-84V768q0-27 10-50t27-40 41-28 50-10h40q22 0 42-4t33-18 13-42V463q0-17-9-33t-26-24q-61-30-121-60t-122-61q-45-23-72-64t-32-93q-53 0-100 20t-82 54-55 81-21 101v128q0 197-69 369t-205 315q-117 124-177 274t-61 322q0 34-9 66t-27 62h804q0-26-10-49t-27-41-41-28-50-10h-256v-128h256q8 0 15 1t16 2l-93-371 124-32 119 475q36 36 55 83t20 98h256zM1600 384q26 0 45 19t19 45q0 26-19 45t-45 19q-26 0-45-19t-19-45q0-26 19-45t45-19z"
+                />
+              </svg>
+            </span>
           </div>
         </div>
       </div>

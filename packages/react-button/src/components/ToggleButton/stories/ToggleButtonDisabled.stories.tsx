@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CalendarMonth24Regular } from '@fluentui/react-icons';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { ToggleButton } from '../../../ToggleButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
 
 export const Disabled = () => {
@@ -13,10 +13,10 @@ export const Disabled = () => {
         <ToggleButton disabledFocusable>Disabled focusable</ToggleButton>
       </div>
       <div style={groupStyles}>
-        <ToggleButton appearance="primary" icon={<CalendarMonth24Regular />}>
+        <ToggleButton appearance="primary" icon={<CalendarMonthRegular />}>
           Primary
         </ToggleButton>
-        <ToggleButton appearance="primary" disabled icon={<CalendarMonth24Regular />}>
+        <ToggleButton appearance="primary" disabled icon={<CalendarMonthRegular />}>
           Primary disabled
         </ToggleButton>
         <ToggleButton appearance="primary" disabledFocusable>

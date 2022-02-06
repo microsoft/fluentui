@@ -9,19 +9,26 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { CheckboxProps, CheckboxState } from './Checkbox.types';
-import { Mixed12Regular, Mixed16Regular, Checkmark12Regular, Checkmark16Regular } from './DefaultIcons';
+import {
+  Checkmark12Filled,
+  Checkmark16Filled,
+  Square12Filled,
+  Square16Filled,
+  Circle12Filled,
+  Circle16Filled,
+} from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 
 /**
  * Create the state required to render Checkbox.
  *
- * The returned state can be modified with hooks such as useCheckboxStyles,
- * before being passed to renderCheckbox.
+ * The returned state can be modified with hooks such as useCheckboxStyles_unstable,
+ * before being passed to renderCheckbox_unstable.
  *
  * @param props - props from this instance of Checkbox
  * @param ref - reference to `<input>` element of Checkbox
  */
-export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
+export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
   const { disabled, required, circular = false, size = 'medium', labelPosition = 'after' } = props;
 
   const [checked, setChecked] = useControllableState({
@@ -36,7 +43,19 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
     excludedPropNames: ['checked', 'defaultChecked', 'size'],
   });
 
+  const mixed = checked === 'mixed';
   const id = useId('checkbox-', nativeProps.primary.id);
+
+  let checkmarkIcon;
+  if (mixed) {
+    if (circular) {
+      checkmarkIcon = size === 'large' ? <Circle16Filled /> : <Circle12Filled />;
+    } else {
+      checkmarkIcon = size === 'large' ? <Square16Filled /> : <Square12Filled />;
+    }
+  } else {
+    checkmarkIcon = size === 'large' ? <Checkmark16Filled /> : <Checkmark12Filled />;
+  }
 
   const state: CheckboxState = {
     circular,
@@ -76,18 +95,7 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
       required: true,
       defaultProps: {
         'aria-hidden': true,
-        children:
-          size === 'large' ? (
-            checked === 'mixed' ? (
-              <Mixed16Regular />
-            ) : (
-              <Checkmark16Regular />
-            )
-          ) : checked === 'mixed' ? (
-            <Mixed12Regular />
-          ) : (
-            <Checkmark12Regular />
-          ),
+        children: checkmarkIcon,
       },
     }),
   };
@@ -106,12 +114,11 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
 
   // Set the <input> element's checked and indeterminate properties based on our tri-state property.
   // Since indeterminate can only be set via javascript, it has to be done in a layout effect.
-  const indeterminate = checked === 'mixed';
   useIsomorphicLayoutEffect(() => {
     if (inputRef.current) {
-      inputRef.current.indeterminate = indeterminate;
+      inputRef.current.indeterminate = mixed;
     }
-  }, [inputRef, indeterminate]);
+  }, [inputRef, mixed]);
 
   return state;
 };

@@ -443,7 +443,7 @@ exports[`Component Examples renders Separator.Basic.Example.tsx correctly 1`] = 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              flex-shrink: 0;
+              flex-shrink: 1;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -552,7 +552,7 @@ exports[`Component Examples renders Separator.Basic.Example.tsx correctly 1`] = 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              flex-shrink: 0;
+              flex-shrink: 1;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -661,7 +661,7 @@ exports[`Component Examples renders Separator.Basic.Example.tsx correctly 1`] = 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              flex-shrink: 0;
+              flex-shrink: 1;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -770,7 +770,7 @@ exports[`Component Examples renders Separator.Basic.Example.tsx correctly 1`] = 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              flex-shrink: 0;
+              flex-shrink: 1;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;

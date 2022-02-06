@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Popover } from './Popover';
 import { renderHook } from '@testing-library/react-hooks';
-import { usePopover } from './usePopover';
+import { usePopover_unstable } from './usePopover';
 import { isConformant } from '../../common/isConformant';
 
 describe('Popover', () => {
@@ -25,7 +25,7 @@ describe('Popover', () => {
    */
   it('Should not render arrow if `coverTarget` is set to true', () => {
     // Act
-    const { result } = renderHook(() => usePopover({ positioning: { coverTarget: true }, children: <div /> }));
+    const { result } = renderHook(() => usePopover_unstable({ positioning: { coverTarget: true }, children: <div /> }));
 
     // Assert
     expect(result.current.noArrow).toBe(true);

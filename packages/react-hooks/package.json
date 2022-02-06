@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-hooks",
-  "version": "8.3.7",
+  "version": "8.3.10",
   "description": "Fluent UI React hooks.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -30,16 +30,16 @@
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/test-utilities": "^8.0.9",
+    "@fluentui/test-utilities": "^8.2.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-window-provider": "^2.1.5",
+    "@fluentui/react-window-provider": "^2.1.6",
     "@fluentui/set-version": "^8.1.5",
-    "@fluentui/utilities": "^8.3.7",
+    "@fluentui/utilities": "^8.3.10",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Moved the navigatedDayRef to td element",
+  "packageName": "@fluentui/react",
+  "email": "tkrasniqi@microsoft.com",
+  "dependentChangeType": "patch"
+}

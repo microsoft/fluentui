@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-link: Replacing use of functions in makeStyles with direct use of tokens.",
+  "packageName": "@fluentui/react-link",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

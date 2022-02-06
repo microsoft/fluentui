@@ -226,6 +226,7 @@ exports[`Coachmark renders Coachmark (color properties) 1`] = `
                   >
                     <div
                       aria-hidden={true}
+                      data-is-focus-trap-zone-bumper={true}
                       data-is-visible={true}
                       style={
                         Object {
@@ -255,6 +256,7 @@ exports[`Coachmark renders Coachmark (color properties) 1`] = `
                     </div>
                     <div
                       aria-hidden={true}
+                      data-is-focus-trap-zone-bumper={true}
                       data-is-visible={true}
                       style={
                         Object {
@@ -502,6 +504,7 @@ exports[`Coachmark renders Coachmark (correctly) 1`] = `
                   >
                     <div
                       aria-hidden={true}
+                      data-is-focus-trap-zone-bumper={true}
                       data-is-visible={true}
                       style={
                         Object {
@@ -533,6 +536,7 @@ exports[`Coachmark renders Coachmark (correctly) 1`] = `
                     </div>
                     <div
                       aria-hidden={true}
+                      data-is-focus-trap-zone-bumper={true}
                       data-is-visible={true}
                       style={
                         Object {
@@ -723,6 +727,7 @@ exports[`Coachmark renders Coachmark (isCollapsed) 1`] = `
                   >
                     <div
                       aria-hidden={true}
+                      data-is-focus-trap-zone-bumper={true}
                       data-is-visible={true}
                       style={
                         Object {
@@ -755,6 +760,7 @@ exports[`Coachmark renders Coachmark (isCollapsed) 1`] = `
                     </div>
                     <div
                       aria-hidden={true}
+                      data-is-focus-trap-zone-bumper={true}
                       data-is-visible={true}
                       style={
                         Object {

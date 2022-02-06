@@ -1,19 +1,20 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 
 import { Portal } from '../Portal';
 
 const useStyles = makeStyles({
-  container: theme => ({
-    ...shorthands.border('3px', 'solid', theme.colorPaletteRedBackground3),
+  container: {
+    ...shorthands.border('3px', 'solid', tokens.colorPaletteRedBackground3),
     ...shorthands.padding('10px'),
-  }),
+  },
 
-  portalContent: theme => ({
-    backgroundColor: theme.colorPaletteYellowBackground3,
+  portalContent: {
+    backgroundColor: tokens.colorPaletteYellowBackground3,
     ...shorthands.border('3px', 'dashed'),
     marginTop: '10px',
-  }),
+  },
 });
 
 const Container: React.FC = ({ children }) => {

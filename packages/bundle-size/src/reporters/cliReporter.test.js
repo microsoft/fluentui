@@ -16,7 +16,12 @@ expect.addSnapshotSerializer({
     return typeof val === 'string';
   },
   print(val) {
-    return stripAnsi(val);
+    /**
+     * test function makes sure that value is the guarded type
+     */
+    const _val = /** @type {string} */ (val);
+
+    return stripAnsi(_val);
   },
 });
 

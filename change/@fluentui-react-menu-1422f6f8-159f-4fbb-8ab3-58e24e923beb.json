@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add workaround for cypress bug",
+  "packageName": "@fluentui/react-menu",
+  "email": "email not defined",
+  "dependentChangeType": "none"
+}

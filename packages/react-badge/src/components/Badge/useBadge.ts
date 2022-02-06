@@ -5,7 +5,7 @@ import type { BadgeProps, BadgeState } from './Badge.types';
 /**
  * Returns the props and state required to render the component
  */
-export const useBadge = (props: BadgeProps, ref: React.Ref<HTMLElement>): BadgeState => {
+export const useBadge_unstable = (props: BadgeProps, ref: React.Ref<HTMLElement>): BadgeState => {
   const {
     shape = 'circular',
     size = 'medium',
