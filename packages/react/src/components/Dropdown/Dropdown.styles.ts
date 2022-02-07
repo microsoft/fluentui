@@ -404,7 +404,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         margin: '1px',
       },
     ],
-    dropdownItemHeader: [...dropdownHeaderStyle],
+    dropdownItemHeader: dropdownHeaderStyle,
     dropdownItemHeaderHidden: [...dropdownHeaderStyle, { display: 'none' }],
     subComponentStyles: {
       label: { root: { display: 'inline-block' } },
