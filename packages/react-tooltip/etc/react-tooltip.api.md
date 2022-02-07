@@ -7,9 +7,9 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export type OnVisibleChangeData = {
@@ -38,7 +38,7 @@ export type TooltipCommons = {
 };
 
 // @public
-export type TooltipProps = Omit<ComponentProps<TooltipSlots>, 'content'> & Required<Pick<ComponentProps<TooltipSlots>, 'content'>> & Partial<Omit<TooltipCommons, 'relationship'>> & Pick<TooltipCommons, 'relationship'> & {
+export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'relationship'>> & Pick<TooltipCommons, 'relationship'> & {
     children?: (React_2.ReactElement & {
         ref?: React_2.Ref<unknown>;
     }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
@@ -46,7 +46,7 @@ export type TooltipProps = Omit<ComponentProps<TooltipSlots>, 'content'> & Requi
 
 // @public
 export type TooltipSlots = {
-    content: IntrinsicSlotProps<'div'>;
+    content: NonNullable<Slot<'div'>>;
 };
 
 // @public
