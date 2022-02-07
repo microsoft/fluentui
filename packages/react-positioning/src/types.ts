@@ -18,7 +18,19 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
-export type PopperRefHandle = { updatePosition: () => void };
+export type PopperRefHandle = {
+  /**
+   * Updates the position of the popper imperatively.
+   * Useful when the position of the target changes from other factors than scrolling of window resize.
+   */
+  updatePosition: () => void;
+
+  /**
+   * Sets the target and updates positioning imperatively.
+   * Useful for avoiding double renders with the target option.
+   */
+  setTarget: (target: HTMLElement) => void;
+};
 
 export type PopperVirtualElement = PopperJs.VirtualElement;
 

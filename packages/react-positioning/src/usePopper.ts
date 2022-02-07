@@ -11,7 +11,7 @@ import {
 } from './utils/index';
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
-import type { PositioningProps } from './types';
+import { PopperVirtualElement, PositioningProps } from './types';
 
 type PopperInstance = PopperJs.Instance & { isFirstRun?: boolean };
 
@@ -334,7 +334,7 @@ export function usePopper(
     popperInstanceRef.current?.destroy();
     popperInstanceRef.current = null;
 
-    const { target = targetRef.current } = options;
+    const target = externalTargetRef.current ?? targetRef.current;
 
     let popperInstance: PopperInstance | null = null;
 
@@ -393,16 +393,38 @@ export function usePopper(
   const containerRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
   const arrowRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
 
+  // Stores external target from options.target or setTarget
+  const externalTargetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, handlePopperUpdate, true);
+
   React.useImperativeHandle(
     options.popperRef,
     () => ({
       updatePosition: () => {
         popperInstanceRef.current?.update();
       },
+      setTarget: (target: HTMLElement | PopperVirtualElement) => {
+        if (options.target && process.env.NODE_ENV !== 'production') {
+          const err = new Error();
+          // eslint-disable-next-line no-console
+          console.warn('Imperative setTarget should not be used at the same time as target option');
+          // eslint-disable-next-line no-console
+          console.warn(err.stack);
+        }
+        externalTargetRef.current = target;
+      },
     }),
+    // Missing deps:
+    // options.target - only used for a runtime warning
+    // targetRef - Stable between renders
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 
+  useIsomorphicLayoutEffect(() => {
+    if (options.target) {
+      externalTargetRef.current = options.target;
+    }
+  }, [options.target, externalTargetRef]);
   useIsomorphicLayoutEffect(() => {
     handlePopperUpdate();
 
@@ -410,17 +432,16 @@ export function usePopper(
       popperInstanceRef.current?.destroy();
       popperInstanceRef.current = null;
     };
-  }, [handlePopperUpdate, options.enabled, options.target]);
+  }, [handlePopperUpdate, options.enabled]);
   useIsomorphicLayoutEffect(
     () => {
       if (!isFirstMount) {
         popperInstanceRef.current?.setOptions(
-          resolvePopperOptions(options.target || targetRef.current, containerRef.current, arrowRef.current),
+          resolvePopperOptions(externalTargetRef.current ?? targetRef.current, containerRef.current, arrowRef.current),
         );
       }
     },
     // Missing deps:
-    // options.target - The useIsomorphicLayoutEffect before this will create a new popper instance if target changes
     // isFirstMount - Should never change after mount
     // arrowRef, containerRef, targetRef - Stable between renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
