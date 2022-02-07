@@ -22,7 +22,35 @@ For more details, please check [microsoft/fluentui#20651](https://github.com/mic
 
 ### CSS shorthands no longer supported
 
-**TBD**
+[CSS shorthands](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) in `makeStyles()` calls are no longer supported. For many shorthands there matching functions in `@fluentui/react-components`:
+
+```ts
+import { shorthands } from '@fluentui/react-componenents';
+
+console.log(shorthands.overflow('hidden')); // { overflowX: 'hidden', overflowY: 'hidden' }
+```
+
+Please apply following changes:
+
+```diff
+import { makeStyles } from '@fluentui/react-componenents';
++import { makeStyles, shorthands } from '@fluentui/react-componenents';
+
+const useStyles = makeStyles({
+-  backgroundColor: { background: 'red' },
++  backgroundColor: { backgroundColor: 'red' },
+-  padding: { padding: '5px' },
++  padding: { ...shorthands.padding('5px') },
+-  margin: { margin: '5px' },
++  margin: { ...shorthands.margin('5px') },
+-  border: { border: '5px solid red' },
++  border: { ...shorthands.border('5px', 'solid', 'red') },
+-  borderRight: { borderRight: '5px solid red' },
++  borderRight: { ...shorthands.borderRight('5px', 'solid', 'red') },
+});
+```
+
+For more details, please check [microsoft/fluentui#20573](https://github.com/microsoft/fluentui/pull/20573).
 
 ### makeStyles is Griffel now [just rename]
 
