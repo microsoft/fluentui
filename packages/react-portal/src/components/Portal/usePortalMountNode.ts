@@ -25,6 +25,17 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions) => {
     const newElement = targetDocument.createElement('div');
     newElement.setAttribute('class', themeClassName);
     newElement.setAttribute('dir', dir);
+    newElement.style.position = 'fixed';
+    newElement.style.width = '100%';
+    newElement.style.height = '100%';
+    newElement.style.top = '0';
+    newElement.style.right = '0';
+    newElement.style.bottom = '0';
+    newElement.style.left = '0';
+    newElement.style.zIndex = '2';
+    newElement.style.backgroundColor = 'transparent';
+    newElement.style.opacity = '0.9';
+
     targetDocument.body.appendChild(newElement);
 
     return newElement;
