@@ -5,13 +5,11 @@
 ```ts
 
 import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
-import type { SlotRenderFunction } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;
@@ -20,7 +18,7 @@ export const Avatar: ForwardRefComponent<AvatarProps>;
 export const avatarClassName = "fui-Avatar";
 
 // @public (undocumented)
-export type AvatarCommons = Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> & {
+export type AvatarCommons = {
     name?: string;
     size: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
     shape: 'circular' | 'square';
@@ -34,21 +32,15 @@ export type AvatarCommons = Omit<React_2.HTMLAttributes<HTMLElement>, 'children'
 export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
 
 // @public
-export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'image'> & Partial<AvatarCommons> & {
-    image?: Omit<IntrinsicSlotProps<'img'>, 'children'> & {
-        children?: SlotRenderFunction<React_2.HTMLAttributes<HTMLImageElement>>;
-    };
-};
+export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & Partial<AvatarCommons>;
 
 // @public (undocumented)
 export type AvatarSlots = {
-    root: Omit<IntrinsicSlotProps<'span'>, 'color'> & {
-        children?: never;
-    };
-    image?: IntrinsicSlotProps<'img'>;
-    initials?: IntrinsicSlotProps<'span'>;
-    icon?: IntrinsicSlotProps<'span'>;
-    badge?: ComponentSlotProps<typeof PresenceBadge>;
+    root: Slot<'span'>;
+    image?: Slot<'img'>;
+    initials?: Slot<'span'>;
+    icon?: Slot<'span'>;
+    badge?: Slot<typeof PresenceBadge>;
 };
 
 // @public
