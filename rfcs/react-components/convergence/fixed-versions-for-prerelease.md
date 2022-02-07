@@ -154,7 +154,22 @@ To mitigate this problem during the prerelease phase we can do the following:
 ### Prefer to release new components straight into react-components beta
 
 For sane versioning, new packages should be released straight into the `beta` prerelease tag. A new way of consuming
-unstable packages is proposed in the next section.
+unstable packages is proposed in the next section. `alpha` and `beta` are liable to breaking API changes both internally
+and externally. Having both prerelease tags existing side by side could cause dependency hell too easily.
+
+### Release Candidate (RC) release
+
+As Fluent v9 moves to the `RC` stage, we want to clearly communicate to partners what they can expect from the stable
+release of Fluent. It would not make sense to elevate `beta` components to `rc` release if we do not expect to release
+those components in the first stable release of Fluent v9.
+
+Since RC will solidify our internal APIs and concepts in our core utilities, we **do not plan to make breaking changes**.
+While the previous problems with prerelease tags still exist, the RC status will be more stable than any `alpha` or `beta`
+release. Therefore, releasing `rc` and `beta` packages side by side should be safer in terms of breaking changes.
+
+Partners that use separate packages will still have the same problem of figuring out compatible versions to avoid
+duplication with pinned versions. Meanwhile partners that use the single `react-components` package can still benefit
+from the `unstable` import path to avoid any extra effort in dependency management.
 
 ### Deep imports for `unstable` packages
 

@@ -26,7 +26,6 @@ const getCellText = (item: any, column: IColumn): string => {
 export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> = props => {
   const {
     columns,
-    columnStartIndex,
     rowClassNames,
     cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
     item,
@@ -46,7 +45,7 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
 
   return (
     <div className={rowClassNames.fields} data-automationid="DetailsRowFields" role="presentation">
-      {columns.map((column, columnIndex) => {
+      {columns.map(column => {
         const width: string | number =
           typeof column.calculatedWidth === 'undefined'
             ? 'auto'
@@ -84,7 +83,6 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
             id={column.isRowHeader ? rowHeaderId : undefined}
             role={column.isRowHeader ? 'rowheader' : 'gridcell'}
             aria-readonly
-            aria-colindex={columnIndex + columnStartIndex + 1}
             className={css(
               column.className,
               column.isMultiline && rowClassNames.isMultiline,

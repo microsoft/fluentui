@@ -7,8 +7,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
  * The Input component allows people to enter and edit text.
- *
- * ⚠️ **This component is still in alpha (unstable) status. APIs may change before the final release.**
  */
 export const Input: ForwardRefComponent<InputProps> = React.forwardRef((props, ref) => {
   const state = useInput_unstable(props, ref);

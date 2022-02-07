@@ -138,12 +138,6 @@ const useStyles = makeStyles({
   shadow16: { ':before': { boxShadow: tokens.shadow16 } },
   shadow28: { ':before': { boxShadow: tokens.shadow28 } },
 
-  // TODO: use proper tokens instead of "rgba(0,120,212,0.3)"
-  glow4: { ':before': { boxShadow: `${tokens.shadow4}, 0 0 4px 2px rgba(0,120,212,0.3)` } },
-  glow8: { ':before': { boxShadow: `${tokens.shadow8}, 0 0 8px 2px rgba(0,120,212,0.3)` } },
-  glow16: { ':before': { boxShadow: `${tokens.shadow16}, 0 0 8px 2px rgba(0,120,212,0.3)` } },
-  glow28: { ':before': { boxShadow: `${tokens.shadow28}, 0 0 28px 4px rgba(0,120,212,0.3)` } },
-
   inactive: {
     opacity: '0.8',
     transform: 'scale(0.875)',
@@ -393,7 +387,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   if (active === 'active' || active === 'inactive') {
     rootClasses.push(styles.activeOrInactive);
 
-    if (activeAppearance.includes('ring')) {
+    if (activeAppearance === 'ring' || activeAppearance === 'ring-shadow') {
       rootClasses.push(styles.ring);
 
       if (size <= 48) {
@@ -405,7 +399,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       }
     }
 
-    if (activeAppearance.includes('shadow')) {
+    if (activeAppearance === 'shadow' || activeAppearance === 'ring-shadow') {
       if (size <= 28) {
         rootClasses.push(styles.shadow4);
       } else if (size <= 48) {
@@ -414,18 +408,6 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
         rootClasses.push(styles.shadow16);
       } else {
         rootClasses.push(styles.shadow28);
-      }
-    }
-
-    if (activeAppearance.includes('glow')) {
-      if (size <= 28) {
-        rootClasses.push(styles.glow4);
-      } else if (size <= 48) {
-        rootClasses.push(styles.glow8);
-      } else if (size <= 64) {
-        rootClasses.push(styles.glow16);
-      } else {
-        rootClasses.push(styles.glow28);
       }
     }
 
