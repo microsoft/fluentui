@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: delayUpdateFocusOnHover is now working correctly so menu items are no longer focused on mouse hover.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
