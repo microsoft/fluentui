@@ -4,10 +4,10 @@ import type {
   ThemeClassNameContextValue,
 } from '@fluentui/react-shared-contexts';
 import type { PartialTheme, Theme } from '@fluentui/react-theme';
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type FluentProviderSlots = {
-  root: IntrinsicSlotProps<'div'>;
+  root: Slot<'div'>;
 };
 
 export interface FluentProviderCommonsUnstable {

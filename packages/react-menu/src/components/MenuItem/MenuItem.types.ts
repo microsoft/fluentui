@@ -1,34 +1,34 @@
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuItemSlots = {
-  root: IntrinsicSlotProps<'div'>;
+  root: Slot<'div'>;
 
   /**
    * Icon slot rendered before children content
    */
-  icon?: IntrinsicSlotProps<'span'>;
+  icon?: Slot<'span'>;
 
   /**
    * A helper slot for alignment when a menu item is used with selectable menuitems
    * Avoid using this slot as a replacement for MenuItemCheckbox and MenuItemRadio components
    */
-  checkmark?: IntrinsicSlotProps<'span'>;
+  checkmark?: Slot<'span'>;
 
   /**
    * Icon slot that shows the indicator for a submenu
    */
-  submenuIndicator?: IntrinsicSlotProps<'span'>;
+  submenuIndicator?: Slot<'span'>;
 
   /**
    * Component children are placed in this slot
    * Avoid using the `children` property in this slot in favour of Component children whenever possible
    */
-  content?: IntrinsicSlotProps<'span'>;
+  content?: Slot<'span'>;
 
   /**
    * Secondary content rendered opposite the primary content (e.g Shortcut text)
    */
-  secondaryContent?: IntrinsicSlotProps<'span'>;
+  secondaryContent?: Slot<'span'>;
 };
 
 type MenuItemCommonsUnstable = {

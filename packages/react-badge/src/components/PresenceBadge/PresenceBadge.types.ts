@@ -17,7 +17,7 @@ export type PresenceBadgeCommonsUnstable = {
   outOfOffice: boolean;
 } & BadgeCommonsUnstable;
 
-export type PresenceBadgeProps = ComponentProps<Partial<Pick<BadgeSlots, 'root'>>> &
+export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root'>>, 'color'> &
   Partial<Pick<PresenceBadgeCommonsUnstable, 'status' | 'outOfOffice' | 'size'>>;
 
 export type PresenceBadgeState = PresenceBadgeCommonsUnstable & ComponentState<BadgeSlots>;

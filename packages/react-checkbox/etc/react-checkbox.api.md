@@ -5,12 +5,11 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentSlotProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
+import { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
@@ -33,7 +32,7 @@ export interface CheckboxOnChangeData {
 }
 
 // @public
-export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & Partial<CheckboxCommonsUnstable> & {
+export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & Partial<CheckboxCommonsUnstable> & {
     children?: never;
     onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
     defaultChecked?: 'mixed' | boolean;
@@ -41,10 +40,10 @@ export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' 
 
 // @public (undocumented)
 export type CheckboxSlots = {
-    root: IntrinsicSlotProps<'span'>;
-    label?: ComponentSlotProps<typeof Label>;
-    input: IntrinsicSlotProps<'input'>;
-    indicator: IntrinsicSlotProps<'div'>;
+    root: NonNullable<Slot<'span'>>;
+    label?: Slot<typeof Label>;
+    input: NonNullable<Slot<'input'>>;
+    indicator: Slot<'div'>;
 };
 
 // @public

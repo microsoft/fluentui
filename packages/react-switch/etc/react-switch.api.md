@@ -7,8 +7,8 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
@@ -30,17 +30,17 @@ export interface SwitchCommonsUnstable {
 }
 
 // @public (undocumented)
-export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange'>, SwitchCommonsUnstable {
+export interface SwitchProps extends Omit<ComponentProps<Partial<SwitchSlots>>, 'onChange'>, SwitchCommonsUnstable {
 }
 
 // @public (undocumented)
 export type SwitchSlots = {
-    root: IntrinsicSlotProps<'div'>;
-    track: IntrinsicSlotProps<'div'>;
-    thumbWrapper: IntrinsicSlotProps<'div'>;
-    thumb: IntrinsicSlotProps<'div'>;
-    input: IntrinsicSlotProps<'input'>;
-    activeRail: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
+    track: NonNullable<Slot<'div'>>;
+    thumbWrapper: NonNullable<Slot<'div'>>;
+    thumb: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>>;
+    activeRail: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
  * Slot properties for Tooltip
  */
 export type TooltipSlots = {
-  content: IntrinsicSlotProps<'div'>;
+  content: NonNullable<Slot<'div'>>;
 };
 
 /**
@@ -100,13 +100,12 @@ export type OnVisibleChangeData = {
 /**
  * Properties for Tooltip
  */
-export type TooltipProps = Omit<ComponentProps<TooltipSlots>, 'content'> &
-  Required<Pick<ComponentProps<TooltipSlots>, 'content'>> &
+export type TooltipProps = ComponentProps<TooltipSlots> &
   Partial<Omit<TooltipCommonsUnstable, 'relationship'>> &
   Pick<TooltipCommonsUnstable, 'relationship'> & {
     children?:
       | (React.ReactElement & { ref?: React.Ref<unknown> })
-      | ((props: TooltipTriggerProps) => React.ReactNode)
+      | ((props: TooltipTriggerProps) => React.ReactElement | null)
       | null;
   };
 
@@ -115,7 +114,7 @@ export type TooltipProps = Omit<ComponentProps<TooltipSlots>, 'content'> &
  */
 export type TooltipState = ComponentState<TooltipSlots> &
   TooltipCommonsUnstable & {
-    children?: React.ReactNode;
+    children?: React.ReactElement | null;
 
     /**
      * Whether the tooltip should be rendered to the DOM.

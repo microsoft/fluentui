@@ -7,8 +7,8 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const renderSlider_unstable: (state: SliderState) => JSX.Element;
@@ -40,14 +40,14 @@ export type SliderOnChangeData = {
 };
 
 // @public (undocumented)
-export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommonsUnstable;
+export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommonsUnstable;
 
 // @public (undocumented)
 export type SliderSlots = {
-    root: IntrinsicSlotProps<'div'>;
-    rail: IntrinsicSlotProps<'div'>;
-    thumb: IntrinsicSlotProps<'div'>;
-    input: IntrinsicSlotProps<'input'> & {
+    root: NonNullable<Slot<'div'>>;
+    rail: NonNullable<Slot<'div'>>;
+    thumb: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>> & {
         orient?: 'horizontal' | 'vertical';
     };
 };
