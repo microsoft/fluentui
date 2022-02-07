@@ -5,6 +5,7 @@ import type {
   ObjectShorthandProps,
 } from '@fluentui/react-utilities';
 import { OrderedGroupState } from '../../utils/OrderedGroup.types';
+import { SelectionProps, SelectionState } from '../../utils/Selection.types';
 import { ListboxProps } from '../Listbox';
 import { ComboButtonProps } from '../ComboButton';
 
@@ -31,12 +32,8 @@ export type ComboboxCommons = {
  * Combobox Props
  */
 export type ComboboxProps = ComponentProps<ComboboxSlots> &
-  ComboboxCommons & {
-    /* For an uncontrolled component, sets the initial selection */
-    initialSelectedKeys?: string[];
-
-    multiselect?: boolean;
-
+  ComboboxCommons &
+  SelectionProps & {
     onChange?: (option: string, selected: boolean) => void;
   };
 
@@ -44,9 +41,10 @@ export type ComboboxProps = ComponentProps<ComboboxSlots> &
  * State used in rendering Combobox
  */
 export type ComboboxState = ComponentState<ComboboxSlots> &
-  Required<Pick<ComboboxCommons, 'open' | 'selectedKeys'>> &
+  Required<Pick<ComboboxCommons, 'open'>> &
   Pick<ComboboxCommons, 'placeholder' | 'value'> &
-  OrderedGroupState & {
+  OrderedGroupState &
+  SelectionState & {
     activeId?: string;
     onOptionClick(optionKey: string): void;
   };

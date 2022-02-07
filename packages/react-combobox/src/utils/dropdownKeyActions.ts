@@ -26,7 +26,7 @@ export interface DropdownActionOptions {
 }
 
 /**
- * Converts a keyboard interaction into a
+ * Converts a keyboard interaction into a defined action
  */
 export function getDropdownActionFromKey(
   e: KeyboardEvent | React.KeyboardEvent,
@@ -93,4 +93,36 @@ export function getDropdownActionFromKey(
 
   // if nothing matched, return none
   return DropdownActions.None;
+}
+
+/**
+ * Returns the requested option index from an action
+ */
+export function getIndexFromAction(action: DropdownActions, currentIndex: number, maxIndex: number): number {
+  switch (action) {
+    case DropdownActions.Next:
+      return Math.min(maxIndex, currentIndex + 1);
+      break;
+    case DropdownActions.Previous:
+      return Math.max(0, currentIndex - 1);
+    case DropdownActions.First:
+      return 0;
+    case DropdownActions.Last:
+      return maxIndex;
+    // TODO: for pageup and pagedown, should increment be customizable?
+    case DropdownActions.PageDown:
+      return Math.min(maxIndex, currentIndex + 10);
+    case DropdownActions.PageUp:
+      return Math.max(0, currentIndex - 10);
+    // case DropdownActions.Type:
+    //   // always prevent default and stop propagation when typing
+    //   e.preventDefault();
+    //   e.stopPropagation();
+
+    //   const matchingIndex = findByCharacter(e.key);
+    //   return matchingIndex > -1 ? matchingIndex : activeIndex;
+    //   break;
+    default:
+      return currentIndex;
+  }
 }

@@ -30,6 +30,7 @@ const useStyles = makeStyles({
     background: 'transparent',
     border: 'none',
     textAlign: 'left',
+    padding: '4px 8px',
 
     '&:focus': {
       outline: 'none',

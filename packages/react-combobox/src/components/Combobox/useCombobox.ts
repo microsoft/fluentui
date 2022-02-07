@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useControllableState } from '@fluentui/react-utilities';
-import { DropdownActions, getDropdownActionFromKey } from '../../utils/getDropdownActionFromKey';
+import { DropdownActions, getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
 import { useOrderedGroup } from '../../utils/useOrderedGroup';
+import { useSelection } from '../../utils/useSelection';
 import { Listbox } from '../Listbox';
 import { ComboButton } from '../ComboButton';
 import type { ComboboxProps, ComboboxSlots, ComboboxState } from './Combobox.types';
@@ -21,15 +22,7 @@ export const comboboxShorthandProps: (keyof ComboboxSlots)[] = ['root', 'listbox
  * @param ref - reference to root HTMLElement of Combobox
  */
 export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLElement>): ComboboxState => {
-  const {
-    initialSelectedKeys = [],
-    multiselect,
-    open: controlledOpen,
-    placeholder,
-    selectedKeys: controlledSelectedKeys,
-    value: controlledValue,
-    onChange,
-  } = props;
+  const { multiselect, open: controlledOpen, placeholder, value: controlledValue } = props;
   const orderedGroup = useOrderedGroup(props.children);
   const {
     options,
@@ -37,6 +30,7 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLElement>): 
   } = orderedGroup;
 
   const [activeId, setActiveId] = React.useState<string | undefined>();
+  const [selectedKeys, selectKey] = useSelection(props);
 
   const [value, setValue] = useControllableState({
     state: controlledValue,
@@ -48,36 +42,26 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLElement>): 
     initialState: false,
   });
 
-  const [selectedKeys, setSelectedKeys] = useControllableState({
-    state: controlledSelectedKeys,
-    defaultState: [],
-    initialState: initialSelectedKeys,
-  });
-
   const selectOption = (optionKey: string) => {
-    const selectedIndex = getIndexOfId(optionKey);
+    // update selection
+    selectKey(optionKey);
+
+    // update value
     const selectedOption = getOptionAtId(optionKey);
 
     if (multiselect) {
-      if (selectedIndex) {
-        setSelectedKeys(selectedKeys.filter(key => key !== optionKey));
-      } else {
-        setSelectedKeys([...selectedKeys, optionKey]);
-      }
+      setValue(selectedKeys.join(', '));
     } else {
-      setSelectedKeys([optionKey]);
       setValue(selectedOption.value);
     }
-
-    onChange?.(optionKey, true);
   };
 
   const onOptionClick = (optionKey: string) => {
     // clicked option should always become active option
     setActiveId(optionKey);
 
-    // for now, ignore multiselect
-    setOpen(false);
+    // close on option click for single-select
+    !multiselect && setOpen(false);
 
     // handle selection change
     selectOption(optionKey);
@@ -99,6 +83,8 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLElement>): 
         setOpen(true);
         break;
       case DropdownActions.Close:
+        // stop propagation for escape key to prevent nested dismiss issues
+        event.stopPropagation();
         event.preventDefault();
         setOpen(false);
         break;
@@ -109,36 +95,11 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLElement>): 
         activeId && selectOption(activeId);
         event.preventDefault();
         break;
-      case DropdownActions.Next:
-        newIndex = Math.min(maxIndex, activeIndex + 1);
-        break;
-      case DropdownActions.Previous:
-        newIndex = Math.max(0, activeIndex - 1);
-        break;
-      case DropdownActions.First:
-        newIndex = 0;
-        break;
-      case DropdownActions.Last:
-        newIndex = maxIndex;
-        break;
-      // TODO: for pageup and pagedown, should increment be customizable?
-      case DropdownActions.PageDown:
-        newIndex = Math.min(maxIndex, activeIndex + 10);
-        break;
-      case DropdownActions.PageUp:
-        newIndex = Math.max(0, activeIndex - 10);
-        break;
-      // case DropdownActions.Type:
-      //   // always prevent default and stop propagation when typing
-      //   e.preventDefault();
-      //   e.stopPropagation();
-
-      //   const matchingIndex = findByCharacter(e.key);
-      //   newIndex = matchingIndex > -1 ? matchingIndex : activeIndex;
-      //   break;
+      default:
+        newIndex = getIndexFromAction(action, activeIndex, maxIndex);
     }
     if (newIndex !== activeIndex) {
-      // prevent default scroll/keyboard action only if the index changed
+      // prevent default page scroll/keyboard action if the index changed
       event.preventDefault();
       setActiveId(getIdAtIndex(newIndex));
     }

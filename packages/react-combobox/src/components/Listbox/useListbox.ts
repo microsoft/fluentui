@@ -2,7 +2,8 @@ import * as React from 'react';
 import { getNativeElementProps, useControllableState } from '@fluentui/react-utilities';
 import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
 import { useOrderedGroup } from '../../utils/useOrderedGroup';
-import { DropdownActions, getDropdownActionFromKey } from '../../utils/getDropdownActionFromKey';
+import { useSelection } from '../../utils/useSelection';
+import { DropdownActions, getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ListboxProps, ListboxSlots, ListboxState } from './Listbox.types';
 
@@ -37,42 +38,21 @@ export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): Li
     unRegisterOption: ctx.unRegisterOption,
   }));
 
+  const [selectedKeys, selectKey] = useSelection(props);
+
   const [activeId, setActiveId] = useControllableState<string | undefined>({
     state: contextValues.activeId,
     initialState: undefined,
   });
-
-  const [selectedKeys, setSelectedKeys] = useControllableState({
-    state: props.selectedKeys,
-    defaultState: props.initialSelectedKeys,
-    initialState: [],
-  });
-
-  // TODO: will split this out to hook shared with Combobox
-  const selectOption = (optionKey: string) => {
-    if (multiselect) {
-      const selectedIndex = selectedKeys.indexOf(optionKey);
-      if (selectedIndex) {
-        setSelectedKeys(selectedKeys.filter(key => key !== optionKey));
-      } else {
-        setSelectedKeys([...selectedKeys, optionKey]);
-      }
-    } else {
-      setSelectedKeys([optionKey]);
-    }
-
-    props.onSelect?.(optionKey);
-  };
 
   const onOptionClick = (optionKey: string) => {
     // clicked option should always become active option
     setActiveId(optionKey);
 
     // handle selection change
-    selectOption(optionKey);
+    selectKey(optionKey);
   };
 
-  // TODO: move somewhere shared w/ Combobox
   const onKeyDown = (event: KeyboardEvent) => {
     const action = getDropdownActionFromKey(event, { open: true });
     const maxIndex = count - 1;
@@ -82,38 +62,14 @@ export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): Li
     switch (action) {
       case DropdownActions.Select:
       case DropdownActions.CloseSelect:
-        activeId && selectOption(activeId);
+        activeId && selectKey(activeId);
         break;
-      case DropdownActions.Next:
-        newIndex = Math.min(maxIndex, activeIndex + 1);
-        break;
-      case DropdownActions.Previous:
-        newIndex = Math.max(0, activeIndex - 1);
-        break;
-      case DropdownActions.First:
-        newIndex = 0;
-        break;
-      case DropdownActions.Last:
-        newIndex = maxIndex;
-        break;
-      // TODO: for pageup and pagedown, should increment be customizable?
-      case DropdownActions.PageDown:
-        newIndex = Math.min(maxIndex, activeIndex + 10);
-        break;
-      case DropdownActions.PageUp:
-        newIndex = Math.max(0, activeIndex - 10);
-        break;
-      // case DropdownActions.Type:
-      //   // always prevent default and stop propagation when typing
-      //   e.preventDefault();
-      //   e.stopPropagation();
-
-      //   const matchingIndex = findByCharacter(e.key);
-      //   newIndex = matchingIndex > -1 ? matchingIndex : activeIndex;
-      //   break;
+      default:
+        newIndex = getIndexFromAction(action, activeIndex, maxIndex);
     }
+
     if (newIndex !== activeIndex) {
-      // prevent default scroll/keyboard action only if the index changed
+      // prevent default page scroll/keyboard action if the index changed
       event.preventDefault();
       setActiveId(getIdAtIndex(newIndex));
     }
