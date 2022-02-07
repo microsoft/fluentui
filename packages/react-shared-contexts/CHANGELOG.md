@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Thu, 25 Nov 2021 08:34:16 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Feb 2022 12:33:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-rc.1)
+
+Mon, 07 Feb 2022 12:33:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-beta.4..@fluentui/react-shared-contexts_v9.0.0-rc.1)
+
+### Changes
+
+- Bump Fluent UI packages to 9.0.0-rc ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by lingfangao@hotmail.com)
+- make the ThemeContext TS API reflect runtime and remove redundant ThemeContextValue ([PR #21286](https://github.com/microsoft/fluentui/pull/21286) by martinhochel@microsoft.com)
+- Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-beta.4)
 

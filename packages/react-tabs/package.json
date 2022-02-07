@@ -28,8 +28,8 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-rc.0",
-    "@fluentui/react-context-selector": "9.0.0-rc.0",
+    "@fluentui/react-conformance-griffel": "9.0.0-rc.1",
+    "@fluentui/react-context-selector": "9.0.0-rc.1",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -44,8 +44,8 @@
   },
   "dependencies": {
     "@griffel/react": "1.0.0",
-    "@fluentui/react-tabster": "9.0.0-rc.0",
-    "@fluentui/react-utilities": "9.0.0-rc.0",
+    "@fluentui/react-tabster": "9.0.0-rc.1",
+    "@fluentui/react-utilities": "9.0.0-rc.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Thu, 25 Nov 2021 08:34:17 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Feb 2022 12:33:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-rc.1)
+
+Mon, 07 Feb 2022 12:33:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.0-beta.4..@fluentui/react-divider_v9.0.0-rc.1)
+
+### Changes
+
+- Bump Fluent UI packages to 9.0.0-rc ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by lingfangao@hotmail.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- set minimum line length based on a11y review ([PR #21362](https://github.com/microsoft/fluentui/pull/21362) by gcox@microsoft.com)
+- Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- react-divider: Replacing use of functions in makeStyles with direct use of tokens. ([PR #21043](https://github.com/microsoft/fluentui/pull/21043) by Humberto.Morimoto@microsoft.com)
+- Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- Added aria-orientation to divider ([PR #21292](https://github.com/microsoft/fluentui/pull/21292) by gcox@microsoft.com)
+- Added missing descriptions to divider stories ([PR #21067](https://github.com/microsoft/fluentui/pull/21067) by gcox@microsoft.com)
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- Updating use of tokens.fontWeight now that we don't need to use casting. ([PR #21217](https://github.com/microsoft/fluentui/pull/21217) by Humberto.Morimoto@microsoft.com)
+- Replace make-styles packages with griffel equivalents. ([PR #21433](https://github.com/microsoft/fluentui/pull/21433) by olfedias@microsoft.com)
+- update styles to not use CSS shorthands ([PR #20817](https://github.com/microsoft/fluentui/pull/20817) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-beta.4)
 

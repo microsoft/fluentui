@@ -1,0 +1,26 @@
+{
+  "name": "@fluentui/react-conformance-griffel",
+  "entries": [
+    {
+      "date": "Mon, 07 Feb 2022 12:33:49 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "6dd33e565ac4efb29b3864493e40d402d61630ff",
+            "comment": "add conformance tests for Griffel"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -2,6 +2,89 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Mon, 07 Feb 2022 12:33:50 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "db6526ee2d04991e4473174969e3795299b52f9e",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "2e34c026a354af1bbfe6a5ead1ade41348d5488f",
+            "comment": "Fix tooltip arrow's high contrast border in RTL"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "523b5785eafd28cf56b677af40274cefe5d42dcb",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "09804275c7f346db54c33d4ff347bffc33676014",
+            "comment": "Fix popover arrow styling"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a76afe26daad901ff5458ffdda7e66e600d5bcac",
+            "comment": "use new types from makeStyles core"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e382ad22539fc97bb283ca4ed856e126c7477e89",
+            "comment": "Adds @noflip annotation to data-popper-placement styles"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "967d6b74cf0507685a24e0cfaa8c7b9d52a351e1",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 08:34:15 GMT",
       "tag": "@fluentui/react-positioning_v9.0.0-beta.4",
       "version": "9.0.0-beta.4",

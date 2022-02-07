@@ -2,6 +2,227 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Mon, 07 Feb 2022 12:33:50 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "4f22b6dad04ea37eb53e4af23c73d2de4db512a2",
+            "comment": "fix: MenuTrigger should work correctly when `aria-disabled=\"true\"`"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b23239743c4f5518bcf7dcad496a36fc16bbd2e5",
+            "comment": "update @fluentui/react-icons package"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "d2eb57808a403b70845a732a62b55aa64d66b2a0",
+            "comment": "Allow `MenuTrigger` to be wrapped by another trigger"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "38c8bed2c707014688ae2ae689033fa36ef23075",
+            "comment": "Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "6c32d0180e89674a46daf795de69e5dc6ca71ef7",
+            "comment": "Updating based on removal of functions from makeStyles."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f30e7585a8d2abd9db06c4076f39a779008b0eca",
+            "comment": "Update MenuTrigger and Tooltip to work together"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "227e09f59026e2bd243422427d9e230d6aa892ca",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "d8fe0da13e1d34028a51e5d740e7bdc78c3a6862",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "23b8a6df449d6e76b90ae5ca9bd2285febdff222",
+            "comment": "Apply fontSize styling to icon slot"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "63cbefe55e5db10eedbde19392aa8b6376d6a7f7",
+            "comment": "Update react-icons usage to resizable icons"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "95a6a32cbffa9d86d6017cf8e0204d4b459ef370",
+            "comment": "feat: implement `MenuSplitGroup` component for split menu items"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "00a5d945904c896a0664de6ba72c145a255f0848",
+            "comment": "Updating use of tokens.fontWeight now that we don't need to use casting."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "07d9ed6d1b436b7ca9571c94fbb0bcbdb080f235",
+            "comment": "breaking: MenuTrigger must be the first child of the `Menu`"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "c2e6c50d56dcb45b4ca9e3a9daf2fae4be10a19e",
+            "comment": "fix: set `aria-expanded` and `aria-haspopup` values correctly"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "6ca0355f6740f836ff4df009687718a380085247",
+            "comment": "fix: Focus on first menu item on click"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "7e0933ed386742df28c416e6b3a6903a0c041f28",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "4121754498bba5137f769295e2b7a2899f557278",
+            "comment": "fix: Call `useCheckmarkStyles` in `useMenuItemStyles`"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "7cb2a5d8db1b6a1ddb638aa82d5815ab5ae84e69",
+            "comment": "(fix): Update react-icons dependency to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          }
+        ],
+        "none": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-menu",
+            "commit": "97752a0e494875c4dc22b268030d7d5e51b19211",
+            "comment": "Add workaround for cypress bug"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "3360b45ec159250b1346c91afad7dce138e6bc20",
+            "comment": "Update API file to version generated by typescript 4.3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 08:34:14 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-beta.5",
       "version": "9.0.0-beta.5",

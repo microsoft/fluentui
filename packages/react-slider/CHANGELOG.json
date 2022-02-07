@@ -2,6 +2,83 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Mon, 07 Feb 2022 12:33:50 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-beta.6",
+      "version": "9.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "0a220897d7f6b3029b7c7f18b6ecc28a3131345f",
+            "comment": "move slider to unstable"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-label to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          }
+        ],
+        "none": [
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-slider",
+            "commit": "4bd15194a66379b165043141c266faa0c1ea1502",
+            "comment": "document how to import preview components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 08:34:17 GMT",
       "tag": "@fluentui/react-slider_v9.0.0-beta.5",
       "version": "9.0.0-beta.5",

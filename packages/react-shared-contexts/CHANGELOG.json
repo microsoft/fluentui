@@ -2,6 +2,47 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Mon, 07 Feb 2022 12:33:50 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "ecfe4c4fdc306e9c484706f28457f440f55d3684",
+            "comment": "make the ThemeContext TS API reflect runtime and remove redundant ThemeContextValue"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 08:34:16 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.0.0-beta.4",
       "version": "9.0.0-beta.4",

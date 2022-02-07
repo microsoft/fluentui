@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "breaking: stop exporting useTheme hook",
-  "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

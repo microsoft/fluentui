@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Thu, 25 Nov 2021 08:34:17 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Feb 2022 12:33:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-rc.1)
+
+Mon, 07 Feb 2022 12:33:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-beta.5..@fluentui/react-tooltip_v9.0.0-rc.1)
+
+### Changes
+
+- Bump Fluent UI packages to 9.0.0-rc ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by lingfangao@hotmail.com)
+- Prevent Tooltip from overriding any aria-label, etc. props on its child ([PR #21532](https://github.com/microsoft/fluentui/pull/21532) by behowell@microsoft.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- Update documentation stories ([PR #21298](https://github.com/microsoft/fluentui/pull/21298) by behowell@microsoft.com)
+- Move arrowHeight and tooltipBorderRadius into a shared constants.ts file ([PR #21204](https://github.com/microsoft/fluentui/pull/21204) by behowell@microsoft.com)
+- Replacing use of functions in makeStyles with direct use of tokens. ([PR #21058](https://github.com/microsoft/fluentui/pull/21058) by Humberto.Morimoto@microsoft.com)
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- Fix tooltip arrow rendering, and add high contrast border around Tooltip ([PR #21086](https://github.com/microsoft/fluentui/pull/21086) by behowell@microsoft.com)
+- Remove Tooltip's inverted prop in favor of the appearance prop ([PR #21327](https://github.com/microsoft/fluentui/pull/21327) by behowell@microsoft.com)
+- BREAKING: implement `content` slot ([PR #21470](https://github.com/microsoft/fluentui/pull/21470) by olfedias@microsoft.com)
+- Replace make-styles packages with griffel equivalents. ([PR #21422](https://github.com/microsoft/fluentui/pull/21422) by olfedias@microsoft.com)
+- Replace `triggerAriaAttribute` prop with `relationship` and make it required with no default ([PR #21331](https://github.com/microsoft/fluentui/pull/21331) by behowell@microsoft.com)
+- Update MenuTrigger and Tooltip to work together ([PR #21495](https://github.com/microsoft/fluentui/pull/21495) by behowell@microsoft.com)
+- update styles to not use CSS shorthands ([PR #20795](https://github.com/microsoft/fluentui/pull/20795) by olfedias@microsoft.com)
+- Bump @fluentui/react-portal to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-beta.5)
 

@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Thu, 25 Nov 2021 08:34:13 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Feb 2022 12:33:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-beta.6)
+
+Mon, 07 Feb 2022 12:33:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-beta.5..@fluentui/react-checkbox_v9.0.0-beta.6)
+
+### Changes
+
+- Bump Fluent UI packages to 9.0.0-rc ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by lingfangao@hotmail.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- Using ComponentSlotProps instead of ObjectShorthandProps. ([PR #20890](https://github.com/microsoft/fluentui/pull/20890) by Humberto.Morimoto@microsoft.com)
+- Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- Replace make-styles packages with griffel equivalents. ([PR #21435](https://github.com/microsoft/fluentui/pull/21435) by olfedias@microsoft.com)
+- Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster. ([PR #21035](https://github.com/microsoft/fluentui/pull/21035) by Humberto.Morimoto@microsoft.com)
+- Update checkmark icons and color styles to match visual spec ([PR #21011](https://github.com/microsoft/fluentui/pull/21011) by behowell@microsoft.com)
+- fix: update styles to match typings ([PR #20539](https://github.com/microsoft/fluentui/pull/20539) by olfedias@microsoft.com)
+- update @fluentui/react-icons package ([PR #21498](https://github.com/microsoft/fluentui/pull/21498) by olfedias@microsoft.com)
+- Replacing use of functions in makeStyles with direct use of tokens. ([PR #21041](https://github.com/microsoft/fluentui/pull/21041) by Humberto.Morimoto@microsoft.com)
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- update styles to not use CSS shorthands ([PR #20816](https://github.com/microsoft/fluentui/pull/20816) by olfedias@microsoft.com)
+- Refactor Checkbox to use label as a slot instead of being the root ([PR #20904](https://github.com/microsoft/fluentui/pull/20904) by behowell@microsoft.com)
+- Bump @fluentui/react-label to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-beta.5)
 

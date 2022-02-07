@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "react-image: Replacing use of functions in makeStyles with direct use of tokens.",
-  "packageName": "@fluentui/react-image",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

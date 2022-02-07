@@ -2,6 +2,107 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Mon, 07 Feb 2022 12:33:49 GMT",
+      "tag": "@fluentui/react-label_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "742c191b7f2ea28505e49304117c090f9f36386c",
+            "comment": "Replace make-styles packages with griffel equivalents."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "a052fbc9204600669d32b0ac346032d2cd8d9204",
+            "comment": "react-label: Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "00a5d945904c896a0664de6ba72c145a255f0848",
+            "comment": "Updating use of tokens.fontWeight now that we don't need to use casting."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "d892c7f79c543b6008634ecd669b75b5108cad46",
+            "comment": "Relocate comment about props to the correct type, and update spec to accurately reflect props"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "084a7183511bae60a43e57fbd57979349c4736a4",
+            "comment": "Migrate package to use solution tsconfigs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 08:34:14 GMT",
       "tag": "@fluentui/react-label_v9.0.0-beta.4",
       "version": "9.0.0-beta.4",

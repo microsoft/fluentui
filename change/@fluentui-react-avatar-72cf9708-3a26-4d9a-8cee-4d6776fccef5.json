@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update Avatar to have role=\"img\" on the root, and other a11y fixes",
-  "packageName": "@fluentui/react-avatar",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

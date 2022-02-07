@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Thu, 25 Nov 2021 08:34:13 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Feb 2022 12:33:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-rc.1)
+
+Mon, 07 Feb 2022 12:33:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-beta.4..@fluentui/react-image_v9.0.0-rc.1)
+
+### Changes
+
+- Bump Fluent UI packages to 9.0.0-rc ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by lingfangao@hotmail.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- react-image: Replacing use of functions in makeStyles with direct use of tokens. ([PR #21044](https://github.com/microsoft/fluentui/pull/21044) by Humberto.Morimoto@microsoft.com)
+- use Griffel packages ([PR #21432](https://github.com/microsoft/fluentui/pull/21432) by olfedias@microsoft.com)
+- Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- update styles to not use CSS shorthands ([PR #20818](https://github.com/microsoft/fluentui/pull/20818) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-beta.4)
 

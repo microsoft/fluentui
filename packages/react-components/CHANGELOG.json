@@ -2,6 +2,2411 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 07 Feb 2022 12:33:39 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "13f940ea4687d769dd2faf61edc27ff75f6bb565",
+            "comment": "Allow React 17 in peerDependencies."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "a2e02b2015b1f9307c69c8ecf005c166d496e206",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "940a86cbd6a9f711d275df3a823292b527017852",
+            "comment": "Removes children as a slot from AccordionHeader"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "d0758018bf44c69e01451c8a6bd4f73b43e397b7",
+            "comment": "update semantic elements and ARIA roles in react-accordion, add heading level story"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "63cbefe55e5db10eedbde19392aa8b6376d6a7f7",
+            "comment": "Update react-icons usage to resizable icons"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "38c8bed2c707014688ae2ae689033fa36ef23075",
+            "comment": "Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "22ef7434eddbe45d8818b16ff43c3488ac84ae45",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "dfb5538a2494b48cbb61702c4c2c9aaf8de37a6f",
+            "comment": "Remove AccordionHeaderExpandIcon, and use ChevronRightRegular from @fluentui/react-icons instead"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "b23239743c4f5518bcf7dcad496a36fc16bbd2e5",
+            "comment": "update @fluentui/react-icons package"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "b8537fb52cc3cc2787be5675c65300e01d882add",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "f4eafee2c3b8d85b3a267d6b155f0f5585a435fd",
+            "comment": "remove Griffel packages"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "e1926bfeca2a0ae5a469133a0c8257a7e4883332",
+            "comment": "Update documentation stories"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "05fb002b1d21d6de6f8e10c23a354d956c403dd5",
+            "comment": "Update Avatar to have role=\"img\" on the root, and other a11y fixes"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "00a5d945904c896a0664de6ba72c145a255f0848",
+            "comment": "Updating use of tokens.fontWeight now that we don't need to use casting."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "b23239743c4f5518bcf7dcad496a36fc16bbd2e5",
+            "comment": "update @fluentui/react-icons package"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "c1b4c7e724cef9f5090b076f3d45add0a40ff39a",
+            "comment": "Replace make-styles packages with griffel equivalents."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "e8292dd620acdace35e912df8f48518d48d70e93",
+            "comment": "Export the default getInitials implementation"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "9c664bfd9f7b0f6ea3b5d61d4701fb9d76667c02",
+            "comment": "Rename `label` slot to `initials`, remove `getInitials` prop, and improve accessibility"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "67bd80940951777ee8454f424f7a64018d9267d2",
+            "comment": "react-avatar: Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "d7ba6e9316046628032e497d4a6d50c4c4c55afa",
+            "comment": "Remove `glow` and `ring-glow` from activeAppearance, as their visuals are not yet finalized."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "c9789297011ee8f956e9ee5f338bd1da4abbca87",
+            "comment": "Update Avatar to use resizable icons"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "7cb2a5d8db1b6a1ddb638aa82d5815ab5ae84e69",
+            "comment": "(fix): Update react-icons dependency to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "f6ad9a6a84a7a9a20016c87899b36086fa031f64",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "13f940ea4687d769dd2faf61edc27ff75f6bb565",
+            "comment": "Allow React 17 in peerDependencies."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "f5e7fa7a2129d3a4637a2ce777cecec435c256ec",
+            "comment": "Refactor and re-organize Badge styles; no visual changes."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "3bc0517363984081469903ee137a06543f825f1c",
+            "comment": "Add fontSize styling to icon slot, to automatically size user-provided icons"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "00a5d945904c896a0664de6ba72c145a255f0848",
+            "comment": "Updating use of tokens.fontWeight now that we don't need to use casting."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "63cbefe55e5db10eedbde19392aa8b6376d6a7f7",
+            "comment": "Update react-icons usage to resizable icons"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "b23239743c4f5518bcf7dcad496a36fc16bbd2e5",
+            "comment": "update @fluentui/react-icons package"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "8c75114e82b205810c9ac3692af71f6f7748225c",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "2c54271f07c30f65718e085084c2e5b213268dfd",
+            "comment": "react-badge: Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "7cb2a5d8db1b6a1ddb638aa82d5815ab5ae84e69",
+            "comment": "(fix): Update react-icons dependency to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "5a49512b8e33d5a588212069a1f2827b806d584c",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "4e5e955acede0fc79334ef90a563de4bd35ee231",
+            "comment": "fix: use updated tokens for ghost and outline variants"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "4e7acd7ff3c437663de70206416d3c19b6a87cfa",
+            "comment": "fix: Add uniform padding and modify gaps"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "940de09b95aa1cefcac9a1f6bbfa9499419e3634",
+            "comment": "Button: Changing border radius of small button to borderRadiusMedium from borderRadiusSmall."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "0aa74f3ef5a64c647b5903e21af7ff5423d46182",
+            "comment": "Replace make-styles packages with griffel equivalents."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "63cbefe55e5db10eedbde19392aa8b6376d6a7f7",
+            "comment": "Update react-icons usage to resizable icons"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "0a4c1a9af2f8bb29c3a3544f06964a8554cd692a",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "a21bfaceecf201d0c984fa84704148a24f956901",
+            "comment": "CompoundButton: Updating styles to match latest design spec."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "d778282b56baae57cb6b407debdbfb6beca76761",
+            "comment": "Remove fontSize from default menuIcon, as it is already set via css"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "f5873dc09f0c07d4adf23ad89a5f3afad37a0da9",
+            "comment": "ToggleButton: Stopping aria-pressed from changing when ToggleButton is disabledFocusable."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "00a5d945904c896a0664de6ba72c145a255f0848",
+            "comment": "Updating use of tokens.fontWeight now that we don't need to use casting."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "7797d49103b5dd7662ef59f734921f6326b2273d",
+            "comment": "MenuButton: Updating types so it properly supports ref."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "b23239743c4f5518bcf7dcad496a36fc16bbd2e5",
+            "comment": "update @fluentui/react-icons package"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "38c8bed2c707014688ae2ae689033fa36ef23075",
+            "comment": "Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "7cb2a5d8db1b6a1ddb638aa82d5815ab5ae84e69",
+            "comment": "(fix): Update react-icons dependency to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "54118b29fde686ef15fe95a3a97f3fd7edca34a3",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "63cbefe55e5db10eedbde19392aa8b6376d6a7f7",
+            "comment": "Update react-icons usage to resizable icons"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "37772e1ef0b587bf08984dd053ebb356c57c5247",
+            "comment": "react-card: Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "d892c7f79c543b6008634ecd669b75b5108cad46",
+            "comment": "Remove empty CardCommons type and outdated boilerplate comments"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "1249d2ee042780865e877fc2ed48f56e0eff25d1",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "158d89b5d98e3544e06f4f09967d2af8ab43e249",
+            "comment": "update styles no not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "3e5027e2c8c8b54a2f9f140690bb88d03eafde27",
+            "comment": "Replace make-styles packages with griffel equivalents."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "38c8bed2c707014688ae2ae689033fa36ef23075",
+            "comment": "Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "d7d472d3564c7c08465743b2517e4f29428b87b4",
+            "comment": "Update checkmark icons and color styles to match visual spec"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "39bddb7a1da57bb1e7073c7eacabb706e25587a5",
+            "comment": "fix: update styles to match typings"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "b23239743c4f5518bcf7dcad496a36fc16bbd2e5",
+            "comment": "update @fluentui/react-icons package"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "ecca467a89869ec2812b160b26a7f68fa69dac10",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "13ac915a4f18e5b9e79e14bdc239204872abf7f3",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "f1be0a9728e05ca33ad67e77ae7d1cba3384106f",
+            "comment": "Refactor Checkbox to use label as a slot instead of being the root"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "1c2a4410205d3c86bc885fb74d6aede75d9bd99d",
+            "comment": "Theme: Adding function to programmatically generate tokens object based on a theme."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "9db5b33aabd125d9c6f187b301d27a595d197b67",
+            "comment": "Replace make-styles packages with griffel equivalents"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "0a220897d7f6b3029b7c7f18b6ecc28a3131345f",
+            "comment": "Add slider package to react-components"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "dbb5b309cdc952756383e42e37d267f98a8d663a",
+            "comment": "Remove exports of Commons types"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "dfb5538a2494b48cbb61702c4c2c9aaf8de37a6f",
+            "comment": "Remove AccordionHeaderExpandIcon"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "7d402050b2e4d487f70efc539837d50808dea92e",
+            "comment": "breaking: stop exporting useTheme hook"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "ca6ef2bc8ea258de6f3e995731bf73743dfce1f8",
+            "comment": "Add Input components (exported as /unstable)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "1dba2fca2365f1a748505896679ae160a6fec270",
+            "comment": "remove mergeThemes from public API"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove components' shorthandProps array exports"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "add7efae6339cc0fa85ccc37fea4371bc26074e1",
+            "comment": "Re-export shorthand functions for styles"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c9a03954ffd5d1a85284fb36ef4cd103ed8aa927",
+            "comment": "Remove `themeToCSSVariables` function"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "6dd33e565ac4efb29b3864493e40d402d61630ff",
+            "comment": "add conformance tests for Griffel"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "13f940ea4687d769dd2faf61edc27ff75f6bb565",
+            "comment": "Allow React 17 in peerDependencies."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "f6116328d6599342eef231f81d3c0724478a3d47",
+            "comment": "set minimum line length based on a11y review"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "034044d59be68915df76c57a84edc8299d3ca175",
+            "comment": "react-divider: Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "ae269d1c40fce9dcfb41d9dafa4678d025576201",
+            "comment": "Added aria-orientation to divider"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "cc44f3625c6c6b5775bc08f00c5b8f52145ad52b",
+            "comment": "Added missing descriptions to divider stories"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "00a5d945904c896a0664de6ba72c145a255f0848",
+            "comment": "Updating use of tokens.fontWeight now that we don't need to use casting."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "7f2bb0ceb2a4d079c34fb58ebc9a5e15245a2cbe",
+            "comment": "Replace make-styles packages with griffel equivalents."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "203cf1b61b1238c81ebe502678fe4714722cb435",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "147ca590e83068153f0358da46b84e7e873b891f",
+            "comment": "react-image: Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "2ce465c8034747199be56ab5ebce3272b6d3a4f9",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "ffe595b06f256f25e6224a0069972e1474893758",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "d61d7925180bc36f13e83c6512c8f3e1885025a2",
+            "comment": "Fix styling issues found in accessibility review"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "d084da4f0a5501c074d3f278098d5084f891b09c",
+            "comment": "Replace make-styles packages with griffel equivalents."
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "ca6ef2bc8ea258de6f3e995731bf73743dfce1f8",
+            "comment": "Initial release"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "9f5e897597cb3de56c32fe750d45c9d2a1ea838a",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens and removing old version of stories."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "742c191b7f2ea28505e49304117c090f9f36386c",
+            "comment": "Replace make-styles packages with griffel equivalents."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "a052fbc9204600669d32b0ac346032d2cd8d9204",
+            "comment": "react-label: Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "00a5d945904c896a0664de6ba72c145a255f0848",
+            "comment": "Updating use of tokens.fontWeight now that we don't need to use casting."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "00a5d945904c896a0664de6ba72c145a255f0848",
+            "comment": "Updating use of tokens.fontWeight now that we don't need to use casting."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "c6b5aab92807f3f8c379330dc53001f5a3e9e568",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "e92670a22c5f796fa1e12051f756d9207d22d701",
+            "comment": "react-link: Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "c85787719dfe8fabd2c60b3068012fed77f5d656",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "4f22b6dad04ea37eb53e4af23c73d2de4db512a2",
+            "comment": "fix: MenuTrigger should work correctly when `aria-disabled=\"true\"`"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b23239743c4f5518bcf7dcad496a36fc16bbd2e5",
+            "comment": "update @fluentui/react-icons package"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "d2eb57808a403b70845a732a62b55aa64d66b2a0",
+            "comment": "Allow `MenuTrigger` to be wrapped by another trigger"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "38c8bed2c707014688ae2ae689033fa36ef23075",
+            "comment": "Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "6c32d0180e89674a46daf795de69e5dc6ca71ef7",
+            "comment": "Updating based on removal of functions from makeStyles."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f30e7585a8d2abd9db06c4076f39a779008b0eca",
+            "comment": "Update MenuTrigger and Tooltip to work together"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "227e09f59026e2bd243422427d9e230d6aa892ca",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "d8fe0da13e1d34028a51e5d740e7bdc78c3a6862",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "23b8a6df449d6e76b90ae5ca9bd2285febdff222",
+            "comment": "Apply fontSize styling to icon slot"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "63cbefe55e5db10eedbde19392aa8b6376d6a7f7",
+            "comment": "Update react-icons usage to resizable icons"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "95a6a32cbffa9d86d6017cf8e0204d4b459ef370",
+            "comment": "feat: implement `MenuSplitGroup` component for split menu items"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "00a5d945904c896a0664de6ba72c145a255f0848",
+            "comment": "Updating use of tokens.fontWeight now that we don't need to use casting."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "07d9ed6d1b436b7ca9571c94fbb0bcbdb080f235",
+            "comment": "breaking: MenuTrigger must be the first child of the `Menu`"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "c2e6c50d56dcb45b4ca9e3a9daf2fae4be10a19e",
+            "comment": "fix: set `aria-expanded` and `aria-haspopup` values correctly"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "6ca0355f6740f836ff4df009687718a380085247",
+            "comment": "fix: Focus on first menu item on click"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "7e0933ed386742df28c416e6b3a6903a0c041f28",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "4121754498bba5137f769295e2b7a2899f557278",
+            "comment": "fix: Call `useCheckmarkStyles` in `useMenuItemStyles`"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "7cb2a5d8db1b6a1ddb638aa82d5815ab5ae84e69",
+            "comment": "(fix): Update react-icons dependency to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "38e8f42252c69b1c749c3ca7fca9315b49e6cf31",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "09804275c7f346db54c33d4ff347bffc33676014",
+            "comment": "Fix Popover arrow border in high contrast"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "c2706cec4dc694762b1892a505db666d2fb324c1",
+            "comment": "fix: Set `aria-modal` on Popover if focus trap is enabled"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "6c32d0180e89674a46daf795de69e5dc6ca71ef7",
+            "comment": "Updating based on removal of functions from makeStyles."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "b1446dead62e61c9a0f6101d6dfc5a2f780403b8",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "3a5602460a0c05a2ba4e2cc0fad77e5ae0b8ce38",
+            "comment": "fix: Use role=complementary for Popovers without focus traps"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "ec0e785df9c70a2202dc5cc3cb4001d1ee635124",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "d525c8b2106551865d648873210a6b48c2326ecb",
+            "comment": "remove unused dependency on Griffel"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "db6526ee2d04991e4473174969e3795299b52f9e",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "2e34c026a354af1bbfe6a5ead1ade41348d5488f",
+            "comment": "Fix tooltip arrow's high contrast border in RTL"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "523b5785eafd28cf56b677af40274cefe5d42dcb",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "09804275c7f346db54c33d4ff347bffc33676014",
+            "comment": "Fix popover arrow styling"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a76afe26daad901ff5458ffdda7e66e600d5bcac",
+            "comment": "use new types from makeStyles core"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e382ad22539fc97bb283ca4ed856e126c7477e89",
+            "comment": "Adds @noflip annotation to data-popper-placement styles"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "967d6b74cf0507685a24e0cfaa8c7b9d52a351e1",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "00a5d945904c896a0664de6ba72c145a255f0848",
+            "comment": "Updating use of tokens.fontWeight now that we don't need to use casting."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "706305303fcf03a82052c0a9e74d8aecb102885e",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "ecfe4c4fdc306e9c484706f28457f440f55d3684",
+            "comment": "make the FluentProvider#theme TS API reflect runtime and add warning if there is a violation"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "b22c4ef0eba0730286f2ed701e1b851d8a5c03b5",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "1dba2fca2365f1a748505896679ae160a6fec270",
+            "comment": "replace mergeThemes functionality from react-theme"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c9a03954ffd5d1a85284fb36ef4cd103ed8aa927",
+            "comment": "Remove `themeToCSSVariables` function"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "ecfe4c4fdc306e9c484706f28457f440f55d3684",
+            "comment": "make the ThemeContext TS API reflect runtime and remove redundant ThemeContextValue"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "0a220897d7f6b3029b7c7f18b6ecc28a3131345f",
+            "comment": "move slider to unstable"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "b52ebbbf185a2ddc4de814238f9438fd04bfba02",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "38c8bed2c707014688ae2ae689033fa36ef23075",
+            "comment": "Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "1df1d6e85bd3a6ab2a7b13e96a9aac324bb6d00c",
+            "comment": "Replace make-styles packages with griffel equivalents."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "029a7f2fe40e5abe21d8992ad9d92bf2b04d0e97",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "95a6a32cbffa9d86d6017cf8e0204d4b459ef370",
+            "comment": "feat: Support `options` for `findNextFocusable` and `findPrevFocusable` focus finders"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "ebc62b16de199691794df12080d89b77979d1131",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "38c8bed2c707014688ae2ae689033fa36ef23075",
+            "comment": "react-tabster: Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "ff9ad1d4fe5682173c497f6ddf0ee1d7bddd6800",
+            "comment": "chore: bump tabster to 1.1.1 - removes IE11 support"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "f4274932701c7210e191a2982c2d2410f8657fe6",
+            "comment": "chore: Bump tabster and keyborg versions"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "a76afe26daad901ff5458ffdda7e66e600d5bcac",
+            "comment": "use new types from makeStyles core"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "967d6b74cf0507685a24e0cfaa8c7b9d52a351e1",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "003de9a9527703d429690c7ab5d7c24b4038d518",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "00a5d945904c896a0664de6ba72c145a255f0848",
+            "comment": "Updating use of tokens.fontWeight now that we don't need to use casting."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "5a6f0d55d87f70d67dd1567ce97e637e51b07863",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "a76afe26daad901ff5458ffdda7e66e600d5bcac",
+            "comment": "use makeStyles types from proper package"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "554b6709ced97b4d04363f9d9d22b6da4d31378c",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "1c2a4410205d3c86bc885fb74d6aede75d9bd99d",
+            "comment": "Theme: Adding function to programmatically generate tokens object based on a theme."
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "fa3937813e6587d90ab5c43579321004fc37d6e9",
+            "comment": "feat(react-theme): Add colorNeutralForeground1Static token"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "b382d0421440e0854673a7967137d6c667544f91",
+            "comment": "feat: Export tokens as mapping to CSS variables"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "1dba2fca2365f1a748505896679ae160a6fec270",
+            "comment": "remove mergeThemes API"
+          },
+          {
+            "author": "andmarti@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "3ca42a594827a2ce3d5d18fcd4a399c92fda3bd7",
+            "comment": "updating brand colors"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "d7479a7414e636731b678aebb6bf6295fd607fda",
+            "comment": "Extend brand ramp from 13 to 16 tokens"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c9a03954ffd5d1a85284fb36ef4cd103ed8aa927",
+            "comment": "Remove `themeToCSSVariables` function"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "8985d65f0aac448c6766d27800922224555be0f4",
+            "comment": "feat(react-theme) Add border1 color token for shared colors"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "2aacc839785a2f96d84a959aea207dfdb99116f8",
+            "comment": "Prevent Tooltip from overriding any aria-label, etc. props on its child"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "97c3818f7faf8733a0cfc9c91f5e94ddb8652d3a",
+            "comment": "Update documentation stories"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "caaf3307f864b04369c13fe69d7dc8fe7ab84735",
+            "comment": "Move arrowHeight and tooltipBorderRadius into a shared constants.ts file"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "9204703d0a42ee34a20ae4cf28952e13872647ba",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "09804275c7f346db54c33d4ff347bffc33676014",
+            "comment": "Fix tooltip arrow rendering, and add high contrast border around Tooltip"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "1513362b9adaae5d7dbda6b364e40e736710a79f",
+            "comment": "Remove Tooltip's inverted prop in favor of the appearance prop"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "02e6236e4db8e1b591223475896537e905bf3580",
+            "comment": "BREAKING: implement `content` slot"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "17c0b18d7983d414095661bf9f57e14c0c22685d",
+            "comment": "Replace make-styles packages with griffel equivalents."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "58ae40d6817b1fa4e095a94707dfef5050aa4c11",
+            "comment": "Replace `triggerAriaAttribute` prop with `relationship` and make it required with no default"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "f30e7585a8d2abd9db06c4076f39a779008b0eca",
+            "comment": "Update MenuTrigger and Tooltip to work together"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "1bbb753830028fbf133858d523ae2d56ceefeecf",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "getSlots: remove slotNames param, and infer from state.components instead"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "d2eb57808a403b70845a732a62b55aa64d66b2a0",
+            "comment": "add useTriggerElement() hook"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Adding ComponentSlotProps to allow ref to be passed in composite components."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Renaming most *Shorthand* composition types to *SlotProps* so they better reflect what the types do."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f30e7585a8d2abd9db06c4076f39a779008b0eca",
+            "comment": "Update trigger utilities to handle nested triggers"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "39ce3cbcf15ce2619649e1eddccf932736ceac07",
+            "comment": "[breaking] Remove useControllableValue hook (use useControllableState instead)"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "chore: update all jest deps to v25 + apply single version policy"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "324980bcd7a0fda592fad173fa212bb6a316cc0e",
+            "comment": "Migration to new dx"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "d892c7f79c543b6008634ecd669b75b5108cad46",
+            "comment": "Remove outdated boilerplate comments"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "87e12a2e3a9d90b4ff95d3ed333739756d190f6c",
+            "comment": "Updated best practices for long text"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "ca886fed17b4a73b9bb3b5a9e54d143062cbfa99",
+            "comment": "Migration to new tsconfig"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-card",
+            "commit": "4bd15194a66379b165043141c266faa0c1ea1502",
+            "comment": "document how to import preview components"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "8e04b14546f264bb197ffce70bdff8ec83762c49",
+            "comment": "Add Alpha notice"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-card",
+            "commit": "a15d363937fad523e90350458ec3e44fe7199dc0",
+            "comment": "Move Storybook stories to Preview Components section"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "c6c745b664df52f5cbdd5a190cc08cae971216e0",
+            "comment": "Add component spec"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "401cdabeffb7985d88e5789faf75a93de1fb46f2",
+            "comment": "Migration to new dx: ts style config"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "d3388f563adf7eb720aeb7033512bab7a6227371",
+            "comment": "removed dup dependency"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "74f14038cd9915cab252e3b7fded8c91f08e9215",
+            "comment": "Custom styles for storybook to better align with public website"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-components",
+            "commit": "de4f240e9f71fb8885d396cda6af841934bc6099",
+            "comment": "Upgrade chromatic to latest"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "541ff9a1d6dd1c5f5d123ffc1cc034177f20d15d",
+            "comment": "Replace make-styles dev packages with griffel equivalents"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "930194005555904ab7ca690c53c6d569bfd325e9",
+            "comment": "react-components: Stop generating a folder with a file inside and instead flatten to a single file for 'Migrating from @fluentui/react v8' storybook story."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "be255e4096c86893a1a9c85a4600651f532a8716",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "5a51c795e5013e66e5e5276c57141f785c6aa54d",
+            "comment": "chore(react-components): make sb start work with babel-make-styles and react-sb-addon"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-components",
+            "commit": "a15d363937fad523e90350458ec3e44fe7199dc0",
+            "comment": "Add Preview Components section to Storybook, replace vNext term"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "580595cf1c42675f9aa6e2f95756d073a2a98a85",
+            "comment": "Add v9 Icons to Storybook"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "9a4621e938a6be9a5435c27e8d02f209efb182ea",
+            "comment": "update stories to not use CSS shorthands in styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "584944c4a17fcb2eb8361fc84b80d2b136ee883a",
+            "comment": "docs(storybook): hide editors in ArgsTable"
+          },
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "65dd5f74941a87f9586ee446de77694f095e2de1",
+            "comment": "docs(Accessibility): Add more explanation links to Accessibility storybook"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "f9cf2e6ba7601c4345e7d401baf02cfcf5978d07",
+            "comment": "update tooling configs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "debe424f640446e6e926d5ccc3e0af1bac11ebfa",
+            "comment": "temporary disable Storybook addon"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "84e70e873508c0a1b061bb401f7143c1bcd44397",
+            "comment": "docs(storybook): fix anchor links with colons"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "57677496452840365886d4f12a98b62739e65286",
+            "comment": "Migration to ts config solution"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-input",
+            "commit": "4bd15194a66379b165043141c266faa0c1ea1502",
+            "comment": "document how to import preview components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-input",
+            "commit": "a15d363937fad523e90350458ec3e44fe7199dc0",
+            "comment": "Move Storybook stories to Preview Components section"
+          },
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "d757e76e91527fb821c3e1707db48f1745bf44ca",
+            "comment": "Rmoved config with just-scripts"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "d892c7f79c543b6008634ecd669b75b5108cad46",
+            "comment": "Relocate comment about props to the correct type, and update spec to accurately reflect props"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "084a7183511bae60a43e57fbd57979349c4736a4",
+            "comment": "Migrate package to use solution tsconfigs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "75a728d6aa3d4a7182e25ea078008788595f2868",
+            "comment": "Migrate package to use solution tsconfigs"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-menu",
+            "commit": "97752a0e494875c4dc22b268030d7d5e51b19211",
+            "comment": "Add workaround for cypress bug"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "3360b45ec159250b1346c91afad7dce138e6bc20",
+            "comment": "Update API file to version generated by typescript 4.3"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-popover",
+            "commit": "97752a0e494875c4dc22b268030d7d5e51b19211",
+            "comment": "Add workaround for cypress bug"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "3360b45ec159250b1346c91afad7dce138e6bc20",
+            "comment": "Update API file to version generated by typescript 4.3"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "60e153e786c586b867898109c07a51876d3bfd5a",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "f4883108ae74c089213780f09997115c0d547aef",
+            "comment": "update stories to not use CSS shorthands in styles"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "chore: update all jest deps to v25 + apply single version policy"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "0fe5ae5d94918a8f8805ed3e587ed98acb17c4b2",
+            "comment": "add @types/react-test-renderer to devDependencies"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "d11a238f944b891c13b3bfa56a17ddace52f37d5",
+            "comment": "update stories to not use CSS shorthands in styles"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-slider",
+            "commit": "4bd15194a66379b165043141c266faa0c1ea1502",
+            "comment": "document how to import preview components"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "test(react-switch): update snapshots to match new JSDOM"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "bf950e951b102fd8be046993dbb604073fc4ea9e",
+            "comment": "Migrate package to use solution tsconfigs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-tabster",
+            "commit": "97752a0e494875c4dc22b268030d7d5e51b19211",
+            "comment": "Add workaround for cypress bug"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "71ff89870b52cd0e2319a5d568603a710c3ad367",
+            "comment": "update tooling configs"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "989c43132491b61ed7c6da70100ca4f9aac8173a",
+            "comment": "Fix version mismatches"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "636b848aa2323fd5d450e2206a71afad93aaa578",
+            "comment": "chore(react-theme) Add theme tokens bundle size fixture"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "d892c7f79c543b6008634ecd669b75b5108cad46",
+            "comment": "Remove outdated boilerplate comment in useTooltip"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "b59f44ed5db37b457476fdb3ec86ff273b776646",
+            "comment": "Migrate package to use solution tsconfigs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "a4e048a0e03ddd676670da516e3a6612b26ea500",
+            "comment": "chore: Remove enzyme from react-utilities tests"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "3360b45ec159250b1346c91afad7dce138e6bc20",
+            "comment": "Update API file to version generated by typescript 4.3"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "6404bef16cebf1f67b9b80a9f6d5f605f9873df1",
+            "comment": "Update getSlots() docs."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 08:34:09 GMT",
       "tag": "@fluentui/react-components_v9.0.0-beta.5",
       "version": "9.0.0-beta.5",

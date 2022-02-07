@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Thu, 25 Nov 2021 08:34:15 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Feb 2022 12:33:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-rc.1)
+
+Mon, 07 Feb 2022 12:33:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-beta.4..@fluentui/react-positioning_v9.0.0-rc.1)
+
+### Changes
+
+- Bump Fluent UI packages to 9.0.0-rc ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by lingfangao@hotmail.com)
+- Replacing use of functions in makeStyles with direct use of tokens. ([PR #21051](https://github.com/microsoft/fluentui/pull/21051) by Humberto.Morimoto@microsoft.com)
+- Fix tooltip arrow's high contrast border in RTL ([PR #21354](https://github.com/microsoft/fluentui/pull/21354) by behowell@microsoft.com)
+- use Griffel packages ([PR #21421](https://github.com/microsoft/fluentui/pull/21421) by olfedias@microsoft.com)
+- Fix popover arrow styling ([PR #21086](https://github.com/microsoft/fluentui/pull/21086) by behowell@microsoft.com)
+- use new types from makeStyles core ([PR #20786](https://github.com/microsoft/fluentui/pull/20786) by olfedias@microsoft.com)
+- Adds @noflip annotation to data-popper-placement styles ([PR #20845](https://github.com/microsoft/fluentui/pull/20845) by bsunderhus@microsoft.com)
+- update styles to not use CSS shorthands ([PR #20842](https://github.com/microsoft/fluentui/pull/20842) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-beta.4)
 

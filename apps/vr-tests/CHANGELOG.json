@@ -2,6 +2,129 @@
   "name": "@fluentui/vr-tests",
   "entries": [
     {
+      "date": "Mon, 07 Feb 2022 12:34:28 GMT",
+      "tag": "@fluentui/vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-badge to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-button to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-card to v9.0.0-beta.6",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.0-beta.6",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-divider to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-image to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-input to v9.0.0-beta.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-label to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-link to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-menu to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-popover to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-slider to v9.0.0-beta.6",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-switch to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-text to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-tooltip to v9.0.0-rc.1",
+            "commit": "e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Feb 2022 07:31:42 GMT",
       "tag": "@fluentui/vr-tests_v1.0.0",
       "version": "1.0.0",

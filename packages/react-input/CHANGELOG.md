@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Thu, 25 Nov 2021 08:34:17 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Feb 2022 12:33:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.0-beta.1)
+
+Mon, 07 Feb 2022 12:33:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.0.0-beta.0..@fluentui/react-input_v9.0.0-beta.1)
+
+### Changes
+
+- Bump Fluent UI packages to 9.0.0-rc ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by lingfangao@hotmail.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- Fix styling issues found in accessibility review ([PR #21205](https://github.com/microsoft/fluentui/pull/21205) by elcraig@microsoft.com)
+- Replace make-styles packages with griffel equivalents. ([PR #21431](https://github.com/microsoft/fluentui/pull/21431) by olfedias@microsoft.com)
+- Initial release ([PR #21142](https://github.com/microsoft/fluentui/pull/21142) by elcraig@microsoft.com)
+- Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- Replacing use of functions in makeStyles with direct use of tokens and removing old version of stories. ([PR #21045](https://github.com/microsoft/fluentui/pull/21045) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
 
 ## [9.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.0-beta.0)
 

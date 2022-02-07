@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Thu, 25 Nov 2021 08:34:10 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Feb 2022 12:33:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-rc.1)
+
+Mon, 07 Feb 2022 12:33:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-beta.4..@fluentui/react-avatar_v9.0.0-rc.1)
+
+### Changes
+
+- Bump Fluent UI packages to 9.0.0-rc ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by lingfangao@hotmail.com)
+- Update documentation stories ([PR #21519](https://github.com/microsoft/fluentui/pull/21519) by behowell@microsoft.com)
+- Update Avatar to have role="img" on the root, and other a11y fixes ([PR #21526](https://github.com/microsoft/fluentui/pull/21526) by behowell@microsoft.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- Updating use of tokens.fontWeight now that we don't need to use casting. ([PR #21217](https://github.com/microsoft/fluentui/pull/21217) by Humberto.Morimoto@microsoft.com)
+- update @fluentui/react-icons package ([PR #21498](https://github.com/microsoft/fluentui/pull/21498) by olfedias@microsoft.com)
+- Replace make-styles packages with griffel equivalents. ([PR #21439](https://github.com/microsoft/fluentui/pull/21439) by olfedias@microsoft.com)
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- Export the default getInitials implementation ([PR #21445](https://github.com/microsoft/fluentui/pull/21445) by behowell@microsoft.com)
+- Rename `label` slot to `initials`, remove `getInitials` prop, and improve accessibility ([PR #21346](https://github.com/microsoft/fluentui/pull/21346) by behowell@microsoft.com)
+- Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- react-avatar: Replacing use of functions in makeStyles with direct use of tokens. ([PR #21037](https://github.com/microsoft/fluentui/pull/21037) by Humberto.Morimoto@microsoft.com)
+- Using ComponentSlotProps instead of ObjectShorthandProps. ([PR #20890](https://github.com/microsoft/fluentui/pull/20890) by Humberto.Morimoto@microsoft.com)
+- Remove `glow` and `ring-glow` from activeAppearance, as their visuals are not yet finalized. ([PR #21480](https://github.com/microsoft/fluentui/pull/21480) by behowell@microsoft.com)
+- Update Avatar to use resizable icons ([PR #21160](https://github.com/microsoft/fluentui/pull/21160) by behowell@microsoft.com)
+- Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- (fix): Update react-icons dependency to latest version ([PR #20943](https://github.com/microsoft/fluentui/pull/20943) by ololubek@microsoft.com)
+- update styles to not use CSS shorthands ([PR #20801](https://github.com/microsoft/fluentui/pull/20801) by olfedias@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by beachball)
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-beta.4)
 

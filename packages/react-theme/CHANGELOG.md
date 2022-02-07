@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Thu, 25 Nov 2021 08:34:16 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Feb 2022 12:33:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.1)
+
+Mon, 07 Feb 2022 12:33:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-beta.4..@fluentui/react-theme_v9.0.0-rc.1)
+
+### Changes
+
+- Bump Fluent UI packages to 9.0.0-rc ([commit](https://github.com/microsoft/fluentui/commit/e319c901dd5bd81bc4a3fcee481a2cb4c8f4a13c) by lingfangao@hotmail.com)
+- Theme: Adding function to programmatically generate tokens object based on a theme. ([PR #21548](https://github.com/microsoft/fluentui/pull/21548) by Humberto.Morimoto@microsoft.com)
+- feat(react-theme): Add colorNeutralForeground1Static token ([PR #21385](https://github.com/microsoft/fluentui/pull/21385) by miroslav.stastny@microsoft.com)
+- feat: Export tokens as mapping to CSS variables ([PR #21026](https://github.com/microsoft/fluentui/pull/21026) by Humberto.Morimoto@microsoft.com)
+- remove mergeThemes API ([PR #21278](https://github.com/microsoft/fluentui/pull/21278) by martinhochel@microsoft.com)
+- updating brand colors ([PR #20140](https://github.com/microsoft/fluentui/pull/20140) by andmarti@microsoft.com)
+- Extend brand ramp from 13 to 16 tokens ([PR #20884](https://github.com/microsoft/fluentui/pull/20884) by miroslav.stastny@microsoft.com)
+- Remove `themeToCSSVariables` function ([PR #20828](https://github.com/microsoft/fluentui/pull/20828) by bsunderhus@microsoft.com)
+- feat(react-theme) Add border1 color token for shared colors ([PR #20963](https://github.com/microsoft/fluentui/pull/20963) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-beta.4)
 
