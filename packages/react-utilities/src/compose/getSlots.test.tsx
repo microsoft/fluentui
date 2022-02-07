@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { getSlots } from './getSlots';
-import { nullRender } from './nullRender';
 import type { Slot } from './types';
 
 describe('getSlots', () => {
@@ -147,7 +146,7 @@ describe('getSlots', () => {
         icon: undefined,
       }),
     ).toEqual({
-      slots: { root: 'div', input: 'input', icon: nullRender },
+      slots: { root: 'div', input: 'input', icon: null },
       slotProps: { root: {}, input: {}, icon: undefined },
     });
   });

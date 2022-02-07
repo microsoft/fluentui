@@ -11,9 +11,9 @@ export const renderButton_unstable = (state: ButtonState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      {iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
+      {iconPosition !== 'after' && slots.icon && <slots.icon {...slotProps.icon} />}
       {!iconOnly && state.root.children}
-      {iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
+      {iconPosition === 'after' && slots.icon && <slots.icon {...slotProps.icon} />}
     </slots.root>
   );
 };
