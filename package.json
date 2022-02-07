@@ -258,8 +258,6 @@
       "typings"
     ],
     "nohoist": [
-      "@fluentui/make-styles/@types/stylis",
-      "@fluentui/make-styles/stylis",
       "@fluentui/react-northstar-fela-renderer/stylis",
       "@fluentui/react-northstar-emotion-renderer/@types/stylis",
       "@fluentui/react-northstar-emotion-renderer/stylis",
