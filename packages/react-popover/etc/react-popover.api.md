@@ -11,10 +11,12 @@ import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
+import { JSXElementConstructor } from 'react';
 import type { PopperVirtualElement } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
+import { ReactElement } from 'react';
 import type { usePopperMouseTarget } from '@fluentui/react-positioning';
 
 // @public (undocumented)
@@ -116,7 +118,7 @@ export const renderPopover_unstable: (state: PopoverState) => JSX.Element;
 export const renderPopoverSurface_unstable: (state: PopoverSurfaceState) => JSX.Element | null;
 
 // @public
-export const renderPopoverTrigger_unstable: (state: PopoverTriggerState) => JSX.Element;
+export const renderPopoverTrigger_unstable: (state: PopoverTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
 
 // @public
 export const usePopover_unstable: (props: PopoverProps) => PopoverState;
