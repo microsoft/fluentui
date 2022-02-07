@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "update trigger implementation",
+  "comment": "update types related to trigger (allow only React.ReactElement & null)",
   "packageName": "@fluentui/react-tooltip",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
