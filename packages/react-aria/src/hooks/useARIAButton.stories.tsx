@@ -1,12 +1,12 @@
 import { getSlots } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useARIAButton } from './useARIAButton';
-import type { ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentState, Slot } from '@fluentui/react-utilities';
 import type { ARIAButtonSlotProps } from './useARIAButton';
 
 type Slots = {
-  root: IntrinsicSlotProps<'div'>;
-  button: ARIAButtonSlotProps;
+  root: Slot<'div'>;
+  button: Slot<ARIAButtonSlotProps>;
 };
 
 interface State extends ComponentState<Slots> {}

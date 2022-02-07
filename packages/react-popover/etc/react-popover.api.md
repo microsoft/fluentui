@@ -9,11 +9,11 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import type { PopperVirtualElement } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 import type { usePopperMouseTarget } from '@fluentui/react-positioning';
 
 // @public (undocumented)
@@ -80,7 +80,7 @@ export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
 
 // @public
 export type PopoverSurfaceSlots = {
-    root: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public

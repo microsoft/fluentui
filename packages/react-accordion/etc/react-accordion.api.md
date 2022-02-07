@@ -9,8 +9,8 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
@@ -69,17 +69,17 @@ export type AccordionHeaderContextValues = {
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
 // @public (undocumented)
-export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
+export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & Partial<AccordionHeaderCommons>;
 
 // @public (undocumented)
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    root: IntrinsicSlotProps<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-    button: ARIAButtonSlotProps;
-    expandIcon: IntrinsicSlotProps<'span'>;
-    icon?: IntrinsicSlotProps<'div'>;
+    root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+    button: NonNullable<Slot<ARIAButtonSlotProps>>;
+    expandIcon: Slot<'span'>;
+    icon?: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -119,7 +119,7 @@ export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<Ac
 
 // @public (undocumented)
 export type AccordionItemSlots = {
-    root: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -139,7 +139,7 @@ export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 
 // @public (undocumented)
 export type AccordionPanelSlots = {
-    root: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -156,7 +156,7 @@ export type AccordionProps = ComponentProps<AccordionSlots> & Partial<AccordionC
 
 // @public (undocumented)
 export type AccordionSlots = {
-    root: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)

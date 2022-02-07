@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
  * Any value that identifies a specific tab.
@@ -9,18 +9,18 @@ export type TabSlots = {
   /**
    * Root of the component.
    */
-  root: IntrinsicSlotProps<'div'>;
+  root: Slot<'div'>;
 
   /**
    * Icon that renders before the content.
    */
-  icon?: IntrinsicSlotProps<'span'>;
+  icon?: Slot<'span'>;
 
   /**
    * Component children are placed in this slot
    * Avoid using the `children` property in this slot in favour of Component children whenever possible.
    */
-  content: IntrinsicSlotProps<'span'>;
+  content: NonNullable<Slot<'span'>>;
 };
 
 export type TabCommons = {
@@ -33,7 +33,7 @@ export type TabCommons = {
 /**
  * Tab Props
  */
-export type TabProps = ComponentProps<TabSlots> & TabCommons;
+export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
 
 /**
  * State used in rendering Tab

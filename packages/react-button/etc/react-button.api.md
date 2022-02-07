@@ -6,11 +6,10 @@
 
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
@@ -34,8 +33,8 @@ export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommons>;
 
 // @public (undocumented)
 export type ButtonSlots = {
-    root: ARIAButtonSlotProps;
-    icon?: IntrinsicSlotProps<'span'>;
+    root: Slot<ARIAButtonSlotProps>;
+    icon?: Slot<'span'>;
 };
 
 // @public (undocumented)
@@ -50,12 +49,12 @@ export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 export const compoundButtonClassName = "fui-CompoundButton";
 
 // @public (undocumented)
-export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommons>;
+export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Partial<ButtonCommons>;
 
 // @public (undocumented)
 export type CompoundButtonSlots = ButtonSlots & {
-    secondaryContent?: IntrinsicSlotProps<'span'>;
-    contentContainer: IntrinsicSlotProps<'span'>;
+    secondaryContent?: Slot<'span'>;
+    contentContainer: NonNullable<Slot<'span'>>;
 };
 
 // @public (undocumented)
@@ -72,7 +71,7 @@ export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<But
 
 // @public (undocumented)
 export type MenuButtonSlots = ButtonSlots & {
-    menuIcon?: IntrinsicSlotProps<'span'>;
+    menuIcon?: Slot<'span'>;
 };
 
 // @public (undocumented)
@@ -103,9 +102,9 @@ export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonPro
 
 // @public (undocumented)
 export type SplitButtonSlots = {
-    root: IntrinsicSlotProps<'div'>;
-    menuButton?: ComponentSlotProps<typeof MenuButton>;
-    primaryActionButton?: ComponentSlotProps<typeof Button>;
+    root: Slot<'div'>;
+    menuButton?: Slot<typeof MenuButton>;
+    primaryActionButton?: Slot<typeof Button>;
 };
 
 // @public (undocumented)

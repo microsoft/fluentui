@@ -16,9 +16,8 @@ export const useLabel_unstable = (props: LabelProps, ref: React.Ref<HTMLElement>
   const { disabled = false, required = false, strong = false, size = 'medium' } = props;
   return {
     disabled,
-    required: resolveShorthand(required === false ? null : required, {
-      required: !!required,
-      defaultProps: { children: '*', 'aria-hidden': 'true' },
+    required: resolveShorthand(required === true ? '*' : required || undefined, {
+      defaultProps: { 'aria-hidden': 'true' },
     }),
     strong,
     size,
