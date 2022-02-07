@@ -107,11 +107,7 @@ export type TabListState = ComponentState<Required<TabListSlots>> & TabListConte
 };
 
 // @public
-<<<<<<< HEAD
-export type TabProps = ComponentProps<TabSlots> & TabCommonsUnstable;
-=======
-export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
->>>>>>> master
+export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommonsUnstable;
 
 // @public (undocumented)
 export type TabSlots = {
