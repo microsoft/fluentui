@@ -11,7 +11,7 @@ import {
   presenceOofRegular,
   presenceUnknownRegular,
 } from './presenceIcons';
-import { useBadge } from '../Badge/index';
+import { useBadge_unstable, BadgeProps } from '../Badge/index';
 import type { PresenceBadgeProps, PresenceBadgeState } from './PresenceBadge.types';
 
 const iconMap = (
@@ -38,13 +38,16 @@ const iconMap = (
 /**
  * Returns the props and state required to render the component
  */
-export const usePresenceBadge = (props: PresenceBadgeProps, ref: React.Ref<HTMLElement>): PresenceBadgeState => {
+export const usePresenceBadge_unstable = (
+  props: PresenceBadgeProps,
+  ref: React.Ref<HTMLElement>,
+): PresenceBadgeState => {
   const state: PresenceBadgeState = {
-    ...useBadge(
+    ...useBadge_unstable(
       {
         size: 'medium',
         ...props,
-        icon: resolveShorthand(undefined, {
+        icon: resolveShorthand(undefined as BadgeProps['icon'], {
           required: true,
         }),
       },

@@ -1,4 +1,4 @@
-import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { ImageState } from './Image.types';
 
@@ -54,7 +54,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useImageStyles = (state: ImageState) => {
+export const useImageStyles_unstable = (state: ImageState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     imageClassName,

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: use storybook runner for all vNext packages",
+  "packageName": "@fluentui/react-divider",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

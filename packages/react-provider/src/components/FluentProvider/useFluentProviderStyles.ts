@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { FluentProviderState } from './FluentProvider.types';
 
@@ -11,12 +10,12 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightRegular,
   },
 });
 
 /** Applies style classnames to slots */
-export const useFluentProviderStyles = (state: FluentProviderState) => {
+export const useFluentProviderStyles_unstable = (state: FluentProviderState) => {
   const styles = useStyles();
 
   state.root.className = mergeClasses(fluentProviderClassName, state.themeClassName, styles.root, state.root.className);

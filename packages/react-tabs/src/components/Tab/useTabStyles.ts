@@ -1,44 +1,32 @@
 import type { TabState } from './Tab.types';
 
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
+import { tabPendingDesignTokens } from '../../tab.constants';
 
 export const tabClassName = 'fui-Tab';
-
-// TODO: These constants should be replaced with design tokens
-const pendingTheme = {
-  tabPadding: {
-    medium: '10px',
-    small: '6px',
-  },
-  indicatorThickness: '2px',
-  gap: { medium: '6px', small: '2px' },
-  contentPadding: {
-    medium: '2px',
-    small: '2px',
-  },
-};
 
 /**
  * Styles for the root slot
  */
 const useRootStyles = makeStyles({
-  base: theme => ({
+  base: {
     backgroundColor: 'none',
     ...shorthands.borderColor('none'),
-    ...shorthands.borderRadius(theme.borderRadiusMedium),
-    ...shorthands.borderWidth(theme.strokeWidthThin),
-    columnGap: pendingTheme.gap.medium,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.borderWidth(tokens.strokeWidthThin),
+    columnGap: tabPendingDesignTokens.gap.medium,
     cursor: 'pointer',
     display: 'flex',
     flexDirection: 'row',
-    fontFamily: theme.fontFamilyBase,
-    fontSize: theme.fontSizeBase300,
-    lineHeight: theme.lineHeightBase300,
-    ...shorthands.padding(pendingTheme.tabPadding.medium),
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+    ...shorthands.padding(tabPendingDesignTokens.tabPadding.medium),
     position: 'relative',
     ...shorthands.overflow('hidden'),
-  }),
+  },
   horizontal: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -48,14 +36,14 @@ const useRootStyles = makeStyles({
     justifyContent: 'flex-start',
   },
   small: {
-    ...shorthands.padding(pendingTheme.tabPadding.small),
-    columnGap: pendingTheme.gap.small,
+    ...shorthands.padding(tabPendingDesignTokens.tabPadding.small),
+    columnGap: tabPendingDesignTokens.gap.small,
   },
-  subtle: theme => ({
+  subtle: {
     ':hover': {
-      backgroundColor: theme.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorNeutralBackground1Hover,
     },
-  }),
+  },
 });
 
 /**
@@ -65,55 +53,45 @@ const useFocusStyles = makeStyles({
   // Tab creates a custom focus indicator because the default focus indicator
   // is applied using an :after pseudo-element on the root. Since the selection
   // indicator uses an :after pseudo-element on the root, there is a conflict.
-  base: createCustomFocusIndicatorStyle(theme => ({
+  base: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
-    outlineWidth: theme.strokeWidthThick,
+    outlineWidth: tokens.strokeWidthThick,
     outlineColor: 'transparent',
     outlineStyle: 'solid',
     boxShadow: `
-      ${theme.shadow4},
-      0 0 0 ${theme.strokeWidthThick} ${theme.colorStrokeFocus2}
+      ${tokens.shadow4},
+      0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}
     `,
     zIndex: 1,
-  })),
+  }),
 });
 
 /**
  * Indicator styles for the root slot when horizontal.
  */
 const useHorizontalIndicatorStyles = makeStyles({
-  base: theme => ({
+  base: {
     ':after': {
       backgroundColor: 'none',
-      ...shorthands.borderRadius(theme.borderRadiusMedium),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
-      height: pendingTheme.indicatorThickness,
+      height: tabPendingDesignTokens.indicatorThickness,
       bottom: '0',
-      left: pendingTheme.tabPadding.medium,
-      right: pendingTheme.tabPadding.medium,
+      left: tabPendingDesignTokens.tabPadding.medium,
+      right: tabPendingDesignTokens.tabPadding.medium,
     },
     ':hover': {
       ':after': {
-        backgroundColor: theme.colorNeutralStroke1,
+        backgroundColor: tokens.colorNeutralStroke1,
       },
     },
-  }),
-  selected: theme => ({
-    ':after': {
-      backgroundColor: theme.colorBrandStroke1,
-    },
-    ':hover': {
-      ':after': {
-        backgroundColor: theme.colorBrandStroke1,
-      },
-    },
-  }),
+  },
   small: {
     ':after': {
-      left: pendingTheme.tabPadding.small,
-      right: pendingTheme.tabPadding.small,
+      left: tabPendingDesignTokens.tabPadding.small,
+      right: tabPendingDesignTokens.tabPadding.small,
     },
   },
 });
@@ -122,38 +100,28 @@ const useHorizontalIndicatorStyles = makeStyles({
  * Indicator styles for the root slot when vertical.
  */
 const useVerticalIndicatorStyles = makeStyles({
-  base: theme => ({
+  base: {
     ':before': {
       backgroundColor: 'none',
-      ...shorthands.borderRadius(theme.borderRadiusMedium),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
-      width: pendingTheme.indicatorThickness,
+      width: tabPendingDesignTokens.indicatorThickness,
       left: '0',
-      top: pendingTheme.tabPadding.medium,
-      bottom: pendingTheme.tabPadding.medium,
+      top: tabPendingDesignTokens.tabPadding.medium,
+      bottom: tabPendingDesignTokens.tabPadding.medium,
     },
     ':hover': {
       ':before': {
-        backgroundColor: theme.colorNeutralStroke1,
+        backgroundColor: tokens.colorNeutralStroke1,
       },
     },
-  }),
-  selected: theme => ({
-    ':before': {
-      backgroundColor: theme.colorBrandStroke1,
-    },
-    ':hover': {
-      ':before': {
-        backgroundColor: theme.colorBrandStroke1,
-      },
-    },
-  }),
+  },
   small: {
     ':before': {
-      top: pendingTheme.tabPadding.small,
-      bottom: pendingTheme.tabPadding.small,
+      top: tabPendingDesignTokens.tabPadding.small,
+      bottom: tabPendingDesignTokens.tabPadding.small,
     },
   },
 });
@@ -186,19 +154,20 @@ const useIconStyles = makeStyles({
  */
 const useContentStyles = makeStyles({
   base: {
-    paddingLeft: pendingTheme.contentPadding.medium,
-    paddingRight: pendingTheme.contentPadding.medium,
+    paddingLeft: tabPendingDesignTokens.contentPadding.medium,
+    paddingRight: tabPendingDesignTokens.contentPadding.medium,
   },
   small: {
-    paddingLeft: pendingTheme.contentPadding.small,
-    paddingRight: pendingTheme.contentPadding.small,
+    paddingLeft: tabPendingDesignTokens.contentPadding.small,
+    paddingRight: tabPendingDesignTokens.contentPadding.small,
   },
 });
 
 /**
  * Apply styling to the Tab slots based on the state
  */
-export const useTabStyles = (state: TabState): TabState => {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const useTabStyles_unstable = (state: TabState): TabState => {
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
   const horizontalIndicatorStyles = useHorizontalIndicatorStyles();
@@ -214,7 +183,6 @@ export const useTabStyles = (state: TabState): TabState => {
     state.appearance === 'subtle' && rootStyles.subtle,
     state.vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base,
     state.size === 'small' && (state.vertical ? verticalIndicatorStyles.small : horizontalIndicatorStyles.small),
-    state.selected && (state.vertical ? verticalIndicatorStyles.selected : horizontalIndicatorStyles.selected),
     state.root.className,
   );
 

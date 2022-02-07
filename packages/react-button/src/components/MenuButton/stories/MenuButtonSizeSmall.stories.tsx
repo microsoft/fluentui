@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { CalendarMonth24Regular } from '@fluentui/react-icons';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { MenuButton } from '../../../MenuButton';
 
 export const SizeSmall = () => {
@@ -22,7 +22,7 @@ export const SizeSmall = () => {
 
       <Menu>
         <MenuTrigger>
-          <MenuButton icon={<CalendarMonth24Regular />} size="small">
+          <MenuButton icon={<CalendarMonthRegular />} size="small">
             This is a Menu Button
           </MenuButton>
         </MenuTrigger>

@@ -1,7 +1,7 @@
 {
-  "type": "prerelease",
-  "comment": "react-components: Replacing use of functions in makeStyles with direct use of tokens.",
+  "type": "none",
+  "comment": "Replacing use of functions in makeStyles with direct use of tokens.",
   "packageName": "@fluentui/react-components",
   "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }

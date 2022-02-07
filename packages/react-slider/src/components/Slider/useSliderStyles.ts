@@ -1,5 +1,6 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 import type { SliderState } from './Slider.types';
 
 export const sliderClassName = 'fui-Slider';
@@ -51,50 +52,65 @@ export const useRootStyles = makeStyles({
     gridTemplateColumns: `var(${thumbSizeVar})`,
   },
 
-  enabled: theme => ({
-    [railColorVar]: theme.colorNeutralStrokeAccessible,
-    [progressColorVar]: theme.colorCompoundBrandBackground,
-    [thumbColorVar]: theme.colorCompoundBrandBackground,
+  enabled: {
+    [railColorVar]: tokens.colorNeutralStrokeAccessible,
+    [progressColorVar]: tokens.colorCompoundBrandBackground,
+    [thumbColorVar]: tokens.colorCompoundBrandBackground,
     ':hover': {
-      [thumbColorVar]: theme.colorBrandBackgroundHover,
-      [progressColorVar]: theme.colorBrandBackgroundHover,
+      [thumbColorVar]: tokens.colorBrandBackgroundHover,
+      [progressColorVar]: tokens.colorBrandBackgroundHover,
     },
     ':active': {
-      [thumbColorVar]: theme.colorBrandBackgroundPressed,
-      [progressColorVar]: theme.colorBrandBackgroundPressed,
+      [thumbColorVar]: tokens.colorBrandBackgroundPressed,
+      [progressColorVar]: tokens.colorBrandBackgroundPressed,
     },
+    '@media (forced-colors: active)': {
+      [railColorVar]: 'CanvasText',
+      [thumbColorVar]: 'Highlight',
+      [progressColorVar]: 'Highlight',
+      ':hover': {
+        [thumbColorVar]: 'Highlight',
+        [progressColorVar]: 'Highlight',
+      },
+    },
+  },
+
+  disabled: {
+    [thumbColorVar]: tokens.colorNeutralForegroundDisabled,
+    [railColorVar]: tokens.colorNeutralBackgroundDisabled,
+    [progressColorVar]: tokens.colorNeutralForegroundDisabled,
+    '@media (forced-colors: active)': {
+      [railColorVar]: 'GrayText',
+      [thumbColorVar]: 'GrayText',
+      [progressColorVar]: 'GrayText',
+    },
+  },
+
+  focusIndicatorHorizontal: createFocusOutlineStyle({
+    selector: 'focus-within',
+    style: { outlineOffset: { top: '6px', bottom: '6px', left: '10px', right: '10px' } },
   }),
 
-  disabled: theme => ({
-    [thumbColorVar]: theme.colorNeutralForegroundDisabled,
-    [railColorVar]: theme.colorNeutralBackgroundDisabled,
-    [progressColorVar]: theme.colorNeutralForegroundDisabled,
+  focusIndicatorVertical: createFocusOutlineStyle({
+    selector: 'focus-within',
+    style: { outlineOffset: { top: '10px', bottom: '10px', left: '6px', right: '6px' } },
   }),
-
-  focusIndicatorHorizontal: theme =>
-    createFocusOutlineStyle(theme, {
-      selector: 'focus-within',
-      style: { outlineOffset: { top: '6px', bottom: '6px', left: '10px', right: '10px' } },
-    }),
-  focusIndicatorVertical: theme =>
-    createFocusOutlineStyle(theme, {
-      selector: 'focus-within',
-      style: { outlineOffset: { top: '10px', bottom: '10px', left: '6px', right: '6px' } },
-    }),
 });
 
 /**
  * Styles for the rail slot
  */
 export const useRailStyles = makeStyles({
-  rail: theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusXLarge),
+  rail: {
+    ...shorthands.borderRadius(tokens.borderRadiusXLarge),
     pointerEvents: 'none',
     gridRowStart: 'slider',
     gridRowEnd: 'slider',
     gridColumnStart: 'slider',
     gridColumnEnd: 'slider',
     position: 'relative',
+    forcedColorAdjust: 'none',
+    // Background gradient represents the progress of the slider
     backgroundImage: `linear-gradient(
       var(${railDirectionVar}),
       var(${railColorVar}) 0%,
@@ -105,19 +121,20 @@ export const useRailStyles = makeStyles({
     )`,
     outlineWidth: '1px',
     outlineStyle: 'solid',
-    outlineColor: theme.colorTransparentStroke,
+    outlineColor: tokens.colorTransparentStroke,
     ':before': {
       content: "''",
       position: 'absolute',
+      // Repeating gradient represents the steps if provided
       backgroundImage: `repeating-linear-gradient(
         var(${railDirectionVar}),
         #0000 0%,
         #0000 calc(var(${railStepsPercentVar}) - 1px),
-        ${theme.colorNeutralBackground1} calc(var(${railStepsPercentVar}) - 1px),
-        ${theme.colorNeutralBackground1} var(${railStepsPercentVar})
+        ${tokens.colorNeutralBackground1} calc(var(${railStepsPercentVar}) - 1px),
+        ${tokens.colorNeutralBackground1} var(${railStepsPercentVar})
       )`,
     },
-  }),
+  },
 
   horizontal: {
     width: '100%',
@@ -144,14 +161,15 @@ export const useRailStyles = makeStyles({
  * Styles for the thumb slot
  */
 export const useThumbStyles = makeStyles({
-  thumb: theme => ({
+  thumb: {
     position: 'absolute',
     width: `var(${thumbSizeVar})`,
     height: `var(${thumbSizeVar})`,
     pointerEvents: 'none',
     outlineStyle: 'none',
-    ...shorthands.borderRadius(theme.borderRadiusCircular),
-    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${theme.colorNeutralBackground1} inset`,
+    forcedColorAdjust: 'none',
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${thumbColorVar})`,
     transform: 'translateX(-50%)',
     ':before': {
@@ -160,17 +178,17 @@ export const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      ...shorthands.borderRadius(theme.borderRadiusCircular),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
       boxSizing: 'border-box',
       content: "''",
-      ...shorthands.border(`calc(var(${thumbSizeVar}) * .05)`, 'solid', theme.colorNeutralStroke1),
+      ...shorthands.border(`calc(var(${thumbSizeVar}) * .05)`, 'solid', tokens.colorNeutralStroke1),
     },
-  }),
-  disabled: theme => ({
+  },
+  disabled: {
     ':before': {
-      ...shorthands.border(`calc(var(${thumbSizeVar}) * .05)`, 'solid', theme.colorNeutralForegroundDisabled),
+      ...shorthands.border(`calc(var(${thumbSizeVar}) * .05)`, 'solid', tokens.colorNeutralForegroundDisabled),
     },
-  }),
+  },
   horizontal: {
     left: `var(${thumbPositionVar})`,
   },
@@ -207,7 +225,7 @@ const useInputStyles = makeStyles({
 /**
  * Apply styling to the Slider slots based on the state
  */
-export const useSliderStyles = (state: SliderState): SliderState => {
+export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const rootStyles = useRootStyles();
   const railStyles = useRailStyles();
   const thumbStyles = useThumbStyles();

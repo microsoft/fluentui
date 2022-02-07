@@ -671,7 +671,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField6"
+                      id="TextField8"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -841,7 +841,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField10"
+                      id="TextField14"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -1011,7 +1011,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField14"
+                      id="TextField20"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -1181,7 +1181,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField18"
+                      id="TextField26"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -1900,7 +1900,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField6"
+                      id="TextField8"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -2070,7 +2070,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField10"
+                      id="TextField14"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -2240,7 +2240,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField14"
+                      id="TextField20"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -2410,7 +2410,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField18"
+                      id="TextField26"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -3106,7 +3106,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField6"
+                      id="TextField8"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -3276,7 +3276,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField10"
+                      id="TextField14"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -3446,7 +3446,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField14"
+                      id="TextField20"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -3616,7 +3616,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField18"
+                      id="TextField26"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}

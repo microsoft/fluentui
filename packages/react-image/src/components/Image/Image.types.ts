@@ -1,7 +1,7 @@
-import type { ComponentState, ComponentProps, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
 
 export type ImageSlots = {
-  root: IntrinsicShorthandProps<'img'>;
+  root: Slot<'img'>;
 };
 
 export type ImageCommons = {

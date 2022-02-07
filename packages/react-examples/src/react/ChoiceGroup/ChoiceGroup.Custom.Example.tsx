@@ -1,38 +1,24 @@
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
-import { Dropdown, IDropdownStyles, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
+import { CatIcon } from '@fluentui/react-icons-mdl2';
 
 export const ChoiceGroupCustomExample: React.FunctionComponent = () => {
   return <ChoiceGroup defaultSelectedKey="B" options={options} label="Pick one" />;
 };
 
-const optionRootClass = mergeStyles({ display: 'flex', alignItems: 'baseline' });
-const dropdownStyles: Partial<IDropdownStyles> = {
-  root: { marginBottom: 0, marginLeft: 5 },
-};
-const dropdownOptions: IDropdownOption[] = [
-  { key: 'A', text: '5 seconds' },
-  { key: 'B', text: '10 seconds' },
-  { key: 'C', text: '20 seconds' },
-];
+const optionRootClass = mergeStyles({ display: 'flex', alignItems: 'center', gap: '5px' });
 
 const options: IChoiceGroupOption[] = [
   {
     key: 'A',
-    text: 'Mark displayed items as read after',
-    ariaLabel: 'Mark displayed items as read after - Press tab for further action',
+    text: 'A label with an icon',
+    ariaLabel: 'A label with a cat icon',
     onRenderField: (props, render) => {
       return (
         <div className={optionRootClass}>
           {render!(props)}
-          <Dropdown
-            defaultSelectedKey="A"
-            styles={dropdownStyles}
-            options={dropdownOptions}
-            disabled={props ? !props.checked : false}
-            ariaLabel="Select a time span"
-          />
+          <CatIcon />
         </div>
       );
     },

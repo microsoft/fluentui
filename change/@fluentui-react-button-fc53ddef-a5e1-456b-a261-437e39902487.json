@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

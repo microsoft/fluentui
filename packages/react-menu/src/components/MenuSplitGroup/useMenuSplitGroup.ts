@@ -2,24 +2,22 @@ import * as React from 'react';
 import { getNativeElementProps, getRTLSafeKey, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import type { MenuSplitGroupProps, MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup.types';
+import type { MenuSplitGroupProps, MenuSplitGroupState } from './MenuSplitGroup.types';
 import { ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
-
-/**
- * Array of all shorthand properties listed in MenuSplitGroupSlots
- */
-export const menuSplitGroupShorthandProps: (keyof MenuSplitGroupSlots)[] = ['root'];
 
 /**
  * Create the state required to render MenuSplitGroup.
  *
- * The returned state can be modified with hooks such as useMenuSplitGroupStyles,
- * before being passed to renderMenuSplitGroup.
+ * The returned state can be modified with hooks such as useMenuSplitGroupStyles_unstable,
+ * before being passed to renderMenuSplitGroup_unstable.
  *
  * @param props - props from this instance of MenuSplitGroup
  * @param ref - reference to root HTMLElement of MenuSplitGroup
  */
-export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTMLElement>): MenuSplitGroupState => {
+export const useMenuSplitGroup_unstable = (
+  props: MenuSplitGroupProps,
+  ref: React.Ref<HTMLElement>,
+): MenuSplitGroupState => {
   const innerRef = React.useRef<HTMLElement>();
   const { dir, targetDocument } = useFluent();
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Wed, 15 Dec 2021 07:31:28 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Jan 2022 07:27:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.10.0)
+
+Fri, 07 Jan 2022 07:27:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.9.2..@fluentui/react-conformance_v0.10.0)
+
+### Minor changes
+
+- add option 'tsconfigDir'; change default tsconfig dir to component path ([PR #21113](https://github.com/microsoft/fluentui/pull/21113) by yuanboxue@microsoft.com)
 
 ## [0.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.9.2)
 

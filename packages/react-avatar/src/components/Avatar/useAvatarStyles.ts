@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { AvatarState } from './Avatar.types';
 
@@ -61,13 +60,13 @@ const useStyles = makeStyles({
     verticalAlign: 'middle',
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     fontFamily: tokens.fontFamilyBase,
-    fontWeight: tokens.fontWeightSemibold as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightSemibold,
     boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke} inset`,
   },
 
   textCaption2: {
     fontSize: tokens.fontSizeBase100,
-    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightRegular,
   },
   textCaption1Strong: { fontSize: tokens.fontSizeBase200 },
   textBody1Strong: { fontSize: tokens.fontSizeBase300 },
@@ -138,12 +137,6 @@ const useStyles = makeStyles({
   shadow8: { ':before': { boxShadow: tokens.shadow8 } },
   shadow16: { ':before': { boxShadow: tokens.shadow16 } },
   shadow28: { ':before': { boxShadow: tokens.shadow28 } },
-
-  // TODO: use proper tokens instead of "rgba(0,120,212,0.3)"
-  glow4: { ':before': { boxShadow: `${tokens.shadow4}, 0 0 4px 2px rgba(0,120,212,0.3)` } },
-  glow8: { ':before': { boxShadow: `${tokens.shadow8}, 0 0 8px 2px rgba(0,120,212,0.3)` } },
-  glow16: { ':before': { boxShadow: `${tokens.shadow16}, 0 0 8px 2px rgba(0,120,212,0.3)` } },
-  glow28: { ':before': { boxShadow: `${tokens.shadow28}, 0 0 28px 4px rgba(0,120,212,0.3)` } },
 
   inactive: {
     opacity: '0.8',
@@ -356,7 +349,7 @@ const useColorStyles = makeStyles({
   },
 });
 
-export const useAvatarStyles = (state: AvatarState): AvatarState => {
+export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const { size, shape, active, activeAppearance, color } = state;
 
   const styles = useStyles();
@@ -394,7 +387,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
   if (active === 'active' || active === 'inactive') {
     rootClasses.push(styles.activeOrInactive);
 
-    if (activeAppearance.includes('ring')) {
+    if (activeAppearance === 'ring' || activeAppearance === 'ring-shadow') {
       rootClasses.push(styles.ring);
 
       if (size <= 48) {
@@ -406,7 +399,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
       }
     }
 
-    if (activeAppearance.includes('shadow')) {
+    if (activeAppearance === 'shadow' || activeAppearance === 'ring-shadow') {
       if (size <= 28) {
         rootClasses.push(styles.shadow4);
       } else if (size <= 48) {
@@ -415,18 +408,6 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
         rootClasses.push(styles.shadow16);
       } else {
         rootClasses.push(styles.shadow28);
-      }
-    }
-
-    if (activeAppearance.includes('glow')) {
-      if (size <= 28) {
-        rootClasses.push(styles.glow4);
-      } else if (size <= 48) {
-        rootClasses.push(styles.glow8);
-      } else if (size <= 64) {
-        rootClasses.push(styles.glow16);
-      } else {
-        rootClasses.push(styles.glow28);
       }
     }
 
@@ -446,8 +427,8 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     state.image.className = mergeClasses(styles.image, state.image.className);
   }
 
-  if (state.label) {
-    state.label.className = mergeClasses(styles.iconLabel, state.label.className);
+  if (state.initials) {
+    state.initials.className = mergeClasses(styles.iconLabel, state.initials.className);
   }
 
   if (state.icon) {

@@ -4,14 +4,13 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InputHTMLAttributes } from 'react';
-import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { LabelProps } from '@fluentui/react-label';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Radio: ForwardRefComponent<RadioProps>;
@@ -32,20 +31,17 @@ export type RadioItemCommons = InputHTMLAttributes<HTMLInputElement> & {
 };
 
 // @public
-export type RadioItemProps = ComponentProps<RadioItemSlots> & RadioItemCommons & {
+export type RadioItemProps = ComponentProps<Partial<RadioItemSlots>> & RadioItemCommons & {
     id?: string;
 };
 
-// @public
-export const radioItemShorthandProps: (keyof RadioItemSlots)[];
-
 // @public (undocumented)
 export type RadioItemSlots = {
-    root: IntrinsicShorthandProps<'span'>;
-    indicator: IntrinsicShorthandProps<'div'>;
-    input: IntrinsicShorthandProps<'input'>;
-    label: ObjectShorthandProps<LabelProps>;
-    subtext?: IntrinsicShorthandProps<'span'>;
+    root: Slot<'span'>;
+    indicator: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>>;
+    label: NonNullable<Slot<typeof Label>>;
+    subtext?: Slot<'span'>;
 };
 
 // @public
@@ -54,34 +50,31 @@ export type RadioItemState = ComponentState<RadioItemSlots> & RadioItemCommons;
 // @public
 export type RadioProps = ComponentProps<RadioSlots>;
 
-// @public
-export const radioShorthandProps: Array<keyof RadioSlots>;
-
 // @public (undocumented)
 export type RadioSlots = {
-    root: IntrinsicShorthandProps<'span'>;
+    root: Slot<'span'>;
 };
 
 // @public
 export type RadioState = ComponentState<RadioSlots>;
 
 // @public
-export const renderRadio: (state: RadioState) => JSX.Element;
+export const renderRadio_unstable: (state: RadioState) => JSX.Element;
 
 // @public
-export const renderRadioItem: (state: RadioItemState) => JSX.Element;
+export const renderRadioItem_unstable: (state: RadioItemState) => JSX.Element;
 
 // @public
-export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLElement>) => RadioState;
+export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLElement>) => RadioState;
 
 // @public
-export const useRadioItem: (props: RadioItemProps, ref: React_2.Ref<HTMLElement>) => RadioItemState;
+export const useRadioItem_unstable: (props: RadioItemProps, ref: React_2.Ref<HTMLElement>) => RadioItemState;
 
 // @public
-export const useRadioItemStyles: (state: RadioItemState) => RadioItemState;
+export const useRadioItemStyles_unstable: (state: RadioItemState) => RadioItemState;
 
 // @public
-export const useRadioStyles: (state: RadioState) => RadioState;
+export const useRadioStyles_unstable: (state: RadioState) => RadioState;
 
 // (No @packageDocumentation comment for this package)
 

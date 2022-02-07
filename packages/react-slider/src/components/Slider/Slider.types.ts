@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentState, ComponentProps, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
 
 export type SliderSlots = {
   /**
@@ -7,25 +7,34 @@ export type SliderSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Slider>`.
    * All other native props will be applied to the primary slot, `input`.
    */
-  root: IntrinsicShorthandProps<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * The Slider's base. It is used to visibly display the min and max selectable values.
    */
-  rail: IntrinsicShorthandProps<'div'>;
+  rail: NonNullable<Slot<'div'>>;
 
   /**
    * The draggable icon used to select a given value from the Slider.
    * This is the element containing `role = 'slider'`.
    */
-  thumb: IntrinsicShorthandProps<'div'>;
+  thumb: NonNullable<Slot<'div'>>;
 
   /**
    * The hidden input for the Slider.
    * This is the PRIMARY slot: all native properties specified directly on `<Slider>` will be applied to this slot,
    * except `className` and `style`, which remain on the root slot.
+   *
    */
-  input: IntrinsicShorthandProps<'input'>;
+  input: NonNullable<Slot<'input'>> & {
+    /**
+     * Orient is a non standard attribute that allows for vertical orientation in Firefox. It is set internally
+     * when `vertical` is set to true.
+     * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#non_standard_attributes
+     * Webkit/Chromium support for vertical inputs is provided via -webkit-appearance css property
+     */
+    orient?: 'horizontal' | 'vertical';
+  };
 };
 
 export type SliderCommons = {
@@ -100,7 +109,10 @@ export type SliderOnChangeData = {
   value: number;
 };
 
-export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> &
+export type SliderProps = Omit<
+  ComponentProps<Partial<SliderSlots>, 'input'>,
+  'defaultValue' | 'onChange' | 'size' | 'value'
+> &
   SliderCommons;
 
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;

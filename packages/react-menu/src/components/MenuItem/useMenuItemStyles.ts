@@ -1,73 +1,78 @@
-import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { useCheckmarkStyles } from '../../selectable/index';
+import { tokens } from '@fluentui/react-theme';
+import { useCheckmarkStyles_unstable } from '../../selectable/index';
 import { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemState } from './MenuItem.types';
 
 export const menuItemClassName = 'fui-MenuItem';
 
 const useStyles = makeStyles({
-  focusIndicator: theme => createFocusOutlineStyle(theme),
-  root: theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusMedium),
+  focusIndicator: createFocusOutlineStyle(),
+  root: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
     position: 'relative',
-    color: theme.colorNeutralForeground1,
-    backgroundColor: theme.colorNeutralBackground1,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackground1,
     paddingRight: '10px',
     paddingLeft: '10px',
     height: '32px',
     display: 'flex',
     alignItems: 'center',
-    fontSize: theme.fontSizeBase300,
+    fontSize: tokens.fontSizeBase300,
     cursor: 'pointer',
     ...shorthands.gap('4px'),
 
     ':hover': {
-      backgroundColor: theme.colorNeutralBackground1Hover,
-      color: theme.colorNeutralForeground2Hover,
+      backgroundColor: tokens.colorNeutralBackground1Hover,
+      color: tokens.colorNeutralForeground2Hover,
     },
 
     userSelect: 'none',
-  }),
+  },
   content: {
     paddingLeft: '2px',
     paddingRight: '2px',
     backgroundColor: 'transparent',
     flexGrow: 1,
   },
-  secondaryContent: theme => ({
+  secondaryContent: {
     paddingLeft: '2px',
     paddingRight: '2px',
-    color: theme.colorNeutralForeground3,
+    color: tokens.colorNeutralForeground3,
     ':hover': {
-      color: theme.colorNeutralForeground3Hover,
+      color: tokens.colorNeutralForeground3Hover,
     },
     ':focus': {
-      color: theme.colorNeutralForeground3Hover,
+      color: tokens.colorNeutralForeground3Hover,
     },
-  }),
+  },
   icon: {
     width: '20px',
     height: '20px',
+    fontSize: '20px',
+    lineHeight: 0,
   },
   submenuIndicator: {
     width: '20px',
     height: '20px',
+    fontSize: '20px',
+    lineHeight: 0,
   },
-  disabled: theme => ({
-    color: theme.colorNeutralForegroundDisabled,
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
     ':hover': {
-      color: theme.colorNeutralForegroundDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
     },
 
     ':focus': {
-      color: theme.colorNeutralForegroundDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
     },
-  }),
+  },
 });
 
 /** Applies style classnames to slots */
-export const useMenuItemStyles = (state: MenuItemState) => {
+export const useMenuItemStyles_unstable = (state: MenuItemState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     menuItemClassName,
@@ -95,5 +100,5 @@ export const useMenuItemStyles = (state: MenuItemState) => {
   if (state.submenuIndicator) {
     state.submenuIndicator.className = mergeClasses(styles.submenuIndicator, state.submenuIndicator.className);
   }
-  useCheckmarkStyles(state as MenuItemCheckboxState);
+  useCheckmarkStyles_unstable(state as MenuItemCheckboxState);
 };

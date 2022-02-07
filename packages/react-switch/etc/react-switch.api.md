@@ -7,11 +7,11 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
-export const renderSwitch: (state: SwitchState) => JSX.Element;
+export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
 
 // @public
 export const Switch: ForwardRefComponent<SwitchProps>;
@@ -30,20 +30,17 @@ export interface SwitchCommons {
 }
 
 // @public (undocumented)
-export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange'>, SwitchCommons {
+export interface SwitchProps extends Omit<ComponentProps<Partial<SwitchSlots>>, 'onChange'>, SwitchCommons {
 }
-
-// @public
-export const switchShorthandProps: (keyof SwitchSlots)[];
 
 // @public (undocumented)
 export type SwitchSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    track: IntrinsicShorthandProps<'div'>;
-    thumbWrapper: IntrinsicShorthandProps<'div'>;
-    thumb: IntrinsicShorthandProps<'div'>;
-    input: IntrinsicShorthandProps<'input'>;
-    activeRail: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
+    track: NonNullable<Slot<'div'>>;
+    thumbWrapper: NonNullable<Slot<'div'>>;
+    thumb: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>>;
+    activeRail: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)
@@ -51,10 +48,10 @@ export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommons 
 }
 
 // @public
-export const useSwitch: (props: SwitchProps, ref: React_2.Ref<HTMLElement>) => SwitchState;
+export const useSwitch_unstable: (props: SwitchProps, ref: React_2.Ref<HTMLElement>) => SwitchState;
 
 // @public
-export const useSwitchStyles: (state: SwitchState) => SwitchState;
+export const useSwitchStyles_unstable: (state: SwitchState) => SwitchState;
 
 // (No @packageDocumentation comment for this package)
 

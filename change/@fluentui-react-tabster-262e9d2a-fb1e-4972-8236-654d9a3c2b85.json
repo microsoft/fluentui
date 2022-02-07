@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add workaround for cypress bug",
+  "packageName": "@fluentui/react-tabster",
+  "email": "email not defined",
+  "dependentChangeType": "none"
+}

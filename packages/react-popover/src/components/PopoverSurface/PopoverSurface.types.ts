@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { PopoverContextValue } from '../../popoverContext';
 
 /**
@@ -10,7 +10,7 @@ export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
  * Names of the slots in PopoverSurfaceProps
  */
 export type PopoverSurfaceSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  root: Slot<'div'>;
 };
 
 /**

@@ -4,14 +4,12 @@
 
 ```ts
 
-import type { MakeStylesStyle } from '@fluentui/react-make-styles';
-import type { MakeStylesStyleRule } from '@fluentui/react-make-styles';
+import type { GriffelStyle } from '@griffel/react';
 import type { RefObject } from 'react';
-import type { Theme } from '@fluentui/react-theme';
 import { Types } from 'tabster';
 
 // @public
-export const createCustomFocusIndicatorStyle: (rule: MakeStylesStyleRule<Theme>, options?: CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyleRule<Theme>;
+export const createCustomFocusIndicatorStyle: (style: GriffelStyle, options?: CreateFocusIndicatorStyleRuleOptions) => GriffelStyle;
 
 // @public (undocumented)
 export interface CreateFocusIndicatorStyleRuleOptions {
@@ -20,9 +18,9 @@ export interface CreateFocusIndicatorStyleRuleOptions {
 }
 
 // @public
-export const createFocusOutlineStyle: (theme: Theme, options?: {
+export const createFocusOutlineStyle: (options?: {
     style: Partial<FocusOutlineStyleOptions>;
-} & CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyle;
+} & CreateFocusIndicatorStyleRuleOptions) => GriffelStyle;
 
 // @public (undocumented)
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;

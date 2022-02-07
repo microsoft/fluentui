@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { DialogState } from './Dialog.types';
 
 export const dialogClassName = 'fui-Dialog';
@@ -7,9 +7,9 @@ export const dialogClassName = 'fui-Dialog';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     // TODO Add default styles for the root element
-  }),
+  },
 
   // TODO add additional classes for different states and/or slots
 });
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Dialog slots based on the state
  */
-export const useDialogStyles = (state: DialogState): DialogState => {
+export const useDialogStyles_unstable = (state: DialogState): DialogState => {
   const styles = useStyles();
   state.root.className = mergeClasses(dialogClassName, styles.root, state.root.className);
 

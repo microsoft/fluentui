@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles } from '@griffel/react';
 import { Text } from '../Text';
 import type { TextProps } from '../Text';
 

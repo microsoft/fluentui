@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { InputState } from './Input.types';
 
@@ -97,6 +97,11 @@ const useRootStyles = makeStyles({
       // This is if the user clicks the field again while it's already focused
       borderBottomColor: tokens.colorCompoundBrandStrokePressed,
     },
+    ':focus-within': {
+      outlineWidth: '2px',
+      outlineStyle: 'solid',
+      outlineColor: 'transparent',
+    },
   },
   small: {
     minHeight: fieldHeights.small,
@@ -167,8 +172,12 @@ const useRootStyles = makeStyles({
   },
   disabled: {
     cursor: 'not-allowed',
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
     ...shorthands.borderRadius(tokens.borderRadiusMedium), // because underline doesn't usually have a radius
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('GrayText'),
+    },
   },
 });
 
@@ -176,6 +185,7 @@ const useInputElementStyles = makeStyles({
   base: {
     boxSizing: 'border-box',
     flexGrow: 1,
+    minWidth: 0, // required to make the input shrink to fit the wrapper
     ...shorthands.borderStyle('none'), // input itself never has a border (this is handled by inputWrapper)
     ...shorthands.padding('0', horizontalSpacing.xxs),
     color: tokens.colorNeutralForeground1,
@@ -226,7 +236,7 @@ const useContentStyles = makeStyles({
 /**
  * Apply styling to the Input slots based on the state
  */
-export const useInputStyles = (state: InputState): InputState => {
+export const useInputStyles_unstable = (state: InputState): InputState => {
   const { size, appearance } = state;
   const disabled = state.input.disabled;
   const filled = appearance.startsWith('filled');

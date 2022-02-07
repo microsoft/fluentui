@@ -22,7 +22,6 @@ export const Default = (props: InputProps) => {
 const argTypes: ArgTypes = {
   // Add these native props to the props table and controls pane
   placeholder: {
-    defaultValue: 'placeholder',
     description:
       'Placeholder text for the input. If using this instead of a label (which is ' +
       'not recommended), be sure to provide an `aria-label` for screen reader users.',

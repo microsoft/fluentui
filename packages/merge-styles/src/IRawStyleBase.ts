@@ -1268,9 +1268,41 @@ export interface IRawStyleBase extends IRawFontStyle {
   margin?: ICSSRule | ICSSPixelUnitRule;
 
   /**
+   * The margin-block-end CSS property defines the logical block end margin of an element, which maps to a physical
+   * margin depending on the element's writing mode, directionality, and text orientation. It corresponds to the
+   * margin-top, margin-right, margin-bottom or margin-left property depending on the values defined for writing-mode,
+   * direction, and text-orientation.
+   */
+  marginBlockEnd?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The margin-block-start CSS property defines the logical block start margin of an element, which maps to a physical
+   * margin depending on the element's writing mode, directionality, and text orientation. It corresponds to the
+   * margin-top, margin-right, margin-bottom or margin-left property depending on the values defined for writing-mode,
+   * direction, and text-orientation.
+   */
+  marginBlockStart?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
    * margin-bottom sets the bottom margin of an element.
    */
   marginBottom?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The margin-inline-end CSS property defines the logical inline end margin of an element, which maps to a physical
+   * margin depending on the element's writing mode, directionality, and text orientation. It corresponds to the
+   * margin-top, margin-right, margin-bottom or margin-left property depending on the values defined for writing-mode,
+   * direction, and text-orientation.
+   */
+  marginInlineEnd?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The margin-inline-start CSS property defines the logical inline start margin of an element, which maps to a
+   * physical margin depending on the element's writing mode, directionality, and text orientation. It corresponds to
+   * the margin-top, margin-right, margin-bottom, or margin-left property depending on the values defined for
+   * writing-mode, direction, and text-orientation.
+   */
+  marginInlineStart?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * margin-left sets the left margin of an element.
