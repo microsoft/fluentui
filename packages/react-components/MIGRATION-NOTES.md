@@ -60,7 +60,21 @@ For more details, please check [microsoft/fluentui#20573](https://github.com/mic
 
 ### Hooks are export with "\_unstable" suffix
 
-**TBD**
+All component hooks and render functions were renamed to add the suffix `_unstable` to indicate that their API has not been finalized and may change in the future.
+
+```diff
+-import { renderAccordionHeader } from `@fluentui/react-components`;
++import { renderAccordionHeader_unstable } from `@fluentui/react-components`;
+
+-useAccordionHeaderStyles();
+-renderAccordionHeader();
++useAccordionHeaderStyles_unstable();
++renderAccordionHeader_unstable();
+```
+
+> **Note**: No changes in functionality.
+
+For more details, please check [microsoft/fluentui#21365](https://github.com/microsoft/fluentui/pull/21365).
 
 ### Removed functionality & exports
 
@@ -83,3 +97,7 @@ function App() {
 > **Note**: `tokens.VALUE` returns name of a CSS variable, not an actual value.
 
 For more details, please check [microsoft/fluentui#21257](https://github.com/microsoft/fluentui/pull/21257).
+
+### Component changes
+
+**TBD**
