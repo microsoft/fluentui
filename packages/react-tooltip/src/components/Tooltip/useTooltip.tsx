@@ -189,38 +189,42 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
 
   const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
 
-  const triggerAriaProps: Pick<TooltipTriggerProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
+  // The props to add to the trigger element (child)
+  const triggerProps: TooltipTriggerProps = {
+    onPointerEnter: useMergedEventCallbacks(child?.props?.onPointerEnter, onEnterTrigger),
+    onPointerLeave: useMergedEventCallbacks(child?.props?.onPointerLeave, onLeaveTrigger),
+    onFocus: useMergedEventCallbacks(child?.props?.onFocus, onEnterTrigger),
+    onBlur: useMergedEventCallbacks(child?.props?.onBlur, onLeaveTrigger),
+  };
+
+  // If the target prop is not provided, attach targetRef to the trigger element's ref prop
+  const childTargetRef = useMergedRefs(child?.ref, targetRef);
+  if (popperOptions.target === undefined) {
+    triggerProps.ref = childTargetRef;
+  }
 
   if (relationship === 'label') {
-    // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
-    if (typeof state.content.children === 'string') {
-      triggerAriaProps['aria-label'] = state.content.children;
-    } else if (!isServerSideRender) {
-      triggerAriaProps['aria-labelledby'] = state.content.id;
-      // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
-      state.shouldRenderTooltip = true;
+    const hasLabel = child?.props && ('aria-label' in child.props || 'aria-labelledby' in child.props);
+    if (!hasLabel) {
+      // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
+      if (typeof state.content.children === 'string') {
+        triggerProps['aria-label'] = state.content.children;
+      } else if (!isServerSideRender) {
+        triggerProps['aria-labelledby'] = state.content.id;
+        // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
+        state.shouldRenderTooltip = true;
+      }
     }
   } else if (relationship === 'description') {
-    if (!isServerSideRender) {
-      triggerAriaProps['aria-describedby'] = state.content.id;
+    const hasDescription = child?.props && ('aria-description' in child.props || 'aria-describedby' in child.props);
+    if (!hasDescription && !isServerSideRender) {
+      triggerProps['aria-describedby'] = state.content.id;
       // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
       state.shouldRenderTooltip = true;
     }
   }
 
-  const childTargetRef = useMergedRefs(child?.ref, targetRef);
-
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
-  state.children = applyTriggerPropsToChildren<TooltipTriggerProps>(children, {
-    ...triggerAriaProps,
-    ...child?.props,
-    // If the target prop is not provided, attach targetRef to the trigger element's ref prop
-    ref: popperOptions.target === undefined ? childTargetRef : child?.ref,
-    onPointerEnter: useMergedEventCallbacks(child?.props?.onPointerEnter, onEnterTrigger),
-    onPointerLeave: useMergedEventCallbacks(child?.props?.onPointerLeave, onLeaveTrigger),
-    onFocus: useMergedEventCallbacks(child?.props?.onFocus, onEnterTrigger),
-    onBlur: useMergedEventCallbacks(child?.props?.onBlur, onLeaveTrigger),
-  });
-
+  state.children = applyTriggerPropsToChildren(children, triggerProps);
   return state;
 };
