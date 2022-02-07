@@ -7,8 +7,8 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Input: ForwardRefComponent<InputProps>;
@@ -22,7 +22,7 @@ export type InputOnChangeData = {
 };
 
 // @public (undocumented)
-export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
+export type InputProps = Omit<ComponentProps<Partial<InputSlots>, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
     children?: never;
     size?: 'small' | 'medium' | 'large';
     inline?: boolean;
@@ -35,10 +35,10 @@ export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 
 
 // @public (undocumented)
 export type InputSlots = {
-    root: IntrinsicSlotProps<'span'>;
-    input: IntrinsicSlotProps<'input'>;
-    contentBefore?: IntrinsicSlotProps<'span'>;
-    contentAfter?: IntrinsicSlotProps<'span'>;
+    root: NonNullable<Slot<'span'>>;
+    input: NonNullable<Slot<'input'>>;
+    contentBefore?: Slot<'span'>;
+    contentAfter?: Slot<'span'>;
 };
 
 // @public

@@ -29,6 +29,7 @@ export {
   createHighContrastTheme,
   createLightTheme,
   createTeamsDarkTheme,
+  themeToTokensObject,
   teamsDarkTheme,
   teamsHighContrastTheme,
   teamsLightTheme,

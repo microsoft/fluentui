@@ -105,4 +105,40 @@ describe('Tooltip', () => {
     expect(target.hasAttribute('aria-description')).toBe(false);
     expect(target.hasAttribute('aria-describedby')).toBe(false);
   });
+
+  it("doesn't override trigger's aria-label", () => {
+    const result = render(
+      <Tooltip content="Label tooltip" relationship="label">
+        <button aria-label="test-label" />
+      </Tooltip>,
+    );
+
+    const target = result.getByRole('button');
+    expect(target.getAttribute('aria-label')).toBe('test-label');
+    expect(target.getAttribute('aria-labelledby')).toBe(null);
+  });
+
+  it("doesn't override trigger's aria-labelledby", () => {
+    const result = render(
+      <Tooltip content="Label tooltip" relationship="label">
+        <button aria-labelledby="test-labelledby" />
+      </Tooltip>,
+    );
+
+    const target = result.getByRole('button');
+    expect(target.getAttribute('aria-label')).toBe(null);
+    expect(target.getAttribute('aria-labelledby')).toBe('test-labelledby');
+  });
+
+  it("doesn't override trigger's aria-describedby", () => {
+    const result = render(
+      <Tooltip content="Description tooltip" relationship="description">
+        <button aria-describedby="test-describedby" />
+      </Tooltip>,
+    );
+
+    const target = result.getByRole('button');
+    expect(target.getAttribute('aria-description')).toBe(null);
+    expect(target.getAttribute('aria-describedby')).toBe('test-describedby');
+  });
 });
