@@ -101,12 +101,12 @@ export type PopoverTriggerChildProps = {
 export type PopoverTriggerProps = {
     children: (React_2.ReactElement & {
         ref?: React_2.Ref<unknown>;
-    }) | ((props: PopoverTriggerChildProps) => React_2.ReactNode);
+    }) | ((props: PopoverTriggerChildProps) => React_2.ReactElement | null);
 };
 
 // @public
 export type PopoverTriggerState = {
-    children: React_2.ReactNode;
+    children: React_2.ReactElement | null;
 };
 
 // @public

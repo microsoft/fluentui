@@ -106,7 +106,7 @@ export type TooltipProps = Omit<ComponentProps<TooltipSlots>, 'content'> &
   Pick<TooltipCommons, 'relationship'> & {
     children?:
       | (React.ReactElement & { ref?: React.Ref<unknown> })
-      | ((props: TooltipTriggerProps) => React.ReactNode)
+      | ((props: TooltipTriggerProps) => React.ReactElement | null)
       | null;
   };
 
@@ -115,7 +115,7 @@ export type TooltipProps = Omit<ComponentProps<TooltipSlots>, 'content'> &
  */
 export type TooltipState = ComponentState<TooltipSlots> &
   TooltipCommons & {
-    children?: React.ReactNode;
+    children?: React.ReactElement | null;
 
     /**
      * Whether the tooltip should be rendered to the DOM.

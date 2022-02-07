@@ -6,14 +6,14 @@ import * as React from 'react';
 export type PopoverTriggerProps = {
   children:
     | (React.ReactElement & { ref?: React.Ref<unknown> })
-    | ((props: PopoverTriggerChildProps) => React.ReactNode);
+    | ((props: PopoverTriggerChildProps) => React.ReactElement | null);
 };
 
 /**
  * PopoverTrigger State
  */
 export type PopoverTriggerState = {
-  children: React.ReactNode;
+  children: React.ReactElement | null;
 };
 
 export type PopoverTriggerChildProps = {
