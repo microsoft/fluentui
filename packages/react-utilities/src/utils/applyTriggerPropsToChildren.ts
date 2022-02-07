@@ -5,16 +5,19 @@ import { isFluentTrigger } from './isFluentTrigger';
  * Apply the trigger props to the children, either by calling the render function, or cloning with the new props.
  */
 export const applyTriggerPropsToChildren = <TTriggerProps>(
-  children: React.ReactElement | ((props: TTriggerProps) => React.ReactNode) | null | undefined,
+  children: React.ReactElement | ((props: TTriggerProps) => React.ReactElement | null) | null | undefined,
   triggerProps: TTriggerProps,
-): React.ReactNode => {
+): React.ReactElement | null => {
   if (typeof children === 'function') {
     return children(triggerProps);
   } else if (children) {
     return cloneTriggerTree(children, triggerProps);
   }
 
-  return children;
+  // Components in React should return either JSX elements or "null", otherwise React will throw:
+  //   Nothing was returned from render.
+  //   This usually means a return statement is missing. Or, to render nothing, return null.
+  return children || null;
 };
 
 /**

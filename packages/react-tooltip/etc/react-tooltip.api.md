@@ -41,7 +41,7 @@ export type TooltipCommons = {
 export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'relationship'>> & Pick<TooltipCommons, 'relationship'> & {
     children?: (React_2.ReactElement & {
         ref?: React_2.Ref<unknown>;
-    }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
+    }) | ((props: TooltipTriggerProps) => React_2.ReactElement | null) | null;
 };
 
 // @public
@@ -51,7 +51,7 @@ export type TooltipSlots = {
 
 // @public
 export type TooltipState = ComponentState<TooltipSlots> & TooltipCommons & {
-    children?: React_2.ReactNode;
+    children?: React_2.ReactElement | null;
     shouldRenderTooltip?: boolean;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     arrowClassName?: string;

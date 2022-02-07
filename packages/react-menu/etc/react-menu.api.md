@@ -308,12 +308,12 @@ export const MenuTriggerContextProvider: React_2.Provider<boolean>;
 export type MenuTriggerProps = {
     children: (React_2.ReactElement & {
         ref?: React_2.Ref<unknown>;
-    }) | ((props: MenuTriggerChildProps) => React_2.ReactNode);
+    }) | ((props: MenuTriggerChildProps) => React_2.ReactElement | null);
 };
 
 // @public (undocumented)
 export type MenuTriggerState = {
-    children: React_2.ReactNode;
+    children: React_2.ReactElement | null;
 };
 
 // @public
