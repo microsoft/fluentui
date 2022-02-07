@@ -193,6 +193,7 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     verticalAlign: 'center',
     textAlign: 'center',
+    userSelect: 'none',
   },
 
   icon16: { fontSize: '16px' },
