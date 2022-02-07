@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { MenuListContextValue } from '../../contexts/menuListContext';
 import type { SelectableHandler } from '../../selectable/index';
 
@@ -43,7 +43,7 @@ export type MenuListCommons = {
 };
 
 export type MenuListSlots = {
-  root: IntrinsicSlotProps<'div'>;
+  root: Slot<'div'>;
 };
 
 export type MenuListProps = ComponentProps<MenuListSlots> & Partial<MenuListCommons>;

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
  * Slot properties for Tooltip
  */
 export type TooltipSlots = {
-  content: IntrinsicSlotProps<'div'>;
+  content: NonNullable<Slot<'div'>>;
 };
 
 /**
@@ -100,8 +100,7 @@ export type OnVisibleChangeData = {
 /**
  * Properties for Tooltip
  */
-export type TooltipProps = Omit<ComponentProps<TooltipSlots>, 'content'> &
-  Required<Pick<ComponentProps<TooltipSlots>, 'content'>> &
+export type TooltipProps = ComponentProps<TooltipSlots> &
   Partial<Omit<TooltipCommons, 'relationship'>> &
   Pick<TooltipCommons, 'relationship'> & {
     children?:
