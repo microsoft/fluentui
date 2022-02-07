@@ -17,7 +17,7 @@ export const renderAccordionHeader_unstable = (
       <slots.root {...slotProps.root}>
         <slots.button {...slotProps.button}>
           {state.expandIconPosition === 'start' && <slots.expandIcon {...slotProps.expandIcon} />}
-          <slots.icon {...slotProps.icon} />
+          {slots.icon && <slots.icon {...slotProps.icon} />}
           {slotProps.root.children}
           {state.expandIconPosition === 'end' && <slots.expandIcon {...slotProps.expandIcon} />}
         </slots.button>

@@ -7,10 +7,10 @@ export const renderAvatar_unstable = (state: AvatarState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      <slots.initials {...slotProps.initials} />
-      <slots.icon {...slotProps.icon} />
-      <slots.image {...slotProps.image} />
-      <slots.badge {...slotProps.badge} />
+      {slots.initials && <slots.initials {...slotProps.initials} />}
+      {slots.icon && <slots.icon {...slotProps.icon} />}
+      {slots.image && <slots.image {...slotProps.image} />}
+      {slots.badge && <slots.badge {...slotProps.badge} />}
     </slots.root>
   );
 };
