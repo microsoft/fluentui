@@ -126,6 +126,7 @@ describe('Tooltip', () => {
     );
 
     const target = result.getByRole('button');
+    expect(target.getAttribute('aria-label')).toBe(null);
     expect(target.getAttribute('aria-labelledby')).toBe('test-labelledby');
   });
 
