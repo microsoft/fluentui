@@ -4,7 +4,6 @@ import { Avatar } from './Avatar';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { render } from '@testing-library/react';
-import { getInitials } from '../../utils/getInitials';
 
 describe('Avatar', () => {
   let wrapper: ReactWrapper | undefined;
@@ -116,40 +115,5 @@ describe('Avatar', () => {
 
     const root = result.getByTestId('root');
     expect(root.getAttribute('name')).toBeFalsy();
-  });
-
-  it('sets the alt text on the image and aria-hidden on initials, when there is an image', () => {
-    const name = 'First Last';
-    const result = render(<Avatar name={name} image={{ src: 'avatar.png' }} />);
-
-    const image = result.getByRole('img');
-    const initials = result.getByText(getInitials(name, false));
-    expect(image).toBe(result.getByAltText(name));
-    expect(initials.getAttribute('aria-hidden')).toEqual('true');
-  });
-
-  it('sets the alt text on the image to the initials, when there is no name', () => {
-    const result = render(<Avatar initials="FL" image={{ src: 'avatar.png' }} />);
-
-    const image = result.getByRole('img');
-    expect(image).toBe(result.getByAltText('FL'));
-  });
-
-  it('sets role and aria-label on initials, when there is no image', () => {
-    const name = 'First Last';
-    const initialsRef = React.createRef<HTMLSpanElement>();
-    const result = render(<Avatar name={name} initials={{ ref: initialsRef }} />);
-
-    expect(initialsRef.current).toBe(result.getByRole('img'));
-    expect(initialsRef.current).toBe(result.getByLabelText(name));
-  });
-
-  it('sets role and aria-label on icon, when there is no image or initials', () => {
-    const name = '(111)-555-1234';
-    const iconRef = React.createRef<HTMLSpanElement>();
-    const result = render(<Avatar name={name} icon={{ ref: iconRef }} />);
-
-    expect(iconRef.current).toBe(result.getByRole('img'));
-    expect(iconRef.current).toBe(result.getByLabelText(name));
   });
 });

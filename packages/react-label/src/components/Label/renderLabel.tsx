@@ -11,7 +11,7 @@ export const renderLabel_unstable = (state: LabelState) => {
   return (
     <slots.root {...slotProps.root}>
       {state.root.children}
-      <slots.required {...slotProps.required} />
+      {slots.required && <slots.required {...slotProps.required} />}
     </slots.root>
   );
 };
