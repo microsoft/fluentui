@@ -27,7 +27,7 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
       minWidth: _.isNil(p.loading) ? v.minWidth : v.loadingMinWidth,
       maxWidth: v.maxWidth,
       color: v.color,
-      backgroundColor: v.backgroundColor,
+      backgroundColor: 'red',
       borderRadius: v.borderRadius,
       display: 'inline-flex',
       justifyContent: 'center',
