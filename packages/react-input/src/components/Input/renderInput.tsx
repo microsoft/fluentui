@@ -9,9 +9,9 @@ export const renderInput_unstable = (state: InputState) => {
   const { slots, slotProps } = getSlots<InputSlots>(state);
   return (
     <slots.root {...slotProps.root}>
-      <slots.contentBefore {...slotProps.contentBefore} />
+      {slots.contentBefore && <slots.contentBefore {...slotProps.contentBefore} />}
       <slots.input {...slotProps.input} />
-      <slots.contentAfter {...slotProps.contentAfter} />
+      {slots.contentAfter && <slots.contentAfter {...slotProps.contentAfter} />}
     </slots.root>
   );
 };

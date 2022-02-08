@@ -1,18 +1,18 @@
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type CardHeaderSlots = {
-  root: IntrinsicSlotProps<'div'>;
-  image: IntrinsicSlotProps<'div'>;
-  content?: IntrinsicSlotProps<'div'>;
-  header: IntrinsicSlotProps<'span'>;
-  description: IntrinsicSlotProps<'span'>;
-  action?: IntrinsicSlotProps<'div'>;
+  root: Slot<'div'>;
+  image: Slot<'div'>;
+  content?: Slot<'div'>;
+  header: Slot<'span'>;
+  description: Slot<'span'>;
+  action?: Slot<'div'>;
 };
 
 /**
  * CardHeader props
  */
-export type CardHeaderProps = ComponentProps<CardHeaderSlots>;
+export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 
 /**
  * State used in rendering CardHeader
