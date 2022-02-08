@@ -192,6 +192,7 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     verticalAlign: 'center',
     textAlign: 'center',
+    userSelect: 'none',
     ...shorthands.borderRadius('inherit'),
   },
 
