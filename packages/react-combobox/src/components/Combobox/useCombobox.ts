@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { getPartitionedNativeProps, resolveShorthand, useControllableState } from '@fluentui/react-utilities';
 import { DropdownActions, getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
-import { useOrderedGroup } from '../../utils/useOrderedGroup';
-import { OptionValue } from '../../utils/OrderedGroup.types';
+import { OptionCollectionState, OptionValue } from '../../utils/OptionCollection.types';
 import { useSelection } from '../../utils/useSelection';
 import { Listbox } from '../Listbox';
 import { ComboButton } from '../ComboButton';
@@ -17,13 +16,16 @@ import type { ComboboxProps, ComboboxState } from './Combobox.types';
  * @param props - props from this instance of Combobox
  * @param ref - reference to root HTMLElement of Combobox
  */
-export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLButtonElement>): ComboboxState => {
+export const useCombobox = (
+  props: ComboboxProps,
+  optionCollection: OptionCollectionState,
+  ref: React.Ref<HTMLButtonElement>,
+): ComboboxState => {
   const { multiselect, open: controlledOpen, placeholder, value: controlledValue } = props;
-  const orderedGroup = useOrderedGroup(props.children);
   const {
     options,
-    groupData: { count, getOptionAtIndex, getIndexOfKey, getOptionByKey },
-  } = orderedGroup;
+    collectionData: { count, getOptionAtIndex, getIndexOfKey, getOptionByKey },
+  } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
   const [selectedKeys, selectKey] = useSelection(props);
@@ -138,7 +140,7 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLButtonEleme
         ...triggerNativeProps,
       },
     }),
-    ...orderedGroup,
+    ...optionCollection,
     activeOption,
     onOptionClick,
     open,

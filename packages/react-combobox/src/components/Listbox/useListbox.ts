@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
-import { useOrderedGroup } from '../../utils/useOrderedGroup';
 import { useSelection } from '../../utils/useSelection';
 import { DropdownActions, getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ListboxProps, ListboxState } from './Listbox.types';
-import { OptionValue } from '../../utils/OrderedGroup.types';
+import { OptionCollectionState, OptionValue } from '../../utils/OptionCollection.types';
 
 /**
  * Create the state required to render Listbox.
@@ -17,12 +16,15 @@ import { OptionValue } from '../../utils/OrderedGroup.types';
  * @param props - props from this instance of Listbox
  * @param ref - reference to root HTMLElement of Listbox
  */
-export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
+export const useListbox = (
+  props: ListboxProps,
+  optionCollection: OptionCollectionState,
+  ref: React.Ref<HTMLElement>,
+): ListboxState => {
   const { multiselect } = props;
-  const orderedGroup = useOrderedGroup(props.children);
   const {
-    groupData: { count, getOptionAtIndex, getOptionByKey, getIndexOfKey },
-  } = orderedGroup;
+    collectionData: { count, getOptionAtIndex, getOptionByKey, getIndexOfKey },
+  } = optionCollection;
 
   const [selectedKeys, selectKey] = useSelection(props);
 
@@ -88,7 +90,7 @@ export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): Li
       onKeyDown,
       ...props,
     }),
-    ...orderedGroup,
+    ...optionCollection,
     ...(hasComboboxContext ? contextValues : standaloneListboxValues),
   };
 };

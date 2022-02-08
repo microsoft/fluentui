@@ -1,6 +1,6 @@
 import { createContext } from '@fluentui/react-context-selector';
 import type { Context } from '@fluentui/react-context-selector';
-import { OptionValue } from '../utils/OrderedGroup.types';
+import { OptionValue } from '../utils/OptionCollection.types';
 
 /**
  * Context shared between Listbox, OptionGroup and its children components

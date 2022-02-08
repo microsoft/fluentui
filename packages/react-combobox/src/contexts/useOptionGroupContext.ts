@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { OptionGroupContextValues } from './OptionGroupContext';
-import { OptionValue, OrderedGroupState } from '../utils/OrderedGroup.types';
+import { OptionValue, OptionCollectionState } from '../utils/OptionCollection.types';
 
-export function useOptionGroupContextValues(state: OrderedGroupState): OptionGroupContextValues {
+export function useOptionGroupContextValues(state: OptionCollectionState): OptionGroupContextValues {
   const { options } = state;
 
   const { registerOption, unRegisterOption } = useMemo(() => {

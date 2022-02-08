@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { OptionValue, OrderedGroupState } from '../../utils/OrderedGroup.types';
+import { OptionValue, OptionCollectionState } from '../../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../../utils/Selection.types';
 import { Listbox } from '../Listbox';
 import { ComboButton } from '../ComboButton';
@@ -34,7 +34,7 @@ export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> & 
 export type ComboboxState = ComponentState<ComboboxSlots> &
   Required<Pick<ComboboxCommons, 'open'>> &
   Pick<ComboboxCommons, 'placeholder' | 'value'> &
-  OrderedGroupState &
+  OptionCollectionState &
   SelectionState & {
     activeOption?: OptionValue;
     onOptionClick(optionKey: string): void;

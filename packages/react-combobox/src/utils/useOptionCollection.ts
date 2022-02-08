@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { OrderedGroupState, OptionGroupValue, OptionData } from './OrderedGroup.types';
+import type { OptionCollectionState, OptionCollectionValue, OptionData } from './OptionCollection.types';
 
 function getValidOptions(children: React.ReactNode): string[] {
   const keys: string[] = [];
@@ -26,10 +26,10 @@ function getValidOptions(children: React.ReactNode): string[] {
   return keys;
 }
 
-export const useOrderedGroup = (children: React.ReactNode): OrderedGroupState => {
+export const useOptionCollection = (children: React.ReactNode): OptionCollectionState => {
   const optionData: React.MutableRefObject<OptionData> = React.useRef({});
 
-  const groupData: OptionGroupValue = React.useMemo(() => {
+  const collectionData: OptionCollectionValue = React.useMemo(() => {
     const options = getValidOptions(children);
 
     const getOptionAtIndex = (index: number) => {
@@ -50,7 +50,7 @@ export const useOrderedGroup = (children: React.ReactNode): OrderedGroupState =>
   }, [children]);
 
   return {
-    groupData,
+    collectionData,
     options: optionData.current,
   };
 };

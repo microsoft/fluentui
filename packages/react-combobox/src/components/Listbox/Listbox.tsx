@@ -4,13 +4,15 @@ import { renderListbox } from './renderListbox';
 import { useListboxStyles } from './useListboxStyles';
 import type { ListboxProps } from './Listbox.types';
 import { useListboxContextValues } from '../../contexts/useListboxContext';
+import { useOptionCollection } from '../../utils/useOptionCollection';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
  * Listbox component
  */
 export const Listbox: ForwardRefComponent<ListboxProps> = React.forwardRef((props, ref) => {
-  const state = useListbox(props, ref);
+  const optionCollection = useOptionCollection(props.children);
+  const state = useListbox(props, optionCollection, ref);
   const contextValues = useListboxContextValues(state);
 
   useListboxStyles(state);

@@ -4,7 +4,7 @@ export type OptionValue = {
   value: string;
 };
 
-export type OptionGroupValue = {
+export type OptionCollectionValue = {
   count: number;
 
   id: string;
@@ -20,8 +20,8 @@ export type OptionData = {
   [key: string]: OptionValue;
 };
 
-export type OrderedGroupState = {
-  groupData: OptionGroupValue;
+export type OptionCollectionState = {
+  collectionData: OptionCollectionValue;
 
   options: OptionData;
 };
