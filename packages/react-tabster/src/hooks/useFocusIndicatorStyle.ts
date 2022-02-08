@@ -1,6 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
 import { KEYBOARD_NAV_SELECTOR } from '../symbols';
-import type { MakeStylesStyle } from '@fluentui/react-make-styles';
+import type { GriffelStyle } from '@griffel/react';
 
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
 export type FocusOutlineStyleOptions = {
@@ -71,7 +71,7 @@ export const createFocusOutlineStyle = (
   options: {
     style: Partial<FocusOutlineStyleOptions>;
   } & CreateFocusIndicatorStyleRuleOptions = { style: {}, ...defaultOptions },
-): MakeStylesStyle => ({
+): GriffelStyle => ({
   ':focus-visible': {
     outlineStyle: 'none',
   },
@@ -91,9 +91,9 @@ export const createFocusOutlineStyle = (
  * @param style - styling applied on focus, defaults to @see getDefaultFocusOutlineStyes
  */
 export const createCustomFocusIndicatorStyle = (
-  style: MakeStylesStyle,
+  style: GriffelStyle,
   options: CreateFocusIndicatorStyleRuleOptions = defaultOptions,
-): MakeStylesStyle => ({
+): GriffelStyle => ({
   ':focus-visible': {
     outlineStyle: 'none',
   },

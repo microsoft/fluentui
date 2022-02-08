@@ -1,6 +1,6 @@
-import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
+import { useButtonStyles_unstable } from '../Button/useButtonStyles';
 import type { CompoundButtonState } from './CompoundButton.types';
 
 export const compoundButtonClassName = 'fui-CompoundButton';
@@ -12,7 +12,7 @@ const CompoundButtonClassNames = {
 const useRootStyles = makeStyles({
   // Base styles
   base: {
-    ...shorthands.gap(buttonSpacing.large),
+    ...shorthands.gap('12px'),
 
     height: 'auto',
 
@@ -91,19 +91,19 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.padding(buttonSpacing.medium),
+    ...shorthands.padding('8px', '8px', '10px', '8px'),
 
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
   },
   medium: {
-    ...shorthands.padding(buttonSpacing.large),
+    ...shorthands.padding('14px', '12px', '16px', '12px'),
 
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.padding(buttonSpacing.larger),
+    ...shorthands.padding('18px', '16px', '20px', '16px'),
 
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
@@ -132,19 +132,19 @@ const useRootStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    ...shorthands.padding(buttonSpacing.smaller),
+    ...shorthands.padding('4px'),
 
     maxWidth: '48px',
     minWidth: '48px',
   },
   medium: {
-    ...shorthands.padding(buttonSpacing.small),
+    ...shorthands.padding('6px'),
 
     maxWidth: '52px',
     minWidth: '52px',
   },
   large: {
-    ...shorthands.padding(buttonSpacing.medium),
+    ...shorthands.padding('8px'),
 
     maxWidth: '56px',
     minWidth: '56px',
@@ -173,7 +173,6 @@ const useSecondaryContentStyles = makeStyles({
   // Base styles
   base: {
     lineHeight: '100%',
-    marginTop: '4px',
     fontWeight: tokens.fontWeightRegular,
   },
 
@@ -189,7 +188,7 @@ const useSecondaryContentStyles = makeStyles({
   },
 });
 
-export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundButtonState => {
+export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): CompoundButtonState => {
   const rootStyles = useRootStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
@@ -231,7 +230,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
     );
   }
 
-  useButtonStyles(state);
+  useButtonStyles_unstable(state);
 
   return state;
 };

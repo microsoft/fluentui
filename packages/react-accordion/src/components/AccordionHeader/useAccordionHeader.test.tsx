@@ -1,11 +1,11 @@
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
-import { useAccordionHeader } from './useAccordionHeader';
+import { useAccordionHeader_unstable } from './useAccordionHeader';
 import { AccordionContext } from '../Accordion/AccordionContext';
 import { AccordionItemContext } from '../AccordionItem/AccordionItemContext';
 
-describe('useAccordionHeader', () => {
+describe('useAccordionHeader_unstable', () => {
   it('should return button props as disabled even when it is not disabled (forceDisabled)', () => {
     const ref = React.createRef<HTMLElement>();
     const wrapper: React.FC = ({ children }) => (
@@ -32,7 +32,7 @@ describe('useAccordionHeader', () => {
         </AccordionItemContext.Provider>
       </AccordionContext.Provider>
     );
-    const { result } = renderHook(() => useAccordionHeader({}, ref), { wrapper });
+    const { result } = renderHook(() => useAccordionHeader_unstable({}, ref), { wrapper });
     expect(result.current.button['aria-disabled']).toBeTruthy();
   });
 });

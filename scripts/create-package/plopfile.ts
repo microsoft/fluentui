@@ -16,7 +16,7 @@ const v8ReferencePackages = {
   node: ['codemods'],
 };
 const convergedReferencePackages = {
-  react: ['react-menu'],
+  react: ['react-provider'],
   node: ['babel-make-styles'],
 };
 

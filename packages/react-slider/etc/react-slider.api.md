@@ -4,14 +4,14 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
-export const renderSlider: (state: SliderState) => JSX.Element;
+export const renderSlider_unstable: (state: SliderState) => JSX.Element;
 
 // @public
 export const Slider: ForwardRefComponent<SliderProps>;
@@ -40,14 +40,14 @@ export type SliderOnChangeData = {
 };
 
 // @public (undocumented)
-export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommons;
+export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommons;
 
 // @public (undocumented)
 export type SliderSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    rail: IntrinsicShorthandProps<'div'>;
-    thumb: IntrinsicShorthandProps<'div'>;
-    input: IntrinsicShorthandProps<'input'> & {
+    root: NonNullable<Slot<'div'>>;
+    rail: NonNullable<Slot<'div'>>;
+    thumb: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>> & {
         orient?: 'horizontal' | 'vertical';
     };
 };
@@ -56,13 +56,13 @@ export type SliderSlots = {
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;
 
 // @public
-export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
+export const useSlider_unstable: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
 
 // @public (undocumented)
-export const useSliderState: (state: SliderState) => SliderState;
+export const useSliderState_unstable: (state: SliderState) => SliderState;
 
 // @public
-export const useSliderStyles: (state: SliderState) => SliderState;
+export const useSliderStyles_unstable: (state: SliderState) => SliderState;
 
 // (No @packageDocumentation comment for this package)
 

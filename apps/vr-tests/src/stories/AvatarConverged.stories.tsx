@@ -59,7 +59,7 @@ const examples = {
     { status: 'offline', outOfOffice: true },
     { status: 'outOfOffice', outOfOffice: true },
   ],
-  activeDisplay: ['ring', 'ring-shadow', 'ring-glow', 'shadow', 'glow'],
+  activeDisplay: ['ring', 'ring-shadow', 'shadow'],
   color: ['neutral', 'brand', 'colorful'],
   namedColors: [
     'darkRed',
@@ -211,14 +211,8 @@ storiesOf('Avatar Converged', module)
   .addStory('size+active+shadow', () => (
     <AvatarList images={examples.image} active="active" activeAppearance="shadow" />
   ))
-  .addStory('size+active+glow', () => (
-    <AvatarList images={examples.image} active="active" activeAppearance="glow" />
-  ))
   .addStory('size+active+ring-shadow', () => (
     <AvatarList images={examples.image} active="active" activeAppearance="ring-shadow" />
-  ))
-  .addStory('size+active+ring-glow', () => (
-    <AvatarList images={examples.image} active="active" activeAppearance="ring-glow" />
   ))
   .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
   .addStory('customSize+name+badge', () => (

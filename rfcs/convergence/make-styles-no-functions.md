@@ -122,6 +122,8 @@ In both scenarios above, `FluentProvider` will still inject all customer tokens 
 
 Also, in case there is an ask for it, we can decide to export a primitive component in the future (named for example `TokensProvider`) whose only purpose would be to render variables for `Record<string, string | number>`.
 
+Finally, we will export a function to make the tokens to css variable mapping for any custom theme be programatically generated.
+
 ## Using custom tokens in `makeStyles()`
 
 Once tokens are injected through the `FluentProvider` they can be used in `makeStyles()`.

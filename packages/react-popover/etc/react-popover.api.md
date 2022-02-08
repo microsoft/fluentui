@@ -9,11 +9,11 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import type { PopperVirtualElement } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 import type { usePopperMouseTarget } from '@fluentui/react-positioning';
 
 // @public (undocumented)
@@ -80,7 +80,7 @@ export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
 
 // @public
 export type PopoverSurfaceSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public
@@ -100,28 +100,28 @@ export type PopoverTriggerProps = {
 export type PopoverTriggerState = PopoverTriggerProps;
 
 // @public
-export const renderPopover: (state: PopoverState) => JSX.Element;
+export const renderPopover_unstable: (state: PopoverState) => JSX.Element;
 
 // @public
-export const renderPopoverSurface: (state: PopoverSurfaceState) => JSX.Element | null;
+export const renderPopoverSurface_unstable: (state: PopoverSurfaceState) => JSX.Element | null;
 
 // @public
-export const renderPopoverTrigger: (state: PopoverTriggerState) => JSX.Element;
+export const renderPopoverTrigger_unstable: (state: PopoverTriggerState) => JSX.Element;
 
 // @public
-export const usePopover: (props: PopoverProps) => PopoverState;
+export const usePopover_unstable: (props: PopoverProps) => PopoverState;
 
 // @public (undocumented)
-export const usePopoverContext: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
+export const usePopoverContext_unstable: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
 
 // @public
-export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDivElement>) => PopoverSurfaceState;
+export const usePopoverSurface_unstable: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDivElement>) => PopoverSurfaceState;
 
 // @public
-export const usePopoverSurfaceStyles: (state: PopoverSurfaceState) => PopoverSurfaceState;
+export const usePopoverSurfaceStyles_unstable: (state: PopoverSurfaceState) => PopoverSurfaceState;
 
 // @public
-export const usePopoverTrigger: (props: PopoverTriggerProps) => PopoverTriggerState;
+export const usePopoverTrigger_unstable: (props: PopoverTriggerProps) => PopoverTriggerState;
 
 // (No @packageDocumentation comment for this package)
 

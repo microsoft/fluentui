@@ -1,4 +1,4 @@
-import { mergeClasses, shorthands, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, shorthands, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { DividerState } from './Divider.types';
 
@@ -225,7 +225,7 @@ const useVerticalStyles = makeStyles({
   },
 });
 
-export const useDividerStyles = (state: DividerState): DividerState => {
+export const useDividerStyles_unstable = (state: DividerState): DividerState => {
   const baseStyles = useBaseStyles();
   const horizontalStyles = useHorizontalStyles();
   const verticalStyles = useVerticalStyles();

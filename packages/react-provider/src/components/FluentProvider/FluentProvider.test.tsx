@@ -1,4 +1,5 @@
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { TextDirectionProvider } from '@griffel/react';
 import * as React from 'react';
 import { FluentProvider } from './FluentProvider';
 import * as renderer from 'react-test-renderer';
@@ -18,7 +19,7 @@ describe('FluentProvider', () => {
     Component: FluentProvider,
     displayName: 'FluentProvider',
     skipAsPropTests: true,
-    helperComponents: [ProviderContext.Provider],
+    helperComponents: [ProviderContext.Provider, TextDirectionProvider],
   });
 
   afterEach(() => {

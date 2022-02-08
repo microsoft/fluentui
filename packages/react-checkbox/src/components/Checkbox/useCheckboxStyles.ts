@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { CheckboxState } from './Checkbox.types';
@@ -182,7 +182,7 @@ const useLabelStyles = makeStyles({
 /**
  * Apply styling to the Checkbox slots based on the state
  */
-export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
+export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState => {
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
     checkboxClassName,
@@ -204,14 +204,16 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   state.input.className = mergeClasses(inputStyles.base, state.input.className);
 
   const indicatorStyles = useIndicatorStyles();
-  state.indicator.className = mergeClasses(
-    indicatorClassName,
-    indicatorStyles.base,
-    indicatorStyles[state.size],
-    state.circular && indicatorStyles.circular,
-    !state.checked && indicatorStyles.unchecked,
-    state.indicator.className,
-  );
+  if (state.indicator) {
+    state.indicator.className = mergeClasses(
+      indicatorClassName,
+      indicatorStyles.base,
+      indicatorStyles[state.size],
+      state.circular && indicatorStyles.circular,
+      !state.checked && indicatorStyles.unchecked,
+      state.indicator.className,
+    );
+  }
 
   const labelStyles = useLabelStyles();
   if (state.label) {

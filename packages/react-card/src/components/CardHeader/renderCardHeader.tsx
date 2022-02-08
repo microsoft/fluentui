@@ -5,7 +5,7 @@ import type { CardHeaderSlots, CardHeaderState } from './CardHeader.types';
 /**
  * Render the final JSX of CardHeader
  */
-export const renderCardHeader = (state: CardHeaderState) => {
+export const renderCardHeader_unstable = (state: CardHeaderState) => {
   const { slots, slotProps } = getSlots<CardHeaderSlots>(state);
 
   return (

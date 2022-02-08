@@ -3,6 +3,7 @@ import { isConformant } from '../../common/isConformant';
 import { Avatar } from './Avatar';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
+import { render } from '@testing-library/react';
 
 describe('Avatar', () => {
   let wrapper: ReactWrapper | undefined;
@@ -64,10 +65,9 @@ describe('Avatar', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('displays custom initials via getInitials', () => {
-    const component = renderer.create(
-      <Avatar name="First Last" getInitials={name => (name[1] + name[7]).toUpperCase()} />,
-    );
+  it('displays custom initials', () => {
+    const name = 'First Last';
+    const component = renderer.create(<Avatar name={name} initials={(name[1] + name[7]).toUpperCase()} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -108,5 +108,12 @@ describe('Avatar', () => {
     const component = renderer.create(<Avatar name="First Last" size={32} style={{ width: '33px', height: '33px' }} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('does not set name on the native element', () => {
+    const result = render(<Avatar name="First Last" data-testid="root" />);
+
+    const root = result.getByTestId('root');
+    expect(root.getAttribute('name')).toBeFalsy();
   });
 });

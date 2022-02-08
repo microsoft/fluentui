@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { {{componentName}}State } from './{{componentName}}.types';
 
 /**
@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the {{componentName}} slots based on the state
  */
-export const use{{componentName}}Styles = (state: {{componentName}}State): {{componentName}}State => {
+export const use{{componentName}}Styles_unstable = (state: {{componentName}}State): {{componentName}}State => {
   const styles = useStyles();
   state.root.className = mergeClasses(styles.root, state.root.className);
 

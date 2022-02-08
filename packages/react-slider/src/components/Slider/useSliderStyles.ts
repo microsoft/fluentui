@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { SliderState } from './Slider.types';
@@ -225,7 +225,7 @@ const useInputStyles = makeStyles({
 /**
  * Apply styling to the Slider slots based on the state
  */
-export const useSliderStyles = (state: SliderState): SliderState => {
+export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const rootStyles = useRootStyles();
   const railStyles = useRailStyles();
   const thumbStyles = useThumbStyles();

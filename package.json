@@ -1,5 +1,5 @@
 {
-  "name": "fluent-ui-react-repo",
+  "name": "@fluentui/fluentui-repo",
   "version": "1.0.0",
   "description": "Reusable React components for building experiences for Microsoft 365.",
   "private": true,
@@ -85,7 +85,12 @@
     "@babel/register": "7.14.5",
     "@babel/standalone": "7.14.8",
     "@ctrl/tinycolor": "3.3.4",
-    "@fluentui/react-icons": "^2.0.154-beta.5",
+    "@fluentui/react-icons": "^2.0.159-beta.10",
+    "@griffel/babel-preset": "1.0.0",
+    "@griffel/jest-serializer": "1.0.0",
+    "@griffel/react": "1.0.0",
+    "@griffel/webpack-loader": "2.0.0",
+    "@linaria/babel-preset": "3.0.0-beta.14",
     "@microsoft/api-extractor": "7.18.1",
     "@nrwl/cli": "13.4.5",
     "@nrwl/devkit": "13.4.5",
@@ -110,9 +115,10 @@
     "@storybook/manager-webpack5": "6.3.6",
     "@storybook/react": "6.3.6",
     "@storybook/theming": "6.3.6",
-    "@testing-library/jest-dom": "5.11.9",
-    "@testing-library/react": "10.4.9",
-    "@testing-library/react-hooks": "5.0.3",
+    "@testing-library/dom": "8.11.3",
+    "@testing-library/jest-dom": "5.16.1",
+    "@testing-library/react": "12.1.2",
+    "@testing-library/react-hooks": "7.0.2",
     "@testing-library/user-event": "13.5.0",
     "@types/babel__helper-plugin-utils": "7.10.0",
     "@types/copy-webpack-plugin": "6.4.0",
@@ -199,7 +205,7 @@
     "lint-staged": "10.2.10",
     "loader-utils": "2.0.0",
     "memfs": "3.2.2",
-    "node-fetch": "2.6.1",
+    "node-fetch": "2.6.7",
     "portfinder": "1.0.28",
     "postcss": "8.3.5",
     "postcss-loader": "4.1.0",
@@ -273,9 +279,7 @@
     "@types/jest-axe/axe-core": "4.2.1",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "eslint": "^7.1.0",
-    "//": "pretty-format contains typing only supported by TS 3.8+ remove when support in this repo is available",
-    "@testing-library/dom": "7.22.3",
+    "eslint": "7.25.0",
     "copy-to-clipboard": "3.2.0"
   },
   "syncpack": {
@@ -292,11 +296,12 @@
     "versionGroups": [
       {
         "packages": [
-          "fluent-ui-react-repo"
+          "@fluentui/fluentui-repo"
         ],
         "dependencies": [
           "@babel/core",
           "@babel/preset-typescript",
+          "@linaria/babel-preset",
           "@rnx-kit/eslint-plugin",
           "@types/react-test-renderer",
           "@typescript-eslint/eslint-plugin",
@@ -352,7 +357,7 @@
           "@fluentui/docs",
           "@fluentui/e2e",
           "@fluentui/perf",
-          "@fluentui/perf-test",
+          "@fluentui/perf-test-northstar",
           "@fluentui/react-component-event-listener",
           "@fluentui/react-component-nesting-registry",
           "@fluentui/react-component-ref",

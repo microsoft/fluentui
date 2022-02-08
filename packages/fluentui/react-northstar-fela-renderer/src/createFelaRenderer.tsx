@@ -1,4 +1,4 @@
-import { CreateRenderer } from '@fluentui/react-northstar-styles-renderer';
+import { CreateRenderer, Renderer } from '@fluentui/react-northstar-styles-renderer';
 import { createRenderer, IRenderer, IStyle, TPlugin } from 'fela';
 import felaPluginEmbedded from 'fela-plugin-embedded';
 import felaPluginFallbackValue from 'fela-plugin-fallback-value';
@@ -92,7 +92,7 @@ const rendererConfig = {
   ],
 };
 
-export const createFelaRenderer: CreateRenderer = target => {
+export const createFelaRenderer: CreateRenderer = () => {
   const felaRenderer = createRenderer(rendererConfig) as IRenderer & {
     listeners: [];
     nodes: Record<string, HTMLStyleElement>;
@@ -102,8 +102,8 @@ export const createFelaRenderer: CreateRenderer = target => {
 
   // rehydration disabled to avoid leaking styles between renderers
   // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
-  const Provider: React.FC = props => (
-    <RendererProvider renderer={felaRenderer} {...{ rehydrate: false, targetDocument: target }}>
+  const Provider: Renderer['Provider'] = props => (
+    <RendererProvider renderer={felaRenderer} {...{ rehydrate: false, targetDocument: props.target }}>
       {props.children}
     </RendererProvider>
   );

@@ -6,10 +6,10 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 import type { Theme } from '@fluentui/react-theme';
 import type { ThemeClassNameContextValue } from '@fluentui/react-shared-contexts';
 import type { TooltipContextType } from '@fluentui/react-shared-contexts';
@@ -33,6 +33,8 @@ export interface FluentProviderContextValues extends Pick<FluentProviderState, '
     // (undocumented)
     provider: ProviderContextValue;
     // (undocumented)
+    textDirection: 'ltr' | 'rtl';
+    // (undocumented)
     themeClassName: ThemeClassNameContextValue;
     // (undocumented)
     tooltip: TooltipContextType;
@@ -46,7 +48,7 @@ export interface FluentProviderProps extends Omit<ComponentProps<FluentProviderS
 
 // @public (undocumented)
 export type FluentProviderSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -58,18 +60,18 @@ export interface FluentProviderState extends ComponentState<FluentProviderSlots>
 }
 
 // @public
-export const renderFluentProvider: (state: FluentProviderState, contextValues: FluentProviderContextValues) => JSX.Element;
+export const renderFluentProvider_unstable: (state: FluentProviderState, contextValues: FluentProviderContextValues) => JSX.Element;
 
 export { useFluent }
 
 // @public
-export const useFluentProvider: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>) => FluentProviderState;
+export const useFluentProvider_unstable: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>) => FluentProviderState;
 
 // @public (undocumented)
-export function useFluentProviderContextValues(state: FluentProviderState): FluentProviderContextValues;
+export function useFluentProviderContextValues_unstable(state: FluentProviderState): FluentProviderContextValues;
 
 // @public
-export const useFluentProviderStyles: (state: FluentProviderState) => FluentProviderState;
+export const useFluentProviderStyles_unstable: (state: FluentProviderState) => FluentProviderState;
 
 export { useTheme }
 

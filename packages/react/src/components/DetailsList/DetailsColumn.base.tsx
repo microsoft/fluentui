@@ -57,7 +57,6 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
   public render(): JSX.Element {
     const {
       column,
-      columnIndex,
       parentId,
       isDraggable,
       styles,
@@ -96,10 +95,10 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       column.columnActionsMode !== ColumnActionsMode.disabled &&
       (column.onColumnClick !== undefined || this.props.onColumnClick !== undefined);
     const accNameDescription = {
-      'aria-label': column.isIconOnly ? column.name : undefined,
-      'aria-labelledby': column.isIconOnly ? undefined : `${parentId}-${column.key}-name`,
+      'aria-label': column.ariaLabel ? column.ariaLabel : column.isIconOnly ? column.name : undefined,
+      'aria-labelledby': column.ariaLabel || column.isIconOnly ? undefined : `${parentId}-${column.key}-name`,
       'aria-describedby':
-        !this.props.onRenderColumnHeaderTooltip && this._hasAccessibleLabel()
+        !this.props.onRenderColumnHeaderTooltip && this._hasAccessibleDescription()
           ? `${parentId}-${column.key}-tooltip`
           : undefined,
     };
@@ -112,7 +111,6 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
           role={'columnheader'}
           {...(!hasInnerButton && accNameDescription)}
           aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
-          aria-colindex={columnIndex}
           // when the column is not disabled and has no inner button, this node should be in the focus order
           data-is-focusable={
             !hasInnerButton && column.columnActionsMode !== ColumnActionsMode.disabled ? 'true' : undefined
@@ -190,7 +188,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
             this._onRenderColumnHeaderTooltip,
           )}
         </div>
-        {!this.props.onRenderColumnHeaderTooltip ? this._renderAccessibleLabel() : null}
+        {!this.props.onRenderColumnHeaderTooltip ? this._renderAccessibleDescription() : null}
       </>
     );
   }
@@ -287,11 +285,10 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     return options;
   }
 
-  private _hasAccessibleLabel(): boolean {
+  private _hasAccessibleDescription(): boolean {
     const { column } = this.props;
 
     return !!(
-      column.ariaLabel ||
       column.filterAriaLabel ||
       column.sortAscendingAriaLabel ||
       column.sortDescendingAriaLabel ||
@@ -299,17 +296,17 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     );
   }
 
-  private _renderAccessibleLabel(): JSX.Element | null {
+  private _renderAccessibleDescription(): JSX.Element | null {
     const { column, parentId } = this.props;
     const classNames = this._classNames;
 
-    return this._hasAccessibleLabel() && !this.props.onRenderColumnHeaderTooltip ? (
+    return this._hasAccessibleDescription() && !this.props.onRenderColumnHeaderTooltip ? (
       <label
         key={`${column.key}_label`}
         id={`${parentId}-${column.key}-tooltip`}
         className={classNames.accessibleLabel}
+        hidden
       >
-        {column.ariaLabel}
         {(column.isFiltered && column.filterAriaLabel) || null}
         {(column.isSorted &&
           (column.isSortedDescending ? column.sortDescendingAriaLabel : column.sortAscendingAriaLabel)) ||

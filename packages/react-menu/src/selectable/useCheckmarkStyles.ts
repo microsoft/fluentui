@@ -1,6 +1,6 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@griffel/react';
 import type { MenuItemSelectableState } from './types';
-import type { MenuItemSlots } from '../components/MenuItem/MenuItem.types';
+import type { MenuItemState } from '../components/MenuItem/MenuItem.types';
 
 const useStyles = makeStyles({
   root: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles({
  *
  * @param state - should contain a `checkmark` slot
  */
-export const useCheckmarkStyles = (state: MenuItemSelectableState & Pick<MenuItemSlots, 'checkmark'>) => {
+export const useCheckmarkStyles_unstable = (state: MenuItemSelectableState & Pick<MenuItemState, 'checkmark'>) => {
   const styles = useStyles();
   if (state.checkmark) {
     state.checkmark.className = mergeClasses(

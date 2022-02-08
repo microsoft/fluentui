@@ -16,4 +16,8 @@
 ### Badge shouldn't rely only on color information
 
 - Include meaningful descriptions when using color to represent meaning in a badge. If relying on color only [unread dot] ensure that non-visual information is included using aria-describedby
+
+### Text on Badge
+
+- Badges are intented to have short text, small numerical values or status information. Long text is not supported and should not be used within a Badge.
 </details>
