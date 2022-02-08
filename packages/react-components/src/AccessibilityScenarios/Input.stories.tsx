@@ -30,6 +30,8 @@ export const RegistrationFormInputsAccessibilityScenario: React.FunctionComponen
 
       <Label htmlFor="confirmPassword">Confirm password:</Label>
       <Input type="password" id="confirmPassword" name="confirmPassword" />
+
+      <Button>Submit</Button>
     </Scenario>
   );
 };
