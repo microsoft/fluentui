@@ -105,6 +105,7 @@ For more details, please check [microsoft/fluentui#21257](https://github.com/mic
 > **Note**: This change should not affect most users of the library. It only affects authors of custom render functions.
 
 `getSlots` now returns `null` instead of `nullRender` for slots that don't render. This requires that the render function check for null before rendering a slot. `getSlots` also no longer takes a second parameter listing the slot names.
+
 ```diff
 const renderMyComponent = (state: MyComponentState) => {
 -  const { slots, slotProps } = getSlots<MyComponentSlots>(state, ['root', 'slotA', 'slotB']);
@@ -126,8 +127,9 @@ const renderMyComponent = (state: MyComponentState) => {
 > **Note**: This change should not affect most users of the library. It only affects authors of custom components.
 
 All slots are now declared using a single `Slot` type:
-* `IntrinsicShorthandProps` => `Slot`: direct rename with the same arguments.
-* `ObjectShorthandProps` => `Slot`: the argument changes from the props type to the component type; e.g. from `ButtonProps`, to `typeof Button`.
+
+- `IntrinsicShorthandProps` => `Slot`: direct rename with the same arguments.
+- `ObjectShorthandProps` => `Slot`: the argument changes from the props type to the component type; e.g. from `ButtonProps`, to `typeof Button`.
 
 ```diff
 type MyComponentSlots = {
@@ -141,10 +143,11 @@ type MyComponentSlots = {
 ```
 
 The following types related to slots have been renamed:
-* `ShorthandProps` => `WithSlotShorthandValue`
-* `ShorthandRenderFunction` => `SlotRenderFunction`
-* `ObjectShorthandPropsRecord` => `SlotPropsRecord`
-* `DefaultObjectShorthandProps` => `UnknownSlotProps`
+
+- `ShorthandProps` => `WithSlotShorthandValue`
+- `ShorthandRenderFunction` => `SlotRenderFunction`
+- `ObjectShorthandPropsRecord` => `SlotPropsRecord`
+- `DefaultObjectShorthandProps` => `UnknownSlotProps`
 
 ## Component changes
 
