@@ -2,6 +2,47 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 08 Feb 2022 07:25:33 GMT",
+      "tag": "@fluentui/react_v8.53.0",
+      "version": "8.53.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d77594d2930fe0d19904dab6b703f629811dbfe4",
+            "comment": "Callout: prevent data props from being used twice"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "6fba4a99f2666ab810c0e7ec3aa2045c46213037",
+            "comment": "ContextualMenu: delayUpdateFocusOnHover is now working correctly so menu items are no longer focused on mouse hover."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "f30f8424f3d0b4e720c30583bddef58625263d33",
+            "comment": "Dropdown: Headers and Dividers marked as hidden are now actually hidden."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "49139a0ec9f9df3b3508599f2775e9ef1959a965",
+            "comment": "Remove duplicate export names caused by export star."
+          }
+        ],
+        "minor": [
+          {
+            "author": "stefhan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "bd967bf85ebe6634327729ec9ea8df77285d8c33",
+            "comment": "Add enableAriaHiddenSiblings to Popup and Dialog and respect it in Modal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Feb 2022 07:31:42 GMT",
       "tag": "@fluentui/react_v8.52.3",
       "version": "8.52.3",

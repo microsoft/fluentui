@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 04 Feb 2022 07:31:42 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Feb 2022 07:25:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.53.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.53.0)
+
+Tue, 08 Feb 2022 07:25:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.52.3..@fluentui/react_v8.53.0)
+
+### Minor changes
+
+- Add enableAriaHiddenSiblings to Popup and Dialog and respect it in Modal ([PR #21110](https://github.com/microsoft/fluentui/pull/21110) by stefhan@microsoft.com)
+
+### Patches
+
+- Callout: prevent data props from being used twice ([PR #21639](https://github.com/microsoft/fluentui/pull/21639) by elcraig@microsoft.com)
+- ContextualMenu: delayUpdateFocusOnHover is now working correctly so menu items are no longer focused on mouse hover. ([PR #21528](https://github.com/microsoft/fluentui/pull/21528) by tristan.watanabe@gmail.com)
+- Dropdown: Headers and Dividers marked as hidden are now actually hidden. ([PR #21527](https://github.com/microsoft/fluentui/pull/21527) by tristan.watanabe@gmail.com)
+- Remove duplicate export names caused by export star. ([PR #21608](https://github.com/microsoft/fluentui/pull/21608) by tristan.watanabe@gmail.com)
 
 ## [8.52.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.52.3)
 
