@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { getPartitionedNativeProps, resolveShorthand, useControllableState } from '@fluentui/react-utilities';
+import { resolvePositioningShorthand, usePopper } from '@fluentui/react-positioning';
+import {
+  getPartitionedNativeProps,
+  resolveShorthand,
+  useControllableState,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { DropdownActions, getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
 import { OptionCollectionState, OptionValue } from '../../utils/OptionCollection.types';
 import { useSelection } from '../../utils/useSelection';
@@ -21,7 +27,7 @@ export const useCombobox = (
   optionCollection: OptionCollectionState,
   ref: React.Ref<HTMLButtonElement>,
 ): ComboboxState => {
-  const { multiselect, open: controlledOpen, placeholder, value: controlledValue } = props;
+  const { inline = false, multiselect, open: controlledOpen, placeholder, positioning, value: controlledValue } = props;
   const {
     options,
     collectionData: { count, getOptionAtIndex, getIndexOfKey, getOptionByKey },
@@ -39,6 +45,22 @@ export const useCombobox = (
     state: controlledOpen,
     initialState: false,
   });
+
+  // popper
+  const popperOptions = {
+    enabled: open,
+    position: 'below' as const,
+    align: 'start' as const,
+    ...resolvePositioningShorthand(positioning),
+  };
+
+  const {
+    targetRef: popperTargetRef,
+    containerRef: popperContainerRef,
+  }: {
+    targetRef: React.MutableRefObject<HTMLButtonElement>;
+    containerRef: React.MutableRefObject<HTMLDivElement>;
+  } = usePopper(popperOptions);
 
   // update value based on selectedKeys
   React.useEffect(() => {
@@ -126,13 +148,14 @@ export const useCombobox = (
     listbox: resolveShorthand(props.listbox, {
       required: true,
       defaultProps: {
+        ref: popperContainerRef,
         tabIndex: undefined,
       },
     }),
     trigger: resolveShorthand(props.trigger, {
       required: true,
       defaultProps: {
-        ref,
+        ref: useMergedRefs(ref, popperTargetRef),
         placeholder,
         value,
         onClick: onTriggerClick,
@@ -142,6 +165,7 @@ export const useCombobox = (
     }),
     ...optionCollection,
     activeOption,
+    inline,
     onOptionClick,
     open,
     options,
