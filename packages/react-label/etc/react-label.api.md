@@ -16,13 +16,8 @@ export const Label: ForwardRefComponent<LabelProps>;
 // @public (undocumented)
 export const labelClassName = "fui-Label";
 
-// @public (undocumented)
-export type LabelCommons = {
-    disabled: boolean;
-    size: 'small' | 'medium' | 'large';
-    strong: boolean;
-};
-
+// Warning: (ae-forgotten-export) The symbol "LabelCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommons> & {
     required?: boolean | Slot<'span'>;

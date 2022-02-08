@@ -16,15 +16,8 @@ export const Badge: ForwardRefComponent<BadgeProps>;
 // @public (undocumented)
 export const badgeClassName = "fui-Badge";
 
-// @public (undocumented)
-export type BadgeCommons = {
-    appearance: 'filled' | 'ghost' | 'outline' | 'tint';
-    color: 'brand' | 'danger' | 'important' | 'informative' | 'severe' | 'subtle' | 'success' | 'warning';
-    iconPosition: 'before' | 'after';
-    shape: 'circular' | 'rounded' | 'square';
-    size: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
-};
-
+// Warning: (ae-forgotten-export) The symbol "BadgeCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & Partial<BadgeCommons>;
 
@@ -43,17 +36,8 @@ export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
 // @public (undocumented)
 export const counterBadgeClassName = "fui-CounterBadge";
 
-// @public (undocumented)
-export type CounterBadgeCommons = {
-    overflowCount: number;
-    count: number;
-    showZero: boolean;
-    dot: boolean;
-    shape: 'circular' | 'rounded';
-    appearance: 'filled' | 'ghost';
-    color: Extract<BadgeProps['color'], 'brand' | 'danger' | 'important' | 'informative'>;
-};
-
+// Warning: (ae-forgotten-export) The symbol "CounterBadgeCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape' | 'color'> & Partial<CounterBadgeCommons>;
 
@@ -66,12 +50,8 @@ export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
 // @public (undocumented)
 export const presenceBadgeClassName = "fui-PresenceBadge";
 
-// @public (undocumented)
-export type PresenceBadgeCommons = {
-    status: PresenceBadgeStatus;
-    outOfOffice: boolean;
-} & BadgeCommons;
-
+// Warning: (ae-forgotten-export) The symbol "PresenceBadgeCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root'>>, 'color'> & Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
 

@@ -48,11 +48,6 @@ export const Tab: ForwardRefComponent<TabProps>;
 // @public (undocumented)
 export const tabClassName = "fui-Tab";
 
-// @public (undocumented)
-export type TabCommons = {
-    value: TabValue;
-};
-
 // @public
 export type TabContentRect = {
     x: number;
@@ -67,15 +62,8 @@ export const TabList: ForwardRefComponent<TabListProps>;
 // @public (undocumented)
 export const tabListClassName = "fui-TabList";
 
-// @public (undocumented)
-export type TabListCommons = {
-    appearance?: 'transparent' | 'subtle';
-    onTabSelect?: SelectTabEventHandler;
-    selectedValue?: TabValue;
-    size?: 'small' | 'medium';
-    vertical?: boolean;
-};
-
+// Warning: (ae-forgotten-export) The symbol "TabListCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical'>> & {
     onRegister: RegisterTabEventHandler;
@@ -106,6 +94,8 @@ export type TabListState = ComponentState<Required<TabListSlots>> & TabListConte
     selectedTabRect?: TabContentRect;
 };
 
+// Warning: (ae-forgotten-export) The symbol "TabCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
 

@@ -19,9 +19,8 @@ export const Spinner: ForwardRefComponent<SpinnerProps>;
 // @public (undocumented)
 export const spinnerClassName = "fui-Spinner";
 
-// @public (undocumented)
-export type SpinnerCommons = {};
-
+// Warning: (ae-forgotten-export) The symbol "SpinnerCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type SpinnerProps = ComponentProps<SpinnerSlots> & SpinnerCommons;
 

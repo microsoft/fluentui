@@ -16,14 +16,8 @@ export const Link: ForwardRefComponent<LinkProps>;
 // @public (undocumented)
 export const linkClassName = "fui-Link";
 
-// @public (undocumented)
-export type LinkCommons = {
-    appearance?: 'subtle';
-    disabled?: boolean;
-    disabledFocusable?: boolean;
-    inline?: boolean;
-};
-
+// Warning: (ae-forgotten-export) The symbol "LinkCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
 
