@@ -246,7 +246,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   public render(): JSX.Element {
     const { suggestedDisplayValue, isFocused, items } = this.state;
     const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;
-    const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
+    const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : undefined;
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
@@ -1039,7 +1039,9 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     const { suggestedDisplayValue, isFocused } = this.state;
     const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;
 
-    const suggestionsAvailable: string | undefined = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
+    const suggestionsAvailable: string | undefined = this.state.suggestionsVisible
+      ? this._ariaMap.suggestionList
+      : undefined;
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
@@ -1075,7 +1077,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       <div ref={this.root} onBlur={this.onBlur} onFocus={this.onFocus}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.renderCustomAlert(classNames.screenReaderText)}
-          <div className={classNames.text} aria-owns={suggestionsAvailable || undefined}>
+          <div className={classNames.text} aria-owns={suggestionsAvailable}>
             <Autofill
               {...(inputProps as any)}
               className={classNames.input}
@@ -1086,7 +1088,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               onInputValueChange={this.onInputChange}
               suggestedDisplayValue={suggestedDisplayValue}
               aria-activedescendant={this.getActiveDescendant()}
-              aria-controls={suggestionsAvailable || undefined}
+              aria-controls={suggestionsAvailable}
               aria-expanded={!!this.state.suggestionsVisible}
               aria-haspopup="listbox"
               aria-label={comboLabel}
