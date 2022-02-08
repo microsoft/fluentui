@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-button';
+
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { MenuButton } from '@fluentui/react-button';
+
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import {
   Menu,
   MenuTrigger,
@@ -11,6 +19,7 @@ import {
   MenuItemCheckbox,
   MenuItemRadio,
 } from '@fluentui/react-menu';
+
 import { Scenario } from './utils';
 
 interface StatusSubmenuProps {
@@ -69,7 +78,7 @@ export const ProfileMenuAccessibilityScenario: React.FunctionComponent = () => {
     <Scenario pageTitle="Profile menu">
       <Menu>
         <MenuTrigger>
-          <Button>Profile</Button>
+          <MenuButton>Profile</MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
@@ -100,6 +109,6 @@ export const ProfileMenuAccessibilityScenario: React.FunctionComponent = () => {
 };
 
 export default {
-  title: 'Accessibility Scenarios/ProfileMenu',
-  id: 'menu-accessibility-scenario',
+  title: 'Accessibility Scenarios / Profile menu',
+  id: 'menu1-accessibility-scenario',
 };
