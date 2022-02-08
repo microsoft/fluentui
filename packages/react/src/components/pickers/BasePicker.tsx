@@ -246,7 +246,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   public render(): JSX.Element {
     const { suggestedDisplayValue, isFocused, items } = this.state;
     const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;
-    const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : undefined;
+
+    const suggestionsVisible = !!this.state.suggestionsVisible;
+    const suggestionsAvailable = suggestionsVisible ? this._ariaMap.suggestionList : undefined;
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
@@ -314,10 +316,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
                 onBlur={this.onInputBlur}
                 onInputValueChange={this.onInputChange}
                 suggestedDisplayValue={suggestedDisplayValue}
-                aria-activedescendant={this.getActiveDescendant()}
+                aria-activedescendant={suggestionsVisible ? this.getActiveDescendant() : undefined}
                 aria-controls={suggestionsAvailable}
                 aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
-                aria-expanded={!!this.state.suggestionsVisible}
+                aria-expanded={suggestionsVisible}
                 aria-haspopup="listbox"
                 aria-label={comboLabel}
                 role="combobox"
@@ -1039,9 +1041,9 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     const { suggestedDisplayValue, isFocused } = this.state;
     const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;
 
-    const suggestionsAvailable: string | undefined = this.state.suggestionsVisible
-      ? this._ariaMap.suggestionList
-      : undefined;
+    const suggestionsVisible = !!this.state.suggestionsVisible;
+
+    const suggestionsAvailable: string | undefined = suggestionsVisible ? this._ariaMap.suggestionList : undefined;
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
@@ -1087,9 +1089,9 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               onClick={this.onClick}
               onInputValueChange={this.onInputChange}
               suggestedDisplayValue={suggestedDisplayValue}
-              aria-activedescendant={this.getActiveDescendant()}
+              aria-activedescendant={suggestionsVisible ? this.getActiveDescendant() : undefined}
               aria-controls={suggestionsAvailable}
-              aria-expanded={!!this.state.suggestionsVisible}
+              aria-expanded={suggestionsVisible}
               aria-haspopup="listbox"
               aria-label={comboLabel}
               role="combobox"
