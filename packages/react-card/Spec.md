@@ -102,21 +102,20 @@ Card goes for a more structural and generic approach to a card component and is 
 
 #### API
 
-| Property    | Values                                                                               | Default    | Purpose                                                                                         |
-| ----------- | ------------------------------------------------------------------------------------ | ---------- | ----------------------------------------------------------------------------------------------- |
-| orientation | `vertical`, `horizontal`                                                             | `vertical` | Orientation of the card                                                                         |
-| size        | `smallest`, `smaller`, `small`, `medium`, `large`                                    | `medium`   | Define the minimum size of the card. Smaller sizes only apply to horizontal card                |
-| scale       | `fixed`, `auto-width`, `auto-height`, `auto`, `fluid-width`, `fluid-height`, `fluid` | `auto`     | Manages how the card handles it's scaling depending on the content                              |
-| appearance  | `filled`, `filled-alternative`, `outline`, `subtle`                                  | `filled`   | Define the appearance of the card                                                               |
-| selectable  | boolean                                                                              | false      | Makes the card selectable by adding a checkbox to the _Actions_ area                            |
-| selected    | boolean                                                                              | false      | Set to `true` if card is selected                                                               |
-| expandable  | boolean                                                                              | false      | Allow card to expand to show whole content                                                      |
-| disabled    | boolean                                                                              | false      | Makes the card and card selection disabled (not propagated to children)                         |
-| focusable   | boolean \| 'noTab' \| 'tabExit' \| 'tabOnly'                                         | false      | Sets the focus behavior for the card. If `true`, the card will have the 'noTab' focus behavior. |
+| Property    | Values                                                                      | Default    | Purpose                                                                                         |
+| ----------- | --------------------------------------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------- |
+| orientation | `vertical`, `horizontal`                                                    | `vertical` | Orientation of the card                                                                         |
+| size        | `smallest`, `smaller`, `small`, `medium`, `large`                           | `medium`   | Define the minimum size of the card. Smaller sizes only apply to horizontal card                |
+| scale       | `auto-width`, `auto-height`, `auto`, `fluid-width`, `fluid-height`, `fluid` | undefined  | Manages how the card handles it's scaling depending on the content                              |
+| appearance  | `filled`, `filled-alternative`, `outline`, `subtle`                         | `filled`   | Define the appearance of the card                                                               |
+| selectable  | boolean                                                                     | false      | Makes the card selectable by adding a checkbox to the _Actions_ area                            |
+| selected    | boolean                                                                     | false      | Set to `true` if card is selected                                                               |
+| expandable  | boolean                                                                     | false      | Allow card to expand to show whole content                                                      |
+| disabled    | boolean                                                                     | false      | Makes the card and card selection disabled (not propagated to children)                         |
+| focusable   | boolean \| 'noTab' \| 'tabExit' \| 'tabOnly'                                | false      | Sets the focus behavior for the card. If `true`, the card will have the 'noTab' focus behavior. |
 
 #### `scale` property
 
-- `fixed`: Size of the card is fixed.
 - `auto-width`: `width` is set to `fit-content`.
 - `auto-height`: `height` is set to `fit-content`.
 - `auto`: `width` and `height` are set to `fit-content`.
