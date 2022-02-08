@@ -3028,8 +3028,6 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     directionalHintForRTL?: DirectionalHint;
     dismissOnTargetClick?: boolean;
     doNotLayer?: boolean;
-    // @deprecated
-    enableAriaHiddenSiblings?: boolean;
     finalHeight?: number;
     gapSpace?: number;
     hidden?: boolean;
