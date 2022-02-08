@@ -2,23 +2,24 @@ import { useContextSelector, useHasParentContext } from '@fluentui/react-context
 import { ListboxContextValues } from './ListboxContext';
 import { ListboxState } from '../components/Listbox/Listbox.types';
 import { ComboboxContext } from './ComboboxContext';
-import { useOptionGroupContextValues } from './useOptionGroupContext';
 
 export function useListboxContextValues(state: ListboxState): ListboxContextValues {
   const hasComboboxContext = useHasParentContext(ComboboxContext);
-  const { optionGroup } = useOptionGroupContextValues(state);
-  const { activeOption, onOptionClick, selectedKeys } = state;
+  const { activeOption, onOptionClick, registerOption, selectedKeys, unRegisterOption } = state;
   const comboboxContextValues = useContextSelector(ComboboxContext, ctx => ({
     registerOption: ctx.registerOption,
     unRegisterOption: ctx.unRegisterOption,
   }));
+  const standaloneContextValues = {
+    registerOption,
+    unRegisterOption,
+  };
 
   const listbox = {
     activeOption,
-    ...optionGroup,
     onOptionClick,
     selectedKeys,
-    ...(hasComboboxContext ? comboboxContextValues : {}),
+    ...(hasComboboxContext ? comboboxContextValues : standaloneContextValues),
   };
 
   return { listbox };

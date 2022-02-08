@@ -24,4 +24,10 @@ export type OptionCollectionState = {
   collectionData: OptionCollectionValue;
 
   options: OptionData;
+
+  /* function that child options call to register their values */
+  registerOption: (option: OptionValue) => void;
+
+  /* function that child options call to unregister their values */
+  unRegisterOption: (id: string) => void;
 };

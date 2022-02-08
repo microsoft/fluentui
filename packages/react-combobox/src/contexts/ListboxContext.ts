@@ -1,21 +1,14 @@
 import { createContext } from '@fluentui/react-context-selector';
 import type { Context } from '@fluentui/react-context-selector';
-import { OptionGroupContextValue } from './OptionGroupContext';
-import { OptionValue } from '../utils/OptionCollection.types';
+import { ListboxState } from '../components/Listbox';
 
 /**
  * Context shared with all Listbox Options
  */
-export type ListboxContextValue = OptionGroupContextValue & {
-  /* data of active option */
-  activeOption: OptionValue | undefined;
-
-  /* selection handler */
-  selectedKeys: string[];
-
-  /* option click callback */
-  onOptionClick: (optionKey: string) => void;
-};
+export type ListboxContextValue = Pick<
+  ListboxState,
+  'activeOption' | 'selectedKeys' | 'onOptionClick' | 'registerOption' | 'unRegisterOption'
+>;
 
 export type ListboxContextValues = {
   listbox: ListboxContextValue;

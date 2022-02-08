@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { OptionCollectionState, OptionCollectionValue, OptionData } from './OptionCollection.types';
+import type { OptionCollectionState, OptionCollectionValue, OptionData, OptionValue } from './OptionCollection.types';
 
 function getValidOptions(children: React.ReactNode): string[] {
   const keys: string[] = [];
@@ -49,8 +49,25 @@ export const useOptionCollection = (children: React.ReactNode): OptionCollection
     };
   }, [children]);
 
+  const { registerOption, unRegisterOption } = React.useMemo(() => {
+    const register = (option: OptionValue) => {
+      // id is currently duplicated in the key and option data. Keeping it as-is for now to test.
+      if (option && option.key) {
+        optionData.current[option.key] = option;
+      }
+    };
+
+    const unRegister = (id: string) => {
+      delete optionData.current[id];
+    };
+
+    return { registerOption: register, unRegisterOption: unRegister };
+  }, []);
+
   return {
     collectionData,
     options: optionData.current,
+    registerOption,
+    unRegisterOption,
   };
 };
