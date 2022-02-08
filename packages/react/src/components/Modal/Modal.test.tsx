@@ -4,12 +4,17 @@ import { ContextualMenu } from '../../ContextualMenu';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 import { safeCreate } from '@fluentui/test-utilities';
+import { render, act } from '@testing-library/react';
 import { resetIds } from '../../Utilities';
 import { Popup } from '../Popup/Popup';
 
 describe('Modal', () => {
   beforeEach(() => {
     resetIds();
+  });
+  afterEach(() => {
+    document.body.innerHTML = '';
+    jest.useRealTimers();
   });
   afterAll(() => {
     resetIds();
@@ -183,5 +188,104 @@ describe('Modal', () => {
         ReactDOM.createPortal.mockClear();
       },
     );
+  });
+
+  it('defaults to enableAriaHiddenSiblings=true when isModeless is unspecified', () => {
+    const { getByText } = render(
+      <div>
+        <div>sibling</div>
+        <Modal isOpen>content</Modal>
+      </div>,
+    );
+
+    const bodyChildren = Array.from(document.body.childNodes) as HTMLElement[];
+
+    const content = getByText('content');
+    const contentParent = bodyChildren.find(el => el.contains(content));
+    expect(contentParent).toBeTruthy();
+    expect(contentParent!.getAttribute('aria-hidden')).toBeNull();
+
+    for (const node of bodyChildren) {
+      if (node !== contentParent) {
+        expect(node.getAttribute('aria-hidden')).toBe('true');
+      }
+    }
+  });
+
+  it('respects enableAriaHiddenSiblings=false', () => {
+    const { queryByText } = render(
+      <div>
+        <div>sibling</div>
+        <Modal isOpen enableAriaHiddenSiblings={false}>
+          content
+        </Modal>
+      </div>,
+    );
+
+    expect(queryByText('content')).toBeTruthy(); // verify it's open
+
+    const bodyChildren = Array.from(document.body.childNodes) as HTMLElement[];
+    for (const node of bodyChildren) {
+      expect(node.getAttribute('aria-hidden')).toBeNull();
+    }
+  });
+
+  it('defaults to enableAriaHiddenSiblings=false when isModeless=true', () => {
+    const { queryByText } = render(
+      <div>
+        <div>sibling</div>
+        <Modal isOpen isModeless>
+          content
+        </Modal>
+      </div>,
+    );
+
+    expect(queryByText('content')).toBeTruthy(); // verify it's open
+
+    const bodyChildren = Array.from(document.body.childNodes) as HTMLElement[];
+    for (const node of bodyChildren) {
+      expect(node.getAttribute('aria-hidden')).toBeNull();
+    }
+  });
+
+  it('does not hide siblings when closed', () => {
+    const { queryByText } = render(
+      <div>
+        <div>sibling</div>
+        <Modal isOpen={false}>content</Modal>
+      </div>,
+    );
+
+    expect(queryByText('content')).toBeFalsy(); // verify it's closed
+
+    const bodyChildren = Array.from(document.body.childNodes) as HTMLElement[];
+    for (const node of bodyChildren) {
+      expect(node.getAttribute('aria-hidden')).toBeNull();
+    }
+  });
+
+  it('un-hides siblings after closing', () => {
+    jest.useFakeTimers();
+    const Wrapper = (props: { isOpen: boolean }) => (
+      <div>
+        <div>sibling</div>
+        <Modal isOpen={props.isOpen}>content</Modal>
+      </div>
+    );
+
+    const { queryByText, rerender } = render(<Wrapper isOpen />);
+    // already tested that siblings are hidden, so we probably don't need to check it again here
+
+    // close the modal and verify siblings get un-hidden
+    rerender(<Wrapper isOpen={false} />);
+    act(() => {
+      jest.runAllTimers();
+    });
+    expect(queryByText('content')).toBeFalsy();
+
+    const bodyChildren = Array.from(document.body.childNodes) as HTMLElement[];
+    for (const node of bodyChildren) {
+      expect(node.getAttribute('aria-hidden')).toBeNull();
+    }
   });
 });

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import { render } from '@testing-library/react';
 import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -262,5 +263,22 @@ describe('Callout', () => {
     // Just to make sure that both elements are not undefined
     expect(previousFocusElement).not.toBeFalsy();
     expect(previousFocusElement).toEqual(focusedElement);
+  });
+
+  // This behavior could be changed in the future
+  it('does not hide siblings (currently)', () => {
+    const { queryByText } = render(
+      <div>
+        <div>sibling</div>
+        <Callout>content</Callout>
+      </div>,
+    );
+
+    expect(queryByText('content')).toBeTruthy(); // verify it's open
+
+    const bodyChildren = Array.from(document.body.childNodes) as HTMLElement[];
+    for (const node of bodyChildren) {
+      expect(node.getAttribute('aria-hidden')).toBeNull();
+    }
   });
 });

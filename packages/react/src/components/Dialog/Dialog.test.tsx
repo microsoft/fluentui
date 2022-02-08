@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 import { mount } from 'enzyme';
 import { Dialog } from './Dialog';
@@ -272,5 +273,43 @@ describe('Dialog', () => {
       expect(dialogTitle).not.toBeNull();
       wrapper.unmount();
     });
+  });
+
+  it('hides siblings when open', () => {
+    const { getByText } = render(
+      <div>
+        <div>sibling</div>
+        <Dialog hidden={false}>content</Dialog>
+      </div>,
+    );
+
+    const bodyChildren = Array.from(document.body.childNodes) as HTMLElement[];
+
+    const content = getByText('content');
+    const contentParent = bodyChildren.find(el => el.contains(content));
+    expect(contentParent).toBeTruthy();
+    expect(contentParent!.getAttribute('aria-hidden')).toBeNull();
+
+    for (const node of bodyChildren) {
+      if (node !== contentParent) {
+        expect(node.getAttribute('aria-hidden')).toBe('true');
+      }
+    }
+  });
+
+  it('does not hide siblings when closed', () => {
+    const { queryByText } = render(
+      <div>
+        <div>sibling</div>
+        <Dialog hidden>content</Dialog>
+      </div>,
+    );
+
+    expect(queryByText('content')).toBeFalsy(); // verify it's closed
+
+    const bodyChildren = Array.from(document.body.childNodes) as HTMLElement[];
+    for (const node of bodyChildren) {
+      expect(node.getAttribute('aria-hidden')).toBeNull();
+    }
   });
 });

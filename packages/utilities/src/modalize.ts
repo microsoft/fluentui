@@ -11,22 +11,24 @@ import { getDocument } from './dom/getDocument';
  * Returns a function that undoes the changes it made.
  */
 export function modalize(target: HTMLElement): () => void {
+  const targetDocument = getDocument(target);
+  if (!targetDocument) {
+    // can't do this in SSR
+    return () => undefined;
+  }
+
   let affectedNodes: HTMLElement[] = [];
-  const targetDocument = getDocument(target) || document;
 
   // start at target, then recurse and do the same for parent, until we reach <body>
-  while (target !== targetDocument.body) {
+  while (target !== targetDocument.body && target.parentElement) {
     // grab all siblings of current element
-    for (const sibling of (target.parentElement!.children as unknown) as Array<HTMLElement>) {
+    for (const sibling of (target.parentElement.children as unknown) as HTMLElement[]) {
       // but ignore elements that are already aria-hidden
       if (sibling !== target && sibling.getAttribute('aria-hidden')?.toLowerCase() !== 'true') {
         affectedNodes.push(sibling);
       }
     }
 
-    if (!target.parentElement) {
-      break;
-    }
     target = target.parentElement;
   }
 
