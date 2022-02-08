@@ -33,7 +33,7 @@ task('screener:runner', cb => {
   if (changedPackages.has('@fluentui/docs')) {
     handlePromiseExit(screenerRunner(screenerConfigPath));
   } else {
-    handlePromiseExit(cancelScreenerRun(screenerConfigPath));
+    handlePromiseExit(cancelScreenerRun(screenerConfigPath, 'skipped'));
   }
 });
 

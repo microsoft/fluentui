@@ -110,10 +110,19 @@ export async function screenerRunner(screenerConfigPath) {
   await notifyIntegration({ commit, url: checkUrl, status: 'in_progress', project: screenerConfig.projectRepo });
 }
 
-export async function cancelScreenerRun(screenerConfigPath) {
+export async function cancelScreenerRun(
+  screenerConfigPath,
+  conclusion: ScreenerProxyPayload['conclusion'] = 'cancelled',
+) {
   const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath) as any;
   // https://github.com/microsoft/azure-pipelines-tasks/issues/9801
   const commit = process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID;
 
-  await notifyIntegration({ commit, url: '', status: 'completed', project: screenerConfig.projectRepo });
+  await notifyIntegration({
+    commit,
+    url: '',
+    status: 'completed',
+    project: screenerConfig.projectRepo,
+    conclusion,
+  });
 }
