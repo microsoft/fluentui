@@ -202,6 +202,9 @@ export class DetailsHeaderBase
 
     const classNames = this._classNames;
     const IconComponent = useFastIcons ? FontIcon : Icon;
+    const showGroupExpander =
+      groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible;
+    const columnIndexOffset = 1 + (showCheckbox ? 1 : 0) + (showGroupExpander ? 1 : 0);
 
     const isRTL = getRTL(theme);
     return (
@@ -222,7 +225,6 @@ export class DetailsHeaderBase
                 className={classNames.cellIsCheck}
                 aria-labelledby={`${this._id}-checkTooltip`}
                 onClick={!isCheckboxHidden ? this._onSelectAllClicked : undefined}
-                aria-colindex={1}
                 role={'columnheader'}
               >
                 {onRenderColumnHeaderTooltip(
@@ -277,7 +279,7 @@ export class DetailsHeaderBase
               ) : null,
             ]
           : null}
-        {groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
+        {showGroupExpander ? (
           <div
             className={classNames.cellIsGroupExpander}
             onClick={this._onToggleCollapseAll}
@@ -305,7 +307,7 @@ export class DetailsHeaderBase
               column={column}
               styles={column.styles}
               key={column.key}
-              columnIndex={(showCheckbox ? 2 : 1) + columnIndex}
+              columnIndex={columnIndexOffset + columnIndex}
               parentId={this._id}
               isDraggable={_isDraggable}
               updateDragInfo={this._updateDragInfo}

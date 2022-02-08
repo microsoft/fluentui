@@ -69,8 +69,8 @@ jobs:
       - script: yarn build --to @fluentui/react @fluentui/keyboard-key --no-cache
         displayName: yarn build to @fluentui/react
 
-      - script: yarn workspace test-bundles bundle:size
-        displayName: yarn bundle test-bundles
+      - script: yarn workspace @fluentui/test-bundles bundle:size
+        displayName: yarn bundle @fluentui/test-bundles
         env:
           PACKAGE: '@fluentui/react'
 
@@ -107,8 +107,8 @@ jobs:
       - script: yarn build --to @fluentui/react-northstar --no-cache
         displayName: yarn build to @fluentui/react-northstar
 
-      - script: yarn workspace test-bundles bundle:size
-        displayName: yarn bundle test-bundles
+      - script: yarn workspace @fluentui/test-bundles bundle:size
+        displayName: yarn bundle @fluentui/test-bundles
         env:
           PACKAGE: '@fluentui/react-northstar'
 

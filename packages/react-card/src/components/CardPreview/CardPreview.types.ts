@@ -1,8 +1,8 @@
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type CardPreviewSlots = {
-  root: IntrinsicShorthandProps<'div'>;
-  logo?: IntrinsicShorthandProps<'div'>;
+  root: Slot<'div'>;
+  logo?: Slot<'div'>;
 };
 
 /**

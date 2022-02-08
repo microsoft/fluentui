@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Move Storybook stories to Preview Components section",
+  "packageName": "@fluentui/react-input",
+  "email": "me@levithomason.com",
+  "dependentChangeType": "none"
+}

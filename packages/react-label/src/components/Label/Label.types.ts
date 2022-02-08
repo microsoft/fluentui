@@ -1,5 +1,4 @@
-import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type LabelCommons = {
   /**
@@ -22,8 +21,8 @@ export type LabelCommons = {
 };
 
 export type LabelSlots = {
-  root: IntrinsicShorthandProps<'label'>;
-  required?: IntrinsicShorthandProps<'span'>;
+  root: Slot<'label'>;
+  required?: Slot<'span'>;
 };
 
 /**
@@ -41,5 +40,5 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
      * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
      * @defaultvalue false
      */
-    required?: boolean | IntrinsicShorthandProps<'span'> | React.ReactNode;
+    required?: boolean | Slot<'span'>;
   };

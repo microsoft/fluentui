@@ -11,7 +11,7 @@ export const renderCardPreview_unstable = (state: CardPreviewState) => {
   return (
     <slots.root {...slotProps.root}>
       {slotProps.root.children}
-      <slots.logo {...slotProps.logo} />
+      {slots.logo && <slots.logo {...slotProps.logo} />}
     </slots.root>
   );
 };

@@ -4,13 +4,12 @@
 
 ```ts
 
-import { ARIAButtonShorthandProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
@@ -34,8 +33,8 @@ export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommons>;
 
 // @public (undocumented)
 export type ButtonSlots = {
-    root: ARIAButtonShorthandProps;
-    icon?: IntrinsicShorthandProps<'span'>;
+    root: Slot<ARIAButtonSlotProps>;
+    icon?: Slot<'span'>;
 };
 
 // @public (undocumented)
@@ -50,12 +49,12 @@ export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 export const compoundButtonClassName = "fui-CompoundButton";
 
 // @public (undocumented)
-export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommons>;
+export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Partial<ButtonCommons>;
 
 // @public (undocumented)
 export type CompoundButtonSlots = ButtonSlots & {
-    secondaryContent?: IntrinsicShorthandProps<'span'>;
-    contentContainer: IntrinsicShorthandProps<'span'>;
+    secondaryContent?: Slot<'span'>;
+    contentContainer: NonNullable<Slot<'span'>>;
 };
 
 // @public (undocumented)
@@ -67,14 +66,12 @@ export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 // @public (undocumented)
 export const menuButtonClassName = "fui-MenuButton";
 
-// Warning: (ae-forgotten-export) The symbol "MenuTriggerChildProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<ButtonCommons, 'iconPosition'>> & Partial<MenuTriggerChildProps>;
+export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<ButtonCommons, 'iconPosition'>>;
 
 // @public (undocumented)
 export type MenuButtonSlots = ButtonSlots & {
-    menuIcon?: IntrinsicShorthandProps<'span'>;
+    menuIcon?: Slot<'span'>;
 };
 
 // @public (undocumented)
@@ -105,9 +102,9 @@ export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonPro
 
 // @public (undocumented)
 export type SplitButtonSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    menuButton?: ComponentSlotProps<typeof MenuButton>;
-    primaryActionButton?: ComponentSlotProps<typeof Button>;
+    root: Slot<'div'>;
+    menuButton?: Slot<typeof MenuButton>;
+    primaryActionButton?: Slot<typeof Button>;
 };
 
 // @public (undocumented)

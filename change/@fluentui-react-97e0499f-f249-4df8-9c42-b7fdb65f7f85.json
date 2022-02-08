@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add enableAriaHiddenSiblings to Popup, Callout, Dialog and respect it in Popup",
+  "packageName": "@fluentui/react",
+  "email": "stefhan@microsoft.com",
+  "dependentChangeType": "patch"
+}

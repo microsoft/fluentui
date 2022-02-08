@@ -421,6 +421,8 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       target,
       hidden,
       onLayerMounted,
+      // eslint-disable-next-line deprecation/deprecation
+      enableAriaHiddenSiblings = true,
     } = props;
 
     const hostElement = React.useRef<HTMLDivElement>(null);
@@ -519,6 +521,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
             onScroll={onScroll}
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
+            enableAriaHiddenSiblings={enableAriaHiddenSiblings}
           >
             {children}
           </Popup>
