@@ -56,6 +56,7 @@ export type OffsetFunctionParam = {
 // @public (undocumented)
 export type PopperRefHandle = {
     updatePosition: () => void;
+    setTarget: (target: HTMLElement) => void;
 };
 
 // @public (undocumented)
