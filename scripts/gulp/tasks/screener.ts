@@ -19,7 +19,7 @@ task('screener:runner', cb => {
 
   const changedPackages = getChangedPackages();
   const packageInfos = getAllPackageInfo();
-  if (!Object.values(packageInfos).some(packageInfo => packageInfo.packageJson.name === docsPackageName)) {
+  if (Object.values(packageInfos).every(packageInfo => packageInfo.packageJson.name !== docsPackageName)) {
     throw new Error(`${docsPackageName} does not exist in the repo`);
   }
 
