@@ -7,7 +7,7 @@ const findGitRoot = require('./findGitRoot');
  */
 function getChangedPackages(since = 'origin/master') {
   const gitRoot = findGitRoot();
-  const res = spawnSync('yarn', ['lage', 'info', '--since', since], { cwd: gitRoot });
+  const res = spawnSync('yarn', ['lage', 'info', '--since', since], { cwd: gitRoot, shell: true });
   if (res.status !== 0) {
     console.error(res.stderr);
     throw new Error(`yarn lage info --since ${since} failed with status ${res.status}`);
