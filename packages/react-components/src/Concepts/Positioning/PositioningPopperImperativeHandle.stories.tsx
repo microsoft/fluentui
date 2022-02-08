@@ -5,7 +5,7 @@ import { PositioningProps } from '@fluentui/react-positioning';
 
 export const PopperImperativeHandle = () => {
   const [loading, setLoading] = React.useState(true);
-  const popperRef: PositioningProps['popperRef'] = React.useRef({ updatePosition: () => null });
+  const popperRef: PositioningProps['popperRef'] = React.useRef(null);
   const timeoutRef = React.useRef(0);
 
   const onOpenChange: PopoverProps['onOpenChange'] = (e, data) => {
