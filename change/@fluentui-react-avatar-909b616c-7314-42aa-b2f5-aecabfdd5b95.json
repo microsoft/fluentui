@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix Avatar's high contrast border on Windows",
+  "packageName": "@fluentui/react-avatar",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
