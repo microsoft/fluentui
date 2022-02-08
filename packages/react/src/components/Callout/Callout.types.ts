@@ -278,6 +278,14 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
    * focus will not be restored automatically, and you'll need to call `params.originalElement.focus()`.
    */
   onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
+
+  /**
+   * Puts aria-hidden=true on all non-ancestors of the current callout, for screen readers.
+   * @defaultvalue true
+   * @deprecated Setting this to `false` is deprecated since it breaks modal behavior for some screen readers.
+   * It will not be supported in future versions of the library.
+   */
+  enableAriaHiddenSiblings?: boolean;
 }
 
 /**
