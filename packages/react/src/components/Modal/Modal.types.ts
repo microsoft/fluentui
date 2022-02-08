@@ -182,8 +182,9 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
 
   /**
    * Puts aria-hidden=true on all non-ancestors of the current modal, for screen readers.
-   * This is an experimental feature that will be graduated to default behavior after testing.
-   * This flag will be removed with the next major release.
+   * @defaultvalue true
+   * @deprecated Setting this to `false` is deprecated since it breaks modal behavior for some screen readers.
+   * It will not be supported in future versions of the library.
    */
   enableAriaHiddenSiblings?: boolean;
 }

@@ -5431,9 +5431,11 @@ export interface IDropdownStyles {
     caretDownWrapper: IStyle;
     dropdown: IStyle;
     dropdownDivider: IStyle;
+    dropdownDividerHidden: IStyle;
     dropdownItem: IStyle;
     dropdownItemDisabled: IStyle;
     dropdownItemHeader: IStyle;
+    dropdownItemHeaderHidden: IStyle;
     dropdownItemHidden: IStyle;
     dropdownItems: IStyle;
     dropdownItemSelected: IStyle;
@@ -6757,6 +6759,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
     dragOptions?: IDragOptions;
+    // @deprecated
     enableAriaHiddenSiblings?: boolean;
     isAlert?: boolean;
     isBlocking?: boolean;
@@ -7491,6 +7494,8 @@ export interface IPopupProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     ariaLabel?: string;
     ariaLabelledBy?: string;
     className?: string;
+    // @deprecated
+    enableAriaHiddenSiblings?: boolean;
     onDismiss?: (ev?: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
     onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     role?: string;

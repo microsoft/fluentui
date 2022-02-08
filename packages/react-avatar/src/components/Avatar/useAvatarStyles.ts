@@ -61,7 +61,6 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     fontFamily: tokens.fontFamilyBase,
     fontWeight: tokens.fontWeightSemibold,
-    boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke} inset`,
   },
 
   textCaption2: {
@@ -178,19 +177,22 @@ const useStyles = makeStyles({
     verticalAlign: 'top',
   },
 
-  iconLabel: {
+  iconInitials: {
     position: 'absolute',
+    boxSizing: 'border-box',
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
     lineHeight: '1',
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
 
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     verticalAlign: 'center',
     textAlign: 'center',
+    userSelect: 'none',
     ...shorthands.borderRadius('inherit'),
   },
 
@@ -428,7 +430,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   }
 
   if (state.initials) {
-    state.initials.className = mergeClasses(styles.iconLabel, state.initials.className);
+    state.initials.className = mergeClasses(styles.iconInitials, state.initials.className);
   }
 
   if (state.icon) {
@@ -447,7 +449,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       iconSizeClass = styles.icon48;
     }
 
-    state.icon.className = mergeClasses(styles.iconLabel, iconSizeClass, state.icon.className);
+    state.icon.className = mergeClasses(styles.iconInitials, iconSizeClass, state.icon.className);
   }
 
   return state;

@@ -10,8 +10,8 @@ export const renderSplitButton_unstable = (state: SplitButtonState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      <slots.primaryActionButton {...slotProps.primaryActionButton} />
-      <slots.menuButton {...slotProps.menuButton} />
+      {slots.primaryActionButton && <slots.primaryActionButton {...slotProps.primaryActionButton} />}
+      {slots.menuButton && <slots.menuButton {...slotProps.menuButton} />}
     </slots.root>
   );
 };
