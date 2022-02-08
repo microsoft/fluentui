@@ -86,9 +86,7 @@ async function notifyIntegration(payload: ScreenerProxyPayload) {
   });
 }
 
-export async function screenerRunner(screenerConfigPath) {
-  const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath) as any;
-
+export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
   // https://github.com/microsoft/azure-pipelines-tasks/issues/9801
   const commit = process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID;
   // https://github.com/screener-io/screener-runner/blob/2a8291fb1b0219c96c8428ea6644678b0763a1a1/src/ci.js#L101
@@ -111,10 +109,9 @@ export async function screenerRunner(screenerConfigPath) {
 }
 
 export async function cancelScreenerRun(
-  screenerConfigPath,
+  screenerConfig: ScreenerRunnerConfig,
   conclusion: ScreenerProxyPayload['conclusion'] = 'cancelled',
 ) {
-  const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath) as any;
   // https://github.com/microsoft/azure-pipelines-tasks/issues/9801
   const commit = process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID;
 

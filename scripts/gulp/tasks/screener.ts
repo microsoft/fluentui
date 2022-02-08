@@ -30,10 +30,12 @@ task('screener:runner', cb => {
         process.exit(1);
       });
 
+  const screenerConfig = require(screenerConfigPath);
+
   if (changedPackages.has('@fluentui/docs')) {
-    handlePromiseExit(screenerRunner(screenerConfigPath));
+    handlePromiseExit(screenerRunner(screenerConfig));
   } else {
-    handlePromiseExit(cancelScreenerRun(screenerConfigPath, 'skipped'));
+    handlePromiseExit(cancelScreenerRun(screenerConfig, 'skipped'));
   }
 });
 
