@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Callout: prevent data props from being used twice",
-  "packageName": "@fluentui/react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

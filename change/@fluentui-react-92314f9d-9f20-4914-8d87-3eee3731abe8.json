@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove duplicate export names caused by export star.",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

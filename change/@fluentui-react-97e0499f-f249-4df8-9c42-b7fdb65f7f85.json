@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add enableAriaHiddenSiblings to Popup and Dialog and respect it in Modal",
-  "packageName": "@fluentui/react",
-  "email": "stefhan@microsoft.com",
-  "dependentChangeType": "patch"
-}
