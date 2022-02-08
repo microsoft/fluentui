@@ -109,7 +109,6 @@ export function getIndexFromAction(action: DropdownActions, currentIndex: number
       return 0;
     case DropdownActions.Last:
       return maxIndex;
-    // TODO: for pageup and pagedown, should increment be customizable?
     case DropdownActions.PageDown:
       return Math.min(maxIndex, currentIndex + 10);
     case DropdownActions.PageUp:

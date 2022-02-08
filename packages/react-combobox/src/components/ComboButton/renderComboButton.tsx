@@ -9,7 +9,6 @@ import type { ComboButtonState, ComboButtonSlots } from './ComboButton.types';
 export const renderComboButton = (state: ComboButtonState) => {
   const { slots, slotProps } = getSlots<ComboButtonSlots>(state, comboButtonShorthandProps);
 
-  // TODO Add additional slots in the appropriate place
   return (
     <slots.root {...slotProps.root}>
       <slots.content {...slotProps.content}>{slotProps.content.children}</slots.content>

@@ -31,11 +31,7 @@ export type ComboboxCommons = {
 /**
  * Combobox Props
  */
-export type ComboboxProps = ComponentProps<ComboboxSlots> &
-  ComboboxCommons &
-  SelectionProps & {
-    onChange?: (option: string, selected: boolean) => void;
-  };
+export type ComboboxProps = ComponentProps<ComboboxSlots, 'trigger'> & ComboboxCommons & SelectionProps;
 
 /**
  * State used in rendering Combobox

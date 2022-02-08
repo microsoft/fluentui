@@ -13,8 +13,8 @@ export const useSelection = (props: SelectionProps): [string[], (key: string) =>
   const selectKey = (optionKey: string) => {
     if (multiselect) {
       // toggle selected state of optionKey for multiselect
-      const selectedIndex = selectedKeys.indexOf(optionKey);
-      if (selectedIndex) {
+      const isSelected = selectedKeys.indexOf(optionKey) > -1;
+      if (isSelected) {
         // deselect option
         setSelectedKeys(selectedKeys.filter(key => key !== optionKey));
       } else {

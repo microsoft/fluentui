@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import { ComboboxContext } from '../../contexts/ComboboxContext';
 // import { ChevronDown20Regular as ChevronDownIcon } from '@fluentui/react-icons';
 import type { ComboButtonProps, ComboButtonSlots, ComboButtonState } from './ComboButton.types';
 
@@ -19,6 +21,11 @@ export const comboButtonShorthandProps: (keyof ComboButtonSlots)[] = ['root', 'c
  */
 export const useComboButton = (props: ComboButtonProps, ref: React.Ref<HTMLButtonElement>): ComboButtonState => {
   const { placeholder, value } = props;
+
+  const { activeId, open } = useContextSelector(ComboboxContext, ctx => ({
+    activeId: ctx.activeId,
+    open: ctx.open,
+  }));
 
   const nativeProps = getPartitionedNativeProps({
     props,
@@ -41,7 +48,8 @@ export const useComboButton = (props: ComboButtonProps, ref: React.Ref<HTMLButto
         ref,
         role: 'combobox',
         type: 'button',
-        'aria-expanded': 'false',
+        'aria-activedescendant': activeId,
+        'aria-expanded': open,
         children: value ? value : placeholder,
         ...nativeProps.primary,
       },

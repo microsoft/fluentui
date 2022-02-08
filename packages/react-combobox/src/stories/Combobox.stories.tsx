@@ -4,6 +4,7 @@ import descriptionMd from './ComboboxDescription.md';
 import bestPracticesMd from './ComboboxBestPractices.md';
 
 export { Default } from './ComboboxDefault.stories';
+export { Multiselect } from './ComboboxMultiselect.stories';
 
 export default {
   title: 'Components/Combobox',

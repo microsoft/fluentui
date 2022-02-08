@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useControllableState } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
 import { useOrderedGroup } from '../../utils/useOrderedGroup';
 import { useSelection } from '../../utils/useSelection';
@@ -28,22 +28,9 @@ export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): Li
     groupData: { count, getIdAtIndex, getIndexOfId },
   } = orderedGroup;
 
-  // get state from parent combobox, if it exists
-  const hasComboboxContext = useHasParentContext(ComboboxContext);
-  const contextValues = useContextSelector(ComboboxContext, ctx => ({
-    activeId: ctx.activeId,
-    onOptionClick: ctx.onOptionClick,
-    registerOption: ctx.registerOption,
-    selectedKeys: ctx.selectedKeys,
-    unRegisterOption: ctx.unRegisterOption,
-  }));
-
   const [selectedKeys, selectKey] = useSelection(props);
 
-  const [activeId, setActiveId] = useControllableState<string | undefined>({
-    state: contextValues.activeId,
-    initialState: undefined,
-  });
+  const [activeId, setActiveId] = React.useState<string | undefined>();
 
   const onOptionClick = (optionKey: string) => {
     // clicked option should always become active option
@@ -75,6 +62,23 @@ export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): Li
     }
   };
 
+  // get state from parent combobox, if it exists
+  const hasComboboxContext = useHasParentContext(ComboboxContext);
+  const contextValues = useContextSelector(ComboboxContext, ctx => ({
+    activeId: ctx.activeId,
+    onOptionClick: ctx.onOptionClick,
+    registerOption: ctx.registerOption,
+    selectedKeys: ctx.selectedKeys,
+    unRegisterOption: ctx.unRegisterOption,
+  }));
+
+  // without a parent combobox context, provide values directly from Listbox
+  const standaloneListboxValues = {
+    activeId,
+    onOptionClick,
+    selectedKeys,
+  };
+
   return {
     components: {
       root: 'div',
@@ -82,16 +86,13 @@ export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): Li
     root: getNativeElementProps('div', {
       ref,
       role: 'listbox',
-      'aria-activedescendant': activeId,
+      'aria-activedescendant': hasComboboxContext ? undefined : activeId,
       'aria-multiselectable': multiselect,
       tabIndex: 0,
       onKeyDown,
       ...props,
     }),
     ...orderedGroup,
-    activeId,
-    onOptionClick,
-    selectedKeys,
-    ...(hasComboboxContext ? contextValues : {}),
+    ...(hasComboboxContext ? contextValues : standaloneListboxValues),
   };
 };

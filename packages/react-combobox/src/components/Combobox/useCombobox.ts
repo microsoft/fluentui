@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useControllableState } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, resolveShorthand, useControllableState } from '@fluentui/react-utilities';
 import { DropdownActions, getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
 import { useOrderedGroup } from '../../utils/useOrderedGroup';
 import { useSelection } from '../../utils/useSelection';
@@ -21,7 +21,7 @@ export const comboboxShorthandProps: (keyof ComboboxSlots)[] = ['root', 'listbox
  * @param props - props from this instance of Combobox
  * @param ref - reference to root HTMLElement of Combobox
  */
-export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLElement>): ComboboxState => {
+export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLButtonElement>): ComboboxState => {
   const { multiselect, open: controlledOpen, placeholder, value: controlledValue } = props;
   const orderedGroup = useOrderedGroup(props.children);
   const {
@@ -42,19 +42,20 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLElement>): 
     initialState: false,
   });
 
-  const selectOption = (optionKey: string) => {
-    // update selection
-    selectKey(optionKey);
-
-    // update value
-    const selectedOption = getOptionAtId(optionKey);
-
+  // update value based on selectedKeys
+  React.useEffect(() => {
+    let newValue;
     if (multiselect) {
-      setValue(selectedKeys.join(', '));
+      newValue = selectedKeys.map(key => getOptionAtId(key).value).join(', ');
     } else {
-      setValue(selectedOption.value);
+      const selectedOption = getOptionAtId(selectedKeys[0]);
+      newValue = selectedOption ? selectedOption.value : placeholder;
     }
-  };
+
+    if (newValue !== value) {
+      setValue(newValue);
+    }
+  }, [getOptionAtId, multiselect, placeholder, selectedKeys, setValue, value]);
 
   const onOptionClick = (optionKey: string) => {
     // clicked option should always become active option
@@ -64,10 +65,10 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLElement>): 
     !multiselect && setOpen(false);
 
     // handle selection change
-    selectOption(optionKey);
+    selectKey(optionKey);
   };
 
-  const onTriggerClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onTriggerClick = () => {
     setOpen(!open);
   };
 
@@ -83,16 +84,16 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLElement>): 
         setOpen(true);
         break;
       case DropdownActions.Close:
-        // stop propagation for escape key to prevent nested dismiss issues
+        // stop propagation for escape key to avoid dismissing any parent popups
         event.stopPropagation();
         event.preventDefault();
         setOpen(false);
         break;
       case DropdownActions.CloseSelect:
-        setOpen(false);
+        !multiselect && setOpen(false);
       // fallthrough
       case DropdownActions.Select:
-        activeId && selectOption(activeId);
+        activeId && selectKey(activeId);
         event.preventDefault();
         break;
       default:
@@ -105,15 +106,21 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLElement>): 
     }
   };
 
+  const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'button',
+    excludedPropNames: ['children'],
+  });
+
   return {
     components: {
       root: 'div',
       listbox: Listbox,
       trigger: ComboButton,
     },
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
+    root: resolveShorthand(props.root, {
+      required: true,
+      defaultProps: { ...rootNativeProps, children: props.children },
     }),
 <<<<<<< HEAD
 =======
@@ -126,10 +133,12 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLElement>): 
     trigger: resolveShorthand(props.trigger, {
       required: true,
       defaultProps: {
+        ref,
         placeholder,
         value,
         onClick: onTriggerClick,
         onKeyDown,
+        ...triggerNativeProps,
       },
     }),
     ...orderedGroup,
