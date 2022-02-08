@@ -20,7 +20,7 @@ task('screener:runner', cb => {
   const changedPackages = getChangedPackages();
   const packageInfos = getAllPackageInfo();
   if (Object.values(packageInfos).every(packageInfo => packageInfo.packageJson.name !== docsPackageName)) {
-    throw new Error(`${docsPackageName} does not exist in the repo`);
+    throw new Error(`package ${docsPackageName} does not exist in the repo`);
   }
 
   const screenerConfigPath = paths.base('scripts/screener/screener.config.js');
