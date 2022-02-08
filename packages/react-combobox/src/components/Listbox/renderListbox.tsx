@@ -10,7 +10,6 @@ import { ListboxContextValues } from '../../contexts/ListboxContext';
 export const renderListbox = (state: ListboxState, contextValues: ListboxContextValues) => {
   const { slots, slotProps } = getSlots<ListboxSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return (
     <slots.root {...slotProps.root}>
       <ListboxContext.Provider value={contextValues.listbox}>{slotProps.root.children}</ListboxContext.Provider>

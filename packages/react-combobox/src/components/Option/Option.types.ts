@@ -16,8 +16,11 @@ export type OptionCommons = {
 /**
  * Option Props
  */
-export type OptionProps = ComponentProps<OptionSlots> &
+export type OptionProps = ComponentProps<Partial<OptionSlots>> &
   OptionCommons & {
+    /* Required as a unique identifier for options. It's recommended to use the same value as in key. */
+    itemKey: string;
+
     /* define a string value if the children are not a string */
     value?: string;
   };

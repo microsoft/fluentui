@@ -1,5 +1,0 @@
-# Dropdown
-
-## Background
-
-### Definition

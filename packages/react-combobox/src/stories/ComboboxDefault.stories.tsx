@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId } from '@fluentui/react-hooks';
+import { useId } from '@fluentui/react-utilities';
 import { Combobox, ComboboxProps, Option } from '../index';
 
 export const Default = (props: Partial<ComboboxProps>) => {
@@ -10,7 +10,7 @@ export const Default = (props: Partial<ComboboxProps>) => {
       <label id="temp-combo-label">Best pet</label>
       <Combobox aria-labelledby="temp-combo-label" placeholder="Select an animal" {...props}>
         {ops.map(option => (
-          <Option key={option} id={`${idBase}-${option}`}>
+          <Option key={option} itemKey={option} id={`${idBase}-${option}`}>
             {option}
           </Option>
         ))}

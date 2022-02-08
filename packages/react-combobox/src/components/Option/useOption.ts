@@ -29,18 +29,18 @@ function getValueString(value: string | undefined, children: React.ReactNode) {
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
-  const { activeId, onOptionClick, registerOption, selectedKeys, unRegisterOption } = useContextSelector(
+  const { activeOption, onOptionClick, registerOption, selectedKeys, unRegisterOption } = useContextSelector(
     ListboxContext,
     ctx => ({
-      activeId: ctx.activeId,
+      activeOption: ctx.activeOption,
       onOptionClick: ctx.onOptionClick,
       registerOption: ctx.registerOption,
       selectedKeys: ctx.selectedKeys,
       unRegisterOption: ctx.unRegisterOption,
     }),
   );
-  const { id, disabled, value } = props;
-  const selected = id ? selectedKeys.indexOf(id) > -1 : false;
+  const { id, itemKey, disabled, value } = props;
+  const selected = itemKey ? selectedKeys.indexOf(itemKey) > -1 : false;
 
   const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (disabled) {
@@ -48,7 +48,7 @@ export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): Opti
       return;
     }
 
-    onOptionClick(id || '');
+    onOptionClick(itemKey || '');
     props.onClick?.(event);
   };
 
@@ -56,12 +56,12 @@ export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): Opti
   React.useEffect(() => {
     // TODO: fix types for id/move to using required itemKey prop
     const optionValue = getValueString(value, props.children);
-    registerOption({ id: id as string, value: optionValue });
+    registerOption({ key: itemKey, id: id as string, value: optionValue });
 
     return () => {
       unRegisterOption(id as string);
     };
-  }, [registerOption, unRegisterOption, id, value, props.children]);
+  }, [registerOption, unRegisterOption, id, itemKey, value, props.children]);
 
   return {
     components: {
@@ -83,7 +83,7 @@ export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): Opti
         children: 'x',
       },
     }),
-    isActive: id === activeId,
+    isActive: !!(activeOption && id === activeOption.id),
     selected,
   };
 };

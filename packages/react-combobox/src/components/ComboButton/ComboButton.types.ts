@@ -19,7 +19,7 @@ export type ComboButtonCommons = {
 /**
  * ComboButton Props
  */
-export type ComboButtonProps = ComponentProps<ComboButtonSlots, 'content'> & ComboButtonCommons;
+export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & ComboButtonCommons;
 
 /**
  * State used in rendering ComboButton

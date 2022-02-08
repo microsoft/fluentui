@@ -7,14 +7,14 @@ import { useOptionGroupContextValues } from './useOptionGroupContext';
 export function useListboxContextValues(state: ListboxState): ListboxContextValues {
   const hasComboboxContext = useHasParentContext(ComboboxContext);
   const { optionGroup } = useOptionGroupContextValues(state);
-  const { activeId, onOptionClick, selectedKeys } = state;
+  const { activeOption, onOptionClick, selectedKeys } = state;
   const comboboxContextValues = useContextSelector(ComboboxContext, ctx => ({
     registerOption: ctx.registerOption,
     unRegisterOption: ctx.unRegisterOption,
   }));
 
   const listbox = {
-    activeId,
+    activeOption,
     ...optionGroup,
     onOptionClick,
     selectedKeys,

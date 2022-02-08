@@ -7,59 +7,138 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+
+// @public
+export const Combobox: ForwardRefComponent<ComboboxProps>;
+
+// @public (undocumented)
+export type ComboboxCommons = {
+    open?: boolean;
+    placeholder?: string;
+    selectedKeys?: string[];
+    value?: string;
+};
+
+// Warning: (ae-forgotten-export) The symbol "SelectionProps" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> & ComboboxCommons & SelectionProps;
+
+// @public (undocumented)
+export type ComboboxSlots = {
+    root: NonNullable<Slot<'div'>>;
+    listbox: Slot<typeof Listbox>;
+    trigger: Slot<typeof ComboButton>;
+};
+
+// Warning: (ae-forgotten-export) The symbol "OrderedGroupState" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "SelectionState" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type ComboboxState = ComponentState<ComboboxSlots> & Required<Pick<ComboboxCommons, 'open'>> & Pick<ComboboxCommons, 'placeholder' | 'value'> & OrderedGroupState & SelectionState & {
+    activeId?: string;
+    onOptionClick(optionKey: string): void;
+};
+
+// @public
+export const ComboButton: ForwardRefComponent<ComboButtonProps>;
+
+// @public (undocumented)
+export type ComboButtonCommons = {
+    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    placeholder?: string;
+    value?: string;
+};
+
+// @public
+export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & ComboButtonCommons;
+
+// @public (undocumented)
+export type ComboButtonSlots = {
+    root: NonNullable<Slot<'div'>>;
+    content: NonNullable<Slot<'button'>>;
+    dropdownIcon: Slot<'span'>;
+};
+
+// @public
+export type ComboButtonState = ComponentState<ComboButtonSlots> & ComboButtonCommons & {
+    open: boolean;
+};
 
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
 
-// @public (undocumented)
-export type ListboxCommons = {};
-
 // @public
-export type ListboxProps = ComponentProps<ListboxSlots> & ListboxCommons;
-
-// @public
-export const listboxShorthandProps: (keyof ListboxSlots)[];
+export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
 
 // @public (undocumented)
 export type ListboxSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public
-export type ListboxState = ComponentState<ListboxSlots> & ListboxCommons;
+export type ListboxState = ComponentState<ListboxSlots> & OrderedGroupState & SelectionState & {
+    activeId?: string;
+    onOptionClick(optionKey: string): void;
+};
 
 // @public
 const Option_2: ForwardRefComponent<OptionProps> & {
-    processOption?: Function;
+    fluentComponentType?: string;
 };
 export { Option_2 as Option }
 
 // @public (undocumented)
-export type OptionCommons = {};
-
-// @public
-export type OptionProps = ComponentProps<OptionSlots> & OptionCommons;
-
-// @public
-export const optionShorthandProps: (keyof OptionSlots)[];
-
-// @public (undocumented)
-export type OptionSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+export type OptionCommons = {
+    disabled?: boolean;
 };
 
 // @public
-export type OptionState = ComponentState<OptionSlots> & OptionCommons;
+export type OptionProps = ComponentProps<OptionSlots> & OptionCommons & {
+    value?: string;
+};
 
-// Warning: (ae-forgotten-export) The symbol "OptionGroupContextValues" needs to be exported by the entry point index.d.ts
+// @public (undocumented)
+export type OptionSlots = {
+    root: NonNullable<Slot<'div'>>;
+    check: Slot<'span'>;
+};
+
+// @public
+export type OptionState = ComponentState<OptionSlots> & OptionCommons & {
+    isActive: boolean;
+    selected: boolean;
+};
+
+// Warning: (ae-forgotten-export) The symbol "ComboboxContextValues" needs to be exported by the entry point index.d.ts
 //
 // @public
-export const renderListbox: (state: ListboxState, contextValues: OptionGroupContextValues) => JSX.Element;
+export const renderCombobox: (state: ComboboxState, contextValues: ComboboxContextValues) => JSX.Element;
+
+// @public
+export const renderComboButton: (state: ComboButtonState) => JSX.Element;
+
+// Warning: (ae-forgotten-export) The symbol "ListboxContextValues" needs to be exported by the entry point index.d.ts
+//
+// @public
+export const renderListbox: (state: ListboxState, contextValues: ListboxContextValues) => JSX.Element;
 
 // @public
 export const renderOption: (state: OptionState) => JSX.Element;
+
+// @public
+export const useCombobox: (props: ComboboxProps, ref: React_2.Ref<HTMLButtonElement>) => ComboboxState;
+
+// @public
+export const useComboboxStyles: (state: ComboboxState) => ComboboxState;
+
+// @public
+export const useComboButton: (props: ComboButtonProps, ref: React_2.Ref<HTMLButtonElement>) => ComboButtonState;
+
+// @public
+export const useComboButtonStyles: (state: ComboButtonState) => ComboButtonState;
 
 // @public
 export const useListbox: (props: ListboxProps, ref: React_2.Ref<HTMLElement>) => ListboxState;

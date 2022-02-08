@@ -1,15 +1,15 @@
 import { useMemo } from 'react';
 import { OptionGroupContextValues } from './OptionGroupContext';
-import { OptionValue, OptionGroupValue, OrderedGroupState } from '../utils/OrderedGroup.types';
+import { OptionValue, OrderedGroupState } from '../utils/OrderedGroup.types';
 
 export function useOptionGroupContextValues(state: OrderedGroupState): OptionGroupContextValues {
   const { options } = state;
 
   const { registerOption, unRegisterOption } = useMemo(() => {
-    const register = (option: OptionValue | OptionGroupValue) => {
+    const register = (option: OptionValue) => {
       // id is currently duplicated in the key and option data. Keeping it as-is for now to test.
-      if (option && option.id) {
-        options[option.id] = option;
+      if (option && option.key) {
+        options[option.key] = option;
       }
     };
 

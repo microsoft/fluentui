@@ -1,8 +1,0 @@
-{
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "types": ["cypress", "../../scripts/cypress/support"],
-    "lib": ["es2015", "dom"]
-  },
-  "include": ["."]
-}

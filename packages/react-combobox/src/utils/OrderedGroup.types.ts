@@ -1,4 +1,5 @@
 export type OptionValue = {
+  key: string;
   id: string;
   value: string;
 };
@@ -8,15 +9,15 @@ export type OptionGroupValue = {
 
   id: string;
 
-  getIdAtIndex(index: number): string;
+  getOptionAtIndex(index: number): OptionValue;
 
-  getIndexOfId(id: string): number;
+  getIndexOfKey(key: string): number;
 
-  getOptionAtId(id: string): OptionValue;
+  getOptionByKey(key: string): OptionValue;
 };
 
 export type OptionData = {
-  [id: string]: OptionValue | OptionGroupValue;
+  [key: string]: OptionValue;
 };
 
 export type OrderedGroupState = {

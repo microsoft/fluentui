@@ -7,6 +7,7 @@ describe('Combobox', () => {
   isConformant({
     Component: Combobox,
     displayName: 'Combobox',
+    primarySlot: 'trigger',
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

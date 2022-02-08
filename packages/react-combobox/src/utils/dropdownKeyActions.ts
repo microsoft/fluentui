@@ -1,4 +1,4 @@
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import * as keys from '@fluentui/keyboard-keys';
 import * as React from 'react';
 
 /**
@@ -33,22 +33,17 @@ export function getDropdownActionFromKey(
   options: DropdownActionOptions = {},
 ): DropdownActions {
   const { open = true, multiselect = false } = options;
-  const code = getCode(e);
+  const code = e.key;
   const { altKey, ctrlKey, key, metaKey } = e;
 
   // typing action occurs whether open or closed
-  if (key.length === 1 && code !== keyboardKey[' '] && !altKey && !ctrlKey && !metaKey) {
+  if (key.length === 1 && code !== keys.Space && !altKey && !ctrlKey && !metaKey) {
     return DropdownActions.Type;
   }
 
   // handle opening the dropdown if closed
   if (!open) {
-    if (
-      code === keyboardKey.ArrowDown ||
-      code === keyboardKey.ArrowUp ||
-      code === keyboardKey.Enter ||
-      code === keyboardKey[' ']
-    ) {
+    if (code === keys.ArrowDown || code === keys.ArrowUp || code === keys.Enter || code === keys.Space) {
       return DropdownActions.Open;
     }
 
@@ -57,37 +52,33 @@ export function getDropdownActionFromKey(
   }
 
   // select or close actions
-  if (
-    (code === keyboardKey.ArrowUp && altKey) ||
-    code === keyboardKey.Enter ||
-    (!multiselect && code === keyboardKey[' '])
-  ) {
+  if ((code === keys.ArrowUp && altKey) || code === keys.Enter || (!multiselect && code === keys.Space)) {
     return DropdownActions.CloseSelect;
   }
-  if (code === keyboardKey.Tab || (multiselect && code === keyboardKey[' '])) {
+  if (code === keys.Tab || (multiselect && code === keys.Space)) {
     return DropdownActions.Select;
   }
-  if (code === keyboardKey.Escape) {
+  if (code === keys.Escape) {
     return DropdownActions.Close;
   }
 
   // navigation interactions
-  if (code === keyboardKey.ArrowRight || code === keyboardKey.ArrowDown) {
+  if (code === keys.ArrowRight || code === keys.ArrowDown) {
     return DropdownActions.Next;
   }
-  if (code === keyboardKey.ArrowLeft || code === keyboardKey.ArrowUp) {
+  if (code === keys.ArrowLeft || code === keys.ArrowUp) {
     return DropdownActions.Previous;
   }
-  if (code === keyboardKey.Home) {
+  if (code === keys.Home) {
     return DropdownActions.First;
   }
-  if (code === keyboardKey.End) {
+  if (code === keys.End) {
     return DropdownActions.Last;
   }
-  if (code === keyboardKey.PageUp) {
+  if (code === keys.PageUp) {
     return DropdownActions.PageUp;
   }
-  if (code === keyboardKey.PageDown) {
+  if (code === keys.PageDown) {
     return DropdownActions.PageDown;
   }
 

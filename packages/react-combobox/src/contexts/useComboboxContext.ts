@@ -4,10 +4,10 @@ import { useOptionGroupContextValues } from './useOptionGroupContext';
 
 export function useComboboxContextValues(state: ComboboxState): ComboboxContextValues {
   const { optionGroup } = useOptionGroupContextValues(state);
-  const { activeId, onOptionClick, open, selectedKeys } = state;
+  const { activeOption, onOptionClick, open, selectedKeys } = state;
 
   const combobox = {
-    activeId,
+    activeOption,
     ...optionGroup,
     open,
     onOptionClick,

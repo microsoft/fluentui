@@ -1,4 +1,4 @@
-import { useBoolean, useId } from '@fluentui/react-hooks';
+import { useBoolean, useId } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { Listbox, Option, ListboxProps } from '../index';
 
@@ -14,7 +14,7 @@ export const Default = (props: Partial<ListboxProps>) => {
       <Listbox {...props}>
         <div>Test header</div>
         {optionData.map(option => (
-          <Option key={option} id={`${idBase}-${option}`}>
+          <Option key={option} itemKey={option} id={`${idBase}-${option}`}>
             {option}
           </Option>
         ))}

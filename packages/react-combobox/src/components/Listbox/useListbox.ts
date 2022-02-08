@@ -6,6 +6,7 @@ import { useSelection } from '../../utils/useSelection';
 import { DropdownActions, getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ListboxProps, ListboxState } from './Listbox.types';
+import { OptionValue } from '../../utils/OrderedGroup.types';
 
 /**
  * Create the state required to render Listbox.
@@ -20,16 +21,16 @@ export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): Li
   const { multiselect } = props;
   const orderedGroup = useOrderedGroup(props.children);
   const {
-    groupData: { count, getIdAtIndex, getIndexOfId },
+    groupData: { count, getOptionAtIndex, getOptionByKey, getIndexOfKey },
   } = orderedGroup;
 
   const [selectedKeys, selectKey] = useSelection(props);
 
-  const [activeId, setActiveId] = React.useState<string | undefined>();
+  const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
   const onOptionClick = (optionKey: string) => {
     // clicked option should always become active option
-    setActiveId(optionKey);
+    setActiveOption(getOptionByKey(optionKey));
 
     // handle selection change
     selectKey(optionKey);
@@ -38,13 +39,13 @@ export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): Li
   const onKeyDown = (event: KeyboardEvent) => {
     const action = getDropdownActionFromKey(event, { open: true });
     const maxIndex = count - 1;
-    const activeIndex = activeId ? getIndexOfId(activeId) : -1;
+    const activeIndex = activeOption ? getIndexOfKey(activeOption.key) : -1;
     let newIndex = activeIndex;
 
     switch (action) {
       case DropdownActions.Select:
       case DropdownActions.CloseSelect:
-        activeId && selectKey(activeId);
+        activeOption && selectKey(activeOption.key);
         break;
       default:
         newIndex = getIndexFromAction(action, activeIndex, maxIndex);
@@ -53,14 +54,14 @@ export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): Li
     if (newIndex !== activeIndex) {
       // prevent default page scroll/keyboard action if the index changed
       event.preventDefault();
-      setActiveId(getIdAtIndex(newIndex));
+      setActiveOption(getOptionAtIndex(newIndex));
     }
   };
 
   // get state from parent combobox, if it exists
   const hasComboboxContext = useHasParentContext(ComboboxContext);
   const contextValues = useContextSelector(ComboboxContext, ctx => ({
-    activeId: ctx.activeId,
+    activeOption: ctx.activeOption,
     onOptionClick: ctx.onOptionClick,
     registerOption: ctx.registerOption,
     selectedKeys: ctx.selectedKeys,
@@ -69,7 +70,7 @@ export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): Li
 
   // without a parent combobox context, provide values directly from Listbox
   const standaloneListboxValues = {
-    activeId,
+    activeOption,
     onOptionClick,
     selectedKeys,
   };
@@ -81,7 +82,7 @@ export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): Li
     root: getNativeElementProps('div', {
       ref,
       role: 'listbox',
-      'aria-activedescendant': hasComboboxContext ? undefined : activeId,
+      'aria-activedescendant': hasComboboxContext ? undefined : activeOption?.id,
       'aria-multiselectable': multiselect,
       tabIndex: 0,
       onKeyDown,

@@ -1,13 +1,14 @@
 import { createContext } from '@fluentui/react-context-selector';
 import type { Context } from '@fluentui/react-context-selector';
 import { OptionGroupContextValue } from './OptionGroupContext';
+import { OptionValue } from '../utils/OrderedGroup.types';
 
 /**
  * Context shared with all Listbox Options
  */
 export type ListboxContextValue = OptionGroupContextValue & {
-  /* id of active option */
-  activeId: string | undefined;
+  /* data of active option */
+  activeOption: OptionValue | undefined;
 
   /* selection handler */
   selectedKeys: string[];
@@ -21,7 +22,7 @@ export type ListboxContextValues = {
 };
 
 export const ListboxContext: Context<ListboxContextValue> = createContext<ListboxContextValue>({
-  activeId: undefined,
+  activeOption: undefined,
   onOptionClick() {
     // noop
   },

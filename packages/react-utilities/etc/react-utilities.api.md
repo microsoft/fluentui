@@ -62,42 +62,6 @@ export const defaultSSRContextValue: SSRContextValue;
 // @public
 export const divProperties: Record<string, number>;
 
-// @public (undocumented)
-export interface DropdownActionOptions {
-    // (undocumented)
-    multiselect?: boolean;
-    // (undocumented)
-    open?: boolean;
-}
-
-// @public
-export enum DropdownActions {
-    // (undocumented)
-    Close = 0,
-    // (undocumented)
-    CloseSelect = 1,
-    // (undocumented)
-    First = 2,
-    // (undocumented)
-    Last = 3,
-    // (undocumented)
-    Next = 4,
-    // (undocumented)
-    None = 5,
-    // (undocumented)
-    Open = 6,
-    // (undocumented)
-    PageDown = 7,
-    // (undocumented)
-    PageUp = 8,
-    // (undocumented)
-    Previous = 9,
-    // (undocumented)
-    Select = 10,
-    // (undocumented)
-    Type = 11
-}
-
 // @public
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
 
@@ -113,9 +77,6 @@ export const formProperties: Record<string, number>;
 //
 // @public
 export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
-
-// @public
-export function getDropdownActionFromKey(e: KeyboardEvent | React_2.KeyboardEvent, options?: DropdownActionOptions): DropdownActions;
 
 // @public
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;

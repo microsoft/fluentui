@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getPartitionedNativeProps, resolveShorthand, useControllableState } from '@fluentui/react-utilities';
 import { DropdownActions, getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
 import { useOrderedGroup } from '../../utils/useOrderedGroup';
+import { OptionValue } from '../../utils/OrderedGroup.types';
 import { useSelection } from '../../utils/useSelection';
 import { Listbox } from '../Listbox';
 import { ComboButton } from '../ComboButton';
@@ -21,10 +22,10 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLButtonEleme
   const orderedGroup = useOrderedGroup(props.children);
   const {
     options,
-    groupData: { count, getIdAtIndex, getIndexOfId, getOptionAtId },
+    groupData: { count, getOptionAtIndex, getIndexOfKey, getOptionByKey },
   } = orderedGroup;
 
-  const [activeId, setActiveId] = React.useState<string | undefined>();
+  const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
   const [selectedKeys, selectKey] = useSelection(props);
 
   const [value, setValue] = useControllableState({
@@ -41,20 +42,18 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLButtonEleme
   React.useEffect(() => {
     let newValue;
     if (multiselect) {
-      newValue = selectedKeys.map(key => getOptionAtId(key).value).join(', ');
+      newValue = selectedKeys.map(key => getOptionByKey(key).value).join(', ');
     } else {
-      const selectedOption = getOptionAtId(selectedKeys[0]);
+      const selectedOption = getOptionByKey(selectedKeys[0]);
       newValue = selectedOption ? selectedOption.value : placeholder;
     }
 
-    if (newValue !== value) {
-      setValue(newValue);
-    }
-  }, [getOptionAtId, multiselect, placeholder, selectedKeys, setValue, value]);
+    setValue(newValue);
+  }, [getOptionByKey, multiselect, placeholder, selectedKeys, setValue]);
 
   const onOptionClick = (optionKey: string) => {
     // clicked option should always become active option
-    setActiveId(optionKey);
+    setActiveOption(getOptionByKey(optionKey));
 
     // close on option click for single-select
     !multiselect && setOpen(false);
@@ -70,7 +69,7 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLButtonEleme
   const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     const action = getDropdownActionFromKey(event, { open, multiselect });
     const maxIndex = count - 1;
-    const activeIndex = activeId ? getIndexOfId(activeId) : -1;
+    const activeIndex = activeOption ? getIndexOfKey(activeOption.key) : -1;
     let newIndex = activeIndex;
 
     switch (action) {
@@ -88,7 +87,7 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLButtonEleme
         !multiselect && setOpen(false);
       // fallthrough
       case DropdownActions.Select:
-        activeId && selectKey(activeId);
+        activeOption && selectKey(activeOption.key);
         event.preventDefault();
         break;
       default:
@@ -97,7 +96,7 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLButtonEleme
     if (newIndex !== activeIndex) {
       // prevent default page scroll/keyboard action if the index changed
       event.preventDefault();
-      setActiveId(getIdAtIndex(newIndex));
+      setActiveOption(getOptionAtIndex(newIndex));
     }
   };
 
@@ -115,7 +114,10 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLButtonEleme
     },
     root: resolveShorthand(props.root, {
       required: true,
-      defaultProps: { ...rootNativeProps, children: props.children },
+      defaultProps: {
+        children: props.children,
+        ...rootNativeProps,
+      },
     }),
 <<<<<<< HEAD
 =======
@@ -137,7 +139,7 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLButtonEleme
       },
     }),
     ...orderedGroup,
-    activeId,
+    activeOption,
     onOptionClick,
     open,
     options,

@@ -1,6 +1,5 @@
 export * from './applyTriggerPropsToChildren';
 export * from './clamp';
-export * from './getDropdownActionFromKey';
 export * from './getNativeElementProps';
 export * from './getRTLSafeKey';
 export * from './getTriggerChild';

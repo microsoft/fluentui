@@ -1,10 +1,9 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { OrderedGroupState } from '../../utils/OrderedGroup.types';
+import { OptionValue, OrderedGroupState } from '../../utils/OrderedGroup.types';
 import { SelectionProps, SelectionState } from '../../utils/Selection.types';
 
 export type ListboxSlots = {
-  // TODO Add slots here and to listboxShorthandProps in useListbox.ts
-  root: NonNullable<Slot<'div'>>;
+  root: Slot<'div'>;
 };
 
 /**
@@ -18,6 +17,6 @@ export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
 export type ListboxState = ComponentState<ListboxSlots> &
   OrderedGroupState &
   SelectionState & {
-    activeId?: string;
+    activeOption?: OptionValue;
     onOptionClick(optionKey: string): void;
   };
