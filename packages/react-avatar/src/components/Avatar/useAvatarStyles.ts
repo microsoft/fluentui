@@ -185,7 +185,6 @@ const useStyles = makeStyles({
     width: '100%',
     height: '100%',
     lineHeight: '1',
-    ...shorthands.borderRadius('inherit'),
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
 
     display: 'flex',
@@ -193,6 +192,7 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     verticalAlign: 'center',
     textAlign: 'center',
+    ...shorthands.borderRadius('inherit'),
   },
 
   icon16: { fontSize: '16px' },
