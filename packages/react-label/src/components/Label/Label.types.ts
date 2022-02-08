@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-export type LabelCommons = {
+type LabelCommons = {
   /**
    * Renders the label as disabled
    * @defaultvalue false

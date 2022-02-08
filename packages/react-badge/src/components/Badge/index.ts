@@ -1,5 +1,6 @@
 export * from './Badge';
-export * from './Badge.types';
+// Explicit exports to omit BadgeCommons
+export type { BadgeProps, BadgeSlots, BadgeState } from './Badge.types';
 export * from './renderBadge';
 export * from './useBadge';
 export * from './useBadgeStyles';

@@ -34,7 +34,7 @@ export type AvatarSlots = {
   badge?: Slot<typeof PresenceBadge>;
 };
 
-export type AvatarCommons = {
+type AvatarCommons = {
   /**
    * The name of the person or entity represented by this Avatar. This should always be provided if it is available.
    *

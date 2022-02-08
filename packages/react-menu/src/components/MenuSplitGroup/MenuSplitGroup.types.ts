@@ -4,7 +4,7 @@ export type MenuSplitGroupSlots = {
   root: Slot<'div'>;
 };
 
-export type MenuSplitGroupCommons = {};
+type MenuSplitGroupCommons = {};
 
 /**
  * MenuSplitGroup Props
