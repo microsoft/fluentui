@@ -244,4 +244,7 @@ storiesOf('Avatar Converged', module)
       );
     },
     { includeHighContrast: true, includeDarkMode: true },
-  );
+  )
+  .addStory('image-broken', () => (
+    <Avatar name="Broken Image" image={{ src: `${imageRoot}/broken_image_url.jpg` }} />
+  ));
