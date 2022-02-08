@@ -1,19 +1,17 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type OptionGroupSlots = {
-  root: Slot<'div'>;
-};
+  root: NonNullable<Slot<'div'>>;
 
-export type OptionGroupCommons = {
-  // TODO Add things shared between props and state here
+  label?: Slot<'span'>;
 };
 
 /**
  * OptionGroup Props
  */
-export type OptionGroupProps = ComponentProps<OptionGroupSlots> & OptionGroupCommons;
+export type OptionGroupProps = ComponentProps<Partial<OptionGroupSlots>>;
 
 /**
  * State used in rendering OptionGroup
  */
-export type OptionGroupState = ComponentState<OptionGroupSlots> & OptionGroupCommons;
+export type OptionGroupState = ComponentState<OptionGroupSlots>;

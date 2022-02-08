@@ -17,7 +17,6 @@ function getValidOptions(children: React.ReactNode): string[] {
       // if the child is an option group, get its children
       // comboboxes semantically only support one level of option groups
       else if (fluentComponentType === 'OptionGroup' && child.props.children) {
-        // console.log('option group, has children:', child.props.children);
         keys.push(...getValidOptions(child.props.children));
       }
     }

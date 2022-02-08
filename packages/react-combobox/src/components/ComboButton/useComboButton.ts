@@ -17,8 +17,8 @@ import type { ComboButtonProps, ComboButtonState } from './ComboButton.types';
 export const useComboButton = (props: ComboButtonProps, ref: React.Ref<HTMLButtonElement>): ComboButtonState => {
   const { placeholder, value } = props;
 
-  const { activeId, open } = useContextSelector(ComboboxContext, ctx => ({
-    activeId: ctx.activeId,
+  const { activeOption, open } = useContextSelector(ComboboxContext, ctx => ({
+    activeOption: ctx.activeOption,
     open: ctx.open,
   }));
 
@@ -43,7 +43,7 @@ export const useComboButton = (props: ComboButtonProps, ref: React.Ref<HTMLButto
         ref,
         role: 'combobox',
         type: 'button',
-        'aria-activedescendant': activeId,
+        'aria-activedescendant': activeOption?.id,
         'aria-expanded': open,
         children: value ? value : placeholder,
         ...nativeProps.primary,
