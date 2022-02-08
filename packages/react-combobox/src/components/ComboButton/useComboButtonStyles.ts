@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { ComboButtonState } from './ComboButton.types';
 
 /**
@@ -6,14 +6,16 @@ import type { ComboButtonState } from './ComboButton.types';
  */
 const useStyles = makeStyles({
   root: {
-    border: '1px solid #d1d1d1',
+    ...shorthands.border('1px', 'solid', '#d1d1d1'),
     borderBottomColor: '#616161',
-    borderRadius: '4px',
+    ...shorthands.borderRadius('4px'),
     display: 'flex',
     alignItems: 'center',
 
     '&:focus-within': {
-      outline: '2px solid transparent',
+      outlineWidth: '2px',
+      outlineStyle: 'solid',
+      outlineColor: 'transparent',
       borderBottomColor: '#0078d4',
       borderBottomWidth: '2px',
     },
@@ -22,18 +24,18 @@ const useStyles = makeStyles({
   dropdownIcon: {
     flexGrow: 0,
     flexShrink: 0,
-    padding: '4px',
+    ...shorthands.padding('4px'),
   },
 
   content: {
     flexGrow: 1,
-    background: 'transparent',
-    border: 'none',
+    backgroundColor: 'transparent',
+    ...shorthands.border('none'),
     textAlign: 'left',
-    padding: '4px 8px',
+    ...shorthands.padding('4px', '8px'),
 
     '&:focus': {
-      outline: 'none',
+      outlineStyle: 'none',
     },
   },
 });
@@ -47,7 +49,9 @@ export const useComboButtonStyles = (state: ComboButtonState): ComboButtonState 
 
   state.content.className = mergeClasses(styles.content, state.content.className);
 
-  state.dropdownIcon.className = mergeClasses(styles.dropdownIcon, state.dropdownIcon.className);
+  if (state.dropdownIcon) {
+    state.dropdownIcon.className = mergeClasses(styles.dropdownIcon, state.dropdownIcon.className);
+  }
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

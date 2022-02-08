@@ -1,11 +1,11 @@
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type ComboButtonSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
-  content: IntrinsicShorthandProps<'button'>;
+  content: NonNullable<Slot<'button'>>;
 
-  dropdownIcon: IntrinsicShorthandProps<'span'>;
+  dropdownIcon: Slot<'span'>;
 };
 
 export type ComboButtonCommons = {

@@ -3,12 +3,7 @@ import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-uti
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 // import { ChevronDown20Regular as ChevronDownIcon } from '@fluentui/react-icons';
-import type { ComboButtonProps, ComboButtonSlots, ComboButtonState } from './ComboButton.types';
-
-/**
- * Array of all shorthand properties listed in ComboButtonSlots
- */
-export const comboButtonShorthandProps: (keyof ComboButtonSlots)[] = ['root', 'content', 'dropdownIcon'];
+import type { ComboButtonProps, ComboButtonState } from './ComboButton.types';
 
 /**
  * Create the state required to render ComboButton.

@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { ListboxState } from './Listbox.types';
 
 /**
@@ -7,7 +7,7 @@ import type { ListboxState } from './Listbox.types';
 const useStyles = makeStyles({
   root: {
     boxShadow: '0px 0px 2px 0px #0000001F, 0px 8px 16px 0px #00000024',
-    borderRadius: '4px',
+    ...shorthands.borderRadius('4px'),
     backgroundColor: '#fff',
   },
 

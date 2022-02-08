@@ -1,20 +1,15 @@
-import type {
-  ComponentProps,
-  ComponentState,
-  IntrinsicShorthandProps,
-  ObjectShorthandProps,
-} from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { OrderedGroupState } from '../../utils/OrderedGroup.types';
 import { SelectionProps, SelectionState } from '../../utils/Selection.types';
-import { ListboxProps } from '../Listbox';
-import { ComboButtonProps } from '../ComboButton';
+import { Listbox } from '../Listbox';
+import { ComboButton } from '../ComboButton';
 
 export type ComboboxSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
-  listbox: ObjectShorthandProps<ListboxProps>;
+  listbox: Slot<typeof Listbox>;
 
-  trigger: ObjectShorthandProps<ComboButtonProps>;
+  trigger: Slot<typeof ComboButton>;
 };
 
 export type ComboboxCommons = {

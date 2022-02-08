@@ -5,12 +5,7 @@ import { useOrderedGroup } from '../../utils/useOrderedGroup';
 import { useSelection } from '../../utils/useSelection';
 import { DropdownActions, getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
-import type { ListboxProps, ListboxSlots, ListboxState } from './Listbox.types';
-
-/**
- * Array of all shorthand properties listed in ListboxSlots
- */
-export const listboxShorthandProps: (keyof ListboxSlots)[] = ['root'];
+import type { ListboxProps, ListboxState } from './Listbox.types';
 
 /**
  * Create the state required to render Listbox.

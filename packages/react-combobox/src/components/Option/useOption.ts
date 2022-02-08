@@ -2,12 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { ListboxContext } from '../../contexts/ListboxContext';
-import type { OptionProps, OptionSlots, OptionState } from './Option.types';
-
-/**
- * Array of all shorthand properties listed in OptionSlots
- */
-export const optionShorthandProps: (keyof OptionSlots)[] = ['root', 'check'];
+import type { OptionProps, OptionState } from './Option.types';
 
 // TODO: refine this more
 function getValueString(value: string | undefined, children: React.ReactNode) {

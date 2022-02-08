@@ -5,12 +5,7 @@ import { useOrderedGroup } from '../../utils/useOrderedGroup';
 import { useSelection } from '../../utils/useSelection';
 import { Listbox } from '../Listbox';
 import { ComboButton } from '../ComboButton';
-import type { ComboboxProps, ComboboxSlots, ComboboxState } from './Combobox.types';
-
-/**
- * Array of all shorthand properties listed in ComboboxSlots
- */
-export const comboboxShorthandProps: (keyof ComboboxSlots)[] = ['root', 'listbox', 'trigger'];
+import type { ComboboxProps, ComboboxState } from './Combobox.types';
 
 /**
  * Create the state required to render Combobox.
