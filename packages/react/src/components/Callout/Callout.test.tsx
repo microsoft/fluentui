@@ -276,7 +276,7 @@ describe('Callout', () => {
 
     expect(queryByText('content')).toBeTruthy(); // verify it's open
 
-    const bodyChildren = Array.from(document.body.childNodes) as HTMLElement[];
+    const bodyChildren = Array.from(document.body.children) as HTMLElement[];
     for (const node of bodyChildren) {
       expect(node.getAttribute('aria-hidden')).toBeNull();
     }

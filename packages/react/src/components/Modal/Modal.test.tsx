@@ -198,7 +198,7 @@ describe('Modal', () => {
       </div>,
     );
 
-    const bodyChildren = Array.from(document.body.childNodes) as HTMLElement[];
+    const bodyChildren = Array.from(document.body.children) as HTMLElement[];
 
     const content = getByText('content');
     const contentParent = bodyChildren.find(el => el.contains(content));
@@ -224,7 +224,7 @@ describe('Modal', () => {
 
     expect(queryByText('content')).toBeTruthy(); // verify it's open
 
-    const bodyChildren = Array.from(document.body.childNodes) as HTMLElement[];
+    const bodyChildren = Array.from(document.body.children) as HTMLElement[];
     for (const node of bodyChildren) {
       expect(node.getAttribute('aria-hidden')).toBeNull();
     }
@@ -242,7 +242,7 @@ describe('Modal', () => {
 
     expect(queryByText('content')).toBeTruthy(); // verify it's open
 
-    const bodyChildren = Array.from(document.body.childNodes) as HTMLElement[];
+    const bodyChildren = Array.from(document.body.children) as HTMLElement[];
     for (const node of bodyChildren) {
       expect(node.getAttribute('aria-hidden')).toBeNull();
     }
@@ -258,7 +258,7 @@ describe('Modal', () => {
 
     expect(queryByText('content')).toBeFalsy(); // verify it's closed
 
-    const bodyChildren = Array.from(document.body.childNodes) as HTMLElement[];
+    const bodyChildren = Array.from(document.body.children) as HTMLElement[];
     for (const node of bodyChildren) {
       expect(node.getAttribute('aria-hidden')).toBeNull();
     }
@@ -283,7 +283,7 @@ describe('Modal', () => {
     });
     expect(queryByText('content')).toBeFalsy();
 
-    const bodyChildren = Array.from(document.body.childNodes) as HTMLElement[];
+    const bodyChildren = Array.from(document.body.children) as HTMLElement[];
     for (const node of bodyChildren) {
       expect(node.getAttribute('aria-hidden')).toBeNull();
     }
