@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from '@fluentui/react-popover';
 import { Button } from '@fluentui/react-button';
-import { PositioningProps } from '@fluentui/react-positioning';
+import { PopperRefHandle } from '@fluentui/react-positioning';
 
 export const PopperImperativeHandle = () => {
   const [loading, setLoading] = React.useState(true);
-  const popperRef: PositioningProps['popperRef'] = React.useRef(null);
+  const popperRef = React.useRef<PopperRefHandle>(null);
   const timeoutRef = React.useRef(0);
 
   const onOpenChange: PopoverProps['onOpenChange'] = (e, data) => {
