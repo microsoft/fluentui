@@ -1,8 +1,10 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { OptionValue, OptionCollectionState } from '../../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../../utils/Selection.types';
 
 export type ListboxSlots = {
+  /* The root slot, a `<div>` with `role="listbox"` */
   root: Slot<'div'>;
 };
 
@@ -17,7 +19,12 @@ export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
 export type ListboxState = ComponentState<ListboxSlots> &
   OptionCollectionState &
   SelectionState & {
+    /* Option data for the currently highlighted option (not the selected option) */
     activeOption?: OptionValue;
+
+    /* Unique id string that can be used as a base for default option ids */
     idBase: string;
-    onOptionClick(optionKey: string): void;
+
+    /* Callback when an option is clicked, for internal use */
+    onOptionClick(event: React.MouseEvent, optionKey: string): void;
   };

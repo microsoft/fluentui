@@ -2,6 +2,9 @@ import * as React from 'react';
 import { OptionProps } from '../components/Option';
 import type { OptionCollectionState, OptionData, OptionValue } from './OptionCollection.types';
 
+/**
+ * Takes React children and returns an array of Option keys in order, and a cloned set of processed children
+ */
 function getValidOptions(children: React.ReactNode): { keys: string[]; children: React.ReactNode } {
   const keys: string[] = [];
 
@@ -35,6 +38,9 @@ function getValidOptions(children: React.ReactNode): { keys: string[]; children:
   return { keys, children: clonedChildren };
 }
 
+/**
+ * A hook for managing a collection of child Options
+ */
 export const useOptionCollection = (children: React.ReactNode): OptionCollectionState => {
   const optionData: React.MutableRefObject<OptionData> = React.useRef({});
 
@@ -52,7 +58,6 @@ export const useOptionCollection = (children: React.ReactNode): OptionCollection
     return {
       collectionData: {
         count: optionKeys.length,
-        id: 'test',
         getOptionAtIndex,
         getIndexOfKey,
         getOptionByKey,

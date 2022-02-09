@@ -31,15 +31,15 @@ export const useListbox_unstable = (
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
-  const onOptionClick = (optionKey: string) => {
+  const onOptionClick = (event: React.MouseEvent<HTMLElement>, optionKey: string) => {
     // clicked option should always become active option
     setActiveOption(getOptionByKey(optionKey));
 
     // handle selection change
-    selectKey(optionKey);
+    selectKey(event, optionKey);
   };
 
-  const onKeyDown = (event: KeyboardEvent) => {
+  const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     const action = getDropdownActionFromKey(event, { open: true });
     const maxIndex = count - 1;
     const activeIndex = activeOption ? getIndexOfKey(activeOption.key) : -1;
@@ -48,7 +48,7 @@ export const useListbox_unstable = (
     switch (action) {
       case DropdownActions.Select:
       case DropdownActions.CloseSelect:
-        activeOption && selectKey(activeOption.key);
+        activeOption && selectKey(event, activeOption.key);
         break;
       default:
         newIndex = getIndexFromAction(action, activeIndex, maxIndex);

@@ -1,7 +1,7 @@
 import { useControllableState } from '@fluentui/react-utilities';
-import { SelectionProps } from './Selection.types';
+import { SelectionEvents, SelectionProps, SelectionValue } from './Selection.types';
 
-export const useSelection = (props: SelectionProps): [string[], (key: string) => void] => {
+export const useSelection = (props: SelectionProps): SelectionValue => {
   const { initialSelectedKeys, multiselect, onSelect, selectedKeys: controlledSelectedKeys } = props;
 
   const [selectedKeys, setSelectedKeys] = useControllableState({
@@ -10,7 +10,7 @@ export const useSelection = (props: SelectionProps): [string[], (key: string) =>
     initialState: [],
   });
 
-  const selectKey = (optionKey: string) => {
+  const selectKey = (event: SelectionEvents, optionKey: string) => {
     if (multiselect) {
       // toggle selected state of optionKey for multiselect
       const isSelected = selectedKeys.indexOf(optionKey) > -1;
@@ -26,7 +26,7 @@ export const useSelection = (props: SelectionProps): [string[], (key: string) =>
       setSelectedKeys([optionKey]);
     }
 
-    onSelect?.(optionKey);
+    onSelect?.(event, optionKey);
   };
 
   return [selectedKeys, selectKey];

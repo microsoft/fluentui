@@ -1,14 +1,17 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type OptionSlots = {
+  /* The root option slot, with role="option" */
   root: NonNullable<Slot<'div'>>;
 
+  /* The check icon that is visible for selected options */
   check: Slot<'span'>;
 };
 
 export type OptionCommons = {
   /**
-   * Disabled options cannot be selected, but are still navigable
+   * Sets an option to the `disabled` state.
+   * Disabled options cannot be selected, but are still keyboard navigable
    */
   disabled?: boolean;
 };
@@ -24,7 +27,10 @@ export type OptionProps = ComponentProps<Partial<OptionSlots>> &
      */
     fluentKey?: string;
 
-    /* define a string value if the children are not a string */
+    /*
+     * Defines a string value for the option, used for the parent Combobox's value.
+     * Use this if the children are not a string, or you wish the value to differ from the displayed text.
+     */
     value?: string;
   };
 
@@ -33,6 +39,9 @@ export type OptionProps = ComponentProps<Partial<OptionSlots>> &
  */
 export type OptionState = ComponentState<OptionSlots> &
   OptionCommons & {
+    /* If true, this is the currently highlighted option */
     isActive: boolean;
+
+    /* If true, the option is selected */
     selected: boolean;
   };

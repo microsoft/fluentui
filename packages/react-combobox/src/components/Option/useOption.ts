@@ -49,7 +49,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       return;
     }
 
-    onOptionClick(key || '');
+    onOptionClick(event, key || '');
     props.onClick?.(event);
   };
 

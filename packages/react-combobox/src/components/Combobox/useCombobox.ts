@@ -12,7 +12,7 @@ import { OptionCollectionState, OptionValue } from '../../utils/OptionCollection
 import { useSelection } from '../../utils/useSelection';
 import { Listbox } from '../Listbox';
 import { ComboButton } from '../ComboButton';
-import type { ComboboxProps, ComboboxState } from './Combobox.types';
+import type { ComboboxProps, ComboboxState, OpenEvents } from './Combobox.types';
 
 /**
  * Create the state required to render Combobox.
@@ -28,7 +28,15 @@ export const useCombobox_unstable = (
   optionCollection: OptionCollectionState,
   ref: React.Ref<HTMLButtonElement>,
 ): ComboboxState => {
-  const { inline = false, multiselect, open: controlledOpen, placeholder, positioning, value: controlledValue } = props;
+  const {
+    inline = false,
+    multiselect,
+    onOpenChange,
+    open: controlledOpen,
+    placeholder,
+    positioning,
+    value: controlledValue,
+  } = props;
   const {
     options,
     collectionData: { count, getOptionAtIndex, getIndexOfKey, getOptionByKey },
@@ -43,7 +51,7 @@ export const useCombobox_unstable = (
     initialState: undefined,
   });
 
-  const [open, setOpen] = useControllableState({
+  const [open, setOpenState] = useControllableState({
     state: controlledOpen,
     initialState: false,
   });
@@ -77,19 +85,24 @@ export const useCombobox_unstable = (
     setValue(newValue);
   }, [getOptionByKey, multiselect, placeholder, selectedKeys, setValue]);
 
-  const onOptionClick = (optionKey: string) => {
+  const setOpen = (event: OpenEvents, newState: boolean) => {
+    onOpenChange?.(event, { open: newState });
+    setOpenState(newState);
+  };
+
+  const onOptionClick = (event: React.MouseEvent<HTMLElement>, optionKey: string) => {
     // clicked option should always become active option
     setActiveOption(getOptionByKey(optionKey));
 
     // close on option click for single-select
-    !multiselect && setOpen(false);
+    !multiselect && setOpen(event, false);
 
     // handle selection change
-    selectKey(optionKey);
+    selectKey(event, optionKey);
   };
 
-  const onTriggerClick = () => {
-    setOpen(!open);
+  const onTriggerClick = (event: React.MouseEvent<HTMLElement>) => {
+    setOpen(event, !open);
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
@@ -101,19 +114,19 @@ export const useCombobox_unstable = (
     switch (action) {
       case DropdownActions.Open:
         event.preventDefault();
-        setOpen(true);
+        setOpen(event, true);
         break;
       case DropdownActions.Close:
         // stop propagation for escape key to avoid dismissing any parent popups
         event.stopPropagation();
         event.preventDefault();
-        setOpen(false);
+        setOpen(event, false);
         break;
       case DropdownActions.CloseSelect:
-        !multiselect && setOpen(false);
+        !multiselect && setOpen(event, false);
       // fallthrough
       case DropdownActions.Select:
-        activeOption && selectKey(activeOption.key);
+        activeOption && selectKey(event, activeOption.key);
         event.preventDefault();
         break;
       default:

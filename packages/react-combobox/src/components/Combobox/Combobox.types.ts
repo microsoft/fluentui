@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { OptionValue, OptionCollectionState } from '../../utils/OptionCollection.types';
@@ -6,27 +7,49 @@ import { Listbox } from '../Listbox';
 import { ComboButton } from '../ComboButton';
 
 export type ComboboxSlots = {
+  /* The root combobox slot */
   root: NonNullable<Slot<'div'>>;
 
+  /* The dropdown listbox slot */
   listbox: Slot<typeof Listbox>;
 
+  /* The primary slot, the element with role="combobox" */
   trigger: Slot<typeof ComboButton>;
 };
 
 export type ComboboxCommons = {
+  /**
+   * Controls the colors and borders of the combobox.
+   * @default 'outline'
+   */
+  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+
   /**
    * Render the combobox dropdown inline in the DOM.
    * This has accessibility benefits, particularly for touch screen readers.
    */
   inline?: boolean;
 
+  /**
+   * Callback when the open/closed state of the dropdown changes
+   */
+  onOpenChange?(event: OpenEvents, data: OnOpenChangeData): void;
+
+  /**
+   * Sets the open/closed state of the dropdown.
+   * Use together with onOpenChange to fully control the dropdown's visibility
+   */
   open?: boolean;
 
+  /**
+   * If set, the placeholder will show when no value is selected
+   */
   placeholder?: string;
 
-  selectedKeys?: string[];
-
-  /* controlled value string */
+  /**
+   * The value displayed by the Combobox.
+   * Use this with `onSelect` to directly control the displayed value string
+   */
   value?: string;
 };
 
@@ -52,7 +75,22 @@ export type ComboboxState = ComponentState<ComboboxSlots> &
   Pick<ComboboxCommons, 'placeholder' | 'value'> &
   OptionCollectionState &
   SelectionState & {
+    /* Option data for the currently highlighted option (not the selected option) */
     activeOption?: OptionValue;
+
+    /* Unique id string that can be used as a base for default option ids */
     idBase: string;
-    onOptionClick(optionKey: string): void;
+
+    /* Callback when an option is clicked, for internal use */
+    onOptionClick(event: React.MouseEvent, optionKey: string): void;
   };
+
+/**
+ * Data for the Combobox onOpenChange event.
+ */
+export type OnOpenChangeData = {
+  open: boolean;
+};
+
+/* Possible event types for onOpen */
+export type OpenEvents = React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>;

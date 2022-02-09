@@ -16,10 +16,11 @@ export const Combobox: ForwardRefComponent<ComboboxProps>;
 
 // @public (undocumented)
 export type ComboboxCommons = {
+    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
     inline?: boolean;
+    onOpenChange?(event: OpenEvents, data: OnOpenChangeData): void;
     open?: boolean;
     placeholder?: string;
-    selectedKeys?: string[];
     value?: string;
 };
 
@@ -44,7 +45,7 @@ export type ComboboxSlots = {
 export type ComboboxState = ComponentState<ComboboxSlots> & Required<Pick<ComboboxCommons, 'open' | 'inline'>> & Pick<ComboboxCommons, 'placeholder' | 'value'> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
     idBase: string;
-    onOptionClick(optionKey: string): void;
+    onOptionClick(event: React_2.MouseEvent, optionKey: string): void;
 };
 
 // @public
@@ -58,7 +59,7 @@ export type ComboButtonCommons = {
 };
 
 // @public
-export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & ComboButtonCommons;
+export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & ComboButtonCommons & {};
 
 // @public (undocumented)
 export type ComboButtonSlots = {
@@ -87,8 +88,16 @@ export type ListboxSlots = {
 export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
     idBase: string;
-    onOptionClick(optionKey: string): void;
+    onOptionClick(event: React_2.MouseEvent, optionKey: string): void;
 };
+
+// @public
+export type OnOpenChangeData = {
+    open: boolean;
+};
+
+// @public (undocumented)
+export type OpenEvents = React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>;
 
 // @public
 const Option_2: ForwardRefComponent<OptionProps> & {
@@ -187,7 +196,7 @@ export const useOptionStyles_unstable: (state: OptionState) => OptionState;
 
 // Warnings were encountered during analysis:
 //
-// lib/components/Combobox/Combobox.types.d.ts:38:5 - (ae-forgotten-export) The symbol "OptionValue" needs to be exported by the entry point index.d.ts
+// lib/components/Combobox/Combobox.types.d.ts:58:5 - (ae-forgotten-export) The symbol "OptionValue" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
