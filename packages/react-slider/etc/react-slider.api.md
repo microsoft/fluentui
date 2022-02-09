@@ -20,25 +20,12 @@ export const Slider: ForwardRefComponent<SliderProps>;
 export const sliderClassName = "fui-Slider";
 
 // @public (undocumented)
-export type SliderCommons = {
-    defaultValue?: number;
-    value?: number;
-    min?: number;
-    max?: number;
-    step?: number;
-    disabled?: boolean;
-    vertical?: boolean;
-    origin?: number;
-    size?: 'small' | 'medium';
-    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
-    getAriaValueText?: (value: number) => string;
-};
-
-// @public (undocumented)
 export type SliderOnChangeData = {
     value: number;
 };
 
+// Warning: (ae-forgotten-export) The symbol "SliderCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommons;
 

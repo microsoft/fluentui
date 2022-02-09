@@ -19,9 +19,8 @@ export const SpinButton: ForwardRefComponent<SpinButtonProps>;
 // @public (undocumented)
 export const spinButtonClassName = "fui-SpinButton";
 
-// @public (undocumented)
-export type SpinButtonCommons = {};
-
+// Warning: (ae-forgotten-export) The symbol "SpinButtonCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type SpinButtonProps = ComponentProps<SpinButtonSlots> & SpinButtonCommons;
 
