@@ -55,7 +55,10 @@ import { BadgeState } from '@fluentui/react-badge';
 import { Body as Body_2 } from '@fluentui/react-text';
 import { bodyClassName } from '@fluentui/react-text';
 import { BorderRadiusTokens } from '@fluentui/react-theme';
+import { brandOffice } from '@fluentui/react-theme';
+import { brandTeams } from '@fluentui/react-theme';
 import { BrandVariants } from '@fluentui/react-theme';
+import { brandWeb } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
 import { buttonClassName } from '@fluentui/react-button';
 import { ButtonProps } from '@fluentui/react-button';
@@ -474,7 +477,13 @@ export { bodyClassName }
 
 export { BorderRadiusTokens }
 
+export { brandOffice }
+
+export { brandTeams }
+
 export { BrandVariants }
+
+export { brandWeb }
 
 export { Button }
 

@@ -15,10 +15,19 @@ export type BorderRadiusTokens = {
 };
 
 // @public (undocumented)
+export const brandOffice: BrandVariants;
+
+// @public (undocumented)
 export type Brands = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 | 110 | 120 | 130 | 140 | 150 | 160;
 
 // @public (undocumented)
+export const brandTeams: BrandVariants;
+
+// @public (undocumented)
 export type BrandVariants = Record<Brands, string>;
+
+// @public (undocumented)
+export const brandWeb: BrandVariants;
 
 // @public (undocumented)
 export type ColorPaletteAnchor = 'colorPaletteAnchorBackground1' | 'colorPaletteAnchorBackground2' | 'colorPaletteAnchorBackground3' | 'colorPaletteAnchorForeground1' | 'colorPaletteAnchorForeground2' | 'colorPaletteAnchorForeground3' | 'colorPaletteAnchorBorderActive' | 'colorPaletteAnchorBorder1' | 'colorPaletteAnchorBorder2';

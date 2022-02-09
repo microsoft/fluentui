@@ -25,6 +25,9 @@ export type {
   FluentProviderState,
 } from '@fluentui/react-provider';
 export {
+  brandOffice,
+  brandTeams,
+  brandWeb,
   createDarkTheme,
   createHighContrastTheme,
   createLightTheme,
