@@ -26,6 +26,27 @@ const useStyles = makeStyles({
     },
   },
 
+  scaleAutoWidth: {
+    width: 'fit-content',
+  },
+  scaleAutoHeight: {
+    height: 'fit-content',
+  },
+  scaleAuto: {
+    width: 'fit-content',
+    height: 'fit-content',
+  },
+  scaleFluidWidth: {
+    width: '100%',
+  },
+  scaleFluidHeight: {
+    height: '100%',
+  },
+  scaleFluid: {
+    width: '100%',
+    height: '100%',
+  },
+
   filledInteractive: {
     cursor: 'pointer',
     backgroundColor: tokens.colorNeutralBackground1,
@@ -134,6 +155,12 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     interactive && state.appearance === 'filled-alternative' && styles.filledAlternativeInteractive,
     interactive && state.appearance === 'outline' && styles.outlineInteractive,
     interactive && state.appearance === 'subtle' && styles.subtleInteractive,
+    state.scale === 'auto-width' && styles.scaleAutoWidth,
+    state.scale === 'auto-height' && styles.scaleAutoHeight,
+    state.scale === 'auto' && styles.scaleAuto,
+    state.scale === 'fluid-width' && styles.scaleFluidWidth,
+    state.scale === 'fluid-height' && styles.scaleFluidHeight,
+    state.scale === 'fluid' && styles.scaleFluid,
     state.root.className,
   );
 
