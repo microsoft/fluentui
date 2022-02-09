@@ -153,6 +153,10 @@ The following types related to slots have been renamed:
 
 ## Component changes
 
+### Accordion
+
+- `AccordionHeaderExpandIcon` has been removed and replaced by `ChevronRightRegular` from `@fluentui/react-icons`.
+
 ### Avatar
 
 - The `label` prop has been renamed to `initials`.
