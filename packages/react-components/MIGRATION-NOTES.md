@@ -198,13 +198,15 @@ const renderMyComponent = (state: MyComponentState) => {
   return (
     <slots.root {...slotProps.root}>
 -      <slots.slotA {...slotProps.slotA} />
-+      {slots.slotA && <slots.slotA {...slotProps.slotA} />}
 -      <slots.slotB {...slotProps.slotB} />
++      {slots.slotA && <slots.slotA {...slotProps.slotA} />}
 +      {slots.slotB && <slots.slotB {...slotProps.slotB} />}
     </slots.root>
   );
 };
 ```
+
+For more details, see [microsoft/fluentui#21503](https://github.com/microsoft/fluentui/pull/21503).
 
 #### New `Slot` type, and renamed slot utility types
 
@@ -218,10 +220,10 @@ All slots are now declared using a single `Slot` type:
 ```diff
 type MyComponentSlots = {
 -  root?: IntrinsicShorthandProps<'div'>;
-+  root?: Slot<'div'>;
 -  slotA?: IntrinsicShorthandProps<'label', 'span' | 'div'>;
-+  slotA?: Slot<'label', 'span' | 'div'>;
 -  slotB?: ObjectShorthandProps<ButtonProps>;
++  root?: Slot<'div'>;
++  slotA?: Slot<'label', 'span' | 'div'>;
 +  slotB?: Slot<typeof Button>;
 };
 ```
@@ -235,15 +237,33 @@ The following types related to slots have been renamed:
 
 ## Component changes
 
-### General changes in all components
+### `Accordion`
 
-Components were updated to now use resizable icons across the library, with the default size of the icons being now set via `fontSize`.
+- `AccordionHeaderExpandIcon` has been removed and replaced by `ChevronRightRegular` from `@fluentui/react-icons`.
 
-### `Button` component
+### `Avatar`
 
-A styling change was made were the border radius of small buttons changed from using the `borderRadiusMedium` token (`4px` in our default global tokens) to now use the `borderRadiusSmall` token (`2px` in our default global tokens).
+- The `label` prop has been renamed to `initials`.
+- Removed the `getInitials` prop. Instead, the customized initials can be set directly on the `initials` prop:
+  ```diff
+  - <Avatar name={name} getInitials={customGetInitialsFunction} />
+  + <Avatar name={name} initials={customGetInitialsFunction(name)} />
+  ```
+- The `activeAppearance` prop can no longer be `glow` or `ring-glow`. Those appearances may be added again later when they have a final visual design.
 
-### `CompoundButton` component
+### `Button`
+
+- A styling change was made were the border radius of small buttons changed from using the `borderRadiusMedium` token (`4px` in our default global tokens) to now use the `borderRadiusSmall` token (`2px` in our default global tokens).
+
+### `Checkbox`
+
+- The label is now provided by the `label` prop instead of as the child of `Checkbox`.
+  ```diff
+  - <Checkbox>Example</Checkbox>
+  + <Checkbox label="Example" />
+  ```
+
+### `CompoundButton`
 
 The styles of the `CompoundButton` component have been updated to match the latest design specification guidelines. The changes made are outlined below:
 
@@ -254,12 +274,41 @@ The styles of the `CompoundButton` component have been updated to match the late
 | Medium-sized button padding                       |    `12px`    | `14px 12px 16px 12px` |
 | Large-sized button padding                        |    `16px`    | `18px 16px 20px 16px` |
 
-### `MenuButton` component
+### `Icons`
 
-The typings of the `MenuButton` component have been updated to fix an issue where `ref` could not be properly passed because the type of it was wrong. It used to be that the only way to pass it was by typing it as `any`. After our change we are able to pass a properly typed `ref` of type `React.RefObject<HTMLButtonElement | HTMLAnchorElement>`.
+- Most icons are now available without a specific size (like `<PersonRegular />` instead of `<Person24Regular />`).
+  - These icons will get their size from either the CSS `fontSize`, or the icon's `fontSize` property. Every FluentUI component with an `icon` slot will style these icons to be the correct size when used in that slot.
+  - For example, instead of having to pick the correct size icon for a Button, an icon without a specific size can be used:
+    ```diff
+    - <Button icon={<Add20Filled />} />
+    - <Button icon={<Add24Filled />} size="large" />
+    + <Button icon={<AddFilled />} />
+    + <Button icon={<AddFilled />} size="large" />
+    ```
 
-### `ToggleButton` component
+### `MenuButton`
 
-An issue was fixed where `aria-pressed` used to still change on `ToggleButton` click when the component was `disabledFocusable`. This is no longer the case and the component now behaves correctly.
+- The typings of the `MenuButton` component have been updated to fix an issue where `ref` could not be properly passed because the type of it was wrong. It used to be that the only way to pass it was by typing it as `any`. After our change we are able to pass a properly typed `ref` of type `React.RefObject<HTMLButtonElement | HTMLAnchorElement>`.
 
-**TBD**
+### `ToggleButton`
+
+- An issue was fixed where `aria-pressed` used to still change on `ToggleButton` click when the component was `disabledFocusable`. This is no longer the case and the component now behaves correctly.
+
+### `Tooltip`
+
+- `Tooltip` has a new required prop `relationship`. It describes how the tooltip is related to its child (trigger), and is used to set the appropriate aria properties on the trigger element. Its values can be:
+  - `label` - The tooltip is the only text label for a control (for example an icon-only button).
+  - `description` - The tooltip is extra descriptive text for a control that has another label.
+  - `inaccessible` - The tooltip's content is not available to accessibility tools. This is not recommended unless the content is accessible in some other way.
+- Native props now must go on the `content` slot instead of the `Tooltip` itself.
+  - This only applies to HTMLElement props that are forwarded the Tooltip's `<div>` element; it doesn't apply to Tooltip-specific props like `appearance="inverted"`. This example would need to change:
+    ```diff
+    - <Tooltip id="example-id" className="example-class" content="Example Tooltip" relationship="label">
+    + <Tooltip content={{ id: 'example-id', className: 'example-class', children: 'Example Tooltip' }} relationship="label">
+    ```
+  - This example is fine because `relationship="label"` is a Tooltip prop.
+    ```diff
+    <Tooltip content="Example Tooltip" relationship="label">
+    ```
+- The `inverted` prop was removed. Use `appearance="inverted"` instead.
+- The `triggerAriaAttribute` prop was removed. Use the `relationship` prop instead.
