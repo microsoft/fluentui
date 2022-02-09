@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(react-theme): export brand ramps",
+  "packageName": "@fluentui/react-theme",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}
