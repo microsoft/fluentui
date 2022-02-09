@@ -7,11 +7,11 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
-export const renderSelect: (state: SelectState) => JSX.Element;
+export const renderSelect_unstable: (state: SelectState) => JSX.Element;
 
 // @public
 export const Select: ForwardRefComponent<SelectProps>;
@@ -22,32 +22,28 @@ export const selectClassName = "fui-Select";
 // @public (undocumented)
 export interface SelectCommons {
     appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-    // (undocumented)
     inline?: boolean;
     size?: 'small' | 'medium' | 'large';
 }
 
 // @public (undocumented)
-export type SelectProps = Omit<ComponentProps<SelectSlots, 'select'>, 'size'> & Partial<SelectCommons>;
-
-// @public
-export const selectShorthandProps: (keyof SelectSlots)[];
+export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size'> & SelectCommons;
 
 // @public (undocumented)
 export type SelectSlots = {
-    root: IntrinsicShorthandProps<'span'>;
-    select: IntrinsicShorthandProps<'select'>;
-    icon: IntrinsicShorthandProps<'span'>;
+    root: NonNullable<Slot<'span'>>;
+    select: NonNullable<Slot<'select'>>;
+    icon: Slot<'span'>;
 };
 
 // @public (undocumented)
-export type SelectState = ComponentState<SelectSlots> & SelectCommons;
+export type SelectState = ComponentState<SelectSlots> & Required<SelectCommons>;
 
 // @public
-export const useSelect: (props: SelectProps, ref: React_2.Ref<HTMLSelectElement>) => SelectState;
+export const useSelect_unstable: (props: SelectProps, ref: React_2.Ref<HTMLSelectElement>) => SelectState;
 
 // @public
-export const useSelectStyles: (state: SelectState) => SelectState;
+export const useSelectStyles_unstable: (state: SelectState) => SelectState;
 
 // (No @packageDocumentation comment for this package)
 

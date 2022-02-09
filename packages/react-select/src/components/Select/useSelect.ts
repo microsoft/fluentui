@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
-import type { SelectProps, SelectSlots, SelectState } from './Select.types';
-
-/**
- * Array of all shorthand properties listed as the keys of SelectSlots
- */
-export const selectShorthandProps: (keyof SelectSlots)[] = ['select', 'icon', 'root'];
+import type { SelectProps, SelectState } from './Select.types';
 
 /**
  * Create the state required to render Select.
@@ -16,8 +11,8 @@ export const selectShorthandProps: (keyof SelectSlots)[] = ['select', 'icon', 'r
  * @param props - props from this instance of Select
  * @param ref - reference to the `<select>` element in Select
  */
-export const useSelect = (props: SelectProps, ref: React.Ref<HTMLSelectElement>): SelectState => {
-  const { select, icon, root, size = 'medium', appearance = 'outline', inline } = props;
+export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelectElement>): SelectState => {
+  const { select, icon, root, size = 'medium', appearance = 'outline', inline = false } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,

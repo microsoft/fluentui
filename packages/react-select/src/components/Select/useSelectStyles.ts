@@ -1,24 +1,24 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SelectState } from './Select.types';
 
 export const selectClassName = 'fui-Select';
 
 const useStyles = makeStyles({
-  wrapper: theme => ({
+  wrapper: {
     // TODO: add styles
-  }),
-  select: theme => ({
+  },
+  select: {
     // TODO: add styles
-  }),
-  selectDisabled: theme => ({
+  },
+  selectDisabled: {
     // TODO: add styles
-  }),
+  },
 });
 
 /**
  * Apply styling to the Select slots based on the state
  */
-export const useSelectStyles = (state: SelectState): SelectState => {
+export const useSelectStyles_unstable = (state: SelectState): SelectState => {
   const disabled = state.select.disabled;
   const selectStyles = useStyles();
 
