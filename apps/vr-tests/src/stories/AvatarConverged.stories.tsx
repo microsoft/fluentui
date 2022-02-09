@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Avatar, AvatarProps } from '@fluentui/react-avatar';
-import { People20Regular, PersonCall20Regular } from '@fluentui/react-icons';
+import { PeopleRegular, PersonCallRegular } from '@fluentui/react-icons';
 
 const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar';
 
@@ -59,7 +59,7 @@ const examples = {
     { status: 'offline', outOfOffice: true },
     { status: 'outOfOffice', outOfOffice: true },
   ],
-  activeDisplay: ['ring', 'ring-shadow', 'ring-glow', 'shadow', 'glow'],
+  activeDisplay: ['ring', 'ring-shadow', 'shadow'],
   color: ['neutral', 'brand', 'colorful'],
   namedColors: [
     'darkRed',
@@ -182,9 +182,9 @@ storiesOf('Avatar Converged', module)
         <Avatar name="First Last" />
         <Avatar name="Three Word Name" />
         <Avatar name="One" />
-        <Avatar name="(111)-555-1234" icon={<PersonCall20Regular />} />
-        <Avatar icon={<People20Regular />} shape="square" />
-        <Avatar name="Group" icon={<People20Regular />} shape="square" />
+        <Avatar name="(111)-555-1234" icon={<PersonCallRegular />} />
+        <Avatar icon={<PeopleRegular />} shape="square" />
+        <Avatar name="Group" icon={<PeopleRegular />} shape="square" />
         <Avatar image={{ src: examples.image[14] }} badge={{ status: 'away' }} />
         <Avatar
           name={examples.name[7]}
@@ -211,14 +211,8 @@ storiesOf('Avatar Converged', module)
   .addStory('size+active+shadow', () => (
     <AvatarList images={examples.image} active="active" activeAppearance="shadow" />
   ))
-  .addStory('size+active+glow', () => (
-    <AvatarList images={examples.image} active="active" activeAppearance="glow" />
-  ))
   .addStory('size+active+ring-shadow', () => (
     <AvatarList images={examples.image} active="active" activeAppearance="ring-shadow" />
-  ))
-  .addStory('size+active+ring-glow', () => (
-    <AvatarList images={examples.image} active="active" activeAppearance="ring-glow" />
   ))
   .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
   .addStory('customSize+name+badge', () => (

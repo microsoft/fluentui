@@ -59,6 +59,7 @@ const DEFAULT_PROPS: Partial<IModalProps> = {
   isDarkOverlay: true,
   className: '',
   containerClassName: '',
+  enableAriaHiddenSiblings: true,
 };
 
 const getClassNames = classNamesFunction<IModalStyleProps, IModalStyles>();
@@ -122,6 +123,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       isModeless,
       dragOptions,
       onDismissed,
+      // eslint-disable-next-line deprecation/deprecation
       enableAriaHiddenSiblings,
     } = props;
 
@@ -457,6 +459,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}
             shouldRestoreFocus={!ignoreExternalFocusing}
+            enableAriaHiddenSiblings={enableAriaHiddenSiblings}
           >
             <div className={classNames.root} role={!isModeless ? 'document' : undefined}>
               {!isModeless && (

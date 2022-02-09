@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SpinButtonState } from './SpinButton.types';
 
 export const spinButtonClassName = 'fui-SpinButton';
@@ -7,9 +7,9 @@ export const spinButtonClassName = 'fui-SpinButton';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     // TODO Add default styles for the root element
-  }),
+  },
 
   // TODO add additional classes for different states and/or slots
 });
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the SpinButton slots based on the state
  */
-export const useSpinButtonStyles = (state: SpinButtonState): SpinButtonState => {
+export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButtonState => {
   const styles = useStyles();
   state.root.className = mergeClasses(spinButtonClassName, styles.root, state.root.className);
 

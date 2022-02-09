@@ -1,8 +1,8 @@
-import { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import { MenuGroupContextValue } from '../../contexts/menuGroupContext';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { MenuGroupContextValue } from '../../contexts/menuGroupContext';
 
 export type MenuGroupSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  root: Slot<'div'>;
 };
 
 export type MenuGroupProps = ComponentProps<MenuGroupSlots>;

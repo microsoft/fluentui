@@ -8,23 +8,18 @@ import {
   useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import type { RadioItemProps, RadioItemSlots, RadioItemState } from './RadioItem.types';
-
-/**
- * Array of all shorthand properties listed in RadioItemSlots
- */
-export const radioItemShorthandProps: (keyof RadioItemSlots)[] = ['root', 'indicator', 'input', 'label', 'subtext'];
+import type { RadioItemProps, RadioItemState } from './RadioItem.types';
 
 /**
  * Create the state required to render RadioItem.
  *
- * The returned state can be modified with hooks such as useRadioItemStyles,
- * before being passed to renderRadioItem.
+ * The returned state can be modified with hooks such as useRadioItemStyles_unstable,
+ * before being passed to renderRadioItem_unstable.
  *
  * @param props - props from this instance of RadioItem
  * @param ref - reference to root HTMLElement of RadioItem
  */
-export const useRadioItem = (props: RadioItemProps, ref: React.Ref<HTMLElement>): RadioItemState => {
+export const useRadioItem_unstable = (props: RadioItemProps, ref: React.Ref<HTMLElement>): RadioItemState => {
   const { id, labelPosition = 'inline' } = props;
   const [checked, setChecked] = useControllableState({
     defaultState: props.defaultChecked,

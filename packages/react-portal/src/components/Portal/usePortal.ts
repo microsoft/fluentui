@@ -7,11 +7,11 @@ import type { PortalProps, PortalState } from './Portal.types';
 /**
  * Create the state required to render Portal.
  *
- * The returned state can be modified with hooks such as usePortalStyles, before being passed to renderPortal.
+ * The returned state can be modified with hooks such as usePortalStyles, before being passed to renderPortal_unstable.
  *
  * @param props - props from this instance of Portal
  */
-export const usePortal = (props: PortalProps): PortalState => {
+export const usePortal_unstable = (props: PortalProps): PortalState => {
   const { children, mountNode } = props;
 
   const virtualParentRootRef = React.useRef<HTMLSpanElement>(null);

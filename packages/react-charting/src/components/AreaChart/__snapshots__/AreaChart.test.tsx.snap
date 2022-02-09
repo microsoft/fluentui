@@ -128,6 +128,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
+          opacity={1}
         />
         <g
           clipPath="url(#clip)"
@@ -453,6 +454,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
+          opacity={1}
         />
         <g
           clipPath="url(#clip)"
@@ -758,6 +760,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
+          opacity={1}
         />
         <g
           clipPath="url(#clip)"
@@ -938,6 +941,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
+          opacity={1}
         />
         <g
           clipPath="url(#clip)"
@@ -1263,6 +1267,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
+          opacity={1}
         />
         <g
           clipPath="url(#clip)"
@@ -1588,6 +1593,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
+          opacity={1}
         />
         <g
           clipPath="url(#clip)"
@@ -1913,6 +1919,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
+          opacity={1}
         />
         <g
           clipPath="url(#clip)"

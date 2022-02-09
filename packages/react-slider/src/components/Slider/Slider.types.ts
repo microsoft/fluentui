@@ -1,60 +1,43 @@
 import * as React from 'react';
-import { ComponentState, ComponentProps, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
 
 export type SliderSlots = {
   /**
    * The root of the Slider.
+   * The root slot receives the `className` and `style` specified directly on the `<Slider>`.
+   * All other native props will be applied to the primary slot, `input`.
    */
-  root: IntrinsicShorthandProps<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * The Slider's base. It is used to visibly display the min and max selectable values.
    */
-  rail: IntrinsicShorthandProps<'div'>;
-
-  /**
-   * The wrapper around the Slider component.
-   */
-  sliderWrapper: IntrinsicShorthandProps<'div'>;
-
-  /**
-   * The wrapper around the Slider's track. It is primarily used to handle the positioning of the track.
-   */
-  trackWrapper: IntrinsicShorthandProps<'div'>;
-
-  /**
-   * The bar showing the current selected area adjacent to the Slider's thumb.
-   */
-  track: IntrinsicShorthandProps<'div'>;
-
-  /**
-   * The wrapper holding the marks and mark labels for the Slider.
-   */
-  marksWrapper: IntrinsicShorthandProps<'div'>;
-
-  /**
-   * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
-   */
-  thumbWrapper: IntrinsicShorthandProps<'div'>;
+  rail: NonNullable<Slot<'div'>>;
 
   /**
    * The draggable icon used to select a given value from the Slider.
    * This is the element containing `role = 'slider'`.
    */
-  thumb: IntrinsicShorthandProps<'div'>;
-
-  /**
-   * The area in which the Slider's rail allows for the thumb to be dragged.
-   */
-  activeRail: IntrinsicShorthandProps<'div'>;
+  thumb: NonNullable<Slot<'div'>>;
 
   /**
    * The hidden input for the Slider.
+   * This is the PRIMARY slot: all native properties specified directly on `<Slider>` will be applied to this slot,
+   * except `className` and `style`, which remain on the root slot.
+   *
    */
-  input: IntrinsicShorthandProps<'input'>;
+  input: NonNullable<Slot<'input'>> & {
+    /**
+     * Orient is a non standard attribute that allows for vertical orientation in Firefox. It is set internally
+     * when `vertical` is set to true.
+     * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#non_standard_attributes
+     * Webkit/Chromium support for vertical inputs is provided via -webkit-appearance css property
+     */
+    orient?: 'horizontal' | 'vertical';
+  };
 };
 
-export type SliderCommons = {
+type SliderCommons = {
   /**
    * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
@@ -87,15 +70,6 @@ export type SliderCommons = {
   step?: number;
 
   /**
-   * The number of steps that the Slider's value will change by during a key press. When provided, the `keyboardSteps`
-   * will be separated from the pointer `steps` allowing for the value to go outside of pointer related
-   * snapping values.
-   *
-   * @default `step` or 1
-   */
-  keyboardStep?: number;
-
-  /**
    *  Whether to render the Slider as disabled.
    *
    * @default `false` (renders enabled)
@@ -107,15 +81,6 @@ export type SliderCommons = {
    * @default `false` (renders horizontally)
    */
   vertical?: boolean;
-
-  /**
-   * When enabled, small marks are displayed across the Slider, showing potential steps.
-   *
-   * - If `true`, marks are visible at each `step`.
-   * - If `number[]`, marks will be displayed at each provided number. Numbers must be in ascending order.
-   * - If `{}[]`, mark is shown at the value location and displays any provided custom labels and marks.
-   */
-  marks?: boolean | (number | { value: number; label?: string | JSX.Element; mark?: JSX.Element })[];
 
   /**
    * The starting origin point for the Slider.
@@ -132,17 +97,22 @@ export type SliderCommons = {
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
-  onChange?: (
-    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
-    data: { value: number },
-  ) => void;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
 
   /**
    * The Slider's current value label to be read by the screen reader.
    */
-  ariaValueText?: (value: number) => string;
+  getAriaValueText?: (value: number) => string;
 };
 
-export type SliderProps = Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'> & SliderCommons;
+export type SliderOnChangeData = {
+  value: number;
+};
+
+export type SliderProps = Omit<
+  ComponentProps<Partial<SliderSlots>, 'input'>,
+  'defaultValue' | 'onChange' | 'size' | 'value'
+> &
+  SliderCommons;
 
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;

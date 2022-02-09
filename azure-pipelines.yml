@@ -26,7 +26,7 @@ jobs:
       - task: Bash@3
         inputs:
           filePath: yarn-ci.sh
-        displayName: yarn
+        displayName: yarn (install packages)
 
       - script: |
           yarn checkchange
@@ -158,16 +158,22 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn build --to @fluentui/make-styles-webpack-loader --verbose --no-cache
-        displayName: build Webpack loader
-
-      - script: |
-          yarn workspace vr-tests screener:build
+          yarn workspace @fluentui/vr-tests screener:build
         displayName: build vr-tests storybook
+
+      - task: AzureUpload@2
+        displayName: Upload @fluentui/react VR test site
+        inputs:
+          azureSubscription: $(azureSubscription)
+          BlobPrefix: $(deployBasePath)/react-screener
+          CacheControl: 'public, max-age=600000'
+          ContainerName: '$web'
+          SourcePath: 'apps/vr-tests/dist/storybook'
+          storage: $(azureStorage)
 
       # Don't use lage here because it eats long output for reasons that are hard to debug
       - script: |
-          yarn workspace vr-tests screener
+          yarn workspace @fluentui/vr-tests screener
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)

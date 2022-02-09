@@ -1,10 +1,11 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { Badge, BadgeCommons } from '@fluentui/react-badge';
-import { Circle12Regular } from '@fluentui/react-icons';
-import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { Badge, BadgeProps } from '@fluentui/react-badge';
+import { CircleRegular } from '@fluentui/react-icons';
+import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 
-const badgeColors: BadgeCommons['color'][] = [
+const badgeColors: Required<BadgeProps>['color'][] = [
   'brand',
   'danger',
   'important',
@@ -15,7 +16,12 @@ const badgeColors: BadgeCommons['color'][] = [
   'warning',
 ];
 
-const badgeAppearances: BadgeCommons['appearance'][] = ['filled', 'outline', 'tint', 'ghost'];
+const badgeAppearances: Required<BadgeProps>['appearance'][] = [
+  'filled',
+  'outline',
+  'tint',
+  'ghost',
+];
 
 const useStyles = makeStyles({
   container: {
@@ -34,17 +40,17 @@ const useStyles = makeStyles({
     marginLeft: '10px',
   },
 
-  brandContainer: theme => ({
-    backgroundColor: theme.colorBrandBackgroundStatic,
-  }),
+  brandContainer: {
+    backgroundColor: tokens.colorBrandBackgroundStatic,
+  },
 });
 
-const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance'] }> = ({
+const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appearance'] }> = ({
   appearance,
 }) => {
   const styles = useStyles();
 
-  const badges = new Map<BadgeCommons['color'], JSX.Element[]>();
+  const badges = new Map<BadgeProps['color'], JSX.Element[]>();
   badges.set('brand', []);
   badges.set('danger', []);
   badges.set('severe', []);
@@ -61,10 +67,10 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance']
       </Badge>
     );
     const circularWithIcon = (
-      <Badge color={color} appearance={appearance} icon={<Circle12Regular />} />
+      <Badge color={color} appearance={appearance} icon={<CircleRegular />} />
     );
     const roundedWithIcon = (
-      <Badge color={color} appearance={appearance} shape="rounded" icon={<Circle12Regular />} />
+      <Badge color={color} appearance={appearance} shape="rounded" icon={<CircleRegular />} />
     );
     const roundedWithText = (
       <Badge color={color} appearance={appearance} shape="rounded">
@@ -76,7 +82,7 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance']
         color={color}
         appearance={appearance}
         shape="rounded"
-        icon={<Circle12Regular />}
+        icon={<CircleRegular />}
         iconPosition="before"
       >
         {appearance.toUpperCase()}
@@ -87,7 +93,7 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance']
         color={color}
         appearance={appearance}
         shape="rounded"
-        icon={<Circle12Regular />}
+        icon={<CircleRegular />}
         iconPosition="after"
       >
         {appearance.toUpperCase()}
@@ -108,7 +114,7 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance']
 
   return (
     <div>
-      {Array.from(badges.keys()).map((color: BadgeCommons['color'], i) => (
+      {Array.from(badges.keys()).map((color: BadgeProps['color'], i) => (
         <div key={i} className={styles.container}>
           <div
             className={mergeClasses(
@@ -147,7 +153,7 @@ storiesOf('Badge Converged - sizes', module).addStory(
         'medium',
         'large',
         'extra-large',
-      ] as BadgeCommons['size'][]).map(size => (
+      ] as BadgeProps['size'][]).map(size => (
         <Badge key={size} size={size} />
       ))}
     </div>

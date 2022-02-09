@@ -66,8 +66,13 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
    */
   maxDisplayedItems?: number;
 
-  /** Custom render function for each breadcrumb item. */
+  /** Custom render function to render each crumb. Default renders as a link. */
   onRenderItem?: IRenderFunction<IBreadcrumbItem>;
+
+  /**
+   * Custom render function to render the content within a crumb. Default renders the text.
+   */
+  onRenderItemContent?: IRenderFunction<IBreadcrumbItem>;
 
   /**
    * Method that determines how to reduce the length of the breadcrumb.
@@ -141,6 +146,16 @@ export interface IBreadcrumbItem extends React.AllHTMLAttributes<HTMLElement> {
    * If true, `aria-current="page"` will be applied to this breadcrumb item.
    */
   isCurrentItem?: boolean;
+
+  /**
+   * A function to render the outer content of the crumb (the link).
+   */
+  onRender?: IRenderFunction<IBreadcrumbItem>;
+
+  /**
+   * A function to render the inner content of the crumb (the text inside the link).
+   */
+  onRenderContent?: IRenderFunction<IBreadcrumbItem>;
 
   /**
    * Optional prop to render the item as a heading of your choice.

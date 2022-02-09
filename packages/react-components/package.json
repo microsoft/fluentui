@@ -14,7 +14,7 @@
   "scripts": {
     "build": "just-scripts build",
     "bundle-size": "bundle-size measure",
-    "chromatic": "npx chromatic@5.6.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook",
+    "chromatic": "npx chromatic@6.4.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -22,10 +22,10 @@
     "start": "yarn storybook",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-components/src && yarn docs",
-    "storybook": "start-storybook --port 3000 -s ./public",
-    "storybook:docs": "start-storybook --port 3000 -s ./public --docs --no-manager-cache",
+    "storybook": "node ../../scripts/storybook/runner --port 3000 -s ./public --no-manager-cache",
+    "storybook:docs": "yarn storybook --docs",
     "build-storybook": "build-storybook -s ./public -o ./dist/storybook --docs",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
@@ -35,8 +35,7 @@
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "@fluentui/babel-make-styles": "9.0.0-beta.4"
+    "react-dom": "16.8.6"
   },
   "dependencies": {
     "@fluentui/react-accordion": "9.0.0-beta.5",
@@ -46,17 +45,19 @@
     "@fluentui/react-card": "9.0.0-beta.5",
     "@fluentui/react-divider": "9.0.0-beta.4",
     "@fluentui/react-image": "9.0.0-beta.4",
+    "@fluentui/react-input": "9.0.0-beta.0",
     "@fluentui/react-label": "9.0.0-beta.4",
     "@fluentui/react-link": "9.0.0-beta.5",
-    "@fluentui/react-make-styles": "9.0.0-beta.4",
     "@fluentui/react-menu": "9.0.0-beta.5",
     "@fluentui/react-popover": "9.0.0-beta.5",
     "@fluentui/react-portal": "9.0.0-beta.5",
     "@fluentui/react-provider": "9.0.0-beta.5",
+    "@fluentui/react-slider": "9.0.0-beta.5",
     "@fluentui/react-theme": "9.0.0-beta.4",
     "@fluentui/react-tooltip": "9.0.0-beta.5",
     "@fluentui/react-utilities": "9.0.0-beta.4",
     "@fluentui/react-text": "9.0.0-beta.4",
+    "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

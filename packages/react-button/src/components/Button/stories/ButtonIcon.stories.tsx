@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { CalendarMonth24Regular } from '@fluentui/react-icons';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { Button } from '../../../Button';
 
 export const Icon = () => (
   <>
-    <Button icon={<CalendarMonth24Regular />}>Text</Button>
-    <Button icon={<CalendarMonth24Regular />} iconPosition="after">
+    <Button icon={<CalendarMonthRegular />}>Text</Button>
+    <Button icon={<CalendarMonthRegular />} iconPosition="after">
       Text
     </Button>
-    <Button icon={<CalendarMonth24Regular />} />
+    <Button icon={<CalendarMonthRegular />} />
   </>
 );
 Icon.parameters = {

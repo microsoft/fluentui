@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/utilities",
-  "version": "8.3.8",
+  "version": "8.4.0",
   "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -31,7 +31,7 @@
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.13",
+    "@fluentui/jest-serializer-merge-styles": "^8.0.15",
     "@fluentui/test-utilities": "^8.2.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@fluentui/dom-utilities": "^2.1.5",
-    "@fluentui/merge-styles": "^8.2.2",
+    "@fluentui/merge-styles": "^8.3.0",
     "@fluentui/set-version": "^8.1.5",
     "tslib": "^2.1.0"
   },

@@ -18,6 +18,7 @@ const DefaultModalProps: IModalProps = {
   className: '',
   containerClassName: '',
   topOffsetFixed: false,
+  enableAriaHiddenSiblings: true,
 };
 
 const DefaultDialogContentProps: IDialogContentProps = {

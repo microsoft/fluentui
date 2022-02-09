@@ -2,8 +2,8 @@ import config from '../config';
 import { safeLaunchOptions } from '../puppeteer/puppeteer.config';
 import express from 'express';
 import http from 'http';
-import portfinder from 'portfinder';
 import puppeteer from 'puppeteer';
+import { AddressInfo } from 'net';
 
 function startServer(publicDirectory: string, listenPort: number) {
   return new Promise<http.Server>((resolve, reject) => {
@@ -23,9 +23,10 @@ function startServer(publicDirectory: string, listenPort: number) {
 }
 
 export async function performBrowserTest(publicDirectory: string) {
-  const listenPort = await portfinder.getPortPromise();
-  console.log(`Starting server on port ${listenPort} from directory ${publicDirectory}`);
-  const server = await startServer(publicDirectory, listenPort);
+  const server = await startServer(publicDirectory, 0);
+  const { port } = server.address() as AddressInfo;
+
+  console.log(`Starting server on port ${port} from directory ${publicDirectory}`);
   console.log('Started server. Launching Puppeteer...');
 
   const options = safeLaunchOptions();
@@ -58,7 +59,7 @@ export async function performBrowserTest(publicDirectory: string) {
     error = pageError;
   });
 
-  const url = `http://${config.server_host}:${listenPort}`;
+  const url = `http://${config.server_host}:${port}`;
   console.log(`Loading ${url} in puppeteer...`);
   await page.goto(url);
   console.log('Page loaded');

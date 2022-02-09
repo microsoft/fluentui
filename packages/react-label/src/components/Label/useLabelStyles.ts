@@ -1,4 +1,5 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import type { LabelState } from './Label.types';
 
 export const labelClassName = 'fui-Label';
@@ -7,45 +8,45 @@ export const labelClassName = 'fui-Label';
  * Styles for the label
  */
 const useStyles = makeStyles({
-  root: theme => ({
-    fontFamily: theme.fontFamilyBase,
-    color: theme.colorNeutralForeground1,
-  }),
+  root: {
+    fontFamily: tokens.fontFamilyBase,
+    color: tokens.colorNeutralForeground1,
+  },
 
-  disabled: theme => ({
-    color: theme.colorNeutralForegroundDisabled,
-  }),
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+  },
 
-  required: theme => ({
-    color: theme.colorPaletteRedForeground3,
+  required: {
+    color: tokens.colorPaletteRedForeground3,
     paddingLeft: '4px', // TODO: Once spacing tokens are added, change this to Horizontal XS
-  }),
+  },
 
-  small: theme => ({
-    fontSize: theme.fontSizeBase200,
-    lineHeight: theme.lineHeightBase200,
-  }),
+  small: {
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+  },
 
-  medium: theme => ({
-    fontSize: theme.fontSizeBase300,
-    lineHeight: theme.lineHeightBase300,
-  }),
+  medium: {
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
 
-  large: theme => ({
-    fontSize: theme.fontSizeBase400,
-    lineHeight: theme.lineHeightBase400,
-    fontWeight: theme.fontWeightSemibold,
-  }),
+  large: {
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+    fontWeight: tokens.fontWeightSemibold,
+  },
 
-  strong: theme => ({
-    fontWeight: theme.fontWeightSemibold,
-  }),
+  strong: {
+    fontWeight: tokens.fontWeightSemibold,
+  },
 });
 
 /**
  * Apply styling to the Label slots based on the state
  */
-export const useLabelStyles = (state: LabelState): LabelState => {
+export const useLabelStyles_unstable = (state: LabelState): LabelState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     labelClassName,

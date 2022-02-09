@@ -298,6 +298,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               background: Window;
               color: WindowText;
             }
+        id="TextFieldPrefix3"
       >
         <span
           style={
@@ -312,7 +313,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
       <input
         aria-describedby="TextFieldDescription1"
         aria-invalid={true}
-        aria-labelledby="TextFieldLabel2"
+        aria-labelledby="TextFieldLabel2 TextFieldPrefix3 TextFieldSuffix4"
         className=
             ms-TextField-field
             {
@@ -407,6 +408,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               background: Window;
               color: WindowText;
             }
+        id="TextFieldSuffix4"
       >
         <span
           style={
@@ -557,6 +559,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               background: Window;
               color: WindowText;
             }
+        id="TextFieldPrefix3"
       >
         <span
           style={
@@ -571,7 +574,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
       <input
         aria-describedby="TextFieldDescription1"
         aria-invalid={true}
-        aria-labelledby="TextFieldLabel2"
+        aria-labelledby="TextFieldLabel2 TextFieldPrefix3 TextFieldSuffix4"
         className=
             ms-TextField-field
             {
@@ -666,6 +669,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               background: Window;
               color: WindowText;
             }
+        id="TextFieldSuffix4"
       >
         <span
           style={
@@ -1568,6 +1572,7 @@ exports[`TextField snapshots should respect user component and subcomponent styl
               background: Window;
               color: WindowText;
             }
+        id="TextFieldPrefix3"
       >
         <span
           style={
@@ -1582,7 +1587,7 @@ exports[`TextField snapshots should respect user component and subcomponent styl
       <input
         aria-describedby="TextFieldDescription1"
         aria-invalid={true}
-        aria-labelledby="TextFieldLabel2"
+        aria-labelledby="TextFieldLabel2 TextFieldPrefix3 TextFieldSuffix4"
         className=
             ms-TextField-field
             {
@@ -1677,6 +1682,7 @@ exports[`TextField snapshots should respect user component and subcomponent styl
               background: Window;
               color: WindowText;
             }
+        id="TextFieldSuffix4"
       >
         <span
           style={

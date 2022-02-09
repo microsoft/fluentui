@@ -1,11 +1,10 @@
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type SpinButtonSlots = {
-  // TODO Add slots here and to spinButtonShorthandProps in useSpinButton.ts
-  root: IntrinsicShorthandProps<'div'>;
+  root: Slot<'div'>;
 };
 
-export type SpinButtonCommons = {
+type SpinButtonCommons = {
   // TODO Add things shared between props and state here
 };
 

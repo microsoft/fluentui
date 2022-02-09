@@ -244,3 +244,12 @@ export const defaultMappedProps: Record<string, string> = {
   img: 'src',
   input: 'type',
 };
+
+/**
+ * React.ForwardRef with static props
+ */
+export type ForwardRefComponent<TProps> = React.ForwardRefExoticComponent<
+  TProps & React.RefAttributes<HTMLInputElement>
+> & {
+  handledProps: (keyof TProps)[];
+};

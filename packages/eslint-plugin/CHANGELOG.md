@@ -1,8 +1,26 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Wed, 15 Dec 2021 07:31:27 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jan 2022 07:30:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.6.1)
+
+Tue, 25 Jan 2022 07:30:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.6.0..@fluentui/eslint-plugin_v1.6.1)
+
+### Patches
+
+- Add naming-convention exception to allow exported hooks with the _unstable suffix ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+
+## [1.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.6.0)
+
+Thu, 13 Jan 2022 07:30:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.5.2..@fluentui/eslint-plugin_v1.6.0)
+
+### Minor changes
+
+- Expand ban-imports rule to also support exports, and support regular expressions for names ([PR #21196](https://github.com/microsoft/fluentui/pull/21196) by elcraig@microsoft.com)
 
 ## [1.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.5.2)
 

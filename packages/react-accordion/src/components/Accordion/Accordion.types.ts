@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
 export type AccordionIndex = number | number[];
@@ -8,7 +8,7 @@ export type AccordionToggleEvent<E = HTMLElement> = React.MouseEvent<E> | React.
 
 export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 
-export type AccordionCommons = {
+type AccordionCommons = {
   /**
    * Indicates if keyboard navigation is available
    */
@@ -40,7 +40,7 @@ export type AccordionContextValues = {
 };
 
 export type AccordionSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  root: Slot<'div'>;
 };
 
 export type AccordionToggleData = {

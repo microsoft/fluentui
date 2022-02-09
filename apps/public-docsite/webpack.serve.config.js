@@ -3,6 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 const resources = require('../../scripts/webpack/webpack-resources');
 const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 const { addMonacoWebpackConfig } = require('@fluentui/react-monaco-editor/scripts/addMonacoWebpackConfig');
@@ -51,6 +52,11 @@ module.exports = [
       optimization: {
         removeAvailableModules: false,
       },
+
+      plugins: [
+        // This plugin was added to ignore warnings wherever types are imported.
+        new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }),
+      ],
 
       resolve: {
         alias: getResolveAlias(),
