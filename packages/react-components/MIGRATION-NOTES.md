@@ -167,6 +167,14 @@ The following types related to slots have been renamed:
   ```
 - The `activeAppearance` prop can no longer be `glow` or `ring-glow`. Those appearances may be added again later when they have a final visual design.
 
+### Checkbox
+
+- The label is now provided by the `label` prop instead of the child of `Checkbox`.
+  ```diff
+  - <Checkbox>Example</Checkbox>
+  + <Checkbox label="Example" />
+  ```
+
 ### Icons
 
 - Most icons are now available without a specific size (like `<PersonRegular />` instead of `<Person24Regular />`).
