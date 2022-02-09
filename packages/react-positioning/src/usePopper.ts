@@ -74,6 +74,7 @@ function hasAutofocusFilter(node: Node) {
  */
 function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: React.MutableRefObject<string>) {
   const {
+    align,
     arrowPadding,
     autoSize,
     coverTarget,
@@ -81,14 +82,16 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
     offset,
     onStateUpdate,
     overflowBoundary,
+    pinned,
+    position,
+    positionFixed,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_disableTether,
-    pinned,
   } = options;
 
   const isRtl = useFluent().dir === 'rtl';
-  const placement = getPlacement(options.align, options.position, isRtl);
-  const strategy = options.positionFixed ? 'fixed' : 'absolute';
+  const placement = getPlacement(align, position, isRtl);
+  const strategy = positionFixed ? 'fixed' : 'absolute';
 
   const handleStateUpdate = useEventCallback(({ state }: { state: Partial<PopperJs.State> }) => {
     if (onStateUpdate) {
@@ -334,7 +337,7 @@ export function usePopper(
     popperInstanceRef.current?.destroy();
     popperInstanceRef.current = null;
 
-    const target = externalTargetRef.current ?? targetRef.current;
+    const target = overrideTargetRef.current ?? targetRef.current;
 
     let popperInstance: PopperInstance | null = null;
 
@@ -394,7 +397,7 @@ export function usePopper(
   const arrowRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
 
   // Stores external target from options.target or setTarget
-  const externalTargetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, handlePopperUpdate, true);
+  const overrideTargetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, handlePopperUpdate, true);
 
   React.useImperativeHandle(
     options.popperRef,
@@ -410,7 +413,8 @@ export function usePopper(
           // eslint-disable-next-line no-console
           console.warn(err.stack);
         }
-        externalTargetRef.current = target;
+
+        overrideTargetRef.current = target;
       },
     }),
     // Missing deps:
@@ -422,9 +426,9 @@ export function usePopper(
 
   useIsomorphicLayoutEffect(() => {
     if (options.target) {
-      externalTargetRef.current = options.target;
+      overrideTargetRef.current = options.target;
     }
-  }, [options.target, externalTargetRef]);
+  }, [options.target, overrideTargetRef]);
   useIsomorphicLayoutEffect(() => {
     handlePopperUpdate();
 
@@ -437,7 +441,7 @@ export function usePopper(
     () => {
       if (!isFirstMount) {
         popperInstanceRef.current?.setOptions(
-          resolvePopperOptions(externalTargetRef.current ?? targetRef.current, containerRef.current, arrowRef.current),
+          resolvePopperOptions(overrideTargetRef.current ?? targetRef.current, containerRef.current, arrowRef.current),
         );
       }
     },
