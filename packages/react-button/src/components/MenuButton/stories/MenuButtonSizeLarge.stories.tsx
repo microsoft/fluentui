@@ -9,7 +9,7 @@ export const SizeLarge = () => {
     <>
       <Menu>
         <MenuTrigger>
-          <MenuButton size="large">This is a Menu Button</MenuButton>
+          <MenuButton size="large">Large</MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
@@ -23,7 +23,7 @@ export const SizeLarge = () => {
       <Menu>
         <MenuTrigger>
           <MenuButton icon={<CalendarMonthRegular />} size="large">
-            This is a Menu Button
+            Large with icon
           </MenuButton>
         </MenuTrigger>
 
@@ -37,7 +37,7 @@ export const SizeLarge = () => {
 
       <Menu>
         <MenuTrigger>
-          <MenuButton size="large" />
+          <MenuButton size="large" aria-label="Large and icon only" />
         </MenuTrigger>
 
         <MenuPopover>

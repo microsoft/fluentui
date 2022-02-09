@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import { CalendarMonthRegular, FilterRegular } from '@fluentui/react-icons';
-import { SplitButton, MenuButtonProps } from '../../../index'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { SplitButton, MenuButtonProps } from '../../../index';
 
 export const Icon = () => (
   <>
@@ -11,7 +11,7 @@ export const Icon = () => (
         {(triggerProps: MenuButtonProps) => (
           <SplitButton
             menuButton={triggerProps}
-            primaryActionButton={'This is a split button'}
+            primaryActionButton="With icon before contents"
             icon={<CalendarMonthRegular />}
           />
         )}
@@ -29,7 +29,26 @@ export const Icon = () => (
         {(triggerProps: MenuButtonProps) => (
           <SplitButton
             menuButton={triggerProps}
-            primaryActionButton={'This is a split button'}
+            primaryActionButton="With icon after contents"
+            icon={<CalendarMonthRegular />}
+            iconPosition="after"
+          />
+        )}
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Item a</MenuItem>
+          <MenuItem>Item b</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+
+    <Menu positioning="below-end">
+      <MenuTrigger>
+        {(triggerProps: MenuButtonProps) => (
+          <SplitButton
+            menuButton={triggerProps}
+            primaryActionButton="With icon and custom menu icon"
             icon={<CalendarMonthRegular />}
             menuIcon={<FilterRegular />}
           />
@@ -48,7 +67,7 @@ export const Icon = () => (
         {(triggerProps: MenuButtonProps) => (
           <SplitButton
             menuButton={triggerProps}
-            primaryActionButton={'This is a split button'}
+            primaryActionButton={{ 'aria-label': 'Icon only' }}
             icon={<CalendarMonthRegular />}
           />
         )}

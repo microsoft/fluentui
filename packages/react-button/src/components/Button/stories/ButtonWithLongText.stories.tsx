@@ -3,8 +3,8 @@ import { Button } from '../../../Button';
 
 export const WithLongText = () => (
   <>
-    <Button>Text</Button>
-    <Button>Text truncates after it hits the max width token value</Button>
+    <Button>Short text</Button>
+    <Button>Long text truncates after it hits the max width token value</Button>
   </>
 );
 WithLongText.parameters = {

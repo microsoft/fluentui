@@ -1,19 +1,27 @@
 import * as React from 'react';
 
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { SplitButton, MenuButtonProps } from '../../../index'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { SplitButton, MenuButtonProps } from '../../../index';
 
 export const Disabled = () => {
   return (
     <>
       <Menu positioning="below-end">
         <MenuTrigger>
+          {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps} primaryActionButton="Enabled" />}
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+      <Menu positioning="below-end">
+        <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton
-              menuButton={triggerProps}
-              primaryActionButton={'This is disabledFocusable'}
-              disabledFocusable
-            />
+            <SplitButton menuButton={triggerProps} primaryActionButton="Disabled" disabled />
           )}
         </MenuTrigger>
 
@@ -27,25 +35,7 @@ export const Disabled = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} primaryActionButton={'This is disabled'} disabled />
-          )}
-        </MenuTrigger>
-
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>Item a</MenuItem>
-            <MenuItem>Item b</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-      <Menu positioning="below-end">
-        <MenuTrigger>
-          {(triggerProps: MenuButtonProps) => (
-            <SplitButton
-              menuButton={triggerProps}
-              primaryActionButton={'This is disabledFocusable'}
-              disabledFocusable
-            />
+            <SplitButton menuButton={triggerProps} primaryActionButton="Disabled focusable" disabledFocusable />
           )}
         </MenuTrigger>
 

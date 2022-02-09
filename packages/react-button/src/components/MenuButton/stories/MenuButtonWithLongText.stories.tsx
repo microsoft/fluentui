@@ -7,7 +7,7 @@ export const WithLongText = () => (
   <>
     <Menu>
       <MenuTrigger>
-        <MenuButton>Text</MenuButton>
+        <MenuButton>Short text</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>
@@ -20,7 +20,7 @@ export const WithLongText = () => (
 
     <Menu>
       <MenuTrigger>
-        <MenuButton>Text truncates after it hits the max width token value</MenuButton>
+        <MenuButton>Long text truncates after it hits the max width token value</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>

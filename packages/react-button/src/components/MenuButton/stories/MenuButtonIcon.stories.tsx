@@ -8,7 +8,7 @@ export const Icon = () => (
   <>
     <Menu>
       <MenuTrigger>
-        <MenuButton icon={<CalendarMonthRegular />}>This is a Menu Button</MenuButton>
+        <MenuButton icon={<CalendarMonthRegular />}>With icon</MenuButton>
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
@@ -21,7 +21,7 @@ export const Icon = () => (
     <Menu>
       <MenuTrigger>
         <MenuButton icon={<CalendarMonthRegular />} menuIcon={<FilterRegular />}>
-          This is a Menu Button
+          With icon and custom menu icon
         </MenuButton>
       </MenuTrigger>
       <MenuPopover>
@@ -34,7 +34,7 @@ export const Icon = () => (
 
     <Menu>
       <MenuTrigger>
-        <MenuButton icon={<CalendarMonthRegular />} />
+        <MenuButton icon={<CalendarMonthRegular />} aria-label="Icon only" />
       </MenuTrigger>
       <MenuPopover>
         <MenuList>

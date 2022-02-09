@@ -4,17 +4,13 @@ import { CompoundButton } from '../../../CompoundButton';
 
 export const Icon = () => (
   <>
-    <CompoundButton secondaryContent="This is the secondary content" icon={<CalendarMonthRegular />}>
-      Text
+    <CompoundButton secondaryContent="Secondary content" icon={<CalendarMonthRegular />}>
+      With icon before contents
     </CompoundButton>
-    <CompoundButton
-      secondaryContent="This is the secondary content"
-      icon={<CalendarMonthRegular />}
-      iconPosition="after"
-    >
-      Text
+    <CompoundButton secondaryContent="Secondary content" icon={<CalendarMonthRegular />} iconPosition="after">
+      With icon after contents
     </CompoundButton>
-    <CompoundButton secondaryContent="This is the secondary content" icon={<CalendarMonthRegular />} />
+    <CompoundButton secondaryContent="Secondary content" icon={<CalendarMonthRegular />} aria-label="Icon only" />
   </>
 );
 Icon.parameters = {

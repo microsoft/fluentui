@@ -4,11 +4,11 @@ import { Button } from '../../../Button';
 
 export const Icon = () => (
   <>
-    <Button icon={<CalendarMonthRegular />}>Text</Button>
+    <Button icon={<CalendarMonthRegular />}>With icon before contents</Button>
     <Button icon={<CalendarMonthRegular />} iconPosition="after">
-      Text
+      With icon after contents
     </Button>
-    <Button icon={<CalendarMonthRegular />} />
+    <Button icon={<CalendarMonthRegular />} aria-label="Icon only" />
   </>
 );
 Icon.parameters = {

@@ -8,31 +8,27 @@ export const Disabled = () => {
   return (
     <>
       <div style={groupStyles}>
-        <CompoundButton secondaryContent="This is the secondary content">Default</CompoundButton>
-        <CompoundButton secondaryContent="This is the secondary content" disabled>
-          Disabled
+        <CompoundButton secondaryContent="Secondary content">Default</CompoundButton>
+        <CompoundButton secondaryContent="Secondary content" disabled>
+          Default disabled
         </CompoundButton>
-        <CompoundButton secondaryContent="This is the secondary content" disabledFocusable>
-          Disabled focusable
+        <CompoundButton secondaryContent="Secondary content" disabledFocusable>
+          Default disabled focusable
         </CompoundButton>
       </div>
       <div style={groupStyles}>
-        <CompoundButton
-          secondaryContent="This is the secondary content"
-          appearance="primary"
-          icon={<CalendarMonthRegular />}
-        >
+        <CompoundButton secondaryContent="Secondary content" appearance="primary" icon={<CalendarMonthRegular />}>
           Primary
         </CompoundButton>
         <CompoundButton
-          secondaryContent="This is the secondary content"
+          secondaryContent="Secondary content"
           appearance="primary"
           disabled
           icon={<CalendarMonthRegular />}
         >
           Primary disabled
         </CompoundButton>
-        <CompoundButton secondaryContent="This is the secondary content" appearance="primary" disabledFocusable>
+        <CompoundButton secondaryContent="Secondary content" appearance="primary" disabledFocusable>
           Primary disabled focusable
         </CompoundButton>
       </div>

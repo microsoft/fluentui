@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ToggleButton } from '../../../ToggleButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { ToggleButton } from '../../../ToggleButton';
 
 export const WithLongText = () => (
   <>
-    <ToggleButton>Text</ToggleButton>
-    <ToggleButton>Text truncates after it hits the max width token value</ToggleButton>
+    <ToggleButton>Short text</ToggleButton>
+    <ToggleButton>Long text truncates after it hits the max width token value</ToggleButton>
   </>
 );
 WithLongText.parameters = {

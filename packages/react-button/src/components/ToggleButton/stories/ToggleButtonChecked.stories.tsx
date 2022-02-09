@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ToggleButton } from '../../../ToggleButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { ToggleButton } from '../../../ToggleButton';
 
 export const Checked = () => (
   <>
-    <ToggleButton checked={true}>A checked toggle button</ToggleButton>
+    <ToggleButton checked={true}>Checked</ToggleButton>
 
-    <ToggleButton checked={false}>An unchecked toggle button</ToggleButton>
+    <ToggleButton checked={false}>Unchecked</ToggleButton>
   </>
 );
 Checked.parameters = {

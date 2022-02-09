@@ -9,7 +9,7 @@ export const SizeSmall = () => {
     <>
       <Menu>
         <MenuTrigger>
-          <MenuButton size="small">This is a Menu Button</MenuButton>
+          <MenuButton size="small">Small</MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
@@ -23,7 +23,7 @@ export const SizeSmall = () => {
       <Menu>
         <MenuTrigger>
           <MenuButton icon={<CalendarMonthRegular />} size="small">
-            This is a Menu Button
+            Small with icon
           </MenuButton>
         </MenuTrigger>
 
@@ -37,7 +37,7 @@ export const SizeSmall = () => {
 
       <Menu>
         <MenuTrigger>
-          <MenuButton size="small" />
+          <MenuButton size="small" aria-label="Small and icon only" />
         </MenuTrigger>
 
         <MenuPopover>

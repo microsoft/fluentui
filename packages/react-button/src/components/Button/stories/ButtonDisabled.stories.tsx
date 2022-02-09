@@ -8,13 +8,13 @@ export const Disabled = () => {
   return (
     <>
       <div style={groupStyles}>
-        <Button>Default</Button>
-        <Button disabled>Disabled</Button>
-        <Button disabledFocusable>Disabled focusable</Button>
+        <Button>Default enabled</Button>
+        <Button disabled>Default disabled</Button>
+        <Button disabledFocusable>Default disabled focusable</Button>
       </div>
       <div style={groupStyles}>
         <Button appearance="primary" icon={<CalendarMonthRegular />}>
-          Primary
+          Primary enabled
         </Button>
         <Button appearance="primary" disabled icon={<CalendarMonthRegular />}>
           Primary disabled

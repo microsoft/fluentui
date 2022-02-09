@@ -10,25 +10,25 @@ export const Size = () => {
     <>
       <div style={groupStyles}>
         <h4 style={headerStyles}>small</h4>
-        <Button size="small">Text</Button>
+        <Button size="small">Small</Button>
         <Button size="small" icon={<CalendarMonthRegular />}>
-          Text
+          Small with icon
         </Button>
-        <Button size="small" icon={<CalendarMonthRegular />} />
+        <Button size="small" icon={<CalendarMonthRegular />} aria-label="Small and icon only" />
       </div>
       <div style={groupStyles}>
         <h4 style={headerStyles}>medium</h4>
-        <Button>Text</Button>
-        <Button icon={<CalendarMonthRegular />}>Text</Button>
-        <Button icon={<CalendarMonthRegular />} />
+        <Button>Medium</Button>
+        <Button icon={<CalendarMonthRegular />}>Medium with icon</Button>
+        <Button icon={<CalendarMonthRegular />} aria-label="Medium and icon only" />
       </div>
       <div style={groupStyles}>
         <h4 style={headerStyles}>large</h4>
-        <Button size="large">Text</Button>
+        <Button size="large">Large</Button>
         <Button size="large" icon={<CalendarMonthRegular />}>
-          Text
+          Large with icon
         </Button>
-        <Button size="large" icon={<CalendarMonthRegular />} />
+        <Button size="large" icon={<CalendarMonthRegular />} aria-label="Large and icon only" />
       </div>
     </>
   );
