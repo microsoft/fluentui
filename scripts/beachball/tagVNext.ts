@@ -6,12 +6,18 @@ import yargs from 'yargs';
 function tagPackages(npmToken: string) {
   const packagesToTag = getPackagesToTag();
 
+  let success = false;
   packagesToTag.forEach(pkg => {
-    tagPackage(pkg.name, pkg.version, npmToken);
+    success &&= tagPackage(pkg.name, pkg.version, npmToken);
   });
+
+  if (!success) {
+    console.error('failed to tag all packages');
+    process.exit(1);
+  }
 }
 
-function tagPackage(name: string, version: string, npmToken: string) {
+function tagPackage(name: string, version: string, npmToken: string): boolean {
   const prerelease = semver.parse(version).prerelease;
   if (prerelease.length == 0) {
     return;
@@ -25,7 +31,10 @@ function tagPackage(name: string, version: string, npmToken: string) {
   } catch (e) {
     console.error(`failed to tag ${name}@${version}`);
     console.error(e);
+    return false;
   }
+
+  return true;
 }
 
 function getPackagesToTag() {
