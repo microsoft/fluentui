@@ -246,6 +246,7 @@ The following types related to slots have been renamed:
 ### `Accordion`
 
 - `AccordionHeaderExpandIcon` has been removed and replaced by `ChevronRightRegular` from `@fluentui/react-icons`.
+- `AccordionHeader` props `children` is no longer a slot [#21285](https://github.com/microsoft/fluentui/pull/21285)
 
 ### `Avatar`
 
