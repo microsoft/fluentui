@@ -98,7 +98,7 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
   isSelectedOnFocus?: boolean;
   /**
    * Determines if elements within the selection zone that DO NOT have the 'data-selection-toggle' or
-   * 'data-selection-all-toggle' attribute are clickable and can alter the selection.
+   * 'data-selection-all-toggle' attribute are clickable and can alter the selection .
    *
    * @defaultvalue true
    */
