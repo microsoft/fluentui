@@ -47,6 +47,17 @@ steps:
       npm publish packages/office-ui-fabric-react/office-ui-fabric-react-$(targetNpmVersion).tgz --tag hf7 --//registry.npmjs.org/:_authToken=$(npmToken)
     displayName: Publish new version
 
+  - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+    displayName: 📒 Generate Manifest
+    inputs:
+      BuildDropPath: $(System.DefaultWorkingDirectory)
+
+  - task: PublishPipelineArtifact@1
+    displayName: 📒 Publish Manifest
+    inputs:
+      artifactName: SBom-$(System.JobAttempt)
+      targetPath: $(System.DefaultWorkingDirectory)/_manifest
+
   - template: .devops/templates/cleanup.yml
     parameters:
       checkForChangedFiles: false
