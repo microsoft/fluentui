@@ -19,11 +19,8 @@ const meta: Meta = {
   component: Input,
   parameters: {
     docs: {
-      // The provided typing is wrong, ignore it
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       description: {
-        component: [descriptionMd].join('\n'),
+        component: descriptionMd,
       },
     },
   },
