@@ -13,8 +13,13 @@ const argv = require('yargs')
     describe: 'Choose a mode to run cypress',
     choices: ['run', 'open'],
   })
+  .option('package', {
+    describe: 'Package to load the deployed storybook for (used by PR runs only)',
+    default: 'react-components',
+    type: 'string',
+  })
   .option('port', {
-    describe: 'Port number storybook is running on',
+    describe: 'Port number storybook is running on (used by local runs only)',
     default: 3000,
     type: 'number',
   })
@@ -22,8 +27,7 @@ const argv = require('yargs')
 
 const baseConfig = {
   baseUrl: process.env.DEPLOYURL
-    ? // Base path hard coded for converged for now, can be modified to be configurable if required to other projects
-      `${process.env.DEPLOYURL}/react-components/storybook`
+    ? `${process.env.DEPLOYURL}/${argv.package}/storybook`
     : `http://localhost:${argv.port}`,
   fixturesFolder: path.join(__dirname, 'cypress/fixtures'),
   integrationFolder: '.',
