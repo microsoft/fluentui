@@ -16,7 +16,7 @@ import { OptionCollectionState, OptionValue } from '../../utils/OptionCollection
  * @param props - props from this instance of Listbox
  * @param ref - reference to root HTMLElement of Listbox
  */
-export const useListbox = (
+export const useListbox_unstable = (
   props: ListboxProps,
   optionCollection: OptionCollectionState,
   ref: React.Ref<HTMLElement>,

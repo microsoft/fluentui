@@ -5,7 +5,7 @@ import type { OptionState, OptionSlots } from './Option.types';
 /**
  * Render the final JSX of Option
  */
-export const renderOption = (state: OptionState) => {
+export const renderOption_unstable = (state: OptionState) => {
   const { slots, slotProps } = getSlots<OptionSlots>(state);
 
   return (

@@ -22,7 +22,7 @@ import type { ComboboxProps, ComboboxState } from './Combobox.types';
  * @param props - props from this instance of Combobox
  * @param ref - reference to root HTMLElement of Combobox
  */
-export const useCombobox = (
+export const useCombobox_unstable = (
   props: ComboboxProps,
   optionCollection: OptionCollectionState,
   ref: React.Ref<HTMLButtonElement>,

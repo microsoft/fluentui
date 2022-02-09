@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useOption } from './useOption';
-import { renderOption } from './renderOption';
-import { useOptionStyles } from './useOptionStyles';
+import { useOption_unstable } from './useOption';
+import { renderOption_unstable } from './renderOption';
+import { useOptionStyles_unstable } from './useOptionStyles';
 import type { OptionProps } from './Option.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -10,10 +10,10 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  */
 export const Option: ForwardRefComponent<OptionProps> & { fluentComponentType?: string } = React.forwardRef(
   (props, ref) => {
-    const state = useOption(props, ref);
+    const state = useOption_unstable(props, ref);
 
-    useOptionStyles(state);
-    return renderOption(state);
+    useOptionStyles_unstable(state);
+    return renderOption_unstable(state);
   },
 );
 

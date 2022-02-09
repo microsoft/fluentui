@@ -14,7 +14,10 @@ import type { ComboButtonProps, ComboButtonState } from './ComboButton.types';
  * @param props - props from this instance of ComboButton
  * @param ref - reference to root HTMLElement of ComboButton
  */
-export const useComboButton = (props: ComboButtonProps, ref: React.Ref<HTMLButtonElement>): ComboButtonState => {
+export const useComboButton_unstable = (
+  props: ComboButtonProps,
+  ref: React.Ref<HTMLButtonElement>,
+): ComboButtonState => {
   const { placeholder, value } = props;
 
   const { activeOption, open } = useContextSelector(ComboboxContext, ctx => ({

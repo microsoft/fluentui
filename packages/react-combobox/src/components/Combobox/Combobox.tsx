@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useCombobox } from './useCombobox';
-import { renderCombobox } from './renderCombobox';
-import { useComboboxStyles } from './useComboboxStyles';
+import { useCombobox_unstable } from './useCombobox';
+import { renderCombobox_unstable } from './renderCombobox';
+import { useComboboxStyles_unstable } from './useComboboxStyles';
 import type { ComboboxProps } from './Combobox.types';
 import { useComboboxContextValues } from '../../contexts/useComboboxContext';
 import { useOptionCollection } from '../../utils/useOptionCollection';
@@ -12,11 +12,11 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  */
 export const Combobox: ForwardRefComponent<ComboboxProps> = React.forwardRef((props, ref) => {
   const optionCollection = useOptionCollection(props.children);
-  const state = useCombobox(props, optionCollection, ref);
+  const state = useCombobox_unstable(props, optionCollection, ref);
   const contextValues = useComboboxContextValues(state);
 
-  useComboboxStyles(state);
-  return renderCombobox(state, contextValues);
+  useComboboxStyles_unstable(state);
+  return renderCombobox_unstable(state, contextValues);
 });
 
 Combobox.displayName = 'Combobox';

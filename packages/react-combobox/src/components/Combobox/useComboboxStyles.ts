@@ -11,12 +11,9 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Combobox slots based on the state
  */
-export const useComboboxStyles = (state: ComboboxState): ComboboxState => {
+export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
   const styles = useStyles();
   state.root.className = mergeClasses(styles.root, state.root.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
 
   return state;
 };

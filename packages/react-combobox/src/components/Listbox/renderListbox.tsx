@@ -7,7 +7,7 @@ import { ListboxContextValues } from '../../contexts/ListboxContext';
 /**
  * Render the final JSX of Listbox
  */
-export const renderListbox = (state: ListboxState, contextValues: ListboxContextValues) => {
+export const renderListbox_unstable = (state: ListboxState, contextValues: ListboxContextValues) => {
   const { slots, slotProps } = getSlots<ListboxSlots>(state);
 
   return (

@@ -5,7 +5,7 @@ import type { ComboButtonState, ComboButtonSlots } from './ComboButton.types';
 /**
  * Render the final JSX of ComboButton
  */
-export const renderComboButton = (state: ComboButtonState) => {
+export const renderComboButton_unstable = (state: ComboButtonState) => {
   const { slots, slotProps } = getSlots<ComboButtonSlots>(state);
 
   return (

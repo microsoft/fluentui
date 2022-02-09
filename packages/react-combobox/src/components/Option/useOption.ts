@@ -28,7 +28,7 @@ function getValueString(value: string | undefined, children: React.ReactNode) {
  * @param props - props from this instance of Option
  * @param ref - reference to root HTMLElement of Option
  */
-export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
+export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
   const { activeOption, onOptionClick, registerOption, selectedKeys, unRegisterOption } = useContextSelector(
     ListboxContext,
     ctx => ({

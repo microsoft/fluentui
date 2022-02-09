@@ -8,7 +8,7 @@ import { ComboboxContextValues } from '../../contexts/ComboboxContext';
 /**
  * Render the final JSX of Combobox
  */
-export const renderCombobox = (state: ComboboxState, contextValues: ComboboxContextValues) => {
+export const renderCombobox_unstable = (state: ComboboxState, contextValues: ComboboxContextValues) => {
   const { slots, slotProps } = getSlots<ComboboxSlots>(state);
 
   const dropdown = <slots.listbox {...slotProps.listbox}>{slotProps.root.children}</slots.listbox>;
