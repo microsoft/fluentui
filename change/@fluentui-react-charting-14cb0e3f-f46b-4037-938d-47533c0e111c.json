@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add eslint deprecation exception",
-  "packageName": "@fluentui/react-charting",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

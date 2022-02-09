@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "do not render area attributes without valid values",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

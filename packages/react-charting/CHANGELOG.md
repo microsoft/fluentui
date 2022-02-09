@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 08 Feb 2022 07:25:34 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Feb 2022 07:30:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.7.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.7.11)
+
+Wed, 09 Feb 2022 07:30:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.7.10..@fluentui/react-charting_v5.7.11)
+
+### Patches
+
+- Add eslint deprecation exception ([PR #21547](https://github.com/microsoft/fluentui/pull/21547) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-focus to v8.3.17 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
+- Bump @fluentui/react to v8.54.0 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
 
 ## [5.7.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.7.10)
 

@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Tue, 08 Feb 2022 07:25:34 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Feb 2022 07:30:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.4.29)
+
+Wed, 09 Feb 2022 07:30:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.4.28..@fluentui/react-experiments_v8.4.29)
+
+### Patches
+
+- Mark raiseClick deprecated in react-experiments ([PR #21547](https://github.com/microsoft/fluentui/pull/21547) by seanmonahan@microsoft.com)
+- Bump @fluentui/react to v8.54.0 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
+- Bump @fluentui/theme to v2.4.8 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
+- Bump @fluentui/foundation-legacy to v8.1.21 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.22 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
+- Bump @fluentui/react-hooks to v8.3.11 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
+- Bump @fluentui/style-utilities to v8.5.4 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
+- Bump @fluentui/utilities to v8.4.0 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
+- Bump @fluentui/common-styles to v1.0.27 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
 
 ## [8.4.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.4.28)
 
