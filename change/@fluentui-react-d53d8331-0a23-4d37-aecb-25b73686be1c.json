@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "SelectionZone: Add prop to disable default behavior that clears selection when clicking on non-toggle surface.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
