@@ -2,7 +2,6 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import type * as React from 'react';
 
 export type SpinButtonSlots = {
-  // TODO Add slots here and to spinButtonShorthandProps in useSpinButton.ts
   /**
    * The root element of SpinButton is a container `<div>`.
    * The root slot receives the `className` and `style` specified on the `<SpinButton>`.

@@ -84,7 +84,7 @@ The [WAI-ARIA spec for SpinButton](https://www.w3.org/TR/wai-aria-practices/#spi
 
 Fluent UI v8 (Fabric) ships a `SpinButton` control. This control supports directly typing values into the input field, stepping via step buttons, clamping values in a min-max range and suffixes on the displayed value. The control also supports variants like including an icon in the label, label positioning and styling overrides. `SpinButton` has RTL support and implements the correct ARIA attributes for proper accessibility support.
 
-One interesting aspect of `SpinButton` in v8 is that the `value` prop (the prop that dictacts the actual current value of the control) is a string but `min`, `max` and `step` are all numbers. This is in keeping with `<input type="number">` where the `value` attribute is also a string but it feels odd for a React component that works with numeric values to take in a string `value` prop.
+One interesting aspect of `SpinButton` in v8 is that the `value` prop (the prop that dictates the actual current value of the control) is a string but `min`, `max` and `step` are all numbers. This is in keeping with `<input type="number">` where the `value` attribute is also a string but it feels odd for a React component that works with numeric values to take in a string `value` prop.
 
 v8 supports an optional icon that appears before the label. As none of the other v8 input controls support adding an icon next to the label as part of their component APIs and how [labeling will work for vNext inputs is still an open question](https://github.com/microsoft/fluentui/issues/19627#issuecomment-1022646775) this feature will be omitted from this spec. Having an icon by the control can be achieved by aligning an icon with the control or perhaps by updating the vNext `Label` component to support icons.
 
@@ -140,7 +140,7 @@ This is not an exhaustive list of attributes for this element but a curated list
 | list      | Allows the input to be associated with a `datalist` to provide suggested values |
 | max       | Maximum acceptable value. Must be greater than or equal to `min`                |
 | min       | Minimum acceptable value. Must be less than or equal to `max`                   |
-| step      | The granualarity of the value when incrementing or decrementing                 |
+| step      | The granularity of the value when incrementing or decrementing                  |
 
 Despite supporting both `min` and `max` attributes a native number input will allow users to enter values outside the specified bounds. This situation is resolved via a process called [constraint validation](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation) that adds CSS pseudo classes to the element for styling purposes and raises validation events.
 
@@ -314,10 +314,9 @@ No error states are currently implemented.
 
 `SpinButton`'s `onChange` callback is invoked every time a change is committed. A change is committed when:
 
-1. A step button is activated
+1. A step button is activated (e.g., clicked with a mouse or activated with a screen reader)
 2. When a user presses the `Arrow Up`, `Arrow Down`, `Home` or `End` keys while focused on the component.
-3. When a user presses the `Enter` key while focused on the `<input>`
-4. When the `blur` event is fired from the `<input>`
+3. When the `blur` event is fired from the `<input>`
 
 The `onChange` callback is not invoked while a user is focused on the `<input>` and editing the value of the `SpinButton` directly.
 
