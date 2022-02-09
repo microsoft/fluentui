@@ -7,6 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
@@ -15,6 +16,7 @@ export const Combobox: ForwardRefComponent<ComboboxProps>;
 
 // @public (undocumented)
 export type ComboboxCommons = {
+    inline?: boolean;
     open?: boolean;
     placeholder?: string;
     selectedKeys?: string[];
@@ -24,7 +26,9 @@ export type ComboboxCommons = {
 // Warning: (ae-forgotten-export) The symbol "SelectionProps" needs to be exported by the entry point index.d.ts
 //
 // @public
-export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> & ComboboxCommons & SelectionProps;
+export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> & ComboboxCommons & SelectionProps & {
+    positioning?: PositioningShorthand;
+};
 
 // @public (undocumented)
 export type ComboboxSlots = {
@@ -33,12 +37,13 @@ export type ComboboxSlots = {
     trigger: Slot<typeof ComboButton>;
 };
 
-// Warning: (ae-forgotten-export) The symbol "OrderedGroupState" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "OptionCollectionState" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "SelectionState" needs to be exported by the entry point index.d.ts
 //
 // @public
-export type ComboboxState = ComponentState<ComboboxSlots> & Required<Pick<ComboboxCommons, 'open'>> & Pick<ComboboxCommons, 'placeholder' | 'value'> & OrderedGroupState & SelectionState & {
-    activeId?: string;
+export type ComboboxState = ComponentState<ComboboxSlots> & Required<Pick<ComboboxCommons, 'open' | 'inline'>> & Pick<ComboboxCommons, 'placeholder' | 'value'> & OptionCollectionState & SelectionState & {
+    activeOption?: OptionValue;
+    idBase: string;
     onOptionClick(optionKey: string): void;
 };
 
@@ -79,8 +84,9 @@ export type ListboxSlots = {
 };
 
 // @public
-export type ListboxState = ComponentState<ListboxSlots> & OrderedGroupState & SelectionState & {
-    activeId?: string;
+export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState & SelectionState & {
+    activeOption?: OptionValue;
+    idBase: string;
     onOptionClick(optionKey: string): void;
 };
 
@@ -96,7 +102,25 @@ export type OptionCommons = {
 };
 
 // @public
-export type OptionProps = ComponentProps<OptionSlots> & OptionCommons & {
+export const OptionGroup: ForwardRefComponent<OptionGroupProps> & {
+    fluentComponentType?: string;
+};
+
+// @public
+export type OptionGroupProps = ComponentProps<Partial<OptionGroupSlots>>;
+
+// @public (undocumented)
+export type OptionGroupSlots = {
+    root: NonNullable<Slot<'div'>>;
+    label?: Slot<'span'>;
+};
+
+// @public
+export type OptionGroupState = ComponentState<OptionGroupSlots>;
+
+// @public
+export type OptionProps = ComponentProps<Partial<OptionSlots>> & OptionCommons & {
+    fluentKey?: string;
     value?: string;
 };
 
@@ -115,42 +139,55 @@ export type OptionState = ComponentState<OptionSlots> & OptionCommons & {
 // Warning: (ae-forgotten-export) The symbol "ComboboxContextValues" needs to be exported by the entry point index.d.ts
 //
 // @public
-export const renderCombobox: (state: ComboboxState, contextValues: ComboboxContextValues) => JSX.Element;
+export const renderCombobox_unstable: (state: ComboboxState, contextValues: ComboboxContextValues) => JSX.Element;
 
 // @public
-export const renderComboButton: (state: ComboButtonState) => JSX.Element;
+export const renderComboButton_unstable: (state: ComboButtonState) => JSX.Element;
 
 // Warning: (ae-forgotten-export) The symbol "ListboxContextValues" needs to be exported by the entry point index.d.ts
 //
 // @public
-export const renderListbox: (state: ListboxState, contextValues: ListboxContextValues) => JSX.Element;
+export const renderListbox_unstable: (state: ListboxState, contextValues: ListboxContextValues) => JSX.Element;
 
 // @public
-export const renderOption: (state: OptionState) => JSX.Element;
+export const renderOption_unstable: (state: OptionState) => JSX.Element;
 
 // @public
-export const useCombobox: (props: ComboboxProps, ref: React_2.Ref<HTMLButtonElement>) => ComboboxState;
+export const renderOptionGroup_unstable: (state: OptionGroupState) => JSX.Element;
 
 // @public
-export const useComboboxStyles: (state: ComboboxState) => ComboboxState;
+export const useCombobox_unstable: (props: ComboboxProps, optionCollection: OptionCollectionState, ref: React_2.Ref<HTMLButtonElement>) => ComboboxState;
 
 // @public
-export const useComboButton: (props: ComboButtonProps, ref: React_2.Ref<HTMLButtonElement>) => ComboButtonState;
+export const useComboboxStyles_unstable: (state: ComboboxState) => ComboboxState;
 
 // @public
-export const useComboButtonStyles: (state: ComboButtonState) => ComboButtonState;
+export const useComboButton_unstable: (props: ComboButtonProps, ref: React_2.Ref<HTMLButtonElement>) => ComboButtonState;
 
 // @public
-export const useListbox: (props: ListboxProps, ref: React_2.Ref<HTMLElement>) => ListboxState;
+export const useComboButtonStyles_unstable: (state: ComboButtonState) => ComboButtonState;
 
 // @public
-export const useListboxStyles: (state: ListboxState) => ListboxState;
+export const useListbox_unstable: (props: ListboxProps, optionCollection: OptionCollectionState, ref: React_2.Ref<HTMLElement>) => ListboxState;
 
 // @public
-export const useOption: (props: OptionProps, ref: React_2.Ref<HTMLElement>) => OptionState;
+export const useListboxStyles_unstable: (state: ListboxState) => ListboxState;
 
 // @public
-export const useOptionStyles: (state: OptionState) => OptionState;
+export const useOption_unstable: (props: OptionProps, ref: React_2.Ref<HTMLElement>) => OptionState;
+
+// @public
+export const useOptionGroup_unstable: (props: OptionGroupProps, ref: React_2.Ref<HTMLElement>) => OptionGroupState;
+
+// @public
+export const useOptionGroupStyles_unstable: (state: OptionGroupState) => OptionGroupState;
+
+// @public
+export const useOptionStyles_unstable: (state: OptionState) => OptionState;
+
+// Warnings were encountered during analysis:
+//
+// lib/components/Combobox/Combobox.types.d.ts:38:5 - (ae-forgotten-export) The symbol "OptionValue" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
