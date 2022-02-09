@@ -14,16 +14,12 @@ export const GroupedOptions = (props: Partial<ListboxProps>) => {
       <Listbox aria-labelledby={idBase} {...props}>
         <OptionGroup label="Land animals">
           {land.map(option => (
-            <Option key={option} itemKey={option} id={`${idBase}-${option}`}>
-              {option}
-            </Option>
+            <Option key={option}>{option}</Option>
           ))}
         </OptionGroup>
         <OptionGroup label="Sea animals">
           {water.map(option => (
-            <Option key={option} itemKey={option} id={`${idBase}-${option}`}>
-              {option}
-            </Option>
+            <Option key={option}>{option}</Option>
           ))}
         </OptionGroup>
       </Listbox>

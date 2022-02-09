@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 export type OptionValue = {
   key: string;
   id: string;
@@ -21,6 +23,8 @@ export type OptionData = {
 };
 
 export type OptionCollectionState = {
+  children: React.ReactNode;
+
   collectionData: OptionCollectionValue;
 
   options: OptionData;

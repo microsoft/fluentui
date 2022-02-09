@@ -18,8 +18,11 @@ export type OptionCommons = {
  */
 export type OptionProps = ComponentProps<Partial<OptionSlots>> &
   OptionCommons & {
-    /* Required as a unique identifier for options. It's recommended to use the same value as in key. */
-    itemKey: string;
+    /*
+     * Internal use only: used to associate Options with their parent Combobox context.
+     * Manually setting this prop is not recommended.
+     */
+    fluentKey?: string;
 
     /* define a string value if the children are not a string */
     value?: string;

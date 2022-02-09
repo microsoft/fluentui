@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, useId } from '@fluentui/react-utilities';
 import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
 import { useSelection } from '../../utils/useSelection';
 import { DropdownActions, getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
@@ -25,6 +25,7 @@ export const useListbox_unstable = (
   const {
     collectionData: { count, getOptionAtIndex, getOptionByKey, getIndexOfKey },
   } = optionCollection;
+  const idBase = useId('listbox');
 
   const [selectedKeys, selectKey] = useSelection(props);
 
@@ -64,6 +65,7 @@ export const useListbox_unstable = (
   const hasComboboxContext = useHasParentContext(ComboboxContext);
   const contextValues = useContextSelector(ComboboxContext, ctx => ({
     activeOption: ctx.activeOption,
+    idBase: ctx.idBase,
     onOptionClick: ctx.onOptionClick,
     registerOption: ctx.registerOption,
     selectedKeys: ctx.selectedKeys,
@@ -73,6 +75,7 @@ export const useListbox_unstable = (
   // without a parent combobox context, provide values directly from Listbox
   const standaloneListboxValues = {
     activeOption,
+    idBase,
     onOptionClick,
     selectedKeys,
   };

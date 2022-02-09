@@ -7,7 +7,7 @@ import { ComboboxState } from '../components/Combobox';
  */
 export type ComboboxContextValue = Pick<
   ComboboxState,
-  'activeOption' | 'onOptionClick' | 'open' | 'registerOption' | 'selectedKeys' | 'unRegisterOption'
+  'activeOption' | 'idBase' | 'onOptionClick' | 'open' | 'registerOption' | 'selectedKeys' | 'unRegisterOption'
 >;
 
 export type ComboboxContextValues = {
@@ -16,6 +16,7 @@ export type ComboboxContextValues = {
 
 export const ComboboxContext: Context<ComboboxContextValue> = createContext<ComboboxContextValue>({
   activeOption: undefined,
+  idBase: '',
   onOptionClick() {
     // noop
   },

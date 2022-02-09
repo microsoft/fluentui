@@ -53,5 +53,6 @@ export type ComboboxState = ComponentState<ComboboxSlots> &
   OptionCollectionState &
   SelectionState & {
     activeOption?: OptionValue;
+    idBase: string;
     onOptionClick(optionKey: string): void;
   };

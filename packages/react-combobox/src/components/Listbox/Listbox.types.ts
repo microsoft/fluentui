@@ -18,5 +18,6 @@ export type ListboxState = ComponentState<ListboxSlots> &
   OptionCollectionState &
   SelectionState & {
     activeOption?: OptionValue;
+    idBase: string;
     onOptionClick(optionKey: string): void;
   };

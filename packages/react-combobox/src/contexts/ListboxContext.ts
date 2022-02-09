@@ -7,7 +7,7 @@ import { ListboxState } from '../components/Listbox';
  */
 export type ListboxContextValue = Pick<
   ListboxState,
-  'activeOption' | 'selectedKeys' | 'onOptionClick' | 'registerOption' | 'unRegisterOption'
+  'activeOption' | 'idBase' | 'selectedKeys' | 'onOptionClick' | 'registerOption' | 'unRegisterOption'
 >;
 
 export type ListboxContextValues = {
@@ -16,6 +16,7 @@ export type ListboxContextValues = {
 
 export const ListboxContext: Context<ListboxContextValue> = createContext<ListboxContextValue>({
   activeOption: undefined,
+  idBase: '',
   onOptionClick() {
     // noop
   },

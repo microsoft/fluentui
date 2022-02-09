@@ -29,18 +29,19 @@ function getValueString(value: string | undefined, children: React.ReactNode) {
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
-  const { activeOption, onOptionClick, registerOption, selectedKeys, unRegisterOption } = useContextSelector(
+  const { activeOption, idBase, onOptionClick, registerOption, selectedKeys, unRegisterOption } = useContextSelector(
     ListboxContext,
     ctx => ({
       activeOption: ctx.activeOption,
+      idBase: ctx.idBase,
       onOptionClick: ctx.onOptionClick,
       registerOption: ctx.registerOption,
       selectedKeys: ctx.selectedKeys,
       unRegisterOption: ctx.unRegisterOption,
     }),
   );
-  const { id, itemKey, disabled, value } = props;
-  const selected = itemKey ? selectedKeys.indexOf(itemKey) > -1 : false;
+  const { id = `${idBase}-${props.fluentKey}`, fluentKey: key, disabled, value } = props;
+  const selected = key ? selectedKeys.indexOf(key) > -1 : false;
 
   const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (disabled) {
@@ -48,20 +49,19 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       return;
     }
 
-    onOptionClick(itemKey || '');
+    onOptionClick(key || '');
     props.onClick?.(event);
   };
 
   // register option data with context
   React.useEffect(() => {
-    // TODO: fix types for id/move to using required itemKey prop
     const optionValue = getValueString(value, props.children);
-    registerOption({ key: itemKey, id: id as string, value: optionValue });
+    key && registerOption({ key, id, value: optionValue });
 
     return () => {
-      unRegisterOption(id as string);
+      key && unRegisterOption(key);
     };
-  }, [registerOption, unRegisterOption, id, itemKey, value, props.children]);
+  }, [registerOption, unRegisterOption, id, key, value, props.children]);
 
   return {
     components: {

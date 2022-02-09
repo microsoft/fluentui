@@ -4,6 +4,7 @@ import {
   getPartitionedNativeProps,
   resolveShorthand,
   useControllableState,
+  useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { DropdownActions, getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
@@ -32,6 +33,7 @@ export const useCombobox_unstable = (
     options,
     collectionData: { count, getOptionAtIndex, getIndexOfKey, getOptionByKey },
   } = optionCollection;
+  const idBase = useId('combobox');
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
   const [selectedKeys, selectKey] = useSelection(props);
@@ -165,6 +167,7 @@ export const useCombobox_unstable = (
     }),
     ...optionCollection,
     activeOption,
+    idBase,
     inline,
     onOptionClick,
     open,

@@ -1,56 +1,68 @@
 import * as React from 'react';
-import type { OptionCollectionState, OptionCollectionValue, OptionData, OptionValue } from './OptionCollection.types';
+import { OptionProps } from '../components/Option';
+import type { OptionCollectionState, OptionData, OptionValue } from './OptionCollection.types';
 
-function getValidOptions(children: React.ReactNode): string[] {
+function getValidOptions(children: React.ReactNode): { keys: string[]; children: React.ReactNode } {
   const keys: string[] = [];
 
-  React.Children.forEach(children, child => {
+  const clonedChildren = React.Children.map(children, (child, index) => {
     if (React.isValidElement(child) && typeof child.type === 'object') {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { fluentComponentType } = child.type as any;
 
       // if the child is an option, add its key to the array
-      if (fluentComponentType === 'Option' && child.props.itemKey) {
-        keys.push(child.props.itemKey);
+      if (fluentComponentType === 'Option') {
+        const optionKey = child.props.fluentKey || child.key || child.props.id || `${index}`;
+        keys.push(optionKey);
+
+        // add key prop to Option children
+        const overrideProps: Partial<OptionProps> = { fluentKey: optionKey };
+        return React.cloneElement(child, overrideProps);
       }
 
       // if the child is an option group, get its children
       // comboboxes semantically only support one level of option groups
       else if (fluentComponentType === 'OptionGroup' && child.props.children) {
-        keys.push(...getValidOptions(child.props.children));
+        const { keys: groupKeys, children: groupChildren } = getValidOptions(child.props.children);
+        keys.push(...groupKeys);
+        return React.cloneElement(child, {}, groupChildren);
+      } else {
+        return child;
       }
     }
   });
 
-  return keys;
+  return { keys, children: clonedChildren };
 }
 
 export const useOptionCollection = (children: React.ReactNode): OptionCollectionState => {
   const optionData: React.MutableRefObject<OptionData> = React.useRef({});
 
-  const collectionData: OptionCollectionValue = React.useMemo(() => {
-    const options = getValidOptions(children);
+  const { collectionData, processedChildren } = React.useMemo(() => {
+    const { keys: optionKeys, children: clonedChildren } = getValidOptions(children);
 
     const getOptionAtIndex = (index: number) => {
-      const key = options[index];
+      const key = optionKeys[index];
       return optionData.current[key];
     };
-    const getIndexOfKey = (id: string) => options.indexOf(id);
+    const getIndexOfKey = (id: string) => optionKeys.indexOf(id);
 
     const getOptionByKey = (key: string) => optionData.current[key];
 
     return {
-      count: options.length,
-      id: 'test',
-      getOptionAtIndex,
-      getIndexOfKey,
-      getOptionByKey,
+      collectionData: {
+        count: optionKeys.length,
+        id: 'test',
+        getOptionAtIndex,
+        getIndexOfKey,
+        getOptionByKey,
+      },
+      processedChildren: clonedChildren,
     };
   }, [children]);
 
   const { registerOption, unRegisterOption } = React.useMemo(() => {
     const register = (option: OptionValue) => {
-      // id is currently duplicated in the key and option data. Keeping it as-is for now to test.
       if (option && option.key) {
         optionData.current[option.key] = option;
       }
@@ -64,7 +76,8 @@ export const useOptionCollection = (children: React.ReactNode): OptionCollection
   }, []);
 
   return {
-    collectionData,
+    children: processedChildren,
+    collectionData: collectionData,
     options: optionData.current,
     registerOption,
     unRegisterOption,

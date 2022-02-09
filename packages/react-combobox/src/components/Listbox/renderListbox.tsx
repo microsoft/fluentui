@@ -12,7 +12,7 @@ export const renderListbox_unstable = (state: ListboxState, contextValues: Listb
 
   return (
     <slots.root {...slotProps.root}>
-      <ListboxContext.Provider value={contextValues.listbox}>{slotProps.root.children}</ListboxContext.Provider>
+      <ListboxContext.Provider value={contextValues.listbox}>{state.children}</ListboxContext.Provider>
     </slots.root>
   );
 };
