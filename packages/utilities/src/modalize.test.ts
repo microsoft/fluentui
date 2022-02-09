@@ -93,9 +93,9 @@ describe('modalize', () => {
     expect(getHiddenElements()).toStrictEqual([]);
   });
 
-  it('handles if element is direct child of body', () => {
+  it('restores original aria-hidden state (false or unset)', () => {
     document.body.innerHTML = `
-      <div id="siblingBefore"></div>
+      <div id="siblingBefore" aria-hidden="false"></div>
       <div id="${modalizeId}"></div>
       <div id="siblingAfter"></div>
     `;
@@ -106,6 +106,8 @@ describe('modalize', () => {
 
     unmodalize();
     expect(getHiddenElements()).toStrictEqual([]);
+    expect(document.getElementById('siblingBefore')!.getAttribute('aria-hidden')).toBe('false');
+    expect(document.getElementById('siblingAfter')!.getAttribute('aria-hidden')).toBeNull();
   });
 
   it('handles if element is direct child of body', () => {

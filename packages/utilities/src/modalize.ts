@@ -17,15 +17,16 @@ export function modalize(target: HTMLElement): () => void {
     return () => undefined;
   }
 
-  let affectedNodes: HTMLElement[] = [];
+  let affectedNodes: [HTMLElement, string | null][] = [];
 
   // start at target, then recurse and do the same for parent, until we reach <body>
   while (target !== targetDocument.body && target.parentElement) {
     // grab all siblings of current element
     for (const sibling of (target.parentElement.children as unknown) as HTMLElement[]) {
       // but ignore elements that are already aria-hidden
-      if (sibling !== target && sibling.getAttribute('aria-hidden')?.toLowerCase() !== 'true') {
-        affectedNodes.push(sibling);
+      const ariaHidden = sibling.getAttribute('aria-hidden');
+      if (sibling !== target && ariaHidden?.toLowerCase() !== 'true') {
+        affectedNodes.push([sibling, ariaHidden]);
       }
     }
 
@@ -33,7 +34,7 @@ export function modalize(target: HTMLElement): () => void {
   }
 
   // take all those elements and set aria-hidden=true on them
-  affectedNodes.forEach(node => {
+  affectedNodes.forEach(([node]) => {
     node.setAttribute('aria-hidden', 'true');
   });
 
@@ -46,9 +47,13 @@ export function modalize(target: HTMLElement): () => void {
 /**
  * Undoes the changes that modalize() did.
  */
-function unmodalize(affectedNodes: HTMLElement[]) {
-  affectedNodes.forEach(node => {
-    // set instead of removing in case other components explicitly set aria-hidden and do =="true" or =="false"
-    node.setAttribute('aria-hidden', 'false');
+function unmodalize(affectedNodes: [HTMLElement, string | null][]) {
+  affectedNodes.forEach(([node, originalValue]) => {
+    // Restore the original value (false or unset)
+    if (originalValue) {
+      node.setAttribute('aria-hidden', originalValue);
+    } else {
+      node.removeAttribute('aria-hidden');
+    }
   });
 }
