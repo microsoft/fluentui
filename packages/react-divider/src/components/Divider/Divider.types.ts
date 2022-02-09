@@ -12,7 +12,7 @@ export type DividerSlots = {
   wrapper: Slot<'div'>;
 };
 
-export type DividerCommons = {
+type DividerCommons = {
   /**
    * Determines the alignment of the content within the divider.
    * @defaultvalue 'center'

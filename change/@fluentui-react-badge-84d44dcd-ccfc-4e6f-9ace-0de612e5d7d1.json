@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "remove export of commons types",
+  "packageName": "@fluentui/react-badge",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

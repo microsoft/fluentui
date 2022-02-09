@@ -8044,6 +8044,7 @@ export interface ISelectionZoneProps extends React_2.ClassAttributes<SelectionZo
     onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
     onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
     selection: ISelection;
+    selectionClearedOnSurfaceClick?: boolean;
     selectionMode?: SelectionMode_2;
     selectionPreservedOnEmptyClick?: boolean;
 }

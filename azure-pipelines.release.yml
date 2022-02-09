@@ -168,6 +168,17 @@ steps:
       node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
     displayName: 'Update github release notes'
 
+  - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+    displayName: 📒 Generate Manifest
+    inputs:
+      BuildDropPath: $(System.DefaultWorkingDirectory)
+
+  - task: PublishPipelineArtifact@1
+    displayName: 📒 Publish Manifest
+    inputs:
+      artifactName: SBom-$(System.JobAttempt)
+      targetPath: $(System.DefaultWorkingDirectory)/_manifest
+
   # This would usually be run automatically (via a pipeline decorator from an extension), but the
   # thorough cleanup step prevents it from working. So run it manually here.
   - task: ComponentGovernanceComponentDetection@0

@@ -19,16 +19,8 @@ export const Switch: ForwardRefComponent<SwitchProps>;
 // @public (undocumented)
 export const switchClassName = "fui-Switch";
 
-// @public (undocumented)
-export interface SwitchCommons {
-    checked?: boolean;
-    defaultChecked?: boolean;
-    disabled?: boolean;
-    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
-        checked: boolean;
-    }) => void;
-}
-
+// Warning: (ae-forgotten-export) The symbol "SwitchCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export interface SwitchProps extends Omit<ComponentProps<Partial<SwitchSlots>>, 'onChange'>, SwitchCommons {
 }

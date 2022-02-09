@@ -1,5 +1,8 @@
 import { useEventCallback, useIsomorphicLayoutEffect, useFirstMount, canUseDOM } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
+import * as PopperJs from '@popperjs/core';
+import * as React from 'react';
+
 import {
   getScrollParent,
   applyRtlToOffset,
@@ -9,33 +12,16 @@ import {
   useCallbackRef,
   getBasePlacement,
 } from './utils/index';
-import * as PopperJs from '@popperjs/core';
-import * as React from 'react';
-import type { PositioningProps } from './types';
+import type { PopperVirtualElement, PopperOptions, PositioningProps } from './types';
 
 type PopperInstance = PopperJs.Instance & { isFirstRun?: boolean };
 
-interface PopperOptions extends PositioningProps {
+interface UsePopperOptions extends PositioningProps {
   /**
    * If false, delays Popper's creation.
    * @default true
    */
   enabled?: boolean;
-
-  onStateUpdate?: (state: Partial<PopperJs.State>) => void;
-
-  /**
-   * Enables the Popper box to position itself in 'fixed' mode (default value is position: 'absolute')
-   * @default false
-   */
-  positionFixed?: boolean;
-
-  /**
-   * When the reference element or the viewport is outside viewport allows a popper element to be fully in viewport.
-   * "all" enables this behavior for all axis.
-   */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  unstable_disableTether?: boolean | 'all';
 }
 
 //
@@ -74,27 +60,23 @@ function hasAutofocusFilter(node: Node) {
  */
 function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: React.MutableRefObject<string>) {
   const {
+    align,
     arrowPadding,
     autoSize,
     coverTarget,
     flipBoundary,
     offset,
-    onStateUpdate,
     overflowBoundary,
+    pinned,
+    position,
+    positionFixed,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_disableTether,
-    pinned,
   } = options;
 
   const isRtl = useFluent().dir === 'rtl';
-  const placement = getPlacement(options.align, options.position, isRtl);
-  const strategy = options.positionFixed ? 'fixed' : 'absolute';
-
-  const handleStateUpdate = useEventCallback(({ state }: { state: Partial<PopperJs.State> }) => {
-    if (onStateUpdate) {
-      onStateUpdate(state);
-    }
-  });
+  const placement = getPlacement(align, position, isRtl);
+  const strategy = positionFixed ? 'fixed' : 'absolute';
 
   const offsetModifier = React.useMemo(
     () =>
@@ -188,13 +170,6 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
         },
 
         {
-          name: 'onUpdate',
-          enabled: true,
-          phase: 'afterWrite' as PopperJs.ModifierPhases,
-          fn: handleStateUpdate,
-        },
-
-        {
           // Similar code as popper-maxsize-modifier: https://github.com/atomiks/popper.js/blob/master/src/modifiers/maxSize.js
           // popper-maxsize-modifier only calculates the max sizes.
           // This modifier can apply max sizes always, or apply the max sizes only when overflow is detected
@@ -276,7 +251,6 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
 
         placement,
         strategy,
-        onFirstUpdate: state => handleStateUpdate({ state }),
       };
 
       return popperOptions;
@@ -294,7 +268,6 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
       pinned,
 
       // These can be skipped from deps as they will not ever change
-      handleStateUpdate,
       popperOriginalPositionRef,
     ],
   );
@@ -309,7 +282,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
  *   to avoid focus jumps
  */
 export function usePopper(
-  options: PopperOptions = {},
+  options: UsePopperOptions = {},
 ): {
   // React refs are supposed to be contravariant
   // (allows a more general type to be passed rather than a more specific one)
@@ -334,7 +307,7 @@ export function usePopper(
     popperInstanceRef.current?.destroy();
     popperInstanceRef.current = null;
 
-    const { target = targetRef.current } = options;
+    const target = overrideTargetRef.current ?? targetRef.current;
 
     let popperInstance: PopperInstance | null = null;
 
@@ -393,16 +366,39 @@ export function usePopper(
   const containerRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
   const arrowRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
 
+  // Stores external target from options.target or setTarget
+  const overrideTargetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, handlePopperUpdate, true);
+
   React.useImperativeHandle(
     options.popperRef,
     () => ({
       updatePosition: () => {
         popperInstanceRef.current?.update();
       },
+      setTarget: (target: HTMLElement | PopperVirtualElement) => {
+        if (options.target && process.env.NODE_ENV !== 'production') {
+          const err = new Error();
+          // eslint-disable-next-line no-console
+          console.warn('Imperative setTarget should not be used at the same time as target option');
+          // eslint-disable-next-line no-console
+          console.warn(err.stack);
+        }
+
+        overrideTargetRef.current = target;
+      },
     }),
+    // Missing deps:
+    // options.target - only used for a runtime warning
+    // targetRef - Stable between renders
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 
+  useIsomorphicLayoutEffect(() => {
+    if (options.target) {
+      overrideTargetRef.current = options.target;
+    }
+  }, [options.target, overrideTargetRef]);
   useIsomorphicLayoutEffect(() => {
     handlePopperUpdate();
 
@@ -410,17 +406,16 @@ export function usePopper(
       popperInstanceRef.current?.destroy();
       popperInstanceRef.current = null;
     };
-  }, [handlePopperUpdate, options.enabled, options.target]);
+  }, [handlePopperUpdate, options.enabled]);
   useIsomorphicLayoutEffect(
     () => {
       if (!isFirstMount) {
         popperInstanceRef.current?.setOptions(
-          resolvePopperOptions(options.target || targetRef.current, containerRef.current, arrowRef.current),
+          resolvePopperOptions(overrideTargetRef.current ?? targetRef.current, containerRef.current, arrowRef.current),
         );
       }
     },
     // Missing deps:
-    // options.target - The useIsomorphicLayoutEffect before this will create a new popper instance if target changes
     // isFirstMount - Should never change after mount
     // arrowRef, containerRef, targetRef - Stable between renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
