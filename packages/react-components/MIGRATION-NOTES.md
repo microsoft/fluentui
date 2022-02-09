@@ -83,8 +83,8 @@ const useStyles = makeStyles({
 -  focusOutline1: createFocusOutlineStyle(theme, { selector: 'focus-within', style: { outlineOffset: '8px' } }),
 +  focusOutline1: createFocusOutlineStyle({ selector: 'focus-within', style: { outlineOffset: '8px' } }),
 
--  focusOutline2: createFocusOutlineStyle(theme => ({ backgrounColor: theme.colorNeutralBackground1 })),
-+  focusOutline2: createFocusOutlineStyle({ backgrounColor: tokens.colorNeutralBackground1 }),
+-  focusOutline2: createFocusOutlineStyle(theme => ({ backgroundColor: theme.colorNeutralBackground1 })),
++  focusOutline2: createFocusOutlineStyle({ backgroundColor: tokens.colorNeutralBackground1 }),
 
 -  focusOutline3: createCustomFocusIndicatorStyle(theme => ({
 -    outlineWidth: theme.strokeWidthThick,
