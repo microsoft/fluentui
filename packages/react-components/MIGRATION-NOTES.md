@@ -126,6 +126,14 @@ const useStyles = makeStyles({
 });
 ```
 
+### `themeToCSSVariables()` was removed
+
+`themeToCSSVariables()` was previously used for getting CSS variables name from nested values on `Theme`, since `Theme` has become flattened this method becomes unnecessary.
+
+This API was internal, no replacement is provided.
+
+For more details, please check [microsoft/fluentui#20828](https://github.com/microsoft/fluentui/pull/20828).
+
 ## Typings & exports
 
 ### Hooks are now exported with "\_unstable" suffix
