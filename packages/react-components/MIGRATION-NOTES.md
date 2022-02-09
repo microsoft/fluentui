@@ -73,6 +73,16 @@ For more details, please check [microsoft/fluentui#20573](https://github.com/mic
 
 ## Changes to the theming system
 
+### Brand ramp updated
+
+The brand colors have were updated to match the latest design.
+
+For more details, please check [microsoft/fluentui#20140](https://github.com/microsoft/fluentui/pull/20140).
+
+The shape of the Brand ramp object which is used to create a theme was changed from shade/primary/tint properties to an array of values for 10, 20 ... 160.
+
+For more details, please check [microsoft/fluentui#20884](https://github.com/microsoft/fluentui/pull/20884).
+
 ### Tokens to css variables mapping is now exported
 
 An object mapping the available tokens in the `Theme` to their respective css variables is now exported. You can import and use it in your project as follows:
