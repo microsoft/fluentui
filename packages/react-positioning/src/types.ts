@@ -34,7 +34,7 @@ export type PopperRefHandle = {
 
 export type PopperVirtualElement = PopperJs.VirtualElement;
 
-export interface PositioningProps {
+export interface PopperOptions {
   /** Alignment for the component. Only has an effect if used with the @see position option */
   align?: Alignment;
 
@@ -44,9 +44,6 @@ export interface PositioningProps {
   /** The element which will define the boundaries of the popper position for the overflow behavior. */
   overflowBoundary?: Boundary;
 
-  /** An imperative handle to Popper methods. */
-  popperRef?: React.Ref<PopperRefHandle>;
-
   /**
    * Position for the component. Position has higher priority than align. If position is vertical ('above' | 'below')
    * and align is also vertical ('top' | 'bottom') or if both position and align are horizontal ('before' | 'after'
@@ -54,6 +51,12 @@ export interface PositioningProps {
    * then provided value for 'align' will be ignored and 'center' will be used instead.
    */
   position?: Position;
+
+  /**
+   * Enables the Popper box to position itself in 'fixed' mode (default value is position: 'absolute')
+   * @default false
+   */
+  positionFixed?: boolean;
 
   /**
    * Lets you displace a popper element from its reference element.
@@ -78,11 +81,6 @@ export interface PositioningProps {
   autoSize?: AutoSize;
 
   /**
-   * Manual override for popper target. Useful for scenarios where a component accepts user prop to override target
-   */
-  target?: HTMLElement | PopperVirtualElement | null;
-
-  /**
    * Modifies position and alignment to cover the target
    */
   coverTarget?: boolean;
@@ -92,6 +90,25 @@ export interface PositioningProps {
    * `position` props, regardless of the size of the component, the reference element or the viewport.
    */
   pinned?: boolean;
+
+  /**
+   * When the reference element or the viewport is outside viewport allows a popper element to be fully in viewport.
+   * "all" enables this behavior for all axis.
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  unstable_disableTether?: boolean | 'all';
+}
+
+export interface PositioningProps
+  // "positionFixed" & "unstable_disableTether" are not exported as public API (yet)
+  extends Omit<PopperOptions, 'positionFixed' | 'unstable_disableTether'> {
+  /** An imperative handle to Popper methods. */
+  popperRef?: React.Ref<PopperRefHandle>;
+
+  /**
+   * Manual override for popper target. Useful for scenarios where a component accepts user prop to override target
+   */
+  target?: HTMLElement | PopperVirtualElement | null;
 }
 
 export type PositioningShorthandValue =

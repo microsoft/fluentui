@@ -1,5 +1,8 @@
 import { useEventCallback, useIsomorphicLayoutEffect, useFirstMount, canUseDOM } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
+import * as PopperJs from '@popperjs/core';
+import * as React from 'react';
+
 import {
   getScrollParent,
   applyRtlToOffset,
@@ -9,33 +12,16 @@ import {
   useCallbackRef,
   getBasePlacement,
 } from './utils/index';
-import * as PopperJs from '@popperjs/core';
-import * as React from 'react';
-import { PopperVirtualElement, PositioningProps } from './types';
+import { PopperVirtualElement, PopperOptions, PositioningProps } from './types';
 
 type PopperInstance = PopperJs.Instance & { isFirstRun?: boolean };
 
-interface PopperOptions extends PositioningProps {
+interface UsePopperOptions extends PositioningProps {
   /**
    * If false, delays Popper's creation.
    * @default true
    */
   enabled?: boolean;
-
-  onStateUpdate?: (state: Partial<PopperJs.State>) => void;
-
-  /**
-   * Enables the Popper box to position itself in 'fixed' mode (default value is position: 'absolute')
-   * @default false
-   */
-  positionFixed?: boolean;
-
-  /**
-   * When the reference element or the viewport is outside viewport allows a popper element to be fully in viewport.
-   * "all" enables this behavior for all axis.
-   */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  unstable_disableTether?: boolean | 'all';
 }
 
 //
@@ -80,7 +66,6 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
     coverTarget,
     flipBoundary,
     offset,
-    onStateUpdate,
     overflowBoundary,
     pinned,
     position,
@@ -92,12 +77,6 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
   const isRtl = useFluent().dir === 'rtl';
   const placement = getPlacement(align, position, isRtl);
   const strategy = positionFixed ? 'fixed' : 'absolute';
-
-  const handleStateUpdate = useEventCallback(({ state }: { state: Partial<PopperJs.State> }) => {
-    if (onStateUpdate) {
-      onStateUpdate(state);
-    }
-  });
 
   const offsetModifier = React.useMemo(
     () =>
@@ -191,13 +170,6 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
         },
 
         {
-          name: 'onUpdate',
-          enabled: true,
-          phase: 'afterWrite' as PopperJs.ModifierPhases,
-          fn: handleStateUpdate,
-        },
-
-        {
           // Similar code as popper-maxsize-modifier: https://github.com/atomiks/popper.js/blob/master/src/modifiers/maxSize.js
           // popper-maxsize-modifier only calculates the max sizes.
           // This modifier can apply max sizes always, or apply the max sizes only when overflow is detected
@@ -279,7 +251,6 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
 
         placement,
         strategy,
-        onFirstUpdate: state => handleStateUpdate({ state }),
       };
 
       return popperOptions;
@@ -297,7 +268,6 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
       pinned,
 
       // These can be skipped from deps as they will not ever change
-      handleStateUpdate,
       popperOriginalPositionRef,
     ],
   );
@@ -312,7 +282,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
  *   to avoid focus jumps
  */
 export function usePopper(
-  options: PopperOptions = {},
+  options: UsePopperOptions = {},
 ): {
   // React refs are supposed to be contravariant
   // (allows a more general type to be passed rather than a more specific one)
