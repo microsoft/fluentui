@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { nullRender } from './nullRender';
 import { omit } from '../utils/omit';
 import type {
   AsIntrinsicElement,
@@ -12,7 +11,7 @@ import type {
 } from './types';
 
 export type Slots<S extends SlotPropsRecord> = {
-  [K in keyof S]-?: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
+  [K in keyof S]: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
     ? // for slots with an `as` prop, the slot will be any one of the possible values of `as`
       As
     : ExtractSlotProps<S[K]> extends React.ComponentType<infer P>
@@ -68,9 +67,9 @@ export function getSlots<R extends SlotPropsRecord>(
 function getSlot<R extends SlotPropsRecord, K extends keyof R>(
   state: ComponentState<R>,
   slotName: K,
-): readonly [React.ElementType<R[K]>, R[K]] {
+): readonly [React.ElementType<R[K]> | null, R[K]] {
   if (state[slotName] === undefined) {
-    return [nullRender, undefined!];
+    return [null, undefined as R[K]];
   }
   const { children, as: asProp, ...rest } = state[slotName]!;
 

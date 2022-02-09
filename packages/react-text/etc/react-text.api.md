@@ -60,20 +60,8 @@ export { Text_2 as Text }
 // @public (undocumented)
 export const textClassName = "fui-Text";
 
-// @public (undocumented)
-export type TextCommons = {
-    wrap: boolean;
-    truncate: boolean;
-    block: boolean;
-    italic: boolean;
-    underline: boolean;
-    strikethrough: boolean;
-    size: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
-    font: 'base' | 'monospace' | 'numeric';
-    weight: 'regular' | 'medium' | 'semibold';
-    align: 'start' | 'center' | 'end' | 'justify';
-};
-
+// Warning: (ae-forgotten-export) The symbol "TextCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type TextProps = ComponentProps<TextSlots> & Partial<TextCommons>;
 

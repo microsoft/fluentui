@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "@fluentui/example-data": "^8.3.0",
-    "@fluentui/font-icons-mdl2": "^8.1.21",
-    "@fluentui/react": "^8.52.3",
+    "@fluentui/font-icons-mdl2": "^8.1.22",
+    "@fluentui/react": "^8.54.0",
     "@fluentui/react-accordion": "9.0.0-rc.0",
     "@fluentui/react-avatar": "9.0.0-rc.0",
     "@fluentui/react-badge": "9.0.0-rc.0",

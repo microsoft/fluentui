@@ -25,23 +25,13 @@ export const Tooltip: React_2.FC<TooltipProps> & FluentTriggerComponent;
 // @public (undocumented)
 export const tooltipClassName = "fui-Tooltip";
 
-// @public
-export type TooltipCommons = {
-    appearance?: 'normal' | 'inverted';
-    withArrow?: boolean;
-    positioning?: PositioningShorthand;
-    visible?: boolean;
-    onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
-    relationship: 'label' | 'description' | 'inaccessible';
-    showDelay: number;
-    hideDelay: number;
-};
-
+// Warning: (ae-forgotten-export) The symbol "TooltipCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'relationship'>> & Pick<TooltipCommons, 'relationship'> & {
     children?: (React_2.ReactElement & {
         ref?: React_2.Ref<unknown>;
-    }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
+    }) | ((props: TooltipTriggerProps) => React_2.ReactElement | null) | null;
 };
 
 // @public
@@ -51,7 +41,7 @@ export type TooltipSlots = {
 
 // @public
 export type TooltipState = ComponentState<TooltipSlots> & TooltipCommons & {
-    children?: React_2.ReactNode;
+    children?: React_2.ReactElement | null;
     shouldRenderTooltip?: boolean;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     arrowClassName?: string;

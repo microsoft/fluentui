@@ -17,20 +17,14 @@ export const Checkbox: ForwardRefComponent<CheckboxProps>;
 // @public (undocumented)
 export const checkboxClassName = "fui-Checkbox";
 
-// @public (undocumented)
-export interface CheckboxCommons {
-    checked: 'mixed' | boolean;
-    circular: boolean;
-    labelPosition: 'before' | 'after';
-    size: 'medium' | 'large';
-}
-
 // @public
 export interface CheckboxOnChangeData {
     // (undocumented)
     checked: 'mixed' | boolean;
 }
 
+// Warning: (ae-forgotten-export) The symbol "CheckboxCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & Partial<CheckboxCommons> & {
     children?: never;

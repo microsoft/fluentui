@@ -11,7 +11,7 @@ import * as React_2 from 'react';
 export const anchorProperties: Record<string, number>;
 
 // @public
-export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>> | ((props: TTriggerProps) => React_2.ReactNode) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactNode;
+export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>> | ((props: TTriggerProps) => React_2.ReactElement | null) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactElement | null;
 
 // @public
 export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = {
@@ -141,9 +141,6 @@ export const labelProperties: Record<string, number>;
 export const liProperties: Record<string, number>;
 
 // @public
-export const nullRender: () => null;
-
-// @public
 export const olProperties: Record<string, number>;
 
 // @public
@@ -206,7 +203,7 @@ export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, 
 
 // @public (undocumented)
 export type Slots<S extends SlotPropsRecord> = {
-    [K in keyof S]-?: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As> ? As : ExtractSlotProps<S[K]> extends React_2.ComponentType<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<ExtractSlotProps<S[K]>>;
+    [K in keyof S]: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As> ? As : ExtractSlotProps<S[K]> extends React_2.ComponentType<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<ExtractSlotProps<S[K]>>;
 };
 
 // @public
