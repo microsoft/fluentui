@@ -44,7 +44,6 @@ function getPackagesToTag() {
 
 if (require.main === module && process.env.RELEASE_VNEXT) {
   const argv = yargs.argv;
-  console.log(argv);
 
   if (!argv.token || typeof argv.token !== 'string') {
     throw new Error('Please pass an NPM token through the --token argument');
