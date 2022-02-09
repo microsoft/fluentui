@@ -21,8 +21,7 @@ function tagPackage(name: string, version: string, npmToken: string) {
   const command = `npm dist-tag add ${name}@${version} ${prereleaseTag} --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=${npmToken}`;
   console.log(command);
   try {
-    const res = execSync(command, { stdio: 'inherit' });
-    console.log(res.toString());
+    execSync(command, { stdio: 'inherit' });
   } catch (e) {
     console.error(`failed to tag ${name}@${version}`);
     console.error(e);
