@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Bump Fluent UI packages to 9.0.0-rc",
-  "packageName": "@fluentui/react-conformance-griffel",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

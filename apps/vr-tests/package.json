@@ -34,7 +34,7 @@
     "@fluentui/react-icons-mdl2": "^1.2.14",
     "@fluentui/react-image": "9.0.0-rc.0",
     "@fluentui/react-input": "9.0.0-beta.0",
-    "@fluentui/react-label": "9.0.0-rc.0",
+    "@fluentui/react-label": "9.0.0-beta.4",
     "@fluentui/react-link": "9.0.0-rc.0",
     "@fluentui/react-menu": "9.0.0-rc.0",
     "@fluentui/react-popover": "9.0.0-rc.0",
