@@ -3,7 +3,7 @@ import * as React from 'react';
 // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { Input } from '@fluentui/react-components/unstable';
+import { Input } from '@fluentui/react-input';
 
 // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
