@@ -63,9 +63,7 @@ steps:
     displayName: Publish changes and bump versions
 
   - script: |
-      yarn ts-node scripts/beachball/tagVNext.ts
-    env:
-      NPM_TOKEN: $(npmToken)
+      yarn ts-node scripts/beachball/tagVNext.ts --token $(npmToken)
     displayName: Tag prelease packages with prerelease tag
     continueOnError: true
 
