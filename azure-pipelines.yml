@@ -168,7 +168,7 @@ jobs:
           BlobPrefix: $(deployBasePath)/react-screener
           CacheControl: 'public, max-age=600000'
           ContainerName: '$web'
-          SourcePath: 'packages/apps/vr-test/dist/storybook'
+          SourcePath: 'apps/vr-test/dist/storybook'
           storage: $(azureStorage)
 
       # Don't use lage here because it eats long output for reasons that are hard to debug
