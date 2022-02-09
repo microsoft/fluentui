@@ -75,7 +75,7 @@ For more details, please check [microsoft/fluentui#20573](https://github.com/mic
 
 ### Brand ramp updated
 
-The brand colors have were updated to match the latest design.
+The brand colors have been updated to match the latest design guidelines.
 
 For more details, please check [microsoft/fluentui#20140](https://github.com/microsoft/fluentui/pull/20140).
 
@@ -256,7 +256,7 @@ The following types related to slots have been renamed:
 ### `Accordion`
 
 - `AccordionHeaderExpandIcon` has been removed and replaced by `ChevronRightRegular` from `@fluentui/react-icons`.
-- `AccordionHeader` props `children` is no longer a slot [#21285](https://github.com/microsoft/fluentui/pull/21285)
+- `AccordionHeader` props `children` is no longer a slot. [#21285](https://github.com/microsoft/fluentui/pull/21285)
 
 ### `Avatar`
 
