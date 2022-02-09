@@ -19,17 +19,6 @@ export const AnchorToCustomTarget = () => {
     }
   }, [buttonRef, popperRef]);
 
-  // A callback ref can be used, but the component the ref is attached to
-  // must be rendered after the `Menu` component so that `popperRef` is resolved
-  // Most likely won't work if there's any kind of async loading
-  // const callbackRef = React.useCallback(
-  //   (el: HTMLButtonElement) => {
-  //     console.log(popperRef.current, el);
-  //     popperRef.current?.setTarget(el);
-  //   },
-  //   [popperRef],
-  // );
-
   return (
     <>
       <Button onClick={() => setOpen(s => !s)}>Open menu</Button>

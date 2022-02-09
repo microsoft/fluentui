@@ -12,7 +12,7 @@ import {
   useCallbackRef,
   getBasePlacement,
 } from './utils/index';
-import { PopperVirtualElement, PopperOptions, PositioningProps } from './types';
+import type { PopperVirtualElement, PopperOptions, PositioningProps } from './types';
 
 type PopperInstance = PopperJs.Instance & { isFirstRun?: boolean };
 
