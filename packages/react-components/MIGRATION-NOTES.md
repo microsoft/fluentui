@@ -171,6 +171,10 @@ function App() {
 }
 ```
 
+> **Note**: `tokens.VALUE` returns the name of a CSS variable, not an actual value.
+
+For more details, please check [microsoft/fluentui#21257](https://github.com/microsoft/fluentui/pull/21257).
+
 #### `mergeThemes()` function has been removed
 
 To replace the usage of this function you should just spread the themes into a new object (which was what the function was doing internally for the most part):
@@ -182,10 +186,6 @@ const customTokens = { ... };
 -const customTheme = mergeTheme(webLightTheme, customTokens);
 +const customTheme = { ...webLightTheme, ...customTokens };
 ```
-
-> **Note**: `tokens.VALUE` returns the name of a CSS variable, not an actual value.
-
-For more details, please check [microsoft/fluentui#21257](https://github.com/microsoft/fluentui/pull/21257).
 
 ### Slot utilities have been updated and renamed
 
