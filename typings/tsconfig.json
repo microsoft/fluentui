@@ -17,9 +17,6 @@
       "path": "./static-assets/tsconfig.json"
     },
     {
-      "path": "./inline-style-expand-shorthand/tsconfig.json"
-    },
-    {
       "path": "./storybook__addons/tsconfig.json"
     },
     {

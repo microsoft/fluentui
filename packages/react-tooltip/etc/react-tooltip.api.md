@@ -6,10 +6,10 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export type OnVisibleChangeData = {
@@ -17,42 +17,41 @@ export type OnVisibleChangeData = {
 };
 
 // @public
-export const renderTooltip: (state: TooltipState) => JSX.Element;
+export const renderTooltip_unstable: (state: TooltipState) => JSX.Element;
 
 // @public
-export const Tooltip: ForwardRefComponent<TooltipProps>;
+export const Tooltip: React_2.FC<TooltipProps> & FluentTriggerComponent;
 
 // @public (undocumented)
 export const tooltipClassName = "fui-Tooltip";
 
 // @public
 export type TooltipCommons = {
-    appearance?: 'inverted';
-    content: React_2.ReactNode;
-    inverted?: boolean;
+    appearance?: 'normal' | 'inverted';
     withArrow?: boolean;
     positioning?: PositioningShorthand;
     visible?: boolean;
     onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
-    triggerAriaAttribute: 'label' | 'labelledby' | 'describedby' | null;
+    relationship: 'label' | 'description' | 'inaccessible';
     showDelay: number;
     hideDelay: number;
 };
 
 // @public
-export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'content'>> & Pick<TooltipCommons, 'content'>;
+export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'relationship'>> & Pick<TooltipCommons, 'relationship'> & {
+    children?: (React_2.ReactElement & {
+        ref?: React_2.Ref<unknown>;
+    }) | ((props: TooltipTriggerProps) => React_2.ReactElement | null) | null;
+};
 
 // @public
 export type TooltipSlots = {
-    root: Omit<IntrinsicShorthandProps<'div'>, 'children'> & {
-        children?: (React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> & {
-            ref?: React_2.Ref<unknown>;
-        }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
-    };
+    content: NonNullable<Slot<'div'>>;
 };
 
 // @public
 export type TooltipState = ComponentState<TooltipSlots> & TooltipCommons & {
+    children?: React_2.ReactElement | null;
     shouldRenderTooltip?: boolean;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     arrowClassName?: string;
@@ -64,10 +63,10 @@ export type TooltipTriggerProps = {
 } & Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
 
 // @public
-export const useTooltip: (props: TooltipProps, ref: React_2.Ref<HTMLDivElement>) => TooltipState;
+export const useTooltip_unstable: (props: TooltipProps) => TooltipState;
 
 // @public
-export const useTooltipStyles: (state: TooltipState) => TooltipState;
+export const useTooltipStyles_unstable: (state: TooltipState) => TooltipState;
 
 // (No @packageDocumentation comment for this package)
 

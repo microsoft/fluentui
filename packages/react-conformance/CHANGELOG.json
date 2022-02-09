@@ -2,6 +2,51 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Fri, 07 Jan 2022 07:27:47 GMT",
+      "tag": "@fluentui/react-conformance_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "18549da2abc46cee45243e6339969dac0d9e8cf7",
+            "comment": "add option 'tsconfigDir'; change default tsconfig dir to component path"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Dec 2021 07:31:28 GMT",
+      "tag": "@fluentui/react-conformance_v0.9.2",
+      "version": "0.9.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "chore: update all jest deps to v25 + apply single version policy"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Dec 2021 07:30:02 GMT",
+      "tag": "@fluentui/react-conformance_v0.9.1",
+      "version": "0.9.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "f1be0a9728e05ca33ad67e77ae7d1cba3384106f",
+            "comment": "Fix consistent-callback-args test to handle string literal types"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Dec 2021 07:30:34 GMT",
       "tag": "@fluentui/react-conformance_v0.9.0",
       "version": "0.9.0",

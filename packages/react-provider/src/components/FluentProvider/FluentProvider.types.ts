@@ -1,14 +1,13 @@
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { PartialTheme, Theme } from '@fluentui/react-theme';
 import type {
   ProviderContextValue,
   TooltipContextType,
-  ThemeContextValue,
   ThemeClassNameContextValue,
 } from '@fluentui/react-shared-contexts';
+import type { PartialTheme, Theme } from '@fluentui/react-theme';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type FluentProviderSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  root: Slot<'div'>;
 };
 
 export interface FluentProviderCommons {
@@ -26,13 +25,13 @@ export interface FluentProviderProps
 }
 
 export interface FluentProviderState extends ComponentState<FluentProviderSlots>, FluentProviderCommons {
-  theme: Theme;
+  theme: Theme | Partial<Theme> | undefined;
   themeClassName: string;
 }
 
-export interface FluentProviderContextValues {
+export interface FluentProviderContextValues extends Pick<FluentProviderState, 'theme'> {
   provider: ProviderContextValue;
-  theme: ThemeContextValue;
   themeClassName: ThemeClassNameContextValue;
+  textDirection: 'ltr' | 'rtl';
   tooltip: TooltipContextType;
 }

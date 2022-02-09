@@ -2,10 +2,8 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Input } from '@fluentui/react-input';
-import { Search20Regular, Dismiss20Regular } from '@fluentui/react-icons';
+import { SearchRegular, DismissRegular } from '@fluentui/react-icons';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
-
-// TODO move input.* props to root once primary slot helper is integrated
 
 storiesOf('Input Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
@@ -23,22 +21,21 @@ storiesOf('Input Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Appearance: outline (default)', () => <Input input={{ placeholder: 'Placeholder' }} />)
+  .addStory('Appearance: outline (default)', () => <Input placeholder="Placeholder" />)
   .addStory('Appearance: underline', () => (
-    <Input appearance="underline" input={{ placeholder: 'Placeholder' }} />
+    <Input appearance="underline" placeholder="Placeholder" />
   ))
   .addStory('Appearance: filledDarker', () => (
-    <Input appearance="filledDarker" input={{ placeholder: 'Placeholder' }} />
+    <Input appearance="filledDarker" placeholder="Placeholder" />
   ))
   .addStory('Appearance: filledLighter', () => (
     // filledLighter requires a background to show up (this is colorNeutralBackground3 in web light theme)
     <div style={{ background: '#f5f5f5', padding: '10px' }}>
-      <Input appearance="filledLighter" input={{ placeholder: 'Placeholder' }} />
+      <Input appearance="filledLighter" placeholder="Placeholder" />
     </div>
   ))
-  .addStory('Disabled', () => <Input input={{ disabled: true }} />)
-  // TODO move defaultValue prop to root
-  .addStory('With value', () => <Input input={{ defaultValue: 'Value!' }} />);
+  .addStory('Disabled', () => <Input disabled />)
+  .addStory('With value', () => <Input defaultValue="Value!" />);
 
 // Non-interactive stories
 storiesOf('Input Converged', module)
@@ -48,21 +45,30 @@ storiesOf('Input Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Size: small', () => <Input size="small" input={{ placeholder: 'Placeholder' }} />)
-  .addStory('Size: large', () => <Input size="large" input={{ placeholder: 'Placeholder' }} />)
+  .addStory('Size: small', () => <Input size="small" placeholder="Placeholder" />)
+  .addStory('Size: large', () => <Input size="large" placeholder="Placeholder" />)
   .addStory('Inline', () => (
     <p>
-      Some text with <Input inline input={{ placeholder: 'hello', style: { width: '75px' } }} />{' '}
-      inline input
+      Some text with <Input inline placeholder="hello" style={{ width: '75px' }} /> inline input
     </p>
   ))
   .addStory(
     'contentBefore',
-    () => <Input contentBefore={<Search20Regular />} input={{ placeholder: 'Placeholder' }} />,
+    () => (
+      <Input
+        contentBefore={<SearchRegular style={{ fontSize: '20px' }} />}
+        placeholder="Placeholder"
+      />
+    ),
     { includeRtl: true },
   )
   .addStory(
     'contentAfter',
-    () => <Input contentAfter={<Dismiss20Regular />} input={{ placeholder: 'Placeholder' }} />,
+    () => (
+      <Input
+        contentAfter={<DismissRegular style={{ fontSize: '20px' }} />}
+        placeholder="Placeholder"
+      />
+    ),
     { includeRtl: true },
   );

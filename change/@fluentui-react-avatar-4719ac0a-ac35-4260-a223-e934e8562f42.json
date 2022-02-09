@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update documentation stories",
+  "packageName": "@fluentui/react-avatar",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -93,9 +93,16 @@ export interface IComboBoxProps
    * and the user types text matching the start of an option within a timeout, `option` and `index`
    * are provided and `value` is undefined. If `autoComplete` is off, typing does nothing.
    *
-   * If you simply want to be notified of raw text input, use the prop `autofill.onInputValueChange`.
+   * If you simply want to be notified of raw text input, use the prop `onInputValueChange`.
    */
   onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+
+  /**
+   * Called when the user types in to the input of the combo box
+   *
+   * Ideal if you want to be notified of raw text input
+   */
+  onInputValueChange?: (text: string) => void;
 
   /**
    * Called when the ComboBox menu is launched.

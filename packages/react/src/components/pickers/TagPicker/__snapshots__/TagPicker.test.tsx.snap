@@ -48,7 +48,6 @@ exports[`TagPicker renders correctly 1`] = `
     role="presentation"
   >
     <div
-      aria-owns=""
       className=
           ms-BasePicker-text
           {
@@ -298,9 +297,7 @@ exports[`TagPicker renders correctly 1`] = `
         </div>
       </span>
       <input
-        aria-activedescendant="sug-noResultsFound"
         aria-autocomplete="both"
-        aria-controls=""
         aria-describedby="selected-items-id__0"
         aria-expanded={false}
         aria-haspopup="listbox"
@@ -439,7 +436,6 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
     role="presentation"
   >
     <div
-      aria-owns=""
       className=
           ms-BasePicker-text
           {
@@ -689,9 +685,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
         </div>
       </span>
       <input
-        aria-activedescendant="sug-noResultsFound"
         aria-autocomplete="both"
-        aria-controls=""
         aria-describedby="selected-items-id__0"
         aria-expanded={false}
         aria-haspopup="listbox"

@@ -5,6 +5,7 @@ export * from './useEventCallback';
 export * from './useFirstMount';
 export * from './useId';
 export * from './useIsomorphicLayoutEffect';
+export * from './useMergedEventCallbacks';
 export * from './useMergedRefs';
 export * from './useMount';
 export * from './useOnClickOutside';

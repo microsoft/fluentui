@@ -1,5 +1,6 @@
-import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import { useButtonStyles_unstable } from '../Button/useButtonStyles';
 import type { CompoundButtonState } from './CompoundButton.types';
 
 export const compoundButtonClassName = 'fui-CompoundButton';
@@ -10,140 +11,140 @@ const CompoundButtonClassNames = {
 
 const useRootStyles = makeStyles({
   // Base styles
-  base: theme => ({
-    ...shorthands.gap(buttonSpacing.large),
+  base: {
+    ...shorthands.gap('12px'),
 
     height: 'auto',
 
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.colorNeutralForeground2,
+      color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForeground2Hover,
+        color: tokens.colorNeutralForeground2Hover,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForeground2Pressed,
+        color: tokens.colorNeutralForeground2Pressed,
       },
     },
-  }),
+  },
 
   // Appearance variations
   outline: {
     /* No styles */
   },
-  primary: theme => ({
+  primary: {
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.colorNeutralForegroundOnBrand,
+      color: tokens.colorNeutralForegroundOnBrand,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForegroundOnBrand,
+        color: tokens.colorNeutralForegroundOnBrand,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForegroundOnBrand,
+        color: tokens.colorNeutralForegroundOnBrand,
       },
     },
-  }),
-  subtle: theme => ({
+  },
+  subtle: {
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.colorNeutralForeground2,
+      color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForeground2BrandHover,
+        color: tokens.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForeground2BrandPressed,
+        color: tokens.colorNeutralForeground2BrandPressed,
       },
     },
-  }),
-  transparent: theme => ({
+  },
+  transparent: {
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.colorNeutralForeground2,
+      color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForeground2BrandHover,
+        color: tokens.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForeground2BrandPressed,
+        color: tokens.colorNeutralForeground2BrandPressed,
       },
     },
-  }),
+  },
 
   // Size variations
-  small: theme => ({
-    ...shorthands.padding(buttonSpacing.medium),
+  small: {
+    ...shorthands.padding('8px', '8px', '10px', '8px'),
 
-    fontSize: theme.fontSizeBase300,
-    lineHeight: theme.lineHeightBase300,
-  }),
-  medium: theme => ({
-    ...shorthands.padding(buttonSpacing.large),
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
+  medium: {
+    ...shorthands.padding('14px', '12px', '16px', '12px'),
 
-    fontSize: theme.fontSizeBase300,
-    lineHeight: theme.lineHeightBase300,
-  }),
-  large: theme => ({
-    ...shorthands.padding(buttonSpacing.larger),
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
+  large: {
+    ...shorthands.padding('18px', '16px', '20px', '16px'),
 
-    fontSize: theme.fontSizeBase400,
-    lineHeight: theme.lineHeightBase400,
-  }),
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+  },
 
   // Disabled styles
-  disabled: theme => ({
+  disabled: {
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.colorNeutralForegroundDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForegroundDisabled,
+        color: tokens.colorNeutralForegroundDisabled,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForegroundDisabled,
+        color: tokens.colorNeutralForegroundDisabled,
       },
     },
-  }),
+  },
 });
 
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    ...shorthands.padding(buttonSpacing.smaller),
+    ...shorthands.padding('4px'),
 
     maxWidth: '48px',
     minWidth: '48px',
   },
   medium: {
-    ...shorthands.padding(buttonSpacing.small),
+    ...shorthands.padding('6px'),
 
     maxWidth: '52px',
     minWidth: '52px',
   },
   large: {
-    ...shorthands.padding(buttonSpacing.medium),
+    ...shorthands.padding('8px'),
 
     maxWidth: '56px',
     minWidth: '56px',
@@ -170,25 +171,24 @@ const useContentContainerStyles = makeStyles({
 
 const useSecondaryContentStyles = makeStyles({
   // Base styles
-  base: theme => ({
+  base: {
     lineHeight: '100%',
-    marginTop: '4px',
-    fontWeight: theme.fontWeightRegular,
-  }),
+    fontWeight: tokens.fontWeightRegular,
+  },
 
   // Size variations
-  small: theme => ({
-    fontSize: theme.fontSizeBase200,
-  }),
-  medium: theme => ({
-    fontSize: theme.fontSizeBase200,
-  }),
-  large: theme => ({
-    fontSize: theme.fontSizeBase300,
-  }),
+  small: {
+    fontSize: tokens.fontSizeBase200,
+  },
+  medium: {
+    fontSize: tokens.fontSizeBase200,
+  },
+  large: {
+    fontSize: tokens.fontSizeBase300,
+  },
 });
 
-export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundButtonState => {
+export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): CompoundButtonState => {
   const rootStyles = useRootStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
@@ -230,7 +230,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
     );
   }
 
-  useButtonStyles(state);
+  useButtonStyles_unstable(state);
 
   return state;
 };

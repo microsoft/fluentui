@@ -2,6 +2,36 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Thu, 03 Feb 2022 07:29:40 GMT",
+      "tag": "@fluentui/merge-styles_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beavi@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "847b92996b5b4a6f8d192ab572396ab2de2ba819",
+            "comment": "Add logical margins CSS properties to IRawStyleBase"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jan 2022 23:32:10 GMT",
+      "tag": "@fluentui/merge-styles_v8.2.3",
+      "version": "8.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "1586939317@qq.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "1959808480faf783fd56f51294f58467371538ad",
+            "comment": "Add new css properties into `IRawStyleBase`"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 14:54:16 GMT",
       "tag": "@fluentui/merge-styles_v8.2.2",
       "version": "8.2.2",

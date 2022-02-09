@@ -69,6 +69,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
     item,
     // eslint-disable-next-line deprecation/deprecation
     idPrefix = props.id,
+    isRadio,
     selected = false,
     disabled = false,
     styles,
@@ -110,16 +111,26 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
     );
   };
 
+  const cellSemantics = isRadio
+    ? {
+        role: 'radio',
+        'aria-checked': selected,
+        selected: undefined,
+      }
+    : {
+        role: 'gridcell',
+        selected: selected,
+      };
+
   return (
     <ButtonGridCell
       item={item}
       id={`${idPrefix}-${item.id}-${item.index}`}
       key={item.id}
       disabled={disabled}
-      role={'gridcell'}
+      {...cellSemantics}
       // eslint-disable-next-line react/jsx-no-bind
       onRenderItem={onRenderColorOption}
-      selected={selected}
       onClick={onClick}
       onHover={onHover}
       onFocus={onFocus}

@@ -7,8 +7,8 @@ import { findIntrinsicElement, mountWithProvider } from 'test/utils';
 
 const items = ['item0', 'item1', 'item2', 'item3', 'item4', 'item5'];
 
-const renderDropdown = (props: DropdownProps = {}) => {
-  const wrapper = mountWithProvider(<Dropdown items={items} {...props} />);
+const renderDropdown = (props: DropdownProps = {}, attachTo?: HTMLElement) => {
+  const wrapper = mountWithProvider(<Dropdown items={items} {...props} />, { attachTo });
   const triggerButtonWrapper = findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.triggerButton}`);
   const toggleIndicatorWrapper = findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.toggleIndicator}`);
   const searchInputWrapper = findIntrinsicElement(wrapper, `.${dropdownSearchInputSlotClassNames.input}`);

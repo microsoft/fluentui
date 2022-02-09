@@ -2,7 +2,8 @@
 
 ## Background
 
-Checkboxes are used to represent one or more options, giving the user a way to select one or more of these options.
+Checkboxes give people a way to select one or more items from a group, or switch between
+two mutually exclusive options (checked or unchecked).
 
 ## Prior Art
 
@@ -124,98 +125,21 @@ Component props:
 
 ### Checkbox Props
 
-```tsx
-/**
- * Checkbox Props
- */
-export interface CheckboxProps
-  extends Omit<ComponentPropsCompat, 'children'>,
-    Omit<React.HTMLAttributes<HTMLElement>, 'defaultChecked'> {
-  /**
-   * Label that will be rendered next to the input.
-   */
-  label?: ShorthandProps<LabelProps>;
-
-  /**
-   * Indicator to be rendered as the checkbox icon.
-   */
-  indicator?: ShorthandProps<ComponentPropsCompat>;
-
-  /**
-   * Hidden input that handles the checkbox's functionality.
-   */
-  input?: ShorthandProps<React.InputHTMLAttributes<HTMLInputElement> & { ref: React.RefObject<HTMLInputElement> }>;
-
-  /**
-   * Disabled state of the checkbox.
-   */
-  disabled?: boolean;
-
-  /**
-   * Required state of the checkbox.
-   */
-  required?: boolean;
-
-  /**
-   * A checkbox can be rendered with a circular shape.
-   */
-  circular?: boolean;
-
-  /**
-   * A checkbox's state can be controlled.
-   * @defaultvalue false
-   */
-  checked?: 'mixed' | boolean;
-
-  /**
-   * Whether the checkbox should be rendered as checked by default.
-   */
-  defaultChecked?: 'mixed' | boolean;
-
-  /**
-   * Checkbox supports two different checkbox sizes.
-   * @defaultvalue 'medium'
-   */
-  size?: 'medium' | 'large';
-
-  /**
-   * Determines whether the label should be positioned before or after the checkbox.
-   * @defaultvalue 'after'
-   */
-  labelPosition?: 'before' | 'after';
-
-  /**
-   * ID of the root element that wraps the checkbox and label.
-   */
-  rootId?: string;
-
-  /**
-   * ID of the native element that represents the checkbox.
-   */
-  id?: string;
-
-  /**
-   * Callback to be called when the checked state value changes.
-   */
-  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, data?: CheckboxOnChangeData) => void;
-}
-
-/**
- * Data for the onChange event for checkbox.
- */
-export interface CheckboxOnChangeData {
-  checked?: 'mixed' | boolean;
-}
-```
+See [Checkbox.types.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-checkbox/src/components/Checkbox/Checkbox.types.ts)
 
 ## Structure
 
-- The icon that will be used to represent the Checkbox's state is a slot to allow customization of the icons. This means that if a user were to customize the icons that will appear, the user will have to handle both icons based on the state.
-- The input element will be a slot to allow for customization.
+### Slots
+
+- `root`: Outermost `<span>` that contains the rest of the slots
+- `input`: The HTML `<input type="checkbox">`. This is the **primary** slot: it receives all of the native props passed to the
+  Checkbox component. It has opacity 0 and overlaps the entire `root` slot, for hit testing.
+- `indicator`: A `<div>` that is the visual representation of the check "box". Its child is the checkmark icon.
+- `label`: (optional) The `<label>` describing this checkbox.
 
 ### **Public**
 
-```html
+```jsx
 <Checkbox label="Example Checkbox" />
 ```
 
@@ -223,31 +147,23 @@ export interface CheckboxOnChangeData {
 
 ```tsx
 <slots.root {...slotProps.root}>
-  {state.labelPosition === 'start' && <slots.label {...slotProps.label} />}
-  <div className={state.checkboxClassName}>
-    <slots.indicator {...slotProps.indicator} />
-    <slots.input {...slotProps.input} />
-  </div>
-  {state.labelPosition === 'end' && <slots.label {...slotProps.label} />}
+  {state.labelPosition === 'before' && <slots.label {...slotProps.label} />}
+  <slots.indicator {...slotProps.indicator} />
+  <slots.input {...slotProps.input} />
+  {state.labelPosition === 'after' && <slots.label {...slotProps.label} />}
 </slots.root>
 ```
 
 ### **DOM**
 
-In this case, the label position is set to end as per default.
-
 ```html
-<div {/* Root Element */}>
-  <div {/* Checkbox */}>
-    <div {/* indicator */}>
-      ...indicator
-    </div>
-    <input id="cbox-1" ...props />
+<span class="fui-Checkbox root">
+  <div aria-hidden="true" class="indicator">
+    <CheckmarkRegular />
   </div>
-  <label for="cbox-1" ...props>
-    Example Checkbox
-  </label>
-</div>
+  <input type="checkbox" id="checkbox-1" class="input" />
+  <label for="checkbox-1" className="label">Example Checkbox</label>
+</span>
 ```
 
 ## Migration
@@ -256,17 +172,11 @@ See [MIGRATION.md](MIGRATION.md)
 
 ## Behaviors
 
-- Keyboard
-  - When checkbox is focused, if `space` is pressed the checkbox's state is toggled.
-- Cursor
-  - When clicked the checkbox's state is toggled.
-- Focus
-  - A checkbox can be focused to interact with it using `space`.
-  - In case of a label having a link or information button, items inside the label may be focused.
+- Checkbox inherits all of its mouse and keyboard behaviors from the native `<input type="checkbox">`. It has no special handling of clicks or keypresses for toggling beyond the native control.
+- In case of a label having a link or information button, items inside the label may be focused.
 
 ## Accessibility
 
 - Aria design pattern: [Checkbox](https://www.w3.org/TR/wai-aria-practices-1.2/#checkbox).
-- If a label is used with the checkbox, an `aria-label` will be set on the `input` element.
-- Checkbox will have a tri-state `aria-checked`.
-- Elements inside the checkbox's label can be focused if there are elements such as links and info buttons.
+- Checkbox uses a standard HTML `<input type="checkbox">` and does not require any additional aria attributes on the input element.
+- The checkmark indicator has `aria-hidden="true"`, as it is purely a visual representation of the state of the underlying input.

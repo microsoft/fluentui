@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "2.1.2",
+  "version": "2.2.2",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -60,7 +60,6 @@
     "ignore-loader": "^0.1.2",
     "istanbul": "^0.4.5",
     "istanbul-instrumenter-loader": "^3.0.1",
-    "jsdom": "^16.2.2",
     "jsdom-global": "3.0.2",
     "karma": "^5.0.4",
     "karma-chrome-launcher": "^3.1.0",
@@ -89,7 +88,7 @@
   "dependencies": {
     "@microsoft/fast-colors": "^5.1.0",
     "@microsoft/fast-element": "^1.6.0",
-    "@microsoft/fast-foundation": "^2.24.0",
+    "@microsoft/fast-foundation": "^2.32.0",
     "@microsoft/fast-web-utilities": "^5.0.0",
     "tslib": "^1.13.0"
   }

@@ -107,6 +107,7 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
     },
     e2e: {
       rootFolder: joinPathFragments(projectConfig.root, 'e2e'),
+      support: joinPathFragments(projectConfig.root, 'e2e', 'support.js'),
       tsconfig: joinPathFragments(projectConfig.root, 'e2e', 'tsconfig.json'),
     },
   };
@@ -114,6 +115,10 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
   return {
     projectConfig,
     workspaceConfig,
+    /**
+     * package name without npmScope (@scopeName)
+     */
+    normalizedPkgName: options.packageName.replace(`@${workspaceConfig.npmScope}/`, ''),
     paths,
   };
 }

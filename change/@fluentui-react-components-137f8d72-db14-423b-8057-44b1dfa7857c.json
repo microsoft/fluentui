@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "removed dup dependency",
+  "packageName": "@fluentui/react-components",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "none"
+}

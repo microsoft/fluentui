@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import { Divider } from '../Divider';
 
 const useStyles = makeStyles({
@@ -8,14 +9,14 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     rowGap: '5px',
   },
-  example: theme => ({
+  example: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyItems: 'center',
     minHeight: '96px',
-    backgroundColor: theme.colorNeutralBackground1,
-  }),
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
 });
 
 export const AlignContent = () => {
@@ -48,4 +49,13 @@ export const AlignContent = () => {
       </div>
     </div>
   );
+};
+
+AlignContent.parameters = {
+  docs: {
+    description: {
+      story:
+        'The label associated with the divider can be aligned at the `start`, `center`, or `end` of the divider line.',
+    },
+  },
 };

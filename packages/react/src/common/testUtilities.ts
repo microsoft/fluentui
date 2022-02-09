@@ -28,6 +28,7 @@ export function delay(millisecond: number): Promise<void> {
 /**
  * Mounts the element attached to a child of document.body. This is primarily for tests involving
  * event handlers (which don't work right unless the element is attached).
+ * @deprecated Use `safeMount` from `@fluentui/test-utilities` instead
  */
 export function mountAttached<C extends Component, P = C['props'], S = C['state']>(
   element: React.ReactElement<P>,
@@ -53,5 +54,6 @@ export function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEve
  * https://github.com/facebook/jest/issues/2157#issuecomment-279171856
  */
 export function flushPromises() {
+  // TODO: in jest 27, change to `new Promise(process.nextTick)` per https://stackoverflow.com/a/51045733
   return new Promise<void>(resolve => setImmediate(resolve));
 }

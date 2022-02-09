@@ -535,6 +535,17 @@ describe('ComboBox', () => {
     });
   });
 
+  it('Cannot expand the menu when focused with a button while combobox is disabled', () => {
+    const comboBoxRef = React.createRef<any>();
+    safeMount(
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} componentRef={comboBoxRef} disabled />,
+      wrapper => {
+        comboBoxRef.current?.focus(true);
+        expect(comboBoxRef.current.state.isOpen).toEqual(false);
+      },
+    );
+  });
+
   it('Calls onMenuOpen when clicking on the button', () => {
     const onMenuOpenMock = jest.fn();
     safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={onMenuOpenMock} />, wrapper => {
@@ -609,6 +620,29 @@ describe('ComboBox', () => {
         // Simulate typing one character into the ComboBox input
         const input = wrapper.find('input');
         input.simulate('input', { target: { value: 'a' } });
+
+        // Simulate clearing the ComboBox input
+        // (have to manually update the input element beforehand due to issues with Autofill in enzyme)
+        (input.getDOMNode() as HTMLInputElement).value = '';
+        input.simulate('input', { target: { value: '' } });
+        expect(changedValue).toEqual('');
+      },
+    );
+  });
+
+  it('onInputValueChange is called whenever the input changes', () => {
+    let changedValue: string | undefined = undefined;
+    const onInputValueChangeHandler = (value: string) => {
+      changedValue = value;
+    };
+
+    safeMount(
+      <ComboBox options={DEFAULT_OPTIONS} allowFreeform onInputValueChange={onInputValueChangeHandler} />,
+      wrapper => {
+        // Simulate typing one character into the ComboBox input
+        const input = wrapper.find('input');
+        input.simulate('input', { target: { value: 'a' } });
+        expect(changedValue).toEqual('a');
 
         // Simulate clearing the ComboBox input
         // (have to manually update the input element beforehand due to issues with Autofill in enzyme)

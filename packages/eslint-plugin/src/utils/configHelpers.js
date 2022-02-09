@@ -5,11 +5,10 @@ const path = require('path');
 const jju = require('jju');
 
 const testFiles = [
-  '**/*{.,-}test.{ts,tsx}',
-  '**/*.stories.tsx',
-  '**/{common,test,tests,stories}/**',
+  '**/*{.,-}{test,spec}.{ts,tsx}',
+  '**/{test,tests}/**',
   '**/testUtilities.{ts,tsx}',
-  '**/common/isConformant.{ts,tsx}',
+  '**/common/{isConformant,snapshotSerializers}.{ts,tsx}',
 ];
 
 const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];
@@ -32,6 +31,7 @@ const isLintStaged = /pre-commit|lint-staged/.test(process.argv[1]);
 
 // Regular expression parts for the naming convention rule
 const camelCase = '[a-z][a-zA-Z\\d]*'; // must start with lowercase letter
+const pascalCase = '[A-Z][a-zA-Z\\d]*'; // must start with uppercase letter
 const camelOrPascalCase = '[a-zA-Z][a-zA-Z\\d]*'; // must start with letter
 const upperCase = '[A-Z][A-Z\\d]*(_[A-Z\\d]*)*'; // must start with letter, no consecutive underscores
 const camelOrPascalOrUpperCase = `(${camelOrPascalCase}|${upperCase})`;
@@ -47,8 +47,16 @@ module.exports = {
   /** Files for build configuration */
   configFiles,
 
-  /** Files which may reference devDependencies: tests, docs (excluding examples), config/build */
-  devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles],
+  /**
+   * Files which may reference `devDependencies`:
+   * - tests
+   * - docs (excluding v8 examples)
+   * - config/build
+   * - stories, for now
+   *   - may need to reconsider for converged components depending on website approach
+   *   - the stories suffix is also used for screener stories in `vr-tests`
+   */
+  devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles, '**/*.stories.tsx'],
 
   /**
    * Whether linting is running in context of lint-staged (which should disable rules requiring
@@ -77,6 +85,13 @@ module.exports = {
         format: null,
         // camelCase, optional UNSAFE_ prefix to handle deprecated React methods
         custom: { regex: `^(UNSAFE_)?${camelCase}$`, match: true },
+      },
+      {
+        selector: ['function', 'variable'],
+        modifiers: ['exported'],
+        format: null,
+        // Allow the _unstable suffix for exported hooks
+        filter: { regex: `^(use|render)${pascalCase}_unstable$`, match: true },
       },
       { selector: 'typeLike', format: ['PascalCase'], leadingUnderscore: 'forbid' },
       {

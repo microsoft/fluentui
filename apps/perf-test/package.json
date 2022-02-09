@@ -1,5 +1,5 @@
 {
-  "name": "perf-test",
+  "name": "@fluentui/perf-test",
   "description": "Perf tests for @fluentui/react.",
   "version": "1.0.0",
   "private": true,
@@ -15,8 +15,8 @@
     "@fluentui/eslint-plugin": "*"
   },
   "dependencies": {
-    "@fluentui/make-styles": "9.0.0-beta.3",
-    "@fluentui/react": "^8.47.1",
+    "@griffel/core": "1.0.7",
+    "@fluentui/react": "^8.53.0",
     "@fluentui/react-avatar": "9.0.0-beta.4",
     "@fluentui/react-button": "9.0.0-beta.5",
     "@fluentui/react-provider": "9.0.0-beta.5",

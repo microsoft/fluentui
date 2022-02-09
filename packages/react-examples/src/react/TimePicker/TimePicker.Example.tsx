@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITimeRange, TimePicker } from '@fluentui/react/lib/TimePicker';
-import { IStackTokens, Stack, IStackStyles, IComboBoxStyles } from '@fluentui/react';
+import { IStackTokens, Stack, IStackStyles, IComboBoxStyles, IComboBox } from '@fluentui/react';
 
 const stackStyles: Partial<IStackStyles> = { root: { maxWidth: 300 } };
 const stackTokens: IStackTokens = { childrenGap: 20 };
@@ -14,12 +14,14 @@ const timePickerStyles: Partial<IComboBoxStyles> = {
   },
 };
 
+const onFormatDate = (date: Date) => `Custom prefix + ${date.toLocaleTimeString()}`;
+const onChange = (_: React.FormEvent<IComboBox>, date: Date) => console.log('SELECTED DATE: ', date);
+
 export const TimePickerBasicExample: React.FC = () => {
   const timeRange: ITimeRange = {
     start: 8,
     end: 14,
   };
-  const onFormatDate = (date: Date) => `Custom prefix + ${date.toLocaleTimeString()}`;
 
   return (
     <Stack tokens={stackTokens} styles={stackStyles}>
@@ -29,6 +31,8 @@ export const TimePickerBasicExample: React.FC = () => {
         allowFreeform
         autoComplete="on"
         label={'TimePicker basic example'}
+        onChange={onChange}
+        defaultValue={new Date('November 25, 2021 09:15:00')}
         useComboBoxAsMenuWidth
       />
       <TimePicker
@@ -40,6 +44,7 @@ export const TimePickerBasicExample: React.FC = () => {
         label={'TimePicker with non default options'}
         useComboBoxAsMenuWidth
         timeRange={timeRange}
+        onChange={onChange}
       />
       <TimePicker
         styles={timePickerStyles}

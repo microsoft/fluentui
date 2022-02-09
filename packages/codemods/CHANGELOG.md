@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Mon, 04 Oct 2021 07:27:12 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Jan 2022 07:27:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.3.2)
+
+Fri, 07 Jan 2022 07:27:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.3.1..@fluentui/codemods_v8.3.2)
+
+### Patches
+
+- Removing makeStyles related codemods as they are not relevant anymore. ([PR #21201](https://github.com/microsoft/fluentui/pull/21201) by Humberto.Morimoto@microsoft.com)
 
 ## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.3.0)
 

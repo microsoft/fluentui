@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ChevronDown16Regular } from '@fluentui/react-icons';
+import { ChevronDownRegular } from '@fluentui/react-icons';
 
 import { Menu, MenuProps, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuTriggerChildProps } from '../index';
 
@@ -18,7 +18,7 @@ export const RenderFunctionTrigger = () => {
           <div>
             <button style={buttonStyle}>Custom Trigger</button>
             <button {...props} style={buttonStyle}>
-              <ChevronDown16Regular />
+              <ChevronDownRegular fontSize={16} />
             </button>
           </div>
         )}
