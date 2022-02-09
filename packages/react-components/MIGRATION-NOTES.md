@@ -85,13 +85,6 @@ const useStyles = makeStyles({
 
 -  focusOutline2: createFocusOutlineStyle(theme => ({ backgroundColor: theme.colorNeutralBackground1 })),
 +  focusOutline2: createFocusOutlineStyle({ backgroundColor: tokens.colorNeutralBackground1 }),
-
--  focusOutline3: createCustomFocusIndicatorStyle(theme => ({
--    outlineWidth: theme.strokeWidthThick,
--  })),
-+  focusOutline3: createCustomFocusIndicatorStyle({
-+    outlineWidth: tokens.strokeWidthThick,
-+  }),
 });
 ```
 
