@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { StoryFn as StoryFunction } from '@storybook/addons';
 
 import { themes, defaultTheme, FluentProvider } from '../theme';
 import { THEME_ID } from '../constants';
@@ -14,7 +13,8 @@ const getActiveFluentTheme = (globals: FluentGlobals) => {
   return { theme };
 };
 
-export const withFluentProvider = (StoryFn: StoryFunction<React.ReactElement>, context: FluentStoryContext) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const withFluentProvider = (StoryFn: any, context: FluentStoryContext) => {
   const { theme } = getActiveFluentTheme(context.globals);
 
   return (
