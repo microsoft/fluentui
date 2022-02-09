@@ -1,30 +1,24 @@
 import { execSync } from 'child_process';
 import * as semver from 'semver';
-import * as tmp from 'tmp';
-import * as fs from 'fs';
 import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monorepo/index';
+import yargs from 'yargs';
 
-// Clean up created files/folders on exit, even after exceptions
-// (will not catch SIGINT on windows)
-tmp.setGracefulCleanup();
-
-function tagPackages() {
+function tagPackages(npmToken: string) {
   const packagesToTag = getPackagesToTag();
-  const npmrcPath = createTmpNpmrc();
 
   packagesToTag.forEach(pkg => {
-    tagPackage(pkg.name, pkg.version, npmrcPath);
+    tagPackage(pkg.name, pkg.version, npmToken);
   });
 }
 
-function tagPackage(name: string, version: string, npmrcPath: string) {
+function tagPackage(name: string, version: string, npmToken: string) {
   const prerelease = semver.parse(version).prerelease;
   if (prerelease.length == 0) {
     return;
   }
 
   const prereleaseTag = prerelease[0];
-  const command = `npm dist-tag add ${name}@${version} ${prereleaseTag} --userconfig ${npmrcPath} --registry https://registry.npmjs.org/`;
+  const command = `npm dist-tag add ${name}@${version} ${prereleaseTag} --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=${npmToken}`;
   console.log(command);
   try {
     const res = execSync(command, { stdio: 'inherit' });
@@ -49,19 +43,13 @@ function getPackagesToTag() {
     .filter(Boolean);
 }
 
-function createTmpNpmrc() {
-  const tmpDir = tmp.dirSync({ unsafeCleanup: true });
-
-  const npmrc = tmp.fileSync({
-    name: '.npmrc',
-    dir: tmpDir.name,
-  });
-
-  fs.writeFileSync(npmrc.name, '//registry.npmjs.org/:_authToken=${NPM_TOKEN}');
-
-  return npmrc.name;
-}
-
 if (require.main === module && process.env.RELEASE_VNEXT) {
-  tagPackages();
+  const argv = yargs.argv;
+  console.log(argv);
+
+  if (!argv.token || typeof argv.token !== 'string') {
+    throw new Error('Please pass an NPM token through the --token argument');
+  }
+
+  tagPackages(argv.token);
 }
