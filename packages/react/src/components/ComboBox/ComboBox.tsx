@@ -1327,7 +1327,12 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     if (label) {
       return (
-        <Label id={this._id + '-label'} disabled={disabled} required={required} className={this._classNames.label}>
+        <Label
+          id={this.props['aria-labelledby'] || this._id + '-label'}
+          disabled={disabled}
+          required={required}
+          className={this._classNames.label}
+        >
           {label}
           {onRenderLabelProps.multiselectAccessibleText && (
             <span className={this._classNames.screenReaderText}>{onRenderLabelProps.multiselectAccessibleText}</span>

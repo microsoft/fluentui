@@ -1025,30 +1025,34 @@ describe('ComboBox', () => {
     });
   });
 
-  it('allows adding a custom aria-describedby id to the input', () => {
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} ariaDescribedBy={'customAriaDescriptionId'} />, wrapper => {
-      const inputElement = wrapper.find('input').getDOMNode();
-      expect(inputElement.getAttribute('aria-describedby')).toBe('customAriaDescriptionId');
-    });
+  it('defaults to ariaDescribedBy prop when passing id to input', () => {
+    const ariaId = 'customAriaDescriptionId';
+    safeMount(
+      <ComboBox options={DEFAULT_OPTIONS} ariaDescribedBy={ariaId} aria-describedby="usePropInstead" />,
+      wrapper => {
+        const inputElement = wrapper.find('input').getDOMNode();
+        expect(inputElement.getAttribute('aria-describedby')).toBe(ariaId);
+      },
+    );
   });
 
-  it('correctly handles (aria-labelledby) when no label prop is provided', () => {
-    safeMount(<ComboBox options={RENDER_OPTIONS} aria-labelledby={'customAriaLabel'} />, wrapper => {
+  it('allows adding a custom aria-describedby id to the input via an attribute', () => {
+    const ariaId = 'customAriaDescriptionId';
+    safeMount(<ComboBox options={DEFAULT_OPTIONS} aria-describedby={ariaId} />, wrapper => {
       const inputElement = wrapper.find('input').getDOMNode();
-
-      expect(inputElement.getAttribute('aria-labelledby')).toBeNull();
+      expect(inputElement.getAttribute('aria-describedby')).toBe(ariaId);
     });
   });
 
   it('correctly handles (aria-labelledby) when label prop is provided', () => {
-    safeMount(
-      <ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={'customAriaLabel'} />,
-      wrapper => {
-        const inputElement = wrapper.find('input').getDOMNode();
+    const labelId = 'customAriaLabelledById';
+    safeMount(<ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={labelId} />, wrapper => {
+      const labelElement = wrapper.find('label').getDOMNode();
+      expect(labelElement.getAttribute('id')).toBe(labelId);
 
-        expect(inputElement.getAttribute('aria-labelledby')).toBe('ComboBox0-label');
-      },
-    );
+      const inputElement = wrapper.find('input').getDOMNode();
+      expect(inputElement.getAttribute('aria-labelledby')).toBe(labelId);
+    });
   });
 
   it('sets ariaLabel on both the input and the dropdown list', () => {
