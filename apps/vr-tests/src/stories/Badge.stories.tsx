@@ -5,7 +5,7 @@ import { CircleRegular } from '@fluentui/react-icons';
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
-const badgeColors: BadgeProps['color'][] = [
+const badgeColors: Required<BadgeProps>['color'][] = [
   'brand',
   'danger',
   'important',
@@ -16,7 +16,12 @@ const badgeColors: BadgeProps['color'][] = [
   'warning',
 ];
 
-const badgeAppearances: BadgeProps['appearance'][] = ['filled', 'outline', 'tint', 'ghost'];
+const badgeAppearances: Required<BadgeProps>['appearance'][] = [
+  'filled',
+  'outline',
+  'tint',
+  'ghost',
+];
 
 const useStyles = makeStyles({
   container: {
@@ -40,14 +45,10 @@ const useStyles = makeStyles({
   },
 });
 
-const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeProps['appearance'] }> = ({
+const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appearance'] }> = ({
   appearance,
 }) => {
   const styles = useStyles();
-
-  if (!appearance) {
-    return <></>;
-  }
 
   const badges = new Map<BadgeProps['color'], JSX.Element[]>();
   badges.set('brand', []);
@@ -135,7 +136,7 @@ const appearanceStories = storiesOf('Badge Converged', module);
 
 badgeAppearances.forEach(appearance => {
   appearanceStories.addStory(
-    appearance as string,
+    appearance,
     () => <BadgeAppearanceTemplate appearance={appearance} />,
     { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   );
