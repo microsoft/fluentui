@@ -93,6 +93,9 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
   /** Optional custom renderer for the persona coins, gets called when there are multiple persona in personas array*/
   onRenderPersonaCoin?: IRenderFunction<IFacepilePersona>;
 
+  /** Optional custom renderer for the FacepileButton that renders each clickable Persona */
+  onRenderPersonaWrapper?: IRenderFunction<IFacepilePersona>;
+
   /** Method to access properties on the underlying Persona control */
   getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
 }
