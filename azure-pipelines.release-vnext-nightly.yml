@@ -61,6 +61,17 @@ steps:
       git reset --hard origin/master
     displayName: Publish changes and bump versions
 
+  - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+    displayName: 📒 Generate Manifest
+    inputs:
+      BuildDropPath: $(System.DefaultWorkingDirectory)
+
+  - task: PublishPipelineArtifact@1
+    displayName: 📒 Publish Manifest
+    inputs:
+      artifactName: SBom-$(System.JobAttempt)
+      targetPath: $(System.DefaultWorkingDirectory)/_manifest
+
   - template: .devops/templates/cleanup.yml
     parameters:
       checkForModifiedFiles: false
