@@ -2,7 +2,7 @@ import { task, series } from 'gulp';
 import { argv } from 'yargs';
 
 import config from '../../config';
-import { getChangedPackages, getAllPackageInfo } from '../../monorepo';
+import { getAffectedPackages, getAllPackageInfo } from '../../monorepo';
 import { screenerRunner, cancelScreenerRun } from '../../screener/screener.runner';
 
 const { paths } = config;
@@ -17,7 +17,7 @@ task('screener:runner', cb => {
 
   const docsPackageName = '@fluentui/docs';
 
-  const changedPackages = getChangedPackages();
+  const changedPackages = getAffectedPackages();
   const packageInfos = getAllPackageInfo();
   if (Object.values(packageInfos).every(packageInfo => packageInfo.packageJson.name !== docsPackageName)) {
     throw new Error(`package ${docsPackageName} does not exist in the repo`);

@@ -47,4 +47,4 @@ export declare function isConvergedPackage(packagePathOrJson?: string | PackageJ
  * @param since - Commit to compare against
  * @returns Set of packages that are changed
  */
-export declare function getChangedPackages(since?: string): Set<string>;
+export declare function getAffectedPackages(since?: string): Set<string>;

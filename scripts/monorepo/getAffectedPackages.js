@@ -2,10 +2,13 @@ const spawnSync = require('child_process').spawnSync;
 const findGitRoot = require('./findGitRoot');
 
 /**
+ * Indicator of what packages have been affected by changes
+ * e.g. need to trigger a build
+ *
  * @param {string} since - Commit to compare against
- * @returns {Set<string>} - Set of packages that are changed
+ * @returns {Set<string>} - Set of packages that are affected by in the current branch
  */
-function getChangedPackages(since = 'origin/master') {
+function getAffectedPackages(since = 'origin/master') {
   const gitRoot = findGitRoot();
   const res = spawnSync('yarn', ['lage', 'info', '--since', since], { cwd: gitRoot, shell: true });
   if (res.status !== 0) {
@@ -24,4 +27,4 @@ function getChangedPackages(since = 'origin/master') {
   return new Set(info.scope);
 }
 
-module.exports = getChangedPackages;
+module.exports = getAffectedPackages;
