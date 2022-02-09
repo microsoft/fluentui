@@ -59,7 +59,7 @@ steps:
   # It generates manifest files used to load the current version on developer.microsoft.com/fluentui.
   #
   # TODO: The second argument can be removed once @fluentui/public-docsite-setup is updated to latest,
-  # where URL specified will be the default. For now it's overridden here to avoid needing another 
+  # where URL specified will be the default. For now it's overridden here to avoid needing another
   # round of changes to pick up the package in every branch.
   - script: |
       npx create-site-manifests ../../packages/office-ui-fabric-react https://fabricweb.azureedge.net/fabric-website/v5/$(Build.BuildNumber)/
@@ -76,3 +76,14 @@ steps:
   - script: |
       node scripts/updateReleaseNotes.js --token=$(githubPAT) --apply --debug
     displayName: "Update github release notes"
+
+  - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+    displayName: 📒 Generate Manifest
+    inputs:
+      BuildDropPath: $(System.DefaultWorkingDirectory)
+
+  - task: PublishPipelineArtifact@1
+    displayName: 📒 Publish Manifest
+    inputs:
+      artifactName: SBom-$(System.JobAttempt)
+      targetPath: $(System.DefaultWorkingDirectory)/_manifest
