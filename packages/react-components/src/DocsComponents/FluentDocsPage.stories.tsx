@@ -45,8 +45,9 @@ const useStyles = makeStyles({
 
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
-  const stories = context.storyStore.getStoriesForKind(context.kind);
-  const primaryStory = stories[0];
+  console.log(context);
+  // const stories = context.storyStore.getStoriesForKind(context.kind);
+  // const primaryStory = stories[0];
   const hosted = isHosted();
   const styles = useStyles();
   // DEBUG
@@ -70,16 +71,16 @@ export const FluentDocsPage = () => {
           <Subtitle />
           <Description />
           <hr className={styles.divider} />
-          <HeaderMdx as="h3" id={nameToHash(primaryStory.name)}>
+          {/* <HeaderMdx as="h3" id={nameToHash(primaryStory.name)}>
             {primaryStory.name}
-          </HeaderMdx>
+          </HeaderMdx> */}
           <Primary />
           <ArgsTable story={PRIMARY_STORY} />
           <Stories />
         </div>
-        <div className={styles.toc}>
+        {/* <div className={styles.toc}>
           <Toc stories={stories} />
-        </div>
+        </div> */}
       </div>
     </div>
   );
