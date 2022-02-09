@@ -1,16 +1,66 @@
 # Notes on migration to `@fluentui/react-components@9.0.0-rc.1`
 
-## Styling changes
+## Changes to the theming system
+
+### Tokens to css variables mapping is now exported
+
+An object mapping the available tokens in the `Theme` to their respective css variables is now exported. You can import and use it in your project as follows:
+
+```ts
+import { tokens } from '@fluentui/react-components';
+
+// To refer to the css variable containing the value for color neutral foreground 1:
+// tokens.colorNeutralForeground1
+```
+
+### Custom tokens can now be passed as part of the Theme
+
+Previously, the only tokens one could access were those provided by Fluent UI in its `Theme` definition. We are now opening up our APIs so that custom tokens can be passed down and accessed in our theming infrastructure. An example of how to achieve that is as follows:
+
+```ts
+import { makeStyles, themeToTokensObject, webLightTheme, FluentProvider, Theme } from '@fluentui/react-components';
+
+// You can pass your own custom tokens to a theme and pass that to the provider.
+type CustomTheme = Theme & {
+  tokenA: string;
+  tokenB: string;
+  tokenC: string;
+}
+const customTheme: CustomTheme = { ...webLightTheme, tokenA: 'red', tokenB: 'blue', tokenC: 'green' };
+function App () {
+  return <FluentProvider theme={customTheme}>{...}</FluentProvider>
+}
+
+...
+
+// You can construct a custom tokens object by yourself.
+const customTokens: Record<keyof CustomTheme, string> = { ...tokens, tokenA: `var(--tokenA)`, tokenB: `var(--tokenB)`, tokenC: `var(--tokenC)`, };
+
+// You can alternatively use the themeToTokensObject function to construct the custom tokens object.
+// Note: If you do it via the themeToTokensObject you might see a negative effect on tree-shaking since bundles won't know the shape of the output.
+const alternativeCustomTokens = themeToTokensObject(customTheme);
+
+// You can then use this custom tokens object inside your styles.
+const useStyles = makeStyles({
+  base: {
+    color: customTokens.tokenA,
+    backgroundColor: customTokens.tokenB,
+    outlineColor: customTokens.tokenC,
+  }
+})
+```
+
+## Changes to the styling system
 
 ### Functions no longer supported
 
-Functions in `makeStyles()` are no longer supported, `tokens` can be used directly.
+Functions in `makeStyles()` are no longer supported, the `tokens` object can be used directly instead.
 
 Please apply following changes:
 
 ```diff
-import { makeStyles } from '@fluentui/react-componenents';
-+import { makeStyles, tokens } from '@fluentui/react-componenents';
+-import { makeStyles } from '@fluentui/react-components';
++import { makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
 -  root: theme => ({ color: theme.tokenB }),
@@ -18,11 +68,33 @@ const useStyles = makeStyles({
 });
 ```
 
+Focus indicator style functions in `@fluentui/react-tabster` were also updated to support this change:
+
+```diff
+-import { createCustomFocusIndicatorStyle, createFocusOutlineStyle, makeStyles } from '@fluentui/react-components';
++import { createCustomFocusIndicatorStyle, createFocusOutlineStyle, makeStyles, tokens } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+-  focusOutline1: createFocusOutlineStyle(theme, { selector: 'focus-within', style: { outlineOffset: '8px' } }),
++  focusOutline1: createFocusOutlineStyle({ selector: 'focus-within', style: { outlineOffset: '8px' } }),
+
+-  focusOutline2: createFocusOutlineStyle(theme => ({ backgrounColor: theme.colorNeutralBackground1 })),
++  focusOutline2: createFocusOutlineStyle({ backgrounColor: tokens.colorNeutralBackground1 }),
+
+-  focusOutline3: createCustomFocusIndicatorStyle(theme => ({
+-    outlineWidth: theme.strokeWidthThick,
+-  })),
++  focusOutline3: createCustomFocusIndicatorStyle({
++    outlineWidth: tokens.strokeWidthThick,
++  }),
+});
+```
+
 For more details, please check [microsoft/fluentui#20651](https://github.com/microsoft/fluentui/pull/20651).
 
 ### CSS shorthands no longer supported
 
-[CSS shorthands](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) in `makeStyles()` calls are no longer supported. For many shorthands there matching functions in `@fluentui/react-components`:
+[CSS shorthands](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) in `makeStyles()` calls are no longer supported. For many shorthands there exist matching functions in `@fluentui/react-components`:
 
 ```ts
 import { shorthands } from '@fluentui/react-componenents';
@@ -52,13 +124,13 @@ const useStyles = makeStyles({
 
 For more details, please check [microsoft/fluentui#20573](https://github.com/microsoft/fluentui/pull/20573).
 
-### makeStyles is Griffel now [just rename]
+### makeStyles is now Griffel [just rename]
 
-`makeStyles` CSS-in-JS become a separate project called [Griffel](https://github.com/microsoft/griffel). It still used in Fluent UI React v9.
+`makeStyles` CSS-in-JS become a separate project called [Griffel](https://github.com/microsoft/griffel). It is still used in Fluent UI React v9.
 
 ## Typings & exports
 
-### Hooks are export with "\_unstable" suffix
+### Hooks are now exported with "\_unstable" suffix
 
 All component hooks and render functions were renamed to add the suffix `_unstable` to indicate that their API has not been finalized and may change in the future.
 
@@ -80,7 +152,7 @@ For more details, please check [microsoft/fluentui#21365](https://github.com/mic
 
 #### `useTheme()` hook is no longer exported
 
-To replace the hook usage please apply following changes:
+To replace the hook usage please apply the following changes:
 
 ```diff
 -import { useTheme } from `@fluentui/react-components`;
@@ -94,7 +166,19 @@ function App() {
 }
 ```
 
-> **Note**: `tokens.VALUE` returns name of a CSS variable, not an actual value.
+#### `mergeThemes()` function has been removed
+
+To replace the usage of this function you should just spread the themes into a new object (which was what the function was doing internally for the most part):
+
+```diff
+import { webLightTheme, Theme } from '@fluentui/react-components';
+
+const customTokens = { ... };
+-const customTheme = mergeTheme(webLightTheme, customTokens);
++const customTheme = { ...webLightTheme, ...customTokens };
+```
+
+> **Note**: `tokens.VALUE` returns the name of a CSS variable, not an actual value.
 
 For more details, please check [microsoft/fluentui#21257](https://github.com/microsoft/fluentui/pull/21257).
 
@@ -104,7 +188,7 @@ For more details, please check [microsoft/fluentui#21257](https://github.com/mic
 
 > **Note**: This change should not affect most users of the library. It only affects authors of custom render functions.
 
-`getSlots` now returns `null` instead of `nullRender` for slots that don't render. This requires that the render function check for null before rendering a slot. `getSlots` also no longer takes a second parameter listing the slot names.
+`getSlots` now returns `null` instead of `nullRender` for slots that don't render. This requires that the render function checks for null before rendering a slot. `getSlots` also no longer takes a second parameter listing the slot names.
 
 ```diff
 const renderMyComponent = (state: MyComponentState) => {
@@ -150,5 +234,32 @@ The following types related to slots have been renamed:
 - `DefaultObjectShorthandProps` => `UnknownSlotProps`
 
 ## Component changes
+
+### General changes in all components
+
+Components were updated to now use resizable icons across the library, with the default size of the icons being now set via `fontSize`.
+
+### `Button` component
+
+A styling change was made were the border radius of small buttons changed from using the `borderRadiusMedium` token (`4px` in our default global tokens) to now use the `borderRadiusSmall` token (`2px` in our default global tokens).
+
+### `CompoundButton` component
+
+The styles of the `CompoundButton` component have been updated to match the latest design specification guidelines. The changes made are outlined below:
+
+| Style changed                                     | Value Before |      ValueAfter       |
+| ------------------------------------------------- | :----------: | :-------------------: |
+| Separation between primary and secondary contents |    `4px`     |          `0`          |
+| Small-sized button padding                        |    `8px`     |  `8px 8px 10px 8px`   |
+| Medium-sized button padding                       |    `12px`    | `14px 12px 16px 12px` |
+| Large-sized button padding                        |    `16px`    | `18px 16px 20px 16px` |
+
+### `MenuButton` component
+
+The typings of the `MenuButton` component have been updated to fix an issue where `ref` could not be properly passed because the type of it was wrong. It used to be that the only way to pass it was by typing it as `any`. After our change we are able to pass a properly typed `ref` of type `React.RefObject<HTMLButtonElement | HTMLAnchorElement>`.
+
+### `ToggleButton` component
+
+An issue was fixed where `aria-pressed` used to still change on `ToggleButton` click when the component was `disabledFocusable`. This is no longer the case and the component now behaves correctly.
 
 **TBD**
