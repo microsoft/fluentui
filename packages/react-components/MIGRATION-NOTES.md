@@ -114,13 +114,15 @@ const renderMyComponent = (state: MyComponentState) => {
   return (
     <slots.root {...slotProps.root}>
 -      <slots.slotA {...slotProps.slotA} />
-+      {slots.slotA && <slots.slotA {...slotProps.slotA} />}
 -      <slots.slotB {...slotProps.slotB} />
++      {slots.slotA && <slots.slotA {...slotProps.slotA} />}
 +      {slots.slotB && <slots.slotB {...slotProps.slotB} />}
     </slots.root>
   );
 };
 ```
+
+For more details, see [microsoft/fluentui#21503](https://github.com/microsoft/fluentui/pull/21503).
 
 #### New `Slot` type, and renamed slot utility types
 
@@ -134,10 +136,10 @@ All slots are now declared using a single `Slot` type:
 ```diff
 type MyComponentSlots = {
 -  root?: IntrinsicShorthandProps<'div'>;
-+  root?: Slot<'div'>;
 -  slotA?: IntrinsicShorthandProps<'label', 'span' | 'div'>;
-+  slotA?: Slot<'label', 'span' | 'div'>;
 -  slotB?: ObjectShorthandProps<ButtonProps>;
++  root?: Slot<'div'>;
++  slotA?: Slot<'label', 'span' | 'div'>;
 +  slotB?: Slot<typeof Button>;
 };
 ```
@@ -151,4 +153,43 @@ The following types related to slots have been renamed:
 
 ## Component changes
 
-**TBD**
+### Avatar
+
+- The `label` prop has been renamed to `initials`.
+- Removed the `getInitials` prop. Instead, the customized initials can be set directly on the `initials` prop:
+  ```diff
+  - <Avatar name={name} getInitials={customGetInitialsFunction} />
+  + <Avatar name={name} initials={customGetInitialsFunction(name)} />
+  ```
+- The `activeAppearance` prop can no longer be `glow` or `ring-glow`. Those appearances may be added again later when they have a final visual design.
+
+### Icons
+
+- Most icons are now available without a specific size (like `<PersonRegular />` instead of `<Person24Regular />`).
+  - These icons will get their size from either the CSS `fontSize`, or the icon's `fontSize` property. Every FluentUI component with an `icon` slot will style these icons to be the correct size when used in that slot.
+  - For example, instead of having to pick the correct size icon for a Button, an icon without a specific size can be used:
+    ```diff
+    - <Button icon={<Add20Filled />} />
+    - <Button icon={<Add24Filled />} size="large" />
+    + <Button icon={<AddFilled />} />
+    + <Button icon={<AddFilled />} size="large" />
+    ```
+
+### Tooltip
+
+- `Tooltip` has a new reuquired prop `relationship`. It describes how the tooltip is related to its child (trigger), and is used to set the appropriate Aria properties on trigger element. Its values can be:
+  - `label` - The tooltip is the only text label for a control (for example an icon-only button).
+  - `description` - The tooltip is extra descriptive text for a control that has another label.
+  - `inaccessible` - The tooltip's content is not available to accessibility tools. This is not recommended unless the content is accessible some other way.
+- Native props now must go on the `content` slot instead of the `Tooltip` itself.
+  - This only applies to HTMLElement props that are forwarded the Tooltip's `<div>` element; it doesn't apply to Tooltip-specific props like `appearance="inverted"`. This example would need to change:
+    ```diff
+    - <Tooltip id="example-id" className="example-class" content="Example Tooltip" relationship="label">
+    + <Tooltip content={{ id: 'example-id', className: 'example-class', children: 'Example Tooltip' }} relationship="label">
+    ```
+  - This example is fine because `relationship="label"` is a Tooltip prop.
+    ```diff
+    <Tooltip content="Example Tooltip" relationship="label">
+    ```
+- The `inverted` prop was removed. Use `appearance="inverted"` instead.
+- The `triggerAriaAttribute` prop was removed. Use the `relationship` prop instead.
