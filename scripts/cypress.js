@@ -8,20 +8,34 @@ const path = require('path');
  * https://github.com/cypress-io/cypress/issues/5674
  */
 
+const argv = require('yargs')
+  .option('mode', {
+    describe: 'Choose a mode to run cypress',
+    choices: ['run', 'open'],
+  })
+  .option('port', {
+    describe: 'Port number storybook is running on',
+    default: 3000,
+    type: 'number',
+  })
+  .demandOption('mode').argv;
+
 const baseConfig = {
   baseUrl: process.env.DEPLOYURL
     ? // Base path hard coded for converged for now, can be modified to be configurable if required to other projects
       `${process.env.DEPLOYURL}/react-components/storybook`
-    : 'http://localhost:3000',
-  fixturesFolder: path.relative(process.cwd(), path.resolve(__dirname, 'cypress/fixtures')),
+    : `http://localhost:${argv.port}`,
+  fixturesFolder: path.join(__dirname, 'cypress/fixtures'),
   integrationFolder: '.',
-  pluginsFile: path.relative(process.cwd(), path.resolve(__dirname, 'cypress/plugins/index.js')),
+  pluginsFile: path.join(__dirname, 'cypress/plugins/index.js'),
   retries: {
     runMode: 2,
     openMode: 0,
   },
   screenshotOnRunFailure: false,
-  supportFile: path.relative(process.cwd(), path.resolve(__dirname, 'cypress/support/index.js')),
+  // due to https://github.com/cypress-io/cypress/issues/8599 this must point to a path within the package,
+  // not a relative path into scripts
+  supportFile: 'e2e/support.js',
   testFiles: ['**/e2e/**/*.e2e.ts'],
   video: false,
 };
@@ -43,13 +57,6 @@ const open = () => {
     },
   });
 };
-
-const argv = require('yargs')
-  .option('mode', {
-    describe: 'Choose a mode to run cypress',
-    choices: ['run', 'open'],
-  })
-  .demandOption('mode').argv;
 
 if (argv.mode === 'open') {
   open();

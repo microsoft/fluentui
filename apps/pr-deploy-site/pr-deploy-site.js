@@ -55,19 +55,13 @@ var siteInfo = [
     title: 'Charting',
   },
   {
-    package: '@fluentui/react-input',
-    link: './react-input/storybook/index.html',
-    icon: 'TextField',
-    title: 'Input',
-  },
-  {
-    package: 'theming-designer',
+    package: '@fluentui/theming-designer',
     link: './theming-designer/index.html',
     icon: 'CheckMark',
     title: 'Theme Designer Example',
   },
   {
-    package: 'perf-test',
+    package: '@fluentui/perf-test',
     link: './perf-test/index.html',
     icon: 'SpeedHigh',
     title: 'Perf Tests',

@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { CardFooterState } from './CardFooter.types';
 
 export const cardFooterClassName = 'fui-CardFooter';
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the CardFooter slots based on the state
  */
-export const useCardFooterStyles = (state: CardFooterState): CardFooterState => {
+export const useCardFooterStyles_unstable = (state: CardFooterState): CardFooterState => {
   const styles = useStyles();
   state.root.className = mergeClasses(cardFooterClassName, styles.root, state.root.className);
 

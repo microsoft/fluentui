@@ -27,6 +27,7 @@ import { fluentNumberField } from './number-field/index';
 import { fluentProgress, fluentProgressRing } from './progress/index';
 import { fluentRadio } from './radio/index';
 import { fluentRadioGroup } from './radio-group/index';
+import { fluentSearch } from './search/index';
 import { fluentSelect } from './select/index';
 import { fluentSkeleton } from './skeleton/index';
 import { fluentSlider } from './slider/index';
@@ -70,6 +71,7 @@ export {
   fluentProgressRing,
   fluentRadio,
   fluentRadioGroup,
+  fluentSearch,
   fluentSelect,
   fluentSkeleton,
   fluentSlider,
@@ -120,6 +122,7 @@ export const allComponents = {
   fluentProgressRing,
   fluentRadio,
   fluentRadioGroup,
+  fluentSearch,
   fluentSelect,
   fluentSkeleton,
   fluentSlider,

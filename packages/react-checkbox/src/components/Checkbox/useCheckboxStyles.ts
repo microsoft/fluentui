@@ -1,5 +1,6 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 import { CheckboxState } from './Checkbox.types';
 
 export const checkboxClassName = 'fui-Checkbox';
@@ -30,82 +31,82 @@ const useRootStyles = makeStyles({
     cursor: 'default',
   },
 
-  focusIndicator: theme => createFocusOutlineStyle(theme, { style: {}, selector: 'focus-within' }),
+  focusIndicator: createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 
   // These `__Colors` styles are mutually exclusive: exactly one should be applied at any time
-  uncheckedColors: theme => ({
-    color: theme.colorNeutralForeground3,
+  uncheckedColors: {
+    color: tokens.colorNeutralForeground3,
     [`& .${indicatorClassName}`]: {
-      borderColor: theme.colorNeutralStrokeAccessible,
+      ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
     },
 
     ':hover': {
-      color: theme.colorNeutralForeground2,
+      color: tokens.colorNeutralForeground2,
       [`& .${indicatorClassName}`]: {
-        borderColor: theme.colorNeutralStrokeAccessibleHover,
+        ...shorthands.borderColor(tokens.colorNeutralStrokeAccessibleHover),
       },
     },
 
     ':active:hover': {
-      color: theme.colorNeutralForeground1,
+      color: tokens.colorNeutralForeground1,
       [`& .${indicatorClassName}`]: {
-        borderColor: theme.colorNeutralStrokeAccessiblePressed,
+        ...shorthands.borderColor(tokens.colorNeutralStrokeAccessiblePressed),
       },
     },
-  }),
+  },
 
-  checkedColors: theme => ({
-    color: theme.colorNeutralForeground1,
+  checkedColors: {
+    color: tokens.colorNeutralForeground1,
     [`& .${indicatorClassName}`]: {
-      backgroundColor: theme.colorCompoundBrandBackground,
-      color: theme.colorNeutralForegroundOnBrand,
-      borderColor: theme.colorCompoundBrandBackground,
+      backgroundColor: tokens.colorCompoundBrandBackground,
+      color: tokens.colorNeutralForegroundOnBrand,
+      ...shorthands.borderColor(tokens.colorCompoundBrandBackground),
     },
 
     ':hover': {
       [`& .${indicatorClassName}`]: {
-        backgroundColor: theme.colorCompoundBrandBackgroundHover,
-        borderColor: theme.colorCompoundBrandBackgroundHover,
-      },
-    },
-
-    ':active:hover': {
-      [`& .${indicatorClassName}`]: {
-        backgroundColor: theme.colorCompoundBrandBackgroundPressed,
-        borderColor: theme.colorCompoundBrandBackgroundPressed,
-      },
-    },
-  }),
-
-  mixedColors: theme => ({
-    color: theme.colorNeutralForeground1,
-    [`& .${indicatorClassName}`]: {
-      borderColor: theme.colorCompoundBrandStroke,
-      color: theme.colorCompoundBrandForeground1,
-    },
-
-    ':hover': {
-      [`& .${indicatorClassName}`]: {
-        borderColor: theme.colorCompoundBrandStrokeHover,
-        color: theme.colorCompoundBrandForeground1Hover,
+        backgroundColor: tokens.colorCompoundBrandBackgroundHover,
+        ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundHover),
       },
     },
 
     ':active:hover': {
       [`& .${indicatorClassName}`]: {
-        borderColor: theme.colorCompoundBrandStrokePressed,
-        color: theme.colorCompoundBrandForeground1Pressed,
+        backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
+        ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundPressed),
       },
     },
-  }),
+  },
 
-  disabledColors: theme => ({
-    color: theme.colorNeutralForegroundDisabled,
+  mixedColors: {
+    color: tokens.colorNeutralForeground1,
     [`& .${indicatorClassName}`]: {
-      borderColor: theme.colorNeutralStrokeDisabled,
-      color: theme.colorNeutralForegroundDisabled,
+      ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
+      color: tokens.colorCompoundBrandForeground1,
     },
-  }),
+
+    ':hover': {
+      [`& .${indicatorClassName}`]: {
+        ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
+        color: tokens.colorCompoundBrandForeground1Hover,
+      },
+    },
+
+    ':active:hover': {
+      [`& .${indicatorClassName}`]: {
+        ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
+        color: tokens.colorCompoundBrandForeground1Pressed,
+      },
+    },
+  },
+
+  disabledColors: {
+    color: tokens.colorNeutralForegroundDisabled,
+    [`& .${indicatorClassName}`]: {
+      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+      color: tokens.colorNeutralForegroundDisabled,
+    },
+  },
 });
 
 const useInputStyles = makeStyles({
@@ -123,7 +124,7 @@ const useInputStyles = makeStyles({
 });
 
 const useIndicatorStyles = makeStyles({
-  base: theme => ({
+  base: {
     alignSelf: 'flex-start',
     boxSizing: 'border-box',
     flexShrink: 0,
@@ -133,11 +134,11 @@ const useIndicatorStyles = makeStyles({
     justifyContent: 'center',
     ...shorthands.overflow('hidden'),
 
-    ...shorthands.border(theme.strokeWidthThin, 'solid'),
-    ...shorthands.borderRadius(theme.borderRadiusSmall),
+    ...shorthands.border(tokens.strokeWidthThin, 'solid'),
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
     fill: 'currentColor',
     cursor: 'inherit',
-  }),
+  },
 
   medium: {
     width: indicatorSizeMedium,
@@ -149,13 +150,13 @@ const useIndicatorStyles = makeStyles({
     height: indicatorSizeLarge,
   },
 
-  circular: theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusCircular),
-  }),
+  circular: {
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+  },
 
   unchecked: {
     '& > *': {
-      opacity: 0,
+      opacity: '0',
     },
   },
 });
@@ -170,18 +171,18 @@ const useLabelStyles = makeStyles({
 
   // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
   // This prevents the label from expanding the height of the Checkbox, but preserves line height if the label wraps.
-  medium: theme => ({
-    ...shorthands.margin(`calc((${indicatorSizeMedium} - ${theme.lineHeightBase300}) / 2)`, 0),
-  }),
-  large: theme => ({
-    ...shorthands.margin(`calc((${indicatorSizeLarge} - ${theme.lineHeightBase300}) / 2)`, 0),
-  }),
+  medium: {
+    ...shorthands.margin(`calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`, 0),
+  },
+  large: {
+    ...shorthands.margin(`calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`, 0),
+  },
 });
 
 /**
  * Apply styling to the Checkbox slots based on the state
  */
-export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
+export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState => {
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
     checkboxClassName,
@@ -203,14 +204,16 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   state.input.className = mergeClasses(inputStyles.base, state.input.className);
 
   const indicatorStyles = useIndicatorStyles();
-  state.indicator.className = mergeClasses(
-    indicatorClassName,
-    indicatorStyles.base,
-    indicatorStyles[state.size],
-    state.circular && indicatorStyles.circular,
-    !state.checked && indicatorStyles.unchecked,
-    state.indicator.className,
-  );
+  if (state.indicator) {
+    state.indicator.className = mergeClasses(
+      indicatorClassName,
+      indicatorStyles.base,
+      indicatorStyles[state.size],
+      state.circular && indicatorStyles.circular,
+      !state.checked && indicatorStyles.unchecked,
+      state.indicator.className,
+    );
+  }
 
   const labelStyles = useLabelStyles();
   if (state.label) {

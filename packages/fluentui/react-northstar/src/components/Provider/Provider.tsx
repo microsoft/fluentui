@@ -204,7 +204,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
   const RenderProvider = outgoingContext.renderer.Provider;
 
   return (
-    <RenderProvider>
+    <RenderProvider target={outgoingContext.target}>
       <Unstable_FluentContextProvider value={outgoingContext}>
         <PortalBoxContext.Provider value={element}>
           <ElementType {...elementProps}>{children}</ElementType>

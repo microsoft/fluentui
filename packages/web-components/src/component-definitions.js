@@ -54,6 +54,8 @@ import fluentRadioDefinition from './radio/radio.vscode.definition.json';
 export { fluentRadioDefinition };
 import fluentRadioGroupDefinition from './radio-group/radio-group.vscode.definition.json';
 export { fluentRadioGroupDefinition };
+import fluentSearchDefinition from './search/search.vscode.definition.json';
+export { fluentSearchDefinition };
 import fluentSelectDefinition from './select/select.vscode.definition.json';
 export { fluentSelectDefinition };
 import fluentSkeletonDefinition from './skeleton/skeleton.vscode.definition.json';

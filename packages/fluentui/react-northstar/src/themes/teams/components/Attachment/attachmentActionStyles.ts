@@ -11,7 +11,10 @@ export const attachmentActionStyles: ComponentSlotStylesPrepared<AttachmentActio
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { siteVariables } = theme;
     const iconFilledStyles = getIconFillOrOutlineStyles({ outline: false });
-    const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables });
+    const borderFocusStyles = getBorderFocusStyles({
+      variables: siteVariables,
+      borderRadius: v.actionFocusBorderRadius,
+    });
 
     return {
       height: v.actionHeight,

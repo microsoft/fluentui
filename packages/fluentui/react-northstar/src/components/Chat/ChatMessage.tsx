@@ -229,9 +229,12 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   });
 
   const props = {
-    density: chatProps.density,
-    accessibility: chatProps.accessibility || chatMessageBehavior,
     ...inputProps,
+    density: inputProps.density === undefined ? chatProps.density : inputProps.density,
+    accessibility:
+      inputProps.accessibility === undefined
+        ? chatProps.accessibility || chatMessageBehavior
+        : inputProps.accessibility,
   };
   const {
     accessibility,

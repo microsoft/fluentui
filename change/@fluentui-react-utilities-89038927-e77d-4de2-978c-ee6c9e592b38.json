@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adding ComponentSlotProps to allow ref to be passed in composite components.",
+  "packageName": "@fluentui/react-utilities",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

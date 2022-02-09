@@ -5,6 +5,7 @@ import {
   doesElementContainFocus,
   getDocument,
   getNativeProps,
+  getPropsWithDefaults,
   getWindow,
 } from '../../Utilities';
 import { useMergedRefs, useAsync, useOnEvent } from '@fluentui/react-hooks';
@@ -122,32 +123,36 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
 
 function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   const isModalOrPanel = props['aria-modal'];
+  // eslint-disable-next-line deprecation/deprecation
+  const enableAriaHiddenSiblings = props.enableAriaHiddenSiblings;
 
   React.useEffect(() => {
     const targetDocument = getDocument();
-    if (isModalOrPanel && targetDocument && root && root.current) {
-      const popupPortalNode = root.current.parentElement?.parentElement;
-      let nodesToHide: HTMLElement[] = findSiblingNodes(popupPortalNode, popupPortalNode?.parentElement);
-
-      //if popupPortalNode is not a direct child of body, its ancestor's siblings need to be hidden as well.
-      if (popupPortalNode?.parentElement !== targetDocument.body) {
-        const popupAncestorNode = findAncestorNode(root.current, targetDocument);
-        nodesToHide.concat(findSiblingNodes(popupAncestorNode, targetDocument.body));
-      }
-
-      nodesToHide = nodesToHide.filter(
-        child =>
-          child.tagName !== 'TEMPLATE' &&
-          child.tagName !== 'SCRIPT' &&
-          child.tagName !== 'STYLE' &&
-          !child.hasAttribute('aria-hidden'),
-      );
-
-      nodesToHide.forEach(node => node.setAttribute('aria-hidden', 'true'));
-
-      return () => nodesToHide.forEach(child => child.removeAttribute('aria-hidden'));
+    if (!(enableAriaHiddenSiblings && isModalOrPanel && targetDocument && root?.current)) {
+      return;
     }
-  }, [isModalOrPanel, root]);
+
+    const popupPortalNode = root.current.parentElement?.parentElement;
+    let nodesToHide: HTMLElement[] = findSiblingNodes(popupPortalNode, popupPortalNode?.parentElement);
+
+    //if popupPortalNode is not a direct child of body, its ancestor's siblings need to be hidden as well.
+    if (popupPortalNode?.parentElement !== targetDocument.body) {
+      const popupAncestorNode = findAncestorNode(root.current, targetDocument);
+      nodesToHide = nodesToHide.concat(findSiblingNodes(popupAncestorNode, targetDocument.body));
+    }
+
+    nodesToHide = nodesToHide.filter(
+      child =>
+        child.tagName !== 'TEMPLATE' &&
+        child.tagName !== 'SCRIPT' &&
+        child.tagName !== 'STYLE' &&
+        !child.hasAttribute('aria-hidden'),
+    );
+
+    nodesToHide.forEach(node => node.setAttribute('aria-hidden', 'true'));
+
+    return () => nodesToHide.forEach(child => child.removeAttribute('aria-hidden'));
+  }, [isModalOrPanel, root, enableAriaHiddenSiblings]);
 }
 
 function findAncestorNode(node: HTMLElement | null, targetDocument: Document): HTMLElement | null {
@@ -170,10 +175,12 @@ const findSiblingNodes = (
  * This adds accessibility to Dialog and Panel controls
  */
 export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTMLDivElement, IPopupProps>(
-  (props, forwardedRef) => {
-    // Default props
-    // eslint-disable-next-line deprecation/deprecation
-    props = { shouldRestoreFocus: true, ...props };
+  (propsWithoutDefaults, forwardedRef) => {
+    const props = getPropsWithDefaults(
+      // eslint-disable-next-line deprecation/deprecation
+      { shouldRestoreFocus: true, enableAriaHiddenSiblings: true },
+      propsWithoutDefaults,
+    );
 
     const root = React.useRef<HTMLDivElement>();
     const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;

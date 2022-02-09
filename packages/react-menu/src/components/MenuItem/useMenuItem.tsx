@@ -8,36 +8,21 @@ import {
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
-import { useMenuTriggerContext } from '../../contexts/menuTriggerContext';
-import {
-  ChevronRight20Regular as ChevronRightIcon,
-  ChevronLeft20Regular as ChevronLeftIcon,
-} from '@fluentui/react-icons';
-import { useMenuListContext } from '../../contexts/menuListContext';
-import { useMenuContext } from '../../contexts/menuContext';
-import type { MenuItemProps, MenuItemSlots, MenuItemState } from './MenuItem.types';
-
-/**
- * Consts listing which props are shorthand props.
- */
-export const menuItemSlots: Array<keyof MenuItemSlots> = [
-  'root',
-  'icon',
-  'submenuIndicator',
-  'content',
-  'secondaryContent',
-  'checkmark',
-];
+import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
+import { ChevronRightRegular as ChevronRightIcon, ChevronLeftRegular as ChevronLeftIcon } from '@fluentui/react-icons';
+import { useMenuListContext_unstable } from '../../contexts/menuListContext';
+import { useMenuContext_unstable } from '../../contexts/menuContext';
+import type { MenuItemProps, MenuItemState } from './MenuItem.types';
 
 /**
  * Returns the props and state required to render the component
  */
-export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
-  const hasSubmenu = useMenuTriggerContext();
-  const hasIcons = useMenuListContext(context => context.hasIcons);
-  const hasCheckmarks = useMenuListContext(context => context.hasCheckmarks);
-  const setOpen = useMenuContext(context => context.setOpen);
-  const persistOnClickContext = useMenuContext(context => context.persistOnItemClick);
+export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
+  const hasSubmenu = useMenuTriggerContext_unstable() || props.hasSubmenu;
+  const hasIcons = useMenuListContext_unstable(context => context.hasIcons);
+  const hasCheckmarks = useMenuListContext_unstable(context => context.hasCheckmarks);
+  const setOpen = useMenuContext_unstable(context => context.setOpen);
+  const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
   const dismissedWithKeyboardRef = React.useRef(false);
 
   const { dir } = useFluent();
@@ -69,7 +54,10 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): 
         children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />,
       },
     }),
-    content: resolveShorthand(props.content, { required: true, defaultProps: { children: props.children } }),
+    content: resolveShorthand(props.content, {
+      required: !!props.children,
+      defaultProps: { children: props.children },
+    }),
     secondaryContent: resolveShorthand(props.secondaryContent),
   };
 

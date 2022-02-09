@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { CalendarMonth24Regular, Filter24Regular } from '@fluentui/react-icons';
+import { CalendarMonthRegular, FilterRegular } from '@fluentui/react-icons';
 import { SplitButton, MenuButtonProps } from '../../../index'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
 
 export const Icon = () => (
@@ -12,7 +12,7 @@ export const Icon = () => (
           <SplitButton
             menuButton={triggerProps}
             primaryActionButton={'This is a split button'}
-            icon={<CalendarMonth24Regular />}
+            icon={<CalendarMonthRegular />}
           />
         )}
       </MenuTrigger>
@@ -30,8 +30,8 @@ export const Icon = () => (
           <SplitButton
             menuButton={triggerProps}
             primaryActionButton={'This is a split button'}
-            icon={<CalendarMonth24Regular />}
-            menuIcon={<Filter24Regular />}
+            icon={<CalendarMonthRegular />}
+            menuIcon={<FilterRegular />}
           />
         )}
       </MenuTrigger>
@@ -49,7 +49,7 @@ export const Icon = () => (
           <SplitButton
             menuButton={triggerProps}
             primaryActionButton={'This is a split button'}
-            icon={<CalendarMonth24Regular />}
+            icon={<CalendarMonthRegular />}
           />
         )}
       </MenuTrigger>

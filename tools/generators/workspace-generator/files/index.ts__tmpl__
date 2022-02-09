@@ -1,12 +1,53 @@
-import { Tree, formatFiles, installPackagesTask } from '@nrwl/devkit';
+import * as path from 'path';
+import { Tree, formatFiles, installPackagesTask, names, generateFiles } from '@nrwl/devkit';
 import { libraryGenerator } from '@nrwl/workspace/generators';
+
+import { getProjectConfig } from '../../utils';
 
 import { <%= className %>GeneratorSchema } from './schema'
 
-export default async function(host: Tree, schema: <%= className %>GeneratorSchema) {
-  await libraryGenerator(host, {name: schema.name});
-  await formatFiles(host);
+interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
+
+export default async function(tree: Tree, schema: <%= className %>GeneratorSchema) {
+  await libraryGenerator(tree, {name: schema.name});
+
+  const normalizedOptions = normalizeOptions(tree, schema);
+
+  addFiles(tree, normalizedOptions);
+
+  await formatFiles(tree);
+
   return () => {
-    installPackagesTask(host)
+    installPackagesTask(tree)
   }
+}
+
+function normalizeOptions(
+  tree: Tree,
+  options: <%= className %>GeneratorSchema
+) {
+  const project = getProjectConfig(tree, { packageName: options.name });
+
+  return {
+    ...options,
+    ...project,
+    ...names(options.name),
+  };
+}
+
+/**
+ * NOTE: remove this if your generator doesn't process any static/dynamic templates
+ */
+function addFiles(tree: Tree, options: NormalizedSchema) {
+  const templateOptions = {
+    ...options,
+    tmpl: '',
+  };
+
+  generateFiles(
+    tree,
+    path.join(__dirname, 'files'),
+    path.join(options.projectConfig.root, options.name),
+    templateOptions
+  );
 }

@@ -225,6 +225,7 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
       ref={(element: HTMLTableCellElement) => {
         customDayCellRef?.(element, day.originalDate, classNames);
         day.setRef(element);
+        isNavigatedDate && (navigatedDayRef.current = element);
       }}
       aria-hidden={ariaHidden}
       aria-disabled={!ariaHidden && !day.isInBounds}
@@ -236,7 +237,6 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
       onKeyDown={!ariaHidden ? onDayKeyDown : undefined}
       role="gridcell"
       tabIndex={isNavigatedDate ? 0 : undefined}
-      aria-readonly="true"
       aria-current={day.isSelected ? 'date' : undefined}
       aria-selected={day.isInBounds ? day.isSelected : undefined}
       data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
@@ -251,7 +251,6 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
         )}
         aria-label={ariaLabel}
         id={isNavigatedDate ? activeDescendantId : undefined}
-        ref={isNavigatedDate ? navigatedDayRef : undefined}
         disabled={!ariaHidden && !day.isInBounds}
         type="button"
         tabIndex={-1}

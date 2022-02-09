@@ -1,33 +1,33 @@
-import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { tokens, webLightTheme } from '@fluentui/react-theme';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 
 const useStyles = makeStyles({
-  box: theme => ({
-    ...shorthands.border('5px', 'solid', theme.colorNeutralStroke1),
-    ...shorthands.borderLeft('20px', 'solid', theme.colorPaletteBlueBorder2),
+  box: {
+    ...shorthands.border('5px', 'solid', tokens.colorNeutralStroke1),
+    ...shorthands.borderLeft('20px', 'solid', tokens.colorPaletteBlueBorder2),
 
-    backgroundColor: theme.colorNeutralBackground1,
-    color: theme.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackground1,
+    color: tokens.colorNeutralForeground1,
 
     ...shorthands.margin('5px'),
     ...shorthands.padding('5px'),
     paddingLeft: '50px',
-  }),
+  },
 
-  container: theme => ({
-    ...shorthands.border('5px', 'solid', theme.colorNeutralStroke1),
-    ...shorthands.borderLeft('20px', 'solid', theme.colorPaletteBlueBorder2),
+  container: {
+    ...shorthands.border('5px', 'solid', tokens.colorNeutralStroke1),
+    ...shorthands.borderLeft('20px', 'solid', tokens.colorPaletteBlueBorder2),
 
     ...shorthands.margin('5px'),
     ...shorthands.padding('5px'),
-  }),
-  containerPrimary: theme => ({
-    borderLeftColor: theme.colorPaletteDarkOrangeBorder2,
-  }),
+  },
+  containerPrimary: {
+    borderLeftColor: tokens.colorPaletteDarkOrangeBorder2,
+  },
 
   provider: {
     marginLeft: '20px',

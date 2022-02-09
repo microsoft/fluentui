@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Rename `label` slot to `initials`, remove `getInitials` prop, and improve accessibility",
+  "packageName": "@fluentui/react-avatar",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

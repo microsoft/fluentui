@@ -5,6 +5,7 @@ export { Multiple } from './AccordionMultiple.stories';
 export { Navigable } from './AccordionNavigable.stories';
 export { OpenItems } from './AccordionOpenItems.stories';
 export { Sizes } from './AccordionSizes.stories';
+export { HeadingLevels } from './AccordionHeaders.stories';
 export { Inline } from './AccordionInline.stories';
 export { Disabled } from './AccordionDisabled.stories';
 export { ExpandIcon } from './AccordionExpandIcon.stories';
