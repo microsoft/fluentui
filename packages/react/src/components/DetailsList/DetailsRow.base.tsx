@@ -283,16 +283,10 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
     // When the user does not specify any column is a row-header in the columns props,
     // The aria-labelledby of the checkbox does not specify {id}-header.
-    let ariaLabelledby: string | undefined;
-    if (id) {
-      ariaLabelledby = `${id}-checkbox`;
-      const hasRowHeader = columns.some(column => {
-        return !!column.isRowHeader;
-      });
-      if (hasRowHeader) {
-        ariaLabelledby += ` ${id}-header`;
-      }
-    }
+    const hasRowHeader = columns.some(column => {
+      return !!column.isRowHeader;
+    });
+    const ariaLabelledby = `${id}-checkbox` + (hasRowHeader ? ` ${id}-header` : '');
 
     return (
       <FocusZone
@@ -339,7 +333,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
               selectionMode,
               anySelected: isSelectionModal,
               'aria-label': checkButtonAriaLabel,
-              'aria-labelledby': ariaLabelledby ? ariaLabelledby : undefined,
+              'aria-labelledby': id ? ariaLabelledby : undefined,
               canSelect,
               compact,
               className: this._classNames.check,
