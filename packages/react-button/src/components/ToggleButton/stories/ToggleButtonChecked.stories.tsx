@@ -3,9 +3,9 @@ import { ToggleButton } from '../../../ToggleButton';
 
 export const Checked = () => (
   <>
-    <ToggleButton checked={true}>Checked</ToggleButton>
+    <ToggleButton checked={true}>Controlled checked state</ToggleButton>
 
-    <ToggleButton checked={false}>Unchecked</ToggleButton>
+    <ToggleButton checked={false}>Controlled unchecked state</ToggleButton>
   </>
 );
 Checked.parameters = {

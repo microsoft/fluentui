@@ -8,7 +8,7 @@ export const Icon = () => (
     <Button icon={<CalendarMonthRegular />} iconPosition="after">
       With icon after contents
     </Button>
-    <Button icon={<CalendarMonthRegular />} aria-label="Icon only" />
+    <Button icon={<CalendarMonthRegular />} aria-label="Calendar icon" />
   </>
 );
 Icon.parameters = {

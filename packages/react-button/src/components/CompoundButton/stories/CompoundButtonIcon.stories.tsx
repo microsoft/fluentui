@@ -10,7 +10,7 @@ export const Icon = () => (
     <CompoundButton secondaryContent="Secondary content" icon={<CalendarMonthRegular />} iconPosition="after">
       With icon after contents
     </CompoundButton>
-    <CompoundButton secondaryContent="Secondary content" icon={<CalendarMonthRegular />} aria-label="Icon only" />
+    <CompoundButton secondaryContent="Secondary content" icon={<CalendarMonthRegular />} aria-label="Calendar icon" />
   </>
 );
 Icon.parameters = {

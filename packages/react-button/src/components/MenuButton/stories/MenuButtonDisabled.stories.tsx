@@ -8,7 +8,7 @@ export const Disabled = () => {
     <>
       <Menu>
         <MenuTrigger>
-          <MenuButton>Enabled</MenuButton>
+          <MenuButton>Enabled state</MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
@@ -20,7 +20,7 @@ export const Disabled = () => {
       </Menu>
       <Menu>
         <MenuTrigger>
-          <MenuButton disabled>Disabled</MenuButton>
+          <MenuButton disabled>Disabled state</MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
@@ -32,7 +32,7 @@ export const Disabled = () => {
       </Menu>
       <Menu>
         <MenuTrigger>
-          <MenuButton disabledFocusable>Disabled focusable</MenuButton>
+          <MenuButton disabledFocusable>Disabled focusable state</MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
