@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 import { mount } from 'enzyme';
 import { Dialog } from './Dialog';
@@ -9,6 +10,7 @@ import { DialogType } from './DialogContent.types'; // for express fluent assert
 import { resetIds, setWarningCallback } from '@fluentui/utilities';
 import { act } from 'react-dom/test-utils';
 import { isConformant } from '../../common/isConformant';
+import { expectNoHiddenParents } from '../../common/testUtilities';
 
 describe('Dialog', () => {
   beforeEach(() => {
@@ -271,6 +273,40 @@ describe('Dialog', () => {
       const dialogTitle = document.getElementById(titleId);
       expect(dialogTitle).not.toBeNull();
       wrapper.unmount();
+    });
+  });
+
+  describe('enableAriaHiddenSiblings', () => {
+    // These tests cover functionality inherited from Modal: when the dialog is open, all siblings
+    // outside the *content's* DOM tree should be hidden. The content is rendered in a portal
+    // (not under the same div as the rest of the React-rendered elements), so to test that a
+    // sibling element gets properly hidden, the sibling must be attached directly to document.body.
+    let sibling: HTMLElement;
+
+    beforeEach(() => {
+      sibling = document.createElement('div');
+      sibling.textContent = 'sibling';
+      document.body.appendChild(sibling);
+    });
+
+    afterEach(() => {
+      sibling.remove();
+    });
+
+    it('hides siblings when open', () => {
+      const { getByText } = render(<Dialog hidden={false}>content</Dialog>);
+
+      expectNoHiddenParents(getByText('content'));
+
+      expect(getByText('sibling').getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('does not hide siblings when closed', () => {
+      const { queryByText } = render(<Dialog hidden>content</Dialog>);
+
+      expect(queryByText('content')).toBeFalsy(); // verify it's closed
+
+      expectNoHiddenParents(queryByText('sibling')!);
     });
   });
 });

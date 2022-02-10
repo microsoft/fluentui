@@ -5655,6 +5655,7 @@ export interface IFacepileProps extends React_2.ClassAttributes<FacepileBase> {
     maxDisplayablePersonas?: number;
     onRenderPersona?: IRenderFunction<IFacepilePersona>;
     onRenderPersonaCoin?: IRenderFunction<IFacepilePersona>;
+    onRenderPersonaWrapper?: IRenderFunction<IFacepilePersona>;
     overflowButtonProps?: IButtonProps;
     overflowButtonType?: OverflowButtonType;
     overflowPersonas?: IFacepilePersona[];
@@ -8044,6 +8045,7 @@ export interface ISelectionZoneProps extends React_2.ClassAttributes<SelectionZo
     onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
     onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
     selection: ISelection;
+    selectionClearedOnSurfaceClick?: boolean;
     selectionMode?: SelectionMode_2;
     selectionPreservedOnEmptyClick?: boolean;
 }

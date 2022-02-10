@@ -8527,7 +8527,7 @@ chainsaw@~0.1.0:
   dependencies:
     traverse ">=0.3.0 <0.4"
 
-chalk@4.1.0, chalk@^4.0.0, chalk@^4.1.0:
+chalk@4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.0.tgz#4e14870a618d9e2edd97dd8345fd9d9dc315646a"
   integrity sha512-qwx12AxXe2Q5xQ43Ac//I6v5aXTipYrSESdOgzrN+9XjgEpyjpKuvSGaN4qE93f7TQTlerQQ8S+EQ0EyDoVL1A==
@@ -8563,10 +8563,10 @@ chalk@^3.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.1.tgz#c80b3fab28bf6371e6863325eee67e618b77e6ad"
-  integrity sha512-diHzdDKxcU+bAsUboHLPEDQiw0qEe0qd7SYUn3HgcFlWgbDcfLGswOHYeGrHKzG9z6UYf01d9VFMfZxPM1xZSg==
+chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
+  integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
@@ -19437,13 +19437,13 @@ node-releases@^2.0.1:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.1.tgz#3d1d395f204f1f2f29a54358b9fb678765ad2fc5"
   integrity sha512-CqyzN6z7Q6aMeF/ktcMVTzhAHCEpf8SOarwpzpf8pNBY2k5/oM34UHldUwp8VKI7uxct2HxSRdJjBaZeESzcxA==
 
-node-sass@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-6.0.1.tgz#cad1ccd0ce63e35c7181f545d8b986f3a9a887fe"
-  integrity sha512-f+Rbqt92Ful9gX0cGtdYwjTrWAaGURgaK5rZCWOgCNyGWusFYHhbqCCBoFBeat+HKETOU02AyTxNhJV0YZf2jQ==
+node-sass@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-7.0.0.tgz#33ee7c2df299d51f682f13d79f3d2a562225788e"
+  integrity sha512-6yUnsD3L8fVbgMX6nKQqZkjRcG7a/PpmF0pEyeWf+BgbTj2ToJlCYrnUifL2KbjV5gIY22I3oppahBWA3B+jUg==
   dependencies:
     async-foreach "^0.1.3"
-    chalk "^1.1.1"
+    chalk "^4.1.2"
     cross-spawn "^7.0.3"
     gaze "^1.0.0"
     get-stdin "^4.0.1"
@@ -19452,7 +19452,7 @@ node-sass@^6.0.1:
     meow "^9.0.0"
     nan "^2.13.2"
     node-gyp "^7.1.0"
-    npmlog "^4.0.0"
+    npmlog "^5.0.0"
     request "^2.88.0"
     sass-graph "2.2.5"
     stdout-stream "^1.4.0"
@@ -19675,7 +19675,7 @@ npm-run-path@^4.0.0, npm-run-path@^4.0.1:
   dependencies:
     path-key "^3.0.0"
 
-npmlog@^4.0.0, npmlog@^4.0.2, npmlog@^4.1.2:
+npmlog@^4.0.2, npmlog@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/npmlog/-/npmlog-4.1.2.tgz#08a7f2a8bf734604779a9efa4ad5cc717abb954b"
   integrity sha512-2uUqazuKlTaSI/dC8AzicUck7+IrEaOnN/e0jd3Xtt1KcGpwx30v50mL7oPyr/h9bL3E4aZccVwpwP+5W9Vjkg==
@@ -19685,7 +19685,7 @@ npmlog@^4.0.0, npmlog@^4.0.2, npmlog@^4.1.2:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
-npmlog@^5.0.1:
+npmlog@^5.0.0, npmlog@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/npmlog/-/npmlog-5.0.1.tgz#f06678e80e29419ad67ab964e0fa69959c1eb8b0"
   integrity sha512-AqZtDUWOMKs1G/8lwylVjrdYgqA4d9nu8hc+0gzRxlDb1I10+FHBGMXs6aiQHFdCUUlqH99MUMuLfzWDNDtfxw==

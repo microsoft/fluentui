@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import { render } from '@testing-library/react';
 import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -8,6 +9,7 @@ import { resetIds } from '../../Utilities';
 import { Callout } from './Callout';
 import { CalloutContent } from './CalloutContent';
 import type { IPopupRestoreFocusParams } from '../../Popup';
+import { expectNoHiddenParents } from '../../common/testUtilities';
 
 describe('Callout', () => {
   beforeEach(() => {
@@ -262,5 +264,25 @@ describe('Callout', () => {
     // Just to make sure that both elements are not undefined
     expect(previousFocusElement).not.toBeFalsy();
     expect(previousFocusElement).toEqual(focusedElement);
+  });
+
+  // This behavior could be changed in the future
+  it('does not hide siblings (currently)', () => {
+    const { getByText, getByTestId } = render(
+      <div data-testid="root">
+        <div>sibling</div>
+        {/* Use doNotLayer so the content isn't rendered in a portal (easier to test this way) */}
+        <Callout doNotLayer>content</Callout>
+      </div>,
+    );
+
+    const content = getByText('content');
+    // the sibling test becomes invalid if the doNotLayer prop is removed and the content is in a portal
+    expect(getByTestId('root').contains(content)).toBeTruthy();
+    // verify content itself isn't hidden (unlikely)
+    expectNoHiddenParents(content);
+
+    // verify sibling isn't hidden
+    expectNoHiddenParents(getByText('sibling'));
   });
 });

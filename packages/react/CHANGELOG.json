@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 10 Feb 2022 07:32:10 GMT",
+      "tag": "@fluentui/react_v8.55.0",
+      "version": "8.55.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "6fa0a3e69c74b3bc22d5e5f62fb6c9492dfe0d76",
+            "comment": "Facepile: Add onRenderPersonaWrapper prop which wraps clickable Personas."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "01b6dba4dd7a503d9715b24aa4a02628b822cfb3",
+            "comment": "SelectionZone: Add prop to disable default behavior that clears selection when clicking on non-toggle surface."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Feb 2022 07:30:48 GMT",
       "tag": "@fluentui/react_v8.54.0",
       "version": "8.54.0",
