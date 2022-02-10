@@ -6,6 +6,7 @@ import { TooltipHost } from '@fluentui/react/lib/Tooltip';
 import { useId } from '@fluentui/react-hooks';
 
 const stackTokens: IStackTokens = { childrenGap: 10 };
+
 const buttonStyles = {
   root: {
     background: 'transparent',
