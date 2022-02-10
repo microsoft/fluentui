@@ -10,8 +10,7 @@ export const cardClassName = 'fui-Card';
  */
 const useStyles = makeStyles({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: 'block',
     ...shorthands.overflow('hidden'),
 
     boxShadow: tokens.shadow4,
@@ -19,18 +18,11 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
 
     // Size: medium
-    // TODO: Validate if we should use a token instead + the unit of said token
-    // TODO: Explore alternate way of applying padding
-    ...shorthands.padding('12px'),
-    ...shorthands.gap('12px'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
-    [`> .${cardPreviewClassName}`]: {
-      marginLeft: '-12px',
-      marginRight: '-12px',
-      '&:first-child': {
-        marginTop: '-12px',
-      },
+    [`> *:not(.${cardPreviewClassName})`]: {
+      // Size: medium
+      ...shorthands.margin('12px'),
     },
   },
 
