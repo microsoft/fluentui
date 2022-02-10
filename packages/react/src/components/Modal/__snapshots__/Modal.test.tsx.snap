@@ -139,9 +139,7 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
       </div>
     </div>
   </div>
-  <div
-    aria-hidden="true"
-  >
+  <div>
     <span
       class="ms-layer"
     />
@@ -453,9 +451,7 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
       </div>
     </div>
   </div>
-  <div
-    aria-hidden="true"
-  >
+  <div>
     <span
       class="ms-layer"
     />
