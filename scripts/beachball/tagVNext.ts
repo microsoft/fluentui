@@ -6,9 +6,11 @@ import yargs from 'yargs';
 function tagPackages(npmToken: string) {
   const packagesToTag = getPackagesToTag();
 
-  let success = false;
+  let success = true;
   packagesToTag.forEach(pkg => {
-    success &&= tagPackage(pkg.name, pkg.version, npmToken);
+    if (!tagPackage(pkg.name, pkg.version, npmToken)) {
+      success = false;
+    }
   });
 
   if (!success) {
@@ -20,7 +22,7 @@ function tagPackages(npmToken: string) {
 function tagPackage(name: string, version: string, npmToken: string): boolean {
   const prerelease = semver.parse(version).prerelease;
   if (prerelease.length == 0) {
-    return;
+    return false;
   }
 
   const prereleaseTag = prerelease[0];
