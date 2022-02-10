@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
 import { Toggle } from '@fluentui/react/lib/Toggle';
@@ -7,8 +8,17 @@ import { useId } from '@fluentui/react-hooks';
 
 const stackTokens: IStackTokens = { childrenGap: 10 };
 const buttonStyles = {
-  background: 'transparent',
-  border: 'none',
+  root: {
+    background: 'transparent',
+    border: 'none',
+    minWidth: '16px',
+    padding: 0,
+    selectors: {
+      ':focus-visible': {
+        outline: 'none',
+      },
+    },
+  },
 };
 
 export const ToggleCustomLabelExample: React.FunctionComponent = () => {
@@ -18,14 +28,15 @@ export const ToggleCustomLabelExample: React.FunctionComponent = () => {
   const iconWithTooltip = (
     <>
       <TooltipHost content={showTooltip ? 'Info tooltip' : undefined} id={tooltipId}>
-        <button
+        <DefaultButton
           aria-label={showTooltip ? 'Close Tooltip' : 'Open Tooltip'}
           aria-describedby={showTooltip ? tooltipId : undefined}
+          // eslint-disable-next-line react/jsx-no-bind
           onClick={() => setShowTooltip(!showTooltip)}
-          style={buttonStyles}
+          styles={buttonStyles}
         >
           <Icon iconName="Info" />
-        </button>
+        </DefaultButton>
       </TooltipHost>
     </>
   );
