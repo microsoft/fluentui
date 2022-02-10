@@ -328,45 +328,55 @@ The styles of the `CompoundButton` component have been updated to match the late
 The order of JSX children are now important. The `MenuTrigger` or an element that composes `MenuTrigger` must be the first JSX child of `Menu` and `MenuPopover` or its composed variants must be the second JSX child.
 
 ```tsx
-❌❌❌
-<Menu>
-  <MenuPopover>
-    <MenuList>
-      <MenuItem> Item </MenuItem>
-      <MenuItem> Item </MenuItem>
-      <MenuItem> Item </MenuItem>
-    </MenuList>
-  </MenuPopover>
-  <MenuTrigger><button>Menu trigger</button></MenuTrigger>
-</Menu>
+function App() {
+  return (
+    <>
+      {/* ❌❌❌ */}
+      <Menu>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem> Item </MenuItem>
+            <MenuItem> Item </MenuItem>
+            <MenuItem> Item </MenuItem>
+          </MenuList>
+        </MenuPopover>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+      </Menu>
 
-✅✅✅
-<Menu>
-  <MenuTrigger><button>Menu trigger</button></MenuTrigger>
-  <MenuPopover>
-    <MenuList>
-      <MenuItem> Item </MenuItem>
-      <MenuItem> Item </MenuItem>
-      <MenuItem> Item </MenuItem>
-    </MenuList>
-  </MenuPopover>
-</Menu>
+      {/* ✅✅✅ */}
+      <Menu>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem> Item </MenuItem>
+            <MenuItem> Item </MenuItem>
+            <MenuItem> Item </MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
 
-✅✅✅
-<Menu>
-  <WrapperElement>
-    <MenuTrigger>
-      <button>Menu trigger</button>
-    </MenuTrigger>
-  </WrapperElement>
-  <MenuPopover>
-    <MenuList>
-      <MenuItem> Item </MenuItem>
-      <MenuItem> Item </MenuItem>
-      <MenuItem> Item </MenuItem>
-    </MenuList>
-  </MenuPopover>
-</Menu>
+      {/* ✅✅✅ */}
+      <Menu>
+        <WrapperElement>
+          <MenuTrigger>
+            <button>Menu trigger</button>
+          </MenuTrigger>
+        </WrapperElement>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem> Item </MenuItem>
+            <MenuItem> Item </MenuItem>
+            <MenuItem> Item </MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </>
+  );
+}
 ```
 
 ### `MenuButton`
