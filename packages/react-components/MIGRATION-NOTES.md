@@ -263,8 +263,8 @@ The following types related to slots have been renamed:
 
 ### `Accordion`
 
-- `AccordionHeaderExpandIcon` has been removed and replaced by `ChevronRightRegular` from `@fluentui/react-icons`.
-- `AccordionHeader` props `children` is no longer a slot. [#21285](https://github.com/microsoft/fluentui/pull/21285)
+- `AccordionHeaderExpandIcon` has been removed and replaced by `ChevronRightRegular` from `@fluentui/react-icons`, [#21218](https://github.com/microsoft/fluentui/pull/21218).
+- `AccordionHeader` props `children` is no longer a slot, [#21285](https://github.com/microsoft/fluentui/pull/21285).
 
 ### `Avatar`
 
@@ -299,7 +299,7 @@ The styles of the `CompoundButton` component have been updated to match the late
 | Medium-sized button padding                       |    `12px`    | `14px 12px 16px 12px` |
 | Large-sized button padding                        |    `16px`    | `18px 16px 20px 16px` |
 
-### `Icons`
+### Icons
 
 - Most icons are now available without a specific size (like `<PersonRegular />` instead of `<Person24Regular />`).
   - These icons will get their size from either the CSS `fontSize`, or the icon's `fontSize` property. Every FluentUI component with an `icon` slot will style these icons to be the correct size when used in that slot.
