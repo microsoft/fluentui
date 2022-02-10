@@ -117,7 +117,7 @@ export async function cancelScreenerRun(
 
   await notifyIntegration({
     commit,
-    url: '',
+    url: 'https://screener.io/',
     status: 'completed',
     project: screenerConfig.projectRepo,
     conclusion,
