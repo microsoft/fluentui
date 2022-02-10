@@ -206,6 +206,14 @@ const customTokens = { ... };
 +const customTheme = { ...webLightTheme, ...customTokens };
 ```
 
+#### `*shorthandProps` removed
+
+```diff
+-import { accordionPanelShorthandProps } from '@fluentui/react-components'
+```
+
+These arrays with enumerated list of slots are no longer needed. For more details, please check [microsoft/fluentui#21134](https://github.com/microsoft/fluentui/pull/21134).
+
 ### Slot utilities have been updated and renamed
 
 #### The `getSlots` function has been updated
