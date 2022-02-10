@@ -2,6 +2,21 @@
   "name": "ssr-tests",
   "entries": [
     {
+      "date": "Thu, 10 Feb 2022 12:22:25 GMT",
+      "tag": "ssr-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.10.15",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "fc32b0f404ef63a34bf4d1aef94da3013cd1f2a6",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Feb 2022 12:24:28 GMT",
       "tag": "ssr-tests_v7.0.0",
       "version": "7.0.0",

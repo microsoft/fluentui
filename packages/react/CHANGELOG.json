@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 10 Feb 2022 12:22:25 GMT",
+      "tag": "@fluentui/react_v7.182.0",
+      "version": "7.182.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.182.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "fc32b0f404ef63a34bf4d1aef94da3013cd1f2a6",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Jan 2022 12:28:47 GMT",
       "tag": "@fluentui/react_v7.181.0",
       "version": "7.181.0",
