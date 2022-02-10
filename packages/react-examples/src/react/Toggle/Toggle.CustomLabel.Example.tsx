@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
-import { Icon } from '@fluentui/react/lib/Icon';
 import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { TooltipHost } from '@fluentui/react/lib/Tooltip';
@@ -34,9 +33,8 @@ export const ToggleCustomLabelExample: React.FunctionComponent = () => {
           // eslint-disable-next-line react/jsx-no-bind
           onClick={() => setShowTooltip(!showTooltip)}
           styles={buttonStyles}
-        >
-          <Icon iconName="Info" />
-        </DefaultButton>
+          iconProps={{ iconName: 'Info' }}
+        />
       </TooltipHost>
     </>
   );
