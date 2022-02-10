@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 25 Nov 2021 08:34:09 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Feb 2022 08:50:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.1)
+
+Thu, 10 Feb 2022 08:50:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-beta.4..@fluentui/react-utilities_v9.0.0-rc.1)
+
+### Changes
+
+- Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- getSlots: remove slotNames param, and infer from state.components instead ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- add useTriggerElement() hook ([PR #21225](https://github.com/microsoft/fluentui/pull/21225) by olfedias@microsoft.com)
+- Removes nullRender from react-utilities ([PR #21576](https://github.com/microsoft/fluentui/pull/21576) by bsunderhus@microsoft.com)
+- update applyTriggerPropsToChildren() to return React.ReactElement or null ([PR #21609](https://github.com/microsoft/fluentui/pull/21609) by olfedias@microsoft.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- Adding ComponentSlotProps to allow ref to be passed in composite components. ([PR #20890](https://github.com/microsoft/fluentui/pull/20890) by Humberto.Morimoto@microsoft.com)
+- Renaming most *Shorthand* composition types to *SlotProps* so they better reflect what the types do. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
+- Update trigger utilities to handle nested triggers ([PR #21495](https://github.com/microsoft/fluentui/pull/21495) by behowell@microsoft.com)
+- [breaking] Remove useControllableValue hook (use useControllableState instead) ([PR #20865](https://github.com/microsoft/fluentui/pull/20865) by elcraig@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-beta.4)
 

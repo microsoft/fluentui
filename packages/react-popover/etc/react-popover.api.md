@@ -34,25 +34,13 @@ export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTM
 export const Popover: React_2.FC<PopoverProps>;
 
 // @public (undocumented)
-export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
-    open: boolean;
-    defaultOpen?: boolean;
-    onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
-    openOnHover?: boolean;
-    openOnContext?: boolean;
-    noArrow?: boolean;
-    size?: PopoverSize;
-    appearance?: 'brand' | 'inverted';
-    trapFocus?: boolean;
-    positioning?: PositioningShorthand;
-};
-
-// @public (undocumented)
 export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
 export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus'>;
 
+// Warning: (ae-forgotten-export) The symbol "PopoverCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type PopoverProps = Partial<PopoverCommons> & {
     children: [JSX.Element, JSX.Element] | JSX.Element;

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "SwatchColorPicker: add event param to event handlers",
-  "packageName": "@fluentui/react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

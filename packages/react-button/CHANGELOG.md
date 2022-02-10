@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 25 Nov 2021 08:34:12 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Feb 2022 08:51:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.1)
+
+Thu, 10 Feb 2022 08:51:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-beta.5..@fluentui/react-button_v9.0.0-rc.1)
+
+### Changes
+
+- Using ComponentSlotProps instead of ObjectShorthandProps. ([PR #20890](https://github.com/microsoft/fluentui/pull/20890) by Humberto.Morimoto@microsoft.com)
+- Button: Changing border radius of small button to borderRadiusMedium from borderRadiusSmall. ([PR #21494](https://github.com/microsoft/fluentui/pull/21494) by Humberto.Morimoto@microsoft.com)
+- Replace make-styles packages with griffel equivalents. ([PR #21436](https://github.com/microsoft/fluentui/pull/21436) by olfedias@microsoft.com)
+- Update react-icons usage to resizable icons ([PR #21074](https://github.com/microsoft/fluentui/pull/21074) by ololubek@microsoft.com)
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
+- (fix): Update react-icons dependency to latest version ([PR #20943](https://github.com/microsoft/fluentui/pull/20943) by ololubek@microsoft.com)
+- Replacing use of functions in makeStyles with direct use of tokens. ([PR #21039](https://github.com/microsoft/fluentui/pull/21039) by Humberto.Morimoto@microsoft.com)
+- CompoundButton: Updating styles to match latest design spec. ([PR #21523](https://github.com/microsoft/fluentui/pull/21523) by Humberto.Morimoto@microsoft.com)
+- Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- remove export of commons types ([PR #21660](https://github.com/microsoft/fluentui/pull/21660) by mgodbolt@microsoft.com)
+- Remove fontSize from default menuIcon, as it is already set via css ([PR #21221](https://github.com/microsoft/fluentui/pull/21221) by behowell@microsoft.com)
+- ToggleButton: Stopping aria-pressed from changing when ToggleButton is disabledFocusable. ([PR #21492](https://github.com/microsoft/fluentui/pull/21492) by Humberto.Morimoto@microsoft.com)
+- update styles to not use CSS shorthands ([PR #20815](https://github.com/microsoft/fluentui/pull/20815) by olfedias@microsoft.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- Updating use of tokens.fontWeight now that we don't need to use casting. ([PR #21217](https://github.com/microsoft/fluentui/pull/21217) by Humberto.Morimoto@microsoft.com)
+- MenuButton: Updating types so it properly supports ref. ([PR #21515](https://github.com/microsoft/fluentui/pull/21515) by Humberto.Morimoto@microsoft.com)
+- update @fluentui/react-icons package ([PR #21498](https://github.com/microsoft/fluentui/pull/21498) by olfedias@microsoft.com)
+- Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster. ([PR #21035](https://github.com/microsoft/fluentui/pull/21035) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-aria to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.5)
 

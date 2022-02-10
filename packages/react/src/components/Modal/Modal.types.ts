@@ -181,10 +181,11 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
   allowTouchBodyScroll?: boolean;
 
   /**
-   * Puts aria-hidden=true on all non-ancestors of the current modal, for screen readers.
+   * Puts aria-hidden=true on all non-ancestors of the current modal, for screen readers
+   * (unless `isModeless` is true).
    * @defaultvalue true
    * @deprecated Setting this to `false` is deprecated since it breaks modal behavior for some screen readers.
-   * It will not be supported in future versions of the library.
+   * It will not be supported in future versions of the library (except for modeless modals).
    */
   enableAriaHiddenSiblings?: boolean;
 }

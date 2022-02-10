@@ -23,12 +23,6 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<FluentProviderPro
 export const fluentProviderClassName = "fui-FluentProvider";
 
 // @public (undocumented)
-export interface FluentProviderCommons {
-    dir: 'ltr' | 'rtl';
-    targetDocument: Document | undefined;
-}
-
-// @public (undocumented)
 export interface FluentProviderContextValues extends Pick<FluentProviderState, 'theme'> {
     // (undocumented)
     provider: ProviderContextValue;
@@ -40,6 +34,8 @@ export interface FluentProviderContextValues extends Pick<FluentProviderState, '
     tooltip: TooltipContextType;
 }
 
+// Warning: (ae-forgotten-export) The symbol "FluentProviderCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export interface FluentProviderProps extends Omit<ComponentProps<FluentProviderSlots>, 'dir'>, Partial<FluentProviderCommons> {
     // (undocumented)

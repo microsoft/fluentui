@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/style-utilities",
-  "version": "8.5.3",
+  "version": "8.5.4",
   "description": "Styling helpers for Fluent UI React.",
   "repository": {
     "type": "git",
@@ -30,10 +30,10 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/theme": "^2.4.7",
+    "@fluentui/theme": "^2.4.8",
     "@fluentui/merge-styles": "^8.3.0",
     "@fluentui/set-version": "^8.1.5",
-    "@fluentui/utilities": "^8.3.10",
+    "@fluentui/utilities": "^8.4.0",
     "tslib": "^2.1.0"
   }
 }
