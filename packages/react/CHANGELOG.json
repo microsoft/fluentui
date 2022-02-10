@@ -2,6 +2,153 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 09 Feb 2022 07:30:48 GMT",
+      "tag": "@fluentui/react_v8.54.0",
+      "version": "8.54.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e223a41e350d67e89465eac1530d3f76551905ea",
+            "comment": "SwatchColorPicker: add event param to event handlers"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.21",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.22",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.3.17",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.3.11",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.5.4",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.4.8",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.4.0",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.0.27",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          }
+        ],
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "bdc6aa5c328778d1210cee8179538418c643298c",
+            "comment": "do not render area attributes without valid values"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ae67454c2af28710b9d197ce91fd2ded069d9ebf",
+            "comment": "Add deprecation notice"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Feb 2022 07:25:33 GMT",
+      "tag": "@fluentui/react_v8.53.0",
+      "version": "8.53.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d77594d2930fe0d19904dab6b703f629811dbfe4",
+            "comment": "Callout: prevent data props from being used twice"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "6fba4a99f2666ab810c0e7ec3aa2045c46213037",
+            "comment": "ContextualMenu: delayUpdateFocusOnHover is now working correctly so menu items are no longer focused on mouse hover."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "f30f8424f3d0b4e720c30583bddef58625263d33",
+            "comment": "Dropdown: Headers and Dividers marked as hidden are now actually hidden."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "49139a0ec9f9df3b3508599f2775e9ef1959a965",
+            "comment": "Remove duplicate export names caused by export star."
+          }
+        ],
+        "minor": [
+          {
+            "author": "stefhan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "bd967bf85ebe6634327729ec9ea8df77285d8c33",
+            "comment": "Add enableAriaHiddenSiblings to Popup and Dialog and respect it in Modal"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Feb 2022 07:31:42 GMT",
+      "tag": "@fluentui/react_v8.52.3",
+      "version": "8.52.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3ab5a0d941db66aa905721d7bbe8e18c13e34e20",
+            "comment": "Moved the navigatedDayRef to td element"
+          },
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3bc442589edad08b9ab8e48401d53599609eb30a",
+            "comment": "Changed shouldFocusOnContainer default value to false"
+          }
+        ],
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "899c8dcfacc9dc6a4f05ae8125c287de0d3056b3",
+            "comment": "Update tests to remove deprecated API usage"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Feb 2022 07:29:41 GMT",
       "tag": "@fluentui/react_v8.52.2",
       "version": "8.52.2",

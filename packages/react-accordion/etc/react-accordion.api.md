@@ -9,8 +9,8 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
@@ -19,15 +19,10 @@ export const Accordion: ForwardRefComponent<AccordionProps>;
 export const accordionClassName = "fui-Accordion";
 
 // @public (undocumented)
-export type AccordionCommons = {
-    navigable: boolean;
-    multiple: boolean;
-    collapsible: boolean;
-};
-
-// @public (undocumented)
 export const AccordionContext: Context<AccordionContextValue>;
 
+// Warning: (ae-forgotten-export) The symbol "AccordionCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type AccordionContextValue = Omit<AccordionCommons, 'multiple'> & {
     openItems: AccordionItemValue[];
@@ -46,13 +41,6 @@ export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
 export const accordionHeaderClassName = "fui-AccordionHeader";
 
 // @public (undocumented)
-export type AccordionHeaderCommons = {
-    size: AccordionHeaderSize;
-    expandIconPosition: AccordionHeaderExpandIconPosition;
-    inline: boolean;
-};
-
-// @public (undocumented)
 export type AccordionHeaderContextValue = {
     disabled: boolean;
     open: boolean;
@@ -68,18 +56,20 @@ export type AccordionHeaderContextValues = {
 // @public (undocumented)
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
+// Warning: (ae-forgotten-export) The symbol "AccordionHeaderCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
+export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & Partial<AccordionHeaderCommons>;
 
 // @public (undocumented)
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    root: IntrinsicSlotProps<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-    button: ARIAButtonSlotProps;
-    expandIcon: IntrinsicSlotProps<'span'>;
-    icon?: IntrinsicSlotProps<'div'>;
+    root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+    button: NonNullable<Slot<ARIAButtonSlotProps>>;
+    expandIcon: Slot<'span'>;
+    icon?: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -95,14 +85,10 @@ export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 export const accordionItemClassName = "fui-AccordionItem";
 
 // @public (undocumented)
-export type AccordionItemCommons = {
-    disabled: boolean;
-    value: AccordionItemValue;
-};
-
-// @public (undocumented)
 export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
 
+// Warning: (ae-forgotten-export) The symbol "AccordionItemCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
     open: boolean;
@@ -119,7 +105,7 @@ export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<Ac
 
 // @public (undocumented)
 export type AccordionItemSlots = {
-    root: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -139,7 +125,7 @@ export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 
 // @public (undocumented)
 export type AccordionPanelSlots = {
-    root: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -156,7 +142,7 @@ export type AccordionProps = ComponentProps<AccordionSlots> & Partial<AccordionC
 
 // @public (undocumented)
 export type AccordionSlots = {
-    root: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)

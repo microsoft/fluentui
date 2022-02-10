@@ -11,7 +11,7 @@ export const renderCardFooter_unstable = (state: CardFooterState) => {
   return (
     <slots.root {...slotProps.root}>
       {slotProps.root.children}
-      <slots.action {...slotProps.action} />
+      {slots.action && <slots.action {...slotProps.action} />}
     </slots.root>
   );
 };

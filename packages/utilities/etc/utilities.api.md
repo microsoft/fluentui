@@ -1009,7 +1009,7 @@ export { portalContainsElement }
 // @public
 export function precisionRound(value: number, precision: number, base?: number): number;
 
-// @public
+// @public @deprecated
 export function raiseClick(target: Element): void;
 
 // @public

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Prevent Tooltip from overriding any aria-label, etc. props on its child",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

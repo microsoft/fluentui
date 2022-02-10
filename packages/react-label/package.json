@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-label",
   "version": "9.0.0-beta.4",
-  "description": "Label component for FluentUI library.",
+  "description": "Fluent UI React Label component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -42,7 +42,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "9.0.0-beta.4",
+    "@fluentui/react-utilities": "9.0.0-rc.0",
     "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
   },

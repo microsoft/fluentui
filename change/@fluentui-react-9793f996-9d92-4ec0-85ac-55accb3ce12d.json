@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Facepile: Add onRenderPersonaWrapper prop which wraps clickable Personas.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-date-time",
-  "version": "8.2.26",
+  "version": "8.2.29",
   "description": "Date and time related React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -30,7 +30,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.52.2",
+    "@fluentui/react": "^8.54.0",
     "@fluentui/set-version": "^8.1.5",
     "tslib": "^2.1.0"
   },

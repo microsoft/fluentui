@@ -7,7 +7,7 @@ import type { PortalProps } from '@fluentui/react-portal';
  */
 export type PopoverSize = 'small' | 'medium' | 'large';
 
-export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
+type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
   /**
    * Controls the opening of the Popover
    */

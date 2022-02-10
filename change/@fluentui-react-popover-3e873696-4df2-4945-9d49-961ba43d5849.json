@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "remove export of commons types",
+  "packageName": "@fluentui/react-popover",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

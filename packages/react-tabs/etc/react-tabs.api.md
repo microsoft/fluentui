@@ -7,8 +7,8 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const indicatorLengthVar = "--selection-indicator-length";
@@ -48,11 +48,6 @@ export const Tab: ForwardRefComponent<TabProps>;
 // @public (undocumented)
 export const tabClassName = "fui-Tab";
 
-// @public (undocumented)
-export type TabCommons = {
-    value: TabValue;
-};
-
 // @public
 export type TabContentRect = {
     x: number;
@@ -67,15 +62,8 @@ export const TabList: ForwardRefComponent<TabListProps>;
 // @public (undocumented)
 export const tabListClassName = "fui-TabList";
 
-// @public (undocumented)
-export type TabListCommons = {
-    appearance?: 'transparent' | 'subtle';
-    onTabSelect?: SelectTabEventHandler;
-    selectedValue?: TabValue;
-    size?: 'small' | 'medium';
-    vertical?: boolean;
-};
-
+// Warning: (ae-forgotten-export) The symbol "TabListCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical'>> & {
     onRegister: RegisterTabEventHandler;
@@ -98,7 +86,7 @@ export const tabListSelectionIndicatorName = "fui-TabList_SelectionIndicator";
 
 // @public (undocumented)
 export type TabListSlots = {
-    root: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public
@@ -106,14 +94,16 @@ export type TabListState = ComponentState<Required<TabListSlots>> & TabListConte
     selectedTabRect?: TabContentRect;
 };
 
+// Warning: (ae-forgotten-export) The symbol "TabCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
-export type TabProps = ComponentProps<TabSlots> & TabCommons;
+export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
 
 // @public (undocumented)
 export type TabSlots = {
-    root: IntrinsicSlotProps<'div'>;
-    icon?: IntrinsicSlotProps<'span'>;
-    content: IntrinsicSlotProps<'span'>;
+    root: Slot<'div'>;
+    icon?: Slot<'span'>;
+    content: NonNullable<Slot<'span'>>;
 };
 
 // @public

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Bump Fluent UI packages to 9.0.0-rc",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

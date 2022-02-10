@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TabValue } from '../Tab/Tab.types';
 
 export type RegisterTabData = {
@@ -28,10 +28,10 @@ export type TabListSlots = {
   /**
    * The slot associated with the root element of this tab list.
    */
-  root: IntrinsicSlotProps<'div'>;
+  root: Slot<'div'>;
 };
 
-export type TabListCommons = {
+type TabListCommons = {
   /**
    * A tab list can supports 'transparent' and 'subtle' appearance.
    *- 'subtle': Minimizes emphasis to blend into the background until hovered or focused.

@@ -1,10 +1,10 @@
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuSplitGroupSlots = {
-  root: IntrinsicSlotProps<'div'>;
+  root: Slot<'div'>;
 };
 
-export type MenuSplitGroupCommons = {};
+type MenuSplitGroupCommons = {};
 
 /**
  * MenuSplitGroup Props
