@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove export of commons types",
-  "packageName": "@fluentui/react-button",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

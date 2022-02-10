@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: use storybook runner for all vNext packages",
-  "packageName": "@fluentui/react-accordion",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

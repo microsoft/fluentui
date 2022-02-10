@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Custom styles for storybook to better align with public website",
-  "packageName": "@fluentui/react-components",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

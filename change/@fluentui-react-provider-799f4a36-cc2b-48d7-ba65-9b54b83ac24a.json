@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "make the FluentProvider#theme TS API reflect runtime and add warning if there is a violation",
-  "packageName": "@fluentui/react-provider",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
