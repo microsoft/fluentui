@@ -164,6 +164,14 @@ All component hooks and render functions were renamed to add the suffix `_unstab
 
 For more details, please check [microsoft/fluentui#21365](https://github.com/microsoft/fluentui/pull/21365).
 
+### `*Commons` types are no longer exported
+
+```diff
+-import { AvatarCommons } from '@fluentui/react-components';
+```
+
+There is no direct replacement, consider to use `AvatarProps` or `AvatarState` for example. For more details, please check [microsoft/fluentui#21195](https://github.com/microsoft/fluentui/pull/21195).
+
 ### Removed functionality & exports
 
 #### `useTheme()` hook is no longer exported
@@ -302,7 +310,7 @@ The styles of the `CompoundButton` component have been updated to match the late
     + <Button icon={<AddFilled />} />
     + <Button icon={<AddFilled />} size="large" />
     ```
-    
+
 ### `Menu`
 
 The order of JSX children are now important. The `MenuTrigger` or an element that composes `MenuTrigger` must be the first JSX child of `Menu` and `MenuPopover` or its composed variants must be the second JSX child.
