@@ -8,7 +8,7 @@ import { useOptionCollection } from '../../utils/useOptionCollection';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Combobox component
+ * Combobox component: a selection control that allows users to choose from a set of possible options
  */
 export const Combobox: ForwardRefComponent<ComboboxProps> = React.forwardRef((props, ref) => {
   const optionCollection = useOptionCollection(props.children);

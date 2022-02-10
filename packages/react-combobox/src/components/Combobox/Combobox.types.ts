@@ -3,8 +3,8 @@ import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { OptionValue, OptionCollectionState } from '../../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../../utils/Selection.types';
-import { Listbox } from '../Listbox';
-import { ComboButton } from '../ComboButton';
+import { Listbox } from '../Listbox/Listbox';
+import { ComboButton } from '../ComboButton/ComboButton';
 
 export type ComboboxSlots = {
   /* The root combobox slot */
@@ -31,11 +31,6 @@ export type ComboboxCommons = {
   inline?: boolean;
 
   /**
-   * Callback when the open/closed state of the dropdown changes
-   */
-  onOpenChange?(event: OpenEvents, data: OnOpenChangeData): void;
-
-  /**
    * Sets the open/closed state of the dropdown.
    * Use together with onOpenChange to fully control the dropdown's visibility
    */
@@ -59,6 +54,11 @@ export type ComboboxCommons = {
 export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> &
   ComboboxCommons &
   SelectionProps & {
+    /**
+     * Callback when the open/closed state of the dropdown changes
+     */
+    onOpenChange?: (e: OpenEvents, data: OnOpenChangeData) => void;
+
     /**
      * Configure the positioning of the combobox dropdown
      *

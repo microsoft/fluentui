@@ -13,7 +13,7 @@ export type SelectionProps = {
   multiselect?: boolean;
 
   /* Callback when an option is selected */
-  onSelect?(event: SelectionEvents, optionKey: string): void;
+  onSelect?(event: SelectionEvents, data: OnSelectData): void;
 
   /**
    * An array of selected option keys.
@@ -26,6 +26,9 @@ export type SelectionState = Required<Pick<SelectionProps, 'selectedKeys'>>;
 
 /* Values returned by the useSelection hook */
 export type SelectionValue = [selectedKeys: string[], selectKey: (event: SelectionEvents, optionKey: string) => void];
+
+/* Data for the onSelect callback */
+export type OnSelectData = { optionKey: string };
 
 /* Possible event types for onSelect */
 export type SelectionEvents = React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>;

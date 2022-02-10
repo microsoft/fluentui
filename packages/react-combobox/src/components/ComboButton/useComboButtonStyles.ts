@@ -1,6 +1,8 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { ComboButtonState } from './ComboButton.types';
 
+export const comboButtonClassName = 'fui-ComboButton';
+
 /**
  * Styles for the root slot
  */
@@ -46,7 +48,7 @@ const useStyles = makeStyles({
  */
 export const useComboButtonStyles_unstable = (state: ComboButtonState): ComboButtonState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(styles.root, state.root.className);
+  state.root.className = mergeClasses(comboButtonClassName, styles.root, state.root.className);
 
   state.content.className = mergeClasses(styles.content, state.content.className);
 

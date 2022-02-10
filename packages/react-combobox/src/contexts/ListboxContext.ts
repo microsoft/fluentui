@@ -1,6 +1,6 @@
 import { createContext } from '@fluentui/react-context-selector';
 import type { Context } from '@fluentui/react-context-selector';
-import { ListboxState } from '../components/Listbox';
+import { ListboxState } from '../components/Listbox/Listbox.types';
 
 /**
  * Context shared with all Listbox Options

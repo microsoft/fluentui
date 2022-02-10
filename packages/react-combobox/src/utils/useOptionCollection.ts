@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { OptionProps } from '../components/Option';
+import { OptionProps } from '../components/Option/Option.types';
 import type { OptionCollectionState, OptionData, OptionValue } from './OptionCollection.types';
 
 /**

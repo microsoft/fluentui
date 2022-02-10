@@ -5,7 +5,21 @@ exports[`Combobox renders a default state 1`] = `
   <div
     class="fui-Combobox"
   >
-    Default Combobox
+    <div
+      class="fui-ComboButton"
+    >
+      <button
+        aria-expanded="false"
+        class=""
+        role="combobox"
+        type="button"
+      />
+      <span
+        class=""
+      >
+        &gt;
+      </span>
+    </div>
   </div>
 </div>
 `;

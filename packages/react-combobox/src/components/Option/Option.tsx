@@ -6,7 +6,7 @@ import type { OptionProps } from './Option.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Option component
+ * Option component: a styled child option of a Combobox
  */
 export const Option: ForwardRefComponent<OptionProps> & { fluentComponentType?: string } = React.forwardRef(
   (props, ref) => {

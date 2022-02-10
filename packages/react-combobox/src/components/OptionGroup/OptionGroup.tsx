@@ -6,7 +6,7 @@ import type { OptionGroupProps } from './OptionGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * OptionGroup component
+ * OptionGroup component: allows grouping of Option components within a Combobox
  */
 export const OptionGroup: ForwardRefComponent<OptionGroupProps> & { fluentComponentType?: string } = React.forwardRef(
   (props, ref) => {

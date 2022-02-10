@@ -46,10 +46,11 @@ export const useOptionStyles_unstable = (state: OptionState): OptionState => {
   const { isActive, selected } = state;
   const styles = useStyles();
   state.root.className = mergeClasses(
+    optionClassName,
     styles.root,
-    state.root.className,
     selected && styles.selected,
     isActive && styles.active,
+    state.root.className,
   );
 
   if (state.check) {

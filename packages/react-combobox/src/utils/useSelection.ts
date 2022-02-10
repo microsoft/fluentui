@@ -26,7 +26,7 @@ export const useSelection = (props: SelectionProps): SelectionValue => {
       setSelectedKeys([optionKey]);
     }
 
-    onSelect?.(event, optionKey);
+    onSelect?.(event, { optionKey });
   };
 
   return [selectedKeys, selectKey];

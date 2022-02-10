@@ -10,8 +10,8 @@ import {
 import { DropdownActions, getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
 import { OptionCollectionState, OptionValue } from '../../utils/OptionCollection.types';
 import { useSelection } from '../../utils/useSelection';
-import { Listbox } from '../Listbox';
-import { ComboButton } from '../ComboButton';
+import { Listbox } from '../Listbox/Listbox';
+import { ComboButton } from '../ComboButton/ComboButton';
 import type { ComboboxProps, ComboboxState, OpenEvents } from './Combobox.types';
 
 /**
@@ -158,8 +158,6 @@ export const useCombobox_unstable = (
         ...rootNativeProps,
       },
     }),
-<<<<<<< HEAD
-=======
     listbox: resolveShorthand(props.listbox, {
       required: true,
       defaultProps: {
@@ -187,6 +185,5 @@ export const useCombobox_unstable = (
     options,
     selectedKeys,
     value,
->>>>>>> combobox with trigger
   };
 };

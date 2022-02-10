@@ -8,7 +8,7 @@ import { useOptionCollection } from '../../utils/useOptionCollection';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Listbox component
+ * Listbox component: a standalone selection control, or the popup in a Combobox
  */
 export const Listbox: ForwardRefComponent<ListboxProps> = React.forwardRef((props, ref) => {
   const optionCollection = useOptionCollection(props.children);

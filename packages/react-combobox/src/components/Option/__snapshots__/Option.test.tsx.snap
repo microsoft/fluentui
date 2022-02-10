@@ -3,8 +3,17 @@
 exports[`Option renders a default state 1`] = `
 <div>
   <div
+    aria-selected="false"
     class="fui-Option"
+    id="-undefined"
+    role="option"
   >
+    <span
+      aria-hidden="true"
+      class=""
+    >
+      x
+    </span>
     Default Option
   </div>
 </div>
