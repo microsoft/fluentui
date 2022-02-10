@@ -19,6 +19,7 @@ import { Scenario } from './utils';
 import { extractComponentArgTypes } from '@storybook/addon-docs';
 
 export const RegistrationFormInputsAccessibilityScenario = () => {
+  // eslint-disable-next-line
   const validations: Record<string, any> = {
     fullName: {
       type: 'field',
