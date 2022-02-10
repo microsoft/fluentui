@@ -2,10 +2,7 @@ import * as React from 'react';
 import { ComponentDoc } from 'react-docgen-typescript';
 import * as ts from 'typescript';
 
-import { defaultTests } from './defaultTests';
 import { mount, ComponentType } from 'enzyme';
-
-export type Tests = keyof typeof defaultTests;
 
 /**
  * Individual test options
@@ -39,14 +36,14 @@ export interface IsConformantOptions<TProps = {}> {
   /**
    * If there are tests that aren't supposed to run on a component, this allows to opt out of any test.
    */
-  disabledTests?: Tests[];
+  disabledTests?: string[];
   /**
    * Optional flag that means the component is not exported at top level.
    * @defaultvalue false
    */
   isInternal?: boolean;
   /**
-   * Object that contains extra tests to run in case the component needs extra tests.
+   * Additional tests to run.
    */
   extraTests?: TestObject<TProps>;
   /**
@@ -71,15 +68,6 @@ export interface IsConformantOptions<TProps = {}> {
    */
   helperComponents?: React.ElementType[];
   /**
-   * Whether to skip all tests for the `as` prop.
-   */
-  skipAsPropTests?: boolean;
-  /**
-   * If the component's 'as' property requires a ref, this will attach a forwardRef to the test component passed to 'as'
-   * and disable the as-renders-react-class test.
-   */
-  asPropHandlesRef?: boolean;
-  /**
    * An alternative name for the ref prop which resolves to
    * the root element (e.g. `elementRef`).
    * @defaultvalue 'ref'
@@ -102,12 +90,12 @@ export interface IsConformantOptions<TProps = {}> {
   tsconfigDir?: string;
 }
 
-export type ConformanceTest<TProps = {}> = (
+export type ConformanceTest<TProps = {}, TExtraOptions = {}> = (
   componentInfo: ComponentDoc,
-  testInfo: IsConformantOptions<TProps>,
+  testInfo: IsConformantOptions<TProps> & TExtraOptions,
   tsProgram: ts.Program,
 ) => void;
 
-export interface TestObject<TProps = {}> {
-  [key: string]: ConformanceTest<TProps>;
+export interface TestObject<TProps = {}, TExtraOptions = {}> {
+  [key: string]: ConformanceTest<TProps, TExtraOptions>;
 }

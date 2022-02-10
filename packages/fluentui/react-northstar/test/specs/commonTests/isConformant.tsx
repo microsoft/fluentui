@@ -14,9 +14,11 @@ import { getDisplayName, mountWithProvider as mount, syntheticEvent, mountWithPr
 
 import * as FluentUI from 'src/index';
 import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
+import { mainTests, asPropTests, AsPropIsConformantOptions } from './reactConformanceTests';
 
 export interface Conformant<TProps = {}>
-  extends Pick<IsConformantOptions<TProps>, 'disabledTests' | 'skipAsPropTests' | 'testOptions'> {
+  extends Pick<IsConformantOptions<TProps>, 'disabledTests' | 'testOptions'>,
+    AsPropIsConformantOptions {
   /** Path to the test file. */
   testPath: string;
   constructorName?: string;
@@ -35,6 +37,8 @@ export interface Conformant<TProps = {}>
   targetComponent?: ComponentType<any>;
   /** Child component that will receive ref. */
   forwardsRefTo?: string | false;
+  /** Whether to skip tests for the `as` prop */
+  skipAsPropTests?: boolean;
 }
 
 /**
@@ -59,6 +63,7 @@ export function isConformant(
     autoControlledProps = [],
     targetComponent,
     forwardsRefTo,
+    skipAsPropTests,
   } = options;
 
   const defaultConfig: IsConformantOptions = {
@@ -81,6 +86,7 @@ export function isConformant(
       'component-has-static-classname',
     ],
     helperComponents: [Ref, RefFindNode, FocusZone],
+    extraTests: { ...mainTests, ...(!skipAsPropTests && asPropTests) },
   };
 
   isConformantBase(defaultConfig, options);
