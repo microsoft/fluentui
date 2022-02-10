@@ -3,9 +3,13 @@ const cypress = require('cypress');
 const path = require('path');
 
 /**
- * Script that run/opens cypress, since cypress does not support easy config extension
- * Can be removed in favour of native CLI once cypress supports path based config extension
+ * Script that run/opens cypress, since cypress does not support easy config extension.
+ * Can be removed in favour of native CLI once cypress supports path-based config extension.
  * https://github.com/cypress-io/cypress/issues/5674
+ *
+ * To debug cypress tests locally, run the following in your package folder in *separate terminals*:
+ * - `yarn start` and make a note of the port
+ * - `yarn e2e --mode open --port ####`
  */
 
 const argv = require('yargs')
