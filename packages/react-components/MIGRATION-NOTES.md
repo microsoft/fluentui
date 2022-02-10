@@ -311,6 +311,10 @@ The styles of the `CompoundButton` component have been updated to match the late
     + <Button icon={<AddFilled />} size="large" />
     ```
 
+### `FluentProvider`
+
+- Outermost `FluentProvider` now emits a warning to user in development/test environment if there has been no theme set, [#21286](https://github.com/microsoft/fluentui/pull/21286).
+
 ### `Menu`
 
 The order of JSX children are now important. The `MenuTrigger` or an element that composes `MenuTrigger` must be the first JSX child of `Menu` and `MenuPopover` or its composed variants must be the second JSX child.
