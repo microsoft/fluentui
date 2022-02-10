@@ -6,6 +6,9 @@
 
 import { getDocument } from './dom/getDocument';
 
+/** Tag names to ignore when modalizing */
+const tagsToIgnore = ['TEMPLATE', 'STYLE', 'SCRIPT'];
+
 /**
  * Call this on a target element to make it modal to screen readers.
  * Returns a function that undoes the changes it made.
@@ -25,7 +28,7 @@ export function modalize(target: HTMLElement): () => void {
     for (const sibling of (target.parentElement.children as unknown) as HTMLElement[]) {
       // but ignore elements that are already aria-hidden
       const ariaHidden = sibling.getAttribute('aria-hidden');
-      if (sibling !== target && ariaHidden?.toLowerCase() !== 'true') {
+      if (sibling !== target && ariaHidden?.toLowerCase() !== 'true' && tagsToIgnore.indexOf(sibling.tagName) === -1) {
         affectedNodes.push([sibling, ariaHidden]);
       }
     }

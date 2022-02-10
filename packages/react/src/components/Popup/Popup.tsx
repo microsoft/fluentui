@@ -124,7 +124,7 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
 
 function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   // eslint-disable-next-line deprecation/deprecation
-  const shouldHideSiblings = props['aria-modal'] && props.enableAriaHiddenSiblings;
+  const shouldHideSiblings = String(props['aria-modal']).toLowerCase() === 'true' && props.enableAriaHiddenSiblings;
 
   React.useEffect(() => {
     if (!(shouldHideSiblings && root.current)) {
