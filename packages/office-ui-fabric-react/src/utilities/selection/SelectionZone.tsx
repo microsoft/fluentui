@@ -97,6 +97,13 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
    */
   isSelectedOnFocus?: boolean;
   /**
+   * Determines if elements within the selection zone that DO NOT have the 'data-selection-toggle' or
+   * 'data-selection-all-toggle' attribute are clickable and can alter the selection.
+   *
+   * @defaultvalue true
+   */
+  selectionClearedOnSurfaceClick?: boolean;
+  /**
    * Optional callback for when an item is
    * invoked via ENTER or double-click.
    */
@@ -674,10 +681,10 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
   }
 
   private _clearAndSelectIndex(index: number): void {
-    const { selection } = this.props;
+    const { selection, selectionClearedOnSurfaceClick = true } = this.props;
     const isAlreadySingleSelected = selection.getSelectedCount() === 1 && selection.isIndexSelected(index);
 
-    if (!isAlreadySingleSelected) {
+    if (!isAlreadySingleSelected && selectionClearedOnSurfaceClick) {
       const isModal = selection.isModal && selection.isModal();
       selection.setChangeEvents(false);
       selection.setAllSelected(false);
