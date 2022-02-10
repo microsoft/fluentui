@@ -79,6 +79,8 @@ export type CardPreviewSlots = {
 // @public
 export type CardPreviewState = ComponentState<CardPreviewSlots>;
 
+// Warning: (ae-forgotten-export) The symbol "CardCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type CardProps = ComponentProps<CardSlots> & Partial<CardCommons>;
 
