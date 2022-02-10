@@ -88,3 +88,16 @@ export type ScreenerTestsConfig = {
   steps?: ScreenerStep[];
   themes?: ScreenerThemeName[];
 };
+
+export interface ScreenerProxyPayload {
+  /** Commit hash */
+  commit: string;
+  /** Url to the screener test run */
+  url: string;
+  /** The status of the github check */
+  status?: 'in_progress' | 'completed';
+  /** How the github check was completed. Only 'skipped' will actually pass the check */
+  conclusion?: 'failure' | 'skipped' | 'cancelled';
+  /** Name of the screener project for the screener run */
+  project?: string;
+}
