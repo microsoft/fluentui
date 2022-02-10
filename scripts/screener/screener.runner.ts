@@ -26,7 +26,7 @@ async function scheduleScreenerBuild(
     commit: string;
     pullRequest: string;
   },
-) {
+): Promise<string | undefined> {
   const payload = {
     states: screenerConfig.states,
 
@@ -62,6 +62,7 @@ async function scheduleScreenerBuild(
 
   if (response.status !== 200) {
     console.log(`screener-runner: Failed to queue screener tests: status=${response.status}. Retrying`);
+    console.log(response.text());
 
     await wait(15000);
     await scheduleScreenerBuild(screenerConfig, buildInfo);
