@@ -9,6 +9,7 @@ import { resetIds } from '../../Utilities';
 import { Callout } from './Callout';
 import { CalloutContent } from './CalloutContent';
 import type { IPopupRestoreFocusParams } from '../../Popup';
+import { expectNoHiddenParents } from '../../common/testUtilities';
 
 describe('Callout', () => {
   beforeEach(() => {
@@ -267,18 +268,21 @@ describe('Callout', () => {
 
   // This behavior could be changed in the future
   it('does not hide siblings (currently)', () => {
-    const { queryByText } = render(
-      <div>
+    const { getByText, getByTestId } = render(
+      <div data-testid="root">
         <div>sibling</div>
-        <Callout>content</Callout>
+        {/* Use doNotLayer so the content isn't rendered in a portal (easier to test this way) */}
+        <Callout doNotLayer>content</Callout>
       </div>,
     );
 
-    expect(queryByText('content')).toBeTruthy(); // verify it's open
+    const content = getByText('content');
+    // the sibling test becomes invalid if the doNotLayer prop is removed and the content is in a portal
+    expect(getByTestId('root').contains(content)).toBeTruthy();
+    // verify content itself isn't hidden (unlikely)
+    expectNoHiddenParents(content);
 
-    const bodyChildren = Array.from(document.body.children) as HTMLElement[];
-    for (const node of bodyChildren) {
-      expect(node.getAttribute('aria-hidden')).toBeNull();
-    }
+    // verify sibling isn't hidden
+    expectNoHiddenParents(getByText('sibling'));
   });
 });

@@ -3,6 +3,7 @@ import { Popup } from './Popup';
 import { isConformant } from '../../common/isConformant';
 import { render } from '@testing-library/react';
 import { resetIds } from '../../Utilities';
+import { expectNoHiddenParents } from '../../common/testUtilities';
 
 describe('Popup', () => {
   afterAll(() => {
@@ -14,41 +15,47 @@ describe('Popup', () => {
     displayName: 'Popup',
   });
 
-  it('defaults to enableAriaHiddenSiblings=true', () => {
+  it('defaults to enableAriaHiddenSiblings=true if aria-modal=true', () => {
+    // note: this test works properly because Popup does NOT render inside a Layer (portal)
     const { getByText } = render(
-      <div>
-        <div>sibling</div>
-        <Popup>content</Popup>
-      </div>,
+      <>
+        <div id="sibling">sibling</div>
+        <Popup aria-modal>content</Popup>
+      </>,
     );
 
-    const bodyChildren = Array.from(document.body.children) as HTMLElement[];
+    expectNoHiddenParents(getByText('content'));
 
-    const content = getByText('content');
-    const contentParent = bodyChildren.find(el => el.contains(content));
-    expect(contentParent).toBeTruthy();
-    expect(contentParent!.getAttribute('aria-hidden')).toBeNull();
-
-    for (const node of bodyChildren) {
-      if (node !== contentParent) {
-        expect(node.getAttribute('aria-hidden')).toBe('true');
-      }
-    }
+    expect(getByText('sibling').getAttribute('aria-hidden')).toBe('true');
   });
 
-  it('respects enableAriaHiddenSiblings=false', () => {
-    const { queryByText } = render(
-      <div>
-        <div>sibling</div>
-        <Popup enableAriaHiddenSiblings={false}>content</Popup>
-      </div>,
+  it('respects enableAriaHiddenSiblings=false even if aria-modal=true', () => {
+    const { getByText } = render(
+      <>
+        <div id="sibling">sibling</div>
+        <Popup aria-modal enableAriaHiddenSiblings={false}>
+          content
+        </Popup>
+      </>,
     );
 
-    expect(queryByText('content')).toBeTruthy(); // verify it's open
+    expectNoHiddenParents(getByText('content'));
 
-    const bodyChildren = Array.from(document.body.children) as HTMLElement[];
-    for (const node of bodyChildren) {
-      expect(node.getAttribute('aria-hidden')).toBeNull();
-    }
+    expect(getByText('sibling').getAttribute('aria-hidden')).toBeNull();
+  });
+
+  it('ignores enableAriaHiddenSiblings=true if aria-modal=false', () => {
+    const { getByText } = render(
+      <>
+        <div id="sibling">sibling</div>
+        <Popup enableAriaHiddenSiblings aria-modal={false}>
+          content
+        </Popup>
+      </>,
+    );
+
+    expectNoHiddenParents(getByText('content'));
+
+    expectNoHiddenParents(getByText('sibling'));
   });
 });
