@@ -1,4 +1,4 @@
-# Notes on migration to `@fluentui/react-components@9.0.0-rc.1` from `9.0.0-beta.5`
+# Migration notes from `@fluentui/react-components@9.0.0-beta.5`to `@fluentui/react-components@9.0.0-rc.1`
 
 ## Changes to the styling system
 
