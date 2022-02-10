@@ -51,14 +51,13 @@ describe('Callout', () => {
   });
 
   it('does not throw with target MouseEvent', () => {
-    const mouseEvent = document.createEvent('MouseEvent');
     const eventTarget = document.createElement('div');
-    mouseEvent.initMouseEvent('click', false, false, window, 0, 0, 0, 0, 0, false, false, false, false, 1, eventTarget);
+    const mouseEvent = new MouseEvent('click', { relatedTarget: eventTarget });
 
     expect(() => {
       render(
         <div>
-          <Callout target={eventTarget} directionalHint={DirectionalHint.topLeftEdge}>
+          <Callout target={mouseEvent} directionalHint={DirectionalHint.topLeftEdge}>
             <div>Content</div>
           </Callout>
         </div>,
@@ -155,8 +154,7 @@ describe('Callout', () => {
     jest.spyOn(window.document, 'activeElement', 'get').mockReturnValue(focusedElement as Element);
 
     const onRestoreFocus = jest.fn();
-    // In order to have eventlisteners that have been added to the window to be called the JSX needs
-    // to be rendered into the real dom rather than the testutil simulated dom.
+
     const { getByText, unmount } = render(
       <div>
         <button id="target" style={{ top: '10px', left: '10px', height: '0', width: '0px' }}>
