@@ -1,6 +1,8 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { ListboxState } from './Listbox.types';
 
+export const listboxClassName = 'fui-Listbox';
+
 /**
  * Styles for the root slot
  */
@@ -17,7 +19,7 @@ const useStyles = makeStyles({
  */
 export const useListboxStyles_unstable = (state: ListboxState): ListboxState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(styles.root, state.root.className);
+  state.root.className = mergeClasses(listboxClassName, styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

@@ -6,7 +6,7 @@ import type { OptionGroupProps } from './OptionGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * OptionGroup component
+ * OptionGroup component initial component build
  */
 export const OptionGroup: ForwardRefComponent<OptionGroupProps> = React.forwardRef((props, ref) => {
   const state = useOptionGroup_unstable(props, ref);

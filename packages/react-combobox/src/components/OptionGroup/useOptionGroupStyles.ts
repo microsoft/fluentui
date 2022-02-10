@@ -1,6 +1,8 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { OptionGroupState } from './OptionGroup.types';
 
+export const optionGroupClassName = 'fui-OptionGroup';
+
 /**
  * Styles for the root slot
  */
@@ -17,7 +19,7 @@ const useStyles = makeStyles({
  */
 export const useOptionGroupStyles_unstable = (state: OptionGroupState): OptionGroupState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(styles.root, state.root.className);
+  state.root.className = mergeClasses(optionGroupClassName, styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

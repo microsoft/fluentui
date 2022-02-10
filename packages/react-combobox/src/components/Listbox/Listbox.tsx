@@ -6,7 +6,7 @@ import type { ListboxProps } from './Listbox.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Listbox component
+ * Listbox component initial component build
  */
 export const Listbox: ForwardRefComponent<ListboxProps> = React.forwardRef((props, ref) => {
   const state = useListbox_unstable(props, ref);

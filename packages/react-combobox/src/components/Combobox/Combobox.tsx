@@ -6,7 +6,7 @@ import type { ComboboxProps } from './Combobox.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Combobox component
+ * Combobox component initial component build
  */
 export const Combobox: ForwardRefComponent<ComboboxProps> = React.forwardRef((props, ref) => {
   const state = useCombobox_unstable(props, ref);
