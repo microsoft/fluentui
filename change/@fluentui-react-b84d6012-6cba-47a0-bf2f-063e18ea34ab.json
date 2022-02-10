@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Combobox now supports aria-describedby and aria-labelledby properly",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
