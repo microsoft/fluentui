@@ -15,7 +15,7 @@ import * as React_2 from 'react';
 import { usePopperMouseTarget } from '@fluentui/react-positioning';
 
 // @public (undocumented)
-export type Dummy = 'dummy11;
+export type Dummy = 'dummy12';
 
 // @public
 export const Menu: React_2.FC<MenuProps>;
