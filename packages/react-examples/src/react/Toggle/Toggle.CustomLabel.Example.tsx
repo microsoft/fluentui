@@ -12,11 +12,6 @@ const buttonStyles = {
     border: 'none',
     minWidth: '16px',
     padding: 0,
-    selectors: {
-      ':focus-visible': {
-        outline: 'none',
-      },
-    },
   },
 };
 
