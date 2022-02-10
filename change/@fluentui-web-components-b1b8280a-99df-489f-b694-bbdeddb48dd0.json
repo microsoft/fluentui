@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Aligned \"plus 2\" type ramp line height size",
+  "packageName": "@fluentui/web-components",
+  "email": "47367562+bheston@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
