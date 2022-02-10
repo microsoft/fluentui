@@ -14,6 +14,9 @@ import type { Slot } from '@fluentui/react-utilities';
 export const Combobox: ForwardRefComponent<ComboboxProps>;
 
 // @public (undocumented)
+export const comboboxClassName = "fui-Combobox";
+
+// @public (undocumented)
 export type ComboboxCommons = {};
 
 // @public
@@ -31,6 +34,9 @@ export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxCommons;
 export const ComboButton: ForwardRefComponent<ComboButtonProps>;
 
 // @public (undocumented)
+export const comboButtonClassName = "fui-ComboButton";
+
+// @public (undocumented)
 export type ComboButtonCommons = {};
 
 // @public
@@ -46,6 +52,9 @@ export type ComboButtonState = ComponentState<ComboButtonSlots> & ComboButtonCom
 
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
+
+// @public (undocumented)
+export const listboxClassName = "fui-Listbox";
 
 // @public (undocumented)
 export type ListboxCommons = {};
@@ -66,10 +75,16 @@ const Option_2: ForwardRefComponent<OptionProps>;
 export { Option_2 as Option }
 
 // @public (undocumented)
+export const optionClassName = "fui-Option";
+
+// @public (undocumented)
 export type OptionCommons = {};
 
 // @public
 export const OptionGroup: ForwardRefComponent<OptionGroupProps>;
+
+// @public (undocumented)
+export const optionGroupClassName = "fui-OptionGroup";
 
 // @public (undocumented)
 export type OptionGroupCommons = {};
