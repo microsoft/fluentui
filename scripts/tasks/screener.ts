@@ -23,6 +23,8 @@ export async function screener() {
     '/react-screener/iframe.html',
   );
   screenerConfig.states = screenerStates;
+  console.log('screener config for run');
+  console.dir(screenerConfig, { depth: 10 });
   const affectedPackages = getAffectedPackages();
   try {
     if (!affectedPackages.has(affectedPackageInfo.packageJson.name)) {
