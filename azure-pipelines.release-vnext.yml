@@ -44,16 +44,16 @@ steps:
     displayName: yarn
 
   - script: |
-      yarn run:published build --production --no-cache
-    displayName: yarn build
-
-  - script: |
       yarn run:published test
     displayName: yarn test
 
   - script: |
       yarn run:published lint
     displayName: yarn lint
+
+  - script: |
+      yarn run:published build --production --no-cache
+    displayName: yarn build
 
   - script: |
       yarn publish:beachball -n $(npmToken)
