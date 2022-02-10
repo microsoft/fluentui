@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update MenuTrigger and Tooltip to work together",
-  "packageName": "@fluentui/react-menu",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

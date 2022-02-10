@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Move Label to unstable",
-  "packageName": "@fluentui/react-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

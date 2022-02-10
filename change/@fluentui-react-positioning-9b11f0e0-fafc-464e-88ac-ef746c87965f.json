@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Imperative `setTarget` for `usePopper` and `positioning`",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

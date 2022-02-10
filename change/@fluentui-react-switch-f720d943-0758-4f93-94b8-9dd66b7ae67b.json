@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Bump Fluent UI dependencies to 9.0.0-rc",
-  "packageName": "@fluentui/react-switch",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
