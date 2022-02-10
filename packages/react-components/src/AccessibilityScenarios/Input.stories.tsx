@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-extractComponentArgTypes; // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { Input, InputOnChangeData } from '@fluentui/react-input';
@@ -16,7 +16,6 @@ import { Label } from '@fluentui/react-label';
 import { Button } from '@fluentui/react-button';
 
 import { Scenario } from './utils';
-import { extractComponentArgTypes } from '@storybook/addon-docs';
 
 export const RegistrationFormInputsAccessibilityScenario = () => {
   // eslint-disable-next-line
