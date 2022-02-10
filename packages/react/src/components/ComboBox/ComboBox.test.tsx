@@ -1044,14 +1044,14 @@ describe('ComboBox', () => {
     });
   });
 
-  it('correctly handles (aria-labelledby) when label prop is provided', () => {
-    const labelId = 'customAriaLabelledById';
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={labelId} />, wrapper => {
+  it('correctly handles (aria-labelledby) when label is also provided', () => {
+    const customId = 'customAriaLabelledById';
+    safeMount(<ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={customId} />, wrapper => {
       const labelElement = wrapper.find('label').getDOMNode();
-      expect(labelElement.getAttribute('id')).toBe(labelId);
+      const labelId = labelElement.getAttribute('id');
 
       const inputElement = wrapper.find('input').getDOMNode();
-      expect(inputElement.getAttribute('aria-labelledby')).toBe(labelId);
+      expect(inputElement.getAttribute('aria-labelledby')).toBe(customId + ' ' + labelId);
     });
   });
 
