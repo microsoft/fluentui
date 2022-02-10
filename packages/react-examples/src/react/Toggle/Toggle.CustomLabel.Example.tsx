@@ -19,10 +19,10 @@ export const ToggleCustomLabelExample: React.FunctionComponent = () => {
     <>
       <TooltipHost content={showTooltip ? 'Info tooltip' : undefined} id={tooltipId}>
         <button
-          style={buttonStyles}
           aria-label={showTooltip ? 'Close Tooltip' : 'Open Tooltip'}
-          onClick={() => setShowTooltip(!showTooltip)}
           aria-describedby={showTooltip ? tooltipId : undefined}
+          onClick={() => setShowTooltip(!showTooltip)}
+          style={buttonStyles}
         >
           <Icon iconName="Info" />
         </button>
