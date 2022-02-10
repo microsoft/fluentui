@@ -21,7 +21,10 @@ export const SoundControlSlidersAccessibilityScenario: React.FunctionComponent =
       <Slider id="volume" defaultValue={30} />
 
       <Label htmlFor="bass">Bass level:</Label>
-      <Slider id="bass" defaultValue={5} min={0} max={10} />
+      <Slider id="bass" defaultValue={5} min={0} max={10} vertical />
+
+      <Label htmlFor="treble">Treble level:</Label>
+      <Slider id="treble" defaultValue={5} min={0} max={10} vertical />
     </Scenario>
   );
 };
