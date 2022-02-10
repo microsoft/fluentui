@@ -24,7 +24,7 @@ export const ToggleCustomLabelExample: React.FunctionComponent = () => {
     <>
       <TooltipHost content={showTooltip ? 'Info tooltip' : undefined} id={tooltipId}>
         <DefaultButton
-          aria-label={showTooltip ? 'Close Tooltip' : 'Open Tooltip'}
+          aria-label={'more info'}
           aria-describedby={showTooltip ? tooltipId : undefined}
           // eslint-disable-next-line react/jsx-no-bind
           onClick={() => setShowTooltip(!showTooltip)}
