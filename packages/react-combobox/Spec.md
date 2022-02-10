@@ -145,6 +145,8 @@ Combobox in v9 allows both controlled and uncontrolled selection, as do the corr
 | Controlled selection | selectedKeys        | selectedKey         | selectedKey        | selectedItems        | value        |
 | Callback             | onSelect            | onChange            | onChange           | onChange             | onChange     |
 
+The reason to move to `onSelect` over `onChange` in the v9 Combobox is because the editable Combobox uses an `<input>` element as its primary slot. Using `onSelect` allows the input to retain it's built-in `onChange` event. This could be revisited if we want to override `onChange` to handle both input value changes and selection changes.
+
 ## Sample Code
 
 The following example code will not necessarily work in the current package, and is subject to change.
