@@ -62,6 +62,11 @@ steps:
       GITHUB_PAT: $(githubPAT)
     displayName: Publish changes and bump versions
 
+  - script: |
+      yarn ts-node scripts/beachball/tagVNext.ts --token $(npmToken)
+    displayName: Tag prelease packages with prerelease tag
+    continueOnError: true
+
   - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
     displayName: 📒 Generate Manifest
     inputs:
