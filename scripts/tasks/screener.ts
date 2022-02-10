@@ -19,7 +19,7 @@ export async function screener() {
   const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath);
   const screenerStates = await getScreenerStates(
     screenerConfig,
-    process.env.DEPLOYBASEPATH,
+    `https://${process.env.DEPLOYHOST}/${process.env.DEPLOYBASEPATH}`,
     '/react-screener/iframe.html',
   );
   screenerConfig.states = screenerStates;
