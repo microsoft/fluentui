@@ -1,4 +1,5 @@
-import { screenerRunner, cancelScreenerRun, ScreenerRunnerConfig, ScreenerState } from '../screener';
+import { screenerRunner, cancelScreenerRun } from '../screener/screener.runner';
+import { ScreenerRunnerConfig, ScreenerState } from '../screener/screener.types';
 import { getAffectedPackages, getAllPackageInfo, findGitRoot } from '../monorepo';
 import url from 'url';
 import path from 'path';
