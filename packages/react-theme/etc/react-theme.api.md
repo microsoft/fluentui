@@ -5,6 +5,17 @@
 ```ts
 
 // @public (undocumented)
+export const black = "#000000";
+
+// Warning: (ae-forgotten-export) The symbol "AlphaColors" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const blackAlpha: Record<AlphaColors, string>;
+
+// @public (undocumented)
+export const borderRadius: BorderRadiusTokens;
+
+// @public (undocumented)
 export type BorderRadiusTokens = {
     borderRadiusNone: string;
     borderRadiusSmall: string;
@@ -15,10 +26,19 @@ export type BorderRadiusTokens = {
 };
 
 // @public (undocumented)
+export const brandOffice: BrandVariants;
+
+// @public (undocumented)
 export type Brands = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 | 110 | 120 | 130 | 140 | 150 | 160;
 
 // @public (undocumented)
+export const brandTeams: BrandVariants;
+
+// @public (undocumented)
 export type BrandVariants = Record<Brands, string>;
+
+// @public (undocumented)
+export const brandWeb: BrandVariants;
 
 // @public (undocumented)
 export type ColorPaletteAnchor = 'colorPaletteAnchorBackground1' | 'colorPaletteAnchorBackground2' | 'colorPaletteAnchorBackground3' | 'colorPaletteAnchorForeground1' | 'colorPaletteAnchorForeground2' | 'colorPaletteAnchorForeground3' | 'colorPaletteAnchorBorderActive' | 'colorPaletteAnchorBorder1' | 'colorPaletteAnchorBorder2';
@@ -323,11 +343,17 @@ export const createLightTheme: (brand: BrandVariants) => Theme;
 export const createTeamsDarkTheme: (brand: BrandVariants) => Theme;
 
 // @public (undocumented)
+export const fontFamilies: FontFamilyTokens;
+
+// @public (undocumented)
 export type FontFamilyTokens = {
     fontFamilyBase: string;
     fontFamilyMonospace: string;
     fontFamilyNumeric: string;
 };
+
+// @public (undocumented)
+export const fontSizes: FontSizeTokens;
 
 // @public (undocumented)
 export type FontSizeTokens = {
@@ -344,11 +370,46 @@ export type FontSizeTokens = {
 };
 
 // @public (undocumented)
+export const fontWeights: FontWeightTokens;
+
+// @public (undocumented)
 export type FontWeightTokens = {
     fontWeightRegular: number;
     fontWeightMedium: number;
     fontWeightSemibold: number;
 };
+
+// Warning: (ae-forgotten-export) The symbol "Greys" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const grey: Record<Greys, string>;
+
+// @public (undocumented)
+export const hcButtonFace = "#ffffff";
+
+// @public (undocumented)
+export const hcButtonText = "#000000";
+
+// @public (undocumented)
+export const hcCanvas = "#000000";
+
+// @public (undocumented)
+export const hcCanvasText = "#ffffff";
+
+// @public (undocumented)
+export const hcDisabled = "#3ff23f";
+
+// @public (undocumented)
+export const hcHighlight = "#1aebff";
+
+// @public (undocumented)
+export const hcHighlightText = "#000000";
+
+// @public (undocumented)
+export const hcHyperlink = "#ffff00";
+
+// @public (undocumented)
+export const lineHeights: LineHeightTokens;
 
 // @public (undocumented)
 export type LineHeightTokens = {
@@ -387,6 +448,14 @@ export type ShadowTokens = {
     shadow64: string;
 };
 
+// Warning: (ae-forgotten-export) The symbol "GlobalSharedColors" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const sharedColors: GlobalSharedColors;
+
+// @public (undocumented)
+export const strokeWidths: StrokeWidthTokens;
+
 // @public (undocumented)
 export type StrokeWidthTokens = {
     strokeWidthThin: string;
@@ -421,6 +490,12 @@ export const webHighContrastTheme: Theme;
 
 // @public (undocumented)
 export const webLightTheme: Theme;
+
+// @public (undocumented)
+export const white = "#ffffff";
+
+// @public (undocumented)
+export const whiteAlpha: Record<AlphaColors, string>;
 
 // (No @packageDocumentation comment for this package)
 
