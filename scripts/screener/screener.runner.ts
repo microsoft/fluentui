@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { ScreenerRunnerConfig } from './screener.types';
+import { ScreenerProxyPayload, ScreenerRunnerConfig } from './screener.types';
 
 const environment = {
   screener: {
@@ -78,9 +78,7 @@ async function scheduleScreenerBuild(
   return url;
 }
 
-async function notifyIntegration(commit: string, url: string) {
-  const payload = { commit, url };
-
+async function notifyIntegration(payload: ScreenerProxyPayload) {
   await fetch(environment.screener.proxyUri, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
@@ -88,9 +86,7 @@ async function notifyIntegration(commit: string, url: string) {
   });
 }
 
-export async function screenerRunner(screenerConfigPath) {
-  const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath) as any;
-
+export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
   // https://github.com/microsoft/azure-pipelines-tasks/issues/9801
   const commit = process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID;
   // https://github.com/screener-io/screener-runner/blob/2a8291fb1b0219c96c8428ea6644678b0763a1a1/src/ci.js#L101
@@ -109,5 +105,21 @@ export async function screenerRunner(screenerConfigPath) {
       : undefined,
   });
 
-  await notifyIntegration(commit, checkUrl);
+  await notifyIntegration({ commit, url: checkUrl, status: 'in_progress', project: screenerConfig.projectRepo });
+}
+
+export async function cancelScreenerRun(
+  screenerConfig: ScreenerRunnerConfig,
+  conclusion: ScreenerProxyPayload['conclusion'] = 'cancelled',
+) {
+  // https://github.com/microsoft/azure-pipelines-tasks/issues/9801
+  const commit = process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID;
+
+  await notifyIntegration({
+    commit,
+    url: 'https://screener.io/',
+    status: 'completed',
+    project: screenerConfig.projectRepo,
+    conclusion,
+  });
 }

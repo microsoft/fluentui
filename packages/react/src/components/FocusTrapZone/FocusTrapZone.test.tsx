@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import { render } from '@testing-library/react';
 import { KeyCodes } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
@@ -1068,5 +1069,45 @@ describe('FocusTrapZone', () => {
         expect(FocusTrapZone.focusStack).toStrictEqual(['fz1']);
       });
     });
+  });
+
+  it('defaults to enableAriaHiddenSiblings=true', () => {
+    const { getByText } = render(
+      <div>
+        <div>sibling</div>
+        <FocusTrapZone>
+          <button>content</button>
+        </FocusTrapZone>
+      </div>,
+    );
+
+    const bodyChildren = Array.from(document.body.children) as HTMLElement[];
+
+    const content = getByText('content');
+    const contentParent = bodyChildren.find(el => el.contains(content));
+    expect(contentParent).toBeTruthy();
+    expect(contentParent!.getAttribute('aria-hidden')).toBeNull();
+
+    for (const node of bodyChildren) {
+      if (node !== contentParent) {
+        expect(node.getAttribute('aria-hidden')).toBe('true');
+      }
+    }
+  });
+
+  it('respects enableAriaHiddenSiblings=false', () => {
+    render(
+      <div>
+        <div>sibling</div>
+        <FocusTrapZone enableAriaHiddenSiblings={false}>
+          <button>content</button>
+        </FocusTrapZone>
+      </div>,
+    );
+
+    const bodyChildren = Array.from(document.body.children) as HTMLElement[];
+    for (const node of bodyChildren) {
+      expect(node.getAttribute('aria-hidden')).toBeNull();
+    }
   });
 });

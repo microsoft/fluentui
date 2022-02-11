@@ -45,20 +45,21 @@ steps:
     displayName: Generate version files
 
   - script: |
-      yarn run:published build --production --no-cache
+      yarn run:published build --production
     displayName: yarn build
 
-  # test, lint, bundle using lage cached build from previous step (omit --no-cache)
+  # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
+  # https://github.com/microsoft/fluentui/issues/21686
   - script: |
-      yarn run:published test
+      yarn run:published test --only
     displayName: yarn test
 
   - script: |
-      yarn run:published lint
+      yarn run:published lint --only
     displayName: yarn lint
 
   - script: |
-      yarn run:published bundle --production
+      yarn run:published bundle --only --production
     displayName: yarn bundle
 
   - script: |

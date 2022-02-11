@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update trigger utilities to handle nested triggers",
-  "packageName": "@fluentui/react-utilities",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

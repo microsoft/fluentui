@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix styling issues found in accessibility review",
-  "packageName": "@fluentui/react-input",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

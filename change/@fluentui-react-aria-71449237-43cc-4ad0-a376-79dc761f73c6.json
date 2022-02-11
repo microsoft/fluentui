@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Refactor component Slot typings",
-  "packageName": "@fluentui/react-aria",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

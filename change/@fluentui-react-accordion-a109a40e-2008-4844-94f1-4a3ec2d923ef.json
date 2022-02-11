@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update semantic elements and ARIA roles in react-accordion, add heading level story",
-  "packageName": "@fluentui/react-accordion",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
