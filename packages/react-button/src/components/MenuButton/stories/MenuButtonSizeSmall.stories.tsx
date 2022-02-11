@@ -1,7 +1,8 @@
 import * as React from 'react';
 
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
+import { Tooltip } from '@fluentui/react-tooltip';
 import { MenuButton } from '../../../MenuButton';
 
 export const SizeSmall = () => {
@@ -23,7 +24,7 @@ export const SizeSmall = () => {
       <Menu>
         <MenuTrigger>
           <MenuButton icon={<CalendarMonthRegular />} size="small">
-            Small with icon
+            Small with calendar icon
           </MenuButton>
         </MenuTrigger>
 
@@ -37,7 +38,9 @@ export const SizeSmall = () => {
 
       <Menu>
         <MenuTrigger>
-          <MenuButton size="small" aria-label="Small and icon only" />
+          <Tooltip content="Small with calendar icon only" relationship="label">
+            <MenuButton size="small" />
+          </Tooltip>
         </MenuTrigger>
 
         <MenuPopover>

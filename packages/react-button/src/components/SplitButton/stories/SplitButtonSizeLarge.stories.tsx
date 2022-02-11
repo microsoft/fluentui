@@ -1,10 +1,14 @@
 import * as React from 'react';
-
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
+import { Tooltip } from '@fluentui/react-tooltip';
 import { SplitButton, MenuButtonProps } from '../../../index';
 
 export const SizeLarge = () => {
+  const [primaryActionButtonRef, setPrimaryActionButtonRef] = React.useState<
+    HTMLButtonElement | HTMLAnchorElement | null
+  >(null);
+
   return (
     <>
       <Menu positioning="below-end">
@@ -27,7 +31,7 @@ export const SizeLarge = () => {
           {(triggerProps: MenuButtonProps) => (
             <SplitButton
               menuButton={triggerProps}
-              primaryActionButton="Large with icon"
+              primaryActionButton="Large with calendar icon"
               icon={<CalendarMonthRegular />}
               size="large"
             />
@@ -45,12 +49,18 @@ export const SizeLarge = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton
-              menuButton={triggerProps}
-              primaryActionButton={{ 'aria-label': 'Large and icon only' }}
-              icon={<CalendarMonthRegular />}
-              size="large"
-            />
+            <Tooltip
+              content="Large with calendar icon only"
+              positioning={{ target: primaryActionButtonRef }}
+              relationship="label"
+            >
+              <SplitButton
+                menuButton={triggerProps}
+                primaryActionButton={{ ref: setPrimaryActionButtonRef }}
+                icon={<CalendarMonthRegular />}
+                size="large"
+              />
+            </Tooltip>
           )}
         </MenuTrigger>
 
