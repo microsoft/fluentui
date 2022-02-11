@@ -3,12 +3,11 @@ import {
   screenerRunner,
   // cancelScreenerRun
 } from '../screener/screener.runner';
-import { ScreenerRunnerConfig, ScreenerState } from '../screener/screener.types';
+import { ScreenerRunnerConfig, ScreenerRunnerStep, ScreenerState } from '../screener/screener.types';
 import path from 'path';
-// screener-storybook has no typings
-// @ts-ignore
-import { startStorybook, getStorybook } from 'screener-storybook';
-
+// @ts-ignore - screener-storybook has no typings
+import { startStorybook, getStorybook as screenerGetStorybook } from 'screener-storybook';
+import { getStorybook, Story } from '@storybook/react';
 /**
  * Starts or cancels a screener run through the screener proxy.
  * Runs are cancelled if package does not appear in Lage's affected package graph.
@@ -16,7 +15,7 @@ import { startStorybook, getStorybook } from 'screener-storybook';
 export async function screener() {
   const screenerConfigPath = path.resolve(process.cwd(), './screener.config.js');
   const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath);
-  const screenerStates = await getScreenerStates(screenerConfig, process.env.DEPLOYURL, '/react-screener/iframe.html');
+  const screenerStates = await getScreenerStates(screenerConfig, `${process.env.DEPLOYURL}/react-screener/iframe.html`);
   screenerConfig.states = screenerStates;
   console.log('screener config for run');
   console.log(JSON.stringify(screenerConfig, null, 2));
@@ -53,17 +52,19 @@ export async function screener() {
  * @param baseUrl - base url of the deployed storybook
  * @returns screen steps
  */
-function transformToStates(storybook, baseUrl, previewRoute) {
+function transformToStates(storybook: StorybookSection, baseUrl: string): ScreenerState[] {
   const states: ScreenerState[] = [];
   storybook.forEach(component => {
     component.stories.forEach(story => {
-      const previewUrl = `${baseUrl}${previewRoute}?dataId=0&selectedKind=${encodeURIComponent(
+      const previewUrl = `${baseUrl}?dataId=0&selectedKind=${encodeURIComponent(
         component.kind,
       )}&selectedStory=${encodeURIComponent(story.name)}`;
+      const steps = ((story as unknown) as StorybookStory | undefined).steps;
+
       const state = {
         url: previewUrl,
-        name: component.kind + ': ' + story.name,
-        ...(story.steps && { steps: story.steps }),
+        name: `${component.kind}: ${story.name}`,
+        ...(steps && { steps }),
       };
 
       states.push(state);
@@ -72,8 +73,13 @@ function transformToStates(storybook, baseUrl, previewRoute) {
   return states;
 }
 
-async function getScreenerStates(screenerConfig, baseUrl, previewPath) {
+async function getScreenerStates(screenerConfig, baseUrl): Promise<ScreenerState[]> {
   await startStorybook(screenerConfig, {});
 
-  return transformToStates(getStorybook(), baseUrl, previewPath);
+  return transformToStates(screenerGetStorybook() as StorybookSection, baseUrl);
 }
+
+// screener-storybook has no types, and none of the types are exported by storybook
+type StorybookSection = ReturnType<typeof getStorybook> & { steps: ScreenerRunnerStep[] };
+
+type StorybookStory = StorybookSection[0]['stories'][0] & { steps: ScreenerRunnerStep[] };
