@@ -7,7 +7,7 @@ export const Default = () => {
   return (
     <Menu>
       <MenuTrigger>
-        <MenuButton>Default</MenuButton>
+        <MenuButton>Example</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>

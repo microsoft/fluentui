@@ -8,20 +8,8 @@ export const Disabled = () => {
     <>
       <Menu positioning="below-end">
         <MenuTrigger>
-          {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps} primaryActionButton="Enabled" />}
-        </MenuTrigger>
-
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>Item a</MenuItem>
-            <MenuItem>Item b</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-      <Menu positioning="below-end">
-        <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} primaryActionButton="Disabled" disabled />
+            <SplitButton menuButton={triggerProps} primaryActionButton="Enabled state" />
           )}
         </MenuTrigger>
 
@@ -35,7 +23,21 @@ export const Disabled = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} primaryActionButton="Disabled focusable" disabledFocusable />
+            <SplitButton menuButton={triggerProps} primaryActionButton="Disabled state" disabled />
+          )}
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+      <Menu positioning="below-end">
+        <MenuTrigger>
+          {(triggerProps: MenuButtonProps) => (
+            <SplitButton menuButton={triggerProps} primaryActionButton="Disabled focusable state" disabledFocusable />
           )}
         </MenuTrigger>
 

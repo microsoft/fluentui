@@ -7,7 +7,7 @@ export const Default = () => {
   return (
     <Menu positioning="below-end">
       <MenuTrigger>
-        {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps} primaryActionButton="Default" />}
+        {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps} primaryActionButton="Example" />}
       </MenuTrigger>
 
       <MenuPopover>
