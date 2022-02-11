@@ -21,7 +21,7 @@ export async function screener() {
   console.log('screener config for run');
   console.log(JSON.stringify(screenerConfig, null, 2));
   await screenerRunner(screenerConfig);
-  // screener-runner internally starts a puppeteer instance that only closes on process exist
+  // screener-storybook internally starts a puppeteer instance that only closes on process exist
   process.exit(0);
 
   // Scoping can only be used once the legacy check and new check switch required status
@@ -38,7 +38,7 @@ export async function screener() {
   // } catch (err) {
   // console.error('failed to run screener task');
   // console.error(err);
-  // // screener-runner internally starts a puppeteer instance that only closes on process exist
+  // // screener-storybook internally starts a puppeteer instance that only closes on process exist
   // process.exit(1);
   // }
   // process.exit(0);
