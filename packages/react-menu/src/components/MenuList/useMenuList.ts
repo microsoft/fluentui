@@ -9,12 +9,24 @@ import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabste
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MenuContext } from '../../contexts/menuContext';
-import type { MenuListProps, MenuListState, UninitializedMenuListState } from './MenuList.types';
+import { useMenuListContextValues_unstable } from './useMenuListContextValues';
+import { useMenuListStyles_unstable } from './useMenuListStyles';
+import { renderMenuList_unstable } from './renderMenuList';
+import type {
+  MenuListProps,
+  MenuListState,
+  MenuListRender,
+  UninitializedMenuListState,
+  MenuListContextValues,
+} from './MenuList.types';
 
 /**
  * Returns the props and state required to render the component
  */
-export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
+export const useMenuList_unstable = (
+  props: MenuListProps,
+  ref: React.Ref<HTMLElement>,
+): [MenuListState, MenuListRender, MenuListContextValues] => {
   const focusAttributes = useArrowNavigationGroup({ circular: true });
   const { findAllFocusable } = useFocusFinders();
   const menuContext = useMenuContextSelectors();
@@ -118,7 +130,7 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
     onCheckedValueChange?.(e, { name, checkedItems: newCheckedItems });
   });
 
-  const state = {
+  const state: MenuListState = {
     ...initialState,
     setFocusByFirstCharacter,
     selectRadio,
@@ -126,7 +138,11 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
     checkedValues: checkedValues ?? {},
   };
 
-  return state;
+  const contextValues = useMenuListContextValues_unstable(state);
+
+  useMenuListStyles_unstable(state);
+
+  return [state, renderMenuList_unstable, contextValues];
 };
 
 /**

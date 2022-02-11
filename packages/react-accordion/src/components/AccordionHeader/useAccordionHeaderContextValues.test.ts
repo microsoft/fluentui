@@ -7,7 +7,7 @@ import { useAccordionHeaderContextValues_unstable } from './useAccordionHeaderCo
 describe('useAccordionHeaderContextValues_unstable', () => {
   it('should return a value for "accordionHeader"', () => {
     const { result } = renderHook(() => {
-      const state = useAccordionHeader_unstable({}, React.createRef());
+      const [state, render] = useAccordionHeader_unstable({}, React.createRef());
 
       return useAccordionHeaderContextValues_unstable(state);
     });

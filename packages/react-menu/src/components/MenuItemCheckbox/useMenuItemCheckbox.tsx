@@ -3,14 +3,15 @@ import { resolveShorthand } from '@fluentui/react-utilities';
 import { Checkmark16Filled } from '@fluentui/react-icons';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
-import type { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
+import type { MenuItemCheckboxProps, MenuItemCheckboxState, MenuItemCheckboxRender } from './MenuItemCheckbox.types';
+import { renderMenuItemCheckbox_unstable } from './renderMenuItemCheckbox';
 
 /** Returns the props and state required to render the component */
 export const useMenuItemCheckbox_unstable = (
   props: MenuItemCheckboxProps,
   ref: React.Ref<HTMLElement>,
-): MenuItemCheckboxState => {
-  const state = useMenuItem_unstable(
+): [MenuItemCheckboxState, MenuItemCheckboxRender] => {
+  const [menuItemState] = useMenuItem_unstable(
     {
       role: 'menuitemcheckbox',
       persistOnClick: true,
@@ -21,7 +22,17 @@ export const useMenuItemCheckbox_unstable = (
       }),
     },
     ref,
-  ) as MenuItemCheckboxState;
+  );
+
+  const state: MenuItemCheckboxState = {
+    ...menuItemState,
+    // required members not in menuItemState
+    checked: false,
+    checkedItems: [],
+    name: '',
+    onCheckedValueChange: React.useCallback(() => undefined, []),
+    value: '',
+  };
 
   const toggleCheckbox = useMenuListContext_unstable(context => context.toggleCheckbox);
   const { onClick: onClickOriginal } = state.root;
@@ -34,6 +45,7 @@ export const useMenuItemCheckbox_unstable = (
   state.root['aria-checked'] = state.checked;
 
   // MenuItem state already transforms keyDown to click events
+  // TODO: why is this not memoized?
   state.root.onClick = e => {
     if (state.disabled) {
       e.preventDefault();
@@ -45,5 +57,5 @@ export const useMenuItemCheckbox_unstable = (
     onClickOriginal?.(e);
   };
 
-  return state;
+  return [state, renderMenuItemCheckbox_unstable];
 };

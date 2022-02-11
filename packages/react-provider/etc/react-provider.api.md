@@ -5,6 +5,7 @@
 ```ts
 
 import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentRender } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue } from '@fluentui/react-shared-contexts';
@@ -47,6 +48,9 @@ export interface FluentProviderProps extends Omit<ComponentProps<FluentProviderS
 }
 
 // @public (undocumented)
+export type FluentProviderRender = ComponentRender<FluentProviderState, FluentProviderContextValues>;
+
+// @public (undocumented)
 export type FluentProviderSlots = {
     root: Slot<'div'>;
 };
@@ -60,12 +64,12 @@ export interface FluentProviderState extends ComponentState<FluentProviderSlots>
 }
 
 // @public
-export const renderFluentProvider_unstable: (state: FluentProviderState, contextValues: FluentProviderContextValues) => JSX.Element;
+export const renderFluentProvider_unstable: FluentProviderRender;
 
 export { useFluent }
 
 // @public
-export const useFluentProvider_unstable: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>) => FluentProviderState;
+export const useFluentProvider_unstable: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>) => [FluentProviderState, FluentProviderRender, FluentProviderContextValues];
 
 // @public (undocumented)
 export function useFluentProviderContextValues_unstable(state: FluentProviderState): FluentProviderContextValues;

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { SliderState, SliderSlots } from './Slider.types';
+import type { SliderSlots, SliderRender } from './Slider.types';
 
 /**
  * Render the final JSX of Slider
  */
-export const renderSlider_unstable = (state: SliderState) => {
+export const renderSlider_unstable: SliderRender = state => {
   const { slots, slotProps } = getSlots<SliderSlots>(state);
 
   return (

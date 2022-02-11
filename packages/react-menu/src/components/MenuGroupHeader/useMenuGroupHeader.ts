@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useMenuGroupContext_unstable } from '../../contexts/menuGroupContext';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import { MenuGroupHeaderProps, MenuGroupHeaderState } from './MenuGroupHeader.types';
+import { renderMenuGroupHeader_unstable } from './renderMenuGroupHeader';
+import { MenuGroupHeaderProps, MenuGroupHeaderState, MenuGroupHeaderRender } from './MenuGroupHeader.types';
 
 /**
  * Given user props, returns state and render function for a MenuGroupHeader.
@@ -9,10 +10,10 @@ import { MenuGroupHeaderProps, MenuGroupHeaderState } from './MenuGroupHeader.ty
 export function useMenuGroupHeader_unstable(
   props: MenuGroupHeaderProps,
   ref: React.Ref<HTMLElement>,
-): MenuGroupHeaderState {
+): [MenuGroupHeaderState, MenuGroupHeaderRender] {
   const { headerId: id } = useMenuGroupContext_unstable();
 
-  return {
+  const state: MenuGroupHeaderState = {
     components: {
       root: 'div',
     },
@@ -22,4 +23,6 @@ export function useMenuGroupHeader_unstable(
       ...props,
     }),
   };
+
+  return [state, renderMenuGroupHeader_unstable];
 }

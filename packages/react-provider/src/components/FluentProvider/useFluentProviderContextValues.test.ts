@@ -14,7 +14,7 @@ describe('useFluentProviderContextValues_unstable', () => {
 
   it('should return a value for "provider"', () => {
     const { result } = renderHook(() => {
-      const state = useFluentProvider_unstable({}, React.createRef());
+      const [state, render] = useFluentProvider_unstable({}, React.createRef());
 
       return useFluentProviderContextValues_unstable(state);
     });
@@ -26,7 +26,7 @@ describe('useFluentProviderContextValues_unstable', () => {
 
   it('should return a value for "tooltip"', () => {
     const { result } = renderHook(() => {
-      const state = useFluentProvider_unstable({}, React.createRef());
+      const [state, render] = useFluentProvider_unstable({}, React.createRef());
 
       return useFluentProviderContextValues_unstable(state);
     });
@@ -36,7 +36,7 @@ describe('useFluentProviderContextValues_unstable', () => {
 
   it('should return undefined if "theme" is not set', () => {
     const { result } = renderHook(() => {
-      const state = useFluentProvider_unstable({}, React.createRef());
+      const [state, render] = useFluentProvider_unstable({}, React.createRef());
 
       return useFluentProviderContextValues_unstable(state);
     });
@@ -46,7 +46,10 @@ describe('useFluentProviderContextValues_unstable', () => {
 
   it('should return a value for "theme"', () => {
     const { result } = renderHook(() => {
-      const state = useFluentProvider_unstable({ theme: { colorBrandBackground: '#fff' } }, React.createRef());
+      const [state, render] = useFluentProvider_unstable(
+        { theme: { colorBrandBackground: '#fff' } },
+        React.createRef(),
+      );
 
       return useFluentProviderContextValues_unstable(state);
     });
@@ -56,7 +59,7 @@ describe('useFluentProviderContextValues_unstable', () => {
 
   it('should return a value for "themeClassname"', () => {
     const { result } = renderHook(() => {
-      const state = useFluentProvider_unstable({ className: 'foo' }, React.createRef());
+      const [state, render] = useFluentProvider_unstable({ className: 'foo' }, React.createRef());
 
       return useFluentProviderContextValues_unstable(state);
     });

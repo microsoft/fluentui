@@ -93,3 +93,5 @@ export type CheckboxProps = Omit<
  * State used in rendering Checkbox
  */
 export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;
+
+export type CheckboxRender = ComponentRender<CheckboxState>;

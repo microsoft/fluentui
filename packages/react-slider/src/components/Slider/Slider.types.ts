@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, Slot, ComponentRender } from '@fluentui/react-utilities';
 
 export type SliderSlots = {
   /**
@@ -116,3 +116,5 @@ export type SliderProps = Omit<
   SliderCommons;
 
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;
+
+export type SliderRender = ComponentRender<SliderState>;

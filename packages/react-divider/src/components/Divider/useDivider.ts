@@ -1,17 +1,21 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
-import type { DividerProps, DividerState } from './Divider.types';
+import type { DividerProps, DividerState, DividerRender } from './Divider.types';
+import { renderDivider_unstable } from './renderDivider';
 
 /**
  * Returns the props and state required to render the component
  * @param props - User-provided props to the Divider component.
  * @param ref - User-provided ref to be passed to the Divider component.
  */
-export const useDivider_unstable = (props: DividerProps, ref: React.Ref<HTMLElement>): DividerState => {
+export const useDivider_unstable = (
+  props: DividerProps,
+  ref: React.Ref<HTMLElement>,
+): [DividerState, DividerRender] => {
   const { alignContent = 'center', appearance, inset = false, vertical = false, wrapper } = props;
   const dividerId = useId('divider-');
 
-  return {
+  const state: DividerState = {
     // Props passed at the top-level
     alignContent,
     appearance,
@@ -39,4 +43,6 @@ export const useDivider_unstable = (props: DividerProps, ref: React.Ref<HTMLElem
       },
     }),
   };
+
+  return [state, renderDivider_unstable];
 };

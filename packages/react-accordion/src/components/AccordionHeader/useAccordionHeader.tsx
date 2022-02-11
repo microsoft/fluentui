@@ -2,11 +2,18 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { useAccordionItemContext_unstable } from '../AccordionItem/index';
 import { useARIAButton } from '@fluentui/react-aria';
-import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
+import type {
+  AccordionHeaderProps,
+  AccordionHeaderState,
+  AccordionHeaderContextValues,
+  AccordionHeaderRender,
+} from './AccordionHeader.types';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/AccordionContext';
 import { ChevronRightRegular } from '@fluentui/react-icons';
 import { useFluent } from '@fluentui/react-shared-contexts';
+import { renderAccordionHeader_unstable } from './renderAccordionHeader';
+import { useAccordionHeaderContextValues_unstable } from './useAccordionHeaderContextValues';
 
 /**
  * Returns the props and state required to render the component
@@ -16,7 +23,7 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 export const useAccordionHeader_unstable = (
   props: AccordionHeaderProps,
   ref: React.Ref<HTMLElement>,
-): AccordionHeaderState => {
+): [AccordionHeaderState, AccordionHeaderRender, AccordionHeaderContextValues] => {
   const { as, icon, button, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
   const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext_unstable();
 
@@ -50,7 +57,7 @@ export const useAccordionHeader_unstable = (
     },
   });
 
-  return {
+  const state: AccordionHeaderState = {
     disabled,
     open,
     size,
@@ -86,4 +93,8 @@ export const useAccordionHeader_unstable = (
       ),
     },
   };
+
+  const contextValues = useAccordionHeaderContextValues_unstable(state);
+
+  return [state, renderAccordionHeader_unstable, contextValues];
 };

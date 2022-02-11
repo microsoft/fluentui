@@ -46,6 +46,9 @@ export const colProperties: Record<string, number>;
 export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
 
 // @public
+export type ComponentRender<State, Context = undefined> = Context extends undefined ? (state: State) => JSX.Element | null : (state: State, context: Context) => JSX.Element | null;
+
+// @public
 export type ComponentState<Slots extends SlotPropsRecord> = {
     components: {
         [Key in keyof Slots]-?: React_2.ComponentType<ExtractSlotProps<Slots[Key]>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);

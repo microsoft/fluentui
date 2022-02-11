@@ -1,14 +1,26 @@
 import * as React from 'react';
 import { getNativeElementProps, useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import type { AccordionProps, AccordionState, AccordionToggleData, AccordionToggleEvent } from './Accordion.types';
+import type {
+  AccordionProps,
+  AccordionState,
+  AccordionRender,
+  AccordionToggleData,
+  AccordionToggleEvent,
+  AccordionContextValues,
+} from './Accordion.types';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
+import { renderAccordion_unstable } from './renderAccordion';
+import { useAccordionContextValues_unstable } from './useAccordionContextValues';
 
 /**
  * Returns the props and state required to render the component
  * @param props - Accordion properties
  * @param ref - reference to root HTMLElement of Accordion
  */
-export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTMLElement>): AccordionState => {
+export const useAccordion_unstable = (
+  props: AccordionProps,
+  ref: React.Ref<HTMLElement>,
+): [AccordionState, AccordionRender, AccordionContextValues] => {
   const {
     openItems: controlledOpenItems,
     defaultOpenItems,
@@ -33,7 +45,7 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
     });
   });
 
-  return {
+  const state: AccordionState = {
     multiple,
     collapsible,
     navigable,
@@ -47,6 +59,10 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
       ref,
     }),
   };
+
+  const contextValues = useAccordionContextValues_unstable(state);
+
+  return [state, renderAccordion_unstable, contextValues];
 };
 
 /**

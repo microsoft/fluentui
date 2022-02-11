@@ -7,7 +7,7 @@ import { useMenuListContextValues_unstable } from './useMenuListContextValues';
 describe('useMenuListContextValues_unstable', () => {
   it('should return a value for "menuList"', () => {
     const { result } = renderHook(() => {
-      const state = useMenuList_unstable({}, React.createRef());
+      const [state, render] = useMenuList_unstable({}, React.createRef());
 
       return useMenuListContextValues_unstable(state);
     });

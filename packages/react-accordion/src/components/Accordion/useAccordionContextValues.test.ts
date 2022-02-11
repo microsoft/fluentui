@@ -7,7 +7,7 @@ import { useAccordionContextValues_unstable } from './useAccordionContextValues'
 describe('useAccordionContextValues_unstable', () => {
   it('should return a value for "accordion"', () => {
     const { result } = renderHook(() => {
-      const state = useAccordion_unstable({ navigable: false }, React.createRef());
+      const [state, render] = useAccordion_unstable({ navigable: false }, React.createRef());
 
       return useAccordionContextValues_unstable(state);
     });

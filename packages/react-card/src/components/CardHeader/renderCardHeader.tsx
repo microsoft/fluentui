@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { CardHeaderSlots, CardHeaderState } from './CardHeader.types';
+import type { CardHeaderSlots, CardHeaderRender } from './CardHeader.types';
 
 /**
  * Render the final JSX of CardHeader
  */
-export const renderCardHeader_unstable = (state: CardHeaderState) => {
+export const renderCardHeader_unstable: CardHeaderRender = state => {
   const { slots, slotProps } = getSlots<CardHeaderSlots>(state);
 
   return (

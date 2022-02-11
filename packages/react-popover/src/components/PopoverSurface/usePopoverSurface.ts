@@ -2,7 +2,8 @@ import * as React from 'react';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
-import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
+import { renderPopoverSurface_unstable } from './renderPopoverSurface';
+import type { PopoverSurfaceProps, PopoverSurfaceState, PopoverSurfaceRender } from './PopoverSurface.types';
 
 /**
  * Create the state required to render PopoverSurface.
@@ -16,7 +17,7 @@ import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.
 export const usePopoverSurface_unstable = (
   props: PopoverSurfaceProps,
   ref: React.Ref<HTMLDivElement>,
-): PopoverSurfaceState => {
+): [PopoverSurfaceState, PopoverSurfaceRender] => {
   const contentRef = usePopoverContext_unstable(context => context.contentRef);
   const open = usePopoverContext_unstable(context => context.open);
   const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
@@ -87,5 +88,5 @@ export const usePopoverSurface_unstable = (
       firstFocusable?.focus();
     }
   }, [contentRef, findFirstFocusable, state.open]);
-  return state;
+  return [state, renderPopoverSurface_unstable];
 };

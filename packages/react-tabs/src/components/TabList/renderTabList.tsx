@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { TabListState, TabListSlots, TabListContextValues } from './TabList.types';
+import type { TabListState, TabListSlots, TabListContextValues, TabListRender } from './TabList.types';
 import { TabListContext } from './TabListContext';
 
 /**
  * Render the final JSX of TabList
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const renderTabList_unstable = (state: TabListState, contextValues: TabListContextValues) => {
+export const renderTabList_unstable: TabListRender = (state: TabListState, contextValues: TabListContextValues) => {
   const { slots, slotProps } = getSlots<TabListSlots>(state);
 
   return (

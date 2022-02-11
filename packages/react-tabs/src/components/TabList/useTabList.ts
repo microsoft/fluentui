@@ -7,7 +7,17 @@ import {
   useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import type { RegisterTabData, SelectTabData, SelectTabEvent, TabListProps, TabListState } from './TabList.types';
+import type {
+  RegisterTabData,
+  SelectTabData,
+  SelectTabEvent,
+  TabListProps,
+  TabListState,
+  TabListRender,
+  TabListContextValues,
+} from './TabList.types';
+import { renderTabList_unstable } from './renderTabList';
+import { useTabListContextValues } from './useTabListContextValues';
 
 /**
  * Create the state required to render TabList.
@@ -19,7 +29,10 @@ import type { RegisterTabData, SelectTabData, SelectTabEvent, TabListProps, TabL
  * @param ref - reference to root HTMLElement of TabList
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
+export const useTabList_unstable = (
+  props: TabListProps,
+  ref: React.Ref<HTMLElement>,
+): [TabListState, TabListRender, TabListContextValues] => {
   const { appearance = 'transparent', onTabSelect, size = 'medium', vertical = false } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);
@@ -93,7 +106,7 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [calcRect, selectedValue]);
 
-  return {
+  const state: TabListState = {
     components: {
       root: 'div',
     },
@@ -112,4 +125,8 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
     onUnregister,
     onSelect,
   };
+
+  const contextValues = useTabListContextValues(state);
+
+  return [state, renderTabList_unstable, contextValues];
 };

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { PopperVirtualElement, PositioningShorthand, usePopperMouseTarget } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
+import { ComponentRender } from '@fluentui/react-utilities';
 
 /**
  * Determines popover padding and arrow size
@@ -114,3 +115,5 @@ export type OpenPopoverEvents =
   | React.MouseEvent<HTMLElement>
   | React.KeyboardEvent<HTMLElement>
   | React.FocusEvent<HTMLElement>;
+
+export type PopoverRender = ComponentRender<PopoverState>;

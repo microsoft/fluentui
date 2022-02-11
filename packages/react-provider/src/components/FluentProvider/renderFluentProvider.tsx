@@ -2,12 +2,17 @@ import * as React from 'react';
 import { TextDirectionProvider } from '@griffel/react';
 import { ProviderContext, TooltipContext, ThemeContext, ThemeClassNameContext } from '@fluentui/react-shared-contexts';
 import { getSlots } from '@fluentui/react-utilities';
-import type { FluentProviderSlots, FluentProviderContextValues, FluentProviderState } from './FluentProvider.types';
+import type {
+  FluentProviderSlots,
+  FluentProviderContextValues,
+  FluentProviderState,
+  FluentProviderRender,
+} from './FluentProvider.types';
 
 /**
  * Render the final JSX of FluentProvider
  */
-export const renderFluentProvider_unstable = (
+export const renderFluentProvider_unstable: FluentProviderRender = (
   state: FluentProviderState,
   contextValues: FluentProviderContextValues,
 ) => {

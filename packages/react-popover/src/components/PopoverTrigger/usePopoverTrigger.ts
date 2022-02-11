@@ -9,7 +9,13 @@ import {
 } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
-import type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
+import type {
+  PopoverTriggerChildProps,
+  PopoverTriggerProps,
+  PopoverTriggerState,
+  PopoverTriggerRender,
+} from './PopoverTrigger.types';
+import { renderPopoverTrigger_unstable } from './renderPopoverTrigger';
 
 /**
  * Create the state required to render PopoverTrigger.
@@ -19,7 +25,7 @@ import type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState
  *
  * @param props - props from this instance of PopoverTrigger
  */
-export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverTriggerState => {
+export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): [PopoverTriggerState, PopoverTriggerRender] => {
   const { children } = props;
   const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
 
@@ -67,7 +73,7 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
     }
   };
 
-  return {
+  const state: PopoverTriggerState = {
     children: applyTriggerPropsToChildren<PopoverTriggerChildProps>(props.children, {
       ...triggerAttributes,
       'aria-haspopup': trapFocus ? 'dialog' : 'true',
@@ -80,4 +86,6 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
       ref: useMergedRefs(triggerRef, child?.ref),
     }),
   };
+
+  return [state, renderPopoverTrigger_unstable];
 };

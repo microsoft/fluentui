@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { TabState, TabSlots } from './Tab.types';
+import type { TabSlots, TabRender } from './Tab.types';
 
 /**
  * Render the final JSX of Tab
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const renderTab_unstable = (state: TabState) => {
+export const renderTab_unstable: TabRender = state => {
   const { slots, slotProps } = getSlots<TabSlots>(state);
 
   return (

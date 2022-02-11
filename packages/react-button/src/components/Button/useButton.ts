@@ -2,7 +2,9 @@ import * as React from 'react';
 import { useARIAButton } from '@fluentui/react-aria';
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import type { ButtonProps, ButtonState } from './Button.types';
+import { useButtonStyles_unstable } from './useButtonStyles';
+import { renderButton_unstable } from './renderButton';
+import type { ButtonProps, ButtonState, ButtonRender } from './Button.types';
 
 /**
  * Given user props, defines default props for the Button, calls useButtonState, and returns processed state.
@@ -12,7 +14,7 @@ import type { ButtonProps, ButtonState } from './Button.types';
 export const useButton_unstable = (
   props: ButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
-): ButtonState => {
+): [ButtonState, ButtonRender] => {
   const {
     appearance,
     as,
@@ -26,7 +28,7 @@ export const useButton_unstable = (
   } = props;
   const iconShorthand = resolveShorthand(icon);
 
-  return {
+  const state: ButtonState = {
     // Props passed at the top-level
     appearance,
     block,
@@ -58,4 +60,8 @@ export const useButton_unstable = (
     ),
     icon: iconShorthand,
   };
+
+  useButtonStyles_unstable(state);
+
+  return [state, renderButton_unstable];
 };

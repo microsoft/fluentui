@@ -42,11 +42,11 @@ The `Button` is designed using `React.forwardRef` to ensure the ref is forwarded
 
 ```jsx
 const Button = React.forwardRef((props, ref) => {
-  const state = useButton_unstable(props, ref);
+  const [state, render] = useButton_unstable(props, ref);
 
   // Apply styling here. (e.g. add className to state.)
 
-  return renderButton_unstable(state);
+  return render(state);
 });
 ```
 
@@ -56,13 +56,13 @@ A button can now be easily scaffolded, along with your choice of styling system:
 import { renderButton_unstable, useButton_unstable, useButtonClasses } from '@fluentui/react-button';
 
 const Button = React.forwardRef((props, ref) => {
-  const state = useButton_unstable(props, ref);
+  const [state, render] = useButton_unstable(props, ref);
 
   // Inject classNames as needed.
   useButtonStyles_unstable(state);
 
   // Return the rendered result.
-  return renderButton_unstable(state);
+  return render(state);
 });
 ```
 
@@ -71,7 +71,7 @@ means we start with base and handle the additional input:
 
 ```jsx
 const useToggleButton_unstable = (props, ref) => {
-  const state = useButton_unstable(props, ref);
+  const [state, render] = useButton_unstable(props, ref);
 
   // Hand a "checked" and "defaultChecked" state, onClicks to toggle the value,
   // and appropriate a11y attributes.
@@ -79,12 +79,12 @@ const useToggleButton_unstable = (props, ref) => {
 };
 
 const ToggleButton = React.forwardRef((props, ref) => {
-  const state = useToggleButton_unstable(props, ref);
+  const [state, render] = useToggleButton_unstable(props, ref);
 
   // Inject classNames as needed.
   state.className = mergeClasses(state.className, styles.root, state.checked && styles.checked);
 
-  return renderButton_unstable(state);
+  return render(state);
 });
 ```
 
@@ -184,7 +184,7 @@ function Button(props) {
   const state = useButtonState();
   const contextValues = useButtonContextValues();
 
-  return renderButton_unstable(state, contextValues);
+  return render(state, contextValues);
 }
 
 function useButtonContextValues(state) {
@@ -239,7 +239,7 @@ function Menu(props) {
   const state = useMenuState();
   const contextValues = useMenuContextValues_unstable();
 
-  return renderButton_unstable(state, contextValues);
+  return render(state, contextValues);
 }
 
 function useMenuContextValues_unstable(state) {

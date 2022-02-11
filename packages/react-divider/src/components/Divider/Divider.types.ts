@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 export type DividerSlots = {
   /**
@@ -41,3 +41,5 @@ export type DividerCommons = {
 export type DividerProps = ComponentProps<Partial<DividerSlots>> & Partial<DividerCommons>;
 
 export type DividerState = ComponentState<DividerSlots> & DividerCommons;
+
+export type DividerRender = ComponentRender<DividerState>;

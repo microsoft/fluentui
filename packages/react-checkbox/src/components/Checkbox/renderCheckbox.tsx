@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { CheckboxState, CheckboxSlots } from './Checkbox.types';
+import { CheckboxSlots, CheckboxRender } from './Checkbox.types';
 
-export const renderCheckbox_unstable = (state: CheckboxState) => {
+export const renderCheckbox_unstable: CheckboxRender = state => {
   const { slots, slotProps } = getSlots<CheckboxSlots>(state);
 
   return (

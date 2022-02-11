@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import type { TabProps, TabState } from './Tab.types';
+import type { TabProps, TabState, TabRender } from './Tab.types';
 import { TabListContext } from '../TabList/TabListContext';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { SelectTabEvent } from '../TabList/TabList.types';
+import { renderTab_unstable } from './renderTab';
 
 /**
  * Create the state required to render Tab.
@@ -15,7 +16,7 @@ import { SelectTabEvent } from '../TabList/TabList.types';
  * @param ref - reference to root HTMLElement of Tab
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
+export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): [TabState, TabRender] => {
   const { content, icon, value } = props;
 
   const { appearance, selected, onRegister, onUnregister, onSelect, size, vertical } = useContextSelector(
@@ -46,7 +47,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     };
   }, [onRegister, onUnregister, innerRef, value]);
 
-  return {
+  const state: TabState = {
     components: {
       root: 'div',
       icon: 'span',
@@ -67,4 +68,6 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     value,
     vertical,
   };
+
+  return [state, renderTab_unstable];
 };

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import { useAccordionItemContext_unstable } from '../AccordionItem/index';
-import type { AccordionPanelProps, AccordionPanelState } from './AccordionPanel.types';
+import type { AccordionPanelProps, AccordionPanelState, AccordionPanelRender } from './AccordionPanel.types';
+import { renderAccordionPanel_unstable } from './renderAccordionPanel';
 
 /**
  * Returns the props and state required to render the component
@@ -11,9 +12,9 @@ import type { AccordionPanelProps, AccordionPanelState } from './AccordionPanel.
 export const useAccordionPanel_unstable = (
   props: AccordionPanelProps,
   ref: React.Ref<HTMLElement>,
-): AccordionPanelState => {
+): [AccordionPanelState, AccordionPanelRender] => {
   const { open } = useAccordionItemContext_unstable();
-  return {
+  const state: AccordionPanelState = {
     open,
     components: {
       root: 'div',
@@ -23,4 +24,6 @@ export const useAccordionPanel_unstable = (
       ...props,
     }),
   };
+
+  return [state, renderAccordionPanel_unstable];
 };

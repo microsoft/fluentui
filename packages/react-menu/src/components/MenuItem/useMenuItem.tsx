@@ -12,12 +12,17 @@ import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContex
 import { ChevronRightRegular as ChevronRightIcon, ChevronLeftRegular as ChevronLeftIcon } from '@fluentui/react-icons';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
-import type { MenuItemProps, MenuItemState } from './MenuItem.types';
+import { useMenuItemStyles_unstable } from './useMenuItemStyles';
+import { renderMenuItem_unstable } from './renderMenuItem';
+import type { MenuItemProps, MenuItemState, MenuItemRender } from './MenuItem.types';
 
 /**
  * Returns the props and state required to render the component
  */
-export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
+export const useMenuItem_unstable = (
+  props: MenuItemProps,
+  ref: React.Ref<HTMLElement>,
+): [MenuItemState, MenuItemRender] => {
   const hasSubmenu = useMenuTriggerContext_unstable() || props.hasSubmenu;
   const hasIcons = useMenuListContext_unstable(context => context.hasIcons);
   const hasCheckmarks = useMenuListContext_unstable(context => context.hasCheckmarks);
@@ -107,5 +112,6 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLEl
   });
 
   useCharacterSearch(state, innerRef);
-  return state;
+  useMenuItemStyles_unstable(state);
+  return [state, renderMenuItem_unstable];
 };

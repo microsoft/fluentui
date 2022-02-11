@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { {{componentName}}State, {{componentName}}Slots } from './{{componentName}}.types';
+import type { {{componentName}}Render, {{componentName}}Slots } from './{{componentName}}.types';
 
 /**
  * Render the final JSX of {{componentName}}
  */
-export const render{{componentName}}_unstable = (state: {{componentName}}State) => {
+export const render{{componentName}}_unstable: {{componentName}}Render = state => {
   const { slots, slotProps } = getSlots<{{componentName}}Slots>(state);
 
   // TODO Add additional slots in the appropriate place

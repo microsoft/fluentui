@@ -1,5 +1,5 @@
 import { PresenceBadge } from '@fluentui/react-badge';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 export type AvatarSlots = {
   root: Slot<'span'>;
@@ -150,3 +150,5 @@ export type AvatarState = ComponentState<AvatarSlots> &
      */
     color: Exclude<AvatarCommons['color'], 'colorful'>;
   };
+
+export type AvatarRender = ComponentRender<AvatarState>;

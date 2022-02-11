@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 import type { MenuGroupContextValue } from '../../contexts/menuGroupContext';
 
 export type MenuGroupSlots = {
@@ -17,3 +17,5 @@ export type MenuGroupState = ComponentState<MenuGroupSlots> & {
 export type MenuGroupContextValues = {
   menuGroup: MenuGroupContextValue;
 };
+
+export type MenuGroupRender = ComponentRender<MenuGroupState, MenuGroupContextValues>;

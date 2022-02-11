@@ -13,7 +13,9 @@ import {
   useTimeout,
   getTriggerChild,
 } from '@fluentui/react-utilities';
-import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
+import { useTooltipStyles_unstable } from './useTooltipStyles';
+import { renderTooltip_unstable } from './renderTooltip';
+import type { TooltipProps, TooltipState, TooltipTriggerProps, TooltipRender } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
 
 /**
@@ -24,7 +26,7 @@ import { arrowHeight, tooltipBorderRadius } from './private/constants';
  *
  * @param props - props from this instance of Tooltip
  */
-export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
+export const useTooltip_unstable = (props: TooltipProps): [TooltipState, TooltipRender] => {
   const context = React.useContext(TooltipContext);
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
@@ -226,5 +228,6 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
   state.children = applyTriggerPropsToChildren(children, triggerProps);
-  return state;
+  useTooltipStyles_unstable(state);
+  return [state, renderTooltip_unstable];
 };

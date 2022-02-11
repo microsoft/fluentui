@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 export type InputSlots = {
   /**
@@ -115,3 +115,5 @@ export type InputOnChangeData = {
   /** Updated input value from the user */
   value: string;
 };
+
+export type InputRender = ComponentRender<InputState>;

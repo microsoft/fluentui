@@ -1,14 +1,19 @@
 import * as React from 'react';
 import { getNativeElementProps, useId } from '@fluentui/react-utilities';
-import { MenuGroupProps, MenuGroupState } from './MenuGroup.types';
+import { MenuGroupProps, MenuGroupState, MenuGroupRender, MenuGroupContextValues } from './MenuGroup.types';
+import { renderMenuGroup_unstable } from './renderMenuGroup';
+import { useMenuGroupContextValues_unstable } from './useMenuGroupContextValues';
 
 /**
  * Given user props, returns state and render function for a MenuGroup.
  */
-export function useMenuGroup_unstable(props: MenuGroupProps, ref: React.Ref<HTMLElement>): MenuGroupState {
+export function useMenuGroup_unstable(
+  props: MenuGroupProps,
+  ref: React.Ref<HTMLElement>,
+): [MenuGroupState, MenuGroupRender, MenuGroupContextValues] {
   const headerId = useId('menu-group');
 
-  return {
+  const state: MenuGroupState = {
     components: {
       root: 'div',
     },
@@ -20,4 +25,8 @@ export function useMenuGroup_unstable(props: MenuGroupProps, ref: React.Ref<HTML
     }),
     headerId: headerId,
   };
+
+  const contextValues = useMenuGroupContextValues_unstable(state);
+
+  return [state, renderMenuGroup_unstable, contextValues];
 }

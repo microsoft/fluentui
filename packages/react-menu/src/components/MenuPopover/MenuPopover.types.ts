@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 export type MenuPopoverSlots = {
   root: Slot<'div'>;
@@ -19,3 +19,5 @@ export type MenuPopoverState = ComponentState<MenuPopoverSlots> & {
    */
   inline: boolean;
 };
+
+export type MenuPopoverRender = ComponentRender<MenuPopoverState>;

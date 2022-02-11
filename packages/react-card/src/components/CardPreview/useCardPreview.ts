@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import type { CardPreviewProps, CardPreviewState } from './CardPreview.types';
+import type { CardPreviewProps, CardPreviewState, CardPreviewRender } from './CardPreview.types';
+import { renderCardPreview_unstable } from './renderCardPreview';
 
 /**
  * Create the state required to render CardPreview.
@@ -11,9 +12,12 @@ import type { CardPreviewProps, CardPreviewState } from './CardPreview.types';
  * @param props - props from this instance of CardPreview
  * @param ref - reference to root HTMLElement of CardPreview
  */
-export const useCardPreview_unstable = (props: CardPreviewProps, ref: React.Ref<HTMLElement>): CardPreviewState => {
+export const useCardPreview_unstable = (
+  props: CardPreviewProps,
+  ref: React.Ref<HTMLElement>,
+): [CardPreviewState, CardPreviewRender] => {
   const { logo } = props;
-  return {
+  const state: CardPreviewState = {
     components: {
       root: 'div',
       logo: 'div',
@@ -25,4 +29,6 @@ export const useCardPreview_unstable = (props: CardPreviewProps, ref: React.Ref<
     }),
     logo: resolveShorthand(logo),
   };
+
+  return [state, renderCardPreview_unstable];
 };

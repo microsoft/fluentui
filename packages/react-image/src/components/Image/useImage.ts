@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { ImageProps, ImageState } from './Image.types';
+import { renderImage_unstable } from './renderImage';
+import type { ImageProps, ImageState, ImageRender } from './Image.types';
 
 /**
  * Given user props, returns state and render function for an Image.
  */
-export const useImage_unstable = (props: ImageProps, ref: React.Ref<HTMLImageElement>): ImageState => {
+export const useImage_unstable = (props: ImageProps, ref: React.Ref<HTMLImageElement>): [ImageState, ImageRender] => {
   const { bordered, fit, block, shape = 'square', shadow } = props;
 
   const state: ImageState = {
@@ -23,5 +24,5 @@ export const useImage_unstable = (props: ImageProps, ref: React.Ref<HTMLImageEle
     }),
   };
 
-  return state;
+  return [state, renderImage_unstable];
 };

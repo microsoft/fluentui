@@ -4,7 +4,15 @@ import { useFluent, useTheme } from '@fluentui/react-shared-contexts';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useThemeStyleTag } from './useThemeStyleTag';
-import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
+import type {
+  FluentProviderProps,
+  FluentProviderState,
+  FluentProviderRender,
+  FluentProviderContextValues,
+} from './FluentProvider.types';
+import { renderFluentProvider_unstable } from './renderFluentProvider';
+import { useFluentProviderStyles_unstable } from './useFluentProviderStyles';
+import { useFluentProviderContextValues_unstable } from './useFluentProviderContextValues';
 
 /**
  * Create the state required to render FluentProvider.
@@ -18,7 +26,7 @@ import type { FluentProviderProps, FluentProviderState } from './FluentProvider.
 export const useFluentProvider_unstable = (
   props: FluentProviderProps,
   ref: React.Ref<HTMLElement>,
-): FluentProviderState => {
+): [FluentProviderState, FluentProviderRender, FluentProviderContextValues] => {
   const parentContext = useFluent();
   const parentTheme = useTheme();
 
@@ -42,7 +50,7 @@ export const useFluentProvider_unstable = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return {
+  const state: FluentProviderState = {
     dir,
     targetDocument,
     theme: mergedTheme,
@@ -58,6 +66,12 @@ export const useFluentProvider_unstable = (
       ref: useMergedRefs(ref, useKeyboardNavAttribute()),
     }),
   };
+
+  const contextValues = useFluentProviderContextValues_unstable(state);
+
+  useFluentProviderStyles_unstable(state);
+
+  return [state, renderFluentProvider_unstable, contextValues];
 };
 
 function mergeThemes(a: Theme | Partial<Theme> | undefined, b: typeof a): Theme | Partial<Theme> | undefined {

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { TextProps, TextState } from './Text.types';
+import { useTextStyles_unstable } from './useTextStyles';
+import { renderText_unstable } from './renderText';
+import type { TextProps, TextState, TextRender } from './Text.types';
 
 /**
  * Create the state required to render Text.
@@ -11,7 +13,7 @@ import type { TextProps, TextState } from './Text.types';
  * @param props - props from this instance of Text
  * @param ref - reference to root HTMLElement of Text
  */
-export const useText_unstable = (props: TextProps, ref: React.Ref<HTMLElement>): TextState => {
+export const useText_unstable = (props: TextProps, ref: React.Ref<HTMLElement>): [TextState, TextRender] => {
   const { wrap, truncate, block, italic, underline, strikethrough, size, font, weight, align } = props;
   const as = props.as ?? 'span';
 
@@ -36,5 +38,7 @@ export const useText_unstable = (props: TextProps, ref: React.Ref<HTMLElement>):
     }),
   };
 
-  return state;
+  useTextStyles_unstable(state);
+
+  return [state, renderText_unstable];
 };

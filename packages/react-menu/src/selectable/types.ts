@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ComponentRender } from '@fluentui/react-utilities';
 
 export type SelectableHandler = (
   e: React.MouseEvent | React.KeyboardEvent,
@@ -43,3 +44,5 @@ export type MenuItemSelectableState = MenuItemSelectableProps & {
    */
   checked: boolean;
 };
+
+export type MenuItemSelectableRender = ComponentRender<MenuItemSelectableState>;

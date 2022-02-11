@@ -8,7 +8,9 @@ import {
   useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import { CheckboxProps, CheckboxState } from './Checkbox.types';
+import { useCheckboxStyles_unstable } from './useCheckboxStyles';
+import { renderCheckbox_unstable } from './renderCheckbox';
+import { CheckboxProps, CheckboxState, CheckboxRender } from './Checkbox.types';
 import {
   Checkmark12Filled,
   Checkmark16Filled,
@@ -28,7 +30,10 @@ import { Label } from '@fluentui/react-label';
  * @param props - props from this instance of Checkbox
  * @param ref - reference to `<input>` element of Checkbox
  */
-export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
+export const useCheckbox_unstable = (
+  props: CheckboxProps,
+  ref: React.Ref<HTMLInputElement>,
+): [CheckboxState, CheckboxRender] => {
   const { disabled, required, circular = false, size = 'medium', labelPosition = 'after', onChange } = props;
 
   const [checked, setChecked] = useControllableState({
@@ -119,5 +124,7 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
     }
   }, [inputRef, mixed]);
 
-  return state;
+  useCheckboxStyles_unstable(state);
+
+  return [state, renderCheckbox_unstable];
 };

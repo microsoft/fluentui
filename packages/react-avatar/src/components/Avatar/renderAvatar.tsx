@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { AvatarSlots, AvatarState } from './Avatar.types';
+import type { AvatarSlots, AvatarRender } from './Avatar.types';
 
-export const renderAvatar_unstable = (state: AvatarState) => {
+export const renderAvatar_unstable: AvatarRender = state => {
   const { slots, slotProps } = getSlots<AvatarSlots>(state);
 
   return (

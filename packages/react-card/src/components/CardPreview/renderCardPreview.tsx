@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { CardPreviewSlots, CardPreviewState } from './CardPreview.types';
+import type { CardPreviewSlots, CardPreviewRender } from './CardPreview.types';
 
 /**
  * Render the final JSX of CardPreview
  */
-export const renderCardPreview_unstable = (state: CardPreviewState) => {
+export const renderCardPreview_unstable: CardPreviewRender = state => {
   const { slots, slotProps } = getSlots<CardPreviewSlots>(state);
 
   return (

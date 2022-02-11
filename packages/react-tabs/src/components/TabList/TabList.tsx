@@ -1,20 +1,14 @@
 import * as React from 'react';
 import { useTabList_unstable } from './useTabList';
-import { renderTabList_unstable } from './renderTabList';
-import { useTabListStyles_unstable } from './useTabListStyles';
 import type { TabListProps } from './TabList.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useTabListContextValues } from './useTabListContextValues';
 
 /**
  * A tab list provides single selection from a set of tabs.
  */
 export const TabList: ForwardRefComponent<TabListProps> = React.forwardRef((props, ref) => {
-  const state = useTabList_unstable(props, ref);
-  const contextValues = useTabListContextValues(state);
-
-  useTabListStyles_unstable(state);
-  return renderTabList_unstable(state, contextValues);
+  const [state, render, context] = useTabList_unstable(props, ref);
+  return render(state, context);
 });
 
 TabList.displayName = 'TabList';

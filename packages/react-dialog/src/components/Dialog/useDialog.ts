@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { DialogProps, DialogState } from './Dialog.types';
+import type { DialogProps, DialogState, DialogRender } from './Dialog.types';
+import { renderDialog_unstable } from './renderDialog';
 
 /**
  * Create the state required to render Dialog.
@@ -11,8 +12,8 @@ import type { DialogProps, DialogState } from './Dialog.types';
  * @param props - props from this instance of Dialog
  * @param ref - reference to root HTMLElement of Dialog
  */
-export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElement>): DialogState => {
-  return {
+export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElement>): [DialogState, DialogRender] => {
+  const state: DialogState = {
     // TODO add appropriate props/defaults
     components: {
       // TODO add slot types here if needed (div is the default)
@@ -25,4 +26,6 @@ export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElemen
       ...props,
     }),
   };
+
+  return [state, renderDialog_unstable];
 };

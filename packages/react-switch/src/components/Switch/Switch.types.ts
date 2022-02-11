@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 export type SwitchSlots = {
   /**
@@ -69,3 +69,5 @@ export interface SwitchCommons {
 export interface SwitchProps extends Omit<ComponentProps<Partial<SwitchSlots>>, 'onChange'>, SwitchCommons {}
 
 export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommons {}
+
+export type SwitchRender = ComponentRender<SwitchState>;

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
+import type { MenuItemSlots, MenuItemRender } from './MenuItem.types';
 
 /**
  * Function that renders the final JSX of the component
  */
-export const renderMenuItem_unstable = (state: MenuItemState) => {
+export const renderMenuItem_unstable: MenuItemRender = state => {
   const { slots, slotProps } = getSlots<MenuItemSlots>(state);
 
   return (

@@ -7,7 +7,16 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
-import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
+import type {
+  MenuOpenChangeData,
+  MenuOpenEvents,
+  MenuProps,
+  MenuState,
+  MenuRender,
+  MenuContextValues,
+} from './Menu.types';
+import { renderMenu_unstable } from './renderMenu';
+import { useMenuContextValues_unstable } from './useMenuContextValues';
 
 /**
  * Create the state required to render Menu.
@@ -17,7 +26,7 @@ import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from '.
  *
  * @param props - props from this instance of Menu
  */
-export const useMenu_unstable = (props: MenuProps): MenuState => {
+export const useMenu_unstable = (props: MenuProps): [MenuState, MenuRender, MenuContextValues] => {
   const triggerId = useId('menu');
   const isSubmenu = useIsSubmenu();
   const [contextTarget, setContextTarget] = usePopperMouseTarget();
@@ -73,13 +82,17 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
   const [open, setOpen] = useMenuOpenState(initialState);
   const [checkedValues, onCheckedValueChange] = useMenuSelectableState(initialState);
 
-  return {
+  const state: MenuState = {
     ...initialState,
     open,
     setOpen,
     checkedValues,
     onCheckedValueChange,
   };
+
+  const contextValues = useMenuContextValues_unstable(state);
+
+  return [state, renderMenu_unstable, contextValues];
 };
 
 /**

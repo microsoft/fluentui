@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { DividerSlots, DividerState } from './Divider.types';
+import { DividerSlots, DividerRender } from './Divider.types';
 
 /**
  * Renders a Divider component by passing the slot props (defined in `state`) to the appropriate slots.
  */
-export const renderDivider_unstable = (state: DividerState) => {
+export const renderDivider_unstable: DividerRender = state => {
   const { slots, slotProps } = getSlots<DividerSlots>(state);
   return (
     <slots.root {...slotProps.root}>

@@ -14,7 +14,8 @@ import {
 } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
 import { arrowHeights } from '../PopoverSurface/index';
-import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
+import type { OpenPopoverEvents, PopoverProps, PopoverState, PopoverRender } from './Popover.types';
+import { renderPopover_unstable } from './renderPopover';
 
 /**
  * Create the state required to render Popover.
@@ -24,7 +25,7 @@ import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.ty
  *
  * @param props - props from this instance of Popover
  */
-export const usePopover_unstable = (props: PopoverProps): PopoverState => {
+export const usePopover_unstable = (props: PopoverProps): [PopoverState, PopoverRender] => {
   const [contextTarget, setContextTarget] = usePopperMouseTarget();
   const initialState = {
     size: 'medium',
@@ -52,7 +53,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     disabled: !open || !initialState.openOnContext, // only close on scroll for context
   });
 
-  return {
+  const state: PopoverState = {
     ...initialState,
     ...popperRefs,
     open,
@@ -60,6 +61,8 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     setContextTarget,
     contextTarget,
   };
+
+  return [state, renderPopover_unstable];
 };
 
 /**

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { SpinButtonProps, SpinButtonState } from './SpinButton.types';
+import type { SpinButtonProps, SpinButtonState, SpinButtonRender } from './SpinButton.types';
+import { renderSpinButton_unstable } from './renderSpinButton';
 
 /**
  * Create the state required to render SpinButton.
@@ -11,8 +12,11 @@ import type { SpinButtonProps, SpinButtonState } from './SpinButton.types';
  * @param props - props from this instance of SpinButton
  * @param ref - reference to root HTMLElement of SpinButton
  */
-export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HTMLElement>): SpinButtonState => {
-  return {
+export const useSpinButton_unstable = (
+  props: SpinButtonProps,
+  ref: React.Ref<HTMLElement>,
+): [SpinButtonState, SpinButtonRender] => {
+  const state: SpinButtonState = {
     // TODO add appropriate props/defaults
     components: {
       // TODO add slot types here if needed (div is the default)
@@ -25,4 +29,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       ...props,
     }),
   };
+
+  return [state, renderSpinButton_unstable];
 };

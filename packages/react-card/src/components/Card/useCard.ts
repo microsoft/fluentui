@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { CardProps, CardState } from './Card.types';
+import type { CardProps, CardState, CardRender } from './Card.types';
 import { useFocusableGroup } from '@fluentui/react-tabster';
+import { renderCard_unstable } from './renderCard';
 
 /**
  * Create the state required to render Card.
@@ -12,12 +13,12 @@ import { useFocusableGroup } from '@fluentui/react-tabster';
  * @param props - props from this instance of Card
  * @param ref - reference to root HTMLElement of Card
  */
-export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>): CardState => {
+export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>): [CardState, CardRender] => {
   const groupperAttrs = useFocusableGroup({
     tabBehavior: 'limitedTrapFocus',
   });
 
-  return {
+  const state: CardState = {
     components: { root: 'div' },
 
     root: getNativeElementProps(props.as || 'div', {
@@ -27,4 +28,6 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
       ...props,
     }),
   };
+
+  return [state, renderCard_unstable];
 };

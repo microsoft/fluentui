@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
-import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types';
+import type { AvatarNamedColor, AvatarProps, AvatarState, AvatarRender } from './Avatar.types';
 import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { useFluent } from '@fluentui/react-shared-contexts';
+import { renderAvatar_unstable } from './renderAvatar';
 
-export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
+export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): [AvatarState, AvatarRender] => {
   const { dir } = useFluent();
   const { name, size = 32, shape = 'circular', active = 'unset', activeAppearance = 'ring', idForColor } = props;
   let { color = 'neutral' } = props;
@@ -85,7 +86,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     }
   }
 
-  return {
+  const state: AvatarState = {
     size,
     name,
     shape,
@@ -108,6 +109,8 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     image,
     badge,
   };
+
+  return [state, renderAvatar_unstable];
 };
 
 const getBadgeSize = (size: AvatarState['size']) => {

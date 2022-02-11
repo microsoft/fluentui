@@ -173,6 +173,13 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
 export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | undefined : T;
 
 /**
+ * Defines a component's render function.
+ */
+export type ComponentRender<State, Context = undefined> = Context extends undefined
+  ? (state: State) => JSX.Element | null
+  : (state: State, context: Context) => JSX.Element | null;
+
+/**
  * Defines the State object of a component given its slots.
  */
 export type ComponentState<Slots extends SlotPropsRecord> = {

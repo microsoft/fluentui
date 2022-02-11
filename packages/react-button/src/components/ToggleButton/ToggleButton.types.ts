@@ -1,4 +1,5 @@
 import type { ButtonProps, ButtonState } from '../Button/Button.types';
+import { ComponentRender } from '@fluentui/react-utilities';
 
 export type ToggleButtonCommons = {
   /**
@@ -21,3 +22,5 @@ export type ToggleButtonProps = ButtonProps &
   };
 
 export type ToggleButtonState = ButtonState & ToggleButtonCommons;
+
+export type ToggleButtonRender = ComponentRender<ToggleButtonState>;

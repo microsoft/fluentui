@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 import type { PopoverContextValue } from '../../popoverContext';
 
 /**
@@ -23,3 +23,5 @@ export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> &
      */
     arrowClassName?: string;
   };
+
+export type PopoverSurfaceRender = ComponentRender<PopoverSurfaceState>;

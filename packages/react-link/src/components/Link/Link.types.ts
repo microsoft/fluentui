@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 export type LinkSlots = {
   /**
@@ -37,3 +37,5 @@ export type LinkCommons = {
 export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
 
 export type LinkState = ComponentState<LinkSlots> & LinkCommons;
+
+export type LinkRender = ComponentRender<LinkState>;

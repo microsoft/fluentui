@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import type { CardFooterProps, CardFooterState } from './CardFooter.types';
+import type { CardFooterProps, CardFooterState, CardFooterRender } from './CardFooter.types';
+import { renderCardFooter_unstable } from './renderCardFooter';
 
 /**
  * Create the state required to render CardFooter.
@@ -11,10 +12,13 @@ import type { CardFooterProps, CardFooterState } from './CardFooter.types';
  * @param props - props from this instance of CardFooter
  * @param ref - reference to root HTMLElement of CardFooter
  */
-export const useCardFooter_unstable = (props: CardFooterProps, ref: React.Ref<HTMLElement>): CardFooterState => {
+export const useCardFooter_unstable = (
+  props: CardFooterProps,
+  ref: React.Ref<HTMLElement>,
+): [CardFooterState, CardFooterRender] => {
   const { action } = props;
 
-  return {
+  const state: CardFooterState = {
     components: {
       root: 'div',
       action: 'div',
@@ -26,4 +30,6 @@ export const useCardFooter_unstable = (props: CardFooterProps, ref: React.Ref<HT
     }),
     action: resolveShorthand(action),
   };
+
+  return [state, renderCardFooter_unstable];
 };

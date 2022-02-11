@@ -5,7 +5,9 @@ import {
   useControllableState,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import type { InputProps, InputState } from './Input.types';
+import { useInputStyles_unstable } from './useInputStyles';
+import { renderInput_unstable } from './renderInput';
+import type { InputProps, InputState, InputRender } from './Input.types';
 
 /**
  * Create the state required to render Input.
@@ -16,7 +18,7 @@ import type { InputProps, InputState } from './Input.types';
  * @param props - props from this instance of Input
  * @param ref - reference to `<input>` element of Input
  */
-export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputElement>): InputState => {
+export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputElement>): [InputState, InputRender] => {
   const { size = 'medium', appearance = 'outline', inline = false, onChange } = props;
 
   const [value, setValue] = useControllableState({
@@ -64,5 +66,7 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
     setValue(newValue);
   });
 
-  return state;
+  useInputStyles_unstable(state);
+
+  return [state, renderInput_unstable];
 };

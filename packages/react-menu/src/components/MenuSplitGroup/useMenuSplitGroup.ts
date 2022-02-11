@@ -2,8 +2,9 @@ import * as React from 'react';
 import { getNativeElementProps, getRTLSafeKey, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import type { MenuSplitGroupProps, MenuSplitGroupState } from './MenuSplitGroup.types';
+import type { MenuSplitGroupProps, MenuSplitGroupState, MenuSplitGroupRender } from './MenuSplitGroup.types';
 import { ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
+import { renderMenuSplitGroup_unstable } from './renderMenuSplitGroup';
 
 /**
  * Create the state required to render MenuSplitGroup.
@@ -17,7 +18,7 @@ import { ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
 export const useMenuSplitGroup_unstable = (
   props: MenuSplitGroupProps,
   ref: React.Ref<HTMLElement>,
-): MenuSplitGroupState => {
+): [MenuSplitGroupState, MenuSplitGroupRender] => {
   const innerRef = React.useRef<HTMLElement>();
   const { dir, targetDocument } = useFluent();
 
@@ -50,7 +51,7 @@ export const useMenuSplitGroup_unstable = (
     [findNextFocusable, findPrevFocusable, targetDocument, nextArrowKey, prevArrowKey],
   );
 
-  return {
+  const state: MenuSplitGroupState = {
     components: {
       root: 'div',
     },
@@ -61,4 +62,5 @@ export const useMenuSplitGroup_unstable = (
       ...props,
     }),
   };
+  return [state, renderMenuSplitGroup_unstable];
 };

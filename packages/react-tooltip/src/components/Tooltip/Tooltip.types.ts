@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 /**
  * Slot properties for Tooltip
@@ -131,3 +131,5 @@ export type TooltipState = ComponentState<TooltipSlots> &
      */
     arrowClassName?: string;
   };
+
+export type TooltipRender = ComponentRender<TooltipState>;

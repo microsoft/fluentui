@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 import { TabValue } from '../Tab/Tab.types';
 
 export type RegisterTabData = {
@@ -117,3 +117,5 @@ export type TabListState = ComponentState<Required<TabListSlots>> &
   TabListContextValue & {
     selectedTabRect?: TabContentRect;
   };
+
+export type TabListRender = ComponentRender<TabListState, TabListContextValues>;

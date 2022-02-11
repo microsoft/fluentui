@@ -4,7 +4,7 @@ import type {
   ThemeClassNameContextValue,
 } from '@fluentui/react-shared-contexts';
 import type { PartialTheme, Theme } from '@fluentui/react-theme';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 export type FluentProviderSlots = {
   root: Slot<'div'>;
@@ -35,3 +35,5 @@ export interface FluentProviderContextValues extends Pick<FluentProviderState, '
   textDirection: 'ltr' | 'rtl';
   tooltip: TooltipContextType;
 }
+
+export type FluentProviderRender = ComponentRender<FluentProviderState, FluentProviderContextValues>;

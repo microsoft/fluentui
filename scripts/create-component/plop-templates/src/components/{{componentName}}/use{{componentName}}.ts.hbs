@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { {{componentName}}Props, {{componentName}}State } from './{{componentName}}.types';
+import type { {{componentName}}Props, {{componentName}}State, {{componentName}}Render } from './{{componentName}}.types';
+import { render{{componentName}}_unstable } from './render{{componentName}}_unstable';
 
 /**
  * Create the state required to render {{componentName}}.
@@ -11,8 +12,11 @@ import type { {{componentName}}Props, {{componentName}}State } from './{{compone
  * @param props - props from this instance of {{componentName}}
  * @param ref - reference to root HTMLElement of {{componentName}}
  */
-export const use{{componentName}}_unstable = (props: {{componentName}}Props, ref: React.Ref<HTMLElement>): {{componentName}}State => {
-  return {
+export const use{{componentName}}_unstable = (
+  props: {{componentName}}Props,
+  ref: React.Ref<HTMLElement>
+): [{{componentName}}State, {{componentName}}Render] => {
+  const state: {{componentName}}State = {
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
@@ -25,4 +29,5 @@ export const use{{componentName}}_unstable = (props: {{componentName}}Props, ref
       ...props,
     }),
   };
+  return [state, render{{componentName}}_unstable];
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
   open: boolean;
@@ -32,3 +32,5 @@ export type AccordionItemProps = ComponentProps<AccordionItemSlots> &
 export type AccordionItemValue = unknown;
 
 export type AccordionItemState = ComponentState<AccordionItemSlots> & AccordionItemCommons & AccordionItemContextValue;
+
+export type AccordionItemRender = ComponentRender<AccordionItemState, AccordionItemContextValues>;

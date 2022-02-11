@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
 export type AccordionIndex = number | number[];
@@ -61,3 +61,5 @@ export type AccordionProps = ComponentProps<AccordionSlots> &
   };
 
 export type AccordionState = ComponentState<AccordionSlots> & AccordionCommons & AccordionContextValue;
+
+export type AccordionRender = ComponentRender<AccordionState, AccordionContextValues>;

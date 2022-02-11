@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { LabelState, LabelSlots } from './Label.types';
+import type { LabelSlots, LabelRender } from './Label.types';
 
 /**
  * Render the final JSX of Label
  */
-export const renderLabel_unstable = (state: LabelState) => {
+export const renderLabel_unstable: LabelRender = state => {
   const { slots, slotProps } = getSlots<LabelSlots>(state);
 
   return (

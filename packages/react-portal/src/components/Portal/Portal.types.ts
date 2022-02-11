@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ComponentRender } from '@fluentui/react-utilities';
 
 export type PortalCommons = {
   /**
@@ -23,3 +24,5 @@ export type PortalState = PortalCommons & {
    */
   virtualParentRootRef: React.MutableRefObject<HTMLSpanElement | null>;
 };
+
+export type PortalRender = ComponentRender<PortalState>;

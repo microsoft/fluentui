@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { useSwitchState } from './useSwitchState';
-import type { SwitchProps, SwitchState } from './Switch.types';
+import type { SwitchProps, SwitchState, SwitchRender } from './Switch.types';
 
 /**
  * Given user props, returns state and render function for a Switch.
  */
-export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLElement>): SwitchState => {
+export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLElement>): [SwitchState, SwitchRender] => {
   const { track, thumbWrapper, thumb, activeRail, input, defaultChecked, checked, disabled, onChange } = props;
   const state: SwitchState = {
     defaultChecked,

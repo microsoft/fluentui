@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { ArrowLeft, Tab, ArrowRight, Escape } from '@fluentui/keyboard-keys';
 import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
+import { MenuPopoverProps, MenuPopoverState, MenuPopoverRender } from './MenuPopover.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
+import { renderMenuPopover_unstable } from './renderMenuPopover';
+import { useMenuPopoverStyles_unstable } from './useMenuPopoverStyles';
 
 /**
  * Create the state required to render MenuPopover.
@@ -16,7 +18,10 @@ import { useIsSubmenu } from '../../utils/useIsSubmenu';
  * @param props - props from this instance of MenuPopover
  * @param ref - reference to root HTMLElement of MenuPopover
  */
-export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<HTMLElement>): MenuPopoverState => {
+export const useMenuPopover_unstable = (
+  props: MenuPopoverProps,
+  ref: React.Ref<HTMLElement>,
+): [MenuPopoverState, MenuPopoverRender] => {
   const popoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   const openOnHover = useMenuContext_unstable(context => context.openOnHover);
@@ -87,11 +92,15 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
     onKeyDownOriginal?.(e);
   });
 
-  return {
+  const state: MenuPopoverState = {
     inline,
     components: {
       root: 'div',
     },
     root: rootProps,
   };
+
+  useMenuPopoverStyles_unstable(state);
+
+  return [state, renderMenuPopover_unstable];
 };

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { MenuButtonSlots, MenuButtonState } from './MenuButton.types';
+import type { MenuButtonSlots, MenuButtonRender } from './MenuButton.types';
 
 /**
  * Renders a MenuButton component by passing the state defined props to the appropriate slots.
  */
-export const renderMenuButton_unstable = (state: MenuButtonState) => {
+export const renderMenuButton_unstable: MenuButtonRender = state => {
   const { slots, slotProps } = getSlots<MenuButtonSlots>(state);
   const { icon, iconOnly } = state;
 

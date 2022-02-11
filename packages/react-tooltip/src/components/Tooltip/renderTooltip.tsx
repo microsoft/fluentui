@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Portal } from '@fluentui/react-portal';
 import { getSlots } from '@fluentui/react-utilities';
-import type { TooltipSlots, TooltipState } from './Tooltip.types';
+import type { TooltipSlots, TooltipRender } from './Tooltip.types';
 
 /**
  * Render the final JSX of Tooltip
  */
-export const renderTooltip_unstable = (state: TooltipState) => {
+export const renderTooltip_unstable: TooltipRender = state => {
   const { slots, slotProps } = getSlots<TooltipSlots>(state);
 
   return (

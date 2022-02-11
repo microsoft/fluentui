@@ -7,7 +7,7 @@ import { useMenuGroupContextValues_unstable } from './useMenuGroupContextValues'
 describe('useMenuGroupContextValues_unstable', () => {
   it('should return a value for "menuGroup"', () => {
     const { result } = renderHook(() => {
-      const state = useMenuGroup_unstable({}, React.createRef());
+      const [state, render] = useMenuGroup_unstable({}, React.createRef());
 
       return useMenuGroupContextValues_unstable(state);
     });

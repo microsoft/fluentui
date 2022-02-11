@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 export type AccordionPanelSlots = {
   root: Slot<'div'>;
@@ -12,3 +12,5 @@ export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
    */
   open: boolean;
 };
+
+export type AccordionPanelRender = ComponentRender<AccordionPanelState>;

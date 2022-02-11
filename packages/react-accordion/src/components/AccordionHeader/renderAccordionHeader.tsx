@@ -1,15 +1,12 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import { AccordionHeaderContext } from './AccordionHeaderContext';
-import type { AccordionHeaderState, AccordionHeaderSlots, AccordionHeaderContextValues } from './AccordionHeader.types';
+import type { AccordionHeaderSlots, AccordionHeaderRender } from './AccordionHeader.types';
 
 /**
  * Function that renders the final JSX of the component
  */
-export const renderAccordionHeader_unstable = (
-  state: AccordionHeaderState,
-  contextValues: AccordionHeaderContextValues,
-) => {
+export const renderAccordionHeader_unstable: AccordionHeaderRender = (state, contextValues) => {
   const { slots, slotProps } = getSlots<AccordionHeaderSlots>(state);
 
   return (

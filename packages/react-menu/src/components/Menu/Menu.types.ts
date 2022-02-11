@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ComponentRender } from '@fluentui/react-utilities';
 import { usePopperMouseTarget, PositioningShorthand } from '@fluentui/react-positioning';
 import { MenuListCommons } from '../MenuList/index';
 import { MenuContextValue } from '../../contexts/menuContext';
@@ -143,3 +143,5 @@ export type MenuOpenEvents =
   | React.MouseEvent<HTMLElement>
   | React.KeyboardEvent<HTMLElement>
   | React.FocusEvent<HTMLElement>;
+
+export type MenuRender = ComponentRender<MenuState, MenuContextValues>;

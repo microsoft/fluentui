@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ComponentRender } from '@fluentui/react-utilities';
 
 /**
  * PopoverTrigger Props
@@ -22,3 +23,5 @@ export type PopoverTriggerChildProps = {
   React.HTMLAttributes<HTMLElement>,
   'aria-haspopup' | 'onClick' | 'onMouseEnter' | 'onKeyDown' | 'onMouseLeave' | 'onContextMenu'
 >;
+
+export type PopoverTriggerRender = ComponentRender<PopoverTriggerState>;

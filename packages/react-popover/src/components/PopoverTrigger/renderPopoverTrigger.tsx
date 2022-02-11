@@ -1,8 +1,8 @@
-import type { PopoverTriggerState } from './PopoverTrigger.types';
+import type { PopoverTriggerRender } from './PopoverTrigger.types';
 
 /**
  * Render the final JSX of PopoverTrigger
  */
-export const renderPopoverTrigger_unstable = (state: PopoverTriggerState) => {
+export const renderPopoverTrigger_unstable: PopoverTriggerRender = state => {
   return state.children;
 };

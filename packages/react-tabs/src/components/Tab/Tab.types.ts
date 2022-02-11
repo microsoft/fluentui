@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 /**
  * Any value that identifies a specific tab.
@@ -57,3 +57,5 @@ export type TabState = ComponentState<TabSlots> &
      */
     vertical: boolean;
   };
+
+export type TabRender = ComponentRender<TabState>;

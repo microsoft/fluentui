@@ -45,3 +45,5 @@ export type ThemeProviderState = Omit<ThemeProviderProps, 'theme' | 'ref'> & {
 
   customizerContext: ICustomizerContext;
 };
+
+export type ThemeProviderRender = ComponentRender<ThemeProviderState>;

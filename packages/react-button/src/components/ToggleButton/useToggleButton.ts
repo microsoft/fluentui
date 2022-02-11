@@ -1,7 +1,8 @@
 import { useControllableState } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useButton_unstable } from '../Button/useButton';
-import type { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';
+import { renderToggleButton_unstable } from './renderToggleButton';
+import type { ToggleButtonProps, ToggleButtonState, ToggleButtonRender } from './ToggleButton.types';
 
 /**
  * Given user props, defines default props for the ToggleButton, calls useButtonState and useChecked, and returns
@@ -12,9 +13,9 @@ import type { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types'
 export const useToggleButton_unstable = (
   { checked, defaultChecked, ...props }: ToggleButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
-): ToggleButtonState => {
+): [ToggleButtonState, ToggleButtonRender] => {
   const { disabled, disabledFocusable } = props;
-  const buttonState = useButton_unstable(props, ref);
+  const [buttonState] = useButton_unstable(props, ref);
   const { role, onClick } = buttonState.root;
 
   const [checkedValue, setCheckedValue] = useControllableState({
@@ -25,7 +26,7 @@ export const useToggleButton_unstable = (
 
   const isCheckboxTypeRole = role === 'menuitemcheckbox' || role === 'checkbox';
 
-  return {
+  const state = {
     // Button state
     ...buttonState,
 
@@ -52,4 +53,6 @@ export const useToggleButton_unstable = (
       ),
     },
   };
+
+  return [state, renderToggleButton_unstable];
 };

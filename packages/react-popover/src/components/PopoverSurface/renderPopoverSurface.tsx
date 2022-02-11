@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Portal } from '@fluentui/react-portal';
 import { getSlots } from '@fluentui/react-utilities';
-import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
+import type { PopoverSurfaceSlots, PopoverSurfaceRender } from './PopoverSurface.types';
 
 /**
  * Render the final JSX of PopoverSurface
  */
-export const renderPopoverSurface_unstable = (state: PopoverSurfaceState) => {
+export const renderPopoverSurface_unstable: PopoverSurfaceRender = state => {
   const { slots, slotProps } = getSlots<PopoverSurfaceSlots>(state);
 
   // TODO should hidden Popovers be supported ?

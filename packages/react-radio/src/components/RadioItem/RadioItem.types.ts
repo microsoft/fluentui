@@ -1,6 +1,6 @@
 import { Label } from '@fluentui/react-label';
 import type { InputHTMLAttributes } from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 export type RadioItemSlots = {
   root: Slot<'span'>;
@@ -54,3 +54,5 @@ export type RadioItemProps = ComponentProps<Partial<RadioItemSlots>> &
  * State used in rendering RadioItem
  */
 export type RadioItemState = ComponentState<RadioItemSlots> & RadioItemCommons;
+
+export type RadioItemRender = ComponentRender<RadioItemState>;

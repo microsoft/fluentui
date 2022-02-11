@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 export type MenuItemSlots = {
   root: Slot<'div'>;
@@ -51,3 +51,5 @@ type MenuItemCommons = {
 export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & MenuItemCommons;
 
 export type MenuItemState = ComponentState<MenuItemSlots> & MenuItemCommons;
+
+export type MenuItemRender = ComponentRender<MenuItemState>;

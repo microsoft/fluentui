@@ -3,8 +3,15 @@ import { getNativeElementProps } from '@fluentui/react-utilities';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/AccordionContext';
-import type { AccordionItemProps, AccordionItemState } from './AccordionItem.types';
+import type {
+  AccordionItemProps,
+  AccordionItemState,
+  AccordionItemRender,
+  AccordionItemContextValues,
+} from './AccordionItem.types';
 import type { AccordionToggleEvent } from '../Accordion/Accordion.types';
+import { useAccordionItemContextValues_unstable } from './useAccordionItemContextValues';
+import { renderAccordionItem_unstable } from './renderAccordionItem';
 
 /**
  * Returns the props and state required to render the component
@@ -14,7 +21,7 @@ import type { AccordionToggleEvent } from '../Accordion/Accordion.types';
 export const useAccordionItem_unstable = (
   props: AccordionItemProps,
   ref: React.Ref<HTMLElement>,
-): AccordionItemState => {
+): [AccordionItemState, AccordionItemRender, AccordionItemContextValues] => {
   const { value, disabled = false } = props;
   const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
   const tabsterAttributes = useTabsterAttributes({
@@ -28,7 +35,7 @@ export const useAccordionItem_unstable = (
     value,
   ]);
 
-  return {
+  const state: AccordionItemState = {
     open,
     value,
     disabled,
@@ -42,4 +49,8 @@ export const useAccordionItem_unstable = (
       ...props,
     }),
   };
+
+  const contextValues = useAccordionItemContextValues_unstable(state);
+
+  return [state, renderAccordionItem_unstable, contextValues];
 };

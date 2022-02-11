@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 import type { ButtonCommons, ButtonSlots, ButtonState } from '../Button/Button.types';
 
 export type CompoundButtonSlots = ButtonSlots & {
@@ -17,3 +17,5 @@ export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> &
 
 export type CompoundButtonState = ComponentState<CompoundButtonSlots> &
   Omit<ButtonState, keyof ButtonSlots | 'components'>;
+
+export type CompoundButtonRender = ComponentRender<CompoundButtonState>;

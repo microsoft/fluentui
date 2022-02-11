@@ -1,4 +1,5 @@
 import type { BadgeProps, BadgeState } from '../Badge/index';
+import { ComponentRender } from '@fluentui/react-utilities';
 
 export type CounterBadgeCommons = {
   /**
@@ -47,3 +48,5 @@ export type CounterBadgeCommons = {
 export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape' | 'color'> & Partial<CounterBadgeCommons>;
 
 export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'shape' | 'color'> & CounterBadgeCommons;
+
+export type CounterBadgeRender = ComponentRender<CounterBadgeState>;

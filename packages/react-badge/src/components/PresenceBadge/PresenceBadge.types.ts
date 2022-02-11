@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender } from '@fluentui/react-utilities';
 import type { BadgeCommons, BadgeSlots } from '../Badge/index';
 
 export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
@@ -21,3 +21,5 @@ export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root'>>, 
   Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
 
 export type PresenceBadgeState = PresenceBadgeCommons & ComponentState<BadgeSlots>;
+
+export type PresenceBadgeRender = ComponentRender<PresenceBadgeState>;

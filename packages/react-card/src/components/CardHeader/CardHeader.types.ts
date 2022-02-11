@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 export type CardHeaderSlots = {
   root: Slot<'div'>;
@@ -18,3 +18,5 @@ export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
  * State used in rendering CardHeader
  */
 export type CardHeaderState = ComponentState<CardHeaderSlots>;
+
+export type CardHeaderRender = ComponentRender<CardHeaderState>;

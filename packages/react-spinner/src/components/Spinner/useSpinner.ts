@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { SpinnerProps, SpinnerState } from './Spinner.types';
+import type { SpinnerProps, SpinnerState, SpinnerRender } from './Spinner.types';
+import { renderSpinner_unstable } from './renderSpinner';
 
 /**
  * Create the state required to render Spinner.
@@ -11,8 +12,11 @@ import type { SpinnerProps, SpinnerState } from './Spinner.types';
  * @param props - props from this instance of Spinner
  * @param ref - reference to root HTMLElement of Spinner
  */
-export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElement>): SpinnerState => {
-  return {
+export const useSpinner_unstable = (
+  props: SpinnerProps,
+  ref: React.Ref<HTMLElement>,
+): [SpinnerState, SpinnerRender] => {
+  const state: SpinnerState = {
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
@@ -25,4 +29,6 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
       ...props,
     }),
   };
+
+  return [state, renderSpinner_unstable];
 };

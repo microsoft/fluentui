@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 export type {{componentName}}Slots = {
   root: Slot<'div'>;
@@ -17,3 +17,5 @@ export type {{componentName}}Props = ComponentProps<{{componentName}}Slots> & {{
  * State used in rendering {{componentName}}
  */
 export type {{componentName}}State = ComponentState<{{componentName}}Slots> & {{componentName}}Commons;
+
+export type {{componentName}}Render = ComponentRender<{{componentName}}State>;

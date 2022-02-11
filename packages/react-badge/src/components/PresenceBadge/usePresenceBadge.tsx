@@ -11,8 +11,8 @@ import {
   presenceOofRegular,
   presenceUnknownRegular,
 } from './presenceIcons';
-import { useBadge_unstable, BadgeProps } from '../Badge/index';
-import type { PresenceBadgeProps, PresenceBadgeState } from './PresenceBadge.types';
+import { useBadge_unstable, BadgeProps, renderBadge_unstable } from '../Badge/index';
+import type { PresenceBadgeProps, PresenceBadgeState, PresenceBadgeRender } from './PresenceBadge.types';
 
 const iconMap = (
   status: PresenceBadgeState['status'],
@@ -41,18 +41,19 @@ const iconMap = (
 export const usePresenceBadge_unstable = (
   props: PresenceBadgeProps,
   ref: React.Ref<HTMLElement>,
-): PresenceBadgeState => {
+): [PresenceBadgeState, PresenceBadgeRender] => {
+  const [badgeState] = useBadge_unstable(
+    {
+      size: 'medium',
+      ...props,
+      icon: resolveShorthand(undefined as BadgeProps['icon'], {
+        required: true,
+      }),
+    },
+    ref,
+  );
   const state: PresenceBadgeState = {
-    ...useBadge_unstable(
-      {
-        size: 'medium',
-        ...props,
-        icon: resolveShorthand(undefined as BadgeProps['icon'], {
-          required: true,
-        }),
-      },
-      ref,
-    ),
+    ...badgeState,
     status: props.status ?? 'available',
     outOfOffice: props.outOfOffice ?? false,
   };
@@ -62,5 +63,5 @@ export const usePresenceBadge_unstable = (
     state.icon!.children = <IconElement />;
   }
 
-  return state;
+  return [state, renderBadge_unstable];
 };

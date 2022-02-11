@@ -3,7 +3,8 @@ import { resolveShorthand } from '@fluentui/react-utilities';
 import { Checkmark16Filled } from '@fluentui/react-icons';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
-import type { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
+import { renderMenuItemRadio_unstable } from './renderMenuItemRadio';
+import type { MenuItemRadioProps, MenuItemRadioState, MenuItemRadioRender } from './MenuItemRadio.types';
 
 /**
  * Given user props, returns state and render function for a MenuItemRadio.
@@ -11,12 +12,12 @@ import type { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.typ
 export const useMenuItemRadio_unstable = (
   props: MenuItemRadioProps,
   ref: React.Ref<HTMLElement>,
-): MenuItemRadioState => {
+): [MenuItemRadioState, MenuItemRadioRender] => {
   const radioProps = {
     role: 'menuitemradio',
   };
 
-  const state = useMenuItem_unstable(
+  const [menuItemState] = useMenuItem_unstable(
     {
       ...radioProps,
       ...props,
@@ -26,7 +27,17 @@ export const useMenuItemRadio_unstable = (
       }),
     },
     ref,
-  ) as MenuItemRadioState;
+  );
+
+  const state: MenuItemRadioState = {
+    ...menuItemState,
+    // required members not defined in menuItemState
+    checked: false,
+    checkedItems: [],
+    name: '',
+    onCheckedValueChange: React.useCallback(() => undefined, []),
+    value: '',
+  };
 
   const selectRadio = useMenuListContext_unstable(context => context.selectRadio);
   const { onClick: onClickOriginal } = state.root;
@@ -50,5 +61,5 @@ export const useMenuItemRadio_unstable = (
     onClickOriginal?.(e);
   };
 
-  return state;
+  return [state, renderMenuItemRadio_unstable];
 };

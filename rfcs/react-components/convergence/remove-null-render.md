@@ -15,7 +15,7 @@ We have never measured real performance impact of having a bigger React tree but
 Every component gets all slots to be rendered in `renderComponent` by calling a `getSlots()` function:
 
 ```tsx
-export const renderAvatar_unstable = (state: AvatarState) => {
+export const renderAvatar_unstable: AvatarRender = (state: AvatarState) => {
   const { slots, slotProps } = getSlots<AvatarSlots>(state);
 
   return (
@@ -43,7 +43,7 @@ Remove `nullRender`, `getSlots()` will return `null` for optional slots which sh
 Add conditional rendering to the render functions for all optional slots:
 
 ```tsx
-export const renderAvatar_unstable = (state: AvatarState) => {
+export const renderAvatar_unstable: AvatarRender = (state: AvatarState) => {
   const { slots, slotProps } = getSlots<AvatarSlots>(state);
 
   return (

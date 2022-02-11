@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ComponentRender } from '@fluentui/react-utilities';
 
 export type MenuTriggerProps = {
   /**
@@ -26,3 +27,5 @@ export type MenuTriggerChildProps = Required<
 export type MenuTriggerState = {
   children: React.ReactElement | null;
 };
+
+export type MenuTriggerRender = ComponentRender<MenuTriggerState>;

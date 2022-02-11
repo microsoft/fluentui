@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
+import { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState, MenuTriggerRender } from './MenuTrigger.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -12,6 +12,7 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
+import { renderMenuTrigger_unstable } from './renderMenuTrigger';
 
 /**
  * Create the state required to render MenuTrigger.
@@ -19,7 +20,7 @@ import { shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
  *
  * @param props - props from this instance of MenuTrigger
  */
-export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerState => {
+export const useMenuTrigger_unstable = (props: MenuTriggerProps): [MenuTriggerState, MenuTriggerRender] => {
   const { children } = props;
 
   const triggerRef = useMenuContext_unstable(context => context.triggerRef);
@@ -126,7 +127,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
   };
 
-  return {
+  const state: MenuTriggerState = {
     children: applyTriggerPropsToChildren<MenuTriggerChildProps>(children, {
       'aria-haspopup': 'menu',
       'aria-expanded': !open && !isSubmenu ? undefined : open,
@@ -141,6 +142,8 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
       onMouseMove: useMergedEventCallbacks(child?.props?.onMouseMove, onMouseMove),
     }),
   };
+
+  return [state, renderMenuTrigger_unstable];
 };
 
 const isTargetDisabled = (e: React.SyntheticEvent | Event) => {

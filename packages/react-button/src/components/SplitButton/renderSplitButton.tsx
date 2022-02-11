@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { SplitButtonSlots, SplitButtonState } from './SplitButton.types';
+import type { SplitButtonSlots, SplitButtonRender } from './SplitButton.types';
 
 /**
  * Renders a SplitButton component by passing the state defined props to the appropriate slots.
  */
-export const renderSplitButton_unstable = (state: SplitButtonState) => {
+export const renderSplitButton_unstable: SplitButtonRender = state => {
   const { slots, slotProps } = getSlots<SplitButtonSlots>(state);
 
   return (

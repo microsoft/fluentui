@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { ButtonSlots, ButtonState } from './Button.types';
+import type { ButtonSlots, ButtonRender } from './Button.types';
 
 /**
  * Renders a Button component by passing the state defined props to the appropriate slots.
  */
-export const renderButton_unstable = (state: ButtonState) => {
+export const renderButton_unstable: ButtonRender = state => {
   const { slots, slotProps } = getSlots<ButtonSlots>(state);
   const { iconOnly, iconPosition } = state;
 

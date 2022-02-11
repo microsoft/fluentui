@@ -2,7 +2,9 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { Button } from '../Button/Button';
 import { MenuButton } from '../MenuButton/MenuButton';
-import type { SplitButtonProps, SplitButtonState } from './SplitButton.types';
+import { renderSplitButton_unstable } from './renderSplitButton';
+import type { SplitButtonProps, SplitButtonState, SplitButtonRender } from './SplitButton.types';
+import { useSplitButtonStyles_unstable } from './useSplitButtonStyles';
 
 /**
  * Given user props, defines default props for the SplitButton and returns processed state.
@@ -12,7 +14,7 @@ import type { SplitButtonProps, SplitButtonState } from './SplitButton.types';
 export const useSplitButton_unstable = (
   props: SplitButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
-): SplitButtonState => {
+): [SplitButtonState, SplitButtonRender] => {
   const {
     appearance,
     block = false,
@@ -49,7 +51,7 @@ export const useSplitButton_unstable = (
     },
   });
 
-  return {
+  const state: SplitButtonState = {
     // Props passed at the top-level
     appearance,
     block,
@@ -70,4 +72,8 @@ export const useSplitButton_unstable = (
     menuButton: menuButtonShorthand,
     primaryActionButton: primaryActionButtonShorthand,
   };
+
+  useSplitButtonStyles_unstable(state);
+
+  return [state, renderSplitButton_unstable];
 };

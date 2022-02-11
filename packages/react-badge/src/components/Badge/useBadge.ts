@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import type { BadgeProps, BadgeState } from './Badge.types';
+import { renderBadge_unstable } from './renderBadge';
+import type { BadgeProps, BadgeState, BadgeRender } from './Badge.types';
 
 /**
  * Returns the props and state required to render the component
  */
-export const useBadge_unstable = (props: BadgeProps, ref: React.Ref<HTMLElement>): BadgeState => {
+export const useBadge_unstable = (props: BadgeProps, ref: React.Ref<HTMLElement>): [BadgeState, BadgeRender] => {
   const {
     shape = 'circular',
     size = 'medium',
@@ -32,5 +33,5 @@ export const useBadge_unstable = (props: BadgeProps, ref: React.Ref<HTMLElement>
     icon: resolveShorthand(props.icon),
   };
 
-  return state;
+  return [state, renderBadge_unstable];
 };

@@ -1,11 +1,14 @@
 import * as React from 'react';
-import { useBadge_unstable } from '../Badge/index';
-import type { CounterBadgeProps, CounterBadgeState } from './CounterBadge.types';
+import { useBadge_unstable, renderBadge_unstable } from '../Badge/index';
+import type { CounterBadgeProps, CounterBadgeState, CounterBadgeRender } from './CounterBadge.types';
 
 /**
  * Returns the props and state required to render the component
  */
-export const useCounterBadge_unstable = (props: CounterBadgeProps, ref: React.Ref<HTMLElement>): CounterBadgeState => {
+export const useCounterBadge_unstable = (
+  props: CounterBadgeProps,
+  ref: React.Ref<HTMLElement>,
+): [CounterBadgeState, CounterBadgeRender] => {
   const {
     shape = 'circular',
     appearance = 'filled',
@@ -15,8 +18,10 @@ export const useCounterBadge_unstable = (props: CounterBadgeProps, ref: React.Re
     dot = false,
   } = props;
 
+  const [badgeState] = useBadge_unstable(props, ref);
+
   const state: CounterBadgeState = {
-    ...(useBadge_unstable(props, ref) as CounterBadgeState),
+    ...(badgeState as CounterBadgeState),
     shape,
     appearance,
     showZero,
@@ -29,5 +34,5 @@ export const useCounterBadge_unstable = (props: CounterBadgeProps, ref: React.Re
     state.root.children = state.count > state.overflowCount ? `${state.overflowCount}+` : `${state.count}`;
   }
 
-  return state;
+  return [state, renderBadge_unstable];
 };

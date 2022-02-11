@@ -2,7 +2,8 @@ import * as React from 'react';
 import { useIsSSR } from '@fluentui/react-utilities';
 import { usePortalMountNode } from './usePortalMountNode';
 import { setVirtualParent } from '../../virtualParent/index';
-import type { PortalProps, PortalState } from './Portal.types';
+import { renderPortal_unstable } from './renderPortal';
+import type { PortalProps, PortalState, PortalRender } from './Portal.types';
 
 /**
  * Create the state required to render Portal.
@@ -11,7 +12,7 @@ import type { PortalProps, PortalState } from './Portal.types';
  *
  * @param props - props from this instance of Portal
  */
-export const usePortal_unstable = (props: PortalProps): PortalState => {
+export const usePortal_unstable = (props: PortalProps): [PortalState, PortalRender] => {
   const { children, mountNode } = props;
 
   const virtualParentRootRef = React.useRef<HTMLSpanElement>(null);
@@ -30,5 +31,5 @@ export const usePortal_unstable = (props: PortalProps): PortalState => {
     }
   }, [state.virtualParentRootRef, state.mountNode]);
 
-  return state;
+  return [state, renderPortal_unstable];
 };

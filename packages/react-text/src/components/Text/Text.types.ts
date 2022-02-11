@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 
 /**
  * Text slots
@@ -88,3 +88,5 @@ export type TextProps = ComponentProps<TextSlots> & Partial<TextCommons>;
  * State used in rendering Text
  */
 export type TextState = ComponentState<TextSlots> & TextCommons;
+
+export type TextRender = ComponentRender<TextState>;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
+import type { CardHeaderProps, CardHeaderState, CardHeaderRender } from './CardHeader.types';
+import { renderCardHeader_unstable } from './renderCardHeader';
 
 /**
  * Create the state required to render CardHeader.
@@ -11,10 +12,13 @@ import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
  * @param props - props from this instance of CardHeader
  * @param ref - reference to root HTMLElement of CardHeader
  */
-export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HTMLElement>): CardHeaderState => {
+export const useCardHeader_unstable = (
+  props: CardHeaderProps,
+  ref: React.Ref<HTMLElement>,
+): [CardHeaderState, CardHeaderRender] => {
   const { image, content, header, description, action } = props;
 
-  return {
+  const state: CardHeaderState = {
     components: {
       root: 'div',
       image: 'div',
@@ -40,4 +44,6 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
     }),
     action: resolveShorthand(action),
   };
+
+  return [state, renderCardHeader_unstable];
 };

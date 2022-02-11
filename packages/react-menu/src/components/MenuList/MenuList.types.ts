@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ComponentRender, Slot } from '@fluentui/react-utilities';
 import type { MenuListContextValue } from '../../contexts/menuListContext';
 import type { SelectableHandler } from '../../selectable/index';
 
@@ -75,3 +75,5 @@ export type UninitializedMenuListState = Omit<
   'setFocusByFirstCharacter' | 'toggleCheckbox' | 'selectRadio' | 'checkedValues'
 > &
   Partial<Pick<MenuListState, 'checkedValues'>>;
+
+export type MenuListRender = ComponentRender<MenuListState, MenuListContextValues>;

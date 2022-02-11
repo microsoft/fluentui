@@ -1,4 +1,4 @@
-import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, Slot, ComponentRender } from '@fluentui/react-utilities';
 
 export type ImageSlots = {
   root: Slot<'img'>;
@@ -35,3 +35,5 @@ export type ImageCommons = {
 export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
 
 export type ImageState = ComponentState<ImageSlots> & ImageCommons;
+
+export type ImageRender = ComponentRender<ImageState>;

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { RadioItemState, RadioItemSlots } from './RadioItem.types';
+import type { RadioItemSlots, RadioItemRender } from './RadioItem.types';
 
 /**
  * Render the final JSX of RadioItem
  */
-export const renderRadioItem_unstable = (state: RadioItemState) => {
+export const renderRadioItem_unstable: RadioItemRender = state => {
   const { slots, slotProps } = getSlots<RadioItemSlots>(state);
 
   return (
