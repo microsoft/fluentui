@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 
 export const BasicSwitchExample = (props: SwitchProps) => {
   const styles = useStyles();
-  const [switchValue, setSwitchValue] = React.useState(false);
+  const [switchValue, setSwitchValue] = React.useState(true);
 
   const switchOnChange = (
     ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
@@ -27,6 +27,7 @@ export const BasicSwitchExample = (props: SwitchProps) => {
       <Label>Basic Example</Label>
       <Switch />
       <Label>Controlled Example</Label>
+      <Switch checked={switchValue} onChange={switchOnChange} />
       <Switch checked={switchValue} onChange={switchOnChange} />
       <Label>Disabled Example</Label>
       <Switch disabled defaultChecked={true} />
