@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 10 Feb 2022 07:32:10 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Feb 2022 07:27:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.55.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.55.1)
+
+Fri, 11 Feb 2022 07:27:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.55.0..@fluentui/react_v8.55.1)
+
+### Patches
+
+- Don't hide siblings for modeless modals. Use the same modalization method in FocusTrapZone and Popup. ([PR #21642](https://github.com/microsoft/fluentui/pull/21642) by elcraig@microsoft.com)
+- Combobox now supports aria-describedby and aria-labelledby properly ([PR #21661](https://github.com/microsoft/fluentui/pull/21661) by mgodbolt@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.1.22 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.23 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
+- Bump @fluentui/react-focus to v8.3.18 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
+- Bump @fluentui/react-hooks to v8.3.12 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
+- Bump @fluentui/style-utilities to v8.5.5 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
+- Bump @fluentui/theme to v2.4.9 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
+- Bump @fluentui/utilities to v8.4.1 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
+- Bump @fluentui/common-styles to v1.0.28 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
 
 ## [8.55.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.55.0)
 
