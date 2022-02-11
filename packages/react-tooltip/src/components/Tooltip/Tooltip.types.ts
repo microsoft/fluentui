@@ -12,7 +12,7 @@ export type TooltipSlots = {
 /**
  * Properties and state for Tooltip
  */
-export type TooltipCommons = {
+type TooltipCommons = {
   /**
    * The tooltip's visual appearance.
    * * `normal` - Uses the theme's background and text colors.

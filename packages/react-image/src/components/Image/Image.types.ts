@@ -4,7 +4,7 @@ export type ImageSlots = {
   root: Slot<'img'>;
 };
 
-export type ImageCommons = {
+type ImageCommons = {
   /**
    * An image can appear with rectangular border.
    */

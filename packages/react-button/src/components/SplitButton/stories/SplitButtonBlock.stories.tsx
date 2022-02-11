@@ -1,14 +1,12 @@
 import * as React from 'react';
 
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { SplitButton, MenuButtonProps } from '../../../index'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { SplitButton, MenuButtonProps } from '../../../index';
 
 export const Block = () => (
   <Menu positioning="below-end">
     <MenuTrigger>
-      {(triggerProps: MenuButtonProps) => (
-        <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} block />
-      )}
+      {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps} primaryActionButton="Block" block />}
     </MenuTrigger>
 
     <MenuPopover>

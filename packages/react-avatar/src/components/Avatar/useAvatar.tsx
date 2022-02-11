@@ -6,6 +6,7 @@ import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { renderAvatar_unstable } from './renderAvatar';
+import { useMergedEventCallbacks } from '@fluentui/react-utilities';
 
 export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): [AvatarState, AvatarRender] => {
   const { dir } = useFluent();
@@ -54,13 +55,23 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     });
   }
 
+  const [imageHidden, setImageHidden] = React.useState<true | undefined>(undefined);
   const image: AvatarState['image'] = resolveShorthand(props.image, {
     defaultProps: {
       alt: '',
       role: 'presentation',
       'aria-hidden': true,
+      hidden: imageHidden,
     },
   });
+
+  // Hide the image if it fails to load and restore it on a successful load
+  const imageOnError = useMergedEventCallbacks(image?.onError, () => setImageHidden(true));
+  const imageOnLoad = useMergedEventCallbacks(image?.onLoad, () => setImageHidden(undefined));
+  if (image) {
+    image.onError = imageOnError;
+    image.onLoad = imageOnLoad;
+  }
 
   const badge: AvatarState['badge'] = resolveShorthand(props.badge, {
     defaultProps: {

@@ -17,20 +17,11 @@ export const Avatar: ForwardRefComponent<AvatarProps>;
 // @public (undocumented)
 export const avatarClassName = "fui-Avatar";
 
-// @public (undocumented)
-export type AvatarCommons = {
-    name?: string;
-    size: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
-    shape: 'circular' | 'square';
-    active: 'active' | 'inactive' | 'unset';
-    activeAppearance: 'ring' | 'shadow' | 'ring-shadow';
-    color: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
-    idForColor: string | undefined;
-};
-
 // @public
 export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
 
+// Warning: (ae-forgotten-export) The symbol "AvatarCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & Partial<AvatarCommons>;
 

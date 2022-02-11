@@ -23,7 +23,7 @@ export type TabSlots = {
   content: NonNullable<Slot<'span'>>;
 };
 
-export type TabCommons = {
+type TabCommons = {
   /**
    * The value that identifies this tab when selected.
    */

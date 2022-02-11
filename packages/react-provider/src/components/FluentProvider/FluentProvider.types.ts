@@ -10,7 +10,7 @@ export type FluentProviderSlots = {
   root: Slot<'div'>;
 };
 
-export interface FluentProviderCommons {
+interface FluentProviderCommons {
   /** Sets the direction of text & generated styles. */
   dir: 'ltr' | 'rtl';
 

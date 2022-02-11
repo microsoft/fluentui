@@ -8,7 +8,7 @@ import { ComponentRender } from '@fluentui/react-utilities';
  */
 export type PopoverSize = 'small' | 'medium' | 'large';
 
-export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
+type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
   /**
    * Controls the opening of the Popover
    */

@@ -7,7 +7,7 @@ export type LinkSlots = {
   root: Slot<'a', 'button'>;
 };
 
-export type LinkCommons = {
+type LinkCommons = {
   /**
    * A link can appear either with its default style or subtle.
    * If not specified, the link appears with its default styling.

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-export interface CheckboxCommons {
+interface CheckboxCommons {
   /**
    * Whether to render the checkbox in a circular shape instead of square.
    * This variant is only recommended to be used in a tasks-style UI (checklist),

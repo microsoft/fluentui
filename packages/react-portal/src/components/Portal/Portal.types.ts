@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentRender } from '@fluentui/react-utilities';
 
-export type PortalCommons = {
+type PortalCommons = {
   /**
    * React children
    */

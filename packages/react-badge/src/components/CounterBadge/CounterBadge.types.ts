@@ -1,7 +1,7 @@
 import type { BadgeProps, BadgeState } from '../Badge/index';
 import { ComponentRender } from '@fluentui/react-utilities';
 
-export type CounterBadgeCommons = {
+type CounterBadgeCommons = {
   /**
    * Max number to be displayed
    * @default 99

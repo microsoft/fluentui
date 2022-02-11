@@ -14,7 +14,7 @@ export type AccordionItemSlots = {
   root: Slot<'div'>;
 };
 
-export type AccordionItemCommons = {
+type AccordionItemCommons = {
   /**
    * Disables opening/closing of panel
    */

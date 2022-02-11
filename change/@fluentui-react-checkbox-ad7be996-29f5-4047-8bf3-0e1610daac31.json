@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Updates components with nullRender changes",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "none"
-}

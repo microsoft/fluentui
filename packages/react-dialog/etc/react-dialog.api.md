@@ -16,9 +16,8 @@ export const Dialog: ForwardRefComponent<DialogProps>;
 // @public (undocumented)
 export const dialogClassName = "fui-Dialog";
 
-// @public (undocumented)
-export type DialogCommons = {};
-
+// Warning: (ae-forgotten-export) The symbol "DialogCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type DialogProps = ComponentProps<DialogSlots> & DialogCommons;
 

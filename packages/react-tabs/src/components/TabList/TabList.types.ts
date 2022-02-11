@@ -31,7 +31,7 @@ export type TabListSlots = {
   root: Slot<'div'>;
 };
 
-export type TabListCommons = {
+type TabListCommons = {
   /**
    * A tab list can supports 'transparent' and 'subtle' appearance.
    *- 'subtle': Minimizes emphasis to blend into the background until hovered or focused.

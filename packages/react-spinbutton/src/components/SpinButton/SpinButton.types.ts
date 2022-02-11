@@ -4,7 +4,7 @@ export type SpinButtonSlots = {
   root: Slot<'div'>;
 };
 
-export type SpinButtonCommons = {
+type SpinButtonCommons = {
   // TODO Add things shared between props and state here
 };
 

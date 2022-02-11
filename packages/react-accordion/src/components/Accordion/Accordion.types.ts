@@ -8,7 +8,7 @@ export type AccordionToggleEvent<E = HTMLElement> = React.MouseEvent<E> | React.
 
 export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 
-export type AccordionCommons = {
+type AccordionCommons = {
   /**
    * Indicates if keyboard navigation is available
    */

@@ -34,7 +34,7 @@ export type AccordionHeaderSlots = {
   icon?: Slot<'div'>;
 };
 
-export type AccordionHeaderCommons = {
+type AccordionHeaderCommons = {
   /**
    * Size of spacing in the heading
    */

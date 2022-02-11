@@ -1,7 +1,7 @@
 import type { ButtonProps, ButtonState } from '../Button/Button.types';
 import { ComponentRender } from '@fluentui/react-utilities';
 
-export type ToggleButtonCommons = {
+type ToggleButtonCommons = {
   /**
    * Defines the controlled checked state of the `ToggleButton`.
    * If passed, `ToggleButton` ignores the `defaultChecked` property.
