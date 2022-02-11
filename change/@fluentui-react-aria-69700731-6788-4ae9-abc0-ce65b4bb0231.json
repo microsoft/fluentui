@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fixing issue in useAriaButton where passing disabledFocusable=false caused aria-disabled to always be set to false.",
+  "packageName": "@fluentui/react-aria",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
