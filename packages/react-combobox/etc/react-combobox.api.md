@@ -21,7 +21,6 @@ export const comboboxClassName = "fui-Combobox";
 export type ComboboxCommons = {
     appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
     inline?: boolean;
-    onOpenChange?(event: OpenEvents, data: OnOpenChangeData): void;
     open?: boolean;
     placeholder?: string;
     value?: string;
@@ -31,6 +30,7 @@ export type ComboboxCommons = {
 //
 // @public
 export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> & ComboboxCommons & SelectionProps & {
+    onOpenChange?: (e: OpenEvents, data: OnOpenChangeData) => void;
     positioning?: PositioningShorthand;
 };
 
