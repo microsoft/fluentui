@@ -3045,37 +3045,37 @@
     node-gyp "^6.1.0"
     read-package-json-fast "^1.1.3"
 
-"@nrwl/cli@13.8.0":
-  version "13.8.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/cli/-/cli-13.8.0.tgz#346327870bf7ac7d6b9199ae5bc19977b0e7711a"
-  integrity sha512-4CYkvvXBHbBkWiuZiR1M3oJq/3aKg6KQqUWTe6irsm9XwNfZhjlfW8SKlvzxCHZ/9aj8jzwvjisee4gccXmS6w==
+"@nrwl/cli@13.8.1":
+  version "13.8.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/cli/-/cli-13.8.1.tgz#31af91b27f4c19e736dd9793b0f36f69ef482256"
+  integrity sha512-oQtu0rkpEm3QdzqB/BCDsOl0OJ5P2afSfzu3Lxcrz6fHjmUf9aby0sd1JCrRNRrZkxK8GAdxRKZdPHkdWvr23A==
   dependencies:
-    "@nrwl/tao" "13.8.0"
+    "@nrwl/tao" "13.8.1"
     chalk "4.1.0"
     enquirer "~2.3.6"
     v8-compile-cache "2.3.0"
     yargs-parser "20.0.0"
 
-"@nrwl/devkit@13.8.0":
-  version "13.8.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/devkit/-/devkit-13.8.0.tgz#d380d7921d3d83777fdd5dc1f638eb193336f3f2"
-  integrity sha512-agiund/d2IJA0g+6QfruvTy1thxvHDlKALMkJgSSA2pDdh2fwMG+gX4arsu7kSa53CvPMddIsC5Nc+5vEiQSTw==
+"@nrwl/devkit@13.8.1":
+  version "13.8.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/devkit/-/devkit-13.8.1.tgz#03184e057b04b2a451dd7856e0e8008b8def1685"
+  integrity sha512-zznDaYf6yTBbr8xOb8l4Dn7L0QhCS7BMUoCq/PMCBLwRnRBDpbd801tD06qIVvhh3XkwEJVS2v7EEF3TOypIyw==
   dependencies:
-    "@nrwl/tao" "13.8.0"
+    "@nrwl/tao" "13.8.1"
     ejs "^3.1.5"
     ignore "^5.0.4"
     rxjs "^6.5.4"
     semver "7.3.4"
     tslib "^2.3.0"
 
-"@nrwl/jest@13.8.0":
-  version "13.8.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/jest/-/jest-13.8.0.tgz#c4e2163e135b8021bdfef50ed7db441c0a247d40"
-  integrity sha512-s79x084ZudZltjjf54lYh7NB5WUPBvPD9GkifcgANeiii03ezz32zcRlQRwkgUf9oQxvwt9h+ZjlHjEtQW26pg==
+"@nrwl/jest@13.8.1":
+  version "13.8.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/jest/-/jest-13.8.1.tgz#32f2c9c28ae03e0f4a5bdd8fc6688c4bbca8ab09"
+  integrity sha512-kY6/Fg3aFODVk250qWcJPJWO+pDUN6VFOAUEz03sxkmkfZEA8MRG0xgQrYl9dXcLDK1apoEGJ4sGZ2r8QpA7AA==
   dependencies:
     "@jest/reporters" "27.2.2"
     "@jest/test-result" "27.2.2"
-    "@nrwl/devkit" "13.8.0"
+    "@nrwl/devkit" "13.8.1"
     chalk "4.1.0"
     identity-obj-proxy "3.0.0"
     jest-config "27.2.2"
@@ -3085,15 +3085,15 @@
     rxjs "^6.5.4"
     tslib "^2.3.0"
 
-"@nrwl/js@13.8.0":
-  version "13.8.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/js/-/js-13.8.0.tgz#6f02e416bb19c48f3a2714b7391089679a871c4c"
-  integrity sha512-jW5qA3/bOCg6u3EZypp+ArT67WQ7kLl+SRkJMnJIrI/iH7p3JPpRIpeMNesDLhRdGqWBdlwpNpqo5fv/Ggj++Q==
+"@nrwl/js@13.8.1":
+  version "13.8.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/js/-/js-13.8.1.tgz#5e240c18178a658d2b97c8a963acaa799b00f16e"
+  integrity sha512-KLjz5Y/NUSSMSFUnPEyXi1D7izgcmylYL5vXEzT3ifbn3tRjcytUWE1GJ0bOXAeSsHkrA713J8q6iMWraqsUXw==
   dependencies:
-    "@nrwl/devkit" "13.8.0"
-    "@nrwl/jest" "13.8.0"
-    "@nrwl/linter" "13.8.0"
-    "@nrwl/workspace" "13.8.0"
+    "@nrwl/devkit" "13.8.1"
+    "@nrwl/jest" "13.8.1"
+    "@nrwl/linter" "13.8.1"
+    "@nrwl/workspace" "13.8.1"
     "@parcel/watcher" "2.0.4"
     chalk "4.1.0"
     fast-glob "^3.2.7"
@@ -3106,26 +3106,26 @@
     source-map-support "0.5.19"
     tree-kill "1.2.2"
 
-"@nrwl/linter@13.8.0":
-  version "13.8.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/linter/-/linter-13.8.0.tgz#3c8beec6ba5c218de531a9b4f94ba211cc561d81"
-  integrity sha512-at2Zc2Qy2iAs6iEsnhm1mRj8fmP3L7E5tQ51ga2n/6+UlSsD1B58Wu1VeUWki45IRUB29Qe7kn0JFN0HpL+F7g==
+"@nrwl/linter@13.8.1":
+  version "13.8.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/linter/-/linter-13.8.1.tgz#ee5c513c9c584ce7861736c574f12dfc0b266bcf"
+  integrity sha512-WBSpWUccaq1skr82VauvdRfjfmrkAXjHFalg72JqeDv0Ou5AhUWHLhEC1lvXZXPFMeFJtUaAEFbkSkOb6U+K2g==
   dependencies:
-    "@nrwl/devkit" "13.8.0"
-    "@nrwl/jest" "13.8.0"
+    "@nrwl/devkit" "13.8.1"
+    "@nrwl/jest" "13.8.1"
     "@phenomnomnominal/tsquery" "4.1.1"
     tmp "~0.2.1"
     tslib "^2.3.0"
 
-"@nrwl/node@13.8.0":
-  version "13.8.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/node/-/node-13.8.0.tgz#29fc42c23aed3dde2339e6265caae13d4746916e"
-  integrity sha512-2qs80cHHaqNYzs9ykJgzW2vgtCRMpq+T0jAeWboSD0sZvRGNMj/RJvkXsOK+Zc5V8DZZtePbW1YPvQsb/fLKaQ==
+"@nrwl/node@13.8.1":
+  version "13.8.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/node/-/node-13.8.1.tgz#78b99b6bafe72b63ad0cf308f2bf0ccd05e0a423"
+  integrity sha512-D1ZjBV1gAr+CIu4h9fWlazAqeFBg1iAtBsVgzszn6iizaw3y66wq7oknZUozP4uALvkFdK2q+qLEwAsGrZBCyg==
   dependencies:
-    "@nrwl/devkit" "13.8.0"
-    "@nrwl/jest" "13.8.0"
-    "@nrwl/linter" "13.8.0"
-    "@nrwl/workspace" "13.8.0"
+    "@nrwl/devkit" "13.8.1"
+    "@nrwl/jest" "13.8.1"
+    "@nrwl/linter" "13.8.1"
+    "@nrwl/workspace" "13.8.1"
     chalk "4.1.0"
     copy-webpack-plugin "^9.0.1"
     enhanced-resolve "^5.8.3"
@@ -3147,10 +3147,10 @@
     webpack-merge "^5.8.0"
     webpack-node-externals "^3.0.0"
 
-"@nrwl/tao@13.8.0":
-  version "13.8.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-13.8.0.tgz#973e78526f6df2b7b403e03283a7f0d8613e688f"
-  integrity sha512-lKyl+YhArdk5jT++P2As8QnGXQns1lEXbEwMvkAiwALpsUix06I7bxJgH8X1DWkRbKhCqYPpqnm2C2hKszrtoA==
+"@nrwl/tao@13.8.1":
+  version "13.8.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-13.8.1.tgz#6d8168d5cb81ffc1e3e74352db4f5eef7e5ba3f0"
+  integrity sha512-eY05o0napek5b99DH+dir32q2pCemWmwF4ooimU4BnuY90lXC6FUXuB4+w8/tTGTI5TqjfXOnBokTqr3DPDRpQ==
   dependencies:
     chalk "4.1.0"
     enquirer "~2.3.6"
@@ -3158,7 +3158,7 @@
     fs-extra "^9.1.0"
     ignore "^5.0.4"
     jsonc-parser "3.0.0"
-    nx "13.8.0"
+    nx "13.8.1"
     rxjs "^6.5.4"
     rxjs-for-await "0.0.2"
     semver "7.3.4"
@@ -3166,15 +3166,15 @@
     tslib "^2.3.0"
     yargs-parser "20.0.0"
 
-"@nrwl/workspace@13.8.0":
-  version "13.8.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/workspace/-/workspace-13.8.0.tgz#94d588b1154f2f5963e4760fe6f2041b2847c981"
-  integrity sha512-Jda1iffk+9D2D4eW20YomsqlArJGCRKyj3ErtjiaefUNWb98Rdta89puvMhHQjFMNop4b7LsTEGo3h2HpYNPIg==
+"@nrwl/workspace@13.8.1":
+  version "13.8.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/workspace/-/workspace-13.8.1.tgz#4b27bdd752fdbfd8ca7718a23e204b9129884ac5"
+  integrity sha512-veemewkJtK3UwOGJDcrVw5h+cpjFh3JnmwSnTFHqxKpsN/hkCQk3CgOmBJ4w50qI/gmyuEm+HeGC5/ZNq3kRDA==
   dependencies:
-    "@nrwl/cli" "13.8.0"
-    "@nrwl/devkit" "13.8.0"
-    "@nrwl/jest" "13.8.0"
-    "@nrwl/linter" "13.8.0"
+    "@nrwl/cli" "13.8.1"
+    "@nrwl/devkit" "13.8.1"
+    "@nrwl/jest" "13.8.1"
+    "@nrwl/linter" "13.8.1"
     "@parcel/watcher" "2.0.4"
     chalk "4.1.0"
     chokidar "^3.5.1"
@@ -19549,12 +19549,12 @@ nwsapi@^2.2.0:
   resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.2.0.tgz#204879a9e3d068ff2a55139c2c772780681a38b7"
   integrity sha512-h2AatdwYH+JHiZpv7pt/gSX1XoRGb7L/qSIeuqA6GwYoF9w1vP1cw42TO0aI2pNyshRK5893hNSl+1//vHK7hQ==
 
-nx@13.8.0:
-  version "13.8.0"
-  resolved "https://registry.yarnpkg.com/nx/-/nx-13.8.0.tgz#3c9bc20c185833d8df9ee968068e713d022966e5"
-  integrity sha512-ABn9aVg64RwYbgkx72rpu4il2qmzp3EujGv7bjsAKDxF6fJyN0vgpHySKZKrGlbjeUF34kamz3OX96QfmHk7Rg==
+nx@13.8.1:
+  version "13.8.1"
+  resolved "https://registry.yarnpkg.com/nx/-/nx-13.8.1.tgz#10e17dace55eb38f762ed212ded02e24797c8ac7"
+  integrity sha512-8oHkh/Hli/OGGkumH8C9NArFjvFoNEgSfVkzCB7zoGddnIJlGAx+sSpHp0zJbXJV55Lk7iXbpKyeOJNnQDsEyQ==
   dependencies:
-    "@nrwl/cli" "13.8.0"
+    "@nrwl/cli" "13.8.1"
 
 oauth-sign@~0.8.2:
   version "0.8.2"
@@ -20920,12 +20920,7 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-prettier@2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.5.1.tgz#fff75fa9d519c54cf0fce328c1017d94546bc56a"
-  integrity sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==
-
-prettier@^2.2.1, prettier@~2.2.1:
+prettier@2.2.1, prettier@^2.2.1, prettier@~2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
   integrity sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
