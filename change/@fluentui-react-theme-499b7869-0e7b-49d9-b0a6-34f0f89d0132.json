@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Exporting global values as part of the react-theme package.",
+  "packageName": "@fluentui/react-theme",
+  "email": "omprieto@microsoft.com",
+  "dependentChangeType": "patch"
+}
