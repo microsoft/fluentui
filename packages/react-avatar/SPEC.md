@@ -6,7 +6,7 @@
 
 The Avatar component represents a person or entity. It displays the person's image, initials, or an icon, and can be either circular or square.
 
-Note: The Avatar control has been mostly implemented already. Visit [Avatar Storybook Examples](http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/react-avatar/storybook/index.html) to see the current state of the implementation.
+Note: The Avatar control has been mostly implemented already. Visit [Avatar Storybook Examples](https://fluentuipr.z22.web.core.windows.net/pull/21679/react-components/storybook/index.html?path=/docs/components-avatar--default) to see the current state of the implementation.
 
 ## Prior Art
 
@@ -35,25 +35,34 @@ Both components support showing a badge to indicate status, but they have differ
 
 ## Sample Code
 
-Basic examples:
+Display a user's initials:
 
 ```jsx
 <Avatar name="Miguel Garcia" />
-<Avatar size={72} name="Mona Kane" image="./MonaKane.jpg" />
-<Avatar shape="square" icon={<IDBadgeIcon />} />
 ```
 
-Displaying a badge (\*\*subject to change pending final spec for the `Badge` component):
+Display an image of a user:
 
 ```jsx
-<Avatar name="Allan Munger" badge={<PresenceBadge status="busy" />} />
+<Avatar size={72} name="Mona Kane" image={{ src: './MonaKane.jpg' }} />
+```
+
+Display an icon only:
+
+```jsx
+<Avatar aria-label="Team" icon={<PeopleTeamRegular />} shape="square" />
+```
+
+Displaying a badge:
+
+```jsx
+<Avatar name="Allan Munger" badge={{ status: 'busy' }} />
 ```
 
 With active state indication:
 
 ```jsx
-<Avatar name="Daisy Phillips" active="active" activeAppearance="ring-shadow" />
-<Avatar name="Robin Counts" active="inactive" />
+<Avatar name="Daisy Phillips" active={isUserActive ? 'active' : 'inactive'} activeAppearance="ring-shadow" />
 ```
 
 ## Variants
@@ -65,37 +74,12 @@ The Avatar supports color variants when displaying initials or an icon:
 - **Neutral** - Gray (default)
 - **Brand** - Brand colors from the theme
 - **Colorful** - Pick from a list of pre-defined Avatar colors. The color will be assigned based on a hash of the name
-  (to "randomly" assign a person a color). The color index can also be specified explicitly in case the use case
+  (to "randomly" assign a person a color). The color name (like `darkRed`) can also be specified explicitly in case the use case
   requires a different algorithm to pick the color.
 
 ### Shape
 
-The Avatar natively supports a circular and square shape. However, some use cases require a hexagon shape (e.g. to represent a bot). The hexagon will not be supported directly, but it is possible to style the Avatar with a hexagon background by using `tokens`:
-
-```jsx
-<Avatar
-  icon={<ChatBotIcon />}
-  display="icon"
-  tokens={{
-    width: 'calc(var(--avatar-height) * 1.125)',
-    background: `url('${hexagonSvg}') 0px/contain no-repeat`,
-    borderRadius: '0',
-  }}
-/>
-```
-
-Where hexagonSvg is defined as:
-
-```js
-hexagonSvg =
-  'data:image/svg+xml;utf8,' +
-  '<svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-  '<path fill="rgb(232,232,232)" d="M0.407926 17.528C-0.135976 16.5859 -0.135975 15.4141 0.407926 14.472' +
-  'L7.91541 1.46793C8.44076 0.557947 9.39444 0 10.4245 0H25.5755C26.6056 0 27.5592 0.557951 28.0846 1.46793' +
-  'L35.5921 14.472C36.136 15.4141 36.136 16.5859 35.5921 17.528L28.0846 30.5321' +
-  'C27.5592 31.4421 26.6056 32 25.5755 32H10.4245C9.39443 32 8.44076 31.4421 7.91541 30.5321L0.407926 17.528Z"/>' +
-  '</svg>';
-```
+The Avatar supports a circular and square (with rounded corners) shape.
 
 ## API
 
@@ -104,97 +88,112 @@ From [Avatar.types.tsx](https://github.com/microsoft/fluentui/blob/master/packag
 ### Slots
 
 - `root` - The root element of the Avatar.
-- `image` - The Avatar's image, if available.
-- `label` - The text shown when there's no image. Defaults to the initials derived from `name` using `getInitials`.
+- `image` - The Avatar's image, if provided.
+- `initials` - The text shown when there's no image. Defaults to the initials derived from `name`.
 - `icon` - Icon displayed when there's no image or intials available.
-- `badge` - Badge to show the avatar's status.
+- `badge` - PresenceBadge to show the avatar's status.
 
 ### Props
 
 ```ts
-export type AvatarProps = ComponentProps &
-  React.HTMLAttributes<HTMLElement> & {
-    /** The Avatar's image. */
-    image?: ShorthandProps<ImageProps>;
+export type AvatarSlots = {
+  root: Slot<'span'>;
 
-    /** The label shown when there's no image or icon. Defaults to the initials derived from `name` using `getInitials` */
-    label?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  /**
+   * The Avatar's image.
+   *
+   * Usage e.g.: `image={{ src: '...' }}`
+   */
+  image?: Slot<'img'>;
 
-    /** Icon displayed when there's no image. */
-    icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  /**
+   * (optional) Custom initials.
+   *
+   * It is usually not necessary to specify custom initials; by default they will be derived from the `name` prop,
+   * using the `getInitials` function.
+   *
+   * The initials are displayed when there is no image (including while the image is loading).
+   */
+  initials?: Slot<'span'>;
 
-    /** Badge to show the avatar's status. */
-    badge?: ShorthandProps<BadgeProps>;
+  /**
+   * Icon to be displayed when the avatar doesn't have an image or initials.
+   *
+   * @defaultvalue `PersonRegular` (the default icon's size depends on the Avatar's size)
+   */
+  icon?: Slot<'span'>;
 
-    /** The name used for displaying the initials of the avatar if the image is not provided. */
-    name?: string;
+  /**
+   * Badge to show the avatar's presence status.
+   */
+  badge?: Slot<typeof PresenceBadge>;
+};
 
-    /** Custom method for generating the initials from the name property, which is shown if no image is provided. */
-    getInitials?: (name: string, isRtl: boolean) => string;
+export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
+  /**
+   * The name of the person or entity represented by this Avatar. This should always be provided if it is available.
+   *
+   * The name will be used to determine the initials displayed when there is no icon, as well as provided to
+   * accessibility tools.
+   */
+  name?: string;
 
-    /**
-     * Size of the avatar in pixels.
-     *
-     * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`) and
-     * based on design guidelines for the Avatar control.
-     *
-     * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
-     * to override the rendered size.
-     *
-     * For example, to set the avatar to 45px in size:
-     * `<Avatar size={40} style={{ width: '45px', height: '45px' }} />`
-     *
-     * @defaultvalue 32
-     */
-    size?: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+  /**
+   * Size of the avatar in pixels.
+   *
+   * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`) and
+   * based on design guidelines for the Avatar control.
+   *
+   * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
+   * to override the rendered size.
+   *
+   * For example, to set the avatar to 45px in size:
+   * `<Avatar size={40} style={{ width: '45px', height: '45px' }} />`
+   *
+   * @defaultvalue 32
+   */
+  size?: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
-    /**
-     * The avatar can have a circular or square shape.
-     * @default circular
-     */
-    shape?: 'circular' | 'square';
+  /**
+   * The avatar can have a circular or square shape.
+   * @defaultvalue circular
+   */
+  shape?: 'circular' | 'square';
 
-    /**
-     * Optional activity indicator
-     * * active: the avatar will be decorated according to activeAppearance
-     * * inactive: the avatar will be reduced in size and partially transparent
-     * * unset: normal display
-     *
-     * @defaultvalue unset
-     */
-    active?: 'active' | 'inactive' | 'unset';
+  /**
+   * Optional activity indicator
+   * * active: the avatar will be decorated according to activeAppearance
+   * * inactive: the avatar will be reduced in size and partially transparent
+   * * unset: normal display
+   *
+   * @defaultvalue unset
+   */
+  active?: 'active' | 'inactive' | 'unset';
 
-    /**
-     * The type of visual treatment to use when `active="active"`
-     *
-     * @defaultvalue ring
-     */
-    activeAppearance?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+  /**
+   * The appearance when `active="active"`
+   *
+   * @defaultvalue ring
+   */
+  activeAppearance?: 'ring' | 'shadow' | 'ring-shadow';
 
-    /**
-     * The color when displaying either an icon or initials.
-     * * neutral (default): gray
-     * * brand: color from the brand palette
-     * * colorful: picks a color from a set of pre-defined colors, based on a hash of the name (or idForColor if provided)
-     * * [AvatarNamedColor]: a specific color from the theme
-     *
-     * @defaultvalue neutral
-     */
-    color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
+  /**
+   * The color when displaying either an icon or initials.
+   * * neutral (default): gray
+   * * brand: color from the brand palette
+   * * colorful: picks a color from a set of pre-defined colors, based on a hash of the name (or idForColor if provided)
+   * * [AvatarNamedColor]: a specific color from the theme
+   *
+   * @defaultvalue neutral
+   */
+  color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
 
-    /**
-     * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
-     * Use this when a name is not available, but there is another unique identifier that can be used instead.
-     */
-    idForColor?: string;
-  };
-
-/**
- * Sizes for the Avatar
- *
- * This is a restricted list based on design guidelines for the Avatar control.
- */
-export type AvatarSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+  /**
+   * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
+   * Use this when a name is not available, but there is another unique identifier that can be used instead.
+   */
+  idForColor?: string | undefined;
+};
 
 /**
  * A specific named color for the Avatar
@@ -234,21 +233,36 @@ export type AvatarNamedColor =
 
 ## Structure
 
+JSX Tree:
+
+```jsx
+<slots.root {...slotProps.root}>
+  {slots.initials && <slots.initials {...slotProps.initials} />}
+  {slots.icon && <slots.icon {...slotProps.icon} />}
+  {slots.image && <slots.image {...slotProps.image} />}
+  {slots.badge && <slots.badge {...slotProps.badge} />}
+</slots.root>
+```
+
+Resulting HTML (in this example, "avatar-42" is an ID generated by `useId`):
+
 ```html
-<span class="root">
-  <!-- Initials or icon -->
-  <span class="label">AB</span>
-  <!-- Profile image, if given -->
-  <img class="image" src="..." />
-  <span class="badge">
-    <!-- Content of the badge slot goes here, if given -->
-  </span>
+<span class="{root}" id="avatar-42" aria-label="Miguel Garcia" aria-labelledby="avatar-42 avatar-42__badge">
+  <!-- Only one of initials OR icon will be rendered, never both -->
+  <span class="{initials}" aria-hidden="true">MG</span>
+  <span class="{icon}" aria-hidden="true"><svg>...</svg></span>
+
+  <!-- The Image -->
+  <img class="{image}" src="..." aria-hidden="true" role="presentation" alt="" />
+
+  <!-- The PresenceBadge's HTML is rendered here -->
+  <span class="{PresenceBadge}" id="avatar-42__badge" aria-hidden="true">...</span>
 </span>
 ```
 
 ## Migration
 
-See [MIGRATION.md](https://github.com/microsoft/fluentui/blob/master/packages/react-avatar/MIGRATION.md).
+See [MIGRATION.md](./MIGRATION.md).
 
 ## Behaviors
 
@@ -257,8 +271,8 @@ See [MIGRATION.md](https://github.com/microsoft/fluentui/blob/master/packages/re
 - **Display** - The Avatar will use the following priority:
 
   - The `image` property, if provided.
+  - Initials derived from the `name` property (this is always displayed, so it is visible while the image is loading, and if the image fails to load).
   - The `icon` property, if provided.
-  - Initials derived from the `name` property (this is also displayed while the image is loading).
   - If no `image`, `icon`, or `name` is provided, the default "person" icon will be used.
 
 - **Active** - The `active` property affects the display of the avatar if set. There will be an animation when switching between active and inactive.
@@ -271,11 +285,22 @@ See [MIGRATION.md](https://github.com/microsoft/fluentui/blob/master/packages/re
 The Avatar is non-interactive.
 
 - **Keyboard** - Not keyboard focusable.
-- **Mouse**
-  - Hover: Show tooltip (TODO: Need to figure out how the tooltip content will be generated based on the name and status).
-  - Click: No action
+- **Mouse** - Nothing
 - **Touch** - Nothing
 
 ## Accessibility
 
-_TODO_
+The Avatar presents as a single img element to accessibility tools, regardless of what it is displaying (image, initials, or icon).
+
+- The Avatar's root has `role="img"`
+- All other slots have `aria-hidden="true"`.
+- The `<img>` additionally has `alt="" role="presentation"`
+
+The Avatar root's label will be determined using the following priority:
+
+- If `aria-label` and/or `aria-labelledby` is provided on props, do not add anything else.
+- If `name` is provided, set the root's `aria-label={name}`.
+  - If a badge is present, _also_ set the root's `aria-labelledby={root.id + ' ' + badge.id}`.
+  - This means the Avatar is labelled by both its root and badge slots, and results in a label like "Miguel Garcia Busy".
+- If there's no `name`, but `initials` are provided, set the root's `aria-labelledby={initials.id}`.
+  - If a badge is present, _instead_ set the root's `aria-labelledby={initials.id + ' ' + badge.id}`.
