@@ -43,8 +43,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@griffel/react": "1.0.0",
     "@fluentui/react-utilities": "9.0.0-rc.1",
+    "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

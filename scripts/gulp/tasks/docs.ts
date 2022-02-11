@@ -128,8 +128,7 @@ task('build:docs:webpack', cb => {
 task('build:docs:assets:component:info', cb => {
   const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
   const lernaArgs = ['lerna', 'run', 'build:info'];
-
-  const result = spawnSync('yarn', lernaArgs, {
+  const result = spawnSync('yarn', ['exec', ...lernaArgs], {
     cwd: fluentRoot,
     shell: true,
     stdio: 'inherit',

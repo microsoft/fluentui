@@ -22,11 +22,7 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn (install packages)
+      - template: .devops/templates/yarn.yml
 
       - script: |
           yarn checkchange
@@ -64,11 +60,7 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
+      - template: .devops/templates/yarn.yml
 
       # this also builds FUI N* docs if appropriate
       - script: |
@@ -115,11 +107,7 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
+      - template: .devops/templates/yarn.yml
 
       - script: |
           yarn workspace @fluentui/docs vr:build
@@ -151,11 +139,7 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
+      - template: .devops/templates/yarn.yml
 
       - script: |
           yarn workspace @fluentui/vr-tests screener:build

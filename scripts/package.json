@@ -4,8 +4,8 @@
   "private": true,
   "main": "./index.js",
   "bin": {
-    "just-scripts": "./just-scripts.js",
-    "e2e": "./cypress.js"
+    "e2e": "./cypress.js",
+    "just-scripts": "./just-scripts.js"
   },
   "scripts": {
     "build": "echo no-op",

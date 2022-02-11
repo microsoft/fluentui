@@ -26,7 +26,6 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0"
   },
-  "dependencies": {},
   "beachball": {
     "disallowedChangeTypes": [
       "major",

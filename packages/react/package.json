@@ -53,8 +53,8 @@
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.3.0",
-    "@fluentui/foundation-legacy": "^8.1.22",
     "@fluentui/font-icons-mdl2": "^8.1.23",
+    "@fluentui/foundation-legacy": "^8.1.22",
     "@fluentui/merge-styles": "^8.3.0",
     "@fluentui/react-focus": "^8.3.18",
     "@fluentui/react-hooks": "^8.3.12",

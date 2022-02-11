@@ -68,10 +68,7 @@ jobs:
             git checkout $BRANCH_NAME
             git pull
 
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
+      - template: .devops/templates/yarn.yml
 
       - task: CmdLine@2
         displayName: yarn buildci
@@ -152,10 +149,7 @@ jobs:
             git checkout $BRANCH_NAME
             git pull
 
-      - task: Bash@3
-        displayName: Yarn
-        inputs:
-          filePath: yarn-ci.sh
+      - template: .devops/templates/yarn.yml
 
       - task: CmdLine@2
         displayName: 'Set nightlyReleaseDate'

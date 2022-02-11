@@ -22,15 +22,15 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.1.5",
     "@fluentui/react-icons-mdl2": "^1.2.15",
+    "@fluentui/set-version": "^8.1.5",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

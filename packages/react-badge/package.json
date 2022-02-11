@@ -43,9 +43,9 @@
   },
   "dependencies": {
     "@fluentui/react-icons": "^2.0.159-beta.10",
-    "@griffel/react": "1.0.0",
     "@fluentui/react-theme": "9.0.0-rc.1",
     "@fluentui/react-utilities": "9.0.0-rc.1",
+    "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

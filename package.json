@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Reusable React components for building experiences for Microsoft 365.",
   "private": true,
+  "packageManager": "yarn@3.1.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -256,18 +257,6 @@
       "scripts",
       "tools",
       "typings"
-    ],
-    "nohoist": [
-      "@fluentui/react-northstar-fela-renderer/stylis",
-      "@fluentui/react-northstar-emotion-renderer/@types/stylis",
-      "@fluentui/react-northstar-emotion-renderer/stylis",
-      "@fluentui/web-components/@microsoft/eslint-config-fast-dna",
-      "@fluentui/web-components/@storybook/html",
-      "@fluentui/web-components/ts-loader",
-      "@fluentui/web-components/ts-loader/**",
-      "@fluentui/web-components/ts-node",
-      "@fluentui/web-components/ts-node/**",
-      "@fluentui/web-components/webpack"
     ]
   },
   "resolutions": {
@@ -410,6 +399,5 @@
         ]
       }
     ]
-  },
-  "dependencies": {}
+  }
 }

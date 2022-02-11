@@ -43,8 +43,8 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "9.0.0-rc.1",
-    "@fluentui/react-portal": "9.0.0-rc.1",
     "@fluentui/react-context-selector": "9.0.0-rc.1",
+    "@fluentui/react-portal": "9.0.0-rc.1",
     "@fluentui/react-positioning": "9.0.0-rc.1",
     "@fluentui/react-utilities": "9.0.0-rc.1",
     "@griffel/react": "1.0.0",

@@ -35,10 +35,7 @@ steps:
       git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes
 
-  - task: Bash@3
-    inputs:
-      filePath: yarn-ci.sh
-    displayName: yarn
+  - template: .devops/templates/yarn.yml
 
   - script: |
       yarn generate-version-files

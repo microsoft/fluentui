@@ -22,8 +22,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "@fluentui/react-conformance": "*"
+    "@fluentui/react-conformance": "*",
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@griffel/react": "1.0.0",

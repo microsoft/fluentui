@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "sort packages & scripts",
+  "packageName": "@fluentui/react-cards",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

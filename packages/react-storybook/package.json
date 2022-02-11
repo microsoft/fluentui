@@ -27,8 +27,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
+    "@types/react": "16.9.42",
     "react": "16.8.6"
   },
   "dependencies": {
@@ -37,10 +37,10 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <18.0.0",
-    "react": ">=16.8.0 <18.0.0",
     "@storybook/addon-knobs": "^6.0.28",
-    "@storybook/addons": "^6.0.28"
+    "@storybook/addons": "^6.0.28",
+    "@types/react": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

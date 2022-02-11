@@ -15,11 +15,7 @@ workspace:
 
 steps:
   - template: .devops/templates/tools.yml
-
-  - task: Bash@3
-    inputs:
-      filePath: yarn-ci.sh
-    displayName: yarn
+  - template: .devops/templates/yarn.yml
 
   # @fluentui/perf-test-northstar needs build and bundle steps
   - script: |

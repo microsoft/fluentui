@@ -28,11 +28,7 @@ workspace:
 
 steps:
   - template: .devops/templates/tools.yml
-
-  - task: Bash@3
-    inputs:
-      filePath: yarn-ci.sh
-    displayName: yarn
+  - template: .devops/templates/yarn.yml
 
     # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
   - script: |

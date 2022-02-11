@@ -54,6 +54,9 @@ $RECYCLE.BIN/
 .Spotlight-V100
 .Trashes
 
+.yarn/*
+!.yarn/patches
+!.yarn/releases
 .bin
 dist.stats.json
 bower_components

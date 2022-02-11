@@ -27,8 +27,8 @@
   },
   "dependencies": {
     "@fluentui/react": "^8.55.1",
-    "@fluentui/set-version": "^8.1.5",
     "@fluentui/scheme-utilities": "^8.2.12",
+    "@fluentui/set-version": "^8.1.5",
     "tslib": "^2.1.0"
   }
 }

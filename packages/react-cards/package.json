@@ -39,8 +39,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.55.1",
     "@fluentui/foundation-legacy": "^8.1.22",
+    "@fluentui/react": "^8.55.1",
     "@fluentui/set-version": "^8.1.5",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^2.1.0"

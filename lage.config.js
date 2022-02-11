@@ -1,5 +1,7 @@
 // Configuration documentation: https://microsoft.github.io/lage/guide/config.html
 module.exports = {
+  npmClient: 'yarn',
+
   pipeline: {
     build: ['^build'],
     'build:info': [],

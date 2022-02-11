@@ -1,0 +1,17 @@
+# Install versions of Node and Yarn required by build pipelines.
+steps:
+  - bash: echo "##vso[task.setvariable variable=folder;isOutput=true]$(yarn config get cacheFolder)"
+    name: yarnCache
+
+  - task: Cache@2
+    inputs:
+      key: yarn | yarn.lock | .yarnrc.yml
+      restoreKeys: |
+        yarn
+      path: $(yarnCache.folder)
+    displayName: Cache Yarn packages
+
+  - task: Bash@3
+    inputs:
+      filePath: yarn-ci.sh
+    displayName: yarn (install packages)

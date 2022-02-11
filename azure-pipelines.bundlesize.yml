@@ -18,11 +18,7 @@ jobs:
     pool: '1ES-Host-Ubuntu'
     steps:
       - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
+      - template: .devops/templates/yarn.yml
 
       - script: |
           yarn lage bundle-size --verbose $(sinceArg)
@@ -60,11 +56,7 @@ jobs:
     pool: '1ES-Host-Ubuntu'
     steps:
       - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
+      - template: .devops/templates/yarn.yml
 
       - script: yarn build --to @fluentui/react @fluentui/keyboard-key
         displayName: yarn build to @fluentui/react
@@ -98,11 +90,7 @@ jobs:
     pool: '1ES-Host-Ubuntu'
     steps:
       - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
+      - template: .devops/templates/yarn.yml
 
       - script: yarn build --to @fluentui/react-northstar
         displayName: yarn build to @fluentui/react-northstar

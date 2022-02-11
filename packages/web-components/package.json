@@ -46,6 +46,9 @@
     "test-firefox": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage",
     "test-firefox:verbose": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
   },
+  "installConfig": {
+    "hoistingLimits": "workspaces"
+  },
   "devDependencies": {
     "@storybook/html": "6.3.6",
     "@types/chai": "^4.2.11",
