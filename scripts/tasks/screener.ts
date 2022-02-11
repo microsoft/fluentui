@@ -21,6 +21,8 @@ export async function screener() {
   console.log('screener config for run');
   console.dir(screenerConfig, { depth: 10 });
   await screenerRunner(screenerConfig);
+  // screener-runner internally starts a puppeteer instance that only closes on process exist
+  process.exit(0);
 
   // Scoping can only be used once the legacy check and new check switch required status
   // const packageInfos = getAllPackageInfo();
