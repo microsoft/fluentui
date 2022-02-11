@@ -865,15 +865,20 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
           renderedItems.push(renderSectionItem(item, itemClassNames, menuClassNames, index, hasCheckmarks, hasIcons));
           break;
         default:
-          const menuItem = renderNormalItem(
-            item,
-            itemClassNames,
-            index,
-            focusableElementIndex,
-            totalItemCount,
-            hasCheckmarks,
-            hasIcons,
-          );
+          const defaultRenderNormalItem = () =>
+            renderNormalItem(
+              item,
+              itemClassNames,
+              index,
+              focusableElementIndex,
+              totalItemCount,
+              hasCheckmarks,
+              hasIcons,
+            ) as JSX.Element;
+
+          const menuItem = props.onRenderContextualMenuItemWrapper
+            ? props.onRenderContextualMenuItemWrapper(item, defaultRenderNormalItem)
+            : defaultRenderNormalItem();
           renderedItems.push(renderListItem(menuItem, item.key || index, itemClassNames, item.title));
           break;
       }
