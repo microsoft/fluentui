@@ -1,5 +1,6 @@
 export * from './themes/index';
 export * from './utils/index';
+export * from './global/index';
 
 export { themeToTokensObject } from './themeToTokensObject';
 export { tokens } from './tokens';
