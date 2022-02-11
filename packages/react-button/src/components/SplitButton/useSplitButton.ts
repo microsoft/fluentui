@@ -35,7 +35,6 @@ export const useSplitButton_unstable = (
       appearance,
       disabled,
       disabledFocusable,
-      id: baseId + '__menuButton',
       menuIcon,
       shape,
       size,
@@ -57,10 +56,15 @@ export const useSplitButton_unstable = (
     },
   });
 
-  // Resolve menu button's aria-labelledby if not provided by the user
-  if (menuButtonShorthand && !menuButtonShorthand['aria-labelledby']) {
-    menuButtonShorthand['aria-labelledby'] =
-      (primaryActionButtonShorthand ? primaryActionButtonShorthand.id + ' ' : '') + menuButtonShorthand.id;
+  // Resolve menu button's aria-labelledby to be labelled by the primary action button if not a label was not provided
+  // by the user.
+  if (
+    menuButtonShorthand &&
+    primaryActionButtonShorthand &&
+    !menuButtonShorthand['aria-label'] &&
+    !menuButtonShorthand['aria-labelledby']
+  ) {
+    menuButtonShorthand['aria-labelledby'] = primaryActionButtonShorthand.id;
   }
 
   return {
