@@ -19,7 +19,7 @@ export async function screener() {
   const screenerStates = await getScreenerStates(screenerConfig, process.env.DEPLOYURL, '/react-screener/iframe.html');
   screenerConfig.states = screenerStates;
   console.log('screener config for run');
-  console.dir(screenerConfig, { depth: 10 });
+  console.log(JSON.stringify(screenerConfig, null, 2));
   await screenerRunner(screenerConfig);
   // screener-runner internally starts a puppeteer instance that only closes on process exist
   process.exit(0);
