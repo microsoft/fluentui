@@ -9,10 +9,8 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "screener": "screener-storybook --conf screener.config.js --debug",
     "screener:build": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
-    "screener:local": "screener-storybook --conf screener.local.config.js --debug",
-    "screener:proxy": "just-scripts screener",
+    "screener": "just-scripts screener",
     "start": "just-scripts dev:storybook"
   },
   "devDependencies": {

@@ -26,7 +26,7 @@ async function scheduleScreenerBuild(
     commit: string;
     pullRequest: string;
   },
-): Promise<string | undefined> {
+) {
   const payload = {
     states: screenerConfig.states,
 
@@ -124,4 +124,6 @@ export async function cancelScreenerRun(
     project: screenerConfig.projectRepo,
     conclusion,
   });
+
+  console.log(`cancelled screener run ${screenerConfig.projectRepo}`);
 }
