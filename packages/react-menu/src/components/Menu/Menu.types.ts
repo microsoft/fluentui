@@ -4,7 +4,7 @@ import { usePopperMouseTarget, PositioningShorthand } from '@fluentui/react-posi
 import { MenuListCommons } from '../MenuList/index';
 import { MenuContextValue } from '../../contexts/menuContext';
 
-export type Dummy = 'dummy';
+export type Dummy = 'dummy'13;
 
 type MenuCommons = MenuListCommons & {
   /**
