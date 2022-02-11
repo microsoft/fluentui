@@ -25,8 +25,5 @@ export const withFluentProvider = (StoryFn: any, context: FluentStoryContext) =>
 };
 
 const FluentExampleContainer: React.FC<{ theme: Theme }> = props => {
-  const { theme } = props;
-
-  const backgroundColor = theme.colorNeutralBackground2;
-  return <div style={{ padding: '48px 24px', backgroundColor: backgroundColor }}>{props.children}</div>;
+  return <div style={{ padding: '48px 24px' }}>{props.children}</div>;
 };
