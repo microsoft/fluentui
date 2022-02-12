@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add ./e2e to list of files allowing devDependencies",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}
