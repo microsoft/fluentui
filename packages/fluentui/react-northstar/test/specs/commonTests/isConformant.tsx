@@ -10,15 +10,13 @@ import * as path from 'path';
 import * as React from 'react';
 import { ComponentType, ReactWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import { getDisplayName, mountWithProvider as mount, syntheticEvent, mountWithProvider } from 'test/utils';
+import { getDisplayName, mountWithProvider as mount, syntheticEvent, mountWithProvider, consoleUtil } from 'test/utils';
 
 import * as FluentUI from 'src/index';
 import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
-import { mainTests, asPropTests, AsPropIsConformantOptions } from './reactConformanceTests';
+import { extraConformanceTests } from './extraConformanceTests';
 
-export interface Conformant<TProps = {}>
-  extends Pick<IsConformantOptions<TProps>, 'disabledTests' | 'testOptions'>,
-    AsPropIsConformantOptions {
+export interface Conformant<TProps = {}> extends Pick<IsConformantOptions<TProps>, 'disabledTests' | 'testOptions'> {
   /** Path to the test file. */
   testPath: string;
   constructorName?: string;
@@ -27,8 +25,6 @@ export interface Conformant<TProps = {}>
   hasAccessibilityProp?: boolean;
   /** Props required to render Component without errors or warnings. */
   requiredProps?: object;
-  /** Does this component render a Portal powered component? */
-  rendersPortal?: boolean;
   /** This component uses wrapper slot to wrap the 'meaningful' element. */
   wrapperComponent?: React.ElementType;
   /** List of autocontrolled props for this component. */
@@ -74,7 +70,6 @@ export function isConformant(
       .replace(/.ts$/, '.tsx'),
     Component,
     displayName: constructorName,
-    asPropHandlesRef: true,
     // TODO enable component-has-root-ref and disable test where necessary.
     // List of the components that will either require the test to be disabled or fixed: (https://hackmd.io/OAUn0pF6Qj-vc315wAHXLQ)
     disabledTests: [
@@ -86,7 +81,7 @@ export function isConformant(
       'component-has-static-classname',
     ],
     helperComponents: [Ref, RefFindNode, FocusZone],
-    extraTests: { ...mainTests, ...(!skipAsPropTests && asPropTests) },
+    extraTests: extraConformanceTests,
   };
 
   isConformantBase(defaultConfig, options);
@@ -134,6 +129,73 @@ export function isConformant(
     // that is why we are testing if it is greater then 1
     expect(component.find(props).length).toBeGreaterThan(1);
   });
+
+  if (!skipAsPropTests) {
+    describe('"as" prop (common)', () => {
+      test('renders the component as HTML tags or passes "as" to the next component', () => {
+        // silence element nesting warnings
+        consoleUtil.disableOnce();
+
+        const tags = ['a', 'em', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'p', 'span', 'strong'];
+
+        tags.forEach(tag => {
+          const wrapper = mount(<Component {...requiredProps} as={tag} />);
+          const component = getComponent(wrapper);
+          try {
+            expect(component.is(tag)).toEqual(true);
+          } catch (err) {
+            expect(component.type()).not.toEqual(Component);
+            expect(component.prop('as')).toEqual(tag);
+          }
+        });
+      });
+
+      test('renders as a functional component or passes "as" to the next component', () => {
+        const MyComponent = () => null;
+
+        const wrapper = mount(<Component {...requiredProps} as={MyComponent} />);
+        const component = getComponent(wrapper);
+
+        try {
+          expect(component.type()).toEqual(MyComponent);
+        } catch (err) {
+          expect(component.type()).not.toEqual(Component);
+          expect(component.find('[as]').last().prop('as')).toEqual(MyComponent);
+        }
+      });
+
+      test('renders as a ReactClass or passes "as" to the next component', () => {
+        class MyComponent extends React.Component {
+          render() {
+            return <div data-my-react-class />;
+          }
+        }
+
+        const wrapper = mount(<Component {...requiredProps} as={MyComponent} />);
+        const component = getComponent(wrapper);
+
+        try {
+          expect(component.type()).toEqual(MyComponent);
+        } catch (err) {
+          expect(component.type()).not.toEqual(Component);
+          expect(component.prop('as')).toEqual(MyComponent);
+        }
+      });
+
+      test('passes extra props to the component it is renders as', () => {
+        if (targetComponent) {
+          const el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(targetComponent);
+
+          expect(el.prop('data-extra-prop')).toBe('foo');
+        } else {
+          const MyComponent = () => null;
+          const el = mount(<Component {...requiredProps} as={MyComponent} data-extra-prop="foo" />).find(MyComponent);
+
+          expect(el.prop('data-extra-prop')).toBe('foo');
+        }
+      });
+    });
+  }
 
   // ---------------------------------------
   // Autocontrolled props
