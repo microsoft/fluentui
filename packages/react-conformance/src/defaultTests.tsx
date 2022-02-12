@@ -1,7 +1,7 @@
 import { TestObject, IsConformantOptions } from './types';
 import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
-import { getComponent, getPackagePath, getCallbackArguments, validateCallbackArguments } from './utils';
+import { getComponent, getPackagePath, getCallbackArguments, validateCallbackArguments } from './utils/index';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 

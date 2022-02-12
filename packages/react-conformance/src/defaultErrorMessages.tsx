@@ -3,7 +3,7 @@ import { IsConformantOptions } from './types';
 import { EOL } from 'os';
 import * as path from 'path';
 
-import { errorMessageColors, formatArray, getErrorMessage, formatErrors, getPackagePath } from './utils';
+import { errorMessageColors, formatArray, getErrorMessage, formatErrors, getPackagePath } from './utils/index';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
