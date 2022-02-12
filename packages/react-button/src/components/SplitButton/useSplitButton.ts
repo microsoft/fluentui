@@ -36,6 +36,7 @@ export const useSplitButton_unstable = (
       shape,
       size,
     },
+    required: true,
   });
   const primaryActionButtonShorthand = resolveShorthand(primaryActionButton, {
     defaultProps: {
@@ -49,6 +50,7 @@ export const useSplitButton_unstable = (
       shape,
       size,
     },
+    required: true,
   });
 
   return {

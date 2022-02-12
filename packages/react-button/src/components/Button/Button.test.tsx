@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import {
-  buttonAccessibilityBehaviorDefinition,
-  // buttonBehaviorDefinition,
-  validateBehavior,
-  ComponentTestFacade,
-} from '@fluentui/a11y-testing';
+import { buttonAccessibilityBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
 import { isConformant } from '../../common/isConformant';
 import { Button } from './Button';
 import { ButtonProps } from './Button.types';
@@ -30,7 +25,10 @@ describe('Button', () => {
   describe('when rendered as a button', () => {
     it('renders correctly', () => {
       const result = render(<Button>This is a button</Button>);
-      expect(result.container).toMatchSnapshot();
+      const button = result.getByRole('button');
+
+      expect(button).toBeTruthy();
+      expect(button.tagName).toBe('BUTTON');
     });
 
     it('can be focused', () => {
@@ -68,7 +66,7 @@ describe('Button', () => {
       expect(onClick).toHaveBeenCalled();
     });
 
-    it('does not trigger a function by being clicked when button is disabled', () => {
+    it('does not trigger a function by being clicked when disabled has been passed to the component', () => {
       const onClick = jest.fn();
       const result = render(
         <Button disabled onClick={onClick}>
@@ -80,7 +78,7 @@ describe('Button', () => {
       expect(onClick).not.toHaveBeenCalled();
     });
 
-    it('does not trigger a function by being clicked when button is disabled and focusable', () => {
+    it('does not trigger a function by being clicked when disabledFocusable has been passed to the component', () => {
       const onClick = jest.fn();
       const result = render(
         <Button disabledFocusable onClick={onClick}>
@@ -100,11 +98,10 @@ describe('Button', () => {
           This is a button
         </Button>,
       );
-
       const anchor = result.getByRole('button');
-      expect(anchor.tagName).toBe('A');
 
-      expect(result.container).toMatchSnapshot();
+      expect(anchor).toBeTruthy();
+      expect(anchor.tagName).toBe('A');
     });
 
     it('can be focused', () => {
@@ -122,7 +119,7 @@ describe('Button', () => {
 
     it('cannot be focused when disabled has been passed to the component', () => {
       const result = render(
-        <Button as="a" href="https://www.bing.com" disabled>
+        <Button as="a" disabled href="https://www.bing.com">
           This is a button
         </Button>,
       );
@@ -135,7 +132,7 @@ describe('Button', () => {
 
     it('can be focused when disabledFocusable has been passed to the component', () => {
       const result = render(
-        <Button as="a" href="https://www.bing.com" disabledFocusable>
+        <Button as="a" disabledFocusable href="https://www.bing.com">
           This is a button
         </Button>,
       );

@@ -7,7 +7,7 @@ export const WithLongText = () => (
   <>
     <Menu positioning="below-end">
       <MenuTrigger>
-        {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps} primaryActionButton="Short text" />}
+        {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Short text</SplitButton>}
       </MenuTrigger>
 
       <MenuPopover>
@@ -21,10 +21,9 @@ export const WithLongText = () => (
     <Menu positioning="below-end">
       <MenuTrigger>
         {(triggerProps: MenuButtonProps) => (
-          <SplitButton
-            menuButton={triggerProps}
-            primaryActionButton="Long text truncates after it hits the max width of the component"
-          />
+          <SplitButton menuButton={triggerProps}>
+            Long text truncates after it hits the max width of the component
+          </SplitButton>
         )}
       </MenuTrigger>
 
