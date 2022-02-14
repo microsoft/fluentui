@@ -34,7 +34,7 @@ HeadingLevels.parameters = {
   docs: {
     description: {
       story:
-        'An accordion header is a `<div>` by default, but according to [WAI-ARIA specification](https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties), it should be marked up as a proper heading of any level.',
+        'An accordion header is a `<div>` by default, but according to [WAI-ARIA specification](https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties), we recommend using a proper heading of any level in markup.',
     },
   },
 };

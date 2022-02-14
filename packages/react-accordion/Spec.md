@@ -420,13 +420,13 @@ As described on [WAI-ARIA Roles, States, and Properties](https://www.w3.org/TR/w
 
 > Each accordion header button is wrapped in an element with role heading that has a value set for aria-level that is appropriate for the information architecture of the page.
 
-Every `AccordionHeader` should have as it's root an element with `role="heading"` and a proper `aria-level` attribute (or be a semantic heading element: `h1`, `h2`, `h3`, `h4`, `h5` or `h6`). This behavior is not implemented by default on `AccordionHeader` as it's impossible to predict which heading level will be required by the user. Requiring manual addition of such ARIA requirement.
+Every `AccordionHeader` should have as its root a semantic heading element: `h1`, `h2`, `h3`, `h4`, `h5` or `h6`. Alternatively `role="heading"` and a proper `aria-level` attribute. This behavior is not implemented by default on `AccordionHeader` as it's impossible to predict which heading level will be required by the user. Requiring manual addition of such ARIA requirement.
 
 ```tsx
 {/* No heading level by default */}
 <AccordionHeader>This is a header</AccordionHeader>
 {/* Generated html */}
-<div> {/* ⚠️ This is wrong according to WAI-ARIA specification ⚠️*/}
+<div>
   <button>This is a header</button>
 </div>
 
