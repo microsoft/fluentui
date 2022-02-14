@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add visually hidden content to grid cells to fix iOS VoiceOver bug",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

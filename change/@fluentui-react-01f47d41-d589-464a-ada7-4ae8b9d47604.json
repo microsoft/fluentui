@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Add command to run e2e tests",
-  "packageName": "@fluentui/react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

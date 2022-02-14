@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Mon, 14 Feb 2022 07:26:36 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.6.2",
+      "version": "1.6.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "525ac9640d22576385c37ee6c773de8a832c9644",
+            "comment": "Add ./e2e to list of files allowing devDependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Jan 2022 07:30:06 GMT",
       "tag": "@fluentui/eslint-plugin_v1.6.1",
       "version": "1.6.1",

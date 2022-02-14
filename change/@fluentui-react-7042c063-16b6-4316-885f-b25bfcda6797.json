@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix aria-labelledby on div element missing reference",
-  "packageName": "@fluentui/react",
-  "email": "mrkbear@qq.com",
-  "dependentChangeType": "patch"
-}
