@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Clear document.body after each test to avoid interference between tests",
-  "packageName": "@fluentui/react-conformance",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

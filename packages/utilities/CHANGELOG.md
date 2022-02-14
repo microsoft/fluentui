@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Wed, 09 Feb 2022 07:30:50 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Feb 2022 07:27:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.4.1)
+
+Fri, 11 Feb 2022 07:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.4.0..@fluentui/utilities_v8.4.1)
+
+### Patches
+
+- modalize: don't access document in SSR ([PR #21642](https://github.com/microsoft/fluentui/pull/21642) by elcraig@microsoft.com)
 
 ## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.4.0)
 
