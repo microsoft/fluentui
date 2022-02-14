@@ -2,6 +2,35 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 14 Feb 2022 07:26:36 GMT",
+      "tag": "@fluentui/react_v8.55.2",
+      "version": "8.55.2",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "525ac9640d22576385c37ee6c773de8a832c9644",
+            "comment": "Add command to run e2e tests"
+          }
+        ],
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "21ad43bbd1664a7f409b28c4b7f21e50d7039a4d",
+            "comment": "Add visually hidden content to grid cells to fix iOS VoiceOver bug"
+          },
+          {
+            "author": "mrkbear@qq.com",
+            "package": "@fluentui/react",
+            "commit": "245879c68b48deae36c65cb9e6222a2627f038c0",
+            "comment": "Fix aria-labelledby on div element missing reference"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Feb 2022 07:27:47 GMT",
       "tag": "@fluentui/react_v8.55.1",
       "version": "8.55.1",

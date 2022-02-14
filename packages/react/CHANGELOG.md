@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 11 Feb 2022 07:27:47 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Feb 2022 07:26:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.55.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.55.2)
+
+Mon, 14 Feb 2022 07:26:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.55.1..@fluentui/react_v8.55.2)
+
+### Patches
+
+- Add visually hidden content to grid cells to fix iOS VoiceOver bug ([PR #21705](https://github.com/microsoft/fluentui/pull/21705) by sarah.higley@microsoft.com)
+- Fix aria-labelledby on div element missing reference ([PR #21549](https://github.com/microsoft/fluentui/pull/21549) by mrkbear@qq.com)
 
 ## [8.55.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.55.1)
 

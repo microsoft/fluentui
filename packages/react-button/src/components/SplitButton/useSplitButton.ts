@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { Button } from '../Button/Button';
 import { MenuButton } from '../MenuButton/MenuButton';
 import type { SplitButtonProps, SplitButtonState } from './SplitButton.types';
@@ -27,6 +27,9 @@ export const useSplitButton_unstable = (
     shape = 'rounded',
     size = 'medium',
   } = props;
+
+  const baseId = useId('splitButton-');
+
   const menuButtonShorthand = resolveShorthand(menuButton, {
     defaultProps: {
       appearance,
@@ -38,6 +41,7 @@ export const useSplitButton_unstable = (
     },
     required: true,
   });
+
   const primaryActionButtonShorthand = resolveShorthand(primaryActionButton, {
     defaultProps: {
       appearance,
@@ -47,11 +51,23 @@ export const useSplitButton_unstable = (
       disabledFocusable,
       icon,
       iconPosition,
+      id: baseId + '__primaryActionButton',
       shape,
       size,
     },
     required: true,
   });
+
+  // Resolve menu button's aria-labelledby to be labelled by the primary action button if not a label was not provided
+  // by the user.
+  if (
+    menuButtonShorthand &&
+    primaryActionButtonShorthand &&
+    !menuButtonShorthand['aria-label'] &&
+    !menuButtonShorthand['aria-labelledby']
+  ) {
+    menuButtonShorthand['aria-labelledby'] = primaryActionButtonShorthand.id;
+  }
 
   return {
     // Props passed at the top-level
