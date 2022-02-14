@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { ToolbarDividerProps, ToolbarDividerState } from './ToolbarDivider.types';
+import { useDivider_unstable } from '@fluentui/react-divider';
 
 /**
  * Create the state required to render ToolbarDivider.
@@ -15,17 +15,5 @@ export const useToolbarDivider_unstable = (
   props: ToolbarDividerProps,
   ref: React.Ref<HTMLElement>,
 ): ToolbarDividerState => {
-  return {
-    // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: 'div',
-    },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
-  };
+  return useDivider_unstable({ vertical: true, ...props }, ref);
 };

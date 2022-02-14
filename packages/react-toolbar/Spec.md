@@ -2,23 +2,26 @@
 
 ## Background
 
-_Description and use cases of this component_
+### Definition
+
+`Toolbar` is a surface that houses commands that operate on the content of the window, panel, or parent region it resides above. `Toolbar` is one of the most visible and recognizable way to surface commands, and can be an intuitive method for interacting with content on the page; however, if overloaded or poorly organized, they can be difficult to use and hide valuable commands from your user. `Toolbar` can also display a search box for finding content, hold simple commands as well as menus, or display the status of ongoing actions.
 
 ## Prior Art
 
-_Include background research done for this component_
+As a part of the spec definitions in Fluent UI, a research effort has been made through [Open UI](https://open-ui.org/). The current research proposal is available as an open source contribution undergoing review ([research proposal](https://github.com/openui/open-ui/pull/452))
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+## Comparison of `@fluentui/react` and `@fluentui/react-northstar`
 
-## Sample Code
+- All mentions of v7 or v8 == `@fluentui/react` ([docsite](https://developer.microsoft.com/en-us/fluentui#/))
+- All mentions of v0 == `@fluentui/react-northstar` ([docsite](https://fluentsite.z22.web.core.windows.net/))
 
-_Provide some representative example code that uses the proposed API for the component_
+The main difference between `@fluentui/react`'s `CommandBar` and `@fluentui/react-northstar`'s `Toolbar` is the right group of commands present in `CommandBar` which will not remove items on overflow.
+
+v0 `Toolbar` has support to children API with static components in `Toolbar` as `Toolbar.Button` etc...
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+The only layout variation is size differences, there are 2 sizes `medium` which is the default and `small`.
 
 ## API
 

@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { ToolbarButtonProps, ToolbarButtonState } from './ToolbarButton.types';
+import { useButton_unstable } from '../../../../react-button/src/Button';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import { ToolbarContext } from '../Toolbar/ToolbarContext';
 
 /**
  * Create the state required to render ToolbarButton.
@@ -13,19 +15,8 @@ import type { ToolbarButtonProps, ToolbarButtonState } from './ToolbarButton.typ
  */
 export const useToolbarButton_unstable = (
   props: ToolbarButtonProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarButtonState => {
-  return {
-    // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: 'div',
-    },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
-  };
+  const size = useContextSelector(ToolbarContext, ctx => ctx.size);
+  return useButton_unstable({ size, ...props }, ref);
 };

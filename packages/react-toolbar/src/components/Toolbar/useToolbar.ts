@@ -24,5 +24,6 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
       ref,
       ...props,
     }),
+    ...props,
   };
 };

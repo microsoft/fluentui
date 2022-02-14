@@ -1,11 +1,12 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 
 export type ToolbarSlots = {
-  root: Slot<'div'>;
+  root: IntrinsicSlotProps<'div'>;
 };
 
-type ToolbarCommons = {
+export type ToolbarCommons = {
   // TODO Add things shared between props and state here
+  size?: 'small' | 'medium';
 };
 
 /**
@@ -17,3 +18,11 @@ export type ToolbarProps = ComponentProps<ToolbarSlots> & ToolbarCommons;
  * State used in rendering Toolbar
  */
 export type ToolbarState = ComponentState<ToolbarSlots> & ToolbarCommons;
+
+export type ToolbarContextValue = {
+  size: ToolbarProps['size'];
+};
+
+export type ToolbarContextValues = {
+  toolbar: ToolbarContextValue;
+};
