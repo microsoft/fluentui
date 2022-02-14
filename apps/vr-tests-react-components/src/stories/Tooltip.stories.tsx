@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Tooltip } from '@fluentui/react-tooltip';
-import { TestWrapperDecorator } from '../utilities';
+import { TestWrapperDecorator } from '../utilities/index';
 import { makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
