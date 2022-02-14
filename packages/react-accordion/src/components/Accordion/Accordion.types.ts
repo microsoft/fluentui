@@ -11,8 +11,12 @@ export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: Ac
 type AccordionCommons = {
   /**
    * Indicates if keyboard navigation is available
+   * By default circular navigation is available,
+   * if 'linear' is provided than there's no circular navigation
+   *
+   * @default false
    */
-  navigable: boolean;
+  navigable: boolean | 'linear';
   /**
    * Indicates if Accordion support multiple Panels opened at the same time
    */

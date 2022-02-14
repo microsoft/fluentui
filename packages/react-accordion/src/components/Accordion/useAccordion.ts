@@ -24,7 +24,9 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
     initialState: [],
   });
 
-  const arrowNavigationProps = useArrowNavigationGroup();
+  const arrowNavigationProps = useArrowNavigationGroup({
+    circular: navigable === 'linear' ? false : navigable,
+  });
 
   const requestToggle = useEventCallback((event: AccordionToggleEvent, data: AccordionToggleData) => {
     onToggle?.(event, data);
