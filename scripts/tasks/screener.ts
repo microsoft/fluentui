@@ -74,7 +74,7 @@ function transformToStates(storybook: ScreenerStorybookSection, baseUrl: string)
 async function getScreenerStates(screenerConfig, baseUrl): Promise<ScreenerState[]> {
   await startStorybook(screenerConfig, {});
 
-  return transformToStates(screenerGetStorybook(), baseUrl);
+  return transformToStates(screenerGetStorybook() as ScreenerStorybookSection, baseUrl);
 }
 
 type ScreenerStory = { steps?: ScreenerRunnerStep[] };
