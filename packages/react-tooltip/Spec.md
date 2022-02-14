@@ -44,11 +44,7 @@ v0 tooltips use a `trigger` property to render the tooltip's target component. H
 
 # Sample Code
 
-```tsx
-<Tooltip content="Example Tooltip" relationship="description">
-  <a href="http://example.com">A link with a tooltip</a>
-</Tooltip>
-```
+Label tooltip for an icon-only button:
 
 ```tsx
 <Tooltip content="Copy" relationship="label">
@@ -56,17 +52,31 @@ v0 tooltips use a `trigger` property to render the tooltip's target component. H
 </Tooltip>
 ```
 
+Description tooltip for a link:
+
 ```tsx
-<Tooltip content={<b>The content can be JSX</b>} relationship="description">
+<Tooltip content="This is an example" relationship="description">
+  <a href="http://example.com">A link</a>
+</Tooltip>
+```
+
+Tooltip with custom JSX content:
+
+```tsx
+<Tooltip content={<b>The content can be JSX</b>} relationship="label">
   <Button />
 </Tooltip>
 ```
+
+Custom component as a trigger:
 
 ```tsx
 <Tooltip content="Supports any component that accepts HTML attributes" relationship="label">
   <FancyButton />
 </Tooltip>
 ```
+
+Render function for the trigger:
 
 ```tsx
 <Tooltip content="The child can be a render function" relationship="description">
