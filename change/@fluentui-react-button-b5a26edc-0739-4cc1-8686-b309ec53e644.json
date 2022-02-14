@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "SplitButton: Fixing screen reader access issues.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

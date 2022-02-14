@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select renders the default state 1`] = `
+<div>
+  <span
+    class="fui-Select"
+  >
+    <select
+      class=""
+    />
+    <span />
+  </span>
+</div>
+`;

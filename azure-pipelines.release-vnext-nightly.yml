@@ -45,15 +45,17 @@ steps:
     displayName: 'Bump and commit nightly versions'
 
   - script: |
-      yarn run:published build --production --no-cache
+      yarn run:published build --production
     displayName: yarn build
 
+  # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
+  # https://github.com/microsoft/fluentui/issues/21686
   - script: |
-      yarn run:published test
+      yarn run:published test --only
     displayName: yarn test
 
   - script: |
-      yarn run:published lint
+      yarn run:published lint --only
     displayName: yarn lint
 
   - script: |

@@ -53,7 +53,7 @@ jobs:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
-          yarn buildci --no-cache $(sinceArg)
+          yarn buildci  $(sinceArg)
         displayName: build, test, lint
 
       - template: .devops/templates/cleanup.yml
@@ -72,11 +72,11 @@ jobs:
 
       # this also builds FUI N* docs if appropriate
       - script: |
-          yarn bundle --no-cache $(sinceArg)
+          yarn bundle  $(sinceArg)
         displayName: bundle
 
       - script: |
-          yarn lage build-storybook --no-cache --verbose $(sinceArg)
+          yarn lage build-storybook  --verbose $(sinceArg)
         displayName: build Storybooks
 
       ## This runs regardless of scope, the app will adapt to the scope as well
@@ -103,9 +103,9 @@ jobs:
           # This MUST have a trailing slash, or the links to PR deploy site assets won't work
           githubTargetLink: $(deployUrl)/
 
-      # only run e2e tests when converged storybook is published by scoping to the converged suite package
+      # only run e2e tests when the appropriate storybook is published by scoping to relevant packages
       - script: |
-          yarn e2e $(sinceArg) --scope @fluentui/react-components
+          yarn e2e $(sinceArg) --scope @fluentui/react-components --scope @fluentui/react
         displayName: Cypress E2E tests
 
       - template: .devops/templates/cleanup.yml
@@ -176,6 +176,8 @@ jobs:
           yarn workspace @fluentui/vr-tests screener
         displayName: run VR Test
         env:
+          SCREENER_ENDPOINT: $(screenerApiUri)
+          SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
           SCREENER_API_KEY: $(screener.key)
 
       - template: .devops/templates/cleanup.yml

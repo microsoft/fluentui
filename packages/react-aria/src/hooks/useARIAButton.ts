@@ -79,7 +79,7 @@ export const useARIAButton: ResolveShorthandFunction<ARIAButtonSlotProps> = (sho
     // If a <button> tag is to be rendered we just need to set disabled and aria-disabled correctly
     if (shorthandProps.as === 'button' || shorthandProps.as === undefined) {
       shorthandProps.disabled = disabled && !disabledFocusable;
-      shorthandProps['aria-disabled'] = disabledFocusable;
+      shorthandProps['aria-disabled'] = disabledFocusable ? true : undefined;
 
       // Undefine events if disabledFocusable is passed in
       if (disabledFocusable) {
