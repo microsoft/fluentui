@@ -6,7 +6,7 @@
 
 The Avatar component represents a person or entity. It displays the person's image, initials, or an icon, and can be either circular or square.
 
-Note: The Avatar control has been mostly implemented already. Visit [Avatar Storybook Examples](https://fluentuipr.z22.web.core.windows.net/pull/21679/react-components/storybook/index.html?path=/docs/components-avatar--default) to see the current state of the implementation.
+Note: The Avatar control has been mostly implemented already. Visit [Avatar Storybook Examples](https://fluentuipr.z22.web.core.windows.net/heads/master/react-components/storybook/index.html?path=/docs/components-avatar--default) to see the current state of the implementation.
 
 ## Prior Art
 
@@ -41,7 +41,7 @@ Display a user's initials:
 <Avatar name="Miguel Garcia" />
 ```
 
-Display an image of a user:
+Display a user's image:
 
 ```jsx
 <Avatar size={72} name="Mona Kane" image={{ src: './MonaKane.jpg' }} />
@@ -53,7 +53,7 @@ Display an icon only:
 <Avatar aria-label="Team" icon={<PeopleTeamRegular />} shape="square" />
 ```
 
-Displaying a badge:
+Display a badge:
 
 ```jsx
 <Avatar name="Allan Munger" badge={{ status: 'busy' }} />
@@ -296,7 +296,7 @@ The Avatar presents as a single img element to accessibility tools, regardless o
 - All other slots have `aria-hidden="true"`.
 - The `<img>` additionally has `alt="" role="presentation"`
 
-The Avatar root's label will be determined using the following priority:
+The Avatar root's label is determined using the following priority:
 
 - If `aria-label` and/or `aria-labelledby` is provided on props, do not add anything else.
 - If `name` is provided, set the root's `aria-label={name}`.

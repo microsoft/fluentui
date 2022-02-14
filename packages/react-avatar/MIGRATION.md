@@ -2,7 +2,7 @@
 
 ## Migration from v8
 
-The existing `Persona` control supports many more props than the `Avatar` control: notably the extra display text to the side of the image. As such, Avatar is only a direct replacement for Persona in cases where it was only being used to display the image (`hidePersonaDetails` is true). The Avatar will need to be used in conjunction with another component that displays additional personal details in order to be a full replacement for `Persona`.
+The existing `Persona` control supports many more props than the `Avatar` control: notably the extra display text to the side of the image. As such, Avatar is only a direct replacement for `Persona` in cases where it was only being used to display the image (`hidePersonaDetails` is true). To fully replace `Persona`, `Avatar` needs to be used in conjunction with another component that displays additional content.
 
 In cases where migration is possible, the following props will need to be renamed:
 
@@ -31,15 +31,15 @@ In cases where migration is possible, the following props will need to be rename
   - `PersonaPresence.dnd` => `badge={{ status: 'doNotDisturb' }}`
   - `PersonaPresence.offline` => `badge={{ status: 'offline' }}`
   - `PersonaPresence.online` => `badge={{ status: 'available' }}`
-- `presenceColors` => Not Supported. The badge could be restyled using CSS. E.g. `badge={{ style: { color: '...' } }}`
+- `presenceColors` => Not Supported. However, the badge can be styled using CSS. E.g. `badge={{ style: { color: '...' } }}`
 - `presenceTitle` => Not Supported.
 - `isOutOfOffice` => `badge={{ status: ..., outOfOffice: true }}`
 - `showUnknownPersonaCoin` => Not Supported. An approximation is: `icon={<QuestionRegular />}`
 - `initialsColor` => `color="colorful"`, or specify a color by name like `color="darkRed"`
-- `showInitialsUntilImageLoad` => This is the default behavior of Avatar.
+- `showInitialsUntilImageLoad` => Not Supported. This is always true for `Avatar`.
 - `imageShouldFadeIn` => Not Supported. Add a CSS class to the image if desired: `image={{ className: 'myFadeInClass' }}`
-- `imageShouldStartVisible` => This is the default behavior of Avatar.
-- `onPhotoLoadingStateChange` => Not Supported. Add event listeners to the image slot: `image={{ onLoad: ..., onError: ... }}`
+- `imageShouldStartVisible` => Not Supported. This is always true for `Avatar`.
+- `onPhotoLoadingStateChange` => Add event listeners to the image slot for the `<img>` events: `image={{ onLoad: ..., onError: ... }}`
 - `onRender*` => Avatar's slots allow render functions, such as `image={(Component, props) => <Component {...props} />}`
   - To render a square image, use `shape="square"`.
 
