@@ -62,6 +62,8 @@ async function scheduleScreenerBuild(
 
   if (response.status !== 200) {
     console.log(`screener-runner: Failed to queue screener tests: status=${response.status}. Retrying`);
+    const errorMessage = await response.text();
+    console.log(errorMessage);
 
     await wait(15000);
     await scheduleScreenerBuild(screenerConfig, buildInfo);
@@ -122,4 +124,6 @@ export async function cancelScreenerRun(
     project: screenerConfig.projectRepo,
     conclusion,
   });
+
+  console.log(`cancelled screener run ${screenerConfig.projectRepo}`);
 }

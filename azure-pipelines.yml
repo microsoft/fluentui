@@ -176,6 +176,8 @@ jobs:
           yarn workspace @fluentui/vr-tests screener
         displayName: run VR Test
         env:
+          SCREENER_ENDPOINT: $(screenerApiUri)
+          SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
           SCREENER_API_KEY: $(screener.key)
 
       - template: .devops/templates/cleanup.yml

@@ -13,12 +13,18 @@ export type ScreenerRunnerConfig = {
     compareSVGDOM: number; // Pass if SVG DOM is the same. Defaults to false.
   };
 
-  states: ScreenerRunnerStep[];
+  states: ScreenerState[];
 
   alwaysAcceptBaseBranch: boolean;
   baseBranch: string;
   commit: string;
   failureExitCode: number;
+};
+
+export type ScreenerState = {
+  url: string;
+  name: string;
+  steps?: ScreenerRunnerStep[];
 };
 
 export type ScreenerRunnerStep = {
