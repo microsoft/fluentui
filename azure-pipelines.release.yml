@@ -118,6 +118,7 @@ steps:
     displayName: 📒 Generate Manifest
     inputs:
       BuildDropPath: $(System.DefaultWorkingDirectory)
+      Verbosity: Debug
 
   - task: PublishPipelineArtifact@1
     displayName: 📒 Publish Manifest
