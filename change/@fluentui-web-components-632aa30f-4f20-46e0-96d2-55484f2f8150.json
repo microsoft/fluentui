@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "upgraded storybook to 6.4",
+  "packageName": "@fluentui/web-components",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "none"
+}
