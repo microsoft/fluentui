@@ -7,7 +7,7 @@ import { ScreenerRunnerConfig, ScreenerRunnerStep, ScreenerState } from '../scre
 import path from 'path';
 // @ts-ignore - screener-storybook has no typings
 import { startStorybook, getStorybook as screenerGetStorybook } from 'screener-storybook';
-import { getStorybook, Story } from '@storybook/react';
+import { getStorybook } from '@storybook/react';
 /**
  * Starts or cancels a screener run through the screener proxy.
  * Runs are cancelled if package does not appear in Lage's affected package graph.
@@ -52,34 +52,32 @@ export async function screener() {
  * @param baseUrl - base url of the deployed storybook
  * @returns screen steps
  */
-function transformToStates(storybook: StorybookSection, baseUrl: string): ScreenerState[] {
-  const states: ScreenerState[] = [];
-  storybook.forEach(component => {
-    component.stories.forEach(story => {
+function transformToStates(storybook: ScreenerStorybookSection, baseUrl: string): ScreenerState[] {
+  return storybook.reduce<ScreenerState[]>((states, component) => {
+    const componentStates = component.stories.map(story => {
       const previewUrl = `${baseUrl}?dataId=0&selectedKind=${encodeURIComponent(
         component.kind,
       )}&selectedStory=${encodeURIComponent(story.name)}`;
-      const steps = ((story as unknown) as StorybookStory | undefined).steps;
+      const steps = story.steps;
 
-      const state = {
+      return {
         url: previewUrl,
         name: `${component.kind}: ${story.name}`,
         ...(steps && { steps }),
       };
-
-      states.push(state);
     });
-  });
-  return states;
+
+    return states.concat(componentStates);
+  }, []);
 }
 
 async function getScreenerStates(screenerConfig, baseUrl): Promise<ScreenerState[]> {
   await startStorybook(screenerConfig, {});
 
-  return transformToStates(screenerGetStorybook() as StorybookSection, baseUrl);
+  return transformToStates(screenerGetStorybook(), baseUrl);
 }
 
-// screener-storybook has no types, and none of the types are exported by storybook
-type StorybookSection = ReturnType<typeof getStorybook> & { steps: ScreenerRunnerStep[] };
-
-type StorybookStory = StorybookSection[0]['stories'][0] & { steps: ScreenerRunnerStep[] };
+type ScreenerStory = { steps?: ScreenerRunnerStep[] };
+type StorybookSection = ReturnType<typeof getStorybook>[number];
+type ScreenerStorybookStory = ScreenerStory & StorybookSection['stories'][number];
+type ScreenerStorybookSection = Array<{ stories: ScreenerStorybookStory[] } & StorybookSection>;
