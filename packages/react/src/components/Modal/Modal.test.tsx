@@ -1,13 +1,11 @@
 import * as React from 'react';
+import { render, act } from '@testing-library/react';
 import { Modal } from './Modal';
 import { ContextualMenu } from '../../ContextualMenu';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
-import { safeCreate } from '@fluentui/test-utilities';
-import { render, act } from '@testing-library/react';
-import { resetIds } from '../../Utilities';
-import { Popup } from '../Popup/Popup';
 import { expectNoHiddenParents } from '../../common/testUtilities';
+import { resetIds } from '../../Utilities';
 
 describe('Modal', () => {
   beforeEach(() => {
@@ -30,58 +28,36 @@ describe('Modal', () => {
   });
 
   it('renders Modal correctly', () => {
-    // Mock createPortal to capture its component hierarchy in snapshot output.
-    const ReactDOM = require('react-dom');
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
-    });
-
-    safeCreate(
-      <Modal isOpen={true} className={'test-className'} containerClassName={'test-containerClassName'}>
+    const { queryByText } = render(
+      <Modal isOpen className="test-className" containerClassName="test-containerClassName">
         Test Content
       </Modal>,
-      component => {
-        expect(component.toJSON()).toMatchSnapshot();
-        ReactDOM.createPortal.mockClear();
-      },
     );
+
+    expect(queryByText('Test Content')).toBeTruthy();
+
+    expect(document.body).toMatchSnapshot();
   });
 
   it('renders Modeless Modal correctly', () => {
-    // Mock createPortal to capture its component hierarchy in snapshot output.
-    const ReactDOM = require('react-dom');
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
-    });
-    safeCreate(
-      <Modal
-        isOpen={true}
-        isModeless={true}
-        className={'test-className'}
-        containerClassName={'test-containerClassName'}
-      >
+    const { queryByText } = render(
+      <Modal isOpen isModeless className="test-className" containerClassName="test-containerClassName">
         Test Content
       </Modal>,
-      component => {
-        expect(component!.toJSON()).toMatchSnapshot();
-        ReactDOM.createPortal.mockClear();
-      },
     );
+
+    expect(queryByText('Test Content')).toBeTruthy();
+
+    expect(document.body).toMatchSnapshot();
   });
 
   it('renders Draggable Modal correctly', () => {
-    // Mock createPortal to capture its component hierarchy in snapshot output.
-    const ReactDOM = require('react-dom');
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
-    });
-
-    safeCreate(
+    render(
       <Modal
-        isOpen={true}
-        isModeless={true}
-        className={'test-className'}
-        containerClassName={'test-containerClassName'}
+        isOpen
+        isModeless
+        className="test-className"
+        containerClassName="test-containerClassName"
         dragOptions={{
           moveMenuItemText: 'Move',
           closeMenuItemText: 'Close',
@@ -90,105 +66,44 @@ describe('Modal', () => {
       >
         Test Content
       </Modal>,
-      component => {
-        expect(component!.toJSON()).toMatchSnapshot();
-        ReactDOM.createPortal.mockClear();
-      },
     );
+    expect(document.body).toMatchSnapshot();
   });
 
-  it('renders a Modal with ARIA role alertDialog when isAlert is true ', () => {
-    // Mock createPortal to capture its component hierarchy in snapshot output.
-    const ReactDOM = require('react-dom');
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
-    });
-
-    safeCreate(
-      <Modal isOpen={true} isAlert={true} className={'test-className'} containerClassName={'test-containerClassName'}>
+  it('uses ARIA role alertdialog when isAlert is true ', () => {
+    const { queryByRole } = render(
+      <Modal isOpen isAlert>
         Test Content
       </Modal>,
-      component => {
-        const componentInstance = component.root;
-        expect(componentInstance.findByType(Popup).props.role).toBe('alertdialog');
-        ReactDOM.createPortal.mockClear();
-      },
     );
+    expect(queryByRole('alertdialog')).toBeTruthy();
   });
 
-  it('renders Modal with ARIA role dialog when isModeless and isBlocking are set to true', () => {
-    // Mock createPortal to capture its component hierarchy in snapshot output.
-    const ReactDOM = require('react-dom');
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
-    });
-
-    safeCreate(
-      <Modal
-        isOpen={true}
-        isAlert={false}
-        isModeless={true}
-        isBlocking={true}
-        className={'test-className'}
-        containerClassName={'test-containerClassName'}
-      >
+  it('uses ARIA role dialog when isModeless and isBlocking are true', () => {
+    const { queryByRole } = render(
+      <Modal isOpen isAlert={false} isModeless isBlocking>
         Test Content
       </Modal>,
-      component => {
-        const componentInstance = component.root;
-        expect(componentInstance.findByType(Popup).props.role).toBe('dialog');
-        ReactDOM.createPortal.mockClear();
-      },
     );
+    expect(queryByRole('dialog')).toBeTruthy();
   });
 
-  it('renders Modal with ARIA role dialog when isAlert is false', () => {
-    // Mock createPortal to capture its component hierarchy in snapshot output.
-    const ReactDOM = require('react-dom');
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
-    });
-
-    safeCreate(
-      <Modal
-        isOpen={true}
-        isAlert={false}
-        isBlocking={true}
-        className={'test-className'}
-        containerClassName={'test-containerClassName'}
-      >
+  it('uses ARIA role dialog when isAlert is false', () => {
+    const { queryByRole } = render(
+      <Modal isOpen isAlert={false} isBlocking>
         Test Content
       </Modal>,
-      component => {
-        const componentInstance = component.root;
-        expect(componentInstance.findByType(Popup).props.role).toBe('dialog');
-        ReactDOM.createPortal.mockClear();
-      },
     );
+    expect(queryByRole('dialog')).toBeTruthy();
   });
 
-  it('renders Modal with ARIA role alertdialog when isBlocking is true', () => {
-    // Mock createPortal to capture its component hierarchy in snapshot output.
-    const ReactDOM = require('react-dom');
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
-    });
-
-    safeCreate(
-      <Modal
-        isOpen={true}
-        isBlocking={true}
-        className={'test-className'}
-        containerClassName={'test-containerClassName'}
-      >
+  it('uses ARIA role alertdialog when isBlocking is true', () => {
+    const { queryByRole } = render(
+      <Modal isOpen isBlocking>
         Test Content
       </Modal>,
-      component => {
-        const componentInstance = component.root;
-        expect(componentInstance.findByType(Popup).props.role).toBe('alertdialog');
-        ReactDOM.createPortal.mockClear();
-      },
     );
+    expect(queryByRole('alertdialog')).toBeTruthy();
   });
 
   describe('enableAriaHiddenSiblings', () => {

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Don't hide siblings for modeless modals. Use the same modalization method in FocusTrapZone and Popup.",
-  "packageName": "@fluentui/react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

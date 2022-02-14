@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.55.0",
+  "version": "8.55.2",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,6 +21,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "codepen": "node ../../scripts/local-codepen.js",
+    "e2e": "yarn workspace @fluentui/react-examples e2e --package react",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts dev:storybook",
@@ -31,7 +32,7 @@
     "mf": "just-scripts mf"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.0.27",
+    "@fluentui/common-styles": "^1.0.28",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/example-data": "^8.3.0",
     "@fluentui/jest-serializer-merge-styles": "^8.0.15",
@@ -53,16 +54,16 @@
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.3.0",
-    "@fluentui/foundation-legacy": "^8.1.21",
-    "@fluentui/font-icons-mdl2": "^8.1.22",
+    "@fluentui/foundation-legacy": "^8.1.22",
+    "@fluentui/font-icons-mdl2": "^8.1.23",
     "@fluentui/merge-styles": "^8.3.0",
-    "@fluentui/react-focus": "^8.3.17",
-    "@fluentui/react-hooks": "^8.3.11",
+    "@fluentui/react-focus": "^8.3.18",
+    "@fluentui/react-hooks": "^8.3.12",
     "@fluentui/react-window-provider": "^2.1.6",
     "@fluentui/set-version": "^8.1.5",
-    "@fluentui/style-utilities": "^8.5.4",
-    "@fluentui/theme": "^2.4.8",
-    "@fluentui/utilities": "^8.4.0",
+    "@fluentui/style-utilities": "^8.5.5",
+    "@fluentui/theme": "^2.4.9",
+    "@fluentui/utilities": "^8.4.1",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^2.1.0"
   },

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ToggleButton } from '../../../ToggleButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { ToggleButton } from '../../../ToggleButton';
 
 export const Block = () => (
   <>
-    <ToggleButton block>Block button</ToggleButton>
+    <ToggleButton block>Block</ToggleButton>
   </>
 );
 Block.parameters = {
