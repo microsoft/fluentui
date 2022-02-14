@@ -13,8 +13,7 @@ const getActiveFluentTheme = (globals: FluentGlobals) => {
   return { theme };
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const withFluentProvider = (StoryFn: any, context: FluentStoryContext) => {
+export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentStoryContext) => {
   const { theme } = getActiveFluentTheme(context.globals);
 
   return (
@@ -25,5 +24,8 @@ export const withFluentProvider = (StoryFn: any, context: FluentStoryContext) =>
 };
 
 const FluentExampleContainer: React.FC<{ theme: Theme }> = props => {
-  return <div style={{ padding: '48px 24px' }}>{props.children}</div>;
+  const { theme } = props;
+
+  const backgroundColor = theme.colorNeutralBackground2;
+  return <div style={{ padding: '48px 24px', backgroundColor: backgroundColor }}>{props.children}</div>;
 };
