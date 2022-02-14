@@ -15,8 +15,8 @@ const useStyles = makeStyles({
     ...shorthands.padding('5px'),
   },
   text: {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: tokens.colorBrandBackground2,
+    color: tokens.colorBrandForeground2,
     fontSize: '20px',
     ...shorthands.border('1px'),
     ...shorthands.borderRadius('5px'),
