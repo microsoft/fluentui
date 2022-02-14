@@ -19,6 +19,10 @@ export type ScreenerRunnerConfig = {
   baseBranch: string;
   commit: string;
   failureExitCode: number;
+
+  fluentInternal: {
+    baseUrl: string;
+  };
 };
 
 export type ScreenerState = {
