@@ -1,18 +1,18 @@
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type DividerSlots = {
   /**
    * Root of the component that renders as a `<div>` tag.
    */
-  root: IntrinsicSlotProps<'div'>;
+  root: Slot<'div'>;
 
   /**
    * Accessibility wrapper for content when presented.
    */
-  wrapper: IntrinsicSlotProps<'div'>;
+  wrapper: Slot<'div'>;
 };
 
-export type DividerCommons = {
+type DividerCommons = {
   /**
    * Determines the alignment of the content within the divider.
    * @defaultvalue 'center'
@@ -38,6 +38,6 @@ export type DividerCommons = {
   vertical: boolean;
 };
 
-export type DividerProps = ComponentProps<DividerSlots> & Partial<DividerCommons>;
+export type DividerProps = ComponentProps<Partial<DividerSlots>> & Partial<DividerCommons>;
 
 export type DividerState = ComponentState<DividerSlots> & DividerCommons;

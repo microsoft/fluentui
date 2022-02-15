@@ -145,8 +145,8 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/perf-test": {
-      "root": "packages/fluentui/perf-test",
+    "@fluentui/perf-test-northstar": {
+      "root": "packages/fluentui/perf-test-northstar",
       "projectType": "library",
       "implicitDependencies": []
     },
@@ -385,13 +385,6 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-make-styles": {
-      "root": "packages/react-make-styles",
-      "projectType": "library",
-      "sourceRoot": "packages/react-make-styles/src",
-      "tags": ["vNext", "platform:web"],
-      "implicitDependencies": []
-    },
     "@fluentui/react-menu": {
       "root": "packages/react-menu",
       "projectType": "library",
@@ -468,6 +461,11 @@
       "sourceRoot": "packages/react-radio/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-select": {
+      "root": "packages/react-select",
+      "projectType": "library",
+      "sourceRoot": "packages/react-select/src"
     },
     "@fluentui/react-shared-contexts": {
       "root": "packages/react-shared-contexts",
@@ -635,7 +633,7 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "nx-workspace-tools": {
+    "@fluentui/nx-workspace-tools": {
       "root": "tools",
       "sourceRoot": "tools",
       "projectType": "library",
@@ -664,46 +662,46 @@
       },
       "tags": []
     },
-    "perf-test": {
+    "@fluentui/perf-test": {
       "root": "apps/perf-test",
       "projectType": "application",
       "implicitDependencies": []
     },
-    "server-rendered-app": {
+    "@fluentui/server-rendered-app": {
       "root": "apps/server-rendered-app",
       "projectType": "application",
       "implicitDependencies": []
     },
-    "ssr-tests": {
+    "@fluentui/ssr-tests": {
       "root": "apps/ssr-tests",
       "projectType": "application",
       "implicitDependencies": []
     },
-    "test-bundles": {
+    "@fluentui/test-bundles": {
       "root": "apps/test-bundles",
       "projectType": "application",
       "implicitDependencies": []
     },
-    "theming-designer": {
+    "@fluentui/theming-designer": {
       "root": "apps/theming-designer",
       "projectType": "application",
       "implicitDependencies": []
     },
-    "ts-minbar-test-react": {
+    "@fluentui/ts-minbar-test-react": {
       "root": "apps/ts-minbar-test-react",
       "projectType": "application"
     },
-    "ts-minbar-test-react-components": {
+    "@fluentui/ts-minbar-test-react-components": {
       "root": "apps/ts-minbar-test-react-components",
       "projectType": "application"
     },
-    "typings": {
+    "@fluentui/typings": {
       "root": "typings",
       "projectType": "library",
       "sourceRoot": "typings",
       "tags": ["platform:any"]
     },
-    "vr-tests": {
+    "@fluentui/vr-tests": {
       "root": "apps/vr-tests",
       "projectType": "application",
       "implicitDependencies": []

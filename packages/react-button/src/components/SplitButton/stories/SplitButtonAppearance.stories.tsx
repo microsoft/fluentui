@@ -2,14 +2,27 @@ import * as React from 'react';
 
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 
-import { SplitButton, MenuButtonProps } from '../../../index'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { SplitButton, MenuButtonProps } from '../../../index';
 
 export const Appearance = () => (
   <>
     <Menu positioning="below-end">
       <MenuTrigger>
+        {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps} primaryActionButton="Default" />}
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Item a</MenuItem>
+          <MenuItem>Item b</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+
+    <Menu positioning="below-end">
+      <MenuTrigger>
         {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} />
+          <SplitButton menuButton={triggerProps} primaryActionButton="Primary" appearance="primary" />
         )}
       </MenuTrigger>
 
@@ -24,7 +37,7 @@ export const Appearance = () => (
     <Menu positioning="below-end">
       <MenuTrigger>
         {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} appearance="primary" />
+          <SplitButton menuButton={triggerProps} primaryActionButton="Outline" appearance="outline" />
         )}
       </MenuTrigger>
 
@@ -39,7 +52,7 @@ export const Appearance = () => (
     <Menu positioning="below-end">
       <MenuTrigger>
         {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} appearance="outline" />
+          <SplitButton menuButton={triggerProps} primaryActionButton="Subtle" appearance="subtle" />
         )}
       </MenuTrigger>
 
@@ -54,26 +67,7 @@ export const Appearance = () => (
     <Menu positioning="below-end">
       <MenuTrigger>
         {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} appearance="subtle" />
-        )}
-      </MenuTrigger>
-
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-
-    <Menu positioning="below-end">
-      <MenuTrigger>
-        {(triggerProps: MenuButtonProps) => (
-          <SplitButton
-            menuButton={triggerProps}
-            primaryActionButton={'This is a split button'}
-            appearance="transparent"
-          />
+          <SplitButton menuButton={triggerProps} primaryActionButton="Transparent" appearance="transparent" />
         )}
       </MenuTrigger>
 

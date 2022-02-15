@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Fri, 07 Jan 2022 07:27:47 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Feb 2022 07:27:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.10.1)
+
+Fri, 11 Feb 2022 07:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.10.0..@fluentui/react-conformance_v0.10.1)
+
+### Patches
+
+- Clear document.body after each test to avoid interference between tests ([PR #21664](https://github.com/microsoft/fluentui/pull/21664) by elcraig@microsoft.com)
 
 ## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.10.0)
 

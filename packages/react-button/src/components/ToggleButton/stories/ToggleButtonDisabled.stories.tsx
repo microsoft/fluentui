@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-import { ToggleButton } from '../../../ToggleButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { ToggleButton } from '../../../ToggleButton';
 
 export const Disabled = () => {
   const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
@@ -8,19 +8,19 @@ export const Disabled = () => {
   return (
     <>
       <div style={groupStyles}>
-        <ToggleButton>Default</ToggleButton>
-        <ToggleButton disabled>Disabled</ToggleButton>
-        <ToggleButton disabledFocusable>Disabled focusable</ToggleButton>
+        <ToggleButton>Enabled state</ToggleButton>
+        <ToggleButton disabled>Disabled state</ToggleButton>
+        <ToggleButton disabledFocusable>Disabled focusable state</ToggleButton>
       </div>
       <div style={groupStyles}>
         <ToggleButton appearance="primary" icon={<CalendarMonthRegular />}>
-          Primary
+          Enabled state
         </ToggleButton>
         <ToggleButton appearance="primary" disabled icon={<CalendarMonthRegular />}>
-          Primary disabled
+          Disabled state
         </ToggleButton>
         <ToggleButton appearance="primary" disabledFocusable>
-          Primary disabled focusable
+          Disabled focusable state
         </ToggleButton>
       </div>
     </>

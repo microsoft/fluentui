@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Thu, 25 Nov 2021 08:34:15 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Feb 2022 08:50:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-rc.1)
+
+Thu, 10 Feb 2022 08:50:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-beta.5..@fluentui/react-portal_v9.0.0-rc.1)
+
+### Changes
+
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- remove export of commons types ([PR #21660](https://github.com/microsoft/fluentui/pull/21660) by mgodbolt@microsoft.com)
+- Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
+- remove unused dependency on Griffel ([PR #21393](https://github.com/microsoft/fluentui/pull/21393) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-beta.5)
 

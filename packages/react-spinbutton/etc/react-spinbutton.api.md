@@ -7,8 +7,8 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const renderSpinButton_unstable: (state: SpinButtonState) => JSX.Element;
@@ -19,15 +19,14 @@ export const SpinButton: ForwardRefComponent<SpinButtonProps>;
 // @public (undocumented)
 export const spinButtonClassName = "fui-SpinButton";
 
-// @public (undocumented)
-export type SpinButtonCommons = {};
-
+// Warning: (ae-forgotten-export) The symbol "SpinButtonCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type SpinButtonProps = ComponentProps<SpinButtonSlots> & SpinButtonCommons;
 
 // @public (undocumented)
 export type SpinButtonSlots = {
-    root: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public

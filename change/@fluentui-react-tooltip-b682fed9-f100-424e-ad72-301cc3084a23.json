@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove Tooltip's inverted prop in favor of the appearance prop",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

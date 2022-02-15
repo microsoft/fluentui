@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Fri, 11 Feb 2022 07:27:48 GMT",
+      "tag": "@fluentui/react-conformance_v0.10.1",
+      "version": "0.10.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "c5e6c54988bfdbb2ae1c30cccfb1e5e2fa2cf896",
+            "comment": "Clear document.body after each test to avoid interference between tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Jan 2022 07:27:47 GMT",
       "tag": "@fluentui/react-conformance_v0.10.0",
       "version": "0.10.0",

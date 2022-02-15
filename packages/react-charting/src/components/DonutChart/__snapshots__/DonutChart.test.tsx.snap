@@ -75,6 +75,9 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
+                  }
               textAnchor="middle"
               y={5}
             />
@@ -110,6 +113,9 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   {
                     fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}
@@ -434,6 +440,9 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                     fill: #323130;
                     font-size: 18px;
                   }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
+                  }
               textAnchor="middle"
               y={5}
             />
@@ -469,6 +478,9 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   {
                     fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}
@@ -793,6 +805,9 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
+                  }
               textAnchor="middle"
               y={5}
             />
@@ -828,6 +843,9 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   {
                     fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}
@@ -918,6 +936,9 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
+                  }
               textAnchor="middle"
               y={5}
             />
@@ -953,6 +974,9 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   {
                     fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}
@@ -1277,6 +1301,9 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
+                  }
               textAnchor="middle"
               y={5}
             >
@@ -1314,6 +1341,9 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   {
                     fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}

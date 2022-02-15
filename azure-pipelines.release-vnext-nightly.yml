@@ -45,21 +45,34 @@ steps:
     displayName: 'Bump and commit nightly versions'
 
   - script: |
-      yarn run:published build --production --no-cache
+      yarn run:published build --production
     displayName: yarn build
 
+  # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
+  # https://github.com/microsoft/fluentui/issues/21686
   - script: |
-      yarn run:published test
+      yarn run:published test --only
     displayName: yarn test
 
   - script: |
-      yarn run:published lint
+      yarn run:published lint --only
     displayName: yarn lint
 
   - script: |
       yarn publish:beachball -n $(npmToken) --no-push --tag nightly
       git reset --hard origin/master
     displayName: Publish changes and bump versions
+
+  - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+    displayName: 📒 Generate Manifest
+    inputs:
+      BuildDropPath: $(System.DefaultWorkingDirectory)
+
+  - task: PublishPipelineArtifact@1
+    displayName: 📒 Publish Manifest
+    inputs:
+      artifactName: SBom-$(System.JobAttempt)
+      targetPath: $(System.DefaultWorkingDirectory)/_manifest
 
   - template: .devops/templates/cleanup.yml
     parameters:

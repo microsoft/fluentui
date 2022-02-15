@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
   open: boolean;
@@ -11,10 +11,10 @@ export type AccordionItemContextValues = {
 };
 
 export type AccordionItemSlots = {
-  root: IntrinsicSlotProps<'div'>;
+  root: Slot<'div'>;
 };
 
-export type AccordionItemCommons = {
+type AccordionItemCommons = {
   /**
    * Disables opening/closing of panel
    */

@@ -16,7 +16,7 @@ export const renderRadioItem_unstable = (state: RadioItemState) => {
       </div>
       <slots.label {...slotProps.label}>
         {state.label.children}
-        {state.subtext && <slots.subtext {...slotProps.subtext} />}
+        {state.subtext && slots.subtext && <slots.subtext {...slotProps.subtext} />}
       </slots.label>
     </slots.root>
   );
