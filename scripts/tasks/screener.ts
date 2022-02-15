@@ -1,8 +1,5 @@
-// import { getAffectedPackages, getAllPackageInfo, findGitRoot } from '../monorepo';
-import {
-  screenerRunner,
-  // cancelScreenerRun
-} from '../screener/screener.runner';
+import { getAffectedPackages, getAllPackageInfo, findGitRoot } from '../monorepo';
+import { screenerRunner, cancelScreenerRun } from '../screener/screener.runner';
 import { ScreenerRunnerConfig, ScreenerRunnerStep, ScreenerState } from '../screener/screener.types';
 import path from 'path';
 // @ts-ignore - screener-storybook has no typings
@@ -19,28 +16,24 @@ export async function screener() {
   screenerConfig.states = screenerStates;
   console.log('screener config for run');
   console.log(JSON.stringify(screenerConfig, null, 2));
-  await screenerRunner(screenerConfig);
-  // screener-storybook internally starts a puppeteer instance that only closes on process exist
-  process.exit(0);
 
-  // Scoping can only be used once the legacy check and new check switch required status
-  // const packageInfos = getAllPackageInfo();
-  // const packagePath = path.relative(findGitRoot(), process.cwd());
-  // const affectedPackageInfo = Object.values(packageInfos).find(x => x.packagePath === packagePath);
-  // const affectedPackages = getAffectedPackages();
-  // try {
-  // if (!affectedPackages.has(affectedPackageInfo.packageJson.name)) {
-  // await cancelScreenerRun(screenerConfig);
-  // } else {
-  // await screenerRunner(screenerConfig);
-  // }
-  // } catch (err) {
-  // console.error('failed to run screener task');
-  // console.error(err);
-  // // screener-storybook internally starts a puppeteer instance that only closes on process exist
-  // process.exit(1);
-  // }
-  // process.exit(0);
+  const packageInfos = getAllPackageInfo();
+  const packagePath = path.relative(findGitRoot(), process.cwd());
+  const affectedPackageInfo = Object.values(packageInfos).find(x => x.packagePath === packagePath);
+  const affectedPackages = getAffectedPackages();
+  try {
+    if (!affectedPackages.has(affectedPackageInfo.packageJson.name)) {
+      await cancelScreenerRun(screenerConfig);
+    } else {
+      await screenerRunner(screenerConfig);
+    }
+  } catch (err) {
+    console.error('failed to run screener task');
+    console.error(err);
+    // screener-storybook internally starts a puppeteer instance that only closes on process exist
+    process.exit(1);
+  }
+  process.exit(0);
 }
 
 /**
