@@ -21,10 +21,10 @@ steps:
       filePath: yarn-ci.sh
     displayName: yarn
 
-  # @fluentui/perf-test-northstar needs build and bundle steps
-  - script: |
-      yarn lage build --to @fluentui/perf-test-northstar --to perf-test --verbose
-    displayName: build to perf-test
+  # # @fluentui/perf-test-northstar needs build and bundle steps
+  # - script: |
+  #     yarn lage build --to @fluentui/perf-test-northstar --to perf-test --verbose
+  #   displayName: build to perf-test
 
   # Fluent perf-test must run before Fabric perf-test until they are consolidated.
   # @fluentui/perf-test-northstar Baseline
