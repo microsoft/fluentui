@@ -23,7 +23,7 @@ export async function screener() {
   const affectedPackages = getAffectedPackages();
   try {
     if (!affectedPackages.has(affectedPackageInfo.packageJson.name)) {
-      await cancelScreenerRun(screenerConfig);
+      await cancelScreenerRun(screenerConfig, 'skipped');
     } else {
       await screenerRunner(screenerConfig);
     }
