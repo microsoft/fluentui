@@ -135,7 +135,7 @@ jobs:
           storage: $(azureStorage)
 
       - script: yarn workspace @fluentui/docs vr:test
-        displayName: start FUI N* VR Test
+        displayName: Start FUI N* VR Test
         env:
           SCREENER_ENDPOINT: $(screenerApiUri)
           SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
@@ -172,7 +172,7 @@ jobs:
       # Don't use lage here because it eats long output for reasons that are hard to debug
       - script: |
           yarn workspace @fluentui/vr-tests screener
-        displayName: run VR Test
+        displayName: Start VR Test
         env:
           SCREENER_ENDPOINT: $(screenerApiUri)
           SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
@@ -209,7 +209,7 @@ jobs:
       # Don't use lage here because it eats long output for reasons that are hard to debug
       - script: |
           yarn workspace @fluentui/vr-tests-react-components screener
-        displayName: run VR Test
+        displayName: Start VR Test
         env:
           SCREENER_ENDPOINT: $(screenerApiUri)
           SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
