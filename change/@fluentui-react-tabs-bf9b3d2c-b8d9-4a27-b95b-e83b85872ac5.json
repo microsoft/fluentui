@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Moved react-tabs to unstable",
+  "comment": "Publish initial version",
   "packageName": "@fluentui/react-tabs",
   "email": "gcox@microsoft.com",
   "dependentChangeType": "patch"
