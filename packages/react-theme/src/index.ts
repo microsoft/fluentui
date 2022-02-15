@@ -1,9 +1,9 @@
 export * from './themes/index';
 export * from './utils/index';
-export * as globals from './global/index';
 
 export { themeToTokensObject } from './themeToTokensObject';
 export { tokens } from './tokens';
+export { globals } from './global';
 
 export type {
   Brands,
