@@ -29,10 +29,6 @@ jobs:
         displayName: yarn (install packages)
 
       - script: |
-          yarn checkchange
-        displayName: verify change files
-
-      - script: |
           yarn nx workspace-lint
         displayName: nx:workspace-lint
 
