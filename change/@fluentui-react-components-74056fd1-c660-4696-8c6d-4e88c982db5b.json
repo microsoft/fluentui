@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove `themeToCSSVariables` function",
-  "packageName": "@fluentui/react-components",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

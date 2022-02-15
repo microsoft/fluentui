@@ -17,15 +17,8 @@ export { Image_2 as Image }
 // @public (undocumented)
 export const imageClassName = "fui-Image";
 
-// @public (undocumented)
-export type ImageCommons = {
-    bordered?: boolean;
-    fit?: 'none' | 'center' | 'contain' | 'cover';
-    block?: boolean;
-    shape?: 'square' | 'circular' | 'rounded';
-    shadow?: boolean;
-};
-
+// Warning: (ae-forgotten-export) The symbol "ImageCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
 

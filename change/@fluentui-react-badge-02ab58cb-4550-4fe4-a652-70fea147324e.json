@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove outdated boilerplate comments",
-  "packageName": "@fluentui/react-badge",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

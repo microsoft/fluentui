@@ -37,7 +37,7 @@ export type SliderSlots = {
   };
 };
 
-export type SliderCommons = {
+type SliderCommons = {
   /**
    * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add slider package to react-components",
-  "packageName": "@fluentui/react-components",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

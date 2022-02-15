@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removes nullRender from react-utilities",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

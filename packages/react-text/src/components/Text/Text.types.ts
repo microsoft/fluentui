@@ -7,7 +7,7 @@ export type TextSlots = {
   root: Slot<'span', 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre'>;
 };
 
-export type TextCommons = {
+type TextCommons = {
   /**
    * Wraps the text content on white spaces.
    *

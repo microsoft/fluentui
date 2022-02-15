@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { SplitButton, MenuButtonProps } from '../../../index'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { SplitButton, MenuButtonProps } from '../../../index';
 
 export const Disabled = () => {
   return (
@@ -9,11 +9,7 @@ export const Disabled = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton
-              menuButton={triggerProps}
-              primaryActionButton={'This is disabledFocusable'}
-              disabledFocusable
-            />
+            <SplitButton menuButton={triggerProps} primaryActionButton="Enabled state" />
           )}
         </MenuTrigger>
 
@@ -27,7 +23,7 @@ export const Disabled = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} primaryActionButton={'This is disabled'} disabled />
+            <SplitButton menuButton={triggerProps} primaryActionButton="Disabled state" disabled />
           )}
         </MenuTrigger>
 
@@ -41,11 +37,7 @@ export const Disabled = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton
-              menuButton={triggerProps}
-              primaryActionButton={'This is disabledFocusable'}
-              disabledFocusable
-            />
+            <SplitButton menuButton={triggerProps} primaryActionButton="Disabled focusable state" disabledFocusable />
           )}
         </MenuTrigger>
 

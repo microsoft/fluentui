@@ -1,50 +1,64 @@
 import * as React from 'react';
 
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import { CalendarMonthRegular, FilterRegular } from '@fluentui/react-icons';
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
+import { Tooltip } from '@fluentui/react-tooltip';
+import { makeStyles } from '@griffel/react';
 import { MenuButton } from '../../../MenuButton';
 
-export const Icon = () => (
-  <>
-    <Menu>
-      <MenuTrigger>
-        <MenuButton icon={<CalendarMonthRegular />}>This is a Menu Button</MenuButton>
-      </MenuTrigger>
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+const useStyles = makeStyles({
+  longText: {
+    maxWidth: '380px',
+  },
+});
 
-    <Menu>
-      <MenuTrigger>
-        <MenuButton icon={<CalendarMonthRegular />} menuIcon={<FilterRegular />}>
-          This is a Menu Button
-        </MenuButton>
-      </MenuTrigger>
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+export const Icon = () => {
+  const styles = useStyles();
 
-    <Menu>
-      <MenuTrigger>
-        <MenuButton icon={<CalendarMonthRegular />} />
-      </MenuTrigger>
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-  </>
-);
+  return (
+    <>
+      <Menu>
+        <MenuTrigger>
+          <MenuButton icon={<CalendarMonthRegular />}>With calendar icon</MenuButton>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+
+      <Menu>
+        <MenuTrigger>
+          <MenuButton icon={<CalendarMonthRegular />} menuIcon={<FilterRegular />} className={styles.longText}>
+            With calendar icon and custom filter menu icon
+          </MenuButton>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+
+      <Menu>
+        <MenuTrigger>
+          <Tooltip content="With calendar icon and no contents" relationship="label">
+            <MenuButton icon={<CalendarMonthRegular />} />
+          </Tooltip>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </>
+  );
+};
 Icon.parameters = {
   docs: {
     description: {

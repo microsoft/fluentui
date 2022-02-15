@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "test(react-switch): update snapshots to match new JSDOM",
-  "packageName": "@fluentui/react-switch",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

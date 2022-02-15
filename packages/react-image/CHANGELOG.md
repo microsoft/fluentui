@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Thu, 25 Nov 2021 08:34:13 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Feb 2022 08:51:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-rc.1)
+
+Thu, 10 Feb 2022 08:51:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-beta.4..@fluentui/react-image_v9.0.0-rc.1)
+
+### Changes
+
+- remove export of commons types ([PR #21660](https://github.com/microsoft/fluentui/pull/21660) by mgodbolt@microsoft.com)
+- react-image: Replacing use of functions in makeStyles with direct use of tokens. ([PR #21044](https://github.com/microsoft/fluentui/pull/21044) by Humberto.Morimoto@microsoft.com)
+- use Griffel packages ([PR #21432](https://github.com/microsoft/fluentui/pull/21432) by olfedias@microsoft.com)
+- Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- update styles to not use CSS shorthands ([PR #20818](https://github.com/microsoft/fluentui/pull/20818) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-beta.4)
 
