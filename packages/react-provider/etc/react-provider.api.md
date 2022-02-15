@@ -6,10 +6,10 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 import type { Theme } from '@fluentui/react-theme';
 import type { ThemeClassNameContextValue } from '@fluentui/react-shared-contexts';
 import type { TooltipContextType } from '@fluentui/react-shared-contexts';
@@ -23,12 +23,6 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<FluentProviderPro
 export const fluentProviderClassName = "fui-FluentProvider";
 
 // @public (undocumented)
-export interface FluentProviderCommons {
-    dir: 'ltr' | 'rtl';
-    targetDocument: Document | undefined;
-}
-
-// @public (undocumented)
 export interface FluentProviderContextValues extends Pick<FluentProviderState, 'theme'> {
     // (undocumented)
     provider: ProviderContextValue;
@@ -40,6 +34,8 @@ export interface FluentProviderContextValues extends Pick<FluentProviderState, '
     tooltip: TooltipContextType;
 }
 
+// Warning: (ae-forgotten-export) The symbol "FluentProviderCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export interface FluentProviderProps extends Omit<ComponentProps<FluentProviderSlots>, 'dir'>, Partial<FluentProviderCommons> {
     // (undocumented)
@@ -48,7 +44,7 @@ export interface FluentProviderProps extends Omit<ComponentProps<FluentProviderS
 
 // @public (undocumented)
 export type FluentProviderSlots = {
-    root: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)

@@ -1,8 +1,8 @@
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps, ResolveShorthandOptions, ShorthandProps } from '@fluentui/react-utilities';
+import type { ExtractSlotProps, ResolveShorthandFunction, Slot } from '@fluentui/react-utilities';
 
-export type ARIAButtonSlotProps = IntrinsicSlotProps<'button', 'a'> & {
+export type ARIAButtonSlotProps = ExtractSlotProps<Slot<'button', 'a'>> & {
   disabled?: boolean;
   disabledFocusable?: boolean;
 };
@@ -12,10 +12,7 @@ export type ARIAButtonSlotProps = IntrinsicSlotProps<'button', 'a'> & {
  * for multiple scenarios of shorthand properties. Ensuring 1st rule of ARIA for cases
  * where no attribute addition is required.
  */
-export function useARIAButton<Required extends boolean = false>(
-  shorthand: ShorthandProps<ARIAButtonSlotProps>,
-  options?: ResolveShorthandOptions<ARIAButtonSlotProps, Required>,
-): Required extends false ? ARIAButtonSlotProps | undefined : ARIAButtonSlotProps {
+export const useARIAButton: ResolveShorthandFunction<ARIAButtonSlotProps> = (shorthand, options) => {
   const shorthandProps = resolveShorthand(shorthand, options);
 
   const { disabled, disabledFocusable, onClick, onKeyDown, onKeyUp, tabIndex } = (shorthandProps ||
@@ -82,7 +79,7 @@ export function useARIAButton<Required extends boolean = false>(
     // If a <button> tag is to be rendered we just need to set disabled and aria-disabled correctly
     if (shorthandProps.as === 'button' || shorthandProps.as === undefined) {
       shorthandProps.disabled = disabled && !disabledFocusable;
-      shorthandProps['aria-disabled'] = disabledFocusable;
+      shorthandProps['aria-disabled'] = disabledFocusable ? true : undefined;
 
       // Undefine events if disabledFocusable is passed in
       if (disabledFocusable) {
@@ -96,9 +93,9 @@ export function useARIAButton<Required extends boolean = false>(
     else {
       delete shorthandProps.disabled;
       shorthandProps['aria-disabled'] = disabled || disabledFocusable;
-      (shorthandProps as IntrinsicSlotProps<'a'>).href = disabled
+      (shorthandProps as JSX.IntrinsicElements['a']).href = disabled
         ? undefined
-        : (shorthandProps as IntrinsicSlotProps<'a'>).href;
+        : (shorthandProps as JSX.IntrinsicElements['a']).href;
       shorthandProps.onClick = onClickHandler;
       shorthandProps.onKeyDown = onKeyDownHandler;
       shorthandProps.onKeyUp = onKeyupHandler;
@@ -111,4 +108,4 @@ export function useARIAButton<Required extends boolean = false>(
   }
 
   return shorthandProps;
-}
+};

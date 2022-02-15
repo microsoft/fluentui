@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: bump tabster to 1.1.1 - removes IE11 support",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

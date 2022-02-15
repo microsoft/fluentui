@@ -109,7 +109,7 @@ const checkPerfRegressions = (reporter: Reporter) => {
   reporter.markdown('## Perf Analysis (`@fluentui/react-northstar`)');
 
   try {
-    perfCounts = require(config.paths.packageDist('perf-test', 'perfCounts.json'));
+    perfCounts = require(config.paths.packageDist('perf-test-northstar', 'perfCounts.json'));
   } catch {
     reporter.warn('No perf measurements available');
     return;

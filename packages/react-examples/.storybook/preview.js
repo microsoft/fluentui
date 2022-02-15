@@ -6,7 +6,7 @@ import { withPerformance } from 'storybook-addon-performance';
 import { withKeytipLayer, withStrictMode } from '@fluentui/storybook';
 
 /**
- * "PACKAGE_NAME" placeholder is being replaced by webpack loader - @link {./preview.loader}
+ * This placeholder will be replaced with the actual package name by custom webpack loader `./preview-loader.js`
  * @type {string}
  */
 const packageNamePlaceholder = 'PACKAGE_NAME';
@@ -36,15 +36,17 @@ export const parameters = {};
  *   default: { title: string };
  *   [subStoryName: string]: React.FunctionComponent | { title: string };
  * }} Story
- */
-
-/**
+ *
  * @typedef {{ [exportName: string]: React.ComponentType }} ComponentModule
  */
 
+/** */
 function loadStories() {
   /** @type {Map<string, Story>} */
   const stories = new Map();
+
+  // This shows some extra e2e-only stories
+  const includeE2E = new URLSearchParams(location.search).has('e2e');
 
   /** @type {__WebpackModuleApi.RequireContext[]} */
   const contexts = [
@@ -62,7 +64,9 @@ function loadStories() {
 
   for (const req of contexts) {
     req.keys().forEach(key => {
-      generateStoriesFromExamples(key, stories, req);
+      if (includeE2E || !key.includes('/e2e/')) {
+        generateStoriesFromExamples(key, stories, req);
+      }
     });
   }
 
@@ -81,71 +85,46 @@ function loadStories() {
 function generateStoriesFromExamples(key, stories, req) {
   // Depending on the starting point of the context, and the package layout, the key will be like one of these:
   //   ./ComponentName/ComponentName.Something.Example.tsx
+  //   ./ComponentName/e2e/ComponentName.Something.stories.tsx
   //   ./package-name/ComponentName/ComponentName.Something.Example.tsx
-  //   ./package-name/src/.../ComponentName.stories.tsx - @TODO remove this line after new storybook setup has been applied for all converged packages
-  const segments = key.split('/');
-
-  if (segments.length < 3) {
-    console.warn(`Invalid storybook context location found: key: ${key} | segments: ${segments}`);
+  //   ./package-name/ComponentName/e2e/ComponentName.Something.Example.tsx
+  // group 1: component name
+  // group 2: /e2e part (if present)
+  // group 3: story name
+  const pathParts = key.match(/\/(\w+)(\/e2e)?\/[\w.]+$/);
+  if (!pathParts) {
+    console.error(`Invalid path found in storybook require.context: "${key}"`);
     return;
   }
 
-  const componentName = generateComponentName(segments);
+  const [, componentName, e2e = ''] = pathParts;
+  // This will be like either:
+  //   Components/ComponentName
+  //   Components/ComponentName/e2e
+  const componentPath = `Components/${componentName}${e2e}`;
 
-  if (!stories.has(componentName)) {
-    stories.set(componentName, {
+  if (!stories.has(componentPath)) {
+    stories.set(componentPath, {
       default: {
-        title: 'Components/' + componentName,
+        title: componentPath,
       },
     });
   }
 
-  const storyName = segments.slice(-1)[0].replace('.tsx', '').replace(/\./g, '_');
-
-  const story = stories.get(componentName);
+  const story = /** @type {Story} */ (stories.get(componentPath));
   const exampleModule = /** @type {(key: string) => ComponentModule} */ (req)(key);
 
-  if (!story) {
-    console.warn(`No stories for component: ${componentName}`);
-    return;
-  }
-
-  for (let moduleExport of Object.keys(exampleModule)) {
-    const ExampleComponent = exampleModule[moduleExport];
-    const subStoryName = moduleExport || storyName;
+  for (const [moduleExport, ExampleComponent] of Object.entries(exampleModule)) {
+    const subStoryName = moduleExport.replace(componentName, '').replace(/Example$/, '');
 
     if (typeof ExampleComponent === 'function') {
       if (ExampleComponent.prototype.render) {
-        // class component
+        // class component -- make a wrapper function component
         story[subStoryName] = () => React.createElement(ExampleComponent);
       } else {
         // function component
         story[subStoryName] = /** @type {React.FunctionComponent} */ (ExampleComponent);
       }
     }
-  }
-
-  /**
-   *
-   * @param {string[]} segments
-   * @returns {string} component name
-   */
-  function generateComponentName(segments) {
-    /**
-     * ./ComponentName/ComponentName.Something.Example.tsx
-     */
-    const isReactExamplesStory = segments.length === 3;
-
-    if (isReactExamplesStory) {
-      // ./ComponentName/ComponentName.Something.Example.tsx
-      //  ↓↓↓
-      // [., ComponentName, ComponentName.Something.Example.tsx]
-      return segments[1];
-    }
-
-    // .package-name/ComponentName/ComponentName.Something.Example.tsx
-    //  ↓↓↓
-    // [., package-name, ComponentName, ComponentName.Something.Example.tsx]
-    return segments[2];
   }
 }

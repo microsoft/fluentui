@@ -10,7 +10,7 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['onChange'],
+    excludedPropNames: ['onChange', 'size'],
   });
 
   const {

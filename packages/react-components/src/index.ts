@@ -1,6 +1,5 @@
 // Utilities
 export {
-  RendererContext,
   RendererProvider,
   __styles,
   createDOMRenderer,
@@ -9,9 +8,7 @@ export {
   mergeClasses,
   renderToStyleElements,
   shorthands,
-  useRenderer,
-} from '@fluentui/react-make-styles';
-export type { RendererProviderProps } from '@fluentui/react-make-styles';
+} from '@griffel/react';
 export {
   FluentProvider,
   fluentProviderClassName,
@@ -32,6 +29,7 @@ export {
   createHighContrastTheme,
   createLightTheme,
   createTeamsDarkTheme,
+  themeToTokensObject,
   teamsDarkTheme,
   teamsHighContrastTheme,
   teamsLightTheme,
@@ -204,14 +202,6 @@ export {
   useImageStyles_unstable,
 } from '@fluentui/react-image';
 export type { ImageProps, ImageSlots, ImageState } from '@fluentui/react-image';
-export {
-  Label,
-  labelClassName,
-  renderLabel_unstable,
-  useLabel_unstable,
-  useLabelStyles_unstable,
-} from '@fluentui/react-label';
-export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
 export {
   Link,
   linkClassName,

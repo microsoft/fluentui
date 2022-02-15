@@ -281,6 +281,13 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const role = this.props.role ? this.props.role : defaultRole;
     this._ariaRowDescriptionId = getId('DetailsRow-description');
 
+    // When the user does not specify any column is a row-header in the columns props,
+    // The aria-labelledby of the checkbox does not specify {id}-header.
+    const hasRowHeader = columns.some(column => {
+      return !!column.isRowHeader;
+    });
+    const ariaLabelledby = `${id}-checkbox` + (hasRowHeader ? ` ${id}-header` : '');
+
     return (
       <FocusZone
         data-is-focusable={true}
@@ -319,14 +326,14 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
           </span>
         ) : null}
         {showCheckbox && (
-          <div role="gridcell" aria-colindex={1} data-selection-toggle={true} className={this._classNames.checkCell}>
+          <div role="gridcell" data-selection-toggle={true} className={this._classNames.checkCell}>
             {onRenderCheck({
               id: id ? `${id}-checkbox` : undefined,
               selected: isSelected,
               selectionMode,
               anySelected: isSelectionModal,
               'aria-label': checkButtonAriaLabel,
-              'aria-labelledby': id ? `${id}-checkbox ${id}-header` : undefined,
+              'aria-labelledby': id ? ariaLabelledby : undefined,
               canSelect,
               compact,
               className: this._classNames.check,

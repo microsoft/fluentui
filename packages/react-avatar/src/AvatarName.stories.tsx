@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { Avatar, AvatarProps } from './index';
+import { Avatar } from './index';
 
-export const Name = (props: Partial<AvatarProps>) => <Avatar {...props} name="Katri Athokas" />;
+export const Name = () => <Avatar name="Ashley McCarthy" />;
 
-Name.storyName = 'Initials: based on name';
+Name.storyName = 'Name';
 Name.parameters = {
   docs: {
     description: {
-      story: 'An avatar can display initials based on the name.',
+      story: 'The name is used to determine the initials displayed by the Avatar. It is also read by screen readers.',
     },
   },
 };

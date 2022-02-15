@@ -5,11 +5,13 @@ import {
   applyTriggerPropsToChildren,
   resolveShorthand,
   useControllableState,
+  useMergedEventCallbacks,
   useId,
   useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
   useTimeout,
+  getTriggerChild,
 } from '@fluentui/react-utilities';
 import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
@@ -182,60 +184,43 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
 
   // Cancel the hide timer when the pointer enters the tooltip, and restart it when the mouse leaves.
   // This keeps the tooltip visible when the pointer is moved over it.
-  state.content.onPointerEnter = useMergedCallbacks(state.content.onPointerEnter, clearDelayTimeout);
-  state.content.onPointerLeave = useMergedCallbacks(state.content.onPointerLeave, onLeaveTrigger);
+  state.content.onPointerEnter = useMergedEventCallbacks(state.content.onPointerEnter, clearDelayTimeout);
+  state.content.onPointerLeave = useMergedEventCallbacks(state.content.onPointerLeave, onLeaveTrigger);
 
-  const child = React.isValidElement(children) ? children : undefined;
+  const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
 
-  // The props to add to the trigger element (child)
-  const triggerProps: TooltipTriggerProps = {
-    onPointerEnter: useMergedCallbacks(child?.props?.onPointerEnter, onEnterTrigger),
-    onPointerLeave: useMergedCallbacks(child?.props?.onPointerLeave, onLeaveTrigger),
-    onFocus: useMergedCallbacks(child?.props?.onFocus, onEnterTrigger),
-    onBlur: useMergedCallbacks(child?.props?.onBlur, onLeaveTrigger),
-  };
-
-  // If the target prop is not provided, attach targetRef to the trigger element's ref prop
-  const childWithRef = child as { ref?: React.Ref<unknown> } | undefined;
-  const childTargetRef = useMergedRefs(childWithRef?.ref, targetRef);
-  if (popperOptions.target === undefined) {
-    triggerProps.ref = childTargetRef;
-  }
+  const triggerAriaProps: Pick<TooltipTriggerProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
 
   if (relationship === 'label') {
     // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
     if (typeof state.content.children === 'string') {
-      triggerProps['aria-label'] = state.content.children;
+      triggerAriaProps['aria-label'] = state.content.children;
     } else if (!isServerSideRender) {
-      triggerProps['aria-labelledby'] = state.content.id;
+      triggerAriaProps['aria-labelledby'] = state.content.id;
       // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
       state.shouldRenderTooltip = true;
     }
   } else if (relationship === 'description') {
     if (!isServerSideRender) {
-      triggerProps['aria-describedby'] = state.content.id;
+      triggerAriaProps['aria-describedby'] = state.content.id;
       // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
       state.shouldRenderTooltip = true;
     }
   }
 
-  // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
-  state.children = applyTriggerPropsToChildren(children, triggerProps);
-  return state;
-};
+  const childTargetRef = useMergedRefs(child?.ref, targetRef);
 
-/**
- * Combine up to two event callbacks into a single function that calls them in order
- */
-const useMergedCallbacks = <Event,>(
-  callback1: ((ev: Event) => void) | undefined,
-  callback2: ((ev: Event) => void) | undefined,
-) => {
-  return React.useCallback(
-    (ev: Event) => {
-      callback1?.(ev);
-      callback2?.(ev);
-    },
-    [callback1, callback2],
-  );
+  // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
+  state.children = applyTriggerPropsToChildren<TooltipTriggerProps>(children, {
+    ...triggerAriaProps,
+    ...child?.props,
+    // If the target prop is not provided, attach targetRef to the trigger element's ref prop
+    ref: popperOptions.target === undefined ? childTargetRef : child?.ref,
+    onPointerEnter: useMergedEventCallbacks(child?.props?.onPointerEnter, onEnterTrigger),
+    onPointerLeave: useMergedEventCallbacks(child?.props?.onPointerLeave, onLeaveTrigger),
+    onFocus: useMergedEventCallbacks(child?.props?.onFocus, onEnterTrigger),
+    onBlur: useMergedEventCallbacks(child?.props?.onBlur, onLeaveTrigger),
+  });
+
+  return state;
 };

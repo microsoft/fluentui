@@ -16,51 +16,55 @@ describe('useAccordion_unstable', () => {
     expect(result.current.openItems.includes(1)).toBeTruthy();
   });
 
-  // TODO: fix this state, right now we can't ensure collapsible on first render
-  it('should respect "multiple" behavior', () => {
-    const { result } = renderHook(() => useAccordion_unstable({ multiple: true }, React.createRef()));
+  describe('multiple', () => {
+    it('should only have zero open items before having any items', () => {
+      const { result } = renderHook(() => useAccordion_unstable({ multiple: true }, React.createRef()));
+      expect(result.current.openItems.length).toEqual(0);
+      act(() => result.current.requestToggle(undefined!, { value: 0 }));
+      expect(result.current.openItems.length).toEqual(1);
+      act(() => result.current.requestToggle(undefined!, { value: 0 }));
+      expect(result.current.openItems.length).toEqual(1);
+    });
+    it('should not have less than 1 open item', () => {
+      const { result } = renderHook(() =>
+        useAccordion_unstable({ multiple: true, defaultOpenItems: [0] }, React.createRef()),
+      );
 
-    expect(result.current.openItems.length).toEqual(1);
-    expect(result.current.openItems.includes(0)).toBeTruthy();
+      expect(result.current.openItems.length).toEqual(1);
 
-    act(() => result.current.requestToggle(undefined!, { value: 1 }));
-
-    expect(result.current.openItems.length).toEqual(2);
-    expect(result.current.openItems.includes(0)).toBeTruthy();
-    expect(result.current.openItems.includes(1)).toBeTruthy();
+      act(() => result.current.requestToggle(undefined!, { value: 0 }));
+      expect(result.current.openItems.length).toEqual(1);
+      expect(result.current.openItems.includes(0)).toBeTruthy();
+    });
+    it('should open multiple panels', () => {
+      const { result } = renderHook(() => useAccordion_unstable({ multiple: true }, React.createRef()));
+      expect(result.current.openItems.length).toEqual(0);
+      act(() => result.current.requestToggle(undefined!, { value: 0 }));
+      expect(result.current.openItems.includes(0)).toBeTruthy();
+      act(() => result.current.requestToggle(undefined!, { value: 1 }));
+      expect(result.current.openItems.includes(1)).toBeTruthy();
+      expect(result.current.openItems.length).toEqual(2);
+    });
   });
-
-  it('should respect collapsible behavior', () => {
-    const { result } = renderHook(() => useAccordion_unstable({ collapsible: true }, React.createRef()));
-
-    expect(result.current.openItems.length).toEqual(0);
-
-    act(() => result.current.requestToggle(undefined!, { value: 0 }));
-
-    expect(result.current.openItems.length).toEqual(1);
-    expect(result.current.openItems.includes(0)).toBeTruthy();
-
-    act(() => result.current.requestToggle(undefined!, { value: 1 }));
-
-    expect(result.current.openItems.length).toEqual(1);
-    expect(result.current.openItems.includes(1)).toBeTruthy();
-  });
-  it('should respect collapsible and multiple behavior', () => {
-    const { result } = renderHook(() =>
-      useAccordion_unstable({ multiple: true, collapsible: true }, React.createRef()),
-    );
-
-    expect(result.current.openItems.length).toEqual(0);
-
-    act(() => result.current.requestToggle(undefined!, { value: 0 }));
-
-    expect(result.current.openItems.length).toEqual(1);
-    expect(result.current.openItems.includes(0)).toBeTruthy();
-
-    act(() => result.current.requestToggle(undefined!, { value: 1 }));
-
-    expect(result.current.openItems.length).toEqual(2);
-    expect(result.current.openItems.includes(0)).toBeTruthy();
-    expect(result.current.openItems.includes(1)).toBeTruthy();
+  describe('collapsible', () => {
+    it('should have zero panels opened', () => {
+      const { result } = renderHook(() => useAccordion_unstable({ collapsible: true }, React.createRef()));
+      expect(result.current.openItems.length).toEqual(0);
+      act(() => result.current.requestToggle(undefined!, { value: 0 }));
+      expect(result.current.openItems.length).toEqual(1);
+      act(() => result.current.requestToggle(undefined!, { value: 0 }));
+      expect(result.current.openItems.length).toEqual(0);
+    });
+    it('should not open more than one panel', () => {
+      const { result } = renderHook(() => useAccordion_unstable({ collapsible: true }, React.createRef()));
+      expect(result.current.openItems.length).toEqual(0);
+      act(() => result.current.requestToggle(undefined!, { value: 0 }));
+      expect(result.current.openItems.length).toEqual(1);
+      expect(result.current.openItems.includes(0)).toBeTruthy();
+      act(() => result.current.requestToggle(undefined!, { value: 1 }));
+      expect(result.current.openItems.length).toEqual(1);
+      expect(result.current.openItems.includes(1)).toBeTruthy();
+      expect(result.current.openItems.includes(0)).toBeFalsy();
+    });
   });
 });

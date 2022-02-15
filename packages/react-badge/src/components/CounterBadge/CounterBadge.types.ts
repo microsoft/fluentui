@@ -1,6 +1,6 @@
 import type { BadgeProps, BadgeState } from '../Badge/index';
 
-export type CounterBadgeCommons = {
+type CounterBadgeCommons = {
   /**
    * Max number to be displayed
    * @default 99
