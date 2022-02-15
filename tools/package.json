@@ -5,6 +5,7 @@
   "scripts": {
     "test": "nx run @fluentui/nx-workspace-tools:test",
     "lint": "nx run @fluentui/nx-workspace-tools:lint",
-    "type-check": "nx run @fluentui/nx-workspace-tools:type-check"
+    "type-check": "nx run @fluentui/nx-workspace-tools:type-check",
+    "check-dep-graph": "node ./check-dep-graph"
   }
 }

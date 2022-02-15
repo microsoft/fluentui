@@ -30,7 +30,8 @@ jobs:
 
       - script: |
           yarn nx workspace-lint
-        displayName: nx:workspace-lint
+          yarn workspace @fluentui/nx-workspace-tools check-dep-graph
+        displayName: NX workspace lint
 
       - script: |
           if [[ -n "$(targetBranch)" ]]; then
