@@ -33,9 +33,6 @@ const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
 
 // https://github.com/screener-io/screener-storybook#additional-configuration-options
 const config = {
-  fluentInternal: {
-    baseUrl: `${process.env.DEPLOYURL}/react-screener/iframe.html`,
-  },
   projectRepo: 'microsoft/fluentui',
   storybookStaticBuildDir: 'dist/storybook',
   storybookConfigDir: '.storybook',
