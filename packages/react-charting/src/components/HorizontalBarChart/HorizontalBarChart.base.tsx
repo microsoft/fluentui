@@ -62,7 +62,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
     return (
-      <div className={this._classNames.root}>
+      <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         {data!.map((points: IChartProps, index: number) => {
           if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
             datapoint = points.chartData![0].horizontalBarChartdata!.x;
@@ -83,7 +83,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           const keyVal = this._uniqLineText + '_' + index;
 
           return (
-            <div key={index} className={this._classNames.items} onMouseLeave={this._handleChartMouseLeave}>
+            <div key={index} className={this._classNames.items}>
               <div className={this._classNames.items}>
                 <FocusZone direction={FocusZoneDirection.horizontal}>
                   <div className={this._classNames.chartTitle}>
