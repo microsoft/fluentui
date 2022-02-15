@@ -251,7 +251,9 @@ export class GroupedVerticalBarChartBase extends React.Component<
     }
   };
 
-  private _onBarLeave = (/**/): void => {};
+  private _onBarLeave = (): void => {
+    /**/
+  };
 
   private _handleChartMouseLeave = (): void => {
     this._calloutAnchorPoint = null;

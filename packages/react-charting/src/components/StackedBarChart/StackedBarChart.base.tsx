@@ -415,7 +415,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
   }
 
-  private _onBarLeave(/**/): void {}
+  private _onBarLeave(): void {
+    /**/
+  }
 
   private _handleChartMouseLeave = () => {
     this._calloutAnchorPoint = null;

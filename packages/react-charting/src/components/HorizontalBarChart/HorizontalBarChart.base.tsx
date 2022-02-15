@@ -179,7 +179,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     }
   }
 
-  private _hoverOff(/**/): void {}
+  private _hoverOff(): void {
+    /**/
+  }
 
   private _handleChartMouseLeave = () => {
     this._calloutAnchorPoint = null;
