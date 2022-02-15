@@ -21,8 +21,10 @@ export async function screener() {
   const packagePath = path.relative(findGitRoot(), process.cwd());
   const affectedPackageInfo = Object.values(packageInfos).find(x => x.packagePath === packagePath);
   const affectedPackages = getAffectedPackages();
+  const isPrBuild = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.includes('refs/pull');
+
   try {
-    if (!affectedPackages.has(affectedPackageInfo.packageJson.name)) {
+    if (!affectedPackages.has(affectedPackageInfo.packageJson.name) && isPrBuild) {
       await cancelScreenerRun(screenerConfig, 'skipped');
     } else {
       await screenerRunner(screenerConfig);

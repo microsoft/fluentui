@@ -38,8 +38,9 @@ task('screener:runner', cb => {
       });
 
   const screenerConfig = require(screenerConfigPath);
+  const isPrBuild = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.includes('refs/pull');
 
-  if (changedPackages.has(docsPackageName)) {
+  if (changedPackages.has(docsPackageName) && isPrBuild) {
     handlePromiseExit(screenerRunner(screenerConfig));
   } else {
     handlePromiseExit(cancelScreenerRun(screenerConfig, 'skipped'));
