@@ -19,18 +19,18 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
   } = props;
   const [openItems, setOpenItems] = useControllableState({
     state: React.useMemo(() => normalizeValues(controlledOpenItems), [controlledOpenItems]),
-    defaultState: () => initializeUncontrolledOpenItems({ collapsible, defaultOpenItems, multiple }),
+    defaultState: () => initializeUncontrolledOpenItems({ defaultOpenItems, multiple }),
     initialState: [],
   });
 
   const requestToggle = useEventCallback((event: AccordionToggleEvent, data: AccordionToggleData) => {
     onToggle?.(event, data);
-    setOpenItems(previousOpenItems => {
-      return updateOpenItems(data.value, previousOpenItems, {
+    setOpenItems(previousOpenItems =>
+      updateOpenItems(data.value, previousOpenItems, {
         collapsible,
         multiple,
-      });
-    });
+      }),
+    );
   });
 
   return {
@@ -55,20 +55,14 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
 function initializeUncontrolledOpenItems({
   defaultOpenItems,
   multiple,
-  collapsible,
-}: Pick<AccordionProps, 'defaultOpenItems' | 'multiple' | 'collapsible'>): AccordionItemValue[] {
+}: Pick<AccordionProps, 'defaultOpenItems' | 'multiple'>): AccordionItemValue[] {
   if (defaultOpenItems !== undefined) {
     if (Array.isArray(defaultOpenItems)) {
       return multiple ? defaultOpenItems : [defaultOpenItems[0]];
     }
     return [defaultOpenItems];
   }
-  /**
-   * TODO: since the dropping of descendants API due to performance issues,
-   * the default behavior of Accordion has been compromised and [0] makes no sense
-   * indexes are not used anymore to ensure the position of the element which should be opened by default
-   */
-  return collapsible ? [] : [0];
+  return [];
 }
 
 /**
