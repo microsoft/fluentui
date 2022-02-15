@@ -3,8 +3,8 @@ import { CompoundButton } from '../../../CompoundButton';
 
 export const Block = () => (
   <>
-    <CompoundButton secondaryContent="This is the secondary content" block>
-      Block button
+    <CompoundButton secondaryContent="Secondary content" block>
+      Block
     </CompoundButton>
   </>
 );

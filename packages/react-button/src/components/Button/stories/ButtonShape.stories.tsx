@@ -3,9 +3,9 @@ import { Button } from '../../../Button';
 
 export const Shape = () => (
   <>
-    <Button>Button</Button>
-    <Button shape="circular">Button</Button>
-    <Button shape="square">Button</Button>
+    <Button>Rounded</Button>
+    <Button shape="circular">Circular</Button>
+    <Button shape="square">Square</Button>
   </>
 );
 

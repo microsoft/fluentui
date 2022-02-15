@@ -2,6 +2,36 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Fri, 11 Feb 2022 07:27:48 GMT",
+      "tag": "@fluentui/utilities_v8.4.1",
+      "version": "8.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "99a30a94f7c44064de9a20e26650aa609f4dc78d",
+            "comment": "modalize: don't access document in SSR"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Feb 2022 07:30:50 GMT",
+      "tag": "@fluentui/utilities_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "ae67454c2af28710b9d197ce91fd2ded069d9ebf",
+            "comment": "Marked \"raiseClick()\" as deprecated"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Feb 2022 07:29:41 GMT",
       "tag": "@fluentui/utilities_v8.3.10",
       "version": "8.3.10",

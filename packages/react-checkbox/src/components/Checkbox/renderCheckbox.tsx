@@ -7,10 +7,10 @@ export const renderCheckbox_unstable = (state: CheckboxState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      {state.labelPosition === 'before' && <slots.label {...slotProps.label} />}
+      {state.labelPosition === 'before' && slots.label && <slots.label {...slotProps.label} />}
       <slots.indicator {...slotProps.indicator} />
       <slots.input {...slotProps.input} />
-      {state.labelPosition === 'after' && <slots.label {...slotProps.label} />}
+      {state.labelPosition === 'after' && slots.label && <slots.label {...slotProps.label} />}
     </slots.root>
   );
 };

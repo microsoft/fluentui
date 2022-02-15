@@ -11,7 +11,7 @@ export const renderTab_unstable = (state: TabState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      <slots.icon {...slotProps.icon} />
+      {slots.icon && <slots.icon {...slotProps.icon} />}
       <slots.content {...slotProps.content} />
     </slots.root>
   );

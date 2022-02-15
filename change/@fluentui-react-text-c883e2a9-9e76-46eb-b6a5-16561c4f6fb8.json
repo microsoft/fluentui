@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updating use of tokens.fontWeight now that we don't need to use casting.",
-  "packageName": "@fluentui/react-text",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

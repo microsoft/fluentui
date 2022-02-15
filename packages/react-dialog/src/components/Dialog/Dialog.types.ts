@@ -4,7 +4,7 @@ export type DialogSlots = {
   root: Slot<'div'>;
 };
 
-export type DialogCommons = {
+type DialogCommons = {
   // TODO Add things shared between props and state here
 };
 

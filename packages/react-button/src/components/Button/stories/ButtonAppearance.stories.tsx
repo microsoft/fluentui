@@ -3,11 +3,11 @@ import { Button } from '../../../Button';
 
 export const Appearance = () => (
   <>
-    <Button>Default button</Button>
-    <Button appearance="primary">Primary button</Button>
-    <Button appearance="outline">Outline button</Button>
-    <Button appearance="subtle">Subtle button</Button>
-    <Button appearance="transparent">Transparent button</Button>
+    <Button>Default</Button>
+    <Button appearance="primary">Primary</Button>
+    <Button appearance="outline">Outline</Button>
+    <Button appearance="subtle">Subtle</Button>
+    <Button appearance="transparent">Transparent</Button>
   </>
 );
 Appearance.parameters = {

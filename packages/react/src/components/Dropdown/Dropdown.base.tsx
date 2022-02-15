@@ -738,8 +738,9 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
   private _renderSeparator(item: IDropdownOption): JSX.Element | null {
     const { index, key } = item;
+    const separatorClassName = item.hidden ? this._classNames.dropdownDividerHidden : this._classNames.dropdownDivider;
     if (index! > 0) {
-      return <div role="separator" key={key} className={this._classNames.dropdownDivider} />;
+      return <div role="separator" key={key} className={separatorClassName} />;
     }
     return null;
   }
@@ -747,8 +748,12 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   private _renderHeader(item: IDropdownOption): JSX.Element {
     const { onRenderOption = this._onRenderOption } = this.props;
     const { key, id } = item;
+    const headerClassName = item.hidden
+      ? this._classNames.dropdownItemHeaderHidden
+      : this._classNames.dropdownItemHeader;
+
     return (
-      <div id={id} key={key} className={this._classNames.dropdownItemHeader}>
+      <div id={id} key={key} className={headerClassName}>
         {onRenderOption(item, this._onRenderOption)}
       </div>
     );
