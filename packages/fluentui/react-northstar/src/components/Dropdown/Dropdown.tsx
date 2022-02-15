@@ -6,6 +6,7 @@ import {
   useFluentContext,
   useTelemetry,
   ForwardRefWithAs,
+  useMergedRefs,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -413,7 +414,6 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     align,
     flipBoundary,
     overflowBoundary,
-    popperRef,
     position,
     positionFixed,
     offset,
@@ -503,6 +503,12 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     }),
     rtl: context.rtl,
   });
+
+  const popperRef = useMergedRefs(props.popperRef);
+
+  React.useLayoutEffect(() => {
+    popperRef.current?.updatePosition();
+  }, [filteredItems.length, popperRef]);
 
   const clearA11ySelectionMessage = React.useMemo(
     () =>
