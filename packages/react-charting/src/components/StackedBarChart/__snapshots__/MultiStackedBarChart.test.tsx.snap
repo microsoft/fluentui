@@ -25,6 +25,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             margin-bottom: 16px;
             width: 100%;
           }
+      onMouseLeave={[Function]}
     >
       <div
         className=
@@ -171,6 +172,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             margin-bottom: 16px;
             width: 100%;
           }
+      onMouseLeave={[Function]}
     >
       <div
         className=
@@ -395,6 +397,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             margin-bottom: 16px;
             width: 100%;
           }
+      onMouseLeave={[Function]}
     >
       <div
         className=
@@ -537,6 +540,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             margin-bottom: 16px;
             width: 100%;
           }
+      onMouseLeave={[Function]}
     >
       <div
         className=
@@ -757,6 +761,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             margin-bottom: 16px;
             width: 100%;
           }
+      onMouseLeave={[Function]}
     >
       <div
         className=
@@ -903,6 +908,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             margin-bottom: 16px;
             width: 100%;
           }
+      onMouseLeave={[Function]}
     >
       <div
         className=
@@ -1070,6 +1076,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             margin-bottom: 16px;
             width: 100%;
           }
+      onMouseLeave={[Function]}
     >
       <div
         className=
@@ -1204,6 +1211,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             margin-bottom: 16px;
             width: 100%;
           }
+      onMouseLeave={[Function]}
     >
       <div
         className=
@@ -1607,6 +1615,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             margin-bottom: 16px;
             width: 100%;
           }
+      onMouseLeave={[Function]}
     >
       <div
         className=
@@ -1753,6 +1762,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             margin-bottom: 16px;
             width: 100%;
           }
+      onMouseLeave={[Function]}
     >
       <div
         className=

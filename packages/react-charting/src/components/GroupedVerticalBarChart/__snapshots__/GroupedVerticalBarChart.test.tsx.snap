@@ -17,6 +17,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
         width: 100%;
       }
   id="chart_2"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -577,6 +578,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         width: 100%;
       }
   id="chart_14"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1117,6 +1119,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         width: 100%;
       }
   id="chart_6"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1354,6 +1357,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         width: 100%;
       }
   id="chart_10"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1914,6 +1918,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         width: 100%;
       }
   id="chart_18"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -2474,6 +2479,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         width: 100%;
       }
   id="chart_22"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -3034,6 +3040,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         width: 100%;
       }
   id="chart_26"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
