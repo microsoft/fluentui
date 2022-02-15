@@ -6,7 +6,7 @@ import './docs-root.css';
 /** @type {NonNullable<import('@storybook/react').Story['decorators']>} */
 export const decorators = [withFluentProvider, withStrictMode];
 
-/** @type {import('@storybook/react').Parameters} */
+/** @type {import('@storybook/addons').Parameters} */
 export const parameters = {
   viewMode: 'docs',
   controls: {

@@ -3,41 +3,29 @@ const fs = require('fs');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 /**
- *  @callback StorybookWebpackConfig
- *  @param {import("webpack").Configuration} config
- *  @param {{configType: 'DEVELOPMENT' | 'PRODUCTION'}} options - change the build configuration. 'PRODUCTION' is used when building the static version of storybook.
- *  @returns {import("webpack").Configuration}
+ * @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig
+ *
+ * @typedef {{
+ *   babel: (options: Record<string, unknown>) => Promise<Record<string, unknown>>;
+ *   previewHead: (head: string) => string;
+ * }} StorybookExtraConfig
+ *
+ * @typedef {StorybookBaseConfig &
+ *   Required<Pick<StorybookBaseConfig, 'stories' | 'addons' | 'webpackFinal'>> &
+ *   StorybookExtraConfig
+ * } StorybookConfig
  */
 
 /**
- *  @typedef {{
- *    check:boolean;
- *    checkOptions: Record<string,unknown>;
- *    reactDocgen: string | boolean;
- *    reactDocgenTypescriptOptions: Record<string,unknown>
- *  }} StorybookTsConfig
- */
-
-/**
- *  @typedef {{
- *    stories: string[];
- *    addons: string[];
- *    typescript: StorybookTsConfig;
- *    babel: (options:Record<string,unknown>)=>Promise<Record<string,unknown>>;
- *    webpackFinal: StorybookWebpackConfig;
- *    core: {builder:'webpack5'};
- *    previewHead: (head: string) => string
- * }} StorybookConfig
- */
-
-/**
- * @typedef  {{loader: string; options: { [index: string]: any }}} LoaderObjectDef
+ * @typedef  {{ loader: string; options: { [index: string]: any }}} LoaderObjectDef
  */
 
 const previewHeadTemplate = fs.readFileSync(path.resolve(__dirname, 'preview-head-template.html'), 'utf8');
 
-module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
+/** @type {Omit<StorybookConfig, 'typescript' | 'babel'>} */
+module.exports = {
   features: {
+    // Enables code splitting
     storyStoreV7: true,
   },
   stories: [],
@@ -88,7 +76,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
    * @see https://storybook.js.org/docs/react/addons/writing-presets#previewmanager-templates
    */
   previewHead: head => head + previewHeadTemplate,
-});
+};
 
 /**
  * This is a temporary quick-fix solution. Remove this once we'll came up with robust solution - @see https://github.com/microsoft/fluentui/issues/18775
