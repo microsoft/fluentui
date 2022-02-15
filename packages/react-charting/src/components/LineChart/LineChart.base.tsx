@@ -838,7 +838,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     mouseEvent: React.MouseEvent<SVGElement>,
   ) => {
     mouseEvent.persist();
-    this._uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
     const xVal = x instanceof Date ? x.getTime() : x;
     const _this = this;
@@ -850,6 +849,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
         .attr('visibility', 'visibility');
       if (this._uniqueCallOutID !== circleId) {
+        this._uniqueCallOutID = circleId;
         this.setState({
           isCalloutVisible: true,
           refSelected: `#${circleId}`,

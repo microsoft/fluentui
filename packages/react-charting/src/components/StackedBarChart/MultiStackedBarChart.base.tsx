@@ -422,12 +422,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
   private _onBarLeave(): void {}
 
-  private _handleChartMouseLeave(): void {
+  private _handleChartMouseLeave = () => {
     this._calloutAnchorPoint = null;
     this.setState({
       isCalloutVisible: false,
     });
-  }
+  };
 
   private _redirectToUrl(href: string | undefined): void {
     href ? (window.location.href = href) : '';

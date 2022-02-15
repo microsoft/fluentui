@@ -277,10 +277,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this.setState({ activeLegend: '', selectedLegend: 'none', focusedArcId: '' });
   }
 
-  private _handleChartMouseLeave(): void {
+  private _handleChartMouseLeave = () => {
     this._calloutAnchorPoint = null;
     this.setState({ showHover: false });
-  }
+  };
 
   private _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
     if (valueInsideDonut !== undefined && this.state.activeLegend !== '' && !this.state.showHover) {

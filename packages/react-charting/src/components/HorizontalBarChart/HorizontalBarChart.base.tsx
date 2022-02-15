@@ -181,7 +181,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
   private _hoverOff(): void {}
 
-  private _handleChartMouseLeave(): void {
+  private _handleChartMouseLeave = () => {
     this._calloutAnchorPoint = null;
     if (this.state.isCalloutVisible) {
       this.setState({
@@ -192,7 +192,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         legend: '',
       });
     }
-  }
+  };
 
   private _adjustProps = (): void => {
     this._barHeight = this.props.barHeight || 8;
