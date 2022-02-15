@@ -35,6 +35,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _uniqLineText: string;
   private _calloutId: string;
   private _refArray: IRefArrayData[];
+  private _calloutAnchorPoint: IChartDataPoint | null;
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);
@@ -82,7 +83,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           const keyVal = this._uniqLineText + '_' + index;
 
           return (
-            <div key={index} className={this._classNames.items}>
+            <div key={index} className={this._classNames.items} onMouseLeave={this._handleChartMouseLeave}>
               <div className={this._classNames.items}>
                 <FocusZone direction={FocusZoneDirection.horizontal}>
                   <div className={this._classNames.chartTitle}>
@@ -158,11 +159,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   }
 
   private _hoverOn(hoverValue: string | number | Date | null, point: IChartDataPoint): void {
-    if (!this.state.isCalloutVisible || this.state.legend !== point.legend!) {
+    if ((!this.state.isCalloutVisible || this.state.legend !== point.legend!) && this._calloutAnchorPoint !== point) {
       const currentHoveredElement = find(
         this._refArray,
         (currentElement: IRefArrayData) => currentElement.index === point.legend,
       );
+      this._calloutAnchorPoint = point;
       this.setState({
         isCalloutVisible: true,
         hoverValue: hoverValue,
@@ -177,7 +179,10 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     }
   }
 
-  private _hoverOff(): void {
+  private _hoverOff(): void {}
+
+  private _handleChartMouseLeave(): void {
+    this._calloutAnchorPoint = null;
     if (this.state.isCalloutVisible) {
       this.setState({
         isCalloutVisible: false,

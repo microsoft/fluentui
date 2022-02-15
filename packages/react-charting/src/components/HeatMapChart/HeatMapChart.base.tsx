@@ -119,6 +119,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _rectRefArray: { [key: string]: IRectRef } = {};
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
+  private _calloutAnchorPoint: FlattenData | null;
   public constructor(props: IHeatMapChartProps) {
     super(props);
     const { x, y } = this._getXandY();
@@ -216,6 +217,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
           direction: FocusZoneDirection.bidirectional,
         }}
         legendBars={this._createLegendBars()}
+        onChartMouseLeave={this._handleChartMouseLeave}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -268,20 +270,26 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
 
   private _onRectMouseOver = (id: string, data: FlattenData, mouseEvent: React.MouseEvent<SVGGElement>): void => {
     mouseEvent.persist();
-    this.setState({
-      target: this._rectRefArray[id].refElement,
-      isCalloutVisible: true,
-      calloutYValue: `${data.rectText}`,
-      calloutTextColor: this._colorScale(data.value),
-      calloutLegend: data.legend,
-      ratio: data.ratio || null,
-      descriptionMessage: data.descriptionMessage || '',
-      calloutId: id,
-      callOutAccessibilityData: data.callOutAccessibilityData,
-    });
+    if (this._calloutAnchorPoint !== data) {
+      this._calloutAnchorPoint = data;
+      this.setState({
+        target: this._rectRefArray[id].refElement,
+        isCalloutVisible: true,
+        calloutYValue: `${data.rectText}`,
+        calloutTextColor: this._colorScale(data.value),
+        calloutLegend: data.legend,
+        ratio: data.ratio || null,
+        descriptionMessage: data.descriptionMessage || '',
+        calloutId: id,
+        callOutAccessibilityData: data.callOutAccessibilityData,
+      });
+    }
   };
 
-  private _onRectBlurOrMouseOut = (): void => {
+  private _onRectBlurOrMouseOut = (): void => {};
+
+  private _handleChartMouseLeave = (): void => {
+    this._calloutAnchorPoint = null;
     this.setState({
       isCalloutVisible: false,
     });

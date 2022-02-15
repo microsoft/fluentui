@@ -68,6 +68,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _isHavingLine: boolean;
   private _tooltipId: string;
   private _xAxisType: XAxisTypes;
+  private _calloutAnchorPoint: IVerticalBarChartDataPoint | null;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -148,6 +149,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         getmargins={this._getMargins}
         getGraphData={this._getGraphData}
         getAxisData={this._getAxisData}
+        onChartMouseLeave={this._handleChartMouseLeave}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -366,11 +368,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     mouseEvent: React.MouseEvent<SVGElement>,
   ): void {
     mouseEvent.persist();
+
     const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
     if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)
+      (this.state.isLegendSelected === false ||
+        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)) &&
+      this._calloutAnchorPoint !== point
     ) {
+      this._calloutAnchorPoint = point;
       this.setState({
         refSelected: mouseEvent,
         isCalloutVisible: true,
@@ -389,7 +394,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     }
   }
 
-  private _onBarLeave = (): void => {
+  private _onBarLeave = (): void => {};
+
+  private _handleChartMouseLeave = (): void => {
+    this._calloutAnchorPoint = null;
     this.setState({
       isCalloutVisible: false,
       activeXdataPoint: null,

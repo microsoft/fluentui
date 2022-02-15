@@ -34,6 +34,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
   private _calloutId: string;
   private _refArray: IRefArrayData[];
+  private _calloutAnchorPoint: IChartDataPoint | null;
 
   public constructor(props: IStackedBarChartProps) {
     super(props);
@@ -100,7 +101,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     });
     const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (
-      <div className={this._classNames.root}>
+      <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
@@ -395,9 +396,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   ): void {
     mouseEvent.persist();
     if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)
+      (this.state.isLegendSelected === false ||
+        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)) &&
+      this._calloutAnchorPoint !== point
     ) {
+      this._calloutAnchorPoint = point;
       this.setState({
         refSelected: mouseEvent,
         isCalloutVisible: true,
@@ -412,7 +415,10 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
   }
 
-  private _onBarLeave(): void {
+  private _onBarLeave(): void {}
+
+  private _handleChartMouseLeave(): void {
+    this._calloutAnchorPoint = null;
     this.setState({
       isCalloutVisible: false,
     });

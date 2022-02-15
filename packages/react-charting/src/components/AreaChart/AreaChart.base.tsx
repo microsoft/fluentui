@@ -63,6 +63,7 @@ export interface IAreaChartState extends IBasestate {
   stackCalloutProps?: ICustomizedCalloutData;
   nearestCircleToHighlight: number | string | Date | null;
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
+  isShowCalloutPending: boolean;
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
@@ -111,6 +112,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       displayOfLine: InterceptVisibility.hide,
       isCircleClicked: false,
       nearestCircleToHighlight: null,
+      isShowCalloutPending: false,
     };
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
@@ -167,6 +169,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         getGraphData={this._getGraphData}
         getmargins={this._getMargins}
         customizedCallout={this._getCustomizedCallout()}
+        onChartMouseLeave={this._handleChartMouseLeave}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -251,12 +254,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     });
     const nearestCircleToHighlight =
       axisType === XAxisTypes.DateAxis ? (pointToHighlight as Date).getTime() : pointToHighlight;
+    const pointToHighlightUpdated = this.state.nearestCircleToHighlight !== nearestCircleToHighlight;
     // if no points need to be called out then don't show vertical line and callout card
-    if (found) {
+    if (found && pointToHighlightUpdated && !this.state.isShowCalloutPending) {
       this.setState({
-        refSelected: mouseEvent,
-        isCalloutVisible: true,
         nearestCircleToHighlight: nearestCircleToHighlight,
+        isCalloutVisible: false,
+        isShowCalloutPending: true,
         lineXValue: this._xAxisRectScale(pointToHighlight),
         displayOfLine: InterceptVisibility.show,
         isCircleClicked: false,
@@ -266,7 +270,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
         xAxisCalloutAccessibilityData,
       });
-    } else {
+    }
+    if (!found) {
       this.setState({
         isCalloutVisible: false,
         nearestCircleToHighlight: nearestCircleToHighlight,
@@ -278,7 +283,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   /**
    * just cleaning up the state which we have set in the mouse move event
    */
-  private _onRectMouseOut = () => {
+  private _onRectMouseOut = () => {};
+
+  private _handleChartMouseLeave = () => {
     this.setState({
       refSelected: null,
       isCalloutVisible: false,
@@ -507,12 +514,22 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
   };
 
-  private _updateCircleFillColor = (xDataPoint: number | Date, lineColor: string): string => {
-    if (this.state.isCircleClicked && this.state.nearestCircleToHighlight === xDataPoint) {
-      return lineColor;
-    } else {
-      return this.state.nearestCircleToHighlight === xDataPoint ? this.props.theme!.palette.white : lineColor;
+  private _updateCircleFillColor = (xDataPoint: number | Date, lineColor: string, circleId: string): string => {
+    var fillColor = lineColor;
+    if (this.state.nearestCircleToHighlight === xDataPoint) {
+      if (this.state.isShowCalloutPending) {
+        this.setState({
+          refSelected: `#${circleId}`,
+          isCalloutVisible: true,
+          isShowCalloutPending: false,
+        });
+      }
+      if (!this.state.isCircleClicked) {
+        fillColor = this.props.theme!.palette.white;
+      }
     }
+
+    return fillColor;
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -588,7 +605,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 stroke={lineColor}
                 strokeWidth={3}
                 visibility={this.state.nearestCircleToHighlight ? 'visibility' : 'hidden'}
-                fill={this._updateCircleFillColor(xDataPoint, lineColor)}
+                fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
                 onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}

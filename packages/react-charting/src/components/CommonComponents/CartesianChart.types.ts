@@ -483,4 +483,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getAxisData?: any;
+
+  /**
+   * Callback method used for to get margins to the chart.
+   */
+  onChartMouseLeave?: () => void;
 }

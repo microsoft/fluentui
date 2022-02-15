@@ -46,6 +46,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
   private _classNames: IProcessedStyleSet<IMultiStackedBarChartStyles>;
   private _calloutId: string;
+  private _calloutAnchorPoint: IChartDataPoint | null;
 
   public constructor(props: IMultiStackedBarChartProps) {
     super(props);
@@ -213,7 +214,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const showNumber = !hideNumber && data!.chartData!.length === 1;
     const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (
-      <div className={this._classNames.singleChartRoot}>
+      <div className={this._classNames.singleChartRoot} onMouseLeave={this._handleChartMouseLeave}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
@@ -400,9 +401,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     mouseEvent.persist();
 
     if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)
+      (this.state.isLegendSelected === false ||
+        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)) &&
+      this._calloutAnchorPoint !== point
     ) {
+      this._calloutAnchorPoint = point;
       this.setState({
         refSelected: mouseEvent,
         isCalloutVisible: true,
@@ -417,7 +420,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     }
   }
 
-  private _onBarLeave(): void {
+  private _onBarLeave(): void {}
+
+  private _handleChartMouseLeave(): void {
+    this._calloutAnchorPoint = null;
     this.setState({
       isCalloutVisible: false,
     });
