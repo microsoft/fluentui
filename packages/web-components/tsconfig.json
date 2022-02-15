@@ -12,6 +12,7 @@
     "module": "ESNext",
     "allowJs": true,
     "importHelpers": true,
+    "skipLibCheck": true,
     "types": ["node", "mocha", "webpack-env"],
     "lib": ["DOM", "ES2015", "ES2016.Array.Include"]
   },
