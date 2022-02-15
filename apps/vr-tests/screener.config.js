@@ -44,7 +44,6 @@ const config = {
   ...(process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.indexOf('refs/pull') > -1
     ? { commit: getCurrentHash() }
     : null),
-  baseUrl: `${process.env.DEPLOYURL}/react-screener/iframe.html`,
 };
 console.log('Screener config: ' + JSON.stringify({ ...config, apiKey: '...' }, null, 2));
 

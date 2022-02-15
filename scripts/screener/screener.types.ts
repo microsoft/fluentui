@@ -19,9 +19,6 @@ export type ScreenerRunnerConfig = {
   baseBranch: string;
   commit: string;
   failureExitCode: number;
-
-  /** Base url of deployed storybook screener should test */
-  baseUrl: string;
 };
 
 export type ScreenerState = {

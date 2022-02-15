@@ -12,7 +12,7 @@ import { getStorybook } from '@storybook/react';
 export async function screener() {
   const screenerConfigPath = path.resolve(process.cwd(), './screener.config.js');
   const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath);
-  const screenerStates = await getScreenerStates(screenerConfig);
+  const screenerStates = await getScreenerStates(screenerConfig, `${process.env.DEPLOYURL}/react-screener/iframe.html`);
   screenerConfig.states = screenerStates;
   console.log('screener config for run');
   console.log(JSON.stringify(screenerConfig, null, 2));
@@ -64,10 +64,10 @@ function transformToStates(storybook: ScreenerStorybookSection, baseUrl: string)
   }, []);
 }
 
-async function getScreenerStates(screenerConfig: ScreenerRunnerConfig): Promise<ScreenerState[]> {
+async function getScreenerStates(screenerConfig, baseUrl): Promise<ScreenerState[]> {
   await startStorybook(screenerConfig, {});
 
-  return transformToStates(screenerGetStorybook() as ScreenerStorybookSection, screenerConfig.baseUrl);
+  return transformToStates(screenerGetStorybook() as ScreenerStorybookSection, baseUrl);
 }
 
 type ScreenerStory = { steps?: ScreenerRunnerStep[] };
