@@ -39,6 +39,7 @@ export const useSplitButton_unstable = (
       shape,
       size,
     },
+    required: true,
   });
 
   const primaryActionButtonShorthand = resolveShorthand(primaryActionButton, {
@@ -54,6 +55,7 @@ export const useSplitButton_unstable = (
       shape,
       size,
     },
+    required: true,
   });
 
   // Resolve menu button's aria-labelledby to be labelled by the primary action button if not a label was not provided
