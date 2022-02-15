@@ -103,6 +103,7 @@ export default [
   'rtl-css-js@1.11.0',
   'scheduler@0.13.3',
   'scheduler@0.13.6',
+  'scheduler@0.20.2',
   'stylis@3.5.4',
   'stylis-plugin-rtl@1.0.0',
   'tslib@1.10.0',
