@@ -285,4 +285,4 @@ export const FocusZoneUtilities = {
   focusAsync,
 };
 
-export const dummy = 'dummy';
+export const dummy = 'dummy1';
