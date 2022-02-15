@@ -39,12 +39,10 @@ export const useToggleButton_unstable = (
       onClick: React.useCallback(
         ev => {
           if (!disabled && !disabledFocusable) {
-            if (onClick) {
-              onClick(ev);
+            onClick?.(ev);
 
-              if (ev.defaultPrevented) {
-                return;
-              }
+            if (ev.defaultPrevented) {
+              return;
             }
 
             setCheckedValue(!checkedValue);

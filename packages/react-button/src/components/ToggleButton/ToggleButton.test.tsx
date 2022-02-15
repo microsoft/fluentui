@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { validateBehavior, ComponentTestFacade, toggleButtonBehaviorDefinition } from '@fluentui/a11y-testing';
 import { isConformant } from '../../common/isConformant';
 import { ToggleButton } from './ToggleButton';
@@ -24,93 +25,91 @@ describe('ToggleButton', () => {
 
   describe('when rendered as a button', () => {
     it('renders correctly', () => {
-      const result = render(<ToggleButton>This is a button</ToggleButton>);
+      const { getByRole } = render(<ToggleButton>This is a button</ToggleButton>);
+      const button = getByRole('button');
 
-      const button = result.getByRole('button');
-      expect(button).toBeTruthy();
       expect(button.tagName).toBe('BUTTON');
     });
 
     it('can be focused', () => {
-      const result = render(<ToggleButton>This is a button</ToggleButton>);
-      const button = result.getByRole('button');
+      const { getByRole } = render(<ToggleButton>This is a button</ToggleButton>);
+      const button = getByRole('button');
 
       expect(document.activeElement).not.toEqual(button);
-      button.focus();
+      userEvent.tab();
       expect(document.activeElement).toEqual(button);
     });
 
     it('cannot be focused when disabled has been passed to the component', () => {
-      const result = render(<ToggleButton disabled>This is a button</ToggleButton>);
-      const button = result.getByRole('button');
+      const { getByRole } = render(<ToggleButton disabled>This is a button</ToggleButton>);
+      const button = getByRole('button');
 
       expect(document.activeElement).not.toEqual(button);
-      button.focus();
+      userEvent.tab();
       expect(document.activeElement).not.toEqual(button);
     });
 
     it('can be focused when disabledFocusable has been passed to the component', () => {
-      const result = render(<ToggleButton disabledFocusable>This is a button</ToggleButton>);
-      const button = result.getByRole('button');
+      const { getByRole } = render(<ToggleButton disabledFocusable>This is a button</ToggleButton>);
+      const button = getByRole('button');
 
       expect(document.activeElement).not.toEqual(button);
-      button.focus();
+      userEvent.tab();
       expect(document.activeElement).toEqual(button);
     });
 
     it('can trigger a function by being clicked', () => {
       const onClick = jest.fn();
-      const result = render(<ToggleButton onClick={onClick}>This is a button</ToggleButton>);
+      const { getByRole } = render(<ToggleButton onClick={onClick}>This is a button</ToggleButton>);
 
-      fireEvent.click(result.getByRole('button'));
+      userEvent.click(getByRole('button'));
       expect(onClick).toHaveBeenCalled();
     });
 
     it('does not trigger a function by being clicked when button is disabled', () => {
       const onClick = jest.fn();
-      const result = render(
+      const { getByRole } = render(
         <ToggleButton disabled onClick={onClick}>
           This is a button
         </ToggleButton>,
       );
 
-      fireEvent.click(result.getByRole('button'));
+      userEvent.click(getByRole('button'));
       expect(onClick).not.toHaveBeenCalled();
     });
 
     it('does not trigger a function by being clicked when button is disabled and focusable', () => {
       const onClick = jest.fn();
-      const result = render(
+      const { getByRole } = render(
         <ToggleButton disabledFocusable onClick={onClick}>
           This is a button
         </ToggleButton>,
       );
 
-      fireEvent.click(result.getByRole('button'));
+      userEvent.click(getByRole('button'));
       expect(onClick).not.toHaveBeenCalled();
     });
   });
 
   describe('when rendered as an anchor', () => {
     it('renders correctly', () => {
-      const result = render(
+      const { getByRole } = render(
         <ToggleButton as="a" href="https://www.bing.com">
           This is a button
         </ToggleButton>,
       );
+      const anchor = getByRole('button');
 
-      const anchor = result.getByRole('button');
-      expect(anchor).toBeTruthy();
       expect(anchor.tagName).toBe('A');
     });
 
     it('can be focused', () => {
-      const result = render(
+      const { getByRole } = render(
         <ToggleButton as="a" href="https://www.bing.com">
           This is a button
         </ToggleButton>,
       );
-      const anchor = result.getByRole('button');
+      const anchor = getByRole('button');
 
       expect(document.activeElement).not.toEqual(anchor);
       anchor.focus();
@@ -118,12 +117,12 @@ describe('ToggleButton', () => {
     });
 
     it('cannot be focused when disabled has been passed to the component', () => {
-      const result = render(
+      const { getByRole } = render(
         <ToggleButton as="a" disabled href="https://www.bing.com">
           This is a button
         </ToggleButton>,
       );
-      const anchor = result.getByRole('button');
+      const anchor = getByRole('button');
 
       expect(document.activeElement).not.toEqual(anchor);
       anchor.focus();
@@ -131,12 +130,12 @@ describe('ToggleButton', () => {
     });
 
     it('can be focused when disabledFocusable has been passed to the component', () => {
-      const result = render(
+      const { getByRole } = render(
         <ToggleButton as="a" disabledFocusable href="https://www.bing.com">
           This is a button
         </ToggleButton>,
       );
-      const anchor = result.getByRole('button');
+      const anchor = getByRole('button');
 
       expect(document.activeElement).not.toEqual(anchor);
       anchor.focus();
@@ -146,47 +145,47 @@ describe('ToggleButton', () => {
 
   describe('on state changes', () => {
     it('triggers a change in `aria-pressed` when clicked if it is uncontrolled', () => {
-      const result = render(
+      const { getAllByRole } = render(
         <>
           <ToggleButton defaultChecked={false}>This is a toggle button</ToggleButton>
           <ToggleButton defaultChecked>This is a toggle button</ToggleButton>
         </>,
       );
-      const [initiallyUnchecked, initiallyChecked] = result.getAllByRole('button');
+      const [initiallyUnchecked, initiallyChecked] = getAllByRole('button');
 
       expect(initiallyUnchecked.getAttribute('aria-pressed')).toBe('false');
-      fireEvent.click(initiallyUnchecked);
+      userEvent.click(initiallyUnchecked);
       expect(initiallyUnchecked.getAttribute('aria-pressed')).toBe('true');
-      fireEvent.click(initiallyUnchecked);
+      userEvent.click(initiallyUnchecked);
       expect(initiallyUnchecked.getAttribute('aria-pressed')).toBe('false');
 
       expect(initiallyChecked.getAttribute('aria-pressed')).toBe('true');
-      fireEvent.click(initiallyChecked);
+      userEvent.click(initiallyChecked);
       expect(initiallyChecked.getAttribute('aria-pressed')).toBe('false');
-      fireEvent.click(initiallyChecked);
+      userEvent.click(initiallyChecked);
       expect(initiallyChecked.getAttribute('aria-pressed')).toBe('true');
     });
 
     it('does not trigger a change in `aria-pressed` when clicked if it is controlled', () => {
-      const result = render(
+      const { getAllByRole } = render(
         <>
           <ToggleButton checked={false}>This is a toggle button</ToggleButton>
           <ToggleButton checked>This is a toggle button</ToggleButton>
         </>,
       );
-      const [unchecked, checked] = result.getAllByRole('button');
+      const [unchecked, checked] = getAllByRole('button');
 
       expect(unchecked.getAttribute('aria-pressed')).toBe('false');
-      fireEvent.click(unchecked);
+      userEvent.click(unchecked);
       expect(unchecked.getAttribute('aria-pressed')).toBe('false');
 
       expect(checked.getAttribute('aria-pressed')).toBe('true');
-      fireEvent.click(checked);
+      userEvent.click(checked);
       expect(checked.getAttribute('aria-pressed')).toBe('true');
     });
 
     it('does not trigger a change in `aria-pressed` when clicked if it is disabled', () => {
-      const result = render(
+      const { getAllByRole } = render(
         <>
           <ToggleButton disabled>This is a toggle button</ToggleButton>
           <ToggleButton defaultChecked disabled>
@@ -194,19 +193,19 @@ describe('ToggleButton', () => {
           </ToggleButton>
         </>,
       );
-      const [unchecked, checked] = result.getAllByRole('button');
+      const [unchecked, checked] = getAllByRole('button');
 
       expect(unchecked.getAttribute('aria-pressed')).toBe('false');
-      fireEvent.click(unchecked);
+      userEvent.click(unchecked);
       expect(unchecked.getAttribute('aria-pressed')).toBe('false');
 
       expect(checked.getAttribute('aria-pressed')).toBe('true');
-      fireEvent.click(checked);
+      userEvent.click(checked);
       expect(checked.getAttribute('aria-pressed')).toBe('true');
     });
 
     it('does not trigger a change in `aria-pressed` when clicked if it is disabledFocusable', () => {
-      const result = render(
+      const { getAllByRole } = render(
         <>
           <ToggleButton disabledFocusable>This is a toggle button</ToggleButton>
           <ToggleButton defaultChecked disabledFocusable>
@@ -214,20 +213,20 @@ describe('ToggleButton', () => {
           </ToggleButton>
         </>,
       );
-      const [unchecked, checked] = result.getAllByRole('button');
+      const [unchecked, checked] = getAllByRole('button');
 
       expect(unchecked.getAttribute('aria-pressed')).toBe('false');
-      fireEvent.click(unchecked);
+      userEvent.click(unchecked);
       expect(unchecked.getAttribute('aria-pressed')).toBe('false');
 
       expect(checked.getAttribute('aria-pressed')).toBe('true');
-      fireEvent.click(checked);
+      userEvent.click(checked);
       expect(checked.getAttribute('aria-pressed')).toBe('true');
     });
 
     describe('when passed a checkbox role', () => {
       it('triggers a change in `aria-checked` when clicked if it is uncontrolled', () => {
-        const result = render(
+        const { getAllByRole } = render(
           <>
             <ToggleButton defaultChecked={false} role="checkbox">
               This is a toggle button
@@ -243,38 +242,36 @@ describe('ToggleButton', () => {
             </ToggleButton>
           </>,
         );
-        const [initiallyUncheckedCheckbox, initiallyCheckedCheckbox] = result.getAllByRole('checkbox');
-        const [initiallyUncheckedMenuItemCheckbox, initiallyCheckedMenuItemCheckbox] = result.getAllByRole(
-          'menuitemcheckbox',
-        );
+        const [initiallyUncheckedCheckbox, initiallyCheckedCheckbox] = getAllByRole('checkbox');
+        const [initiallyUncheckedMenuItemCheckbox, initiallyCheckedMenuItemCheckbox] = getAllByRole('menuitemcheckbox');
 
         expect(initiallyUncheckedCheckbox.getAttribute('aria-checked')).toBe('false');
-        fireEvent.click(initiallyUncheckedCheckbox);
+        userEvent.click(initiallyUncheckedCheckbox);
         expect(initiallyUncheckedCheckbox.getAttribute('aria-checked')).toBe('true');
-        fireEvent.click(initiallyUncheckedCheckbox);
+        userEvent.click(initiallyUncheckedCheckbox);
         expect(initiallyUncheckedCheckbox.getAttribute('aria-checked')).toBe('false');
 
         expect(initiallyCheckedCheckbox.getAttribute('aria-checked')).toBe('true');
-        fireEvent.click(initiallyCheckedCheckbox);
+        userEvent.click(initiallyCheckedCheckbox);
         expect(initiallyCheckedCheckbox.getAttribute('aria-checked')).toBe('false');
-        fireEvent.click(initiallyCheckedCheckbox);
+        userEvent.click(initiallyCheckedCheckbox);
         expect(initiallyCheckedCheckbox.getAttribute('aria-checked')).toBe('true');
 
         expect(initiallyUncheckedMenuItemCheckbox.getAttribute('aria-checked')).toBe('false');
-        fireEvent.click(initiallyUncheckedMenuItemCheckbox);
+        userEvent.click(initiallyUncheckedMenuItemCheckbox);
         expect(initiallyUncheckedMenuItemCheckbox.getAttribute('aria-checked')).toBe('true');
-        fireEvent.click(initiallyUncheckedMenuItemCheckbox);
+        userEvent.click(initiallyUncheckedMenuItemCheckbox);
         expect(initiallyUncheckedMenuItemCheckbox.getAttribute('aria-checked')).toBe('false');
 
         expect(initiallyCheckedMenuItemCheckbox.getAttribute('aria-checked')).toBe('true');
-        fireEvent.click(initiallyCheckedMenuItemCheckbox);
+        userEvent.click(initiallyCheckedMenuItemCheckbox);
         expect(initiallyCheckedMenuItemCheckbox.getAttribute('aria-checked')).toBe('false');
-        fireEvent.click(initiallyCheckedMenuItemCheckbox);
+        userEvent.click(initiallyCheckedMenuItemCheckbox);
         expect(initiallyCheckedMenuItemCheckbox.getAttribute('aria-checked')).toBe('true');
       });
 
       it('does not trigger a change in `aria-checked` when clicked if it is controlled', () => {
-        const result = render(
+        const { getAllByRole } = render(
           <>
             <ToggleButton checked={false} role="checkbox">
               This is a toggle button
@@ -290,28 +287,28 @@ describe('ToggleButton', () => {
             </ToggleButton>
           </>,
         );
-        const [uncheckedCheckbox, checkedCheckbox] = result.getAllByRole('checkbox');
-        const [uncheckedMenuItemCheckbox, checkedMenuItemCheckbox] = result.getAllByRole('menuitemcheckbox');
+        const [uncheckedCheckbox, checkedCheckbox] = getAllByRole('checkbox');
+        const [uncheckedMenuItemCheckbox, checkedMenuItemCheckbox] = getAllByRole('menuitemcheckbox');
 
         expect(uncheckedCheckbox.getAttribute('aria-checked')).toBe('false');
-        fireEvent.click(uncheckedCheckbox);
+        userEvent.click(uncheckedCheckbox);
         expect(uncheckedCheckbox.getAttribute('aria-checked')).toBe('false');
 
         expect(checkedCheckbox.getAttribute('aria-checked')).toBe('true');
-        fireEvent.click(checkedCheckbox);
+        userEvent.click(checkedCheckbox);
         expect(checkedCheckbox.getAttribute('aria-checked')).toBe('true');
 
         expect(uncheckedMenuItemCheckbox.getAttribute('aria-checked')).toBe('false');
-        fireEvent.click(uncheckedMenuItemCheckbox);
+        userEvent.click(uncheckedMenuItemCheckbox);
         expect(uncheckedMenuItemCheckbox.getAttribute('aria-checked')).toBe('false');
 
         expect(checkedMenuItemCheckbox.getAttribute('aria-checked')).toBe('true');
-        fireEvent.click(checkedMenuItemCheckbox);
+        userEvent.click(checkedMenuItemCheckbox);
         expect(checkedMenuItemCheckbox.getAttribute('aria-checked')).toBe('true');
       });
 
       it('does not trigger a change in `aria-checked` when clicked if it is disabled', () => {
-        const result = render(
+        const { getAllByRole } = render(
           <>
             <ToggleButton disabled role="checkbox">
               This is a toggle button
@@ -327,28 +324,28 @@ describe('ToggleButton', () => {
             </ToggleButton>
           </>,
         );
-        const [uncheckedCheckbox, checkedCheckbox] = result.getAllByRole('checkbox');
-        const [uncheckedMenuItemCheckbox, checkedMenuItemCheckbox] = result.getAllByRole('menuitemcheckbox');
+        const [uncheckedCheckbox, checkedCheckbox] = getAllByRole('checkbox');
+        const [uncheckedMenuItemCheckbox, checkedMenuItemCheckbox] = getAllByRole('menuitemcheckbox');
 
         expect(uncheckedCheckbox.getAttribute('aria-checked')).toBe('false');
-        fireEvent.click(uncheckedCheckbox);
+        userEvent.click(uncheckedCheckbox);
         expect(uncheckedCheckbox.getAttribute('aria-checked')).toBe('false');
 
         expect(checkedCheckbox.getAttribute('aria-checked')).toBe('true');
-        fireEvent.click(checkedCheckbox);
+        userEvent.click(checkedCheckbox);
         expect(checkedCheckbox.getAttribute('aria-checked')).toBe('true');
 
         expect(uncheckedMenuItemCheckbox.getAttribute('aria-checked')).toBe('false');
-        fireEvent.click(uncheckedMenuItemCheckbox);
+        userEvent.click(uncheckedMenuItemCheckbox);
         expect(uncheckedMenuItemCheckbox.getAttribute('aria-checked')).toBe('false');
 
         expect(checkedMenuItemCheckbox.getAttribute('aria-checked')).toBe('true');
-        fireEvent.click(checkedMenuItemCheckbox);
+        userEvent.click(checkedMenuItemCheckbox);
         expect(checkedMenuItemCheckbox.getAttribute('aria-checked')).toBe('true');
       });
 
       it('does not trigger a change in `aria-checked` when clicked if it is disabledFocusable', () => {
-        const result = render(
+        const { getAllByRole } = render(
           <>
             <ToggleButton disabledFocusable role="checkbox">
               This is a toggle button
@@ -364,23 +361,23 @@ describe('ToggleButton', () => {
             </ToggleButton>
           </>,
         );
-        const [uncheckedCheckbox, checkedCheckbox] = result.getAllByRole('checkbox');
-        const [uncheckedMenuItemCheckbox, checkedMenuItemCheckbox] = result.getAllByRole('menuitemcheckbox');
+        const [uncheckedCheckbox, checkedCheckbox] = getAllByRole('checkbox');
+        const [uncheckedMenuItemCheckbox, checkedMenuItemCheckbox] = getAllByRole('menuitemcheckbox');
 
         expect(uncheckedCheckbox.getAttribute('aria-checked')).toBe('false');
-        fireEvent.click(uncheckedCheckbox);
+        userEvent.click(uncheckedCheckbox);
         expect(uncheckedCheckbox.getAttribute('aria-checked')).toBe('false');
 
         expect(checkedCheckbox.getAttribute('aria-checked')).toBe('true');
-        fireEvent.click(checkedCheckbox);
+        userEvent.click(checkedCheckbox);
         expect(checkedCheckbox.getAttribute('aria-checked')).toBe('true');
 
         expect(uncheckedMenuItemCheckbox.getAttribute('aria-checked')).toBe('false');
-        fireEvent.click(uncheckedMenuItemCheckbox);
+        userEvent.click(uncheckedMenuItemCheckbox);
         expect(uncheckedMenuItemCheckbox.getAttribute('aria-checked')).toBe('false');
 
         expect(checkedMenuItemCheckbox.getAttribute('aria-checked')).toBe('true');
-        fireEvent.click(checkedMenuItemCheckbox);
+        userEvent.click(checkedMenuItemCheckbox);
         expect(checkedMenuItemCheckbox.getAttribute('aria-checked')).toBe('true');
       });
     });

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../common/isConformant';
 import { CompoundButton } from './CompoundButton';
 import { CompoundButtonProps } from './CompoundButton.types';
@@ -12,93 +13,91 @@ describe('CompoundButton', () => {
 
   describe('when rendered as a button', () => {
     it('renders correctly', () => {
-      const result = render(<CompoundButton>This is a button</CompoundButton>);
-      const button = result.getByRole('button');
+      const { getByRole } = render(<CompoundButton>This is a button</CompoundButton>);
+      const button = getByRole('button');
 
-      expect(button).toBeTruthy();
       expect(button.tagName).toBe('BUTTON');
     });
 
     it('can be focused', () => {
-      const result = render(<CompoundButton>This is a button</CompoundButton>);
-      const button = result.getByRole('button');
+      const { getByRole } = render(<CompoundButton>This is a button</CompoundButton>);
+      const button = getByRole('button');
 
       expect(document.activeElement).not.toEqual(button);
-      button.focus();
+      userEvent.tab();
       expect(document.activeElement).toEqual(button);
     });
 
     it('cannot be focused when disabled has been passed to the component', () => {
-      const result = render(<CompoundButton disabled>This is a button</CompoundButton>);
-      const button = result.getByRole('button');
+      const { getByRole } = render(<CompoundButton disabled>This is a button</CompoundButton>);
+      const button = getByRole('button');
 
       expect(document.activeElement).not.toEqual(button);
-      button.focus();
+      userEvent.tab();
       expect(document.activeElement).not.toEqual(button);
     });
 
     it('can be focused when disabledFocusable has been passed to the component', () => {
-      const result = render(<CompoundButton disabledFocusable>This is a button</CompoundButton>);
-      const button = result.getByRole('button');
+      const { getByRole } = render(<CompoundButton disabledFocusable>This is a button</CompoundButton>);
+      const button = getByRole('button');
 
       expect(document.activeElement).not.toEqual(button);
-      button.focus();
+      userEvent.tab();
       expect(document.activeElement).toEqual(button);
     });
 
     it('can trigger a function by being clicked', () => {
       const onClick = jest.fn();
-      const result = render(<CompoundButton onClick={onClick}>This is a button</CompoundButton>);
+      const { getByRole } = render(<CompoundButton onClick={onClick}>This is a button</CompoundButton>);
 
-      fireEvent.click(result.getByRole('button'));
+      userEvent.click(getByRole('button'));
       expect(onClick).toHaveBeenCalled();
     });
 
     it('does not trigger a function by being clicked when disabled has been passed to the component', () => {
       const onClick = jest.fn();
-      const result = render(
+      const { getByRole } = render(
         <CompoundButton disabled onClick={onClick}>
           This is a button
         </CompoundButton>,
       );
 
-      fireEvent.click(result.getByRole('button'));
+      userEvent.click(getByRole('button'));
       expect(onClick).not.toHaveBeenCalled();
     });
 
     it('does not trigger a function by being clicked when disabledFocusable has been passed to the component', () => {
       const onClick = jest.fn();
-      const result = render(
+      const { getByRole } = render(
         <CompoundButton disabledFocusable onClick={onClick}>
           This is a button
         </CompoundButton>,
       );
 
-      fireEvent.click(result.getByRole('button'));
+      userEvent.click(getByRole('button'));
       expect(onClick).not.toHaveBeenCalled();
     });
   });
 
   describe('when rendered as an anchor', () => {
     it('renders correctly', () => {
-      const result = render(
+      const { getByRole } = render(
         <CompoundButton as="a" href="https://www.bing.com">
           This is a button
         </CompoundButton>,
       );
-      const anchor = result.getByRole('button');
+      const anchor = getByRole('button');
 
-      expect(anchor).toBeTruthy();
       expect(anchor.tagName).toBe('A');
     });
 
     it('can be focused', () => {
-      const result = render(
+      const { getByRole } = render(
         <CompoundButton as="a" href="https://www.bing.com">
           This is a button
         </CompoundButton>,
       );
-      const anchor = result.getByRole('button');
+      const anchor = getByRole('button');
 
       expect(document.activeElement).not.toEqual(anchor);
       anchor.focus();
@@ -106,12 +105,12 @@ describe('CompoundButton', () => {
     });
 
     it('cannot be focused when disabled has been passed to the component', () => {
-      const result = render(
+      const { getByRole } = render(
         <CompoundButton as="a" disabled href="https://www.bing.com">
           This is a button
         </CompoundButton>,
       );
-      const anchor = result.getByRole('button');
+      const anchor = getByRole('button');
 
       expect(document.activeElement).not.toEqual(anchor);
       anchor.focus();
@@ -119,12 +118,12 @@ describe('CompoundButton', () => {
     });
 
     it('can be focused when disabledFocusable has been passed to the component', () => {
-      const result = render(
+      const { getByRole } = render(
         <CompoundButton as="a" disabledFocusable href="https://www.bing.com">
           This is a button
         </CompoundButton>,
       );
-      const anchor = result.getByRole('button');
+      const anchor = getByRole('button');
 
       expect(document.activeElement).not.toEqual(anchor);
       anchor.focus();
