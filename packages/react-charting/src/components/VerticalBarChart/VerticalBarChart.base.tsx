@@ -394,7 +394,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     }
   }
 
-  private _onBarLeave = (): void => {};
+  private _onBarLeave = (/**/): void => {};
 
   private _handleChartMouseLeave = (): void => {
     this._calloutAnchorPoint = null;

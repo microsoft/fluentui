@@ -623,7 +623,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     }
   }
 
-  private _handleMouseOut = (): void => {};
+  private _handleMouseOut = (/**/): void => {};
 
   private _handleChartMouseLeave = (): void => {
     this._calloutAnchorPoint = null;

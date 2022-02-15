@@ -286,7 +286,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     }
   };
 
-  private _onRectBlurOrMouseOut = (): void => {};
+  private _onRectBlurOrMouseOut = (/**/): void => {};
 
   private _handleChartMouseLeave = (): void => {
     this._calloutAnchorPoint = null;

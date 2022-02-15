@@ -283,7 +283,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   /**
    * just cleaning up the state which we have set in the mouse move event
    */
-  private _onRectMouseOut = () => {};
+  private _onRectMouseOut = () => {
+    /**/
+  };
 
   private _handleChartMouseLeave = () => {
     this.setState({
@@ -515,7 +517,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   private _updateCircleFillColor = (xDataPoint: number | Date, lineColor: string, circleId: string): string => {
-    var fillColor = lineColor;
+    let fillColor = lineColor;
     if (this.state.nearestCircleToHighlight === xDataPoint) {
       if (this.state.isShowCalloutPending) {
         this.setState({

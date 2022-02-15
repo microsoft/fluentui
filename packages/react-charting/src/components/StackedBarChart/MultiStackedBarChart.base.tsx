@@ -420,7 +420,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     }
   }
 
-  private _onBarLeave(): void {}
+  private _onBarLeave(/**/): void {}
 
   private _handleChartMouseLeave = () => {
     this._calloutAnchorPoint = null;
