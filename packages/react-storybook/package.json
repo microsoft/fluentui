@@ -39,8 +39,8 @@
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0",
-    "@storybook/addon-knobs": "^6.0.28",
-    "@storybook/addons": "^6.0.28"
+    "@storybook/addon-knobs": "^6.4.0",
+    "@storybook/addons": "^6.4.19"
   },
   "beachball": {
     "disallowedChangeTypes": [
