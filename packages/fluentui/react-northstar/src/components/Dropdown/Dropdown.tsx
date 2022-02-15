@@ -508,7 +508,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
   React.useLayoutEffect(() => {
     popperRef.current?.updatePosition();
-  }, [filteredItems.length, popperRef]);
+  }, [filteredItems?.length, popperRef]);
 
   const clearA11ySelectionMessage = React.useMemo(
     () =>
