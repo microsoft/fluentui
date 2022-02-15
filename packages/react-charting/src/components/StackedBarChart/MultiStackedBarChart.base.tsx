@@ -95,7 +95,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
 
     return (
-      <div className={this._classNames.root}>
+      <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         {bars}
         {!this.props.hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
         <Callout
@@ -214,7 +214,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const showNumber = !hideNumber && data!.chartData!.length === 1;
     const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (
-      <div className={this._classNames.singleChartRoot} onMouseLeave={this._handleChartMouseLeave}>
+      <div className={this._classNames.singleChartRoot}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
