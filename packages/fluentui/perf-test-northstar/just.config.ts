@@ -1,8 +1,7 @@
 import path from 'path';
-import { preset, series, task, argv, condition } from '@fluentui/scripts';
+import { preset, series, task, argv } from '@fluentui/scripts';
 import { getResolveLoaderDirs } from '@fluentui/scripts/webpack/webpack-resources';
-import { getAffectedPackages, findGitRoot } from '../../../scripts/monorepo';
-import { spawnSync } from 'child_process';
+import { getAffectedPackages } from '../../../scripts/monorepo';
 
 preset();
 
@@ -35,22 +34,8 @@ task('perf-test:run', () => {
   return runPerfTest(argv().base);
 });
 
-task('lage-build', () => {
-  const gitRoot = findGitRoot();
-  const result = spawnSync('yarn', ['lage', 'build', '--to', '@fluentui/perf-test-northstar', '--verbose'], {
-    cwd: gitRoot,
-    shell: true,
-    encoding: 'utf-8',
-  });
-  if (result.status !== 0) {
-    throw new Error(`yarn lage build --to @fluentui/perf-test-northstar --verbose failed with status ${result.status}`);
-  } else {
-    console.log(result.stderr);
-  }
-});
-
 task('check-if-package-affected', () => {
-  const affected = getAffectedPackages().has('dummy');
+  const affected = getAffectedPackages().has('@fluentui/react-northstar');
   if (affected) {
     console.log(`##vso[task.setvariable variable=RunNorthstarPerfTest;]true`);
   }
@@ -58,15 +43,7 @@ task('check-if-package-affected', () => {
 
 // TOOD: is build doing anything meaningful? only if there's source that's not a just script?
 // TODO: if stories/scenarios are added in this package, make sure build catches type errors
-task(
-  'perf-test',
-  series(
-    // condition('lage-build', () => getAffectedPackages().has('dummy')),
-    'build',
-    'perf-test:bundle',
-    'perf-test:run',
-  ),
-);
+task('perf-test', series('build', 'perf-test:bundle', 'perf-test:run'));
 
 // TODO: Uncomment once stories can be referred to in a dependency.
 // This command will not be reliable until perf stories are in a package that can be set as a dep.
