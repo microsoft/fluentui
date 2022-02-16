@@ -40,7 +40,7 @@ steps:
 
     # Fabric Perf Test
   - script: |
-      yarn lage build --to --perf-test --verbose
+      yarn lage build --to perf-test --verbose
     condition: and(eq(variables['RunPerfTest'], true), eq(variables.isPR, true))
     workingDirectory: apps/perf-test
     displayName: Build to Perf Test
