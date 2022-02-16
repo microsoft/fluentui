@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toolbar",
-  "version": "9.0.0-rc.1",
+  "version": "9.0.0-rc.2",
   "private": true,
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
@@ -44,6 +44,8 @@
   "dependencies": {
     "@fluentui/react-theme": "9.0.0-rc.2",
     "@fluentui/react-utilities": "9.0.0-rc.2",
+    "@fluentui/react-button": "9.0.0-rc.2",
+    "@fluentui/react-divider": "9.0.0-rc.2",
     "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
   },
