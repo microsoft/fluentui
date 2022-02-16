@@ -2,8 +2,6 @@
 import * as React from 'react';
 import { setAddon } from '@storybook/react';
 import { setRTL } from '@fluentui/react/lib/Utilities';
-import { webLightTheme, webHighContrastTheme, webDarkTheme } from '@fluentui/react-theme';
-import { FluentProvider } from '@fluentui/react-provider';
 
 /**
  * @deprecated https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#deprecated-setaddon
@@ -26,43 +24,15 @@ setAddon({
    * @this {import('../src/utilities/types').ExtendedStoryApi}
    */
   addStory(storyName, storyFn, config = {}) {
-    // V-Next stories
-    if (this.kind.includes('Converged')) {
-      this.add(storyName, context => {
-        return <FluentProvider theme={webLightTheme}>{storyFn(context)}</FluentProvider>;
-      });
-      if (config.includeRtl) {
-        this.add(storyName + ' - RTL', context => {
-          return (
-            <FluentProvider theme={webLightTheme} dir="rtl">
-              {storyFn(context)}
-            </FluentProvider>
-          );
-        });
-      }
-      if (config.includeDarkMode) {
-        this.add(storyName + ' - Dark Mode', context => {
-          return <FluentProvider theme={webDarkTheme}>{storyFn(context)}</FluentProvider>;
-        });
-      }
-      if (config.includeHighContrast) {
-        this.add(storyName + ' - High Contrast', context => {
-          return <FluentProvider theme={webHighContrastTheme}>{storyFn(context)}</FluentProvider>;
-        });
-      }
-    }
-    // v8 stories
-    else {
-      this.add(storyName, context => {
-        setRTL(false);
+    this.add(storyName, context => {
+      setRTL(false);
+      return storyFn(context);
+    });
+    if (config.includeRtl) {
+      this.add(storyName + ' - RTL', context => {
+        setRTL(true);
         return storyFn(context);
       });
-      if (config.includeRtl) {
-        this.add(storyName + ' - RTL', context => {
-          setRTL(true);
-          return storyFn(context);
-        });
-      }
     }
 
     return this;
