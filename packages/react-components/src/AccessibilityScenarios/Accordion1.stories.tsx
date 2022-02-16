@@ -1,23 +1,8 @@
 import * as React from 'react';
 
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@fluentui/react-accordion';
-
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { Label } from '@fluentui/react-label';
-
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { Input } from '@fluentui/react-input';
-
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { Button } from '@fluentui/react-button';
 
 import { Scenario } from './utils';
