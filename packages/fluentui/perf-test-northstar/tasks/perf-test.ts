@@ -164,11 +164,16 @@ function createReport(stories, testResults: ExtendedCookResults): string {
   // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
   // TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
   // // Show only significant changes by default.
-  // .concat(createScenarioTable(stories, testResults, false))
+  // .concat(createScenarioTable(testResults, false))
 
   // // Show all results in a collapsible table.
+  // .concat('<details><summary>All results</summary><p>')
+  // .concat(createScenarioTable(testResults, true))
+  // .concat('</p></details>');
+
   // .concat(createScenarioTable(stories, testResults, true));
 
+  // return report;
   return getFluentPerfRegressions();
 }
 
