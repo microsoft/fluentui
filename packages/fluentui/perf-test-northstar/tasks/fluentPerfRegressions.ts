@@ -35,7 +35,6 @@ function linkToFlamegraph(value: string, filename: string) {
 }
 
 function reportResults(perfCounts: any, reporter: Reporter) {
-  console.log('perf counts ', perfCounts);
   const results = _.map(
     _.pickBy(perfCounts, value => _.has(value, 'analysis.regression')),
     (stats, name) => {
@@ -108,7 +107,7 @@ const checkPerfRegressions = (reporter: Reporter) => {
   let perfCounts;
 
   reporter.markdown('## Perf Analysis (`@fluentui/react-northstar`)');
-  console.log('config.paths ', require(config.paths.packageDist('perf-test-northstar', 'perfCounts.json')));
+
   try {
     perfCounts = require(config.paths.packageDist('perf-test-northstar', 'perfCounts.json'));
   } catch {
