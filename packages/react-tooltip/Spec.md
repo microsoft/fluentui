@@ -104,7 +104,7 @@ Render function for the trigger:
 
 # Variants
 
-- The tooltip supports a higher contrast colors with `appearance="inverted"`.
+- The tooltip supports higher contrast colors with `appearance="inverted"`.
 - The tooltip supports rendering an arrow pointing to the target element, using `withArrow`.
 
 # API
