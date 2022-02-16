@@ -212,7 +212,6 @@ export async function getPerfRegressions() {
 
   console.log(`##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.html`);
   console.log(`##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
-  console.log(`##vso[task.setvariable variable=perfTestExecuted;]true`);
 }
 
 /**

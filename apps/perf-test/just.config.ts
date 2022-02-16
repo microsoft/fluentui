@@ -21,24 +21,12 @@ task('lage-build', () => {
 
 task('run-perf-test', getPerfRegressions);
 
-task(
-  'perf-test',
-  series(
-    condition(
-      'lage-build',
-      () => getAffectedPackages().has('@fluentui/react') || getAffectedPackages().has('@fluentui/react-components'),
-    ),
-    condition(
-      'build',
-      () => getAffectedPackages().has('@fluentui/react') || getAffectedPackages().has('@fluentui/react-components'),
-    ),
-    condition(
-      'bundle',
-      () => getAffectedPackages().has('@fluentui/react') || getAffectedPackages().has('@fluentui/react-components'),
-    ),
-    condition(
-      'run-perf-test',
-      () => getAffectedPackages().has('@fluentui/react') || getAffectedPackages().has('@fluentui/react-components'),
-    ),
-  ),
-);
+task('check-if-package-affected', () => {
+  const affected =
+    getAffectedPackages().has('@fluentui/react') || getAffectedPackages().has('@fluentui/react-components');
+  if (affected) {
+    console.log(`##vso[task.setvariable variable=RunPerfTest;]true`);
+  }
+});
+
+task('perf-test', series('build', 'bundle', 'run-perf-test'));

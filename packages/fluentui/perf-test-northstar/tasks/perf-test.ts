@@ -130,7 +130,6 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
     `##vso[task.setvariable variable=PerfCommentFilePathNorthstar;]packages/fluentui/perf-test-northstar/dist/perfCounts.html`,
   );
   console.log(`##vso[task.setvariable variable=PerfCommentStatusNorthstar;]${status}`);
-  console.log(`##vso[task.setvariable variable=PerfTestNorthstarExecuted;]true`);
 }
 
 function extendCookResults(stories, testResults: CookResults): ExtendedCookResults {

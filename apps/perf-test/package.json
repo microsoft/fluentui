@@ -9,7 +9,8 @@
     "lint": "just-scripts lint",
     "just": "just-scripts",
     "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style"
+    "code-style": "just-scripts code-style",
+    "perf:test:affected": "just-scripts check-if-package-affected"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*"

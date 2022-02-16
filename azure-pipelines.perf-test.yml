@@ -26,12 +26,24 @@ steps:
     workingDirectory: packages/fluentui/perf-test-northstar
     displayName: Should Perf Test Run (Northstar)
 
+  - script: |
+      yarn perf:test:affected
+    workingDirectory: apps/perf-test
+    displayName: Should Perf Test Run
+
     # @fluentui/perf-test-northstar PR
   - script: |
       yarn lage build --to @fluentui/perf-test-northstar --verbose
     condition: and(eq(variables['RunNorthstarPerfTest'], true), eq(variables.isPR, true))
     workingDirectory: packages/fluentui/perf-test-northstar
     displayName: Build to Perf Test (Northstar)
+
+    # Fabric Perf Test
+  - script: |
+      yarn lage build --to --perf-test --verbose
+    condition: and(eq(variables['RunPerfTest'], true), eq(variables.isPR, true))
+    workingDirectory: apps/perf-test
+    displayName: Build to Perf Test
 
   # @fluentui/perf-test-northstar PR
   - script: |
@@ -44,13 +56,14 @@ steps:
   # @fluentui/perf-test-northstar Baseline
   - script: |
       yarn perf:test:base
-    condition: eq(variables.isPR, false)
+    condition: and(eq(variables['RunNorthstarPerfTest'], true), eq(variables.isPR, false))
     workingDirectory: packages/fluentui/perf-test-northstar
     displayName: Run Perf Test Base (Northstar)
 
   # Fabric: perf-test will build, bundle, and run-perftest
   - script: |
       yarn just perf-test
+    condition: and(eq(variables['RunPerfTest'], true), eq(variables.isPR, true))
     workingDirectory: apps/perf-test
     displayName: Run Perf Test
 
@@ -62,7 +75,7 @@ steps:
       storage: $(azureStorage)
       ContainerName: '$web'
       BlobPrefix: '$(deployBasePath)/perf-test-northstar'
-    condition: eq(variables['PerfTestNorthstarExecuted'], true)
+    condition: eq(variables['RunNorthstarPerfTest'], true)
 
   - task: AzureUpload@2
     displayName: Upload Perf Test Result to PR deploy site (Fluent)
@@ -72,7 +85,7 @@ steps:
       storage: $(azureStorage)
       ContainerName: '$web'
       BlobPrefix: '$(deployBasePath)/perf-test'
-    condition: eq(variables['PerfTestExecuted'], true)
+    condition: eq(variables['RunPerfTest'], true)
 
   - task: GithubPRComment@0
     displayName: 'Post @fluentui/react Perf Results to Github Pull Request'
@@ -82,7 +95,7 @@ steps:
       blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
       status: '$(PerfCommentStatus)'
       uniqueId: 'perfComment9423'
-    condition: eq(variables['PerfTestExecuted'], true)
+    condition: eq(variables['RunPerfTest'], true)
 
   - task: GithubPRComment@0
     displayName: 'Post @fluentui/react-northstar Perf Results to Github Pull Request'
@@ -92,7 +105,7 @@ steps:
       blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePathNorthstar)'
       status: '$(PerfCommentStatusNorthstar)'
       uniqueId: 'perfComment9424'
-    condition: eq(variables['PerfTestNorthstarExecuted'], true)
+    condition: eq(variables['RunNorthstarPerfTest'], true)
 
   - script: |
       yarn stats:build
