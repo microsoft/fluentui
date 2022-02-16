@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type { AccordionProps, AccordionState, AccordionToggleData, AccordionToggleEvent } from './Accordion.types';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Returns the props and state required to render the component
@@ -15,28 +16,32 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
     multiple = false,
     collapsible = false,
     onToggle,
-    navigable = false,
+    navigation,
   } = props;
   const [openItems, setOpenItems] = useControllableState({
     state: React.useMemo(() => normalizeValues(controlledOpenItems), [controlledOpenItems]),
-    defaultState: () => initializeUncontrolledOpenItems({ collapsible, defaultOpenItems, multiple }),
+    defaultState: () => initializeUncontrolledOpenItems({ defaultOpenItems, multiple }),
     initialState: [],
+  });
+
+  const arrowNavigationProps = useArrowNavigationGroup({
+    circular: navigation === 'circular',
   });
 
   const requestToggle = useEventCallback((event: AccordionToggleEvent, data: AccordionToggleData) => {
     onToggle?.(event, data);
-    setOpenItems(previousOpenItems => {
-      return updateOpenItems(data.value, previousOpenItems, {
+    setOpenItems(previousOpenItems =>
+      updateOpenItems(data.value, previousOpenItems, {
         collapsible,
         multiple,
-      });
-    });
+      }),
+    );
   });
 
   return {
     multiple,
     collapsible,
-    navigable,
+    navigation,
     openItems,
     requestToggle,
     components: {
@@ -44,6 +49,7 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
     },
     root: getNativeElementProps('div', {
       ...props,
+      ...(navigation ? arrowNavigationProps : {}),
       ref,
     }),
   };
@@ -55,20 +61,14 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
 function initializeUncontrolledOpenItems({
   defaultOpenItems,
   multiple,
-  collapsible,
-}: Pick<AccordionProps, 'defaultOpenItems' | 'multiple' | 'collapsible'>): AccordionItemValue[] {
+}: Pick<AccordionProps, 'defaultOpenItems' | 'multiple'>): AccordionItemValue[] {
   if (defaultOpenItems !== undefined) {
     if (Array.isArray(defaultOpenItems)) {
       return multiple ? defaultOpenItems : [defaultOpenItems[0]];
     }
     return [defaultOpenItems];
   }
-  /**
-   * TODO: since the dropping of descendants API due to performance issues,
-   * the default behavior of Accordion has been compromised and [0] makes no sense
-   * indexes are not used anymore to ensure the position of the element which should be opened by default
-   */
-  return collapsible ? [] : [0];
+  return [];
 }
 
 /**

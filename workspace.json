@@ -462,6 +462,11 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-select": {
+      "root": "packages/react-select",
+      "projectType": "library",
+      "sourceRoot": "packages/react-select/src"
+    },
     "@fluentui/react-shared-contexts": {
       "root": "packages/react-shared-contexts",
       "projectType": "library",
@@ -698,6 +703,11 @@
     },
     "@fluentui/vr-tests": {
       "root": "apps/vr-tests",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
+    "@fluentui/vr-tests-react-components": {
+      "root": "apps/vr-tests-react-components",
       "projectType": "application",
       "implicitDependencies": []
     }

@@ -3,12 +3,12 @@ import { CompoundButton } from '../../../CompoundButton';
 
 export const Shape = () => (
   <>
-    <CompoundButton secondaryContent="This is the secondary content">CompoundButton</CompoundButton>
-    <CompoundButton secondaryContent="This is the secondary content" shape="circular">
-      CompoundButton
+    <CompoundButton secondaryContent="Secondary content">Rounded</CompoundButton>
+    <CompoundButton secondaryContent="Secondary content" shape="circular">
+      Circular
     </CompoundButton>
-    <CompoundButton secondaryContent="This is the secondary content" shape="square">
-      CompoundButton
+    <CompoundButton secondaryContent="Secondary content" shape="square">
+      Square
     </CompoundButton>
   </>
 );

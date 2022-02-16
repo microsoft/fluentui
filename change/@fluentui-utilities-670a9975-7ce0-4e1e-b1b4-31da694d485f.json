@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "modalize: don't access document in SSR",
-  "packageName": "@fluentui/utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -46,7 +46,7 @@ export const useSwitchState = (state: SwitchState) => {
     initialState: false,
   });
   const [thumbAnimation, { setTrue: showThumbAnimation, setFalse: hideThumbAnimation }] = useBoolean(true);
-  const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(currentValue === true ? 100 : 0);
+  const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(undefined);
 
   const setChecked = useEventCallback(
     (ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>, incomingValue: boolean) => {

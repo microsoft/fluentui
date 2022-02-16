@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { ToggleButton } from '../../../ToggleButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { ToggleButton } from '../../../ToggleButton';
 
 export const Appearance = () => (
   <>
-    <ToggleButton>Default button</ToggleButton>
-    <ToggleButton appearance="primary">Primary button</ToggleButton>
-    <ToggleButton appearance="outline">Outline button</ToggleButton>
-    <ToggleButton appearance="subtle">Subtle button</ToggleButton>
-    <ToggleButton appearance="transparent">Transparent button</ToggleButton>
+    <ToggleButton>Default</ToggleButton>
+    <ToggleButton appearance="primary">Primary</ToggleButton>
+    <ToggleButton appearance="outline">Outline</ToggleButton>
+    <ToggleButton appearance="subtle">Subtle</ToggleButton>
+    <ToggleButton appearance="transparent">Transparent</ToggleButton>
   </>
 );
 Appearance.parameters = {

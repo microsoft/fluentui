@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Button: Updating stories to fix a11y issues.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

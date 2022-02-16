@@ -3,14 +3,14 @@ import { Button } from '../../../Button';
 
 export const WithLongText = () => (
   <>
-    <Button>Text</Button>
-    <Button>Text truncates after it hits the max width token value</Button>
+    <Button>Short text</Button>
+    <Button>Long text truncates after it hits the max width of the component</Button>
   </>
 );
 WithLongText.parameters = {
   docs: {
     description: {
-      story: 'Text truncates after it hits the max width theme token value.',
+      story: 'Text truncates after it hits the max width of the component.',
     },
   },
 };

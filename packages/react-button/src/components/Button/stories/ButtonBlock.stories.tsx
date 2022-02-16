@@ -3,7 +3,7 @@ import { Button } from '../../../Button';
 
 export const Block = () => (
   <>
-    <Button block>Block button</Button>
+    <Button block>Block</Button>
   </>
 );
 Block.parameters = {
