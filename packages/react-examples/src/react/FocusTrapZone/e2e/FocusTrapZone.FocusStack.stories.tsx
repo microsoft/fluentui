@@ -1,47 +1,68 @@
 import * as React from 'react';
-import { FocusTrapZone } from '@fluentui/react';
+import { FocusTrapZone, mergeStyles } from '@fluentui/react';
 import type { FTZTestWindow } from './shared';
+
+// make the example a little easier to visually follow when debugging
+const rootClass = mergeStyles({
+  '> div': {
+    // target all child FTZ roots
+    border: '2px dashed red',
+    padding: 10,
+    margin: 10,
+    button: {
+      display: 'inline-block',
+      marginLeft: 10,
+    },
+  },
+});
 
 /**
  * It maintains a proper stack of FocusTrapZones as more are mounted/unmounted
  */
 export const FocusStack = () => {
-  // Whether to show each FocusTrapZone
-  const [showFTZ, setShowFTZ] = React.useState([true, false, false, false, false]);
+  // Whether to render each FocusTrapZone
+  const [shouldRender, setShouldRender] = React.useState([true, false, false, false, false]);
 
-  (window as FTZTestWindow).getFocusStack = () => FocusTrapZone.focusStack;
-  (window as FTZTestWindow).setShown = (num, show) => {
-    setShowFTZ(prevValue => {
-      const newValue = [...prevValue];
-      newValue[num] = show;
-      return newValue;
+  const updateFTZ = (num: 1 | 2 | 3 | 4, newValue: boolean) => {
+    setShouldRender(prevValues => {
+      const newValues = [...prevValues];
+      newValues[num] = newValue;
+      return newValues;
     });
   };
 
+  (window as FTZTestWindow).getFocusStack = () => FocusTrapZone.focusStack;
+
   return (
-    <div>
-      <FocusTrapZone id="ftz0" forceFocusInsideTrap isClickableOutsideFocusTrap={false}>
+    <div className={rootClass}>
+      <FocusTrapZone id="ftz0">
         ftz0
+        <button onClick={() => updateFTZ(1, true)}>add ftz1</button>
+        <button onClick={() => updateFTZ(3, true)}>add ftz3</button>
+        <button onClick={() => updateFTZ(4, true)}>add ftz4</button>
       </FocusTrapZone>
 
-      {/* these aren't rendered with map() due to slight prop differences */}
-      {showFTZ[1] && (
-        <FocusTrapZone id="ftz1" forceFocusInsideTrap isClickableOutsideFocusTrap={false}>
+      {shouldRender[1] && (
+        <FocusTrapZone id="ftz1">
           ftz1
+          <button onClick={() => updateFTZ(2, true)}>add ftz2</button>
         </FocusTrapZone>
       )}
-      {showFTZ[2] && (
-        <FocusTrapZone id="ftz2" forceFocusInsideTrap isClickableOutsideFocusTrap={false}>
+      {shouldRender[2] && (
+        <FocusTrapZone id="ftz2">
           ftz2
+          <button onClick={() => updateFTZ(1, false)}>remove ftz1</button>
+          <button onClick={() => updateFTZ(2, false)}>remove ftz2</button>
         </FocusTrapZone>
       )}
-      {showFTZ[3] && (
-        <FocusTrapZone id="ftz3" forceFocusInsideTrap={false} isClickableOutsideFocusTrap={false}>
+      {shouldRender[3] && (
+        <FocusTrapZone id="ftz3" forceFocusInsideTrap={false}>
           ftz3
+          <button onClick={() => updateFTZ(3, false)}>remove ftz3</button>
         </FocusTrapZone>
       )}
-      {showFTZ[4] && (
-        <FocusTrapZone id="ftz4" forceFocusInsideTrap isClickableOutsideFocusTrap={false} disabled>
+      {shouldRender[4] && (
+        <FocusTrapZone id="ftz4" disabled>
           ftz4
         </FocusTrapZone>
       )}

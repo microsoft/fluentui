@@ -396,71 +396,76 @@ describe('FocusTrapZone', () => {
     // and the easiest way to do that in cypress is having the story expose a getFocusStack() global.
     // (Rendering FocusTrapZone.focusStack in the story doesn't work because updates to the array
     // don't trigger React updates, so it gets out of date.)
-    //
-    // It also needs a way to show and hide FocusTrapZones. Currently this is done by having the
-    // story expose a setShown() global, but finding an interactive approach would be better.
-    // (The jsdom version of the test did this by clicking buttons inside ftz0, but that (correctly)
-    // doesn't work in the browser because the other FocusTrapZones set isClickableOutsideFocusTrap=false.
-
-    const setShown: Required<FTZTestWindow>['setShown'] = (num, show) => {
-      cy.window().then(win => (win as FTZTestWindow).setShown!(num, show));
-    };
 
     cy.loadStory(ftzStoriesTitle, 'FocusStack');
 
     // There should now be one focus trap zone.
+    cy.get('#ftz0').should('exist');
+    cy.focused().should('have.text', 'add ftz1'); // first button in ftz0
     cy.window().should(win => {
       // NOTE: This expectation should NOT be done in a helper because there will be no useful
       // line/stack info if it fails (due to being run with eval() inside the test window).
       expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0']);
     });
 
-    // Show ftz1 and verify there are now two FTZs in the stack
-    setShown(1, true);
+    // add ftz1 and verify there are now two FTZs in the stack
+    cy.contains('add ftz1').realClick();
     cy.get('#ftz1').should('exist');
+    cy.focused().should('have.text', 'add ftz2'); // first button in ftz1
     cy.window().should(win => {
       expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0', 'ftz1']);
     });
 
-    // Show ftz2 => three FTZ in stack
-    setShown(2, true);
+    // add ftz2 => three FTZ in stack
+    cy.contains('add ftz2').realClick();
     cy.get('#ftz2').should('exist');
+    cy.focused().should('have.text', 'remove ftz1'); // first button in ftz2
     cy.window().should(win => {
       expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0', 'ftz1', 'ftz2']);
     });
 
-    // Hide ftz1 => two FTZ in stack
-    setShown(1, false);
+    // remove ftz1 => two FTZ in stack
+    cy.contains('remove ftz1').realClick();
     cy.get('#ftz1').should('not.exist');
+    cy.focused().should('have.text', 'remove ftz1'); // first button in ftz2
     cy.window().should(win => {
       expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0', 'ftz2']);
     });
 
-    // Hide ftz2 => one FTZ in stack
-    setShown(2, false);
+    // remove ftz2 => one FTZ in stack
+    cy.contains('remove ftz2').realClick();
     cy.get('#ftz2').should('not.exist');
     cy.window().should(win => {
       expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0']);
     });
+    // ftz2 will try to return focus to its initiator (the button in ftz1), but that button is gone,
+    // so focus goes to document.body
+    cy.document().should(doc => {
+      expect(doc.activeElement?.tagName).to.equal('BODY');
+    });
 
-    // Show ftz3 => two FTZ in stack
+    // add ftz3 => two FTZ in stack
     // (even though ftz3 has forceFocusInsideTrap=false)
-    setShown(3, true);
+    cy.contains('add ftz3').realClick();
     cy.get('#ftz3').should('exist');
+    cy.focused().should('have.text', 'remove ftz3'); // first button in ftz3
     cy.window().should(win => {
       expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0', 'ftz3']);
     });
 
-    // Hide ftz3 => one FTZ in stack
-    setShown(3, false);
+    // remove ftz3 => one FTZ in stack
+    cy.contains('remove ftz3').realClick();
     cy.get('#ftz3').should('not.exist');
     cy.window().should(win => {
       expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0']);
     });
+    // ftz3 returns focus to initiator after unmount
+    cy.focused().should('have.text', 'add ftz3');
 
-    // Show ftz4 => still only one FTZ in stack because ftz4 is disabled
-    setShown(4, true);
+    // add ftz4 => still only one FTZ in stack because ftz4 is disabled
+    cy.contains('add ftz4').realClick();
     cy.get('#ftz4').should('exist');
+    cy.focused().should('have.text', 'add ftz4'); // clicked button in ftz0
     cy.window().should(win => {
       expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0']);
     });

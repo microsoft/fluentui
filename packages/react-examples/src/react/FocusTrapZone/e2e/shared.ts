@@ -10,6 +10,4 @@ export type FTZTestWindow = Window & {
   imperativeFocus?: () => void;
   /** Gets `FocusTrapZone.focusStack` (used by FocusStack story) */
   getFocusStack?: () => string[];
-  /** Adds or removes a FocusTrapZone in the FocusStack story */
-  setShown?: (num: 1 | 2 | 3 | 4, show: boolean) => void;
 };
