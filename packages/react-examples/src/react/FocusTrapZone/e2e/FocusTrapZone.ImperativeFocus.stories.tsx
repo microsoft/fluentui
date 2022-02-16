@@ -5,7 +5,7 @@ import type { FTZTestWindow } from './shared';
 const rootClass = mergeStyles({
   button: {
     height: 30,
-    width: 30,
+    width: 60,
     display: 'block',
   },
 });
@@ -15,23 +15,21 @@ export const ImperativeFocus = () => {
   const [props, setProps] = React.useState<IFocusTrapZoneProps | undefined>();
   const focusTrapZoneRef = React.useRef<IFocusTrapZone>(null);
 
-  React.useEffect(() => {
-    (window as FTZTestWindow).setProps = setProps;
-    (window as FTZTestWindow).imperativeFocus = () => focusTrapZoneRef.current?.focus();
-  }, []);
+  (window as FTZTestWindow).setProps = setProps;
+  (window as FTZTestWindow).imperativeFocus = () => focusTrapZoneRef.current?.focus();
 
   return (
     // don't render until props have been set
     props && (
       <div className={rootClass}>
-        <FocusTrapZone forceFocusInsideTrap componentRef={focusTrapZoneRef} {...props}>
-          <button id="first">first</button>
+        <FocusTrapZone disableFirstFocus componentRef={focusTrapZoneRef} {...props}>
+          <button>first</button>
           <FocusZone>
-            <button id="mid">mid</button>
-            <button id="last">last</button>
+            <button>mid</button>
+            <button>last</button>
           </FocusZone>
         </FocusTrapZone>
-        <button id="after">after</button>
+        <button>after</button>
       </div>
     )
   );

@@ -14,21 +14,21 @@ const rootClass = mergeStyles({
 export const TabWrappingFocusZoneBumpers = () => {
   return (
     <div className={rootClass}>
-      <button id="before">before</button>
+      <button>before</button>
       <FocusTrapZone forceFocusInsideTrap={false}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
-          <button id="fz1First">fz1First</button>
-          <button id="fz1Mid">fz1Mid</button>
-          <button id="fz1Last">fz1Last</button>
+          <button>fz1First</button>
+          <button>fz1Mid</button>
+          <button>fz1Last</button>
         </FocusZone>
-        <button id="mid">mid</button>
+        <button>mid</button>
         <FocusZone direction={FocusZoneDirection.horizontal}>
-          <button id="fz2First">fz2First</button>
-          <button id="fz2Mid">fz2Mid</button>
-          <button id="fz2Last">fz2Last</button>
+          <button>fz2First</button>
+          <button>fz2Mid</button>
+          <button>fz2Last</button>
         </FocusZone>
       </FocusTrapZone>
-      <button id="after">after</button>
+      <button>after</button>
     </div>
   );
 };

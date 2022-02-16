@@ -8,25 +8,28 @@ const rootClass = mergeStyles({
 
 /** Focus behavior based on default and explicit prop values */
 export const PropValues = () => {
+  const [buttonClicked, setButtonClicked] = React.useState('');
+  const onClick = (ev: React.MouseEvent<HTMLElement>) =>
+    setButtonClicked((ev.target as HTMLButtonElement).textContent || '');
+
   const [props, setProps] = React.useState<IFocusTrapZoneProps | undefined>();
 
-  React.useEffect(() => {
-    (window as FTZTestWindow).setProps = setProps;
-  }, []);
+  (window as FTZTestWindow).setProps = setProps;
 
   return (
     // don't render until props have been set
     props && (
-      <div className={rootClass}>
-        <button id="before">before</button>
+      <div className={rootClass} onClick={onClick}>
+        <div id="buttonClicked">{buttonClicked}</div>
+        <button>before</button>
         <FocusTrapZone {...props}>
-          <button id="first">first</button>
-          <button id="mid">mid</button>
-          <button id="last" className="last-class">
+          <button>first</button>
+          <button>mid</button>
+          <button className="last-class" id="last">
             last
           </button>
         </FocusTrapZone>
-        <button id="after">after</button>
+        <button>after</button>
       </div>
     )
   );

@@ -7,32 +7,24 @@ const rootClass = mergeStyles({
 });
 
 /**
- * Tab and shift-tab do nothing (keep focus where it is) when the FTZ contains 0 tabbable items
+ * Tab and shift-tab when the FTZ contains 0 tabbable items
  */
-export const Empty = () => {
+export const NoTabbableItems = () => {
   const [props, setProps] = React.useState<IFocusTrapZoneProps | undefined>();
 
-  React.useEffect(() => {
-    (window as FTZTestWindow).setProps = setProps;
-  }, []);
+  (window as FTZTestWindow).setProps = setProps;
 
   return (
     // don't render until props have been set
     props && (
       <div className={rootClass}>
-        <button id="before">before</button>
+        <button>before</button>
         <FocusTrapZone forceFocusInsideTrap {...props}>
-          <button id="first" tabIndex={-1}>
-            first
-          </button>
-          <button id="mid" tabIndex={-1}>
-            mid
-          </button>
-          <button id="last" tabIndex={-1}>
-            last
-          </button>
+          <button tabIndex={-1}>first</button>
+          <button tabIndex={-1}>mid</button>
+          <button tabIndex={-1}>last</button>
         </FocusTrapZone>
-        <button id="after">after</button>
+        <button>after</button>
       </div>
     )
   );

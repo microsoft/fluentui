@@ -22,70 +22,13 @@ describe('FocusTrapZone', () => {
       cy.loadStory(ftzStoriesTitle, 'PropValues');
     });
 
-    it('Restores focus to FTZ when clicking outside FTZ', () => {
+    it('Focuses first child on mount', () => {
       setProps({});
 
-      cy.get('#mid').focus();
-      cy.focused().should('have.id', 'mid');
-
-      // try to focus on button outside FTZ
-      cy.get('#before').focus();
-      // it focuses first button inside FTZ instead
-      cy.focused().should('have.id', 'first');
+      cy.focused().should('have.text', 'first');
     });
 
-    it('Does not restore focus to FTZ when clicking outside FTZ with isClickableOutsideFocusTrap', () => {
-      setProps({ isClickableOutsideFocusTrap: true });
-
-      // verify we can focus on button outside FTZ
-      cy.get('#before').focus();
-      cy.focused().should('have.id', 'before');
-    });
-
-    it('Focuses first element when focus enters FTZ does not have focus and first bumper receives focus', () => {
-      setProps({ disableFirstFocus: true, isClickableOutsideFocusTrap: true });
-
-      cy.get('#before').focus();
-      cy.focused().should('have.id', 'before');
-
-      cy.realPress('Tab');
-      cy.focused().should('have.id', 'first');
-    });
-
-    it('Focuses last element when FTZ does not have focus and last bumper receives focus', () => {
-      setProps({ disableFirstFocus: true, isClickableOutsideFocusTrap: true });
-
-      cy.get('#after').focus();
-      cy.focused().should('have.id', 'after');
-
-      cy.realPress(['Shift', 'Tab']);
-      cy.focused().should('have.id', 'last');
-    });
-
-    it('Restores focus to FTZ when focusing outside FTZ', () => {
-      setProps({});
-
-      cy.get('#mid').focus();
-      cy.focused().should('have.id', 'mid');
-
-      cy.get('#after').focus();
-      cy.focused().should('have.id', 'first');
-    });
-
-    it('Does not restore focus to FTZ when forceFocusInsideTrap is false', () => {
-      setProps({ forceFocusInsideTrap: false });
-
-      cy.get('#after').focus();
-      cy.focused().should('have.id', 'after');
-    });
-
-    it('Focuses first on mount', () => {
-      setProps({});
-
-      cy.focused().should('have.id', 'first');
-    });
-
-    it('Does not focus first on mount with disableFirstFocus', () => {
+    it('Does not focus first child on mount with disableFirstFocus', () => {
       setProps({ disableFirstFocus: true });
 
       // For some reason this doesn't work:
@@ -93,6 +36,100 @@ describe('FocusTrapZone', () => {
       cy.document().should(doc => {
         expect(doc.activeElement?.tagName).to.equal('BODY');
       });
+    });
+
+    it('Can click children inside the FTZ', () => {
+      setProps({});
+
+      // wait for first focus to finish
+      cy.focused().should('have.text', 'first');
+
+      // focus inside the FTZ
+      cy.contains('mid').realClick();
+      cy.focused().should('have.text', 'mid');
+    });
+
+    it('Restores focus to FTZ when clicking outside FTZ', () => {
+      setProps({});
+
+      // wait for first focus to finish to avoid timing issue
+      cy.focused().should('have.text', 'first');
+
+      // try to click on button outside FTZ
+      cy.contains('before').realClick();
+      // it focuses first button inside FTZ instead
+      cy.focused().should('have.text', 'first');
+      // and the click isn't respected
+      cy.get('#buttonClicked').should('have.text', '');
+    });
+
+    it('Restores focus to FTZ when programmatically focusing outside FTZ', () => {
+      setProps({});
+
+      // wait for first focus to finish to avoid timing issue
+      cy.focused().should('have.text', 'first');
+
+      cy.contains('after').focus();
+      cy.focused().should('have.text', 'first');
+    });
+
+    it('Allows clicks outside FTZ with isClickableOutsideFocusTrap but restores focus inside', () => {
+      setProps({ isClickableOutsideFocusTrap: true });
+
+      // wait for first focus to finish to avoid timing issue
+      cy.focused().should('have.text', 'first');
+
+      // click the button and verify it worked (the story updates the text when a button is clicked)
+      cy.contains('before').realClick();
+      cy.get('#buttonClicked').should('have.text', 'before');
+
+      // but focus is kept within the FTZ
+      cy.focused().should('have.text', 'first');
+    });
+
+    it('Focuses first element when focus enters FTZ with tab', () => {
+      setProps({ disableFirstFocus: true });
+
+      // Start by programmatically focusing an element outside
+      // (clicking it won't work in this case because that would send focus inside the trap)
+      cy.contains('before').focus();
+      cy.focused().should('have.text', 'before');
+
+      // Tab to send focus to the first bumper, which passes focus on to the first element inside
+      cy.realPress('Tab');
+      cy.focused().should('have.text', 'first');
+    });
+
+    it('Focuses last element when focus enters FTZ with shift+tab', () => {
+      setProps({ disableFirstFocus: true });
+
+      // Start by programmatically focusing an element outside
+      // (clicking it won't work in this case because that would send focus inside the trap)
+      cy.contains('after').focus();
+      cy.focused().should('have.text', 'after');
+
+      // Shift+tab will send focus to the last bumper, which passes focus on to the last element inside
+      cy.realPress(['Shift', 'Tab']);
+      cy.focused().should('have.text', 'last');
+    });
+
+    it('Does not restore focus to FTZ when forceFocusInsideTrap is false', () => {
+      setProps({ forceFocusInsideTrap: false });
+
+      // wait for first focus to finish to avoid timing issue
+      cy.focused().should('have.text', 'first');
+
+      // click a button outside => respected
+      cy.contains('after').realClick();
+      cy.focused().should('have.text', 'after');
+
+      // focus back inside
+      cy.contains('mid').realClick();
+      cy.focused().should('have.text', 'mid');
+
+      // programmatic focus outside => respected
+      cy.contains('after').focus();
+      cy.focused().should('have.text', 'after');
     });
 
     it('Does not focus first on mount while disabled', () => {
@@ -107,7 +144,7 @@ describe('FocusTrapZone', () => {
       // deprecated: this is actually a className, not a selector
       setProps({ firstFocusableSelector: 'last-class' });
 
-      cy.focused().should('have.id', 'last');
+      cy.focused().should('have.text', 'last');
     });
 
     it('Does not focus on firstFocusableSelector on mount while disabled', () => {
@@ -121,19 +158,19 @@ describe('FocusTrapZone', () => {
     it('Falls back to first focusable element with invalid firstFocusableSelector', () => {
       setProps({ firstFocusableSelector: 'invalidSelector' });
 
-      cy.focused().should('have.id', 'first');
+      cy.focused().should('have.text', 'first');
     });
 
     it('Focuses on firstFocusableTarget selector on mount', () => {
       setProps({ firstFocusableTarget: '#last' });
 
-      cy.focused().should('have.id', 'last');
+      cy.focused().should('have.text', 'last');
     });
 
     it('Focuses on firstFocusableTarget callback on mount', () => {
       setProps({ firstFocusableTarget: element => element.querySelector('#last') });
 
-      cy.focused().should('have.id', 'last');
+      cy.focused().should('have.text', 'last');
     });
 
     it('Does not focus on firstFocusableTarget selector on mount while disabled', () => {
@@ -158,127 +195,145 @@ describe('FocusTrapZone', () => {
     it('Falls back to first focusable element with invalid firstFocusableTarget selector', () => {
       setProps({ firstFocusableTarget: '.invalidSelector' });
 
-      cy.focused().should('have.id', 'first');
+      cy.focused().should('have.text', 'first');
     });
 
     it('Falls back to first focusable element with invalid firstFocusableTarget callback', () => {
       setProps({ firstFocusableTarget: () => null });
 
-      cy.focused().should('have.id', 'first');
+      cy.focused().should('have.text', 'first');
     });
   });
 
   describe('Tab and shift-tab wrap at extreme ends of the FTZ', () => {
     // Note: all of the IDs in these tests refer to buttons
 
-    it('can tab across a FocusZone with different button structures', () => {
+    it('can tab between a button and a FocusZone', () => {
       // This story has a FTZ containing a button and a FocusZone (containing more buttons)
-      cy.loadStory(ftzStoriesTitle, 'TabWrappingFocusZone');
+      cy.loadStory(ftzStoriesTitle, 'TabWrappingButtonFocusZone');
 
-      // focus the first button inside the FTZ
-      cy.get('#first').focus();
-      cy.focused().should('have.id', 'first');
+      // initial focus goes to the button
+      cy.focused().should('have.text', 'first');
 
       // shift+tab to focus first bumper => wraps to FocusZone => first button inside it
       cy.realPress(['Shift', 'Tab']);
-      cy.focused().should('have.id', 'fzFirst');
+      cy.focused().should('have.text', 'fzFirst');
 
       // tab to focus last bumper => wraps to first button
       cy.realPress('Tab');
-      cy.focused().should('have.id', 'first');
+      cy.focused().should('have.text', 'first');
     });
 
-    it('can tab across FocusZones with different button structures', () => {
+    it('can tab between multiple FocusZones with different button structures', () => {
       // This story has a FTZ containing two FocusZones (both containing buttons)
       cy.loadStory(ftzStoriesTitle, 'TabWrappingMultiFocusZone');
 
-      cy.get('#fz1First').focus();
-      cy.focused().should('have.id', 'fz1First');
+      // initial focus goes into the first FocusZone
+      cy.focused().should('have.text', 'fz1First');
 
       // shift+tab to focus first bumper => wraps to second FocusZone => first button inside it
       cy.realPress(['Shift', 'Tab']);
-      cy.focused().should('have.id', 'fz2First');
+      cy.focused().should('have.text', 'fz2First');
 
       // tab to focus last bumper => wraps to first FocusZone => first button inside it
       cy.realPress('Tab');
-      cy.focused().should('have.id', 'fz1First');
+      cy.focused().should('have.text', 'fz1First');
     });
 
     it(
       'can trap focus when FTZ bookmark elements are FocusZones, ' +
         'and those elements have inner elements focused that are not the first inner element',
       () => {
-        // This story has a FTZ containing a FocusZone (with buttons), a button, and another FocusZone (with buttons)
+        // This story has a FTZ containing a FocusZone (with buttons), a button, and another FocusZone (with buttons).
+        // "Bookmark" refers to the first and last elements inside the FTZ.
         cy.loadStory(ftzStoriesTitle, 'TabWrappingFocusZoneBumpers');
 
+        // wait for first focus to finish to avoid timing issue
+        cy.focused().should('have.text', 'fz1First');
+
         // Focus the middle button in the first FZ.
-        cy.get('#fz1First').focus().realPress('ArrowRight');
-        cy.focused().should('have.id', 'fz1Mid');
+        cy.contains('fz1First').click().realPress('ArrowRight');
+        cy.focused().should('have.text', 'fz1Mid');
 
         // Focus the middle button in the second FZ.
-        cy.get('#fz2Mid').focus().realPress('ArrowRight');
-        cy.focused().should('have.id', 'fz2Last');
+        cy.contains('fz2Mid').click().realPress('ArrowRight');
+        cy.focused().should('have.text', 'fz2Last');
 
         // tab to focus last bumper => wraps to first FocusZone => previously focused button inside it
         cy.realPress('Tab');
-        cy.focused().should('have.id', 'fz1Mid');
+        cy.focused().should('have.text', 'fz1Mid');
 
         // shift+tab to focus first bumper => wraps to last FocusZone => previously focused button inside it
         cy.realPress(['Shift', 'Tab']);
-        cy.focused().should('have.id', 'fz2Last');
+        cy.focused().should('have.text', 'fz2Last');
       },
     );
   });
 
-  describe('Tab and shift-tab do nothing (keep focus where it is) when the FTZ contains 0 tabbable items', () => {
+  describe('Tab and shift-tab when the FTZ contains 0 tabbable items', () => {
     beforeEach(() => {
-      cy.loadStory(ftzStoriesTitle, 'Empty');
+      // This story has a FocusTrapZone containing buttons with tabIndex=-1, so they can still be
+      // clicked or programmatically focused, but aren't keyboard-focusable with tab
+      cy.loadStory(ftzStoriesTitle, 'NoTabbableItems');
     });
 
     it('focuses first focusable element when focusing first bumper', () => {
       setProps({});
 
-      cy.get('#mid').focus();
-      cy.focused().should('have.id', 'mid');
+      // wait for first focus to finish to avoid timing issue
+      cy.focused().should('have.text', 'first');
 
-      // shift+tab to focus first bumper
+      cy.contains('mid').realClick();
+      cy.focused().should('have.text', 'mid');
+
+      // shift+tab focuses the first bumper (since the buttons inside aren't keyboard-focusable)
+      //   => sends focus to first element
       cy.realPress(['Shift', 'Tab']);
-      cy.focused().should('have.id', 'first');
+      cy.focused().should('have.text', 'first');
     });
 
     it('focuses first focusable element when focusing last bumper', () => {
       setProps({});
 
-      cy.get('#mid').focus();
-      cy.focused().should('have.id', 'mid');
+      // wait for first focus to finish to avoid timing issue
+      cy.focused().should('have.text', 'first');
 
-      // tab to focus first bumper
+      cy.contains('mid').realClick();
+      cy.focused().should('have.text', 'mid');
+
+      // tab wraps around to focus first bumper (??) => sends focus to first element
       cy.realPress('Tab');
-      cy.focused().should('have.id', 'first');
+      cy.focused().should('have.text', 'first');
     });
 
     it('focuses first focusable element when focusing outside of FTZ with 0 tabbable items', () => {
       setProps({});
 
-      cy.get('#mid').focus();
-      cy.focused().should('have.id', 'mid');
+      // wait for first focus to finish to avoid timing issue
+      cy.focused().should('have.text', 'first');
+
+      cy.contains('mid').realClick();
+      cy.focused().should('have.text', 'mid');
 
       // try to focus on button outside FTZ
-      cy.get('#before').focus();
+      cy.contains('before').realClick();
       // it focuses first button inside FTZ instead
-      cy.focused().should('have.id', 'first');
+      cy.focused().should('have.text', 'first');
     });
 
     it('focuses previously focused element when focusing outside of FTZ with 0 tabbable items', () => {
       setProps({ focusPreviouslyFocusedInnerElement: true });
 
-      cy.get('#mid').focus();
-      cy.focused().should('have.id', 'mid');
+      // wait for first focus to finish to avoid timing issue
+      cy.focused().should('have.text', 'first');
+
+      cy.contains('mid').realClick();
+      cy.focused().should('have.text', 'mid');
 
       // try to focus on button outside FTZ
-      cy.get('#before').focus();
+      cy.contains('before').realClick();
       // it focuses last focused button inside FTZ instead
-      cy.focused().should('have.id', 'mid');
+      cy.focused().should('have.text', 'mid');
     });
   });
 
@@ -296,20 +351,20 @@ describe('FocusTrapZone', () => {
 
       // Manually focusing FTZ when FTZ has never had focus within should go to 1st focusable inner element.
       imperativeFocus();
-      cy.focused().should('have.id', 'first');
+      cy.focused().should('have.text', 'first');
 
       // Focus inside the trap zone, not the first element.
-      cy.get('#last').focus();
-      cy.focused().should('have.id', 'last');
+      cy.contains('last').realClick();
+      cy.focused().should('have.text', 'last');
 
       // Focus outside the trap zone
-      cy.get('#after').focus();
-      cy.focused().should('have.id', 'after');
+      cy.contains('after').realClick();
+      cy.focused().should('have.text', 'after');
 
       // Manually focusing FTZ should return to originally focused inner element.
       imperativeFocus();
 
-      cy.focused().should('have.id', 'last');
+      cy.focused().should('have.text', 'last');
     });
 
     it('goes to first focusable element when focusing the FTZ', async () => {
@@ -317,19 +372,19 @@ describe('FocusTrapZone', () => {
 
       // Manually focusing FTZ when FTZ has never had focus within should go to 1st focusable inner element.
       imperativeFocus();
-      cy.focused().should('have.id', 'first');
+      cy.focused().should('have.text', 'first');
 
       // Focus inside the trap zone, not the first element.
-      cy.get('#last').focus();
-      cy.focused().should('have.id', 'last');
+      cy.contains('last').realClick();
+      cy.focused().should('have.text', 'last');
 
       // Focus outside the trap zone
-      cy.get('#after').focus();
-      cy.focused().should('have.id', 'after');
+      cy.contains('after').realClick();
+      cy.focused().should('have.text', 'after');
 
       // Manually focusing FTZ should go to the first focusable element.
       imperativeFocus();
-      cy.focused().should('have.id', 'first');
+      cy.focused().should('have.text', 'first');
     });
   });
 

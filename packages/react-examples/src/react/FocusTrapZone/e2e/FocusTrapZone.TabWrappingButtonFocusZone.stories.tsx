@@ -8,24 +8,24 @@ const rootClass = mergeStyles({
 /**
  * Tab and shift-tab wrap at extreme ends of the FTZ:
  *
- * can tab across a FocusZone with different button structures
+ * can tab between a button and a FocusZone
  */
-export const TabWrappingFocusZone = () => {
+export const TabWrappingButtonFocusZone = () => {
   return (
     <div className={rootClass}>
       <FocusTrapZone forceFocusInsideTrap={false}>
         <div>
-          <button id="first">first</button>
+          <button>first</button>
         </div>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
-            <button id="fzFirst">fzFirst</button>
+            <button>fzFirst</button>
           </div>
           <div>
             <div>
-              <button id="fzMid1">fzMid1</button>
-              <button id="fzMid2">fzMid2</button>
-              <button id="fzLast">fzLast</button>
+              <button>fzMid1</button>
+              <button>fzMid2</button>
+              <button>fzLast</button>
             </div>
           </div>
         </FocusZone>
