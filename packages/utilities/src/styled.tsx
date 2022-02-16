@@ -100,6 +100,8 @@ export function styled<
     const propStyles = props.styles;
     if (!styles.current || customizedStyles !== cache[1] || propStyles !== cache[2]) {
       // Using styled components as the Component arg will result in nested styling arrays.
+      // The function can be cached and in order to prevent the props from being retained within it's closure
+      // we pass in just the styles and not the entire props
       const concatenatedStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> = (styleProps: TStyleProps) =>
         concatStyleSetsWithProps(styleProps, baseStyles, customizedStyles, propStyles);
 
