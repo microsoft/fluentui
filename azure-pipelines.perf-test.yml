@@ -50,6 +50,7 @@ steps:
       storage: $(azureStorage)
       ContainerName: '$web'
       BlobPrefix: '$(deployBasePath)/perf-test-northstar'
+    condition: eq(variables['perfTestNorthstarExecuted'], true)
 
   - task: AzureUpload@2
     displayName: Upload Perf Test Result to PR deploy site (Fluent)
@@ -59,6 +60,7 @@ steps:
       storage: $(azureStorage)
       ContainerName: '$web'
       BlobPrefix: '$(deployBasePath)/perf-test'
+    condition: eq(variables['perfTestExecuted'], true)
 
   - task: GithubPRComment@0
     displayName: 'Post @fluentui/react Perf Results to Github Pull Request'
@@ -68,6 +70,7 @@ steps:
       blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
       status: '$(PerfCommentStatus)'
       uniqueId: 'perfComment9423'
+    condition: eq(variables['perfTestExecuted'], true)
 
   - task: GithubPRComment@0
     displayName: 'Post @fluentui/react-northstar Perf Results to Github Pull Request'
@@ -77,6 +80,7 @@ steps:
       blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePathNorthstar)'
       status: '$(PerfCommentStatusNorthstar)'
       uniqueId: 'perfComment9424'
+    condition: eq(variables['perfTestNorthstarExecuted'], true)
 
   - script: |
       yarn stats:build
