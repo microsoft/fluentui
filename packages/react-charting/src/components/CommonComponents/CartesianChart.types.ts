@@ -485,7 +485,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   getAxisData?: any;
 
   /**
-   * Callback method used for to get margins to the chart.
+   * Callback method used when mouse leaves the chart boundary.
    */
   onChartMouseLeave?: () => void;
 }
