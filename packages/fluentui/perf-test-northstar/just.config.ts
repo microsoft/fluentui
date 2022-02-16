@@ -3,6 +3,7 @@ import { preset, series, task, argv, condition } from '@fluentui/scripts';
 import { getResolveLoaderDirs } from '@fluentui/scripts/webpack/webpack-resources';
 import { getAffectedPackages, findGitRoot } from '../../../scripts/monorepo';
 import { spawnSync } from 'child_process';
+
 preset();
 
 // TODO: FUR integration issues

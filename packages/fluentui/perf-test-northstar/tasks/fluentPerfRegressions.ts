@@ -114,5 +114,6 @@ const checkPerfRegressions = (reporter: Reporter) => {
     reporter.warn('No perf measurements available');
     return;
   }
+
   reportResults(perfCounts, reporter);
 };
