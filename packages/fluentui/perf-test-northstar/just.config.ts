@@ -34,9 +34,7 @@ task('perf-test:run', () => {
   return runPerfTest(argv().base);
 });
 
-task('run-lage', () => {
-  console.log('Affected packages ', getAffectedPackages());
-
+task('lage-build', () => {
   const gitRoot = findGitRoot();
   const result = spawnSync('yarn', ['lage', 'build', '--to', '@fluentui/perf-test-northstar', '--verbose'], {
     cwd: gitRoot,
@@ -55,7 +53,7 @@ task('run-lage', () => {
 task(
   'perf-test',
   series(
-    condition('run-lage', () => getAffectedPackages().has('@fluentui/react-northstar')),
+    condition('lage-build', () => getAffectedPackages().has('@fluentui/react-northstar')),
     condition('build', () => getAffectedPackages().has('@fluentui/react-northstar')),
     condition('perf-test:bundle', () => getAffectedPackages().has('@fluentui/react-northstar')),
     condition('perf-test:run', () => getAffectedPackages().has('@fluentui/react-northstar')),

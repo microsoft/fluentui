@@ -5,8 +5,7 @@ import { spawnSync } from 'child_process';
 
 preset();
 
-task('run-lage', () => {
-  console.log('Affected packages ', getAffectedPackages());
+task('lage-build', () => {
   const gitRoot = findGitRoot();
   const result = spawnSync('yarn', ['lage', 'build', '--to', 'perf-test', '--verbose'], {
     cwd: gitRoot,
@@ -26,7 +25,7 @@ task(
   'perf-test',
   series(
     condition(
-      'run-lage',
+      'lage-build',
       () => getAffectedPackages().has('@fluentui/react') || getAffectedPackages().has('@fluentui/react-components'),
     ),
     condition(

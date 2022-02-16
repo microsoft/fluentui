@@ -5,8 +5,6 @@ import scenarioIterations from '../src/scenarioIterations';
 import { scenarioRenderTypes, DefaultRenderTypes } from '../src/scenarioRenderTypes';
 import { argv } from '@fluentui/scripts';
 
-import { getFluentPerfRegressions } from './fluentPerfRegressions';
-
 // TODO: consolidate with newer version of fluent perf-test
 
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
