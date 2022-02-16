@@ -54,10 +54,10 @@ task('lage-build', () => {
 task(
   'perf-test',
   series(
-    condition('lage-build', () => getAffectedPackages().has('@fluentui/react-northstar')),
-    condition('build', () => getAffectedPackages().has('@fluentui/react-northstar')),
-    condition('perf-test:bundle', () => getAffectedPackages().has('@fluentui/react-northstar')),
-    condition('perf-test:run', () => getAffectedPackages().has('@fluentui/react-northstar')),
+    condition('lage-build', () => getAffectedPackages().has('dummy')),
+    condition('build', () => getAffectedPackages().has('dummy')),
+    condition('perf-test:bundle', () => getAffectedPackages().has('dummy')),
+    condition('perf-test:run', () => getAffectedPackages().has('dummy')),
   ),
 );
 
