@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { ToolbarButtonProps, ToolbarButtonState } from './ToolbarButton.types';
-import { useButton_unstable } from '../../../../react-button/src/Button';
+import { useButton_unstable } from '@fluentui/react-button';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { ToolbarContext } from '../Toolbar/ToolbarContext';
 

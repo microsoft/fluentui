@@ -1,4 +1,4 @@
-import { useButtonStyles_unstable } from '../../../../react-button/src/Button';
+import { useButtonStyles_unstable } from '@fluentui/react-button';
 import type { ToolbarButtonState } from './ToolbarButton.types';
 
 /**

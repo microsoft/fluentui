@@ -4,14 +4,19 @@
 
 ```ts
 
+import { ButtonProps } from '@fluentui/react-button';
+import { ButtonSlots } from '@fluentui/react-button';
+import { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { DividerSlots } from '@fluentui/react-divider';
+import { DividerState } from '@fluentui/react-divider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
 // @public
-export const renderToolbar_unstable: (state: ToolbarState) => JSX.Element;
+export const renderToolbar_unstable: (state: ToolbarState, contextValues: ToolbarContextValues) => JSX.Element;
 
 // @public
 export const renderToolbarButton_unstable: (state: ToolbarButtonState) => JSX.Element;
@@ -25,46 +30,39 @@ export const Toolbar: ForwardRefComponent<ToolbarProps>;
 // @public
 export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
 
-// @public (undocumented)
-export const toolbarButtonClassName = "fui-ToolbarButton";
-
-// Warning: (ae-forgotten-export) The symbol "ToolbarButtonCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
-export type ToolbarButtonProps = ComponentProps<ToolbarButtonSlots> & ToolbarButtonCommons;
-
-// @public (undocumented)
-export type ToolbarButtonSlots = {
-    root: Slot<'div'>;
+export type ToolbarButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable'>> & {
+    size?: 'small' | 'medium';
+    appearance?: 'primary' | 'subtle';
 };
 
 // @public
-export type ToolbarButtonState = ComponentState<ToolbarButtonSlots> & ToolbarButtonCommons;
+export type ToolbarButtonState = ComponentState<ButtonSlots> & ButtonState;
 
 // @public (undocumented)
-export const toolbarClassName = "fui-Toolbar";
+export type ToolbarCommons = {
+    size?: 'small' | 'medium';
+};
+
+// @public (undocumented)
+export type ToolbarContextValue = {
+    size: ToolbarProps['size'];
+};
+
+// @public (undocumented)
+export type ToolbarContextValues = {
+    toolbar: ToolbarContextValue;
+};
 
 // @public
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
 
-// @public (undocumented)
-export const toolbarDividerClassName = "fui-ToolbarDivider";
-
-// Warning: (ae-forgotten-export) The symbol "ToolbarDividerCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
-export type ToolbarDividerProps = ComponentProps<ToolbarDividerSlots> & ToolbarDividerCommons;
-
-// @public (undocumented)
-export type ToolbarDividerSlots = {
-    root: Slot<'div'>;
-};
+export type ToolbarDividerProps = ComponentProps<DividerSlots>;
 
 // @public
-export type ToolbarDividerState = ComponentState<ToolbarDividerSlots> & ToolbarDividerCommons;
+export type ToolbarDividerState = ComponentState<DividerSlots> & DividerState;
 
-// Warning: (ae-forgotten-export) The symbol "ToolbarCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type ToolbarProps = ComponentProps<ToolbarSlots> & ToolbarCommons;
 
@@ -80,7 +78,7 @@ export type ToolbarState = ComponentState<ToolbarSlots> & ToolbarCommons;
 export const useToolbar_unstable: (props: ToolbarProps, ref: React_2.Ref<HTMLElement>) => ToolbarState;
 
 // @public
-export const useToolbarButton_unstable: (props: ToolbarButtonProps, ref: React_2.Ref<HTMLElement>) => ToolbarButtonState;
+export const useToolbarButton_unstable: (props: ToolbarButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarButtonState;
 
 // @public
 export const useToolbarButtonStyles_unstable: (state: ToolbarButtonState) => ToolbarButtonState;

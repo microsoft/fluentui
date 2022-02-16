@@ -1,5 +1,5 @@
 import type { ToolbarButtonState } from './ToolbarButton.types';
-import { renderButton_unstable } from '../../../../react-button/src/Button';
+import { renderButton_unstable } from '@fluentui/react-button';
 
 /**
  * Render the final JSX of ToolbarButton

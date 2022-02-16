@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { useDividerStyles_unstable } from '../../../../react-divider/src/Divider';
+import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import type { ToolbarDividerState } from './ToolbarDivider.types';
 
 const useBaseStyles = makeStyles({
