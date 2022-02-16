@@ -19,14 +19,27 @@ task('run-lage', () => {
     console.log(result.stderr);
   }
 });
+
 task('run-perf-test', getPerfRegressions);
 
 task(
   'perf-test',
   series(
-    condition('run-lage', () => getAffectedPackages().has('@fluentui/react')),
-    condition('build', () => getAffectedPackages().has('@fluentui/react')),
-    condition('bundle', () => getAffectedPackages().has('@fluentui/react')),
-    condition('run-perf-test', () => getAffectedPackages().has('@fluentui/react')),
+    condition(
+      'run-lage',
+      () => getAffectedPackages().has('@fluentui/react') || getAffectedPackages().has('@fluentui/react-components'),
+    ),
+    condition(
+      'build',
+      () => getAffectedPackages().has('@fluentui/react') || getAffectedPackages().has('@fluentui/react-components'),
+    ),
+    condition(
+      'bundle',
+      () => getAffectedPackages().has('@fluentui/react') || getAffectedPackages().has('@fluentui/react-components'),
+    ),
+    condition(
+      'run-perf-test',
+      () => getAffectedPackages().has('@fluentui/react') || getAffectedPackages().has('@fluentui/react-components'),
+    ),
   ),
 );
