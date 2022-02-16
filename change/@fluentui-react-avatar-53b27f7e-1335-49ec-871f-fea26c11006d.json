@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update Avatar SPEC.md and MIGRATION.md",
+  "packageName": "@fluentui/react-avatar",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
