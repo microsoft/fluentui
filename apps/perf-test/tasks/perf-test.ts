@@ -201,7 +201,7 @@ export async function getPerfRegressions() {
 
   const scenarioResults: CookResults = await flamegrill.cook(scenarios, scenarioConfig);
 
-  const comment = createReport(scenarioSettings, scenarioResults) + getFluentPerfRegressions();
+  const comment = createReport(scenarioSettings, scenarioResults);
 
   // TODO: determine status according to perf numbers
   const status = 'success';

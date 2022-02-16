@@ -66,13 +66,22 @@ steps:
       BlobPrefix: '$(deployBasePath)/perf-test'
 
   - task: GithubPRComment@0
-    displayName: 'Post Perf Results to Github Pull Request'
+    displayName: 'Post @fluentui/react Perf Results to Github Pull Request'
     inputs:
       githubOwner: microsoft
       githubRepo: 'fluentui'
       blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
       status: '$(PerfCommentStatus)'
       uniqueId: 'perfComment9423'
+
+  - task: GithubPRComment@0
+    displayName: 'Post @fluentui/react-northstar Perf Results to Github Pull Request'
+    inputs:
+      githubOwner: microsoft
+      githubRepo: 'fluentui'
+      blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePathNorthstar)'
+      status: '$(PerfCommentStatusNorthstar)'
+      uniqueId: 'perfComment9424'
 
   - script: |
       yarn stats:build

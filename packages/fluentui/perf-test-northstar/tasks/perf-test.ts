@@ -122,8 +122,10 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
   // Write results to file
   fs.writeFileSync(path.join(outDir, 'perfCounts.html'), comment);
 
-  console.log(`##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.html`);
-  console.log(`##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
+  console.log(
+    `##vso[task.setvariable variable=PerfCommentFilePathNorthstar;]packages/fluentui/perf-test-northstar/dist/perfCounts.html`,
+  );
+  console.log(`##vso[task.setvariable variable=PerfCommentStatusNorthstar;]${status}`);
 }
 
 function extendCookResults(stories, testResults: CookResults): ExtendedCookResults {
@@ -153,20 +155,17 @@ function extendCookResults(stories, testResults: CookResults): ExtendedCookResul
  * @returns {string}
  */
 function createReport(stories, testResults: ExtendedCookResults): string {
-  const report = ''
+  const report = '## Perf Analysis (`@fluentui/react-northstar`)'
 
     // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
     // TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
     // // Show only significant changes by default.
-    // .concat(createScenarioTable(testResults, false))
+    .concat(createScenarioTable(stories, testResults, false))
 
     // // Show all results in a collapsible table.
-    // .concat('<details><summary>All results</summary><p>')
-    // .concat(createScenarioTable(testResults, true))
-    // .concat('</p></details>');
-
-    .concat(createScenarioTable(stories, testResults, true));
-
+    .concat('<details><summary>All results</summary><p>')
+    .concat(createScenarioTable(stories, testResults, true))
+    .concat('</p></details>');
   return report;
 }
 
