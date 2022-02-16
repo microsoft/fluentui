@@ -26,7 +26,7 @@ steps:
       yarn perf:test
     condition: eq(variables.isPR, true)
     workingDirectory: packages/fluentui/perf-test-northstar
-    displayName: Perf Test (Fluent)
+    displayName: Perf Test (Northstar)
 
   # Fluent perf-test must run before Fabric perf-test until they are consolidated.
   # @fluentui/perf-test-northstar Baseline
@@ -34,7 +34,7 @@ steps:
       yarn perf:test:base
     condition: eq(variables.isPR, false)
     workingDirectory: packages/fluentui/perf-test-northstar
-    displayName: Perf Test Base (Fluent)
+    displayName: Perf Test Base (Northstar)
 
   # Fabric: perf-test will build, bundle, and run-perftest
   - script: |
