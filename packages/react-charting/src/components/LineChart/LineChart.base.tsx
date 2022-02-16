@@ -894,7 +894,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       d3Select(`#${this._verticalLine}`)
         .attr('transform', () => `translate(${_this._xAxisScale(x)}, ${_this._yAxisScale(y)})`)
         .attr('visibility', 'visibility')
-        .attr('y2', `${height - _this._yAxisScale(y)}`);
+        .attr('y2', `${lineHeight - _this._yAxisScale(y)}`);
       this.setState({
         isCalloutVisible: true,
         refSelected: mouseEvent,
