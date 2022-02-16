@@ -11,16 +11,16 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
   const validations: Record<string, any> = {
     fullName: {
       type: 'field',
-      regexes: [/^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]{1,50}$/],
+      regexes: [/^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]{2,50}$/],
     },
-    nickName: {
+    nickname: {
       type: 'field',
-      regexes: [/^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]{0,20}$/],
+      regexes: [/^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]{2,20}$|^$/],
     },
     password: {
       type: 'password',
       regexes: [
-        /^[^ ]{8,20}$/,
+        /^[^ ]{8,30}$/,
         /^[^ ]*[0-9][^ ]*$/,
         /^[^ ]*[A-Z][^ ]*$/,
         /^[^ ]*[a-z][^ ]*$/,
@@ -47,12 +47,15 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
 
-  const handleControlChange = (event: React.FormEvent<HTMLInputElement>, data: InputOnChangeData, name: string) => {
+  const handleControlChange = (event: React.FormEvent, data: InputOnChangeData, name: string) => {
     const stateUpdate = { [name]: data.value };
     setValues({ ...values, ...stateUpdate });
   };
   const handleShowPasswordChange = (event: React.ChangeEvent) => {
     setIsPasswordVisible(!isPasswordVisible);
+  };
+  const handleControlBlur = (event: React.FormEvent, name: string) => {
+    validateControl(name);
   };
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -120,13 +123,16 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
             onChange={(event, data) => {
               handleControlChange(event, data, 'fullName');
             }}
+            onBlur={(event: React.FocusEvent) => {
+              handleControlBlur(event, 'fullName');
+            }}
             aria-required="true"
             aria-describedby="fullNameHint fullNameHint1 fullNameHint2"
           />
           <ErrorMessage isVisible={isErrorMessageVisible.fullName}>
             <p id="fullNameHint">Full name is invalid. It must</p>
             <ul>
-              <li id="fullNameHint1">have at maximum 50 characters,</li>
+              <li id="fullNameHint1">have between 2 and 50 characters,</li>
               <li id="fullNameHint2">contain only lowercase or uppercase letters, spaces or hyphens.</li>
             </ul>
           </ErrorMessage>
@@ -139,12 +145,15 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
             onChange={(event, data) => {
               handleControlChange(event, data, 'nickname');
             }}
+            onBlur={(event: React.FocusEvent) => {
+              handleControlBlur(event, 'nickname');
+            }}
             aria-describedby="nicknameHint nicknameHint1 nicknameHint2"
           />
           <ErrorMessage isVisible={isErrorMessageVisible.nickname}>
-            <p id="nicknameHint">Nickname is invalid. It must</p>
+            <p id="nicknameHint">Nickname is invalid. If entered, it must</p>
             <ul>
-              <li id="nicknameHint1">have between 8 and 20 characters,</li>
+              <li id="nicknameHint1">have between 2 and 20 characters,</li>
               <li id="nicknameHint2">contain only lowercase or uppercase letters, spaces or hyphens.</li>
             </ul>
           </ErrorMessage>
@@ -157,6 +166,9 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
             onChange={(event, data) => {
               handleControlChange(event, data, 'password');
             }}
+            onBlur={(event: React.FocusEvent) => {
+              handleControlBlur(event, 'password');
+            }}
             aria-required="true"
             aria-describedby="passwordHint passwordHint1 passwordHint2"
           />
@@ -165,7 +177,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
           <ErrorMessage isVisible={isErrorMessageVisible.password}>
             <p id="passwordHint">Password is invalid. It must</p>
             <ul>
-              <li id="passwordHint1">have between 8 and 20 characters,</li>
+              <li id="passwordHint1">have between 8 and 30 characters,</li>
               <li id="passwordHint2">
                 contain at least one lower case letter, upper case letter, number and special character.
               </li>
