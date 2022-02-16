@@ -21,12 +21,24 @@ steps:
       filePath: yarn-ci.sh
     displayName: yarn
 
+  - script: |
+      yarn perf:test:affected
+    workingDirectory: packages/fluentui/perf-test-northstar
+    displayName: Should Perf Test Run (Northstar)
+
+    # @fluentui/perf-test-northstar PR
+  - script: |
+      yarn lage build --to @fluentui/perf-test-northstar --verbose
+    condition: and(eq(variables['RunNorthstarPerfTest'], true), eq(variables.isPR, true))
+    workingDirectory: packages/fluentui/perf-test-northstar
+    displayName: Build to Perf Test (Northstar)
+
   # @fluentui/perf-test-northstar PR
   - script: |
       yarn perf:test
-    condition: eq(variables.isPR, true)
+    condition: and(eq(variables['RunNorthstarPerfTest'], true), eq(variables.isPR, true))
     workingDirectory: packages/fluentui/perf-test-northstar
-    displayName: Perf Test (Northstar)
+    displayName: Run Perf Test (Northstar)
 
   # Fluent perf-test must run before Fabric perf-test until they are consolidated.
   # @fluentui/perf-test-northstar Baseline
@@ -34,13 +46,13 @@ steps:
       yarn perf:test:base
     condition: eq(variables.isPR, false)
     workingDirectory: packages/fluentui/perf-test-northstar
-    displayName: Perf Test Base (Northstar)
+    displayName: Run Perf Test Base (Northstar)
 
   # Fabric: perf-test will build, bundle, and run-perftest
   - script: |
       yarn just perf-test
     workingDirectory: apps/perf-test
-    displayName: Perf Test
+    displayName: Run Perf Test
 
   - task: AzureUpload@2
     displayName: Upload Perf Test Result to PR deploy site (Fluent N*)

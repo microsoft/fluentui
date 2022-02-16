@@ -49,15 +49,22 @@ task('lage-build', () => {
   }
 });
 
+task('check-if-package-affected', () => {
+  const affected = getAffectedPackages().has('dummy');
+  if (affected) {
+    console.log(`##vso[task.setvariable variable=RunNorthstarPerfTest;]true`);
+  }
+});
+
 // TOOD: is build doing anything meaningful? only if there's source that's not a just script?
 // TODO: if stories/scenarios are added in this package, make sure build catches type errors
 task(
   'perf-test',
   series(
-    condition('lage-build', () => getAffectedPackages().has('dummy')),
-    condition('build', () => getAffectedPackages().has('dummy')),
-    condition('perf-test:bundle', () => getAffectedPackages().has('dummy')),
-    condition('perf-test:run', () => getAffectedPackages().has('dummy')),
+    // condition('lage-build', () => getAffectedPackages().has('dummy')),
+    'build',
+    'perf-test:bundle',
+    'perf-test:run',
   ),
 );
 
