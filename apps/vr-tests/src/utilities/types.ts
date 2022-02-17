@@ -26,8 +26,5 @@ export interface ExtendedStoryApi extends StoryApi<ExtendedStoryFnReturnType> {
     config?: AddStoryConfig,
   ) => ExtendedStoryApi;
 
-  add: (
-    storyName: StoryName,
-    storyFn: StoryFn<ExtendedStoryFnReturnType>,
-  ) => StoryApi<ExtendedStoryFnReturnType>;
+  add: (storyName: StoryName, storyFn: ExtendedStoryFn) => StoryApi<ExtendedStoryFnReturnType>;
 }
