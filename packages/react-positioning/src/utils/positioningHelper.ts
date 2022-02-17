@@ -1,4 +1,4 @@
-import * as PopperJs from '@popperjs/core';
+import * as FloatingUI from '@floating-ui/core';
 import type { Alignment, Offset, OffsetFunction, OffsetFunctionParam, Position } from '../types';
 
 type PlacementPosition = 'top' | 'bottom' | 'left' | 'right';
@@ -29,17 +29,21 @@ const shouldAlignToCenter = (p?: Position, a?: Alignment): boolean => {
 /**
  * @see positioninHelper.test.ts for expected placement values
  */
-export const getPlacement = (align?: Alignment, position?: Position, rtl?: boolean): PopperJs.Placement => {
+export const getPlacement = (
+  align?: Alignment,
+  position?: Position,
+  rtl?: boolean,
+): FloatingUI.Placement | undefined => {
   const alignment = shouldAlignToCenter(position, align) ? 'center' : align;
 
   const computedPosition = position && getPositionMap(rtl)[position];
   const computedAlignmnent = alignment && getAlignmentMap(rtl)[alignment];
 
   if (computedPosition && computedAlignmnent) {
-    return `${computedPosition}-${computedAlignmnent}` as PopperJs.Placement;
+    return `${computedPosition}-${computedAlignmnent}` as FloatingUI.Placement;
   }
 
-  return computedPosition || ('auto' as PopperJs.Placement);
+  return computedPosition;
 };
 
 export const applyRtlToOffset = (offset: Offset | undefined): Offset | undefined => {
@@ -47,9 +51,14 @@ export const applyRtlToOffset = (offset: Offset | undefined): Offset | undefined
     return undefined;
   }
 
-  if (Array.isArray(offset)) {
-    offset[0] = offset[0]! * -1;
+  if (typeof offset === 'number') {
+    return offset;
+  }
 
+  if (typeof offset === 'object') {
+    if (offset.crossAxis) {
+      offset.crossAxis *= -1;
+    }
     return offset;
   }
 

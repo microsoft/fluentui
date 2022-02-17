@@ -1,15 +1,19 @@
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
 
+import * as FloatingUI from '@floating-ui/core';
+
 export type OffsetFunctionParam = {
-  popper: PopperJs.Rect;
-  reference: PopperJs.Rect;
-  placement: PopperJs.Placement;
+  floating: FloatingUI.Rect;
+  reference: FloatingUI.Rect;
+  placement: FloatingUI.Placement;
 };
 
-export type OffsetFunction = (param: OffsetFunctionParam) => [number | null | undefined, number | null | undefined];
+export type OffsetObject = { mainAxis?: number; crossAxis?: number };
 
-export type Offset = OffsetFunction | [number | null | undefined, number | null | undefined];
+export type OffsetFunction = (param: OffsetFunctionParam) => OffsetObject | number;
+
+export type Offset = OffsetFunction | OffsetObject | number;
 
 export type Position = 'above' | 'below' | 'before' | 'after';
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';

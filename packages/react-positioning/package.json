@@ -32,9 +32,12 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@griffel/react": "1.0.0",
+    "@floating-ui/core": "^0.4.0",
+    "@floating-ui/dom": "^0.2.0",
+    "@floating-ui/react-dom": "^0.4.3",
     "@fluentui/react-shared-contexts": "9.0.0-rc.2",
     "@fluentui/react-utilities": "9.0.0-rc.2",
+    "@griffel/react": "1.0.0",
     "@popperjs/core": "~2.4.3",
     "tslib": "^2.1.0"
   },
