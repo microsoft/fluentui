@@ -28,6 +28,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `menuButtonBehavior` to not set undefined aria attributes @yuanboxue-amber ([#21610](https://github.com/microsoft/fluentui/pull/21610))
 - Fix memory leak in `createFelaRenderer()` @layershifter ([#21536](https://github.com/microsoft/fluentui/pull/21536))
 - Fix `Dropdown` repositioning when always open and have multilines @chpalac ([#21754](https://github.com/microsoft/fluentui/pull/21754))
+- Fix `ToolbarItem` and `ToolbarItemMenu` to show tooltip on hover when `disabledFocusable` @Hirse ([#21795](https://github.com/microsoft/fluentui/pull/21795))
 
 ### Features
 - Add new Popup prop `closeOnScroll` to close popup when scroll happens outside of the popover element @yuanboxue-amber ([#21453](https://github.com/microsoft/fluentui/pull/21453))
