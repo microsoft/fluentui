@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { FocusTrapZone, IFocusTrapZoneProps, mergeStyles } from '@fluentui/react';
-import type { FTZTestWindow } from './shared';
+import { FocusTrapZone, mergeStyles } from '@fluentui/react';
+import { useProps } from './shared';
 
 const rootClass = mergeStyles({
   button: { height: 30, width: 60 },
@@ -10,9 +10,7 @@ const rootClass = mergeStyles({
  * Tab and shift-tab when the FTZ contains 0 tabbable items
  */
 export const NoTabbableItems = () => {
-  const [props, setProps] = React.useState<IFocusTrapZoneProps | undefined>();
-
-  (window as FTZTestWindow).setProps = setProps;
+  const props = useProps();
 
   return (
     // don't render until props have been set

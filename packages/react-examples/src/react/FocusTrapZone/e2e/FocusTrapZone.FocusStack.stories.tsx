@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FocusTrapZone, mergeStyles } from '@fluentui/react';
-import type { FTZTestWindow } from './shared';
+import { useGlobal } from './shared';
 
 // make the example a little easier to visually follow when debugging
 const rootClass = mergeStyles({
@@ -31,7 +31,7 @@ export const FocusStack = () => {
     });
   };
 
-  (window as FTZTestWindow).getFocusStack = () => FocusTrapZone.focusStack;
+  useGlobal('getFocusStack', () => FocusTrapZone.focusStack);
 
   return (
     <div className={rootClass}>

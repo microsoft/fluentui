@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { FocusZone, FocusTrapZone, mergeStyles, IFocusTrapZone, IFocusTrapZoneProps } from '@fluentui/react';
-import type { FTZTestWindow } from './shared';
+import { FocusZone, FocusTrapZone, mergeStyles, IFocusTrapZone } from '@fluentui/react';
+import { useGlobal, useProps } from './shared';
 
 const rootClass = mergeStyles({
   button: {
@@ -12,11 +12,10 @@ const rootClass = mergeStyles({
 
 /** Imperatively focusing the FTZ */
 export const ImperativeFocus = () => {
-  const [props, setProps] = React.useState<IFocusTrapZoneProps | undefined>();
+  const props = useProps();
   const focusTrapZoneRef = React.useRef<IFocusTrapZone>(null);
 
-  (window as FTZTestWindow).setProps = setProps;
-  (window as FTZTestWindow).imperativeFocus = () => focusTrapZoneRef.current?.focus();
+  useGlobal('imperativeFocus', () => focusTrapZoneRef.current?.focus());
 
   return (
     // don't render until props have been set
