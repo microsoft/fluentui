@@ -269,6 +269,22 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
         xAxisCalloutAccessibilityData,
       });
+    } else {
+      /*
+      When above if condition is false but found=true, it means either
+
+      1). pointToHighlightUpdated is false. 
+      For this case we dont need to do anything.
+
+      2). isShowCalloutPending is true. 
+      For this case there will be no callout updation for the event.
+      This condition has been added to prevent repeated callout flashing.
+      Currently there is a fraction of second delay between hover event and subsequent callout refresh.
+      In the meantime if another event is received, the callout continues to flash for the set of intermediate hover events.
+
+      This does not cause any issue as the user interaction takes atleast a fraction of second and the final callout state is ultimately achieved.
+      If a user performs very swift mouse maneuver, the intermediate events will be lost but the callout experience remains smooth.
+      */
     }
     if (!found) {
       this.setState({
