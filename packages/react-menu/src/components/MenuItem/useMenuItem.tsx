@@ -13,12 +13,14 @@ import { ChevronRightRegular as ChevronRightIcon, ChevronLeftRegular as ChevronL
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import type { MenuItemProps, MenuItemState } from './MenuItem.types';
+import { useIsSubmenu } from '../../utils/useIsSubmenu';
 
 /**
  * Returns the props and state required to render the component
  */
 export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
-  const hasSubmenu = useMenuTriggerContext_unstable() || props.hasSubmenu;
+  const isSubmenu = useIsSubmenu();
+  const isSubmenuTrigger = useMenuTriggerContext_unstable() && isSubMenu;
   const hasIcons = useMenuListContext_unstable(context => context.hasIcons);
   const hasCheckmarks = useMenuListContext_unstable(context => context.hasCheckmarks);
   const setOpen = useMenuContext_unstable(context => context.setOpen);
@@ -29,7 +31,6 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLEl
   const innerRef = React.useRef<HTMLElement>(null);
 
   const state: MenuItemState = {
-    hasSubmenu,
     ...props,
     components: {
       root: 'div',
@@ -49,7 +50,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLEl
     icon: resolveShorthand(props.icon, { required: hasIcons }),
     checkmark: resolveShorthand(props.checkmark, { required: hasCheckmarks }),
     submenuIndicator: resolveShorthand(props.submenuIndicator, {
-      required: hasSubmenu,
+      required: isSubmenuTrigger,
       defaultProps: {
         children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />,
       },
@@ -91,7 +92,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLEl
       shouldPersist = state.persistOnClick;
     }
 
-    if (!hasSubmenu && !shouldPersist) {
+    if (!isSubmenuTrigger && !shouldPersist) {
       setOpen(e, { open: false, keyboard: dismissedWithKeyboardRef.current, bubble: true });
       dismissedWithKeyboardRef.current = false;
     }
