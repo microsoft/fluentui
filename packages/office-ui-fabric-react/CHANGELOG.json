@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 17 Feb 2022 12:31:30 GMT",
+      "tag": "office-ui-fabric-react_v7.183.0",
+      "version": "7.183.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Allow override of Breadcrumb item content and per-item overrides (#21280)",
+            "author": "tmichon@microsoft.com",
+            "commit": "e1ad6e0831b1bc67ae976b7f9258d5b3041348a9",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Feb 2022 12:22:25 GMT",
       "tag": "office-ui-fabric-react_v7.182.0",
       "version": "7.182.0",

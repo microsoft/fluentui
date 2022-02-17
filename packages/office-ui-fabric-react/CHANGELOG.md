@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 10 Feb 2022 12:22:25 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Feb 2022 12:31:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.183.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.183.0)
+
+Thu, 17 Feb 2022 12:31:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.182.0..office-ui-fabric-react_v7.183.0)
+
+### Minor changes
+
+- Allow override of Breadcrumb item content and per-item overrides (#21280) ([PR #21415](https://github.com/microsoft/fluentui/pull/21415) by tmichon@microsoft.com)
 
 ## [7.182.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.182.0)
 
