@@ -35,7 +35,7 @@ steps:
   - script: |
       yarn lage build --to @fluentui/perf-test-northstar --to @fluentui/react-conformance --verbose
     condition: and(eq(variables['RunNorthstarPerfTest'], true), eq(variables.isPR, true))
-    workingDirectory: packages/fluentui/perf-test-northstar
+    workingDirectory: packages
     displayName: Build to Perf Test (Northstar)
 
   # Build Fabric Perf Test
