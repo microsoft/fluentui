@@ -8,5 +8,5 @@ import type { MenuTriggerState } from './MenuTrigger.types';
  * Only renders children
  */
 export const renderMenuTrigger_unstable = (state: MenuTriggerState) => {
-  return <MenuTriggerContextProvider value={state.isSubmenu}>{state.children}</MenuTriggerContextProvider>;
+  return <MenuTriggerContextProvider value={true}>{state.children}</MenuTriggerContextProvider>;
 };

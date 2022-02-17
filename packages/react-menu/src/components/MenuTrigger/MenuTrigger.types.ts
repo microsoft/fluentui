@@ -25,5 +25,4 @@ export type MenuTriggerChildProps = Required<
 
 export type MenuTriggerState = {
   children: React.ReactElement | null;
-  isSubmenu: boolean;
 };

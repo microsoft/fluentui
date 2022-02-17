@@ -127,7 +127,6 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   };
 
   return {
-    isSubmenu,
     children: applyTriggerPropsToChildren<MenuTriggerChildProps>(children, {
       'aria-haspopup': 'menu',
       'aria-expanded': !open && !isSubmenu ? undefined : open,
