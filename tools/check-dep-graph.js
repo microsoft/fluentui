@@ -1,8 +1,10 @@
 // @ts-check
+
+const { stripIndents, logger } = require('@nrwl/devkit');
 const { createProjectGraphAsync } = require('@nrwl/workspace/src/core/project-graph');
 
 main().catch(err => {
-  console.error(err);
+  logger.error(err);
   process.exit(1);
 });
 
@@ -27,10 +29,10 @@ async function main() {
 
   if (toolsDeps.own.length > 0) {
     throw new Error(
-      `🚨 Somethings wrong with dependency graph!
-       ========
+      stripIndents`🚨 Somethings wrong with dependency graph!
+
        @fluentui/nx-workspace-tools should not rely on any libraries within monorepo, but it depends on:
-        ${JSON.stringify(toolsDeps.own, null, 2)}\n`,
+        ${toolsDeps.own.map(depName => `- ${depName}`).join('\n')}`,
     );
   }
 }

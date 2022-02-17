@@ -165,6 +165,12 @@
           "options": {
             "command": "tsc -b tools/tsconfig.json"
           }
+        },
+        "check-graph": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "node ./tools/check-dep-graph.js"
+          }
         }
       },
       "tags": []
