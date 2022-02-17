@@ -19,7 +19,6 @@ import {
   isElementFocusSubZone,
   isElementFocusZone,
   isElementTabbable,
-  raiseClick,
   shouldWrapFocus,
   warnDeprecations,
   portalContainsElement,
@@ -42,6 +41,44 @@ const LARGE_NEGATIVE_DISTANCE_FROM_CENTER = -999999999;
 let focusZoneStyles: string;
 
 const focusZoneClass: string = 'ms-FocusZone';
+
+/**
+ * Raises a click on a target element based on a keyboard event.
+ */
+function raiseClickFromKeyboardEvent(target: Element, ev?: React.KeyboardEvent<HTMLElement>): void {
+  let event;
+  if (typeof MouseEvent === 'function') {
+    event = new MouseEvent('click', {
+      ctrlKey: ev?.ctrlKey,
+      metaKey: ev?.metaKey,
+      shiftKey: ev?.shiftKey,
+      altKey: ev?.altKey,
+      bubbles: ev?.bubbles,
+      cancelable: ev?.cancelable,
+    });
+  } else {
+    event = document.createEvent('MouseEvents');
+    event.initMouseEvent(
+      'click',
+      ev ? ev.bubbles : false,
+      ev ? ev.cancelable : false,
+      window, // not using getWindow() since this can only be run client side
+      0, // detail
+      0, // screen x
+      0, // screen y
+      0, // client x
+      0, // client y
+      ev ? ev.ctrlKey : false,
+      ev ? ev.altKey : false,
+      ev ? ev.shiftKey : false,
+      ev ? ev.metaKey : false,
+      0, // button
+      null, // relatedTarget
+    );
+  }
+
+  target.dispatchEvent(event);
+}
 
 // Helper function that will return a class for when the root is focused
 function getRootClass(): string {
@@ -632,7 +669,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       // eslint-disable-next-line @fluentui/deprecated-keyboard-event-props
       switch (ev.which) {
         case KeyCodes.space:
-          if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
+          if (this._tryInvokeClickForFocusable(ev.target as HTMLElement, ev)) {
             break;
           }
           return;
@@ -748,7 +785,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           return;
 
         case KeyCodes.enter:
-          if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
+          if (this._tryInvokeClickForFocusable(ev.target as HTMLElement, ev)) {
             break;
           }
           return;
@@ -765,7 +802,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   /**
    * Walk up the dom try to find a focusable element.
    */
-  private _tryInvokeClickForFocusable(target: HTMLElement): boolean {
+  private _tryInvokeClickForFocusable(targetElement: HTMLElement, ev?: React.KeyboardEvent<HTMLElement>): boolean {
+    let target = targetElement;
     if (target === this._root.current || !this.props.shouldRaiseClicks) {
       return false;
     }
@@ -785,7 +823,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         target.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' &&
         target.getAttribute(IS_ENTER_DISABLED_ATTRIBUTE) !== 'true'
       ) {
-        raiseClick(target);
+        raiseClickFromKeyboardEvent(target, ev);
         return true;
       }
 
