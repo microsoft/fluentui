@@ -20,7 +20,7 @@ import { useIsSubmenu } from '../../utils/useIsSubmenu';
  */
 export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
   const isSubmenu = useIsSubmenu();
-  const isSubmenuTrigger = useMenuTriggerContext_unstable() && isSubMenu;
+  const isSubmenuTrigger = useMenuTriggerContext_unstable() && isSubmenu;
   const hasIcons = useMenuListContext_unstable(context => context.hasIcons);
   const hasCheckmarks = useMenuListContext_unstable(context => context.hasCheckmarks);
   const setOpen = useMenuContext_unstable(context => context.setOpen);
