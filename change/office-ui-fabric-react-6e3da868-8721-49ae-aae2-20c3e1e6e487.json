@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Allow override of Breadcrumb item content and per-item overrides (#21280)",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
