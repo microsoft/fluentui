@@ -44,19 +44,19 @@ steps:
       yarn change --type prerelease --message "Release nightly v9"
     displayName: 'Bump and commit nightly versions'
 
-  - script: |
-      yarn run:published build --production
-    displayName: yarn build
-
   # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
   # https://github.com/microsoft/fluentui/issues/21686
   - script: |
-      yarn run:published test --only
+      yarn run:published test
     displayName: yarn test
 
   - script: |
-      yarn run:published lint --only
+      yarn run:published lint
     displayName: yarn lint
+
+  - script: |
+      yarn run:published build --production
+    displayName: yarn build
 
   - script: |
       yarn publish:beachball -n $(npmToken) --no-push --tag nightly

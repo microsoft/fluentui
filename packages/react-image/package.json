@@ -45,6 +45,7 @@
   "dependencies": {
     "@griffel/react": "1.0.0",
     "@fluentui/react-utilities": "9.0.0-rc.2",
+    "@fluentui/react-theme": "9.0.0-rc.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
