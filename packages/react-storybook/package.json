@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-storybook",
-  "version": "9.0.0-rc.0",
+  "version": "9.0.0-rc.1",
   "private": true,
   "description": "Storybook addons and utils for @fluentui/react-components",
   "main": "lib-commonjs/index.js",
@@ -32,8 +32,8 @@
     "react": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-provider": "9.0.0-rc.1",
-    "@fluentui/react-theme": "9.0.0-rc.1",
+    "@fluentui/react-provider": "9.0.0-rc.2",
+    "@fluentui/react-theme": "9.0.0-rc.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
