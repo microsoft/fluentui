@@ -29,22 +29,21 @@ steps:
   - script: |
       yarn perf:test:affected
     workingDirectory: apps/perf-test
-    displayName:
-      Check if @fluentui/react was modified
+    displayName: Check if @fluentui/react was modified
 
-      # Build Fabric Perf Test
+  # Build @fluentui/perf-test-northstar
+  - script: |
+      yarn lage build --to @fluentui/perf-test-northstar --to @fluentui/react-conformance --verbose
+    condition: and(eq(variables['RunNorthstarPerfTest'], true), eq(variables.isPR, true))
+    workingDirectory: packages/fluentui/perf-test-northstar
+    displayName: Build to Perf Test (Northstar)
+
+  # Build Fabric Perf Test
   - script: |
       yarn lage build --to perf-test --verbose
     condition: and(eq(variables['RunPerfTest'], true), eq(variables.isPR, true))
     workingDirectory: apps/perf-test
     displayName: Build to Perf Test
-
-    # Build @fluentui/perf-test-northstar
-  - script: |
-      yarn lage build --to @fluentui/perf-test-northstar --verbose
-    condition: and(eq(variables['RunNorthstarPerfTest'], true), eq(variables.isPR, true))
-    workingDirectory: packages/fluentui/perf-test-northstar
-    displayName: Build to Perf Test (Northstar)
 
   # Run @fluentui/perf-test-northstar
   - script: |
