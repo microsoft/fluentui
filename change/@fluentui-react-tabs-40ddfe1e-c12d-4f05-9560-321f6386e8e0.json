@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Force bump all v9 packages to release correct source maps",
+  "packageName": "@fluentui/react-tabs",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

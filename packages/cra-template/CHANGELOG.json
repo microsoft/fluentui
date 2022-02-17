@@ -2,6 +2,21 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Thu, 17 Feb 2022 07:28:31 GMT",
+      "tag": "@fluentui/cra-template_v8.0.71",
+      "version": "8.0.71",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.55.3",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Feb 2022 07:26:37 GMT",
       "tag": "@fluentui/cra-template_v8.0.70",
       "version": "8.0.70",
