@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.55.1",
+  "version": "8.55.2",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,6 +21,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "codepen": "node ../../scripts/local-codepen.js",
+    "e2e": "yarn workspace @fluentui/react-examples e2e --package react",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts dev:storybook",

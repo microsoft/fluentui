@@ -14,7 +14,9 @@ export const SizeSmall = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} primaryActionButton="Small" size="small" />
+            <SplitButton menuButton={triggerProps} size="small">
+              Small
+            </SplitButton>
           )}
         </MenuTrigger>
 
@@ -29,12 +31,9 @@ export const SizeSmall = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton
-              menuButton={triggerProps}
-              primaryActionButton="Small with calendar icon"
-              icon={<CalendarMonthRegular />}
-              size="small"
-            />
+            <SplitButton menuButton={triggerProps} icon={<CalendarMonthRegular />} size="small">
+              Small with calendar icon
+            </SplitButton>
           )}
         </MenuTrigger>
 

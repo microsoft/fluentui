@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Store the styles property in a local variable so the rest of the props are not bound to the concatednatedStyles function",
+  "packageName": "@fluentui/utilities",
+  "email": "jarmit@microsoft.com",
+  "dependentChangeType": "patch"
+}
