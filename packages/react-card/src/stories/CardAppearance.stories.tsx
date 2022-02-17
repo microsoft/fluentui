@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { action } from '@storybook/addon-actions';
 import { Body, Caption, Headline } from '@fluentui/react-text';
-import { makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, shorthands } from '@griffel/react';
 
 import { Card, CardHeader } from '../index'; // codesandbox-dependency: @fluentui/react-card ^9.0.0-beta
 import { CardProps } from '../components/Card/index';
