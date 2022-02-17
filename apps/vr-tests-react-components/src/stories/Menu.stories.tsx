@@ -262,3 +262,52 @@ storiesOf('Menu Converged - split item', module)
     ),
     { includeRtl: true },
   );
+
+const ContextMenuArea = React.forwardRef<HTMLDivElement>((props, ref) => {
+  return (
+    <div
+      ref={ref}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        border: '1px solid red ',
+        width: 300,
+        height: 300,
+      }}
+      {...props}
+    >
+      <Menu open>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>New </MenuItem>
+            <MenuItem>New Window</MenuItem>
+            <MenuItem disabled>Open File</MenuItem>
+            <MenuItem>Open Folder</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </div>
+  );
+});
+
+storiesOf('Menu nested within a MenuTrigger', module).addStory('default', () => (
+  <Menu openOnContext>
+    <MenuTrigger>
+      <ContextMenuArea />
+    </MenuTrigger>
+
+    <MenuPopover>
+      <MenuList>
+        <MenuItem>New </MenuItem>
+        <MenuItem>New Window</MenuItem>
+        <MenuItem disabled>Open File</MenuItem>
+        <MenuItem>Open Folder</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+));
