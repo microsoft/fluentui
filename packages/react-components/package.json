@@ -53,6 +53,7 @@
     "@fluentui/react-portal": "9.0.0-rc.1",
     "@fluentui/react-provider": "9.0.0-rc.1",
     "@fluentui/react-slider": "9.0.0-beta.6",
+    "@fluentui/react-tabs": "9.0.0-beta.4",
     "@fluentui/react-theme": "9.0.0-rc.1",
     "@fluentui/react-tooltip": "9.0.0-rc.1",
     "@fluentui/react-utilities": "9.0.0-rc.1",

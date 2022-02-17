@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type { AccordionProps, AccordionState, AccordionToggleData, AccordionToggleEvent } from './Accordion.types';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Returns the props and state required to render the component
@@ -15,12 +16,16 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
     multiple = false,
     collapsible = false,
     onToggle,
-    navigable = false,
+    navigation,
   } = props;
   const [openItems, setOpenItems] = useControllableState({
     state: React.useMemo(() => normalizeValues(controlledOpenItems), [controlledOpenItems]),
     defaultState: () => initializeUncontrolledOpenItems({ defaultOpenItems, multiple }),
     initialState: [],
+  });
+
+  const arrowNavigationProps = useArrowNavigationGroup({
+    circular: navigation === 'circular',
   });
 
   const requestToggle = useEventCallback((event: AccordionToggleEvent, data: AccordionToggleData) => {
@@ -36,7 +41,7 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
   return {
     multiple,
     collapsible,
-    navigable,
+    navigation,
     openItems,
     requestToggle,
     components: {
@@ -44,6 +49,7 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
     },
     root: getNativeElementProps('div', {
       ...props,
+      ...(navigation ? arrowNavigationProps : {}),
       ref,
     }),
   };

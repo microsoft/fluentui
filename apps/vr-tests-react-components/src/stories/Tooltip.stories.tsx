@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Tooltip } from '@fluentui/react-tooltip';
-import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
+import { TestWrapperDecorator } from '../utilities/index';
 import { makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
@@ -37,12 +37,7 @@ storiesOf('Tooltip Converged', module)
     'inverted',
     () => (
       <div className={useStyles().wrapper}>
-        <Tooltip
-          visible
-          appearance="inverted"
-          content="Inverted tooltip"
-          relationship="description"
-        >
+        <Tooltip visible appearance="inverted" content="Inverted tooltip" relationship="description">
           <button>Target</button>
         </Tooltip>
       </div>
@@ -79,11 +74,7 @@ storiesOf('Tooltip Converged', module)
   )
   .addStory('text-wrapping', () => (
     <div className={useStyles().wrapper}>
-      <Tooltip
-        visible
-        content="This tooltip's text is long enough to wrap to a new line"
-        relationship="description"
-      >
+      <Tooltip visible content="This tooltip's text is long enough to wrap to a new line" relationship="description">
         <button>Target</button>
       </Tooltip>
     </div>
@@ -109,7 +100,7 @@ storiesOf('Tooltip Converged', module)
       return (
         <div className={useStyles().wrapper}>
           <div ref={setTarget} className="target" style={{ width: '300px', height: '150px' }}>
-            {...positions.map(([position, align]) => (
+            {positions.map(([position, align]) => (
               <Tooltip
                 key={position + align}
                 content={position + ' ' + align}

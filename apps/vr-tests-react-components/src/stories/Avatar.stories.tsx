@@ -170,9 +170,7 @@ storiesOf('Avatar Converged', module)
     </div>
   ))
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-      {story()}
-    </Screener>
+    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
   .addStory(
     'basic',
@@ -186,22 +184,14 @@ storiesOf('Avatar Converged', module)
         <Avatar icon={<PeopleRegular />} shape="square" />
         <Avatar name="Group" icon={<PeopleRegular />} shape="square" />
         <Avatar image={{ src: examples.image[14] }} badge={{ status: 'away' }} />
-        <Avatar
-          name={examples.name[7]}
-          image={{ src: examples.image[7] }}
-          badge={{ status: 'available' }}
-        />
+        <Avatar name={examples.name[7]} image={{ src: examples.image[7] }} badge={{ status: 'available' }} />
       </div>
     ),
     { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
   .addStory('size+name', () => <AvatarList names={examples.name} />)
-  .addStory('size+icon+badge+square', () => (
-    <AvatarList badge={{ status: 'outOfOffice' }} shape="square" />
-  ))
-  .addStory('size+image+badge', () => (
-    <AvatarList images={examples.image} badge={{ status: 'doNotDisturb' }} />
-  ))
+  .addStory('size+icon+badge+square', () => <AvatarList badge={{ status: 'outOfOffice' }} shape="square" />)
+  .addStory('size+image+badge', () => <AvatarList images={examples.image} badge={{ status: 'doNotDisturb' }} />)
   .addStory('size+inactive+badge', () => (
     <AvatarList images={examples.image} active="inactive" badge={{ status: 'offline' }} />
   ))
@@ -245,6 +235,4 @@ storiesOf('Avatar Converged', module)
     },
     { includeHighContrast: true, includeDarkMode: true },
   )
-  .addStory('image-bad-url', () => (
-    <Avatar name="Broken Image" image={{ src: `${imageRoot}/bad_image_url.jpg` }} />
-  ));
+  .addStory('image-bad-url', () => <Avatar name="Broken Image" image={{ src: `${imageRoot}/bad_image_url.jpg` }} />);

@@ -89,13 +89,7 @@ const Container: React.FC<{ className?: string; primary?: boolean }> = props => 
   const classes = useStyles();
 
   return (
-    <div
-      className={mergeClasses(
-        classes.container,
-        props.primary && classes.containerPrimary,
-        props.className,
-      )}
-    >
+    <div className={mergeClasses(classes.container, props.primary && classes.containerPrimary, props.className)}>
       {props.children}
     </div>
   );
@@ -126,8 +120,8 @@ export const Nested = () => (
 export const Propagation = () => (
   <>
     <p>
-      This scenario shows classes propagation between boundaries with "mergeClasses()" function:
-      classes generated in LTR context will be applied properly in RTL.
+      This scenario shows classes propagation between boundaries with "mergeClasses()" function: classes generated in
+      LTR context will be applied properly in RTL.
     </p>
 
     <FluentProvider theme={webLightTheme}>

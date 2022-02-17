@@ -7,9 +7,7 @@ import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utiliti
 storiesOf('Divider Converged - Horizontal', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
-      {story()}
-    </Screener>
+    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
   .addStory('without content', () => <Divider />, { includeRtl: true })
   .addStory('with content', () => <Divider>Today</Divider>, {
@@ -39,9 +37,7 @@ storiesOf('Divider Converged - Vertical', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <div style={{ height: '200px' }}>
-      <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
-        {story()}
-      </Screener>
+      <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
     </div>
   ))
   .addStory('Center Aligned', () => <Divider vertical>Today</Divider>)

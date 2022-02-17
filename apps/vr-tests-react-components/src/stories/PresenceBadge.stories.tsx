@@ -39,16 +39,11 @@ storiesOf('PresenceBadge Converged - sizes', module).addStory(
   'default',
   () => (
     <div style={{ display: 'flex', gap: 10 }}>
-      {([
-        'tiny',
-        'extra-small',
-        'small',
-        'medium',
-        'large',
-        'extra-large',
-      ] as PresenceBadgeProps['size'][]).map(size => (
-        <PresenceBadge status="available" key={size} size={size} />
-      ))}
+      {(['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'] as PresenceBadgeProps['size'][]).map(
+        size => (
+          <PresenceBadge status="available" key={size} size={size} />
+        ),
+      )}
     </div>
   ),
   { includeRtl: true },

@@ -22,12 +22,8 @@ storiesOf('Input Converged', module)
     </Screener>
   ))
   .addStory('Appearance: outline (default)', () => <Input placeholder="Placeholder" />)
-  .addStory('Appearance: underline', () => (
-    <Input appearance="underline" placeholder="Placeholder" />
-  ))
-  .addStory('Appearance: filledDarker', () => (
-    <Input appearance="filledDarker" placeholder="Placeholder" />
-  ))
+  .addStory('Appearance: underline', () => <Input appearance="underline" placeholder="Placeholder" />)
+  .addStory('Appearance: filledDarker', () => <Input appearance="filledDarker" placeholder="Placeholder" />)
   .addStory('Appearance: filledLighter', () => (
     // filledLighter requires a background to show up (this is colorNeutralBackground3 in web light theme)
     <div style={{ background: '#f5f5f5', padding: '10px' }}>
@@ -41,9 +37,7 @@ storiesOf('Input Converged', module)
 storiesOf('Input Converged', module)
   // note: due to reused "Input Converged" story ID, TestWrapperDecoratorFixedWidth is also reused
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
-      {story()}
-    </Screener>
+    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
   .addStory('Size: small', () => <Input size="small" placeholder="Placeholder" />)
   .addStory('Size: large', () => <Input size="large" placeholder="Placeholder" />)
@@ -54,21 +48,11 @@ storiesOf('Input Converged', module)
   ))
   .addStory(
     'contentBefore',
-    () => (
-      <Input
-        contentBefore={<SearchRegular style={{ fontSize: '20px' }} />}
-        placeholder="Placeholder"
-      />
-    ),
+    () => <Input contentBefore={<SearchRegular style={{ fontSize: '20px' }} />} placeholder="Placeholder" />,
     { includeRtl: true },
   )
   .addStory(
     'contentAfter',
-    () => (
-      <Input
-        contentAfter={<DismissRegular style={{ fontSize: '20px' }} />}
-        placeholder="Placeholder"
-      />
-    ),
+    () => <Input contentAfter={<DismissRegular style={{ fontSize: '20px' }} />} placeholder="Placeholder" />,
     { includeRtl: true },
   );
