@@ -19,13 +19,15 @@ import { useIsSubmenu } from '../../utils/useIsSubmenu';
  * Returns the props and state required to render the component
  */
 export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
-  const isSubmenu = useIsSubmenu();
-  const isSubmenuTrigger = useMenuTriggerContext_unstable() && isSubmenu;
   const hasIcons = useMenuListContext_unstable(context => context.hasIcons);
   const hasCheckmarks = useMenuListContext_unstable(context => context.hasCheckmarks);
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
   const dismissedWithKeyboardRef = React.useRef(false);
+
+  const isSubmenu = useIsSubmenu();
+  const isInMenuTrigger = useMenuTriggerContext_unstable();
+  const hasSubmenu = props.hasSubmenu ?? (isInMenuTrigger && isSubmenu);
 
   const { dir } = useFluent();
   const innerRef = React.useRef<HTMLElement>(null);
@@ -50,7 +52,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLEl
     icon: resolveShorthand(props.icon, { required: hasIcons }),
     checkmark: resolveShorthand(props.checkmark, { required: hasCheckmarks }),
     submenuIndicator: resolveShorthand(props.submenuIndicator, {
-      required: isSubmenuTrigger,
+      required: hasSubmenu,
       defaultProps: {
         children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />,
       },
@@ -92,7 +94,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLEl
       shouldPersist = state.persistOnClick;
     }
 
-    if (!isSubmenuTrigger && !shouldPersist) {
+    if (!hasSubmenu && !shouldPersist) {
       setOpen(e, { open: false, keyboard: dismissedWithKeyboardRef.current, bubble: true });
       dismissedWithKeyboardRef.current = false;
     }

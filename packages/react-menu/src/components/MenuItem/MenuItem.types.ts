@@ -33,6 +33,11 @@ export type MenuItemSlots = {
 
 type MenuItemCommons = {
   /**
+   * If the menu item is a trigger for a submenu
+   */
+  hasSubmenu?: boolean;
+
+  /**
    * Applies disabled styles to menu item but remains focusable
    */
   disabled?: boolean;
