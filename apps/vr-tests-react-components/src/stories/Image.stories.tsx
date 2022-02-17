@@ -3,40 +3,23 @@ import { storiesOf } from '@storybook/react';
 import Screener from 'screener-storybook/src/screener';
 import { Image } from '@fluentui/react-image';
 
-const imageUrl =
-  'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg';
+const imageUrl = 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg';
 
 storiesOf('Image Converged', module)
   .addDecorator((story: () => React.ReactNode) => (
-    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-      {story()}
-    </Screener>
+    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
-  .addStory('Default', () => (
-    <Image src="https://via.placeholder.com/300x300" alt="Placeholder image" />
-  ))
+  .addStory('Default', () => <Image src="https://via.placeholder.com/300x300" alt="Placeholder image" />)
   .addStory('Image Shape', () => (
     <>
       <div>
         <Image src={imageUrl} alt="Amanda's avatar default" height={200} width={200} />
       </div>
       <div>
-        <Image
-          src={imageUrl}
-          alt="Amanda's avatar rounded"
-          height={200}
-          width={200}
-          shape="rounded"
-        />
+        <Image src={imageUrl} alt="Amanda's avatar rounded" height={200} width={200} shape="rounded" />
       </div>
       <div>
-        <Image
-          src={imageUrl}
-          alt="Amanda's avatar circular"
-          height={200}
-          width={200}
-          shape="circular"
-        />
+        <Image src={imageUrl} alt="Amanda's avatar circular" height={200} width={200} shape="circular" />
       </div>
     </>
   ))
@@ -73,32 +56,16 @@ storiesOf('Image Converged', module)
   .addStory('Image Layout Fit', () => (
     <>
       <div style={{ height: 300, width: 400 }}>
-        <Image
-          src="https://via.placeholder.com/600x200"
-          alt="Placeholder for fit none"
-          fit="none"
-        />
+        <Image src="https://via.placeholder.com/600x200" alt="Placeholder for fit none" fit="none" />
       </div>
       <div style={{ height: 300, width: 400 }}>
-        <Image
-          src="https://via.placeholder.com/600x200"
-          alt="Placeholder for fit center"
-          fit="center"
-        />
+        <Image src="https://via.placeholder.com/600x200" alt="Placeholder for fit center" fit="center" />
       </div>
       <div style={{ height: 300, width: 400 }}>
-        <Image
-          src="https://via.placeholder.com/600x200"
-          alt="Placeholder for fit contain"
-          fit="contain"
-        />
+        <Image src="https://via.placeholder.com/600x200" alt="Placeholder for fit contain" fit="contain" />
       </div>
       <div style={{ height: 300, width: 400 }}>
-        <Image
-          src="https://via.placeholder.com/600x200"
-          alt="Placeholder for fit cover"
-          fit="cover"
-        />
+        <Image src="https://via.placeholder.com/600x200" alt="Placeholder for fit cover" fit="cover" />
       </div>
     </>
   ))

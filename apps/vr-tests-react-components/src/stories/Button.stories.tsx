@@ -181,9 +181,7 @@ storiesOf('CompoundButton Converged', module)
   ))
   .addStory(
     'Default',
-    () => (
-      <CompoundButton secondaryContent="This is some secondary text">Hello, world</CompoundButton>
-    ),
+    () => <CompoundButton secondaryContent="This is some secondary text">Hello, world</CompoundButton>,
     { includeRtl: true },
   )
   .addStory('Circular', () => (
@@ -232,11 +230,7 @@ storiesOf('CompoundButton Converged', module)
     </CompoundButton>
   ))
   .addStory('Transparent Disabled', () => (
-    <CompoundButton
-      secondaryContent="This is some secondary text"
-      appearance="transparent"
-      disabled
-    >
+    <CompoundButton secondaryContent="This is some secondary text" appearance="transparent" disabled>
       Hello, world
     </CompoundButton>
   ))

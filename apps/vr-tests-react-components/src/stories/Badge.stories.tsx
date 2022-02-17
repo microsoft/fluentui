@@ -16,12 +16,7 @@ const badgeColors: Required<BadgeProps>['color'][] = [
   'warning',
 ];
 
-const badgeAppearances: Required<BadgeProps>['appearance'][] = [
-  'filled',
-  'outline',
-  'tint',
-  'ghost',
-];
+const badgeAppearances: Required<BadgeProps>['appearance'][] = ['filled', 'outline', 'tint', 'ghost'];
 
 const useStyles = makeStyles({
   container: {
@@ -45,9 +40,7 @@ const useStyles = makeStyles({
   },
 });
 
-const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appearance'] }> = ({
-  appearance,
-}) => {
+const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appearance'] }> = ({ appearance }) => {
   const styles = useStyles();
 
   const badges = new Map<BadgeProps['color'], JSX.Element[]>();
@@ -66,36 +59,20 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appe
         1
       </Badge>
     );
-    const circularWithIcon = (
-      <Badge color={color} appearance={appearance} icon={<CircleRegular />} />
-    );
-    const roundedWithIcon = (
-      <Badge color={color} appearance={appearance} shape="rounded" icon={<CircleRegular />} />
-    );
+    const circularWithIcon = <Badge color={color} appearance={appearance} icon={<CircleRegular />} />;
+    const roundedWithIcon = <Badge color={color} appearance={appearance} shape="rounded" icon={<CircleRegular />} />;
     const roundedWithText = (
       <Badge color={color} appearance={appearance} shape="rounded">
         {appearance.toUpperCase()}
       </Badge>
     );
     const roundedWithTextAndIconBefore = (
-      <Badge
-        color={color}
-        appearance={appearance}
-        shape="rounded"
-        icon={<CircleRegular />}
-        iconPosition="before"
-      >
+      <Badge color={color} appearance={appearance} shape="rounded" icon={<CircleRegular />} iconPosition="before">
         {appearance.toUpperCase()}
       </Badge>
     );
     const roundedWithTextAndIconAfter = (
-      <Badge
-        color={color}
-        appearance={appearance}
-        shape="rounded"
-        icon={<CircleRegular />}
-        iconPosition="after"
-      >
+      <Badge color={color} appearance={appearance} shape="rounded" icon={<CircleRegular />} iconPosition="after">
         {appearance.toUpperCase()}
       </Badge>
     );
@@ -135,25 +112,18 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appe
 const appearanceStories = storiesOf('Badge Converged', module);
 
 badgeAppearances.forEach(appearance => {
-  appearanceStories.addStory(
-    appearance,
-    () => <BadgeAppearanceTemplate appearance={appearance} />,
-    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
-  );
+  appearanceStories.addStory(appearance, () => <BadgeAppearanceTemplate appearance={appearance} />, {
+    includeRtl: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
+  });
 });
 
 storiesOf('Badge Converged - sizes', module).addStory(
   'default',
   () => (
     <div style={{ display: 'flex', gap: 10 }}>
-      {([
-        'tiny',
-        'extra-small',
-        'small',
-        'medium',
-        'large',
-        'extra-large',
-      ] as BadgeProps['size'][]).map(size => (
+      {(['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'] as BadgeProps['size'][]).map(size => (
         <Badge key={size} size={size} />
       ))}
     </div>

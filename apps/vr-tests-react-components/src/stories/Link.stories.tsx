@@ -3,9 +3,7 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
 
-const AnchorLink = (props: LinkProps & { as?: 'a' }) => (
-  <Link {...props} href="https://www.bing.com" />
-);
+const AnchorLink = (props: LinkProps & { as?: 'a' }) => <Link {...props} href="https://www.bing.com" />;
 const ButtonLink = (props: LinkProps) => <Link {...props} />;
 
 storiesOf('Link Converged - Rendered as anchor', module)
@@ -28,9 +26,7 @@ storiesOf('Link Converged - Rendered as anchor', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Stand-alone Disabled', () => (
-    <AnchorLink disabled>Stand-alone disabled link</AnchorLink>
-  ))
+  .addStory('Stand-alone Disabled', () => <AnchorLink disabled>Stand-alone disabled link</AnchorLink>)
   .addStory(
     'Stand-alone Disabled Focusable',
     () => (
@@ -84,9 +80,7 @@ storiesOf('Link Converged - Rendered as button', module)
     </Screener>
   ))
   .addStory('Stand-alone', () => <ButtonLink>Stand-alone link</ButtonLink>, { includeRtl: true })
-  .addStory('Stand-alone Disabled', () => (
-    <ButtonLink disabled>Stand-alone disabled link</ButtonLink>
-  ))
+  .addStory('Stand-alone Disabled', () => <ButtonLink disabled>Stand-alone disabled link</ButtonLink>)
   .addStory('Stand-alone Disabled Focusable', () => (
     <ButtonLink disabled disabledFocusable>
       Stand-alone disabled focusable link

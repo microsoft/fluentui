@@ -1,8 +1,5 @@
-// import { getAffectedPackages, getAllPackageInfo, findGitRoot } from '../monorepo';
-import {
-  screenerRunner,
-  // cancelScreenerRun
-} from '../screener/screener.runner';
+import { getAffectedPackages, getAllPackageInfo, findGitRoot } from '../monorepo';
+import { screenerRunner, cancelScreenerRun } from '../screener/screener.runner';
 import { ScreenerRunnerConfig, ScreenerRunnerStep, ScreenerState } from '../screener/screener.types';
 import path from 'path';
 // @ts-ignore - screener-storybook has no typings
@@ -15,32 +12,30 @@ import { getStorybook } from '@storybook/react';
 export async function screener() {
   const screenerConfigPath = path.resolve(process.cwd(), './screener.config.js');
   const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath);
-  const screenerStates = await getScreenerStates(screenerConfig, `${process.env.DEPLOYURL}/react-screener/iframe.html`);
-  screenerConfig.states = screenerStates;
   console.log('screener config for run');
   console.log(JSON.stringify(screenerConfig, null, 2));
-  await screenerRunner(screenerConfig);
-  // screener-storybook internally starts a puppeteer instance that only closes on process exist
-  process.exit(0);
+  const screenerStates = await getScreenerStates(screenerConfig);
+  screenerConfig.states = screenerStates;
 
-  // Scoping can only be used once the legacy check and new check switch required status
-  // const packageInfos = getAllPackageInfo();
-  // const packagePath = path.relative(findGitRoot(), process.cwd());
-  // const affectedPackageInfo = Object.values(packageInfos).find(x => x.packagePath === packagePath);
-  // const affectedPackages = getAffectedPackages();
-  // try {
-  // if (!affectedPackages.has(affectedPackageInfo.packageJson.name)) {
-  // await cancelScreenerRun(screenerConfig);
-  // } else {
-  // await screenerRunner(screenerConfig);
-  // }
-  // } catch (err) {
-  // console.error('failed to run screener task');
-  // console.error(err);
-  // // screener-storybook internally starts a puppeteer instance that only closes on process exist
-  // process.exit(1);
-  // }
-  // process.exit(0);
+  const packageInfos = getAllPackageInfo();
+  const packagePath = path.relative(findGitRoot(), process.cwd());
+  const affectedPackageInfo = Object.values(packageInfos).find(x => x.packagePath === packagePath);
+  const affectedPackages = getAffectedPackages();
+  const isPrBuild = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.includes('refs/pull');
+
+  try {
+    if (!affectedPackages.has(affectedPackageInfo.packageJson.name) && isPrBuild) {
+      await cancelScreenerRun(screenerConfig, 'skipped');
+    } else {
+      await screenerRunner(screenerConfig);
+    }
+  } catch (err) {
+    console.error('failed to run screener task');
+    console.error(err);
+    // screener-storybook internally starts a puppeteer instance that only closes on process exist
+    process.exit(1);
+  }
+  process.exit(0);
 }
 
 /**
@@ -71,10 +66,10 @@ function transformToStates(storybook: ScreenerStorybookSection, baseUrl: string)
   }, []);
 }
 
-async function getScreenerStates(screenerConfig, baseUrl): Promise<ScreenerState[]> {
+async function getScreenerStates(screenerConfig: ScreenerRunnerConfig): Promise<ScreenerState[]> {
   await startStorybook(screenerConfig, {});
 
-  return transformToStates(screenerGetStorybook() as ScreenerStorybookSection, baseUrl);
+  return transformToStates(screenerGetStorybook() as ScreenerStorybookSection, screenerConfig.baseUrl);
 }
 
 type ScreenerStory = { steps?: ScreenerRunnerStep[] };

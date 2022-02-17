@@ -18,9 +18,7 @@ import { CutRegular, EditRegular, ClipboardPasteRegular } from '@fluentui/react-
 
 storiesOf('Menu Converged - basic', module)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}
-    >
+    <Screener steps={new Screener.Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}>
       {story()}
     </Screener>
   ))
@@ -46,9 +44,7 @@ storiesOf('Menu Converged - basic', module)
 
 storiesOf('Menu Converged - secondary content', module)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}
-    >
+    <Screener steps={new Screener.Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}>
       {story()}
     </Screener>
   ))
@@ -110,9 +106,7 @@ storiesOf('Menu Converged - groups', module)
 
 storiesOf('Menu Converged - selection', module)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}
-    >
+    <Screener steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}>
       {story()}
     </Screener>
   ))
@@ -144,9 +138,7 @@ storiesOf('Menu Converged - selection', module)
 
 storiesOf('Menu Converged - selection groups', module)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}
-    >
+    <Screener steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}>
       {story()}
     </Screener>
   ))
@@ -195,9 +187,7 @@ storiesOf('Menu Converged - selection groups', module)
 storiesOf('Menu Converged - nested submenus', module)
   .addDecorator(story => (
     // https://github.com/microsoft/fluentui/issues/19782
-    <Screener steps={new Screener.Steps().click('#nestedTrigger').snapshot('all open').end()}>
-      {story()}
-    </Screener>
+    <Screener steps={new Screener.Steps().click('#nestedTrigger').snapshot('all open').end()}>{story()}</Screener>
   ))
   .addStory(
     'default',
@@ -235,9 +225,7 @@ storiesOf('Menu Converged - nested submenus', module)
 storiesOf('Menu Converged - split item', module)
   .addDecorator(story => (
     // https://github.com/microsoft/fluentui/issues/19782
-    <Screener steps={new Screener.Steps().click('#nestedTrigger').snapshot('submenu open').end()}>
-      {story()}
-    </Screener>
+    <Screener steps={new Screener.Steps().click('#nestedTrigger').snapshot('submenu open').end()}>{story()}</Screener>
   ))
   .addStory(
     'default',

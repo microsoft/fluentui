@@ -30,11 +30,9 @@ storiesOf('Label Converged', module)
   .addStory('Strong', () => <Label strong>I'm a strong label</Label>)
   .addStory('Small', () => <Label size="small">I'm a small label</Label>)
   .addStory('Large', () => <Label size="large">I'm a large label</Label>)
-  .addStory(
-    'CustomRequired',
-    () => <Label required="**">I'm a label with custom required text</Label>,
-    { includeRtl: true },
-  )
+  .addStory('CustomRequired', () => <Label required="**">I'm a label with custom required text</Label>, {
+    includeRtl: true,
+  })
   .addStory(
     'Multiline',
     () => (

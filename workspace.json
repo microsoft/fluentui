@@ -705,6 +705,11 @@
       "root": "apps/vr-tests",
       "projectType": "application",
       "implicitDependencies": []
+    },
+    "@fluentui/vr-tests-react-components": {
+      "root": "apps/vr-tests-react-components",
+      "projectType": "application",
+      "implicitDependencies": []
     }
   }
 }

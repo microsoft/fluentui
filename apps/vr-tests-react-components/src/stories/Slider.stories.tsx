@@ -30,18 +30,12 @@ storiesOf('Slider Converged', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Disabled Vertical', () => (
-    <Slider className="test-class" disabled vertical defaultValue={30} />
-  ))
+  .addStory('Disabled Vertical', () => <Slider className="test-class" disabled vertical defaultValue={30} />)
   .addStory('Origin', () => <Slider className="test-class" origin={30} />, { includeRtl: true })
   .addStory('Origin Vertical', () => <Slider className="test-class" vertical origin={30} />, {
     includeRtl: true,
   })
   .addStory('Origin (min)', () => <Slider className="test-class" min={0} origin={0} />)
-  .addStory('Origin Vertical (min)', () => (
-    <Slider className="test-class" min={0} vertical origin={0} />
-  ))
+  .addStory('Origin Vertical (min)', () => <Slider className="test-class" min={0} vertical origin={0} />)
   .addStory('Origin (max)', () => <Slider className="test-class" max={10} origin={10} />)
-  .addStory('Origin Vertical (max)', () => (
-    <Slider className="test-class" min={10} vertical origin={10} />
-  ));
+  .addStory('Origin Vertical (max)', () => <Slider className="test-class" min={10} vertical origin={10} />);

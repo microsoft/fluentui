@@ -26,9 +26,7 @@ storiesOf('Checkbox Converged', module)
 
 storiesOf('Checkbox Converged', module)
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
-      {story()}
-    </Screener>
+    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
   .addStory('disabled+checked', () => <Checkbox disabled checked label="Disabled checked" />)
   .addStory('disabled+mixed', () => <Checkbox disabled checked="mixed" label="Disabled mixed" />)
@@ -38,8 +36,8 @@ storiesOf('Checkbox Converged', module)
     <Checkbox
       label={
         <>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua
         </>
       }
     />
@@ -58,9 +56,7 @@ storiesOf('Checkbox Converged', module)
   .addStory('large+checked', () => <Checkbox size="large" checked label="Large checked" />)
   .addStory('large+mixed', () => <Checkbox size="large" checked="mixed" label="Large mixed" />)
   .addStory('large+circular', () => <Checkbox size="large" circular label="Large circular" />)
-  .addStory('large+circular+checked', () => (
-    <Checkbox size="large" circular checked label="Large circular checked" />
-  ))
+  .addStory('large+circular+checked', () => <Checkbox size="large" circular checked label="Large circular checked" />)
   .addStory('large+circular+mixed', () => (
     <Checkbox size="large" circular checked="mixed" label="Large circular mixed" />
   ))
@@ -69,8 +65,8 @@ storiesOf('Checkbox Converged', module)
       size="large"
       label={
         <>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua
         </>
       }
     />
