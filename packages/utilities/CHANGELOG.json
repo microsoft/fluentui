@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Thu, 17 Feb 2022 07:28:31 GMT",
+      "tag": "@fluentui/utilities_v8.4.2",
+      "version": "8.4.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "jarmit@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9",
+            "comment": "Store the styles property in a local variable so the rest of the props are not bound to the concatednatedStyles function"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Feb 2022 07:27:48 GMT",
       "tag": "@fluentui/utilities_v8.4.1",
       "version": "8.4.1",
