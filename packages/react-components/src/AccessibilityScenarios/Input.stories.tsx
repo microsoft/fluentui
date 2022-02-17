@@ -6,29 +6,33 @@ import { Button } from '@fluentui/react-button';
 
 import { Scenario } from './utils';
 
-export const RegistrationFormInputsAccessibilityScenario = () => {
-  // eslint-disable-next-line
-  const validations: Record<string, any> = {
-    fullName: {
-      type: 'field',
-      regexes: [/^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]{2,50}$/],
-    },
-    nickname: {
-      type: 'field',
-      regexes: [/^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]{2,20}$|^$/],
-    },
-    password: {
-      type: 'password',
-      regexes: [
-        /^[^ ]{8,30}$/,
-        /^[^ ]*[0-9][^ ]*$/,
-        /^[^ ]*[A-Z][^ ]*$/,
-        /^[^ ]*[a-z][^ ]*$/,
-        /^[^ ]*[^A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ ][^ ]*$/,
-      ],
-    },
-  };
+type InputValidation = {
+  type: string;
+  regexes: RegExp[];
+};
 
+const validations: Record<string, InputValidation> = {
+  fullName: {
+    type: 'field',
+    regexes: [/^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]{2,50}$/],
+  },
+  nickname: {
+    type: 'field',
+    regexes: [/^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]{2,20}$|^$/],
+  },
+  password: {
+    type: 'password',
+    regexes: [
+      /^[^ ]{8,30}$/,
+      /^[^ ]*[0-9][^ ]*$/,
+      /^[^ ]*[A-Z][^ ]*$/,
+      /^[^ ]*[a-z][^ ]*$/,
+      /^[^ ]*[^A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ ][^ ]*$/,
+    ],
+  },
+};
+
+export const RegistrationFormInputsAccessibilityScenario = () => {
   const [values, setValues] = React.useState<Record<string, string>>({
     fullName: '',
     nickname: '',
