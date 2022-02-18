@@ -242,6 +242,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         className={this._classNames.root}
         role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
+        onMouseLeave={this.props.onChartMouseLeave}
       >
         <FocusZone direction={focusDirection} {...svgFocusZoneProps}>
           <svg
