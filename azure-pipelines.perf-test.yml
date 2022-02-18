@@ -12,6 +12,7 @@ pool: '1ES-Host-Ubuntu'
 
 jobs:
   - job: PerfTestNorthstar
+    displayName: Perf test for @fluentui/react-northstar
     workspace:
       clean: all
     steps:
@@ -30,20 +31,20 @@ jobs:
       # Build @fluentui/perf-test-northstar
       - script: |
           yarn lage build --to @fluentui/perf-test-northstar --to @fluentui/react-conformance --verbose
-        condition: and(eq(variables['NorthstarAffected'], true), eq(variables.isPR, true))
+        condition: eq(variables.isPR, true)
         displayName: Build to Perf Test (Northstar)
 
       # @fluentui/perf-test-northstar Baseline
       - script: |
           yarn perf:test:base
-        condition: and(eq(variables['NorthstarAffected'], true), eq(variables.isPR, false))
+        condition: eq(variables.isPR, false)
         workingDirectory: packages/fluentui/perf-test-northstar
         displayName: Run Perf Test Base (Northstar)
 
       # Run @fluentui/perf-test-northstar
       - script: |
           yarn perf:test
-        condition: and(eq(variables['NorthstarAffected'], true), eq(variables.isPR, true))
+        condition: eq(variables.isPR, true)
         workingDirectory: packages/fluentui/perf-test-northstar
         displayName: Run Perf Test (Northstar)
 
@@ -55,7 +56,6 @@ jobs:
           storage: $(azureStorage)
           ContainerName: '$web'
           BlobPrefix: '$(deployBasePath)/perf-test-northstar'
-        condition: eq(variables['NorthstarAffected'], true)
 
       - task: GithubPRComment@0
         displayName: 'Post @fluentui/react-northstar Perf Results to Github Pull Request'
@@ -65,7 +65,6 @@ jobs:
           blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePathNorthstar)'
           status: '$(PerfCommentStatusNorthstar)'
           uniqueId: 'perfComment9424'
-        condition: eq(variables['NorthstarAffected'], true)
 
       - script: |
           yarn stats:build
@@ -88,6 +87,7 @@ jobs:
       - template: .devops/templates/cleanup.yml
 
   - job: PerfTestFabric
+    displayName: Perf test for @fluentui/react
     workspace:
       clean: all
     steps:
@@ -105,14 +105,14 @@ jobs:
       # Build Fabric Perf Test
       - script: |
           yarn lage build --to perf-test --verbose
-        condition: and(eq(variables['FabricAffected'], true), eq(variables.isPR, true))
+        condition: eq(variables.isPR, true)
         workingDirectory: apps/perf-test
         displayName: Build to Perf Test
 
       # Fabric: perf-test will build, bundle, and run-perftest
       - script: |
           yarn just perf-test
-        condition: and(eq(variables['FabricAffected'], true), eq(variables.isPR, true))
+        condition: eq(variables.isPR, true)
         workingDirectory: apps/perf-test
         displayName: Run Perf Test
 
@@ -124,7 +124,6 @@ jobs:
           storage: $(azureStorage)
           ContainerName: '$web'
           BlobPrefix: '$(deployBasePath)/perf-test'
-        condition: eq(variables['FabricAffected'], true)
 
       - task: GithubPRComment@0
         displayName: 'Post @fluentui/react Perf Results to Github Pull Request'
@@ -134,24 +133,5 @@ jobs:
           blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
           status: '$(PerfCommentStatus)'
           uniqueId: 'perfComment9423'
-        condition: eq(variables['FabricAffected'], true)
-
-      - script: |
-          yarn stats:build
-        condition: eq(variables.isPR, false)
-        displayName: Bundle Statistics (master only)
-
-      - script: |
-          yarn perf
-        condition: eq(variables.isPR, false)
-        displayName: Performance Tests (master only)
-
-      # HEADS UP: also see tag-version-prefix in fluentui-publish.js
-      - script: |
-          yarn stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
-        condition: eq(variables.isPR, false)
-        displayName: Save Statistics to DB (master only)
-        env:
-          STATS_URI: $(STATS_URI)
 
       - template: .devops/templates/cleanup.yml
