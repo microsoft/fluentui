@@ -2,6 +2,39 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Fri, 18 Feb 2022 13:35:38 GMT",
+      "tag": "@fluentui/react-aria_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "ca590a438b12b85d32fdf8b592ada3b0e7b2314c",
+            "comment": "Fixing issue in useAriaButton where passing disabledFocusable=false caused aria-disabled to be set to false and appear in DOM instead of just be undefined for that element."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Feb 2022 08:52:17 GMT",
       "tag": "@fluentui/react-aria_v9.0.0-rc.1",
       "version": "9.0.0-rc.1",

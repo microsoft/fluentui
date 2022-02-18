@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Button: Adding tests and fixing issues in SplitButton and ToggleButton.",
-  "packageName": "@fluentui/react-button",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

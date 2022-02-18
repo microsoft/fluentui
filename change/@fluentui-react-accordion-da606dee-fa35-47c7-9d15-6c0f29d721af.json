@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Breaking change: navigable becomes navigation",
-  "packageName": "@fluentui/react-accordion",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

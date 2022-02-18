@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Publish initial version",
-  "packageName": "@fluentui/react-tabs",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

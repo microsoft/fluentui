@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: MenuItem is a submenu trigger if it is wrapped by a MenuTrigger and in a submenu",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

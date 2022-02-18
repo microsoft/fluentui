@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 10 Feb 2022 08:51:46 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Feb 2022 13:35:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.3)
+
+Fri, 18 Feb 2022 13:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.1..@fluentui/react-button_v9.0.0-rc.3)
+
+### Changes
+
+- SplitButton: Fixing issue where menuIcon prop was not being respected. ([PR #21683](https://github.com/microsoft/fluentui/pull/21683) by Humberto.Morimoto@microsoft.com)
+- Button: Updating stories to fix a11y issues. ([PR #21679](https://github.com/microsoft/fluentui/pull/21679) by Humberto.Morimoto@microsoft.com)
+- SplitButton: Fixing screen reader access issues. ([PR #21703](https://github.com/microsoft/fluentui/pull/21703) by Humberto.Morimoto@microsoft.com)
+- fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- Button: Adding tests and fixing issues in SplitButton and ToggleButton. ([PR #21719](https://github.com/microsoft/fluentui/pull/21719) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-aria to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.1)
 
