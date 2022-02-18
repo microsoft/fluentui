@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix unable to hover on chart callout.",
-  "packageName": "@fluentui/react-charting",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}
