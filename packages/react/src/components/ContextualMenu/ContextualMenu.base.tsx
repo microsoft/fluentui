@@ -876,8 +876,8 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
               hasIcons,
             ) as JSX.Element;
 
-          const menuItem = props.onRenderContextualMenuItemWrapper
-            ? props.onRenderContextualMenuItemWrapper(item, defaultRenderNormalItem)
+          const menuItem = props.onRenderContextualMenuItem
+            ? props.onRenderContextualMenuItem(item, defaultRenderNormalItem)
             : defaultRenderNormalItem();
           renderedItems.push(renderListItem(menuItem, item.key || index, itemClassNames, item.title));
           break;
