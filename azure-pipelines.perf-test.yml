@@ -31,25 +31,25 @@ jobs:
       # Build @fluentui/perf-test-northstar
       - script: |
           yarn lage build --to @fluentui/perf-test-northstar --to @fluentui/react-conformance --verbose
-        condition: and(PackageAffected, variables.isPR)
+        condition: and(variables.PackageAffected, variables.isPR)
         displayName: Build to Perf Test (Northstar)
 
       # @fluentui/perf-test-northstar Baseline
       - script: |
           yarn perf:test:base
-        condition: and(PackageAffected, eq(variables.isPR, false))
+        condition: and(variables.PackageAffected, eq(variables.isPR, false))
         workingDirectory: packages/fluentui/perf-test-northstar
         displayName: Run Perf Test Base (Northstar)
 
       # Run @fluentui/perf-test-northstar
       - script: |
           yarn perf:test
-        condition: and(PackageAffected, variables.isPR)
+        condition: and(variables.PackageAffected, variables.isPR)
         workingDirectory: packages/fluentui/perf-test-northstar
         displayName: Run Perf Test (Northstar)
 
       - task: AzureUpload@2
-        condition: and(PackageAffected, variables.isPR)
+        condition: and(variables.PackageAffected, variables.isPR)
         displayName: Upload Perf Test Result to PR deploy site (Fluent N*)
         inputs:
           SourcePath: 'packages/fluentui/perf-test-northstar/dist'
@@ -59,7 +59,7 @@ jobs:
           BlobPrefix: '$(deployBasePath)/perf-test-northstar'
 
       - task: GithubPRComment@0
-        condition: and(PackageAffected, variables.isPR)
+        condition: and(variables.PackageAffected, variables.isPR)
         displayName: 'Post @fluentui/react-northstar Perf Results to Github Pull Request'
         inputs:
           githubOwner: microsoft
@@ -70,18 +70,18 @@ jobs:
 
       - script: |
           yarn stats:build
-        condition: and(PackageAffected, eq(variables.isPR, false))
+        condition: and(variables.PackageAffected, eq(variables.isPR, false))
         displayName: Bundle Statistics (master only)
 
       - script: |
           yarn perf
-        condition: and(PackageAffected, eq(variables.isPR, false))
+        condition: and(variables.PackageAffected, eq(variables.isPR, false))
         displayName: Performance Tests (master only)
 
       # HEADS UP: also see tag-version-prefix in fluentui-publish.js
       - script: |
           yarn stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
-        condition: and(PackageAffected, eq(variables.isPR, false))
+        condition: and(variables.PackageAffected, eq(variables.isPR, false))
         displayName: Save Statistics to DB (master only)
         env:
           STATS_URI: $(STATS_URI)
@@ -107,19 +107,19 @@ jobs:
       # Build Fabric Perf Test
       - script: |
           yarn lage build --to perf-test --verbose
-        condition: and(PackageAffected, variables.isPR)
+        condition: and(variables.PackageAffected, variables.isPR)
         workingDirectory: apps/perf-test
         displayName: Build to Perf Test
 
       # Fabric: perf-test will build, bundle, and run-perftest
       - script: |
           yarn just perf-test
-        condition: and(PackageAffected, variables.isPR)
+        condition: and(variables.PackageAffected, variables.isPR)
         workingDirectory: apps/perf-test
         displayName: Run Perf Test
 
       - task: AzureUpload@2
-        condition: and(PackageAffected, variables.isPR)
+        condition: and(variables.PackageAffected, variables.isPR)
         displayName: Upload Perf Test Result to PR deploy site (Fluent)
         inputs:
           SourcePath: 'apps/perf-test/dist'
@@ -129,7 +129,7 @@ jobs:
           BlobPrefix: '$(deployBasePath)/perf-test'
 
       - task: GithubPRComment@0
-        condition: and(PackageAffected, variables.isPR)
+        condition: and(variables.PackageAffected, variables.isPR)
         displayName: 'Post @fluentui/react Perf Results to Github Pull Request'
         inputs:
           githubOwner: microsoft
