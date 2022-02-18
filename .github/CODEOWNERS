@@ -95,7 +95,6 @@ packages/react-date-time @ermercer @LuMarti-MS @evlevy
 packages/react-docsite-components/ @ecraig12345 @micahgodbolt
 packages/react-file-type-icons/ @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/react-hooks/ @microsoft/cxe-red @ecraig12345
-packages/react-make-styles/ @microsoft/teams-prg
 packages/react-monaco-editor/ @ecraig12345
 packages/react-positioning/ @microsoft/teams-prg
 packages/react-shared-contexts/ @microsoft/teams-prg
@@ -139,6 +138,7 @@ packages/react-popover/ @microsoft/teams-prg
 packages/react-portal/ @microsoft/teams-prg
 packages/react-provider/ @microsoft/teams-prg
 packages/react-radio/ @microsoft/cxe-red
+packages/react-select/ @microsoft/cxe-coastal @smhigley
 packages/react-slider/ @microsoft/cxe-coastal @micahgodbolt
 packages/react-spinner/ @microsoft/cxe-red @tomi-msft
 packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @ecraig12345 @czearing

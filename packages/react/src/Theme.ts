@@ -1,3 +1,4 @@
+//When adding new exports to this file, also add them to index.ts.
 export {
   AnimationStyles,
   AnimationVariables,
@@ -39,3 +40,4 @@ export type {
   Theme,
 } from '@fluentui/theme';
 export * from './utilities/ThemeProvider/index';
+//When adding new exports to this file, also add them to index.ts.

@@ -1,18 +1,32 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
  * Slot properties for Tooltip
  */
 export type TooltipSlots = {
-  content: IntrinsicSlotProps<'div'>;
+  /**
+   * The text or JSX content of the tooltip.
+   */
+  content: NonNullable<Slot<'div'>>;
 };
 
 /**
  * Properties and state for Tooltip
  */
-export type TooltipCommons = {
+type TooltipCommons = {
+  /**
+   * (Required) Specifies whether this tooltip is acting as the description or label of its trigger element.
+   *
+   * * `label` - The tooltip sets the trigger's aria-label or aria-labelledby attribute. This is useful for buttons
+   *    displaying only an icon, for example.
+   * * `description` - The tooltip sets the trigger's aria-description or aria-describedby attribute.
+   * * `inaccessible` - No aria attributes are set on the trigger. This makes the tooltip's content inaccessible to
+   *   screen readers, and should only be used if the tooltip's text is available by some other means.
+   */
+  relationship: 'label' | 'description' | 'inaccessible';
+
   /**
    * The tooltip's visual appearance.
    * * `normal` - Uses the theme's background and text colors.
@@ -55,17 +69,6 @@ export type TooltipCommons = {
   ) => void;
 
   /**
-   * (Required) Specifies whether this tooltip is acting as the description or label of its trigger element.
-   *
-   * * `label` - The tooltip sets the trigger's aria-label or aria-labelledby attribute. This is useful for buttons
-   *    displaying only an icon, for example.
-   * * `description` - The tooltip sets the trigger's aria-description or aria-describedby attribute.
-   * * `inaccessible` - No aria attributes are set on the trigger. This makes the tooltip's content inaccessible to
-   *   screen readers, and should only be used if the tooltip's text is available by some other means.
-   */
-  relationship: 'label' | 'description' | 'inaccessible';
-
-  /**
    * Delay before the tooltip is shown, in milliseconds.
    *
    * @defaultvalue 250
@@ -100,13 +103,18 @@ export type OnVisibleChangeData = {
 /**
  * Properties for Tooltip
  */
-export type TooltipProps = Omit<ComponentProps<TooltipSlots>, 'content'> &
-  Required<Pick<ComponentProps<TooltipSlots>, 'content'>> &
+export type TooltipProps = ComponentProps<TooltipSlots> &
   Partial<Omit<TooltipCommons, 'relationship'>> &
   Pick<TooltipCommons, 'relationship'> & {
+    /**
+     * The tooltip can have a single JSX child, or a render function that accepts TooltipTriggerProps.
+     *
+     * If no child is provided, the tooltip's target must be set with the `positioning` prop, and its
+     * visibility must be controlled with the `visible` prop.
+     */
     children?:
       | (React.ReactElement & { ref?: React.Ref<unknown> })
-      | ((props: TooltipTriggerProps) => React.ReactNode)
+      | ((props: TooltipTriggerProps) => React.ReactElement | null)
       | null;
   };
 
@@ -115,7 +123,7 @@ export type TooltipProps = Omit<ComponentProps<TooltipSlots>, 'content'> &
  */
 export type TooltipState = ComponentState<TooltipSlots> &
   TooltipCommons & {
-    children?: React.ReactNode;
+    children?: React.ReactElement | null;
 
     /**
      * Whether the tooltip should be rendered to the DOM.

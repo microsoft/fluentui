@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Migration to new tsconfig",
-  "packageName": "@fluentui/react-button",
-  "email": "tkrasniqi@microsoft.com",
-  "dependentChangeType": "none"
-}

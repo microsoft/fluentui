@@ -245,8 +245,14 @@ export interface IDropdownStyles {
   /** Refers to the dropdown separator. */
   dropdownDivider: IStyle;
 
+  /** Style for dropdown separator when hidden. */
+  dropdownDividerHidden: IStyle;
+
   /** Refers to the individual dropdown items that are being rendered as a header. */
   dropdownItemHeader: IStyle;
+
+  /** Style for dropdown header when hidden. */
+  dropdownItemHeaderHidden: IStyle;
 
   /**
    * Refers to the panel that hosts the Dropdown options in small viewports.

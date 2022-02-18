@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-context-selector
 
-This log was last generated on Thu, 25 Nov 2021 08:34:13 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Feb 2022 13:35:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-rc.3)
+
+Fri, 18 Feb 2022 13:35:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.0.0-rc.1..@fluentui/react-context-selector_v9.0.0-rc.3)
+
+### Changes
+
+- fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-rc.1)
+
+Thu, 10 Feb 2022 08:51:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.0.0-beta.4..@fluentui/react-context-selector_v9.0.0-rc.1)
+
+### Changes
+
+- Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
+- Allow React 17 in peerDependencies. ([PR #21544](https://github.com/microsoft/fluentui/pull/21544) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-beta.4)
 

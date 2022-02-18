@@ -2449,14 +2449,22 @@ export interface IButtonGridCellProps<T> {
     index?: number;
     item: T;
     label?: string;
-    onClick?: (item: T) => void;
-    onFocus?: (item: T) => void;
-    onHover?: (item?: T) => void;
+    // (undocumented)
+    onClick?: (item: T, event?: React_2.MouseEvent<HTMLButtonElement>) => void;
+    // (undocumented)
+    onFocus?: (item: T, event?: React_2.FocusEvent<HTMLButtonElement>) => void;
+    // (undocumented)
+    onHover?: (item?: T, event?: React_2.MouseEvent<HTMLButtonElement>) => void;
+    // (undocumented)
     onKeyDown?: (ev: React_2.KeyboardEvent<HTMLButtonElement>) => void;
+    // (undocumented)
     onMouseEnter?: (ev: React_2.MouseEvent<HTMLButtonElement>) => boolean;
+    // (undocumented)
     onMouseLeave?: (ev: React_2.MouseEvent<HTMLButtonElement>) => void;
+    // (undocumented)
     onMouseMove?: (ev: React_2.MouseEvent<HTMLButtonElement>) => boolean;
     onRenderItem: (item: T) => JSX.Element;
+    // (undocumented)
     onWheel?: (ev: React_2.MouseEvent<HTMLButtonElement>) => void;
     role?: string;
     selected?: boolean;
@@ -3405,11 +3413,11 @@ export interface IColorPickerGridCellProps {
     isRadio?: boolean;
     item: IColorCellProps;
     label?: string;
-    onClick?: (item: IColorCellProps) => void;
+    onClick?: (item: IColorCellProps, event?: React_2.MouseEvent<HTMLButtonElement>) => void;
     // (undocumented)
-    onFocus?: (item: IColorCellProps) => void;
+    onFocus?: (item: IColorCellProps, event?: React_2.FormEvent<HTMLButtonElement>) => void;
     // (undocumented)
-    onHover?: (item?: IColorCellProps) => void;
+    onHover?: (item?: IColorCellProps, event?: React_2.MouseEvent<HTMLButtonElement>) => void;
     // (undocumented)
     onKeyDown?: (ev: React_2.KeyboardEvent<HTMLButtonElement>) => void;
     onMouseEnter?: (ev: React_2.MouseEvent<HTMLButtonElement>) => boolean;
@@ -5431,9 +5439,11 @@ export interface IDropdownStyles {
     caretDownWrapper: IStyle;
     dropdown: IStyle;
     dropdownDivider: IStyle;
+    dropdownDividerHidden: IStyle;
     dropdownItem: IStyle;
     dropdownItemDisabled: IStyle;
     dropdownItemHeader: IStyle;
+    dropdownItemHeaderHidden: IStyle;
     dropdownItemHidden: IStyle;
     dropdownItems: IStyle;
     dropdownItemSelected: IStyle;
@@ -5645,6 +5655,7 @@ export interface IFacepileProps extends React_2.ClassAttributes<FacepileBase> {
     maxDisplayablePersonas?: number;
     onRenderPersona?: IRenderFunction<IFacepilePersona>;
     onRenderPersonaCoin?: IRenderFunction<IFacepilePersona>;
+    onRenderPersonaWrapper?: IRenderFunction<IFacepilePersona>;
     overflowButtonProps?: IButtonProps;
     overflowButtonType?: OverflowButtonType;
     overflowPersonas?: IFacepilePersona[];
@@ -6701,10 +6712,12 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     delayedRender?: boolean;
     dismissButtonAriaLabel?: string;
     dismissIconProps?: IIconProps;
+    expandButtonProps?: IButtonProps;
     isMultiline?: boolean;
     messageBarIconProps?: IIconProps;
     messageBarType?: MessageBarType;
     onDismiss?: (ev?: React_2.MouseEvent<HTMLElement | BaseButton | Button>) => any;
+    // @deprecated
     overflowButtonAriaLabel?: string;
     role?: 'alert' | 'status' | 'none';
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
@@ -6755,6 +6768,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
     dragOptions?: IDragOptions;
+    // @deprecated
     enableAriaHiddenSiblings?: boolean;
     isAlert?: boolean;
     isBlocking?: boolean;
@@ -6845,6 +6859,7 @@ export interface INavLinkGroup {
     collapseByDefault?: boolean;
     expandAriaLabel?: string;
     groupData?: any;
+    isExpanded?: boolean;
     links: INavLink[];
     name?: string;
     onHeaderClick?: (ev?: React_2.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
@@ -7488,6 +7503,8 @@ export interface IPopupProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     ariaLabel?: string;
     ariaLabelledBy?: string;
     className?: string;
+    // @deprecated
+    enableAriaHiddenSiblings?: boolean;
     onDismiss?: (ev?: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
     onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     role?: string;
@@ -8028,6 +8045,7 @@ export interface ISelectionZoneProps extends React_2.ClassAttributes<SelectionZo
     onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
     onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
     selection: ISelection;
+    selectionClearedOnSurfaceClick?: boolean;
     selectionMode?: SelectionMode_2;
     selectionPreservedOnEmptyClick?: boolean;
 }
@@ -8793,8 +8811,8 @@ export interface ISwatchColorPickerProps extends React_2.RefAttributes<HTMLEleme
     // @deprecated (undocumented)
     isControlled?: boolean;
     mouseLeaveParentSelector?: string | undefined;
-    onCellFocused?: (id?: string, color?: string) => void;
-    onCellHovered?: (id?: string, color?: string) => void;
+    onCellFocused?: (id?: string, color?: string, event?: React_2.FormEvent<HTMLButtonElement>) => void;
+    onCellHovered?: (id?: string, color?: string, event?: React_2.MouseEvent<HTMLButtonElement>) => void;
     onChange?: (event: React_2.FormEvent<HTMLElement>, id: string | undefined, color: string | undefined) => void;
     // @deprecated (undocumented)
     onColorChanged?: (id?: string, color?: string) => void;

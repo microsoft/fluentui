@@ -4,7 +4,7 @@
 
 ```ts
 
-import { __styles } from '@fluentui/react-make-styles';
+import { __styles } from '@griffel/react';
 import { Accordion } from '@fluentui/react-accordion';
 import { accordionClassName } from '@fluentui/react-accordion';
 import { AccordionContext } from '@fluentui/react-accordion';
@@ -75,7 +75,7 @@ import { counterBadgeClassName } from '@fluentui/react-badge';
 import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
 import { createDarkTheme } from '@fluentui/react-theme';
-import { createDOMRenderer } from '@fluentui/react-make-styles';
+import { createDOMRenderer } from '@griffel/react';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
@@ -103,11 +103,6 @@ import { imageClassName } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
-import { Label } from '@fluentui/react-label';
-import { labelClassName } from '@fluentui/react-label';
-import { LabelProps } from '@fluentui/react-label';
-import { LabelSlots } from '@fluentui/react-label';
-import { LabelState } from '@fluentui/react-label';
 import { LargeTitle } from '@fluentui/react-text';
 import { largeTitleClassName } from '@fluentui/react-text';
 import { LineHeightTokens } from '@fluentui/react-theme';
@@ -116,8 +111,8 @@ import { linkClassName } from '@fluentui/react-link';
 import { LinkProps } from '@fluentui/react-link';
 import { LinkSlots } from '@fluentui/react-link';
 import { LinkState } from '@fluentui/react-link';
-import { makeStaticStyles } from '@fluentui/react-make-styles';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStaticStyles } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 import { Menu } from '@fluentui/react-menu';
 import { MenuButton } from '@fluentui/react-button';
 import { menuButtonClassName } from '@fluentui/react-button';
@@ -187,7 +182,7 @@ import { MenuTriggerChildProps } from '@fluentui/react-menu';
 import { MenuTriggerContextProvider } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
-import { mergeClasses } from '@fluentui/react-make-styles';
+import { mergeClasses } from '@griffel/react';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
@@ -223,12 +218,9 @@ import { renderBadge_unstable } from '@fluentui/react-badge';
 import { renderButton_unstable } from '@fluentui/react-button';
 import { renderCompoundButton_unstable } from '@fluentui/react-button';
 import { renderDivider_unstable } from '@fluentui/react-divider';
-import { RendererContext } from '@fluentui/react-make-styles';
-import { RendererProvider } from '@fluentui/react-make-styles';
-import { RendererProviderProps } from '@fluentui/react-make-styles';
+import { RendererProvider } from '@griffel/react';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
-import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
 import { renderMenu_unstable } from '@fluentui/react-menu';
 import { renderMenuButton_unstable } from '@fluentui/react-button';
@@ -249,12 +241,12 @@ import { renderSplitButton_unstable } from '@fluentui/react-button';
 import { renderText_unstable } from '@fluentui/react-text';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
-import { renderToStyleElements } from '@fluentui/react-make-styles';
+import { renderToStyleElements } from '@griffel/react';
 import { SelectableHandler } from '@fluentui/react-menu';
 import { setVirtualParent } from '@fluentui/react-portal';
 import { ShadowBrandTokens } from '@fluentui/react-theme';
 import { ShadowTokens } from '@fluentui/react-theme';
-import { shorthands } from '@fluentui/react-make-styles';
+import { shorthands } from '@griffel/react';
 import { SplitButton } from '@fluentui/react-button';
 import { splitButtonClassName } from '@fluentui/react-button';
 import { SplitButtonProps } from '@fluentui/react-button';
@@ -273,6 +265,7 @@ import { TextProps } from '@fluentui/react-text';
 import { TextSlots } from '@fluentui/react-text';
 import { TextState } from '@fluentui/react-text';
 import { Theme } from '@fluentui/react-theme';
+import { themeToTokensObject } from '@fluentui/react-theme';
 import { Title1 } from '@fluentui/react-text';
 import { title1ClassName } from '@fluentui/react-text';
 import { Title2 } from '@fluentui/react-text';
@@ -322,8 +315,6 @@ import { useFluentProviderContextValues_unstable } from '@fluentui/react-provide
 import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
-import { useLabel_unstable } from '@fluentui/react-label';
-import { useLabelStyles_unstable } from '@fluentui/react-label';
 import { useLink_unstable } from '@fluentui/react-link';
 import { useLinkState_unstable } from '@fluentui/react-link';
 import { useLinkStyles_unstable } from '@fluentui/react-link';
@@ -361,7 +352,6 @@ import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
 import { usePortal_unstable } from '@fluentui/react-portal';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
-import { useRenderer } from '@fluentui/react-make-styles';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
 import { useText_unstable } from '@fluentui/react-text';
@@ -571,16 +561,6 @@ export { ImageProps }
 export { ImageSlots }
 
 export { ImageState }
-
-export { Label }
-
-export { labelClassName }
-
-export { LabelProps }
-
-export { LabelSlots }
-
-export { LabelState }
 
 export { LargeTitle }
 
@@ -812,17 +792,11 @@ export { renderCompoundButton_unstable }
 
 export { renderDivider_unstable }
 
-export { RendererContext }
-
 export { RendererProvider }
-
-export { RendererProviderProps }
 
 export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
-
-export { renderLabel_unstable }
 
 export { renderLink_unstable }
 
@@ -911,6 +885,8 @@ export { TextSlots }
 export { TextState }
 
 export { Theme }
+
+export { themeToTokensObject }
 
 export { Title1 }
 
@@ -1010,10 +986,6 @@ export { useImage_unstable }
 
 export { useImageStyles_unstable }
 
-export { useLabel_unstable }
-
-export { useLabelStyles_unstable }
-
 export { useLink_unstable }
 
 export { useLinkState_unstable }
@@ -1087,8 +1059,6 @@ export { usePopoverTrigger_unstable }
 export { usePortal_unstable }
 
 export { usePresenceBadge_unstable }
-
-export { useRenderer }
 
 export { useSplitButton_unstable }
 

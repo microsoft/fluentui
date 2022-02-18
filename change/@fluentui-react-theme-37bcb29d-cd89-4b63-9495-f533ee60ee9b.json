@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Extend brand ramp from 13 to 16 tokens",
-  "packageName": "@fluentui/react-theme",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

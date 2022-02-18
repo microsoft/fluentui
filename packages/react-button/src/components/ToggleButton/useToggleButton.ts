@@ -13,6 +13,7 @@ export const useToggleButton_unstable = (
   { checked, defaultChecked, ...props }: ToggleButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToggleButtonState => {
+  const { disabled, disabledFocusable } = props;
   const buttonState = useButton_unstable(props, ref);
   const { role, onClick } = buttonState.root;
 
@@ -34,20 +35,20 @@ export const useToggleButton_unstable = (
     // Slots definition
     root: {
       ...buttonState.root,
-      [isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed']: !!checkedValue,
+      [isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed']: checkedValue,
       onClick: React.useCallback(
         ev => {
-          if (onClick) {
-            onClick(ev);
+          if (!disabled && !disabledFocusable) {
+            onClick?.(ev);
 
             if (ev.defaultPrevented) {
               return;
             }
-          }
 
-          setCheckedValue(!checkedValue);
+            setCheckedValue(!checkedValue);
+          }
         },
-        [checkedValue, setCheckedValue, onClick],
+        [checkedValue, disabled, disabledFocusable, setCheckedValue, onClick],
       ),
     },
   };

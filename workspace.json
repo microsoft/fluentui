@@ -140,13 +140,53 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/nx-workspace-tools": {
+      "root": "tools",
+      "sourceRoot": "tools",
+      "projectType": "library",
+      "targets": {
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/tools"],
+          "options": {
+            "jestConfig": "tools/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "eslint **/*.ts",
+            "cwd": "tools"
+          }
+        },
+        "type-check": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "tsc -b tools/tsconfig.json"
+          }
+        },
+        "check-graph": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "node ./tools/check-dep-graph.js"
+          }
+        }
+      },
+      "tags": []
+    },
     "@fluentui/perf": {
       "root": "packages/fluentui/perf",
       "projectType": "library",
       "implicitDependencies": []
     },
     "@fluentui/perf-test": {
-      "root": "packages/fluentui/perf-test",
+      "root": "apps/perf-test",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
+    "@fluentui/perf-test-northstar": {
+      "root": "packages/fluentui/perf-test-northstar",
       "projectType": "library",
       "implicitDependencies": []
     },
@@ -248,6 +288,12 @@
       "sourceRoot": "packages/react-checkbox/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-combobox": {
+      "root": "packages/react-combobox",
+      "projectType": "library",
+      "sourceRoot": "packages/react-combobox/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-component-event-listener": {
       "root": "packages/fluentui/react-component-event-listener",
@@ -385,13 +431,6 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-make-styles": {
-      "root": "packages/react-make-styles",
-      "projectType": "library",
-      "sourceRoot": "packages/react-make-styles/src",
-      "tags": ["vNext", "platform:web"],
-      "implicitDependencies": []
-    },
     "@fluentui/react-menu": {
       "root": "packages/react-menu",
       "projectType": "library",
@@ -468,6 +507,11 @@
       "sourceRoot": "packages/react-radio/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-select": {
+      "root": "packages/react-select",
+      "projectType": "library",
+      "sourceRoot": "packages/react-select/src"
     },
     "@fluentui/react-shared-contexts": {
       "root": "packages/react-shared-contexts",
@@ -551,6 +595,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-toolbar": {
+      "root": "packages/react-toolbar",
+      "projectType": "library",
+      "sourceRoot": "packages/react-toolbar/src",
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
+    },
     "@fluentui/react-tooltip": {
       "root": "packages/react-tooltip",
       "projectType": "library",
@@ -580,9 +631,19 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/server-rendered-app": {
+      "root": "apps/server-rendered-app",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/set-version": {
       "root": "packages/set-version",
       "projectType": "library",
+      "implicitDependencies": []
+    },
+    "@fluentui/ssr-tests": {
+      "root": "apps/ssr-tests",
+      "projectType": "application",
       "implicitDependencies": []
     },
     "@fluentui/state": {
@@ -605,6 +666,11 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/test-bundles": {
+      "root": "apps/test-bundles",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/test-utilities": {
       "root": "packages/test-utilities",
       "projectType": "library",
@@ -620,9 +686,38 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/theming-designer": {
+      "root": "apps/theming-designer",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
+    "@fluentui/ts-minbar-test-react": {
+      "root": "apps/ts-minbar-test-react",
+      "projectType": "application"
+    },
+    "@fluentui/ts-minbar-test-react-components": {
+      "root": "apps/ts-minbar-test-react-components",
+      "projectType": "application"
+    },
+    "@fluentui/typings": {
+      "root": "typings",
+      "projectType": "library",
+      "sourceRoot": "typings",
+      "tags": ["platform:any"]
+    },
     "@fluentui/utilities": {
       "root": "packages/utilities",
       "projectType": "library",
+      "implicitDependencies": []
+    },
+    "@fluentui/vr-tests": {
+      "root": "apps/vr-tests",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
+    "@fluentui/vr-tests-react-components": {
+      "root": "apps/vr-tests-react-components",
+      "projectType": "application",
       "implicitDependencies": []
     },
     "@fluentui/web-components": {
@@ -633,79 +728,6 @@
     "@fluentui/webpack-utilities": {
       "root": "packages/webpack-utilities",
       "projectType": "library",
-      "implicitDependencies": []
-    },
-    "nx-workspace-tools": {
-      "root": "tools",
-      "sourceRoot": "tools",
-      "projectType": "library",
-      "targets": {
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/tools"],
-          "options": {
-            "jestConfig": "tools/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/workspace:run-commands",
-          "options": {
-            "command": "eslint **/*.ts",
-            "cwd": "tools"
-          }
-        },
-        "type-check": {
-          "executor": "@nrwl/workspace:run-commands",
-          "options": {
-            "command": "tsc -b tools/tsconfig.json"
-          }
-        }
-      },
-      "tags": []
-    },
-    "perf-test": {
-      "root": "apps/perf-test",
-      "projectType": "application",
-      "implicitDependencies": []
-    },
-    "server-rendered-app": {
-      "root": "apps/server-rendered-app",
-      "projectType": "application",
-      "implicitDependencies": []
-    },
-    "ssr-tests": {
-      "root": "apps/ssr-tests",
-      "projectType": "application",
-      "implicitDependencies": []
-    },
-    "test-bundles": {
-      "root": "apps/test-bundles",
-      "projectType": "application",
-      "implicitDependencies": []
-    },
-    "theming-designer": {
-      "root": "apps/theming-designer",
-      "projectType": "application",
-      "implicitDependencies": []
-    },
-    "ts-minbar-test-react": {
-      "root": "apps/ts-minbar-test-react",
-      "projectType": "application"
-    },
-    "ts-minbar-test-react-components": {
-      "root": "apps/ts-minbar-test-react-components",
-      "projectType": "application"
-    },
-    "typings": {
-      "root": "typings",
-      "projectType": "library",
-      "sourceRoot": "typings",
-      "tags": ["platform:any"]
-    },
-    "vr-tests": {
-      "root": "apps/vr-tests",
-      "projectType": "application",
       "implicitDependencies": []
     }
   }

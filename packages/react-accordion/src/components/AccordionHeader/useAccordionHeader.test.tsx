@@ -12,7 +12,6 @@ describe('useAccordionHeader_unstable', () => {
       <AccordionContext.Provider
         value={{
           collapsible: false,
-          navigable: false,
           openItems: [1],
           requestToggle: () => {
             /* ... */

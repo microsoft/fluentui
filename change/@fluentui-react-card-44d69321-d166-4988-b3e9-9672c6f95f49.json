@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove empty CardCommons type and outdated boilerplate comments",
-  "packageName": "@fluentui/react-card",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

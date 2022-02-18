@@ -140,7 +140,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _borderId: string;
   private _verticalLine: string;
   private _colorFillBarPatternId: string;
-  private _uniqueCallOutID: string;
+  private _uniqueCallOutID: string | null;
   private _refArray: IRefArrayData[];
   private margins: IMargins;
   private eventLabelHeight: number = 36;
@@ -175,6 +175,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._verticalLine = getId('verticalLine');
     this._colorFillBarPatternId = getId('colorFillBarPattern');
     this._tooltipId = getId('LineChartTooltipId_');
+
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
       (this.eventLabelHeight = props.eventAnnotationProps.labelHeight);
@@ -245,6 +246,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         getGraphData={this._initializeLineChartData}
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         customizedCallout={this._getCustomizedCallout()}
+        onChartMouseLeave={this._handleChartMouseLeave}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -847,6 +849,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const xVal = x instanceof Date ? x.getTime() : x;
     const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
     // if no points need to be called out then don't show vertical line and callout card
+
     if (found) {
       const _this = this;
       d3Select('#' + circleId).attr('aria-labelledby', `toolTip${this._uniqueCallOutID}`);
@@ -884,27 +887,30 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     mouseEvent: React.MouseEvent<SVGElement>,
   ) => {
     mouseEvent.persist();
-    this._uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
     const xVal = x instanceof Date ? x.getTime() : x;
     const _this = this;
     const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
     // if no points need to be called out then don't show vertical line and callout card
+
     if (found) {
       d3Select(`#${this._verticalLine}`)
         .attr('transform', () => `translate(${_this._xAxisScale(x)}, ${_this._yAxisScale(y)})`)
         .attr('visibility', 'visibility')
         .attr('y2', `${lineHeight - _this._yAxisScale(y)}`);
-      this.setState({
-        isCalloutVisible: true,
-        refSelected: mouseEvent,
-        hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
-        YValueHover: found.values,
-        stackCalloutProps: found!,
-        dataPointCalloutProps: found!,
-        activePoint: circleId,
-        xAxisCalloutAccessibilityData,
-      });
+      if (this._uniqueCallOutID !== circleId) {
+        this._uniqueCallOutID = circleId;
+        this.setState({
+          isCalloutVisible: true,
+          refSelected: `#${circleId}`,
+          hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
+          YValueHover: found.values,
+          stackCalloutProps: found!,
+          dataPointCalloutProps: found!,
+          activePoint: circleId,
+          xAxisCalloutAccessibilityData,
+        });
+      }
     } else {
       this.setState({
         activePoint: circleId,
@@ -926,6 +932,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _handleMouseOut = () => {
     d3Select(`#${this._verticalLine}`).attr('visibility', 'hidden');
+  };
+
+  private _handleChartMouseLeave = () => {
+    this._uniqueCallOutID = null;
     this.setState({
       isCalloutVisible: false,
       activePoint: '',

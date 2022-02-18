@@ -59,6 +59,7 @@ const DEFAULT_PROPS: Partial<IModalProps> = {
   isDarkOverlay: true,
   className: '',
   containerClassName: '',
+  enableAriaHiddenSiblings: true,
 };
 
 const getClassNames = classNamesFunction<IModalStyleProps, IModalStyles>();
@@ -122,6 +123,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       isModeless,
       dragOptions,
       onDismissed,
+      // eslint-disable-next-line deprecation/deprecation
       enableAriaHiddenSiblings,
     } = props;
 
@@ -411,11 +413,11 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
         elementToFocusOnDismiss={elementToFocusOnDismiss}
         isClickableOutsideFocusTrap={isModeless || isClickableOutsideFocusTrap || !isBlocking}
         ignoreExternalFocusing={ignoreExternalFocusing}
-        forceFocusInsideTrap={isModeless ? !isModeless : forceFocusInsideTrap}
+        forceFocusInsideTrap={forceFocusInsideTrap && !isModeless}
         firstFocusableSelector={firstFocusableSelector}
         focusPreviouslyFocusedInnerElement
         onBlur={internalState.isInKeyboardMoveMode ? handleExitKeyboardMoveMode : undefined}
-        enableAriaHiddenSiblings={enableAriaHiddenSiblings}
+        // enableAriaHiddenSiblings is handled by the Popup
       >
         {dragOptions && internalState.isInKeyboardMoveMode && (
           <div className={classNames.keyboardMoveIconContainer}>
@@ -452,11 +454,14 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
         <Layer ref={mergedRef} {...mergedLayerProps}>
           <Popup
             role={isAlertRole ? 'alertdialog' : 'dialog'}
-            aria-modal={!isModeless}
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}
             shouldRestoreFocus={!ignoreExternalFocusing}
+            // Modeless modals shouldn't hide siblings.
+            // Popup will automatically handle this based on the aria-modal setting.
+            enableAriaHiddenSiblings={enableAriaHiddenSiblings}
+            aria-modal={!isModeless}
           >
             <div className={classNames.root} role={!isModeless ? 'document' : undefined}>
               {!isModeless && (

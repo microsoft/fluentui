@@ -37,9 +37,10 @@ The root level component serves context and common API between all children.
 export type AccordionProps = ComponentProps &
   React.HTMLAttributes<HTMLElement> & {
     /**
-     * Indicates if keyboard navigation is available
+     * Indicates if keyboard navigation is available and gives two options,
+     * linear or circular navigation
      */
-    navigable?: boolean;
+    navigation?: 'linear' | 'circular';
     /**
      * Indicates if Accordion support multiple Panels opened at the same time
      */
@@ -410,6 +411,37 @@ As a general rule, once the accordion is closed the focus should return to the h
 | Keyboard | Home       | Moves Focus | Moves focus to the first panel heading                      |
 | Keyboard | End        | Moves Focus | Moves focus to the last panel heading                       |
 
-## Accessibiltiy
+## Accessibility
 
-Accessibility behaviour is built into the spec as much as possible. This section addresses specific issues that don't fit well with the standard definition of the component.
+Accessibility behavior is built into the spec as much as possible. This section addresses specific issues that don't fit well with the standard definition of the component.
+
+### No heading level on `AccordionHeader` by default
+
+As described on [WAI-ARIA Roles, States, and Properties](https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties) documentation for accordion:
+
+> Each accordion header button is wrapped in an element with role heading that has a value set for aria-level that is appropriate for the information architecture of the page.
+
+Every `AccordionHeader` should have as its root a semantic heading element: `h1`, `h2`, `h3`, `h4`, `h5` or `h6`. Alternatively `role="heading"` and a proper `aria-level` attribute. This behavior is not implemented by default on `AccordionHeader` as it's impossible to predict which heading level will be required by the user. Requiring manual addition of such ARIA requirement.
+
+```tsx
+{/* No heading level by default */}
+<AccordionHeader>This is a header</AccordionHeader>
+{/* Generated html */}
+<div>
+  <button>This is a header</button>
+</div>
+
+{/* as semantic heading */}
+<AccordionHeader as="h4">This is a header</AccordionHeader>
+{/* Generated html */}
+<h4>
+  <button>This is a header</button>
+</h4>
+
+{/* if no semantic heading can be used */}
+<AccordionHeader role="heading" aria-level="4">This is a header</AccordionHeader>
+{/* Generated html */}
+<div role="heading" aria-level="4">
+  <button>This is a header</button>
+</h4>
+```

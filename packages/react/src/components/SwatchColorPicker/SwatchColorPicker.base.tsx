@@ -122,12 +122,15 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
    * When the whole swatchColorPicker is blurred,
    * make sure to clear the pending focused stated
    */
-  const onSwatchColorPickerBlur = React.useCallback((): void => {
-    if (onCellFocused) {
-      internalState.cellFocused = false;
-      onCellFocused();
-    }
-  }, [internalState, onCellFocused]);
+  const onSwatchColorPickerBlur = React.useCallback(
+    (event?: React.FocusEvent<HTMLButtonElement>): void => {
+      if (onCellFocused) {
+        internalState.cellFocused = false;
+        onCellFocused(undefined, undefined, event);
+      }
+    },
+    [internalState, onCellFocused],
+  );
 
   /**
    * Callback passed to the GridCell that will manage triggering the onCellHovered callback for mouseEnter
@@ -210,9 +213,9 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
    * NOTE: This will not be triggered if shouldFocusOnHover === true
    */
   const onGridCellHovered = React.useCallback(
-    (item?: IColorCellProps): void => {
+    (item?: IColorCellProps, event?: React.MouseEvent<HTMLButtonElement>): void => {
       if (onCellHovered) {
-        return item ? onCellHovered(item.id, item.color) : onCellHovered();
+        item ? onCellHovered(item.id, item.color, event) : onCellHovered(undefined, undefined, event);
       }
     },
     [onCellHovered],
@@ -222,14 +225,14 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
    * Callback passed to the GridCell class that will trigger the onCellFocus callback of the SwatchColorPicker
    */
   const onGridCellFocused = React.useCallback(
-    (item?: IColorCellProps): void => {
+    (item?: IColorCellProps, event?: React.FormEvent<HTMLButtonElement>): void => {
       if (onCellFocused) {
         if (item) {
           internalState.cellFocused = true;
-          return onCellFocused(item.id, item.color);
+          return onCellFocused(item.id, item.color, event);
         } else {
           internalState.cellFocused = false;
-          return onCellFocused();
+          return onCellFocused(undefined, undefined, event);
         }
       }
     },
@@ -240,7 +243,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
    * Handle the click on a cell
    */
   const onCellClick = React.useCallback(
-    (item: IColorCellProps): void => {
+    (item: IColorCellProps, event?: React.MouseEvent<HTMLButtonElement>): void => {
       if (disabled) {
         return;
       }
@@ -248,9 +251,9 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
       if (item.id !== selectedId) {
         if (onCellFocused && internalState.cellFocused) {
           internalState.cellFocused = false;
-          onCellFocused();
+          onCellFocused(undefined, undefined, event);
         }
-        setSelectedId(item.id);
+        setSelectedId(item.id, event);
       }
     },
     [disabled, internalState, onCellFocused, selectedId, setSelectedId],

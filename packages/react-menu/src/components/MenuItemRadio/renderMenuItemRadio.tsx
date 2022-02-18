@@ -12,10 +12,10 @@ export const renderMenuItemRadio_unstable = (state: MenuItemRadioState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      <slots.checkmark {...slotProps.checkmark} />
-      <slots.icon {...slotProps.icon} />
-      <slots.content {...slotProps.content} />
-      <slots.secondaryContent {...slotProps.secondaryContent} />
+      {slots.checkmark && <slots.checkmark {...slotProps.checkmark} />}
+      {slots.icon && <slots.icon {...slotProps.icon} />}
+      {slots.content && <slots.content {...slotProps.content} />}
+      {slots.secondaryContent && <slots.secondaryContent {...slotProps.secondaryContent} />}
     </slots.root>
   );
 };

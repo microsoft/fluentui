@@ -36,6 +36,7 @@ export type {
   CardSlots,
   CardState,
 } from '@fluentui/react-card';
+
 export {
   Input,
   inputClassName,
@@ -44,3 +45,49 @@ export {
   useInputStyles_unstable,
 } from '@fluentui/react-input';
 export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
+
+export {
+  Label,
+  labelClassName,
+  renderLabel_unstable,
+  useLabel_unstable,
+  useLabelStyles_unstable,
+} from '@fluentui/react-label';
+export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
+
+export {
+  Slider,
+  sliderClassName,
+  useSliderState_unstable,
+  useSliderStyles_unstable,
+  useSlider_unstable,
+  renderSlider_unstable,
+} from '@fluentui/react-slider';
+
+export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
+
+export {
+  Tab,
+  tabClassName,
+  useTab_unstable,
+  useTabStyles_unstable,
+  renderTab_unstable,
+  TabList,
+  tabListClassName,
+  useTabList_unstable,
+  useTabListStyles_unstable,
+  renderTabList_unstable,
+} from '@fluentui/react-tabs';
+
+export type {
+  TabValue,
+  TabProps,
+  TabState,
+  SelectTabData,
+  SelectTabEvent,
+  SelectTabEventHandler,
+  TabListProps,
+  TabListContextValue,
+  TabListContextValues,
+  TabListState,
+} from '@fluentui/react-tabs';

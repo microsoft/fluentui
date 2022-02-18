@@ -3,9 +3,13 @@ const cypress = require('cypress');
 const path = require('path');
 
 /**
- * Script that run/opens cypress, since cypress does not support easy config extension
- * Can be removed in favour of native CLI once cypress supports path based config extension
- * https://github.com/cypress-io/cypress/issues/5674
+ * Script that run/opens cypress, since cypress does not support easy config extension.
+ * Can be removed in favour of native CLI once cypress supports path-based config extension.
+ * https://github.com/cypress-io/cypress/issues/5218
+ *
+ * To debug cypress tests locally, run the following in your package folder in *separate terminals*:
+ * - `yarn start` and make a note of the port
+ * - `yarn e2e --mode open --port ####`
  */
 
 const argv = require('yargs')
@@ -13,8 +17,14 @@ const argv = require('yargs')
     describe: 'Choose a mode to run cypress',
     choices: ['run', 'open'],
   })
+  .option('package', {
+    describe: 'Unscoped package name to load the deployed storybook for (used by PR runs only)',
+    default: 'react-components',
+    type: 'option',
+    choices: ['react-components', 'react'],
+  })
   .option('port', {
-    describe: 'Port number storybook is running on',
+    describe: 'Port number storybook is running on (used by local runs only)',
     default: 3000,
     type: 'number',
   })
@@ -22,8 +32,7 @@ const argv = require('yargs')
 
 const baseConfig = {
   baseUrl: process.env.DEPLOYURL
-    ? // Base path hard coded for converged for now, can be modified to be configurable if required to other projects
-      `${process.env.DEPLOYURL}/react-components/storybook`
+    ? `${process.env.DEPLOYURL}/${argv.package}/storybook`
     : `http://localhost:${argv.port}`,
   fixturesFolder: path.join(__dirname, 'cypress/fixtures'),
   integrationFolder: '.',

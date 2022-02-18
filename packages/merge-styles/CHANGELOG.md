@@ -1,8 +1,17 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Mon, 03 Jan 2022 23:32:10 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Feb 2022 07:29:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.3.0)
+
+Thu, 03 Feb 2022 07:29:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.2.3..@fluentui/merge-styles_v8.3.0)
+
+### Minor changes
+
+- Add logical margins CSS properties to IRawStyleBase ([PR #21372](https://github.com/microsoft/fluentui/pull/21372) by beavi@microsoft.com)
 
 ## [8.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.2.3)
 
