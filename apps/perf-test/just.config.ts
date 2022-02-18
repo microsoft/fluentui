@@ -10,7 +10,7 @@ task('check-if-package-affected', () => {
   const affected =
     getAffectedPackages().has('@fluentui/react') || getAffectedPackages().has('@fluentui/react-components');
   if (affected) {
-    console.log(`##vso[task.setvariable variable=FabricAffected;]true`);
+    console.log(`##vso[task.setvariable variable=PackageAffected;]true`);
   }
 });
 

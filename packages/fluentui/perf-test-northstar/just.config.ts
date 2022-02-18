@@ -37,7 +37,7 @@ task('perf-test:run', () => {
 task('check-if-package-affected', () => {
   const affected = getAffectedPackages().has('@fluentui/react-northstar');
   if (affected) {
-    console.log(`##vso[task.setvariable variable=NorthstarAffected;]true`);
+    console.log(`##vso[task.setvariable variable=PackageAffected;]true`);
   }
 });
 
