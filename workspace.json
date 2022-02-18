@@ -595,6 +595,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-toolbar": {
+      "root": "packages/react-toolbar",
+      "projectType": "library",
+      "sourceRoot": "packages/react-toolbar/src",
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
+    },
     "@fluentui/react-tooltip": {
       "root": "packages/react-tooltip",
       "projectType": "library",
