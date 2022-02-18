@@ -4,9 +4,9 @@ import { DividerSlots, DividerState } from '@fluentui/react-divider';
 /**
  * ToolbarDivider Props
  */
-export type ToolbarDividerProps = ComponentProps<DividerSlots>;
+export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>>;
 
 /**
  * State used in rendering ToolbarDivider
  */
-export type ToolbarDividerState = ComponentState<DividerSlots> & DividerState;
+export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & DividerState;
