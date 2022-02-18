@@ -49,7 +49,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -78,7 +78,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -362,7 +362,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -391,7 +391,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -764,7 +764,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -793,7 +793,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -932,7 +932,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -961,7 +961,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1245,7 +1245,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1274,7 +1274,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
