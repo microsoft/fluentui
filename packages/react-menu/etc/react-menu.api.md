@@ -306,7 +306,6 @@ export type MenuTriggerProps = {
 // @public (undocumented)
 export type MenuTriggerState = {
     children: React_2.ReactElement | null;
-    isSubmenu: boolean;
 };
 
 // @public
