@@ -28,7 +28,7 @@ export interface ExtendedStoryApi extends StoryApi<ExtendedStoryFnReturnType> {
 
   add: (
     storyName: StoryName,
-    storyFn: StoryFn<ExtendedStoryFnReturnType>,
+    storyFn: ExtendedStoryFn,
     parameters?: Parameters | undefined,
-  ) => StoryApi<ExtendedStoryFnReturnType>;
+  ) => ExtendedStoryApi;
 }
