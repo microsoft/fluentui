@@ -287,7 +287,20 @@ const ContextMenuArea = React.forwardRef<HTMLDivElement>((props, ref) => {
             <MenuItem>New </MenuItem>
             <MenuItem>New Window</MenuItem>
             <MenuItem disabled>Open File</MenuItem>
-            <MenuItem>Open Folder</MenuItem>
+            <Menu>
+              <MenuTrigger>
+                <MenuItem id="nestedTrigger">Open Folder</MenuItem>
+              </MenuTrigger>
+
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem>New </MenuItem>
+                  <MenuItem>New Window</MenuItem>
+                  <MenuItem disabled>Open File</MenuItem>
+                  <MenuItem>Open Folder</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
           </MenuList>
         </MenuPopover>
       </Menu>
@@ -295,19 +308,24 @@ const ContextMenuArea = React.forwardRef<HTMLDivElement>((props, ref) => {
   );
 });
 
-storiesOf('Menu nested within a MenuTrigger', module).addStory('default', () => (
-  <Menu openOnContext>
-    <MenuTrigger>
-      <ContextMenuArea />
-    </MenuTrigger>
+storiesOf('Menu nested within a MenuTrigger', module)
+  .addDecorator(story => (
+    // https://github.com/microsoft/fluentui/issues/19782
+    <Screener steps={new Screener.Steps().click('#nestedTrigger').snapshot('submenu open').end()}>{story()}</Screener>
+  ))
+  .addStory('default', () => (
+    <Menu openOnContext>
+      <MenuTrigger>
+        <ContextMenuArea />
+      </MenuTrigger>
 
-    <MenuPopover>
-      <MenuList>
-        <MenuItem>New </MenuItem>
-        <MenuItem>New Window</MenuItem>
-        <MenuItem disabled>Open File</MenuItem>
-        <MenuItem>Open Folder</MenuItem>
-      </MenuList>
-    </MenuPopover>
-  </Menu>
-));
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>New </MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  ));
