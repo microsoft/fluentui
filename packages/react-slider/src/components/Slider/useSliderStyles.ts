@@ -23,7 +23,6 @@ export const thumbPositionVar = `--fui-slider-thumb-position`;
 export const useRootStyles = makeStyles({
   root: {
     position: 'relative',
-    display: 'inline-grid',
     gridTemplateAreas: '"slider"',
     userSelect: 'none',
     touchAction: 'none',
@@ -34,11 +33,13 @@ export const useRootStyles = makeStyles({
   small: {
     [thumbSizeVar]: '16px',
     [railSizeVar]: '2px',
+    minHeight: '24px',
   },
 
   medium: {
     [thumbSizeVar]: '20px',
     [railSizeVar]: '4px',
+    minHeight: '32px',
   },
 
   horizontal: {
@@ -50,6 +51,14 @@ export const useRootStyles = makeStyles({
     width: `var(${thumbSizeVar})`,
     minHeight: '120px',
     gridTemplateColumns: `var(${thumbSizeVar})`,
+  },
+
+  inline: {
+    display: 'inline-grid',
+  },
+
+  block: {
+    display: 'grid',
   },
 
   enabled: {
@@ -238,6 +247,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     rootStyles[state.size!],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
     state.disabled ? rootStyles.disabled : rootStyles.enabled,
+    state.inline ? rootStyles.inline : rootStyles.block,
     state.root.className,
   );
 
