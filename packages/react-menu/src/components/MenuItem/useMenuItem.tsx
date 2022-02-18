@@ -31,6 +31,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLEl
   const innerRef = React.useRef<HTMLElement>(null);
 
   const state: MenuItemState = {
+    hasSubmenu,
     ...props,
     components: {
       root: 'div',
