@@ -21,6 +21,7 @@
       "@fluentui/react-button": ["packages/react-button/src/index.ts"],
       "@fluentui/react-card": ["packages/react-card/src/index.ts"],
       "@fluentui/react-checkbox": ["packages/react-checkbox/src/index.ts"],
+      "@fluentui/react-combobox": ["packages/react-combobox/src/index.ts"],
       "@fluentui/react-components": ["packages/react-components/src/index.ts"],
       "@fluentui/react-conformance": ["packages/react-conformance/src/index.ts"],
       "@fluentui/react-conformance-griffel": ["packages/react-conformance-griffel/src/index.ts"],
@@ -50,6 +51,7 @@
       "@fluentui/react-tabster": ["packages/react-tabster/src/index.ts"],
       "@fluentui/react-text": ["packages/react-text/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-theme/src/index.ts"],
+      "@fluentui/react-toolbar": ["packages/react-toolbar/src/index.ts"],
       "@fluentui/react-tooltip": ["packages/react-tooltip/src/index.ts"],
       "@fluentui/react-utilities": ["packages/react-utilities/src/index.ts"]
     }
