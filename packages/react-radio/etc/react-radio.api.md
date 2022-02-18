@@ -12,11 +12,22 @@ import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
+// @public (undocumented)
+export const radioClassName = "fui-RadioGroup";
+
 // @public
-export const Radio: ForwardRefComponent<RadioProps>;
+export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
+
+// @public
+export type RadioGroupProps = ComponentProps<RadioGroupSlots>;
 
 // @public (undocumented)
-export const radioClassName = "fui-Radio";
+export type RadioGroupSlots = {
+    root: Slot<'span'>;
+};
+
+// @public
+export type RadioGroupState = ComponentState<RadioGroupSlots>;
 
 // @public
 export const RadioItem: ForwardRefComponent<RadioItemProps>;
@@ -48,33 +59,22 @@ export type RadioItemSlots = {
 export type RadioItemState = ComponentState<RadioItemSlots> & RadioItemCommons;
 
 // @public
-export type RadioProps = ComponentProps<RadioSlots>;
-
-// @public (undocumented)
-export type RadioSlots = {
-    root: Slot<'span'>;
-};
-
-// @public
-export type RadioState = ComponentState<RadioSlots>;
-
-// @public
-export const renderRadio_unstable: (state: RadioState) => JSX.Element;
+export const renderRadioGroup_unstable: (state: RadioGroupState) => JSX.Element;
 
 // @public
 export const renderRadioItem_unstable: (state: RadioItemState) => JSX.Element;
 
 // @public
-export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLElement>) => RadioState;
+export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<HTMLElement>) => RadioGroupState;
+
+// @public
+export const useRadioGroupStyles_unstable: (state: RadioGroupState) => RadioGroupState;
 
 // @public
 export const useRadioItem_unstable: (props: RadioItemProps, ref: React_2.Ref<HTMLElement>) => RadioItemState;
 
 // @public
 export const useRadioItemStyles_unstable: (state: RadioItemState) => RadioItemState;
-
-// @public
-export const useRadioStyles_unstable: (state: RadioState) => RadioState;
 
 // (No @packageDocumentation comment for this package)
 

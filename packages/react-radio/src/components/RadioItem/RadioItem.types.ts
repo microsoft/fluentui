@@ -16,7 +16,7 @@ export type RadioItemSlots = {
   input: NonNullable<Slot<'input'>>;
 
   /**
-   * Label to be associated with Radio element.
+   * Label to be associated with RadioGroup element.
    */
   label: NonNullable<Slot<typeof Label>>;
 
