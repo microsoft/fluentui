@@ -37,19 +37,17 @@ describe('MenuItem', () => {
     expect(document.activeElement).toBe(menuitem);
   });
 
-  it('should render submenu indicator icon if wrapped by menu trigger context and in a submenu', () => {
+  it('should render submenu indicator icon if wrapped by menu trigger context', () => {
     // Arrange
-    mockUseMenuContext({ isSubmenu: true });
-    const { container } = render(
+    const slot = 'submenu';
+    const { getByText } = render(
       <MenuTriggerContextProvider value={true}>
-        <MenuItem>Item</MenuItem>
+        <MenuItem submenuIndicator={slot}>Item</MenuItem>
       </MenuTriggerContextProvider>,
     );
 
     // Assert
-    const svg = container.querySelector('svg');
-    expect(svg).not.toBe(null);
-    expect(svg?.tagName).toBe('svg');
+    getByText(slot);
   });
 
   it('should apply aria-disabled attribute if disabled prop is set', () => {
@@ -196,7 +194,7 @@ describe('MenuItem', () => {
   it('should not call setOpen if the menu item controls a submenu', () => {
     // Arrange
     const setOpen = jest.fn();
-    mockUseMenuContext({ setOpen, isSubmenu: true });
+    mockUseMenuContext({ setOpen });
     const { getByRole } = render(
       <MenuTriggerContextProvider value={true}>
         <MenuItem>Item</MenuItem>

@@ -13,7 +13,6 @@ import { ChevronRightRegular as ChevronRightIcon, ChevronLeftRegular as ChevronL
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import type { MenuItemProps, MenuItemState } from './MenuItem.types';
-import { useIsSubmenu } from '../../utils/useIsSubmenu';
 
 /**
  * Returns the props and state required to render the component
@@ -25,9 +24,8 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLEl
   const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
   const dismissedWithKeyboardRef = React.useRef(false);
 
-  const isSubmenu = useIsSubmenu();
-  const isInMenuTrigger = useMenuTriggerContext_unstable();
-  const hasSubmenu = props.hasSubmenu ?? (isInMenuTrigger && isSubmenu);
+  const isSubmenuTrigger = useMenuTriggerContext_unstable();
+  const hasSubmenu = props.hasSubmenu ?? isSubmenuTrigger;
 
   const { dir } = useFluent();
   const innerRef = React.useRef<HTMLElement>(null);
