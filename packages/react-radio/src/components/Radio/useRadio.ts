@@ -8,18 +8,18 @@ import {
   useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import type { RadioItemProps, RadioItemState } from './RadioItem.types';
+import type { RadioProps, RadioState } from './Radio.types';
 
 /**
- * Create the state required to render RadioItem.
+ * Create the state required to render Radio.
  *
- * The returned state can be modified with hooks such as useRadioItemStyles_unstable,
- * before being passed to renderRadioItem_unstable.
+ * The returned state can be modified with hooks such as useRadioStyles_unstable,
+ * before being passed to renderRadio_unstable.
  *
- * @param props - props from this instance of RadioItem
- * @param ref - reference to root HTMLElement of RadioItem
+ * @param props - props from this instance of Radio
+ * @param ref - reference to root HTMLElement of Radio
  */
-export const useRadioItem_unstable = (props: RadioItemProps, ref: React.Ref<HTMLElement>): RadioItemState => {
+export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLElement>): RadioState => {
   const { id, labelPosition = 'inline' } = props;
   const [checked, setChecked] = useControllableState({
     defaultState: props.defaultChecked,
@@ -46,7 +46,7 @@ export const useRadioItem_unstable = (props: RadioItemProps, ref: React.Ref<HTML
     setChecked(isChecked);
   });
 
-  const state: RadioItemState = {
+  const state: RadioState = {
     checked,
     labelPosition,
     components: {

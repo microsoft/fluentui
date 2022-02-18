@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { RadioItem } from './RadioItem';
+import { Radio } from './Radio';
 import { isConformant } from '../../common/isConformant';
 
-describe('RadioItem', () => {
+describe('Radio', () => {
   isConformant({
-    Component: RadioItem,
-    displayName: 'RadioItem',
+    Component: Radio,
+    displayName: 'Radio',
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<RadioItem>Default RadioItem</RadioItem>);
+    const result = render(<Radio>Default Radio</Radio>);
     expect(result.container).toMatchSnapshot();
   });
 });

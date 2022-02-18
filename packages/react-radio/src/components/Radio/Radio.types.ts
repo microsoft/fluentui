@@ -2,7 +2,7 @@ import { Label } from '@fluentui/react-label';
 import type { InputHTMLAttributes } from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-export type RadioItemSlots = {
+export type RadioSlots = {
   root: Slot<'span'>;
 
   /**
@@ -26,7 +26,7 @@ export type RadioItemSlots = {
   subtext?: Slot<'span'>;
 };
 
-export type RadioItemCommons = InputHTMLAttributes<HTMLInputElement> & {
+export type RadioCommons = InputHTMLAttributes<HTMLInputElement> & {
   /**
    * Determines whether the label should be positioned bellow the indicator or next to it.
    * @defaultvalue 'inline'
@@ -40,10 +40,10 @@ export type RadioItemCommons = InputHTMLAttributes<HTMLInputElement> & {
 };
 
 /**
- * RadioItem Props
+ * Radio Props
  */
-export type RadioItemProps = ComponentProps<Partial<RadioItemSlots>> &
-  RadioItemCommons & {
+export type RadioProps = ComponentProps<Partial<RadioSlots>> &
+  RadioCommons & {
     /**
      * ID of the native element that represents the checkbox.
      */
@@ -51,6 +51,6 @@ export type RadioItemProps = ComponentProps<Partial<RadioItemSlots>> &
   };
 
 /**
- * State used in rendering RadioItem
+ * State used in rendering Radio
  */
-export type RadioItemState = ComponentState<RadioItemSlots> & RadioItemCommons;
+export type RadioState = ComponentState<RadioSlots> & RadioCommons;

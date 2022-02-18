@@ -12,11 +12,23 @@ import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
+// @public
+export const Radio: ForwardRefComponent<RadioProps>;
+
 // @public (undocumented)
-export const radioClassName = "fui-RadioGroup";
+export const radioClassName = "fui-Radio";
+
+// @public (undocumented)
+export type RadioCommons = InputHTMLAttributes<HTMLInputElement> & {
+    labelPosition?: 'bottom' | 'inline';
+    containerClassName?: string;
+};
 
 // @public
 export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
+
+// @public (undocumented)
+export const radioGroupClassName = "fui-RadioGroup";
 
 // @public
 export type RadioGroupProps = ComponentProps<RadioGroupSlots>;
@@ -30,24 +42,12 @@ export type RadioGroupSlots = {
 export type RadioGroupState = ComponentState<RadioGroupSlots>;
 
 // @public
-export const RadioItem: ForwardRefComponent<RadioItemProps>;
-
-// @public (undocumented)
-export const radioItemClassName = "fui-RadioItem";
-
-// @public (undocumented)
-export type RadioItemCommons = InputHTMLAttributes<HTMLInputElement> & {
-    labelPosition?: 'bottom' | 'inline';
-    containerClassName?: string;
-};
-
-// @public
-export type RadioItemProps = ComponentProps<Partial<RadioItemSlots>> & RadioItemCommons & {
+export type RadioProps = ComponentProps<Partial<RadioSlots>> & RadioCommons & {
     id?: string;
 };
 
 // @public (undocumented)
-export type RadioItemSlots = {
+export type RadioSlots = {
     root: Slot<'span'>;
     indicator: NonNullable<Slot<'div'>>;
     input: NonNullable<Slot<'input'>>;
@@ -56,13 +56,16 @@ export type RadioItemSlots = {
 };
 
 // @public
-export type RadioItemState = ComponentState<RadioItemSlots> & RadioItemCommons;
+export type RadioState = ComponentState<RadioSlots> & RadioCommons;
+
+// @public
+export const renderRadio_unstable: (state: RadioState) => JSX.Element;
 
 // @public
 export const renderRadioGroup_unstable: (state: RadioGroupState) => JSX.Element;
 
 // @public
-export const renderRadioItem_unstable: (state: RadioItemState) => JSX.Element;
+export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLElement>) => RadioState;
 
 // @public
 export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<HTMLElement>) => RadioGroupState;
@@ -71,10 +74,7 @@ export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<H
 export const useRadioGroupStyles_unstable: (state: RadioGroupState) => RadioGroupState;
 
 // @public
-export const useRadioItem_unstable: (props: RadioItemProps, ref: React_2.Ref<HTMLElement>) => RadioItemState;
-
-// @public
-export const useRadioItemStyles_unstable: (state: RadioItemState) => RadioItemState;
+export const useRadioStyles_unstable: (state: RadioState) => RadioState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RadioItem renders a default state 1`] = `
+exports[`Radio renders a default state 1`] = `
 <div>
   <span
-    class="fui-RadioItem"
+    class="fui-Radio"
   >
     <div
       class=""
     >
       <div
-        class="fui-RadioItem-indicator"
+        class="fui-Radio-indicator"
       />
       <input
         class=""

@@ -1,9 +1,9 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import type { RadioItemState } from './RadioItem.types';
+import type { RadioState } from './Radio.types';
 
-export const radioItemClassName = 'fui-RadioItem';
+export const radioClassName = 'fui-Radio';
 
 /**
  * Styles for the root slot
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
 
     // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
-    [`& .${radioItemClassName}-indicator`]: {
+    [`& .${radioClassName}-indicator`]: {
       backgroundColor: tokens.colorCompoundBrandBackground,
       color: tokens.colorNeutralForegroundInverted,
       borderColor: tokens.colorBrandBackground,
@@ -31,13 +31,13 @@ const useStyles = makeStyles({
     },
 
     ':active': {
-      [`& .${radioItemClassName}-indicator`]: {
+      [`& .${radioClassName}-indicator`]: {
         backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
       },
     },
 
     ':hover': {
-      [`& .${radioItemClassName}-indicator`]: {
+      [`& .${radioClassName}-indicator`]: {
         backgroundColor: tokens.colorCompoundBrandBackgroundHover,
       },
     },
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
   unchecked: {
     color: tokens.colorNeutralForeground3,
 
-    [`& .${radioItemClassName}-indicator`]: {
+    [`& .${radioClassName}-indicator`]: {
       borderColor: tokens.colorNeutralStrokeAccessible,
       '& > *': {
         opacity: 0,
@@ -56,7 +56,7 @@ const useStyles = makeStyles({
     ':hover': {
       color: tokens.colorNeutralForeground2,
 
-      [`& .${radioItemClassName}-indicator`]: {
+      [`& .${radioClassName}-indicator`]: {
         borderColor: tokens.colorNeutralStrokeAccessibleHover,
       },
     },
@@ -64,7 +64,7 @@ const useStyles = makeStyles({
     ':active': {
       color: tokens.colorNeutralForeground1,
 
-      [`& .${radioItemClassName}-indicator`]: {
+      [`& .${radioClassName}-indicator`]: {
         borderColor: tokens.colorNeutralStrokeAccessiblePressed,
       },
     },
@@ -74,14 +74,14 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForegroundDisabled,
     cursor: 'default',
 
-    [`& .${radioItemClassName}-indicator`]: {
+    [`& .${radioClassName}-indicator`]: {
       borderColor: tokens.colorNeutralStrokeDisabled,
       color: tokens.colorNeutralForegroundDisabled,
       backgroundColor: tokens.colorNeutralBackground1,
     },
 
     ':hover': {
-      [`& .${radioItemClassName}-indicator`]: {
+      [`& .${radioClassName}-indicator`]: {
         borderColor: tokens.colorNeutralStrokeDisabled,
         color: tokens.colorNeutralForegroundDisabled,
         backgroundColor: tokens.colorNeutralBackground1,
@@ -89,7 +89,7 @@ const useStyles = makeStyles({
     },
 
     ':active': {
-      [`& .${radioItemClassName}-indicator`]: {
+      [`& .${radioClassName}-indicator`]: {
         borderColor: tokens.colorNeutralStrokeDisabled,
         color: tokens.colorNeutralForegroundDisabled,
         backgroundColor: tokens.colorNeutralBackground1,
@@ -179,9 +179,9 @@ const useSubtextStyles = makeStyles({
 });
 
 /**
- * Apply styling to the RadioItem slots based on the state
+ * Apply styling to the Radio slots based on the state
  */
-export const useRadioItemStyles_unstable = (state: RadioItemState): RadioItemState => {
+export const useRadioStyles_unstable = (state: RadioState): RadioState => {
   const checkedState = state.checked ? 'checked' : 'unchecked';
   const containerStyles = useContainerStyles();
   const indicatorStyles = useIndicatorStyles();
@@ -191,7 +191,7 @@ export const useRadioItemStyles_unstable = (state: RadioItemState): RadioItemSta
   const styles = useStyles();
 
   state.root.className = mergeClasses(
-    radioItemClassName,
+    radioClassName,
     styles.root,
     styles.focusIndicator,
     styles[checkedState],
@@ -214,7 +214,7 @@ export const useRadioItemStyles_unstable = (state: RadioItemState): RadioItemSta
   );
 
   state.indicator.className = mergeClasses(
-    `${radioItemClassName}-indicator`,
+    `${radioClassName}-indicator`,
     indicatorStyles.indicator,
     containerStyles.dimensions,
     state.indicator.className,
