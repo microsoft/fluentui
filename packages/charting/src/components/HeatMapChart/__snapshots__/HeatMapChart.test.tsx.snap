@@ -17,6 +17,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         width: 100%;
       }
   id="chart_0"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -336,6 +337,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         width: 100%;
       }
   id="chart_3"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -743,6 +745,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         width: 100%;
       }
   id="chart_6"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -910,6 +913,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         width: 100%;
       }
   id="chart_8"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1229,6 +1233,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         width: 100%;
       }
   id="chart_11"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div

@@ -90,6 +90,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _lineObject: LineObject;
   private _tooltipId: string;
   private _yMax: number;
+  private _calloutAnchorPoint: IVSChartDataPoint | null;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -186,6 +187,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         getGraphData={this._getGraphData}
         getAxisData={this._getAxisData}
         customizedCallout={this._getCustomizedCallout()}
+        onChartMouseLeave={this._handleChartMouseLeave}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -543,9 +545,11 @@ export class VerticalStackedBarChartBase extends React.Component<
     refSelected: React.MouseEvent<SVGElement> | SVGGElement,
   ): void {
     if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)
+      (this.state.isLegendSelected === false ||
+        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)) &&
+      this._calloutAnchorPoint !== point
     ) {
+      this._calloutAnchorPoint = point;
       this.setState({
         refSelected,
         isCalloutVisible: true,
@@ -626,6 +630,11 @@ export class VerticalStackedBarChartBase extends React.Component<
   }
 
   private _handleMouseOut = (): void => {
+    /**/
+  };
+
+  private _handleChartMouseLeave = (): void => {
+    this._calloutAnchorPoint = null;
     this.setState({
       isCalloutVisible: false,
       activeXAxisDataPoint: '',

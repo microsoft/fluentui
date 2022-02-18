@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Cherry pick - Fix charting callout not hoverable using mouse and callout flickering",
+  "packageName": "@uifabric/charting",
+  "email": "atishay.jain@microsoft.com",
+  "dependentChangeType": "patch"
+}

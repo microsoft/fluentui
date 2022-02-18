@@ -17,6 +17,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         width: 100%;
       }
   id="chart_6"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -338,6 +339,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         width: 100%;
       }
   id="chart_32"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -639,6 +641,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         width: 100%;
       }
   id="chart_15"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -808,6 +811,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         width: 100%;
       }
   id="chart_23"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1129,6 +1133,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         width: 100%;
       }
   id="chart_41"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1450,6 +1455,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         width: 100%;
       }
   id="chart_50"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1771,6 +1777,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         width: 100%;
       }
   id="chart_59"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div

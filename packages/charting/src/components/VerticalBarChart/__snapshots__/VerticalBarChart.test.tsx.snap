@@ -17,6 +17,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         width: 100%;
       }
   id="chart_2"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -451,6 +452,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         width: 100%;
       }
   id="chart_16"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -865,6 +867,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         width: 100%;
       }
   id="chart_7"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -971,6 +974,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         width: 100%;
       }
   id="chart_11"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1405,6 +1409,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         width: 100%;
       }
   id="chart_21"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1839,6 +1844,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         width: 100%;
       }
   id="chart_26"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -2273,6 +2279,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         width: 100%;
       }
   id="chart_31"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
