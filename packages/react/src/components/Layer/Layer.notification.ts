@@ -1,4 +1,7 @@
+import { ILayerHost } from './LayerHost.types';
+
 const _layersByHostId: { [hostId: string]: (() => void)[] } = {};
+const _layerHostsById: { [hostId: string]: ILayerHost[] } = {};
 
 let _defaultHostSelector: string | undefined;
 
@@ -28,6 +31,53 @@ export function unregisterLayer(hostId: string, callback: () => void) {
       if (_layersByHostId[hostId].length === 0) {
         delete _layersByHostId[hostId];
       }
+    }
+  }
+}
+
+/**
+ * Gets the Layer Host instance associated with a hostId, if applicable.
+ * @param hostId
+ * @returns A component ref for the associated layer host.
+ */
+export function getLayerHost(hostId: string): ILayerHost | undefined {
+  const layerHosts = _layerHostsById[hostId];
+
+  return (layerHosts && layerHosts[0]) || undefined;
+}
+
+/**
+ * Registers a Layer Host with an associated hostId.
+ * @param hostId Id of the layer host
+ * @param layerHost layer host instance
+ */
+export function registerLayerHost(hostId: string, layerHost: ILayerHost): void {
+  const layerHosts = _layerHostsById[hostId] || (_layerHostsById[hostId] = []);
+
+  // Insert this at the stary of an array to avoid race conditions between mount and unmount.
+  // If a LayerHost is re-mounted, and mount of the new instance may occur before the unmount of the old one.
+  // Putting the new instance at the start of this array ensures that calls to `getLayerHost` will immediately
+  // get the new one even if the old one is around briefly.
+  layerHosts.unshift(layerHost);
+}
+
+/**
+ * Unregisters a Layer Host from the associated hostId.
+ * @param hostId Id of the layer host
+ * @param layerHost layer host instance
+ */
+export function unregisterLayerHost(hostId: string, layerHost: ILayerHost): void {
+  const layerHosts = _layerHostsById[hostId];
+
+  if (layerHosts) {
+    const idx = layerHosts.indexOf(layerHost);
+
+    if (idx >= 0) {
+      layerHosts.splice(idx, 1);
+    }
+
+    if (layerHosts.length === 0) {
+      delete _layerHostsById[hostId];
     }
   }
 }
