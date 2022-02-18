@@ -8,7 +8,7 @@ export const Appearance = () => (
   <>
     <Menu positioning="below-end">
       <MenuTrigger>
-        {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps} primaryActionButton="Default" />}
+        {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Default</SplitButton>}
       </MenuTrigger>
 
       <MenuPopover>
@@ -22,7 +22,9 @@ export const Appearance = () => (
     <Menu positioning="below-end">
       <MenuTrigger>
         {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} primaryActionButton="Primary" appearance="primary" />
+          <SplitButton menuButton={triggerProps} appearance="primary">
+            Primary
+          </SplitButton>
         )}
       </MenuTrigger>
 
@@ -37,7 +39,9 @@ export const Appearance = () => (
     <Menu positioning="below-end">
       <MenuTrigger>
         {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} primaryActionButton="Outline" appearance="outline" />
+          <SplitButton menuButton={triggerProps} appearance="outline">
+            Outline
+          </SplitButton>
         )}
       </MenuTrigger>
 
@@ -52,7 +56,9 @@ export const Appearance = () => (
     <Menu positioning="below-end">
       <MenuTrigger>
         {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} primaryActionButton="Subtle" appearance="subtle" />
+          <SplitButton menuButton={triggerProps} appearance="subtle">
+            Subtle
+          </SplitButton>
         )}
       </MenuTrigger>
 
@@ -67,7 +73,9 @@ export const Appearance = () => (
     <Menu positioning="below-end">
       <MenuTrigger>
         {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} primaryActionButton="Transparent" appearance="transparent" />
+          <SplitButton menuButton={triggerProps} appearance="transparent">
+            Transparent
+          </SplitButton>
         )}
       </MenuTrigger>
 

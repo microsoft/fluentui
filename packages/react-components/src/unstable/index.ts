@@ -65,3 +65,29 @@ export {
 } from '@fluentui/react-slider';
 
 export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
+
+export {
+  Tab,
+  tabClassName,
+  useTab_unstable,
+  useTabStyles_unstable,
+  renderTab_unstable,
+  TabList,
+  tabListClassName,
+  useTabList_unstable,
+  useTabListStyles_unstable,
+  renderTabList_unstable,
+} from '@fluentui/react-tabs';
+
+export type {
+  TabValue,
+  TabProps,
+  TabState,
+  SelectTabData,
+  SelectTabEvent,
+  SelectTabEventHandler,
+  TabListProps,
+  TabListContextValue,
+  TabListContextValues,
+  TabListState,
+} from '@fluentui/react-tabs';

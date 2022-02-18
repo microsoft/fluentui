@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Source maps contain original source code",
+  "packageName": "@fluentui/react-utilities",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

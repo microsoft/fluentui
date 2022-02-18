@@ -2,6 +2,42 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 18 Feb 2022 07:22:08 GMT",
+      "tag": "@fluentui/react-charting_v5.7.16",
+      "version": "5.7.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-charting",
+            "commit": "0cf7c8853fd1fae71c80d6844e55a14aa1ecc4f0",
+            "comment": "Fix unable to hover on chart callout."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Feb 2022 07:28:31 GMT",
+      "tag": "@fluentui/react-charting_v5.7.15",
+      "version": "5.7.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.3.19",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.55.3",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Feb 2022 07:26:37 GMT",
       "tag": "@fluentui/react-charting_v5.7.14",
       "version": "5.7.14",

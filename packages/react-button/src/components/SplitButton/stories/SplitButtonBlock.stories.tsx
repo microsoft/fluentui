@@ -6,7 +6,11 @@ import { SplitButton, MenuButtonProps } from '../../../index';
 export const Block = () => (
   <Menu positioning="below-end">
     <MenuTrigger>
-      {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps} primaryActionButton="Block" block />}
+      {(triggerProps: MenuButtonProps) => (
+        <SplitButton menuButton={triggerProps} block>
+          Block
+        </SplitButton>
+      )}
     </MenuTrigger>
 
     <MenuPopover>
