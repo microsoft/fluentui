@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 18 Feb 2022 12:25:37 GMT",
+      "tag": "@uifabric/charting_v4.20.6",
+      "version": "4.20.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-focus to v7.18.2",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "6967740200ef226cc2af16c736987c5fd8c53fee",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Feb 2022 12:31:30 GMT",
       "tag": "@uifabric/charting_v4.20.5",
       "version": "4.20.5",

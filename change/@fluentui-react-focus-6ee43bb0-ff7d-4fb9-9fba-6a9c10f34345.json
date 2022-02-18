@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update focus zone keyboard event handling",
-  "packageName": "@fluentui/react-focus",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

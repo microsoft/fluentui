@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Fri, 22 Oct 2021 12:29:03 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Feb 2022 12:25:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.18.2)
+
+Fri, 18 Feb 2022 12:25:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.18.1..@fluentui/react-focus_v7.18.2)
+
+### Patches
+
+- Update focus zone keyboard event handling ([PR #21768](https://github.com/microsoft/fluentui/pull/21768) by seanmonahan@microsoft.com)
 
 ## [7.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.18.1)
 
