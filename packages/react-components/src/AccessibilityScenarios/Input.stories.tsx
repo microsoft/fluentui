@@ -32,6 +32,35 @@ const validations: Record<string, InputValidation> = {
   },
 };
 
+const getAriaDescribedby = (name: string, isVisible: boolean) => {
+  if (!isVisible) {
+    return '';
+  }
+  return `${name}Error`;
+};
+
+let errorTimeout: number;
+const narrate = (element: HTMLElement, priority = 'polite') => {
+  window.clearTimeout(errorTimeout);
+  const wrapper = document.createElement('div');
+  wrapper.setAttribute(
+    'style',
+    'position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;',
+  );
+  wrapper.setAttribute('aria-live', priority);
+  document.body.appendChild(wrapper);
+
+  errorTimeout = window.setTimeout(() => {
+    const clone = element.cloneNode(true) as HTMLElement;
+    clone.removeAttribute('id');
+    wrapper.appendChild(clone);
+  }, 1000);
+
+  setTimeout(() => {
+    document.body.removeChild(wrapper);
+  }, 1300);
+};
+
 export const RegistrationFormInputsAccessibilityScenario = () => {
   const [values, setValues] = React.useState<Record<string, string>>({
     fullName: '',
@@ -50,6 +79,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
   });
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+  // const testError: React.ReactElement = <b>hello world</b>;
 
   const handleControlChange = (event: React.FormEvent, data: InputOnChangeData, name: string) => {
     const stateUpdate = { [name]: data.value };
@@ -85,14 +115,10 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
   };
 
   const validateControl = (name: string) => {
-    // First hide the error message if exists
     const validation = validations[name];
-    let stateUpdate = { [name]: false };
-    setIsErrorMessageVisible({ ...isErrorMessageVisible, ...stateUpdate });
-
-    // If the control value is invalid, show the error and set the aria-invalid attribute
     const value = values[name];
     let isInvalid = false;
+    let stateUpdate;
     if (validation.type === 'field' || validation.type === 'password') {
       for (let i = 0; i < validation.regexes.length; i++) {
         if (!validation.regexes[i].exec(value)) {
@@ -101,15 +127,22 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
         }
       }
     }
+
+    // If the control value is invalid, show the error, narrate it and set the aria-invalid attribute
     if (isInvalid) {
-      // Set some timeout to give the element with role="alert" a chance to speak
-      setTimeout(() => {
-        stateUpdate = { [name]: true };
-        setIsErrorMessageVisible({ ...isErrorMessageVisible, ...stateUpdate });
-      }, 400);
+      stateUpdate = { [name]: true };
+      setIsErrorMessageVisible({ ...isErrorMessageVisible, ...stateUpdate });
+      const error = document.getElementById(`${name}Error`);
+      if (error) {
+        narrate(error, 'assertive');
+      }
       stateUpdate = { [name]: isInvalid };
       setInvalids({ ...invalids, ...stateUpdate });
       return false;
+    } else {
+      // Otherwise, hide the error message
+      stateUpdate = { [name]: false };
+      setIsErrorMessageVisible({ ...isErrorMessageVisible, ...stateUpdate });
     }
     return true;
   };
@@ -131,13 +164,13 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
               handleControlBlur(event, 'fullName');
             }}
             aria-required="true"
-            aria-describedby="fullNameHint fullNameHint1 fullNameHint2"
+            aria-describedby={getAriaDescribedby('fullName', isErrorMessageVisible.fullName)}
           />
-          <ErrorMessage isVisible={isErrorMessageVisible.fullName}>
-            <p id="fullNameHint">Full name is invalid. It must</p>
+          <ErrorMessage controlName="fullName" isVisible={isErrorMessageVisible.fullName}>
+            <p>Full name is invalid. It must</p>
             <ul>
-              <li id="fullNameHint1">have between 2 and 50 characters,</li>
-              <li id="fullNameHint2">contain only lowercase or uppercase letters, spaces or hyphens.</li>
+              <li>have between 2 and 50 characters,</li>
+              <li>contain only lowercase or uppercase letters, spaces or hyphens.</li>
             </ul>
           </ErrorMessage>
 
@@ -152,13 +185,13 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
             onBlur={(event: React.FocusEvent) => {
               handleControlBlur(event, 'nickname');
             }}
-            aria-describedby="nicknameHint nicknameHint1 nicknameHint2"
+            aria-describedby={getAriaDescribedby('nickname', isErrorMessageVisible.nickname)}
           />
-          <ErrorMessage isVisible={isErrorMessageVisible.nickname}>
-            <p id="nicknameHint">Nickname is invalid. If entered, it must</p>
+          <ErrorMessage controlName="nickname" isVisible={isErrorMessageVisible.nickname}>
+            <p>Nickname is invalid. If entered, it must</p>
             <ul>
-              <li id="nicknameHint1">have between 2 and 20 characters,</li>
-              <li id="nicknameHint2">contain only lowercase or uppercase letters, spaces or hyphens.</li>
+              <li>have between 2 and 20 characters,</li>
+              <li>contain only lowercase or uppercase letters, spaces or hyphens.</li>
             </ul>
           </ErrorMessage>
 
@@ -174,17 +207,15 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
               handleControlBlur(event, 'password');
             }}
             aria-required="true"
-            aria-describedby="passwordHint passwordHint1 passwordHint2"
+            aria-describedby={getAriaDescribedby('password', isErrorMessageVisible.password)}
           />
           <Label htmlFor="showPassword">Show password</Label>
           <input type="checkbox" id="showPassword" name="showPassword" onChange={handleShowPasswordChange} />
-          <ErrorMessage isVisible={isErrorMessageVisible.password}>
-            <p id="passwordHint">Password is invalid. It must</p>
+          <ErrorMessage controlName="password" isVisible={isErrorMessageVisible.password}>
+            <p>Password is invalid. It must</p>
             <ul>
-              <li id="passwordHint1">have between 8 and 30 characters,</li>
-              <li id="passwordHint2">
-                contain at least one lower case letter, upper case letter, number and special character.
-              </li>
+              <li>have between 8 and 30 characters,</li>
+              <li>contain at least one lower case letter, upper case letter, number and special character.</li>
             </ul>
           </ErrorMessage>
 
@@ -198,13 +229,22 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
 };
 
 interface ErrorMessageProps {
+  controlName: string;
   isVisible: boolean;
   children: React.ReactNode;
 }
 const ErrorMessage = (props: ErrorMessageProps) => {
-  const { isVisible, children } = props;
+  const { controlName: controlId, isVisible, children } = props;
+  const id = `${controlId}Error`;
+  const styles = {
+    display: isVisible ? 'block' : 'none',
+  };
 
-  return <div role="alert">{isVisible ? children : null}</div>;
+  return (
+    <div id={id} style={styles}>
+      {children}
+    </div>
+  );
 };
 
 export default {
