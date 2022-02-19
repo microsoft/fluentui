@@ -114,14 +114,15 @@ steps:
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Fabric Website Resources'
 
-  - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-    displayName: 📒 Generate Manifest
-    inputs:
-      BuildDropPath: $(System.DefaultWorkingDirectory)
-      Verbosity: Verbose
+  # SBOM generation disabled until SBOM tool can properly handle complex pnpm projects
+  # - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+  #   displayName: 📒 Generate Manifest
+  #   inputs:
+  #     BuildDropPath: $(System.DefaultWorkingDirectory)
+  #     Verbosity: Verbose
 
-  - task: PublishPipelineArtifact@1
-    displayName: 📒 Publish Manifest
-    inputs:
-      artifactName: SBom-$(System.JobAttempt)
-      targetPath: $(System.DefaultWorkingDirectory)/_manifest
+  # - task: PublishPipelineArtifact@1
+  #   displayName: 📒 Publish Manifest
+  #   inputs:
+  #     artifactName: SBom-$(System.JobAttempt)
+  #     targetPath: $(System.DefaultWorkingDirectory)/_manifest
