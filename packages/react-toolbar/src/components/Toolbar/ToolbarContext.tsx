@@ -3,7 +3,7 @@ import { createContext } from '@fluentui/react-context-selector';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ToolbarContextValue } from './Toolbar.types';
 
-export const ToolbarContext: Context<ToolbarContextValue> = createContext<ToolbarContextValue>({
+export const ToolbarContext = React.createContext<ToolbarContextValue>({
   size: 'medium',
 });
 

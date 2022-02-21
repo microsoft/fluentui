@@ -4,7 +4,7 @@ import { ToolbarButton } from '../ToolbarButton';
 import { ToolbarDivider } from '../ToolbarDivider';
 
 export const Default = (props: Partial<ToolbarProps>) => (
-  <Toolbar {...props} size="small">
+  <Toolbar {...props}>
     <ToolbarButton>Click me</ToolbarButton>
     <ToolbarDivider />
   </Toolbar>

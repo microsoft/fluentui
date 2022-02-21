@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { ToolbarButtonProps, ToolbarButtonState } from './ToolbarButton.types';
 import { useButton_unstable } from '@fluentui/react-button';
 import { useContextSelector } from '@fluentui/react-context-selector';
-import { ToolbarContext } from '../Toolbar/ToolbarContext';
+import { useToolbarContext } from '../Toolbar/ToolbarContext';
 
 /**
  * Create the state required to render ToolbarButton.
@@ -17,6 +17,6 @@ export const useToolbarButton_unstable = (
   props: ToolbarButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarButtonState => {
-  const size = useContextSelector(ToolbarContext, ctx => ctx.size);
+  const { size } = useToolbarContext();
   return useButton_unstable({ size, ...props }, ref);
 };
