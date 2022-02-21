@@ -56,7 +56,7 @@ const narrate = (element: HTMLElement, priority = 'polite') => {
     wrapper.appendChild(clone);
   }, 1000);
 
-  setTimeout(() => {
+  window.setTimeout(() => {
     document.body.removeChild(wrapper);
   }, 1300);
 };
@@ -164,6 +164,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
               handleControlBlur(event, 'fullName');
             }}
             aria-required="true"
+            aria-invalid={invalids.fullName}
             aria-describedby={getAriaDescribedby('fullName', isErrorMessageVisible.fullName)}
           />
           <ErrorMessage controlName="fullName" isVisible={isErrorMessageVisible.fullName}>
@@ -185,6 +186,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
             onBlur={(event: React.FocusEvent) => {
               handleControlBlur(event, 'nickname');
             }}
+            aria-invalid={invalids.nickname}
             aria-describedby={getAriaDescribedby('nickname', isErrorMessageVisible.nickname)}
           />
           <ErrorMessage controlName="nickname" isVisible={isErrorMessageVisible.nickname}>
@@ -207,6 +209,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
               handleControlBlur(event, 'password');
             }}
             aria-required="true"
+            aria-invalid={invalids.password}
             aria-describedby={getAriaDescribedby('password', isErrorMessageVisible.password)}
           />
           <Label htmlFor="showPassword">Show password</Label>
