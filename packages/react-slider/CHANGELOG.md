@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Thu, 10 Feb 2022 08:50:49 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Feb 2022 13:35:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.8)
+
+Fri, 18 Feb 2022 13:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.6..@fluentui/react-slider_v9.0.0-beta.8)
+
+### Changes
+
+- fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-label to v9.0.0-beta.7 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.6)
 

@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Thu, 10 Feb 2022 08:52:11 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Feb 2022 13:35:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-rc.3)
+
+Fri, 18 Feb 2022 13:35:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-rc.1..@fluentui/react-accordion_v9.0.0-rc.3)
+
+### Changes
+
+- Updates initial open items value to be empty on every case ([PR #21728](https://github.com/microsoft/fluentui/pull/21728) by bsunderhus@microsoft.com)
+- fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- Breaking change: navigable becomes navigation ([PR #21729](https://github.com/microsoft/fluentui/pull/21729) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-rc.1)
 

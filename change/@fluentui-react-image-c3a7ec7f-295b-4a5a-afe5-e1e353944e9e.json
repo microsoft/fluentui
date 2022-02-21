@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Add react-theme as dependency to react-image",
-  "packageName": "@fluentui/react-image",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
