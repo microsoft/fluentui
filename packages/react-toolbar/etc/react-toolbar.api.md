@@ -58,10 +58,10 @@ export type ToolbarContextValues = {
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
 
 // @public
-export type ToolbarDividerProps = ComponentProps<DividerSlots>;
+export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>>;
 
 // @public
-export type ToolbarDividerState = ComponentState<DividerSlots> & DividerState;
+export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & DividerState;
 
 // @public
 export type ToolbarProps = ComponentProps<ToolbarSlots> & ToolbarCommons;
