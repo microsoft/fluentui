@@ -69,7 +69,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
   });
   const [invalids, setInvalids] = React.useState<Record<string, boolean>>({
     fullName: false,
-    nikname: false,
+    nickname: false,
     password: false,
   });
   const [isErrorMessageVisible, setIsErrorMessageVisible] = React.useState<Record<string, boolean>>({
