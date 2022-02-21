@@ -5,7 +5,6 @@ export type ToolbarSlots = {
 };
 
 export type ToolbarCommons = {
-  // TODO Add things shared between props and state here
   size?: 'small' | 'medium';
 };
 
