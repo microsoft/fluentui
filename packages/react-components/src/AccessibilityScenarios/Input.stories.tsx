@@ -149,7 +149,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
 
   return (
     <Scenario pageTitle="Registration form inputs">
-      <h1>Registration form</h1>
+      <h2>Registration form</h2>
       {!isSubmitted ? (
         <form onSubmit={handleSubmit}>
           <Label htmlFor="fullName">Full name:</Label>
