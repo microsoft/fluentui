@@ -14,6 +14,10 @@ export interface ILayerHost {
    * This is the element to which layers will be added.
    */
   rootRef: React.MutableRefObject<HTMLDivElement | null>;
+  /**
+   * Notifies the layer host that layers may have been added or removed within its root element.
+   */
+  notifyLayersChanged(): void;
 }
 
 export interface ILayerHostProps extends React.HTMLAttributes<HTMLElement> {

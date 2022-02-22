@@ -14,6 +14,9 @@ export const LayerHost: React.FunctionComponent<ILayerHostProps> = props => {
   const layerHostRef = React.useRef<ILayerHost>({
     hostId,
     rootRef: React.useRef<HTMLDivElement | null>(null),
+    notifyLayersChanged: () => {
+      // Nothing, since the default implementation of Layer Host does not need to react to layer changes.
+    },
   });
 
   React.useImperativeHandle(props.componentRef, () => layerHostRef.current);

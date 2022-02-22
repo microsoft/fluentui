@@ -16,6 +16,14 @@ export function registerLayer(hostId: string, callback: () => void) {
   }
 
   _layersByHostId[hostId].push(callback);
+
+  const layerHosts = _layerHostsById[hostId];
+
+  if (layerHosts) {
+    for (const layerHost of layerHosts) {
+      layerHost.notifyLayersChanged();
+    }
+  }
 }
 
 /**
@@ -24,15 +32,37 @@ export function registerLayer(hostId: string, callback: () => void) {
  * @param layer Layer instance
  */
 export function unregisterLayer(hostId: string, callback: () => void) {
-  if (_layersByHostId[hostId]) {
-    const idx = _layersByHostId[hostId].indexOf(callback);
+  const layers = _layersByHostId[hostId];
+
+  if (layers) {
+    const idx = layers.indexOf(callback);
     if (idx >= 0) {
-      _layersByHostId[hostId].splice(idx, 1);
-      if (_layersByHostId[hostId].length === 0) {
+      layers.splice(idx, 1);
+
+      if (layers.length === 0) {
         delete _layersByHostId[hostId];
       }
     }
   }
+
+  const layerHosts = _layerHostsById[hostId];
+
+  if (layerHosts) {
+    for (const layerHost of layerHosts) {
+      layerHost.notifyLayersChanged();
+    }
+  }
+}
+
+/**
+ * Gets the number of layers currently registered with a host id.
+ * @param hostId Id of the layer host.
+ * @returns The number of layers currently registered with the host.
+ */
+export function getLayerCount(hostId: string): number {
+  const layers = _layerHostsById[hostId];
+
+  return layers ? layers.length : 0;
 }
 
 /**
