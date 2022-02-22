@@ -1,4 +1,3 @@
-import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
 
 import * as FloatingUI from '@floating-ui/core';
@@ -20,7 +19,7 @@ export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 
 export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
 
-export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
+export type Boundary = FloatingUI.Boundary | 'scrollParent' | 'window';
 
 export type PopperRefHandle = {
   /**
@@ -36,7 +35,7 @@ export type PopperRefHandle = {
   setTarget: (target: HTMLElement) => void;
 };
 
-export type PopperVirtualElement = PopperJs.VirtualElement;
+export type PopperVirtualElement = FloatingUI.VirtualElement;
 
 export interface PopperOptions {
   /** Alignment for the component. Only has an effect if used with the @see position option */

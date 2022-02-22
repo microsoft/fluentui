@@ -1,4 +1,4 @@
-import * as PopperJs from '@popperjs/core';
+import * as FloatingUI from '@floating-ui/core';
 import { getBasePlacement } from './getBasePlacement';
 
 describe('getBasePlacement', () => {
@@ -16,6 +16,6 @@ describe('getBasePlacement', () => {
     ['left-start', 'left'],
     ['left-end', 'left'],
   ])('should return %s from %s', (placement, basePlacement) => {
-    expect(getBasePlacement((placement as unknown) as PopperJs.Placement)).toEqual(basePlacement);
+    expect(getBasePlacement((placement as unknown) as FloatingUI.Placement)).toEqual(basePlacement);
   });
 });

@@ -1,4 +1,4 @@
-import * as PopperJs from '@popperjs/core';
+import * as FloatingUI from '@floating-ui/core';
 
 /**
  * Returns the base placement value
@@ -6,6 +6,6 @@ import * as PopperJs from '@popperjs/core';
  *
  * @returns bottom-start -> bottom
  */
-export function getBasePlacement(placement: PopperJs.Placement): PopperJs.BasePlacement {
-  return placement.split('-')[0] as PopperJs.BasePlacement;
+export function getBasePlacement(placement: FloatingUI.Placement): FloatingUI.BasePlacement {
+  return placement.split('-')[0] as FloatingUI.BasePlacement;
 }

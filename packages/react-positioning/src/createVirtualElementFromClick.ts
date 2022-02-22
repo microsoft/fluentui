@@ -1,3 +1,4 @@
+import { ClientRectObject } from '@floating-ui/core';
 import type { PopperVirtualElement } from './types';
 
 /**
@@ -10,8 +11,11 @@ export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVi
   const right = left + 1;
   const bottom = top + 1;
 
-  function getBoundingClientRect(): ClientRect {
+  function getBoundingClientRect(): ClientRectObject {
     return {
+      x: left,
+      y: top,
+
       left,
       top,
       right,

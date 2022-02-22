@@ -2,8 +2,15 @@ import { offset as middleware } from '@floating-ui/dom';
 import { Offset } from '../types';
 import { applyRtlToOffset } from '../utils/positioningHelper';
 
-export function offset(value: Offset, rtl: boolean) {
-  if (rtl) {
+interface OffsetMiddewareOptions {
+  value: Offset;
+  isRtl?: boolean;
+}
+
+export function offset(options: OffsetMiddewareOptions) {
+  const { value, isRtl } = options;
+
+  if (isRtl) {
     return middleware(applyRtlToOffset(value));
   }
 

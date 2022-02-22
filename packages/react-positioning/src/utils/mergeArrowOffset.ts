@@ -1,4 +1,4 @@
-import type { Offset } from '../types';
+import type { Offset, OffsetObject } from '../types';
 
 /**
  * Generally when adding an arrow to popper, it's necessary to offset the position of the popper by the
@@ -10,32 +10,37 @@ import type { Offset } from '../types';
  */
 export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset {
   let offsetWithArrow = userOffset;
-  if (!userOffset) {
-    return [0, arrowHeight];
+  if (!offsetWithArrow) {
+    return { crossAxis: 0, mainAxis: arrowHeight };
   }
 
-  if (Array.isArray(offsetWithArrow)) {
-    setArrowOffset(offsetWithArrow, arrowHeight);
-    return offsetWithArrow;
+  if (typeof offsetWithArrow === 'object') {
+    return addArrowOffset(offsetWithArrow, arrowHeight);
   }
 
   if (typeof offsetWithArrow === 'function') {
     const userOffsetFn = offsetWithArrow;
     offsetWithArrow = offsetParams => {
       const offset = userOffsetFn(offsetParams);
-      setArrowOffset(offset, arrowHeight);
-      return offset;
+      return addArrowOffset(offset, arrowHeight);
     };
   }
 
   // This should never happen
-  return [0, 0] as never;
+  return -1 as never;
 }
 
-const setArrowOffset = (offset: [number | null | undefined, number | null | undefined], arrowHeight: number) => {
-  if (offset[1] !== null && offset[1] !== undefined) {
-    offset[1] += arrowHeight;
-  } else {
-    offset[1] = arrowHeight;
+const addArrowOffset = (offset: OffsetObject | number, arrowHeight: number): OffsetObject | number => {
+  if (typeof offset === 'number') {
+    return offset + arrowHeight;
   }
+
+  let mainAxis = offset.mainAxis;
+  if (mainAxis !== null && mainAxis !== undefined) {
+    mainAxis += arrowHeight;
+  } else {
+    mainAxis = arrowHeight;
+  }
+
+  return { ...offset, mainAxis };
 };

@@ -3,17 +3,13 @@ import { Boundary } from '../types';
 import { getBoundary } from '../utils/getBoundary';
 
 export interface FlipMiddlewareOptions {
-  disabled?: boolean;
   hasScrollableElement?: boolean;
   flipBoundary?: Boundary;
   container: HTMLElement | null;
 }
 
 export function flip(options: FlipMiddlewareOptions) {
-  const { disabled, hasScrollableElement, flipBoundary, container } = options;
-  if (disabled) {
-    return { fn: () => ({}) };
-  }
+  const { hasScrollableElement, flipBoundary, container } = options;
 
   return middleware({
     ...(hasScrollableElement && { boundary: 'clippingParents' }),

@@ -70,7 +70,6 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
     position: 'absolute',
     backgroundColor: 'inherit',
     visibility: 'hidden',
-    zIndex: -1,
 
     ...(arrowHeight && createArrowHeightStyles(arrowHeight)),
 

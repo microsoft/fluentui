@@ -221,7 +221,7 @@ CoverTarget.parameters = {
 
 CoverTarget.decorators = [
   (Story: React.ElementType) => (
-    <div style={{ height: 700, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ height: 700, display: 'flex', alignItems: 'center' }}>
       <Story />
     </div>
   ),
