@@ -24,7 +24,7 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn perf:test:affected
+          yarn just check-if-package-affected
         workingDirectory: packages/fluentui/perf-test-northstar
         displayName: Check if @fluentui/react-northstar was modified
 
@@ -100,7 +100,7 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn perf:test:affected
+          yarn just check-if-package-affected
         workingDirectory: apps/perf-test
         displayName: Check if @fluentui/react was modified
 
