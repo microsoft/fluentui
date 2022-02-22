@@ -6381,6 +6381,7 @@ export interface ILayer {
 // @public
 export interface ILayerHost {
     hostId: string;
+    notifyLayersChanged(): void;
     rootRef: React_2.MutableRefObject<HTMLDivElement | null>;
 }
 
