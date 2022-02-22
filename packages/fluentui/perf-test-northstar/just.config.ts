@@ -1,7 +1,6 @@
 import path from 'path';
 import { preset, series, task, argv } from '@fluentui/scripts';
 import { getResolveLoaderDirs } from '@fluentui/scripts/webpack/webpack-resources';
-import { getAffectedPackages } from '../../../scripts/monorepo';
 
 preset();
 
@@ -32,13 +31,6 @@ task('perf-test:run', () => {
   const runPerfTest = require('./tasks/perf-test').default;
 
   return runPerfTest(argv().base);
-});
-
-task('check-if-package-affected', () => {
-  const affected = getAffectedPackages().has('@fluentui/react-northstar');
-  if (affected) {
-    console.log(`##vso[task.setvariable variable=PackageAffected;]true`);
-  }
 });
 
 // TOOD: is build doing anything meaningful? only if there's source that's not a just script?
