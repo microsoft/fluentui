@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "ContextualMenu: Add prop that allows users to wrap a custom tooltip around each menu item button.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
