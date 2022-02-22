@@ -40,6 +40,9 @@ export type ToolbarButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<Butt
 export type ToolbarButtonState = ComponentState<ButtonSlots> & ButtonState;
 
 // @public (undocumented)
+export const toolbarClassName = "fui-Toolbar";
+
+// @public (undocumented)
 export type ToolbarCommons = {
     size?: 'small' | 'medium';
 };
