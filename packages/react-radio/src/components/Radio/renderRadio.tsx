@@ -10,14 +10,10 @@ export const renderRadio_unstable = (state: RadioState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      <div className={state.containerClassName}>
-        <slots.indicator {...slotProps.indicator} />
-        <slots.input {...slotProps.input} />
-      </div>
-      <slots.label {...slotProps.label}>
-        {state.label.children}
-        {state.subtext && slots.subtext && <slots.subtext {...slotProps.subtext} />}
-      </slots.label>
+      <slots.input {...slotProps.input} />
+      {slots.label && state.labelPosition === 'before' && <slots.label {...slotProps.label} />}
+      {slots.indicator && <slots.indicator {...slotProps.indicator} />}
+      {slots.label && state.labelPosition !== 'before' && <slots.label {...slotProps.label} />}
     </slots.root>
   );
 };

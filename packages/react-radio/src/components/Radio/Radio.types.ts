@@ -1,56 +1,54 @@
 import { Label } from '@fluentui/react-label';
-import type { InputHTMLAttributes } from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type RadioSlots = {
-  root: Slot<'span'>;
-
   /**
-   * Renders the radio indicator.
+   * The root element of the Radio.
+   *
+   * The root slot receives the `className` and `style` specified directly on the `<Radio>`.
+   * All other native props will be applied to the primary slot: `input`
    */
-  indicator: NonNullable<Slot<'div'>>;
+  root: NonNullable<Slot<'span'>>;
 
   /**
-   * Hidden input that handles the checkbox's functionality.
+   * The Radio's label.
+   */
+  label: Slot<typeof Label>;
+
+  /**
+   * Hidden input that handles the radio's functionality.
+   *
+   * This is the PRIMARY slot: all native properties specified directly on `<Radio>` will be applied to this slot,
+   * except `className` and `style`, which remain on the root slot.
    */
   input: NonNullable<Slot<'input'>>;
 
   /**
-   * Label to be associated with RadioGroup element.
+   * Renders the radio, with the circle icon as its child when checked.
    */
-  label: NonNullable<Slot<typeof Label>>;
-
-  /**
-   * Subtext added below label.
-   */
-  subtext?: Slot<'span'>;
-};
-
-export type RadioCommons = InputHTMLAttributes<HTMLInputElement> & {
-  /**
-   * Determines whether the label should be positioned bellow the indicator or next to it.
-   * @defaultvalue 'inline'
-   */
-  labelPosition?: 'bottom' | 'inline';
-  /**
-   * Field required to pass className to container instead of input
-   * this will be solved by https://github.com/microsoft/fluentui/pull/18983
-   */
-  containerClassName?: string;
+  indicator: Slot<'div'>;
 };
 
 /**
  * Radio Props
  */
-export type RadioProps = ComponentProps<Partial<RadioSlots>> &
-  RadioCommons & {
-    /**
-     * ID of the native element that represents the checkbox.
-     */
-    id?: string;
-  };
+export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'size'> & {
+  /**
+   * The size of the radio indicator and label.
+   *
+   * @defaultvalue medium
+   */
+  size?: 'medium' | 'large';
+
+  /**
+   * The position of the label relative to the radio indicator.
+   *
+   * @defaultvalue after
+   */
+  labelPosition?: 'before' | 'after' | 'below';
+};
 
 /**
  * State used in rendering Radio
  */
-export type RadioState = ComponentState<RadioSlots> & RadioCommons;
+export type RadioState = ComponentState<RadioSlots> & Required<Pick<RadioProps, 'size' | 'labelPosition'>>;
