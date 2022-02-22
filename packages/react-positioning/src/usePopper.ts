@@ -129,6 +129,36 @@ export function usePopper(
   const arrowRef = useCallbackRef<HTMLElement | null>(null, updatePosition, true);
   const overrideTargetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, updatePosition, true);
 
+  React.useImperativeHandle(
+    options.popperRef,
+    () => ({
+      updatePosition,
+      setTarget: (target: HTMLElement | PopperVirtualElement) => {
+        if (options.target && process.env.NODE_ENV !== 'production') {
+          const err = new Error();
+          // eslint-disable-next-line no-console
+          console.warn('Imperative setTarget should not be used at the same time as target option');
+          // eslint-disable-next-line no-console
+          console.warn(err.stack);
+        }
+
+        overrideTargetRef.current = target;
+      },
+    }),
+    // Missing deps:
+    // options.target - only used for a runtime warning
+    // overrideTargetRef - Stable between renders
+    // updatePosition - Stable between renders
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+
+  useIsomorphicLayoutEffect(() => {
+    if (options.target) {
+      overrideTargetRef.current = options.target;
+    }
+  }, [options.target, overrideTargetRef]);
+
   useIsomorphicLayoutEffect(() => {
     updatePosition();
   }, [updatePosition, enabled]);
