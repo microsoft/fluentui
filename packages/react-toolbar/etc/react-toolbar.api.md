@@ -32,12 +32,11 @@ export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
 
 // @public
 export type ToolbarButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable'>> & {
-    size?: 'small' | 'medium';
     appearance?: 'primary' | 'subtle';
 };
 
 // @public
-export type ToolbarButtonState = ComponentState<ButtonSlots> & ButtonState;
+export type ToolbarButtonState = ButtonState;
 
 // @public (undocumented)
 export const toolbarClassName = "fui-Toolbar";
