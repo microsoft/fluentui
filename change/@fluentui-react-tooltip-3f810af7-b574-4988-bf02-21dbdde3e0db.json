@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: offset value was changed from array to an object",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
