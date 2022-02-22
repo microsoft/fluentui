@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { usePopper, createArrowStyles, PositioningProps } from '@fluentui/react-positioning';
+import {
+  usePopper,
+  createArrowStyles,
+  PositioningProps,
+  PopperVirtualElement,
+  PopperRefHandle,
+} from '@fluentui/react-positioning';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -381,6 +387,73 @@ const DisableTether = () => {
   );
 };
 
+const VirtualElement = () => {
+  const [target, setTarget] = React.useState<HTMLButtonElement | null>(null);
+
+  const { containerRef, targetRef } = usePopper({
+    position: 'below',
+    align: 'end',
+  });
+
+  React.useEffect(() => {
+    if (target) {
+      const virtualElement: PopperVirtualElement = {
+        getBoundingClientRect: () => target.getBoundingClientRect(),
+      };
+
+      targetRef.current = virtualElement;
+    }
+  }, [target, targetRef]);
+
+  return (
+    <>
+      <button ref={setTarget}>Target</button>
+      <Box ref={containerRef}>Anchored using virtual element</Box>
+    </>
+  );
+};
+
+const TargetProp = () => {
+  const [target, setTarget] = React.useState<HTMLButtonElement | null>(null);
+
+  const { containerRef } = usePopper({
+    target,
+    position: 'below',
+    align: 'end',
+  });
+
+  return (
+    <>
+      <button ref={setTarget}>Target</button>
+      <Box ref={containerRef}>Anchored using virtual element</Box>
+    </>
+  );
+};
+
+const ImperativeTarget = () => {
+  const popperRef = React.useRef<PopperRefHandle>({ updatePosition: () => null, setTarget: () => null });
+  const ref = React.useRef<HTMLButtonElement>(null);
+
+  const { containerRef } = usePopper({
+    popperRef,
+    position: 'below',
+    align: 'end',
+  });
+
+  React.useEffect(() => {
+    if (ref.current) {
+      popperRef.current.setTarget(ref.current);
+    }
+  }, []);
+
+  return (
+    <>
+      <button ref={ref}>Target</button>
+      <Box ref={containerRef}>Anchored using virtual element</Box>
+    </>
+  );
+};
+
 storiesOf('Positioning', module)
   .addDecorator(story => (
     <div
@@ -408,4 +481,7 @@ storiesOf('Positioning', module)
   .addStory('auto size', () => <AutoSize />)
   .addStory('disable tether', () => <DisableTether />)
   .addStory('position fixed', () => <PositionAndAlignProps positionFixed />, { includeRtl: true })
+  .addStory('virtual element', () => <VirtualElement />)
+  .addStory('target property', () => <TargetProp />)
+  .addStory('imperative target', () => <ImperativeTarget />)
   .addStory('arrow', () => <Arrow />, { includeRtl: true });
