@@ -11,7 +11,8 @@
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
         "cacheableOperations": ["build", "test", "lint", "package", "prepare"],
-        "parallel": 1
+        "parallel": 1,
+        "useDaemonProcess": false
       }
     }
   },

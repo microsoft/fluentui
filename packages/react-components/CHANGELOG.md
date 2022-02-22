@@ -1,8 +1,95 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 10 Feb 2022 08:50:26 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Feb 2022 13:35:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.3)
+
+Fri, 18 Feb 2022 13:35:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.1..@fluentui/react-components_v9.0.0-rc.3)
+
+### Changes
+
+- `@fluentui/react-avatar`
+  - Hide Avatar's image if it fails to load, rather than displaying the broken image icon ([PR #21636](https://github.com/microsoft/fluentui/pull/21636) by behowell@microsoft.com)
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+  - Update Avatar SPEC.md and MIGRATION.md ([PR #21702](https://github.com/microsoft/fluentui/pull/21702) by behowell@microsoft.com)
+- `@fluentui/react-badge`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-button`
+  - SplitButton: Fixing issue where menuIcon prop was not being respected. ([PR #21683](https://github.com/microsoft/fluentui/pull/21683) by Humberto.Morimoto@microsoft.com)
+  - Button: Updating stories to fix a11y issues. ([PR #21679](https://github.com/microsoft/fluentui/pull/21679) by Humberto.Morimoto@microsoft.com)
+  - SplitButton: Fixing screen reader access issues. ([PR #21703](https://github.com/microsoft/fluentui/pull/21703) by Humberto.Morimoto@microsoft.com)
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+  - Button: Adding tests and fixing issues in SplitButton and ToggleButton. ([PR #21719](https://github.com/microsoft/fluentui/pull/21719) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-card`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+  - Add new appearance property to allow for different card styles ([PR #21264](https://github.com/microsoft/fluentui/pull/21264) by 39736248+andrefcdias@users.noreply.github.com)
+  - fix: top padding issues with CardPreview ([PR #21685](https://github.com/microsoft/fluentui/pull/21685) by 39736248+andrefcdias@users.noreply.github.com)
+- `@fluentui/react-checkbox`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-components`
+  - Moved react-tabs to unstable ([PR #21763](https://github.com/microsoft/fluentui/pull/21763) by gcox@microsoft.com)
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-conformance-griffel`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-context-selector`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-divider`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-image`
+  - fix: Add react-theme as dependency to react-image ([PR #21787](https://github.com/microsoft/fluentui/pull/21787) by lingfangao@hotmail.com)
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-input`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-label`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-link`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-menu`
+  - fix: MenuItem is a submenu trigger if it is wrapped by a MenuTrigger and in a submenu ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by lingfangao@hotmail.com)
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-portal`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-provider`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-shared-contexts`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-slider`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-switch`
+  - fix visual display of controlled switches ([PR #21704](https://github.com/microsoft/fluentui/pull/21704) by mgodbolt@microsoft.com)
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-tabs`
+  - chore: Force bump all v9 packages to release correct source maps ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+  - Publish initial version ([PR #21763](https://github.com/microsoft/fluentui/pull/21763) by gcox@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-text`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-theme`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-tooltip`
+  - Update documentation comments ([PR #21736](https://github.com/microsoft/fluentui/pull/21736) by behowell@microsoft.com)
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+  - update trigger implementation to be consistent ([PR #21626](https://github.com/microsoft/fluentui/pull/21626) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/keyboard-keys`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- `@fluentui/react-accordion`
+  - Updates initial open items value to be empty on every case ([PR #21728](https://github.com/microsoft/fluentui/pull/21728) by bsunderhus@microsoft.com)
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+  - Breaking change: navigable becomes navigation ([PR #21729](https://github.com/microsoft/fluentui/pull/21729) by bsunderhus@microsoft.com)
+- `@fluentui/react-aria`
+  - fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+  - Fixing issue in useAriaButton where passing disabledFocusable=false caused aria-disabled to be set to false and appear in DOM instead of just be undefined for that element. ([PR #21703](https://github.com/microsoft/fluentui/pull/21703) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.1)
 

@@ -2,6 +2,7 @@ import { Card, CardFooter, CardHeader, CardPreview } from './index';
 import descriptionMd from './CardDescription.md';
 
 export { Default } from './stories/CardDefault.stories';
+export { AppearanceCard } from './stories/CardAppearance.stories';
 export { ActionCard } from './stories/CardAction.stories';
 export { GridCard } from './stories/CardGrid.stories';
 

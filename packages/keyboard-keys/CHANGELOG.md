@@ -1,8 +1,17 @@
 # Change Log - @fluentui/keyboard-keys
 
-This log was last generated on Thu, 10 Feb 2022 08:52:11 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Feb 2022 13:35:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0-rc.3)
+
+Fri, 18 Feb 2022 13:35:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.0-rc.1..@fluentui/keyboard-keys_v9.0.0-rc.3)
+
+### Changes
+
+- fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0-rc.1)
 
