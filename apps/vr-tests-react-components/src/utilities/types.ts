@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryApi, StoryName, LegacyStoryFn } from '@storybook/addons';
+import { StoryApi, StoryName, StoryFn, Parameters } from '@storybook/addons';
 
 /** Extra parameters provided by our addon (see `.storybook/preview.js`) */
 export interface AddStoryConfig {
@@ -13,10 +13,10 @@ export interface AddStoryConfig {
 
 export type ExtendedStoryFnReturnType = React.ReactElement<unknown>;
 
-export type ExtendedStoryFn = LegacyStoryFn<ExtendedStoryFnReturnType>;
+export type ExtendedStoryFn = StoryFn<ExtendedStoryFnReturnType>;
 
 export interface ExtendedStoryApi extends StoryApi<ExtendedStoryFnReturnType> {
   addStory: (storyName: StoryName, storyFn: ExtendedStoryFn, config?: AddStoryConfig) => ExtendedStoryApi;
 
-  add: (storyName: StoryName, storyFn: ExtendedStoryFn) => ExtendedStoryApi;
+  add: (storyName: StoryName, storyFn: ExtendedStoryFn, parameters?: Parameters | undefined) => ExtendedStoryApi;
 }
