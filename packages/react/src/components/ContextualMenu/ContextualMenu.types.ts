@@ -235,6 +235,12 @@ export interface IContextualMenuProps
   onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
 
   /**
+   * Method to wrap menu items. Gives the ability to wrap a custom
+   * tooltip to each menu item button.
+   */
+  onRenderContextualMenuItem?: IRenderFunction<IContextualMenuItem>;
+
+  /**
    * Delay (in milliseconds) to wait before expanding / dismissing a submenu on mouseEnter or mouseLeave
    */
   subMenuHoverDelay?: number;

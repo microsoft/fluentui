@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 21 Feb 2022 07:30:14 GMT",
+      "tag": "@fluentui/react-charting_v5.7.17",
+      "version": "5.7.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6faffd280a37636c7917752693b7bf627caec32d",
+            "comment": "Fix visualization UI bugs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Feb 2022 07:22:08 GMT",
       "tag": "@fluentui/react-charting_v5.7.16",
       "version": "5.7.16",

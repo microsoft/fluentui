@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioGroup renders a default state 1`] = `
+<div>
+  <span
+    class="fui-RadioGroup"
+  >
+    Default RadioGroup
+  </span>
+</div>
+`;
