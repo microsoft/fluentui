@@ -1,4 +1,4 @@
-import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
 
 /**
@@ -12,4 +12,4 @@ export type ToolbarButtonProps = ComponentProps<ButtonSlots> &
 /**
  * State used in rendering ToolbarButton
  */
-export type ToolbarButtonState = ButtonState;
+export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> & ButtonState;
