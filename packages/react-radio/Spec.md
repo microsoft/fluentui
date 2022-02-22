@@ -1,7 +1,7 @@
 # @fluentui/react-radio Spec
 
-The Radio component lets people select a single value from two or more options.
-Use the Radio component to represent two or more available choices, preferably up to 7 options.
+The RadioGroup component lets people select a single value from two or more options.
+Use the RadioGroup component to represent two or more available choices, preferably up to 7 options.
 
 ## Background
 
@@ -50,11 +50,11 @@ It uses the option's `value` property as the input value and holds the currently
 />
 ```
 
-## Radio Component vNext
+## Radio
 
 ### Variants
 
-The variants of the Radio component include visual styles and behaviour. The Radio component is expected to have the option of adding input or dorpdown component as a radio item (represented in the `Vertical with dropdown` and `Vertical with input` sections).
+The variants of the Radio component include visual styles and behaviour. The Radio component is expected to have the option of adding input or dropdown component as a radio item (represented in the `Vertical with dropdown` and `Vertical with input` sections).
 
 ### Horizonal
 
@@ -92,16 +92,16 @@ Additional text under the label of Radio items.
 
 ![Vertical group with subtext](./etc/images/vertical-group-with-subtext.png)
 
-## Proposed API
+## API
 
 ### Components
 
-| Component | Purpose                                                                   |
-| --------- | ------------------------------------------------------------------------- |
-| Radio     | Wraps radio inputs. Provides API for control group (fieldset and legend). |
-| RadioItem | Represents a single radio item (input and label).                         |
+| Component  | Purpose                                                                   |
+| ---------- | ------------------------------------------------------------------------- |
+| RadioGroup | Wraps radio inputs. Provides API for control group (fieldset and legend). |
+| Radio      | Represents a single radio item (input and label).                         |
 
-### Radio
+### RadioGroup
 
 | Prop           | Type                         | Default value | Purpose                                                      |
 | -------------- | ---------------------------- | ------------- | ------------------------------------------------------------ |
@@ -116,9 +116,9 @@ Additional text under the label of Radio items.
 - `horizontal`: The radio inputs are rendered horizontally, referring to the `Horizontal Group` variant.
 - `vertical`: The radio inputs are rendered vertically, referring to the `Vertical Group` variant.
 
-### RadioItem
+### Radio
 
-Link to [RadioItem.types.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-radio/src/components/RadioItem/RadioItem.types.ts)
+Link to [Radio.types.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-radio/src/components/Radio/Radio.types.ts)
 
 | Prop                              | Type               | Purpose                                                  |
 | --------------------------------- | ------------------ | -------------------------------------------------------- |
@@ -129,7 +129,7 @@ Link to [RadioItem.types.ts](https://github.com/microsoft/fluentui/blob/master/p
 | disabled (input)                  | `boolean`          | Whether the input is disabled or not.                    |
 | subtext (label)                   | `string`           | Text shown as subtext to label                           |
 
-`subtext` property referrs to the `Radio with subtext` variant.
+`subtext` property refers to the `Radio with subtext` variant.
 
 ### Sample Code
 
@@ -140,17 +140,17 @@ const iceCreams = [
   'Mango',
 ]
 
-<Radio label="Which ice cream would you like?" name="ice-cream">
+<RadioGroup label="Which ice cream would you like?" name="ice-cream">
   {iceCreams.map(
     iceCream => (
-      <RadioItem
+      <Radio
         key={iceCream}
         id={`ic-${iceCream}`}
         label={iceCream}
       />
     )
   )}
-</Radio>
+</RadioGroup>
 ```
 
 ## Structure
@@ -158,27 +158,27 @@ const iceCreams = [
 ### Expected DOM structure
 
 ```html
-<fieldset>
+<fieldset class="fui-RadioGroup">
   <legend>Which ice cream would you like?</legend>
-  <span class="fui-RadioItem">
+  <span class="fui-Radio">
     <div>
-      <div class="fui-RadioItem-indicator"></div>
+      <div class="fui-Radio-indicator"></div>
       <input type="radio" id="ic-Mango" name="ice-cream" />
     </div>
     <label for="ic-Mango" class="fui-Label">Mango</label>
   </span>
 
-  <span class="fui-RadioItem">
+  <span class="fui-Radio">
     <div>
-      <div class="fui-RadioItem-indicator"></div>
+      <div class="fui-Radio-indicator"></div>
       <input type="radio" id="ic-Strawberry" name="ice-cream" />
     </div>
     <label for="ic-Strawberry" class="fui-Label">Strawberry</label>
   </span>
 
-  <span class="fui-RadioItem">
+  <span class="fui-Radio">
     <div>
-      <div class="fui-RadioItem-indicator"></div>
+      <div class="fui-Radio-indicator"></div>
       <input type="radio" id="ic-Chocolate" name="ice-cream" />
     </div>
     <label for="ic-Chocolate" class="fui-Label">Chocolate</label>
@@ -198,7 +198,7 @@ const iceCreams = [
 
 ## Accessibility
 
-The Radio component will use the `<fieldset>` native element to provide the default accessibility behaviour of role group. This element requires `<legend>` element to be the main label for the Radio group.
+The RadioGroup component will use the `<fieldset>` native element to provide the default accessibility behaviour of role group. This element requires `<legend>` element to be the main label for the RadioGroup group.
 This implementation based on the [Grouping Controls](https://www.w3.org/WAI/tutorials/forms/grouping/) examples of Web Accessibility Tutorials (that follow WCAG).
 
 The Radio items are wrapped in `<span>` element that includes the wrapper of the `<input role="radio">` element and the `<label>` element.
@@ -210,7 +210,7 @@ TBD: Link to Migration guide
 
 ### Keyboard Navigation based on [ARIA Practices](https://www.w3.org/TR/wai-aria-practices-1.2/#radiobutton):
 
-- `Tab` moves the focus in and out of Radio group (the fieldset).
+- `Tab` moves the focus in and out of RadioGroup (the fieldset).
 - `Enter` or `space` selects the Radio item.
 - `Up` and `down` arrow keys move the focus to the next and previous Radio item.
 

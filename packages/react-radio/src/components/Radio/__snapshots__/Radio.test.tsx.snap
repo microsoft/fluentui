@@ -5,7 +5,22 @@ exports[`Radio renders a default state 1`] = `
   <span
     class="fui-Radio"
   >
-    Default Radio
+    <div
+      class=""
+    >
+      <div
+        class="fui-Radio-indicator"
+      />
+      <input
+        class=""
+        id="radio-item-8"
+        type="radio"
+      />
+    </div>
+    <label
+      class="fui-Label"
+      for="radio-item-8"
+    />
   </span>
 </div>
 `;
