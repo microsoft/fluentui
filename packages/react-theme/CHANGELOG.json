@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Fri, 18 Feb 2022 13:35:36 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Feb 2022 08:51:02 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-rc.1",
       "version": "9.0.0-rc.1",

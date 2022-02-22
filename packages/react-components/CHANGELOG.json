@@ -2,6 +2,323 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 18 Feb 2022 13:35:27 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "36b34c86e38b362cfda7deb3840f6fac2a860931",
+            "comment": "Hide Avatar's image if it fails to load, rather than displaying the broken image icon"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "d80c90385389e1e4eee52400dd7cf4b4dbe067fd",
+            "comment": "Update Avatar SPEC.md and MIGRATION.md"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "0b7d30b6ecb6f20d2ac4d4edbfb327a8f8f915a0",
+            "comment": "SplitButton: Fixing issue where menuIcon prop was not being respected."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "d45ba4664643f36cce5674b1d05645feae0e09a5",
+            "comment": "Button: Updating stories to fix a11y issues."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "ca590a438b12b85d32fdf8b592ada3b0e7b2314c",
+            "comment": "SplitButton: Fixing screen reader access issues."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "c7718355f464d9d3e7ec4c0ef0f39dac3d196014",
+            "comment": "Button: Adding tests and fixing issues in SplitButton and ToggleButton."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "6f39f6ae5bd33c8aa46dbb5cc1e46eded1fc2967",
+            "comment": "Add new appearance property to allow for different card styles"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "4a28b5a69d0e6cf53c19c5e93bc93465f9b8a132",
+            "comment": "fix: top padding issues with CardPreview"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "7fcfaee82e4ed789e9e5b1516439563e2c4f165f",
+            "comment": "Moved react-tabs to unstable"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "d579bbbbb8bd1457e14b03eda2bc638d89f92d56",
+            "comment": "fix: Add react-theme as dependency to react-image"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504",
+            "comment": "fix: MenuItem is a submenu trigger if it is wrapped by a MenuTrigger and in a submenu"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "2c9804dd585c1b485736c34321264dc62abe6fe1",
+            "comment": "fix visual display of controlled switches"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "chore: Force bump all v9 packages to release correct source maps"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "7fcfaee82e4ed789e9e5b1516439563e2c4f165f",
+            "comment": "Publish initial version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "50ae56ec346d762d66b3d74ed1127943ffda344f",
+            "comment": "Update documentation comments"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "2bf88fea066244bc078912bb6e45edb960f3b866",
+            "comment": "update trigger implementation to be consistent"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "5a45a787f2669a9f694a274b220823dbc10b04e2",
+            "comment": "Updates initial open items value to be empty on every case"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "ea090f75ef4a477f6ea9ffa2b4d7bec826a99b5f",
+            "comment": "Breaking change: navigable becomes navigation"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "ca590a438b12b85d32fdf8b592ada3b0e7b2314c",
+            "comment": "Fixing issue in useAriaButton where passing disabledFocusable=false caused aria-disabled to be set to false and appear in DOM instead of just be undefined for that element."
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "5474a67b34dc25bc3bc2b143e52b6bc6fa77d36b",
+            "comment": "docs: notes on migration to `@fluentui/react-components@9.0.0-rc.1`"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "3068d4518c5e599c60a216455eac40531d896162",
+            "comment": "Updates spec and story to add warning about heading level"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Feb 2022 08:50:26 GMT",
       "tag": "@fluentui/react-components_v9.0.0-rc.1",
       "version": "9.0.0-rc.1",

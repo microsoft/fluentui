@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 17 Feb 2022 07:28:31 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Feb 2022 07:30:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.7.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.7.17)
+
+Mon, 21 Feb 2022 07:30:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.7.16..@fluentui/react-charting_v5.7.17)
+
+### Patches
+
+- Fix visualization UI bugs ([PR #21773](https://github.com/microsoft/fluentui/pull/21773) by atishay.jain@microsoft.com)
+
+## [5.7.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.7.16)
+
+Fri, 18 Feb 2022 07:22:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.7.15..@fluentui/react-charting_v5.7.16)
+
+### Patches
+
+- Fix unable to hover on chart callout. ([PR #21750](https://github.com/microsoft/fluentui/pull/21750) by email not defined)
 
 ## [5.7.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.7.15)
 

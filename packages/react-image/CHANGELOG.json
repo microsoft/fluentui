@@ -2,6 +2,45 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Fri, 18 Feb 2022 13:35:32 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "d579bbbbb8bd1457e14b03eda2bc638d89f92d56",
+            "comment": "fix: Add react-theme as dependency to react-image"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Feb 2022 08:51:14 GMT",
       "tag": "@fluentui/react-image_v9.0.0-rc.1",
       "version": "9.0.0-rc.1",

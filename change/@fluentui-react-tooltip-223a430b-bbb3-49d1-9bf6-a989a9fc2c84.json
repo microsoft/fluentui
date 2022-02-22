@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update documentation comments",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

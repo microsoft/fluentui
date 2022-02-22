@@ -32,8 +32,8 @@
     "react": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-provider": "9.0.0-rc.2",
-    "@fluentui/react-theme": "9.0.0-rc.2",
+    "@fluentui/react-provider": "9.0.0-rc.3",
+    "@fluentui/react-theme": "9.0.0-rc.3",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
