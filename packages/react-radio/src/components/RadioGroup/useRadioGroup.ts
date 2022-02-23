@@ -17,9 +17,9 @@ export const useRadioGroup_unstable = (
   props: RadioGroupProps,
   ref: React.Ref<HTMLFieldSetElement>,
 ): RadioGroupState => {
-  const { name, layout = 'vertical', disabled, required } = props;
-
   const baseId = useId('radiogroup-');
+
+  const { name = baseId, layout = 'vertical', disabled, required } = props;
 
   const label = resolveShorthand(props.label, {
     defaultProps: {
