@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
+import { Label } from '@fluentui/react-label';
+import { RadioContextValue } from '../../contexts/RadioContext';
 
 /**
  * Create the state required to render RadioGroup.
@@ -11,13 +13,41 @@ import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
  * @param props - props from this instance of RadioGroup
  * @param ref - reference to root HTMLElement of RadioGroup
  */
-export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HTMLElement>): RadioGroupState => {
-  const state: RadioGroupState = {
-    components: {
-      root: 'span',
-    },
-    root: getNativeElementProps('span', { ref, ...props }),
-  };
+export const useRadioGroup_unstable = (
+  props: RadioGroupProps,
+  ref: React.Ref<HTMLFieldSetElement>,
+): RadioGroupState => {
+  const { name, layout = 'vertical', disabled, required } = props;
 
-  return state;
+  const baseId = useId('radiogroup-');
+
+  const label = resolveShorthand(props.label, {
+    defaultProps: {
+      id: baseId + '__label',
+      disabled,
+      required,
+    },
+  });
+
+  const root = getNativeElementProps('fieldset', {
+    ref,
+    role: 'radiogroup',
+    'aria-labelledby': label?.id,
+    ...props,
+  });
+
+  const labelPosition = layout === 'horizontalStacked' ? 'below' : 'after';
+  const context = React.useMemo<RadioContextValue>(() => ({ name, labelPosition }), [name, labelPosition]);
+
+  return {
+    layout,
+    required,
+    context,
+    components: {
+      root: 'fieldset',
+      label: Label,
+    },
+    root,
+    label,
+  };
 };

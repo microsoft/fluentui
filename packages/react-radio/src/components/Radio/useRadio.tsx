@@ -3,6 +3,7 @@ import { Label } from '@fluentui/react-label';
 import { getPartitionedNativeProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { CircleFilled } from '@fluentui/react-icons';
 import type { RadioProps, RadioState } from './Radio.types';
+import { RadioContext } from '../../contexts/RadioContext';
 
 /**
  * Create the state required to render Radio.
@@ -14,7 +15,16 @@ import type { RadioProps, RadioState } from './Radio.types';
  * @param ref - reference to `<input>` element of Radio
  */
 export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputElement>): RadioState => {
-  const { checked, defaultChecked, disabled, required, size = 'medium', labelPosition = 'after' } = props;
+  const context = React.useContext(RadioContext);
+
+  const {
+    checked,
+    defaultChecked,
+    disabled,
+    required,
+    size = 'medium',
+    labelPosition = context?.labelPosition || 'after',
+  } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,
@@ -30,9 +40,10 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
   const input = resolveShorthand(props.input, {
     required: true,
     defaultProps: {
+      ref,
       type: 'radio',
       id: useId('radio-', nativeProps.primary.id),
-      ref,
+      name: context?.name,
       checked,
       defaultChecked,
       ...nativeProps.primary,
@@ -40,7 +51,6 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
   });
 
   const label = resolveShorthand(props.label, {
-    required: false,
     defaultProps: {
       htmlFor: input.id,
       disabled,

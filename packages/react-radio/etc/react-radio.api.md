@@ -17,6 +17,15 @@ export const Radio: ForwardRefComponent<RadioProps>;
 // @public (undocumented)
 export const radioClassName = "fui-Radio";
 
+// @public (undocumented)
+export const RadioContext: React_2.Context<RadioContextValue | undefined>;
+
+// @public (undocumented)
+export type RadioContextValue = {
+    name: string | undefined;
+    labelPosition: 'after' | 'below';
+};
+
 // @public
 export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
 
@@ -24,15 +33,21 @@ export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
 export const radioGroupClassName = "fui-RadioGroup";
 
 // @public
-export type RadioGroupProps = ComponentProps<RadioGroupSlots>;
+export type RadioGroupProps = ComponentProps<Partial<RadioGroupSlots>> & {
+    layout?: 'vertical' | 'horizontal' | 'horizontalStacked';
+    required?: boolean;
+};
 
 // @public (undocumented)
 export type RadioGroupSlots = {
-    root: Slot<'span'>;
+    root: Slot<'fieldset'>;
+    label: Slot<typeof Label>;
 };
 
 // @public
-export type RadioGroupState = ComponentState<RadioGroupSlots>;
+export type RadioGroupState = ComponentState<RadioGroupSlots> & Pick<RadioGroupProps, 'layout' | 'required'> & {
+    context: RadioContextValue;
+};
 
 // @public
 export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'size'> & {
@@ -60,8 +75,11 @@ export const renderRadioGroup_unstable: (state: RadioGroupState) => JSX.Element;
 // @public
 export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;
 
+// @public (undocumented)
+export const useRadioContext: () => RadioContextValue | undefined;
+
 // @public
-export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<HTMLElement>) => RadioGroupState;
+export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<HTMLFieldSetElement>) => RadioGroupState;
 
 // @public
 export const useRadioGroupStyles_unstable: (state: RadioGroupState) => RadioGroupState;
