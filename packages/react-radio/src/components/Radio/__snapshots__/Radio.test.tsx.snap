@@ -5,22 +5,35 @@ exports[`Radio renders a default state 1`] = `
   <span
     class="fui-Radio"
   >
-    <div
+    <input
       class=""
+      id="radio-9"
+      type="radio"
+    />
+    <div
+      aria-hidden="true"
+      class="fui-Radio__indicator"
     >
-      <div
-        class="fui-Radio-indicator"
-      />
-      <input
+      <svg
+        aria-hidden="true"
         class=""
-        id="radio-item-8"
-        type="radio"
-      />
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10 2a8 8 0 100 16 8 8 0 000-16z"
+        />
+      </svg>
     </div>
     <label
-      class="fui-Label"
-      for="radio-item-8"
-    />
+      class="fui-Label fui-Radio__label"
+      for="radio-9"
+    >
+      Default Radio
+    </label>
   </span>
 </div>
 `;
