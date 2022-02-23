@@ -3,7 +3,7 @@ import { IMarkdownHeaderStyleProps } from './MarkdownHeader';
 import { IMarkdownParagraphStyleProps } from './MarkdownParagraph';
 import { IMarkdownCodeStyleProps } from './MarkdownCode';
 import { IMarkdownTableStyleProps } from '../MarkdownTable/index';
-import { MarkdownOptions } from 'markdown-to-jsx';
+import { MarkdownToJSX } from 'markdown-to-jsx';
 
 export interface IMarkdownProps {
   className?: string;
@@ -15,7 +15,7 @@ export interface IMarkdownProps {
   enableRenderHtmlBlock?: boolean;
 
   /** Additional component overrides for markdown rendering */
-  overrides?: MarkdownOptions['overrides'];
+  overrides?: MarkdownToJSX.Options;
 
   /** Theme provided by higher-order component. */
   theme?: ITheme;
