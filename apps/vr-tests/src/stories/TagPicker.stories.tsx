@@ -33,6 +33,7 @@ storiesOf('TagPicker', module)
   .addStory('TagPicker disabled', () => <TagPicker onResolveSuggestions={getList} disabled />);
 
 storiesOf('TagPicker', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -82,6 +83,7 @@ storiesOf('TagPicker', module)
   );
 
 storiesOf('TagPicker', module)
+  .addDecorator(TestWrapperDecorator)
   // FIXME: SB6 duplicates same story ID decorators
   // This is a temporary fix until we migrate to CSF format duplication problem
   // - previously this used TestWrapperDecoratorFixedWidth

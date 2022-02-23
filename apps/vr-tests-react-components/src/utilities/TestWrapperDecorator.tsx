@@ -81,7 +81,7 @@ export function modifyDeprecatedDecoratorStyles(options: {
             return;
           }
           const testWrapperNode = el.querySelector('.testWrapper') as HTMLDivElement;
-          testWrapperNode.style.width = mapper[mode];
+          testWrapperNode && (testWrapperNode.style.width = mapper[mode]);
         }}
       >
         {story()}

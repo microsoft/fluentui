@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryApi, StoryName, StoryFn, Parameters } from '@storybook/addons';
+import { StoryApi, StoryName, StoryFn, ClientApiReturnFn } from '@storybook/addons';
 
 /** Extra parameters provided by our addon (see `.storybook/preview.js`) */
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -24,9 +24,5 @@ export interface ExtendedStoryApi extends StoryApi<ExtendedStoryFnReturnType> {
     config?: AddStoryConfig,
   ) => ExtendedStoryApi;
 
-  add: (
-    storyName: StoryName,
-    storyFn: ExtendedStoryFn,
-    parameters?: Parameters | undefined,
-  ) => ExtendedStoryApi;
+  add: ClientApiReturnFn<ExtendedStoryFnReturnType>;
 }

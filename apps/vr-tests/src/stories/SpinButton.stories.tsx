@@ -70,6 +70,7 @@ storiesOf('SpinButton', module)
 
 // The stories for label placement are separate since they don't need to include hover/click states
 storiesOf('SpinButton', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   // FIXME: SB6 duplicates same story ID decorators
   // This is a temporary fix until we migrate to CSF format duplication problem
   // previously this used TestWrapperDecorator
