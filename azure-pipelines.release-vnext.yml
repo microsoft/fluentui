@@ -80,6 +80,11 @@ steps:
       artifactName: SBom-$(System.JobAttempt)
       targetPath: $(System.DefaultWorkingDirectory)/_manifest
 
+  # Since releases are scoped, this should warn for any packages that were mistakenly not included in scoping
+  - script: |
+      yarn syncpack:list
+    displayName: Check for dependency mismatches
+
   # TODO update release notes script for v9
   # - script: |
   #     node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
