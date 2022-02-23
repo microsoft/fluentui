@@ -21,7 +21,7 @@ type LabelCommons = {
 };
 
 export type LabelSlots = {
-  root: Slot<'label'>;
+  root: Slot<'label', 'span' | 'legend'>;
   required?: Slot<'span'>;
 };
 
@@ -33,7 +33,7 @@ export type LabelState = ComponentState<LabelSlots> & LabelCommons;
 /**
  * Label Props
  */
-export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
+export type LabelProps = ComponentProps<Omit<LabelSlots, 'required'>> &
   Partial<LabelCommons> & {
     /**
      * Displays and indicator that the label is for a required field. The required prop can be set to true to display

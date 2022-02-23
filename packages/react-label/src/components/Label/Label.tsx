@@ -8,11 +8,11 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 /**
  * A label component provides a title or name to a component.
  */
-export const Label: ForwardRefComponent<LabelProps> = React.forwardRef((props, ref) => {
+export const Label = React.forwardRef((props, ref) => {
   const state = useLabel_unstable(props, ref);
 
   useLabelStyles_unstable(state);
   return renderLabel_unstable(state);
-});
+}) as ForwardRefComponent<LabelProps>;
 
 Label.displayName = 'Label';

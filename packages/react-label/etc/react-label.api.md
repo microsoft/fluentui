@@ -6,12 +6,11 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
 // @public
-export const Label: ForwardRefComponent<LabelProps>;
+export const Label: React_2.ForwardRefExoticComponent<LabelProps & React_2.RefAttributes<HTMLSpanElement>>;
 
 // @public (undocumented)
 export const labelClassName = "fui-Label";
@@ -19,13 +18,13 @@ export const labelClassName = "fui-Label";
 // Warning: (ae-forgotten-export) The symbol "LabelCommons" needs to be exported by the entry point index.d.ts
 //
 // @public
-export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommons> & {
+export type LabelProps = ComponentProps<Omit<LabelSlots, 'required'>> & Partial<LabelCommons> & {
     required?: boolean | Slot<'span'>;
 };
 
 // @public (undocumented)
 export type LabelSlots = {
-    root: Slot<'label'>;
+    root: Slot<'label', 'span' | 'legend'>;
     required?: Slot<'span'>;
 };
 
