@@ -52,7 +52,7 @@ export type RadioGroupState = ComponentState<RadioGroupSlots> & Pick<RadioGroupP
 // @public
 export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'size'> & {
     size?: 'medium' | 'large';
-    labelPosition?: 'before' | 'after' | 'below';
+    labelPosition?: 'after' | 'below';
 };
 
 // @public (undocumented)

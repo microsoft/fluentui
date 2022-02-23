@@ -45,7 +45,7 @@ export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'siz
    *
    * @defaultvalue after
    */
-  labelPosition?: 'before' | 'after' | 'below';
+  labelPosition?: 'after' | 'below';
 };
 
 /**

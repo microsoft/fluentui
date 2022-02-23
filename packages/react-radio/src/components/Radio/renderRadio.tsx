@@ -11,9 +11,8 @@ export const renderRadio_unstable = (state: RadioState) => {
   return (
     <slots.root {...slotProps.root}>
       <slots.input {...slotProps.input} />
-      {slots.label && state.labelPosition === 'before' && <slots.label {...slotProps.label} />}
       {slots.indicator && <slots.indicator {...slotProps.indicator} />}
-      {slots.label && state.labelPosition !== 'before' && <slots.label {...slotProps.label} />}
+      {slots.label && <slots.label {...slotProps.label} />}
     </slots.root>
   );
 };
