@@ -31,6 +31,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLElement>
   const inputShorthand = resolveShorthand(props.input, {
     required: true,
     defaultProps: {
+      id: useId('radio-item-', id),
       disabled: props.disabled ?? false,
       type: 'radio',
       required: props.required ?? false,
@@ -71,14 +72,14 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLElement>
     }),
     label: resolveShorthand(props.label, {
       required: true,
+      defaultProps: {
+        htmlFor: inputShorthand.id,
+      },
     }),
     subtext: resolveShorthand(props.subtext, {
       required: false,
     }),
   };
-
-  state.input.id = useId('radio-item-', id);
-  state.label.htmlFor = state.input.id;
 
   return state;
 };
