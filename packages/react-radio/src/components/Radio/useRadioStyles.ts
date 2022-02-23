@@ -170,7 +170,7 @@ const useLabelStyles = makeStyles({
 /**
  * Apply styling to the Radio slots based on the state
  */
-export const useRadioStyles_unstable = (state: RadioState): RadioState => {
+export const useRadioStyles_unstable = (state: RadioState) => {
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
     radioClassName,
@@ -202,6 +202,4 @@ export const useRadioStyles_unstable = (state: RadioState): RadioState => {
       state.label.className,
     );
   }
-
-  return state;
 };

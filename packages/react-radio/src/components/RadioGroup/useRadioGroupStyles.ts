@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the RadioGroup slots based on the state
  */
-export const useRadioGroupStyles_unstable = (state: RadioGroupState): RadioGroupState => {
+export const useRadioGroupStyles_unstable = (state: RadioGroupState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     radioGroupClassName,
@@ -44,6 +44,4 @@ export const useRadioGroupStyles_unstable = (state: RadioGroupState): RadioGroup
   if (state.label) {
     state.label.className = mergeClasses(labelClassName, styles.label, state.label.className);
   }
-
-  return state;
 };

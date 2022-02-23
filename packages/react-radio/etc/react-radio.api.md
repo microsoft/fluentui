@@ -17,14 +17,11 @@ export const Radio: ForwardRefComponent<RadioProps>;
 // @public (undocumented)
 export const radioClassName = "fui-Radio";
 
-// @public (undocumented)
-export const RadioContext: React_2.Context<RadioContextValue | undefined>;
+// @public
+export const RadioContext: React_2.Context<RadioContextValue>;
 
 // @public (undocumented)
-export type RadioContextValue = {
-    name: string | undefined;
-    labelPosition: 'after' | 'below';
-};
+export type RadioContextValue = Pick<RadioProps, 'name' | 'labelPosition'>;
 
 // @public
 export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
@@ -75,17 +72,14 @@ export const renderRadioGroup_unstable: (state: RadioGroupState) => JSX.Element;
 // @public
 export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;
 
-// @public (undocumented)
-export const useRadioContext: () => RadioContextValue | undefined;
-
 // @public
 export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<HTMLFieldSetElement>) => RadioGroupState;
 
 // @public
-export const useRadioGroupStyles_unstable: (state: RadioGroupState) => RadioGroupState;
+export const useRadioGroupStyles_unstable: (state: RadioGroupState) => void;
 
 // @public
-export const useRadioStyles_unstable: (state: RadioState) => RadioState;
+export const useRadioStyles_unstable: (state: RadioState) => void;
 
 // (No @packageDocumentation comment for this package)
 
