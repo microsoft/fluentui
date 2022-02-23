@@ -21,7 +21,7 @@ import { postprocessTask } from './tasks/postprocess';
 import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
-import { getAffectedPackages, isConvergedPackage } from './monorepo/index';
+import { isConvergedPackage } from './monorepo/index';
 import { getJustArgv } from './tasks/argv';
 
 /** Do only the bare minimum setup of options and resolve paths */
@@ -125,18 +125,6 @@ export function preset() {
   );
 
   task('screener', screener);
-
-  task('check-if-package-affected', () => {
-    const taskArgs = args.packageAffected;
-
-    if (taskArgs) {
-      const packagesAffected: string[] = typeof taskArgs === 'string' ? [taskArgs] : taskArgs;
-      const affected = packagesAffected.some(pkgName => getAffectedPackages().has(pkgName));
-      if (affected) {
-        console.log(`##vso[task.setvariable variable=PackageAffected;]true`);
-      }
-    }
-  });
 }
 
 preset.basic = basicPreset;
