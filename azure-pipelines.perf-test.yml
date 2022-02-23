@@ -21,7 +21,7 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn check-if-packages-affected
+          yarn check-if-v0-v8-v9-affected
         name: PackagesAffected
         displayName: Check if v8 and/or  northstar packages were affected
 
