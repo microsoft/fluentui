@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Allow Label to be a span or legend",
+  "packageName": "@fluentui/react-label",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
