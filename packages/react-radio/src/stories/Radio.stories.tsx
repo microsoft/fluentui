@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Radio } from '../index';
+import { Radio, RadioGroup } from '../index';
 import { Text } from '@fluentui/react-text';
 
 import descriptionMd from './RadioDescription.md';
@@ -20,25 +20,38 @@ export default {
 };
 
 export const RadioVariations = () => (
-  <fieldset style={{ display: 'flex', gap: '14px', flexDirection: 'column', alignItems: 'start' }}>
-    <legend>Hello World</legend>
-    <Radio name="xfoo" label="Unchecked Radio" />
-    <Radio name="xfoo" label="Checked Radio" defaultChecked />
-    <Radio name="xfoo" label="Radio with label positioned before" labelPosition="before" />
-    <Radio name="xfoo" label="Radio with label positioned on the bottom" labelPosition="below" />
-    <Radio name="xfoo" label="Required Radio" required />
-    <Radio name="xfoo" label="Disabled Radio" disabled />
-    <Radio
-      name="xfoo"
-      label={
-        <>
-          <span>Radio with subtext</span>
-          <Text size={200} block>
-            subtext added here
-          </Text>
-        </>
-      }
-    />
-    {/* <Radio label="Disabled Radio with subtext" subtext="subtext added here" disabled /> */}
-  </fieldset>
+  <>
+    <RadioGroup label="Radio Variations" required>
+      <Radio label="Unchecked" />
+      <Radio label="Checked" defaultChecked />
+      <Radio label="Disabled" disabled />
+      <Radio
+        aria-describedby="subtext"
+        label={
+          <>
+            Radio with subtext
+            <Text size={200} block aria-hidden id="subtext">
+              descriptive text
+            </Text>
+          </>
+        }
+      />
+    </RadioGroup>
+  </>
+);
+
+export const HorizontalGroup = () => (
+  <RadioGroup label="Horizontal" layout="horizontal">
+    <Radio label="First" />
+    <Radio label="Second" />
+    <Radio label="Third" />
+  </RadioGroup>
+);
+
+export const HorizontalStackedGroup = () => (
+  <RadioGroup label="Horizontal Stacked" layout="horizontalStacked">
+    <Radio label="One" />
+    <Radio label="Two" />
+    <Radio label="Three" />
+  </RadioGroup>
 );
