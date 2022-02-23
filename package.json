@@ -267,7 +267,9 @@
       "@fluentui/web-components/ts-loader/**",
       "@fluentui/web-components/ts-node",
       "@fluentui/web-components/ts-node/**",
-      "@fluentui/web-components/webpack"
+      "@fluentui/web-components/webpack",
+      "@storybook/addons/@storybook/router/react-router",
+      "@storybook/addons/@storybook/router/react-router-dom"
     ]
   },
   "resolutions": {
