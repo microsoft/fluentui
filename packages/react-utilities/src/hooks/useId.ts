@@ -21,5 +21,11 @@ export function resetIdsForTests(): void {
 export function useId(prefix?: string, providedId?: string): string {
   const contextValue = useSSRContext();
 
-  return React.useMemo(() => providedId || `${prefix}${++contextValue.current}`, [prefix, providedId, contextValue]);
+  return React.useMemo(() => {
+    if (providedId) {
+      return providedId;
+    }
+
+    return prefix ? `${prefix}${++contextValue.current}` : `${++contextValue.current}`;
+  }, [prefix, providedId, contextValue]);
 }
