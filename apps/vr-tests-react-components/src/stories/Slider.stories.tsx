@@ -2,8 +2,10 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Slider } from '@fluentui/react-slider';
+import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 
 storiesOf('Slider Converged', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
