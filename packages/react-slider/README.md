@@ -11,7 +11,7 @@ The Slider component allows users to quickly select a value (or range) by draggi
 To import Slider:
 
 ```js
-import { Slider } from '@fluentui/react-components';
+import { Slider } from '@fluentui/react-components/unstable';
 ```
 
 Or pull directly from slider package to pin to a specific version.
