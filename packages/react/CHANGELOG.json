@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 23 Feb 2022 07:26:36 GMT",
+      "tag": "@fluentui/react_v8.56.0",
+      "version": "8.56.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "c995e10b57ba6ef1b5a6797c62aaac28b6a2db4f",
+            "comment": "ContextualMenu: Add prop that allows users to wrap a custom tooltip around each menu item button."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Feb 2022 07:28:31 GMT",
       "tag": "@fluentui/react_v8.55.3",
       "version": "8.55.3",
