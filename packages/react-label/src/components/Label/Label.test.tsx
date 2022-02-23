@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Label } from './Label';
+import type { LabelProps } from './Label.types';
 import { isConformant } from '../../common/isConformant';
 
 describe('Label', () => {
-  isConformant({
+  isConformant<LabelProps>({
     Component: Label,
     displayName: 'Label',
     requiredProps: { children: "I'm a label." },
