@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator, TestWrapperDecoratorFullWidth } from '../utilities/index';
+import { TestWrapperDecoratorFullWidth } from '../utilities/index';
 import {
   DocumentCard,
   DocumentCardPreview,
@@ -84,7 +84,7 @@ const docActivity = (
 );
 
 storiesOf('DocumentCard', module)
-  .addDecorator(TestWrapperDecorator)
+  .addDecorator(TestWrapperDecoratorFullWidth)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -136,7 +136,6 @@ storiesOf('DocumentCard', module)
   ));
 
 storiesOf('DocumentCard', module)
-  .addDecorator(TestWrapperDecorator)
   .addDecorator(TestWrapperDecoratorFullWidth)
 
   .addDecorator(story =>
