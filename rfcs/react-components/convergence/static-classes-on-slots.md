@@ -10,15 +10,15 @@ History:
 
 This RFC proposes adding a static className to every slot, using the naming format `"fui-{ComponentName}__{slotName}"`.
 
-## Problem statement
+It can be useful to have a static class name on every slot of a component, both for writing style selectors, and when debugging to tell what slot a given element is.
 
-It can be useful to have a static class name on the slot of a component, including by users of our library if they want to write static styles targeting a slot.
+## Problem statement
 
 We currently have a static class name `"fui-{ComponentName}"` (e.g. `"fui-Button"`) added to the root slot of every component, as described in issue [#19937](https://github.com/microsoft/fluentui/issues/19937). However, we don't currently have any formal specification of the format of the classNames for other slots, nor any conformance tests ensuring that they are added to every slot.
 
 Some of our components already have static classNames on slots (e.g. Checkbox's `indicator` slot). However, this patchwork addition of static classes makes it unpredictable for users of our library.
 
-One example internal usage would be to write a style such as this, which changes the Checkbox `indicator` slot's backgroundColor when hovering over the `root`:
+One example of internal usage would be to write a style such as this, which changes the Checkbox `indicator` slot's backgroundColor when hovering over the `root`:
 
 ```ts
 const useStyles = makeStyles({
@@ -36,7 +36,7 @@ const useStyles = makeStyles({
 
 ### Slot Names
 
-The root slot already has a static className with the format `fui-{ComponentName}`, per [#19937](https://github.com/microsoft/fluentui/issues/19937). This RFC proposes that every other slot of a component should have a static className added, with the format `fui-{ComponentName}__{slot}`. The static className would be added to the start before any other classNames.
+The root slot already has a static className with the format `fui-{ComponentName}`, per [#19937](https://github.com/microsoft/fluentui/issues/19937). This RFC proposes that every other slot of a component should have a static className added to the start before any other classNames, with the format `fui-{ComponentName}__{slot}`. This naming convention aligns other libraries' CSS naming conventions, including [BEM](https://en.bem.info/methodology/naming-convention/).
 
 For example, the HTML tree of Checkbox would look like:
 
@@ -50,7 +50,7 @@ For example, the HTML tree of Checkbox would look like:
 
 ### Exports
 
-These classNames could be exported from each components in an object. This would replace the existing `{component}ClassName` export.
+These classNames could be exported from each component in an object. This would replace the existing `{component}ClassName` export.
 
 Although these names could be automatically generated, there is value in having them be explicitly written out in the source code so it can be found via searching.
 
@@ -88,5 +88,5 @@ There would be a new conformance test that would check that each slot has a stat
 ### Cons
 
 - Adds extra classes that may never be used.
-- Encourages styling by static classes, which could(?) have precedence issues with our atomic css classes.
+- Encourages styling by static classes, which could have precedence issues with our atomic css classes.
 - Increases bundle size (by a trivial amount).
