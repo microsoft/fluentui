@@ -128,7 +128,7 @@ jobs:
 
       - task: AzureUpload@2
         condition: eq(variables.isPR, true)
-        displayName: Upload Perf Test Result to PR deploy site (Fluent)
+        displayName: Upload Perf Test Result to PR deploy site (V8)
         inputs:
           SourcePath: 'apps/perf-test/dist'
           azureSubscription: $(azureSubscription)
