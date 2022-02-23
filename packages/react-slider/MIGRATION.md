@@ -1,6 +1,6 @@
 # Slider Migration
 
-The Slider control is a thin wrapper around an `<input type="range"/>`. Additional elements like labels and rendered values will need to be explicitely rendered.
+The Slider control is a thin wrapper around an `<input type="range"/>`. Additional elements like labels and current value will need to be explicitly rendered.
 
 ## Migration from v8
 
