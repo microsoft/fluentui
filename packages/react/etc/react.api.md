@@ -4099,6 +4099,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     onItemClick?: (ev?: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
     onMenuDismissed?: (contextualMenu?: IContextualMenuProps) => void;
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
+    onRenderContextualMenuItem?: IRenderFunction<IContextualMenuItem>;
     onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
     onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
     onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;

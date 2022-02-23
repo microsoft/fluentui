@@ -18,25 +18,36 @@ export const Radio: ForwardRefComponent<RadioProps>;
 // @public (undocumented)
 export const radioClassName = "fui-Radio";
 
-// @public
-export const RadioItem: ForwardRefComponent<RadioItemProps>;
-
 // @public (undocumented)
-export const radioItemClassName = "fui-RadioItem";
-
-// @public (undocumented)
-export type RadioItemCommons = InputHTMLAttributes<HTMLInputElement> & {
+export type RadioCommons = InputHTMLAttributes<HTMLInputElement> & {
     labelPosition?: 'bottom' | 'inline';
     containerClassName?: string;
 };
 
 // @public
-export type RadioItemProps = ComponentProps<Partial<RadioItemSlots>> & RadioItemCommons & {
+export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
+
+// @public (undocumented)
+export const radioGroupClassName = "fui-RadioGroup";
+
+// @public
+export type RadioGroupProps = ComponentProps<RadioGroupSlots>;
+
+// @public (undocumented)
+export type RadioGroupSlots = {
+    root: Slot<'span'>;
+};
+
+// @public
+export type RadioGroupState = ComponentState<RadioGroupSlots>;
+
+// @public
+export type RadioProps = ComponentProps<Partial<RadioSlots>> & RadioCommons & {
     id?: string;
 };
 
 // @public (undocumented)
-export type RadioItemSlots = {
+export type RadioSlots = {
     root: Slot<'span'>;
     indicator: NonNullable<Slot<'div'>>;
     input: NonNullable<Slot<'input'>>;
@@ -45,33 +56,22 @@ export type RadioItemSlots = {
 };
 
 // @public
-export type RadioItemState = ComponentState<RadioItemSlots> & RadioItemCommons;
-
-// @public
-export type RadioProps = ComponentProps<RadioSlots>;
-
-// @public (undocumented)
-export type RadioSlots = {
-    root: Slot<'span'>;
-};
-
-// @public
-export type RadioState = ComponentState<RadioSlots>;
+export type RadioState = ComponentState<RadioSlots> & RadioCommons;
 
 // @public
 export const renderRadio_unstable: (state: RadioState) => JSX.Element;
 
 // @public
-export const renderRadioItem_unstable: (state: RadioItemState) => JSX.Element;
+export const renderRadioGroup_unstable: (state: RadioGroupState) => JSX.Element;
 
 // @public
 export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLElement>) => RadioState;
 
 // @public
-export const useRadioItem_unstable: (props: RadioItemProps, ref: React_2.Ref<HTMLElement>) => RadioItemState;
+export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<HTMLElement>) => RadioGroupState;
 
 // @public
-export const useRadioItemStyles_unstable: (state: RadioItemState) => RadioItemState;
+export const useRadioGroupStyles_unstable: (state: RadioGroupState) => RadioGroupState;
 
 // @public
 export const useRadioStyles_unstable: (state: RadioState) => RadioState;
