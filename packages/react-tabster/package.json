@@ -37,6 +37,7 @@
   "dependencies": {
     "@griffel/react": "1.0.0",
     "@fluentui/react-shared-contexts": "9.0.0-rc.3",
+    "@fluentui/react-theme": "9.0.0-rc.3",
     "@fluentui/react-utilities": "9.0.0-rc.3",
     "keyborg": "^1.1.0",
     "tabster": "^1.1.1",

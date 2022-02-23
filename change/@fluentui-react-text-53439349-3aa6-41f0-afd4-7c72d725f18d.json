@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Add react-theme as dependency",
+  "packageName": "@fluentui/react-text",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
