@@ -47,7 +47,7 @@ const useStyles = makeStyles({
   },
 
   arrow: {
-    ...createArrowStyles({ arrowHeight: 5 }),
+    ...createArrowStyles({ arrowHeight: 8 }),
     backgroundColor: 'red',
   },
 
