@@ -15,18 +15,14 @@ const spacingHorizontalM = '12px';
 const indicatorSizeMedium = '16px';
 const indicatorSizeLarge = '20px';
 
-/**
- * Styles for the root slot
- */
 const useRootStyles = makeStyles({
   base: {
     position: 'relative',
     display: 'inline-flex',
     columnGap: spacingHorizontalM,
     ...shorthands.padding(spacingHorizontalS),
+    ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
   },
-
-  focusIndicator: createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 });
 
 const useInputStyles = makeStyles({
@@ -41,9 +37,9 @@ const useInputStyles = makeStyles({
     opacity: 0,
     cursor: 'pointer',
 
-    // Hide the child of the indicator (the checkmark icon) when not checked
+    // When unchecked, hide the the checkmark icon (child of the indicator slot)
     [`:not(:checked):not(:indeterminate) ~ .${indicatorClassName} > *`]: {
-      opacity: '0',
+      opacity: 0,
     },
 
     // Colors for the unchecked state
@@ -196,12 +192,7 @@ const useLabelStyles = makeStyles({
  */
 export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState => {
   const rootStyles = useRootStyles();
-  state.root.className = mergeClasses(
-    checkboxClassName,
-    rootStyles.base,
-    rootStyles.focusIndicator,
-    state.root.className,
-  );
+  state.root.className = mergeClasses(checkboxClassName, rootStyles.base, state.root.className);
 
   const inputStyles = useInputStyles();
   state.input.className = mergeClasses(inputStyles.base, state.input.className);
