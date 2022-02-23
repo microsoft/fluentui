@@ -66,6 +66,9 @@ export const divProperties: Record<string, number>;
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
 
 // @public
+export const fieldsetProperties: Record<string, number>;
+
+// @public
 export type FluentTriggerComponent = {
     isFluentTriggerComponent?: boolean;
 };

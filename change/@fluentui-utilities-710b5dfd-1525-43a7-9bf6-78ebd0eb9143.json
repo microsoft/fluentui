@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "make ./packages/utilities/src/DelayedRender.tsx render during SSR",
+  "packageName": "@fluentui/utilities",
+  "email": "john.collier4@gmail.com",
+  "dependentChangeType": "patch"
+}

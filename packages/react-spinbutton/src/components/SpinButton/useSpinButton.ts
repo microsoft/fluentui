@@ -17,6 +17,9 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     components: {
       // TODO add slot types here if needed (div is the default)
       root: 'div',
+      input: 'input',
+      incrementControl: 'button',
+      decrementControl: 'button',
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
@@ -24,5 +27,8 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       ref,
       ...props,
     }),
+    input: getNativeElementProps('input', {}),
+    incrementControl: getNativeElementProps('button', {}),
+    decrementControl: getNativeElementProps('button', {}),
   };
 };

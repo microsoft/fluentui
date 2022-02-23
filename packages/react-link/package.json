@@ -45,6 +45,7 @@
   "dependencies": {
     "@fluentui/keyboard-keys": "9.0.0-rc.3",
     "@fluentui/react-tabster": "9.0.0-rc.3",
+    "@fluentui/react-theme": "9.0.0-rc.3",
     "@fluentui/react-utilities": "9.0.0-rc.3",
     "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
