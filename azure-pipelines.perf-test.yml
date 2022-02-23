@@ -22,12 +22,13 @@ jobs:
 
       - script: |
           yarn check-if-packages-affected
+        name: PackagesAffected
         displayName: Check if v8 and/or  northstar packages were affected
 
   - job: PerfTestNorthstar
     displayName: Perf test for @fluentui/react-northstar
     dependsOn: CheckIfPackagesAffected
-    condition: eq(dependencies.CheckIfPackagesAffected.outputs['NorthstarPackageAffected'], true)
+    condition: eq(dependencies.CheckIfPackagesAffected.outputs['PackagesAffected.NorthstarPackageAffected'], true)
     workspace:
       clean: all
     steps:
@@ -101,7 +102,7 @@ jobs:
   - job: PerfTestV8
     displayName: Perf test for @fluentui/react
     dependsOn: CheckIfPackagesAffected
-    condition: eq(dependencies.CheckIfPackagesAffected.outputs['V8PackageAffected'], true)
+    condition: eq(dependencies.CheckIfPackagesAffected.outputs['PackagesAffected.V8PackageAffected'], true)
     workspace:
       clean: all
     steps:
