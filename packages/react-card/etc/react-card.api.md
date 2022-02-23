@@ -16,11 +16,6 @@ export const Card: ForwardRefComponent<CardProps>;
 // @public (undocumented)
 export const cardClassName = "fui-Card";
 
-// @public (undocumented)
-export type CardCommons = {
-    appearance: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
-};
-
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
