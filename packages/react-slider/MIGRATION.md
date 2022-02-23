@@ -8,10 +8,9 @@ The Slider control is a thin wrapper around an `<input type="range"/>`. Addition
 - `styles` => pass classNames to individual slots
 - `theme` => use `FluentProvider` HOC instead
 - `label` => Use `Label` control with `htmlFor` and `id`
-
 - `showValue` and `valueFormat` => use explicitly rendered value instead
 - `onChanged` => use onChange and onMouse events
-- `ranged`, `defaultLowerValue` and `lowerValue` => NOT SUPPORTED
+- `ranged`, `defaultLowerValue` and `lowerValue` => Not supported. Multi value slider will be future work in separate control.
 - `snapToStep` => use `step` instead
 - `originFromZero` => `origin`
 - `buttonProps` => Slider props, other than className and id, are passed to `input` element
