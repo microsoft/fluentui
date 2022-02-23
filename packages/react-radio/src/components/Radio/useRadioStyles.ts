@@ -47,8 +47,8 @@ const useInputStyles = makeStyles({
     opacity: 0,
     cursor: 'pointer',
 
-    // Hide the child of the indicator (the circle icon) when not checked
-    [`&:not(:checked) ~ .${indicatorClassName} > *`]: {
+    // When unchecked, hide the circle icon (child of the indicator)
+    [`:not(:checked) ~ .${indicatorClassName} > *`]: {
       opacity: '0',
     },
 

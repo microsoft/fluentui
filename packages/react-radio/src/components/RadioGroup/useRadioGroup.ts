@@ -17,13 +17,13 @@ export const useRadioGroup_unstable = (
   props: RadioGroupProps,
   ref: React.Ref<HTMLFieldSetElement>,
 ): RadioGroupState => {
-  const baseId = useId('radiogroup-');
+  const generatedName = useId('radiogroup-');
 
-  const { name = baseId, layout = 'vertical', disabled, required } = props;
+  const { name = generatedName, layout = 'vertical', disabled, required } = props;
 
   const label = resolveShorthand(props.label, {
     defaultProps: {
-      id: baseId + '__label',
+      id: generatedName + '__label',
       disabled,
       required,
     },
@@ -36,7 +36,7 @@ export const useRadioGroup_unstable = (
     ...props,
   });
 
-  const labelPosition = layout === 'horizontalStacked' ? 'below' : 'after';
+  const labelPosition = layout === 'horizontalStacked' ? 'below' : undefined;
   const context = React.useMemo<RadioContextValue>(() => ({ name, labelPosition }), [name, labelPosition]);
 
   return {
