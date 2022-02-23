@@ -282,7 +282,7 @@ const Pinned = () => {
       ref={setBoundary}
     >
       <button ref={targetRef}>Target</button>
-      <Box ref={containerRef}>Flip</Box>
+      <Box ref={containerRef}>Does not flip</Box>
     </div>
   );
 };
@@ -378,7 +378,7 @@ const DisableTether = () => {
         <button style={{ position: 'absolute', top: -1000 }} ref={targetRef}>
           Target
         </button>
-        <Box ref={containerRef}>Flip</Box>
+        <Box ref={containerRef}>Untethered</Box>
       </div>
       The target is outside of the boundary.
       <br />
@@ -425,7 +425,7 @@ const TargetProp = () => {
   return (
     <>
       <button ref={setTarget}>Target</button>
-      <Box ref={containerRef}>Anchored using virtual element</Box>
+      <Box ref={containerRef}>Anchored using target property</Box>
     </>
   );
 };
@@ -449,7 +449,7 @@ const ImperativeTarget = () => {
   return (
     <>
       <button ref={ref}>Target</button>
-      <Box ref={containerRef}>Anchored using virtual element</Box>
+      <Box ref={containerRef}>Anchored using setTarget </Box>
     </>
   );
 };
