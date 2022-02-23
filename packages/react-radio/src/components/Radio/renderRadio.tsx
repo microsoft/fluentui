@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { RadioState, RadioSlots } from './Radio.types';
+import type { RadioState, RadioSlots } from './Radio.types';
 
 /**
  * Render the final JSX of Radio
@@ -10,8 +10,14 @@ export const renderRadio_unstable = (state: RadioState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      {/* TODO Add additional slots in the appropriate place */}
-      {state.root.children}
+      <div className={state.containerClassName}>
+        <slots.indicator {...slotProps.indicator} />
+        <slots.input {...slotProps.input} />
+      </div>
+      <slots.label {...slotProps.label}>
+        {state.label.children}
+        {state.subtext && slots.subtext && <slots.subtext {...slotProps.subtext} />}
+      </slots.label>
     </slots.root>
   );
 };

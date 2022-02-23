@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Checkbox } from './index';
 
-export const Circular = () => <Checkbox circular label="Circular" />;
+export const Circular = () => <Checkbox shape="circular" label="Circular" />;
 Circular.parameters = {
   docs: {
     description: {
