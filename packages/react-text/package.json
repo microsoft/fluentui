@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-text",
-  "version": "9.0.0-beta.4",
+  "version": "9.0.0-rc.3",
   "description": "Text is a typography and styling abstraction component that can be used to ensure the consistency of all text across your application.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -19,18 +19,16 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-text/src && yarn docs",
-    "storybook": "start-storybook",
+    "storybook": "node ../../scripts/storybook/runner",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "9.0.0-beta.4",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-beta.4",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-make-styles": "9.0.0-beta.4",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.3",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -44,8 +42,9 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "9.0.0-beta.4",
-    "@fluentui/react-utilities": "9.0.0-beta.4",
+    "@griffel/react": "1.0.0",
+    "@fluentui/react-theme": "9.0.0-rc.3",
+    "@fluentui/react-utilities": "9.0.0-rc.3",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -3,10 +3,10 @@ import { Enter, Space } from '@fluentui/keyboard-keys';
 import type { LinkState } from './Link.types';
 
 /**
- * The useLinkState hook processes the Link state.
+ * The useLinkState_unstable hook processes the Link state.
  * @param state - Link state to mutate.
  */
-export const useLinkState = (state: LinkState): LinkState => {
+export const useLinkState_unstable = (state: LinkState): LinkState => {
   const { disabled, disabledFocusable } = state;
   const { onClick, onKeyDown, role, type } = state.root;
 

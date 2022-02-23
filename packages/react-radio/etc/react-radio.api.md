@@ -4,14 +4,13 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InputHTMLAttributes } from 'react';
-import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { LabelProps } from '@fluentui/react-label';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Radio: ForwardRefComponent<RadioProps>;
@@ -19,63 +18,63 @@ export const Radio: ForwardRefComponent<RadioProps>;
 // @public (undocumented)
 export const radioClassName = "fui-Radio";
 
-// @public
-export const RadioItem: ForwardRefComponent<RadioItemProps>;
-
 // @public (undocumented)
-export const radioItemClassName = "fui-RadioItem";
-
-// @public (undocumented)
-export type RadioItemCommons = InputHTMLAttributes<HTMLInputElement> & {
+export type RadioCommons = InputHTMLAttributes<HTMLInputElement> & {
     labelPosition?: 'bottom' | 'inline';
     containerClassName?: string;
 };
 
 // @public
-export type RadioItemProps = ComponentProps<RadioItemSlots> & RadioItemCommons & {
+export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
+
+// @public (undocumented)
+export const radioGroupClassName = "fui-RadioGroup";
+
+// @public
+export type RadioGroupProps = ComponentProps<RadioGroupSlots>;
+
+// @public (undocumented)
+export type RadioGroupSlots = {
+    root: Slot<'span'>;
+};
+
+// @public
+export type RadioGroupState = ComponentState<RadioGroupSlots>;
+
+// @public
+export type RadioProps = ComponentProps<Partial<RadioSlots>> & RadioCommons & {
     id?: string;
 };
 
 // @public (undocumented)
-export type RadioItemSlots = {
-    root: IntrinsicShorthandProps<'span'>;
-    indicator: IntrinsicShorthandProps<'div'>;
-    input: IntrinsicShorthandProps<'input'>;
-    label: ObjectShorthandProps<LabelProps>;
-    subtext?: IntrinsicShorthandProps<'span'>;
-};
-
-// @public
-export type RadioItemState = ComponentState<RadioItemSlots> & RadioItemCommons;
-
-// @public
-export type RadioProps = ComponentProps<RadioSlots>;
-
-// @public (undocumented)
 export type RadioSlots = {
-    root: IntrinsicShorthandProps<'span'>;
+    root: Slot<'span'>;
+    indicator: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>>;
+    label: NonNullable<Slot<typeof Label>>;
+    subtext?: Slot<'span'>;
 };
 
 // @public
-export type RadioState = ComponentState<RadioSlots>;
+export type RadioState = ComponentState<RadioSlots> & RadioCommons;
 
 // @public
-export const renderRadio: (state: RadioState) => JSX.Element;
+export const renderRadio_unstable: (state: RadioState) => JSX.Element;
 
 // @public
-export const renderRadioItem: (state: RadioItemState) => JSX.Element;
+export const renderRadioGroup_unstable: (state: RadioGroupState) => JSX.Element;
 
 // @public
-export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLElement>) => RadioState;
+export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLElement>) => RadioState;
 
 // @public
-export const useRadioItem: (props: RadioItemProps, ref: React_2.Ref<HTMLElement>) => RadioItemState;
+export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<HTMLElement>) => RadioGroupState;
 
 // @public
-export const useRadioItemStyles: (state: RadioItemState) => RadioItemState;
+export const useRadioGroupStyles_unstable: (state: RadioGroupState) => RadioGroupState;
 
 // @public
-export const useRadioStyles: (state: RadioState) => RadioState;
+export const useRadioStyles_unstable: (state: RadioState) => RadioState;
 
 // (No @packageDocumentation comment for this package)
 

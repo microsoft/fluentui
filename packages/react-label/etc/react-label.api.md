@@ -7,9 +7,8 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Label: ForwardRefComponent<LabelProps>;
@@ -17,35 +16,30 @@ export const Label: ForwardRefComponent<LabelProps>;
 // @public (undocumented)
 export const labelClassName = "fui-Label";
 
-// @public (undocumented)
-export type LabelCommons = {
-    disabled: boolean;
-    size: 'small' | 'medium' | 'large';
-    strong: boolean;
-};
-
+// Warning: (ae-forgotten-export) The symbol "LabelCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommons> & {
-    required?: boolean | ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>> | React_2.ReactNode;
+    required?: boolean | Slot<'span'>;
 };
 
 // @public (undocumented)
 export type LabelSlots = {
-    root: IntrinsicShorthandProps<'label'>;
-    required?: IntrinsicShorthandProps<'span'>;
+    root: Slot<'label'>;
+    required?: Slot<'span'>;
 };
 
 // @public
 export type LabelState = ComponentState<LabelSlots> & LabelCommons;
 
 // @public
-export const renderLabel: (state: LabelState) => JSX.Element;
+export const renderLabel_unstable: (state: LabelState) => JSX.Element;
 
 // @public
-export const useLabel: (props: LabelProps, ref: React_2.Ref<HTMLElement>) => LabelState;
+export const useLabel_unstable: (props: LabelProps, ref: React_2.Ref<HTMLElement>) => LabelState;
 
 // @public
-export const useLabelStyles: (state: LabelState) => LabelState;
+export const useLabelStyles_unstable: (state: LabelState) => LabelState;
 
 // (No @packageDocumentation comment for this package)
 

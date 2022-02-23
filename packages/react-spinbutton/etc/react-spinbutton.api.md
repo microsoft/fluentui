@@ -7,37 +7,61 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
-export const renderSpinButton: (state: SpinButtonState) => JSX.Element;
+export const renderSpinButton_unstable: (state: SpinButtonState) => JSX.Element;
 
 // @public
 export const SpinButton: ForwardRefComponent<SpinButtonProps>;
 
 // @public (undocumented)
+export type SpinButtonChangeData = {
+    value: number;
+};
+
+// @public (undocumented)
 export const spinButtonClassName = "fui-SpinButton";
 
 // @public (undocumented)
-export type SpinButtonCommons = {};
+export type SpinButtonCommons = {
+    defaultValue: number;
+    value: number;
+    min: number;
+    max: number;
+    step: number;
+    formatter: SpinButtonFormatter;
+    parser: SpinButtonParser;
+    onChange: (event: React_2.SyntheticEvent<HTMLElement>, data: SpinButtonChangeData) => void;
+    precision: number;
+};
+
+// @public (undocumented)
+export type SpinButtonFormatter = (value: number) => string;
+
+// @public (undocumented)
+export type SpinButtonParser = (formattedValue: string) => number;
 
 // @public
-export type SpinButtonProps = ComponentProps<SpinButtonSlots> & SpinButtonCommons;
+export type SpinButtonProps = ComponentProps<Partial<SpinButtonSlots>, 'input'> & Partial<SpinButtonCommons>;
 
 // @public (undocumented)
 export type SpinButtonSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>>;
+    incrementControl: NonNullable<Slot<'button'>>;
+    decrementControl: NonNullable<Slot<'button'>>;
 };
 
 // @public
-export type SpinButtonState = ComponentState<SpinButtonSlots> & SpinButtonCommons;
+export type SpinButtonState = ComponentState<Required<SpinButtonSlots>> & Partial<SpinButtonCommons>;
 
 // @public
-export const useSpinButton: (props: SpinButtonProps, ref: React_2.Ref<HTMLElement>) => SpinButtonState;
+export const useSpinButton_unstable: (props: SpinButtonProps, ref: React_2.Ref<HTMLElement>) => SpinButtonState;
 
 // @public
-export const useSpinButtonStyles: (state: SpinButtonState) => SpinButtonState;
+export const useSpinButtonStyles_unstable: (state: SpinButtonState) => SpinButtonState;
 
 // (No @packageDocumentation comment for this package)
 

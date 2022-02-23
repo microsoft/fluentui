@@ -1,8 +1,26 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Thu, 13 Jan 2022 07:30:57 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Feb 2022 07:26:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.6.2)
+
+Mon, 14 Feb 2022 07:26:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.6.1..@fluentui/eslint-plugin_v1.6.2)
+
+### Patches
+
+- Add ./e2e to list of files allowing devDependencies ([PR #21678](https://github.com/microsoft/fluentui/pull/21678) by elcraig@microsoft.com)
+
+## [1.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.6.1)
+
+Tue, 25 Jan 2022 07:30:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.6.0..@fluentui/eslint-plugin_v1.6.1)
+
+### Patches
+
+- Add naming-convention exception to allow exported hooks with the _unstable suffix ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
 
 ## [1.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.6.0)
 

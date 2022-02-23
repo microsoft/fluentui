@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { Tooltip } from '@fluentui/react-tooltip';
 import { Button } from '../../../Button';
 
 export const Size = () => {
@@ -10,25 +11,31 @@ export const Size = () => {
     <>
       <div style={groupStyles}>
         <h4 style={headerStyles}>small</h4>
-        <Button size="small">Text</Button>
+        <Button size="small">Small</Button>
         <Button size="small" icon={<CalendarMonthRegular />}>
-          Text
+          Small with calendar icon
         </Button>
-        <Button size="small" icon={<CalendarMonthRegular />} />
+        <Tooltip content="Small with calendar icon only" relationship="label">
+          <Button size="small" icon={<CalendarMonthRegular />} />
+        </Tooltip>
       </div>
       <div style={groupStyles}>
         <h4 style={headerStyles}>medium</h4>
-        <Button>Text</Button>
-        <Button icon={<CalendarMonthRegular />}>Text</Button>
-        <Button icon={<CalendarMonthRegular />} />
+        <Button>Medium</Button>
+        <Button icon={<CalendarMonthRegular />}>Medium with calendar icon</Button>
+        <Tooltip content="Medium with calendar icon only" relationship="label">
+          <Button icon={<CalendarMonthRegular />} />
+        </Tooltip>
       </div>
       <div style={groupStyles}>
         <h4 style={headerStyles}>large</h4>
-        <Button size="large">Text</Button>
+        <Button size="large">Large</Button>
         <Button size="large" icon={<CalendarMonthRegular />}>
-          Text
+          Large with calendar icon
         </Button>
-        <Button size="large" icon={<CalendarMonthRegular />} />
+        <Tooltip content="Large with calendar icon only" relationship="label">
+          <Button size="large" icon={<CalendarMonthRegular />} />
+        </Tooltip>
       </div>
     </>
   );

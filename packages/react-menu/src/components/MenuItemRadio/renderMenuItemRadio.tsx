@@ -7,15 +7,15 @@ import type { MenuItemSlots } from '../MenuItem/MenuItem.types';
  * Redefine the render function to add slots. Reuse the menuitemradio structure but add
  * slots to children.
  */
-export const renderMenuItemRadio = (state: MenuItemRadioState) => {
+export const renderMenuItemRadio_unstable = (state: MenuItemRadioState) => {
   const { slots, slotProps } = getSlots<MenuItemSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
-      <slots.checkmark {...slotProps.checkmark} />
-      <slots.icon {...slotProps.icon} />
-      <slots.content {...slotProps.content} />
-      <slots.secondaryContent {...slotProps.secondaryContent} />
+      {slots.checkmark && <slots.checkmark {...slotProps.checkmark} />}
+      {slots.icon && <slots.icon {...slotProps.icon} />}
+      {slots.content && <slots.content {...slotProps.content} />}
+      {slots.secondaryContent && <slots.secondaryContent {...slotProps.secondaryContent} />}
     </slots.root>
   );
 };

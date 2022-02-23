@@ -1,5 +1,5 @@
 {
-  "name": "ssr-tests",
+  "name": "@fluentui/ssr-tests",
   "version": "1.0.0",
   "description": "Server-side rendering tests for @fluentui/react.",
   "private": true,
@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@fluentui/react": "^8.49.6",
+    "@fluentui/react": "^8.56.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/mocha": "^7.0.2",
     "@fluentui/scripts": "^1.0.0",

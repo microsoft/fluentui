@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Thu, 25 Nov 2021 08:34:12 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Feb 2022 13:35:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.8)
+
+Fri, 18 Feb 2022 13:35:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.6..@fluentui/react-card_v9.0.0-beta.8)
+
+### Changes
+
+- fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- Add new appearance property to allow for different card styles ([PR #21264](https://github.com/microsoft/fluentui/pull/21264) by 39736248+andrefcdias@users.noreply.github.com)
+- fix: top padding issues with CardPreview ([PR #21685](https://github.com/microsoft/fluentui/pull/21685) by 39736248+andrefcdias@users.noreply.github.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-text to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-button to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+
+## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.6)
+
+Thu, 10 Feb 2022 08:51:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.5..@fluentui/react-card_v9.0.0-beta.6)
+
+### Changes
+
+- Update react-icons usage to resizable icons ([PR #21074](https://github.com/microsoft/fluentui/pull/21074) by ololubek@microsoft.com)
+- Bump Fluent UI dependencies to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
+- react-card: Replacing use of functions in makeStyles with direct use of tokens. ([PR #21040](https://github.com/microsoft/fluentui/pull/21040) by Humberto.Morimoto@microsoft.com)
+- Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- Remove empty CardCommons type and outdated boilerplate comments ([PR #21150](https://github.com/microsoft/fluentui/pull/21150) by elcraig@microsoft.com)
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- use Griffel packages ([PR #21417](https://github.com/microsoft/fluentui/pull/21417) by olfedias@microsoft.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- update styles no not use CSS shorthands ([PR #20794](https://github.com/microsoft/fluentui/pull/20794) by olfedias@microsoft.com)
+- Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-text to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-button to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.5)
 

@@ -7,7 +7,6 @@ import _ from 'lodash';
 import chalk from 'chalk';
 import { spawnSync } from 'child_process';
 import { findGitRoot, PackageJson } from '../monorepo/index';
-import { NxJsonConfiguration } from '@nrwl/devkit';
 import { WorkspaceJsonConfiguration } from '@nrwl/tao/src/shared/workspace';
 
 const root = findGitRoot();
@@ -17,7 +16,7 @@ const v8ReferencePackages = {
   node: ['codemods'],
 };
 const convergedReferencePackages = {
-  react: ['react-menu'],
+  react: ['react-provider'],
   node: ['babel-make-styles'],
 };
 
@@ -205,12 +204,10 @@ function replaceVersionsFromReference(
   }
 
   if (answers.isConverged) {
-    // Update the version and beachball config in package.json to match the current v9 ones
-    if (packageJsons[0].version?.[0] === '9') {
-      newPackageJson.version = packageJsons[0].version;
-    } else {
+    if (packageJsons[0].version?.[0] !== '9') {
       throw new Error(`Converged reference package ${packageJsons[0].name} does not appear to have version 9.x`);
     }
+    // Update beachball config in package.json to match the current v9
     if (packageJsons[0].beachball) {
       newPackageJson.beachball = packageJsons[0].beachball;
     }
@@ -261,10 +258,6 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
       [config.projectName]: {
         root: config.projectRoot,
         projectType: 'library',
-      },
-    },
-    config: {
-      [config.projectName]: {
         implicitDependencies: [],
       },
     },
@@ -274,13 +267,7 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
   const nxWorkspace: WorkspaceJsonConfiguration = jju.parse(nxWorkspaceContent);
   Object.assign(nxWorkspace.projects, templates.workspace);
 
-  const nxConfigContent = fs.readFileSync(paths.config, 'utf-8');
-  const nxConfig: NxJsonConfiguration = jju.parse(nxConfigContent);
-  Object.assign(nxConfig.projects, templates.config);
-
   const updatedNxWorkspace = jju.update(nxWorkspaceContent, nxWorkspace, { mode: 'json', indent: 2 });
-  const updatedNxConfig = jju.update(nxConfigContent, nxConfig, { mode: 'json', indent: 2 });
 
   fs.writeFileSync(paths.workspace, updatedNxWorkspace, 'utf-8');
-  fs.writeFileSync(paths.config, updatedNxConfig, 'utf-8');
 }

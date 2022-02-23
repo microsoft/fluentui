@@ -6,7 +6,7 @@ import { Portal } from '@fluentui/react-portal';
 /**
  * Render the final JSX of MenuPopover
  */
-export const renderMenuPopover = (state: MenuPopoverState) => {
+export const renderMenuPopover_unstable = (state: MenuPopoverState) => {
   const { slots, slotProps } = getSlots<MenuPopoverSlots>(state);
 
   if (state.inline) {

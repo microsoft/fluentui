@@ -4,7 +4,7 @@
 
 ```ts
 
-import { __styles } from '@fluentui/react-make-styles';
+import { __styles } from '@griffel/react';
 import { Accordion } from '@fluentui/react-accordion';
 import { accordionClassName } from '@fluentui/react-accordion';
 import { AccordionContext } from '@fluentui/react-accordion';
@@ -75,7 +75,7 @@ import { counterBadgeClassName } from '@fluentui/react-badge';
 import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
 import { createDarkTheme } from '@fluentui/react-theme';
-import { createDOMRenderer } from '@fluentui/react-make-styles';
+import { createDOMRenderer } from '@griffel/react';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
@@ -103,11 +103,6 @@ import { imageClassName } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
-import { Label } from '@fluentui/react-label';
-import { labelClassName } from '@fluentui/react-label';
-import { LabelProps } from '@fluentui/react-label';
-import { LabelSlots } from '@fluentui/react-label';
-import { LabelState } from '@fluentui/react-label';
 import { LargeTitle } from '@fluentui/react-text';
 import { largeTitleClassName } from '@fluentui/react-text';
 import { LineHeightTokens } from '@fluentui/react-theme';
@@ -116,8 +111,8 @@ import { linkClassName } from '@fluentui/react-link';
 import { LinkProps } from '@fluentui/react-link';
 import { LinkSlots } from '@fluentui/react-link';
 import { LinkState } from '@fluentui/react-link';
-import { makeStaticStyles } from '@fluentui/react-make-styles';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStaticStyles } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 import { Menu } from '@fluentui/react-menu';
 import { MenuButton } from '@fluentui/react-button';
 import { menuButtonClassName } from '@fluentui/react-button';
@@ -187,7 +182,7 @@ import { MenuTriggerChildProps } from '@fluentui/react-menu';
 import { MenuTriggerContextProvider } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
-import { mergeClasses } from '@fluentui/react-make-styles';
+import { mergeClasses } from '@griffel/react';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
@@ -214,47 +209,44 @@ import { presenceBadgeClassName } from '@fluentui/react-badge';
 import { PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
-import { renderAccordion } from '@fluentui/react-accordion';
-import { renderAccordionHeader } from '@fluentui/react-accordion';
-import { renderAccordionItem } from '@fluentui/react-accordion';
-import { renderAccordionPanel } from '@fluentui/react-accordion';
-import { renderAvatar } from '@fluentui/react-avatar';
-import { renderBadge } from '@fluentui/react-badge';
-import { renderButton } from '@fluentui/react-button';
-import { renderCompoundButton } from '@fluentui/react-button';
-import { renderDivider } from '@fluentui/react-divider';
-import { RendererContext } from '@fluentui/react-make-styles';
-import { RendererProvider } from '@fluentui/react-make-styles';
-import { RendererProviderProps } from '@fluentui/react-make-styles';
-import { renderFluentProvider } from '@fluentui/react-provider';
-import { renderImage } from '@fluentui/react-image';
-import { renderLabel } from '@fluentui/react-label';
-import { renderLink } from '@fluentui/react-link';
-import { renderMenu } from '@fluentui/react-menu';
-import { renderMenuButton } from '@fluentui/react-button';
-import { renderMenuDivider } from '@fluentui/react-menu';
-import { renderMenuGroup } from '@fluentui/react-menu';
-import { renderMenuGroupHeader } from '@fluentui/react-menu';
-import { renderMenuItem } from '@fluentui/react-menu';
-import { renderMenuItemCheckbox } from '@fluentui/react-menu';
-import { renderMenuItemRadio } from '@fluentui/react-menu';
-import { renderMenuList } from '@fluentui/react-menu';
-import { renderMenuPopover } from '@fluentui/react-menu';
-import { renderMenuTrigger } from '@fluentui/react-menu';
-import { renderPopover } from '@fluentui/react-popover';
-import { renderPopoverSurface } from '@fluentui/react-popover';
-import { renderPopoverTrigger } from '@fluentui/react-popover';
-import { renderPortal } from '@fluentui/react-portal';
-import { renderSplitButton } from '@fluentui/react-button';
-import { renderText } from '@fluentui/react-text';
-import { renderToggleButton } from '@fluentui/react-button';
-import { renderTooltip } from '@fluentui/react-tooltip';
-import { renderToStyleElements } from '@fluentui/react-make-styles';
+import { renderAccordion_unstable } from '@fluentui/react-accordion';
+import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
+import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
+import { renderAccordionPanel_unstable } from '@fluentui/react-accordion';
+import { renderAvatar_unstable } from '@fluentui/react-avatar';
+import { renderBadge_unstable } from '@fluentui/react-badge';
+import { renderButton_unstable } from '@fluentui/react-button';
+import { renderCompoundButton_unstable } from '@fluentui/react-button';
+import { renderDivider_unstable } from '@fluentui/react-divider';
+import { RendererProvider } from '@griffel/react';
+import { renderFluentProvider_unstable } from '@fluentui/react-provider';
+import { renderImage_unstable } from '@fluentui/react-image';
+import { renderLink_unstable } from '@fluentui/react-link';
+import { renderMenu_unstable } from '@fluentui/react-menu';
+import { renderMenuButton_unstable } from '@fluentui/react-button';
+import { renderMenuDivider_unstable } from '@fluentui/react-menu';
+import { renderMenuGroup_unstable } from '@fluentui/react-menu';
+import { renderMenuGroupHeader_unstable } from '@fluentui/react-menu';
+import { renderMenuItem_unstable } from '@fluentui/react-menu';
+import { renderMenuItemCheckbox_unstable } from '@fluentui/react-menu';
+import { renderMenuItemRadio_unstable } from '@fluentui/react-menu';
+import { renderMenuList_unstable } from '@fluentui/react-menu';
+import { renderMenuPopover_unstable } from '@fluentui/react-menu';
+import { renderMenuTrigger_unstable } from '@fluentui/react-menu';
+import { renderPopover_unstable } from '@fluentui/react-popover';
+import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
+import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
+import { renderPortal_unstable } from '@fluentui/react-portal';
+import { renderSplitButton_unstable } from '@fluentui/react-button';
+import { renderText_unstable } from '@fluentui/react-text';
+import { renderToggleButton_unstable } from '@fluentui/react-button';
+import { renderTooltip_unstable } from '@fluentui/react-tooltip';
+import { renderToStyleElements } from '@griffel/react';
 import { SelectableHandler } from '@fluentui/react-menu';
 import { setVirtualParent } from '@fluentui/react-portal';
 import { ShadowBrandTokens } from '@fluentui/react-theme';
 import { ShadowTokens } from '@fluentui/react-theme';
-import { shorthands } from '@fluentui/react-make-styles';
+import { shorthands } from '@griffel/react';
 import { SplitButton } from '@fluentui/react-button';
 import { splitButtonClassName } from '@fluentui/react-button';
 import { SplitButtonProps } from '@fluentui/react-button';
@@ -273,6 +265,7 @@ import { TextProps } from '@fluentui/react-text';
 import { TextSlots } from '@fluentui/react-text';
 import { TextState } from '@fluentui/react-text';
 import { Theme } from '@fluentui/react-theme';
+import { themeToTokensObject } from '@fluentui/react-theme';
 import { Title1 } from '@fluentui/react-text';
 import { title1ClassName } from '@fluentui/react-text';
 import { Title2 } from '@fluentui/react-text';
@@ -291,85 +284,82 @@ import { TooltipSlots } from '@fluentui/react-tooltip';
 import { TooltipState } from '@fluentui/react-tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-tooltip';
 import { UninitializedMenuListState } from '@fluentui/react-menu';
-import { useAccordion } from '@fluentui/react-accordion';
-import { useAccordionContextValues } from '@fluentui/react-accordion';
-import { useAccordionHeader } from '@fluentui/react-accordion';
-import { useAccordionHeaderContextValues } from '@fluentui/react-accordion';
-import { useAccordionHeaderStyles } from '@fluentui/react-accordion';
-import { useAccordionItem } from '@fluentui/react-accordion';
-import { useAccordionItemContext } from '@fluentui/react-accordion';
-import { useAccordionItemContextValues } from '@fluentui/react-accordion';
-import { useAccordionItemStyles } from '@fluentui/react-accordion';
-import { useAccordionPanel } from '@fluentui/react-accordion';
-import { useAccordionPanelStyles } from '@fluentui/react-accordion';
-import { useAccordionStyles } from '@fluentui/react-accordion';
-import { useAvatar } from '@fluentui/react-avatar';
-import { useAvatarStyles } from '@fluentui/react-avatar';
-import { useBadge } from '@fluentui/react-badge';
-import { useBadgeStyles } from '@fluentui/react-badge';
-import { useButton } from '@fluentui/react-button';
-import { useButtonStyles } from '@fluentui/react-button';
-import { useCheckmarkStyles } from '@fluentui/react-menu';
-import { useCompoundButton } from '@fluentui/react-button';
-import { useCompoundButtonStyles } from '@fluentui/react-button';
-import { useCounterBadge } from '@fluentui/react-badge';
-import { useCounterBadgeStyles } from '@fluentui/react-badge';
-import { useDivider } from '@fluentui/react-divider';
-import { useDividerStyles } from '@fluentui/react-divider';
+import { useAccordion_unstable } from '@fluentui/react-accordion';
+import { useAccordionContextValues_unstable } from '@fluentui/react-accordion';
+import { useAccordionHeader_unstable } from '@fluentui/react-accordion';
+import { useAccordionHeaderContextValues_unstable } from '@fluentui/react-accordion';
+import { useAccordionHeaderStyles_unstable } from '@fluentui/react-accordion';
+import { useAccordionItem_unstable } from '@fluentui/react-accordion';
+import { useAccordionItemContext_unstable } from '@fluentui/react-accordion';
+import { useAccordionItemContextValues_unstable } from '@fluentui/react-accordion';
+import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
+import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
+import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
+import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useAvatar_unstable } from '@fluentui/react-avatar';
+import { useAvatarStyles_unstable } from '@fluentui/react-avatar';
+import { useBadge_unstable } from '@fluentui/react-badge';
+import { useBadgeStyles_unstable } from '@fluentui/react-badge';
+import { useButton_unstable } from '@fluentui/react-button';
+import { useButtonStyles_unstable } from '@fluentui/react-button';
+import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
+import { useCompoundButton_unstable } from '@fluentui/react-button';
+import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
+import { useCounterBadge_unstable } from '@fluentui/react-badge';
+import { useCounterBadgeStyles_unstable } from '@fluentui/react-badge';
+import { useDivider_unstable } from '@fluentui/react-divider';
+import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import { useFluent } from '@fluentui/react-provider';
-import { useFluentProvider } from '@fluentui/react-provider';
-import { useFluentProviderContextValues } from '@fluentui/react-provider';
-import { useFluentProviderStyles } from '@fluentui/react-provider';
-import { useImage } from '@fluentui/react-image';
-import { useImageStyles } from '@fluentui/react-image';
-import { useLabel } from '@fluentui/react-label';
-import { useLabelStyles } from '@fluentui/react-label';
-import { useLink } from '@fluentui/react-link';
-import { useLinkState } from '@fluentui/react-link';
-import { useLinkStyles } from '@fluentui/react-link';
-import { useMenu } from '@fluentui/react-menu';
-import { useMenuButton } from '@fluentui/react-button';
-import { useMenuButtonStyles } from '@fluentui/react-button';
-import { useMenuContext } from '@fluentui/react-menu';
-import { useMenuContextValues } from '@fluentui/react-menu';
-import { useMenuDivider } from '@fluentui/react-menu';
-import { useMenuDividerStyles } from '@fluentui/react-menu';
-import { useMenuGroup } from '@fluentui/react-menu';
-import { useMenuGroupContext } from '@fluentui/react-menu';
-import { useMenuGroupContextValues } from '@fluentui/react-menu';
-import { useMenuGroupHeader } from '@fluentui/react-menu';
-import { useMenuGroupHeaderStyles } from '@fluentui/react-menu';
-import { useMenuGroupStyles } from '@fluentui/react-menu';
-import { useMenuItem } from '@fluentui/react-menu';
-import { useMenuItemCheckbox } from '@fluentui/react-menu';
-import { useMenuItemCheckboxStyles } from '@fluentui/react-menu';
-import { useMenuItemRadio } from '@fluentui/react-menu';
-import { useMenuItemRadioStyles } from '@fluentui/react-menu';
-import { useMenuItemStyles } from '@fluentui/react-menu';
-import { useMenuList } from '@fluentui/react-menu';
-import { useMenuListContext } from '@fluentui/react-menu';
-import { useMenuListContextValues } from '@fluentui/react-menu';
-import { useMenuListStyles } from '@fluentui/react-menu';
-import { useMenuPopover } from '@fluentui/react-menu';
-import { useMenuPopoverStyles } from '@fluentui/react-menu';
-import { useMenuTrigger } from '@fluentui/react-menu';
-import { useMenuTriggerContext } from '@fluentui/react-menu';
-import { usePopover } from '@fluentui/react-popover';
-import { usePopoverContext } from '@fluentui/react-popover';
-import { usePopoverSurface } from '@fluentui/react-popover';
-import { usePopoverSurfaceStyles } from '@fluentui/react-popover';
-import { usePopoverTrigger } from '@fluentui/react-popover';
-import { usePortal } from '@fluentui/react-portal';
-import { usePresenceBadge } from '@fluentui/react-badge';
-import { useRenderer } from '@fluentui/react-make-styles';
-import { useSplitButton } from '@fluentui/react-button';
-import { useSplitButtonStyles } from '@fluentui/react-button';
-import { useText } from '@fluentui/react-text';
-import { useTextStyles } from '@fluentui/react-text';
-import { useToggleButton } from '@fluentui/react-button';
-import { useToggleButtonStyles } from '@fluentui/react-button';
-import { useTooltip } from '@fluentui/react-tooltip';
-import { useTooltipStyles } from '@fluentui/react-tooltip';
+import { useFluentProvider_unstable } from '@fluentui/react-provider';
+import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
+import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
+import { useImage_unstable } from '@fluentui/react-image';
+import { useImageStyles_unstable } from '@fluentui/react-image';
+import { useLink_unstable } from '@fluentui/react-link';
+import { useLinkState_unstable } from '@fluentui/react-link';
+import { useLinkStyles_unstable } from '@fluentui/react-link';
+import { useMenu_unstable } from '@fluentui/react-menu';
+import { useMenuButton_unstable } from '@fluentui/react-button';
+import { useMenuButtonStyles_unstable } from '@fluentui/react-button';
+import { useMenuContext_unstable } from '@fluentui/react-menu';
+import { useMenuContextValues_unstable } from '@fluentui/react-menu';
+import { useMenuDivider_unstable } from '@fluentui/react-menu';
+import { useMenuDividerStyles_unstable } from '@fluentui/react-menu';
+import { useMenuGroup_unstable } from '@fluentui/react-menu';
+import { useMenuGroupContext_unstable } from '@fluentui/react-menu';
+import { useMenuGroupContextValues_unstable } from '@fluentui/react-menu';
+import { useMenuGroupHeader_unstable } from '@fluentui/react-menu';
+import { useMenuGroupHeaderStyles_unstable } from '@fluentui/react-menu';
+import { useMenuGroupStyles_unstable } from '@fluentui/react-menu';
+import { useMenuItem_unstable } from '@fluentui/react-menu';
+import { useMenuItemCheckbox_unstable } from '@fluentui/react-menu';
+import { useMenuItemCheckboxStyles_unstable } from '@fluentui/react-menu';
+import { useMenuItemRadio_unstable } from '@fluentui/react-menu';
+import { useMenuItemRadioStyles_unstable } from '@fluentui/react-menu';
+import { useMenuItemStyles_unstable } from '@fluentui/react-menu';
+import { useMenuList_unstable } from '@fluentui/react-menu';
+import { useMenuListContext_unstable } from '@fluentui/react-menu';
+import { useMenuListContextValues_unstable } from '@fluentui/react-menu';
+import { useMenuListStyles_unstable } from '@fluentui/react-menu';
+import { useMenuPopover_unstable } from '@fluentui/react-menu';
+import { useMenuPopoverStyles_unstable } from '@fluentui/react-menu';
+import { useMenuTrigger_unstable } from '@fluentui/react-menu';
+import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
+import { usePopover_unstable } from '@fluentui/react-popover';
+import { usePopoverContext_unstable } from '@fluentui/react-popover';
+import { usePopoverSurface_unstable } from '@fluentui/react-popover';
+import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
+import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
+import { usePortal_unstable } from '@fluentui/react-portal';
+import { usePresenceBadge_unstable } from '@fluentui/react-badge';
+import { useSplitButton_unstable } from '@fluentui/react-button';
+import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
+import { useText_unstable } from '@fluentui/react-text';
+import { useTextStyles_unstable } from '@fluentui/react-text';
+import { useToggleButton_unstable } from '@fluentui/react-button';
+import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
+import { useTooltip_unstable } from '@fluentui/react-tooltip';
+import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webHighContrastTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -571,16 +561,6 @@ export { ImageProps }
 export { ImageSlots }
 
 export { ImageState }
-
-export { Label }
-
-export { labelClassName }
-
-export { LabelProps }
-
-export { LabelSlots }
-
-export { LabelState }
 
 export { LargeTitle }
 
@@ -794,75 +774,69 @@ export { PresenceBadgeState }
 
 export { PresenceBadgeStatus }
 
-export { renderAccordion }
+export { renderAccordion_unstable }
 
-export { renderAccordionHeader }
+export { renderAccordionHeader_unstable }
 
-export { renderAccordionItem }
+export { renderAccordionItem_unstable }
 
-export { renderAccordionPanel }
+export { renderAccordionPanel_unstable }
 
-export { renderAvatar }
+export { renderAvatar_unstable }
 
-export { renderBadge }
+export { renderBadge_unstable }
 
-export { renderButton }
+export { renderButton_unstable }
 
-export { renderCompoundButton }
+export { renderCompoundButton_unstable }
 
-export { renderDivider }
-
-export { RendererContext }
+export { renderDivider_unstable }
 
 export { RendererProvider }
 
-export { RendererProviderProps }
+export { renderFluentProvider_unstable }
 
-export { renderFluentProvider }
+export { renderImage_unstable }
 
-export { renderImage }
+export { renderLink_unstable }
 
-export { renderLabel }
+export { renderMenu_unstable }
 
-export { renderLink }
+export { renderMenuButton_unstable }
 
-export { renderMenu }
+export { renderMenuDivider_unstable }
 
-export { renderMenuButton }
+export { renderMenuGroup_unstable }
 
-export { renderMenuDivider }
+export { renderMenuGroupHeader_unstable }
 
-export { renderMenuGroup }
+export { renderMenuItem_unstable }
 
-export { renderMenuGroupHeader }
+export { renderMenuItemCheckbox_unstable }
 
-export { renderMenuItem }
+export { renderMenuItemRadio_unstable }
 
-export { renderMenuItemCheckbox }
+export { renderMenuList_unstable }
 
-export { renderMenuItemRadio }
+export { renderMenuPopover_unstable }
 
-export { renderMenuList }
+export { renderMenuTrigger_unstable }
 
-export { renderMenuPopover }
+export { renderPopover_unstable }
 
-export { renderMenuTrigger }
+export { renderPopoverSurface_unstable }
 
-export { renderPopover }
+export { renderPopoverTrigger_unstable }
 
-export { renderPopoverSurface }
+export { renderPortal_unstable }
 
-export { renderPopoverTrigger }
+export { renderSplitButton_unstable }
 
-export { renderPortal }
+export { renderText_unstable }
 
-export { renderSplitButton }
+export { renderToggleButton_unstable }
 
-export { renderText }
-
-export { renderToggleButton }
-
-export { renderTooltip }
+export { renderTooltip_unstable }
 
 export { renderToStyleElements }
 
@@ -912,6 +886,8 @@ export { TextState }
 
 export { Theme }
 
+export { themeToTokensObject }
+
 export { Title1 }
 
 export { title1ClassName }
@@ -948,163 +924,157 @@ export { TooltipTriggerProps }
 
 export { UninitializedMenuListState }
 
-export { useAccordion }
+export { useAccordion_unstable }
 
-export { useAccordionContextValues }
+export { useAccordionContextValues_unstable }
 
-export { useAccordionHeader }
+export { useAccordionHeader_unstable }
 
-export { useAccordionHeaderContextValues }
+export { useAccordionHeaderContextValues_unstable }
 
-export { useAccordionHeaderStyles }
+export { useAccordionHeaderStyles_unstable }
 
-export { useAccordionItem }
+export { useAccordionItem_unstable }
 
-export { useAccordionItemContext }
+export { useAccordionItemContext_unstable }
 
-export { useAccordionItemContextValues }
+export { useAccordionItemContextValues_unstable }
 
-export { useAccordionItemStyles }
+export { useAccordionItemStyles_unstable }
 
-export { useAccordionPanel }
+export { useAccordionPanel_unstable }
 
-export { useAccordionPanelStyles }
+export { useAccordionPanelStyles_unstable }
 
-export { useAccordionStyles }
+export { useAccordionStyles_unstable }
 
-export { useAvatar }
+export { useAvatar_unstable }
 
-export { useAvatarStyles }
+export { useAvatarStyles_unstable }
 
-export { useBadge }
+export { useBadge_unstable }
 
-export { useBadgeStyles }
+export { useBadgeStyles_unstable }
 
-export { useButton }
+export { useButton_unstable }
 
-export { useButtonStyles }
+export { useButtonStyles_unstable }
 
-export { useCheckmarkStyles }
+export { useCheckmarkStyles_unstable }
 
-export { useCompoundButton }
+export { useCompoundButton_unstable }
 
-export { useCompoundButtonStyles }
+export { useCompoundButtonStyles_unstable }
 
-export { useCounterBadge }
+export { useCounterBadge_unstable }
 
-export { useCounterBadgeStyles }
+export { useCounterBadgeStyles_unstable }
 
-export { useDivider }
+export { useDivider_unstable }
 
-export { useDividerStyles }
+export { useDividerStyles_unstable }
 
 export { useFluent }
 
-export { useFluentProvider }
+export { useFluentProvider_unstable }
 
-export { useFluentProviderContextValues }
+export { useFluentProviderContextValues_unstable }
 
-export { useFluentProviderStyles }
+export { useFluentProviderStyles_unstable }
 
-export { useImage }
+export { useImage_unstable }
 
-export { useImageStyles }
+export { useImageStyles_unstable }
 
-export { useLabel }
+export { useLink_unstable }
 
-export { useLabelStyles }
+export { useLinkState_unstable }
 
-export { useLink }
+export { useLinkStyles_unstable }
 
-export { useLinkState }
+export { useMenu_unstable }
 
-export { useLinkStyles }
+export { useMenuButton_unstable }
 
-export { useMenu }
+export { useMenuButtonStyles_unstable }
 
-export { useMenuButton }
+export { useMenuContext_unstable }
 
-export { useMenuButtonStyles }
+export { useMenuContextValues_unstable }
 
-export { useMenuContext }
+export { useMenuDivider_unstable }
 
-export { useMenuContextValues }
+export { useMenuDividerStyles_unstable }
 
-export { useMenuDivider }
+export { useMenuGroup_unstable }
 
-export { useMenuDividerStyles }
+export { useMenuGroupContext_unstable }
 
-export { useMenuGroup }
+export { useMenuGroupContextValues_unstable }
 
-export { useMenuGroupContext }
+export { useMenuGroupHeader_unstable }
 
-export { useMenuGroupContextValues }
+export { useMenuGroupHeaderStyles_unstable }
 
-export { useMenuGroupHeader }
+export { useMenuGroupStyles_unstable }
 
-export { useMenuGroupHeaderStyles }
+export { useMenuItem_unstable }
 
-export { useMenuGroupStyles }
+export { useMenuItemCheckbox_unstable }
 
-export { useMenuItem }
+export { useMenuItemCheckboxStyles_unstable }
 
-export { useMenuItemCheckbox }
+export { useMenuItemRadio_unstable }
 
-export { useMenuItemCheckboxStyles }
+export { useMenuItemRadioStyles_unstable }
 
-export { useMenuItemRadio }
+export { useMenuItemStyles_unstable }
 
-export { useMenuItemRadioStyles }
+export { useMenuList_unstable }
 
-export { useMenuItemStyles }
+export { useMenuListContext_unstable }
 
-export { useMenuList }
+export { useMenuListContextValues_unstable }
 
-export { useMenuListContext }
+export { useMenuListStyles_unstable }
 
-export { useMenuListContextValues }
+export { useMenuPopover_unstable }
 
-export { useMenuListStyles }
+export { useMenuPopoverStyles_unstable }
 
-export { useMenuPopover }
+export { useMenuTrigger_unstable }
 
-export { useMenuPopoverStyles }
+export { useMenuTriggerContext_unstable }
 
-export { useMenuTrigger }
+export { usePopover_unstable }
 
-export { useMenuTriggerContext }
+export { usePopoverContext_unstable }
 
-export { usePopover }
+export { usePopoverSurface_unstable }
 
-export { usePopoverContext }
+export { usePopoverSurfaceStyles_unstable }
 
-export { usePopoverSurface }
+export { usePopoverTrigger_unstable }
 
-export { usePopoverSurfaceStyles }
+export { usePortal_unstable }
 
-export { usePopoverTrigger }
+export { usePresenceBadge_unstable }
 
-export { usePortal }
+export { useSplitButton_unstable }
 
-export { usePresenceBadge }
+export { useSplitButtonStyles_unstable }
 
-export { useRenderer }
+export { useText_unstable }
 
-export { useSplitButton }
+export { useTextStyles_unstable }
 
-export { useSplitButtonStyles }
+export { useToggleButton_unstable }
 
-export { useText }
+export { useToggleButtonStyles_unstable }
 
-export { useTextStyles }
+export { useTooltip_unstable }
 
-export { useToggleButton }
-
-export { useToggleButtonStyles }
-
-export { useTooltip }
-
-export { useTooltipStyles }
+export { useTooltipStyles_unstable }
 
 export { webDarkTheme }
 

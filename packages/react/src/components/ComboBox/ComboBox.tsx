@@ -420,6 +420,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
       'onChange',
       'value',
+      'aria-describedby',
+      'aria-labelledby',
     ]);
 
     const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
@@ -544,7 +546,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       label,
       disabled,
       ariaLabel,
-      ariaDescribedBy,
+      ariaDescribedBy = this.props['aria-describedby'],
       required,
       errorMessage,
       buttonIconProps,
@@ -567,6 +569,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       this._hasFocus() && this.props.multiSelect && multiselectAccessibleText
         ? multiselectAccessibleText
         : placeholderProp;
+
+    const labelledBy = [this.props['aria-labelledby'], label && this._id + '-label'].join(' ').trim();
 
     return (
       <div
@@ -594,7 +598,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-autocomplete={this._getAriaAutoCompleteValue()}
           role="combobox"
           readOnly={disabled}
-          aria-labelledby={label && this._id + '-label'}
+          aria-labelledby={labelledBy ? labelledBy : undefined}
           aria-label={ariaLabel && !label ? ariaLabel : undefined}
           aria-describedby={
             errorMessage !== undefined ? mergeAriaAttributeValues(ariaDescribedBy, errorMessageId) : ariaDescribedBy
@@ -1461,7 +1465,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const isIndeterminate: boolean = this._isOptionIndeterminate(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
-    const title = item.title ?? getPreviewText(item);
+    const title = item.title;
 
     const onRenderCheckboxLabel = () => onRenderOption(item, this._onRenderOptionContent);
 

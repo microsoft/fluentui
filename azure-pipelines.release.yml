@@ -45,20 +45,21 @@ steps:
     displayName: Generate version files
 
   - script: |
-      yarn run:published build --production --no-cache
+      yarn run:published build --production
     displayName: yarn build
 
-  # test, lint, bundle using lage cached build from previous step (omit --no-cache)
+  # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
+  # https://github.com/microsoft/fluentui/issues/21686
   - script: |
-      yarn run:published test
+      yarn run:published test --only
     displayName: yarn test
 
   - script: |
-      yarn run:published lint
+      yarn run:published lint --only
     displayName: yarn lint
 
   - script: |
-      yarn run:published bundle --production
+      yarn run:published bundle --only --production
     displayName: yarn bundle
 
   - script: |
@@ -167,6 +168,17 @@ steps:
   - script: |
       node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
     displayName: 'Update github release notes'
+
+  - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+    displayName: 📒 Generate Manifest
+    inputs:
+      BuildDropPath: $(System.DefaultWorkingDirectory)
+
+  - task: PublishPipelineArtifact@1
+    displayName: 📒 Publish Manifest
+    inputs:
+      artifactName: SBom-$(System.JobAttempt)
+      targetPath: $(System.DefaultWorkingDirectory)/_manifest
 
   # This would usually be run automatically (via a pipeline decorator from an extension), but the
   # thorough cleanup step prevents it from working. So run it manually here.

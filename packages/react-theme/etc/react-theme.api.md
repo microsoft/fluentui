@@ -202,6 +202,7 @@ export type ColorTokens = {
     colorCompoundBrandForeground1Pressed: string;
     colorBrandForeground1: string;
     colorBrandForeground2: string;
+    colorNeutralForeground1Static: string;
     colorNeutralForegroundInverted: string;
     colorNeutralForegroundInvertedHover: string;
     colorNeutralForegroundInvertedPressed: string;
@@ -405,6 +406,9 @@ export const teamsLightTheme: Theme;
 
 // @public (undocumented)
 export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
+
+// @public
+export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record<keyof TTheme, string>;
 
 // @public (undocumented)
 export const tokens: Record<keyof Theme, string>;

@@ -7,8 +7,8 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Link: ForwardRefComponent<LinkProps>;
@@ -16,36 +16,30 @@ export const Link: ForwardRefComponent<LinkProps>;
 // @public (undocumented)
 export const linkClassName = "fui-Link";
 
-// @public (undocumented)
-export type LinkCommons = {
-    appearance?: 'subtle';
-    disabled?: boolean;
-    disabledFocusable?: boolean;
-    inline?: boolean;
-};
-
+// Warning: (ae-forgotten-export) The symbol "LinkCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
 
 // @public (undocumented)
 export type LinkSlots = {
-    root: IntrinsicShorthandProps<'a', 'button'>;
+    root: Slot<'a', 'button'>;
 };
 
 // @public (undocumented)
 export type LinkState = ComponentState<LinkSlots> & LinkCommons;
 
 // @public
-export const renderLink: (state: LinkState) => JSX.Element;
+export const renderLink_unstable: (state: LinkState) => JSX.Element;
 
 // @public
-export const useLink: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement>) => LinkState;
+export const useLink_unstable: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement>) => LinkState;
 
 // @public
-export const useLinkState: (state: LinkState) => LinkState;
+export const useLinkState_unstable: (state: LinkState) => LinkState;
 
 // @public (undocumented)
-export const useLinkStyles: (state: LinkState) => LinkState;
+export const useLinkStyles_unstable: (state: LinkState) => LinkState;
 
 // (No @packageDocumentation comment for this package)
 

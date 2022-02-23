@@ -1,14 +1,29 @@
 import * as React from 'react';
 
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { SplitButton, MenuButtonProps } from '../../../index'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { SplitButton, MenuButtonProps } from '../../../index';
 
 export const Shape = () => (
   <>
     <Menu positioning="below-end">
       <MenuTrigger>
+        {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Rounded</SplitButton>}
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Item a</MenuItem>
+          <MenuItem>Item b</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+
+    <Menu positioning="below-end">
+      <MenuTrigger>
         {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} />
+          <SplitButton menuButton={triggerProps} shape="circular">
+            Circular
+          </SplitButton>
         )}
       </MenuTrigger>
 
@@ -23,22 +38,9 @@ export const Shape = () => (
     <Menu positioning="below-end">
       <MenuTrigger>
         {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} shape="circular" />
-        )}
-      </MenuTrigger>
-
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-
-    <Menu positioning="below-end">
-      <MenuTrigger>
-        {(triggerProps: MenuButtonProps) => (
-          <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} shape="square" />
+          <SplitButton menuButton={triggerProps} shape="square">
+            Square
+          </SplitButton>
         )}
       </MenuTrigger>
 

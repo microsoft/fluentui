@@ -42,3 +42,9 @@ export declare function getAllPackageInfo(): AllPackageInfo;
  * @returns true if it's a converged package (version >= 9)
  */
 export declare function isConvergedPackage(packagePathOrJson?: string | PackageJson): boolean;
+
+/**
+ * @param since - Commit to compare against
+ * @returns Set of packages that are changed
+ */
+export declare function getAffectedPackages(since?: string): Set<string>;

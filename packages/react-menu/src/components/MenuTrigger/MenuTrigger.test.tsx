@@ -1,10 +1,16 @@
 import * as React from 'react';
 import { MenuTrigger } from './MenuTrigger';
 import * as renderer from 'react-test-renderer';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
+import { mockUseMenuContext } from '../../common/mockUseMenuContext';
+import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
+
+jest.mock('../../contexts/menuContext.ts');
 
 describe('MenuTrigger', () => {
+  beforeEach(() => mockUseMenuContext());
+
   isConformant({
     disabledTests: [
       // MenuTrigger does not render DOM elements
@@ -51,7 +57,7 @@ describe('MenuTrigger', () => {
       Array [
         <button
           aria-haspopup="menu"
-          id=""
+          id="id"
         >
           Trigger
         </button>,
@@ -81,11 +87,94 @@ describe('MenuTrigger', () => {
       Array [
         <button
           aria-haspopup="menu"
-          id=""
+          id="id"
         >
           Trigger
         </button>,
       ]
     `);
+  });
+
+  it('should not open menu when aria-disabled is true', () => {
+    const setOpen = jest.fn();
+    mockUseMenuContext({ setOpen });
+
+    const { getByRole } = render(
+      <MenuTrigger>
+        <button aria-disabled>trigger</button>
+      </MenuTrigger>,
+    );
+    fireEvent.click(getByRole('button'));
+
+    expect(setOpen).toBeCalledTimes(0);
+  });
+
+  it('should open menu when aria-disabled is false', () => {
+    const setOpen = jest.fn();
+    mockUseMenuContext({ setOpen });
+
+    const { getByRole } = render(
+      <MenuTrigger>
+        <button aria-disabled={false}>trigger</button>
+      </MenuTrigger>,
+    );
+    fireEvent.click(getByRole('button'));
+
+    expect(setOpen).toBeCalledTimes(1);
+    expect(setOpen).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: true }));
+  });
+
+  it('should open menu when trigger is disabled', () => {
+    const setOpen = jest.fn();
+    mockUseMenuContext({ setOpen });
+
+    const { getByRole } = render(
+      <MenuTrigger>
+        <button disabled>trigger</button>
+      </MenuTrigger>,
+    );
+    fireEvent.click(getByRole('button'));
+
+    expect(setOpen).toBeCalledTimes(0);
+  });
+
+  it('should set MenuTriggerContext to false if not a submenu', () => {
+    mockUseMenuContext({ isSubmenu: false });
+    let contextValue: boolean | undefined;
+    const TestComponent = () => {
+      contextValue = useMenuTriggerContext_unstable();
+
+      return null;
+    };
+
+    render(
+      <MenuTrigger>
+        <button>
+          <TestComponent />
+        </button>
+      </MenuTrigger>,
+    );
+
+    expect(contextValue).toBe(false);
+  });
+
+  it('should set MenuTriggerContext to true if in a submenu', () => {
+    mockUseMenuContext({ isSubmenu: true });
+    let contextValue: boolean | undefined;
+    const TestComponent = () => {
+      contextValue = useMenuTriggerContext_unstable();
+
+      return null;
+    };
+
+    render(
+      <MenuTrigger>
+        <button>
+          <TestComponent />
+        </button>
+      </MenuTrigger>,
+    );
+
+    expect(contextValue).toBe(true);
   });
 });

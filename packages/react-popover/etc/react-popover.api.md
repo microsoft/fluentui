@@ -8,12 +8,15 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import { JSXElementConstructor } from 'react';
 import type { PopperVirtualElement } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
+import { ReactElement } from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 import type { usePopperMouseTarget } from '@fluentui/react-positioning';
 
 // @public (undocumented)
@@ -31,25 +34,13 @@ export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTM
 export const Popover: React_2.FC<PopoverProps>;
 
 // @public (undocumented)
-export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
-    open: boolean;
-    defaultOpen?: boolean;
-    onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
-    openOnHover?: boolean;
-    openOnContext?: boolean;
-    noArrow?: boolean;
-    size?: PopoverSize;
-    appearance?: 'brand' | 'inverted';
-    trapFocus?: boolean;
-    positioning?: PositioningShorthand;
-};
-
-// @public (undocumented)
 export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
 export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus'>;
 
+// Warning: (ae-forgotten-export) The symbol "PopoverCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type PopoverProps = Partial<PopoverCommons> & {
     children: [JSX.Element, JSX.Element] | JSX.Element;
@@ -80,7 +71,7 @@ export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
 
 // @public
 export type PopoverSurfaceSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public
@@ -89,39 +80,48 @@ export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<Pop
 };
 
 // @public
-export const PopoverTrigger: React_2.FC<PopoverTriggerProps>;
+export const PopoverTrigger: React_2.FC<PopoverTriggerProps> & FluentTriggerComponent;
+
+// @public (undocumented)
+export type PopoverTriggerChildProps = {
+    ref?: React_2.Ref<never>;
+} & Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-haspopup' | 'onClick' | 'onMouseEnter' | 'onKeyDown' | 'onMouseLeave' | 'onContextMenu'>;
 
 // @public
 export type PopoverTriggerProps = {
-    children: React_2.ReactElement;
+    children: (React_2.ReactElement & {
+        ref?: React_2.Ref<unknown>;
+    }) | ((props: PopoverTriggerChildProps) => React_2.ReactElement | null);
 };
 
 // @public
-export type PopoverTriggerState = PopoverTriggerProps;
+export type PopoverTriggerState = {
+    children: React_2.ReactElement | null;
+};
 
 // @public
-export const renderPopover: (state: PopoverState) => JSX.Element;
+export const renderPopover_unstable: (state: PopoverState) => JSX.Element;
 
 // @public
-export const renderPopoverSurface: (state: PopoverSurfaceState) => JSX.Element | null;
+export const renderPopoverSurface_unstable: (state: PopoverSurfaceState) => JSX.Element | null;
 
 // @public
-export const renderPopoverTrigger: (state: PopoverTriggerState) => JSX.Element;
+export const renderPopoverTrigger_unstable: (state: PopoverTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
 
 // @public
-export const usePopover: (props: PopoverProps) => PopoverState;
+export const usePopover_unstable: (props: PopoverProps) => PopoverState;
 
 // @public (undocumented)
-export const usePopoverContext: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
+export const usePopoverContext_unstable: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
 
 // @public
-export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDivElement>) => PopoverSurfaceState;
+export const usePopoverSurface_unstable: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDivElement>) => PopoverSurfaceState;
 
 // @public
-export const usePopoverSurfaceStyles: (state: PopoverSurfaceState) => PopoverSurfaceState;
+export const usePopoverSurfaceStyles_unstable: (state: PopoverSurfaceState) => PopoverSurfaceState;
 
 // @public
-export const usePopoverTrigger: (props: PopoverTriggerProps) => PopoverTriggerState;
+export const usePopoverTrigger_unstable: (props: PopoverTriggerProps) => PopoverTriggerState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(react-theme) Add border1 color token for shared colors",
-  "packageName": "@fluentui/react-theme",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

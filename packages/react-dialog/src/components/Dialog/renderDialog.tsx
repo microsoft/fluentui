@@ -5,7 +5,7 @@ import type { DialogState, DialogSlots } from './Dialog.types';
 /**
  * Render the final JSX of Dialog
  */
-export const renderDialog = (state: DialogState) => {
+export const renderDialog_unstable = (state: DialogState) => {
   const { slots, slotProps } = getSlots<DialogSlots>(state);
 
   // TODO Add additional slots in the appropriate place

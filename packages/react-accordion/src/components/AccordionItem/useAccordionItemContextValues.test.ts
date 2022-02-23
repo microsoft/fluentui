@@ -1,15 +1,15 @@
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
-import { useAccordionItem } from './useAccordionItem';
-import { useAccordionItemContextValues } from './useAccordionItemContextValues';
+import { useAccordionItem_unstable } from './useAccordionItem';
+import { useAccordionItemContextValues_unstable } from './useAccordionItemContextValues';
 
-describe('useAccordionContextValues', () => {
+describe('useAccordionContextValues_unstable', () => {
   it('should return a value for "accordion"', () => {
     const { result } = renderHook(() => {
-      const state = useAccordionItem({ value: 'foo' }, React.createRef());
+      const state = useAccordionItem_unstable({ value: 'foo' }, React.createRef());
 
-      return useAccordionItemContextValues(state);
+      return useAccordionItemContextValues_unstable(state);
     });
 
     expect(result.current.accordionItem).toBeDefined();

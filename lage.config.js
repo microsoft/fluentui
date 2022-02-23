@@ -17,7 +17,7 @@ module.exports = {
   ...(process.env.TF_BUILD && { reporter: 'adoLog' }),
 
   // Ignores these minimatch patterns when considers what packages have changed for the --since flag
-  ignore: ['change/**', 'README.md'],
+  ignore: ['change/**', 'rfcs/**', 'README.md'],
 
   // All of these options are sent to `backfill`: https://github.com/microsoft/backfill/blob/master/README.md
   cacheOptions: {

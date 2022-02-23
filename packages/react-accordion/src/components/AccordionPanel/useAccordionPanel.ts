@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import { useAccordionItemContext } from '../AccordionItem/index';
+import { useAccordionItemContext_unstable } from '../AccordionItem/index';
 import type { AccordionPanelProps, AccordionPanelState } from './AccordionPanel.types';
 
 /**
@@ -8,8 +8,11 @@ import type { AccordionPanelProps, AccordionPanelState } from './AccordionPanel.
  * @param props - AccordionPanel properties
  * @param ref - reference to root HTMLElement of AccordionPanel
  */
-export const useAccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTMLElement>): AccordionPanelState => {
-  const { open } = useAccordionItemContext();
+export const useAccordionPanel_unstable = (
+  props: AccordionPanelProps,
+  ref: React.Ref<HTMLElement>,
+): AccordionPanelState => {
+  const { open } = useAccordionItemContext_unstable();
   return {
     open,
     components: {
@@ -17,7 +20,6 @@ export const useAccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTM
     },
     root: getNativeElementProps('div', {
       ref,
-      role: 'region',
       ...props,
     }),
   };

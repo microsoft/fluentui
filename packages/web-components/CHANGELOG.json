@@ -2,6 +2,51 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 18 Feb 2022 07:22:08 GMT",
+      "tag": "@fluentui/web-components_v2.2.3",
+      "version": "2.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "b8bea1a92f7aee43b6887c9f035e33d4c26ddac0",
+            "comment": "Aligned \"plus 2\" type ramp line height size"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Jan 2022 07:34:08 GMT",
+      "tag": "@fluentui/web-components_v2.2.2",
+      "version": "2.2.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "robarb@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "739a799bb753ced2968289ed6a6b253319ae7138",
+            "comment": "Updating fast-foundation to v2.32.0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Jan 2022 09:43:48 GMT",
+      "tag": "@fluentui/web-components_v2.2.1",
+      "version": "2.2.1",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "4dcdb85d20d7cf5d0aa71c09098142e8c933530b",
+            "comment": "Remove unused declared variables in combobox styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Jan 2022 07:32:29 GMT",
       "tag": "@fluentui/web-components_v2.2.1",
       "version": "2.2.1",

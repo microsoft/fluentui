@@ -9,18 +9,18 @@ export {
   cardFooterClassName,
   cardHeaderClassName,
   cardPreviewClassName,
-  renderCard,
-  renderCardFooter,
-  renderCardHeader,
-  renderCardPreview,
-  useCard,
-  useCardFooter,
-  useCardFooterStyles,
-  useCardHeader,
-  useCardHeaderStyles,
-  useCardPreview,
-  useCardPreviewStyles,
-  useCardStyles,
+  renderCard_unstable,
+  renderCardFooter_unstable,
+  renderCardHeader_unstable,
+  renderCardPreview_unstable,
+  useCard_unstable,
+  useCardFooter_unstable,
+  useCardFooterStyles_unstable,
+  useCardHeader_unstable,
+  useCardHeaderStyles_unstable,
+  useCardPreview_unstable,
+  useCardPreviewStyles_unstable,
+  useCardStyles_unstable,
 } from '@fluentui/react-card';
 export type {
   CardFooterProps,
@@ -36,5 +36,67 @@ export type {
   CardSlots,
   CardState,
 } from '@fluentui/react-card';
-export { Input, inputClassName, renderInput, useInput, useInputStyles } from '@fluentui/react-input';
+
+export {
+  Checkbox,
+  checkboxClassName,
+  renderCheckbox_unstable,
+  useCheckbox_unstable,
+  useCheckboxStyles_unstable,
+} from '@fluentui/react-checkbox';
+export type { CheckboxOnChangeData, CheckboxProps, CheckboxSlots, CheckboxState } from '@fluentui/react-checkbox';
+
+export {
+  Input,
+  inputClassName,
+  renderInput_unstable,
+  useInput_unstable,
+  useInputStyles_unstable,
+} from '@fluentui/react-input';
 export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
+
+export {
+  Label,
+  labelClassName,
+  renderLabel_unstable,
+  useLabel_unstable,
+  useLabelStyles_unstable,
+} from '@fluentui/react-label';
+export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
+
+export {
+  Slider,
+  sliderClassName,
+  useSliderState_unstable,
+  useSliderStyles_unstable,
+  useSlider_unstable,
+  renderSlider_unstable,
+} from '@fluentui/react-slider';
+
+export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
+
+export {
+  Tab,
+  tabClassName,
+  useTab_unstable,
+  useTabStyles_unstable,
+  renderTab_unstable,
+  TabList,
+  tabListClassName,
+  useTabList_unstable,
+  useTabListStyles_unstable,
+  renderTabList_unstable,
+} from '@fluentui/react-tabs';
+
+export type {
+  TabValue,
+  TabProps,
+  TabState,
+  SelectTabData,
+  SelectTabEvent,
+  SelectTabEventHandler,
+  TabListProps,
+  TabListContextValue,
+  TabListContextValues,
+  TabListState,
+} from '@fluentui/react-tabs';

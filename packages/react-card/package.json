@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-card",
-  "version": "9.0.0-beta.5",
+  "version": "9.0.0-beta.8",
   "private": false,
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
@@ -20,21 +20,19 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-card/src && yarn docs",
-    "storybook": "start-storybook",
+    "storybook": "node ../../scripts/storybook/runner",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "9.0.0-beta.4",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-beta.4",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-make-styles": "9.0.0-beta.4",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.3",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/react-text": "9.0.0-beta.4",
-    "@fluentui/react-button": "9.0.0-beta.5",
+    "@fluentui/react-text": "9.0.0-rc.3",
+    "@fluentui/react-button": "9.0.0-rc.3",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
@@ -47,9 +45,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "9.0.0-beta.4",
-    "@fluentui/react-utilities": "9.0.0-beta.4",
-    "@fluentui/react-tabster": "9.0.0-beta.5",
+    "@griffel/react": "1.0.0",
+    "@fluentui/react-utilities": "9.0.0-rc.3",
+    "@fluentui/react-tabster": "9.0.0-rc.3",
+    "@fluentui/react-theme": "9.0.0-rc.3",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

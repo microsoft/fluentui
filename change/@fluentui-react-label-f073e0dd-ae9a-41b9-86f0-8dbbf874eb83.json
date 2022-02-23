@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Migrate package to use solution tsconfigs",
-  "packageName": "@fluentui/react-label",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "none"
-}
