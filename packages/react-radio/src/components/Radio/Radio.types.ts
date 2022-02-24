@@ -34,7 +34,12 @@ export type RadioSlots = {
  */
 export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'size'> & {
   /**
-   * The size of the radio indicator and label.
+   * The value of the RadioGroup when this Radio is selected.
+   */
+  value?: string;
+
+  /**
+   * The size of the radio indicator.
    *
    * @defaultvalue medium
    */

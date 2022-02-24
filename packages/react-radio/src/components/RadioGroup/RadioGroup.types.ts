@@ -1,6 +1,7 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
-import { RadioContextValue } from '../../contexts/RadioContext';
+import { RadioGroupContextValue } from '../../contexts/RadioGroupContext';
 
 export type RadioGroupSlots = {
   root: Slot<'fieldset'>;
@@ -14,7 +15,7 @@ export type RadioGroupSlots = {
 /**
  * RadioGroup Props
  */
-export type RadioGroupProps = ComponentProps<Partial<RadioGroupSlots>> & {
+export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'onChange'> & {
   /**
    * How the radio items are laid out in the group
    *
@@ -26,6 +27,32 @@ export type RadioGroupProps = ComponentProps<Partial<RadioGroupSlots>> & {
    * Styles the group's label to have an asterisk to indicate it is required.
    */
   required?: boolean;
+
+  /**
+   * Controls the selcted Radio item in this group.
+   *
+   * This should be the value prop of one of the Radio items inside this group.
+   */
+  value?: string;
+
+  /**
+   * The default selected Radio item in this group.
+   *
+   * This should be the value prop of one of the Radio items inside this group.
+   */
+  defaultValue?: string;
+
+  /**
+   * Callback when the selected radio button changes.
+   */
+  onChange?: (ev: React.FormEvent<HTMLInputElement>, data: RadioGroupOnChangeData) => void;
+};
+
+/**
+ * Data for the onChange event for RadioGroup.
+ */
+export type RadioGroupOnChangeData = {
+  value?: string;
 };
 
 /**
@@ -33,5 +60,5 @@ export type RadioGroupProps = ComponentProps<Partial<RadioGroupSlots>> & {
  */
 export type RadioGroupState = ComponentState<RadioGroupSlots> &
   Pick<RadioGroupProps, 'layout' | 'required'> & {
-    context: RadioContextValue;
+    context: RadioGroupContextValue;
   };

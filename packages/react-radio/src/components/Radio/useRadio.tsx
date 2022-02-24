@@ -3,7 +3,7 @@ import { Label } from '@fluentui/react-label';
 import { getPartitionedNativeProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { CircleFilled } from '@fluentui/react-icons';
 import type { RadioProps, RadioState } from './Radio.types';
-import { RadioContext } from '../../contexts/RadioContext';
+import { RadioGroupContext } from '../../contexts/RadioGroupContext';
 
 /**
  * Create the state required to render Radio.
@@ -15,21 +15,21 @@ import { RadioContext } from '../../contexts/RadioContext';
  * @param ref - reference to `<input>` element of Radio
  */
 export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputElement>): RadioState => {
-  const context = React.useContext(RadioContext);
+  const group = React.useContext(RadioGroupContext);
 
   const {
-    checked,
-    defaultChecked,
+    checked = group.value !== undefined ? group.value === props.value : undefined,
+    defaultChecked = group.defaultValue !== undefined ? group.defaultValue === props.value : undefined,
+    labelPosition = group.layout === 'horizontalStacked' ? 'below' : 'after',
     disabled,
     required,
     size = 'medium',
-    labelPosition = context?.labelPosition || 'after',
   } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['size'],
+    excludedPropNames: ['checked', 'defaultChecked', 'size'],
   });
 
   const root = resolveShorthand(props.root, {
@@ -43,7 +43,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
       ref,
       type: 'radio',
       id: useId('radio-', nativeProps.primary.id),
-      name: context?.name,
+      name: group?.name,
       checked,
       defaultChecked,
       ...nativeProps.primary,

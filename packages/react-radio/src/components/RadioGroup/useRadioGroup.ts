@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
 import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
 import { Label } from '@fluentui/react-label';
-import { RadioContextValue } from '../../contexts/RadioContext';
 
 /**
  * Create the state required to render RadioGroup.
@@ -19,30 +18,44 @@ export const useRadioGroup_unstable = (
 ): RadioGroupState => {
   const generatedName = useId('radiogroup-');
 
-  const { name = generatedName, layout = 'vertical', disabled, required } = props;
+  const { name = generatedName, value, defaultValue, layout = 'vertical', required, onChange } = props;
 
   const label = resolveShorthand(props.label, {
     defaultProps: {
       id: generatedName + '__label',
-      disabled,
       required,
     },
   });
 
-  const root = getNativeElementProps('fieldset', {
-    ref,
-    role: 'radiogroup',
-    'aria-labelledby': label?.id,
-    ...props,
-  });
+  const root = getNativeElementProps(
+    'fieldset',
+    {
+      ref,
+      role: 'radiogroup',
+      'aria-labelledby': label?.id,
+      ...props,
+    },
+    ['onChange'],
+  );
 
-  const labelPosition = layout === 'horizontalStacked' ? 'below' : undefined;
-  const context = React.useMemo<RadioContextValue>(() => ({ name, labelPosition }), [name, labelPosition]);
+  root.onChange = useEventCallback(ev => {
+    if (onChange && ev.target instanceof HTMLInputElement && ev.target.name === name) {
+      onChange(ev, { value: ev.target.value });
+    }
+  });
 
   return {
     layout,
     required,
-    context,
+    context: React.useMemo(
+      () => ({
+        name,
+        layout,
+        value,
+        defaultValue,
+      }),
+      [name, layout, value, defaultValue],
+    ),
     components: {
       root: 'fieldset',
       label: Label,

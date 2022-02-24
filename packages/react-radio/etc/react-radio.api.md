@@ -18,21 +18,29 @@ export const Radio: ForwardRefComponent<RadioProps>;
 export const radioClassName = "fui-Radio";
 
 // @public
-export const RadioContext: React_2.Context<RadioContextValue>;
-
-// @public (undocumented)
-export type RadioContextValue = Pick<RadioProps, 'name' | 'labelPosition'>;
-
-// @public
 export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
 
 // @public (undocumented)
 export const radioGroupClassName = "fui-RadioGroup";
 
 // @public
-export type RadioGroupProps = ComponentProps<Partial<RadioGroupSlots>> & {
+export const RadioGroupContext: React_2.Context<RadioGroupContextValue>;
+
+// @public (undocumented)
+export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'layout' | 'value' | 'defaultValue'>;
+
+// @public
+export type RadioGroupOnChangeData = {
+    value: RadioGroupProps['value'];
+};
+
+// @public
+export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'onChange'> & {
     layout?: 'vertical' | 'horizontal' | 'horizontalStacked';
     required?: boolean;
+    value?: string;
+    defaultValue?: string;
+    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: RadioGroupOnChangeData) => void;
 };
 
 // @public (undocumented)
@@ -43,11 +51,12 @@ export type RadioGroupSlots = {
 
 // @public
 export type RadioGroupState = ComponentState<RadioGroupSlots> & Pick<RadioGroupProps, 'layout' | 'required'> & {
-    context: RadioContextValue;
+    context: RadioGroupContextValue;
 };
 
 // @public
 export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'size'> & {
+    value?: string;
     size?: 'medium' | 'large';
     labelPosition?: 'after' | 'below';
 };
