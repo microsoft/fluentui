@@ -1,246 +1,198 @@
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SwitchState } from './Switch.types';
 
 export const switchClassName = 'fui-Switch';
-const trackClassName = `${switchClassName}-track`;
-const thumbClassName = `${switchClassName}-thumb`;
+const switchThumbClassName = 'fui-Switch__thumb';
+const switchTrackClassName = 'fui-Switch__track';
 
-/**
- * Styles for the root slot
- */
 const useRootStyles = makeStyles({
-  root: {
-    '--switch-width': '40px',
-    '--switch-height': '20px',
-    '--switch-thumb-size': '14px',
-    '--switch-checked-opacity': '0',
-    '--switch-unchecked-opacity': '0',
-
-    position: 'relative',
-    width: 'var(--switch-width)',
-    height: 'var(--switch-height)',
-    display: 'inline-block',
-    userSelect: 'none',
-    touchAction: 'none',
-    verticalAlign: 'bottom',
-  },
-
-  unchecked: {
-    [`:hover .${thumbClassName}`]: {
-      ':before': {
-        backgroundColor: tokens.colorNeutralStrokeAccessibleHover,
-      },
-    },
-
-    [`:hover .${trackClassName}`]: {
-      ':before': {
-        borderColor: tokens.colorNeutralStrokeAccessibleHover,
-      },
-    },
-  },
-
-  checked: {
-    [`:hover .${trackClassName}`]: {
-      ':after': {
-        backgroundColor: tokens.colorBrandBackgroundHover,
-      },
-    },
-
-    [`:active .${trackClassName}`]: {
-      ':after': {
-        backgroundColor: tokens.colorBrandBackgroundPressed,
-      },
-    },
-  },
-
-  enabled: {
-    '-webkit-tap-highlight-color': 'rgba(0,0,0,0)',
-    cursor: 'pointer',
-  },
-
-  disabled: {
-    cursor: 'not-allowed',
-    pointerEvents: 'none',
-  },
-
-  focusIndicator: createFocusOutlineStyle({ selector: 'focus-within', style: { outlineOffset: '8px' } }),
-});
-
-/**
- * Styles for the track slot
- */
-const useTrackStyles = makeStyles({
-  track: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    transitionProperty: 'backgroundColor',
-    transitionDuration: '0.1s',
-    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
-    touchAction: 'none',
-    pointerEvents: 'none',
-
-    ':before': {
-      position: 'absolute',
-      top: '0px',
-      left: '0px',
-      bottom: '0px',
-      right: '0px',
-      boxSizing: 'border-box',
-      ...shorthands.borderRadius('999px'),
-      content: "''",
-      opacity: 'var(--switch-unchecked-opacity)',
-    },
-
-    ':after': {
-      position: 'absolute',
-      top: '0px',
-      left: '0px',
-      bottom: '0px',
-      right: '0px',
-      boxSizing: 'border-box',
-      ...shorthands.borderRadius('999px'),
-      content: "''",
-      opacity: 'var(--switch-checked-opacity)',
-    },
-  },
-
-  unchecked: {
-    ':before': {
-      ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-      backgroundColor: 'transparent',
-    },
-  },
-
-  checked: {
-    ':after': {
-      backgroundColor: tokens.colorBrandBackground,
-      ...shorthands.borderStyle('none'),
-    },
-  },
-
-  disabledUnchecked: {
-    ':before': {
-      ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
-    },
-  },
-
-  disabledChecked: {
-    ':after': {
-      ...shorthands.border('1px', 'solid', tokens.colorTransparentStrokeDisabled),
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    },
-  },
-});
-
-/**
- * Styles for the thumb wrapper slot
- */
-const useThumbWrapperStyles = makeStyles({
-  thumbWrapper: {
-    position: 'absolute',
-    top: '0',
-    bottom: '0',
-    left: 'calc(var(--switch-thumb-size) * .7)',
-    right: 'calc(var(--switch-thumb-size) * .7)',
-    touchAction: 'none',
-    pointerEvents: 'none',
-  },
-});
-
-/**
- * Styles for the thumb slot
- */
-const useThumbStyles = makeStyles({
-  thumb: {
-    position: 'absolute',
-    width: 'var(--switch-thumb-size)',
-    height: 'var(--switch-thumb-size)',
+  base: {
     boxSizing: 'border-box',
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    top: '50%',
-    transform: 'translate(-50%, -50%)',
-    transitionProperty: 'backgroundColor',
-    transitionDuration: '0.1s',
-    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
-    touchAction: 'none',
-    pointerEvents: 'none',
-
-    ':before': {
-      position: 'absolute',
-      top: '0px',
-      left: '0px',
-      bottom: '0px',
-      right: '0px',
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      content: "''",
-      opacity: 'var(--switch-unchecked-opacity)',
-    },
-
-    ':after': {
-      position: 'absolute',
-      top: '0px',
-      left: '0px',
-      bottom: '0px',
-      right: '0px',
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      content: "''",
-      opacity: 'var(--switch-checked-opacity)',
-    },
+    cursor: 'pointer',
+    height: '36px',
+    ...shorthands.padding('8px'),
+    position: 'relative',
+    width: '56px',
   },
 
-  unchecked: {
-    ':before': {
-      backgroundColor: tokens.colorNeutralStrokeAccessible,
-    },
-  },
+  focusIndicator: createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 
   checked: {
-    ':after': {
+    [`& .${switchThumbClassName}`]: {
       backgroundColor: tokens.colorNeutralForegroundOnBrand,
     },
-  },
 
-  disabledUnchecked: {
-    ':before': {
-      ...shorthands.border('1px', 'solid', tokens.colorNeutralForegroundDisabled),
-      backgroundColor: tokens.colorNeutralBackground1,
+    [`& .${switchTrackClassName}`]: {
+      backgroundColor: tokens.colorBrandBackground,
+      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+    },
+
+    ':hover': {
+      [`& .${switchThumbClassName}`]: {
+        backgroundColor: tokens.colorNeutralForegroundOnBrand,
+      },
+
+      [`& .${switchTrackClassName}`]: {
+        backgroundColor: tokens.colorBrandBackgroundHover,
+        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+      },
+    },
+
+    ':active': {
+      [`& .${switchThumbClassName}`]: {
+        backgroundColor: tokens.colorNeutralForegroundOnBrand,
+      },
+
+      [`& .${switchTrackClassName}`]: {
+        backgroundColor: tokens.colorBrandBackgroundPressed,
+        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+      },
     },
   },
 
-  disabledChecked: {
-    ':after': {
+  unchecked: {
+    [`& .${switchThumbClassName}`]: {
+      backgroundColor: tokens.colorNeutralStrokeAccessible,
+    },
+
+    [`& .${switchTrackClassName}`]: {
+      ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
+    },
+
+    ':hover': {
+      [`& .${switchThumbClassName}`]: {
+        backgroundColor: tokens.colorNeutralStrokeAccessibleHover,
+      },
+
+      [`& .${switchTrackClassName}`]: {
+        ...shorthands.borderColor(tokens.colorNeutralStrokeAccessibleHover),
+      },
+    },
+
+    ':active': {
+      [`& .${switchThumbClassName}`]: {
+        backgroundColor: tokens.colorNeutralStrokeAccessiblePressed,
+      },
+
+      [`& .${switchTrackClassName}`]: {
+        ...shorthands.borderColor(tokens.colorNeutralStrokeAccessiblePressed),
+      },
+    },
+  },
+
+  checkedDisabled: {
+    cursor: 'default',
+
+    [`& .${switchThumbClassName}`]: {
       backgroundColor: tokens.colorNeutralForegroundDisabled,
     },
+
+    [`& .${switchTrackClassName}`]: {
+      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      ...shorthands.borderColor(tokens.colorNeutralBackgroundDisabled),
+    },
+
+    ':hover': {
+      [`& .${switchThumbClassName}`]: {
+        backgroundColor: tokens.colorNeutralForegroundDisabled,
+      },
+
+      [`& .${switchTrackClassName}`]: {
+        backgroundColor: tokens.colorNeutralBackgroundDisabled,
+        ...shorthands.borderColor(tokens.colorNeutralBackgroundDisabled),
+      },
+    },
+
+    ':active': {
+      [`& .${switchThumbClassName}`]: {
+        backgroundColor: tokens.colorNeutralForegroundDisabled,
+      },
+
+      [`& .${switchTrackClassName}`]: {
+        backgroundColor: tokens.colorNeutralBackgroundDisabled,
+        ...shorthands.borderColor(tokens.colorNeutralBackgroundDisabled),
+      },
+    },
+  },
+
+  uncheckedDisabled: {
+    cursor: 'default',
+
+    [`& .${switchThumbClassName}`]: {
+      backgroundColor: tokens.colorNeutralForegroundDisabled,
+    },
+
+    [`& .${switchTrackClassName}`]: {
+      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+    },
+
+    ':hover': {
+      [`& .${switchThumbClassName}`]: {
+        backgroundColor: tokens.colorNeutralForegroundDisabled,
+      },
+
+      [`& .${switchTrackClassName}`]: {
+        ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+      },
+    },
+
+    ':active': {
+      [`& .${switchThumbClassName}`]: {
+        backgroundColor: tokens.colorNeutralForegroundDisabled,
+      },
+
+      [`& .${switchTrackClassName}`]: {
+        ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+      },
+    },
   },
 });
 
-/**
- * Styles for the activeRail slot
- */
-const useActiveRailStyles = makeStyles({
-  activeRail: {
-    position: 'absolute',
-    left: 'calc(var(--switch-thumb-size) * .7)',
-    right: 'calc(var(--switch-thumb-size) * .7)',
-  },
-});
-
-/**
- * Styles for the hidden input slot
- */
-const useInputStyle = makeStyles({
-  input: {
+const useInputStyles = makeStyles({
+  base: {
+    boxSizing: 'border-box',
+    cursor: 'inherit',
+    height: '100%',
+    left: 0,
+    ...shorthands.margin(0),
     opacity: 0,
     position: 'absolute',
-    ...shorthands.padding(0),
-    ...shorthands.margin(0),
+    top: 0,
     width: '100%',
-    height: '100%',
-    touchAction: 'none',
-    pointerEvents: 'none',
+    zIndex: 1,
+  },
+});
+
+const useThumbStyles = makeStyles({
+  base: {
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    boxSizing: 'border-box',
+    height: '14px',
+    transitionDuration: '200ms',
+    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+    transitionProperty: 'all',
+    width: '14px',
+  },
+
+  checked: {
+    transform: 'translateX(20px)',
+  },
+});
+
+const useTrackStyles = makeStyles({
+  base: {
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    ...shorthands.borderStyle('solid'),
+    ...shorthands.borderWidth('1px'),
+    boxSizing: 'border-box',
+    height: '20px',
+    ...shorthands.padding('2px'),
+    transitionDuration: '200ms',
+    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+    transitionProperty: 'all',
+    width: '40px',
   },
 });
 
@@ -248,50 +200,32 @@ const useInputStyle = makeStyles({
  * Apply styling to the Switch slots based on the state
  */
 export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
-  const { checked, disabled } = state.input;
-
   const rootStyles = useRootStyles();
-  const trackStyles = useTrackStyles();
-  const thumbWrapperStyles = useThumbWrapperStyles();
+  const inputStyles = useInputStyles();
   const thumbStyles = useThumbStyles();
-  const activeRailStyles = useActiveRailStyles();
-  const inputStyles = useInputStyle();
+  const trackStyles = useTrackStyles();
+
+  const {
+    checked,
+    input: { disabled },
+  } = state;
 
   state.root.className = mergeClasses(
-    switchClassName + (checked ? ' checked' : ''),
-    rootStyles.root,
+    switchClassName,
+    rootStyles.base,
     rootStyles.focusIndicator,
-    !disabled && rootStyles.checked,
-    !disabled && rootStyles.unchecked,
-    disabled ? rootStyles.disabled : rootStyles.enabled,
+    checked ? rootStyles.checked : rootStyles.unchecked,
+    disabled && (checked ? rootStyles.checkedDisabled : rootStyles.uncheckedDisabled),
     state.root.className,
   );
-
-  state.track.className = mergeClasses(
-    trackClassName,
-    trackStyles.track,
-    !disabled && trackStyles.checked,
-    !disabled && trackStyles.unchecked,
-    disabled && trackStyles.disabledChecked,
-    disabled && trackStyles.disabledUnchecked,
-    state.track.className,
-  );
-
-  state.thumbWrapper.className = mergeClasses(thumbWrapperStyles.thumbWrapper, state.thumbWrapper.className);
-
+  state.input.className = mergeClasses(inputStyles.base, state.input.className);
   state.thumb.className = mergeClasses(
-    thumbClassName,
-    thumbStyles.thumb,
-    !disabled && thumbStyles.checked,
-    !disabled && thumbStyles.unchecked,
-    disabled && thumbStyles.disabledChecked,
-    disabled && thumbStyles.disabledUnchecked,
+    switchThumbClassName,
+    thumbStyles.base,
+    checked && thumbStyles.checked,
     state.thumb.className,
   );
-
-  state.activeRail.className = mergeClasses(activeRailStyles.activeRail, state.activeRail.className);
-
-  state.input.className = mergeClasses(inputStyles.input, state.input.className);
+  state.track.className = mergeClasses(switchTrackClassName, trackStyles.base, state.track.className);
 
   return state;
 };

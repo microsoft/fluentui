@@ -3,19 +3,17 @@ import { getSlots } from '@fluentui/react-utilities';
 import type { SwitchState, SwitchSlots } from './Switch.types';
 
 /**
- * Render the final JSX of Switch
+ * Render a Switch component by passing the state defined props to the appropriate slots.
  */
 export const renderSwitch_unstable = (state: SwitchState) => {
   const { slots, slotProps } = getSlots<SwitchSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
-      <slots.track {...slotProps.track} />
-      <slots.thumbWrapper {...slotProps.thumbWrapper}>
-        <slots.thumb {...slotProps.thumb} />
-      </slots.thumbWrapper>
       <slots.input {...slotProps.input} />
-      <slots.activeRail {...slotProps.activeRail} />
+      <slots.track {...slotProps.track}>
+        <slots.thumb {...slotProps.thumb} />
+      </slots.track>
     </slots.root>
   );
 };
