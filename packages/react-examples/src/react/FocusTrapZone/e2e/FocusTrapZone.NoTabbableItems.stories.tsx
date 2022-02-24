@@ -4,6 +4,7 @@ import { useProps } from './shared';
 
 const rootClass = mergeStyles({
   button: { height: 30, width: 60 },
+  '*:focus': { outline: '2px dashed red' },
 });
 
 /**

@@ -3,6 +3,7 @@ import { FocusZone, FocusTrapZone, FocusZoneDirection, mergeStyles } from '@flue
 
 const rootClass = mergeStyles({
   button: { width: 60, height: 30 },
+  '*:focus': { outline: '2px dashed red' },
 });
 
 /**

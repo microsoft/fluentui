@@ -16,7 +16,7 @@ export const PropValues = () => {
     // don't render until props have been set
     props && (
       <div className={rootClass} onClick={ev => setButtonClicked((ev.target as HTMLButtonElement).textContent || '')}>
-        <div id="buttonClicked">{buttonClicked}</div>
+        <div id="buttonClicked">clicked {buttonClicked}</div>
         <button>before</button>
         <FocusTrapZone {...props}>
           <button>first</button>

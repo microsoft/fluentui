@@ -8,6 +8,7 @@ const rootClass = mergeStyles({
     width: 60,
     display: 'block',
   },
+  '*:focus': { outline: '2px dashed red' },
 });
 
 /** Imperatively focusing the FTZ */

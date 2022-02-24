@@ -64,7 +64,7 @@ describe('FocusTrapZone', () => {
       // it focuses first button inside FTZ instead
       cy.focused().should('have.text', 'first');
       // and the click isn't respected
-      cy.get('#buttonClicked').should('have.text', '');
+      cy.get('#buttonClicked').should('have.text', 'clicked ');
     });
 
     it('Restores focus to FTZ when programmatically focusing outside FTZ', () => {
@@ -85,7 +85,7 @@ describe('FocusTrapZone', () => {
 
       // click the button and verify it worked (the story updates the text when a button is clicked)
       cy.contains('before').realClick();
-      cy.get('#buttonClicked').should('have.text', 'before');
+      cy.get('#buttonClicked').should('have.text', 'clicked before');
 
       // but focus is kept within the FTZ
       cy.focused().should('have.text', 'first');

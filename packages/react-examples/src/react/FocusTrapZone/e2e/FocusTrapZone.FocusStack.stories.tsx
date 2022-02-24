@@ -6,7 +6,7 @@ import { useGlobal } from './shared';
 const rootClass = mergeStyles({
   '> div': {
     // target all child FTZ roots
-    border: '2px dashed red',
+    border: '2px dashed blue',
     padding: 10,
     margin: 10,
     button: {
@@ -14,6 +14,7 @@ const rootClass = mergeStyles({
       marginLeft: 10,
     },
   },
+  '*:focus': { outline: '2px dashed red' },
 });
 
 /**
