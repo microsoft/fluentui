@@ -7,7 +7,7 @@ exports[`Radio renders a default state 1`] = `
   >
     <input
       class=""
-      id="radio-9"
+      id="radio-1"
       type="radio"
     />
     <div
@@ -30,7 +30,7 @@ exports[`Radio renders a default state 1`] = `
     </div>
     <label
       class="fui-Label fui-Radio__label"
-      for="radio-9"
+      for="radio-1"
     >
       Default Radio
     </label>

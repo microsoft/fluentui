@@ -3,13 +3,13 @@
 exports[`RadioGroup renders a default state 1`] = `
 <div>
   <fieldset
-    aria-labelledby="radiogroup-8__label"
+    aria-labelledby="radiogroup-1__label"
     class="fui-RadioGroup"
     role="radiogroup"
   >
     <label
       class="fui-Label fui-RadioGroup__label"
-      id="radiogroup-8__label"
+      id="radiogroup-1__label"
     >
       Default RadioGroup
     </label>
