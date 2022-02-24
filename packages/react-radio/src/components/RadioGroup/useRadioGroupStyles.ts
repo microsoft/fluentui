@@ -12,6 +12,7 @@ const useStyles = makeStyles({
     ...shorthands.padding(0),
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'flex-start',
 
     [`:disabled > .${labelClassName}`]: {
       color: tokens.colorNeutralForegroundDisabled,
