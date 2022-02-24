@@ -588,6 +588,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-textarea": {
+      "root": "packages/react-textarea",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-textarea/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-theme": {
       "root": "packages/react-theme",
       "projectType": "library",
