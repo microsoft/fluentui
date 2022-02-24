@@ -11,9 +11,8 @@ export const renderSwitch_unstable = (state: SwitchState) => {
   return (
     <slots.root {...slotProps.root}>
       <slots.input {...slotProps.input} />
-      <slots.track {...slotProps.track}>
-        <slots.thumb {...slotProps.thumb} />
-      </slots.track>
+      <slots.track {...slotProps.track} />
+      <slots.thumb {...slotProps.thumb} />
     </slots.root>
   );
 };
