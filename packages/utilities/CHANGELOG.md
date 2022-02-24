@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Thu, 17 Feb 2022 07:28:31 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Feb 2022 07:29:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.4.3)
+
+Thu, 24 Feb 2022 07:29:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.4.2..@fluentui/utilities_v8.4.3)
+
+### Patches
+
+- make ./packages/utilities/src/DelayedRender.tsx render during SSR ([PR #21785](https://github.com/microsoft/fluentui/pull/21785) by john.collier4@gmail.com)
 
 ## [8.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.4.2)
 
