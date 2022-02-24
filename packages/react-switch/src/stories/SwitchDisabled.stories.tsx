@@ -7,6 +7,7 @@ export const Disabled = () => (
     <Switch checked disabled />
   </>
 );
+
 Disabled.parameters = {
   docs: {
     description: {

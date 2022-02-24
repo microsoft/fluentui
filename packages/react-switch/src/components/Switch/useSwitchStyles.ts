@@ -26,7 +26,7 @@ const useRootStyles = makeStyles({
 
     [`& .${switchTrackClassName}`]: {
       backgroundColor: tokens.colorBrandBackground,
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
 
     ':hover': {
@@ -91,7 +91,7 @@ const useRootStyles = makeStyles({
 
     [`& .${switchTrackClassName}`]: {
       backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      ...shorthands.borderColor(tokens.colorNeutralBackgroundDisabled),
+      ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
     },
 
     ':hover': {
@@ -101,7 +101,7 @@ const useRootStyles = makeStyles({
 
       [`& .${switchTrackClassName}`]: {
         backgroundColor: tokens.colorNeutralBackgroundDisabled,
-        ...shorthands.borderColor(tokens.colorNeutralBackgroundDisabled),
+        ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
       },
     },
 
@@ -112,7 +112,7 @@ const useRootStyles = makeStyles({
 
       [`& .${switchTrackClassName}`]: {
         backgroundColor: tokens.colorNeutralBackgroundDisabled,
-        ...shorthands.borderColor(tokens.colorNeutralBackgroundDisabled),
+        ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
       },
     },
   },
