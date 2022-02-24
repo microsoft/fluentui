@@ -9,6 +9,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
+    "pretty": true,
     "typeRoots": ["node_modules/@types", "./typings"],
     "baseUrl": ".",
     "paths": {
