@@ -21,7 +21,16 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn check-if-v0-v8-v9-affected
+          NorthstarAffected=$(node ./scripts/monorepo/checkIfPackagesAffected.js --@fluentui/react-northstar)
+          V8Affected=$(node ./scripts/monorepo/checkIfPackagesAffected.js --@fluentui/react --@fluentui/react-components)
+          echo $NorthstarAffected
+          echo $V8Affected
+          if [[ $NorthstarAffected == true ]]; then
+            echo "##vso[task.setvariable variable=NorthstarPackageAffected;isOutput=true]true"
+          fi
+          if [[ $V8Affected == true ]]; then
+            echo "##vso[task.setvariable variable=V8PackageAffected;isOutput=true]true"
+          fi
         name: PackagesAffected
         displayName: Check if v8 and/or  northstar packages were affected
 
