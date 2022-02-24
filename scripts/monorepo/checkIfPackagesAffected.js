@@ -14,8 +14,8 @@ const isPackageAffected = packagesToCheck => {
     }
 
     if (pkg === FLUENTUI_REACT || pkg === FLUENTUI_REACT_COMPONENTS) {
-     // this creates ADO variables which are used within condition checks 
-     // @see https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/logging-commands?view=azure-devops&tabs=bash
+      // this creates ADO variables which are used within condition checks
+      // @see https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/logging-commands?view=azure-devops&tabs=bash
       console.log(`##vso[task.setvariable variable=V8PackageAffected;isOutput=true]true`);
       continue;
     }
