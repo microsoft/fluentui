@@ -157,6 +157,10 @@ const useLabelStyles = makeStyles({
     color: 'inherit',
   },
 
+  below: {
+    textAlign: 'center',
+  },
+
   // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
   // This prevents the label from expanding the height of the Radio, but preserves line height if the label wraps.
   medium: {
@@ -199,6 +203,7 @@ export const useRadioStyles_unstable = (state: RadioState) => {
       labelClassName,
       labelStyles.base,
       labelStyles[state.size],
+      state.labelPosition === 'below' && labelStyles.below,
       state.label.className,
     );
   }
