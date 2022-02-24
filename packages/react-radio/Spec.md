@@ -1,7 +1,6 @@
 # @fluentui/react-radio Spec
 
-The RadioGroup component lets people select a single value from two or more options.
-Use the RadioGroup component to represent two or more available choices, preferably up to 7 options.
+A Radio allows a user to select a single value from two or more options. All Radios with the same `name` are considered to be part of the same group. However, a `RadioGroup` is recommended to add a group label, formatting, and other functionality.
 
 ## Background
 
@@ -50,107 +49,107 @@ It uses the option's `value` property as the input value and holds the currently
 />
 ```
 
-## Radio
+## Variants
 
-### Variants
+### Layout
 
-The variants of the Radio component include visual styles and behaviour. The Radio component is expected to have the option of adding input or dropdown component as a radio item (represented in the `Vertical with dropdown` and `Vertical with input` sections).
+- Horizonal: Inline positioning of the inputs and labels.
 
-### Horizonal
+  ![Horizontal group](./etc/images/horizontal-group.png)
 
-Inline positioning of the inputs and labels.
+- Horizonal stacked: Positioning the label at the bottom of the radio inputs.
 
-![Horizontal group](./etc/images/horizontal-group.png)
+  ![Horizontal group - stacked](./etc/images/horizontal-group-stacked.png)
 
-### Horizonal stacked
+- Vertical: Default vertical positioning of Radio items.
 
-Positioning the label at the bottom of the radio inputs.
-
-![Horizontal group - stacked](./etc/images/horizontal-group-stacked.png)
-
-### Vertical
-
-Default vertical positioning of Radio items.
-
-![Vertical group](./etc/images/vertical-group.png)
-
-### Vertical with input
-
-Default positioning of Radio items with an input as its last Radio item.
-
-![Vertical group with input](./etc/images/vertical-group-with-input.png)
-
-### Vertical with dropdown
-
-Default positioning of Radio items with a dropdown as its last Radio item.
-
-![Vertical group with dropdown](./etc/images/vertical-group-with-dropdown.png)
-
-### Vertical with subtext
-
-Additional text under the label of Radio items.
-
-![Vertical group with subtext](./etc/images/vertical-group-with-subtext.png)
+  ![Vertical group](./etc/images/vertical-group.png)
 
 ## API
 
 ### Components
 
-| Component  | Purpose                                                                   |
-| ---------- | ------------------------------------------------------------------------- |
-| RadioGroup | Wraps radio inputs. Provides API for control group (fieldset and legend). |
-| Radio      | Represents a single radio item (input and label).                         |
+| Component         | Purpose                                                                         |
+| ----------------- | ------------------------------------------------------------------------------- |
+| RadioGroup        | Wraps radio inputs. Provides API for control group (fieldset and legend).       |
+| RadioGroupContext | Provides some props like `name` to Radio items that are children of RadioGroup. |
+| Radio             | Represents a single radio item (input and label).                               |
 
 ### RadioGroup
 
-| Prop           | Type                         | Default value | Purpose                                                      |
-| -------------- | ---------------------------- | ------------- | ------------------------------------------------------------ |
-| defaultValue   | `string`                     | `undefined`   | Which option should be preselected by default.               |
-| label (legend) | `string \| (slot)`           |               | Label for the group of radio controls.                       |
-| name           | `string`                     |               | Name property passed to child inputs.                        |
-| orientation    | `"horizontal" \| "vertical"` | `"vertical"`  | Specifies how the layout in which the controls are rendered. |
-| value          | `string`                     |               | Currently selected value. Used only for controlled mode.     |
+Link to [RadioGroup.types.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-radio/src/components/RadioGroup/RadioGroup.types.ts)
 
-`orientation` property:
+| Prop           | Type                                                | Default value          | Purpose                                                      |
+| -------------- | --------------------------------------------------- | ---------------------- | ------------------------------------------------------------ |
+| (root)         | slot: `<fieldset>`                                  |                        | The root slot is a fieldset.                                 |
+| `label`        | slot: `<Label as="legend">`                         |                        | Label for the group of radio controls.                       |
+| `name`         | `string`                                            | `useId('radiogroup-')` | Name property passed to child inputs.                        |
+| `value`        | `string`                                            |                        | Currently selected value. Used only for controlled mode.     |
+| `defaultValue` | `string`                                            | `undefined`            | Which option should be preselected by default.               |
+| `required`     | `boolean`                                           | `false`                | Add a red asterisk to the label.                             |
+| `layout`       | `"vertical" \| "horizontal" \| "horizontalStacked"` | `vertical`             | Specifies how the layout in which the controls are rendered. |
+| `onChange`     | `(event, data: { value: string }) => void`          |                        | Callback when a radio item is selected.                      |
 
-- `horizontal`: The radio inputs are rendered horizontally, referring to the `Horizontal Group` variant.
-- `vertical`: The radio inputs are rendered vertically, referring to the `Vertical Group` variant.
+### RadioGroupContext
+
+This is a context object provided by RadioGroup that allows all of the child Radio items to have the same name, and coordinate the selected item.
+
+The context contains the following props from RadioGroup:
+
+- `name`
+- `layout`
+- `defaultValue`
+- `value`
+- `disabled`
 
 ### Radio
 
 Link to [Radio.types.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-radio/src/components/Radio/Radio.types.ts)
 
-| Prop                              | Type               | Purpose                                                  |
-| --------------------------------- | ------------------ | -------------------------------------------------------- |
-| key (root)                        | `string`           | React `key` prop.                                        |
-| id (input - id & label - htmlfor) | `string`           | ID passed to input. Also used for input + label pairing. |
-| label (label)                     | `string \| (slot)` | Label that will be rendered next to the radio input.     |
-| checked (input)                   | `boolean`          | Whether the input is checked or not.                     |
-| disabled (input)                  | `boolean`          | Whether the input is disabled or not.                    |
-| subtext (label)                   | `string`           | Text shown as subtext to label                           |
+| Prop        | Type                         | Purpose                                                             |
+| ----------- | ---------------------------- | ------------------------------------------------------------------- |
+| (root)      | slot: `<span>`               | Wrapper for the input, indicator, and label                         |
+| `input`     | slot: `<input type="radio">` | Hidden input element that handles the radio's behavior.             |
+| `indicator` | slot: `<div>`                | The circular indicator to show the radio's checked/unchecked state. |
+| `label`     | slot: `<Label>`              | Label that will be rendered next to the radio indicator.            |
+| `value`     | `string`                     | The value of the RadioGroup when this Radio is selected             |
+| `checked`   | `boolean`                    | Whether the input is checked or not.                                |
+| `disabled`  | `boolean`                    | Whether the input is disabled or not.                               |
 
-`subtext` property refers to the `Radio with subtext` variant.
+## Sample Code
 
-### Sample Code
+A simple `RadioGroup`. In this example, "Option 1" is selected by default
+
+```jsx
+<RadioGroup name="number" label="Pick an option:" defaultValue="1">
+  <Radio value="1" label="Option 1" />
+  <Radio value="2" label="Option 2" />
+  <Radio value="3" label="Option 3" />
+</RadioGroup>
+```
+
+`Radio` can be used without a `RadioGroup`, but it is then up to the user to add a shared `name` to each item:
+
+```jsx
+<>
+  <Radio name="number" value="1" label="Number One" defaultChecked />
+  <Radio name="number" value="2" label="Number Two" />
+  <Radio name="number" value="3" label="Number Three" />
+</>
+```
 
 ```tsx
-const iceCreams = [
-  'Chocolate',
-  'Strawberry',
-  'Mango',
-]
+const IceCreamPicker = () => {
+  const iceCreams = ['Chocolate', 'Strawberry', 'Mango'];
 
-<RadioGroup label="Which ice cream would you like?" name="ice-cream">
-  {iceCreams.map(
-    iceCream => (
-      <Radio
-        key={iceCream}
-        id={`ic-${iceCream}`}
-        label={iceCream}
-      />
-    )
-  )}
-</RadioGroup>
+  return (
+    <RadioGroup label="Which ice cream would you like?" name="ice-cream">
+      {iceCreams.map(flavor => (
+        <Radio key={flavor} value={flavor} label={flavor} />
+      ))}
+    </RadioGroup>
+  );
+};
 ```
 
 ## Structure
@@ -158,61 +157,73 @@ const iceCreams = [
 ### Expected DOM structure
 
 ```html
-<fieldset class="fui-RadioGroup">
-  <legend>Which ice cream would you like?</legend>
+<fieldset class="fui-RadioGroup" name="radiogroup-0">
+  <legend class="fui-RadioGroup__label">Pick an option:</legend>
+
   <span class="fui-Radio">
-    <div>
-      <div class="fui-Radio-indicator"></div>
-      <input type="radio" id="ic-Mango" name="ice-cream" />
-    </div>
-    <label for="ic-Mango" class="fui-Label">Mango</label>
+    <input type="radio" id="radio-1" name="radiogroup-0" value="1" />
+    <div class="fui-Radio__indicator"></div>
+    <label class="fui-Label" for="radio-1">Option 1</label>
   </span>
 
   <span class="fui-Radio">
-    <div>
-      <div class="fui-Radio-indicator"></div>
-      <input type="radio" id="ic-Strawberry" name="ice-cream" />
-    </div>
-    <label for="ic-Strawberry" class="fui-Label">Strawberry</label>
+    <input type="radio" id="radio-2" name="radiogroup-0" value="2" />
+    <div class="fui-Radio__indicator"></div>
+    <label class="fui-Label" for="radio-2">Option 2</label>
   </span>
 
   <span class="fui-Radio">
-    <div>
-      <div class="fui-Radio-indicator"></div>
-      <input type="radio" id="ic-Chocolate" name="ice-cream" />
-    </div>
-    <label for="ic-Chocolate" class="fui-Label">Chocolate</label>
+    <input type="radio" id="radio-3" name="radiogroup-0" value="3" />
+    <div class="fui-Radio__indicator"></div>
+    <label class="fui-Label" for="radio-3">Option 3</label>
   </span>
 </fieldset>
 ```
 
 ## Behaviors
 
-- Component States
+### Mouse/Touch
 
-  - Rest (unchecked)
-  - Hover
-  - Pressed
-  - Checked
-  - Disabled
+The Radio's hit target fills the entire space around the indicator and label (including the padding).
+
+### Keyboard
+
+RadioGroup inherits all of its mouse and keyboard behaviors from the browser's handling of `<input type="radio">`.
+
+- It has no special handling of clicks or keypresses for toggling beyond the built-in control.
+- The browser handles arrow key selection, and creating a single tab stop for the control.
+
+### Disabled
+
+- Individual Radio items can be disabled, in which case they are grayed out and can't be selected or focused.
+- The entire RadioGroup can be disabled, in which case none of the Radios inside can be changed or focused.
+- This interaction is built-into the browser by setting `disabled` on the `<input>` or `<fieldset>` control.
+
+### Group Name
+
+- All Radio items in a group must have the same `name` for the browser to handle keyboarding and selection.
+- The RadioGroup provides its `name` through a context, and each Radio inside applies the `name`.
+- If a `name` is not provided on RadioGroup, a unique name is automatically generated with `useId`.
 
 ## Accessibility
 
-The RadioGroup component will use the `<fieldset>` native element to provide the default accessibility behaviour of role group. This element requires `<legend>` element to be the main label for the RadioGroup group.
+### RadioGroup
+
 This implementation based on the [Grouping Controls](https://www.w3.org/WAI/tutorials/forms/grouping/) examples of Web Accessibility Tutorials (that follow WCAG).
 
-The Radio items are wrapped in `<span>` element that includes the wrapper of the `<input role="radio">` element and the `<label>` element.
+- The RadioGroup root is a `<fieldset role="radiogroup">` to provide the default accessibility behavior of role group.
+- The RadioGroup label is a `<legend>` element, which is the implicit label of its parent `<fieldset>`.
+
+### Radio
+
+- The Radio's primary slot is an `<input type="radio">`, with opacity 0, and covers the root.
+  - This way, the Radio's hit target fills the entire space around the indicator and label (including the padding).
+- The Radio's label is a `<label>` element with `for={input.id}` to associate it with the input slot.
 
 <!--
 ## Migration
 TBD: Link to Migration guide
 -->
-
-### Keyboard Navigation based on [ARIA Practices](https://www.w3.org/TR/wai-aria-practices-1.2/#radiobutton):
-
-- `Tab` moves the focus in and out of RadioGroup (the fieldset).
-- `Enter` or `space` selects the Radio item.
-- `Up` and `down` arrow keys move the focus to the next and previous Radio item.
 
 # Appendix
 
