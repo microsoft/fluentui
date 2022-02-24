@@ -14,8 +14,7 @@ import {
   Checkmark16Filled,
   Square12Filled,
   Square16Filled,
-  Circle12Filled,
-  Circle16Filled,
+  CircleFilled,
 } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 
@@ -49,7 +48,7 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
   let checkmarkIcon;
   if (mixed) {
     if (shape === 'circular') {
-      checkmarkIcon = size === 'large' ? <Circle16Filled /> : <Circle12Filled />;
+      checkmarkIcon = <CircleFilled />;
     } else {
       checkmarkIcon = size === 'large' ? <Square16Filled /> : <Square12Filled />;
     }
