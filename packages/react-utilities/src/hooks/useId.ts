@@ -26,6 +26,6 @@ export function useId(prefix?: string, providedId?: string): string {
       return providedId;
     }
 
-    return prefix ? `${prefix}${++contextValue.current}` : `${++contextValue.current}`;
+    return `${prefix ?? ''}${++contextValue.current}` ;
   }, [prefix, providedId, contextValue]);
 }
