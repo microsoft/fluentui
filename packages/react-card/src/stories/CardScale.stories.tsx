@@ -6,7 +6,7 @@ import { Button } from '@fluentui/react-button';
 import { MoreVerticalRegular } from '@fluentui/react-icons';
 import { Card, CardHeader } from '../index'; // codesandbox-dependency: @fluentui/react-card ^9.0.0-beta
 import { makeStyles, shorthands } from '@griffel/react';
-import { tokens } from '../../../react-theme/src/tokens';
+import { tokens } from '@fluentui/react-theme';
 
 const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-card';
 
