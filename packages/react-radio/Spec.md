@@ -53,17 +53,35 @@ It uses the option's `value` property as the input value and holds the currently
 
 ### Layout
 
-- Horizonal: Inline positioning of the inputs and labels.
+#### Horizonal
 
-  ![Horizontal group](./etc/images/horizontal-group.png)
+Inline positioning of the inputs and labels.
 
-- Horizonal stacked: Positioning the label at the bottom of the radio inputs.
+![Horizontal group](./etc/images/horizontal-group.png)
 
-  ![Horizontal group - stacked](./etc/images/horizontal-group-stacked.png)
+#### Horizonal stacked
 
-- Vertical: Default vertical positioning of Radio items.
+Positioning the label at the bottom of the radio inputs.
 
-  ![Vertical group](./etc/images/vertical-group.png)
+![Horizontal group - stacked](./etc/images/horizontal-group-stacked.png)
+
+#### Vertical
+
+Default vertical positioning of Radio items.
+
+![Vertical group](./etc/images/vertical-group.png)
+
+#### Vertical with input
+
+Default positioning of Radio items with an input as its last Radio item.
+
+![Vertical group with input](./etc/images/vertical-group-with-input.png)
+
+### Vertical with dropdown
+
+Default positioning of Radio items with a dropdown as its last Radio item.
+
+![Vertical group with dropdown](./etc/images/vertical-group-with-dropdown.png)
 
 ## API
 
@@ -161,7 +179,7 @@ const IceCreamPicker = () => {
   <legend class="fui-RadioGroup__label">Pick an option:</legend>
 
   <span class="fui-Radio">
-    <input type="radio" id="radio-1" name="radiogroup-0" value="1" />
+    <input type="radio" id="radio-1" name="radiogroup-0" value="1" checked />
     <div class="fui-Radio__indicator"></div>
     <label class="fui-Label" for="radio-1">Option 1</label>
   </span>
