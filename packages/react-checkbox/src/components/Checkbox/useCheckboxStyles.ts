@@ -209,7 +209,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
       indicatorClassName,
       indicatorStyles.base,
       indicatorStyles[state.size],
-      state.circular && indicatorStyles.circular,
+      state.shape === 'circular' && indicatorStyles.circular,
       !state.checked && indicatorStyles.unchecked,
       state.indicator.className,
     );

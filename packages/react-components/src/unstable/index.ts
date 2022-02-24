@@ -38,6 +38,15 @@ export type {
 } from '@fluentui/react-card';
 
 export {
+  Checkbox,
+  checkboxClassName,
+  renderCheckbox_unstable,
+  useCheckbox_unstable,
+  useCheckboxStyles_unstable,
+} from '@fluentui/react-checkbox';
+export type { CheckboxOnChangeData, CheckboxProps, CheckboxSlots, CheckboxState } from '@fluentui/react-checkbox';
+
+export {
   Input,
   inputClassName,
   renderInput_unstable,
