@@ -21,7 +21,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
     checked = group.value !== undefined ? group.value === props.value : undefined,
     defaultChecked = group.defaultValue !== undefined ? group.defaultValue === props.value : undefined,
     labelPosition = group.layout === 'horizontalStacked' ? 'below' : 'after',
-    disabled,
+    disabled = group.disabled,
     required,
     size = 'medium',
   } = props;

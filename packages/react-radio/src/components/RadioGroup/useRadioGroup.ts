@@ -18,12 +18,13 @@ export const useRadioGroup_unstable = (
 ): RadioGroupState => {
   const generatedName = useId('radiogroup-');
 
-  const { name = generatedName, value, defaultValue, layout = 'vertical', required, onChange } = props;
+  const { name = generatedName, value, defaultValue, layout = 'vertical', required, disabled, onChange } = props;
 
   const label = resolveShorthand(props.label, {
     defaultProps: {
       id: generatedName + '__label',
       required,
+      disabled,
     },
   });
 
@@ -49,8 +50,9 @@ export const useRadioGroup_unstable = (
         layout,
         value,
         defaultValue,
+        disabled,
       }),
-      [name, layout, value, defaultValue],
+      [name, layout, value, defaultValue, disabled],
     ),
     components: {
       root: 'fieldset',
