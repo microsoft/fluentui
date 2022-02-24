@@ -1,5 +1,5 @@
-import { Middleware } from '@floating-ui/core';
-import { computePosition } from '@floating-ui/dom';
+import { Middleware, ComputePositionConfig } from '@floating-ui/core';
+import { computePosition as computePositionOriginal } from '@floating-ui/dom';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';
@@ -16,6 +16,7 @@ import {
   maxSize as maxSizeMiddleware,
 } from './middleware';
 import { getScrollParent } from './utils/getScrollParent';
+import debounce from './utils/debounce';
 
 function usePopperOptions(options: PopperOptions) {
   const {
@@ -89,18 +90,28 @@ export function usePopper(
   const { targetDocument } = useFluent();
   const enabled = true;
   const resolvePopperOptions = usePopperOptions(options);
+
+  const computePosition = React.useState(() =>
+    debounce(
+      (
+        target: HTMLElement | PopperVirtualElement,
+        container: HTMLElement,
+        computeOptions: Partial<ComputePositionConfig>,
+      ) => computePositionOriginal(target, container, computeOptions),
+    ),
+  )[0];
   const updatePosition = useEventCallback(() => {
     const target = overrideTargetRef.current ?? targetRef.current;
     if (!canUseDOM || !enabled || !target || !containerRef.current) {
       return;
     }
 
-    Object.assign(containerRef.current.style, { position: 'absolute' });
-    // for positionFixed
-    // Object.assign(containerRef.current.style, { position: 'fixed' });
+    if (containerRef.current) {
+      Object.assign(containerRef.current.style, { position: 'fixed', top: 0, left: 0 });
+    }
 
     const { placement, middleware } = resolvePopperOptions(target, containerRef.current, arrowRef.current);
-    computePosition(target, containerRef.current, { placement, middleware }).then(
+    computePosition(target, containerRef.current, { placement, middleware, strategy: 'absolute' }).then(
       ({ x, y, middlewareData, placement: computedPlacement }) => {
         if (!containerRef.current) {
           return;
@@ -110,6 +121,7 @@ export function usePopper(
         Object.assign(containerRef.current.style, {
           left: `${x}px`,
           top: `${y}px`,
+          position: 'absolute',
         });
 
         if (middlewareData.arrow && arrowRef.current) {
@@ -157,7 +169,7 @@ export function usePopper(
     if (options.target) {
       overrideTargetRef.current = options.target;
     }
-  }, [options.target, overrideTargetRef]);
+  }, [options.target, overrideTargetRef, containerRef]);
 
   useIsomorphicLayoutEffect(() => {
     updatePosition();

@@ -44,6 +44,7 @@ const useStyles = makeStyles({
     ...shorthands.padding('15px'),
     ...shorthands.border('1px', 'solid', 'blue'),
     backgroundColor: 'white',
+    // position: 'absolute',
   },
 
   arrow: {
@@ -100,9 +101,9 @@ const PositionAndAlignProps: React.FC<{ positionFixed?: boolean }> = ({ position
 
   return (
     <div className={styles.wrapper}>
-      {positions.map(([position, align], i) => (
-        <Box key={`${position}-${align}`} ref={positionedRefs[i].containerRef}>{`${position}-${align}`}</Box>
-      ))}
+      {positions.map(([position, align], i) => {
+        return <Box key={`${position}-${align}`} ref={positionedRefs[i].containerRef}>{`${position}-${align}`}</Box>;
+      })}
       <div ref={targetRef} className="target" />
     </div>
   );
@@ -113,7 +114,7 @@ const Offset = () => {
   const positionedRefs = positions.reduce<ReturnType<typeof usePopper>[]>((acc, cur) => {
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const popperRefs = usePopper({ position: cur[0], align: cur[1], offset: [10, 10] });
+    const popperRefs = usePopper({ position: cur[0], align: cur[1], offset: { crossAxis: 10, mainAxis: 10 } });
     acc.push(popperRefs);
     return acc;
   }, []);
@@ -135,7 +136,7 @@ const OffsetFunction = () => {
   const positionedRefs = positions.reduce<ReturnType<typeof usePopper>[]>((acc, cur) => {
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const popperRefs = usePopper({ position: cur[0], align: cur[1], offset: () => [10, 10] });
+    const popperRefs = usePopper({ position: cur[0], align: cur[1], offset: () => ({ crossAxis: 10, mainAxis: 10 }) });
     acc.push(popperRefs);
     return acc;
   }, []);
@@ -225,11 +226,7 @@ const VerticalOverflow = () => {
   const bottomPopper = usePopper({ position: 'after', overflowBoundary: boundary ?? undefined });
 
   return (
-    <div
-      className={styles.boundary}
-      style={{ display: 'flex', flexDirection: 'column', height: 200, padding: '5px 50px' }}
-      ref={setBoundary}
-    >
+    <div className={styles.boundary} ref={setBoundary}>
       <button ref={topPopper.targetRef}>Target</button>
       <Box ref={topPopper.containerRef}>Shift</Box>
 
@@ -422,10 +419,17 @@ const TargetProp = () => {
     align: 'end',
   });
 
+  const { containerRef: containerRef2 } = usePopper({
+    target,
+    position: 'above',
+    align: 'end',
+  });
+
   return (
     <>
       <button ref={setTarget}>Target</button>
       <Box ref={containerRef}>Anchored using target property</Box>
+      <Box ref={containerRef2}>Anchored using target property</Box>
     </>
   );
 };
