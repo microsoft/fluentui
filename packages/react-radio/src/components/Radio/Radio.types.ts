@@ -24,7 +24,7 @@ export type RadioSlots = {
   input: NonNullable<Slot<'input'>>;
 
   /**
-   * Renders the radio, with the circle icon as its child when checked.
+   * A circle outline, with a filled circle icon inside when the Radio is checked.
    */
   indicator: Slot<'div'>;
 };
@@ -34,7 +34,7 @@ export type RadioSlots = {
  */
 export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'size'> & {
   /**
-   * The value of the RadioGroup when this Radio is selected.
+   * The value of the RadioGroup when this Radio item is selected.
    */
   value?: string;
 
@@ -51,6 +51,11 @@ export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'siz
    * @defaultvalue after
    */
   labelPosition?: 'after' | 'below';
+
+  /**
+   * Disable this Radio item.
+   */
+  disabled?: boolean;
 };
 
 /**

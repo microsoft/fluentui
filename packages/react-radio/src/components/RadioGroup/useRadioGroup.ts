@@ -27,16 +27,12 @@ export const useRadioGroup_unstable = (
     },
   });
 
-  const root = getNativeElementProps(
-    'fieldset',
-    {
-      ref,
-      role: 'radiogroup',
-      'aria-labelledby': label?.id,
-      ...props,
-    },
-    ['onChange'],
-  );
+  const root = getNativeElementProps('fieldset', {
+    ref,
+    role: 'radiogroup',
+    'aria-labelledby': label?.id,
+    ...props,
+  });
 
   root.onChange = useEventCallback(ev => {
     if (onChange && ev.target instanceof HTMLInputElement && ev.target.name === name) {
