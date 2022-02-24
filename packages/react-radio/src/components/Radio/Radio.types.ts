@@ -39,14 +39,10 @@ export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'siz
   value?: string;
 
   /**
-   * The size of the radio indicator.
-   *
-   * @defaultvalue medium
-   */
-  size?: 'medium' | 'large';
-
-  /**
    * The position of the label relative to the radio indicator.
+   *
+   * This defaults to `after` unless the Radio is inside a RadioGroup with `layout="horizontalStacked"`,
+   * in which case it defaults to `below`.
    *
    * @defaultvalue after
    */
@@ -61,4 +57,4 @@ export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'siz
 /**
  * State used in rendering Radio
  */
-export type RadioState = ComponentState<RadioSlots> & Required<Pick<RadioProps, 'size' | 'labelPosition'>>;
+export type RadioState = ComponentState<RadioSlots> & Required<Pick<RadioProps, 'labelPosition'>>;

@@ -23,13 +23,12 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
     labelPosition = group.layout === 'horizontalStacked' ? 'below' : 'after',
     disabled = group.disabled,
     required,
-    size = 'medium',
   } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['checked', 'defaultChecked', 'size'],
+    excludedPropNames: ['checked', 'defaultChecked'],
   });
 
   const root = resolveShorthand(props.root, {
@@ -55,7 +54,6 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
       htmlFor: input.id,
       disabled,
       required,
-      size: 'medium', // Even if the radio itself is large
     },
   });
 
@@ -68,7 +66,6 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
   });
 
   return {
-    size,
     labelPosition,
     components: {
       root: 'span',

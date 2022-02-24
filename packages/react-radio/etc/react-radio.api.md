@@ -27,20 +27,22 @@ export const radioGroupClassName = "fui-RadioGroup";
 export const RadioGroupContext: React_2.Context<RadioGroupContextValue>;
 
 // @public (undocumented)
-export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'layout' | 'value' | 'defaultValue'>;
+export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'layout' | 'value' | 'defaultValue' | 'disabled'>;
 
 // @public
 export type RadioGroupOnChangeData = {
-    value: RadioGroupProps['value'];
+    value?: string;
 };
 
-// @public
+// @public (undocumented)
 export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'onChange'> & {
-    layout?: 'vertical' | 'horizontal' | 'horizontalStacked';
-    required?: boolean;
+    name?: string;
     value?: string;
     defaultValue?: string;
     onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: RadioGroupOnChangeData) => void;
+    layout?: 'vertical' | 'horizontal' | 'horizontalStacked';
+    disabled?: boolean;
+    required?: boolean;
 };
 
 // @public (undocumented)
@@ -57,8 +59,8 @@ export type RadioGroupState = ComponentState<RadioGroupSlots> & Pick<RadioGroupP
 // @public
 export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'size'> & {
     value?: string;
-    size?: 'medium' | 'large';
     labelPosition?: 'after' | 'below';
+    disabled?: boolean;
 };
 
 // @public (undocumented)
@@ -70,7 +72,7 @@ export type RadioSlots = {
 };
 
 // @public
-export type RadioState = ComponentState<RadioSlots> & Required<Pick<RadioProps, 'size' | 'labelPosition'>>;
+export type RadioState = ComponentState<RadioSlots> & Required<Pick<RadioProps, 'labelPosition'>>;
 
 // @public
 export const renderRadio_unstable: (state: RadioState) => JSX.Element;
