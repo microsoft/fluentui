@@ -3,7 +3,7 @@ import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from '@fluentui
 import { Button } from '@fluentui/react-button';
 import { PopperRefHandle } from '@fluentui/react-positioning';
 
-export const PopperImperativeHandle = () => {
+export const ImperativePositionUpdate = () => {
   const [loading, setLoading] = React.useState(true);
   const popperRef = React.useRef<PopperRefHandle>(null);
   const timeoutRef = React.useRef(0);
@@ -38,7 +38,7 @@ export const PopperImperativeHandle = () => {
   );
 };
 
-PopperImperativeHandle.parameters = {
+ImperativePositionUpdate.parameters = {
   layout: 'padded',
   docs: {
     description: {
