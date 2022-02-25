@@ -39,7 +39,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
     name?: string;
     value?: string;
     defaultValue?: string;
-    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: RadioGroupOnChangeData) => void;
+    onChange?: (ev: React_2.FormEvent<HTMLDivElement>, data: RadioGroupOnChangeData) => void;
     layout?: 'vertical' | 'horizontal' | 'horizontalStacked';
     disabled?: boolean;
 };
