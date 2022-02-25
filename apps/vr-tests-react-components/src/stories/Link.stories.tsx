@@ -11,11 +11,11 @@ storiesOf('Link Converged - Rendered as anchor', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('a')
+        .hover('.fui-Link')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('a')
+        .mouseDown('.fui-Link')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('a')
+        .mouseUp('.fui-Link')
         .end()}
     >
       {story()}
