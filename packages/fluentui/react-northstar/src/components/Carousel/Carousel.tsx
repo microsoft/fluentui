@@ -31,7 +31,6 @@ import {
   useUnhandledProps,
   useStateManager,
   mergeVariablesOverrides,
-  usePrevious,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { createCarouselManager, CarouselState, CarouselActions } from '@fluentui/state';
@@ -115,6 +114,18 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
 
   /** A navigation may be clickable */
   disableClickableNav?: boolean;
+
+  /** Define animation to slide to enter from left */
+  animationEnterFromLeft?: string;
+
+  /** Define animation to slide to enter from Right */
+  animationEnterFromRight?: string;
+
+  /** Define animation to slide to exit to left */
+  animationExitToLeft?: string;
+
+  /** Define animation to slide to exit to right */
+  animationExitToRight?: string;
 }
 
 export type CarouselStylesProps = { isFromKeyboard: boolean; shouldFocusContainer: boolean };
@@ -127,6 +138,24 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
   pagination: `${carouselClassName}__pagination`,
   navigation: `${carouselClassName}__navigation`,
 };
+
+function useDirection(activeIndex) {
+  const prevActiveIndex = React.useRef<number>();
+  const directionRef = React.useRef<string>();
+
+  React.useMemo(() => {
+    if (activeIndex > prevActiveIndex.current) {
+      directionRef.current = 'right';
+    }
+    if (activeIndex < prevActiveIndex.current) {
+      directionRef.current = 'left';
+    }
+
+    prevActiveIndex.current = activeIndex;
+  }, [activeIndex]);
+
+  return directionRef.current;
+}
 
 /**
  * A Carousel displays data organised as a gallery.
@@ -157,6 +186,10 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
     styles,
     variables,
     disableClickableNav,
+    animationEnterFromLeft,
+    animationEnterFromRight,
+    animationExitToLeft,
+    animationExitToRight,
   } = props;
 
   const ElementType = getElementType(props);
@@ -170,7 +203,9 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
     }),
   });
   const { ariaLiveOn, shouldFocusContainer, isFromKeyboard, activeIndex } = state;
-  const prevActiveIndex = usePrevious<number>(activeIndex);
+  // const prevActiveIndex = usePrevious<number>(activeIndex);
+
+  const dir = useDirection(activeIndex);
 
   const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
     () => Array.from({ length: items?.length }, () => React.createRef()),
@@ -297,29 +332,29 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
             items.map((item, index) => {
               const itemRef = itemRefs[index];
               const active = activeIndex === index;
-              let slideToNext = prevActiveIndex < activeIndex;
-              const initialMounting = prevActiveIndex === -1;
+              const initialMounting = typeof dir === 'undefined';
 
-              if (circular && prevActiveIndex === items.length - 1 && activeIndex === 0) {
-                slideToNext = true;
-              } else if (circular && prevActiveIndex === 0 && activeIndex === items.length - 1) {
-                slideToNext = false;
+              let animationName = '';
+              if (!initialMounting) {
+                if (!active) {
+                  if (dir === 'right') {
+                    animationName = animationExitToLeft;
+                  } else {
+                    animationName = animationExitToRight;
+                  }
+                }
+
+                if (active) {
+                  if (dir === 'right') {
+                    animationName = animationEnterFromRight;
+                  } else {
+                    animationName = animationEnterFromLeft;
+                  }
+                }
               }
 
               return (
-                <Animation
-                  key={item['key'] || index}
-                  mountOnEnter
-                  unmountOnExit
-                  visible={active}
-                  name={
-                    initialMounting || !active || prevActiveIndex === index
-                      ? ''
-                      : slideToNext
-                      ? 'carousel-slide-to-next-enter'
-                      : 'carousel-slide-to-previous-enter'
-                  }
-                >
+                <Animation visible={active} key={item['key'] || index} mountOnEnter unmountOnExit name={animationName}>
                   <Ref innerRef={itemRef}>
                     {CarouselItem.create(item, {
                       defaultProps: () => ({
@@ -515,12 +550,20 @@ Carousel.propTypes = {
   paddlePrevious: customPropTypes.itemShorthand,
   thumbnails: PropTypes.bool,
   disableClickableNav: PropTypes.bool,
+  animationEnterFromLeft: PropTypes.string,
+  animationEnterFromRight: PropTypes.string,
+  animationExitToLeft: PropTypes.string,
+  animationExitToRight: PropTypes.string,
 };
 
 Carousel.defaultProps = {
   accessibility: carouselBehavior,
   paddlePrevious: {},
   paddleNext: {},
+  animationEnterFromLeft: 'carousel-slide-to-next-enter',
+  animationEnterFromRight: 'carousel-slide-to-previous-enter',
+  animationExitToLeft: '',
+  animationExitToRight: '',
 };
 
 Carousel.Item = CarouselItem;
