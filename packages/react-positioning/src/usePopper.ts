@@ -1,4 +1,4 @@
-import { Middleware, ComputePositionConfig } from '@floating-ui/core';
+import { Middleware } from '@floating-ui/core';
 import { computePosition } from '@floating-ui/dom';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
@@ -88,6 +88,7 @@ export function usePopper(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   arrowRef: React.MutableRefObject<any>;
 } {
+  const isFirstMount = useFirstMount();
   const isFirstUpdate = React.useRef(true);
   const { targetDocument } = useFluent();
   const enabled = true;
@@ -99,7 +100,12 @@ export function usePopper(
       return;
     }
 
-    Object.assign(containerRef.current.style, { position: 'absolute' });
+    // Revert to intended position before the first update
+    if (isFirstUpdate.current) {
+      Object.assign(containerRef.current.style, { position: 'absolute' });
+      isFirstUpdate.current = false;
+    }
+
     const { placement, middleware } = resolvePopperOptions(target, containerRef.current, arrowRef.current);
     computePosition(target, containerRef.current, { placement, middleware, strategy: 'absolute' }).then(
       ({ x, y, middlewareData, placement: computedPlacement }) => {
@@ -129,10 +135,16 @@ export function usePopper(
 
   const updatePosition = React.useState(() => debounce(forceUpdate))[0];
 
-  const targetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, updatePosition, true);
-  const containerRef = useCallbackRef<HTMLElement | null>(null, updatePosition, true);
-  const arrowRef = useCallbackRef<HTMLElement | null>(null, updatePosition, true);
-  const overrideTargetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, updatePosition, true);
+  // When a ref updates, we consider a new positioning cycle
+  const handleRefUpdate = useEventCallback(() => {
+    isFirstUpdate.current = true;
+    updatePosition();
+  });
+
+  const targetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, handleRefUpdate, true);
+  const containerRef = useCallbackRef<HTMLElement | null>(null, handleRefUpdate, true);
+  const arrowRef = useCallbackRef<HTMLElement | null>(null, handleRefUpdate, true);
+  const overrideTargetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, handleRefUpdate, true);
 
   React.useImperativeHandle(
     options.popperRef,
@@ -164,19 +176,43 @@ export function usePopper(
     }
   }, [options.target, overrideTargetRef, containerRef]);
 
-  useIsomorphicLayoutEffect(() => {
-    /**
-     * Set position fixed right before position update to avoid scroll jumps.
-     * Scroll jumps can happen if content in the floater is focused before it is
-     * positioned. fixed positiong means that the floater will always be in the viewport
-     * so it can be focused without scrolling.
-     */
-    if (containerRef.current && isFirstUpdate.current) {
-      Object.assign(containerRef.current.style, { position: 'fixed', top: 0, left: 0 });
-    }
+  useIsomorphicLayoutEffect(
+    () => {
+      /**
+       * At the start of a positioning cycle, the container position is always fixed to avoid scroll jumps.
+       * Scroll jumps can happen if content in the floater is focused before it is
+       * positioned. fixed positiong means that the floater will always be in the viewport
+       * so it can be focused without scrolling. This is reset before the first first position update
+       */
+      if (enabled && containerRef.current && isFirstUpdate.current) {
+        Object.assign(containerRef.current.style, { position: 'fixed', top: 0, left: 0 });
+      }
 
-    updatePosition();
-  }, [updatePosition, enabled, containerRef]);
+      updatePosition();
+      // `enabled` changes start a new positioning cycle
+      return () => {
+        isFirstUpdate.current = true;
+      };
+    },
+    // Missing deps:
+    // updatePosition - referentially stable
+    // containerRef - referentially stable
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [enabled],
+  );
+
+  useIsomorphicLayoutEffect(
+    () => {
+      if (!isFirstMount) {
+        updatePosition();
+      }
+    },
+    // Missing deps:
+    // isFirstMount - Should never change after mount
+    // arrowRef, containerRef, targetRef - Stable between renders
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [resolvePopperOptions],
+  );
 
   useIsomorphicLayoutEffect(() => {
     const win = targetDocument?.defaultView;
