@@ -13,10 +13,10 @@ describe('useId', () => {
     expect(result.current).toMatch(/^foo/);
   });
 
-  it('does not add "undefined" when prefix is not specified', () => {
+  it('defaults to "fui-" when prefix is not specified', () => {
     const { result } = renderHook(() => useId());
 
-    expect(result.current).not.toMatch(/^undefined/);
+    expect(result.current).toMatch(/^fui-/);
   });
 
   it('uses the same ID without prefix', () => {
