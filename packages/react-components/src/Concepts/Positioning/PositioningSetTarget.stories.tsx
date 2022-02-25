@@ -79,6 +79,8 @@ ImperativeAnchorTarget.parameters = {
         'coordinate on the viewport',
         'This can be useful to reduce the number of renders required, for example when the positioned element',
         'follows the mouse cursor',
+        '',
+        'This example creates a virtual element that follows the coordinates of the mouse cursor.',
       ].join('\n'),
     },
   },
