@@ -3,21 +3,19 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Button, CompoundButton, ToggleButton, MenuButton } from '@fluentui/react-button';
 
+const steps = new Screener.Steps()
+  .snapshot('default', { cropTo: '.testWrapper' })
+  .hover('button')
+  .wait(100)
+  .snapshot('hover', { cropTo: '.testWrapper' })
+  .mouseDown('button')
+  .wait(100)
+  .snapshot('pressed', { cropTo: '.testWrapper' })
+  .mouseUp('button')
+  .end();
+
 storiesOf('Button Converged', module)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <Button>Hello, world</Button>, {
     includeRtl: true,
     includeHighContrast: true,
@@ -108,20 +106,7 @@ storiesOf('Button Converged', module)
   });
 
 storiesOf('Button Block Converged', module)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <Button block>Hello, world</Button>, { includeRtl: true })
   .addStory('Circular', () => (
     <Button block shape="circular">
@@ -165,20 +150,7 @@ storiesOf('Button Block Converged', module)
   ));
 
 storiesOf('CompoundButton Converged', module)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory(
     'Default',
     () => <CompoundButton secondaryContent="This is some secondary text">Hello, world</CompoundButton>,
@@ -268,20 +240,7 @@ storiesOf('CompoundButton Converged', module)
   });
 
 storiesOf('CompoundButton Block Converged', module)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory(
     'Default',
     () => (
@@ -333,20 +292,7 @@ storiesOf('CompoundButton Block Converged', module)
   ));
 
 storiesOf('ToggleButton Converged', module)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <ToggleButton>Hello, world</ToggleButton>, {
     includeRtl: true,
     includeHighContrast: true,
@@ -412,20 +358,7 @@ storiesOf('ToggleButton Converged', module)
   ));
 
 storiesOf('ToggleButton Block Converged', module)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <ToggleButton block>Hello, world</ToggleButton>, { includeRtl: true })
   .addStory('Circular', () => (
     <ToggleButton block shape="circular">
@@ -489,20 +422,7 @@ storiesOf('ToggleButton Block Converged', module)
   ));
 
 storiesOf('MenuButton Converged', module)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <MenuButton>Hello, world</MenuButton>, { includeRtl: true })
   .addStory('Circular', () => <MenuButton shape="circular">Hello, world</MenuButton>)
   .addStory('Outline', () => <MenuButton appearance="outline">Hello, world</MenuButton>)
@@ -545,20 +465,7 @@ storiesOf('MenuButton Converged', module)
   .addStory('Circular and icon only', () => <MenuButton shape="circular" icon="X" />);
 
 storiesOf('MenuButton Block Converged', module)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <MenuButton block>Hello, world</MenuButton>, { includeRtl: true })
   .addStory('Circular', () => (
     <MenuButton block shape="circular">

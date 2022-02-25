@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { TestWrapperDecoratorFixedWidth } from '../utilities/index';
 import {
   Fabric,
   SpinButton,
@@ -26,7 +26,7 @@ const textFieldStyles: Partial<ITextFieldStyles> = {
 const iconProps = { iconName: 'IncreaseIndentLegacy' };
 
 storiesOf('SpinButton', module)
-  .addDecorator(TestWrapperDecorator)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -67,7 +67,7 @@ storiesOf('SpinButton', module)
 
 // The stories for label placement are separate since they don't need to include hover/click states
 storiesOf('SpinButton', module)
-  .addDecorator(TestWrapperDecorator)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
