@@ -61,11 +61,11 @@ describe('Switch', () => {
 
   describe('on state changes', () => {
     it('ignores defaultChecked updates', () => {
-      const renderedComponent = render(<Switch defaultChecked />);
-      const input = renderedComponent.getByRole('switch') as HTMLInputElement;
+      const { getByRole, rerender } = render(<Switch defaultChecked />);
+      const input = getByRole('switch') as HTMLInputElement;
 
       expect(input.checked).toBe(true);
-      renderedComponent.rerender(<Switch defaultChecked={false} />);
+      rerender(<Switch defaultChecked={false} />);
       expect(input.checked).toBe(true);
     });
 
