@@ -31,10 +31,8 @@ const useRootStyles = makeStyles({
     boxSizing: 'border-box',
     columnGap: `${spacingM}px`,
     display: 'inline-flex',
-    minHeight: `${trackHeight + spacingS * 2}px`,
     ...shorthands.padding(`${spacingS}px`),
     position: 'relative',
-    minWidth: `${trackWidth + spacingS * 2}px`,
 
     ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
   },
