@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add optional field subtext to ChoiceGroupOption",
+  "packageName": "@fluentui/react",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
