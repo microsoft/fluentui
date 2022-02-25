@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add conditional to enableAriaHiddenOnChildren prop",
+  "packageName": "@fluentui/react",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
