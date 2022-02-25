@@ -124,9 +124,6 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       '.ms-ChoiceFieldLabel': {
         color: labelHoverFocusColor,
       },
-      subtext: {
-        color: labelHoverFocusColor,
-      },
       ':before': {
         borderColor: checked ? circleCheckedHoveredBorderColor : circleHoveredBorderColor,
       },
@@ -147,6 +144,9 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
           background: dotCheckedHoveredColor,
         },
       ],
+      subtext: {
+        color: labelHoverFocusColor,
+      },
     },
   };
 
@@ -425,7 +425,6 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       },
     ],
     subtext: [
-      classNames.labelWrapper,
       fonts.medium,
       {
         paddingTop: '4px',
