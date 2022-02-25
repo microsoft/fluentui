@@ -3197,6 +3197,7 @@ export interface IChoiceGroupOption extends Omit<React_2.InputHTMLAttributes<HTM
     onRenderLabel?: IRenderFunction<IChoiceGroupOptionProps>;
     selectedImageSrc?: string;
     styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
+    subtext?: string;
     text: string;
 }
 
@@ -3251,6 +3252,8 @@ export interface IChoiceGroupOptionStyles {
     root?: IStyle;
     // (undocumented)
     selectedImageWrapper?: IStyle;
+    // (undocumented)
+    subtext?: IStyle;
 }
 
 // @public (undocumented)

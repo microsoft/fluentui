@@ -44,6 +44,17 @@ storiesOf('ChoiceGroup', module)
       required
     />,
   )
+  .addStory('With subtext', () =>
+    // prettier-ignore
+    <ChoiceGroup
+      options={[
+        ...options,
+        { key: 'C', text: 'Subtext', subtext: 'Subtext'},
+        { key: 'C', text: 'Disabled Subtext', subtext: 'Subtext', disabled: true}
+      ]}
+      label="Pick one"
+    />,
+  )
   .addStory(
     'With icons',
     () => (

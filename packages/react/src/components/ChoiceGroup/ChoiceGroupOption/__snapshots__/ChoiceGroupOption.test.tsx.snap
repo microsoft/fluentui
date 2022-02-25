@@ -75,6 +75,9 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
               transition-property: background-color;
               width: 10px;
             }
+            &:hover subtext {
+              color: #201f1e;
+            }
             &:focus .ms-ChoiceFieldLabel {
               color: #201f1e;
             }
@@ -89,6 +92,9 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
               top: 5px;
               transition-property: background-color;
               width: 10px;
+            }
+            &:focus subtext {
+              color: #201f1e;
             }
             &:before {
               background-color: #ffffff;
@@ -202,6 +208,9 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
               transition-property: background-color;
               width: 10px;
             }
+            &:hover subtext {
+              color: #201f1e;
+            }
             &:focus .ms-ChoiceFieldLabel {
               color: #201f1e;
             }
@@ -216,6 +225,9 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
               top: 5px;
               transition-property: background-color;
               width: 10px;
+            }
+            &:focus subtext {
+              color: #201f1e;
             }
             &:before {
               background-color: #ffffff;
@@ -331,6 +343,9 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
               transition-property: background-color;
               width: 10px;
             }
+            &:hover subtext {
+              color: #201f1e;
+            }
             &:focus .ms-ChoiceFieldLabel {
               color: #201f1e;
             }
@@ -345,6 +360,9 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
               top: 5px;
               transition-property: background-color;
               width: 10px;
+            }
+            &:focus subtext {
+              color: #201f1e;
             }
             &:before {
               background-color: #ffffff;
@@ -469,6 +487,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-property: background-color;
               width: 10px;
             }
+            &:hover subtext {
+              color: #201f1e;
+            }
             &:focus .ms-ChoiceFieldLabel {
               color: #201f1e;
             }
@@ -483,6 +504,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 5px;
               transition-property: background-color;
               width: 10px;
+            }
+            &:focus subtext {
+              color: #201f1e;
             }
             &:before {
               background-color: #ffffff;
@@ -621,6 +645,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-property: background-color;
               width: 10px;
             }
+            &:hover subtext {
+              color: #201f1e;
+            }
             &:focus .ms-ChoiceFieldLabel {
               color: #201f1e;
             }
@@ -635,6 +662,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 5px;
               transition-property: background-color;
               width: 10px;
+            }
+            &:focus subtext {
+              color: #201f1e;
             }
             &:before {
               background-color: #ffffff;
@@ -771,6 +801,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               background: #005a9e;
               border-color: #005a9e;
             }
+            &:hover subtext {
+              color: #201f1e;
+            }
             &:focus .ms-ChoiceFieldLabel {
               color: #201f1e;
             }
@@ -780,6 +813,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             &:focus:after {
               background: #005a9e;
               border-color: #005a9e;
+            }
+            &:focus subtext {
+              color: #201f1e;
             }
             &:before {
               background-color: #ffffff;
@@ -1166,6 +1202,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               border-color: #323130;
               opacity: 1;
             }
+            &:hover subtext {
+              color: #201f1e;
+            }
             &:focus {
               border-color: #323130;
             }
@@ -1175,6 +1214,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             &:focus:before {
               border-color: #323130;
               opacity: 1;
+            }
+            &:focus subtext {
+              color: #201f1e;
             }
             &:before {
               background-color: #ffffff;
@@ -1391,6 +1433,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               border-color: #323130;
               opacity: 1;
             }
+            &:hover subtext {
+              color: #201f1e;
+            }
             &:focus {
               border-color: #323130;
             }
@@ -1400,6 +1445,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             &:focus:before {
               border-color: #323130;
               opacity: 1;
+            }
+            &:focus subtext {
+              color: #201f1e;
             }
             &:before {
               background-color: #ffffff;
@@ -1600,6 +1648,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               background: #005a9e;
               border-color: #005a9e;
             }
+            &:hover subtext {
+              color: #201f1e;
+            }
             &:focus {
               border-color: #005a9e;
             }
@@ -1613,6 +1664,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             &:focus:after {
               background: #005a9e;
               border-color: #005a9e;
+            }
+            &:focus subtext {
+              color: #201f1e;
             }
             &:before {
               background-color: #ffffff;
