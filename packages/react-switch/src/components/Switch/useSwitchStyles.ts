@@ -8,9 +8,12 @@ export const switchClassNames: {
 } = {
   root: 'fui-Switch',
   input: 'fui-Switch__input',
-  label: 'fui-Swicth__label',
+  label: 'fui-Switch__label',
   track: 'fui-Switch__track',
 };
+
+// TODO temporary export to pass conformance test.
+export const switchClassName = switchClassNames.root;
 
 // TODO replace these spacing constants with theme values once they're on the theme.
 const spacingXS = '4px';

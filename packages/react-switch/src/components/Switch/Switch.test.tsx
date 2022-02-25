@@ -15,7 +15,7 @@ describe('Switch', () => {
   describe('on component render', () => {
     it('renders a default state correctly', () => {
       const { getByRole } = render(<Switch />);
-      const input = getByRole('checkbox');
+      const input = getByRole('switch');
 
       expect(input.tagName).toEqual('INPUT');
       expect(input.getAttribute('type')).toEqual('checkbox');
@@ -24,7 +24,7 @@ describe('Switch', () => {
     it('respects id prop', () => {
       const id = 'switch';
       const { getByRole } = render(<Switch id={id} />);
-      const input = getByRole('checkbox');
+      const input = getByRole('switch');
 
       expect(input.id).toEqual(id);
     });
@@ -32,28 +32,28 @@ describe('Switch', () => {
     it('forwards ref to the input element', () => {
       const switchRef = React.createRef<HTMLInputElement>();
       const { getByRole } = render(<Switch ref={switchRef} />);
-      const input = getByRole('checkbox');
+      const input = getByRole('switch');
 
       expect(switchRef.current).toEqual(input);
     });
 
     it('defaults to unchecked', () => {
       const { getByRole } = render(<Switch />);
-      const input = getByRole('checkbox') as HTMLInputElement;
+      const input = getByRole('switch') as HTMLInputElement;
 
       expect(input.checked).toBe(false);
     });
 
     it('respects defaultChecked prop', () => {
       const { getByRole } = render(<Switch defaultChecked />);
-      const input = getByRole('checkbox') as HTMLInputElement;
+      const input = getByRole('switch') as HTMLInputElement;
 
       expect(input.checked).toBe(true);
     });
 
     it('respects checked prop', () => {
       const { getByRole } = render(<Switch checked />);
-      const input = getByRole('checkbox') as HTMLInputElement;
+      const input = getByRole('switch') as HTMLInputElement;
 
       expect(input.checked).toBe(true);
     });
@@ -62,7 +62,7 @@ describe('Switch', () => {
   describe('on state changes', () => {
     it('ignores defaultChecked updates', () => {
       const renderedComponent = render(<Switch defaultChecked />);
-      const input = renderedComponent.getByRole('checkbox') as HTMLInputElement;
+      const input = renderedComponent.getByRole('switch') as HTMLInputElement;
 
       expect(input.checked).toBe(true);
       renderedComponent.rerender(<Switch defaultChecked={false} />);
@@ -76,7 +76,7 @@ describe('Switch', () => {
           <Switch defaultChecked={true} />
         </>,
       );
-      const [initiallyUnchecked, initiallyChecked] = getAllByRole('checkbox') as HTMLInputElement[];
+      const [initiallyUnchecked, initiallyChecked] = getAllByRole('switch') as HTMLInputElement[];
 
       expect(initiallyUnchecked.checked).toBe(false);
       userEvent.click(initiallyUnchecked);
@@ -98,7 +98,7 @@ describe('Switch', () => {
           <Switch checked={true} />
         </>,
       );
-      const [unchecked, checked] = getAllByRole('checkbox') as HTMLInputElement[];
+      const [unchecked, checked] = getAllByRole('switch') as HTMLInputElement[];
 
       expect(unchecked.checked).toBe(false);
       userEvent.click(unchecked);
@@ -116,7 +116,7 @@ describe('Switch', () => {
           <Switch defaultChecked={true} disabled />
         </>,
       );
-      const [unchecked, checked] = getAllByRole('checkbox') as HTMLInputElement[];
+      const [unchecked, checked] = getAllByRole('switch') as HTMLInputElement[];
 
       expect(unchecked.checked).toBe(false);
       userEvent.click(unchecked);
@@ -130,7 +130,7 @@ describe('Switch', () => {
     it('calls onChange with the correct value', () => {
       const onChange = jest.fn<void, [React.ChangeEvent<HTMLInputElement>, SwitchOnChangeData]>();
       const { getByRole } = render(<Switch onChange={onChange} />);
-      const input = getByRole('checkbox');
+      const input = getByRole('switch');
 
       expect(onChange).not.toHaveBeenCalled();
 
