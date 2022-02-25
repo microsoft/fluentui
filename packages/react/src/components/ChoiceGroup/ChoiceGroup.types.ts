@@ -96,7 +96,7 @@ export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLE
   /**
    * The subtext string, displayed below the option.
    */
-  subtext: string;
+  subtext?: string;
 
   /**
    * Used to customize option rendering.

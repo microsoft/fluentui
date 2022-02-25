@@ -124,6 +124,9 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       '.ms-ChoiceFieldLabel': {
         color: labelHoverFocusColor,
       },
+      subtext: {
+        color: labelHoverFocusColor,
+      },
       ':before': {
         borderColor: checked ? circleCheckedHoveredBorderColor : circleHoveredBorderColor,
       },
@@ -427,6 +430,16 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       {
         paddingTop: '4px',
         paddingLeft: labelIndent,
+      },
+      disabled && {
+        cursor: 'default',
+        color: semanticColors.disabledBodyText,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+            ...getHighContrastNoAdjustStyle(),
+          },
+        },
       },
     ],
   };
