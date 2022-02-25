@@ -97,15 +97,14 @@ Default positioning of Radio items with a dropdown as its last Radio item.
 
 Link to [RadioGroup.types.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-radio/src/components/RadioGroup/RadioGroup.types.ts)
 
-| Prop           | Type                                                | Default value          | Purpose                                                      |
-| -------------- | --------------------------------------------------- | ---------------------- | ------------------------------------------------------------ |
-| (root)         | slot: `<div role="radiogroup">`                     |                        | The root slot has the radiogroup role.                       |
-| `name`         | `string`                                            | `useId('radiogroup-')` | Name property passed to child radios.                        |
-| `value`        | `string`                                            |                        | Currently selected value. Used only for controlled mode.     |
-| `defaultValue` | `string`                                            | `undefined`            | Which option should be preselected by default.               |
-| `required`     | `boolean`                                           | `false`                | Add a red asterisk to the label.                             |
-| `layout`       | `"vertical" \| "horizontal" \| "horizontalStacked"` | `vertical`             | Specifies how the layout in which the controls are rendered. |
-| `onChange`     | `(event, data: { value: string }) => void`          |                        | Callback when a radio item is selected.                      |
+| Prop           | Type                                                | Default value          | Purpose                                                  |
+| -------------- | --------------------------------------------------- | ---------------------- | -------------------------------------------------------- |
+| (root)         | slot: `<div role="radiogroup">`                     |                        | The root slot has the radiogroup role.                   |
+| `name`         | `string`                                            | `useId('radiogroup-')` | Name property passed to child radios.                    |
+| `value`        | `string`                                            |                        | Currently selected value. Used only for controlled mode. |
+| `defaultValue` | `string`                                            |                        | Default selected value.                                  |
+| `layout`       | `"vertical" \| "horizontal" \| "horizontalStacked"` | `vertical`             | Specifies the layout of the radio items.                 |
+| `onChange`     | `(event, data: { value: string }) => void`          |                        | Callback when a radio item is selected.                  |
 
 ### RadioGroupContext
 
@@ -138,20 +137,20 @@ Link to [Radio.types.ts](https://github.com/microsoft/fluentui/blob/master/packa
 A simple `RadioGroup`.
 
 ```jsx
-<RadioGroup defaultValue="1">
-  <Radio value="1" label="Option One" />
-  <Radio value="2" label="Option Two" />
-  <Radio value="3" label="Option Three" />
+<RadioGroup defaultValue="one">
+  <Radio value="one" label="Option One" />
+  <Radio value="two" label="Option Two" />
+  <Radio value="three" label="Option Three" />
 </RadioGroup>
 ```
 
-`Radio` can be used without a `RadioGroup`, but it is then up to the user to add a shared `name` to each item:
+`Radio` can be used without a `RadioGroup`, but it is then up to the user to add the same `name` to each item:
 
 ```jsx
 <>
-  <Radio name="number" value="1" label="Option One" defaultChecked />
-  <Radio name="number" value="2" label="Option Two" />
-  <Radio name="number" value="3" label="Option Three" />
+  <Radio name="number" value="one" label="Option One" defaultChecked />
+  <Radio name="number" value="two" label="Option Two" />
+  <Radio name="number" value="three" label="Option Three" />
 </>
 ```
 
@@ -162,7 +161,7 @@ A simple `RadioGroup`.
 ```html
 <div role="radiogroup" class="fui-RadioGroup" name="radiogroup-0">
   <span class="fui-Radio">
-    <input type="radio" id="radio-1" name="radiogroup-0" value="1" checked />
+    <input type="radio" id="radio-1" name="radiogroup-0" value="one" checked />
     <div class="fui-Radio__indicator">
       <svg><circle /></svg>
     </div>
@@ -170,7 +169,7 @@ A simple `RadioGroup`.
   </span>
 
   <span class="fui-Radio">
-    <input type="radio" id="radio-2" name="radiogroup-0" value="2" />
+    <input type="radio" id="radio-2" name="radiogroup-0" value="two" />
     <div class="fui-Radio__indicator">
       <svg><circle /></svg>
     </div>
@@ -178,7 +177,7 @@ A simple `RadioGroup`.
   </span>
 
   <span class="fui-Radio">
-    <input type="radio" id="radio-3" name="radiogroup-0" value="3" />
+    <input type="radio" id="radio-3" name="radiogroup-0" value="three" />
     <div class="fui-Radio__indicator">
       <svg><circle /></svg>
     </div>
@@ -203,13 +202,13 @@ RadioGroup inherits all of its mouse and keyboard behaviors from the browser's h
 ### Disabled
 
 - Individual Radio items can be disabled, in which case they are grayed out and can't be selected or focused.
-- The entire RadioGroup can be disabled, which uses context to disable all of the individual Radio items.
-- This interaction is built-into the browser by setting `disabled` on the `<input>` control.
+  - This interaction is built-into the browser by setting `disabled` on the `<input>` control.
+- The entire RadioGroup can be disabled, which uses RadioGroupContext to disable all of the individual Radio items.
 
 ### Group Name
 
 - All Radio items in a group must have the same `name` for the browser to handle keyboarding and selection.
-- The RadioGroup provides its `name` through a context, and each Radio inside applies the `name`.
+- The RadioGroup provides its `name` through RadioGroupContext, and each Radio inside applies the `name`.
 - If a `name` is not provided on RadioGroup, a unique name is automatically generated with `useId`.
 
 ## Accessibility
