@@ -257,7 +257,6 @@ _⚠️ Props not included in this section are marked as deprecated and will not
 | Used to customize option rendering.                                             | onRenderField      | -                | -        |
 | Used to customize label rendering.                                              | onRenderLabel      | -                | -        |
 | The src of image for choice field which is selected.                            | selectedImageSrc   | -                | -        |
-| The subtext string for the option.                                              | subtext            | -                | -        |
 | Accessibility behavior if overridden by the user.                               | -                  | accessibility    | -        |
 | Whether or not radio item is checked.                                           | -                  | checked          | -        |
 | The checked radio item indicator can be customized.                             | -                  | checkedIndicator | -        |
