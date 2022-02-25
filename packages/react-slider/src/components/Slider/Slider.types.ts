@@ -77,12 +77,6 @@ type SliderCommons = {
   disabled?: boolean;
 
   /**
-   * If true, the input will have inline display, allowing it be used within text content.
-   * If false (the default), the input will be block display.
-   */
-  inline?: boolean;
-
-  /**
    * Whether to render the Slider vertically.
    * @default `false` (renders horizontally)
    */
