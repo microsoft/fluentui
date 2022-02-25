@@ -38,11 +38,9 @@ describe('FocusTrapZone', () => {
     it('Does not focus first child on mount with disableFirstFocus', () => {
       setProps({ disableFirstFocus: true });
 
-      // For some reason this doesn't work:
-      // cy.focused().should('match', 'body');
-      cy.document().should(doc => {
-        expect(doc.activeElement?.tagName).to.equal('BODY');
-      });
+      // Verify nothing is focused (note that document.activeElement will be body, but cy.focused()
+      // uses :focus, and that's not set on body even if it's active)
+      cy.focused().should('not.exist');
     });
 
     it('Can click children inside the FTZ', () => {
@@ -149,9 +147,7 @@ describe('FocusTrapZone', () => {
       // verify story rendered (to make sure we're not checking the base state of the page)
       cy.contains('first').should('exist');
 
-      cy.document().should(doc => {
-        expect(doc.activeElement?.tagName).to.equal('BODY');
-      });
+      cy.focused().should('not.exist');
     });
 
     it('Focuses on firstFocusableSelector on mount', () => {
@@ -167,9 +163,7 @@ describe('FocusTrapZone', () => {
       // verify story rendered (to make sure we're not checking the base state of the page)
       cy.contains('first').should('exist');
 
-      cy.document().should(doc => {
-        expect(doc.activeElement?.tagName).to.equal('BODY');
-      });
+      cy.focused().should('not.exist');
     });
 
     it('Falls back to first focusable element with invalid firstFocusableSelector', () => {
@@ -196,9 +190,7 @@ describe('FocusTrapZone', () => {
       // verify story rendered (to make sure we're not checking the base state of the page)
       cy.contains('first').should('exist');
 
-      cy.document().should(doc => {
-        expect(doc.activeElement?.tagName).to.equal('BODY');
-      });
+      cy.focused().should('not.exist');
     });
 
     it('Does not focus on firstFocusableTarget callback on mount while disabled', () => {
@@ -210,9 +202,7 @@ describe('FocusTrapZone', () => {
       // verify story rendered (to make sure we're not checking the base state of the page)
       cy.contains('first').should('exist');
 
-      cy.document().should(doc => {
-        expect(doc.activeElement?.tagName).to.equal('BODY');
-      });
+      cy.focused().should('not.exist');
     });
 
     it('Falls back to first focusable element with invalid firstFocusableTarget selector', () => {
@@ -464,10 +454,7 @@ describe('FocusTrapZone', () => {
       });
       // ftz2 will try to return focus to its initiator (the button in ftz1), but that button is gone,
       // so focus goes to document.body
-      cy.document().should(doc => {
-        expect(doc.activeElement?.tagName).to.equal('BODY');
-      });
-
+      cy.focused().should('not.exist');
       // add ftz3 => two FTZ in stack
       // (even though ftz3 has forceFocusInsideTrap=false)
       cy.contains('add ftz3').realClick();
