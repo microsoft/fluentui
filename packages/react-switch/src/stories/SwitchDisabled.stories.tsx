@@ -1,11 +1,16 @@
 import * as React from 'react';
 import { Switch } from '../index';
 
+const wrapperStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+};
+
 export const Disabled = () => (
-  <>
-    <Switch disabled />
-    <Switch checked disabled />
-  </>
+  <div style={wrapperStyle}>
+    <Switch disabled label="Unchecked and disabled" />
+    <Switch checked disabled label="Checked and disabled" />
+  </div>
 );
 
 Disabled.parameters = {

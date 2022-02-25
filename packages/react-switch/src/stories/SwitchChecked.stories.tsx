@@ -10,7 +10,7 @@ export const Checked = () => {
     [setChecked],
   );
 
-  return <Switch checked={checked} onChange={onChange} />;
+  return <Switch checked={checked} onChange={onChange} label={checked ? 'Checked' : 'Unchecked'} />;
 };
 
 Checked.parameters = {

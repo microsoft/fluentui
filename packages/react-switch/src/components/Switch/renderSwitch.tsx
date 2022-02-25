@@ -7,12 +7,14 @@ import type { SwitchState, SwitchSlots } from './Switch.types';
  */
 export const renderSwitch_unstable = (state: SwitchState) => {
   const { slots, slotProps } = getSlots<SwitchSlots>(state);
+  const { labelPosition } = state;
 
   return (
     <slots.root {...slotProps.root}>
       <slots.input {...slotProps.input} />
+      {labelPosition !== 'after' && slots.label && <slots.label {...slotProps.label} />}
       <slots.track {...slotProps.track} />
-      <slots.thumb {...slotProps.thumb} />
+      {labelPosition === 'after' && slots.label && <slots.label {...slotProps.label} />}
     </slots.root>
   );
 };

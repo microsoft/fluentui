@@ -7,6 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
@@ -17,7 +18,9 @@ export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
 export const Switch: ForwardRefComponent<SwitchProps>;
 
 // @public (undocumented)
-export const switchClassName = "fui-Switch";
+export const switchClassNames: {
+    [SlotName in keyof SwitchSlots]-?: string;
+};
 
 // @public (undocumented)
 export type SwitchOnChangeData = {
@@ -37,7 +40,7 @@ export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'o
 export type SwitchSlots = {
     root: NonNullable<Slot<'div'>>;
     input: NonNullable<Slot<'input'>>;
-    thumb: NonNullable<Slot<'div'>>;
+    label?: Slot<typeof Label>;
     track: NonNullable<Slot<'div'>>;
 };
 

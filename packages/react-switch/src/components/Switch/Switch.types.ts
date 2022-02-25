@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Label } from '@fluentui/react-label';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type SwitchSlots = {
@@ -19,12 +20,12 @@ export type SwitchSlots = {
   input: NonNullable<Slot<'input'>>;
 
   /**
-   * The track over which the thumb slides to indicate the on and off status of the `Switch`.
+   * The `Switch's` label.
    */
-  thumb: NonNullable<Slot<'div'>>;
+  label?: Slot<typeof Label>;
 
   /**
-   * The circular indicator that moves to visually show the status of the `Switch`.
+   * The track over which the thumb slides to indicate the on and off status of the `Switch`.
    */
   track: NonNullable<Slot<'div'>>;
 };
@@ -37,7 +38,14 @@ type SwitchCommons = {
    * correct value based on handling `onChange` events and re-rendering.
    * @default false
    */
-  checked: boolean;
+  checked?: boolean;
+
+  /**
+   * The position of the label relative to the `Switch`.
+   *
+   * @default after
+   */
+  labelPosition: 'above' | 'after' | 'before';
 };
 
 export type SwitchOnChangeData = {

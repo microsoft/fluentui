@@ -6,6 +6,10 @@ import bestPracticesMd from './SwitchBestPractices.md';
 export * from './SwitchDefault.stories';
 export * from './SwitchChecked.stories';
 export * from './SwitchDisabled.stories';
+export * from './SwitchLabel.stories';
+export * from './SwitchLabelWrapping.stories';
+export * from './SwitchRequired.stories';
+export * from './SwitchThemed.stories';
 
 export default {
   title: 'Components/Switch',
