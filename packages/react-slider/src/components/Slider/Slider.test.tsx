@@ -22,11 +22,6 @@ describe('Slider', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('renders inline Slider correctly', () => {
-    const { container } = render(<Slider defaultValue={5} inline min={0} max={10} />);
-    expect(container).toMatchSnapshot();
-  });
-
   it('renders vertical Slider correctly', () => {
     const { container } = render(<Slider defaultValue={5} vertical min={0} max={10} />);
     expect(container).toMatchSnapshot();
