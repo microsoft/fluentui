@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FocusTrapZone, mergeStyles } from '@fluentui/react';
-import { useProps } from './shared';
+import type { IFocusTrapZoneProps } from '@fluentui/react';
+import { useProps } from '../../../e2e/utils';
 
 const rootClass = mergeStyles({
   button: { height: 30, width: 60, display: 'block' },
@@ -10,7 +11,7 @@ const rootClass = mergeStyles({
 /** Respects default and explicit prop values */
 export const PropValues = () => {
   const [buttonClicked, setButtonClicked] = React.useState('');
-  const props = useProps();
+  const props = useProps<IFocusTrapZoneProps>();
 
   return (
     // don't render until props have been set

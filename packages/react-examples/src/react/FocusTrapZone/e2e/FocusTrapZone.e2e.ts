@@ -1,5 +1,8 @@
 import type { IFocusTrapZoneProps } from '@fluentui/react/lib/FocusTrapZone';
-import { FTZTestWindow } from './shared';
+import type { FTZTestGlobals } from './types';
+
+/** Window with zero or more extra functions defined by some of the stories. */
+type FTZTestWindow = Cypress.AUTWindow & FTZTestGlobals;
 
 const ftzStoriesTitle = 'Components/FocusTrapZone/e2e';
 
