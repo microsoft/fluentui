@@ -31,7 +31,7 @@ export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'layout' | '
 
 // @public
 export type RadioGroupOnChangeData = {
-    value?: string;
+    value: string;
 };
 
 // @public (undocumented)
@@ -66,7 +66,7 @@ export type RadioSlots = {
     root: NonNullable<Slot<'span'>>;
     label: Slot<typeof Label>;
     input: NonNullable<Slot<'input'>>;
-    indicator: Slot<'div'>;
+    indicator: NonNullable<Slot<'div'>>;
 };
 
 // @public

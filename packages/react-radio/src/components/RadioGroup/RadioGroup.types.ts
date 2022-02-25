@@ -56,7 +56,7 @@ export type RadioGroupOnChangeData = {
   /**
    * The value of the newly selected Radio item.
    */
-  value?: string;
+  value: string;
 };
 
 /**

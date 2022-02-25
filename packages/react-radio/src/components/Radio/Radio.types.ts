@@ -26,7 +26,7 @@ export type RadioSlots = {
   /**
    * A circle outline, with a filled circle icon inside when the Radio is checked.
    */
-  indicator: Slot<'div'>;
+  indicator: NonNullable<Slot<'div'>>;
 };
 
 /**

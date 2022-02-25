@@ -172,9 +172,7 @@ export const useRadioStyles_unstable = (state: RadioState) => {
   state.input.className = mergeClasses(inputStyles.base, state.input.className);
 
   const indicatorStyles = useIndicatorStyles();
-  if (state.indicator) {
-    state.indicator.className = mergeClasses(indicatorClassName, indicatorStyles.base, state.indicator.className);
-  }
+  state.indicator.className = mergeClasses(indicatorClassName, indicatorStyles.base, state.indicator.className);
 
   const labelStyles = useLabelStyles();
   if (state.label) {

@@ -6,12 +6,11 @@ export const radioGroupClassName = 'fui-RadioGroup';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'flex-start',
   },
 
-  horizontal: {
-    flexDirection: 'row',
+  vertical: {
+    flexDirection: 'column',
   },
 });
 
@@ -23,7 +22,7 @@ export const useRadioGroupStyles_unstable = (state: RadioGroupState) => {
   state.root.className = mergeClasses(
     radioGroupClassName,
     styles.root,
-    state.layout !== 'vertical' && styles.horizontal,
+    state.layout === 'vertical' && styles.vertical,
     state.root.className,
   );
 };
