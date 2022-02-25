@@ -18,6 +18,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
   const group = React.useContext(RadioGroupContext);
 
   const {
+    name = group.name,
     checked = group.value !== undefined ? group.value === props.value : undefined,
     defaultChecked = group.defaultValue !== undefined ? group.defaultValue === props.value : undefined,
     labelPosition = group.layout === 'horizontalStacked' ? 'below' : 'after',
@@ -42,9 +43,10 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
       ref,
       type: 'radio',
       id: useId('radio-', nativeProps.primary.id),
-      name: group?.name,
+      name,
       checked,
       defaultChecked,
+      disabled,
       ...nativeProps.primary,
     },
   });
