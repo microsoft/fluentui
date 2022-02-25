@@ -34,7 +34,7 @@ jobs:
             echo "##vso[task.setvariable variable=ReactComponentsPackageAffected;isOutput=true]true"
           fi
         name: PackagesAffected
-        displayName: Check if v8 and/or  northstar packages were affected
+        displayName: Check if v8, v9 and/or northstar packages were affected
 
   - job: PerfTestNorthstar
     displayName: Perf test for @fluentui/react-northstar
@@ -204,6 +204,6 @@ jobs:
           githubRepo: 'fluentui'
           blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePathReactComponents)'
           status: '$(PerfCommentStatusReactComponents)'
-          uniqueId: 'perfComment9423'
+          uniqueId: 'perfComment9425'
 
       - template: .devops/templates/cleanup.yml

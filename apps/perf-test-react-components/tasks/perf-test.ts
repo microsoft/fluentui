@@ -104,7 +104,7 @@ const iterationsDefault = 5000;
 const DEPLOY_URL = 'fluentuipr.z22.web.core.windows.net';
 
 const urlForDeployPath = process.env.DEPLOYURL
-  ? `${process.env.DEPLOYURL}/perf-test`
+  ? `${process.env.DEPLOYURL}/perf-test-react-components`
   : 'file://' + path.resolve(__dirname, '../dist/');
 
 // Temporarily comment out deploy site usage to speed up CI build time and support parallelization.
@@ -114,7 +114,9 @@ const urlForDeployPath = process.env.DEPLOYURL
 const urlForDeploy = 'file://' + path.resolve(__dirname, '../dist/') + '/index.html';
 
 const targetPath = `heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
-const urlForMaster = `https://${process.env.DEPLOYHOST || DEPLOY_URL}/${targetPath}/perf-test/index.html`;
+const urlForMaster = `https://${
+  process.env.DEPLOYHOST || DEPLOY_URL
+}/${targetPath}/perf-test-react-components/index.html`;
 
 const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');
