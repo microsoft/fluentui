@@ -44,7 +44,10 @@ const useInputStyles = makeStyles({
     boxSizing: 'border-box',
     ...shorthands.margin(0),
     opacity: 0,
-    cursor: 'pointer',
+
+    ':enabled': {
+      cursor: 'pointer',
+    },
 
     // When unchecked, hide the circle icon (child of the indicator)
     [`:not(:checked) ~ .${indicatorClassName} > *`]: {
@@ -106,8 +109,6 @@ const useInputStyles = makeStyles({
 
     // Colors for the disabled state
     ':disabled': {
-      cursor: 'default',
-
       [`& ~ .${labelClassName}`]: {
         color: tokens.colorNeutralForegroundDisabled,
       },
@@ -143,8 +144,6 @@ const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
     userSelect: 'none',
-    cursor: 'inherit',
-    color: 'inherit',
 
     // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
     // This prevents the label from expanding the height of the Radio, but preserves line height if the label wraps.
