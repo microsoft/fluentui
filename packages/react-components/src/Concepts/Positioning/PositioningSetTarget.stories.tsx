@@ -20,9 +20,10 @@ export const ImperativeAnchorTarget = () => {
         y,
       });
     };
-    popperRef.current?.setTarget({
+    const virtualElement = {
       getBoundingClientRect: getRect(e.clientX, e.clientY),
-    });
+    };
+    popperRef.current?.setTarget(virtualElement);
   }, []);
 
   const onMouseEnter = React.useCallback(() => {
