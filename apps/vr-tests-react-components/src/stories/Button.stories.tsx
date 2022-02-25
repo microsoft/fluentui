@@ -6,6 +6,7 @@ import { Button, CompoundButton, ToggleButton, MenuButton } from '@fluentui/reac
 const steps = new Screener.Steps()
   .snapshot('default', { cropTo: '.testWrapper' })
   .hover('#button-id')
+  .wait(1000)
   .snapshot('hover', { cropTo: '.testWrapper' })
   .mouseDown('#button-id')
   .snapshot('pressed', { cropTo: '.testWrapper' })
