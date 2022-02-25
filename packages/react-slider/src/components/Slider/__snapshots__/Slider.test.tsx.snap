@@ -73,30 +73,6 @@ exports[`Slider renders horizontal origin Slider correctly 1`] = `
 </div>
 `;
 
-exports[`Slider renders inline Slider correctly 1`] = `
-<div>
-  <div
-    class="fui-Slider"
-    style="--fui-slider-rail-direction: 90deg; --fui-slider-thumb-position: 50%; --fui-slider-rail-offset: 0%; --fui-slider-rail-progress: 50%;"
-  >
-    <input
-      class=""
-      id="slider-1"
-      max="10"
-      min="0"
-      type="range"
-      value="5"
-    />
-    <div
-      class=""
-    />
-    <div
-      class=""
-    />
-  </div>
-</div>
-`;
-
 exports[`Slider renders vertical Slider correctly 1`] = `
 <div>
   <div
