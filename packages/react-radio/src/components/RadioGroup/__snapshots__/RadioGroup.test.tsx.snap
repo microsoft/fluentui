@@ -2,17 +2,9 @@
 
 exports[`RadioGroup renders a default state 1`] = `
 <div>
-  <fieldset
-    aria-labelledby="radiogroup-1__label"
+  <div
     class="fui-RadioGroup"
     role="radiogroup"
-  >
-    <label
-      class="fui-Label fui-RadioGroup__label"
-      id="radiogroup-1__label"
-    >
-      Default RadioGroup
-    </label>
-  </fieldset>
+  />
 </div>
 `;

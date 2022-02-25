@@ -11,10 +11,7 @@ export const renderRadioGroup_unstable = (state: RadioGroupState) => {
 
   return (
     <RadioGroupContext.Provider value={state.context}>
-      <slots.root {...slotProps.root}>
-        {slots.label && <slots.label {...slotProps.label} />}
-        {state.root.children}
-      </slots.root>
+      <slots.root {...slotProps.root} />
     </RadioGroupContext.Provider>
   );
 };

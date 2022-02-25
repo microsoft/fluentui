@@ -17,7 +17,7 @@ describe('RadioGroup', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<RadioGroup label="Default RadioGroup" />);
+    const result = render(<RadioGroup />);
     expect(result.container).toMatchSnapshot();
   });
 });

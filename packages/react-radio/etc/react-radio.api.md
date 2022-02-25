@@ -42,17 +42,15 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
     onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: RadioGroupOnChangeData) => void;
     layout?: 'vertical' | 'horizontal' | 'horizontalStacked';
     disabled?: boolean;
-    required?: boolean;
 };
 
 // @public (undocumented)
 export type RadioGroupSlots = {
-    root: Slot<'fieldset'>;
-    label: Slot<typeof Label>;
+    root: Slot<'div'>;
 };
 
 // @public
-export type RadioGroupState = ComponentState<RadioGroupSlots> & Pick<RadioGroupProps, 'layout' | 'required'> & {
+export type RadioGroupState = ComponentState<RadioGroupSlots> & Required<Pick<RadioGroupProps, 'layout'>> & {
     context: RadioGroupContextValue;
 };
 
@@ -84,7 +82,7 @@ export const renderRadioGroup_unstable: (state: RadioGroupState) => JSX.Element;
 export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;
 
 // @public
-export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<HTMLFieldSetElement>) => RadioGroupState;
+export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => RadioGroupState;
 
 // @public
 export const useRadioGroupStyles_unstable: (state: RadioGroupState) => void;

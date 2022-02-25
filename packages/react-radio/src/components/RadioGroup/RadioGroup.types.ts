@@ -1,18 +1,12 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
 import { RadioGroupContextValue } from '../../contexts/RadioGroupContext';
 
 export type RadioGroupSlots = {
   /**
    * The radio group root.
    */
-  root: Slot<'fieldset'>;
-
-  /**
-   * The label of the radio group.
-   */
-  label: Slot<typeof Label>;
+  root: Slot<'div'>;
 };
 
 export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'onChange'> & {
@@ -40,7 +34,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
   /**
    * Callback when the selected Radio item changes.
    */
-  onChange?: (ev: React.FormEvent<HTMLInputElement>, data: RadioGroupOnChangeData) => void;
+  onChange?: (ev: React.FormEvent<HTMLDivElement>, data: RadioGroupOnChangeData) => void;
 
   /**
    * How the radio items are laid out in the group
@@ -53,11 +47,6 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
    * Disable all Radio items in this group.
    */
   disabled?: boolean;
-
-  /**
-   * Display a required asterisk (*) at the end of the label.
-   */
-  required?: boolean;
 };
 
 /**
@@ -74,6 +63,6 @@ export type RadioGroupOnChangeData = {
  * State used in rendering RadioGroup
  */
 export type RadioGroupState = ComponentState<RadioGroupSlots> &
-  Pick<RadioGroupProps, 'layout' | 'required'> & {
+  Required<Pick<RadioGroupProps, 'layout'>> & {
     context: RadioGroupContextValue;
   };

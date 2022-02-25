@@ -1,32 +1,17 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { RadioGroupState } from './RadioGroup.types';
 
 export const radioGroupClassName = 'fui-RadioGroup';
-const labelClassName = 'fui-RadioGroup__label';
 
 const useStyles = makeStyles({
   root: {
-    ...shorthands.border(0),
-    ...shorthands.margin(0),
-    ...shorthands.padding(0),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
-
-    [`:disabled > .${labelClassName}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
-    },
   },
 
   horizontal: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-
-  label: {
-    ...shorthands.padding(0),
-    flexBasis: '100%',
   },
 });
 
@@ -41,8 +26,4 @@ export const useRadioGroupStyles_unstable = (state: RadioGroupState) => {
     state.layout !== 'vertical' && styles.horizontal,
     state.root.className,
   );
-
-  if (state.label) {
-    state.label.className = mergeClasses(labelClassName, styles.label, state.label.className);
-  }
 };
