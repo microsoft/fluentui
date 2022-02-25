@@ -1,10 +1,6 @@
 import * as React from 'react';
-import { FocusZone, FocusTrapZone, FocusZoneDirection, mergeStyles } from '@fluentui/react';
-
-const rootClass = mergeStyles({
-  button: { width: 60, height: 30 },
-  '*:focus': { outline: '2px dashed red' },
-});
+import { FocusZone, FocusTrapZone, FocusZoneDirection } from '@fluentui/react';
+import { rootClass } from './shared';
 
 /**
  * Tab and shift-tab wrap at extreme ends of the FTZ:

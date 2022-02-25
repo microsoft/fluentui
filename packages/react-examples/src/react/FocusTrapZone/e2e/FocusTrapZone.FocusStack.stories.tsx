@@ -1,22 +1,8 @@
 import * as React from 'react';
-import { FocusTrapZone, mergeStyles } from '@fluentui/react';
+import { FocusTrapZone } from '@fluentui/react';
 import { useGlobal } from '../../../e2e/utils';
 import { FTZTestGlobals } from './types';
-
-// make the example a little easier to visually follow when debugging
-const rootClass = mergeStyles({
-  '> div': {
-    // target all child FTZ roots
-    border: '2px dashed blue',
-    padding: 10,
-    margin: 10,
-    button: {
-      display: 'inline-block',
-      marginLeft: 10,
-    },
-  },
-  '*:focus': { outline: '2px dashed red' },
-});
+import { rootClass } from './shared';
 
 /**
  * It maintains a proper stack of FocusTrapZones as more are mounted/unmounted

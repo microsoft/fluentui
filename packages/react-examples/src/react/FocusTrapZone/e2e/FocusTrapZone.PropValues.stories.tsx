@@ -1,12 +1,8 @@
 import * as React from 'react';
-import { FocusTrapZone, mergeStyles } from '@fluentui/react';
+import { FocusTrapZone } from '@fluentui/react';
 import type { IFocusTrapZoneProps } from '@fluentui/react';
 import { useProps } from '../../../e2e/utils';
-
-const rootClass = mergeStyles({
-  button: { height: 30, width: 60, display: 'block' },
-  '*:focus': { outline: '2px dashed red' },
-});
+import { rootClass } from './shared';
 
 /** Respects default and explicit prop values */
 export const PropValues = () => {
@@ -17,7 +13,9 @@ export const PropValues = () => {
     // don't render until props have been set
     props && (
       <div className={rootClass} onClick={ev => setButtonClicked((ev.target as HTMLButtonElement).textContent || '')}>
-        <div id="buttonClicked">clicked {buttonClicked}</div>
+        <span id="buttonClicked" style={{ display: 'block' /* avoid inherited div styling */ }}>
+          clicked {buttonClicked}
+        </span>
         <button>before</button>
         <FocusTrapZone {...props}>
           <button>first</button>

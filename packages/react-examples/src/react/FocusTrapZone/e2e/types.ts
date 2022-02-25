@@ -1,4 +1,4 @@
-import type { IFocusTrapZoneProps } from '@fluentui/react';
+import type { IFocusTrapZoneProps } from '@fluentui/react/lib/FocusTrapZone';
 
 /**
  * Globals set by some of the stories. A story may set some or none of these.

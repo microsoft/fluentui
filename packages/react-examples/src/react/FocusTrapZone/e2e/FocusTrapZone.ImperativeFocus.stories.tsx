@@ -1,17 +1,9 @@
 import * as React from 'react';
-import { FocusZone, FocusTrapZone, mergeStyles } from '@fluentui/react';
+import { FocusZone, FocusTrapZone } from '@fluentui/react';
 import type { IFocusTrapZone, IFocusTrapZoneProps } from '@fluentui/react';
 import { useGlobal, useProps } from '../../../e2e/utils';
 import type { FTZTestGlobals } from './types';
-
-const rootClass = mergeStyles({
-  button: {
-    height: 30,
-    width: 60,
-    display: 'block',
-  },
-  '*:focus': { outline: '2px dashed red' },
-});
+import { rootClass } from './shared';
 
 /** Imperatively focusing the FTZ */
 export const ImperativeFocus = () => {
