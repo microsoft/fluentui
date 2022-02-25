@@ -89,7 +89,7 @@ Default positioning of Radio items with a dropdown as its last Radio item.
 
 | Component         | Purpose                                                                         |
 | ----------------- | ------------------------------------------------------------------------------- |
-| RadioGroup        | Wraps radio inputs. Provides API for control group (fieldset and legend).       |
+| RadioGroup        | Wraps radio inputs. Provides RadioGroupContext and layout for the radio items.  |
 | RadioGroupContext | Provides some props like `name` to Radio items that are children of RadioGroup. |
 | Radio             | Represents a single radio item (input and label).                               |
 
@@ -99,9 +99,8 @@ Link to [RadioGroup.types.ts](https://github.com/microsoft/fluentui/blob/master/
 
 | Prop           | Type                                                | Default value          | Purpose                                                      |
 | -------------- | --------------------------------------------------- | ---------------------- | ------------------------------------------------------------ |
-| (root)         | slot: `<fieldset>`                                  |                        | The root slot is a fieldset.                                 |
-| `label`        | slot: `<Label as="legend">`                         |                        | Label for the group of radio controls.                       |
-| `name`         | `string`                                            | `useId('radiogroup-')` | Name property passed to child inputs.                        |
+| (root)         | slot: `<div role="radiogroup">`                     |                        | The root slot has the radiogroup role.                       |
+| `name`         | `string`                                            | `useId('radiogroup-')` | Name property passed to child radios.                        |
 | `value`        | `string`                                            |                        | Currently selected value. Used only for controlled mode.     |
 | `defaultValue` | `string`                                            | `undefined`            | Which option should be preselected by default.               |
 | `required`     | `boolean`                                           | `false`                | Add a red asterisk to the label.                             |
@@ -136,13 +135,13 @@ Link to [Radio.types.ts](https://github.com/microsoft/fluentui/blob/master/packa
 
 ## Sample Code
 
-A simple `RadioGroup`. In this example, "Option 1" is selected by default
+A simple `RadioGroup`.
 
 ```jsx
-<RadioGroup name="number" label="Pick an option:" defaultValue="1">
-  <Radio value="1" label="Option 1" />
-  <Radio value="2" label="Option 2" />
-  <Radio value="3" label="Option 3" />
+<RadioGroup defaultValue="1">
+  <Radio value="1" label="Option One" />
+  <Radio value="2" label="Option Two" />
+  <Radio value="3" label="Option Three" />
 </RadioGroup>
 ```
 
@@ -150,24 +149,10 @@ A simple `RadioGroup`. In this example, "Option 1" is selected by default
 
 ```jsx
 <>
-  <Radio name="number" value="1" label="Number One" defaultChecked />
-  <Radio name="number" value="2" label="Number Two" />
-  <Radio name="number" value="3" label="Number Three" />
+  <Radio name="number" value="1" label="Option One" defaultChecked />
+  <Radio name="number" value="2" label="Option Two" />
+  <Radio name="number" value="3" label="Option Three" />
 </>
-```
-
-```tsx
-const IceCreamPicker = () => {
-  const iceCreams = ['Chocolate', 'Strawberry', 'Mango'];
-
-  return (
-    <RadioGroup label="Which ice cream would you like?" name="ice-cream">
-      {iceCreams.map(flavor => (
-        <Radio key={flavor} value={flavor} label={flavor} />
-      ))}
-    </RadioGroup>
-  );
-};
 ```
 
 ## Structure
@@ -175,27 +160,31 @@ const IceCreamPicker = () => {
 ### Expected DOM structure
 
 ```html
-<fieldset class="fui-RadioGroup" name="radiogroup-0">
-  <legend class="fui-RadioGroup__label">Pick an option:</legend>
-
+<div role="radiogroup" class="fui-RadioGroup" name="radiogroup-0">
   <span class="fui-Radio">
     <input type="radio" id="radio-1" name="radiogroup-0" value="1" checked />
-    <div class="fui-Radio__indicator"></div>
-    <label class="fui-Label" for="radio-1">Option 1</label>
+    <div class="fui-Radio__indicator">
+      <svg><circle /></svg>
+    </div>
+    <label class="fui-Label" for="radio-1">Option One</label>
   </span>
 
   <span class="fui-Radio">
     <input type="radio" id="radio-2" name="radiogroup-0" value="2" />
-    <div class="fui-Radio__indicator"></div>
-    <label class="fui-Label" for="radio-2">Option 2</label>
+    <div class="fui-Radio__indicator">
+      <svg><circle /></svg>
+    </div>
+    <label class="fui-Label" for="radio-2">Option Two</label>
   </span>
 
   <span class="fui-Radio">
     <input type="radio" id="radio-3" name="radiogroup-0" value="3" />
-    <div class="fui-Radio__indicator"></div>
-    <label class="fui-Label" for="radio-3">Option 3</label>
+    <div class="fui-Radio__indicator">
+      <svg><circle /></svg>
+    </div>
+    <label class="fui-Label" for="radio-3">Option Three</label>
   </span>
-</fieldset>
+</div>
 ```
 
 ## Behaviors
@@ -214,8 +203,8 @@ RadioGroup inherits all of its mouse and keyboard behaviors from the browser's h
 ### Disabled
 
 - Individual Radio items can be disabled, in which case they are grayed out and can't be selected or focused.
-- The entire RadioGroup can be disabled, in which case none of the Radios inside can be changed or focused.
-- This interaction is built-into the browser by setting `disabled` on the `<input>` or `<fieldset>` control.
+- The entire RadioGroup can be disabled, which uses context to disable all of the individual Radio items.
+- This interaction is built-into the browser by setting `disabled` on the `<input>` control.
 
 ### Group Name
 
@@ -229,8 +218,8 @@ RadioGroup inherits all of its mouse and keyboard behaviors from the browser's h
 
 This implementation based on the [Grouping Controls](https://www.w3.org/WAI/tutorials/forms/grouping/) examples of Web Accessibility Tutorials (that follow WCAG).
 
-- The RadioGroup root is a `<fieldset role="radiogroup">` to provide the default accessibility behavior of role group.
-- The RadioGroup label is a `<legend>` element, which is the implicit label of its parent `<fieldset>`.
+- The RadioGroup root is a `<div role="radiogroup">` to provide the default accessibility behavior of a radiogroup.
+- If a group label is added, the RadioGroup needs to have `aria-labelledby` referencing the label.
 
 ### Radio
 
