@@ -6,7 +6,6 @@ import { Button, CompoundButton, ToggleButton, MenuButton } from '@fluentui/reac
 const steps = new Screener.Steps()
   .snapshot('default', { cropTo: '.testWrapper' })
   .hover('#button-id')
-  .wait(1000)
   .snapshot('hover', { cropTo: '.testWrapper' })
   .mouseDown('#button-id')
   .snapshot('pressed', { cropTo: '.testWrapper' })
@@ -216,11 +215,6 @@ storiesOf('CompoundButton Converged', module)
     ),
     { includeRtl: true },
   )
-  .addStory('Circular', () => (
-    <CompoundButton shape="circular" id={buttonId} secondaryContent="This is some secondary text">
-      Hello, world
-    </CompoundButton>
-  ))
   .addStory('Outline', () => (
     <CompoundButton id={buttonId} secondaryContent="This is some secondary text" appearance="outline">
       Hello, world
@@ -263,6 +257,11 @@ storiesOf('CompoundButton Converged', module)
   ))
   .addStory('Transparent Disabled', () => (
     <CompoundButton id={buttonId} secondaryContent="This is some secondary text" appearance="transparent" disabled>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Circular', () => (
+    <CompoundButton shape="circular" id={buttonId} secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
