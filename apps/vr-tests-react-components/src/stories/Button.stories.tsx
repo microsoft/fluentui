@@ -5,13 +5,10 @@ import { Button, CompoundButton, ToggleButton, MenuButton } from '@fluentui/reac
 
 const steps = new Screener.Steps()
   .snapshot('default', { cropTo: '.testWrapper' })
-  .hover('button')
-  .wait(100)
+  .hover('.fui-Button')
   .snapshot('hover', { cropTo: '.testWrapper' })
-  .mouseDown('button')
-  .wait(100)
+  .mouseDown('.fui-Button')
   .snapshot('pressed', { cropTo: '.testWrapper' })
-  .mouseUp('button')
   .end();
 
 storiesOf('Button Converged', module)
