@@ -1,5 +1,5 @@
 import { Middleware, ComputePositionConfig } from '@floating-ui/core';
-import { computePosition as computePositionOriginal } from '@floating-ui/dom';
+import { computePosition } from '@floating-ui/dom';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';
@@ -17,6 +17,7 @@ import {
 } from './middleware';
 import { getScrollParent } from './utils/getScrollParent';
 import debounce from './utils/debounce';
+import { useFirstMount } from '@fluentui/react-utilities';
 
 function usePopperOptions(options: PopperOptions) {
   const {
@@ -87,29 +88,18 @@ export function usePopper(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   arrowRef: React.MutableRefObject<any>;
 } {
+  const isFirstUpdate = React.useRef(true);
   const { targetDocument } = useFluent();
   const enabled = true;
   const resolvePopperOptions = usePopperOptions(options);
 
-  const computePosition = React.useState(() =>
-    debounce(
-      (
-        target: HTMLElement | PopperVirtualElement,
-        container: HTMLElement,
-        computeOptions: Partial<ComputePositionConfig>,
-      ) => computePositionOriginal(target, container, computeOptions),
-    ),
-  )[0];
-  const updatePosition = useEventCallback(() => {
+  const forceUpdate = useEventCallback(() => {
     const target = overrideTargetRef.current ?? targetRef.current;
     if (!canUseDOM || !enabled || !target || !containerRef.current) {
       return;
     }
 
-    if (containerRef.current) {
-      Object.assign(containerRef.current.style, { position: 'fixed', top: 0, left: 0 });
-    }
-
+    Object.assign(containerRef.current.style, { position: 'absolute' });
     const { placement, middleware } = resolvePopperOptions(target, containerRef.current, arrowRef.current);
     computePosition(target, containerRef.current, { placement, middleware, strategy: 'absolute' }).then(
       ({ x, y, middlewareData, placement: computedPlacement }) => {
@@ -117,6 +107,7 @@ export function usePopper(
           return;
         }
 
+        isFirstUpdate.current = false;
         containerRef.current.setAttribute('data-popper-placement', computedPlacement);
         Object.assign(containerRef.current.style, {
           left: `${x}px`,
@@ -135,6 +126,8 @@ export function usePopper(
       },
     );
   });
+
+  const updatePosition = React.useState(() => debounce(forceUpdate))[0];
 
   const targetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, updatePosition, true);
   const containerRef = useCallbackRef<HTMLElement | null>(null, updatePosition, true);
@@ -172,8 +165,18 @@ export function usePopper(
   }, [options.target, overrideTargetRef, containerRef]);
 
   useIsomorphicLayoutEffect(() => {
+    /**
+     * Set position fixed right before position update to avoid scroll jumps.
+     * Scroll jumps can happen if content in the floater is focused before it is
+     * positioned. fixed positiong means that the floater will always be in the viewport
+     * so it can be focused without scrolling.
+     */
+    if (containerRef.current && isFirstUpdate.current) {
+      Object.assign(containerRef.current.style, { position: 'fixed', top: 0, left: 0 });
+    }
+
     updatePosition();
-  }, [updatePosition, enabled]);
+  }, [updatePosition, enabled, containerRef]);
 
   useIsomorphicLayoutEffect(() => {
     const win = targetDocument?.defaultView;

@@ -44,7 +44,6 @@ const useStyles = makeStyles({
     ...shorthands.padding('15px'),
     ...shorthands.border('1px', 'solid', 'blue'),
     backgroundColor: 'white',
-    // position: 'absolute',
   },
 
   arrow: {
@@ -101,9 +100,9 @@ const PositionAndAlignProps: React.FC<{ positionFixed?: boolean }> = ({ position
 
   return (
     <div className={styles.wrapper}>
-      {positions.map(([position, align], i) => {
-        return <Box key={`${position}-${align}`} ref={positionedRefs[i].containerRef}>{`${position}-${align}`}</Box>;
-      })}
+      {positions.map(([position, align], i) => (
+        <Box key={`${position}-${align}`} ref={positionedRefs[i].containerRef}>{`${position}-${align}`}</Box>
+      ))}
       <div ref={targetRef} className="target" />
     </div>
   );
@@ -226,7 +225,11 @@ const VerticalOverflow = () => {
   const bottomPopper = usePopper({ position: 'after', overflowBoundary: boundary ?? undefined });
 
   return (
-    <div className={styles.boundary} ref={setBoundary}>
+    <div
+      className={styles.boundary}
+      style={{ display: 'flex', flexDirection: 'column', height: 200, padding: '5px 50px' }}
+      ref={setBoundary}
+    >
       <button ref={topPopper.targetRef}>Target</button>
       <Box ref={topPopper.containerRef}>Shift</Box>
 
@@ -351,17 +354,20 @@ const AutoSize = () => {
 
 const DisableTether = () => {
   const styles = useStyles();
+  const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
   const { containerRef, targetRef } = usePopper({
     position: 'above',
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_disableTether: 'all',
+    overflowBoundary: boundary,
   });
 
   return (
     <>
       <div
+        ref={setBoundary}
         className={styles.boundary}
         style={{
           display: 'flex',
@@ -372,7 +378,7 @@ const DisableTether = () => {
           position: 'relative',
         }}
       >
-        <button style={{ position: 'absolute', top: -1000 }} ref={targetRef}>
+        <button style={{ position: 'absolute', top: -50 }} ref={targetRef}>
           Target
         </button>
         <Box ref={containerRef}>Untethered</Box>
@@ -419,17 +425,10 @@ const TargetProp = () => {
     align: 'end',
   });
 
-  const { containerRef: containerRef2 } = usePopper({
-    target,
-    position: 'above',
-    align: 'end',
-  });
-
   return (
     <>
       <button ref={setTarget}>Target</button>
       <Box ref={containerRef}>Anchored using target property</Box>
-      <Box ref={containerRef2}>Anchored using target property</Box>
     </>
   );
 };
