@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { TestWrapperDecoratorFixedWidth } from '../utilities/index';
+import { TestWrapperDecoratorFixedWidth, TestWrapperDecorator } from '../utilities/index';
 import {
   Fabric,
   SpinButton,
@@ -91,6 +91,29 @@ storiesOf('SpinButton', module)
     ),
     { includeRtl: true },
   )
+  .addStory('Label on bottom', () => (
+    <Fabric>
+      <SpinButton {...props} styles={styles} labelPosition={Position.bottom} />
+    </Fabric>
+  ))
+  .addStory('Label on bottom with icon', () => (
+    <Fabric>
+      <SpinButton
+        {...props}
+        styles={styles}
+        labelPosition={Position.bottom}
+        iconProps={iconProps}
+      />
+    </Fabric>
+  ));
+
+storiesOf('SpinButton', module)
+  .addDecorator(TestWrapperDecorator)
+  .addDecorator(story => (
+    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+      {story()}
+    </Screener>
+  ))
   .addStory('Label on top', () => (
     <Fabric>
       <SpinButton
@@ -123,21 +146,6 @@ storiesOf('SpinButton', module)
         label="Should vertically align with SpinButton"
         placeholder="(verify field and label alignment)"
         styles={textFieldStyles}
-      />
-    </Fabric>
-  ))
-  .addStory('Label on bottom', () => (
-    <Fabric>
-      <SpinButton {...props} styles={styles} labelPosition={Position.bottom} />
-    </Fabric>
-  ))
-  .addStory('Label on bottom with icon', () => (
-    <Fabric>
-      <SpinButton
-        {...props}
-        styles={styles}
-        labelPosition={Position.bottom}
-        iconProps={iconProps}
       />
     </Fabric>
   ));
