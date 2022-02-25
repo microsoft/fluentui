@@ -18,6 +18,9 @@ export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
 export const Switch: ForwardRefComponent<SwitchProps>;
 
 // @public (undocumented)
+export const switchClassName: string;
+
+// @public (undocumented)
 export const switchClassNames: {
     [SlotName in keyof SwitchSlots]-?: string;
 };
@@ -31,7 +34,6 @@ export type SwitchOnChangeData = {
 //
 // @public
 export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'onChange'> & Partial<SwitchCommons> & {
-    children?: never;
     defaultChecked?: boolean;
     onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => void;
 };
@@ -39,9 +41,9 @@ export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'o
 // @public (undocumented)
 export type SwitchSlots = {
     root: NonNullable<Slot<'div'>>;
+    indicator: NonNullable<Slot<'div'>>;
     input: NonNullable<Slot<'input'>>;
     label?: Slot<typeof Label>;
-    track: NonNullable<Slot<'div'>>;
 };
 
 // @public

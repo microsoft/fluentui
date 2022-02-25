@@ -3,11 +3,11 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../common/isConformant';
 import { Switch } from './Switch';
-import type { SwitchOnChangeData, SwitchProps } from './Switch.types';
+import type { SwitchOnChangeData } from './Switch.types';
 
 describe('Switch', () => {
   isConformant({
-    Component: Switch as React.FunctionComponent<SwitchProps>,
+    Component: Switch,
     displayName: 'Switch',
     primarySlot: 'input',
   });

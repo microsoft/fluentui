@@ -7,34 +7,34 @@ export const switchClassNames: {
   [SlotName in keyof SwitchSlots]-?: string;
 } = {
   root: 'fui-Switch',
+  indicator: 'fui-Switch__indicator',
   input: 'fui-Switch__input',
   label: 'fui-Switch__label',
-  track: 'fui-Switch__track',
 };
 
 // TODO temporary export to pass conformance test.
 export const switchClassName = switchClassNames.root;
 
 // TODO replace these spacing constants with theme values once they're on the theme.
-const spacingXS = '4px';
-const spacingS = '8px';
-const spacingM = '12px';
+const spacingXS = 4;
+const spacingS = 8;
+const spacingM = 12;
 
 // Thumb and track sizes used by the component.
-const spaceBetweenThumbAndTrack = '2px';
-const thumbSize = '14px';
-const trackHeight = '20px';
-const trackWidth = '40px';
+const spaceBetweenThumbAndTrack = 2;
+const thumbSize = 14;
+const trackHeight = 20;
+const trackWidth = 40;
 
 const useRootStyles = makeStyles({
   base: {
     boxSizing: 'border-box',
-    columnGap: spacingM,
+    columnGap: `${spacingM}px`,
     display: 'inline-flex',
-    minHeight: `calc(${trackHeight} + ${spacingS} * 2)`,
-    ...shorthands.padding(spacingS),
+    minHeight: `${trackHeight + spacingS * 2}px`,
+    ...shorthands.padding(`${spacingS}px`),
     position: 'relative',
-    minWidth: `calc(${trackWidth} + ${spacingS} * 2)`,
+    minWidth: `${trackWidth + spacingS * 2}px`,
 
     ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
   },
@@ -42,18 +42,42 @@ const useRootStyles = makeStyles({
   // Label position variations
   above: {
     flexDirection: 'column',
-    paddingTop: spacingXS,
-    rowGap: spacingXS,
+    paddingTop: `${spacingXS}px`,
+    rowGap: `${spacingXS}px`,
   },
   after: {
     alignItems: 'flex-start',
-    columnGap: spacingM,
+    columnGap: `${spacingM}px`,
     flexDirection: 'row',
   },
   before: {
     alignItems: 'flex-start',
-    columnGap: spacingM,
+    columnGap: `${spacingM}px`,
     flexDirection: 'row',
+  },
+});
+
+const useIndicatorStyles = makeStyles({
+  base: {
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    ...shorthands.borderStyle('solid'),
+    ...shorthands.borderWidth('1px'),
+    boxSizing: 'border-box',
+    fill: 'currentColor',
+    flexShrink: 0,
+    fontSize: `${thumbSize + spaceBetweenThumbAndTrack}px`,
+    height: `${trackHeight}px`,
+    pointerEvents: 'none',
+    transitionDuration: '200ms',
+    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+    transitionProperty: 'background, border, color',
+    width: `${trackWidth}px`,
+
+    '> *': {
+      transitionDuration: '200ms',
+      transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
+      transitionProperty: 'transform',
+    },
   },
 });
 
@@ -69,26 +93,48 @@ const useInputStyles = makeStyles({
     top: 0,
     width: '100%',
 
-    // Enabled and unchecked
-    ':enabled:not(:checked)': {
-      [`& ~ .${switchClassNames.label}`]: {
-        color: tokens.colorNeutralForeground1,
+    // Checked (both enabled and disabled)
+    ':checked': {
+      [`& ~ .${switchClassNames.indicator}`]: {
+        '> *': {
+          transform: `translateX(${trackWidth - thumbSize - spaceBetweenThumbAndTrack * 2}px)`,
+        },
+      },
+    },
+
+    // Disabled (both checked and unchecked)
+    ':disabled': {
+      cursor: 'default',
+
+      [`& ~ .${switchClassNames.indicator}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
       },
 
-      [`& ~ .${switchClassNames.track}`]: {
+      [`& ~ .${switchClassNames.label}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
+      },
+    },
+
+    // Enabled and unchecked
+    ':enabled:not(:checked)': {
+      [`& ~ .${switchClassNames.indicator}`]: {
         color: tokens.colorNeutralStrokeAccessible,
         ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
       },
 
+      [`& ~ .${switchClassNames.label}`]: {
+        color: tokens.colorNeutralForeground1,
+      },
+
       ':hover': {
-        [`& ~ .${switchClassNames.track}`]: {
+        [`& ~ .${switchClassNames.indicator}`]: {
           color: tokens.colorNeutralStrokeAccessibleHover,
           ...shorthands.borderColor(tokens.colorNeutralStrokeAccessibleHover),
         },
       },
 
-      ':active': {
-        [`& ~ .${switchClassNames.track}`]: {
+      ':hover:active': {
+        [`& ~ .${switchClassNames.indicator}`]: {
           color: tokens.colorNeutralStrokeAccessiblePressed,
           ...shorthands.borderColor(tokens.colorNeutralStrokeAccessiblePressed),
         },
@@ -97,62 +143,39 @@ const useInputStyles = makeStyles({
 
     // Enabled and checked
     ':enabled:checked': {
-      [`& ~ .${switchClassNames.track}`]: {
+      [`& ~ .${switchClassNames.indicator}`]: {
         backgroundColor: tokens.colorBrandBackground,
         color: tokens.colorNeutralForegroundOnBrand,
         ...shorthands.borderColor(tokens.colorTransparentStroke),
-
-        '> *': {
-          transform: `translateX(calc(${trackWidth} - ${thumbSize} - ${spaceBetweenThumbAndTrack} * 2))`,
-        },
       },
 
       ':hover': {
-        [`& ~ .${switchClassNames.track}`]: {
+        [`& ~ .${switchClassNames.indicator}`]: {
           backgroundColor: tokens.colorBrandBackgroundHover,
           ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
         },
       },
 
-      ':active': {
-        [`& ~ .${switchClassNames.track}`]: {
+      ':hover:active': {
+        [`& ~ .${switchClassNames.indicator}`]: {
           backgroundColor: tokens.colorBrandBackgroundPressed,
           ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
         },
       },
     },
 
-    // Disabled
-    ':disabled': {
-      cursor: 'default',
-    },
-
     // Disabled and unchecked
     ':disabled:not(:checked)': {
-      [`& ~ .${switchClassNames.label}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-      },
-
-      [`& ~ .${switchClassNames.track}`]: {
+      [`& ~ .${switchClassNames.indicator}`]: {
         ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-        color: tokens.colorNeutralForegroundDisabled,
       },
     },
 
     // Disabled and checked
     ':disabled:checked': {
-      [`& ~ .${switchClassNames.label}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-      },
-
-      [`& ~ .${switchClassNames.track}`]: {
+      [`& ~ .${switchClassNames.indicator}`]: {
         backgroundColor: tokens.colorNeutralBackgroundDisabled,
         ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
-        color: tokens.colorNeutralForegroundDisabled,
-
-        '> *': {
-          transform: `translateX(calc(${trackWidth} - ${thumbSize} - ${spaceBetweenThumbAndTrack} * 2))`,
-        },
       },
     },
   },
@@ -160,33 +183,7 @@ const useInputStyles = makeStyles({
 
 const useLabelStyles = makeStyles({
   base: {
-    color: 'inherit',
-    cursor: 'inherit',
     userSelect: 'none',
-  },
-});
-
-const useTrackStyles = makeStyles({
-  base: {
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    ...shorthands.borderStyle('solid'),
-    ...shorthands.borderWidth('1px'),
-    boxSizing: 'border-box',
-    fill: 'currentColor',
-    flexShrink: 0,
-    fontSize: tokens.fontSizeBase400,
-    height: trackHeight,
-    pointerEvents: 'none',
-    transitionDuration: '200ms',
-    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
-    transitionProperty: 'background, border, color',
-    width: trackWidth,
-
-    '> *': {
-      transitionDuration: '200ms',
-      transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
-      transitionProperty: 'transform',
-    },
   },
 });
 
@@ -195,9 +192,9 @@ const useTrackStyles = makeStyles({
  */
 export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   const rootStyles = useRootStyles();
+  const indicatorStyles = useIndicatorStyles();
   const inputStyles = useInputStyles();
   const labelStyles = useLabelStyles();
-  const trackStyles = useTrackStyles();
 
   const { labelPosition } = state;
 
@@ -208,13 +205,13 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
     state.root.className,
   );
 
+  state.indicator.className = mergeClasses(switchClassNames.indicator, indicatorStyles.base, state.indicator.className);
+
   state.input.className = mergeClasses(switchClassNames.input, inputStyles.base, state.input.className);
 
   if (state.label) {
     state.label.className = mergeClasses(switchClassNames.label, labelStyles.base, state.label.className);
   }
-
-  state.track.className = mergeClasses(switchClassNames.track, trackStyles.base, state.track.className);
 
   return state;
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
-import { getPartitionedNativeProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, resolveShorthand, useId, useMergedEventCallbacks } from '@fluentui/react-utilities';
 import type { SwitchProps, SwitchState } from './Switch.types';
 
 /**
@@ -14,18 +14,7 @@ import type { SwitchProps, SwitchState } from './Switch.types';
  * @param ref - reference to `<input>` element of Switch
  */
 export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputElement>): SwitchState => {
-  const {
-    checked,
-    defaultChecked,
-    disabled,
-    input,
-    label,
-    labelPosition = 'after',
-    onChange,
-    required,
-    root,
-    track,
-  } = props;
+  const { checked, defaultChecked, disabled, labelPosition = 'after', onChange, required } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,
@@ -35,21 +24,24 @@ export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputE
 
   const id = useId('switch-', nativeProps.primary.id);
 
-  const rootShorthand = resolveShorthand(root, {
+  const root = resolveShorthand(props.root, {
     defaultProps: nativeProps.root,
     required: true,
   });
-  const inputShorthand = resolveShorthand(input, {
+
+  const indicator = resolveShorthand(props.indicator, {
+    defaultProps: {
+      'aria-hidden': true,
+      children: <CircleFilled />,
+    },
+    required: true,
+  });
+
+  const input = resolveShorthand(props.input, {
     defaultProps: {
       checked,
       defaultChecked,
       id,
-      onChange: React.useCallback(
-        ev => {
-          onChange?.(ev, { checked: ev.currentTarget.checked });
-        },
-        [onChange],
-      ),
       ref,
       role: 'switch',
       type: 'checkbox',
@@ -57,20 +49,15 @@ export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputE
     },
     required: true,
   });
-  const labelShorthand = resolveShorthand(label, {
+  input.onChange = useMergedEventCallbacks(input.onChange, ev => onChange?.(ev, { checked: ev.currentTarget.checked }));
+
+  const label = resolveShorthand(props.label, {
     defaultProps: {
       disabled,
       htmlFor: id,
       required,
       size: 'medium',
     },
-  });
-  const trackShorthand = resolveShorthand(track, {
-    defaultProps: {
-      'aria-hidden': true,
-      children: <CircleFilled />,
-    },
-    required: true,
   });
 
   return {
@@ -79,14 +66,14 @@ export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputE
     //Slots definition
     components: {
       root: 'div',
+      indicator: 'div',
       input: 'input',
       label: Label,
-      track: 'div',
     },
 
-    root: rootShorthand,
-    input: inputShorthand,
-    label: labelShorthand,
-    track: trackShorthand,
+    root,
+    indicator,
+    input,
+    label,
   };
 };

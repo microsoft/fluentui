@@ -13,7 +13,7 @@ export const renderSwitch_unstable = (state: SwitchState) => {
     <slots.root {...slotProps.root}>
       <slots.input {...slotProps.input} />
       {labelPosition !== 'after' && slots.label && <slots.label {...slotProps.label} />}
-      <slots.track {...slotProps.track} />
+      <slots.indicator {...slotProps.indicator} />
       {labelPosition === 'after' && slots.label && <slots.label {...slotProps.label} />}
     </slots.root>
   );

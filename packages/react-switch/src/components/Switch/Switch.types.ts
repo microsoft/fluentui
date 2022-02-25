@@ -4,7 +4,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type SwitchSlots = {
   /**
-   * The root element of the `Switch`.
+   * The root element of the Switch.
    *
    * The root slot receives the `className` and `style` specified directly on the `<Switch>` tag.
    * All other native props will be applied to the primary slot: `input`.
@@ -12,7 +12,12 @@ export type SwitchSlots = {
   root: NonNullable<Slot<'div'>>;
 
   /**
-   * Hidden input that handles the `Switch's` functionality.
+   * The track and the thumb sliding over it indicating the on and off status of the Switch.
+   */
+  indicator: NonNullable<Slot<'div'>>;
+
+  /**
+   * Hidden input that handles the Switch's functionality.
    *
    * This is the PRIMARY slot: all native properties specified directly on the `<Switch>` tag will be applied to this
    * slot, except `className` and `style`, which remain on the root slot.
@@ -20,20 +25,15 @@ export type SwitchSlots = {
   input: NonNullable<Slot<'input'>>;
 
   /**
-   * The `Switch's` label.
+   * The Switch's label.
    */
   label?: Slot<typeof Label>;
-
-  /**
-   * The track over which the thumb slides to indicate the on and off status of the `Switch`.
-   */
-  track: NonNullable<Slot<'div'>>;
 };
 
 type SwitchCommons = {
   /**
-   * Defines the controlled checked state of the `Switch`.
-   * If passed, `Switch` ignores the `defaultChecked` property.
+   * Defines the controlled checked state of the Switch.
+   * If passed, Switch ignores the `defaultChecked` property.
    * This should only be used if the checked state is to be controlled at a higher level and there is a plan to pass the
    * correct value based on handling `onChange` events and re-rendering.
    * @default false
@@ -41,7 +41,7 @@ type SwitchCommons = {
   checked?: boolean;
 
   /**
-   * The position of the label relative to the `Switch`.
+   * The position of the label relative to the Switch.
    *
    * @default after
    */
@@ -58,12 +58,7 @@ export type SwitchOnChangeData = {
 export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'onChange'> &
   Partial<SwitchCommons> & {
     /**
-     * `Switch` does not support children.
-     */
-    children?: never;
-
-    /**
-     * Defines whether the `Switch` is initially in a checked state or not when rendered.
+     * Defines whether the Switch is initially in a checked state or not when rendered.
      * @default false
      */
     defaultChecked?: boolean;
