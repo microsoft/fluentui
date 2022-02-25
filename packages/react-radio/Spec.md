@@ -103,6 +103,7 @@ Link to [RadioGroup.types.ts](https://github.com/microsoft/fluentui/blob/master/
 | `name`         | `string`                                            | `useId('radiogroup-')` | Name property passed to child radios.                    |
 | `value`        | `string`                                            |                        | Currently selected value. Used only for controlled mode. |
 | `defaultValue` | `string`                                            |                        | Default selected value.                                  |
+| `disabled`     | `boolean`                                           | `false`                | Disables all radio items inside the group.               |
 | `layout`       | `"vertical" \| "horizontal" \| "horizontalStacked"` | `vertical`             | Specifies the layout of the radio items.                 |
 | `onChange`     | `(event, data: { value: string }) => void`          |                        | Callback when a radio item is selected.                  |
 
