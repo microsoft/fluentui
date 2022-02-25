@@ -69,11 +69,11 @@ storiesOf('Link Converged - Rendered as button', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
+        .hover('.fui-Link')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.fui-Link')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.fui-Link')
         .end()}
     >
       {story()}
