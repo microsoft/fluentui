@@ -11,6 +11,7 @@ import { useMergedRefs } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { storiesOf } from '@storybook/react';
 import { useFluent } from '@fluentui/react-shared-contexts';
+import Screener from 'screener-storybook/src/screener';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -53,6 +54,26 @@ const useStyles = makeStyles({
 
   seeThrough: {
     opacity: 0.6,
+  },
+
+  visibilityModifiers: {
+    backgroundColor: '#ccc',
+    minHeight: '60px',
+    width: '200px',
+
+    '[data-popper-reference-hidden]': {
+      outlineWidth: '5px',
+      outlineStyle: 'solid',
+      outlineColor: 'red',
+    },
+    '[data-popper-escaped]': {
+      backgroundColor: 'yellow',
+    },
+    '[data-popper-is-intersecting]': {
+      outlineWidth: '5px',
+      outlineStyle: 'solid',
+      outlineColor: 'green',
+    },
   },
 });
 
@@ -457,6 +478,57 @@ const ImperativeTarget = () => {
   );
 };
 
+const VisibilityModifiers = () => {
+  const styles = useStyles();
+  const popper = usePopper({ align: 'center', position: 'above' });
+
+  return (
+    <>
+      <p style={{ marginTop: 50 }}>
+        This visual test asserts that visual styles are applied based on popper element's state:
+      </p>
+      <ul>
+        <li>
+          <b style={{ color: 'green' }}>green</b> when the popper element intersects boundaries
+        </li>
+        <li>
+          <b style={{ color: 'red' }}>red</b> when the reference is hidden
+        </li>
+        <li>
+          <b style={{ backgroundColor: 'yellow' }}>yellow</b> when the popper escapes the reference element's boundary
+        </li>
+      </ul>
+
+      <div
+        className={styles.boundary}
+        id="scrollable-area"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 10,
+          height: 400,
+          overflow: 'scroll',
+        }}
+      >
+        {Array(20)
+          .fill(null)
+          .map((_, i) => (
+            <div
+              key={i}
+              ref={i === 1 ? popper.targetRef : undefined}
+              style={{ border: '2px solid grey', padding: 5, marginLeft: 10 }}
+            >
+              <p>message: {i}</p>
+            </div>
+          ))}
+      </div>
+      <Box className={styles.visibilityModifiers} ref={popper.containerRef}>
+        Box with visibility modifiers
+      </Box>
+    </>
+  );
+};
+
 storiesOf('Positioning', module)
   .addDecorator(story => (
     <div
@@ -487,4 +559,17 @@ storiesOf('Positioning', module)
   .addStory('virtual element', () => <VirtualElement />)
   .addStory('target property', () => <TargetProp />)
   .addStory('imperative target', () => <ImperativeTarget />)
+  .addStory('visibility modifiers', () => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('has "[data-popper-is-intersecting]" when the popover intersects boundaries')
+        .executeScript('document.querySelector("#scrollable-area").scrollTop = 80')
+        .snapshot(`has "[data-popper-escaped]" when the popper escapes the reference element's boundary`)
+        .executeScript('document.querySelector("#scrollable-area").scrollTop = 150')
+        .snapshot('has "[data-popper-reference-hidden]" when the reference is hidden')
+        .end()}
+    >
+      <VisibilityModifiers />
+    </Screener>
+  ))
   .addStory('arrow', () => <Arrow />, { includeRtl: true });

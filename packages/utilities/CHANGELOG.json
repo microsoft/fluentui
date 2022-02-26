@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Thu, 24 Feb 2022 07:29:50 GMT",
+      "tag": "@fluentui/utilities_v8.4.3",
+      "version": "8.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "john.collier4@gmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "73454794571f7a94672124631a4c939b3e5f1259",
+            "comment": "make ./packages/utilities/src/DelayedRender.tsx render during SSR"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Feb 2022 07:28:31 GMT",
       "tag": "@fluentui/utilities_v8.4.2",
       "version": "8.4.2",
