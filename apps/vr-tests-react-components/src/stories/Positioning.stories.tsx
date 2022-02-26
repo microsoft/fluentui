@@ -77,6 +77,24 @@ const useStyles = makeStyles({
   },
 });
 
+const LoremParagraph = () => (
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu feugiat pretium nibh
+    ipsum consequat. Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit lectus. Porta nibh venenatis cras
+    sed felis eget. Enim sed faucibus turpis in. Non blandit massa enim nec dui nunc mattis. Ut eu sem integer vitae
+    justo. Lacus vestibulum sed arcu non. Vivamus arcu felis bibendum ut. Sagittis vitae et leo duis ut diam quam nulla
+    porttitor. Amet est placerat in egestas erat imperdiet. Dapibus ultrices in iaculis nunc sed augue. Risus sed
+    vulputate odio ut enim blandit volutpat maecenas. Orci dapibus ultrices in iaculis nunc sed augue lacus. Quam
+    elementum pulvinar etiam non quam. Tempor commodo ullamcorper a lacus vestibulum sed arcu. Nunc non blandit massa
+    enim nec. Venenatis a condimentum vitae sapien. Sodales ut eu sem integer vitae justo eget magna. In aliquam sem
+    fringilla ut morbi tincidunt augue. Diam volutpat commodo sed egestas egestas fringilla phasellus faucibus
+    scelerisque. Semper eget duis at tellus. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere.
+    Amet volutpat consequat mauris nunc congue nisi vitae. Hendrerit gravida rutrum quisque non tellus. Aliquet eget sit
+    amet tellus. Libero id faucibus nisl tincidunt. Amet nulla facilisi morbi tempus iaculis urna id.
+  </p>
+);
+
 const positions = [
   ['above', 'start'],
   ['above', 'center'],
@@ -354,20 +372,7 @@ const AutoSize = () => {
     >
       <button ref={targetRef}>Target</button>
       <Box ref={containerRef} style={{ overflow: 'auto' }}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu feugiat
-        pretium nibh ipsum consequat. Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit lectus. Porta
-        nibh venenatis cras sed felis eget. Enim sed faucibus turpis in. Non blandit massa enim nec dui nunc mattis. Ut
-        eu sem integer vitae justo. Lacus vestibulum sed arcu non. Vivamus arcu felis bibendum ut. Sagittis vitae et leo
-        duis ut diam quam nulla porttitor. Amet est placerat in egestas erat imperdiet. Dapibus ultrices in iaculis nunc
-        sed augue. Risus sed vulputate odio ut enim blandit volutpat maecenas. Orci dapibus ultrices in iaculis nunc sed
-        augue lacus. Quam elementum pulvinar etiam non quam. Tempor commodo ullamcorper a lacus vestibulum sed arcu.
-        Nunc non blandit massa enim nec. Venenatis a condimentum vitae sapien. Sodales ut eu sem integer vitae justo
-        eget magna. In aliquam sem fringilla ut morbi tincidunt augue. Diam volutpat commodo sed egestas egestas
-        fringilla phasellus faucibus scelerisque. Semper eget duis at tellus. Diam donec adipiscing tristique risus nec
-        feugiat in fermentum posuere. Amet volutpat consequat mauris nunc congue nisi vitae. Hendrerit gravida rutrum
-        quisque non tellus. Aliquet eget sit amet tellus. Libero id faucibus nisl tincidunt. Amet nulla facilisi morbi
-        tempus iaculis urna id.
+        <LoremParagraph />
       </Box>
     </div>
   );
@@ -570,3 +575,58 @@ storiesOf('Positioning', module)
     </Screener>
   ))
   .addStory('arrow', () => <Arrow />, { includeRtl: true });
+
+const ScrollJump = () => {
+  const popperRef = React.useRef<PopperRefHandle>({ updatePosition: () => null, setTarget: () => null });
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (open && buttonRef.current) {
+      buttonRef.current.focus();
+    }
+  }, [open]);
+
+  const { containerRef, targetRef } = usePopper({
+    popperRef,
+    position: 'above',
+    align: 'start',
+  });
+
+  return (
+    <>
+      <button ref={targetRef} onClick={() => setOpen(s => !s)}>
+        Target
+      </button>
+      {open && (
+        <Box ref={containerRef}>
+          Focusable element <button ref={buttonRef}>Focus me</button>{' '}
+        </Box>
+      )}
+    </>
+  );
+};
+
+storiesOf('Positioning - scroll', module).addStory('no jump', () => {
+  return (
+    <Screener
+      steps={new Screener.Steps()
+        .focus('button')
+        .snapshot('Scroll to trigger button for popup with trap focus')
+        .executeScript("document.querySelector('button').click()")
+        .snapshot('Click on trigger button with autofocus')
+        .end()}
+    >
+      <LoremParagraph />
+      <LoremParagraph />
+      <LoremParagraph />
+      <LoremParagraph />
+      <LoremParagraph />
+      <LoremParagraph />
+      <LoremParagraph />
+      <ScrollJump />
+      <LoremParagraph />
+      <LoremParagraph />
+    </Screener>
+  );
+});
