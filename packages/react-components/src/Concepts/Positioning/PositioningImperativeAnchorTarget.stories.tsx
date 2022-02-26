@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tooltip } from '@fluentui/react-components';
-import { PopperRefHandle } from '@fluentui/react-positioning';
+import { PopperRefHandle, PopperVirtualElement } from '@fluentui/react-positioning';
 
 export const ImperativeAnchorTarget = () => {
   const popperRef = React.useRef<PopperRefHandle>(null);
@@ -19,7 +19,7 @@ export const ImperativeAnchorTarget = () => {
         y,
       });
     };
-    const virtualElement = {
+    const virtualElement: PopperVirtualElement = {
       getBoundingClientRect: getRect(e.clientX, e.clientY),
     };
     popperRef.current?.setTarget(virtualElement);
