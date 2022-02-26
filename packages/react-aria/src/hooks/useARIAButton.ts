@@ -2,7 +2,7 @@ import { Enter, Space } from '@fluentui/keyboard-keys';
 import { resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, ResolveShorthandFunction, Slot } from '@fluentui/react-utilities';
 
-export type ARIAButtonSlotProps = ExtractSlotProps<Slot<'button', 'a'> | null> & {
+export type ARIAButtonSlotProps = ExtractSlotProps<Slot<'button', 'a'>> & {
   disabled?: boolean;
   disabledFocusable?: boolean;
 };

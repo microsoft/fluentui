@@ -9,7 +9,7 @@ import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type ARIAButtonSlotProps = ExtractSlotProps<Slot<'button', 'a'> | null> & {
+export type ARIAButtonSlotProps = ExtractSlotProps<Slot<'button', 'a'>> & {
     disabled?: boolean;
     disabledFocusable?: boolean;
 };
