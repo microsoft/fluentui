@@ -46,15 +46,15 @@ export const CardHeader: ForwardRefComponent<CardHeaderProps>;
 export const cardHeaderClassName = "fui-CardHeader";
 
 // @public
-export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
+export type CardHeaderProps = ComponentProps<CardHeaderSlots>;
 
 // @public (undocumented)
 export type CardHeaderSlots = {
     root: Slot<'div'>;
-    image: Slot<'div'> | null;
+    image?: Slot<'div'> | null;
     content?: Slot<'div'> | null;
-    header: Slot<'span'> | null;
-    description: Slot<'span'> | null;
+    header?: Slot<'span'> | null;
+    description?: Slot<'span'> | null;
     action?: Slot<'div'> | null;
 };
 

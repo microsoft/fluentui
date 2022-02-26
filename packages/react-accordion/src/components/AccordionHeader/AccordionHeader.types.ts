@@ -23,11 +23,11 @@ export type AccordionHeaderSlots = {
   /**
    * The component to be used as button in heading
    */
-  button: Slot<ARIAButtonSlotProps>;
+  button?: Slot<ARIAButtonSlotProps>;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  expandIcon: Slot<'span'> | null;
+  expandIcon?: Slot<'span'> | null;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
@@ -49,7 +49,7 @@ type AccordionHeaderCommons = {
   inline: boolean;
 };
 
-export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & Partial<AccordionHeaderCommons>;
+export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
 
 export type AccordionHeaderState = ComponentState<AccordionHeaderSlots> &
   AccordionHeaderCommons &

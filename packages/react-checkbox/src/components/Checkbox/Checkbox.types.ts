@@ -49,7 +49,7 @@ export type CheckboxSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Checkbox>`.
    * All other native props will be applied to the primary slot: `input`
    */
-  root: Slot<'span'>;
+  root?: Slot<'span'>;
 
   /**
    * The Checkbox's label.
@@ -62,19 +62,19 @@ export type CheckboxSlots = {
    * This is the PRIMARY slot: all native properties specified directly on `<Checkbox>` will be applied to this slot,
    * except `className` and `style`, which remain on the root slot.
    */
-  input: Slot<'input'>;
+  input?: Slot<'input'>;
 
   /**
    * The checkbox, with the checkmark icon as its child when checked.
    */
-  indicator: Slot<'div'>;
+  indicator?: Slot<'div'>;
 };
 
 /**
  * Checkbox Props
  */
 export type CheckboxProps = Omit<
-  ComponentProps<Partial<CheckboxSlots>, 'input'>,
+  ComponentProps<CheckboxSlots, 'input'>,
   'size' | 'checked' | 'defaultChecked' | 'onChange'
 > &
   Partial<CheckboxCommons> & {

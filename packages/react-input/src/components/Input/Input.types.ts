@@ -9,7 +9,7 @@ export type InputSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Input>`.
    * All other top-level native props will be applied to the primary slot, `input`.
    */
-  root: Slot<'span'>;
+  root?: Slot<'span'>;
 
   /**
    * The actual `<input>` element. `type="text"` will be automatically applied unless overridden.
@@ -18,7 +18,7 @@ export type InputSlots = {
    * (except `className` and `style`, which go to the `root` slot). The top-level `ref` will
    * also go here.
    */
-  input: Slot<'input'>;
+  input?: Slot<'input'>;
 
   /** Element before the input text, within the input border */
   contentBefore?: Slot<'span'> | null;
@@ -28,7 +28,7 @@ export type InputSlots = {
 };
 
 export type InputProps = Omit<
-  ComponentProps<Partial<InputSlots>, 'input'>,
+  ComponentProps<InputSlots, 'input'>,
   // `children` is unsupported. The rest of these native props have customized definitions.
   'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'
 > & {

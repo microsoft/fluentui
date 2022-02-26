@@ -48,6 +48,6 @@ type MenuItemCommons = {
   persistOnClick?: boolean;
 };
 
-export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & MenuItemCommons;
+export type MenuItemProps = ComponentProps<MenuItemSlots> & MenuItemCommons;
 
 export type MenuItemState = ComponentState<MenuItemSlots> & MenuItemCommons;

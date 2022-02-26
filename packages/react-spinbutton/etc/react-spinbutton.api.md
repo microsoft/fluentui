@@ -44,14 +44,14 @@ export type SpinButtonFormatter = (value: number) => string;
 export type SpinButtonParser = (formattedValue: string) => number;
 
 // @public
-export type SpinButtonProps = ComponentProps<Partial<SpinButtonSlots>, 'input'> & Partial<SpinButtonCommons>;
+export type SpinButtonProps = ComponentProps<SpinButtonSlots, 'input'> & Partial<SpinButtonCommons>;
 
 // @public (undocumented)
 export type SpinButtonSlots = {
-    root: Slot<'div'>;
-    input: Slot<'input'>;
-    incrementControl: Slot<'button'>;
-    decrementControl: Slot<'button'>;
+    root?: Slot<'div'>;
+    input?: Slot<'input'>;
+    incrementControl?: Slot<'button'>;
+    decrementControl?: Slot<'button'>;
 };
 
 // @public

@@ -59,7 +59,7 @@ export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 // Warning: (ae-forgotten-export) The symbol "AccordionHeaderCommons" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & Partial<AccordionHeaderCommons>;
+export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
 
 // @public (undocumented)
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
@@ -67,8 +67,8 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 // @public (undocumented)
 export type AccordionHeaderSlots = {
     root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-    button: Slot<ARIAButtonSlotProps>;
-    expandIcon: Slot<'span'> | null;
+    button?: Slot<ARIAButtonSlotProps>;
+    expandIcon?: Slot<'span'> | null;
     icon?: Slot<'div'> | null;
 };
 

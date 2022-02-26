@@ -22,7 +22,7 @@ export type InputOnChangeData = {
 };
 
 // @public (undocumented)
-export type InputProps = Omit<ComponentProps<Partial<InputSlots>, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
+export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
     children?: never;
     size?: 'small' | 'medium' | 'large';
     inline?: boolean;
@@ -35,8 +35,8 @@ export type InputProps = Omit<ComponentProps<Partial<InputSlots>, 'input'>, 'chi
 
 // @public (undocumented)
 export type InputSlots = {
-    root: Slot<'span'>;
-    input: Slot<'input'>;
+    root?: Slot<'span'>;
+    input?: Slot<'input'>;
     contentBefore?: Slot<'span'> | null;
     contentAfter?: Slot<'span'> | null;
 };

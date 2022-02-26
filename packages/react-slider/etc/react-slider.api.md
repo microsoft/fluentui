@@ -27,14 +27,14 @@ export type SliderOnChangeData = {
 // Warning: (ae-forgotten-export) The symbol "SliderCommons" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommons;
+export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommons;
 
 // @public (undocumented)
 export type SliderSlots = {
-    root: Slot<'div'>;
-    rail: Slot<'div'>;
-    thumb: Slot<'div'>;
-    input: Slot<'input'> & {
+    root?: Slot<'div'>;
+    rail?: Slot<'div'>;
+    thumb?: Slot<'div'>;
+    input?: Slot<'input'> & {
         orient?: 'horizontal' | 'vertical';
     };
 };

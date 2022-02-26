@@ -128,7 +128,7 @@ export const menuItemClassName = "fui-MenuItem";
 // Warning: (ae-forgotten-export) The symbol "MenuItemCommons" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & MenuItemCommons;
+export type MenuItemProps = ComponentProps<MenuItemSlots> & MenuItemCommons;
 
 // @public
 export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps>;
