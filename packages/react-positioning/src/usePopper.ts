@@ -1,4 +1,4 @@
-import { Middleware } from '@floating-ui/core';
+import { Middleware, Strategy } from '@floating-ui/core';
 import { computePosition } from '@floating-ui/dom';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
@@ -31,10 +31,12 @@ function usePopperOptions(options: PopperOptions) {
     pinned,
     position,
     unstable_disableTether: disableTether,
+    positionFixed,
   } = options;
 
   const { dir } = useFluent();
   const isRtl = dir === 'rtl';
+  const strategy: Strategy = positionFixed ? 'fixed' : 'absolute';
 
   return React.useCallback(
     (target: HTMLElement | PopperVirtualElement | null, container: HTMLElement | null, arrow: HTMLElement | null) => {
@@ -56,6 +58,7 @@ function usePopperOptions(options: PopperOptions) {
       return {
         placement,
         middleware,
+        strategy,
       };
     },
     [
@@ -70,6 +73,7 @@ function usePopperOptions(options: PopperOptions) {
       offset,
       coverTarget,
       autoSize,
+      strategy,
     ],
   );
 }
@@ -100,14 +104,15 @@ export function usePopper(
       return;
     }
 
+    const { placement, middleware, strategy } = resolvePopperOptions(target, containerRef.current, arrowRef.current);
+
     // Revert to intended position before the first update
     if (isFirstUpdate.current) {
-      Object.assign(containerRef.current.style, { position: 'absolute' });
+      Object.assign(containerRef.current.style, { position: strategy });
       isFirstUpdate.current = false;
     }
 
-    const { placement, middleware } = resolvePopperOptions(target, containerRef.current, arrowRef.current);
-    computePosition(target, containerRef.current, { placement, middleware, strategy: 'absolute' }).then(
+    computePosition(target, containerRef.current, { placement, middleware, strategy }).then(
       ({ x, y, middlewareData, placement: computedPlacement }) => {
         if (!containerRef.current) {
           return;
@@ -118,7 +123,7 @@ export function usePopper(
         Object.assign(containerRef.current.style, {
           left: `${x}px`,
           top: `${y}px`,
-          position: 'absolute',
+          position: strategy,
         });
 
         if (middlewareData.arrow && arrowRef.current) {

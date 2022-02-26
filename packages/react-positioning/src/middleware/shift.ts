@@ -16,7 +16,10 @@ export function shift(options: ShiftMiddlewareOptions) {
 
   return middleware({
     ...(hasScrollableElement && { boundary: 'clippingParents' }),
-    ...(disableTether && { limiter: limitShift({ crossAxis: true, mainAxis: true }) }),
+    ...(disableTether && {
+      crossAxis: disableTether === 'all',
+      limiter: limitShift({ crossAxis: disableTether !== 'all', mainAxis: false }),
+    }),
     ...(overflowBoundary && { altBoundary: true, boundary: getBoundary(container, overflowBoundary) }),
   });
 }
