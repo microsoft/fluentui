@@ -1,8 +1,9 @@
 import { isValidElement } from 'react';
 import type { ExtractSlotProps, Slot, UnknownSlotProps } from './types';
 
-export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
-  required?: Required;
+export type ResolveShorthandOptions<Props, Required extends boolean = false> = (Required extends true
+  ? { required: true }
+  : { required?: boolean }) & {
   defaultProps?: Props;
 };
 
@@ -11,11 +12,11 @@ export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlo
   //  * If `required` is true, its return type includes `undefined` only if the slot is nullable
   //  * Otherwise, its return type always includes `undefined`
 
-  <P extends (Slot<Props> | null) | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>):
+  <P extends Slot<Props> | null | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>):
     | ExtractSlotProps<P>
     | (null extends P ? undefined : never);
 
-  <P extends (Slot<Props> | null) | undefined>(
+  <P extends Slot<Props> | null | undefined>(
     value: P,
     options?: ResolveShorthandOptions<ExtractSlotProps<P>, boolean>,
   ): ExtractSlotProps<P> | undefined;
