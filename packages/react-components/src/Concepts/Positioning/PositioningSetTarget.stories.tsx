@@ -3,7 +3,6 @@ import { Tooltip } from '@fluentui/react-components';
 import { PopperRefHandle } from '@fluentui/react-positioning';
 
 export const ImperativeAnchorTarget = () => {
-  const buttonRef = React.useRef<HTMLButtonElement>(null);
   const popperRef = React.useRef<PopperRefHandle>(null);
   const [open, setOpen] = React.useState(false);
 
@@ -36,12 +35,6 @@ export const ImperativeAnchorTarget = () => {
     }
     setOpen(false);
   }, []);
-
-  React.useEffect(() => {
-    if (buttonRef.current) {
-      popperRef.current?.setTarget(buttonRef.current);
-    }
-  }, [buttonRef, popperRef]);
 
   return (
     <>
