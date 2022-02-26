@@ -26,7 +26,7 @@ export interface CheckboxOnChangeData {
 // Warning: (ae-forgotten-export) The symbol "CheckboxCommons" needs to be exported by the entry point index.d.ts
 //
 // @public
-export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & Partial<CheckboxCommons> & {
+export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & Partial<CheckboxCommons> & {
     children?: never;
     onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
     defaultChecked?: 'mixed' | boolean;
@@ -34,10 +34,10 @@ export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>
 
 // @public (undocumented)
 export type CheckboxSlots = {
-    root: Slot<'span'>;
+    root?: Slot<'span'>;
     label?: Slot<typeof Label> | null;
-    input: Slot<'input'>;
-    indicator: Slot<'div'> | null;
+    input?: Slot<'input'>;
+    indicator?: Slot<'div'>;
 };
 
 // @public

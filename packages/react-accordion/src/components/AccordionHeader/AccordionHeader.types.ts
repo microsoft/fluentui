@@ -27,7 +27,7 @@ export type AccordionHeaderSlots = {
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  expandIcon: Slot<'span'> | null;
+  expandIcon: Slot<'span'>;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */

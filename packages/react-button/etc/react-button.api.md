@@ -99,7 +99,7 @@ export type SplitButtonSlots = {
 };
 
 // @public (undocumented)
-export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonState, 'components' | 'iconOnly' | 'root'> & Omit<MenuButtonState, 'components' | 'iconOnly' | 'root'>;
+export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonState, 'components' | 'iconOnly' | 'root' | 'icon'> & Omit<MenuButtonState, 'components' | 'iconOnly' | 'root' | 'icon' | 'menuIcon'>;
 
 // @public
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;

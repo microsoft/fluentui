@@ -51,7 +51,7 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
         [Key in keyof Slots]-?: React_2.ComponentType<ExtractSlotProps<Slots[Key]>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     };
 } & {
-    [Key in keyof Slots]: ExtractSlotProps<Slots[Key]> | (null extends Slots[Key] ? undefined : never);
+    [Key in keyof Required<Slots>]: ExtractSlotProps<Slots[Key]> | (null extends Slots[Key] ? undefined : never);
 };
 
 // Warning: (ae-internal-missing-underscore) The name "defaultSSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
@@ -129,6 +129,13 @@ export const imgProperties: Record<string, number>;
 // @public
 export const inputProperties: Record<string, number>;
 
+// Warning: (ae-forgotten-export) The symbol "EmptyIntrisicElements" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type IntrisicElementProps<Type extends keyof JSX.IntrinsicElements> = React_2.PropsWithRef<JSX.IntrinsicElements[Type]> & (Type extends EmptyIntrisicElements ? {
+    children?: never;
+} : {});
+
 // @public
 export const isFluentTrigger: (element: React_2.ReactElement) => boolean | undefined;
 
@@ -195,7 +202,6 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
 AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<SlotProps<Type>> | SlotAs<AlternateAs> : 'Error: Slot type must not be not a union. Use SlotAs to support additional types.';
 
 // Warning: (ae-forgotten-export) The symbol "WithSlotRenderFunction" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "IntrisicElementProps" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
 export type SlotAs<AlternateAs extends keyof JSX.IntrinsicElements> = {
@@ -214,11 +220,6 @@ export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandVal
 
 // @public (undocumented)
 export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'children' | 'as'>) => React_2.ReactNode;
-
-// @public (undocumented)
-export type Slots<S extends SlotPropsRecord> = {
-    [K in keyof S]: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As> ? As : ExtractSlotProps<S[K]> extends React_2.ComponentType<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<ExtractSlotProps<S[K]>>;
-};
 
 // @public
 export type SlotShorthandValue = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal;
@@ -345,6 +346,7 @@ export const videoProperties: Record<string, number>;
 
 // Warnings were encountered during analysis:
 //
+// lib/compose/getSlots.d.ts:27:5 - (ae-forgotten-export) The symbol "Slots" needs to be exported by the entry point index.d.ts
 // lib/compose/getSlots.d.ts:28:5 - (ae-forgotten-export) The symbol "ObjectSlotProps" needs to be exported by the entry point index.d.ts
 // lib/compose/resolveShorthand.d.ts:11:5 - (ae-forgotten-export) The symbol "ReplaceNullWithUndefined" needs to be exported by the entry point index.d.ts
 

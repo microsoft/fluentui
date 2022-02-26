@@ -69,7 +69,9 @@ type EmptyIntrisicElements =
  * * Removes legacy string ref.
  * * Disallows children for empty tags like 'img'.
  */
-type IntrisicElementProps<Type extends keyof JSX.IntrinsicElements> = React.PropsWithRef<JSX.IntrinsicElements[Type]> &
+export type IntrisicElementProps<Type extends keyof JSX.IntrinsicElements> = React.PropsWithRef<
+  JSX.IntrinsicElements[Type]
+> &
   (Type extends EmptyIntrisicElements ? { children?: never } : {});
 
 /**
@@ -197,7 +199,7 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
   };
 } & {
   // Include a prop for each slot. If the slot is nullable, then its slot props could potentially be undefined.
-  [Key in keyof Slots]: ExtractSlotProps<Slots[Key]> | (null extends Slots[Key] ? undefined : never);
+  [Key in keyof Required<Slots>]: ExtractSlotProps<Slots[Key]> | (null extends Slots[Key] ? undefined : never);
 
   // TODO remove:
   // The root and primary slots must be a props object (never null or undefined)

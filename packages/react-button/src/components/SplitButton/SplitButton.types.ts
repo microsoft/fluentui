@@ -25,5 +25,5 @@ export type SplitButtonProps = ComponentProps<SplitButtonSlots> &
   Omit<MenuButtonProps, 'root'>;
 
 export type SplitButtonState = ComponentState<SplitButtonSlots> &
-  Omit<ButtonState, 'components' | 'iconOnly' | 'root'> &
-  Omit<MenuButtonState, 'components' | 'iconOnly' | 'root'>;
+  Omit<ButtonState, 'components' | 'iconOnly' | 'root' | 'icon'> &
+  Omit<MenuButtonState, 'components' | 'iconOnly' | 'root' | 'icon' | 'menuIcon'>;

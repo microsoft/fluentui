@@ -9,7 +9,7 @@ export type DividerSlots = {
   /**
    * Accessibility wrapper for content when presented.
    */
-  wrapper: Slot<'div'> | null;
+  wrapper: Slot<'div'>;
 };
 
 type DividerCommons = {
