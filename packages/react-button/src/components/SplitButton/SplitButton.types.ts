@@ -13,11 +13,11 @@ export type SplitButtonSlots = {
   /**
    * Button that opens menu with secondary actions in SplitButton.
    */
-  menuButton?: Slot<typeof MenuButton>;
+  menuButton?: Slot<typeof MenuButton> | null;
   /**
    * Button to perform primary action in SplitButton.
    */
-  primaryActionButton?: Slot<typeof Button>;
+  primaryActionButton?: Slot<typeof Button> | null;
 };
 
 export type SplitButtonProps = ComponentProps<SplitButtonSlots> &

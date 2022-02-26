@@ -87,11 +87,10 @@ type IntrisicElementProps<Type extends keyof JSX.IntrinsicElements> = React.Prop
  * Slot<'div'> // Slot is always div
  * Slot<'button', 'a'> // Defaults to button, but allows as="a" with anchor-specific props
  * Slot<'span', 'div' | 'pre'> // Defaults to span, but allows as="div" or as="pre"
- * NonNullable<Slot<'div'>> // Slot that will always be rendered (can't be set to null by the user)
  *
  * // Component examples:
  * Slot<typeof Button> // Slot is always a Button, and accepts all of Button's Props
- * NonNullable<Slot<typeof Label>> // Slot is a Label and will always be rendered (can't be set to null by the user)
+ * Slot<typeof Label> // Slot is a Label
  * ```
  */
 export type Slot<
@@ -109,7 +108,6 @@ export type Slot<
       | {
           [As in AlternateAs]: { as: As } & WithSlotRenderFunction<IntrisicElementProps<As>>;
         }[AlternateAs]
-      | null
   : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
 /**
@@ -178,9 +176,7 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
   };
 } & {
   // Include a prop for each slot. If the slot is nullable, then its slot props could potentially be undefined.
-  [Key in keyof Required<Slots>]:
-    | ExtractSlotProps<Slots[Key]>
-    | (null extends Slots[Exclude<Key, 'root'>] ? undefined : never);
+  [Key in keyof Required<Slots>]: ExtractSlotProps<Slots[Key]> | (null extends Slots[Key] ? undefined : never);
 };
 
 /**

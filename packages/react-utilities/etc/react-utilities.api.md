@@ -51,7 +51,7 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
         [Key in keyof Slots]-?: React_2.ComponentType<ExtractSlotProps<Slots[Key]>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     };
 } & {
-    [Key in keyof Required<Slots>]: ExtractSlotProps<Slots[Key]> | (null extends Slots[Exclude<Key, 'root'>] ? undefined : never);
+    [Key in keyof Required<Slots>]: ExtractSlotProps<Slots[Key]> | (null extends Slots[Key] ? undefined : never);
 };
 
 // Warning: (ae-internal-missing-underscore) The name "defaultSSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
@@ -166,8 +166,8 @@ export const resolveShorthand: ResolveShorthandFunction;
 
 // @public (undocumented)
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-    <P extends Slot<Props> | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>): ExtractSlotProps<P> | (null extends P ? undefined : never);
-    <P extends Slot<Props> | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, boolean>): ExtractSlotProps<P> | undefined;
+    <P extends (Slot<Props> | null) | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>): ExtractSlotProps<P> | (null extends P ? undefined : never);
+    <P extends (Slot<Props> | null) | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, boolean>): ExtractSlotProps<P> | undefined;
 };
 
 // @public (undocumented)
@@ -193,7 +193,7 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
     [As in AlternateAs]: {
         as: As;
     } & WithSlotRenderFunction<IntrisicElementProps<As>>;
-}[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
+}[AlternateAs] : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
 // @public
 export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandValue | null | undefined>;

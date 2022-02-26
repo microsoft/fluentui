@@ -7,7 +7,7 @@ export type SpinButtonSlots = {
    * The root slot receives the `className` and `style` specified on the `<SpinButton>`.
    * All other native props are applied to the primary slot: `input`.
    */
-  root: NonNullable<Slot<'div'>>;
+  root: Slot<'div'>;
 
   /**
    * Input that displays the current value and accepts direct input from the user.
@@ -15,17 +15,17 @@ export type SpinButtonSlots = {
    *
    * This is the primary slot.
    */
-  input: NonNullable<Slot<'input'>>;
+  input: Slot<'input'>;
 
   /**
    * Renders the increment control.
    */
-  incrementControl: NonNullable<Slot<'button'>>;
+  incrementControl: Slot<'button'>;
 
   /**
    * Renders the decrement control.
    */
-  decrementControl: NonNullable<Slot<'button'>>;
+  decrementControl: Slot<'button'>;
 };
 
 export type SpinButtonChangeData = {

@@ -24,7 +24,7 @@ export type DividerProps = ComponentProps<Partial<DividerSlots>> & Partial<Divid
 // @public (undocumented)
 export type DividerSlots = {
     root: Slot<'div'>;
-    wrapper: Slot<'div'>;
+    wrapper: Slot<'div'> | null;
 };
 
 // @public (undocumented)

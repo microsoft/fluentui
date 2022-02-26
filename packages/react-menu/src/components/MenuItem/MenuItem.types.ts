@@ -6,29 +6,29 @@ export type MenuItemSlots = {
   /**
    * Icon slot rendered before children content
    */
-  icon?: Slot<'span'>;
+  icon?: Slot<'span'> | null;
 
   /**
    * A helper slot for alignment when a menu item is used with selectable menuitems
    * Avoid using this slot as a replacement for MenuItemCheckbox and MenuItemRadio components
    */
-  checkmark?: Slot<'span'>;
+  checkmark?: Slot<'span'> | null;
 
   /**
    * Icon slot that shows the indicator for a submenu
    */
-  submenuIndicator?: Slot<'span'>;
+  submenuIndicator?: Slot<'span'> | null;
 
   /**
    * Component children are placed in this slot
    * Avoid using the `children` property in this slot in favour of Component children whenever possible
    */
-  content?: Slot<'span'>;
+  content?: Slot<'span'> | null;
 
   /**
    * Secondary content rendered opposite the primary content (e.g Shortcut text)
    */
-  secondaryContent?: Slot<'span'>;
+  secondaryContent?: Slot<'span'> | null;
 };
 
 type MenuItemCommons = {

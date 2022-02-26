@@ -28,10 +28,10 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & Partial<A
 // @public (undocumented)
 export type AvatarSlots = {
     root: Slot<'span'>;
-    image?: Slot<'img'>;
-    initials?: Slot<'span'>;
-    icon?: Slot<'span'>;
-    badge?: Slot<typeof PresenceBadge>;
+    image?: Slot<'img'> | null;
+    initials?: Slot<'span'> | null;
+    icon?: Slot<'span'> | null;
+    badge?: Slot<typeof PresenceBadge> | null;
 };
 
 // @public

@@ -158,11 +158,11 @@ export type MenuItemSelectableState = MenuItemSelectableProps & {
 // @public (undocumented)
 export type MenuItemSlots = {
     root: Slot<'div'>;
-    icon?: Slot<'span'>;
-    checkmark?: Slot<'span'>;
-    submenuIndicator?: Slot<'span'>;
-    content?: Slot<'span'>;
-    secondaryContent?: Slot<'span'>;
+    icon?: Slot<'span'> | null;
+    checkmark?: Slot<'span'> | null;
+    submenuIndicator?: Slot<'span'> | null;
+    content?: Slot<'span'> | null;
+    secondaryContent?: Slot<'span'> | null;
 };
 
 // @public (undocumented)

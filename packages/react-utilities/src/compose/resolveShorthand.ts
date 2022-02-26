@@ -11,13 +11,14 @@ export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlo
   //  * If `required` is true, its return type includes `undefined` only if the slot is nullable
   //  * Otherwise, its return type always includes `undefined`
 
-  <P extends Slot<Props> | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>):
+  <P extends (Slot<Props> | null) | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>):
     | ExtractSlotProps<P>
     | (null extends P ? undefined : never);
 
-  <P extends Slot<Props> | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, boolean>):
-    | ExtractSlotProps<P>
-    | undefined;
+  <P extends (Slot<Props> | null) | undefined>(
+    value: P,
+    options?: ResolveShorthandOptions<ExtractSlotProps<P>, boolean>,
+  ): ExtractSlotProps<P> | undefined;
 };
 
 /**

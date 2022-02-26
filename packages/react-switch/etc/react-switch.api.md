@@ -40,10 +40,10 @@ export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'o
 
 // @public (undocumented)
 export type SwitchSlots = {
-    root: NonNullable<Slot<'div'>>;
-    indicator: NonNullable<Slot<'div'>>;
-    input: NonNullable<Slot<'input'>>;
-    label?: Slot<typeof Label>;
+    root: Slot<'div'>;
+    indicator: Slot<'div'>;
+    input: Slot<'input'>;
+    label?: Slot<typeof Label> | null;
 };
 
 // @public

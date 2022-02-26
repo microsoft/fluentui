@@ -8,12 +8,12 @@ export type RadioSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Radio>`.
    * All other native props will be applied to the primary slot: `input`
    */
-  root: NonNullable<Slot<'span'>>;
+  root: Slot<'span'>;
 
   /**
    * The Radio's label.
    */
-  label: Slot<typeof Label>;
+  label: Slot<typeof Label> | null;
 
   /**
    * Hidden input that handles the radio's functionality.
@@ -21,12 +21,12 @@ export type RadioSlots = {
    * This is the PRIMARY slot: all native properties specified directly on `<Radio>` will be applied to this slot,
    * except `className` and `style`, which remain on the root slot.
    */
-  input: NonNullable<Slot<'input'>>;
+  input: Slot<'input'>;
 
   /**
    * A circle outline, with a filled circle icon inside when the Radio is checked.
    */
-  indicator: NonNullable<Slot<'div'>>;
+  indicator: Slot<'div'>;
 };
 
 /**

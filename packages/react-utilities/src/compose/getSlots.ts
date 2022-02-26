@@ -13,7 +13,7 @@ import type {
 type Slots<S extends SlotPropsRecord> = {
   [K in keyof Required<S>]:
     | React.ElementType<Omit<ExtractSlotProps<S[K]>, 'as'>>
-    | (null extends S[Exclude<K, 'root'>] ? undefined : never);
+    | (null extends S[K] ? undefined : never);
 };
 
 type ObjectSlotProps<S extends SlotPropsRecord> = {
@@ -23,7 +23,7 @@ type ObjectSlotProps<S extends SlotPropsRecord> = {
           // element's props, to be compatible with the As type returned by Slots<>
           UnionToIntersection<Omit<ExtractSlotProps<S[K]>, 'as'>>
         : ExtractSlotProps<S[K]>)
-    | (null extends S[Exclude<K, 'root'>] ? undefined : never);
+    | (null extends S[K] ? undefined : never);
 };
 
 /**

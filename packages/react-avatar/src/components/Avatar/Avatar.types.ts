@@ -9,7 +9,7 @@ export type AvatarSlots = {
    *
    * Usage e.g.: `image={{ src: '...' }}`
    */
-  image?: Slot<'img'>;
+  image?: Slot<'img'> | null;
 
   /**
    * (optional) Custom initials.
@@ -19,19 +19,19 @@ export type AvatarSlots = {
    *
    * The initials are displayed when there is no image (including while the image is loading).
    */
-  initials?: Slot<'span'>;
+  initials?: Slot<'span'> | null;
 
   /**
    * Icon to be displayed when the avatar doesn't have an image or initials.
    *
    * @defaultvalue `PersonRegular` (the default icon's size depends on the Avatar's size)
    */
-  icon?: Slot<'span'>;
+  icon?: Slot<'span'> | null;
 
   /**
    * Badge to show the avatar's presence status.
    */
-  badge?: Slot<typeof PresenceBadge>;
+  badge?: Slot<typeof PresenceBadge> | null;
 };
 
 type AvatarCommons = {

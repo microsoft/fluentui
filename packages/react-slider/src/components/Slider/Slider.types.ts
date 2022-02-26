@@ -7,18 +7,18 @@ export type SliderSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Slider>`.
    * All other native props will be applied to the primary slot, `input`.
    */
-  root: NonNullable<Slot<'div'>>;
+  root: Slot<'div'>;
 
   /**
    * The Slider's base. It is used to visibly display the min and max selectable values.
    */
-  rail: NonNullable<Slot<'div'>>;
+  rail: Slot<'div'>;
 
   /**
    * The draggable icon used to select a given value from the Slider.
    * This is the element containing `role = 'slider'`.
    */
-  thumb: NonNullable<Slot<'div'>>;
+  thumb: Slot<'div'>;
 
   /**
    * The hidden input for the Slider.
@@ -26,7 +26,7 @@ export type SliderSlots = {
    * except `className` and `style`, which remain on the root slot.
    *
    */
-  input: NonNullable<Slot<'input'>> & {
+  input: Slot<'input'> & {
     /**
      * Orient is a non standard attribute that allows for vertical orientation in Firefox. It is set internally
      * when `vertical` is set to true.

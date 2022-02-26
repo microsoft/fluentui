@@ -67,9 +67,9 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 // @public (undocumented)
 export type AccordionHeaderSlots = {
     root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-    button: NonNullable<Slot<ARIAButtonSlotProps>>;
-    expandIcon: Slot<'span'>;
-    icon?: Slot<'div'>;
+    button: Slot<ARIAButtonSlotProps>;
+    expandIcon: Slot<'span'> | null;
+    icon?: Slot<'div'> | null;
 };
 
 // @public (undocumented)

@@ -20,13 +20,13 @@ export const labelClassName = "fui-Label";
 //
 // @public
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommons> & {
-    required?: boolean | Slot<'span'>;
+    required?: boolean | (Slot<'span'> | null);
 };
 
 // @public (undocumented)
 export type LabelSlots = {
     root: Slot<'label'>;
-    required?: Slot<'span'>;
+    required?: Slot<'span'> | null;
 };
 
 // @public

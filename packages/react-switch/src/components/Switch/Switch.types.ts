@@ -9,12 +9,12 @@ export type SwitchSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Switch>` tag.
    * All other native props will be applied to the primary slot: `input`.
    */
-  root: NonNullable<Slot<'div'>>;
+  root: Slot<'div'>;
 
   /**
    * The track and the thumb sliding over it indicating the on and off status of the Switch.
    */
-  indicator: NonNullable<Slot<'div'>>;
+  indicator: Slot<'div'>;
 
   /**
    * Hidden input that handles the Switch's functionality.
@@ -22,12 +22,12 @@ export type SwitchSlots = {
    * This is the PRIMARY slot: all native properties specified directly on the `<Switch>` tag will be applied to this
    * slot, except `className` and `style`, which remain on the root slot.
    */
-  input: NonNullable<Slot<'input'>>;
+  input: Slot<'input'>;
 
   /**
    * The Switch's label.
    */
-  label?: Slot<typeof Label>;
+  label?: Slot<typeof Label> | null;
 };
 
 type SwitchCommons = {

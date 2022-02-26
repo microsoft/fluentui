@@ -2,7 +2,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type CardFooterSlots = {
   root: Slot<'div'>;
-  action?: Slot<'div'>;
+  action?: Slot<'div'> | null;
 };
 
 /**

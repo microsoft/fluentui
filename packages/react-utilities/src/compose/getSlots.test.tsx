@@ -136,7 +136,7 @@ describe('getSlots', () => {
     type Slots = {
       root: Slot<'div'>;
       input: Slot<'input'>;
-      icon?: Slot<'a'>;
+      icon?: Slot<'a'> | null;
     };
     expect(
       getSlots<Slots>({

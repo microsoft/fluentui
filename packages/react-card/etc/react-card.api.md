@@ -33,7 +33,7 @@ export type CardFooterProps = ComponentProps<CardFooterSlots>;
 // @public (undocumented)
 export type CardFooterSlots = {
     root: Slot<'div'>;
-    action?: Slot<'div'>;
+    action?: Slot<'div'> | null;
 };
 
 // @public
@@ -51,11 +51,11 @@ export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 // @public (undocumented)
 export type CardHeaderSlots = {
     root: Slot<'div'>;
-    image: Slot<'div'>;
-    content?: Slot<'div'>;
-    header: Slot<'span'>;
-    description: Slot<'span'>;
-    action?: Slot<'div'>;
+    image: Slot<'div'> | null;
+    content?: Slot<'div'> | null;
+    header: Slot<'span'> | null;
+    description: Slot<'span'> | null;
+    action?: Slot<'div'> | null;
 };
 
 // @public
@@ -73,7 +73,7 @@ export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
 // @public (undocumented)
 export type CardPreviewSlots = {
     root: Slot<'div'>;
-    logo?: Slot<'div'>;
+    logo?: Slot<'div'> | null;
 };
 
 // @public

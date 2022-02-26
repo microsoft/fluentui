@@ -23,15 +23,15 @@ export type AccordionHeaderSlots = {
   /**
    * The component to be used as button in heading
    */
-  button: NonNullable<Slot<ARIAButtonSlotProps>>;
+  button: Slot<ARIAButtonSlotProps>;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  expandIcon: Slot<'span'>;
+  expandIcon: Slot<'span'> | null;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  icon?: Slot<'div'>;
+  icon?: Slot<'div'> | null;
 };
 
 type AccordionHeaderCommons = {

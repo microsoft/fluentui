@@ -6,7 +6,7 @@ import type { ARIAButtonSlotProps } from './useARIAButton';
 
 type Slots = {
   root: Slot<'div'>;
-  button: Slot<ARIAButtonSlotProps>;
+  button: Slot<ARIAButtonSlotProps> | null;
 };
 
 interface State extends ComponentState<Slots> {}

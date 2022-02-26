@@ -14,13 +14,13 @@ export type TabSlots = {
   /**
    * Icon that renders before the content.
    */
-  icon?: Slot<'span'>;
+  icon?: Slot<'span'> | null;
 
   /**
    * Component children are placed in this slot
    * Avoid using the `children` property in this slot in favour of Component children whenever possible.
    */
-  content: NonNullable<Slot<'span'>>;
+  content: Slot<'span'>;
 };
 
 type TabCommons = {

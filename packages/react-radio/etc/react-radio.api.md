@@ -63,10 +63,10 @@ export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'siz
 
 // @public (undocumented)
 export type RadioSlots = {
-    root: NonNullable<Slot<'span'>>;
-    label: Slot<typeof Label>;
-    input: NonNullable<Slot<'input'>>;
-    indicator: NonNullable<Slot<'div'>>;
+    root: Slot<'span'>;
+    label: Slot<typeof Label> | null;
+    input: Slot<'input'>;
+    indicator: Slot<'div'>;
 };
 
 // @public

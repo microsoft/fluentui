@@ -102,8 +102,8 @@ export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
 // @public (undocumented)
 export type TabSlots = {
     root: Slot<'div'>;
-    icon?: Slot<'span'>;
-    content: NonNullable<Slot<'span'>>;
+    icon?: Slot<'span'> | null;
+    content: Slot<'span'>;
 };
 
 // @public
