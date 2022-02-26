@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "useEventCallback: ensure callback reference is always stable, and update docs",
+  "packageName": "@fluentui/react-utilities",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

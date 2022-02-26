@@ -1,17 +1,21 @@
 import * as React from 'react';
+import { useConst } from './useConst';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 /**
+ * Modified `useCallback` that returns the same function reference every time, but internally calls
+ * the most-recently passed callback implementation. Can be useful in situations such as:
+ * - Dependencies change too frequently, such as user props which might change on every render,
+ *   or volatile values such as useState/useDispatch
+ * - Callback must be referenced in a captured context (such as a window event handler or unmount
+ *   handler that's registered once) but needs access to the latest props
+ *
+ * In general, prefer `useCallback` unless you've encountered one of the problems above.
+ *
  * https://reactjs.org/docs/hooks-faq.html#how-to-read-an-often-changing-value-from-usecallback
  *
- * Modified `useCallback` that can be used when dependencies change too frequently. Can occur when
- * e.g. user props are dependencies which could change on every render
- * e.g. volatile values (i.e. useState/useDispatch) are dependencies which could change frequently
- *
- * This should not be used often, but can be a useful re-render optimization since the callback is a ref and
- * will not be invalidated between re-renders
- *
  * @param fn - The callback function that will be used
+ * @returns A function which is referentially stable but internally calls the most recently passed callback
  */
 export const useEventCallback = <Args extends unknown[], Return>(fn: (...args: Args) => Return) => {
   const callbackRef = React.useRef<typeof fn>(() => {
@@ -22,11 +26,10 @@ export const useEventCallback = <Args extends unknown[], Return>(fn: (...args: A
     callbackRef.current = fn;
   }, [fn]);
 
-  return React.useCallback(
-    (...args: Args) => {
-      const callback = callbackRef.current;
-      return callback(...args);
-    },
-    [callbackRef],
-  );
+  // useConst rather than useCallback to ensure the reference is always stable
+  // (useCallback's deps list is an optimization, not a guarantee)
+  return useConst(() => (...args: Args) => {
+    const callback = callbackRef.current;
+    return callback(...args);
+  });
 };
