@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AccordionPanelSlots = {
-  root: NonNullable<Slot<'div'>>;
+  root: Slot<'div'>;
 };
 
 export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;

@@ -106,13 +106,14 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) =
     state.button.className,
   );
 
-  state.expandIcon.className = mergeClasses(
-    styles.expandIcon,
-    state.expandIconPosition === 'start' && styles.expandIconStart,
-    state.expandIconPosition === 'end' && styles.expandIconEnd,
-    state.expandIcon.className,
-  );
-
+  if (state.expandIcon) {
+    state.expandIcon.className = mergeClasses(
+      styles.expandIcon,
+      state.expandIconPosition === 'start' && styles.expandIconStart,
+      state.expandIconPosition === 'end' && styles.expandIconEnd,
+      state.expandIcon.className,
+    );
+  }
   if (state.icon) {
     state.icon.className = mergeClasses(
       styles.icon,

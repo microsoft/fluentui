@@ -28,7 +28,7 @@ export type TabListSlots = {
   /**
    * The slot associated with the root element of this tab list.
    */
-  root: NonNullable<Slot<'div'>>;
+  root: Slot<'div'>;
 };
 
 type TabListCommons = {

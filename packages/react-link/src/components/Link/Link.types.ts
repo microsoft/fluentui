@@ -1,10 +1,10 @@
-import type { ComponentProps, ComponentState, Slot, SlotAs } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type LinkSlots = {
   /**
    * Root of the component that renders as either an <a> or a <button> tag.
    */
-  root: NonNullable<Slot<'a'>> | SlotAs<'button'>;
+  root: Slot<'a', 'button'>;
 };
 
 type LinkCommons = {

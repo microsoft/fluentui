@@ -2,7 +2,7 @@ import { PresenceBadge } from '@fluentui/react-badge';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AvatarSlots = {
-  root: NonNullable<Slot<'span'>>;
+  root: Slot<'span'>;
 
   /**
    * The Avatar's image.

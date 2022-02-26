@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type DialogSlots = {
-  root: NonNullable<Slot<'div'>>;
+  root: Slot<'div'>;
 };
 
 type DialogCommons = {

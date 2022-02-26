@@ -24,7 +24,7 @@ export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
 
 // @public (undocumented)
 export type ImageSlots = {
-    root: NonNullable<Slot<'img'>>;
+    root: Slot<'img'>;
 };
 
 // @public (undocumented)

@@ -21,7 +21,7 @@ type LabelCommons = {
 };
 
 export type LabelSlots = {
-  root: NonNullable<Slot<'label'>>;
+  root: Slot<'label'>;
   required?: Slot<'span'>;
 };
 

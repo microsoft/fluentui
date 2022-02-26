@@ -24,7 +24,7 @@ export type ComboboxProps = ComponentProps<ComboboxSlots> & ComboboxCommons;
 
 // @public (undocumented)
 export type ComboboxSlots = {
-    root: NonNullable<Slot<'div'>>;
+    root: Slot<'div'>;
 };
 
 // @public
@@ -44,7 +44,7 @@ export type ComboButtonProps = ComponentProps<ComboButtonSlots> & ComboButtonCom
 
 // @public (undocumented)
 export type ComboButtonSlots = {
-    root: NonNullable<Slot<'div'>>;
+    root: Slot<'div'>;
 };
 
 // @public
@@ -64,7 +64,7 @@ export type ListboxProps = ComponentProps<ListboxSlots> & ListboxCommons;
 
 // @public (undocumented)
 export type ListboxSlots = {
-    root: NonNullable<Slot<'div'>>;
+    root: Slot<'div'>;
 };
 
 // @public
@@ -94,7 +94,7 @@ export type OptionGroupProps = ComponentProps<OptionGroupSlots> & OptionGroupCom
 
 // @public (undocumented)
 export type OptionGroupSlots = {
-    root: NonNullable<Slot<'div'>>;
+    root: Slot<'div'>;
 };
 
 // @public
@@ -105,7 +105,7 @@ export type OptionProps = ComponentProps<OptionSlots> & OptionCommons;
 
 // @public (undocumented)
 export type OptionSlots = {
-    root: NonNullable<Slot<'div'>>;
+    root: Slot<'div'>;
 };
 
 // @public

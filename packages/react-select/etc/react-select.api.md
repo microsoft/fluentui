@@ -33,7 +33,7 @@ export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, '
 export type SelectSlots = {
     root: NonNullable<Slot<'span'>>;
     select: NonNullable<Slot<'select'>>;
-    icon: NonNullable<Slot<'span'>>;
+    icon: Slot<'span'>;
 };
 
 // @public (undocumented)

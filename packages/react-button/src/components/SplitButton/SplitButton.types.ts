@@ -8,7 +8,7 @@ export type SplitButtonSlots = {
   /**
    * Root of the component that wraps the primary action button and menu button.
    */
-  root: NonNullable<Slot<'div'>>;
+  root: Slot<'div'>;
 
   /**
    * Button that opens menu with secondary actions in SplitButton.

@@ -9,7 +9,7 @@ export const renderDivider_unstable = (state: DividerState) => {
   const { slots, slotProps } = getSlots<DividerSlots>(state);
   return (
     <slots.root {...slotProps.root}>
-      {slotProps.root.children !== undefined && (
+      {slotProps.root.children !== undefined && slots.wrapper && (
         <slots.wrapper {...slotProps.wrapper}>{slotProps.root.children}</slots.wrapper>
       )}
     </slots.root>

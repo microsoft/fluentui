@@ -41,7 +41,7 @@ export type AccordionContextValues = {
 };
 
 export type AccordionSlots = {
-  root: NonNullable<Slot<'div'>>;
+  root: Slot<'div'>;
 };
 
 export type AccordionToggleData = {

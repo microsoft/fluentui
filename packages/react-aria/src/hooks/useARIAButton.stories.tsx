@@ -5,7 +5,7 @@ import type { ComponentState, Slot } from '@fluentui/react-utilities';
 import type { ARIAButtonSlotProps } from './useARIAButton';
 
 type Slots = {
-  root: NonNullable<Slot<'div'>>;
+  root: Slot<'div'>;
   button: Slot<ARIAButtonSlotProps>;
 };
 

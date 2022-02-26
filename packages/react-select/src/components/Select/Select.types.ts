@@ -12,7 +12,7 @@ export type SelectSlots = {
   select: NonNullable<Slot<'select'>>;
 
   /** the icon, typically a down arrow */
-  icon: NonNullable<Slot<'span'>>;
+  icon: Slot<'span'>;
 };
 
 export interface SelectCommons {

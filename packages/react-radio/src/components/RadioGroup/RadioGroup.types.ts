@@ -6,7 +6,7 @@ export type RadioGroupSlots = {
   /**
    * The radio group root.
    */
-  root: NonNullable<Slot<'div'>>;
+  root: Slot<'div'>;
 };
 
 export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'onChange'> & {

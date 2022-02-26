@@ -25,7 +25,7 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<
 
 // @public (undocumented)
 export type LabelSlots = {
-    root: NonNullable<Slot<'label'>>;
+    root: Slot<'label'>;
     required?: Slot<'span'>;
 };
 

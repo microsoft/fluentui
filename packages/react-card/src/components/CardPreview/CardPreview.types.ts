@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type CardPreviewSlots = {
-  root: NonNullable<Slot<'div'>>;
+  root: Slot<'div'>;
   logo?: Slot<'div'>;
 };
 

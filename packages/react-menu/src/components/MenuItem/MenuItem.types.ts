@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuItemSlots = {
-  root: NonNullable<Slot<'div'>>;
+  root: Slot<'div'>;
 
   /**
    * Icon slot rendered before children content

@@ -27,7 +27,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & Partial<A
 
 // @public (undocumented)
 export type AvatarSlots = {
-    root: NonNullable<Slot<'span'>>;
+    root: Slot<'span'>;
     image?: Slot<'img'>;
     initials?: Slot<'span'>;
     icon?: Slot<'span'>;

@@ -1,10 +1,10 @@
-import type { ComponentProps, ComponentState, Slot, SlotAs } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
  * Text slots
  */
 export type TextSlots = {
-  root: NonNullable<Slot<'span'>> | SlotAs<'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre'>;
+  root: Slot<'span', 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre'>;
 };
 
 type TextCommons = {

@@ -32,7 +32,7 @@ export type CardFooterProps = ComponentProps<CardFooterSlots>;
 
 // @public (undocumented)
 export type CardFooterSlots = {
-    root: NonNullable<Slot<'div'>>;
+    root: Slot<'div'>;
     action?: Slot<'div'>;
 };
 
@@ -50,7 +50,7 @@ export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 
 // @public (undocumented)
 export type CardHeaderSlots = {
-    root: NonNullable<Slot<'div'>>;
+    root: Slot<'div'>;
     image: Slot<'div'>;
     content?: Slot<'div'>;
     header: Slot<'span'>;
@@ -72,7 +72,7 @@ export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
 
 // @public (undocumented)
 export type CardPreviewSlots = {
-    root: NonNullable<Slot<'div'>>;
+    root: Slot<'div'>;
     logo?: Slot<'div'>;
 };
 
@@ -84,7 +84,7 @@ export type CardProps = ComponentProps<CardSlots> & Partial<CardCommons>;
 
 // @public (undocumented)
 export type CardSlots = {
-    root: NonNullable<Slot<'div'>>;
+    root: Slot<'div'>;
 };
 
 // @public

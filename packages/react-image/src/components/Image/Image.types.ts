@@ -1,7 +1,7 @@
 import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
 
 export type ImageSlots = {
-  root: NonNullable<Slot<'img'>>;
+  root: Slot<'img'>;
 };
 
 type ImageCommons = {

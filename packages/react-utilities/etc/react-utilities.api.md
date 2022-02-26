@@ -43,7 +43,7 @@ export const colGroupProperties: Record<string, number>;
 export const colProperties: Record<string, number>;
 
 // @public
-export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = (Primary extends 'root' ? Omit<Slots, 'root'> : Slots) & PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
+export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
 
 // @public
 export type ComponentState<Slots extends SlotPropsRecord> = {
@@ -51,7 +51,7 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
         [Key in keyof Slots]-?: React_2.ComponentType<ExtractSlotProps<Slots[Key]>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     };
 } & {
-    [Key in keyof Required<Slots>]: ExtractSlotProps<Slots[Key]> | (null extends Slots[Key] ? undefined : never);
+    [Key in keyof Required<Slots>]: ExtractSlotProps<Slots[Key]> | (null extends Slots[Exclude<Key, 'root'>] ? undefined : never);
 };
 
 // Warning: (ae-internal-missing-underscore) The name "defaultSSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
@@ -172,9 +172,9 @@ export function resetIdsForTests(): void;
 export const resolveShorthand: ResolveShorthandFunction;
 
 // @public (undocumented)
-export type ResolveShorthandFunction<SlotProps extends UnknownSlotProps = UnknownSlotProps> = {
-    <Value extends SlotProps | SlotShorthandValue | null | undefined>(value: Value, options?: ResolveShorthandOptions<ExtractSlotProps<Value>, /*Required =*/ true>): ReplaceNullWithUndefined<Exclude<Value, SlotShorthandValue | undefined>>;
-    <Value extends SlotProps | SlotShorthandValue | null | undefined>(value: Value, options?: ResolveShorthandOptions<ExtractSlotProps<Value>, /*Required =*/ boolean>): ReplaceNullWithUndefined<Exclude<Value, SlotShorthandValue>>;
+export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
+    <P extends Slot<Props> | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>): ExtractSlotProps<P> | (null extends P ? undefined : never);
+    <P extends Slot<Props> | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, boolean>): ExtractSlotProps<P> | undefined;
 };
 
 // @public (undocumented)
@@ -182,11 +182,6 @@ export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
     required?: Required;
     defaultProps?: Props;
 };
-
-// @public (undocumented)
-type RootSlot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | UnknownSlotProps> = IsSingleton<Extract<Type, string>> extends true ? SlotProps<Type> : 'Error: Slot type must not be not a union. Use SlotAs to support additional types.';
-export { RootSlot as PrimarySlot }
-export { RootSlot }
 
 // @public
 export const selectProperties: Record<string, number>;
@@ -348,7 +343,6 @@ export const videoProperties: Record<string, number>;
 //
 // lib/compose/getSlots.d.ts:27:5 - (ae-forgotten-export) The symbol "Slots" needs to be exported by the entry point index.d.ts
 // lib/compose/getSlots.d.ts:28:5 - (ae-forgotten-export) The symbol "ObjectSlotProps" needs to be exported by the entry point index.d.ts
-// lib/compose/resolveShorthand.d.ts:11:5 - (ae-forgotten-export) The symbol "ReplaceNullWithUndefined" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

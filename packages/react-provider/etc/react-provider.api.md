@@ -44,7 +44,7 @@ export interface FluentProviderProps extends Omit<ComponentProps<FluentProviderS
 
 // @public (undocumented)
 export type FluentProviderSlots = {
-    root: NonNullable<Slot<'div'>>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)

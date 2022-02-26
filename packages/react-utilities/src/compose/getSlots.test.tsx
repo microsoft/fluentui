@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { getSlots } from './getSlots';
-import type { Slot, SlotAs } from './types';
+import type { Slot } from './types';
 
 describe('getSlots', () => {
   type FooProps = { id?: string; children?: React.ReactNode };
   const Foo = (props: FooProps) => <div />;
 
   it('returns provided component type for root if the as prop is not provided', () => {
-    type Slots = { root: NonNullable<Slot<'div'>> };
+    type Slots = { root: Slot<'div'> };
     expect(
       getSlots<Slots>({ root: {}, components: { root: 'div' } }),
     ).toEqual({
@@ -17,7 +17,7 @@ describe('getSlots', () => {
   });
 
   it('returns root slot as a span with no props', () => {
-    type Slots = { root: NonNullable<Slot<'div'>> | SlotAs<'span'> };
+    type Slots = { root: Slot<'div', 'span'> };
     expect(
       getSlots<Slots>({ root: { as: 'span' }, components: { root: 'div' } }),
     ).toEqual({
@@ -27,7 +27,7 @@ describe('getSlots', () => {
   });
 
   it('does not omit invalid props for the rendered element', () => {
-    type Slots = { root: NonNullable<Slot<'button'>> };
+    type Slots = { root: Slot<'button'> };
     const invalidProp = { href: 'href' } as React.ButtonHTMLAttributes<HTMLButtonElement>;
     expect(
       getSlots<Slots>({ root: { as: 'button', id: 'id', ...invalidProp }, components: { root: 'button' } }),
@@ -38,7 +38,7 @@ describe('getSlots', () => {
   });
 
   it('returns root slot as an anchor, leaving the href intact', () => {
-    type Slots = { root: NonNullable<Slot<'a'>> };
+    type Slots = { root: Slot<'a'> };
     expect(
       getSlots<Slots>({ root: { as: 'a', id: 'id', href: 'href' }, components: { root: 'a' } }),
     ).toEqual({
@@ -49,7 +49,7 @@ describe('getSlots', () => {
 
   it('returns a component slot with no children', () => {
     type Slots = {
-      root: NonNullable<Slot<'div'>>;
+      root: Slot<'div'>;
       icon: Slot<typeof Foo>;
     };
     expect(
@@ -66,7 +66,7 @@ describe('getSlots', () => {
 
   it('returns slot as button', () => {
     type Slots = {
-      root: NonNullable<Slot<'div'>> | SlotAs<'span'>;
+      root: Slot<'div', 'span'>;
       icon: Slot<'button'>;
     };
     expect(
@@ -83,7 +83,7 @@ describe('getSlots', () => {
 
   it('returns slot as anchor and includes supported props (href)', () => {
     type Slots = {
-      root: NonNullable<Slot<'div'>>;
+      root: Slot<'div'>;
       icon: Slot<'a'>;
     };
     expect(
@@ -100,7 +100,7 @@ describe('getSlots', () => {
 
   it('returns a component and includes all props', () => {
     type Slots = {
-      root: NonNullable<Slot<'div'>>;
+      root: Slot<'div'>;
       icon: Slot<'a'> | Slot<typeof Foo>;
     };
     expect(
@@ -117,7 +117,7 @@ describe('getSlots', () => {
 
   it('can use slot children functions to replace default slot rendering', () => {
     type Slots = {
-      root: NonNullable<Slot<'div'>>;
+      root: Slot<'div'>;
       icon: Slot<'a'>;
     };
     expect(
@@ -134,7 +134,7 @@ describe('getSlots', () => {
 
   it('can render a primitive input with no children', () => {
     type Slots = {
-      root: NonNullable<Slot<'div'>>;
+      root: Slot<'div'>;
       input: Slot<'input'>;
       icon?: Slot<'a'>;
     };

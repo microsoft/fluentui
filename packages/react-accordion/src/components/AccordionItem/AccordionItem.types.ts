@@ -11,7 +11,7 @@ export type AccordionItemContextValues = {
 };
 
 export type AccordionItemSlots = {
-  root: NonNullable<Slot<'div'>>;
+  root: Slot<'div'>;
 };
 
 type AccordionItemCommons = {

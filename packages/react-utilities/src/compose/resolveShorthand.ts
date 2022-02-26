@@ -1,41 +1,23 @@
 import { isValidElement } from 'react';
-import type { ExtractSlotProps, SlotShorthandValue, UnknownSlotProps } from './types';
-
-/**
- * If type T includes `null`, remove it and add `undefined` instead.
- */
-type ReplaceNullWithUndefined<T> = T extends null ? undefined : T;
+import type { ExtractSlotProps, Slot, UnknownSlotProps } from './types';
 
 export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
   required?: Required;
   defaultProps?: Props;
 };
 
-// export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-//   <P extends Props | null>(
-//     value: P | SlotShorthandValue | undefined,
-//     options?: ResolveShorthandOptions<P, true>,
-//   ): ReplaceNullWithUndefined<P>;
-//   <P extends Props | null>(value: P | SlotShorthandValue | undefined, options?: ResolveShorthandOptions<P, boolean>):
-//     | ReplaceNullWithUndefined<P>
-//     | undefined;
-// };
-
-export type ResolveShorthandFunction<SlotProps extends UnknownSlotProps = UnknownSlotProps> = {
+export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
   // These two overloads differ in their `required` param, and whether or not they return `undefined`:
-  //  * If `required` is true, it can return `undefined` only if the slot is nullable
-  //  * Otherwise, it can return `undefined` if the slot is nullable OR optional
-  // In other words, required=true means a slot will always be given a default value if the prop is undefined.
+  //  * If `required` is true, its return type includes `undefined` only if the slot is nullable
+  //  * Otherwise, its return type always includes `undefined`
 
-  <Value extends SlotProps | SlotShorthandValue | null | undefined>(
-    value: Value,
-    options?: ResolveShorthandOptions<ExtractSlotProps<Value>, /*Required =*/ true>,
-  ): ReplaceNullWithUndefined<Exclude<Value, SlotShorthandValue | undefined>>;
+  <P extends Slot<Props> | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>):
+    | ExtractSlotProps<P>
+    | (null extends P ? undefined : never);
 
-  <Value extends SlotProps | SlotShorthandValue | null | undefined>(
-    value: Value,
-    options?: ResolveShorthandOptions<ExtractSlotProps<Value>, /*Required =*/ boolean>,
-  ): ReplaceNullWithUndefined<Exclude<Value, SlotShorthandValue>>;
+  <P extends Slot<Props> | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, boolean>):
+    | ExtractSlotProps<P>
+    | undefined;
 };
 
 /**
