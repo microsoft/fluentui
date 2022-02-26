@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useRadioGroup_unstable } from './useRadioGroup';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { RadioGroupProps } from './RadioGroup.types';
 import { renderRadioGroup_unstable } from './renderRadioGroup';
+import { useRadioGroup_unstable } from './useRadioGroup';
 import { useRadioGroupStyles_unstable } from './useRadioGroupStyles';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
  * A RadioGroup component presents a set of options where only one option can be selected.

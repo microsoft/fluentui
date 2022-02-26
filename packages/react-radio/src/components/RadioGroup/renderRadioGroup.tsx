@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { RadioGroupState, RadioGroupSlots } from './RadioGroup.types';
 import { RadioGroupContext } from '../../contexts/RadioGroupContext';
+import { RadioGroupSlots, RadioGroupState } from './RadioGroup.types';
 
 /**
  * Render the final JSX of RadioGroup

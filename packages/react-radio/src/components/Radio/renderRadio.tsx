@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { RadioState, RadioSlots } from './Radio.types';
+import type { RadioSlots, RadioState } from './Radio.types';
 
 /**
  * Render the final JSX of Radio

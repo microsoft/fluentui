@@ -1,6 +1,6 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { RadioState } from './Radio.types';
 
 export const radioClassName = 'fui-Radio';

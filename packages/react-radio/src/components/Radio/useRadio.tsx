@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { getPartitionedNativeProps, resolveShorthand, useId } from '@fluentui/react-utilities';
-import { CircleFilled } from '@fluentui/react-icons';
-import type { RadioProps, RadioState } from './Radio.types';
 import { RadioGroupContext } from '../../contexts/RadioGroupContext';
+import type { RadioProps, RadioState } from './Radio.types';
 
 /**
  * Create the state required to render Radio.

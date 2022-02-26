@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
-import { Radio } from './Radio';
-import { isConformant } from '../../common/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { render } from '@testing-library/react';
+import { isConformant } from '../../common/isConformant';
+import { Radio } from './Radio';
 
 describe('Radio', () => {
   isConformant({
