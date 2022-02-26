@@ -37,7 +37,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
   onChange?: (ev: React.FormEvent<HTMLDivElement>, data: RadioGroupOnChangeData) => void;
 
   /**
-   * How the radio items are laid out in the group
+   * How the radio items are laid out in the group.
    *
    * @defaultvalue vertical
    */
