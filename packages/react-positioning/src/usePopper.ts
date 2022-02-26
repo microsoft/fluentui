@@ -21,8 +21,7 @@ import { useFirstMount } from '@fluentui/react-utilities';
 
 interface UsePopperOptions extends PositioningProps {
   /**
-   * If false, delays Popper's creation.
-   * @default true
+   * If false, does not position anything
    */
   enabled?: boolean;
 }
