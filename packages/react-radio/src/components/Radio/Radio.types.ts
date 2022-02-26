@@ -3,27 +3,27 @@ import type { InputHTMLAttributes } from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type RadioSlots = {
-  root: Slot<'span'>;
+  root: NonNullable<Slot<'span'>>;
 
   /**
    * Renders the radio indicator.
    */
-  indicator: Slot<'div'>;
+  indicator: NonNullable<Slot<'div'>>;
 
   /**
    * Hidden input that handles the checkbox's functionality.
    */
-  input: Slot<'input'>;
+  input: NonNullable<Slot<'input'>>;
 
   /**
    * Label to be associated with RadioGroup element.
    */
-  label: Slot<typeof Label>;
+  label: NonNullable<Slot<typeof Label>>;
 
   /**
    * Subtext added below label.
    */
-  subtext?: Slot<'span'> | null;
+  subtext?: Slot<'span'>;
 };
 
 export type RadioCommons = InputHTMLAttributes<HTMLInputElement> & {

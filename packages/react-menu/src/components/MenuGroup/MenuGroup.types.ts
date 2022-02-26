@@ -2,7 +2,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import type { MenuGroupContextValue } from '../../contexts/menuGroupContext';
 
 export type MenuGroupSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 export type MenuGroupProps = ComponentProps<MenuGroupSlots>;

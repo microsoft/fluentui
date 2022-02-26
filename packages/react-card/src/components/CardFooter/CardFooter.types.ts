@@ -1,8 +1,8 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type CardFooterSlots = {
-  root: Slot<'div'>;
-  action?: Slot<'div'> | null;
+  root: NonNullable<Slot<'div'>>;
+  action?: Slot<'div'>;
 };
 
 /**

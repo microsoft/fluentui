@@ -7,7 +7,7 @@ import type { PartialTheme, Theme } from '@fluentui/react-theme';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type FluentProviderSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 interface FluentProviderCommons {

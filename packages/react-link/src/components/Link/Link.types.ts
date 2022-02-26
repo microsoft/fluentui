@@ -4,7 +4,7 @@ export type LinkSlots = {
   /**
    * Root of the component that renders as either an <a> or a <button> tag.
    */
-  root: Slot<'a'> | SlotAs<'button'>;
+  root: NonNullable<Slot<'a'>> | SlotAs<'button'>;
 };
 
 type LinkCommons = {

@@ -1,34 +1,34 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuItemSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * Icon slot rendered before children content
    */
-  icon?: Slot<'span'> | null;
+  icon?: Slot<'span'>;
 
   /**
    * A helper slot for alignment when a menu item is used with selectable menuitems
    * Avoid using this slot as a replacement for MenuItemCheckbox and MenuItemRadio components
    */
-  checkmark?: Slot<'span'> | null;
+  checkmark?: Slot<'span'>;
 
   /**
    * Icon slot that shows the indicator for a submenu
    */
-  submenuIndicator?: Slot<'span'> | null;
+  submenuIndicator?: Slot<'span'>;
 
   /**
    * Component children are placed in this slot
    * Avoid using the `children` property in this slot in favour of Component children whenever possible
    */
-  content?: Slot<'span'> | null;
+  content?: Slot<'span'>;
 
   /**
    * Secondary content rendered opposite the primary content (e.g Shortcut text)
    */
-  secondaryContent?: Slot<'span'> | null;
+  secondaryContent?: Slot<'span'>;
 };
 
 type MenuItemCommons = {

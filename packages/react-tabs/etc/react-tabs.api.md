@@ -86,7 +86,7 @@ export const tabListSelectionIndicatorName = "fui-TabList_SelectionIndicator";
 
 // @public (undocumented)
 export type TabListSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -101,9 +101,9 @@ export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
 
 // @public (undocumented)
 export type TabSlots = {
-    root: Slot<'div'>;
-    icon?: Slot<'span'> | null;
-    content: Slot<'span'>;
+    root: NonNullable<Slot<'div'>>;
+    icon?: Slot<'span'>;
+    content: NonNullable<Slot<'span'>>;
 };
 
 // @public

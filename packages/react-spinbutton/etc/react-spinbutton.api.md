@@ -48,10 +48,10 @@ export type SpinButtonProps = ComponentProps<Partial<SpinButtonSlots>, 'input'> 
 
 // @public (undocumented)
 export type SpinButtonSlots = {
-    root: Slot<'div'>;
-    input: Slot<'input'>;
-    incrementControl: Slot<'button'>;
-    decrementControl: Slot<'button'>;
+    root: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>>;
+    incrementControl: NonNullable<Slot<'button'>>;
+    decrementControl: NonNullable<Slot<'button'>>;
 };
 
 // @public

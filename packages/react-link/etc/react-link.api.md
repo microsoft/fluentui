@@ -24,7 +24,7 @@ export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
 
 // @public (undocumented)
 export type LinkSlots = {
-    root: Slot<'a'> | SlotAs<'button'>;
+    root: NonNullable<Slot<'a'>> | SlotAs<'button'>;
 };
 
 // @public (undocumented)

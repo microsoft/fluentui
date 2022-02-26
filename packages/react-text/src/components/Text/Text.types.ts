@@ -4,7 +4,7 @@ import type { ComponentProps, ComponentState, Slot, SlotAs } from '@fluentui/rea
  * Text slots
  */
 export type TextSlots = {
-  root: Slot<'span'> | SlotAs<'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre'>;
+  root: NonNullable<Slot<'span'>> | SlotAs<'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre'>;
 };
 
 type TextCommons = {

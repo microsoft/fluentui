@@ -86,14 +86,14 @@ export type IntrisicElementProps<Type extends keyof JSX.IntrinsicElements> = Rea
  * @example
  * ```
  * // Intrinsic element examples:
- * Slot<'div'> | null // Slot is always div
- * (Slot<'button'> | SlotAs<'a'>) | null // Defaults to button, but allows as="a" with anchor-specific props
- * (Slot<'span'> | SlotAs<'div' | 'pre'>) | null // Defaults to span, but allows as="div" or as="pre"
- * Slot<'div'> // Slot that will always be rendered (can't be set to null by the user)
+ * Slot<'div'> // Slot is always div
+ * (NonNullable<Slot<'button'>> | SlotAs<'a'>) | null // Defaults to button, but allows as="a" with anchor-specific props
+ * (NonNullable<Slot<'span'>> | SlotAs<'div' | 'pre'>) | null // Defaults to span, but allows as="div" or as="pre"
+ * NonNullable<Slot<'div'>> // Slot that will always be rendered (can't be set to null by the user)
  *
  * // Component examples:
- * Slot<typeof Button> | null // Slot is always a Button, and accepts all of Button's Props
- * Slot<typeof Label> // Slot is a Label and will always be rendered (can't be set to null by the user)
+ * Slot<typeof Button> // Slot is always a Button, and accepts all of Button's Props
+ * NonNullable<Slot<typeof Label>> // Slot is a Label and will always be rendered (can't be set to null by the user)
  * ```
  */
 export type Slot<
@@ -101,7 +101,7 @@ export type Slot<
   /** @deprecated Use `| SlotAs<...>` instead */
   AlternateAs extends keyof JSX.IntrinsicElements = never
 > = IsSingleton<Extract<Type, string>> extends true
-  ? WithSlotShorthandValue<SlotProps<Type>> | SlotAs<AlternateAs>
+  ? WithSlotShorthandValue<SlotProps<Type>> | SlotAs<AlternateAs> | null
   : 'Error: Slot type must not be not a union. Use SlotAs to support additional types.';
 
 export type SlotAs<AlternateAs extends keyof JSX.IntrinsicElements> = {

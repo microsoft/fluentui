@@ -27,12 +27,12 @@ export interface SwitchProps extends Omit<ComponentProps<Partial<SwitchSlots>>, 
 
 // @public (undocumented)
 export type SwitchSlots = {
-    root: Slot<'div'>;
-    track: Slot<'div'>;
-    thumbWrapper: Slot<'div'>;
-    thumb: Slot<'div'>;
-    input: Slot<'input'>;
-    activeRail: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
+    track: NonNullable<Slot<'div'>>;
+    thumbWrapper: NonNullable<Slot<'div'>>;
+    thumb: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>>;
+    activeRail: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)

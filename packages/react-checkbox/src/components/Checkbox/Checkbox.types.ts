@@ -49,12 +49,12 @@ export type CheckboxSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Checkbox>`.
    * All other native props will be applied to the primary slot: `input`
    */
-  root: Slot<'span'>;
+  root: NonNullable<Slot<'span'>>;
 
   /**
    * The Checkbox's label.
    */
-  label?: Slot<typeof Label> | null;
+  label?: Slot<typeof Label>;
 
   /**
    * Hidden input that handles the checkbox's functionality.
@@ -62,12 +62,12 @@ export type CheckboxSlots = {
    * This is the PRIMARY slot: all native properties specified directly on `<Checkbox>` will be applied to this slot,
    * except `className` and `style`, which remain on the root slot.
    */
-  input: Slot<'input'>;
+  input: NonNullable<Slot<'input'>>;
 
   /**
    * The checkbox, with the checkmark icon as its child when checked.
    */
-  indicator: Slot<'div'> | null;
+  indicator: NonNullable<Slot<'div'>>;
 };
 
 /**

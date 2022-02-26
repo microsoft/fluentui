@@ -198,15 +198,13 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
   state.input.className = mergeClasses(inputStyles.base, state.input.className);
 
   const indicatorStyles = useIndicatorStyles();
-  if (state.indicator) {
-    state.indicator.className = mergeClasses(
-      indicatorClassName,
-      indicatorStyles.base,
-      indicatorStyles[state.size],
-      state.shape === 'circular' && indicatorStyles.circular,
-      state.indicator.className,
-    );
-  }
+  state.indicator.className = mergeClasses(
+    indicatorClassName,
+    indicatorStyles.base,
+    indicatorStyles[state.size],
+    state.shape === 'circular' && indicatorStyles.circular,
+    state.indicator.className,
+  );
 
   const labelStyles = useLabelStyles();
   if (state.label) {

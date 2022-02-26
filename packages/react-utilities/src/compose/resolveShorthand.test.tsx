@@ -3,9 +3,9 @@ import { resolveShorthand } from './resolveShorthand';
 import type { Slot } from './types';
 
 type TestProps = {
-  slotA?: Slot<'div'> | null;
-  slotB?: Slot<'div'> | null;
-  slotC?: Slot<'div'> | null;
+  slotA?: Slot<'div'>;
+  slotB?: Slot<'div'>;
+  slotC?: Slot<'div'>;
   notASlot?: string;
   alsoNotASlot?: number;
 };

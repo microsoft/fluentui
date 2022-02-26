@@ -43,7 +43,7 @@ export type MenuListCommons = {
 };
 
 export type MenuListSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 export type MenuListProps = ComponentProps<MenuListSlots> & Partial<MenuListCommons>;

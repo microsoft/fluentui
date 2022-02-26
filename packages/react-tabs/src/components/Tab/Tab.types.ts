@@ -9,18 +9,18 @@ export type TabSlots = {
   /**
    * Root of the component.
    */
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * Icon that renders before the content.
    */
-  icon?: Slot<'span'> | null;
+  icon?: Slot<'span'>;
 
   /**
    * Component children are placed in this slot
    * Avoid using the `children` property in this slot in favour of Component children whenever possible.
    */
-  content: Slot<'span'>;
+  content: NonNullable<Slot<'span'>>;
 };
 
 type TabCommons = {

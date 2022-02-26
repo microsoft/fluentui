@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type RadioGroupSlots = {
-  root: Slot<'span'>;
+  root: NonNullable<Slot<'span'>>;
 };
 
 /**

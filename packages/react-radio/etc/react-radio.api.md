@@ -35,7 +35,7 @@ export type RadioGroupProps = ComponentProps<RadioGroupSlots>;
 
 // @public (undocumented)
 export type RadioGroupSlots = {
-    root: Slot<'span'>;
+    root: NonNullable<Slot<'span'>>;
 };
 
 // @public
@@ -48,11 +48,11 @@ export type RadioProps = ComponentProps<Partial<RadioSlots>> & RadioCommons & {
 
 // @public (undocumented)
 export type RadioSlots = {
-    root: Slot<'span'>;
-    indicator: Slot<'div'>;
-    input: Slot<'input'>;
-    label: Slot<typeof Label>;
-    subtext?: Slot<'span'> | null;
+    root: NonNullable<Slot<'span'>>;
+    indicator: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>>;
+    label: NonNullable<Slot<typeof Label>>;
+    subtext?: Slot<'span'>;
 };
 
 // @public

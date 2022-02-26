@@ -31,10 +31,10 @@ export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'd
 
 // @public (undocumented)
 export type SliderSlots = {
-    root: Slot<'div'>;
-    rail: Slot<'div'>;
-    thumb: Slot<'div'>;
-    input: Slot<'input'> & {
+    root: NonNullable<Slot<'div'>>;
+    rail: NonNullable<Slot<'div'>>;
+    thumb: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>> & {
         orient?: 'horizontal' | 'vertical';
     };
 };

@@ -52,7 +52,7 @@ export type MenuDividerProps = ComponentProps<MenuDividerSlots>;
 
 // @public (undocumented)
 export type MenuDividerSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)
@@ -88,7 +88,7 @@ export type MenuGroupHeaderProps = ComponentProps<MenuGroupHeaderSlots>;
 
 // @public (undocumented)
 export type MenuGroupHeaderSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)
@@ -99,7 +99,7 @@ export type MenuGroupProps = ComponentProps<MenuGroupSlots>;
 
 // @public (undocumented)
 export type MenuGroupSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)
@@ -157,12 +157,12 @@ export type MenuItemSelectableState = MenuItemSelectableProps & {
 
 // @public (undocumented)
 export type MenuItemSlots = {
-    root: Slot<'div'>;
-    icon?: Slot<'span'> | null;
-    checkmark?: Slot<'span'> | null;
-    submenuIndicator?: Slot<'span'> | null;
-    content?: Slot<'span'> | null;
-    secondaryContent?: Slot<'span'> | null;
+    root: NonNullable<Slot<'div'>>;
+    icon?: Slot<'span'>;
+    checkmark?: Slot<'span'>;
+    submenuIndicator?: Slot<'span'>;
+    content?: Slot<'span'>;
+    secondaryContent?: Slot<'span'>;
 };
 
 // @public (undocumented)
@@ -199,7 +199,7 @@ export const MenuListProvider: React_2.Provider<MenuListContextValue> & React_2.
 
 // @public (undocumented)
 export type MenuListSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)
@@ -230,7 +230,7 @@ export type MenuPopoverProps = ComponentProps<MenuPopoverSlots>;
 
 // @public (undocumented)
 export type MenuPopoverSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -265,7 +265,7 @@ export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots> & MenuSpli
 
 // @public (undocumented)
 export type MenuSplitGroupSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public

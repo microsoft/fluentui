@@ -19,19 +19,19 @@ export type AccordionHeaderSlots = {
   /**
    * The element wrapping the button. By default this is a div, but can be a heading.
    */
-  root: Slot<'div'> | SlotAs<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+  root: NonNullable<Slot<'div'>> | SlotAs<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
   /**
    * The component to be used as button in heading
    */
-  button: Slot<ARIAButtonSlotProps>;
+  button: NonNullable<Slot<ARIAButtonSlotProps>>;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  expandIcon: Slot<'span'>;
+  expandIcon: NonNullable<Slot<'span'>>;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  icon?: Slot<'div'> | null;
+  icon?: Slot<'div'>;
 };
 
 type AccordionHeaderCommons = {

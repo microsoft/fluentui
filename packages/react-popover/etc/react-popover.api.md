@@ -71,7 +71,7 @@ export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
 
 // @public
 export type PopoverSurfaceSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public

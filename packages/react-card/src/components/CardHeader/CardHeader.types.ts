@@ -1,12 +1,12 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type CardHeaderSlots = {
-  root: Slot<'div'>;
-  image: Slot<'div'> | null;
-  content?: Slot<'div'> | null;
-  header: Slot<'span'> | null;
-  description: Slot<'span'> | null;
-  action?: Slot<'div'> | null;
+  root: NonNullable<Slot<'div'>>;
+  image: Slot<'div'>;
+  content?: Slot<'div'>;
+  header: Slot<'span'>;
+  description: Slot<'span'>;
+  action?: Slot<'div'>;
 };
 
 /**

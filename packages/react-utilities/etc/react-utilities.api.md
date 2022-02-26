@@ -199,7 +199,7 @@ export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.Keyboar
 // @public
 export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | UnknownSlotProps,
 /** @deprecated Use `| SlotAs<...>` instead */
-AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<SlotProps<Type>> | SlotAs<AlternateAs> : 'Error: Slot type must not be not a union. Use SlotAs to support additional types.';
+AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<SlotProps<Type>> | SlotAs<AlternateAs> | null : 'Error: Slot type must not be not a union. Use SlotAs to support additional types.';
 
 // Warning: (ae-forgotten-export) The symbol "WithSlotRenderFunction" needs to be exported by the entry point index.d.ts
 //

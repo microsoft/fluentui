@@ -68,7 +68,7 @@ export type TextProps = ComponentProps<TextSlots> & Partial<TextCommons>;
 
 // @public
 export type TextSlots = {
-    root: Slot<'span'> | SlotAs<'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre'>;
+    root: NonNullable<Slot<'span'>> | SlotAs<'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre'>;
 };
 
 // @public

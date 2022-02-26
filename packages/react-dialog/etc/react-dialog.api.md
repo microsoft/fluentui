@@ -23,7 +23,7 @@ export type DialogProps = ComponentProps<DialogSlots> & DialogCommons;
 
 // @public (undocumented)
 export type DialogSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public

@@ -5,7 +5,7 @@ export type MenuButtonSlots = ButtonSlots & {
   /**
    * Menu icon that indicates that this button has a menu that can be expanded.
    */
-  menuIcon?: Slot<'span'> | null;
+  menuIcon?: Slot<'span'>;
 };
 
 export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<ButtonCommons, 'iconPosition'>>;

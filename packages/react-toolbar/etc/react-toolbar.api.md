@@ -35,7 +35,7 @@ export type ToolbarButtonProps = ComponentProps<ToolbarButtonSlots> & ToolbarBut
 
 // @public (undocumented)
 export type ToolbarButtonSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -57,7 +57,7 @@ export type ToolbarDividerProps = ComponentProps<ToolbarDividerSlots> & ToolbarD
 
 // @public (undocumented)
 export type ToolbarDividerSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -70,7 +70,7 @@ export type ToolbarProps = ComponentProps<ToolbarSlots> & ToolbarCommons;
 
 // @public (undocumented)
 export type ToolbarSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public

@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuGroupHeaderSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 export type MenuGroupHeaderProps = ComponentProps<MenuGroupHeaderSlots>;

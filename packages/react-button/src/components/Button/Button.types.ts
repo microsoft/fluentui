@@ -5,12 +5,12 @@ export type ButtonSlots = {
   /**
    * Root of the component that renders as either a `<button>` tag or an `<a>` tag.
    */
-  root: Slot<ARIAButtonSlotProps>;
+  root: NonNullable<Slot<ARIAButtonSlotProps>>;
 
   /**
    * Icon that renders either before or after the `children` as specified by the `iconPosition` prop.
    */
-  icon?: Slot<'span'> | null;
+  icon?: Slot<'span'>;
 };
 
 export type ButtonCommons = {

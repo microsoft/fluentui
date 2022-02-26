@@ -67,10 +67,10 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    root: Slot<'div'> | SlotAs<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-    button: Slot<ARIAButtonSlotProps>;
-    expandIcon: Slot<'span'>;
-    icon?: Slot<'div'> | null;
+    root: NonNullable<Slot<'div'>> | SlotAs<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+    button: NonNullable<Slot<ARIAButtonSlotProps>>;
+    expandIcon: NonNullable<Slot<'span'>>;
+    icon?: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -106,7 +106,7 @@ export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<Ac
 
 // @public (undocumented)
 export type AccordionItemSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)
@@ -126,7 +126,7 @@ export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 
 // @public (undocumented)
 export type AccordionPanelSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)
@@ -143,7 +143,7 @@ export type AccordionProps = ComponentProps<AccordionSlots> & Partial<AccordionC
 
 // @public (undocumented)
 export type AccordionSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)

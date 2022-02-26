@@ -2,14 +2,14 @@ import { PresenceBadge } from '@fluentui/react-badge';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AvatarSlots = {
-  root: Slot<'span'>;
+  root: NonNullable<Slot<'span'>>;
 
   /**
    * The Avatar's image.
    *
    * Usage e.g.: `image={{ src: '...' }}`
    */
-  image?: Slot<'img'> | null;
+  image?: Slot<'img'>;
 
   /**
    * (optional) Custom initials.
@@ -19,19 +19,19 @@ export type AvatarSlots = {
    *
    * The initials are displayed when there is no image (including while the image is loading).
    */
-  initials?: Slot<'span'> | null;
+  initials?: Slot<'span'>;
 
   /**
    * Icon to be displayed when the avatar doesn't have an image or initials.
    *
    * @defaultvalue `PersonRegular` (the default icon's size depends on the Avatar's size)
    */
-  icon?: Slot<'span'> | null;
+  icon?: Slot<'span'>;
 
   /**
    * Badge to show the avatar's presence status.
    */
-  badge?: Slot<typeof PresenceBadge> | null;
+  badge?: Slot<typeof PresenceBadge>;
 };
 
 type AvatarCommons = {

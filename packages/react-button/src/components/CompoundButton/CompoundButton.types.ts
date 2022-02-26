@@ -5,12 +5,12 @@ export type CompoundButtonSlots = ButtonSlots & {
   /**
    * Second line of text that describes the action this button takes.
    */
-  secondaryContent?: Slot<'span'> | null;
+  secondaryContent?: Slot<'span'>;
 
   /**
    * Container that wraps the children and the secondaryContent slot.
    */
-  contentContainer: Slot<'span'>;
+  contentContainer: NonNullable<Slot<'span'>>;
 };
 
 export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Partial<ButtonCommons>;

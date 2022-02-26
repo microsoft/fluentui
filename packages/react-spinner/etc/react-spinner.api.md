@@ -26,7 +26,7 @@ export type SpinnerProps = ComponentProps<SpinnerSlots> & SpinnerCommons;
 
 // @public (undocumented)
 export type SpinnerSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public

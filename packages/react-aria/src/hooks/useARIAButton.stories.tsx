@@ -5,8 +5,8 @@ import type { ComponentState, Slot } from '@fluentui/react-utilities';
 import type { ARIAButtonSlotProps } from './useARIAButton';
 
 type Slots = {
-  root: Slot<'div'>;
-  button: Slot<ARIAButtonSlotProps> | null;
+  root: NonNullable<Slot<'div'>>;
+  button: Slot<ARIAButtonSlotProps>;
 };
 
 interface State extends ComponentState<Slots> {}
