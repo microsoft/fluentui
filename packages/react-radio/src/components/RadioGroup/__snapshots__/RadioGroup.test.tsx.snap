@@ -2,10 +2,9 @@
 
 exports[`RadioGroup renders a default state 1`] = `
 <div>
-  <span
+  <div
     class="fui-RadioGroup"
-  >
-    Default RadioGroup
-  </span>
+    role="radiogroup"
+  />
 </div>
 `;
