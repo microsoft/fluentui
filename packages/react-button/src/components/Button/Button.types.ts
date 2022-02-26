@@ -10,7 +10,7 @@ export type ButtonSlots = {
   /**
    * Icon that renders either before or after the `children` as specified by the `iconPosition` prop.
    */
-  icon?: Slot<'span'>;
+  icon?: Slot<'span'> | null;
 };
 
 export type ButtonCommons = {

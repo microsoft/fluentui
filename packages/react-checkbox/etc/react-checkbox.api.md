@@ -34,10 +34,10 @@ export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>
 
 // @public (undocumented)
 export type CheckboxSlots = {
-    root: NonNullable<Slot<'span'>>;
-    label?: Slot<typeof Label>;
-    input: NonNullable<Slot<'input'>>;
-    indicator: Slot<'div'>;
+    root: Slot<'span'>;
+    label?: Slot<typeof Label> | null;
+    input: Slot<'input'>;
+    indicator: Slot<'div'> | null;
 };
 
 // @public

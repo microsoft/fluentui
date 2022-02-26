@@ -2,7 +2,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type BadgeSlots = {
   root: Slot<'div'>;
-  icon?: Slot<'span'>;
+  icon?: Slot<'span'> | null;
 };
 
 export type BadgeCommons = {

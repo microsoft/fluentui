@@ -10,27 +10,27 @@ export type SwitchSlots = {
   /**
    * The bar indicating the status of the Switch.
    */
-  track: NonNullable<Slot<'div'>>;
+  track: Slot<'div'>;
 
   /**
    * The wrapper around the thumb. It is used as the active area for the thumb to position itself.
    */
-  thumbWrapper: NonNullable<Slot<'div'>>;
+  thumbWrapper: Slot<'div'>;
 
   /**
    * The circular icon indicating the status of the Switch.
    */
-  thumb: NonNullable<Slot<'div'>>;
+  thumb: Slot<'div'>;
 
   /**
    * The hidden input that handles the Switch's internal functionality.
    */
-  input: NonNullable<Slot<'input'>>;
+  input: Slot<'input'>;
 
   /**
    * The area in which the Switch's rail allows for the thumb to be dragged.
    */
-  activeRail: NonNullable<Slot<'div'>>;
+  activeRail: Slot<'div'>;
 };
 
 interface SwitchCommons {

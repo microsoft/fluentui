@@ -8,22 +8,22 @@ export type RadioSlots = {
   /**
    * Renders the radio indicator.
    */
-  indicator: NonNullable<Slot<'div'>>;
+  indicator: Slot<'div'>;
 
   /**
    * Hidden input that handles the checkbox's functionality.
    */
-  input: NonNullable<Slot<'input'>>;
+  input: Slot<'input'>;
 
   /**
    * Label to be associated with RadioGroup element.
    */
-  label: NonNullable<Slot<typeof Label>>;
+  label: Slot<typeof Label>;
 
   /**
    * Subtext added below label.
    */
-  subtext?: Slot<'span'>;
+  subtext?: Slot<'span'> | null;
 };
 
 export type RadioCommons = InputHTMLAttributes<HTMLInputElement> & {

@@ -6,13 +6,13 @@ export type SelectSlots = {
    * The `className` and `style` props on `<Select>` are applied to this slot;
    * All other top-level props are applied to the primary slot, `select`.
    */
-  root: NonNullable<Slot<'span'>>;
+  root: Slot<'span'>;
 
   /** Primary slot: the actual `<select>` element */
-  select: NonNullable<Slot<'select'>>;
+  select: Slot<'select'>;
 
   /** the icon, typically a down arrow */
-  icon: Slot<'span'>;
+  icon: Slot<'span'> | null;
 };
 
 export interface SelectCommons {

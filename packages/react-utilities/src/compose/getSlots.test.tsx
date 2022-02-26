@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getSlots } from './getSlots';
-import type { Slot } from './types';
+import type { Slot, SlotAs } from './types';
 
 describe('getSlots', () => {
   type FooProps = { id?: string; children?: React.ReactNode };
@@ -17,7 +17,7 @@ describe('getSlots', () => {
   });
 
   it('returns root slot as a span with no props', () => {
-    type Slots = { root: Slot<'div', 'span'> };
+    type Slots = { root: Slot<'div'> | SlotAs<'span'> };
     expect(
       getSlots<Slots>({ root: { as: 'span' }, components: { root: 'div' } }),
     ).toEqual({
@@ -50,7 +50,7 @@ describe('getSlots', () => {
   it('returns a component slot with no children', () => {
     type Slots = {
       root: Slot<'div'>;
-      icon: Slot<typeof Foo>;
+      icon: Slot<typeof Foo> | null;
     };
     expect(
       getSlots<Slots>({
@@ -66,8 +66,8 @@ describe('getSlots', () => {
 
   it('returns slot as button', () => {
     type Slots = {
-      root: Slot<'div', 'span'>;
-      icon: Slot<'button'>;
+      root: Slot<'div'> | SlotAs<'span'>;
+      icon: Slot<'button'> | null;
     };
     expect(
       getSlots<Slots>({
@@ -84,7 +84,7 @@ describe('getSlots', () => {
   it('returns slot as anchor and includes supported props (href)', () => {
     type Slots = {
       root: Slot<'div'>;
-      icon: Slot<'a'>;
+      icon: Slot<'a'> | null;
     };
     expect(
       getSlots<Slots>({
@@ -101,7 +101,7 @@ describe('getSlots', () => {
   it('returns a component and includes all props', () => {
     type Slots = {
       root: Slot<'div'>;
-      icon: Slot<'a'> | Slot<typeof Foo>;
+      icon: Slot<'a'> | null | Slot<typeof Foo> | null;
     };
     expect(
       getSlots<Slots>({
@@ -118,7 +118,7 @@ describe('getSlots', () => {
   it('can use slot children functions to replace default slot rendering', () => {
     type Slots = {
       root: Slot<'div'>;
-      icon: Slot<'a'>;
+      icon: Slot<'a'> | null;
     };
     expect(
       getSlots<Slots>({
@@ -135,8 +135,8 @@ describe('getSlots', () => {
   it('can render a primitive input with no children', () => {
     type Slots = {
       root: Slot<'div'>;
-      input: Slot<'input'>;
-      icon?: Slot<'a'>;
+      input: Slot<'input'> | null;
+      icon?: Slot<'a'> | null;
     };
     expect(
       getSlots<Slots>({

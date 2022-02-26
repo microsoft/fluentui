@@ -84,33 +84,44 @@ type IntrisicElementProps<Type extends keyof JSX.IntrinsicElements> = React.Prop
  * @example
  * ```
  * // Intrinsic element examples:
- * Slot<'div'> // Slot is always div
- * Slot<'button', 'a'> // Defaults to button, but allows as="a" with anchor-specific props
- * Slot<'span', 'div' | 'pre'> // Defaults to span, but allows as="div" or as="pre"
- * NonNullable<Slot<'div'>> // Slot that will always be rendered (can't be set to null by the user)
+ * Slot<'div'> | null // Slot is always div
+ * (Slot<'button'> | SlotAs<'a'>) | null // Defaults to button, but allows as="a" with anchor-specific props
+ * (Slot<'span'> | SlotAs<'div' | 'pre'>) | null // Defaults to span, but allows as="div" or as="pre"
+ * Slot<'div'> // Slot that will always be rendered (can't be set to null by the user)
  *
  * // Component examples:
- * Slot<typeof Button> // Slot is always a Button, and accepts all of Button's Props
- * NonNullable<Slot<typeof Label>> // Slot is a Label and will always be rendered (can't be set to null by the user)
+ * Slot<typeof Button> | null // Slot is always a Button, and accepts all of Button's Props
+ * Slot<typeof Label> // Slot is a Label and will always be rendered (can't be set to null by the user)
  * ```
  */
 export type Slot<
   Type extends keyof JSX.IntrinsicElements | React.ComponentType | UnknownSlotProps,
+  /** @deprecated Use `| SlotAs<...>` instead */
   AlternateAs extends keyof JSX.IntrinsicElements = never
 > = IsSingleton<Extract<Type, string>> extends true
-  ?
-      | WithSlotShorthandValue<
-          Type extends keyof JSX.IntrinsicElements // Intrinsic elements like `div`
-            ? { as?: Type } & WithSlotRenderFunction<IntrisicElementProps<Type>>
-            : Type extends React.ComponentType<infer Props> // Component types like `typeof Button`
-            ? WithSlotRenderFunction<Props>
-            : Type // Props types like `ButtonProps`
-        >
-      | {
-          [As in AlternateAs]: { as: As } & WithSlotRenderFunction<IntrisicElementProps<As>>;
-        }[AlternateAs]
-      | null
-  : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
+  ? WithSlotShorthandValue<SlotProps<Type>> | SlotAs<AlternateAs>
+  : 'Error: Slot type must not be not a union. Use SlotAs to support additional types.';
+
+export type SlotAs<AlternateAs extends keyof JSX.IntrinsicElements> = {
+  [As in AlternateAs]: { as: As } & WithSlotRenderFunction<IntrisicElementProps<As>>;
+}[AlternateAs];
+
+export type SlotProps<
+  Type extends keyof JSX.IntrinsicElements | React.ComponentType | UnknownSlotProps
+> = Type extends keyof JSX.IntrinsicElements // Intrinsic elements like `div`
+  ? { as?: Type } & WithSlotRenderFunction<IntrisicElementProps<Type>>
+  : Type extends React.ComponentType<infer Props> // Component types like `typeof Button`
+  ? WithSlotRenderFunction<Props>
+  : Type; // Props types like `ButtonProps`
+
+export type RootSlot<Type extends keyof JSX.IntrinsicElements | React.ComponentType | UnknownSlotProps> =
+  //
+  IsSingleton<Extract<Type, string>> extends true
+    ? SlotProps<Type>
+    : 'Error: Slot type must not be not a union. Use SlotAs to support additional types.';
+
+// The RootSlot and PrimarySlot are actually just props objects
+export type { RootSlot as PrimarySlot };
 
 /**
  * Evaluates to true if the given type contains exactly one string, or false if it is a union of strings.
@@ -156,21 +167,24 @@ export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefin
  * defaulting to root if one is not provided.
  */
 export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> =
-  // Include a prop for each slot (see note below about the Omit)
-  Omit<Slots, Primary & 'root'> &
+  // Include a prop for each slot, except root if the primary slot is root
+  // For more info, see the primary slot RFC: https://github.com/microsoft/fluentui/pull/18983
+  (Primary extends 'root' ? Omit<Slots, 'root'> : Slots) &
     // Include all of the props of the primary slot inline in the component's props
     PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
 
-// Note: the `Omit<Slots, Primary & 'root'>` above is a little tricky. Here's what it's doing:
-// * If the Primary slot is 'root', then omit the `root` slot prop.
-// * Otherwise, don't omit any props: include *both* the Primary and `root` props.
-//   We need both props to allow the user to specify native props for either slot because the `root` slot is
-//   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
-
-/**
- * If type T includes `null`, remove it and add `undefined` instead.
- */
-export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | undefined : T;
+// TODO remove
+// export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> =
+//   // Include a prop for each slot except the primary and root slots
+//   Omit<Slots, Primary | 'root'> &
+//     (Primary extends 'root'
+//       ? {}
+//       : // If the primary slot is NOT 'root', include a prop for both primary and root
+//         // For more info, see the primary slot RFC: https://github.com/microsoft/fluentui/pull/18983
+//         // Use ExtractSlotProps because these slots don't allow shorthand
+//         { [S in Extract<keyof Slots, Primary | 'root'>]: Exclude<Slots[S], SlotShorthandValue> }) &
+//     // Include all of the props of the primary slot inline in the component's props
+//     PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
 
 /**
  * Defines the State object of a component given its slots.
@@ -182,11 +196,13 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
       | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   };
 } & {
-  // Include a prop for each slot, with the shorthand resolved to a props object
-  // The root slot can never be null, so also exclude null from it
-  [Key in keyof Slots]: ReplaceNullWithUndefined<
-    Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>
-  >;
+  // Include a prop for each slot. If the slot is nullable, then its slot props could potentially be undefined.
+  [Key in keyof Slots]: ExtractSlotProps<Slots[Key]> | (null extends Slots[Key] ? undefined : never);
+
+  // TODO remove:
+  // The root and primary slots must be a props object (never null or undefined)
+  // | (Slots[Key] extends null ? (Key extends Primary | 'root' ? undefined : never) : never);
+  // ReplaceNullWithUndefined<Exclude<Slots[Key], SlotShorthandValue | undefined>>
 };
 
 /**

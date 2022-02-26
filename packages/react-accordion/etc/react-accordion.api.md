@@ -11,6 +11,7 @@ import type { Context } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotAs } from '@fluentui/react-utilities';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
@@ -66,10 +67,10 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-    button: NonNullable<Slot<ARIAButtonSlotProps>>;
-    expandIcon: Slot<'span'>;
-    icon?: Slot<'div'>;
+    root: Slot<'div'> | SlotAs<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+    button: Slot<ARIAButtonSlotProps>;
+    expandIcon: Slot<'span'> | null;
+    icon?: Slot<'div'> | null;
 };
 
 // @public (undocumented)

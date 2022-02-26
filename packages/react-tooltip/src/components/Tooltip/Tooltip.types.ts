@@ -9,7 +9,7 @@ export type TooltipSlots = {
   /**
    * The text or JSX content of the tooltip.
    */
-  content: NonNullable<Slot<'div'>>;
+  content: Slot<'div'>;
 };
 
 /**

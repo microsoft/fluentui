@@ -24,7 +24,7 @@ export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & Partial<Bad
 // @public (undocumented)
 export type BadgeSlots = {
     root: Slot<'div'>;
-    icon?: Slot<'span'>;
+    icon?: Slot<'span'> | null;
 };
 
 // @public (undocumented)

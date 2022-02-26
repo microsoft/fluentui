@@ -36,7 +36,7 @@ export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCo
 
 // @public
 export type TooltipSlots = {
-    content: NonNullable<Slot<'div'>>;
+    content: Slot<'div'>;
 };
 
 // @public
