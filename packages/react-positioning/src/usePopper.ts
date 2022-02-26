@@ -121,8 +121,13 @@ export function usePopper(
         isFirstUpdate.current = false;
         containerRef.current.setAttribute('data-popper-placement', computedPlacement);
         Object.assign(containerRef.current.style, {
-          left: `${x}px`,
-          top: `${y}px`,
+          // Layer acceleration can disable subpixel rendering which causes slightly
+          // blurry text on low PPI displays, so we want to use 2D transforms
+          // instead
+          transform:
+            (targetDocument?.defaultView?.devicePixelRatio || 1) <= 1
+              ? `translate(${x}px, ${y}px)`
+              : `translate3d(${x}px, ${y}px, 0)`,
           position: strategy,
         });
 
@@ -206,6 +211,7 @@ export function usePopper(
     [enabled],
   );
 
+  // Update position if rerender caused options to change
   useIsomorphicLayoutEffect(
     () => {
       if (!isFirstMount) {
@@ -219,6 +225,7 @@ export function usePopper(
     [resolvePopperOptions],
   );
 
+  // Add window resize and scroll listeners to update position
   useIsomorphicLayoutEffect(() => {
     const win = targetDocument?.defaultView;
     if (!win) {
