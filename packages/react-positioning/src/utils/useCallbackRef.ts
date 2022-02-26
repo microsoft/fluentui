@@ -20,7 +20,7 @@ import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
  */
 export function useCallbackRef<T>(
   initialValue: T | null,
-  callback: (newValue: T | null, lastValue: T | null) => void,
+  callback: (newValue: T | null, lastValue: T | null, initialResolve: boolean) => void,
   skipInitialResolve?: boolean,
 ): React.MutableRefObject<T | null> {
   const isFirst = React.useRef(true);
@@ -44,7 +44,7 @@ export function useCallbackRef<T>(
             return;
           }
 
-          ref.callback(value, last);
+          ref.callback(value, last, isFirst.current);
         }
       },
     },

@@ -19,6 +19,14 @@ import { getScrollParent } from './utils/getScrollParent';
 import debounce from './utils/debounce';
 import { useFirstMount } from '@fluentui/react-utilities';
 
+interface UsePopperOptions extends PositioningProps {
+  /**
+   * If false, delays Popper's creation.
+   * @default true
+   */
+  enabled?: boolean;
+}
+
 function usePopperOptions(options: PopperOptions) {
   const {
     align,
@@ -79,7 +87,7 @@ function usePopperOptions(options: PopperOptions) {
 }
 
 export function usePopper(
-  options: PositioningProps,
+  options: UsePopperOptions,
 ): {
   // React refs are supposed to be contravariant
   // (allows a more general type to be passed rather than a more specific one)
@@ -93,9 +101,8 @@ export function usePopper(
   arrowRef: React.MutableRefObject<any>;
 } {
   const isFirstMount = useFirstMount();
-  const isFirstUpdate = React.useRef(true);
   const { targetDocument } = useFluent();
-  const enabled = true;
+  const { enabled = true } = options;
   const resolvePopperOptions = usePopperOptions(options);
 
   const forceUpdate = useEventCallback(() => {
@@ -106,19 +113,13 @@ export function usePopper(
 
     const { placement, middleware, strategy } = resolvePopperOptions(target, containerRef.current, arrowRef.current);
 
-    // Revert to intended position before the first update
-    if (isFirstUpdate.current) {
-      Object.assign(containerRef.current.style, { position: strategy });
-      isFirstUpdate.current = false;
-    }
-
+    Object.assign(containerRef.current.style, { position: strategy });
     computePosition(target, containerRef.current, { placement, middleware, strategy }).then(
       ({ x, y, middlewareData, placement: computedPlacement }) => {
         if (!containerRef.current) {
           return;
         }
 
-        isFirstUpdate.current = false;
         containerRef.current.setAttribute('data-popper-placement', computedPlacement);
         Object.assign(containerRef.current.style, {
           // Layer acceleration can disable subpixel rendering which causes slightly
@@ -145,16 +146,19 @@ export function usePopper(
 
   const updatePosition = React.useState(() => debounce(forceUpdate))[0];
 
-  // When a ref updates, we consider a new positioning cycle
-  const handleRefUpdate = useEventCallback(() => {
-    isFirstUpdate.current = true;
-    updatePosition();
+  const targetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, updatePosition, true);
+  const containerRef = useCallbackRef<HTMLElement | null>(null, (container, prevContainer, isFirst) => {
+    if (container && enabled) {
+      // When the container is first resolved, set position `fixed` to avoid scroll jumps.
+      // Without this scroll jumps can occur when the element is rendered initially and receives focus
+      Object.assign(container.style, { position: 'fixed', top: 0, left: 0 });
+    }
+    if (!isFirst) {
+      updatePosition();
+    }
   });
-
-  const targetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, handleRefUpdate, true);
-  const containerRef = useCallbackRef<HTMLElement | null>(null, handleRefUpdate, true);
-  const arrowRef = useCallbackRef<HTMLElement | null>(null, handleRefUpdate, true);
-  const overrideTargetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, handleRefUpdate, true);
+  const arrowRef = useCallbackRef<HTMLElement | null>(null, updatePosition, true);
+  const overrideTargetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, updatePosition, true);
 
   React.useImperativeHandle(
     options.popperRef,
@@ -188,25 +192,10 @@ export function usePopper(
 
   useIsomorphicLayoutEffect(
     () => {
-      /**
-       * At the start of a positioning cycle, the container position is always fixed to avoid scroll jumps.
-       * Scroll jumps can happen if content in the floater is focused before it is
-       * positioned. fixed positiong means that the floater will always be in the viewport
-       * so it can be focused without scrolling. This is reset before the first first position update
-       */
-      if (enabled && containerRef.current && isFirstUpdate.current) {
-        Object.assign(containerRef.current.style, { position: 'fixed', top: 0, left: 0 });
-      }
-
       updatePosition();
-      // `enabled` changes start a new positioning cycle
-      return () => {
-        isFirstUpdate.current = true;
-      };
     },
     // Missing deps:
     // updatePosition - referentially stable
-    // containerRef - referentially stable
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [enabled],
   );
@@ -220,7 +209,7 @@ export function usePopper(
     },
     // Missing deps:
     // isFirstMount - Should never change after mount
-    // arrowRef, containerRef, targetRef - Stable between renders
+    // updatePosition - Stable between renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [resolvePopperOptions],
   );
