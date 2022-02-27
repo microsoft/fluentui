@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Add conditional to enableAriaHiddenOnChildren prop",
+  "comment": "Panel: Only mark siblings as aria-hidden when open",
   "packageName": "@fluentui/react",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"
