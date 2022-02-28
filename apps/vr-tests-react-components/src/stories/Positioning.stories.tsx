@@ -658,7 +658,6 @@ storiesOf('Positioning - no scroll jumps', module)
     );
   })
   .addStory('portal', () => {
-    // This case doesn't currently happen, just included to prevent regression
     return (
       <Screener
         steps={new Screener.Steps()
