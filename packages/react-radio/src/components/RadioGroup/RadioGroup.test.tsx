@@ -198,7 +198,22 @@ describe('RadioGroup', () => {
     expect(onChange.mock.calls[2][1]).toEqual({ value: 'c' });
   });
 
-  it('does not call onChange for inputs that are not related to the RadioGroup', () => {
+  it('calls onChange even when Radio items specify their own name', () => {
+    const onChange = jest.fn();
+    render(
+      <RadioGroup onChange={onChange}>
+        <Radio name="test-radio-name" value="a" />
+        <Radio name="test-radio-name" value="b" />
+        <Radio name="test-radio-name" value="c" />
+      </RadioGroup>,
+    );
+
+    fireEvent.click(screen.getByDisplayValue('b'));
+
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 'b' });
+  });
+
+  it('does not call onChange for non-radio inputs', () => {
     const onChange = jest.fn();
     render(
       <RadioGroup onChange={onChange}>
