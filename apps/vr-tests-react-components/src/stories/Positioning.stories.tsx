@@ -605,7 +605,7 @@ const ScrollJump: React.FC<{ renderPortal?: true }> = ({ renderPortal }) => {
   );
 
   return (
-    <>
+    <div>
       <LoremParagraph />
       <LoremParagraph />
       <LoremParagraph />
@@ -623,6 +623,13 @@ const ScrollJump: React.FC<{ renderPortal?: true }> = ({ renderPortal }) => {
         executing before the layout effect to position the floating is executed. The scroll jump is fixed internally in
         usePopper by using position: fixed on the floating element before it is first positioned.
       </p>
+
+      <p style={{ fontWeight: 700, color: 'green' }}>The result should not be 0px</p>
+
+      <p style={{ fontWeight: 700, color: 'red' }}>
+        window.scrollY: <span id="result" />
+        px
+      </p>
       <div style={{ border: '4px dotted green', overflow: 'scroll', height: 200 }}>
         <LoremParagraph />
         <LoremParagraph />
@@ -638,7 +645,7 @@ const ScrollJump: React.FC<{ renderPortal?: true }> = ({ renderPortal }) => {
       <LoremParagraph />
       <LoremParagraph />
       <LoremParagraph />
-    </>
+    </div>
   );
 };
 
@@ -648,9 +655,9 @@ storiesOf('Positioning - no scroll jumps', module)
       <Screener
         steps={new Screener.Steps()
           .focus('button')
-          .snapshot('Scroll to trigger button for popup with trap focus')
           .executeScript("document.querySelector('button').click()")
-          .snapshot('Click on trigger button with autofocus')
+          .executeScript("document.getElementById('result').innerText = Math.round(window.scrollY)")
+          .snapshot('Click on trigger button and record window scroll')
           .end()}
       >
         <ScrollJump />
@@ -662,9 +669,9 @@ storiesOf('Positioning - no scroll jumps', module)
       <Screener
         steps={new Screener.Steps()
           .focus('button')
-          .snapshot('Scroll to trigger button for popup with trap focus')
           .executeScript("document.querySelector('button').click()")
-          .snapshot('Click on trigger button with autofocus')
+          .executeScript("document.getElementById('result').innerText = Math.round(window.scrollY)")
+          .snapshot('Click on trigger button and record window scroll')
           .end()}
       >
         <ScrollJump renderPortal />
