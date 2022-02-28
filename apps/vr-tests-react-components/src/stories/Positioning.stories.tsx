@@ -78,7 +78,7 @@ const useStyles = makeStyles({
 });
 
 const LoremParagraph = () => (
-  <p>
+  <p style={{ padding: 0, margin: 0 }}>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu feugiat pretium nibh
     ipsum consequat. Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit lectus. Porta nibh venenatis cras
