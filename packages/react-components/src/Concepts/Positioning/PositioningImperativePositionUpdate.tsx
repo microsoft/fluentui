@@ -8,14 +8,14 @@ export const ImperativePositionUpdate = () => {
   const popperRef = React.useRef<PopperRefHandle>(null);
   const timeoutRef = React.useRef(0);
 
-  const onOpenChange: PopoverProps['onOpenChange'] = (e, data) => {
+  const onOpenChange = React.useCallback<NonNullable<PopoverProps['onOpenChange']>>((e, data) => {
     if (!data.open) {
       setLoading(true);
     } else {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = window.setTimeout(() => setLoading(false), 1000);
     }
-  };
+  }, []);
 
   React.useEffect(() => {
     if (!loading) {
