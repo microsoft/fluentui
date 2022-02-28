@@ -12,6 +12,7 @@ import { tokens } from '@fluentui/react-theme';
 import { storiesOf } from '@storybook/react';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import Screener from 'screener-storybook/src/screener';
+import { Portal } from '../../../../packages/react-portal/src/index';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -576,7 +577,7 @@ storiesOf('Positioning', module)
   ))
   .addStory('arrow', () => <Arrow />, { includeRtl: true });
 
-const ScrollJump = () => {
+const ScrollJump: React.FC<{ renderPortal?: true }> = ({ renderPortal }) => {
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const [open, setOpen] = React.useState(false);
 
@@ -591,30 +592,20 @@ const ScrollJump = () => {
     align: 'start',
   });
 
+  const floating = renderPortal ? (
+    <Portal>
+      <Box ref={containerRef}>
+        Focusable element <button ref={buttonRef}>Focus me</button>{' '}
+      </Box>
+    </Portal>
+  ) : (
+    <Box ref={containerRef}>
+      Focusable element <button ref={buttonRef}>Focus me</button>{' '}
+    </Box>
+  );
+
   return (
     <>
-      <button ref={targetRef} onClick={() => setOpen(s => !s)}>
-        Target
-      </button>
-      {open && (
-        <Box ref={containerRef}>
-          Focusable element <button ref={buttonRef}>Focus me</button>{' '}
-        </Box>
-      )}
-    </>
-  );
-};
-
-storiesOf('Positioning - scroll', module).addStory('no jump', () => {
-  return (
-    <Screener
-      steps={new Screener.Steps()
-        .focus('button')
-        .snapshot('Scroll to trigger button for popup with trap focus')
-        .executeScript("document.querySelector('button').click()")
-        .snapshot('Click on trigger button with autofocus')
-        .end()}
-    >
       <LoremParagraph />
       <LoremParagraph />
       <LoremParagraph />
@@ -636,11 +627,48 @@ storiesOf('Positioning - scroll', module).addStory('no jump', () => {
         <LoremParagraph />
         <LoremParagraph />
         <LoremParagraph />
-        <ScrollJump />
+        <button ref={targetRef} onClick={() => setOpen(s => !s)}>
+          Target
+        </button>
         <LoremParagraph />
+        <LoremParagraph />
+        <LoremParagraph />
+        {open && floating}
       </div>
       <LoremParagraph />
       <LoremParagraph />
-    </Screener>
+      <LoremParagraph />
+    </>
   );
-});
+};
+
+storiesOf('Positioning - no scroll jumps', module)
+  .addStory('inline', () => {
+    return (
+      <Screener
+        steps={new Screener.Steps()
+          .focus('button')
+          .snapshot('Scroll to trigger button for popup with trap focus')
+          .executeScript("document.querySelector('button').click()")
+          .snapshot('Click on trigger button with autofocus')
+          .end()}
+      >
+        <ScrollJump />
+      </Screener>
+    );
+  })
+  .addStory('portal', () => {
+    // This case doesn't currently happen, just included to prevent regression
+    return (
+      <Screener
+        steps={new Screener.Steps()
+          .focus('button')
+          .snapshot('Scroll to trigger button for popup with trap focus')
+          .executeScript("document.querySelector('button').click()")
+          .snapshot('Click on trigger button with autofocus')
+          .end()}
+      >
+        <ScrollJump renderPortal />
+      </Screener>
+    );
+  });
