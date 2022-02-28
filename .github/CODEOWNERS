@@ -58,11 +58,11 @@
 /.github/ISSUE_TEMPLATE* @justSlone @jurokapsiar
 
 #### Fluent UI N*
-packages/a11y-rules/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
-packages/a11y-testing/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
-packages/fluentui/ @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
-packages/fluentui/react-northstar/src/components/Chat/ @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726 @Hirse
-packages/fluentui/react-northstar/src/themes/teams/components/Chat/ @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726 @Hirse
+packages/a11y-rules/ @microsoft/fluentui-northstar
+packages/a11y-testing/ @microsoft/fluentui-northstar
+packages/fluentui/ @microsoft/fluentui-northstar
+packages/fluentui/react-northstar/src/components/Chat/ @microsoft/fluentui-northstar @Hirse
+packages/fluentui/react-northstar/src/themes/teams/components/Chat/ @microsoft/fluentui-northstar @Hirse
 
 #### Web Components
 packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
