@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Radio } from '../index';
+import { Radio, RadioGroup } from '../index';
+import { Text } from '@fluentui/react-text';
 
 import descriptionMd from './RadioDescription.md';
 import bestPracticesMd from './RadioBestPractices.md';
@@ -19,14 +20,21 @@ export default {
 };
 
 export const RadioVariations = () => (
-  <div style={{ display: 'flex', gap: '14px', flexDirection: 'column' }}>
+  <RadioGroup>
     <Radio label="Unchecked Radio" />
     <Radio label="Checked Radio" defaultChecked />
-    <Radio label="Radio with label positioned inline" labelPosition="inline" />
-    <Radio label="Radio with label positioned on the bottom" labelPosition="bottom" />
+    <Radio label="Label below" labelPosition="below" />
     <Radio label="Required Radio" required />
     <Radio label="Disabled Radio" disabled />
-    <Radio label="Radio with subtext" subtext="subtext added here" />
-    <Radio label="Disabled Radio with subtext" subtext="subtext added here" disabled />
-  </div>
+    <Radio
+      label={
+        <>
+          Radio with subtext
+          <Text block size={200}>
+            subtext added here
+          </Text>
+        </>
+      }
+    />
+  </RadioGroup>
 );

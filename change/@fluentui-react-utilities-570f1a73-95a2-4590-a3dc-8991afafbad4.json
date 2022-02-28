@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Ignore prefix in useId() when it is falsey.",
+  "packageName": "@fluentui/react-utilities",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
