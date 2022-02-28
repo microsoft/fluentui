@@ -7,7 +7,7 @@ import {
   PopperRefHandle,
 } from '@fluentui/react-positioning';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { useMergedRefs } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { storiesOf } from '@storybook/react';
 import { useFluent } from '@fluentui/react-shared-contexts';
@@ -577,18 +577,16 @@ storiesOf('Positioning', module)
   .addStory('arrow', () => <Arrow />, { includeRtl: true });
 
 const ScrollJump = () => {
-  const popperRef = React.useRef<PopperRefHandle>({ updatePosition: () => null, setTarget: () => null });
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const [open, setOpen] = React.useState(false);
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (open && buttonRef.current) {
       buttonRef.current.focus();
     }
   }, [open]);
 
   const { containerRef, targetRef } = usePopper({
-    popperRef,
     position: 'above',
     align: 'start',
   });
@@ -624,7 +622,23 @@ storiesOf('Positioning - scroll', module).addStory('no jump', () => {
       <LoremParagraph />
       <LoremParagraph />
       <LoremParagraph />
-      <ScrollJump />
+      <LoremParagraph />
+      <LoremParagraph />
+      <LoremParagraph />
+      <LoremParagraph />
+      <p style={{ fontWeight: 700, color: 'green' }}>
+        This example simulates a scroll jump on autofocus when opening a floating element. The example uses a layout
+        effect to focus on the content of the floating box before usePopper is called. This results in the focus
+        executing before the layout effect to position the floating is executed. The scroll jump is fixed internally in
+        usePopper by using position: fixed on the floating element before it is first positioned.
+      </p>
+      <div style={{ border: '4px dotted green', overflow: 'scroll', height: 200 }}>
+        <LoremParagraph />
+        <LoremParagraph />
+        <LoremParagraph />
+        <ScrollJump />
+        <LoremParagraph />
+      </div>
       <LoremParagraph />
       <LoremParagraph />
     </Screener>
