@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { Radio, RadioGroup } from '../index';
-import { Text } from '@fluentui/react-text';
+import { Radio } from '../index';
 
 import descriptionMd from './RadioDescription.md';
-import bestPracticesMd from './RadioBestPractices.md';
 
 export { Default } from './RadioDefault.stories';
+export { Name } from './RadioName.stories';
+export { Disabled } from './RadioDisabled.stories';
+export { LabelBelow } from './RadioLabelBelow.stories';
 
 export default {
   title: 'Components/Radio',
@@ -13,28 +13,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: descriptionMd,
       },
     },
   },
 };
-
-export const RadioVariations = () => (
-  <RadioGroup>
-    <Radio label="Unchecked Radio" />
-    <Radio label="Checked Radio" defaultChecked />
-    <Radio label="Label below" labelPosition="below" />
-    <Radio label="Required Radio" required />
-    <Radio label="Disabled Radio" disabled />
-    <Radio
-      label={
-        <>
-          Radio with subtext
-          <Text block size={200}>
-            subtext added here
-          </Text>
-        </>
-      }
-    />
-  </RadioGroup>
-);
