@@ -144,6 +144,7 @@ packages/react-spinner/ @microsoft/cxe-red @tomi-msft
 packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @ecraig12345 @czearing
 packages/react-tabs/ @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-text/ @microsoft/cxe-prg
+packages/react-textarea/ @microsoft/cxe-red @sopranopillow
 packages/react-tooltip/ @microsoft/cxe-red @behowell @khmakoto
 
 ## Components
