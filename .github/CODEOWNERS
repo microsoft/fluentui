@@ -88,7 +88,7 @@ packages/monaco-editor/ @ecraig12345
 packages/public-docsite-setup/ @ecraig12345
 packages/react-aria/ @microsoft/teams-prg
 packages/react-cards/ @microsoft/cxe-red @khmakoto
-packages/react-charting/ @Raghurk
+packages/react-charting/ @microsoft/charting-team
 packages/react-conformance-griffel/ @microsoft/teams-prg
 packages/react-context-selector/ @microsoft/teams-prg
 packages/react-date-time @ermercer @LuMarti-MS @evlevy
