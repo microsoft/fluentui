@@ -47,6 +47,24 @@ export {
 export type { CheckboxOnChangeData, CheckboxProps, CheckboxSlots, CheckboxState } from '@fluentui/react-checkbox';
 
 export {
+  Input,
+  inputClassName,
+  renderInput_unstable,
+  useInput_unstable,
+  useInputStyles_unstable,
+} from '@fluentui/react-input';
+export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
+
+export {
+  Label,
+  labelClassName,
+  renderLabel_unstable,
+  useLabel_unstable,
+  useLabelStyles_unstable,
+} from '@fluentui/react-label';
+export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
+
+export {
   Radio,
   radioClassName,
   RadioGroup,
@@ -67,24 +85,6 @@ export type {
   RadioSlots,
   RadioState,
 } from '@fluentui/react-radio';
-
-export {
-  Input,
-  inputClassName,
-  renderInput_unstable,
-  useInput_unstable,
-  useInputStyles_unstable,
-} from '@fluentui/react-input';
-export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
-
-export {
-  Label,
-  labelClassName,
-  renderLabel_unstable,
-  useLabel_unstable,
-  useLabelStyles_unstable,
-} from '@fluentui/react-label';
-export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
 
 export {
   Slider,
