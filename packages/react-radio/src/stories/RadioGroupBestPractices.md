@@ -12,7 +12,7 @@
   Use a phrase for the label, rather than a full sentence.
 
 - **Use sentence case.**
-  Use sentence style capitalization — only capitalize the first word.
+  Capitalize only the first word as you would in a sentence.
 
 - **Place most likely choices first.**
   List the options in a logical order, such as most likely to be selected to least, simplest operation to most complex, or least risk to most. Listing options in alphabetical order isn't recommended because the order will change when the text is localized.
