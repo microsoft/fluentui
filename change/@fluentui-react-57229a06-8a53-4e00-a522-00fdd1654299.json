@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix(@fluentui/react) DocumentCardPreview alt prop missing",
+  "packageName": "@fluentui/react",
+  "email": "zaidalbaker@microsoft.com",
+  "dependentChangeType": "patch"
+}

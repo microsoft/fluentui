@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DocumentCardPreview renders DocumentCardPreview with an Image (no icon) and "alt" prop 1`] = `
+<div
+  className=
+      ms-DocumentCardPreview
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #faf9f8;
+        border-bottom: 1px solid #edebe9;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        overflow: hidden;
+        position: relative;
+      }
+>
+  <div>
+    <div
+      className=
+          ms-Image
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            overflow: hidden;
+          }
+      style={
+        Object {
+          "height": undefined,
+          "width": 144,
+        }
+      }
+    >
+      <img
+        alt="Some fancy Contoso Image"
+        className=
+            ms-Image-image
+            ms-Image-image--portrait
+            is-notLoaded
+            is-fadeIn
+            {
+              display: block;
+              height: auto;
+              opacity: 0;
+              width: 100%;
+            }
+        onError={[Function]}
+        onLoad={[Function]}
+        role="presentation"
+        src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/document-preview.png"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DocumentCardPreview renders DocumentCardPreview with an Image (w/ icon) and "alt" prop 1`] = `
+<div
+  className=
+      ms-DocumentCardPreview
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #faf9f8;
+        border-bottom: 1px solid #edebe9;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        overflow: hidden;
+        position: relative;
+      }
+>
+  <div>
+    <div
+      className=
+          ms-Image
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            overflow: hidden;
+          }
+      style={
+        Object {
+          "height": undefined,
+          "width": 144,
+        }
+      }
+    >
+      <img
+        alt="Some fancy Contoso Image"
+        className=
+            ms-Image-image
+            ms-Image-image--portrait
+            is-notLoaded
+            is-fadeIn
+            {
+              display: block;
+              height: auto;
+              opacity: 0;
+              width: 100%;
+            }
+        onError={[Function]}
+        onLoad={[Function]}
+        role="presentation"
+      />
+    </div>
+    <div
+      className=
+          ms-Image
+          ms-DocumentCardPreview-icon
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            bottom: 10px;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            left: 10px;
+            overflow: hidden;
+            position: absolute;
+          }
+      style={
+        Object {
+          "height": undefined,
+          "width": undefined,
+        }
+      }
+    >
+      <img
+        alt="Some fancy Contoso Image"
+        className=
+            ms-Image-image
+            ms-Image-image--portrait
+            is-notLoaded
+            is-fadeIn
+            {
+              display: block;
+              opacity: 0;
+            }
+        onError={[Function]}
+        onLoad={[Function]}
+        role="presentation"
+        src="https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png"
+      />
+    </div>
+  </div>
+</div>
+`;

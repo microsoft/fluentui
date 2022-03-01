@@ -126,6 +126,11 @@ export interface IDocumentCardPreviewImage {
    * If provided, icon container classname will be used..
    */
   previewIconContainerClass?: string;
+
+  /**
+   * If provided, sets the alt attribute
+   */
+  alt?: string;
 }
 
 /**

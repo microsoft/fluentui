@@ -65,7 +65,7 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
   private _renderPreviewImage(
     previewImage: IDocumentCardPreviewImage,
   ): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
-    const { width, height, imageFit, previewIconProps, previewIconContainerClass } = previewImage;
+    const { alt = '', width, height, imageFit, previewIconProps, previewIconContainerClass } = previewImage;
 
     if (previewIconProps) {
       return (
@@ -85,13 +85,13 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
         imageFit={imageFit}
         src={previewImage.previewImageSrc}
         role="presentation"
-        alt=""
+        alt={alt}
       />
     );
 
     let icon;
     if (previewImage.iconSrc) {
-      icon = <Image className={this._classNames.icon} src={previewImage.iconSrc} role="presentation" alt="" />;
+      icon = <Image className={this._classNames.icon} src={previewImage.iconSrc} role="presentation" alt={alt} />;
     }
 
     return (
@@ -124,7 +124,7 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
           className={this._classNames.fileListIcon}
           src={file.iconSrc}
           role="presentation"
-          alt=""
+          alt={file.alt || ''}
           width="16px"
           height="16px"
         />
