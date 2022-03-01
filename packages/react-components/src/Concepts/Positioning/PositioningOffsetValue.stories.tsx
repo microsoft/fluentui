@@ -23,14 +23,14 @@ export const OffsetValue = () => {
         Offset X
         <input onChange={onChangeX} value={offsetX} type="number" />
       </label>
-      <Popover positioning={{ position: 'after', offset: [offsetY, offsetX] }} noArrow>
+      <Popover positioning={{ position: 'after', offset: { crossAxis: offsetY, mainAxis: offsetX } }} noArrow>
         <PopoverTrigger>
           <Button appearance="primary">Click me</Button>
         </PopoverTrigger>
 
         <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>
       </Popover>
-      <Popover positioning={{ position: 'after', offset: () => [offsetY, offsetX] }} noArrow>
+      <Popover positioning={{ position: 'after', offset: () => ({ crossAxis: offsetY, mainAxis: offsetX }) }} noArrow>
         <PopoverTrigger>
           <Button appearance="primary">Click me</Button>
         </PopoverTrigger>
