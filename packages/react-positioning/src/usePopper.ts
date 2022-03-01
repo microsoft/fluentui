@@ -1,4 +1,4 @@
-import { Middleware, Strategy } from '@floating-ui/core';
+import { hide, Middleware, Strategy } from '@floating-ui/core';
 import { computePosition } from '@floating-ui/dom';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
@@ -18,6 +18,8 @@ import {
 import { getScrollParent } from './utils/getScrollParent';
 import debounce from './utils/debounce';
 import { useFirstMount } from '@fluentui/react-utilities';
+import { intersectionObserver } from './middleware/intersectionObserver';
+import { dataPopperEscaped, dataPopperIntersecting, dataPopperReferenceHidden } from './contants';
 
 interface UsePopperOptions extends PositioningProps {
   /**
@@ -59,7 +61,9 @@ function usePopperOptions(options: PopperOptions) {
         ...[!pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement })],
         shiftMiddleware({ container, hasScrollableElement, overflowBoundary, disableTether }),
         ...[autoSize && maxSizeMiddleware(autoSize)],
+        intersectionObserver(),
         ...[arrow && arrowMiddleware({ arrowElement: arrow, arrowPadding })],
+        hide(),
       ].filter(Boolean) as Middleware[];
 
       return {
@@ -131,6 +135,24 @@ export function usePopper(
           position: strategy,
         });
 
+        if (middlewareData.intersectionObserver.intersecting) {
+          containerRef.current.setAttribute(dataPopperIntersecting, '');
+        } else {
+          containerRef.current.removeAttribute(dataPopperIntersecting);
+        }
+
+        if (middlewareData.hide?.escaped) {
+          containerRef.current.setAttribute(dataPopperEscaped, '');
+        } else {
+          containerRef.current.removeAttribute(dataPopperEscaped);
+        }
+
+        if (middlewareData.hide?.referenceHidden) {
+          containerRef.current.setAttribute(dataPopperReferenceHidden, '');
+        } else {
+          containerRef.current.removeAttribute(dataPopperReferenceHidden);
+        }
+
         if (middlewareData.arrow && arrowRef.current) {
           const { x: arrowX, y: arrowY } = middlewareData.arrow;
 
@@ -145,7 +167,16 @@ export function usePopper(
 
   const updatePosition = React.useState(() => debounce(forceUpdate))[0];
 
-  const targetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, updatePosition, true);
+  const targetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, (target, prevTarget, isFirst) => {
+    if (target !== prevTarget && target instanceof HTMLElement) {
+      const scrollParent = getScrollParent(target);
+      scrollParent.addEventListener('scroll', updatePosition);
+    }
+
+    if (!isFirst) {
+      updatePosition();
+    }
+  });
   const containerRef = useCallbackRef<HTMLElement | null>(null, (container, prevContainer, isFirst) => {
     if (container && enabled) {
       // When the container is first resolved, set position `fixed` to avoid scroll jumps.
@@ -154,6 +185,11 @@ export function usePopper(
     }
     if (!isFirst) {
       updatePosition();
+    }
+
+    if (container !== prevContainer) {
+      const scrollParent = getScrollParent(container);
+      scrollParent.addEventListener('scroll', updatePosition);
     }
   });
   const arrowRef = useCallbackRef<HTMLElement | null>(null, updatePosition, true);
