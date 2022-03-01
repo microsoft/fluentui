@@ -20,6 +20,7 @@ import debounce from './utils/debounce';
 import { useFirstMount } from '@fluentui/react-utilities';
 import { intersectionObserver } from './middleware/intersectionObserver';
 import { dataPopperEscaped, dataPopperIntersecting, dataPopperReferenceHidden } from './contants';
+import { addEventListenerOnScrollParent } from './utils/addEventListenerOnScrollParent';
 
 interface UsePopperOptions extends PositioningProps {
   /**
@@ -168,14 +169,7 @@ export function usePopper(
   const updatePosition = React.useState(() => debounce(forceUpdate))[0];
 
   const targetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, (target, prevTarget, isFirst) => {
-    if (target !== prevTarget && target instanceof HTMLElement) {
-      if (prevTarget && prevTarget instanceof HTMLElement) {
-        const prevScrollParent = getScrollParent(prevTarget);
-        prevScrollParent.removeEventListener('scroll', updatePosition);
-      }
-      const scrollParent = getScrollParent(target);
-      scrollParent.addEventListener('scroll', updatePosition);
-    }
+    addEventListenerOnScrollParent(target, prevTarget, updatePosition);
 
     if (!isFirst) {
       updatePosition();
@@ -187,21 +181,24 @@ export function usePopper(
       // Without this scroll jumps can occur when the element is rendered initially and receives focus
       Object.assign(container.style, { position: 'fixed', top: 0, left: 0 });
     }
+
+    addEventListenerOnScrollParent(container, prevContainer, updatePosition);
+
     if (!isFirst) {
       updatePosition();
     }
-
-    if (container !== prevContainer) {
-      if (prevContainer) {
-        const prevScrollParent = getScrollParent(prevContainer);
-        prevScrollParent.removeEventListener('scroll', updatePosition);
-      }
-      const scrollParent = getScrollParent(container);
-      scrollParent.addEventListener('scroll', updatePosition);
-    }
   });
   const arrowRef = useCallbackRef<HTMLElement | null>(null, updatePosition, true);
-  const overrideTargetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, updatePosition, true);
+  const overrideTargetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(
+    null,
+    (target, prevTarget, isFirst) => {
+      addEventListenerOnScrollParent(target, prevTarget, updatePosition);
+
+      if (!isFirst) {
+        updatePosition();
+      }
+    },
+  );
 
   React.useImperativeHandle(
     options.popperRef,
