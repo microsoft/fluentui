@@ -1,8 +1,55 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 18 Feb 2022 13:35:27 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Mar 2022 02:17:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.4)
+
+Tue, 01 Mar 2022 02:17:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.3..@fluentui/react-components_v9.0.0-rc.4)
+
+### Changes
+
+- `@fluentui/react-button`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-card`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-checkbox`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+  - Refactor Checkbox styles to use CSS pseudo-classes ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by behowell@microsoft.com)
+  - Rename `circular` prop to `shape` ([PR #21834](https://github.com/microsoft/fluentui/pull/21834) by behowell@microsoft.com)
+- `@fluentui/react-components`
+  - Add Checkbox to react-components/unstable ([PR #21836](https://github.com/microsoft/fluentui/pull/21836) by behowell@microsoft.com)
+- `@fluentui/react-divider`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-input`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-label`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-link`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: add isIntersectingModifier to usePopper ([PR #21855](https://github.com/microsoft/fluentui/pull/21855) by olfedias@microsoft.com)
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-slider`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-switch`
+  - Switch: Re-implementing component to make it simpler and making it adhere to latest patterns. ([PR #21849](https://github.com/microsoft/fluentui/pull/21849) by Humberto.Morimoto@microsoft.com)
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-text`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - Ignore prefix in useId() when it is falsey. ([PR #21848](https://github.com/microsoft/fluentui/pull/21848) by seanmonahan@microsoft.com)
+  - Add fieldset to getNativeElementProps ([PR #21835](https://github.com/microsoft/fluentui/pull/21835) by behowell@microsoft.com)
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.3)
 
