@@ -44,7 +44,7 @@ ImperativePositionUpdate.parameters = {
     description: {
       story: [
         'The `popperRef` positioning prop provides an [imperative handle](https://reactjs.org/docs/hooks-reference.html#useimperativehandle)',
-        'to reposition the positioned elemnet. This can be useful for scenarios where content is dynamically loaded.',
+        'to reposition the positioned element. This can be useful for scenarios where content is dynamically loaded.',
         '',
         'In this example, move your mouse in the red boundary and the tooltip will follow the mouse cursor',
       ].join('\n'),
