@@ -2,7 +2,7 @@
 
 ## Background
 
-`TextArea` is a text input field that does not depend on the `<input/>` element.
+`TextArea` is a multi-line text input field that uses the `<textarea>` element.
 
 It is usually used when the user will use more than one line of text, such as a review in a website.
 
@@ -51,11 +51,12 @@ In some libraries, `TextArea` is a variant of `TextField` or `Input`.
 
 ## Variants
 
-- TextArea has six variants:
+- Visual variants
   - `Filled Darker`: TextArea has a gray background and no outline.
   - `Filled Lighter`: TextArea has a white background and no outline.
   - `Underline`: TextArea has a gray background and a line on the bottom.
   - `Outline`: TextArea has a white background, outline, and a line on the bottom.
+- Behavior variants
   - `Disabled`: TextArea has a gray background, gray text, outline, and interaction is disabled.
   - `Read Only`: TextArea has a gray background, gray outline, and typing is disabled.
 
@@ -66,11 +67,11 @@ In some libraries, `TextArea` is a variant of `TextField` or `Input`.
 ```ts
 type TextAreaProps = {
   /**
-   * Display inline instead of block.
+   * How shall the TextArea be displayed.
    *
-   * @defaultvalue false
+   * @defaultvalue 'inline-block'
    */
-  inline?: boolean;
+  display?: 'inline-block' | 'inline-flex' | 'inline-grid';
 
   /**
    * Which direction the TextArea is allowed to be resized.
@@ -78,13 +79,6 @@ type TextAreaProps = {
    * @defaultvalue off
    */
   resize?: 'off' | 'horizontal' | 'vertical' | 'both';
-
-  /**
-   * Direction the TextArea should resize.
-   *
-   * @defaultvalue off
-   */
-  autoResize?: 'off' | 'top' | 'bottom';
 
   /**
    * Size of the TextArea.
@@ -113,11 +107,17 @@ type TextAreaProps = {
   /**
    * Callback for when the user changes the value.
    */
-  onChange?: (ev: React.FormEvent<HTMLTextAreaElement>, data: { value: string }) => void;
+  onChange?: (ev: React.FormEvent<HTMLTextAreaElement>, data: TextAreaOnChangeData) => void;
+};
+
+type TextAreaOnChangeData = {
+  value: string;
 };
 ```
 
-As with most form controls, `TextArea` will have the `textarea` element as the primary element a wrapper (root). This means that `ref` will be passed directly to the `textarea` with its native props.
+The auto-resize feature is known to be unstable from v8 and tricky to implement. [As mentioned by ecraig12345](https://github.com/microsoft/fluentui/pull/21898#discussion_r816418917), we've been trying prioritize getting the components ready for production and may have to leave out some features for the initial version.
+
+As with most form controls, `TextArea` will have the `textarea` element as the primary slot (with a wrapper `root` element for styling). This means that `ref` will be passed directly to the `textarea` with its native props.
 
 The design spec mentions a character count, error message, and label which will be left out for now.
 
