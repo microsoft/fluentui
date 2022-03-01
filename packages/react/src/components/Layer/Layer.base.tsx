@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
 import { classNamesFunction, setPortalAttribute, setVirtualParent } from '../../Utilities';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
-import { useMergedRefs, useWarnings } from '@fluentui/react-hooks';
+import { useIsomorphicLayoutEffect, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
 import type { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
 
@@ -92,8 +92,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       setNeedRaiseLayerMount(true);
     };
 
-    // eslint-disable-next-line no-restricted-properties
-    React.useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
       createLayerElement();
       // Check if the user provided a hostId prop and register the layer with the ID.
       if (hostId) {
