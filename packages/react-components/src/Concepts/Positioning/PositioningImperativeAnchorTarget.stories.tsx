@@ -40,7 +40,7 @@ export const ImperativeAnchorTarget = () => {
     <>
       <Tooltip
         visible={open}
-        positioning={{ popperRef, offset: [0, 15] }}
+        positioning={{ popperRef, offset: { crossAxis: 0, mainAxis: 15 } }}
         content="Follows the cursor"
         relationship="label"
       />
