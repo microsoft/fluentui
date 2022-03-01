@@ -40,12 +40,10 @@ In some libraries, `TextArea` is a variant of `TextField` or `Input`.
 
 ```tsx
 <TextArea
-  className="rootClassName"
-  style={{ background: 'blue' }}
+  className="textAreaClassName"
   id="textarea-1"
   defaultValue="This is a TextArea"
   onChange={(ev, data) => console.log(data.value)}
-  textArea={{ className: 'textAreaClassName', style: { color: 'green' } }}
 />
 ```
 
@@ -117,9 +115,9 @@ type TextAreaOnChangeData = {
 
 The auto-resize feature is known to be unstable from v8 and tricky to implement. [As mentioned by ecraig12345](https://github.com/microsoft/fluentui/pull/21898#discussion_r816418917), we've been trying prioritize getting the components ready for production and may have to leave out some features for the initial version.
 
-As with most form controls, `TextArea` will have the `textarea` element as the primary slot (with a wrapper `root` element for styling). This means that `ref` will be passed directly to the `textarea` with its native props.
+`TextArea` will have a single root slot that will be `<textarea/>`.
 
-The design spec mentions a character count, error message, and label which will be left out for now.
+The design spec mentions a caracter count, error message, and label which will be left out for now.
 
 ## Structure
 
@@ -127,29 +125,24 @@ The design spec mentions a character count, error message, and label which will 
 
 ```tsx
 <TextArea
-  className="rootClassName"
+  className="textAreaClassName"
   style={{ background: 'blue' }}
   id="textarea-1"
   value="This is a TextArea"
   onChange={(ev, data) => console.log(data.value)}
-  textArea={{ className: 'textAreaClassName', style: { color: 'green' } }}
 />
 ```
 
 **Internal**
 
 ```tsx
-<slots.root {...slotProps.root}>
-  <slots.textArea {...slotProps.textArea} />
-</slots.root>
+<slots.root {...slotProps.root}></slots.root>
 ```
 
 **DOM** - how the component will be rendered as HTML elements
 
 ```html
-<span className="rootClassName" style="background: blue">
-  <textarea id="textarea-1" style="color: green" className="textAreaClassName" value="This is a TextArea" />
-</span>
+<textarea id="textarea-1" style="background: blue" className="textAreaClassName" value="This is a TextArea"></textarea>
 ```
 
 ## Migration
