@@ -16,8 +16,8 @@ describe('useCallbackRef', () => {
 
     // Assert
     expect(callback).toHaveBeenCalledTimes(2);
-    expect(callback).toHaveBeenNthCalledWith(1, first, initial);
-    expect(callback).toHaveBeenNthCalledWith(2, second, first);
+    expect(callback).toHaveBeenNthCalledWith(1, first, initial, false);
+    expect(callback).toHaveBeenNthCalledWith(2, second, first, false);
   });
 
   it('should not invoke callback setting referentially same value', () => {
@@ -57,5 +57,20 @@ describe('useCallbackRef', () => {
 
     // Assert
     expect(callback).toHaveBeenCalledTimes(0);
+  });
+
+  it('should invoke callback with `isFirst` on initial resolve', () => {
+    // Arrange
+    const callback = jest.fn();
+
+    // Act
+    renderHook(() => {
+      const ref = useCallbackRef<object>(null, callback);
+      ref.current = {};
+    });
+
+    // Assert
+    expect(callback).toHaveBeenCalledTimes(1);
+    expect(callback).toHaveBeenCalledWith({}, null, true);
   });
 });

@@ -20,7 +20,6 @@ describe('getPlacement', () => {
     [undefined, 'below', 'bottom', 'bottom'],
     [undefined, 'before', 'left', 'right'],
     [undefined, 'after', 'right', 'left'],
-    [undefined, undefined, 'auto', 'auto'],
   ])(
     'should use align: "%s" position: "%s" and return LTR placement: "%s" and RTL placement: "%s"',
     (align, position, expectedPlacement, expectedRtlPlacement) => {
@@ -37,15 +36,15 @@ describe('getPlacement', () => {
 
 describe('applyRtlOffset', () => {
   it('flips an axis value RTL for an array', () => {
-    expect(applyRtlToOffset([10, 10])).toEqual([-10, 10]);
+    expect(applyRtlToOffset({ crossAxis: 10, mainAxis: 10 })).toEqual({ crossAxis: -10, mainAxis: 10 });
   });
 
   it('flips an axis value RTL for a function', () => {
     // Arrange
-    const offsetFn: OffsetFunction = () => [10, 10];
+    const offsetFn: OffsetFunction = () => ({ crossAxis: 10, mainAxis: 10 });
     const flippedFn = applyRtlToOffset(offsetFn) as OffsetFunction;
 
     // Assert
-    expect(flippedFn(({} as unknown) as OffsetFunctionParam)).toEqual([-10, 10]);
+    expect(flippedFn(({} as unknown) as OffsetFunctionParam)).toEqual({ crossAxis: -10, mainAxis: 10 });
   });
 });
