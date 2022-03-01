@@ -1,17 +1,15 @@
 import * as React from 'react';
 import { Radio, RadioGroup } from '../index';
 
-export const DefaultValue = () => {
-  return (
-    <RadioGroup defaultValue="B">
-      <Radio value="A" label="Option A" />
-      <Radio value="B" label="Option B" />
-      <Radio value="C" label="Option C" />
-      <Radio value="D" label="Option D" />
-    </RadioGroup>
-  );
-};
-DefaultValue.parameters = {
+export const UncontrolledValue = () => (
+  <RadioGroup defaultValue="B">
+    <Radio value="A" label="Option A" />
+    <Radio value="B" label="Option B" />
+    <Radio value="C" label="Option C" />
+    <Radio value="D" label="Option D" />
+  </RadioGroup>
+);
+UncontrolledValue.parameters = {
   docs: {
     description: {
       story:
