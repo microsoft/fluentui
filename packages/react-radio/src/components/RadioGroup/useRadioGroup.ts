@@ -36,7 +36,7 @@ export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HT
       role: 'radiogroup',
       ...getNativeElementProps('div', props, /*excludedPropNames:*/ ['onChange', 'name']),
       onChange: useEventCallback(ev => {
-        if (onChange && ev.target instanceof HTMLInputElement && ev.target.name === name) {
+        if (onChange && ev.target instanceof HTMLInputElement && ev.target.type === 'radio') {
           onChange(ev, { value: ev.target.value });
         }
       }),
