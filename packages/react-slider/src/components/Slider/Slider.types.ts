@@ -77,10 +77,10 @@ type SliderCommons = {
   disabled?: boolean;
 
   /**
-   * Whether to render the Slider vertically.
-   * @default `false` (renders horizontally)
+   * How to visually render the slider.
+   * @default `horizontal`
    */
-  vertical?: boolean;
+  appearance?: 'vertical' | 'horizontal';
 
   /**
    * The starting origin point for the Slider.

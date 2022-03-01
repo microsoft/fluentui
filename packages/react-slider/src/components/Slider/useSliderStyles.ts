@@ -20,7 +20,7 @@ export const thumbPositionVar = `--fui-slider-thumb-position`;
 /**
  * Styles for the root slot
  */
-export const useRootStyles = makeStyles({
+const useRootStyles = makeStyles({
   root: {
     position: 'relative',
     display: 'inline-grid',
@@ -102,7 +102,7 @@ export const useRootStyles = makeStyles({
 /**
  * Styles for the rail slot
  */
-export const useRailStyles = makeStyles({
+const useRailStyles = makeStyles({
   rail: {
     ...shorthands.borderRadius(tokens.borderRadiusXLarge),
     pointerEvents: 'none',
@@ -162,7 +162,7 @@ export const useRailStyles = makeStyles({
 /**
  * Styles for the thumb slot
  */
-export const useThumbStyles = makeStyles({
+const useThumbStyles = makeStyles({
   thumb: {
     position: 'absolute',
     width: `var(${thumbSizeVar})`,
@@ -232,33 +232,34 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const railStyles = useRailStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
+  const isVertical = state.appearance === 'vertical';
 
   state.root.className = mergeClasses(
     sliderClassName,
     rootStyles.root,
-    state.vertical ? rootStyles.focusIndicatorVertical : rootStyles.focusIndicatorHorizontal,
+    isVertical ? rootStyles.focusIndicatorVertical : rootStyles.focusIndicatorHorizontal,
     rootStyles[state.size!],
-    state.vertical ? rootStyles.vertical : rootStyles.horizontal,
+    isVertical ? rootStyles.vertical : rootStyles.horizontal,
     state.disabled ? rootStyles.disabled : rootStyles.enabled,
     state.root.className,
   );
 
   state.rail.className = mergeClasses(
     railStyles.rail,
-    state.vertical ? railStyles.vertical : railStyles.horizontal,
+    isVertical ? railStyles.vertical : railStyles.horizontal,
     state.rail.className,
   );
 
   state.thumb.className = mergeClasses(
     thumbStyles.thumb,
-    state.vertical ? thumbStyles.vertical : thumbStyles.horizontal,
+    isVertical ? thumbStyles.vertical : thumbStyles.horizontal,
     state.disabled && thumbStyles.disabled,
     state.thumb.className,
   );
 
   state.input.className = mergeClasses(
     inputStyles.input,
-    state.vertical ? inputStyles.vertical : inputStyles.horizontal,
+    isVertical ? inputStyles.vertical : inputStyles.horizontal,
     state.input.className,
   );
 
