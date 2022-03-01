@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { Radio } from './Radio';
 
@@ -11,55 +11,55 @@ describe('Radio', () => {
   });
 
   it('renders a default state', () => {
-    render(<Radio />);
-    expect(screen.getByRole('radio')).toBeTruthy();
+    const { getByRole } = render(<Radio />);
+    expect(getByRole('radio')).toBeTruthy();
   });
 
   it('renders a label', () => {
-    render(<Radio label="Test Label" />);
-    expect(screen.getByRole('radio')).toBe(screen.getByLabelText('Test Label'));
+    const { getByRole, getByLabelText } = render(<Radio label="Test Label" />);
+    expect(getByRole('radio')).toBe(getByLabelText('Test Label'));
   });
 
   it('forwards ID to input element', () => {
-    render(<Radio id="test-id" />);
-    expect(screen.getByRole('radio').id).toEqual('test-id');
+    const { getByRole } = render(<Radio id="test-id" />);
+    expect(getByRole('radio').id).toEqual('test-id');
   });
 
   it('forwards ref to input element', () => {
     const ref = React.createRef<HTMLInputElement>();
-    render(<Radio ref={ref} />);
-    expect(screen.getByRole('radio')).toEqual(ref.current);
+    const { getByRole } = render(<Radio ref={ref} />);
+    expect(getByRole('radio')).toEqual(ref.current);
   });
 
   it('handles disabled', () => {
-    render(<Radio disabled />);
-    expect(screen.getByRole<HTMLInputElement>('radio').disabled).toBeTruthy();
+    const { getByRole } = render(<Radio disabled />);
+    expect((getByRole('radio') as HTMLInputElement).disabled).toBeTruthy();
   });
 
   it('defaults to unchecked', () => {
-    render(<Radio />);
-    expect(screen.getByRole<HTMLInputElement>('radio').checked).toBe(false);
+    const { getByRole } = render(<Radio />);
+    expect((getByRole('radio') as HTMLInputElement).checked).toBe(false);
   });
 
   it('respects defaultChecked', () => {
-    render(<Radio defaultChecked />);
-    expect(screen.getByRole<HTMLInputElement>('radio').checked).toBe(true);
+    const { getByRole } = render(<Radio defaultChecked />);
+    expect((getByRole('radio') as HTMLInputElement).checked).toBe(true);
   });
 
   it('ignores defaultChecked updates', () => {
-    const { rerender } = render(<Radio defaultChecked />);
+    const { rerender, getByRole } = render(<Radio defaultChecked />);
     rerender(<Radio defaultChecked={false} />);
-    expect(screen.getByRole<HTMLInputElement>('radio').checked).toBe(true);
+    expect((getByRole('radio') as HTMLInputElement).checked).toBe(true);
   });
 
   it('respects checked', () => {
-    render(<Radio checked />);
-    expect(screen.getByRole<HTMLInputElement>('radio').checked).toBe(true);
+    const { getByRole } = render(<Radio checked />);
+    expect((getByRole('radio') as HTMLInputElement).checked).toBe(true);
   });
 
   it('respects checked updates', () => {
-    const { rerender } = render(<Radio checked />);
+    const { rerender, getByRole } = render(<Radio checked />);
     rerender(<Radio checked={false} />);
-    expect(screen.getByRole<HTMLInputElement>('radio').checked).toBe(false);
+    expect((getByRole('radio') as HTMLInputElement).checked).toBe(false);
   });
 });

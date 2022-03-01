@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { Radio } from '../../Radio';
 import { RadioGroup } from './RadioGroup';
@@ -11,94 +11,94 @@ describe('RadioGroup', () => {
   });
 
   it('renders a default state', () => {
-    render(<RadioGroup />);
-    expect(screen.getByRole('radiogroup')).toBeTruthy();
+    const { getByRole } = render(<RadioGroup />);
+    expect(getByRole('radiogroup')).toBeTruthy();
   });
 
   it('applies name to every radio item', () => {
-    render(
+    const { getAllByRole } = render(
       <RadioGroup name="test-name">
         <Radio />
         <Radio />
         <Radio />
       </RadioGroup>,
     );
-    const items = screen.getAllByRole<HTMLInputElement>('radio');
+    const items = getAllByRole('radio') as HTMLInputElement[];
     expect(items[0].name).toBe('test-name');
     expect(items[1].name).toBe('test-name');
     expect(items[2].name).toBe('test-name');
   });
 
   it('applies the same generated name to every radio item if a name is not given', () => {
-    render(
+    const { getAllByRole } = render(
       <RadioGroup>
         <Radio />
         <Radio />
         <Radio />
       </RadioGroup>,
     );
-    const items = screen.getAllByRole<HTMLInputElement>('radio');
+    const items = getAllByRole('radio') as HTMLInputElement[];
     expect(items[0].name).toBeTruthy();
     expect(items[1].name).toBe(items[0].name);
     expect(items[2].name).toBe(items[0].name);
   });
 
   it('respects radio item name', () => {
-    render(
+    const { getAllByRole } = render(
       <RadioGroup>
         <Radio name="test-radio-name" />
         <Radio name="test-radio-name" />
         <Radio name="test-radio-name" />
       </RadioGroup>,
     );
-    const items = screen.getAllByRole<HTMLInputElement>('radio');
+    const items = getAllByRole('radio') as HTMLInputElement[];
     expect(items[0].name).toBe('test-radio-name');
     expect(items[1].name).toBe('test-radio-name');
     expect(items[2].name).toBe('test-radio-name');
   });
 
   it('applies disabled to every radio item', () => {
-    render(
+    const { getAllByRole } = render(
       <RadioGroup disabled>
         <Radio />
         <Radio />
         <Radio />
       </RadioGroup>,
     );
-    const items = screen.getAllByRole<HTMLInputElement>('radio');
+    const items = getAllByRole('radio') as HTMLInputElement[];
     expect(items[0].disabled).toBe(true);
     expect(items[1].disabled).toBe(true);
     expect(items[2].disabled).toBe(true);
   });
 
   it('has no radio item selected by default', () => {
-    render(
+    const { getByDisplayValue } = render(
       <RadioGroup>
         <Radio value="a" />
         <Radio value="b" />
         <Radio value="c" />
       </RadioGroup>,
     );
-    expect(screen.getByDisplayValue<HTMLInputElement>('a').checked).toBe(false);
-    expect(screen.getByDisplayValue<HTMLInputElement>('b').checked).toBe(false);
-    expect(screen.getByDisplayValue<HTMLInputElement>('c').checked).toBe(false);
+    expect((getByDisplayValue('a') as HTMLInputElement).checked).toBe(false);
+    expect((getByDisplayValue('b') as HTMLInputElement).checked).toBe(false);
+    expect((getByDisplayValue('c') as HTMLInputElement).checked).toBe(false);
   });
 
   it('respects defaultValue', () => {
-    render(
+    const { getByDisplayValue } = render(
       <RadioGroup defaultValue="c">
         <Radio value="a" />
         <Radio value="b" />
         <Radio value="c" />
       </RadioGroup>,
     );
-    expect(screen.getByDisplayValue<HTMLInputElement>('a').checked).toBe(false);
-    expect(screen.getByDisplayValue<HTMLInputElement>('b').checked).toBe(false);
-    expect(screen.getByDisplayValue<HTMLInputElement>('c').checked).toBe(true);
+    expect((getByDisplayValue('a') as HTMLInputElement).checked).toBe(false);
+    expect((getByDisplayValue('b') as HTMLInputElement).checked).toBe(false);
+    expect((getByDisplayValue('c') as HTMLInputElement).checked).toBe(true);
   });
 
   it('ignores changes to defaultValue', () => {
-    const { rerender } = render(
+    const { rerender, getByDisplayValue } = render(
       <RadioGroup defaultValue="c">
         <Radio value="a" />
         <Radio value="b" />
@@ -112,26 +112,26 @@ describe('RadioGroup', () => {
         <Radio value="c" />
       </RadioGroup>,
     );
-    expect(screen.getByDisplayValue<HTMLInputElement>('a').checked).toBe(false);
-    expect(screen.getByDisplayValue<HTMLInputElement>('b').checked).toBe(false);
-    expect(screen.getByDisplayValue<HTMLInputElement>('c').checked).toBe(true);
+    expect((getByDisplayValue('a') as HTMLInputElement).checked).toBe(false);
+    expect((getByDisplayValue('b') as HTMLInputElement).checked).toBe(false);
+    expect((getByDisplayValue('c') as HTMLInputElement).checked).toBe(true);
   });
 
   it('respects value', () => {
-    render(
+    const { getByDisplayValue } = render(
       <RadioGroup value="a">
         <Radio value="a" />
         <Radio value="b" />
         <Radio value="c" />
       </RadioGroup>,
     );
-    expect(screen.getByDisplayValue<HTMLInputElement>('a').checked).toBe(true);
-    expect(screen.getByDisplayValue<HTMLInputElement>('b').checked).toBe(false);
-    expect(screen.getByDisplayValue<HTMLInputElement>('c').checked).toBe(false);
+    expect((getByDisplayValue('a') as HTMLInputElement).checked).toBe(true);
+    expect((getByDisplayValue('b') as HTMLInputElement).checked).toBe(false);
+    expect((getByDisplayValue('c') as HTMLInputElement).checked).toBe(false);
   });
 
   it('respects changes to value', () => {
-    const { rerender } = render(
+    const { rerender, getByDisplayValue } = render(
       <RadioGroup value="a">
         <Radio value="a" />
         <Radio value="b" />
@@ -145,40 +145,40 @@ describe('RadioGroup', () => {
         <Radio value="c" />
       </RadioGroup>,
     );
-    expect(screen.getByDisplayValue<HTMLInputElement>('a').checked).toBe(false);
-    expect(screen.getByDisplayValue<HTMLInputElement>('b').checked).toBe(true);
-    expect(screen.getByDisplayValue<HTMLInputElement>('c').checked).toBe(false);
+    expect((getByDisplayValue('a') as HTMLInputElement).checked).toBe(false);
+    expect((getByDisplayValue('b') as HTMLInputElement).checked).toBe(true);
+    expect((getByDisplayValue('c') as HTMLInputElement).checked).toBe(false);
   });
 
   it('respects Radio defaultChecked', () => {
-    render(
+    const { getByDisplayValue } = render(
       <RadioGroup>
         <Radio value="a" />
         <Radio value="b" defaultChecked />
         <Radio value="c" />
       </RadioGroup>,
     );
-    expect(screen.getByDisplayValue<HTMLInputElement>('a').checked).toBe(false);
-    expect(screen.getByDisplayValue<HTMLInputElement>('b').checked).toBe(true);
-    expect(screen.getByDisplayValue<HTMLInputElement>('c').checked).toBe(false);
+    expect((getByDisplayValue('a') as HTMLInputElement).checked).toBe(false);
+    expect((getByDisplayValue('b') as HTMLInputElement).checked).toBe(true);
+    expect((getByDisplayValue('c') as HTMLInputElement).checked).toBe(false);
   });
 
   it('respects Radio checked', () => {
-    render(
+    const { getByDisplayValue } = render(
       <RadioGroup>
         <Radio value="a" />
         <Radio value="b" checked />
         <Radio value="c" />
       </RadioGroup>,
     );
-    expect(screen.getByDisplayValue<HTMLInputElement>('a').checked).toBe(false);
-    expect(screen.getByDisplayValue<HTMLInputElement>('b').checked).toBe(true);
-    expect(screen.getByDisplayValue<HTMLInputElement>('c').checked).toBe(false);
+    expect((getByDisplayValue('a') as HTMLInputElement).checked).toBe(false);
+    expect((getByDisplayValue('b') as HTMLInputElement).checked).toBe(true);
+    expect((getByDisplayValue('c') as HTMLInputElement).checked).toBe(false);
   });
 
   it('calls onChange with the correct value', () => {
     const onChange = jest.fn();
-    render(
+    const { getByDisplayValue } = render(
       <RadioGroup onChange={onChange}>
         <Radio value="a" />
         <Radio value="b" />
@@ -188,9 +188,9 @@ describe('RadioGroup', () => {
 
     expect(onChange).toBeCalledTimes(0);
 
-    fireEvent.click(screen.getByDisplayValue('b'));
-    fireEvent.click(screen.getByDisplayValue('a'));
-    fireEvent.click(screen.getByDisplayValue('c'));
+    fireEvent.click(getByDisplayValue('b'));
+    fireEvent.click(getByDisplayValue('a'));
+    fireEvent.click(getByDisplayValue('c'));
 
     expect(onChange).toBeCalledTimes(3);
     expect(onChange.mock.calls[0][1]).toEqual({ value: 'b' });
@@ -200,7 +200,7 @@ describe('RadioGroup', () => {
 
   it('calls onChange even when Radio items specify their own name', () => {
     const onChange = jest.fn();
-    render(
+    const { getByDisplayValue } = render(
       <RadioGroup onChange={onChange}>
         <Radio name="test-radio-name" value="a" />
         <Radio name="test-radio-name" value="b" />
@@ -208,14 +208,14 @@ describe('RadioGroup', () => {
       </RadioGroup>,
     );
 
-    fireEvent.click(screen.getByDisplayValue('b'));
+    fireEvent.click(getByDisplayValue('b'));
 
     expect(onChange.mock.calls[0][1]).toEqual({ value: 'b' });
   });
 
   it('does not call onChange for non-radio inputs', () => {
     const onChange = jest.fn();
-    render(
+    const { getByRole } = render(
       <RadioGroup onChange={onChange}>
         <Radio value="a" />
         <Radio value="b" />
@@ -224,7 +224,7 @@ describe('RadioGroup', () => {
       </RadioGroup>,
     );
 
-    fireEvent.click(screen.getByRole('checkbox'));
+    fireEvent.click(getByRole('checkbox'));
 
     expect(onChange).not.toHaveBeenCalled();
   });
