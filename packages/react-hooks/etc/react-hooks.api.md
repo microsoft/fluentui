@@ -68,6 +68,9 @@ TValue | undefined,
 ]>;
 
 // @public
+export function useEventCallback<Args extends unknown[], Return>(fn: (...args: Args) => Return): (...args: Args) => Return;
+
+// @public
 export function useForceUpdate(): () => void;
 
 // @public

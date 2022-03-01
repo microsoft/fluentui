@@ -7,6 +7,7 @@ Helpful hooks not provided by React itself. These hooks were built for use in Fl
 - [useBoolean](#useboolean) - Return a boolean value and callbacks for setting it to true or false, or toggling
 - [useConst](#useconst) - Initialize and return a value that's always constant
 - [useControllableValue](#usecontrollablevalue) - Manage the current value for a component that could be either controlled or uncontrolled
+- [useEventCallback](#useeventcallback) - Modified `useCallback` that returns the same function reference every time, but always calls the latest implementation
 - [useForceUpdate](#useforceupdate) - Force a function component to update
 - [useId](#useid) - Get a globally unique ID
 - [useIsomorphicLayoutEffect](#useisomorphiclayouteffect) - Calls `useLayoutEffect` in browser and `useEffect` in SSR, to avoid warnings
@@ -130,6 +131,20 @@ The returned value is an array with two elements:
 - A function that will update the internal state if uncontrolled, and invoke the `onChange` callback if present.
   - Like the setter returned by `React.useState`, the identity of this callback will never change.
   - Also like `React.useState`, you can call this function with either a value, or an updater function which takes the previous value as a parameter and returns the new value.
+
+## useEventCallback
+
+```ts
+// The type parameters just copy the type of the passed function to the returned function
+function useEventCallback<Args extends unknown[], Return>(fn: (...args: Args) => Return): (...args: Args) => Return;
+```
+
+Modified `useCallback` that returns the same function reference every time, but internally calls the most-recently passed callback implementation. Can be useful in situations such as:
+
+- Event handler dependencies change too frequently, such as user props which might change on every render, or volatile values such as useState/useDispatch
+- Callback must be referenced in a captured context (such as a window event handler or unmount handler that's registered once) but needs access to the latest props
+
+In general, prefer `useCallback` unless you've encountered one of the problems above.
 
 ## useForceUpdate
 

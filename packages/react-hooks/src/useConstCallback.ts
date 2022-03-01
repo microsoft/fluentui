@@ -2,6 +2,7 @@ import * as React from 'react';
 
 /**
  * @deprecated Deprecated due to potential for misuse. Generally, use `React.useCallback` instead.
+ * If you need a callback reference that never changes, consider `useEventCallback`.
  *
  * This hook was intended for creating callbacks which have no dependencies, and therefore never
  * need to change. It works fine if everyone using it is extremely mindful of how closures work,
