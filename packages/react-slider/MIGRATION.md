@@ -8,9 +8,7 @@ The Slider control is a thin wrapper around an `<input type="range"/>`. Addition
 - `styles` => pass classNames to individual slots
 - `theme` => use `FluentProvider` HOC instead
 - `label` => Use `Label` control with `htmlFor` and `id`
-  <<<<<<< HEAD
-- # `inline` => use css, or wrap in flex parent
-  > > > > > > > ff472a9f094626550d208b9dafe654a17523e981
+- `inline` => use css, or wrap in flex parent
 - `showValue` and `valueFormat` => use explicitly rendered value instead
 - `onChanged` => use onChange and onMouse events
 - `ranged`, `defaultLowerValue` and `lowerValue` => Not supported. Multi value slider will be future work in separate control.
