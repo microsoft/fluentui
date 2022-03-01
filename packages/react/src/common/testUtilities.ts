@@ -64,7 +64,7 @@ export function flushPromises() {
 export function expectNoHiddenParents(element: HTMLElement) {
   let el: HTMLElement | null = element;
   while (el) {
-    expect(el.getAttribute('aria-hidden')).toBeNull();
+    expect(el.getAttribute('aria-hidden')).not.toBe('true');
     el = el.parentElement;
   }
 }
