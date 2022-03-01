@@ -169,6 +169,10 @@ export function usePopper(
 
   const targetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, (target, prevTarget, isFirst) => {
     if (target !== prevTarget && target instanceof HTMLElement) {
+      if (prevTarget && prevTarget instanceof HTMLElement) {
+        const prevScrollParent = getScrollParent(prevTarget);
+        prevScrollParent.removeEventListener('scroll', updatePosition);
+      }
       const scrollParent = getScrollParent(target);
       scrollParent.addEventListener('scroll', updatePosition);
     }
@@ -188,6 +192,10 @@ export function usePopper(
     }
 
     if (container !== prevContainer) {
+      if (prevContainer) {
+        const prevScrollParent = getScrollParent(prevContainer);
+        prevScrollParent.removeEventListener('scroll', updatePosition);
+      }
       const scrollParent = getScrollParent(container);
       scrollParent.addEventListener('scroll', updatePosition);
     }
