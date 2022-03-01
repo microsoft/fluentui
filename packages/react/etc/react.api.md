@@ -1987,9 +1987,11 @@ export { htmlElementProperties }
 // @public (undocumented)
 export interface IAccessiblePopupProps {
     closeButtonAriaLabel?: string;
+    disableRestoreFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
     firstFocusableSelector?: string | (() => string);
     forceFocusInsideTrap?: boolean;
+    // @deprecated (undocumented)
     ignoreExternalFocusing?: boolean;
     isClickableOutsideFocusTrap?: boolean;
 }
@@ -5738,6 +5740,7 @@ export interface IFocusTrapZoneProps extends React_2.HTMLAttributes<HTMLDivEleme
     componentRef?: IRefObject<IFocusTrapZone>;
     disabled?: boolean;
     disableFirstFocus?: boolean;
+    disableRestoreFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
     enableAriaHiddenSiblings?: boolean;
     // @deprecated
@@ -5745,6 +5748,7 @@ export interface IFocusTrapZoneProps extends React_2.HTMLAttributes<HTMLDivEleme
     firstFocusableTarget?: string | ((element: HTMLElement) => HTMLElement | null);
     focusPreviouslyFocusedInnerElement?: boolean;
     forceFocusInsideTrap?: boolean;
+    // @deprecated (undocumented)
     ignoreExternalFocusing?: boolean;
     isClickableOutsideFocusTrap?: boolean;
 }

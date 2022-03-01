@@ -76,7 +76,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       forceFocusInsideTrap,
       styles,
       hidden,
-      ignoreExternalFocusing,
+      disableRestoreFocus = props.ignoreExternalFocusing,
       isBlocking,
       isClickableOutsideFocusTrap,
       isDarkOverlay,
@@ -111,12 +111,12 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       dragOptions.dragHandleSelector = `.${dialogDraggableClassName}`;
     }
 
-    const mergedModalProps = {
+    const mergedModalProps: IModalProps = {
       ...DefaultModalProps,
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
-      ignoreExternalFocusing,
+      disableRestoreFocus,
       isClickableOutsideFocusTrap,
       responsiveMode,
       className,

@@ -50,6 +50,11 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
    * once the trap zone is unmounted or disabled. Set to true to disable this behavior.
    * @defaultvalue false
    */
+  disableRestoreFocus?: boolean;
+
+  /**
+   * @deprecated Use `disableRestoreFocus` (it has the same behavior and a clearer name)
+   */
   ignoreExternalFocusing?: boolean;
 
   /**

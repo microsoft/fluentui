@@ -103,7 +103,8 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
-      ignoreExternalFocusing,
+      // eslint-disable-next-line deprecation/deprecation
+      disableRestoreFocus = props.ignoreExternalFocusing,
       isBlocking,
       isAlert,
       isClickableOutsideFocusTrap,
@@ -418,7 +419,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
         className={classNames.main}
         elementToFocusOnDismiss={elementToFocusOnDismiss}
         isClickableOutsideFocusTrap={isModeless || isClickableOutsideFocusTrap || !isBlocking}
-        ignoreExternalFocusing={ignoreExternalFocusing}
+        disableRestoreFocus={disableRestoreFocus}
         forceFocusInsideTrap={forceFocusInsideTrap && !isModeless}
         firstFocusableSelector={firstFocusableSelector}
         focusPreviouslyFocusedInnerElement
@@ -463,7 +464,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}
-            shouldRestoreFocus={!ignoreExternalFocusing}
+            shouldRestoreFocus={!disableRestoreFocus}
             // Modeless modals shouldn't hide siblings.
             // Popup will automatically handle this based on the aria-modal setting.
             enableAriaHiddenSiblings={enableAriaHiddenSiblings}
