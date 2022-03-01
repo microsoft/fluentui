@@ -33,8 +33,11 @@ export interface Conformant<TProps = {}> extends Pick<IsConformantOptions<TProps
   targetComponent?: ComponentType<any>;
   /** Child component that will receive ref. */
   forwardsRefTo?: string | false;
-  /** Whether to skip tests for the `as` prop */
-  skipAsPropTests?: boolean;
+  /**
+   * Whether to skip tests for the `as` prop. If `all` skip all the tests.
+   * If `as-component` skip the tests for rendering as a class or function component.
+   */
+  skipAsPropTests?: 'all' | 'as-component';
 }
 
 /**
@@ -130,7 +133,7 @@ export function isConformant(
     expect(component.find(props).length).toBeGreaterThan(1);
   });
 
-  if (!skipAsPropTests) {
+  if (skipAsPropTests !== 'all') {
     describe('"as" prop (common)', () => {
       test('renders the component as HTML tags or passes "as" to the next component', () => {
         // silence element nesting warnings
@@ -150,37 +153,39 @@ export function isConformant(
         });
       });
 
-      test('renders as a functional component or passes "as" to the next component', () => {
-        const MyComponent = () => null;
+      if (skipAsPropTests !== 'as-component') {
+        test('renders as a functional component or passes "as" to the next component', () => {
+          const MyComponent = React.forwardRef(() => null);
 
-        const wrapper = mount(<Component {...requiredProps} as={MyComponent} />);
-        const component = getComponent(wrapper);
+          const wrapper = mount(<Component {...requiredProps} as={MyComponent} />);
+          const component = getComponent(wrapper);
 
-        try {
-          expect(component.type()).toEqual(MyComponent);
-        } catch (err) {
-          expect(component.type()).not.toEqual(Component);
-          expect(component.find('[as]').last().prop('as')).toEqual(MyComponent);
-        }
-      });
-
-      test('renders as a ReactClass or passes "as" to the next component', () => {
-        class MyComponent extends React.Component {
-          render() {
-            return <div data-my-react-class />;
+          try {
+            expect(component.type()).toEqual(MyComponent);
+          } catch (err) {
+            expect(component.type()).not.toEqual(Component);
+            expect(component.find('[as]').last().prop('as')).toEqual(MyComponent);
           }
-        }
+        });
 
-        const wrapper = mount(<Component {...requiredProps} as={MyComponent} />);
-        const component = getComponent(wrapper);
+        test('renders as a ReactClass or passes "as" to the next component', () => {
+          class MyComponent extends React.Component {
+            render() {
+              return <div data-my-react-class />;
+            }
+          }
 
-        try {
-          expect(component.type()).toEqual(MyComponent);
-        } catch (err) {
-          expect(component.type()).not.toEqual(Component);
-          expect(component.prop('as')).toEqual(MyComponent);
-        }
-      });
+          const wrapper = mount(<Component {...requiredProps} as={MyComponent} />);
+          const component = getComponent(wrapper);
+
+          try {
+            expect(component.type()).toEqual(MyComponent);
+          } catch (err) {
+            expect(component.type()).not.toEqual(Component);
+            expect(component.prop('as')).toEqual(MyComponent);
+          }
+        });
+      }
 
       test('passes extra props to the component it is renders as', () => {
         if (targetComponent) {
@@ -188,7 +193,7 @@ export function isConformant(
 
           expect(el.prop('data-extra-prop')).toBe('foo');
         } else {
-          const MyComponent = () => null;
+          const MyComponent = React.forwardRef(() => null);
           const el = mount(<Component {...requiredProps} as={MyComponent} data-extra-prop="foo" />).find(MyComponent);
 
           expect(el.prop('data-extra-prop')).toBe('foo');
