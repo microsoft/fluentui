@@ -41,10 +41,8 @@
     "@fluentui/react-tooltip": "9.0.0-rc.5",
     "@fluentui/scripts": "^1.0.0",
     "@griffel/react": "1.0.0",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "screener-storybook": "0.21.2",
     "tslib": "^2.1.0"
   }

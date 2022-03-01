@@ -23,11 +23,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/react-dom": "16.9.10",
-    "@types/react": "16.9.42",
-    "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/react": "^8.58.0",

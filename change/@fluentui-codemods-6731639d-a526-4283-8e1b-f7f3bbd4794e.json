@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Update React dependency to 16.14",
+  "packageName": "@fluentui/codemods",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
