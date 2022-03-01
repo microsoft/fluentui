@@ -56,6 +56,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         fontWeight: FontWeights.semibold,
         fontFamily: 'inherit',
         textAlign: 'left',
+        color: 'inherit',
         backgroundColor: 'transparent',
         flexGrow: 1,
         padding: '0 4px 0 10px',

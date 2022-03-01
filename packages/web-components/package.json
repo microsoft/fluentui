@@ -86,10 +86,10 @@
     "webpack": "^4.43.0"
   },
   "dependencies": {
-    "@microsoft/fast-colors": "^5.1.0",
-    "@microsoft/fast-element": "^1.6.0",
-    "@microsoft/fast-foundation": "^2.32.0",
-    "@microsoft/fast-web-utilities": "^5.0.0",
+    "@microsoft/fast-colors": "^5.1.5",
+    "@microsoft/fast-element": "^1.7.2",
+    "@microsoft/fast-foundation": "^2.33.6",
+    "@microsoft/fast-web-utilities": "^5.1.0",
     "tslib": "^1.13.0"
   }
 }
