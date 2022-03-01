@@ -32,7 +32,7 @@ export type PopperRefHandle = {
    * Sets the target and updates positioning imperatively.
    * Useful for avoiding double renders with the target option.
    */
-  setTarget: (target: HTMLElement) => void;
+  setTarget: (target: HTMLElement | PopperVirtualElement) => void;
 };
 
 export type PopperVirtualElement = FloatingUI.VirtualElement;
