@@ -8,13 +8,13 @@ export const Labeled = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       <Label id={labelId} required>
-        Selected option
+        Option
       </Label>
       <RadioGroup aria-labelledby={labelId}>
-        <Radio value="A" label="Option A" />
-        <Radio value="B" label="Option B" />
-        <Radio value="C" label="Option C" />
-        <Radio value="D" label="Option D" />
+        <Radio value="A" label="A" />
+        <Radio value="B" label="B" />
+        <Radio value="C" label="C" />
+        <Radio value="D" label="D" />
       </RadioGroup>
     </div>
   );
