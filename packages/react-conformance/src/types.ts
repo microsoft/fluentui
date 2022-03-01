@@ -90,12 +90,12 @@ export interface IsConformantOptions<TProps = {}> {
   tsconfigDir?: string;
 }
 
-export type ConformanceTest<TProps = {}, TExtraOptions = {}> = (
+export type ConformanceTest<TProps = {}> = (
   componentInfo: ComponentDoc,
-  testInfo: IsConformantOptions<TProps> & TExtraOptions,
+  testInfo: IsConformantOptions<TProps>,
   tsProgram: ts.Program,
 ) => void;
 
-export interface TestObject<TProps = {}, TExtraOptions = {}> {
-  [key: string]: ConformanceTest<TProps, TExtraOptions>;
+export interface TestObject<TProps = {}> {
+  [key: string]: ConformanceTest<TProps>;
 }
