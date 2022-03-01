@@ -7,7 +7,6 @@ import * as React from 'react';
  * Useful for situations where a keydown needs to be transformed to a click event
  */
 export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React.KeyboardEvent) {
-  console.log(e.defaultPrevented);
   if (e.defaultPrevented) {
     return false;
   }
