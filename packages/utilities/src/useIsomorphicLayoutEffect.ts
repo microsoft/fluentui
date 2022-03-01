@@ -16,4 +16,4 @@ import { _isSSR } from './dom/setSSR';
  * https://github.com/reduxjs/react-redux/blob/master/src/utils/useIsomorphicLayoutEffect.js
  */
 // eslint-disable-next-line no-restricted-properties
-export const useIsomorphicLayoutEffect: typeof React.useEffect = _isSSR ? React.useLayoutEffect : React.useEffect;
+export const useIsomorphicLayoutEffect: typeof React.useEffect = _isSSR ? React.useEffect : React.useLayoutEffect;
