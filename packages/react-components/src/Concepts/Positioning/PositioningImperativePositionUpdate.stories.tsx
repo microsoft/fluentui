@@ -3,19 +3,19 @@ import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from '@fluentui
 import { Button } from '@fluentui/react-button';
 import { PopperRefHandle } from '@fluentui/react-positioning';
 
-export const PopperImperativeHandle = () => {
+export const ImperativePositionUpdate = () => {
   const [loading, setLoading] = React.useState(true);
   const popperRef = React.useRef<PopperRefHandle>(null);
   const timeoutRef = React.useRef(0);
 
-  const onOpenChange: PopoverProps['onOpenChange'] = (e, data) => {
+  const onOpenChange = React.useCallback<NonNullable<PopoverProps['onOpenChange']>>((e, data) => {
     if (!data.open) {
       setLoading(true);
     } else {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = window.setTimeout(() => setLoading(false), 1000);
     }
-  };
+  }, []);
 
   React.useEffect(() => {
     if (!loading) {
@@ -38,16 +38,15 @@ export const PopperImperativeHandle = () => {
   );
 };
 
-PopperImperativeHandle.parameters = {
+ImperativePositionUpdate.parameters = {
   layout: 'padded',
   docs: {
     description: {
       story: [
         'The `popperRef` positioning prop provides an [imperative handle](https://reactjs.org/docs/hooks-reference.html#useimperativehandle)',
-        'to reposition the positioned elemnet. This can be useful for scenarios where content is dynamically loaded.',
+        'to reposition the positioned element. This can be useful for scenarios where content is dynamically loaded.',
         '',
-        'In this example, you can scroll so that there is on enough space under the button to fit the popover',
-        'with loading text.',
+        'In this example, you can move your mouse in the red boundary and the tooltip will follow the mouse cursor',
       ].join('\n'),
     },
   },
