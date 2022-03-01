@@ -9,7 +9,7 @@ export { OffsetValue } from './PositioningOffsetValue.stories';
 export { OffsetFunction } from './PositioningOffsetFunction.stories';
 export { AnchorToTarget } from './PositioningAnchorToTarget.stories';
 export { ImperativeAnchorTarget } from './PositioningImperativeAnchorTarget.stories';
-export { ImperativePositionUpdate } from './PositioningImperativePositionUpdate';
+export { ImperativePositionUpdate } from './PositioningImperativePositionUpdate.stories';
 
 export default {
   title: 'Concepts/Developer/Positioning Components',
