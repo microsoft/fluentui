@@ -66,13 +66,23 @@ describe('Radio', () => {
 
   it('calls onChange with the correct value', () => {
     const onChange = jest.fn();
-    const { getByDisplayValue } = render(<Radio value="test-value" onChange={onChange} />);
+    const { getByDisplayValue } = render(
+      <>
+        <Radio name="test-name" value="test-value-1" onChange={onChange} />
+        <Radio name="test-name" value="test-value-2" onChange={onChange} />
+        <Radio name="test-name" value="test-value-3" onChange={onChange} />
+      </>,
+    );
 
     expect(onChange).toBeCalledTimes(0);
 
-    userEvent.click(getByDisplayValue('test-value'));
+    userEvent.click(getByDisplayValue('test-value-1'));
+    userEvent.click(getByDisplayValue('test-value-2'));
+    userEvent.click(getByDisplayValue('test-value-3'));
 
-    expect(onChange).toBeCalledTimes(1);
-    expect(onChange.mock.calls[0][1]).toEqual({ value: 'test-value' });
+    expect(onChange).toBeCalledTimes(3);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 'test-value-1' });
+    expect(onChange.mock.calls[1][1]).toEqual({ value: 'test-value-2' });
+    expect(onChange.mock.calls[2][1]).toEqual({ value: 'test-value-3' });
   });
 });
