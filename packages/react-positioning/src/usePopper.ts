@@ -21,6 +21,7 @@ import { useFirstMount } from '@fluentui/react-utilities';
 import { intersectionObserver } from './middleware/intersectionObserver';
 import { dataPopperEscaped, dataPopperIntersecting, dataPopperReferenceHidden } from './contants';
 import { addEventListenerOnScrollParent } from './utils/addEventListenerOnScrollParent';
+import { hasAutofocusFilter } from './utils/hasAutoFocusFilter';
 
 interface UsePopperOptions extends PositioningProps {
   /**
@@ -266,6 +267,48 @@ export function usePopper(
       window.removeEventListener('scroll', updatePosition);
     };
   }, [updatePosition, targetDocument]);
+
+  if (process.env.NODE_ENV !== 'production') {
+    // This checked should run only in development mode
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useEffect(() => {
+      if (containerRef.current) {
+        const contentNode = containerRef.current;
+        const treeWalker = contentNode.ownerDocument?.createTreeWalker(contentNode, NodeFilter.SHOW_ELEMENT, {
+          acceptNode: hasAutofocusFilter,
+        });
+
+        while (treeWalker.nextNode()) {
+          const node = treeWalker.currentNode;
+          // eslint-disable-next-line no-console
+          console.warn('<Popper>:', node);
+          // eslint-disable-next-line no-console
+          console.warn(
+            [
+              '<Popper>: ^ this node contains "autoFocus" prop on a React element. This can break the initial',
+              'positioning of an element and cause a window jump effect. This issue occurs because React polyfills',
+              '"autoFocus" behavior to solve inconsistencies between different browsers:',
+              'https://github.com/facebook/react/issues/11851#issuecomment-351787078',
+              '\n',
+              'However, ".focus()" in this case occurs before any other React effects will be executed',
+              '(React.useEffect(), componentDidMount(), etc.) and we can not prevent this behavior. If you really',
+              'want to use "autoFocus" please add "position: fixed" to styles of the element that is wrapped by',
+              '"Popper".',
+              `In general, it's not recommended to use "autoFocus" as it may break accessibility aspects:`,
+              'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-autofocus.md',
+              '\n',
+              'We suggest to use the "trapFocus" prop on Fluent components or a catch "ref" and then use',
+              '"ref.current.focus" in React.useEffect():',
+              'https://reactjs.org/docs/refs-and-the-dom.html#adding-a-ref-to-a-dom-element',
+            ].join(' '),
+          );
+        }
+      }
+      // We run this check once, no need to add deps here
+      // TODO: Should be rework to handle options.enabled and contentRef updates
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+  }
 
   return { targetRef, containerRef, arrowRef };
 }
