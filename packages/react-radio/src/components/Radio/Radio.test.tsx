@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../common/isConformant';
 import { Radio } from './Radio';
 
@@ -61,5 +62,17 @@ describe('Radio', () => {
     const { rerender, getByRole } = render(<Radio checked />);
     rerender(<Radio checked={false} />);
     expect((getByRole('radio') as HTMLInputElement).checked).toBe(false);
+  });
+
+  it('calls onChange with the correct value', () => {
+    const onChange = jest.fn();
+    const { getByDisplayValue } = render(<Radio value="test-value" onChange={onChange} />);
+
+    expect(onChange).toBeCalledTimes(0);
+
+    userEvent.click(getByDisplayValue('test-value'));
+
+    expect(onChange).toBeCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 'test-value' });
   });
 });
