@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add Radio and RadioGroup to react-components/unstable",
+  "packageName": "@fluentui/react-components",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
