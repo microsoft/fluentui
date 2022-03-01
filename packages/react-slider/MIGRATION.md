@@ -17,6 +17,7 @@ The Slider control is a thin wrapper around an `<input type="range"/>`. Addition
 - `buttonProps` => Slider props, other than className and id, are passed to `input` element
 - `ariaLabel` => use `aria-label` instead
 - `ariaValueText` => `getAriaValueText`
+- `vertical` => `orientation="vertical"`
 
 ## Migration from v0
 
@@ -26,3 +27,4 @@ The Slider control is a thin wrapper around an `<input type="range"/>`. Addition
 - `getA11yValueMessageOnChange` => `getAriaValueText`
 - `label` => use explicitly rendered value instead
 - `input` => Slider props, other than className and id, are passed to `input` element
+- `vertical` => `orientation="vertical"`

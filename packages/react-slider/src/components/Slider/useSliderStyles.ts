@@ -232,7 +232,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const railStyles = useRailStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
-  const isVertical = state.appearance === 'vertical';
+  const isVertical = state.orientation === 'vertical';
 
   state.root.className = mergeClasses(
     sliderClassName,

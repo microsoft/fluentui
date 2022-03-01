@@ -43,7 +43,7 @@ export const useSliderState_unstable = (state: SliderState) => {
   });
 
   const rootVariables = {
-    [railDirectionVar]: state.appearance === 'vertical' ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
+    [railDirectionVar]: state.orientation === 'vertical' ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
     [thumbPositionVar]: valuePercent + '%',
     [railStepsPercentVar]: state.step && state.step > 0 ? `${(step * 100) / (max - min)}%` : '',
     [railOffsetVar]: origin !== undefined ? `${Math.min(valuePercent, originPercent)}%` : '0%',

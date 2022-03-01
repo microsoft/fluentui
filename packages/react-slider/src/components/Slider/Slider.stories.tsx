@@ -8,7 +8,7 @@ export * from './stories/SliderSize.stories';
 export * from './stories/SliderControlled.stories';
 export * from './stories/SliderStep.stories';
 export * from './stories/SliderOrigin.stories';
-export * from './stories/SliderAppearance.stories';
+export * from './stories/SliderOrientation.stories';
 export * from './stories/SliderDisabled.stories';
 
 export default {

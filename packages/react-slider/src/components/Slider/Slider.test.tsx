@@ -23,7 +23,7 @@ describe('Slider', () => {
   });
 
   it('renders vertical Slider correctly', () => {
-    const { container } = render(<Slider defaultValue={5} vertical min={0} max={10} />);
+    const { container } = render(<Slider defaultValue={5} orientation="vertical" min={0} max={10} />);
     expect(container).toMatchSnapshot();
   });
 
@@ -38,7 +38,7 @@ describe('Slider', () => {
   });
 
   it('renders vertical origin Slider correctly', () => {
-    const { container } = render(<Slider defaultValue={5} origin={2} vertical min={0} max={10} />);
+    const { container } = render(<Slider defaultValue={5} origin={2} orientation="vertical" min={0} max={10} />);
     expect(container).toMatchSnapshot();
   });
 
