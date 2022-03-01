@@ -10,6 +10,7 @@ import type { IWarnControlledUsageParams } from '@fluentui/utilities/lib/warn';
 import type { Point } from '@fluentui/utilities';
 import * as React_2 from 'react';
 import { Rectangle } from '@fluentui/utilities';
+import { useIsomorphicLayoutEffect } from '@fluentui/utilities';
 
 // @public (undocumented)
 export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React_2.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
@@ -71,6 +72,8 @@ export function useForceUpdate(): () => void;
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;
+
+export { useIsomorphicLayoutEffect }
 
 // @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;

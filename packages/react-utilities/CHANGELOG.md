@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Fri, 18 Feb 2022 13:35:37 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Mar 2022 02:17:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.4)
+
+Tue, 01 Mar 2022 02:17:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-rc.3..@fluentui/react-utilities_v9.0.0-rc.4)
+
+### Changes
+
+- Ignore prefix in useId() when it is falsey. ([PR #21848](https://github.com/microsoft/fluentui/pull/21848) by seanmonahan@microsoft.com)
+- Add fieldset to getNativeElementProps ([PR #21835](https://github.com/microsoft/fluentui/pull/21835) by behowell@microsoft.com)
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.3)
 
