@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../common/isConformant';
 import { Radio } from '../../Radio';
 import { RadioGroup } from './RadioGroup';
@@ -188,9 +189,9 @@ describe('RadioGroup', () => {
 
     expect(onChange).toBeCalledTimes(0);
 
-    fireEvent.click(getByDisplayValue('b'));
-    fireEvent.click(getByDisplayValue('a'));
-    fireEvent.click(getByDisplayValue('c'));
+    userEvent.click(getByDisplayValue('b'));
+    userEvent.click(getByDisplayValue('a'));
+    userEvent.click(getByDisplayValue('c'));
 
     expect(onChange).toBeCalledTimes(3);
     expect(onChange.mock.calls[0][1]).toEqual({ value: 'b' });
@@ -208,7 +209,7 @@ describe('RadioGroup', () => {
       </RadioGroup>,
     );
 
-    fireEvent.click(getByDisplayValue('b'));
+    userEvent.click(getByDisplayValue('b'));
 
     expect(onChange.mock.calls[0][1]).toEqual({ value: 'b' });
   });
@@ -224,7 +225,7 @@ describe('RadioGroup', () => {
       </RadioGroup>,
     );
 
-    fireEvent.click(getByRole('checkbox'));
+    userEvent.click(getByRole('checkbox'));
 
     expect(onChange).not.toHaveBeenCalled();
   });
