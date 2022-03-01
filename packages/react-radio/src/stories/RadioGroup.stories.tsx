@@ -10,6 +10,7 @@ export { ControlledValue } from './RadioGroupControlledValue.stories';
 export { UncontrolledValue } from './RadioGroupUncontrolledValue.stories';
 export { Disabled } from './RadioGroupDisabled.stories';
 export { DisabledItem } from './RadioGroupDisabledItem.stories';
+export { LabelSubtext } from './RadioGroupLabelSubtext.stories';
 
 export default {
   title: 'Components/RadioGroup',
