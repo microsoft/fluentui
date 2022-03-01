@@ -14,7 +14,7 @@ import {
   flip as flipMiddleware,
   coverTarget as coverTargetMiddleware,
   maxSize as maxSizeMiddleware,
-} from './middleware';
+} from './middleware/index';
 import { getScrollParent } from './utils/getScrollParent';
 import debounce from './utils/debounce';
 import { useFirstMount } from '@fluentui/react-utilities';
