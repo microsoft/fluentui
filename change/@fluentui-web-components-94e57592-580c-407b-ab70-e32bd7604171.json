@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "update package dependencies in web-components",
-  "packageName": "@fluentui/web-components",
-  "email": "john.kreitlow@microsoft.com",
-  "dependentChangeType": "patch"
-}

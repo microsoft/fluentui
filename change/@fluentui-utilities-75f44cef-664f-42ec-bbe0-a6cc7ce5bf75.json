@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add useIsomorphicLayoutEffect",
-  "packageName": "@fluentui/utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

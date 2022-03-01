@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add color: inherit to year button so that it gets color from header container",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
