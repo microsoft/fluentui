@@ -23,7 +23,7 @@ storiesOf('Slider Converged', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Vertical', () => <Slider className="test-class" appearance="vertical" defaultValue={30} />, {
+  .addStory('Vertical', () => <Slider className="test-class" orientation="vertical" defaultValue={30} />, {
     includeRtl: true,
   })
   .addStory('Disabled', () => <Slider className="test-class" disabled defaultValue={30} />, {
@@ -31,15 +31,15 @@ storiesOf('Slider Converged', module)
     includeDarkMode: true,
   })
   .addStory('Disabled Vertical', () => (
-    <Slider className="test-class" disabled appearance="vertical" defaultValue={30} />
+    <Slider className="test-class" disabled orientation="vertical" defaultValue={30} />
   ))
   .addStory('Origin', () => <Slider className="test-class" origin={30} />, { includeRtl: true })
-  .addStory('Origin Vertical', () => <Slider className="test-class" appearance="vertical" origin={30} />, {
+  .addStory('Origin Vertical', () => <Slider className="test-class" orientation="vertical" origin={30} />, {
     includeRtl: true,
   })
   .addStory('Origin (min)', () => <Slider className="test-class" min={0} origin={0} />)
-  .addStory('Origin Vertical (min)', () => <Slider className="test-class" min={0} appearance="vertical" origin={0} />)
+  .addStory('Origin Vertical (min)', () => <Slider className="test-class" min={0} orientation="vertical" origin={0} />)
   .addStory('Origin (max)', () => <Slider className="test-class" max={10} origin={10} />)
   .addStory('Origin Vertical (max)', () => (
-    <Slider className="test-class" min={10} appearance="vertical" origin={10} />
+    <Slider className="test-class" min={10} orientation="vertical" origin={10} />
   ));
