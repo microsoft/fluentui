@@ -136,22 +136,19 @@ export function usePopper(
           position: strategy,
         });
 
+        containerRef.current.removeAttribute(dataPopperIntersecting);
         if (middlewareData.intersectionObserver.intersecting) {
           containerRef.current.setAttribute(dataPopperIntersecting, '');
-        } else {
-          containerRef.current.removeAttribute(dataPopperIntersecting);
         }
 
+        containerRef.current.removeAttribute(dataPopperEscaped);
         if (middlewareData.hide?.escaped) {
           containerRef.current.setAttribute(dataPopperEscaped, '');
-        } else {
-          containerRef.current.removeAttribute(dataPopperEscaped);
         }
 
+        containerRef.current.removeAttribute(dataPopperReferenceHidden);
         if (middlewareData.hide?.referenceHidden) {
           containerRef.current.setAttribute(dataPopperReferenceHidden, '');
-        } else {
-          containerRef.current.removeAttribute(dataPopperReferenceHidden);
         }
 
         if (middlewareData.arrow && arrowRef.current) {
