@@ -102,8 +102,10 @@ export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
+// Warning: (ae-forgotten-export) The symbol "UsePopperOptions" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export function usePopper(options: PositioningProps): {
+export function usePopper(options: UsePopperOptions): {
     targetRef: React_2.MutableRefObject<any>;
     containerRef: React_2.MutableRefObject<any>;
     arrowRef: React_2.MutableRefObject<any>;

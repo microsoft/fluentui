@@ -11,7 +11,6 @@ export interface FlipMiddlewareOptions {
 export function flip(options: FlipMiddlewareOptions) {
   const { hasScrollableElement, flipBoundary, container } = options;
 
-  const opts = { ...(flipBoundary && { boundary: getBoundary(container, flipBoundary) }) };
   return middleware({
     ...(hasScrollableElement && { boundary: 'clippingParents' }),
     ...(flipBoundary && { altBoundary: true, boundary: getBoundary(container, flipBoundary) }),
