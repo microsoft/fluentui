@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Thu, 24 Feb 2022 07:29:50 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Mar 2022 07:23:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.5.0)
+
+Tue, 01 Mar 2022 07:23:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.4.3..@fluentui/utilities_v8.5.0)
+
+### Minor changes
+
+- Add useIsomorphicLayoutEffect ([PR #21899](https://github.com/microsoft/fluentui/pull/21899) by elcraig@microsoft.com)
 
 ## [8.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.4.3)
 

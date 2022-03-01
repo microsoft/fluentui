@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useRadio_unstable } from './useRadio';
-import { renderRadio_unstable } from './renderRadio';
-import { useRadioStyles_unstable } from './useRadioStyles';
-import type { RadioProps } from './Radio.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { RadioProps } from './Radio.types';
+import { renderRadio_unstable } from './renderRadio';
+import { useRadio_unstable } from './useRadio';
+import { useRadioStyles_unstable } from './useRadioStyles';
 
 /**
  * Radio component is a wrapper for a radio button with a label.

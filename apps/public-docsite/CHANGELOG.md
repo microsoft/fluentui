@@ -1,8 +1,28 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Thu, 24 Feb 2022 07:29:50 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Mar 2022 07:23:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Tue, 01 Mar 2022 07:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Patches
+
+- Bump @fluentui/font-icons-mdl2 to v8.1.26 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/react to v8.56.2 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.102 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/react-experiments to v8.4.36 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/react-file-type-icons to v8.5.14 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/react-icons-mdl2 to v1.2.18 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/react-icons-mdl2-branded to v1.1.27 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/theme to v2.4.12 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/theme-samples to v8.2.83 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/utilities to v8.5.0 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/common-styles to v1.0.31 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.83 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
 
 ## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
 

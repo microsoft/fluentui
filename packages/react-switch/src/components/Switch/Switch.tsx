@@ -6,7 +6,7 @@ import type { SwitchProps } from './Switch.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * The Switch control enables users to trigger an option on or off through pressing on the component.
+ * Switches enable users to trigger an option on or off through pressing the component.
  */
 export const Switch: ForwardRefComponent<SwitchProps> = React.forwardRef((props, ref) => {
   const state = useSwitch_unstable(props, ref);

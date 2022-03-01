@@ -2,6 +2,51 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Tue, 01 Mar 2022 02:17:37 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "084d7408855f3e52b67cbca172da1acef9dcb98f",
+            "comment": "fix: Add react-theme as dependency"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Feb 2022 13:35:33 GMT",
       "tag": "@fluentui/react-popover_v9.0.0-rc.3",
       "version": "9.0.0-rc.3",
