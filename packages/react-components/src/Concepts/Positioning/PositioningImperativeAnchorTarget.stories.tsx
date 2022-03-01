@@ -69,7 +69,7 @@ ImperativeAnchorTarget.parameters = {
     description: {
       story: [
         'The `popperRef` positioning prop provides an [imperative handle](https://reactjs.org/docs/hooks-reference.html#useimperativehandle)',
-        'to manually position ane elemnent. The target can be a normal HTML element or a virtual element such a',
+        'to manually position an element. The target can be a normal HTML element or a virtual element such as a',
         'coordinate on the viewport',
         'This can be useful to reduce the number of renders required, for example when the positioned element',
         'follows the mouse cursor',
