@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Panel: Only mark siblings as aria-hidden when open",
+  "packageName": "@fluentui/react",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
