@@ -12,7 +12,7 @@ export const DisabledItem = () => (
 DisabledItem.parameters = {
   docs: {
     description: {
-      story: 'Radio items can be disabled.',
+      story: 'Radio items can be disabled individually.',
     },
   },
 };
