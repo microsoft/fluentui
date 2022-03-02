@@ -14,6 +14,9 @@ export interface TestOptions {
   'consistent-callback-args'?: {
     ignoreProps?: string[];
   };
+  'has-static-classnames'?: {
+    [key: string]: string;
+  };
 }
 
 export interface IsConformantOptions<TProps = {}> {
