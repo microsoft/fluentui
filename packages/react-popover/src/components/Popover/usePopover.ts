@@ -39,12 +39,12 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   if (process.env.NODE_ENV !== 'production') {
     if (children.length === 0) {
       // eslint-disable-next-line no-console
-      console.warn('Menu must contain at least one child');
+      console.warn('Popover must contain at least one child');
     }
 
     if (children.length > 2) {
       // eslint-disable-next-line no-console
-      console.warn('Menu must contain at most two children');
+      console.warn('Popover must contain at most two children');
     }
   }
 
