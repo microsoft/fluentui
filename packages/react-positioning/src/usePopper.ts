@@ -64,7 +64,8 @@ function usePopperOptions(options: PopperOptions) {
         ...[autoSize && maxSizeMiddleware(autoSize)],
         intersectionObserverMiddleware(),
         ...[arrow && arrowMiddleware({ element: arrow, padding: arrowPadding })],
-        hideMiddleware(),
+        hideMiddleware({ strategy: 'referenceHidden' }),
+        hideMiddleware({ strategy: 'escaped' }),
       ].filter(Boolean) as Middleware[];
 
       return {
