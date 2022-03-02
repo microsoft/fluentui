@@ -55,7 +55,7 @@ function usePopperOptions(options: PopperOptions) {
         ? scrollParentElement !== scrollParentElement.ownerDocument?.body
         : false;
 
-      const placement = getPlacement(align, position, isRtl);
+      const placement = getPlacement(align, position);
       const middleware = [
         ...[offset && offsetMiddleware(offset)],
         ...[coverTarget && coverTargetMiddleware()],
