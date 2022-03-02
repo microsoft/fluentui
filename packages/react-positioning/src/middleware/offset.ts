@@ -23,7 +23,10 @@ export function convertValueToCoords(placement: Placement, rects: ElementRects, 
 
 /**
  * Displaces the floating element from its reference element.
+ * Middleware copied because of differences in popper v2
+ * @see https://github.com/floating-ui/floating-ui/issues/1560
  * @see https://floating-ui.com/docs/offset
+ * @see https://github.com/floating-ui/floating-ui/blob/master/packages/core/src/middleware/offset.ts#L37-L40
  */
 export const offset = (value: Offset = 0): Middleware => ({
   name: 'offset',
