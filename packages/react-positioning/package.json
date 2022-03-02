@@ -32,8 +32,8 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@floating-ui/core": "^0.4.0",
-    "@floating-ui/dom": "^0.2.0",
+    "@floating-ui/core": "^0.5.1",
+    "@floating-ui/dom": "^0.3.1",
     "@floating-ui/react-dom": "^0.4.3",
     "@fluentui/react-shared-contexts": "9.0.0-rc.3",
     "@fluentui/react-theme": "9.0.0-rc.3",

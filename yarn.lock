@@ -1660,10 +1660,10 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-0.3.1.tgz#3dde0ad0724d4b730567c92f49f0950910e18871"
   integrity sha512-ensKY7Ub59u16qsVIFEo2hwTCqZ/r9oZZFh51ivcLGHfUwTn8l1Xzng8RJUe91H/UP8PeqeBronAGx0qmzwk2g==
 
-"@floating-ui/core@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-0.4.0.tgz#cf101522ba8087a905e5e8b99c99c5b8520f7656"
-  integrity sha512-99Pnb5T2S7PSE8rKHD5fZWWnXE3a2xG9E8eQm8SIMYWJyJoHDJIt0b9SK3UjetWFcepxVG+ZMDxcfbamyx+HSg==
+"@floating-ui/core@^0.5.0", "@floating-ui/core@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-0.5.1.tgz#d85d18938c4080f28dae338f5499d372ff93a7ff"
+  integrity sha512-LOFg65vdU4o4eZjVKNhu7VXbjdnY0amMw9sydLtKZiCNwj0eMD06rmktbWp9L/f6w6s9Qqe22lkks8PbwYwy4Q==
 
 "@floating-ui/dom@^0.1.10":
   version "0.1.10"
@@ -1672,12 +1672,12 @@
   dependencies:
     "@floating-ui/core" "^0.3.0"
 
-"@floating-ui/dom@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-0.2.0.tgz#019fe0774bd4a039a988cba086960135bbb321f3"
-  integrity sha512-hNhTbImiJ8SH9rHsP0qcE9IVxn/maMhwWA5d17p7EkEzVdciayB664Qy2Vxa8RxY/8avE8iVKkfE8sIeg34J0g==
+"@floating-ui/dom@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-0.3.1.tgz#d5608b9f16a17054c66f9e7b7e6bc289d65b64ec"
+  integrity sha512-HJX/2xgGPt01YHQNAya2taqg5HDnY6ipF0B0Bk/Th2s4FD9R89Ecw3TEegLLO+VrQnPEGbuHOGJ6Fr3BPM0DYg==
   dependencies:
-    "@floating-ui/core" "^0.4.0"
+    "@floating-ui/core" "^0.5.0"
 
 "@floating-ui/react-dom@^0.4.3":
   version "0.4.3"

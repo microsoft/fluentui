@@ -6,6 +6,6 @@ import * as FloatingUI from '@floating-ui/core';
  *
  * @returns bottom-start -> bottom
  */
-export function getBasePlacement(placement: FloatingUI.Placement): FloatingUI.BasePlacement {
-  return placement.split('-')[0] as FloatingUI.BasePlacement;
+export function getBasePlacement(placement: FloatingUI.Placement): FloatingUI.Side {
+  return placement.split('-')[0] as FloatingUI.Side;
 }

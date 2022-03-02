@@ -10,7 +10,7 @@ export type OffsetFunctionParam = {
 
 export type OffsetObject = { mainAxis?: number; crossAxis?: number };
 
-export type OffsetFunction = (param: OffsetFunctionParam) => OffsetObject | number;
+export type OffsetFunction = (param: OffsetFunctionParam) => OffsetObject;
 
 export type Offset = OffsetFunction | OffsetObject | number;
 

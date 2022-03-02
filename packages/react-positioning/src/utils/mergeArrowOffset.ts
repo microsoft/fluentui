@@ -14,6 +14,10 @@ export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHei
     return { crossAxis: 0, mainAxis: arrowHeight };
   }
 
+  if (typeof offsetWithArrow === 'number') {
+    return mergeArrowOffset(offsetWithArrow, arrowHeight);
+  }
+
   if (typeof offsetWithArrow === 'object') {
     return addArrowOffset(offsetWithArrow, arrowHeight);
   }
@@ -30,9 +34,9 @@ export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHei
   return -1 as never;
 }
 
-const addArrowOffset = (offset: OffsetObject | number, arrowHeight: number): OffsetObject | number => {
+const addArrowOffset = (offset: OffsetObject | number, arrowHeight: number): OffsetObject => {
   if (typeof offset === 'number') {
-    return offset + arrowHeight;
+    return { mainAxis: offset + arrowHeight };
   }
 
   let mainAxis = offset.mainAxis;

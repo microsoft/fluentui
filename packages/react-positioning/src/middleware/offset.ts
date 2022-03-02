@@ -1,18 +1,42 @@
-import { offset as middleware } from '@floating-ui/dom';
+import { Middleware, offset as _offset } from '@floating-ui/dom';
 import { Offset } from '../types';
-import { applyRtlToOffset } from '../utils/positioningHelper';
 
 interface OffsetMiddewareOptions {
   value: Offset;
-  isRtl?: boolean;
 }
 
-export function offset(options: OffsetMiddewareOptions) {
-  const { value, isRtl } = options;
+export function offset(options: OffsetMiddewareOptions): Middleware {
+  const { value } = options;
 
-  if (isRtl) {
-    return middleware(applyRtlToOffset(value));
-  }
+  return {
+    name: 'offset',
+    options: value,
+    fn(args) {
+      const {
+        rects: { floating, reference },
+        placement,
+      } = args;
+      if (typeof value === 'number') {
+        return _offset(value).fn(args);
+      }
 
-  return middleware(value);
+      if (typeof value === 'object' && value.crossAxis) {
+        return _offset({
+          mainAxis: value.mainAxis,
+          crossAxis: placement.endsWith('end') ? value.crossAxis * -1 : value.crossAxis,
+        }).fn(args);
+      }
+
+      if (typeof value === 'function') {
+        const { mainAxis, crossAxis } = value({ floating, reference, placement });
+        return _offset({
+          mainAxis,
+          crossAxis: placement.endsWith('end') && crossAxis ? crossAxis * -1 : crossAxis,
+        }).fn(args);
+      }
+
+      // this should never happen
+      return {};
+    },
+  };
 }
