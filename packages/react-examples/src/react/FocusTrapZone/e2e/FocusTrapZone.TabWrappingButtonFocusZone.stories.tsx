@@ -5,29 +5,24 @@ import { rootClass } from './shared';
 /**
  * Tab and shift-tab wrap at extreme ends of the FTZ:
  *
- * can tab between multiple FocusZones with different button structures
+ * can tab between a button and a FocusZone
  */
-export const TabWrappingMultiFocusZone = () => {
+export const TabWrappingButtonFocusZone = () => {
   return (
     <div className={rootClass}>
       <FocusTrapZone forceFocusInsideTrap={false}>
+        <div>
+          <button>first</button>
+        </div>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
-            <button>fz1First</button>
+            <button>fzFirst</button>
           </div>
-          <div>
-            <button>fz1Mid</button>
-          </div>
-          <div>
-            <button>fz1Last</button>
-          </div>
-        </FocusZone>
-        <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
             <div>
-              <button>fz2First</button>
-              <button>fz2Mid</button>
-              <button>fz2Last</button>
+              <button>fzMid1</button>
+              <button>fzMid2</button>
+              <button>fzLast</button>
             </div>
           </div>
         </FocusZone>

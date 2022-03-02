@@ -5,33 +5,27 @@ import { rootClass } from './shared';
 /**
  * Tab and shift-tab wrap at extreme ends of the FTZ:
  *
- * can tab between multiple FocusZones with different button structures
+ * can trap focus when FTZ bookmark elements are FocusZones,
+ * and those elements have inner elements focused that are not the first inner element
  */
-export const TabWrappingMultiFocusZone = () => {
+export const TabWrappingFocusZoneBumpers = () => {
   return (
     <div className={rootClass}>
+      <button>before</button>
       <FocusTrapZone forceFocusInsideTrap={false}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
-          <div>
-            <button>fz1First</button>
-          </div>
-          <div>
-            <button>fz1Mid</button>
-          </div>
-          <div>
-            <button>fz1Last</button>
-          </div>
+          <button>fz1First</button>
+          <button>fz1Mid</button>
+          <button>fz1Last</button>
         </FocusZone>
+        <button>mid</button>
         <FocusZone direction={FocusZoneDirection.horizontal}>
-          <div>
-            <div>
-              <button>fz2First</button>
-              <button>fz2Mid</button>
-              <button>fz2Last</button>
-            </div>
-          </div>
+          <button>fz2First</button>
+          <button>fz2Mid</button>
+          <button>fz2Last</button>
         </FocusZone>
       </FocusTrapZone>
+      <button>after</button>
     </div>
   );
 };
