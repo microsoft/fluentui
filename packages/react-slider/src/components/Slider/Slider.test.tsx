@@ -9,7 +9,7 @@ describe('Slider', () => {
     Component: Slider,
     displayName: 'Slider',
     primarySlot: 'input',
-    disabledTests: ['kebab-aria-attributes'],
+    disabledTests: ['kebab-aria-attributes', 'component-has-static-classname'],
   });
 
   afterEach(() => {
@@ -23,7 +23,7 @@ describe('Slider', () => {
   });
 
   it('renders vertical Slider correctly', () => {
-    const { container } = render(<Slider defaultValue={5} orientation="vertical" min={0} max={10} />);
+    const { container } = render(<Slider defaultValue={5} vertical min={0} max={10} />);
     expect(container).toMatchSnapshot();
   });
 
@@ -38,7 +38,7 @@ describe('Slider', () => {
   });
 
   it('renders vertical origin Slider correctly', () => {
-    const { container } = render(<Slider defaultValue={5} origin={2} orientation="vertical" min={0} max={10} />);
+    const { container } = render(<Slider defaultValue={5} origin={2} vertical min={0} max={10} />);
     expect(container).toMatchSnapshot();
   });
 
@@ -122,11 +122,10 @@ describe('Slider', () => {
     expect(screen.getByRole('slider').getAttribute('type')).toEqual('range');
   });
 
-  it('applies ariaValueText', () => {
+  it('applies aria-valuetext', () => {
     const testValue = 'test-value';
-    const getTextValue = () => testValue;
 
-    render(<Slider getAriaValueText={getTextValue} />);
+    render(<Slider aria-valuetext={testValue} />);
 
     expect(screen.getByRole('slider').getAttribute('aria-valuetext')).toEqual(testValue);
   });

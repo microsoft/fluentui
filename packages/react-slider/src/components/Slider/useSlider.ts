@@ -21,8 +21,7 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
     max = 100,
     step,
     disabled,
-    getAriaValueText,
-    orientation,
+    vertical,
     size = 'medium',
     origin,
     onChange,
@@ -34,7 +33,6 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
   } = props;
 
   const state: SliderState = {
-    getAriaValueText,
     defaultValue,
     disabled,
     max,
@@ -42,7 +40,7 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
     origin,
     size,
     step,
-    orientation,
+    vertical,
     value,
     onChange,
     components: {
@@ -64,7 +62,7 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
         ref,
         ...nativeProps.primary,
         type: 'range',
-        orient: orientation === 'vertical' ? 'vertical' : undefined,
+        orient: vertical ? 'vertical' : undefined,
       },
     }),
     rail: resolveShorthand(rail, { required: true }),

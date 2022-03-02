@@ -17,7 +17,12 @@ export const renderSlider_unstable: (state: SliderState) => JSX.Element;
 export const Slider: ForwardRefComponent<SliderProps>;
 
 // @public (undocumented)
-export const sliderClassName = "fui-Slider";
+export const sliderClassNames: {
+    root: string;
+    rail: string;
+    thumb: string;
+    input: string;
+};
 
 // @public (undocumented)
 export type SliderOnChangeData = {

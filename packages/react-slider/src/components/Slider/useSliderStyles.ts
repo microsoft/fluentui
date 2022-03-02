@@ -3,19 +3,29 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { SliderState } from './Slider.types';
 
-export const sliderClassName = 'fui-Slider';
+export const sliderClassNames = {
+  root: 'fui-Slider',
+  rail: 'fui-Slider__rail',
+  thumb: 'fui-Slider__thumb',
+  input: 'fui-Slider__input',
+};
 
+// Internal CSS variables. Private until we want to commit to them
 const thumbSizeVar = `--fui-slider-thumb-size`;
 const railSizeVar = `--fui-slider-rail-size`;
 const railColorVar = `--fui-slider-rail-color`;
 const progressColorVar = `--fui-slider-progress-color`;
 const thumbColorVar = `--fui-slider-thumb-color`;
 
-export const railDirectionVar = `--fui-slider-rail-direction`;
-export const railOffsetVar = `--fui-slider-rail-offset`;
-export const railProgressVar = `--fui-slider-rail-progress`;
-export const railStepsPercentVar = `--fui-slider-rail-steps-percent`;
-export const thumbPositionVar = `--fui-slider-thumb-position`;
+export const sliderStyleVars = {
+  railDirectionVar: `--fui-slider-rail-direction`,
+  railOffsetVar: `--fui-slider-rail-offset`,
+  railProgressVar: `--fui-slider-rail-progress`,
+  railStepsPercentVar: `--fui-slider-rail-steps-percent`,
+  thumbPositionVar: `--fui-slider-thumb-position`,
+};
+
+const { railDirectionVar, railOffsetVar, railStepsPercentVar, railProgressVar, thumbPositionVar } = sliderStyleVars;
 
 /**
  * Styles for the root slot
@@ -232,10 +242,10 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const railStyles = useRailStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
-  const isVertical = state.orientation === 'vertical';
+  const isVertical = state.vertical;
 
   state.root.className = mergeClasses(
-    sliderClassName,
+    sliderClassNames.root,
     rootStyles.root,
     isVertical ? rootStyles.focusIndicatorVertical : rootStyles.focusIndicatorHorizontal,
     rootStyles[state.size!],
@@ -245,12 +255,14 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   );
 
   state.rail.className = mergeClasses(
+    sliderClassNames.rail,
     railStyles.rail,
     isVertical ? railStyles.vertical : railStyles.horizontal,
     state.rail.className,
   );
 
   state.thumb.className = mergeClasses(
+    sliderClassNames.thumb,
     thumbStyles.thumb,
     isVertical ? thumbStyles.vertical : thumbStyles.horizontal,
     state.disabled && thumbStyles.disabled,
@@ -258,6 +270,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   );
 
   state.input.className = mergeClasses(
+    sliderClassNames.input,
     inputStyles.input,
     isVertical ? inputStyles.vertical : inputStyles.horizontal,
     state.input.className,
