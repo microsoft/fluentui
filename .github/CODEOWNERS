@@ -54,13 +54,13 @@ perf-test/ @microsoft/fluentui-react-build
 # todo-app/
 
 #### Packages
-packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
+packages/azure-themes/ @hyoshis @Jacqueline-ms
 packages/charting/ @Raghurk
-packages/date-time @lorejoh12 @evlevy
-packages/date-time-utilities @lorejoh12 @evlevy
+packages/date-time @ermercer @evlevy
+packages/date-time-utilities @ermercer @evlevy
 packages/eslint-plugin/ @microsoft/fluentui-react-build
 packages/example-app-base/ @ecraig12345
-packages/file-type-icons/ @KatherineThayerMicrosoft @jahnp @bigbadcapers
+packages/file-type-icons/ @jahnp @bigbadcapers
 packages/foundation/ @microsoft/cxe-red @khmakoto
 # packages/icons/
 # packages/jest-serializer-merge-styles/
@@ -90,7 +90,7 @@ packages/office-ui-fabric-react/src/components/ActivityItem/ @microsoft/cxe-red 
 packages/office-ui-fabric-react/src/components/Announced/ @microsoft/cxe-red @khmakoto
 packages/office-ui-fabric-react/src/components/Breadcrumb/ @microsoft/cxe-red @khmakoto
 packages/office-ui-fabric-react/src/components/Button/ @microsoft/cxe-red @khmakoto
-packages/office-ui-fabric-react/src/components/Calendar/ @lorejoh12 @pompomon
+packages/office-ui-fabric-react/src/components/Calendar/ @ermercer @evlevy
 packages/office-ui-fabric-react/src/components/Callout/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/Check/ @microsoft/cxe-red @ThomasMichon @khmakoto
 packages/office-ui-fabric-react/src/components/Checkbox/ @microsoft/cxe-red @khmakoto
@@ -100,7 +100,7 @@ packages/office-ui-fabric-react/src/components/ColorPicker/ @microsoft/cxe-red @
 packages/office-ui-fabric-react/src/components/ComboBox/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/CommandBar/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/ContextualMenu/ @microsoft/cxe-red
-packages/office-ui-fabric-react/src/components/DatePicker/ @lorejoh12 @pompomon
+packages/office-ui-fabric-react/src/components/DatePicker/ @ermercer @evlevy
 packages/office-ui-fabric-react/src/components/DetailsList/ @microsoft/cxe-red @ThomasMichon
 packages/office-ui-fabric-react/src/components/Dialog/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/DocumentCard/ @yiminwu
@@ -152,7 +152,6 @@ packages/office-ui-fabric-react/src/components/Tooltip/ @microsoft/cxe-red @beho
 packages/office-ui-fabric-react/src/components/Theme/ @dzearing
 
 ## Experiments
-packages/office-ui-fabric-react/src/components/Pagination/ @caradong
 packages/office-ui-fabric-react/src/components/Signals/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/Tile/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/TileList/ @ThomasMichon
