@@ -122,10 +122,10 @@ const CarouselExample = () => (
     }}
   >
     <Carousel
-      animationEnterFromRight="enterFromRight"
-      animationEnterFromLeft="enterFromLeft"
-      animationExitToLeft="exitToLeft"
-      animationExitToRight="exitToRight"
+      animationEnterFromNext="enterFromRight"
+      animationEnterFromPrev="enterFromLeft"
+      animationExitToPrev="exitToLeft"
+      animationExitToNext="exitToRight"
       aria-roledescription="carousel"
       aria-label="Portrait collection"
       navigation={{
