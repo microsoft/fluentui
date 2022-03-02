@@ -16,15 +16,13 @@ The Slider control is a thin wrapper around an `<input type="range"/>`. Addition
 - `originFromZero` => `origin`
 - `buttonProps` => Slider props, other than className and id, are passed to `input` element
 - `ariaLabel` => use `aria-label` instead
-- `ariaValueText` => `getAriaValueText`
-- `vertical` => `orientation="vertical"`
+- `ariaValueText` => explicitely set `aria-value-text`
 
 ## Migration from v0
 
 - `accessibility` => use `aria-*` properties directly on `Slider`
 - `fluid` => use css, or wrap in flex parent
 - `inputRef` => `ref`
-- `getA11yValueMessageOnChange` => `getAriaValueText`
+- `getA11yValueMessageOnChange` => explicitely set `aria-value-text`
 - `label` => use explicitly rendered value instead
 - `input` => Slider props, other than className and id, are passed to `input` element
-- `vertical` => `orientation="vertical"`
