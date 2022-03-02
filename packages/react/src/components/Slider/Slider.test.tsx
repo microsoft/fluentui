@@ -36,7 +36,6 @@ describe('Slider', () => {
 
   it('can set aria-labelledby attribute', () => {
     render(<Slider aria-labelledby="custom-label" />);
-    // expect(sliderSlideBox.getDOMNode().getAttribute('aria-labelledby')).toEqual('custom-label');
     expect(screen.getByRole('slider').getAttribute('aria-labelledby')).toBe('custom-label');
   });
 
