@@ -25,9 +25,11 @@ describe('getPlacement', () => {
     (align, position, expectedPlacement, expectedRtlPlacement) => {
       // Act
       const placement = getPlacement(align as Alignment, position as Position);
+      const rtlPlacement = getPlacement(align as Alignment, position as Position, true);
 
       // Assert
       expect(placement).toEqual(expectedPlacement);
+      expect(rtlPlacement).toEqual(expectedRtlPlacement);
     },
   );
 });

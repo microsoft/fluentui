@@ -4,16 +4,16 @@ import type { Alignment, Position } from '../types';
 type PlacementPosition = 'top' | 'bottom' | 'left' | 'right';
 type PlacementAlign = 'start' | 'end' | ''; // '' represents center
 
-const getPositionMap = (): Record<Position, PlacementPosition> => ({
+const getPositionMap = (rtl?: boolean): Record<Position, PlacementPosition> => ({
   above: 'top',
   below: 'bottom',
-  before: 'left',
-  after: 'right',
+  before: rtl ? 'right' : 'left',
+  after: rtl ? 'left' : 'right',
 });
 
-const getAlignmentMap = (): Record<Alignment, PlacementAlign> => ({
-  start: 'start',
-  end: 'end',
+const getAlignmentMap = (rtl?: boolean): Record<Alignment, PlacementAlign> => ({
+  start: rtl ? 'end' : 'start',
+  end: rtl ? 'start' : 'end',
   top: 'start',
   bottom: 'end',
   center: '',
@@ -29,11 +29,15 @@ const shouldAlignToCenter = (p?: Position, a?: Alignment): boolean => {
 /**
  * @see positioninHelper.test.ts for expected placement values
  */
-export const getPlacement = (align?: Alignment, position?: Position): FloatingUI.Placement | undefined => {
+export const getPlacement = (
+  align?: Alignment,
+  position?: Position,
+  rtl?: boolean,
+): FloatingUI.Placement | undefined => {
   const alignment = shouldAlignToCenter(position, align) ? 'center' : align;
 
-  const computedPosition = position && getPositionMap()[position];
-  const computedAlignmnent = alignment && getAlignmentMap()[alignment];
+  const computedPosition = position && getPositionMap(rtl)[position];
+  const computedAlignmnent = alignment && getAlignmentMap(rtl)[alignment];
 
   if (computedPosition && computedAlignmnent) {
     return `${computedPosition}-${computedAlignmnent}` as FloatingUI.Placement;

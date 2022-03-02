@@ -44,6 +44,8 @@ function usePopperOptions(options: PopperOptions) {
     positionFixed,
   } = options;
 
+  const { dir } = useFluent();
+  const isRtl = dir === 'rtl';
   const strategy: Strategy = positionFixed ? 'fixed' : 'absolute';
 
   return React.useCallback(
@@ -53,7 +55,7 @@ function usePopperOptions(options: PopperOptions) {
         ? scrollParentElement !== scrollParentElement.ownerDocument?.body
         : false;
 
-      const placement = getPlacement(align, position);
+      const placement = getPlacement(align, position, isRtl);
       const middleware = [
         ...[offset && offsetMiddleware(offset)],
         ...[coverTarget && coverTargetMiddleware()],
@@ -73,15 +75,16 @@ function usePopperOptions(options: PopperOptions) {
     },
     [
       align,
-      position,
-      disableTether,
-      pinned,
       arrowPadding,
-      overflowBoundary,
-      flipBoundary,
-      offset,
-      coverTarget,
       autoSize,
+      coverTarget,
+      disableTether,
+      flipBoundary,
+      isRtl,
+      offset,
+      overflowBoundary,
+      pinned,
+      position,
       strategy,
     ],
   );
