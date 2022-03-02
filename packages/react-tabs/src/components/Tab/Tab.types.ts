@@ -9,7 +9,7 @@ export type TabSlots = {
   /**
    * Root of the component.
    */
-  root?: Slot<'div'>;
+  root: Slot<'div'>;
 
   /**
    * Icon that renders before the content.
@@ -20,7 +20,7 @@ export type TabSlots = {
    * Component children are placed in this slot
    * Avoid using the `children` property in this slot in favour of Component children whenever possible.
    */
-  content?: Slot<'span'>;
+  content: Slot<'span'>;
 };
 
 type TabCommons = {
@@ -33,7 +33,7 @@ type TabCommons = {
 /**
  * Tab Props
  */
-export type TabProps = ComponentProps<TabSlots> & TabCommons;
+export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
 
 /**
  * State used in rendering Tab

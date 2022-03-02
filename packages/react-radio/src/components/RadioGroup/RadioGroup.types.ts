@@ -9,7 +9,7 @@ export type RadioGroupSlots = {
   root: Slot<'div'>;
 };
 
-export type RadioGroupProps = Omit<ComponentProps<RadioGroupSlots>, 'onChange'> & {
+export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'onChange'> & {
   /**
    * The name of this radio group. This name is applied to all Radio items inside this group.
    *

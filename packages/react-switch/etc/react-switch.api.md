@@ -33,16 +33,16 @@ export type SwitchOnChangeData = {
 // Warning: (ae-forgotten-export) The symbol "SwitchCommons" needs to be exported by the entry point index.d.ts
 //
 // @public
-export type SwitchProps = Omit<ComponentProps<SwitchSlots, 'input'>, 'onChange'> & Partial<SwitchCommons> & {
+export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'onChange'> & Partial<SwitchCommons> & {
     defaultChecked?: boolean;
     onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => void;
 };
 
 // @public (undocumented)
 export type SwitchSlots = {
-    root?: Slot<'div'>;
-    indicator?: Slot<'div'>;
-    input?: Slot<'input'>;
+    root: Slot<'div'>;
+    indicator: Slot<'div'>;
+    input: Slot<'input'>;
     label?: Slot<typeof Label> | null;
 };
 

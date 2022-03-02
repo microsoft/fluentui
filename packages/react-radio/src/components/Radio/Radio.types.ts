@@ -8,7 +8,7 @@ export type RadioSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Radio>`.
    * All other native props will be applied to the primary slot: `input`
    */
-  root?: Slot<'span'>;
+  root: Slot<'span'>;
 
   /**
    * The Radio's label.
@@ -21,18 +21,18 @@ export type RadioSlots = {
    * This is the PRIMARY slot: all native properties specified directly on `<Radio>` will be applied to this slot,
    * except `className` and `style`, which remain on the root slot.
    */
-  input?: Slot<'input'>;
+  input: Slot<'input'>;
 
   /**
    * A circle outline, with a filled circle icon inside when the Radio is checked.
    */
-  indicator?: Slot<'div'>;
+  indicator: Slot<'div'>;
 };
 
 /**
  * Radio Props
  */
-export type RadioProps = Omit<ComponentProps<RadioSlots, 'input'>, 'size'> & {
+export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'size'> & {
   /**
    * The value of the RadioGroup when this Radio item is selected.
    */

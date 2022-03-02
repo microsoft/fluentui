@@ -10,10 +10,10 @@ export type CompoundButtonSlots = ButtonSlots & {
   /**
    * Container that wraps the children and the secondaryContent slot.
    */
-  contentContainer?: Slot<'span'>;
+  contentContainer: Slot<'span'>;
 };
 
-export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommons>;
+export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Partial<ButtonCommons>;
 
 export type CompoundButtonState = ComponentState<CompoundButtonSlots> &
   Omit<ButtonState, keyof ButtonSlots | 'components'>;

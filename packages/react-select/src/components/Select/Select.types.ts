@@ -6,10 +6,10 @@ export type SelectSlots = {
    * The `className` and `style` props on `<Select>` are applied to this slot;
    * All other top-level props are applied to the primary slot, `select`.
    */
-  root?: Slot<'span'>;
+  root: Slot<'span'>;
 
   /** Primary slot: the actual `<select>` element */
-  select?: Slot<'select'>;
+  select: Slot<'select'>;
 
   /** the icon, typically a down arrow */
   icon?: Slot<'span'> | null;
@@ -36,6 +36,6 @@ export interface SelectCommons {
   appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
 }
 
-export type SelectProps = Omit<ComponentProps<SelectSlots, 'select'>, 'size'> & SelectCommons;
+export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size'> & SelectCommons;
 
 export type SelectState = ComponentState<SelectSlots> & Required<SelectCommons>;

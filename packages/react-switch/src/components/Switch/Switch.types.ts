@@ -9,12 +9,12 @@ export type SwitchSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Switch>` tag.
    * All other native props will be applied to the primary slot: `input`.
    */
-  root?: Slot<'div'>;
+  root: Slot<'div'>;
 
   /**
    * The track and the thumb sliding over it indicating the on and off status of the Switch.
    */
-  indicator?: Slot<'div'>;
+  indicator: Slot<'div'>;
 
   /**
    * Hidden input that handles the Switch's functionality.
@@ -22,7 +22,7 @@ export type SwitchSlots = {
    * This is the PRIMARY slot: all native properties specified directly on the `<Switch>` tag will be applied to this
    * slot, except `className` and `style`, which remain on the root slot.
    */
-  input?: Slot<'input'>;
+  input: Slot<'input'>;
 
   /**
    * The Switch's label.
@@ -55,7 +55,7 @@ export type SwitchOnChangeData = {
 /**
  * Switch Props
  */
-export type SwitchProps = Omit<ComponentProps<SwitchSlots, 'input'>, 'onChange'> &
+export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'onChange'> &
   Partial<SwitchCommons> & {
     /**
      * Defines whether the Switch is initially in a checked state or not when rendered.

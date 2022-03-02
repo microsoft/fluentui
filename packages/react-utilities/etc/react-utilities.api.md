@@ -51,7 +51,7 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
         [Key in keyof Slots]-?: React_2.ComponentType<ExtractSlotProps<Slots[Key]>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     };
 } & {
-    [Key in keyof Required<Slots>]: ExtractSlotProps<Slots[Key]> | (null extends Slots[Key] ? undefined : never);
+    [Key in keyof Required<Slots>]: ReplaceNullWithUndefined<Exclude<Slots[Key], SlotShorthandValue>>;
 };
 
 // Warning: (ae-internal-missing-underscore) The name "defaultSSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
@@ -159,6 +159,9 @@ export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Om
 export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
 
 // @public
+export type ReplaceNullWithUndefined<T> = T extends null ? undefined : T;
+
+// @public
 export function resetIdsForTests(): void;
 
 // @public
@@ -166,8 +169,8 @@ export const resolveShorthand: ResolveShorthandFunction;
 
 // @public (undocumented)
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-    <P extends Slot<Props> | null | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>): ExtractSlotProps<P> | (null extends P ? undefined : never);
-    <P extends Slot<Props> | null | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, boolean>): ExtractSlotProps<P> | undefined;
+    <P extends Slot<Props> | null | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>): ReplaceNullWithUndefined<Exclude<P, SlotShorthandValue | undefined>>;
+    <P extends Slot<Props> | null | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, boolean>): ReplaceNullWithUndefined<Exclude<P, SlotShorthandValue>>;
 };
 
 // @public (undocumented)

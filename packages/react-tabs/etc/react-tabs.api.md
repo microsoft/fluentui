@@ -97,13 +97,13 @@ export type TabListState = ComponentState<Required<TabListSlots>> & TabListConte
 // Warning: (ae-forgotten-export) The symbol "TabCommons" needs to be exported by the entry point index.d.ts
 //
 // @public
-export type TabProps = ComponentProps<TabSlots> & TabCommons;
+export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
 
 // @public (undocumented)
 export type TabSlots = {
-    root?: Slot<'div'>;
+    root: Slot<'div'>;
     icon?: Slot<'span'> | null;
-    content?: Slot<'span'>;
+    content: Slot<'span'>;
 };
 
 // @public

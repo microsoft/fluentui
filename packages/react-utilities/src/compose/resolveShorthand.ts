@@ -1,5 +1,5 @@
 import { isValidElement } from 'react';
-import type { ExtractSlotProps, Slot, UnknownSlotProps } from './types';
+import type { ExtractSlotProps, ReplaceNullWithUndefined, Slot, SlotShorthandValue, UnknownSlotProps } from './types';
 
 export type ResolveShorthandOptions<Props, Required extends boolean = false> = (Required extends true
   ? { required: true }
@@ -10,16 +10,15 @@ export type ResolveShorthandOptions<Props, Required extends boolean = false> = (
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
   // These two overloads differ in their `required` param, and whether or not they return `undefined`:
   //  * If `required` is true, its return type includes `undefined` only if the slot is nullable
-  //  * Otherwise, its return type always includes `undefined`
+  //  * Otherwise, its return type includes `undefined` if the slot is optional (?:)
 
-  <P extends Slot<Props> | null | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>):
-    | ExtractSlotProps<P>
-    | (null extends P ? undefined : never);
+  <P extends Slot<Props> | null | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>): //
+  ReplaceNullWithUndefined<Exclude<P, SlotShorthandValue | undefined>>;
 
   <P extends Slot<Props> | null | undefined>(
     value: P,
     options?: ResolveShorthandOptions<ExtractSlotProps<P>, boolean>,
-  ): ExtractSlotProps<P> | undefined;
+  ): ReplaceNullWithUndefined<Exclude<P, SlotShorthandValue>>;
 };
 
 /**
@@ -28,7 +27,7 @@ export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlo
  * @param value - the base shorthand props
  * @param options - options to resolve shorthand props
  *
- * @returns The slot props object, which may be `undefined` unless the slot is `NonNullable` AND `required` is `true`.
+ * @returns The slot props object, which may be `undefined` unless required is true AND the slot is not nullable
  */
 export const resolveShorthand: ResolveShorthandFunction = (value, options) => {
   const { required = false, defaultProps } = options || {};

@@ -35,7 +35,7 @@ export type RadioGroupOnChangeData = {
 };
 
 // @public (undocumented)
-export type RadioGroupProps = Omit<ComponentProps<RadioGroupSlots>, 'onChange'> & {
+export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'onChange'> & {
     name?: string;
     value?: string;
     defaultValue?: string;
@@ -55,7 +55,7 @@ export type RadioGroupState = ComponentState<RadioGroupSlots> & Required<Pick<Ra
 };
 
 // @public
-export type RadioProps = Omit<ComponentProps<RadioSlots, 'input'>, 'size'> & {
+export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'size'> & {
     value?: string;
     labelPosition?: 'after' | 'below';
     disabled?: boolean;
@@ -63,10 +63,10 @@ export type RadioProps = Omit<ComponentProps<RadioSlots, 'input'>, 'size'> & {
 
 // @public (undocumented)
 export type RadioSlots = {
-    root?: Slot<'span'>;
+    root: Slot<'span'>;
     label?: Slot<typeof Label> | null;
-    input?: Slot<'input'>;
-    indicator?: Slot<'div'>;
+    input: Slot<'input'>;
+    indicator: Slot<'div'>;
 };
 
 // @public

@@ -16,10 +16,10 @@ export const renderAccordionHeader_unstable = (
     <AccordionHeaderContext.Provider value={contextValues.accordionHeader}>
       <slots.root {...slotProps.root}>
         <slots.button {...slotProps.button}>
-          {state.expandIconPosition === 'start' && slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
+          {state.expandIconPosition === 'start' && <slots.expandIcon {...slotProps.expandIcon} />}
           {slots.icon && <slots.icon {...slotProps.icon} />}
           {slotProps.root.children}
-          {state.expandIconPosition === 'end' && slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
+          {state.expandIconPosition === 'end' && <slots.expandIcon {...slotProps.expandIcon} />}
         </slots.button>
       </slots.root>
     </AccordionHeaderContext.Provider>

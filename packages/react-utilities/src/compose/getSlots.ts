@@ -5,25 +5,26 @@ import type {
   AsIntrinsicElement,
   ComponentState,
   ExtractSlotProps,
+  ReplaceNullWithUndefined,
   SlotPropsRecord,
   SlotRenderFunction,
   UnionToIntersection,
 } from './types';
 
 type Slots<S extends SlotPropsRecord> = {
-  [K in keyof Required<S>]:
+  [K in keyof S]:
     | React.ElementType<Omit<ExtractSlotProps<S[K]>, 'as'>>
-    | (null extends S[K] ? undefined : never);
+    | ReplaceNullWithUndefined<Extract<S[K], null | undefined>>;
 };
 
 type ObjectSlotProps<S extends SlotPropsRecord> = {
-  [K in keyof Required<S>]:
+  [K in keyof S]:
     | (ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
         ? // For intrinsic element types, return the intersection of all possible
           // element's props, to be compatible with the As type returned by Slots<>
           UnionToIntersection<Omit<ExtractSlotProps<S[K]>, 'as'>>
         : ExtractSlotProps<S[K]>)
-    | (null extends S[K] ? undefined : never);
+    | ReplaceNullWithUndefined<Extract<S[K], null | undefined>>;
 };
 
 /**
@@ -64,9 +65,9 @@ export function getSlots<R extends SlotPropsRecord>(
 function getSlot<R extends SlotPropsRecord, K extends keyof R>(
   state: ComponentState<R>,
   slotName: K,
-): readonly [React.ElementType<R[K]> | null, R[K]] {
+): readonly [React.ElementType<R[K]> | undefined, R[K]] {
   if (state[slotName] === undefined) {
-    return [null, undefined as R[K]];
+    return [undefined, undefined as R[K]];
   }
   const { children, as: asProp, ...rest } = state[slotName]!;
 

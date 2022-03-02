@@ -2,17 +2,17 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type CardHeaderSlots = {
   root: Slot<'div'>;
-  image?: Slot<'div'> | null;
+  image: Slot<'div'>;
   content?: Slot<'div'> | null;
-  header?: Slot<'span'> | null;
-  description?: Slot<'span'> | null;
+  header: Slot<'span'>;
+  description: Slot<'span'>;
   action?: Slot<'div'> | null;
 };
 
 /**
  * CardHeader props
  */
-export type CardHeaderProps = ComponentProps<CardHeaderSlots>;
+export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 
 /**
  * State used in rendering CardHeader

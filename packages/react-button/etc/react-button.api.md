@@ -40,12 +40,12 @@ export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 export const compoundButtonClassName = "fui-CompoundButton";
 
 // @public (undocumented)
-export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommons>;
+export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Partial<ButtonCommons>;
 
 // @public (undocumented)
 export type CompoundButtonSlots = ButtonSlots & {
     secondaryContent?: Slot<'span'> | null;
-    contentContainer?: Slot<'span'>;
+    contentContainer: Slot<'span'>;
 };
 
 // @public (undocumented)

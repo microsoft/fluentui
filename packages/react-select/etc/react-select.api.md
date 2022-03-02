@@ -27,12 +27,12 @@ export interface SelectCommons {
 }
 
 // @public (undocumented)
-export type SelectProps = Omit<ComponentProps<SelectSlots, 'select'>, 'size'> & SelectCommons;
+export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size'> & SelectCommons;
 
 // @public (undocumented)
 export type SelectSlots = {
-    root?: Slot<'span'>;
-    select?: Slot<'select'>;
+    root: Slot<'span'>;
+    select: Slot<'select'>;
     icon?: Slot<'span'> | null;
 };
 

@@ -9,7 +9,7 @@ export type DividerSlots = {
   /**
    * Accessibility wrapper for content when presented.
    */
-  wrapper?: Slot<'div'> | null;
+  wrapper: Slot<'div'>;
 };
 
 type DividerCommons = {
@@ -38,6 +38,6 @@ type DividerCommons = {
   vertical: boolean;
 };
 
-export type DividerProps = ComponentProps<DividerSlots> & Partial<DividerCommons>;
+export type DividerProps = ComponentProps<Partial<DividerSlots>> & Partial<DividerCommons>;
 
 export type DividerState = ComponentState<DividerSlots> & DividerCommons;
