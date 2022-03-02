@@ -37,7 +37,7 @@ jobs:
           AssetNumber: '$(Build.BuildId)'
           IsShipped: false
           DropsToRetain: 'CodeAnalysisLogs'
-        #condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+        condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
       - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@2
         displayName: '🧭 Guardian Break'
