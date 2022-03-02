@@ -14,7 +14,6 @@ variables:
   - name: tags
     value: production,externalfacing
 
-
 schedules:
   # Triggers the nightly release
   # minute 0, hour 4 in UTC (5am in UTC+1), any day of month, any month, days 1-5 of week (M-F)
