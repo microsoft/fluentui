@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "move from scrollWidth to bounding rect to support scaled content",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

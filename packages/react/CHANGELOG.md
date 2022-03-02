@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 01 Mar 2022 07:23:42 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Mar 2022 07:23:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.56.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.56.3)
+
+Wed, 02 Mar 2022 07:23:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.56.2..@fluentui/react_v8.56.3)
+
+### Patches
+
+- move from scrollWidth to bounding rect to support scaled content ([PR #21897](https://github.com/microsoft/fluentui/pull/21897) by mgodbolt@microsoft.com)
+- Panel: Only mark siblings as aria-hidden when open ([PR #21867](https://github.com/microsoft/fluentui/pull/21867) by ololubek@microsoft.com)
 
 ## [8.56.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.56.2)
 

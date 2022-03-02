@@ -19,8 +19,8 @@
   "dependencies": {
     "@fluentui/example-data": "^8.3.0",
     "@fluentui/font-icons-mdl2": "^8.1.26",
-    "@fluentui/react": "^8.56.2",
-    "@fluentui/react-experiments": "^8.4.36",
+    "@fluentui/react": "^8.56.3",
+    "@fluentui/react-experiments": "^8.4.37",
     "@fluentui/react-hooks": "^8.4.0",
     "@fluentui/react-icons-mdl2": "^1.2.18",
     "@fluentui/scripts": "^1.0.0",
