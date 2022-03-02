@@ -1,24 +1,24 @@
 // @ts-check
-const path = require('path');
 const configHelpers = require('../utils/configHelpers');
-
-const gitRoot = configHelpers.findGitRoot();
 
 /** @type {import("eslint").Linter.Config} */
 const config = {
+  root: true,
   extends: [
     // Provides both rules and some parser options and other settings
     'airbnb',
+    // add typescript support for import plugin - https://github.com/import-js/eslint-plugin-import/blob/main/config/typescript.js
+    'plugin:import/typescript',
     // Extended configs are applied in order, so these configs that turn other rules off should come last
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
   plugins: [
+    'import',
     '@fluentui',
     '@rnx-kit',
     '@typescript-eslint',
     'deprecation',
-    'import',
     'jest',
     'jsdoc',
     'jsx-a11y',
@@ -26,16 +26,11 @@ const config = {
     'react-hooks',
   ],
   settings: {
-    // Some config suggestions copied from https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx'],
-    },
     'import/resolver': {
+      // @see https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
       typescript: {
-        // always try to resolve types under `<root>@types` directory
         alwaysTryTypes: true,
-        // NOTE: For packages without a tsconfig.json, override with "project": "../../tsconfig.json"
-        project: ['./tsconfig.json', path.join(gitRoot, 'tsconfig.json')],
+        project: './tsconfig.json',
       },
     },
     jsdoc: {
@@ -102,7 +97,6 @@ const config = {
     'dot-notation': 'error',
     eqeqeq: ['error', 'always'],
     'guard-for-in': 'error',
-    'import/no-extraneous-dependencies': ['error', { devDependencies: false }],
     'jsx-a11y/tabindex-no-positive': 'error',
     'no-alert': 'error',
     'no-bitwise': 'error',
@@ -173,15 +167,7 @@ const config = {
     'default-case': 'off',
     'func-names': 'off',
     'global-require': 'off',
-    'import/extensions': 'off',
-    'import/first': 'off',
-    'import/newline-after-import': 'off',
-    'import/no-duplicates': 'off', // mostly redundant with no-duplicate-imports
-    'import/no-dynamic-require': 'off',
-    'import/no-mutable-exports': 'off',
-    'import/no-unresolved': 'off',
-    'import/no-useless-path-segments': 'off',
-    'import/order': 'off',
+
     'jsx-a11y/alt-text': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
     'jsx-a11y/aria-activedescendant-has-tabindex': 'off',
@@ -256,16 +242,12 @@ const config = {
     'no-restricted-syntax': 'off',
 
     // permanently disable because we disagree with these rules
-    'import/prefer-default-export': 'off',
     'no-await-in-loop': 'off', // contrary to rule docs, awaited things often are NOT parallelizable
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
 
     // permanently disable due to performance issues (using custom rule `@fluentui/max-len` instead)
     'max-len': 'off',
-
-    // permanently disable due to being unnecessary or having limited benefit for TS
-    'import/export': 'off',
 
     // permanently disable due to perf problems and limited benefit
     // see here for perf testing (note that you must run eslint directly)
@@ -277,17 +259,6 @@ const config = {
     'react/no-unused-prop-types': 'off',
     'react/prefer-es6-class': 'off',
 
-    // may cause perf problems per https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/FAQ.md#eslint-plugin-import
-    'import/no-cycle': 'off',
-    'import/no-deprecated': 'off',
-    'import/no-named-as-default': 'off',
-    'import/no-unused-modules': 'off',
-    // these ones aren't needed for TS and may cause perf problems
-    'import/default': 'off',
-    'import/named': 'off',
-    'import/namespace': 'off',
-    'import/no-named-as-default-member': 'off',
-
     'jsdoc/check-tag-names': [
       'error',
       {
@@ -295,6 +266,33 @@ const config = {
         definedTags: ['remarks', 'defaultValue'],
       },
     ],
+
+    /**
+     *
+     * import plugin rules
+     * @see https://github.com/import-js/eslint-plugin-import
+     */
+    'import/no-extraneous-dependencies': ['error', { devDependencies: false }],
+    'import/extensions': 'off',
+    'import/first': 'off',
+    'import/newline-after-import': 'off',
+    'import/no-duplicates': 'off', // mostly redundant with no-duplicate-imports
+    'import/no-dynamic-require': 'off',
+    'import/no-mutable-exports': 'off',
+    'import/no-unresolved': 'off',
+    'import/no-useless-path-segments': 'off',
+    'import/order': 'off',
+    'import/prefer-default-export': 'off',
+    // may cause perf problems per https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/FAQ.md#eslint-plugin-import
+    'import/no-cycle': 'off',
+    'import/no-deprecated': 'off',
+    'import/no-named-as-default': 'off',
+    'import/no-unused-modules': 'off',
+    // these ones aren't needed for TS and may cause perf problems
+    'import/default': 'off',
+    'import/namespace': 'off',
+    'import/no-named-as-default-member': 'off',
+    'import/export': 'off',
   },
 };
 
@@ -406,7 +404,13 @@ const getOverrides = () => [
   {
     files: [...configHelpers.devDependenciesFiles],
     rules: {
-      'import/no-extraneous-dependencies': ['error', { packageDir: ['.', gitRoot] }],
+      // - turning off this rule for non production code
+      // - it doesn't work for our use cases as it should
+      // - we don't wanna specify monorepo packages as devDependencies in package.json
+      // if they are used in non production code. This rule is unable to handle this scenario.
+      // TODO:
+      // As a follow up we will introduce `@nrwl/nx/enforce-module-boundaries` with {"banTransitiveDependencies": true}
+      'import/no-extraneous-dependencies': ['off'],
     },
   },
 ];
