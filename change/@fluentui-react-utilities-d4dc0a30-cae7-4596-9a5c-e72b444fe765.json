@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adding helper type to define slot class names.",
+  "packageName": "@fluentui/react-utilities",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
