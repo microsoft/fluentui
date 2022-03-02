@@ -13,11 +13,11 @@ import {
   flip as flipMiddleware,
   coverTarget as coverTargetMiddleware,
   maxSize as maxSizeMiddleware,
+  intersectionObserver as intersectionObserverMiddleware,
 } from './middleware/index';
 import { getScrollParent } from './utils/getScrollParent';
 import debounce from './utils/debounce';
 import { useFirstMount } from '@fluentui/react-utilities';
-import { intersectionObserver } from './middleware/intersectionObserver';
 import { dataPopperEscaped, dataPopperIntersecting, dataPopperReferenceHidden } from './contants';
 import { addEventListenerOnScrollParent } from './utils/addEventListenerOnScrollParent';
 import { hasAutofocusFilter } from './utils/hasAutoFocusFilter';
@@ -60,7 +60,7 @@ function usePopperOptions(options: PopperOptions) {
         ...[!pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement })],
         shiftMiddleware({ container, hasScrollableElement, overflowBoundary, disableTether }),
         ...[autoSize && maxSizeMiddleware(autoSize)],
-        intersectionObserver(),
+        intersectionObserverMiddleware(),
         ...[arrow && arrowMiddleware({ element: arrow, padding: arrowPadding })],
         hideMiddleware(),
       ].filter(Boolean) as Middleware[];
