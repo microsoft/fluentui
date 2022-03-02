@@ -37,7 +37,7 @@ export const Popover: React_2.FC<PopoverProps>;
 export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
-export type PopoverContextValue = Pick<PopoverState, 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus'>;
+export type PopoverContextValue = Pick<PopoverState, 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus'>;
 
 // Warning: (ae-forgotten-export) The symbol "PopoverCommons" needs to be exported by the entry point index.d.ts
 //
@@ -52,6 +52,7 @@ export type PopoverSize = 'small' | 'medium' | 'large';
 // @public
 export type PopoverState = PopoverCommons & Pick<PopoverProps, 'children'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
+    toggleOpen: (e: OpenPopoverEvents) => void;
     triggerRef: React_2.MutableRefObject<HTMLElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;

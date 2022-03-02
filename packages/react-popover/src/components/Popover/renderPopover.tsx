@@ -8,6 +8,7 @@ import type { PopoverState } from './Popover.types';
 export const renderPopover_unstable = (state: PopoverState) => {
   const {
     setOpen,
+    toggleOpen,
     triggerRef,
     contentRef,
     openOnContext,
@@ -24,6 +25,7 @@ export const renderPopover_unstable = (state: PopoverState) => {
     <PopoverContext.Provider
       value={{
         setOpen,
+        toggleOpen,
         triggerRef,
         contentRef,
         openOnHover,

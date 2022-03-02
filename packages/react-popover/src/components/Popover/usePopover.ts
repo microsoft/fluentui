@@ -58,6 +58,13 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   }
 
   const [open, setOpen] = useOpenState(initialState);
+  const toggleOpen = React.useCallback<PopoverState['toggleOpen']>(
+    e => {
+      setOpen(e, !open);
+    },
+    [setOpen, open],
+  );
+
   const popperRefs = usePopoverRefs(initialState);
 
   const { targetDocument } = useFluent();
@@ -92,6 +99,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     popoverSurface,
     open,
     setOpen,
+    toggleOpen,
     setContextTarget,
     contextTarget,
   };

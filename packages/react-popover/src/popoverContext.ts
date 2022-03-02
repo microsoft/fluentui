@@ -4,6 +4,7 @@ import type { PopoverState } from './components/Popover/index';
 
 export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue>({
   setOpen: () => null,
+  toggleOpen: () => null,
   triggerRef: { current: null },
   contentRef: { current: null },
   arrowRef: { current: null },
@@ -18,6 +19,7 @@ export const PopoverContext: Context<PopoverContextValue> = createContext<Popove
  */
 export type PopoverContextValue = Pick<
   PopoverState,
+  | 'toggleOpen'
   | 'setOpen'
   | 'triggerRef'
   | 'contentRef'
