@@ -347,19 +347,11 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
               let animationName = '';
               if (!initialMounting) {
                 if (!active) {
-                  if (dir === 'start') {
-                    animationName = animationExitToLeft;
-                  } else {
-                    animationName = animationExitToRight;
-                  }
+                  animationName = dir === 'start' ? animationExitToLeft : animationExitToRight;
                 }
 
                 if (active) {
-                  if (dir === 'start') {
-                    animationName = animationEnterFromRight;
-                  } else {
-                    animationName = animationEnterFromLeft;
-                  }
+                  animationName = dir === 'start' ? animationEnterFromRight : animationEnterFromLeft;
                 }
               }
 
