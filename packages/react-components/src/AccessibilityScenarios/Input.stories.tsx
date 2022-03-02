@@ -1,46 +1,25 @@
 import * as React from 'react';
 
-import { Input, InputOnChangeData } from '@fluentui/react-input';
+import { Input } from '@fluentui/react-input';
 import { Label } from '@fluentui/react-label';
 import { Button } from '@fluentui/react-button';
 
 import { Scenario } from './utils';
 
-type InputValidation = {
-  type: string;
-  regexes: RegExp[];
-};
+import { useForm } from 'react-hook-form';
 
-const validations: Record<string, InputValidation> = {
-  fullName: {
-    type: 'field',
-    regexes: [/^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]{2,50}$/],
-  },
-  nickname: {
-    type: 'field',
-    regexes: [/^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]{2,20}$|^$/],
-  },
-  password: {
-    type: 'password',
-    regexes: [
-      /^[^ ]{8,30}$/,
-      /^[^ ]*[0-9][^ ]*$/,
-      /^[^ ]*[A-Z][^ ]*$/,
-      /^[^ ]*[a-z][^ ]*$/,
-      /^[^ ]*[^A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ ][^ ]*$/,
-    ],
-  },
-};
-
-const getAriaDescribedby = (name: string, isVisible: boolean) => {
-  if (!isVisible) {
-    return '';
-  }
-  return `${name}Error`;
+const regexes = {
+  onlyNameChars: /^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*$/,
+  startsAndEndsWithLetter: /^([A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ][A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ])?$/,
+  noWhitespace: /^\S*$/,
+  hasNumber: /^\S*[0-9]\S*$/,
+  hasLowercaseLetter: /^\S*[a-z]\S*$/,
+  hasUppercaseLetter: /^\S*[A-Z]\S*$/,
+  hasSpecialChar: /^\S*[^0-9a-zA-ZÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ\s]\S*$/,
 };
 
 let errorTimeout: number;
-const narrate = (element: HTMLElement, priority = 'polite') => {
+const narrate = (id: string, priority = 'polite') => {
   window.clearTimeout(errorTimeout);
   const wrapper = document.createElement('div');
   wrapper.setAttribute(
@@ -51,6 +30,10 @@ const narrate = (element: HTMLElement, priority = 'polite') => {
   document.body.appendChild(wrapper);
 
   errorTimeout = window.setTimeout(() => {
+    const element = document.getElementById(id);
+    if (!element) {
+      return;
+    }
     const clone = element.cloneNode(true) as HTMLElement;
     clone.removeAttribute('id');
     wrapper.appendChild(clone);
@@ -61,192 +44,185 @@ const narrate = (element: HTMLElement, priority = 'polite') => {
   }, 1300);
 };
 
+interface FormInputs {
+  fullName: string;
+  nickname: string;
+  password: string;
+}
+
 export const RegistrationFormInputsAccessibilityScenario = () => {
-  const [values, setValues] = React.useState<Record<string, string>>({
-    fullName: '',
-    nickname: '',
-    password: '',
+  const { register, handleSubmit, errors, formState } = useForm<FormInputs>({
+    validateCriteriaMode: 'all',
+    mode: 'onBlur',
   });
-  const [invalids, setInvalids] = React.useState<Record<string, boolean>>({
-    fullName: false,
-    nickname: false,
-    password: false,
-  });
-  const [isErrorMessageVisible, setIsErrorMessageVisible] = React.useState<Record<string, boolean>>({
-    fullName: false,
-    nickname: false,
-    password: false,
-  });
+
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
-  const [isSubmitted, setIsSubmitted] = React.useState(false);
-  // const testError: React.ReactElement = <b>hello world</b>;
+  const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
 
-  const handleControlChange = (event: React.FormEvent, data: InputOnChangeData, name: string) => {
-    const stateUpdate = { [name]: data.value };
-    setValues({ ...values, ...stateUpdate });
+  React.useEffect(() => {
+    if (isSubmittedAndValid) {
+      document.getElementById('validMessage')?.focus();
+    }
+  }, [isSubmittedAndValid]);
+
+  const onSubmit = (data: FormInputs, event?: React.BaseSyntheticEvent) => {
+    event?.preventDefault();
+    if (formState.isValid) {
+      setIsSubmittedAndValid(true);
+    }
   };
-  const handleShowPasswordChange = (event: React.ChangeEvent) => {
+
+  const onShowPasswordChange = (event: React.ChangeEvent) => {
     setIsPasswordVisible(!isPasswordVisible);
-  };
-  const handleControlBlur = (event: React.FormEvent, name: string) => {
-    validateControl(name);
-  };
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    if (validateForm()) {
-      setIsSubmitted(true);
-    }
-  };
-
-  const validateForm = () => {
-    for (const name in validations) {
-      if (!validateControl(name)) {
-        // Set the focus to the invalid control
-        const validation = validations[name];
-        let invalidControl;
-        if (validation.type === 'field' || validation.type === 'password') {
-          invalidControl = document.getElementById(name);
-        }
-        invalidControl?.focus();
-        return false;
-      }
-    }
-    return true;
-  };
-
-  const validateControl = (name: string) => {
-    const validation = validations[name];
-    const value = values[name];
-    let isInvalid = false;
-    let stateUpdate;
-    if (validation.type === 'field' || validation.type === 'password') {
-      for (let i = 0; i < validation.regexes.length; i++) {
-        if (!validation.regexes[i].exec(value)) {
-          isInvalid = true;
-          break;
-        }
-      }
-    }
-
-    // If the control value is invalid, show the error, narrate it and set the aria-invalid attribute
-    if (isInvalid) {
-      stateUpdate = { [name]: true };
-      setIsErrorMessageVisible({ ...isErrorMessageVisible, ...stateUpdate });
-      const error = document.getElementById(`${name}Error`);
-      if (error) {
-        narrate(error, 'assertive');
-      }
-      stateUpdate = { [name]: isInvalid };
-      setInvalids({ ...invalids, ...stateUpdate });
-      return false;
-    } else {
-      // Otherwise, hide the error message
-      stateUpdate = { [name]: false };
-      setIsErrorMessageVisible({ ...isErrorMessageVisible, ...stateUpdate });
-    }
-    return true;
   };
 
   return (
     <Scenario pageTitle="Registration form inputs">
       <h2>Registration form</h2>
-      {!isSubmitted ? (
-        <form onSubmit={handleSubmit}>
+      {!isSubmittedAndValid ? (
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Label htmlFor="fullName">Full name:</Label>
           <Input
             type="text"
             id="fullName"
             name="fullName"
-            onChange={(event, data) => {
-              handleControlChange(event, data, 'fullName');
-            }}
-            onBlur={(event: React.FocusEvent) => {
-              handleControlBlur(event, 'fullName');
-            }}
+            ref={register({
+              required: true,
+              minLength: 2,
+              maxLength: 50,
+              validate: {
+                onlyNameChars: value => regexes.onlyNameChars.test(value),
+                startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
+                always: () => {
+                  narrate('fullNameErrors');
+                  return true;
+                },
+              },
+            })}
             aria-required="true"
-            aria-invalid={invalids.fullName}
-            aria-describedby={getAriaDescribedby('fullName', isErrorMessageVisible.fullName)}
+            aria-invalid={!!errors.fullName}
+            aria-describedby="fullNameErrors"
           />
-          <ErrorMessage controlName="fullName" isVisible={isErrorMessageVisible.fullName}>
-            <p>Full name is invalid. It must</p>
-            <ul>
-              <li>have between 2 and 50 characters,</li>
-              <li>contain only lowercase or uppercase letters, spaces or hyphens.</li>
-            </ul>
-          </ErrorMessage>
+          {errors.fullName?.types && (
+            <div id="fullNameErrors">
+              {'required' in errors.fullName.types ? (
+                <p>Full name is required.</p>
+              ) : (
+                <>
+                  <p>Full name is invalid. It must:</p>
+                  <ul>
+                    {('minLength' in errors.fullName.types || 'maxLength' in errors.fullName.types) && (
+                      <li>Have between 2 and 50 characters.</li>
+                    )}
+                    {'onlyNameChars' in errors.fullName.types && (
+                      <li>Contain only lowercase or uppercase letters, spaces or hyphens.</li>
+                    )}
+                    {'startsAndEndsWithLetter' in errors.fullName.types && <li>Start and end wit letter.</li>}
+                  </ul>
+                </>
+              )}
+            </div>
+          )}
 
           <Label htmlFor="nickname">Nickname:</Label>
           <Input
             type="text"
             id="nickname"
             name="nickname"
-            onChange={(event, data) => {
-              handleControlChange(event, data, 'nickname');
-            }}
-            onBlur={(event: React.FocusEvent) => {
-              handleControlBlur(event, 'nickname');
-            }}
-            aria-invalid={invalids.nickname}
-            aria-describedby={getAriaDescribedby('nickname', isErrorMessageVisible.nickname)}
+            ref={register({
+              minLength: 2,
+              maxLength: 20,
+              validate: {
+                onlyNameChars: value => regexes.onlyNameChars.test(value),
+                startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
+                always: () => {
+                  narrate('nicknameErrors');
+                  return true;
+                },
+              },
+            })}
+            aria-invalid={!!errors.nickname}
+            aria-describedby="nicknameErrors"
           />
-          <ErrorMessage controlName="nickname" isVisible={isErrorMessageVisible.nickname}>
-            <p>Nickname is invalid. If entered, it must</p>
-            <ul>
-              <li>have between 2 and 20 characters,</li>
-              <li>contain only lowercase or uppercase letters, spaces or hyphens.</li>
-            </ul>
-          </ErrorMessage>
+          {errors.nickname?.types && (
+            <div id="nicknameErrors">
+              <p>Nickname is invalid. It must:</p>
+              <ul>
+                {('minLength' in errors.nickname.types || 'maxLength' in errors.nickname.types) && (
+                  <li>Have between 2 and 20 characters.</li>
+                )}
+                {'onlyNameChars' in errors.nickname.types && (
+                  <li>Contain only lowercase or uppercase letters, spaces or hyphens.</li>
+                )}
+                {'startsAndEndsWithLetter' in errors.nickname.types && <li>Start and end wit letter.</li>}
+              </ul>
+            </div>
+          )}
 
           <Label htmlFor="password">Password:</Label>
           <Input
             type={isPasswordVisible ? 'text' : 'password'}
             id="password"
             name="password"
-            onChange={(event, data) => {
-              handleControlChange(event, data, 'password');
-            }}
-            onBlur={(event: React.FocusEvent) => {
-              handleControlBlur(event, 'password');
-            }}
+            ref={register({
+              required: true,
+              minLength: 8,
+              maxLength: 20,
+              validate: {
+                hasLowercaseLetter: value => regexes.hasLowercaseLetter.test(value),
+                hasUppercaseLetter: value => regexes.hasUppercaseLetter.test(value),
+                hasNumber: value => regexes.hasNumber.test(value),
+                hasSpecialChar: value => regexes.hasSpecialChar.test(value),
+                noWhitespace: value => regexes.noWhitespace.test(value),
+                always: () => {
+                  narrate('passwordErrors');
+                  return true;
+                },
+              },
+            })}
             aria-required="true"
-            aria-invalid={invalids.password}
-            aria-describedby={getAriaDescribedby('password', isErrorMessageVisible.password)}
+            aria-invalid={!!errors.password}
+            aria-describedby="passwordErrors"
           />
+
           <Label htmlFor="showPassword">Show password</Label>
-          <input type="checkbox" id="showPassword" name="showPassword" onChange={handleShowPasswordChange} />
-          <ErrorMessage controlName="password" isVisible={isErrorMessageVisible.password}>
-            <p>Password is invalid. It must</p>
-            <ul>
-              <li>have between 8 and 30 characters,</li>
-              <li>contain at least one lower case letter, upper case letter, number and special character.</li>
-            </ul>
-          </ErrorMessage>
+          <input type="checkbox" id="showPassword" name="showPassword" onChange={onShowPasswordChange} />
+
+          {errors.password?.types && (
+            <div id="passwordErrors">
+              {'required' in errors.password.types ? (
+                <p>Password is required.</p>
+              ) : (
+                <>
+                  <p>Password is invalid. It must:</p>
+                  <ul>
+                    {('minLength' in errors.password.types || 'maxLength' in errors.password.types) && (
+                      <li>Have between 8 and 20 characters.</li>
+                    )}
+                    {('hasLowercaseLetter' in errors.password.types ||
+                      'hasUppercaseLetter' in errors.password.types ||
+                      'hasSpecialChar' in errors.password.types ||
+                      'hasNumber' in errors.password.types ||
+                      'noWhiteSpace' in errors.password.types) && (
+                      <li>
+                        Contain at least one lower case letter, upper case letter, number, special character and no
+                        spaces.
+                      </li>
+                    )}
+                  </ul>
+                </>
+              )}
+            </div>
+          )}
 
           <Button type="submit">Register</Button>
         </form>
       ) : (
-        <p role="alert">The form is valid and would have been submitted.</p>
+        <p id="validMessage" role="alert" tabIndex={0}>
+          The form is valid and would have been submitted.
+        </p>
       )}
     </Scenario>
-  );
-};
-
-interface ErrorMessageProps {
-  controlName: string;
-  isVisible: boolean;
-  children: React.ReactNode;
-}
-const ErrorMessage = (props: ErrorMessageProps) => {
-  const { controlName: controlId, isVisible, children } = props;
-  const id = `${controlId}Error`;
-  const styles = {
-    display: isVisible ? 'block' : 'none',
-  };
-
-  return (
-    <div id={id} style={styles}>
-      {children}
-    </div>
   );
 };
 
