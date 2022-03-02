@@ -146,7 +146,7 @@ describe('getSlots', () => {
         icon: undefined,
       }),
     ).toEqual({
-      slots: { root: 'div', input: 'input', icon: null },
+      slots: { root: 'div', input: 'input', icon: undefined },
       slotProps: { root: {}, input: {}, icon: undefined },
     });
   });
