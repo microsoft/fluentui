@@ -139,13 +139,22 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
   navigation: `${carouselClassName}__navigation`,
 };
 
-function useDirection(activeIndex) {
+function useDirection(activeIndex: number, circular: boolean, itemsLength: number) {
   const prevActiveIndex = React.useRef<number>(activeIndex);
   React.useEffect(() => {
     prevActiveIndex.current = activeIndex;
   }, [activeIndex]);
 
   const direction = React.useMemo(() => {
+    if (circular) {
+      if (activeIndex === 0 && prevActiveIndex.current === itemsLength - 1) {
+        return 'right';
+      }
+      if (activeIndex === itemsLength - 1 && prevActiveIndex.current === 0) {
+        return 'left';
+      }
+    }
+
     if (activeIndex > prevActiveIndex.current) {
       return 'right';
     }
@@ -154,7 +163,7 @@ function useDirection(activeIndex) {
     }
 
     return undefined;
-  }, [activeIndex]);
+  }, [activeIndex, circular, itemsLength]);
 
   return direction;
 }
@@ -206,7 +215,7 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
   });
   const { ariaLiveOn, shouldFocusContainer, isFromKeyboard, activeIndex } = state;
 
-  const dir = useDirection(activeIndex);
+  const dir = useDirection(activeIndex, circular, items.length);
 
   const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
     () => Array.from({ length: items?.length }, () => React.createRef()),
