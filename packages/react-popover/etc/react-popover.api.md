@@ -37,7 +37,7 @@ export const Popover: React_2.FC<PopoverProps>;
 export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
-export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus'>;
+export type PopoverContextValue = Pick<PopoverState, 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus'>;
 
 // Warning: (ae-forgotten-export) The symbol "PopoverCommons" needs to be exported by the entry point index.d.ts
 //
@@ -58,6 +58,8 @@ export type PopoverState = PopoverCommons & Pick<PopoverProps, 'children'> & {
     contextTarget: PopperVirtualElement | undefined;
     setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
     size: NonNullable<PopoverProps['size']>;
+    popoverTrigger: React_2.ReactElement | undefined;
+    popoverSurface: React_2.ReactElement | undefined;
 };
 
 // @public
@@ -75,7 +77,7 @@ export type PopoverSurfaceSlots = {
 };
 
 // @public
-export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'appearance' | 'arrowRef'> & {
+export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<PopoverContextValue, 'mountNode' | 'noArrow' | 'size' | 'appearance' | 'arrowRef'> & {
     arrowClassName?: string;
 };
 
@@ -103,7 +105,7 @@ export type PopoverTriggerState = {
 export const renderPopover_unstable: (state: PopoverState) => JSX.Element;
 
 // @public
-export const renderPopoverSurface_unstable: (state: PopoverSurfaceState) => JSX.Element | null;
+export const renderPopoverSurface_unstable: (state: PopoverSurfaceState) => JSX.Element;
 
 // @public
 export const renderPopoverTrigger_unstable: (state: PopoverTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;

@@ -98,6 +98,10 @@ export type PopoverState = PopoverCommons &
     setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
 
     size: NonNullable<PopoverProps['size']>;
+
+    popoverTrigger: React.ReactElement | undefined;
+
+    popoverSurface: React.ReactElement | undefined;
   };
 
 /**
