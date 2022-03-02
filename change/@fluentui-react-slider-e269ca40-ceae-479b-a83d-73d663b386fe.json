@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update typings for slots as a result of changes to the Slot utility type",
+  "packageName": "@fluentui/react-slider",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

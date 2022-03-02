@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update Slot type to not include `null` by default",
+  "packageName": "@fluentui/react-utilities",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
