@@ -214,67 +214,106 @@ storiesOf('CompoundButton Converged', module)
       </CompoundButton>
     ),
     { includeRtl: true },
-  )
+  );
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Outline', () => (
     <CompoundButton id={buttonId} secondaryContent="This is some secondary text" appearance="outline">
       Hello, world
     </CompoundButton>
-  ))
+  ));
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Primary', () => (
     <CompoundButton id={buttonId} secondaryContent="This is some secondary text" appearance="primary">
       Hello, world
     </CompoundButton>
-  ))
+  ));
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Subtle', () => (
     <CompoundButton id={buttonId} secondaryContent="This is some secondary text" appearance="subtle">
       Hello, world
     </CompoundButton>
-  ))
+  ));
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Transparent', () => (
     <CompoundButton id={buttonId} secondaryContent="This is some secondary text" appearance="transparent">
       Hello, world
     </CompoundButton>
-  ))
+  ));
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Disabled', () => (
     <CompoundButton id={buttonId} secondaryContent="This is some secondary text" disabled>
       Hello, world
     </CompoundButton>
-  ))
+  ));
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Outline Disabled', () => (
     <CompoundButton id={buttonId} secondaryContent="This is some secondary text" appearance="outline" disabled>
       Hello, world
     </CompoundButton>
-  ))
+  ));
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Primary Disabled', () => (
     <CompoundButton id={buttonId} secondaryContent="This is some secondary text" appearance="primary" disabled>
       Hello, world
     </CompoundButton>
-  ))
+  ));
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Subtle Disabled', () => (
     <CompoundButton id={buttonId} secondaryContent="This is some secondary text" appearance="subtle" disabled>
       Hello, world
     </CompoundButton>
-  ))
+  ));
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Transparent Disabled', () => (
     <CompoundButton id={buttonId} secondaryContent="This is some secondary text" appearance="transparent" disabled>
       Hello, world
     </CompoundButton>
-  ))
+  ));
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Circular', () => (
     <CompoundButton shape="circular" id={buttonId} secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-  ))
+  ));
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Size small', () => (
     <CompoundButton id={buttonId} secondaryContent="This is some secondary text" icon="X" size="small">
       Hello, world
     </CompoundButton>
-  ))
+  ));
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Size large', () => (
     <CompoundButton id={buttonId} secondaryContent="This is some secondary text" icon="X" size="large">
       Hello, world
     </CompoundButton>
-  ))
+  ));
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory(
     'With icon before content',
     () => (
@@ -283,7 +322,10 @@ storiesOf('CompoundButton Converged', module)
       </CompoundButton>
     ),
     { includeRtl: true },
-  )
+  );
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory(
     'With icon after content',
     () => (
@@ -292,8 +334,14 @@ storiesOf('CompoundButton Converged', module)
       </CompoundButton>
     ),
     { includeRtl: true },
-  )
-  .addStory('Icon only', () => <CompoundButton id={buttonId} icon="X" />)
+  );
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
+  .addStory('Icon only', () => <CompoundButton id={buttonId} icon="X" />);
+
+storiesOf('CompoundButton Converged', module)
+  .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Circular and icon only', () => <CompoundButton id={buttonId} shape="circular" icon="X" />, {
     includeRtl: true,
   });
