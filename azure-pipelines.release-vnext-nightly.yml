@@ -36,9 +36,9 @@ steps:
 
     # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
   - script: |
-      commitSha=$(git log -n 1 --pretty=format:"%h")
-      date=$(date +"%Y%m%d")
-      yarn nx workspace-generator version-bump --all --bumpType nightly --prereleaseTag "nightly${commitSha}${date}"
+      date=$(date +"%Y%m%d-%H%M")
+      #release version name will follow a 0.0.0-nightly-{year}{month}{day}-{hour}{minute} format.
+      yarn nx workspace-generator version-bump --all --bumpType nightly --prereleaseTag "nightly-${date}"
       git add .
       git commit -m "bump nightly versions"
       yarn change --type prerelease --message "Release nightly v9"

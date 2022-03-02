@@ -2,6 +2,27 @@
   "name": "@fluentui/react-hooks",
   "entries": [
     {
+      "date": "Tue, 01 Mar 2022 07:23:42 GMT",
+      "tag": "@fluentui/react-hooks_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-hooks",
+            "commit": "36821475e9f24b3212f998c3b23e625a6503183e",
+            "comment": "Add useIsomorphicLayoutEffect"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-hooks",
+            "comment": "Bump @fluentui/utilities to v8.5.0",
+            "commit": "cda6e1e291a31a0484ff8fbb30cbb67945569b15"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Feb 2022 07:29:50 GMT",
       "tag": "@fluentui/react-hooks_v8.3.14",
       "version": "8.3.14",

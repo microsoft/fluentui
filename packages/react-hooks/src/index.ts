@@ -17,3 +17,5 @@ export * from './useSetTimeout';
 export * from './useTarget';
 export * from './useUnmount';
 export * from './useWarnings';
+// re-export since this is a hook, which people would reasonably expect to import from react-hooks
+export { useIsomorphicLayoutEffect } from '@fluentui/utilities';

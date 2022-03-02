@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Rename `circular` prop to `shape`",
-  "packageName": "@fluentui/react-checkbox",
+  "comment": "Initial release",
+  "packageName": "@fluentui/react-radio",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
 }
