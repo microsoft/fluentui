@@ -168,6 +168,30 @@ function useDirection(activeIndex: number, circular: boolean, itemsLength: numbe
   return direction;
 }
 
+export function getAnimationName({
+  active,
+  dir,
+  animationEnterFromLeft,
+  animationEnterFromRight,
+  animationExitToLeft,
+  animationExitToRight,
+}) {
+  const initialMounting = typeof dir === 'undefined';
+
+  let animationName = '';
+  if (!initialMounting) {
+    if (!active) {
+      animationName = dir === 'start' ? animationExitToLeft : animationExitToRight;
+    }
+
+    if (active) {
+      animationName = dir === 'start' ? animationEnterFromRight : animationEnterFromLeft;
+    }
+  }
+
+  return animationName;
+}
+
 /**
  * A Carousel displays data organised as a gallery.
  *
@@ -342,18 +366,14 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
             items.map((item, index) => {
               const itemRef = itemRefs[index];
               const active = activeIndex === index;
-              const initialMounting = typeof dir === 'undefined';
-
-              let animationName = '';
-              if (!initialMounting) {
-                if (!active) {
-                  animationName = dir === 'start' ? animationExitToLeft : animationExitToRight;
-                }
-
-                if (active) {
-                  animationName = dir === 'start' ? animationEnterFromRight : animationEnterFromLeft;
-                }
-              }
+              const animationName = getAnimationName({
+                active,
+                dir,
+                animationEnterFromLeft,
+                animationEnterFromRight,
+                animationExitToLeft,
+                animationExitToRight,
+              });
 
               return (
                 <Animation visible={active} key={item['key'] || index} mountOnEnter unmountOnExit name={animationName}>
