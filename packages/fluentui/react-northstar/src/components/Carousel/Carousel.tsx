@@ -140,21 +140,23 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
 };
 
 function useDirection(activeIndex) {
-  const prevActiveIndex = React.useRef<number>();
-  const directionRef = React.useRef<string>();
-
-  React.useMemo(() => {
-    if (activeIndex > prevActiveIndex.current) {
-      directionRef.current = 'right';
-    }
-    if (activeIndex < prevActiveIndex.current) {
-      directionRef.current = 'left';
-    }
-
+  const prevActiveIndex = React.useRef<number>(activeIndex);
+  React.useEffect(() => {
     prevActiveIndex.current = activeIndex;
   }, [activeIndex]);
 
-  return directionRef.current;
+  const direction = React.useMemo(() => {
+    if (activeIndex > prevActiveIndex.current) {
+      return 'right';
+    }
+    if (activeIndex < prevActiveIndex.current) {
+      return 'left';
+    }
+
+    return undefined;
+  }, [activeIndex]);
+
+  return direction;
 }
 
 /**
