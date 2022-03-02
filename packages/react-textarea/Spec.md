@@ -65,13 +65,6 @@ In some libraries, `TextArea` is a variant of `TextField` or `Input`.
 ```ts
 type TextAreaProps = {
   /**
-   * How shall the TextArea be displayed.
-   *
-   * @defaultvalue 'inline-block'
-   */
-  display?: 'inline-block' | 'inline-flex' | 'inline-grid';
-
-  /**
    * Which direction the TextArea is allowed to be resized.
    *
    * @defaultvalue off
@@ -117,7 +110,7 @@ The auto-resize feature is known to be unstable from v8 and tricky to implement.
 
 `TextArea` will have a single root slot that will be `<textarea/>`.
 
-The design spec mentions a caracter count, error message, and label which will be left out for now.
+The design spec mentions a character count, error message, and label which will be left out for now.
 
 ## Structure
 
