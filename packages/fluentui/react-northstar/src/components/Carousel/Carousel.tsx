@@ -215,7 +215,7 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
   });
   const { ariaLiveOn, shouldFocusContainer, isFromKeyboard, activeIndex } = state;
 
-  const dir = useDirection(activeIndex, circular, items.length);
+  const dir = useDirection(activeIndex, circular, items?.length);
 
   const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
     () => Array.from({ length: items?.length }, () => React.createRef()),
