@@ -286,22 +286,22 @@ describe('Carousel', () => {
   });
 
   describe('animation', () => {
-    const animationEnterFromLeft = 'animationEnterFromLeft';
-    const animationEnterFromRight = 'animationEnterFromRight';
-    const animationExitToLeft = 'animationExitToLeft';
-    const animationExitToRight = 'animationExitToRight';
+    const animationEnterFromPrev = 'animationEnterFromPrev';
+    const animationEnterFromNext = 'animationEnterFromNext';
+    const animationExitToPrev = 'animationExitToPrev';
+    const animationExitToNext = 'animationExitToNext';
 
     it('should return animation for exiting left when item is not active', () => {
       expect(
         getAnimationName({
           active: false,
           dir: 'start',
-          animationEnterFromLeft,
-          animationEnterFromRight,
-          animationExitToLeft,
-          animationExitToRight,
+          animationEnterFromPrev,
+          animationEnterFromNext,
+          animationExitToPrev,
+          animationExitToNext,
         }),
-      ).toBe(animationExitToLeft);
+      ).toBe(animationExitToPrev);
     });
 
     it('should return animation for exiting right when item is not active', () => {
@@ -309,12 +309,12 @@ describe('Carousel', () => {
         getAnimationName({
           active: false,
           dir: 'end',
-          animationEnterFromLeft,
-          animationEnterFromRight,
-          animationExitToLeft,
-          animationExitToRight,
+          animationEnterFromPrev,
+          animationEnterFromNext,
+          animationExitToPrev,
+          animationExitToNext,
         }),
-      ).toBe(animationExitToRight);
+      ).toBe(animationExitToNext);
     });
 
     it('should return animation for enter from left when item is active', () => {
@@ -322,12 +322,12 @@ describe('Carousel', () => {
         getAnimationName({
           active: true,
           dir: 'end',
-          animationEnterFromLeft,
-          animationEnterFromRight,
-          animationExitToLeft,
-          animationExitToRight,
+          animationEnterFromPrev,
+          animationEnterFromNext,
+          animationExitToPrev,
+          animationExitToNext,
         }),
-      ).toBe(animationEnterFromLeft);
+      ).toBe(animationEnterFromPrev);
     });
 
     it('should return animation for enter from right when item is active', () => {
@@ -335,12 +335,12 @@ describe('Carousel', () => {
         getAnimationName({
           active: true,
           dir: 'start',
-          animationEnterFromLeft,
-          animationEnterFromRight,
-          animationExitToLeft,
-          animationExitToRight,
+          animationEnterFromPrev,
+          animationEnterFromNext,
+          animationExitToPrev,
+          animationExitToNext,
         }),
-      ).toBe(animationEnterFromRight);
+      ).toBe(animationEnterFromNext);
     });
   });
 });

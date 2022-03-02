@@ -116,16 +116,16 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   disableClickableNav?: boolean;
 
   /** Define animation to slide to enter from left */
-  animationEnterFromLeft?: string;
+  animationEnterFromPrev?: string;
 
   /** Define animation to slide to enter from Right */
-  animationEnterFromRight?: string;
+  animationEnterFromNext?: string;
 
   /** Define animation to slide to exit to left */
-  animationExitToLeft?: string;
+  animationExitToPrev?: string;
 
   /** Define animation to slide to exit to right */
-  animationExitToRight?: string;
+  animationExitToNext?: string;
 }
 
 export type CarouselStylesProps = { isFromKeyboard: boolean; shouldFocusContainer: boolean };
@@ -171,21 +171,21 @@ function useDirection(activeIndex: number, circular: boolean, itemsLength: numbe
 export function getAnimationName({
   active,
   dir,
-  animationEnterFromLeft,
-  animationEnterFromRight,
-  animationExitToLeft,
-  animationExitToRight,
+  animationEnterFromPrev,
+  animationEnterFromNext,
+  animationExitToPrev,
+  animationExitToNext,
 }) {
   const initialMounting = typeof dir === 'undefined';
 
   let animationName = '';
   if (!initialMounting) {
     if (!active) {
-      animationName = dir === 'start' ? animationExitToLeft : animationExitToRight;
+      animationName = dir === 'start' ? animationExitToPrev : animationExitToNext;
     }
 
     if (active) {
-      animationName = dir === 'start' ? animationEnterFromRight : animationEnterFromLeft;
+      animationName = dir === 'start' ? animationEnterFromNext : animationEnterFromPrev;
     }
   }
 
@@ -221,10 +221,10 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
     styles,
     variables,
     disableClickableNav,
-    animationEnterFromLeft,
-    animationEnterFromRight,
-    animationExitToLeft,
-    animationExitToRight,
+    animationEnterFromPrev,
+    animationEnterFromNext,
+    animationExitToPrev,
+    animationExitToNext,
   } = props;
 
   const ElementType = getElementType(props);
@@ -369,10 +369,10 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
               const animationName = getAnimationName({
                 active,
                 dir,
-                animationEnterFromLeft,
-                animationEnterFromRight,
-                animationExitToLeft,
-                animationExitToRight,
+                animationEnterFromPrev,
+                animationEnterFromNext,
+                animationExitToPrev,
+                animationExitToNext,
               });
 
               return (
@@ -572,20 +572,20 @@ Carousel.propTypes = {
   paddlePrevious: customPropTypes.itemShorthand,
   thumbnails: PropTypes.bool,
   disableClickableNav: PropTypes.bool,
-  animationEnterFromLeft: PropTypes.string,
-  animationEnterFromRight: PropTypes.string,
-  animationExitToLeft: PropTypes.string,
-  animationExitToRight: PropTypes.string,
+  animationEnterFromPrev: PropTypes.string,
+  animationEnterFromNext: PropTypes.string,
+  animationExitToPrev: PropTypes.string,
+  animationExitToNext: PropTypes.string,
 };
 
 Carousel.defaultProps = {
   accessibility: carouselBehavior,
   paddlePrevious: {},
   paddleNext: {},
-  animationEnterFromLeft: 'carousel-slide-to-previous-enter',
-  animationEnterFromRight: 'carousel-slide-to-next-enter',
-  animationExitToLeft: '',
-  animationExitToRight: '',
+  animationEnterFromPrev: 'carousel-slide-to-previous-enter',
+  animationEnterFromNext: 'carousel-slide-to-next-enter',
+  animationExitToPrev: '',
+  animationExitToNext: '',
 };
 
 Carousel.Item = CarouselItem;
