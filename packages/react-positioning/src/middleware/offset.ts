@@ -2,7 +2,7 @@ import type { Placement, Coords, Middleware, ElementRects } from '@floating-ui/c
 import { Offset } from '../types';
 import { getBasePlacement } from '../utils/getBasePlacement';
 
-export function convertValueToCoords(placement: Placement, rects: ElementRects, value: Offset, rtl = false): Coords {
+function convertValueToCoords(placement: Placement, rects: ElementRects, value: Offset, rtl = false): Coords {
   const side = getBasePlacement(placement);
   const isVertical = ['top', 'bottom'].includes(getBasePlacement(placement));
   const mainAxisMulti = ['left', 'top'].includes(side) ? -1 : 1;
