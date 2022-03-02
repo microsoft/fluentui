@@ -10,7 +10,7 @@ export const renderSelect_unstable = (state: SelectState) => {
   return (
     <slots.root {...slotProps.root}>
       <slots.select {...slotProps.select}>{slotProps.select.children}</slots.select>
-      {slots.icon && <slots.icon {...slotProps.icon} />}
+      <slots.icon {...slotProps.icon} />
     </slots.root>
   );
 };

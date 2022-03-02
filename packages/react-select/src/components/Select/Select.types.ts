@@ -12,7 +12,7 @@ export type SelectSlots = {
   select: Slot<'select'>;
 
   /** the icon, typically a down arrow */
-  icon?: Slot<'span'> | null;
+  icon: Slot<'span'>;
 };
 
 export interface SelectCommons {
