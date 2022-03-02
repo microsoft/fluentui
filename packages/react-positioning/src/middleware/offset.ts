@@ -7,10 +7,7 @@ function convertValueToCoords(placement: Placement, rects: ElementRects, value: 
   const isVertical = ['top', 'bottom'].includes(getBasePlacement(placement));
   const mainAxisMulti = ['left', 'top'].includes(side) ? -1 : 1;
 
-  let crossAxisMulti = 1;
-  if (rtl && isVertical) {
-    crossAxisMulti *= -1;
-  }
+  const crossAxisMulti = rtl && isVertical ? -1 : 1;
 
   const rawValue = typeof value === 'function' ? value({ ...rects, placement }) : value;
   const { mainAxis, crossAxis } =
