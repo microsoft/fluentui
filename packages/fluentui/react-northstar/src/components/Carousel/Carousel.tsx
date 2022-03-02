@@ -203,7 +203,6 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
     }),
   });
   const { ariaLiveOn, shouldFocusContainer, isFromKeyboard, activeIndex } = state;
-  // const prevActiveIndex = usePrevious<number>(activeIndex);
 
   const dir = useDirection(activeIndex);
 
