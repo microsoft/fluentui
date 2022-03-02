@@ -1,4 +1,4 @@
-import { hide, Middleware, Strategy } from '@floating-ui/core';
+import { hide as hideMiddleware, arrow as arrowMiddleware, Middleware, Strategy } from '@floating-ui/core';
 import { computePosition } from '@floating-ui/dom';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
@@ -9,7 +9,6 @@ import { getPlacement } from './utils/positioningHelper';
 import { useCallbackRef } from './utils/useCallbackRef';
 import {
   offset as offsetMiddleware,
-  arrow as arrowMiddleware,
   shift as shiftMiddleware,
   flip as flipMiddleware,
   coverTarget as coverTargetMiddleware,
@@ -62,8 +61,8 @@ function usePopperOptions(options: PopperOptions) {
         shiftMiddleware({ container, hasScrollableElement, overflowBoundary, disableTether }),
         ...[autoSize && maxSizeMiddleware(autoSize)],
         intersectionObserver(),
-        ...[arrow && arrowMiddleware({ arrowElement: arrow, arrowPadding })],
-        hide(),
+        ...[arrow && arrowMiddleware({ element: arrow, padding: arrowPadding })],
+        hideMiddleware(),
       ].filter(Boolean) as Middleware[];
 
       return {

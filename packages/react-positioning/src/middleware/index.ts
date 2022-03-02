@@ -1,4 +1,3 @@
-export * from './arrow';
 export * from './coverTarget';
 export * from './flip';
 export * from './maxSize';
