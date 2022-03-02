@@ -17,17 +17,8 @@ export const Button: ForwardRefComponent<ButtonProps>;
 // @public (undocumented)
 export const buttonClassName = "fui-Button";
 
-// @public (undocumented)
-export type ButtonCommons = {
-    appearance?: 'primary' | 'outline' | 'subtle' | 'transparent';
-    block: boolean;
-    disabledFocusable: boolean;
-    disabled: boolean;
-    iconPosition?: 'before' | 'after';
-    shape: 'rounded' | 'circular' | 'square';
-    size: 'small' | 'medium' | 'large';
-};
-
+// Warning: (ae-forgotten-export) The symbol "ButtonCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommons>;
 
@@ -116,11 +107,8 @@ export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
 // @public (undocumented)
 export const toggleButtonClassName = "fui-ToggleButton";
 
-// @public (undocumented)
-export type ToggleButtonCommons = {
-    checked: boolean;
-};
-
+// Warning: (ae-forgotten-export) The symbol "ToggleButtonCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type ToggleButtonProps = ButtonProps & Partial<ToggleButtonCommons> & {
     defaultChecked?: boolean;

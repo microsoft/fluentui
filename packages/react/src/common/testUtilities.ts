@@ -57,3 +57,14 @@ export function flushPromises() {
   // TODO: in jest 27, change to `new Promise(process.nextTick)` per https://stackoverflow.com/a/51045733
   return new Promise<void>(resolve => setImmediate(resolve));
 }
+
+/**
+ * Verify that the given element and its parents do NOT have `aria-hidden` set.
+ */
+export function expectNoHiddenParents(element: HTMLElement) {
+  let el: HTMLElement | null = element;
+  while (el) {
+    expect(el.getAttribute('aria-hidden')).not.toBe('true');
+    el = el.parentElement;
+  }
+}

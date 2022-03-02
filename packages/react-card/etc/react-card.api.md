@@ -16,6 +16,11 @@ export const Card: ForwardRefComponent<CardProps>;
 // @public (undocumented)
 export const cardClassName = "fui-Card";
 
+// @public (undocumented)
+export type CardCommons = {
+    appearance: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
+};
+
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
@@ -75,7 +80,7 @@ export type CardPreviewSlots = {
 export type CardPreviewState = ComponentState<CardPreviewSlots>;
 
 // @public
-export type CardProps = ComponentProps<CardSlots>;
+export type CardProps = ComponentProps<CardSlots> & Partial<CardCommons>;
 
 // @public (undocumented)
 export type CardSlots = {
@@ -83,7 +88,7 @@ export type CardSlots = {
 };
 
 // @public
-export type CardState = ComponentState<CardSlots>;
+export type CardState = ComponentState<CardSlots> & CardCommons;
 
 // @public
 export const renderCard_unstable: (state: CardState) => JSX.Element;

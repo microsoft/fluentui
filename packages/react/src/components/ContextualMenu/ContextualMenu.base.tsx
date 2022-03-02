@@ -31,7 +31,15 @@ import {
 } from './ContextualMenuItemWrapper/index';
 import { concatStyleSetsWithProps } from '../../Styling';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { useTarget, usePrevious, useAsync, useWarnings, useId, Target } from '@fluentui/react-hooks';
+import {
+  useTarget,
+  usePrevious,
+  useAsync,
+  useWarnings,
+  useId,
+  Target,
+  useIsomorphicLayoutEffect,
+} from '@fluentui/react-hooks';
 import { useResponsiveMode, ResponsiveMode } from '../../ResponsiveMode';
 import { MenuContext } from '../../utilities/MenuContext/index';
 import type {
@@ -255,8 +263,7 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
     [onRestoreFocus],
   );
 
-  // eslint-disable-next-line no-restricted-properties
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!hidden) {
       previousActiveElement.current = targetWindow?.document.activeElement as HTMLElement;
     } else if (previousActiveElement.current) {
@@ -865,15 +872,20 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
           renderedItems.push(renderSectionItem(item, itemClassNames, menuClassNames, index, hasCheckmarks, hasIcons));
           break;
         default:
-          const menuItem = renderNormalItem(
-            item,
-            itemClassNames,
-            index,
-            focusableElementIndex,
-            totalItemCount,
-            hasCheckmarks,
-            hasIcons,
-          );
+          const defaultRenderNormalItem = () =>
+            renderNormalItem(
+              item,
+              itemClassNames,
+              index,
+              focusableElementIndex,
+              totalItemCount,
+              hasCheckmarks,
+              hasIcons,
+            ) as JSX.Element;
+
+          const menuItem = props.onRenderContextualMenuItem
+            ? props.onRenderContextualMenuItem(item, defaultRenderNormalItem)
+            : defaultRenderNormalItem();
           renderedItems.push(renderListItem(menuItem, item.key || index, itemClassNames, item.title));
           break;
       }

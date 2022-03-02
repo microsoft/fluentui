@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 27 Jan 2022 07:34:08 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Mar 2022 07:23:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.3.0)
+
+Tue, 01 Mar 2022 07:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.2.3..@fluentui/web-components_v2.3.0)
+
+### Minor changes
+
+- update package dependencies in web-components ([PR #21895](https://github.com/microsoft/fluentui/pull/21895) by john.kreitlow@microsoft.com)
+
+## [2.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.3)
+
+Fri, 18 Feb 2022 07:22:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.2.2..@fluentui/web-components_v2.2.3)
+
+### Patches
+
+- Aligned "plus 2" type ramp line height size ([PR #21698](https://github.com/microsoft/fluentui/pull/21698) by 47367562+bheston@users.noreply.github.com)
 
 ## [2.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.2)
 

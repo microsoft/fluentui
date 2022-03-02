@@ -14,8 +14,7 @@ import {
   Checkmark16Filled,
   Square12Filled,
   Square16Filled,
-  Circle12Filled,
-  Circle16Filled,
+  CircleFilled,
 } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 
@@ -29,7 +28,7 @@ import { Label } from '@fluentui/react-label';
  * @param ref - reference to `<input>` element of Checkbox
  */
 export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
-  const { disabled, required, circular = false, size = 'medium', labelPosition = 'after', onChange } = props;
+  const { disabled, required, shape = 'square', size = 'medium', labelPosition = 'after', onChange } = props;
 
   const [checked, setChecked] = useControllableState({
     defaultState: props.defaultChecked,
@@ -48,8 +47,8 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
 
   let checkmarkIcon;
   if (mixed) {
-    if (circular) {
-      checkmarkIcon = size === 'large' ? <Circle16Filled /> : <Circle12Filled />;
+    if (shape === 'circular') {
+      checkmarkIcon = <CircleFilled />;
     } else {
       checkmarkIcon = size === 'large' ? <Square16Filled /> : <Square12Filled />;
     }
@@ -58,7 +57,7 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
   }
 
   const state: CheckboxState = {
-    circular,
+    shape,
     checked,
     size,
     labelPosition,

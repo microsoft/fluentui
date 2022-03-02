@@ -2,6 +2,227 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Tue, 01 Mar 2022 02:17:40 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Feb 2022 13:35:28 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Feb 2022 08:51:40 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "c0d4e63ee58e60e2c6674efbacc0783cd520984e",
+            "comment": "Updates components with nullRender changes"
+          },
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "87e12a2e3a9d90b4ff95d3ed333739756d190f6c",
+            "comment": "Updated best practices for long text"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "d892c7f79c543b6008634ecd669b75b5108cad46",
+            "comment": "Remove outdated boilerplate comments"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "7cb2a5d8db1b6a1ddb638aa82d5815ab5ae84e69",
+            "comment": "(fix): Update react-icons dependency to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "c00913d50e2dd15bbfbb0757cefe43b192ff1d7f",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "f5e7fa7a2129d3a4637a2ce777cecec435c256ec",
+            "comment": "Refactor and re-organize Badge styles; no visual changes."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "3bc0517363984081469903ee137a06543f825f1c",
+            "comment": "Add fontSize styling to icon slot, to automatically size user-provided icons"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "5a49512b8e33d5a588212069a1f2827b806d584c",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "4e5e955acede0fc79334ef90a563de4bd35ee231",
+            "comment": "fix: use updated tokens for ghost and outline variants"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "00a5d945904c896a0664de6ba72c145a255f0848",
+            "comment": "Updating use of tokens.fontWeight now that we don't need to use casting."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "13f940ea4687d769dd2faf61edc27ff75f6bb565",
+            "comment": "Allow React 17 in peerDependencies."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "63cbefe55e5db10eedbde19392aa8b6376d6a7f7",
+            "comment": "Update react-icons usage to resizable icons"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "839ec14849e112b85aa321d034739ec421199141",
+            "comment": "remove export of commons types"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "b23239743c4f5518bcf7dcad496a36fc16bbd2e5",
+            "comment": "update @fluentui/react-icons package"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "8c75114e82b205810c9ac3692af71f6f7748225c",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "2c54271f07c30f65718e085084c2e5b213268dfd",
+            "comment": "react-badge: Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "4e7acd7ff3c437663de70206416d3c19b6a87cfa",
+            "comment": "fix: Add uniform padding and modify gaps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 08:34:11 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-beta.4",
       "version": "9.0.0-beta.4",

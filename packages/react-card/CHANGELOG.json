@@ -2,6 +2,245 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Tue, 01 Mar 2022 02:17:35 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-beta.9",
+      "version": "9.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "084d7408855f3e52b67cbca172da1acef9dcb98f",
+            "comment": "fix: Add react-theme as dependency"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-text to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-button to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Feb 2022 13:35:29 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-beta.8",
+      "version": "9.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "6f39f6ae5bd33c8aa46dbb5cc1e46eded1fc2967",
+            "comment": "Add new appearance property to allow for different card styles"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "4a28b5a69d0e6cf53c19c5e93bc93465f9b8a132",
+            "comment": "fix: top padding issues with CardPreview"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-text to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-button to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Feb 2022 08:51:52 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-beta.6",
+      "version": "9.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "63cbefe55e5db10eedbde19392aa8b6376d6a7f7",
+            "comment": "Update react-icons usage to resizable icons"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "c00913d50e2dd15bbfbb0757cefe43b192ff1d7f",
+            "comment": "Bump Fluent UI dependencies to 9.0.0-rc"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "37772e1ef0b587bf08984dd053ebb356c57c5247",
+            "comment": "react-card: Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "d892c7f79c543b6008634ecd669b75b5108cad46",
+            "comment": "Remove empty CardCommons type and outdated boilerplate comments"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "1249d2ee042780865e877fc2ed48f56e0eff25d1",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "158d89b5d98e3544e06f4f09967d2af8ab43e249",
+            "comment": "update styles no not use CSS shorthands"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-text to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-button to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          }
+        ],
+        "none": [
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "8e04b14546f264bb197ffce70bdff8ec83762c49",
+            "comment": "Add Alpha notice"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "c6c745b664df52f5cbdd5a190cc08cae971216e0",
+            "comment": "Add component spec"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-card",
+            "commit": "4bd15194a66379b165043141c266faa0c1ea1502",
+            "comment": "document how to import preview components"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "c0d4e63ee58e60e2c6674efbacc0783cd520984e",
+            "comment": "Updates components with nullRender changes"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-card",
+            "commit": "a15d363937fad523e90350458ec3e44fe7199dc0",
+            "comment": "Move Storybook stories to Preview Components section"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 08:34:12 GMT",
       "tag": "@fluentui/react-card_v9.0.0-beta.5",
       "version": "9.0.0-beta.5",

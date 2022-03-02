@@ -2,6 +2,155 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Tue, 01 Mar 2022 02:17:39 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "084d7408855f3e52b67cbca172da1acef9dcb98f",
+            "comment": "fix: Add react-theme as dependency"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Feb 2022 13:35:35 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Feb 2022 08:50:55 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-tabster",
+            "commit": "97752a0e494875c4dc22b268030d7d5e51b19211",
+            "comment": "Add workaround for cypress bug"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "71ff89870b52cd0e2319a5d568603a710c3ad367",
+            "comment": "update tooling configs"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "989c43132491b61ed7c6da70100ca4f9aac8173a",
+            "comment": "Fix version mismatches"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "95a6a32cbffa9d86d6017cf8e0204d4b459ef370",
+            "comment": "feat: Support `options` for `findNextFocusable` and `findPrevFocusable` focus finders"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "f4274932701c7210e191a2982c2d2410f8657fe6",
+            "comment": "chore: Bump tabster and keyborg versions"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "ebc62b16de199691794df12080d89b77979d1131",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c00913d50e2dd15bbfbb0757cefe43b192ff1d7f",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "a76afe26daad901ff5458ffdda7e66e600d5bcac",
+            "comment": "use new types from makeStyles core"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "38c8bed2c707014688ae2ae689033fa36ef23075",
+            "comment": "react-tabster: Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "ff9ad1d4fe5682173c497f6ddf0ee1d7bddd6800",
+            "comment": "chore: bump tabster to 1.1.1 - removes IE11 support"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "967d6b74cf0507685a24e0cfaa8c7b9d52a351e1",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 08:34:17 GMT",
       "tag": "@fluentui/react-tabster_v9.0.0-beta.5",
       "version": "9.0.0-beta.5",

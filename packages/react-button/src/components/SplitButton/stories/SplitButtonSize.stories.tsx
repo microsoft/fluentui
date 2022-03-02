@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
-import { SplitButton, MenuButtonProps } from '../../../index'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { SplitButton, MenuButtonProps } from '../../../index';
 
 export const Size = () => {
   return (
@@ -9,7 +9,9 @@ export const Size = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} primaryActionButton={'Size: small'} size="small" />
+            <SplitButton menuButton={triggerProps} size="small">
+              Size: small
+            </SplitButton>
           )}
         </MenuTrigger>
 
@@ -24,7 +26,9 @@ export const Size = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} primaryActionButton={'Size: medium'} size="medium" />
+            <SplitButton menuButton={triggerProps} size="medium">
+              Size: medium
+            </SplitButton>
           )}
         </MenuTrigger>
 
@@ -39,7 +43,9 @@ export const Size = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} primaryActionButton={'Size: large'} size="large" />
+            <SplitButton menuButton={triggerProps} size="large">
+              Size: large
+            </SplitButton>
           )}
         </MenuTrigger>
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Bump tabster and keyborg versions",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

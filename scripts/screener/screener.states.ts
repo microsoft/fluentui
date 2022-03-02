@@ -5,6 +5,7 @@ import minimatch from 'minimatch';
 import path from 'path';
 
 import getScreenerSteps from './screener.steps';
+import { ScreenerState } from './screener.types';
 
 const baseUrl = `${process.env.DEPLOYURL}/react-northstar-screener`;
 const examplePaths = glob.sync('packages/fluentui/docs/src/examples/**/*.tsx', {
@@ -21,7 +22,7 @@ if (pathFilter) {
   filteredPaths.forEach(filteredPath => console.log(`${_.repeat(' ', 10)} ${filteredPath}`));
 }
 
-const getStateForPath = (examplePath: string) => {
+const getStateForPath = (examplePath: string): ScreenerState => {
   const { name: exampleNameWithoutExtension, base: exampleNameWithExtension, dir: exampleDir } = path.parse(
     examplePath,
   );

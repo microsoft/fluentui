@@ -2,29 +2,34 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-export interface CheckboxCommons {
+interface CheckboxCommons {
   /**
-   * Whether to render the checkbox in a circular shape instead of square.
-   * This variant is only recommended to be used in a tasks-style UI (checklist),
+   * The shape of the checkbox indicator.
+   *
+   * The `circular` variant is only recommended to be used in a tasks-style UI (checklist),
    * since it otherwise could be confused for a `RadioItem`.
-   * @defaultvalue false
+   *
+   * @defaultvalue square
    */
-  circular: boolean;
+  shape: 'square' | 'circular';
 
   /**
-   * A checkbox's state can be controlled.
+   * The controlled value for the checkbox.
+   *
    * @defaultvalue false
    */
   checked: 'mixed' | boolean;
 
   /**
-   * Checkbox supports two different checkbox sizes.
+   * The size of the checkbox indicator.
+   *
    * @defaultvalue medium
    */
   size: 'medium' | 'large';
 
   /**
-   * Determines whether the label should be positioned before or after the checkbox.
+   * The position of the label relative to the checkbox indicator.
+   *
    * @defaultvalue after
    */
   labelPosition: 'before' | 'after';
@@ -60,7 +65,7 @@ export type CheckboxSlots = {
   input: NonNullable<Slot<'input'>>;
 
   /**
-   * Renders the checkbox, with the checkmark icon as its child when checked.
+   * The checkbox, with the checkmark icon as its child when checked.
    */
   indicator: Slot<'div'>;
 };

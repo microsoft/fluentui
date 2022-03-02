@@ -1,8 +1,54 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Thu, 25 Nov 2021 08:34:17 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Mar 2022 02:17:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-rc.4)
+
+Tue, 01 Mar 2022 02:17:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-rc.3..@fluentui/react-link_v9.0.0-rc.4)
+
+### Changes
+
+- fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-rc.3)
+
+Fri, 18 Feb 2022 13:35:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-rc.1..@fluentui/react-link_v9.0.0-rc.3)
+
+### Changes
+
+- fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-rc.1)
+
+Thu, 10 Feb 2022 08:51:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-beta.5..@fluentui/react-link_v9.0.0-rc.1)
+
+### Changes
+
+- Updating use of tokens.fontWeight now that we don't need to use casting. ([PR #21217](https://github.com/microsoft/fluentui/pull/21217) by Humberto.Morimoto@microsoft.com)
+- Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- remove export of commons types ([PR #21660](https://github.com/microsoft/fluentui/pull/21660) by mgodbolt@microsoft.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
+- Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- update styles to not use CSS shorthands ([PR #20819](https://github.com/microsoft/fluentui/pull/20819) by olfedias@microsoft.com)
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- use Griffel packages ([PR #21429](https://github.com/microsoft/fluentui/pull/21429) by olfedias@microsoft.com)
+- react-link: Replacing use of functions in makeStyles with direct use of tokens. ([PR #21047](https://github.com/microsoft/fluentui/pull/21047) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-beta.5)
 

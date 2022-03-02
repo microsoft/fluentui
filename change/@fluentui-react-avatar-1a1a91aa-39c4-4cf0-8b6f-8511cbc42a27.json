@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update @fluentui/react-icons package",
-  "packageName": "@fluentui/react-avatar",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

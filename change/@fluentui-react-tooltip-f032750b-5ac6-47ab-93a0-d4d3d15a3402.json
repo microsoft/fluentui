@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Replace `triggerAriaAttribute` prop with `relationship` and make it required with no default",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

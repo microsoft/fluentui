@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "updating brand colors",
-  "packageName": "@fluentui/react-theme",
-  "email": "andmarti@microsoft.com",
-  "dependentChangeType": "patch"
-}

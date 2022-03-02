@@ -2,6 +2,283 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Tue, 01 Mar 2022 02:17:40 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-aria to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Feb 2022 13:35:37 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "5a45a787f2669a9f694a274b220823dbc10b04e2",
+            "comment": "Updates initial open items value to be empty on every case"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "ea090f75ef4a477f6ea9ffa2b4d7bec826a99b5f",
+            "comment": "Breaking change: navigable becomes navigation"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-aria to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          }
+        ],
+        "none": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "3068d4518c5e599c60a216455eac40531d896162",
+            "comment": "Updates spec and story to add warning about heading level"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Feb 2022 08:52:11 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "b23239743c4f5518bcf7dcad496a36fc16bbd2e5",
+            "comment": "update @fluentui/react-icons package"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "b8537fb52cc3cc2787be5675c65300e01d882add",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "839ec14849e112b85aa321d034739ec421199141",
+            "comment": "remove export of commons types"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "13f940ea4687d769dd2faf61edc27ff75f6bb565",
+            "comment": "Allow React 17 in peerDependencies."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "a2e02b2015b1f9307c69c8ecf005c166d496e206",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "940a86cbd6a9f711d275df3a823292b527017852",
+            "comment": "Removes children as a slot from AccordionHeader"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "c00913d50e2dd15bbfbb0757cefe43b192ff1d7f",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "d0758018bf44c69e01451c8a6bd4f73b43e397b7",
+            "comment": "update semantic elements and ARIA roles in react-accordion, add heading level story"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "63cbefe55e5db10eedbde19392aa8b6376d6a7f7",
+            "comment": "Update react-icons usage to resizable icons"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "38c8bed2c707014688ae2ae689033fa36ef23075",
+            "comment": "Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "22ef7434eddbe45d8818b16ff43c3488ac84ae45",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "dfb5538a2494b48cbb61702c4c2c9aaf8de37a6f",
+            "comment": "Remove AccordionHeaderExpandIcon, and use ChevronRightRegular from @fluentui/react-icons instead"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-aria to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "chore: update all jest deps to v25 + apply single version policy"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "c0d4e63ee58e60e2c6674efbacc0783cd520984e",
+            "comment": "Updates components with nullRender changes"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 08:34:10 GMT",
       "tag": "@fluentui/react-accordion_v9.0.0-beta.5",
       "version": "9.0.0-beta.5",

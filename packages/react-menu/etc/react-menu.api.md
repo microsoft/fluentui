@@ -175,15 +175,6 @@ export const MenuList: ForwardRefComponent<MenuListProps>;
 export const menuListClassName = "fui-MenuList";
 
 // @public (undocumented)
-export type MenuListCommons = {
-    onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
-    checkedValues: Record<string, string[]>;
-    defaultCheckedValues?: Record<string, string[]>;
-    hasIcons?: boolean;
-    hasCheckmarks?: boolean;
-};
-
-// @public (undocumented)
 export const MenuListContext: Context<MenuListContextValue>;
 
 // @public
@@ -198,6 +189,8 @@ export type MenuListContextValues = {
     menuList: MenuListContextValue;
 };
 
+// Warning: (ae-forgotten-export) The symbol "MenuListCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type MenuListProps = ComponentProps<MenuListSlots> & Partial<MenuListCommons>;
 
@@ -265,9 +258,8 @@ export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
 // @public (undocumented)
 export const menuSplitGroupClassName = "fui-MenuSplitGroup";
 
-// @public (undocumented)
-export type MenuSplitGroupCommons = {};
-
+// Warning: (ae-forgotten-export) The symbol "MenuSplitGroupCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots> & MenuSplitGroupCommons;
 
@@ -314,6 +306,7 @@ export type MenuTriggerProps = {
 // @public (undocumented)
 export type MenuTriggerState = {
     children: React_2.ReactElement | null;
+    isSubmenu: boolean;
 };
 
 // @public

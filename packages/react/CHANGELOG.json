@@ -2,6 +2,462 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 02 Mar 2022 07:23:05 GMT",
+      "tag": "@fluentui/react_v8.56.3",
+      "version": "8.56.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5ee8e8a64c7f78aee668ca702e3d57d4cf0d4e38",
+            "comment": "move from scrollWidth to bounding rect to support scaled content"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ca0cfb24e8fa0c4644555c7aa00f2a0ec946b52f",
+            "comment": "Panel: Only mark siblings as aria-hidden when open"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 07:23:42 GMT",
+      "tag": "@fluentui/react_v8.56.2",
+      "version": "8.56.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "36821475e9f24b3212f998c3b23e625a6503183e",
+            "comment": "ContextualMenu, Image, Keytips, Layer, MaskedTextField: Use useIsomorphicLayoutEffect instead of useLayoutEffect to avoid warnings in SSR"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5d4649333eb4146ff0df6def6ca68ed0d9bc766e",
+            "comment": "Add color: inherit to year button so that it gets color from header container"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.25",
+            "commit": "cda6e1e291a31a0484ff8fbb30cbb67945569b15"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.26",
+            "commit": "cda6e1e291a31a0484ff8fbb30cbb67945569b15"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.3.21",
+            "commit": "cda6e1e291a31a0484ff8fbb30cbb67945569b15"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.4.0",
+            "commit": "cda6e1e291a31a0484ff8fbb30cbb67945569b15"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.5.8",
+            "commit": "cda6e1e291a31a0484ff8fbb30cbb67945569b15"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.4.12",
+            "commit": "cda6e1e291a31a0484ff8fbb30cbb67945569b15"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.5.0",
+            "commit": "cda6e1e291a31a0484ff8fbb30cbb67945569b15"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.0.31",
+            "commit": "cda6e1e291a31a0484ff8fbb30cbb67945569b15"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Feb 2022 07:29:50 GMT",
+      "tag": "@fluentui/react_v8.56.1",
+      "version": "8.56.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.24",
+            "commit": "17618b2b24ce013569c74a505b2212eba18caf54"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.25",
+            "commit": "17618b2b24ce013569c74a505b2212eba18caf54"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.3.20",
+            "commit": "17618b2b24ce013569c74a505b2212eba18caf54"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.3.14",
+            "commit": "17618b2b24ce013569c74a505b2212eba18caf54"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.5.7",
+            "commit": "17618b2b24ce013569c74a505b2212eba18caf54"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.4.11",
+            "commit": "17618b2b24ce013569c74a505b2212eba18caf54"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.4.3",
+            "commit": "17618b2b24ce013569c74a505b2212eba18caf54"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.0.30",
+            "commit": "17618b2b24ce013569c74a505b2212eba18caf54"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Feb 2022 07:26:36 GMT",
+      "tag": "@fluentui/react_v8.56.0",
+      "version": "8.56.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "c995e10b57ba6ef1b5a6797c62aaac28b6a2db4f",
+            "comment": "ContextualMenu: Add prop that allows users to wrap a custom tooltip around each menu item button."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Feb 2022 07:28:31 GMT",
+      "tag": "@fluentui/react_v8.55.3",
+      "version": "8.55.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.23",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.24",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.3.19",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.3.13",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.5.6",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.4.10",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.4.2",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.0.29",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Feb 2022 07:26:36 GMT",
+      "tag": "@fluentui/react_v8.55.2",
+      "version": "8.55.2",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "525ac9640d22576385c37ee6c773de8a832c9644",
+            "comment": "Add command to run e2e tests"
+          }
+        ],
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "21ad43bbd1664a7f409b28c4b7f21e50d7039a4d",
+            "comment": "Add visually hidden content to grid cells to fix iOS VoiceOver bug"
+          },
+          {
+            "author": "mrkbear@qq.com",
+            "package": "@fluentui/react",
+            "commit": "245879c68b48deae36c65cb9e6222a2627f038c0",
+            "comment": "Fix aria-labelledby on div element missing reference"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Feb 2022 07:27:47 GMT",
+      "tag": "@fluentui/react_v8.55.1",
+      "version": "8.55.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "99a30a94f7c44064de9a20e26650aa609f4dc78d",
+            "comment": "Don't hide siblings for modeless modals. Use the same modalization method in FocusTrapZone and Popup."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f7bb492b0a72487ec901c1a899c1e96b2db126bd",
+            "comment": "Combobox now supports aria-describedby and aria-labelledby properly"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.22",
+            "commit": "a0c8a3f6d02b6493e923006679a8cfb648c1e003"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.23",
+            "commit": "a0c8a3f6d02b6493e923006679a8cfb648c1e003"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.3.18",
+            "commit": "a0c8a3f6d02b6493e923006679a8cfb648c1e003"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.3.12",
+            "commit": "a0c8a3f6d02b6493e923006679a8cfb648c1e003"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.5.5",
+            "commit": "a0c8a3f6d02b6493e923006679a8cfb648c1e003"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.4.9",
+            "commit": "a0c8a3f6d02b6493e923006679a8cfb648c1e003"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.4.1",
+            "commit": "a0c8a3f6d02b6493e923006679a8cfb648c1e003"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.0.28",
+            "commit": "a0c8a3f6d02b6493e923006679a8cfb648c1e003"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Feb 2022 07:32:10 GMT",
+      "tag": "@fluentui/react_v8.55.0",
+      "version": "8.55.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "6fa0a3e69c74b3bc22d5e5f62fb6c9492dfe0d76",
+            "comment": "Facepile: Add onRenderPersonaWrapper prop which wraps clickable Personas."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "01b6dba4dd7a503d9715b24aa4a02628b822cfb3",
+            "comment": "SelectionZone: Add prop to disable default behavior that clears selection when clicking on non-toggle surface."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Feb 2022 07:30:48 GMT",
+      "tag": "@fluentui/react_v8.54.0",
+      "version": "8.54.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e223a41e350d67e89465eac1530d3f76551905ea",
+            "comment": "SwatchColorPicker: add event param to event handlers"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.21",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.22",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.3.17",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.3.11",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.5.4",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.4.8",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.4.0",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.0.27",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          }
+        ],
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "bdc6aa5c328778d1210cee8179538418c643298c",
+            "comment": "do not render area attributes without valid values"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ae67454c2af28710b9d197ce91fd2ded069d9ebf",
+            "comment": "Add deprecation notice"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Feb 2022 07:25:33 GMT",
+      "tag": "@fluentui/react_v8.53.0",
+      "version": "8.53.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d77594d2930fe0d19904dab6b703f629811dbfe4",
+            "comment": "Callout: prevent data props from being used twice"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "6fba4a99f2666ab810c0e7ec3aa2045c46213037",
+            "comment": "ContextualMenu: delayUpdateFocusOnHover is now working correctly so menu items are no longer focused on mouse hover."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "f30f8424f3d0b4e720c30583bddef58625263d33",
+            "comment": "Dropdown: Headers and Dividers marked as hidden are now actually hidden."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "49139a0ec9f9df3b3508599f2775e9ef1959a965",
+            "comment": "Remove duplicate export names caused by export star."
+          }
+        ],
+        "minor": [
+          {
+            "author": "stefhan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "bd967bf85ebe6634327729ec9ea8df77285d8c33",
+            "comment": "Add enableAriaHiddenSiblings to Popup and Dialog and respect it in Modal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Feb 2022 07:31:42 GMT",
       "tag": "@fluentui/react_v8.52.3",
       "version": "8.52.3",

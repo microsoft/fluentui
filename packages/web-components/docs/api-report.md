@@ -41,6 +41,7 @@ import { FlipperOptions } from '@microsoft/fast-foundation';
 import { FoundationElement } from '@microsoft/fast-foundation';
 import { FoundationElementDefinition } from '@microsoft/fast-foundation';
 import { FoundationElementRegistry } from '@microsoft/fast-foundation';
+import { FoundationElementTemplate } from '@microsoft/fast-foundation';
 import { HorizontalScroll as HorizontalScroll_2 } from '@microsoft/fast-foundation';
 import { HorizontalScrollOptions } from '@microsoft/fast-foundation';
 import { Listbox as Listbox_2 } from '@microsoft/fast-foundation';
@@ -71,6 +72,7 @@ import { TabPanel } from '@microsoft/fast-foundation';
 import { Tabs } from '@microsoft/fast-foundation';
 import { TextArea as TextArea_2 } from '@microsoft/fast-foundation';
 import { TextField as TextField_2 } from '@microsoft/fast-foundation';
+import { TextFieldOptions } from '@microsoft/fast-foundation';
 import { Toolbar as Toolbar_2 } from '@microsoft/fast-foundation';
 import { Tooltip as Tooltip_2 } from '@microsoft/fast-foundation';
 import { TreeItem } from '@microsoft/fast-foundation';
@@ -222,8 +224,40 @@ export const allComponents: {
     fluentTabs: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tabs>;
     fluentTab: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tab>;
     fluentTabPanel: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TabPanel>;
-    fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TextArea>;
-    fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TextField>;
+    fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<    {
+    baseName: string;
+    baseClass: TextArea_2;
+    template: FoundationElementTemplate<ViewTemplate<TextArea_2, any>, FoundationElementDefinition>;
+    styles: (context: any, definition: any) => ElementStyles;
+    shadowOptions: {
+    delegatesFocus: true;
+    };
+    }> | undefined) => FoundationElementRegistry<    {
+    baseName: string;
+    baseClass: TextArea_2;
+    template: FoundationElementTemplate<ViewTemplate<TextArea_2, any>, FoundationElementDefinition>;
+    styles: (context: any, definition: any) => ElementStyles;
+    shadowOptions: {
+    delegatesFocus: true;
+    };
+    }, TextArea>;
+    fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<    {
+    baseName: string;
+    baseClass: TextField_2;
+    template: FoundationElementTemplate<ViewTemplate<TextField_2, any>, TextFieldOptions>;
+    styles: (context: any, definition: any) => ElementStyles;
+    shadowOptions: {
+    delegatesFocus: true;
+    };
+    }> | undefined) => FoundationElementRegistry<    {
+    baseName: string;
+    baseClass: TextField_2;
+    template: FoundationElementTemplate<ViewTemplate<TextField_2, any>, TextFieldOptions>;
+    styles: (context: any, definition: any) => ElementStyles;
+    shadowOptions: {
+    delegatesFocus: true;
+    };
+    }, TextField>;
     fluentToolbar: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Toolbar>;
     fluentTooltip: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tooltip>;
     fluentTreeView: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TreeView>;
@@ -682,12 +716,44 @@ export const fluentTabs: (overrideDefinition?: OverrideFoundationElementDefiniti
 // Warning: (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
 //
 // @public
-export const fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TextArea>;
+export const fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<    {
+baseName: string;
+baseClass: typeof TextArea_2;
+template: FoundationElementTemplate<ViewTemplate<TextArea_2, any>, FoundationElementDefinition>;
+styles: (context: any, definition: any) => ElementStyles;
+shadowOptions: {
+delegatesFocus: true;
+};
+}> | undefined) => FoundationElementRegistry<    {
+baseName: string;
+baseClass: typeof TextArea_2;
+template: FoundationElementTemplate<ViewTemplate<TextArea_2, any>, FoundationElementDefinition>;
+styles: (context: any, definition: any) => ElementStyles;
+shadowOptions: {
+delegatesFocus: true;
+};
+}, typeof TextArea>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
 //
 // @public
-export const fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TextField>;
+export const fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<    {
+baseName: string;
+baseClass: typeof TextField_2;
+template: FoundationElementTemplate<ViewTemplate<TextField_2, any>, TextFieldOptions>;
+styles: (context: any, definition: any) => ElementStyles;
+shadowOptions: {
+delegatesFocus: true;
+};
+}> | undefined) => FoundationElementRegistry<    {
+baseName: string;
+baseClass: typeof TextField_2;
+template: FoundationElementTemplate<ViewTemplate<TextField_2, any>, TextFieldOptions>;
+styles: (context: any, definition: any) => ElementStyles;
+shadowOptions: {
+delegatesFocus: true;
+};
+}, typeof TextField>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
 //
@@ -1657,9 +1723,9 @@ export const typeRampPlus6LineHeight: CSSDesignToken<string>;
 // dist/dts/custom-elements.d.ts:53:5 - (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
 // dist/dts/custom-elements.d.ts:56:5 - (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
 // dist/dts/custom-elements.d.ts:95:5 - (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
-// dist/dts/custom-elements.d.ts:96:5 - (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
-// dist/dts/custom-elements.d.ts:97:5 - (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
-// dist/dts/custom-elements.d.ts:98:5 - (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
+// dist/dts/custom-elements.d.ts:112:5 - (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
+// dist/dts/custom-elements.d.ts:129:5 - (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
+// dist/dts/custom-elements.d.ts:130:5 - (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 

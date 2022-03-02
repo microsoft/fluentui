@@ -1,8 +1,54 @@
 # Change Log - @fluentui/react-hooks
 
-This log was last generated on Thu, 03 Feb 2022 07:29:41 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Mar 2022 07:23:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.4.0)
+
+Tue, 01 Mar 2022 07:23:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.3.14..@fluentui/react-hooks_v8.4.0)
+
+### Minor changes
+
+- Add useIsomorphicLayoutEffect ([PR #21899](https://github.com/microsoft/fluentui/pull/21899) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.5.0 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+
+## [8.3.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.3.14)
+
+Thu, 24 Feb 2022 07:29:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.3.13..@fluentui/react-hooks_v8.3.14)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.4.3 ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by beachball)
+
+## [8.3.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.3.13)
+
+Thu, 17 Feb 2022 07:28:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.3.12..@fluentui/react-hooks_v8.3.13)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.4.2 ([PR #21777](https://github.com/microsoft/fluentui/pull/21777) by beachball)
+
+## [8.3.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.3.12)
+
+Fri, 11 Feb 2022 07:27:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.3.11..@fluentui/react-hooks_v8.3.12)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.4.1 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
+
+## [8.3.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.3.11)
+
+Wed, 09 Feb 2022 07:30:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.3.10..@fluentui/react-hooks_v8.3.11)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.4.0 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
 
 ## [8.3.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.3.10)
 
