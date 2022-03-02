@@ -5,7 +5,7 @@ import { rootClass } from './shared';
 /**
  * Tab and shift-tab wrap at extreme ends of the FTZ:
  *
- * can between multiple FocusZones with different button structures
+ * can tab between multiple FocusZones with different button structures
  */
 export const TabWrappingMultiFocusZone = () => {
   return (

@@ -296,8 +296,8 @@ describe('FocusTrapZone', () => {
       // wait for first focus to finish to avoid timing issue
       cy.focused().should('have.text', 'first');
 
-      cy.contains('mid').realClick();
-      cy.focused().should('have.text', 'mid');
+      cy.contains('last').realClick();
+      cy.focused().should('have.text', 'last');
 
       // shift+tab focuses the first bumper (since the buttons inside aren't keyboard-focusable)
       //   => sends focus to first element
