@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/react-radio",
   "version": "9.0.0-beta.1",
-  "private": true,
-  "description": "A Radio component presents a set of options where only one option can be selected.",
+  "description": "Fluent UI Radio component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -42,10 +41,11 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "9.0.0-rc.3",
-    "@fluentui/react-label": "9.0.0-beta.7",
-    "@fluentui/react-tabster": "9.0.0-rc.3",
+    "@fluentui/react-icons": "^2.0.159-beta.10",
+    "@fluentui/react-label": "9.0.0-beta.8",
+    "@fluentui/react-tabster": "9.0.0-rc.4",
     "@fluentui/react-theme": "9.0.0-rc.3",
+    "@fluentui/react-utilities": "9.0.0-rc.4",
     "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
   },

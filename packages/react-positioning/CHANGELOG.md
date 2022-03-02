@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 18 Feb 2022 13:35:33 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Mar 2022 02:17:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-rc.4)
+
+Tue, 01 Mar 2022 02:17:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-rc.3..@fluentui/react-positioning_v9.0.0-rc.4)
+
+### Changes
+
+- feat: add isIntersectingModifier to usePopper ([PR #21855](https://github.com/microsoft/fluentui/pull/21855) by olfedias@microsoft.com)
+- fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-rc.3)
 

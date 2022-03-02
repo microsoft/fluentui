@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-textarea",
+  "entries": [
+    {
+      "date": "Tue, 01 Mar 2022 02:17:40 GMT",
+      "tag": "@fluentui/react-textarea_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          }
+        ]
+      }
+    }
+  ]
+}
