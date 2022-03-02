@@ -169,8 +169,8 @@ export const resolveShorthand: ResolveShorthandFunction;
 
 // @public (undocumented)
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-    <P extends Slot<Props> | null | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>): ReplaceNullWithUndefined<Exclude<P, SlotShorthandValue | undefined>>;
-    <P extends Slot<Props> | null | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, boolean>): ReplaceNullWithUndefined<Exclude<P, SlotShorthandValue>>;
+    <P extends Props | null | undefined>(value: P | SlotShorthandValue, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>): ReplaceNullWithUndefined<Exclude<P, undefined>>;
+    <P extends Props | null | undefined>(value: P | SlotShorthandValue, options?: ResolveShorthandOptions<ExtractSlotProps<P>, boolean>): ReplaceNullWithUndefined<P>;
 };
 
 // @public (undocumented)
