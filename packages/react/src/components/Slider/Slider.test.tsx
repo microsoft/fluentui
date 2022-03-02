@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { resetIds, KeyCodes } from '../../Utilities';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { Slider } from './Slider';
 import { isConformant } from '../../common/isConformant';
 import type { ISlider } from './Slider.types';
@@ -35,8 +35,8 @@ describe('Slider', () => {
   });
 
   it('can set aria-labelledby attribute', () => {
-    render(<Slider aria-labelledby="custom-label" />);
-    expect(screen.getByRole('slider').getAttribute('aria-labelledby')).toBe('custom-label');
+    const { getByRole } = render(<Slider aria-labelledby="custom-label" />);
+    expect(getByRole('slider').getAttribute('aria-labelledby')).toBe('custom-label');
   });
 
   it('can provide the current value', () => {
@@ -54,9 +54,9 @@ describe('Slider', () => {
   });
 
   it('can set id', () => {
-    const { container } = render(<Slider id="test_id" styles={{ titleLabel: 'test_label' }} />);
+    const { container, getByRole } = render(<Slider id="test_id" styles={{ titleLabel: 'test_label' }} />);
 
-    expect(screen.getByRole('slider').id).toEqual('test_id');
+    expect(getByRole('slider').id).toEqual('test_id');
 
     // properly associates label with custom id
     const label = container.getElementsByClassName('test_label')[0];
@@ -65,9 +65,11 @@ describe('Slider', () => {
 
   it('can set id via buttonProps', () => {
     // Not the recommended way of doing things, but it should work consistently still
-    const { container } = render(<Slider buttonProps={{ id: 'test_id' }} styles={{ titleLabel: 'test_label' }} />);
+    const { container, getByRole } = render(
+      <Slider buttonProps={{ id: 'test_id' }} styles={{ titleLabel: 'test_label' }} />,
+    );
 
-    expect(screen.getByRole('slider').id).toEqual('test_id');
+    expect(getByRole('slider').id).toEqual('test_id');
 
     // properly associates label with custom id
     const label = container.getElementsByClassName('test_label')[0];
