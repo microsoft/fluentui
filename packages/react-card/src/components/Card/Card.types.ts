@@ -1,15 +1,11 @@
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type CardSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  root: Slot<'div'>;
 };
 
 export type CardCommons = {
-  /*
-   * TODO Add props and slots here
-   * Any slot property should be listed in the cardShorthandProps array below
-   * Any property that has a default value should be listed in CardDefaultedProps as e.g. 'size' | 'icon'
-   */
+  appearance: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
 };
 
 /**

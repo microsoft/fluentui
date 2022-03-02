@@ -2,19 +2,20 @@ import * as React from 'react';
 import { Meta } from '@storybook/react';
 import { Label } from '../index';
 
+import descriptionMd from './LabelDescription.md';
 export { Default } from './LabelDefault.stories';
 export { Size } from './LabelSize.stories';
 export { Strong } from './LabelStrong.stories';
 export { Disabled } from './LabelDisabled.stories';
 export { Required } from './LabelRequired.stories';
 
-export default {
-  title: 'Components/Label',
+const meta: Meta = {
+  title: 'Preview Components/Label',
   component: Label,
   parameters: {
     docs: {
       description: {
-        component: 'A label component provides a title or name to a component.',
+        component: descriptionMd,
       },
     },
   },
@@ -32,4 +33,6 @@ export default {
       </div>
     ),
   ],
-} as Meta;
+};
+
+export default meta;

@@ -7,10 +7,9 @@
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import { LabelProps } from '@fluentui/react-label';
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
+import { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
@@ -18,47 +17,40 @@ export const Checkbox: ForwardRefComponent<CheckboxProps>;
 // @public (undocumented)
 export const checkboxClassName = "fui-Checkbox";
 
-// @public (undocumented)
-export interface CheckboxCommons {
-    checked: 'mixed' | boolean;
-    circular: boolean | undefined;
-    containerClassName?: string;
-    labelPosition: 'before' | 'after';
-    size: 'medium' | 'large';
-}
-
 // @public
 export interface CheckboxOnChangeData {
     // (undocumented)
     checked: 'mixed' | boolean;
 }
 
+// Warning: (ae-forgotten-export) The symbol "CheckboxCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
-export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' | 'checked' | 'defaultChecked'> & Partial<CheckboxCommons> & {
+export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & Partial<CheckboxCommons> & {
+    children?: never;
     onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
     defaultChecked?: 'mixed' | boolean;
 };
 
 // @public (undocumented)
 export type CheckboxSlots = {
-    root: ObjectShorthandProps<LabelProps> | IntrinsicShorthandProps<'span'>;
-    input: IntrinsicShorthandProps<'input'>;
-    indicator: IntrinsicShorthandProps<'div'>;
+    root: NonNullable<Slot<'span'>>;
+    label?: Slot<typeof Label>;
+    input: NonNullable<Slot<'input'>>;
+    indicator: Slot<'div'>;
 };
 
 // @public
-export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons & {
-    hasLabel: boolean;
-};
+export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;
 
 // @public (undocumented)
-export const renderCheckbox: (state: CheckboxState) => JSX.Element;
+export const renderCheckbox_unstable: (state: CheckboxState) => JSX.Element;
 
 // @public
-export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxState;
+export const useCheckbox_unstable: (props: CheckboxProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxState;
 
 // @public
-export const useCheckboxStyles: (state: CheckboxState) => CheckboxState;
+export const useCheckboxStyles_unstable: (state: CheckboxState) => CheckboxState;
 
 // (No @packageDocumentation comment for this package)
 

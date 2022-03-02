@@ -32,6 +32,7 @@ import type { IButtonProps, IButton } from './Button.types';
 import type { IButtonClassNames } from './BaseButton.classNames';
 import type { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import type { IKeytipProps } from '../../Keytip';
+import { composeComponentAs } from '../../Utilities';
 
 /**
  * {@docCategory Button}
@@ -337,7 +338,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
           {menuProps &&
             !menuProps.doNotLayer &&
             this._shouldRenderMenu() &&
-            onRenderMenu(menuProps, this._onRenderMenu)}
+            onRenderMenu(this._getMenuProps(menuProps), this._onRenderMenu)}
         </span>
       </Tag>
     );
@@ -359,7 +360,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       return (
         <>
           {Content}
-          {this._shouldRenderMenu() && onRenderMenu(menuProps, this._onRenderMenu)}
+          {this._shouldRenderMenu() && onRenderMenu(this._getMenuProps(menuProps), this._onRenderMenu)}
         </>
       );
     }
@@ -510,10 +511,9 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     return <FontIcon iconName="ChevronDown" {...menuIconProps} className={this._classNames.menuIcon} />;
   };
 
-  private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
+  private _getMenuProps(menuProps: IContextualMenuProps): IContextualMenuProps {
     const { persistMenu } = this.props;
     const { menuHidden } = this.state;
-    const MenuType = this.props.menuAs || (ContextualMenu as React.ElementType<IContextualMenuProps>);
 
     // the accessible menu label (accessible name) has a relationship to the button.
     // If the menu props do not specify an explicit value for aria-label or aria-labelledBy,
@@ -522,19 +522,23 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       menuProps = { ...menuProps, labelElementId: this._labelId };
     }
 
-    return (
-      <MenuType
-        id={this._labelId + '-menu'}
-        directionalHint={DirectionalHint.bottomLeftEdge}
-        {...menuProps}
-        shouldFocusOnContainer={this._menuShouldFocusOnContainer}
-        shouldFocusOnMount={this._menuShouldFocusOnMount}
-        hidden={persistMenu ? menuHidden : undefined}
-        className={css('ms-BaseButton-menuhost', menuProps.className)}
-        target={this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current}
-        onDismiss={this._onDismissMenu}
-      />
-    );
+    return {
+      id: this._labelId + '-menu',
+      directionalHint: DirectionalHint.bottomLeftEdge,
+      ...menuProps,
+      shouldFocusOnContainer: this._menuShouldFocusOnContainer,
+      shouldFocusOnMount: this._menuShouldFocusOnMount,
+      hidden: persistMenu ? menuHidden : undefined,
+      className: css('ms-BaseButton-menuhost', menuProps.className),
+      target: this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current,
+      onDismiss: this._onDismissMenu,
+    };
+  }
+
+  private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
+    const MenuType = this.props.menuAs ? composeComponentAs(this.props.menuAs, ContextualMenu) : ContextualMenu;
+
+    return <MenuType {...menuProps} />;
   };
 
   private _onDismissMenu: IContextualMenuProps['onDismiss'] = ev => {
@@ -933,15 +937,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     }
 
     if (!ev.defaultPrevented) {
-      // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
-      // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates
-      // between a real click event and a keypress event (detail should be the number of mouse clicks).
-      // ...Plot twist! For a real click event in IE 11, detail is always 0 (Edge sets it properly to 1).
-      // So we also check the pointerType property, which both Edge and IE set to "mouse" for real clicks
-      // and "" for pressing "Enter" with Narrator on.
-      const shouldFocusOnContainer =
-        ev.nativeEvent.detail !== 0 || (ev.nativeEvent as PointerEvent).pointerType === 'mouse';
-      this._onToggleMenu(shouldFocusOnContainer);
+      this._onToggleMenu(false);
       ev.preventDefault();
       ev.stopPropagation();
     }

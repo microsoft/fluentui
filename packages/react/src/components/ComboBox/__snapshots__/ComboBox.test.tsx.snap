@@ -923,7 +923,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
                     data-is-focusable="true"
                     id="ComboBox0-list1"
                     role="option"
-                    title="Option 1"
                     type="button"
                   >
                     <span
@@ -1085,7 +1084,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
                   data-is-focusable="true"
                   id="ComboBox0-list3"
                   role="option"
-                  title="Option 2"
                   type="button"
                 >
                   <span
@@ -1532,6 +1530,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
               class="ms-ComboBox-optionsContainerWrapper "
             >
               <div
+                aria-multiselectable="true"
                 class=
                     ms-ComboBox-optionsContainer
                     {
@@ -1664,7 +1663,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                         & .ms-Checkbox-label {
                           width: 100%;
                         }
-                    title="Option 1"
                   >
                     <input
                       aria-selected="false"
@@ -1687,7 +1685,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                       data-ktp-execute-target="true"
                       id="ComboBox0-list1"
                       role="option"
-                      title="Option 1"
                       type="checkbox"
                     />
                     <label
@@ -1879,7 +1876,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                       & .ms-Checkbox-label {
                         width: 100%;
                       }
-                  title="Option 2"
                 >
                   <input
                     aria-selected="true"
@@ -1903,7 +1899,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                     data-ktp-execute-target="true"
                     id="ComboBox0-list3"
                     role="option"
-                    title="Option 2"
                     type="checkbox"
                   />
                   <label

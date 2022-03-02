@@ -420,6 +420,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
       'onChange',
       'value',
+      'aria-describedby',
+      'aria-labelledby',
     ]);
 
     const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
@@ -477,6 +479,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * {@inheritdoc}
    */
   public focus = (shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): void => {
+    if (this.props.disabled) {
+      return;
+    }
+
     if (this._autofill.current) {
       if (useFocusAsync) {
         focusAsync(this._autofill.current);
@@ -540,7 +546,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       label,
       disabled,
       ariaLabel,
-      ariaDescribedBy,
+      ariaDescribedBy = this.props['aria-describedby'],
       required,
       errorMessage,
       buttonIconProps,
@@ -563,6 +569,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       this._hasFocus() && this.props.multiSelect && multiselectAccessibleText
         ? multiselectAccessibleText
         : placeholderProp;
+
+    const labelledBy = [this.props['aria-labelledby'], label && this._id + '-label'].join(' ').trim();
 
     return (
       <div
@@ -590,7 +598,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-autocomplete={this._getAriaAutoCompleteValue()}
           role="combobox"
           readOnly={disabled}
-          aria-labelledby={label && this._id + '-label'}
+          aria-labelledby={labelledBy ? labelledBy : undefined}
           aria-label={ariaLabel && !label ? ariaLabel : undefined}
           aria-describedby={
             errorMessage !== undefined ? mergeAriaAttributeValues(ariaDescribedBy, errorMessageId) : ariaDescribedBy
@@ -758,6 +766,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     if (this.props.disabled) {
       this._handleInputWhenDisabled(null /* event */);
       return;
+    }
+
+    if (this.props.onInputValueChange) {
+      this.props.onInputValueChange(updatedValue);
     }
 
     this.props.allowFreeform
@@ -1080,12 +1092,12 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // If it is then resolve it asynchronously.
       if (Array.isArray(newOptions)) {
         this.props.hoisted.setCurrentOptions(newOptions);
-      } else if (newOptions && newOptions.then) {
+      } else if (newOptions && (newOptions as PromiseLike<IComboBoxOption[]>).then) {
         // Ensure that the promise will only use the callback if it was the most recent one
         // and update the state when the promise returns
-        const promise: PromiseLike<IComboBoxOption[]> = (this._currentPromise = newOptions);
-        promise.then((newOptionsFromPromise: IComboBoxOption[]) => {
-          if (promise === this._currentPromise) {
+        this._currentPromise = newOptions;
+        newOptions.then((newOptionsFromPromise: IComboBoxOption[]) => {
+          if (newOptions === this._currentPromise) {
             this.props.hoisted.setCurrentOptions(newOptionsFromPromise);
           }
         });
@@ -1331,7 +1343,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
   // Render List of items
   private _onRenderList = (props: IComboBoxProps): JSX.Element => {
-    const { onRenderItem = this._onRenderItem, label, ariaLabel } = props;
+    const { onRenderItem = this._onRenderItem, label, ariaLabel, multiSelect } = props;
 
     let queue: { id?: string; items: JSX.Element[] } = { items: [] };
     let renderedList: JSX.Element[] = [];
@@ -1395,6 +1407,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         className={this._classNames.optionsContainer}
         aria-labelledby={label && id + '-label'}
         aria-label={ariaLabel && !label ? ariaLabel : undefined}
+        aria-multiselectable={multiSelect ? 'true' : undefined}
         role="listbox"
       >
         {renderedList}
@@ -1452,7 +1465,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const isIndeterminate: boolean = this._isOptionIndeterminate(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
-    const title = item.title ?? getPreviewText(item);
+    const title = item.title;
 
     const onRenderCheckboxLabel = () => onRenderOption(item, this._onRenderOptionContent);
 

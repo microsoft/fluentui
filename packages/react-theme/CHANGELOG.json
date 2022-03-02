@@ -2,6 +2,104 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Fri, 18 Feb 2022 13:35:36 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Feb 2022 08:51:02 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "636b848aa2323fd5d450e2206a71afad93aaa578",
+            "comment": "chore(react-theme) Add theme tokens bundle size fixture"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "fa3937813e6587d90ab5c43579321004fc37d6e9",
+            "comment": "feat(react-theme): Add colorNeutralForeground1Static token"
+          },
+          {
+            "author": "andmarti@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "3ca42a594827a2ce3d5d18fcd4a399c92fda3bd7",
+            "comment": "updating brand colors"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "b382d0421440e0854673a7967137d6c667544f91",
+            "comment": "feat: Export tokens as mapping to CSS variables"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "d7479a7414e636731b678aebb6bf6295fd607fda",
+            "comment": "Extend brand ramp from 13 to 16 tokens"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "1dba2fca2365f1a748505896679ae160a6fec270",
+            "comment": "remove mergeThemes API"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "1c2a4410205d3c86bc885fb74d6aede75d9bd99d",
+            "comment": "Theme: Adding function to programmatically generate tokens object based on a theme."
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c9a03954ffd5d1a85284fb36ef4cd103ed8aa927",
+            "comment": "Remove `themeToCSSVariables` function"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "8985d65f0aac448c6766d27800922224555be0f4",
+            "comment": "feat(react-theme) Add border1 color token for shared colors"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c00913d50e2dd15bbfbb0757cefe43b192ff1d7f",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 08:34:16 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-beta.4",
       "version": "9.0.0-beta.4",

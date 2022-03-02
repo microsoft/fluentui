@@ -7,7 +7,7 @@ export const Shape = () => (
   <>
     <Menu>
       <MenuTrigger>
-        <MenuButton>This is a Menu Button</MenuButton>
+        <MenuButton>Rounded</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>
@@ -20,7 +20,7 @@ export const Shape = () => (
 
     <Menu>
       <MenuTrigger>
-        <MenuButton shape="circular">This is a Menu Button</MenuButton>
+        <MenuButton shape="circular">Circular</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>
@@ -33,7 +33,7 @@ export const Shape = () => (
 
     <Menu>
       <MenuTrigger>
-        <MenuButton shape="square">This is a Menu Button</MenuButton>
+        <MenuButton shape="square">Square</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>

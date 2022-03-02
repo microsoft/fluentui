@@ -1,16 +1,16 @@
-import { ARIAButtonShorthandProps } from '@fluentui/react-aria';
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type ButtonSlots = {
   /**
    * Root of the component that renders as either a `<button>` tag or an `<a>` tag.
    */
-  root: ARIAButtonShorthandProps;
+  root: Slot<ARIAButtonSlotProps>;
 
   /**
    * Icon that renders either before or after the `children` as specified by the `iconPosition` prop.
    */
-  icon?: IntrinsicShorthandProps<'span'>;
+  icon?: Slot<'span'>;
 };
 
 export type ButtonCommons = {
@@ -47,7 +47,7 @@ export type ButtonCommons = {
    * A button can format its icon to appear before or after its content.
    * @default 'before'
    */
-  iconPosition: 'before' | 'after';
+  iconPosition?: 'before' | 'after';
 
   /**
    * A button can be rounded, circular, or square.

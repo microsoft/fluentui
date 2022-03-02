@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Divider renders a brand state with content 1`] = `
+exports[`Divider renders a brand appearance 1`] = `
 <div
   aria-labelledby="divider-1"
+  aria-orientation="horizontal"
   className="fui-Divider"
   role="separator"
 >
@@ -14,50 +15,17 @@ exports[`Divider renders a brand state with content 1`] = `
 </div>
 `;
 
-exports[`Divider renders a content aligned center 1`] = `
-<div
-  aria-labelledby="divider-1"
-  className="fui-Divider"
-  role="separator"
->
-  <div
-    id="divider-1"
-  >
-    Center
-  </div>
-</div>
-`;
-
-exports[`Divider renders a content aligned end 1`] = `
-<div
-  aria-labelledby="divider-1"
-  className="fui-Divider"
-  role="separator"
->
-  <div
-    id="divider-1"
-  >
-    End
-  </div>
-</div>
-`;
-
-exports[`Divider renders a content aligned start 1`] = `
-<div
-  aria-labelledby="divider-1"
-  className="fui-Divider"
-  role="separator"
->
-  <div
-    id="divider-1"
-  >
-    Start
-  </div>
-</div>
-`;
-
 exports[`Divider renders a default divider 1`] = `
 <div
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+/>
+`;
+
+exports[`Divider renders a divider with a different color 1`] = `
+<div
+  aria-orientation="horizontal"
   className="fui-Divider"
   role="separator"
 />
@@ -66,6 +34,7 @@ exports[`Divider renders a default divider 1`] = `
 exports[`Divider renders a divider with content 1`] = `
 <div
   aria-labelledby="divider-1"
+  aria-orientation="horizontal"
   className="fui-Divider"
   role="separator"
 >
@@ -77,16 +46,10 @@ exports[`Divider renders a divider with content 1`] = `
 </div>
 `;
 
-exports[`Divider renders a divider with different color 1`] = `
-<div
-  className="fui-Divider"
-  role="separator"
-/>
-`;
-
 exports[`Divider renders a divider with inset 1`] = `
 <div
   aria-labelledby="divider-1"
+  aria-orientation="horizontal"
   className="fui-Divider"
   role="separator"
 >
@@ -98,9 +61,10 @@ exports[`Divider renders a divider with inset 1`] = `
 </div>
 `;
 
-exports[`Divider renders a horizontal a fixed width 1`] = `
+exports[`Divider renders a horizontal divider with a fixed width 1`] = `
 <div
   aria-labelledby="divider-1"
+  aria-orientation="horizontal"
   className="fui-Divider"
   role="separator"
   style={
@@ -117,9 +81,10 @@ exports[`Divider renders a horizontal a fixed width 1`] = `
 </div>
 `;
 
-exports[`Divider renders a strong state with content 1`] = `
+exports[`Divider renders a strong appearance 1`] = `
 <div
   aria-labelledby="divider-1"
+  aria-orientation="horizontal"
   className="fui-Divider"
   role="separator"
 >
@@ -131,9 +96,10 @@ exports[`Divider renders a strong state with content 1`] = `
 </div>
 `;
 
-exports[`Divider renders a subtle state with content 1`] = `
+exports[`Divider renders a subtle appearance 1`] = `
 <div
   aria-labelledby="divider-1"
+  aria-orientation="horizontal"
   className="fui-Divider"
   role="separator"
 >
@@ -145,9 +111,18 @@ exports[`Divider renders a subtle state with content 1`] = `
 </div>
 `;
 
-exports[`Divider renders a vertical a fixed height 1`] = `
+exports[`Divider renders a vertical divider 1`] = `
+<div
+  aria-orientation="vertical"
+  className="fui-Divider"
+  role="separator"
+/>
+`;
+
+exports[`Divider renders a vertical divider with a fixed height 1`] = `
 <div
   aria-labelledby="divider-1"
+  aria-orientation="vertical"
   className="fui-Divider"
   role="separator"
   style={
@@ -164,16 +139,10 @@ exports[`Divider renders a vertical a fixed height 1`] = `
 </div>
 `;
 
-exports[`Divider renders a vertical divider 1`] = `
-<div
-  className="fui-Divider"
-  role="separator"
-/>
-`;
-
 exports[`Divider renders a vertical divider with content 1`] = `
 <div
   aria-labelledby="divider-1"
+  aria-orientation="vertical"
   className="fui-Divider"
   role="separator"
 >
@@ -181,6 +150,51 @@ exports[`Divider renders a vertical divider with content 1`] = `
     id="divider-1"
   >
     Vertical
+  </div>
+</div>
+`;
+
+exports[`Divider renders content center aligned 1`] = `
+<div
+  aria-labelledby="divider-1"
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+>
+  <div
+    id="divider-1"
+  >
+    Center
+  </div>
+</div>
+`;
+
+exports[`Divider renders content end aligned 1`] = `
+<div
+  aria-labelledby="divider-1"
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+>
+  <div
+    id="divider-1"
+  >
+    End
+  </div>
+</div>
+`;
+
+exports[`Divider renders content start aligned 1`] = `
+<div
+  aria-labelledby="divider-1"
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+>
+  <div
+    id="divider-1"
+  >
+    Start
   </div>
 </div>
 `;

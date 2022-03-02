@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-aria",
-  "version": "9.0.0-beta.4",
+  "version": "9.0.0-rc.4",
   "description": "React helper to ensure ARIA",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -18,15 +18,14 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-aria/src && yarn docs",
-    "storybook": "start-storybook",
+    "storybook": "node ../../scripts/storybook/runner",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-beta.4",
     "@fluentui/react-conformance": "*",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
@@ -38,13 +37,11 @@
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0",
-    "@fluentui/babel-make-styles": "9.0.0-beta.4"
+    "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "9.0.0-beta.1",
-    "@fluentui/react-make-styles": "9.0.0-beta.4",
-    "@fluentui/react-utilities": "9.0.0-beta.4",
+    "@fluentui/keyboard-keys": "9.0.0-rc.3",
+    "@fluentui/react-utilities": "9.0.0-rc.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

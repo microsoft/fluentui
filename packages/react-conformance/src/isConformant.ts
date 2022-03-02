@@ -8,14 +8,19 @@ import { getComponentDoc } from './utils/getComponentDoc';
 
 export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptions<TProps>>[]) {
   const mergedOptions = merge<IsConformantOptions>(...testInfo);
-  const { componentPath, displayName, disabledTests = [], extraTests } = mergedOptions;
+  const { componentPath, displayName, disabledTests = [], extraTests, tsconfigDir } = mergedOptions;
 
   describe('isConformant', () => {
+    afterEach(() => {
+      // TODO: remove this once cleanup is properly implemented or after moving to testing-library
+      document.body.innerHTML = '';
+    });
+
     if (!fs.existsSync(componentPath)) {
       throw new Error(`Path ${componentPath} does not exist`);
     }
 
-    const tsProgram = createTsProgram(componentPath);
+    const tsProgram = createTsProgram(componentPath, tsconfigDir);
 
     const components = getComponentDoc(componentPath, tsProgram);
     const mainComponents = components.filter(comp => comp.displayName === displayName);

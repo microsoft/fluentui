@@ -7,4 +7,9 @@ export * from './assertNodeContains';
 export { findIntrinsicElement } from './findIntrinsicElement';
 export { getDisplayName } from './getDisplayName';
 export { nextFrame } from './nextFrame';
-export { EmptyThemeProvider, mountWithProvider, mountWithProviderAndGetComponent } from './withProvider';
+export {
+  EmptyThemeProvider,
+  mountWithProvider,
+  mountWithProviderAndGetComponent,
+  createTestContainer,
+} from './withProvider';

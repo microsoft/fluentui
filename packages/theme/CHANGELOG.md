@@ -1,8 +1,82 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Thu, 25 Nov 2021 14:54:16 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Mar 2022 07:23:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.4.12](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.4.12)
+
+Tue, 01 Mar 2022 07:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.4.11..@fluentui/theme_v2.4.12)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.5.0 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+
+## [2.4.11](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.4.11)
+
+Thu, 24 Feb 2022 07:29:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.4.10..@fluentui/theme_v2.4.11)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.4.3 ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by beachball)
+
+## [2.4.10](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.4.10)
+
+Thu, 17 Feb 2022 07:28:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.4.9..@fluentui/theme_v2.4.10)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.4.2 ([PR #21777](https://github.com/microsoft/fluentui/pull/21777) by beachball)
+
+## [2.4.9](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.4.9)
+
+Fri, 11 Feb 2022 07:27:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.4.8..@fluentui/theme_v2.4.9)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.4.1 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
+
+## [2.4.8](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.4.8)
+
+Wed, 09 Feb 2022 07:30:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.4.7..@fluentui/theme_v2.4.8)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.4.0 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
+
+## [2.4.7](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.4.7)
+
+Thu, 03 Feb 2022 07:29:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.4.6..@fluentui/theme_v2.4.7)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.3.0 ([PR #21545](https://github.com/microsoft/fluentui/pull/21545) by beachball)
+- Bump @fluentui/utilities to v8.3.10 ([PR #21545](https://github.com/microsoft/fluentui/pull/21545) by beachball)
+
+## [2.4.6](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.4.6)
+
+Mon, 03 Jan 2022 23:32:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.4.5..@fluentui/theme_v2.4.6)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.2.3 ([PR #20954](https://github.com/microsoft/fluentui/pull/20954) by beachball)
+- Bump @fluentui/utilities to v8.3.9 ([PR #20954](https://github.com/microsoft/fluentui/pull/20954) by beachball)
+
+## [2.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.4.5)
+
+Wed, 15 Dec 2021 07:31:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.4.4..@fluentui/theme_v2.4.5)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.3.8 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
 
 ## [2.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.4.4)
 

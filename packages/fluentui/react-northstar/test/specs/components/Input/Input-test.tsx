@@ -29,6 +29,7 @@ describe('Input', () => {
       onKeyPress: 'input',
       onKeyUp: 'input',
     },
+    disabledTests: ['component-has-root-ref'],
     autoControlledProps: ['value'],
     forwardsRefTo: `Box[className~="${inputSlotClassNames.input}"]`,
   });

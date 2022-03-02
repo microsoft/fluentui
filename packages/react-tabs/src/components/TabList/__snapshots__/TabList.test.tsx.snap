@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabList renders with no tabs 1`] = `
+<div>
+  <div
+    class="fui-TabList"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
+    role="tablist"
+  />
+</div>
+`;
+
+exports[`TabList renders with tabs 1`] = `
+<div>
+  <div
+    class="fui-TabList"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
+    role="tablist"
+  >
+    <div
+      class="fui-Tab"
+      role="tab"
+      tabindex="0"
+    >
+      <span
+        class=""
+      >
+        First
+      </span>
+    </div>
+    <div
+      class="fui-Tab"
+      role="tab"
+      tabindex="0"
+    >
+      <span
+        class=""
+      >
+        Second
+      </span>
+    </div>
+    <div
+      class="fui-Tab"
+      role="tab"
+      tabindex="0"
+    >
+      <span
+        class=""
+      >
+        Third
+      </span>
+    </div>
+  </div>
+</div>
+`;

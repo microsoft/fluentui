@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type PortalCommons = {
+type PortalCommons = {
   /**
    * React children
    */

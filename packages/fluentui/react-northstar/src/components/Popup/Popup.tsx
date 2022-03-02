@@ -131,6 +131,9 @@ export interface PopupProps
 
   /** Controls whether or not auto focus should be applied, using boolean or AutoFocusZoneProps type value. */
   autoFocus?: boolean | AutoFocusZoneProps;
+
+  /** Close the popup when scroll happens outside of Popup */
+  closeOnScroll?: boolean;
 }
 
 export const popupClassName = 'ui-popup';
@@ -170,6 +173,7 @@ export const Popup: React.FC<PopupProps> &
     unstable_disableTether,
     unstable_pinned,
     autoSize,
+    closeOnScroll,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -477,7 +481,7 @@ export const Popup: React.FC<PopupProps> &
                   capture
                 />
 
-                {isOpenedByRightClick && (
+                {(isOpenedByRightClick || closeOnScroll) && (
                   <>
                     <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
                     <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
@@ -685,6 +689,7 @@ Popup.propTypes = {
   contentRef: customPropTypes.ref,
   trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+  closeOnScroll: PropTypes.bool,
 };
 Popup.defaultProps = {
   accessibility: popupBehavior,

@@ -4,13 +4,13 @@ import { CompoundButton } from '../../../CompoundButton';
 export const Size = () => {
   return (
     <>
-      <CompoundButton secondaryContent="This is the secondary content" size="small">
+      <CompoundButton secondaryContent="Secondary content" size="small">
         Size: small
       </CompoundButton>
-      <CompoundButton secondaryContent="This is the secondary content" size="medium">
+      <CompoundButton secondaryContent="Secondary content" size="medium">
         Size: medium
       </CompoundButton>
-      <CompoundButton secondaryContent="This is the secondary content" size="large">
+      <CompoundButton secondaryContent="Secondary content" size="large">
         Size: large
       </CompoundButton>
     </>

@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { CardPreviewState } from './CardPreview.types';
 
 export const cardPreviewClassName = 'fui-CardPreview';
@@ -7,16 +7,14 @@ export const cardPreviewClassName = 'fui-CardPreview';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     position: 'relative',
-    // TODO: Explore alternate way of applying padding on parent Card
-    ...shorthands.margin('0', '-12px'),
 
     '> *': {
       display: 'block',
       width: '100%',
     },
-  }),
+  },
 
   logo: {
     position: 'absolute',
@@ -30,7 +28,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the CardPreview slots based on the state
  */
-export const useCardPreviewStyles = (state: CardPreviewState): CardPreviewState => {
+export const useCardPreviewStyles_unstable = (state: CardPreviewState): CardPreviewState => {
   const styles = useStyles();
   state.root.className = mergeClasses(cardPreviewClassName, styles.root, state.root.className);
 

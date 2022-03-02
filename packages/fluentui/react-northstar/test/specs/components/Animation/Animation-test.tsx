@@ -12,6 +12,7 @@ describe('Animation', () => {
     skipAsPropTests: true,
     requiredProps: { children: <div /> },
     testOptions: { 'consistent-callback-names': { ignoreProps: ['onEntered', 'onExited'] } },
+    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
   });
 
   test('does not throw if children is not passed', () => {

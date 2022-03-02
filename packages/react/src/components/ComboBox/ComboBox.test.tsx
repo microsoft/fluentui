@@ -535,6 +535,17 @@ describe('ComboBox', () => {
     });
   });
 
+  it('Cannot expand the menu when focused with a button while combobox is disabled', () => {
+    const comboBoxRef = React.createRef<any>();
+    safeMount(
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} componentRef={comboBoxRef} disabled />,
+      wrapper => {
+        comboBoxRef.current?.focus(true);
+        expect(comboBoxRef.current.state.isOpen).toEqual(false);
+      },
+    );
+  });
+
   it('Calls onMenuOpen when clicking on the button', () => {
     const onMenuOpenMock = jest.fn();
     safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={onMenuOpenMock} />, wrapper => {
@@ -609,6 +620,29 @@ describe('ComboBox', () => {
         // Simulate typing one character into the ComboBox input
         const input = wrapper.find('input');
         input.simulate('input', { target: { value: 'a' } });
+
+        // Simulate clearing the ComboBox input
+        // (have to manually update the input element beforehand due to issues with Autofill in enzyme)
+        (input.getDOMNode() as HTMLInputElement).value = '';
+        input.simulate('input', { target: { value: '' } });
+        expect(changedValue).toEqual('');
+      },
+    );
+  });
+
+  it('onInputValueChange is called whenever the input changes', () => {
+    let changedValue: string | undefined = undefined;
+    const onInputValueChangeHandler = (value: string) => {
+      changedValue = value;
+    };
+
+    safeMount(
+      <ComboBox options={DEFAULT_OPTIONS} allowFreeform onInputValueChange={onInputValueChangeHandler} />,
+      wrapper => {
+        // Simulate typing one character into the ComboBox input
+        const input = wrapper.find('input');
+        input.simulate('input', { target: { value: 'a' } });
+        expect(changedValue).toEqual('a');
 
         // Simulate clearing the ComboBox input
         // (have to manually update the input element beforehand due to issues with Autofill in enzyme)
@@ -991,30 +1025,34 @@ describe('ComboBox', () => {
     });
   });
 
-  it('allows adding a custom aria-describedby id to the input', () => {
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} ariaDescribedBy={'customAriaDescriptionId'} />, wrapper => {
-      const inputElement = wrapper.find('input').getDOMNode();
-      expect(inputElement.getAttribute('aria-describedby')).toBe('customAriaDescriptionId');
-    });
-  });
-
-  it('correctly handles (aria-labelledby) when no label prop is provided', () => {
-    safeMount(<ComboBox options={RENDER_OPTIONS} aria-labelledby={'customAriaLabel'} />, wrapper => {
-      const inputElement = wrapper.find('input').getDOMNode();
-
-      expect(inputElement.getAttribute('aria-labelledby')).toBeNull();
-    });
-  });
-
-  it('correctly handles (aria-labelledby) when label prop is provided', () => {
+  it('defaults to ariaDescribedBy prop when passing id to input', () => {
+    const ariaId = 'customAriaDescriptionId';
     safeMount(
-      <ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={'customAriaLabel'} />,
+      <ComboBox options={DEFAULT_OPTIONS} ariaDescribedBy={ariaId} aria-describedby="usePropInstead" />,
       wrapper => {
         const inputElement = wrapper.find('input').getDOMNode();
-
-        expect(inputElement.getAttribute('aria-labelledby')).toBe('ComboBox0-label');
+        expect(inputElement.getAttribute('aria-describedby')).toBe(ariaId);
       },
     );
+  });
+
+  it('allows adding a custom aria-describedby id to the input via an attribute', () => {
+    const ariaId = 'customAriaDescriptionId';
+    safeMount(<ComboBox options={DEFAULT_OPTIONS} aria-describedby={ariaId} />, wrapper => {
+      const inputElement = wrapper.find('input').getDOMNode();
+      expect(inputElement.getAttribute('aria-describedby')).toBe(ariaId);
+    });
+  });
+
+  it('correctly handles (aria-labelledby) when label is also provided', () => {
+    const customId = 'customAriaLabelledById';
+    safeMount(<ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={customId} />, wrapper => {
+      const labelElement = wrapper.find('label').getDOMNode();
+      const labelId = labelElement.getAttribute('id');
+
+      const inputElement = wrapper.find('input').getDOMNode();
+      expect(inputElement.getAttribute('aria-labelledby')).toBe(customId + ' ' + labelId);
+    });
   });
 
   it('sets ariaLabel on both the input and the dropdown list', () => {

@@ -111,13 +111,24 @@ jobs:
 
             touch packages/fluentui/.npmrc
 
-            echo "@fluentui:registry=http://registry.npmjs.org/" > packages/fluentui/.npmrc
-            echo "registry=http://registry.npmjs.org/" >> packages/fluentui/.npmrc
+            echo "@fluentui:registry=https://registry.npmjs.org/" > packages/fluentui/.npmrc
+            echo "registry=https://registry.npmjs.org/" >> packages/fluentui/.npmrc
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> packages/fluentui/.npmrc
 
             yarn release:fluentui:$(version) --yes
 
             yarn release:fluentui:post-validation
+
+      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest
+        inputs:
+          BuildDropPath: $(System.DefaultWorkingDirectory)
+
+      - task: PublishPipelineArtifact@1
+        displayName: 📒 Publish Manifest
+        inputs:
+          artifactName: SBom-Build-$(System.JobAttempt)
+          targetPath: $(System.DefaultWorkingDirectory)/_manifest
 
       - template: .devops/templates/cleanup.yml
 
@@ -193,6 +204,18 @@ jobs:
           ContainerName: $web
           BlobPrefix: $(deployBasePath)
           Gzip: true
+
+      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest Docsite
+        inputs:
+          BuildDropPath: $(System.DefaultWorkingDirectory)
+
+      # Publish the manifest to a separate artifact to avoid hosting the _manifest files on the website
+      - task: PublishPipelineArtifact@1
+        displayName: 📒 Publish Manifest DocSite
+        inputs:
+          artifactName: SBom-DocSite-$(System.JobAttempt)
+          targetPath: $(System.DefaultWorkingDirectory)/_manifest
 
       - task: PublishPipelineArtifact@1
         displayName: Publish Docsite as Pipeline Artifact

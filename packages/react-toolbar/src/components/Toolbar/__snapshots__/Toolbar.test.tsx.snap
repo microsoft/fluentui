@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toolbar renders a default state 1`] = `
+<div>
+  <div
+    class="fui-Toolbar"
+  >
+    Default Toolbar
+  </div>
+</div>
+`;

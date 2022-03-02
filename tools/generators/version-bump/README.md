@@ -23,8 +23,9 @@ The generator also bumps the versions in any dependent packages.
 - [Options](#options)
   - [`name`](#name)
   - [`all`](#all)
-  - [`match`](#match)
-  - [`replace`](#replace)
+  - [`exclude`](#exclude)
+  - [`bumpType`](#bumpType)
+  - [`prereleaseTag`](#prereleaseTag)
 
 <!-- tocstop -->
 
@@ -87,6 +88,12 @@ Package/library name (needs to be full name of the package, scope included - e.g
 Type: `boolean`
 
 Run batch migration on all vNext packages with the tag `platform:web` in `nx.json`
+
+#### `exclude`
+
+Type: `string`
+
+Comma-delimited list of packages that should not be bumped when using the `--all` flag
 
 #### `bumpType`
 

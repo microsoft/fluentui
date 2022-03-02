@@ -47,7 +47,6 @@ export const PivotOverflowMenuExample: React.FunctionComponent = () => {
             <Label>Pivot #8</Label>
           </PivotItem>
         </Pivot>
-        {/* eslint-disable-next-line deprecation/deprecation */}
       </Fabric>
     </>
   );

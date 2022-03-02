@@ -4,50 +4,14 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
-export const RangedSlider: ForwardRefComponent<RangedSliderProps>;
-
-// @public (undocumented)
-export const rangedSliderClassName = "fui-RangedSlider";
-
-// @public (undocumented)
-export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {
-    defaultValue?: [number, number];
-    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
-        value: [number, number];
-    }) => void;
-    value?: [number, number];
-}
-
-// @public (undocumented)
-export interface RangedSliderProps extends Omit<ComponentProps<RangedSliderSlots>, 'onChange' | 'defaultValue'>, RangedSliderCommons {
-}
-
-// @public (undocumented)
-export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'input'> & {
-    lowerThumb: IntrinsicShorthandProps<'div'>;
-    lowerThumbWrapper: IntrinsicShorthandProps<'div'>;
-    upperThumb: IntrinsicShorthandProps<'div'>;
-    upperThumbWrapper: IntrinsicShorthandProps<'div'>;
-    lowerInput: IntrinsicShorthandProps<'input'>;
-    upperInput: IntrinsicShorthandProps<'input'>;
-};
-
-// @public (undocumented)
-export interface RangedSliderState extends ComponentState<RangedSliderSlots>, RangedSliderCommons {
-}
-
-// @public
-export const renderRangedSlider: (state: RangedSliderState) => JSX.Element;
-
-// @public
-export const renderSlider: (state: SliderState) => JSX.Element;
+export const renderSlider_unstable: (state: SliderState) => JSX.Element;
 
 // @public
 export const Slider: ForwardRefComponent<SliderProps>;
@@ -56,68 +20,36 @@ export const Slider: ForwardRefComponent<SliderProps>;
 export const sliderClassName = "fui-Slider";
 
 // @public (undocumented)
-export type SliderCommons = {
-    defaultValue?: number;
-    value?: number;
-    min?: number;
-    max?: number;
-    step?: number;
-    keyboardStep?: number;
-    disabled?: boolean;
-    vertical?: boolean;
-    marks?: boolean | (number | {
-        value: number;
-        label?: string | JSX.Element;
-        mark?: JSX.Element;
-    })[];
-    origin?: number;
-    size?: 'small' | 'medium';
-    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
-        value: number;
-    }) => void;
-    ariaValueText?: (value: number) => string;
+export type SliderOnChangeData = {
+    value: number;
 };
 
+// Warning: (ae-forgotten-export) The symbol "SliderCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export type SliderProps = Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'> & SliderCommons;
-
-// @public
-export const sliderShorthandProps: (keyof SliderSlots)[];
+export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommons;
 
 // @public (undocumented)
 export type SliderSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    rail: IntrinsicShorthandProps<'div'>;
-    sliderWrapper: IntrinsicShorthandProps<'div'>;
-    trackWrapper: IntrinsicShorthandProps<'div'>;
-    track: IntrinsicShorthandProps<'div'>;
-    marksWrapper: IntrinsicShorthandProps<'div'>;
-    thumbWrapper: IntrinsicShorthandProps<'div'>;
-    thumb: IntrinsicShorthandProps<'div'>;
-    activeRail: IntrinsicShorthandProps<'div'>;
-    input: IntrinsicShorthandProps<'input'>;
+    root: NonNullable<Slot<'div'>>;
+    rail: NonNullable<Slot<'div'>>;
+    thumb: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>> & {
+        orient?: 'horizontal' | 'vertical';
+    };
 };
 
 // @public (undocumented)
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;
 
 // @public
-export const useRangedSlider: (props: RangedSliderProps, ref: React_2.Ref<HTMLElement>) => RangedSliderState;
+export const useSlider_unstable: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
 
 // @public (undocumented)
-export const useRangedSliderState: (state: RangedSliderState) => RangedSliderState;
-
-// @public (undocumented)
-export const useRangedSliderStyles: (state: RangedSliderState) => RangedSliderState;
+export const useSliderState_unstable: (state: SliderState) => SliderState;
 
 // @public
-export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>) => SliderState;
-
-// @public (undocumented)
-export const useSliderState: (state: SliderState) => SliderState;
-
-// @public
-export const useSliderStyles: (state: SliderState) => SliderState;
+export const useSliderStyles_unstable: (state: SliderState) => SliderState;
 
 // (No @packageDocumentation comment for this package)
 

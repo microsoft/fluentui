@@ -5,7 +5,7 @@ import * as renderer from 'react-test-renderer';
 
 import { ChoiceGroup } from './ChoiceGroup';
 import { merge, resetIds } from '../../Utilities';
-import { mountAttached } from '../../common/testUtilities';
+import { safeMount } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
 import type { IChoiceGroupOption, IChoiceGroup, IChoiceGroupProps } from './ChoiceGroup.types';
 
@@ -253,30 +253,34 @@ describe('ChoiceGroup', () => {
   it('can focus the checked option', () => {
     // This test has to mount the element to the document since ChoiceGroup.focus() uses document.getElementById()
     const choiceGroupRef = React.createRef<IChoiceGroup>();
-    choiceGroup = mountAttached(
+    safeMount(
       <ChoiceGroup options={TEST_OPTIONS} defaultSelectedKey="1" componentRef={choiceGroupRef} />,
+      choiceGroup2 => {
+        const option = choiceGroup2.getDOMNode().querySelector(CHOICE_QUERY_SELECTOR) as HTMLInputElement;
+        const focusSpy = jest.spyOn(option, 'focus');
+
+        choiceGroupRef.current!.focus();
+        expect(focusSpy).toHaveBeenCalled();
+      },
+      true /* attach */,
     );
-
-    const option = choiceGroup.getDOMNode().querySelector(CHOICE_QUERY_SELECTOR) as HTMLInputElement;
-    const focusSpy = jest.spyOn(option, 'focus');
-
-    choiceGroupRef.current!.focus();
-    expect(focusSpy).toHaveBeenCalled();
   });
 
   it('can focus the first enabled option', () => {
     const choiceGroupRef = React.createRef<IChoiceGroup>();
-    choiceGroup = mountAttached(
+    safeMount(
       <ChoiceGroup
         options={[{ key: '0', text: 'disabled', disabled: true }, ...TEST_OPTIONS]}
         componentRef={choiceGroupRef}
       />,
+      choiceGroup2 => {
+        const option = choiceGroup2.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR)![1] as HTMLInputElement;
+        const focusSpy = jest.spyOn(option, 'focus');
+
+        choiceGroupRef.current!.focus();
+        expect(focusSpy).toHaveBeenCalled();
+      },
+      true /* attach */,
     );
-
-    const option = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR)![1] as HTMLInputElement;
-    const focusSpy = jest.spyOn(option, 'focus');
-
-    choiceGroupRef.current!.focus();
-    expect(focusSpy).toHaveBeenCalled();
   });
 });

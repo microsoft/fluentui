@@ -75,6 +75,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _isRtl: boolean = getRTL();
   private _isCustomBarWidth: boolean;
   private _x1TotalBandWidth: number;
+  private _calloutAnchorPoint: IGVBarChartSeriesPoint | null;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -163,6 +164,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         getmargins={this._getMargins}
         getGraphData={this._getGraphData}
         getAxisData={this._getAxisData}
+        onChartMouseLeave={this._handleChartMouseLeave}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={() => {
@@ -226,9 +228,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
   ): void => {
     mouseEvent.persist();
     if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.titleForHoverCard === pointData.legend)
+      (this.state.isLegendSelected === false ||
+        (this.state.isLegendSelected && this.state.titleForHoverCard === pointData.legend)) &&
+      this._calloutAnchorPoint !== pointData
     ) {
+      this._calloutAnchorPoint = pointData;
       this.setState({
         refSelected: mouseEvent,
         isCalloutVisible: true,
@@ -247,7 +251,14 @@ export class GroupedVerticalBarChartBase extends React.Component<
     }
   };
 
-  private _onBarLeave = (): void => this.setState({ isCalloutVisible: false });
+  private _onBarLeave = (): void => {
+    /**/
+  };
+
+  private _handleChartMouseLeave = (): void => {
+    this._calloutAnchorPoint = null;
+    this.setState({ isCalloutVisible: false });
+  };
 
   private _onBarFocus = (
     pointData: IGVBarChartSeriesPoint,

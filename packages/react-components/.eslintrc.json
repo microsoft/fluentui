@@ -1,4 +1,19 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react"],
-  "root": true
+  "root": true,
+  "overrides": [
+    {
+      "files": "**/index.ts",
+      "rules": {
+        "@fluentui/ban-imports": [
+          "error",
+          {
+            "pathRegex": ".*",
+            "names": [{ "regex": "Commons$" }],
+            "message": "Commons types should not be exported from @fluentui/react-components"
+          }
+        ]
+      }
+    }
+  ]
 }

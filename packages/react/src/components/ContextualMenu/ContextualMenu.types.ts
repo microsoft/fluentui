@@ -149,6 +149,8 @@ export interface IContextualMenuProps
 
   /**
    * Whether to focus on the contextual menu container (as opposed to the first menu item).
+   *
+   * Avoid using as it breaks the default focus behaviour when using assistive technologies.
    */
   shouldFocusOnContainer?: boolean;
 
@@ -231,6 +233,12 @@ export interface IContextualMenuProps
    * Method to override the render of the list of menu items.
    */
   onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
+
+  /**
+   * Method to wrap menu items. Gives the ability to wrap a custom
+   * tooltip to each menu item button.
+   */
+  onRenderContextualMenuItem?: IRenderFunction<IContextualMenuItem>;
 
   /**
    * Delay (in milliseconds) to wait before expanding / dismissing a submenu on mouseEnter or mouseLeave
@@ -543,6 +551,11 @@ export interface IContextualMenuItem {
   keytipProps?: IKeytipProps;
 
   /**
+   * @deprecated Use subMenuProps.items instead.
+   */
+  items?: IContextualMenuItem[];
+
+  /**
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;
@@ -567,6 +580,14 @@ export interface IContextualMenuItem {
    * @deprecated Use `text` instead.
    */
   name?: string;
+
+  /**
+   * Flag which indicates that, when the item is clicked, the 'target' for the click event should be
+   * overridden to reflect the launch target from the root menu.
+   * This avoids a situation where the 'target' of the event may wind up detached from the DOM
+   * when the menu is dismissed in response to the click.
+   */
+  preferMenuTargetAsEventTarget?: boolean;
 }
 
 /**

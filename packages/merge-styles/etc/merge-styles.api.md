@@ -241,6 +241,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     hyphenateLimitZone?: ICSSRule | string;
     hyphens?: ICSSRule | string;
     justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | string;
+    justifyItems?: ICSSRule | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | 'left' | 'right' | 'safe left' | 'safe right' | 'unsafe left' | 'unsafe right' | 'legacy' | 'legacy left' | 'legacy right' | 'legacy center' | string;
     justifySelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | 'left' | 'right' | 'safe left' | 'safe right' | 'unsafe left' | 'unsafe right' | string;
     left?: ICSSRule | ICSSPixelUnitRule;
     letterSpacing?: ICSSRule | string;
@@ -250,7 +251,11 @@ export interface IRawStyleBase extends IRawFontStyle {
     listStylePosition?: ICSSRule | string;
     listStyleType?: ICSSRule | string;
     margin?: ICSSRule | ICSSPixelUnitRule;
+    marginBlockEnd?: ICSSRule | ICSSPixelUnitRule;
+    marginBlockStart?: ICSSRule | ICSSPixelUnitRule;
     marginBottom?: ICSSRule | ICSSPixelUnitRule;
+    marginInlineEnd?: ICSSRule | ICSSPixelUnitRule;
+    marginInlineStart?: ICSSRule | ICSSPixelUnitRule;
     marginLeft?: ICSSRule | ICSSPixelUnitRule;
     marginRight?: ICSSRule | ICSSPixelUnitRule;
     marginTop?: ICSSRule | ICSSPixelUnitRule;
@@ -303,6 +308,9 @@ export interface IRawStyleBase extends IRawFontStyle {
     pauseBefore?: ICSSRule | string;
     perspective?: ICSSRule | string;
     perspectiveOrigin?: ICSSRule | string;
+    placeContent?: ICSSRule | 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | ICSSOverflowAndSelfPositionRule | string;
+    placeItems?: ICSSRule | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | string;
+    placeSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | string;
     pointerEvents?: ICSSRule | string;
     position?: ICSSRule | 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
     quotes?: ICSSRule | string;

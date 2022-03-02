@@ -1,1 +1,1 @@
-A divider segments groups of content.
+A divider visually separates two pieces of content.

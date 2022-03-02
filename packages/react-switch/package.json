@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-switch",
-  "version": "9.0.0-beta.5",
+  "version": "9.0.0-rc.4",
   "description": "Fluent UI React Switch component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,15 +22,13 @@
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-switch/src && yarn docs",
-    "storybook": "start-storybook",
+    "storybook": "node ../../scripts/storybook/runner",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "9.0.0-beta.4",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-beta.4",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-make-styles": "9.0.0-beta.4",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.3",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -44,10 +42,12 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "9.0.0-beta.4",
-    "@fluentui/react-shared-contexts": "9.0.0-beta.4",
-    "@fluentui/react-tabster": "9.0.0-beta.5",
-    "@fluentui/react-utilities": "9.0.0-beta.4",
+    "@fluentui/react-icons": "^2.0.159-beta.10",
+    "@fluentui/react-label": "9.0.0-beta.8",
+    "@fluentui/react-tabster": "9.0.0-rc.4",
+    "@fluentui/react-theme": "9.0.0-rc.3",
+    "@fluentui/react-utilities": "9.0.0-rc.4",
+    "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

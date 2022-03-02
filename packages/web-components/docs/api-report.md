@@ -41,9 +41,10 @@ import { FlipperOptions } from '@microsoft/fast-foundation';
 import { FoundationElement } from '@microsoft/fast-foundation';
 import { FoundationElementDefinition } from '@microsoft/fast-foundation';
 import { FoundationElementRegistry } from '@microsoft/fast-foundation';
+import { FoundationElementTemplate } from '@microsoft/fast-foundation';
 import { HorizontalScroll as HorizontalScroll_2 } from '@microsoft/fast-foundation';
 import { HorizontalScrollOptions } from '@microsoft/fast-foundation';
-import { Listbox } from '@microsoft/fast-foundation';
+import { Listbox as Listbox_2 } from '@microsoft/fast-foundation';
 import { ListboxOption } from '@microsoft/fast-foundation';
 import { Menu as Menu_2 } from '@microsoft/fast-foundation';
 import { MenuItem } from '@microsoft/fast-foundation';
@@ -56,6 +57,8 @@ import { ProgressRingOptions } from '@microsoft/fast-foundation';
 import { Radio } from '@microsoft/fast-foundation';
 import { RadioGroup } from '@microsoft/fast-foundation';
 import { RadioOptions } from '@microsoft/fast-foundation';
+import { Search as Search_2 } from '@microsoft/fast-foundation';
+import { SearchOptions } from '@microsoft/fast-foundation';
 import { Select as Select_2 } from '@microsoft/fast-foundation';
 import { SelectOptions } from '@microsoft/fast-foundation';
 import { Skeleton } from '@microsoft/fast-foundation';
@@ -69,6 +72,7 @@ import { TabPanel } from '@microsoft/fast-foundation';
 import { Tabs } from '@microsoft/fast-foundation';
 import { TextArea as TextArea_2 } from '@microsoft/fast-foundation';
 import { TextField as TextField_2 } from '@microsoft/fast-foundation';
+import { TextFieldOptions } from '@microsoft/fast-foundation';
 import { Toolbar as Toolbar_2 } from '@microsoft/fast-foundation';
 import { Tooltip as Tooltip_2 } from '@microsoft/fast-foundation';
 import { TreeItem } from '@microsoft/fast-foundation';
@@ -211,6 +215,7 @@ export const allComponents: {
     fluentProgressRing: (overrideDefinition?: OverrideFoundationElementDefinition<ProgressRingOptions> | undefined) => FoundationElementRegistry<ProgressRingOptions, Constructable<FoundationElement>>;
     fluentRadio: (overrideDefinition?: OverrideFoundationElementDefinition<RadioOptions> | undefined) => FoundationElementRegistry<RadioOptions, Constructable<FoundationElement>>;
     fluentRadioGroup: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, RadioGroup>;
+    fluentSearch: (overrideDefinition?: OverrideFoundationElementDefinition<SearchOptions> | undefined) => FoundationElementRegistry<SearchOptions, Constructable<FoundationElement>>;
     fluentSelect: (overrideDefinition?: OverrideFoundationElementDefinition<SelectOptions> | undefined) => FoundationElementRegistry<SelectOptions, Constructable<FoundationElement>>;
     fluentSkeleton: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Skeleton>;
     fluentSlider: (overrideDefinition?: OverrideFoundationElementDefinition<SliderOptions> | undefined) => FoundationElementRegistry<SliderOptions, Constructable<FoundationElement>>;
@@ -219,8 +224,40 @@ export const allComponents: {
     fluentTabs: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tabs>;
     fluentTab: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tab>;
     fluentTabPanel: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TabPanel>;
-    fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TextArea>;
-    fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TextField>;
+    fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<    {
+    baseName: string;
+    baseClass: TextArea_2;
+    template: FoundationElementTemplate<ViewTemplate<TextArea_2, any>, FoundationElementDefinition>;
+    styles: (context: any, definition: any) => ElementStyles;
+    shadowOptions: {
+    delegatesFocus: true;
+    };
+    }> | undefined) => FoundationElementRegistry<    {
+    baseName: string;
+    baseClass: TextArea_2;
+    template: FoundationElementTemplate<ViewTemplate<TextArea_2, any>, FoundationElementDefinition>;
+    styles: (context: any, definition: any) => ElementStyles;
+    shadowOptions: {
+    delegatesFocus: true;
+    };
+    }, TextArea>;
+    fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<    {
+    baseName: string;
+    baseClass: TextField_2;
+    template: FoundationElementTemplate<ViewTemplate<TextField_2, any>, TextFieldOptions>;
+    styles: (context: any, definition: any) => ElementStyles;
+    shadowOptions: {
+    delegatesFocus: true;
+    };
+    }> | undefined) => FoundationElementRegistry<    {
+    baseName: string;
+    baseClass: TextField_2;
+    template: FoundationElementTemplate<ViewTemplate<TextField_2, any>, TextFieldOptions>;
+    styles: (context: any, definition: any) => ElementStyles;
+    shadowOptions: {
+    delegatesFocus: true;
+    };
+    }, TextField>;
     fluentToolbar: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Toolbar>;
     fluentTooltip: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tooltip>;
     fluentTreeView: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TreeView>;
@@ -650,6 +687,9 @@ export const fluentRadio: (overrideDefinition?: OverrideFoundationElementDefinit
 export const fluentRadioGroup: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof RadioGroup>;
 
 // @public
+export const fluentSearch: (overrideDefinition?: OverrideFoundationElementDefinition<SearchOptions> | undefined) => FoundationElementRegistry<SearchOptions, Constructable<FoundationElement>>;
+
+// @public
 export const fluentSelect: (overrideDefinition?: OverrideFoundationElementDefinition<SelectOptions> | undefined) => FoundationElementRegistry<SelectOptions, Constructable<FoundationElement>>;
 
 // @public
@@ -676,12 +716,44 @@ export const fluentTabs: (overrideDefinition?: OverrideFoundationElementDefiniti
 // Warning: (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
 //
 // @public
-export const fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TextArea>;
+export const fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<    {
+baseName: string;
+baseClass: typeof TextArea_2;
+template: FoundationElementTemplate<ViewTemplate<TextArea_2, any>, FoundationElementDefinition>;
+styles: (context: any, definition: any) => ElementStyles;
+shadowOptions: {
+delegatesFocus: true;
+};
+}> | undefined) => FoundationElementRegistry<    {
+baseName: string;
+baseClass: typeof TextArea_2;
+template: FoundationElementTemplate<ViewTemplate<TextArea_2, any>, FoundationElementDefinition>;
+styles: (context: any, definition: any) => ElementStyles;
+shadowOptions: {
+delegatesFocus: true;
+};
+}, typeof TextArea>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
 //
 // @public
-export const fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TextField>;
+export const fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<    {
+baseName: string;
+baseClass: typeof TextField_2;
+template: FoundationElementTemplate<ViewTemplate<TextField_2, any>, TextFieldOptions>;
+styles: (context: any, definition: any) => ElementStyles;
+shadowOptions: {
+delegatesFocus: true;
+};
+}> | undefined) => FoundationElementRegistry<    {
+baseName: string;
+baseClass: typeof TextField_2;
+template: FoundationElementTemplate<ViewTemplate<TextField_2, any>, TextFieldOptions>;
+styles: (context: any, definition: any) => ElementStyles;
+shadowOptions: {
+delegatesFocus: true;
+};
+}, typeof TextField>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
 //
@@ -818,7 +890,9 @@ export const layerCornerRadius: CSSDesignToken<number>;
 // @internal (undocumented)
 export const LightweightButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string, nonInteractivitySelector?: string) => ElementStyles;
 
-export { Listbox }
+// @public (undocumented)
+export class Listbox extends Listbox_2 {
+}
 
 // @public
 export const listboxStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
@@ -1413,6 +1487,23 @@ export interface Recipe<T> {
     evaluate(element: HTMLElement, reference?: Swatch): T;
 }
 
+// Warning: (ae-internal-missing-underscore) The name "Search" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export class Search extends Search_2 {
+    // @public
+    appearance: SearchAppearance;
+}
+
+// @public
+export type SearchAppearance = 'filled' | 'outline';
+
+// @public
+export const searchStyles: (context: any, definition: any) => ElementStyles;
+
+// @public (undocumented)
+export const searchTemplate: (context: ElementDefinitionContext, definition: SearchOptions) => ViewTemplate<Search_2>;
+
 // Warning: (ae-internal-missing-underscore) The name "Select" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
@@ -1628,13 +1719,13 @@ export const typeRampPlus6LineHeight: CSSDesignToken<string>;
 //
 // dist/dts/color/palette.d.ts:70:5 - (ae-forgotten-export) The symbol "create" needs to be exported by the entry point index.d.ts
 // dist/dts/color/palette.d.ts:71:5 - (ae-forgotten-export) The symbol "from" needs to be exported by the entry point index.d.ts
-// dist/dts/custom-elements.d.ts:50:5 - (ae-incompatible-release-tags) The symbol "fluentAnchor" is marked as @public, but its signature references "Anchor" which is marked as @internal
-// dist/dts/custom-elements.d.ts:52:5 - (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
-// dist/dts/custom-elements.d.ts:55:5 - (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
-// dist/dts/custom-elements.d.ts:93:5 - (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
-// dist/dts/custom-elements.d.ts:94:5 - (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
-// dist/dts/custom-elements.d.ts:95:5 - (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
-// dist/dts/custom-elements.d.ts:96:5 - (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
+// dist/dts/custom-elements.d.ts:51:5 - (ae-incompatible-release-tags) The symbol "fluentAnchor" is marked as @public, but its signature references "Anchor" which is marked as @internal
+// dist/dts/custom-elements.d.ts:53:5 - (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
+// dist/dts/custom-elements.d.ts:56:5 - (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
+// dist/dts/custom-elements.d.ts:95:5 - (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
+// dist/dts/custom-elements.d.ts:112:5 - (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
+// dist/dts/custom-elements.d.ts:129:5 - (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
+// dist/dts/custom-elements.d.ts:130:5 - (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 
