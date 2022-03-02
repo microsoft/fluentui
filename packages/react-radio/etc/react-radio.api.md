@@ -10,18 +10,19 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Radio: ForwardRefComponent<RadioProps>;
 
 // @public (undocumented)
-export const radioClassName = "fui-Radio";
+export const radioClassNames: SlotClassNames<RadioSlots>;
 
 // @public
 export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
 
 // @public (undocumented)
-export const radioGroupClassName = "fui-RadioGroup";
+export const radioGroupClassNames: SlotClassNames<RadioGroupSlots>;
 
 // @public
 export const RadioGroupContext: React_2.Context<RadioGroupContextValue>;

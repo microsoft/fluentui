@@ -8,6 +8,13 @@ describe('Radio', () => {
     Component: Radio,
     displayName: 'Radio',
     primarySlot: 'input',
+    testOptions: {
+      'has-static-classnames': {
+        label: 'Test Label',
+      },
+      // TODO: https://github.com/microsoft/fluentui/issues/19618
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any,
   });
 
   it('renders a default state', () => {
