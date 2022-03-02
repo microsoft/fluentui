@@ -123,7 +123,6 @@ jobs:
       - script: |
           yarn lage build --to perf-test --verbose
         condition: eq(variables.isPR, true)
-        workingDirectory: apps/perf-test
         displayName: Build to Perf Test
 
       - script: |
@@ -170,7 +169,6 @@ jobs:
       - script: |
           yarn lage build --to perf-test-react-components --verbose
         condition: eq(variables.isPR, true)
-        workingDirectory: apps/perf-test-react-components
         displayName: Build to Perf Test
 
       - script: |
