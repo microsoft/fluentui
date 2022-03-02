@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Switch: Re-implementing component to make it simpler and making it adhere to latest patterns.",
-  "packageName": "@fluentui/react-switch",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

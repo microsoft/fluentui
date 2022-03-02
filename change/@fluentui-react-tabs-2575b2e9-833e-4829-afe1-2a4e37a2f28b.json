@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Add react-theme as dependency",
-  "packageName": "@fluentui/react-tabs",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
