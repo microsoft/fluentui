@@ -10,15 +10,17 @@ export type ResolveShorthandOptions<Props, Required extends boolean = false> = (
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
   // These two overloads differ in their `required` param, and whether or not they return `undefined`:
   //  * If `required` is true, its return type includes `undefined` only if the slot is nullable
-  //  * Otherwise, its return type includes `undefined` if the slot is optional (?:)
+  //  * Otherwise, its return type includes `undefined` if the slot is optional (`?`)
 
-  <P extends Slot<Props> | null | undefined>(value: P, options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>): //
-  ReplaceNullWithUndefined<Exclude<P, SlotShorthandValue | undefined>>;
+  <P extends Props | null | undefined>(
+    value: P | SlotShorthandValue,
+    options?: ResolveShorthandOptions<ExtractSlotProps<P>, true>,
+  ): ReplaceNullWithUndefined<Exclude<P, undefined>>;
 
-  <P extends Slot<Props> | null | undefined>(
-    value: P,
+  <P extends Props | null | undefined>(
+    value: P | SlotShorthandValue,
     options?: ResolveShorthandOptions<ExtractSlotProps<P>, boolean>,
-  ): ReplaceNullWithUndefined<Exclude<P, SlotShorthandValue>>;
+  ): ReplaceNullWithUndefined<P>;
 };
 
 /**
