@@ -559,8 +559,8 @@ Carousel.defaultProps = {
   accessibility: carouselBehavior,
   paddlePrevious: {},
   paddleNext: {},
-  animationEnterFromLeft: 'carousel-slide-to-next-enter',
-  animationEnterFromRight: 'carousel-slide-to-previous-enter',
+  animationEnterFromLeft: 'carousel-slide-to-previous-enter',
+  animationEnterFromRight: 'carousel-slide-to-next-enter',
   animationExitToLeft: '',
   animationExitToRight: '',
 };
