@@ -148,18 +148,18 @@ function useDirection(activeIndex: number, circular: boolean, itemsLength: numbe
   const direction = React.useMemo(() => {
     if (circular) {
       if (activeIndex === 0 && prevActiveIndex.current === itemsLength - 1) {
-        return 'right';
+        return 'start';
       }
       if (activeIndex === itemsLength - 1 && prevActiveIndex.current === 0) {
-        return 'left';
+        return 'end';
       }
     }
 
     if (activeIndex > prevActiveIndex.current) {
-      return 'right';
+      return 'start';
     }
     if (activeIndex < prevActiveIndex.current) {
-      return 'left';
+      return 'end';
     }
 
     return undefined;
@@ -347,7 +347,7 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
               let animationName = '';
               if (!initialMounting) {
                 if (!active) {
-                  if (dir === 'right') {
+                  if (dir === 'start') {
                     animationName = animationExitToLeft;
                   } else {
                     animationName = animationExitToRight;
@@ -355,7 +355,7 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
                 }
 
                 if (active) {
-                  if (dir === 'right') {
+                  if (dir === 'start') {
                     animationName = animationEnterFromRight;
                   } else {
                     animationName = animationEnterFromLeft;
