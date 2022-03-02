@@ -45,7 +45,7 @@ export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHei
 export type Offset = OffsetFunction | OffsetObject | number;
 
 // @public (undocumented)
-export type OffsetFunction = (param: OffsetFunctionParam) => OffsetObject | number;
+export type OffsetFunction = (param: OffsetFunctionParam) => OffsetObject;
 
 // @public (undocumented)
 export type OffsetFunctionParam = {

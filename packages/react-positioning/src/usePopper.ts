@@ -56,7 +56,7 @@ function usePopperOptions(options: PopperOptions) {
 
       const placement = getPlacement(align, position);
       const middleware = [
-        ...[offset && offsetMiddleware({ value: offset })],
+        ...[offset && offsetMiddleware(offset)],
         ...[coverTarget && coverTargetMiddleware()],
         ...[!pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement })],
         shiftMiddleware({ container, hasScrollableElement, overflowBoundary, disableTether }),
