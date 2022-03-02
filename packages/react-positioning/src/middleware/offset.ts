@@ -1,17 +1,10 @@
-import type { Placement, Coords, Middleware, ElementRects, Side, Axis } from '@floating-ui/core';
+import type { Placement, Coords, Middleware, ElementRects } from '@floating-ui/core';
 import { Offset } from '../types';
-
-function getSide(placement: Placement): Side {
-  return placement.split('-')[0] as Side;
-}
-
-function getMainAxisFromPlacement(placement: Placement): Axis {
-  return ['top', 'bottom'].includes(getSide(placement)) ? 'x' : 'y';
-}
+import { getBasePlacement } from '../utils/getBasePlacement';
 
 export function convertValueToCoords(placement: Placement, rects: ElementRects, value: Offset, rtl = false): Coords {
-  const side = getSide(placement);
-  const isVertical = getMainAxisFromPlacement(placement) === 'x';
+  const side = getBasePlacement(placement);
+  const isVertical = ['top', 'bottom'].includes(getBasePlacement(placement));
   const mainAxisMulti = ['left', 'top'].includes(side) ? -1 : 1;
 
   let crossAxisMulti = 1;
