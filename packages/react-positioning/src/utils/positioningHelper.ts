@@ -11,9 +11,9 @@ const getPositionMap = (rtl?: boolean): Record<Position, PlacementPosition> => (
   after: rtl ? 'left' : 'right',
 });
 
-const getAlignmentMap = (rtl?: boolean): Record<Alignment, PlacementAlign> => ({
-  start: rtl ? 'end' : 'start',
-  end: rtl ? 'start' : 'end',
+const getAlignmentMap = (): Record<Alignment, PlacementAlign> => ({
+  start: 'start',
+  end: 'end',
   top: 'start',
   bottom: 'end',
   center: '',
@@ -37,7 +37,7 @@ export const getPlacement = (
   const alignment = shouldAlignToCenter(position, align) ? 'center' : align;
 
   const computedPosition = position && getPositionMap(rtl)[position];
-  const computedAlignmnent = alignment && getAlignmentMap(rtl)[alignment];
+  const computedAlignmnent = alignment && getAlignmentMap()[alignment];
 
   if (computedPosition && computedAlignmnent) {
     return `${computedPosition}-${computedAlignmnent}` as FloatingUI.Placement;
