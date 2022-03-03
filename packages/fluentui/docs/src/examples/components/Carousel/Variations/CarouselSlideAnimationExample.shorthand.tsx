@@ -58,7 +58,7 @@ const carouselItems = [
   },
 ];
 
-const CarouselExample = () => (
+const CarouselSlideAnimationExample = () => (
   <Provider
     theme={{
       animations: {
