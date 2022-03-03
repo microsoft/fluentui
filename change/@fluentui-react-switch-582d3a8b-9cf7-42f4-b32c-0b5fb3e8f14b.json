@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updating class names to use slot class names helper type.",
+  "packageName": "@fluentui/react-switch",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
