@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form';
 
 const regexes = {
   onlyNameChars: /^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*$/,
+  // eslint-disable-next-line @fluentui/max-len
   startsAndEndsWithLetter: /^([A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ][A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ])?$/,
   noWhitespace: /^\S*$/,
   hasNumber: /^\S*[0-9]\S*$/,
