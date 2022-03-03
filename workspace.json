@@ -195,6 +195,13 @@
       "projectType": "application",
       "implicitDependencies": []
     },
+    "@fluentui/priority-overflow": {
+      "root": "packages/priority-overflow",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/priority-overflow/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/projects-test": {
       "root": "packages/fluentui/projects-test",
       "projectType": "library",

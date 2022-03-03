@@ -15,6 +15,7 @@
     "paths": {
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
       "@fluentui/keyboard-keys": ["packages/keyboard-keys/src/index.ts"],
+      "@fluentui/priority-overflow": ["packages/priority-overflow/src/index.ts"],
       "@fluentui/react-accordion": ["packages/react-accordion/src/index.ts"],
       "@fluentui/react-aria": ["packages/react-aria/src/index.ts"],
       "@fluentui/react-avatar": ["packages/react-avatar/src/index.ts"],
