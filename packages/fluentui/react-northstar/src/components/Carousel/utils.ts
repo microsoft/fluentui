@@ -8,16 +8,16 @@ export function getAnimationName({
 }) {
   const initialMounting = typeof dir === 'undefined';
 
-  let animationName = '';
+
   if (!initialMounting) {
     if (!active) {
-      animationName = dir === 'start' ? animationExitToPrev : animationExitToNext;
+      return dir === 'start' ? animationExitToPrev : animationExitToNext;
     }
 
     if (active) {
-      animationName = dir === 'start' ? animationEnterFromNext : animationEnterFromPrev;
+      return = dir === 'start' ? animationEnterFromNext : animationEnterFromPrev;
     }
   }
 
-  return animationName;
+  return '';
 }
