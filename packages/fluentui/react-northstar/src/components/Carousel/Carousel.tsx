@@ -35,6 +35,7 @@ import {
 } from '@fluentui/react-bindings';
 import { createCarouselManager, CarouselState, CarouselActions } from '@fluentui/state';
 import { CarouselPaddlesContainer } from './CarouselPaddlesContainer';
+import { getAnimationName } from './utils';
 
 export interface CarouselSlotClassNames {
   itemsContainer: string;
@@ -166,30 +167,6 @@ function useDirection(activeIndex: number, circular: boolean, itemsLength: numbe
   }, [activeIndex, circular, itemsLength]);
 
   return direction;
-}
-
-export function getAnimationName({
-  active,
-  dir,
-  animationEnterFromPrev,
-  animationEnterFromNext,
-  animationExitToPrev,
-  animationExitToNext,
-}) {
-  const initialMounting = typeof dir === 'undefined';
-
-  let animationName = '';
-  if (!initialMounting) {
-    if (!active) {
-      animationName = dir === 'start' ? animationExitToPrev : animationExitToNext;
-    }
-
-    if (active) {
-      animationName = dir === 'start' ? animationEnterFromNext : animationEnterFromPrev;
-    }
-  }
-
-  return animationName;
 }
 
 /**

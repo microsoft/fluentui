@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import { isConformant } from 'test/specs/commonTests';
-import { Carousel, CarouselProps, carouselSlotClassNames, getAnimationName } from 'src/components/Carousel/Carousel';
+import { Carousel, CarouselProps, carouselSlotClassNames } from 'src/components/Carousel/Carousel';
+import { getAnimationName } from 'src/components/Carousel/utils';
 import { Button } from 'src/components/Button/Button';
 import { carouselNavigationClassName } from 'src/components/Carousel/CarouselNavigation';
 import { carouselNavigationItemClassName } from 'src/components/Carousel/CarouselNavigationItem';
