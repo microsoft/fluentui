@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "refactor: PopoverSurface should be rendered from the Popover component",
+  "packageName": "@fluentui/react-popover",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
