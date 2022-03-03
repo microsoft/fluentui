@@ -307,7 +307,7 @@ describe('Slider', () => {
     expect(container.getElementsByClassName('ms-Slider-value')[0].textContent).toEqual(valueFormat(value));
   });
 
-  it('updates value correctly when down and up are pressed', () => {
+  it('updates value of upperthumb for range slider correctly when down and up are pressed', () => {
     const slider = React.createRef<ISlider>();
     const onChange = jest.fn();
 
@@ -325,7 +325,7 @@ describe('Slider', () => {
     expect(onChange).toHaveBeenCalledTimes(5);
   });
 
-  it('updates value for range slider correctly when down and up are pressed', () => {
+  it('updates value of upperthumb for range slider correctly when down and up are pressed', () => {
     const slider = React.createRef<ISlider>();
     const onChange = jest.fn();
 
