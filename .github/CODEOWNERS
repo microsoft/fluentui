@@ -144,7 +144,7 @@ packages/react-spinner/ @microsoft/cxe-red @tomi-msft
 packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @ecraig12345 @czearing
 packages/react-tabs/ @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-text/ @microsoft/cxe-prg
-packages/react-toolbar/ @microsoft/cxe-prg @chpalac @ling1726
+packages/react-toolbar/ @microsoft/teams-prg @chpalac @ling1726
 packages/react-tooltip/ @microsoft/cxe-red @behowell @khmakoto
 
 ## Components
