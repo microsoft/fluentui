@@ -96,6 +96,9 @@ export const renderSplitButton_unstable: (state: SplitButtonState) => JSX.Elemen
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 
 // @public (undocumented)
+export const splitButtonClassName: string;
+
+// @public (undocumented)
 export const splitButtonClassNames: SlotClassNames<SplitButtonSlots>;
 
 // @public (undocumented)
@@ -113,6 +116,9 @@ export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonSta
 
 // @public
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
+
+// @public (undocumented)
+export const toggleButtonClassName: string;
 
 // @public (undocumented)
 export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;
