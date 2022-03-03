@@ -47,5 +47,17 @@
   },
   "peerDependencies": {
     "react": ">=16.8.0 <18.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./lib/utils/createSvgIcon": {
+      "types": "./lib/utils/createSvgIcon.d.ts",
+      "import": "./lib/utils/createSvgIcon.js",
+      "require": "./lib-commonjs/utils/createSvgIcon.js"
+    }
   }
 }

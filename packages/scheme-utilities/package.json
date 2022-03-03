@@ -30,5 +30,12 @@
     "@fluentui/theme": "^2.4.12",
     "@fluentui/set-version": "^8.1.5",
     "tslib": "^2.1.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }
