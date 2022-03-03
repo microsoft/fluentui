@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-slider",
-  "version": "9.0.0-beta.8",
+  "version": "9.0.0-beta.9",
   "description": "Fluent UI React Slider component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -29,7 +29,7 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "9.0.0-beta.3",
-    "@fluentui/react-label": "9.0.0-beta.7",
+    "@fluentui/react-label": "9.0.0-beta.8",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -43,8 +43,9 @@
   "dependencies": {
     "@griffel/react": "1.0.0",
     "@fluentui/react-shared-contexts": "9.0.0-rc.3",
-    "@fluentui/react-tabster": "9.0.0-rc.3",
-    "@fluentui/react-utilities": "9.0.0-rc.3",
+    "@fluentui/react-tabster": "9.0.0-rc.4",
+    "@fluentui/react-theme": "9.0.0-rc.3",
+    "@fluentui/react-utilities": "9.0.0-rc.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -59,5 +60,12 @@
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

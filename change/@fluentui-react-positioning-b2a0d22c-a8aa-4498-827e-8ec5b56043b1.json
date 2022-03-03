@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: `popperRef.setTarget` should accept virtual element type",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

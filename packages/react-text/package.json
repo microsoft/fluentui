@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-text",
-  "version": "9.0.0-rc.3",
+  "version": "9.0.0-rc.4",
   "description": "Text is a typography and styling abstraction component that can be used to ensure the consistency of all text across your application.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -43,7 +43,8 @@
   },
   "dependencies": {
     "@griffel/react": "1.0.0",
-    "@fluentui/react-utilities": "9.0.0-rc.3",
+    "@fluentui/react-theme": "9.0.0-rc.3",
+    "@fluentui/react-utilities": "9.0.0-rc.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -58,5 +59,12 @@
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

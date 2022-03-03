@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 18 Feb 2022 13:35:28 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Mar 2022 02:17:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.4)
+
+Tue, 01 Mar 2022 02:17:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.3..@fluentui/react-button_v9.0.0-rc.4)
+
+### Changes
+
+- fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.3)
 

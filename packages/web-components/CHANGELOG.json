@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 01 Mar 2022 07:23:43 GMT",
+      "tag": "@fluentui/web-components_v2.3.0",
+      "version": "2.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "john.kreitlow@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7f08d68021d8f41d6de1fa2e18e78be3d0868e73",
+            "comment": "update package dependencies in web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Feb 2022 07:22:08 GMT",
       "tag": "@fluentui/web-components_v2.2.3",
       "version": "2.2.3",

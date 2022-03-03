@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@fluentui/react-theme": "9.0.0-rc.3",
-    "@fluentui/react-utilities": "9.0.0-rc.3",
+    "@fluentui/react-utilities": "9.0.0-rc.4",
     "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
   },
@@ -60,5 +60,12 @@
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

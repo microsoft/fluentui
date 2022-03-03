@@ -72,6 +72,7 @@ export * from './getPropsWithDefaults';
 export { setFocusVisibility, IsFocusVisibleClassName } from './setFocusVisibility';
 export { setSSR } from './dom/setSSR';
 export { createMergedRef } from './createMergedRef';
+export * from './useIsomorphicLayoutEffect';
 
 import './version';
 

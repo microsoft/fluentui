@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/set-version",
-  "version": "8.1.5",
+  "version": "8.2.0",
   "description": "Non-Fabric-specific package version setter",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -23,5 +23,12 @@
   },
   "dependencies": {
     "tslib": "^2.1.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

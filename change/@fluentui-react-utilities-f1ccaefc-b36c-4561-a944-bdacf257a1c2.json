@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(shouldPreventDefaultOnKeyDown): return false for events that are default prevented",
+  "packageName": "@fluentui/react-utilities",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

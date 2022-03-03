@@ -9,6 +9,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
+    "pretty": true,
     "typeRoots": ["node_modules/@types", "./typings"],
     "baseUrl": ".",
     "paths": {
@@ -50,6 +51,7 @@
       "@fluentui/react-tabs": ["packages/react-tabs/src/index.ts"],
       "@fluentui/react-tabster": ["packages/react-tabster/src/index.ts"],
       "@fluentui/react-text": ["packages/react-text/src/index.ts"],
+      "@fluentui/react-textarea": ["packages/react-textarea/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-theme/src/index.ts"],
       "@fluentui/react-toolbar": ["packages/react-toolbar/src/index.ts"],
       "@fluentui/react-tooltip": ["packages/react-tooltip/src/index.ts"],
