@@ -55,6 +55,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
   const { control, handleSubmit, errors, formState } = useForm<FormInputs>({
     validateCriteriaMode: 'all',
     mode: 'onBlur',
+    reValidateMode: 'onBlur',
   });
 
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
