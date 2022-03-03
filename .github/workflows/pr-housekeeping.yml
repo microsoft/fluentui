@@ -1,4 +1,4 @@
-name: Pull request houskeeping 🧹
+name: Pull request housekeeping 🧹
 on:
   - pull_request_target
 

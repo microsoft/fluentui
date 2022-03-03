@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-icon-provider
 
-This log was last generated on Tue, 01 Mar 2022 07:23:43 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Mar 2022 07:24:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.0)
+
+Thu, 03 Mar 2022 07:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.2.17..@fluentui/react-icon-provider_v1.3.0)
+
+### Minor changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/set-version to v8.2.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/style-utilities to v8.6.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
 
 ## [1.2.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.2.17)
 

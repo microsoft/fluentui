@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
-import { IColumn, buildColumns, SelectionMode, Toggle, IListProps } from '@fluentui/react/lib/index';
+import { IColumn, buildColumns, SelectionMode, Toggle, IListProps } from '@fluentui/react';
 import { ShimmeredDetailsList } from '@fluentui/react/lib/ShimmeredDetailsList';
 import { useSetInterval, useConst } from '@fluentui/react-hooks';
 
