@@ -67,9 +67,9 @@ type TextAreaProps = {
   /**
    * Which direction the TextArea is allowed to be resized.
    *
-   * @defaultvalue off
+   * @defaultvalue none
    */
-  resize?: 'off' | 'horizontal' | 'vertical' | 'both';
+  resize?: 'none' | 'horizontal' | 'vertical' | 'both';
 
   /**
    * Size of the TextArea.
