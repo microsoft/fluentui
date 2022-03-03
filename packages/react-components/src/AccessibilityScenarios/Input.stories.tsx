@@ -6,12 +6,12 @@ import { Button } from '@fluentui/react-button';
 
 import { Scenario } from './utils';
 
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 
 const regexes = {
   onlyNameChars: /^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*$/,
   // eslint-disable-next-line @fluentui/max-len
-  startsAndEndsWithLetter: /^([A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ][A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ])?$/,
+  startsAndEndsWithLetter: /^(([A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ][A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ])|[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ])?$/,
   noWhitespace: /^\S*$/,
   hasNumber: /^\S*[0-9]\S*$/,
   hasLowercaseLetter: /^\S*[a-z]\S*$/,
@@ -52,13 +52,31 @@ interface FormInputs {
 }
 
 export const RegistrationFormInputsAccessibilityScenario = () => {
-  const { register, handleSubmit, errors, formState } = useForm<FormInputs>({
+  const { control, handleSubmit, errors, formState } = useForm<FormInputs>({
     validateCriteriaMode: 'all',
     mode: 'onBlur',
   });
 
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
+
+  React.useEffect(() => {
+    // If the form is submitted and has errors, focus the first error field
+    if (!formState.isSubmitted || formState.isValid) {
+      return;
+    }
+    const firstErrorName = Object.keys(errors)[0];
+    const firstErrorField = document.getElementById(firstErrorName);
+
+    // Narrate the errors if the error field is already focused
+    if (document.activeElement === firstErrorField) {
+      narrate(`${firstErrorName}Errors`);
+      return;
+    }
+    if (firstErrorField) {
+      firstErrorField.focus();
+    }
+  }, [errors, formState]);
 
   React.useEffect(() => {
     if (isSubmittedAndValid) {
@@ -83,11 +101,20 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
       {!isSubmittedAndValid ? (
         <form onSubmit={handleSubmit(onSubmit)}>
           <Label htmlFor="fullName">Full name:</Label>
-          <Input
-            type="text"
-            id="fullName"
+          <Controller
             name="fullName"
-            ref={register({
+            control={control}
+            as={
+              <Input
+                type="text"
+                id="fullName"
+                name="fullName"
+                aria-required="true"
+                aria-invalid={!!errors.fullName}
+                aria-describedby="fullNameErrors"
+              />
+            }
+            rules={{
               required: true,
               minLength: 2,
               maxLength: 50,
@@ -99,10 +126,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
                   return true;
                 },
               },
-            })}
-            aria-required="true"
-            aria-invalid={!!errors.fullName}
-            aria-describedby="fullNameErrors"
+            }}
           />
           {errors.fullName?.types && (
             <div id="fullNameErrors">
@@ -126,11 +150,19 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
           )}
 
           <Label htmlFor="nickname">Nickname:</Label>
-          <Input
-            type="text"
-            id="nickname"
+          <Controller
             name="nickname"
-            ref={register({
+            control={control}
+            as={
+              <Input
+                type="text"
+                id="nickname"
+                name="nickname"
+                aria-invalid={!!errors.nickname}
+                aria-describedby="nicknameErrors"
+              />
+            }
+            rules={{
               minLength: 2,
               maxLength: 20,
               validate: {
@@ -141,9 +173,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
                   return true;
                 },
               },
-            })}
-            aria-invalid={!!errors.nickname}
-            aria-describedby="nicknameErrors"
+            }}
           />
           {errors.nickname?.types && (
             <div id="nicknameErrors">
@@ -161,11 +191,20 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
           )}
 
           <Label htmlFor="password">Password:</Label>
-          <Input
-            type={isPasswordVisible ? 'text' : 'password'}
-            id="password"
+          <Controller
             name="password"
-            ref={register({
+            control={control}
+            as={
+              <Input
+                type={isPasswordVisible ? 'text' : 'password'}
+                id="password"
+                name="password"
+                aria-required="true"
+                aria-invalid={!!errors.password}
+                aria-describedby="passwordErrors"
+              />
+            }
+            rules={{
               required: true,
               minLength: 8,
               maxLength: 20,
@@ -180,10 +219,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
                   return true;
                 },
               },
-            })}
-            aria-required="true"
-            aria-invalid={!!errors.password}
-            aria-describedby="passwordErrors"
+            }}
           />
 
           <Label htmlFor="showPassword">Show password</Label>
