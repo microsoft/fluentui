@@ -1,12 +1,15 @@
 import * as React from 'react';
-import { resetIds, KeyCodes } from '../../Utilities';
+import { resetIds } from '../../Utilities';
 import { fireEvent, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Slider } from './Slider';
 import { isConformant } from '../../common/isConformant';
 import type { ISlider } from './Slider.types';
 
 const MIN_PREFIX = 'min';
 const MAX_PREFIX = 'max';
+const DOWN = 'arrowdown';
+const UP = 'arrowup';
 
 describe('Slider', () => {
   beforeEach(() => {
@@ -308,16 +311,14 @@ describe('Slider', () => {
     const slider = React.createRef<ISlider>();
     const onChange = jest.fn();
 
-    const { container } = render(
+    render(
       <Slider label="slider" componentRef={slider} defaultValue={12} min={0} max={100} onChange={onChange} ranged />,
     );
-    const sliderSlideBox = container.getElementsByClassName('ms-Slider-slideBox')[0];
 
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.up });
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
+    // move keyboard focus to upperthumb of slider
+    userEvent.tab({ shift: true });
+    //press up and down keys to modify slider value
+    userEvent.keyboard(`{${DOWN}}{${DOWN}}{${DOWN}}{${UP}}{${DOWN}}`);
 
     expect(slider.current?.value).toEqual(9);
 
@@ -328,16 +329,13 @@ describe('Slider', () => {
     const slider = React.createRef<ISlider>();
     const onChange = jest.fn();
 
-    const { getAllByRole } = render(
+    render(
       <Slider label="slider" componentRef={slider} defaultValue={20} min={12} max={100} onChange={onChange} ranged />,
     );
-    const lowerValueThumb = getAllByRole('slider')[0];
 
-    fireEvent.keyDown(lowerValueThumb, { keyCode: KeyCodes.down });
-    fireEvent.keyDown(lowerValueThumb, { keyCode: KeyCodes.down });
-    fireEvent.keyDown(lowerValueThumb, { keyCode: KeyCodes.down });
-    fireEvent.keyDown(lowerValueThumb, { keyCode: KeyCodes.up });
-    fireEvent.keyDown(lowerValueThumb, { keyCode: KeyCodes.down });
+    // move keyboard focus to upperthumb of slider
+    userEvent.tab({ shift: true });
+    userEvent.keyboard(`{${DOWN}}{${DOWN}}{${DOWN}}{${UP}}{${DOWN}}`);
 
     expect(slider.current?.value).toEqual(17);
 
@@ -351,11 +349,8 @@ describe('Slider', () => {
     const { container } = render(<Slider label="slider" defaultValue={12} min={0} max={100} onChanged={onChanged} />);
     const sliderSlideBox = container.getElementsByClassName('ms-Slider-slideBox')[0];
 
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.up });
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
+    userEvent.tab();
+    userEvent.keyboard(`{${DOWN}}{${DOWN}}{${DOWN}}{${UP}}{${DOWN}}`);
 
     expect(sliderSlideBox.getAttribute('aria-valuenow')).toEqual('9');
 
@@ -369,14 +364,10 @@ describe('Slider', () => {
     jest.useFakeTimers();
     const onChanged = jest.fn();
 
-    const { container } = render(<Slider label="slider" defaultValue={5} min={0} max={100} onChanged={onChanged} />);
-    const sliderSlideBox = container.getElementsByClassName('ms-Slider-slideBox')[0];
+    render(<Slider label="slider" defaultValue={5} min={0} max={100} onChanged={onChanged} />);
 
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.up });
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
+    userEvent.tab();
+    userEvent.keyboard(`{${DOWN}}{${DOWN}}{${DOWN}}{${UP}}{${DOWN}}`);
 
     // onChanged should only be called after a delay
     expect(onChanged).toHaveBeenCalledTimes(0);
@@ -389,12 +380,10 @@ describe('Slider', () => {
     const slider = React.createRef<ISlider>();
     const onChange = jest.fn();
 
-    const { container } = render(
-      <Slider label="slider" componentRef={slider} value={3} min={0} max={100} onChange={onChange} />,
-    );
-    const sliderSlideBox = container.getElementsByClassName('ms-Slider-slideBox')[0];
+    render(<Slider label="slider" componentRef={slider} value={3} min={0} max={100} onChange={onChange} />);
 
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
+    userEvent.tab();
+    userEvent.keyboard(`{${DOWN}}`);
 
     expect(slider.current?.value).toEqual(3);
 
@@ -405,12 +394,10 @@ describe('Slider', () => {
     const slider = React.createRef<ISlider>();
     const onChange = jest.fn();
 
-    const { container } = render(
-      <Slider label="slider" componentRef={slider} value={3} min={0} max={100} onChange={onChange} />,
-    );
-    const sliderSlideBox = container.getElementsByClassName('ms-Slider-slideBox')[0];
+    render(<Slider label="slider" componentRef={slider} value={3} min={0} max={100} onChange={onChange} />);
 
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
+    userEvent.tab();
+    userEvent.keyboard(`{${DOWN}}`);
 
     expect(slider.current?.value).toEqual(3);
 
@@ -422,12 +409,11 @@ describe('Slider', () => {
     const slider = React.createRef<ISlider>();
     const onChange = jest.fn();
 
-    const { container } = render(
-      <Slider label="slider" componentRef={slider} value={3} min={0} max={100} onChange={onChange} ranged />,
-    );
-    const sliderSlideBox = container.getElementsByClassName('ms-Slider-slideBox')[0];
+    render(<Slider label="slider" componentRef={slider} value={3} min={0} max={100} onChange={onChange} ranged />);
 
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
+    // move keyboard focus to upperthumb of slider
+    userEvent.tab({ shift: true });
+    userEvent.keyboard(`{${DOWN}}`);
 
     expect(slider.current?.range).toEqual([0, 3]);
 
@@ -439,14 +425,10 @@ describe('Slider', () => {
     const slider = React.createRef<ISlider>();
     const onChange = jest.fn();
 
-    const { container } = render(
-      <Slider label="slider" componentRef={slider} value={3} min={0} max={100} onChange={onChange} />,
-    );
-    const sliderSlideBox = container.getElementsByClassName('ms-Slider-slideBox')[0];
+    render(<Slider label="slider" componentRef={slider} value={3} min={0} max={100} onChange={onChange} />);
 
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.up });
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.up });
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.up });
+    userEvent.tab();
+    userEvent.keyboard(`{${UP}}{${UP}}{${UP}}`);
 
     expect(slider.current?.value).toEqual(3);
 
@@ -458,12 +440,13 @@ describe('Slider', () => {
     const slider = React.createRef<ISlider>();
     const onChange = jest.fn();
 
-    const { container } = render(
+    render(
       <Slider label="slider" defaultValue={10} componentRef={slider} step={-3} min={0} max={100} onChange={onChange} />,
     );
-    const sliderSlideBox = container.getElementsByClassName('ms-Slider-slideBox')[0];
 
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.up });
+    userEvent.tab();
+    userEvent.keyboard(`{${UP}}`);
+
     expect(slider.current?.value).toEqual(7);
   });
 
@@ -473,7 +456,7 @@ describe('Slider', () => {
     const step = 0.0000001;
     const defaultValue = 10;
 
-    const { container } = render(
+    render(
       <Slider
         label="slider"
         defaultValue={defaultValue}
@@ -484,9 +467,10 @@ describe('Slider', () => {
         onChange={onChange}
       />,
     );
-    const sliderSlideBox = container.getElementsByClassName('ms-Slider-slideBox')[0];
 
-    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.up });
+    userEvent.tab();
+    userEvent.keyboard(`{${UP}}`);
+
     expect(slider.current?.value).toEqual(defaultValue + step);
   });
 });
