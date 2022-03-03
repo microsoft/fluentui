@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-window-provider
 
-This log was last generated on Wed, 15 Dec 2021 07:31:29 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Mar 2022 07:24:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.0)
+
+Thu, 03 Mar 2022 07:24:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.1.6..@fluentui/react-window-provider_v2.2.0)
+
+### Minor changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/set-version to v8.2.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
 
 ## [2.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.1.6)
 

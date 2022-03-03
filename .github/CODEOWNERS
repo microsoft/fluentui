@@ -86,6 +86,7 @@ packages/foundation-legacy/ @microsoft/cxe-red @khmakoto
 packages/merge-styles/ @dzearing
 packages/monaco-editor/ @ecraig12345
 packages/public-docsite-setup/ @ecraig12345
+packages/priority-overflow/ @microsoft/teams-prg
 packages/react-aria/ @microsoft/teams-prg
 packages/react-cards/ @microsoft/cxe-red @khmakoto
 packages/react-charting/ @microsoft/charting-team

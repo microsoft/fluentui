@@ -2,6 +2,33 @@
   "name": "@fluentui/server-rendered-app",
   "entries": [
     {
+      "date": "Thu, 03 Mar 2022 07:24:29 GMT",
+      "tag": "@fluentui/server-rendered-app_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/server-rendered-app",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/server-rendered-app",
+            "comment": "Bump @fluentui/merge-styles to v8.4.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/server-rendered-app",
+            "comment": "Bump @fluentui/react to v8.57.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Mar 2022 07:23:06 GMT",
       "tag": "@fluentui/server-rendered-app_v1.0.0",
       "version": "1.0.0",

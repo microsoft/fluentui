@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@griffel/core": "1.0.7",
-    "@fluentui/react": "^8.56.3",
+    "@fluentui/react": "^8.57.0",
     "@fluentui/react-avatar": "9.0.0-rc.4",
     "@fluentui/react-button": "9.0.0-rc.4",
     "@fluentui/react-provider": "9.0.0-rc.4",
