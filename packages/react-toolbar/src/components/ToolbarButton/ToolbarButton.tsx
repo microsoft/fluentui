@@ -6,7 +6,8 @@ import { useToolbarButton_unstable } from './useToolbarButton';
 import { renderToolbarButton_unstable } from './renderToolbarButton';
 
 /**
- * ToolbarButton component
+ * ToolbarButton component is a Button to be used inside Toolbar
+ * which will respect toolbar props such as `size`
  */
 export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps> = React.forwardRef((props, ref) => {
   const state = useToolbarButton_unstable(props, ref);
