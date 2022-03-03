@@ -1,15 +1,17 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SplitButtonSlots, SplitButtonState } from './SplitButton.types';
 
-export const splitButtonClassNames: {
-  [SlotName in keyof SplitButtonSlots]-?: string;
-} = {
+export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
   root: 'fui-SplitButton',
   menuButton: 'fui-SplitButton__menuButton',
   primaryActionButton: 'fui-SplitButton__primaryActionButton',
 };
+
+// TODO temporary export to pass conformance test.
+export const splitButtonClassName = splitButtonClassNames.root;
 
 const useFocusStyles = makeStyles({
   primaryActionButton: createCustomFocusIndicatorStyle({

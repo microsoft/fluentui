@@ -1,15 +1,17 @@
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots } from '../Button/Button.types';
 import type { ToggleButtonState } from './ToggleButton.types';
 
-export const toggleButtonClassNames: {
-  [SlotName in keyof ButtonSlots]-?: string;
-} = {
+export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-ToggleButton',
   icon: 'fui-ToggleButton__icon',
 };
+
+// TODO temporary export to pass conformance test.
+export const toggleButtonClassName = toggleButtonClassNames.root;
 
 const useCheckedStyles = makeStyles({
   // Base styles

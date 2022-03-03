@@ -1,16 +1,18 @@
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CompoundButtonSlots, CompoundButtonState } from './CompoundButton.types';
 
-export const compoundButtonClassNames: {
-  [SlotName in keyof CompoundButtonSlots]-?: string;
-} = {
+export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots> = {
   root: 'fui-CompoundButton',
   icon: 'fui-CompoundButton__icon',
   contentContainer: 'fui-CompoundButton__contentContainer',
   secondaryContent: 'fui-CompoundButton__secondaryContent',
 };
+
+// TODO temporary export to pass conformance test.
+export const compoundButtonClassName = compoundButtonClassNames.root;
 
 const useRootStyles = makeStyles({
   // Base styles

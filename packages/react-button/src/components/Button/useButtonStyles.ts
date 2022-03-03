@@ -1,14 +1,16 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots, ButtonState } from './Button.types';
 
-export const buttonClassNames: {
-  [SlotName in keyof ButtonSlots]-?: string;
-} = {
+export const buttonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Button',
   icon: 'fui-Button__icon',
 };
+
+// TODO temporary export to pass conformance test.
+export const buttonClassName = buttonClassNames.root;
 
 const useRootStyles = makeStyles({
   // Base styles

@@ -1,15 +1,17 @@
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { ButtonState } from '../Button/Button.types';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MenuButtonSlots, MenuButtonState } from './MenuButton.types';
 
-export const menuButtonClassNames: {
-  [SlotName in keyof MenuButtonSlots]-?: string;
-} = {
+export const menuButtonClassNames: SlotClassNames<MenuButtonSlots> = {
   root: 'fui-MenuButton',
   icon: 'fui-MenuButton__icon',
   menuIcon: 'fui-MenuButton__menuIcon',
 };
+
+// TODO temporary export to pass conformance test.
+export const menuButtonClassName = menuButtonClassNames.root;
 
 const useMenuIconStyles = makeStyles({
   // Size appearance
