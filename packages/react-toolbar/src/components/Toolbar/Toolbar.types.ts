@@ -5,6 +5,10 @@ export type ToolbarSlots = {
 };
 
 export type ToolbarCommons = {
+  /**
+   * Toolbar can have small or medium size
+   * @default medium
+   */
   size?: 'small' | 'medium';
 };
 
