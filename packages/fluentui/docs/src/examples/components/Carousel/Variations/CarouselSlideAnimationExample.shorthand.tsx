@@ -142,4 +142,4 @@ const CarouselExample = () => (
   </Provider>
 );
 
-export default CarouselExample;
+export default CarouselSlideAnimationExample;
