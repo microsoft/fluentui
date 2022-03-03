@@ -1,6 +1,6 @@
 import { Accessibility, AriaRole, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
 import { compose, ComposedComponent, FocusZone, Telemetry } from '@fluentui/react-bindings';
-import { Ref, RefFindNode } from '@fluentui/react-component-ref';
+import { Ref, RefFindNode, RefForward } from '@fluentui/react-component-ref';
 import { isConformant as isConformantBase, IsConformantOptions } from '@fluentui/react-conformance';
 import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import { ComponentSlotStylesPrepared, emptyTheme } from '@fluentui/styles';
@@ -93,7 +93,9 @@ export function isConformant(
     ? (Component as ComposedComponent).fluentComposeConfig?.handledProps
     : Component.handledProps;
 
-  const helperComponentNames = [Ref, RefFindNode, ...(wrapperComponent ? [wrapperComponent] : [])].map(getDisplayName);
+  const helperComponentNames = [Ref, RefFindNode, RefForward, ...(wrapperComponent ? [wrapperComponent] : [])].map(
+    getDisplayName,
+  );
 
   const toNextNonTrivialChild = (from: ReactWrapper) => {
     const current = from.childAt(0);
