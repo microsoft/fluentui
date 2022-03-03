@@ -1,4 +1,4 @@
-import * as FloatingUI from '@floating-ui/core';
+import * as FloatingUI from '@floating-ui/dom';
 
 /**
  * Returns the base placement value

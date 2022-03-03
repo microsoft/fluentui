@@ -1,4 +1,4 @@
-import { Middleware, SideObject, detectOverflow } from '@floating-ui/core';
+import { Middleware, SideObject, detectOverflow } from '@floating-ui/dom';
 import { PopperOptions } from '../types';
 import { getBasePlacement } from '../utils/getBasePlacement';
 

@@ -1660,7 +1660,7 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-0.3.1.tgz#3dde0ad0724d4b730567c92f49f0950910e18871"
   integrity sha512-ensKY7Ub59u16qsVIFEo2hwTCqZ/r9oZZFh51ivcLGHfUwTn8l1Xzng8RJUe91H/UP8PeqeBronAGx0qmzwk2g==
 
-"@floating-ui/core@^0.5.0", "@floating-ui/core@^0.5.1":
+"@floating-ui/core@^0.5.0":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-0.5.1.tgz#d85d18938c4080f28dae338f5499d372ff93a7ff"
   integrity sha512-LOFg65vdU4o4eZjVKNhu7VXbjdnY0amMw9sydLtKZiCNwj0eMD06rmktbWp9L/f6w6s9Qqe22lkks8PbwYwy4Q==

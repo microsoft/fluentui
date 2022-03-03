@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as FloatingUI from '@floating-ui/core';
+import * as FloatingUI from '@floating-ui/dom';
 
 export type OffsetFunctionParam = {
   floating: FloatingUI.Rect;

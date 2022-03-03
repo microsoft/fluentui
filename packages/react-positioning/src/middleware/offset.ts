@@ -1,4 +1,4 @@
-import type { Placement, Coords, Middleware, ElementRects } from '@floating-ui/core';
+import type { Placement, Coords, Middleware, ElementRects } from '@floating-ui/dom';
 import { Offset } from '../types';
 import { getBasePlacement } from '../utils/getBasePlacement';
 

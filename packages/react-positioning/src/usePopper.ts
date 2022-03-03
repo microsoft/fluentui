@@ -1,5 +1,10 @@
-import { hide as hideMiddleware, arrow as arrowMiddleware, Middleware, Strategy } from '@floating-ui/core';
-import { computePosition } from '@floating-ui/dom';
+import {
+  computePosition,
+  Middleware,
+  Strategy,
+  hide as hideMiddleware,
+  arrow as arrowMiddleware,
+} from '@floating-ui/dom';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';

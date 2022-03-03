@@ -1,4 +1,4 @@
-import { Middleware } from '@floating-ui/core';
+import { Middleware } from '@floating-ui/dom';
 import { getBasePlacement } from '../utils/getBasePlacement';
 
 export function coverTarget(): Middleware {

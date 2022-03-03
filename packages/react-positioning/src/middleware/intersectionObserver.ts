@@ -1,4 +1,4 @@
-import { detectOverflow, Middleware } from '@floating-ui/core';
+import { detectOverflow, Middleware } from '@floating-ui/dom';
 
 export function intersectionObserver(): Middleware {
   return {

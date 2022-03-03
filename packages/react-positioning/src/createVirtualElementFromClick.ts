@@ -1,4 +1,4 @@
-import { ClientRectObject } from '@floating-ui/core';
+import { ClientRectObject } from '@floating-ui/dom';
 import type { PopperVirtualElement } from './types';
 
 /**
