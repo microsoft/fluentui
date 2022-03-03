@@ -116,16 +116,16 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   /** A navigation may be clickable */
   disableClickableNav?: boolean;
 
-  /** Define animation to slide to enter from left */
+  /** Define animation to slide on enter from previous item. */
   animationEnterFromPrev?: string;
 
-  /** Define animation to slide to enter from Right */
+  /** Define animation to slide on enter from next item. */
   animationEnterFromNext?: string;
 
-  /** Define animation to slide to exit to left */
+  /** Define animation to slide on exit to previous item. */
   animationExitToPrev?: string;
 
-  /** Define animation to slide to exit to right */
+  /** Define animation to slide on exit to next item. */
   animationExitToNext?: string;
 }
 
