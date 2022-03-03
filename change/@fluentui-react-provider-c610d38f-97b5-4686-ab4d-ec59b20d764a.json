@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(react-provider): fix lint issues",
+  "packageName": "@fluentui/react-provider",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
