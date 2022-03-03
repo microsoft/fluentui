@@ -356,8 +356,8 @@ export interface IContextualMenuItem {
   iconProps?: IIconProps;
 
   /**
-   * Custom render function for the menu item icon
-   * iconProps must be present on at least one item for onRenderIcon to be called
+   * Custom render function for the menu item icon.
+   * iconProps must be present on at least one item for onRenderIcon to be called.
    */
   onRenderIcon?: IRenderFunction<IContextualMenuItemProps>;
 
