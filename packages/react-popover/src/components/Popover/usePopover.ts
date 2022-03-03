@@ -13,6 +13,7 @@ import {
   usePopperMouseTarget,
 } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
 import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
 
@@ -33,7 +34,37 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     ...props,
   } as const;
 
+  const children = React.Children.toArray(props.children) as React.ReactElement[];
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (children.length === 0) {
+      // eslint-disable-next-line no-console
+      console.warn('Popover must contain at least one child');
+    }
+
+    if (children.length > 2) {
+      // eslint-disable-next-line no-console
+      console.warn('Popover must contain at most two children');
+    }
+  }
+
+  let popoverTrigger: React.ReactElement | undefined = undefined;
+  let popoverSurface: React.ReactElement | undefined = undefined;
+  if (children.length === 2) {
+    popoverTrigger = children[0];
+    popoverSurface = children[1];
+  } else if (children.length === 1) {
+    popoverSurface = children[0];
+  }
+
   const [open, setOpen] = useOpenState(initialState);
+  const toggleOpen = React.useCallback<PopoverState['toggleOpen']>(
+    e => {
+      setOpen(e, !open);
+    },
+    [setOpen, open],
+  );
+
   const popperRefs = usePopoverRefs(initialState);
 
   const { targetDocument } = useFluent();
@@ -52,11 +83,23 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     disabled: !open || !initialState.openOnContext, // only close on scroll for context
   });
 
+  const { findFirstFocusable } = useFocusFinders();
+
+  React.useEffect(() => {
+    if (open && popperRefs.contentRef.current) {
+      const firstFocusable = findFirstFocusable(popperRefs.contentRef.current);
+      firstFocusable?.focus();
+    }
+  }, [findFirstFocusable, open, popperRefs.contentRef]);
+
   return {
     ...initialState,
     ...popperRefs,
+    popoverTrigger,
+    popoverSurface,
     open,
     setOpen,
+    toggleOpen,
     setContextTarget,
     contextTarget,
   };
