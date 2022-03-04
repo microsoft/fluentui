@@ -1,7 +1,14 @@
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type { BadgeCommons, BadgeSlots } from '../Badge/Badge.types';
 
-export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
+export type PresenceBadgeStatus =
+  | 'busy'
+  | 'outOfOffice'
+  | 'away'
+  | 'available'
+  | 'offline'
+  | 'doNotDisturb'
+  | 'unknown';
 
 type PresenceBadgeCommons = {
   /**
