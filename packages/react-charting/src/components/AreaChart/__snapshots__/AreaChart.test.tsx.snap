@@ -50,7 +50,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -79,7 +79,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -377,7 +377,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -406,7 +406,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -684,7 +684,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -713,7 +713,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -866,7 +866,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -895,7 +895,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1193,7 +1193,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1222,7 +1222,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1520,7 +1520,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1549,7 +1549,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1847,7 +1847,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1876,7 +1876,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);

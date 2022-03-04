@@ -1,8 +1,18 @@
 # Change Log - @fluentui/keyboard-keys
 
-This log was last generated on Fri, 18 Feb 2022 13:35:37 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 05:17:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0-rc.4)
+
+Fri, 04 Mar 2022 05:17:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.0-rc.3..@fluentui/keyboard-keys_v9.0.0-rc.4)
+
+### Changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- keyboard-keys: Adding missing tslib dependency. ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0-rc.3)
 

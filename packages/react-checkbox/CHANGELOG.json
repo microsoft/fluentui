@@ -2,6 +2,90 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Fri, 04 Mar 2022 05:17:35 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.0-beta.10",
+      "version": "9.0.0-beta.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-label to v9.0.0-beta.9",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.5",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.4",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.5",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 02:17:35 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.0-beta.9",
+      "version": "9.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "084d7408855f3e52b67cbca172da1acef9dcb98f",
+            "comment": "fix: Add react-theme as dependency"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "17618b2b24ce013569c74a505b2212eba18caf54",
+            "comment": "Refactor Checkbox styles to use CSS pseudo-classes"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "2170ed575f77bc6852cfe5a2fe4974c7f9a64a9e",
+            "comment": "Rename `circular` prop to `shape`"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-label to v9.0.0-beta.8",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Feb 2022 13:35:30 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.0-beta.8",
       "version": "9.0.0-beta.8",

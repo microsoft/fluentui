@@ -58,11 +58,11 @@
 /.github/ISSUE_TEMPLATE* @justSlone @jurokapsiar
 
 #### Fluent UI N*
-packages/a11y-rules/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
-packages/a11y-testing/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
-packages/fluentui/ @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
-packages/fluentui/react-northstar/src/components/Chat/ @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726 @Hirse
-packages/fluentui/react-northstar/src/themes/teams/components/Chat/ @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726 @Hirse
+packages/a11y-rules/ @microsoft/fluentui-northstar
+packages/a11y-testing/ @microsoft/fluentui-northstar
+packages/fluentui/ @microsoft/fluentui-northstar
+packages/fluentui/react-northstar/src/components/Chat/ @microsoft/fluentui-northstar @Hirse
+packages/fluentui/react-northstar/src/themes/teams/components/Chat/ @microsoft/fluentui-northstar @Hirse
 
 #### Web Components
 packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
@@ -75,9 +75,9 @@ perf-test/ @microsoft/fluentui-react-build
 # ssr-tests/
 
 #### Packages
-packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
+packages/azure-themes/ @hyoshis @Jacqueline-ms
 packages/bundle-size/ @microsoft/teams-prg
-packages/date-time-utilities @ermercer @LuMarti-MS @evlevy
+packages/date-time-utilities @ermercer @evlevy
 packages/eslint-plugin/ @microsoft/fluentui-react-build
 packages/foundation-legacy/ @microsoft/cxe-red @khmakoto
 # packages/font-icons-mdl2/
@@ -86,17 +86,19 @@ packages/foundation-legacy/ @microsoft/cxe-red @khmakoto
 packages/merge-styles/ @dzearing
 packages/monaco-editor/ @ecraig12345
 packages/public-docsite-setup/ @ecraig12345
+packages/priority-overflow/ @microsoft/teams-prg
 packages/react-aria/ @microsoft/teams-prg
 packages/react-cards/ @microsoft/cxe-red @khmakoto
-packages/react-charting/ @Raghurk
+packages/react-charting/ @microsoft/charting-team
 packages/react-conformance-griffel/ @microsoft/teams-prg
 packages/react-context-selector/ @microsoft/teams-prg
-packages/react-date-time @ermercer @LuMarti-MS @evlevy
+packages/react-date-time @ermercer @evlevy
 packages/react-docsite-components/ @ecraig12345 @micahgodbolt
-packages/react-file-type-icons/ @KatherineThayerMicrosoft @jahnp @bigbadcapers
+packages/react-file-type-icons/ @jahnp @bigbadcapers
 packages/react-hooks/ @microsoft/cxe-red @ecraig12345
 packages/react-monaco-editor/ @ecraig12345
 packages/react-positioning/ @microsoft/teams-prg
+packages/react-priority-overflow/ @microsoft/teams-prg
 packages/react-shared-contexts/ @microsoft/teams-prg
 packages/react-storybook/ @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-storybook-addon/ @microsoft/cxe-prg
@@ -141,7 +143,7 @@ packages/react-radio/ @microsoft/cxe-red
 packages/react-select/ @microsoft/cxe-coastal @smhigley
 packages/react-slider/ @microsoft/cxe-coastal @micahgodbolt
 packages/react-spinner/ @microsoft/cxe-red @tomi-msft
-packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @ecraig12345 @czearing
+packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @ecraig12345
 packages/react-tabs/ @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-text/ @microsoft/cxe-prg
 packages/react-tooltip/ @microsoft/cxe-red @behowell @khmakoto
@@ -152,14 +154,14 @@ packages/react/src/components/ActivityItem/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Announced/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Breadcrumb/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Button/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/Calendar/ @ermercer @LuMarti-MS
-packages/react/src/components/CalendarDayGrid/ @ermercer @LuMarti-MS
+packages/react/src/components/Calendar/ @ermercer @evlevy
+packages/react/src/components/CalendarDayGrid/ @ermercer @evlevy
 packages/react/src/components/Check/ @microsoft/cxe-red @ThomasMichon @khmakoto
 packages/react/src/components/Checkbox/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/ChoiceGroup/ @microsoft/cxe-red @ecraig12345
 packages/react/src/components/Coachmark/ @microsoft/cxe-red @leddie24
 packages/react/src/components/ColorPicker/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/DatePicker/ @ermercer @LuMarti-MS
+packages/react/src/components/DatePicker/ @ermercer @evlevy
 packages/react/src/components/DetailsList/ @microsoft/cxe-red @ThomasMichon
 packages/react/src/components/DocumentCard/ @microsoft/cxe-red @yiminwu
 packages/react/src/components/Fabric/ @microsoft/cxe-red @dzearing
@@ -191,7 +193,7 @@ packages/react/src/components/Text/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/TextField/ @microsoft/cxe-red @ecraig12345
 packages/react/src/components/Toggle/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Tooltip/ @microsoft/cxe-red @behowell
-packages/react/src/components/WeeklyDayPicker/ @ermercer @LuMarti-MS
+packages/react/src/components/WeeklyDayPicker/ @ermercer @evlevy
 
 ## Theming and styling
 packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @dzearing

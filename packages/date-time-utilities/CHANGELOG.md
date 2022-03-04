@@ -1,8 +1,18 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Tue, 25 Jan 2022 07:30:05 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Mar 2022 07:24:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.4.0)
+
+Thu, 03 Mar 2022 07:24:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.3.0..@fluentui/date-time-utilities_v8.4.0)
+
+### Minor changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/set-version to v8.2.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
 
 ## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.3.0)
 

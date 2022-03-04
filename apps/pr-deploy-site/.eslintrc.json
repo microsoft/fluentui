@@ -14,7 +14,7 @@
       // IE 11-compatible syntax as long as we still support IE 11.
       "files": ["pr-deploy-site.js"],
       "plugins": ["es"],
-      "extends": ["plugin:es/restrict-to-es2015"],
+      "extends": ["plugin:es/restrict-to-es2015", "plugin:@microsoft/eslint-plugin-sdl/required"],
       "rules": {
         // turn off conflicting or unwanted rules from normal set
         "curly": "off",

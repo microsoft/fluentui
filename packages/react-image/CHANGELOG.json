@@ -2,6 +2,48 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Fri, 04 Mar 2022 05:17:36 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-rc.5",
+      "version": "9.0.0-rc.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.5",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.4",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 02:17:40 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Feb 2022 13:35:32 GMT",
       "tag": "@fluentui/react-image_v9.0.0-rc.3",
       "version": "9.0.0-rc.3",

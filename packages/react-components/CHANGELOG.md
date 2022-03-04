@@ -1,8 +1,143 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 18 Feb 2022 13:35:27 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 19:49:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.6)
+
+Fri, 04 Mar 2022 19:49:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.5..@fluentui/react-components_v9.0.0-rc.6)
+
+### Changes
+
+- `@fluentui/react-components`
+  - Adding /unstable export to exports map. ([PR #21962](https://github.com/microsoft/fluentui/pull/21962) by dzearing@microsoft.com)
+
+## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.5)
+
+Fri, 04 Mar 2022 05:17:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.4..@fluentui/react-components_v9.0.0-rc.5)
+
+### Changes
+
+- `@fluentui/react-shared-contexts`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-slider`
+  - undefined ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-switch`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+  - Updating class names to use slot class names helper type. ([PR #21933](https://github.com/microsoft/fluentui/pull/21933) by email not defined)
+- `@fluentui/react-tabs`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-tabster`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-text`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-theme`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-tooltip`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-utilities`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+  - Adding helper type to define slot class names. ([PR #21933](https://github.com/microsoft/fluentui/pull/21933) by email not defined)
+  - fix(shouldPreventDefaultOnKeyDown): return false for events that are default prevented ([PR #21905](https://github.com/microsoft/fluentui/pull/21905) by lingfangao@hotmail.com)
+- `@fluentui/keyboard-keys`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+  - keyboard-keys: Adding missing tslib dependency. ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-accordion`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-aria`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-avatar`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-badge`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-button`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+  - Button: Exporting classNames of individual slots. ([PR #20977](https://github.com/microsoft/fluentui/pull/20977) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-card`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-checkbox`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-components`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+  - Add Radio and RadioGroup to react-components/unstable ([PR #21883](https://github.com/microsoft/fluentui/pull/21883) by behowell@microsoft.com)
+- `@fluentui/react-context-selector`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-divider`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-image`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-input`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-label`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-link`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-menu`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-popover`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+  - refactor: PopoverSurface should be rendered from the Popover component ([PR #21922](https://github.com/microsoft/fluentui/pull/21922) by lingfangao@hotmail.com)
+- `@fluentui/react-portal`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-positioning`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+  - fix: `popperRef.setTarget` should accept virtual element type ([PR #21875](https://github.com/microsoft/fluentui/pull/21875) by lingfangao@hotmail.com)
+- `@fluentui/react-provider`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- `@fluentui/react-radio`
+  - Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+  - Initial release ([PR #21883](https://github.com/microsoft/fluentui/pull/21883) by behowell@microsoft.com)
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.4)
+
+Tue, 01 Mar 2022 02:17:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.3..@fluentui/react-components_v9.0.0-rc.4)
+
+### Changes
+
+- `@fluentui/react-button`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-card`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-checkbox`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+  - Refactor Checkbox styles to use CSS pseudo-classes ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by behowell@microsoft.com)
+  - Rename `circular` prop to `shape` ([PR #21834](https://github.com/microsoft/fluentui/pull/21834) by behowell@microsoft.com)
+- `@fluentui/react-components`
+  - Add Checkbox to react-components/unstable ([PR #21836](https://github.com/microsoft/fluentui/pull/21836) by behowell@microsoft.com)
+- `@fluentui/react-divider`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-input`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-label`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-link`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: add isIntersectingModifier to usePopper ([PR #21855](https://github.com/microsoft/fluentui/pull/21855) by olfedias@microsoft.com)
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-slider`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-switch`
+  - Switch: Re-implementing component to make it simpler and making it adhere to latest patterns. ([PR #21849](https://github.com/microsoft/fluentui/pull/21849) by Humberto.Morimoto@microsoft.com)
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-text`
+  - fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - Ignore prefix in useId() when it is falsey. ([PR #21848](https://github.com/microsoft/fluentui/pull/21848) by seanmonahan@microsoft.com)
+  - Add fieldset to getNativeElementProps ([PR #21835](https://github.com/microsoft/fluentui/pull/21835) by behowell@microsoft.com)
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.3)
 

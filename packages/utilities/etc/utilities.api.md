@@ -1216,6 +1216,9 @@ export function useCustomizationSettings(properties: string[], scopeName?: strin
 export function useFocusRects(rootRef?: React_2.RefObject<HTMLElement>): void;
 
 // @public
+export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
+
+// @public
 export function values<T>(obj: any): T[];
 
 // @public

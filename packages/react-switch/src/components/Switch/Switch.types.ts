@@ -1,71 +1,75 @@
 import * as React from 'react';
+import { Label } from '@fluentui/react-label';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type SwitchSlots = {
   /**
-   * The root of the Switch.
+   * The root element of the Switch.
+   *
+   * The root slot receives the `className` and `style` specified directly on the `<Switch>` tag.
+   * All other native props will be applied to the primary slot: `input`.
    */
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
-   * The bar indicating the status of the Switch.
+   * The track and the thumb sliding over it indicating the on and off status of the Switch.
    */
-  track: NonNullable<Slot<'div'>>;
+  indicator: NonNullable<Slot<'div'>>;
 
   /**
-   * The wrapper around the thumb. It is used as the active area for the thumb to position itself.
-   */
-  thumbWrapper: NonNullable<Slot<'div'>>;
-
-  /**
-   * The circular icon indicating the status of the Switch.
-   */
-  thumb: NonNullable<Slot<'div'>>;
-
-  /**
-   * The hidden input that handles the Switch's internal functionality.
+   * Hidden input that handles the Switch's functionality.
+   *
+   * This is the PRIMARY slot: all native properties specified directly on the `<Switch>` tag will be applied to this
+   * slot, except `className` and `style`, which remain on the root slot.
    */
   input: NonNullable<Slot<'input'>>;
 
   /**
-   * The area in which the Switch's rail allows for the thumb to be dragged.
+   * The Switch's label.
    */
-  activeRail: NonNullable<Slot<'div'>>;
+  label?: Slot<typeof Label>;
 };
 
-interface SwitchCommons {
+type SwitchCommons = {
   /**
-   * The starting value for a uncontrolled Switch. If `true` then the Switch will be enabled.
-   * Mutually exclusive with `checked` prop.
-   *
+   * Defines the controlled checked state of the Switch.
+   * If passed, Switch ignores the `defaultChecked` property.
+   * This should only be used if the checked state is to be controlled at a higher level and there is a plan to pass the
+   * correct value based on handling `onChange` events and re-rendering.
    * @default false
-   */
-  defaultChecked?: boolean;
-
-  /**
-   * The current value for a controlled Switch. If `true` then the Switch will be enabled.
-   * Mutually exclusive with `defaultChecked` prop.
    */
   checked?: boolean;
 
   /**
-   * Whether the Switch should be disabled.
+   * The position of the label relative to the Switch.
    *
-   * @default false
+   * @default after
    */
-  disabled?: boolean;
+  labelPosition: 'above' | 'after' | 'before';
+};
 
-  /**
-   * Callback to be called when the `checked` value changes.
-   */
-  onChange?: (
-    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
-    data: {
-      checked: boolean;
-    },
-  ) => void;
-}
+export type SwitchOnChangeData = {
+  checked: boolean;
+};
 
-export interface SwitchProps extends Omit<ComponentProps<Partial<SwitchSlots>>, 'onChange'>, SwitchCommons {}
+/**
+ * Switch Props
+ */
+export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'onChange'> &
+  Partial<SwitchCommons> & {
+    /**
+     * Defines whether the Switch is initially in a checked state or not when rendered.
+     * @default false
+     */
+    defaultChecked?: boolean;
 
-export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommons {}
+    /**
+     * Callback to be called when the checked state value changes.
+     */
+    onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => void;
+  };
+
+/**
+ * State used in rendering Switch
+ */
+export type SwitchState = ComponentState<SwitchSlots> & SwitchCommons;
