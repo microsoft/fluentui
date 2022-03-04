@@ -16,7 +16,7 @@ The Slider control is a thin wrapper around an `<input type="range"/>`. Addition
 - `originFromZero` => `origin`
 - `buttonProps` => Slider props, other than className and id, are passed to `input` element
 - `ariaLabel` => use `aria-label` instead
-- `ariaValueText` => explicitely set `aria-value-text`
+- `ariaValueText` => explicitely set `aria-valuetext`
 
 ## Migration from v0
 
