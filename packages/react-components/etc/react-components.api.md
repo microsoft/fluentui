@@ -176,6 +176,11 @@ import { MenuPopoverState } from '@fluentui/react-menu';
 import { MenuProps } from '@fluentui/react-menu';
 import { MenuProvider } from '@fluentui/react-menu';
 import { MenuSlots } from '@fluentui/react-menu';
+import { MenuSplitGroup } from '@fluentui/react-menu';
+import { menuSplitGroupClassName } from '@fluentui/react-menu';
+import { MenuSplitGroupProps } from '@fluentui/react-menu';
+import { MenuSplitGroupSlots } from '@fluentui/react-menu';
+import { MenuSplitGroupState } from '@fluentui/react-menu';
 import { MenuState } from '@fluentui/react-menu';
 import { MenuTrigger } from '@fluentui/react-menu';
 import { MenuTriggerChildProps } from '@fluentui/react-menu';
@@ -232,6 +237,7 @@ import { renderMenuItemCheckbox_unstable } from '@fluentui/react-menu';
 import { renderMenuItemRadio_unstable } from '@fluentui/react-menu';
 import { renderMenuList_unstable } from '@fluentui/react-menu';
 import { renderMenuPopover_unstable } from '@fluentui/react-menu';
+import { renderMenuSplitGroup_unstable } from '@fluentui/react-menu';
 import { renderMenuTrigger_unstable } from '@fluentui/react-menu';
 import { renderPopover_unstable } from '@fluentui/react-popover';
 import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
@@ -343,6 +349,8 @@ import { useMenuListContextValues_unstable } from '@fluentui/react-menu';
 import { useMenuListStyles_unstable } from '@fluentui/react-menu';
 import { useMenuPopover_unstable } from '@fluentui/react-menu';
 import { useMenuPopoverStyles_unstable } from '@fluentui/react-menu';
+import { useMenuSplitGroup_unstable } from '@fluentui/react-menu';
+import { useMenuSplitGroupStyles_unstable } from '@fluentui/react-menu';
 import { useMenuTrigger_unstable } from '@fluentui/react-menu';
 import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { usePopover_unstable } from '@fluentui/react-popover';
@@ -708,6 +716,16 @@ export { MenuProvider }
 
 export { MenuSlots }
 
+export { MenuSplitGroup }
+
+export { menuSplitGroupClassName }
+
+export { MenuSplitGroupProps }
+
+export { MenuSplitGroupSlots }
+
+export { MenuSplitGroupState }
+
 export { MenuState }
 
 export { MenuTrigger }
@@ -819,6 +837,8 @@ export { renderMenuItemRadio_unstable }
 export { renderMenuList_unstable }
 
 export { renderMenuPopover_unstable }
+
+export { renderMenuSplitGroup_unstable }
 
 export { renderMenuTrigger_unstable }
 
@@ -1041,6 +1061,10 @@ export { useMenuListStyles_unstable }
 export { useMenuPopover_unstable }
 
 export { useMenuPopoverStyles_unstable }
+
+export { useMenuSplitGroup_unstable }
+
+export { useMenuSplitGroupStyles_unstable }
 
 export { useMenuTrigger_unstable }
 
