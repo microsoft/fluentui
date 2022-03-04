@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 01 Mar 2022 02:17:39 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 05:17:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.5)
+
+Fri, 04 Mar 2022 05:17:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-rc.4..@fluentui/react-utilities_v9.0.0-rc.5)
+
+### Changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Adding helper type to define slot class names. ([PR #21933](https://github.com/microsoft/fluentui/pull/21933) by email not defined)
+- fix(shouldPreventDefaultOnKeyDown): return false for events that are default prevented ([PR #21905](https://github.com/microsoft/fluentui/pull/21905) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.4 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
 
 ## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.4)
 

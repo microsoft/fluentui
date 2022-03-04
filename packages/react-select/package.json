@@ -44,7 +44,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "9.0.0-rc.4",
+    "@fluentui/react-utilities": "9.0.0-rc.5",
     "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
   },

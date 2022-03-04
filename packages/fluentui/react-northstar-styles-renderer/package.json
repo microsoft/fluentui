@@ -23,7 +23,7 @@
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": "^16.8.0 || ^17"
   },
   "publishConfig": {
     "access": "public"
