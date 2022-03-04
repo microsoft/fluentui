@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updated icon and submenuIndicator styles to align with menu item text",
+  "packageName": "@fluentui/react-menu",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
