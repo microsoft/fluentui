@@ -106,7 +106,7 @@ type TextAreaOnChangeData = {
 };
 ```
 
-The auto-resize feature is known to be unstable from v8 and tricky to implement. [As mentioned by ecraig12345](https://github.com/microsoft/fluentui/pull/21898#discussion_r816418917), we've been trying prioritize getting the components ready for production and may have to leave out some features for the initial version.
+The auto-resize feature is known to be unstable from v8 and tricky to implement. [As mentioned by ecraig12345](https://github.com/microsoft/fluentui/pull/21898#discussion_r816418917), we've been trying to prioritize getting the components ready for production and may have to leave out some features for the initial version.
 
 `TextArea` will have a single root slot that will be `<textarea/>`.
 
