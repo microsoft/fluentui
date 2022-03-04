@@ -18,7 +18,6 @@ import type { RegisterTabData, SelectTabData, SelectTabEvent, TabListProps, TabL
  * @param props - props from this instance of TabList
  * @param ref - reference to root HTMLElement of TabList
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
   const { appearance = 'transparent', onTabSelect, size = 'medium', vertical = false } = props;
 
