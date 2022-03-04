@@ -1,7 +1,8 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import type { SliderState } from './Slider.types';
+import type { SliderState, SliderSlots } from './Slider.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const sliderClassNames: SlotClassNames<SliderSlots> = {
   root: 'fui-Slider',
