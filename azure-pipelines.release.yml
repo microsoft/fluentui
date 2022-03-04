@@ -10,8 +10,9 @@ variables:
   - template: .devops/templates/variables.yml
     parameters:
       skipComponentGovernanceDetection: false
-
-pool: '1ES-Host-Ubuntu'
+  - group: InfoSec-SecurityResults
+  - name: tags
+    value: production,externalfacing
 
 schedules:
   # minute 0, hour 7 in UTC (11pm in UTC-8), any day of month, any month, days 1-5 of week (M-F)
@@ -23,173 +24,178 @@ schedules:
       include:
         - master
 
-workspace:
-  clean: all
+jobs:
+  - template: .devops/templates/compliance-job.yml
 
-steps:
-  - template: .devops/templates/tools.yml
+  - job: Release
+    dependsOn: Compliance
+    pool: '1ES-Host-Ubuntu'
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
 
-  - script: |
-      git config user.name "Fluent UI Build"
-      git config user.email "fluentui-internal@service.microsoft.com"
-      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
-    displayName: Authenticate git for pushes
+      - script: |
+          git config user.name "Fluent UI Build"
+          git config user.email "fluentui-internal@service.microsoft.com"
+          git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
+        displayName: Authenticate git for pushes
 
-  - task: Bash@3
-    inputs:
-      filePath: yarn-ci.sh
-    displayName: yarn
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
+        displayName: yarn
 
-  - script: |
-      yarn generate-version-files
-    displayName: Generate version files
+      - script: |
+          yarn generate-version-files
+        displayName: Generate version files
 
-  - script: |
-      yarn run:published build --production
-    displayName: yarn build
+      - script: |
+          yarn run:published build --production
+        displayName: yarn build
 
-  # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
-  # https://github.com/microsoft/fluentui/issues/21686
-  - script: |
-      yarn run:published test --only
-    displayName: yarn test
+      # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
+      # https://github.com/microsoft/fluentui/issues/21686
+      - script: |
+          yarn run:published test --only
+        displayName: yarn [test]
 
-  - script: |
-      yarn run:published lint --only
-    displayName: yarn lint
+      - script: |
+          yarn run:published lint --only
+        displayName: yarn lint
 
-  - script: |
-      yarn run:published bundle --only --production
-    displayName: yarn bundle
+      - script: |
+          yarn run:published bundle --only --production
+        displayName: yarn bundle
 
-  - script: |
-      yarn publish:beachball -n $(npmToken)
-      git reset --hard origin/master
-    env:
-      GITHUB_PAT: $(githubPAT)
-    displayName: Publish changes and bump versions
+      - script: |
+          yarn publish:beachball -n $(npmToken)
+          git reset --hard origin/master
+        env:
+          GITHUB_PAT: $(githubPAT)
+        displayName: Publish changes and bump versions
 
-  - script: |
-      echo Making $(Build.ArtifactStagingDirectory)/api
-      mkdir -p $(Build.ArtifactStagingDirectory)/api
-      cp packages/*/dist/*.api.json $(Build.ArtifactStagingDirectory)/api
-    displayName: Copy api.json files to artifact staging directory
+      - script: |
+          echo Making $(Build.ArtifactStagingDirectory)/api
+          mkdir -p $(Build.ArtifactStagingDirectory)/api
+          cp packages/*/dist/*.api.json $(Build.ArtifactStagingDirectory)/api
+        displayName: Copy api.json files to artifact staging directory
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: $(Build.ArtifactStagingDirectory)/api
-      artifactName: 'api-json'
-      publishLocation: 'Container'
-    displayName: 'Publish artifact: api-json'
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: $(Build.ArtifactStagingDirectory)/api
+          artifactName: 'api-json'
+          publishLocation: 'Container'
+        displayName: 'Publish artifact: api-json'
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: apps/public-docsite/dist
-      artifactName: 'fabric-website'
-      publishLocation: 'Container'
-    displayName: 'Publish artifact: fabric-website (public-docsite)'
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: apps/public-docsite/dist
+          artifactName: 'fabric-website'
+          publishLocation: 'Container'
+        displayName: 'Publish artifact: fabric-website (public-docsite)'
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: packages/react/dist
-      artifactName: 'fabric'
-      publishLocation: 'Container'
-    displayName: 'Publish artifact: fabric (packages/react/dist)'
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: packages/react/dist
+          artifactName: 'fabric'
+          publishLocation: 'Container'
+        displayName: 'Publish artifact: fabric (packages/react/dist)'
 
-  - script: |
-      oufrVersion=$(node -p -e "require('./packages/react/package.json').version")
-      echo "OUFR Version: $oufrVersion"
-      echo $oufrVersion > oufr-version.txt
-      echo "##vso[task.setvariable variable=oufrVersion;]$oufrVersion"
-    displayName: 'Set oufrVersion variable'
+      - script: |
+          oufrVersion=$(node -p -e "require('./packages/react/package.json').version")
+          echo "OUFR Version: $oufrVersion"
+          echo $oufrVersion > oufr-version.txt
+          echo "##vso[task.setvariable variable=oufrVersion;]$oufrVersion"
+        displayName: 'Set oufrVersion variable'
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: ./oufr-version.txt
-      artifactName: 'oufr-version'
-      publishLocation: 'Container'
-    displayName: 'Publish artifact: oufr-version'
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: ./oufr-version.txt
+          artifactName: 'oufr-version'
+          publishLocation: 'Container'
+        displayName: 'Publish artifact: oufr-version'
 
-  # create-site-manifests is a script defined in @fluentui/public-docsite-setup.
-  # It generates manifest files used to load the current version on developer.microsoft.com/fluentui.
-  - script: |
-      yarn create-site-manifests ./packages/react
-    displayName: 'Generate website manifests'
+      # create-site-manifests is a script defined in @fluentui/public-docsite-setup.
+      # It generates manifest files used to load the current version on developer.microsoft.com/fluentui.
+      - script: |
+          yarn create-site-manifests ./packages/react
+        displayName: 'Generate website manifests'
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: ./site-manifests
-      artifactName: 'fabric-website-manifests'
-      publishLocation: 'Container'
-    displayName: 'Publish artifact: fabric-website-manifests'
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: ./site-manifests
+          artifactName: 'fabric-website-manifests'
+          publishLocation: 'Container'
+        displayName: 'Publish artifact: fabric-website-manifests'
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: apps/public-docsite-resources/dist/demo
-      artifactName: 'fabric-website-resources'
-      publishLocation: 'Container'
-    displayName: 'Publish artifact: fabric-website-resources (public-docsite-resources)'
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: apps/public-docsite-resources/dist/demo
+          artifactName: 'fabric-website-resources'
+          publishLocation: 'Container'
+        displayName: 'Publish artifact: fabric-website-resources (public-docsite-resources)'
 
-  # Generate the homepage.htm file used to load developer.microsoft.com/fluentui. Note that the
-  # generated file must be manually checked in to an internal repo, it's just generated as a build
-  # artifact for convenience and tracking.
-  - script: |
-      node ./packages/public-docsite-setup/scripts/generateHomepage ./homepage
-    displayName: 'Generate homepage.htm'
+      # Generate the homepage.htm file used to load developer.microsoft.com/fluentui. Note that the
+      # generated file must be manually checked in to an internal repo, it's just generated as a build
+      # artifact for convenience and tracking.
+      - script: |
+          node ./packages/public-docsite-setup/scripts/generateHomepage ./homepage
+        displayName: 'Generate homepage.htm'
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      # This includes the actual homepage.htm as well as a non-minified JS file for debugging
-      pathtoPublish: ./homepage
-      artifactName: 'homepage.htm'
-      publishLocation: 'Container'
-    displayName: 'Publish artifact: homepage.htm'
+      - task: PublishBuildArtifacts@1
+        inputs:
+          # This includes the actual homepage.htm as well as a non-minified JS file for debugging
+          pathtoPublish: ./homepage
+          artifactName: 'homepage.htm'
+          publishLocation: 'Container'
+        displayName: 'Publish artifact: homepage.htm'
 
-  - script: |
-      node ./scripts/generate-package-manifest
-    displayName: 'Generate package manifest'
+      - script: |
+          node ./scripts/generate-package-manifest
+        displayName: 'Generate package manifest'
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: package-manifest
-      artifactName: 'package-manifest'
-      publishLocation: 'Container'
-    displayName: 'Publish artifact: package-manifest'
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: package-manifest
+          artifactName: 'package-manifest'
+          publishLocation: 'Container'
+        displayName: 'Publish artifact: package-manifest'
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: packages/fluentui/docs/src/public
-      artifactName: 'demo-images'
-      publishLocation: 'Container'
-    displayName: 'Publish artifact: demo-images'
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: packages/fluentui/docs/src/public
+          artifactName: 'demo-images'
+          publishLocation: 'Container'
+        displayName: 'Publish artifact: demo-images'
 
-  # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
-  # failure doesn't need to block anything else
-  - script: |
-      node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
-    displayName: 'Update github release notes'
+      # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
+      # failure doesn't need to block anything else
+      - script: |
+          node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
+        displayName: 'Update github release notes'
 
-  - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-    displayName: 📒 Generate Manifest
-    inputs:
-      BuildDropPath: $(System.DefaultWorkingDirectory)
+      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest
+        inputs:
+          BuildDropPath: $(System.DefaultWorkingDirectory)
 
-  - task: PublishPipelineArtifact@1
-    displayName: 📒 Publish Manifest
-    inputs:
-      artifactName: SBom-$(System.JobAttempt)
-      targetPath: $(System.DefaultWorkingDirectory)/_manifest
+      - task: PublishPipelineArtifact@1
+        displayName: 📒 Publish Manifest
+        inputs:
+          artifactName: SBom-$(System.JobAttempt)
+          targetPath: $(System.DefaultWorkingDirectory)/_manifest
 
-  # This would usually be run automatically (via a pipeline decorator from an extension), but the
-  # thorough cleanup step prevents it from working. So run it manually here.
-  - task: ComponentGovernanceComponentDetection@0
-    displayName: 'Component Detection'
-    inputs:
-      sourceScanPath: $(Agent.BuildDirectory)
-    condition: succeeded()
-    timeoutInMinutes: 5
-    continueOnError: true
+      # This would usually be run automatically (via a pipeline decorator from an extension), but the
+      # thorough cleanup step prevents it from working. So run it manually here.
+      - task: ComponentGovernanceComponentDetection@0
+        displayName: 'Component Detection'
+        inputs:
+          sourceScanPath: $(Agent.BuildDirectory)
+        condition: succeeded()
+        timeoutInMinutes: 5
+        continueOnError: true
 
-  - template: .devops/templates/cleanup.yml
-    parameters:
-      checkForModifiedFiles: false
+      - template: .devops/templates/cleanup.yml
+        parameters:
+          checkForModifiedFiles: false
