@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/cra-template",
-  "version": "8.0.75",
+  "version": "8.0.77",
   "description": "Create React App template for Fluent UI React (@fluentui/react)",
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
     "template.json"
   ],
   "devDependencies": {
-    "@fluentui/react": "^8.56.3",
+    "@fluentui/react": "^8.57.1",
     "@fluentui/scripts": "^1.0.0"
   }
 }

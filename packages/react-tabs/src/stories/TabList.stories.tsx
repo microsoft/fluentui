@@ -11,7 +11,7 @@ export { SizeMedium } from './TabListSizeMedium.stories';
 export { WithIcon } from './TabListWithIcon.stories';
 
 export default {
-  title: 'Components/TabList',
+  title: 'Preview Components/TabList',
   component: TabList,
   parameters: {
     docs: {

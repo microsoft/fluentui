@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { isConformant } from 'test/specs/commonTests';
 import { Carousel, CarouselProps, carouselSlotClassNames } from 'src/components/Carousel/Carousel';
+import { getAnimationName } from 'src/components/Carousel/utils';
 import { Button } from 'src/components/Button/Button';
 import { carouselNavigationClassName } from 'src/components/Carousel/CarouselNavigation';
 import { carouselNavigationItemClassName } from 'src/components/Carousel/CarouselNavigationItem';
@@ -282,6 +283,65 @@ describe('Carousel', () => {
       const paginationWrapper = getPaginationWrapper(wrapper);
 
       expect(paginationWrapper.exists()).toBe(false);
+    });
+  });
+
+  describe('animation', () => {
+    const animationEnterFromPrev = 'animationEnterFromPrev';
+    const animationEnterFromNext = 'animationEnterFromNext';
+    const animationExitToPrev = 'animationExitToPrev';
+    const animationExitToNext = 'animationExitToNext';
+
+    it('should return animation for exiting left when item is not active', () => {
+      expect(
+        getAnimationName({
+          active: false,
+          dir: 'start',
+          animationEnterFromPrev,
+          animationEnterFromNext,
+          animationExitToPrev,
+          animationExitToNext,
+        }),
+      ).toBe(animationExitToPrev);
+    });
+
+    it('should return animation for exiting right when item is not active', () => {
+      expect(
+        getAnimationName({
+          active: false,
+          dir: 'end',
+          animationEnterFromPrev,
+          animationEnterFromNext,
+          animationExitToPrev,
+          animationExitToNext,
+        }),
+      ).toBe(animationExitToNext);
+    });
+
+    it('should return animation for enter from left when item is active', () => {
+      expect(
+        getAnimationName({
+          active: true,
+          dir: 'end',
+          animationEnterFromPrev,
+          animationEnterFromNext,
+          animationExitToPrev,
+          animationExitToNext,
+        }),
+      ).toBe(animationEnterFromPrev);
+    });
+
+    it('should return animation for enter from right when item is active', () => {
+      expect(
+        getAnimationName({
+          active: true,
+          dir: 'start',
+          animationEnterFromPrev,
+          animationEnterFromNext,
+          animationExitToPrev,
+          animationExitToNext,
+        }),
+      ).toBe(animationEnterFromNext);
     });
   });
 });
