@@ -1,5 +1,5 @@
 import debounce from './debounce';
-import { createPriorityQueue } from './priority-queue';
+import { createPriorityQueue } from './priorityQueue';
 import {
   OnUpdateItemVisibility,
   OnUpdateOverflow,

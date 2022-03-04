@@ -1,4 +1,4 @@
-import { createPriorityQueue } from './priority-queue';
+import { createPriorityQueue } from './priorityQueue';
 
 describe('Priority queue', () => {
   it('can use comparator to order in increasing priority', () => {
