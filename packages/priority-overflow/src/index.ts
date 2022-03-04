@@ -1,2 +1,2 @@
-export * from './overflowManager';
+export * from './overflow-manager';
 export * from './types';
