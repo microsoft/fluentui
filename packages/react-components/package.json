@@ -82,6 +82,11 @@
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
+    "./unstable": {
+      "types": "./lib/unstable/index.d.ts",
+      "import": "./lib/unstable/index.js",
+      "require": "./lib-commonjs/unstable/index.js"
+    },
     "./package.json": "./package.json"
   }
 }
