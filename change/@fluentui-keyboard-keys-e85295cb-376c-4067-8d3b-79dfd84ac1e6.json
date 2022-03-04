@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "keyboard-keys: Adding missing tslib dependency.",
-  "packageName": "@fluentui/keyboard-keys",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
