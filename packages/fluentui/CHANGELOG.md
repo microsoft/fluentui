@@ -33,6 +33,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Features
 - Add new Popup prop `closeOnScroll` to close popup when scroll happens outside of the popover element @yuanboxue-amber ([#21453](https://github.com/microsoft/fluentui/pull/21453))
 - Add new `isIntersectingModifier` modifier to `usePopper` @layershifter ([#21829](https://github.com/microsoft/fluentui/pull/21829))
+- Allow users to configure new animations for `Carousel` transitions @chpalac ([#21866](https://github.com/microsoft/fluentui/pull/21866))
 
 <!--------------------------------[ v0.60.1 ]------------------------------- -->
 ## [v0.60.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.60.1) (2022-01-17)
