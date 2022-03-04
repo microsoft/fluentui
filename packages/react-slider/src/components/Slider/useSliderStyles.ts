@@ -3,7 +3,7 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { SliderState } from './Slider.types';
 
-export const sliderClassNames = {
+export const sliderClassNames: SlotClassNames<SliderSlots> = {
   root: 'fui-Slider',
   rail: 'fui-Slider__rail',
   thumb: 'fui-Slider__thumb',
