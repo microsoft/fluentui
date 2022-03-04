@@ -58,6 +58,8 @@ In some libraries, `TextArea` is a variant of `TextField` or `Input`.
   - `Disabled`: TextArea has a gray background, gray text, outline, and interaction is disabled.
   - `Read Only`: TextArea has a gray background, gray outline, and typing is disabled.
 
+Note: These colors are based on the design spec, therefore they come from the default theme.
+
 ## API
 
 ### Component props:
@@ -86,19 +88,19 @@ type TextAreaProps = {
   appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
 
   /**
-   * The value of the TextArea.
+   * The value of the TextArea. Used when the component is controlled.
    */
   value?: string;
 
   /**
-   * The default value of the TextArea.
+   * The default value of the TextArea. Used when the component is uncontrolled.
    */
   defaultValue?: string;
 
   /**
    * Callback for when the user changes the value.
    */
-  onChange?: (ev: React.FormEvent<HTMLTextAreaElement>, data: TextAreaOnChangeData) => void;
+  onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextAreaOnChangeData) => void;
 };
 
 type TextAreaOnChangeData = {
@@ -110,20 +112,14 @@ The auto-resize feature is known to be unstable from v8 and tricky to implement.
 
 `TextArea` will have a single root slot that will be `<textarea/>`.
 
-The design spec mentions a character count, error message, and label which will be left out for now.
+The design spec mentions a character count, error message, and label which will be left out until further discussion.
 
 ## Structure
 
 **Public**
 
 ```tsx
-<TextArea
-  className="textAreaClassName"
-  style={{ background: 'blue' }}
-  id="textarea-1"
-  value="This is a TextArea"
-  onChange={(ev, data) => console.log(data.value)}
-/>
+<TextArea id="textarea-1" value="This is a TextArea" onChange={(ev, data) => console.log(data.value)} />
 ```
 
 **Internal**
@@ -135,7 +131,7 @@ The design spec mentions a character count, error message, and label which will 
 **DOM** - how the component will be rendered as HTML elements
 
 ```html
-<textarea id="textarea-1" style="background: blue" className="textAreaClassName" value="This is a TextArea"></textarea>
+<textarea id="textarea-1" className="fui-textarea" value="This is a TextArea"></textarea>
 ```
 
 ## Migration
@@ -144,7 +140,7 @@ See [MIGRATION.md](MIGRATION.md).
 
 ## Behaviors
 
-_Explain how the component will behave in use, including:_
+TODO: Until the upcoming design review, behavior hasn't been set and will be updated when approved.
 
 - Component States
   - Rest
@@ -158,4 +154,4 @@ Interaction will be handled by native element.
 
 - User should provide a label since there is no built-in label for TextArea.
 - If no label is used, `aria-label` or `aria-labelledby` should be provided by the user.
-- Screen reader will be handled by native component.
+- Screen reader behavior will be handled by using the native `<textarea>` element.
