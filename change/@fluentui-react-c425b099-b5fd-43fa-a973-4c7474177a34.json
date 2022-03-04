@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Respect shouldFocusOnContainer prop if it is set when opening menu via click",
+  "packageName": "@fluentui/react",
+  "email": "makopch@microsoft.com",
+  "dependentChangeType": "patch"
+}
