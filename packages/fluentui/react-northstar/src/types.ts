@@ -50,7 +50,7 @@ export type PropsOf<T> = T extends React.Component<infer TProps>
 
 export type ShorthandRenderFunction<P> = (Component: React.ElementType<P>, props: P) => React.ReactNode;
 
-// The ReactFragment here is replaced from the original typings with Array<React.ReactNode> because of incorrect inheriting of the type when it is defined as {}
+// The ReactFragment here is replaced from the original typings with React.ReactNode[] because of incorrect inheriting of the type when it is defined as {}
 type ReactNode = React.ReactChild | React.ReactNode[] | React.ReactPortal | boolean | null | undefined;
 
 export type ShorthandValue<P extends Props> = ReactNode | ObjectShorthandValue<P>;
