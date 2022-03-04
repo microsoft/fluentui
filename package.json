@@ -415,6 +415,14 @@
           "ci-info",
           "node-fetch"
         ]
+      },
+      {
+        "packages": [
+          "@fluentui/react-conformance-griffel"
+        ],
+        "dependencies": [
+          "@fluentui/react-conformance"
+        ]
       }
     ]
   },
