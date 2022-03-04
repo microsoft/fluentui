@@ -7610,6 +7610,7 @@ export { IProcessedStyleSet }
 
 // @public (undocumented)
 export interface IProgressIndicatorProps extends React_2.ClassAttributes<ProgressIndicatorBase> {
+    ariaLabel?: string;
     ariaValueText?: string;
     barHeight?: number;
     className?: string;
