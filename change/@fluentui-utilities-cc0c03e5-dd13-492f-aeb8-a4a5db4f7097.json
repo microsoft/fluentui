@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Enhance selection to support better micro-management",
+  "packageName": "@fluentui/utilities",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
