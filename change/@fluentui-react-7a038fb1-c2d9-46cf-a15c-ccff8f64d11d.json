@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update onRenderIcon docs to warn of render condition",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
