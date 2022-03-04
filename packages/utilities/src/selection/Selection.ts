@@ -80,6 +80,7 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
     this._onSelectionChanged = onSelectionChanged;
     this._onItemsChanged = onItemsChanged;
     this._canSelectItem = canSelectItem;
+    this._keyToIndexMap = {};
 
     this._isModal = false;
 
@@ -223,7 +224,6 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
 
     if (hasSelectionChanged) {
       this._updateCount();
-      this._change();
     }
 
     if (haveItemsChanged) {
@@ -232,6 +232,10 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
       if (this._onItemsChanged) {
         this._onItemsChanged();
       }
+    }
+
+    if (hasSelectionChanged) {
+      this._change();
     }
 
     this.setChangeEvents(true);
