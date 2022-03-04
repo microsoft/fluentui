@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding /unstable export to exports map.",
-  "packageName": "@fluentui/react-components",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch"
-}
