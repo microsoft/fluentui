@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Fri, 18 Feb 2022 13:35:36 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 05:17:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.4)
+
+Fri, 04 Mar 2022 05:17:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-rc.3..@fluentui/react-theme_v9.0.0-rc.4)
+
+### Changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.3)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/set-version",
   "entries": [
     {
+      "date": "Thu, 03 Mar 2022 07:24:24 GMT",
+      "tag": "@fluentui/set-version_v8.2.0",
+      "version": "8.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/set-version",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Sep 2021 07:36:26 GMT",
       "tag": "@fluentui/set-version_v8.1.4",
       "version": "8.1.4",

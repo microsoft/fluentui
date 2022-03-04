@@ -199,6 +199,11 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
 // @public
+export type SlotClassNames<Slots> = {
+    [SlotName in keyof Slots]-?: string;
+};
+
+// @public
 export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandValue | null | undefined>;
 
 // @public (undocumented)

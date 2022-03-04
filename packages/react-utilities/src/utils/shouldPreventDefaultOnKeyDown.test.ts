@@ -47,4 +47,14 @@ describe('shouldPreventDefaultOnKeyDown', () => {
 
     expect(shouldPreventDefaultOnKeyDown(event)).toBe(false);
   });
+
+  it('should return false if the event is already default prevented', () => {
+    const event = new KeyboardEvent('keydown', { key: 'Enter', cancelable: true });
+    const element = document.createElement('button');
+
+    element.dispatchEvent(event);
+    event.preventDefault();
+
+    expect(shouldPreventDefaultOnKeyDown(event)).toBe(false);
+  });
 });

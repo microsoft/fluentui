@@ -216,3 +216,10 @@ export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props
 // export type ForwardRefComponent<Props> = Props extends React.DOMAttributes<infer Element>
 //   ? React.ForwardRefExoticComponent<Props> & React.RefAttributes<Element>
 //   : never;
+
+/**
+ * Helper type to correctly define the slot class names object.
+ */
+export type SlotClassNames<Slots> = {
+  [SlotName in keyof Slots]-?: string;
+};

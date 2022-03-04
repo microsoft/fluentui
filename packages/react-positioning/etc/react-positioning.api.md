@@ -71,7 +71,7 @@ export interface PopperOptions {
 // @public (undocumented)
 export type PopperRefHandle = {
     updatePosition: () => void;
-    setTarget: (target: HTMLElement) => void;
+    setTarget: (target: HTMLElement | PopperVirtualElement) => void;
 };
 
 // @public (undocumented)

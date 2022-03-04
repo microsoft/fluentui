@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useUnmount } from '@fluentui/react-hooks';
 import { css } from '../../Utilities';
 import { notifyHostChanged } from './Layer.notification';
 import type { ILayerHostProps } from './LayerHost.types';
@@ -16,17 +17,4 @@ export const LayerHost: React.FunctionComponent<ILayerHostProps> = props => {
   });
 
   return <div {...props} className={css('ms-LayerHost', className)} />;
-};
-
-const useUnmount = (unmountFunction: () => void) => {
-  const unmountRef = React.useRef(unmountFunction);
-  unmountRef.current = unmountFunction;
-  React.useEffect(
-    () => () => {
-      if (unmountRef.current) {
-        unmountRef.current();
-      }
-    },
-    [],
-  );
 };
