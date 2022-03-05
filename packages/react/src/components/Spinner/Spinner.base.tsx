@@ -36,9 +36,9 @@ export class SpinnerBase extends React.Component<ISpinnerProps, any> {
 
     return (
       <div {...nativeProps} className={classNames.root}>
-        <div>
-          <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 16 16">
-            <circle cx="8px" cy="8px" r="7px" />
+        <div className={classNames.wrapper}>
+          <svg xmlns="https://www.w3.org/2000/svg" className={classNames.svg} viewBox="0 0 16 16">
+            <circle className={classNames.circle} cx="8px" cy="8px" r="7px" />
           </svg>
         </div>
         {label && <div className={classNames.label}>{label}</div>}
