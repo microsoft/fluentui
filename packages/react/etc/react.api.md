@@ -8462,6 +8462,8 @@ export interface ISpinnerStyles {
     label?: IStyle;
     root?: IStyle;
     screenReaderText?: IStyle;
+    svg?: IStyle;
+    wrapper?: IStyle;
 }
 
 // @public (undocumented)
