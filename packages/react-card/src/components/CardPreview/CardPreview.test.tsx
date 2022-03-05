@@ -7,6 +7,11 @@ describe('CardPreview', () => {
   isConformant({
     Component: CardPreview,
     displayName: 'CardPreview',
+    testOptions: {
+      'has-static-classnames': {
+        logo: 'Test Logo',
+      },
+    },
   });
 
   it('renders a default state', () => {
