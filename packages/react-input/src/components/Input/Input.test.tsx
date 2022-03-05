@@ -21,6 +21,12 @@ describe('Input', () => {
     Component: Input,
     displayName: 'Input',
     primarySlot: 'input',
+    testOptions: {
+      'has-static-classnames': {
+        contentBefore: 'Test Content Before',
+        contentAfter: 'Test Content After',
+      },
+    },
   });
 
   it('renders a default state', () => {
