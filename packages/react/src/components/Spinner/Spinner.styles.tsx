@@ -91,17 +91,19 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
     ],
     circle: [
       {
-        boxSizing: 'border-box',
-        borderRadius: '50%',
-        border: '1.5px solid ' + palette.themeLight,
-        borderTopColor: palette.themePrimary,
+        stroke: palette.themePrimary,
+        fill: 'none',
+        strokeWidth: 2,
+        strokeLinecap: 'round',
+        transformOrigin: '50% 50%',
+        transform: 'rotate(-90deg)',
         animationName: spinAnimation(),
-        animationDuration: '1.3s',
+        animationDuration: '2s',
         animationIterationCount: 'infinite',
-        animationTimingFunction: 'cubic-bezier(.53,.21,.29,.67)',
+        animationTimingFunction: 'linear',
         selectors: {
           [HighContrastSelector]: {
-            borderTopColor: 'Highlight',
+            stroke: 'Highlight',
             ...getHighContrastNoAdjustStyle(),
           },
         },
