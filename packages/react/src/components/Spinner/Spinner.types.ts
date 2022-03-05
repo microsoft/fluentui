@@ -144,6 +144,12 @@ export interface ISpinnerStyles {
   /** Styles for the root element. Refers to the wrapper containing both the circle and the label. */
   root?: IStyle;
 
+  /** Styles for the spinner circle animation wrapper container */
+  wrapper?: IStyle;
+
+  /** Styles for the spinner circle animation svg */
+  svg?: IStyle;
+
   /** Styles for the spinner circle animation. */
   circle?: IStyle;
 
