@@ -15,7 +15,7 @@ export interface TestOptions {
     ignoreProps?: string[];
   };
   'has-static-classnames'?: {
-    [key: string]: string;
+    [key: string]: string | {};
   };
 }
 

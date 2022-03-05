@@ -7,6 +7,14 @@ describe('Avatar', () => {
   isConformant({
     Component: Avatar,
     displayName: 'Avatar',
+    testOptions: {
+      'has-static-classnames': {
+        image: { src: 'avatar.png', alt: 'test-image' },
+        initials: 'Test Initials',
+        icon: 'Test Icon',
+        badge: 'Test Badge',
+      },
+    },
   });
 
   /**
