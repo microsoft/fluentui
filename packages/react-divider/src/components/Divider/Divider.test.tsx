@@ -12,6 +12,11 @@ describe('Divider', () => {
   isConformant({
     Component: Divider,
     displayName: 'Divider',
+    testOptions: {
+      'has-static-classnames': {
+        children: 'Test Children',
+      },
+    },
   });
 
   it('renders a default divider', () => {
