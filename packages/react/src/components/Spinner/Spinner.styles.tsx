@@ -53,24 +53,8 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
       },
       className,
     ],
-    circle: [
+    wrapper: [
       classNames.circle,
-      {
-        boxSizing: 'border-box',
-        borderRadius: '50%',
-        border: '1.5px solid ' + palette.themeLight,
-        borderTopColor: palette.themePrimary,
-        animationName: spinAnimation(),
-        animationDuration: '1.3s',
-        animationIterationCount: 'infinite',
-        animationTimingFunction: 'cubic-bezier(.53,.21,.29,.67)',
-        selectors: {
-          [HighContrastSelector]: {
-            borderTopColor: 'Highlight',
-            ...getHighContrastNoAdjustStyle(),
-          },
-        },
-      },
       size === SpinnerSize.xSmall && [
         'ms-Spinner--xSmall',
         {
@@ -99,6 +83,24 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
           height: 28,
         },
       ],
+    ],
+    circle: [
+      {
+        boxSizing: 'border-box',
+        borderRadius: '50%',
+        border: '1.5px solid ' + palette.themeLight,
+        borderTopColor: palette.themePrimary,
+        animationName: spinAnimation(),
+        animationDuration: '1.3s',
+        animationIterationCount: 'infinite',
+        animationTimingFunction: 'cubic-bezier(.53,.21,.29,.67)',
+        selectors: {
+          [HighContrastSelector]: {
+            borderTopColor: 'Highlight',
+            ...getHighContrastNoAdjustStyle(),
+          },
+        },
+      },
     ],
     label: [
       classNames.label,
