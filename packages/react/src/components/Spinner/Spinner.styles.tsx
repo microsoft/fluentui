@@ -84,6 +84,11 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
         },
       ],
     ],
+    svg: [
+      {
+        verticalAlign: 'top',
+      },
+    ],
     circle: [
       {
         boxSizing: 'border-box',
