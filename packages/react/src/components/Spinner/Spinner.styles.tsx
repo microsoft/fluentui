@@ -18,10 +18,16 @@ const GlobalClassNames = {
 const spinAnimation = memoizeFunction(() =>
   keyframes({
     '0%': {
+      strokeDasharray: '0px 44px',
       transform: 'rotate(0deg)',
     },
+    '50%': {
+      strokeDasharray: '22px 22px',
+      transform: 'rotate(450deg)',
+    },
     '100%': {
-      transform: 'rotate(360deg)',
+      strokeDasharray: '0px 44px',
+      transform: 'rotate(1080deg)',
     },
   }),
 );
