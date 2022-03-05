@@ -1,8 +1,17 @@
+import { SlotClassNames } from '@fluentui/react-utilities/src';
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { BadgeSlots } from '../Badge/Badge.types';
 import { useBadgeStyles_unstable } from '../Badge/useBadgeStyles';
 import type { CounterBadgeState } from './CounterBadge.types';
 
+/**
+ * @deprecated
+ */
 export const counterBadgeClassName = 'fui-CounterBadge';
+export const counterBadgeClassNames: SlotClassNames<BadgeSlots> = {
+  root: 'fui-CounterBadge',
+  icon: 'fui-CounterBadge__icon',
+};
 
 const useStyles = makeStyles({
   dot: {
@@ -22,10 +31,15 @@ const useStyles = makeStyles({
 export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): CounterBadgeState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
-    counterBadgeClassName,
+    counterBadgeClassNames.root,
     state.dot && styles.dot,
     !state.showZero && state.count === 0 && !state.dot && styles.hide,
     state.root.className,
   );
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(counterBadgeClassNames.icon, state.icon.className);
+  }
+
   return useBadgeStyles_unstable(state) as CounterBadgeState;
 };

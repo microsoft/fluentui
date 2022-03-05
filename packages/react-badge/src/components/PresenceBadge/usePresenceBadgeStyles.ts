@@ -1,8 +1,17 @@
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { PresenceBadgeState } from './PresenceBadge.types';
+import { SlotClassNames } from '@fluentui/react-utilities/src';
+import { BadgeSlots } from '../Badge/Badge.types';
 
+/**
+ * @deprecated
+ */
 export const presenceBadgeClassName = 'fui-PresenceBadge';
+export const presenceBadgeClassNames: SlotClassNames<BadgeSlots> = {
+  root: 'fui-PresenceBadge',
+  icon: 'fui-PresenceBadge__icon',
+};
 
 const useStyles = makeStyles({
   root: {
@@ -81,7 +90,7 @@ const useStyles = makeStyles({
 export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): PresenceBadgeState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
-    presenceBadgeClassName,
+    presenceBadgeClassNames.root,
     styles.root,
     ['busy', 'doNotDisturb', 'unknown'].includes(state.status) && styles.statusBusy,
     state.status === 'away' && styles.statusAway,
@@ -99,6 +108,10 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
     state.size === 'extra-large' && styles.extraLarge,
     state.root.className,
   );
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(presenceBadgeClassNames.icon, state.icon.className);
+  }
 
   return state;
 };
