@@ -1,10 +1,17 @@
+import { SlotClassNames } from '@fluentui/react-utilities/src';
 import { mergeClasses } from '@griffel/react';
-import type { AccordionState } from './Accordion.types';
+import type { AccordionSlots, AccordionState } from './Accordion.types';
 
+/**
+ * @deprecated
+ */
 export const accordionClassName = 'fui-Accordion';
+export const accordionClassNames: SlotClassNames<AccordionSlots> = {
+  root: 'fui-Accordion',
+};
 
 export const useAccordionStyles_unstable = (state: AccordionState) => {
-  state.root.className = mergeClasses(accordionClassName, state.root.className);
+  state.root.className = mergeClasses(accordionClassNames.root, state.root.className);
 
   return state;
 };
