@@ -16,23 +16,45 @@ exports[`Spinner renders Spinner correctly 1`] = `
         ms-Spinner-circle
         ms-Spinner--medium
         {
-          animation-duration: 1.3s;
-          animation-iteration-count: infinite;
-          animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
-          animation-timing-function: cubic-bezier(.53,.21,.29,.67);
-          border-radius: 50%;
-          border-top-color: #0078d4;
-          border: 1.5px solid #c7e0f4;
-          box-sizing: border-box;
           height: 20px;
           width: 20px;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-          -ms-high-contrast-adjust: none;
-          border-top-color: Highlight;
-          forced-color-adjust: none;
-        }
-  />
+  >
+    <svg
+      className=
+
+          {
+            vertical-align: top;
+          }
+      viewBox="0 0 16 16"
+      xmlns="https://www.w3.org/2000/svg"
+    >
+      <circle
+        className=
+
+            {
+              animation-duration: 2s;
+              animation-iteration-count: infinite;
+              animation-name: keyframes 0%{stroke-dasharray:0px 44px;transform:rotate(0deg);}50%{stroke-dasharray:22px 22px;transform:rotate(450deg);}100%{stroke-dasharray:0px 44px;transform:rotate(1080deg);};
+              animation-timing-function: linear;
+              fill: none;
+              stroke-linecap: round;
+              stroke-width: 2px;
+              stroke: #0078d4;
+              transform-origin: 50% 50%;
+              transform: rotate(-90deg);
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
+              forced-color-adjust: none;
+              stroke: Highlight;
+            }
+        cx="8px"
+        cy="8px"
+        r="7px"
+      />
+    </svg>
+  </div>
   <div
     className=
         ms-Spinner-label
