@@ -147,10 +147,10 @@ export interface ISpinnerStyles {
   /** Styles for the spinner circle animation wrapper container */
   wrapper?: IStyle;
 
-  /** Styles for the spinner circle animation svg */
+  /** Styles for the spinner circle animation wrapper svg */
   svg?: IStyle;
 
-  /** Styles for the spinner circle animation. */
+  /** Styles for the spinner circle animation circle. */
   circle?: IStyle;
 
   /** Styles for the label accompanying the circle. */
