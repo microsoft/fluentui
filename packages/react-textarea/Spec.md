@@ -110,7 +110,10 @@ type TextAreaOnChangeData = {
 
 The auto-resize feature is known to be unstable from v8 and tricky to implement. [As mentioned by ecraig12345](https://github.com/microsoft/fluentui/pull/21898#discussion_r816418917), we've been trying to prioritize getting the components ready for production and may have to leave out some features for the initial version.
 
-`TextArea` will have a single root slot that will be `<textarea/>`.
+`TextArea` will have two props:
+
+- `textarea` which will be in charge of handling everything, except the focus indicator.
+- `root` which will act as a wrapper to be able to use an after pseudo-element for the focus indicator. This wrapper is needed since textarea cannot have children, therefore `::after` cannot be used.
 
 The design spec mentions a character count, error message, and label which will be left out until further discussion.
 
@@ -119,7 +122,9 @@ The design spec mentions a character count, error message, and label which will 
 **Public**
 
 ```tsx
-<TextArea id="textarea-1" value="This is a TextArea" onChange={(ev, data) => console.log(data.value)} />
+<TextArea id="textarea-1" onChange={(ev, data) => console.log(data.value)}>
+  This is a TextArea
+</TextArea>
 ```
 
 **Internal**
@@ -131,7 +136,9 @@ The design spec mentions a character count, error message, and label which will 
 **DOM** - how the component will be rendered as HTML elements
 
 ```html
-<textarea id="textarea-1" className="fui-textarea" value="This is a TextArea"></textarea>
+<div className="fui-TextArea">
+  <textarea id="textarea-1" className="fui-TextArea__textarea">This is a TextArea</textarea>
+</div>
 ```
 
 ## Migration
