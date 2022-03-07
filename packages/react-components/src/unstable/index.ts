@@ -88,7 +88,7 @@ export type {
 
 export {
   Slider,
-  sliderClassName,
+  sliderClassNames,
   useSliderState_unstable,
   useSliderStyles_unstable,
   useSlider_unstable,

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 04 Mar 2022 19:49:34 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-rc.6",
+      "version": "9.0.0-rc.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "e7a18d284e0050a34ff1aa3783856c73873adf78",
+            "comment": "Adding /unstable export to exports map."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Mar 2022 05:17:28 GMT",
       "tag": "@fluentui/react-components_v9.0.0-rc.5",
       "version": "9.0.0-rc.5",

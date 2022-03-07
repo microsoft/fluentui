@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add ariaLabel to ProgressIndicator",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

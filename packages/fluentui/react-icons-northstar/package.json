@@ -14,10 +14,8 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
     "@types/classnames": "^2.2.9",
-    "@types/react": "16.9.42",
     "@types/react-is": "^16.7.1",
     "lerna-alias": "^3.0.3-0",
-    "react": "16.8.6",
     "react-is": "^16.6.3"
   },
   "files": [

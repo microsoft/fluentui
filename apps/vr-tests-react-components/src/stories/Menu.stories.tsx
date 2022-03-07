@@ -329,3 +329,91 @@ storiesOf('Menu nested within a MenuTrigger', module)
       </MenuPopover>
     </Menu>
   ));
+
+// this places text in the icon slot to verify alignment when not using v9 icons
+storiesOf('Menu Converged - icon slotted content', module)
+  .addDecorator(story => (
+    <Screener steps={new Screener.Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}>
+      {story()}
+    </Screener>
+  ))
+  .addStory(
+    'default',
+    () => (
+      <Menu open>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem icon={<span>X</span>} secondaryContent="Ctrl+X">
+              Cut
+            </MenuItem>
+            <MenuItem icon={<span>C</span>} secondaryContent="Ctrl+C">
+              Copy
+            </MenuItem>
+            <MenuItem icon={<span>V</span>} secondaryContent="Ctrl+V">
+              Paste
+            </MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    ),
+    { includeRtl: true },
+  );
+
+// this places text in the submenuIndicator slot to verify alignment when not using v9 icons
+storiesOf('Menu Converged - submenuIndicator slotted content', module)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps().click('#nestedTrigger1').click('#nestedTrigger2').snapshot('submenus open').end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory(
+    'default',
+    () => (
+      <Menu open>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <Menu>
+              <MenuTrigger>
+                <MenuItem id="nestedTrigger1" submenuIndicator={<span>N</span>}>
+                  New
+                </MenuItem>
+              </MenuTrigger>
+
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem>File </MenuItem>
+                  <MenuItem>Folder</MenuItem>
+                  <Menu>
+                    <MenuTrigger>
+                      <MenuItem id="nestedTrigger2" submenuIndicator={<span>P</span>}>
+                        Project
+                      </MenuItem>
+                    </MenuTrigger>
+
+                    <MenuPopover>
+                      <MenuList>
+                        <MenuItem>Financial</MenuItem>
+                        <MenuItem>Planning</MenuItem>
+                        <MenuItem>Status</MenuItem>
+                      </MenuList>
+                    </MenuPopover>
+                  </Menu>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    ),
+    { includeRtl: true },
+  );

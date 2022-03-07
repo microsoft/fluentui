@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Adding /unstable export to exports map.",
+  "comment": "Added MenuSplitGroup to exports",
   "packageName": "@fluentui/react-components",
-  "email": "dzearing@microsoft.com",
+  "email": "gcox@microsoft.com",
   "dependentChangeType": "patch"
 }
