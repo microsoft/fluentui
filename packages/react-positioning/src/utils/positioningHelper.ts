@@ -27,7 +27,7 @@ const shouldAlignToCenter = (p?: Position, a?: Alignment): boolean => {
 };
 
 /**
- * @see positioninHelper.test.ts for expected placement values
+ * @see positioningHelper.test.ts for expected placement values
  */
 export const getPlacement = (
   align?: Alignment,
@@ -37,10 +37,10 @@ export const getPlacement = (
   const alignment = shouldAlignToCenter(position, align) ? 'center' : align;
 
   const computedPosition = position && getPositionMap(rtl)[position];
-  const computedAlignmnent = alignment && getAlignmentMap()[alignment];
+  const computedAlignment = alignment && getAlignmentMap()[alignment];
 
-  if (computedPosition && computedAlignmnent) {
-    return `${computedPosition}-${computedAlignmnent}` as FloatingUI.Placement;
+  if (computedPosition && computedAlignment) {
+    return `${computedPosition}-${computedAlignment}` as FloatingUI.Placement;
   }
 
   return computedPosition;
