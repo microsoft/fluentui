@@ -9,11 +9,14 @@ export interface ShiftMiddlewareOptions {
   container: HTMLElement | null;
 }
 
+/**
+ * Wraps the floating UI shift middleware for easier usage of our options
+ */
 export function shift(options: ShiftMiddlewareOptions) {
   const { hasScrollableElement, disableTether, overflowBoundary, container } = options;
 
   return middleware({
-    ...(hasScrollableElement && { boundary: 'clippingParents' }),
+    ...(hasScrollableElement && { boundary: 'clippingAncestors' }),
     ...(disableTether && {
       crossAxis: disableTether === 'all',
       limiter: limitShift({ crossAxis: disableTether !== 'all', mainAxis: false }),
