@@ -76,24 +76,23 @@ describe('Button', () => {
 
   describe('DefaultButton', () => {
     it('can render without an onClick.', () => {
-      const { getByRole } = render(<DefaultButton>Hello</DefaultButton>);
-
-      expect(getByRole('button').tagName).toEqual('BUTTON');
+      const { container } = render(<DefaultButton>Hello</DefaultButton>);
+      expect(container.firstElementChild!.tagName).toEqual('BUTTON');
     });
 
     it('can render with an onClick.', () => {
       const onClick: () => null = () => null;
-      const { getByRole } = render(<DefaultButton onClick={onClick}>Hello</DefaultButton>);
-      expect(getByRole('button').tagName).toEqual('BUTTON');
+      const { container } = render(<DefaultButton onClick={onClick}>Hello</DefaultButton>);
+      expect(container.firstElementChild!.tagName).toEqual('BUTTON');
     });
 
     it('can render with an href', () => {
-      const { getByRole } = render(
+      const { container } = render(
         <DefaultButton href="http://www.microsoft.com" target="_blank">
           Hello
         </DefaultButton>,
       );
-      expect(getByRole('link').tagName).toEqual('A');
+      expect(container.firstElementChild!.tagName).toEqual('A');
     });
 
     it('can handle elementRef', () => {
