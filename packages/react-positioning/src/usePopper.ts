@@ -62,13 +62,13 @@ function usePopperOptions(options: PopperOptions) {
 
       const placement = getPlacement(align, position, isRtl);
       const middleware = [
-        ...[offset && offsetMiddleware(offset)],
-        ...[coverTarget && coverTargetMiddleware()],
-        ...[!pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement })],
+        offset && offsetMiddleware(offset),
+        coverTarget && coverTargetMiddleware(),
+        !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement }),
         shiftMiddleware({ container, hasScrollableElement, overflowBoundary, disableTether }),
-        ...[autoSize && maxSizeMiddleware(autoSize)],
+        autoSize && maxSizeMiddleware(autoSize),
         intersectingMiddleware(),
-        ...[arrow && arrowMiddleware({ element: arrow, padding: arrowPadding })],
+        arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),
         hideMiddleware({ strategy: 'escaped' }),
       ].filter(Boolean) as Middleware[];
