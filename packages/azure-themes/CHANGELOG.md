@@ -1,8 +1,45 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Tue, 01 Mar 2022 07:23:43 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Mar 2022 07:41:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.146](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.146)
+
+Mon, 07 Mar 2022 07:41:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.145..@fluentui/azure-themes_v8.1.146)
+
+### Patches
+
+- Bump @fluentui/react to v8.58.0 ([PR #21949](https://github.com/microsoft/fluentui/pull/21949) by beachball)
+
+## [8.1.145](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.145)
+
+Fri, 04 Mar 2022 07:42:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.144..@fluentui/azure-themes_v8.1.145)
+
+### Patches
+
+- Bump @fluentui/react to v8.57.1 ([commit](https://github.com/microsoft/fluentui/commit/62865d15abd07125ff3968c739e387d6fd840f00) by beachball)
+
+## [8.1.144](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.144)
+
+Thu, 03 Mar 2022 07:24:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.143..@fluentui/azure-themes_v8.1.144)
+
+### Patches
+
+- Bump @fluentui/react to v8.57.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/set-version to v8.2.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+
+## [8.1.143](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.143)
+
+Wed, 02 Mar 2022 07:23:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.142..@fluentui/azure-themes_v8.1.143)
+
+### Patches
+
+- Bump @fluentui/react to v8.56.3 ([PR #21900](https://github.com/microsoft/fluentui/pull/21900) by beachball)
 
 ## [8.1.142](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.142)
 

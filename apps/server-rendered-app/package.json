@@ -21,9 +21,9 @@
     "compression": "^1.7.2"
   },
   "dependencies": {
-    "@fluentui/font-icons-mdl2": "^8.1.26",
-    "@fluentui/merge-styles": "^8.3.0",
-    "@fluentui/react": "^8.56.2",
+    "@fluentui/font-icons-mdl2": "^8.2.0",
+    "@fluentui/merge-styles": "^8.4.0",
+    "@fluentui/react": "^8.58.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "16.8.6",
     "react-dom": "16.8.6",

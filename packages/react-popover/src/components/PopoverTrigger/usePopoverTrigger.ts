@@ -24,7 +24,7 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
   const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
 
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
-  const open = usePopoverContext_unstable(context => context.open);
+  const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
   const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
   const openOnContext = usePopoverContext_unstable(context => context.openOnContext);
@@ -40,7 +40,7 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
 
   const onClick = (e: React.MouseEvent<HTMLElement>) => {
     if (!openOnContext) {
-      setOpen(e, !open);
+      toggleOpen(e);
     }
   };
 

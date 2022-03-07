@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.0.0-rc.4",
+  "version": "9.0.0-rc.6",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -38,28 +38,28 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-accordion": "9.0.0-rc.4",
-    "@fluentui/react-avatar": "9.0.0-rc.4",
-    "@fluentui/react-badge": "9.0.0-rc.4",
-    "@fluentui/react-button": "9.0.0-rc.4",
-    "@fluentui/react-card": "9.0.0-beta.9",
-    "@fluentui/react-checkbox": "9.0.0-beta.9",
-    "@fluentui/react-divider": "9.0.0-rc.4",
-    "@fluentui/react-image": "9.0.0-rc.4",
-    "@fluentui/react-input": "9.0.0-beta.4",
-    "@fluentui/react-label": "9.0.0-beta.8",
-    "@fluentui/react-link": "9.0.0-rc.4",
-    "@fluentui/react-menu": "9.0.0-rc.4",
-    "@fluentui/react-popover": "9.0.0-rc.4",
-    "@fluentui/react-portal": "9.0.0-rc.4",
-    "@fluentui/react-provider": "9.0.0-rc.4",
-    "@fluentui/react-radio": "9.0.0-beta.1",
-    "@fluentui/react-slider": "9.0.0-beta.9",
-    "@fluentui/react-tabs": "9.0.0-beta.7",
-    "@fluentui/react-theme": "9.0.0-rc.3",
-    "@fluentui/react-tooltip": "9.0.0-rc.4",
-    "@fluentui/react-utilities": "9.0.0-rc.4",
-    "@fluentui/react-text": "9.0.0-rc.4",
+    "@fluentui/react-accordion": "9.0.0-rc.5",
+    "@fluentui/react-avatar": "9.0.0-rc.5",
+    "@fluentui/react-badge": "9.0.0-rc.5",
+    "@fluentui/react-button": "9.0.0-rc.5",
+    "@fluentui/react-card": "9.0.0-beta.10",
+    "@fluentui/react-checkbox": "9.0.0-beta.10",
+    "@fluentui/react-divider": "9.0.0-rc.5",
+    "@fluentui/react-image": "9.0.0-rc.5",
+    "@fluentui/react-input": "9.0.0-beta.5",
+    "@fluentui/react-label": "9.0.0-beta.9",
+    "@fluentui/react-link": "9.0.0-rc.5",
+    "@fluentui/react-menu": "9.0.0-rc.5",
+    "@fluentui/react-popover": "9.0.0-rc.5",
+    "@fluentui/react-portal": "9.0.0-rc.5",
+    "@fluentui/react-provider": "9.0.0-rc.5",
+    "@fluentui/react-radio": "9.0.0-beta.2",
+    "@fluentui/react-slider": "9.0.0-beta.10",
+    "@fluentui/react-tabs": "9.0.0-beta.8",
+    "@fluentui/react-theme": "9.0.0-rc.4",
+    "@fluentui/react-tooltip": "9.0.0-rc.5",
+    "@fluentui/react-utilities": "9.0.0-rc.5",
+    "@fluentui/react-text": "9.0.0-rc.5",
     "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
   },
@@ -75,5 +75,18 @@
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./unstable": {
+      "types": "./lib/unstable/index.d.ts",
+      "import": "./lib/unstable/index.js",
+      "require": "./lib-commonjs/unstable/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }

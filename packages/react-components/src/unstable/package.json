@@ -4,5 +4,12 @@
   "module": "../lib/unstable/index.js",
   "typings": "../lib/unstable/index.d.ts",
   "sideEffects": false,
-  "license": "MIT"
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./../lib/unstable/index.d.ts",
+      "import": "./../lib/unstable/index.js",
+      "require": "./../lib-commonjs/unstable/index.js"
+    }
+  }
 }
