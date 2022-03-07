@@ -587,7 +587,7 @@ describe('Button', () => {
       // click event to fire. This doesn't happen in the simulator so we're
       // manually adding this in.
       fireEvent.touchStart(primaryButton);
-      fireEvent.click(primaryButton);
+      userEvent.click(primaryButton);
       expect(getAllByRole('button')[0].getAttribute('aria-expanded')).toEqual('true');
     });
 
