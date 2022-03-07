@@ -1,10 +1,17 @@
+import { SlotClassNames } from '@fluentui/react-utilities/src';
 import { mergeClasses } from '@griffel/react';
-import type { MenuGroupState } from './MenuGroup.types';
+import type { MenuGroupSlots, MenuGroupState } from './MenuGroup.types';
 
+/**
+ * @deprecated
+ */
 export const menuGroupClassName = 'fui-MenuGroup';
+export const menuGroupClassNames: SlotClassNames<MenuGroupSlots> = {
+  root: 'fui-MenuGroup',
+};
 
 export const useMenuGroupStyles_unstable = (state: MenuGroupState): MenuGroupState => {
-  state.root.className = mergeClasses(menuGroupClassName, state.root.className);
+  state.root.className = mergeClasses(menuGroupClassNames.root, state.root.className);
 
   return state;
 };

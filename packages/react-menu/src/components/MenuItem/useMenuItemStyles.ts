@@ -3,9 +3,21 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { useCheckmarkStyles_unstable } from '../../selectable/index';
 import { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
-import type { MenuItemState } from './MenuItem.types';
+import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
+import { SlotClassNames } from '@fluentui/react-utilities/src';
 
+/**
+ * @deprecated
+ */
 export const menuItemClassName = 'fui-MenuItem';
+export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
+  root: 'fui-MenuItem',
+  icon: 'fui-MenuItem__icon',
+  checkmark: 'fui-MenuItem__checkmark',
+  submenuIndicator: 'fui-MenuItem__submenuIndicator',
+  content: 'fui-MenuItem__content',
+  secondaryContent: 'fui-MenuItem__secondaryContent',
+};
 
 const useStyles = makeStyles({
   focusIndicator: createFocusOutlineStyle(),
@@ -81,7 +93,7 @@ const useStyles = makeStyles({
 export const useMenuItemStyles_unstable = (state: MenuItemState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
-    menuItemClassName,
+    menuItemClassNames.root,
     styles.root,
     styles.focusIndicator,
     state.disabled && styles.disabled,
@@ -89,22 +101,31 @@ export const useMenuItemStyles_unstable = (state: MenuItemState) => {
   );
 
   if (state.content) {
-    state.content.className = mergeClasses(styles.content, state.content.className);
+    state.content.className = mergeClasses(menuItemClassNames.content, styles.content, state.content.className);
+  }
+
+  if (state.checkmark) {
+    state.checkmark.className = mergeClasses(menuItemClassNames.checkmark, state.checkmark.className);
   }
 
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(
+      menuItemClassNames.secondaryContent,
       !state.disabled && styles.secondaryContent,
       state.secondaryContent.className,
     );
   }
 
   if (state.icon) {
-    state.icon.className = mergeClasses(styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(menuItemClassNames.icon, styles.icon, state.icon.className);
   }
 
   if (state.submenuIndicator) {
-    state.submenuIndicator.className = mergeClasses(styles.submenuIndicator, state.submenuIndicator.className);
+    state.submenuIndicator.className = mergeClasses(
+      menuItemClassNames.submenuIndicator,
+      styles.submenuIndicator,
+      state.submenuIndicator.className,
+    );
   }
   useCheckmarkStyles_unstable(state as MenuItemCheckboxState);
 };
