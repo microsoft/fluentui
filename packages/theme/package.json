@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/theme",
-  "version": "2.4.12",
+  "version": "2.5.0",
   "description": "Basic building blocks for Fluent UI React Component themes",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,22 +25,23 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
-    "@fluentui/scripts": "^1.0.0",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
-    "react": "16.8.6"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/merge-styles": "^8.3.0",
-    "@fluentui/utilities": "^8.5.0",
-    "@fluentui/set-version": "^8.1.5",
+    "@fluentui/merge-styles": "^8.4.0",
+    "@fluentui/utilities": "^8.6.0",
+    "@fluentui/set-version": "^8.2.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

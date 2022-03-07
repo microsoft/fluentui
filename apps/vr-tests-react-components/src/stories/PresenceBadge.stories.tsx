@@ -9,6 +9,7 @@ const statuses: PresenceBadgeProps['status'][] = [
   'doNotDisturb',
   'offline',
   'outOfOffice',
+  'unknown',
 ];
 
 storiesOf('PresenceBadge Converged - status', module).addStory(

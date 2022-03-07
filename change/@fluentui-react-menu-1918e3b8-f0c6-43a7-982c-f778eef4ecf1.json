@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(MenuItem): Alignment for non v9 icons",
+  "packageName": "@fluentui/react-menu",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -20,12 +20,6 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@types/enzyme": "3.10.3",
-    "@types/react": "16.9.42",
-    "@types/react-test-renderer": "^16.0.0",
-    "enzyme": "~3.10.0",
-    "react": "16.8.6",
-    "react-test-renderer": "^16.3.0",
     "@fluentui/scripts": "^1.0.0"
   },
   "peerDependencies": {

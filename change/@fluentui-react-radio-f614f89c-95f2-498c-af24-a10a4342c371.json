@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Initial release",
-  "packageName": "@fluentui/react-radio",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

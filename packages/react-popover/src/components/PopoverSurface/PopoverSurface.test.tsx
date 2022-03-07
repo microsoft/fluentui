@@ -19,7 +19,7 @@ describe('PopoverSurface', () => {
 
   beforeEach(() => {
     resetIdsForTests();
-    mockPopoverContext({ open: true });
+    mockPopoverContext({});
   });
 
   // PopoverSurface is rendered by a Portal so won't be available in the rendered container
@@ -53,18 +53,9 @@ describe('PopoverSurface', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('should not render when open is false', () => {
-    // Arrange
-    mockPopoverContext({ open: false });
-    const { queryByTestId } = render(<PopoverSurface data-testid={testid}>Content</PopoverSurface>);
-
-    // Assert
-    expect(queryByTestId(testid)).toBeNull();
-  });
-
   it('should set aria-modal true if focus trap is active', () => {
     // Arrange
-    mockPopoverContext({ open: true, trapFocus: true });
+    mockPopoverContext({ trapFocus: true });
     const { getByTestId } = render(<PopoverSurface data-testid={testid}>Content</PopoverSurface>);
 
     // Assert
@@ -73,7 +64,7 @@ describe('PopoverSurface', () => {
 
   it('should set role dialog if focus trap is active', () => {
     // Arrange
-    mockPopoverContext({ open: true, trapFocus: true });
+    mockPopoverContext({ trapFocus: true });
     const { queryByRole } = render(<PopoverSurface data-testid={testid}>Content</PopoverSurface>);
 
     // Assert
@@ -82,7 +73,7 @@ describe('PopoverSurface', () => {
 
   it('should set role complementary if focus trap is not active', () => {
     // Arrange
-    mockPopoverContext({ open: true, trapFocus: false });
+    mockPopoverContext({ trapFocus: false });
     const { getByTestId } = render(<PopoverSurface data-testid={testid}>Content</PopoverSurface>);
 
     // Assert

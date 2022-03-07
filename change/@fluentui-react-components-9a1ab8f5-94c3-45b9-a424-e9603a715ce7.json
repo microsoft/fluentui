@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Add Radio and RadioGroup to react-components/unstable",
+  "comment": "Added MenuSplitGroup to exports",
   "packageName": "@fluentui/react-components",
-  "email": "behowell@microsoft.com",
+  "email": "gcox@microsoft.com",
   "dependentChangeType": "patch"
 }
