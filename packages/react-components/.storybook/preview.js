@@ -14,7 +14,7 @@ const options = {
       [
         'Introduction',
         'Developer',
-        ['Quick Start', 'Migrating from @fluentui᜵react v8', 'Styling Components', 'Positioning Components'],
+        ['Quick Start', 'Migrating from @fluentui/react v8', 'Styling Components', 'Positioning Components'],
       ],
       'Theme',
       'Components',
