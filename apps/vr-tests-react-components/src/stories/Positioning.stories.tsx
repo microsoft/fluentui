@@ -3,7 +3,7 @@ import {
   usePopper,
   createArrowStyles,
   PositioningProps,
-  PopperVirtualElement,
+  PositioningVirtualElement,
   PopperRefHandle,
 } from '@fluentui/react-positioning';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
@@ -421,7 +421,7 @@ const VirtualElement = () => {
 
   React.useEffect(() => {
     if (target) {
-      const virtualElement: PopperVirtualElement = {
+      const virtualElement: PositioningVirtualElement = {
         getBoundingClientRect: () => target.getBoundingClientRect(),
       };
 

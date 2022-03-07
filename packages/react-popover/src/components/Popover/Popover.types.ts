@@ -1,5 +1,9 @@
 import * as React from 'react';
-import type { PopperVirtualElement, PositioningShorthand, usePopperMouseTarget } from '@fluentui/react-positioning';
+import type {
+  PositioningVirtualElement,
+  PositioningShorthand,
+  usePopperMouseTarget,
+} from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
 
 /**
@@ -95,7 +99,7 @@ export type PopoverState = PopoverCommons &
     /**
      * Anchors the popper to the mouse click for context events
      */
-    contextTarget: PopperVirtualElement | undefined;
+    contextTarget: PositioningVirtualElement | undefined;
     /**
      * A callback to set the target of the popper to the mouse click for context events
      */

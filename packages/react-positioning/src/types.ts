@@ -32,10 +32,10 @@ export type PopperRefHandle = {
    * Sets the target and updates positioning imperatively.
    * Useful for avoiding double renders with the target option.
    */
-  setTarget: (target: HTMLElement | PopperVirtualElement) => void;
+  setTarget: (target: HTMLElement | PositioningVirtualElement) => void;
 };
 
-export type PopperVirtualElement = VirtualElement;
+export type PositioningVirtualElement = VirtualElement;
 
 export interface PopperOptions {
   /** Alignment for the component. Only has an effect if used with the @see position option */
@@ -111,7 +111,7 @@ export interface PositioningProps
   /**
    * Manual override for popper target. Useful for scenarios where a component accepts user prop to override target
    */
-  target?: HTMLElement | PopperVirtualElement | null;
+  target?: HTMLElement | PositioningVirtualElement | null;
 }
 
 export type PositioningShorthandValue =

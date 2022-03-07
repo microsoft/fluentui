@@ -1,4 +1,4 @@
-import type { PopperVirtualElement } from '../types';
+import type { PositioningVirtualElement } from '../types';
 import { getScrollParent } from './getScrollParent';
 
 /**
@@ -8,8 +8,8 @@ import { getScrollParent } from './getScrollParent';
  * @param prev Previous element
  */
 export function toggleScrollListener(
-  next: HTMLElement | PopperVirtualElement | null,
-  prev: HTMLElement | PopperVirtualElement | null,
+  next: HTMLElement | PositioningVirtualElement | null,
+  prev: HTMLElement | PositioningVirtualElement | null,
   handler: EventListener,
 ) {
   if (next === prev) {

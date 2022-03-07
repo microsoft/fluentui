@@ -4,7 +4,7 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
-import type { PopperOptions, PositioningProps, PopperVirtualElement } from './types';
+import type { PopperOptions, PositioningProps, PositioningVirtualElement } from './types';
 import { getPlacement } from './utils/positioningHelper';
 import { useCallbackRef } from './utils/useCallbackRef';
 import {
@@ -49,7 +49,11 @@ function usePopperOptions(options: PopperOptions) {
   const strategy: Strategy = positionFixed ? 'fixed' : 'absolute';
 
   return React.useCallback(
-    (target: HTMLElement | PopperVirtualElement | null, container: HTMLElement | null, arrow: HTMLElement | null) => {
+    (
+      target: HTMLElement | PositioningVirtualElement | null,
+      container: HTMLElement | null,
+      arrow: HTMLElement | null,
+    ) => {
       const scrollParentElement: HTMLElement = getScrollParent(container);
       const hasScrollableElement = scrollParentElement
         ? scrollParentElement !== scrollParentElement.ownerDocument?.body
@@ -166,13 +170,16 @@ export function usePopper(
 
   const updatePosition = React.useState(() => debounce(forceUpdate))[0];
 
-  const targetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, (target, prevTarget, isFirst) => {
-    toggleScrollListener(target, prevTarget, updatePosition);
+  const targetRef = useCallbackRef<HTMLElement | PositioningVirtualElement | null>(
+    null,
+    (target, prevTarget, isFirst) => {
+      toggleScrollListener(target, prevTarget, updatePosition);
 
-    if (!isFirst) {
-      updatePosition();
-    }
-  });
+      if (!isFirst) {
+        updatePosition();
+      }
+    },
+  );
   const containerRef = useCallbackRef<HTMLElement | null>(null, (container, prevContainer, isFirst) => {
     if (container && enabled) {
       // When the container is first resolved, set position `fixed` to avoid scroll jumps.
@@ -187,7 +194,7 @@ export function usePopper(
     }
   });
   const arrowRef = useCallbackRef<HTMLElement | null>(null, updatePosition, true);
-  const overrideTargetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(
+  const overrideTargetRef = useCallbackRef<HTMLElement | PositioningVirtualElement | null>(
     null,
     (target, prevTarget, isFirst) => {
       toggleScrollListener(target, prevTarget, updatePosition);
@@ -202,7 +209,7 @@ export function usePopper(
     options.popperRef,
     () => ({
       updatePosition,
-      setTarget: (target: HTMLElement | PopperVirtualElement) => {
+      setTarget: (target: HTMLElement | PositioningVirtualElement) => {
         if (options.target && process.env.NODE_ENV !== 'production') {
           const err = new Error();
           // eslint-disable-next-line no-console

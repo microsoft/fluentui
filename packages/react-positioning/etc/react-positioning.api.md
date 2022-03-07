@@ -36,7 +36,7 @@ export type CreateArrowStylesOptions = {
 };
 
 // @public
-export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVirtualElement;
+export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
 
 // @public
 export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset;
@@ -78,11 +78,11 @@ export interface PopperOptions {
 // @public (undocumented)
 export type PopperRefHandle = {
     updatePosition: () => void;
-    setTarget: (target: HTMLElement | PopperVirtualElement) => void;
+    setTarget: (target: HTMLElement | PositioningVirtualElement) => void;
 };
 
 // @public (undocumented)
-export type PopperVirtualElement = FloatingUI.VirtualElement;
+export type PositioningVirtualElement = FloatingUI.VirtualElement;
 
 // @public (undocumented)
 export type Position = 'above' | 'below' | 'before' | 'after';
@@ -90,7 +90,7 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 // @public (undocumented)
 export interface PositioningProps extends Omit<PopperOptions, 'positionFixed' | 'unstable_disableTether'> {
     popperRef?: React_2.Ref<PopperRefHandle>;
-    target?: HTMLElement | PopperVirtualElement | null;
+    target?: HTMLElement | PositioningVirtualElement | null;
 }
 
 // @public (undocumented)
@@ -112,7 +112,7 @@ export function usePopper(options: UsePopperOptions): {
 };
 
 // @public
-export const usePopperMouseTarget: (initialState?: VirtualElement | (() => PopperVirtualElement) | undefined) => readonly [VirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
+export const usePopperMouseTarget: (initialState?: VirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [VirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
 
 // (No @packageDocumentation comment for this package)
 

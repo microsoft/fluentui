@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createVirtualElementFromClick } from './createVirtualElementFromClick';
-import type { PopperVirtualElement } from './types';
+import type { PositioningVirtualElement } from './types';
 
 /**
  * A state hook that manages a popper virtual element from mouseevents.
@@ -10,8 +10,8 @@ import type { PopperVirtualElement } from './types';
  * @param initialState - initializes a user provided state similar to useState
  * @returns state and dispatcher for a Popper virtual element that uses native/synthetic mouse events
  */
-export const usePopperMouseTarget = (initialState?: PopperVirtualElement | (() => PopperVirtualElement)) => {
-  const [virtualElement, setVirtualElement] = React.useState<PopperVirtualElement | undefined>(initialState);
+export const usePopperMouseTarget = (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement)) => {
+  const [virtualElement, setVirtualElement] = React.useState<PositioningVirtualElement | undefined>(initialState);
 
   const setVirtualMouseTarget = (event: React.MouseEvent | MouseEvent | undefined | null) => {
     if (event === undefined || event === null) {
