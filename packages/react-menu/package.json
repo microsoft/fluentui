@@ -36,7 +36,7 @@
     "@fluentui/keyboard-keys": "9.0.0-rc.4",
     "@fluentui/react-context-selector": "9.0.0-rc.5",
     "@fluentui/react-icons": "^2.0.159-beta.10",
-    "@griffel/react": "1.0.0",
+    "@griffel/react": "1.0.3",
     "@fluentui/react-portal": "9.0.0-rc.5",
     "@fluentui/react-positioning": "9.0.0-rc.5",
     "@fluentui/react-shared-contexts": "9.0.0-rc.4",

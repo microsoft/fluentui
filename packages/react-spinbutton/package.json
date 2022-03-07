@@ -32,7 +32,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@griffel/react": "1.0.0",
+    "@griffel/react": "1.0.3",
     "@fluentui/keyboard-keys": "9.0.0-rc.4",
     "@fluentui/react-icons": "^2.0.159-beta.10",
     "@fluentui/react-input": "9.0.0-beta.5",

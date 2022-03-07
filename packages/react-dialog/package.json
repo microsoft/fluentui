@@ -32,7 +32,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@griffel/react": "1.0.0",
+    "@griffel/react": "1.0.3",
     "@fluentui/react-utilities": "9.0.0-rc.5",
     "tslib": "^2.1.0"
   },

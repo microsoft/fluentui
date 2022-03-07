@@ -1666,10 +1666,10 @@
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.159-beta.10.tgz#8934c05b415bbb1b46f9085c72eaf78fd7bad967"
   integrity sha512-Y2pDtl6ofeqGI/M/C3T6KbFy+deT1TkQ5aMO3TWN4XgAYQb5Sww56WeuX+sQNnnIXN21HIJOS6Hw1frFtCPv0w==
 
-"@griffel/babel-preset@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.0.0.tgz#2e44d06dc857c89a42f6550e331dd1ea4efc0a72"
-  integrity sha512-WDVtU/2ibBnVqu/hrmwMSzkCzyPAUQ4ZU6xTXUG/g5pz4I4og0eGd+qU2J5ZAugG3gxZM0ZlJP01be5NWYK0xg==
+"@griffel/babel-preset@1.2.0", "@griffel/babel-preset@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.2.0.tgz#c1a7c9bc4a45d3bed561fb6bad1bcefbc3c01bff"
+  integrity sha512-R9svAkYheM3+gvWuvmwD7wcPuH3iovlMbDG2sXTayluLe+gER4O+aeLm2NHCGMxmDDjB4+ARE9PDSGJamfCZuw==
   dependencies:
     "@babel/core" "^7.12.13"
     "@babel/generator" "^7.12.13"
@@ -1679,40 +1679,46 @@
     "@linaria/babel-preset" "^3.0.0-beta.14"
     "@linaria/shaker" "^3.0.0-beta.14"
     ajv "^8.4.0"
+    tslib "^2.1.0"
 
-"@griffel/core@1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.0.7.tgz#584ef829faf780716df6bbe371b3fb452e2d67f7"
-  integrity sha512-fj1eFqFiDsqBeEtPjLD39rmt9rlc/7y5QFzf26+cuXIhLN5fK1qFwBFJpuJkiVKKgYXqN2YmkYckZ36KHNUlBw==
+"@griffel/core@1.2.0", "@griffel/core@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.2.0.tgz#79373bbbbf1db9471affe56aabcfdbef975b7d28"
+  integrity sha512-3gAW038/0wkEXPEUrCnL4J4Flyj0I2jrU7L9dFiDAp2ML1FZ4pDuAYw61px1u4ItOpE6K3wl7UYhg7yofDDPUA==
   dependencies:
     "@emotion/hash" "^0.8.0"
-    csstype "^2.6.19"
+    csstype "^3.0.10"
     rtl-css-js "^1.15.0"
     stylis "^4.0.13"
+    tslib "^2.1.0"
 
-"@griffel/jest-serializer@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@griffel/jest-serializer/-/jest-serializer-1.0.0.tgz#dd59ae10b5c87a3448bb83dcb352f57a3529ff94"
-  integrity sha512-oesJKiDk9WfG146o/t5f6vKmFmSs2ohbXnH7uj4DmCWa8Xb+odEOaehgQMjnvMpG28vAvv1PrR7i92G66VArkA==
-
-"@griffel/react@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@griffel/react/-/react-1.0.0.tgz#797f50bb4e3b2fb6aa211d26d285daad5c255f34"
-  integrity sha512-iIPAZuIUSQDHphQZqqk7KuY9/+ql/s5ONGXijz9cyd+SfkTedbDJUwDotMEbVua1YObqwVypkKQFTEjJwqLkLA==
+"@griffel/jest-serializer@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@griffel/jest-serializer/-/jest-serializer-1.0.3.tgz#f8020480a699f0bf278ed61d2a12fbffa40aa62e"
+  integrity sha512-3y0EGMeARP31hnWYuwnDRnySxbgqj6EgFVlZrLQVAYMYLtwqesZWKAhYKuK8Vo20k2rTlfS1MR0albkcSuZdxg==
   dependencies:
-    "@griffel/core" "1.0.7"
+    tslib "^2.1.0"
 
-"@griffel/webpack-loader@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@griffel/webpack-loader/-/webpack-loader-2.0.0.tgz#4c0597e30431d8e8177bdb9e9b4ffabb0cd521ab"
-  integrity sha512-Y7CRUm1OcMr5B2xqQpZ2edGmEfyN7DQz+apYfT5+G7zy4zIPaoWtLPW17rgzjpesrt+65OPiTcVcDki/0hDehw==
+"@griffel/react@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@griffel/react/-/react-1.0.3.tgz#a2f84ba6a238da708e25f65585cd5459d35d0962"
+  integrity sha512-RfQ1O4A9+kWx2pStmTPdl1YuWYC0XHgLYvSiGoMIur7yibmM3Ki/YktUBJKQm0A09KIPYLYFCgE8Z9BjVvKrJg==
+  dependencies:
+    "@griffel/core" "^1.2.0"
+    tslib "^2.1.0"
+
+"@griffel/webpack-loader@2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@griffel/webpack-loader/-/webpack-loader-2.0.3.tgz#73379c04e3a39705130edcfd0c032be675d5bc18"
+  integrity sha512-rqQLbAKcG3RjYVYRc7j+Ljs24rZAhhIbVKYo1geDLBEBS8JG/Fq4tuOeWOqb4xJv9el8opn58OwXCagd5hQz6A==
   dependencies:
     "@babel/core" "^7.12.13"
-    "@griffel/babel-preset" "1.0.0"
+    "@griffel/babel-preset" "^1.2.0"
     "@linaria/babel-preset" "^3.0.0-beta.14"
     enhanced-resolve "^5.8.2"
     loader-utils "^2.0.0"
     schema-utils "^3.1.1"
+    tslib "^2.1.0"
 
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
@@ -2791,7 +2797,7 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@linaria/babel-preset@3.0.0-beta.14", "@linaria/babel-preset@^3.0.0-beta.14":
+"@linaria/babel-preset@^3.0.0-beta.14":
   version "3.0.0-beta.14"
   resolved "https://registry.yarnpkg.com/@linaria/babel-preset/-/babel-preset-3.0.0-beta.14.tgz#4f204e12948dd9e8a540374806b7c1a64d3b7918"
   integrity sha512-NtR9g4VUy43J9g2rvhgb3lcVLs0V4cmDeZAA/BkiaRIrU1M/nEbnRRlpbD3U149Q9XuPU+cuyqvA/zk3zbrufw==
@@ -9780,15 +9786,15 @@ cssstyle@^2.3.0:
   dependencies:
     cssom "~0.3.6"
 
-csstype@^2.5.5, csstype@^2.5.7, csstype@^2.6.19, csstype@^2.6.7:
+csstype@^2.5.5, csstype@^2.5.7, csstype@^2.6.7:
   version "2.6.19"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.19.tgz#feeb5aae89020bb389e1f63669a5ed490e391caa"
   integrity sha512-ZVxXaNy28/k3kJg0Fou5MiYpp88j7H9hLZp8PDC3jV0WFjfH5E9xHb56L0W59cPbKbcHXeP4qyT8PrHp8t6LcQ==
 
-csstype@^3.0.2:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.8.tgz#d2266a792729fb227cd216fb572f43728e1ad340"
-  integrity sha512-jXKhWqXPmlUeoQnF/EhTtTl4C9SnrxSH/jZUih3jmO6lBKr99rP3/+FmrMj4EFpOXzMtXHAZkd3x0E6h6Fgflw==
+csstype@^3.0.10, csstype@^3.0.2:
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.11.tgz#d66700c5eacfac1940deb4e3ee5642792d85cd33"
+  integrity sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"

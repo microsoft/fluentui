@@ -32,7 +32,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@griffel/react": "1.0.0",
+    "@griffel/react": "1.0.3",
     "@fluentui/react-shared-contexts": "9.0.0-rc.4",
     "@fluentui/react-tabster": "9.0.0-rc.5",
     "@fluentui/react-theme": "9.0.0-rc.4",

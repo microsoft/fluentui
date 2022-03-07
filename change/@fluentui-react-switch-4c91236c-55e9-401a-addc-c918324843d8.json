@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: update Griffel package",
+  "packageName": "@fluentui/react-switch",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
