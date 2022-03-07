@@ -1,7 +1,7 @@
 import * as FloatingUI from '@floating-ui/dom';
-import { getBasePlacement } from './getBasePlacement';
+import { getSide } from './getSide';
 
-describe('getBasePlacement', () => {
+describe('getSide', () => {
   it.each([
     ['top', 'top'],
     ['bottom', 'bottom'],
@@ -16,6 +16,6 @@ describe('getBasePlacement', () => {
     ['left-start', 'left'],
     ['left-end', 'left'],
   ])('should return %s from %s', (placement, basePlacement) => {
-    expect(getBasePlacement((placement as unknown) as FloatingUI.Placement)).toEqual(basePlacement);
+    expect(getSide((placement as unknown) as FloatingUI.Placement)).toEqual(basePlacement);
   });
 });

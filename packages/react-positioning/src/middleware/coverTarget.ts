@@ -1,12 +1,12 @@
 import { Middleware } from '@floating-ui/dom';
-import { getBasePlacement } from '../utils/getBasePlacement';
+import { getSide } from '../utils/getSide';
 
 export function coverTarget(): Middleware {
   return {
     name: 'coverTarget',
     fn: middlewareArguments => {
       const { placement, rects, x, y } = middlewareArguments;
-      const basePlacement = getBasePlacement(placement);
+      const basePlacement = getSide(placement);
       const newCoords = { x, y };
 
       switch (basePlacement) {

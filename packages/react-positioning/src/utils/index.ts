@@ -1,4 +1,4 @@
-export * from './getBasePlacement';
+export * from './getSide';
 export * from './getBoundary';
 export * from './getReactFiberFromNode';
 export * from './getScrollParent';

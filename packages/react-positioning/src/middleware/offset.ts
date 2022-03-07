@@ -1,10 +1,10 @@
 import type { Placement, Coords, Middleware, ElementRects } from '@floating-ui/dom';
 import { Offset } from '../types';
-import { getBasePlacement } from '../utils/getBasePlacement';
+import { getSide } from '../utils/getSide';
 
 function convertValueToCoords(placement: Placement, rects: ElementRects, value: Offset, rtl = false): Coords {
-  const side = getBasePlacement(placement);
-  const isVertical = ['top', 'bottom'].includes(getBasePlacement(placement));
+  const side = getSide(placement);
+  const isVertical = ['top', 'bottom'].includes(getSide(placement));
   const mainAxisMulti = ['left', 'top'].includes(side) ? -1 : 1;
 
   const crossAxisMulti = rtl && isVertical ? -1 : 1;

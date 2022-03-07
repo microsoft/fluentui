@@ -1,13 +1,13 @@
 import { Middleware, SideObject, detectOverflow } from '@floating-ui/dom';
 import { PopperOptions } from '../types';
-import { getBasePlacement } from '../utils/getBasePlacement';
+import { getSide } from '../utils/getSide';
 
 export function maxSize(autoSize: PopperOptions['autoSize']): Middleware {
   return {
     name: 'maxSize',
     fn: async middlewareArguments => {
       const { placement, rects, elements, middlewareData } = middlewareArguments;
-      const basePlacement = getBasePlacement(placement);
+      const basePlacement = getSide(placement);
 
       const overflow = await detectOverflow(middlewareArguments);
       const { x, y } = middlewareData.shift || { x: 0, y: 0 };
