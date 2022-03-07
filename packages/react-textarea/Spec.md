@@ -110,10 +110,10 @@ type TextAreaOnChangeData = {
 
 The auto-resize feature is known to be unstable from v8 and tricky to implement. [As mentioned by ecraig12345](https://github.com/microsoft/fluentui/pull/21898#discussion_r816418917), we've been trying to prioritize getting the components ready for production and may have to leave out some features for the initial version.
 
-`TextArea` will have two props:
+`TextArea` has two slots:
 
-- `textarea` which will be in charge of handling everything, except the focus indicator.
-- `root` which will act as a wrapper to be able to use an after pseudo-element for the focus indicator. This wrapper is needed since textarea cannot have children, therefore `::after` cannot be used.
+- `textarea` the primary slot that handles all `TextArea` behavior, except the focus indicator.
+- `root` acts as a wrapper to allow a pseudo-element for the focus indicator. This wrapper is needed since textarea cannot have children, therefore `::after` cannot be used.
 
 The design spec mentions a character count, error message, and label which will be left out until further discussion.
 
