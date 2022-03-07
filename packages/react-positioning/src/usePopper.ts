@@ -23,7 +23,7 @@ import {
 import { getScrollParent } from './utils/getScrollParent';
 import debounce from './utils/debounce';
 import { useFirstMount } from '@fluentui/react-utilities';
-import { dataPopperEscaped, dataPopperIntersecting, dataPopperReferenceHidden } from './contants';
+import { DATA_POSITIONING_ESCAPED, DATA_POSITIONING_INTERSECTING, DATA_POSITIONING_HIDDEN } from './contants';
 import { toggleScrollListener } from './utils/toggleScrollListener';
 import { hasAutofocusFilter } from './utils/hasAutoFocusFilter';
 
@@ -142,19 +142,19 @@ export function usePopper(
           position: strategy,
         });
 
-        containerRef.current.removeAttribute(dataPopperIntersecting);
+        containerRef.current.removeAttribute(DATA_POSITIONING_INTERSECTING);
         if (middlewareData.intersectionObserver.intersecting) {
-          containerRef.current.setAttribute(dataPopperIntersecting, '');
+          containerRef.current.setAttribute(DATA_POSITIONING_INTERSECTING, '');
         }
 
-        containerRef.current.removeAttribute(dataPopperEscaped);
+        containerRef.current.removeAttribute(DATA_POSITIONING_ESCAPED);
         if (middlewareData.hide?.escaped) {
-          containerRef.current.setAttribute(dataPopperEscaped, '');
+          containerRef.current.setAttribute(DATA_POSITIONING_ESCAPED, '');
         }
 
-        containerRef.current.removeAttribute(dataPopperReferenceHidden);
+        containerRef.current.removeAttribute(DATA_POSITIONING_HIDDEN);
         if (middlewareData.hide?.referenceHidden) {
-          containerRef.current.setAttribute(dataPopperReferenceHidden, '');
+          containerRef.current.setAttribute(DATA_POSITIONING_HIDDEN, '');
         }
 
         if (middlewareData.arrow && arrowRef.current) {

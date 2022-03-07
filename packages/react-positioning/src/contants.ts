@@ -1,3 +1,3 @@
-export const dataPopperIntersecting = 'data-popper-is-intersecting';
-export const dataPopperEscaped = 'data-popper-escaped';
-export const dataPopperReferenceHidden = 'data-popper-reference-hidden';
+export const DATA_POSITIONING_INTERSECTING = 'data-popper-is-intersecting';
+export const DATA_POSITIONING_ESCAPED = 'data-popper-escaped';
+export const DATA_POSITIONING_HIDDEN = 'data-popper-reference-hidden';
