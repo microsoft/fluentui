@@ -29,8 +29,7 @@
   "devDependencies": {
     "@fluentui/api-docs": "^8.2.1",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "react-dom": "16.8.6"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/react": "^8.58.0",
@@ -42,9 +41,9 @@
     "@fluentui/set-version": "^8.2.0",
     "@fluentui/theme-samples": "^8.3.2",
     "@fluentui/react-monaco-editor": "^1.2.87",
-    "@types/react": "16.9.42",
     "office-ui-fabric-core": "^11.0.0",
-    "react": "16.8.6",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "tslib": "^2.1.0"
   }
 }

@@ -44,11 +44,9 @@
     "@fluentui/theme-samples": "^8.3.2",
     "@fluentui/utilities": "^8.6.0",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
     "d3-format": "^1.4.4",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "tslib": "^2.1.0"
   }
 }

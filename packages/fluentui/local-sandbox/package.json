@@ -13,10 +13,6 @@
     "@fluentui/react-northstar": "^0.60.1"
   },
   "devDependencies": {
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
     "source-map-loader": "2.0.0"
   },
   "publishConfig": {
