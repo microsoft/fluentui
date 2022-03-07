@@ -84,7 +84,7 @@ export function getLayerHost(hostId: string): ILayerHost | undefined {
 export function registerLayerHost(hostId: string, layerHost: ILayerHost): void {
   const layerHosts = _layerHostsById[hostId] || (_layerHostsById[hostId] = []);
 
-  // Insert this at the stary of an array to avoid race conditions between mount and unmount.
+  // Insert this at the start of an array to avoid race conditions between mount and unmount.
   // If a LayerHost is re-mounted, and mount of the new instance may occur before the unmount of the old one.
   // Putting the new instance at the start of this array ensures that calls to `getLayerHost` will immediately
   // get the new one even if the old one is around briefly.
