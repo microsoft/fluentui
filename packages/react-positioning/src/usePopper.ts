@@ -129,45 +129,60 @@ export function usePopper(
     Object.assign(containerRef.current.style, { position: strategy });
     computePosition(target, containerRef.current, { placement, middleware, strategy }).then(
       ({ x, y, middlewareData, placement: computedPlacement }) => {
-        if (!containerRef.current) {
-          return;
-        }
+        const applyDataAttributes = () => {
+          if (!containerRef.current) {
+            return;
+          }
+          containerRef.current.setAttribute('data-popper-placement', computedPlacement);
+          containerRef.current.removeAttribute(DATA_POSITIONING_INTERSECTING);
+          if (middlewareData.intersectionObserver.intersecting) {
+            containerRef.current.setAttribute(DATA_POSITIONING_INTERSECTING, '');
+          }
 
-        containerRef.current.setAttribute('data-popper-placement', computedPlacement);
-        Object.assign(containerRef.current.style, {
-          // Layer acceleration can disable subpixel rendering which causes slightly
-          // blurry text on low PPI displays, so we want to use 2D transforms
-          // instead
-          transform:
-            (targetDocument?.defaultView?.devicePixelRatio || 1) <= 1
-              ? `translate(${x}px, ${y}px)`
-              : `translate3d(${x}px, ${y}px, 0)`,
-          position: strategy,
-        });
+          containerRef.current.removeAttribute(DATA_POSITIONING_ESCAPED);
+          if (middlewareData.hide?.escaped) {
+            containerRef.current.setAttribute(DATA_POSITIONING_ESCAPED, '');
+          }
 
-        containerRef.current.removeAttribute(DATA_POSITIONING_INTERSECTING);
-        if (middlewareData.intersectionObserver.intersecting) {
-          containerRef.current.setAttribute(DATA_POSITIONING_INTERSECTING, '');
-        }
+          containerRef.current.removeAttribute(DATA_POSITIONING_HIDDEN);
+          if (middlewareData.hide?.referenceHidden) {
+            containerRef.current.setAttribute(DATA_POSITIONING_HIDDEN, '');
+          }
+        };
 
-        containerRef.current.removeAttribute(DATA_POSITIONING_ESCAPED);
-        if (middlewareData.hide?.escaped) {
-          containerRef.current.setAttribute(DATA_POSITIONING_ESCAPED, '');
-        }
+        const applyCoordinatesToContainer = () => {
+          if (!containerRef.current) {
+            return;
+          }
 
-        containerRef.current.removeAttribute(DATA_POSITIONING_HIDDEN);
-        if (middlewareData.hide?.referenceHidden) {
-          containerRef.current.setAttribute(DATA_POSITIONING_HIDDEN, '');
-        }
+          Object.assign(containerRef.current.style, {
+            // Layer acceleration can disable subpixel rendering which causes slightly
+            // blurry text on low PPI displays, so we want to use 2D transforms
+            // instead
+            transform:
+              (targetDocument?.defaultView?.devicePixelRatio || 1) <= 1
+                ? `translate(${x}px, ${y}px)`
+                : `translate3d(${x}px, ${y}px, 0)`,
+            position: strategy,
+          });
+        };
 
-        if (middlewareData.arrow && arrowRef.current) {
+        const applyArrowCoordinates = () => {
+          if (!middlewareData.arrow || !arrowRef.current) {
+            return;
+          }
+
           const { x: arrowX, y: arrowY } = middlewareData.arrow;
 
           Object.assign(arrowRef.current.style, {
             left: `${arrowX}px`,
             top: `${arrowY}px`,
           });
-        }
+        };
+
+        applyCoordinatesToContainer();
+        applyArrowCoordinates();
+        applyDataAttributes();
       },
     );
   });
