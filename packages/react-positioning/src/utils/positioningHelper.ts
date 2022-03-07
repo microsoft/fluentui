@@ -11,6 +11,8 @@ const getPositionMap = (rtl?: boolean): Record<Position, PlacementPosition> => (
   after: rtl ? 'left' : 'right',
 });
 
+// Floating UI automatically flips alignment
+// https://github.com/floating-ui/floating-ui/issues/1563
 const getAlignmentMap = (): Record<Alignment, PlacementAlign> => ({
   start: 'start',
   end: 'end',

@@ -4,12 +4,12 @@ import type { Alignment, Position } from '../types';
 describe('getPlacement', () => {
   it.each([
     //[align, position, placement, rtlPlacement]
-    ['start', 'above', 'top-start', 'top-end'],
+    ['start', 'above', 'top-start', 'top-start'],
     ['center', 'above', 'top', 'top'],
-    ['end', 'above', 'top-end', 'top-start'],
-    ['start', 'below', 'bottom-start', 'bottom-end'],
+    ['end', 'above', 'top-end', 'top-end'],
+    ['start', 'below', 'bottom-start', 'bottom-start'],
     ['center', 'below', 'bottom', 'bottom'],
-    ['end', 'below', 'bottom-end', 'bottom-start'],
+    ['end', 'below', 'bottom-end', 'bottom-end'],
     ['top', 'before', 'left-start', 'right-start'],
     ['center', 'before', 'left', 'right'],
     ['bottom', 'before', 'left-end', 'right-end'],
