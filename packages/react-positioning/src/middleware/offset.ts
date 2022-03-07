@@ -31,7 +31,8 @@ export const offset = (value: Offset = 0): Middleware => ({
   async fn(middlewareArguments) {
     const { x, y, placement, rects, platform, elements } = middlewareArguments;
 
-    const diffCoords = convertValueToCoords(placement, rects, value, await platform.isRTL?.(elements.floating));
+    const isRtl = await platform.isRTL?.(elements.floating);
+    const diffCoords = convertValueToCoords(placement, rects, value, isRtl);
 
     return {
       x: x + diffCoords.x,
