@@ -7,7 +7,7 @@ import { PopperVirtualElement } from './types';
  * Useful for scenarios where a component needs to be positioned by mouse click (e.g. contextmenu)
  * React synthetic events are not persisted by this hook
  *
- * @param initialState - initializes a user provided state similare to useState
+ * @param initialState - initializes a user provided state similar to useState
  * @returns state and dispatcher for a Popper virtual element that uses native/synthetic mouse events
  */
 export const usePopperMouseTarget = (initialState?: PopperVirtualElement | (() => PopperVirtualElement)) => {
