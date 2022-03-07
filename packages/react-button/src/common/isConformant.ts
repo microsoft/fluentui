@@ -7,7 +7,6 @@ export function isConformant<TProps = {}>(
 ) {
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     componentPath: module!.parent!.filename.replace('.test', ''),
-    disabledTests: ['kebab-aria-attributes'],
     extraTests: griffelTests as TestObject<TProps>,
   };
 

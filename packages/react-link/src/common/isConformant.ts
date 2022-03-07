@@ -8,7 +8,6 @@ export function isConformant<TProps = {}>(
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     componentPath: module!.parent!.filename.replace('.test', ''),
     extraTests: griffelTests as TestObject<TProps>,
-    // TODO: To fix as part of https://github.com/microsoft/fluentui/issues/19522
   };
 
   baseIsConformant(defaultOptions, testInfo);
