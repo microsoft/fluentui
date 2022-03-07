@@ -27,8 +27,8 @@
     "@storybook/addon-knobs": "6.4.0",
     "@storybook/addon-essentials": "6.4.19",
     "@storybook/addons": "6.4.19",
-    "@fluentui/azure-themes": "^8.1.143",
-    "@fluentui/theme-samples": "^8.2.84",
+    "@fluentui/azure-themes": "^8.1.146",
+    "@fluentui/theme-samples": "^8.3.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
