@@ -58,7 +58,7 @@ const useTocStyles = makeStyles({
   },
 });
 
-type TocItem = { name: string; id: string; selected?: boolean };
+type TocItem = { id: string; name: string; selected?: boolean };
 
 // // Alternative approach to navigate - rerenders the iframe
 // // Usage: selectStory({ story: s.name, kind: s.kind });

@@ -11,6 +11,7 @@ import {
   Stories,
 } from '@storybook/addon-docs';
 import { makeStyles, shorthands } from '@griffel/react';
+import { KnownIssues } from './KnownIssues.stories';
 import { Toc, nameToHash } from './Toc.stories';
 import { isHosted } from './isHosted';
 
@@ -76,9 +77,10 @@ export const FluentDocsPage = () => {
           <Primary />
           <ArgsTable story={PRIMARY_STORY} />
           <Stories />
+          <KnownIssues componentName={context.parameters.component.displayName} />
         </div>
         <div className={styles.toc}>
-          <Toc stories={stories} />
+          <Toc stories={[...stories, { id: 'known-issues', name: 'Known issues' }]} />
         </div>
       </div>
     </div>
