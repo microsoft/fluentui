@@ -1,5 +1,5 @@
 import type { Placement, Coords, Middleware, ElementRects } from '@floating-ui/dom';
-import { Offset } from '../types';
+import type { Offset } from '../types';
 import { getSide } from '../utils/getSide';
 
 function convertValueToCoords(placement: Placement, rects: ElementRects, value: Offset, rtl = false): Coords {

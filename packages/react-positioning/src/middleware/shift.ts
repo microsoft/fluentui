@@ -1,5 +1,5 @@
 import { shift as baseShift, limitShift } from '@floating-ui/dom';
-import { Boundary } from '../types';
+import type { Boundary } from '../types';
 import { getBoundary } from '../utils/getBoundary';
 
 export interface ShiftMiddlewareOptions {

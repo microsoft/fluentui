@@ -1,5 +1,6 @@
-import { Middleware, SideObject, detectOverflow } from '@floating-ui/dom';
-import { FloatingUIOptions } from '../types';
+import { detectOverflow } from '@floating-ui/dom';
+import type { Middleware, Side } from '@floating-ui/dom';
+import type { FloatingUIOptions } from '../types';
 import { getSide } from '../utils/getSide';
 
 export function maxSize(autoSize: FloatingUIOptions['autoSize']): Middleware {
@@ -13,8 +14,8 @@ export function maxSize(autoSize: FloatingUIOptions['autoSize']): Middleware {
       const { x, y } = middlewareData.shift || { x: 0, y: 0 };
       const { width, height } = rects.floating;
 
-      const widthProp: keyof SideObject = basePlacement === 'left' ? 'left' : 'right';
-      const heightProp: keyof SideObject = basePlacement === 'top' ? 'top' : 'bottom';
+      const widthProp: Side = basePlacement === 'left' ? 'left' : 'right';
+      const heightProp: Side = basePlacement === 'top' ? 'top' : 'bottom';
 
       const applyMaxWidth =
         autoSize === 'always' ||

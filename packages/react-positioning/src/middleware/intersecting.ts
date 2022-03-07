@@ -1,4 +1,5 @@
-import { detectOverflow, Middleware } from '@floating-ui/dom';
+import type { Middleware } from '@floating-ui/dom';
+import { detectOverflow } from '@floating-ui/dom';
 
 export function intersecting(): Middleware {
   return {
