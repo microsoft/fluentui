@@ -15,7 +15,7 @@ import {
   maxSize as maxSizeMiddleware,
   intersecting as intersectingMiddleware,
 } from './middleware/index';
-import { getScrollParent } from './utils/getScrollParent';
+import { hasScrollParent } from './utils/getScrollParent';
 import { debounce } from './utils/debounce';
 import { DATA_POSITIONING_ESCAPED, DATA_POSITIONING_INTERSECTING, DATA_POSITIONING_HIDDEN } from './contants';
 import { toggleScrollListener } from './utils/toggleScrollListener';
@@ -53,10 +53,7 @@ function useFloatingUIOptions(options: FloatingUIOptions) {
       container: HTMLElement | null,
       arrow: HTMLElement | null,
     ) => {
-      const scrollParentElement: HTMLElement = getScrollParent(container);
-      const hasScrollableElement = scrollParentElement
-        ? scrollParentElement !== scrollParentElement.ownerDocument?.body
-        : false;
+      const hasScrollableElement = hasScrollParent(container);
 
       const placement = getPlacement(align, position, isRtl);
       const middleware = [

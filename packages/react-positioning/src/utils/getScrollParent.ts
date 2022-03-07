@@ -52,3 +52,8 @@ export const getScrollParent = (node: Document | HTMLElement | null): HTMLElemen
 
   return getScrollParent(parentNode);
 };
+
+export const hasScrollParent = (node: Document | HTMLElement | null): boolean => {
+  const scrollParentElement: HTMLElement = getScrollParent(node);
+  return scrollParentElement ? scrollParentElement !== scrollParentElement.ownerDocument?.body : false;
+};
