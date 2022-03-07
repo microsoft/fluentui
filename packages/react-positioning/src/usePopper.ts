@@ -16,7 +16,7 @@ import {
   intersecting as intersectingMiddleware,
 } from './middleware/index';
 import { getScrollParent } from './utils/getScrollParent';
-import debounce from './utils/debounce';
+import { debounce } from './utils/debounce';
 import { DATA_POSITIONING_ESCAPED, DATA_POSITIONING_INTERSECTING, DATA_POSITIONING_HIDDEN } from './contants';
 import { toggleScrollListener } from './utils/toggleScrollListener';
 import { hasAutofocusFilter } from './utils/hasAutoFocusFilter';

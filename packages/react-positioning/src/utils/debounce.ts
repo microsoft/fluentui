@@ -3,7 +3,7 @@
  * https://github.com/floating-ui/floating-ui/blob/v2.x/src/utils/debounce.js
  * @param fn function that will be debounced
  */
-export default function debounce<T>(fn: Function): () => Promise<T> {
+export function debounce<T>(fn: Function): () => Promise<T> {
   let pending: Promise<T> | undefined;
   return () => {
     if (!pending) {
