@@ -124,6 +124,8 @@ export function usePopper(
       arrowRef.current,
     );
 
+    // Container is always initialized with `position: fixed` to avoid scroll jumps
+    // Before computing the positioned coordinates, revert the container to the deisred positioning strategy
     Object.assign(containerRef.current.style, { position: strategy });
     computePosition(target, containerRef.current, { placement, middleware, strategy }).then(
       ({ x, y, middlewareData, placement: computedPlacement }) => {
