@@ -17,7 +17,6 @@ import {
 } from './middleware/index';
 import { getScrollParent } from './utils/getScrollParent';
 import debounce from './utils/debounce';
-import { useFirstMount } from '@fluentui/react-utilities';
 import { DATA_POSITIONING_ESCAPED, DATA_POSITIONING_INTERSECTING, DATA_POSITIONING_HIDDEN } from './contants';
 import { toggleScrollListener } from './utils/toggleScrollListener';
 import { hasAutofocusFilter } from './utils/hasAutoFocusFilter';
@@ -109,7 +108,6 @@ export function usePopper(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   arrowRef: React.MutableRefObject<any>;
 } {
-  const isFirstMount = useFirstMount();
   const { targetDocument } = useFluent();
   const { enabled = true } = options;
   const resolveFloatingUIOptions = useFloatingUIOptions(options);
