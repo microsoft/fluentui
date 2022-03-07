@@ -1,11 +1,20 @@
-import type { TabState } from './Tab.types';
+import type { TabSlots, TabState } from './Tab.types';
 
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { tabPendingDesignTokens } from '../../tab.constants';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated
+ */
 export const tabClassName = 'fui-Tab';
+export const tabClassNames: SlotClassNames<TabSlots> = {
+  root: 'fui-Tab',
+  icon: 'fui-Tab__icon',
+  content: 'fui-Tab__content',
+};
 
 /**
  * Styles for the root slot
@@ -175,7 +184,7 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   const contentStyles = useContentStyles();
 
   state.root.className = mergeClasses(
-    tabClassName,
+    tabClassNames.root,
     rootStyles.base,
     focusStyles.base,
     state.size === 'small' && rootStyles.small,
@@ -186,10 +195,16 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
+    state.icon.className = mergeClasses(
+      tabClassNames.icon,
+      iconStyles.base,
+      iconStyles[state.size],
+      state.icon.className,
+    );
   }
 
   state.content.className = mergeClasses(
+    tabClassNames.content,
     contentStyles.base,
     state.size === 'small' && contentStyles.small,
     state.content.className,
