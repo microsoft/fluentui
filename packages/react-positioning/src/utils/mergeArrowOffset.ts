@@ -9,29 +9,22 @@ import type { Offset, OffsetObject } from '../types';
  * @returns User offset augmented with arrow height
  */
 export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset {
-  let offsetWithArrow = userOffset;
-  if (!offsetWithArrow) {
-    return { crossAxis: 0, mainAxis: arrowHeight };
+  if (typeof userOffset === 'number') {
+    return addArrowOffset(userOffset, arrowHeight);
   }
 
-  if (typeof offsetWithArrow === 'number') {
-    return mergeArrowOffset(offsetWithArrow, arrowHeight);
+  if (typeof userOffset === 'object' && userOffset !== null) {
+    return addArrowOffset(userOffset, arrowHeight);
   }
 
-  if (typeof offsetWithArrow === 'object') {
-    return addArrowOffset(offsetWithArrow, arrowHeight);
-  }
-
-  if (typeof offsetWithArrow === 'function') {
-    const userOffsetFn = offsetWithArrow;
-    offsetWithArrow = offsetParams => {
-      const offset = userOffsetFn(offsetParams);
+  if (typeof userOffset === 'function') {
+    return offsetParams => {
+      const offset = userOffset(offsetParams);
       return addArrowOffset(offset, arrowHeight);
     };
   }
 
-  // This should never happen
-  return -1 as never;
+  return { mainAxis: arrowHeight };
 }
 
 const addArrowOffset = (offset: OffsetObject | number, arrowHeight: number): OffsetObject => {
@@ -39,12 +32,5 @@ const addArrowOffset = (offset: OffsetObject | number, arrowHeight: number): Off
     return { mainAxis: offset + arrowHeight };
   }
 
-  let mainAxis = offset.mainAxis;
-  if (mainAxis !== null && mainAxis !== undefined) {
-    mainAxis += arrowHeight;
-  } else {
-    mainAxis = arrowHeight;
-  }
-
-  return { ...offset, mainAxis };
+  return { ...offset, mainAxis: (offset.mainAxis ?? 0) + arrowHeight };
 };
