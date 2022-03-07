@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "chore: Upgrade PopperJS for FloatingUI",
+  "comment": "BREAKING: Upgrade PopperJS for FloatingUI",
   "packageName": "@fluentui/react-positioning",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"

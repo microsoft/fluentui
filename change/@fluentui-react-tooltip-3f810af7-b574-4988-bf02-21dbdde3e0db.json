@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix: offset value was changed from array to an object",
+  "comment": "fix: update usages of positioning API",
   "packageName": "@fluentui/react-tooltip",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
