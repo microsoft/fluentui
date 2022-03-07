@@ -1,4 +1,4 @@
-import { flip as middleware } from '@floating-ui/dom';
+import { flip as baseFlip } from '@floating-ui/dom';
 import { Boundary } from '../types';
 import { getBoundary } from '../utils/getBoundary';
 
@@ -11,8 +11,8 @@ export interface FlipMiddlewareOptions {
 export function flip(options: FlipMiddlewareOptions) {
   const { hasScrollableElement, flipBoundary, container } = options;
 
-  return middleware({
-    ...(hasScrollableElement && { boundary: 'clippingParents' }),
+  return baseFlip({
+    ...(hasScrollableElement && { boundary: 'clippingAncestors' }),
     ...(flipBoundary && { altBoundary: true, boundary: getBoundary(container, flipBoundary) }),
     fallbackStrategy: 'bestFit',
   });

@@ -1,4 +1,4 @@
-import { shift as middleware, limitShift } from '@floating-ui/dom';
+import { shift as baseShift, limitShift } from '@floating-ui/dom';
 import { Boundary } from '../types';
 import { getBoundary } from '../utils/getBoundary';
 
@@ -15,7 +15,7 @@ export interface ShiftMiddlewareOptions {
 export function shift(options: ShiftMiddlewareOptions) {
   const { hasScrollableElement, disableTether, overflowBoundary, container } = options;
 
-  return middleware({
+  return baseShift({
     ...(hasScrollableElement && { boundary: 'clippingAncestors' }),
     ...(disableTether && {
       crossAxis: disableTether === 'all',
