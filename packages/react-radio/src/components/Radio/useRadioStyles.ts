@@ -4,6 +4,9 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { RadioSlots, RadioState } from './Radio.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated
+ */
 export const radioClassName = 'fui-Radio';
 export const radioClassNames: SlotClassNames<RadioSlots> = {
   root: 'fui-Radio',
