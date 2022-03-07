@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.0.0-rc.5",
+  "version": "9.0.0-rc.6",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -81,6 +81,11 @@
       "types": "./lib/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
+    },
+    "./unstable": {
+      "types": "./lib/unstable/index.d.ts",
+      "import": "./lib/unstable/index.js",
+      "require": "./lib-commonjs/unstable/index.js"
     },
     "./package.json": "./package.json"
   }
