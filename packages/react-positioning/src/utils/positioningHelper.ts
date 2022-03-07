@@ -1,4 +1,4 @@
-import * as FloatingUI from '@floating-ui/dom';
+import type { Placement } from '@floating-ui/dom';
 import type { Alignment, Position } from '../types';
 
 type PlacementPosition = 'top' | 'bottom' | 'left' | 'right';
@@ -29,18 +29,14 @@ const shouldAlignToCenter = (p?: Position, a?: Alignment): boolean => {
 /**
  * @see positioningHelper.test.ts for expected placement values
  */
-export const getPlacement = (
-  align?: Alignment,
-  position?: Position,
-  rtl?: boolean,
-): FloatingUI.Placement | undefined => {
+export const getPlacement = (align?: Alignment, position?: Position, rtl?: boolean): Placement | undefined => {
   const alignment = shouldAlignToCenter(position, align) ? 'center' : align;
 
   const computedPosition = position && getPositionMap(rtl)[position];
   const computedAlignment = alignment && getAlignmentMap()[alignment];
 
   if (computedPosition && computedAlignment) {
-    return `${computedPosition}-${computedAlignment}` as FloatingUI.Placement;
+    return `${computedPosition}-${computedAlignment}` as Placement;
   }
 
   return computedPosition;

@@ -1,15 +1,10 @@
-import {
-  computePosition,
-  Middleware,
-  Strategy,
-  hide as hideMiddleware,
-  arrow as arrowMiddleware,
-} from '@floating-ui/dom';
+import { computePosition, hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
+import type { Middleware, Strategy } from '@floating-ui/dom';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { PopperOptions, PositioningProps, PopperVirtualElement } from './types';
+import type { PopperOptions, PositioningProps, PopperVirtualElement } from './types';
 import { getPlacement } from './utils/positioningHelper';
 import { useCallbackRef } from './utils/useCallbackRef';
 import {

@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import * as FloatingUI from '@floating-ui/dom';
+import { Boundary as FloatingUIBoundary, Rect, Placement, VirtualElement } from '@floating-ui/dom';
 
 export type OffsetFunctionParam = {
-  floating: FloatingUI.Rect;
-  reference: FloatingUI.Rect;
-  placement: FloatingUI.Placement;
+  floating: Rect;
+  reference: Rect;
+  placement: Placement;
 };
 
 export type OffsetObject = { mainAxis?: number; crossAxis?: number };
@@ -19,7 +19,7 @@ export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 
 export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
 
-export type Boundary = FloatingUI.Boundary | 'scrollParent' | 'window';
+export type Boundary = FloatingUIBoundary | 'scrollParent' | 'window';
 
 export type PopperRefHandle = {
   /**
@@ -35,7 +35,7 @@ export type PopperRefHandle = {
   setTarget: (target: HTMLElement | PopperVirtualElement) => void;
 };
 
-export type PopperVirtualElement = FloatingUI.VirtualElement;
+export type PopperVirtualElement = VirtualElement;
 
 export interface PopperOptions {
   /** Alignment for the component. Only has an effect if used with the @see position option */
