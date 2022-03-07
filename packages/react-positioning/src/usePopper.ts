@@ -239,29 +239,9 @@ export function usePopper(
     }
   }, [options.target, overrideTargetRef, containerRef]);
 
-  useIsomorphicLayoutEffect(
-    () => {
-      updatePosition();
-    },
-    // Missing deps:
-    // updatePosition - referentially stable
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [enabled],
-  );
-
-  // Update position if rerender caused options to change
-  useIsomorphicLayoutEffect(
-    () => {
-      if (!isFirstMount) {
-        updatePosition();
-      }
-    },
-    // Missing deps:
-    // isFirstMount - Should never change after mount
-    // updatePosition - Stable between renders
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [resolveFloatingUIOptions],
-  );
+  useIsomorphicLayoutEffect(() => {
+    updatePosition();
+  }, [enabled, resolveFloatingUIOptions, updatePosition]);
 
   // Add window resize and scroll listeners to update position
   useIsomorphicLayoutEffect(() => {
