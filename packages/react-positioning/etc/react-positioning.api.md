@@ -61,7 +61,7 @@ export type OffsetObject = {
 };
 
 // @public (undocumented)
-export interface PopperOptions {
+export interface FloatingUIOptions {
     align?: Alignment;
     arrowPadding?: number;
     autoSize?: AutoSize;
@@ -88,7 +88,7 @@ export type PositioningVirtualElement = FloatingUI.VirtualElement;
 export type Position = 'above' | 'below' | 'before' | 'after';
 
 // @public (undocumented)
-export interface PositioningProps extends Omit<PopperOptions, 'positionFixed' | 'unstable_disableTether'> {
+export interface PositioningProps extends Omit<FloatingUIOptions, 'positionFixed' | 'unstable_disableTether'> {
     popperRef?: React_2.Ref<PopperRefHandle>;
     target?: HTMLElement | PositioningVirtualElement | null;
 }
@@ -102,10 +102,10 @@ export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
-// Warning: (ae-forgotten-export) The symbol "UsePopperOptions" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "UseFloatingUIOptions" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export function usePopper(options: UsePopperOptions): {
+export function usePopper(options: UseFloatingUIOptions): {
     targetRef: React_2.MutableRefObject<any>;
     containerRef: React_2.MutableRefObject<any>;
     arrowRef: React_2.MutableRefObject<any>;

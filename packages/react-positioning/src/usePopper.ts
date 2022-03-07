@@ -4,7 +4,7 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
-import type { PopperOptions, PositioningProps, PositioningVirtualElement } from './types';
+import type { FloatingUIOptions, PositioningProps, PositioningVirtualElement } from './types';
 import { getPlacement } from './utils/positioningHelper';
 import { useCallbackRef } from './utils/useCallbackRef';
 import {
@@ -22,14 +22,14 @@ import { DATA_POSITIONING_ESCAPED, DATA_POSITIONING_INTERSECTING, DATA_POSITIONI
 import { toggleScrollListener } from './utils/toggleScrollListener';
 import { hasAutofocusFilter } from './utils/hasAutoFocusFilter';
 
-interface UsePopperOptions extends PositioningProps {
+interface UseFloatingUIOptions extends PositioningProps {
   /**
    * If false, does not position anything
    */
   enabled?: boolean;
 }
 
-function usePopperOptions(options: PopperOptions) {
+function useFloatingUIOptions(options: FloatingUIOptions) {
   const {
     align,
     arrowPadding,
@@ -96,7 +96,7 @@ function usePopperOptions(options: PopperOptions) {
 }
 
 export function usePopper(
-  options: UsePopperOptions,
+  options: UseFloatingUIOptions,
 ): {
   // React refs are supposed to be contravariant
   // (allows a more general type to be passed rather than a more specific one)
@@ -112,7 +112,7 @@ export function usePopper(
   const isFirstMount = useFirstMount();
   const { targetDocument } = useFluent();
   const { enabled = true } = options;
-  const resolvePopperOptions = usePopperOptions(options);
+  const resolveFloatingUIOptions = useFloatingUIOptions(options);
 
   const forceUpdate = useEventCallback(() => {
     const target = overrideTargetRef.current ?? targetRef.current;
@@ -120,7 +120,11 @@ export function usePopper(
       return;
     }
 
-    const { placement, middleware, strategy } = resolvePopperOptions(target, containerRef.current, arrowRef.current);
+    const { placement, middleware, strategy } = resolveFloatingUIOptions(
+      target,
+      containerRef.current,
+      arrowRef.current,
+    );
 
     Object.assign(containerRef.current.style, { position: strategy });
     computePosition(target, containerRef.current, { placement, middleware, strategy }).then(
@@ -256,7 +260,7 @@ export function usePopper(
     // isFirstMount - Should never change after mount
     // updatePosition - Stable between renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [resolvePopperOptions],
+    [resolveFloatingUIOptions],
   );
 
   // Add window resize and scroll listeners to update position

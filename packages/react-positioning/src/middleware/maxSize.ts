@@ -1,8 +1,8 @@
 import { Middleware, SideObject, detectOverflow } from '@floating-ui/dom';
-import { PopperOptions } from '../types';
+import { FloatingUIOptions } from '../types';
 import { getSide } from '../utils/getSide';
 
-export function maxSize(autoSize: PopperOptions['autoSize']): Middleware {
+export function maxSize(autoSize: FloatingUIOptions['autoSize']): Middleware {
   return {
     name: 'maxSize',
     fn: async middlewareArguments => {

@@ -37,7 +37,7 @@ export type PopperRefHandle = {
 
 export type PositioningVirtualElement = VirtualElement;
 
-export interface PopperOptions {
+export interface FloatingUIOptions {
   /** Alignment for the component. Only has an effect if used with the @see position option */
   align?: Alignment;
 
@@ -104,7 +104,7 @@ export interface PopperOptions {
 
 export interface PositioningProps
   // "positionFixed" & "unstable_disableTether" are not exported as public API (yet)
-  extends Omit<PopperOptions, 'positionFixed' | 'unstable_disableTether'> {
+  extends Omit<FloatingUIOptions, 'positionFixed' | 'unstable_disableTether'> {
   /** An imperative handle to Popper methods. */
   popperRef?: React.Ref<PopperRefHandle>;
 
