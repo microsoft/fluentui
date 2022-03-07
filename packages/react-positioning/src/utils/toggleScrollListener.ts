@@ -1,7 +1,13 @@
-import { PopperVirtualElement } from '../types';
+import type { PopperVirtualElement } from '../types';
 import { getScrollParent } from './getScrollParent';
 
-export function addEventListenerOnScrollParent(
+/**
+ * Toggles event listeners for scroll parent.
+ * Cleans up the event listeners for the previous element and adds them for the new scroll parent.
+ * @param next Next element
+ * @param prev Previous element
+ */
+export function toggleScrollListener(
   next: HTMLElement | PopperVirtualElement | null,
   prev: HTMLElement | PopperVirtualElement | null,
   handler: EventListener,

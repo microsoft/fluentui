@@ -24,7 +24,7 @@ import { getScrollParent } from './utils/getScrollParent';
 import debounce from './utils/debounce';
 import { useFirstMount } from '@fluentui/react-utilities';
 import { dataPopperEscaped, dataPopperIntersecting, dataPopperReferenceHidden } from './contants';
-import { addEventListenerOnScrollParent } from './utils/addEventListenerOnScrollParent';
+import { toggleScrollListener } from './utils/toggleScrollListener';
 import { hasAutofocusFilter } from './utils/hasAutoFocusFilter';
 
 interface UsePopperOptions extends PositioningProps {
@@ -172,7 +172,7 @@ export function usePopper(
   const updatePosition = React.useState(() => debounce(forceUpdate))[0];
 
   const targetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, (target, prevTarget, isFirst) => {
-    addEventListenerOnScrollParent(target, prevTarget, updatePosition);
+    toggleScrollListener(target, prevTarget, updatePosition);
 
     if (!isFirst) {
       updatePosition();
@@ -185,7 +185,7 @@ export function usePopper(
       Object.assign(container.style, { position: 'fixed', top: 0, left: 0 });
     }
 
-    addEventListenerOnScrollParent(container, prevContainer, updatePosition);
+    toggleScrollListener(container, prevContainer, updatePosition);
 
     if (!isFirst) {
       updatePosition();
@@ -195,7 +195,7 @@ export function usePopper(
   const overrideTargetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(
     null,
     (target, prevTarget, isFirst) => {
-      addEventListenerOnScrollParent(target, prevTarget, updatePosition);
+      toggleScrollListener(target, prevTarget, updatePosition);
 
       if (!isFirst) {
         updatePosition();
