@@ -18,7 +18,7 @@ import {
   flip as flipMiddleware,
   coverTarget as coverTargetMiddleware,
   maxSize as maxSizeMiddleware,
-  intersectionObserver as intersectionObserverMiddleware,
+  intersecting as intersectingMiddleware,
 } from './middleware/index';
 import { getScrollParent } from './utils/getScrollParent';
 import debounce from './utils/debounce';
@@ -67,7 +67,7 @@ function usePopperOptions(options: PopperOptions) {
         ...[!pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement })],
         shiftMiddleware({ container, hasScrollableElement, overflowBoundary, disableTether }),
         ...[autoSize && maxSizeMiddleware(autoSize)],
-        intersectionObserverMiddleware(),
+        intersectingMiddleware(),
         ...[arrow && arrowMiddleware({ element: arrow, padding: arrowPadding })],
         hideMiddleware({ strategy: 'referenceHidden' }),
         hideMiddleware({ strategy: 'escaped' }),
