@@ -59,7 +59,6 @@ storiesOf('Radio Converged', module)
     { includeRtl: true },
   )
   .addStory('required', () => <Radio required label="Required" />, { includeRtl: true })
-  .addDecorator(TestWrapperDecoratorFixedWidth)
   //
   // RadioGroup
   //
