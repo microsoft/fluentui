@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 07 Mar 2022 07:41:13 GMT",
+      "tag": "@fluentui/react_v8.58.0",
+      "version": "8.58.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "51b3036c1b96b9449977e8d06e5dd51894ea4c5a",
+            "comment": "add ariaLabel to ProgressIndicator"
+          }
+        ],
+        "patch": [
+          {
+            "author": "makopch@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "399b5c40a2cba2473b4b2cde28649092c898a3e5",
+            "comment": "Respect shouldFocusOnContainer prop if it is set when opening menu via click"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Mar 2022 07:42:05 GMT",
       "tag": "@fluentui/react_v8.57.1",
       "version": "8.57.1",
