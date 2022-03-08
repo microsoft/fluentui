@@ -381,40 +381,46 @@ export const defaultTests: TestObject = {
       }
 
       const { testOptions = {} } = testInfo;
-      const mergedProps = {
-        ...requiredProps,
-        ...(testOptions['has-static-classnames'] ?? {}),
-      };
-      const defaultEl = customMount(<Component {...mergedProps} />);
-      const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
+      const staticClassNameVariants = testOptions['has-static-classnames'] ?? [{ props: {} }];
 
-      const exportName =
-        componentInfo.displayName.slice(0, 1).toLowerCase() + componentInfo.displayName.slice(1) + 'ClassNames';
-      const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
-      const classNamesFromFile = indexFile[exportName];
+      for (const staticClassNames of staticClassNameVariants) {
+        const mergedProps = {
+          ...requiredProps,
+          ...staticClassNames.props,
+        };
+        const defaultEl = customMount(<Component {...mergedProps} />);
+        const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
 
-      const missingClassNames = [];
-      let className;
-      let err: Error;
-      for (const key of Object.keys(classNamesFromFile)) {
-        className = classNamesFromFile[key];
-        try {
-          expect(defaultComponent.find(`.${className}`).length).toBeGreaterThanOrEqual(1);
-        } catch (e) {
-          err = e as Error;
-          missingClassNames.push(className);
+        const exportName =
+          componentInfo.displayName.slice(0, 1).toLowerCase() + componentInfo.displayName.slice(1) + 'ClassNames';
+        const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
+        const classNamesFromFile = indexFile[exportName];
+
+        const missingClassNames = [];
+        let className;
+        let err: Error;
+
+        const expectedClassNames = staticClassNames.expectedClassNames ?? classNamesFromFile;
+        for (const key of Object.keys(expectedClassNames)) {
+          className = classNamesFromFile[key];
+          try {
+            expect(defaultComponent.find(`.${className}`).length).toBeGreaterThanOrEqual(1);
+          } catch (e) {
+            err = e as Error;
+            missingClassNames.push(className);
+          }
         }
-      }
 
-      if (missingClassNames.length > 0) {
-        throw new Error(
-          defaultErrorMessages['component-has-static-classnames'](
-            testInfo,
-            err!,
-            componentName,
-            missingClassNames.join(', '),
-          ),
-        );
+        if (missingClassNames.length > 0) {
+          throw new Error(
+            defaultErrorMessages['component-has-static-classnames'](
+              testInfo,
+              err!,
+              componentName,
+              missingClassNames.join(', '),
+            ),
+          );
+        }
       }
     });
   },

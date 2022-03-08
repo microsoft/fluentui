@@ -15,8 +15,13 @@ export interface TestOptions {
     ignoreProps?: string[];
   };
   'has-static-classnames'?: {
-    [key: string]: string | {};
-  };
+    props: {
+      [key: string]: string | {};
+    };
+    expectedClassNames?: {
+      [key: string]: string;
+    };
+  }[];
 }
 
 export interface IsConformantOptions<TProps = {}> {
