@@ -26,9 +26,7 @@
     "@types/color-check": "0.0.0",
     "@types/markdown-to-jsx": "6.11.0",
     "@types/react-custom-scrollbars": "^4.0.5",
-    "@types/react-dom": "16.9.14",
-    "react": "16.14.0",
-    "react-dom": "16.14.0"
+    "@types/react-dom": "16.9.14"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

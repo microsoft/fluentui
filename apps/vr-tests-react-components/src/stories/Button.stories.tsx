@@ -17,6 +17,7 @@ storiesOf('Button Converged', module)
   .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <Button id={buttonId}>Hello, world</Button>, {
     includeRtl: true,
+    // https://github.com/microsoft/fluentui/issues/21998
     // includeHighContrast: true,
     // includeDarkMode: true,
   })
@@ -209,6 +210,7 @@ storiesOf('CompoundButton Converged', module)
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
+        // https://github.com/microsoft/fluentui/issues/21998
         // .hover('#button-id')
         // .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('#button-id')
@@ -370,6 +372,7 @@ storiesOf('ToggleButton Converged', module)
   .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <ToggleButton id={buttonId}>Hello, world</ToggleButton>, {
     includeRtl: true,
+    // https://github.com/microsoft/fluentui/issues/21998
     // includeHighContrast: true,
     // includeDarkMode: true,
   })
