@@ -15,13 +15,17 @@ describe('MenuItem', () => {
     Component: MenuItem,
     displayName: 'MenuItem',
     testOptions: {
-      'has-static-classnames': {
-        icon: 'Test Icon',
-        checkmark: 'Test Checkmark',
-        submenuIndicator: 'Test Submenu Indicator',
-        content: 'Test Content',
-        secondaryContent: 'Test Secondary Content',
-      },
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+            checkmark: 'Test Checkmark',
+            submenuIndicator: 'Test Submenu Indicator',
+            content: 'Test Content',
+            secondaryContent: 'Test Secondary Content',
+          },
+        },
+      ],
     },
   });
 

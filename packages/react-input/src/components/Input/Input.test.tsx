@@ -22,10 +22,14 @@ describe('Input', () => {
     displayName: 'Input',
     primarySlot: 'input',
     testOptions: {
-      'has-static-classnames': {
-        contentBefore: 'Test Content Before',
-        contentAfter: 'Test Content After',
-      },
+      'has-static-classnames': [
+        {
+          props: {
+            contentBefore: 'Test Content Before',
+            contentAfter: 'Test Content After',
+          },
+        },
+      ],
     },
   });
 

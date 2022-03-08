@@ -9,9 +9,11 @@ describe('Badge', () => {
     Component: Badge,
     displayName: 'Badge',
     testOptions: {
-      'has-static-classnames': {
-        icon: 'Test Icon',
-      },
+      'has-static-classnames': [
+        {
+          props: { icon: 'Test Icon' },
+        },
+      ],
     },
   });
 
