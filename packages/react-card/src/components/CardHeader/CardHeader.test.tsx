@@ -8,9 +8,11 @@ describe('CardHeader', () => {
     Component: CardHeader,
     displayName: 'CardHeader',
     testOptions: {
-      'has-static-classnames': {
-        header: 'Header Test',
-      },
+      'has-static-classnames': [
+        {
+          props: { header: 'Header Test', action: 'Action Test' },
+        },
+      ],
     },
   });
 

@@ -13,8 +13,16 @@ exports[`CardHeader renders a default state 1`] = `
     <div
       class="fui-CardHeader__content"
     >
-      Title slot
-      Description slot
+      <span
+        class="fui-CardHeader__header"
+      >
+        Title slot
+      </span>
+      <span
+        class="fui-CardHeader__description"
+      >
+        Description slot
+      </span>
     </div>
     <div
       class="fui-CardHeader__action"

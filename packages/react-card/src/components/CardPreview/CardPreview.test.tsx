@@ -8,9 +8,11 @@ describe('CardPreview', () => {
     Component: CardPreview,
     displayName: 'CardPreview',
     testOptions: {
-      'has-static-classnames': {
-        logo: 'Test Logo',
-      },
+      'has-static-classnames': [
+        {
+          props: { logo: 'Test Logo' },
+        },
+      ],
     },
   });
 
