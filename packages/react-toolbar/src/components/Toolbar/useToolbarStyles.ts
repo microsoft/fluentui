@@ -1,7 +1,15 @@
+import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
-import type { ToolbarState } from './Toolbar.types';
+import type { ToolbarSlots, ToolbarState } from './Toolbar.types';
 
+/**
+ * @deprecated
+ */
 export const toolbarClassName = 'fui-Toolbar';
+export const toolbarClassNames: SlotClassNames<ToolbarSlots> = {
+  root: 'fui-Toolbar',
+};
+
 /**
  * Styles for the root slot
  */
@@ -18,7 +26,7 @@ const useStyles = makeStyles({
  */
 export const useToolbarStyles_unstable = (state: ToolbarState): ToolbarState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(toolbarClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(toolbarClassNames.root, styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
