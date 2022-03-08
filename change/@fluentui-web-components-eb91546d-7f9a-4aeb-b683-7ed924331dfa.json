@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "basic storybook upgrade without the new story store format",
+  "packageName": "@fluentui/web-components",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "none"
+}
