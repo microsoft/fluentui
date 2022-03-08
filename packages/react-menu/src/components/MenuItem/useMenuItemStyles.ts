@@ -52,12 +52,18 @@ const useStyles = makeStyles({
     height: '20px',
     fontSize: '20px',
     lineHeight: 0,
+    alignItems: 'center',
+    display: 'inline-flex',
+    justifyContent: 'center',
   },
   submenuIndicator: {
     width: '20px',
     height: '20px',
     fontSize: '20px',
     lineHeight: 0,
+    alignItems: 'center',
+    display: 'inline-flex',
+    justifyContent: 'center',
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,

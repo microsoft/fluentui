@@ -6,16 +6,13 @@ export function isConformant<TProps = {}>(
 ) {
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     disabledTests: [
-      'has-docblock',
       'kebab-aria-attributes',
-      'is-static-property-of-parent',
       // Disabled as v8 has different prefix
       'component-has-static-classname',
       // Will enable with appropriate overrides separately
       'consistent-callback-names',
       'consistent-callback-args',
     ],
-    skipAsPropTests: true,
     componentPath: module!.parent!.filename.replace('.test', ''),
   };
 

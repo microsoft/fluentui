@@ -98,6 +98,7 @@ packages/react-file-type-icons/ @jahnp @bigbadcapers
 packages/react-hooks/ @microsoft/cxe-red @ecraig12345
 packages/react-monaco-editor/ @ecraig12345
 packages/react-positioning/ @microsoft/teams-prg
+packages/react-priority-overflow/ @microsoft/teams-prg
 packages/react-shared-contexts/ @microsoft/teams-prg
 packages/react-storybook/ @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-storybook-addon/ @microsoft/cxe-prg
@@ -145,6 +146,7 @@ packages/react-spinner/ @microsoft/cxe-red @tomi-msft
 packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @ecraig12345
 packages/react-tabs/ @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-text/ @microsoft/cxe-prg
+packages/react-textarea/ @microsoft/cxe-red @sopranopillow
 packages/react-tooltip/ @microsoft/cxe-red @behowell @khmakoto
 
 ## Components

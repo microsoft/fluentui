@@ -16,9 +16,9 @@
     "immer": "^8.0.1",
     "lodash": "^4.17.15",
     "lz-string": "^1.4.4",
-    "react": "16.8.6",
+    "react": "16.14.0",
     "react-document-title": "^2.0.3",
-    "react-dom": "16.8.6",
+    "react-dom": "16.14.0",
     "react-frame-component": "^4.1.1",
     "react-is": "^16.6.3",
     "use-immer": "^0.4.1"

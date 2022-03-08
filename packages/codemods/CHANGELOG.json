@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Tue, 08 Mar 2022 07:35:07 GMT",
+      "tag": "@fluentui/codemods_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dependency to 16.14"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Jan 2022 07:27:46 GMT",
       "tag": "@fluentui/codemods_v8.3.2",
       "version": "8.3.2",

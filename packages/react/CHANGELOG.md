@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 03 Mar 2022 07:24:27 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Mar 2022 07:35:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.59.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.59.0)
+
+Tue, 08 Mar 2022 07:35:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.58.0..@fluentui/react_v8.59.0)
+
+### Minor changes
+
+- Bump @fluentui/react-focus to v8.5.0 ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by beachball)
+
+## [8.58.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.58.0)
+
+Mon, 07 Mar 2022 07:41:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.57.1..@fluentui/react_v8.58.0)
+
+### Minor changes
+
+- add ariaLabel to ProgressIndicator ([PR #21950](https://github.com/microsoft/fluentui/pull/21950) by sarah.higley@microsoft.com)
+
+### Patches
+
+- Respect shouldFocusOnContainer prop if it is set when opening menu via click ([PR #21965](https://github.com/microsoft/fluentui/pull/21965) by makopch@microsoft.com)
+
+## [8.57.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.57.1)
+
+Fri, 04 Mar 2022 07:42:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.57.0..@fluentui/react_v8.57.1)
+
+### Patches
+
+- Update onRenderIcon docs to warn of render condition ([PR #21942](https://github.com/microsoft/fluentui/pull/21942) by mgodbolt@microsoft.com)
 
 ## [8.57.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.57.0)
 

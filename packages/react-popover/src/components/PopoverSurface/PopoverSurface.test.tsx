@@ -10,8 +10,6 @@ jest.mock('../../popoverContext');
 
 describe('PopoverSurface', () => {
   isConformant({
-    // as render test will pass a span tag which is also considered one of the skipped helperComponents
-    disabledTests: ['as-renders-html'],
     Component: PopoverSurface,
     displayName: 'PopoverSurface',
     helperComponents: [Portal, 'span'],
