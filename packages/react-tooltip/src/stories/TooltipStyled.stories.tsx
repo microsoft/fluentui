@@ -17,7 +17,7 @@ export const Styled = (props: Partial<TooltipProps>) => {
   return (
     <Tooltip
       withArrow
-      content={{ children: 'Example tooltip', className: styles.toolTip }}
+      content={{ children: 'Example tooltip', className: styles.tooltip }}
       relationship="label"
       {...props}
     >
