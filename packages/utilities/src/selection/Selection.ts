@@ -211,6 +211,7 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
       for (const key of Object.keys(this._keyToIndexMap)) {
         if (!(key in newKeyToIndexMap)) {
           haveItemsChanged = true;
+          break;
         }
       }
     }
