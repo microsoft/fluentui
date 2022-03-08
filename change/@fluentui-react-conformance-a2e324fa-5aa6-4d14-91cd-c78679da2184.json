@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "BREAKING CHANGE: Remove some tests and options specific to `@fluentui/react-northstar`",
-  "packageName": "@fluentui/react-conformance",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "minor"
-}

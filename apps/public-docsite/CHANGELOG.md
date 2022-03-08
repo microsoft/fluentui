@@ -1,8 +1,21 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Mon, 07 Mar 2022 07:41:14 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Mar 2022 07:35:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Tue, 08 Mar 2022 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Minor changes
+
+- Bump @fluentui/react to v8.59.0 ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by beachball)
+- Bump @fluentui/react-docsite-components to v8.5.0 ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by beachball)
+- Bump @fluentui/react-experiments to v8.6.0 ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by beachball)
+- Bump @fluentui/theme-samples to v8.4.0 ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.3.0 ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by beachball)
 
 ## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
 
