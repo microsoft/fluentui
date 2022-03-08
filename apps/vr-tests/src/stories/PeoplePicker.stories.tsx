@@ -224,7 +224,6 @@ storiesOf('PeoplePicker', module)
 
 storiesOf('PeoplePicker', module)
   .addDecorator(TestWrapperDecorator)
-
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

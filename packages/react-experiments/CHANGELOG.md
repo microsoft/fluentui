@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Mon, 07 Mar 2022 07:41:14 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Mar 2022 07:35:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.6.0)
+
+Tue, 08 Mar 2022 07:35:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.5.2..@fluentui/react-experiments_v8.6.0)
+
+### Minor changes
+
+- Bump @fluentui/react to v8.59.0 ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by beachball)
+
+### Patches
+
+- Add `@jsxRuntime classic` annotation to Accordion, CollapsibleSection, MicroFeedback, VerticalPersona, PersonaCoin ([PR #21769](https://github.com/microsoft/fluentui/pull/21769) by elcraig@microsoft.com)
 
 ## [8.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.5.2)
 

@@ -124,6 +124,7 @@
     "@types/babel__helper-plugin-utils": "7.10.0",
     "@types/copy-webpack-plugin": "6.4.0",
     "@types/dedent": "0.7.0",
+    "@types/doctrine": "0.0.5",
     "@types/enhanced-resolve": "3.0.7",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
