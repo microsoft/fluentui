@@ -24,7 +24,6 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
     "@types/color-check": "0.0.0",
-    "@types/markdown-to-jsx": "6.11.0",
     "@types/react-custom-scrollbars": "^4.0.5",
     "@types/react-dom": "16.9.14"
   },
