@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Component style overrides on the ThemeProvider now applied to root slot by default",
+  "packageName": "@fluentui/foundation-legacy",
+  "email": "39736248+andrefcdias@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
