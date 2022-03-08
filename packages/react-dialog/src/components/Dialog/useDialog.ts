@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { DialogProps, DialogState } from './Dialog.types';
 
 /**
@@ -12,17 +12,24 @@ import type { DialogProps, DialogState } from './Dialog.types';
  * @param ref - reference to root HTMLElement of Dialog
  */
 export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElement>): DialogState => {
+  const { overlay, isOpen = false, type = 'modal' } = props;
   return {
+    isOpen,
+    type,
     // TODO add appropriate props/defaults
     components: {
       // TODO add slot types here if needed (div is the default)
       root: 'div',
+      overlay: 'div',
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('div', {
       ref,
+      role: 'dialog',
+      'aria-modal': 'true',
       ...props,
     }),
+    overlay: resolveShorthand(overlay),
   };
 };

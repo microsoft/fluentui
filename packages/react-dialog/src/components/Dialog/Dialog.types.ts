@@ -2,9 +2,12 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type DialogSlots = {
   root: Slot<'div'>;
+  overlay?: Slot<'div'>;
 };
 
 type DialogCommons = {
+  isOpen: boolean;
+  type?: 'alert' | 'modal' | 'non-modal';
   // TODO Add things shared between props and state here
 };
 

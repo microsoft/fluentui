@@ -1,5 +1,6 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogState } from './Dialog.types';
+import { tokens } from '@fluentui/react-theme';
 
 export const dialogClassName = 'fui-Dialog';
 
@@ -8,6 +9,25 @@ export const dialogClassName = 'fui-Dialog';
  */
 const useStyles = makeStyles({
   root: {
+    backgroundColor: tokens.colorNeutralBackground1,
+    color: tokens.colorNeutralForeground1,
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    maxWidth: '600px',
+    height: '100%',
+    maxHeight: '100vh',
+    boxShadow: tokens.shadow64,
+    position: 'relative',
+    ...shorthands.borderRadius('8px'),
+    ...shorthands.margin('auto'),
+    ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
+
+    '&.fui-Dialog--open': {},
+    '@media screen and (max-width: 480px)': {
+      maxWidth: '100%',
+      width: '100vw',
+    },
     // TODO Add default styles for the root element
   },
 

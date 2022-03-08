@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogFooterState } from './DialogFooter.types';
 
 export const dialogFooterClassName = 'fui-DialogFooter';
@@ -7,6 +7,19 @@ export const dialogFooterClassName = 'fui-DialogFooter';
  */
 const useStyles = makeStyles({
   root: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'end',
+    justifyContent: 'flex-end',
+    height: 'fit-content',
+    verticalAlign: 'top',
+    ...shorthands.gap('8px'),
+    ...shorthands.padding('8px', '24px', '24px', '24px'),
+
+    '@media screen and (max-width: 480px)': {
+      ...shorthands.padding('24px', '24px', '24px', '24px'),
+      justifyContent: 'stretch',
+    },
     // TODO Add default styles for the root element
   },
 
