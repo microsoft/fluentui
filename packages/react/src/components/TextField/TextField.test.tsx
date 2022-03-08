@@ -235,7 +235,6 @@ describe('TextField basic props', () => {
     const input = container.querySelector('.ms-TextField-field')! as HTMLInputElement;
     const reveal = getByRole('button');
 
-    userEvent.tab();
     userEvent.type(input, 'Password123$');
     expect(input.type).toEqual('password');
     userEvent.click(reveal);
@@ -524,18 +523,20 @@ describe('TextField with error message', () => {
   it('should trigger validation only on blur', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
 
-    render(<TextField defaultValue="initial value" onGetErrorMessage={validator} validateOnFocusOut />);
+    const { container } = render(
+      <TextField defaultValue="initial value" onGetErrorMessage={validator} validateOnFocusOut />,
+    );
 
     const input = getInput();
     userEvent.type(input, 'invalid value');
     expect(validator).toHaveBeenCalledTimes(1);
 
-    userEvent.tab();
+    userEvent.click(container);
     expect(validator).toHaveBeenCalledTimes(2);
 
     userEvent.type(input, 'also ');
     userEvent.type(input, 'also invalid');
-    userEvent.tab();
+    userEvent.click(container);
     expect(validator).toHaveBeenCalledTimes(3);
   });
 
