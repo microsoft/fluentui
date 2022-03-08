@@ -410,7 +410,7 @@ const getOverrides = () => [
       // if they are used in non production code. This rule is unable to handle this scenario.
       // TODO:
       // As a follow up we will introduce `@nrwl/nx/enforce-module-boundaries` with {"banTransitiveDependencies": true}
-      'import/no-extraneous-dependencies': ['off'],
+      'import/no-extraneous-dependencies': 'off',
     },
   },
 ];
