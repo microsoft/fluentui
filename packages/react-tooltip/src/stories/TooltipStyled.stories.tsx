@@ -7,7 +7,7 @@ import { makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
 const getStyles = makeStyles({
-  toolTip: {
+  tooltip: {
     backgroundColor: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundInverted,
   },
@@ -18,7 +18,7 @@ export const Styled = (props: Partial<TooltipProps>) => {
   return (
     <Tooltip
       withArrow
-      content={{ children: 'Example tooltip', className: styles.toolTip }}
+      content={{ children: 'Example tooltip', className: styles.tooltip }}
       relationship="label"
       {...props}
     >
