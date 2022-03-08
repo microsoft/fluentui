@@ -13,6 +13,25 @@ import type { Slot } from '@fluentui/react-utilities';
 // @public
 export const Dialog: ForwardRefComponent<DialogProps>;
 
+// @public
+export const DialogBody: ForwardRefComponent<DialogBodyProps>;
+
+// @public (undocumented)
+export const dialogBodyClassName = "fui-DialogBody";
+
+// Warning: (ae-forgotten-export) The symbol "DialogBodyCommons" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type DialogBodyProps = ComponentProps<DialogBodySlots> & DialogBodyCommons;
+
+// @public (undocumented)
+export type DialogBodySlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type DialogBodyState = ComponentState<DialogBodySlots> & DialogBodyCommons;
+
 // @public (undocumented)
 export const dialogClassName = "fui-Dialog";
 
@@ -52,10 +71,19 @@ export type DialogState = ComponentState<DialogSlots> & DialogCommons;
 export const renderDialog_unstable: (state: DialogState) => JSX.Element;
 
 // @public
+export const renderDialogBody_unstable: (state: DialogBodyState) => JSX.Element;
+
+// @public
 export const renderDialogHeader_unstable: (state: DialogHeaderState) => JSX.Element;
 
 // @public
 export const useDialog_unstable: (props: DialogProps, ref: React_2.Ref<HTMLElement>) => DialogState;
+
+// @public
+export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<HTMLElement>) => DialogBodyState;
+
+// @public
+export const useDialogBodyStyles_unstable: (state: DialogBodyState) => DialogBodyState;
 
 // @public
 export const useDialogHeader_unstable: (props: DialogHeaderProps, ref: React_2.Ref<HTMLElement>) => DialogHeaderState;
