@@ -41,6 +41,7 @@ export interface UseArrowNavigationGroupOptions {
     axis?: 'vertical' | 'horizontal';
     circular?: boolean;
     memorizeCurrent?: boolean;
+    tabbable?: boolean;
 }
 
 // @public

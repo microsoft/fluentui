@@ -2,7 +2,7 @@ import * as React from 'react';
 import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '../index';
 
 export const Navigable = (args: AccordionProps) => (
-  <Accordion {...args}>
+  <Accordion navigation="circular" {...args}>
     <AccordionItem value="1">
       <AccordionHeader>Accordion Header 1</AccordionHeader>
       <AccordionPanel>
