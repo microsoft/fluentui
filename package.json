@@ -255,6 +255,9 @@
     "yargs-parser": "13.1.2",
     "yargs-unparser": "2.0.0"
   },
+  "dependencies": {
+    "copy-to-clipboard": "3.3.1"
+  },
   "license": "MIT",
   "workspaces": {
     "packages": [
@@ -287,8 +290,7 @@
     "@types/jest-axe/axe-core": "4.2.1",
     "@types/react": "16.14.23",
     "@types/react-dom": "16.9.14",
-    "eslint": "7.25.0",
-    "copy-to-clipboard": "3.2.0"
+    "eslint": "7.25.0"
   },
   "syncpack": {
     "prod": true,
@@ -318,6 +320,7 @@
           "ajv",
           "chalk",
           "cli-table3",
+          "copy-to-clipboard",
           "del",
           "enhanced-resolve",
           "eslint-config-airbnb",
@@ -420,6 +423,5 @@
         ]
       }
     ]
-  },
-  "dependencies": {}
+  }
 }
