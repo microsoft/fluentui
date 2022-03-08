@@ -36,6 +36,25 @@ export type DialogBodyState = ComponentState<DialogBodySlots> & DialogBodyCommon
 export const dialogClassName = "fui-Dialog";
 
 // @public
+export const DialogFooter: ForwardRefComponent<DialogFooterProps>;
+
+// @public (undocumented)
+export const dialogFooterClassName = "fui-DialogFooter";
+
+// Warning: (ae-forgotten-export) The symbol "DialogFooterCommons" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type DialogFooterProps = ComponentProps<DialogFooterSlots> & DialogFooterCommons;
+
+// @public (undocumented)
+export type DialogFooterSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type DialogFooterState = ComponentState<DialogFooterSlots> & DialogFooterCommons;
+
+// @public
 export const DialogHeader: ForwardRefComponent<DialogHeaderProps>;
 
 // @public (undocumented)
@@ -74,6 +93,9 @@ export const renderDialog_unstable: (state: DialogState) => JSX.Element;
 export const renderDialogBody_unstable: (state: DialogBodyState) => JSX.Element;
 
 // @public
+export const renderDialogFooter_unstable: (state: DialogFooterState) => JSX.Element;
+
+// @public
 export const renderDialogHeader_unstable: (state: DialogHeaderState) => JSX.Element;
 
 // @public
@@ -84,6 +106,12 @@ export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<H
 
 // @public
 export const useDialogBodyStyles_unstable: (state: DialogBodyState) => DialogBodyState;
+
+// @public
+export const useDialogFooter_unstable: (props: DialogFooterProps, ref: React_2.Ref<HTMLElement>) => DialogFooterState;
+
+// @public
+export const useDialogFooterStyles_unstable: (state: DialogFooterState) => DialogFooterState;
 
 // @public
 export const useDialogHeader_unstable: (props: DialogHeaderProps, ref: React_2.Ref<HTMLElement>) => DialogHeaderState;
