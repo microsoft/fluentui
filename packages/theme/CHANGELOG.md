@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Thu, 03 Mar 2022 07:24:25 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Mar 2022 23:29:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.0)
+
+Tue, 08 Mar 2022 23:29:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.5.0..@fluentui/theme_v2.6.0)
+
+### Minor changes
+
+- Adding ./lib/createTheme export to @fluentui/theme package. ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by dzearing@microsoft.com)
 
 ## [2.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.5.0)
 

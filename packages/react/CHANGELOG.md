@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 08 Mar 2022 07:35:07 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Mar 2022 23:29:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.60.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.60.0)
+
+Tue, 08 Mar 2022 23:29:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.59.0..@fluentui/react_v8.60.0)
+
+### Minor changes
+
+- Expose LayerHost element directly to Layer ([PR #21812](https://github.com/microsoft/fluentui/pull/21812) by tmichon@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.1 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.2.1 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+- Bump @fluentui/react-focus to v8.5.1 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+- Bump @fluentui/style-utilities to v8.6.1 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+- Bump @fluentui/theme to v2.6.0 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+- Bump @fluentui/common-styles to v1.0.33 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
 
 ## [8.59.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.59.0)
 

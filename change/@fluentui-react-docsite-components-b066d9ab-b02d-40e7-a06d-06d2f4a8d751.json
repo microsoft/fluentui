@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Update markdown-to-jsx to version 7",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
