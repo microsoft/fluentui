@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add onClick logic to container div",
+  "packageName": "@fluentui/react",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
