@@ -6,7 +6,7 @@ import { SlideTextRegular } from '@fluentui/react-icons';
 import { makeStyles } from '@griffel/react';
 
 const getStyles = makeStyles({
-  toolTip: {
+  tooltip: {
     backgroundColor: 'green',
     color: 'white',
   },
