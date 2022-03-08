@@ -6,6 +6,7 @@ import { IMarkdownTableStyleProps } from '../MarkdownTable/index';
 import { MarkdownToJSX } from 'markdown-to-jsx';
 
 export interface IMarkdownProps {
+  /** CSS class to apply to the component root */
   className?: string;
 
   /**
@@ -15,7 +16,7 @@ export interface IMarkdownProps {
   enableRenderHtmlBlock?: boolean;
 
   /** Additional component overrides for markdown rendering */
-  overrides?: MarkdownToJSX.Options;
+  overrides?: MarkdownToJSX.Overrides;
 
   /** Theme provided by higher-order component. */
   theme?: ITheme;
