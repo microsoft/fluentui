@@ -9,11 +9,11 @@ import { Portal } from '@fluentui/react-portal';
 export const renderDialog_unstable = (state: DialogState) => {
   const { slots, slotProps } = getSlots<DialogSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
+  // TODO Add handling for non-modal dialogs
   return state.isOpen ? (
     <Portal>
-      {slots.overlay && <slots.overlay {...slotProps.overlay} />}
-      <slots.root {...slotProps.root} />
+      {slots.overlay ? <slots.overlay {...slotProps.overlay} /> : <div className={state.overlayClassName} />}
+      <slots.root {...slotProps.root}>{slotProps.root.children} </slots.root>
     </Portal>
   ) : null;
 };

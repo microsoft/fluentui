@@ -19,4 +19,7 @@ export type DialogProps = ComponentProps<DialogSlots> & DialogCommons;
 /**
  * State used in rendering Dialog
  */
-export type DialogState = ComponentState<DialogSlots> & DialogCommons;
+export type DialogState = ComponentState<DialogSlots> &
+  DialogCommons & {
+    overlayClassName?: string;
+  };

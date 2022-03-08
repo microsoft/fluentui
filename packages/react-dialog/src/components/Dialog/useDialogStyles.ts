@@ -28,10 +28,20 @@ const useStyles = makeStyles({
       maxWidth: '100%',
       width: '100vw',
     },
-    // TODO Add default styles for the root element
   },
 
-  // TODO add additional classes for different states and/or slots
+  overlay: {
+    pointerEvents: 'none',
+    position: 'fixed',
+    width: '100%',
+    height: '100%',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: '#000000', //TODO: change to token value
+    opacity: '0.8',
+  },
 });
 
 /**
@@ -41,8 +51,7 @@ export const useDialogStyles_unstable = (state: DialogState): DialogState => {
   const styles = useStyles();
   state.root.className = mergeClasses(dialogClassName, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state.overlayClassName = mergeClasses(styles.overlay);
 
   return state;
 };
