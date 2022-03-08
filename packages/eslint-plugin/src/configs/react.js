@@ -404,12 +404,7 @@ const getOverrides = () => [
   {
     files: [...configHelpers.devDependenciesFiles],
     rules: {
-      // - turning off this rule for non production code
-      // - it doesn't work for our use cases as it should
-      // - we don't wanna specify monorepo packages as devDependencies in package.json
-      // if they are used in non production code. This rule is unable to handle this scenario.
-      // TODO:
-      // As a follow up we will introduce `@nrwl/nx/enforce-module-boundaries` with {"banTransitiveDependencies": true}
+      // TODO: https://github.com/microsoft/fluentui/issues/21999
       'import/no-extraneous-dependencies': 'off',
     },
   },
