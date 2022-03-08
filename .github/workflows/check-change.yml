@@ -1,8 +1,34 @@
-name: Check change
+name: Check packages changes/versions
 on:
   pull_request:
 
 jobs:
+  check-package-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const syncpackVersion = require('./package.json').devDependencies.syncpack;
+
+            if (typeof syncpackVersion !== 'string') {
+              core.setFailed("Please check 'package.json', it should include 'syncpack' in 'devDependencies'")
+              return
+            }
+
+            core.exportVariable('SYNCPACK_VERSION', syncpackVersion);
+
+      - run: |
+          npx syncpack@$SYNCPACK_VERSION list-mismatches
+
   check-change:
     runs-on: ubuntu-latest
     steps:
@@ -18,12 +44,14 @@ jobs:
         with:
           script: |
             const beachballVersion = require('./package.json').devDependencies.beachball;
+
             if (typeof beachballVersion !== 'string') {
               core.setFailed("Please check 'package.json', it should include 'beachball' in 'devDependencies'")
-            } else {
-              console.log(`Using beachball@${beachballVersion}...`)
-              await exec.exec('yarn', ['global', 'add', `beachball@${beachballVersion}`]);
+              return
             }
+
+            core.info(`Using beachball@${beachballVersion}...`)
+            await exec.exec('yarn', ['global', 'add', `beachball@${beachballVersion}`]);
 
       - run: |
           cp scripts/beachball/.beachballrc.base.json .beachballrc.json
