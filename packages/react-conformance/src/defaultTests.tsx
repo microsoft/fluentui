@@ -375,7 +375,7 @@ export const defaultTests: TestObject = {
       }
     });
 
-    it(`has static classnames (component-has-static-classnames-object)`, () => {
+    it(`has static classnames in rendered component (component-has-static-classnames-object)`, () => {
       if (!handledClassNamesObjectExport) {
         return;
       }
