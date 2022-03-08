@@ -4,11 +4,12 @@ import { Tooltip, TooltipProps } from '../Tooltip';
 import { Button } from '@fluentui/react-button';
 import { SlideTextRegular } from '@fluentui/react-icons';
 import { makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 
 const getStyles = makeStyles({
   toolTip: {
-    backgroundColor: 'green',
-    color: 'white',
+    backgroundColor: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForegroundInverted,
   },
 });
 
