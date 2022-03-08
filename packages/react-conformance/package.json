@@ -20,11 +20,9 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
-    "@types/doctrine": "0.0.3",
     "@types/react-is": "^16.7.1"
   },
   "dependencies": {
-    "doctrine": "^3.0.0",
     "lodash": "^4.17.15",
     "chalk": "^2.4.2",
     "react-docgen-typescript": "^2.1.0",

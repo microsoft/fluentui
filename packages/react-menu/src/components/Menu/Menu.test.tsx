@@ -13,7 +13,6 @@ import { MenuPopover } from '../MenuPopover/index';
 
 describe('Menu', () => {
   isConformant({
-    skipAsPropTests: true,
     disabledTests: [
       // Menu does not render DOM elements
       'component-handles-ref',

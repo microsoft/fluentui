@@ -12,7 +12,6 @@ describe('PopoverTrigger', () => {
     Component: PopoverTrigger,
     displayName: 'PopoverTrigger',
     requiredProps: { children: <span /> },
-    skipAsPropTests: true,
     disabledTests: [
       // PopoverTrigger does not render DOM elements
       'component-handles-ref',
