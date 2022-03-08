@@ -273,7 +273,7 @@ The dialog component follows the [Dialog WAI-Aria design pattern](https://www.w3
 
 #### Modal
 
-[`role="alertdialog"` documentation](https://www.w3.org/TR/wai-aria-1.1/#dialog)
+[`role="dialog"` documentation](https://www.w3.org/TR/wai-aria-1.1/#dialog)
 
 - Trigger button
   - `aria-haspopup="dialog"`
@@ -288,7 +288,7 @@ The dialog component follows the [Dialog WAI-Aria design pattern](https://www.w3
   - `aria-haspopup="dialog"`
 - Dialog
   - Role: `role="dialog"`
-  - State: `aria-expanded="modal"`
+  - State: `aria-modal=false"`
   - Text: `aria-labelledby={dialog-title}` or `aria-label={dialog-title}`
 
 #### Alert dialog
