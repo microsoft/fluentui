@@ -82,7 +82,9 @@ export function createComponent<
       ...componentProps,
       styles,
       tokens,
-      _defaultStyles: styles,
+      _defaultStyles: {
+        root: styles,
+      },
       theme,
     } as unknown) as TViewProps & IDefaultSlotProps<any>;
 
