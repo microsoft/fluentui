@@ -42,11 +42,6 @@
       "types": "./lib/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
-    },
-    "./lib/createTheme": {
-      "types": "./lib/createTheme.d.ts",
-      "import": "./lib/createTheme.js",
-      "require": "./lib-commonjs/createTheme.js"
     }
   }
 }
