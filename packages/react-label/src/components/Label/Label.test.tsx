@@ -9,9 +9,11 @@ describe('Label', () => {
     displayName: 'Label',
     requiredProps: { children: "I'm a label." },
     testOptions: {
-      'has-static-classnames': {
-        required: 'Required Test',
-      },
+      'has-static-classnames': [
+        {
+          props: { required: 'Required Test' },
+        },
+      ],
     },
   });
 

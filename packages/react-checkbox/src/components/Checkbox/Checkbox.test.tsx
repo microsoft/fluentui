@@ -17,9 +17,11 @@ describe('Checkbox', () => {
     displayName: 'Checkbox',
     primarySlot: 'input',
     testOptions: {
-      'has-static-classnames': {
-        label: 'Test Label',
-      },
+      'has-static-classnames': [
+        {
+          props: { label: 'Test Label' },
+        },
+      ],
     },
   });
 

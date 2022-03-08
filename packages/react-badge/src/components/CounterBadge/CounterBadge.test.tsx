@@ -9,9 +9,11 @@ describe('CounterBadge', () => {
     Component: CounterBadge,
     displayName: 'CounterBadge',
     testOptions: {
-      'has-static-classnames': {
-        icon: 'Test Icon',
-      },
+      'has-static-classnames': [
+        {
+          props: { icon: 'Test Icon' },
+        },
+      ],
     },
   });
 

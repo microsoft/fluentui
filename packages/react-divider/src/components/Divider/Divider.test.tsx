@@ -13,9 +13,11 @@ describe('Divider', () => {
     Component: Divider,
     displayName: 'Divider',
     testOptions: {
-      'has-static-classnames': {
-        children: 'Test Children',
-      },
+      'has-static-classnames': [
+        {
+          props: { children: 'Test Children' },
+        },
+      ],
     },
   });
 

@@ -11,9 +11,13 @@ describe('Tab', () => {
     Component: Tab,
     displayName: 'Tab',
     testOptions: {
-      'has-static-classnames': {
-        icon: 'Test Icon',
-      },
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+          },
+        },
+      ],
     },
   });
 
