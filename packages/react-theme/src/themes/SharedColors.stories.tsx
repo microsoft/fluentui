@@ -4,7 +4,7 @@
 import * as React from 'react';
 import { TinyColor } from '@ctrl/tinycolor';
 
-import { sharedColors } from '../global';
+import { sharedColors } from '../global/colors';
 
 export default {
   title: 'Theme/Shared Colors',
@@ -782,22 +782,34 @@ export const SharedColors = () => {
       </p>
       <div style={gridStyles}>
         {[
-          <div style={{ padding: '8px' }}>token</div>,
+          <div key="token" style={{ padding: '8px' }}>
+            token
+          </div>,
           ...colorPalette.map(color => {
-            return <div style={{ padding: '8px' }}>{color}</div>;
+            return (
+              <div key={color} style={{ padding: '8px' }}>
+                {color}
+              </div>
+            );
           }),
         ]}
         {tokens.map(token => {
           return [
-            <div style={{ padding: '8px' }}>{token}</div>,
+            <div key={token} style={{ padding: '8px' }}>
+              {token}
+            </div>,
             ...colorPalette.map(color => {
               const figmaColor = figmaTheme[color][token]?.toLowerCase();
               const fuiColor = sharedColors[color][token]?.toLowerCase();
               if (figmaColor === fuiColor) {
-                return <div style={{ padding: '8px' }}>{fuiColor}</div>;
+                return (
+                  <div key={`${color}${token}`} style={{ padding: '8px' }}>
+                    {fuiColor}
+                  </div>
+                );
               }
               return (
-                <div style={{ display: 'flex' }}>
+                <div key={`${color}${token}`} style={{ display: 'flex' }}>
                   <div
                     style={{ flexGrow: 1, padding: '8px', backgroundColor: figmaColor, color: visibleFg(figmaColor) }}
                   >
