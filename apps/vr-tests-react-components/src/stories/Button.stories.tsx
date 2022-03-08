@@ -17,7 +17,7 @@ storiesOf('Button Converged', module)
   .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <Button id={buttonId}>Hello, world</Button>, {
     includeRtl: true,
-    includeHighContrast: true,
+    // includeHighContrast: true,
     // includeDarkMode: true,
   })
   .addStory('Circular', () => (
@@ -228,6 +228,15 @@ storiesOf('CompoundButton Converged', module)
     { includeRtl: true },
   )
   .addStory(
+    'With icon before content',
+    () => (
+      <CompoundButton id={buttonId} secondaryContent="This is some secondary text" icon="X">
+        Hello, world
+      </CompoundButton>
+    ),
+    { includeRtl: true },
+  )
+  .addStory(
     'With icon after content',
     () => (
       <CompoundButton id={buttonId} secondaryContent="This is some secondary text" icon="X" iconPosition="after">
@@ -299,15 +308,6 @@ storiesOf('CompoundButton Converged', module)
       Hello, world
     </CompoundButton>
   ))
-  .addStory(
-    'With icon before content',
-    () => (
-      <CompoundButton id={buttonId} secondaryContent="This is some secondary text" icon="X">
-        Hello, world
-      </CompoundButton>
-    ),
-    { includeRtl: true },
-  )
 
   .addStory('Icon only', () => <CompoundButton id={buttonId} icon="X" />)
   .addStory('Circular and icon only', () => <CompoundButton id={buttonId} shape="circular" icon="X" />, {
@@ -370,7 +370,7 @@ storiesOf('ToggleButton Converged', module)
   .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <ToggleButton id={buttonId}>Hello, world</ToggleButton>, {
     includeRtl: true,
-    includeHighContrast: true,
+    // includeHighContrast: true,
     // includeDarkMode: true,
   })
   .addStory('Circular', () => (
