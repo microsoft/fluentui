@@ -287,6 +287,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         onKeyDown={this.onKeyDown}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
+        onClick={this.onClick}
       >
         {this.renderCustomAlert(classNames.screenReaderText)}
         <span id={`${this._ariaMap.selectedItems}-label`} hidden>
@@ -596,6 +597,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   protected onClick = (ev: React.MouseEvent<HTMLInputElement>): void => {
     if (this.props.inputProps !== undefined && this.props.inputProps.onClick !== undefined) {
       this.props.inputProps.onClick(ev);
+    }
+    // Reset focus to last item if the input is removed
+    if (!this.canAddItems()) {
+      this.resetFocus(this.state.items.length - 1);
     }
 
     // Only primary (left) clicks show suggestions.
