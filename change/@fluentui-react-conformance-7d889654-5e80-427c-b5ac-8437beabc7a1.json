@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "BREAKING CHANGE: Switch from Enzyme to `@testing-library/react` and remove Enzyme-specific APIs",
+  "packageName": "@fluentui/react-conformance",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

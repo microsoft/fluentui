@@ -155,9 +155,7 @@ export const defaultErrorMessages = {
     // Possible solutions:
     // 1. Check if your component has a ref prop.
     // 2. For function components, make sure that you are using forwardRef.
-    // 3. Check if your component passes ref to an inner component and add targetComponent to isConformant in
-    //    your test file.
-    // 4. If your component uses an "elementRef" prop instead of "ref", add elementRefName: 'elementRef' to
+    // 3. If your component uses an "elementRef" prop instead of "ref", add elementRefName: 'elementRef' to
     //    isConformant in your test file.
     return getErrorMessage({
       displayName,
@@ -165,8 +163,6 @@ export const defaultErrorMessages = {
       suggestions: [
         `Check if your component has a ${resolveInfo('ref')} prop.`,
         `For function components, make sure that you are using ${resolveInfo('forwardRef')}.`,
-        `Check if your component passes the ref to an inner component and add ${resolveInfo('targetComponent')} ` +
-          'to isConformant in your test file.',
         `If your component uses an "elementRef" prop instead of "ref", add ${resolveInfo(
           `elementRefName: 'elementRef'`,
         )} to isConformant in your test file.`,
@@ -186,7 +182,7 @@ export const defaultErrorMessages = {
     // 1. Make sure you're applying the ref to the root element in your component.
     // 2. Check if your component uses an element ref and add elementRefName: 'elementRef' to isConformant in
     //    your test file.
-    // 3. Check if your component passes ref to an inner component and add targetComponent to isConformant in
+    // 3. Check if your component passes ref to an inner component and add getTargetElement to isConformant in
     //    your test file.
     return getErrorMessage({
       displayName,
@@ -200,7 +196,7 @@ export const defaultErrorMessages = {
           `elementRefName: 'elementRef'`,
         )} to isConformant in your test file.`,
         `Check if your component passes ref to an inner component and add ${resolveInfo(
-          `targetComponent`,
+          `getTargetElement`,
         )} to isConformant in your test file.`,
       ],
       error,

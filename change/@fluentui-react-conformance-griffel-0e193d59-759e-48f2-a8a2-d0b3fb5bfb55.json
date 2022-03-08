@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Update tsconfig to include Node types in local build now that they're no longer leaked by react-conformance",
+  "packageName": "@fluentui/react-conformance-griffel",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}
