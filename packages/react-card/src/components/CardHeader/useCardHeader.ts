@@ -19,8 +19,8 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
       root: 'div',
       image: 'div',
       content: 'div',
-      header: React.Fragment,
-      description: React.Fragment,
+      header: 'span',
+      description: 'span',
       action: 'div',
     },
 
