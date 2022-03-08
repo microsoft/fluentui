@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Expose LayerHost element directly to Layer",
+  "packageName": "@fluentui/react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -74,6 +74,7 @@ storiesOf('Breadcrumb', module)
 
 // Stories for hovering over actionable and non-actionable items
 storiesOf('Breadcrumb', module)
+  .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
