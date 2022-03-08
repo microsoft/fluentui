@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Image } from '../Image';
 
-export const Shadow = () => <Image shadow src="https://via.placeholder.com/300x300" />;
+export const Shadow = () => <Image shadow src="https://fabricweb.azureedge.net/fabric-website/placeholders/300x300" />;
 Shadow.parameters = {
   docs: {
     description: {
