@@ -6378,8 +6378,11 @@ export interface ILabelStyles {
 export interface ILayer {
 }
 
-// @public (undocumented)
+// @public
 export interface ILayerHost {
+    hostId: string;
+    notifyLayersChanged(): void;
+    rootRef: React_2.MutableRefObject<HTMLDivElement | null>;
 }
 
 // @public (undocumented)
