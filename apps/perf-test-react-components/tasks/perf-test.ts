@@ -114,9 +114,9 @@ const urlForDeployPath = process.env.DEPLOYURL
 const urlForDeploy = 'file://' + path.resolve(__dirname, '../dist/') + '/index.html';
 
 const targetPath = `heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
-// TODO: Once merged to master, replace /perf-test/index.html with /perf-test-react-components/index.html.
-// This is because we need /perf-test-react-components to be deployed to master first before being usable.
-const urlForMaster = `https://${process.env.DEPLOYHOST || DEPLOY_URL}/${targetPath}/perf-test/index.html`;
+const urlForMaster = `https://${
+  process.env.DEPLOYHOST || DEPLOY_URL
+}/${targetPath}/perf-test-react-components/index.html`;
 
 const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');
