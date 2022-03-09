@@ -200,6 +200,13 @@
       "projectType": "application",
       "implicitDependencies": []
     },
+    "@fluentui/priority-overflow": {
+      "root": "packages/priority-overflow",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/priority-overflow/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/projects-test": {
       "root": "packages/fluentui/projects-test",
       "projectType": "library",
@@ -493,6 +500,13 @@
       "sourceRoot": "packages/react-positioning/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-priority-overflow": {
+      "root": "packages/react-priority-overflow",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-priority-overflow/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-proptypes": {
       "root": "packages/fluentui/react-proptypes",

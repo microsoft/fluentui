@@ -1,8 +1,67 @@
 # Change Log - @fluentui/theme-samples
 
-This log was last generated on Wed, 02 Mar 2022 07:23:06 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Mar 2022 07:37:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.4.2)
+
+Wed, 09 Mar 2022 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.4.1..@fluentui/theme-samples_v8.4.2)
+
+### Patches
+
+- Bump @fluentui/react to v8.60.1 ([PR #22008](https://github.com/microsoft/fluentui/pull/22008) by beachball)
+- Bump @fluentui/scheme-utilities to v8.3.2 ([PR #22008](https://github.com/microsoft/fluentui/pull/22008) by beachball)
+
+## [8.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.4.1)
+
+Tue, 08 Mar 2022 23:29:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.4.0..@fluentui/theme-samples_v8.4.1)
+
+### Patches
+
+- Bump @fluentui/react to v8.60.0 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+- Bump @fluentui/scheme-utilities to v8.3.1 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.4.0)
+
+Tue, 08 Mar 2022 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.3.2..@fluentui/theme-samples_v8.4.0)
+
+### Minor changes
+
+- Bump @fluentui/react to v8.59.0 ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by beachball)
+
+## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.3.2)
+
+Mon, 07 Mar 2022 07:41:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.3.1..@fluentui/theme-samples_v8.3.2)
+
+### Patches
+
+- Bump @fluentui/react to v8.58.0 ([PR #21949](https://github.com/microsoft/fluentui/pull/21949) by beachball)
+
+## [8.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.3.1)
+
+Fri, 04 Mar 2022 07:42:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.3.0..@fluentui/theme-samples_v8.3.1)
+
+### Patches
+
+- Bump @fluentui/react to v8.57.1 ([commit](https://github.com/microsoft/fluentui/commit/62865d15abd07125ff3968c739e387d6fd840f00) by beachball)
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.3.0)
+
+Thu, 03 Mar 2022 07:24:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.2.84..@fluentui/theme-samples_v8.3.0)
+
+### Minor changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/react to v8.57.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/set-version to v8.2.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/scheme-utilities to v8.3.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
 
 ## [8.2.84](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.2.84)
 

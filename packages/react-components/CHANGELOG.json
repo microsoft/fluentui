@@ -2,6 +2,277 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 04 Mar 2022 19:49:34 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-rc.6",
+      "version": "9.0.0-rc.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "e7a18d284e0050a34ff1aa3783856c73873adf78",
+            "comment": "Adding /unstable export to exports map."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Mar 2022 05:17:28 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-rc.5",
+      "version": "9.0.0-rc.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29"
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-switch",
+            "commit": "852bd412ad6a682db9dfa44b7275f23fcaccb298",
+            "comment": "Updating class names to use slot class names helper type."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-utilities",
+            "commit": "852bd412ad6a682db9dfa44b7275f23fcaccb298",
+            "comment": "Adding helper type to define slot class names."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "294f4b7b4cd562451a8d4edfacde3b1872d2b76f",
+            "comment": "fix(shouldPreventDefaultOnKeyDown): return false for events that are default prevented"
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749",
+            "comment": "keyboard-keys: Adding missing tslib dependency."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "e951d80afa1d6220e76d7a6c23d75ae417be2b9c",
+            "comment": "Button: Exporting classNames of individual slots."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "9955166acd95a1328ed09efd177e9f08eeabee57",
+            "comment": "Add Radio and RadioGroup to react-components/unstable"
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "17a19427f5465577427f5c1c4ed61578a063f990",
+            "comment": "refactor: PopoverSurface should be rendered from the Popover component"
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "2267ad0de9d6f6bf3aa776016da3d03f5400cbd1",
+            "comment": "fix: `popperRef.setTarget` should accept virtual element type"
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "9955166acd95a1328ed09efd177e9f08eeabee57",
+            "comment": "Initial release"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "2267ad0de9d6f6bf3aa776016da3d03f5400cbd1",
+            "comment": "docs: positioning imperative handle `setTarget`"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Mar 2022 02:17:34 GMT",
       "tag": "@fluentui/react-components_v9.0.0-rc.4",
       "version": "9.0.0-rc.4",

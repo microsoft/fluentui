@@ -289,6 +289,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
 
       internalState.changeSelectionData = null;
       if (textField.current && textField.current.value) {
+        // eslint-disable-next-line deprecation/deprecation
         const { keyCode, ctrlKey, metaKey } = ev;
 
         // Ignore ctrl and meta keydown

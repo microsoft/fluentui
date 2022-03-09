@@ -287,6 +287,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         onKeyDown={this.onKeyDown}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
+        onClick={this.onWrapperClick}
       >
         {this.renderCustomAlert(classNames.screenReaderText)}
         <span id={`${this._ariaMap.selectedItems}-label`} hidden>
@@ -586,6 +587,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
           this.props.onBlur(ev as React.FocusEvent<HTMLInputElement>);
         }
       }
+    }
+  };
+
+  /**
+   * Resets focus to last element in wrapper div if clicking back into Picker that has hit item limit
+   */
+  protected onWrapperClick = (ev: React.MouseEvent<HTMLInputElement>): void => {
+    if (!this.canAddItems()) {
+      this.resetFocus(this.state.items.length - 1);
     }
   };
 

@@ -30,10 +30,11 @@ const argv = require('yargs')
   })
   .demandOption('mode').argv;
 
+const isLocalRun = !process.env.DEPLOYURL;
+
+/** @type {Cypress.ConfigOptions} */
 const baseConfig = {
-  baseUrl: process.env.DEPLOYURL
-    ? `${process.env.DEPLOYURL}/${argv.package}/storybook`
-    : `http://localhost:${argv.port}`,
+  baseUrl: isLocalRun ? `http://localhost:${argv.port}` : `${process.env.DEPLOYURL}/${argv.package}/storybook`,
   fixturesFolder: path.join(__dirname, 'cypress/fixtures'),
   integrationFolder: '.',
   pluginsFile: path.join(__dirname, 'cypress/plugins/index.js'),
@@ -41,7 +42,9 @@ const baseConfig = {
     runMode: 2,
     openMode: 0,
   },
-  screenshotOnRunFailure: false,
+  // Screenshots go under <pkg>/cypress/screenshots and can be useful to look at after failures in
+  // local headless runs (especially if the failure is specific to headless runs)
+  screenshotOnRunFailure: isLocalRun && argv.mode === 'run',
   // due to https://github.com/cypress-io/cypress/issues/8599 this must point to a path within the package,
   // not a relative path into scripts
   supportFile: 'e2e/support.js',

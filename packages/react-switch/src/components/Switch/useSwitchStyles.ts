@@ -1,11 +1,10 @@
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwitchSlots, SwitchState } from './Switch.types';
 
-export const switchClassNames: {
-  [SlotName in keyof SwitchSlots]-?: string;
-} = {
+export const switchClassNames: SlotClassNames<SwitchSlots> = {
   root: 'fui-Switch',
   indicator: 'fui-Switch__indicator',
   input: 'fui-Switch__input',
