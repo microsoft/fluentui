@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Switch: Updating spec and migration guide to reflect latest state of the component.",
+  "packageName": "@fluentui/react-switch",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
