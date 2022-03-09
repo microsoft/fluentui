@@ -18,8 +18,8 @@ storiesOf('Button Converged', module)
   .addStory('Default', () => <Button id={buttonId}>Hello, world</Button>, {
     includeRtl: true,
     // https://github.com/microsoft/fluentui/issues/21998
-    // includeHighContrast: true,
-    // includeDarkMode: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
   })
   .addStory('Circular', () => (
     <Button id={buttonId} shape="circular">
@@ -211,8 +211,8 @@ storiesOf('CompoundButton Converged', module)
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         // https://github.com/microsoft/fluentui/issues/21998
-        // .hover('#button-id')
-        // .snapshot('hover', { cropTo: '.testWrapper' })
+        .hover('#button-id')
+        .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('#button-id')
         .snapshot('pressed', { cropTo: '.testWrapper' })
         .end()}
@@ -373,8 +373,8 @@ storiesOf('ToggleButton Converged', module)
   .addStory('Default', () => <ToggleButton id={buttonId}>Hello, world</ToggleButton>, {
     includeRtl: true,
     // https://github.com/microsoft/fluentui/issues/21998
-    // includeHighContrast: true,
-    // includeDarkMode: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
   })
   .addStory('Circular', () => (
     <ToggleButton id={buttonId} shape="circular">
