@@ -2095,6 +2095,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
         // If we get here and we got either and ALT key
         // or meta key, let the event propagate
+        // eslint-disable-next-line deprecation/deprecation
         if (ev.keyCode === KeyCodes.alt || ev.key === 'Meta' /* && isOpen */) {
           return;
         }

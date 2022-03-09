@@ -31,7 +31,6 @@ export default {
           // These stories use grid layout due to Safari bug noted in PR https://github.com/microsoft/fluentui/pull/21479
           display: 'grid',
           gridTemplateRows: 'repeat(1fr)',
-          rowGap: '1em',
           justifyItems: 'start',
           padding: 20,
         }}

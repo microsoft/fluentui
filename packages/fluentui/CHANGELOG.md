@@ -28,10 +28,19 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `menuButtonBehavior` to not set undefined aria attributes @yuanboxue-amber ([#21610](https://github.com/microsoft/fluentui/pull/21610))
 - Fix memory leak in `createFelaRenderer()` @layershifter ([#21536](https://github.com/microsoft/fluentui/pull/21536))
 - Fix `Dropdown` repositioning when always open and have multilines @chpalac ([#21754](https://github.com/microsoft/fluentui/pull/21754))
+- Update `csstype` to version 3 and update corresponding property type references and change `scheduler` to a peer dependency @ecraig12345 ([#21769](https://github.com/microsoft/fluentui/pull/21769))
 - Fix `ToolbarItem` and `ToolbarItemMenu` to show tooltip on hover when `disabledFocusable` @Hirse ([#21795](https://github.com/microsoft/fluentui/pull/21795))
+- Fix `Tooltip` close tooltip with ESC key only when is opened @kolaps33 ([#21936](https://github.com/microsoft/fluentui/pull/21936))
+- Replace ReactNodeArray with ReactNode[] @jurokapsiar ([#21957](https://github.com/microsoft/fluentui/pull/21957))
+- Fix `Dropdown` focus indicator appearance when `highlightFirstItemOnOpen` is true while accessing from keyboard @annabratseiko ([#21991](https://github.com/microsoft/fluentui/pull/21991))
+- Fix `Tooltip` color for HC theme @chpalac ([#21994](https://github.com/microsoft/fluentui/pull/21994))
 
 ### Features
 - Add new Popup prop `closeOnScroll` to close popup when scroll happens outside of the popover element @yuanboxue-amber ([#21453](https://github.com/microsoft/fluentui/pull/21453))
+- Add new `isIntersectingModifier` modifier to `usePopper` @layershifter ([#21829](https://github.com/microsoft/fluentui/pull/21829))
+- Add `SignatureIcon` to iconset @notandrew ([#21946](https://github.com/microsoft/fluentui/pull/21946))
+- Allow users to configure new animations for `Carousel` transitions @chpalac ([#21866](https://github.com/microsoft/fluentui/pull/21866))
+- Support React 17 as a peer dependency @jurokapsiar ([#21955](https://github.com/microsoft/fluentui/pull/21955))
 
 <!--------------------------------[ v0.60.1 ]------------------------------- -->
 ## [v0.60.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.60.1) (2022-01-17)

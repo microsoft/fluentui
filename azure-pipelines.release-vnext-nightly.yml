@@ -10,8 +10,9 @@ variables:
   - template: .devops/templates/variables.yml
   - name: release.vnext # Used to scope beachball to release only vnext packages
     value: true
-
-pool: '1ES-Host-Ubuntu'
+  - group: InfoSec-SecurityResults
+  - name: tags
+    value: production,externalfacing
 
 schedules:
   # Triggers the nightly release
@@ -23,57 +24,62 @@ schedules:
       include:
         - master
 
-workspace:
-  clean: all
+jobs:
+  - template: .devops/templates/compliance-job.yml
 
-steps:
-  - template: .devops/templates/tools.yml
+  - job: Release
+    dependsOn: Compliance
+    pool: '1ES-Host-Ubuntu'
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
 
-  - task: Bash@3
-    inputs:
-      filePath: yarn-ci.sh
-    displayName: yarn
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
+        displayName: yarn
 
-    # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
-  - script: |
-      commitSha=$(git log -n 1 --pretty=format:"%h")
-      date=$(date +"%Y%m%d")
-      yarn nx workspace-generator version-bump --all --bumpType nightly --prereleaseTag "nightly${commitSha}${date}"
-      git add .
-      git commit -m "bump nightly versions"
-      yarn change --type prerelease --message "Release nightly v9"
-    displayName: 'Bump and commit nightly versions'
+        # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
+      - script: |
+          date=$(date +"%Y%m%d-%H%M")
+          #release version name will follow a 0.0.0-nightly-{year}{month}{day}-{hour}{minute} format.
+          yarn nx workspace-generator version-bump --all --bumpType nightly --prereleaseTag "nightly-${date}"
+          git add .
+          git commit -m "bump nightly versions"
+          yarn change --type prerelease --message "Release nightly v9"
+        displayName: 'Bump and commit nightly versions'
 
-  # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
-  # https://github.com/microsoft/fluentui/issues/21686
-  - script: |
-      yarn run:published test
-    displayName: yarn test
+      # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
+      # https://github.com/microsoft/fluentui/issues/21686
+      - script: |
+          yarn run:published test
+        displayName: yarn test
 
-  - script: |
-      yarn run:published lint
-    displayName: yarn lint
+      - script: |
+          yarn run:published lint
+        displayName: yarn lint
 
-  - script: |
-      yarn run:published build --production
-    displayName: yarn build
+      - script: |
+          yarn run:published build --production
+        displayName: yarn build
 
-  - script: |
-      yarn publish:beachball -n $(npmToken) --no-push --tag nightly
-      git reset --hard origin/master
-    displayName: Publish changes and bump versions
+      - script: |
+          yarn publish:beachball -n $(npmToken) --no-push --tag nightly
+          git reset --hard origin/master
+        displayName: Publish changes and bump versions
 
-  - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-    displayName: 📒 Generate Manifest
-    inputs:
-      BuildDropPath: $(System.DefaultWorkingDirectory)
+      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest
+        inputs:
+          BuildDropPath: $(System.DefaultWorkingDirectory)
 
-  - task: PublishPipelineArtifact@1
-    displayName: 📒 Publish Manifest
-    inputs:
-      artifactName: SBom-$(System.JobAttempt)
-      targetPath: $(System.DefaultWorkingDirectory)/_manifest
+      - task: PublishPipelineArtifact@1
+        displayName: 📒 Publish Manifest
+        inputs:
+          artifactName: SBom-$(System.JobAttempt)
+          targetPath: $(System.DefaultWorkingDirectory)/_manifest
 
-  - template: .devops/templates/cleanup.yml
-    parameters:
-      checkForModifiedFiles: false
+      - template: .devops/templates/cleanup.yml
+        parameters:
+          checkForModifiedFiles: false

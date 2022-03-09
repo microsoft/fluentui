@@ -1,8 +1,123 @@
 # Change Log - @fluentui/vr-tests
 
-This log was last generated on Thu, 17 Feb 2022 07:28:31 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Mar 2022 07:37:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/vr-tests_v1.0.0)
+
+Wed, 09 Mar 2022 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/vr-tests_v1.0.0..@fluentui/vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/font-icons-mdl2 to v8.2.2 ([PR #22008](https://github.com/microsoft/fluentui/pull/22008) by beachball)
+- Bump @fluentui/react to v8.60.1 ([PR #22008](https://github.com/microsoft/fluentui/pull/22008) by beachball)
+- Bump @fluentui/react-experiments to v8.6.2 ([PR #22008](https://github.com/microsoft/fluentui/pull/22008) by beachball)
+- Bump @fluentui/react-hooks to v8.5.1 ([PR #22008](https://github.com/microsoft/fluentui/pull/22008) by beachball)
+- Bump @fluentui/react-icons-mdl2 to v1.3.2 ([PR #22008](https://github.com/microsoft/fluentui/pull/22008) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/vr-tests_v1.0.0)
+
+Tue, 08 Mar 2022 23:29:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/vr-tests_v1.0.0..@fluentui/vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/font-icons-mdl2 to v8.2.1 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+- Bump @fluentui/react to v8.60.0 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+- Bump @fluentui/react-experiments to v8.6.1 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+- Bump @fluentui/react-icons-mdl2 to v1.3.1 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/vr-tests_v1.0.0)
+
+Tue, 08 Mar 2022 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/vr-tests_v1.0.0..@fluentui/vr-tests_v1.0.0)
+
+### Minor changes
+
+- Bump @fluentui/react to v8.59.0 ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by beachball)
+- Bump @fluentui/react-experiments to v8.6.0 ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/vr-tests_v1.0.0)
+
+Mon, 07 Mar 2022 07:41:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/vr-tests_v1.0.0..@fluentui/vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.58.0 ([PR #21949](https://github.com/microsoft/fluentui/pull/21949) by beachball)
+- Bump @fluentui/react-experiments to v8.5.2 ([PR #21949](https://github.com/microsoft/fluentui/pull/21949) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/vr-tests_v1.0.0)
+
+Fri, 04 Mar 2022 07:42:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/vr-tests_v1.0.0..@fluentui/vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.57.1 ([commit](https://github.com/microsoft/fluentui/commit/62865d15abd07125ff3968c739e387d6fd840f00) by beachball)
+- Bump @fluentui/react-experiments to v8.5.1 ([commit](https://github.com/microsoft/fluentui/commit/62865d15abd07125ff3968c739e387d6fd840f00) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/vr-tests_v1.0.0)
+
+Thu, 03 Mar 2022 07:24:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/vr-tests_v1.0.0..@fluentui/vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/example-data to v8.4.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.2.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/react to v8.57.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/react-experiments to v8.5.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/react-hooks to v8.5.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/react-icons-mdl2 to v1.3.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/vr-tests_v1.0.0)
+
+Wed, 02 Mar 2022 07:23:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/vr-tests_v1.0.0..@fluentui/vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.56.3 ([PR #21900](https://github.com/microsoft/fluentui/pull/21900) by beachball)
+- Bump @fluentui/react-experiments to v8.4.37 ([PR #21900](https://github.com/microsoft/fluentui/pull/21900) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/vr-tests_v1.0.0)
+
+Tue, 01 Mar 2022 07:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/vr-tests_v1.0.0..@fluentui/vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/font-icons-mdl2 to v8.1.26 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/react to v8.56.2 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/react-experiments to v8.4.36 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/react-hooks to v8.4.0 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/react-icons-mdl2 to v1.2.18 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/vr-tests_v1.0.0)
+
+Thu, 24 Feb 2022 07:29:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/vr-tests_v1.0.0..@fluentui/vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/font-icons-mdl2 to v8.1.25 ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by beachball)
+- Bump @fluentui/react to v8.56.1 ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by beachball)
+- Bump @fluentui/react-experiments to v8.4.35 ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by beachball)
+- Bump @fluentui/react-hooks to v8.3.14 ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by beachball)
+- Bump @fluentui/react-icons-mdl2 to v1.2.17 ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/vr-tests_v1.0.0)
+
+Wed, 23 Feb 2022 07:26:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/vr-tests_v1.0.0..@fluentui/vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.56.0 ([PR #21834](https://github.com/microsoft/fluentui/pull/21834) by beachball)
+- Bump @fluentui/react-experiments to v8.4.34 ([PR #21834](https://github.com/microsoft/fluentui/pull/21834) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/vr-tests_v1.0.0)
 

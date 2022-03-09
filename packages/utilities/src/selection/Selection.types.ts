@@ -6,6 +6,7 @@ export interface IObjectWithKey {
 }
 
 export const SELECTION_CHANGE = 'change';
+export const SELECTION_ITEMS_CHANGE = 'items-change';
 
 /**
  * {@docCategory Selection}
@@ -32,6 +33,9 @@ export interface ISelection<TItem = IObjectWithKey> {
 
   setItems(items: TItem[], shouldClear: boolean): void;
   getItems(): TItem[];
+
+  // Item utility methods.
+  getItemIndex?(key: string): number;
 
   // Read selection methods.
 

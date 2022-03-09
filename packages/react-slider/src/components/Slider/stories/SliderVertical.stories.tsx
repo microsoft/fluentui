@@ -16,7 +16,7 @@ export const Vertical = () => {
 Vertical.parameters = {
   docs: {
     description: {
-      story: `A slider can be rendered vertically where the max value is at the top of the slider.`,
+      story: `A slider can be oriented vertically where the max value is at the top of the slider.`,
     },
   },
 };

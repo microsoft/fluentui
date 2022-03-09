@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Thu, 10 Feb 2022 08:52:19 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 05:17:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-rc.5)
+
+Fri, 04 Mar 2022 05:17:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-rc.4..@fluentui/react-avatar_v9.0.0-rc.5)
+
+### Changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.4 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-rc.4)
+
+Tue, 01 Mar 2022 02:17:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-rc.3..@fluentui/react-avatar_v9.0.0-rc.4)
+
+### Changes
+
+- Bump @fluentui/react-badge to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-rc.3)
+
+Fri, 18 Feb 2022 13:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-rc.1..@fluentui/react-avatar_v9.0.0-rc.3)
+
+### Changes
+
+- Hide Avatar's image if it fails to load, rather than displaying the broken image icon ([PR #21636](https://github.com/microsoft/fluentui/pull/21636) by behowell@microsoft.com)
+- fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- Update Avatar SPEC.md and MIGRATION.md ([PR #21702](https://github.com/microsoft/fluentui/pull/21702) by behowell@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-rc.1)
 

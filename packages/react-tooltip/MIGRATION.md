@@ -6,55 +6,63 @@ This Migration guide is a work in progress and is not yet ready for use.
 
 ## Migration from v8
 
-The converged API does not support many of the custom features of the v8 tooltip. We may need to revisit and add additional features to the converged Tooltip if needed.
+TooltipHost is replaced by Tooltip itself, as the wrapper around the element that should receive a tooltip.
 
 - `Tooltip`
-  - `calloutProps` => Not supported. The arrow's visibility can be controlled using `noArrow`.
-  - `componentRef` => `componentRef`
-  - `delay` => `showDelay` on the TooltipTrigger
-  - `directionalHint` => `position` and `align`
-    - `topLeftEdge` => `position: 'above', align: 'start'`
-    - `topCenter` => `position: 'above'`
-    - `topRightEdge` => `position: 'above', align: 'end'`
+  - `calloutProps`
+    - `isBeakVisible` => `withArrow`
+    - `beakWidth` => Not supported.
+    - `gapSpace` => Not supported.
+    - `doNotLayer` => Not supported. Tooltips are always layered by rendering in a Portal.
+    - `setInitialFocus` => Not supported. Tooltips can't be focused, by design.
+  - `componentRef` => Not supported. Tooltips can be controlled declaratively with props like `visible`, instead of using an imperative API like `componentRef`.
+  - `delay` => `showDelay`
+  - `directionalHint` => `positioning`
+    - `topLeftEdge` => `positioning="above-start"`
+    - `topCenter` => `positioning="above"`
+    - `topRightEdge` => `positioning="above-end"`
     - `topAutoEdge` => Not supported
-    - `bottomLeftEdge` => `position: 'below', align: 'start'`
-    - `bottomCenter` => `position: 'below'`
-    - `bottomRightEdge` => `position: 'below', align: 'end'`
+    - `bottomLeftEdge` => `positioning="below-start"`
+    - `bottomCenter` => `positioning="below"`
+    - `bottomRightEdge` => `positioning="below-end"`
     - `bottomAutoEdge` => Not supported
-    - `leftTopEdge` => `position: 'before', align: 'top'`
-    - `leftCenter` => `position: 'before'`
-    - `leftBottomEdge` => `position: 'before', align: 'bottom'`
-    - `rightTopEdge` => `position: 'after', align: 'top'`
-    - `rightCenter` => `position: 'after'`
-    - `rightBottomEdge` => `position: 'after', align: 'bottom'`
-  - `directionalHintForRTL` => Automatic based on whether the element is in an RTL context
-  - `maxWidth` => Add styling to the Tooltip: `tooltip={{ style: { maxWidth: ... }, children: 'Tooltip Content' }}`
-  - `onRenderContent` => Set the Tooltip's `children` to a custom render function
-- `TooltipHost` => `TooltipTrigger`
-  - `calloutProps` => Not supported
+    - `leftTopEdge` => `positioning="before-top"`
+    - `leftCenter` => `positioning="before"`
+    - `leftBottomEdge` => `positioning="before-bottom"`
+    - `rightTopEdge` => `positioning="after-top"`
+    - `rightCenter` => `positioning="after"`
+    - `rightBottomEdge` => `positioning="after-bottom"`
+  - `directionalHintForRTL` => Automatic based on whether the element is in an RTL context according to `FluentProvider`.
+  - `maxWidth` => Supported only through CSS styling of the `content` slot.
+  - `onRenderContent` => Set the `content` slot to a custom render function.
+- `TooltipHost` => The tooltip itself is the "host".
   - `closeDelay` => `hideDelay`
-  - `hostClassName` => Not needed because there is no element rendered by TooltipTrigger
-  - `onTooltipToggle` => Not supported
-  - `overflowMode` => `onlyIfTruncated`
-    - `TooltipOverflowMode.self` => `onlyIfTruncated="true"`
-    - `TooltipOverflowMode.parent` => `onlyIfTruncated="true"` and set `targetRef` to the parent element
+  - `hostClassName` => Not needed because there is no element rendered inline by Tooltip
+  - `onTooltipToggle` => `onVisibleChange`
+  - `overflowMode` => Not supported. If this behavior is needed, the tooltip's visibility can be controlled using the `visible` prop and `onVisibleChange` event.
 
 ## Migration from v0
 
-- `Tooltip` => `TooltipTrigger`
-  - `content="..."` => `tooltip="..."`
-  - `defaultOpen` => Not supported
-  - `flipBoundary` => Not supported
-  - `mountNode` => Unknown
+The v9 Tooltip swaps the meaning of children between content and trigger. In v0, Tooltip's children is the tooltip content, and its trigger is a prop. In v9, that is swapped: Tooltip's children is the trigger, and its content is a prop.
+
+- `Tooltip`
+  - children => `content`
+  - `trigger` => children
+  - `defaultOpen` => Not supported. The tooltip's visibility can be controlled using the `visible` prop and `onVisibleChange` event.
+  - `mountNode` => Not supported
+  - `open` => `visible`
+  - `onOpenChange` => `onVisibleChange`
+  - `pointing` => `withArrow`
+  - `mouseEnterDelay` => `showDelay`
   - `mouseLeaveDelay` => `hideDelay`
-  - `offset` => `offset`
-  - `onOpenChange` => Not supported
-  - `open` => Not supported
-  - `overflowBoundary` => Not supported
-  - `pointing={false}` => `noArrow={true}`
-  - `popperRef` => Not supported
-  - `position` => `position`
-  - `align` => `align`
-  - `positionFixed` => Not supported
-  - `target` => `targetRef`
-  - `trigger` => The child of the `TooltipTrigger`
+  - `subtle={true}` = `appearance="normal"` (default)
+  - `subtle={false}` => `appearance="inverted"`
+  - Positioning props are now attributes of the `positioning` prop:
+    - `flipBoundary` => `positioning.flipBoundary`
+    - `offset` => `positioning.offset`
+    - `overflowBoundary` => `positioning.overflowBoundary`
+    - `popperRef` => `positioning.popperRef`
+    - `position` => `positioning.position`
+    - `align` => `positioning.align`
+    - `positionFixed` => `positioning.positionFixed`
+    - `target` => `positioning.target`

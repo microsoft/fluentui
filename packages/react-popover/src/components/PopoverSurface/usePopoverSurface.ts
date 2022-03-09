@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
-import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
+import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 
@@ -18,7 +18,6 @@ export const usePopoverSurface_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): PopoverSurfaceState => {
   const contentRef = usePopoverContext_unstable(context => context.contentRef);
-  const open = usePopoverContext_unstable(context => context.open);
   const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const mountNode = usePopoverContext_unstable(context => context.mountNode);
@@ -34,7 +33,6 @@ export const usePopoverSurface_unstable = (
     noArrow,
     size,
     arrowRef,
-    open,
     mountNode,
     components: {
       root: 'div',
@@ -79,13 +77,5 @@ export const usePopoverSurface_unstable = (
     onKeyDownOriginal?.(e);
   };
 
-  const { findFirstFocusable } = useFocusFinders();
-
-  React.useEffect(() => {
-    if (state.open && contentRef.current) {
-      const firstFocusable = findFirstFocusable(contentRef.current);
-      firstFocusable?.focus();
-    }
-  }, [contentRef, findFirstFocusable, state.open]);
   return state;
 };

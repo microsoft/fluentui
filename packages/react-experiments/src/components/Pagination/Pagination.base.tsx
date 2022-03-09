@@ -4,7 +4,7 @@ import { initializeComponentRef, classNamesFunction } from '../../Utilities';
 import { PageNumber } from './PageNumber';
 import { ComboBox } from '@fluentui/react/lib/ComboBox';
 import { TooltipHost } from '@fluentui/react/lib/Tooltip';
-import { DirectionalHint } from '@fluentui/react/lib/common/DirectionalHint';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import type { IPaginationProps, IPaginationString, IPaginationStyleProps, IPaginationStyles } from './Pagination.types';
 import type { IComboBoxOption, IComboBox } from '@fluentui/react/lib/ComboBox';
 import type { IProcessedStyleSet } from '../../Styling';

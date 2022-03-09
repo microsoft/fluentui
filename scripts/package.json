@@ -44,8 +44,6 @@
     "doctoc": "^2.0.1",
     "doctrine": "^3.0.0",
     "dotparser": "^1.0.0",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
     "extract-comments": "^1.0.0",
     "find-free-port": "~2.0.0",
     "graphviz": "^0.0.9",

@@ -25,6 +25,7 @@ storiesOf('Checkbox Converged', module)
   .addStory('disabled', () => <Checkbox disabled label="Disabled" />);
 
 storiesOf('Checkbox Converged', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
@@ -46,19 +47,21 @@ storiesOf('Checkbox Converged', module)
   .addStory('required+label-before', () => (
     <Checkbox required labelPosition="before" label="Required with label before" />
   ))
-  .addStory('circular', () => <Checkbox circular label="Circular" />)
-  .addStory('circular+checked', () => <Checkbox circular checked label="Circular checked" />)
-  .addStory('circular+mixed', () => <Checkbox circular checked="mixed" label="Circular mixed" />)
+  .addStory('circular', () => <Checkbox shape="circular" label="Circular" />)
+  .addStory('circular+checked', () => <Checkbox shape="circular" checked label="Circular checked" />)
+  .addStory('circular+mixed', () => <Checkbox shape="circular" checked="mixed" label="Circular mixed" />)
   //
   // large variants
   //
   .addStory('large', () => <Checkbox size="large" label="Large" />)
   .addStory('large+checked', () => <Checkbox size="large" checked label="Large checked" />)
   .addStory('large+mixed', () => <Checkbox size="large" checked="mixed" label="Large mixed" />)
-  .addStory('large+circular', () => <Checkbox size="large" circular label="Large circular" />)
-  .addStory('large+circular+checked', () => <Checkbox size="large" circular checked label="Large circular checked" />)
+  .addStory('large+circular', () => <Checkbox size="large" shape="circular" label="Large circular" />)
+  .addStory('large+circular+checked', () => (
+    <Checkbox size="large" shape="circular" checked label="Large circular checked" />
+  ))
   .addStory('large+circular+mixed', () => (
-    <Checkbox size="large" circular checked="mixed" label="Large circular mixed" />
+    <Checkbox size="large" shape="circular" checked="mixed" label="Large circular mixed" />
   ))
   .addStory('large+label-wrapping', () => (
     <Checkbox

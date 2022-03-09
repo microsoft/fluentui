@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { create } from '@fluentui/utilities/lib/test';
-import { mount, ReactWrapper } from 'enzyme';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { Checkbox } from './Checkbox';
 import { isConformant } from '../../common/isConformant';
 import { resetIds } from '@fluentui/utilities';
-import type { ReactTestRenderer } from 'react-test-renderer';
 import type { IRefObject } from '@fluentui/utilities';
 import type { ICheckbox } from './Checkbox.types';
 
@@ -27,41 +26,27 @@ const IndeterminateControlledCheckbox: React.FunctionComponent = () => {
 };
 
 describe('Checkbox', () => {
-  let renderedComponent: ReactTestRenderer | undefined;
-  let component: ReactWrapper | undefined;
-
   beforeEach(() => {
     resetIds();
   });
 
   afterEach(() => {
     checkbox = undefined;
-    if (renderedComponent) {
-      renderedComponent.unmount();
-      renderedComponent = undefined;
-    }
-    if (component) {
-      component.unmount();
-      component = undefined;
-    }
   });
 
   it('renders unchecked correctly', () => {
-    renderedComponent = create(<Checkbox label="Standard checkbox" />);
-    const tree = renderedComponent.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Checkbox label="Standard checkbox" />);
+    expect(container).toMatchSnapshot();
   });
 
   it('renders checked correctly', () => {
-    renderedComponent = create(<Checkbox label="Standard checkbox" checked />);
-    const tree = renderedComponent.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Checkbox label="Standard checkbox" checked />);
+    expect(container).toMatchSnapshot();
   });
 
   it('renders indeterminate correctly', () => {
-    renderedComponent = create(<Checkbox label="Standard checkbox" indeterminate />);
-    const tree = renderedComponent.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Checkbox label="Standard checkbox" indeterminate />);
+    expect(container).toMatchSnapshot();
   });
 
   isConformant({
@@ -70,160 +55,150 @@ describe('Checkbox', () => {
   });
 
   it('respects id prop', () => {
-    component = mount(<Checkbox label="Standard checkbox" ariaDescribedBy="descriptionID" id="my-checkbox" />);
-    expect(component.find('input').prop('id')).toEqual('my-checkbox');
+    const { getByRole } = render(
+      <Checkbox label="Standard checkbox" ariaDescribedBy="descriptionID" id="my-checkbox" />,
+    );
+    expect(getByRole('checkbox').id).toEqual('my-checkbox');
   });
 
   it('defaults to unchecked non-indeterminate', () => {
-    component = mount(<Checkbox componentRef={checkboxRef} />);
+    const { getByRole } = render(<Checkbox componentRef={checkboxRef} />);
 
-    const input = component.find('input');
-    expect(input.prop('checked')).toBe(false);
+    expect(getByRole('checkbox').getAttribute('checked')).toBeNull();
     expect(checkbox!.checked).toBe(false);
     expect(checkbox!.indeterminate).toBe(false);
   });
 
   it('respects defaultChecked prop', () => {
-    component = mount(<Checkbox defaultChecked componentRef={checkboxRef} />);
+    const { getByRole } = render(<Checkbox defaultChecked componentRef={checkboxRef} />);
 
-    const input = component.find('input');
-    expect(input.prop('checked')).toBe(true);
+    expect(getByRole('checkbox').getAttribute('checked')).not.toBeNull();
     expect(checkbox!.checked).toBe(true);
   });
 
   it('ignores defaultChecked updates', () => {
-    component = mount(<Checkbox defaultChecked componentRef={checkboxRef} />);
-    component.setProps({ defaultChecked: false });
-    expect(component.find('input').prop('checked')).toBe(true);
+    const firstCheckbox = render(<Checkbox defaultChecked componentRef={checkboxRef} />);
+    firstCheckbox.rerender(<Checkbox defaultChecked={false} componentRef={checkboxRef} />);
+    expect(firstCheckbox.container.querySelector('.is-checked')).toBeTruthy();
     expect(checkbox!.checked).toBe(true);
-    component.unmount();
 
-    component = mount(<Checkbox componentRef={checkboxRef} />);
-    component.setProps({ defaultChecked: true });
-    expect(component.find('input').prop('checked')).toBe(false);
+    const secondCheckbox = render(<Checkbox componentRef={checkboxRef} />);
+    secondCheckbox.rerender(<Checkbox defaultChecked={true} componentRef={checkboxRef} />);
+    expect(secondCheckbox.container.querySelector('.is-checked')).toBeFalsy();
     expect(checkbox!.checked).toBe(false);
   });
 
   it('respects checked prop', () => {
-    component = mount(<Checkbox checked componentRef={checkboxRef} />);
+    const { getByRole } = render(<Checkbox checked componentRef={checkboxRef} />);
 
-    const input = component.find('input');
-    expect(input.prop('checked')).toBe(true);
+    expect(getByRole('checkbox').getAttribute('checked')).not.toBeNull();
     expect(checkbox!.checked).toBe(true);
   });
 
   it('respects checked updates', () => {
-    component = mount(<Checkbox checked componentRef={checkboxRef} />);
+    const { container, rerender } = render(<Checkbox checked componentRef={checkboxRef} />);
+    rerender(<Checkbox checked={false} componentRef={checkboxRef} />);
 
-    component.setProps({ checked: false });
-    expect(component.find('input').prop('checked')).toBe(false);
+    expect(container.querySelector('.is-checked')).toBeFalsy();
     expect(checkbox!.checked).toBe(false);
   });
 
   it('automatically updates on change when uncontrolled', () => {
     const onChange = jest.fn();
-    component = mount(<Checkbox onChange={onChange} componentRef={checkboxRef} />);
+    const { container, getByRole } = render(<Checkbox onChange={onChange} componentRef={checkboxRef} />);
 
-    component.find('input').simulate('change');
+    userEvent.click(getByRole('checkbox'));
 
-    expect(component.find('input').prop('checked')).toBe(true);
+    expect(container.querySelector('.is-checked')).toBeTruthy();
     expect(checkbox!.checked).toBe(true);
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('does not automatically update on change when controlled', () => {
     const onChange = jest.fn();
-    component = mount(<Checkbox checked={false} onChange={onChange} componentRef={checkboxRef} />);
+    const { container, getByRole, rerender } = render(
+      <Checkbox checked={false} onChange={onChange} componentRef={checkboxRef} />,
+    );
 
-    component.find('input').simulate('change');
+    userEvent.click(getByRole('checkbox'));
 
     // doesn't update automatically (but calls onChange)
-    expect(component.find('input').prop('checked')).toBe(false);
+    expect(container.querySelector('.is-checked')).toBeFalsy();
     expect(checkbox!.checked).toBe(false);
     expect(onChange).toHaveBeenCalledTimes(1);
 
     // updates when props update
-    component.setProps({ checked: true });
-    expect(component.find('input').prop('checked')).toBe(true);
+    rerender(<Checkbox checked={true} onChange={onChange} componentRef={checkboxRef} />);
+    expect(container.querySelector('.is-checked')).toBeTruthy();
     expect(checkbox!.checked).toBe(true);
     // doesn't call onChange for props update
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('respects defaultIndeterminate prop', () => {
-    component = mount(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
+    render(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
 
     expect(checkbox!.indeterminate).toEqual(true);
   });
 
   it('respects defaultIndeterminate prop when defaultChecked is true', () => {
-    component = mount(<Checkbox defaultIndeterminate defaultChecked componentRef={checkboxRef} />);
+    render(<Checkbox defaultIndeterminate defaultChecked componentRef={checkboxRef} />);
 
     expect(checkbox!.indeterminate).toEqual(true);
   });
 
   it('ignores defaultIndeterminate updates', () => {
-    component = mount(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
-    component.setProps({ defaultIndeterminate: false });
+    const firstCheckbox = render(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
+    firstCheckbox.rerender(<Checkbox defaultIndeterminate={false} componentRef={checkboxRef} />);
     expect(checkbox!.indeterminate).toEqual(true);
-    component.unmount();
 
-    component = mount(<Checkbox componentRef={checkboxRef} />);
-    component.setProps({ defaultIndeterminate: true });
+    const secondCheckbox = render(<Checkbox componentRef={checkboxRef} />);
+    secondCheckbox.rerender(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
     expect(checkbox!.checked).toBe(false);
     expect(checkbox!.indeterminate).toEqual(false);
   });
 
   it('removes uncontrolled indeterminate state', () => {
-    component = mount(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
+    const { container, getByRole } = render(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
 
-    let input = component.find('input');
-    expect(input.prop('checked')).toBe(false);
+    expect(container.querySelector('.is-checked')).toBeFalsy();
     expect(checkbox!.indeterminate).toEqual(true);
 
-    input.simulate('change');
+    userEvent.click(getByRole('checkbox'));
 
-    // get an updated ReactWrapper for the input (otherwise it would be out of sync)
-    input = component.find('input');
-    expect(input.prop('checked')).toBe(false);
+    expect(container.querySelector('.is-checked')).toBeFalsy();
     expect(checkbox!.indeterminate).toEqual(false);
   });
 
   it('renders with indeterminate when controlled', () => {
-    component = mount(<IndeterminateControlledCheckbox />);
+    const { getByRole } = render(<IndeterminateControlledCheckbox />);
 
-    let input = component.find('input');
     expect(checkbox!.indeterminate).toEqual(true);
 
-    input.simulate('change', { target: { checked: true } });
+    userEvent.click(getByRole('checkbox'));
 
-    input = component.find('input');
     expect(checkbox!.indeterminate).toEqual(false);
   });
 
   it('removes controlled indeterminate', () => {
-    component = mount(<IndeterminateControlledCheckbox />);
+    const { getByRole } = render(<IndeterminateControlledCheckbox />);
 
-    let input = component.find('input');
     expect(checkbox!.indeterminate).toEqual(true);
     expect(checkbox!.checked).toEqual(false);
 
-    input.simulate('change');
+    userEvent.click(getByRole('checkbox'));
 
-    input = component.find('input');
     expect(checkbox!.indeterminate).toEqual(false);
     expect(checkbox!.checked).toEqual(false);
   });
 
   it("doesn't remove controlled indeterminate when no onChange provided", () => {
-    component = mount(<Checkbox indeterminate={true} checked={false} componentRef={checkboxRef} />);
+    const { getByRole } = render(<Checkbox indeterminate={true} checked={false} componentRef={checkboxRef} />);
 
-    let input = component.find('input');
     expect(checkbox!.indeterminate).toEqual(true);
 
-    input.simulate('change');
+    userEvent.click(getByRole('checkbox'));
 
-    input = component.find('input');
     expect(checkbox!.indeterminate).toEqual(true);
   });
 });
