@@ -147,6 +147,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       checkExpandResetStyles,
       {
         display: 'flex',
+        flexShrink:0,
         alignItems: 'center',
         justifyContent: 'center',
         fontSize: fonts.small.fontSize,
