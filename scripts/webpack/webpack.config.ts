@@ -36,10 +36,6 @@ const webpackConfig: webpack.Configuration = {
     'prettier/parser-babel': ['prettierPlugins', 'babel'],
     'prettier/parser-html': ['prettierPlugins', 'html'],
     'prettier/parser-typescript': ['prettierPlugins', 'typescript'],
-    'prop-types': 'PropTypes',
-    react: 'React',
-    'react-dom': 'ReactDOM',
-    'react-dom/server': 'ReactDOMServer',
   },
   node: {
     global: true,
@@ -107,9 +103,6 @@ const webpackConfig: webpack.Configuration = {
         babelStandalone: require('@babel/standalone/package.json').version,
         lodash: require('lodash/package.json').version,
         prettier: require('prettier/package.json').version,
-        propTypes: require('prop-types/package.json').version,
-        react: require('react/package.json').version,
-        reactDOM: require('react-dom/package.json').version,
         fluentUI: require('../package.json').version,
         reactVis: require('react-vis/package.json').version,
       },
@@ -133,6 +126,9 @@ const webpackConfig: webpack.Configuration = {
       src: paths.packageSrc('react-northstar'),
       faker: 'faker/locale/en',
       'react-hook-form': 'react-hook-form/dist/react-hook-form.ie11',
+      ...(__DEV__ && {
+        'react-dom': '@hot-loader/react-dom',
+      }),
     },
     fallback: {
       path: require.resolve('path-browserify'),
