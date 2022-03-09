@@ -11,7 +11,7 @@ import {
   setVirtualParent,
   warnDeprecations,
 } from '../../Utilities';
-import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
+import { registerLayer, getDefaultTarget, unregisterLayer, getLayerHost } from './Layer.notification';
 
 export type ILayerBaseState = {
   hostId?: string;
@@ -90,39 +90,42 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     const doc = getDocument(this._rootRef.current);
     const host = this._getHost();
 
-    if (!doc || !host) {
+    if (!host) {
       return;
     }
 
     // If one was already existing, remove.
     this._removeLayerElement();
 
-    const layerElement = doc.createElement('div');
-    const classNames = this._getClassNames();
+    const layerElement = (host.ownerDocument ?? doc)?.createElement('div');
 
-    layerElement.className = classNames.root!;
-    setPortalAttribute(layerElement);
-    setVirtualParent(layerElement, this._rootRef.current!);
+    if (layerElement) {
+      const classNames = this._getClassNames();
 
-    this.props.insertFirst ? host.insertBefore(layerElement, host.firstChild) : host.appendChild(layerElement);
+      layerElement.className = classNames.root!;
+      setPortalAttribute(layerElement);
+      setVirtualParent(layerElement, this._rootRef.current!);
 
-    this.setState(
-      {
-        hostId,
-        layerElement,
-      },
-      () => {
-        // eslint-disable-next-line deprecation/deprecation
-        const { onLayerDidMount, onLayerMounted } = this.props;
-        if (onLayerMounted) {
-          onLayerMounted();
-        }
+      this.props.insertFirst ? host.insertBefore(layerElement, host.firstChild) : host.appendChild(layerElement);
 
-        if (onLayerDidMount) {
-          onLayerDidMount();
-        }
-      },
-    );
+      this.setState(
+        {
+          hostId,
+          layerElement,
+        },
+        () => {
+          // eslint-disable-next-line deprecation/deprecation
+          const { onLayerDidMount, onLayerMounted } = this.props;
+          if (onLayerMounted) {
+            onLayerMounted();
+          }
+
+          if (onLayerDidMount) {
+            onLayerDidMount();
+          }
+        },
+      );
+    }
   };
 
   private _removeLayerElement(): void {
@@ -156,18 +159,22 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     return classNames;
   }
 
-  private _getHost(): Node | undefined {
+  private _getHost(): Node | null {
     const { hostId } = this.props;
+
     const doc = getDocument(this._rootRef.current);
-    if (!doc) {
-      return undefined;
-    }
 
     if (hostId) {
-      return doc.getElementById(hostId) as Node;
+      const layerHost = getLayerHost(hostId);
+
+      if (layerHost) {
+        return layerHost.rootRef.current ?? null;
+      }
+
+      return doc?.getElementById(hostId) ?? null;
     } else {
       const defaultHostSelector = getDefaultTarget();
-      return defaultHostSelector ? (doc.querySelector(defaultHostSelector) as Node) : doc.body;
+      return (defaultHostSelector ? doc?.querySelector(defaultHostSelector) : doc?.body) ?? null;
     }
   }
 }
@@ -225,7 +232,7 @@ function _getFilteredEvents() {
       'onInput',
       'onInvalid',
       'onSubmit',
-    ].forEach(name => (_filteredEventProps[name] = _onFilterEvent));
+    ].forEach((name) => (_filteredEventProps[name] = _onFilterEvent));
   }
 
   return _filteredEventProps;
