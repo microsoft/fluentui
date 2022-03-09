@@ -8,8 +8,6 @@ const useStyles = makeStyles({
   root: {
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
-    display: 'flex',
-    flexDirection: 'column',
     width: '100%',
     maxWidth: '600px',
     height: 'fit-content',
@@ -22,6 +20,7 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius('8px'),
     ...shorthands.margin('auto'),
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
+    ...shorthands.overflow('auto'),
 
     '@media screen and (max-width: 480px)': {
       maxWidth: '100%',

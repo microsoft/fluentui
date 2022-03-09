@@ -16,7 +16,11 @@ const useStyles = makeStyles({
 
     '@media screen and (max-width: 480px)': {
       ...shorthands.padding('24px', '24px', '24px', '24px'),
-      justifyContent: 'stretch',
+    },
+
+    '@media screen and (max-width: 320px)': {
+      alignItems: 'stretch',
+      flexDirection: 'column',
     },
   },
 });
