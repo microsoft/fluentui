@@ -93,12 +93,13 @@ The dialog is a container which handles styling (border, background etc.) and th
 
 ### API
 
-| Property    | Values                        | Default   | Purpose                                    |
-| ----------- | ----------------------------- | --------- | ------------------------------------------ |
-| type        | `modal`, `non-modal`, `alert` | `modal`   | Dialog variations                          |
-| isOpen      | boolean                       | `false`   | Set to `true` when the dialog is visible   |
-| isDraggable | boolean                       | `false`   | Set to `true` to make the dialog draggable |
-| overlay     | _slot_                        | undefined | Dimmed background of dialog                |
+| Property | Values                        | Default   | Purpose                                  |
+| -------- | ----------------------------- | --------- | ---------------------------------------- |
+| type     | `modal`, `non-modal`, `alert` | `modal`   | Dialog variations                        |
+| open     | boolean                       | `false`   | Set to `true` when the dialog is visible |
+| overlay  | _slot_                        | undefined | Dimmed background of dialog              |
+
+> ⚠️ _Pending issue: `draggable`, the dragging functionality of the dialog is under consideration. This might be excluded from the dialog implementation._
 
 - `type` property (dialog variations):
 
@@ -106,7 +107,7 @@ The dialog is a container which handles styling (border, background etc.) and th
 
   - `non-modal`: When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the rest of the page. This also implies that the tab focus can move outside the dialog when it reaches the last focusable element.
 
-  - `alert`: are a special type of modal dialogs that interrupts the user's workflow to communicate an important message or ask for a decision. These dialogs are not dismissable, neither by escape key or by clicking outside the dialog.
+  - `alert`: is a special type of modal dialogs that interrupts the user's workflow to communicate an important message or ask for a decision. These dialogs are not dismissable, neither by escape key or by clicking outside the dialog.
 
 ### DOM
 
@@ -156,7 +157,7 @@ The footer is a container for the actions of the dialog, which must be not more 
 </div>
 ```
 
-> ⚠️ _Pending issue: should there be any handling for the order of buttons?_
+> ⚠️ _Pending issue: should there be any handling for the order of buttons? This also, includes the focus sequence of the buttons when the dialog has a tertiary button as well._
 
 ## Sample Code
 
@@ -167,7 +168,7 @@ The footer is a container for the actions of the dialog, which must be not more 
   Open Dialog
 </Button>
 
-<Dialog isOpen={isOpen}>
+<Dialog open={isOpen}>
   <DialogHeader>Dialog title</DialogHeader>
   <DialogBody>Dialog's main content</DialogBody>
   <DialogFooter>
