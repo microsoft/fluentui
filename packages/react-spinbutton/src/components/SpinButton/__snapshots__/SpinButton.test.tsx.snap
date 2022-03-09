@@ -4,8 +4,6 @@ exports[`SpinButton renders a default state 1`] = `
 <div>
   <div
     class="fui-SpinButton"
-  >
-    Default SpinButton
-  </div>
+  />
 </div>
 `;

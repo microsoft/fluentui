@@ -97,6 +97,7 @@ storiesOf('Panel', module)
   ));
 
 storiesOf('Panel', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

@@ -1,5 +1,6 @@
 export * from './Button';
-export * from './Button.types';
+// Explicit exports to omit ButtonCommons
+export type { ButtonProps, ButtonSlots, ButtonState } from './Button.types';
 export * from './renderButton';
 export * from './useButton';
-export { buttonClassName, useButtonStyles_unstable } from './useButtonStyles';
+export { buttonClassName, buttonClassNames, useButtonStyles_unstable } from './useButtonStyles';

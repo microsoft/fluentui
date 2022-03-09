@@ -12,7 +12,14 @@ export const Controlled = () => {
   return (
     <>
       <Label htmlFor={id}>Control Slider [ Current Value: {sliderValue} ]</Label>
-      <Slider value={sliderValue} min={20} max={200} onChange={onSliderChange} id={id} />
+      <Slider
+        aria-valuetext={`Value is ${sliderValue}`}
+        value={sliderValue}
+        min={20}
+        max={200}
+        onChange={onSliderChange}
+        id={id}
+      />
       <Button onClick={resetSlider}>Reset</Button>
     </>
   );
@@ -21,8 +28,8 @@ export const Controlled = () => {
 Controlled.parameters = {
   docs: {
     description: {
-      story:
-        'A slider can be a controlled input where the slider value is stored in state and updated with `onChange`.',
+      story: `A slider can be a controlled input where the slider value is stored in state
+      and updated with \`onChange\`. This is also useful for setting custom aria-valuetext`,
     },
   },
 };

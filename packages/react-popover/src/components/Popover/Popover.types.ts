@@ -7,7 +7,7 @@ import type { PortalProps } from '@fluentui/react-portal';
  */
 export type PopoverSize = 'small' | 'medium' | 'large';
 
-export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
+type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
   /**
    * Controls the opening of the Popover
    */
@@ -77,6 +77,10 @@ export type PopoverState = PopoverCommons &
      */
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     /**
+     * Callback to toggle the open state of the Popover
+     */
+    toggleOpen: (e: OpenPopoverEvents) => void;
+    /**
      * Ref of the PopoverTrigger
      */
     triggerRef: React.MutableRefObject<HTMLElement | null>;
@@ -98,6 +102,10 @@ export type PopoverState = PopoverCommons &
     setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
 
     size: NonNullable<PopoverProps['size']>;
+
+    popoverTrigger: React.ReactElement | undefined;
+
+    popoverSurface: React.ReactElement | undefined;
   };
 
 /**

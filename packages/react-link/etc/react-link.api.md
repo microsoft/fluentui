@@ -7,8 +7,8 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Link: ForwardRefComponent<LinkProps>;
@@ -16,20 +16,14 @@ export const Link: ForwardRefComponent<LinkProps>;
 // @public (undocumented)
 export const linkClassName = "fui-Link";
 
-// @public (undocumented)
-export type LinkCommons = {
-    appearance?: 'subtle';
-    disabled?: boolean;
-    disabledFocusable?: boolean;
-    inline?: boolean;
-};
-
+// Warning: (ae-forgotten-export) The symbol "LinkCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
 
 // @public (undocumented)
 export type LinkSlots = {
-    root: IntrinsicSlotProps<'a', 'button'>;
+    root: Slot<'a', 'button'>;
 };
 
 // @public (undocumented)

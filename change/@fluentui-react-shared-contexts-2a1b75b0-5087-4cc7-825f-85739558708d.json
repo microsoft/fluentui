@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Rename component hooks add the suffix _unstable, as their API has not been finalized yet",
-  "packageName": "@fluentui/react-shared-contexts",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

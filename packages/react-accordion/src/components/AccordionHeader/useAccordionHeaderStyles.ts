@@ -24,6 +24,7 @@ const useStyles = makeStyles({
   root: {
     color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.margin(0),
     ...shorthands.borderRadius('2px'),
   },
   rootDisabled: {

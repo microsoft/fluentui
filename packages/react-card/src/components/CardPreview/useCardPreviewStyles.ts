@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { CardPreviewState } from './CardPreview.types';
 
 export const cardPreviewClassName = 'fui-CardPreview';
@@ -9,8 +9,6 @@ export const cardPreviewClassName = 'fui-CardPreview';
 const useStyles = makeStyles({
   root: {
     position: 'relative',
-    // TODO: Explore alternate way of applying padding on parent Card
-    ...shorthands.margin('0', '-12px'),
 
     '> *': {
       display: 'block',

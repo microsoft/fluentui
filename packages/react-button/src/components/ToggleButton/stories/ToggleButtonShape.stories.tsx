@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ToggleButton } from '../../../ToggleButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { ToggleButton } from '../../../ToggleButton';
 
 export const Shape = () => (
   <>
-    <ToggleButton>ToggleButton</ToggleButton>
-    <ToggleButton shape="circular">ToggleButton</ToggleButton>
-    <ToggleButton shape="square">ToggleButton</ToggleButton>
+    <ToggleButton>Rounded</ToggleButton>
+    <ToggleButton shape="circular">Circular</ToggleButton>
+    <ToggleButton shape="square">Square</ToggleButton>
   </>
 );
 

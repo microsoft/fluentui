@@ -1,10 +1,10 @@
-import type { ComponentState, ComponentProps, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
 
 export type ImageSlots = {
-  root: IntrinsicSlotProps<'img'>;
+  root: Slot<'img'>;
 };
 
-export type ImageCommons = {
+type ImageCommons = {
   /**
    * An image can appear with rectangular border.
    */

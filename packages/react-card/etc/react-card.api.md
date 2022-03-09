@@ -7,14 +7,19 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Card: ForwardRefComponent<CardProps>;
 
 // @public (undocumented)
 export const cardClassName = "fui-Card";
+
+// @public (undocumented)
+export type CardCommons = {
+    appearance: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
+};
 
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
@@ -27,8 +32,8 @@ export type CardFooterProps = ComponentProps<CardFooterSlots>;
 
 // @public (undocumented)
 export type CardFooterSlots = {
-    root: IntrinsicSlotProps<'div'>;
-    action?: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
+    action?: Slot<'div'>;
 };
 
 // @public
@@ -41,16 +46,16 @@ export const CardHeader: ForwardRefComponent<CardHeaderProps>;
 export const cardHeaderClassName = "fui-CardHeader";
 
 // @public
-export type CardHeaderProps = ComponentProps<CardHeaderSlots>;
+export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 
 // @public (undocumented)
 export type CardHeaderSlots = {
-    root: IntrinsicSlotProps<'div'>;
-    image: IntrinsicSlotProps<'div'>;
-    content?: IntrinsicSlotProps<'div'>;
-    header: IntrinsicSlotProps<'span'>;
-    description: IntrinsicSlotProps<'span'>;
-    action?: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
+    image: Slot<'div'>;
+    content?: Slot<'div'>;
+    header: Slot<'span'>;
+    description: Slot<'span'>;
+    action?: Slot<'div'>;
 };
 
 // @public
@@ -67,23 +72,23 @@ export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
 
 // @public (undocumented)
 export type CardPreviewSlots = {
-    root: IntrinsicSlotProps<'div'>;
-    logo?: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
+    logo?: Slot<'div'>;
 };
 
 // @public
 export type CardPreviewState = ComponentState<CardPreviewSlots>;
 
 // @public
-export type CardProps = ComponentProps<CardSlots>;
+export type CardProps = ComponentProps<CardSlots> & Partial<CardCommons>;
 
 // @public (undocumented)
 export type CardSlots = {
-    root: IntrinsicSlotProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public
-export type CardState = ComponentState<CardSlots>;
+export type CardState = ComponentState<CardSlots> & CardCommons;
 
 // @public
 export const renderCard_unstable: (state: CardState) => JSX.Element;

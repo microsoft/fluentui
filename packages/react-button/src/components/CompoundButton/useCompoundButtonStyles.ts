@@ -1,33 +1,38 @@
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { buttonSpacing, useButtonStyles_unstable } from '../Button/useButtonStyles';
-import type { CompoundButtonState } from './CompoundButton.types';
+import { useButtonStyles_unstable } from '../Button/useButtonStyles';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { CompoundButtonSlots, CompoundButtonState } from './CompoundButton.types';
 
-export const compoundButtonClassName = 'fui-CompoundButton';
-
-const CompoundButtonClassNames = {
-  secondaryContent: `${compoundButtonClassName}-secondaryContent`,
+export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots> = {
+  root: 'fui-CompoundButton',
+  icon: 'fui-CompoundButton__icon',
+  contentContainer: 'fui-CompoundButton__contentContainer',
+  secondaryContent: 'fui-CompoundButton__secondaryContent',
 };
+
+// TODO temporary export to pass conformance test.
+export const compoundButtonClassName = compoundButtonClassNames.root;
 
 const useRootStyles = makeStyles({
   // Base styles
   base: {
-    ...shorthands.gap(buttonSpacing.large),
+    ...shorthands.gap('12px'),
 
     height: 'auto',
 
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2Hover,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2Pressed,
       },
     },
@@ -38,52 +43,52 @@ const useRootStyles = makeStyles({
     /* No styles */
   },
   primary: {
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForegroundOnBrand,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundOnBrand,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundOnBrand,
       },
     },
   },
   subtle: {
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2BrandPressed,
       },
     },
   },
   transparent: {
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2BrandPressed,
       },
     },
@@ -91,19 +96,19 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.padding(buttonSpacing.medium),
+    ...shorthands.padding('8px', '8px', '10px', '8px'),
 
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
   },
   medium: {
-    ...shorthands.padding(buttonSpacing.large),
+    ...shorthands.padding('14px', '12px', '16px', '12px'),
 
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.padding(buttonSpacing.larger),
+    ...shorthands.padding('18px', '16px', '20px', '16px'),
 
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
@@ -111,18 +116,18 @@ const useRootStyles = makeStyles({
 
   // Disabled styles
   disabled: {
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForegroundDisabled,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundDisabled,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundDisabled,
       },
     },
@@ -132,19 +137,19 @@ const useRootStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    ...shorthands.padding(buttonSpacing.smaller),
+    ...shorthands.padding('4px'),
 
     maxWidth: '48px',
     minWidth: '48px',
   },
   medium: {
-    ...shorthands.padding(buttonSpacing.small),
+    ...shorthands.padding('6px'),
 
     maxWidth: '52px',
     minWidth: '52px',
   },
   large: {
-    ...shorthands.padding(buttonSpacing.medium),
+    ...shorthands.padding('8px'),
 
     maxWidth: '56px',
     minWidth: '56px',
@@ -173,7 +178,6 @@ const useSecondaryContentStyles = makeStyles({
   // Base styles
   base: {
     lineHeight: '100%',
-    marginTop: '4px',
     fontWeight: tokens.fontWeightRegular,
   },
 
@@ -199,7 +203,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   const { appearance, disabled, disabledFocusable, iconOnly, size } = state;
 
   state.root.className = mergeClasses(
-    compoundButtonClassName,
+    compoundButtonClassNames.root,
 
     // Root styles
     rootStyles.base,
@@ -216,15 +220,19 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
     state.root.className,
   );
 
-  if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles.base, state.icon.className);
-  }
+  state.contentContainer.className = mergeClasses(
+    compoundButtonClassNames.contentContainer,
+    contentContainerStyles.base,
+    state.contentContainer.className,
+  );
 
-  state.contentContainer.className = mergeClasses(contentContainerStyles.base, state.contentContainer.className);
+  if (state.icon) {
+    state.icon.className = mergeClasses(compoundButtonClassNames.icon, iconStyles.base, state.icon.className);
+  }
 
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(
-      CompoundButtonClassNames.secondaryContent,
+      compoundButtonClassNames.secondaryContent,
       secondaryContentStyles.base,
       secondaryContentStyles[size],
       state.secondaryContent.className,

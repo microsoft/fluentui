@@ -12,8 +12,9 @@ variables:
       skipComponentGovernanceDetection: false
   - name: release.vnext # Used to scope beachball to release only vnext packages
     value: true
-
-pool: '1ES-Host-Ubuntu'
+  - group: InfoSec-SecurityResults
+  - name: tags
+    value: production,externalfacing
 
 # TODO set schedule once the pipeline is validated after a few manual releases
 # schedules:
@@ -26,57 +27,85 @@ pool: '1ES-Host-Ubuntu'
 #       include:
 #         - master
 
-workspace:
-  clean: all
+jobs:
+  - template: .devops/templates/compliance-job.yml
 
-steps:
-  - template: .devops/templates/tools.yml
+  - job: Release
+    dependsOn: Compliance
+    pool: '1ES-Host-Ubuntu'
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
 
-  - script: |
-      git config user.name "Fluent UI Build"
-      git config user.email "fluentui-internal@service.microsoft.com"
-      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
-    displayName: Authenticate git for pushes
+      - script: |
+          git config user.name "Fluent UI Build"
+          git config user.email "fluentui-internal@service.microsoft.com"
+          git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
+        displayName: Authenticate git for pushes
 
-  - task: Bash@3
-    inputs:
-      filePath: yarn-ci.sh
-    displayName: yarn
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
+        displayName: yarn
 
-  - script: |
-      yarn run:published build --production --no-cache
-    displayName: yarn build
+      # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
+      # https://github.com/microsoft/fluentui/issues/21686
+      - script: |
+          yarn run:published test
+        displayName: yarn test
 
-  - script: |
-      yarn run:published test
-    displayName: yarn test
+      - script: |
+          yarn run:published lint
+        displayName: yarn lint
 
-  - script: |
-      yarn run:published lint
-    displayName: yarn lint
+      - script: |
+          yarn run:published build --production
+        displayName: yarn build
 
-  - script: |
-      yarn publish:beachball -n $(npmToken)
-      git reset --hard origin/master
-    env:
-      GITHUB_PAT: $(githubPAT)
-    displayName: Publish changes and bump versions
+      - script: |
+          yarn publish:beachball -n $(npmToken)
+          git reset --hard origin/master
+        env:
+          GITHUB_PAT: $(githubPAT)
+        displayName: Publish changes and bump versions
 
-  # TODO update release notes script for v9
-  # - script: |
-  #     node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
-  #   displayName: 'Update github release notes'
+      - script: |
+          yarn ts-node scripts/beachball/tagVNext.ts --token $(npmToken)
+        displayName: Tag prelease packages with prerelease tag
+        continueOnError: true
 
-  # This would usually be run automatically (via a pipeline decorator from an extension), but the
-  # thorough cleanup step prevents it from working. So run it manually here.
-  - task: ComponentGovernanceComponentDetection@0
-    displayName: 'Component Detection'
-    inputs:
-      sourceScanPath: $(Agent.BuildDirectory)
-    condition: succeeded()
-    timeoutInMinutes: 5
-    continueOnError: true
+      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest
+        inputs:
+          BuildDropPath: $(System.DefaultWorkingDirectory)
 
-  - template: .devops/templates/cleanup.yml
-    parameters:
-      checkForModifiedFiles: false
+      - task: PublishPipelineArtifact@1
+        displayName: 📒 Publish Manifest
+        inputs:
+          artifactName: SBom-$(System.JobAttempt)
+          targetPath: $(System.DefaultWorkingDirectory)/_manifest
+
+      # Since releases are scoped, this should warn for any packages that were mistakenly not included in scoping
+      - script: |
+          yarn syncpack:list
+        displayName: Check for dependency mismatches
+
+      # TODO update release notes script for v9
+      # - script: |
+      #     node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
+      #   displayName: 'Update github release notes'
+
+      # This would usually be run automatically (via a pipeline decorator from an extension), but the
+      # thorough cleanup step prevents it from working. So run it manually here.
+      - task: ComponentGovernanceComponentDetection@0
+        displayName: 'Component Detection'
+        inputs:
+          sourceScanPath: $(Agent.BuildDirectory)
+        condition: succeeded()
+        timeoutInMinutes: 5
+        continueOnError: true
+
+      - template: .devops/templates/cleanup.yml
+        parameters:
+          checkForModifiedFiles: false

@@ -1,0 +1,49 @@
+{
+  "name": "@fluentui/vr-tests-react-components",
+  "version": "9.0.0-rc.0",
+  "private": true,
+  "description": "Visual regression tests for @fluentui/react-components",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "screener": "just-scripts screener",
+    "screener:build": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
+    "start": "just-scripts dev:storybook"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*"
+  },
+  "dependencies": {
+    "@fluentui/react-accordion": "9.0.0-rc.5",
+    "@fluentui/react-avatar": "9.0.0-rc.5",
+    "@fluentui/react-badge": "9.0.0-rc.5",
+    "@fluentui/react-button": "9.0.0-rc.5",
+    "@fluentui/react-card": "9.0.0-beta.10",
+    "@fluentui/react-checkbox": "9.0.0-beta.10",
+    "@fluentui/react-divider": "9.0.0-rc.5",
+    "@fluentui/react-icons": "^2.0.159-beta.10",
+    "@fluentui/react-image": "9.0.0-rc.5",
+    "@fluentui/react-input": "9.0.0-beta.5",
+    "@fluentui/react-label": "9.0.0-beta.9",
+    "@fluentui/react-link": "9.0.0-rc.5",
+    "@fluentui/react-menu": "9.0.0-rc.5",
+    "@fluentui/react-popover": "9.0.0-rc.5",
+    "@fluentui/react-positioning": "9.0.0-rc.5",
+    "@fluentui/react-provider": "9.0.0-rc.5",
+    "@fluentui/react-slider": "9.0.0-beta.10",
+    "@fluentui/react-switch": "9.0.0-rc.5",
+    "@fluentui/react-tabs": "9.0.0-beta.8",
+    "@fluentui/react-text": "9.0.0-rc.5",
+    "@fluentui/react-theme": "9.0.0-rc.4",
+    "@fluentui/react-tooltip": "9.0.0-rc.5",
+    "@fluentui/scripts": "^1.0.0",
+    "@griffel/react": "1.0.0",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "screener-storybook": "0.22.0",
+    "tslib": "^2.1.0"
+  }
+}

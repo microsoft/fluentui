@@ -6,7 +6,7 @@ import { MenuButton } from '../../../MenuButton';
 export const Block = () => (
   <Menu>
     <MenuTrigger>
-      <MenuButton block>This is a Menu Button</MenuButton>
+      <MenuButton block>Block</MenuButton>
     </MenuTrigger>
 
     <MenuPopover>

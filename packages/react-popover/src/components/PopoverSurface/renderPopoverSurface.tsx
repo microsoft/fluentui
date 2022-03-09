@@ -9,11 +9,6 @@ import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.
 export const renderPopoverSurface_unstable = (state: PopoverSurfaceState) => {
   const { slots, slotProps } = getSlots<PopoverSurfaceSlots>(state);
 
-  // TODO should hidden Popovers be supported ?
-  if (!state.open) {
-    return null;
-  }
-
   return (
     <Portal mountNode={state.mountNode}>
       <slots.root {...slotProps.root}>

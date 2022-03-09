@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { getWindow } from './dom/getWindow';
 
 /**
  * DelayedRender component props.
@@ -43,7 +44,7 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
   constructor(props: IDelayedRenderProps) {
     super(props);
     this.state = {
-      isRendered: false,
+      isRendered: getWindow() === undefined,
     };
   }
 

@@ -1,10 +1,10 @@
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type SpinnerSlots = {
-  root: IntrinsicSlotProps<'div'>;
+  root: Slot<'div'>;
 };
 
-export type SpinnerCommons = {
+type SpinnerCommons = {
   // TODO Add things shared between props and state here
 };
 

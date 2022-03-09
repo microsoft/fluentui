@@ -292,6 +292,8 @@ export class DetailsHeaderBase
               className={classNames.collapseButton}
               iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'}
             />
+            {/* Use this span in addition to aria-label, otherwise VoiceOver ignores the column */}
+            <span className={classNames.accessibleLabel}>{ariaLabelForToggleAllGroupsButton}</span>
           </div>
         ) : null}
         <GroupSpacer indentWidth={indentWidth} role="gridcell" count={groupNestingDepth! - 1} />

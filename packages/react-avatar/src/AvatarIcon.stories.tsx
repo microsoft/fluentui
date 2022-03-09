@@ -1,16 +1,32 @@
 import * as React from 'react';
-import { GuestRegular } from '@fluentui/react-icons';
+import {
+  BriefcaseRegular,
+  CalendarLtrRegular,
+  ConferenceRoomRegular,
+  GuestRegular,
+  PeopleRegular,
+  PeopleTeamRegular,
+  PersonCallRegular,
+} from '@fluentui/react-icons';
 
-import { Avatar, AvatarProps } from './index';
+import { Avatar } from './index';
 
-export const Icon = (props: Partial<AvatarProps>) => {
-  return <Avatar {...props} icon={<GuestRegular />} />;
-};
+export const Icon = () => (
+  <>
+    <Avatar icon={<GuestRegular />} aria-label="Guest" />
+    <Avatar icon={<PeopleRegular />} aria-label="Group" />
+    <Avatar icon={<PeopleTeamRegular />} shape="square" aria-label="Team" />
+    <Avatar icon={<PersonCallRegular />} aria-label="Phone Contact" />
+    <Avatar icon={<CalendarLtrRegular />} aria-label="Meeting" />
+    <Avatar icon={<BriefcaseRegular />} shape="square" aria-label="Tenant" />
+    <Avatar icon={<ConferenceRoomRegular />} shape="square" aria-label="Room" />
+  </>
+);
 
 Icon.parameters = {
   docs: {
     description: {
-      story: 'An avatar can display an icon.',
+      story: 'An avatar can display an icon. The icon will only be shown when there is no image or initials available.',
     },
   },
 };

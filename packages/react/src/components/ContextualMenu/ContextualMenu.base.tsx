@@ -31,7 +31,15 @@ import {
 } from './ContextualMenuItemWrapper/index';
 import { concatStyleSetsWithProps } from '../../Styling';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { useTarget, usePrevious, useAsync, useWarnings, useId, Target } from '@fluentui/react-hooks';
+import {
+  useTarget,
+  usePrevious,
+  useAsync,
+  useWarnings,
+  useId,
+  Target,
+  useIsomorphicLayoutEffect,
+} from '@fluentui/react-hooks';
 import { useResponsiveMode, ResponsiveMode } from '../../ResponsiveMode';
 import { MenuContext } from '../../utilities/MenuContext/index';
 import type {
@@ -157,25 +165,21 @@ function useSubMenuState(
 ) {
   const [expandedMenuItemKey, setExpandedMenuItemKey] = React.useState<string>();
   const [submenuTarget, setSubmenuTarget] = React.useState<HTMLElement>();
-  /** True if the menu was expanded by mouse click OR hover (as opposed to by keyboard) */
-  const [expandedByMouseClick, setExpandedByMouseClick] = React.useState<boolean>();
   const subMenuId = useId(COMPONENT_NAME, id);
 
   const closeSubMenu = React.useCallback(() => {
-    setExpandedByMouseClick(undefined);
     setExpandedMenuItemKey(undefined);
     setSubmenuTarget(undefined);
   }, []);
 
   const openSubMenu = React.useCallback(
-    ({ key: submenuItemKey }: IContextualMenuItem, target: HTMLElement, openedByMouseClick?: boolean) => {
+    ({ key: submenuItemKey }: IContextualMenuItem, target: HTMLElement) => {
       if (expandedMenuItemKey === submenuItemKey) {
         return;
       }
 
       target.focus();
 
-      setExpandedByMouseClick(openedByMouseClick);
       setExpandedMenuItemKey(submenuItemKey);
       setSubmenuTarget(target);
     },
@@ -202,7 +206,6 @@ function useSubMenuState(
         isSubMenu: true,
         id: subMenuId,
         shouldFocusOnMount: true,
-        shouldFocusOnContainer: expandedByMouseClick,
         directionalHint: getRTL(theme) ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
         className,
         gapSpace: 0,
@@ -236,7 +239,7 @@ function useShouldUpdateFocusOnMouseMove({ delayUpdateFocusOnHover, hidden }: IC
 
   const onMenuFocusCapture = React.useCallback(() => {
     if (delayUpdateFocusOnHover) {
-      shouldUpdateFocusOnMouseEvent.current = true;
+      shouldUpdateFocusOnMouseEvent.current = false;
     }
   }, [delayUpdateFocusOnHover]);
 
@@ -260,8 +263,7 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
     [onRestoreFocus],
   );
 
-  // eslint-disable-next-line no-restricted-properties
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!hidden) {
       previousActiveElement.current = targetWindow?.document.activeElement as HTMLElement;
     } else if (previousActiveElement.current) {
@@ -509,6 +511,10 @@ function useMouseHandlers(
   const { target: menuTarget } = props;
 
   const onItemMouseEnterBase = (item: any, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement): void => {
+    if (shouldUpdateFocusOnMouseEvent.current) {
+      gotMouseMove.current = true;
+    }
+
     if (shouldIgnoreMouseEvent()) {
       return;
     }
@@ -866,15 +872,20 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
           renderedItems.push(renderSectionItem(item, itemClassNames, menuClassNames, index, hasCheckmarks, hasIcons));
           break;
         default:
-          const menuItem = renderNormalItem(
-            item,
-            itemClassNames,
-            index,
-            focusableElementIndex,
-            totalItemCount,
-            hasCheckmarks,
-            hasIcons,
-          );
+          const defaultRenderNormalItem = () =>
+            renderNormalItem(
+              item,
+              itemClassNames,
+              index,
+              focusableElementIndex,
+              totalItemCount,
+              hasCheckmarks,
+              hasIcons,
+            ) as JSX.Element;
+
+          const menuItem = props.onRenderContextualMenuItem
+            ? props.onRenderContextualMenuItem(item, defaultRenderNormalItem)
+            : defaultRenderNormalItem();
           renderedItems.push(renderListItem(menuItem, item.key || index, itemClassNames, item.title));
           break;
       }

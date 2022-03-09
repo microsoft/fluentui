@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
 export type AccordionIndex = number | number[];
@@ -8,11 +8,12 @@ export type AccordionToggleEvent<E = HTMLElement> = React.MouseEvent<E> | React.
 
 export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 
-export type AccordionCommons = {
+type AccordionCommons = {
   /**
-   * Indicates if keyboard navigation is available
+   * Indicates if keyboard navigation is available and gives two options,
+   * linear or circular navigation
    */
-  navigable: boolean;
+  navigation?: 'linear' | 'circular';
   /**
    * Indicates if Accordion support multiple Panels opened at the same time
    */
@@ -40,7 +41,7 @@ export type AccordionContextValues = {
 };
 
 export type AccordionSlots = {
-  root: IntrinsicSlotProps<'div'>;
+  root: Slot<'div'>;
 };
 
 export type AccordionToggleData = {

@@ -7,8 +7,8 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Badge: ForwardRefComponent<BadgeProps>;
@@ -16,22 +16,15 @@ export const Badge: ForwardRefComponent<BadgeProps>;
 // @public (undocumented)
 export const badgeClassName = "fui-Badge";
 
+// Warning: (ae-forgotten-export) The symbol "BadgeCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export type BadgeCommons = {
-    appearance: 'filled' | 'ghost' | 'outline' | 'tint';
-    color: 'brand' | 'danger' | 'important' | 'informative' | 'severe' | 'subtle' | 'success' | 'warning';
-    iconPosition: 'before' | 'after';
-    shape: 'circular' | 'rounded' | 'square';
-    size: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
-};
-
-// @public (undocumented)
-export type BadgeProps = ComponentProps<Partial<BadgeSlots>> & Partial<BadgeCommons>;
+export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & Partial<BadgeCommons>;
 
 // @public (undocumented)
 export type BadgeSlots = {
-    root: Omit<IntrinsicSlotProps<'div'>, 'color'>;
-    icon?: IntrinsicSlotProps<'span'>;
+    root: Slot<'div'>;
+    icon?: Slot<'span'>;
 };
 
 // @public (undocumented)
@@ -43,17 +36,8 @@ export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
 // @public (undocumented)
 export const counterBadgeClassName = "fui-CounterBadge";
 
-// @public (undocumented)
-export type CounterBadgeCommons = {
-    overflowCount: number;
-    count: number;
-    showZero: boolean;
-    dot: boolean;
-    shape: 'circular' | 'rounded';
-    appearance: 'filled' | 'ghost';
-    color: Extract<BadgeProps['color'], 'brand' | 'danger' | 'important' | 'informative'>;
-};
-
+// Warning: (ae-forgotten-export) The symbol "CounterBadgeCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape' | 'color'> & Partial<CounterBadgeCommons>;
 
@@ -66,20 +50,16 @@ export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
 // @public (undocumented)
 export const presenceBadgeClassName = "fui-PresenceBadge";
 
+// Warning: (ae-forgotten-export) The symbol "PresenceBadgeCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export type PresenceBadgeCommons = {
-    status: PresenceBadgeStatus;
-    outOfOffice: boolean;
-} & BadgeCommons;
-
-// @public (undocumented)
-export type PresenceBadgeProps = ComponentProps<Partial<Pick<BadgeSlots, 'root'>>> & Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
+export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root'>>, 'color'> & Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
 
 // @public (undocumented)
 export type PresenceBadgeState = PresenceBadgeCommons & ComponentState<BadgeSlots>;
 
 // @public (undocumented)
-export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
+export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb' | 'unknown';
 
 // @public (undocumented)
 export const renderBadge_unstable: (state: BadgeState) => JSX.Element;

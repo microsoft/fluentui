@@ -7,7 +7,7 @@ import { List } from '@fluentui/react';
 /* eslint-disable @fluentui/max-len */
 const items = [
   {
-    thumbnail: '//via.placeholder.com/233x233',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/233x233.png',
     key: 'item-0 sit Lorem culpa cillum',
     name: 'reprehenderit dolore nulla laborum officia',
     description:
@@ -19,7 +19,7 @@ const items = [
     height: 233,
   },
   {
-    thumbnail: '//via.placeholder.com/210x210',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/210x210.png',
     key: 'item-1 dolor elit, sit mollit',
     name: 'consectetur ipsum tempor nostrud commodo',
     description:
@@ -31,7 +31,7 @@ const items = [
     height: 210,
   },
   {
-    thumbnail: '//via.placeholder.com/231x231',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/231x231.png',
     key: 'item-2 dolor reprehenderit id sint',
     name: 'velit nisi aliquip do minim',
     description:
@@ -43,7 +43,7 @@ const items = [
     height: 231,
   },
   {
-    thumbnail: '//via.placeholder.com/158x158',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/158x158.png',
     key: 'item-3 magna Ut nisi dolor',
     name: 'nostrud in reprehenderit eu anim',
     description:
@@ -55,7 +55,7 @@ const items = [
     height: 158,
   },
   {
-    thumbnail: '//via.placeholder.com/165x165',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/165x165.png',
     key: 'item-4 nisi proident, in dolore',
     name: 'nostrud Duis aliquip Lorem sunt',
     description:
@@ -67,7 +67,7 @@ const items = [
     height: 165,
   },
   {
-    thumbnail: '//via.placeholder.com/226x226',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/226x226.png',
     key: 'item-5 mollit elit, ex elit,',
     name: 'nulla ipsum esse Lorem sed',
     description:
@@ -79,7 +79,7 @@ const items = [
     height: 226,
   },
   {
-    thumbnail: '//via.placeholder.com/182x182',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/182x182.png',
     key: 'item-6 ut irure dolor et',
     name: 'nulla consectetur eiusmod velit sed',
     description:
@@ -91,7 +91,7 @@ const items = [
     height: 182,
   },
   {
-    thumbnail: '//via.placeholder.com/206x206',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/206x206.png',
     key: 'item-7 non ad consequat. mollit',
     name: 'sint quis in Excepteur enim',
     description:
@@ -103,7 +103,7 @@ const items = [
     height: 206,
   },
   {
-    thumbnail: '//via.placeholder.com/240x240',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/240x240.png',
     key: 'item-8 enim et aliqua. enim',
     name: 'in commodo dolore ea Duis',
     description:
@@ -115,7 +115,7 @@ const items = [
     height: 240,
   },
   {
-    thumbnail: '//via.placeholder.com/158x158',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/158x158.png',
     key: 'item-9 reprehenderit minim cillum do',
     name: 'dolore et sed dolore sed',
     description:

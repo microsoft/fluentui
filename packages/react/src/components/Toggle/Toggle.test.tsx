@@ -49,7 +49,6 @@ describe('Toggle', () => {
     Component: Toggle,
     displayName: 'Toggle',
     targetComponent: Toggle,
-    skipAsPropTests: false,
   });
 
   it('renders aria-label', () => {

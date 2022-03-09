@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { PopoverContextValue } from '../../popoverContext';
 
 /**
@@ -10,14 +10,14 @@ export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
  * Names of the slots in PopoverSurfaceProps
  */
 export type PopoverSurfaceSlots = {
-  root: IntrinsicSlotProps<'div'>;
+  root: Slot<'div'>;
 };
 
 /**
  * PopoverSurface State
  */
 export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> &
-  Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'appearance' | 'arrowRef'> & {
+  Pick<PopoverContextValue, 'mountNode' | 'noArrow' | 'size' | 'appearance' | 'arrowRef'> & {
     /**
      * CSS class for the arrow element
      */

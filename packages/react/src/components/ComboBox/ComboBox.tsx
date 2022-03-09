@@ -420,6 +420,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
       'onChange',
       'value',
+      'aria-describedby',
+      'aria-labelledby',
     ]);
 
     const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
@@ -544,7 +546,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       label,
       disabled,
       ariaLabel,
-      ariaDescribedBy,
+      ariaDescribedBy = this.props['aria-describedby'],
       required,
       errorMessage,
       buttonIconProps,
@@ -567,6 +569,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       this._hasFocus() && this.props.multiSelect && multiselectAccessibleText
         ? multiselectAccessibleText
         : placeholderProp;
+
+    const labelledBy = [this.props['aria-labelledby'], label && this._id + '-label'].join(' ').trim();
 
     return (
       <div
@@ -594,7 +598,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-autocomplete={this._getAriaAutoCompleteValue()}
           role="combobox"
           readOnly={disabled}
-          aria-labelledby={label && this._id + '-label'}
+          aria-labelledby={labelledBy ? labelledBy : undefined}
           aria-label={ariaLabel && !label ? ariaLabel : undefined}
           aria-describedby={
             errorMessage !== undefined ? mergeAriaAttributeValues(ariaDescribedBy, errorMessageId) : ariaDescribedBy
@@ -2091,6 +2095,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
         // If we get here and we got either and ALT key
         // or meta key, let the event propagate
+        // eslint-disable-next-line deprecation/deprecation
         if (ev.keyCode === KeyCodes.alt || ev.key === 'Meta' /* && isOpen */) {
           return;
         }

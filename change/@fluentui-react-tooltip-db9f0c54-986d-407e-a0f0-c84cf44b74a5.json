@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove outdated boilerplate comment in useTooltip",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

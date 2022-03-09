@@ -1,6 +1,5 @@
 // Utilities
 export {
-  RendererContext,
   RendererProvider,
   __styles,
   createDOMRenderer,
@@ -9,9 +8,7 @@ export {
   mergeClasses,
   renderToStyleElements,
   shorthands,
-  useRenderer,
-} from '@fluentui/react-make-styles';
-export type { RendererProviderProps } from '@fluentui/react-make-styles';
+} from '@griffel/react';
 export {
   FluentProvider,
   fluentProviderClassName,
@@ -32,6 +29,7 @@ export {
   createHighContrastTheme,
   createLightTheme,
   createTeamsDarkTheme,
+  themeToTokensObject,
   teamsDarkTheme,
   teamsHighContrastTheme,
   teamsLightTheme,
@@ -205,14 +203,6 @@ export {
 } from '@fluentui/react-image';
 export type { ImageProps, ImageSlots, ImageState } from '@fluentui/react-image';
 export {
-  Label,
-  labelClassName,
-  renderLabel_unstable,
-  useLabel_unstable,
-  useLabelStyles_unstable,
-} from '@fluentui/react-label';
-export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
-export {
   Link,
   linkClassName,
   renderLink_unstable,
@@ -236,6 +226,7 @@ export {
   MenuListProvider,
   MenuPopover,
   MenuProvider,
+  MenuSplitGroup,
   MenuTrigger,
   MenuTriggerContextProvider,
   menuDividerClassName,
@@ -246,6 +237,7 @@ export {
   menuItemRadioClassName,
   menuListClassName,
   menuPopoverClassName,
+  menuSplitGroupClassName,
   renderMenu_unstable,
   renderMenuDivider_unstable,
   renderMenuGroup_unstable,
@@ -255,6 +247,7 @@ export {
   renderMenuItemRadio_unstable,
   renderMenuList_unstable,
   renderMenuPopover_unstable,
+  renderMenuSplitGroup_unstable,
   renderMenuTrigger_unstable,
   useCheckmarkStyles_unstable,
   useMenu_unstable,
@@ -280,6 +273,8 @@ export {
   useMenuListStyles_unstable,
   useMenuPopover_unstable,
   useMenuPopoverStyles_unstable,
+  useMenuSplitGroup_unstable,
+  useMenuSplitGroupStyles_unstable,
   useMenuTrigger_unstable,
   useMenuTriggerContext_unstable,
 } from '@fluentui/react-menu';
@@ -320,6 +315,9 @@ export type {
   MenuPopoverState,
   MenuProps,
   MenuSlots,
+  MenuSplitGroupProps,
+  MenuSplitGroupSlots,
+  MenuSplitGroupState,
   MenuState,
   MenuTriggerChildProps,
   MenuTriggerProps,
