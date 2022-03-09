@@ -25,6 +25,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Use shadow8 for better contrast of `Tooltip` @jurokapsiar ([#21316](https://github.com/microsoft/fluentui/pull/21316))
 - `FocusTrapZone`: add handleRef method instead of function to prevent calling it on each re-render @annabratseiko ([#21337](https://github.com/microsoft/fluentui/pull/21337))
 - Fix color slot titles in docsite @notandrew ([#21378](https://github.com/microsoft/fluentui/pull/21378))
+- Fixed height of `ChatMessage` bar in compact density @Hirse ([#21521](https://github.com/microsoft/fluentui/pull/21521))
 - Fix `menuButtonBehavior` to not set undefined aria attributes @yuanboxue-amber ([#21610](https://github.com/microsoft/fluentui/pull/21610))
 - Fix memory leak in `createFelaRenderer()` @layershifter ([#21536](https://github.com/microsoft/fluentui/pull/21536))
 - Fix `Dropdown` repositioning when always open and have multilines @chpalac ([#21754](https://github.com/microsoft/fluentui/pull/21754))
