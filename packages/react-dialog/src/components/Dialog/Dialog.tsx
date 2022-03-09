@@ -6,7 +6,8 @@ import type { DialogProps } from './Dialog.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * A Dialog is an elevated Card triggered by a user’s action.
+ * A dialog is a window overlaid on top of the page, and it is used to inform users of critical information,
+ * require a decision or to complete a task.
  */
 export const Dialog: ForwardRefComponent<DialogProps> = React.forwardRef((props, ref) => {
   const state = useDialog_unstable(props, ref);

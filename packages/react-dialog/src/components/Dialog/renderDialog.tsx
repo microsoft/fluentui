@@ -8,11 +8,11 @@ import { Portal } from '@fluentui/react-portal';
  */
 export const renderDialog_unstable = (state: DialogState) => {
   const { slots, slotProps } = getSlots<DialogSlots>(state);
+  const defaultOverlay = state.type !== 'non-modal' && <div aria-hidden="true" className={state.overlayClassName} />;
 
-  // TODO Add handling for non-modal dialogs
   return state.isOpen ? (
     <Portal>
-      {slots.overlay ? <slots.overlay {...slotProps.overlay} /> : <div className={state.overlayClassName} />}
+      {slots.overlay ? <slots.overlay {...slotProps.overlay} /> : defaultOverlay}
       <slots.root {...slotProps.root}>{slotProps.root.children} </slots.root>
     </Portal>
   ) : null;

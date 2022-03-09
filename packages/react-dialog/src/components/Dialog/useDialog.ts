@@ -14,8 +14,10 @@ import { useModalAttributes, useFocusFinders } from '@fluentui/react-tabster';
  */
 export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElement>): DialogState => {
   const { overlay, isOpen = false, type = 'modal' } = props;
+  const isNonModal = type === 'non-modal';
+
   const contentRef = React.useRef(null);
-  const { modalAttributes } = useModalAttributes({ trapFocus: true });
+  const { modalAttributes } = useModalAttributes({ trapFocus: !isNonModal && true });
   const { findFirstFocusable } = useFocusFinders();
 
   React.useEffect(() => {
@@ -25,25 +27,27 @@ export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElemen
     }
   }, [isOpen, contentRef, findFirstFocusable]);
 
-  return {
+  const state: DialogState = {
     isOpen,
     type,
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add slot types here if needed (div is the default)
       root: 'div',
       overlay: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, contentRef),
       role: 'dialog',
-      'aria-modal': true,
+      'aria-modal': !isNonModal && true,
       'aria-label': 'dialog',
       ...modalAttributes,
       ...props,
     }),
     overlay: resolveShorthand(overlay),
   };
+
+  if (type === 'alert') {
+    state.root.role = 'alertdialog';
+  }
+
+  return state;
 };

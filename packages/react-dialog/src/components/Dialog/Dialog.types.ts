@@ -6,9 +6,17 @@ export type DialogSlots = {
 };
 
 type DialogCommons = {
+  /**
+   * Whether the dialog is open or closed.
+   * @defaultvalue undefined
+   */
   isOpen: boolean;
+
+  /**
+   * A dialog can be a modal, non-modal or alert dialog.
+   * @defaultvalue 'modal'
+   */
   type?: 'alert' | 'modal' | 'non-modal';
-  // TODO Add things shared between props and state here
 };
 
 /**
