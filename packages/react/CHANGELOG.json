@@ -2,6 +2,75 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 09 Mar 2022 07:37:29 GMT",
+      "tag": "@fluentui/react_v8.60.1",
+      "version": "8.60.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "cfa75c75ef4b1ae2b968e3cd17bb1a5e9ab23f82",
+            "comment": "Update styling in ContextualMenu to allow primary text to remain visible on overflow"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "2b63eed95dae656f1b3df3bd316c4f91d793cba5",
+            "comment": "Add onClick logic to container div so that it focuses back on item when you hit the item limit."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.2",
+            "commit": "2b63eed95dae656f1b3df3bd316c4f91d793cba5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.2.2",
+            "commit": "2b63eed95dae656f1b3df3bd316c4f91d793cba5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.5.2",
+            "commit": "2b63eed95dae656f1b3df3bd316c4f91d793cba5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.5.1",
+            "commit": "2b63eed95dae656f1b3df3bd316c4f91d793cba5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.6.2",
+            "commit": "2b63eed95dae656f1b3df3bd316c4f91d793cba5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.1",
+            "commit": "2b63eed95dae656f1b3df3bd316c4f91d793cba5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.7.0",
+            "commit": "2b63eed95dae656f1b3df3bd316c4f91d793cba5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.0.34",
+            "commit": "2b63eed95dae656f1b3df3bd316c4f91d793cba5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 08 Mar 2022 23:29:58 GMT",
       "tag": "@fluentui/react_v8.60.0",
       "version": "8.60.0",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Thu, 03 Mar 2022 07:24:25 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Mar 2022 07:37:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.7.0)
+
+Wed, 09 Mar 2022 07:37:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.6.0..@fluentui/utilities_v8.7.0)
+
+### Minor changes
+
+- Enhance selection to support better micro-management ([PR #21970](https://github.com/microsoft/fluentui/pull/21970) by tmichon@microsoft.com)
 
 ## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.6.0)
 

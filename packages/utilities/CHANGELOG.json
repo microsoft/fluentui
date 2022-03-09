@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Wed, 09 Mar 2022 07:37:29 GMT",
+      "tag": "@fluentui/utilities_v8.7.0",
+      "version": "8.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "fb377e0b4400b99499d69e9ca956fd433f3e2804",
+            "comment": "Enhance selection to support better micro-management"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 08 Mar 2022 07:35:11 GMT",
       "tag": "@fluentui/utilities_v8.6.0",
       "version": "8.6.0",

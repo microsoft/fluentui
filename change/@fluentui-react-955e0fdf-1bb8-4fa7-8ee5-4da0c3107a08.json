@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update styling in ContextualMenu to allow primary text to remain visible on overflow",
-  "packageName": "@fluentui/react",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}
