@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Ensure Layer uses the specific element for LayerHost, for advanced projection scenarios (#21812)",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
