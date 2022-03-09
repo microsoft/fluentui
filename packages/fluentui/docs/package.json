@@ -22,6 +22,7 @@
     "@fluentui/react-telemetry": "^0.60.1",
     "@fluentui/styles": "^0.60.1",
     "@mdx-js/react": "^1.5.5",
+    "@hot-loader/react-dom": "16.14.0",
     "@types/semver": "^5.5.0",
     "classnames": "^2.2.6",
     "color": "^3.1.0",
