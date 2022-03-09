@@ -594,7 +594,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
    * Resets focus to last element in wrapper div if clicking back into Picker that has hit item limit
    */
   protected onWrapperClick = (ev: React.MouseEvent<HTMLInputElement>): void => {
-    // Reset focus to last item if the input is removed
     if (!this.canAddItems()) {
       this.resetFocus(this.state.items.length - 1);
     }
