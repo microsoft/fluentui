@@ -147,7 +147,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       checkExpandResetStyles,
       {
         display: 'flex',
-        flexShrink:0,
+        flexShrink: 0,
         alignItems: 'center',
         justifyContent: 'center',
         fontSize: fonts.small.fontSize,
@@ -190,6 +190,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         outline: 0,
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis',
+        overflow: 'hidden',
       },
     ],
     dropIcon: [
