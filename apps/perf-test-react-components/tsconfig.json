@@ -13,7 +13,7 @@
     "preserveConstEnums": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "lib": ["es6", "dom"],
+    "lib": ["es2016", "dom"],
     "types": ["webpack-env"],
     "skipLibCheck": true
   },
