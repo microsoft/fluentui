@@ -3,11 +3,17 @@ import { FluentProvider } from '@fluentui/react-provider';
 import * as React from 'react';
 
 import { useFluentTheme } from '../knobs/useFluentTheme';
+import { useTextDirection } from '../knobs/useTextDirection';
 
 const ProviderWrapper: React.FunctionComponent = props => {
   const { theme } = useFluentTheme();
+  const { direction } = useTextDirection();
 
-  return <FluentProvider theme={theme}>{props.children}</FluentProvider>;
+  return (
+    <FluentProvider theme={theme} dir={direction}>
+      {props.children}
+    </FluentProvider>
+  );
 };
 
 export const withFluentProvider = makeDecorator({
