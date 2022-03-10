@@ -10,7 +10,7 @@ type DialogCommons = {
    * Whether the dialog is open or closed.
    * @defaultvalue undefined
    */
-  isOpen: boolean;
+  open: boolean;
 
   /**
    * A dialog can be a modal, non-modal or alert dialog.

@@ -16,8 +16,8 @@ export const Default = (props: Partial<DialogProps>) => {
         Open Dialog
       </Button>
 
-      <Dialog isOpen={isOpen} {...props}>
-        <DialogHeader>Dialog title</DialogHeader>
+      <Dialog aria-labelledby="dialog-title" open={isOpen} {...props}>
+        <DialogHeader id="dialog-title">Dialog title</DialogHeader>
         <DialogBody>Do you want to send this message without a subject?</DialogBody>
         <DialogFooter>
           <Button appearance="primary" onClick={() => setIsOpen(false)}>

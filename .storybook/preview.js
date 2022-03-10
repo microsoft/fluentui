@@ -8,7 +8,7 @@ export const decorators = [withFluentProvider, withStrictMode];
 
 /** @type {import('@storybook/react').Parameters} */
 export const parameters = {
-  viewMode: 'docs',
+  // viewMode: 'docs',
   controls: {
     disable: true,
     expanded: true,

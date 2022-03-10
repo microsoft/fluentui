@@ -13,7 +13,7 @@ import { useModalAttributes, useFocusFinders } from '@fluentui/react-tabster';
  * @param ref - reference to root HTMLElement of Dialog
  */
 export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElement>): DialogState => {
-  const { overlay, isOpen = false, type = 'modal' } = props;
+  const { overlay, open = false, type = 'modal' } = props;
   const isNonModal = type === 'non-modal';
 
   const contentRef = React.useRef(null);
@@ -21,24 +21,25 @@ export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElemen
   const { findFirstFocusable } = useFocusFinders();
 
   React.useEffect(() => {
-    if (isOpen && contentRef.current) {
+    if (open && contentRef.current) {
       const firstFocusable = findFirstFocusable(contentRef.current);
       firstFocusable?.focus();
     }
-  }, [isOpen, contentRef, findFirstFocusable]);
+  }, [open, contentRef, findFirstFocusable]);
 
   const state: DialogState = {
-    isOpen,
+    open,
     type,
     components: {
       root: 'div',
       overlay: 'div',
     },
+
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, contentRef),
       role: 'dialog',
       'aria-modal': !isNonModal && true,
-      'aria-label': 'dialog',
+      'aria-label': props['aria-labelledby'],
       ...modalAttributes,
       ...props,
     }),

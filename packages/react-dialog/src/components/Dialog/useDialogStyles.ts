@@ -21,6 +21,7 @@ const useStyles = makeStyles({
     ...shorthands.margin('auto'),
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
     ...shorthands.overflow('auto'),
+    zIndex: 1300, //TODO: hardcoded z-index value might need to change
 
     '@media screen and (max-width: 480px)': {
       maxWidth: '100%',
@@ -35,6 +36,7 @@ const useStyles = makeStyles({
     inset: '0px',
     backgroundColor: '#000000', //TODO: change value to a theme token
     opacity: '0.8',
+    zIndex: 1,
   },
 });
 

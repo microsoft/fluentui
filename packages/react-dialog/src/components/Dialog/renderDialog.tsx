@@ -10,7 +10,7 @@ export const renderDialog_unstable = (state: DialogState) => {
   const { slots, slotProps } = getSlots<DialogSlots>(state);
   const defaultOverlay = state.type !== 'non-modal' && <div aria-hidden="true" className={state.overlayClassName} />;
 
-  return state.isOpen ? (
+  return state.open ? (
     <Portal>
       {slots.overlay ? <slots.overlay {...slotProps.overlay} /> : defaultOverlay}
       <slots.root {...slotProps.root}>{slotProps.root.children} </slots.root>
