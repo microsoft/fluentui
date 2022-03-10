@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "These changes contains the support of Stream Playlist icon",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "yasi@microsoft.com",
+  "dependentChangeType": "none"
+}

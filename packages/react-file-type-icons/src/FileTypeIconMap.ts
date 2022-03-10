@@ -419,6 +419,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
   },
   sharedfolder: {},
+  playlist: {},
   sway: {},
   sysfile: {
     extensions: [
