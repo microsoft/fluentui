@@ -1,5 +1,5 @@
 {
   "copyTo": {
-    "unstable": ["./src/unstable/package.json"]
+    "unstable/package.json": "./src/unstable/package.json__tmpl__"
   }
 }

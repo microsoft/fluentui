@@ -5,7 +5,6 @@ exports[`AccordionHeader renders a default state 1`] = `
   className="fui-AccordionHeader"
 >
   <button
-    aria-disabled={false}
     aria-expanded={false}
     className=""
     disabled={false}

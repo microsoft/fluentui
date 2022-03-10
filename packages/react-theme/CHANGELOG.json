@@ -2,6 +2,36 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Fri, 04 Mar 2022 05:17:31 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Feb 2022 13:35:36 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Feb 2022 08:51:02 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-rc.1",
       "version": "9.0.0-rc.1",

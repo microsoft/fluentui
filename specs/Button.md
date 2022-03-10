@@ -951,7 +951,7 @@ colorDisabled: string
 colorFocus: string
 colorHover: string
 contentFontSize: string
-contentFontWeight: FontWeightProperty
+contentFontWeight: Property.FontWeight
 contentLineHeight: string
 height: string
 loaderBorderSize: string

@@ -67,7 +67,7 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
     return this.props.tabs[this.state.currentTabIndex];
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const { history, location, tabs } = this.props;
     const tab = location.pathname.match(this.tabRegex)[0];
     const tabIndex = this.getTabIndexOrRedirectToDefault(tab, tabs);
@@ -80,7 +80,7 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
     }
   }
 
-  componentWillReceiveProps({ info, location, tabs }) {
+  UNSAFE_componentWillReceiveProps({ info, location, tabs }) {
     const tab = location.pathname.match(this.tabRegex)[0];
     const tabIndex = this.getTabIndexOrRedirectToDefault(tab, tabs);
     this.setState({ currentTabIndex: tabIndex });

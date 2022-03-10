@@ -29,12 +29,13 @@ jobs:
         displayName: yarn (install packages)
 
       - script: |
-          yarn checkchange
-        displayName: verify change files
+          yarn nx workspace-lint
+          yarn nx run @fluentui/nx-workspace-tools:check-graph
+        displayName: NX workspace lint
 
       - script: |
-          yarn nx workspace-lint
-        displayName: nx:workspace-lint
+          yarn check:installed-dependencies-versions
+        displayName: 'check packages: installed dependencies versions'
 
       - script: |
           if [[ -n "$(targetBranch)" ]]; then
@@ -103,14 +104,19 @@ jobs:
           # This MUST have a trailing slash, or the links to PR deploy site assets won't work
           githubTargetLink: $(deployUrl)/
 
-      # only run e2e tests when converged storybook is published by scoping to the converged suite package
+      # only run e2e tests when the appropriate storybook is published by scoping to relevant packages
       - script: |
           yarn e2e $(sinceArg) --scope @fluentui/react-components
-        displayName: Cypress E2E tests
+        displayName: v9 Cypress E2E tests
+
+      - script: |
+          yarn e2e $(sinceArg) --scope @fluentui/react
+        displayName: v8 Cypress E2E tests
 
       - template: .devops/templates/cleanup.yml
 
   - job: ScreenerNorthstar
+    displayName: Screener @fluentui/react-northstar
     workspace:
       clean: all
     steps:
@@ -138,7 +144,7 @@ jobs:
           storage: $(azureStorage)
 
       - script: yarn workspace @fluentui/docs vr:test
-        displayName: start FUI N* VR Test
+        displayName: Start @fluentui/react-northstar VR Test
         env:
           SCREENER_ENDPOINT: $(screenerApiUri)
           SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
@@ -147,6 +153,7 @@ jobs:
       - template: .devops/templates/cleanup.yml
 
   - job: Screener
+    displayName: Screener @fluentui/react
     workspace:
       clean: all
     steps:
@@ -174,8 +181,47 @@ jobs:
       # Don't use lage here because it eats long output for reasons that are hard to debug
       - script: |
           yarn workspace @fluentui/vr-tests screener
-        displayName: run VR Test
+        displayName: Start @fluentui/react VR Test
         env:
+          SCREENER_ENDPOINT: $(screenerApiUri)
+          SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
+          SCREENER_API_KEY: $(screener.key)
+
+      - template: .devops/templates/cleanup.yml
+
+  - job: ScreenerVNext
+    displayName: Screener @fluentui/react-components
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
+
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
+        displayName: yarn
+
+      - script: |
+          yarn workspace @fluentui/vr-tests-react-components screener:build
+        displayName: build vr-tests-react-components storybook
+
+      - task: AzureUpload@2
+        displayName: Upload @fluentui/react-components VR test site
+        inputs:
+          azureSubscription: $(azureSubscription)
+          BlobPrefix: $(deployBasePath)/react-components-screener
+          CacheControl: 'public, max-age=600000'
+          ContainerName: '$web'
+          SourcePath: 'apps/vr-tests-react-components/dist/storybook'
+          storage: $(azureStorage)
+
+      # Don't use lage here because it eats long output for reasons that are hard to debug
+      - script: |
+          yarn workspace @fluentui/vr-tests-react-components screener
+        displayName: Start @fluentui/react-components VR Test
+        env:
+          SCREENER_ENDPOINT: $(screenerApiUri)
+          SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
           SCREENER_API_KEY: $(screener.key)
 
       - template: .devops/templates/cleanup.yml

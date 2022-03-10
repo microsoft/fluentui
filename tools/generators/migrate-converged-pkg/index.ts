@@ -12,6 +12,7 @@ import {
   writeJson,
   updateProjectConfiguration,
   serializeJson,
+  generateFiles,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
@@ -264,10 +265,6 @@ const templates = {
     },
   },
   e2e: {
-    support: stripIndents`
-    // workaround for https://github.com/cypress-io/cypress/issues/8599
-    import '@fluentui/scripts/cypress/support';
-    `,
     tsconfig: {
       extends: '../tsconfig.json',
       compilerOptions: {
@@ -705,7 +702,8 @@ function setupE2E(tree: Tree, options: NormalizedSchema) {
 
   writeJson<TsConfig>(tree, options.paths.e2e.tsconfig, templates.e2e.tsconfig);
 
-  tree.write(options.paths.e2e.support, templates.e2e.support);
+  // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  generateFiles(tree, joinPathFragments(__dirname, 'files', 'e2e'), options.paths.e2e.rootFolder, { tmpl: '' });
 
   updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
     json.references?.push({

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/example-data",
-  "version": "8.3.0",
+  "version": "8.4.0",
   "description": "Data generators for Fluent UI React examples.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,5 +25,12 @@
   },
   "dependencies": {
     "tslib": "^2.1.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

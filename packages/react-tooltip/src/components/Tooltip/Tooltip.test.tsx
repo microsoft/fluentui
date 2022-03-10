@@ -33,9 +33,6 @@ describe('Tooltip', () => {
       'component-has-root-ref',
       'component-handles-classname',
       'component-has-static-classname',
-      'as-renders-fc',
-      'as-passes-as-value',
-      'as-renders-html',
     ],
   });
 
@@ -126,7 +123,6 @@ describe('Tooltip', () => {
     );
 
     const target = result.getByRole('button');
-    expect(target.getAttribute('aria-label')).toBe(null);
     expect(target.getAttribute('aria-labelledby')).toBe('test-labelledby');
   });
 

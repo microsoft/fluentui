@@ -1,16 +1,22 @@
 import * as React from 'react';
-
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-import { SplitButton, MenuButtonProps } from '../../../index'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
+import { Tooltip } from '@fluentui/react-tooltip';
+import { SplitButton, MenuButtonProps } from '../../../index';
 
 export const SizeLarge = () => {
+  const [primaryActionButtonRef, setPrimaryActionButtonRef] = React.useState<
+    HTMLButtonElement | HTMLAnchorElement | null
+  >(null);
+
   return (
     <>
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} size="large" />
+            <SplitButton menuButton={triggerProps} size="large">
+              Large
+            </SplitButton>
           )}
         </MenuTrigger>
 
@@ -25,12 +31,9 @@ export const SizeLarge = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton
-              menuButton={triggerProps}
-              primaryActionButton={'This is a split button'}
-              icon={<CalendarMonthRegular />}
-              size="large"
-            />
+            <SplitButton menuButton={triggerProps} icon={<CalendarMonthRegular />} size="large">
+              Large with calendar icon
+            </SplitButton>
           )}
         </MenuTrigger>
 
@@ -45,7 +48,18 @@ export const SizeLarge = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} size="large" />
+            <Tooltip
+              content="Large with calendar icon only"
+              positioning={{ target: primaryActionButtonRef }}
+              relationship="label"
+            >
+              <SplitButton
+                menuButton={triggerProps}
+                primaryActionButton={{ ref: setPrimaryActionButtonRef }}
+                icon={<CalendarMonthRegular />}
+                size="large"
+              />
+            </Tooltip>
           )}
         </MenuTrigger>
 

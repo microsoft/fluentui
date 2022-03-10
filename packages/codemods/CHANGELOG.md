@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Fri, 07 Jan 2022 07:27:46 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Mar 2022 07:35:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.0)
+
+Tue, 08 Mar 2022 07:35:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.3.2..@fluentui/codemods_v8.4.0)
+
+### Minor changes
+
+- Update React dependency to 16.14 ([PR #21769](https://github.com/microsoft/fluentui/pull/21769) by elcraig@microsoft.com)
 
 ## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.3.2)
 

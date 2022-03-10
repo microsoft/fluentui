@@ -17,9 +17,11 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
     tabBehavior: 'limitedTrapFocus',
   });
 
+  const { appearance = 'filled' } = props;
   return {
-    components: { root: 'div' },
+    appearance,
 
+    components: { root: 'div' },
     root: getNativeElementProps(props.as || 'div', {
       ref,
       role: 'group',

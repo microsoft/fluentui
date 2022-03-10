@@ -931,13 +931,13 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   private _onMenuClick = (
     ev: React.MouseEvent<HTMLDivElement | HTMLButtonElement | HTMLAnchorElement | HTMLSpanElement>,
   ) => {
-    const { onMenuClick } = this.props;
+    const { onMenuClick, menuProps } = this.props;
     if (onMenuClick) {
       onMenuClick(ev, this.props);
     }
 
     if (!ev.defaultPrevented) {
-      this._onToggleMenu(false);
+      this._onToggleMenu(menuProps?.shouldFocusOnContainer || false);
       ev.preventDefault();
       ev.stopPropagation();
     }

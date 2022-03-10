@@ -6,6 +6,9 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
  * Slot properties for Tooltip
  */
 export type TooltipSlots = {
+  /**
+   * The text or JSX content of the tooltip.
+   */
   content: NonNullable<Slot<'div'>>;
 };
 
@@ -13,6 +16,17 @@ export type TooltipSlots = {
  * Properties and state for Tooltip
  */
 type TooltipCommons = {
+  /**
+   * (Required) Specifies whether this tooltip is acting as the description or label of its trigger element.
+   *
+   * * `label` - The tooltip sets the trigger's aria-label or aria-labelledby attribute. This is useful for buttons
+   *    displaying only an icon, for example.
+   * * `description` - The tooltip sets the trigger's aria-description or aria-describedby attribute.
+   * * `inaccessible` - No aria attributes are set on the trigger. This makes the tooltip's content inaccessible to
+   *   screen readers, and should only be used if the tooltip's text is available by some other means.
+   */
+  relationship: 'label' | 'description' | 'inaccessible';
+
   /**
    * The tooltip's visual appearance.
    * * `normal` - Uses the theme's background and text colors.
@@ -55,17 +69,6 @@ type TooltipCommons = {
   ) => void;
 
   /**
-   * (Required) Specifies whether this tooltip is acting as the description or label of its trigger element.
-   *
-   * * `label` - The tooltip sets the trigger's aria-label or aria-labelledby attribute. This is useful for buttons
-   *    displaying only an icon, for example.
-   * * `description` - The tooltip sets the trigger's aria-description or aria-describedby attribute.
-   * * `inaccessible` - No aria attributes are set on the trigger. This makes the tooltip's content inaccessible to
-   *   screen readers, and should only be used if the tooltip's text is available by some other means.
-   */
-  relationship: 'label' | 'description' | 'inaccessible';
-
-  /**
    * Delay before the tooltip is shown, in milliseconds.
    *
    * @defaultvalue 250
@@ -103,6 +106,12 @@ export type OnVisibleChangeData = {
 export type TooltipProps = ComponentProps<TooltipSlots> &
   Partial<Omit<TooltipCommons, 'relationship'>> &
   Pick<TooltipCommons, 'relationship'> & {
+    /**
+     * The tooltip can have a single JSX child, or a render function that accepts TooltipTriggerProps.
+     *
+     * If no child is provided, the tooltip's target must be set with the `positioning` prop, and its
+     * visibility must be controlled with the `visible` prop.
+     */
     children?:
       | (React.ReactElement & { ref?: React.Ref<unknown> })
       | ((props: TooltipTriggerProps) => React.ReactElement | null)
