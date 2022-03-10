@@ -37,7 +37,7 @@ Usage of the fonts and icons referenced in Fluent UI React is subject to the ter
 
 ## Changelog
 
-You can view the complete list of additions, fixes, and changes on the CHANGELOG.md files for each package.
+You can view the complete list of additions, fixes, and changes in the CHANGELOG.md file for each package.
 
 ## Looking for Office UI Fabric React?
 
