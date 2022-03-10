@@ -1,0 +1,156 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Upgrading/from v8/Planning an upgrade" />
+
+# Upgrade Planning
+
+## Part 1. Inventory how your application uses Fluent
+
+In order to decide how to best upgrade your application, examine your code to answer the following questions:
+
+1. What Fluent components are used?
+
+2. How many times is each component used in the code?
+
+3. Is most usage basic or advanced?
+
+   Basic usage would use passing typical props and using callbacks.
+   You might have some props bound to useState or to state management like flux, redux, or MobX.
+
+```tsx
+<Button primary onClick={onGreeting}>
+  Hello {name}
+</Button>
+```
+
+More advanced usage includes,
+
+- styles objects to customize multiple parts of the component.
+- renderprops callbacks that render customized parts of the component.
+- refs to access underlying HTML elements or make imperative calls.
+- deep theme customizations relying on knowledge of HTML element structure.
+- wrappers around Fluent components that customize or augment behvaior.
+
+4.  How many of your unit and integration tests depend on Fluent v8?
+5.  How ready is your application code and architecture?
+
+    No judement here - we all have deadlines. If you application code is little messy and the visual, business logic, and data access layers are as separated as you like, it can make upgrade more difficult.
+
+6.  What constraints do you have during upgrade?
+
+    - Can you accept some increased bundle size with v8 and v9 side-by-side?
+    - Is it OK if there are some visual style inconsistencies? (i.e. some components look like v8 and some look like v9)
+    - Can you ship and manage v8 and v9 side-by-side in production for a period of time?
+    - What deadline, time and effort constraints do you have?
+
+## Part 2. Choose how to approach upgrade
+
+There are several approach choices to make when upgrading that are influenced by how your application uses Fluent.
+
+- **Horizontal vs. Vertical**
+
+  You could upgrade one component type across your entire application (i.e. horizontal), or you could upgrade all the components on one page of your application (i.e. vertical).
+
+- **Core vs. Surface**
+
+  You could upgrade a core part of your application that is used everywhere or central to your application, or you could upgrade an auxillary part of your application that is used infrequently or is non-critical if it doesn't work or render quite right.
+
+- **Incremental vs. All-at-once**
+
+  You could upgrade everything at once or you could upgrade some component or pages. You might want to upgrade the straightforward cases first and leave the complex cases for later.
+
+- **Ship vs. Flight**
+
+  You could upgrade and ship, or you can flight the upgrade as a opt-in 'try it out' experience for a select set users.
+
+## Part 3. Choose how to implement upgrade
+
+There are also several implementation choices to make based on how your application uses Fluent.
+
+- **Modify code vs. Shim**
+
+  You could update your code from v8 to v9, or you could replace each usages of a v8 component with a shim.
+
+  Shims provide the v8 props but render a v9 component. They cover as many scenarios as possible, but cannot automatically handle cases like renderprops callsback that render v8 children, custom styling, and some ref usages. Shims do their best, but are not tested like v8 and v9 components.
+
+- **Manual vs. Code-mod**
+
+  You can update your code by hand, or you could try creating and running a code mod to modify your code for you.
+
+  The code mods in this repository leverage jscodeshift to allow for updating Typscript and TSX code. The inspection is limited to static, syntatical code analysis.
+
+  Because everyone calls Fluent components a little differently, you may need to author your own code mod to cover your cases. We will try and provide a good set of helper functions to make common modifications easy to assemble.
+
+- **v9 vs. v8 styling**
+
+  You can use both the v8 ThemeProvider and the v9 FluentProvider side-by-side and allow both styles to appear on your page.
+
+  You can choose to make your v8 components look more like v9 by applying a v8 theme that uses the colors, fonts, and shadows of v9.
+
+  You can choose to make your v9 components look more like v8 by applying a v9 theme that uses the colors, fonts, and shadows of v8.
+
+  If you want to make everything look exactly like v8 or exactly like v9, you can apply custom styles/classNames to components to get a pixel-perfect match.
+
+### Recommendations
+
+> Our default recommendation is:
+> Upgrade horizontally. Choose one component type to focus on at a time.
+> Prefer to upgrade a core component. You will want to discover any blocking issues early and get meaningful feedback on a frequently used component.
+> Flight a subset of usages before shipping to production. It is valuable to be able to A/B compare for debugging and to give users a mitigation in case of problems.
+
+**Small projects**
+If you have a small project and can commit the effort, we recommend upgrading everything and modifying the code directly.
+
+This gives you the maximum benefit of rendering performance, build time style bundling, and tree-shaking out v8 components that are no longer used. You'll be able to refactor any advanced usage cases in the newer v9 paradigms and end up with cleaner code.
+
+You should still consider flighting the upgraded experience, but you can A/B entire application rather than if/then flighting per component in the code.
+
+**Medium or larger with advanced usage**
+If you have a medium to large project, significant advanced usage of components, and limited resources or time constraints, we recommend leveraging the shim components.
+
+You can replace all the usages of a component like Button with ShimButton and get a v9 Button rendered. You get the benefits of v9 components and can crawl over the code to update to use v9 directly at your leisure.
+
+Warning! Shims aren't free. You'll still need to modify code to upgrade custom styles, renderprops callbacks, and ref usage. Shims take a dependency on the v8 types and v9 components, so tree-shaking may be limited. Shims introduce mapping logic (although it shouldn't signficantly impact render performance).
+
+**Medium or larger with basic usage**
+If you have a large project with hundreds to thousands of Fluent component usages, we strongly recommend upgrading horizontally. The Button component is a typical choice to upgrade across the application.
+
+If your usage is mostly basic, we recommend authoring a code-mod to handle what would be too tedious with search & replace. Consider running code-mods to handle most cases and then do some manual upgrade work to cover the rest.
+
+**Large with advanced usage**
+If you have a large projects with thousands of Fluent component usages, a lot of advanced usage, and several resource constraints, we recommend creating an application-specific shim and permanent abstraction around the Fluent component.
+
+A permanent abstraction will give you a place to adapt for compatibility as you move from v8 props to v9 props. It will also be be valuable with future upgrades. v9 has a new hook-based composition model you can leverage to create a shim without introducing the extra virtual DOM elements of a wrapper. You can also introduce the flighting logic within your shim to be able to toggle the upgrade on/off.
+
+You can consider code-mods to upgrade the more basic usage, but will likely find too much variance to handle all the cases in across your code.
+
+We recommend you upgrade horizontally, but you may want to upgrade horizontally within one portion of your application at a time. For example, all the buttons in a toolbar or on a related set of pages in your application. This lets you upgrade in stages without destabilizing then entire application.
+
+If you have a subsystem of your application that is independent and similar to a small/medium application, you may choose to upgrade it vertically. You can have a cohesive improvement to one part of the application and flight it independent of the rest of the application.
+
+## Part 4. Experiment
+
+The example web application in this repository demonstrates using v8 components, v8->v9 shims, v8->v9 code mods, and v9 components. You can use this web application to try out upgrading to get a feel of bundle-size, performance, behavior, and style changes to expect. You can remove components until you only have the ones your application depends on, try upgrading a v8 component by hand or running a code-mod. You can try out various theme shims or custom themes too.
+
+Each numbered folder is a stage of upgrade for the same the web application.
+
+- **1-before**: v8 components
+- **2-during-shims**: shim components that have v8 props, but render v9 components.
+  //TODO: More phases for themes and custom styling
+- **N-after**: v9 components
+
+When run the application renders a single page containing a list of examples. Each example demonstrates common usage of component. The examples are a lot like the public storybook documentation examples. We borrowed them and simplified the different usage permutations.
+
+> The web application was created by runing the create-react-app with the v8 Fluent UI template. Dependencies were kept to a minimum to allow for measuring bundle-size and performance in isolation.
+
+Other folders container helpers for upgrade:
+
+- **code-mods** Contains the example code mods and library of helper functions for writing code mods.
+- **upgrade-shims** Contains components that take v8 props and render v9 components.
+- **visual-theme-map** Provide a visual comparison of monochrome, named, brand, and semantic/token colors to compare between v8 and v9. These colors are mapped by the theme shims in the upgrade-shims project.
+
+## Part 5. Upgrade
+
+After you have decided on your approach, your upgrade implementation, and have experimented enough to have a feel for the differences in v8 and v9, you are ready to plan out your work items and start upgrading.
+
+Consider creating a set of initial work items to upgrade a few instances of a component along with setting up the FluentProvider theme. It can be good to focus on a process that allows you to rinse and repeat. If you measure how long the first few iterations take, you can get a good rough estimate of the entire upgrade effort.
