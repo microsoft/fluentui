@@ -68,31 +68,11 @@ const config = {
     '**/*.scss.ts',
   ],
   rules: {
-    '@rnx-kit/no-export-all': ['error', { expand: 'external-only' }],
-    '@fluentui/no-global-react': 'error',
-    '@fluentui/max-len': [
-      'error',
-      {
-        ignorePatterns: [
-          'require(<.*?>)?\\(',
-          'https?:\\/\\/',
-          '^(import|export) ',
-          '^\\s+(<path )?d=',
-          '!raw-loader',
-          '\\bdata:image/',
-        ],
-        max: 120,
-      },
-    ],
-    '@fluentui/no-tslint-comments': 'error',
-
-    // tslint: function-name, variable-name
-    ...configHelpers.getNamingConventionRule(false /* prefixWithI */),
-
-    '@typescript-eslint/no-empty-function': 'error',
-    '@typescript-eslint/no-explicit-any': 'error', // tslint: no-any
-    '@typescript-eslint/prefer-namespace-keyword': 'error',
-
+    /**
+     *
+     * core eslint rules
+     * @see https://eslint.org/docs/rules
+     */
     curly: ['error', 'all'],
     'dot-notation': 'error',
     eqeqeq: ['error', 'always'],
@@ -108,20 +88,14 @@ const config = {
     'no-empty': 'error',
     'no-eval': 'error',
     'no-new-wrappers': 'error',
+    // handles only member sort, rest is handled via import/order
+    'sort-imports': ['warn', { ignoreDeclarationSort: true }],
     'no-restricted-globals': [
       'error',
       ...['blur', 'close', 'focus', 'length', 'name', 'parent', 'self', 'stop'].map(name => ({
         name,
         message: `"${name}" refers to a DOM global. Did you mean to reference a local value instead?`,
       })),
-    ],
-    '@fluentui/ban-imports': [
-      'error',
-      {
-        path: 'react',
-        names: ['useLayoutEffect'],
-        message: '`useLayoutEffect` causes a warning in SSR. Use `useIsomorphicLayoutEffect`',
-      },
     ],
     'no-restricted-properties': [
       'error',
@@ -138,53 +112,6 @@ const config = {
     'prefer-const': 'error',
     'prefer-arrow-callback': 'error', // tslint: no-function-expression
     radix: ['error', 'always'],
-    'react/jsx-key': 'error',
-    'react/jsx-no-bind': [
-      'error',
-      {
-        allowArrowFunctions: false, // tslint: jsx-no-lambda
-        allowFunctions: false,
-        allowBind: false,
-        ignoreDOMComponents: true,
-        ignoreRefs: true,
-      },
-    ],
-    'react/no-string-refs': 'error',
-    'react/self-closing-comp': 'error',
-    'react-hooks/exhaustive-deps': [
-      'error',
-      {
-        additionalHooks: 'useIsomorphicLayoutEffect',
-      },
-    ],
-    'react-hooks/rules-of-hooks': 'error',
-
-    // airbnb or other config overrides (some temporary)
-    // TODO: determine which rules we want to enable, and make needed changes (separate PR)
-    'arrow-body-style': 'off',
-    'class-methods-use-this': 'off',
-    'consistent-return': 'off',
-    'default-case': 'off',
-    'func-names': 'off',
-    'global-require': 'off',
-
-    'jsx-a11y/alt-text': 'off',
-    'jsx-a11y/anchor-is-valid': 'off',
-    'jsx-a11y/aria-activedescendant-has-tabindex': 'off',
-    'jsx-a11y/aria-role': 'off',
-    'jsx-a11y/click-events-have-key-events': 'off',
-    'jsx-a11y/control-has-associated-label': 'off',
-    'jsx-a11y/role-has-required-aria-props': 'off',
-    'jsx-a11y/interactive-supports-focus': 'off',
-    'jsx-a11y/label-has-associated-control': 'off',
-    'jsx-a11y/media-has-caption': 'off',
-    'jsx-a11y/mouse-events-have-key-events': 'off',
-    'jsx-a11y/no-interactive-element-to-noninteractive-role': 'off',
-    'jsx-a11y/no-noninteractive-element-interactions': 'off',
-    'jsx-a11y/no-noninteractive-tabindex': 'off',
-    'jsx-a11y/no-redundant-roles': 'off',
-    'jsx-a11y/no-static-element-interactions': 'off',
-    'jsx-a11y/role-supports-aria-props': 'off',
     'lines-between-class-members': 'off',
     'max-classes-per-file': 'off',
     'no-case-declarations': 'off',
@@ -216,6 +143,93 @@ const config = {
     'operator-assignment': 'off',
     'prefer-destructuring': 'off',
     'prefer-template': 'off',
+    // airbnb or other config overrides (some temporary)
+    // TODO: determine which rules we want to enable, and make needed changes (separate PR)
+    'arrow-body-style': 'off',
+    'class-methods-use-this': 'off',
+    'consistent-return': 'off',
+    'default-case': 'off',
+    'func-names': 'off',
+    'global-require': 'off',
+    'spaced-comment': 'off',
+    // airbnb options ban for-of which is unnecessary for TS and modern node (https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L334)
+    // but this is a very powerful rule we may want to use in other ways
+    'no-restricted-syntax': 'off',
+    // permanently disable because we disagree with these rules
+    'no-await-in-loop': 'off', // contrary to rule docs, awaited things often are NOT parallelizable
+    // permanently disable due to performance issues (using custom rule `@fluentui/max-len` instead)
+    'max-len': 'off',
+    // permanently disable due to perf problems and limited benefit
+    // see here for perf testing (note that you must run eslint directly)
+    // https://eslint.org/docs/developer-guide/working-with-rules#per-rule-performance
+    'no-empty-character-class': 'off',
+
+    /**
+     *
+     * `@typescript-eslint`plugin eslint rules
+     * @see https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin
+     */
+    // tslint: function-name, variable-name
+    ...configHelpers.getNamingConventionRule(false),
+    '@typescript-eslint/no-empty-function': 'error',
+    '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/prefer-namespace-keyword': 'error',
+
+    /**
+     *
+     * `@rnx-kit` eslint rules
+     * @see https://github.com/microsoft/rnx-kit/tree/main/packages/eslint-plugin
+     */
+    '@rnx-kit/no-export-all': ['error', { expand: 'external-only' }],
+
+    /**
+     *
+     * `@fluentui` eslint rules / This package
+     * @see https://www.npmjs.com/package/@fluentui/eslint-plugin
+     */
+    '@fluentui/ban-imports': [
+      'error',
+      {
+        path: 'react',
+        names: ['useLayoutEffect'],
+        message: '`useLayoutEffect` causes a warning in SSR. Use `useIsomorphicLayoutEffect`',
+      },
+    ],
+    '@fluentui/no-global-react': 'error',
+    '@fluentui/max-len': [
+      'error',
+      {
+        ignorePatterns: [
+          'require(<.*?>)?\\(',
+          'https?:\\/\\/',
+          '^(import|export) ',
+          '^\\s+(<path )?d=',
+          '!raw-loader',
+          '\\bdata:image/',
+        ],
+        max: 120,
+      },
+    ],
+    '@fluentui/no-tslint-comments': 'error',
+
+    /**
+     *
+     * react eslint rules
+     * @see https://github.com/yannickcr/eslint-plugin-react
+     */
+    'react/jsx-key': 'error',
+    'react/jsx-no-bind': [
+      'error',
+      {
+        allowArrowFunctions: false, // tslint: jsx-no-lambda
+        allowFunctions: false,
+        allowBind: false,
+        ignoreDOMComponents: true,
+        ignoreRefs: true,
+      },
+    ],
+    'react/no-string-refs': 'error',
+    'react/self-closing-comp': 'error',
     'react/button-has-type': 'off',
     'react/destructuring-assignment': 'off',
     'react/forbid-prop-types': 'off',
@@ -235,30 +249,56 @@ const config = {
     'react/state-in-constructor': 'off',
     'react/static-property-placement': 'off',
     'react/require-default-props': 'off',
-    'spaced-comment': 'off',
-
-    // airbnb options ban for-of which is unnecessary for TS and modern node (https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L334)
-    // but this is a very powerful rule we may want to use in other ways
-    'no-restricted-syntax': 'off',
-
-    // permanently disable because we disagree with these rules
-    'no-await-in-loop': 'off', // contrary to rule docs, awaited things often are NOT parallelizable
-    'react/jsx-props-no-spreading': 'off',
-    'react/prop-types': 'off',
-
-    // permanently disable due to performance issues (using custom rule `@fluentui/max-len` instead)
-    'max-len': 'off',
-
-    // permanently disable due to perf problems and limited benefit
-    // see here for perf testing (note that you must run eslint directly)
-    // https://eslint.org/docs/developer-guide/working-with-rules#per-rule-performance
-    'no-empty-character-class': 'off',
     'react/no-unknown-property': 'off', // expensive, limited benefit with TS
     // these ones have minor negative perf impact and are unnecessary
     'react/default-props-match-prop-types': 'off',
     'react/no-unused-prop-types': 'off',
     'react/prefer-es6-class': 'off',
+    // permanently disable because we disagree with these rules
+    'react/jsx-props-no-spreading': 'off',
+    'react/prop-types': 'off',
 
+    /**
+     *
+     * react-hooks rules
+     * @see https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks
+     */
+    'react-hooks/exhaustive-deps': [
+      'error',
+      {
+        additionalHooks: 'useIsomorphicLayoutEffect',
+      },
+    ],
+    'react-hooks/rules-of-hooks': 'error',
+
+    /**
+     *
+     * jsx-a11y rules
+     * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
+     */
+    'jsx-a11y/alt-text': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/aria-activedescendant-has-tabindex': 'off',
+    'jsx-a11y/aria-role': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/control-has-associated-label': 'off',
+    'jsx-a11y/role-has-required-aria-props': 'off',
+    'jsx-a11y/interactive-supports-focus': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'jsx-a11y/media-has-caption': 'off',
+    'jsx-a11y/mouse-events-have-key-events': 'off',
+    'jsx-a11y/no-interactive-element-to-noninteractive-role': 'off',
+    'jsx-a11y/no-noninteractive-element-interactions': 'off',
+    'jsx-a11y/no-noninteractive-tabindex': 'off',
+    'jsx-a11y/no-redundant-roles': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/role-supports-aria-props': 'off',
+
+    /**
+     *
+     * jsdoc plugin rules
+     * @see https://github.com/gajus/eslint-plugin-jsdoc
+     */
     'jsdoc/check-tag-names': [
       'error',
       {
@@ -273,15 +313,24 @@ const config = {
      * @see https://github.com/import-js/eslint-plugin-import
      */
     'import/no-extraneous-dependencies': ['error', { devDependencies: false }],
+    'import/no-duplicates': 'warn',
+    'import/first': 'warn',
+    'import/order': [
+      'warn',
+      {
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: false,
+        },
+      },
+    ],
     'import/extensions': 'off',
-    'import/first': 'off',
     'import/newline-after-import': 'off',
-    'import/no-duplicates': 'off', // mostly redundant with no-duplicate-imports
     'import/no-dynamic-require': 'off',
     'import/no-mutable-exports': 'off',
     'import/no-unresolved': 'off',
     'import/no-useless-path-segments': 'off',
-    'import/order': 'off',
     'import/prefer-default-export': 'off',
     // may cause perf problems per https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/FAQ.md#eslint-plugin-import
     'import/no-cycle': 'off',
