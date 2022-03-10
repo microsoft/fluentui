@@ -4,6 +4,9 @@
   // When opening a file, `editor.tabSize` and `editor.insertSpaces` will NOT be detected based on the file contents.
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
   // When enabled, will trim trailing whitespace when you save a file.
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
@@ -45,6 +48,7 @@
   },
   "editor.rulers": [120],
   "eslint.workingDirectories": [{ "mode": "auto" }], // infer working directory based on .eslintrc/package.json location
+  "eslint.codeActionsOnSave.mode": "problems",
   "files.associations": {
     "**/package.json.hbs": "json",
     "**/*.json.hbs": "jsonc"
