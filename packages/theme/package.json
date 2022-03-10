@@ -48,6 +48,11 @@
       "import": "./lib/colors/DefaultPalette.js",
       "require": "./lib-commonjs/DefaultPalette.js"
     },
+    "./lib/colors/FluentColors": {
+      "types": "./lib/colors/FluentColors.d.ts",
+      "import": "./lib/colors/FluentColors.js",
+      "require": "./lib-commonjs/FluentColors.js"
+    },
     "./lib/createTheme": {
       "types": "./lib/createTheme.d.ts",
       "import": "./lib/createTheme.js",
@@ -62,6 +67,11 @@
       "types": "./lib/fonts/DefaultFontStyles.d.ts",
       "import": "./lib/fonts/DefaultFontStyles.js",
       "require": "./lib-commonjs/DefaultFontStyles.js"
+    },
+    "./lib/fonts/FluentFonts": {
+      "types": "./lib/fonts/FluentFonts.d.ts",
+      "import": "./lib/fonts/FluentFonts.js",
+      "require": "./lib-commonjs/FluentFonts.js"
     },
     "./lib/fonts/index": {
       "types": "./lib/fonts/index.d.ts",

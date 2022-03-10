@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adding exports entries for 2 more entry points to keep @uifabric/fluent-theme package compatible with the latest theme package.",
+  "packageName": "@fluentui/theme",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch"
+}
