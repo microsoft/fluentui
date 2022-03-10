@@ -330,7 +330,6 @@ export const defaultTests: TestObject = {
         expect(classNamesFromFile).toBeTruthy();
         handledClassNamesObjectExport = true;
       } catch (e) {
-        // Need to work on this error message
         throw new Error(
           defaultErrorMessages['component-has-static-classnames-object-exported'](
             testInfo,
@@ -363,7 +362,6 @@ export const defaultTests: TestObject = {
       try {
         expect(classNamesFromFile).toEqual(expectedClassNames);
       } catch (e) {
-        // Need to work on this error message
         throw new Error(
           defaultErrorMessages['component-has-static-classnames-in-correct-format'](
             testInfo,
@@ -396,26 +394,19 @@ export const defaultTests: TestObject = {
         const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
         const classNamesFromFile = indexFile[exportName];
 
-        const missingClassNames = [];
-        let className;
-        let err: Error;
-
-        const expectedClassNames = staticClassNames.expectedClassNames ?? classNamesFromFile;
-        for (const key of Object.keys(expectedClassNames)) {
-          className = classNamesFromFile[key];
-          try {
-            expect(defaultComponent.find(`.${className}`).length).toBeGreaterThanOrEqual(1);
-          } catch (e) {
-            err = e as Error;
-            missingClassNames.push(className);
+        const expectedClassNames: { [key: string]: string } = staticClassNames.expectedClassNames ?? classNamesFromFile;
+        const missingClassNames = Object.values(expectedClassNames).reduce((acc, className) => {
+          if (defaultComponent.find(`.${className}`).length !== 1) {
+            (acc as string[]).push(className);
           }
-        }
+          return acc;
+        }, []);
 
         if (missingClassNames.length > 0) {
           throw new Error(
             defaultErrorMessages['component-has-static-classnames'](
               testInfo,
-              err!,
+              new Error(),
               componentName,
               missingClassNames.join(', '),
             ),
