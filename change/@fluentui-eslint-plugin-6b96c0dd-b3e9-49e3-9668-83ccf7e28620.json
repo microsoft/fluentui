@@ -3,5 +3,5 @@
   "comment": "fix(eslint-plugin): make import/no-extraneous-dependencies work for react config",
   "packageName": "@fluentui/eslint-plugin",
   "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
