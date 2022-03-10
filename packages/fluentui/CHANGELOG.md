@@ -42,6 +42,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `SignatureIcon` to iconset @notandrew ([#21946](https://github.com/microsoft/fluentui/pull/21946))
 - Allow users to configure new animations for `Carousel` transitions @chpalac ([#21866](https://github.com/microsoft/fluentui/pull/21866))
 - Support React 17 as a peer dependency @jurokapsiar ([#21955](https://github.com/microsoft/fluentui/pull/21955))
+- feat(theme): Forced colors theme @jurokapsiar ([#22027](https://github.com/microsoft/fluentui/pull/22027))
 
 <!--------------------------------[ v0.60.1 ]------------------------------- -->
 ## [v0.60.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.60.1) (2022-01-17)
