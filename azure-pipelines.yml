@@ -23,6 +23,9 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
+      - script: 'node -e "console.log(''commit'', process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID)"'
+        displayName: 'Command Line Script'
+
       - task: Bash@3
         inputs:
           filePath: yarn-ci.sh
