@@ -475,7 +475,10 @@ The default position for the listbox popup is `below-start`. The position can be
 
 ### Keyboard interaction
 
-The keyboard interaction model follows that of the [ARIA Practices Combobox Pattern](https://w3c.github.io/aria-practices/#combobox), with the addition of <kbd>Space</kbd> to select options.
+The keyboard interaction model follows that of the [ARIA Practices Combobox Pattern](https://w3c.github.io/aria-practices/#combobox), with a couple modifications based on user research:
+
+- <kbd>Space</kbd> selects options
+- <kbd>Tab</kbd> selects the currently highlighted/active option when the listbox is open
 
 ### Dismissing the listbox popup
 
@@ -514,3 +517,4 @@ Accessibility support for comboboxes in particular changes frequently, so known 
 - VoiceOver on macOS does not consistently expose active options when arrowing through an open combobox
 - `aria-multiselectable` is not announced by multiple screen readers
 - Safari does not respect `aria-owns`, so someone using VoiceOver on iOS will not be able to swipe from the combobox trigger to the options unless `inline` is set to `true`.
+- If the number of options in the listbox changes while it is open, that change is not consistently exposed by screen readers.
