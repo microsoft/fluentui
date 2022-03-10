@@ -38,7 +38,7 @@ export interface AccordionSlotClassNames {
   content: string;
   title: string;
 }
-
+// test
 export interface AccordionProps extends UIComponentProps, ChildrenComponentProps {
   /** Index of the currently active panel. */
   activeIndex?: number[] | number;
