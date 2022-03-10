@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add compat exports to date-time-utilities",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
