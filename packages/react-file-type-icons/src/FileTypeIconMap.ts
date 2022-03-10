@@ -284,7 +284,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['htm', 'html', 'mht'],
   },
   ipynb: {
-    extensions: ['nnb', 'ipnyb'],
+    extensions: ['nnb', 'ipynb'],
   },
   link: {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
