@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fixup! fix(react-avatar): fix missing dependencies",
+  "comment": "add missing dependencies",
   "packageName": "@fluentui/react-avatar",
   "email": "martinhochel@microsoft.com",
   "dependentChangeType": "patch"

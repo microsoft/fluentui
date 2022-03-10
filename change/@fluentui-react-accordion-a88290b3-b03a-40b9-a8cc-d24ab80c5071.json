@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fixup! fix(react-accordion): fix missing dependencies",
+  "comment": "add missing dependencies",
   "packageName": "@fluentui/react-accordion",
   "email": "martinhochel@microsoft.com",
   "dependentChangeType": "patch"
