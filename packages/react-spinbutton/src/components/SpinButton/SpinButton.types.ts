@@ -1,5 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type * as React from 'react';
+// import { Input } from '@fluentui/react-input';
+import * as React from 'react';
 
 export type SpinButtonSlots = {
   /**
@@ -7,7 +8,7 @@ export type SpinButtonSlots = {
    * The root slot receives the `className` and `style` specified on the `<SpinButton>`.
    * All other native props are applied to the primary slot: `input`.
    */
-  root: NonNullable<Slot<'div'>>;
+  root: NonNullable<Slot<'span'>>;
 
   /**
    * Input that displays the current value and accepts direct input from the user.
@@ -20,24 +21,13 @@ export type SpinButtonSlots = {
   /**
    * Renders the increment control.
    */
-  incrementControl: NonNullable<Slot<'button'>>;
+  incrementButton: NonNullable<Slot<'button'>>;
 
   /**
    * Renders the decrement control.
    */
-  decrementControl: NonNullable<Slot<'button'>>;
+  decrementButton: NonNullable<Slot<'button'>>;
 };
-
-export type SpinButtonChangeData = {
-  /**
-   * New value after the change.
-   * E.g., `1`
-   */
-  value: number;
-};
-
-export type SpinButtonFormatter = (value: number) => string;
-export type SpinButtonParser = (formattedValue: string) => number;
 
 export type SpinButtonCommons = {
   /**
@@ -47,7 +37,7 @@ export type SpinButtonCommons = {
    * own value. For a controlled component, use `value` instead. (Mutually exclusive with `value`.)
    * @defaultvalue 0
    */
-  defaultValue: number; // Initial value of the
+  defaultValue: number;
 
   /**
    * Current value of the control (assumed to be valid).
@@ -57,6 +47,18 @@ export type SpinButtonCommons = {
    * property. (Mutually exclusive with `defaultValue`.)
    */
   value: number;
+
+  /**
+   * String representation of `value`.
+   *
+   * Use this when displaying the value to users as something other than a plain number.
+   * For example, when displaying currency values this might be "$1.00" when value is `1`.
+   *
+   * Only provide this if the SpinButton is a controlled component where you are maintaining its
+   * current state and passing updates based on change events. When SpinButton is used as an
+   * uncontrolled component this prop is ignored.
+   */
+  displayValue: string;
 
   /**
    * Min value of the control. If not provided, the control has no minimum value.
@@ -71,29 +73,17 @@ export type SpinButtonCommons = {
   /**
    * Difference between two adjacent values of the control.
    * This value is used to calculate the precision of the input if no `precision` is given.
-   * The precision calculated this way will always be \>= 0.
+   * The precision calculated this way will always be >= 0.
    * @defaultvalue 1
    */
   step: number;
 
   /**
-   * Function used to format the displayed value in the component.
-   * This allows for things like:
-   * - Displaying the value as a monetary value: $1.00
-   * - Displaying the value with a suffix: 12pt
-   *
-   * If this function is not supplied the default converts `value` to a string.
+   * Large difference between two values. This should be greater than `step` and is used
+   * when users hit the Page Up or Page Down keys.
+   * @defaultValue 1
    */
-  formatter: SpinButtonFormatter;
-
-  /**
-   * Function used to parse a formatted value back into a number.
-   * This works in conjunction with `formatter` and is its inverse (i.e., `formatter` turns
-   * 1 to $1.00 and `parser` turns $1.00 to 1).
-   *
-   * If this function is not supplied the default calls `parseFloat()` on the formatted value.
-   */
-  parser: SpinButtonParser;
+  stepPage: number;
 
   /**
    * Callback for when the committed value changes.
@@ -102,7 +92,7 @@ export type SpinButtonCommons = {
    * - User *commits* edits to the input text by focusing away (blurring) or pressing enter.
    *   Note that this is NOT called for every key press while the user is editing.
    */
-  onChange: (event: React.SyntheticEvent<HTMLElement>, data: SpinButtonChangeData) => void;
+  onChange: (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => void;
 
   /**
    * How many decimal places the value should be rounded to.
@@ -111,14 +101,65 @@ export type SpinButtonCommons = {
    * step = 0.0089, precision = 4. step = 300, precision = 2. step = 23.00, precision = 2.
    */
   precision: number;
+
+  /**
+   * Controls the colors and borders of the input.
+   * @default 'outline'
+   */
+  appearance: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+
+  /**
+   * Size of the input.
+   * @default 'medium'
+   */
+  size: 'small' | 'medium';
+
+  /**
+   * Controls which input types update the value.
+   *
+   * - 'all': both the spinner buttons and input field are enabled.
+   * - 'spinners-only': only the spinner buttons are enabled.
+   * @default all
+   */
+  inputType: 'all' | 'spinners-only';
 };
 
 /**
  * SpinButton Props
  */
-export type SpinButtonProps = ComponentProps<Partial<SpinButtonSlots>, 'input'> & Partial<SpinButtonCommons>;
+export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'input'>, 'onChange' | 'size'> &
+  Partial<SpinButtonCommons>;
 
 /**
  * State used in rendering SpinButton
  */
-export type SpinButtonState = ComponentState<Required<SpinButtonSlots>> & Partial<SpinButtonCommons>;
+export type SpinButtonState = ComponentState<SpinButtonSlots> &
+  Partial<SpinButtonCommons> &
+  Pick<SpinButtonCommons, 'appearance' | 'size'> & {
+    /**
+     * State used to track which direction, if any, SpinButton is currently spinning.
+     * @default 'rest'
+     */
+    spinState: SpinButtonSpinState;
+
+    /**
+     * State used to track if the value is at the range bounds of [min-max].
+     * @default 'none'
+     */
+    atBound: SpinButtonBounds;
+  };
+
+export type SpinButtonChangeEvent =
+  | React.MouseEvent<HTMLButtonElement>
+  | React.ChangeEvent<HTMLElement>
+  | React.FocusEvent<HTMLInputElement>
+  | React.KeyboardEvent<HTMLInputElement>
+  | React.WheelEvent<HTMLDivElement>;
+
+export type SpinButtonOnChangeData = {
+  value?: number;
+  displayValue?: string;
+};
+
+export type SpinButtonSpinState = 'rest' | 'up' | 'down';
+export type SpinButtonBounds = 'none' | 'min' | 'max';

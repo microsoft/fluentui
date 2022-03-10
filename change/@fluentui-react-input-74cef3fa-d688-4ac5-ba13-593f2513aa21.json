@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update onChange event type",
+  "packageName": "@fluentui/react-input",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -18,54 +18,58 @@ export const renderSpinButton_unstable: (state: SpinButtonState) => JSX.Element;
 export const SpinButton: ForwardRefComponent<SpinButtonProps>;
 
 // @public (undocumented)
-export type SpinButtonChangeData = {
-    value: number;
-};
-
-// @public @deprecated (undocumented)
-export const spinButtonClassName = "fui-SpinButton";
-
-// @public (undocumented)
 export const spinButtonClassNames: SlotClassNames<SpinButtonSlots>;
 
 // @public (undocumented)
 export type SpinButtonCommons = {
     defaultValue: number;
     value: number;
+    displayValue: string;
     min: number;
     max: number;
     step: number;
-    formatter: SpinButtonFormatter;
-    parser: SpinButtonParser;
-    onChange: (event: React_2.SyntheticEvent<HTMLElement>, data: SpinButtonChangeData) => void;
+    stepPage: number;
+    onChange: (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => void;
     precision: number;
+    appearance: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    size: 'small' | 'medium';
+    inputType: 'all' | 'spinners-only';
 };
 
 // @public (undocumented)
-export type SpinButtonFormatter = (value: number) => string;
-
-// @public (undocumented)
-export type SpinButtonParser = (formattedValue: string) => number;
+export type SpinButtonOnChangeData = {
+    value?: number;
+    displayValue?: string;
+};
 
 // @public
-export type SpinButtonProps = ComponentProps<Partial<SpinButtonSlots>, 'input'> & Partial<SpinButtonCommons>;
+export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'input'>, 'onChange' | 'size'> & Partial<SpinButtonCommons>;
 
 // @public (undocumented)
 export type SpinButtonSlots = {
-    root: NonNullable<Slot<'div'>>;
+    root: NonNullable<Slot<'span'>>;
     input: NonNullable<Slot<'input'>>;
-    incrementControl: NonNullable<Slot<'button'>>;
-    decrementControl: NonNullable<Slot<'button'>>;
+    incrementButton: NonNullable<Slot<'button'>>;
+    decrementButton: NonNullable<Slot<'button'>>;
 };
 
 // @public
-export type SpinButtonState = ComponentState<Required<SpinButtonSlots>> & Partial<SpinButtonCommons>;
+export type SpinButtonState = ComponentState<SpinButtonSlots> & Partial<SpinButtonCommons> & Pick<SpinButtonCommons, 'appearance' | 'size'> & {
+    spinState: SpinButtonSpinState;
+    atBound: SpinButtonBounds;
+};
 
 // @public
-export const useSpinButton_unstable: (props: SpinButtonProps, ref: React_2.Ref<HTMLElement>) => SpinButtonState;
+export const useSpinButton_unstable: (props: SpinButtonProps, ref: React_2.Ref<HTMLInputElement>) => SpinButtonState;
 
 // @public
 export const useSpinButtonStyles_unstable: (state: SpinButtonState) => SpinButtonState;
+
+// Warnings were encountered during analysis:
+//
+// dist/packages/react-spinbutton/src/components/SpinButton/SpinButton.types.d.ts:82:5 - (ae-forgotten-export) The symbol "SpinButtonChangeEvent" needs to be exported by the entry point index.d.ts
+// dist/packages/react-spinbutton/src/components/SpinButton/SpinButton.types.d.ts:121:5 - (ae-forgotten-export) The symbol "SpinButtonSpinState" needs to be exported by the entry point index.d.ts
+// dist/packages/react-spinbutton/src/components/SpinButton/SpinButton.types.d.ts:126:5 - (ae-forgotten-export) The symbol "SpinButtonBounds" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
