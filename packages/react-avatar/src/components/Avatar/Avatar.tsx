@@ -7,7 +7,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 export const Avatar: ForwardRefComponent<AvatarProps> = React.forwardRef((props, ref) => {
   const state = useAvatar_unstable(props, ref);
-
+  //test
   useAvatarStyles_unstable(state);
 
   return renderAvatar_unstable(state);
