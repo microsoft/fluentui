@@ -21,9 +21,9 @@ jobs:
         displayName: yarn
 
       - script: |
-          NorthstarAffected=$(yarn --silent check-if-v0-v8-v9-affected --@fluentui/react-northstar)
-          V8Affected=$(yarn --silent check-if-v0-v8-v9-affected --@fluentui/react)
-          ReactComponentsAffected=$(yarn --silent check-if-v0-v8-v9-affected --@fluentui/react-components)
+          NorthstarAffected=$(yarn --silent check:affected-package --@fluentui/react-northstar)
+          V8Affected=$(yarn --silent check:affected-package --@fluentui/react)
+          ReactComponentsAffected=$(yarn --silent check:affected-package --@fluentui/react-components)
           if [[ $NorthstarAffected == true ]]; then
             echo "##vso[task.setvariable variable=NorthstarPackageAffected;isOutput=true]true"
           fi
