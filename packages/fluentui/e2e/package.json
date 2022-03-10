@@ -1,13 +1,13 @@
 {
   "name": "@fluentui/e2e",
-  "version": "0.60.1",
+  "version": "0.61.0",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@fluentui/accessibility": "^0.60.1",
-    "@fluentui/react-icons-northstar": "^0.60.1",
-    "@fluentui/react-northstar": "^0.60.1",
-    "@fluentui/react-northstar-prototypes": "^0.60.1",
+    "@fluentui/accessibility": "^0.61.0",
+    "@fluentui/react-icons-northstar": "^0.61.0",
+    "@fluentui/react-northstar": "^0.61.0",
+    "@fluentui/react-northstar-prototypes": "^0.61.0",
     "@types/react-router-dom": "^5.1.5",
     "cypress": "6.6.0",
     "cypress-real-events": "1.2.0",
