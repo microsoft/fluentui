@@ -7,12 +7,12 @@
   "scripts": {
     "clean": "just-scripts clean",
     "generate:site": "just-scripts generate:site",
-    "lint": "eslint --ext .js,.ts --cache ."
+    "lint": "eslint --ext .js,.ts --cache .",
+    "type-check": "tsc -p ."
   },
   "license": "MIT",
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "@microsoft/eslint-plugin-sdl": "0.1.9"
+    "@fluentui/scripts": "^1.0.0"
   }
 }

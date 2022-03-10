@@ -90,6 +90,7 @@
     "@griffel/webpack-loader": "2.0.0",
     "@linaria/babel-preset": "3.0.0-beta.14",
     "@microsoft/api-extractor": "7.18.1",
+    "@microsoft/eslint-plugin-sdl": "0.1.9",
     "@nrwl/cli": "13.8.1",
     "@nrwl/devkit": "13.8.1",
     "@nrwl/jest": "13.8.1",
@@ -176,10 +177,10 @@
     "eslint": "7.25.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-prettier": "8.3.0",
-    "eslint-import-resolver-typescript": "2.4.0",
+    "eslint-import-resolver-typescript": "2.5.0",
     "eslint-plugin-deprecation": "1.2.1",
     "eslint-plugin-es": "4.1.0",
-    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-import": "2.25.4",
     "eslint-plugin-jest": "23.20.0",
     "eslint-plugin-jsdoc": "^36.0.7",
     "eslint-plugin-jsx-a11y": "6.4.1",
@@ -417,6 +418,14 @@
           "workspace-tools",
           "ci-info",
           "node-fetch"
+        ]
+      },
+      {
+        "packages": [
+          "@fluentui/react-conformance-griffel"
+        ],
+        "dependencies": [
+          "@fluentui/react-conformance"
         ]
       }
     ]
