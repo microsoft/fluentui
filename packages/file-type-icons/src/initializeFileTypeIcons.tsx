@@ -5,7 +5,7 @@ import { FileTypeIconMap } from './FileTypeIconMap';
 const PNG_SUFFIX = '_png';
 const SVG_SUFFIX = '_svg';
 
-export const DEFAULT_BASE_URL = 'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20211104.001/assets/item-types/';
+export const DEFAULT_BASE_URL = 'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20211207.001/assets/item-types/';
 export const ICON_SIZES: number[] = [16, 20, 24, 32, 40, 48, 64, 96];
 
 export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: Partial<IIconOptions>): void {
