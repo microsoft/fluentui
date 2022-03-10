@@ -18,6 +18,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.61.0 ]------------------------------- -->
+## [v0.61.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.61.0) (2022-03-10)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.60.1..@fluentui/react-northstar_v0.61.0)
+
 ### Fixes
 - Update `FocusZone` to properly pass through event modifiers (`ctrlKey`, etc.) when raising a click event @spmonahan ([#21547](https://github.com/microsoft/fluentui/pull/21547))
 - Fix `AccordionTitle` focus styles @petr-duda ([#21400](https://github.com/microsoft/fluentui/pull/21400))
