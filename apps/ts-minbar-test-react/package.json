@@ -5,7 +5,7 @@
   "description": "Testing Fluent UI React compatibility with Typescript 3.9",
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react": "^8.60.1"
+    "@fluentui/react": "^8.60.2"
   },
   "scripts": {
     "build": "just-scripts build",

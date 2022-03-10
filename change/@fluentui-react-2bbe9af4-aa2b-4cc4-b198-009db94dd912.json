@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ContextualMenu: Removing unused paramater in openSubMenu calls.",
-  "packageName": "@fluentui/react",
-  "email": "makotom@microsoft.com",
-  "dependentChangeType": "patch"
-}

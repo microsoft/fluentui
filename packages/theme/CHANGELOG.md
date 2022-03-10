@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Wed, 09 Mar 2022 07:37:30 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Mar 2022 07:34:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.2)
+
+Thu, 10 Mar 2022 07:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.1..@fluentui/theme_v2.6.2)
+
+### Patches
+
+- Adding exports entries for 2 more entry points to keep @uifabric/fluent-theme package compatible with the latest theme package. ([PR #22043](https://github.com/microsoft/fluentui/pull/22043) by dzearing@microsoft.com)
 
 ## [2.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.1)
 

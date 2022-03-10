@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 09 Mar 2022 07:37:29 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Mar 2022 07:34:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.60.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.60.2)
+
+Thu, 10 Mar 2022 07:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.60.1..@fluentui/react_v8.60.2)
+
+### Patches
+
+- ContextualMenu: Removing unused paramater in openSubMenu calls. ([PR #22040](https://github.com/microsoft/fluentui/pull/22040) by makotom@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.3 ([PR #22043](https://github.com/microsoft/fluentui/pull/22043) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.2.3 ([PR #22043](https://github.com/microsoft/fluentui/pull/22043) by beachball)
+- Bump @fluentui/react-focus to v8.5.3 ([PR #22043](https://github.com/microsoft/fluentui/pull/22043) by beachball)
+- Bump @fluentui/style-utilities to v8.6.3 ([PR #22043](https://github.com/microsoft/fluentui/pull/22043) by beachball)
+- Bump @fluentui/theme to v2.6.2 ([PR #22043](https://github.com/microsoft/fluentui/pull/22043) by beachball)
+- Bump @fluentui/common-styles to v1.0.35 ([PR #22043](https://github.com/microsoft/fluentui/pull/22043) by beachball)
 
 ## [8.60.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.60.1)
 
