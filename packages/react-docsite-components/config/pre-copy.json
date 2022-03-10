@@ -1,5 +1,5 @@
 {
   "copyTo": {
-    "dist/demo": ["./index.html", "react/umd/react.development.js", "react-dom/umd/react-dom.development.js"]
+    "dist/demo": ["./index.html"]
   }
 }
