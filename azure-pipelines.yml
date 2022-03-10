@@ -34,6 +34,10 @@ jobs:
         displayName: NX workspace lint
 
       - script: |
+          yarn check:installed-dependencies-versions
+        displayName: 'check packages: installed dependencies versions'
+
+      - script: |
           if [[ -n "$(targetBranch)" ]]; then
             yarn format --since $(targetBranch) --check
           else

@@ -12,7 +12,7 @@
     "build:codesandbox": "yarn build --to @fluentui/react --to @fluentui/react-components --min",
     "build:fluentui:docs": "gulp build:docs",
     "build:min": "yarn build --to @fluentui/react --to @fluentui/react-northstar --to @fluentui/react-components --min",
-    "buildci": "yarn prelint && lage build test lint type-check --verbose",
+    "buildci": "lage build test lint type-check --verbose",
     "builddemo": "yarn build --to public-docsite-resources",
     "buildto": "lage build --verbose --to",
     "buildto:lerna": "node ./scripts/monorepo/buildTo.js",
@@ -24,6 +24,7 @@
     "check-for-modified-files": "cd scripts && just-scripts check-for-modified-files",
     "checkchange": "beachball check  --scope \"!packages/fluentui/*\" --changehint \"Run 'yarn change' to generate a change file\"",
     "check-if-v0-v8-v9-affected": "node ./scripts/monorepo/checkIfPackagesAffected.js",
+    "check:installed-dependencies-versions": "satisfied --skip-invalid --ignore \"prettier|angular|lit|sass|@storybook/web-components|@storybook/html|svelte|@testing-library|vue\"",
     "clean": "lage clean --verbose",
     "code-style": "lage code-style --verbose",
     "codepen": "cd packages/react && node ../../scripts/local-codepen.js",
@@ -41,7 +42,6 @@
     "perf:debug": "cross-env PERF=true gulp perf:debug --debug",
     "postinstall": "node ./scripts/postinstall.js",
     "preinstall": "node ./scripts/use-yarn-please.js",
-    "prelint": "yarn satisfied && yarn syncpack:list",
     "publish:beachball": "beachball publish -b origin/master --access public -y",
     "rebuild": "node ./scripts/invalidate-just-cache.js && yarn build --reset-cache",
     "release:fluentui:canary": "node -r ./scripts/ts-node-register ./scripts/fluentui-publish publish-canary",
@@ -52,7 +52,6 @@
     "rename-package": "node -r ./scripts/ts-node-register ./scripts/rename-package.ts",
     "run:published": "node ./scripts/monorepo/runPublished.js",
     "runto:lerna": "node ./scripts/monorepo/runTo.js",
-    "satisfied": "satisfied --skip-invalid --ignore \"prettier|angular|lit|sass|@storybook/web-components|@storybook/html|svelte|@testing-library|vue\"",
     "scrub": "node ./scripts/scrub.js",
     "start": "node scripts/start.js",
     "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
@@ -61,8 +60,6 @@
     "stats:build": "gulp stats",
     "stats:save": "gulp stats:save",
     "sync:beachball": "beachball sync --scope \"!packages/fluentui/*\"",
-    "syncpack:fix": "syncpack fix-mismatches",
-    "syncpack:list": "syncpack list-mismatches",
     "test": "lage test --verbose",
     "test:fluentui:circulars": "gulp test:circulars:run",
     "test:fluentui:e2e": "yarn workspace @fluentui/e2e test",
@@ -255,6 +252,9 @@
     "yargs-parser": "13.1.2",
     "yargs-unparser": "2.0.0"
   },
+  "dependencies": {
+    "copy-to-clipboard": "3.3.1"
+  },
   "license": "MIT",
   "workspaces": {
     "packages": [
@@ -287,8 +287,7 @@
     "@types/jest-axe/axe-core": "4.2.1",
     "@types/react": "16.14.23",
     "@types/react-dom": "16.9.14",
-    "eslint": "7.25.0",
-    "copy-to-clipboard": "3.2.0"
+    "eslint": "7.25.0"
   },
   "syncpack": {
     "prod": true,
@@ -318,6 +317,7 @@
           "ajv",
           "chalk",
           "cli-table3",
+          "copy-to-clipboard",
           "del",
           "enhanced-resolve",
           "eslint-config-airbnb",
@@ -420,6 +420,5 @@
         ]
       }
     ]
-  },
-  "dependencies": {}
+  }
 }
