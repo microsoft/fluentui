@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating CODEOWNERS file to remove errors from people without write access to the repository. (#21917)",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "yasi@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "theming-designer",
   "entries": [
     {
+      "date": "Fri, 11 Mar 2022 12:21:21 GMT",
+      "tag": "theming-designer_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/react-cards to v0.117.18",
+            "author": "yasi@microsoft.com",
+            "commit": "c745d405f84d3c97b05965f703a2aaa4a66b6dfc",
+            "package": "theming-designer"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Feb 2022 12:25:37 GMT",
       "tag": "theming-designer_v7.0.0",
       "version": "7.0.0",

@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Fri, 11 Mar 2022 12:21:21 GMT",
+      "tag": "@uifabric/file-type-icons_v7.8.6",
+      "version": "7.8.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating CODEOWNERS file to remove errors from people without write access to the repository. (#21917)",
+            "author": "yasi@microsoft.com",
+            "commit": "c745d405f84d3c97b05965f703a2aaa4a66b6dfc",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Nov 2021 12:29:39 GMT",
       "tag": "@uifabric/file-type-icons_v7.8.5",
       "version": "7.8.5",
