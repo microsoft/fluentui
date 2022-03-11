@@ -16,7 +16,7 @@ const options = {
         'Developer',
         ['Quick Start', 'Migrating from @fluentui᜵react v8', 'Styling Components', 'Positioning Components'],
         'Upgrading',
-        ['from v8', ['Overview', 'Breaking Changes', 'Planning an upgrade', 'Component Mapping', 'Troubleshooting']],
+        ['from v8', ['Overview', 'Breaking Changes', 'Planning your journey', 'Component Mapping', 'Troubleshooting']],
       ],
       'Theme',
       'Components',
