@@ -64,6 +64,7 @@
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
+    "./README.md": "./README.md",
     "./lib/Accordion": {
       "types": "./lib/Accordion.d.ts",
       "import": "./lib/Accordion.js",
