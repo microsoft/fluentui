@@ -9,7 +9,6 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   accentFillRest,
   baseHeightMultiplier,
-  bodyFont,
   controlCornerRadius,
   density,
   designUnit,
@@ -18,8 +17,7 @@ import {
   neutralForegroundHint,
   neutralForegroundRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
+  typeRampBase,
 } from '../design-tokens';
 import { DirectionalStyleSheetBehavior } from '../styles';
 
@@ -57,9 +55,7 @@ export const calendarStyles: (
 ${display("inline-block")} :host {
   --calendar-cell-size: calc((${baseHeightMultiplier} + 2 + ${density}) * ${designUnit} * 1px);
   --calendar-gap: 2px;
-  font-family: ${bodyFont};
-  font-size: ${typeRampBaseFontSize};
-  line-height: ${typeRampBaseLineHeight};
+  ${typeRampBase}
   color: ${neutralForegroundRest};
 }
 

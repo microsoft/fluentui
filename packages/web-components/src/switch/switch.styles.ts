@@ -30,8 +30,7 @@ import {
   neutralStrokeStrongHover,
   neutralStrokeStrongRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
+  typeRampBase,
 } from '../design-tokens';
 
 export const switchStyles: (context: ElementDefinitionContext, definition: SwitchOptions) => ElementStyles = (
@@ -122,8 +121,7 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
     .status-message {
       color: ${neutralForegroundRest};
       cursor: pointer;
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
+      ${typeRampBase}
     }
 
     .label__hidden {
@@ -133,8 +131,7 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
 
     .label {
       color: ${neutralForegroundRest};
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
+      ${typeRampBase}
       margin-inline-end: calc(${designUnit} * 2px + 2px);
       cursor: pointer;
     }

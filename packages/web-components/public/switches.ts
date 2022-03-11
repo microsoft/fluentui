@@ -1,5 +1,5 @@
 import { Direction } from '@microsoft/fast-web-utilities';
-import { baseLayerLuminance, direction, StandardLuminance } from '../src/index';
+import { baseLayerLuminance, direction, fontWeight, StandardLuminance } from '../src/index';
 
 export function toggleBgMode() {
   const storyContainer = document.querySelector<HTMLElement>('.docs-story')!;
@@ -21,4 +21,10 @@ export function toggleLtr() {
     storyContainer.style.direction = 'ltr';
     direction.setValueFor(storyContainer, Direction.ltr);
   }
+}
+
+export function changeWeight() {
+  const storyContainer = document.querySelector<HTMLElement>('.docs-story')!;
+  const val = this.value;
+  fontWeight.setValueFor(storyContainer, val);
 }

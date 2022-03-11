@@ -18,7 +18,6 @@ import {
   accentStrokeControlActive,
   accentStrokeControlHover,
   accentStrokeControlRest,
-  bodyFont,
   controlCornerRadius,
   density,
   designUnit,
@@ -42,8 +41,7 @@ import {
   neutralStrokeHover,
   neutralStrokeRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
+  typeRampBase,
 } from '../../design-tokens';
 
 /**
@@ -59,10 +57,8 @@ export const baseButtonStyles = (
     ${display('inline-flex')} :host {
       position: relative;
       box-sizing: border-box;
-      font-family: ${bodyFont};
       outline: none;
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
+      ${typeRampBase}
       height: calc(${heightNumber} * 1px);
       min-width: calc(${heightNumber} * 1px);
       color: ${neutralForegroundRest};

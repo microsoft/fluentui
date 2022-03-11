@@ -33,8 +33,7 @@ import {
   neutralStrokeControlHover,
   neutralStrokeControlRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
+  typeRampBase,
 } from '../design-tokens';
 
 export const selectFilledStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (
@@ -140,10 +139,8 @@ export const selectStyles = (context, definition) =>
       box-sizing: border-box;
       cursor: pointer;
       display: flex;
-      font-size: ${typeRampBaseFontSize};
-      font-family: inherit;
+      ${typeRampBase}
       min-height: 100%;
-      line-height: ${typeRampBaseLineHeight};
       padding: 0 calc(${designUnit} * 2.25px);
       width: 100%;
     }

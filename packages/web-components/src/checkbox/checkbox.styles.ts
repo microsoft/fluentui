@@ -13,7 +13,6 @@ import {
   accentFillActive,
   accentFillHover,
   accentFillRest,
-  bodyFont,
   controlCornerRadius,
   designUnit,
   disabledOpacity,
@@ -29,8 +28,7 @@ import {
   neutralStrokeStrongHover,
   neutralStrokeStrongRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
+  typeRampBase,
 } from '../design-tokens';
 
 export const checkboxStyles: (context: ElementDefinitionContext, definition: CheckboxOptions) => ElementStyles = (
@@ -67,15 +65,13 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
     }
 
     .label {
-      font-family: ${bodyFont};
+      ${typeRampBase}
       color: ${neutralForegroundRest};
       ${
         /* Need to discuss with Brian how HorizontalSpacingNumber can work. https://github.com/microsoft/fast/issues/2766 */ ''
       } padding-inline-start: calc(${designUnit} * 2px + 2px);
       margin-inline-end: calc(${designUnit} * 2px + 2px);
       cursor: pointer;
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
     }
 
     slot[name='checked-indicator'],

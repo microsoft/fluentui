@@ -9,7 +9,6 @@ import {
 } from '@microsoft/fast-foundation';
 import { heightNumber } from '../../styles';
 import {
-  bodyFont,
   controlCornerRadius,
   density,
   designUnit,
@@ -17,8 +16,7 @@ import {
   focusStrokeWidth,
   neutralForegroundRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
+  typeRampBase,
 } from '../../design-tokens';
 
 export const tabStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles =
@@ -26,10 +24,8 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
     css`
       ${display('inline-flex')} :host {
         box-sizing: border-box;
-        font-family: ${bodyFont};
-        font-size: ${typeRampBaseFontSize};
+        ${typeRampBase}
         font-weight: 400;
-        line-height: ${typeRampBaseLineHeight};
         height: calc((${heightNumber} + (${designUnit} * 2)) * 1px);
         padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
         color: ${neutralForegroundRest};
