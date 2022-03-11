@@ -4,6 +4,74 @@
 
 ```ts
 
+import { Context } from '@fluentui/react-context-selector';
+import { ContextSelector } from '@fluentui/react-context-selector';
+import type { ObserveOptions } from '@fluentui/priority-overflow';
+import type { OnUpdateItemVisibility } from '@fluentui/priority-overflow';
+import type { OnUpdateOverflow } from '@fluentui/priority-overflow';
+import { OverflowGroupState } from '@fluentui/priority-overflow';
+import type { OverflowItemEntry } from '@fluentui/priority-overflow';
+import * as React_2 from 'react';
+
+// @public (undocumented)
+export const defaultUpdateVisibilityCallback: OnUpdateItemVisibility;
+
+// @public (undocumented)
+export const Overflow: React_2.ForwardRefExoticComponent<OverflowProps & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export const OverflowContext: Context<OverflowContextValue>;
+
+// @public (undocumented)
+export interface OverflowContextValue {
+    // (undocumented)
+    groupVisibility: Record<string, OverflowGroupState>;
+    // (undocumented)
+    hasOverflow: boolean;
+    // (undocumented)
+    itemVisibility: Record<string, boolean>;
+    // (undocumented)
+    registerItem: (item: OverflowItemEntry) => () => void;
+    // (undocumented)
+    updateOverflow: (padding?: number) => void;
+}
+
+// @public (undocumented)
+export interface OverflowProps extends React_2.HTMLAttributes<HTMLDivElement>, Omit<ObserveOptions, 'onUpdateOverflow' | 'onUpdateItemVisibility'> {
+}
+
+// @public (undocumented)
+export function useIsOverflowGroupVisible(id: string | number): OverflowGroupState;
+
+// @public (undocumented)
+export function useIsOverflowItemVisible(id: string | number): boolean;
+
+// @public (undocumented)
+export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<ObserveOptions, 'onUpdateOverflow'>) => UseOverflowContainerReturn<TElement>;
+
+// @public (undocumented)
+export interface UseOverflowContainerReturn<TElement extends HTMLElement> {
+    containerRef: React_2.RefObject<TElement>;
+    registerItem: OverflowContextValue['registerItem'];
+    updateOverflow: OverflowContextValue['updateOverflow'];
+}
+
+// @public (undocumented)
+export const useOverflowContext: <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>) => SelectedValue;
+
+// @public (undocumented)
+export const useOverflowCount: () => number;
+
+// @public
+export function useOverflowItem<TElement extends HTMLElement>(id: string | number, priority?: number, groupId?: string | number): React_2.RefObject<TElement>;
+
+// @public (undocumented)
+export function useOverflowMenu<TElement extends HTMLElement>(id?: string): {
+    ref: React_2.RefObject<TElement>;
+    overflowCount: number;
+    isOverflowing: boolean;
+};
+
 // (No @packageDocumentation comment for this package)
 
 ```
