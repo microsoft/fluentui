@@ -6,7 +6,7 @@ import {
 } from '@floating-ui/dom';
 import type { Middleware, Strategy } from '@floating-ui/dom';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { canUseDOM, useIsomorphicLayoutEffect, useFirstMount } from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
 import type { FloatingUIOptions, PositioningProps, PositioningVirtualElement } from './types';
@@ -93,6 +93,46 @@ function useFloatingUIOptions(options: FloatingUIOptions) {
       strategy,
     ],
   );
+}
+
+function useContainerRef(updatePosition: () => void, enabled: boolean) {
+  const isFirst = useFirstMount();
+
+  return useCallbackRef<HTMLElement | null>(null, (container, prevContainer) => {
+    if (container && enabled) {
+      // When the container is first resolved, set position `fixed` to avoid scroll jumps.
+      // Without this scroll jumps can occur when the element is rendered initially and receives focus
+      Object.assign(container.style, { position: 'fixed', top: 0, left: 0 });
+    }
+
+    toggleScrollListener(container, prevContainer, updatePosition);
+
+    if (!isFirst()) {
+      updatePosition();
+    }
+  });
+}
+
+function useTargetRef(updatePosition: () => void) {
+  const isFirst = useFirstMount();
+
+  return useCallbackRef<HTMLElement | PositioningVirtualElement | null>(null, (target, prevTarget) => {
+    toggleScrollListener(target, prevTarget, updatePosition);
+
+    if (!isFirst()) {
+      updatePosition();
+    }
+  });
+}
+
+function useArrowRef(updatePosition: () => void) {
+  const isFirst = useFirstMount();
+
+  return useCallbackRef<HTMLElement | null>(null, () => {
+    if (!isFirst()) {
+      updatePosition();
+    }
+  });
 }
 
 export function usePopper(
@@ -190,40 +230,10 @@ export function usePopper(
 
   const updatePosition = React.useState(() => debounce(forceUpdate))[0];
 
-  const targetRef = useCallbackRef<HTMLElement | PositioningVirtualElement | null>(
-    null,
-    (target, prevTarget, isFirst) => {
-      toggleScrollListener(target, prevTarget, updatePosition);
-
-      if (!isFirst) {
-        updatePosition();
-      }
-    },
-  );
-  const containerRef = useCallbackRef<HTMLElement | null>(null, (container, prevContainer, isFirst) => {
-    if (container && enabled) {
-      // When the container is first resolved, set position `fixed` to avoid scroll jumps.
-      // Without this scroll jumps can occur when the element is rendered initially and receives focus
-      Object.assign(container.style, { position: 'fixed', top: 0, left: 0 });
-    }
-
-    toggleScrollListener(container, prevContainer, updatePosition);
-
-    if (!isFirst) {
-      updatePosition();
-    }
-  });
-  const arrowRef = useCallbackRef<HTMLElement | null>(null, updatePosition, true);
-  const overrideTargetRef = useCallbackRef<HTMLElement | PositioningVirtualElement | null>(
-    null,
-    (target, prevTarget, isFirst) => {
-      toggleScrollListener(target, prevTarget, updatePosition);
-
-      if (!isFirst) {
-        updatePosition();
-      }
-    },
-  );
+  const targetRef = useTargetRef(updatePosition);
+  const overrideTargetRef = useTargetRef(updatePosition);
+  const containerRef = useContainerRef(updatePosition, enabled);
+  const arrowRef = useArrowRef(updatePosition);
 
   React.useImperativeHandle(
     options.popperRef,

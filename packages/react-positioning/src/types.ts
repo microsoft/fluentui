@@ -42,10 +42,10 @@ export interface FloatingUIOptions {
   align?: Alignment;
 
   /** The element which will define the boundaries of the popper position for the flip behavior. */
-  flipBoundary?: Boundary;
+  flipBoundary?: Boundary | null;
 
   /** The element which will define the boundaries of the popper position for the overflow behavior. */
-  overflowBoundary?: Boundary;
+  overflowBoundary?: Boundary | null;
 
   /**
    * Position for the component. Position has higher priority than align. If position is vertical ('above' | 'below')

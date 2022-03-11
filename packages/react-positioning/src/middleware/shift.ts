@@ -1,11 +1,10 @@
 import { shift as baseShift, limitShift } from '@floating-ui/dom';
-import type { Boundary } from '../types';
+import type { FloatingUIOptions } from '../types';
 import { getBoundary } from '../utils/getBoundary';
 
-export interface ShiftMiddlewareOptions {
+export interface ShiftMiddlewareOptions extends Pick<FloatingUIOptions, 'overflowBoundary'> {
   hasScrollableElement?: boolean;
-  disableTether?: boolean | 'all';
-  overflowBoundary?: Boundary;
+  disableTether?: FloatingUIOptions['unstable_disableTether'];
   container: HTMLElement | null;
 }
 
