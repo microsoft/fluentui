@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@fluentui/priority-overflow": "^9.0.0-alpha.0",
-    "@fluentui/react-context-selector": "^9.0.0-rc.5",
+    "@fluentui/react-context-selector": "9.0.0-rc.5",
     "@fluentui/react-theme": "9.0.0-rc.4",
     "@fluentui/react-utilities": "9.0.0-rc.5",
     "@griffel/react": "1.0.0",
