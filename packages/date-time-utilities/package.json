@@ -35,21 +35,6 @@
       "types": "./lib/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
-    },
-    "./lib/dateMath/dateMath": {
-      "types": "./lib/dateMath/dateMath.d.ts",
-      "import": "./lib/dateMath/dateMath.js",
-      "require": "./lib-commonjs/dateMath.js"
-    },
-    "./lib/dateValues/dateValues": {
-      "types": "./lib/dateValues/dateValues.d.ts",
-      "import": "./lib/dateValues/dateValues.js",
-      "require": "./lib-commonjs/dateValues.js"
-    },
-    "./lib/dateValues/timeConstants": {
-      "types": "./lib/dateValues/timeConstants.d.ts",
-      "import": "./lib/dateValues/timeConstants.js",
-      "require": "./lib-commonjs/dateValues/timeConstants.js"
     }
   }
 }
