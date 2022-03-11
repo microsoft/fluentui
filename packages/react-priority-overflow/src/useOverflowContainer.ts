@@ -14,7 +14,7 @@ import { UseOverflowContainerReturn } from './types';
 /**
  *
  * @param update - Callback when overflow state changes
- * @param options
+ * @param options - Options to configure the overflow container
  * @returns - ref to attach to an intrinsic HTML element and imperative functions
  */
 export const useOverflowContainer = <TElement extends HTMLElement>(
