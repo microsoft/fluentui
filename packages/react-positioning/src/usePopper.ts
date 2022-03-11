@@ -1,4 +1,9 @@
-import { computePosition, hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
+import {
+  computePosition,
+  hide as hideMiddleware,
+  arrow as arrowMiddleware,
+  offset as offsetMiddleware,
+} from '@floating-ui/dom';
 import type { Middleware, Strategy } from '@floating-ui/dom';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
@@ -8,7 +13,6 @@ import type { FloatingUIOptions, PositioningProps, PositioningVirtualElement } f
 import { getPlacement } from './utils/positioningHelper';
 import { useCallbackRef } from './utils/useCallbackRef';
 import {
-  offset as offsetMiddleware,
   shift as shiftMiddleware,
   flip as flipMiddleware,
   coverTarget as coverTargetMiddleware,
