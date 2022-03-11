@@ -43,7 +43,7 @@ type ToolbarProps = {
 
 ### ToolbarButton
 
-It serves as an override on top of `Button` limiting the possible props only to `size` and `appearance`
+It serves as an override on top of `Button` limiting the possible props only to `size`, `appearance`, `disabled` and `disabledFocusable`
 
 ```typescript
 type type ToolbarButtonProps = ComponentProps<ButtonSlots> &
