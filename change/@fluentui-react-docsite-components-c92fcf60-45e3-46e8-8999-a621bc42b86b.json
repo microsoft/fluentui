@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix import of markdown-to-jsx",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

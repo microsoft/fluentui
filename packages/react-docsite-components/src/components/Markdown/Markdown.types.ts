@@ -1,9 +1,9 @@
-import { ITheme, IStyleFunctionOrObject, IStyle, ILinkStyleProps, IImageStyleProps } from '@fluentui/react';
-import { IMarkdownHeaderStyleProps } from './MarkdownHeader';
-import { IMarkdownParagraphStyleProps } from './MarkdownParagraph';
-import { IMarkdownCodeStyleProps } from './MarkdownCode';
-import { IMarkdownTableStyleProps } from '../MarkdownTable/index';
-import { MarkdownToJSX } from 'markdown-to-jsx';
+import type { ITheme, IStyleFunctionOrObject, IStyle, ILinkStyleProps, IImageStyleProps } from '@fluentui/react';
+import type { IMarkdownHeaderStyleProps } from './MarkdownHeader';
+import type { IMarkdownParagraphStyleProps } from './MarkdownParagraph';
+import type { IMarkdownCodeStyleProps } from './MarkdownCode';
+import type { IMarkdownTableStyleProps } from '../MarkdownTable/index';
+import type { MarkdownToJSX } from 'markdown-to-jsx';
 
 export interface IMarkdownProps {
   /** CSS class to apply to the component root */
