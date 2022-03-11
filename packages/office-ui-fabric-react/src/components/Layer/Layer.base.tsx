@@ -97,6 +97,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     // If one was already existing, remove.
     this._removeLayerElement();
 
+    // eslint-disable-next-line deprecation/deprecation
     const layerElement = (host.ownerDocument ?? doc)?.createElement('div');
 
     if (layerElement) {
@@ -232,7 +233,7 @@ function _getFilteredEvents() {
       'onInput',
       'onInvalid',
       'onSubmit',
-    ].forEach((name) => (_filteredEventProps[name] = _onFilterEvent));
+    ].forEach(name => (_filteredEventProps[name] = _onFilterEvent));
   }
 
   return _filteredEventProps;
