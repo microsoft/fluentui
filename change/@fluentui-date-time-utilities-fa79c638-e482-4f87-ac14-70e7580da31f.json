@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Bump version to fix exports for partner team",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
