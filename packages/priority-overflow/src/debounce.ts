@@ -4,7 +4,7 @@
  * @param fn - Function to debounce
  * @returns debounced function
  */
-export default function debounce(fn: Function) {
+export function debounce(fn: Function) {
   let pending: boolean;
   return () => {
     if (!pending) {

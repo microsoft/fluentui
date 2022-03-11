@@ -1,4 +1,4 @@
-import debounce from './debounce';
+import { debounce } from './debounce';
 import { createPriorityQueue } from './priorityQueue';
 import type {
   OnUpdateItemVisibility,

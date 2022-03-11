@@ -8,7 +8,6 @@ describe('Popover', () => {
   isConformant({
     Component: Popover,
     displayName: 'Popover',
-    skipAsPropTests: true,
     disabledTests: [
       // Popover does not render DOM elements
       'component-handles-ref',

@@ -179,4 +179,68 @@ describe('Selection', () => {
     selection.selectToKey('0');
     expect(selection.getSelectedIndices()).toEqual([0, 1]);
   });
+
+  it('allows selection to be pre-initialized', () => {
+    const items1: IObjectWithKey[] = [{ key: 'a' }, { key: 'b' }];
+
+    // Add a callback to make sure an item always shows as selected if present.
+    // The expectation is that the change to selection is merged with the existing update.
+    const onItemsChanged = jest.fn(() => {
+      selection.setKeySelected('b', true, false);
+    });
+
+    const selection = new Selection({
+      items: [] as IObjectWithKey[],
+      selectionMode: SelectionMode.multiple,
+      onItemsChanged,
+      onSelectionChanged,
+    });
+
+    expect(onSelectionChanged).toHaveBeenCalledTimes(0);
+    expect(onItemsChanged).toHaveBeenCalledTimes(0);
+
+    expect(selection.getSelection()).toEqual([]);
+
+    selection.setItems(items1);
+
+    expect(onItemsChanged).toHaveBeenCalledTimes(1);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(1);
+
+    expect(selection.getSelection()).toEqual([{ key: 'b' }]);
+
+    selection.setKeySelected('a', true, false);
+
+    expect(onItemsChanged).toHaveBeenCalledTimes(1);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(2);
+
+    expect(selection.getSelection()).toEqual([{ key: 'a' }, { key: 'b' }]);
+
+    const items2: IObjectWithKey[] = [{ key: 'c' }, { key: 'd' }];
+
+    // Change the set of items such that the 'selected' item is no longer present.
+    selection.setItems(items2);
+
+    expect(onItemsChanged).toHaveBeenCalledTimes(2);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(3);
+
+    expect(selection.getSelection()).toEqual([]);
+
+    selection.setItems(items1);
+
+    expect(onItemsChanged).toHaveBeenCalledTimes(3);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(4);
+
+    expect(selection.getSelection()).toEqual([{ key: 'b' }]);
+
+    // Set an item as selected, then flip their order, within the same change event.
+    selection.setChangeEvents(false);
+    selection.setKeySelected('a', true, false);
+    selection.setItems([{ key: 'b' }, { key: 'a' }], false);
+    selection.setChangeEvents(true);
+
+    expect(onItemsChanged).toHaveBeenCalledTimes(4);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(5);
+
+    expect(selection.getSelection()).toEqual([{ key: 'b' }, { key: 'a' }]);
+  });
 });

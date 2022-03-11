@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 04 Mar 2022 05:17:28 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 19:49:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.6)
+
+Fri, 04 Mar 2022 19:49:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.5..@fluentui/react-components_v9.0.0-rc.6)
+
+### Changes
+
+- `@fluentui/react-components`
+  - Adding /unstable export to exports map. ([PR #21962](https://github.com/microsoft/fluentui/pull/21962) by dzearing@microsoft.com)
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.5)
 

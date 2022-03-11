@@ -1,11 +1,11 @@
 import { ComponentSlotStylesPrepared, ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
-import { FlexDirectionProperty } from 'csstype';
+import { Property } from 'csstype';
 import { LoaderStylesProps } from '../../../../components/Loader/Loader';
 import { LoaderVariables } from './loaderVariables';
 import { pxToRem } from '../../../../utils';
 import { ObjectOf } from '../../../../types';
 
-const rootFlexDirections: ObjectOf<FlexDirectionProperty> = {
+const rootFlexDirections: ObjectOf<Property.FlexDirection> = {
   above: 'column-reverse',
   below: 'column',
   start: 'row-reverse',

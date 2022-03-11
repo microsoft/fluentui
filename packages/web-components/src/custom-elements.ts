@@ -1,3 +1,46 @@
+// These type imports are needed so that API-extractor doesn't add import types with improper pathing.
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import type {
+  Accordion,
+  AccordionItem,
+  Anchor,
+  AnchoredRegion,
+  Badge,
+  Breadcrumb,
+  BreadcrumbItem,
+  Button,
+  Calendar,
+  Card,
+  Checkbox,
+  Combobox,
+  DataGrid,
+  Dialog,
+  Divider,
+  Flipper,
+  HorizontalScroll,
+  Listbox,
+  ListboxOption,
+  Menu,
+  MenuItem,
+  NumberField,
+  Radio,
+  RadioGroup,
+  Search,
+  Select,
+  Skeleton,
+  Slider,
+  SliderLabel,
+  Switch,
+  Tabs,
+  TextArea,
+  TextField,
+  Toolbar,
+  Tooltip,
+  TreeItem,
+  TreeView,
+} from '@microsoft/fast-foundation';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 /**
  * Export all custom element definitions
  */
