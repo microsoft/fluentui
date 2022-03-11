@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding additional exports to support existing 1js imports (which will be resolved separately.)",
+  "packageName": "@fluentui/utilities",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch"
+}
