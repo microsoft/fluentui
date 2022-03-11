@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Update usages of react-positioning",
+  "packageName": "@fluentui/react-popover",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
