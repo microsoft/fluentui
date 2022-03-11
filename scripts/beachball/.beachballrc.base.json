@@ -13,5 +13,6 @@
     "**/jest.config.js",
     "**/SPEC*.md",
     "**/tests/**"
-  ]
+  ],
+  "scope": ["!packages/fluentui/*"]
 }

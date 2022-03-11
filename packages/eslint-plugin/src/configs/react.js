@@ -296,15 +296,21 @@ const config = {
   },
 };
 
+/** @type {import("eslint").Linter.RulesRecord} */
+const typeAwareRules = {
+  /**
+   * plugin: https://github.com/gund/eslint-plugin-deprecation
+   */
+  'deprecation/deprecation': 'error',
+};
+
 /**
  * Override definitions for `config`. See explanation at bottom of file for why/how this function is used.
  * @returns {import("eslint").Linter.ConfigOverride[]}
  */
 const getOverrides = () => [
   // Enable rules requiring type info only for appropriate files/circumstances
-  ...configHelpers.getTypeInfoRuleOverrides({
-    'deprecation/deprecation': 'error',
-  }),
+  ...configHelpers.getTypeInfoRuleOverrides(typeAwareRules),
   {
     files: '**/*.{ts,tsx}',
     // This turns off a few rules that don't work or are unnecessary for TS, and enables a few

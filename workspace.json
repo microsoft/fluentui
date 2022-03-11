@@ -657,11 +657,6 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/server-rendered-app": {
-      "root": "apps/server-rendered-app",
-      "projectType": "application",
-      "implicitDependencies": []
-    },
     "@fluentui/set-version": {
       "root": "packages/set-version",
       "projectType": "library",

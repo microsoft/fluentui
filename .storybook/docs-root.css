@@ -90,22 +90,29 @@
   /* Neutrals / Web / Gray 200 #1B1A19 */
   color: #1b1a19;
   margin-top: 8px;
+}
+
+#docs-root .sbdocs-ul {
+  margin: 12px 0;
+}
+
+#docs-root .sbdocs-ul .sbdocs-li {
   list-style: none;
   position: relative;
 }
 
-#docs-root .sbdocs-li::before {
+#docs-root .sbdocs-ul .sbdocs-li::before {
   position: absolute;
   content: '•';
-  color: #bdbdbd;
+  color: #8d8d8d;
   font-size: 16px;
   line-height: 6px;
   top: calc(50% - 3px);
   left: -25px;
 }
 
-#docs-root .sbdocs-ul {
-  margin: 12px 0;
+#docs-root .sbdocs-ol .sbdocs-li {
+  color: #8d8d8d;
 }
 
 #docs-root .sbdocs-preview {
