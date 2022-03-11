@@ -8748,15 +8748,23 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     }
 
 // Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ILayerHost" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export class LayerHost extends React.Component<ILayerHostProps> {
+export class LayerHost extends React.Component<ILayerHostProps> implements ILayerHost {
+    constructor(props: ILayerHostProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    hostId: string;
+    // (undocumented)
+    notifyLayersChanged(): void;
+    // (undocumented)
     render(): JSX.Element;
+    // (undocumented)
+    rootRef: React.RefObject<HTMLDivElement>;
     // (undocumented)
     shouldComponentUpdate(): boolean;
 }
