@@ -3,8 +3,7 @@ import { IsConformantOptions } from './types';
 import { EOL } from 'os';
 import * as path from 'path';
 
-import { errorMessageColors, formatArray, getErrorMessage, formatErrors } from './utils/errorMessages';
-import { getPackagePath } from './defaultTests';
+import { errorMessageColors, formatArray, getErrorMessage, formatErrors, getPackagePath } from './utils/index';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -24,46 +23,6 @@ import { getPackagePath } from './defaultTests';
  * ```
  */
 export const defaultErrorMessages = {
-  'has-docblock': (testInfo: IsConformantOptions, error: Error, docblock: string, wordCount: number | undefined) => {
-    const { displayName, componentPath } = testInfo;
-    const { testErrorInfo, testErrorPath, resolveInfo } = errorMessageColors;
-
-    if (wordCount === undefined) {
-      // Parsing error or something--need to just look at the original error
-      return getErrorMessage({
-        displayName,
-        overview: `has an invalid docblock in the file:${EOL}${testErrorPath(componentPath)}`,
-        error,
-      });
-    }
-
-    if (wordCount === 0) {
-      // Message Description: Handles scenario where there is no existing docblock in the componentPath.
-      //
-      // It appears that "displayName" doesn't have a docblock in the file: "componentPath".
-      // Possible solutions:
-      // 1. Consider adding a 5 to 25 word doc comment on the component.
-      return getErrorMessage({
-        displayName,
-        overview: `doesn't have a docblock in the file:${EOL}${testErrorPath(componentPath)}`,
-        suggestions: [
-          `Consider adding a ${resolveInfo('5')} to ${resolveInfo('25')} word doc comment on the component`,
-        ],
-        error,
-      });
-    }
-
-    // Message Description: Handles scenario where a docblock exists but doesn't meet the min and max requirements.
-    //
-    // It appears that "displayName" doesn't have a docblock between 5 and 25 words.
-    // It has a word count of "docBlockLength". Here is the docblock: "docblock.description"
-    return getErrorMessage({
-      displayName,
-      overview: `docblock is not between ${resolveInfo('5')} and ${resolveInfo('25')} words.`,
-      details: [`It has a word count of ${testErrorInfo('' + wordCount)}. Here is the docblock:`, '', docblock],
-      error,
-    });
-  },
   'exports-component': (testInfo: IsConformantOptions, error: Error, exportNames: string[]) => {
     const { componentPath, displayName } = testInfo;
     const { testErrorPath, resolveInfo } = errorMessageColors;
@@ -445,31 +404,6 @@ export const defaultErrorMessages = {
     });
   },
 
-  'is-static-property-of-parent': (testInfo: IsConformantOptions, error: Error) => {
-    const { componentPath, displayName } = testInfo;
-    const { testErrorInfo, resolveInfo } = errorMessageColors;
-    const componentFolder = componentPath.replace(path.basename(componentPath) + path.extname(componentPath), '');
-    const dirName = path.basename(componentFolder).replace(path.extname(componentFolder), '');
-
-    // Message Description: Handles scenario where the child component is not a static property of the parent..
-    //
-    // It appears that "displayName" is not a static property of its parent (inferred from the directory name).
-    // Possible solutions:
-    // 1. Include the child component: "displayName" as a static property of "dirName".
-    // 2.Check to see if "displayName" is a parent component but contained in a directory with a different name.
-    return getErrorMessage({
-      displayName,
-      overview: `is not a static property of its parent ${testErrorInfo(dirName)} (inferred from the directory name)`,
-      suggestions: [
-        `Include the child component ${resolveInfo(displayName)} as a static property of ${resolveInfo(dirName)}.`,
-        `Check to see if ${resolveInfo(
-          displayName,
-        )} is a parent component but contained in a directory with a different name.`,
-      ],
-      error,
-    });
-  },
-
   // Note: the original error isn't included in params since the test's final checks are narrowly scoped
   'kebab-aria-attributes': (testInfo: IsConformantOptions, invalidProps: string[]) => {
     const { displayName } = testInfo;
@@ -538,86 +472,6 @@ export const defaultErrorMessages = {
     });
   },
 
-  'as-renders-fc': (testInfo: IsConformantOptions, error: Error) => {
-    const { displayName } = testInfo;
-    const { resolveInfo } = errorMessageColors;
-
-    // Message Description: Receives an error when attempting to render as a functional component
-    // or pass as to the next component.
-    //
-    // It appears that "displayName" "as" prop doesn't properly handle a function component.
-    // Possible solutions:
-    // - If your component doesn't have an "as" prop, enable isConformant's skipAsPropTests option.
-    // - If your component uses forwardRef, enable isConformant's asPropHandlesRef option.
-    // - Check if you are missing any requiredProps within the isConformant in your test file.
-    // - Make sure that your component's implementation contains a valid return statement.
-    // - Check to see if your component works as expected with Enzyme's mount().
-    return getErrorMessage({
-      displayName,
-      overview: `"as" prop doesn't properly handle a function component.`,
-      suggestions: [
-        `If your component doesn't have an "as" prop, enable isConformant's ${resolveInfo('skipAsPropTests')} option.`,
-        `If your component uses forwardRef, enable isConformant's ${resolveInfo('asPropHandlesRef')} option.`,
-        `Check if you are missing any ${resolveInfo('requiredProps')} within the test's isConformant.`,
-        `Make sure that your component code contains a valid return statement.`,
-        `Check to see if your component works as expected with Enzyme's ${resolveInfo('mount()')}.`,
-      ],
-      error,
-    });
-  },
-
-  'as-renders-react-class': (testInfo: IsConformantOptions, error: Error) => {
-    const { displayName } = testInfo;
-    const { resolveInfo } = errorMessageColors;
-
-    // Message Description: Receives an error when attempting to render as a class component
-    // or pass as to the next component.
-    //
-    // It appears that "displayName" "as" prop doesn't properly handle a class component.
-    // Possible solutions:
-    // - If your component doesn't have an "as" prop, enable isConformant's skipAsPropTests option.
-    // - If your component uses forwardRef, enable isConformant's asPropHandlesRef option.
-    // - Check if you are missing any requiredProps within the isConformant in your test file.
-    // - Make sure that your component's implementation contains a valid return statement.
-    // - Check to see if your component works as expected with Enzyme's mount().
-    return getErrorMessage({
-      displayName,
-      overview: `"as" prop doesn't properly handle a class component.`,
-      suggestions: [
-        `If your component doesn't have an "as" prop, enable isConformant's ${resolveInfo('skipAsPropTests')} option.`,
-        `If your component uses forwardRef, enable isConformant's ${resolveInfo('asPropHandlesRef')} option.`,
-        `Check if you are missing any ${resolveInfo('requiredProps')} within the test's isConformant.`,
-        `Make sure that your component's implementation contains a valid return statement.`,
-        `Check to see if your component works as expected with Enzyme's ${resolveInfo('mount()')}.`,
-      ],
-      error,
-    });
-  },
-
-  'as-passes-as-value': (testInfo: IsConformantOptions, error: Error) => {
-    const { displayName } = testInfo;
-    const { resolveInfo } = errorMessageColors;
-
-    // Message Description: Receives an error when attempting to render as a functional component
-    // or pass as to the next component.
-    //
-    // It appears that "displayName" doesn't pass extra props to the component it renders as.
-    // Possible solutions:
-    // - If your component doesn't have an "as" prop, enable isConformant's skipAsPropTests option.
-    // - Ensure that you are spreading extra props to the "as" component when rendering.
-    // - Ensure that there is not a problem rendering the component in isConformant (check previous test results).
-    return getErrorMessage({
-      displayName,
-      overview: `doesn't pass extra props to the component it renders as.`,
-      suggestions: [
-        `If your component doesn't have an "as" prop, enable isConformant's ${resolveInfo('skipAsPropTests')} option.`,
-        `Ensure that you are ${resolveInfo('spreading extra props')} to the "as" component when rendering.`,
-        `Ensure that there is not a problem rendering the component (check previous test results).`,
-      ],
-      error,
-    });
-  },
-
   'component-has-static-classname': (
     testInfo: IsConformantOptions,
     error: Error,
@@ -659,34 +513,6 @@ export const defaultErrorMessages = {
         `Make sure that your component's ${resolveInfo('index.ts')} file` +
           `or a file with styles hook exports \`${resolveInfo(constantValue)}\``,
         `If the component is internal, consider enabling ${resolveInfo('isInternal')} in your isConformant test.`,
-      ],
-      error,
-    });
-  },
-
-  'as-renders-html': (testInfo: IsConformantOptions, error: Error) => {
-    const { displayName } = testInfo;
-    const { resolveInfo } = errorMessageColors;
-
-    // Message Description: Receives an error when attempting to render as a functional component
-    // or pass as to the next component.
-    //
-    // It appears that "displayName" "as" prop doesn't properly handle HTML tags.
-    // Possible solutions:
-    // - If your component doesn't have an "as" prop, enable isConformant's skipAsPropTests option.
-    // - Make sure that your component can correctly render as HTML tags.
-    // - Check if you are missing any requiredProps within the isConformant in your test file.
-    // - Make sure that your component's implementation contains a valid return statement.
-    // - Check to see if your component works as expected with Enzyme's mount().
-    return getErrorMessage({
-      displayName,
-      overview: `"as" prop doesn't properly handle HTML tags.`,
-      suggestions: [
-        `If your component doesn't have an "as" prop, enable isConformant's ${resolveInfo('skipAsPropTests')} option.`,
-        `Make sure that your component can correctly render as ${resolveInfo('HTML tags')}.`,
-        `Check if you are missing any ${resolveInfo('requiredProps')} within the isConformant in your test file.`,
-        `Make sure that your component's implementation contains a valid return statement.`,
-        `Check to see if your component works as expected with Enzyme's ${resolveInfo('mount()')}.`,
       ],
       error,
     });

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { StoryFn as StoryFunction } from '@storybook/addons';
 
 import { themes, defaultTheme, FluentProvider } from '../theme';
 import { THEME_ID } from '../constants';
@@ -14,7 +13,7 @@ const getActiveFluentTheme = (globals: FluentGlobals) => {
   return { theme };
 };
 
-export const withFluentProvider = (StoryFn: StoryFunction<React.ReactElement>, context: FluentStoryContext) => {
+export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentStoryContext) => {
   const { theme } = getActiveFluentTheme(context.globals);
 
   return (

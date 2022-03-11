@@ -190,6 +190,11 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/perf-test-react-components": {
+      "root": "apps/perf-test-react-components",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/pr-deploy-site": {
       "root": "apps/pr-deploy-site",
       "projectType": "application",
@@ -650,11 +655,6 @@
     "@fluentui/scripts": {
       "root": "scripts",
       "projectType": "library",
-      "implicitDependencies": []
-    },
-    "@fluentui/server-rendered-app": {
-      "root": "apps/server-rendered-app",
-      "projectType": "application",
       "implicitDependencies": []
     },
     "@fluentui/set-version": {

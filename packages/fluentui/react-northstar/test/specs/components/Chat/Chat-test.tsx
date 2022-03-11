@@ -13,6 +13,7 @@ describe('Chat', () => {
   isConformant(Chat, {
     testPath: __filename,
     constructorName: 'Chat',
+    skipAsPropTests: 'as-component',
   });
   chatImplementsCollectionShorthandProp('items', ChatItem, { mapsValueToProp: 'message' });
 

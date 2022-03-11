@@ -14,7 +14,7 @@ Default.argTypes = {
   },
   src: {
     control: 'text',
-    defaultValue: 'https://via.placeholder.com/300x300',
+    defaultValue: 'https://fabricweb.azureedge.net/fabric-website/placeholders/300x300.png',
     description: 'path to the image you want to display',
   },
   as: { table: { disable: true } },
