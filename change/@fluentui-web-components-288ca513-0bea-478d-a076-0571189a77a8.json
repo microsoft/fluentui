@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added support for Segoe UI Variable font with variant configurations Added type ramp helpers to conveniently and consistently apply all necessary font attributes.",
+  "packageName": "@fluentui/web-components",
+  "email": "47367562+bheston@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
