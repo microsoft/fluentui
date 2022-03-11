@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(cra-template): remove import/resolve from lint config",
-  "packageName": "@fluentui/cra-template",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

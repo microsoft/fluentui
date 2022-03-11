@@ -1,8 +1,17 @@
 # Change Log - @fluentui/scheme-utilities
 
-This log was last generated on Thu, 10 Mar 2022 07:34:50 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Mar 2022 07:34:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.4)
+
+Fri, 11 Mar 2022 07:34:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.3..@fluentui/scheme-utilities_v8.3.4)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.3 ([PR #22047](https://github.com/microsoft/fluentui/pull/22047) by beachball)
 
 ## [8.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.3)
 
