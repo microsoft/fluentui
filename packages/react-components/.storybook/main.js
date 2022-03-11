@@ -2,6 +2,10 @@ const rootMain = require('../../../.storybook/main');
 const utils = require('./main.utils');
 
 module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+  features: {
+    // Enables code splitting
+    storyStoreV7: true,
+  },
   ...rootMain,
   stories: [
     ...rootMain.stories,

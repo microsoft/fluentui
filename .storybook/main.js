@@ -23,10 +23,6 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const previewHeadTemplate = fs.readFileSync(path.resolve(__dirname, 'preview-head-template.html'), 'utf8');
 
 module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
-  features: {
-    // Enables code splitting
-    storyStoreV7: true,
-  },
   stories: [],
   addons: [
     '@storybook/addon-essentials',
