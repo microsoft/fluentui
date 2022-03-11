@@ -66,6 +66,30 @@ It's based on the `Divider` containing few styles overrides
 type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>>;
 ```
 
+### ToolbarRadioGroup
+
+It's based on the `RadioGroup` containing few styles overrides
+
+```typescript
+type ToolbarRadioGroupProps = ComponentProps<Partial<RadioGroupSlots>>;
+```
+
+### ToolbarRadio
+
+It's based on the `Radio` containing few styles overrides
+
+```typescript
+type ToolbarRadioProps = ComponentProps<Partial<RadioSlots>>;
+```
+
+### ToolbarCheckbox
+
+It's based on the `Checkbox` containing few styles overrides
+
+```typescript
+type ToolbarCheckboxProps = ComponentProps<Partial<CheckboxSlots>>;
+```
+
 ## Structure
 
 - _**Public**_
@@ -76,6 +100,13 @@ type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>>;
   <ToolbarDivider />
   <ToolbarButton />
   <ToolbarButton />
+  <ToolbarCheckbox />
+  <ToolbarRadioGroup>
+    <ToolbarRadio value="A" label="Option A" />
+    <ToolbarRadio value="B" label="Option B" />
+    <ToolbarRadio value="C" label="Option C" />
+    <ToolbarRadio value="D" label="Option D" />
+  </ToolbarRadioGroup>
 </Toolbar>
 ```
 
