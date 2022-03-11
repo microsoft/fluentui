@@ -15,7 +15,7 @@ As a part of the spec definitions in Fluent UI, a research effort has been made 
 - All mentions of v7 or v8 == `@fluentui/react` ([docsite](https://developer.microsoft.com/en-us/fluentui#/))
 - All mentions of v0 == `@fluentui/react-northstar` ([docsite](https://fluentsite.z22.web.core.windows.net/))
 
-The main difference between `@fluentui/react`'s `CommandBar` and `@fluentui/react-northstar`'s `Toolbar` is the right group of commands present in `CommandBar` which will not remove items on overflow.
+The main difference between `@fluentui/react`'s `CommandBar` and `@fluentui/react-northstar`'s `Toolbar` is the right group of commands present in `CommandBar`.
 
 v0 `Toolbar` has support to children API with static components in `Toolbar` as `Toolbar.Button` etc...
 
@@ -79,7 +79,7 @@ type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>>;
 </Toolbar>
 ```
 
-- \_**DOM** -
+- _**DOM**_
 
 ```html
 <div role="toolbar">
