@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 11 Mar 2022 19:51:48 GMT and should not be manually modified.
+This log was last generated on Sat, 12 Mar 2022 01:04:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.61.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.61.0)
+
+Sat, 12 Mar 2022 01:04:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.60.4..@fluentui/react_v8.61.0)
+
+### Minor changes
+
+- Adding sass import to sass core references file. ([PR #22077](https://github.com/microsoft/fluentui/pull/22077) by dzearing@microsoft.com)
 
 ## [8.60.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.60.4)
 

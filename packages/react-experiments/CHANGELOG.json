@@ -2,6 +2,27 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Sat, 12 Mar 2022 01:04:50 GMT",
+      "tag": "@fluentui/react-experiments_v8.7.0",
+      "version": "8.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "9bfd65d1d22df453c9ddc9ee1cb660e516a573ae",
+            "comment": "Adding top level imports to react-experiments."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.61.0",
+            "commit": "dca5474ce261e4ea38e3b803b35a3bc802549ee0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Mar 2022 19:51:48 GMT",
       "tag": "@fluentui/react-experiments_v8.6.5",
       "version": "8.6.5",
