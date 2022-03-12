@@ -450,12 +450,12 @@
 
   &:hover,
   &.selected {
-    .name.onlyOnHover {
+    .onlyOnHover .name {
       opacity: 1;
       transform: translateY(0px);
     }
 
-    .activity.onlyOnHover {
+    .onlyOnHover .activity {
       opacity: 1;
       transform: translateY(0px);
     }
