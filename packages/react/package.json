@@ -64,6 +64,9 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "exports": {
+    "./dist/sass/References": {
+      "sass": "./dist/sass/_References.scss"
+    },
     "./lib/ActivityItem": {
       "types": "./lib/ActivityItem.d.ts",
       "import": "./lib/ActivityItem.js",
