@@ -10,11 +10,6 @@ module.exports = resources.createServeConfig(
       [BUNDLE_NAME]: ['react-app-polyfill/ie11', './src/index.tsx'],
     },
 
-    externals: {
-      react: 'React',
-      'react-dom': 'ReactDOM',
-    },
-
     resolve: {
       alias: getResolveAlias(),
     },
