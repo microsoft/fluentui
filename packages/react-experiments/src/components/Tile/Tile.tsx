@@ -21,7 +21,6 @@ import type {
   ITileProps,
   TileSize,
 } from './Tile.types';
-import type { ISize } from '../../Utilities';
 
 const TileStyles: any = TileStylesModule;
 const SignalStyles: any = SignalStylesModule;
@@ -413,7 +412,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
   };
 }
 
-export { ITileLayout };
+export type { ITileLayout };
 
 export function getTileLayout(tileElement: JSX.Element): ITileLayout {
   const tileProps: ITileProps = tileElement.props;
