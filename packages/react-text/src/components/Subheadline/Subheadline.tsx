@@ -6,7 +6,7 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { TextSlots } from '../Text/Text.types';
 
 /**
- * @deprecated
+ * @deprecated Use `subheadlineClassNames.root` instead.
  */
 export const subheadlineClassName = 'fui-Subheadline';
 export const subheadlineClassNames: SlotClassNames<TextSlots> = {

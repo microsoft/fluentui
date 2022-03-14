@@ -6,7 +6,7 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { TextSlots } from '../Text/Text.types';
 
 /**
- * @deprecated
+ * @deprecated Use `captionClassNames.root` instead.
  */
 export const captionClassName = 'fui-Caption';
 export const captionClassNames: SlotClassNames<TextSlots> = {
