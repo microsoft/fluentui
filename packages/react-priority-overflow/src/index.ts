@@ -1,4 +1,5 @@
 export * from './components/Overflow';
+export * from './constants';
 export * from './types';
 export * from './useIsOverflowGroupVisible';
 export * from './useIsOverflowItemVisible';

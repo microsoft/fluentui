@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useOverflowContext } from './overflowContext';
 import { useOverflowCount } from './useOverflowCount';
+import { DATA_OVERFLOW_MENU } from './constants';
 
 export function useOverflowMenu<TElement extends HTMLElement>(id = 'overflow-menu') {
   const overflowCount = useOverflowCount();
@@ -12,16 +13,20 @@ export function useOverflowMenu<TElement extends HTMLElement>(id = 'overflow-men
 
   useIsomorphicLayoutEffect(() => {
     let deregisterItem: () => void = () => null;
-    if (ref.current) {
+    const element = ref.current;
+    if (element) {
       deregisterItem = registerItem({
-        element: ref.current,
+        element,
         id,
         priority: Infinity,
       });
-      ref.current.style.setProperty('flex-shrink', '0');
+      element.setAttribute(DATA_OVERFLOW_MENU, '');
     }
 
-    return deregisterItem;
+    return () => {
+      element?.removeAttribute(DATA_OVERFLOW_MENU);
+      deregisterItem();
+    };
   }, [registerItem, isOverflowing, id]);
 
   React.useEffect(() => {

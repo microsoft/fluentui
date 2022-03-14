@@ -14,19 +14,14 @@ export function useOverflowItem<TElement extends HTMLElement>(id: string, priori
   const registerItem = useOverflowContext(v => v.registerItem);
 
   useIsomorphicLayoutEffect(() => {
-    let deregisterItem: () => void = () => null;
     if (ref.current) {
-      deregisterItem = registerItem({
+      return registerItem({
         element: ref.current,
         id: id + '',
         priority: priority ?? 0,
         groupId: groupId + '',
       });
     }
-
-    return () => {
-      deregisterItem();
-    };
   }, [id, priority, registerItem, groupId]);
 
   return ref;

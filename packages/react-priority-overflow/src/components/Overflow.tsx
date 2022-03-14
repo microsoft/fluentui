@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { OverflowContext } from '../overflowContext';
-import { defaultUpdateVisibilityCallback, useOverflowContainer } from '../useOverflowContainer';
+import { updateVisibilityAttribute, useOverflowContainer } from '../useOverflowContainer';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { OnUpdateOverflow, OverflowGroupState, ObserveOptions } from '@fluentui/priority-overflow';
+import { DATA_OVERFLOWING, DATA_OVERFLOW_MENU } from '../constants';
 
 const useStyles = makeStyles({
   container: {
@@ -15,6 +16,18 @@ const useStyles = makeStyles({
 
   vertical: {
     flexDirection: 'column',
+  },
+
+  overflowMenu: {
+    [`& [${DATA_OVERFLOW_MENU}]`]: {
+      flexShrink: 0,
+    },
+  },
+
+  overflowingItems: {
+    [`& > [${DATA_OVERFLOWING}]`]: {
+      display: 'none',
+    },
   },
 });
 
@@ -50,7 +63,7 @@ export const Overflow = React.forwardRef<HTMLDivElement, OverflowProps>((props, 
     overflowAxis,
     padding,
     minimumVisible,
-    onUpdateItemVisibility: defaultUpdateVisibilityCallback,
+    onUpdateItemVisibility: updateVisibilityAttribute,
   });
 
   const mergedRef = useMergedRefs(containerRef, ref);
@@ -70,6 +83,8 @@ export const Overflow = React.forwardRef<HTMLDivElement, OverflowProps>((props, 
         ref={mergedRef}
         className={mergeClasses(
           styles.container,
+          styles.overflowMenu,
+          styles.overflowingItems,
           props.overflowAxis === 'vertical' && styles.vertical,
           props.className,
         )}

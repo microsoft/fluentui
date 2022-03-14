@@ -10,6 +10,7 @@ import type {
 } from '@fluentui/priority-overflow';
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { UseOverflowContainerReturn } from './types';
+import { DATA_OVERFLOWING, DATA_OVERFLOW_ITEM } from './constants';
 
 /**
  *
@@ -57,9 +58,11 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   const registerItem = React.useCallback(
     (item: OverflowItemEntry) => {
       overflowManager.addItem(item);
+      item.element.setAttribute(DATA_OVERFLOW_ITEM, '');
 
       return () => {
-        item.element.style.removeProperty('display');
+        item.element.removeAttribute(DATA_OVERFLOWING);
+        item.element.removeAttribute(DATA_OVERFLOW_ITEM);
         overflowManager.removeItem(item.id);
       };
     },
@@ -77,10 +80,10 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   };
 };
 
-export const defaultUpdateVisibilityCallback: OnUpdateItemVisibility = ({ item, visible }) => {
+export const updateVisibilityAttribute: OnUpdateItemVisibility = ({ item, visible }) => {
   if (visible) {
-    item.element.style.removeProperty('display');
+    item.element.removeAttribute(DATA_OVERFLOWING);
   } else {
-    item.element.style.setProperty('display', 'none');
+    item.element.setAttribute(DATA_OVERFLOWING, '');
   }
 };

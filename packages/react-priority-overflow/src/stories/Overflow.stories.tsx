@@ -5,9 +5,9 @@ import { ComponentMeta } from '@storybook/react';
 export { DomOrder } from './DomOrder.stories';
 export { ReverseDomOrder } from './ReverseDomOrder.stories';
 export { MinimumVisible } from './MinimumVisible.stories';
-export { CustomPriorities } from './CustomPriorities';
-export { Pinned } from './Pinned';
-export { Dividers } from './Dividers';
+export { CustomPriorities } from './CustomPriorities.stories';
+export { Pinned } from './Pinned.stories';
+export { Dividers } from './Dividers.stories';
 export { PriorityWithDividers } from './PriorityWithDividers.stories';
 export { Selection } from './Selection.stories';
 
