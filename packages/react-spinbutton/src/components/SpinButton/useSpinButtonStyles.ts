@@ -3,7 +3,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SpinButtonSlots, SpinButtonState } from './SpinButton.types';
 
 /**
- * @deprecated
+ * @deprecated Use `spinButtonClassNames.root` instead.
  */
 export const spinButtonClassName = 'fui-SpinButton';
 export const spinButtonClassNames: SlotClassNames<SpinButtonSlots> = {
