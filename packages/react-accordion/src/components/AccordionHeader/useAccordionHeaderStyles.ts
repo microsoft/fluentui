@@ -5,7 +5,7 @@ import type { AccordionHeaderSlots, AccordionHeaderState } from './AccordionHead
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `accordionHeaderClassNames.root` instead.
  */
 export const accordionHeaderClassName = 'fui-AccordionHeader';
 export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots> = {
