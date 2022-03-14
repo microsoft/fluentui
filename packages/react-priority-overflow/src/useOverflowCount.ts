@@ -6,9 +6,7 @@ import { useOverflowContext } from './overflowContext';
 export const useOverflowCount = () =>
   useOverflowContext(v => {
     return Object.entries(v.itemVisibility).reduce((acc, [id, visible]) => {
-      // TODO remove the divider match since all dividers should either be rendered as part of the item or
-      // associated with a group. Dividers should not be overflow items
-      if (!id.startsWith('divider') && !visible) {
+      if (!visible) {
         acc++;
       }
 
