@@ -12,7 +12,13 @@ import type { OverflowItemEntry } from '@fluentui/priority-overflow';
 import * as React_2 from 'react';
 
 // @public (undocumented)
-export const defaultUpdateVisibilityCallback: OnUpdateItemVisibility;
+export const DATA_OVERFLOW_ITEM = "data-overflow-item";
+
+// @public (undocumented)
+export const DATA_OVERFLOW_MENU = "data-overflow-menu";
+
+// @public (undocumented)
+export const DATA_OVERFLOWING = "data-overflowing";
 
 // @public (undocumented)
 export const Overflow: React_2.ForwardRefExoticComponent<OverflowProps & React_2.RefAttributes<HTMLDivElement>>;
@@ -20,6 +26,9 @@ export const Overflow: React_2.ForwardRefExoticComponent<OverflowProps & React_2
 // @public (undocumented)
 export interface OverflowProps extends React_2.HTMLAttributes<HTMLDivElement>, Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'> {
 }
+
+// @public (undocumented)
+export const updateVisibilityAttribute: OnUpdateItemVisibility;
 
 // @public (undocumented)
 export function useIsOverflowGroupVisible(id: string): OverflowGroupState;
