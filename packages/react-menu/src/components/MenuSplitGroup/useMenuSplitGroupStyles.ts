@@ -5,7 +5,7 @@ import type { MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup.
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `menuSplitGroupClassNames.root` instead.
  */
 export const menuSplitGroupClassName = 'fui-MenuSplitGroup';
 export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots> = {

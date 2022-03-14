@@ -3,7 +3,7 @@ import { mergeClasses } from '@griffel/react';
 import type { MenuGroupSlots, MenuGroupState } from './MenuGroup.types';
 
 /**
- * @deprecated
+ * @deprecated Use `menuGroupClassNames.root` instead.
  */
 export const menuGroupClassName = 'fui-MenuGroup';
 export const menuGroupClassNames: SlotClassNames<MenuGroupSlots> = {
