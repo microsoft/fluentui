@@ -3,7 +3,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SelectSlots, SelectState } from './Select.types';
 
 /**
- * @deprecated
+ * @deprecated Use `selectClassNames.root` instead.
  */
 export const selectClassName = 'fui-Select';
 export const selectClassNames: SlotClassNames<SelectSlots> = {
