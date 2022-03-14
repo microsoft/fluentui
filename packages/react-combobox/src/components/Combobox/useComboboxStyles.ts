@@ -3,7 +3,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { ComboboxSlots, ComboboxState } from './Combobox.types';
 
 /**
- * @deprecated
+ * @deprecated Use `comboboxClassNames.root` instead.
  */
 export const comboboxClassName = 'fui-Combobox';
 export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {

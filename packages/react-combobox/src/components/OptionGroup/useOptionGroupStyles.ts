@@ -3,7 +3,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { OptionGroupSlots, OptionGroupState } from './OptionGroup.types';
 
 /**
- * @deprecated
+ * @deprecated Use `optionGroupClassNames.root` instead.
  */
 export const optionGroupClassName = 'fui-OptionGroup';
 export const optionGroupClassNames: SlotClassNames<OptionGroupSlots> = {

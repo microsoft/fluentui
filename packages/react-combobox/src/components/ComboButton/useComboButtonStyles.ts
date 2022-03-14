@@ -3,7 +3,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { ComboButtonSlots, ComboButtonState } from './ComboButton.types';
 
 /**
- * @deprecated
+ * @deprecated Use `comboButtonClassNames.root` instead.
  */
 export const comboButtonClassName = 'fui-ComboButton';
 export const comboButtonClassNames: SlotClassNames<ComboButtonSlots> = {

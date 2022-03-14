@@ -3,7 +3,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { OptionSlots, OptionState } from './Option.types';
 
 /**
- * @deprecated
+ * @deprecated Use `optionClassNames.root` instead.
  */
 export const optionClassName = 'fui-Option';
 export const optionClassNames: SlotClassNames<OptionSlots> = {
