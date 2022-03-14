@@ -3,7 +3,7 @@ import { mergeClasses } from '@griffel/react';
 import type { AccordionItemSlots, AccordionItemState } from './AccordionItem.types';
 
 /**
- * @deprecated
+ * @deprecated Use `accordionItemClassNames.root` instead.
  */
 export const accordionItemClassName = 'fui-AccordionItem';
 export const accordionItemClassNames: SlotClassNames<AccordionItemSlots> = {
