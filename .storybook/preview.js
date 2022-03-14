@@ -3,7 +3,7 @@ import 'cypress-storybook/react';
 import * as dedent from 'dedent';
 import './docs-root.css';
 
-// This patches globals set up by cypress-storybook to remove its dependency on the deprecated
+// This patches globals set up by cypress-storybook to work around its usage of the deprecated
 // forceReRender API that no longer works with storyStoreV7
 // https://github.com/NicholasBoll/cypress-storybook/issues/46
 // https://github.com/NicholasBoll/cypress-storybook/blob/aa9bc19d66c1cd6c6e25b93cddecb1d4a7241f2f/react.js
