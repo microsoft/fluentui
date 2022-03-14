@@ -31,6 +31,18 @@ const useStyles = makeStyles({
   },
 });
 
+const initialState = { count: 0 };
+
+interface OverflowState {
+  itemVisibility: Record<string, boolean>;
+  hasOverflow: boolean;
+  groupVisibility: Record<string, OverflowGroupState>;
+}
+
+interface ItemVisibilityAction {
+  type: 'ItemVisibility';
+}
+
 export interface OverflowProps
   extends React.HTMLAttributes<HTMLDivElement>,
     Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'> {}
@@ -38,9 +50,9 @@ export interface OverflowProps
 export const Overflow = React.forwardRef<HTMLDivElement, OverflowProps>((props, ref) => {
   const { overflowAxis = 'horizontal', overflowDirection, padding, minimumVisible, ...rest } = props;
   const styles = useStyles();
+
   const [hasOverflow, setHasOverflow] = React.useState(false);
   const [itemVisibility, setItemVisibility] = React.useState<Record<string, boolean>>({});
-
   const [groupVisibility, setGroupVisibility] = React.useState<Record<string, OverflowGroupState>>({});
 
   const updateItemVisibility: OnUpdateOverflow = ({
@@ -48,13 +60,14 @@ export const Overflow = React.forwardRef<HTMLDivElement, OverflowProps>((props, 
     invisibleItems,
     groupVisibility: managerGroupVisibility,
   }) => {
-    setHasOverflow(() => invisibleItems.length > 0);
+    setHasOverflow(invisibleItems.length > 0);
     setItemVisibility(() => {
       const newState: Record<string, boolean> = {};
       visibleItems.forEach(x => (newState[x.id] = true));
       invisibleItems.forEach(x => (newState[x.id] = false));
       return newState;
     });
+
     setGroupVisibility(managerGroupVisibility);
   };
 
