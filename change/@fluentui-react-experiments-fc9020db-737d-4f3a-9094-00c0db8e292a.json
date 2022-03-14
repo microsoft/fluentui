@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update legacy demo apps to use bundled React",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

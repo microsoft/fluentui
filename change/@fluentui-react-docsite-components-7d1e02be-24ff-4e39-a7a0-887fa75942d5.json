@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update index.html to not load `react` and `react-dom` from CDN (they must be bundled with the demo)",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

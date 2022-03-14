@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update legacy demo apps to use bundled React",
-  "packageName": "@fluentui/react-charting",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

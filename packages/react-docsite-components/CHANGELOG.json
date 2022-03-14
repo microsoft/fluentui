@@ -2,6 +2,21 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Mon, 14 Mar 2022 07:38:46 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.6.6",
+      "version": "8.6.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-docsite-components",
+            "commit": "13c32e184b7960671754582de21f3555bf9f02f3",
+            "comment": "Update index.html to not load `react` and `react-dom` from CDN (they must be bundled with the demo)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 12 Mar 2022 01:04:49 GMT",
       "tag": "@fluentui/react-docsite-components_v8.6.5",
       "version": "8.6.5",

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Mon, 14 Mar 2022 07:38:46 GMT",
+      "tag": "@fluentui/react-experiments_v8.7.0",
+      "version": "8.7.0",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "13c32e184b7960671754582de21f3555bf9f02f3",
+            "comment": "Update legacy demo apps to use bundled React"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 12 Mar 2022 01:04:50 GMT",
       "tag": "@fluentui/react-experiments_v8.7.0",
       "version": "8.7.0",

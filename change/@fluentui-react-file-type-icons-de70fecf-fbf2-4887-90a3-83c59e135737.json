@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Added support for ipnyb filetype icon",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}
