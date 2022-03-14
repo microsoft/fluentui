@@ -3,7 +3,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { DialogSlots, DialogState } from './Dialog.types';
 
 /**
- * @deprecated
+ * @deprecated Use `dialogClassNames.root` instead.
  */
 export const dialogClassName = 'fui-Dialog';
 export const dialogClassNames: SlotClassNames<DialogSlots> = {
