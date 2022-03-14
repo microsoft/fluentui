@@ -3,7 +3,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SpinnerSlots, SpinnerState } from './Spinner.types';
 
 /**
- * @deprecated
+ * @deprecated Use `spinnerClassNames.root` instead.
  */
 export const spinnerClassName = 'fui-Spinner';
 export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
