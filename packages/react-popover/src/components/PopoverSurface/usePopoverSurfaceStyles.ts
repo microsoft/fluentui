@@ -3,7 +3,7 @@ import { createArrowHeightStyles, createArrowStyles } from '@fluentui/react-posi
 import { tokens } from '@fluentui/react-theme';
 import type { PopoverSize } from '../Popover/Popover.types';
 import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
  * @deprecated Use `popoverSurfaceClassNames.root` instead.
