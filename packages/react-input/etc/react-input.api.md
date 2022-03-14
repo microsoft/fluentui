@@ -9,12 +9,16 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 // @public
 export const Input: ForwardRefComponent<InputProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const inputClassName = "fui-Input";
+
+// @public (undocumented)
+export const inputClassNames: SlotClassNames<InputSlots>;
 
 // @public
 export type InputOnChangeData = {
