@@ -10,7 +10,9 @@ export const menuButtonClassNames: SlotClassNames<MenuButtonSlots> = {
   menuIcon: 'fui-MenuButton__menuIcon',
 };
 
-// TODO temporary export to pass conformance test.
+/**
+ * @deprecated Use `menuButtonClassName.root` instead.
+ */
 export const menuButtonClassName = menuButtonClassNames.root;
 
 const useMenuIconStyles = makeStyles({
