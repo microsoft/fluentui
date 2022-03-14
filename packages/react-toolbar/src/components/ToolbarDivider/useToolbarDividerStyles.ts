@@ -2,10 +2,6 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { ToolbarDividerSlots, ToolbarDividerState } from './ToolbarDivider.types';
 
-/**
- * @deprecated
- */
-export const toolbarDividerClassName = 'fui-ToolbarDivider';
 export const toolbarDividerClassNames: SlotClassNames<ToolbarDividerSlots> = {
   root: 'fui-ToolbarDivider',
 };

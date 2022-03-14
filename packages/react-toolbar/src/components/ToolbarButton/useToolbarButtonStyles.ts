@@ -2,10 +2,6 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { ToolbarButtonSlots, ToolbarButtonState } from './ToolbarButton.types';
 
-/**
- * @deprecated
- */
-export const toolbarButtonClassName = 'fui-ToolbarButton';
 export const toolbarButtonClassNames: SlotClassNames<ToolbarButtonSlots> = {
   root: 'fui-ToolbarButton',
 };
