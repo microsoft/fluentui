@@ -8,11 +8,6 @@ module.exports = resources.createServeConfig(
       filename: 'theming-designer.js',
     },
 
-    externals: {
-      react: 'React',
-      'react-dom': 'ReactDOM',
-    },
-
     resolve: {
       alias: getResolveAlias(),
     },

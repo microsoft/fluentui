@@ -1,8 +1,37 @@
 # Change Log - @fluentui/theming-designer
 
-This log was last generated on Fri, 11 Mar 2022 07:34:41 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Mar 2022 07:38:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/theming-designer_v1.0.0)
+
+Mon, 14 Mar 2022 07:38:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theming-designer_v1.0.0..@fluentui/theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react-docsite-components to v8.6.6 ([commit](https://github.com/microsoft/fluentui/commit/822ea09ce48f042e3a17cc354f31bcdca4779526) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/theming-designer_v1.0.0)
+
+Sat, 12 Mar 2022 01:04:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theming-designer_v1.0.0..@fluentui/theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.61.0 ([PR #22080](https://github.com/microsoft/fluentui/pull/22080) by beachball)
+- Bump @fluentui/react-docsite-components to v8.6.5 ([PR #22080](https://github.com/microsoft/fluentui/pull/22080) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/theming-designer_v1.0.0)
+
+Fri, 11 Mar 2022 19:51:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theming-designer_v1.0.0..@fluentui/theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.60.4 ([PR #22074](https://github.com/microsoft/fluentui/pull/22074) by beachball)
+- Bump @fluentui/react-docsite-components to v8.6.4 ([PR #22074](https://github.com/microsoft/fluentui/pull/22074) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/theming-designer_v1.0.0)
 

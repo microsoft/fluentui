@@ -48,9 +48,8 @@ jobs:
               return
             }
 
-            core.info(`Using beachball@${beachballVersion}...`)
-            await exec.exec('yarn', ['global', 'add', `beachball@${beachballVersion}`]);
+            core.exportVariable('BEACHBALL_VERSION', beachballVersion);
 
       - run: |
           cp scripts/beachball/.beachballrc.base.json .beachballrc.json
-          yarn checkchange
+          npx beachball@$BEACHBALL_VERSION check

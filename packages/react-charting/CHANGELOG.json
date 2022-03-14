@@ -2,6 +2,51 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 14 Mar 2022 07:38:45 GMT",
+      "tag": "@fluentui/react-charting_v5.9.6",
+      "version": "5.9.6",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "13c32e184b7960671754582de21f3555bf9f02f3",
+            "comment": "Update legacy demo apps to use bundled React"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 12 Mar 2022 01:04:50 GMT",
+      "tag": "@fluentui/react-charting_v5.9.6",
+      "version": "5.9.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.61.0",
+            "commit": "dca5474ce261e4ea38e3b803b35a3bc802549ee0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Mar 2022 19:51:48 GMT",
+      "tag": "@fluentui/react-charting_v5.9.5",
+      "version": "5.9.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.60.4",
+            "commit": "fc2d2868c37f190fdfe61f98a1181f8af98a0122"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Mar 2022 07:34:41 GMT",
       "tag": "@fluentui/react-charting_v5.9.4",
       "version": "5.9.4",

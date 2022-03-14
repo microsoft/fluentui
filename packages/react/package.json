@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.60.3",
+  "version": "8.61.0",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -43,7 +43,7 @@
     "office-ui-fabric-core": "^11.0.0"
   },
   "dependencies": {
-    "@fluentui/date-time-utilities": "^8.4.0",
+    "@fluentui/date-time-utilities": "^8.5.0",
     "@fluentui/foundation-legacy": "^8.2.4",
     "@fluentui/font-icons-mdl2": "^8.2.4",
     "@fluentui/merge-styles": "^8.5.0",
@@ -64,6 +64,9 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "exports": {
+    "./dist/sass/References": {
+      "sass": "./dist/sass/_References.scss"
+    },
     "./lib/ActivityItem": {
       "types": "./lib/ActivityItem.d.ts",
       "import": "./lib/ActivityItem.js",
