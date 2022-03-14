@@ -7,10 +7,11 @@ import { getScopes } from './getScopes';
 import { getVNextChangelogGroups } from './getVNextChangelogGroups';
 
 const baseConfig = JSON.parse(fs.readFileSync(path.resolve(__dirname, '.beachballrc.base.json'), { encoding: 'utf8' }));
+const scopes = [...baseConfig.scope, ...getScopes()];
 
 export const config: BeachballConfig = {
   ...baseConfig,
-  scope: getScopes(),
+  scope: scopes,
   changelog: {
     customRenderers: {
       renderHeader,
