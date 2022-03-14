@@ -7,7 +7,7 @@ import { tabPendingDesignTokens } from '../../tab.constants';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
- * @deprecated
+ * @deprecated Use `tabClassNames.root` instead.
  */
 export const tabClassName = 'fui-Tab';
 export const tabClassNames: SlotClassNames<TabSlots> = {
