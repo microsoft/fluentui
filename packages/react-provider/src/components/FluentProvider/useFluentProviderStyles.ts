@@ -4,7 +4,7 @@ import type { FluentProviderSlots, FluentProviderState } from './FluentProvider.
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
- * @deprecated
+ * @deprecated Use `fluentProviderClassNames.root` instead.
  */
 export const fluentProviderClassName = 'fui-FluentProvider';
 export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots> = {
