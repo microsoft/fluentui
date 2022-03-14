@@ -22396,14 +22396,13 @@ request@~2.87.0:
     tunnel-agent "^0.6.0"
     uuid "^3.1.0"
 
-requestretry@4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/requestretry/-/requestretry-4.0.2.tgz#38213a65393a25b012d2208d6d20073a7db6b30b"
-  integrity sha512-ZGdO1ZXUQAeCB9xOS2keSN501y7T1t0zPOD58jTAOwamt6qkcBMaGdRBHEOMQRnDtT5fn7S99F0dwADUqCmYqg==
+requestretry@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/requestretry/-/requestretry-7.0.0.tgz#570a9fcbeb2d6a85d7f15eb2265840d787f0c44d"
+  integrity sha512-g1Odu3IBKb6fYQog+HLy5FZ1CMwejIpD0iX1u1qXLsRj8TeQmFCpX9pTe50qhIirKvx1mcmoAeuLBFXLlBw6vA==
   dependencies:
     extend "^3.0.2"
-    lodash "^4.17.10"
-    when "^3.7.7"
+    lodash "^4.17.15"
 
 requestretry@~2.0.2:
   version "2.0.2"
@@ -22984,10 +22983,10 @@ screener-runner@~0.13.0:
     screener-ngrok "2.2.30"
     shortid "~2.2.15"
 
-screener-storybook@0.22.0:
-  version "0.22.0"
-  resolved "https://registry.yarnpkg.com/screener-storybook/-/screener-storybook-0.22.0.tgz#6df1b6e2b23252f40822703ff43693d37939d783"
-  integrity sha512-o/KziiEbckDzgmXzSa32hS0a03SPTY0WN85G1tBNcP4CKCyD2ITt24KXExgbDVQL2IeC2JCMDvizaSFfL7QJgg==
+screener-storybook@0.23.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/screener-storybook/-/screener-storybook-0.23.0.tgz#3470f00bc95c112f596c1e952f045dbd21b15f83"
+  integrity sha512-2bdqCYdaRoo6OTffKG5m44+sbHoU8j/PdgRTj6FGqUmmvSSlXMMxQip2pdMWmbe08gNopUUcqtpM+/IZMGgfVw==
   dependencies:
     "@types/react" "*"
     bluebird "~3.4.6"
@@ -23003,7 +23002,7 @@ screener-storybook@0.22.0:
     react "^16.0.0"
     react-dom "^16.0.0"
     request "^2.87.0"
-    requestretry "4.0.2"
+    requestretry "7.0.0"
     screener-runner "~0.13.0"
     semver "~5.6.0"
 
