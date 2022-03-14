@@ -1,4 +1,4 @@
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { DialogSlots, DialogState } from './Dialog.types';
 
