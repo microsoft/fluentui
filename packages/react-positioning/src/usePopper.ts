@@ -192,6 +192,9 @@ function writeContainerUpdates(options: {
   });
 }
 
+/**
+ * Writes all DOM element updates after position is computed
+ */
 function writeArrowUpdates(options: { arrow: HTMLElement | null; middlewareData: MiddlewareData }) {
   const { arrow, middlewareData } = options;
   if (!middlewareData.arrow || !arrow) {
