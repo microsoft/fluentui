@@ -85,7 +85,7 @@ Dialog component is composed by 3 sub-components: Header, Body and Footer.
 
 ## Dialog
 
-The dialog is a container which handles styling (border, background etc.) and the overlay (dimmed background).
+The dialog is a container which handles styling (border, background etc.) and the overlay (dimmed background). By default the rendered DOM is a portal to a div in body.
 
 ### Anatomy
 
@@ -107,7 +107,7 @@ The dialog is a container which handles styling (border, background etc.) and th
 
   - `non-modal`: When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the rest of the page. This also implies that the tab focus can move outside the dialog when it reaches the last focusable element.
 
-  - `alert`: is a special type of modal dialogs that interrupts the user's workflow to communicate an important message or ask for a decision. These dialogs are not dismissable, neither by escape key or by clicking outside the dialog.
+  - `alert`: is a special type of modal dialogs that interrupts the user's workflow to communicate an important message or ask for a decision. Unlike a typical modal dialog, the user must take an action though the options given to dismiss the dialog, and it cannot be dismissed through the dimmed background or esacpe key.
 
 ### DOM
 
@@ -117,7 +117,7 @@ The dialog is a container which handles styling (border, background etc.) and th
 
 ## Dialog Header
 
-The Header component will expect to have a dialog title/header and will show by default the close (X icon) button.
+The DialogHeader component will expect to have a dialog title/header and will show by default the close (X icon) button.
 
 ### DOM
 
@@ -209,7 +209,7 @@ _TBA: Link to migration guide doc_
 ![Mouse and touch behaviour of Modal dialog](./assets/modal-mouse-touch.png)
 
 1. Clicking on the trigger (element / button component) a Dialog is displayed with a dimmed background.
-2. Windows under the dialog are inert.
+2. Windows under the dialog are inert and their scrolling is blocked.
 3. Clicking on the dimmed background dismisses the dialog.
 4. Clicking the dismiss button (X icon in header), or cancel/dismiss button (footer) will close the dialog.
 5. The dialog can be dismissed also when confirmation button is clicked (footer).
@@ -218,17 +218,17 @@ _TBA: Link to migration guide doc_
 
 ![Mouse and touch behaviour of a non-modal dialog](./assets/non-modal-mouse-touch.png)
 
-1. Clicking on the trigger (element / button component) a Dialog is displayed without a dimmed background
-2. A user can continue to interact with elements on the page behind the dialog
-3. Clicking the dismiss button (X icon in header), or cancel/dismiss buttons (footer) will close the dialog
+1. Clicking on the trigger (element / button component) a Dialog is displayed without a dimmed background.
+2. A user can continue to interact with elements on the page behind the dialog.
+3. Clicking the dismiss button (X icon in header), or cancel/dismiss buttons (footer) will close the dialog.
 
 #### Alert dialog
 
 ![Mouse and touch behaviour of alert dialog](./assets/alert-mouse-touch.png)
 
-1. Clicking on the trigger (element / button component) a Dialog is displayed with a dimmed background
-2. Widnows under the dialog are are inert and clicking on the dimmed background will not close the dialog
-3. Clicking the dismiss button (X icon in header), or cancel/dismiss buttons (footer) will dismiss the dialog
+1. Clicking on the trigger (element / button component) a Dialog is displayed with a dimmed background.
+2. Widnows under the dialog are are inert, their scrolling is blocked and clicking on the dimmed background will not close the dialog.
+3. Clicking the dismiss button (X icon in header), or cancel/dismiss buttons (footer) will dismiss the dialog.
 
 ### Keyboard
 
