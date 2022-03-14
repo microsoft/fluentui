@@ -1,7 +1,7 @@
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { AvatarSlots, AvatarState } from './Avatar.types';
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
  * @deprecated Use `avatarClassNames.root` instead.

@@ -1,4 +1,4 @@
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
 import type { AccordionSlots, AccordionState } from './Accordion.types';
 

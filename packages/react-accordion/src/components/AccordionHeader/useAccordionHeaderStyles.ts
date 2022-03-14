@@ -2,7 +2,7 @@ import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { AccordionHeaderSlots, AccordionHeaderState } from './AccordionHeader.types';
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
  * @deprecated Use `accordionHeaderClassNames.root` instead.
