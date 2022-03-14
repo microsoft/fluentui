@@ -6,7 +6,7 @@ import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `popoverSurfaceClassNames.root` instead.
  */
 export const popoverSurfaceClassName = 'fui-PopoverSurface';
 export const popoverSurfaceClassNames: SlotClassNames<PopoverSurfaceSlots> = {
