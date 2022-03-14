@@ -4,7 +4,7 @@ import type { LabelSlots, LabelState } from './Label.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `labelClassNames.root` instead.
  */
 export const labelClassName = 'fui-Label';
 export const labelClassNames: SlotClassNames<LabelSlots> = {
