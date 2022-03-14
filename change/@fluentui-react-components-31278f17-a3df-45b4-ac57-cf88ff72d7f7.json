@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add upgrade documentation to storybook.",
+  "packageName": "@fluentui/react-components",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "none"
+}
