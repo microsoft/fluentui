@@ -3,6 +3,9 @@ import {
   hide as hideMiddleware,
   arrow as arrowMiddleware,
   offset as offsetMiddleware,
+  MiddlewareData,
+  Placement,
+  Coords,
 } from '@floating-ui/dom';
 import type { Middleware, Strategy } from '@floating-ui/dom';
 import { useFluent } from '@fluentui/react-shared-contexts';
@@ -140,6 +143,69 @@ function useArrowRef(updatePosition: () => void) {
   });
 }
 
+/**
+ * Writes all DOM element updates after position is computed
+ */
+function writeContainerUpdates(options: {
+  container: HTMLElement | null;
+  placement: Placement;
+  middlewareData: MiddlewareData;
+  /**
+   * Layer acceleration can disable subpixel rendering which causes slightly
+   * blurry text on low PPI displays, so we want to use 2D transforms
+   * instead
+   */
+  lowPPI: boolean;
+  strategy: Strategy;
+  coordinates: Coords;
+}) {
+  const {
+    container,
+    placement,
+    middlewareData,
+    strategy,
+    lowPPI,
+    coordinates: { x, y },
+  } = options;
+  if (!container) {
+    return;
+  }
+  container.setAttribute(DATA_POSITIONING_PLACEMENT, placement);
+  container.removeAttribute(DATA_POSITIONING_INTERSECTING);
+  if (middlewareData.intersectionObserver.intersecting) {
+    container.setAttribute(DATA_POSITIONING_INTERSECTING, '');
+  }
+
+  container.removeAttribute(DATA_POSITIONING_ESCAPED);
+  if (middlewareData.hide?.escaped) {
+    container.setAttribute(DATA_POSITIONING_ESCAPED, '');
+  }
+
+  container.removeAttribute(DATA_POSITIONING_HIDDEN);
+  if (middlewareData.hide?.referenceHidden) {
+    container.setAttribute(DATA_POSITIONING_HIDDEN, '');
+  }
+
+  Object.assign(container.style, {
+    transform: lowPPI ? `translate(${x}px, ${y}px)` : `translate3d(${x}px, ${y}px, 0)`,
+    position: strategy,
+  });
+}
+
+function writeArrowUpdates(options: { arrow: HTMLElement | null; middlewareData: MiddlewareData }) {
+  const { arrow, middlewareData } = options;
+  if (!middlewareData.arrow || !arrow) {
+    return;
+  }
+
+  const { x: arrowX, y: arrowY } = middlewareData.arrow;
+
+  Object.assign(arrow.style, {
+    left: `${arrowX}px`,
+    top: `${arrowY}px`,
+  });
+}
+
 export function usePopper(
   options: UseFloatingUIOptions,
 ): {
@@ -175,60 +241,15 @@ export function usePopper(
     Object.assign(containerRef.current.style, { position: strategy });
     computePosition(target, containerRef.current, { placement, middleware, strategy }).then(
       ({ x, y, middlewareData, placement: computedPlacement }) => {
-        const applyDataAttributes = () => {
-          if (!containerRef.current) {
-            return;
-          }
-          containerRef.current.setAttribute(DATA_POSITIONING_PLACEMENT, computedPlacement);
-          containerRef.current.removeAttribute(DATA_POSITIONING_INTERSECTING);
-          if (middlewareData.intersectionObserver.intersecting) {
-            containerRef.current.setAttribute(DATA_POSITIONING_INTERSECTING, '');
-          }
-
-          containerRef.current.removeAttribute(DATA_POSITIONING_ESCAPED);
-          if (middlewareData.hide?.escaped) {
-            containerRef.current.setAttribute(DATA_POSITIONING_ESCAPED, '');
-          }
-
-          containerRef.current.removeAttribute(DATA_POSITIONING_HIDDEN);
-          if (middlewareData.hide?.referenceHidden) {
-            containerRef.current.setAttribute(DATA_POSITIONING_HIDDEN, '');
-          }
-        };
-
-        const applyCoordinatesToContainer = () => {
-          if (!containerRef.current) {
-            return;
-          }
-
-          Object.assign(containerRef.current.style, {
-            // Layer acceleration can disable subpixel rendering which causes slightly
-            // blurry text on low PPI displays, so we want to use 2D transforms
-            // instead
-            transform:
-              (targetDocument?.defaultView?.devicePixelRatio || 1) <= 1
-                ? `translate(${x}px, ${y}px)`
-                : `translate3d(${x}px, ${y}px, 0)`,
-            position: strategy,
-          });
-        };
-
-        const applyArrowCoordinates = () => {
-          if (!middlewareData.arrow || !arrowRef.current) {
-            return;
-          }
-
-          const { x: arrowX, y: arrowY } = middlewareData.arrow;
-
-          Object.assign(arrowRef.current.style, {
-            left: `${arrowX}px`,
-            top: `${arrowY}px`,
-          });
-        };
-
-        applyCoordinatesToContainer();
-        applyArrowCoordinates();
-        applyDataAttributes();
+        writeArrowUpdates({ arrow: arrowRef.current, middlewareData });
+        writeContainerUpdates({
+          container: containerRef.current,
+          middlewareData,
+          placement: computedPlacement,
+          coordinates: { x, y },
+          lowPPI: (targetDocument?.defaultView?.devicePixelRatio || 1) <= 1,
+          strategy,
+        });
       },
     );
   });
