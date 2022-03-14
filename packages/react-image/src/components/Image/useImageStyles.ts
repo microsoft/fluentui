@@ -4,7 +4,7 @@ import type { ImageSlots, ImageState } from './Image.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `imageClassNames.root` instead.
  */
 export const imageClassName = 'fui-Image';
 export const imageClassNames: SlotClassNames<ImageSlots> = {
