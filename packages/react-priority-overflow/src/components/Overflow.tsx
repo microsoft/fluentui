@@ -31,18 +31,6 @@ const useStyles = makeStyles({
   },
 });
 
-const initialState = { count: 0 };
-
-interface OverflowState {
-  itemVisibility: Record<string, boolean>;
-  hasOverflow: boolean;
-  groupVisibility: Record<string, OverflowGroupState>;
-}
-
-interface ItemVisibilityAction {
-  type: 'ItemVisibility';
-}
-
 export interface OverflowProps
   extends React.HTMLAttributes<HTMLDivElement>,
     Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'> {}
