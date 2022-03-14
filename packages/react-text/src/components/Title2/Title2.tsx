@@ -6,7 +6,7 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { TextSlots } from '../Text/Text.types';
 
 /**
- * @deprecated
+ * @deprecated Use `title2ClassNames.root` instead.
  */
 export const title2ClassName = 'fui-Title2';
 export const title2ClassNames: SlotClassNames<TextSlots> = {
