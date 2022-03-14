@@ -1,4 +1,4 @@
-import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monorepo/index';
+import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monorepo';
 
 /**
  * Reads package info from the monorepo and generates the scopes for beachball bump and release.
@@ -7,17 +7,33 @@ import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monore
  * vNext scope includes all packages that have version > 8.x and shared internal packages that need versions bumped.
  * @returns {string[]} Array of package paths for beachball scope
  */
-export function getScopes(): string[] {
-  const allPackageInfo = getAllPackageInfo();
+export function getConfig({
+  version,
+  allPackageInfo = getAllPackageInfo(),
+}: {
+  version: 'v8' | 'vNext';
+  allPackageInfo?: AllPackageInfo;
+}) {
   const vNextPackagePaths = getVNextPackagePaths(allPackageInfo);
 
-  if (process.env.RELEASE_VNEXT) {
-    return [...vNextPackagePaths, ...getSharedPackagePaths(allPackageInfo)];
+  if (version === 'vNext') {
+    return {
+      scope: [...vNextPackagePaths, ...getSharedPackagePaths(allPackageInfo)],
+      groupConfig: {
+        masterPackageName: '@fluentui/react-components',
+        changelogPath: 'packages/react-components/react-components',
+        include: vNextPackagePaths,
+      },
+    };
   }
 
-  const ignoreVNextScope = vNextPackagePaths.map(path => `!${path}`);
+  if (version === 'v8') {
+    const ignoreVNextScope = vNextPackagePaths.map(path => `!${path}`);
 
-  return [...ignoreVNextScope];
+    return { scope: [...ignoreVNextScope] };
+  }
+
+  throw new Error('Unsupported version scopes acquisition');
 }
 
 function getVNextPackagePaths(allPackageInfo: AllPackageInfo) {
@@ -33,12 +49,12 @@ function getVNextPackagePaths(allPackageInfo: AllPackageInfo) {
 }
 
 function getSharedPackagePaths(allPackageInfo: AllPackageInfo) {
+  // These packages depend on converged packages, but are private
+  // Can be included in the publish scope so that dependencies are bumped correctly.
+  const privateNonConverged = ['@fluentui/perf-test', '@fluentui/vr-tests'];
+
   return Object.values(allPackageInfo)
     .map(packageInfo => {
-      // These packages depend on converged packages, but are private
-      // Can be included in the publish scope so that dependencies are bumped correctly.
-      const privateNonConverged = ['@fluentui/perf-test', '@fluentui/vr-tests'];
-
       if (privateNonConverged.includes(packageInfo.packageJson.name)) {
         return packageInfo.packagePath;
       }
