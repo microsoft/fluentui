@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Ban `export *` in `@fluentui/utilities` for better tree-shakeability",
+  "packageName": "@fluentui/utilities",
+  "email": "4123478+tido64@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
