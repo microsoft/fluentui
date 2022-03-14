@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add support for ipynb file icon",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}

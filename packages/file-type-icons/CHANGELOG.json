@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Mon, 14 Mar 2022 12:20:41 GMT",
+      "tag": "@uifabric/file-type-icons_v7.8.7",
+      "version": "7.8.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add support for ipynb file icon",
+            "author": "caperez@microsoft.com",
+            "commit": "b42b7a5625d0709b1171d759694dda0ca0c454d6",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Mar 2022 12:21:21 GMT",
       "tag": "@uifabric/file-type-icons_v7.8.6",
       "version": "7.8.6",

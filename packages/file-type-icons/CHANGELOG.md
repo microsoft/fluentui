@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 11 Mar 2022 12:21:21 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Mar 2022 12:20:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.8.7](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.8.7)
+
+Mon, 14 Mar 2022 12:20:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.8.6..@uifabric/file-type-icons_v7.8.7)
+
+### Patches
+
+- add support for ipynb file icon ([PR #22061](https://github.com/microsoft/fluentui/pull/22061) by caperez@microsoft.com)
 
 ## [7.8.6](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.8.6)
 

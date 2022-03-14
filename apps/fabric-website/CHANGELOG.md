@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 11 Mar 2022 12:21:21 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Mar 2022 12:20:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.17.15](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.17.15)
+
+Mon, 14 Mar 2022 12:20:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.17.15..@uifabric/fabric-website_v7.17.15)
+
+### Patches
+
+- Bump @uifabric/file-type-icons to v7.8.7 ([PR #22061](https://github.com/microsoft/fluentui/pull/22061) by caperez@microsoft.com)
 
 ## [7.17.15](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.17.15)
 
