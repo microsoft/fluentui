@@ -3,7 +3,7 @@ import { RadioGroupSlots, RadioGroupState } from './RadioGroup.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
- * @deprecated
+ * @deprecated Use `radioGroupClassNames.root` instead.
  */
 export const radioGroupClassName = 'fui-RadioGroup';
 export const radioGroupClassNames: SlotClassNames<RadioGroupSlots> = {
