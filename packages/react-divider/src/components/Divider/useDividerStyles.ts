@@ -4,7 +4,7 @@ import { DividerSlots, DividerState } from './Divider.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `dividerClassNames.root` instead.
  */
 export const dividerClassName = 'fui-Divider';
 export const dividerClassNames: SlotClassNames<DividerSlots> = {
