@@ -14,5 +14,6 @@
     "**/SPEC*.md",
     "**/tests/**"
   ],
-  "scope": ["!packages/fluentui/*"]
+  "scope": ["!packages/fluentui/*"],
+  "changehint": "Run 'yarn change' to generate a change file"
 }

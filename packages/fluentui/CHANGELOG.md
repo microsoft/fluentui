@@ -19,6 +19,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Fixes
+- Add transparent borders to slider @ling1726 ([#22089](https://github.com/microsoft/fluentui/pull/22089))
 - Fix `Popup` opened from right click (on `context`), to not dismiss when scrolling happens in nested Popup @yaunboxue-amber ([#22087](https://github.com/microsoft/fluentui/pull/22087))
 
 <!--------------------------------[ v0.61.0 ]------------------------------- -->
