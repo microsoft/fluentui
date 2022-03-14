@@ -4,7 +4,7 @@ import type { InputSlots, InputState } from './Input.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `inputClassNames.root` instead.
  */
 export const inputClassName = 'fui-Input';
 export const inputClassNames: SlotClassNames<InputSlots> = {
