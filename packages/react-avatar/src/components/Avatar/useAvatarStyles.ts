@@ -4,7 +4,7 @@ import type { AvatarSlots, AvatarState } from './Avatar.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `avatarClassNames.root` instead.
  */
 export const avatarClassName = 'fui-Avatar';
 export const avatarClassNames: SlotClassNames<AvatarSlots> = {
