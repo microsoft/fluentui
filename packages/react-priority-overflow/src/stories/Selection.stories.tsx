@@ -75,10 +75,9 @@ const OverflowMenu: React.FC<{
 
       <MenuPopover>
         <MenuList>
-          {itemIds.map(i => {
-            const onClick = () => onSelect(i);
-            return <TestOverflowMenuItem onClick={onClick} key={i} id={i} />;
-          })}
+          {itemIds.map(i => (
+            <TestOverflowMenuItem onClick={() => onSelect(i)} key={i} id={i} />
+          ))}
         </MenuList>
       </MenuPopover>
     </Menu>
