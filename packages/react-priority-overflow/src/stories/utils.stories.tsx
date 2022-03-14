@@ -6,21 +6,29 @@ import {
   MenuList,
   MenuPopover,
   MenuTrigger,
-  makeStyles,
   MenuDivider,
   MenuItemProps,
+  makeStyles,
 } from '@fluentui/react-components';
 import { useOverflowItem } from '../useOverflowItem';
 import { useOverflowMenu } from '../useOverflowMenu';
 import { useIsOverflowItemVisible } from '../useIsOverflowItemVisible';
 import { useIsOverflowGroupVisible } from '../useIsOverflowGroupVisible';
 
+const useStyles = makeStyles({
+  overflowItem: {
+    display: 'flex',
+    paddingLeft: '2px',
+    paddingRight: '2px',
+  },
+});
 export const TestOverflowItem: React.FC<TestOverflowItemProps> = props => {
   const { id, priority, groupId, ...rest } = props;
+  const styles = useStyles();
   const ref = useOverflowItem<HTMLDivElement>(id, priority, groupId);
 
   return (
-    <div ref={ref} style={{ display: 'flex', paddingLeft: '2px', paddingRight: '2px' }}>
+    <div ref={ref} className={styles.overflowItem}>
       <Button {...rest}>Item {id}</Button>
     </div>
   );
