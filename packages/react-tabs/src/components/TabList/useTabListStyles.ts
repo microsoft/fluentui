@@ -5,7 +5,7 @@ import { SlotClassNames, usePrevious } from '@fluentui/react-utilities';
 import { tabPendingDesignTokens } from '../../tab.constants';
 
 /**
- * @deprecated
+ * @deprecated Use `tabListClassNames.root` instead.
  */
 export const tabListClassName = 'fui-TabList';
 export const tabListSelectionIndicatorName = 'fui-TabList__selectionIndicator';
