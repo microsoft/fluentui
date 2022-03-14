@@ -4,10 +4,12 @@
 
 ```ts
 
-import * as FloatingUI from '@floating-ui/core';
+import { Boundary as Boundary_2 } from '@floating-ui/dom';
 import type { GriffelStyle } from '@griffel/react';
+import { Placement } from '@floating-ui/dom';
 import * as React_2 from 'react';
-import { VirtualElement } from '@floating-ui/core';
+import { Rect } from '@floating-ui/dom';
+import { VirtualElement } from '@floating-ui/dom';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
@@ -16,7 +18,7 @@ export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
 
 // @public (undocumented)
-export type Boundary = FloatingUI.Boundary | 'scrollParent' | 'window';
+export type Boundary = Boundary_2 | 'scrollParent' | 'window';
 
 // @public
 export function createArrowHeightStyles(arrowHeight: number): {
@@ -38,6 +40,21 @@ export type CreateArrowStylesOptions = {
 // @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
 
+// @public (undocumented)
+export interface FloatingUIOptions {
+    align?: Alignment;
+    arrowPadding?: number;
+    autoSize?: AutoSize;
+    coverTarget?: boolean;
+    flipBoundary?: Boundary | null;
+    offset?: Offset;
+    overflowBoundary?: Boundary | null;
+    pinned?: boolean;
+    position?: Position;
+    positionFixed?: boolean;
+    unstable_disableTether?: boolean | 'all';
+}
+
 // @public
 export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset;
 
@@ -49,9 +66,9 @@ export type OffsetFunction = (param: OffsetFunctionParam) => OffsetObject;
 
 // @public (undocumented)
 export type OffsetFunctionParam = {
-    floating: FloatingUI.Rect;
-    reference: FloatingUI.Rect;
-    placement: FloatingUI.Placement;
+    floating: Rect;
+    reference: Rect;
+    placement: Placement;
 };
 
 // @public (undocumented)
@@ -61,28 +78,10 @@ export type OffsetObject = {
 };
 
 // @public (undocumented)
-export interface FloatingUIOptions {
-    align?: Alignment;
-    arrowPadding?: number;
-    autoSize?: AutoSize;
-    coverTarget?: boolean;
-    flipBoundary?: Boundary;
-    offset?: Offset;
-    overflowBoundary?: Boundary;
-    pinned?: boolean;
-    position?: Position;
-    positionFixed?: boolean;
-    unstable_disableTether?: boolean | 'all';
-}
-
-// @public (undocumented)
 export type PopperRefHandle = {
     updatePosition: () => void;
     setTarget: (target: HTMLElement | PositioningVirtualElement) => void;
 };
-
-// @public (undocumented)
-export type PositioningVirtualElement = FloatingUI.VirtualElement;
 
 // @public (undocumented)
 export type Position = 'above' | 'below' | 'before' | 'after';
@@ -98,6 +97,9 @@ export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 
 // @public (undocumented)
 export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 'below' | 'below-start' | 'below-end' | 'before' | 'before-top' | 'before-bottom' | 'after' | 'after-top' | 'after-bottom';
+
+// @public (undocumented)
+export type PositioningVirtualElement = VirtualElement;
 
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
