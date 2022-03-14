@@ -5,7 +5,7 @@ import type { LinkSlots, LinkState } from './Link.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `linkClassNames.root` instead.
  */
 export const linkClassName = 'fui-Link';
 export const linkClassNames: SlotClassNames<LinkSlots> = {
