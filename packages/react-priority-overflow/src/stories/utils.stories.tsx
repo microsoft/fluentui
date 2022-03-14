@@ -35,12 +35,12 @@ export const TestOverflowItem: React.FC<TestOverflowItemProps> = props => {
 };
 
 export interface TestOverflowItemProps extends Omit<React.HTMLAttributes<HTMLButtonElement>, 'id'> {
-  id: string | number;
-  groupId?: string | number;
+  id: string;
+  groupId?: string;
   priority?: number;
 }
 
-export const OverflowMenu: React.FC<{ itemIds: (string | number)[] }> = ({ itemIds }) => {
+export const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {
@@ -71,7 +71,7 @@ export const OverflowMenu: React.FC<{ itemIds: (string | number)[] }> = ({ itemI
 };
 
 export interface TestOverflowMenuItemProps extends Omit<MenuItemProps, 'id'> {
-  id: string | number;
+  id: string;
 }
 
 export const TestOverflowMenuItem: React.FC<TestOverflowMenuItemProps> = props => {
@@ -86,7 +86,7 @@ export const TestOverflowMenuItem: React.FC<TestOverflowMenuItemProps> = props =
 };
 
 export const TestOverflowMenuDivider: React.FC<{
-  id: string | number;
+  id: string;
 }> = props => {
   const isGroupVisible = useIsOverflowGroupVisible(props.id);
 
@@ -111,7 +111,7 @@ const useDividerStyles = makeStyles({
 });
 
 export const TestOverflowGroupDivider: React.FC<{
-  groupId: string | number;
+  groupId: string;
 }> = props => {
   const styles = useDividerStyles();
   const isGroupVisible = useIsOverflowGroupVisible(props.groupId);

@@ -21,13 +21,13 @@ const useStyles = makeStyles({
 });
 
 export const Pinned = () => {
-  const itemIds = new Array(8).fill(0).map((_, i) => i);
+  const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
   const styles = useStyles();
 
   return (
     <div className={styles.container}>
       <Overflow className={styles.overflowContainer}>
-        {itemIds.map((_, i) => (
+        {itemIds.map(i => (
           <TestOverflowItem key={i} id={i} />
         ))}
         <OverflowMenu itemIds={itemIds} />

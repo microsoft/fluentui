@@ -5,17 +5,17 @@ import { useOverflowMenu } from '../useOverflowMenu';
 import { TestOverflowItem, TestOverflowItemProps, TestOverflowMenuItem } from './utils.stories';
 
 export const Selection = () => {
-  const [selected, setSelected] = React.useState<string | number>(0);
+  const [selected, setSelected] = React.useState<string>('0');
 
-  const onSelect = (itemId: string | number) => {
+  const onSelect = (itemId: string) => {
     setSelected(itemId);
   };
 
-  const itemIds = new Array(8).fill(0).map((_, i) => i);
+  const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
 
   return (
     <Overflow>
-      {itemIds.map((_, i) => (
+      {itemIds.map(i => (
         <OverflowSelectionItem onSelectItem={onSelect} key={i} id={i} selected={selected === i} />
       ))}
       <OverflowMenu itemIds={itemIds} onSelect={onSelect} />
@@ -53,13 +53,13 @@ const OverflowSelectionItem: React.FC<OverflowSelectionItemProps> = props => {
 };
 
 export interface OverflowSelectionItemProps extends TestOverflowItemProps {
-  onSelectItem?: (itemId: string | number) => void;
+  onSelectItem?: (itemId: string) => void;
   selected?: boolean;
 }
 
 const OverflowMenu: React.FC<{
-  itemIds: (string | number)[];
-  onSelect: (itemId: string | number) => void;
+  itemIds: string[];
+  onSelect: (itemId: string) => void;
 }> = ({ itemIds, onSelect }) => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 

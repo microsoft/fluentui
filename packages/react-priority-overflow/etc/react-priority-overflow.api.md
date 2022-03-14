@@ -18,14 +18,14 @@ export const defaultUpdateVisibilityCallback: OnUpdateItemVisibility;
 export const Overflow: React_2.ForwardRefExoticComponent<OverflowProps & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
-export interface OverflowProps extends React_2.HTMLAttributes<HTMLDivElement>, Omit<ObserveOptions, 'onUpdateOverflow' | 'onUpdateItemVisibility'> {
+export interface OverflowProps extends React_2.HTMLAttributes<HTMLDivElement>, Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'> {
 }
 
 // @public (undocumented)
-export function useIsOverflowGroupVisible(id: string | number): OverflowGroupState;
+export function useIsOverflowGroupVisible(id: string): OverflowGroupState;
 
 // @public (undocumented)
-export function useIsOverflowItemVisible(id: string | number): boolean;
+export function useIsOverflowItemVisible(id: string): boolean;
 
 // @public (undocumented)
 export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<ObserveOptions, 'onUpdateOverflow'>) => UseOverflowContainerReturn<TElement>;
@@ -42,7 +42,7 @@ export interface UseOverflowContainerReturn<TElement extends HTMLElement> {
 export const useOverflowCount: () => number;
 
 // @public
-export function useOverflowItem<TElement extends HTMLElement>(id: string | number, priority?: number, groupId?: string | number): React_2.RefObject<TElement>;
+export function useOverflowItem<TElement extends HTMLElement>(id: string, priority?: number, groupId?: string): React_2.RefObject<TElement>;
 
 // @public (undocumented)
 export function useOverflowMenu<TElement extends HTMLElement>(id?: string): {

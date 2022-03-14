@@ -8,9 +8,9 @@ export const CustomPriorities = () => {
   return (
     <Overflow>
       {priorities.map(i => (
-        <TestOverflowItem key={i} id={i} priority={i} />
+        <TestOverflowItem key={i} id={i.toString()} priority={i} />
       ))}
-      <OverflowMenu itemIds={priorities} />
+      <OverflowMenu itemIds={priorities.map(x => x.toString())} />
     </Overflow>
   );
 };
