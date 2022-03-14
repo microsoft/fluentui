@@ -4,7 +4,7 @@ import type { BadgeSlots, BadgeState } from './Badge.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `badgeClassNames.root` instead.
  */
 export const badgeClassName = 'fui-Badge';
 export const badgeClassNames: SlotClassNames<BadgeSlots> = {

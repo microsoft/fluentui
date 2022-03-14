@@ -5,7 +5,7 @@ import { useBadgeStyles_unstable } from '../Badge/useBadgeStyles';
 import type { CounterBadgeState } from './CounterBadge.types';
 
 /**
- * @deprecated
+ * @deprecated Use `counterBadgeClassNames.root` instead.
  */
 export const counterBadgeClassName = 'fui-CounterBadge';
 export const counterBadgeClassNames: SlotClassNames<BadgeSlots> = {
