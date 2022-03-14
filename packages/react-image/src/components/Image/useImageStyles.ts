@@ -1,7 +1,7 @@
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { ImageSlots, ImageState } from './Image.types';
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
  * @deprecated Use `imageClassNames.root` instead.

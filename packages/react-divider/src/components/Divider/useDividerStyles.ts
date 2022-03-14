@@ -1,7 +1,7 @@
 import { mergeClasses, shorthands, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { DividerSlots, DividerState } from './Divider.types';
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
  * @deprecated Use `dividerClassNames.root` instead.

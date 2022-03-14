@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { LabelSlots, LabelState } from './Label.types';
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
  * @deprecated Use `labelClassNames.root` instead.

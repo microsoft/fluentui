@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { InputSlots, InputState } from './Input.types';
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
  * @deprecated Use `inputClassNames.root` instead.

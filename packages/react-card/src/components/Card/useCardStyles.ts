@@ -2,7 +2,7 @@ import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { cardPreviewClassName } from '../CardPreview/index';
 import type { CardSlots, CardState } from './Card.types';
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
  * @deprecated Use `cardClassNames.root` instead.

@@ -4,7 +4,7 @@ import { tokens } from '@fluentui/react-theme';
 import { useCheckmarkStyles_unstable } from '../../selectable/index';
 import { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
  * @deprecated Use `menuItemClassNames.root` instead.

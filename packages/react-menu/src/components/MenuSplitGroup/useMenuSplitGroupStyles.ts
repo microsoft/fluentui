@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { menuItemClassNames } from '../MenuItem/useMenuItemStyles';
 import type { MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup.types';
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
  * @deprecated Use `menuSplitGroupClassNames.root` instead.
