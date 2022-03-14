@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Fri, 11 Mar 2022 19:51:48 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Mar 2022 07:38:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.6.6)
+
+Mon, 14 Mar 2022 07:38:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.6.5..@fluentui/react-docsite-components_v8.6.6)
+
+### Patches
+
+- Update index.html to not load `react` and `react-dom` from CDN (they must be bundled with the demo) ([PR #22054](https://github.com/microsoft/fluentui/pull/22054) by elcraig@microsoft.com)
+
+## [8.6.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.6.5)
+
+Sat, 12 Mar 2022 01:04:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.6.4..@fluentui/react-docsite-components_v8.6.5)
+
+### Patches
+
+- Fix import of markdown-to-jsx ([PR #22076](https://github.com/microsoft/fluentui/pull/22076) by elcraig@microsoft.com)
+- Bump @fluentui/react to v8.61.0 ([PR #22080](https://github.com/microsoft/fluentui/pull/22080) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.3.6 ([PR #22080](https://github.com/microsoft/fluentui/pull/22080) by beachball)
 
 ## [8.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.6.4)
 

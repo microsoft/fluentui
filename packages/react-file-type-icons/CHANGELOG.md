@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Fri, 11 Mar 2022 07:34:40 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Mar 2022 07:38:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.5)
+
+Mon, 14 Mar 2022 07:38:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.4..@fluentui/react-file-type-icons_v8.6.5)
+
+### Patches
+
+- Added support for ipnyb filetype icon ([PR #22059](https://github.com/microsoft/fluentui/pull/22059) by caperez@microsoft.com)
 
 ## [8.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.4)
 
