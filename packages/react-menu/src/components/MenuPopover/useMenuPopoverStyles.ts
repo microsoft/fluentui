@@ -4,7 +4,7 @@ import type { MenuPopoverSlots, MenuPopoverState } from './MenuPopover.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `menuPopoverClassNames.root` instead.
  */
 export const menuPopoverClassName = 'fui-MenuPopover';
 export const menuPopoverClassNames: SlotClassNames<MenuPopoverSlots> = {

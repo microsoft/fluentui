@@ -4,7 +4,7 @@ import type { MenuGroupHeaderSlots, MenuGroupHeaderState } from './MenuGroupHead
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `menuGroupHeaderClassNames.root` instead.
  */
 export const menuGroupHeaderClassName = 'fui-MenuGroupHeader';
 export const menuGroupHeaderClassNames: SlotClassNames<MenuGroupHeaderSlots> = {

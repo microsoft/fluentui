@@ -4,7 +4,7 @@ import type { MenuDividerSlots, MenuDividerState } from './MenuDivider.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `menuDividerClassNames.root` instead.
  */
 export const menuDividerClassName = 'fui-MenuDivider';
 export const menuDividerClassNames: SlotClassNames<MenuDividerSlots> = {

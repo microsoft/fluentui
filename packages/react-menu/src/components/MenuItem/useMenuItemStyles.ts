@@ -7,7 +7,7 @@ import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `menuItemClassNames.root` instead.
  */
 export const menuItemClassName = 'fui-MenuItem';
 export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
