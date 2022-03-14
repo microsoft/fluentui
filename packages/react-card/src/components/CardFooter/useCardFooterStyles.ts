@@ -3,7 +3,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { CardFooterSlots, CardFooterState } from './CardFooter.types';
 
 /**
- * @deprecated
+ * @deprecated Use `cardFooterClassNames.root` instead.
  */
 export const cardFooterClassName = 'fui-CardFooter';
 export const cardFooterClassNames: SlotClassNames<CardFooterSlots> = {

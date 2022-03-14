@@ -3,7 +3,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { CardHeaderSlots, CardHeaderState } from './CardHeader.types';
 
 /**
- * @deprecated
+ * @deprecated Use `cardHeaderClassNames.root` instead.
  */
 export const cardHeaderClassName = 'fui-CardHeader';
 export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots> = {

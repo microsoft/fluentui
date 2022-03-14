@@ -5,7 +5,7 @@ import type { CardSlots, CardState } from './Card.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `cardClassNames.root` instead.
  */
 export const cardClassName = 'fui-Card';
 export const cardClassNames: SlotClassNames<CardSlots> = {

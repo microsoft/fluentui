@@ -3,7 +3,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { CardPreviewSlots, CardPreviewState } from './CardPreview.types';
 
 /**
- * @deprecated
+ * @deprecated Use `cardPreviewClassNames.root` instead.
  */
 export const cardPreviewClassName = 'fui-CardPreview';
 export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots> = {
