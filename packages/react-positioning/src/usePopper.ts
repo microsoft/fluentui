@@ -21,7 +21,12 @@ import {
 } from './middleware/index';
 import { hasScrollParent } from './utils/getScrollParent';
 import { debounce } from './utils/debounce';
-import { DATA_POSITIONING_ESCAPED, DATA_POSITIONING_INTERSECTING, DATA_POSITIONING_HIDDEN } from './contants';
+import {
+  DATA_POSITIONING_ESCAPED,
+  DATA_POSITIONING_INTERSECTING,
+  DATA_POSITIONING_HIDDEN,
+  DATA_POSITIONING_PLACEMENT,
+} from './contants';
 import { toggleScrollListener } from './utils/toggleScrollListener';
 import { hasAutofocusFilter } from './utils/hasAutoFocusFilter';
 
@@ -174,7 +179,7 @@ export function usePopper(
           if (!containerRef.current) {
             return;
           }
-          containerRef.current.setAttribute('data-popper-placement', computedPlacement);
+          containerRef.current.setAttribute(DATA_POSITIONING_PLACEMENT, computedPlacement);
           containerRef.current.removeAttribute(DATA_POSITIONING_INTERSECTING);
           if (middlewareData.intersectionObserver.intersecting) {
             containerRef.current.setAttribute(DATA_POSITIONING_INTERSECTING, '');
