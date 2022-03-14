@@ -5,7 +5,7 @@ import { CheckboxSlots, CheckboxState } from './Checkbox.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src';
 
 /**
- * @deprecated
+ * @deprecated Use `checkboxClassNames.root` instead.
  */
 export const checkboxClassName = 'fui-Checkbox';
 export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
