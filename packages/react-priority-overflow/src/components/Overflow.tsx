@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 
 export interface OverflowProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    Omit<ObserveOptions, 'onUpdateOverflow' | 'onUpdateItemVisibility'> {}
+    Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'> {}
 
 export const Overflow = React.forwardRef<HTMLDivElement, OverflowProps>((props, ref) => {
   const { overflowAxis = 'horizontal', overflowDirection, padding, minimumVisible, ...rest } = props;

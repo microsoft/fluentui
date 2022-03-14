@@ -1,6 +1,5 @@
 export * from './components/Overflow';
 export * from './types';
-export * from './overflowContext';
 export * from './useIsOverflowGroupVisible';
 export * from './useIsOverflowItemVisible';
 export * from './useOverflowContainer';

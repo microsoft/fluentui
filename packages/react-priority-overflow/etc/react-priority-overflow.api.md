@@ -4,8 +4,6 @@
 
 ```ts
 
-import { Context } from '@fluentui/react-context-selector';
-import { ContextSelector } from '@fluentui/react-context-selector';
 import type { ObserveOptions } from '@fluentui/priority-overflow';
 import type { OnUpdateItemVisibility } from '@fluentui/priority-overflow';
 import type { OnUpdateOverflow } from '@fluentui/priority-overflow';
@@ -18,23 +16,6 @@ export const defaultUpdateVisibilityCallback: OnUpdateItemVisibility;
 
 // @public (undocumented)
 export const Overflow: React_2.ForwardRefExoticComponent<OverflowProps & React_2.RefAttributes<HTMLDivElement>>;
-
-// @public (undocumented)
-export const OverflowContext: Context<OverflowContextValue>;
-
-// @public (undocumented)
-export interface OverflowContextValue {
-    // (undocumented)
-    groupVisibility: Record<string, OverflowGroupState>;
-    // (undocumented)
-    hasOverflow: boolean;
-    // (undocumented)
-    itemVisibility: Record<string, boolean>;
-    // (undocumented)
-    registerItem: (item: OverflowItemEntry) => () => void;
-    // (undocumented)
-    updateOverflow: (padding?: number) => void;
-}
 
 // @public (undocumented)
 export interface OverflowProps extends React_2.HTMLAttributes<HTMLDivElement>, Omit<ObserveOptions, 'onUpdateOverflow' | 'onUpdateItemVisibility'> {
@@ -52,12 +33,10 @@ export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpda
 // @public (undocumented)
 export interface UseOverflowContainerReturn<TElement extends HTMLElement> {
     containerRef: React_2.RefObject<TElement>;
+    // Warning: (ae-forgotten-export) The symbol "OverflowContextValue" needs to be exported by the entry point index.d.ts
     registerItem: OverflowContextValue['registerItem'];
     updateOverflow: OverflowContextValue['updateOverflow'];
 }
-
-// @public (undocumented)
-export const useOverflowContext: <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>) => SelectedValue;
 
 // @public (undocumented)
 export const useOverflowCount: () => number;
