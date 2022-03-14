@@ -5,7 +5,7 @@ import type { RadioSlots, RadioState } from './Radio.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
- * @deprecated
+ * @deprecated Use `radioClassNames.root` instead.
  */
 export const radioClassName = 'fui-Radio';
 export const radioClassNames: SlotClassNames<RadioSlots> = {
