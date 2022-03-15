@@ -7,12 +7,13 @@ describe('TextArea', () => {
   isConformant({
     Component: TextArea,
     displayName: 'TextArea',
+    primarySlot: 'textArea',
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<TextArea>Default TextArea</TextArea>);
+    const result = render(<TextArea value="Default TextArea" />);
     expect(result.container).toMatchSnapshot();
   });
 });

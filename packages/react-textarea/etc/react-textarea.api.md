@@ -45,7 +45,7 @@ export const useTextAreaStyles_unstable: (state: TextAreaState) => TextAreaState
 
 // Warnings were encountered during analysis:
 //
-// lib/components/TextArea/TextArea.types.d.ts:45:5 - (ae-forgotten-export) The symbol "TextAreaOnChangeData" needs to be exported by the entry point index.d.ts
+// lib/components/TextArea/TextArea.types.d.ts:51:5 - (ae-forgotten-export) The symbol "TextAreaOnChangeData" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

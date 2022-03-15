@@ -2,10 +2,14 @@
 
 exports[`TextArea renders a default state 1`] = `
 <div>
-  <div
+  <span
     class="fui-TextArea"
   >
-    Default TextArea
-  </div>
+    <textarea
+      class="fui-TextArea__textArea"
+    >
+      Default TextArea
+    </textarea>
+  </span>
 </div>
 `;
