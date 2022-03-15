@@ -64,7 +64,7 @@ export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'siz
     value?: string;
     labelPosition?: 'after' | 'below';
     disabled?: boolean;
-    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: RadioOnChangeData) => void;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: RadioOnChangeData) => void;
 };
 
 // @public (undocumented)
