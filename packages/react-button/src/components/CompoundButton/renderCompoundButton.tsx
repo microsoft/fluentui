@@ -9,6 +9,8 @@ export const renderCompoundButton_unstable = (state: CompoundButtonState) => {
   const { slots, slotProps } = getSlots<CompoundButtonSlots>(state);
   const { iconOnly, iconPosition } = state;
 
+  console.log('STATE', state);
+
   return (
     <slots.root {...slotProps.root}>
       {iconPosition !== 'after' && slots.icon && <slots.icon {...slotProps.icon} />}

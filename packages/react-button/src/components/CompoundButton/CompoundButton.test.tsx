@@ -9,6 +9,17 @@ describe('CompoundButton', () => {
   isConformant({
     Component: CompoundButton as React.FunctionComponent<CompoundButtonProps>,
     displayName: 'CompoundButton',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            iconOnly: false,
+            icon: 'Test Icon',
+            secondaryContent: 'Test Secondary Content',
+          },
+        },
+      ],
+    },
   });
 
   describe('when rendered as a button', () => {
