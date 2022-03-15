@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/merge-styles",
-  "version": "8.4.0",
+  "version": "8.5.0",
   "description": "Style loading utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,6 +36,32 @@
       "types": "./lib/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
+    },
+    "./lib/fontFace": {
+      "types": "./lib/fontFace.d.ts",
+      "import": "./lib/fontFace.js",
+      "require": "./lib-commonjs/fontFace.js"
+    },
+    "./lib/IRawStyleBase": {
+      "types": "./lib/IRawStyleBase.d.ts"
+    },
+    "./lib/IStyle": {
+      "types": "./lib/IStyle.d.ts"
+    },
+    "./lib/keyframes": {
+      "types": "./lib/keyframes.d.ts",
+      "import": "./lib/keyframes.js",
+      "require": "./lib-commonjs/keyframes.js"
+    },
+    "./lib/mergeStyles": {
+      "types": "./lib/mergeStyles.d.ts",
+      "import": "./lib/mergeStyles.js",
+      "require": "./lib-commonjs/mergeStyles.js"
+    },
+    "./lib/mergeStyleSets": {
+      "types": "./lib/mergeStyleSets.d.ts",
+      "import": "./lib/mergeStyleSets.js",
+      "require": "./lib-commonjs/mergeStyleSets.js"
     }
   }
 }

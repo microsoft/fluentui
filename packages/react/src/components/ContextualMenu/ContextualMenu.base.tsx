@@ -288,7 +288,7 @@ function useKeyHandlers(
   }: IContextualMenuProps,
   dismiss: (ev?: any, dismissAll?: boolean | undefined) => void | undefined,
   hostElement: React.RefObject<HTMLDivElement>,
-  openSubMenu: (submenuItemKey: IContextualMenuItem, target: HTMLElement, openedByMouseClick?: boolean) => void,
+  openSubMenu: (submenuItemKey: IContextualMenuItem, target: HTMLElement) => void,
 ) {
   /** True if the most recent keydown event was for alt (option) or meta (command). */
   const lastKeyDownWasAltOrMeta = React.useRef<boolean | undefined>();
@@ -415,7 +415,7 @@ function useKeyHandlers(
       // eslint-disable-next-line deprecation/deprecation
       (ev.which === openKey || ev.which === KeyCodes.enter || (ev.which === KeyCodes.down && (ev.altKey || ev.metaKey)))
     ) {
-      openSubMenu(item, ev.currentTarget as HTMLElement, false);
+      openSubMenu(item, ev.currentTarget as HTMLElement);
       ev.preventDefault();
     }
   };
@@ -504,7 +504,7 @@ function useMouseHandlers(
   hostElement: React.RefObject<HTMLDivElement>,
   startSubmenuTimer: (onTimerExpired: () => void) => void,
   cancelSubMenuTimer: () => void,
-  openSubMenu: (submenuItemKey: IContextualMenuItem, target: HTMLElement, openedByMouseClick?: boolean) => void,
+  openSubMenu: (submenuItemKey: IContextualMenuItem, target: HTMLElement) => void,
   onSubMenuDismiss: (ev?: any, dismissAll?: boolean) => void,
   dismiss: (ev?: any, dismissAll?: boolean) => void,
 ) {
@@ -603,7 +603,7 @@ function useMouseHandlers(
       ev.stopPropagation();
       startSubmenuTimer(() => {
         targetElement.focus();
-        openSubMenu(item, targetElement, true);
+        openSubMenu(item, targetElement);
       });
     } else {
       startSubmenuTimer(() => {
@@ -637,17 +637,7 @@ function useMouseHandlers(
     } else {
       if (item.key !== expandedMenuItemKey) {
         // This has a collapsed sub menu. Expand it.
-        openSubMenu(
-          item,
-          target,
-          // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
-          // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates
-          // between a real click event and a keypress event (detail should be the number of mouse clicks).
-          // ...Plot twist! For a real click event in IE 11, detail is always 0 (Edge sets it properly to 1).
-          // So we also check the pointerType property, which both Edge and IE set to "mouse" for real clicks
-          // and "" for pressing "Enter" with Narrator on.
-          ev.nativeEvent.detail !== 0 || (ev.nativeEvent as PointerEvent).pointerType === 'mouse',
-        );
+        openSubMenu(item, target);
       }
     }
 
