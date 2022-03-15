@@ -3,8 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { BadgeSlots } from '../Badge/Badge.types';
 import type { PresenceBadgeState } from './PresenceBadge.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { BadgeSlots } from '../Badge/Badge.types';
 
 /**
  * @deprecated Use `presenceBadgeClassNames.root` instead.
