@@ -1,8 +1,8 @@
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { PresenceBadgeState } from './PresenceBadge.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { BadgeSlots } from '../Badge/Badge.types';
+import type { BadgeSlots } from '../Badge/Badge.types';
+import type { PresenceBadgeState } from './PresenceBadge.types';
 
 /**
  * @deprecated Use `presenceBadgeClassNames.root` instead.
