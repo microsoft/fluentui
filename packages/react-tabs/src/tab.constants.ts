@@ -1,5 +1,6 @@
 // TODO: These constants should be replaced with design tokens
-// The value were taken from the design token superset figma
+// The values were taken from the design token superset figma
+
 export const tabPendingSpacingTokens = {
   none: '0',
   xxs: '2px',
@@ -14,18 +15,10 @@ export const tabPendingSpacingTokens = {
   xxxl: '32px',
 };
 
-// export const tabPendingDesignTokens = {
-//   tabPadding: {
-//     medium: '10px', //Spacing.m_nudge
-//     small: '6px',
-//   },
-//   indicatorThickness: '2px',
-//   gap: {
-//     medium: '6px', //Spacing.s_nudge
-//     small: '2px',
-//   },
-//   contentPadding: {
-//     medium: '2px', //Spacing.xxs
-//     small: '2px',
-//   },
-// };
+export const tabAnimationDurationTokens = {
+  slow: '300ms',
+};
+
+export const tabAnimationEasingTokens = {
+  easyEase: 'cubic-bezier(0.33,0,0.67,1)',
+};

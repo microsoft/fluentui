@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TabListState } from './TabList.types';
 import { tokens } from '@fluentui/react-theme';
 import { usePrevious } from '@fluentui/react-utilities';
-import { tabPendingSpacingTokens } from '../../tab.constants';
+import { tabAnimationDurationTokens, tabAnimationEasingTokens, tabPendingSpacingTokens } from '../../tab.constants';
 
 export const tabListClassName = 'fui-TabList';
 export const tabListSelectionIndicatorName = 'fui-TabList_SelectionIndicator';
@@ -52,7 +52,8 @@ const useHorizontalIndicatorStyles = makeStyles({
   animated: {
     ':after': {
       transitionProperty: 'left, width',
-      transitionDuration: `350ms, 350ms`,
+      transitionDuration: `${tabAnimationDurationTokens.slow}, ${tabAnimationDurationTokens.slow}`,
+      transitionTimingFunction: `${tabAnimationEasingTokens.easyEase}, ${tabAnimationEasingTokens.easyEase}`,
     },
   },
 });
@@ -64,7 +65,7 @@ const useVerticalIndicatorStyles = makeStyles({
   base: {
     ':before': {
       backgroundColor: tokens.colorBrandStroke1,
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
       boxSizing: 'border-box',
       content: '""',
       height: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingSpacingTokens.m}))`,
@@ -85,7 +86,8 @@ const useVerticalIndicatorStyles = makeStyles({
   animated: {
     ':before': {
       transitionProperty: 'top, height',
-      transitionDuration: `350ms, 350ms`,
+      transitionDuration: `${tabAnimationDurationTokens.slow}, ${tabAnimationDurationTokens.slow}`,
+      transitionTimingFunction: `${tabAnimationEasingTokens.easyEase}, ${tabAnimationEasingTokens.easyEase}`,
     },
   },
 });

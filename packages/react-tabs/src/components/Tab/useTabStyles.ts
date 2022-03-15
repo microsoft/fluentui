@@ -12,10 +12,10 @@ export const tabClassName = 'fui-Tab';
  */
 const useRootStyles = makeStyles({
   base: {
-    backgroundColor: 'aliceblue',
+    backgroundColor: 'none',
     ...shorthands.borderColor('none'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.borderWidth(tokens.strokeWidthThin),
+    ...shorthands.borderWidth(0),
     columnGap: tabPendingSpacingTokens.sNudge,
     cursor: 'pointer',
     display: 'flex',
@@ -73,14 +73,14 @@ const useHorizontalIndicatorStyles = makeStyles({
   base: {
     ':after': {
       backgroundColor: 'none',
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
       height: tokens.strokeWidthThicker,
       bottom: '0',
-      left: tabPendingSpacingTokens.sNudge,
-      right: tabPendingSpacingTokens.sNudge,
+      left: tabPendingSpacingTokens.m,
+      right: tabPendingSpacingTokens.m,
     },
     ':hover': {
       ':after': {
@@ -91,8 +91,8 @@ const useHorizontalIndicatorStyles = makeStyles({
   small: {
     ':after': {
       height: tokens.strokeWidthThick,
-      left: tabPendingSpacingTokens.xs,
-      right: tabPendingSpacingTokens.xs,
+      left: tabPendingSpacingTokens.s,
+      right: tabPendingSpacingTokens.s,
     },
   },
 });
@@ -104,13 +104,13 @@ const useVerticalIndicatorStyles = makeStyles({
   base: {
     ':before': {
       backgroundColor: 'none',
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
       left: '0',
-      top: tabPendingSpacingTokens.sNudge,
-      bottom: tabPendingSpacingTokens.sNudge,
+      top: tabPendingSpacingTokens.m,
+      bottom: tabPendingSpacingTokens.m,
       width: tokens.strokeWidthThicker,
     },
     ':hover': {
@@ -121,8 +121,8 @@ const useVerticalIndicatorStyles = makeStyles({
   },
   small: {
     ':before': {
-      top: tabPendingSpacingTokens.xs,
-      bottom: tabPendingSpacingTokens.xs,
+      top: tabPendingSpacingTokens.s,
+      bottom: tabPendingSpacingTokens.s,
       width: tokens.strokeWidthThick,
     },
   },
@@ -136,7 +136,6 @@ const useIconStyles = makeStyles({
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
-    backgroundColor: 'pink',
   },
   // per design, the small and medium font sizes are the same.
   // the size prop only affects spacing.
@@ -157,9 +156,6 @@ const useIconStyles = makeStyles({
  */
 const useContentStyles = makeStyles({
   base: {
-    ...shorthands.padding(0, tabPendingSpacingTokens.xxs),
-  },
-  small: {
     ...shorthands.padding(0, tabPendingSpacingTokens.xxs),
   },
 });
@@ -192,11 +188,7 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
     state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
   }
 
-  state.content.className = mergeClasses(
-    contentStyles.base,
-    state.size === 'small' && contentStyles.small,
-    state.content.className,
-  );
+  state.content.className = mergeClasses(contentStyles.base, state.content.className);
 
   return state;
 };
