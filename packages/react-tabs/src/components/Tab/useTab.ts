@@ -45,6 +45,8 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     };
   }, [onRegister, onUnregister, innerRef, value]);
 
+  const iconShorthand = resolveShorthand(icon);
+  const contentShorthand = resolveShorthand(content, { required: true, defaultProps: { children: props.children } });
   return {
     components: {
       root: 'div',
@@ -58,8 +60,9 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
       ...props,
       onClick,
     }),
-    icon: resolveShorthand(icon),
-    content: resolveShorthand(content, { required: true, defaultProps: { children: props.children } }),
+    icon: iconShorthand,
+    iconOnly: Boolean(iconShorthand?.children && !contentShorthand.children),
+    content: contentShorthand,
     appearance,
     selected,
     size,

@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TabListState } from './TabList.types';
 import { tokens } from '@fluentui/react-theme';
 import { usePrevious } from '@fluentui/react-utilities';
-import { tabPendingDesignTokens } from '../../tab.constants';
+import { tabPendingSpacingTokens } from '../../tab.constants';
 
 export const tabListClassName = 'fui-TabList';
 export const tabListSelectionIndicatorName = 'fui-TabList_SelectionIndicator';
@@ -31,21 +31,22 @@ const useHorizontalIndicatorStyles = makeStyles({
   base: {
     ':after': {
       backgroundColor: tokens.colorBrandStroke1,
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
       bottom: 0,
       boxSizing: 'border-box',
       content: '""',
-      height: tabPendingDesignTokens.indicatorThickness,
-      left: `calc(var(${indicatorOffsetVar}) + ${tabPendingDesignTokens.tabPadding.medium})`,
+      height: tokens.strokeWidthThicker,
+      left: `calc(var(${indicatorOffsetVar}) + ${tabPendingSpacingTokens.m})`,
       position: 'absolute',
-      width: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingDesignTokens.tabPadding.medium}))`,
+      width: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingSpacingTokens.m}))`,
       zIndex: 1,
     },
   },
   small: {
     ':after': {
-      left: `calc(var(${indicatorOffsetVar}) + ${tabPendingDesignTokens.tabPadding.small})`,
-      width: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingDesignTokens.tabPadding.small}))`,
+      height: tokens.strokeWidthThick,
+      left: `calc(var(${indicatorOffsetVar}) + ${tabPendingSpacingTokens.s})`,
+      width: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingSpacingTokens.s}))`,
     },
   },
   animated: {
@@ -66,18 +67,19 @@ const useVerticalIndicatorStyles = makeStyles({
       ...shorthands.borderRadius(tokens.borderRadiusMedium),
       boxSizing: 'border-box',
       content: '""',
-      height: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingDesignTokens.tabPadding.medium}))`,
+      height: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingSpacingTokens.m}))`,
       left: '0',
       position: 'absolute',
-      top: `calc(var(${indicatorOffsetVar}) + ${tabPendingDesignTokens.tabPadding.medium})`,
-      width: tabPendingDesignTokens.indicatorThickness,
+      top: `calc(var(${indicatorOffsetVar}) + ${tabPendingSpacingTokens.m})`,
+      width: tokens.strokeWidthThicker,
       zIndex: 1,
     },
   },
   small: {
     ':before': {
-      top: `calc(var(${indicatorOffsetVar}) + ${tabPendingDesignTokens.tabPadding.small})`,
-      height: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingDesignTokens.tabPadding.small}))`,
+      top: `calc(var(${indicatorOffsetVar}) + ${tabPendingSpacingTokens.s})`,
+      height: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingSpacingTokens.s}))`,
+      width: tokens.strokeWidthThick,
     },
   },
   animated: {

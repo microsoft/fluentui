@@ -56,4 +56,9 @@ export type TabState = ComponentState<TabSlots> &
      * A tab can arrange its content based on if the tabs in the list are arranged vertically.
      */
     vertical: boolean;
+
+    /**
+     * A tab can have only an icon slot filled and no content.
+     */
+    iconOnly: boolean;
   };

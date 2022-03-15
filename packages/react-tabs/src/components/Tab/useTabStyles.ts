@@ -3,7 +3,7 @@ import type { TabState } from './Tab.types';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { tabPendingDesignTokens } from '../../tab.constants';
+import { tabPendingSpacingTokens } from '../../tab.constants';
 
 export const tabClassName = 'fui-Tab';
 
@@ -12,18 +12,18 @@ export const tabClassName = 'fui-Tab';
  */
 const useRootStyles = makeStyles({
   base: {
-    backgroundColor: 'none',
+    backgroundColor: 'aliceblue',
     ...shorthands.borderColor('none'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.borderWidth(tokens.strokeWidthThin),
-    columnGap: tabPendingDesignTokens.gap.medium,
+    columnGap: tabPendingSpacingTokens.sNudge,
     cursor: 'pointer',
     display: 'flex',
     flexDirection: 'row',
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding(tabPendingDesignTokens.tabPadding.medium),
+    ...shorthands.padding(tabPendingSpacingTokens.mNudge),
     position: 'relative',
     ...shorthands.overflow('hidden'),
   },
@@ -36,8 +36,8 @@ const useRootStyles = makeStyles({
     justifyContent: 'flex-start',
   },
   small: {
-    ...shorthands.padding(tabPendingDesignTokens.tabPadding.small),
-    columnGap: tabPendingDesignTokens.gap.small,
+    columnGap: tabPendingSpacingTokens.xxs,
+    ...shorthands.padding(tabPendingSpacingTokens.sNudge),
   },
   subtle: {
     ':hover': {
@@ -77,10 +77,10 @@ const useHorizontalIndicatorStyles = makeStyles({
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
-      height: tabPendingDesignTokens.indicatorThickness,
+      height: tokens.strokeWidthThicker,
       bottom: '0',
-      left: tabPendingDesignTokens.tabPadding.medium,
-      right: tabPendingDesignTokens.tabPadding.medium,
+      left: tabPendingSpacingTokens.sNudge,
+      right: tabPendingSpacingTokens.sNudge,
     },
     ':hover': {
       ':after': {
@@ -90,8 +90,9 @@ const useHorizontalIndicatorStyles = makeStyles({
   },
   small: {
     ':after': {
-      left: tabPendingDesignTokens.tabPadding.small,
-      right: tabPendingDesignTokens.tabPadding.small,
+      height: tokens.strokeWidthThick,
+      left: tabPendingSpacingTokens.xs,
+      right: tabPendingSpacingTokens.xs,
     },
   },
 });
@@ -107,10 +108,10 @@ const useVerticalIndicatorStyles = makeStyles({
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
-      width: tabPendingDesignTokens.indicatorThickness,
       left: '0',
-      top: tabPendingDesignTokens.tabPadding.medium,
-      bottom: tabPendingDesignTokens.tabPadding.medium,
+      top: tabPendingSpacingTokens.sNudge,
+      bottom: tabPendingSpacingTokens.sNudge,
+      width: tokens.strokeWidthThicker,
     },
     ':hover': {
       ':before': {
@@ -120,8 +121,9 @@ const useVerticalIndicatorStyles = makeStyles({
   },
   small: {
     ':before': {
-      top: tabPendingDesignTokens.tabPadding.small,
-      bottom: tabPendingDesignTokens.tabPadding.small,
+      top: tabPendingSpacingTokens.xs,
+      bottom: tabPendingSpacingTokens.xs,
+      width: tokens.strokeWidthThick,
     },
   },
 });
@@ -134,6 +136,7 @@ const useIconStyles = makeStyles({
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
+    backgroundColor: 'pink',
   },
   // per design, the small and medium font sizes are the same.
   // the size prop only affects spacing.
@@ -154,12 +157,10 @@ const useIconStyles = makeStyles({
  */
 const useContentStyles = makeStyles({
   base: {
-    paddingLeft: tabPendingDesignTokens.contentPadding.medium,
-    paddingRight: tabPendingDesignTokens.contentPadding.medium,
+    ...shorthands.padding(0, tabPendingSpacingTokens.xxs),
   },
   small: {
-    paddingLeft: tabPendingDesignTokens.contentPadding.small,
-    paddingRight: tabPendingDesignTokens.contentPadding.small,
+    ...shorthands.padding(0, tabPendingSpacingTokens.xxs),
   },
 });
 
@@ -180,8 +181,10 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
     focusStyles.base,
     state.size === 'small' && rootStyles.small,
     state.appearance === 'subtle' && rootStyles.subtle,
-    state.vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base,
-    state.size === 'small' && (state.vertical ? verticalIndicatorStyles.small : horizontalIndicatorStyles.small),
+    !state.selected && (state.vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base),
+    !state.selected &&
+      state.size === 'small' &&
+      (state.vertical ? verticalIndicatorStyles.small : horizontalIndicatorStyles.small),
     state.root.className,
   );
 
