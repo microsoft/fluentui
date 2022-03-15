@@ -1,4 +1,6 @@
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { BadgeSlots } from '../Badge/Badge.types';
 import { useBadgeStyles_unstable } from '../Badge/useBadgeStyles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { BadgeSlots } from '../Badge/Badge.types';

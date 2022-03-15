@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(eslint-plugin): enable no-export-all:all for all packages public API",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

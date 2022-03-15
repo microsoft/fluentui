@@ -393,11 +393,9 @@ export const defaultTests: TestObject = {
           componentInfo.displayName.slice(0, 1).toLowerCase() + componentInfo.displayName.slice(1) + 'ClassNames';
         const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
         const classNamesFromFile = indexFile[exportName];
-        console.log(defaultComponent.debug());
 
         const expectedClassNames: { [key: string]: string } = staticClassNames.expectedClassNames ?? classNamesFromFile;
         const missingClassNames = Object.values(expectedClassNames).reduce((acc, className) => {
-          console.log('find', className, JSON.stringify(defaultComponent.find(`.${className}`)));
           if (defaultComponent.find(`.${className}`).length < 1) {
             (acc as string[]).push(className);
           }

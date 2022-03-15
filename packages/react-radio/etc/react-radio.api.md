@@ -53,7 +53,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
 
 // @public (undocumented)
 export type RadioGroupSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -62,10 +62,16 @@ export type RadioGroupState = ComponentState<RadioGroupSlots> & Required<Pick<Ra
 };
 
 // @public
+export type RadioOnChangeData = {
+    value: string;
+};
+
+// @public
 export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'size'> & {
     value?: string;
     labelPosition?: 'after' | 'below';
     disabled?: boolean;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: RadioOnChangeData) => void;
 };
 
 // @public (undocumented)
