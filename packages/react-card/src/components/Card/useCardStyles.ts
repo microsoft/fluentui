@@ -1,6 +1,6 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { cardPreviewClassName } from '../CardPreview/index';
+import { cardPreviewClassNames } from '../CardPreview/index';
 import type { CardSlots, CardState } from './Card.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     // Size: medium
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
-    [`> *:not(.${cardPreviewClassName})`]: {
+    [`> *:not(.${cardPreviewClassNames.root})`]: {
       // Size: medium
       ...shorthands.margin('12px'),
     },
