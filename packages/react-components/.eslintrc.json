@@ -5,6 +5,7 @@
     {
       "files": "**/index.ts",
       "rules": {
+        "@rnx-kit/no-export-all": ["error", { "expand": "all" }],
         "@fluentui/ban-imports": [
           "error",
           {
