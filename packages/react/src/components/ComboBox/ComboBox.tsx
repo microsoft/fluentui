@@ -1055,7 +1055,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
       // Call onChange after state is updated
       if (onChange) {
-        onChange(submitPendingValueEvent, option, index, option.text);
+        onChange(submitPendingValueEvent, option, index, getPreviewText(option));
       }
     }
     if (this.props.multiSelect && this.state.isOpen) {
