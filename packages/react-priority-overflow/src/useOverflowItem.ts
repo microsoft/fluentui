@@ -17,9 +17,9 @@ export function useOverflowItem<TElement extends HTMLElement>(id: string, priori
     if (ref.current) {
       return registerItem({
         element: ref.current,
-        id: id + '',
+        id,
         priority: priority ?? 0,
-        groupId: groupId + '',
+        groupId,
       });
     }
   }, [id, priority, registerItem, groupId]);

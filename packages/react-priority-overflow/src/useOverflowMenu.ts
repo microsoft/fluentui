@@ -13,24 +13,23 @@ export function useOverflowMenu<TElement extends HTMLElement>(id?: string) {
   const isOverflowing = overflowCount > 0;
 
   useIsomorphicLayoutEffect(() => {
-    let deregisterItem: () => void = () => null;
     const element = ref.current;
     if (element) {
-      deregisterItem = registerItem({
+      const deregisterItem = registerItem({
         element,
         id: elementId,
         priority: Infinity,
       });
       element.setAttribute(DATA_OVERFLOW_MENU, '');
-    }
 
-    return () => {
-      element?.removeAttribute(DATA_OVERFLOW_MENU);
-      deregisterItem();
-    };
+      return () => {
+        deregisterItem();
+        element?.removeAttribute(DATA_OVERFLOW_MENU);
+      };
+    }
   }, [registerItem, isOverflowing, elementId]);
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (isOverflowing) {
       updateOverflow();
     }
