@@ -2,6 +2,45 @@
   "name": "@fluentui/vr-tests",
   "entries": [
     {
+      "date": "Tue, 15 Mar 2022 07:45:54 GMT",
+      "tag": "@fluentui/vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.2.5",
+            "commit": "aa2315c7c3fbaf648b69adbb2fbe62fa327ef25f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react to v8.61.1",
+            "commit": "aa2315c7c3fbaf648b69adbb2fbe62fa327ef25f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-experiments to v8.7.1",
+            "commit": "aa2315c7c3fbaf648b69adbb2fbe62fa327ef25f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-hooks to v8.5.3",
+            "commit": "aa2315c7c3fbaf648b69adbb2fbe62fa327ef25f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/vr-tests",
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.3.5",
+            "commit": "aa2315c7c3fbaf648b69adbb2fbe62fa327ef25f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 12 Mar 2022 01:04:50 GMT",
       "tag": "@fluentui/vr-tests_v1.0.0",
       "version": "1.0.0",

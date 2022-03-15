@@ -2,6 +2,45 @@
   "name": "@fluentui/theming-designer",
   "entries": [
     {
+      "date": "Tue, 15 Mar 2022 07:45:54 GMT",
+      "tag": "@fluentui/theming-designer_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theming-designer",
+            "comment": "Bump @fluentui/react to v8.61.1",
+            "commit": "aa2315c7c3fbaf648b69adbb2fbe62fa327ef25f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theming-designer",
+            "comment": "Bump @fluentui/react-docsite-components to v8.6.7",
+            "commit": "aa2315c7c3fbaf648b69adbb2fbe62fa327ef25f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theming-designer",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.5",
+            "commit": "aa2315c7c3fbaf648b69adbb2fbe62fa327ef25f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theming-designer",
+            "comment": "Bump @fluentui/scheme-utilities to v8.3.5",
+            "commit": "aa2315c7c3fbaf648b69adbb2fbe62fa327ef25f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theming-designer",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.2.5",
+            "commit": "aa2315c7c3fbaf648b69adbb2fbe62fa327ef25f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Mar 2022 07:38:47 GMT",
       "tag": "@fluentui/theming-designer_v1.0.0",
       "version": "1.0.0",
