@@ -13,8 +13,8 @@ describe('CompoundButton', () => {
       'has-static-classnames': [
         {
           props: {
-            iconOnly: false,
             icon: 'Test Icon',
+            children: 'Test Children',
             secondaryContent: 'Test Secondary Content',
           },
         },
