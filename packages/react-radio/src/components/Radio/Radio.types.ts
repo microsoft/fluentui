@@ -60,7 +60,7 @@ export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'siz
    * **Note:** `onChange` is NOT called when this Radio is deselected.
    * Use RadioGroup's `onChange` event to determine when the selection in the group changes.
    */
-  onChange?: (ev: React.FormEvent<HTMLInputElement>, data: RadioOnChangeData) => void;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: RadioOnChangeData) => void;
 };
 
 /**
