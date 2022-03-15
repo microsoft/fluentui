@@ -46,7 +46,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
 
 // @public (undocumented)
 export type RadioGroupSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
