@@ -6,6 +6,9 @@
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "sideEffects": false,
+  "storybook": {
+    "url": "https://master--6002298f95a00c00213f4d55.chromatic.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
