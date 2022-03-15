@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Respect isDayPickerVisible prop in Calendar on mobile",
+  "packageName": "@fluentui/react",
+  "email": "livoratom@gmail.com",
+  "dependentChangeType": "patch"
+}
