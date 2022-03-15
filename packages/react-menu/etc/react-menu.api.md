@@ -13,7 +13,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { usePopperMouseTarget } from '@fluentui/react-positioning';
 
 // @public
