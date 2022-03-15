@@ -57,6 +57,7 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
   const styles = useStyles();
 
   state.content.className = mergeClasses(
+    /* eslint-disable-next-line deprecation/deprecation */
     tooltipClassName,
     tooltipClassNames.content,
     styles.root,
