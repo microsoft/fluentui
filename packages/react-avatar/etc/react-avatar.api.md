@@ -10,7 +10,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;
