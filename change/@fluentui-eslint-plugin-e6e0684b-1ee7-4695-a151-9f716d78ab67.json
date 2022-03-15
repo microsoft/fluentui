@@ -3,5 +3,5 @@
   "comment": "enable autofixable import rules",
   "packageName": "@fluentui/eslint-plugin",
   "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
