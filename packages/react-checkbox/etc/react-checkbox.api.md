@@ -10,7 +10,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities/src';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
