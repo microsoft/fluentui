@@ -200,7 +200,12 @@ export const defaultTests: TestObject = {
       // possible side effects within another test by rendering the component twice
       const defaultResult = render(<Component {...requiredProps} />, renderOptions);
       const defaultEl = getTargetElement(testInfo, defaultResult, 'className');
-      defaultClassNames = defaultEl.getAttribute('class')?.trim().split(' ') || [];
+      defaultClassNames = (defaultEl.getAttribute('class') || '')
+        .trim()
+        // avoid any empty strings in defaultClassNames
+        .split(/\s+/g)
+        .map(c => c.trim())
+        .filter(c => !!c);
     });
 
     it(`handles className prop (component-handles-classname)`, () => {

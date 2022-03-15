@@ -301,6 +301,8 @@ export const defaultErrorMessages = {
     //
     // Possible solutions:
     // 1. Check the placement of your className and ensure that it is merged with defaults.
+    // 2. Check if your component passes className to an inner element and add getTargetElement to
+    //    isConformant in your test file.
     return getErrorMessage({
       displayName,
       overview: `overwrites default classNames with the user-supplied className.`,
@@ -316,6 +318,8 @@ export const defaultErrorMessages = {
       ],
       suggestions: [
         `Check the placement of your className and ensure that it is ${resolveInfo('merged')} with defaults.`,
+        `Check if your component passes className to an inner element and add ${resolveInfo('getTargetElement')} ` +
+          'to isConformant in your test file.',
       ],
       error,
     });
