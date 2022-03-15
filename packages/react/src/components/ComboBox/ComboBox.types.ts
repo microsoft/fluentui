@@ -74,8 +74,8 @@ export interface IComboBoxProps
    * 2) A manually edited value is submitted. In this case there may not be a matched option if `allowFreeform`
    *    is also true (and hence only `value` would be provided; the other parameters would be unspecified).
    *
-   * The value passed to the callback reflects the changed option's text, or the user-typed input when freeform is
-   * allowed.
+   * The value passed to the callback (4th paramenter) reflects the changed option's text, or the user-typed input when
+   * freeform is allowed.
    */
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
 
