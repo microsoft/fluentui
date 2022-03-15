@@ -18,7 +18,7 @@ export function getConfig({
 
   if (version === 'vNext') {
     return {
-      scope: [...vNextPackagePaths, ...getSharedPackagePaths(allPackageInfo)],
+      scope: [...vNextPackagePaths],
       groupConfig: {
         masterPackageName: '@fluentui/react-components',
         changelogPath: 'packages/react-components/react-components',
@@ -40,22 +40,6 @@ function getVNextPackagePaths(allPackageInfo: AllPackageInfo) {
   return Object.values(allPackageInfo)
     .map(packageInfo => {
       if (isConvergedPackage(packageInfo.packageJson)) {
-        return packageInfo.packagePath;
-      }
-
-      return false;
-    })
-    .filter(Boolean) as string[];
-}
-
-function getSharedPackagePaths(allPackageInfo: AllPackageInfo) {
-  // These packages depend on converged packages, but are private
-  // Can be included in the publish scope so that dependencies are bumped correctly.
-  const privateNonConverged = ['@fluentui/perf-test', '@fluentui/vr-tests'];
-
-  return Object.values(allPackageInfo)
-    .map(packageInfo => {
-      if (privateNonConverged.includes(packageInfo.packageJson.name)) {
         return packageInfo.packagePath;
       }
 

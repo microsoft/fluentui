@@ -46,7 +46,7 @@ describe(`beachball configs`, () => {
   });
 
   it(`should generate vNext release config`, () => {
-    const specialPackages = ['!packages/fluentui/*', 'apps/perf-test', 'apps/vr-tests'];
+    const specialPackages = ['!packages/fluentui/*'];
 
     expect(vNextConfig.scope).toEqual(
       expect.arrayContaining([...specialPackages, 'apps/perf-test-react-components', 'apps/vr-tests-react-components']),
