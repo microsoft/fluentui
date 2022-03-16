@@ -17,8 +17,8 @@ export const selectShorthandProps: (keyof SelectSlots)[] = ['select', 'icon', 'r
  * @param props - props from this instance of Select
  * @param ref - reference to the `<select>` element in Select
  */
-export const useSelect = (props: SelectProps, ref: React.Ref<HTMLSelectElement>): SelectState => {
-  const { select, icon, root, size = 'medium', appearance = 'outline', inline } = props;
+export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelectElement>): SelectState => {
+  const { select, icon, root, size = 'medium', appearance = 'outline', inline = false } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,
