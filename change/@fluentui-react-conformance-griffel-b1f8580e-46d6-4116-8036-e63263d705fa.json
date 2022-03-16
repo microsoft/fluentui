@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: decouple react-conformance-griffel from react-conformance",
+  "packageName": "@fluentui/react-conformance-griffel",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

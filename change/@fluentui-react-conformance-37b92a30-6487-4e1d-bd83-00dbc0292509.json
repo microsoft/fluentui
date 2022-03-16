@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "refactor: unify types with react-conformance-griffel",
+  "packageName": "@fluentui/react-conformance",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
