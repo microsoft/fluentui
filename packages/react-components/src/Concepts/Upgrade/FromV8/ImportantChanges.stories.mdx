@@ -128,7 +128,7 @@ return (
 
 In v9, styles are created with the `makeStyles` function and combined with the `mergeClasses` function from [`@griffel/react`](https://github.com/microsoft/griffel).
 Components apply styles through the `className` property.
-The styles are created at build time, but never runtime.
+The styles are created at build time, but never runtime (requires the use of `griffel`'s build-time optimization plugin).
 This allows styles to be deduped, optimized, and bundled for significantly smaller bundles and improved CSS performance.
 
 There is a new theme provider in v9 named `FluentProvider` that replaces v8's `ThemeProvider`.
