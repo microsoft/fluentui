@@ -12,7 +12,7 @@ describe('PopoverSurface', () => {
   // PopoverSurface is rendered by a Portal so won't be available in the rendered container
   const testid = 'component';
   // also include an aria-label to prevent warnings in debug mode
-  const props = { 'data-testid': 'component', 'aria-label': 'test' };
+  const props = { 'data-testid': testid, 'aria-label': 'test' };
 
   isConformant({
     Component: PopoverSurface,

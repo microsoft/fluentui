@@ -476,7 +476,7 @@ export const defaultErrorMessages = {
     testInfo: IsConformantOptions,
     error: Error,
     componentClassName: string,
-    classNames: string,
+    classNames: string[],
   ) => {
     const { displayName } = testInfo;
     const { testErrorInfo, resolveInfo, failedError } = errorMessageColors;
@@ -484,7 +484,10 @@ export const defaultErrorMessages = {
     return getErrorMessage({
       displayName,
       overview: `does not have default className (${testErrorInfo(componentClassName)}).`,
-      details: [`After render it has the following classes:`, `    ${failedError(`className='${classNames}'`)}`],
+      details: [
+        `After render it has the following classes:`,
+        `    ${failedError(`className='${classNames.join(' ')}'`)}`,
+      ],
       suggestions: [
         `Ensure that your component has default a className and it is ${resolveInfo('merged')} with other classNames.`,
       ],

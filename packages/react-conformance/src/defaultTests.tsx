@@ -200,19 +200,14 @@ export const defaultTests: TestObject = {
       // possible side effects within another test by rendering the component twice
       const defaultResult = render(<Component {...requiredProps} />, renderOptions);
       const defaultEl = getTargetElement(testInfo, defaultResult, 'className');
-      defaultClassNames = (defaultEl.getAttribute('class') || '')
-        .trim()
-        // avoid any empty strings in defaultClassNames
-        .split(/\s+/g)
-        .map(c => c.trim())
-        .filter(c => !!c);
+      defaultClassNames = [...defaultEl.classList];
     });
 
     it(`handles className prop (component-handles-classname)`, () => {
       const result = render(<Component {...mergedProps} />, renderOptions);
       const domNode = getTargetElement(testInfo, result, 'className');
       expect(domNode).toBeTruthy();
-      const classNames = (domNode.getAttribute('class') || '').split(' ');
+      const classNames = [...domNode.classList];
 
       try {
         expect(classNames).toContain(testClassName);
@@ -237,7 +232,7 @@ export const defaultTests: TestObject = {
 
       const result = render(<Component {...mergedProps} />, renderOptions);
       const el = getTargetElement(testInfo, result, 'className');
-      const classNames = (el.getAttribute('class') || '').split(' ');
+      const classNames = [...el.classList];
 
       let defaultClassName: string = '';
       try {
@@ -272,7 +267,7 @@ export const defaultTests: TestObject = {
       const result = render(<Component {...requiredProps} />, renderOptions);
       const rootEl = getTargetElement(testInfo, result, 'className');
       expect(rootEl).toBeTruthy();
-      const classNames = rootEl.className;
+      const classNames = [...rootEl.classList];
 
       try {
         expect(classNames).toContain(componentClassName);
@@ -616,10 +611,10 @@ export const defaultTests: TestObject = {
           }
 
           // className and style should go the *root* slot
-          expect(rootNode.className).toContain(testClass);
+          expect([...rootNode.classList]).toContain(testClass);
           expect(rootNode.style.fontFamily).toEqual(testStyleFontFamily);
           // ... and not the primary slot
-          expect(primaryNode.className).not.toContain(testClass);
+          expect([...primaryNode.classList]).not.toContain(testClass);
           expect(primaryNode.style.fontFamily).not.toEqual(testStyleFontFamily);
 
           // Ref and all other native props should go to the *primary* slot
