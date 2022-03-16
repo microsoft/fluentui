@@ -19,9 +19,7 @@ const regexes = {
   hasSpecialChar: /^\S*[^0-9a-zA-ZÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ\s]\S*$/,
 };
 
-let errorTimeout: number;
-const narrate = (id: string, priority = 'polite') => {
-  window.clearTimeout(errorTimeout);
+const narrateErrors = (name: keyof FormInputs, priority = 'polite') => {
   const wrapper = document.createElement('div');
   wrapper.setAttribute(
     'style',
@@ -30,12 +28,13 @@ const narrate = (id: string, priority = 'polite') => {
   wrapper.setAttribute('aria-live', priority);
   document.body.appendChild(wrapper);
 
-  errorTimeout = window.setTimeout(() => {
-    const element = document.getElementById(id);
-    if (!element) {
+  window.setTimeout(() => {
+    const errorId = `${name}Errors`;
+    const error = document.getElementById(errorId);
+    if (!error) {
       return;
     }
-    const clone = element.cloneNode(true) as HTMLElement;
+    const clone = error.cloneNode(true) as HTMLElement;
     clone.removeAttribute('id');
     wrapper.appendChild(clone);
   }, 1000);
@@ -62,16 +61,16 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
 
   React.useEffect(() => {
-    // If the form is submitted and has errors, focus the first error field
-    if (!formState.isSubmitted || formState.isValid) {
+    // If the form is submitted and has errors, focus the first error fiel, otherwise do nothing
+    if (!formState.isSubmitting || formState.isValid) {
       return;
     }
-    const firstErrorName = Object.keys(errors)[0];
+    const firstErrorName = Object.keys(errors)[0] as keyof FormInputs;
     const firstErrorField = document.getElementById(firstErrorName);
 
     // Narrate the errors if the error field is already focused
     if (document.activeElement === firstErrorField) {
-      narrate(`${firstErrorName}Errors`);
+      narrateErrors(firstErrorName);
       return;
     }
     if (firstErrorField) {
@@ -123,7 +122,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
                 onlyNameChars: value => regexes.onlyNameChars.test(value),
                 startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
                 always: () => {
-                  narrate('fullNameErrors');
+                  narrateErrors('fullName');
                   return true;
                 },
               },
@@ -170,7 +169,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
                 onlyNameChars: value => regexes.onlyNameChars.test(value),
                 startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
                 always: () => {
-                  narrate('nicknameErrors');
+                  narrateErrors('nickname');
                   return true;
                 },
               },
@@ -216,7 +215,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
                 hasSpecialChar: value => regexes.hasSpecialChar.test(value),
                 noWhitespace: value => regexes.noWhitespace.test(value),
                 always: () => {
-                  narrate('passwordErrors');
+                  narrateErrors('password');
                   return true;
                 },
               },
