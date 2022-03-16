@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "style: fix lint errors",
+  "packageName": "@fluentui/api-docs",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
