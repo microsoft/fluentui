@@ -1,8 +1,9 @@
 export {
   TextArea,
   renderTextArea_unstable,
-  textAreaClassName,
   textAreaClassNames,
+  /* eslint-disable-next-line deprecation/deprecation */
+  textAreaClassName,
   useTextAreaStyles_unstable,
   useTextArea_unstable,
 } from './TextArea';

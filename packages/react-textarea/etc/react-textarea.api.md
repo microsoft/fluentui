@@ -18,9 +18,6 @@ export const renderTextArea_unstable: (state: TextAreaState) => JSX.Element;
 export const TextArea: ForwardRefComponent<TextAreaProps>;
 
 // @public (undocumented)
-export const textAreaClassName: string;
-
-// @public (undocumented)
 export const textAreaClassNames: SlotClassNames<TextAreaSlots>;
 
 // Warning: (ae-forgotten-export) The symbol "TextAreaCommons" needs to be exported by the entry point index.d.ts

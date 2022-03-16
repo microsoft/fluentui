@@ -5,10 +5,12 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 
 export const textAreaClassNames: SlotClassNames<TextAreaSlots> = {
   root: 'fui-TextArea',
-  textArea: 'fui-TextArea__textarea',
+  textArea: 'fui-TextArea__textArea',
 };
 
-// TODO temporary export to pass conformance test.
+/**
+ * @deprecated Use `textAreaClassNames.root` instead.
+ */
 export const textAreaClassName = textAreaClassNames.root;
 
 // TODO(sharing) use theme values once available
