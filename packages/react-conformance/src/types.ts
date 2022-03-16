@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { ComponentDoc } from 'react-docgen-typescript';
-import * as ts from 'typescript';
+import type { ElementType, ComponentType } from 'react';
+import type { ComponentDoc } from 'react-docgen-typescript';
+import type { Program } from 'typescript';
 
-import { mount, ComponentType } from 'enzyme';
+import type { mount, ComponentType as EnzymeComponentType } from 'enzyme';
 
 /**
  * Individual test options
@@ -32,7 +32,7 @@ export interface IsConformantOptions<TProps = {}> {
   /**
    * Component object to test.
    */
-  Component: React.ComponentType<TProps>;
+  Component: ComponentType<TProps>;
   /**
    * Display name that will be considered as the correct displayName.
    */
@@ -70,11 +70,11 @@ export interface IsConformantOptions<TProps = {}> {
   /**
    * This component uses wrapper slot to wrap the 'meaningful' element.
    */
-  wrapperComponent?: React.ElementType;
+  wrapperComponent?: ElementType;
   /**
    * Helpers such as FocusZone and Ref which should be ignored when finding nontrivial children.
    */
-  helperComponents?: React.ElementType[];
+  helperComponents?: ElementType[];
   /**
    * An alternative name for the ref prop which resolves to
    * the root element (e.g. `elementRef`).
@@ -84,7 +84,7 @@ export interface IsConformantOptions<TProps = {}> {
   /**
    * Child component that will receive unhandledProps.
    */
-  targetComponent?: ComponentType<TProps>;
+  targetComponent?: EnzymeComponentType<TProps>;
   /**
    * The name of the slot designated as "primary", which receives native props passed to the component.
    * This is 'root' by default, and only needs to be specified if it's a slot other than 'root'.
@@ -101,7 +101,7 @@ export interface IsConformantOptions<TProps = {}> {
 export type ConformanceTest<TProps = {}> = (
   componentInfo: ComponentDoc,
   testInfo: IsConformantOptions<TProps>,
-  tsProgram: ts.Program,
+  tsProgram: Program,
 ) => void;
 
 export interface TestObject<TProps = {}> {
