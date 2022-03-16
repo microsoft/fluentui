@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add static classnames to Image",
+  "packageName": "@fluentui/react-image",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -14,6 +14,19 @@ describe('MenuItem', () => {
   isConformant({
     Component: MenuItem,
     displayName: 'MenuItem',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+            checkmark: 'Test Checkmark',
+            submenuIndicator: 'Test Submenu Indicator',
+            content: 'Test Content',
+            secondaryContent: 'Test Secondary Content',
+          },
+        },
+      ],
+    },
   });
 
   /**

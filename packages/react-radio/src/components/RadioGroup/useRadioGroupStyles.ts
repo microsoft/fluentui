@@ -1,7 +1,14 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { RadioGroupState } from './RadioGroup.types';
+import { RadioGroupSlots, RadioGroupState } from './RadioGroup.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `radioGroupClassNames.root` instead.
+ */
 export const radioGroupClassName = 'fui-RadioGroup';
+export const radioGroupClassNames: SlotClassNames<RadioGroupSlots> = {
+  root: 'fui-RadioGroup',
+};
 
 const useStyles = makeStyles({
   root: {
@@ -20,7 +27,7 @@ const useStyles = makeStyles({
 export const useRadioGroupStyles_unstable = (state: RadioGroupState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
-    radioGroupClassName,
+    radioGroupClassNames.root,
     styles.root,
     state.layout === 'vertical' && styles.vertical,
     state.root.className,

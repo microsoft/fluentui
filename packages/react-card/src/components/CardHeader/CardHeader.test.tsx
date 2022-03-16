@@ -7,6 +7,13 @@ describe('CardHeader', () => {
   isConformant({
     Component: CardHeader,
     displayName: 'CardHeader',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: { header: 'Header Test', action: 'Action Test' },
+        },
+      ],
+    },
   });
 
   it('renders a default state', () => {

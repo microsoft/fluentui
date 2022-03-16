@@ -6,9 +6,11 @@ exports[`Select renders the default state 1`] = `
     class="fui-Select"
   >
     <select
-      class=""
+      class="fui-Select__select"
     />
-    <span />
+    <span
+      class="fui-Select__icon"
+    />
   </span>
 </div>
 `;

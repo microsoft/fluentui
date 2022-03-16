@@ -8,8 +8,9 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Button',
   icon: 'fui-Button__icon',
 };
-
-// TODO temporary export to pass conformance test.
+/**
+ * @deprecated Use `buttonClassNames.root` instead.
+ */
 export const buttonClassName = buttonClassNames.root;
 
 const useRootStyles = makeStyles({

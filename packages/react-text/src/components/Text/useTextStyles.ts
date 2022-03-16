@@ -1,8 +1,15 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { TextState } from './Text.types';
+import type { TextSlots, TextState } from './Text.types';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `textClassNames.root` instead.
+ */
 export const textClassName = 'fui-Text';
+export const textClassNames: SlotClassNames<TextSlots> = {
+  root: 'fui-Text',
+};
 
 /**
  * Styles for the root slot
@@ -107,7 +114,7 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
   const styles = useStyles();
 
   state.root.className = mergeClasses(
-    textClassName,
+    textClassNames.root,
     styles.root,
     state.wrap === false && styles.nowrap,
     state.truncate && styles.truncate,
