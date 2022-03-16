@@ -1,7 +1,7 @@
 import { useId, usePrevious } from '@fluentui/react-utilities';
 import * as React from 'react';
 import type { FluentProviderState } from './FluentProvider.types';
-import { fluentProviderClassName } from './useFluentProviderStyles';
+import { fluentProviderClassNames } from './useFluentProviderStyles';
 
 /**
  * Writes a theme as css variables in a style tag on the provided targetDocument as a rule applied to a CSS class
@@ -11,7 +11,7 @@ import { fluentProviderClassName } from './useFluentProviderStyles';
 export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
   const { targetDocument, theme } = options;
 
-  const styleTagId = useId(fluentProviderClassName);
+  const styleTagId = useId(fluentProviderClassNames.root);
   const styleTag = React.useMemo(() => {
     if (!targetDocument) {
       return null;

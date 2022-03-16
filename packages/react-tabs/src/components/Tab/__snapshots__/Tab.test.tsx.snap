@@ -8,7 +8,7 @@ exports[`Tab renders correctly 1`] = `
     tabindex="0"
   >
     <span
-      class=""
+      class="fui-Tab__content"
     >
       Default Tab
     </span>
@@ -24,7 +24,7 @@ exports[`Tab renders default correctly with icon slotted 1`] = `
     tabindex="0"
   >
     <span
-      class=""
+      class="fui-Tab__icon"
     >
       <svg
         aria-hidden="true"
@@ -41,7 +41,7 @@ exports[`Tab renders default correctly with icon slotted 1`] = `
       </svg>
     </span>
     <span
-      class=""
+      class="fui-Tab__content"
     >
       Default Tab
     </span>
@@ -57,7 +57,7 @@ exports[`Tab renders small size and vertical correctly with icon slotted 1`] = `
     tabindex="0"
   >
     <span
-      class=""
+      class="fui-Tab__icon"
     >
       <svg
         aria-hidden="true"
@@ -74,7 +74,7 @@ exports[`Tab renders small size and vertical correctly with icon slotted 1`] = `
       </svg>
     </span>
     <span
-      class=""
+      class="fui-Tab__content"
     >
       Default Tab
     </span>
@@ -90,7 +90,7 @@ exports[`Tab renders small size correctly with icon slotted 1`] = `
     tabindex="0"
   >
     <span
-      class=""
+      class="fui-Tab__icon"
     >
       <svg
         aria-hidden="true"
@@ -107,7 +107,7 @@ exports[`Tab renders small size correctly with icon slotted 1`] = `
       </svg>
     </span>
     <span
-      class=""
+      class="fui-Tab__content"
     >
       Default Tab
     </span>
@@ -123,7 +123,7 @@ exports[`Tab renders subtle appearance correctly with icon slotted 1`] = `
     tabindex="0"
   >
     <span
-      class=""
+      class="fui-Tab__icon"
     >
       <svg
         aria-hidden="true"
@@ -140,7 +140,7 @@ exports[`Tab renders subtle appearance correctly with icon slotted 1`] = `
       </svg>
     </span>
     <span
-      class=""
+      class="fui-Tab__content"
     >
       Default Tab
     </span>
@@ -156,7 +156,7 @@ exports[`Tab renders vertical correctly with icon slotted 1`] = `
     tabindex="0"
   >
     <span
-      class=""
+      class="fui-Tab__icon"
     >
       <svg
         aria-hidden="true"
@@ -173,7 +173,7 @@ exports[`Tab renders vertical correctly with icon slotted 1`] = `
       </svg>
     </span>
     <span
-      class=""
+      class="fui-Tab__content"
     >
       Default Tab
     </span>

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add static classnames to Provider",
+  "packageName": "@fluentui/react-provider",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

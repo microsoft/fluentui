@@ -9,6 +9,15 @@ describe('Radio', () => {
     Component: Radio,
     displayName: 'Radio',
     primarySlot: 'input',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            label: 'Test Label',
+          },
+        },
+      ],
+    },
   });
 
   it('renders a default state', () => {

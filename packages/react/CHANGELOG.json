@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 16 Mar 2022 07:38:50 GMT",
+      "tag": "@fluentui/react_v8.61.2",
+      "version": "8.61.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3afa35421e7cffc69d202172d3c57f4706d080f0",
+            "comment": "Combobox: Adding fixes for onChange and onPendingValueChanged callbacks."
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react",
+            "commit": "5c1c600d8640ee11ce61a788d3ddb21eef83cc68",
+            "comment": "Add proper ARIA role to overflow Pivot items"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.5.6",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Mar 2022 07:45:54 GMT",
       "tag": "@fluentui/react_v8.61.1",
       "version": "8.61.1",
