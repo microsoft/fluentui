@@ -1,5 +1,6 @@
 export {
   Avatar,
+  avatarClassName,
   avatarClassNames,
   renderAvatar_unstable,
   useAvatarStyles_unstable,

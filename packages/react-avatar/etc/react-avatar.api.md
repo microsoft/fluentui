@@ -15,6 +15,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;
 
+// @public @deprecated (undocumented)
+export const avatarClassName = "fui-Avatar";
+
 // @public (undocumented)
 export const avatarClassNames: SlotClassNames<AvatarSlots>;
 
