@@ -2,6 +2,7 @@ import {
   callable,
   ComponentVariablesInput,
   ComponentVariablesObject,
+  ComponentVariablesPrepared,
   mergeComponentVariables,
   ThemePrepared,
   withDebugId,
@@ -43,9 +44,12 @@ export const resolveVariables = (
           theme.siteVariables,
         );
       } else {
-        variablesThemeCache[handlingDisplayName] = mergeComponentVariables(
-          ...effectiveDisplayNames.map(displayName => theme.componentVariables[displayName]),
-        )(theme.siteVariables);
+        variablesThemeCache[handlingDisplayName] = effectiveDisplayNames.reduce<ComponentVariablesPrepared | undefined>(
+          (acc, displayName) => {
+            return mergeComponentVariables(acc, theme.componentVariables[displayName]);
+          },
+          undefined,
+        );
       }
 
       variablesCache.set(theme, variablesThemeCache);
@@ -55,9 +59,12 @@ export const resolveVariables = (
   } else if (effectiveDisplayNames.length === 1) {
     componentThemeVariables = callable(theme.componentVariables[effectiveDisplayNames[0]])(theme.siteVariables) || {};
   } else {
-    componentThemeVariables = mergeComponentVariables(
-      ...effectiveDisplayNames.map(displayName => theme.componentVariables[displayName]),
-    )(theme.siteVariables);
+    componentThemeVariables = effectiveDisplayNames.reduce<ComponentVariablesPrepared | undefined>(
+      (acc, displayName) => {
+        return mergeComponentVariables(acc, theme.componentVariables[displayName]);
+      },
+      undefined,
+    );
   }
 
   if (variables === undefined) {
