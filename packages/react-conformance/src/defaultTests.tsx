@@ -1,13 +1,13 @@
+import * as React from 'react';
+import * as _ from 'lodash';
+import * as path from 'path';
+import { render } from '@testing-library/react';
+
 import { TestObject, IsConformantOptions } from './types';
 import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { getPackagePath, getCallbackArguments, validateCallbackArguments } from './utils/index';
 import { act } from 'react-dom/test-utils';
-import { render } from '@testing-library/react';
-
-import * as React from 'react';
-import * as _ from 'lodash';
-import * as path from 'path';
 
 const CALLBACK_REGEX = /^on(?!Render[A-Z])[A-Z]/;
 const DEFAULT_CLASSNAME_PREFIX = 'fui-';
@@ -214,13 +214,7 @@ export const defaultTests: TestObject = {
         handledClassName = true;
       } catch (e) {
         throw new Error(
-          defaultErrorMessages['component-handles-classname'](
-            testInfo,
-            e,
-            testClassName,
-            classNames,
-            domNode.outerHTML,
-          ),
+          defaultErrorMessages['component-handles-classname'](testInfo, e, testClassName, classNames, domNode),
         );
       }
     });
@@ -307,14 +301,7 @@ export const defaultTests: TestObject = {
   },
 
   'component-has-static-classnames-object': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    const {
-      componentPath,
-      Component,
-      wrapperComponent,
-      helperComponents = [],
-      requiredProps,
-      customMount = mount,
-    } = testInfo;
+    const { componentPath, Component, requiredProps, renderOptions } = testInfo;
 
     const componentName = componentInfo.displayName;
     const componentClassName = `fui-${componentName}`;
@@ -334,12 +321,7 @@ export const defaultTests: TestObject = {
         handledClassNamesObjectExport = true;
       } catch (e) {
         throw new Error(
-          defaultErrorMessages['component-has-static-classnames-object-exported'](
-            testInfo,
-            e,
-            componentClassName,
-            exportName,
-          ),
+          defaultErrorMessages['component-has-static-classnames-object-exported'](testInfo, e, exportName),
         );
       }
     });
@@ -364,12 +346,7 @@ export const defaultTests: TestObject = {
         expect(classNamesFromFile).toEqual(expectedClassNames);
       } catch (e) {
         throw new Error(
-          defaultErrorMessages['component-has-static-classnames-in-correct-format'](
-            testInfo,
-            e,
-            componentClassName,
-            exportName,
-          ),
+          defaultErrorMessages['component-has-static-classnames-in-correct-format'](testInfo, e, exportName),
         );
       }
     });
@@ -387,27 +364,27 @@ export const defaultTests: TestObject = {
           ...requiredProps,
           ...staticClassNames.props,
         };
-        const defaultEl = customMount(<Component {...mergedProps} />);
-        const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
+        const result = render(<Component {...mergedProps} />, renderOptions);
+        const rootEl = getTargetElement(testInfo, result, 'className');
 
         const indexFile = require(indexPath);
         const classNamesFromFile = indexFile[exportName];
 
         const expectedClassNames: { [key: string]: string } = staticClassNames.expectedClassNames ?? classNamesFromFile;
-        const missingClassNames = Object.values(expectedClassNames).reduce((acc, className) => {
-          if (defaultComponent.find(`.${className}`).length < 1) {
-            (acc as string[]).push(className);
-          }
-          return acc;
-        }, []);
+        const missingClassNames = Object.values(expectedClassNames).filter(
+          className => !rootEl.classList.contains(className) && !rootEl.querySelector(`.${className}`),
+        );
 
-        if (missingClassNames.length > 0) {
+        try {
+          expect(missingClassNames).toHaveLength(0);
+        } catch (e) {
           throw new Error(
             defaultErrorMessages['component-has-static-classnames'](
               testInfo,
-              new Error(),
+              e,
               componentName,
               missingClassNames.join(', '),
+              rootEl,
             ),
           );
         }

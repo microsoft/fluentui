@@ -4,6 +4,7 @@ import { EOL } from 'os';
 import * as path from 'path';
 
 import { errorMessageColors, formatArray, getErrorMessage, formatErrors, getPackagePath } from './utils/index';
+import { prettyDOM } from '@testing-library/dom';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -223,7 +224,7 @@ export const defaultErrorMessages = {
       overview: `has a custom 'size' prop but also applies 'size' as a native prop.`,
       details: [
         `After passing 'size="${sizeValue}"' to ${testErrorName(displayName)} it was applied to this element:`,
-        appliedToElement.outerHTML,
+        prettyDOM(appliedToElement) as string,
       ],
       suggestions: [
         `Ensure 'size' is omitted when calling native props helpers.`,
@@ -238,15 +239,14 @@ export const defaultErrorMessages = {
     error: Error,
     testClassName: string,
     classNames: string[] | undefined,
-    componentHTML: string,
+    rootEl: HTMLElement,
   ) => {
     const { displayName } = testInfo;
     const { testErrorInfo, resolveInfo, failedError, testErrorName } = errorMessageColors;
 
-    // Show part of the HTMl in the debug message if possible
-    const debugHTML = componentHTML.includes(testClassName)
-      ? componentHTML.substr(0, componentHTML.indexOf(testClassName) + 50) + '...'
-      : '';
+    // Show part of the HTML in the debug message if possible
+    const elementWithClass = rootEl.getElementsByClassName(testClassName)[0];
+    const debugHTML = elementWithClass ? prettyDOM(elementWithClass, 50) + '...' : '';
 
     // Message Description: Handles scenario where className prop doesn't exist or isn't applied on the component
     //
@@ -524,7 +524,6 @@ export const defaultErrorMessages = {
   'component-has-static-classnames-object-exported': (
     testInfo: IsConformantOptions,
     error: Error,
-    componentClassName: string,
     exportName: string,
   ) => {
     const { componentPath, displayName } = testInfo;
@@ -548,7 +547,6 @@ export const defaultErrorMessages = {
   'component-has-static-classnames-in-correct-format': (
     testInfo: IsConformantOptions,
     error: Error,
-    componentClassName: string,
     exportName: string,
   ) => {
     const { componentPath, displayName } = testInfo;
@@ -574,15 +572,29 @@ export const defaultErrorMessages = {
     error: Error,
     componentName: string,
     missingClassNames: string,
+    rootEl: HTMLElement,
   ) => {
     const { displayName } = testInfo;
-    const { testErrorInfo, failedError } = errorMessageColors;
+    const { testErrorInfo, failedError, resolveInfo } = errorMessageColors;
 
     return getErrorMessage({
       displayName,
       overview: `missing one or more static classNames on component (${testErrorInfo(componentName)}).`,
-      details: [`Missing the following classes after render:`, `    ${failedError(missingClassNames)}`],
-      suggestions: [`Ensure that each slot of the component has its corresponding static className.`],
+      details: [
+        `Missing the following classes after render:`,
+        `    ${failedError(missingClassNames)}`,
+        'Actual HTML:',
+        prettyDOM(rootEl) as string,
+      ],
+      suggestions: [
+        `Ensure that each slot of the component has its corresponding static className.`,
+        `If the component is rendered in a portal, add ${resolveInfo(
+          `getTargetElement`,
+        )} to isConformant in your test file.`,
+        `If the component requires certain props to render all slots, add ${resolveInfo(
+          'staticClassNames.props',
+        )} to isConformant in your test file. (You can add multiple prop combinations.)`,
+      ],
       error,
     });
   },

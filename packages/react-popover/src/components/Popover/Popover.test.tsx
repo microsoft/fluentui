@@ -8,6 +8,7 @@ describe('Popover', () => {
   isConformant({
     Component: Popover,
     displayName: 'Popover',
+    requiredProps: { children: <div>hello</div> },
     disabledTests: [
       // Popover does not render DOM elements
       'component-handles-ref',
