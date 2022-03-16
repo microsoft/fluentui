@@ -1,5 +1,6 @@
 export {
   Avatar,
+  // eslint-disable-next-line deprecation/deprecation
   avatarClassName,
   avatarClassNames,
   renderAvatar_unstable,
