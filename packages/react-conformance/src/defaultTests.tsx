@@ -314,6 +314,8 @@ export const defaultTests: TestObject = {
 
     const componentName = componentInfo.displayName;
     const componentClassName = `fui-${componentName}`;
+    const exportName = `${componentName[0].toLowerCase()}${componentName.slice(1)}ClassNames`;
+    const indexPath = path.join(getPackagePath(componentPath), 'src', 'index');
     let handledClassNamesObjectExport = false;
 
     it('has static classnames exported at top-level (component-has-static-classnames-object)', () => {
@@ -321,11 +323,8 @@ export const defaultTests: TestObject = {
         return;
       }
 
-      const exportName =
-        componentInfo.displayName.slice(0, 1).toLowerCase() + componentInfo.displayName.slice(1) + 'ClassNames';
-
       try {
-        const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
+        const indexFile = require(indexPath);
         const classNamesFromFile = indexFile[exportName];
         expect(classNamesFromFile).toBeTruthy();
         handledClassNamesObjectExport = true;
@@ -346,9 +345,7 @@ export const defaultTests: TestObject = {
         return;
       }
 
-      const exportName =
-        componentInfo.displayName.slice(0, 1).toLowerCase() + componentInfo.displayName.slice(1) + 'ClassNames';
-      const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
+      const indexFile = require(indexPath);
       const classNamesFromFile = indexFile[exportName];
 
       const expectedClassNames = Object.keys(classNamesFromFile).reduce(
@@ -389,9 +386,7 @@ export const defaultTests: TestObject = {
         const defaultEl = customMount(<Component {...mergedProps} />);
         const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
 
-        const exportName =
-          componentInfo.displayName.slice(0, 1).toLowerCase() + componentInfo.displayName.slice(1) + 'ClassNames';
-        const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
+        const indexFile = require(indexPath);
         const classNamesFromFile = indexFile[exportName];
 
         const expectedClassNames: { [key: string]: string } = staticClassNames.expectedClassNames ?? classNamesFromFile;
