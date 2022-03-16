@@ -1,7 +1,7 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import type { SelectSlots, SelectState } from './Select.types';
-import type { Theme } from '@fluentui/react-theme';
 
 /**
  * @deprecated Use `selectClassNames.root` instead.
@@ -24,19 +24,18 @@ const horizontalSpacing = {
 };
 const contentSizes = {
   // TODO: borrowed this from Input, should be in the theme somewhere?
-  body1: (theme: Theme) => ({
-    fontSize: theme.fontSizeBase300,
-    lineHeight: theme.lineHeightBase300,
-  }),
-  caption1: (theme: Theme) => ({
-    fontSize: theme.fontSizeBase200,
-    lineHeight: theme.lineHeightBase200,
-  }),
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  400: (theme: Theme) => ({
-    fontSize: theme.fontSizeBase400,
-    lineHeight: theme.lineHeightBase400,
-  }),
+  body1: {
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
+  caption1: {
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+  },
+  400: {
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+  },
 };
 // TODO: borrowed this from Input (Select has the same size in design comps)
 // Should be in the theme somewhere?
@@ -45,68 +44,140 @@ const fieldHeights = {
   medium: '32px',
   large: '40px',
 };
-const borderRadius = (theme: Theme) => theme.borderRadiusMedium;
 
-// TODO: borrowed this from Input, should be in the theme somewhere?
-// Form fields share the same size/appearance variants/font sizes
-const backgroundColors = {
-  /** for outline/filledLighter */
-  filledLighter: (theme: Theme) => theme.colorNeutralBackground1,
-  filledDarker: (theme: Theme) => theme.colorNeutralBackground3,
-  /** for underline */
-  transparent: (theme: Theme) => theme.colorTransparentBackground,
+// TODO: borrowed from Input, also seems like animation should be included in the theme:
+const motionDurations = {
+  ultraFast: '0.05s',
+  normal: '0.2s',
+};
+const motionCurves = {
+  accelerateMid: 'cubic-bezier(0.7,0,1,0.5)',
+  decelerateMid: 'cubic-bezier(0.1,0.9,0.2,1)',
 };
 
 const useRootStyles = makeStyles({
-  base: theme => ({
-    fontFamily: theme.fontFamilyBase,
+  base: {
+    alignItems: 'center',
     boxSizing: 'border-box',
+    display: 'flex',
+    flexWrap: 'nowrap',
+    fontFamily: tokens.fontFamilyBase,
+    position: 'relative',
+
     '*, *:before, *:after': {
       boxSizing: 'border-box',
     },
-  }),
+
+    '&:after': {
+      backgroundImage: `linear-gradient(
+        0deg,
+        ${tokens.colorCompoundBrandStroke} 0%,
+        ${tokens.colorCompoundBrandStroke} 50%,
+        transparent 50%,
+        transparent 100%
+      )`,
+      ...shorthands.borderRadius(0, 0, tokens.borderRadiusMedium, tokens.borderRadiusMedium),
+      content: '""',
+      height: tokens.borderRadiusMedium,
+      position: 'absolute',
+      bottom: '0',
+      left: '0',
+      right: '0',
+      transform: 'scaleX(0)',
+      transitionProperty: 'transform',
+      transitionDuration: motionDurations.ultraFast,
+      transitionDelay: motionCurves.accelerateMid,
+    },
+
+    '&:focus-within::after': {
+      transform: 'scaleX(1)',
+      transitionProperty: 'transform',
+      transitionDuration: motionDurations.normal,
+      transitionDelay: motionCurves.decelerateMid,
+    },
+  },
 });
 
-const useStyles = makeStyles({
-  base: theme => ({
-    padding: `0 ${horizontalSpacing.xxs}`,
-    color: theme.colorNeutralForeground1,
-    borderRadios: borderRadius,
+const useSelectStyles = makeStyles({
+  base: {
+    appearance: 'none',
+    ...shorthands.border('1px', 'solid', 'transparent'),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    boxShadow: 'none',
+    color: tokens.colorNeutralForeground1,
+    flexGrow: 1,
+    fontFamily: tokens.fontFamilyBase,
 
     ':focus-visible': {
-      outline: '2px solid transparent',
+      outlineWidth: '2px',
+      outlineStyle: 'solid',
+      outlineColor: 'transparent',
     },
-  }),
-  small: theme => ({
+  },
+  disabled: {
+    backgroundColor: tokens.colorTransparentBackground,
+    color: tokens.colorNeutralForegroundDisabled,
+    cursor: 'not-allowed',
+  },
+  small: {
     height: fieldHeights.small,
-    ...contentSizes.caption1(theme),
-  }),
-  medium: theme => ({
+    ...shorthands.padding('0', horizontalSpacing.sNudge),
+    ...contentSizes.caption1,
+  },
+  medium: {
     height: fieldHeights.medium,
-    ...contentSizes.body1(theme),
-  }),
-  large: theme => ({
+    ...shorthands.padding('0', horizontalSpacing.mNudge),
+    ...contentSizes.body1,
+  },
+  large: {
     height: fieldHeights.large,
-    padding: `0 ${horizontalSpacing.sNudge}`,
-    ...contentSizes[400](theme),
-  }),
-  outline: theme => ({
-    // This is set on selectWrapper but doesn't inherit
-    background: backgroundColors.filledLighter(theme),
-  }),
-  underline: theme => ({
-    background: backgroundColors.transparent(theme),
-  }),
-  filledLighter: theme => ({
-    background: backgroundColors.filledLighter(theme),
-  }),
-  filledDarker: theme => ({
-    background: backgroundColors.filledDarker(theme),
-  }),
-  disabled: theme => ({
-    color: theme.colorNeutralForegroundDisabled,
-    background: theme.colorTransparentBackground,
-  }),
+    ...shorthands.padding('0', horizontalSpacing.m),
+    ...contentSizes[400],
+  },
+  outline: {
+    backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
+    borderBottomColor: tokens.colorNeutralStrokeAccessible,
+  },
+  underline: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
+    ...shorthands.borderRadius(0),
+  },
+  filledLighter: {
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
+  filledDarker: {
+    backgroundColor: tokens.colorNeutralBackground3,
+  },
+});
+
+const useIconStyles = makeStyles({
+  icon: {
+    color: tokens.colorNeutralStrokeAccessible,
+    display: 'block',
+    position: 'absolute',
+    right: '0',
+    pointerEvents: 'none',
+
+    // the SVG must have display: block for accurate positioning
+    // otherwise an extra inline space is inserted after the svg element
+    '& svg': {
+      display: 'block',
+    },
+  },
+  small: {
+    paddingRight: horizontalSpacing.sNudge,
+    paddingLeft: horizontalSpacing.xxs,
+  },
+  medium: {
+    paddingRight: horizontalSpacing.mNudge,
+    paddingLeft: horizontalSpacing.xxs,
+  },
+  large: {
+    paddingRight: horizontalSpacing.m,
+    paddingLeft: horizontalSpacing.sNudge,
+  },
 });
 
 /**
@@ -115,9 +186,12 @@ const useStyles = makeStyles({
 export const useSelectStyles_unstable = (state: SelectState): SelectState => {
   const { size = 'medium', appearance = 'outline' } = state;
   const disabled = state.select.disabled;
-  const selectStyles = useStyles();
 
-  state.root.className = mergeClasses(selectClassNames.root, selectStyles.wrapper, state.root.className);
+  const iconStyles = useIconStyles();
+  const rootStyles = useRootStyles();
+  const selectStyles = useSelectStyles();
+
+  state.root.className = mergeClasses(selectClassNames.root, rootStyles.base, state.root.className);
 
   state.select.className = mergeClasses(
     selectClassNames.select,
@@ -129,7 +203,7 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(selectClassNames.icon, state.icon.className);
+    state.icon.className = mergeClasses(selectClassNames.icon, iconStyles.icon, iconStyles[size], state.icon.className);
   }
 
   return state;
