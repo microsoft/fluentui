@@ -107,7 +107,7 @@ The dialog is a container which handles styling (border, background etc.) and th
 
   - `non-modal`: When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the rest of the page. This also implies that the tab focus can move outside the dialog when it reaches the last focusable element.
 
-  - `alert`: is a special type of modal dialogs that interrupts the user's workflow to communicate an important message or ask for a decision. Unlike a typical modal dialog, the user must take an action though the options given to dismiss the dialog, and it cannot be dismissed through the dimmed background or esacpe key.
+  - `alert`: is a special type of modal dialogs that interrupts the user's workflow to communicate an important message or ask for a decision. Unlike a typical modal dialog, the user must take an action through the options given to dismiss the dialog, and it cannot be dismissed through the dimmed background or escape key.
 
 ### DOM
 
