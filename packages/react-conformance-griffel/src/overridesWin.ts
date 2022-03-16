@@ -1,4 +1,4 @@
-import type { IsConformantOptions, ConformanceTest, TestOptions } from '@fluentui/react-conformance';
+import type { IsConformantOptions, ConformanceTest, TestOptions } from './types';
 import './matchers/index';
 
 export const OVERRIDES_WIN_TEST_NAME = 'make-styles-overrides-win';
