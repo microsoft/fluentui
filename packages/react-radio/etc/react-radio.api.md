@@ -100,7 +100,7 @@ export const useRadioStyles_unstable: (state: RadioState) => void;
 
 // Warnings were encountered during analysis:
 //
-// dist/packages/react-radio/src/components/Radio/Radio.types.d.ts:55:5 - (ae-forgotten-export) The symbol "RadioOnChangeData" needs to be exported by the entry point index.d.ts
+// lib/components/components/Radio/Radio.types.d.ts:55:5 - (ae-forgotten-export) The symbol "RadioOnChangeData" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
