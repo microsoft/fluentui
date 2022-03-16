@@ -73,8 +73,10 @@ export class CommandParser {
     }
     if (parsed.list) {
       const mods = getEnabledMods(console, getModsPaths);
+      // eslint-disable-next-line no-console
       console.log('Here are the enabled code mod names:\n');
       mods.forEach(mod => {
+        // eslint-disable-next-line no-console
         console.log(mod.name);
       });
       return { shouldExit: true, modsFilter: () => true };
@@ -86,6 +88,7 @@ export class CommandParser {
       if (configResult.ok) {
         configObj = configResult.value;
       } else {
+        // eslint-disable-next-line no-console
         console.log(configResult.value);
         return { shouldExit: true, modsFilter: () => true };
       }
@@ -115,6 +118,7 @@ function getModRunnerConfig(): Result<ModRunnerConfigType, ModError> {
     sync: true,
   });
   let configObj: ModRunnerConfigType = { stringFilters: [], regexFilters: [], includeMods: false };
+  // eslint-disable-next-line no-console
   console.log('Configuration detected. Attempting to run mods from config...');
   if (!foundJsonFile.found || foundJsonFile.found.length !== 1) {
     return Err<ModRunnerConfigType, ModError>({ error: new Error('Error, could not locate correct config file.') });
