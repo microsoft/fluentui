@@ -16,36 +16,16 @@
  * ```
  */
 
-const path = require('path');
-const fs = require('fs');
 const { execSync } = require('child_process');
 const chalk = require('chalk');
+const getStorybookDependencies = require('./getStorybookDependencies');
 
 main();
 
 function main() {
   const args = process.argv.slice(2);
   const COMMAND_PREFIX = `${chalk.cyan('>')} ${chalk.inverse(chalk.bold(chalk.cyan(' STORYBOOK RUNNER ')))}`;
-  const implicitDependencies = [
-    {
-      name: '@fluentui/react-storybook-addon',
-      description: 'fluentui storybook addon that adds functionality to storybook',
-    },
-  ];
-  const dependencies = [];
-
-  /**
-   * @type {{name:string;devDependencies: Record<string,string>,[key:string]:unknown}}
-   */
-  const projectPackageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
-
-  const dependenciesToBuild = [
-    ...dependencies.filter(dep => {
-      return projectPackageJson.devDependencies[dep.name];
-    }),
-    ...implicitDependencies,
-  ];
-
+  const dependenciesToBuild = getStorybookDependencies();
   const shouldInvokeHelp = args.includes('--help');
   const shouldExecPreBuild = !shouldInvokeHelp && dependenciesToBuild.length > 0;
 

@@ -18,6 +18,7 @@
     "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "test:e2e": "just-scripts e2e",
     "e2e": "e2e",
     "just": "just-scripts",
     "lint": "just-scripts lint",
