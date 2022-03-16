@@ -1,8 +1,15 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import type { {{componentName}}State } from './{{componentName}}.types';
+import type { {{componentName}}Slots, {{componentName}}State } from './{{componentName}}.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 
 export const {{componentNames.propertyName}}ClassName = 'fui-{{componentName}}'
+export const {{componentNames.propertyName}}ClassNames:SlotClassNames<{{componentName}}Slots> = {
+  root: 'fui-{{componentName}}'
+  // TODO: add class names for all slots on {{componentName}}Slots.
+  // Should be of the form `<slotName>: 'fui-{{componentName}}__<slotName>`
+};
+
 /**
  * Styles for the root slot
  */

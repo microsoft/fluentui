@@ -23,7 +23,7 @@ exports[`TabList renders with tabs 1`] = `
       tabindex="0"
     >
       <span
-        class=""
+        class="fui-Tab__content"
       >
         First
       </span>
@@ -34,7 +34,7 @@ exports[`TabList renders with tabs 1`] = `
       tabindex="0"
     >
       <span
-        class=""
+        class="fui-Tab__content"
       >
         Second
       </span>
@@ -45,7 +45,7 @@ exports[`TabList renders with tabs 1`] = `
       tabindex="0"
     >
       <span
-        class=""
+        class="fui-Tab__content"
       >
         Third
       </span>
