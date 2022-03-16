@@ -227,7 +227,7 @@ _TBA: Link to migration guide doc_
 ![Mouse and touch behaviour of alert dialog](./assets/alert-mouse-touch.png)
 
 1. Clicking on the trigger (element / button component) a Dialog is displayed with a dimmed background.
-2. Widnows under the dialog are are inert, their scrolling is blocked and clicking on the dimmed background will not close the dialog.
+2. Windows under the dialog are are inert, their scrolling is blocked and clicking on the dimmed background will not close the dialog.
 3. Clicking the dismiss button (X icon in header), or cancel/dismiss buttons (footer) will dismiss the dialog.
 
 ### Keyboard
