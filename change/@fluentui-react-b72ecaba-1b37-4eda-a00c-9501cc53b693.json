@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Combobox: Adding fixes for onChange and onPendingValueChanged callbacks.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
