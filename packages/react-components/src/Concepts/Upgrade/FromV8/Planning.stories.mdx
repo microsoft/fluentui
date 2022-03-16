@@ -4,8 +4,8 @@ import { Meta } from '@storybook/addon-docs';
 
 # Planning your journey
 
-As mentioned before, Fluent React v9 was designed to allow you to incrementally upgrade.
-You have a lot of flexibility on how your approach, plan, and execute moving to v9.
+As mentioned before, Fluent UI React v9 was designed to allow you to incrementally upgrade.
+You have a lot of flexibility on how you approach, plan, and execute moving to v9.
 
 This part of the guide will help you assess your project, choose your approach,
 and plan out an iterative cycle for a successful upgrade.
@@ -13,13 +13,13 @@ and plan out an iterative cycle for a successful upgrade.
 ## Assessing your application
 
 How your application uses Fluent will influence your approach.
-Scan over your codebase and to answer the following questions:
+Scan over your codebase and try to answer the following questions:
 
 1. What Fluent components does your application use?
 2. For each component, how many times is each component used (i.e. usage instances)?
 3. Is most usage basic or advanced?
 
-Basic usage of means you use the component with minimal customization.
+Basic usage means you use the component with minimal customization.
 You pass typical props and bind data from your components or application state.
 
 ```tsx
@@ -28,7 +28,7 @@ You pass typical props and bind data from your components or application state.
 </Button>
 ```
 
-Advanced usage includes things like passing complex custom styles objects, callbacks for custom rendering, using refs to make imperatives calls, and complex data binding.
+Advanced usage includes things like passing complex custom styles objects, callbacks for custom rendering, using refs to make imperative calls, and complex data binding.
 
 ## Considerations
 
@@ -36,11 +36,11 @@ There are lots of ways to upgrade. Here are are some different options to consid
 
 ### Incremental or All-at-once
 
-_Incremental_: upgrade a few components and ship, often with flighting the upgraded components to a subset of users.
-The benefits of incremental are you get v9 improvements sooner, find issues earlier,
+_Incremental_: upgrade a few components and ship, often by flighting the upgraded components to a subset of users.
+The benefits of the incremental approach are that you get v9 improvements sooner, find issues earlier,
 and can iteratively get faster upgrading components.
 
-Since v9 does yet have all the components offered in v8, incremental allows you to gradually introduce v9
+Since v9 does not have all the components offered in v8 yet, incrementally upgrading allows you to gradually introduce v9
 side-by-side with v8.
 You can more closely monitor the changes to bundle size and performance improvements with a gradual approach.
 
