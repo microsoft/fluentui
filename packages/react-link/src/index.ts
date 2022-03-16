@@ -1,6 +1,7 @@
 export {
   Link,
   linkClassName,
+  linkClassNames,
   renderLink_unstable,
   useLinkState_unstable,
   useLinkStyles_unstable,
