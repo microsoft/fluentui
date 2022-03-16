@@ -49,7 +49,7 @@ You can still flight the upgraded experience to a subset of users.
 You get the benefit that you could A/B route to different web application servers when flighting and keep the
 previous untouched version running independent of the upgraded version.
 
-You also get the maximum benefits v9 including a new consistent style,
+You also get the maximum benefits of v9 including a new consistent style,
 tree-shaking out v8 components from the bundles, build-time CSS optimizations, and render performance improvements.
 
 ### Horizontal or Vertical
@@ -76,14 +76,14 @@ For example, upgrading a main toolbar to use the v9 Button and Menu components.
 You get the benefits of v9 across the entire application.
 You will get more usage of the upgraded components and can gather feedback earlier.
 
-_Shallow_: upgrading components that are appear in only one non-critical place in your application.
+_Shallow_: upgrading components that appear only in one non-critical place in your application.
 For example, upgrading an optional edit profile screen.
 You get the benefit of limiting risk, but decrease the usage and may not find issues right away.
 
 ### New v9 or Old v8 style
 
 If you have v8 and v9 components side-by-side, you may want to avoid noticable style differences.
-If you need style consistency, apply themeing and style customizations to make v8 components look like v9 components,
+If you need style consistency, apply theming and style customizations to make v8 components look like v9 components,
 or make v9 components look like v8 components.
 
 You may decide you can live with the style differences for a period of time.
@@ -95,7 +95,7 @@ _Manual_: update each usage of Fluent React by hand.
 This is the brute force approach to upgrade.
 It may be the best option especially for smaller projects.
 You may have a lot of variety in how you use components that preclude a search/replace or automated option.
-You may also have an existing wrapper around a component that allows you to pgrade at a single code location.
+You may also have an existing wrapper around a component that allows you to upgrade at a single code location.
 The benefits include you can call v9 components as intended, the opportunity to simplify and improve
 how your code uses Fluent, and you can make incremental check-ins ensuring existing tests pass.
 
@@ -105,7 +105,7 @@ If your codebase is very consistent in how it uses Fluent, this option can save 
 You can have code mods that add flighting logic around usage to have both v8 and v9 available.
 The downside is that if your usage is complex or highly varied, authoring a code mod that covers all cases may be impractical.
 
-_Shims_: author or use a component that take v8 props and renders a v9 component.
+_Shims_: author or use a component that takes v8 props and renders a v9 component.
 Shims can be a good option to get v9 components in your app if you don't have the time to update all the places you use the component.
 You can leave your props creation code alone and pass it to the shim.
 It is easy to search/replace your code to update to using the shim.
@@ -122,7 +122,7 @@ If you have a small project and can commit the effort, we recommend upgrading ev
 
 This gives you the maximum benefit of rendering performance, build time style bundling, and tree-shaking out v8 components that are no longer used. You'll be able to refactor any advanced usage cases in the newer v9 paradigms and end up with cleaner code.
 
-You should still consider flighting the upgraded experience, but you can A/B entire application rather than if/then flighting per component in the code.
+You should still consider flighting the upgraded experience, but you can A/B the entire application rather than if/then flighting per component in the code.
 
 ### Medium or larger with advanced usage
 
@@ -132,7 +132,7 @@ You can replace all the usages of a component like Button with ShimButton and ge
 
 Warning! Shims aren't free. You'll still need to modify code to upgrade custom styles, renderprops callbacks, and ref usage. Shims take a dependency on the v8 types and v9 components, so tree-shaking may be limited. Shims introduce mapping logic (although it shouldn't signficantly impact render performance).
 
-Medium or larger with basic usage
+### Medium or larger apps with basic usage
 If you have a large project with hundreds to thousands of Fluent component usages, we strongly recommend upgrading horizontally. The Button component is a typical choice to upgrade across the application.
 
 If your usage is mostly basic, we recommend authoring a code-mod to handle what would be too tedious with search & replace. Consider running code-mods to handle most cases and then do some manual upgrade work to cover the rest.
@@ -141,9 +141,9 @@ If your usage is mostly basic, we recommend authoring a code-mod to handle what 
 
 If you have a large projects with thousands of Fluent component usages, a lot of advanced usage, and several resource constraints, we recommend creating an application-specific shim and permanent abstraction around the Fluent component.
 
-A permanent abstraction will give you a place to adapt for compatibility as you move from v8 props to v9 props. It will also be be valuable with future upgrades. v9 has a new hook-based composition model you can leverage to create a shim without introducing the extra virtual DOM elements of a wrapper. You can also introduce the flighting logic within your shim to be able to toggle the upgrade on/off.
+A permanent abstraction will give you a place to adapt for compatibility as you move from v8 props to v9 props. It will also be valuable with future upgrades. v9 has a new hook-based composition model you can leverage to create a shim without introducing the extra virtual DOM elements of a wrapper. You can also introduce the flighting logic within your shim to be able to toggle the upgrade on/off.
 
-You can consider code-mods to upgrade the more basic usage, but will likely find too much variance to handle all the cases in across your code.
+You can consider code-mods to upgrade the more basic usage, but will likely find too much variance to handle all the cases across your code.
 
 We recommend you upgrade horizontally, but you may want to upgrade horizontally within one portion of your application at a time. For example, all the buttons in a toolbar or on a related set of pages in your application. This lets you upgrade in stages without destabilizing then entire application.
 
