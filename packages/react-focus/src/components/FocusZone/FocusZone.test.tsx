@@ -86,6 +86,7 @@ describe('FocusZone', () => {
     disabledTests: [
       // There is no top level FocusZone.ts file.
       'has-top-level-file',
+      'component-has-static-classnames-object',
     ],
     elementRefName: 'elementRef',
     testOptions: {

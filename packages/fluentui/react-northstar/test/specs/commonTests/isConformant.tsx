@@ -80,6 +80,7 @@ export function isConformant(
       'consistent-callback-args',
       // Disabled as v0 has different prefix
       'component-has-static-classname',
+      'component-has-static-classnames-object',
     ],
     helperComponents: [Ref, RefFindNode, FocusZone],
     extraTests: extraConformanceTests,

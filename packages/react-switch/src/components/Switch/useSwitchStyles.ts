@@ -11,7 +11,9 @@ export const switchClassNames: SlotClassNames<SwitchSlots> = {
   label: 'fui-Switch__label',
 };
 
-// TODO temporary export to pass conformance test.
+/**
+ * @deprecated Use `switchClassNames.root` instead.
+ */
 export const switchClassName = switchClassNames.root;
 
 // TODO replace these spacing constants with theme values once they're on the theme.

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Deprecate static classname string for Radio.",
+  "packageName": "@fluentui/react-radio",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

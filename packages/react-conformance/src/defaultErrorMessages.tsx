@@ -510,9 +510,103 @@ export const defaultErrorMessages = {
         indexFile,
       )}.`,
       suggestions: [
-        `Make sure that your component's ${resolveInfo('index.ts')} file` +
+        `Make sure that your component's ${resolveInfo('index.ts')} file ` +
           `or a file with styles hook exports \`${resolveInfo(constantValue)}\``,
         `If the component is internal, consider enabling ${resolveInfo('isInternal')} in your isConformant test.`,
+      ],
+      error,
+    });
+  },
+
+  'component-has-static-classnames-object-exported': (
+    testInfo: IsConformantOptions,
+    error: Error,
+    componentClassName: string,
+    exportName: string,
+  ) => {
+    const { componentPath, displayName } = testInfo;
+    const { testErrorInfo, resolveInfo, testErrorPath } = errorMessageColors;
+    const indexFile = path.join(getPackagePath(componentPath), 'src', 'index.ts');
+
+    return getErrorMessage({
+      displayName,
+      overview: `static classNames object is not exported (${testErrorInfo(exportName)}) in: ${EOL}${testErrorPath(
+        indexFile,
+      )}.`,
+      suggestions: [
+        `Make sure that your component's ${resolveInfo('index.ts')} file ` +
+          `or a file with styles hook exports an object of type SlotClassNames<Slots>.`,
+        `If the component is internal, consider enabling ${resolveInfo('isInternal')} in your isConformant test.`,
+      ],
+      error,
+    });
+  },
+
+  'component-has-static-classnames-in-correct-format': (
+    testInfo: IsConformantOptions,
+    error: Error,
+    componentClassName: string,
+    exportName: string,
+  ) => {
+    const { componentPath, displayName } = testInfo;
+    const { testErrorInfo, resolveInfo, testErrorPath } = errorMessageColors;
+    const indexFile = path.join(getPackagePath(componentPath), 'src', 'index.ts');
+
+    return getErrorMessage({
+      displayName,
+      overview: `static classNames object is not formatted correctly (${testErrorInfo(
+        exportName,
+      )}) in: ${EOL}${testErrorPath(indexFile)}.`,
+      suggestions: [
+        `Make sure all classNames are for the form "fui-<ComponentName>__<SlotName>" ` +
+          `or "fui-<ComponentName>" for the root slot`,
+        `If the component is internal, consider enabling ${resolveInfo('isInternal')} in your isConformant test.`,
+      ],
+      error,
+    });
+  },
+
+  'component-has-static-classnames': (
+    testInfo: IsConformantOptions,
+    error: Error,
+    componentName: string,
+    missingClassNames: string,
+  ) => {
+    const { displayName } = testInfo;
+    const { testErrorInfo, failedError } = errorMessageColors;
+
+    return getErrorMessage({
+      displayName,
+      overview: `missing one or more static classNames on component (${testErrorInfo(componentName)}).`,
+      details: [`Missing the following classes after render:`, `    ${failedError(missingClassNames)}`],
+      suggestions: [`Ensure that each slot of the component has its corresponding static className.`],
+      error,
+    });
+  },
+
+  'as-renders-html': (testInfo: IsConformantOptions, error: Error) => {
+    const { displayName } = testInfo;
+    const { resolveInfo } = errorMessageColors;
+
+    // Message Description: Receives an error when attempting to render as a functional component
+    // or pass as to the next component.
+    //
+    // It appears that "displayName" "as" prop doesn't properly handle HTML tags.
+    // Possible solutions:
+    // - If your component doesn't have an "as" prop, enable isConformant's skipAsPropTests option.
+    // - Make sure that your component can correctly render as HTML tags.
+    // - Check if you are missing any requiredProps within the isConformant in your test file.
+    // - Make sure that your component's implementation contains a valid return statement.
+    // - Check to see if your component works as expected with Enzyme's mount().
+    return getErrorMessage({
+      displayName,
+      overview: `"as" prop doesn't properly handle HTML tags.`,
+      suggestions: [
+        `If your component doesn't have an "as" prop, enable isConformant's ${resolveInfo('skipAsPropTests')} option.`,
+        `Make sure that your component can correctly render as ${resolveInfo('HTML tags')}.`,
+        `Check if you are missing any ${resolveInfo('requiredProps')} within the isConformant in your test file.`,
+        `Make sure that your component's implementation contains a valid return statement.`,
+        `Check to see if your component works as expected with Enzyme's ${resolveInfo('mount()')}.`,
       ],
       error,
     });
