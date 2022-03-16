@@ -14,6 +14,15 @@ describe('AccordionHeader', () => {
     Component: AccordionHeader,
     displayName: 'AccordionHeader',
     helperComponents: [AccordionHeaderContext.Provider],
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+          },
+        },
+      ],
+    },
   });
 
   afterEach(() => {

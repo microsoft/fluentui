@@ -2,11 +2,42 @@ import * as React from 'react';
 import { isConformant } from '../../common/isConformant';
 import { Avatar } from './Avatar';
 import { render, screen } from '@testing-library/react';
+import { avatarClassNames } from './useAvatarStyles';
 
 describe('Avatar', () => {
   isConformant({
     Component: Avatar,
     displayName: 'Avatar',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            image: { src: 'avatar.png', alt: 'test-image' },
+            initials: 'Test Initials',
+            badge: 'Test Badge',
+          },
+          expectedClassNames: {
+            root: avatarClassNames.root,
+            image: avatarClassNames.image,
+            initials: avatarClassNames.initials,
+            badge: avatarClassNames.badge,
+          },
+        },
+        {
+          props: {
+            image: { src: 'avatar.png', alt: 'test-image' },
+            icon: 'Test Icon',
+            badge: 'Test Badge',
+          },
+          expectedClassNames: {
+            root: avatarClassNames.root,
+            image: avatarClassNames.image,
+            icon: avatarClassNames.icon,
+            badge: avatarClassNames.badge,
+          },
+        },
+      ],
+    },
   });
 
   /**

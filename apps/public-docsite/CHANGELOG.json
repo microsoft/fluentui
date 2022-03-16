@@ -2,6 +2,45 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Wed, 16 Mar 2022 07:38:51 GMT",
+      "tag": "@fluentui/public-docsite_v8.2.41",
+      "version": "8.2.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react to v8.61.2",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-docsite-components to v8.6.8",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-experiments to v8.7.2",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/theme-samples to v8.4.8",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.3.8",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Mar 2022 07:45:54 GMT",
       "tag": "@fluentui/public-docsite_v8.2.41",
       "version": "8.2.41",

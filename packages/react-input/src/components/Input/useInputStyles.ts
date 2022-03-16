@@ -1,8 +1,18 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { InputState } from './Input.types';
+import type { InputSlots, InputState } from './Input.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `inputClassNames.root` instead.
+ */
 export const inputClassName = 'fui-Input';
+export const inputClassNames: SlotClassNames<InputSlots> = {
+  root: 'fui-Input',
+  input: 'fui-Input__input',
+  contentBefore: 'fui-Input__contentBefore',
+  contentAfter: 'fui-Input__contentAfter',
+};
 
 // TODO(sharing) use theme values once available
 const horizontalSpacing = {
@@ -246,7 +256,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   const contentStyles = useContentStyles();
 
   state.root.className = mergeClasses(
-    inputClassName,
+    inputClassNames.root,
     rootStyles.base,
     rootStyles[size],
     rootStyles[appearance],
@@ -261,6 +271,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   );
 
   state.input.className = mergeClasses(
+    inputClassNames.input,
     inputStyles.base,
     inputStyles[size],
     disabled && inputStyles.disabled,
@@ -269,10 +280,18 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
 
   const contentClasses = [contentStyles.base, disabled && contentStyles.disabled];
   if (state.contentBefore) {
-    state.contentBefore.className = mergeClasses(...contentClasses, state.contentBefore.className);
+    state.contentBefore.className = mergeClasses(
+      inputClassNames.contentBefore,
+      ...contentClasses,
+      state.contentBefore.className,
+    );
   }
   if (state.contentAfter) {
-    state.contentAfter.className = mergeClasses(...contentClasses, state.contentAfter.className);
+    state.contentAfter.className = mergeClasses(
+      inputClassNames.contentAfter,
+      ...contentClasses,
+      state.contentAfter.className,
+    );
   }
 
   return state;

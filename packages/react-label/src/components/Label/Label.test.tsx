@@ -8,6 +8,13 @@ describe('Label', () => {
     Component: Label,
     displayName: 'Label',
     requiredProps: { children: "I'm a label." },
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: { required: 'Required Test' },
+        },
+      ],
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
