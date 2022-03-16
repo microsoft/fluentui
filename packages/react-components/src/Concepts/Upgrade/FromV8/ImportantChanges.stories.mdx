@@ -139,7 +139,7 @@ There are alias tokens for general purpose component parts (e.g. background, bor
 Components consume the theme, by importing `tokens`, a collection of css var usage, and using them in `makeStyles`.
 
 FluentProvider can be nested multiple times in the hierarchy to create theme variations and `dir` changes for a scoped set of components.
-FluentProvider does **not** have a default theme like ThemeProvider, so you'll need to set the theme.
+FluentProvider does **not** have a default theme like ThemeProvider, so you'll need to set the theme at your application's root for the components to be styled correctly.
 
 For example, the same `Button` customization as before would be done like this.
 
