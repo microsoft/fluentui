@@ -33,9 +33,6 @@ export interface SelectCommons {
 // @public (undocumented)
 export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size'> & SelectCommons;
 
-// @public
-export const selectShorthandProps: (keyof SelectSlots)[];
-
 // @public (undocumented)
 export type SelectSlots = {
     root: NonNullable<Slot<'span'>>;

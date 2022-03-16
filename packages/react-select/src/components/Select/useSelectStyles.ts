@@ -70,10 +70,6 @@ const useRootStyles = makeStyles({
     fontFamily: tokens.fontFamilyBase,
     position: 'relative',
 
-    '*, *:before, *:after': {
-      boxSizing: 'border-box',
-    },
-
     '&:after': {
       backgroundImage: `linear-gradient(
         0deg,
@@ -83,6 +79,7 @@ const useRootStyles = makeStyles({
         transparent 100%
       )`,
       ...shorthands.borderRadius(0, 0, tokens.borderRadiusMedium, tokens.borderRadiusMedium),
+      boxSizing: 'border-box',
       content: '""',
       height: tokens.borderRadiusMedium,
       position: 'absolute',
@@ -110,6 +107,7 @@ const useSelectStyles = makeStyles({
     ...shorthands.border('1px', 'solid', 'transparent'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxShadow: 'none',
+    boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
     flexGrow: 1,
     fontFamily: tokens.fontFamilyBase,
@@ -160,6 +158,7 @@ const useSelectStyles = makeStyles({
 
 const useIconStyles = makeStyles({
   icon: {
+    boxSizing: 'border-box',
     color: tokens.colorNeutralStrokeAccessible,
     display: 'block',
     position: 'absolute',
