@@ -124,7 +124,7 @@ common/_common.scss @microsoft/cxe-red @phkuo
 packages/react-accordion/ @microsoft/teams-prg @microsoft/cxe-coastal
 packages/react-avatar/ @microsoft/cxe-red @behowell @khmakoto
 packages/react-badge/ @microsoft/teams-prg @microsoft/cxe-red @behowell
-packages/react-button/ @microsoft/cxe-red @dzearing @khmakoto
+packages/react-button/ @microsoft/cxe-red @khmakoto
 packages/react-card/ @microsoft/cxe-prg
 packages/react-checkbox/ @microsoft/cxe-red @khmakoto
 packages/react-components/ @microsoft/teams-prg @microsoft/cxe-prg @microsoft/cxe-red @microsoft/cxe-coastal

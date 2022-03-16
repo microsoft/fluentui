@@ -12,7 +12,7 @@ exports[`MenuItemCheckbox conformance renders a default state 1`] = `
   tabIndex={0}
 >
   <span
-    className=""
+    className="fui-MenuItem__checkmark fui-MenuItemCheckbox__checkmark"
   >
     <svg
       aria-hidden={true}
@@ -29,7 +29,7 @@ exports[`MenuItemCheckbox conformance renders a default state 1`] = `
     </svg>
   </span>
   <span
-    className=""
+    className="fui-MenuItem__content fui-MenuItemCheckbox__content"
   >
     Default MenuItemCheckbox
   </span>

@@ -1,8 +1,16 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { LabelState } from './Label.types';
+import type { LabelSlots, LabelState } from './Label.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `labelClassNames.root` instead.
+ */
 export const labelClassName = 'fui-Label';
+export const labelClassNames: SlotClassNames<LabelSlots> = {
+  root: 'fui-Label',
+  required: 'fui-Label__required',
+};
 
 /**
  * Styles for the label
@@ -49,7 +57,7 @@ const useStyles = makeStyles({
 export const useLabelStyles_unstable = (state: LabelState): LabelState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
-    labelClassName,
+    labelClassNames.root,
     styles.root,
     state.disabled && styles.disabled,
     styles[state.size],
@@ -58,7 +66,7 @@ export const useLabelStyles_unstable = (state: LabelState): LabelState => {
   );
 
   if (state.required) {
-    state.required.className = mergeClasses(styles.required, state.required.className);
+    state.required.className = mergeClasses(labelClassNames.required, styles.required, state.required.className);
   }
 
   return state;

@@ -312,6 +312,13 @@ const getOverrides = () => [
   // Enable rules requiring type info only for appropriate files/circumstances
   ...configHelpers.getTypeInfoRuleOverrides(typeAwareRules),
   {
+    files: '**/src/index.{ts,tsx,js}',
+    rules: {
+      // TODO: propagate to `error` once all packages barrel files have been fixed
+      '@rnx-kit/no-export-all': ['warn', { expand: 'all' }],
+    },
+  },
+  {
     files: '**/*.{ts,tsx}',
     // This turns off a few rules that don't work or are unnecessary for TS, and enables a few
     // that make sense for TS: no-var, prefer-const, prefer-rest-params, prefer-spread

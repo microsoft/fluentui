@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Wed, 16 Mar 2022 07:38:50 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.7.0",
+      "version": "1.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "fcbdedc99e36f562680ebd2b1a7d422dabd5078b",
+            "comment": "feat(eslint-plugin): enable no-export-all:all for all packages public API"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Mar 2022 07:34:40 GMT",
       "tag": "@fluentui/eslint-plugin_v1.6.3",
       "version": "1.6.3",
