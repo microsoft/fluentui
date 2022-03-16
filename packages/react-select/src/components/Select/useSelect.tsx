@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
-import { ChevronDown16Regular, ChevronDown20Regular, ChevronDown24Regular } from '@fluentui/react-icons';
-import type { SelectProps, SelectSlots, SelectState } from './Select.types';
-
-/**
- * Array of all shorthand properties listed as the keys of SelectSlots
- */
-export const selectShorthandProps: (keyof SelectSlots)[] = ['select', 'icon', 'root'];
+import { ChevronDownRegular } from '@fluentui/react-icons';
+import type { SelectProps, SelectState } from './Select.types';
 
 /**
  * Create the state required to render Select.
@@ -26,10 +21,6 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
     excludedPropNames: ['appearance', 'inline', 'size'],
   });
 
-  // Use the default down arrow if none is provided
-  const DefaultSelectIcon =
-    size === 'small' ? ChevronDown16Regular : size === 'medium' ? ChevronDown20Regular : ChevronDown24Regular;
-
   return {
     size,
     appearance,
@@ -48,7 +39,7 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
     }),
     icon: resolveShorthand(icon, {
       required: true,
-      defaultProps: { children: <DefaultSelectIcon /> },
+      defaultProps: { children: <ChevronDownRegular /> },
     }),
     root: resolveShorthand(root, {
       required: true,

@@ -45,6 +45,12 @@ const fieldHeights = {
   large: '40px',
 };
 
+const iconSizes = {
+  small: '16px',
+  medium: '20px',
+  large: '24px',
+};
+
 // TODO: borrowed from Input, also seems like animation should be included in the theme:
 const motionDurations = {
   ultraFast: '0.05s',
@@ -167,16 +173,25 @@ const useIconStyles = makeStyles({
     },
   },
   small: {
+    fontSize: iconSizes.small,
+    height: iconSizes.small,
     paddingRight: horizontalSpacing.sNudge,
     paddingLeft: horizontalSpacing.xxs,
+    width: iconSizes.small,
   },
   medium: {
+    fontSize: iconSizes.medium,
+    height: iconSizes.medium,
     paddingRight: horizontalSpacing.mNudge,
     paddingLeft: horizontalSpacing.xxs,
+    width: iconSizes.medium,
   },
   large: {
+    fontSize: iconSizes.large,
+    height: iconSizes.large,
     paddingRight: horizontalSpacing.m,
     paddingLeft: horizontalSpacing.sNudge,
+    width: iconSizes.large,
   },
 });
 
