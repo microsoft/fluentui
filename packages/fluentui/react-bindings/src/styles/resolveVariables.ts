@@ -44,12 +44,12 @@ export const resolveVariables = (
           theme.siteVariables,
         );
       } else {
-        variablesThemeCache[handlingDisplayName] = effectiveDisplayNames.reduce<ComponentVariablesPrepared | undefined>(
+        variablesThemeCache[handlingDisplayName] = effectiveDisplayNames.reduce<ComponentVariablesPrepared>(
           (acc, displayName) => {
             return mergeComponentVariables(acc, theme.componentVariables[displayName]);
           },
-          undefined,
-        );
+          () => ({}),
+        )(theme.siteVariables);
       }
 
       variablesCache.set(theme, variablesThemeCache);
@@ -59,12 +59,12 @@ export const resolveVariables = (
   } else if (effectiveDisplayNames.length === 1) {
     componentThemeVariables = callable(theme.componentVariables[effectiveDisplayNames[0]])(theme.siteVariables) || {};
   } else {
-    componentThemeVariables = effectiveDisplayNames.reduce<ComponentVariablesPrepared | undefined>(
+    componentThemeVariables = effectiveDisplayNames.reduce<ComponentVariablesPrepared>(
       (acc, displayName) => {
         return mergeComponentVariables(acc, theme.componentVariables[displayName]);
       },
-      undefined,
-    );
+      () => ({}),
+    )(theme.siteVariables);
   }
 
   if (variables === undefined) {
