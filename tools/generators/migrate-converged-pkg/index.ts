@@ -12,20 +12,13 @@ import {
   writeJson,
   updateProjectConfiguration,
   serializeJson,
+  generateFiles,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
 
 import { PackageJson, TsConfig } from '../../types';
-import {
-  arePromptsEnabled,
-  getProjectConfig,
-  getProjects,
-  printUserLogs,
-  prompt,
-  updateJestConfig,
-  UserLog,
-} from '../../utils';
+import { arePromptsEnabled, getProjectConfig, getProjects, printUserLogs, prompt, UserLog } from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
@@ -91,7 +84,6 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
 
   // 2. update Jest
   updateLocalJestConfig(tree, options);
-  updateRootJestConfig(tree, options);
 
   // update package npm scripts
   updateNpmScripts(tree, options);
@@ -174,7 +166,6 @@ const templates = {
         }
         if (options.platform === 'web') {
           tsConfig.compilerOptions.lib?.push('dom');
-          tsConfig.compilerOptions.types?.push('inline-style-expand-shorthand');
         }
         if (options.hasConformance) {
           tsConfig.exclude.unshift('./src/common/**');
@@ -192,7 +183,7 @@ const templates = {
           compilerOptions: {
             module: 'CommonJS',
             outDir: 'dist',
-            types: ['jest', 'node', 'inline-style-expand-shorthand'],
+            types: ['jest', 'node'],
           } as TsConfig['compilerOptions'],
           include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
         };
@@ -205,9 +196,10 @@ const templates = {
       },
     };
   },
-  babelConfig: (options: { extraPlugins: Array<string> }) => {
+  babelConfig: (options: { extraPresets: Array<string> }) => {
     return {
-      plugins: [...options.extraPlugins, 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+      presets: [...options.extraPresets],
+      plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
     };
   },
   jestSetup: stripIndents`
@@ -233,7 +225,7 @@ const templates = {
         },
         coverageDirectory: './coverage',
         setupFilesAfterEnv: ['${options.testSetupFilePath}'],
-        ${options.addSnapshotSerializers ? `snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],` : ''}
+        ${options.addSnapshotSerializers ? `snapshotSerializers: ['@griffel/jest-serializer'],` : ''}
       };
   `,
   storybook: {
@@ -520,7 +512,7 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
   const scripts = {
     docs: 'api-extractor run --config=config/api-extractor.local.json --local',
     'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
-    storybook: 'start-storybook',
+    storybook: 'node ../../scripts/storybook/runner',
     start: 'yarn storybook',
     test: 'jest --passWithNoTests',
     'type-check': 'tsc -b tsconfig.json',
@@ -710,6 +702,9 @@ function setupE2E(tree: Tree, options: NormalizedSchema) {
 
   writeJson<TsConfig>(tree, options.paths.e2e.tsconfig, templates.e2e.tsconfig);
 
+  // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  generateFiles(tree, joinPathFragments(__dirname, 'files', 'e2e'), options.paths.e2e.rootFolder, { tmpl: '' });
+
   updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
     json.references?.push({
       path: `./${path.basename(options.paths.e2e.rootFolder)}/${path.basename(options.paths.e2e.tsconfig)}`,
@@ -737,7 +732,7 @@ function shouldSetupE2E(tree: Tree, options: NormalizedSchema) {
 
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   const jestSetupFilePath = options.paths.jestSetupFile;
-  const packagesThatTriggerAddingSnapshots = [`@${options.workspaceConfig.npmScope}/react-make-styles`];
+  const packagesThatTriggerAddingSnapshots = [`@griffel/react`];
 
   const packageJson = readJson<PackageJson>(tree, options.paths.packageJson);
   packageJson.dependencies = packageJson.dependencies ?? {};
@@ -755,12 +750,6 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   if (!tree.exists(jestSetupFilePath)) {
     tree.write(jestSetupFilePath, templates.jestSetup);
   }
-
-  return tree;
-}
-
-function updateRootJestConfig(tree: Tree, options: NormalizedSchema) {
-  updateJestConfig(tree, { project: options.name });
 
   return tree;
 }
@@ -844,28 +833,13 @@ function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
 }
 
 function setupBabel(tree: Tree, options: NormalizedSchema) {
-  const currentProjectNpmScope = `@${options.workspaceConfig.npmScope}`;
   const pkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
   pkgJson.dependencies = pkgJson.dependencies || {};
   pkgJson.devDependencies = pkgJson.devDependencies || {};
 
-  const shouldAddMakeStylesPlugin =
-    !options.name.includes('make-styles') &&
-    (pkgJson.dependencies[`${currentProjectNpmScope}/react-make-styles`] ||
-      pkgJson.dependencies[`${currentProjectNpmScope}/make-styles`]);
-
-  const extraPlugins = shouldAddMakeStylesPlugin ? ['module:@fluentui/babel-make-styles'] : [];
-
-  const config = templates.babelConfig({ extraPlugins });
-
-  const babelMakeStylesProjectName = `${currentProjectNpmScope}/babel-make-styles`;
-  if (shouldAddMakeStylesPlugin) {
-    const babelMakeStylesProject = getProjectConfig(tree, { packageName: babelMakeStylesProjectName });
-    const babelMakeStylesPkgJson: PackageJson = readJson(tree, babelMakeStylesProject.paths.packageJson);
-    pkgJson.devDependencies[babelMakeStylesProjectName] = `${babelMakeStylesPkgJson.version}`;
-  } else {
-    delete pkgJson.devDependencies[babelMakeStylesProjectName];
-  }
+  const shouldAddGriffelPreset = pkgJson.dependencies['@griffel/react'];
+  const extraPresets = shouldAddGriffelPreset ? ['@griffel'] : [];
+  const config = templates.babelConfig({ extraPresets });
 
   tree.write(options.paths.babelConfig, serializeJson(config));
   writeJson(tree, options.paths.packageJson, pkgJson);

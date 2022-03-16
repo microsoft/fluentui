@@ -100,7 +100,7 @@ export const typeRampPlus1LineHeight = create<string>('type-ramp-plus-1-line-hei
 /** @public */
 export const typeRampPlus2FontSize = create<string>('type-ramp-plus-2-font-size').withDefault('20px');
 /** @public */
-export const typeRampPlus2LineHeight = create<string>('type-ramp-plus-2-line-height').withDefault('28px');
+export const typeRampPlus2LineHeight = create<string>('type-ramp-plus-2-line-height').withDefault('26px');
 /** @public */
 export const typeRampPlus3FontSize = create<string>('type-ramp-plus-3-font-size').withDefault('24px');
 /** @public */

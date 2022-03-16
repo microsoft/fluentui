@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CalendarMonth24Regular } from '@fluentui/react-icons';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { Button } from '../../../Button';
 
 export const Disabled = () => {
@@ -8,19 +8,19 @@ export const Disabled = () => {
   return (
     <>
       <div style={groupStyles}>
-        <Button>Default</Button>
-        <Button disabled>Disabled</Button>
-        <Button disabledFocusable>Disabled focusable</Button>
+        <Button>Enabled state</Button>
+        <Button disabled>Disabled state</Button>
+        <Button disabledFocusable>Disabled focusable state</Button>
       </div>
       <div style={groupStyles}>
-        <Button appearance="primary" icon={<CalendarMonth24Regular />}>
-          Primary
+        <Button appearance="primary" icon={<CalendarMonthRegular />}>
+          Enabled state
         </Button>
-        <Button appearance="primary" disabled icon={<CalendarMonth24Regular />}>
-          Primary disabled
+        <Button appearance="primary" disabled icon={<CalendarMonthRegular />}>
+          Disabled state
         </Button>
         <Button appearance="primary" disabledFocusable>
-          Primary disabled focusable
+          Disabled focusable state
         </Button>
       </div>
     </>

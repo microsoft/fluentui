@@ -154,6 +154,7 @@ export const Label = (React.forwardRef<HTMLSpanElement, LabelProps>((props, ref)
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >

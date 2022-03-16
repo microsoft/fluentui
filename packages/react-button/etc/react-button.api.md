@@ -4,38 +4,32 @@
 
 ```ts
 
-import { ARIAButtonShorthandProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
 
-// @public (undocumented)
-export const buttonClassName = "fui-Button";
+// @public @deprecated (undocumented)
+export const buttonClassName: string;
 
 // @public (undocumented)
-export type ButtonCommons = {
-    appearance?: 'primary' | 'outline' | 'subtle' | 'transparent';
-    block: boolean;
-    disabledFocusable: boolean;
-    disabled: boolean;
-    iconPosition: 'before' | 'after';
-    shape: 'rounded' | 'circular' | 'square';
-    size: 'small' | 'medium' | 'large';
-};
+export const buttonClassNames: SlotClassNames<ButtonSlots>;
 
+// Warning: (ae-forgotten-export) The symbol "ButtonCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommons>;
 
 // @public (undocumented)
 export type ButtonSlots = {
-    root: ARIAButtonShorthandProps;
-    icon?: IntrinsicShorthandProps<'span'>;
+    root: Slot<ARIAButtonSlotProps>;
+    icon?: Slot<'span'>;
 };
 
 // @public (undocumented)
@@ -46,16 +40,19 @@ export type ButtonState = ComponentState<ButtonSlots> & ButtonCommons & {
 // @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
-// @public (undocumented)
-export const compoundButtonClassName = "fui-CompoundButton";
+// @public @deprecated (undocumented)
+export const compoundButtonClassName: string;
 
 // @public (undocumented)
-export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommons>;
+export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots>;
+
+// @public (undocumented)
+export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Partial<ButtonCommons>;
 
 // @public (undocumented)
 export type CompoundButtonSlots = ButtonSlots & {
-    secondaryContent?: IntrinsicShorthandProps<'span'>;
-    contentContainer: IntrinsicShorthandProps<'span'>;
+    secondaryContent?: Slot<'span'>;
+    contentContainer: NonNullable<Slot<'span'>>;
 };
 
 // @public (undocumented)
@@ -64,50 +61,54 @@ export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<But
 // @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 
-// @public (undocumented)
-export const menuButtonClassName = "fui-MenuButton";
+// @public @deprecated (undocumented)
+export const menuButtonClassName: string;
 
-// Warning: (ae-forgotten-export) The symbol "MenuTriggerChildProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<ButtonCommons, 'iconPosition'>> & Partial<MenuTriggerChildProps>;
+export const menuButtonClassNames: SlotClassNames<MenuButtonSlots>;
+
+// @public (undocumented)
+export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<ButtonCommons, 'iconPosition'>>;
 
 // @public (undocumented)
 export type MenuButtonSlots = ButtonSlots & {
-    menuIcon?: IntrinsicShorthandProps<'span'>;
+    menuIcon?: Slot<'span'>;
 };
 
 // @public (undocumented)
 export type MenuButtonState = ComponentState<MenuButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition'>;
 
 // @public
-const renderButton: (state: ButtonState) => JSX.Element;
-export { renderButton }
-export { renderButton as renderToggleButton }
+const renderButton_unstable: (state: ButtonState) => JSX.Element;
+export { renderButton_unstable }
+export { renderButton_unstable as renderToggleButton_unstable }
 
 // @public
-export const renderCompoundButton: (state: CompoundButtonState) => JSX.Element;
+export const renderCompoundButton_unstable: (state: CompoundButtonState) => JSX.Element;
 
 // @public
-export const renderMenuButton: (state: MenuButtonState) => JSX.Element;
+export const renderMenuButton_unstable: (state: MenuButtonState) => JSX.Element;
 
 // @public
-export const renderSplitButton: (state: SplitButtonState) => JSX.Element;
+export const renderSplitButton_unstable: (state: SplitButtonState) => JSX.Element;
 
 // @public
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 
+// @public @deprecated (undocumented)
+export const splitButtonClassName: string;
+
 // @public (undocumented)
-export const splitButtonClassName = "fui-SplitButton";
+export const splitButtonClassNames: SlotClassNames<SplitButtonSlots>;
 
 // @public (undocumented)
 export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonProps, 'root'> & Omit<MenuButtonProps, 'root'>;
 
 // @public (undocumented)
 export type SplitButtonSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    menuButton?: ObjectShorthandProps<MenuButtonProps>;
-    primaryActionButton?: ObjectShorthandProps<ButtonProps>;
+    root: Slot<'div'>;
+    menuButton?: Slot<typeof MenuButton>;
+    primaryActionButton?: Slot<typeof Button>;
 };
 
 // @public (undocumented)
@@ -116,14 +117,14 @@ export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonSta
 // @public
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
 
-// @public (undocumented)
-export const toggleButtonClassName = "fui-ToggleButton";
+// @public @deprecated (undocumented)
+export const toggleButtonClassName: string;
 
 // @public (undocumented)
-export type ToggleButtonCommons = {
-    checked: boolean;
-};
+export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;
 
+// Warning: (ae-forgotten-export) The symbol "ToggleButtonCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type ToggleButtonProps = ButtonProps & Partial<ToggleButtonCommons> & {
     defaultChecked?: boolean;
@@ -133,34 +134,34 @@ export type ToggleButtonProps = ButtonProps & Partial<ToggleButtonCommons> & {
 export type ToggleButtonState = ButtonState & ToggleButtonCommons;
 
 // @public
-export const useButton: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
+export const useButton_unstable: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
 
 // @public (undocumented)
-export const useButtonStyles: (state: ButtonState) => ButtonState;
+export const useButtonStyles_unstable: (state: ButtonState) => ButtonState;
 
 // @public
-export const useCompoundButton: ({ contentContainer, secondaryContent, ...props }: CompoundButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => CompoundButtonState;
+export const useCompoundButton_unstable: ({ contentContainer, secondaryContent, ...props }: CompoundButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => CompoundButtonState;
 
 // @public (undocumented)
-export const useCompoundButtonStyles: (state: CompoundButtonState) => CompoundButtonState;
+export const useCompoundButtonStyles_unstable: (state: CompoundButtonState) => CompoundButtonState;
 
 // @public
-export const useMenuButton: ({ menuIcon, ...props }: MenuButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => MenuButtonState;
+export const useMenuButton_unstable: ({ menuIcon, ...props }: MenuButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => MenuButtonState;
 
 // @public (undocumented)
-export const useMenuButtonStyles: (state: MenuButtonState) => MenuButtonState;
+export const useMenuButtonStyles_unstable: (state: MenuButtonState) => MenuButtonState;
 
 // @public
-export const useSplitButton: (props: SplitButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => SplitButtonState;
+export const useSplitButton_unstable: (props: SplitButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => SplitButtonState;
 
 // @public (undocumented)
-export const useSplitButtonStyles: (state: SplitButtonState) => SplitButtonState;
+export const useSplitButtonStyles_unstable: (state: SplitButtonState) => SplitButtonState;
 
 // @public
-export const useToggleButton: ({ checked, defaultChecked, ...props }: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonState;
+export const useToggleButton_unstable: ({ checked, defaultChecked, ...props }: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonState;
 
 // @public (undocumented)
-export const useToggleButtonStyles: (state: ToggleButtonState) => ToggleButtonState;
+export const useToggleButtonStyles_unstable: (state: ToggleButtonState) => ToggleButtonState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,6 +1,6 @@
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, shorthands } from '@griffel/react';
 import * as React from 'react';
-import { Tab, TabList, TabProps } from '../index'; // codesandbox-dependency: @fluentui/react-tabs ^9.0.0-beta
+import { Tab, TabList, TabProps } from '../index';
 
 const useStyles = makeStyles({
   root: {
@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    padding: '50px 20px',
+    ...shorthands.padding('50px', '20px'),
     rowGap: '20px',
   },
 });
@@ -18,7 +18,7 @@ export const Default = (props: Partial<TabProps>) => {
 
   return (
     <div className={styles.root}>
-      <TabList {...props} defaultSelectedValue="tab2">
+      <TabList {...props}>
         <Tab value="tab1">First Tab</Tab>
         <Tab value="tab2">Second Tab</Tab>
         <Tab value="tab3">Third Tab</Tab>

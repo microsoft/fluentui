@@ -7,7 +7,7 @@ const sh = (command: string, cwd?: string, pipeOutputToResult: boolean = false):
     const options: childProcess.SpawnOptions = {
       cwd: cwd || process.cwd(),
       env: process.env,
-      stdio: pipeOutputToResult ? 'pipe' : [0, 1, 2],
+      stdio: pipeOutputToResult ? 'pipe' : 'inherit',
       shell: true,
     };
 

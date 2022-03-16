@@ -8,7 +8,7 @@ export const Appearance = () => (
   <>
     <Menu>
       <MenuTrigger>
-        <MenuButton>This is a Menu Button</MenuButton>
+        <MenuButton>Default</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>
@@ -21,7 +21,7 @@ export const Appearance = () => (
 
     <Menu>
       <MenuTrigger>
-        <MenuButton appearance="primary">This is a Menu Button</MenuButton>
+        <MenuButton appearance="primary">Primary</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>
@@ -34,7 +34,7 @@ export const Appearance = () => (
 
     <Menu>
       <MenuTrigger>
-        <MenuButton appearance="outline">This is a Menu Button</MenuButton>
+        <MenuButton appearance="outline">Outline</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>
@@ -47,7 +47,7 @@ export const Appearance = () => (
 
     <Menu>
       <MenuTrigger>
-        <MenuButton appearance="subtle">This is a Menu Button</MenuButton>
+        <MenuButton appearance="subtle">Subtle</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>
@@ -60,7 +60,7 @@ export const Appearance = () => (
 
     <Menu>
       <MenuTrigger>
-        <MenuButton appearance="transparent">This is a Menu Button</MenuButton>
+        <MenuButton appearance="transparent">Transparent</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>

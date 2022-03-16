@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Types as TabsterTypes } from 'tabster';
 import { useTabster } from './useTabster';
 
 /**
@@ -24,12 +25,14 @@ export const useFocusFinders = () => {
   ]);
 
   const findNextFocusable = React.useCallback(
-    (currentElement: HTMLElement) => tabster?.focusable.findNext({ currentElement }),
+    (currentElement: HTMLElement, options: Pick<TabsterTypes.FindNextProps, 'container'> = {}) =>
+      tabster?.focusable.findNext({ currentElement, ...options }),
     [tabster],
   );
 
   const findPrevFocusable = React.useCallback(
-    (currentElement: HTMLElement) => tabster?.focusable.findPrev({ currentElement }),
+    (currentElement: HTMLElement, options: Pick<TabsterTypes.FindNextProps, 'container'> = {}) =>
+      tabster?.focusable.findPrev({ currentElement, ...options }),
     [tabster],
   );
 

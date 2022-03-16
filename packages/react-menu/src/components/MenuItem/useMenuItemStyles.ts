@@ -1,95 +1,131 @@
-import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { useCheckmarkStyles } from '../../selectable/index';
+import { tokens } from '@fluentui/react-theme';
+import { useCheckmarkStyles_unstable } from '../../selectable/index';
 import { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
-import type { MenuItemState } from './MenuItem.types';
+import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `menuItemClassNames.root` instead.
+ */
 export const menuItemClassName = 'fui-MenuItem';
+export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
+  root: 'fui-MenuItem',
+  icon: 'fui-MenuItem__icon',
+  checkmark: 'fui-MenuItem__checkmark',
+  submenuIndicator: 'fui-MenuItem__submenuIndicator',
+  content: 'fui-MenuItem__content',
+  secondaryContent: 'fui-MenuItem__secondaryContent',
+};
 
 const useStyles = makeStyles({
-  focusIndicator: theme => createFocusOutlineStyle(theme),
-  root: theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusMedium),
+  focusIndicator: createFocusOutlineStyle(),
+  root: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
     position: 'relative',
-    color: theme.colorNeutralForeground1,
-    backgroundColor: theme.colorNeutralBackground1,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackground1,
     paddingRight: '10px',
     paddingLeft: '10px',
     height: '32px',
     display: 'flex',
     alignItems: 'center',
-    fontSize: theme.fontSizeBase300,
+    fontSize: tokens.fontSizeBase300,
     cursor: 'pointer',
     ...shorthands.gap('4px'),
 
     ':hover': {
-      backgroundColor: theme.colorNeutralBackground1Hover,
-      color: theme.colorNeutralForeground2Hover,
+      backgroundColor: tokens.colorNeutralBackground1Hover,
+      color: tokens.colorNeutralForeground2Hover,
     },
 
     userSelect: 'none',
-  }),
+  },
   content: {
     paddingLeft: '2px',
     paddingRight: '2px',
     backgroundColor: 'transparent',
     flexGrow: 1,
   },
-  secondaryContent: theme => ({
+  secondaryContent: {
     paddingLeft: '2px',
     paddingRight: '2px',
-    color: theme.colorNeutralForeground3,
+    color: tokens.colorNeutralForeground3,
     ':hover': {
-      color: theme.colorNeutralForeground3Hover,
+      color: tokens.colorNeutralForeground3Hover,
     },
     ':focus': {
-      color: theme.colorNeutralForeground3Hover,
+      color: tokens.colorNeutralForeground3Hover,
     },
-  }),
+  },
   icon: {
     width: '20px',
     height: '20px',
+    fontSize: '20px',
+    lineHeight: 0,
+    alignItems: 'center',
+    display: 'inline-flex',
+    justifyContent: 'center',
   },
   submenuIndicator: {
     width: '20px',
     height: '20px',
+    fontSize: '20px',
+    lineHeight: 0,
+    alignItems: 'center',
+    display: 'inline-flex',
+    justifyContent: 'center',
   },
-  disabled: theme => ({
-    color: theme.colorNeutralForegroundDisabled,
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
     ':hover': {
-      color: theme.colorNeutralForegroundDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
     },
 
     ':focus': {
-      color: theme.colorNeutralForegroundDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
     },
-  }),
+  },
 });
 
 /** Applies style classnames to slots */
-export const useMenuItemStyles = (state: MenuItemState) => {
+export const useMenuItemStyles_unstable = (state: MenuItemState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
-    menuItemClassName,
+    menuItemClassNames.root,
     styles.root,
     styles.focusIndicator,
     state.disabled && styles.disabled,
     state.root.className,
   );
-  state.content.className = mergeClasses(styles.content, state.content.className);
+
+  if (state.content) {
+    state.content.className = mergeClasses(menuItemClassNames.content, styles.content, state.content.className);
+  }
+
+  if (state.checkmark) {
+    state.checkmark.className = mergeClasses(menuItemClassNames.checkmark, state.checkmark.className);
+  }
+
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(
+      menuItemClassNames.secondaryContent,
       !state.disabled && styles.secondaryContent,
       state.secondaryContent.className,
     );
   }
 
   if (state.icon) {
-    state.icon.className = mergeClasses(styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(menuItemClassNames.icon, styles.icon, state.icon.className);
   }
 
   if (state.submenuIndicator) {
-    state.submenuIndicator.className = mergeClasses(styles.submenuIndicator, state.submenuIndicator.className);
+    state.submenuIndicator.className = mergeClasses(
+      menuItemClassNames.submenuIndicator,
+      styles.submenuIndicator,
+      state.submenuIndicator.className,
+    );
   }
-  useCheckmarkStyles(state as MenuItemCheckboxState);
+  useCheckmarkStyles_unstable(state as MenuItemCheckboxState);
 };

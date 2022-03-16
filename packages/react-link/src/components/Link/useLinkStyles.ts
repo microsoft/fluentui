@@ -1,8 +1,16 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import type { LinkState } from './Link.types';
+import { tokens } from '@fluentui/react-theme';
+import type { LinkSlots, LinkState } from './Link.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `linkClassNames.root` instead.
+ */
 export const linkClassName = 'fui-Link';
+export const linkClassNames: SlotClassNames<LinkSlots> = {
+  root: 'fui-Link',
+};
 
 const useStyles = makeStyles({
   focusIndicator: createCustomFocusIndicatorStyle({
@@ -10,21 +18,21 @@ const useStyles = makeStyles({
     textDecorationStyle: 'double',
   }),
   // Common styles.
-  root: theme => ({
+  root: {
     backgroundColor: 'transparent',
     borderTopStyle: 'none',
     borderLeftStyle: 'none',
     borderRightStyle: 'none',
     borderBottomColor: 'transparent',
     borderBottomStyle: 'solid',
-    borderBottomWidth: theme.strokeWidthThin,
+    borderBottomWidth: tokens.strokeWidthThin,
     boxSizing: 'border-box',
-    color: theme.colorBrandForegroundLink,
+    color: tokens.colorBrandForegroundLink,
     cursor: 'pointer',
     display: 'inline',
-    fontFamily: theme.fontFamilyBase,
-    fontSize: theme.fontSizeBase300,
-    fontWeight: theme.fontWeightRegular,
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase300,
+    fontWeight: tokens.fontWeightRegular,
     ...shorthands.margin(0),
     ...shorthands.padding(0),
     ...shorthands.overflow('inherit'),
@@ -34,63 +42,63 @@ const useStyles = makeStyles({
     userSelect: 'text',
 
     ':hover': {
-      borderBottomColor: theme.colorBrandForegroundLinkHover,
-      color: theme.colorBrandForegroundLinkHover,
+      borderBottomColor: tokens.colorBrandForegroundLinkHover,
+      color: tokens.colorBrandForegroundLinkHover,
     },
 
     ':active': {
-      borderBottomColor: theme.colorBrandForegroundLinkPressed,
-      color: theme.colorBrandForegroundLinkPressed,
+      borderBottomColor: tokens.colorBrandForegroundLinkPressed,
+      color: tokens.colorBrandForegroundLinkPressed,
     },
-  }),
+  },
   // Overrides when an href is present so the Link renders as an anchor.
   href: {
     fontSize: 'inherit',
   },
   // Overrides when the Link appears subtle.
-  subtle: theme => ({
-    color: theme.colorNeutralForeground2,
+  subtle: {
+    color: tokens.colorNeutralForeground2,
 
     ':hover': {
-      borderBottomColor: theme.colorNeutralForeground2Hover,
-      color: theme.colorNeutralForeground2Hover,
+      borderBottomColor: tokens.colorNeutralForeground2Hover,
+      color: tokens.colorNeutralForeground2Hover,
     },
 
     ':active': {
-      borderBottomColor: theme.colorNeutralForeground2Pressed,
-      color: theme.colorNeutralForeground2Pressed,
+      borderBottomColor: tokens.colorNeutralForeground2Pressed,
+      color: tokens.colorNeutralForeground2Pressed,
     },
-  }),
+  },
   // Overrides when the Link is rendered inline within text.
-  inline: theme => ({
-    borderBottomColor: theme.colorBrandForegroundLink,
-  }),
+  inline: {
+    borderBottomColor: tokens.colorBrandForegroundLink,
+  },
   // Overrides when the Link is rendered inline within text and appears subtle.
-  inlineSubtle: theme => ({
-    borderBottomColor: theme.colorNeutralForeground2,
-  }),
+  inlineSubtle: {
+    borderBottomColor: tokens.colorNeutralForeground2,
+  },
   // Overrides when the Link is disabled.
-  disabled: theme => ({
+  disabled: {
     borderBottomColor: 'transparent',
-    color: theme.colorNeutralForegroundDisabled,
+    color: tokens.colorNeutralForegroundDisabled,
     cursor: 'not-allowed',
 
     ':hover': {
       borderBottomColor: 'transparent',
-      color: theme.colorNeutralForegroundDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
     },
 
     ':active': {
       borderBottomColor: 'transparent',
-      color: theme.colorNeutralForegroundDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
     },
-  }),
+  },
 });
 
-export const useLinkStyles = (state: LinkState): LinkState => {
+export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
-    linkClassName,
+    linkClassNames.root,
     styles.root,
     styles.focusIndicator,
     state.root.as === 'a' && state.root.href && styles.href,

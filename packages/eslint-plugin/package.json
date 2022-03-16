@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/eslint-plugin",
-  "version": "1.5.1",
+  "version": "1.7.0",
   "description": "ESLint configuration and custom rules for Fluent UI",
   "main": "src/index.js",
   "repository": {
@@ -12,6 +12,7 @@
     "lint": "tsc --noEmit && eslint --ext .js --cache ."
   },
   "dependencies": {
+    "@rnx-kit/eslint-plugin": "^0.2.5",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/experimental-utils": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",

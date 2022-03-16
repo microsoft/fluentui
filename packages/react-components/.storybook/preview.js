@@ -2,9 +2,6 @@ import * as rootPreview from '../../../.storybook/preview';
 import { FluentDocsContainer } from '../src/DocsComponents/FluentDocsContainer.stories';
 import { FluentDocsPage } from '../src/DocsComponents/FluentDocsPage.stories';
 
-// load global styles
-import '../public/intro.css';
-
 /** @type {NonNullable<typeof rootPreview.parameters['options']>} */
 const options = {
   storySort: {
@@ -17,7 +14,7 @@ const options = {
       [
         'Introduction',
         'Developer',
-        ['Quick Start', 'Migrating from @fluentui/react v8', 'Styling Components', 'Positioning Components'],
+        ['Quick Start', 'Migrating from @fluentui᜵react v8', 'Styling Components', 'Positioning Components'],
       ],
       'Theme',
       'Components',

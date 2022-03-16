@@ -7,7 +7,7 @@ exports[`CardPreview renders a default state 1`] = `
   >
     Default CardPreview
     <div
-      class=""
+      class="fui-CardPreview__logo"
     >
       Logo slot
     </div>

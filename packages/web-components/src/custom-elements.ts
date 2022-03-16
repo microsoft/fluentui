@@ -1,3 +1,46 @@
+// These type imports are needed so that API-extractor doesn't add import types with improper pathing.
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import type {
+  Accordion,
+  AccordionItem,
+  Anchor,
+  AnchoredRegion,
+  Badge,
+  Breadcrumb,
+  BreadcrumbItem,
+  Button,
+  Calendar,
+  Card,
+  Checkbox,
+  Combobox,
+  DataGrid,
+  Dialog,
+  Divider,
+  Flipper,
+  HorizontalScroll,
+  Listbox,
+  ListboxOption,
+  Menu,
+  MenuItem,
+  NumberField,
+  Radio,
+  RadioGroup,
+  Search,
+  Select,
+  Skeleton,
+  Slider,
+  SliderLabel,
+  Switch,
+  Tabs,
+  TextArea,
+  TextField,
+  Toolbar,
+  Tooltip,
+  TreeItem,
+  TreeView,
+} from '@microsoft/fast-foundation';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 /**
  * Export all custom element definitions
  */
@@ -27,6 +70,7 @@ import { fluentNumberField } from './number-field/index';
 import { fluentProgress, fluentProgressRing } from './progress/index';
 import { fluentRadio } from './radio/index';
 import { fluentRadioGroup } from './radio-group/index';
+import { fluentSearch } from './search/index';
 import { fluentSelect } from './select/index';
 import { fluentSkeleton } from './skeleton/index';
 import { fluentSlider } from './slider/index';
@@ -70,6 +114,7 @@ export {
   fluentProgressRing,
   fluentRadio,
   fluentRadioGroup,
+  fluentSearch,
   fluentSelect,
   fluentSkeleton,
   fluentSlider,
@@ -120,6 +165,7 @@ export const allComponents = {
   fluentProgressRing,
   fluentRadio,
   fluentRadioGroup,
+  fluentSearch,
   fluentSelect,
   fluentSkeleton,
   fluentSlider,

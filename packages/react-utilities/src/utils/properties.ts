@@ -330,6 +330,16 @@ export const colProperties = toObjectMap(htmlElementProperties, [
 ]);
 
 /**
+ * An array of FIELDSET tag properties and events.
+ *
+ * @public
+ */
+export const fieldsetProperties = toObjectMap(htmlElementProperties, [
+  'disabled', // button, fieldset, input, optgroup, option, select, textarea
+  'form', // button, fieldset, input, label, meter, object, output, select, textarea
+]);
+
+/**
  * An array of FORM tag properties and events.
  *
  * @public

@@ -2,10 +2,7 @@ import * as React from 'react';
 import { ComponentDoc } from 'react-docgen-typescript';
 import * as ts from 'typescript';
 
-import { defaultTests } from './defaultTests';
 import { mount, ComponentType } from 'enzyme';
-
-export type Tests = keyof typeof defaultTests;
 
 /**
  * Individual test options
@@ -17,6 +14,14 @@ export interface TestOptions {
   'consistent-callback-args'?: {
     ignoreProps?: string[];
   };
+  'has-static-classnames'?: {
+    props: {
+      [key: string]: string | {};
+    };
+    expectedClassNames?: {
+      [key: string]: string;
+    };
+  }[];
 }
 
 export interface IsConformantOptions<TProps = {}> {
@@ -39,14 +44,14 @@ export interface IsConformantOptions<TProps = {}> {
   /**
    * If there are tests that aren't supposed to run on a component, this allows to opt out of any test.
    */
-  disabledTests?: Tests[];
+  disabledTests?: string[];
   /**
    * Optional flag that means the component is not exported at top level.
    * @defaultvalue false
    */
   isInternal?: boolean;
   /**
-   * Object that contains extra tests to run in case the component needs extra tests.
+   * Additional tests to run.
    */
   extraTests?: TestObject<TProps>;
   /**
@@ -71,15 +76,6 @@ export interface IsConformantOptions<TProps = {}> {
    */
   helperComponents?: React.ElementType[];
   /**
-   * Whether to skip all tests for the `as` prop.
-   */
-  skipAsPropTests?: boolean;
-  /**
-   * If the component's 'as' property requires a ref, this will attach a forwardRef to the test component passed to 'as'
-   * and disable the as-renders-react-class test.
-   */
-  asPropHandlesRef?: boolean;
-  /**
    * An alternative name for the ref prop which resolves to
    * the root element (e.g. `elementRef`).
    * @defaultvalue 'ref'
@@ -94,6 +90,12 @@ export interface IsConformantOptions<TProps = {}> {
    * This is 'root' by default, and only needs to be specified if it's a slot other than 'root'.
    */
   primarySlot?: keyof TProps | 'root';
+
+  /**
+   * Test will load the first tsconfig.json file working upwards from `tsconfigDir`.
+   * @defaultvalue the directory of the component being tested
+   */
+  tsconfigDir?: string;
 }
 
 export type ConformanceTest<TProps = {}> = (

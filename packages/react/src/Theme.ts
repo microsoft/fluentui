@@ -1,3 +1,4 @@
+//When adding new exports to this file, also add them to index.ts.
 export {
   AnimationStyles,
   AnimationVariables,
@@ -10,7 +11,12 @@ export {
   FluentTheme,
   createFontStyles,
   createTheme,
+  LocalizedFontFamilies,
+  LocalizedFontNames,
   mergeThemes,
+  MotionDurations,
+  MotionTimings,
+  MotionAnimations,
   NeutralColors,
   SharedColors,
   registerDefaultFontFaces,
@@ -34,3 +40,4 @@ export type {
   Theme,
 } from '@fluentui/theme';
 export * from './utilities/ThemeProvider/index';
+//When adding new exports to this file, also add them to index.ts.

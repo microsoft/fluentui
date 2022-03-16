@@ -3,7 +3,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ThemeProvider } from '@fluentui/react';
-import { initializeIcons } from '@fluentui/font-icons-mdl2/lib/index';
+import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import {
   INavPage,
   ISiteDefinition,

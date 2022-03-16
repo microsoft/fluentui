@@ -135,6 +135,7 @@ export {
   optionProperties,
   portalContainsElement,
   precisionRound,
+  // eslint-disable-next-line deprecation/deprecation
   raiseClick,
   removeIndex,
   replaceElement,

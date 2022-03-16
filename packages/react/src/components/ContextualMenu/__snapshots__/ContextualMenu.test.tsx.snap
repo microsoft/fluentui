@@ -443,7 +443,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                                   margin-left: 4px;
                                   margin-right: 4px;
                                   margin-top: 0;
-                                  overflow: hidden;
                                   text-overflow: ellipsis;
                                   vertical-align: middle;
                                   white-space: nowrap;

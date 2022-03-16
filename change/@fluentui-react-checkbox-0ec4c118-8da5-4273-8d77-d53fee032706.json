@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove star exports from react-checkbox",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

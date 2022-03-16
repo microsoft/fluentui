@@ -6,8 +6,6 @@ import { isConformant } from '../../common/isConformant';
 
 describe('MenuPopover', () => {
   isConformant({
-    // FIXME disabled because it will test the virtual parent span
-    disabledTests: ['as-renders-html'],
     Component: MenuPopover,
     displayName: 'MenuPopover',
     helperComponents: [Portal, 'span'],

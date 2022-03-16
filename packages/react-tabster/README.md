@@ -2,9 +2,7 @@
 
 **Tabster components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
-Experimental library for focus management that leverages [tabster](https://github.com/microsoft/tabster).
-
-These library is not production-ready and **should never be used in product**. This space is useful for testing new features whose APIs might change before final release.
+Library for focus management that leverages [tabster](https://github.com/microsoft/tabster).
 
 The provider needs to be wrapped around your application:
 

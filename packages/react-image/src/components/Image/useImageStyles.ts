@@ -1,29 +1,37 @@
-import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import type { ImageState } from './Image.types';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import type { ImageSlots, ImageState } from './Image.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `imageClassNames.root` instead.
+ */
 export const imageClassName = 'fui-Image';
+export const imageClassNames: SlotClassNames<ImageSlots> = {
+  root: 'fui-Image',
+};
 
 const useStyles = makeStyles({
-  root: theme => ({
-    ...shorthands.borderColor(theme.colorNeutralStroke1),
-    ...shorthands.borderRadius(theme.borderRadiusNone),
+  root: {
+    ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
 
     boxSizing: 'border-box',
     display: 'inline-block',
-  }),
-  rootBordered: theme => ({
+  },
+  rootBordered: {
     ...shorthands.borderStyle('solid'),
-    ...shorthands.borderWidth(theme.strokeWidthThin),
-  }),
-  rootCircular: theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusCircular),
-  }),
-  rootRounded: theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusMedium),
-  }),
-  rootShadow: theme => ({
-    boxShadow: theme.shadow4,
-  }),
+    ...shorthands.borderWidth(tokens.strokeWidthThin),
+  },
+  rootCircular: {
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+  },
+  rootRounded: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  },
+  rootShadow: {
+    boxShadow: tokens.shadow4,
+  },
   rootFitNone: {
     objectFit: 'none',
     objectPosition: 'left top',
@@ -53,10 +61,10 @@ const useStyles = makeStyles({
   },
 });
 
-export const useImageStyles = (state: ImageState) => {
+export const useImageStyles_unstable = (state: ImageState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
-    imageClassName,
+    imageClassNames.root,
     styles.root,
     state.bordered && styles.rootBordered,
     state.shape === 'circular' && styles.rootCircular,

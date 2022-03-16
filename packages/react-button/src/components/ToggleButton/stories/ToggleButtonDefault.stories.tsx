@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ToggleButton, ToggleButtonProps } from '../../../ToggleButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { ToggleButton, ToggleButtonProps } from '../../../ToggleButton';
 
 export const Default = (props: ToggleButtonProps) => {
-  return <ToggleButton {...props}>ToggleButton</ToggleButton>;
+  return <ToggleButton {...props}>Example</ToggleButton>;
 };

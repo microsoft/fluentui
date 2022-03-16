@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update styles no not use CSS shorthands",
-  "packageName": "@fluentui/react-card",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

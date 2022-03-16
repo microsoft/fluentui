@@ -1,1110 +1,124 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Slider Snapshot Tests renders Slider with custom mark labels correctly 1`] = `
+exports[`Slider renders disabled Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    id="slider-1"
+    style="--fui-slider-rail-direction: 90deg; --fui-slider-thumb-position: 50%; --fui-slider-rail-offset: 0%; --fui-slider-rail-progress: 50%;"
   >
+    <input
+      class="fui-Slider__input"
+      disabled=""
+      id="slider-1"
+      max="10"
+      min="0"
+      type="range"
+      value="5"
+    />
     <div
-      class=""
-      style="grid-template-columns: 10% 20% 10% 40%;"
-    >
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-        <div
-          class="fui-Slider-label"
-        >
-          <div
-            style="width: 10px; height: 10px; background: green;"
-          />
-        </div>
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-        <div
-          class="fui-Slider-label"
-        >
-          world
-        </div>
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-    </div>
+      class="fui-Slider__rail"
+    />
     <div
-      class=""
-    >
-      <div
-        class=""
-      />
-      <div
-        class=""
-      >
-        <div
-          class="fui-Slider-track"
-          style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
-        />
-      </div>
-      <div
-        class=""
-        style="transform: translateX(5%); transition: none;"
-      >
-        <div
-          class="fui-Slider-thumb"
-        />
-      </div>
-      <div
-        class=""
-      />
-      <input
-        class=""
-        max="100"
-        min="0"
-        step="1"
-        type="range"
-        value="5"
-      />
-    </div>
+      class="fui-Slider__thumb"
+    />
   </div>
 </div>
 `;
 
-exports[`Slider Snapshot Tests renders Slider with custom marks correctly 1`] = `
+exports[`Slider renders horizontal Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    id="slider-1"
+    style="--fui-slider-rail-direction: 90deg; --fui-slider-thumb-position: 50%; --fui-slider-rail-offset: 0%; --fui-slider-rail-progress: 50%;"
   >
+    <input
+      class="fui-Slider__input"
+      id="slider-1"
+      max="10"
+      min="0"
+      type="range"
+      value="5"
+    />
     <div
-      class=""
-      style="grid-template-columns: 10% 20% 10% 40%;"
-    >
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          style="width: 2px; height: 8px; background: red; margin-top: -2px;"
-        />
-        <div
-          class="fui-Slider-label"
-        >
-          <div
-            style="width: 10px; height: 10px; background: green;"
-          />
-        </div>
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-        <div
-          class="fui-Slider-label"
-        >
-          world
-        </div>
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-    </div>
+      class="fui-Slider__rail"
+    />
     <div
-      class=""
-    >
-      <div
-        class=""
-      />
-      <div
-        class=""
-      >
-        <div
-          class="fui-Slider-track"
-          style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
-        />
-      </div>
-      <div
-        class=""
-        style="transform: translateX(5%); transition: none;"
-      >
-        <div
-          class="fui-Slider-thumb"
-        />
-      </div>
-      <div
-        class=""
-      />
-      <input
-        class=""
-        max="100"
-        min="0"
-        step="1"
-        type="range"
-        value="5"
-      />
-    </div>
+      class="fui-Slider__thumb"
+    />
   </div>
 </div>
 `;
 
-exports[`Slider Snapshot Tests renders Slider with marks correctly 1`] = `
+exports[`Slider renders horizontal origin Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    id="slider-1"
+    style="--fui-slider-rail-direction: 90deg; --fui-slider-thumb-position: 50%; --fui-slider-rail-offset: 20%; --fui-slider-rail-progress: 30%;"
   >
+    <input
+      class="fui-Slider__input"
+      id="slider-1"
+      max="10"
+      min="0"
+      type="range"
+      value="5"
+    />
     <div
-      class=""
-      style="grid-template-columns: 0% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 2.999999999999993% 3.000000000000007% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3%;"
-    >
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark fui-Slider-firstMark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-    </div>
+      class="fui-Slider__rail"
+    />
     <div
-      class=""
-    >
-      <div
-        class=""
-      />
-      <div
-        class=""
-      >
-        <div
-          class="fui-Slider-track"
-          style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
-        />
-      </div>
-      <div
-        class=""
-        style="transform: translateX(5%); transition: none;"
-      >
-        <div
-          class="fui-Slider-thumb"
-        />
-      </div>
-      <div
-        class=""
-      />
-      <input
-        class=""
-        max="100"
-        min="0"
-        step="3"
-        type="range"
-        value="5"
-      />
-    </div>
+      class="fui-Slider__thumb"
+    />
   </div>
 </div>
 `;
 
-exports[`Slider Snapshot Tests renders disabled Slider correctly 1`] = `
+exports[`Slider renders vertical Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    id="slider-1"
+    style="--fui-slider-rail-direction: 0deg; --fui-slider-thumb-position: 50%; --fui-slider-rail-offset: 0%; --fui-slider-rail-progress: 50%;"
   >
+    <input
+      class="fui-Slider__input"
+      id="slider-1"
+      max="10"
+      min="0"
+      orient="vertical"
+      type="range"
+      value="5"
+    />
     <div
-      class=""
-    >
-      <div
-        class=""
-      />
-      <div
-        class=""
-      >
-        <div
-          class="fui-Slider-track"
-          style="left: 0px; width: 50%; border-radius: 99px; transition: none;"
-        />
-      </div>
-      <div
-        class=""
-        style="transform: translateX(50%); transition: none;"
-      >
-        <div
-          class="fui-Slider-thumb"
-        />
-      </div>
-      <div
-        class=""
-      />
-      <input
-        class=""
-        disabled=""
-        max="10"
-        min="0"
-        step="1"
-        type="range"
-        value="5"
-      />
-    </div>
+      class="fui-Slider__rail"
+    />
+    <div
+      class="fui-Slider__thumb"
+    />
   </div>
 </div>
 `;
 
-exports[`Slider Snapshot Tests renders disabled Slider with mark labels correctly 1`] = `
+exports[`Slider renders vertical origin Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    id="slider-1"
+    style="--fui-slider-rail-direction: 0deg; --fui-slider-thumb-position: 50%; --fui-slider-rail-offset: 20%; --fui-slider-rail-progress: 30%;"
   >
+    <input
+      class="fui-Slider__input"
+      id="slider-1"
+      max="10"
+      min="0"
+      orient="vertical"
+      type="range"
+      value="5"
+    />
     <div
-      class=""
-      style="grid-template-columns: 10% 20% 10% 40%;"
-    >
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-        <div
-          class="fui-Slider-label"
-        >
-          hello
-        </div>
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-        <div
-          class="fui-Slider-label"
-        >
-          world
-        </div>
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-    </div>
+      class="fui-Slider__rail"
+    />
     <div
-      class=""
-    >
-      <div
-        class=""
-      />
-      <div
-        class=""
-      >
-        <div
-          class="fui-Slider-track"
-          style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
-        />
-      </div>
-      <div
-        class=""
-        style="transform: translateX(5%); transition: none;"
-      >
-        <div
-          class="fui-Slider-thumb"
-        />
-      </div>
-      <div
-        class=""
-      />
-      <input
-        class=""
-        disabled=""
-        max="100"
-        min="0"
-        step="1"
-        type="range"
-        value="5"
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Slider Snapshot Tests renders horizontal Slider correctly 1`] = `
-<div>
-  <div
-    class="fui-Slider"
-    id="slider-1"
-  >
-    <div
-      class=""
-    >
-      <div
-        class=""
-      />
-      <div
-        class=""
-      >
-        <div
-          class="fui-Slider-track"
-          style="left: 0px; width: 50%; border-radius: 99px; transition: none;"
-        />
-      </div>
-      <div
-        class=""
-        style="transform: translateX(50%); transition: none;"
-      >
-        <div
-          class="fui-Slider-thumb"
-        />
-      </div>
-      <div
-        class=""
-      />
-      <input
-        class=""
-        max="10"
-        min="0"
-        step="1"
-        type="range"
-        value="5"
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Slider Snapshot Tests renders horizontal Slider with mark labels correctly 1`] = `
-<div>
-  <div
-    class="fui-Slider"
-    id="slider-1"
-  >
-    <div
-      class=""
-      style="grid-template-columns: 10% 20% 10% 40%;"
-    >
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-        <div
-          class="fui-Slider-label"
-        >
-          hello
-        </div>
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-        <div
-          class="fui-Slider-label"
-        >
-          world
-        </div>
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-    </div>
-    <div
-      class=""
-    >
-      <div
-        class=""
-      />
-      <div
-        class=""
-      >
-        <div
-          class="fui-Slider-track"
-          style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
-        />
-      </div>
-      <div
-        class=""
-        style="transform: translateX(5%); transition: none;"
-      >
-        <div
-          class="fui-Slider-thumb"
-        />
-      </div>
-      <div
-        class=""
-      />
-      <input
-        class=""
-        max="100"
-        min="0"
-        step="1"
-        type="range"
-        value="5"
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Slider Snapshot Tests renders horizontal Slider with unique mark values correctly 1`] = `
-<div>
-  <div
-    class="fui-Slider"
-    id="slider-1"
-  >
-    <div
-      class=""
-      style="grid-template-columns: 1% 2% 4.000000000000001% 0.9999999999999991%;"
-    >
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-    </div>
-    <div
-      class=""
-    >
-      <div
-        class=""
-      />
-      <div
-        class=""
-      >
-        <div
-          class="fui-Slider-track"
-          style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
-        />
-      </div>
-      <div
-        class=""
-        style="transform: translateX(5%); transition: none;"
-      >
-        <div
-          class="fui-Slider-thumb"
-        />
-      </div>
-      <div
-        class=""
-      />
-      <input
-        class=""
-        max="100"
-        min="0"
-        step="1"
-        type="range"
-        value="5"
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Slider Snapshot Tests renders horizontal origin Slider correctly 1`] = `
-<div>
-  <div
-    class="fui-Slider"
-    id="slider-1"
-  >
-    <div
-      class=""
-    >
-      <div
-        class=""
-      />
-      <div
-        class=""
-      >
-        <div
-          class="fui-Slider-track"
-          style="left: 20%; width: 30%; border-radius: 0px 99px 99px 0px; transition: none;"
-        />
-      </div>
-      <div
-        class=""
-        style="transform: translateX(50%); transition: none;"
-      >
-        <div
-          class="fui-Slider-thumb"
-        />
-      </div>
-      <div
-        class=""
-      />
-      <input
-        class=""
-        max="10"
-        min="0"
-        step="1"
-        type="range"
-        value="5"
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Slider Snapshot Tests renders vertical Slider correctly 1`] = `
-<div>
-  <div
-    class="fui-Slider"
-    id="slider-1"
-  >
-    <div
-      class=""
-    >
-      <div
-        class=""
-      />
-      <div
-        class=""
-      >
-        <div
-          class="fui-Slider-track"
-          style="top: 0px; height: 50%; border-radius: 99px; transition: none;"
-        />
-      </div>
-      <div
-        class=""
-        style="transform: translateY(50%); transition: none;"
-      >
-        <div
-          class="fui-Slider-thumb"
-        />
-      </div>
-      <div
-        class=""
-      />
-      <input
-        class=""
-        max="10"
-        min="0"
-        step="1"
-        type="range"
-        value="5"
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Slider Snapshot Tests renders vertical Slider with mark labels correctly 1`] = `
-<div>
-  <div
-    class="fui-Slider"
-    id="slider-1"
-  >
-    <div
-      class=""
-      style="grid-template-rows: 10% 20% 10% 40%;"
-    >
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-        <div
-          class="fui-Slider-label"
-        >
-          hello
-        </div>
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-        <div
-          class="fui-Slider-label"
-        >
-          world
-        </div>
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-    </div>
-    <div
-      class=""
-    >
-      <div
-        class=""
-      />
-      <div
-        class=""
-      >
-        <div
-          class="fui-Slider-track"
-          style="top: 0px; height: 5%; border-radius: 99px; transition: none;"
-        />
-      </div>
-      <div
-        class=""
-        style="transform: translateY(5%); transition: none;"
-      >
-        <div
-          class="fui-Slider-thumb"
-        />
-      </div>
-      <div
-        class=""
-      />
-      <input
-        class=""
-        max="100"
-        min="0"
-        step="1"
-        type="range"
-        value="5"
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Slider Snapshot Tests renders vertical Slider with unique mark values correctly 1`] = `
-<div>
-  <div
-    class="fui-Slider"
-    id="slider-1"
-  >
-    <div
-      class=""
-      style="grid-template-rows: 2% 3% 4% 9%;"
-    >
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-      <div
-        class="fui-Slider-markItemContainer"
-      >
-        <div
-          class="fui-Slider-mark"
-        />
-      </div>
-    </div>
-    <div
-      class=""
-    >
-      <div
-        class=""
-      />
-      <div
-        class=""
-      >
-        <div
-          class="fui-Slider-track"
-          style="top: 0px; height: 5%; border-radius: 99px; transition: none;"
-        />
-      </div>
-      <div
-        class=""
-        style="transform: translateY(5%); transition: none;"
-      >
-        <div
-          class="fui-Slider-thumb"
-        />
-      </div>
-      <div
-        class=""
-      />
-      <input
-        class=""
-        max="100"
-        min="0"
-        step="1"
-        type="range"
-        value="5"
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Slider Snapshot Tests renders vertical origin Slider correctly 1`] = `
-<div>
-  <div
-    class="fui-Slider"
-    id="slider-1"
-  >
-    <div
-      class=""
-    >
-      <div
-        class=""
-      />
-      <div
-        class=""
-      >
-        <div
-          class="fui-Slider-track"
-          style="top: 20%; height: 30%; border-radius: 0px 0px 99px 99px; transition: none;"
-        />
-      </div>
-      <div
-        class=""
-        style="transform: translateY(50%); transition: none;"
-      >
-        <div
-          class="fui-Slider-thumb"
-        />
-      </div>
-      <div
-        class=""
-      />
-      <input
-        class=""
-        max="10"
-        min="0"
-        step="1"
-        type="range"
-        value="5"
-      />
-    </div>
+      class="fui-Slider__thumb"
+    />
   </div>
 </div>
 `;

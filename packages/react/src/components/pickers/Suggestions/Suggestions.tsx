@@ -93,6 +93,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       theme,
       styles,
       suggestionsListId,
+      suggestionsContainerAriaLabel,
     } = this.props;
 
     // TODO
@@ -168,8 +169,6 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     }
 
     const hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
-    const divProps: React.HtmlHTMLAttributes<HTMLDivElement> =
-      hasNoSuggestions || isLoading ? { role: 'listbox', id: suggestionsListId } : {};
 
     const forceResolveId =
       this.state.selectedActionType === SuggestionActionType.forceResolve ? 'sug-selectedAction' : undefined;
@@ -177,7 +176,12 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       this.state.selectedActionType === SuggestionActionType.searchMore ? 'sug-selectedAction' : undefined;
 
     return (
-      <div className={this._classNames.root} {...divProps}>
+      <div
+        className={this._classNames.root}
+        aria-label={suggestionsContainerAriaLabel || headerText}
+        id={suggestionsListId}
+        role="listbox"
+      >
         <Announced message={this._getAlertText()} aria-live="polite" />
 
         {headerText ? <div className={this._classNames.title}>{headerText}</div> : null}
@@ -192,7 +196,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
             {forceResolveText}
           </CommandButton>
         )}
-        {isLoading && <Spinner {...spinnerClassNameOrStyles} label={loadingText} />}
+        {isLoading && <Spinner {...spinnerClassNameOrStyles} ariaLabel={loadingText} label={loadingText} />}
         {hasNoSuggestions ? noResults() : this._renderSuggestions()}
         {searchForMoreText && moreSuggestionsAvailable && (
           <CommandButton
@@ -202,11 +206,12 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
             id={searchForMoreId}
             onClick={this._getMoreResults}
             data-automationid={'sug-searchForMore'}
+            role={'option'}
           >
             {searchForMoreText}
           </CommandButton>
         )}
-        {isSearching ? <Spinner {...spinnerClassNameOrStyles} label={searchingText} /> : null}
+        {isSearching ? <Spinner {...spinnerClassNameOrStyles} ariaLabel={searchingText} label={searchingText} /> : null}
         {footerTitle && !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ? (
           <div className={this._classNames.title}>{footerTitle(this.props)}</div>
         ) : null}
@@ -360,16 +365,11 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
 
   private _renderSuggestions(): JSX.Element | null {
     const {
-      isMostRecentlyUsedVisible,
-      mostRecentlyUsedHeaderText,
       onRenderSuggestion,
       removeSuggestionAriaLabel,
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
-      suggestionsContainerAriaLabel,
-      suggestionsHeaderText,
-      suggestionsListId,
       removeButtonIconProps,
     } = this.props;
 
@@ -397,20 +397,8 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       return null;
     }
 
-    // MostRecently Used text should supercede the header text if it's there and available.
-    let headerText: string | undefined = suggestionsHeaderText;
-    if (isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText) {
-      headerText = mostRecentlyUsedHeaderText;
-    }
-
     return (
-      <div
-        className={this._classNames.suggestionsContainer}
-        id={suggestionsListId}
-        ref={this._scrollContainer}
-        role="listbox"
-        aria-label={suggestionsContainerAriaLabel || headerText}
-      >
+      <div className={this._classNames.suggestionsContainer} ref={this._scrollContainer} role="presentation">
         {suggestions.map((suggestion, index) => (
           <div
             ref={suggestion.selected ? this._selectedElement : undefined}
