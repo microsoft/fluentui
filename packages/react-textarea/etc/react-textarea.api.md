@@ -17,6 +17,9 @@ export const renderTextArea_unstable: (state: TextAreaState) => JSX.Element;
 // @public
 export const TextArea: ForwardRefComponent<TextAreaProps>;
 
+// @public @deprecated (undocumented)
+export const textAreaClassName: string;
+
 // @public (undocumented)
 export const textAreaClassNames: SlotClassNames<TextAreaSlots>;
 
