@@ -1,9 +1,9 @@
-// TODO: replace with real exports
-export {};
 export {
   SpinButton,
   renderSpinButton_unstable,
+  /* eslint-disable-next-line deprecation/deprecation */
   spinButtonClassName,
+  spinButtonClassNames,
   useSpinButtonStyles_unstable,
   useSpinButton_unstable,
 } from './SpinButton';
