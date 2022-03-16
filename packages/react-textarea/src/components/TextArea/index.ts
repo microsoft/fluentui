@@ -1,5 +1,5 @@
-export * from './TextArea';
-export * from './TextArea.types';
-export * from './renderTextArea';
-export * from './useTextArea';
-export * from './useTextAreaStyles';
+export { TextArea } from './TextArea';
+export type { TextAreaProps, TextAreaSlots, TextAreaState } from './TextArea.types';
+export { renderTextArea_unstable } from './renderTextArea';
+export { useTextArea_unstable } from './useTextArea';
+export { textAreaClassName, textAreaClassNames, useTextAreaStyles_unstable } from './useTextAreaStyles';

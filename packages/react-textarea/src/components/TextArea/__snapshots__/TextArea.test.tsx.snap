@@ -6,7 +6,7 @@ exports[`TextArea renders a default state 1`] = `
     class="fui-TextArea"
   >
     <textarea
-      class="fui-TextArea__textArea"
+      class="fui-TextArea__textarea"
     >
       Default TextArea
     </textarea>

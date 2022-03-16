@@ -60,7 +60,7 @@ export type TextAreaProps = Omit<
     /**
      * Callback for when the user changes the value.
      */
-    onChange?: (ev: React.FormEvent<HTMLTextAreaElement>, data: TextAreaOnChangeData) => void;
+    onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextAreaOnChangeData) => void;
   };
 
 /**

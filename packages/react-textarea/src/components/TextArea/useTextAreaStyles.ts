@@ -1,9 +1,15 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { TextAreaState } from './TextArea.types';
+import type { TextAreaSlots, TextAreaState } from './TextArea.types';
 import { tokens } from '@fluentui/react-theme';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
-export const textAreaClassName = 'fui-TextArea';
-const textAreaElementClassName = 'fui-TextArea__textArea';
+export const textAreaClassNames: SlotClassNames<TextAreaSlots> = {
+  root: 'fui-TextArea',
+  textArea: 'fui-TextArea__textarea',
+};
+
+// TODO temporary export to pass conformance test.
+export const textAreaClassName = textAreaClassNames.root;
 
 // TODO(sharing) use theme values once available
 const spacingTokens = {
@@ -249,7 +255,7 @@ export const useTextAreaStyles_unstable = (state: TextAreaState): TextAreaState 
 
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
-    textAreaClassName,
+    textAreaClassNames.root,
     rootStyles.base,
     rootStyles[appearance],
     disabled && rootStyles.disabled,
@@ -262,7 +268,7 @@ export const useTextAreaStyles_unstable = (state: TextAreaState): TextAreaState 
 
   const textAreaStyles = useTextAreaStyles();
   state.textArea.className = mergeClasses(
-    textAreaElementClassName,
+    textAreaClassNames.textArea,
     textAreaStyles.base,
     textAreaStyles[size],
     textAreaStyles[resize],

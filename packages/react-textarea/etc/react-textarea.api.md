@@ -9,6 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderTextArea_unstable: (state: TextAreaState) => JSX.Element;
@@ -17,7 +18,10 @@ export const renderTextArea_unstable: (state: TextAreaState) => JSX.Element;
 export const TextArea: ForwardRefComponent<TextAreaProps>;
 
 // @public (undocumented)
-export const textAreaClassName = "fui-TextArea";
+export const textAreaClassName: string;
+
+// @public (undocumented)
+export const textAreaClassNames: SlotClassNames<TextAreaSlots>;
 
 // Warning: (ae-forgotten-export) The symbol "TextAreaCommons" needs to be exported by the entry point index.d.ts
 //
@@ -25,7 +29,7 @@ export const textAreaClassName = "fui-TextArea";
 export type TextAreaProps = Omit<ComponentProps<Partial<TextAreaSlots>, 'textArea'>, 'value' | 'defaultValue' | 'onChange' | 'size'> & Partial<TextAreaCommons> & {
     value?: string;
     defaultValue?: string;
-    onChange?: (ev: React_2.FormEvent<HTMLTextAreaElement>, data: TextAreaOnChangeData) => void;
+    onChange?: (ev: React_2.ChangeEvent<HTMLTextAreaElement>, data: TextAreaOnChangeData) => void;
 };
 
 // @public (undocumented)
