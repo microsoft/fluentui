@@ -200,14 +200,14 @@ export const defaultTests: TestObject = {
       // possible side effects within another test by rendering the component twice
       const defaultResult = render(<Component {...requiredProps} />, renderOptions);
       const defaultEl = getTargetElement(testInfo, defaultResult, 'className');
-      defaultClassNames = [...defaultEl.classList];
+      defaultClassNames = classListToStrings(defaultEl.classList);
     });
 
     it(`handles className prop (component-handles-classname)`, () => {
       const result = render(<Component {...mergedProps} />, renderOptions);
       const domNode = getTargetElement(testInfo, result, 'className');
       expect(domNode).toBeTruthy();
-      const classNames = [...domNode.classList];
+      const classNames = classListToStrings(domNode.classList);
 
       try {
         expect(classNames).toContain(testClassName);
@@ -232,7 +232,7 @@ export const defaultTests: TestObject = {
 
       const result = render(<Component {...mergedProps} />, renderOptions);
       const el = getTargetElement(testInfo, result, 'className');
-      const classNames = [...el.classList];
+      const classNames = classListToStrings(el.classList);
 
       let defaultClassName: string = '';
       try {
@@ -267,7 +267,7 @@ export const defaultTests: TestObject = {
       const result = render(<Component {...requiredProps} />, renderOptions);
       const rootEl = getTargetElement(testInfo, result, 'className');
       expect(rootEl).toBeTruthy();
-      const classNames = [...rootEl.classList];
+      const classNames = classListToStrings(rootEl.classList);
 
       try {
         expect(classNames).toContain(componentClassName);
@@ -611,10 +611,10 @@ export const defaultTests: TestObject = {
           }
 
           // className and style should go the *root* slot
-          expect([...rootNode.classList]).toContain(testClass);
+          expect(classListToStrings(rootNode.classList)).toContain(testClass);
           expect(rootNode.style.fontFamily).toEqual(testStyleFontFamily);
           // ... and not the primary slot
-          expect([...primaryNode.classList]).not.toContain(testClass);
+          expect(classListToStrings(primaryNode.classList)).not.toContain(testClass);
           expect(primaryNode.style.fontFamily).not.toEqual(testStyleFontFamily);
 
           // Ref and all other native props should go to the *primary* slot
@@ -630,3 +630,15 @@ export const defaultTests: TestObject = {
     });
   },
 };
+
+function classListToStrings(classList: DOMTokenList): string[] {
+  // We should be able to just do [...classList] but that requires lib: dom.iterable in tsconfig.json.
+  // Due to path aliases, react-conformance gets type-checked with each converged package,
+  // so we'd need to add dom.iterable in all converged packages too.
+  // This function is a workaround.
+  const result: string[] = [];
+  for (let i = 0; i < classList.length; i++) {
+    result.push(classList[i]);
+  }
+  return result;
+}
