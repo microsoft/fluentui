@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 11 Mar 2022 07:34:40 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Mar 2022 07:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.7.0)
+
+Wed, 16 Mar 2022 07:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.6.3..@fluentui/eslint-plugin_v1.7.0)
+
+### Minor changes
+
+- feat(eslint-plugin): enable no-export-all:all for all packages public API ([PR #22073](https://github.com/microsoft/fluentui/pull/22073) by martinhochel@microsoft.com)
 
 ## [1.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.6.3)
 

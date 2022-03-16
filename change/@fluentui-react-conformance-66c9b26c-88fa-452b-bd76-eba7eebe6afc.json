@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add conformance tests for static classnames",
-  "packageName": "@fluentui/react-conformance",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
