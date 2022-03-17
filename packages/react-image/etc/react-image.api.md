@@ -21,8 +21,6 @@ export const imageClassName = "fui-Image";
 // @public (undocumented)
 export const imageClassNames: SlotClassNames<ImageSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "ImageCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
 

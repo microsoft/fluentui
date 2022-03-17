@@ -29,8 +29,6 @@ export const tooltipClassName = "fui-Tooltip";
 // @public (undocumented)
 export const tooltipClassNames: SlotClassNames<TooltipSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "TooltipCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'relationship'>> & Pick<TooltipCommons, 'relationship'> & {
     children?: (React_2.ReactElement & {

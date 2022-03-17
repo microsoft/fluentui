@@ -141,8 +141,6 @@ export const menuItemClassName = "fui-MenuItem";
 // @public (undocumented)
 export const menuItemClassNames: SlotClassNames<MenuItemSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "MenuItemCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & MenuItemCommons;
 
@@ -211,8 +209,6 @@ export type MenuListContextValues = {
     menuList: MenuListContextValue;
 };
 
-// Warning: (ae-forgotten-export) The symbol "MenuListCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type MenuListProps = ComponentProps<MenuListSlots> & Partial<MenuListCommons>;
 
@@ -263,8 +259,6 @@ export type MenuPopoverState = ComponentState<MenuPopoverSlots> & {
     inline: boolean;
 };
 
-// Warning: (ae-forgotten-export) The symbol "MenuCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type MenuProps = Partial<MenuCommons> & ComponentProps<MenuSlots> & {
     children: [JSX.Element, JSX.Element] | JSX.Element;
@@ -286,8 +280,6 @@ export const menuSplitGroupClassName = "fui-MenuSplitGroup";
 // @public (undocumented)
 export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "MenuSplitGroupCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots> & MenuSplitGroupCommons;
 
