@@ -56,7 +56,7 @@ export const VersionSelector: React.FC = () => {
   return (
     <Menu
       onCheckedValueChange={onCheckedValueChange}
-      checkedValues={{ version: versions.find(v => v[0] === 'v' + packageJsonVersion) || [] }}
+      checkedValues={{ version: [versions.find(v => v[0] === `v${packageJsonVersion}`)] }}
     >
       <MenuTrigger>
         <MenuButton className={styles.menuButton} menuIcon={{ className: styles.chevronIcon }}>
