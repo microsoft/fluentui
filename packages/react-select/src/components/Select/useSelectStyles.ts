@@ -13,17 +13,18 @@ export const selectClassNames: SlotClassNames<SelectSlots> = {
   icon: 'fui-Select__icon',
 };
 
-// TODO(sharing) use theme values once available
-const horizontalSpacing = {
-  xxs: '2px',
-  xs: '4px',
-  sNudge: '6px',
-  s: '8px',
-  mNudge: '10px',
-  m: '12px',
+const iconSizes = {
+  small: '16px',
+  medium: '20px',
+  large: '24px',
 };
+
+/*
+ * TODO: a number of spacing and animation values are shared with react-input.
+ * We should probably find a way to share these values between form controls in the theme.
+ */
+
 const contentSizes = {
-  // TODO: borrowed this from Input, should be in the theme somewhere?
   body1: {
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
@@ -37,29 +38,33 @@ const contentSizes = {
     lineHeight: tokens.lineHeightBase400,
   },
 };
-// TODO: borrowed this from Input (Select has the same size in design comps)
-// Should be in the theme somewhere?
+
+const horizontalSpacing = {
+  xxs: '2px',
+  xs: '4px',
+  sNudge: '6px',
+  s: '8px',
+  mNudge: '10px',
+  m: '12px',
+};
+
 const fieldHeights = {
   small: '24px',
   medium: '32px',
   large: '40px',
 };
 
-const iconSizes = {
-  small: '16px',
-  medium: '20px',
-  large: '24px',
-};
-
-// TODO: borrowed from Input, also seems like animation should be included in the theme:
 const motionDurations = {
   ultraFast: '0.05s',
   normal: '0.2s',
 };
+
 const motionCurves = {
   accelerateMid: 'cubic-bezier(0.7,0,1,0.5)',
   decelerateMid: 'cubic-bezier(0.1,0.9,0.2,1)',
 };
+
+/* end of shared values */
 
 const useRootStyles = makeStyles({
   base: {
@@ -110,7 +115,6 @@ const useSelectStyles = makeStyles({
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
     flexGrow: 1,
-    fontFamily: tokens.fontFamilyBase,
 
     ':focus-visible': {
       outlineWidth: '2px',
@@ -198,7 +202,7 @@ const useIconStyles = makeStyles({
  * Apply styling to the Select slots based on the state
  */
 export const useSelectStyles_unstable = (state: SelectState): SelectState => {
-  const { size = 'medium', appearance = 'outline' } = state;
+  const { size, appearance } = state;
   const disabled = state.select.disabled;
 
   const iconStyles = useIconStyles();
