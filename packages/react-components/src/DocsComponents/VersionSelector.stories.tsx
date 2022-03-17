@@ -42,12 +42,16 @@ export const VersionSelector: React.FC = () => {
   const styles = useStyles();
   const [versions, setVersions] = React.useState<string[][]>([]);
 
-  fetch('/metadata.json').then(async response => {
-    if (response.ok) {
-      const metadata = await response.json();
-      setVersions(Object.entries(metadata.versions));
-    }
-  });
+  React.useEffect(() => {
+    fetch('/metadata.json').then(async response => {
+      if (response.ok) {
+        const metadata = await response.json();
+        setVersions(Object.entries(metadata.versions));
+      }
+    });
+  },
+  [],
+)
 
   return (
     <Menu
