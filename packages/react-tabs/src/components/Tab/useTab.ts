@@ -49,7 +49,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
   const contentShorthand = resolveShorthand(content, { required: true, defaultProps: { children: props.children } });
   return {
     components: {
-      root: 'div',
+      root: 'button',
       icon: 'span',
       content: 'span',
     },

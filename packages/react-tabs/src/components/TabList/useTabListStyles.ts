@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TabListState } from './TabList.types';
 import { tokens } from '@fluentui/react-theme';
 import { usePrevious } from '@fluentui/react-utilities';
-import { tabAnimationDurationTokens, tabAnimationEasingTokens, tabPendingSpacingTokens } from '../../tab.constants';
+import { tabAnimationDurationTokens, tabAnimationEasingTokens, tabSpacingTokens } from '../../tab.constants';
 
 export const tabListClassName = 'fui-TabList';
 export const tabListSelectionIndicatorName = 'fui-TabList_SelectionIndicator';
@@ -18,6 +18,12 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     position: 'relative',
+    ':hover:after': {
+      backgroundColor: tokens.colorCompoundBrandForeground1Hover,
+    },
+    ':active:after': {
+      backgroundColor: tokens.colorCompoundBrandForeground1Pressed,
+    },
   },
   vertical: {
     flexDirection: 'column',
@@ -30,23 +36,23 @@ const useStyles = makeStyles({
 const useHorizontalIndicatorStyles = makeStyles({
   base: {
     ':after': {
-      backgroundColor: tokens.colorBrandStroke1,
+      backgroundColor: tokens.colorCompoundBrandForeground1,
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
       bottom: 0,
       boxSizing: 'border-box',
       content: '""',
       height: tokens.strokeWidthThicker,
-      left: `calc(var(${indicatorOffsetVar}) + ${tabPendingSpacingTokens.m})`,
+      left: `calc(var(${indicatorOffsetVar}) + ${tabSpacingTokens.m})`,
       position: 'absolute',
-      width: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingSpacingTokens.m}))`,
+      width: `calc(var(${indicatorLengthVar}) - (2 * ${tabSpacingTokens.m}))`,
       zIndex: 1,
     },
   },
   small: {
     ':after': {
       height: tokens.strokeWidthThick,
-      left: `calc(var(${indicatorOffsetVar}) + ${tabPendingSpacingTokens.s})`,
-      width: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingSpacingTokens.s}))`,
+      left: `calc(var(${indicatorOffsetVar}) + ${tabSpacingTokens.s})`,
+      width: `calc(var(${indicatorLengthVar}) - (2 * ${tabSpacingTokens.s}))`,
     },
   },
   animated: {
@@ -64,22 +70,28 @@ const useHorizontalIndicatorStyles = makeStyles({
 const useVerticalIndicatorStyles = makeStyles({
   base: {
     ':before': {
-      backgroundColor: tokens.colorBrandStroke1,
+      backgroundColor: tokens.colorCompoundBrandForeground1,
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
       boxSizing: 'border-box',
       content: '""',
-      height: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingSpacingTokens.m}))`,
+      height: `calc(var(${indicatorLengthVar}) - (2 * ${tabSpacingTokens.m}))`,
       left: '0',
       position: 'absolute',
-      top: `calc(var(${indicatorOffsetVar}) + ${tabPendingSpacingTokens.m})`,
+      top: `calc(var(${indicatorOffsetVar}) + ${tabSpacingTokens.m})`,
       width: tokens.strokeWidthThicker,
       zIndex: 1,
+      ':hover': {
+        backgroundColor: tokens.colorCompoundBrandForeground1Hover,
+      },
+      ':active': {
+        backgroundColor: tokens.colorCompoundBrandForeground1Pressed,
+      },
     },
   },
   small: {
     ':before': {
-      top: `calc(var(${indicatorOffsetVar}) + ${tabPendingSpacingTokens.s})`,
-      height: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingSpacingTokens.s}))`,
+      top: `calc(var(${indicatorOffsetVar}) + ${tabSpacingTokens.s})`,
+      height: `calc(var(${indicatorLengthVar}) - (2 * ${tabSpacingTokens.s}))`,
       width: tokens.strokeWidthThick,
     },
   },
@@ -98,9 +110,12 @@ const useVerticalIndicatorStyles = makeStyles({
 export const useTabListStyles_unstable = (state: TabListState): TabListState => {
   const { selectedTabRect: selectionIndicatorRect, selectedValue, size, vertical } = state;
 
-  // only animate when the selected value has changed
-  const previousSelectedValue = usePrevious(selectedValue);
-  const shouldAnimate = !!previousSelectedValue && previousSelectedValue !== selectedValue;
+  // only animate when the selected rectangle has changed
+  const previousSelectionRect = usePrevious(selectionIndicatorRect);
+  // eslint-disable-next-line no-console
+  console.log('p/s', previousSelectionRect, selectedValue);
+  const shouldAnimate =
+    !!previousSelectionRect && previousSelectionRect.height !== 0 && previousSelectionRect.width !== 0;
 
   const styles = useStyles();
   const horizontalIndicatorStyles = useHorizontalIndicatorStyles();
