@@ -99,3 +99,71 @@ export const createCustomFocusIndicatorStyle = (
   },
   [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]: style,
 });
+
+export type BottomFocusIndicatorOptions = CreateFocusIndicatorStyleRuleOptions & {
+  borderWidth: string;
+  borderRadius: string;
+  borderColor: string;
+  pressedBorderColor: string;
+};
+
+/**
+ * Creates a bottom border focus indicator used in components such as Input and TextArea.
+ * NOTE: This style uses border instead of outline
+ *
+ * @param options Configure the style of the focus indicator
+ */
+export const getBottomFocusIndicator = (options: BottomFocusIndicatorOptions): GriffelStyle => {
+  const { selector = 'focus-within', borderWidth, borderRadius, borderColor, pressedBorderColor } = options;
+
+  return {
+    // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
+    ':after': {
+      boxSizing: 'border-box',
+      content: '""',
+      position: 'absolute',
+      left: '-1px',
+      bottom: '-1px',
+      right: '-1px',
+
+      // Maintaining the correct corner radius:
+      // Use the whole border-radius as the height and only put radii on the bottom corners.
+      // (Otherwise the radius would be automatically reduced to fit available space.)
+      // max() ensures the focus border still shows up even if someone sets borderRadius to 0.
+      height: `max(${borderWidth}, ${borderRadius})`,
+      borderBottomLeftRadius: borderRadius,
+      borderBottomRightRadius: borderRadius,
+
+      // Flat border:
+      // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
+      ...shorthands.borderBottom(borderWidth, 'solid', borderColor),
+      clipPath: `inset(calc(100% - ${borderWidth}) 0 0 0)`,
+
+      // Animation for focus OUT
+      transform: 'scaleX(0)',
+      transitionProperty: 'transform',
+
+      // TODO: update duration and delay with tokens once available
+      transitionDuration: '0.05s',
+      transitionDelay: 'cubic-bezier(0.7,0,1,0.5)',
+    },
+    [`:${selector}:after`]: {
+      // Animation for focus IN
+      transform: 'scaleX(1)',
+      transitionProperty: 'transform',
+
+      // TODO: update duration and delay with tokens once available
+      transitionDuration: '0.2s',
+      transitionDelay: 'cubic-bezier(0.1,0.9,0.2,1)',
+    },
+    [`:${selector}:active:after`]: {
+      // This is if the user clicks the field again while it's already focused
+      borderBottomColor: pressedBorderColor,
+    },
+    [`:${selector}`]: {
+      outlineWidth: borderWidth,
+      outlineStyle: 'solid',
+      outlineColor: 'transparent',
+    },
+  };
+};

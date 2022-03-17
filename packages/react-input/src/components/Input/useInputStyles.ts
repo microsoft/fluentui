@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { getBottomFocusIndicator } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { InputSlots, InputState } from './Input.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -22,14 +23,6 @@ const horizontalSpacing = {
   s: '8px',
   mNudge: '10px',
   m: '12px',
-};
-const motionDurations = {
-  ultraFast: '0.05s',
-  normal: '0.2s',
-};
-const motionCurves = {
-  accelerateMid: 'cubic-bezier(0.7,0,1,0.5)',
-  decelerateMid: 'cubic-bezier(0.1,0.9,0.2,1)',
 };
 const contentSizes = {
   // TODO(sharing) shouldn't these be in the theme?
@@ -64,55 +57,12 @@ const useRootStyles = makeStyles({
     position: 'relative',
     boxSizing: 'border-box',
   },
-  interactive: {
-    // This is all for the bottom focus border.
-    // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
-    ':after': {
-      boxSizing: 'border-box',
-      content: '""',
-      position: 'absolute',
-      left: '-1px',
-      bottom: '-1px',
-      right: '-1px',
-
-      // Maintaining the correct corner radius:
-      // Use the whole border-radius as the height and only put radii on the bottom corners.
-      // (Otherwise the radius would be automatically reduced to fit available space.)
-      // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
-      height: `max(2px, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: tokens.borderRadiusMedium,
-      borderBottomRightRadius: tokens.borderRadiusMedium,
-
-      // Flat 2px border:
-      // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
-      // (This could be done without trimming using `background: linear-gradient(...)`, but using
-      // borderBottom makes it easier for people to override the color if needed.)
-      ...shorthands.borderBottom('2px', 'solid', tokens.colorCompoundBrandStroke),
-      clipPath: 'inset(calc(100% - 2px) 0 0 0)',
-
-      // Animation for focus OUT
-      transform: 'scaleX(0)',
-      transitionProperty: 'transform',
-      transitionDuration: motionDurations.ultraFast,
-      transitionDelay: motionCurves.accelerateMid,
-    },
-    ':focus-within:after': {
-      // Animation for focus IN
-      transform: 'scaleX(1)',
-      transitionProperty: 'transform',
-      transitionDuration: motionDurations.normal,
-      transitionDelay: motionCurves.decelerateMid,
-    },
-    ':focus-within:active:after': {
-      // This is if the user clicks the field again while it's already focused
-      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
-    },
-    ':focus-within': {
-      outlineWidth: '2px',
-      outlineStyle: 'solid',
-      outlineColor: 'transparent',
-    },
-  },
+  interactive: getBottomFocusIndicator({
+    borderWidth: tokens.strokeWidthThick,
+    borderRadius: tokens.borderRadiusMedium,
+    borderColor: tokens.colorCompoundBrandStroke,
+    pressedBorderColor: tokens.colorCompoundBrandStrokePressed,
+  }),
   small: {
     minHeight: fieldHeights.small,
     ...shorthands.padding('0', horizontalSpacing.sNudge),
