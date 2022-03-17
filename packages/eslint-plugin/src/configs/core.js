@@ -153,8 +153,6 @@ const config = {
      * `@typescript-eslint`plugin eslint rules
      * @see https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin
      */
-    // tslint: function-name, variable-name
-    ...configHelpers.getNamingConventionRule(false),
     '@typescript-eslint/no-empty-function': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/prefer-namespace-keyword': 'error',
