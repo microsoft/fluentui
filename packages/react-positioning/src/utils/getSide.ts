@@ -1,4 +1,4 @@
-import type { Side, Placement } from '@floating-ui/dom';
+import type { Side, Placement } from '../floating-ui.types';
 
 /**
  * Returns the base placement value

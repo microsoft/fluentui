@@ -1,4 +1,4 @@
-import type { ClientRectObject } from '@floating-ui/dom';
+import type { ClientRectObject } from './floating-ui.types';
 import type { PositioningVirtualElement } from './types';
 
 /**

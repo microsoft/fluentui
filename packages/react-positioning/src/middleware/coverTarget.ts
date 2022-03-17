@@ -1,4 +1,4 @@
-import type { Middleware } from '@floating-ui/dom';
+import type { Middleware } from '../floating-ui.types';
 import { getSide } from '../utils/getSide';
 
 export function coverTarget(): Middleware {

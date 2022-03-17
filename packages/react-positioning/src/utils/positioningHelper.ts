@@ -1,4 +1,4 @@
-import type { Placement } from '@floating-ui/dom';
+import type { Placement } from '../floating-ui.types';
 import type { Alignment, Position } from '../types';
 
 type PlacementPosition = 'top' | 'bottom' | 'left' | 'right';

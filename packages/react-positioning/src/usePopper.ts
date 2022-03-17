@@ -3,11 +3,8 @@ import {
   hide as hideMiddleware,
   arrow as arrowMiddleware,
   offset as offsetMiddleware,
-  MiddlewareData,
-  Placement,
-  Coords,
 } from '@floating-ui/dom';
-import type { Middleware, Strategy } from '@floating-ui/dom';
+import type { Middleware, Strategy, Placement, Coords, MiddlewareData } from './floating-ui.types';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect, useFirstMount } from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';

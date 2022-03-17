@@ -4,12 +4,8 @@
 
 ```ts
 
-import { Boundary as Boundary_2 } from '@floating-ui/dom';
 import type { GriffelStyle } from '@griffel/react';
-import { Placement } from '@floating-ui/dom';
 import * as React_2 from 'react';
-import { Rect } from '@floating-ui/dom';
-import { VirtualElement } from '@floating-ui/dom';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
@@ -17,6 +13,8 @@ export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 // @public (undocumented)
 export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
 
+// Warning: (ae-forgotten-export) The symbol "Boundary" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type Boundary = Boundary_2 | 'scrollParent' | 'window';
 
@@ -98,6 +96,8 @@ export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 // @public (undocumented)
 export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 'below' | 'below-start' | 'below-end' | 'before' | 'before-top' | 'before-bottom' | 'after' | 'after-top' | 'after-bottom';
 
+// Warning: (ae-forgotten-export) The symbol "VirtualElement" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type PositioningVirtualElement = VirtualElement;
 
@@ -115,6 +115,11 @@ export function usePopper(options: UseFloatingUIOptions): {
 
 // @public
 export const usePopperMouseTarget: (initialState?: VirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [VirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
+
+// Warnings were encountered during analysis:
+//
+// lib/types.d.ts:4:5 - (ae-forgotten-export) The symbol "Rect" needs to be exported by the entry point index.d.ts
+// lib/types.d.ts:6:5 - (ae-forgotten-export) The symbol "Placement" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
