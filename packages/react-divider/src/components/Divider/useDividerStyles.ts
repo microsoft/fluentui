@@ -1,8 +1,16 @@
 import { mergeClasses, shorthands, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { DividerState } from './Divider.types';
+import { DividerSlots, DividerState } from './Divider.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `dividerClassNames.root` instead.
+ */
 export const dividerClassName = 'fui-Divider';
+export const dividerClassNames: SlotClassNames<DividerSlots> = {
+  root: 'fui-Divider',
+  wrapper: 'fui-Divider__wrapper',
+};
 
 const contentSpacing = '12px';
 const insetSpacing = '12px';
@@ -233,7 +241,7 @@ export const useDividerStyles_unstable = (state: DividerState): DividerState => 
   const { alignContent, appearance, inset, vertical } = state;
 
   state.root.className = mergeClasses(
-    dividerClassName,
+    dividerClassNames.root,
 
     // Base styles
     baseStyles.base,
@@ -257,6 +265,10 @@ export const useDividerStyles_unstable = (state: DividerState): DividerState => 
     // User provided class name
     state.root.className,
   );
+
+  if (state.wrapper) {
+    state.wrapper.className = mergeClasses(dividerClassNames.wrapper, state.wrapper.className);
+  }
 
   return state;
 };

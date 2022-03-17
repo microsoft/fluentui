@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
@@ -52,6 +53,24 @@ export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'siz
    * Disable this Radio item.
    */
   disabled?: boolean;
+
+  /**
+   * Callback when this Radio is selected in its group.
+   *
+   * **Note:** `onChange` is NOT called when this Radio is deselected.
+   * Use RadioGroup's `onChange` event to determine when the selection in the group changes.
+   */
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: RadioOnChangeData) => void;
+};
+
+/**
+ * Data for the onChange event for Radio.
+ */
+export type RadioOnChangeData = {
+  /**
+   * The value prop of this Radio item.
+   */
+  value: string;
 };
 
 /**

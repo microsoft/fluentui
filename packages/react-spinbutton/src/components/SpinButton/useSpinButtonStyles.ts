@@ -1,7 +1,17 @@
+import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SpinButtonState } from './SpinButton.types';
+import type { SpinButtonSlots, SpinButtonState } from './SpinButton.types';
 
+/**
+ * @deprecated Use `spinButtonClassNames.root` instead.
+ */
 export const spinButtonClassName = 'fui-SpinButton';
+export const spinButtonClassNames: SlotClassNames<SpinButtonSlots> = {
+  root: 'fui-SpinButton',
+  input: 'fui-SpinButton__input',
+  incrementControl: 'fui-SpinButton__incrementControl',
+  decrementControl: 'fui-SpinButton__decrementControl',
+};
 
 /**
  * Styles for the root slot
@@ -19,7 +29,7 @@ const useStyles = makeStyles({
  */
 export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButtonState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(spinButtonClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(spinButtonClassNames.root, styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

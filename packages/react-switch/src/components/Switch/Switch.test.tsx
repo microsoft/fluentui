@@ -10,6 +10,15 @@ describe('Switch', () => {
     Component: Switch,
     displayName: 'Switch',
     primarySlot: 'input',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            label: 'Test Label',
+          },
+        },
+      ],
+    },
   });
 
   describe('on component render', () => {

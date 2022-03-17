@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add static classnames to Badge",
+  "packageName": "@fluentui/react-badge",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
