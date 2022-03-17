@@ -8,6 +8,7 @@ exports[`Divider renders a brand appearance 1`] = `
   role="separator"
 >
   <div
+    className="fui-Divider__wrapper"
     id="divider-1"
   >
     Brand
@@ -39,6 +40,7 @@ exports[`Divider renders a divider with content 1`] = `
   role="separator"
 >
   <div
+    className="fui-Divider__wrapper"
     id="divider-1"
   >
     Default Divider
@@ -54,6 +56,7 @@ exports[`Divider renders a divider with inset 1`] = `
   role="separator"
 >
   <div
+    className="fui-Divider__wrapper"
     id="divider-1"
   >
     Inset
@@ -74,6 +77,7 @@ exports[`Divider renders a horizontal divider with a fixed width 1`] = `
   }
 >
   <div
+    className="fui-Divider__wrapper"
     id="divider-1"
   >
     fixed 100px width
@@ -89,6 +93,7 @@ exports[`Divider renders a strong appearance 1`] = `
   role="separator"
 >
   <div
+    className="fui-Divider__wrapper"
     id="divider-1"
   >
     Strong
@@ -104,6 +109,7 @@ exports[`Divider renders a subtle appearance 1`] = `
   role="separator"
 >
   <div
+    className="fui-Divider__wrapper"
     id="divider-1"
   >
     Subtle
@@ -132,6 +138,7 @@ exports[`Divider renders a vertical divider with a fixed height 1`] = `
   }
 >
   <div
+    className="fui-Divider__wrapper"
     id="divider-1"
   >
     fixed 100px height
@@ -147,6 +154,7 @@ exports[`Divider renders a vertical divider with content 1`] = `
   role="separator"
 >
   <div
+    className="fui-Divider__wrapper"
     id="divider-1"
   >
     Vertical
@@ -162,6 +170,7 @@ exports[`Divider renders content center aligned 1`] = `
   role="separator"
 >
   <div
+    className="fui-Divider__wrapper"
     id="divider-1"
   >
     Center
@@ -177,6 +186,7 @@ exports[`Divider renders content end aligned 1`] = `
   role="separator"
 >
   <div
+    className="fui-Divider__wrapper"
     id="divider-1"
   >
     End
@@ -192,6 +202,7 @@ exports[`Divider renders content start aligned 1`] = `
   role="separator"
 >
   <div
+    className="fui-Divider__wrapper"
     id="divider-1"
   >
     Start

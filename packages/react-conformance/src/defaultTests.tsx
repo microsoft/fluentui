@@ -302,6 +302,115 @@ export const defaultTests: TestObject = {
     });
   },
 
+  'component-has-static-classnames-object': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    const {
+      componentPath,
+      Component,
+      wrapperComponent,
+      helperComponents = [],
+      requiredProps,
+      customMount = mount,
+    } = testInfo;
+
+    const componentName = componentInfo.displayName;
+    const componentClassName = `fui-${componentName}`;
+    const exportName = `${componentName[0].toLowerCase()}${componentName.slice(1)}ClassNames`;
+    const indexPath = path.join(getPackagePath(componentPath), 'src', 'index');
+    let handledClassNamesObjectExport = false;
+
+    it('has static classnames exported at top-level (component-has-static-classnames-object)', () => {
+      if (testInfo.isInternal) {
+        return;
+      }
+
+      try {
+        const indexFile = require(indexPath);
+        const classNamesFromFile = indexFile[exportName];
+        expect(classNamesFromFile).toBeTruthy();
+        handledClassNamesObjectExport = true;
+      } catch (e) {
+        throw new Error(
+          defaultErrorMessages['component-has-static-classnames-object-exported'](
+            testInfo,
+            e,
+            componentClassName,
+            exportName,
+          ),
+        );
+      }
+    });
+
+    it('has static classnames in correct format (component-has-static-classnames-object)', () => {
+      if (!handledClassNamesObjectExport) {
+        return;
+      }
+
+      const indexFile = require(indexPath);
+      const classNamesFromFile = indexFile[exportName];
+
+      const expectedClassNames = Object.keys(classNamesFromFile).reduce(
+        (obj: { [key: string]: string }, key: string) => {
+          obj[key] = key === 'root' ? componentClassName : `${componentClassName}__${key}`;
+          return obj;
+        },
+        {},
+      );
+
+      try {
+        expect(classNamesFromFile).toEqual(expectedClassNames);
+      } catch (e) {
+        throw new Error(
+          defaultErrorMessages['component-has-static-classnames-in-correct-format'](
+            testInfo,
+            e,
+            componentClassName,
+            exportName,
+          ),
+        );
+      }
+    });
+
+    it(`has static classnames in rendered component (component-has-static-classnames-object)`, () => {
+      if (!handledClassNamesObjectExport) {
+        return;
+      }
+
+      const { testOptions = {} } = testInfo;
+      const staticClassNameVariants = testOptions['has-static-classnames'] ?? [{ props: {} }];
+
+      for (const staticClassNames of staticClassNameVariants) {
+        const mergedProps = {
+          ...requiredProps,
+          ...staticClassNames.props,
+        };
+        const defaultEl = customMount(<Component {...mergedProps} />);
+        const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
+
+        const indexFile = require(indexPath);
+        const classNamesFromFile = indexFile[exportName];
+
+        const expectedClassNames: { [key: string]: string } = staticClassNames.expectedClassNames ?? classNamesFromFile;
+        const missingClassNames = Object.values(expectedClassNames).reduce((acc, className) => {
+          if (defaultComponent.find(`.${className}`).length < 1) {
+            (acc as string[]).push(className);
+          }
+          return acc;
+        }, []);
+
+        if (missingClassNames.length > 0) {
+          throw new Error(
+            defaultErrorMessages['component-has-static-classnames'](
+              testInfo,
+              new Error(),
+              componentName,
+              missingClassNames.join(', '),
+            ),
+          );
+        }
+      }
+    });
+  },
+
   /** Constructor/component name matches filename */
   'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`Component/constructor name matches filename (name-matches-filename)`, () => {

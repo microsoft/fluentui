@@ -1,7 +1,16 @@
+import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { ComboButtonState } from './ComboButton.types';
+import type { ComboButtonSlots, ComboButtonState } from './ComboButton.types';
 
+/**
+ * @deprecated Use `comboButtonClassNames.root` instead.
+ */
 export const comboButtonClassName = 'fui-ComboButton';
+export const comboButtonClassNames: SlotClassNames<ComboButtonSlots> = {
+  root: 'fui-ComboButton',
+  content: 'fui-ComboButton__content',
+  dropdownIcon: 'fui-ComboButton__dropdownIcon',
+};
 
 /**
  * Styles for the root slot
@@ -48,12 +57,16 @@ const useStyles = makeStyles({
  */
 export const useComboButtonStyles_unstable = (state: ComboButtonState): ComboButtonState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(comboButtonClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(comboButtonClassNames.root, styles.root, state.root.className);
 
-  state.content.className = mergeClasses(styles.content, state.content.className);
+  state.content.className = mergeClasses(comboButtonClassNames.content, styles.content, state.content.className);
 
   if (state.dropdownIcon) {
-    state.dropdownIcon.className = mergeClasses(styles.dropdownIcon, state.dropdownIcon.className);
+    state.dropdownIcon.className = mergeClasses(
+      comboButtonClassNames.dropdownIcon,
+      styles.dropdownIcon,
+      state.dropdownIcon.className,
+    );
   }
 
   return state;

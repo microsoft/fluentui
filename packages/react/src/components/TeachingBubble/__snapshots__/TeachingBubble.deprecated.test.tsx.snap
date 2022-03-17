@@ -138,6 +138,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 align-self: center;
+                flex-basis: auto;
                 flex-shrink: 1;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -154,6 +155,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                flex-basis: auto;
                 flex-shrink: 1;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;

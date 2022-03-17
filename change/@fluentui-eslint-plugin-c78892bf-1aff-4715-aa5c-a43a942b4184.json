@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "revert: ESlint - support tsconfig excluded files",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

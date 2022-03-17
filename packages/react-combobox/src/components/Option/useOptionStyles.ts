@@ -1,7 +1,15 @@
+import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { OptionState } from './Option.types';
+import type { OptionSlots, OptionState } from './Option.types';
 
+/**
+ * @deprecated Use `optionClassNames.root` instead.
+ */
 export const optionClassName = 'fui-Option';
+export const optionClassNames: SlotClassNames<OptionSlots> = {
+  root: 'fui-Option',
+  check: 'fui-Option__check',
+};
 
 /**
  * Styles for the root slot
@@ -46,7 +54,7 @@ export const useOptionStyles_unstable = (state: OptionState): OptionState => {
   const { isActive, selected } = state;
   const styles = useStyles();
   state.root.className = mergeClasses(
-    optionClassName,
+    optionClassNames.root,
     styles.root,
     selected && styles.selected,
     isActive && styles.active,
@@ -54,7 +62,12 @@ export const useOptionStyles_unstable = (state: OptionState): OptionState => {
   );
 
   if (state.check) {
-    state.check.className = mergeClasses(styles.check, state.check.className, selected && styles.selectedCheck);
+    state.check.className = mergeClasses(
+      optionClassNames.check,
+      styles.check,
+      state.check.className,
+      selected && styles.selectedCheck,
+    );
   }
 
   return state;

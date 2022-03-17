@@ -1,5 +1,7 @@
 import * as React from 'react';
-import MarkdownComponent, { MarkdownToJSX } from 'markdown-to-jsx';
+import type MarkdownComponentType from 'markdown-to-jsx';
+import type { MarkdownToJSX } from 'markdown-to-jsx';
+import * as MarkdownModule from 'markdown-to-jsx';
 import { Image, IImageStyles, classNamesFunction, IStyleFunction, styled } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { DisplayToggle } from '../DisplayToggle/index';
@@ -11,7 +13,14 @@ import { IMarkdownProps, IMarkdownSubComponentStyles, IMarkdownStyleProps, IMark
 import { MarkdownLink } from './MarkdownLink';
 import { MarkdownPre } from './MarkdownPre';
 
-const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = props => {
+// This is to work around inconsistency between the way markdown-to-jsx declares its types
+// (as having a default export) and the way it actually builds its files (for its cjs `main` file,
+// assigning to module.exports and not setting a default export)
+const MarkdownComponent: typeof MarkdownComponentType =
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (MarkdownModule as any).default || (MarkdownModule as any);
+
+const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = () => {
   const imageStyles: Partial<IImageStyles> = {
     root: {
       maxWidth: '100%',

@@ -9,15 +9,15 @@ import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monore
  */
 export function getScopes(): string[] {
   const allPackageInfo = getAllPackageInfo();
+  const vNextPackagePaths = getVNextPackagePaths(allPackageInfo);
 
   if (process.env.RELEASE_VNEXT) {
-    return [...getVNextPackagePaths(allPackageInfo), ...getSharedPackagePaths(allPackageInfo)];
+    return [...vNextPackagePaths, ...getSharedPackagePaths(allPackageInfo)];
   }
 
-  const ignoreVNextScope = getVNextPackagePaths(allPackageInfo).map(path => `!${path}`);
-  // Northstar is never published with beachbal
-  const ignoreNorthstarScope = '!packages/fluentui/*';
-  return [ignoreNorthstarScope, ...ignoreVNextScope];
+  const ignoreVNextScope = vNextPackagePaths.map(path => `!${path}`);
+
+  return [...ignoreVNextScope];
 }
 
 function getVNextPackagePaths(allPackageInfo: AllPackageInfo) {
