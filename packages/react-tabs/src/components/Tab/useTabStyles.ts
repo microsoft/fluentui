@@ -1,29 +1,33 @@
-import type { TabState } from './Tab.types';
+import type { TabSlots, TabState } from './Tab.types';
 
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { tabPendingSpacingTokens } from '../../tab.constants';
+import { tabContentSizes, tabSpacingTokens } from '../../tab.constants';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
-export const tabClassName = 'fui-Tab';
+export const tabSlotClassNames: SlotClassNames<TabSlots> = {
+  root: 'fui-Tab',
+  icon: 'fui-Tab__icon',
+  content: 'fui-Tab__content',
+};
 
 /**
  * Styles for the root slot
  */
 const useRootStyles = makeStyles({
   base: {
-    backgroundColor: 'none',
+    backgroundColor: 'transparent',
     ...shorthands.borderColor('none'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.borderWidth(0),
-    columnGap: tabPendingSpacingTokens.sNudge,
+    columnGap: tabSpacingTokens.sNudge,
     cursor: 'pointer',
     display: 'flex',
     flexDirection: 'row',
     fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding(tabPendingSpacingTokens.mNudge),
+    ...shorthands.padding(tabSpacingTokens.mNudge),
     position: 'relative',
     ...shorthands.overflow('hidden'),
   },
@@ -36,12 +40,26 @@ const useRootStyles = makeStyles({
     justifyContent: 'flex-start',
   },
   small: {
-    columnGap: tabPendingSpacingTokens.xxs,
-    ...shorthands.padding(tabPendingSpacingTokens.sNudge),
+    columnGap: tabSpacingTokens.xxs,
+    ...shorthands.padding(tabSpacingTokens.sNudge),
   },
   subtle: {
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
+    },
+  },
+  selected: {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    '& .fui-Tab__icon': {
+      color: tokens.colorCompoundBrandForeground1,
+    },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    ':hover .fui-Tab__icon': {
+      color: tokens.colorCompoundBrandForeground1Hover,
+    },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    ':active .fui-Tab__icon': {
+      color: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
 });
@@ -79,8 +97,8 @@ const useHorizontalIndicatorStyles = makeStyles({
       position: 'absolute',
       height: tokens.strokeWidthThicker,
       bottom: '0',
-      left: tabPendingSpacingTokens.m,
-      right: tabPendingSpacingTokens.m,
+      left: tabSpacingTokens.m,
+      right: tabSpacingTokens.m,
     },
     ':hover': {
       ':after': {
@@ -91,8 +109,8 @@ const useHorizontalIndicatorStyles = makeStyles({
   small: {
     ':after': {
       height: tokens.strokeWidthThick,
-      left: tabPendingSpacingTokens.s,
-      right: tabPendingSpacingTokens.s,
+      left: tabSpacingTokens.s,
+      right: tabSpacingTokens.s,
     },
   },
 });
@@ -109,8 +127,8 @@ const useVerticalIndicatorStyles = makeStyles({
       content: '""',
       position: 'absolute',
       left: '0',
-      top: tabPendingSpacingTokens.m,
-      bottom: tabPendingSpacingTokens.m,
+      top: tabSpacingTokens.m,
+      bottom: tabSpacingTokens.m,
       width: tokens.strokeWidthThicker,
     },
     ':hover': {
@@ -121,8 +139,8 @@ const useVerticalIndicatorStyles = makeStyles({
   },
   small: {
     ':before': {
-      top: tabPendingSpacingTokens.s,
-      bottom: tabPendingSpacingTokens.s,
+      top: tabSpacingTokens.s,
+      bottom: tabSpacingTokens.s,
       width: tokens.strokeWidthThick,
     },
   },
@@ -156,7 +174,11 @@ const useIconStyles = makeStyles({
  */
 const useContentStyles = makeStyles({
   base: {
-    ...shorthands.padding(0, tabPendingSpacingTokens.xxs),
+    ...tabContentSizes.body1,
+    ...shorthands.padding(0, tabSpacingTokens.xxs),
+  },
+  selected: {
+    ...tabContentSizes.body1Strong,
   },
 });
 
@@ -172,11 +194,12 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   const contentStyles = useContentStyles();
 
   state.root.className = mergeClasses(
-    tabClassName,
+    tabSlotClassNames.root,
     rootStyles.base,
     focusStyles.base,
     state.size === 'small' && rootStyles.small,
     state.appearance === 'subtle' && rootStyles.subtle,
+    state.selected && rootStyles.selected,
     !state.selected && (state.vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base),
     !state.selected &&
       state.size === 'small' &&
@@ -185,10 +208,20 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
+    state.icon.className = mergeClasses(
+      tabSlotClassNames.icon,
+      iconStyles.base,
+      iconStyles[state.size],
+      state.icon.className,
+    );
   }
 
-  state.content.className = mergeClasses(contentStyles.base, state.content.className);
+  state.content.className = mergeClasses(
+    tabSlotClassNames.content,
+    contentStyles.base,
+    state.selected && contentStyles.selected,
+    state.content.className,
+  );
 
   return state;
 };
