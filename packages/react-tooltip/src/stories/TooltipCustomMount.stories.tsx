@@ -5,11 +5,11 @@ import { Button } from '@fluentui/react-button';
 import { SlideTextRegular } from '@fluentui/react-icons';
 
 export const CustomMount = (props: Partial<TooltipProps>) => {
-  const divRef = React.useRef(null);
+  const divRef = React.useRef<HTMLDivElement>(null);
   return (
     <div ref={divRef}>
       <Tooltip
-        mountNode={divRef.current !== null ? divRef.current : undefined}
+        mountNode={divRef.current ? divRef.current : undefined}
         content="Example tooltip"
         relationship="label"
         {...props}
