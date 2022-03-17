@@ -292,7 +292,6 @@ export const CalendarMonthBase: React.FunctionComponent<ICalendarMonthProps> = p
                       aria-selected={isNavigatedMonth}
                       data-is-focusable={isInBounds ? true : undefined}
                       type="button"
-                      aria-readonly={true} // prevent grid from being "editable"
                     >
                       {month}
                     </button>

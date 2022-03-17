@@ -87,7 +87,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -332,7 +331,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             </span>
           </div>
           <div
-            aria-colindex={2}
             aria-labelledby="header1-key-name"
             aria-sort="none"
             className=
@@ -465,7 +463,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             </span>
           </div>
           <div
-            aria-colindex={3}
             aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
@@ -598,7 +595,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             </span>
           </div>
           <div
-            aria-colindex={4}
             aria-labelledby="header1-value-name"
             aria-sort="none"
             className=
@@ -927,7 +923,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header13-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -1172,7 +1167,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             </span>
           </div>
           <div
-            aria-colindex={2}
             aria-labelledby="header13-key-name"
             aria-sort="none"
             className=
@@ -1305,7 +1299,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             </span>
           </div>
           <div
-            aria-colindex={3}
             aria-labelledby="header13-name-name"
             aria-sort="none"
             className=
@@ -1438,7 +1431,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             </span>
           </div>
           <div
-            aria-colindex={4}
             aria-labelledby="header13-value-name"
             aria-sort="none"
             className=
@@ -1741,6 +1733,9 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       &:hover .is-row-header {
         color: #201f1e;
       }
+      &:hover .ms-DetailsRow-cell > .ms-Link {
+        color: #004578;
+      }
       &:hover .ms-DetailsRow-check {
         opacity: 1;
       }
@@ -1752,7 +1747,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         flex-shrink: 0;
       }
   data-automationid="DetailsRow"
-  data-focuszone-id="FocusZone32"
+  data-focuszone-id="FocusZone43"
   data-is-focusable={true}
   data-item-index={0}
   data-selection-index={0}
@@ -1768,7 +1763,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
   }
 >
   <div
-    aria-colindex={1}
     className=
         ms-DetailsRow-cell
         ms-DetailsRow-cellCheck
@@ -2012,7 +2006,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
     role="presentation"
   >
     <div
-      aria-colindex={2}
       aria-readonly={true}
       className=
           ms-DetailsRow-cell
@@ -2069,7 +2062,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       
     </div>
     <div
-      aria-colindex={3}
       aria-readonly={true}
       className=
           ms-DetailsRow-cell
@@ -2126,7 +2118,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       
     </div>
     <div
-      aria-colindex={4}
       aria-readonly={true}
       className=
           ms-DetailsRow-cell
@@ -2288,7 +2279,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header5-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -2533,7 +2523,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             </span>
           </div>
           <div
-            aria-colindex={2}
             aria-labelledby="header5-key-name"
             aria-sort="none"
             className=
@@ -2666,7 +2655,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             </span>
           </div>
           <div
-            aria-colindex={3}
             aria-labelledby="header5-name-name"
             aria-sort="none"
             className=
@@ -2799,7 +2787,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             </span>
           </div>
           <div
-            aria-colindex={4}
             aria-labelledby="header5-value-name"
             aria-sort="none"
             className=
@@ -3128,7 +3115,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header9-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -3373,7 +3359,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             </span>
           </div>
           <div
-            aria-colindex={2}
             aria-labelledby="header9-key-name"
             aria-sort="none"
             className=
@@ -3506,7 +3491,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             </span>
           </div>
           <div
-            aria-colindex={3}
             aria-labelledby="header9-name-name"
             aria-sort="none"
             className=
@@ -3639,7 +3623,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             </span>
           </div>
           <div
-            aria-colindex={4}
             aria-labelledby="header9-value-name"
             aria-sort="none"
             className=

@@ -95,9 +95,11 @@ function Component(props) {
 No matter what theme is used, the component styles are always the same. The only way to change the component styling is through theme tokens which can be used in style values.
 
 ```js
+import { tokens } from '@fluentui/react-theme';
+
 const useStyles = makeStyles({
   root: { display: 'flex' },
-  rootPrimary: theme => ({ color: theme.alias.color.neutral.neutralForeground3 }),
+  rootPrimary: { color: tokens.colorNeutralForeground3 },
 });
 ```
 
@@ -125,8 +127,10 @@ function Component(props) {
 To override an appearance of a FUI component, you use the exactly same approach - You call makeStyles/useStyles in your code and pass the resulting classes through `props`.
 
 ```jsx
+import { tokens } from '@fluentui/react-theme';
+
 const useOverrides = makeStyles({
-  button: theme => ({ color: theme.alias.color.neutral.neutralForeground3 }),
+  button: { color: tokens.colorNeutralForeground3 },
   buttonIcon: { border: '1px solid red'},
   link: { fontWeight: 'bold },
 });

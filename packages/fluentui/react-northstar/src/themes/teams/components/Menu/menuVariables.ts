@@ -34,6 +34,7 @@ export interface MenuVariables {
   colorActive: string;
 
   iconSize: string;
+  iconOnlyBorderRadius: string;
   iconOnlyColorActive: string;
   iconOnlyColorFocus: string;
   iconOnlyBackgroundColorHover: string;
@@ -62,6 +63,7 @@ export interface MenuVariables {
   verticalItemBorderColor: string;
   verticalPointingBorderColor: string;
   verticalBackgroundColorFocus: string;
+  verticalBorderColor: string;
 
   pointingIndicatorBackgroundColor: string;
 
@@ -101,7 +103,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
       extendColorScheme(siteVars.colorScheme, {
         default: {
           borderActive: siteVars.colorScheme.default.border2,
-          backgroundActive: siteVars.colorScheme.default.backgroundActive1,
+          backgroundActive: siteVars.colorScheme.default.backgroundActive2,
           backgroundFocus: siteVars.colorScheme.default.backgroundFocus1,
           foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1,
         },
@@ -138,6 +140,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
 
     iconSize: pxToRem(16),
 
+    iconOnlyBorderRadius: siteVars.borderRadiusMedium,
     iconOnlyColorActive: siteVars.colors.brand[600],
     iconOnlyColorFocus: siteVars.colors.brand[600],
     iconOnlyWrapperBackgroundColorFocus: undefined,
@@ -151,13 +154,14 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     horizontalPadding: `${pxToRem(14)} ${pxToRem(18)}`,
 
     verticalBackgroundColor: siteVars.colorScheme.default.background,
-    verticalItemPadding: `${pxToRem(7)} ${pxToRem(14)}`,
-    verticalBoxShadow: siteVars.shadowLevel3,
+    verticalItemPadding: `${pxToRem(7)} ${pxToRem(12)}`,
+    verticalBoxShadow: siteVars.shadow16,
     verticalDividerMargin: `${pxToRem(8)} 0`,
     verticalItemBorderWidth: pxToRem(2),
     verticalItemBorderColor: 'transparent',
     verticalPointingBorderColor: siteVars.colorScheme.brand.borderActive,
     verticalBackgroundColorFocus: undefined,
+    verticalBorderColor: siteVars.colorScheme.default.borderTransparent,
 
     activeUnderlinedColor: undefined,
     activeUnderlinedPrimaryColor: siteVars.colors.brand[600],

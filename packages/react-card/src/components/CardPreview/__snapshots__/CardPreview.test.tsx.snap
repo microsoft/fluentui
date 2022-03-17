@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardPreview renders a default state 1`] = `
+<div>
+  <div
+    class="fui-CardPreview"
+  >
+    Default CardPreview
+    <div
+      class="fui-CardPreview__logo"
+    >
+      Logo slot
+    </div>
+  </div>
+</div>
+`;

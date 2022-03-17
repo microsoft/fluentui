@@ -15,6 +15,6 @@ export const withFluentProvider = makeDecorator({
   parameterName: 'theme',
   skipIfNoParametersOrOptions: false,
   wrapper: (storyFn, context) => {
-    return <ProviderWrapper>{storyFn(context)}</ProviderWrapper>;
+    return <ProviderWrapper> {storyFn(context)} </ProviderWrapper>;
   },
 });

@@ -64,7 +64,7 @@ import { Image, ImageFit } from '@fluentui/react/lib/Image';
 ### v0 usage
 
 ```jsx
-<Image fluid src="..." alt="Example of the image component in v0" />
+<Image block src="..." alt="Example of the image component in v0" />
 ```
 
 ## Variants
@@ -83,9 +83,9 @@ Proposed component props:
 | ---------- | --------- | ------------- | -------------------------------------------- |
 | `bordered` | `boolean` | `false`       |                                              |
 | `fit`      | `string`  | "`none`"      | One of: `none`, `center`, `contain`, `cover` |
-| `fluid`    | `boolean` | `false`       |                                              |
-| `circular` | `boolean` | `false`       |                                              |
-| `rounded`  | `boolean` | `false`       | rounded corners                              |
+| `block`    | `boolean` | `false`       |                                              |
+| `shape `   | `string ` | `false`       | One of: `square`, `circular` , `rounded`     |
+| `shadow`   | `boolean` | `false`       |                                              |
 
 All native html attributes of the `<img />` will be available to be used as props of the Image component.
 
@@ -99,22 +99,22 @@ Sample code based on the proposed API:
 <Image bordered src="..." />
 ```
 
-### Fluid
+### Block
 
 ```jsx
-<Image fluid src="..." />
+<Image block src="..." />
 ```
 
 ### Rounded
 
 ```jsx
-<Image rounded src="..." />
+<Image shape="rounded" src="..." />
 ```
 
 ### Circular
 
 ```jsx
-<Image circular src="..." />
+<Image shape="circular" src="..." />
 ```
 
 ### Fit

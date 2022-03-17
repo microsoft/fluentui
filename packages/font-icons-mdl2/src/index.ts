@@ -20,7 +20,7 @@ import { initializeIcons as i17 } from './fabric-icons-17';
 
 import { IIconOptions } from '@fluentui/style-utilities';
 import { registerIconAliases } from './iconAliases';
-const DEFAULT_BASE_URL = 'https://spoprod-a.akamaihd.net/files/fabric/assets/icons/';
+const DEFAULT_BASE_URL = 'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20210407.001/assets/icons/';
 
 export function initializeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: IIconOptions): void {
   [

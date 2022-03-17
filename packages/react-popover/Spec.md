@@ -227,7 +227,7 @@ Outer component that sets up context and does not render DOM.
 The `@fluentui/react-positioning` library that exports the `usePopper` hook which will power the `Popover` contains more than the declared props here. These extra positioning props should be exposed as required.
 
 ```typescript
-export interface PopoverProps {
+export type PopoverProps = {
   /**
    * Controls the popover open state
    */
@@ -284,7 +284,7 @@ export interface PopoverProps {
    * Do not render an arrow pointing to the target element. This is the `PopoverTrigger` unless `target` prop is used
    */
   noArrow?: boolean;
-}
+};
 ```
 
 ### PopoverTrigger
@@ -292,12 +292,12 @@ export interface PopoverProps {
 This component does not render DOM. Utility component that clones a single child and applies HTML event callbacks to control the open/dismiss of the popover.
 
 ```typescript
-export interface PopoverTriggerProps {
+export type PopoverTriggerProps = {
   /**
    * Should only be a single child
    */
   children?: React.ReactElement;
-}
+};
 ```
 
 ### PopoverSurface
@@ -305,9 +305,9 @@ export interface PopoverTriggerProps {
 This component renders the positioned HTML element and renders user provided children. Renders as `<div>` by default.
 
 ```typescript
-export interface PopoverSurfaceProps {
+export type PopoverSurfaceProps = {
   children?: React.ReactNode;
-}
+};
 ```
 
 ## Structure

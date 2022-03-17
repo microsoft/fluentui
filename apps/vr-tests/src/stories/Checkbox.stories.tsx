@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { Checkbox, Persona, PersonaSize } from '@fluentui/react';
 
 storiesOf('Checkbox', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -16,7 +16,7 @@ storiesOf('Checkbox', module)
       {story()}
     </Screener>,
   )
-  .addStory('Unchecked', () => <Checkbox label="Unchecked checkbox" />, { rtl: true })
+  .addStory('Unchecked', () => <Checkbox label="Unchecked checkbox" />, { includeRtl: true })
   .addStory('Checked', () => <Checkbox label="Checked checkbox" checked />)
   .addStory('Unchecked disabled', () => <Checkbox label="Unchecked disabled checkbox" disabled />)
   .addStory('Checked disabled', () => (
@@ -34,7 +34,7 @@ storiesOf('Checkbox', module)
   .addStory('Uncontrolled Indeterminate disabled', () => (
     <Checkbox label="Uncontrolled Indeterminate disabled checkbox" disabled defaultIndeterminate />
   ))
-  .addStory('End', () => <Checkbox label="Checkbox end" boxSide="end" />, { rtl: true })
+  .addStory('End', () => <Checkbox label="Checkbox end" boxSide="end" />, { includeRtl: true })
   .addStory('Multi-line Checkbox', () => (
     <Checkbox
       // eslint-disable-next-line @fluentui/max-len
@@ -52,7 +52,7 @@ storiesOf('Checkbox', module)
   ));
 
 storiesOf('Checkbox Indeterminate', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "rework className handling",
-  "packageName": "@fluentui/react-provider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

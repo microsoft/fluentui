@@ -5,7 +5,7 @@ describe('Keyborg', () => {
     cy.visitStorybook();
   });
 
-  beforeEach(() => cy.loadStory('tabster', 'Keyborg'));
+  beforeEach(() => cy.loadStory('Components/tabster', 'Keyborg'));
 
   it('should open when clicked', () => {
     cy.contains('Start').focus().realPress('Tab');

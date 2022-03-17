@@ -23,7 +23,7 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
           options: {
             transpileOnly: true,
             experimentalWatchApi: true,
-            configFile: 'tsconfig.json',
+            configFile: path.join(process.cwd(), 'tsconfig.json'),
           },
         },
       ],

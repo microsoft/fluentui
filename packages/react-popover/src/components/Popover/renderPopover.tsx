@@ -5,10 +5,10 @@ import type { PopoverState } from './Popover.types';
 /**
  * Render the final JSX of Popover
  */
-export const renderPopover = (state: PopoverState) => {
+export const renderPopover_unstable = (state: PopoverState) => {
   const {
-    open,
     setOpen,
+    toggleOpen,
     triggerRef,
     contentRef,
     openOnContext,
@@ -17,16 +17,15 @@ export const renderPopover = (state: PopoverState) => {
     arrowRef,
     size,
     noArrow,
-    brand,
-    inverted,
+    appearance,
     trapFocus,
   } = state;
 
   return (
     <PopoverContext.Provider
       value={{
-        open,
         setOpen,
+        toggleOpen,
         triggerRef,
         contentRef,
         openOnHover,
@@ -35,12 +34,12 @@ export const renderPopover = (state: PopoverState) => {
         arrowRef,
         size,
         noArrow,
-        brand,
-        inverted,
+        appearance,
         trapFocus,
       }}
     >
-      {state.children}
+      {state.popoverTrigger}
+      {state.open && state.popoverSurface}
     </PopoverContext.Provider>
   );
 };

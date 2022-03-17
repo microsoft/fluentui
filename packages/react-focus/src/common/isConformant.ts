@@ -5,7 +5,11 @@ export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
 ) {
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
-    disabledTests: ['has-docblock', 'kebab-aria-attributes'],
+    disabledTests: [
+      'kebab-aria-attributes',
+      // Focus* components don't have static classes
+      'component-has-static-classname',
+    ],
     componentPath: module!.parent!.filename.replace('.test', ''),
   };
 

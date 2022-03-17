@@ -207,21 +207,18 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   }
 
   protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>): void {
-    const suggestionsArray: T[] = suggestions as T[];
-    const suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
-
     // Check to see if the returned value is an array, if it is then just pass it into the next function.
     // If the returned value is not an array then check to see if it's a promise or PromiseLike.
     // If it is then resolve it asynchronously.
-    if (Array.isArray(suggestionsArray)) {
-      this.updateSuggestions(suggestionsArray, true /*forceUpdate*/);
-    } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
+    if (Array.isArray(suggestions)) {
+      this.updateSuggestions(suggestions, true /*forceUpdate*/);
+    } else if (suggestions && (suggestions as PromiseLike<T[]>).then) {
       // Ensure that the promise will only use the callback if it was the most recent one.
-      const promise: PromiseLike<T[]> = (this.currentPromise = suggestionsPromiseLike);
-      promise.then((newSuggestions: T[]) => {
+      this.currentPromise = suggestions;
+      suggestions.then((newSuggestions: T[]) => {
         // Only update if the next promise has not yet resolved and
         // the floating picker is still mounted.
-        if (promise === this.currentPromise && this.isComponentMounted) {
+        if (suggestions === this.currentPromise && this.isComponentMounted) {
           this.updateSuggestions(newSuggestions, true /*forceUpdate*/);
         }
       });

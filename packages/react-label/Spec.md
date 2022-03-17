@@ -75,58 +75,48 @@ The Label component should be simple as shown below. It will just need the text 
 ## API
 
 ```ts
-/**
- * Label Props
- * {@docCategory Label}
- */
-export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HTMLElement> {
+export type LabelCommons = {
   /**
    * Renders the label as disabled
    * @defaultvalue false
    */
-  disabled?: boolean;
+  disabled: boolean;
 
   /**
-   * Whether the associated form field is required or not. If true it will be an asterisk, otherwise it will be what is provided.
-   * @defaultvalue false
-   */
-  required?: boolean | ShorthandProps<ComponentProps>;
-
-  /**
-   * A label supports different font sizes, see tokens for reference.
+   * A label supports different sizes.
    * @defaultvalue 'medium'
    */
-  size?: 'small' | 'medium' | 'large';
+  size: 'small' | 'medium' | 'large';
 
   /**
-   * A label supports semibold/strong fontweight. When size is set to large, label strong will be set by default.
+   * A label supports semibold/strong fontweight.
    * @defaultvalue false
    */
-  strong?: boolean;
-}
+  strong: boolean;
+};
 
-/**
- * Names of the shorthand properties in LabelProps
- * {@docCategory Label}
- */
-export type LabelShorthandProps = 'required';
-
-/**
- * Names of LabelProps that have a default value in useLabel
- * {@docCategory Label}
- */
-export type LabelDefaultedProps = never;
+export type LabelSlots = {
+  root: IntrinsicSlotProps<'label'>;
+  required?: IntrinsicSlotProps<'span'>;
+};
 
 /**
  * State used in rendering Label
- * {@docCategory Label}
  */
-export interface LabelState extends ComponentState<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
-  /**
-   * Ref to the root element
-   */
-  ref: React.Ref<HTMLElement>;
-}
+export type LabelState = ComponentState<LabelSlots> & LabelCommons;
+
+/**
+ * Label Props
+ */
+export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
+  Partial<LabelCommons> & {
+    /**
+     * Displays and indicator that the label is for a required field. The required prop can be set to true to display
+     * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
+     * @defaultvalue false
+     */
+    required?: boolean | IntrinsicSlotProps<'span'> | React.ReactNode;
+  };
 ```
 
 ## Structure

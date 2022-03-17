@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import {
   Dropdown,
   DropdownMenuItemType,
@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react';
 
 storiesOf('Dropdown', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -47,7 +47,7 @@ storiesOf('Dropdown', module)
         ]}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Disabled option selected', () => (
     <Dropdown
@@ -84,7 +84,7 @@ storiesOf('Dropdown', module)
         ]}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Custom Dropdown',
@@ -154,7 +154,7 @@ storiesOf('Dropdown', module)
         ]}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Required', () => (
     <Dropdown
@@ -179,7 +179,7 @@ storiesOf('Dropdown', module)
   ));
 
 storiesOf('Dropdown Disabled', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

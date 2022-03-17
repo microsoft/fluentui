@@ -6,7 +6,7 @@ import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard } from '../../utilities/index';
+import { ChartHoverCard, convertToLocaleString } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
@@ -34,6 +34,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
   private _calloutId: string;
   private _refArray: IRefArrayData[];
+  private _calloutAnchorPoint: IChartDataPoint | null;
 
   public constructor(props: IStackedBarChartProps) {
     super(props);
@@ -57,7 +58,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
 
   public render(): JSX.Element {
     this._adjustProps();
-    const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle } = this.props;
+    const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle, culture } = this.props;
     const { palette } = this.props.theme!;
     const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 8;
 
@@ -98,9 +99,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       targetColor: targetData ? targetData.color : '',
       targetRatio,
     });
-
+    const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (
-      <div className={this._classNames.root}>
+      <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
@@ -110,19 +111,17 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             )}
             {showRatio && (
               <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <span className={this._classNames.ratioNumerator}>
-                  {data!.chartData![0].data ? data!.chartData![0].data : 0}
-                </span>
+                <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                 {!this.props.hideDenominator && (
                   <span>
-                    /<span className={this._classNames.ratioDenominator}>{total}</span>
+                    /<span className={this._classNames.ratioDenominator}>{convertToLocaleString(total, culture)}</span>
                   </span>
                 )}
               </div>
             )}
             {showNumber && (
               <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <strong>{data!.chartData![0].data}</strong>
+                <strong>{getChartData()}</strong>
               </div>
             )}
           </div>
@@ -158,6 +157,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                       Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
                       YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
                       color={this.state.color}
+                      culture={culture}
                     />
                   )}
                 </>
@@ -396,9 +396,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   ): void {
     mouseEvent.persist();
     if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)
+      (this.state.isLegendSelected === false ||
+        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)) &&
+      this._calloutAnchorPoint !== point
     ) {
+      this._calloutAnchorPoint = point;
       this.setState({
         refSelected: mouseEvent,
         isCalloutVisible: true,
@@ -414,10 +416,15 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   }
 
   private _onBarLeave(): void {
+    /**/
+  }
+
+  private _handleChartMouseLeave = () => {
+    this._calloutAnchorPoint = null;
     this.setState({
       isCalloutVisible: false,
     });
-  }
+  };
 
   private _redirectToUrl(href: string | undefined): void {
     href ? (window.location.href = href) : '';

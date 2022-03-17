@@ -4,61 +4,56 @@
 
 ```ts
 
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
-import type { ComponentStateCompat } from '@fluentui/react-utilities';
-import type { PresenceBadgeProps } from '@fluentui/react-badge';
-import type { PresenceBadgeStatus } from '@fluentui/react-badge';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
-import type { ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export const Avatar: React_2.ForwardRefExoticComponent<AvatarProps & React_2.RefAttributes<HTMLElement>>;
+export const Avatar: ForwardRefComponent<AvatarProps>;
 
-// @public
-export type AvatarDefaultedProps = 'size' | 'color' | 'activeDisplay' | 'getInitials' | 'label' | 'icon';
+// @public @deprecated (undocumented)
+export const avatarClassName = "fui-Avatar";
+
+// @public (undocumented)
+export const avatarClassNames: SlotClassNames<AvatarSlots>;
 
 // @public
 export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
 
+// Warning: (ae-forgotten-export) The symbol "AvatarCommons" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & Partial<AvatarCommons>;
+
 // @public (undocumented)
-export interface AvatarProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
-    active?: 'active' | 'inactive' | 'unset';
-    activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
-    badge?: PresenceBadgeStatus | Exclude<ShorthandPropsCompat<PresenceBadgeProps>, string>;
-    color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
-    getInitials?: (name: string, isRtl: boolean) => string;
-    icon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    idForColor?: string;
-    image?: ShorthandPropsCompat<React_2.ImgHTMLAttributes<HTMLImageElement>>;
-    label?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    name?: string;
-    size?: AvatarSizeValue;
-    square?: boolean;
-}
+export type AvatarSlots = {
+    root: Slot<'span'>;
+    image?: Slot<'img'>;
+    initials?: Slot<'span'>;
+    icon?: Slot<'span'>;
+    badge?: Slot<typeof PresenceBadge>;
+};
 
 // @public
-export type AvatarShorthandPropsCompat = 'label' | 'image' | 'badge' | 'icon';
+export type AvatarState = ComponentState<AvatarSlots> & AvatarCommons & {
+    color: Exclude<AvatarCommons['color'], 'colorful'>;
+};
 
 // @public
-export const avatarShorthandPropsCompat: AvatarShorthandPropsCompat[];
-
-// @public
-export type AvatarSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+export function getInitials(displayName: string | undefined | null, isRtl: boolean, allowPhoneInitials?: boolean): string;
 
 // @public (undocumented)
-export interface AvatarState extends ComponentStateCompat<AvatarProps, AvatarShorthandPropsCompat, AvatarDefaultedProps> {
-    ref: React_2.Ref<HTMLElement>;
-    showIcon?: boolean;
-}
+export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
 
 // @public (undocumented)
-export const renderAvatar: (state: AvatarState) => JSX.Element;
+export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
 
 // @public (undocumented)
-export const useAvatar: (props: AvatarProps, ref: React_2.Ref<HTMLElement>, defaultProps?: AvatarProps | undefined) => AvatarState;
-
-// @public (undocumented)
-export const useAvatarStyles: (state: AvatarState) => AvatarState;
+export const useAvatarStyles_unstable: (state: AvatarState) => AvatarState;
 
 // (No @packageDocumentation comment for this package)
 

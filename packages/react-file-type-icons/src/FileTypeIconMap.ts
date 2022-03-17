@@ -266,7 +266,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['dot', 'dotm', 'dotx'],
   },
   email: {
-    extensions: ['eml', 'msg', 'ost', 'pst'],
+    extensions: ['eml', 'msg', 'oft', 'ost', 'pst'],
   },
   exe: {
     extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'],
@@ -276,11 +276,15 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['ttf', 'otf', 'woff'],
   },
   fluid: {
-    extensions: ['b', 'fluid'],
+    extensions: ['fluid', 'loop'],
   },
+  form: {},
   genericfile: {},
   html: {
     extensions: ['htm', 'html', 'mht'],
+  },
+  ipynb: {
+    extensions: ['nnb', 'ipynb'],
   },
   link: {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
@@ -290,9 +294,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   officescript: {
     extensions: ['osts'],
   },
-  splist: {
-    extensions: ['listitem'],
-  },
+  splist: {},
   model: {
     extensions: [
       '3ds',
@@ -367,6 +369,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'jpe',
       'jpeg',
       'jpg',
+      'jxr',
       'kdc',
       'mrw',
       'nef',
@@ -416,6 +419,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
   },
   sharedfolder: {},
+  playlist: {},
   sway: {},
   sysfile: {
     extensions: [

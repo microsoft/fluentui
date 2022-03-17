@@ -1,62 +1,57 @@
 import * as React from 'react';
-import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
-import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
-import { usePopoverContext } from '../../popoverContext';
+import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { useModalAttributes } from '@fluentui/react-tabster';
+import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
-
-const mergeProps = makeMergeProps<PopoverSurfaceState>({});
 
 /**
  * Create the state required to render PopoverSurface.
  *
- * The returned state can be modified with hooks such as usePopoverSurfaceStyles,
- * before being passed to renderPopoverSurface.
+ * The returned state can be modified with hooks such as usePopoverSurfaceStyles_unstable,
+ * before being passed to renderPopoverSurface_unstable.
  *
  * @param props - props from this instance of PopoverSurface
- * @param ref - reference to root HTMLElement of PopoverSurface
- * @param defaultProps - (optional) default prop values provided by the implementing type
+ * @param ref - reference to root HTMLDivElement of PopoverSurface
  */
-export const usePopoverSurface = (
+export const usePopoverSurface_unstable = (
   props: PopoverSurfaceProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: PopoverSurfaceProps,
+  ref: React.Ref<HTMLDivElement>,
 ): PopoverSurfaceState => {
-  const contentRef = usePopoverContext(context => context.contentRef);
-  const open = usePopoverContext(context => context.open);
-  const openOnHover = usePopoverContext(context => context.openOnHover);
-  const setOpen = usePopoverContext(context => context.setOpen);
-  const mountNode = usePopoverContext(context => context.mountNode);
-  const arrowRef = usePopoverContext(context => context.arrowRef);
-  const size = usePopoverContext(context => context.size);
-  const noArrow = usePopoverContext(context => context.noArrow);
-  const brand = usePopoverContext(context => context.brand);
-  const inverted = usePopoverContext(context => context.inverted);
-  const trapFocus = usePopoverContext(context => context.trapFocus);
+  const contentRef = usePopoverContext_unstable(context => context.contentRef);
+  const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
+  const setOpen = usePopoverContext_unstable(context => context.setOpen);
+  const mountNode = usePopoverContext_unstable(context => context.mountNode);
+  const arrowRef = usePopoverContext_unstable(context => context.arrowRef);
+  const size = usePopoverContext_unstable(context => context.size);
+  const noArrow = usePopoverContext_unstable(context => context.noArrow);
+  const appearance = usePopoverContext_unstable(context => context.appearance);
+  const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
   const { modalAttributes } = useModalAttributes({ trapFocus });
 
-  const state = mergeProps(
-    {
-      brand,
-      inverted,
-      noArrow,
-      size,
-      arrowRef,
-      open,
-      mountNode,
-      role: 'dialog',
-      ref: useMergedRefs(ref, contentRef),
-      ...modalAttributes,
+  const state: PopoverSurfaceState = {
+    appearance,
+    noArrow,
+    size,
+    arrowRef,
+    mountNode,
+    components: {
+      root: 'div',
     },
-    defaultProps,
-    props,
-  );
+    root: getNativeElementProps('div', {
+      ref: useMergedRefs(ref, contentRef),
+      role: trapFocus ? 'dialog' : 'complementary',
+      'aria-modal': trapFocus ? true : undefined,
+      ...modalAttributes,
+      ...props,
+    }),
+  };
 
   const {
     onMouseEnter: onMouseEnterOriginal,
     onMouseLeave: onMouseLeaveOriginal,
     onKeyDown: onKeyDownOriginal,
-  } = state;
-  state.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
+  } = state.root;
+  state.root.onMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     if (openOnHover) {
       setOpen(e, true);
     }
@@ -64,7 +59,7 @@ export const usePopoverSurface = (
     onMouseEnterOriginal?.(e);
   };
 
-  state.onMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
+  state.root.onMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     if (openOnHover) {
       setOpen(e, false);
     }
@@ -72,23 +67,15 @@ export const usePopoverSurface = (
     onMouseLeaveOriginal?.(e);
   };
 
-  state.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+  state.root.onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     // only close if the event happened inside the current popover
     // If using a stack of inline popovers, the user should call `stopPropagation` to avoid dismissing the entire stack
-    if (e.key === 'Escape' && contentRef.current?.contains(e.target as HTMLElement)) {
+    if (e.key === 'Escape' && contentRef.current?.contains(e.target as HTMLDivElement)) {
       setOpen(e, false);
     }
 
     onKeyDownOriginal?.(e);
   };
 
-  const { findFirstFocusable } = useFocusFinders();
-
-  React.useEffect(() => {
-    if (state.open && contentRef.current) {
-      const firstFocusable = findFirstFocusable(contentRef.current);
-      firstFocusable?.focus();
-    }
-  }, [contentRef, findFirstFocusable, state.open]);
   return state;
 };

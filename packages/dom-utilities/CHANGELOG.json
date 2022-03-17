@@ -2,6 +2,63 @@
   "name": "@fluentui/dom-utilities",
   "entries": [
     {
+      "date": "Thu, 03 Mar 2022 07:24:26 GMT",
+      "tag": "@fluentui/dom-utilities_v2.2.0",
+      "version": "2.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/dom-utilities",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/dom-utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 14:54:16 GMT",
+      "tag": "@fluentui/dom-utilities_v2.1.5",
+      "version": "2.1.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/dom-utilities",
+            "comment": "Bump @fluentui/set-version to v8.1.5",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/dom-utilities_v2.1.4",
+      "version": "2.1.4",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/dom-utilities",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/dom-utilities",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/dom-utilities to v2.1.4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/dom-utilities_v2.1.4",
       "version": "2.1.4",

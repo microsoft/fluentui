@@ -2,12 +2,14 @@
 
 exports[`Input renders a default state 1`] = `
 <div>
-  <div
-    class=""
+  <span
+    class="fui-Input"
   >
-    <div>
-      <input />
-    </div>
-  </div>
+    <input
+      class="fui-Input__input"
+      type="text"
+      value=""
+    />
+  </span>
 </div>
 `;

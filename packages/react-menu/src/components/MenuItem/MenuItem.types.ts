@@ -1,37 +1,37 @@
-import * as React from 'react';
-import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuItemSlots = {
-  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  root: Slot<'div'>;
+
   /**
    * Icon slot rendered before children content
    */
-  icon?: React.HTMLAttributes<HTMLElement>;
+  icon?: Slot<'span'>;
 
   /**
    * A helper slot for alignment when a menu item is used with selectable menuitems
    * Avoid using this slot as a replacement for MenuItemCheckbox and MenuItemRadio components
    */
-  checkmark?: React.HTMLAttributes<HTMLElement>;
+  checkmark?: Slot<'span'>;
 
   /**
    * Icon slot that shows the indicator for a submenu
    */
-  submenuIndicator?: React.HTMLAttributes<HTMLElement>;
+  submenuIndicator?: Slot<'span'>;
 
   /**
    * Component children are placed in this slot
    * Avoid using the `children` property in this slot in favour of Component children whenever possible
    */
-  content: React.HTMLAttributes<HTMLElement>;
+  content?: Slot<'span'>;
 
   /**
    * Secondary content rendered opposite the primary content (e.g Shortcut text)
    */
-  secondaryContent?: React.HTMLAttributes<HTMLElement>;
+  secondaryContent?: Slot<'span'>;
 };
 
-interface MenuItemCommons {
+type MenuItemCommons = {
   /**
    * If the menu item is a trigger for a submenu
    */
@@ -46,8 +46,8 @@ interface MenuItemCommons {
    * Clicking on the menu item will not dismiss an open menu
    */
   persistOnClick?: boolean;
-}
+};
 
-export interface MenuItemProps extends ComponentProps<Partial<MenuItemSlots>>, MenuItemCommons {}
+export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & MenuItemCommons;
 
-export interface MenuItemState extends ComponentState<MenuItemSlots>, MenuItemCommons {}
+export type MenuItemState = ComponentState<MenuItemSlots> & MenuItemCommons;

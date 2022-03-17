@@ -138,36 +138,21 @@ exports[`TextField snapshots renders correctly 1`] = `
               color: WindowText;
             }
             &::placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -313,6 +298,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               background: Window;
               color: WindowText;
             }
+        id="TextFieldPrefix3"
       >
         <span
           style={
@@ -327,7 +313,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
       <input
         aria-describedby="TextFieldDescription1"
         aria-invalid={true}
-        aria-labelledby="TextFieldLabel2"
+        aria-labelledby="TextFieldLabel2 TextFieldPrefix3 TextFieldSuffix4"
         className=
             ms-TextField-field
             {
@@ -374,36 +360,21 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               color: WindowText;
             }
             &::placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -437,6 +408,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               background: Window;
               color: WindowText;
             }
+        id="TextFieldSuffix4"
       >
         <span
           style={
@@ -587,6 +559,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               background: Window;
               color: WindowText;
             }
+        id="TextFieldPrefix3"
       >
         <span
           style={
@@ -601,7 +574,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
       <input
         aria-describedby="TextFieldDescription1"
         aria-invalid={true}
-        aria-labelledby="TextFieldLabel2"
+        aria-labelledby="TextFieldLabel2 TextFieldPrefix3 TextFieldSuffix4"
         className=
             ms-TextField-field
             {
@@ -648,36 +621,21 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               color: WindowText;
             }
             &::placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -711,6 +669,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               background: Window;
               color: WindowText;
             }
+        id="TextFieldSuffix4"
       >
         <span
           style={
@@ -878,36 +837,21 @@ exports[`TextField snapshots renders multiline non resizable correctly 1`] = `
               color: WindowText;
             }
             &::placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -1067,36 +1011,21 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
               color: WindowText;
             }
             &::placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -1256,36 +1185,21 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
               color: WindowText;
             }
             &::placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -1410,36 +1324,21 @@ exports[`TextField snapshots renders with reveal password button 1`] = `
               color: WindowText;
             }
             &::placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -1673,6 +1572,7 @@ exports[`TextField snapshots should respect user component and subcomponent styl
               background: Window;
               color: WindowText;
             }
+        id="TextFieldPrefix3"
       >
         <span
           style={
@@ -1687,7 +1587,7 @@ exports[`TextField snapshots should respect user component and subcomponent styl
       <input
         aria-describedby="TextFieldDescription1"
         aria-invalid={true}
-        aria-labelledby="TextFieldLabel2"
+        aria-labelledby="TextFieldLabel2 TextFieldPrefix3 TextFieldSuffix4"
         className=
             ms-TextField-field
             {
@@ -1734,36 +1634,21 @@ exports[`TextField snapshots should respect user component and subcomponent styl
               color: WindowText;
             }
             &::placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -1797,6 +1682,7 @@ exports[`TextField snapshots should respect user component and subcomponent styl
               background: Window;
               color: WindowText;
             }
+        id="TextFieldSuffix4"
       >
         <span
           style={

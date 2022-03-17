@@ -1,21 +1,24 @@
 import { knobComponents, KnobsSnippet } from '@fluentui/code-sandbox';
 import {
   CopyToClipboard,
+  EDITOR_GUTTER_COLOR,
+  Editor,
   KnobInspector,
   KnobProvider,
   LogInspector,
-  Editor,
-  EDITOR_BACKGROUND_COLOR,
-  EDITOR_GUTTER_COLOR,
 } from '@fluentui/docs-components';
 import {
   ComponentVariablesInput,
+  createTheme,
   Flex,
   ICSSInJSStyle,
   Image,
   Menu,
+  mergeThemes,
   Provider,
+  pxToRem,
   Segment,
+  teamsDarkTheme,
   ThemeInput,
 } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
@@ -33,11 +36,34 @@ import ComponentExampleTitle from './ComponentExampleTitle';
 import ComponentSourceManager, { ComponentSourceManagerRenderProps } from '../ComponentSourceManager';
 import VariableResolver from '../../VariableResolver/VariableResolver';
 import ComponentExampleVariables from './ComponentExampleVariables';
-// TODO: find replacement
-import { ReplyIcon, AcceptIcon, EditIcon } from '@fluentui/react-icons-northstar';
+import { AcceptIcon, EditIcon, UndoIcon } from '@fluentui/react-icons-northstar';
 import config from '../../../config';
 
 const ERROR_COLOR = '#D34';
+
+const editorTheme = mergeThemes(
+  teamsDarkTheme,
+  createTheme(
+    {
+      siteVariables: {
+        bodyBackground: EDITOR_GUTTER_COLOR,
+      },
+      componentVariables: {
+        Menu: {
+          borderColor: 'transparent',
+          underlinedBottomBorderWidth: 0,
+        },
+        MenuItem: {
+          horizontalPadding: pxToRem(8),
+        },
+        MenuItemWrapper: {
+          borderColor: 'transparent',
+        },
+      },
+    },
+    'ComponentExampleCode',
+  ),
+);
 
 export interface ComponentExampleProps
   extends RouteComponentProps<any, any>,
@@ -252,14 +278,6 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     }
   };
 
-  exampleMenuVariables = siteVars => ({
-    backgroundColorActive: 'transparent',
-    borderColorActive: siteVars.colors.white,
-    colorActive: siteVars.colors.white,
-    primaryBorderColor: siteVars.colors.white,
-    color: siteVars.colors.white,
-  });
-
   renderAPIsMenu = (): JSX.Element => {
     const { componentAPIs, currentCodeAPI } = this.props;
     const menuItems = _.map(componentAPIs, ({ name, supported }, type) => ({
@@ -275,7 +293,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       onClick: this.handleCodeApiChange(type),
     }));
 
-    return <Menu underlined items={menuItems} variables={this.exampleMenuVariables} styles={{ borderBottom: 0 }} />;
+    return <Menu underlined items={menuItems} />;
   };
 
   renderLanguagesMenu = (): JSX.Element => {
@@ -295,7 +313,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       },
     ];
 
-    return <Menu underlined items={menuItems} variables={this.exampleMenuVariables} styles={{ borderBottom: 0 }} />;
+    return <Menu underlined items={menuItems} />;
   };
 
   renderCodeEditorMenu = (): JSX.Element => {
@@ -308,23 +326,13 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       wasCodeChanged,
     } = this.props;
 
-    const codeEditorStyle: ICSSInJSStyle = {
-      position: 'relative',
-      margin: '0 0 0 .5rem',
-      top: '2px',
-      border: '0',
-      paddingTop: '.5rem',
-      float: 'right',
-      borderBottom: 0,
-    };
-
     // get component name from file path:
     // elements/Button/Types/ButtonButtonExample
     const pathParts = currentCodePath.split(__PATH_SEP__);
     const filename = pathParts[pathParts.length - 1];
 
     const ghEditHref = [
-      `${config.repoURL}/edit/master/docs/src/examples/${currentCodePath}.tsx`,
+      `${config.repoURL}/edit/master/packages/fluentui/docs/src/examples/${currentCodePath}.tsx`,
       `?message=docs(${filename}): your description`,
     ].join('');
 
@@ -339,7 +347,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       },
       {
         content: 'Reset',
-        icon: <ReplyIcon />,
+        icon: <UndoIcon />,
         key: 'reset',
         onClick: this.resetSourceCode,
         disabled: !wasCodeChanged,
@@ -372,43 +380,25 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       },
     ];
 
-    return (
-      <Menu
-        primary
-        underlined
-        activeIndex={-1}
-        styles={codeEditorStyle}
-        variables={this.exampleMenuVariables}
-        items={menuItems}
-      />
-    );
+    return <Menu activeIndex={-1} styles={{ justifyContent: 'end' }} items={menuItems} />;
   };
 
   renderSourceCode = () => {
     const { currentCode = '', handleCodeChange } = this.props;
-    const lineCount = currentCode.match(/^/gm)!.length;
 
     return (
-      // match code editor background and gutter size and colors
-      <div style={{ background: EDITOR_BACKGROUND_COLOR } as React.CSSProperties}>
-        <div
-          style={
-            {
-              borderLeft: `${lineCount > 9 ? 41 : 34}px solid ${EDITOR_GUTTER_COLOR}`,
-              paddingBottom: '2.6rem',
-            } as React.CSSProperties
-          }
-        >
-          <Menu styles={{ display: 'flex', justifyContent: 'space-between', border: 'none' }}>
+      <Provider theme={editorTheme}>
+        <div style={{ padding: `0 ${pxToRem(19)}` }}>
+          <Flex styles={{ justifyContent: 'space-between' }}>
             {this.renderAPIsMenu()}
             {this.renderLanguagesMenu()}
-          </Menu>
+          </Flex>
 
           {this.renderCodeEditorMenu()}
         </div>
 
         <Editor value={currentCode} onChange={handleCodeChange} />
-      </div>
+      </Provider>
     );
   };
 
@@ -535,7 +525,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
             <LogInspector silent />
 
             {showCode && (
-              <div style={{ boxShadow: `0 0 0 0.5em ${error ? ERROR_COLOR : 'transparent'}` }}>
+              <div style={{ boxShadow: error ? `0 0 0 0.5em ${ERROR_COLOR}` : '0 1px 1px 1px rgba(34,36,38,.15)' }}>
                 {this.renderSourceCode()}
                 {error && (
                   <pre

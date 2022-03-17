@@ -4,36 +4,44 @@
 
 ```ts
 
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
-// @public (undocumented)
-const Image_2: React_2.FunctionComponent<ImageProps & React_2.RefAttributes<HTMLElement>>;
+// @public
+const Image_2: ForwardRefComponent<ImageProps>;
 export { Image_2 as Image }
 
-// @public (undocumented)
-export interface ImageProps extends ComponentPropsCompat, React_2.ImgHTMLAttributes<HTMLImageElement> {
-    bordered?: boolean;
-    circular?: boolean;
-    fit?: 'none' | 'center' | 'contain' | 'cover';
-    fluid?: boolean;
-    rounded?: boolean;
-}
+// @public @deprecated (undocumented)
+export const imageClassName = "fui-Image";
 
 // @public (undocumented)
-export interface ImageState extends ImageProps {
-    // (undocumented)
-    ref: React_2.RefObject<HTMLElement>;
-}
+export const imageClassNames: SlotClassNames<ImageSlots>;
+
+// Warning: (ae-forgotten-export) The symbol "ImageCommons" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
+
+// @public (undocumented)
+export type ImageSlots = {
+    root: Slot<'img'>;
+};
+
+// @public (undocumented)
+export type ImageState = ComponentState<ImageSlots> & ImageCommons;
 
 // @public
-export const renderImage: (state: ImageState) => JSX.Element;
+export const renderImage_unstable: (state: ImageState) => JSX.Element;
 
 // @public
-export const useImage: (props: ImageProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ImageProps | undefined) => ImageState;
+export const useImage_unstable: (props: ImageProps, ref: React_2.Ref<HTMLImageElement>) => ImageState;
 
 // @public (undocumented)
-export const useImageStyles: (state: ImageState) => void;
+export const useImageStyles_unstable: (state: ImageState) => void;
 
 // (No @packageDocumentation comment for this package)
 

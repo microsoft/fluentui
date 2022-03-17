@@ -1,18 +1,25 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["src"],
   "compilerOptions": {
-    "target": "ES5",
-    "module": "CommonJS",
-    "lib": ["es2015", "dom"],
-    "outDir": "dist",
-    "jsx": "react",
-    "declaration": true,
-    "experimentalDecorators": true,
+    "target": "ES2019",
+    "noEmit": true,
+    "isolatedModules": true,
     "importHelpers": true,
+    "jsx": "react",
     "noUnusedLocals": true,
-    "preserveConstEnums": true,
-    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "@testing-library/jest-dom"],
-    "isolatedModules": true
-  }
+    "preserveConstEnums": true
+  },
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./.storybook/tsconfig.json"
+    }
+  ]
 }

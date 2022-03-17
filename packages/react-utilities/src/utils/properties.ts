@@ -18,6 +18,7 @@ const toObjectMap = (...items: (string[] | Record<string, number>)[]) => {
  * @public
  */
 export const baseElementEvents = toObjectMap([
+  'onAuxClick',
   'onCopy',
   'onCut',
   'onPaste',
@@ -326,6 +327,16 @@ export const colGroupProperties = toObjectMap(htmlElementProperties, [
 
 export const colProperties = toObjectMap(htmlElementProperties, [
   'span', // col, colgroup
+]);
+
+/**
+ * An array of FIELDSET tag properties and events.
+ *
+ * @public
+ */
+export const fieldsetProperties = toObjectMap(htmlElementProperties, [
+  'disabled', // button, fieldset, input, optgroup, option, select, textarea
+  'form', // button, fieldset, input, label, meter, object, output, select, textarea
 ]);
 
 /**

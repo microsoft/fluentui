@@ -1,6 +1,6 @@
 ---
-name: Component Convergence Epic
-about: Epic issue tracking convergence of a particular component
+name: (internal) Component convergence epic
+about: (team member use only) Epic issue tracking convergence of a particular component
 ---
 
 <!--

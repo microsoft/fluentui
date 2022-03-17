@@ -58,6 +58,7 @@ export class TextField extends FoundationTextField {
  */
 export const fluentTextField = TextField.compose({
   baseName: 'text-field',
+  baseClass: FoundationTextField,
   template,
   styles,
   shadowOptions: {

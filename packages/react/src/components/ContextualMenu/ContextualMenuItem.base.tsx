@@ -4,20 +4,23 @@ import { getRTL, initializeComponentRef } from '../../Utilities';
 import { Icon } from '../../Icon';
 import type { IContextualMenuItemProps, IContextualMenuItemRenderFunctions } from './ContextualMenuItem.types';
 
-const renderItemIcon = (props: IContextualMenuItemProps) => {
-  const { item, hasIcons, classNames } = props;
-
+const defaultIconRenderer = (props: IContextualMenuItemProps) => {
+  const { item, classNames } = props;
   const { iconProps } = item;
+  return <Icon {...iconProps} className={classNames.icon} />;
+};
 
+const renderItemIcon = (props: IContextualMenuItemProps) => {
+  const { item, hasIcons } = props;
   if (!hasIcons) {
     return null;
   }
 
   if (item.onRenderIcon) {
-    return item.onRenderIcon(props);
+    return item.onRenderIcon(props, defaultIconRenderer);
   }
 
-  return <Icon {...iconProps} className={classNames.icon} />;
+  return defaultIconRenderer(props);
 };
 
 const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuItemProps) => {

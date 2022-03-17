@@ -1,41 +1,54 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
+import { ChatDensity, defaultChatDensity } from '../../../../components/Chat/chatDensity';
 import { ChatItemStylesProps } from '../../../../components/Chat/ChatItem';
-import { pxToRem } from '../../../../utils';
+import { chatItemStylesComfy } from './chatItemStylesComfy';
+import { chatItemStylesCompact } from './chatItemStylesCompact';
 import { ChatItemVariables } from './chatItemVariables';
 
+const chatItemDensityStyles: Record<
+  ChatDensity,
+  ComponentSlotStylesPrepared<ChatItemStylesProps, ChatItemVariables>
+> = {
+  comfy: chatItemStylesComfy,
+  compact: chatItemStylesCompact,
+};
+
+const getChatItemDensityStyles = (density: ChatDensity = defaultChatDensity) => chatItemDensityStyles[density];
+
 export const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, ChatItemVariables> = {
-  root: ({ props: p }): ICSSInJSStyle => ({
-    position: 'relative',
-    ...((!p.attached || p.attached === 'top') && {
-      paddingTop: p.density === 'compact' ? pxToRem(8) : pxToRem(16),
-    }),
-    ...((p.attached === 'bottom' || p.attached === true) && {
-      paddingTop: p.density === 'compact' ? 0 : pxToRem(2),
-    }),
-    paddingBottom: 0,
-    ...(p.density === 'compact' && {
-      marginTop: pxToRem(-2),
-      marginBottom: pxToRem(-2),
-    }),
-  }),
+  root: (componentStyleFunctionParam): ICSSInJSStyle => {
+    const { props: p } = componentStyleFunctionParam;
 
-  gutter: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    position: 'absolute',
-    marginTop: p.density === 'compact' ? v.gutterMarginCompact : v.gutterMargin,
-    [p.contentPosition === 'end' ? 'right' : 'left']: p.density === 'compact' ? pxToRem(28) : 0,
-    ...((p.attached === 'bottom' || p.attached === true) && {
-      display: 'none',
-    }),
-  }),
+    return {
+      paddingBottom: 0,
+      position: 'relative',
 
-  message: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    position: 'relative',
-    float: p.contentPosition === 'end' ? 'right' : 'left',
-    marginLeft: p.density === 'compact' ? v.messageMarginCompact : v.messageMargin,
-    marginRight: p.density === 'compact' ? v.messageMarginEndCompact : v.messageMargin,
-    ...(p.density === 'compact' && {
-      width: `calc(100% - ${v.messageMarginCompact} - ${v.messageMarginEndCompact})`,
-    }),
-  }),
+      ...getChatItemDensityStyles(p.density).root(componentStyleFunctionParam),
+    };
+  },
+
+  gutter: (componentStyleFunctionParam): ICSSInJSStyle => {
+    const { props: p } = componentStyleFunctionParam;
+
+    return {
+      position: 'absolute',
+      ...((p.attached === 'bottom' || p.attached === true) && {
+        display: 'none',
+      }),
+
+      ...getChatItemDensityStyles(p.density).gutter(componentStyleFunctionParam),
+    };
+  },
+
+  message: (componentStyleFunctionParam): ICSSInJSStyle => {
+    const { props: p } = componentStyleFunctionParam;
+
+    return {
+      float: p.contentPosition === 'end' ? 'right' : 'left',
+      position: 'relative',
+
+      ...getChatItemDensityStyles(p.density).message(componentStyleFunctionParam),
+    };
+  },
 };

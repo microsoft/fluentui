@@ -1,102 +1,71 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { DividerState } from './Divider.types';
+import { mergeClasses, shorthands, makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import { DividerSlots, DividerState } from './Divider.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
-const useStylesOverride = makeStyles({
-  root: tokens => ({
-    /* CSS Vars */
-    '--divider-borderMargin': '12px',
-    '--divider-flexDirection': 'row',
-    '--divider-fontColor': tokens.alias.color.neutral.neutralForeground2,
-    '--divider-fontFamily': 'Segoe UI',
-    '--divider-fontSize': '12px',
-    '--divider-fontWeight': '400',
-    '--divider-lineHeight': '17px',
-    '--divider-borderSize': '1px',
-    '--divider-borderStyle': 'solid',
-    '--divider-color': tokens.alias.color.neutral.neutralStroke2,
+/**
+ * @deprecated Use `dividerClassNames.root` instead.
+ */
+export const dividerClassName = 'fui-Divider';
+export const dividerClassNames: SlotClassNames<DividerSlots> = {
+  root: 'fui-Divider',
+  wrapper: 'fui-Divider__wrapper',
+};
 
+const contentSpacing = '12px';
+const insetSpacing = '12px';
+const maxStartEndLength = '8px';
+const minStartEndLength = '8px;';
+
+const useBaseStyles = makeStyles({
+  // Base styles
+  base: {
     alignItems: 'center',
-    color: 'var(--divider-fontColor)',
-    display: 'flex',
-    flexGrow: 1,
-    flexDirection: 'var(--divider-flexDirection)',
-    fontFamily: 'var(--divider-fontFamily)',
-    fontSize: 'var(--divider-fontSize)',
-    fontWeight: 'var(--divider-fontWeight)',
-    position: 'relative',
     boxSizing: 'border-box',
-    lineHeight: 'var(--divider-lineHeight)',
+    display: 'flex',
+    flexDirection: 'row',
+    flexGrow: 1,
+    position: 'relative',
+
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase200,
+    fontWeight: tokens.fontWeightRegular,
+    lineHeight: tokens.lineHeightBase200,
+    textAlign: 'center',
+
+    color: tokens.colorNeutralForeground2,
+
     ':before': {
+      boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
-      boxSizing: 'border-box',
+      ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
 
     ':after': {
+      boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
-      boxSizing: 'border-box',
+      ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
-  }),
+  },
+
+  // Childless styles
   childless: {
-    '--divider-borderMargin': 0,
-  },
-  subtle: tokens => ({
-    '--divider-color': tokens.alias.color.neutral.neutralStroke3,
-  }),
-  brand: tokens => ({
-    '--divider-fontColor': tokens.alias.color.neutral.brandBackgroundStatic,
-    '--divider-color': tokens.alias.color.neutral.brandBackgroundStatic,
-  }),
-  strong: tokens => ({
-    '--divider-color': tokens.alias.color.neutral.neutralStroke1,
-  }),
-  horizontal: {
-    width: '100%',
     ':before': {
-      borderTopColor: 'var(--divider-color)',
-      borderTopWidth: 'var(--divider-borderSize)',
-      borderTopStyle: 'var(--divider-borderStyle)',
+      marginBottom: 0,
+      marginRight: 0,
     },
+
     ':after': {
-      borderTopColor: 'var(--divider-color)',
-      borderTopWidth: 'var(--divider-borderSize)',
-      borderTopStyle: 'var(--divider-borderStyle)',
-    },
-    '&>:only-child': {
-      display: 'flex',
-      textAlign: 'center',
+      marginLeft: 0,
+      marginTop: 0,
     },
   },
-  vertical: {
-    //alignSelf: 'stretch',
-    minHeight: '20px',
-    flexDirection: 'column',
-    ':before': {
-      borderRightColor: 'var(--divider-color)',
-      borderRightWidth: 'var(--divider-borderSize)',
-      borderRightStyle: 'var(--divider-borderStyle)',
-    },
-    ':after': {
-      borderRightColor: 'var(--divider-color)',
-      borderRightWidth: 'var(--divider-borderSize)',
-      borderRightStyle: 'var(--divider-borderStyle)',
-    },
-    '&>:only-child': {
-      display: 'flex',
-      textAlign: 'center',
-    },
-  },
-  verticalWithChildren: {
-    minHeight: '84px',
-  },
+
+  // Alignment variations
   start: {
     ':after': {
-      content: '""',
-    },
-  },
-  end: {
-    ':before': {
       content: '""',
     },
   },
@@ -108,127 +77,198 @@ const useStylesOverride = makeStyles({
       content: '""',
     },
   },
-  centerWithoutContent: {
+  end: {
     ':before': {
       content: '""',
     },
   },
-  verticalStart: {
+
+  // Appearance variations
+  brand: {
+    color: tokens.colorBrandForeground1,
+
     ':before': {
-      content: '""',
-      maxHeight: '8px',
-      marginBottom: 'var(--divider-borderMargin)',
+      ...shorthands.borderColor(tokens.colorBrandStroke1),
     },
 
     ':after': {
-      marginTop: 'var(--divider-borderMargin)',
+      ...shorthands.borderColor(tokens.colorBrandStroke1),
     },
   },
-  verticalEnd: {
+  subtle: {
     ':before': {
-      marginBottom: 'var(--divider-borderMargin)',
+      ...shorthands.borderColor(tokens.colorNeutralStroke3),
     },
+
     ':after': {
-      content: '""',
-      maxHeight: '8px',
-      marginTop: 'var(--divider-borderMargin)',
+      ...shorthands.borderColor(tokens.colorNeutralStroke3),
     },
   },
-  verticalCenter: {
+  strong: {
     ':before': {
-      marginBottom: 'var(--divider-borderMargin)',
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
     },
+
     ':after': {
-      marginTop: 'var(--divider-borderMargin)',
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
     },
-  },
-  horizontalStart: {
-    ':before': {
-      marginRight: 'var(--divider-borderMargin)',
-      maxWidth: '8px',
-      content: '""',
-    },
-    ':after': {
-      marginLeft: 'var(--divider-borderMargin)',
-    },
-  },
-  horizontalEnd: {
-    ':before': {
-      marginRight: 'var(--divider-borderMargin)',
-    },
-    ':after': {
-      maxWidth: '8px',
-      content: '""',
-      marginLeft: 'var(--divider-borderMargin)',
-    },
-  },
-  horizontalCenter: {
-    ':before': {
-      marginRight: 'var(--divider-borderMargin)',
-    },
-    ':after': {
-      marginLeft: 'var(--divider-borderMargin)',
-    },
-  },
-  important: {
-    '--divider-fontWeight': `700`,
-  },
-  verticalColored: {
-    ':before': {
-      borderRightColor: 'var(--divider-color)',
-    },
-    ':after': {
-      borderRightColor: 'var(--divider-color)',
-    },
-  },
-  horizontalColored: {
-    ':before': {
-      borderTopColor: 'var(--divider-color)',
-    },
-    ':after': {
-      borderTopColor: 'var(--divider-color)',
-    },
-  },
-  verticalChildless: {
-    ':before': {
-      marginBottom: 0,
-    },
-  },
-  inset: {
-    paddingLeft: '12px',
-    paddingRight: '12px',
-  },
-  verticalInset: {
-    marginTop: '12px',
-    marginBottom: '12px',
   },
 });
 
-/** Applies style classnames to slots */
-export const useDividerStyles = (s: DividerState) => {
-  const styles = useStylesOverride();
-  s.className = mergeClasses(
-    styles.root,
-    !s.children && styles.childless,
-    s.appearance === 'subtle' && styles.subtle,
-    s.appearance === 'brand' && styles.brand,
-    s.appearance === 'strong' && styles.strong,
-    s.vertical ? styles.vertical : styles.horizontal,
-    s.vertical && s.children !== undefined && styles.verticalWithChildren,
-    s.alignContent === 'start' && styles.start,
-    s.alignContent === 'end' && styles.end,
-    (s.alignContent === 'center' || !s.alignContent) && s.children !== undefined && s.vertical && styles.center,
-    (s.alignContent === 'center' || !s.alignContent) && s.children !== undefined && !s.vertical && styles.center,
-    (s.alignContent === 'center' || !s.alignContent) && s.children === undefined && styles.centerWithoutContent,
-    s.alignContent === 'start' && (s.vertical ? styles.verticalStart : styles.horizontalStart),
-    s.alignContent === 'end' && (s.vertical ? styles.verticalEnd : styles.horizontalEnd),
-    (s.alignContent === 'center' || !s.alignContent) && (s.vertical ? styles.verticalCenter : styles.horizontalCenter),
-    s.important && styles.important,
-    s.color && (s.vertical ? styles.verticalColored : styles.horizontalColored),
-    s.children === undefined && s.vertical && styles.verticalChildless,
-    s.inset && (s.vertical ? styles.verticalInset : styles.inset),
-    s.className,
+const useHorizontalStyles = makeStyles({
+  // Base styles
+  base: {
+    width: '100%',
+
+    ':before': {
+      borderTopStyle: 'solid',
+      borderTopWidth: tokens.strokeWidthThin,
+      minWidth: minStartEndLength,
+    },
+
+    ':after': {
+      borderTopStyle: 'solid',
+      borderTopWidth: tokens.strokeWidthThin,
+      minWidth: minStartEndLength,
+    },
+  },
+
+  // Inset styles
+  inset: {
+    paddingLeft: insetSpacing,
+    paddingRight: insetSpacing,
+  },
+
+  // Alignment variations
+  start: {
+    ':before': {
+      content: '""',
+      marginRight: contentSpacing,
+      maxWidth: maxStartEndLength,
+    },
+
+    ':after': {
+      marginLeft: contentSpacing,
+    },
+  },
+  center: {
+    ':before': {
+      marginRight: contentSpacing,
+    },
+    ':after': {
+      marginLeft: contentSpacing,
+    },
+  },
+  end: {
+    ':before': {
+      marginRight: contentSpacing,
+    },
+    ':after': {
+      content: '""',
+      marginLeft: contentSpacing,
+      maxWidth: maxStartEndLength,
+    },
+  },
+});
+
+const useVerticalStyles = makeStyles({
+  // Base styles
+  base: {
+    flexDirection: 'column',
+    minHeight: '20px',
+
+    ':before': {
+      borderRightStyle: 'solid',
+      borderRightWidth: tokens.strokeWidthThin,
+      minHeight: minStartEndLength,
+    },
+
+    ':after': {
+      borderRightStyle: 'solid',
+      borderRightWidth: tokens.strokeWidthThin,
+      minHeight: minStartEndLength,
+    },
+  },
+
+  // Inset styles
+  inset: {
+    marginTop: insetSpacing,
+    marginBottom: insetSpacing,
+  },
+
+  // With children styles
+  withChildren: {
+    minHeight: '84px',
+  },
+
+  // Alignment variations
+  start: {
+    ':before': {
+      content: '""',
+      marginBottom: contentSpacing,
+      maxHeight: maxStartEndLength,
+    },
+
+    ':after': {
+      marginTop: contentSpacing,
+    },
+  },
+  center: {
+    ':before': {
+      marginBottom: contentSpacing,
+    },
+    ':after': {
+      marginTop: contentSpacing,
+    },
+  },
+  end: {
+    ':before': {
+      marginBottom: contentSpacing,
+    },
+    ':after': {
+      content: '""',
+      marginTop: contentSpacing,
+      maxHeight: maxStartEndLength,
+    },
+  },
+});
+
+export const useDividerStyles_unstable = (state: DividerState): DividerState => {
+  const baseStyles = useBaseStyles();
+  const horizontalStyles = useHorizontalStyles();
+  const verticalStyles = useVerticalStyles();
+
+  const { alignContent, appearance, inset, vertical } = state;
+
+  state.root.className = mergeClasses(
+    dividerClassNames.root,
+
+    // Base styles
+    baseStyles.base,
+    baseStyles[alignContent],
+    appearance && baseStyles[appearance],
+
+    // Horizontal styles
+    !vertical && horizontalStyles.base,
+    !vertical && inset && horizontalStyles.inset,
+    !vertical && horizontalStyles[alignContent],
+
+    // Vertical styles
+    vertical && verticalStyles.base,
+    vertical && inset && verticalStyles.inset,
+    vertical && verticalStyles[alignContent],
+    vertical && state.root.children !== undefined && verticalStyles.withChildren,
+
+    // Childless styles
+    state.root.children === undefined && baseStyles.childless,
+
+    // User provided class name
+    state.root.className,
   );
 
-  return s;
+  if (state.wrapper) {
+    state.wrapper.className = mergeClasses(dividerClassNames.wrapper, state.wrapper.className);
+  }
+
+  return state;
 };

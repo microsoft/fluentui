@@ -1,50 +1,43 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
 
-export interface SliderProps
-  extends ComponentPropsCompat,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
+export type SliderSlots = {
+  /**
+   * The root of the Slider.
+   * The root slot receives the `className` and `style` specified directly on the `<Slider>`.
+   * All other native props will be applied to the primary slot, `input`.
+   */
+  root: NonNullable<Slot<'div'>>;
+
   /**
    * The Slider's base. It is used to visibly display the min and max selectable values.
    */
-  rail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-
-  /**
-   * The wrapper around the Slider component.
-   */
-  sliderWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-
-  /**
-   * The wrapper around the Slider's track. It is primarily used to handle the positioning of the track.
-   */
-  trackWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-
-  /**
-   * The bar showing the current selected area adjacent to the Slider's thumb.
-   */
-  track?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-
-  /**
-   * The wrapper holding the marks and mark labels for the Slider.
-   */
-  marksWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-
-  /**
-   * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
-   */
-  thumbWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+  rail: NonNullable<Slot<'div'>>;
 
   /**
    * The draggable icon used to select a given value from the Slider.
    * This is the element containing `role = 'slider'`.
    */
-  thumb?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+  thumb: NonNullable<Slot<'div'>>;
 
   /**
-   * The area in which the Slider's rail allows for the thumb to be dragged.
+   * The hidden input for the Slider.
+   * This is the PRIMARY slot: all native properties specified directly on `<Slider>` will be applied to this slot,
+   * except `className` and `style`, which remain on the root slot.
+   *
    */
-  activeRail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+  input: NonNullable<Slot<'input'>> & {
+    /**
+     * Orient is a non standard attribute that allows for vertical orientation in Firefox. It is set internally
+     * when `vertical` is set to true.
+     * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#non_standard_attributes
+     * Webkit/Chromium support for vertical inputs is provided via -webkit-appearance css property
+     */
+    orient?: 'horizontal' | 'vertical';
+  };
+};
 
+type SliderCommons = {
   /**
    * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
@@ -71,19 +64,10 @@ export interface SliderProps
 
   /**
    * The number of steps that the Slider's `value` will increment upon change. When provided, the Slider
-   * will snap to the closest available value.
+   * will snap to the closest available value. This must be a positive value.
    * @default 1
    */
   step?: number;
-
-  /**
-   * The number of steps that the Slider's value will change by during a key press. When provided, the `keyboardSteps`
-   * will be separated from the pointer `steps` allowing for the value to go outside of pointer related
-   * snapping values.
-   *
-   * @default `step` or 1
-   */
-  keyboardStep?: number;
 
   /**
    *  Whether to render the Slider as disabled.
@@ -93,18 +77,10 @@ export interface SliderProps
   disabled?: boolean;
 
   /**
-   * Whether to render the Slider vertically.
-   * @default `false` (renders horizontally)
+   * Render the Slider in a vertical orientation, smallest value on the bottom.
+   * @default `false`
    */
   vertical?: boolean;
-
-  /**
-   * When enabled, small marks are displayed across the Slider, showing potential steps.
-   *
-   * - If `true`, marks are visible at each `step`.
-   * - If `number[]`, marks will be displayed at each provided number. Numbers must be in ascending order.
-   */
-  marks?: boolean | number[];
 
   /**
    * The starting origin point for the Slider.
@@ -121,49 +97,17 @@ export interface SliderProps
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
-  onChange?: (
-    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
-    data: { value: number },
-  ) => void;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
+};
 
-  /**
-   * The Slider's current value label to be read by the screen reader.
-   */
-  ariaValueText?: (value: number) => string;
-}
+export type SliderOnChangeData = {
+  value: number;
+};
 
-/**
- * Names of the shorthand properties in SliderProps
- */
-export type SliderShorthandProps =
-  | 'rail'
-  | 'sliderWrapper'
-  | 'trackWrapper'
-  | 'track'
-  | 'marksWrapper'
-  | 'thumbWrapper'
-  | 'thumb'
-  | 'activeRail';
+export type SliderProps = Omit<
+  ComponentProps<Partial<SliderSlots>, 'input'>,
+  'defaultValue' | 'onChange' | 'size' | 'value'
+> &
+  SliderCommons;
 
-/**
- * Names of SliderProps that have a default value in useSlider
- */
-export type SliderDefaultedProps =
-  | 'rail'
-  | 'sliderWrapper'
-  | 'trackWrapper'
-  | 'track'
-  | 'marksWrapper'
-  | 'thumbWrapper'
-  | 'thumb'
-  | 'activeRail';
-
-/**
- * State used in rendering Slider
- */
-export interface SliderState extends ComponentStateCompat<SliderProps, SliderShorthandProps, SliderDefaultedProps> {
-  /**
-   * Ref to the root element
-   */
-  ref: React.Ref<HTMLElement>;
-}
+export type SliderState = ComponentState<SliderSlots> & SliderCommons;

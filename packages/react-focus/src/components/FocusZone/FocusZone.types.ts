@@ -202,6 +202,20 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement> {
   shouldRaiseClicks?: boolean;
 
   /**
+   * Relates to `shouldRaiseClicks`.
+   * Allows the click event raising for the "Enter" key to be set independently from `shouldRaiseClicks`.
+   * Inherits the value of `shouldRaiseClicks` if not set explicitly.
+   */
+  shouldRaiseClicksOnEnter?: boolean;
+
+  /**
+   * Relates to `shouldRaiseClicks`.
+   * Allows the click event raising for the "Space" key to be set independently from `shouldRaiseClicks`.
+   * Inherits the value of `shouldRaiseClicks` if not set explicitly.
+   */
+  shouldRaiseClicksOnSpace?: boolean;
+
+  /**
    * A callback method to determine if the input element should lose focus on arrow keys
    *  @param inputElement - The input element which is to loose focus.
    *  @returns True if input element should loose focus or false otherwise.

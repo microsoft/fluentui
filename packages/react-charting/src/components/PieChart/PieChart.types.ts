@@ -49,6 +49,11 @@ export interface IPieChartProps {
    * Width of line stroke
    */
   strokeWidth?: number;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
 export type IPieChartStyleProps = Required<Pick<IPieChartProps, 'theme' | 'width' | 'height'>> &

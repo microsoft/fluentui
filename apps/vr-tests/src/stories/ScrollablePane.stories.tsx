@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { Fabric, ScrollablePane, StickyPositionType, Sticky } from '@fluentui/react';
 import { lorem } from '@fluentui/example-data';
 
@@ -42,7 +42,7 @@ function createContentArea(index: number) {
 }
 
 storiesOf('ScrollablePane', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

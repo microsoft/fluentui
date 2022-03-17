@@ -381,49 +381,50 @@ Sample usages will be give in the following section of this document [Sample cod
 The root level component serves as a simplified interface (sugar) for popup positioning and triggering.
 
 ```typescript
-export interface MenuProps extends MenuListProps, Pick<PositioningProps, '<Positioning props as necessary>'> {
-  /**
-   * Explicitly require children
-   */
+export type MenuProps = MenuListProps &
+  Pick<PositioningProps, '<Positioning props as necessary>'> & {
+    /**
+     * Explicitly require children
+     */
 
-  children: React.ReactNode;
-  /**
-   * Whether the popup is open
-   */
-  open?: boolean;
+    children: React.ReactNode;
+    /**
+     * Whether the popup is open
+     */
+    open?: boolean;
 
-  /**
-   * Call back when the component requests to change value
-   * The `open` value is used as a hint when directly controlling the component
-   */
-  onOpenChange?: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
+    /**
+     * Call back when the component requests to change value
+     * The `open` value is used as a hint when directly controlling the component
+     */
+    onOpenChange?: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
 
-  /**
-   * Whether the popup is open by default
-   */
-  defaultOpen?: boolean;
+    /**
+     * Whether the popup is open by default
+     */
+    defaultOpen?: boolean;
 
-  /**
-   * Wrapper to style and add events for the popup
-   */
-  menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    /**
+     * Wrapper to style and add events for the popup
+     */
+    menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
-  /*
-   * Opens the menu on hover
-   */
-  openOnHover?: boolean;
+    /*
+     * Opens the menu on hover
+     */
+    openOnHover?: boolean;
 
-  /**
-   * Opens the menu on right click (context menu), removes all other menu open interactions
-   */
-  openOnContext?: boolean;
+    /**
+     * Opens the menu on right click (context menu), removes all other menu open interactions
+     */
+    openOnContext?: boolean;
 
-  /**
-   * Root menus are rendered out of DOM order on `document.body`, use this to render the menu in DOM order
-   * This option is disregarded for submenus
-   */
-  inline?: boolean;
-}
+    /**
+     * Root menus are rendered out of DOM order on `document.body`, use this to render the menu in DOM order
+     * This option is disregarded for submenus
+     */
+    inline?: boolean;
+  };
 ```
 
 ### MenuTrigger
@@ -431,12 +432,12 @@ export interface MenuProps extends MenuListProps, Pick<PositioningProps, '<Posit
 A non-visual component that wraps its child and configures them to be the trigger that will open a menu. This component should only accept one child
 
 ```typescript
-export interface MenuTriggerProps {
+export type MenuTriggerProps = {
   /**
    * Explicitly require single child
    */
   children: React.ReactElement;
-}
+};
 ```
 
 ### MenuList
@@ -446,35 +447,36 @@ This component is used internally by `Menu` and manages the context and layout i
 `MenuList` can also be used separately as the standalone variant of the `Menu`, since it should not control popup positioning or triggers. It is the only component in the API that can be used standalone. Envisioned to be used with more complex popup or trigger scenarios where the `Menu` component does not provide enough control for these situations.
 
 ```typescript
-export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * Callback when checked items change for value with a name
-   *
-   * @param name - the name of the value
-   * @param checkedItems - the items for this value that are checked
-   */
-  onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, checkedItems: string[]) => void;
+export type MenuListProps = ComponentProps &
+  React.HTMLAttributes<HTMLElement> & {
+    /**
+     * Callback when checked items change for value with a name
+     *
+     * @param name - the name of the value
+     * @param checkedItems - the items for this value that are checked
+     */
+    onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, checkedItems: string[]) => void;
 
-  /**
-   * Map of all checked values
-   */
-  checkedValues?: Record<string, string[]>;
+    /**
+     * Map of all checked values
+     */
+    checkedValues?: Record<string, string[]>;
 
-  /**
-   * Default values to be checked on mount
-   */
-  defaultCheckedValues?: Record<string, string[]>;
+    /**
+     * Default values to be checked on mount
+     */
+    defaultCheckedValues?: Record<string, string[]>;
 
-  /**
-   * States that menu items can contain icons and reserve slots for item alignment
-   */
-  hasIcons?: boolean;
+    /**
+     * States that menu items can contain icons and reserve slots for item alignment
+     */
+    hasIcons?: boolean;
 
-  /**
-   * States that menu items can contain selectable items and reserve slots for item alignment
-   */
-  hasCheckmarks?: boolean;
-}
+    /**
+     * States that menu items can contain selectable items and reserve slots for item alignment
+     */
+    hasCheckmarks?: boolean;
+  };
 ```
 
 ### MenuGroup
@@ -502,49 +504,50 @@ This divider is purely a visual cue. To ensure consistent narration experience a
 ### MenuItem
 
 ```typescript
-export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * Icon slot rendered before children content
-   */
-  icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+export type MenuItemProps = ComponentProps &
+  React.HTMLAttributes<HTMLElement> & {
+    /**
+     * Icon slot rendered before children content
+     */
+    icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
-  /**
-   * A helper slot for alignment when a menu item is used with selectable menuitems
-   * Avoid using this slot as a replacement for MenuItemCheckbox and MenuItemRadio components
-   */
-  checkmark?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    /**
+     * A helper slot for alignment when a menu item is used with selectable menuitems
+     * Avoid using this slot as a replacement for MenuItemCheckbox and MenuItemRadio components
+     */
+    checkmark?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
-  /**
-   * Icon slot that shows the indicator for a submenu
-   */
-  submenuIndicator?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    /**
+     * Icon slot that shows the indicator for a submenu
+     */
+    submenuIndicator?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
-  /**
-   * Component children are placed in this slot
-   * Avoid using the `children` property in this slot in favour of Component children whenever possible
-   */
-  content?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    /**
+     * Component children are placed in this slot
+     * Avoid using the `children` property in this slot in favour of Component children whenever possible
+     */
+    content?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
-  /**
-   * Secondary content rendered opposite the primary content (e.g Shortcut text)
-   */
-  secondaryContent?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    /**
+     * Secondary content rendered opposite the primary content (e.g Shortcut text)
+     */
+    secondaryContent?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
-  /**
-   * If the menu item is a trigger for a submenu
-   */
-  hasSubmenu?: boolean;
+    /**
+     * If the menu item is a trigger for a submenu
+     */
+    hasSubmenu?: boolean;
 
-  /**
-   * Applies disabled styles to menu item but remains focusable
-   */
-  disabled?: boolean;
+    /**
+     * Applies disabled styles to menu item but remains focusable
+     */
+    disabled?: boolean;
 
-  /**
-   * Clicking on the menu item will not dismiss an open menu
-   */
-  persistOnClick?: boolean;
-}
+    /**
+     * Clicking on the menu item will not dismiss an open menu
+     */
+    persistOnClick?: boolean;
+  };
 ```
 
 ### MenuItemCheckbox/Radio
@@ -558,7 +561,7 @@ Variants of `MenuItem` that allows a single or multiple selection state based on
 /**
  * Props for selecatble menu items
  */
-export interface MenuItemSelectableProps extends React.HTMLAttributes<HTMLElement> {
+export type MenuItemSelectableProps = React.HTMLAttributes<HTMLElement> & {
   /**
    * Follows input convention
    * https://www.w3schools.com/jsref/prop_checkbox_name.asp
@@ -575,26 +578,24 @@ export interface MenuItemSelectableProps extends React.HTMLAttributes<HTMLElemen
    * Whether the selectable item is disabled
    */
   disabled?: boolean;
-}
+};
 
-export interface MenuItemCheckboxProps
-  extends ComponentProps,
-    React.HTMLAttributes<HTMLElement>,
-    MenuItemProps,
-    MenuItemSelectableProps {
-  /**
-   * Slot for the checkmark indicator
-   */
-  checkmark?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-}
+export type MenuItemCheckboxProps = ComponentProps &
+  React.HTMLAttributes<HTMLElement> &
+  MenuItemProps &
+  MenuItemSelectableProps & {
+    /**
+     * Slot for the checkmark indicator
+     */
+    checkmark?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  };
 
-export interface MenuItemRadioProps
-  extends ComponentProps,
-    React.HTMLAttributes<HTMLElement>,
-    MenuItemProps,
-    MenuItemSelectableProps {
-  checkmark?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-}
+export type MenuItemRadioProps = ComponentProps &
+  React.HTMLAttributes<HTMLElement> &
+  MenuItemProps &
+  MenuItemSelectableProps & {
+    checkmark?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  };
 ```
 
 ## Sample code
@@ -618,7 +619,7 @@ const menu = (
 
 ```html
 <!-- expected DOM output  -->
-<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<button aria-haspopup="menu" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
   <div role="menuitem" tabindex="-1">Option 2</div>
@@ -643,7 +644,7 @@ const menu = (
 
 ```html
 <!-- expected DOM output  -->
-<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<button aria-haspopup="menu" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">
     <span role="presentation"><svg>FileIcon</svg></span>
@@ -681,7 +682,7 @@ const menu = (
 
 ```html
 <!-- expected DOM output  -->
-<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<button aria-haspopup="menu" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
   <div role="separator" aria-hidden="true"></div>
@@ -718,7 +719,7 @@ const menu = (
 
 ```html
 <!-- expected DOM output  -->
-<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<button aria-haspopup="menu" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
   <div role="separator" aria-hidden="true"></div>
@@ -757,10 +758,10 @@ const menu = (
 
 ```html
 <!-- expected DOM output  -->
-<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<button aria-haspopup="menu" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
-  <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trigger">Open submenu</div>
+  <div role="menuitem" tabindex="-1" aria-haspopup="menu" aria-expanded="false" id="submenu-trigger">Open submenu</div>
 </div>
 
 <!-- expected DOM output for submenu  -->
@@ -842,7 +843,7 @@ const menuSelectableSections = (
 ```
 
 ```html
-<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<button aria-haspopup="menu" aria-expanded="true" id="trigger">Open menu</button>
 
 <!-- expected DOM output for basic checkbox  -->
 <div role="menu" aria-labelledby="trigger">
@@ -881,9 +882,12 @@ const menuSplitbutton= (
     <MenuList>
       <MenuItem>Option 1</MenuItem>
       <Menu>
-        <MenuTrigger>
-          <MenuItemSplit></MenuItemSplit>
-        </MenuTrigger>
+        <MenuSplitGroup>
+          <MenuItem>Main action</MenuItem>
+          <MenuTrigger>
+            <MenuItem />
+          </MenuTrigger>
+        </MenuSplitGroup>
         <MenuItem>Option 1</MenuItem>
         <MenuItem>Option 2</MenuItem>
         <MenuItem>Option 3</MenuItem>
@@ -896,7 +900,7 @@ const menuSplitbutton= (
 ```html
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
-  <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trigger">Open submenu</div>
+  <div role="menuitem" tabindex="-1" aria-haspopup="menu" aria-expanded="false" id="submenu-trigger">Open submenu</div>
 </div>
 
 <!-- expected DOM output  -->
@@ -904,7 +908,7 @@ const menuSplitbutton= (
   <div role="menuitem" tabindex="0">Option 1</div>
   <div role="group">
     <div role="menuitem" tabindex="-1">content slot</div>
-    <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trgger">
+    <div role="menuitem" tabindex="-1" aria-haspopup="menu" aria-expanded="false" id="submenu-trgger">
       <svg>indicator icon</svg>
     </div>
   </div>
@@ -957,11 +961,13 @@ Below is a set of diagrams that tries to illustrates all the interactions menus 
 
 All of the above Mouse events seen previously should apply to the part of the split button that is intended to open a submenu.
 
-Once the submenu is open, the same behavior as in the [previous section](#submenu-trigger/navigation) applies with the exception of returning focus to the splitbutton, which is shown in the images below.
+> TODO convert these diagrams to excalidraw or smth that is text format
+> TODO add extra descriptions to diagrams
 
-![Using up/down arrow key](./etc/images/splitbutton-up-down.jpg)
-
-![Using left/right arrow key](./etc/images/splitbutton-left-right.jpg)
+<img src="./etc/images/menu-interactions/Slide19.PNG" width="700" />
+<img src="./etc/images/menu-interactions/Slide20.PNG" width="700" />
+<img src="./etc/images/menu-interactions/Slide21.PNG" width="700" />
+<img src="./etc/images/menu-interactions/Slide22.PNG" width="700" />
 
 ### MenuItem selection
 

@@ -8,7 +8,6 @@ import { ShorthandValue, FluentComponentStaticProps, ComponentEventHandler } fro
 import { BoxProps } from '../Box/Box';
 
 import {
-  ComponentWithAs,
   useAccessibility,
   getElementType,
   useStyles,
@@ -16,8 +15,9 @@ import {
   useFluentContext,
   useUnhandledProps,
   useAutoControlled,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
-import { PillContent } from './PillContent';
+import { PillContent, PillContentProps } from './PillContent';
 import { PillActionProps, PillAction } from './PillAction';
 import { usePillContext } from './pillContext';
 import { PillImageProps, PillImage } from './PillImage';
@@ -115,7 +115,7 @@ export const pillClassName = 'ui-pill';
  * THIS COMPONENT IS UNSTABLE
  * Pills should be used when representing an input, as a way to filter content, or to represent an attribute.
  */
-export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticProps<PillProps> = props => {
+export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Pill.displayName, context.telemetry);
   setStart();
@@ -211,6 +211,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...(actionable && { onClick: handleClick }),
         ...unhandledProps,
       })}
@@ -228,7 +229,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
         createShorthand(PillIcon, icon, {
           defaultProps: () => ({ size }),
         })}
-      {createShorthand(PillContent, content || {}, {
+      {createShorthand(PillContent, (content as ShorthandValue<PillContentProps>) || {}, {
         defaultProps: () => ({
           children,
           size,
@@ -250,19 +251,19 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, PillProps> & FluentComponentStaticProps<PillProps>;
 
 Pill.defaultProps = {
-  as: 'span',
+  as: 'span' as const,
 };
 
 Pill.propTypes = {
   ...commonPropTypes.createCommon(),
   content: customPropTypes.shorthandAllowingChildren,
-  size: PropTypes.oneOf(['small', 'smaller', 'medium']),
+  size: PropTypes.oneOf<'small' | 'smaller' | 'medium'>(['small', 'smaller', 'medium']),
   rectangular: PropTypes.bool,
   disabled: PropTypes.bool,
-  appearance: PropTypes.oneOf(['filled', 'inverted', 'outline']),
+  appearance: PropTypes.oneOf<'filled' | 'inverted' | 'outline'>(['filled', 'inverted', 'outline']),
   actionable: PropTypes.bool,
   action: customPropTypes.shorthandAllowingChildren,
   onDismiss: PropTypes.func,

@@ -492,7 +492,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
       if (!targetPlatformRegex.test(newPagePath)) {
         for (const key of platformKeys) {
           // If the user navigates directly to a platform-specific page, set the active platform to that of the new page
-          const isNewPlatform = new RegExp(`/${key}`, 'gi');
+          const isNewPlatform = new RegExp(`/${key}(?![a-z])`, 'gi');
           if (isNewPlatform.test(newPagePath)) {
             this._onPlatformChanged(key);
             break;

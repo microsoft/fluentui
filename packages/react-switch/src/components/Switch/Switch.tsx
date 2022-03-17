@@ -1,17 +1,19 @@
 import * as React from 'react';
-import { useSwitch } from './useSwitch';
-import { renderSwitch } from './renderSwitch';
-import { useSwitchStyles } from './useSwitchStyles';
+import { useSwitch_unstable } from './useSwitch';
+import { renderSwitch_unstable } from './renderSwitch';
+import { useSwitchStyles_unstable } from './useSwitchStyles';
 import type { SwitchProps } from './Switch.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Switch component
+ * Switches enable users to trigger an option on or off through pressing the component.
  */
-export const Switch = React.forwardRef<HTMLElement, SwitchProps>((props, ref) => {
-  const state = useSwitch(props, ref);
+export const Switch: ForwardRefComponent<SwitchProps> = React.forwardRef((props, ref) => {
+  const state = useSwitch_unstable(props, ref);
 
-  useSwitchStyles(state);
-  return renderSwitch(state);
+  useSwitchStyles_unstable(state);
+
+  return renderSwitch_unstable(state);
 });
 
 Switch.displayName = 'Switch';

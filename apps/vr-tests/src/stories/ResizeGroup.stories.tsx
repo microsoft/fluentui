@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { ResizeGroup, OverflowSet } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
@@ -26,7 +26,7 @@ const list = {
 const noop = () => null;
 
 storiesOf('ResizeGroup', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -68,5 +68,5 @@ storiesOf('ResizeGroup', module)
         }}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

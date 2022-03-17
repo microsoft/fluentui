@@ -7,6 +7,7 @@ import {
 
 export const inputHeight = '18px';
 export const borderWidth = '1px';
+export const borderRadius = '3px';
 export const borderWidthError = '1px';
 export const borderSolid = 'solid';
 export const borderNone = 'none';
@@ -17,6 +18,7 @@ export const fontFamily =
 export const fontWeightRegular = '400';
 export const fontWeightBold = '700';
 export const inputControlHeight = '24px';
+export const inputControlPadding = '12px';
 export const inputControlHeightInner = '20px';
 export const textAlignCenter = 'center';
 export const transparent = 'transparent';

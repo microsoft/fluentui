@@ -12,12 +12,13 @@ describe('PopoverTrigger', () => {
     Component: PopoverTrigger,
     displayName: 'PopoverTrigger',
     requiredProps: { children: <span /> },
-    skipAsPropTests: true,
     disabledTests: [
       // PopoverTrigger does not render DOM elements
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
+      'component-has-static-classname',
+      'component-has-static-classnames-object',
       // PopoverTrigger does not have own styles
       'make-styles-overrides-win',
     ],
@@ -74,6 +75,18 @@ describe('PopoverTrigger', () => {
     expect(getByRole('button').getAttribute('aria-haspopup')).toEqual('true');
   });
 
+  it('should allow user to override aria-haspopoup on trigger element', () => {
+    // Arrange
+    const { getByRole } = render(
+      <PopoverTrigger>
+        <button aria-haspopup="false">Trigger</button>
+      </PopoverTrigger>,
+    );
+
+    // Assert
+    expect(getByRole('button').getAttribute('aria-haspopup')).toEqual('false');
+  });
+
   it('should retain original child callback ref', () => {
     // Arrange
     const ref = jest.fn();
@@ -125,5 +138,18 @@ describe('PopoverTrigger', () => {
         </button>,
       ]
     `);
+  });
+
+  it('should use aria-haspopup="dialog" if focus trapped', () => {
+    // Arrange
+    mockPopoverContext({ trapFocus: true });
+    const { getByRole } = render(
+      <PopoverTrigger>
+        <button>Trigger</button>
+      </PopoverTrigger>,
+    );
+
+    // Assert
+    expect(getByRole('button').getAttribute('aria-haspopup')).toEqual('dialog');
   });
 });

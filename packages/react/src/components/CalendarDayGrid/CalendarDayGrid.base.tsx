@@ -273,7 +273,7 @@ function useWeekCornerStyles(props: ICalendarDayGridProps) {
 }
 
 export const CalendarDayGridBase: React.FunctionComponent<ICalendarDayGridProps> = props => {
-  const navigatedDayRef = React.useRef<HTMLButtonElement>(null);
+  const navigatedDayRef = React.useRef<HTMLTableCellElement>(null) as React.MutableRefObject<HTMLTableCellElement>;
 
   const activeDescendantId = useId();
 
@@ -384,7 +384,6 @@ export const CalendarDayGridBase: React.FunctionComponent<ICalendarDayGridProps>
     <FocusZone className={classNames.wrapper}>
       <table
         className={classNames.table}
-        aria-readonly="true"
         aria-multiselectable="false"
         aria-labelledby={labelledBy}
         aria-activedescendant={activeDescendantId}

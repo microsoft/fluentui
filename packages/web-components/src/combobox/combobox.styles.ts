@@ -43,4 +43,5 @@ export const comboboxStyles: (context: ElementDefinitionContext, definition: Com
     .selected-value:active {
         outline: none;
     }
-`.withBehaviors(appearanceBehavior('filled', selectFilledStyles(context, definition)));
+`.withBehaviors(
+  appearanceBehavior('filled', selectFilledStyles(context, definition)));

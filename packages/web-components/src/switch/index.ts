@@ -15,7 +15,9 @@ export const fluentSwitch = Switch.compose<SwitchOptions>({
   template,
   styles,
   switch: `
-    <span class="checked-indicator" part="checked-indicator"></span>
+    <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="12" height="12" rx="6"/>
+    </svg>
   `,
 });
 

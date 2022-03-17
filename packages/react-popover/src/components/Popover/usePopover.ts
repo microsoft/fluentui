@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
-  makeMergeProps,
-  useControllableValue,
+  useControllableState,
   useEventCallback,
   useOnClickOutside,
   useOnScrollOutside,
@@ -9,95 +8,130 @@ import {
 import { useFluent } from '@fluentui/react-shared-contexts';
 import {
   usePopper,
-  createVirtualElementFromClick,
   resolvePositioningShorthand,
   mergeArrowOffset,
+  usePopperMouseTarget,
 } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
-import type { PopperVirtualElement } from '@fluentui/react-positioning';
-import type { PopoverProps, PopoverState } from './Popover.types';
-
-/**
- * Names of the shorthand properties in PopoverProps
- */
-const mergeProps = makeMergeProps<PopoverState>({});
+import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
 
 /**
  * Create the state required to render Popover.
  *
  * The returned state can be modified with hooks such as usePopoverStyles,
- * before being passed to renderPopover.
+ * before being passed to renderPopover_unstable.
  *
  * @param props - props from this instance of Popover
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): PopoverState => {
-  const state = mergeProps(
-    {
-      size: 'medium',
-      open: (undefined as unknown) as boolean, // mergeProps typings require this
-      setOpen: () => null,
-      triggerRef: { current: null },
-      contentRef: { current: null },
-      arrowRef: { current: null },
-      children: null,
-      setContextTarget: () => null,
-      contextTarget: undefined,
+export const usePopover_unstable = (props: PopoverProps): PopoverState => {
+  const [contextTarget, setContextTarget] = usePopperMouseTarget();
+  const initialState = {
+    size: 'medium',
+    contextTarget,
+    setContextTarget,
+    ...props,
+  } as const;
+
+  const children = React.Children.toArray(props.children) as React.ReactElement[];
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (children.length === 0) {
+      // eslint-disable-next-line no-console
+      console.warn('Popover must contain at least one child');
+    }
+
+    if (children.length > 2) {
+      // eslint-disable-next-line no-console
+      console.warn('Popover must contain at most two children');
+    }
+  }
+
+  let popoverTrigger: React.ReactElement | undefined = undefined;
+  let popoverSurface: React.ReactElement | undefined = undefined;
+  if (children.length === 2) {
+    popoverTrigger = children[0];
+    popoverSurface = children[1];
+  } else if (children.length === 1) {
+    popoverSurface = children[0];
+  }
+
+  const [open, setOpen] = useOpenState(initialState);
+  const toggleOpen = React.useCallback<PopoverState['toggleOpen']>(
+    e => {
+      setOpen(e, !open);
     },
-    defaultProps,
-    props,
+    [setOpen, open],
   );
 
-  const [contextTarget, setContextTarget] = React.useState<PopperVirtualElement>();
-  state.setContextTarget = setContextTarget;
-  state.contextTarget = contextTarget;
-
-  useOpenState(state);
-  usePopoverRefs(state);
+  const popperRefs = usePopoverRefs(initialState);
 
   const { targetDocument } = useFluent();
   useOnClickOutside({
     contains: elementContains,
     element: targetDocument,
-    callback: ev => state.setOpen(ev, false),
-    refs: [state.triggerRef, state.contentRef],
-    disabled: !state.open,
+    callback: ev => setOpen(ev, false),
+    refs: [popperRefs.triggerRef, popperRefs.contentRef],
+    disabled: !open,
   });
   useOnScrollOutside({
     contains: elementContains,
     element: targetDocument,
-    callback: ev => state.setOpen(ev, false),
-    refs: [state.triggerRef, state.contentRef],
-    disabled: !state.open || !state.openOnContext, // only close on scroll for context
+    callback: ev => setOpen(ev, false),
+    refs: [popperRefs.triggerRef, popperRefs.contentRef],
+    disabled: !open || !initialState.openOnContext, // only close on scroll for context
   });
 
-  return state;
+  const { findFirstFocusable } = useFocusFinders();
+
+  React.useEffect(() => {
+    if (open && popperRefs.contentRef.current) {
+      const firstFocusable = findFirstFocusable(popperRefs.contentRef.current);
+      firstFocusable?.focus();
+    }
+  }, [findFirstFocusable, open, popperRefs.contentRef]);
+
+  return {
+    ...initialState,
+    ...popperRefs,
+    popoverTrigger,
+    popoverSurface,
+    open,
+    setOpen,
+    toggleOpen,
+    setContextTarget,
+    contextTarget,
+  };
 };
 
 /**
  * Creates and manages the Popover open state
- * @param state Popover state
  */
-function useOpenState(state: PopoverState): PopoverState {
+function useOpenState(
+  state: Pick<PopoverState, 'setContextTarget' | 'onOpenChange'> & Pick<PopoverProps, 'open' | 'defaultOpen'>,
+) {
   const onOpenChange: PopoverState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
-  const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
+  const [open, setOpenState] = useControllableState({
+    state: state.open,
+    defaultState: state.defaultOpen,
+    initialState: false,
+  });
   state.open = open !== undefined ? open : state.open;
   const setContextTarget = state.setContextTarget;
 
-  state.setOpen = React.useCallback(
-    (e, shouldOpen) => {
+  const setOpen = React.useCallback(
+    (e: OpenPopoverEvents, shouldOpen: boolean) => {
       if (shouldOpen && e.type === 'contextmenu') {
-        const virtualElement = createVirtualElementFromClick((e as React.MouseEvent).nativeEvent);
-        setContextTarget(virtualElement);
+        setContextTarget(e as React.MouseEvent);
       }
 
       if (!shouldOpen) {
         setContextTarget(undefined);
       }
 
-      setOpen(prevOpen => {
+      setOpenState(prevOpen => {
         // More than one event (mouse, focus, keyboard) can request the Popover to close
         // We assume the first event is the correct one
         if (prevOpen !== shouldOpen) {
@@ -107,17 +141,18 @@ function useOpenState(state: PopoverState): PopoverState {
         return shouldOpen;
       });
     },
-    [setOpen, onOpenChange, setContextTarget],
+    [setOpenState, onOpenChange, setContextTarget],
   );
 
-  return state;
+  return [open, setOpen] as const;
 }
 
 /**
  * Creates and sets the necessary trigger, target and content refs used by Popover
- * @param state Popover state
  */
-function usePopoverRefs(state: PopoverState): PopoverState {
+function usePopoverRefs(
+  state: Pick<PopoverState, 'size' | 'contextTarget'> & Pick<PopoverProps, 'positioning' | 'openOnContext' | 'noArrow'>,
+) {
   const popperOptions = {
     position: 'above' as const,
     align: 'center' as const,
@@ -136,9 +171,9 @@ function usePopoverRefs(state: PopoverState): PopoverState {
 
   const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePopper(popperOptions);
 
-  state.contentRef = contentRef;
-  state.triggerRef = triggerRef;
-  state.arrowRef = arrowRef;
-
-  return state;
+  return {
+    triggerRef,
+    contentRef,
+    arrowRef,
+  } as const;
 }

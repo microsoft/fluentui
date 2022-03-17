@@ -73,6 +73,8 @@ const setUp = () => {
   doUpdate(window.document);
 };
 
+type WhatInputEvents = MouseEvent | TouchEvent | KeyboardEvent;
+
 /*
  * events
  */
@@ -107,7 +109,7 @@ const addListeners = (eventTarget: Window) => {
 };
 
 // checks conditions before updating new input
-const setInput = event => {
+const setInput = (event: WhatInputEvents) => {
   // only execute if the event buffer timer isn't running
   if (!isBuffering) {
     const eventKey = event.which;
@@ -122,7 +124,12 @@ const setInput = event => {
 
     if (currentInput !== value && shouldUpdate) {
       currentInput = value;
-      doUpdate(event.view.document);
+
+      // https://github.com/testing-library/user-event/issues/709
+      // JSDOM does not implement `event.view` so prune this code path in test
+      if (process.env.NODE_ENV !== 'test') {
+        doUpdate(event.view.document);
+      }
     }
   }
 };
@@ -133,7 +140,7 @@ const doUpdate = (target: Document) => {
 };
 
 // buffers events that frequently also fire mouse events
-const eventBuffer = event => {
+const eventBuffer = (event: WhatInputEvents) => {
   // set the current input
   setInput(event);
 

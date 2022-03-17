@@ -106,4 +106,7 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    * Hide nameplate and activity until the tile is hovered or selected (applies only to media tiles)
    */
   nameplateOnlyOnHover?: boolean;
+
+  /* whether the component should be rendered as disabled */
+  disabled?: boolean;
 }

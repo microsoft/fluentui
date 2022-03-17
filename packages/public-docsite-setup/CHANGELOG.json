@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite-setup",
   "entries": [
     {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.7",
+      "version": "0.3.7",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/public-docsite-setup",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/public-docsite-setup_v0.3.7",
       "version": "0.3.7",

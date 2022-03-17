@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
 import { classNamesFunction, setPortalAttribute, setVirtualParent } from '../../Utilities';
-import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
-import { useMergedRefs, useWarnings } from '@fluentui/react-hooks';
+import { registerLayer, getDefaultTarget, unregisterLayer, getLayerHost } from './Layer.notification';
+import { useIsomorphicLayoutEffect, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
 import type { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
 
@@ -11,12 +11,13 @@ const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
 export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<HTMLDivElement, ILayerProps>(
   (props, ref) => {
-    const [layerElement, setLayerElement] = React.useState<HTMLDivElement | undefined>();
-    const refLayerElement = React.useRef(layerElement);
-    refLayerElement.current = layerElement;
-
     const rootRef = React.useRef<HTMLSpanElement>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
+    const layerRef = React.useRef<HTMLDivElement>();
+
+    // Tracks if the layer mount events need to be raised.
+    // Required to allow the DOM to render after the layer element is added.
+    const [needRaiseLayerMount, setNeedRaiseLayerMount] = React.useState(false);
 
     const doc = useDocument();
 
@@ -42,16 +43,18 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
 
     // Returns the user provided hostId props element, the default target selector,
     // or undefined if document doesn't exist.
-    const getHost = (): Node | undefined => {
-      if (!doc) {
-        return undefined;
-      }
-
+    const getHost = (): Node | null => {
       if (hostId) {
-        return doc.getElementById(hostId) as Node;
+        const layerHost = getLayerHost(hostId);
+
+        if (layerHost) {
+          return layerHost.rootRef.current ?? null;
+        }
+
+        return doc?.getElementById(hostId) ?? null;
       } else {
         const defaultHostSelector = getDefaultTarget();
-        return defaultHostSelector ? (doc.querySelector(defaultHostSelector) as Node) : doc.body;
+        return (defaultHostSelector ? doc?.querySelector(defaultHostSelector) : doc?.body) ?? null;
       }
     };
 
@@ -59,12 +62,13 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     const removeLayerElement = (): void => {
       onLayerWillUnmount?.();
 
-      const elem = refLayerElement.current;
+      const elem = layerRef.current;
+
+      // Clear ref before removing from the DOM
+      layerRef.current = undefined;
+
       if (elem && elem.parentNode) {
-        const parentNode = elem.parentNode;
-        if (parentNode) {
-          parentNode.removeChild(elem);
-        }
+        elem.parentNode.removeChild(elem);
       }
     };
 
@@ -72,29 +76,27 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     const createLayerElement = () => {
       const host = getHost();
 
-      if (!doc || !host) {
+      if (!host) {
         return;
       }
 
       // Remove and re-create any previous existing layer elements.
       removeLayerElement();
 
-      const el: HTMLDivElement = doc.createElement('div');
+      const el = (host.ownerDocument ?? doc)?.createElement('div');
 
-      el.className = classNames.root!;
-      setPortalAttribute(el);
-      setVirtualParent(el, rootRef.current!);
+      if (el) {
+        el.className = classNames.root!;
+        setPortalAttribute(el);
+        setVirtualParent(el, rootRef.current!);
 
-      insertFirst ? host.insertBefore(el, host.firstChild) : host.appendChild(el);
-
-      setLayerElement(el);
-
-      onLayerMounted?.();
-      onLayerDidMount?.();
+        insertFirst ? host.insertBefore(el, host.firstChild) : host.appendChild(el);
+        layerRef.current = el;
+        setNeedRaiseLayerMount(true);
+      }
     };
 
-    // eslint-disable-next-line no-restricted-properties
-    React.useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
       createLayerElement();
       // Check if the user provided a hostId prop and register the layer with the ID.
       if (hostId) {
@@ -111,18 +113,26 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       // eslint-disable-next-line react-hooks/exhaustive-deps -- should run if the hostId updates.
     }, [hostId]);
 
+    React.useEffect(() => {
+      if (layerRef.current && needRaiseLayerMount) {
+        onLayerMounted?.();
+        onLayerDidMount?.();
+        setNeedRaiseLayerMount(false);
+      }
+    }, [needRaiseLayerMount, onLayerMounted, onLayerDidMount]);
+
     useDebugWarnings(props);
 
     return (
       <span className="ms-layer" ref={mergedRef}>
-        {layerElement &&
+        {layerRef.current &&
           ReactDOM.createPortal(
             /* eslint-disable deprecation/deprecation */
             <Fabric {...(!eventBubblingEnabled && getFilteredEvents())} className={classNames.content}>
               {children}
             </Fabric>,
             /* eslint-enable deprecation/deprecation */
-            layerElement,
+            layerRef.current,
           )}
       </span>
     );

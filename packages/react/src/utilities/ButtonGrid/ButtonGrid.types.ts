@@ -52,6 +52,15 @@ export interface IButtonGridProps
   onBlur?: () => void;
 
   /**
+   * If true, uses radiogroup semantics for the ButtonGrid.
+   * This should be set to true for single-row grids, for two reasons:
+   *   1. Radios are a more simple and understandable control,
+   *      and a better fit for a single-dimensional selection control
+   *   2. Multiple browsers use heuristics to strip table and grid roles from single-row tables with no column headers.
+   */
+  isSemanticRadio?: boolean;
+
+  /**
    * Position this ButtonGrid is in the parent set (index in a parent menu, for example)
    */
   ariaPosInSet?: number;

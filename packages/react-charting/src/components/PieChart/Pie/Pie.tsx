@@ -22,6 +22,7 @@ export class Pie extends React.Component<IPieProps, {}> {
   public arcGenerator = (d: IArcData, i: number): JSX.Element => {
     return (
       <LabeledArc
+        culture={this.props.culture}
         key={i}
         data={d}
         innerRadius={this.props.innerRadius}
@@ -41,8 +42,7 @@ export class Pie extends React.Component<IPieProps, {}> {
     const translate = `translate(${width / 2}, ${height / 2})`;
 
     return (
-      <svg width={width} height={height}>
-        {chartTitle && <title>{chartTitle}</title>}
+      <svg width={width} height={height} aria-label={chartTitle}>
         <g transform={translate}>{piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i))}</g>
       </svg>
     );

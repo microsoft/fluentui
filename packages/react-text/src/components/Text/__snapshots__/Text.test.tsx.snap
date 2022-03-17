@@ -3,7 +3,7 @@
 exports[`Text renders a default state 1`] = `
 <div>
   <span
-    class=""
+    class="fui-Text"
   >
     Test
   </span>

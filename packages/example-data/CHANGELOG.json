@@ -2,6 +2,66 @@
   "name": "@fluentui/example-data",
   "entries": [
     {
+      "date": "Thu, 03 Mar 2022 07:24:26 GMT",
+      "tag": "@fluentui/example-data_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Dec 2021 07:31:32 GMT",
+      "tag": "@fluentui/example-data_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "3defe8482167a065a9ee9653fd0c34d5d3ecf055",
+            "comment": "[breaking] Remove AvatarExamples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Sep 2021 07:34:24 GMT",
+      "tag": "@fluentui/example-data_v8.2.7",
+      "version": "8.2.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/example-data",
+            "comment": "Fix badge examples to use shorthand props",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/example-data_v8.2.6",
+      "version": "8.2.6",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/example-data",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/example-data_v8.2.6",
       "version": "8.2.6",

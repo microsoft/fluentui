@@ -25,27 +25,26 @@ export const MenuContext: Context<MenuContextValue> = createContext<MenuContextV
  *
  * Extends and drills down MenuList props to simplify API
  */
-export interface MenuContextValue
-  extends MenuListProps,
-    Pick<
-      MenuState,
-      | 'openOnHover'
-      | 'openOnContext'
-      | 'triggerRef'
-      | 'menuPopoverRef'
-      | 'setOpen'
-      | 'isSubmenu'
-      | 'triggerId'
-      | 'hasIcons'
-      | 'hasCheckmarks'
-      | 'persistOnItemClick'
-      | 'inline'
-    > {
-  open: boolean;
-  triggerId: string;
-}
+export type MenuContextValue = MenuListProps &
+  Pick<
+    MenuState,
+    | 'openOnHover'
+    | 'openOnContext'
+    | 'triggerRef'
+    | 'menuPopoverRef'
+    | 'setOpen'
+    | 'isSubmenu'
+    | 'triggerId'
+    | 'hasIcons'
+    | 'hasCheckmarks'
+    | 'persistOnItemClick'
+    | 'inline'
+  > & {
+    open: boolean;
+    triggerId: string;
+  };
 
 export const MenuProvider = MenuContext.Provider;
 
-export const useMenuContext = <T>(selector: ContextSelector<MenuContextValue, T>) =>
+export const useMenuContext_unstable = <T>(selector: ContextSelector<MenuContextValue, T>) =>
   useContextSelector(MenuContext, selector);

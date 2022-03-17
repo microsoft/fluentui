@@ -2,11 +2,19 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Text } from './Text';
 import { isConformant } from '../../common/isConformant';
+import { TextProps } from './Text.types';
 
 describe('Text', () => {
-  isConformant({
+  isConformant<TextProps>({
     Component: Text,
     displayName: 'Text',
+    testOptions: {
+      'make-styles-overrides-win': {
+        callCount: 1,
+      },
+      // TODO: https://github.com/microsoft/fluentui/issues/19618
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any,
   });
 
   it('renders a default state', () => {
@@ -17,14 +25,15 @@ describe('Text', () => {
     const textElement = getByText('Test');
     expect(textElement.nodeName).toBe('SPAN');
     expect(textElement).toHaveStyle(`
-      font-family: var(--global-type-fontFamilies-base);
-      font-size: var(--global-type-fontSizes-base-300);
-      line-height: var(--global-type-lineHeights-base-300);
-      font-weight: var(--global-type-fontWeights-regular);
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase300);
       display: inline;
       text-align: start;
       white-space: normal;
-      overflow: visible;
+      overflow-x: visible;
+      overflow-y: visible;
       text-overflow: clip;
     `);
   });
@@ -35,7 +44,8 @@ describe('Text', () => {
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
       white-space: nowrap;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: hidden;
     `);
   });
 
@@ -71,7 +81,7 @@ describe('Text', () => {
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      text-decoration: underline;
+      text-decoration-line: underline;
     `);
   });
 
@@ -80,7 +90,7 @@ describe('Text', () => {
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      text-decoration: line-through;
+      text-decoration-line: line-through;
     `);
   });
 
@@ -93,54 +103,54 @@ describe('Text', () => {
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      text-decoration: line-through underline;
+      text-decoration-line: line-through underline;
     `);
   });
 
   it.each([
-    [100, 'base', '100'],
-    [200, 'base', '200'],
-    [300, 'base', '300'],
-    [400, 'base', '400'],
-    [500, 'base', '500'],
-    [600, 'base', '600'],
-    [700, 'hero', '700'],
-    [800, 'hero', '800'],
-    [900, 'hero', '900'],
-    [1000, 'hero', '1000'],
+    [100, 'Base', '100'],
+    [200, 'Base', '200'],
+    [300, 'Base', '300'],
+    [400, 'Base', '400'],
+    [500, 'Base', '500'],
+    [600, 'Base', '600'],
+    [700, 'Hero', '700'],
+    [800, 'Hero', '800'],
+    [900, 'Hero', '900'],
+    [1000, 'Hero', '1000'],
   ] as const)('applies the %s token sizing styles', (sizeToken, expectedPrefix, expectedValue) => {
     const { getByText } = render(<Text size={sizeToken}>Test</Text>);
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      font-size: var(--global-type-fontSizes-${expectedPrefix}-${expectedValue});
-      line-height: var(--global-type-lineHeights-${expectedPrefix}-${expectedValue});
+      font-size: var(--fontSize${expectedPrefix}${expectedValue});
+      line-height: var(--lineHeight${expectedPrefix}${expectedValue});
     `);
   });
 
   it.each([
-    ['base', 'base'],
-    ['monospace', 'monospace'],
-    ['numeric', 'numeric'],
+    ['base', 'Base'],
+    ['monospace', 'Monospace'],
+    ['numeric', 'Numeric'],
   ] as const)('applies %s font', (input, expectedValue) => {
     const { getByText } = render(<Text font={input}>Test</Text>);
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      font-family: var(--global-type-fontFamilies-${expectedValue});
+      font-family: var(--fontFamily${expectedValue});
     `);
   });
 
   it.each([
-    ['regular', 'regular'],
-    ['medium', 'medium'],
-    ['semibold', 'semibold'],
+    ['regular', 'Regular'],
+    ['medium', 'Medium'],
+    ['semibold', 'Semibold'],
   ] as const)('applies %s weight', (input, expectedValue) => {
     const { getByText } = render(<Text weight={input}>Test</Text>);
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      font-weight: var(--global-type-fontWeights-${expectedValue});
+      font-weight: var(--fontWeight${expectedValue});
     `);
   });
 

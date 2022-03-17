@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add `unstable_filterCSSRule` option to default `createDOMRenderer`",
+  "packageName": "@fluentui/make-styles",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

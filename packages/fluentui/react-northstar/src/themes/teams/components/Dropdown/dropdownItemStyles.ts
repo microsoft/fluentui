@@ -69,8 +69,12 @@ export const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesP
     fontSize: v.listItemContentFontSize,
     color: v.listItemContentColor,
   }),
-  checkableIndicator: ({ variables: v }) => ({
+  checkableIndicator: ({ props: p, variables: v }) => ({
     backgroundImage: checkableIndicatorUrl(v.listItemSelectedColor),
+    ...(p.active &&
+      !p.isFromKeyboard && {
+        backgroundImage: checkableIndicatorUrl(v.listItemColorHover),
+      }),
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     position: 'absolute',

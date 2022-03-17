@@ -1,8 +1,27 @@
 # Change Log - @fluentui/dom-utilities
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Mar 2022 07:24:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.0)
+
+Thu, 03 Mar 2022 07:24:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.1.5..@fluentui/dom-utilities_v2.2.0)
+
+### Minor changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/set-version to v8.2.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+
+## [2.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.1.5)
+
+Thu, 25 Nov 2021 14:54:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.1.4..@fluentui/dom-utilities_v2.1.5)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.1.5 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
 
 ## [2.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.1.4)
 

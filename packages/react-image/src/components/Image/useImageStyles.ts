@@ -1,25 +1,37 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import type { ImageState } from './Image.types';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import type { ImageSlots, ImageState } from './Image.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+/**
+ * @deprecated Use `imageClassNames.root` instead.
+ */
+export const imageClassName = 'fui-Image';
+export const imageClassNames: SlotClassNames<ImageSlots> = {
+  root: 'fui-Image',
+};
 
 const useStyles = makeStyles({
-  root: theme => ({
-    borderColor: theme.alias.color.neutral.neutralStroke1,
-    borderRadius: theme.global.borderRadius.none,
-    boxShadow: theme.alias.shadow.shadow4,
+  root: {
+    ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
 
     boxSizing: 'border-box',
     display: 'inline-block',
-  }),
-  rootBordered: theme => ({
-    borderStyle: 'solid',
-    borderWidth: theme.global.strokeWidth.thin,
-  }),
-  rootCircular: theme => ({
-    borderRadius: theme.global.borderRadius.circular,
-  }),
-  rootRounded: theme => ({
-    borderRadius: theme.global.borderRadius.medium,
-  }),
+  },
+  rootBordered: {
+    ...shorthands.borderStyle('solid'),
+    ...shorthands.borderWidth(tokens.strokeWidthThin),
+  },
+  rootCircular: {
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+  },
+  rootRounded: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  },
+  rootShadow: {
+    boxShadow: tokens.shadow4,
+  },
   rootFitNone: {
     objectFit: 'none',
     objectPosition: 'left top',
@@ -44,23 +56,25 @@ const useStyles = makeStyles({
     height: '100%',
     width: '100%',
   },
-  rootFluid: {
+  rootBlock: {
     width: '100%',
   },
 });
 
-export const useImageStyles = (state: ImageState) => {
+export const useImageStyles_unstable = (state: ImageState) => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
+    imageClassNames.root,
     styles.root,
     state.bordered && styles.rootBordered,
-    state.circular && styles.rootCircular,
-    state.rounded && styles.rootRounded,
+    state.shape === 'circular' && styles.rootCircular,
+    state.shape === 'rounded' && styles.rootRounded,
+    state.shadow && styles.rootShadow,
     state.fit === 'none' && styles.rootFitNone,
     state.fit === 'center' && styles.rootFitCenter,
     state.fit === 'cover' && styles.rootFitCover,
     state.fit === 'contain' && styles.rootFitContain,
-    state.fluid && styles.rootFluid,
-    state.className,
+    state.block && styles.rootBlock,
+    state.root.className,
   );
 };

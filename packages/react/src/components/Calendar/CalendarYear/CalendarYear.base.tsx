@@ -104,7 +104,6 @@ const CalendarYearGridCell: React.FunctionComponent<ICalendarYearGridCellProps> 
       disabled={disabled}
       aria-selected={selected}
       ref={buttonRef}
-      aria-readonly={true} // prevent grid from being "editable"
     >
       {onRenderYear?.(year) ?? year}
     </button>

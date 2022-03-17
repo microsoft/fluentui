@@ -11,7 +11,7 @@ import {
   IRefArrayData,
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
+import { ChartHoverCard, convertToLocaleString } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
@@ -35,6 +35,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _uniqLineText: string;
   private _calloutId: string;
   private _refArray: IRefArrayData[];
+  private _calloutAnchorPoint: IChartDataPoint | null;
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);
@@ -61,7 +62,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
     return (
-      <div className={this._classNames.root}>
+      <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         {data!.map((points: IChartProps, index: number) => {
           if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
             datapoint = points.chartData![0].horizontalBarChartdata!.x;
@@ -99,8 +100,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 </FocusZone>
                 {points!.chartData![0].data && this._createBenchmark(points!)}
                 <FocusZone direction={FocusZoneDirection.horizontal}>
-                  <svg className={this._classNames.chart}>
-                    {points!.chartTitle && <title>{points!.chartTitle}</title>}
+                  <svg className={this._classNames.chart} aria-label={points!.chartTitle}>
                     <g
                       id={keyVal}
                       key={keyVal}
@@ -145,6 +145,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend!}
                 YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.hoverValue!}
                 color={this.state.lineColor}
+                culture={this.props.culture}
               />
             )}
           </>
@@ -158,11 +159,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   }
 
   private _hoverOn(hoverValue: string | number | Date | null, point: IChartDataPoint): void {
-    if (!this.state.isCalloutVisible || this.state.legend !== point.legend!) {
+    if ((!this.state.isCalloutVisible || this.state.legend !== point.legend!) && this._calloutAnchorPoint !== point) {
       const currentHoveredElement = find(
         this._refArray,
         (currentElement: IRefArrayData) => currentElement.index === point.legend,
       );
+      this._calloutAnchorPoint = point;
       this.setState({
         isCalloutVisible: true,
         hoverValue: hoverValue,
@@ -178,6 +180,11 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   }
 
   private _hoverOff(): void {
+    /**/
+  }
+
+  private _handleChartMouseLeave = () => {
+    this._calloutAnchorPoint = null;
     if (this.state.isCalloutVisible) {
       this.setState({
         isCalloutVisible: false,
@@ -187,7 +194,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         legend: '',
       });
     }
-  }
+  };
 
   private _adjustProps = (): void => {
     this._barHeight = this.props.barHeight || 8;
@@ -211,6 +218,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   };
 
   private _getDefaultTextData(data: IChartProps): JSX.Element {
+    const { culture } = this.props;
     const chartDataMode = this.props.chartDataMode || 'default';
     const chartData: IChartDataPoint = data!.chartData![0];
     const x = chartData.horizontalBarChartdata!.x;
@@ -219,21 +227,20 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const accessibilityData = this._getAccessibleDataObject(data.chartDataAccessibilityData!);
     switch (chartDataMode) {
       case 'default':
-        const chartDataText: string = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         return (
           <div className={this._classNames.chartDataText} {...accessibilityData}>
-            {chartDataText}
+            {convertToLocaleString(x, culture)}
           </div>
         );
       case 'fraction':
         return (
           <div {...accessibilityData}>
-            <span className={this._classNames.chartDataText}>{x}</span>
-            <span className={this._classNames.chartDataTextDenominator}>{'/' + y}</span>
+            <span className={this._classNames.chartDataText}>{convertToLocaleString(x, culture)}</span>
+            <span className={this._classNames.chartDataTextDenominator}>{'/' + convertToLocaleString(y, culture)}</span>
           </div>
         );
       case 'percentage':
-        const dataRatioPercentage = `${Math.round((x / y) * 100)}%`;
+        const dataRatioPercentage = `${convertToLocaleString(Math.round((x / y) * 100), culture)}%`;
         return (
           <div className={this._classNames.chartDataText} {...accessibilityData}>
             {dataRatioPercentage}
@@ -283,6 +290,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       if (value < 1) {
         return <React.Fragment key={index}> </React.Fragment>;
       }
+      const xValue = point.horizontalBarChartdata!.x;
       return (
         <rect
           key={index}
@@ -292,24 +300,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           width={value + '%'}
           height={this._barHeight}
           fill={color}
-          onMouseOver={
-            point.legend !== ''
-              ? this._hoverOn.bind(
-                  this,
-                  point.horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-                  point,
-                )
-              : undefined
-          }
-          onFocus={
-            point.legend !== ''
-              ? this._hoverOn.bind(
-                  this,
-                  point.horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-                  point,
-                )
-              : undefined
-          }
+          onMouseOver={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
+          onFocus={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
           aria-labelledby={this._calloutId}
           role="img"
           aria-label="Horizontal bar chart"

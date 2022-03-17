@@ -18,8 +18,156 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- Add transparent borders to slider @ling1726 ([#22089](https://github.com/microsoft/fluentui/pull/22089))
+- Fix `Popup` opened from right click (on `context`), to not dismiss when scrolling happens in nested Popup @yaunboxue-amber ([#22087](https://github.com/microsoft/fluentui/pull/22087))
+
+<!--------------------------------[ v0.61.0 ]------------------------------- -->
+## [v0.61.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.61.0) (2022-03-10)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.60.1..@fluentui/react-northstar_v0.61.0)
+
+### Fixes
+- Update `FocusZone` to properly pass through event modifiers (`ctrlKey`, etc.) when raising a click event @spmonahan ([#21547](https://github.com/microsoft/fluentui/pull/21547))
+- Fix `AccordionTitle` focus styles @petr-duda ([#21400](https://github.com/microsoft/fluentui/pull/21400))
+- Add border to `Card` in high contrast rest state @jurokapsiar ([#21315](https://github.com/microsoft/fluentui/pull/21315))
+- Use shadow8 for better contrast of `Tooltip` @jurokapsiar ([#21316](https://github.com/microsoft/fluentui/pull/21316))
+- `FocusTrapZone`: add handleRef method instead of function to prevent calling it on each re-render @annabratseiko ([#21337](https://github.com/microsoft/fluentui/pull/21337))
+- Fix color slot titles in docsite @notandrew ([#21378](https://github.com/microsoft/fluentui/pull/21378))
+- Fixed height of `ChatMessage` bar in compact density @Hirse ([#21521](https://github.com/microsoft/fluentui/pull/21521))
+- Fix `menuButtonBehavior` to not set undefined aria attributes @yuanboxue-amber ([#21610](https://github.com/microsoft/fluentui/pull/21610))
+- Fix memory leak in `createFelaRenderer()` @layershifter ([#21536](https://github.com/microsoft/fluentui/pull/21536))
+- Fix `Dropdown` repositioning when always open and have multilines @chpalac ([#21754](https://github.com/microsoft/fluentui/pull/21754))
+- Update `csstype` to version 3 and update corresponding property type references and change `scheduler` to a peer dependency @ecraig12345 ([#21769](https://github.com/microsoft/fluentui/pull/21769))
+- Fix `ToolbarItem` and `ToolbarItemMenu` to show tooltip on hover when `disabledFocusable` @Hirse ([#21795](https://github.com/microsoft/fluentui/pull/21795))
+- Fix `Tooltip` close tooltip with ESC key only when is opened @kolaps33 ([#21936](https://github.com/microsoft/fluentui/pull/21936))
+- Replace ReactNodeArray with ReactNode[] @jurokapsiar ([#21957](https://github.com/microsoft/fluentui/pull/21957))
+- Fix `Dropdown` focus indicator appearance when `highlightFirstItemOnOpen` is true while accessing from keyboard @annabratseiko ([#21991](https://github.com/microsoft/fluentui/pull/21991))
+- Fix `Tooltip` color for HC theme @chpalac ([#21994](https://github.com/microsoft/fluentui/pull/21994))
+
+### Features
+- Add new Popup prop `closeOnScroll` to close popup when scroll happens outside of the popover element @yuanboxue-amber ([#21453](https://github.com/microsoft/fluentui/pull/21453))
+- Add new `isIntersectingModifier` modifier to `usePopper` @layershifter ([#21829](https://github.com/microsoft/fluentui/pull/21829))
+- Add `SignatureIcon` to iconset @notandrew ([#21946](https://github.com/microsoft/fluentui/pull/21946))
+- Allow users to configure new animations for `Carousel` transitions @chpalac ([#21866](https://github.com/microsoft/fluentui/pull/21866))
+- Support React 17 as a peer dependency @jurokapsiar ([#21955](https://github.com/microsoft/fluentui/pull/21955))
+- feat(theme): Forced colors theme @jurokapsiar ([#22027](https://github.com/microsoft/fluentui/pull/22027))
+
+<!--------------------------------[ v0.60.1 ]------------------------------- -->
+## [v0.60.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.60.1) (2022-01-17)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.60.0..@fluentui/react-northstar_v0.60.1)
+
+### Fixes
+- Fix `ChatMessage` to use chat context as default value when user prop is explicitly undefined @yuanboxue-amber ([#21189](https://github.com/microsoft/fluentui/pull/21189))
+- bump react-transition-group from 4.3.0 to 4.4.1 @yuanboxue-amber ([#21187](https://github.com/microsoft/fluentui/pull/21187))
+- Fix `Animation` to pass object ref to `Transition` nodeRef @yuanboxue-amber ([#21173](https://github.com/microsoft/fluentui/pull/21173))
+- Fix `MenuItemWrapper` to stop passing-through `on` property to DOM @tosmolka ([#21170](https://github.com/microsoft/fluentui/pull/21170))
+- Reverted: Set default focus border radius to default border radius (`4px`) @Hirse ([#20230](https://github.com/microsoft/fluentui/pull/20230))
+
+
+<!--------------------------------[ v0.60.0 ]------------------------------- -->
+## [v0.60.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.60.0) (2021-12-14)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.59.0..@fluentui/react-northstar_v0.60.0)
+
+### BREAKING CHANGES
+- fix(Accordion) Render divs instead of dd and dt elements for Accordion and AccordionTitle @jurokapsiar ([#20773](https://github.com/microsoft/fluentui/pull/20773))
+- Carousels uses native ARIA props @layershifter ([#20848](https://github.com/microsoft/fluentui/pull/20848))
+
+### Fixes
+- Remove unsupported styling props in `Popup` @layershifter ([#20853](https://github.com/microsoft/fluentui/pull/20853))
+- Fix aria-labelledby passed to `DropdownSearchInput` @chpalac ([#20312](https://github.com/microsoft/fluentui/pull/20312))
+- Fix `preventFocusRestoration` in `FocusZone` @chpalac ([#20328](https://github.com/microsoft/fluentui/pull/20328))
+- `Popup` should not dismiss when its iframe content is focused @ling1726 ([#19955](https://github.com/microsoft/fluentui/pull/19955))
+- `whatInput` Add typings to what input event listeners @ling1726 ([#20024](https://github.com/microsoft/fluentui/pull/20024))
+- Remove `active` as condition to open submenu on `MenuItem` and active styles for vertical menu @chassunc ([#20062](https://github.com/microsoft/fluentui/pull/20062))
+- `carousel` Add disableClickableNav to ProtoTypes list @yifeigogo ([#20053](https://github.com/microsoft/fluentui/pull/20053))
+- Adding brand `backgroundHover3`, brand `backgroundPressed2`, and default `borderTransparentActive` @notandrew ([#20056](https://github.com/microsoft/fluentui/pull/20056))
+- Spread event props from trigger in `Popup` @assuncaocharles ([#20162](https://github.com/microsoft/fluentui/pull/20162))
+- Set default focus border radius to default border radius (`4px`) @Hirse ([#20230](https://github.com/microsoft/fluentui/pull/20230))
+- Set `ChatMessageReadStatus` color to brand @Hirse ([#20231](https://github.com/microsoft/fluentui/pull/20231))
+- Fix broken styles debug of undefined `isReactComponent` @petr-duda ([#20349](https://github.com/microsoft/fluentui/pull/20349))
+- Use semibold font-weight for ChatMessage author slot in compact chat density @Hirse ([#20419](https://github.com/microsoft/fluentui/pull/20419))
+- Set border radius for `ToolbarItem` and icon-only `MenuItem` @Hirse ([#20422](https://github.com/microsoft/fluentui/pull/20422))
+- Stop `event.view` usage in `whatInput.ts` for tests @ling1726 ([#20492](https://github.com/microsoft/fluentui/pull/20492))
+- chore(ability-attributes): improve schema for aria-controls, aria-haspopup and aria-hidden @jurokapsiar ([#20194](https://github.com/microsoft/fluentui/pull/20194))
+- Remove pointer cursor and prevent navigation on carousel paddle click when `disableClickableNav` @chpalac ([#20521](https://github.com/microsoft/fluentui/pull/20521))
+- Fix `List` and `ListItem` to properly pass ref to root slots @chpalac ([#20557](https://github.com/microsoft/fluentui/pull/20557))
+- Fix `Accordion`, `AccordionTitle` and `AccordionContent` to properly pass ref to root slots @chpalac ([#20570](https://github.com/microsoft/fluentui/pull/20570))
+- Fix `Alert` components to properly pass ref to root slots @chpalac ([#20582](https://github.com/microsoft/fluentui/pull/20582))
+- Fix `Avatar` Components to properly pass ref to root slots @chpalac ([#20588](https://github.com/microsoft/fluentui/pull/20588))
+- Fix `ButtonGroup` comoponent to properly pass ref to root slots @chpalac ([#20595](https://github.com/microsoft/fluentui/pull/20595))
+- Fix color of `Dropdown` checkable indicator on hover in high contrast theme @annabratseiko ([#20621](https://github.com/microsoft/fluentui/pull/20621))
+- Updating Teams Brand colors to refreshed Fluent colors @notandrew ([#20057](https://github.com/microsoft/fluentui/pull/20057))
+- Fix `Carousel` comoponents to properly pass ref to root slots @chpalac ([#20645](https://github.com/microsoft/fluentui/pull/20645))
+- Fix `Card` comoponent to properly pass ref to root slots @chpalac ([#20644](https://github.com/microsoft/fluentui/pull/20644))
+- Fix `Dropdown` by conditionally adding `aria-expanded="true"` to the button trigger @chpalac ([#20671](https://github.com/microsoft/fluentui/pull/20671))
+- Optimized `felaInvokeKeyframesPlugin` to not create new objects but reuse existing one in `reduce` @mbman ([#20649](https://github.com/microsoft/fluentui/pull/20649))
+- Fix `Dialog` components to properly pass ref to root slots @chpalac ([#20698](https://github.com/microsoft/fluentui/pull/20698))
+- Fix `Divider` component to properly pass ref to root slots @chpalac ([#20700](https://github.com/microsoft/fluentui/pull/20700))
+- Fix `Dropdown` component to properly pass ref to root slots @chpalac ([#20702](https://github.com/microsoft/fluentui/pull/20702))
+- Fix `Checkbox` component to properly pass down ref to root slots @chpalac ([#20696](https://github.com/microsoft/fluentui/pull/20696))
+- Fix `Datepicker` components to properly pass ref to root slots @chpalac ([#20697](https://github.com/microsoft/fluentui/pull/20697))
+- Fix `Embed` component to properly pass ref to root slots @chpalac ([#20703](https://github.com/microsoft/fluentui/pull/20703))
+- Fix `Chat` components to properly pass ref to root slots @chpalac ([#20691](https://github.com/microsoft/fluentui/pull/20691))
+- Fix `Dialog` component to support zoom up to 400% @annabratseiko ([#20722](https://github.com/microsoft/fluentui/pull/20722))
+- Fix `Flex` component to properly pass ref to root slots @chpalac ([#20752](https://github.com/microsoft/fluentui/pull/20752))
+- Accordion content does not get rendered for inactive panels @jurokapsiar ([#20783](https://github.com/microsoft/fluentui/pull/20783))
+- Fix `Animation` to expose `Transition` state for the consumer @chpalac ([#20776](https://github.com/microsoft/fluentui/pull/20776))
+- Fix `Image` component to properly pass ref to root slots @chpalac ([#20812](https://github.com/microsoft/fluentui/pull/20812))
+- Fix `Header` components to properly pass ref to root slots @chpalac ([#20811](https://github.com/microsoft/fluentui/pull/20811))
+- Fix `Grid` component to properly pass ref to root slots @chpalac ([#20810](https://github.com/microsoft/fluentui/pull/20810))
+- Fix `Form` components to properly pass ref to root slots @chpalac ([#20809](https://github.com/microsoft/fluentui/pull/20809))
+- Fix `Loader` component to properly pass ref to root slots @chpalac ([#20814](https://github.com/microsoft/fluentui/pull/20814))
+- Fix `Label` component to properly pass ref to root slots @chpalac ([#20813](https://github.com/microsoft/fluentui/pull/20813))
+- Fix `MenuItemIcon` to allow icon `size` to be in effect @yuanboxue-amber ([#20803](https://github.com/microsoft/fluentui/pull/20803))
+- Fix `PopupContent` component to properly pass ref to root slots @chpalac ([#20866](https://github.com/microsoft/fluentui/pull/20866))
+- Fix `Pill` components to properly pass ref to root slots @chpalac ([#20838](https://github.com/microsoft/fluentui/pull/20838))
+- Fix `MenuButton` component to properly pass ref to root slots @chpalac ([#20837](https://github.com/microsoft/fluentui/pull/20837))
+- Fix `getPointerStyles` transform for RTL @chpalac ([#20915](https://github.com/microsoft/fluentui/pull/20915))
+- Fix `Table` component to properly pass ref to root slots @chpalac ([#20873](https://github.com/microsoft/fluentui/pull/20873))
+- Fix `Status` component to properly pass ref to root slots @chpalac ([#20872](https://github.com/microsoft/fluentui/pull/20872))
+- Fix `SplitButton` components to properly pass ref to root slots @chpalac ([#20871](https://github.com/microsoft/fluentui/pull/20871))
+- Fix `Segment` component to properly pass ref to root slots @chpalac ([#20869](https://github.com/microsoft/fluentui/pull/20869))
+- Fix `MenuButton` component to properly pass ref to root slots @chpalac ([#20870](https://github.com/microsoft/fluentui/pull/20870))
+- Fix `Reaction` components to properly pass ref to root slots @chpalac ([#20868](https://github.com/microsoft/fluentui/pull/20868))
+- Fix `RadioGroup` component to properly pass ref to root slots @chpalac ([#20867](https://github.com/microsoft/fluentui/pull/20867))
+- Fix `Text` component to properly pass ref to root slots @chpalac ([#20874](https://github.com/microsoft/fluentui/pull/20874))
+- Fix `TextArea` component to properly pass ref to root slots @chpalac ([#20875](https://github.com/microsoft/fluentui/pull/20875))
+- Fix `Tree` component to properly pass ref to root slots @chpalac ([#20877](https://github.com/microsoft/fluentui/pull/20877))
+- Fix `Video` component to properly pass ref to root slots @chpalac ([#20878](https://github.com/microsoft/fluentui/pull/20878))
+- Fix `TooltipContent` component to properly pass ref to root slots @chpalac ([#20876](https://github.com/microsoft/fluentui/pull/20876))
+- Fix `Popup` to invoke event handlers on trigger wrapped in `Ref` @yuanboxue-amber ([#20911](https://github.com/microsoft/fluentui/pull/20911))
+- Fix `Animation` component to properly pass ref to root slots @chpalac ([#20972](https://github.com/microsoft/fluentui/pull/20972))
+
+### Features
+- Adding `ViewPersonSparkleIcon`, `CartIcon`, and fixing `EmojiAddIcon` and `AccessibilityIcon` - @notandrew ([#20054](https://github.com/microsoft/fluentui/pull/20054))
+- Child behaviors for `Chat` components @jurokapsiar ([#20998](https://github.com/microsoft/fluentui/pull/20998))
+
+### Documentation
+- Removing examples for tree as list @kolaps33 ([#20780](https://github.com/microsoft/fluentui/pull/20780))
+
+<!--------------------------------[ v0.59.0 ]------------------------------- -->
+## [v0.59.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.59.0) (2021-09-20)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.58.0..@fluentui/react-northstar_v0.59.0)
+
+### BREAKING CHANGES
+- Remove Red Foreground 3 from color scheme tokens  @codepretty ([#19761](https://github.com/microsoft/fluentui/pull/19761))
+
+### Fixes
+- Ignore `ChatItem` contentPosition in compact density @Hirse ([#19701](https://github.com/microsoft/fluentui/pull/19701))
+- Fix compact `ChatMessage` focus highlight @Hirse ([#19720](https://github.com/microsoft/fluentui/pull/19720))
+- Set active item of `MenuItem` with submenu on focus @chassunc ([#19820](https://github.com/microsoft/fluentui/pull/19820))
+- Fix `Popup` to have box-shadow when `autoSize` prop is true @yuanboxue-amber ([#19817](https://github.com/microsoft/fluentui/pull/19817))
+
+### Documentation
+- Add Chat Playground @Hirse ([#19702](https://github.com/microsoft/fluentui/pull/19702))
+
+<!--------------------------------[ v0.58.0 ]------------------------------- -->
+## [v0.58.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.58.0) (2021-09-09)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.57.0..@fluentui/react-northstar_v0.58.0)
+
 ### BREAKING CHANGES
 - Make `Tooltip` subtle by default and no pointing by default @chassunc ([#19024](https://github.com/microsoft/fluentui/pull/19024))
+- Don't show `ChatMessage` timestamp if reactions are in the bottom @Hirse ([#19377](https://github.com/microsoft/fluentui/pull/19377))
 
 ### Fixes
 - Fix `Carousel` animation in controlled mode @assuncaocharles ([#18798](https://github.com/microsoft/fluentui/pull/18798))
@@ -45,10 +193,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Tooltip` flickering in multi-window use case @yuanboxue-amber ([#19235](https://github.com/microsoft/fluentui/pull/19235))
 - Fix `Datepicker` input @yuanboxue-amber ([#19261](https://github.com/microsoft/fluentui/pull/19261))
 - Fix `Dialog` styles border radius changed @bcalvery ([#19328](https://github.com/microsoft/fluentui/pull/19328))
+- Fix `ChatMessage` header margin if there are reactions @Hirse ([#19377](https://github.com/microsoft/fluentui/pull/19377))
 - Fix `Menu` high contrast focus for submenus @notandrew ([#19393](https://github.com/microsoft/fluentui/pull/19393))
 - Fix `Card` HC styles on hover @chassunc ([#19382](https://github.com/microsoft/fluentui/pull/19382))
 - Add `AppsIcon`, `AppFolderIcon`, `PageFitIcon`, `SubtractIcon` @notandrew ([#19424](https://github.com/microsoft/fluentui/pull/19424))
 - Fix `Dialog` background in teams dark v2  @chassunc ([#19434](https://github.com/microsoft/fluentui/pull/19434))
+- Fix `Menu` and `Popup` border, box-shadow, and paddings @notandrew ([#19084](https://github.com/microsoft/fluentui/pull/19084))
 - Fix to update Yellow's Background1 color to BackgroundTransparent @notandrew ([#19444](https://github.com/microsoft/fluentui/pull/19444))
 - Add missging pressed state styles for text `Button`  @chassunc ([#19480](https://github.com/microsoft/fluentui/pull/19480))
 - Fix `MenuItem` apply focus styles for vertical menu from `getBorderFocusStyles` @annabratseiko ([#19419](https://github.com/microsoft/fluentui/pull/19419))
@@ -56,6 +206,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Replace `SplitButton` shadow-box by `Divider`  @chassunc ([#19477](https://github.com/microsoft/fluentui/pull/19477))
 - add `disabledFocusable` for toolbar items @adamsamec ([#18720](https://github.com/microsoft/fluentui/pull/18720))
 - Fix `Tooltip` appearance in high contrast theme @yuanboxue-amber ([#19559](https://github.com/microsoft/fluentui/pull/19559))
+- Fix `Shadow` colors to match redlines @notandrew ([#19552](https://github.com/microsoft/fluentui/pull/19552))
+- Fix `Checkbox` background issue on zoom above 100% @vitthalr ([#19619](https://github.com/microsoft/fluentui/pull/19619))
 
 ### Features
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
@@ -64,6 +216,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add additional properties(`focusInnerBorderWidth`, `focusOuterBorderWidth`, `focusBorderRadius`) to `getBorderFocusStyles` @annabratseiko ([#19319](https://github.com/microsoft/fluentui/pull/19319))
 - Add `dismissOnContentMouseEnter` in `Tooltip` @chassunc ([#19425](https://github.com/microsoft/fluentui/pull/19425))
 - Allow `Tooltip` to configure a delay to open on mouse enter trigger @chassunc ([#19405](https://github.com/microsoft/fluentui/pull/19405))
+- Add `EmojiAddIcon` and filled version of `ExclamationCircleIcon` to icon set @notandrew ([#19626](https://github.com/microsoft/fluentui/pull/19626))
+- Add `PersonIcon`, `BuildingIcon`, `BriefcaseIcon`, `TextBulletListTreeIcon`, `CalendarWorkWeekIcon`, `ListIcon`, `DesktopIcon`, `TwitterIcon`, `LinkedInIcon`. @TanelVari ([#19663](https://github.com/microsoft/fluentui/pull/19663))
 
 ### Documentation
 - Align author name in compact chat with design spec @Hirse ([#18988](https://github.com/microsoft/fluentui/pull/18988))

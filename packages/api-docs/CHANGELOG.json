@@ -2,6 +2,387 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Fri, 08 Oct 2021 07:31:50 GMT",
+      "tag": "@fluentui/api-docs_v8.2.0",
+      "version": "8.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/api-docs",
+            "comment": "Move .api.json files out of api-docs package and remove extraneous dependencies",
+            "commit": "3c3fae80fd74eb02fa0daa59b49afde39de83370"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 07:37:17 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react to v8.36.2",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react-focus to v8.3.2",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/style-utilities to v8.3.4",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/theme to v2.4.1",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/utilities to v8.3.4",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 Oct 2021 07:27:12 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react to v8.36.1",
+            "commit": "4d8e599a31b788186f896a599a7d4e989d9098b1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Sep 2021 07:31:40 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react to v8.36.0",
+            "commit": "78e4c398a39d6323feebf360eb37859ee26535d6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Sep 2021 07:36:23 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react to v8.35.2",
+            "commit": "e726d8b364e68d28821710ea168b3ee0f7a23345"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Sep 2021 22:17:07 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/merge-styles to v8.2.0",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react to v8.35.1",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react-focus to v8.3.1",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/style-utilities to v8.3.3",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/theme to v2.4.0",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/utilities to v8.3.3",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Sep 2021 07:37:27 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react to v8.35.0",
+            "commit": "dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react-focus to v8.3.0",
+            "commit": "dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Sep 2021 07:34:24 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react to v8.34.7",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Sep 2021 07:35:13 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react to v8.34.6",
+            "commit": "e356b30fbc9830f64d23ca4d73cc0ad11e48faf3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Sep 2021 09:55:02 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react to v8.34.5",
+            "commit": "23ad143fe61e38a508eb6aa3578e8e1026dc6a6c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Sep 2021 07:42:34 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react to v8.34.4",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react-focus to v8.2.3",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/api-docs",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/api-docs to v8.1.35"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Sep 2021 07:38:39 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/api-docs",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c",
+            "comment": "Bump @fluentui/api-docs to v8.1.35"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 07:38:18 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmitry@grechka.family",
+            "package": "@fluentui/api-docs",
+            "commit": "fe05da92ddc2742135a689b7b990f8152bd752c3",
+            "comment": "Bump @fluentui/api-docs to v8.1.35"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Sep 2021 07:37:03 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/api-docs",
+            "commit": "39625b321acf26a327021e5d904f6f91dbf9a9e2",
+            "comment": "Bump @fluentui/api-docs to v8.1.35"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.33.0",
+            "author": "tschao@microsoft.com",
+            "commit": "da0edb6f63c6209ba2d608b45d1c9d8ac219cb50",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Sep 2021 07:39:06 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.32.0",
+            "author": "shujathlive@gmail.com",
+            "commit": "7d9180debc95b08349c4df48b854c1bf5fe2dd46",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Sep 2021 07:34:11 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.31.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "3d0232b6ce5213b5bb4a9ccd9a926268a4fad478",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.4",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.4",
+            "author": "gcox@microsoft.com",
+            "commit": "b2d5440a8434649f6a2a11b12b18557c606a70cd",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.3",
+            "author": "olfedias@microsoft.com",
+            "commit": "8f887d05e8f2fed8433b147c6e175d8297455c51",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Sep 2021 07:39:56 GMT",
       "tag": "@fluentui/api-docs_v8.1.35",
       "version": "8.1.35",

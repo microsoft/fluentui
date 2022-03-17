@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { Enter, Space } from '@fluentui/keyboard-keys';
 import { render, fireEvent } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { MenuItemCheckbox } from './MenuItemCheckbox';
@@ -18,6 +18,19 @@ describe('MenuItemCheckbox conformance', () => {
       value: '1',
     },
     displayName: 'MenuItemCheckbox',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+            checkmark: 'Test Checkmark',
+            submenuIndicator: 'Test Submenu Indicator',
+            content: 'Test Content',
+            secondaryContent: 'Test Secondary Content',
+          },
+        },
+      ],
+    },
   });
 
   /**
@@ -119,7 +132,7 @@ describe('MenuItemCheckbox', () => {
     expect(spy).toHaveBeenCalledWith(expect.anything(), checkboxName, '1', expectedCheckedState);
   });
 
-  it.each([[EnterKey], [SpacebarKey]])('should call toggleCheckbox with %s key', keyCode => {
+  it.each([[Enter], [Space]])('should call toggleCheckbox with %s key', key => {
     // Arrange
     const spy = jest.fn();
     const { getByRole } = render(
@@ -131,8 +144,8 @@ describe('MenuItemCheckbox', () => {
     );
 
     // Act
-    fireEvent.keyDown(getByRole('menuitemcheckbox'), { keyCode });
-    fireEvent.keyUp(getByRole('menuitemcheckbox'), { keyCode });
+    fireEvent.keyDown(getByRole('menuitemcheckbox'), { key });
+    fireEvent.keyUp(getByRole('menuitemcheckbox'), { key });
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);

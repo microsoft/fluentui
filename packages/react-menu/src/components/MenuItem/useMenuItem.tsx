@@ -8,34 +8,24 @@ import {
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
-import { useMenuTriggerContext } from '../../contexts/menuTriggerContext';
-import { ChevronRightIcon, ChevronLeftIcon } from '../../utils/DefaultIcons';
-import { useMenuListContext } from '../../contexts/menuListContext';
-import { useMenuContext } from '../../contexts/menuContext';
-import type { MenuItemProps, MenuItemSlots, MenuItemState } from './MenuItem.types';
-
-/**
- * Consts listing which props are shorthand props.
- */
-export const menuItemSlots: Array<keyof MenuItemSlots> = [
-  'root',
-  'icon',
-  'submenuIndicator',
-  'content',
-  'secondaryContent',
-  'checkmark',
-];
+import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
+import { ChevronRightRegular as ChevronRightIcon, ChevronLeftRegular as ChevronLeftIcon } from '@fluentui/react-icons';
+import { useMenuListContext_unstable } from '../../contexts/menuListContext';
+import { useMenuContext_unstable } from '../../contexts/menuContext';
+import type { MenuItemProps, MenuItemState } from './MenuItem.types';
 
 /**
  * Returns the props and state required to render the component
  */
-export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
-  const hasSubmenu = useMenuTriggerContext();
-  const hasIcons = useMenuListContext(context => context.hasIcons);
-  const hasCheckmarks = useMenuListContext(context => context.hasCheckmarks);
-  const setOpen = useMenuContext(context => context.setOpen);
-  const persistOnClickContext = useMenuContext(context => context.persistOnItemClick);
+export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
+  const hasIcons = useMenuListContext_unstable(context => context.hasIcons);
+  const hasCheckmarks = useMenuListContext_unstable(context => context.hasCheckmarks);
+  const setOpen = useMenuContext_unstable(context => context.setOpen);
+  const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
   const dismissedWithKeyboardRef = React.useRef(false);
+
+  const isSubmenuTrigger = useMenuTriggerContext_unstable();
+  const hasSubmenu = props.hasSubmenu ?? isSubmenuTrigger;
 
   const { dir } = useFluent();
   const innerRef = React.useRef<HTMLElement>(null);
@@ -44,6 +34,7 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): 
     hasSubmenu,
     ...props,
     components: {
+      root: 'div',
       icon: 'span',
       checkmark: 'span',
       submenuIndicator: 'span',
@@ -60,16 +51,20 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): 
     icon: resolveShorthand(props.icon, { required: hasIcons }),
     checkmark: resolveShorthand(props.checkmark, { required: hasCheckmarks }),
     submenuIndicator: resolveShorthand(props.submenuIndicator, {
+      required: hasSubmenu,
       defaultProps: {
         children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />,
       },
     }),
-    content: resolveShorthand(props.content, { required: true, defaultProps: { children: props.children } }),
+    content: resolveShorthand(props.content, {
+      required: !!props.children,
+      defaultProps: { children: props.children },
+    }),
     secondaryContent: resolveShorthand(props.secondaryContent),
   };
 
   const { onClick: onClickOriginal, onKeyDown: onKeyDownOriginal } = state.root;
-  state.root.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+  state.root.onKeyDown = e => {
     if (shouldPreventDefaultOnKeyDown(e)) {
       if (state.disabled) {
         e.preventDefault();
@@ -85,7 +80,7 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): 
     onKeyDownOriginal?.(e);
   };
 
-  state.root.onClick = (e: React.MouseEvent<HTMLElement>) => {
+  state.root.onClick = e => {
     if (state.disabled) {
       e.preventDefault();
       e.stopPropagation();
@@ -107,7 +102,7 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): 
   };
 
   const { onMouseEnter: onMouseEnterOriginal } = state.root;
-  state.root.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+  state.root.onMouseEnter = useEventCallback(e => {
     innerRef.current?.focus();
 
     onMouseEnterOriginal?.(e);

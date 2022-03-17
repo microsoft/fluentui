@@ -162,12 +162,13 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       isFluentStyling,
       ariaLabelSelected,
       nameplateOnlyOnHover,
+      disabled = false,
       ...divProps
     } = this.props;
 
     const { isSelected = false, isModal = false } = this.state;
 
-    const { isSelectable = !!selection && selectionIndex > -1 } = this.props;
+    const { isSelectable = !disabled && !!selection && selectionIndex > -1 } = this.props;
     const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
     const ariaLabelWithSelectState = isSelected && ariaLabelSelected ? `${ariaLabel}, ${ariaLabelSelected}` : ariaLabel;
     const content = (
@@ -223,7 +224,8 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         aria-selected={isSelected}
         {...getNativeProps(divProps, divProperties)}
         aria-labelledby={ariaLabel ? this._labelId : this._nameId}
-        aria-describedby={ariaLabelWithSelectState ? this._descriptionId : this._activityId}
+        aria-describedby={ariaLabelWithSelectState || descriptionAriaLabel ? this._descriptionId : this._activityId}
+        aria-disabled={disabled || undefined}
         className={css('ms-Tile', className, TileStyles.tile, {
           [`ms-Tile--isSmall ${TileStyles.isSmall}`]: tileSize === 'small',
           [`ms-Tile--isLarge ${TileStyles.isLarge}`]: tileSize === 'large',
@@ -236,10 +238,11 @@ export class Tile extends React.Component<ITileProps, ITileState> {
           [`ms-Tile--showBackground ${TileStyles.showBackground}`]: !hideBackground,
           [`ms-Tile--invokable ${TileStyles.invokable}`]: isInvokable,
           [`ms-Tile--uninvokable ${TileStyles.uninvokable}`]: !isInvokable,
-          [`ms-Tile--isDisabled ${TileStyles.disabled}`]: !isSelectable && !isInvokable,
+          [`ms-Tile--isDisabled ${TileStyles.disabled}`]: disabled,
           [`ms-Tile--showCheck ${TileStyles.showCheck}`]: isModal,
           [`ms-Tile--isFluentStyling ${TileStyles.isFluentStyling}`]: isFluentStyling,
         })}
+        data-selection-disabled={disabled || undefined}
         data-is-focusable={true}
         data-is-sub-focuszone={true}
         data-disable-click-on-enter={true}
@@ -248,11 +251,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       >
         {link}
         {descriptionAriaLabel ? (
-          <span
-            key="description"
-            id={this._descriptionId}
-            className={css('ms-Tile-description', TileStylesModule.description)}
-          >
+          <span key="description" role="presentation" hidden={true} id={this._descriptionId}>
             {descriptionAriaLabel}
           </span>
         ) : null}

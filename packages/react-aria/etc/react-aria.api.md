@@ -4,15 +4,24 @@
 
 ```ts
 
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
-import type { ResolveShorthandOptions } from '@fluentui/react-utilities';
-import type { ShorthandProps } from '@fluentui/react-utilities';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
+import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type ARIAButtonShorthandProps = ObjectShorthandProps<JSX.IntrinsicElements['button'], HTMLButtonElement, 'button'> | ObjectShorthandProps<JSX.IntrinsicElements['div'], HTMLDivElement, 'div'> | ObjectShorthandProps<JSX.IntrinsicElements['span'], HTMLSpanElement, 'span'> | ObjectShorthandProps<JSX.IntrinsicElements['a'], HTMLAnchorElement, 'a'>;
+export type ARIAButtonSlotProps = ExtractSlotProps<Slot<'button', 'a'>> & {
+    disabled?: boolean;
+    disabledFocusable?: boolean;
+};
 
 // @public
-export function useARIAButton<Required extends boolean = false>(value: ShorthandProps<ARIAButtonShorthandProps>, options?: ResolveShorthandOptions<ARIAButtonShorthandProps, Required>): Required extends false ? ARIAButtonShorthandProps | undefined : ARIAButtonShorthandProps;
+export function mergeARIADisabled(shorthand: {
+    'aria-disabled'?: string | boolean;
+    disabled?: boolean;
+}): boolean;
+
+// @public
+export const useARIAButton: ResolveShorthandFunction<ARIAButtonSlotProps>;
 
 // (No @packageDocumentation comment for this package)
 

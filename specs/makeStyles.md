@@ -246,7 +246,7 @@ The `styles` passed to `makeStyles({ [key] })` call can be either an object or a
 ```js
 const useStyles = makeStyles({
   root: { display: 'flex' },
-  rootPrimary: theme => ({ color: theme.alias.color.neutral.neutralForeground3 }),
+  rootPrimary: theme => ({ color: theme.colorNeutralForeground3 }),
 });
 ```
 

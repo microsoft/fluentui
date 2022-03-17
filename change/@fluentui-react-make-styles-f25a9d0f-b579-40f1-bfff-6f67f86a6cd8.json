@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9.",
+  "packageName": "@fluentui/react-make-styles",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch"
+}

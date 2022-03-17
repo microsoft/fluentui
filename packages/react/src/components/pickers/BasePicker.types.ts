@@ -6,6 +6,7 @@ import type { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggesti
 import type { ICalloutProps } from '../../Callout';
 import type { ITheme, IStyle } from '../../Styling';
 import type { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
+import { IIconProps } from '../Icon/Icon.types';
 
 /**
  * BasePicker component.
@@ -241,6 +242,12 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * Theme provided by styled() function.
    */
   theme?: ITheme;
+
+  /**
+   *  Props for the icon used in the item's remove button.
+   *  @defaultvalue `{ iconName:'Cancel' }`
+   */
+  removeButtonIconProps?: IIconProps;
 }
 
 /**
@@ -258,6 +265,7 @@ export interface IBasePickerSuggestionsProps<T = any>
     | 'className'
     | 'suggestionsClassName'
     | 'suggestionsItemClassName'
+    | 'searchForMoreIcon'
     | 'searchForMoreText'
     | 'forceResolveText'
     | 'loadingText'
@@ -269,6 +277,7 @@ export interface IBasePickerSuggestionsProps<T = any>
     | 'suggestionsAvailableAlertText'
     | 'suggestionsContainerAriaLabel'
     | 'showForceResolve'
+    | 'removeButtonIconProps'
   > {}
 
 /**

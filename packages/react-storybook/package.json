@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/react-storybook",
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0-rc.1",
   "private": true,
-  "description": "Storybook addons and utils for Fluent UI React",
+  "description": "Storybook addons and utils for @fluentui/react-components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -19,21 +19,19 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-storybook/src && yarn docs",
-    "storybook": "start-storybook"
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-storybook/src && yarn docs",
+    "storybook": "node ../../scripts/storybook/runner",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@types/react": "16.9.42",
-    "@fluentui/scripts": "^1.0.0",
-    "react": "16.8.6",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.36"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-provider": "^9.0.0-alpha.71",
-    "@fluentui/react-theme": "^9.0.0-alpha.22",
+    "@fluentui/react-provider": "9.0.0-rc.5",
+    "@fluentui/react-theme": "9.0.0-rc.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -43,11 +41,17 @@
     "@storybook/addons": "^6.0.28"
   },
   "beachball": {
-    "tag": "alpha",
     "disallowedChangeTypes": [
       "major",
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

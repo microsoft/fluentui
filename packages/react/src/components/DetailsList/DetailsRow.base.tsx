@@ -23,6 +23,7 @@ import type { IDetailsRowBaseProps, IDetailsRowStyleProps, IDetailsRowStyles } f
 import type { IDetailsRowCheckProps } from './DetailsRowCheck.types';
 import type { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import type { IProcessedStyleSet } from '../../Styling';
+import { getId } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
@@ -57,6 +58,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
   private _classNames: IProcessedStyleSet<IDetailsRowStyles>;
   private _rowClassNames: IDetailsRowFieldsProps['rowClassNames'];
+  private _ariaRowDescriptionId: string;
 
   public static getDerivedStateFromProps(
     nextProps: IDetailsRowBaseProps,
@@ -189,6 +191,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       rowWidth = 0,
       checkboxVisibility,
       getRowAriaLabel,
+      getRowAriaDescription,
       getRowAriaDescribedBy,
       checkButtonAriaLabel,
       checkboxCellClassName,
@@ -206,14 +209,16 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       cellStyleProps,
       group,
       focusZoneProps,
+      disabled = false,
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
     const isDraggable = dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrag(item)) : undefined;
     const droppingClassName = isDropping ? this._droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : '';
     const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : undefined;
+    const ariaRowDescription = getRowAriaDescription ? getRowAriaDescription(item) : undefined;
     const ariaDescribedBy = getRowAriaDescribedBy ? getRowAriaDescribedBy(item) : undefined;
-    const canSelect = !!selection && selection.canSelectItem(item, itemIndex);
+    const canSelect = !!selection && selection.canSelectItem(item, itemIndex) && !disabled;
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
@@ -234,6 +239,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         compact,
         enableUpdateAnimations,
         cellStyleProps,
+        disabled,
       }),
     };
 
@@ -273,6 +279,14 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
     const defaultRole = 'row';
     const role = this.props.role ? this.props.role : defaultRole;
+    this._ariaRowDescriptionId = getId('DetailsRow-description');
+
+    // When the user does not specify any column is a row-header in the columns props,
+    // The aria-labelledby of the checkbox does not specify {id}-header.
+    const hasRowHeader = columns.some(column => {
+      return !!column.isRowHeader;
+    });
+    const ariaLabelledby = `${id}-checkbox` + (hasRowHeader ? ` ${id}-header` : '');
 
     return (
       <FocusZone
@@ -290,10 +304,12 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         componentRef={this._focusZone}
         role={role}
         aria-label={ariaLabel}
-        aria-describedby={ariaDescribedBy}
+        aria-disabled={disabled || undefined}
+        aria-describedby={ariaRowDescription ? this._ariaRowDescriptionId : ariaDescribedBy}
         className={this._classNames.root}
         data-selection-index={itemIndex}
         data-selection-touch-invoke={true}
+        data-selection-disabled={disabled || undefined}
         data-item-index={itemIndex}
         aria-rowindex={ariaPositionInSet === undefined ? itemIndex + flatIndexOffset : undefined}
         aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}
@@ -304,15 +320,20 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         aria-selected={ariaSelected}
         allowFocusRoot={true}
       >
+        {ariaRowDescription ? (
+          <span key="description" role="presentation" hidden={true} id={this._ariaRowDescriptionId}>
+            {ariaRowDescription}
+          </span>
+        ) : null}
         {showCheckbox && (
-          <div role="gridcell" aria-colindex={1} data-selection-toggle={true} className={this._classNames.checkCell}>
+          <div role="gridcell" data-selection-toggle={true} className={this._classNames.checkCell}>
             {onRenderCheck({
               id: id ? `${id}-checkbox` : undefined,
               selected: isSelected,
               selectionMode,
               anySelected: isSelectionModal,
               'aria-label': checkButtonAriaLabel,
-              'aria-labelledby': id ? `${id}-checkbox ${id}-header` : undefined,
+              'aria-labelledby': id ? ariaLabelledby : undefined,
               canSelect,
               compact,
               className: this._classNames.check,

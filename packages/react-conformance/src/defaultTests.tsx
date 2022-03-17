@@ -1,40 +1,19 @@
 import { TestObject, IsConformantOptions } from './types';
 import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
-import { getComponent } from './utils/getComponent';
-import { mount, ReactWrapper } from 'enzyme';
+import { getComponent, getPackagePath, getCallbackArguments, validateCallbackArguments } from './utils/index';
+import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import parseDocblock from './utils/parseDocblock';
 
 import * as React from 'react';
 import * as _ from 'lodash';
 import * as path from 'path';
-import consoleUtil from './utils/consoleUtil';
+
+const CALLBACK_REGEX = /^on(?!Render[A-Z])[A-Z]/;
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export const defaultTests: TestObject = {
-  /** Component has a docblock with 5 to 25 words */
-  'has-docblock': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    const maxWords = 25;
-    const minWords = 5;
-
-    it(`has a docblock with ${minWords} to ${maxWords} words (has-docblock)`, () => {
-      let description = '(not yet parsed)'; // improves the error message if there's a parsing error
-      let wordCount: number | undefined;
-      try {
-        const docblock = parseDocblock(componentInfo.description);
-        description = docblock.description;
-        wordCount = _.words(description).length;
-
-        expect(wordCount).toBeGreaterThanOrEqual(minWords);
-        expect(wordCount).toBeLessThanOrEqual(maxWords);
-      } catch (e) {
-        throw new Error(defaultErrorMessages['has-docblock'](testInfo, e, description, wordCount));
-      }
-    });
-  },
-
   /** Component file exports a valid React element type  */
   'exports-component': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`exports component from file under correct name (exports-component)`, () => {
@@ -126,12 +105,21 @@ export const defaultTests: TestObject = {
           wrapperComponent,
           elementRefName = 'ref',
           targetComponent,
+          primarySlot = 'root',
         } = testInfo;
 
         const rootRef = React.createRef<HTMLDivElement>();
         const mergedProps: Partial<{}> = {
           ...requiredProps,
-          [elementRefName]: rootRef,
+          ...(primarySlot !== 'root'
+            ? {
+                // If primarySlot is something other than 'root', add the ref to
+                // the root slot rather than to the component's props.
+                root: { ref: rootRef },
+              }
+            : {
+                [elementRefName]: rootRef,
+              }),
         };
 
         const el = targetComponent
@@ -149,6 +137,53 @@ export const defaultTests: TestObject = {
         });
       } catch (e) {
         throw new Error(defaultErrorMessages['component-has-root-ref'](testInfo, e));
+      }
+    });
+  },
+
+  /**
+   * Component does not apply `size` as a native prop when a custom version is defined.
+   *
+   * Background: `input` and `select` support a `size` prop which is not very useful
+   * (https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/size).
+   * Since we don't anticipate ever needing this functionality, and we often want to use the prop name
+   * `size` to refer to visual size (like small/medium/large), we want to ensure that components defining
+   * a custom `size` prop don't also apply it as a native prop by accident.
+   *
+   * (In the extremely unlikely event that someone has a compelling need for the native functionality
+   * in the future, it can be added under an `htmlSize` prop.)
+   */
+  'omits-size-prop': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    const sizeType = componentInfo.props.size?.type?.name;
+    if (!sizeType || componentInfo.props.htmlSize) {
+      return;
+    }
+    // if the size prop is defined, type.name will probably be 'string | undefined'
+    // or something like '"small" | "medium" | "large" | undefined'
+    const sizeIsString = /\bstring\b/.test(sizeType);
+    const sizeLiteralMatch = sizeType.match(/"(.*?)"/);
+    if (!sizeIsString || sizeLiteralMatch) {
+      return; // not a format we know how to test
+    }
+
+    it(`does not apply native size prop if custom one is defined (omits-size-prop)`, () => {
+      const { customMount = mount, Component, requiredProps, helperComponents = [], wrapperComponent } = testInfo;
+
+      const size = sizeLiteralMatch?.[1] || 'foo';
+      const mergedProps = {
+        ...requiredProps,
+        size,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any; // we know the size prop is supported but there's not a good way to derive the actual type
+
+      const el = customMount(<Component {...mergedProps} />);
+      const component = getComponent(el, helperComponents, wrapperComponent);
+      const elementWithSize = component.getDOMNode().querySelector('[size]');
+
+      try {
+        expect(elementWithSize).toBeFalsy();
+      } catch (e) {
+        throw new Error(defaultErrorMessages['omits-size-prop'](testInfo, e, size, elementWithSize!));
       }
     });
   },
@@ -220,6 +255,162 @@ export const defaultTests: TestObject = {
     });
   },
 
+  /** Component file has assigned and exported static class */
+  'component-has-static-classname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    const {
+      componentPath,
+      Component,
+      wrapperComponent,
+      helperComponents = [],
+      requiredProps,
+      customMount = mount,
+    } = testInfo;
+    const componentClassName = `fui-${componentInfo.displayName}`;
+
+    it(`has static classname (component-has-static-classname)`, () => {
+      const defaultEl = customMount(<Component {...requiredProps} />);
+
+      const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
+      const classNames = defaultComponent.prop<string>('className');
+
+      try {
+        expect(classNames).toContain(componentClassName);
+      } catch (e) {
+        throw new Error(
+          defaultErrorMessages['component-has-static-classname'](testInfo, e, componentClassName, classNames),
+        );
+      }
+    });
+
+    it(`static classname is exported at top-level (component-has-static-classname-exported)`, () => {
+      if (testInfo.isInternal) {
+        return;
+      }
+
+      const exportName =
+        componentInfo.displayName.slice(0, 1).toLowerCase() + componentInfo.displayName.slice(1) + 'ClassName';
+
+      try {
+        const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
+
+        expect(indexFile[exportName]).toBe(componentClassName);
+      } catch (e) {
+        throw new Error(
+          defaultErrorMessages['component-has-static-classname-exported'](testInfo, e, componentClassName, exportName),
+        );
+      }
+    });
+  },
+
+  'component-has-static-classnames-object': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    const {
+      componentPath,
+      Component,
+      wrapperComponent,
+      helperComponents = [],
+      requiredProps,
+      customMount = mount,
+    } = testInfo;
+
+    const componentName = componentInfo.displayName;
+    const componentClassName = `fui-${componentName}`;
+    const exportName = `${componentName[0].toLowerCase()}${componentName.slice(1)}ClassNames`;
+    const indexPath = path.join(getPackagePath(componentPath), 'src', 'index');
+    let handledClassNamesObjectExport = false;
+
+    it('has static classnames exported at top-level (component-has-static-classnames-object)', () => {
+      if (testInfo.isInternal) {
+        return;
+      }
+
+      try {
+        const indexFile = require(indexPath);
+        const classNamesFromFile = indexFile[exportName];
+        expect(classNamesFromFile).toBeTruthy();
+        handledClassNamesObjectExport = true;
+      } catch (e) {
+        throw new Error(
+          defaultErrorMessages['component-has-static-classnames-object-exported'](
+            testInfo,
+            e,
+            componentClassName,
+            exportName,
+          ),
+        );
+      }
+    });
+
+    it('has static classnames in correct format (component-has-static-classnames-object)', () => {
+      if (!handledClassNamesObjectExport) {
+        return;
+      }
+
+      const indexFile = require(indexPath);
+      const classNamesFromFile = indexFile[exportName];
+
+      const expectedClassNames = Object.keys(classNamesFromFile).reduce(
+        (obj: { [key: string]: string }, key: string) => {
+          obj[key] = key === 'root' ? componentClassName : `${componentClassName}__${key}`;
+          return obj;
+        },
+        {},
+      );
+
+      try {
+        expect(classNamesFromFile).toEqual(expectedClassNames);
+      } catch (e) {
+        throw new Error(
+          defaultErrorMessages['component-has-static-classnames-in-correct-format'](
+            testInfo,
+            e,
+            componentClassName,
+            exportName,
+          ),
+        );
+      }
+    });
+
+    it(`has static classnames in rendered component (component-has-static-classnames-object)`, () => {
+      if (!handledClassNamesObjectExport) {
+        return;
+      }
+
+      const { testOptions = {} } = testInfo;
+      const staticClassNameVariants = testOptions['has-static-classnames'] ?? [{ props: {} }];
+
+      for (const staticClassNames of staticClassNameVariants) {
+        const mergedProps = {
+          ...requiredProps,
+          ...staticClassNames.props,
+        };
+        const defaultEl = customMount(<Component {...mergedProps} />);
+        const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
+
+        const indexFile = require(indexPath);
+        const classNamesFromFile = indexFile[exportName];
+
+        const expectedClassNames: { [key: string]: string } = staticClassNames.expectedClassNames ?? classNamesFromFile;
+        const missingClassNames = Object.values(expectedClassNames).reduce((acc, className) => {
+          if (defaultComponent.find(`.${className}`).length < 1) {
+            (acc as string[]).push(className);
+          }
+          return acc;
+        }, []);
+
+        if (missingClassNames.length > 0) {
+          throw new Error(
+            defaultErrorMessages['component-has-static-classnames'](
+              testInfo,
+              new Error(),
+              componentName,
+              missingClassNames.join(', '),
+            ),
+          );
+        }
+      }
+    });
+  },
+
   /** Constructor/component name matches filename */
   'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`Component/constructor name matches filename (name-matches-filename)`, () => {
@@ -270,27 +461,6 @@ export const defaultTests: TestObject = {
     });
   },
 
-  /** If the component is a subcomponent, ensure its parent has the subcomponent as static property */
-  'is-static-property-of-parent': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    const { componentPath, displayName, Component } = testInfo;
-    const componentFolder = componentPath.replace(path.basename(componentPath) + path.extname(componentPath), '');
-    const dirName = path.basename(componentFolder).replace(path.extname(componentFolder), '');
-    const isParent = displayName === dirName;
-    if (isParent) {
-      return;
-    }
-
-    it(`is a static property of its parent (is-static-property-of-parent)`, () => {
-      try {
-        const parentComponentFile = require(path.join(componentFolder, dirName));
-        const ParentComponent = parentComponentFile.default || parentComponentFile[dirName];
-        expect(ParentComponent[displayName]).toBe(Component);
-      } catch (e) {
-        throw new Error(defaultErrorMessages['is-static-property-of-parent'](testInfo, e));
-      }
-    });
-  },
-
   /** Ensures aria attributes are kebab cased */
   'kebab-aria-attributes': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`uses kebab-case for aria attributes (kebab-aria-attributes)`, () => {
@@ -314,7 +484,7 @@ export const defaultTests: TestObject = {
       const ignoreProps = testOptions['consistent-callback-names']?.ignoreProps || [];
 
       const invalidProps = propNames.filter(propName => {
-        if (!ignoreProps.includes(propName) && /^on(?!Render[A-Z])[A-Z]/.test(propName)) {
+        if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
           const words = propName.slice(2).match(/[A-Z][a-z]+/g);
           if (words) {
             // Make sure last word doesn't end with ed
@@ -333,135 +503,141 @@ export const defaultTests: TestObject = {
     });
   },
 
-  /** If it has "as" prop: Renders as functional component or passes as to the next component */
-  'as-renders-fc': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (testInfo.skipAsPropTests) {
-      return;
-    }
+  /** Ensures that components have consistent callback arguments (ev, data) */
+  'consistent-callback-args': (componentInfo, testInfo, tsProgram) => {
+    it('has consistent custom callback arguments (consistent-callback-args)', () => {
+      const { testOptions = {} } = testInfo;
 
-    it(`renders as a functional component or passes "as" to the next  (as-renders-fc)`, () => {
-      try {
-        const {
-          requiredProps,
-          Component,
-          customMount = mount,
-          wrapperComponent,
-          helperComponents = [],
-          asPropHandlesRef,
-        } = testInfo;
-        const MyComponent = asPropHandlesRef ? React.forwardRef((props, ref) => null) : () => null;
+      const propNames = Object.keys(componentInfo.props);
+      const ignoreProps = testOptions['consistent-callback-args']?.ignoreProps || [];
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
-        const component = getComponent(wrapper, helperComponents, wrapperComponent);
+      const invalidProps = propNames.reduce<Record<string, Error>>((errors, propName) => {
+        if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
+          const propInfo = componentInfo.props[propName];
 
-        try {
-          expect(component.type()).toBe(MyComponent);
-        } catch (err) {
-          expect(component.type()).not.toBe(Component);
-          const comp = component.find('[as]').last().prop('as');
-          expect(comp).toBe(MyComponent);
-        }
-      } catch (e) {
-        throw new Error(defaultErrorMessages['as-renders-fc'](testInfo, e));
-      }
-    });
-  },
-
-  /** If it has "as" prop: Renders as ReactClass or passes as to the next component */
-  'as-renders-react-class': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (testInfo.skipAsPropTests || testInfo.asPropHandlesRef) {
-      return;
-    }
-
-    it(`renders as a ReactClass or passes "as" to the next component (as-renders-react-class)`, () => {
-      try {
-        const { requiredProps, Component, customMount = mount, wrapperComponent, helperComponents = [] } = testInfo;
-
-        class MyComponent extends React.Component {
-          public render() {
-            return <div data-my-react-class />;
+          if (!propInfo.declarations) {
+            throw new Error(
+              [
+                `Definition for "${propName}" does not have ".declarations" produced by "react-docgen-typescript".`,
+                'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
+                'where it happens and used interfaces.',
+              ].join(' '),
+            );
           }
-        }
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
-        const component = getComponent(wrapper, helperComponents, wrapperComponent);
+          if (propInfo.declarations.length !== 1) {
+            throw new Error(
+              [
+                `Definition for "${propName}" has multiple elements in ".declarations" produced by `,
+                `"react-docgen-typescript".`,
+                'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
+                'where it happens and used interfaces.',
+              ].join(' '),
+            );
+          }
 
-        try {
-          expect(component.type()).toBe(MyComponent);
-        } catch (err) {
-          expect(component.type()).not.toBe(Component);
-          expect(component.prop('as')).toBe(MyComponent);
-        }
-      } catch (e) {
-        throw new Error(defaultErrorMessages['as-renders-react-class'](testInfo, e));
-      }
-    });
-  },
-
-  /** If it has "as" prop: Passes extra props to the component it renders as */
-  'as-passes-as-value': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (testInfo.skipAsPropTests) {
-      return;
-    }
-
-    it(`passes extra props to the component it is renders as (as-passes-as-value)`, () => {
-      const { customMount = mount, Component, requiredProps, targetComponent, asPropHandlesRef } = testInfo;
-
-      let el: ReactWrapper;
-      if (targetComponent) {
-        el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(targetComponent);
-      } else {
-        const MyComponent = asPropHandlesRef ? React.forwardRef((props, ref) => null) : () => null;
-        el = customMount(
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          <Component {...requiredProps} {...({ as: MyComponent } as any)} data-extra-prop="foo" />,
-        ).find(MyComponent);
-      }
-
-      try {
-        expect(el.prop('data-extra-prop')).toBe('foo');
-      } catch (e) {
-        throw new Error(defaultErrorMessages['as-passes-as-value'](testInfo, e));
-      }
-    });
-  },
-
-  /** If it has "as" prop: Renders component as HTML tags */
-  'as-renders-html': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (testInfo.skipAsPropTests) {
-      return;
-    }
-
-    it(`renders component as HTML tags or passes "as" to the next component (as-renders-html)`, () => {
-      try {
-        // silence element nesting warnings
-        consoleUtil.disableOnce();
-        const tags = ['a', 'em', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'p', 'span', 'strong'];
-        const { Component, customMount = mount, requiredProps, wrapperComponent, helperComponents = [] } = testInfo;
-
-        tags.forEach(tag => {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const wrapper = customMount(<Component {...requiredProps} {...({ as: tag } as any)} />);
-          const component = getComponent(wrapper, helperComponents, wrapperComponent);
+          const rootFileName = propInfo.declarations[0].fileName;
+          const propsTypeName = propInfo.declarations[0].name;
 
           try {
-            expect(component.is(tag)).toBe(true);
+            validateCallbackArguments(getCallbackArguments(tsProgram, rootFileName, propsTypeName, propName));
           } catch (err) {
-            expect(component.type()).not.toBe(Component);
-            expect(component.prop('as')).toBe(tag);
+            console.log('err', err);
+
+            return { ...errors, [propName]: err };
           }
+        }
+
+        return errors;
+      }, {});
+
+      try {
+        expect(invalidProps).toEqual({});
+      } catch (e) {
+        throw new Error(defaultErrorMessages['consistent-callback-args'](testInfo, invalidProps));
+      }
+    });
+  },
+
+  /** If the primary slot is specified, it receives native props other than 'className' and 'style' */
+  'primary-slot-gets-native-props': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    it(`applies correct native props to the primary and root slots (primary-slot-gets-native-props)`, () => {
+      try {
+        const {
+          customMount = mount,
+          Component,
+          requiredProps,
+          helperComponents = [],
+          wrapperComponent,
+          targetComponent,
+          primarySlot = 'root',
+        } = testInfo;
+
+        // This test only applies if this component has a primary slot other than 'root'
+        if (primarySlot === 'root') {
+          return;
+        }
+
+        // Add this data attribute directly to the primary slot so that its DOM node can be
+        // found to verify that the props went to the correct element
+        const primarySlotDataTag = 'data-primary-slot';
+
+        // Add these values to the component's props to make sure they are forwarded to the appropriate slot
+        const ref = React.createRef<HTMLElement>();
+        const testDataAttribute = 'data-conformance-test'; // A data attribute is a proxy for any arbitrary native prop
+        const testClass = 'conformance-test-class-name';
+        const testStyleFontFamily = 'conformance-test-font-family';
+
+        const mergedProps: Partial<{}> = {
+          ...requiredProps,
+          [primarySlot]: {
+            [primarySlotDataTag]: true,
+          },
+          ref,
+          className: testClass,
+          style: { fontFamily: testStyleFontFamily },
+          [testDataAttribute]: testDataAttribute,
+        };
+
+        const el = targetComponent
+          ? customMount(<Component {...mergedProps} />).find(targetComponent)
+          : customMount(<Component {...mergedProps} />);
+
+        act(() => {
+          const component = getComponent(el, helperComponents, wrapperComponent);
+
+          const rootNode = component.getDOMNode();
+          expect(rootNode).toBeInstanceOf(HTMLElement);
+          if (!(rootNode instanceof HTMLElement)) {
+            return;
+          }
+
+          // Find the node that represents the primary slot, searching for its data attribute
+          const primaryNode = rootNode.querySelector(`[${primarySlotDataTag}]`);
+
+          // We should have found the primary slot's node
+          expect(primaryNode).toBeInstanceOf(HTMLElement);
+          if (!(primaryNode instanceof HTMLElement)) {
+            return;
+          }
+
+          // className and style should go the *root* slot
+          expect(rootNode.className).toContain(testClass);
+          expect(rootNode.style.fontFamily).toEqual(testStyleFontFamily);
+          // ... and not the primary slot
+          expect(primaryNode.className).not.toContain(testClass);
+          expect(primaryNode.style.fontFamily).not.toEqual(testStyleFontFamily);
+
+          // Ref and all other native props should go to the *primary* slot
+          expect(primaryNode).toBe(ref.current);
+          expect(primaryNode.getAttribute(testDataAttribute)).toEqual(testDataAttribute);
+          // ... and not the root slot
+          expect(rootNode).not.toBe(ref.current);
+          expect(rootNode.getAttribute(testDataAttribute)).not.toEqual(testDataAttribute);
         });
       } catch (e) {
-        throw new Error(defaultErrorMessages['as-renders-html'](testInfo, e));
+        throw new Error(defaultErrorMessages['primary-slot-gets-native-props'](testInfo, e));
       }
     });
   },
 };
-
-function getPackagePath(componentPath: string) {
-  // Use lastIndexOf in case anyone has all their repos under a folder called "src" (it happens)
-  const srcIndex = componentPath.replace(/\\/g, '/').lastIndexOf('/src/');
-  return componentPath.slice(0, srcIndex);
-}

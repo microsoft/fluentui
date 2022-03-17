@@ -73,6 +73,12 @@ export const AppDefinition: IAppDefinition = {
           name: 'HeatMapChart',
           url: '#/examples/HeatMapChart',
         },
+        {
+          component: require<any>('../SankeyChart/SankeyChartPage').SankeyChartPage,
+          key: 'SankeyChart',
+          name: 'SankeyChart',
+          url: '#/examples/sankeychart',
+        },
       ],
     },
   ],

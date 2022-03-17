@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
-import type { TextState } from './Text.types';
+import { getSlots } from '@fluentui/react-utilities';
+import type { TextSlots, TextState } from './Text.types';
 
 /**
  * Render the final JSX of Text
  */
-export const renderText = (state: TextState) => {
-  const { slots, slotProps } = getSlotsCompat(state);
+export const renderText_unstable = (state: TextState) => {
+  const { slots, slotProps } = getSlots<TextSlots>(state);
 
-  return <slots.root {...slotProps.root}>{state.children}</slots.root>;
+  return <slots.root {...slotProps.root} />;
 };

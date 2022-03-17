@@ -2,7 +2,7 @@ import { html } from '@microsoft/fast-element';
 import { Button, ColumnDefinition, DataGrid, DataGridCell, DataGridRow } from '@microsoft/fast-foundation';
 import { GenerateHeaderOptions } from '@microsoft/fast-foundation/dist/esm/data-grid/data-grid.options';
 import addons from '@storybook/addons';
-import { STORY_RENDERED } from '@storybook/core-events';
+import { DOCS_RENDERED } from '@storybook/core-events';
 import DataGridTemplate from './fixtures/base.html';
 import './index';
 
@@ -47,8 +47,8 @@ const customHeaderCellItemTemplate = html`
     ></fast-data-grid-header-cell>
 `;
 
-addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
-  if (name.toLowerCase().startsWith('data-grid')) {
+addons.getChannel().addListener(DOCS_RENDERED, (name: string) => {
+  if (name.toLowerCase().includes('components/data grid')) {
     defaultGridElement = document.getElementById('defaultGrid') as DataGrid;
     reset();
 
@@ -89,7 +89,7 @@ addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
     if (headerCell) {
       headerCell.columnDefinition = {
         columnDataKey: 'name',
-        title: 'Name',
+        title: 'Components/Name',
       };
     }
 
@@ -394,7 +394,7 @@ const baseColumns: ColumnDefinition[] = [
 
 const templateColumns: ColumnDefinition[] = [
   {
-    title: 'RowID',
+    title: 'Components/RowID',
     columnDataKey: 'rowId',
     cellTemplate: buttonCellTemplate,
     cellFocusTargetCallback: getFocusTarget,
@@ -402,7 +402,7 @@ const templateColumns: ColumnDefinition[] = [
     headerCellFocusTargetCallback: getFocusTarget,
   },
   {
-    title: 'Column 1',
+    title: 'Components/Column 1',
     columnDataKey: 'item1',
     cellTemplate: buttonCellTemplate,
     cellFocusTargetCallback: getFocusTarget,
@@ -410,7 +410,7 @@ const templateColumns: ColumnDefinition[] = [
     headerCellFocusTargetCallback: getFocusTarget,
   },
   {
-    title: 'Column 2',
+    title: 'Components/Column 2',
     columnDataKey: 'item2',
     cellTemplate: buttonCellTemplate,
     cellFocusTargetCallback: getFocusTarget,
@@ -418,7 +418,7 @@ const templateColumns: ColumnDefinition[] = [
     headerCellFocusTargetCallback: getFocusTarget,
   },
   {
-    title: 'Column 3',
+    title: 'Components/Column 3',
     columnDataKey: 'item3',
     cellTemplate: buttonCellTemplate,
     cellFocusTargetCallback: getFocusTarget,
@@ -434,7 +434,19 @@ function getFocusTarget(cell: DataGridCell): HTMLElement {
 /* eslint-enable @typescript-eslint/ban-types */
 
 export default {
-  title: 'Data Grid',
+  title: 'Components/Data Grid',
 };
 
 export const dataGrid = () => DataGridTemplate;
+
+const example = `
+<fluent-data-grid id="defaultGrid" style="max-height: 400px; overflow-y: auto"></fluent-data-grid>
+`;
+
+dataGrid.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

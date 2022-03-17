@@ -110,6 +110,14 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onRenderDescription?: IRenderFunction<ITextFieldProps>;
 
   /**
+   * Custom renderer for the actual single-line input field (not used if `multiline` is true).
+   * This receives the processed props which would usually be passed to the `<input>` element
+   * and allows manually modifying them or rendering as a different element. (Use with care,
+   * since changes here could easily break the component.)
+   */
+  onRenderInput?: IRenderFunction<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
+
+  /**
    * Prefix displayed before the text field contents. This is not included in the value.
    * Ensure a descriptive label is present to assist screen readers, as the value does not include the prefix.
    */
@@ -159,6 +167,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * @defaultvalue false
    */
   readOnly?: boolean;
+
+  /**
+   * If true, the text field is invalid. Will be auto-determined by errorMessage unless set.
+   * @defaultvalue false
+   */
+  invalid?: boolean;
 
   /**
    * Static error message displayed below the text field. Use `onGetErrorMessage` to dynamically

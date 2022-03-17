@@ -211,4 +211,26 @@ export interface IAzureSemanticColors {
       primaryButtonBackground: string;
     };
   };
+  slider: {
+    activeBackground: string;
+    activeBackgroundHovered: string;
+    inactiveBackgroundHovered: string;
+    activeDisabledBackground: string;
+    inactiveDisabledBackground: string;
+    activeBackgroundPressed: string;
+  };
+  calendar: {
+    background: string;
+    text: {
+      rest: string;
+      hover: string;
+      disabled: string;
+      outside: string;
+    };
+    button: {
+      border: string;
+      selected: string;
+      hover: string;
+    };
+  };
 }

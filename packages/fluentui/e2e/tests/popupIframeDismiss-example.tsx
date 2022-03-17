@@ -7,6 +7,10 @@ export const selectors = {
   iframe: 'iframe',
 };
 
+const iframeContent = `<div id="iframecontent">
+  <p>Hello World!</p>
+</div>`;
+
 const PopupEscHandlingExample = () => (
   <>
     <Popup
@@ -17,7 +21,7 @@ const PopupEscHandlingExample = () => (
         </>
       }
     />
-    <iframe className={selectors.iframe} title="iframe" src="https://fluentsite.z22.web.core.windows.net/0.57.0" />
+    <iframe className={selectors.iframe} title="iframe" srcDoc={iframeContent} />
   </>
 );
 

@@ -1,7 +1,10 @@
-import * as React from 'react';
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
 
-export interface ImageProps extends ComponentPropsCompat, React.ImgHTMLAttributes<HTMLImageElement> {
+export type ImageSlots = {
+  root: Slot<'img'>;
+};
+
+type ImageCommons = {
   /**
    * An image can appear with rectangular border.
    */
@@ -15,19 +18,20 @@ export interface ImageProps extends ComponentPropsCompat, React.ImgHTMLAttribute
   /**
    * An image can take up the width of its container.
    */
-  fluid?: boolean;
+  block?: boolean;
 
   /**
-   * An image can appear circular.
+   * An image can appear square, circular, or rounded.
+   * @defaultvalue square
    */
-  circular?: boolean;
+  shape?: 'square' | 'circular' | 'rounded';
 
   /**
-   * An image can appear rounded.
+   * An image can appear elevated with shadow.
    */
-  rounded?: boolean;
-}
+  shadow?: boolean;
+};
 
-export interface ImageState extends ImageProps {
-  ref: React.RefObject<HTMLElement>;
-}
+export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
+
+export type ImageState = ComponentState<ImageSlots> & ImageCommons;

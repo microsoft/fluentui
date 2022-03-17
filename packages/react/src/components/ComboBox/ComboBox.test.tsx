@@ -1,13 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+
 import { ReactWrapper } from 'enzyme';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+import { safeCreate, safeMount } from '@fluentui/test-utilities';
+
+import { isConformant } from '../../common/isConformant';
+import { Autofill } from '../../Autofill';
+import { useKeytipRef } from '../../Keytips';
+import { SelectableOptionMenuItemType } from '../../SelectableOption';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { ComboBox } from './ComboBox';
-import { SelectableOptionMenuItemType } from '../../SelectableOption';
-import { isConformant } from '../../common/isConformant';
-import { safeCreate, safeMount } from '@fluentui/test-utilities';
-import { useKeytipRef } from '../../Keytips';
-import { Autofill } from '../../Autofill';
 import type { IComboBox, IComboBoxOption } from './ComboBox.types';
 
 const OPTION_SELECTOR = '.ms-ComboBox-option';
@@ -207,6 +212,16 @@ describe('ComboBox', () => {
       wrapper.update();
 
       expect(wrapper.find('input').props().value).toEqual('');
+    });
+  });
+
+  it('Applies correct attributes to the selected option', () => {
+    safeMount(<ComboBox options={DEFAULT_OPTIONS} defaultSelectedKey="2" />, wrapper => {
+      // open combobox to check options list
+      wrapper.find('button').simulate('click');
+
+      const options = wrapper.find(BUTTON_OPTION);
+      expect(options.at(1).prop('aria-selected')).toEqual('true');
     });
   });
 
@@ -497,6 +512,30 @@ describe('ComboBox', () => {
     });
   });
 
+  it('Changing selected option with keyboard triggers onChange with the correct value', () => {
+    const onChange = jest.fn<
+      void,
+      [React.FormEvent<IComboBox>, IComboBoxOption | undefined, number | undefined, string | undefined]
+    >();
+    render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS3} onChange={onChange} />);
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    userEvent.tab();
+    userEvent.keyboard('{arrowdown}');
+    userEvent.tab();
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual(DEFAULT_OPTIONS3[2]);
+    expect(onChange.mock.calls[0][2]).toEqual(2);
+    expect(onChange.mock.calls[0][3]).toEqual(DEFAULT_OPTIONS3[2].text);
+
+    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS3} />, wrapper => {
+      wrapper.find('input').simulate('keydown', { which: KeyCodes.up });
+      expect(wrapper.find('input').props().value).toEqual('Bar');
+    });
+  });
+
   it('Cannot insert text while disabled', () => {
     safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled />, wrapper => {
       wrapper.find('input').simulate('keydown', { which: KeyCodes.a });
@@ -523,6 +562,17 @@ describe('ComboBox', () => {
       wrapper.find('button').simulate('click');
       expect(wrapper.find(OPEN_SELECTOR).length).toEqual(0);
     });
+  });
+
+  it('Cannot expand the menu when focused with a button while combobox is disabled', () => {
+    const comboBoxRef = React.createRef<any>();
+    safeMount(
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} componentRef={comboBoxRef} disabled />,
+      wrapper => {
+        comboBoxRef.current?.focus(true);
+        expect(comboBoxRef.current.state.isOpen).toEqual(false);
+      },
+    );
   });
 
   it('Calls onMenuOpen when clicking on the button', () => {
@@ -609,6 +659,29 @@ describe('ComboBox', () => {
     );
   });
 
+  it('onInputValueChange is called whenever the input changes', () => {
+    let changedValue: string | undefined = undefined;
+    const onInputValueChangeHandler = (value: string) => {
+      changedValue = value;
+    };
+
+    safeMount(
+      <ComboBox options={DEFAULT_OPTIONS} allowFreeform onInputValueChange={onInputValueChangeHandler} />,
+      wrapper => {
+        // Simulate typing one character into the ComboBox input
+        const input = wrapper.find('input');
+        input.simulate('input', { target: { value: 'a' } });
+        expect(changedValue).toEqual('a');
+
+        // Simulate clearing the ComboBox input
+        // (have to manually update the input element beforehand due to issues with Autofill in enzyme)
+        (input.getDOMNode() as HTMLInputElement).value = '';
+        input.simulate('input', { target: { value: '' } });
+        expect(changedValue).toEqual('');
+      },
+    );
+  });
+
   it('suggestedDisplayValue is set to undefined when the selected input is cleared', () => {
     safeMount(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />, wrapper => {
       expect(wrapper.find('input').props().value).toEqual('1');
@@ -623,12 +696,10 @@ describe('ComboBox', () => {
   });
 
   it('Can type a complete option with autocomplete and allowFreeform on and submit it', () => {
-    let updatedOption: IComboBoxOption | undefined;
-    let updatedIndex: number | undefined;
-    const onChange = jest.fn((event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => {
-      updatedOption = option;
-      updatedIndex = index;
-    });
+    const onChange = jest.fn<
+      void,
+      [React.FormEvent<IComboBox>, IComboBoxOption | undefined, number | undefined, string | undefined]
+    >();
     const initialOption = { key: '1', text: 'Text' };
 
     safeMount(<ComboBox options={[initialOption]} autoComplete="on" allowFreeform onChange={onChange} />, wrapper => {
@@ -639,8 +710,9 @@ describe('ComboBox', () => {
       inputElement.simulate('input', { target: { value: 'text' } });
       inputElement.simulate('keydown', { which: KeyCodes.enter });
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(updatedOption).toEqual(initialOption);
-      expect(updatedIndex).toEqual(0);
+      expect(onChange.mock.calls[0][1]).toEqual(initialOption);
+      expect(onChange.mock.calls[0][2]).toEqual(0);
+      expect(onChange.mock.calls[0][3]).toEqual(initialOption.text);
 
       wrapper.update();
       expect(wrapper.find('input').props().value).toEqual('Text');
@@ -794,6 +866,181 @@ describe('ComboBox', () => {
     });
   });
 
+  it('in multiSelect mode, selectAll selects all options', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...DEFAULT_OPTIONS,
+    ];
+    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
+      const inputElement = wrapper.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+      const options = wrapper.find(CHECKBOX_OPTION);
+      options.at(0).simulate('change');
+      inputElement.simulate('keydown', { which: KeyCodes.escape });
+
+      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2', '3']);
+      expect(wrapper.find('input').props().value).toEqual('1, 2, 3');
+    });
+  });
+
+  it('in multiSelect mode, selectAll does not select disabled options', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...DEFAULT_OPTIONS,
+    ];
+    SELECTALL_OPTIONS[1] = { ...SELECTALL_OPTIONS[1], disabled: true };
+    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
+      const inputElement = wrapper.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+      const options = wrapper.find(CHECKBOX_OPTION);
+      options.at(0).simulate('change');
+
+      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '2', '3']);
+    });
+  });
+
+  it('in multiSelect mode, selectAll does not select heeaders or dividers', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...RENDER_OPTIONS,
+    ];
+    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
+      const inputElement = wrapper.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+      const options = wrapper.find(CHECKBOX_OPTION);
+      options.at(0).simulate('change');
+
+      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2']);
+    });
+  });
+
+  it('in multiSelect mode, selectAll checked calculation ignores headers, dividers, and disabled options', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...RENDER_OPTIONS,
+    ];
+    SELECTALL_OPTIONS[2] = { ...SELECTALL_OPTIONS[2], disabled: true };
+    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
+      const inputElement = wrapper.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+      const options = wrapper.find(CHECKBOX_OPTION);
+      options.at(2).simulate('change');
+
+      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', 'selectAll']);
+    });
+  });
+
+  it('in multiSelect mode, modifying option selection updates selectAll', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...DEFAULT_OPTIONS,
+    ];
+    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
+      const inputElement = wrapper.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+      const options = wrapper.find(CHECKBOX_OPTION);
+      options.at(0).simulate('change');
+      // un-check one option
+      options.at(1).simulate('change');
+
+      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', '3']);
+
+      // re-check option
+      options.at(1).simulate('change');
+      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', '3', '1', 'selectAll']);
+    });
+  });
+
+  it('in multiSelect mode with mixed selected, selectAll is indeterminate', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...DEFAULT_OPTIONS,
+    ];
+    safeMount(
+      <ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} defaultSelectedKey={['2']} />,
+      wrapper => {
+        const inputElement = wrapper.find('input');
+        inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+        const options = wrapper.find(CHECKBOX_OPTION);
+        expect(options.at(0).props()['aria-checked']).toEqual('mixed');
+      },
+    );
+  });
+
+  it('in multiSelect mode, checking options sets selectAll to indeterminate', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...DEFAULT_OPTIONS,
+    ];
+    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
+      const inputElement = wrapper.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+      const options = wrapper.find(CHECKBOX_OPTION);
+      options.at(1).simulate('change');
+
+      let selectAll = wrapper.find(CHECKBOX_OPTION).at(0);
+      expect(selectAll.props()['aria-checked']).toEqual('mixed');
+
+      options.at(2).simulate('change');
+      options.at(3).simulate('change');
+
+      selectAll = wrapper.find(CHECKBOX_OPTION).at(0);
+      expect(selectAll.props().checked).toEqual(true);
+      expect(selectAll.props()['aria-checked']).toBeUndefined();
+    });
+  });
+
+  it('in multiSelect mode, checking an indeterminate selectAll checks all options', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...DEFAULT_OPTIONS,
+    ];
+    safeMount(
+      <ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} defaultSelectedKey={['2']} />,
+      wrapper => {
+        const inputElement = wrapper.find('input');
+        inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+        const options = wrapper.find(CHECKBOX_OPTION);
+        options.at(0).simulate('change');
+
+        expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2', '3']);
+      },
+    );
+  });
+
+  it('in single-select mode, selectAll behaves as a normal option', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...RENDER_OPTIONS,
+    ];
+    safeMount(<ComboBox options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
+      const inputElement = wrapper.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+      const options = wrapper.find(BUTTON_OPTION);
+      options.at(0).simulate('click');
+
+      expect(wrapper.find('input').props().value).toEqual('Select All');
+    });
+  });
+
   it('invokes optional onItemClick callback on option select', () => {
     const onItemClickMock = jest.fn();
     safeMount(<ComboBox options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />, wrapper => {
@@ -806,30 +1053,34 @@ describe('ComboBox', () => {
     });
   });
 
-  it('allows adding a custom aria-describedby id to the input', () => {
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} ariaDescribedBy={'customAriaDescriptionId'} />, wrapper => {
-      const inputElement = wrapper.find('input').getDOMNode();
-      expect(inputElement.getAttribute('aria-describedby')).toBe('customAriaDescriptionId');
-    });
-  });
-
-  it('correctly handles (aria-labelledby) when no label prop is provided', () => {
-    safeMount(<ComboBox options={RENDER_OPTIONS} aria-labelledby={'customAriaLabel'} />, wrapper => {
-      const inputElement = wrapper.find('input').getDOMNode();
-
-      expect(inputElement.getAttribute('aria-labelledby')).toBeNull();
-    });
-  });
-
-  it('correctly handles (aria-labelledby) when label prop is provided', () => {
+  it('defaults to ariaDescribedBy prop when passing id to input', () => {
+    const ariaId = 'customAriaDescriptionId';
     safeMount(
-      <ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={'customAriaLabel'} />,
+      <ComboBox options={DEFAULT_OPTIONS} ariaDescribedBy={ariaId} aria-describedby="usePropInstead" />,
       wrapper => {
         const inputElement = wrapper.find('input').getDOMNode();
-
-        expect(inputElement.getAttribute('aria-labelledby')).toBe('ComboBox0-label');
+        expect(inputElement.getAttribute('aria-describedby')).toBe(ariaId);
       },
     );
+  });
+
+  it('allows adding a custom aria-describedby id to the input via an attribute', () => {
+    const ariaId = 'customAriaDescriptionId';
+    safeMount(<ComboBox options={DEFAULT_OPTIONS} aria-describedby={ariaId} />, wrapper => {
+      const inputElement = wrapper.find('input').getDOMNode();
+      expect(inputElement.getAttribute('aria-describedby')).toBe(ariaId);
+    });
+  });
+
+  it('correctly handles (aria-labelledby) when label is also provided', () => {
+    const customId = 'customAriaLabelledById';
+    safeMount(<ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={customId} />, wrapper => {
+      const labelElement = wrapper.find('label').getDOMNode();
+      const labelId = labelElement.getAttribute('id');
+
+      const inputElement = wrapper.find('input').getDOMNode();
+      expect(inputElement.getAttribute('aria-labelledby')).toBe(customId + ' ' + labelId);
+    });
   });
 
   it('sets ariaLabel on both the input and the dropdown list', () => {

@@ -1,19 +1,16 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
-import { CheckboxState } from './Checkbox.types';
-import { checkboxShorthandProps } from './useCheckbox';
+import { getSlots } from '@fluentui/react-utilities';
+import { CheckboxState, CheckboxSlots } from './Checkbox.types';
 
-export const renderCheckbox = (state: CheckboxState) => {
-  const { slots, slotProps } = getSlotsCompat(state, checkboxShorthandProps);
+export const renderCheckbox_unstable = (state: CheckboxState) => {
+  const { slots, slotProps } = getSlots<CheckboxSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
-      {state.labelPosition === 'before' && state.children}
-      <div className={state.containerClassName}>
-        <slots.indicator {...slotProps.indicator} />
-        <slots.input {...slotProps.input} />
-      </div>
-      {state.labelPosition === 'after' && state.children}
+      <slots.input {...slotProps.input} />
+      {state.labelPosition === 'before' && slots.label && <slots.label {...slotProps.label} />}
+      <slots.indicator {...slotProps.indicator} />
+      {state.labelPosition === 'after' && slots.label && <slots.label {...slotProps.label} />}
     </slots.root>
   );
 };

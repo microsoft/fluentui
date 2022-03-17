@@ -1,6 +1,6 @@
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { Escape, ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
 import { Menu } from './Menu';
 import { render, fireEvent, act } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
@@ -13,12 +13,13 @@ import { MenuPopover } from '../MenuPopover/index';
 
 describe('Menu', () => {
   isConformant({
-    skipAsPropTests: true,
     disabledTests: [
       // Menu does not render DOM elements
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
+      'component-has-static-classname',
+      'component-has-static-classnames-object',
       // Menu does not have own styles
       'make-styles-overrides-win',
     ],
@@ -450,7 +451,7 @@ describe('Menu', () => {
     expect(queryByText(invisible)).toBeNull();
   });
 
-  it.each([keyboardKey.Escape, keyboardKey.ArrowLeft])('should close open nested menu with %s key', keyCode => {
+  it.each([Escape, ArrowLeft])('should close open nested menu with %s key', key => {
     // Arrange
     const target = 'target';
     const trigger = 'trigger';
@@ -480,8 +481,8 @@ describe('Menu', () => {
     );
 
     // Act
-    fireEvent.keyDown(getByText(trigger), { keyCode: keyboardKey.ArrowRight });
-    fireEvent.keyDown(getByText(invisible), { keyCode });
+    fireEvent.keyDown(getByText(trigger), { key: ArrowRight });
+    fireEvent.keyDown(getByText(invisible), { key });
 
     // Assert
     expect(queryByText(invisible)).toBeNull();
@@ -506,8 +507,8 @@ describe('Menu', () => {
     );
 
     // Act
-    fireEvent.keyDown(getByText(trigger), { keyCode: keyboardKey.ArrowRight });
-    fireEvent.keyDown(getByText(visible), { keyCode: keyboardKey.ArrowLeft });
+    fireEvent.keyDown(getByText(trigger), { key: ArrowRight });
+    fireEvent.keyDown(getByText(visible), { key: ArrowLeft });
 
     // Assert
     getByText(visible);

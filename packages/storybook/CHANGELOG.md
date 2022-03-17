@@ -1,8 +1,1082 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Wed, 01 Sep 2021 07:39:56 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Mar 2022 07:38:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 16 Mar 2022 07:38:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.61.2 ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by beachball)
+- Bump @fluentui/azure-themes to v8.2.8 ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by beachball)
+- Bump @fluentui/theme-samples to v8.4.8 ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 15 Mar 2022 07:45:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.61.1 ([PR #22094](https://github.com/microsoft/fluentui/pull/22094) by beachball)
+- Bump @fluentui/theme to v2.6.4 ([PR #22094](https://github.com/microsoft/fluentui/pull/22094) by beachball)
+- Bump @fluentui/azure-themes to v8.2.7 ([PR #22094](https://github.com/microsoft/fluentui/pull/22094) by beachball)
+- Bump @fluentui/theme-samples to v8.4.7 ([PR #22094](https://github.com/microsoft/fluentui/pull/22094) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Sat, 12 Mar 2022 01:04:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.61.0 ([PR #22080](https://github.com/microsoft/fluentui/pull/22080) by beachball)
+- Bump @fluentui/azure-themes to v8.2.6 ([PR #22080](https://github.com/microsoft/fluentui/pull/22080) by beachball)
+- Bump @fluentui/theme-samples to v8.4.6 ([PR #22080](https://github.com/microsoft/fluentui/pull/22080) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 11 Mar 2022 19:51:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.60.4 ([PR #22074](https://github.com/microsoft/fluentui/pull/22074) by beachball)
+- Bump @fluentui/azure-themes to v8.2.5 ([PR #22074](https://github.com/microsoft/fluentui/pull/22074) by beachball)
+- Bump @fluentui/theme-samples to v8.4.5 ([PR #22074](https://github.com/microsoft/fluentui/pull/22074) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 11 Mar 2022 07:34:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.60.3 ([PR #22047](https://github.com/microsoft/fluentui/pull/22047) by beachball)
+- Bump @fluentui/theme to v2.6.3 ([PR #22047](https://github.com/microsoft/fluentui/pull/22047) by beachball)
+- Bump @fluentui/azure-themes to v8.2.4 ([PR #22047](https://github.com/microsoft/fluentui/pull/22047) by beachball)
+- Bump @fluentui/theme-samples to v8.4.4 ([PR #22047](https://github.com/microsoft/fluentui/pull/22047) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 10 Mar 2022 07:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.60.2 ([PR #22043](https://github.com/microsoft/fluentui/pull/22043) by beachball)
+- Bump @fluentui/theme to v2.6.2 ([PR #22043](https://github.com/microsoft/fluentui/pull/22043) by beachball)
+- Bump @fluentui/azure-themes to v8.2.3 ([PR #22043](https://github.com/microsoft/fluentui/pull/22043) by beachball)
+- Bump @fluentui/theme-samples to v8.4.3 ([PR #22043](https://github.com/microsoft/fluentui/pull/22043) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 09 Mar 2022 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.60.1 ([PR #22008](https://github.com/microsoft/fluentui/pull/22008) by beachball)
+- Bump @fluentui/theme to v2.6.1 ([PR #22008](https://github.com/microsoft/fluentui/pull/22008) by beachball)
+- Bump @fluentui/azure-themes to v8.2.2 ([PR #22008](https://github.com/microsoft/fluentui/pull/22008) by beachball)
+- Bump @fluentui/theme-samples to v8.4.2 ([PR #22008](https://github.com/microsoft/fluentui/pull/22008) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 08 Mar 2022 23:29:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.60.0 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+- Bump @fluentui/theme to v2.6.0 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+- Bump @fluentui/azure-themes to v8.2.1 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+- Bump @fluentui/theme-samples to v8.4.1 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 08 Mar 2022 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Minor changes
+
+- Bump @fluentui/react to v8.59.0 ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by beachball)
+- Bump @fluentui/azure-themes to v8.2.0 ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by beachball)
+- Bump @fluentui/theme-samples to v8.4.0 ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 07 Mar 2022 07:41:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.58.0 ([PR #21949](https://github.com/microsoft/fluentui/pull/21949) by beachball)
+- Bump @fluentui/azure-themes to v8.1.146 ([PR #21949](https://github.com/microsoft/fluentui/pull/21949) by beachball)
+- Bump @fluentui/theme-samples to v8.3.2 ([PR #21949](https://github.com/microsoft/fluentui/pull/21949) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 04 Mar 2022 07:42:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.57.1 ([commit](https://github.com/microsoft/fluentui/commit/62865d15abd07125ff3968c739e387d6fd840f00) by beachball)
+- Bump @fluentui/azure-themes to v8.1.145 ([commit](https://github.com/microsoft/fluentui/commit/62865d15abd07125ff3968c739e387d6fd840f00) by beachball)
+- Bump @fluentui/theme-samples to v8.3.1 ([commit](https://github.com/microsoft/fluentui/commit/62865d15abd07125ff3968c739e387d6fd840f00) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 03 Mar 2022 07:24:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.57.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/theme to v2.5.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/azure-themes to v8.1.144 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/theme-samples to v8.3.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 02 Mar 2022 07:23:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.56.3 ([PR #21900](https://github.com/microsoft/fluentui/pull/21900) by beachball)
+- Bump @fluentui/azure-themes to v8.1.143 ([PR #21900](https://github.com/microsoft/fluentui/pull/21900) by beachball)
+- Bump @fluentui/theme-samples to v8.2.84 ([PR #21900](https://github.com/microsoft/fluentui/pull/21900) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 01 Mar 2022 07:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.56.2 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/theme to v2.4.12 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/azure-themes to v8.1.142 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+- Bump @fluentui/theme-samples to v8.2.83 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 24 Feb 2022 07:29:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.56.1 ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by beachball)
+- Bump @fluentui/theme to v2.4.11 ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by beachball)
+- Bump @fluentui/azure-themes to v8.1.141 ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by beachball)
+- Bump @fluentui/theme-samples to v8.2.82 ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 23 Feb 2022 07:26:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.56.0 ([PR #21834](https://github.com/microsoft/fluentui/pull/21834) by beachball)
+- Bump @fluentui/azure-themes to v8.1.140 ([PR #21834](https://github.com/microsoft/fluentui/pull/21834) by beachball)
+- Bump @fluentui/theme-samples to v8.2.81 ([PR #21834](https://github.com/microsoft/fluentui/pull/21834) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 17 Feb 2022 07:28:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.55.3 ([PR #21777](https://github.com/microsoft/fluentui/pull/21777) by beachball)
+- Bump @fluentui/theme to v2.4.10 ([PR #21777](https://github.com/microsoft/fluentui/pull/21777) by beachball)
+- Bump @fluentui/azure-themes to v8.1.139 ([PR #21777](https://github.com/microsoft/fluentui/pull/21777) by beachball)
+- Bump @fluentui/theme-samples to v8.2.80 ([PR #21777](https://github.com/microsoft/fluentui/pull/21777) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 14 Feb 2022 07:26:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.55.2 ([PR #21717](https://github.com/microsoft/fluentui/pull/21717) by beachball)
+- Bump @fluentui/azure-themes to v8.1.138 ([PR #21717](https://github.com/microsoft/fluentui/pull/21717) by beachball)
+- Bump @fluentui/theme-samples to v8.2.79 ([PR #21717](https://github.com/microsoft/fluentui/pull/21717) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 11 Feb 2022 07:27:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.55.1 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
+- Bump @fluentui/theme to v2.4.9 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
+- Bump @fluentui/azure-themes to v8.1.137 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
+- Bump @fluentui/theme-samples to v8.2.78 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 10 Feb 2022 07:32:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.55.0 ([PR #21672](https://github.com/microsoft/fluentui/pull/21672) by beachball)
+- Bump @fluentui/azure-themes to v8.1.136 ([PR #21672](https://github.com/microsoft/fluentui/pull/21672) by beachball)
+- Bump @fluentui/theme-samples to v8.2.77 ([PR #21672](https://github.com/microsoft/fluentui/pull/21672) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 09 Feb 2022 07:30:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.54.0 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
+- Bump @fluentui/theme to v2.4.8 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
+- Bump @fluentui/azure-themes to v8.1.135 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
+- Bump @fluentui/theme-samples to v8.2.76 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 08 Feb 2022 07:25:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.53.0 ([PR #21639](https://github.com/microsoft/fluentui/pull/21639) by beachball)
+- Bump @fluentui/azure-themes to v8.1.134 ([PR #21639](https://github.com/microsoft/fluentui/pull/21639) by beachball)
+- Bump @fluentui/theme-samples to v8.2.75 ([PR #21639](https://github.com/microsoft/fluentui/pull/21639) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 04 Feb 2022 07:31:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.52.3 ([PR #21519](https://github.com/microsoft/fluentui/pull/21519) by beachball)
+- Bump @fluentui/azure-themes to v8.1.133 ([PR #21519](https://github.com/microsoft/fluentui/pull/21519) by beachball)
+- Bump @fluentui/theme-samples to v8.2.74 ([PR #21519](https://github.com/microsoft/fluentui/pull/21519) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 03 Feb 2022 07:29:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.52.2 ([PR #21545](https://github.com/microsoft/fluentui/pull/21545) by beachball)
+- Bump @fluentui/theme to v2.4.7 ([PR #21545](https://github.com/microsoft/fluentui/pull/21545) by beachball)
+- Bump @fluentui/azure-themes to v8.1.132 ([PR #21545](https://github.com/microsoft/fluentui/pull/21545) by beachball)
+- Bump @fluentui/theme-samples to v8.2.73 ([PR #21545](https://github.com/microsoft/fluentui/pull/21545) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 01 Feb 2022 07:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.52.1 ([PR #21344](https://github.com/microsoft/fluentui/pull/21344) by beachball)
+- Bump @fluentui/azure-themes to v8.1.131 ([PR #21344](https://github.com/microsoft/fluentui/pull/21344) by beachball)
+- Bump @fluentui/theme-samples to v8.2.72 ([PR #21344](https://github.com/microsoft/fluentui/pull/21344) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 31 Jan 2022 07:27:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.52.0 ([PR #21494](https://github.com/microsoft/fluentui/pull/21494) by beachball)
+- Bump @fluentui/azure-themes to v8.1.130 ([PR #21494](https://github.com/microsoft/fluentui/pull/21494) by beachball)
+- Bump @fluentui/theme-samples to v8.2.71 ([PR #21494](https://github.com/microsoft/fluentui/pull/21494) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 26 Jan 2022 07:26:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.51.1 ([PR #20890](https://github.com/microsoft/fluentui/pull/20890) by beachball)
+- Bump @fluentui/azure-themes to v8.1.129 ([PR #20890](https://github.com/microsoft/fluentui/pull/20890) by beachball)
+- Bump @fluentui/theme-samples to v8.2.70 ([PR #20890](https://github.com/microsoft/fluentui/pull/20890) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 25 Jan 2022 07:30:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.51.0 ([PR #20805](https://github.com/microsoft/fluentui/pull/20805) by beachball)
+- Bump @fluentui/azure-themes to v8.1.128 ([PR #20805](https://github.com/microsoft/fluentui/pull/20805) by beachball)
+- Bump @fluentui/theme-samples to v8.2.69 ([PR #20805](https://github.com/microsoft/fluentui/pull/20805) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 24 Jan 2022 07:26:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.50.1 ([PR #21362](https://github.com/microsoft/fluentui/pull/21362) by beachball)
+- Bump @fluentui/azure-themes to v8.1.127 ([PR #21362](https://github.com/microsoft/fluentui/pull/21362) by beachball)
+- Bump @fluentui/theme-samples to v8.2.68 ([PR #21362](https://github.com/microsoft/fluentui/pull/21362) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 21 Jan 2022 07:26:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.50.0 ([PR #21280](https://github.com/microsoft/fluentui/pull/21280) by beachball)
+- Bump @fluentui/azure-themes to v8.1.126 ([PR #21280](https://github.com/microsoft/fluentui/pull/21280) by beachball)
+- Bump @fluentui/theme-samples to v8.2.67 ([PR #21280](https://github.com/microsoft/fluentui/pull/21280) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 17 Jan 2022 09:43:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.7 ([PR #21274](https://github.com/microsoft/fluentui/pull/21274) by beachball)
+- Bump @fluentui/azure-themes to v8.1.125 ([PR #21274](https://github.com/microsoft/fluentui/pull/21274) by beachball)
+- Bump @fluentui/theme-samples to v8.2.66 ([PR #21274](https://github.com/microsoft/fluentui/pull/21274) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 14 Jan 2022 07:28:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.6 ([PR #21215](https://github.com/microsoft/fluentui/pull/21215) by beachball)
+- Bump @fluentui/azure-themes to v8.1.124 ([PR #21215](https://github.com/microsoft/fluentui/pull/21215) by beachball)
+- Bump @fluentui/theme-samples to v8.2.65 ([PR #21215](https://github.com/microsoft/fluentui/pull/21215) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 13 Jan 2022 07:30:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.5 ([PR #21196](https://github.com/microsoft/fluentui/pull/21196) by beachball)
+- Bump @fluentui/azure-themes to v8.1.123 ([PR #21196](https://github.com/microsoft/fluentui/pull/21196) by beachball)
+- Bump @fluentui/theme-samples to v8.2.64 ([PR #21196](https://github.com/microsoft/fluentui/pull/21196) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 12 Jan 2022 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.4 ([PR #21219](https://github.com/microsoft/fluentui/pull/21219) by beachball)
+- Bump @fluentui/azure-themes to v8.1.122 ([PR #21219](https://github.com/microsoft/fluentui/pull/21219) by beachball)
+- Bump @fluentui/theme-samples to v8.2.63 ([PR #21219](https://github.com/microsoft/fluentui/pull/21219) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 11 Jan 2022 07:29:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.3 ([PR #21205](https://github.com/microsoft/fluentui/pull/21205) by beachball)
+- Bump @fluentui/azure-themes to v8.1.121 ([PR #21205](https://github.com/microsoft/fluentui/pull/21205) by beachball)
+- Bump @fluentui/theme-samples to v8.2.62 ([PR #21205](https://github.com/microsoft/fluentui/pull/21205) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 10 Jan 2022 07:26:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.2 ([PR #21041](https://github.com/microsoft/fluentui/pull/21041) by beachball)
+- Bump @fluentui/azure-themes to v8.1.120 ([PR #21041](https://github.com/microsoft/fluentui/pull/21041) by beachball)
+- Bump @fluentui/theme-samples to v8.2.61 ([PR #21041](https://github.com/microsoft/fluentui/pull/21041) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 07 Jan 2022 07:27:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.1 ([PR #21201](https://github.com/microsoft/fluentui/pull/21201) by beachball)
+- Bump @fluentui/azure-themes to v8.1.119 ([PR #21201](https://github.com/microsoft/fluentui/pull/21201) by beachball)
+- Bump @fluentui/theme-samples to v8.2.60 ([PR #21201](https://github.com/microsoft/fluentui/pull/21201) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 03 Jan 2022 23:32:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.0 ([PR #20954](https://github.com/microsoft/fluentui/pull/20954) by beachball)
+- Bump @fluentui/theme to v2.4.6 ([PR #20954](https://github.com/microsoft/fluentui/pull/20954) by beachball)
+- Bump @fluentui/azure-themes to v8.1.118 ([PR #20954](https://github.com/microsoft/fluentui/pull/20954) by beachball)
+- Bump @fluentui/theme-samples to v8.2.59 ([PR #20954](https://github.com/microsoft/fluentui/pull/20954) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 22 Dec 2021 07:29:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.48.1 ([PR #21090](https://github.com/microsoft/fluentui/pull/21090) by beachball)
+- Bump @fluentui/azure-themes to v8.1.117 ([PR #21090](https://github.com/microsoft/fluentui/pull/21090) by beachball)
+- Bump @fluentui/theme-samples to v8.2.58 ([PR #21090](https://github.com/microsoft/fluentui/pull/21090) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 16 Dec 2021 07:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.48.0 ([PR #21011](https://github.com/microsoft/fluentui/pull/21011) by beachball)
+- Bump @fluentui/azure-themes to v8.1.116 ([PR #21011](https://github.com/microsoft/fluentui/pull/21011) by beachball)
+- Bump @fluentui/theme-samples to v8.2.57 ([PR #21011](https://github.com/microsoft/fluentui/pull/21011) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 15 Dec 2021 07:31:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.47.3 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+- Bump @fluentui/theme to v2.4.5 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+- Bump @fluentui/azure-themes to v8.1.115 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+- Bump @fluentui/theme-samples to v8.2.56 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 14 Dec 2021 07:30:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.47.2 ([PR #20904](https://github.com/microsoft/fluentui/pull/20904) by beachball)
+- Bump @fluentui/azure-themes to v8.1.114 ([PR #20904](https://github.com/microsoft/fluentui/pull/20904) by beachball)
+- Bump @fluentui/theme-samples to v8.2.55 ([PR #20904](https://github.com/microsoft/fluentui/pull/20904) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 10 Dec 2021 07:30:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.47.1 ([PR #20587](https://github.com/microsoft/fluentui/pull/20587) by beachball)
+- Bump @fluentui/azure-themes to v8.1.113 ([PR #20587](https://github.com/microsoft/fluentui/pull/20587) by beachball)
+- Bump @fluentui/theme-samples to v8.2.54 ([PR #20587](https://github.com/microsoft/fluentui/pull/20587) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 09 Dec 2021 07:27:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.47.0 ([PR #20161](https://github.com/microsoft/fluentui/pull/20161) by beachball)
+- Bump @fluentui/azure-themes to v8.1.112 ([PR #20161](https://github.com/microsoft/fluentui/pull/20161) by beachball)
+- Bump @fluentui/theme-samples to v8.2.53 ([PR #20161](https://github.com/microsoft/fluentui/pull/20161) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 08 Dec 2021 07:28:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.46.3 ([PR #20831](https://github.com/microsoft/fluentui/pull/20831) by beachball)
+- Bump @fluentui/azure-themes to v8.1.111 ([PR #20831](https://github.com/microsoft/fluentui/pull/20831) by beachball)
+- Bump @fluentui/theme-samples to v8.2.52 ([PR #20831](https://github.com/microsoft/fluentui/pull/20831) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 07 Dec 2021 07:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.46.2 ([PR #20769](https://github.com/microsoft/fluentui/pull/20769) by beachball)
+- Bump @fluentui/azure-themes to v8.1.110 ([PR #20769](https://github.com/microsoft/fluentui/pull/20769) by beachball)
+- Bump @fluentui/theme-samples to v8.2.51 ([PR #20769](https://github.com/microsoft/fluentui/pull/20769) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 03 Dec 2021 07:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.46.1 ([PR #20887](https://github.com/microsoft/fluentui/pull/20887) by beachball)
+- Bump @fluentui/azure-themes to v8.1.109 ([PR #20887](https://github.com/microsoft/fluentui/pull/20887) by beachball)
+- Bump @fluentui/theme-samples to v8.2.50 ([PR #20887](https://github.com/microsoft/fluentui/pull/20887) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 01 Dec 2021 07:41:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.46.0 ([PR #20715](https://github.com/microsoft/fluentui/pull/20715) by beachball)
+- Bump @fluentui/azure-themes to v8.1.108 ([PR #20715](https://github.com/microsoft/fluentui/pull/20715) by beachball)
+- Bump @fluentui/theme-samples to v8.2.49 ([PR #20715](https://github.com/microsoft/fluentui/pull/20715) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 30 Nov 2021 07:37:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.45.0 ([PR #20833](https://github.com/microsoft/fluentui/pull/20833) by beachball)
+- Bump @fluentui/azure-themes to v8.1.107 ([PR #20833](https://github.com/microsoft/fluentui/pull/20833) by beachball)
+- Bump @fluentui/theme-samples to v8.2.48 ([PR #20833](https://github.com/microsoft/fluentui/pull/20833) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 25 Nov 2021 14:54:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.44.0 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+- Bump @fluentui/theme to v2.4.4 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+- Bump @fluentui/azure-themes to v8.1.106 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+- Bump @fluentui/theme-samples to v8.2.47 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 23 Nov 2021 07:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.43.0 ([PR #20697](https://github.com/microsoft/fluentui/pull/20697) by beachball)
+- Bump @fluentui/azure-themes to v8.1.105 ([PR #20697](https://github.com/microsoft/fluentui/pull/20697) by beachball)
+- Bump @fluentui/theme-samples to v8.2.46 ([PR #20697](https://github.com/microsoft/fluentui/pull/20697) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 22 Nov 2021 07:36:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.5 ([PR #20408](https://github.com/microsoft/fluentui/pull/20408) by beachball)
+- Bump @fluentui/azure-themes to v8.1.104 ([PR #20408](https://github.com/microsoft/fluentui/pull/20408) by beachball)
+- Bump @fluentui/theme-samples to v8.2.45 ([PR #20408](https://github.com/microsoft/fluentui/pull/20408) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 19 Nov 2021 07:45:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.4 ([PR #20639](https://github.com/microsoft/fluentui/pull/20639) by beachball)
+- Bump @fluentui/azure-themes to v8.1.103 ([PR #20639](https://github.com/microsoft/fluentui/pull/20639) by beachball)
+- Bump @fluentui/theme-samples to v8.2.44 ([PR #20639](https://github.com/microsoft/fluentui/pull/20639) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 18 Nov 2021 07:29:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.3 ([PR #20642](https://github.com/microsoft/fluentui/pull/20642) by beachball)
+- Bump @fluentui/azure-themes to v8.1.102 ([PR #20642](https://github.com/microsoft/fluentui/pull/20642) by beachball)
+- Bump @fluentui/theme-samples to v8.2.43 ([PR #20642](https://github.com/microsoft/fluentui/pull/20642) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 17 Nov 2021 07:36:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.2 ([PR #20635](https://github.com/microsoft/fluentui/pull/20635) by beachball)
+- Bump @fluentui/azure-themes to v8.1.101 ([PR #20635](https://github.com/microsoft/fluentui/pull/20635) by beachball)
+- Bump @fluentui/theme-samples to v8.2.42 ([PR #20635](https://github.com/microsoft/fluentui/pull/20635) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 16 Nov 2021 07:36:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.1 ([PR #20605](https://github.com/microsoft/fluentui/pull/20605) by beachball)
+- Bump @fluentui/azure-themes to v8.1.100 ([PR #20605](https://github.com/microsoft/fluentui/pull/20605) by beachball)
+- Bump @fluentui/theme-samples to v8.2.41 ([PR #20605](https://github.com/microsoft/fluentui/pull/20605) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 15 Nov 2021 07:29:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.0 ([PR #20419](https://github.com/microsoft/fluentui/pull/20419) by beachball)
+- Bump @fluentui/azure-themes to v8.1.99 ([PR #20419](https://github.com/microsoft/fluentui/pull/20419) by beachball)
+- Bump @fluentui/theme-samples to v8.2.40 ([PR #20419](https://github.com/microsoft/fluentui/pull/20419) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 10 Nov 2021 07:31:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.41.4 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/theme to v2.4.3 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/azure-themes to v8.1.98 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/theme-samples to v8.2.39 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 09 Nov 2021 07:38:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.41.3 ([PR #20441](https://github.com/microsoft/fluentui/pull/20441) by beachball)
+- Bump @fluentui/azure-themes to v8.1.97 ([PR #20441](https://github.com/microsoft/fluentui/pull/20441) by beachball)
+- Bump @fluentui/theme-samples to v8.2.38 ([PR #20441](https://github.com/microsoft/fluentui/pull/20441) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 08 Nov 2021 07:35:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.41.2 ([PR #20530](https://github.com/microsoft/fluentui/pull/20530) by beachball)
+- Bump @fluentui/azure-themes to v8.1.96 ([PR #20530](https://github.com/microsoft/fluentui/pull/20530) by beachball)
+- Bump @fluentui/theme-samples to v8.2.37 ([PR #20530](https://github.com/microsoft/fluentui/pull/20530) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 05 Nov 2021 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.41.1 ([PR #20514](https://github.com/microsoft/fluentui/pull/20514) by beachball)
+- Bump @fluentui/azure-themes to v8.1.95 ([PR #20514](https://github.com/microsoft/fluentui/pull/20514) by beachball)
+- Bump @fluentui/theme-samples to v8.2.36 ([PR #20514](https://github.com/microsoft/fluentui/pull/20514) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 04 Nov 2021 07:29:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.41.0 ([PR #20488](https://github.com/microsoft/fluentui/pull/20488) by beachball)
+- Bump @fluentui/azure-themes to v8.1.94 ([PR #20488](https://github.com/microsoft/fluentui/pull/20488) by beachball)
+- Bump @fluentui/theme-samples to v8.2.35 ([PR #20488](https://github.com/microsoft/fluentui/pull/20488) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 03 Nov 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.40.0 ([PR #20036](https://github.com/microsoft/fluentui/pull/20036) by beachball)
+- Bump @fluentui/azure-themes to v8.1.93 ([PR #20036](https://github.com/microsoft/fluentui/pull/20036) by beachball)
+- Bump @fluentui/theme-samples to v8.2.34 ([PR #20036](https://github.com/microsoft/fluentui/pull/20036) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 02 Nov 2021 07:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.39.0 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/theme to v2.4.2 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/azure-themes to v8.1.92 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/theme-samples to v8.2.33 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 01 Nov 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.38.0 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/azure-themes to v8.1.91 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/theme-samples to v8.2.32 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 29 Oct 2021 07:29:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.6 ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by beachball)
+- Bump @fluentui/azure-themes to v8.1.90 ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by beachball)
+- Bump @fluentui/theme-samples to v8.2.31 ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 28 Oct 2021 07:29:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.5 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+- Bump @fluentui/azure-themes to v8.1.89 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+- Bump @fluentui/theme-samples to v8.2.30 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 27 Oct 2021 07:29:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.4 ([PR #20334](https://github.com/microsoft/fluentui/pull/20334) by beachball)
+- Bump @fluentui/azure-themes to v8.1.88 ([PR #20334](https://github.com/microsoft/fluentui/pull/20334) by beachball)
+- Bump @fluentui/theme-samples to v8.2.29 ([PR #20334](https://github.com/microsoft/fluentui/pull/20334) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 26 Oct 2021 07:39:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.3 ([PR #20328](https://github.com/microsoft/fluentui/pull/20328) by beachball)
+- Bump @fluentui/azure-themes to v8.1.87 ([PR #20328](https://github.com/microsoft/fluentui/pull/20328) by beachball)
+- Bump @fluentui/theme-samples to v8.2.28 ([PR #20328](https://github.com/microsoft/fluentui/pull/20328) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 25 Oct 2021 07:38:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.2 ([PR #19628](https://github.com/microsoft/fluentui/pull/19628) by beachball)
+- Bump @fluentui/azure-themes to v8.1.86 ([PR #19628](https://github.com/microsoft/fluentui/pull/19628) by beachball)
+- Bump @fluentui/theme-samples to v8.2.27 ([PR #19628](https://github.com/microsoft/fluentui/pull/19628) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 21 Oct 2021 07:28:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.1 ([PR #20281](https://github.com/microsoft/fluentui/pull/20281) by beachball)
+- Bump @fluentui/azure-themes to v8.1.85 ([PR #20281](https://github.com/microsoft/fluentui/pull/20281) by beachball)
+- Bump @fluentui/theme-samples to v8.2.26 ([PR #20281](https://github.com/microsoft/fluentui/pull/20281) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 20 Oct 2021 07:30:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.0 ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by beachball)
+- Bump @fluentui/azure-themes to v8.1.84 ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by beachball)
+- Bump @fluentui/theme-samples to v8.2.25 ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 13 Oct 2021 07:31:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.5 ([PR #20138](https://github.com/microsoft/fluentui/pull/20138) by beachball)
+- Bump @fluentui/azure-themes to v8.1.83 ([PR #20138](https://github.com/microsoft/fluentui/pull/20138) by beachball)
+- Bump @fluentui/theme-samples to v8.2.24 ([PR #20138](https://github.com/microsoft/fluentui/pull/20138) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 11 Oct 2021 07:36:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.4 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+- Bump @fluentui/azure-themes to v8.1.82 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+- Bump @fluentui/theme-samples to v8.2.23 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 08 Oct 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.3 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
+- Bump @fluentui/azure-themes to v8.1.81 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
+- Bump @fluentui/theme-samples to v8.2.22 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 05 Oct 2021 07:37:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.2 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/theme to v2.4.1 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/azure-themes to v8.1.80 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/theme-samples to v8.2.21 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 04 Oct 2021 07:27:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.1 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+- Bump @fluentui/azure-themes to v8.1.79 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+- Bump @fluentui/theme-samples to v8.2.20 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 30 Sep 2021 07:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.0 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+- Bump @fluentui/azure-themes to v8.1.78 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+- Bump @fluentui/theme-samples to v8.2.19 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 29 Sep 2021 07:36:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.2 ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by beachball)
+- Bump @fluentui/azure-themes to v8.1.77 ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by beachball)
+- Bump @fluentui/theme-samples to v8.2.18 ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.1 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/theme to v2.4.0 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/azure-themes to v8.1.76 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/theme-samples to v8.2.17 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 28 Sep 2021 07:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.0 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+- Bump @fluentui/azure-themes to v8.1.75 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+- Bump @fluentui/theme-samples to v8.2.16 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.7 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+- Bump @fluentui/azure-themes to v8.1.74 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+- Bump @fluentui/theme-samples to v8.2.15 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 23 Sep 2021 07:35:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.6 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+- Bump @fluentui/azure-themes to v8.1.73 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+- Bump @fluentui/theme-samples to v8.2.14 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 22 Sep 2021 09:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.5 ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by beachball)
+- Bump @fluentui/azure-themes to v8.1.72 ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by beachball)
+- Bump @fluentui/theme-samples to v8.2.13 ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.4 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/azure-themes to v8.1.71 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/theme-samples to v8.2.12 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/storybook to v1.0.0 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/storybook to v1.0.0 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/storybook to v1.0.0 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/storybook to v1.0.0 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 14 Sep 2021 07:38:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/storybook to v1.0.0 ([PR #19605](https://github.com/microsoft/fluentui/pull/19605) by dmitry@grechka.family)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 13 Sep 2021 07:37:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/storybook to v1.0.0 ([PR #19758](https://github.com/microsoft/fluentui/pull/19758) by sarah.higley@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/storybook to v1.0.0 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.66 ([PR #19671](https://github.com/microsoft/fluentui/pull/19671) by tschao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-storybook to v9.0.0-alpha.0 ([PR #19642](https://github.com/microsoft/fluentui/pull/19642) by behowell@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 09 Sep 2021 07:39:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.65 ([PR #18829](https://github.com/microsoft/fluentui/pull/18829) by shujathlive@gmail.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 08 Sep 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.64 ([PR #19344](https://github.com/microsoft/fluentui/pull/19344) by sarah.higley@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.63 ([PR #19611](https://github.com/microsoft/fluentui/pull/19611) by aidanmc95@gmail.com)
+
+### Changes
+
+- Bump @fluentui/react-storybook to v9.0.0-alpha.0 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.62 ([PR #19590](https://github.com/microsoft/fluentui/pull/19590) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-storybook to v9.0.0-alpha.0 ([PR #19590](https://github.com/microsoft/fluentui/pull/19590) by olfedias@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
 

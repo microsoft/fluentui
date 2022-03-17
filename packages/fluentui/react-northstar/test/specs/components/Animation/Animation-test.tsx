@@ -9,9 +9,10 @@ describe('Animation', () => {
     testPath: __filename,
     constructorName: 'Animation',
     hasAccessibilityProp: false,
-    skipAsPropTests: true,
+    skipAsPropTests: 'all',
     requiredProps: { children: <div /> },
     testOptions: { 'consistent-callback-names': { ignoreProps: ['onEntered', 'onExited'] } },
+    disabledTests: ['component-has-root-ref', 'component-handles-ref'],
   });
 
   test('does not throw if children is not passed', () => {

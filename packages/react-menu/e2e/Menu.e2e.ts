@@ -1,9 +1,11 @@
 const defaultStory = 'Default';
-const groupsStory = 'WithGroups';
+const groupsStory = 'GrouppingItems';
 const customTriggerStory = 'CustomTrigger';
 const selectionGroupStory = 'SelectionGroup';
 const nestedMenuStory = 'NestedSubmenus';
 const nestedMenuControlledStory = 'NestedSubmenusControlled';
+const splitMenuItemStory = 'SplitMenuItem';
+const anchorToCustomTargetStory = 'AnchorToCustomTarget';
 
 const menuStoriesTitle = 'Components/Menu';
 
@@ -21,24 +23,13 @@ describe('Menu', () => {
   });
 
   describe('MenuTrigger', () => {
-    it('should open menu when clicked', () => {
-      cy.loadStory(menuStoriesTitle, defaultStory)
-        .get(menuTriggerSelector)
-        .click()
-        .get(menuSelector)
-        .should('be.visible');
-    });
-
-    it('should focus first menu item on down arrow when focus is on the trigger', () => {
+    it('should open menu and focus first item when clicked', () => {
       cy.loadStory(menuStoriesTitle, defaultStory)
         .get(menuTriggerSelector)
         .click()
         .get(menuSelector)
         .should('be.visible')
-        .get(menuTriggerSelector)
-        .type('{downarrow}')
         .get(menuItemSelector)
-        .first()
         .should('be.focused');
     });
 
@@ -86,6 +77,28 @@ describe('Menu', () => {
         .click('bottomRight')
         .get(menuSelector)
         .should('not.exist');
+    });
+  });
+
+  describe('Usage without trigger', () => {
+    it('should be able to share the same anchor target', () => {
+      cy.loadStory(menuStoriesTitle, anchorToCustomTargetStory)
+        .get(menuSelector)
+        .should('have.length', 0)
+        .get('body')
+        .contains('Open menu')
+        .click()
+        .get(menuSelector)
+        .should('be.visible')
+        .get('body')
+        .click('bottomRight')
+        .get(menuSelector)
+        .should('not.exist')
+        .get('body')
+        .contains('Custom target')
+        .click()
+        .get(menuSelector)
+        .should('be.visible');
     });
   });
 
@@ -260,7 +273,7 @@ describe('Menu', () => {
   // [nestedMenuStory, nestedMenuControlledStory].forEach(story => {
   [nestedMenuStory, nestedMenuControlledStory].forEach(story => {
     describe(`Nested Menus (${story.includes('Controlled') ? 'Controlled' : 'Uncontrolled'})`, () => {
-      it('should open on trigger hover', () => {
+      it('should open on trigger hover and focus first item', () => {
         cy.loadStory(menuStoriesTitle, story)
           .get(menuTriggerSelector)
           .click()
@@ -269,11 +282,16 @@ describe('Menu', () => {
             cy.get(menuTriggerSelector).trigger('mousemove');
           })
           .get(menuSelector)
-          .should('have.length', 2);
+          .should('have.length', 2)
+          .get(menuSelector)
+          .eq(1)
+          .within(() => {
+            cy.get(menuItemSelector).first().should('be.focused');
+          });
       });
 
       ['{rightarrow}', '{enter}', ' '].forEach(key => {
-        it(`should open on trigger ${key === ' ' ? 'space' : key}`, () => {
+        it(`should open on trigger ${key === ' ' ? 'space' : key} and focus first item`, () => {
           cy.loadStory(menuStoriesTitle, story)
             .get(menuTriggerSelector)
             .click()
@@ -366,6 +384,41 @@ describe('Menu', () => {
           .get(menuSelector)
           .should('not.exist');
       });
+    });
+  });
+
+  describe('SplitMenuItem', () => {
+    it('should be able to reach the trigger with down arrow', () => {
+      cy.loadStory(menuStoriesTitle, splitMenuItemStory).get(menuTriggerSelector).focus();
+
+      // Can't find a better way than hard code the number of tabstops
+      for (let i = 0; i < 4; i++) {
+        cy.focused().focus().type('{downarrow}');
+      }
+
+      cy.focused().focus().type('{rightarrow}');
+      cy.get(menuSelector).should('have.length', 2);
+    });
+
+    it('should be able to navigate horizontally within split item', () => {
+      cy.loadStory(menuStoriesTitle, splitMenuItemStory).get(menuTriggerSelector).focus();
+
+      // Can't find a better way than hard code the number of tabstops
+      for (let i = 0; i < 4; i++) {
+        cy.focused().focus().type('{downarrow}');
+      }
+
+      cy.focused()
+        .focus()
+        .type('{leftarrow}') // focus main action of split item
+        .focused()
+        .should('have.text', 'Open')
+        .focus()
+        .type('{rightarrow}')
+        .focused()
+        .type('{rightarrow}'); // open submenu
+
+      cy.get(menuSelector).should('have.length', 2);
     });
   });
 });

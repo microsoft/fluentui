@@ -209,4 +209,55 @@ describe('Layer', () => {
 
     expect(stopPropagationCount).toEqual(0);
   });
+
+  it('raises on onLayerDidMount when mounted', () => {
+    const onLayerDidMountSpy = jest.fn();
+
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const createPortal = ReactDOM.createPortal;
+
+    ReactDOM.createPortal = jest.fn(element => element);
+
+    safeCreate(<Layer onLayerDidMount={onLayerDidMountSpy}>Content</Layer>, component => {
+      expect(onLayerDidMountSpy).toHaveBeenCalledTimes(1);
+      ReactDOM.createPortal = createPortal;
+    });
+  });
+
+  it('DOM is ready when onLayerDidMount raised', () => {
+    const onLayerDidMountSpy = jest.fn();
+
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const createPortal = ReactDOM.createPortal;
+
+    ReactDOM.createPortal = jest.fn(element => element);
+
+    safeCreate(
+      <div>
+        <Layer onLayerDidMount={onLayerDidMountSpy}>
+          <button>Content</button>
+        </Layer>
+      </div>,
+      component => {
+        expect(component.root.findByType('button')).toBeDefined();
+        ReactDOM.createPortal = createPortal;
+      },
+    );
+  });
+
+  it('does not raise onLayerDidMount when unmounted', () => {
+    const onLayerDidMountSpy = jest.fn();
+
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const createPortal = ReactDOM.createPortal;
+
+    ReactDOM.createPortal = jest.fn(element => element);
+
+    safeCreate(<Layer onLayerDidMount={onLayerDidMountSpy}>Content</Layer>, component => {
+      ReactDOM.createPortal = createPortal;
+    });
+
+    // The 1 time is for when it was mounted
+    expect(onLayerDidMountSpy).toHaveBeenCalledTimes(1);
+  });
 });

@@ -1,238 +1,230 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
-import { CheckboxState } from './Checkbox.types';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
+import { CheckboxSlots, CheckboxState } from './Checkbox.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
- * Styles for the root slot
+ * @deprecated Use `checkboxClassNames.root` instead.
  */
-const useStyles = makeStyles({
-  root: theme => ({
+export const checkboxClassName = 'fui-Checkbox';
+export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
+  root: 'fui-Checkbox',
+  label: 'fui-Checkbox__label',
+  input: 'fui-Checkbox__input',
+  indicator: 'fui-Checkbox__indicator',
+};
+
+// TODO replace these spacing constants with theme values once they're on the theme
+const spacingHorizontalS = '8px';
+const spacingHorizontalM = '12px';
+
+// The indicator size is used by the indicator and label styles
+const indicatorSizeMedium = '16px';
+const indicatorSizeLarge = '20px';
+
+const useRootStyles = makeStyles({
+  base: {
+    position: 'relative',
     display: 'inline-flex',
-    position: 'relative',
-    alignSelf: 'flex-start',
-    alignItems: 'center',
-    padding: '4px',
-    userSelect: 'none',
-    cursor: 'pointer',
-  }),
-
-  disabled: theme => ({
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
-    cursor: 'default',
-
-    '& .ms-checkbox-indicator': {
-      borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
-      backgroundColor: theme.alias.color.neutral.neutralBackground1,
-    },
-
-    ':hover': {
-      '& .ms-checkbox-indicator': {
-        borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-        color: theme.alias.color.neutral.neutralForegroundDisabled,
-        backgroundColor: theme.alias.color.neutral.neutralBackground1,
-      },
-    },
-
-    ':active': {
-      '& .ms-checkbox-indicator': {
-        borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-        color: theme.alias.color.neutral.neutralForegroundDisabled,
-        backgroundColor: theme.alias.color.neutral.neutralBackground1,
-      },
-    },
-  }),
-
-  unchecked: theme => ({
-    color: theme.alias.color.neutral.neutralForeground3,
-
-    '& .ms-checkbox-indicator': {
-      borderColor: theme.alias.color.neutral.neutralStrokeAccessible,
-      '& > *': {
-        opacity: 0,
-      },
-    },
-
-    ':hover': {
-      color: theme.alias.color.neutral.neutralForeground2,
-
-      '& .ms-checkbox-indicator': {
-        borderColor: theme.alias.color.neutral.neutralStrokeAccessibleHover,
-      },
-    },
-
-    ':active': {
-      color: theme.alias.color.neutral.neutralForeground1,
-
-      '& .ms-checkbox-indicator': {
-        borderColor: theme.alias.color.neutral.neutralStrokeAccessiblePressed,
-      },
-    },
-  }),
-
-  checked: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
-
-    // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
-    '& .ms-checkbox-indicator': {
-      backgroundColor: theme.alias.color.neutral.compoundBrandBackground,
-      color: theme.alias.color.neutral.neutralForegroundInverted,
-      borderColor: theme.alias.color.neutral.brandBackground,
-    },
-
-    ':active': {
-      '& .ms-checkbox-indicator': {
-        backgroundColor: theme.alias.color.neutral.compoundBrandBackgroundPressed,
-      },
-    },
-
-    ':hover': {
-      '& .ms-checkbox-indicator': {
-        backgroundColor: theme.alias.color.neutral.compoundBrandBackgroundHover,
-      },
-    },
-  }),
-
-  mixed: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
-
-    '& .ms-checkbox-indicator': {
-      borderColor: theme.alias.color.neutral.compoundBrandStroke,
-      color: theme.alias.color.neutral.compoundBrandForeground1,
-    },
-
-    ':active': {
-      '& .ms-checkbox-indicator': {
-        borderColor: theme.alias.color.neutral.compoundBrandStrokePressed,
-        color: theme.alias.color.neutral.compoundBrandForeground1Pressed,
-      },
-    },
-
-    ':hover': {
-      '& .ms-checkbox-indicator': {
-        borderColor: theme.alias.color.neutral.compoundBrandStrokeHover,
-        color: theme.alias.color.neutral.compoundBrandForeground1Hover,
-      },
-    },
-  }),
-
-  focusIndictor: createFocusIndicatorStyleRule(
-    theme => ({
-      ':after': {
-        content: "''",
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        border: `2px solid ${theme.alias.color.neutral.neutralForeground1}`,
-        borderRadius: '4px',
-        margin: '-6px',
-      },
-    }),
-    { selector: 'focus-within' },
-  ),
-});
-
-const useContainerStyles = makeStyles({
-  container: {
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    columnGap: spacingHorizontalM,
+    ...shorthands.padding(spacingHorizontalS),
+    ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
   },
-
-  medium: {
-    width: '16px',
-    height: '16px',
-  },
-
-  large: {
-    width: '20px',
-    height: '20px',
-  },
-
-  // TODO: change marginLeft to Spacing horizontal M once it's added
-  before: theme => ({
-    marginLeft: '12px',
-  }),
-
-  // TODO: change marginRight to Spacing horizontal M once it's added
-  after: theme => ({
-    marginRight: '12px',
-  }),
 });
 
 const useInputStyles = makeStyles({
-  input: {
-    opacity: 0,
+  base: {
     position: 'absolute',
-    margin: 0,
-    padding: 0,
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: '100%',
+    boxSizing: 'border-box',
+    ...shorthands.margin(0),
+    opacity: 0,
     cursor: 'pointer',
-  },
 
-  disabled: {
-    cursor: 'not-allowed',
+    // When unchecked, hide the the checkmark icon (child of the indicator slot)
+    [`:not(:checked):not(:indeterminate) ~ .${checkboxClassNames.indicator} > *`]: {
+      opacity: 0,
+    },
+
+    // Colors for the unchecked state
+    ':enabled:not(:checked):not(:indeterminate)': {
+      [`& ~ .${checkboxClassNames.label}`]: {
+        color: tokens.colorNeutralForeground3,
+      },
+      [`& ~ .${checkboxClassNames.indicator}`]: {
+        ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
+      },
+
+      ':hover': {
+        [`& ~ .${checkboxClassNames.label}`]: {
+          color: tokens.colorNeutralForeground2,
+        },
+        [`& ~ .${checkboxClassNames.indicator}`]: {
+          ...shorthands.borderColor(tokens.colorNeutralStrokeAccessibleHover),
+        },
+      },
+
+      ':active:hover': {
+        [`& ~ .${checkboxClassNames.label}`]: {
+          color: tokens.colorNeutralForeground1,
+        },
+        [`& ~ .${checkboxClassNames.indicator}`]: {
+          ...shorthands.borderColor(tokens.colorNeutralStrokeAccessiblePressed),
+        },
+      },
+    },
+
+    // Colors for the checked state
+    ':enabled:checked:not(:indeterminate)': {
+      [`& ~ .${checkboxClassNames.label}`]: {
+        color: tokens.colorNeutralForeground1,
+      },
+      [`& ~ .${checkboxClassNames.indicator}`]: {
+        backgroundColor: tokens.colorCompoundBrandBackground,
+        color: tokens.colorNeutralForegroundOnBrand,
+        ...shorthands.borderColor(tokens.colorCompoundBrandBackground),
+      },
+
+      ':hover': {
+        [`& ~ .${checkboxClassNames.indicator}`]: {
+          backgroundColor: tokens.colorCompoundBrandBackgroundHover,
+          ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundHover),
+        },
+      },
+
+      ':active:hover': {
+        [`& ~ .${checkboxClassNames.indicator}`]: {
+          backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
+          ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundPressed),
+        },
+      },
+    },
+
+    // Colors for the mixed state
+    ':enabled:indeterminate': {
+      [`& ~ .${checkboxClassNames.label}`]: {
+        color: tokens.colorNeutralForeground1,
+      },
+      [`& ~ .${checkboxClassNames.indicator}`]: {
+        ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
+        color: tokens.colorCompoundBrandForeground1,
+      },
+
+      ':hover': {
+        [`& ~ .${checkboxClassNames.indicator}`]: {
+          ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
+          color: tokens.colorCompoundBrandForeground1Hover,
+        },
+      },
+
+      ':active:hover': {
+        [`& ~ .${checkboxClassNames.indicator}`]: {
+          ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
+          color: tokens.colorCompoundBrandForeground1Pressed,
+        },
+      },
+    },
+
+    ':disabled': {
+      cursor: 'default',
+
+      [`& ~ .${checkboxClassNames.label}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
+      },
+      [`& ~ .${checkboxClassNames.indicator}`]: {
+        ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+        color: tokens.colorNeutralForegroundDisabled,
+      },
+    },
   },
 });
 
 const useIndicatorStyles = makeStyles({
-  box: theme => ({
-    width: '100%',
-    height: '100%',
-    fill: 'currentColor',
-    overflow: 'hidden',
+  base: {
+    alignSelf: 'flex-start',
+    boxSizing: 'border-box',
+    flexShrink: 0,
+
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'absolute',
-    boxSizing: 'border-box',
-    borderStyle: 'solid',
-    borderRadius: theme.global.borderRadius.small,
-    borderWidth: theme.global.strokeWidth.thin,
-  }),
+    ...shorthands.overflow('hidden'),
 
-  circular: theme => ({
-    borderRadius: theme.global.borderRadius.circular,
-  }),
+    ...shorthands.border(tokens.strokeWidthThin, 'solid'),
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    fill: 'currentColor',
+    pointerEvents: 'none',
+  },
+
+  medium: {
+    width: indicatorSizeMedium,
+    height: indicatorSizeMedium,
+    fontSize: '12px',
+  },
+
+  large: {
+    width: indicatorSizeLarge,
+    height: indicatorSizeLarge,
+    fontSize: '16px',
+  },
+
+  circular: {
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+  },
+});
+
+const useLabelStyles = makeStyles({
+  base: {
+    alignSelf: 'center',
+    userSelect: 'none',
+    cursor: 'inherit',
+    color: 'inherit',
+  },
+
+  // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
+  // This prevents the label from expanding the height of the Checkbox, but preserves line height if the label wraps.
+  medium: {
+    ...shorthands.margin(`calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`, 0),
+  },
+  large: {
+    ...shorthands.margin(`calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`, 0),
+  },
 });
 
 /**
  * Apply styling to the Checkbox slots based on the state
  */
-export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
-  const checkedState = state.checked === 'mixed' ? 'mixed' : state.checked ? 'checked' : 'unchecked';
-  const indicatorStyles = useIndicatorStyles();
+export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState => {
+  const rootStyles = useRootStyles();
+  state.root.className = mergeClasses(checkboxClassNames.root, rootStyles.base, state.root.className);
+
   const inputStyles = useInputStyles();
-  const containerStyles = useContainerStyles();
-  const styles = useStyles();
+  state.input.className = mergeClasses(checkboxClassNames.input, inputStyles.base, state.input.className);
 
-  state.className = mergeClasses(
-    styles.root,
-    styles.focusIndictor,
-    styles[checkedState],
-    state.disabled && styles.disabled,
-    state.className,
-  );
+  const indicatorStyles = useIndicatorStyles();
+  if (state.indicator) {
+    state.indicator.className = mergeClasses(
+      checkboxClassNames.indicator,
+      indicatorStyles.base,
+      indicatorStyles[state.size],
+      state.shape === 'circular' && indicatorStyles.circular,
+      state.indicator.className,
+    );
+  }
 
-  state.input.className = mergeClasses(
-    containerStyles[state.size],
-    inputStyles.input,
-    state.disabled && inputStyles.disabled,
-    state.input.className,
-  );
-
-  state.containerClassName = mergeClasses(
-    containerStyles.container,
-    containerStyles[state.size],
-    !!state.children && containerStyles[state.labelPosition],
-  );
-  state.indicator.className = mergeClasses(
-    indicatorStyles.box,
-    containerStyles[state.size],
-    state.circular && indicatorStyles.circular,
-    'ms-checkbox-indicator',
-    state.indicator.className,
-  );
+  const labelStyles = useLabelStyles();
+  if (state.label) {
+    state.label.className = mergeClasses(
+      checkboxClassNames.label,
+      labelStyles.base,
+      labelStyles[state.size],
+      state.label.className,
+    );
+  }
 
   return state;
 };

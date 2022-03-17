@@ -1,13 +1,5 @@
 import { parseColorHexRGB } from '@microsoft/fast-colors';
-import {
-  attr,
-  css,
-  html,
-  nullableNumberConverter,
-  Observable,
-  observable,
-  ValueConverter,
-} from '@microsoft/fast-element';
+import { attr, css, html, nullableNumberConverter, Observable, ValueConverter } from '@microsoft/fast-element';
 import {
   DesignToken,
   DesignTokenValue,
@@ -16,9 +8,9 @@ import {
   FoundationElement,
 } from '@microsoft/fast-foundation';
 import { Direction, SystemColors } from '@microsoft/fast-web-utilities';
-import { Palette, PaletteRGB } from '../color/palette';
 import { Swatch, SwatchRGB } from '../color/swatch';
 import {
+  accentBaseColor,
   accentFillActiveDelta,
   accentFillFocusDelta,
   accentFillHoverDelta,
@@ -27,7 +19,6 @@ import {
   accentForegroundFocusDelta,
   accentForegroundHoverDelta,
   accentForegroundRestDelta,
-  accentPalette,
   baseHeightMultiplier,
   baseHorizontalSpacingMultiplier,
   baseLayerLuminance,
@@ -38,6 +29,8 @@ import {
   disabledOpacity,
   fillColor,
   focusStrokeWidth,
+  layerCornerRadius,
+  neutralBaseColor,
   neutralFillActiveDelta,
   neutralFillFocusDelta,
   neutralFillHoverDelta,
@@ -55,7 +48,6 @@ import {
   neutralFillStrongFocusDelta,
   neutralFillStrongHoverDelta,
   neutralForegroundRest,
-  neutralPalette,
   neutralStrokeActiveDelta,
   neutralStrokeDividerRestDelta,
   neutralStrokeFocusDelta,
@@ -143,15 +135,21 @@ export class DesignSystemProvider extends FoundationElement {
   constructor() {
     super();
 
-    // If fillColor changes or is removed, we need to
+    // If fillColor or baseLayerLuminance change, we need to
     // re-evaluate whether we should have paint styles applied
-    Observable.getNotifier(this).subscribe(
-      {
-        handleChange: this.noPaintChanged.bind(this),
-      },
-      'fillColor',
-    );
+    const subscriber = {
+      handleChange: this.noPaintChanged.bind(this),
+    };
+    Observable.getNotifier(this).subscribe(subscriber, 'fillColor');
+    Observable.getNotifier(this).subscribe(subscriber, 'baseLayerLuminance');
   }
+
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    this.noPaintChanged();
+  }
+
   /**
    * Used to instruct the FluentDesignSystemProvider
    * that it should not set the CSS
@@ -163,7 +161,7 @@ export class DesignSystemProvider extends FoundationElement {
   @attr({ attribute: 'no-paint', mode: 'boolean' })
   public noPaint = false;
   private noPaintChanged() {
-    if (!this.noPaint && this.fillColor !== void 0) {
+    if (!this.noPaint && (this.fillColor !== void 0 || this.baseLayerLuminance)) {
       this.$fastController.addStyles(backgroundStyles);
     } else {
       this.$fastController.removeStyles(backgroundStyles);
@@ -180,6 +178,7 @@ export class DesignSystemProvider extends FoundationElement {
   @attr({
     attribute: 'fill-color',
     converter: swatchConverter,
+    mode: 'fromView',
   })
   @designToken(fillColor)
   public fillColor: Swatch;
@@ -194,18 +193,8 @@ export class DesignSystemProvider extends FoundationElement {
     converter: swatchConverter,
     mode: 'fromView',
   })
+  @designToken(accentBaseColor)
   public accentBaseColor: Swatch;
-
-  /**
-   * @internal
-   */
-  private accentBaseColorChanged(prev: Swatch, next: Swatch): void {
-    if (next !== undefined && next !== null) {
-      accentPalette.setValueFor(this, PaletteRGB.create(next as SwatchRGB));
-    } else {
-      accentPalette.deleteValueFor(this);
-    }
-  }
 
   /**
    * A convenience to recreate the neutralPalette
@@ -217,40 +206,8 @@ export class DesignSystemProvider extends FoundationElement {
     converter: swatchConverter,
     mode: 'fromView',
   })
+  @designToken(neutralBaseColor)
   public neutralBaseColor: Swatch;
-
-  /**
-   * @internal
-   */
-  private neutralBaseColorChanged(prev: Swatch, next: Swatch): void {
-    if (next !== undefined && next !== null) {
-      neutralPalette.setValueFor(this, PaletteRGB.create(next as SwatchRGB));
-    } else {
-      neutralPalette.deleteValueFor(this);
-    }
-  }
-
-  /**
-   * Defines the palette that all neutral color recipes are derived from.
-   * This is an array for hexadecimal color strings ordered from light to dark.
-   *
-   * @remarks
-   * HTML attribute: N/A
-   */
-  @observable
-  @designToken(neutralPalette)
-  public neutralPalette: Palette;
-
-  /**
-   * Defines the palette that all accent color recipes are derived from.
-   * This is an array for hexadecimal color strings ordered from light to dark.
-   *
-   * @remarks
-   * HTML attribute: N/A
-   */
-  @observable
-  @designToken(accentPalette)
-  public accentPalette: Palette;
 
   /**
    *
@@ -330,9 +287,9 @@ export class DesignSystemProvider extends FoundationElement {
    * The corner radius applied to controls.
    *
    * @remarks
-   * HTML attribute: corner-radius
+   * HTML attribute: control-corner-radius
    *
-   * CSS custom property: --corner-radius
+   * CSS custom property: --control-corner-radius
    */
   @attr({
     attribute: 'control-corner-radius',
@@ -340,6 +297,21 @@ export class DesignSystemProvider extends FoundationElement {
   })
   @designToken(controlCornerRadius)
   public controlCornerRadius: number;
+
+  /**
+   * The corner radius applied to layers.
+   *
+   * @remarks
+   * HTML attribute: layer-corner-radius
+   *
+   * CSS custom property: --layer-corner-radius
+   */
+  @attr({
+    attribute: 'layer-corner-radius',
+    converter: nullableNumberConverter,
+  })
+  @designToken(layerCornerRadius)
+  public layerCornerRadius: number;
 
   /**
    * The width of the standard stroke applied to stroke components in pixels.
@@ -1016,10 +988,10 @@ export class DesignSystemProvider extends FoundationElement {
   public baseLayerLuminance: number; // 0...1
 
   /**
-   * The distance from the resolved neutral divider color for the rest state of the neutral-foreground recipe.
+   * The distance from the resolved divider color for the rest state of the neutral-stroke-divider recipe.
    *
    * @remarks
-   * HTML attribute: neutral-divider-rest-delta
+   * HTML attribute: neutral-stroke-divider-rest-delta
    *
    * CSS custom property: N/A
    */

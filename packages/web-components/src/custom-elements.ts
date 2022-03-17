@@ -1,3 +1,46 @@
+// These type imports are needed so that API-extractor doesn't add import types with improper pathing.
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import type {
+  Accordion,
+  AccordionItem,
+  Anchor,
+  AnchoredRegion,
+  Badge,
+  Breadcrumb,
+  BreadcrumbItem,
+  Button,
+  Calendar,
+  Card,
+  Checkbox,
+  Combobox,
+  DataGrid,
+  Dialog,
+  Divider,
+  Flipper,
+  HorizontalScroll,
+  Listbox,
+  ListboxOption,
+  Menu,
+  MenuItem,
+  NumberField,
+  Radio,
+  RadioGroup,
+  Search,
+  Select,
+  Skeleton,
+  Slider,
+  SliderLabel,
+  Switch,
+  Tabs,
+  TextArea,
+  TextField,
+  Toolbar,
+  Tooltip,
+  TreeItem,
+  TreeView,
+} from '@microsoft/fast-foundation';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 /**
  * Export all custom element definitions
  */
@@ -9,6 +52,7 @@ import { fluentBadge } from './badge/index';
 import { fluentBreadcrumb } from './breadcrumb/index';
 import { fluentBreadcrumbItem } from './breadcrumb-item/index';
 import { fluentButton } from './button/index';
+import { fluentCalendar } from './calendar/index';
 import { fluentCard } from './card/index';
 import { fluentCheckbox } from './checkbox/index';
 import { fluentCombobox } from './combobox/index';
@@ -26,6 +70,7 @@ import { fluentNumberField } from './number-field/index';
 import { fluentProgress, fluentProgressRing } from './progress/index';
 import { fluentRadio } from './radio/index';
 import { fluentRadioGroup } from './radio-group/index';
+import { fluentSearch } from './search/index';
 import { fluentSelect } from './select/index';
 import { fluentSkeleton } from './skeleton/index';
 import { fluentSlider } from './slider/index';
@@ -34,6 +79,7 @@ import { fluentSwitch } from './switch/index';
 import { fluentTab, fluentTabPanel, fluentTabs } from './tabs/index';
 import { fluentTextArea } from './text-area/index';
 import { fluentTextField } from './text-field/index';
+import { fluentToolbar } from './toolbar/index';
 import { fluentTooltip } from './tooltip/index';
 import { fluentTreeView } from './tree-view/index';
 import { fluentTreeItem } from './tree-item/index';
@@ -48,6 +94,7 @@ export {
   fluentBreadcrumbItem,
   fluentButton,
   fluentCard,
+  fluentCalendar,
   fluentCheckbox,
   fluentCombobox,
   fluentDataGrid,
@@ -67,6 +114,7 @@ export {
   fluentProgressRing,
   fluentRadio,
   fluentRadioGroup,
+  fluentSearch,
   fluentSelect,
   fluentSkeleton,
   fluentSlider,
@@ -77,6 +125,7 @@ export {
   fluentTabPanel,
   fluentTextArea,
   fluentTextField,
+  fluentToolbar,
   fluentTooltip,
   fluentTreeView,
   fluentTreeItem,
@@ -95,6 +144,7 @@ export const allComponents = {
   fluentBreadcrumb,
   fluentBreadcrumbItem,
   fluentButton,
+  fluentCalendar,
   fluentCard,
   fluentCheckbox,
   fluentCombobox,
@@ -115,6 +165,7 @@ export const allComponents = {
   fluentProgressRing,
   fluentRadio,
   fluentRadioGroup,
+  fluentSearch,
   fluentSelect,
   fluentSkeleton,
   fluentSlider,
@@ -125,10 +176,11 @@ export const allComponents = {
   fluentTabPanel,
   fluentTextArea,
   fluentTextField,
+  fluentToolbar,
   fluentTooltip,
   fluentTreeView,
   fluentTreeItem,
-  register(container?: Container) {
+  register(container?: Container, ...rest: any[]) {
     if (!container) {
       // preserve backward compatibility with code that loops through
       // the values of this object and calls them as funcs with no args
@@ -140,7 +192,7 @@ export const allComponents = {
         continue;
       }
 
-      this[key]().register(container);
+      this[key]().register(container, ...rest);
     }
   },
 };

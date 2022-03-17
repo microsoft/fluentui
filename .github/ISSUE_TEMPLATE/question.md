@@ -1,8 +1,8 @@
 ---
 name: Question
-about: 'Please use Stack Overflow for questions #office-ui-fabric, #fluentui-react, #fluentui'
+about: 'Please use Stack Overflow for questions #fluentui-react, #fluentui'
 ---
 
-For _how-to_ questions and other non-bugs, please use StackOverflow instead of Github issues. You can tag your questions with [office-ui-fabric][fluentui-react] [fluentui](https://stackoverflow.com/questions/tagged/office-ui-fabric).
+For _how-to_ questions and other non-bugs, please use Stack Overflow. You can tag your questions with [fluentui-react](https://stackoverflow.com/questions/tagged/fluentui-react).
 
-If you are a Microsoft employee you can also join the "Fluent UI Community" Teams channel.
+If you are a Microsoft employee you can also join "Fluent Community" on Teams.

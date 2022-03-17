@@ -1,66 +1,44 @@
-import * as React from 'react';
-import type {
-  ComponentPropsCompat,
-  ComponentStateCompat,
-  ObjectShorthandPropsCompat,
-  ShorthandPropsCompat,
-} from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-/**
- * Label Props
- * {@docCategory Label}
- */
-export interface LabelProps extends ComponentPropsCompat, React.LabelHTMLAttributes<HTMLLabelElement> {
+type LabelCommons = {
   /**
    * Renders the label as disabled
    * @defaultvalue false
    */
-  disabled?: boolean;
-
-  /**
-   * Displays and indicator that the label is for a required field. The required prop can be set to true to display
-   * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
-   * @defaultvalue false
-   */
-  required?: boolean | ShorthandPropsCompat<ComponentPropsCompat>;
+  disabled: boolean;
 
   /**
    * A label supports different sizes.
    * @defaultvalue 'medium'
    */
-  size?: 'small' | 'medium' | 'large';
+  size: 'small' | 'medium' | 'large';
 
   /**
    * A label supports semibold/strong fontweight.
    * @defaultvalue false
    */
-  strong?: boolean;
-}
+  strong: boolean;
+};
 
-/**
- * Names of the shorthand properties in LabelProps
- * {@docCategory Label}
- */
-export type LabelShorthandProps = 'required';
-
-/**
- * Names of LabelProps that have a default value in useLabel
- * {@docCategory Label}
- */
-export type LabelDefaultedProps = 'size';
+export type LabelSlots = {
+  root: Slot<'label'>;
+  required?: Slot<'span'>;
+};
 
 /**
  * State used in rendering Label
- * {@docCategory Label}
  */
-export interface LabelState extends ComponentStateCompat<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
-  /**
-   * Ref to the root element
-   */
-  ref: React.Ref<HTMLElement>;
+export type LabelState = ComponentState<LabelSlots> & LabelCommons;
 
-  /**
-   * The required prop resolved to a slot object
-   */
-  required?: ObjectShorthandPropsCompat<ComponentPropsCompat>;
-}
+/**
+ * Label Props
+ */
+export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
+  Partial<LabelCommons> & {
+    /**
+     * Displays and indicator that the label is for a required field. The required prop can be set to true to display
+     * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
+     * @defaultvalue false
+     */
+    required?: boolean | Slot<'span'>;
+  };

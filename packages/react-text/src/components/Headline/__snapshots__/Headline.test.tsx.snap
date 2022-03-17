@@ -3,7 +3,7 @@
 exports[`Headline renders a default state 1`] = `
 <div>
   <span
-    class=""
+    class="fui-Headline fui-Text"
   >
     Default Headline
   </span>

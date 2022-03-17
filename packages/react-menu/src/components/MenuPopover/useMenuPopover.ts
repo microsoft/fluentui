@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { getCode, ArrowLeftKey, TabKey, ArrowRightKey } from '@fluentui/keyboard-key';
+import { ArrowLeft, Tab, ArrowRight, Escape } from '@fluentui/keyboard-keys';
 import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
-import { useMenuContext } from '../../contexts/menuContext';
+import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
@@ -10,22 +10,22 @@ import { useIsSubmenu } from '../../utils/useIsSubmenu';
 /**
  * Create the state required to render MenuPopover.
  *
- * The returned state can be modified with hooks such as useMenuPopoverStyles,
- * before being passed to renderMenuPopover.
+ * The returned state can be modified with hooks such as useMenuPopoverStyles_unstable,
+ * before being passed to renderMenuPopover_unstable.
  *
  * @param props - props from this instance of MenuPopover
  * @param ref - reference to root HTMLElement of MenuPopover
  */
-export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLElement>): MenuPopoverState => {
-  const popoverRef = useMenuContext(context => context.menuPopoverRef);
-  const setOpen = useMenuContext(context => context.setOpen);
-  const openOnHover = useMenuContext(context => context.openOnHover);
+export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<HTMLElement>): MenuPopoverState => {
+  const popoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
+  const setOpen = useMenuContext_unstable(context => context.setOpen);
+  const openOnHover = useMenuContext_unstable(context => context.openOnHover);
   const isSubmenu = useIsSubmenu();
   const canDispatchCustomEventRef = React.useRef(true);
   const throttleDispatchTimerRef = React.useRef(0);
 
   const { dir } = useFluent();
-  const CloseArrowKey = dir === 'ltr' ? ArrowLeftKey : ArrowRightKey;
+  const CloseArrowKey = dir === 'ltr' ? ArrowLeft : ArrowRight;
 
   // use DOM listener since react events propagate up the react tree
   // no need to do `contains` logic as menus are all positioned in different portals
@@ -53,7 +53,7 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
     () => clearTimeout(throttleDispatchTimerRef.current);
   }, []);
 
-  const inline = useMenuContext(context => context.inline) ?? false;
+  const inline = useMenuContext_unstable(context => context.inline) ?? false;
   const rootProps = getNativeElementProps('div', {
     role: 'presentation',
     ...props,
@@ -71,15 +71,15 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
   });
 
   rootProps.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
-    const keyCode = getCode(e);
+    const key = e.key;
 
-    if (keyCode === 27 /* Escape */ || (isSubmenu && keyCode === CloseArrowKey)) {
+    if (key === Escape || (isSubmenu && key === CloseArrowKey)) {
       if (popoverRef.current?.contains(e.target as HTMLElement)) {
         setOpen(e, { open: false, keyboard: true });
       }
     }
 
-    if (keyCode === TabKey) {
+    if (key === Tab) {
       setOpen(e, { open: false, keyboard: true });
       e.preventDefault();
     }
@@ -89,6 +89,9 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
 
   return {
     inline,
+    components: {
+      root: 'div',
+    },
     root: rootProps,
   };
 };

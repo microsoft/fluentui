@@ -4,37 +4,55 @@
 
 ```ts
 
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
-import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSwitch: (state: SwitchState) => JSX.Element;
+export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
 
 // @public
-export const Switch: React_2.ForwardRefExoticComponent<SwitchProps & React_2.RefAttributes<HTMLElement>>;
+export const Switch: ForwardRefComponent<SwitchProps>;
+
+// @public @deprecated (undocumented)
+export const switchClassName: string;
 
 // @public (undocumented)
-export interface SwitchCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement>, 'onChange'> {
-}
+export const switchClassNames: SlotClassNames<SwitchSlots>;
+
+// @public (undocumented)
+export type SwitchOnChangeData = {
+    checked: boolean;
+};
+
+// Warning: (ae-forgotten-export) The symbol "SwitchCommons" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'onChange'> & Partial<SwitchCommons> & {
+    defaultChecked?: boolean;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => void;
+};
+
+// @public (undocumented)
+export type SwitchSlots = {
+    root: NonNullable<Slot<'div'>>;
+    indicator: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>>;
+    label?: Slot<typeof Label>;
+};
 
 // @public
-export interface SwitchProps extends ComponentPropsCompat, Partial<SwitchCommon> {
-}
+export type SwitchState = ComponentState<SwitchSlots> & SwitchCommons;
 
 // @public
-export const switchShorthandProps: readonly [];
+export const useSwitch_unstable: (props: SwitchProps, ref: React_2.Ref<HTMLInputElement>) => SwitchState;
 
 // @public
-export interface SwitchState extends ComponentStateCompat<SwitchProps> {
-    ref: React_2.Ref<HTMLElement>;
-}
-
-// @public
-export const useSwitch: (props: SwitchProps, ref: React_2.Ref<HTMLElement>) => SwitchState;
-
-// @public
-export const useSwitchStyles: (state: SwitchState) => SwitchState;
+export const useSwitchStyles_unstable: (state: SwitchState) => SwitchState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -4,66 +4,53 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSlider: (state: SliderState) => JSX.Element;
+export const renderSlider_unstable: (state: SliderState) => JSX.Element;
 
 // @public
-export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.RefAttributes<HTMLElement>>;
-
-// @public
-export type SliderDefaultedProps = 'rail' | 'sliderWrapper' | 'trackWrapper' | 'track' | 'marksWrapper' | 'thumbWrapper' | 'thumb' | 'activeRail';
+export const Slider: ForwardRefComponent<SliderProps>;
 
 // @public (undocumented)
-export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
-    activeRail?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLElement>>;
-    ariaValueText?: (value: number) => string;
-    defaultValue?: number;
-    disabled?: boolean;
-    keyboardStep?: number;
-    marks?: boolean | number[];
-    marksWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    max?: number;
-    min?: number;
-    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
-        value: number;
-    }) => void;
-    origin?: number;
-    rail?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    size?: 'small' | 'medium';
-    sliderWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    step?: number;
-    thumb?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLElement>>;
-    thumbWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLElement>>;
-    track?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    trackWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    value?: number;
-    vertical?: boolean;
-}
-
-// @public
-export type SliderShorthandProps = 'rail' | 'sliderWrapper' | 'trackWrapper' | 'track' | 'marksWrapper' | 'thumbWrapper' | 'thumb' | 'activeRail';
-
-// @public
-export const sliderShorthandProps: SliderShorthandProps[];
-
-// @public
-export interface SliderState extends ComponentStateCompat<SliderProps, SliderShorthandProps, SliderDefaultedProps> {
-    ref: React_2.Ref<HTMLElement>;
-}
-
-// @public
-export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: SliderProps | undefined) => SliderState;
+export const sliderClassNames: SlotClassNames<SliderSlots>;
 
 // @public (undocumented)
-export const useSliderState: (state: SliderState) => SliderState;
+export type SliderOnChangeData = {
+    value: number;
+};
+
+// Warning: (ae-forgotten-export) The symbol "SliderCommons" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommons;
+
+// @public (undocumented)
+export type SliderSlots = {
+    root: NonNullable<Slot<'div'>>;
+    rail: NonNullable<Slot<'div'>>;
+    thumb: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>> & {
+        orient?: 'horizontal' | 'vertical';
+    };
+};
+
+// @public (undocumented)
+export type SliderState = ComponentState<SliderSlots> & SliderCommons;
 
 // @public
-export const useSliderStyles: (state: SliderState) => SliderState;
+export const useSlider_unstable: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
+
+// @public (undocumented)
+export const useSliderState_unstable: (state: SliderState) => SliderState;
+
+// @public
+export const useSliderStyles_unstable: (state: SliderState) => SliderState;
 
 // (No @packageDocumentation comment for this package)
 

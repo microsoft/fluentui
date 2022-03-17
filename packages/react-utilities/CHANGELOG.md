@@ -1,8 +1,208 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 01 Sep 2021 07:39:56 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 05:17:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.5)
+
+Fri, 04 Mar 2022 05:17:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-rc.4..@fluentui/react-utilities_v9.0.0-rc.5)
+
+### Changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Adding helper type to define slot class names. ([PR #21933](https://github.com/microsoft/fluentui/pull/21933) by email not defined)
+- fix(shouldPreventDefaultOnKeyDown): return false for events that are default prevented ([PR #21905](https://github.com/microsoft/fluentui/pull/21905) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.4 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.4)
+
+Tue, 01 Mar 2022 02:17:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-rc.3..@fluentui/react-utilities_v9.0.0-rc.4)
+
+### Changes
+
+- Ignore prefix in useId() when it is falsey. ([PR #21848](https://github.com/microsoft/fluentui/pull/21848) by seanmonahan@microsoft.com)
+- Add fieldset to getNativeElementProps ([PR #21835](https://github.com/microsoft/fluentui/pull/21835) by behowell@microsoft.com)
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.3)
+
+Fri, 18 Feb 2022 13:35:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-rc.1..@fluentui/react-utilities_v9.0.0-rc.3)
+
+### Changes
+
+- fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.1)
+
+Thu, 10 Feb 2022 08:50:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-beta.4..@fluentui/react-utilities_v9.0.0-rc.1)
+
+### Changes
+
+- Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- getSlots: remove slotNames param, and infer from state.components instead ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- add useTriggerElement() hook ([PR #21225](https://github.com/microsoft/fluentui/pull/21225) by olfedias@microsoft.com)
+- Removes nullRender from react-utilities ([PR #21576](https://github.com/microsoft/fluentui/pull/21576) by bsunderhus@microsoft.com)
+- update applyTriggerPropsToChildren() to return React.ReactElement or null ([PR #21609](https://github.com/microsoft/fluentui/pull/21609) by olfedias@microsoft.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- Adding ComponentSlotProps to allow ref to be passed in composite components. ([PR #20890](https://github.com/microsoft/fluentui/pull/20890) by Humberto.Morimoto@microsoft.com)
+- Renaming most *Shorthand* composition types to *SlotProps* so they better reflect what the types do. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
+- Update trigger utilities to handle nested triggers ([PR #21495](https://github.com/microsoft/fluentui/pull/21495) by behowell@microsoft.com)
+- [breaking] Remove useControllableValue hook (use useControllableState instead) ([PR #20865](https://github.com/microsoft/fluentui/pull/20865) by elcraig@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-beta.4)
+
+Thu, 25 Nov 2021 08:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-beta.3..@fluentui/react-utilities_v9.0.0-beta.4)
+
+### Changes
+
+- Update utility types to support specifying a primary slot other than root ([PR #20617](https://github.com/microsoft/fluentui/pull/20617) by behowell@microsoft.com)
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-beta.3)
+
+Fri, 12 Nov 2021 13:25:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-beta.2..@fluentui/react-utilities_v9.0.0-beta.3)
+
+### Changes
+
+- Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-beta.2)
+
+Wed, 27 Oct 2021 12:14:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-beta.1..@fluentui/react-utilities_v9.0.0-beta.2)
+
+### Changes
+
+- remove compat utilities and types ([PR #20255](https://github.com/microsoft/fluentui/pull/20255) by olfedias@microsoft.com)
+- fix(getNativeElementPrps): Add support for `onAuxClick` ([PR #20343](https://github.com/microsoft/fluentui/pull/20343) by lingfangao@hotmail.com)
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-beta.1)
+
+Wed, 06 Oct 2021 10:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.56..@fluentui/react-utilities_v9.0.0-beta.1)
+
+### Changes
+
+- Bump all v9 components to beta prerelease tag ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+
+## [9.0.0-alpha.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.56)
+
+Tue, 05 Oct 2021 09:28:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.55..@fluentui/react-utilities_v9.0.0-alpha.56)
+
+### Changes
+
+- Add and use ForwardRefComponent helper type ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.55)
+
+Fri, 01 Oct 2021 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.53..@fluentui/react-utilities_v9.0.0-alpha.55)
+
+### Changes
+
+- Bump v9 prerelease versions to rerelease ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-alpha.5 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+
+## [9.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.53)
+
+Mon, 27 Sep 2021 08:06:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.52..@fluentui/react-utilities_v9.0.0-alpha.53)
+
+### Changes
+
+- Updates ComponentState on custom props ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.52)
+
+Fri, 24 Sep 2021 09:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.51..@fluentui/react-utilities_v9.0.0-alpha.52)
+
+### Changes
+
+- Add as prop to properties allowed with getNativeElementProps ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by andredias@microsoft.com)
+
+## [9.0.0-alpha.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.51)
+
+Thu, 23 Sep 2021 08:21:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.50..@fluentui/react-utilities_v9.0.0-alpha.51)
+
+### Changes
+
+- Adding clamp and getRTLSafeKey utilities. ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by czearing@outlook.com)
+
+## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.50)
+
+Wed, 22 Sep 2021 10:10:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.49..@fluentui/react-utilities_v9.0.0-alpha.50)
+
+### Changes
+
+- Moved from interfaces to types per RFC ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by gcox@microsoft.com)
+
+## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.49)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.48..@fluentui/react-utilities_v9.0.0-alpha.49)
+
+### Changes
+
+- Refactoring out functionality that applies trigger props to children as a utility. ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+- Removes ExtractRef Typings ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.48)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.47..@fluentui/react-utilities_v9.0.0-alpha.48)
+
+### Changes
+
+- Fix IntrinsicShorthandProps used in the root slot with multiple possible `as` values ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [9.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.47)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.46..@fluentui/react-utilities_v9.0.0-alpha.47)
+
+### Changes
+
+- Adds ExtractRef typings to react-utilities to extract reference from props ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.46)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.45..@fluentui/react-utilities_v9.0.0-alpha.46)
+
+### Changes
+
+- chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.45)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.44..@fluentui/react-utilities_v9.0.0-alpha.45)
+
+### Changes
+
+- Add IntrinsicShorthandProps for slots that use intrinsic elements like div or span ([PR #19642](https://github.com/microsoft/fluentui/pull/19642) by behowell@microsoft.com)
+
+## [9.0.0-alpha.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.44)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.43..@fluentui/react-utilities_v9.0.0-alpha.44)
+
+### Changes
+
+- feat(react-utilities): use `event.key` for keyboard events ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.43)
 

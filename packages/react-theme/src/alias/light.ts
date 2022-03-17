@@ -1,127 +1,160 @@
-import type { GlobalSharedColors, NeutralColorTokens, SharedColorTokens } from '../types';
+import { black, blackAlpha, grey, white, whiteAlpha, sharedColors } from '../global/colors';
+import type { BrandVariants, GlobalSharedColors, ColorTokens, ColorPaletteTokens } from '../types';
 
-export const neutralColorTokens: NeutralColorTokens = {
-  neutralForeground1: 'var(--global-palette-grey-14)', // #242424 Global.Color.Grey.14
-  neutralForeground2: 'var(--global-palette-grey-26)', // #424242 Global.Color.Grey.26
-  neutralForeground2Hover: 'var(--global-palette-grey-14)', // #242424 Global.Color.Grey.14
-  neutralForeground2Pressed: 'var(--global-palette-grey-14)', // #242424 Global.Color.Grey.14
-  neutralForeground2Selected: 'var(--global-palette-grey-14)', // #242424 Global.Color.Grey.14
-  neutralForeground2BrandHover: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
-  neutralForeground2BrandPressed: 'var(--global-palette-brand-shade10)', // #106ebe Global.Color.Brand.Shade.10
-  neutralForeground2BrandSelected: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
-  neutralForeground3: 'var(--global-palette-grey-38)', // #616161 Global.Color.Grey.38
-  neutralForeground3Hover: 'var(--global-palette-grey-26)', // #424242 Global.Color.Grey.26
-  neutralForeground3Pressed: 'var(--global-palette-grey-26)', // #424242 Global.Color.Grey.26
-  neutralForeground3Selected: 'var(--global-palette-grey-26)', // #424242 Global.Color.Grey.26
-  neutralForeground3BrandHover: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
-  neutralForeground3BrandPressed: 'var(--global-palette-brand-shade10)', // #106ebe Global.Color.Brand.Shade.10
-  neutralForeground3BrandSelected: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
-  neutralForeground4: 'var(--global-palette-grey-44)', // #707070 Global.Color.Grey.44
-  neutralForegroundDisabled: 'var(--global-palette-grey-74)', // #bdbdbd Global.Color.Grey.74
-  brandForegroundLink: 'var(--global-palette-brand-shade10)', // #106ebe Global.Color.Brand.Shade.10
-  brandForegroundLinkHover: 'var(--global-palette-brand-shade20)', // #005a9e Global.Color.Brand.Shade.20
-  brandForegroundLinkPressed: 'var(--global-palette-brand-shade40)', // #004578 Global.Color.Brand.Shade.40
-  brandForegroundLinkSelected: 'var(--global-palette-brand-shade10)', // #106ebe Global.Color.Brand.Shade.10
-  compoundBrandForeground1: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
-  compoundBrandForeground1Hover: 'var(--global-palette-brand-shade10)', // #106ebe Global.Color.Brand.Shade.10
-  compoundBrandForeground1Pressed: 'var(--global-palette-brand-shade20)', // #005a9e Global.Color.Brand.Shade.20
-  brandForeground1: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
-  brandForeground2: 'var(--global-palette-brand-shade10)', // #106ebe Global.Color.Brand.Shade.10
-  neutralForegroundInverted: 'var(--global-color-white)', // #ffffff Global.Color.White
-  neutralForegroundOnBrand: 'var(--global-color-white)', // #ffffff Global.Color.White
-  neutralForegroundInvertedLink: 'var(--global-color-white)', // #ffffff Global.Color.White
-  neutralForegroundInvertedLinkHover: 'var(--global-color-white)', // #ffffff Global.Color.White
-  neutralForegroundInvertedLinkPressed: 'var(--global-color-white)', // #ffffff Global.Color.White
-  neutralForegroundInvertedLinkSelected: 'var(--global-color-white)', // #ffffff Global.Color.White
-  neutralBackground1: 'var(--global-color-white)', // #ffffff Global.Color.White
-  neutralBackground1Hover: 'var(--global-palette-grey-96)', // #f5f5f5 Global.Color.Grey.96
-  neutralBackground1Pressed: 'var(--global-palette-grey-88)', // #e0e0e0 Global.Color.Grey.88
-  neutralBackground1Selected: 'var(--global-palette-grey-92)', // #ebebeb Global.Color.Grey.92
-  neutralBackground2: 'var(--global-palette-grey-98)', // #fafafa Global.Color.Grey.98
-  neutralBackground2Hover: 'var(--global-palette-grey-94)', // #f0f0f0 Global.Color.Grey.94
-  neutralBackground2Pressed: 'var(--global-palette-grey-86)', // #dbdbdb Global.Color.Grey.86
-  neutralBackground2Selected: 'var(--global-palette-grey-90)', // #e6e6e6 Global.Color.Grey.90
-  neutralBackground3: 'var(--global-palette-grey-96)', // #f5f5f5 Global.Color.Grey.96
-  neutralBackground3Hover: 'var(--global-palette-grey-92)', // #ebebeb Global.Color.Grey.92
-  neutralBackground3Pressed: 'var(--global-palette-grey-84)', // #d6d6d6 Global.Color.Grey.84
-  neutralBackground3Selected: 'var(--global-palette-grey-88)', // #e0e0e0 Global.Color.Grey.88
-  neutralBackground4: 'var(--global-palette-grey-94)', // #f0f0f0 Global.Color.Grey.94
-  neutralBackground4Hover: 'var(--global-palette-grey-98)', // #fafafa Global.Color.Grey.98
-  neutralBackground4Pressed: 'var(--global-palette-grey-96)', // #f5f5f5 Global.Color.Grey.96
-  neutralBackground4Selected: 'var(--global-color-white)', // #ffffff Global.Color.White
-  neutralBackground5: 'var(--global-palette-grey-92)', // #ebebeb Global.Color.Grey.92
-  neutralBackground5Hover: 'var(--global-palette-grey-96)', // #f5f5f5 Global.Color.Grey.96
-  neutralBackground5Pressed: 'var(--global-palette-grey-94)', // #f0f0f0 Global.Color.Grey.94
-  neutralBackground5Selected: 'var(--global-palette-grey-98)', // #fafafa Global.Color.Grey.98
-  neutralBackground6: 'var(--global-palette-grey-90)', // #e6e6e6 Global.Color.Grey.90
-  neutralBackgroundInverted: 'var(--global-palette-grey-38)', // #616161 Global.Color.Grey.38
-  subtleBackground: 'transparent', // transparent undefined
-  subtleBackgroundHover: 'var(--global-palette-grey-96)', // #f5f5f5 Global.Color.Grey.96
-  subtleBackgroundPressed: 'var(--global-palette-grey-88)', // #e0e0e0 Global.Color.Grey.88
-  subtleBackgroundSelected: 'var(--global-palette-grey-92)', // #ebebeb Global.Color.Grey.92
-  transparentBackground: 'transparent', // transparent undefined
-  transparentBackgroundHover: 'transparent', // transparent undefined
-  transparentBackgroundPressed: 'transparent', // transparent undefined
-  transparentBackgroundSelected: 'transparent', // transparent undefined
-  neutralBackgroundDisabled: 'var(--global-palette-grey-94)', // #f0f0f0 Global.Color.Grey.94
-  neutralStencil1: 'var(--global-palette-grey-90)', // #e6e6e6 Global.Color.Grey.90
-  neutralStencil2: 'var(--global-palette-grey-98)', // #fafafa Global.Color.Grey.98
-  brandBackground: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
-  brandBackgroundHover: 'var(--global-palette-brand-shade10)', // #106ebe Global.Color.Brand.Shade.10
-  brandBackgroundPressed: 'var(--global-palette-brand-shade40)', // #004578 Global.Color.Brand.Shade.40
-  brandBackgroundSelected: 'var(--global-palette-brand-shade20)', // #005a9e Global.Color.Brand.Shade.20
-  compoundBrandBackground: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
-  compoundBrandBackgroundHover: 'var(--global-palette-brand-shade10)', // #106ebe Global.Color.Brand.Shade.10
-  compoundBrandBackgroundPressed: 'var(--global-palette-brand-shade20)', // #005a9e Global.Color.Brand.Shade.20
-  brandBackgroundStatic: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
-  brandBackground2: 'var(--global-palette-brand-tint60)', // #eff6fc Global.Color.Brand.Tint.60
-  neutralStrokeAccessible: 'var(--global-palette-grey-38)', // #616161 Global.Color.Grey.38
-  neutralStrokeAccessibleHover: 'var(--global-palette-grey-34)', // #575757 Global.Color.Grey.34
-  neutralStrokeAccessiblePressed: 'var(--global-palette-grey-30)', // #4d4d4d Global.Color.Grey.30
-  neutralStrokeAccessibleSelected: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
-  neutralStroke1: 'var(--global-palette-grey-82)', // #d1d1d1 Global.Color.Grey.82
-  neutralStroke1Hover: 'var(--global-palette-grey-78)', // #c7c7c7 Global.Color.Grey.78
-  neutralStroke1Pressed: 'var(--global-palette-grey-70)', // #b3b3b3 Global.Color.Grey.70
-  neutralStroke1Selected: 'var(--global-palette-grey-74)', // #bdbdbd Global.Color.Grey.74
-  neutralStroke2: 'var(--global-palette-grey-88)', // #e0e0e0 Global.Color.Grey.88
-  neutralStroke3: 'var(--global-palette-grey-94)', // #f0f0f0 Global.Color.Grey.94
-  brandStroke1: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
-  brandStroke2: 'var(--global-palette-brand-tint40)', // #c7e0f4 Global.Color.Brand.Tint.40
-  compoundBrandStroke: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
-  compoundBrandStrokeHover: 'var(--global-palette-brand-shade10)', // #106ebe Global.Color.Brand.Shade.10
-  compoundBrandStrokePressed: 'var(--global-palette-brand-shade20)', // #005a9e Global.Color.Brand.Shade.20
-  neutralStrokeDisabled: 'var(--global-palette-grey-88)', // #e0e0e0 Global.Color.Grey.88
-  transparentStroke: 'transparent', // transparent undefined
-  transparentStrokeInteractive: 'transparent', // transparent undefined
-  transparentStrokeDisabled: 'transparent', // transparent undefined
-  strokeFocus1: 'var(--global-color-white)', // #ffffff Global.Color.White
-  strokeFocus2: 'var(--global-color-black)', // #000000 Global.Color.Black
-  neutralShadowAmbient: 'rgba(0,0,0,0.12)', // rgba(0,0,0,0.12) undefined
-  neutralShadowKey: 'rgba(0,0,0,0.14)', // rgba(0,0,0,0.14) undefined
-  neutralShadowAmbientLighter: 'rgba(0,0,0,0.06)', // rgba(0,0,0,0.06) undefined
-  neutralShadowKeyLighter: 'rgba(0,0,0,0.07)', // rgba(0,0,0,0.07) undefined
-  neutralShadowAmbientDarker: 'rgba(0,0,0,0.20)', // rgba(0,0,0,0.20) undefined
-  neutralShadowKeyDarker: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined
-  brandShadowAmbient: 'rgba(0,0,0,0.30)', // rgba(0,0,0,0.30) undefined
-  brandShadowKey: 'rgba(0,0,0,0.25)', // rgba(0,0,0,0.25) undefined
-};
+export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
+  colorNeutralForeground1: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForeground1Hover: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForeground1Pressed: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForeground1Selected: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForeground2: grey[26], // #424242 Global.Color.Grey.26
+  colorNeutralForeground2Hover: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForeground2Pressed: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForeground2Selected: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForeground2BrandHover: brand[80], // #0078d4 Global.Color.Brand.80
+  colorNeutralForeground2BrandPressed: brand[70], // #106ebe Global.Color.Brand.70
+  colorNeutralForeground2BrandSelected: brand[80], // #0078d4 Global.Color.Brand.80
+  colorNeutralForeground3: grey[38], // #616161 Global.Color.Grey.38
+  colorNeutralForeground3Hover: grey[26], // #424242 Global.Color.Grey.26
+  colorNeutralForeground3Pressed: grey[26], // #424242 Global.Color.Grey.26
+  colorNeutralForeground3Selected: grey[26], // #424242 Global.Color.Grey.26
+  colorNeutralForeground3BrandHover: brand[80], // #0078d4 Global.Color.Brand.80
+  colorNeutralForeground3BrandPressed: brand[70], // #106ebe Global.Color.Brand.70
+  colorNeutralForeground3BrandSelected: brand[80], // #0078d4 Global.Color.Brand.80
+  colorNeutralForeground4: grey[44], // #707070 Global.Color.Grey.44
+  colorNeutralForegroundDisabled: grey[74], // #bdbdbd Global.Color.Grey.74
+  colorNeutralForegroundInvertedDisabled: whiteAlpha[40], // rgba(255, 255, 255, 0.4) Global.Color.WhiteAlpha.40
+  colorBrandForegroundLink: brand[70], // #106ebe Global.Color.Brand.70
+  colorBrandForegroundLinkHover: brand[60], // #005a9e Global.Color.Brand.60
+  colorBrandForegroundLinkPressed: brand[40], // #004578 Global.Color.Brand.40
+  colorBrandForegroundLinkSelected: brand[70], // #106ebe Global.Color.Brand.70
+  colorCompoundBrandForeground1: brand[80], // #0078d4 Global.Color.Brand.80
+  colorCompoundBrandForeground1Hover: brand[70], // #106ebe Global.Color.Brand.70
+  colorCompoundBrandForeground1Pressed: brand[60], // #005a9e Global.Color.Brand.60
+  colorBrandForeground1: brand[80], // #0078d4 Global.Color.Brand.80
+  colorBrandForeground2: brand[70], // #106ebe Global.Color.Brand.70
+  colorNeutralForeground1Static: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForegroundInverted: white, // #ffffff Global.Color.White
+  colorNeutralForegroundInvertedHover: white, // #ffffff Global.Color.White
+  colorNeutralForegroundInvertedPressed: white, // #ffffff Global.Color.White
+  colorNeutralForegroundInvertedSelected: white, // #ffffff Global.Color.White
+  colorNeutralForegroundOnBrand: white, // #ffffff Global.Color.White
+  colorNeutralForegroundInvertedLink: white, // #ffffff Global.Color.White
+  colorNeutralForegroundInvertedLinkHover: white, // #ffffff Global.Color.White
+  colorNeutralForegroundInvertedLinkPressed: white, // #ffffff Global.Color.White
+  colorNeutralForegroundInvertedLinkSelected: white, // #ffffff Global.Color.White
+  colorBrandForegroundInverted: brand[100], // #2899f5 Global.Color.Brand.100
+  colorBrandForegroundInvertedHover: brand[110], // #3aa0f3 Global.Color.Brand.110
+  colorBrandForegroundInvertedPressed: brand[100], // #2899f5 Global.Color.Brand.100
+  colorBrandForegroundOnLight: brand[80], // #0078d4 Global.Color.Brand.80
+  colorBrandForegroundOnLightHover: brand[70], // #106ebe Global.Color.Brand.70
+  colorBrandForegroundOnLightPressed: brand[50], // #004c87 Global.Color.Brand.50
+  colorBrandForegroundOnLightSelected: brand[60], // #005a9e Global.Color.Brand.60
+  colorNeutralBackground1: white, // #ffffff Global.Color.White
+  colorNeutralBackground1Hover: grey[96], // #f5f5f5 Global.Color.Grey.96
+  colorNeutralBackground1Pressed: grey[88], // #e0e0e0 Global.Color.Grey.88
+  colorNeutralBackground1Selected: grey[92], // #ebebeb Global.Color.Grey.92
+  colorNeutralBackground2: grey[98], // #fafafa Global.Color.Grey.98
+  colorNeutralBackground2Hover: grey[94], // #f0f0f0 Global.Color.Grey.94
+  colorNeutralBackground2Pressed: grey[86], // #dbdbdb Global.Color.Grey.86
+  colorNeutralBackground2Selected: grey[90], // #e6e6e6 Global.Color.Grey.90
+  colorNeutralBackground3: grey[96], // #f5f5f5 Global.Color.Grey.96
+  colorNeutralBackground3Hover: grey[92], // #ebebeb Global.Color.Grey.92
+  colorNeutralBackground3Pressed: grey[84], // #d6d6d6 Global.Color.Grey.84
+  colorNeutralBackground3Selected: grey[88], // #e0e0e0 Global.Color.Grey.88
+  colorNeutralBackground4: grey[94], // #f0f0f0 Global.Color.Grey.94
+  colorNeutralBackground4Hover: grey[98], // #fafafa Global.Color.Grey.98
+  colorNeutralBackground4Pressed: grey[96], // #f5f5f5 Global.Color.Grey.96
+  colorNeutralBackground4Selected: white, // #ffffff Global.Color.White
+  colorNeutralBackground5: grey[92], // #ebebeb Global.Color.Grey.92
+  colorNeutralBackground5Hover: grey[96], // #f5f5f5 Global.Color.Grey.96
+  colorNeutralBackground5Pressed: grey[94], // #f0f0f0 Global.Color.Grey.94
+  colorNeutralBackground5Selected: grey[98], // #fafafa Global.Color.Grey.98
+  colorNeutralBackground6: grey[90], // #e6e6e6 Global.Color.Grey.90
+  colorNeutralBackgroundInverted: grey[38], // #616161 Global.Color.Grey.38
+  colorSubtleBackground: 'transparent', // transparent undefined
+  colorSubtleBackgroundHover: grey[96], // #f5f5f5 Global.Color.Grey.96
+  colorSubtleBackgroundPressed: grey[88], // #e0e0e0 Global.Color.Grey.88
+  colorSubtleBackgroundSelected: grey[92], // #ebebeb Global.Color.Grey.92
+  colorSubtleBackgroundLightAlphaHover: whiteAlpha[80], // rgba(255, 255, 255, 0.8) Global.Color.WhiteAlpha.80
+  colorSubtleBackgroundLightAlphaPressed: whiteAlpha[50], // rgba(255, 255, 255, 0.5) Global.Color.WhiteAlpha.50
+  colorSubtleBackgroundLightAlphaSelected: 'transparent', // transparent undefined
+  colorSubtleBackgroundInverted: 'transparent', // transparent undefined
+  colorSubtleBackgroundInvertedHover: blackAlpha[10], // rgba(0, 0, 0, 0.1) Global.Color.BlackAlpha.10
+  colorSubtleBackgroundInvertedPressed: blackAlpha[30], // rgba(0, 0, 0, 0.3) Global.Color.BlackAlpha.30
+  colorSubtleBackgroundInvertedSelected: blackAlpha[20], // rgba(0, 0, 0, 0.2) Global.Color.BlackAlpha.20
+  colorTransparentBackground: 'transparent', // transparent undefined
+  colorTransparentBackgroundHover: 'transparent', // transparent undefined
+  colorTransparentBackgroundPressed: 'transparent', // transparent undefined
+  colorTransparentBackgroundSelected: 'transparent', // transparent undefined
+  colorNeutralBackgroundDisabled: grey[94], // #f0f0f0 Global.Color.Grey.94
+  colorNeutralBackgroundInvertedDisabled: whiteAlpha[10], // rgba(255, 255, 255, 0.1) Global.Color.WhiteAlpha.10
+  colorNeutralStencil1: grey[90], // #e6e6e6 Global.Color.Grey.90
+  colorNeutralStencil2: grey[98], // #fafafa Global.Color.Grey.98
+  colorBrandBackground: brand[80], // #0078d4 Global.Color.Brand.80
+  colorBrandBackgroundHover: brand[70], // #106ebe Global.Color.Brand.70
+  colorBrandBackgroundPressed: brand[40], // #004578 Global.Color.Brand.40
+  colorBrandBackgroundSelected: brand[60], // #005a9e Global.Color.Brand.60
+  colorCompoundBrandBackground: brand[80], // #0078d4 Global.Color.Brand.80
+  colorCompoundBrandBackgroundHover: brand[70], // #106ebe Global.Color.Brand.70
+  colorCompoundBrandBackgroundPressed: brand[60], // #005a9e Global.Color.Brand.60
+  colorBrandBackgroundStatic: brand[80], // #0078d4 Global.Color.Brand.80
+  colorBrandBackground2: brand[160], // #eff6fc Global.Color.Brand.160
+  colorBrandBackgroundInverted: white, // #ffffff Global.Color.White
+  colorBrandBackgroundInvertedHover: brand[160], // #eff6fc Global.Color.Brand.160
+  colorBrandBackgroundInvertedPressed: brand[140], // #c7e0f4 Global.Color.Brand.140
+  colorBrandBackgroundInvertedSelected: brand[150], // #deecf9 Global.Color.Brand.150
+  colorNeutralStrokeAccessible: grey[38], // #616161 Global.Color.Grey.38
+  colorNeutralStrokeAccessibleHover: grey[34], // #575757 Global.Color.Grey.34
+  colorNeutralStrokeAccessiblePressed: grey[30], // #4d4d4d Global.Color.Grey.30
+  colorNeutralStrokeAccessibleSelected: brand[80], // #0078d4 Global.Color.Brand.80
+  colorNeutralStroke1: grey[82], // #d1d1d1 Global.Color.Grey.82
+  colorNeutralStroke1Hover: grey[78], // #c7c7c7 Global.Color.Grey.78
+  colorNeutralStroke1Pressed: grey[70], // #b3b3b3 Global.Color.Grey.70
+  colorNeutralStroke1Selected: grey[74], // #bdbdbd Global.Color.Grey.74
+  colorNeutralStroke2: grey[88], // #e0e0e0 Global.Color.Grey.88
+  colorNeutralStroke3: grey[94], // #f0f0f0 Global.Color.Grey.94
+  colorNeutralStrokeOnBrand: white, // #ffffff Global.Color.White
+  colorNeutralStrokeOnBrand2: white, // #ffffff Global.Color.White
+  colorNeutralStrokeOnBrand2Hover: white, // #ffffff Global.Color.White
+  colorNeutralStrokeOnBrand2Pressed: white, // #ffffff Global.Color.White
+  colorNeutralStrokeOnBrand2Selected: white, // #ffffff Global.Color.White
+  colorBrandStroke1: brand[80], // #0078d4 Global.Color.Brand.80
+  colorBrandStroke2: brand[140], // #c7e0f4 Global.Color.Brand.140
+  colorCompoundBrandStroke: brand[80], // #0078d4 Global.Color.Brand.80
+  colorCompoundBrandStrokeHover: brand[70], // #106ebe Global.Color.Brand.70
+  colorCompoundBrandStrokePressed: brand[60], // #005a9e Global.Color.Brand.60
+  colorNeutralStrokeDisabled: grey[88], // #e0e0e0 Global.Color.Grey.88
+  colorNeutralStrokeInvertedDisabled: whiteAlpha[40], // rgba(255, 255, 255, 0.4) Global.Color.WhiteAlpha.40
+  colorTransparentStroke: 'transparent', // transparent undefined
+  colorTransparentStrokeInteractive: 'transparent', // transparent undefined
+  colorTransparentStrokeDisabled: 'transparent', // transparent undefined
+  colorStrokeFocus1: white, // #ffffff Global.Color.White
+  colorStrokeFocus2: black, // #000000 Global.Color.Black
+  colorNeutralShadowAmbient: 'rgba(0,0,0,0.12)', // rgba(0,0,0,0.12) undefined
+  colorNeutralShadowKey: 'rgba(0,0,0,0.14)', // rgba(0,0,0,0.14) undefined
+  colorNeutralShadowAmbientLighter: 'rgba(0,0,0,0.06)', // rgba(0,0,0,0.06) undefined
+  colorNeutralShadowKeyLighter: 'rgba(0,0,0,0.07)', // rgba(0,0,0,0.07) undefined
+  colorNeutralShadowAmbientDarker: 'rgba(0,0,0,0.20)', // rgba(0,0,0,0.20) undefined
+  colorNeutralShadowKeyDarker: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined
+  colorBrandShadowAmbient: 'rgba(0,0,0,0.30)', // rgba(0,0,0,0.30) undefined
+  colorBrandShadowKey: 'rgba(0,0,0,0.25)', // rgba(0,0,0,0.25) undefined
+});
 
-export const generateSharedColorTokens: (
-  globalSharedTokens: GlobalSharedColors,
-) => Record<keyof GlobalSharedColors, SharedColorTokens> = globalSharedTokens => {
-  return Object.keys(globalSharedTokens)
-    .filter(sharedColor => sharedColor !== 'brand' && sharedColor !== 'grey')
-    .reduce((acc, sharedColor) => {
-      acc[sharedColor as keyof GlobalSharedColors] = {
-        background1: `var(--global-palette-${sharedColor}-tint60)`,
-        background2: `var(--global-palette-${sharedColor}-tint40)`,
-        background3: `var(--global-palette-${sharedColor}-primary)`,
-        foreground1: `var(--global-palette-${sharedColor}-shade10)`,
-        foreground2: `var(--global-palette-${sharedColor}-shade30)`,
-        foreground3: `var(--global-palette-${sharedColor}-primary)`,
-        borderActive: `var(--global-palette-${sharedColor}-primary)`,
-        border2: `var(--global-palette-${sharedColor}-primary)`,
-      };
-      return acc;
-    }, {} as Record<keyof GlobalSharedColors, SharedColorTokens>);
-};
+export const colorPaletteTokens: ColorPaletteTokens = (Object.keys(sharedColors) as Array<
+  keyof GlobalSharedColors
+>).reduce((acc, sharedColor) => {
+  const color = sharedColor.slice(0, 1).toUpperCase() + sharedColor.slice(1);
+  const sharedColorTokens = {
+    [`colorPalette${color}Background1`]: sharedColors[sharedColor].tint60,
+    [`colorPalette${color}Background2`]: sharedColors[sharedColor].tint40,
+    [`colorPalette${color}Background3`]: sharedColors[sharedColor].primary,
+    [`colorPalette${color}Foreground1`]: sharedColors[sharedColor].shade10,
+    [`colorPalette${color}Foreground2`]: sharedColors[sharedColor].shade30,
+    [`colorPalette${color}Foreground3`]: sharedColors[sharedColor].primary,
+    [`colorPalette${color}BorderActive`]: sharedColors[sharedColor].primary,
+    [`colorPalette${color}Border1`]: sharedColors[sharedColor].tint40,
+    [`colorPalette${color}Border2`]: sharedColors[sharedColor].primary,
+  };
+
+  return { ...acc, ...sharedColorTokens };
+}, {} as ColorPaletteTokens);

@@ -46,7 +46,7 @@ export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
   authorColor: siteVars.colorScheme.default.foreground,
   authorColorMineCompact: siteVars.colorScheme.brand.foreground,
   authorFontWeight: siteVars.fontWeightSemibold,
-  authorFontWeightCompact: siteVars.fontWeightBold,
+  authorFontWeightCompact: siteVars.fontWeightSemibold,
   authorMarginRight: pxToRem(12),
   authorMarginRightCompact: pxToRem(8),
   backgroundColor: siteVars.colorScheme.default.background,

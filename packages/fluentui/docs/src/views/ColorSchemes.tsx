@@ -30,7 +30,7 @@ const themeOptions: ThemeOption[] = [
 ];
 
 export default () => {
-  const [theme, setTheme] = React.useState(themeOptions[0]);
+  const [theme, setTheme] = React.useState(themeOptions[1]);
   const changeTheme: (event: React.SyntheticEvent, data: { value: ThemeOption }) => void = (event, { value }) => {
     setTheme(value);
   };

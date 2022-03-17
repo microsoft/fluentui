@@ -1,40 +1,30 @@
-import type { BadgeProps, BadgeState } from '../Badge/index';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { BadgeCommons, BadgeSlots } from '../Badge/Badge.types';
 
-/**
- * {@docCategory PresenceBadge}
- */
-export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
+export type PresenceBadgeStatus =
+  | 'busy'
+  | 'outOfOffice'
+  | 'away'
+  | 'available'
+  | 'offline'
+  | 'doNotDisturb'
+  | 'unknown';
 
-/**
- * {@docCategory PresenceBadge}
- */
-export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearance'> {
+type PresenceBadgeCommons = {
   /**
    * Represents several status
-   * @defaultvalue available
-   */
-  status?: PresenceBadgeStatus;
-  /**
-   * Modifies the display to indicate that the user is out of office.
-   * This can be combined with any status to display an out-of-office version of that status
-   * @defaultvalue false
-   */
-  outOfOffice?: boolean;
-}
-
-/**
- * {@docCategory Badge}
- */
-export interface PresenceBadgeState extends Omit<BadgeState, 'shape' | 'appearance'> {
-  /**
-   * Represents several status
-   * @defaultvalue available
+   * @default available
    */
   status: PresenceBadgeStatus;
   /**
    * Modifies the display to indicate that the user is out of office.
    * This can be combined with any status to display an out-of-office version of that status
-   * @defaultvalue false
+   * @default false
    */
   outOfOffice: boolean;
-}
+} & BadgeCommons;
+
+export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root'>>, 'color'> &
+  Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
+
+export type PresenceBadgeState = PresenceBadgeCommons & ComponentState<BadgeSlots>;

@@ -1,29 +1,36 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { BadgeProps, BadgeState } from './Badge.types';
-
-/**
- * Consts listing which props are shorthand props.
- */
-export const badgeShorthandPropsCompat = ['icon'] as const;
-
-const mergeProps = makeMergeProps<BadgeState>({ deepMerge: badgeShorthandPropsCompat });
 
 /**
  * Returns the props and state required to render the component
  */
-export const useBadge = (props: BadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: BadgeProps): BadgeState => {
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef(null)),
-      shape: 'circular',
-      size: 'medium',
-      iconPosition: 'before',
-      'aria-hidden': true,
+export const useBadge_unstable = (props: BadgeProps, ref: React.Ref<HTMLElement>): BadgeState => {
+  const {
+    shape = 'circular',
+    size = 'medium',
+    iconPosition = 'before',
+    appearance = 'filled',
+    color = 'brand',
+  } = props;
+
+  const state: BadgeState = {
+    shape,
+    size,
+    iconPosition,
+    appearance,
+    color,
+    components: {
+      root: 'div',
+      icon: 'span',
     },
-    defaultProps && resolveShorthandProps(defaultProps, badgeShorthandPropsCompat),
-    resolveShorthandProps(props, badgeShorthandPropsCompat),
-  );
+    root: getNativeElementProps('div', {
+      ref,
+      'aria-hidden': true,
+      ...props,
+    }),
+    icon: resolveShorthand(props.icon),
+  };
 
   return state;
 };

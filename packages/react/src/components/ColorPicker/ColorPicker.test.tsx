@@ -10,6 +10,7 @@ import { getColorFromString } from '../../utilities/color/getColorFromString';
 import { mockEvent } from '../../common/testUtilities';
 import { ColorRectangleBase } from './ColorRectangle/ColorRectangle.base';
 import { ColorSliderBase } from './ColorSlider/ColorSlider.base';
+import { TooltipHost } from '../../Tooltip';
 import { isConformant } from '../../common/isConformant';
 import type { IColorPickerState } from './ColorPicker.base';
 import type { IColorPickerProps, IColorPickerStrings } from './ColorPicker.types';
@@ -445,6 +446,66 @@ describe('ColorPicker', () => {
     // blur => value clamped
     ReactTestUtils.Simulate.blur(alphaInput);
     validateChange({ calls: 2, prop: 'a', value: 100, input: alphaInput });
+  });
+
+  it('shows error state and tooltip for invalid red value', () => {
+    jest.useFakeTimers();
+    wrapper = mount(<ColorPicker color="#000000" componentRef={colorPickerRef} tooltipProps={{ delay: 2 }} />);
+
+    const redInput = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input')[1] as HTMLInputElement;
+    const redTooltipWrapper = wrapper.find(TooltipHost).at(1);
+
+    // input should be valid before entering an invalid number
+    expect(redInput.getAttribute('aria-invalid')).toEqual('false');
+
+    // choose a number that can be typed, but is not allowed
+    ReactTestUtils.Simulate.input(redInput, mockEvent('456'));
+    ReactTestUtils.Simulate.mouseEnter(redTooltipWrapper.getDOMNode());
+
+    ReactTestUtils.act(() => {
+      jest.runAllTimers();
+    });
+
+    const redTooltip = document.querySelector('.ms-Tooltip');
+
+    expect(redInput.getAttribute('aria-invalid')).toEqual('true');
+    expect(redTooltip?.textContent).toBe('Red must be between 0 and 255');
+
+    jest.useRealTimers();
+  });
+
+  it('shows error state and tooltip for invalid hex value', () => {
+    jest.useFakeTimers();
+    const customHexError = 'test hex error';
+    wrapper = mount(
+      <ColorPicker
+        color="#000000"
+        componentRef={colorPickerRef}
+        tooltipProps={{ delay: 2 }}
+        strings={{ hexError: customHexError }}
+      />,
+    );
+
+    const hexInput = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input')[0] as HTMLInputElement;
+    const hexTooltipWrapper = wrapper.find(TooltipHost).at(0);
+
+    // input should be valid before entering an invalid hex
+    expect(hexInput.getAttribute('aria-invalid')).toEqual('false');
+
+    // enter a 2-digit hex
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('ff'));
+    ReactTestUtils.Simulate.mouseEnter(hexTooltipWrapper.getDOMNode());
+
+    ReactTestUtils.act(() => {
+      jest.runAllTimers();
+    });
+
+    const hexTooltip = document.querySelector('.ms-Tooltip');
+
+    expect(hexInput.getAttribute('aria-invalid')).toEqual('true');
+    expect(hexTooltip?.textContent).toBe(customHexError);
+
+    jest.useRealTimers();
   });
 
   it('handles RGBA input too long', () => {

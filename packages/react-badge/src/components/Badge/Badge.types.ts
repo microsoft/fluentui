@@ -1,84 +1,43 @@
-import * as React from 'react';
-import type { ComponentPropsCompat, ShorthandPropsCompat, ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory Badge}
- */
-export type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+export type BadgeSlots = {
+  root: Slot<'div'>;
+  icon?: Slot<'span'>;
+};
 
-/**
- * {@docCategory Badge}
- */
-export type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
-
-/**
- * {@docCategory Badge}
- */
-export type BadgeShape = 'rounded' | 'square' | 'circular';
-
-/**
- * {@docCategory Badge}
- */
-export type BadgeColors =
-  | 'brand'
-  | 'danger'
-  | 'severe'
-  | 'warning'
-  | 'success'
-  | 'important'
-  | 'informative'
-  | 'subtle';
-
-/**
- * {@docCategory Badge}
- */
-export interface BadgeProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
-  /**
-   * A Badge can be sized.
-   * @defaultvalue medium
-   */
-  size?: BadgeSize;
-
-  /**
-   * A Badge can be square, circular or rounded
-   * @defaultvalue circular
-   */
-  shape?: BadgeShape;
-
+export type BadgeCommons = {
   /**
    * A Badge can be filled, outline, ghost, inverted
    * @defaultvalue filled
    */
-  appearance?: BadgeAppearance;
+  appearance: 'filled' | 'ghost' | 'outline' | 'tint';
 
   /**
-   * A Badge has a preset of colors
-   * @defaultvalue filled
+   * A Badge can be one of preset colors
+   * @defaultvalue brand
    */
-  color?: BadgeColors;
+  color: 'brand' | 'danger' | 'important' | 'informative' | 'severe' | 'subtle' | 'success' | 'warning';
 
   /**
-   * Icon slot
-   */
-  icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-
-  /**
-   * Position for Icon to be rendered
+   * A Badge can position the icon before or after the content.
    * @defaultvalue before
    */
-  iconPosition?: 'before' | 'after';
-}
+  iconPosition: 'before' | 'after';
 
-/**
- * {@docCategory Badge}
- */
-export interface BadgeState extends BadgeProps {
   /**
-   * Ref to the root slot
+   * A Badge can be square, circular or rounded.
+   * @defaultvalue circular
    */
-  ref: React.RefObject<HTMLElement>;
+  shape: 'circular' | 'rounded' | 'square';
+
   /**
-   * Icon slot when processed by internal state
+   * A Badge can be on of several preset sizes.
+   * @defaultvalue medium
    */
-  icon?: ObjectShorthandPropsCompat<React.HTMLAttributes<HTMLSpanElement>>;
-}
+  size: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
+};
+
+// react has a non-standard `color` attribute in its types
+// https://github.com/DefinitelyTyped/DefinitelyTyped/blob/a4ab0fa432320e70da9e51c8ae2e47377f65804b/types/react/index.d.ts#L1868
+export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & Partial<BadgeCommons>;
+export type BadgeState = ComponentState<BadgeSlots> & BadgeCommons;

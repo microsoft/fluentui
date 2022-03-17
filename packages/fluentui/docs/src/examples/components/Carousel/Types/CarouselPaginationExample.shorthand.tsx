@@ -46,8 +46,8 @@ const carouselItems = [
 
 const CarouselExample = () => (
   <Carousel
-    ariaRoleDescription="carousel"
-    ariaLabel="Portrait collection"
+    aria-roledescription="carousel"
+    aria-label="Portrait collection"
     items={carouselItems}
     paddleNext={{ 'aria-label': 'go to next slide' }}
     paddlePrevious={{ 'aria-label': 'go to previous slide' }}

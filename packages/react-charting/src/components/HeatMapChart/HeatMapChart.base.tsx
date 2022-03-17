@@ -14,7 +14,14 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
-import { ChartTypes, getAccessibleDataObject, XAxisTypes, YAxisType, getTypeOfAxis } from '../../utilities/utilities';
+import {
+  ChartTypes,
+  convertToLocaleString,
+  getAccessibleDataObject,
+  XAxisTypes,
+  YAxisType,
+  getTypeOfAxis,
+} from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
@@ -112,6 +119,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _rectRefArray: { [key: string]: IRectRef } = {};
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
+  private _calloutAnchorPoint: FlattenData | null;
   public constructor(props: IHeatMapChartProps) {
     super(props);
     const { x, y } = this._getXandY();
@@ -209,6 +217,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
           direction: FocusZoneDirection.bidirectional,
         }}
         legendBars={this._createLegendBars()}
+        onChartMouseLeave={this._handleChartMouseLeave}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -261,20 +270,28 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
 
   private _onRectMouseOver = (id: string, data: FlattenData, mouseEvent: React.MouseEvent<SVGGElement>): void => {
     mouseEvent.persist();
-    this.setState({
-      target: this._rectRefArray[id].refElement,
-      isCalloutVisible: true,
-      calloutYValue: `${data.rectText}`,
-      calloutTextColor: this._colorScale(data.value),
-      calloutLegend: data.legend,
-      ratio: data.ratio || null,
-      descriptionMessage: data.descriptionMessage || '',
-      calloutId: id,
-      callOutAccessibilityData: data.callOutAccessibilityData,
-    });
+    if (this._calloutAnchorPoint !== data) {
+      this._calloutAnchorPoint = data;
+      this.setState({
+        target: this._rectRefArray[id].refElement,
+        isCalloutVisible: true,
+        calloutYValue: `${data.rectText}`,
+        calloutTextColor: this._colorScale(data.value),
+        calloutLegend: data.legend,
+        ratio: data.ratio || null,
+        descriptionMessage: data.descriptionMessage || '',
+        calloutId: id,
+        callOutAccessibilityData: data.callOutAccessibilityData,
+      });
+    }
   };
 
   private _onRectBlurOrMouseOut = (): void => {
+    /**/
+  };
+
+  private _handleChartMouseLeave = (): void => {
+    this._calloutAnchorPoint = null;
     this.setState({
       isCalloutVisible: false,
     });
@@ -328,7 +345,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
               className={this._classNames.text}
               transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
             >
-              {dataPointObject.rectText}
+              {convertToLocaleString(dataPointObject.rectText, this.props.culture)}
             </text>
           </g>
         );

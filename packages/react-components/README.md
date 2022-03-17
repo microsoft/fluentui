@@ -4,7 +4,7 @@
 
 This is a suite package for converged components and related utilities. It is a result of a dedupe effort for `@fluentui/react` and `@fluentui/react-northstar`.
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+The components are available for limited production use, please contact us if you intend to use them in your product. The APIs might change before final release.
 
 ### Usage
 
@@ -23,7 +23,7 @@ import { FluentProvider, teamsLightTheme, Button } from '@fluentui/react-compone
 
 ReactDOM.render(
   <FluentProvider theme={teamsLightTheme}>
-    <Button primary>I am a button.</Button>
+    <Button appearance="primary">I am a button.</Button>
   </FluentProvider>,
   document.getElementById('root'),
 );
@@ -32,10 +32,3 @@ ReactDOM.render(
 ### Docs
 
 Docs are hosted at https://aka.ms/fluentui-storybook.
-
-Publishing docs:
-
-1. Set `CHROMATIC_PROJECT_TOKEN` in your shell
-1. Run `yarn chromatic`
-
-> @levithomason and @miroslavstastny currently have the token for alpha stage publishing.

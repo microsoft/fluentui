@@ -4,195 +4,167 @@
 
 ```ts
 
-import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const Accordion: React_2.FunctionComponent<AccordionProps & React_2.RefAttributes<HTMLElement>>;
+export const Accordion: ForwardRefComponent<AccordionProps>;
+
+// @public @deprecated (undocumented)
+export const accordionClassName = "fui-Accordion";
 
 // @public (undocumented)
-export interface AccordionCommons {
-    collapsible: boolean;
-    multiple: boolean;
-    navigable: boolean;
-}
+export const accordionClassNames: SlotClassNames<AccordionSlots>;
 
 // @public (undocumented)
 export const AccordionContext: Context<AccordionContextValue>;
 
+// Warning: (ae-forgotten-export) The symbol "AccordionCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export interface AccordionContextValue {
-    // (undocumented)
-    navigable: boolean;
+export type AccordionContextValue = Omit<AccordionCommons, 'multiple'> & {
     openItems: AccordionItemValue[];
-    requestToggle: AccordionToggleEventHandler;
-}
+    requestToggle: (event: AccordionToggleEvent, data: AccordionToggleData) => void;
+};
 
 // @public (undocumented)
-export interface AccordionContextValues {
-    // (undocumented)
+export type AccordionContextValues = {
     accordion: AccordionContextValue;
-}
+};
 
 // @public
-export const AccordionHeader: React_2.FunctionComponent<AccordionHeaderProps & React_2.RefAttributes<HTMLElement>>;
+export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
+
+// @public @deprecated (undocumented)
+export const accordionHeaderClassName = "fui-AccordionHeader";
 
 // @public (undocumented)
-export interface AccordionHeaderCommons {
-    expandIconPosition: AccordionHeaderExpandIconPosition;
-    inline: boolean;
-    size: AccordionHeaderSize;
-}
+export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots>;
 
 // @public (undocumented)
-export interface AccordionHeaderContextValue {
-    // (undocumented)
+export type AccordionHeaderContextValue = {
     disabled: boolean;
-    // (undocumented)
-    expandIconPosition: AccordionHeaderExpandIconPosition;
-    // (undocumented)
     open: boolean;
-    // (undocumented)
+    expandIconPosition: AccordionHeaderExpandIconPosition;
     size: AccordionHeaderSize;
-}
+};
 
 // @public (undocumented)
-export interface AccordionHeaderContextValues {
-    // (undocumented)
+export type AccordionHeaderContextValues = {
     accordionHeader: AccordionHeaderContextValue;
-}
-
-// @public (undocumented)
-export const AccordionHeaderExpandIcon: React_2.ForwardRefExoticComponent<Pick<ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement, never>, "color" | "translate" | "aria-label" | "aria-hidden" | "slot" | "style" | "title" | "children" | "as" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-invalid" | "aria-keyshortcuts" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "css" | "key"> & React_2.RefAttributes<HTMLSpanElement>>;
+};
 
 // @public (undocumented)
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
+// Warning: (ae-forgotten-export) The symbol "AccordionHeaderCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export type AccordionHeaderExpandIconProps = ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
-
-// @public (undocumented)
-export interface AccordionHeaderProps extends ComponentProps<AccordionHeaderSlots>, Partial<AccordionHeaderCommons> {
-}
-
-// @public
-export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots>;
+export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & Partial<AccordionHeaderCommons>;
 
 // @public (undocumented)
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
-    button: ARIAButtonShorthandProps;
-    expandIcon: AccordionHeaderExpandIconProps;
-    icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
-    children: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
+    root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+    button: NonNullable<Slot<ARIAButtonSlotProps>>;
+    expandIcon: Slot<'span'>;
+    icon?: Slot<'div'>;
 };
 
 // @public (undocumented)
-export interface AccordionHeaderState extends ComponentState<AccordionHeaderSlots>, AccordionHeaderCommons, AccordionHeaderContextValue {
-}
+export type AccordionHeaderState = ComponentState<AccordionHeaderSlots> & AccordionHeaderCommons & AccordionHeaderContextValue;
 
 // @public (undocumented)
 export type AccordionIndex = number | number[];
 
 // @public
-export const AccordionItem: React_2.ForwardRefExoticComponent<Pick<AccordionItemProps, "color" | "translate" | "aria-label" | "aria-hidden" | "slot" | "style" | "title" | "children" | "disabled" | "as" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-invalid" | "aria-keyshortcuts" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "css" | "key" | "value"> & React_2.RefAttributes<HTMLElement>>;
+export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
+
+// @public @deprecated (undocumented)
+export const accordionItemClassName = "fui-AccordionItem";
 
 // @public (undocumented)
-export interface AccordionItemCommons {
-    disabled: boolean;
-}
+export const accordionItemClassNames: SlotClassNames<AccordionItemSlots>;
 
 // @public (undocumented)
 export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
 
+// Warning: (ae-forgotten-export) The symbol "AccordionItemCommons" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export interface AccordionItemContextValue {
-    // (undocumented)
-    disabled: boolean;
-    // (undocumented)
-    onHeaderClick(ev: React_2.MouseEvent | React_2.KeyboardEvent): void;
-    // (undocumented)
+export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
     open: boolean;
-}
-
-// @public (undocumented)
-export interface AccordionItemContextValues {
-    // (undocumented)
-    accordionItem: AccordionItemContextValue;
-}
-
-// @public (undocumented)
-export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {
-    value: AccordionItemValue;
-}
-
-// @public
-export const accordionItemShorthandProps: Array<keyof AccordionItemSlots>;
-
-// @public (undocumented)
-export type AccordionItemSlots = {
-    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
+    onHeaderClick(ev: React_2.MouseEvent | React_2.KeyboardEvent): void;
 };
 
 // @public (undocumented)
-export interface AccordionItemState extends ComponentState<AccordionItemSlots>, AccordionItemCommons, AccordionItemContextValue {
-}
+export type AccordionItemContextValues = {
+    accordionItem: AccordionItemContextValue;
+};
+
+// @public (undocumented)
+export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<AccordionItemCommons> & Pick<AccordionItemCommons, 'value'>;
+
+// @public (undocumented)
+export type AccordionItemSlots = {
+    root: Slot<'div'>;
+};
+
+// @public (undocumented)
+export type AccordionItemState = ComponentState<AccordionItemSlots> & AccordionItemCommons & AccordionItemContextValue;
 
 // @public (undocumented)
 export type AccordionItemValue = unknown;
 
 // @public
-export const AccordionPanel: React_2.ForwardRefExoticComponent<Pick<AccordionPanelProps, "color" | "translate" | "aria-label" | "aria-hidden" | "slot" | "style" | "title" | "children" | "as" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-invalid" | "aria-keyshortcuts" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "css" | "key"> & React_2.RefAttributes<HTMLElement>>;
+export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
+
+// @public @deprecated (undocumented)
+export const accordionPanelClassName = "fui-AccordionPanel";
 
 // @public (undocumented)
-export interface AccordionPanelProps extends ComponentProps<AccordionPanelSlots> {
-}
+export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots>;
 
-// @public
-export const accordionPanelShorthandProps: Array<keyof AccordionPanelSlots>;
+// @public (undocumented)
+export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 
 // @public (undocumented)
 export type AccordionPanelSlots = {
-    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)
-export interface AccordionPanelState extends ComponentState<AccordionPanelSlots> {
+export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
     open: boolean;
-}
+};
 
 // @public (undocumented)
-export interface AccordionProps extends ComponentProps<AccordionSlots>, Partial<AccordionCommons> {
-    defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
-    // (undocumented)
-    onToggle?: AccordionToggleEventHandler;
+export type AccordionProps = ComponentProps<AccordionSlots> & Partial<AccordionCommons> & {
     openItems?: AccordionItemValue | AccordionItemValue[];
-}
-
-// @public (undocumented)
-export const accordionShorthandProps: Array<keyof AccordionSlots>;
+    defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
+    onToggle?: AccordionToggleEventHandler;
+};
 
 // @public (undocumented)
 export type AccordionSlots = {
-    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)
-export interface AccordionState extends ComponentState<AccordionSlots>, AccordionCommons, AccordionContextValue {
-}
+export type AccordionState = ComponentState<AccordionSlots> & AccordionCommons & AccordionContextValue;
 
 // @public (undocumented)
-export interface AccordionToggleData {
-    // (undocumented)
+export type AccordionToggleData = {
     value: AccordionItemValue;
-}
+};
 
 // @public (undocumented)
 export type AccordionToggleEvent<E = HTMLElement> = React_2.MouseEvent<E> | React_2.KeyboardEvent<E>;
@@ -201,46 +173,52 @@ export type AccordionToggleEvent<E = HTMLElement> = React_2.MouseEvent<E> | Reac
 export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 
 // @public
-export const renderAccordion: (state: AccordionState, contextValues: AccordionContextValues) => JSX.Element;
+export const renderAccordion_unstable: (state: AccordionState, contextValues: AccordionContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionHeader: (state: AccordionHeaderState, contextValues: AccordionHeaderContextValues) => JSX.Element;
+export const renderAccordionHeader_unstable: (state: AccordionHeaderState, contextValues: AccordionHeaderContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionItem: (state: AccordionItemState, contextValues: AccordionItemContextValues) => JSX.Element;
+export const renderAccordionItem_unstable: (state: AccordionItemState, contextValues: AccordionItemContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionPanel: (state: AccordionPanelState) => JSX.Element | null;
+export const renderAccordionPanel_unstable: (state: AccordionPanelState) => JSX.Element | null;
+
+// @public
+export const useAccordion_unstable: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
 
 // @public (undocumented)
-export const useAccordion: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
+export function useAccordionContextValues_unstable(state: AccordionState): AccordionContextValues;
+
+// @public
+export const useAccordionHeader_unstable: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
 
 // @public (undocumented)
-export function useAccordionContextValues(state: AccordionState): AccordionContextValues;
+export function useAccordionHeaderContextValues_unstable(state: AccordionHeaderState): AccordionHeaderContextValues;
 
 // @public
-export const useAccordionHeader: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
+export const useAccordionHeaderStyles_unstable: (state: AccordionHeaderState) => AccordionHeaderState;
+
+// @public
+export const useAccordionItem_unstable: (props: AccordionItemProps, ref: React_2.Ref<HTMLElement>) => AccordionItemState;
 
 // @public (undocumented)
-export function useAccordionHeaderContextValues(state: AccordionHeaderState): AccordionHeaderContextValues;
-
-// @public
-export const useAccordionHeaderStyles: (state: AccordionHeaderState) => AccordionHeaderState;
-
-// @public
-export const useAccordionItem: (props: AccordionItemProps, ref: React_2.Ref<HTMLElement>) => AccordionItemState;
+export const useAccordionItemContext_unstable: () => AccordionItemContextValue;
 
 // @public (undocumented)
-export const useAccordionItemContext: () => AccordionItemContextValue;
+export function useAccordionItemContextValues_unstable(state: AccordionItemState): AccordionItemContextValues;
 
 // @public (undocumented)
-export function useAccordionItemContextValues(state: AccordionItemState): AccordionItemContextValues;
+export const useAccordionItemStyles_unstable: (state: AccordionItemState) => AccordionItemState;
 
 // @public
-export const useAccordionPanel: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
+export const useAccordionPanel_unstable: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
 
 // @public
-export const useAccordionPanelStyles: (state: AccordionPanelState) => AccordionPanelState;
+export const useAccordionPanelStyles_unstable: (state: AccordionPanelState) => AccordionPanelState;
+
+// @public (undocumented)
+export const useAccordionStyles_unstable: (state: AccordionState) => AccordionState;
 
 // (No @packageDocumentation comment for this package)
 

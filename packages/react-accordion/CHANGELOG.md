@@ -1,8 +1,416 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Wed, 01 Sep 2021 07:39:56 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 05:17:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-rc.5)
+
+Fri, 04 Mar 2022 05:17:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-rc.4..@fluentui/react-accordion_v9.0.0-rc.5)
+
+### Changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.4 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-rc.4)
+
+Tue, 01 Mar 2022 02:17:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-rc.3..@fluentui/react-accordion_v9.0.0-rc.4)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-rc.3)
+
+Fri, 18 Feb 2022 13:35:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-rc.1..@fluentui/react-accordion_v9.0.0-rc.3)
+
+### Changes
+
+- Updates initial open items value to be empty on every case ([PR #21728](https://github.com/microsoft/fluentui/pull/21728) by bsunderhus@microsoft.com)
+- fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- Breaking change: navigable becomes navigation ([PR #21729](https://github.com/microsoft/fluentui/pull/21729) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-rc.1)
+
+Thu, 10 Feb 2022 08:52:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-beta.5..@fluentui/react-accordion_v9.0.0-rc.1)
+
+### Changes
+
+- update @fluentui/react-icons package ([PR #21498](https://github.com/microsoft/fluentui/pull/21498) by olfedias@microsoft.com)
+- update styles to not use CSS shorthands ([PR #20800](https://github.com/microsoft/fluentui/pull/20800) by olfedias@microsoft.com)
+- remove export of commons types ([PR #21660](https://github.com/microsoft/fluentui/pull/21660) by mgodbolt@microsoft.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- Allow React 17 in peerDependencies. ([PR #21544](https://github.com/microsoft/fluentui/pull/21544) by tristan.watanabe@gmail.com)
+- Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- use Griffel packages ([PR #21394](https://github.com/microsoft/fluentui/pull/21394) by olfedias@microsoft.com)
+- Using ComponentSlotProps instead of ObjectShorthandProps. ([PR #20890](https://github.com/microsoft/fluentui/pull/20890) by Humberto.Morimoto@microsoft.com)
+- Removes children as a slot from AccordionHeader ([PR #21285](https://github.com/microsoft/fluentui/pull/21285) by bsunderhus@microsoft.com)
+- Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
+- update semantic elements and ARIA roles in react-accordion, add heading level story ([PR #21401](https://github.com/microsoft/fluentui/pull/21401) by sarah.higley@microsoft.com)
+- Update react-icons usage to resizable icons ([PR #21074](https://github.com/microsoft/fluentui/pull/21074) by ololubek@microsoft.com)
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster. ([PR #21035](https://github.com/microsoft/fluentui/pull/21035) by Humberto.Morimoto@microsoft.com)
+- Replacing use of functions in makeStyles with direct use of tokens. ([PR #21036](https://github.com/microsoft/fluentui/pull/21036) by Humberto.Morimoto@microsoft.com)
+- Remove AccordionHeaderExpandIcon, and use ChevronRightRegular from @fluentui/react-icons instead ([PR #21218](https://github.com/microsoft/fluentui/pull/21218) by behowell@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+
+## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-beta.5)
+
+Thu, 25 Nov 2021 08:34:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-beta.4..@fluentui/react-accordion_v9.0.0-beta.5)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-beta.5 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-beta.4)
+
+Fri, 12 Nov 2021 13:25:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-beta.3..@fluentui/react-accordion_v9.0.0-beta.4)
+
+### Changes
+
+- export static classes for components ([PR #20451](https://github.com/microsoft/fluentui/pull/20451) by olfedias@microsoft.com)
+- Updating AccordionHeader tests to match changes in useARIAButton. ([PR #20342](https://github.com/microsoft/fluentui/pull/20342) by Humberto.Morimoto@microsoft.com)
+- Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-beta.4 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-beta.3)
+
+Wed, 27 Oct 2021 12:14:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-beta.2..@fluentui/react-accordion_v9.0.0-beta.3)
+
+### Changes
+
+- added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- Bump @fluentui/react-aria to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-beta.3 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-beta.2)
+
+Tue, 12 Oct 2021 19:45:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-beta.1..@fluentui/react-accordion_v9.0.0-beta.2)
+
+### Changes
+
+- Fix a11y errors on aria-expanded and disabled state ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-tabster to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-beta.1)
+
+Wed, 06 Oct 2021 10:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.90..@fluentui/react-accordion_v9.0.0-beta.1)
+
+### Changes
+
+- Bump all v9 components to beta prerelease tag ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+
+## [9.0.0-alpha.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.90)
+
+Tue, 05 Oct 2021 12:47:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.89..@fluentui/react-accordion_v9.0.0-alpha.90)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.0.0-alpha.45 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.78 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.73 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.60 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.53 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.22 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+
+## [9.0.0-alpha.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.89)
+
+Tue, 05 Oct 2021 09:28:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.88..@fluentui/react-accordion_v9.0.0-alpha.89)
+
+### Changes
+
+- Adds ForwardRefComponent to components declaration ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-alpha.44 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.39 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.77 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.72 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.56 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.59 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.52 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.21 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+
+## [9.0.0-alpha.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.88)
+
+Fri, 01 Oct 2021 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.86..@fluentui/react-accordion_v9.0.0-alpha.88)
+
+### Changes
+
+- Bump v9 prerelease versions to rerelease ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.0.0-alpha.43 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.38 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.76 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.71 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-alpha.26 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.55 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.58 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.51 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.20 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+
+## [9.0.0-alpha.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.86)
+
+Fri, 01 Oct 2021 12:30:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.85..@fluentui/react-accordion_v9.0.0-alpha.86)
+
+### Changes
+
+- Updating API to reflect aria button changes. ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-alpha.41 ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by beachball)
+
+## [9.0.0-alpha.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.85)
+
+Fri, 01 Oct 2021 09:44:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.84..@fluentui/react-accordion_v9.0.0-alpha.85)
+
+### Changes
+
+- Use new default pseudo element focus outline style ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by lingfangao@hotmail.com)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.69 ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by beachball)
+
+## [9.0.0-alpha.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.84)
+
+Wed, 29 Sep 2021 08:06:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.83..@fluentui/react-accordion_v9.0.0-alpha.84)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.0.0-alpha.40 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.74 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.68 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-alpha.24 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.56 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.49 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.18 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+
+## [9.0.0-alpha.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.83)
+
+Mon, 27 Sep 2021 08:06:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.82..@fluentui/react-accordion_v9.0.0-alpha.83)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.0.0-alpha.39 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.36 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.73 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.67 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.53 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.55 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.48 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.17 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+
+## [9.0.0-alpha.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.82)
+
+Fri, 24 Sep 2021 09:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.81..@fluentui/react-accordion_v9.0.0-alpha.82)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.0.0-alpha.38 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.35 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.72 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.66 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.52 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.54 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.47 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.16 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+
+## [9.0.0-alpha.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.81)
+
+Thu, 23 Sep 2021 08:21:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.80..@fluentui/react-accordion_v9.0.0-alpha.81)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.0.0-alpha.37 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.34 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.71 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.65 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.51 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.53 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.46 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.15 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+
+## [9.0.0-alpha.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.80)
+
+Wed, 22 Sep 2021 10:10:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.79..@fluentui/react-accordion_v9.0.0-alpha.80)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.0.0-alpha.36 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.33 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.70 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.64 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.50 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.52 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.45 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.14 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+
+## [9.0.0-alpha.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.79)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.78..@fluentui/react-accordion_v9.0.0-alpha.79)
+
+### Changes
+
+- Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-alpha.35 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.69 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.63 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-alpha.23 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.51 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.44 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.13 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+
+## [9.0.0-alpha.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.78)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.77..@fluentui/react-accordion_v9.0.0-alpha.78)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.78 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.77)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.76..@fluentui/react-accordion_v9.0.0-alpha.77)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.77 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.76)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.75..@fluentui/react-accordion_v9.0.0-alpha.76)
+
+### Changes
+
+- Fix typings in React.forwardRef ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+- Bump @fluentui/react-accordion to v9.0.0-alpha.76 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [9.0.0-alpha.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.75)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.74..@fluentui/react-accordion_v9.0.0-alpha.75)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.75 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.74)
+
+Tue, 14 Sep 2021 07:38:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.73..@fluentui/react-accordion_v9.0.0-alpha.74)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.74 ([PR #19605](https://github.com/microsoft/fluentui/pull/19605) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.73)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.72..@fluentui/react-accordion_v9.0.0-alpha.73)
+
+### Changes
+
+- chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- Bump @fluentui/react-accordion to v9.0.0-alpha.73 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.72)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.71..@fluentui/react-accordion_v9.0.0-alpha.72)
+
+### Changes
+
+- Refactor ObjectShorthandProps into IntrinsicShorthandProps ([PR #19642](https://github.com/microsoft/fluentui/pull/19642) by behowell@microsoft.com)
+
+## [9.0.0-alpha.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.71)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.70..@fluentui/react-accordion_v9.0.0-alpha.71)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.44 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.70)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.69..@fluentui/react-accordion_v9.0.0-alpha.70)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.4.5 ([PR #19590](https://github.com/microsoft/fluentui/pull/19590) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.43 ([PR #19065](https://github.com/microsoft/fluentui/pull/19065) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.69)
 

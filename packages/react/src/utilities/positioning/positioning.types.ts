@@ -92,6 +92,7 @@ export interface ICalloutPositionedInfo extends IPositionedData {
 
 export interface ICalloutBeakPositionedInfo extends IPositionedData {
   closestEdge: RectangleEdge;
+  hideBeak?: boolean;
 }
 
 /**

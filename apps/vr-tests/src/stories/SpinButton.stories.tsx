@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth, modifyDeprecatedDecoratorStyles } from '../utilities/index';
+import { TestWrapperDecoratorFixedWidth, TestWrapperDecorator } from '../utilities/index';
 import {
   Fabric,
   SpinButton,
@@ -26,7 +26,7 @@ const textFieldStyles: Partial<ITextFieldStyles> = {
 const iconProps = { iconName: 'IncreaseIndentLegacy' };
 
 storiesOf('SpinButton', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -62,15 +62,12 @@ storiesOf('SpinButton', module)
         <SpinButton {...props} iconProps={iconProps} />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 // The stories for label placement are separate since they don't need to include hover/click states
 storiesOf('SpinButton', module)
-  // FIXME: SB6 duplicates same story ID decorators
-  // This is a temporary fix until we migrate to CSF format duplication problem
-  // previously this used FabricDecorator
-  .addDecorator(modifyDeprecatedDecoratorStyles({ mode: 'default' }))
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
@@ -83,7 +80,7 @@ storiesOf('SpinButton', module)
         <SpinButton {...props} styles={styles} labelPosition={Position.end} />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Label at end with icon',
@@ -92,8 +89,31 @@ storiesOf('SpinButton', module)
         <SpinButton {...props} styles={styles} labelPosition={Position.end} iconProps={iconProps} />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
+  .addStory('Label on bottom', () => (
+    <Fabric>
+      <SpinButton {...props} styles={styles} labelPosition={Position.bottom} />
+    </Fabric>
+  ))
+  .addStory('Label on bottom with icon', () => (
+    <Fabric>
+      <SpinButton
+        {...props}
+        styles={styles}
+        labelPosition={Position.bottom}
+        iconProps={iconProps}
+      />
+    </Fabric>
+  ));
+
+storiesOf('SpinButton', module)
+  .addDecorator(TestWrapperDecorator)
+  .addDecorator(story => (
+    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+      {story()}
+    </Screener>
+  ))
   .addStory('Label on top', () => (
     <Fabric>
       <SpinButton
@@ -126,21 +146,6 @@ storiesOf('SpinButton', module)
         label="Should vertically align with SpinButton"
         placeholder="(verify field and label alignment)"
         styles={textFieldStyles}
-      />
-    </Fabric>
-  ))
-  .addStory('Label on bottom', () => (
-    <Fabric>
-      <SpinButton {...props} styles={styles} labelPosition={Position.bottom} />
-    </Fabric>
-  ))
-  .addStory('Label on bottom with icon', () => (
-    <Fabric>
-      <SpinButton
-        {...props}
-        styles={styles}
-        labelPosition={Position.bottom}
-        iconProps={iconProps}
       />
     </Fabric>
   ));

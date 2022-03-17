@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEventCallback } from './useEventCallback';
 
-export interface UseOnClickOrScrollOutsideOptions {
+export type UseOnClickOrScrollOutsideOptions = {
   /**
    * The element to listen for the click event
    */
@@ -27,7 +27,7 @@ export interface UseOnClickOrScrollOutsideOptions {
    * Called if the click is outside the element refs
    */
   callback: (ev: MouseEvent | TouchEvent) => void;
-}
+};
 
 /**
  * Utility to perform checks where a click/touch event was made outside a component

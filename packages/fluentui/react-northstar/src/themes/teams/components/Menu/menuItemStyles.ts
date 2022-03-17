@@ -46,13 +46,6 @@ export const getFocusedStyles = ({
       padding: pxToRem(1),
 
       ...(primary && { color: v.color }),
-
-      ...(active && {
-        color: v.colorActive,
-        background: v.backgroundColorActive || colors.backgroundActive,
-
-        ...(primary && { color: colors.foregroundFocus }),
-      }),
     }),
   };
 };

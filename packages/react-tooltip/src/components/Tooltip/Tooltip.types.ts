@@ -1,41 +1,54 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
- * Properties for the Tooltip component
- * {@docCategory Tooltip}
+ * Slot properties for Tooltip
  */
-export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
+export type TooltipSlots = {
   /**
-   * The child is the element that triggers the Tooltip. It will have additional properties added,
-   * including events and aria properties.
-   * Alternatively, children can be a render function that takes the props and adds
-   * them to the appropriate elements.
+   * The text or JSX content of the tooltip.
    */
-  children?:
-    | (React.ReactElement<React.HTMLAttributes<HTMLElement>> & { ref?: React.Ref<unknown> })
-    | ((props: TooltipTriggerProps) => React.ReactNode)
-    | null;
+  content: NonNullable<Slot<'div'>>;
+};
 
+/**
+ * Properties and state for Tooltip
+ */
+type TooltipCommons = {
   /**
-   * The content displayed inside the tooltip.
-   */
-  content: ShorthandPropsCompat<ComponentPropsCompat>;
-
-  /**
-   * Color variant with inverted colors
+   * (Required) Specifies whether this tooltip is acting as the description or label of its trigger element.
    *
-   * @defaultvalue false
+   * * `label` - The tooltip sets the trigger's aria-label or aria-labelledby attribute. This is useful for buttons
+   *    displaying only an icon, for example.
+   * * `description` - The tooltip sets the trigger's aria-description or aria-describedby attribute.
+   * * `inaccessible` - No aria attributes are set on the trigger. This makes the tooltip's content inaccessible to
+   *   screen readers, and should only be used if the tooltip's text is available by some other means.
    */
-  inverted?: boolean;
+  relationship: 'label' | 'description' | 'inaccessible';
+
+  /**
+   * The tooltip's visual appearance.
+   * * `normal` - Uses the theme's background and text colors.
+   * * `inverted` - Higher contrast variant that uses the theme's inverted colors.
+   *
+   * @defaultvalue normal
+   */
+  appearance?: 'normal' | 'inverted';
 
   /**
    * Render an arrow pointing to the target element
    *
    * @defaultvalue false
    */
-  pointing?: boolean;
+  withArrow?: boolean;
+
+  /**
+   * Configure the positioning of the tooltip
+   *
+   * @defaultvalue above
+   */
+  positioning?: PositioningShorthand;
 
   /**
    * Control the tooltip's visibility programatically.
@@ -56,39 +69,22 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
   ) => void;
 
   /**
-   * Specifies which aria attribute to set on the trigger element.
-   * * `label` - Set aria-label to the tooltip's content. Requires content to be a string; if not, uses `labelledby`.
-   * * `labelledby` - Set aria-labelledby to the tooltip's id. The id is generated if not provided.
-   * * `describedby` - Set aria-describedby to the tooltip's id. The id is generated if not provided.
-   * * null - Do not set any aria attributes on the trigger element.
-   *
-   * @defaultvalue label
-   */
-  triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
-
-  /**
    * Delay before the tooltip is shown, in milliseconds.
    *
    * @defaultvalue 250
    */
-  showDelay?: number;
+  showDelay: number;
 
   /**
    * Delay before the tooltip is hidden, in milliseconds.
    *
    * @defaultvalue 250
    */
-  hideDelay?: number;
-
-  /**
-   * Configure the positioning of the tooltip
-   */
-  positioning?: PositioningShorthand;
-}
+  hideDelay: number;
+};
 
 /**
  * The properties that are added to the trigger of the Tooltip
- * {@docCategory Tooltip}
  */
 export type TooltipTriggerProps = {
   ref?: React.Ref<never>;
@@ -100,48 +96,47 @@ export type TooltipTriggerProps = {
 /**
  * Data for the Tooltip's onVisibleChange event.
  */
-export interface OnVisibleChangeData {
+export type OnVisibleChangeData = {
   visible: boolean;
-}
+};
 
 /**
- * Names of the shorthand properties in TooltipProps
- * {@docCategory Tooltip}
+ * Properties for Tooltip
  */
-export type TooltipShorthandProps = 'content';
-
-/**
- * Names of TooltipProps that have a default value in useTooltip
- * {@docCategory Tooltip}
- */
-export type TooltipDefaultedProps = 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
+export type TooltipProps = ComponentProps<TooltipSlots> &
+  Partial<Omit<TooltipCommons, 'relationship'>> &
+  Pick<TooltipCommons, 'relationship'> & {
+    /**
+     * The tooltip can have a single JSX child, or a render function that accepts TooltipTriggerProps.
+     *
+     * If no child is provided, the tooltip's target must be set with the `positioning` prop, and its
+     * visibility must be controlled with the `visible` prop.
+     */
+    children?:
+      | (React.ReactElement & { ref?: React.Ref<unknown> })
+      | ((props: TooltipTriggerProps) => React.ReactElement | null)
+      | null;
+  };
 
 /**
  * State used in rendering Tooltip
  */
-export interface TooltipState extends ComponentStateCompat<TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
-  /**
-   * Ref to the root tooltip element.
-   */
-  ref: React.Ref<HTMLElement>;
+export type TooltipState = ComponentState<TooltipSlots> &
+  TooltipCommons & {
+    children?: React.ReactElement | null;
 
-  /**
-   * Whether the tooltip should be rendered to the DOM.
-   *
-   * Normally the tooltip will only be rendered when visible. However, if
-   * triggerAriaAttribute is labelledby or describedby, the tooltip will
-   * always be rendered even when hidden so that those aria attributes
-   * to always refer to a valid DOM element.
-   */
-  shouldRenderTooltip?: boolean;
+    /**
+     * Whether the tooltip should be rendered to the DOM.
+     */
+    shouldRenderTooltip?: boolean;
 
-  /**
-   * Ref to the arrow element
-   */
-  arrowRef?: React.Ref<HTMLDivElement>;
+    /**
+     * Ref to the arrow element
+     */
+    arrowRef?: React.Ref<HTMLDivElement>;
 
-  /**
-   * CSS class for the arrow element
-   */
-  arrowClassName?: string;
-}
+    /**
+     * CSS class for the arrow element
+     */
+    arrowClassName?: string;
+  };

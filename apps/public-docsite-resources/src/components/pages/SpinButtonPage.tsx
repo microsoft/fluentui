@@ -5,7 +5,7 @@ import { SpinButtonPageProps } from '@fluentui/react-examples/lib/react/SpinButt
 
 export const SpinButtonPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/SpinButton.page.json')}
+    jsonDocs={require('../../../dist/api/react/SpinButton.page.json')}
     {...{ ...SpinButtonPageProps, ...props }}
   />
 );

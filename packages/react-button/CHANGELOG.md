@@ -1,8 +1,440 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 01 Sep 2021 07:39:56 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 05:17:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.5)
+
+Fri, 04 Mar 2022 05:17:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.4..@fluentui/react-button_v9.0.0-rc.5)
+
+### Changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Button: Exporting classNames of individual slots. ([PR #20977](https://github.com/microsoft/fluentui/pull/20977) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.4 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-aria to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.4 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.4)
+
+Tue, 01 Mar 2022 02:17:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.3..@fluentui/react-button_v9.0.0-rc.4)
+
+### Changes
+
+- fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.3)
+
+Fri, 18 Feb 2022 13:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.1..@fluentui/react-button_v9.0.0-rc.3)
+
+### Changes
+
+- SplitButton: Fixing issue where menuIcon prop was not being respected. ([PR #21683](https://github.com/microsoft/fluentui/pull/21683) by Humberto.Morimoto@microsoft.com)
+- Button: Updating stories to fix a11y issues. ([PR #21679](https://github.com/microsoft/fluentui/pull/21679) by Humberto.Morimoto@microsoft.com)
+- SplitButton: Fixing screen reader access issues. ([PR #21703](https://github.com/microsoft/fluentui/pull/21703) by Humberto.Morimoto@microsoft.com)
+- fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- Button: Adding tests and fixing issues in SplitButton and ToggleButton. ([PR #21719](https://github.com/microsoft/fluentui/pull/21719) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-aria to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.1)
+
+Thu, 10 Feb 2022 08:51:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-beta.5..@fluentui/react-button_v9.0.0-rc.1)
+
+### Changes
+
+- Using ComponentSlotProps instead of ObjectShorthandProps. ([PR #20890](https://github.com/microsoft/fluentui/pull/20890) by Humberto.Morimoto@microsoft.com)
+- Button: Changing border radius of small button to borderRadiusMedium from borderRadiusSmall. ([PR #21494](https://github.com/microsoft/fluentui/pull/21494) by Humberto.Morimoto@microsoft.com)
+- Replace make-styles packages with griffel equivalents. ([PR #21436](https://github.com/microsoft/fluentui/pull/21436) by olfedias@microsoft.com)
+- Update react-icons usage to resizable icons ([PR #21074](https://github.com/microsoft/fluentui/pull/21074) by ololubek@microsoft.com)
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
+- (fix): Update react-icons dependency to latest version ([PR #20943](https://github.com/microsoft/fluentui/pull/20943) by ololubek@microsoft.com)
+- Replacing use of functions in makeStyles with direct use of tokens. ([PR #21039](https://github.com/microsoft/fluentui/pull/21039) by Humberto.Morimoto@microsoft.com)
+- CompoundButton: Updating styles to match latest design spec. ([PR #21523](https://github.com/microsoft/fluentui/pull/21523) by Humberto.Morimoto@microsoft.com)
+- Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- remove export of commons types ([PR #21660](https://github.com/microsoft/fluentui/pull/21660) by mgodbolt@microsoft.com)
+- Remove fontSize from default menuIcon, as it is already set via css ([PR #21221](https://github.com/microsoft/fluentui/pull/21221) by behowell@microsoft.com)
+- ToggleButton: Stopping aria-pressed from changing when ToggleButton is disabledFocusable. ([PR #21492](https://github.com/microsoft/fluentui/pull/21492) by Humberto.Morimoto@microsoft.com)
+- update styles to not use CSS shorthands ([PR #20815](https://github.com/microsoft/fluentui/pull/20815) by olfedias@microsoft.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- Updating use of tokens.fontWeight now that we don't need to use casting. ([PR #21217](https://github.com/microsoft/fluentui/pull/21217) by Humberto.Morimoto@microsoft.com)
+- MenuButton: Updating types so it properly supports ref. ([PR #21515](https://github.com/microsoft/fluentui/pull/21515) by Humberto.Morimoto@microsoft.com)
+- update @fluentui/react-icons package ([PR #21498](https://github.com/microsoft/fluentui/pull/21498) by olfedias@microsoft.com)
+- Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster. ([PR #21035](https://github.com/microsoft/fluentui/pull/21035) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-aria to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+
+## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.5)
+
+Thu, 25 Nov 2021 08:34:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-beta.4..@fluentui/react-button_v9.0.0-beta.5)
+
+### Changes
+
+- MenuButton: Removing tight coupling with Menu by replicating type locally. ([PR #20635](https://github.com/microsoft/fluentui/pull/20635) by Humberto.Morimoto@microsoft.com)
+- update react-icons dependency ([PR #20563](https://github.com/microsoft/fluentui/pull/20563) by ololubek@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-beta.5 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.4)
+
+Fri, 12 Nov 2021 13:25:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-beta.3..@fluentui/react-button_v9.0.0-beta.4)
+
+### Changes
+
+- export static classes for components ([PR #20454](https://github.com/microsoft/fluentui/pull/20454) by olfedias@microsoft.com)
+- Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- react-button: Removing use of enzyme in the converged package. ([PR #20342](https://github.com/microsoft/fluentui/pull/20342) by Humberto.Morimoto@microsoft.com)
+- Fixing incomplete comment. ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-beta.4 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-beta.4 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.3)
+
+Wed, 27 Oct 2021 12:14:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-beta.2..@fluentui/react-button_v9.0.0-beta.3)
+
+### Changes
+
+- Removed duplicate 'Button' from story names ([PR #20266](https://github.com/microsoft/fluentui/pull/20266) by gcox@microsoft.com)
+- added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- Bump @fluentui/react-aria to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-beta.3 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-beta.3 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.2)
+
+Tue, 12 Oct 2021 19:45:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-beta.1..@fluentui/react-button_v9.0.0-beta.2)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.1)
+
+Wed, 06 Oct 2021 10:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.101..@fluentui/react-button_v9.0.0-beta.1)
+
+### Changes
+
+- Bump all v9 components to beta prerelease tag ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-aria to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+
+## [9.0.0-alpha.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.101)
+
+Tue, 05 Oct 2021 12:47:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.100..@fluentui/react-button_v9.0.0-alpha.101)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.0.0-alpha.45 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.78 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.73 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.60 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.53 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.22 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-alpha.92 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+
+## [9.0.0-alpha.100](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.100)
+
+Tue, 05 Oct 2021 09:28:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.99..@fluentui/react-button_v9.0.0-alpha.100)
+
+### Changes
+
+- Adds ForwardRefComponent to react-button components declaration ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-alpha.44 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.77 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.72 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.56 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.59 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.52 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.21 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-alpha.91 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+
+## [9.0.0-alpha.99](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.99)
+
+Fri, 01 Oct 2021 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.97..@fluentui/react-button_v9.0.0-alpha.99)
+
+### Changes
+
+- Bump v9 prerelease versions to rerelease ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-alpha.5 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-aria to v9.0.0-alpha.43 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.76 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.71 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.55 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.58 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.51 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.20 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-alpha.90 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+
+## [9.0.0-alpha.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.97)
+
+Fri, 01 Oct 2021 12:30:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.96..@fluentui/react-button_v9.0.0-alpha.97)
+
+### Changes
+
+- Updates button to simplify prop merging ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-alpha.41 ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-alpha.88 ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by beachball)
+
+## [9.0.0-alpha.96](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.96)
+
+Fri, 01 Oct 2021 09:44:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.95..@fluentui/react-button_v9.0.0-alpha.96)
+
+### Changes
+
+- Use the renamed createCustomFocusIndicatorStyle helper for focus outline style ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by lingfangao@hotmail.com)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.69 ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-alpha.87 ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by beachball)
+
+## [9.0.0-alpha.95](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.95)
+
+Thu, 30 Sep 2021 09:18:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.94..@fluentui/react-button_v9.0.0-alpha.95)
+
+### Changes
+
+- Bump @fluentui/react-menu to v9.0.0-alpha.86 ([PR #19802](https://github.com/microsoft/fluentui/pull/19802) by beachball)
+
+## [9.0.0-alpha.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.94)
+
+Wed, 29 Sep 2021 08:06:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.93..@fluentui/react-button_v9.0.0-alpha.94)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.74 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.68 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.56 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.49 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.18 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-alpha.85 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+
+## [9.0.0-alpha.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.93)
+
+Mon, 27 Sep 2021 08:06:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.92..@fluentui/react-button_v9.0.0-alpha.93)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.73 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.67 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.53 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.55 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.48 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.17 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-alpha.84 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+
+## [9.0.0-alpha.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.92)
+
+Fri, 24 Sep 2021 09:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.91..@fluentui/react-button_v9.0.0-alpha.92)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.72 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.66 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.52 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.54 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.47 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.16 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-alpha.83 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+
+## [9.0.0-alpha.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.91)
+
+Thu, 23 Sep 2021 08:21:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.90..@fluentui/react-button_v9.0.0-alpha.91)
+
+### Changes
+
+- Updated for consistency to have shape and appearance properties ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.71 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.65 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.51 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.53 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.46 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.15 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-alpha.82 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+
+## [9.0.0-alpha.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.90)
+
+Wed, 22 Sep 2021 10:10:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.89..@fluentui/react-button_v9.0.0-alpha.90)
+
+### Changes
+
+- update react-icons dependency ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by ololubek@microsoft.com)
+- SplitButton: Adding missing verticalAlign=middle style. ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.70 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.64 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.50 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.52 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.45 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.14 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-alpha.81 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+
+## [9.0.0-alpha.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.89)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.88..@fluentui/react-button_v9.0.0-alpha.89)
+
+### Changes
+
+- Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.69 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.63 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.51 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.44 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.13 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-alpha.80 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+
+## [9.0.0-alpha.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.88)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.87..@fluentui/react-button_v9.0.0-alpha.88)
+
+### Changes
+
+- SplitButton: Re-introducing SplitButton using the latest version of makeStyles. ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.88 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.87)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.86..@fluentui/react-button_v9.0.0-alpha.87)
+
+### Changes
+
+- Modifying MenuButton to adhere to MenuTrigger changes. ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+- Updating API comments to be more descriptive. ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.87 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.86)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.85..@fluentui/react-button_v9.0.0-alpha.86)
+
+### Changes
+
+- Bump @fluentui/react-button to v9.0.0-alpha.86 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [9.0.0-alpha.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.85)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.84..@fluentui/react-button_v9.0.0-alpha.85)
+
+### Changes
+
+- Bump @fluentui/react-button to v9.0.0-alpha.85 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.84)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.83..@fluentui/react-button_v9.0.0-alpha.84)
+
+### Changes
+
+- chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.84 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.83)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.82..@fluentui/react-button_v9.0.0-alpha.83)
+
+### Changes
+
+- Bump @fluentui/react-menu to v9.0.0-alpha.74 ([PR #19642](https://github.com/microsoft/fluentui/pull/19642) by behowell@microsoft.com)
+
+## [9.0.0-alpha.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.82)
+
+Wed, 08 Sep 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.81..@fluentui/react-button_v9.0.0-alpha.82)
+
+### Changes
+
+- Bump @fluentui/react-menu to v9.0.0-alpha.73 ([PR #19661](https://github.com/microsoft/fluentui/pull/19661) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.81)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.80..@fluentui/react-button_v9.0.0-alpha.81)
+
+### Changes
+
+- refactor(Button): use `event.key` for keyboard event ([PR #19638](https://github.com/microsoft/fluentui/pull/19638) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.80)
+
+Fri, 03 Sep 2021 00:13:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.79..@fluentui/react-button_v9.0.0-alpha.80)
+
+### Changes
+
+- MenuButton: Cleaning up implementation and adhering to MenuTrigger contract. ([PR #19612](https://github.com/microsoft/fluentui/pull/19612) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.79)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.78..@fluentui/react-button_v9.0.0-alpha.79)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.4.5 ([PR #19590](https://github.com/microsoft/fluentui/pull/19590) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.43 ([PR #19065](https://github.com/microsoft/fluentui/pull/19065) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.78)
 

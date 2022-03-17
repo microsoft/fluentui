@@ -1,114 +1,140 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
-import {
-  Person16Regular,
-  Person20Regular,
-  Person24Regular,
-  Person28Regular,
-  Person32Regular,
-  Person48Regular,
-} from '@fluentui/react-icons';
+import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types';
+import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
-import type { AvatarProps, AvatarState, AvatarNamedColor, AvatarShorthandPropsCompat } from './Avatar.types';
+import { useFluent } from '@fluentui/react-shared-contexts';
+import { useMergedEventCallbacks } from '@fluentui/react-utilities';
 
-/**
- * Names of the shorthand properties in AvatarProps
- */
-export const avatarShorthandPropsCompat: AvatarShorthandPropsCompat[] = ['label', 'image', 'badge', 'icon'];
+export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
+  const { dir } = useFluent();
+  const { name, size = 32, shape = 'circular', active = 'unset', activeAppearance = 'ring', idForColor } = props;
+  let { color = 'neutral' } = props;
 
-const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandPropsCompat });
+  // Resolve 'colorful' to a specific color name
+  if (color === 'colorful') {
+    color = avatarColors[getHashCode(idForColor ?? name ?? '') % avatarColors.length];
+  }
 
-export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps): AvatarState => {
-  const state = mergeProps(
+  const baseId = useId('avatar-');
+
+  const root: AvatarState['root'] = getNativeElementProps(
+    'span',
     {
-      as: 'span',
-      label: { as: 'span' },
-      icon: { as: 'span' },
-      size: 32,
-      color: 'neutral',
-      activeDisplay: 'ring',
-      getInitials,
+      role: 'img',
+      id: baseId,
+      // aria-label and/or aria-labelledby are resolved below
+      ...props,
       ref,
     },
-    defaultProps && resolveAvatarShorthandPropsCompat(defaultProps),
-    resolveAvatarShorthandPropsCompat(props),
+    /* excludedPropNames: */ ['name'],
   );
 
-  const { size, badge, label, icon } = state;
+  // Resolve the initials slot, defaulted to getInitials.
+  let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
+    required: true,
+    defaultProps: {
+      children: getInitials(name, dir === 'rtl'),
+      'aria-hidden': true,
+    },
+  });
 
-  // If a label was not provided, use the initials and fall back to the icon if initials aren't available
-  if (!label.children) {
-    const initials = state.getInitials(state.name || '', /*isRtl: */ false);
-    if (initials) {
-      label.children = initials;
-    } else {
-      state.showIcon = true;
-      if (!icon.children) {
-        if (size <= 24) {
-          icon.children = <Person16Regular />;
-        } else if (size <= 40) {
-          icon.children = <Person20Regular />;
-        } else if (size <= 48) {
-          icon.children = <Person24Regular />;
-        } else if (size <= 56) {
-          icon.children = <Person28Regular />;
-        } else if (size <= 72) {
-          icon.children = <Person32Regular />;
-        } else {
-          icon.children = <Person48Regular />;
-        }
+  // Render the icon slot *only if* there aren't any initials to display.
+  let icon: AvatarState['icon'] = undefined;
+  if (!initials?.children) {
+    initials = undefined;
+    icon = resolveShorthand(props.icon, {
+      required: true,
+      defaultProps: {
+        children: <PersonRegular />,
+        'aria-hidden': true,
+        id: baseId + '__initials',
+      },
+    });
+  }
+
+  const [imageHidden, setImageHidden] = React.useState<true | undefined>(undefined);
+  const image: AvatarState['image'] = resolveShorthand(props.image, {
+    defaultProps: {
+      alt: '',
+      role: 'presentation',
+      'aria-hidden': true,
+      hidden: imageHidden,
+    },
+  });
+
+  // Hide the image if it fails to load and restore it on a successful load
+  const imageOnError = useMergedEventCallbacks(image?.onError, () => setImageHidden(true));
+  const imageOnLoad = useMergedEventCallbacks(image?.onLoad, () => setImageHidden(undefined));
+  if (image) {
+    image.onError = imageOnError;
+    image.onLoad = imageOnLoad;
+  }
+
+  const badge: AvatarState['badge'] = resolveShorthand(props.badge, {
+    defaultProps: {
+      size: getBadgeSize(size),
+      role: 'presentation',
+      'aria-hidden': true,
+      id: baseId + '__badge',
+    },
+  });
+
+  // Resolve aria-label and/or aria-labelledby if not provided by the user
+  if (!root['aria-label'] && !root['aria-labelledby']) {
+    if (name) {
+      root['aria-label'] = name;
+
+      // Include the badge in labelledby if it exists
+      if (badge) {
+        root['aria-labelledby'] = root.id + ' ' + badge.id;
       }
+    } else if (initials) {
+      // root's aria-label should be the name, but fall back to being labelledby the initials if name is missing
+      root['aria-labelledby'] = initials.id + (badge ? ' ' + badge.id : '');
     }
   }
 
-  // Provide a default badge size based on the avatar size
-  if (badge && badge.size === undefined) {
-    if (size >= 96) {
-      badge.size = 'larger';
-    } else if (size >= 64) {
-      badge.size = 'large';
-    } else if (size >= 56) {
-      badge.size = 'medium';
-    } else if (size >= 40) {
-      badge.size = 'small';
-    } else if (size >= 28) {
-      badge.size = 'smaller';
-    } else {
-      badge.size = 'smallest';
-    }
-  }
+  return {
+    size,
+    name,
+    shape,
+    active,
+    activeAppearance,
+    color,
+    idForColor,
 
-  if (state.color === 'colorful') {
-    const value = state.idForColor || state.name;
-    if (value) {
-      state.color = avatarColors[getHashCode(value) % avatarColors.length];
-    }
-  }
+    components: {
+      root: 'span',
+      initials: 'span',
+      icon: 'span',
+      image: 'img',
+      badge: PresenceBadge,
+    },
 
-  return state;
+    root,
+    initials,
+    icon,
+    image,
+    badge,
+  };
 };
 
-/**
- * Avatar treats shorthand for the image and badge props differently. Rather than the string being
- * the child of those slots, they translate to the image's src and the badge's status prop.
- */
-const resolveAvatarShorthandPropsCompat = (props: AvatarProps) => {
-  let { image, badge } = props;
-
-  if (typeof image === 'string') {
-    image = { as: 'img', src: image, children: null };
+const getBadgeSize = (size: AvatarState['size']) => {
+  if (size >= 96) {
+    return 'extra-large';
+  } else if (size >= 64) {
+    return 'large';
+  } else if (size >= 56) {
+    return 'medium';
+  } else if (size >= 40) {
+    return 'small';
+  } else if (size >= 28) {
+    return 'extra-small';
+  } else {
+    return 'tiny';
   }
-
-  if (typeof badge === 'string') {
-    badge = { as: PresenceBadge, status: badge };
-  }
-
-  if (image !== props.image || badge !== props.badge) {
-    props = { ...props, image, badge };
-  }
-
-  return resolveShorthandProps(props, avatarShorthandPropsCompat);
 };
 
 const avatarColors: AvatarNamedColor[] = [

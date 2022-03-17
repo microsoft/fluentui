@@ -5,7 +5,9 @@ import {
   doesElementContainFocus,
   getDocument,
   getNativeProps,
+  getPropsWithDefaults,
   getWindow,
+  modalize,
 } from '../../Utilities';
 import { useMergedRefs, useAsync, useOnEvent } from '@fluentui/react-hooks';
 import { useWindow } from '@fluentui/react-window-provider';
@@ -120,47 +122,34 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
   );
 }
 
-function useHideSiblingNodes(props: IPopupProps) {
-  const isModalOrPanel = props['aria-modal'];
+function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
+  // eslint-disable-next-line deprecation/deprecation
+  const shouldHideSiblings = String(props['aria-modal']).toLowerCase() === 'true' && props.enableAriaHiddenSiblings;
 
   React.useEffect(() => {
-    const targetDocument = getDocument();
-    if (isModalOrPanel && targetDocument) {
-      const children = targetDocument.body.children;
-      let nodesToHide: Element[] = [];
-
-      for (let i = 0; i < children.length - 1; i++) {
-        nodesToHide.push(children[i]);
-      }
-
-      nodesToHide = nodesToHide.filter(
-        child =>
-          child.tagName !== 'TEMPLATE' &&
-          child.tagName !== 'SCRIPT' &&
-          child.tagName !== 'STYLE' &&
-          !child.hasAttribute('aria-hidden'),
-      );
-
-      nodesToHide.forEach(node => node.setAttribute('aria-hidden', 'true'));
-
-      return () => nodesToHide.forEach(child => child.removeAttribute('aria-hidden'));
+    if (!(shouldHideSiblings && root.current)) {
+      return;
     }
-  }, [isModalOrPanel]);
+
+    const unmodalize = modalize(root.current);
+    return unmodalize;
+  }, [root, shouldHideSiblings]);
 }
 
 /**
  * This adds accessibility to Dialog and Panel controls
  */
 export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTMLDivElement, IPopupProps>(
-  (props, forwardedRef) => {
-    // Default props
-    // eslint-disable-next-line deprecation/deprecation
-    props = { shouldRestoreFocus: true, ...props };
+  (propsWithoutDefaults, forwardedRef) => {
+    const props = getPropsWithDefaults(
+      { shouldRestoreFocus: true, enableAriaHiddenSiblings: true },
+      propsWithoutDefaults,
+    );
 
     const root = React.useRef<HTMLDivElement>();
     const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
 
-    useHideSiblingNodes(props);
+    useHideSiblingNodes(props, root);
     useRestoreFocus(props, root);
 
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children, onDismiss } = props;
@@ -204,3 +193,4 @@ export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTML
     );
   },
 );
+Popup.displayName = 'Popup';

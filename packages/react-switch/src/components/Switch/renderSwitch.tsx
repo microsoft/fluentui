@@ -1,13 +1,20 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
-import { switchShorthandProps } from './useSwitch';
-import type { SwitchState } from './Switch.types';
+import { getSlots } from '@fluentui/react-utilities';
+import type { SwitchState, SwitchSlots } from './Switch.types';
 
 /**
- * Render the final JSX of Switch
+ * Render a Switch component by passing the state defined props to the appropriate slots.
  */
-export const renderSwitch = (state: SwitchState) => {
-  const { slots, slotProps } = getSlotsCompat(state, switchShorthandProps);
+export const renderSwitch_unstable = (state: SwitchState) => {
+  const { slots, slotProps } = getSlots<SwitchSlots>(state);
+  const { labelPosition } = state;
 
-  return <slots.root {...slotProps.root}>{state.children}</slots.root>;
+  return (
+    <slots.root {...slotProps.root}>
+      <slots.input {...slotProps.input} />
+      {labelPosition !== 'after' && slots.label && <slots.label {...slotProps.label} />}
+      <slots.indicator {...slotProps.indicator} />
+      {labelPosition === 'after' && slots.label && <slots.label {...slotProps.label} />}
+    </slots.root>
+  );
 };

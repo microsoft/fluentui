@@ -34,54 +34,56 @@ Sample usages will be given in the following section of this document [Sample co
 The root level component serves context and common API between all children.
 
 ```ts
-export interface AccordionProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * Indicates if keyboard navigation is available
-   */
-  navigable?: boolean;
-  /**
-   * Indicates if Accordion support multiple Panels opened at the same time
-   */
-  multiple?: boolean;
-  /**
-   * Indicates if Accordion support multiple Panels closed at the same time
-   */
-  collapsible?: boolean;
-  /**
-   * value indicating the items that are opened
-   * If used, the component will be in controlled mode
-   */
-  openItems?: AccordionItemValue | AccordionItemValue[];
-  /**
-   * Index indicating the panels that are opened
-   */
-  defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
-  /**
-   * Size of spacing in the heading
-   */
-  size?: 'small' | 'medium' | 'large' | 'extra-large';
-  /**
-   * The component to be used as button in the heading
-   */
-  button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  /**
-   * Expand icon slot rendered before (or after) children content in heading
-   */
-  expandIcon?: ShorthandProps<AccordionHeaderExpandIconProps>;
-  /**
-   * The position of the expand  icon slot in heading
-   */
-  expandIconPosition?: 'start' | 'end';
-  /**
-   * Extra icon slot rendered before children content in heading
-   */
-  icon?: ShorthandProps<AccordionHeaderIconProps>;
-  /**
-   * Indicates if the AccordionHeader should be inline-block
-   */
-  inline?: boolean;
-  onToggle?(event: AccordionToggleEvent, data: AccordionToggleData): void;
-}
+export type AccordionProps = ComponentProps &
+  React.HTMLAttributes<HTMLElement> & {
+    /**
+     * Indicates if keyboard navigation is available and gives two options,
+     * linear or circular navigation
+     */
+    navigation?: 'linear' | 'circular';
+    /**
+     * Indicates if Accordion support multiple Panels opened at the same time
+     */
+    multiple?: boolean;
+    /**
+     * Indicates if Accordion support multiple Panels closed at the same time
+     */
+    collapsible?: boolean;
+    /**
+     * value indicating the items that are opened
+     * If used, the component will be in controlled mode
+     */
+    openItems?: AccordionItemValue | AccordionItemValue[];
+    /**
+     * Index indicating the panels that are opened
+     */
+    defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
+    /**
+     * Size of spacing in the heading
+     */
+    size?: 'small' | 'medium' | 'large' | 'extra-large';
+    /**
+     * The component to be used as button in the heading
+     */
+    button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    /**
+     * Expand icon slot rendered before (or after) children content in heading
+     */
+    expandIcon?: ShorthandProps<AccordionHeaderExpandIconProps>;
+    /**
+     * The position of the expand  icon slot in heading
+     */
+    expandIconPosition?: 'start' | 'end';
+    /**
+     * Extra icon slot rendered before children content in heading
+     */
+    icon?: ShorthandProps<AccordionHeaderIconProps>;
+    /**
+     * Indicates if the AccordionHeader should be inline-block
+     */
+    inline?: boolean;
+    onToggle?(event: AccordionToggleEvent, data: AccordionToggleData): void;
+  };
 ```
 
 ### AccordionItem
@@ -89,16 +91,17 @@ export interface AccordionProps extends ComponentProps, React.HTMLAttributes<HTM
 Each Combination of `AccordionHeader` and `AccordionPanel` should be inside an `AccordionItem`, and The `Accordion` component should contain one or more `AccordionItem`.
 
 ```ts
-export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * Disables opening/closing of panel inside the item
-   */
-  disabled?: boolean;
-  /**
-   * required value that identifies this item inside an Accordion component
-   */
-  value: AccordionItemValue;
-}
+export type AccordionItemProps = ComponentProps &
+  React.HTMLAttributes<HTMLElement> & {
+    /**
+     * Disables opening/closing of panel inside the item
+     */
+    disabled?: boolean;
+    /**
+     * required value that identifies this item inside an Accordion component
+     */
+    value: AccordionItemValue;
+  };
 ```
 
 ### AccordionHeader
@@ -106,32 +109,33 @@ export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes
 Label for or thumbnail representing a section of content that also serves as a control for showing, and in some implementations, hiding the section of content
 
 ```ts
-export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * Size of spacing in the heading
-   */
-  size?: 'small' | 'medium' | 'large' | 'extra-large';
-  /**
-   * The component to be used as button in heading
-   */
-  button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  /**
-   * Expand icon slot rendered before (or after) children content in heading
-   */
-  expandIcon?: ShorthandProps<AccordionHeaderExpandIconProps>;
-  /**
-   * The position of the expand  icon slot in heading
-   */
-  expandIconPosition?: 'start' | 'end';
-  /**
-   * Extra icon slot rendered before children content in heading
-   */
-  icon?: ShorthandProps<AccordionHeaderIconProps>;
-  /**
-   * Indicates if the AccordionHeader should be inline-block
-   */
-  inline?: boolean;
-}
+export type AccordionHeaderProps = ComponentProps &
+  React.HTMLAttributes<HTMLElement> & {
+    /**
+     * Size of spacing in the heading
+     */
+    size?: 'small' | 'medium' | 'large' | 'extra-large';
+    /**
+     * The component to be used as button in heading
+     */
+    button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    /**
+     * Expand icon slot rendered before (or after) children content in heading
+     */
+    expandIcon?: ShorthandProps<AccordionHeaderExpandIconProps>;
+    /**
+     * The position of the expand  icon slot in heading
+     */
+    expandIconPosition?: 'start' | 'end';
+    /**
+     * Extra icon slot rendered before children content in heading
+     */
+    icon?: ShorthandProps<AccordionHeaderIconProps>;
+    /**
+     * Indicates if the AccordionHeader should be inline-block
+     */
+    inline?: boolean;
+  };
 ```
 
 ### AccordionPanel
@@ -407,6 +411,37 @@ As a general rule, once the accordion is closed the focus should return to the h
 | Keyboard | Home       | Moves Focus | Moves focus to the first panel heading                      |
 | Keyboard | End        | Moves Focus | Moves focus to the last panel heading                       |
 
-## Accessibiltiy
+## Accessibility
 
-Accessibility behaviour is built into the spec as much as possible. This section addresses specific issues that don't fit well with the standard definition of the component.
+Accessibility behavior is built into the spec as much as possible. This section addresses specific issues that don't fit well with the standard definition of the component.
+
+### No heading level on `AccordionHeader` by default
+
+As described on [WAI-ARIA Roles, States, and Properties](https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties) documentation for accordion:
+
+> Each accordion header button is wrapped in an element with role heading that has a value set for aria-level that is appropriate for the information architecture of the page.
+
+Every `AccordionHeader` should have as its root a semantic heading element: `h1`, `h2`, `h3`, `h4`, `h5` or `h6`. Alternatively `role="heading"` and a proper `aria-level` attribute. This behavior is not implemented by default on `AccordionHeader` as it's impossible to predict which heading level will be required by the user. Requiring manual addition of such ARIA requirement.
+
+```tsx
+{/* No heading level by default */}
+<AccordionHeader>This is a header</AccordionHeader>
+{/* Generated html */}
+<div>
+  <button>This is a header</button>
+</div>
+
+{/* as semantic heading */}
+<AccordionHeader as="h4">This is a header</AccordionHeader>
+{/* Generated html */}
+<h4>
+  <button>This is a header</button>
+</h4>
+
+{/* if no semantic heading can be used */}
+<AccordionHeader role="heading" aria-level="4">This is a header</AccordionHeader>
+{/* Generated html */}
+<div role="heading" aria-level="4">
+  <button>This is a header</button>
+</h4>
+```

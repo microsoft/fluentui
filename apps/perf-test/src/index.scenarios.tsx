@@ -26,27 +26,35 @@ const scenario = queryParams.scenario ? (queryParams.scenario as string) : defau
 const renderType = queryParams.renderType;
 
 const PerfTestScenario = scenarios[scenario];
-const PerfTestDecorator = PerfTestScenario.decorator || 'div';
+if (PerfTestScenario) {
+  const PerfTestDecorator = PerfTestScenario.decorator || 'div';
 
-if (renderType === 'virtual-rerender') {
-  for (let i = 0; i < iterations - 1; i++) {
-    ReactDOM.render(<PerfTestScenario />, div);
+  if (renderType === 'virtual-rerender' || renderType === 'virtual-rerender-with-unmount') {
+    for (let i = 0; i < iterations - 1; i++) {
+      ReactDOM.render(<PerfTestScenario />, div);
+      if (renderType === 'virtual-rerender-with-unmount') {
+        ReactDOM.unmountComponentAtNode(div);
+      }
+    }
+    ReactDOM.render(<PerfTestScenario />, div, () => div.appendChild(renderFinishedMarker));
+  } else {
+    // TODO: This seems to increase React (unstable_runWithPriority) render consumption from 4% to 72%!
+    // const ScenarioContent = Array.from({ length: iterations }, () => scenarios[scenario]);
+
+    // TODO: Using React Fragments increases React (unstable_runWithPriority) render consumption from 4% to 26%.
+    // It'd be interesting to root cause why at some point.
+    // ReactDOM.render(<>{Array.from({ length: iterations }, () => (scenarios[scenario]))}</>, div);
+    ReactDOM.render(
+      <PerfTestDecorator>
+        {Array.from({ length: iterations }, () => (
+          <PerfTestScenario />
+        ))}
+      </PerfTestDecorator>,
+      div,
+      () => div.appendChild(renderFinishedMarker),
+    );
   }
-  ReactDOM.render(<PerfTestScenario />, div, () => div.appendChild(renderFinishedMarker));
 } else {
-  // TODO: This seems to increase React (unstable_runWithPriority) render consumption from 4% to 72%!
-  // const ScenarioContent = Array.from({ length: iterations }, () => scenarios[scenario]);
-
-  // TODO: Using React Fragments increases React (unstable_runWithPriority) render consumption from 4% to 26%.
-  // It'd be interesting to root cause why at some point.
-  // ReactDOM.render(<>{Array.from({ length: iterations }, () => (scenarios[scenario]))}</>, div);
-  ReactDOM.render(
-    <PerfTestDecorator>
-      {Array.from({ length: iterations }, () => (
-        <PerfTestScenario />
-      ))}
-    </PerfTestDecorator>,
-    div,
-    () => div.appendChild(renderFinishedMarker),
-  );
+  // No PerfTest scenario to render -> done
+  div.appendChild(renderFinishedMarker);
 }

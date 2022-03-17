@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
 import { TestImages } from '@fluentui/example-data';
 
@@ -12,7 +12,7 @@ const options: IChoiceGroupOption[] = [
 ];
 
 storiesOf('ChoiceGroup', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -69,7 +69,7 @@ storiesOf('ChoiceGroup', module)
         ]}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('With default size images', () => (
     <ChoiceGroup

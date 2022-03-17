@@ -1,8 +1,26 @@
 # Change Log - @fluentui/test-utilities
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Dec 2021 07:26:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.2.0)
+
+Thu, 16 Dec 2021 07:26:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/test-utilities_v8.1.0..@fluentui/test-utilities_v8.2.0)
+
+### Minor changes
+
+- Simplify safeMount attach API ([PR #21032](https://github.com/microsoft/fluentui/pull/21032) by elcraig@microsoft.com)
+
+## [8.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.1.0)
+
+Wed, 15 Dec 2021 07:31:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/test-utilities_v8.0.8..@fluentui/test-utilities_v8.1.0)
+
+### Minor changes
+
+- feat: improve test utilities ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by martinhochel@microsoft.com)
 
 ## [8.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.0.8)
 

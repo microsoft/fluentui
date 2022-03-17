@@ -2,6 +2,21 @@
   "name": "@fluentui/webpack-utilities",
   "entries": [
     {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/webpack-utilities_v8.1.5",
+      "version": "8.1.5",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/webpack-utilities",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/webpack-utilities_v8.1.5",
       "version": "8.1.5",

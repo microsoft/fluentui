@@ -38,7 +38,6 @@ export const LayerCustomizedExample: React.FunctionComponent = () => {
             This panel {trapPanel ? 'is' : 'is not'} trapped.
           </Panel>
         )}
-        {/* eslint-disable-next-line deprecation/deprecation */}
       </Customizer>
       <LayerHost id={layerHostId} className={layerHostClass} />
     </div>

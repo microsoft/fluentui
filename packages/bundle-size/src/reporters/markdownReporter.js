@@ -84,9 +84,9 @@ module.exports = async function markdownReporter(result, commitSHA, quiet) {
       const before = entry.diff.empty
         ? [`\`${formatBytes(0)}\``, '<br />', `\`${formatBytes(0)}\``].join('')
         : [
-            `\`${formatBytes(entry.minifiedSize + entry.diff.minified.delta)}\``,
+            `\`${formatBytes(entry.minifiedSize - entry.diff.minified.delta)}\``,
             '<br />',
-            `\`${formatBytes(entry.gzippedSize + entry.diff.gzip.delta)}\``,
+            `\`${formatBytes(entry.gzippedSize - entry.diff.gzip.delta)}\``,
           ].join('');
       const after = [`\`${formatBytes(entry.minifiedSize)}\``, '<br />', `\`${formatBytes(entry.gzippedSize)}\``].join(
         '',

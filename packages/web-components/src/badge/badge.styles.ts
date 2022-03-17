@@ -6,7 +6,7 @@ import {
   controlCornerRadius,
   designUnit,
   foregroundOnAccentRest,
-  neutralFillRest,
+  neutralFillSecondaryRest,
   neutralForegroundRest,
   strokeWidth,
   typeRampMinus1FontSize,
@@ -43,7 +43,15 @@ export const badgeStyles: (
     }
 
     :host(.neutral) .control {
-      background: ${neutralFillRest};
+      background: ${neutralFillSecondaryRest};
       color: ${neutralForegroundRest};
+    }
+
+    :host([circular]) .control {
+      border-radius: 100px;
+      min-width: calc(${typeRampMinus1LineHeight} - calc(${designUnit} * 1px));
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   `;

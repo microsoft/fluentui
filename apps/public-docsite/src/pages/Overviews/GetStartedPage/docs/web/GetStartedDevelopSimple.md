@@ -9,7 +9,7 @@ cd my-app
 npm start
 
 # Option 2: using yarn
-yarn create-react-app my-app --template @fluentui/cra-template
+yarn create react-app my-app --template @fluentui/cra-template
 cd my-app
 yarn start
 ```

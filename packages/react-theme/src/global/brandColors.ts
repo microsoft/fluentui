@@ -1,40 +1,58 @@
-import type { BrandVariants, ProductBrandColors } from '../types';
+import type { BrandVariants } from '../types';
 
-// TODO: values should be set per product theme
 export const brandWeb: BrandVariants = {
-  shade60: '#092C47',
-  shade50: '#043862',
-  shade40: '#004578',
-  shade30: '#004C87',
-  shade20: '#005A9E',
-  shade10: '#106EBE',
-  primary: '#0078D4',
-  tint10: '#2899F5',
-  tint20: '#3AA0F3',
-  tint30: '#6CB8F6',
-  tint40: '#C7E0F4',
-  tint50: '#DEECF9',
-  tint60: '#EFF6FC',
+  10: `#001526`,
+  20: `#002848`,
+  30: `#043862`,
+  40: `#004578`,
+  50: `#004c87`,
+  60: `#005a9e`,
+  70: `#106ebe`,
+  80: `#0078d4`,
+  90: `#1890f1`,
+  100: `#2899f5`,
+  110: `#3aa0f3`,
+  120: `#6cb8f6`,
+  130: `#82c7ff`,
+  140: `#c7e0f4`,
+  150: `#deecf9`,
+  160: `#eff6fc`,
 };
 
-// TODO: these colors are not approved yet
 export const brandTeams: BrandVariants = {
-  shade60: '#323348',
-  shade50: '#393b5d', // TBD
-  shade40: '#3D3E66',
-  shade30: '#464775',
-  shade20: '#494B83',
-  shade10: '#52558f', // TBD
-  primary: '#6264A7',
-  tint10: '#8f95f8', // TBD
-  tint20: '#9EA2FF',
-  tint30: '#B2B5FF',
-  tint40: '#C7C9FF',
-  tint50: '#DBDCF0',
-  tint60: '#E9EAF6',
+  10: `#2b2b40`,
+  20: `#2f2f4a`,
+  30: `#333357`,
+  40: `#383966`,
+  50: `#3d3e78`,
+  60: `#444791`,
+  70: `#4f52b2`,
+  80: `#5b5fc7`,
+  90: `#7579eb`,
+  100: `#7f85f5`,
+  110: `#9299f7`,
+  120: `#aab1fa`,
+  130: `#b6bcfa`,
+  140: `#c5cbfa`,
+  150: `#dce0fa`,
+  160: `#e8ebfa`,
 };
 
-export const brandColors: ProductBrandColors = {
-  teams: brandTeams,
-  web: brandWeb,
+export const brandOffice: BrandVariants = {
+  10: `#29130b`,
+  20: `#4d2415`,
+  30: `#792000`,
+  40: `#99482b`,
+  50: `#a52c00`,
+  60: `#c33400`,
+  70: `#e06a3f`,
+  80: `#d83b01`,
+  90: `#dd4f1b`,
+  100: `#fe7948`,
+  110: `#ff865a`,
+  120: `#ff9973`,
+  130: `#e8825d`,
+  140: `#ffb498`,
+  150: `#f4beaa`,
+  160: `#f9dcd1`,
 };

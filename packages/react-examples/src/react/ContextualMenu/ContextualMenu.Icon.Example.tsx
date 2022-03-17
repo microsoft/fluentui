@@ -19,6 +19,7 @@ export const ContextualMenuIconExample: React.FunctionComponent = () => {
       {
         key: 'openInWord',
         text: 'Open in Word',
+        iconProps: {},
         onRenderIcon: (props: IContextualMenuItemProps) => {
           return (
             <span className={classNames.iconContainer}>

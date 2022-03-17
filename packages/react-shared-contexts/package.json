@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-shared-contexts",
-  "version": "9.0.0-alpha.23",
+  "version": "9.0.0-rc.4",
   "description": "Fluent UI React Contexts shared by multiple components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -18,24 +18,16 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-shared-contexts/src && yarn docs",
-    "test": "jest --passWithNoTests"
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-shared-contexts/src && yarn docs",
+    "test": "jest --passWithNoTests",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/scripts": "^1.0.0",
-    "@fluentui/test-utilities": "^8.0.8",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
-    "@types/react-test-renderer": "^16.0.0",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
-    "react": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-theme": "^9.0.0-alpha.22",
+    "@fluentui/react-theme": "9.0.0-rc.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -43,11 +35,17 @@
     "react": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "alpha",
     "disallowedChangeTypes": [
       "major",
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

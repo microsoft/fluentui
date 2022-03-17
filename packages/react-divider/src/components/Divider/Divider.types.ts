@@ -1,56 +1,43 @@
-import * as React from 'react';
-import { ComponentPropsCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory Divider}
- */
-export interface DividerProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
+export type DividerSlots = {
+  /**
+   * Root of the component that renders as a `<div>` tag.
+   */
+  root: Slot<'div'>;
+
+  /**
+   * Accessibility wrapper for content when presented.
+   */
+  wrapper: Slot<'div'>;
+};
+
+type DividerCommons = {
   /**
    * Determines the alignment of the content within the divider.
    * @defaultvalue 'center'
    */
-  alignContent?: 'start' | 'end' | 'center';
+  alignContent: 'start' | 'center' | 'end';
 
   /**
-   * Predefined visual styles
-   * @defaultvalue 'default'
+   * A divider can have one of the preset appearances.
+   * When not specified, the divider has its default appearance.
    */
-  appearance?: 'default' | 'subtle' | 'brand' | 'strong';
+  appearance?: 'brand' | 'strong' | 'subtle';
 
   /**
-   * A divider can be classified as important to emphasize its content
+   * Adds padding to the beginning and end of the divider.
+   * @default false
    */
-  important?: boolean;
+  inset: boolean;
 
   /**
-   * Adds a 12px padding to the begining and end of the divider
+   * A divider can be horizontal (default) or vertical.
+   * @default false
    */
-  inset?: boolean;
+  vertical: boolean;
+};
 
-  /**
-   * A divider can be horizontal (default) or vertical*/
-  vertical?: boolean;
+export type DividerProps = ComponentProps<Partial<DividerSlots>> & Partial<DividerCommons>;
 
-  /**
-   * Accessibility wrapper for content when presented.
-   * A shorthand prop can be a literal, object, or
-   * JSX. The `children` prop of the object can be a render function,
-   * taking in the original slot component and props.
-   */
-  wrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLDivElement>>;
-}
-
-/**
- * {@docCategory Divider}
- */
-export interface DividerState extends DividerProps {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.RefObject<HTMLElement>;
-
-  /**
-   * The Id created to expose accessability for readers
-   */
-  labelledById?: string;
-}
+export type DividerState = ComponentState<DividerSlots> & DividerCommons;

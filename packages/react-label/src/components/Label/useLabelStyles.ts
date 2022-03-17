@@ -1,60 +1,72 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import type { LabelState } from './Label.types';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import type { LabelSlots, LabelState } from './Label.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+/**
+ * @deprecated Use `labelClassNames.root` instead.
+ */
+export const labelClassName = 'fui-Label';
+export const labelClassNames: SlotClassNames<LabelSlots> = {
+  root: 'fui-Label',
+  required: 'fui-Label__required',
+};
 
 /**
  * Styles for the label
  */
 const useStyles = makeStyles({
-  root: theme => ({
-    fontFamily: theme.global.type.fontFamilies.base,
-    color: theme.alias.color.neutral.neutralForeground1,
-  }),
+  root: {
+    fontFamily: tokens.fontFamilyBase,
+    color: tokens.colorNeutralForeground1,
+  },
 
-  disabled: theme => ({
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
-  }),
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+  },
 
-  required: theme => ({
-    color: theme.alias.color.red.foreground3,
+  required: {
+    color: tokens.colorPaletteRedForeground3,
     paddingLeft: '4px', // TODO: Once spacing tokens are added, change this to Horizontal XS
-  }),
+  },
 
-  small: theme => ({
-    fontSize: theme.global.type.fontSizes.base[200],
-    lineHeight: theme.global.type.lineHeights.base[200],
-  }),
+  small: {
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+  },
 
-  medium: theme => ({
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
-  }),
+  medium: {
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
 
-  large: theme => ({
-    fontSize: theme.global.type.fontSizes.base[400],
-    lineHeight: theme.global.type.lineHeights.base[400],
-    fontWeight: theme.global.type.fontWeights.semibold,
-  }),
+  large: {
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+    fontWeight: tokens.fontWeightSemibold,
+  },
 
-  strong: theme => ({
-    fontWeight: theme.global.type.fontWeights.semibold,
-  }),
+  strong: {
+    fontWeight: tokens.fontWeightSemibold,
+  },
 });
 
 /**
  * Apply styling to the Label slots based on the state
  */
-export const useLabelStyles = (state: LabelState): LabelState => {
+export const useLabelStyles_unstable = (state: LabelState): LabelState => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
+    labelClassNames.root,
     styles.root,
     state.disabled && styles.disabled,
     styles[state.size],
     state.strong && styles.strong,
-    state.className,
+    state.root.className,
   );
 
   if (state.required) {
-    state.required.className = mergeClasses(styles.required, state.required.className);
+    state.required.className = mergeClasses(labelClassNames.required, styles.required, state.required.className);
   }
 
   return state;

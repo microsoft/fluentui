@@ -54,10 +54,6 @@ export const grey: Record<Greys, string> = {
   '100': '#ffffff',
 };
 
-export const white = '#ffffff';
-
-export const black = '#000000';
-
 export const whiteAlpha: Record<AlphaColors, string> = {
   '5': 'rgba(255, 255, 255, 0.05)',
   '10': 'rgba(255, 255, 255, 0.1)',
@@ -83,6 +79,10 @@ export const blackAlpha: Record<AlphaColors, string> = {
   '80': 'rgba(0, 0, 0, 0.8)',
   '90': 'rgba(0, 0, 0, 0.9)',
 };
+
+export const white = '#ffffff';
+
+export const black = '#000000';
 
 export const hcHyperlink = '#ffff00';
 
@@ -821,18 +821,18 @@ const anchor: ColorVariants = {
 };
 
 const charcoal: ColorVariants = {
-  shade50: '#130204',
-  shade40: '#230308',
-  shade30: '#420610',
-  shade20: '#590815',
-  shade10: '#690a19',
-  primary: '#750b1c',
-  tint10: '#861b2c',
-  tint20: '#962f3f',
-  tint30: '#ac4f5e',
-  tint40: '#d69ca5',
-  tint50: '#e9c7cd',
-  tint60: '#f9f0f2',
+  shade50: '#090909',
+  shade40: '#111111',
+  shade30: '#202020',
+  shade20: '#2b2b2b',
+  shade10: '#333333',
+  primary: '#393939',
+  tint10: '#515151',
+  tint20: '#686868',
+  tint30: '#888888',
+  tint40: '#c4c4c4',
+  tint50: '#dfdfdf',
+  tint60: '#f7f7f7',
 };
 
 export const sharedColors: GlobalSharedColors = {

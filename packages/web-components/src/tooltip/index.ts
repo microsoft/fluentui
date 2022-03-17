@@ -1,5 +1,5 @@
 import { Tooltip as FoundationTooltip, tooltipTemplate as template } from '@microsoft/fast-foundation';
-import { fillColor, neutralFillInverseRecipe } from '../design-tokens';
+import { fillColor, neutralLayerFloating } from '../design-tokens';
 import { tooltipStyles as styles } from './tooltip.styles';
 
 /**
@@ -13,10 +13,7 @@ export class Tooltip extends FoundationTooltip {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    const recipe = neutralFillInverseRecipe.getValueFor(this);
-    const parentFill = fillColor.getValueFor(this.parentElement!);
-
-    fillColor.setValueFor(this, (target: HTMLElement) => recipe.evaluate(target, parentFill).rest);
+    fillColor.setValueFor(this, neutralLayerFloating);
   }
 }
 
@@ -31,6 +28,7 @@ export class Tooltip extends FoundationTooltip {
  */
 export const fluentTooltip = Tooltip.compose({
   baseName: 'tooltip',
+  baseClass: FoundationTooltip,
   template,
   styles,
 });

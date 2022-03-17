@@ -2,6 +2,1117 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Fri, 04 Mar 2022 05:17:34 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-rc.5",
+      "version": "9.0.0-rc.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.4",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.5",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 02:17:40 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Feb 2022 13:35:28 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Feb 2022 08:51:40 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "c0d4e63ee58e60e2c6674efbacc0783cd520984e",
+            "comment": "Updates components with nullRender changes"
+          },
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "87e12a2e3a9d90b4ff95d3ed333739756d190f6c",
+            "comment": "Updated best practices for long text"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "d892c7f79c543b6008634ecd669b75b5108cad46",
+            "comment": "Remove outdated boilerplate comments"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "7cb2a5d8db1b6a1ddb638aa82d5815ab5ae84e69",
+            "comment": "(fix): Update react-icons dependency to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "c00913d50e2dd15bbfbb0757cefe43b192ff1d7f",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "f5e7fa7a2129d3a4637a2ce777cecec435c256ec",
+            "comment": "Refactor and re-organize Badge styles; no visual changes."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "3bc0517363984081469903ee137a06543f825f1c",
+            "comment": "Add fontSize styling to icon slot, to automatically size user-provided icons"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "5a49512b8e33d5a588212069a1f2827b806d584c",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "4e5e955acede0fc79334ef90a563de4bd35ee231",
+            "comment": "fix: use updated tokens for ghost and outline variants"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "00a5d945904c896a0664de6ba72c145a255f0848",
+            "comment": "Updating use of tokens.fontWeight now that we don't need to use casting."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "13f940ea4687d769dd2faf61edc27ff75f6bb565",
+            "comment": "Allow React 17 in peerDependencies."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "63cbefe55e5db10eedbde19392aa8b6376d6a7f7",
+            "comment": "Update react-icons usage to resizable icons"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "839ec14849e112b85aa321d034739ec421199141",
+            "comment": "remove export of commons types"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "b23239743c4f5518bcf7dcad496a36fc16bbd2e5",
+            "comment": "update @fluentui/react-icons package"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "8c75114e82b205810c9ac3692af71f6f7748225c",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "2c54271f07c30f65718e085084c2e5b213268dfd",
+            "comment": "react-badge: Replacing use of functions in makeStyles with direct use of tokens."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "4e7acd7ff3c437663de70206416d3c19b6a87cfa",
+            "comment": "fix: Add uniform padding and modify gaps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 08:34:11 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-beta.4",
+      "version": "9.0.0-beta.4",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "cc3fe8e29cbb4b9d03f26e9a06b58d7aa24ffb65",
+            "comment": "Migrate package to use solution style ts-config"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "6183f8ae46233d7ecec2a3d12e7348b7b41eea0c",
+            "comment": "various styling fixes for base Badge component"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "c5c66cb39e6906f506bf30c9e56c0839f10e2d51",
+            "comment": "Reduce colour set and align with base badge colours"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "ecab13cfd6ac22657020db8f86eb89f952b0f953",
+            "comment": "update react-icons dependency"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "48e52fc91e41ab721c9842f8f68ac84ad569a851",
+            "comment": "Remove props and return correct presence icons"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Nov 2021 13:25:15 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "e42f50656c1b703d88c398b114f225ba5f1f5f22",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          }
+        ],
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "7fafe76eb2c09f9d17a03c11ba73729d91ef411e",
+            "comment": "update docs descriptions"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-badge",
+            "commit": "cdbe0769d2a6ee91a98a3e62c6ac9329a714355c",
+            "comment": "Docs update"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Oct 2021 12:14:14 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-beta.2",
+      "version": "9.0.0-beta.2",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "7518a483df09e687ef56153d3f25da27802431a3",
+            "comment": "fix bundle size fixture"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "193af6527f202f11efdd71da7581cc6e76ca2925",
+            "comment": "remove unused story file"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "fd1d90fbddc49971db9f04e691d6dd16a0595f4a",
+            "comment": "Removed duplicate 'Badge' from story names"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-badge",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Oct 2021 10:37:22 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump all v9 components to beta prerelease tag",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 12:47:58 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.92",
+      "version": "9.0.0-alpha.92",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.78",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.60",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.53",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.22",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 09:28:07 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.91",
+      "version": "9.0.0-alpha.91",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "comment": "Adds ForwardRefComponent to react-badge components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.77",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.56",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.59",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.52",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.21",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Oct 2021 14:13:08 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.90",
+      "version": "9.0.0-alpha.90",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump v9 prerelease versions to rerelease",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.76",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.26",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.55",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.58",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.51",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.20",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Sep 2021 08:06:11 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.88",
+      "version": "9.0.0-alpha.88",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-badge",
+            "comment": "Add Storybook Controls to Badge documentation",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.74",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.24",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.56",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.49",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.18",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Sep 2021 08:06:00 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.87",
+      "version": "9.0.0-alpha.87",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "comment": "Revert to ObjectShorthandProps for slots to allow correct typing in Avatar",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.73",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.53",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.55",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.48",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.17",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Sep 2021 09:17:17 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.86",
+      "version": "9.0.0-alpha.86",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "comment": "Update BadgeProps for consistency",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.72",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.52",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.54",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.47",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.16",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Sep 2021 08:21:34 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.85",
+      "version": "9.0.0-alpha.85",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.71",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.51",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.53",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.46",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.15",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Sep 2021 10:10:07 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.84",
+      "version": "9.0.0-alpha.84",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "comment": "refactor(Badge): Remove `mergeProps` and migrate to simple slots",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.70",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.50",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.52",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.45",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.14",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Sep 2021 07:42:34 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.83",
+      "version": "9.0.0-alpha.83",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "comment": "Updating to types over interfaces",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.69",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.23",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.51",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.44",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.13",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          }
+        ],
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "comment": "Remove unnecessary docCategory tags",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.82",
+      "version": "9.0.0-alpha.82",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/react-badge to v9.0.0-alpha.82"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Sep 2021 07:35:26 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.81",
+      "version": "9.0.0-alpha.81",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575",
+            "comment": "Bump @fluentui/react-badge to v9.0.0-alpha.81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Sep 2021 07:38:39 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.80",
+      "version": "9.0.0-alpha.80",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c",
+            "comment": "Bump @fluentui/react-badge to v9.0.0-alpha.80"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 20:09:02 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.79",
+      "version": "9.0.0-alpha.79",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c",
+            "comment": "Bump @fluentui/react-badge to v9.0.0-alpha.79"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 16:31:53 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.78",
+      "version": "9.0.0-alpha.78",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "comment": "chore(v9): Move all internal v9 dependencies from caret to fixed version",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0",
+            "comment": "Bump @fluentui/react-badge to v9.0.0-alpha.78"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.77",
+      "version": "9.0.0-alpha.77",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.45",
+            "author": "behowell@microsoft.com",
+            "commit": "8700a515c7f2659761c5b53f55c32453bc3510b1",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Sep 2021 07:39:06 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.76",
+      "version": "9.0.0-alpha.76",
+      "comments": {
+        "none": [
+          {
+            "author": "email not defined",
+            "commit": "70480659e5f969c30fdfa87e13e0b427bb8326f6",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.76",
+      "version": "9.0.0-alpha.76",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.5.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.76",
+      "version": "9.0.0-alpha.76",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.44",
+            "author": "lingfangao@hotmail.com",
+            "commit": "cd22a603bb20947e7d23a3357b9a535afdb5ee1d",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Sep 2021 00:13:07 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.75",
+      "version": "9.0.0-alpha.75",
+      "comments": {
+        "none": [
+          {
+            "comment": "enable makeStyles conformance tests",
+            "author": "olfedias@microsoft.com",
+            "commit": "ec2c14a39b6a2f2cadfd27a56f567645b996c1b9",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.75",
+      "version": "9.0.0-alpha.75",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.43",
+            "author": "olfedias@microsoft.com",
+            "commit": "ff3225d408fa6a97628e3f08a5a11a196bef6934",
+            "package": "@fluentui/react-badge"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "8f887d05e8f2fed8433b147c6e175d8297455c51",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Sep 2021 07:39:56 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-alpha.74",
       "version": "9.0.0-alpha.74",

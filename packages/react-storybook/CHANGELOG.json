@@ -2,6 +2,564 @@
   "name": "@fluentui/react-storybook",
   "entries": [
     {
+      "date": "Fri, 04 Mar 2022 05:17:40 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-rc.5",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.4",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 02:17:40 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Feb 2022 13:35:38 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Feb 2022 08:52:26 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-rc.0",
+      "version": "9.0.0-rc.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 08:34:17 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-beta.0",
+      "version": "9.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-beta.5",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Nov 2021 13:25:34 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-beta.0",
+      "version": "9.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-beta.4",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Oct 2021 12:14:24 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-beta.0",
+      "version": "9.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-beta.3",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Oct 2021 19:45:58 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-beta.0",
+      "version": "9.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-beta.2",
+            "commit": "bdd19e2bb827fc1d8eb329e6ed48cd0542048358"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Oct 2021 10:37:22 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-beta.0",
+      "version": "9.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 12:47:58 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.90",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.53",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 09:28:07 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.89",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.52",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Oct 2021 14:13:08 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.88",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.26",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.51",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Oct 2021 09:44:56 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.86",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Sep 2021 08:06:11 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.85",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.24",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.49",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Sep 2021 08:06:00 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.84",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.48",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Sep 2021 09:17:17 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.83",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.47",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Sep 2021 08:21:34 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.82",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.46",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Sep 2021 10:10:07 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.81",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.45",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Sep 2021 07:42:34 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.80",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.23",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.44",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-storybook",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/react-storybook to v9.0.0-alpha.0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Sep 2021 07:35:26 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-storybook",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575",
+            "comment": "Bump @fluentui/react-storybook to v9.0.0-alpha.0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Sep 2021 07:38:39 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-storybook",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c",
+            "comment": "Bump @fluentui/react-storybook to v9.0.0-alpha.0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 20:09:02 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-storybook",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c",
+            "comment": "Bump @fluentui/react-storybook to v9.0.0-alpha.0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 16:31:53 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-storybook",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0",
+            "comment": "Bump @fluentui/react-storybook to v9.0.0-alpha.0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.74",
+            "author": "behowell@microsoft.com",
+            "commit": "8700a515c7f2659761c5b53f55c32453bc3510b1",
+            "package": "@fluentui/react-storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.73",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/react-storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.73",
+            "author": "lingfangao@hotmail.com",
+            "commit": "cd22a603bb20947e7d23a3357b9a535afdb5ee1d",
+            "package": "@fluentui/react-storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.72",
+            "author": "olfedias@microsoft.com",
+            "commit": "8f887d05e8f2fed8433b147c6e175d8297455c51",
+            "package": "@fluentui/react-storybook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Sep 2021 07:39:56 GMT",
       "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

@@ -15,6 +15,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
       }
 >
   <div
+    onFocus={[Function]}
     role="radiogroup"
   >
     <div
@@ -448,6 +449,7 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
 >
   <div
     aria-labelledby="ChoiceGroupLabel1"
+    onFocus={[Function]}
     role="radiogroup"
   >
     <label

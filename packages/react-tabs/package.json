@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-tabs",
-  "version": "1.0.0-beta.149",
-  "description": "Fluent UI React Tabs component",
+  "version": "9.0.0-beta.8",
+  "description": "Fluent UI React tabs components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -17,29 +17,26 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
-    "start-test": "just-scripts jest-watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
+    "start": "yarn storybook",
+    "test": "jest --passWithNoTests",
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-tabs/src && yarn docs",
+    "storybook": "node ../../scripts/storybook/runner",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/react-conformance": "^0.4.4",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "@types/react-test-renderer": "^16.0.0",
-    "enzyme": "~3.10.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.3",
+    "@fluentui/react-context-selector": "9.0.0-rc.5",
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.30.2",
-    "@fluentui/react-hooks": "^8.3.1",
-    "@fluentui/style-utilities": "^8.3.1",
-    "@fluentui/utilities": "^8.3.1",
+    "@griffel/react": "1.0.0",
+    "@fluentui/react-context-selector": "9.0.0-rc.5",
+    "@fluentui/react-tabster": "9.0.0-rc.5",
+    "@fluentui/react-theme": "9.0.0-rc.4",
+    "@fluentui/react-utilities": "9.0.0-rc.5",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -55,5 +52,12 @@
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

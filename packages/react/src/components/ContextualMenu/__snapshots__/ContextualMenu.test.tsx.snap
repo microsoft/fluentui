@@ -207,6 +207,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                   border-radius: 2px;
                   box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                   box-sizing: border-box;
+                  display: flex;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -241,6 +242,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                     overflow-x: hidden;
                     overflow-y: auto;
                     position: relative;
+                    width: 100%;
                   }
               onKeyDown={[Function]}
               onMouseDown={[Function]}
@@ -248,7 +250,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
               onScroll={[Function]}
               style={
                 Object {
-                  "maxHeight": 752,
+                  "maxHeight": "100%",
                   "outline": "none",
                   "overflowY": undefined,
                 }
@@ -285,7 +287,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                         font-weight: 400;
                         min-width: 180px;
                       }
-                  data-focuszone-id="FocusZone4"
+                  data-focuszone-id="FocusZone3"
                   onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseDownCapture={[Function]}
@@ -441,7 +443,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                                   margin-left: 4px;
                                   margin-right: 4px;
                                   margin-top: 0;
-                                  overflow: hidden;
                                   text-overflow: ellipsis;
                                   vertical-align: middle;
                                   white-space: nowrap;

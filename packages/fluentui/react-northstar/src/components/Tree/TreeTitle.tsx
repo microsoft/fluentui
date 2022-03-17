@@ -1,12 +1,12 @@
 import { Accessibility, treeTitleBehavior, TreeTitleBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useStyles,
   useFluentContext,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { Box, BoxProps } from '../Box/Box';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
@@ -97,7 +97,7 @@ export const treeTitleSlotClassNames = {
 /**
  * A TreeTitle renders a title of TreeItem.
  */
-export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentStaticProps<TreeTitleProps> = props => {
+export const TreeTitle = (React.forwardRef<HTMLAnchorElement, TreeTitleProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
@@ -209,6 +209,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
         className: classes.root,
         onClick: handleClick,
         selected,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
         ...unhandledProps,
       })}
@@ -220,7 +221,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'a', HTMLAnchorElement, TreeTitleProps> & FluentComponentStaticProps<TreeTitleProps>;
 
 TreeTitle.displayName = 'TreeTitle';
 
@@ -240,7 +241,7 @@ TreeTitle.propTypes = {
   parent: PropTypes.string,
 };
 TreeTitle.defaultProps = {
-  as: 'a',
+  as: 'a' as const,
   selectionIndicator: {},
   accessibility: treeTitleBehavior,
 };

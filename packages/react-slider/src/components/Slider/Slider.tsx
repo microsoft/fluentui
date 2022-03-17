@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { useSlider } from './useSlider';
-import { renderSlider } from './renderSlider';
-import { useSliderStyles } from './useSliderStyles';
+import { useSlider_unstable } from './useSlider';
+import { renderSlider_unstable } from './renderSlider';
+import { useSliderStyles_unstable } from './useSliderStyles';
 import type { SliderProps } from './Slider.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Define a styled Slider, using the `useSlider` hook
+ * The Slider component allows users to quickly select a value by dragging a thumb across a rail.
  */
-export const Slider = React.forwardRef<HTMLElement, SliderProps>((props, ref) => {
-  const state = useSlider(props, ref);
+export const Slider: ForwardRefComponent<SliderProps> = React.forwardRef((props, ref) => {
+  const state = useSlider_unstable(props, ref);
 
-  useSliderStyles(state);
+  useSliderStyles_unstable(state);
 
-  return renderSlider(state);
+  return renderSlider_unstable(state);
 });
 Slider.displayName = 'Slider';

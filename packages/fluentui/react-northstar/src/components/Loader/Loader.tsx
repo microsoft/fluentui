@@ -1,7 +1,6 @@
 import { Accessibility, loaderBehavior, LoaderBehaviorProps } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import {
-  ComponentWithAs,
   ShorthandConfig,
   useTelemetry,
   useFluentContext,
@@ -9,6 +8,7 @@ import {
   useUnhandledProps,
   useStyles,
   useAccessibility,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -78,10 +78,7 @@ export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | '
  * @accessibility
  * Implements [ARIA progressbar](https://www.w3.org/TR/wai-aria-1.1/#progressbar) role.
  */
-export const Loader: ComponentWithAs<'div', LoaderProps> &
-  FluentComponentStaticProps<LoaderProps> & {
-    shorthandConfig: ShorthandConfig<LoaderProps>;
-  } = props => {
+export const Loader = (React.forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Loader.displayName, context.telemetry);
   setStart();
@@ -153,6 +150,7 @@ export const Loader: ComponentWithAs<'div', LoaderProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -176,7 +174,10 @@ export const Loader: ComponentWithAs<'div', LoaderProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, LoaderProps> &
+  FluentComponentStaticProps<LoaderProps> & {
+    shorthandConfig: ShorthandConfig<LoaderProps>;
+  };
 
 Loader.displayName = 'Loader';
 

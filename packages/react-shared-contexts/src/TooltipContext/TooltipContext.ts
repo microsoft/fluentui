@@ -2,7 +2,6 @@ import * as React from 'react';
 
 /**
  * The context provided by TooltipProvider
- * {@docCategory Tooltip}
  */
 export type TooltipContextType = {
   /**
@@ -16,6 +15,5 @@ export type TooltipContextType = {
 
 /**
  * Context shared by all of the tooltips in the app
- * {@docCategory Tooltip}
  */
 export const TooltipContext = React.createContext<TooltipContextType>({});

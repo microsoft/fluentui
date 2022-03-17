@@ -18,6 +18,7 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}
     };
     return (
       <DonutChart
+        culture={window.navigator.language}
         data={data}
         innerRadius={55}
         href={'https://developer.microsoft.com/en-us/'}

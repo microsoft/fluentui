@@ -13,6 +13,7 @@ const fontMapping: { [fontName: string]: string } = {
   ['Times New Roman']: '"Times New Roman", "Times New Roman_MSFontService", serif',
   ['Comic Sans MS']: '"Comic Sans MS", "Comic Sans MS_MSFontService", fantasy',
   ['Calibri']: 'Calibri, Calibri_MSFontService, sans-serif',
+  ['Some sort of script font with a really long name that should wrap']: 'script, fantasy, sans-serif',
 };
 
 const fonts = Object.keys(fontMapping);
@@ -26,6 +27,9 @@ const customStyles: Partial<IComboBoxStyles> = {
   input: {
     backgroundColor: '#b4a0ff',
   },
+  optionsContainerWrapper: {
+    maxWidth: '300px',
+  },
 };
 const optionsWithCustomStyling: IComboBoxOption[] = fonts.map((fontName: string) => ({
   key: fontName,
@@ -33,15 +37,25 @@ const optionsWithCustomStyling: IComboBoxOption[] = fonts.map((fontName: string)
   styles: {
     optionText: {
       fontFamily: fontMapping[fontName],
+      overflow: 'visible',
+      whiteSpace: 'normal',
     },
   },
 }));
 
 const optionsForCustomRender: IComboBoxOption[] = [
-  { key: 'header1', text: 'Theme fonts', itemType: SelectableOptionMenuItemType.Header },
+  {
+    key: 'header1',
+    text: 'Theme fonts',
+    itemType: SelectableOptionMenuItemType.Header,
+  },
   ...fonts.map((fontName: string) => ({ key: fontName, text: fontName })),
   { key: 'divider', text: '-', itemType: SelectableOptionMenuItemType.Divider },
-  { key: 'header2', text: 'Other options', itemType: SelectableOptionMenuItemType.Header },
+  {
+    key: 'header2',
+    text: 'Other options',
+    itemType: SelectableOptionMenuItemType.Header,
+  },
 ];
 
 const onRenderOption = (item: IComboBoxOption) => {
@@ -71,7 +85,7 @@ export const ComboBoxCustomStyledExample: React.FunctionComponent = () => {
     <Stack tokens={stackTokens}>
       <ComboBox
         defaultSelectedKey="Calibri"
-        label="Custom styled ComboBox"
+        label="Custom styled ComboBox with wrapping option text"
         options={optionsWithCustomStyling}
         styles={customStyles}
       />

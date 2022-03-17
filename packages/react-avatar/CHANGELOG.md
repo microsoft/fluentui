@@ -1,8 +1,364 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Wed, 01 Sep 2021 07:39:56 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 05:17:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-rc.5)
+
+Fri, 04 Mar 2022 05:17:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-rc.4..@fluentui/react-avatar_v9.0.0-rc.5)
+
+### Changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.4 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-rc.4)
+
+Tue, 01 Mar 2022 02:17:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-rc.3..@fluentui/react-avatar_v9.0.0-rc.4)
+
+### Changes
+
+- Bump @fluentui/react-badge to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-rc.3)
+
+Fri, 18 Feb 2022 13:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-rc.1..@fluentui/react-avatar_v9.0.0-rc.3)
+
+### Changes
+
+- Hide Avatar's image if it fails to load, rather than displaying the broken image icon ([PR #21636](https://github.com/microsoft/fluentui/pull/21636) by behowell@microsoft.com)
+- fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- Update Avatar SPEC.md and MIGRATION.md ([PR #21702](https://github.com/microsoft/fluentui/pull/21702) by behowell@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-rc.1)
+
+Thu, 10 Feb 2022 08:52:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-beta.4..@fluentui/react-avatar_v9.0.0-rc.1)
+
+### Changes
+
+- Updating use of tokens.fontWeight now that we don't need to use casting. ([PR #21217](https://github.com/microsoft/fluentui/pull/21217) by Humberto.Morimoto@microsoft.com)
+- Make Avatar's initials be un-selectable text ([PR #21638](https://github.com/microsoft/fluentui/pull/21638) by behowell@microsoft.com)
+- update @fluentui/react-icons package ([PR #21498](https://github.com/microsoft/fluentui/pull/21498) by olfedias@microsoft.com)
+- Replace make-styles packages with griffel equivalents. ([PR #21439](https://github.com/microsoft/fluentui/pull/21439) by olfedias@microsoft.com)
+- Update documentation stories ([PR #21519](https://github.com/microsoft/fluentui/pull/21519) by behowell@microsoft.com)
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- Export the default getInitials implementation ([PR #21445](https://github.com/microsoft/fluentui/pull/21445) by behowell@microsoft.com)
+- (fix): Update react-icons dependency to latest version ([PR #20943](https://github.com/microsoft/fluentui/pull/20943) by ololubek@microsoft.com)
+- remove export of commons types ([PR #21660](https://github.com/microsoft/fluentui/pull/21660) by mgodbolt@microsoft.com)
+- Rename `label` slot to `initials`, remove `getInitials` prop, and improve accessibility ([PR #21346](https://github.com/microsoft/fluentui/pull/21346) by behowell@microsoft.com)
+- Update Avatar to have role="img" on the root, and other a11y fixes ([PR #21526](https://github.com/microsoft/fluentui/pull/21526) by behowell@microsoft.com)
+- update styles to not use CSS shorthands ([PR #20801](https://github.com/microsoft/fluentui/pull/20801) by olfedias@microsoft.com)
+- Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+- Fix Avatar's high contrast border on Windows ([PR #21637](https://github.com/microsoft/fluentui/pull/21637) by behowell@microsoft.com)
+- react-avatar: Replacing use of functions in makeStyles with direct use of tokens. ([PR #21037](https://github.com/microsoft/fluentui/pull/21037) by Humberto.Morimoto@microsoft.com)
+- Using ComponentSlotProps instead of ObjectShorthandProps. ([PR #20890](https://github.com/microsoft/fluentui/pull/20890) by Humberto.Morimoto@microsoft.com)
+- Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
+- Remove `glow` and `ring-glow` from activeAppearance, as their visuals are not yet finalized. ([PR #21480](https://github.com/microsoft/fluentui/pull/21480) by behowell@microsoft.com)
+- Update Avatar to use resizable icons ([PR #21160](https://github.com/microsoft/fluentui/pull/21160) by behowell@microsoft.com)
+- Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
+- Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-beta.4)
+
+Thu, 25 Nov 2021 08:34:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-beta.3..@fluentui/react-avatar_v9.0.0-beta.4)
+
+### Changes
+
+- update react-icons dependency ([PR #20563](https://github.com/microsoft/fluentui/pull/20563) by ololubek@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-beta.3)
+
+Fri, 12 Nov 2021 13:25:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-beta.2..@fluentui/react-avatar_v9.0.0-beta.3)
+
+### Changes
+
+- Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- export static classes for components ([PR #20453](https://github.com/microsoft/fluentui/pull/20453) by olfedias@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-beta.2)
+
+Wed, 27 Oct 2021 12:14:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-beta.1..@fluentui/react-avatar_v9.0.0-beta.2)
+
+### Changes
+
+- Removed duplicate 'Avatar' from story names ([PR #20264](https://github.com/microsoft/fluentui/pull/20264) by gcox@microsoft.com)
+- added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- Bump @fluentui/react-badge to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-beta.1)
+
+Wed, 06 Oct 2021 10:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.93..@fluentui/react-avatar_v9.0.0-beta.1)
+
+### Changes
+
+- Bump all v9 components to beta prerelease tag ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by lingfangao@hotmail.com)
+- Bump @fluentui/react-badge to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+
+## [9.0.0-alpha.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.93)
+
+Tue, 05 Oct 2021 12:47:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.92..@fluentui/react-avatar_v9.0.0-alpha.93)
+
+### Changes
+
+- Bump @fluentui/react-badge to v9.0.0-alpha.92 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.78 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.60 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.53 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.22 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+
+## [9.0.0-alpha.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.92)
+
+Tue, 05 Oct 2021 09:28:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.91..@fluentui/react-avatar_v9.0.0-alpha.92)
+
+### Changes
+
+- Adds ForwardRefComponent to components declaration ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by bsunderhus@microsoft.com)
+- Fix Avatar stories after  #19449 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-alpha.91 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.77 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.56 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.59 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.52 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.21 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+
+## [9.0.0-alpha.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.91)
+
+Mon, 04 Oct 2021 08:03:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.90..@fluentui/react-avatar_v9.0.0-alpha.91)
+
+### Changes
+
+- Fix getFilenameFromUrl implementation ([commit](https://github.com/microsoft/fluentui/commit/97f5974a08246bd0475e8cb6650e7339f457c456) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.90)
+
+Fri, 01 Oct 2021 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.88..@fluentui/react-avatar_v9.0.0-alpha.90)
+
+### Changes
+
+- Bump v9 prerelease versions to rerelease ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by lingfangao@hotmail.com)
+- Bump @fluentui/react-badge to v9.0.0-alpha.90 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.76 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-alpha.26 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.55 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.58 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.51 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.20 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+
+## [9.0.0-alpha.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.88)
+
+Wed, 29 Sep 2021 08:06:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.87..@fluentui/react-avatar_v9.0.0-alpha.88)
+
+### Changes
+
+- Bump @fluentui/react-badge to v9.0.0-alpha.88 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.74 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-alpha.24 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.56 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.49 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.18 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+
+## [9.0.0-alpha.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.87)
+
+Mon, 27 Sep 2021 08:06:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.86..@fluentui/react-avatar_v9.0.0-alpha.87)
+
+### Changes
+
+- Refactor Avatar to remove mergeProps ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by behowell@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-alpha.87 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.73 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.53 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.55 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.48 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.17 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+
+## [9.0.0-alpha.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.86)
+
+Fri, 24 Sep 2021 09:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.85..@fluentui/react-avatar_v9.0.0-alpha.86)
+
+### Changes
+
+- Use updated sizes from BadgeProps ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by gcox@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-alpha.86 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.72 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.52 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.54 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.47 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.16 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+
+## [9.0.0-alpha.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.85)
+
+Thu, 23 Sep 2021 08:21:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.84..@fluentui/react-avatar_v9.0.0-alpha.85)
+
+### Changes
+
+- Updated props for consistency across beta ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-alpha.85 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.71 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.51 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.53 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.46 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.15 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+
+## [9.0.0-alpha.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.84)
+
+Wed, 22 Sep 2021 10:10:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.83..@fluentui/react-avatar_v9.0.0-alpha.84)
+
+### Changes
+
+- update react-icons dependency ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by ololubek@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-alpha.84 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.70 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.50 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.52 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.45 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.14 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+
+## [9.0.0-alpha.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.83)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.82..@fluentui/react-avatar_v9.0.0-alpha.83)
+
+### Changes
+
+- Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-alpha.83 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.69 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-alpha.23 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.51 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.44 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.13 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+
+## [9.0.0-alpha.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.82)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.81..@fluentui/react-avatar_v9.0.0-alpha.82)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.82 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.81)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.80..@fluentui/react-avatar_v9.0.0-alpha.81)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.81 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.80)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.79..@fluentui/react-avatar_v9.0.0-alpha.80)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.80 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [9.0.0-alpha.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.79)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.78..@fluentui/react-avatar_v9.0.0-alpha.79)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.79 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.78)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.77..@fluentui/react-avatar_v9.0.0-alpha.78)
+
+### Changes
+
+- chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.78 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.77)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.76..@fluentui/react-avatar_v9.0.0-alpha.77)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.45 ([PR #19642](https://github.com/microsoft/fluentui/pull/19642) by behowell@microsoft.com)
+
+## [9.0.0-alpha.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.76)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.75..@fluentui/react-avatar_v9.0.0-alpha.76)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.44 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.75)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.74..@fluentui/react-avatar_v9.0.0-alpha.75)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.4.5 ([PR #19590](https://github.com/microsoft/fluentui/pull/19590) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.43 ([PR #19065](https://github.com/microsoft/fluentui/pull/19065) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.74)
 

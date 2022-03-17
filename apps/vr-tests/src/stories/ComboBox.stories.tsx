@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTallFixedWidth } from '../utilities/index';
+import { TestWrapperDecoratorTallFixedWidth } from '../utilities/index';
 import { ComboBox, SelectableOptionMenuItemType, ISelectableOption } from '@fluentui/react';
 
 const testOptions = [
@@ -38,7 +38,7 @@ const onRenderFontOption = (item: ISelectableOption) => {
 };
 
 storiesOf('ComboBox', module)
-  .addDecorator(FabricDecoratorTallFixedWidth)
+  .addDecorator(TestWrapperDecoratorTallFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -64,7 +64,7 @@ storiesOf('ComboBox', module)
       />
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory('Styled', () => (

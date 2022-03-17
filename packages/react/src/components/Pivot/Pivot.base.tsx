@@ -70,10 +70,17 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
 
     const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
 
-    const { componentRef, theme, linkSize, linkFormat, overflowBehavior, focusZoneProps } = props;
+    const { componentRef, theme, linkSize, linkFormat, overflowBehavior, overflowAriaLabel, focusZoneProps } = props;
 
     let classNames: { [key in keyof IPivotStyles]: string };
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
+    const nameProps = {
+      'aria-label': props['aria-label'],
+      'aria-labelledby': props['aria-labelledby'],
+    };
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, [
+      'aria-label',
+      'aria-labelledby',
+    ]);
 
     let linkCollection = getLinkItems(props, pivotId);
 
@@ -236,20 +243,28 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
         elements.forEach(({ ele, isOverflowing }) => (ele.dataset.isOverflowing = `${isOverflowing}`));
 
         // Update the menu items
-        overflowMenuProps.items = linkCollection.links.slice(overflowIndex).map((link, index) => ({
-          key: link.itemKey || `${overflowIndex + index}`,
-          onRender: () => renderPivotLink(linkCollection, link, renderedSelectedKey, classNames.linkInMenu),
-        }));
+        overflowMenuProps.items = linkCollection.links
+          .slice(overflowIndex)
+          .filter(link => link.itemKey !== renderedSelectedKey)
+          .map((link, index) => {
+            link.role = 'menuitem';
+
+            return {
+              key: link.itemKey || `${overflowIndex + index}`,
+              onRender: () => renderPivotLink(linkCollection, link, renderedSelectedKey, classNames.linkInMenu),
+            };
+          });
       },
       rtl: getRTL(theme),
       pinnedIndex: renderedSelectedIndex,
     });
 
     return (
-      <div role="toolbar" {...divProps} ref={ref}>
+      <div ref={ref} {...divProps}>
         <FocusZone
           componentRef={focusZoneRef}
           role="tablist"
+          {...nameProps}
           direction={FocusZoneDirection.horizontal}
           {...focusZoneProps}
           className={css(classNames.root, focusZoneProps?.className)}
@@ -262,6 +277,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
               componentRef={overflowMenuButtonComponentRef}
               menuProps={overflowMenuProps}
               menuIconProps={{ iconName: 'More', style: { color: 'inherit' } }}
+              ariaLabel={overflowAriaLabel}
             />
           )}
         </FocusZone>

@@ -1,8 +1,8 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "types": ["cypress", "cypress-real-events", "cypress-storybook/cypress"],
-    "lib": ["es2015", "dom"]
+    "types": ["node", "cypress", "cypress-storybook/cypress", "cypress-real-events"],
+    "lib": ["ES2019", "dom"]
   },
-  "include": ["."]
+  "include": ["**/*.ts"]
 }

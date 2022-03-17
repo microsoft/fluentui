@@ -1,106 +1,112 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
-import type { SliderState } from './Slider.types';
-import { markClassName } from './useSliderState';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
+import type { SliderState, SliderSlots } from './Slider.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
-const thumbClassName = 'ms-Slider-thumb';
-const trackClassName = 'ms-Slider-track';
+export const sliderClassNames: SlotClassNames<SliderSlots> = {
+  root: 'fui-Slider',
+  rail: 'fui-Slider__rail',
+  thumb: 'fui-Slider__thumb',
+  input: 'fui-Slider__input',
+};
+
+// Internal CSS variables. Private until we want to commit to them
+const thumbSizeVar = `--fui-slider-thumb-size`;
+const railSizeVar = `--fui-slider-rail-size`;
+const railColorVar = `--fui-slider-rail-color`;
+const progressColorVar = `--fui-slider-progress-color`;
+const thumbColorVar = `--fui-slider-thumb-color`;
+
+export const sliderStyleVars = {
+  railDirectionVar: `--fui-slider-rail-direction`,
+  railOffsetVar: `--fui-slider-rail-offset`,
+  railProgressVar: `--fui-slider-rail-progress`,
+  railStepsPercentVar: `--fui-slider-rail-steps-percent`,
+  thumbPositionVar: `--fui-slider-thumb-position`,
+};
+
+const { railDirectionVar, railOffsetVar, railStepsPercentVar, railProgressVar, thumbPositionVar } = sliderStyleVars;
 
 /**
  * Styles for the root slot
  */
 const useRootStyles = makeStyles({
-  root: theme => ({
+  root: {
     position: 'relative',
-    display: 'inline-flex',
+    display: 'inline-grid',
+    gridTemplateAreas: '"slider"',
     userSelect: 'none',
     touchAction: 'none',
-    verticalAlign: 'bottom',
-  }),
+    alignItems: 'center',
+    justifyItems: 'center',
+  },
 
   small: {
-    '--slider-thumb-size': '10px',
-    '--slider-rail-size': '2px',
-    '--slider-mark-size': '2px',
+    [thumbSizeVar]: '16px',
+    [railSizeVar]: '2px',
+    minHeight: '24px',
   },
 
   medium: {
-    '--slider-thumb-size': '20px',
-    '--slider-rail-size': '4px',
-    '--slider-mark-size': '4px',
+    [thumbSizeVar]: '20px',
+    [railSizeVar]: '4px',
+    minHeight: '32px',
   },
 
-  horizontal: theme => ({
+  horizontal: {
     minWidth: '120px',
-    minHeight: 'var(--slider-thumb-size)',
-    flexDirection: 'column',
-  }),
+    height: `var(${thumbSizeVar})`,
+  },
 
-  vertical: theme => ({
-    transform: 'scaleY(-1)',
-    minWidth: 'var(--slider-thumb-size)',
+  vertical: {
+    width: `var(${thumbSizeVar})`,
     minHeight: '120px',
-    flexDirection: 'row',
-  }),
+    gridTemplateColumns: `var(${thumbSizeVar})`,
+  },
 
-  enabled: theme => ({
+  enabled: {
+    [railColorVar]: tokens.colorNeutralStrokeAccessible,
+    [progressColorVar]: tokens.colorCompoundBrandBackground,
+    [thumbColorVar]: tokens.colorCompoundBrandBackground,
     ':hover': {
-      '& .ms-Slider-thumb': {
-        background: theme.alias.color.neutral.brandBackgroundHover,
-      },
-      '& .ms-Slider-track': {
-        background: theme.alias.color.neutral.brandBackgroundHover,
-      },
+      [thumbColorVar]: tokens.colorBrandBackgroundHover,
+      [progressColorVar]: tokens.colorBrandBackgroundHover,
     },
     ':active': {
-      '& .ms-Slider-thumb': {
-        background: theme.alias.color.neutral.brandBackgroundPressed,
-      },
-      '& .ms-Slider-track': {
-        background: theme.alias.color.neutral.brandBackgroundPressed,
+      [thumbColorVar]: tokens.colorBrandBackgroundPressed,
+      [progressColorVar]: tokens.colorBrandBackgroundPressed,
+    },
+    '@media (forced-colors: active)': {
+      [railColorVar]: 'CanvasText',
+      [thumbColorVar]: 'Highlight',
+      [progressColorVar]: 'Highlight',
+      ':hover': {
+        [thumbColorVar]: 'Highlight',
+        [progressColorVar]: 'Highlight',
       },
     },
+  },
+
+  disabled: {
+    [thumbColorVar]: tokens.colorNeutralForegroundDisabled,
+    [railColorVar]: tokens.colorNeutralBackgroundDisabled,
+    [progressColorVar]: tokens.colorNeutralForegroundDisabled,
+    '@media (forced-colors: active)': {
+      [railColorVar]: 'GrayText',
+      [thumbColorVar]: 'GrayText',
+      [progressColorVar]: 'GrayText',
+    },
+  },
+
+  focusIndicatorHorizontal: createFocusOutlineStyle({
+    selector: 'focus-within',
+    style: { outlineOffset: { top: '6px', bottom: '6px', left: '10px', right: '10px' } },
   }),
 
-  focusIndicator: createFocusIndicatorStyleRule(
-    theme => ({
-      ':after': {
-        content: "''",
-        position: 'absolute',
-        top: '-6px',
-        right: '-6px',
-        bottom: '-6px',
-        left: '-6px',
-        boxSizing: 'border-box',
-        border: `1px solid ${theme.alias.color.neutral.neutralForeground1}`,
-        borderRadius: theme.global.borderRadius.medium,
-      },
-    }),
-    { selector: 'focus-within' },
-  ),
-});
-
-/**
- * Styles for the slider wrapper slot
- */
-const useSliderWrapper = makeStyles({
-  sliderWrapper: theme => ({
-    position: 'absolute',
-    overflow: 'hidden',
-  }),
-
-  horizontal: theme => ({
-    left: '0px',
-    right: '0px',
-    top: '0px',
-    minHeight: 'var(--slider-thumb-size)',
-  }),
-
-  vertical: theme => ({
-    top: '0px',
-    bottom: '0px',
-    left: '0px',
-    minWidth: 'var(--slider-thumb-size)',
+  focusIndicatorVertical: createFocusOutlineStyle({
+    selector: 'focus-within',
+    style: { outlineOffset: { top: '10px', bottom: '10px', left: '6px', right: '6px' } },
   }),
 });
 
@@ -108,320 +114,167 @@ const useSliderWrapper = makeStyles({
  * Styles for the rail slot
  */
 const useRailStyles = makeStyles({
-  rail: theme => ({
-    position: 'absolute',
-    borderRadius: theme.global.borderRadius.xLarge,
-    boxSizing: 'border-box',
+  rail: {
+    ...shorthands.borderRadius(tokens.borderRadiusXLarge),
     pointerEvents: 'none',
-  }),
-
-  enabled: theme => ({
-    background: theme.alias.color.neutral.neutralStrokeAccessible,
-  }),
-
-  disabled: theme => ({
-    background: theme.alias.color.neutral.neutralBackgroundDisabled,
-  }),
-
-  horizontal: theme => ({
-    height: 'var(--slider-rail-size)',
-    top: '50%',
-    left: 'calc(var(--slider-thumb-size) * .5)',
-    right: 'calc(var(--slider-thumb-size) * .5)',
-    transform: 'translateY(-50%)',
-  }),
-
-  vertical: theme => ({
-    width: 'var(--slider-rail-size)',
-    left: '50%',
-    top: 'calc(var(--slider-thumb-size) * .5)',
-    bottom: 'calc(var(--slider-thumb-size) * .5)',
-    transform: 'translateX(-50%)',
-  }),
-});
-
-/**
- * Styles for the trackWrapper slot
- */
-const useTrackWrapperStyles = makeStyles({
-  trackWrapper: theme => ({
-    position: 'absolute',
-  }),
-
-  horizontal: theme => ({
-    top: '50%',
-    left: 'calc(var(--slider-thumb-size) * .5)',
-    right: 'calc(var(--slider-thumb-size) * .5)',
-  }),
-
-  vertical: theme => ({
-    left: '50%',
-    top: 'calc(var(--slider-thumb-size) * .5)',
-    bottom: 'calc(var(--slider-thumb-size) * .5)',
-  }),
-});
-
-/**
- * Styles for the track slot
- */
-const useTrackStyles = makeStyles({
-  track: theme => ({
-    position: 'absolute',
-    borderRadius: theme.global.borderRadius.xLarge,
-  }),
-
-  horizontal: theme => ({
-    height: 'var(--slider-rail-size)',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    minWidth: 'calc(var(--slider-thumb-size) / 4)',
-  }),
-
-  vertical: theme => ({
-    width: 'var(--slider-rail-size)',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    minHeight: 'calc(var(--slider-thumb-size) / 4)',
-  }),
-
-  enabled: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
-  }),
-
-  disabled: theme => ({
-    background: theme.alias.color.neutral.neutralForegroundDisabled,
-  }),
-});
-
-/**
- * Styles for the mark slot
- */
-const useMarksWrapperStyles = makeStyles({
-  marksWrapper: theme => ({
+    gridRowStart: 'slider',
+    gridRowEnd: 'slider',
+    gridColumnStart: 'slider',
+    gridColumnEnd: 'slider',
     position: 'relative',
-    display: 'grid',
-    outline: 'none',
-    zIndex: '1',
-    whiteSpace: 'nowrap',
-    [`& .${markClassName}`]: {
-      // TODO: change to theme neutralStrokeOnBrand once it is added
-      background: 'white',
+    forcedColorAdjust: 'none',
+    // Background gradient represents the progress of the slider
+    backgroundImage: `linear-gradient(
+      var(${railDirectionVar}),
+      var(${railColorVar}) 0%,
+      var(${railColorVar}) var(${railOffsetVar}),
+      var(${progressColorVar}) var(${railOffsetVar}),
+      var(${progressColorVar}) calc(var(${railOffsetVar}) + var(${railProgressVar})),
+      var(${railColorVar}) calc(var(${railOffsetVar}) + var(${railProgressVar}))
+    )`,
+    outlineWidth: '1px',
+    outlineStyle: 'solid',
+    outlineColor: tokens.colorTransparentStroke,
+    ':before': {
+      content: "''",
+      position: 'absolute',
+      // Repeating gradient represents the steps if provided
+      backgroundImage: `repeating-linear-gradient(
+        var(${railDirectionVar}),
+        #0000 0%,
+        #0000 calc(var(${railStepsPercentVar}) - 1px),
+        ${tokens.colorNeutralBackground1} calc(var(${railStepsPercentVar}) - 1px),
+        ${tokens.colorNeutralBackground1} var(${railStepsPercentVar})
+      )`,
     },
+  },
 
-    '& .ms-Slider-firstMark, .ms-Slider-lastMark': {
-      opacity: '0',
+  horizontal: {
+    width: '100%',
+    height: `var(${railSizeVar})`,
+    ':before': {
+      left: '-1px',
+      right: '-1px',
+      height: `var(${railSizeVar})`,
     },
-  }),
+  },
 
-  horizontal: theme => ({
-    marginTop: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
-    marginLeft: 'calc(var(--slider-thumb-size) / 2)',
-    marginRight: 'calc(var(--slider-thumb-size) / 2)',
-    justifyItems: 'end',
-
-    '& .ms-Slider-markItemContainer': {
-      display: 'flex',
-      flexDirection: 'column',
-      transform: 'translateX(50%)',
-      alignItems: 'center',
+  vertical: {
+    width: `var(${railSizeVar})`,
+    height: '100%',
+    ':before': {
+      width: `var(${railSizeVar})`,
+      top: '-1px',
+      bottom: '1px',
     },
-
-    [`& .${markClassName}`]: {
-      height: '4px',
-      width: '1px',
-    },
-  }),
-
-  vertical: theme => ({
-    marginTop: 'calc(var(--slider-thumb-size) / 2)',
-    marginBottom: 'calc(var(--slider-thumb-size) / 2)',
-    marginLeft: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
-    justifyItems: 'start',
-
-    '& .ms-Slider-markItemContainer': {
-      display: 'flex',
-      flexDirection: 'row',
-      transform: 'translateY(50%)',
-      alignItems: 'center',
-      maxWidth: '100%',
-      maxHeight: '100%',
-    },
-
-    [`& .${markClassName}`]: {
-      height: '1px',
-      width: 'var(--slider-mark-size)',
-    },
-  }),
-});
-
-/**
- * Styles for the thumb slot
- */
-const useThumbWrapperStyles = makeStyles({
-  thumbWrapper: theme => ({
-    position: 'absolute',
-    outline: 'none',
-    zIndex: '2',
-  }),
-
-  horizontal: theme => ({
-    left: 'calc(var(--slider-thumb-size) / 2)',
-    right: 'calc(var(--slider-thumb-size) / 2)',
-    top: '50%',
-  }),
-
-  vertical: theme => ({
-    top: 'calc(var(--slider-thumb-size) / 2)',
-    bottom: 'calc(var(--slider-thumb-size) / 2)',
-    left: '50%',
-  }),
+  },
 });
 
 /**
  * Styles for the thumb slot
  */
 const useThumbStyles = makeStyles({
-  thumb: theme => ({
+  thumb: {
     position: 'absolute',
-    width: 'var(--slider-thumb-size)',
-    height: 'var(--slider-thumb-size)',
-    top: '0px',
-    left: '0px',
-    bottom: '0px',
-    right: '0px',
-    outline: 'none',
-    borderRadius: theme.global.borderRadius.circular,
-    boxSizing: 'border-box',
-    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.alias.color.neutral.neutralBackground1} inset`,
-    transform: 'translate(-50%, -50%)',
-
+    width: `var(${thumbSizeVar})`,
+    height: `var(${thumbSizeVar})`,
+    pointerEvents: 'none',
+    outlineStyle: 'none',
+    forcedColorAdjust: 'none',
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
+    backgroundColor: `var(${thumbColorVar})`,
+    transform: 'translateX(-50%)',
     ':before': {
       position: 'absolute',
       top: '0px',
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: theme.global.borderRadius.circular,
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralStroke1}`,
+      ...shorthands.border(`calc(var(${thumbSizeVar}) * .05)`, 'solid', tokens.colorNeutralStroke1),
     },
-  }),
-
-  enabled: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
-  }),
-
-  disabled: theme => ({
-    background: theme.alias.color.neutral.neutralForegroundDisabled,
-    border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralBackgroundDisabled}`,
-  }),
-
-  horizontal: theme => ({
-    top: '50%',
-  }),
+  },
+  disabled: {
+    ':before': {
+      ...shorthands.border(`calc(var(${thumbSizeVar}) * .05)`, 'solid', tokens.colorNeutralForegroundDisabled),
+    },
+  },
+  horizontal: {
+    left: `var(${thumbPositionVar})`,
+  },
+  vertical: {
+    transform: 'translateY(50%)',
+    bottom: `var(${thumbPositionVar})`,
+  },
 });
 
 /**
- * Styles for the activeRail slot
+ * Styles for the Input slot
  */
-const useActiveRailStyles = makeStyles({
-  activeRail: theme => ({
-    position: 'absolute',
-  }),
-
-  horizontal: theme => ({
-    left: 'calc(var(--slider-thumb-size) / 2)',
-    right: 'calc(var(--slider-thumb-size) / 2)',
-  }),
-
-  vertical: theme => ({
-    top: 'calc(var(--slider-thumb-size) / 2)',
-    bottom: 'calc(var(--slider-thumb-size) / 2)',
-  }),
+const useInputStyles = makeStyles({
+  input: {
+    opacity: 0,
+    gridRowStart: 'slider',
+    gridRowEnd: 'slider',
+    gridColumnStart: 'slider',
+    gridColumnEnd: 'slider',
+    ...shorthands.padding(0),
+    ...shorthands.margin(0),
+  },
+  horizontal: {
+    height: `var(${thumbSizeVar})`,
+    width: `calc(100% + var(${thumbSizeVar}))`,
+  },
+  vertical: {
+    height: `calc(100% + var(${thumbSizeVar}))`,
+    width: `var(${thumbSizeVar})`,
+    '-webkit-appearance': 'slider-vertical',
+  },
 });
 
 /**
  * Apply styling to the Slider slots based on the state
  */
-export const useSliderStyles = (state: SliderState): SliderState => {
+export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const rootStyles = useRootStyles();
-  const sliderWrapperStyles = useSliderWrapper();
   const railStyles = useRailStyles();
-  const trackWrapperStyles = useTrackWrapperStyles();
-  const trackStyles = useTrackStyles();
-  const marksWrapperStyles = useMarksWrapperStyles();
-  const thumbWrapperStyles = useThumbWrapperStyles();
   const thumbStyles = useThumbStyles();
-  const activeRailStyles = useActiveRailStyles();
+  const inputStyles = useInputStyles();
+  const isVertical = state.vertical;
 
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
+    sliderClassNames.root,
     rootStyles.root,
-    rootStyles.focusIndicator,
-    // TODO: Remove once compat is reverted
-    rootStyles[state.size || 'medium'],
-    state.vertical ? rootStyles.vertical : rootStyles.horizontal,
-    !state.disabled && rootStyles.enabled,
-    state.className,
-  );
-
-  state.sliderWrapper.className = mergeClasses(
-    sliderWrapperStyles.sliderWrapper,
-    state.vertical ? sliderWrapperStyles.vertical : sliderWrapperStyles.horizontal,
-    state.sliderWrapper.className,
+    isVertical ? rootStyles.focusIndicatorVertical : rootStyles.focusIndicatorHorizontal,
+    rootStyles[state.size!],
+    isVertical ? rootStyles.vertical : rootStyles.horizontal,
+    state.disabled ? rootStyles.disabled : rootStyles.enabled,
+    state.root.className,
   );
 
   state.rail.className = mergeClasses(
+    sliderClassNames.rail,
     railStyles.rail,
-    state.vertical ? railStyles.vertical : railStyles.horizontal,
-    state.disabled ? railStyles.disabled : railStyles.enabled,
+    isVertical ? railStyles.vertical : railStyles.horizontal,
     state.rail.className,
   );
 
-  state.sliderWrapper.className = mergeClasses(
-    sliderWrapperStyles.sliderWrapper,
-    state.vertical ? sliderWrapperStyles.vertical : sliderWrapperStyles.horizontal,
-    state.sliderWrapper.className,
-  );
-
-  state.trackWrapper.className = mergeClasses(
-    trackWrapperStyles.trackWrapper,
-    state.vertical ? trackWrapperStyles.vertical : trackWrapperStyles.horizontal,
-    state.trackWrapper.className,
-  );
-
-  state.track.className = mergeClasses(
-    trackClassName,
-    trackStyles.track,
-    state.vertical ? trackStyles.vertical : trackStyles.horizontal,
-    state.disabled ? trackStyles.disabled : trackStyles.enabled,
-    state.track.className,
-  );
-
-  state.marksWrapper.className = mergeClasses(
-    marksWrapperStyles.marksWrapper,
-    state.vertical ? marksWrapperStyles.vertical : marksWrapperStyles.horizontal,
-    state.marksWrapper.className,
-  );
-
-  state.thumbWrapper.className = mergeClasses(
-    thumbWrapperStyles.thumbWrapper,
-    state.vertical ? thumbWrapperStyles.vertical : thumbWrapperStyles.horizontal,
-    state.thumbWrapper.className,
-  );
-
   state.thumb.className = mergeClasses(
-    thumbClassName,
+    sliderClassNames.thumb,
     thumbStyles.thumb,
-    !state.vertical && thumbStyles.horizontal,
-    state.disabled ? trackStyles.disabled : trackStyles.enabled,
+    isVertical ? thumbStyles.vertical : thumbStyles.horizontal,
+    state.disabled && thumbStyles.disabled,
     state.thumb.className,
   );
 
-  state.activeRail.className = mergeClasses(
-    activeRailStyles.activeRail,
-    state.vertical ? activeRailStyles.vertical : activeRailStyles.horizontal,
-    state.activeRail.className,
+  state.input.className = mergeClasses(
+    sliderClassNames.input,
+    inputStyles.input,
+    isVertical ? inputStyles.vertical : inputStyles.horizontal,
+    state.input.className,
   );
 
   return state;

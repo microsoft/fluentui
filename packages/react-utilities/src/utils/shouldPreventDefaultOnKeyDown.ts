@@ -1,4 +1,4 @@
-import { getCode, SpacebarKey, EnterKey } from '@fluentui/keyboard-key';
+import { Space, Enter } from '@fluentui/keyboard-keys';
 import * as React from 'react';
 
 /**
@@ -7,13 +7,17 @@ import * as React from 'react';
  * Useful for situations where a keydown needs to be transformed to a click event
  */
 export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React.KeyboardEvent) {
-  const code = getCode(e);
+  if (e.defaultPrevented) {
+    return false;
+  }
+
+  const key = e.key;
   const target: HTMLElement | undefined = e.target as HTMLElement;
 
-  const matchesByKey = code === SpacebarKey || code === EnterKey;
+  const matchesByKey = key === Space || key === Enter;
 
   if (target?.tagName === 'A') {
-    return code === SpacebarKey;
+    return key === Space;
   }
 
   const ignoredByTag =

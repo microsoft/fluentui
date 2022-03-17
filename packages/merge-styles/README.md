@@ -6,7 +6,7 @@ The library was built for speed and size; the entire package is 2.62k gzipped. I
 
 Simple usage:
 
-```
+```ts
 import { mergeStyles, mergeStyleSets } from '@fluentui/merge-styles';
 
 // Produces 'css-0' class name which can be used anywhere
@@ -15,7 +15,7 @@ mergeStyles({ background: 'red' });
 // Produces a class map for a bunch of rules all at once
 mergeStyleSets({
   root: { background: 'red' },
-  child: { background: 'green' }
+  child: { background: 'green' },
 });
 
 // Returns { root: 'root-0', child: 'child-1' }

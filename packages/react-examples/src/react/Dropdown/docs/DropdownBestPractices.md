@@ -11,3 +11,18 @@
 - If there isn't a default option, use "Select an option" as placeholder text.
 - If "None" is an option, include it.
 - Write the choices using parallel construction. For example, start with the same part of speech or verb tense.
+
+### Accessibility
+
+Dropdown popups render in their own layer by default to ensure they are not clipped by containers with `overflow: hidden` or `overflow: scroll`. This causes extra difficulty for people who use touch-based screen readers, so we recommend rendering the Dropdown options list inline unless they are in overflow containers. To do so, set the following property on the Dropdown:
+
+```jsx
+calloutProps={{ doNotLayer: true }}
+```
+
+#### Truncation
+
+By default, the Dropdown truncates option text instead of wrapping to a new line.
+Because this can lose meaningful information, it is recommended to adjust styles to wrap the option text.
+
+The `Dropdown with wrapping option text` example demonstrates how to override truncation styles to support wrapping. The default style will continue to truncate to support existing implementations.

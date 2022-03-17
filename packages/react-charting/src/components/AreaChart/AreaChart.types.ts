@@ -43,6 +43,11 @@ export interface IAreaChartProps extends ICartesianChartProps {
    * Define a custom callout renderer for a stack; default is to render per data point
    */
   onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
 export interface IAreaChartStyles extends ICartesianChartStyles {}

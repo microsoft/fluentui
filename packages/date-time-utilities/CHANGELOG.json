@@ -2,6 +2,116 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Fri, 11 Mar 2022 19:51:47 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "21cde4a19dc74f1bcd812bca1b89d8207a3e98da",
+            "comment": "Add compat exports to date-time-utilities"
+          }
+        ],
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "fc2d2868c37f190fdfe61f98a1181f8af98a0122",
+            "comment": "Bump version to fix exports for partner team"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Mar 2022 07:24:25 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/date-time-utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jan 2022 07:30:05 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jamwu@microsoft.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "6a6e258c405b907be8b2723d9bc68a15afa3dc18",
+            "comment": "Added getDateFromTimeSelection function, TimeConstant values OffsetTo24HourFormat and TimeFormatRegex"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Dec 2021 07:36:11 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.2.3",
+      "version": "8.2.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "131c59c96177944b46ac63905a592f22e20ec67c",
+            "comment": "test(date-time-utils): make test pass for every contributor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 14:54:16 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.2.3",
+      "version": "8.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/date-time-utilities",
+            "comment": "Bump @fluentui/set-version to v8.1.5",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.2.2",
+      "version": "8.2.2",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/date-time-utilities",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/date-time-utilities to v8.2.2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/date-time-utilities_v8.2.2",
       "version": "8.2.2",

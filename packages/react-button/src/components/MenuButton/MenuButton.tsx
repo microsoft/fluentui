@@ -1,24 +1,20 @@
 import * as React from 'react';
-import { ChevronDownIcon } from './DefaultIcons';
-import { renderMenuButton } from './renderMenuButton';
-import { useMenuButton } from './useMenuButton';
-import { useMenuButtonStyles } from './useMenuButtonStyles';
+import { renderMenuButton_unstable } from './renderMenuButton';
+import { useMenuButton_unstable } from './useMenuButton';
+import { useMenuButtonStyles_unstable } from './useMenuButtonStyles';
 import type { MenuButtonProps } from './MenuButton.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
  * MenuButtons are buttons that handle opening and closing a menu when they are triggered.
  */
-export const MenuButton: React.FunctionComponent<MenuButtonProps & React.RefAttributes<HTMLElement>> = React.forwardRef<
-  HTMLElement,
-  MenuButtonProps
->((props, ref) => {
-  const state = useMenuButton(props, ref, {
-    menuIcon: { as: ChevronDownIcon },
-  });
+export const MenuButton: ForwardRefComponent<MenuButtonProps> = React.forwardRef((props, ref) => {
+  const state = useMenuButton_unstable(props, ref);
 
-  useMenuButtonStyles(state);
+  useMenuButtonStyles_unstable(state);
 
-  return renderMenuButton(state);
-});
+  return renderMenuButton_unstable(state);
+  // Casting is required due to lack of distributive union to support unions on @types/react
+}) as ForwardRefComponent<MenuButtonProps>;
 
 MenuButton.displayName = 'MenuButton';

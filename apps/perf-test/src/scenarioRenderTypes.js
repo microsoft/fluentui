@@ -8,7 +8,7 @@
  * memoization logic help avoid certain code paths.
  */
 
-const AllRenderTypes = ['mount', 'virtual-rerender'];
+const AllRenderTypes = ['mount', 'virtual-rerender', 'virtual-rerender-with-unmount'];
 const DefaultRenderTypes = ['mount'];
 
 const scenarioRenderTypes = {

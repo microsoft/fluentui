@@ -12,7 +12,7 @@ export const chatMessageDetailsStyles: ComponentSlotStylesPrepared<
     display: 'inline-block',
     fontSize: v.detailsFontSize,
     ...(p.density === 'comfy' && {
-      ...((p.attached === 'top' || !p.attached) && {
+      ...((p.attached === 'top' || !p.attached || p.hasHeaderReactionGroup) && {
         marginLeft: v.detailsMargin,
       }),
     }),

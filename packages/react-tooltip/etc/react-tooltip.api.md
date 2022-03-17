@@ -4,56 +4,52 @@
 
 ```ts
 
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
-import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
-import type { ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export interface OnVisibleChangeData {
-    // (undocumented)
+export type OnVisibleChangeData = {
     visible: boolean;
-}
+};
 
 // @public
-export const renderTooltip: (state: TooltipState) => JSX.Element;
+export const renderTooltip_unstable: (state: TooltipState) => JSX.Element;
 
 // @public
-export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.RefAttributes<HTMLElement>>;
+export const Tooltip: React_2.FC<TooltipProps> & FluentTriggerComponent;
 
-// @public
-export type TooltipDefaultedProps = 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
+// @public @deprecated (undocumented)
+export const tooltipClassName = "fui-Tooltip";
 
+// @public (undocumented)
+export const tooltipClassNames: SlotClassNames<TooltipSlots>;
+
+// Warning: (ae-forgotten-export) The symbol "TooltipCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
-export interface TooltipProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
-    children?: (React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> & {
+export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'relationship'>> & Pick<TooltipCommons, 'relationship'> & {
+    children?: (React_2.ReactElement & {
         ref?: React_2.Ref<unknown>;
-    }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
-    content: ShorthandPropsCompat<ComponentPropsCompat>;
-    hideDelay?: number;
-    inverted?: boolean;
-    onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
-    pointing?: boolean;
-    positioning?: PositioningShorthand;
-    showDelay?: number;
-    triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
-    visible?: boolean;
-}
+    }) | ((props: TooltipTriggerProps) => React_2.ReactElement | null) | null;
+};
 
 // @public
-export type TooltipShorthandProps = 'content';
+export type TooltipSlots = {
+    content: NonNullable<Slot<'div'>>;
+};
 
 // @public
-export const tooltipShorthandProps: TooltipShorthandProps[];
-
-// @public
-export interface TooltipState extends ComponentStateCompat<TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
-    arrowClassName?: string;
-    arrowRef?: React_2.Ref<HTMLDivElement>;
-    ref: React_2.Ref<HTMLElement>;
+export type TooltipState = ComponentState<TooltipSlots> & TooltipCommons & {
+    children?: React_2.ReactElement | null;
     shouldRenderTooltip?: boolean;
-}
+    arrowRef?: React_2.Ref<HTMLDivElement>;
+    arrowClassName?: string;
+};
 
 // @public
 export type TooltipTriggerProps = {
@@ -61,10 +57,10 @@ export type TooltipTriggerProps = {
 } & Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
 
 // @public
-export const useTooltip: (props: TooltipProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TooltipProps | undefined) => TooltipState;
+export const useTooltip_unstable: (props: TooltipProps) => TooltipState;
 
 // @public
-export const useTooltipStyles: (state: TooltipState) => TooltipState;
+export const useTooltipStyles_unstable: (state: TooltipState) => TooltipState;
 
 // (No @packageDocumentation comment for this package)
 

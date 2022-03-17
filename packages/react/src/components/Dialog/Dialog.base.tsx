@@ -9,7 +9,7 @@ const getClassNames = classNamesFunction<IDialogStyleProps, IDialogStyles>();
 import { DialogContent } from './DialogContent';
 import type { IDialogProps, IDialogStyleProps, IDialogStyles } from './Dialog.types';
 import type { IDialogContentProps } from './DialogContent.types';
-import type { IModalProps, IDragOptions } from '../../Modal';
+import type { IModalProps } from '../../Modal';
 import type { ILayerProps } from '../../Layer';
 
 const DefaultModalProps: IModalProps = {
@@ -18,6 +18,7 @@ const DefaultModalProps: IModalProps = {
   className: '',
   containerClassName: '',
   topOffsetFixed: false,
+  enableAriaHiddenSiblings: true,
 };
 
 const DefaultDialogContentProps: IDialogContentProps = {
@@ -64,6 +65,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
   }
 
   public render(): JSX.Element {
+    const props = this.props;
     const {
       /* eslint-disable deprecation/deprecation */
       className,
@@ -78,7 +80,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       isBlocking,
       isClickableOutsideFocusTrap,
       isDarkOverlay,
-      isOpen,
+      isOpen = !hidden,
       onDismiss,
       onDismissed,
       onLayerDidMount,
@@ -92,32 +94,31 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       minWidth,
       maxWidth,
       modalProps,
-    } = this.props;
+    } = props;
 
     const mergedLayerProps: ILayerProps = {
-      ...(modalProps ? modalProps.layerProps : { onLayerDidMount }),
+      onLayerDidMount,
+      ...modalProps?.layerProps,
     };
-    if (onLayerDidMount && !mergedLayerProps.onLayerDidMount) {
-      mergedLayerProps.onLayerDidMount = onLayerDidMount;
-    }
 
     let dialogDraggableClassName: string | undefined;
-    let dragOptions: IDragOptions | undefined;
+    const dragOptions = modalProps?.dragOptions;
 
     // if we are draggable, make sure we are using the correct
     // draggable classname and selectors
-    if (modalProps && modalProps.dragOptions && !modalProps.dragOptions.dragHandleSelector) {
+    if (dragOptions && !dragOptions.dragHandleSelector) {
       dialogDraggableClassName = 'ms-Dialog-draggable-header';
-      dragOptions = {
-        ...modalProps.dragOptions,
-        dragHandleSelector: `.${dialogDraggableClassName}`,
-      };
-    } else {
-      dragOptions = modalProps && modalProps.dragOptions;
+      dragOptions.dragHandleSelector = `.${dialogDraggableClassName}`;
     }
 
     const mergedModalProps = {
       ...DefaultModalProps,
+      elementToFocusOnDismiss,
+      firstFocusableSelector,
+      forceFocusInsideTrap,
+      ignoreExternalFocusing,
+      isClickableOutsideFocusTrap,
+      responsiveMode,
       className,
       containerClassName,
       isBlocking,
@@ -126,6 +127,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       ...modalProps,
       layerProps: mergedLayerProps,
       dragOptions,
+      isOpen,
     };
 
     const dialogContentProps: IDialogContentProps = {
@@ -135,12 +137,12 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       topButtonsProps,
       type,
       ...DefaultDialogContentProps,
-      ...this.props.dialogContentProps,
+      ...props.dialogContentProps,
       draggableHeaderClassName: dialogDraggableClassName,
       titleProps: {
         // eslint-disable-next-line deprecation/deprecation
-        id: this.props.dialogContentProps?.titleId || this._defaultTitleTextId,
-        ...this.props.dialogContentProps?.titleProps,
+        id: props.dialogContentProps?.titleId || this._defaultTitleTextId,
+        ...props.dialogContentProps?.titleProps,
       },
     };
 
@@ -155,35 +157,20 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
 
     return (
       <Modal
-        elementToFocusOnDismiss={elementToFocusOnDismiss}
-        firstFocusableSelector={firstFocusableSelector}
-        forceFocusInsideTrap={forceFocusInsideTrap}
-        ignoreExternalFocusing={ignoreExternalFocusing}
-        isClickableOutsideFocusTrap={isClickableOutsideFocusTrap}
-        onDismissed={mergedModalProps.onDismissed}
-        responsiveMode={responsiveMode}
         {...mergedModalProps}
-        isDarkOverlay={mergedModalProps.isDarkOverlay}
-        isBlocking={mergedModalProps.isBlocking}
-        isOpen={isOpen !== undefined ? isOpen : !hidden}
         className={classNames.root}
         containerClassName={classNames.main}
-        onDismiss={onDismiss ? onDismiss : mergedModalProps.onDismiss}
+        onDismiss={onDismiss || mergedModalProps.onDismiss}
         subtitleAriaId={this._getSubTextId()}
         titleAriaId={this._getTitleTextId()}
       >
         <DialogContent
           subTextId={this._defaultSubTextId}
-          title={dialogContentProps.title}
-          subText={dialogContentProps.subText}
           showCloseButton={mergedModalProps.isBlocking}
-          topButtonsProps={dialogContentProps.topButtonsProps}
-          type={dialogContentProps.type}
-          onDismiss={onDismiss ? onDismiss : dialogContentProps.onDismiss}
-          className={dialogContentProps.className}
+          onDismiss={onDismiss}
           {...dialogContentProps}
         >
-          {this.props.children}
+          {props.children}
         </DialogContent>
       </Modal>
     );
