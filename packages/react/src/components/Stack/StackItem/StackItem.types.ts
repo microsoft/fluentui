@@ -81,6 +81,7 @@ export interface IStackItemProps
   /**
    * Defines the initial main size of the StackItem, setting the size of the content box unless otherwise set with
    * box-sizing.
+   * @defaultvalue auto
    */
   basis?: React.CSSProperties['flexBasis'];
 
