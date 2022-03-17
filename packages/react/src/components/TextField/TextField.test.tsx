@@ -711,7 +711,7 @@ describe('TextField onChange', () => {
     render(<TextField componentRef={textFieldRef} defaultValue={initialValue} onChange={onChange} />);
 
     expect(onChange).toHaveBeenCalledTimes(0);
-    simulateAndVerifyChange('a', 1);
+    simulateAndVerifyChange('value change', 1);
     simulateAndVerifyChange('', 2);
   });
 
@@ -725,21 +725,21 @@ describe('TextField onChange', () => {
   it('should apply edits if implicitly uncontrolled', () => {
     render(<TextField componentRef={textFieldRef} onChange={onChange} />);
 
-    simulateAndVerifyChange('a', 1);
+    simulateAndVerifyChange('value change', 1);
   });
 
   it('should not apply edits if controlled', () => {
     render(<TextField componentRef={textFieldRef} value={initialValue} onChange={onChange} />);
 
     expect(onChange).toHaveBeenCalledTimes(0);
-    simulateAndVerifyChange('a', 1, initialValue);
+    simulateAndVerifyChange('value change', 1, initialValue);
   });
 
   it('should not apply edits if controlled (empty initial value)', () => {
     render(<TextField componentRef={textFieldRef} value="" onChange={onChange} />);
 
     expect(onChange).toHaveBeenCalledTimes(0);
-    simulateAndVerifyChange('a', 1, '');
+    simulateAndVerifyChange('value change', 1, '');
   });
 
   it('respects prop updates in response to onChange', () => {
