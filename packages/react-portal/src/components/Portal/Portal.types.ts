@@ -9,7 +9,7 @@ type PortalCommons = {
    * Where the portal children are mounted on DOM
    * @defaultValue a new element on document.body without any styling
    */
-  mountNode: HTMLDivElement | undefined;
+  mountNode: HTMLElement | undefined;
 };
 
 export type PortalProps = Partial<PortalCommons>;
