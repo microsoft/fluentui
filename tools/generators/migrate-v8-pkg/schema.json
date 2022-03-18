@@ -11,6 +11,10 @@
         "$source": "argv",
         "index": 0
       }
+    },
+    "stats": {
+      "type": "boolean",
+      "description": "TODO"
     }
   },
   "required": []
