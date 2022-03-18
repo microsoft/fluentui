@@ -66,9 +66,9 @@ export const VersionSelector: React.FC = () => {
       <MenuPopover className={styles.menuPopover}>
         <MenuList className={styles.menuList}>
           {versions.length === 0 && (
-            <MenuItemRadio className={styles.menuItemRadio} name="version" value="">
+            <MenuItem className={styles.menuItemRadio}>
               Unable to load the list of available versions.
-            </MenuItemRadio>
+            </MenuItem>
           )}
           {versions.map(([version, url], index) => (
             <MenuItemRadio className={styles.menuItemRadio} name="version" value={url} key={index}>
