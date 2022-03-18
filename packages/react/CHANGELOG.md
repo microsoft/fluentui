@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 16 Mar 2022 07:38:50 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Mar 2022 07:42:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.62.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.62.0)
+
+Fri, 18 Mar 2022 07:42:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.61.2..@fluentui/react_v8.62.0)
+
+### Minor changes
+
+- Stack: Adding basis prop to mimick flexBasis CSS property. ([PR #19053](https://github.com/microsoft/fluentui/pull/19053) by Humberto.Morimoto@microsoft.com)
 
 ## [8.61.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.61.2)
 
