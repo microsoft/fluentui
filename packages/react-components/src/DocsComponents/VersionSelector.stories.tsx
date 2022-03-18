@@ -68,12 +68,7 @@ export const VersionSelector: React.FC = () => {
     <Menu
       onCheckedValueChange={onCheckedValueChange}
       checkedValues={{
-        version: [
-          versions
-            .find(v => v[0] === `v${packageJsonVersion}`)
-            ?.slice(-1)
-            .pop() || '',
-        ],
+        version: versions.find(v => v[0] === `v${packageJsonVersion}`) || [],
       }}
     >
       <MenuTrigger>
