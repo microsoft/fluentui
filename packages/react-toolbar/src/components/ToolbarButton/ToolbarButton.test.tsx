@@ -7,6 +7,7 @@ describe('ToolbarButton', () => {
   isConformant({
     Component: ToolbarButton,
     displayName: 'ToolbarButton',
+    disabledTests: ['component-has-static-classname'],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

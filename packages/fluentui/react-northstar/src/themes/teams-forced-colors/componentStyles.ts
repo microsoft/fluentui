@@ -4,3 +4,4 @@ export { dropdownItemStyles as DropdownItem } from './components/Dropdown/dropdo
 export { svgIconStyles as SvgIcon } from './components/SvgIcon/svgIconStyles';
 export { menuItemWrapperStyles as MenuItemWrapper } from './components/Menu/menuItemWrapperStyles';
 export { toolbarItemStyles as ToolbarItem } from './components/Toolbar/toolbarItemStyles';
+export { sliderStyles as Slider } from './components/Slider/sliderStyles';

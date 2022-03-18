@@ -11,7 +11,9 @@ export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots> = {
   secondaryContent: 'fui-CompoundButton__secondaryContent',
 };
 
-// TODO temporary export to pass conformance test.
+/**
+ * @deprecated Use `compoundButtonClassName.root` instead.
+ */
 export const compoundButtonClassName = compoundButtonClassNames.root;
 
 const useRootStyles = makeStyles({

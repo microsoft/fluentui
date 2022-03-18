@@ -10,7 +10,9 @@ export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
   primaryActionButton: 'fui-SplitButton__primaryActionButton',
 };
 
-// TODO temporary export to pass conformance test.
+/**
+ * @deprecated Use `splitButtonClassName.root` instead.
+ */
 export const splitButtonClassName = splitButtonClassNames.root;
 
 const useFocusStyles = makeStyles({
@@ -142,7 +144,13 @@ export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitBut
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
 
-  const { appearance, block, disabled, disabledFocusable } = state;
+  const {
+    appearance,
+    // eslint-disable-next-line deprecation/deprecation
+    block,
+    disabled,
+    disabledFocusable,
+  } = state;
 
   state.root.className = mergeClasses(
     splitButtonClassNames.root,

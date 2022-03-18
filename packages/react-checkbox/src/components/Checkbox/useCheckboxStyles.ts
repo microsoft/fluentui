@@ -1,11 +1,19 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { CheckboxState } from './Checkbox.types';
+import { CheckboxSlots, CheckboxState } from './Checkbox.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `checkboxClassNames.root` instead.
+ */
 export const checkboxClassName = 'fui-Checkbox';
-const indicatorClassName = 'fui-Checkbox__indicator';
-const labelClassName = 'fui-Checkbox__label';
+export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
+  root: 'fui-Checkbox',
+  label: 'fui-Checkbox__label',
+  input: 'fui-Checkbox__input',
+  indicator: 'fui-Checkbox__indicator',
+};
 
 // TODO replace these spacing constants with theme values once they're on the theme
 const spacingHorizontalS = '8px';
@@ -38,33 +46,33 @@ const useInputStyles = makeStyles({
     cursor: 'pointer',
 
     // When unchecked, hide the the checkmark icon (child of the indicator slot)
-    [`:not(:checked):not(:indeterminate) ~ .${indicatorClassName} > *`]: {
+    [`:not(:checked):not(:indeterminate) ~ .${checkboxClassNames.indicator} > *`]: {
       opacity: 0,
     },
 
     // Colors for the unchecked state
     ':enabled:not(:checked):not(:indeterminate)': {
-      [`& ~ .${labelClassName}`]: {
+      [`& ~ .${checkboxClassNames.label}`]: {
         color: tokens.colorNeutralForeground3,
       },
-      [`& ~ .${indicatorClassName}`]: {
+      [`& ~ .${checkboxClassNames.indicator}`]: {
         ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
       },
 
       ':hover': {
-        [`& ~ .${labelClassName}`]: {
+        [`& ~ .${checkboxClassNames.label}`]: {
           color: tokens.colorNeutralForeground2,
         },
-        [`& ~ .${indicatorClassName}`]: {
+        [`& ~ .${checkboxClassNames.indicator}`]: {
           ...shorthands.borderColor(tokens.colorNeutralStrokeAccessibleHover),
         },
       },
 
       ':active:hover': {
-        [`& ~ .${labelClassName}`]: {
+        [`& ~ .${checkboxClassNames.label}`]: {
           color: tokens.colorNeutralForeground1,
         },
-        [`& ~ .${indicatorClassName}`]: {
+        [`& ~ .${checkboxClassNames.indicator}`]: {
           ...shorthands.borderColor(tokens.colorNeutralStrokeAccessiblePressed),
         },
       },
@@ -72,24 +80,24 @@ const useInputStyles = makeStyles({
 
     // Colors for the checked state
     ':enabled:checked:not(:indeterminate)': {
-      [`& ~ .${labelClassName}`]: {
+      [`& ~ .${checkboxClassNames.label}`]: {
         color: tokens.colorNeutralForeground1,
       },
-      [`& ~ .${indicatorClassName}`]: {
+      [`& ~ .${checkboxClassNames.indicator}`]: {
         backgroundColor: tokens.colorCompoundBrandBackground,
         color: tokens.colorNeutralForegroundOnBrand,
         ...shorthands.borderColor(tokens.colorCompoundBrandBackground),
       },
 
       ':hover': {
-        [`& ~ .${indicatorClassName}`]: {
+        [`& ~ .${checkboxClassNames.indicator}`]: {
           backgroundColor: tokens.colorCompoundBrandBackgroundHover,
           ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundHover),
         },
       },
 
       ':active:hover': {
-        [`& ~ .${indicatorClassName}`]: {
+        [`& ~ .${checkboxClassNames.indicator}`]: {
           backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
           ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundPressed),
         },
@@ -98,23 +106,23 @@ const useInputStyles = makeStyles({
 
     // Colors for the mixed state
     ':enabled:indeterminate': {
-      [`& ~ .${labelClassName}`]: {
+      [`& ~ .${checkboxClassNames.label}`]: {
         color: tokens.colorNeutralForeground1,
       },
-      [`& ~ .${indicatorClassName}`]: {
+      [`& ~ .${checkboxClassNames.indicator}`]: {
         ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
         color: tokens.colorCompoundBrandForeground1,
       },
 
       ':hover': {
-        [`& ~ .${indicatorClassName}`]: {
+        [`& ~ .${checkboxClassNames.indicator}`]: {
           ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
           color: tokens.colorCompoundBrandForeground1Hover,
         },
       },
 
       ':active:hover': {
-        [`& ~ .${indicatorClassName}`]: {
+        [`& ~ .${checkboxClassNames.indicator}`]: {
           ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
           color: tokens.colorCompoundBrandForeground1Pressed,
         },
@@ -124,10 +132,10 @@ const useInputStyles = makeStyles({
     ':disabled': {
       cursor: 'default',
 
-      [`& ~ .${labelClassName}`]: {
+      [`& ~ .${checkboxClassNames.label}`]: {
         color: tokens.colorNeutralForegroundDisabled,
       },
-      [`& ~ .${indicatorClassName}`]: {
+      [`& ~ .${checkboxClassNames.indicator}`]: {
         ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
         color: tokens.colorNeutralForegroundDisabled,
       },
@@ -192,15 +200,15 @@ const useLabelStyles = makeStyles({
  */
 export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState => {
   const rootStyles = useRootStyles();
-  state.root.className = mergeClasses(checkboxClassName, rootStyles.base, state.root.className);
+  state.root.className = mergeClasses(checkboxClassNames.root, rootStyles.base, state.root.className);
 
   const inputStyles = useInputStyles();
-  state.input.className = mergeClasses(inputStyles.base, state.input.className);
+  state.input.className = mergeClasses(checkboxClassNames.input, inputStyles.base, state.input.className);
 
   const indicatorStyles = useIndicatorStyles();
   if (state.indicator) {
     state.indicator.className = mergeClasses(
-      indicatorClassName,
+      checkboxClassNames.indicator,
       indicatorStyles.base,
       indicatorStyles[state.size],
       state.shape === 'circular' && indicatorStyles.circular,
@@ -211,7 +219,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
   const labelStyles = useLabelStyles();
   if (state.label) {
     state.label.className = mergeClasses(
-      labelClassName,
+      checkboxClassNames.label,
       labelStyles.base,
       labelStyles[state.size],
       state.label.className,

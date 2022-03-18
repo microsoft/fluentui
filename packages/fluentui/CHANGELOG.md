@@ -19,6 +19,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Fixes
+- Add transparent borders to slider @ling1726 ([#22089](https://github.com/microsoft/fluentui/pull/22089))
+- Fix `Popup` opened from right click (on `context`), to not dismiss when scrolling happens in nested Popup @yaunboxue-amber ([#22087](https://github.com/microsoft/fluentui/pull/22087))
+
+<!--------------------------------[ v0.61.0 ]------------------------------- -->
+## [v0.61.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.61.0) (2022-03-10)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.60.1..@fluentui/react-northstar_v0.61.0)
+
+### Fixes
 - Update `FocusZone` to properly pass through event modifiers (`ctrlKey`, etc.) when raising a click event @spmonahan ([#21547](https://github.com/microsoft/fluentui/pull/21547))
 - Fix `AccordionTitle` focus styles @petr-duda ([#21400](https://github.com/microsoft/fluentui/pull/21400))
 - Add border to `Card` in high contrast rest state @jurokapsiar ([#21315](https://github.com/microsoft/fluentui/pull/21315))

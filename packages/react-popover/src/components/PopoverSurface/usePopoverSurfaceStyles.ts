@@ -2,9 +2,16 @@ import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createArrowHeightStyles, createArrowStyles } from '@fluentui/react-positioning';
 import { tokens } from '@fluentui/react-theme';
 import type { PopoverSize } from '../Popover/Popover.types';
-import type { PopoverSurfaceState } from './PopoverSurface.types';
+import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `popoverSurfaceClassNames.root` instead.
+ */
 export const popoverSurfaceClassName = 'fui-PopoverSurface';
+export const popoverSurfaceClassNames: SlotClassNames<PopoverSurfaceSlots> = {
+  root: 'fui-PopoverSurface',
+};
 
 export const arrowHeights: Record<PopoverSize, number> = {
   small: 6,
@@ -58,7 +65,7 @@ const useStyles = makeStyles({
 export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): PopoverSurfaceState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
-    popoverSurfaceClassName,
+    popoverSurfaceClassNames.root,
     styles.root,
     state.size === 'small' && styles.smallPadding,
     state.size === 'medium' && styles.mediumPadding,

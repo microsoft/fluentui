@@ -1,9 +1,16 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { cardPreviewClassName } from '../CardPreview/index';
-import type { CardState } from './Card.types';
+import { cardPreviewClassNames } from '../CardPreview/index';
+import type { CardSlots, CardState } from './Card.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `cardClassNames.root` instead.
+ */
 export const cardClassName = 'fui-Card';
+export const cardClassNames: SlotClassNames<CardSlots> = {
+  root: 'fui-Card',
+};
 
 /**
  * Styles for the root slot
@@ -20,7 +27,7 @@ const useStyles = makeStyles({
     // Size: medium
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
-    [`> *:not(.${cardPreviewClassName})`]: {
+    [`> *:not(.${cardPreviewClassNames.root})`]: {
       // Size: medium
       ...shorthands.margin('12px'),
     },
@@ -124,7 +131,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     state.root.onTouchEnd;
 
   state.root.className = mergeClasses(
-    cardClassName,
+    cardClassNames.root,
     styles.root,
     state.appearance === 'filled' && styles.filled,
     state.appearance === 'filled-alternative' && styles.filledAlternative,

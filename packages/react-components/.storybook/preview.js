@@ -24,7 +24,12 @@ export const parameters = {
         [
           'Introduction',
           'Developer',
-          ['Quick Start', 'Migrating from @fluentui᜵react v8', 'Styling Components', 'Positioning Components'],
+          ['Quick Start', 'Styling Components', 'Positioning Components'],
+          'Upgrading',
+          [
+            'from v8',
+            ['Overview', 'Important changes', 'Planning your journey', 'Component Mapping', 'Troubleshooting'],
+          ],
         ],
         'Theme',
         'Components',

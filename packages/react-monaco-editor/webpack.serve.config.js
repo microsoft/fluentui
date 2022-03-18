@@ -21,11 +21,6 @@ module.exports = resources.createServeConfig(
       writeToDisk: true, // for debugging
     },
 
-    externals: {
-      react: 'React',
-      'react-dom': 'ReactDOM',
-    },
-
     plugins: [/** @type {any} */ (new BundleAnalyzerPlugin())],
 
     resolve: {
