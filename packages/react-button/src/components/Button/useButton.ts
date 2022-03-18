@@ -16,6 +16,7 @@ export const useButton_unstable = (
   const {
     appearance,
     as,
+    // eslint-disable-next-line deprecation/deprecation
     block = false,
     disabled = false,
     disabledFocusable = false,

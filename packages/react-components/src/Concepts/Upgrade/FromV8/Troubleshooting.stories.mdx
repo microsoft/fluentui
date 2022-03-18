@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Upgrading/from v8/Troubleshooting" />
+
+## "I tried using the new components but there does not seem to be any styling applied to them. Am I doing something wrong?"
+
+Components in version 8 could be used in isolation and still retain their default styling.
+For components to be styled in version 9, they must be wrapped with `FluentProvider` with a theme passed to it.
+
+We recommend placing the `FluentProvider` at the root of your app so that everything gets styled appropriately. The theme to use if you are coming from version 8 is `webLightTheme`.
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+
+import App from './App';
+
+ReactDOM.render(
+  <FluentProvider theme={webLightTheme}>
+    <App />
+  </FluentProvider>,
+  document.getElementById('root'),
+);
+```
+
+## "I managed to get the theme working but the components look different than they did previously, why is that?"
+
+We are modernizing our components in version 9 to adhere to the latest guidelines in the Fluent Design Language. That is the reason for any visual differences you might notice.
+
+## "What if I want to override a component's styles? Say, if I want to make them look like they did before? It seems like the styles prop does not exist anymore!"
+
+The styling story in version 9 is very different to what existed in version 8. For one, we are moving away from providing a `styles` prop and are mostly focusing of providing styling via the `className` prop (if you are worried about how could you style every piece of a component via `className`, do not fret and keep reading).
+
+We are also moving away from `mergeStyles` in favor of `makeStyles` from [`@griffel/react`](https://github.com/microsoft/griffel), a new in-house CSS-in-JS solution that allows for things like atomic classes and build-time optimization of styles.
+
+If you want to learn more, read our [guide on how to style components](?path=/story/concepts-developer-styling-components--page).

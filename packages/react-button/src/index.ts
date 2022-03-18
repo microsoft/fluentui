@@ -1,5 +1,6 @@
 export {
   Button,
+  // eslint-disable-next-line deprecation/deprecation
   buttonClassName,
   buttonClassNames,
   renderButton_unstable,
@@ -9,6 +10,7 @@ export {
 export type { ButtonProps, ButtonSlots, ButtonState } from './Button';
 export {
   CompoundButton,
+  // eslint-disable-next-line deprecation/deprecation
   compoundButtonClassName,
   compoundButtonClassNames,
   renderCompoundButton_unstable,
@@ -18,6 +20,7 @@ export {
 export type { CompoundButtonProps, CompoundButtonSlots, CompoundButtonState } from './CompoundButton';
 export {
   MenuButton,
+  // eslint-disable-next-line deprecation/deprecation
   menuButtonClassName,
   menuButtonClassNames,
   renderMenuButton_unstable,
@@ -28,6 +31,7 @@ export type { MenuButtonProps, MenuButtonSlots, MenuButtonState } from './MenuBu
 export {
   SplitButton,
   renderSplitButton_unstable,
+  // eslint-disable-next-line deprecation/deprecation
   splitButtonClassName,
   splitButtonClassNames,
   useSplitButtonStyles_unstable,
@@ -37,6 +41,7 @@ export type { SplitButtonProps, SplitButtonSlots, SplitButtonState } from './Spl
 export {
   ToggleButton,
   renderToggleButton_unstable,
+  // eslint-disable-next-line deprecation/deprecation
   toggleButtonClassName,
   toggleButtonClassNames,
   useToggleButtonStyles_unstable,

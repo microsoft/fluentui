@@ -86,7 +86,7 @@ export type CheckboxProps = Omit<
     /**
      * Callback to be called when the checked state value changes.
      */
-    onChange?: (ev: React.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+    onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
 
     /**
      * Whether the checkbox should be rendered as checked by default.
