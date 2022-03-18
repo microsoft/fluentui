@@ -25,7 +25,6 @@ export const dataGridCellStyles: (
       color: ${neutralForegroundRest};
       box-sizing: border-box;
       ${typeRampBase}
-      font-weight: 400;
       border: transparent calc(${focusStrokeWidth} * 1px) solid;
       overflow: hidden;
       outline: none;

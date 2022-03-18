@@ -25,7 +25,6 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
       ${display('inline-flex')} :host {
         box-sizing: border-box;
         ${typeRampBase}
-        font-weight: 400;
         height: calc((${heightNumber} + (${designUnit} * 2)) * 1px);
         padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
         color: ${neutralForegroundRest};

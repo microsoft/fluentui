@@ -6,7 +6,7 @@ import {
   forcedColorsStylesheetBehavior,
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
-import { bodyFont, designUnit, disabledOpacity, neutralStrokeStrongRest, strokeWidth } from '../design-tokens';
+import { designUnit, disabledOpacity, neutralStrokeStrongRest, strokeWidth, typeRampMinus1 } from '../design-tokens';
 
 export const sliderLabelStyles: (
   context: ElementDefinitionContext,
@@ -14,7 +14,7 @@ export const sliderLabelStyles: (
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('block')} :host {
-      font-family: ${bodyFont};
+      ${typeRampMinus1}
     }
     .root {
       position: absolute;
