@@ -133,6 +133,7 @@ You can replace all the usages of a component like Button with ShimButton and ge
 Warning! Shims aren't free. You'll still need to modify code to upgrade custom styles, renderprops callbacks, and ref usage. Shims take a dependency on the v8 types and v9 components, so tree-shaking may be limited. Shims introduce mapping logic (although it shouldn't signficantly impact render performance).
 
 ### Medium or larger apps with basic usage
+
 If you have a large project with hundreds to thousands of Fluent component usages, we strongly recommend upgrading horizontally. The Button component is a typical choice to upgrade across the application.
 
 If your usage is mostly basic, we recommend authoring a code-mod to handle what would be too tedious with search & replace. Consider running code-mods to handle most cases and then do some manual upgrade work to cover the rest.
