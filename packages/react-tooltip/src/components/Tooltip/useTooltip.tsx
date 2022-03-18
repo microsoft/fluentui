@@ -40,7 +40,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     relationship,
     showDelay = 250,
     hideDelay = 250,
-    mountNode = undefined,
+    mountNode,
   } = props;
 
   const [visible, setVisibleInternal] = useControllableState({ state: props.visible, initialState: false });
