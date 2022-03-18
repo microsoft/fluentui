@@ -1,5 +1,15 @@
 import * as React from 'react';
-import { MenuButton, Menu, MenuPopover, MenuItemRadio, MenuList, MenuTrigger, makeStyles, MenuProps } from '../index';
+import {
+  MenuButton,
+  Menu,
+  MenuPopover,
+  MenuItemRadio,
+  MenuList,
+  MenuTrigger,
+  makeStyles,
+  MenuProps,
+  MenuItem,
+} from '../index';
 import { version as packageJsonVersion } from '../../package.json';
 
 const useStyles = makeStyles({
@@ -43,20 +53,28 @@ export const VersionSelector: React.FC = () => {
   const [versions, setVersions] = React.useState<string[][]>([]);
 
   React.useEffect(() => {
+    // metadata.json is populated only in Chromatic
+    // an example of the file is available here:
+    // https://master--5ccbc373887ca40020446347.chromatic.com/metadata.json
     fetch('/metadata.json').then(async response => {
       if (response.ok) {
         const metadata = await response.json();
         setVersions(Object.entries(metadata.versions));
       }
     });
-  },
-  [],
-)
+  }, []);
 
   return (
     <Menu
       onCheckedValueChange={onCheckedValueChange}
-      checkedValues={{ version: [versions.find(v => v[0] === `v${packageJsonVersion}`)] }}
+      checkedValues={{
+        version: [
+          versions
+            .find(v => v[0] === `v${packageJsonVersion}`)
+            ?.slice(-1)
+            .pop() || '',
+        ],
+      }}
     >
       <MenuTrigger>
         <MenuButton className={styles.menuButton} menuIcon={{ className: styles.chevronIcon }}>
@@ -66,9 +84,7 @@ export const VersionSelector: React.FC = () => {
       <MenuPopover className={styles.menuPopover}>
         <MenuList className={styles.menuList}>
           {versions.length === 0 && (
-            <MenuItem className={styles.menuItemRadio}>
-              Unable to load the list of available versions.
-            </MenuItem>
+            <MenuItem className={styles.menuItemRadio}>Unable to load the list of available versions.</MenuItem>
           )}
           {versions.map(([version, url], index) => (
             <MenuItemRadio className={styles.menuItemRadio} name="version" value={url} key={index}>
