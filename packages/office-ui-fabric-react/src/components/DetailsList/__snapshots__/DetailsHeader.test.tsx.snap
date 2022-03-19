@@ -83,7 +83,7 @@ exports[`DetailsHeader can render 1`] = `
                   vertical-align: middle;
                   width: 18px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   color: WindowText;
                 }
             data-icon-name="CircleRing"
@@ -117,7 +117,7 @@ exports[`DetailsHeader can render 1`] = `
                 &:hover {
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                 }
             data-icon-name="StatusCircleCheckmark"

@@ -120,7 +120,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                     font-weight: normal;
                     speak: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     color: WindowText;
                   }
@@ -200,7 +200,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                     font-weight: normal;
                     speak: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     color: WindowText;
                   }
@@ -280,7 +280,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                     font-weight: normal;
                     speak: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     color: WindowText;
                   }
@@ -473,7 +473,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     top: 1px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -501,7 +501,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   @media only screen and (min-width: 480px) and (max-width: 639px){& {
                     font-size: 15px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
@@ -568,7 +568,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     font-weight: normal;
                     speak: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     color: WindowText;
                   }
@@ -648,7 +648,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     font-weight: normal;
                     speak: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     color: WindowText;
                   }
@@ -1113,7 +1113,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     font-weight: normal;
                     speak: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     color: WindowText;
                   }
@@ -1193,7 +1193,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     top: 1px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -1221,7 +1221,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   @media only screen and (min-width: 480px) and (max-width: 639px){& {
                     font-size: 15px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
@@ -1288,7 +1288,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     font-weight: normal;
                     speak: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     color: WindowText;
                   }
@@ -1481,7 +1481,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                     font-weight: normal;
                     speak: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     color: WindowText;
                   }
@@ -1561,7 +1561,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                     top: 1px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -1589,7 +1589,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                   @media only screen and (min-width: 480px) and (max-width: 639px){& {
                     font-size: 15px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
@@ -1769,7 +1769,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                     top: 1px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -1797,7 +1797,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                   @media only screen and (min-width: 480px) and (max-width: 639px){& {
                     font-size: 15px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }

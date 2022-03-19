@@ -6,6 +6,7 @@ import {
   getFocusStyle,
   FontSizes,
   FontWeights,
+  HighContrastSelector,
   ZIndexes,
   getGlobalClassNames,
 } from '../../Styling';
@@ -115,7 +116,15 @@ export const getStyles = (
             backgroundColor: palette.neutralLighterAlt,
             color: semanticColors.bodyText
           },
-        },
+          [HighContrastSelector]: {
+            border: 0,
+            selectors: {
+              ':focus': {
+                border: '1px solid WindowText'
+              }
+            }
+          }
+        }
       },
       isSelected && {
         color: palette.themePrimary,

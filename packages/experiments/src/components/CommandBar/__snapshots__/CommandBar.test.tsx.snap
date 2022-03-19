@@ -102,7 +102,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -110,7 +110,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   right: 4px;
                   top: 4px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
@@ -214,7 +214,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -222,7 +222,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   right: 4px;
                   top: 4px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {

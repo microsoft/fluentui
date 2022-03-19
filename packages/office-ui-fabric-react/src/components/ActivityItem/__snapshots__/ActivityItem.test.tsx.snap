@@ -42,7 +42,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
           margin-right: 0;
           margin-top: -2px;
         }
-        @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Persona-imageArea {
           border: none;
           margin-bottom: 0;
           margin-left: 0;
@@ -109,7 +109,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                   height: 16px;
                   line-height: 16px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window !important;
                   border: 1px solid WindowText;
@@ -197,7 +197,7 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
           margin-right: 0;
           margin-top: -2px;
         }
-        @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Persona-imageArea {
           border: none;
           margin-bottom: 0;
           margin-left: 0;
@@ -298,7 +298,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
           margin-right: 0;
           margin-top: -2px;
         }
-        @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Persona-imageArea {
           border: none;
           margin-bottom: 0;
           margin-left: 0;
@@ -384,7 +384,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
                   height: 16px;
                   line-height: 16px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window !important;
                   border: 1px solid WindowText;
@@ -475,7 +475,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
           margin-right: 0;
           margin-top: -2px;
         }
-        @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Persona-imageArea {
           border: none;
           margin-bottom: 0;
           margin-left: 0;
@@ -542,7 +542,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   height: 16px;
                   line-height: 16px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window !important;
                   border: 1px solid WindowText;
@@ -685,7 +685,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   height: 16px;
                   line-height: 16px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window !important;
                   border: 1px solid WindowText;
@@ -807,7 +807,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                   height: 32px;
                   line-height: 32px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window !important;
                   border: 1px solid WindowText;
@@ -1048,7 +1048,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   height: 16px;
                   line-height: 16px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window !important;
                   border: 1px solid WindowText;
@@ -1171,7 +1171,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   height: 16px;
                   line-height: 16px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window !important;
                   border: 1px solid WindowText;

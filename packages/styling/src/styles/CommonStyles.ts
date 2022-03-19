@@ -1,4 +1,4 @@
-export const HighContrastSelector = '@media screen and (-ms-high-contrast: active)';
+export const HighContrastSelector = '@media screen and (-ms-high-contrast: active), (forced-colors: active)';
 
 export const ScreenWidthMinSmall = 320;
 export const ScreenWidthMinMedium = 480;

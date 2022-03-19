@@ -68,7 +68,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               border: none;
               bottom: -2px;
               left: -2px;
@@ -79,7 +79,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
             &:hover {
               color: #0078d4;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -174,7 +174,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               border: none;
               bottom: -2px;
               left: -2px;
@@ -185,7 +185,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
             &:hover {
               color: #0078d4;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -311,7 +311,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               top: 0px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               border: none;
               bottom: -2px;
               left: -2px;
@@ -322,7 +322,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             &:hover {
               color: #0078d4;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -417,7 +417,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               top: 0px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               border: none;
               bottom: -2px;
               left: -2px;
@@ -428,7 +428,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             &:hover {
               color: #0078d4;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }

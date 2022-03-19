@@ -37,7 +37,15 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         padding: 0,
         textAlign: 'left',
         textOverflow: 'inherit',
-        userSelect: 'text'
+        userSelect: 'text',
+        borderBottom: '1px solid transparent', // For Firefox high contrast mode
+
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'LinkText',
+            forcedColorAdjust: 'none'
+          }
+        }
       },
       !isButton && {
         textDecoration: 'none'
@@ -62,12 +70,18 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
             color: semanticColors.linkHovered,
             selectors: {
               [HighContrastSelector]: {
-                textDecoration: 'underline'
+                textDecoration: 'underline',
+                color: 'LinkText'
               }
             }
           },
           '&:focus': {
-            color: semanticColors.link
+            color: semanticColors.link,
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'LinkText'
+              }
+            }
           }
         }
       },

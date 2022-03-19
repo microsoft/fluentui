@@ -28,13 +28,13 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         padding-right: 0;
         padding-top: 1px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border: 1px solid WindowText;
       }
       &:hover {
         border-color: #212121;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: Highlight;
       }
       &:hover $iconContainer {
@@ -155,13 +155,13 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         padding-right: 0;
         padding-top: 1px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border: 1px solid WindowText;
       }
       &:hover {
         border-color: #212121;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: Highlight;
       }
       &:hover $iconContainer {
