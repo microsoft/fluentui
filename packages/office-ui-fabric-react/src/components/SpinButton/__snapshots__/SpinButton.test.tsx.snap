@@ -65,7 +65,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           border-color: #333333;
           outline: 2px dashed transparent;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+        @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
           outline: none;
         }
@@ -112,7 +112,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             background-color: #0078d4;
             color: #ffffff;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::selection {
+          @media screen and (-ms-high-contrast: active){&::selection {
             background-color: Highlight;
             border-color: Highlight;
             color: HighlightText;
@@ -199,7 +199,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
               border: none;
               bottom: -2px;
               left: -2px;
@@ -211,7 +211,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               background-color: #eaeaea;
               color: #212121;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -219,7 +219,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               background-color: #c8c8c8;
               color: #212121;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active){&:active {
               background-color: Highlight;
               color: HighlightText;
             }
@@ -322,7 +322,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
               border: none;
               bottom: -2px;
               left: -2px;
@@ -334,7 +334,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               background-color: #eaeaea;
               color: #212121;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -342,7 +342,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               background-color: #c8c8c8;
               color: #212121;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active){&:active {
               background-color: Highlight;
               color: HighlightText;
             }

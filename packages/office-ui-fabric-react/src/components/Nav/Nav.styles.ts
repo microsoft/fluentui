@@ -6,10 +6,10 @@ import {
   getFocusStyle,
   FontSizes,
   FontWeights,
-  HighContrastSelector,
   ZIndexes,
   getGlobalClassNames,
 } from '../../Styling';
+import { HighContrastSelector } from '../../utilities/styling/index';
 
 const GlobalClassNames = {
   root: 'ms-Nav',

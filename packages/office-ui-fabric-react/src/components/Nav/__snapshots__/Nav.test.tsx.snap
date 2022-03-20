@@ -128,7 +128,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                       border: none;
                       bottom: -2px;
                       left: -2px;
@@ -149,7 +149,7 @@ exports[`Nav renders Nav correctly 1`] = `
                     &:hover {
                       color: #0078d4;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }

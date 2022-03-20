@@ -109,7 +109,7 @@ exports[`DetailsList renders List correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -143,7 +143,7 @@ exports[`DetailsList renders List correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active){& {
                           -ms-high-contrast-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
@@ -396,7 +396,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -430,7 +430,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active){& {
                           -ms-high-contrast-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
@@ -844,7 +844,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -878,7 +878,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active){& {
                           -ms-high-contrast-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"

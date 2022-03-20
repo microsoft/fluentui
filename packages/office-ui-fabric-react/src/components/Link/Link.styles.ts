@@ -1,8 +1,8 @@
 import {
   getFocusStyle,
-  getGlobalClassNames,
-  HighContrastSelector
+  getGlobalClassNames
 } from '../../Styling';
+import { HighContrastSelector } from '../../utilities/styling/index';
 import {
   ILinkStyleProps,
   ILinkStyles

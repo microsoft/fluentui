@@ -68,7 +68,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -79,7 +79,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -175,7 +175,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -186,7 +186,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -282,7 +282,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -293,7 +293,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -389,7 +389,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -400,7 +400,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -496,7 +496,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -507,7 +507,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -603,7 +603,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -614,7 +614,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -710,7 +710,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -721,7 +721,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -817,7 +817,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -828,7 +828,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -924,7 +924,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -935,7 +935,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -1031,7 +1031,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1042,7 +1042,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -1138,7 +1138,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1149,7 +1149,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -1245,7 +1245,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1256,7 +1256,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -1352,7 +1352,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1363,7 +1363,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -1459,7 +1459,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1470,7 +1470,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -1566,7 +1566,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1577,7 +1577,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -1692,7 +1692,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1703,7 +1703,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -1799,7 +1799,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1810,7 +1810,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -1906,7 +1906,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1917,7 +1917,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -2013,7 +2013,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2024,7 +2024,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -2120,7 +2120,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2131,7 +2131,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -2227,7 +2227,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2238,7 +2238,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -2334,7 +2334,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2345,7 +2345,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -2441,7 +2441,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2452,7 +2452,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -2548,7 +2548,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2559,7 +2559,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -2655,7 +2655,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2666,7 +2666,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -2762,7 +2762,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2773,7 +2773,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -2869,7 +2869,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2880,7 +2880,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -2976,7 +2976,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2987,7 +2987,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -3083,7 +3083,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -3094,7 +3094,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -3190,7 +3190,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -3201,7 +3201,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:hover {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
