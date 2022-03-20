@@ -20,7 +20,7 @@ import * as checkStylesModule from './DetailsRowCheck.scss';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import * as stylesImport from './DetailsHeader.scss';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
-import { DragDropHelper } from './../../utilities/dragdrop';
+import { DragDropHelper } from './../../utilities/dragdrop/DragDropHelper';
 import { DetailsColumn, IDetailsColumnProps } from './../../components/DetailsList/DetailsColumn';
 
 const styles: any = stylesImport;
