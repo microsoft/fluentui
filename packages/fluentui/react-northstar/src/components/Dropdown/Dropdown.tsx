@@ -554,8 +554,8 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
       'aria-label': undefined,
       ...(ariaLabelledby && {
         'aria-labelledby': [ariaLabelledby].filter(l => !!l).join(' '),
-        ...(open && { 'aria-expanded': true }),
       }),
+      ...(open && { 'aria-expanded': true }),
     });
 
     const { onClick, onFocus, onBlur, onKeyDown, ...restTriggerButtonProps } = triggerButtonProps;
