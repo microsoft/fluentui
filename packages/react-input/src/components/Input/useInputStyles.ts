@@ -62,6 +62,7 @@ const useRootStyles = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     borderColor: tokens.colorCompoundBrandStroke,
     pressedBorderColor: tokens.colorCompoundBrandStrokePressed,
+    targetChild: 'input',
   }),
   small: {
     minHeight: fieldHeights.small,

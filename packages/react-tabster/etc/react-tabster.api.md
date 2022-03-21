@@ -14,6 +14,7 @@ export type BottomFocusIndicatorOptions = CreateFocusIndicatorStyleRuleOptions &
     borderRadius: string;
     borderColor: string;
     pressedBorderColor: string;
+    targetChild?: keyof JSX.IntrinsicElements;
 };
 
 // @public

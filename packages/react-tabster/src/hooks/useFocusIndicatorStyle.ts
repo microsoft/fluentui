@@ -105,6 +105,7 @@ export type BottomFocusIndicatorOptions = CreateFocusIndicatorStyleRuleOptions &
   borderRadius: string;
   borderColor: string;
   pressedBorderColor: string;
+  targetChild?: keyof JSX.IntrinsicElements;
 };
 
 /**
@@ -114,7 +115,26 @@ export type BottomFocusIndicatorOptions = CreateFocusIndicatorStyleRuleOptions &
  * @param options Configure the style of the focus indicator
  */
 export const getBottomFocusIndicator = (options: BottomFocusIndicatorOptions): GriffelStyle => {
-  const { selector = 'focus-within', borderWidth, borderRadius, borderColor, pressedBorderColor } = options;
+  const {
+    selector = 'focus-within',
+    borderWidth,
+    borderRadius,
+    borderColor,
+    pressedBorderColor,
+    targetChild,
+  } = options;
+
+  // disable default browser outline if `focus-within` selector is used.
+  const outlineStyle =
+    selector === 'focus-within'
+      ? {
+          [`& > ${targetChild}`]: {
+            ':focus-visible': {
+              outlineStyle: 'none',
+            },
+          },
+        }
+      : {};
 
   return {
     // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
@@ -165,5 +185,6 @@ export const getBottomFocusIndicator = (options: BottomFocusIndicatorOptions): G
       outlineStyle: 'solid',
       outlineColor: 'transparent',
     },
+    ...outlineStyle,
   };
 };
