@@ -25,7 +25,7 @@ The only layout variation is size differences, there are 2 sizes `medium` which 
 
 ## API
 
-The `Toolbar` will implement a `children` based API and will leverage the use of `context` in the interaction and data flows of child components.
+The `Toolbar` will implement a `children` based API and will leverage the use of `context` in the interaction and data flows of child components. To achieve `overflow` items once used inside `CommandBar` the component will leavarage from [priority-overflow](https://github.com/ling1726/priority-overflow)
 
 ### Toolbar
 
