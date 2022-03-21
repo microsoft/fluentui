@@ -36,7 +36,8 @@
     "@types/react-dom": "16.9.10",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-hook-form": "5.7.2"
+    "react-hook-form": "^5.7.2",
+    "@cactuslab/usepubsub": "^1.0.2"
   },
   "dependencies": {
     "@fluentui/react-accordion": "9.0.0-rc.1",

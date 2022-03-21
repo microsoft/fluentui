@@ -7,6 +7,7 @@ import { Button } from '@fluentui/react-button';
 import { Scenario } from './utils';
 
 import { useForm, Controller } from 'react-hook-form';
+import { usePubSub, PubSubProvider, PubSubContext } from '@cactuslab/usepubsub';
 
 const regexes = {
   onlyNameChars: /^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*$/,
@@ -19,43 +20,43 @@ const regexes = {
   hasSpecialChar: /^\S*[^0-9a-zA-ZÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ\s]\S*$/,
 };
 
-const narrateErrors = (name: keyof FormInputs, priority = 'polite') => {
-  const wrapper = document.createElement('div');
-  wrapper.setAttribute(
-    'style',
-    'position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;',
-  );
-  wrapper.setAttribute('aria-live', priority);
-  document.body.appendChild(wrapper);
-
-  window.setTimeout(() => {
-    const errorId = `${name}Errors`;
-    const error = document.getElementById(errorId);
-    if (!error) {
-      return;
-    }
-    const clone = error.cloneNode(true) as HTMLElement;
-    clone.removeAttribute('id');
-    wrapper.appendChild(clone);
-  }, 1000);
-
-  window.setTimeout(() => {
-    document.body.removeChild(wrapper);
-  }, 1300);
-};
-
 interface FormInputs {
   fullName: string;
   nickname: string;
   password: string;
 }
 
-export const RegistrationFormInputsAccessibilityScenario = () => {
+interface ValidationMessageProps {
+  id: string;
+  formValidation: PubSubContext;
+}
+const ValidationMessage: React.FC<ValidationMessageProps> = ({ id, formValidation, children }) => {
+  const [isAlerting, setIsAlerting] = React.useState(true);
+
+  const alert = React.useCallback(() => {
+    setIsAlerting(false);
+    setTimeout(() => setIsAlerting(true), 200);
+  }, [setIsAlerting]);
+
+  React.useEffect(() => {
+    formValidation.subscribe(id, alert);
+    return () => formValidation.unsubscribe(id, alert);
+  }, [formValidation]);
+  return (
+    <div role={isAlerting ? 'alert' : undefined} id={`${id}Errors`}>
+      {children}
+    </div>
+  );
+};
+
+const RegistrationFormInputsAccessibility = () => {
   const { control, handleSubmit, errors, formState } = useForm<FormInputs>({
     validateCriteriaMode: 'all',
     mode: 'onBlur',
     reValidateMode: 'onBlur',
   });
+
+  const formValidation = usePubSub();
 
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
@@ -70,7 +71,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
 
     // Narrate the errors if the error field is already focused
     if (document.activeElement === firstErrorField) {
-      narrateErrors(firstErrorName);
+      formValidation.publish(firstErrorName, 'validate');
       return;
     }
     if (firstErrorField) {
@@ -122,14 +123,14 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
                 onlyNameChars: value => regexes.onlyNameChars.test(value),
                 startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
                 always: () => {
-                  narrateErrors('fullName');
+                  formValidation.publish('fullName', 'validate');
                   return true;
                 },
               },
             }}
           />
           {errors.fullName?.types && (
-            <div id="fullNameErrors">
+            <ValidationMessage id="fullName" formValidation={formValidation}>
               {'required' in errors.fullName.types ? (
                 <p>Full name is required.</p>
               ) : (
@@ -146,7 +147,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
                   </ul>
                 </>
               )}
-            </div>
+            </ValidationMessage>
           )}
 
           <Label htmlFor="nickname">Nickname:</Label>
@@ -169,14 +170,14 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
                 onlyNameChars: value => regexes.onlyNameChars.test(value),
                 startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
                 always: () => {
-                  narrateErrors('nickname');
+                  formValidation.publish('nickname', 'validate');
                   return true;
                 },
               },
             }}
           />
           {errors.nickname?.types && (
-            <div id="nicknameErrors">
+            <ValidationMessage id="nickname" formValidation={formValidation}>
               <p>Nickname is invalid. It must:</p>
               <ul>
                 {('minLength' in errors.nickname.types || 'maxLength' in errors.nickname.types) && (
@@ -187,7 +188,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
                 )}
                 {'startsAndEndsWithLetter' in errors.nickname.types && <li>Start and end wit letter.</li>}
               </ul>
-            </div>
+            </ValidationMessage>
           )}
 
           <Label htmlFor="password">Password:</Label>
@@ -215,7 +216,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
                 hasSpecialChar: value => regexes.hasSpecialChar.test(value),
                 noWhitespace: value => regexes.noWhitespace.test(value),
                 always: () => {
-                  narrateErrors('password');
+                  formValidation.publish('password', 'validate');
                   return true;
                 },
               },
@@ -226,7 +227,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
           <input type="checkbox" id="showPassword" name="showPassword" onChange={onShowPasswordChange} />
 
           {errors.password?.types && (
-            <div id="passwordErrors">
+            <ValidationMessage id="password" formValidation={formValidation}>
               {'required' in errors.password.types ? (
                 <p>Password is required.</p>
               ) : (
@@ -249,7 +250,7 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
                   </ul>
                 </>
               )}
-            </div>
+            </ValidationMessage>
           )}
 
           <Button type="submit">Register</Button>
@@ -262,6 +263,12 @@ export const RegistrationFormInputsAccessibilityScenario = () => {
     </Scenario>
   );
 };
+
+export const RegistrationFormInputsAccessibilityScenario = () => (
+  <PubSubProvider>
+    <RegistrationFormInputsAccessibility />
+  </PubSubProvider>
+);
 
 export default {
   title: 'Accessibility Scenarios/ Registration form inputs',
