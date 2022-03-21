@@ -100,6 +100,10 @@ export const createCustomFocusIndicatorStyle = (
   [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]: style,
 });
 
+/**
+ * @param pressedBorderColor - color used in case user presses again the field.
+ * @param targetChild - primary element if style is applied to a wrapper.
+ */
 export type BottomFocusIndicatorOptions = CreateFocusIndicatorStyleRuleOptions & {
   borderWidth: string;
   borderRadius: string;
@@ -112,7 +116,7 @@ export type BottomFocusIndicatorOptions = CreateFocusIndicatorStyleRuleOptions &
  * Creates a bottom border focus indicator used in components such as Input and TextArea.
  * NOTE: This style uses border instead of outline
  *
- * @param options Configure the style of the focus indicator
+ * @param options - Configure the style of the focus indicator
  */
 export const getBottomFocusIndicator = (options: BottomFocusIndicatorOptions): GriffelStyle => {
   const {
