@@ -9,6 +9,7 @@ import {
   ZIndexes,
   getGlobalClassNames,
 } from '../../Styling';
+import { HighContrastSelector } from '../../utilities/styling/index';
 
 const GlobalClassNames = {
   root: 'ms-Nav',
@@ -114,7 +115,15 @@ export const getStyles = (
             backgroundColor: semanticColors.bodyBackgroundHovered,
             color: semanticColors.bodyText
           },
-        },
+          [HighContrastSelector]: {
+            border: 0,
+            selectors: {
+              ':focus': {
+                border: '1px solid WindowText'
+              }
+            }
+          }
+        }
       },
       isSelected && {
         color: palette.themePrimary,
