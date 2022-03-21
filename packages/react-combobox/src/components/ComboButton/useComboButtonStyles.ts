@@ -9,7 +9,7 @@ export const comboButtonClassName = 'fui-ComboButton';
 export const comboButtonClassNames: SlotClassNames<ComboButtonSlots> = {
   root: 'fui-ComboButton',
   content: 'fui-ComboButton__content',
-  dropdownIcon: 'fui-ComboButton__dropdownIcon',
+  expandIcon: 'fui-ComboButton__expandIcon',
 };
 
 /**
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
     },
   },
 
-  dropdownIcon: {
+  expandIcon: {
     flexGrow: 0,
     flexShrink: 0,
     ...shorthands.padding('4px'),
@@ -61,11 +61,11 @@ export const useComboButtonStyles_unstable = (state: ComboButtonState): ComboBut
 
   state.content.className = mergeClasses(comboButtonClassNames.content, styles.content, state.content.className);
 
-  if (state.dropdownIcon) {
-    state.dropdownIcon.className = mergeClasses(
-      comboButtonClassNames.dropdownIcon,
-      styles.dropdownIcon,
-      state.dropdownIcon.className,
+  if (state.expandIcon) {
+    state.expandIcon.className = mergeClasses(
+      comboButtonClassNames.expandIcon,
+      styles.expandIcon,
+      state.expandIcon.className,
     );
   }
 

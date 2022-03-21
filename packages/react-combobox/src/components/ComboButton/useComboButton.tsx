@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
-// import { ChevronDown20Regular as ChevronDownIcon } from '@fluentui/react-icons';
+import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import type { ComboButtonProps, ComboButtonState } from './ComboButton.types';
 
 /**
@@ -30,11 +30,13 @@ export const useComboButton_unstable = (
     primarySlotTagName: 'button',
   });
 
+  console.log('value is', value);
+
   return {
     components: {
       root: 'div',
       content: 'button',
-      dropdownIcon: 'span',
+      expandIcon: 'span',
     },
     root: resolveShorthand(props.root, {
       required: true,
@@ -52,12 +54,11 @@ export const useComboButton_unstable = (
         ...nativeProps.primary,
       },
     }),
-    dropdownIcon: resolveShorthand(props.dropdownIcon, {
+    expandIcon: resolveShorthand(props.expandIcon, {
       required: true,
       defaultProps: {
-        children: '>',
+        children: <ChevronDownIcon />,
       },
     }),
-    open: false,
   };
 };

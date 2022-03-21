@@ -5,7 +5,7 @@ export type OptionSlots = {
   root: NonNullable<Slot<'div'>>;
 
   /* The check icon that is visible for selected options */
-  check: Slot<'span'>;
+  checkIcon: Slot<'span'>;
 };
 
 export type OptionCommons = {

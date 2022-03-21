@@ -5,20 +5,19 @@ import * as React from 'react';
  * enum of actions available in any type of managed dropdown control
  * e.g. combobox, select, datepicker, menu
  */
-export enum DropdownActions {
-  Close,
-  CloseSelect,
-  First,
-  Last,
-  Next,
-  None,
-  Open,
-  PageDown,
-  PageUp,
-  Previous,
-  Select,
-  Type,
-}
+export type DropdownActions =
+  | 'Close'
+  | 'CloseSelect'
+  | 'First'
+  | 'Last'
+  | 'Next'
+  | 'None'
+  | 'Open'
+  | 'PageDown'
+  | 'PageUp'
+  | 'Previous'
+  | 'Select'
+  | 'Type';
 
 export interface DropdownActionOptions {
   open?: boolean;
@@ -38,52 +37,52 @@ export function getDropdownActionFromKey(
 
   // typing action occurs whether open or closed
   if (key.length === 1 && code !== keys.Space && !altKey && !ctrlKey && !metaKey) {
-    return DropdownActions.Type;
+    return 'Type';
   }
 
   // handle opening the dropdown if closed
   if (!open) {
     if (code === keys.ArrowDown || code === keys.ArrowUp || code === keys.Enter || code === keys.Space) {
-      return DropdownActions.Open;
+      return 'Open';
     }
 
     // if the dropdown is closed and an action did not match the above, do nothing
-    return DropdownActions.None;
+    return 'None';
   }
 
   // select or close actions
   if ((code === keys.ArrowUp && altKey) || code === keys.Enter || (!multiselect && code === keys.Space)) {
-    return DropdownActions.CloseSelect;
+    return 'CloseSelect';
   }
   if (code === keys.Tab || (multiselect && code === keys.Space)) {
-    return DropdownActions.Select;
+    return 'Select';
   }
   if (code === keys.Escape) {
-    return DropdownActions.Close;
+    return 'Close';
   }
 
   // navigation interactions
   if (code === keys.ArrowRight || code === keys.ArrowDown) {
-    return DropdownActions.Next;
+    return 'Next';
   }
   if (code === keys.ArrowLeft || code === keys.ArrowUp) {
-    return DropdownActions.Previous;
+    return 'Previous';
   }
   if (code === keys.Home) {
-    return DropdownActions.First;
+    return 'First';
   }
   if (code === keys.End) {
-    return DropdownActions.Last;
+    return 'Last';
   }
   if (code === keys.PageUp) {
-    return DropdownActions.PageUp;
+    return 'PageUp';
   }
   if (code === keys.PageDown) {
-    return DropdownActions.PageDown;
+    return 'PageDown';
   }
 
   // if nothing matched, return none
-  return DropdownActions.None;
+  return 'None';
 }
 
 /**
@@ -91,20 +90,20 @@ export function getDropdownActionFromKey(
  */
 export function getIndexFromAction(action: DropdownActions, currentIndex: number, maxIndex: number): number {
   switch (action) {
-    case DropdownActions.Next:
+    case 'Next':
       return Math.min(maxIndex, currentIndex + 1);
       break;
-    case DropdownActions.Previous:
+    case 'Previous':
       return Math.max(0, currentIndex - 1);
-    case DropdownActions.First:
+    case 'First':
       return 0;
-    case DropdownActions.Last:
+    case 'Last':
       return maxIndex;
-    case DropdownActions.PageDown:
+    case 'PageDown':
       return Math.min(maxIndex, currentIndex + 10);
-    case DropdownActions.PageUp:
+    case 'PageUp':
       return Math.max(0, currentIndex - 10);
-    // case DropdownActions.Type:
+    // case 'Type':
     //   // always prevent default and stop propagation when typing
     //   e.preventDefault();
     //   e.stopPropagation();

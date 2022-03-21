@@ -30,7 +30,7 @@ function getValidOptions(children: React.ReactNode): { keys: string[]; children:
         keys.push(...groupKeys);
         return React.cloneElement(child, {}, groupChildren);
       } else {
-        return child;
+        return React.cloneElement(child);
       }
     }
   });
@@ -53,7 +53,10 @@ export const useOptionCollection = (children: React.ReactNode): OptionCollection
     };
     const getIndexOfKey = (id: string) => optionKeys.indexOf(id);
 
-    const getOptionByKey = (key: string) => optionData.current[key];
+    const getOptionByKey = (key: string) => {
+      console.log('get option by key', key, optionData.current, 'returning', optionData.current[key]);
+      return optionData.current[key];
+    };
 
     return {
       collectionData: {

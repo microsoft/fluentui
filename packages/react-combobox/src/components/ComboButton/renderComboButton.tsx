@@ -10,8 +10,8 @@ export const renderComboButton_unstable = (state: ComboButtonState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      <slots.content {...slotProps.content}>{slotProps.content.children}</slots.content>
-      <slots.dropdownIcon {...slotProps.dropdownIcon} />
+      <slots.content {...slotProps.content} />
+      <slots.expandIcon {...slotProps.expandIcon} />
     </slots.root>
   );
 };

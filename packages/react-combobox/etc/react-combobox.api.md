@@ -76,7 +76,7 @@ export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content
 export type ComboButtonSlots = {
     root: NonNullable<Slot<'div'>>;
     content: NonNullable<Slot<'button'>>;
-    dropdownIcon: Slot<'span'>;
+    expandIcon: Slot<'span'>;
 };
 
 // @public

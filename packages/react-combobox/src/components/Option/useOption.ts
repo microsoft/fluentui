@@ -11,7 +11,7 @@ function getValueString(value: string | undefined, children: React.ReactNode) {
   }
 
   let valueString = '';
-  React.Children.map(children, child => {
+  React.Children.forEach(children, child => {
     if (typeof child === 'string') {
       valueString += child;
     }
@@ -40,8 +40,11 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       unRegisterOption: ctx.unRegisterOption,
     }),
   );
-  const { id = `${idBase}-${props.fluentKey}`, fluentKey: key, disabled, value } = props;
+  const { id, fluentKey: key, disabled, value } = props;
   const selected = key ? selectedKeys.indexOf(key) > -1 : false;
+
+  // use the id if provided, otherwise construct id from key & idBase
+  const optionId = id || key ? `${idBase}-${props.fluentKey}` : undefined;
 
   const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (disabled) {
@@ -56,27 +59,27 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   // register option data with context
   React.useEffect(() => {
     const optionValue = getValueString(value, props.children);
-    key && registerOption({ key, id, value: optionValue });
+    key && optionId && registerOption({ key, id: optionId, value: optionValue });
 
     return () => {
       key && unRegisterOption(key);
     };
-  }, [registerOption, unRegisterOption, id, key, value, props.children]);
+  }, [registerOption, unRegisterOption, optionId, key, value, props.children]);
 
   return {
     components: {
       root: 'div',
-      check: 'span',
+      checkIcon: 'span',
     },
     root: getNativeElementProps('div', {
       ref,
       role: 'option',
       'aria-selected': `${selected}`,
-      id,
+      id: optionId,
       ...props,
       onClick,
     }),
-    check: resolveShorthand(props.check, {
+    checkIcon: resolveShorthand(props.checkIcon, {
       required: true,
       defaultProps: {
         'aria-hidden': 'true',

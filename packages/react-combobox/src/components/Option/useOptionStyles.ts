@@ -8,7 +8,7 @@ import type { OptionSlots, OptionState } from './Option.types';
 export const optionClassName = 'fui-Option';
 export const optionClassNames: SlotClassNames<OptionSlots> = {
   root: 'fui-Option',
-  check: 'fui-Option__check',
+  checkIcon: 'fui-Option__checkIcon',
 };
 
 /**
@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   // these are testing-only styles
   selected: {},
 
-  check: {
+  checkIcon: {
     ...shorthands.padding('4px'),
     visibility: 'hidden',
   },
@@ -61,11 +61,11 @@ export const useOptionStyles_unstable = (state: OptionState): OptionState => {
     state.root.className,
   );
 
-  if (state.check) {
-    state.check.className = mergeClasses(
-      optionClassNames.check,
-      styles.check,
-      state.check.className,
+  if (state.checkIcon) {
+    state.checkIcon.className = mergeClasses(
+      optionClassNames.checkIcon,
+      styles.checkIcon,
+      state.checkIcon.className,
       selected && styles.selectedCheck,
     );
   }

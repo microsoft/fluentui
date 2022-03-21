@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, useId } from '@fluentui/react-utilities';
 import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
 import { useSelection } from '../../utils/useSelection';
-import { DropdownActions, getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
+import { getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ListboxProps, ListboxState } from './Listbox.types';
 import { OptionCollectionState, OptionValue } from '../../utils/OptionCollection.types';
@@ -46,8 +46,8 @@ export const useListbox_unstable = (
     let newIndex = activeIndex;
 
     switch (action) {
-      case DropdownActions.Select:
-      case DropdownActions.CloseSelect:
+      case 'Select':
+      case 'CloseSelect':
         activeOption && selectKey(event, activeOption.key);
         break;
       default:

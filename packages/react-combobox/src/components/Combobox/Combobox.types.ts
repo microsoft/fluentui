@@ -55,9 +55,19 @@ export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> &
   ComboboxCommons &
   SelectionProps & {
     /**
+     * The default open state when open is uncontrolled
+     */
+    defaultOpen?: boolean;
+
+    /**
+     * The default value when the combobox's value is uncontrolled
+     */
+    defaultValue?: string;
+
+    /**
      * Callback when the open/closed state of the dropdown changes
      */
-    onOpenChange?: (e: OpenEvents, data: OnOpenChangeData) => void;
+    onOpenChange?: (e: ComboboxOpenEvents, data: ComboboxOpenChangeData) => void;
 
     /**
      * Configure the positioning of the combobox dropdown
@@ -88,9 +98,9 @@ export type ComboboxState = ComponentState<ComboboxSlots> &
 /**
  * Data for the Combobox onOpenChange event.
  */
-export type OnOpenChangeData = {
+export type ComboboxOpenChangeData = {
   open: boolean;
 };
 
 /* Possible event types for onOpen */
-export type OpenEvents = React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>;
+export type ComboboxOpenEvents = React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>;

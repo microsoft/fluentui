@@ -7,12 +7,12 @@ import {
   useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import { DropdownActions, getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
+import { getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
 import { OptionCollectionState, OptionValue } from '../../utils/OptionCollection.types';
 import { useSelection } from '../../utils/useSelection';
 import { Listbox } from '../Listbox/Listbox';
 import { ComboButton } from '../ComboButton/ComboButton';
-import type { ComboboxProps, ComboboxState, OpenEvents } from './Combobox.types';
+import type { ComboboxProps, ComboboxState, ComboboxOpenEvents } from './Combobox.types';
 
 /**
  * Create the state required to render Combobox.
@@ -28,15 +28,7 @@ export const useCombobox_unstable = (
   optionCollection: OptionCollectionState,
   ref: React.Ref<HTMLButtonElement>,
 ): ComboboxState => {
-  const {
-    inline = false,
-    multiselect,
-    onOpenChange,
-    open: controlledOpen,
-    placeholder,
-    positioning,
-    value: controlledValue,
-  } = props;
+  const { inline = false, multiselect, onOpenChange, placeholder, positioning } = props;
   const {
     options,
     collectionData: { count, getOptionAtIndex, getIndexOfKey, getOptionByKey },
@@ -47,18 +39,19 @@ export const useCombobox_unstable = (
   const [selectedKeys, selectKey] = useSelection(props);
 
   const [value, setValue] = useControllableState({
-    state: controlledValue,
+    state: props.value,
+    defaultState: props.defaultValue,
     initialState: undefined,
   });
 
   const [open, setOpenState] = useControllableState({
-    state: controlledOpen,
+    state: props.open,
+    defaultState: props.defaultOpen,
     initialState: false,
   });
 
   // popper
   const popperOptions = {
-    enabled: open,
     position: 'below' as const,
     align: 'start' as const,
     ...resolvePositioningShorthand(positioning),
@@ -79,13 +72,16 @@ export const useCombobox_unstable = (
       newValue = selectedKeys.map(key => getOptionByKey(key).value).join(', ');
     } else {
       const selectedOption = getOptionByKey(selectedKeys[0]);
-      newValue = selectedOption ? selectedOption.value : placeholder;
+      console.log('selected key:', selectedKeys[0], 'option:', selectedOption);
+      newValue = selectedOption ? selectedOption.value : undefined;
     }
+
+    console.log('set value to', newValue);
 
     setValue(newValue);
   }, [getOptionByKey, multiselect, placeholder, selectedKeys, setValue]);
 
-  const setOpen = (event: OpenEvents, newState: boolean) => {
+  const setOpen = (event: ComboboxOpenEvents, newState: boolean) => {
     onOpenChange?.(event, { open: newState });
     setOpenState(newState);
   };
@@ -112,20 +108,20 @@ export const useCombobox_unstable = (
     let newIndex = activeIndex;
 
     switch (action) {
-      case DropdownActions.Open:
+      case 'Open':
         event.preventDefault();
         setOpen(event, true);
         break;
-      case DropdownActions.Close:
+      case 'Close':
         // stop propagation for escape key to avoid dismissing any parent popups
         event.stopPropagation();
         event.preventDefault();
         setOpen(event, false);
         break;
-      case DropdownActions.CloseSelect:
+      case 'CloseSelect':
         !multiselect && setOpen(event, false);
       // fallthrough
-      case DropdownActions.Select:
+      case 'Select':
         activeOption && selectKey(event, activeOption.key);
         event.preventDefault();
         break;

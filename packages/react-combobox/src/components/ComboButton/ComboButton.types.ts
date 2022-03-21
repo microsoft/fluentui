@@ -8,7 +8,7 @@ export type ComboButtonSlots = {
   content: NonNullable<Slot<'button'>>;
 
   /* The dropdown arrow icon */
-  dropdownIcon: Slot<'span'>;
+  expandIcon: Slot<'span'>;
 };
 
 export type ComboButtonCommons = {
@@ -32,18 +32,9 @@ export type ComboButtonCommons = {
 /**
  * ComboButton Props
  */
-export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> &
-  ComboButtonCommons & {
-    /** ComboButton is similar to a readonly input, and can't have children. */
-    // TODO: sort out Slot types for children: never
-    // children?: never;
-  };
+export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & ComboButtonCommons;
 
 /**
  * State used in rendering ComboButton
  */
-export type ComboButtonState = ComponentState<ComboButtonSlots> &
-  ComboButtonCommons & {
-    /* The open state of the parent Combobox, used to set accessibility properties */
-    open: boolean;
-  };
+export type ComboButtonState = ComponentState<ComboButtonSlots> & ComboButtonCommons;
