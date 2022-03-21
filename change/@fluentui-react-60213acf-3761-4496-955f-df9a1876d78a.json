@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding style files to export maps.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
