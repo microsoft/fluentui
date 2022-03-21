@@ -9,6 +9,7 @@ import {
   ZIndexes,
   getGlobalClassNames,
 } from '../../Styling';
+import { HighContrastSelector } from '../../utilities/styling/index';
 
 const GlobalClassNames = {
   root: 'ms-Nav',
@@ -88,8 +89,7 @@ export const getStyles = (
       {
         display: 'block',
         position: 'relative',
-        color: semanticColors.bodyText,
-        backgroundColor: semanticColors.bodyBackground,
+        color: semanticColors.bodyText
       },
       isExpanded && 'is-expanded',
       isSelected && 'is-selected'
@@ -112,14 +112,22 @@ export const getStyles = (
         paddingRight: rightPadding,
         selectors: {
           '.ms-Nav-compositeLink:hover &': {
-            backgroundColor: palette.neutralLighterAlt,
+            backgroundColor: semanticColors.bodyBackgroundHovered,
             color: semanticColors.bodyText
           },
-        },
+          [HighContrastSelector]: {
+            border: 0,
+            selectors: {
+              ':focus': {
+                border: '1px solid WindowText'
+              }
+            }
+          }
+        }
       },
       isSelected && {
         color: palette.themePrimary,
-        backgroundColor: palette.neutralLighter,
+        backgroundColor: semanticColors.bodyBackgroundChecked,
         selectors: {
           '&:after': {
             borderLeft: `2px solid ${palette.themePrimary}`,
@@ -160,11 +168,11 @@ export const getStyles = (
           },
           '&:hover': {
             color: semanticColors.bodyText,
-            backgroundColor: palette.neutralLighterAlt
+            backgroundColor: semanticColors.bodyBackgroundHovered
           },
           '$compositeLink:hover &': {
             color: semanticColors.bodyText,
-            backgroundColor: palette.neutralLighterAlt
+            backgroundColor: semanticColors.bodyBackgroundHovered
           },
         }
       },

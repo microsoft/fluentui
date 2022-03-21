@@ -9,7 +9,6 @@ exports[`Nav renders Nav correctly 1`] = `
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
-  role="presentation"
 >
   <nav
     aria-label={undefined}
@@ -67,7 +66,6 @@ exports[`Nav renders Nav correctly 1`] = `
               className=
                   ms-Nav-compositeLink
                   {
-                    background-color: #ffffff;
                     color: #333333;
                     display: block;
                     position: relative;
@@ -137,8 +135,14 @@ exports[`Nav renders Nav correctly 1`] = `
                       top: -2px;
                     }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #f8f8f8;
+                      background-color: #f4f4f4;
                       color: #333333;
+                    }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      border: 0px;
+                    }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+                      border: 1px solid WindowText;
                     }
                     &:hover {
                       color: #0078d4;
