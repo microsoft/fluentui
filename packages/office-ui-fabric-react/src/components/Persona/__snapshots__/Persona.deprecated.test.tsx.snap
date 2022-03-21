@@ -403,7 +403,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
         className=
             ms-Persona-initials
             {
-              background-color: #2D89EF;
+              background-color: #0078D4;
               border-radius: 50%;
               color: #ffffff;
               font-size: 17px;
