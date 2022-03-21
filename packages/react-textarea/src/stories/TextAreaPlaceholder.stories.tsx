@@ -17,7 +17,7 @@ export const Placeholder = () => {
   return (
     <div className={styles.container}>
       <Label htmlFor={textareaId}>TextArea with placeholder.</Label>
-      <TextArea id={textareaId} placeholder="Textholder text." />
+      <TextArea id={textareaId} placeholder="type here..." />
     </div>
   );
 };

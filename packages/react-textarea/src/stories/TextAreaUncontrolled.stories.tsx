@@ -22,8 +22,9 @@ export const Uncontrolled = () => {
 
   return (
     <div className={styles.container}>
-      <Label htmlFor={textareaId}>Uncontrolled TextArea with placeholder.</Label>
-      <TextArea id={textareaId} onChange={onChange} placeholder="Check console for new value." />
+      <Label htmlFor={textareaId}>Uncontrolled TextArea.</Label>
+      <TextArea id={textareaId} aria-describedby="desc" onChange={onChange} placeholder="type here..." />
+      <span id="desc">Check console for new value.</span>
     </div>
   );
 };

@@ -18,7 +18,7 @@ export const Disabled = () => {
   return (
     <div className={styles.container}>
       <Label htmlFor={disabledId}>Disabled TextArea.</Label>
-      <TextArea id={disabledId} disabled placeholder="Disabled TextArea" />
+      <TextArea id={disabledId} disabled />
     </div>
   );
 };

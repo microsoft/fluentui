@@ -22,19 +22,19 @@ export const Resize = () => {
     <div className={styles.container}>
       <div>
         <Label htmlFor={noneId}>TextArea with resize set to "none".</Label>
-        <TextArea id={noneId} placeholder="Placeholder text" resize="none" />
+        <TextArea id={noneId} resize="none" />
       </div>
       <div>
         <Label htmlFor={verticalId}>TextArea with resize set to "vertical".</Label>
-        <TextArea id={verticalId} placeholder="Placeholder text" resize="vertical" />
+        <TextArea id={verticalId} resize="vertical" />
       </div>
       <div>
         <Label htmlFor={horizontalId}>TextArea with resize set to "horizontal".</Label>
-        <TextArea id={horizontalId} placeholder="Placeholder text" resize="horizontal" />
+        <TextArea id={horizontalId} resize="horizontal" />
       </div>
       <div>
         <Label htmlFor={bothId}>TextArea with resize set to "both".</Label>
-        <TextArea id={bothId} placeholder="Placeholder text" resize="both" />
+        <TextArea id={bothId} resize="both" />
       </div>
     </div>
   );

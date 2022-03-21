@@ -24,15 +24,15 @@ export const Appearance = () => {
     <div className={styles.container}>
       <div>
         <Label htmlFor={outlineId}>TextArea with Outline appearance.</Label>
-        <TextArea id={outlineId} appearance="outline" placeholder="Placeholder text" resize="both" />
+        <TextArea id={outlineId} appearance="outline" placeholder="type here..." resize="both" />
       </div>
       <div className={styles.filledDarker}>
         <Label htmlFor={filledDarkerId}>TextArea with Filled Darker appearance.</Label>
-        <TextArea id={filledDarkerId} appearance="filledDarker" placeholder="Placeholder text" resize="both" />
+        <TextArea id={filledDarkerId} appearance="filledDarker" placeholder="type here..." resize="both" />
       </div>
       <div>
         <Label htmlFor={filledLighterId}>TextArea with Filled Lighter appearance.</Label>
-        <TextArea id={filledLighterId} appearance="filledLighter" placeholder="Placeholder text" resize="both" />
+        <TextArea id={filledLighterId} appearance="filledLighter" placeholder="type here..." resize="both" />
       </div>
     </div>
   );
