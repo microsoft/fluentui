@@ -28,7 +28,6 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
     >
       <div
         className="ms-BasePicker-text"
-        role="list"
       >
         <span
           id="selected-items-id__0"
@@ -91,7 +90,6 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
     >
       <div
         className="ms-BasePicker-text"
-        role="list"
       >
         <span
           id="selected-items-id__69"
