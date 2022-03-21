@@ -10,7 +10,7 @@ if (!configPath || !rootPath) {
     'Unable to find jest.config.js relative to currently opened file. Run debug-test from an open source file in a jest enabled project.',
   );
 } else {
-  const jestCli = require.resolve('jest-cli/bin/jest.js');
+  const jestCli = require.resolve('jest-cli/bin/jest');
   process.chdir(path.dirname(configPath));
   require(jestCli);
 }

@@ -7,11 +7,12 @@ const libPath = path.resolve(process.cwd(), 'lib');
 const srcPath = path.resolve(process.cwd(), 'src');
 // Temporary hack: only use tsbuildinfo file for things under packages/fluentui
 const useTsBuildInfo =
-  /[\\/]packages[\\/]fluentui[\\/]/.test(process.cwd()) && path.basename(process.cwd()) !== 'perf-test';
+  /[\\/]packages[\\/]fluentui[\\/]/.test(process.cwd()) && path.basename(process.cwd()) !== 'perf-test-northstar';
 
 function prepareTsTaskConfig(options: TscTaskOptions) {
   // docs say pretty is on by default, but it's actually disabled when tsc is run in a
   // non-TTY context (which is what just-scripts tscTask does)
+  // https://github.com/nrwl/nx/issues/9069#issuecomment-1048028504
   options.pretty = true;
 
   if (getJustArgv().production) {

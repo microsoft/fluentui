@@ -1,23 +1,19 @@
-import type { TabState } from './Tab.types';
+import type { TabSlots, TabState } from './Tab.types';
 
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
+import { tabPendingDesignTokens } from '../../tab.constants';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `tabClassNames.root` instead.
+ */
 export const tabClassName = 'fui-Tab';
-
-// TODO: These constants should be replaced with design tokens
-const pendingTheme = {
-  tabPadding: {
-    medium: '10px',
-    small: '6px',
-  },
-  indicatorThickness: '2px',
-  gap: { medium: '6px', small: '2px' },
-  contentPadding: {
-    medium: '2px',
-    small: '2px',
-  },
+export const tabClassNames: SlotClassNames<TabSlots> = {
+  root: 'fui-Tab',
+  icon: 'fui-Tab__icon',
+  content: 'fui-Tab__content',
 };
 
 /**
@@ -29,14 +25,14 @@ const useRootStyles = makeStyles({
     ...shorthands.borderColor('none'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.borderWidth(tokens.strokeWidthThin),
-    columnGap: pendingTheme.gap.medium,
+    columnGap: tabPendingDesignTokens.gap.medium,
     cursor: 'pointer',
     display: 'flex',
     flexDirection: 'row',
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding(pendingTheme.tabPadding.medium),
+    ...shorthands.padding(tabPendingDesignTokens.tabPadding.medium),
     position: 'relative',
     ...shorthands.overflow('hidden'),
   },
@@ -49,8 +45,8 @@ const useRootStyles = makeStyles({
     justifyContent: 'flex-start',
   },
   small: {
-    ...shorthands.padding(pendingTheme.tabPadding.small),
-    columnGap: pendingTheme.gap.small,
+    ...shorthands.padding(tabPendingDesignTokens.tabPadding.small),
+    columnGap: tabPendingDesignTokens.gap.small,
   },
   subtle: {
     ':hover': {
@@ -90,10 +86,10 @@ const useHorizontalIndicatorStyles = makeStyles({
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
-      height: pendingTheme.indicatorThickness,
+      height: tabPendingDesignTokens.indicatorThickness,
       bottom: '0',
-      left: pendingTheme.tabPadding.medium,
-      right: pendingTheme.tabPadding.medium,
+      left: tabPendingDesignTokens.tabPadding.medium,
+      right: tabPendingDesignTokens.tabPadding.medium,
     },
     ':hover': {
       ':after': {
@@ -101,20 +97,10 @@ const useHorizontalIndicatorStyles = makeStyles({
       },
     },
   },
-  selected: {
-    ':after': {
-      backgroundColor: tokens.colorBrandStroke1,
-    },
-    ':hover': {
-      ':after': {
-        backgroundColor: tokens.colorBrandStroke1,
-      },
-    },
-  },
   small: {
     ':after': {
-      left: pendingTheme.tabPadding.small,
-      right: pendingTheme.tabPadding.small,
+      left: tabPendingDesignTokens.tabPadding.small,
+      right: tabPendingDesignTokens.tabPadding.small,
     },
   },
 });
@@ -130,10 +116,10 @@ const useVerticalIndicatorStyles = makeStyles({
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
-      width: pendingTheme.indicatorThickness,
+      width: tabPendingDesignTokens.indicatorThickness,
       left: '0',
-      top: pendingTheme.tabPadding.medium,
-      bottom: pendingTheme.tabPadding.medium,
+      top: tabPendingDesignTokens.tabPadding.medium,
+      bottom: tabPendingDesignTokens.tabPadding.medium,
     },
     ':hover': {
       ':before': {
@@ -141,20 +127,10 @@ const useVerticalIndicatorStyles = makeStyles({
       },
     },
   },
-  selected: {
-    ':before': {
-      backgroundColor: tokens.colorBrandStroke1,
-    },
-    ':hover': {
-      ':before': {
-        backgroundColor: tokens.colorBrandStroke1,
-      },
-    },
-  },
   small: {
     ':before': {
-      top: pendingTheme.tabPadding.small,
-      bottom: pendingTheme.tabPadding.small,
+      top: tabPendingDesignTokens.tabPadding.small,
+      bottom: tabPendingDesignTokens.tabPadding.small,
     },
   },
 });
@@ -187,19 +163,19 @@ const useIconStyles = makeStyles({
  */
 const useContentStyles = makeStyles({
   base: {
-    paddingLeft: pendingTheme.contentPadding.medium,
-    paddingRight: pendingTheme.contentPadding.medium,
+    paddingLeft: tabPendingDesignTokens.contentPadding.medium,
+    paddingRight: tabPendingDesignTokens.contentPadding.medium,
   },
   small: {
-    paddingLeft: pendingTheme.contentPadding.small,
-    paddingRight: pendingTheme.contentPadding.small,
+    paddingLeft: tabPendingDesignTokens.contentPadding.small,
+    paddingRight: tabPendingDesignTokens.contentPadding.small,
   },
 });
 
 /**
  * Apply styling to the Tab slots based on the state
  */
-export const useTabStyles = (state: TabState): TabState => {
+export const useTabStyles_unstable = (state: TabState): TabState => {
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
   const horizontalIndicatorStyles = useHorizontalIndicatorStyles();
@@ -208,22 +184,27 @@ export const useTabStyles = (state: TabState): TabState => {
   const contentStyles = useContentStyles();
 
   state.root.className = mergeClasses(
-    tabClassName,
+    tabClassNames.root,
     rootStyles.base,
     focusStyles.base,
     state.size === 'small' && rootStyles.small,
     state.appearance === 'subtle' && rootStyles.subtle,
     state.vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base,
     state.size === 'small' && (state.vertical ? verticalIndicatorStyles.small : horizontalIndicatorStyles.small),
-    state.selected && (state.vertical ? verticalIndicatorStyles.selected : horizontalIndicatorStyles.selected),
     state.root.className,
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
+    state.icon.className = mergeClasses(
+      tabClassNames.icon,
+      iconStyles.base,
+      iconStyles[state.size],
+      state.icon.className,
+    );
   }
 
   state.content.className = mergeClasses(
+    tabClassNames.content,
     contentStyles.base,
     state.size === 'small' && contentStyles.small,
     state.content.className,

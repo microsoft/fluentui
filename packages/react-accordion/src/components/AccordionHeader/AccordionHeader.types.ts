@@ -1,5 +1,5 @@
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
@@ -16,22 +16,25 @@ export type AccordionHeaderContextValues = {
 };
 
 export type AccordionHeaderSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  /**
+   * The element wrapping the button. By default this is a div, but can be a heading.
+   */
+  root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
   /**
    * The component to be used as button in heading
    */
-  button: ARIAButtonShorthandProps;
+  button: NonNullable<Slot<ARIAButtonSlotProps>>;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  expandIcon: IntrinsicShorthandProps<'span'>;
+  expandIcon: Slot<'span'>;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  icon?: IntrinsicShorthandProps<'div'>;
+  icon?: Slot<'div'>;
 };
 
-export type AccordionHeaderCommons = {
+type AccordionHeaderCommons = {
   /**
    * Size of spacing in the heading
    */
@@ -46,7 +49,7 @@ export type AccordionHeaderCommons = {
   inline: boolean;
 };
 
-export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
+export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & Partial<AccordionHeaderCommons>;
 
 export type AccordionHeaderState = ComponentState<AccordionHeaderSlots> &
   AccordionHeaderCommons &

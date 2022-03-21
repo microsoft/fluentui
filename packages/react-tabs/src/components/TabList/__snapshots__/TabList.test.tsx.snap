@@ -1,313 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TabList renders default correctly 1`] = `
-<div>
-  <div
-    class="fui-TabList"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
-    role="tablist"
-  >
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        First
-      </span>
-    </div>
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        Second
-      </span>
-    </div>
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        Third
-      </span>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`TabList renders second selected (default) correctly 1`] = `
-<div>
-  <div
-    class="fui-TabList"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
-    role="tablist"
-  >
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        First
-      </span>
-    </div>
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        Second
-      </span>
-    </div>
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        Third
-      </span>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`TabList renders second selected correctly 1`] = `
-<div>
-  <div
-    class="fui-TabList"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
-    role="tablist"
-  >
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        First
-      </span>
-    </div>
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        Second
-      </span>
-    </div>
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        Third
-      </span>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`TabList renders small size and vertical correctly 1`] = `
-<div>
-  <div
-    class="fui-TabList"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1}}"
-    role="tablist"
-  >
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        First
-      </span>
-    </div>
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        Second
-      </span>
-    </div>
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        Third
-      </span>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`TabList renders small size correctly 1`] = `
-<div>
-  <div
-    class="fui-TabList"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
-    role="tablist"
-  >
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        First
-      </span>
-    </div>
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        Second
-      </span>
-    </div>
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        Third
-      </span>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`TabList renders subtle appearance correctly 1`] = `
-<div>
-  <div
-    class="fui-TabList"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
-    role="tablist"
-  >
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        First
-      </span>
-    </div>
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        Second
-      </span>
-    </div>
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        Third
-      </span>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`TabList renders vertical correctly 1`] = `
-<div>
-  <div
-    class="fui-TabList"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1}}"
-    role="tablist"
-  >
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        First
-      </span>
-    </div>
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        Second
-      </span>
-    </div>
-    <div
-      class="fui-Tab"
-      role="tab"
-      tabindex="0"
-    >
-      <span
-        class=""
-      >
-        Third
-      </span>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`TabList renders with no tabs 1`] = `
 <div>
   <div
@@ -315,5 +7,49 @@ exports[`TabList renders with no tabs 1`] = `
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
     role="tablist"
   />
+</div>
+`;
+
+exports[`TabList renders with tabs 1`] = `
+<div>
+  <div
+    class="fui-TabList"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
+    role="tablist"
+  >
+    <div
+      class="fui-Tab"
+      role="tab"
+      tabindex="0"
+    >
+      <span
+        class="fui-Tab__content"
+      >
+        First
+      </span>
+    </div>
+    <div
+      class="fui-Tab"
+      role="tab"
+      tabindex="0"
+    >
+      <span
+        class="fui-Tab__content"
+      >
+        Second
+      </span>
+    </div>
+    <div
+      class="fui-Tab"
+      role="tab"
+      tabindex="0"
+    >
+      <span
+        class="fui-Tab__content"
+      >
+        Third
+      </span>
+    </div>
+  </div>
 </div>
 `;

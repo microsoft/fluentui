@@ -1,4 +1,4 @@
-import { FontWeightProperty } from 'csstype';
+import { Property } from 'csstype';
 
 import { pxToRem } from '../../../../utils';
 
@@ -9,7 +9,7 @@ export interface ButtonVariables {
   loadingMinWidth: string;
   maxWidth: string;
   borderRadius: string;
-  contentFontWeight: FontWeightProperty;
+  contentFontWeight: Property.FontWeight;
   contentFontSize: string;
   contentLineHeight: string;
 

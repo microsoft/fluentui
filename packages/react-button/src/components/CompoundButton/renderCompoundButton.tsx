@@ -5,20 +5,20 @@ import type { CompoundButtonSlots, CompoundButtonState } from './CompoundButton.
 /**
  * Renders a CompoundButton component by passing the state defined props to the appropriate slots.
  */
-export const renderCompoundButton = (state: CompoundButtonState) => {
+export const renderCompoundButton_unstable = (state: CompoundButtonState) => {
   const { slots, slotProps } = getSlots<CompoundButtonSlots>(state);
   const { iconOnly, iconPosition } = state;
 
   return (
     <slots.root {...slotProps.root}>
-      {iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
+      {iconPosition !== 'after' && slots.icon && <slots.icon {...slotProps.icon} />}
       {!iconOnly && (
         <slots.contentContainer {...slotProps.contentContainer}>
           {slotProps.root.children}
-          <slots.secondaryContent {...slotProps.secondaryContent} />
+          {slots.secondaryContent && <slots.secondaryContent {...slotProps.secondaryContent} />}
         </slots.contentContainer>
       )}
-      {iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
+      {iconPosition === 'after' && slots.icon && <slots.icon {...slotProps.icon} />}
     </slots.root>
   );
 };

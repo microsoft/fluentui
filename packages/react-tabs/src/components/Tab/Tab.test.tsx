@@ -10,6 +10,15 @@ describe('Tab', () => {
   isConformant({
     Component: Tab,
     displayName: 'Tab',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+          },
+        },
+      ],
+    },
   });
 
   const defaultContext: TabListContextValue = {
@@ -17,20 +26,16 @@ describe('Tab', () => {
     size: 'medium',
     vertical: false,
     // eslint-disable-next-line @typescript-eslint/no-empty-function
+    onRegister: () => {},
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    onUnregister: () => {},
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     onSelect: () => {},
   };
 
-  it.each([
-    ['default', { ...defaultContext }],
-    ['subtle appearance', { ...defaultContext, appearance: 'subtle' }],
-    ['vertical', { ...defaultContext, vertical: true }],
-    ['small size', { ...defaultContext, size: 'small' }],
-    ['small size and vertical', { ...defaultContext, size: 'small', vertical: true }],
-    ['selected', { ...defaultContext, selectedValue: '1' }],
-    ['not selected', { ...defaultContext, selectedValue: '2' }],
-  ])('renders %s correctly', (_testName, tabList) => {
+  it('renders correctly', () => {
     const contextValues = {
-      tabList: tabList as TabListContextValue,
+      tabList: { ...defaultContext },
     };
 
     const result = render(

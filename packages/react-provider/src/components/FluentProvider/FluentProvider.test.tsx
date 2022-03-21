@@ -18,7 +18,6 @@ describe('FluentProvider', () => {
     disabledTests: ['component-handles-classname'],
     Component: FluentProvider,
     displayName: 'FluentProvider',
-    skipAsPropTests: true,
     helperComponents: [ProviderContext.Provider, TextDirectionProvider],
   });
 

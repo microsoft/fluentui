@@ -16,7 +16,7 @@ const v8ReferencePackages = {
   node: ['codemods'],
 };
 const convergedReferencePackages = {
-  react: ['react-menu'],
+  react: ['react-provider'],
   node: ['babel-make-styles'],
 };
 
@@ -204,12 +204,10 @@ function replaceVersionsFromReference(
   }
 
   if (answers.isConverged) {
-    // Update the version and beachball config in package.json to match the current v9 ones
-    if (packageJsons[0].version?.[0] === '9') {
-      newPackageJson.version = packageJsons[0].version;
-    } else {
+    if (packageJsons[0].version?.[0] !== '9') {
       throw new Error(`Converged reference package ${packageJsons[0].name} does not appear to have version 9.x`);
     }
+    // Update beachball config in package.json to match the current v9
     if (packageJsons[0].beachball) {
       newPackageJson.beachball = packageJsons[0].beachball;
     }

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Meta } from '@storybook/react';
 import { Input } from '../index';
 
+import descriptionMd from './InputDescription.md';
 export * from './InputDefault.stories';
 export * from './InputAppearance.stories';
 export * from './InputContentBeforeAfter.stories';
@@ -14,9 +15,15 @@ export * from './InputUncontrolled.stories';
 export * from './InputControlled.stories';
 
 const meta: Meta = {
-  title: 'Components/Input',
+  title: 'Preview Components/Input',
   component: Input,
-
+  parameters: {
+    docs: {
+      description: {
+        component: descriptionMd,
+      },
+    },
+  },
   decorators: [
     (Story, context) => (
       <div

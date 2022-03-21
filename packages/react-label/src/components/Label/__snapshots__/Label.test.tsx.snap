@@ -10,7 +10,7 @@ exports[`Label renders a custom asterisk 1`] = `
       I'm a label
       <span
         aria-hidden="true"
-        class=""
+        class="fui-Label__required"
       >
         foo
       </span>

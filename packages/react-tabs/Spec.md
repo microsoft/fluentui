@@ -251,8 +251,8 @@ Each tab has an icon slot.
 
 ```ts
 export type TabSlots = {
-  root: IntrinsicShorthandProps<'div'>;
-  icon?: IntrinsicShorthandProps<'span'>;
+  root: IntrinsicSlotProps<'div'>;
+  icon?: IntrinsicSlotProps<'span'>;
 };
 ```
 
@@ -266,7 +266,7 @@ The tab list only has the root slot.
 
 ```ts
 export type TabListSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  root: IntrinsicSlotProps<'div'>;
 };
 ```
 

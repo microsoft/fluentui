@@ -1,6 +1,5 @@
 // Utilities
 export {
-  RendererContext,
   RendererProvider,
   __styles,
   createDOMRenderer,
@@ -9,17 +8,17 @@ export {
   mergeClasses,
   renderToStyleElements,
   shorthands,
-  useRenderer,
-} from '@fluentui/react-make-styles';
-export type { RendererProviderProps } from '@fluentui/react-make-styles';
+} from '@griffel/react';
 export {
   FluentProvider,
+  /* eslint-disable-next-line deprecation/deprecation */
   fluentProviderClassName,
-  renderFluentProvider,
+  fluentProviderClassNames,
+  renderFluentProvider_unstable,
   useFluent,
-  useFluentProvider,
-  useFluentProviderContextValues,
-  useFluentProviderStyles,
+  useFluentProvider_unstable,
+  useFluentProviderContextValues_unstable,
+  useFluentProviderStyles_unstable,
 } from '@fluentui/react-provider';
 export type {
   FluentProviderContextValues,
@@ -32,6 +31,7 @@ export {
   createHighContrastTheme,
   createLightTheme,
   createTeamsDarkTheme,
+  themeToTokensObject,
   teamsDarkTheme,
   teamsHighContrastTheme,
   teamsLightTheme,
@@ -65,26 +65,34 @@ export {
   AccordionItem,
   AccordionItemContext,
   AccordionPanel,
+  /* eslint-disable-next-line deprecation/deprecation */
   accordionClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   accordionHeaderClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   accordionItemClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   accordionPanelClassName,
-  renderAccordion,
-  renderAccordionHeader,
-  renderAccordionItem,
-  renderAccordionPanel,
-  useAccordion,
-  useAccordionContextValues,
-  useAccordionHeader,
-  useAccordionHeaderContextValues,
-  useAccordionHeaderStyles,
-  useAccordionItem,
-  useAccordionItemContext,
-  useAccordionItemContextValues,
-  useAccordionItemStyles,
-  useAccordionPanel,
-  useAccordionPanelStyles,
-  useAccordionStyles,
+  accordionClassNames,
+  accordionHeaderClassNames,
+  accordionItemClassNames,
+  accordionPanelClassNames,
+  renderAccordion_unstable,
+  renderAccordionHeader_unstable,
+  renderAccordionItem_unstable,
+  renderAccordionPanel_unstable,
+  useAccordion_unstable,
+  useAccordionContextValues_unstable,
+  useAccordionHeader_unstable,
+  useAccordionHeaderContextValues_unstable,
+  useAccordionHeaderStyles_unstable,
+  useAccordionItem_unstable,
+  useAccordionItemContext_unstable,
+  useAccordionItemContextValues_unstable,
+  useAccordionItemStyles_unstable,
+  useAccordionPanel_unstable,
+  useAccordionPanelStyles_unstable,
+  useAccordionStyles_unstable,
 } from '@fluentui/react-accordion';
 export type {
   AccordionContextValue,
@@ -113,21 +121,35 @@ export type {
   AccordionToggleEvent,
   AccordionToggleEventHandler,
 } from '@fluentui/react-accordion';
-export { Avatar, avatarClassName, renderAvatar, useAvatar, useAvatarStyles } from '@fluentui/react-avatar';
+export {
+  Avatar,
+  /* eslint-disable-next-line deprecation/deprecation */
+  avatarClassName,
+  avatarClassNames,
+  renderAvatar_unstable,
+  useAvatar_unstable,
+  useAvatarStyles_unstable,
+} from '@fluentui/react-avatar';
 export type { AvatarNamedColor, AvatarProps, AvatarSlots, AvatarState } from '@fluentui/react-avatar';
 export {
   Badge,
   CounterBadge,
   PresenceBadge,
+  /* eslint-disable-next-line deprecation/deprecation */
   badgeClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   counterBadgeClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   presenceBadgeClassName,
-  renderBadge,
-  useBadge,
-  useBadgeStyles,
-  useCounterBadge,
-  useCounterBadgeStyles,
-  usePresenceBadge,
+  badgeClassNames,
+  counterBadgeClassNames,
+  presenceBadgeClassNames,
+  renderBadge_unstable,
+  useBadge_unstable,
+  useBadgeStyles_unstable,
+  useCounterBadge_unstable,
+  useCounterBadgeStyles_unstable,
+  usePresenceBadge_unstable,
 } from '@fluentui/react-badge';
 export type {
   BadgeProps,
@@ -145,26 +167,36 @@ export {
   MenuButton,
   SplitButton,
   ToggleButton,
+  /* eslint-disable-next-line deprecation/deprecation */
   buttonClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   compoundButtonClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   menuButtonClassName,
-  renderButton,
-  renderCompoundButton,
-  renderMenuButton,
-  renderSplitButton,
-  renderToggleButton,
+  buttonClassNames,
+  compoundButtonClassNames,
+  menuButtonClassNames,
+  renderButton_unstable,
+  renderCompoundButton_unstable,
+  renderMenuButton_unstable,
+  renderSplitButton_unstable,
+  renderToggleButton_unstable,
+  /* eslint-disable-next-line deprecation/deprecation */
   splitButtonClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   toggleButtonClassName,
-  useButton,
-  useButtonStyles,
-  useCompoundButton,
-  useCompoundButtonStyles,
-  useMenuButton,
-  useMenuButtonStyles,
-  useSplitButton,
-  useSplitButtonStyles,
-  useToggleButton,
-  useToggleButtonStyles,
+  splitButtonClassNames,
+  toggleButtonClassNames,
+  useButton_unstable,
+  useButtonStyles_unstable,
+  useCompoundButton_unstable,
+  useCompoundButtonStyles_unstable,
+  useMenuButton_unstable,
+  useMenuButtonStyles_unstable,
+  useSplitButton_unstable,
+  useSplitButtonStyles_unstable,
+  useToggleButton_unstable,
+  useToggleButtonStyles_unstable,
 } from '@fluentui/react-button';
 export type {
   ButtonProps,
@@ -182,13 +214,36 @@ export type {
   ToggleButtonProps,
   ToggleButtonState,
 } from '@fluentui/react-button';
-export { Divider, dividerClassName, renderDivider, useDivider, useDividerStyles } from '@fluentui/react-divider';
+export {
+  Divider,
+  /* eslint-disable-next-line deprecation/deprecation */
+  dividerClassName,
+  dividerClassNames,
+  renderDivider_unstable,
+  useDivider_unstable,
+  useDividerStyles_unstable,
+} from '@fluentui/react-divider';
 export type { DividerProps, DividerSlots, DividerState } from '@fluentui/react-divider';
-export { Image, imageClassName, renderImage, useImage, useImageStyles } from '@fluentui/react-image';
+export {
+  Image,
+  /* eslint-disable-next-line deprecation/deprecation */
+  imageClassName,
+  imageClassNames,
+  renderImage_unstable,
+  useImage_unstable,
+  useImageStyles_unstable,
+} from '@fluentui/react-image';
 export type { ImageProps, ImageSlots, ImageState } from '@fluentui/react-image';
-export { Label, labelClassName, renderLabel, useLabel, useLabelStyles } from '@fluentui/react-label';
-export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
-export { Link, linkClassName, renderLink, useLink, useLinkState, useLinkStyles } from '@fluentui/react-link';
+export {
+  Link,
+  /* eslint-disable-next-line deprecation/deprecation */
+  linkClassName,
+  linkClassNames,
+  renderLink_unstable,
+  useLink_unstable,
+  useLinkState_unstable,
+  useLinkStyles_unstable,
+} from '@fluentui/react-link';
 export type { LinkProps, LinkSlots, LinkState } from '@fluentui/react-link';
 export {
   Menu,
@@ -205,52 +260,75 @@ export {
   MenuListProvider,
   MenuPopover,
   MenuProvider,
+  MenuSplitGroup,
   MenuTrigger,
   MenuTriggerContextProvider,
+  /* eslint-disable-next-line deprecation/deprecation */
   menuDividerClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   menuGroupClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   menuGroupHeaderClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   menuItemCheckboxClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   menuItemClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   menuItemRadioClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   menuListClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   menuPopoverClassName,
-  renderMenu,
-  renderMenuDivider,
-  renderMenuGroup,
-  renderMenuGroupHeader,
-  renderMenuItem,
-  renderMenuItemCheckbox,
-  renderMenuItemRadio,
-  renderMenuList,
-  renderMenuPopover,
-  renderMenuTrigger,
-  useCheckmarkStyles,
-  useMenu,
-  useMenuContext,
-  useMenuContextValues,
-  useMenuDivider,
-  useMenuDividerStyles,
-  useMenuGroup,
-  useMenuGroupContext,
-  useMenuGroupContextValues,
-  useMenuGroupHeader,
-  useMenuGroupHeaderStyles,
-  useMenuGroupStyles,
-  useMenuItem,
-  useMenuItemCheckbox,
-  useMenuItemCheckboxStyles,
-  useMenuItemRadio,
-  useMenuItemRadioStyles,
-  useMenuItemStyles,
-  useMenuList,
-  useMenuListContext,
-  useMenuListContextValues,
-  useMenuListStyles,
-  useMenuPopover,
-  useMenuPopoverStyles,
-  useMenuTrigger,
-  useMenuTriggerContext,
+  /* eslint-disable-next-line deprecation/deprecation */
+  menuSplitGroupClassName,
+  menuDividerClassNames,
+  menuGroupClassNames,
+  menuGroupHeaderClassNames,
+  menuItemCheckboxClassNames,
+  menuItemClassNames,
+  menuItemRadioClassNames,
+  menuListClassNames,
+  menuPopoverClassNames,
+  menuSplitGroupClassNames,
+  renderMenu_unstable,
+  renderMenuDivider_unstable,
+  renderMenuGroup_unstable,
+  renderMenuGroupHeader_unstable,
+  renderMenuItem_unstable,
+  renderMenuItemCheckbox_unstable,
+  renderMenuItemRadio_unstable,
+  renderMenuList_unstable,
+  renderMenuPopover_unstable,
+  renderMenuSplitGroup_unstable,
+  renderMenuTrigger_unstable,
+  useCheckmarkStyles_unstable,
+  useMenu_unstable,
+  useMenuContext_unstable,
+  useMenuContextValues_unstable,
+  useMenuDivider_unstable,
+  useMenuDividerStyles_unstable,
+  useMenuGroup_unstable,
+  useMenuGroupContext_unstable,
+  useMenuGroupContextValues_unstable,
+  useMenuGroupHeader_unstable,
+  useMenuGroupHeaderStyles_unstable,
+  useMenuGroupStyles_unstable,
+  useMenuItem_unstable,
+  useMenuItemCheckbox_unstable,
+  useMenuItemCheckboxStyles_unstable,
+  useMenuItemRadio_unstable,
+  useMenuItemRadioStyles_unstable,
+  useMenuItemStyles_unstable,
+  useMenuList_unstable,
+  useMenuListContext_unstable,
+  useMenuListContextValues_unstable,
+  useMenuListStyles_unstable,
+  useMenuPopover_unstable,
+  useMenuPopoverStyles_unstable,
+  useMenuSplitGroup_unstable,
+  useMenuSplitGroupStyles_unstable,
+  useMenuTrigger_unstable,
+  useMenuTriggerContext_unstable,
 } from '@fluentui/react-menu';
 export type {
   MenuCheckedValueChangeData,
@@ -289,6 +367,9 @@ export type {
   MenuPopoverState,
   MenuProps,
   MenuSlots,
+  MenuSplitGroupProps,
+  MenuSplitGroupSlots,
+  MenuSplitGroupState,
   MenuState,
   MenuTriggerChildProps,
   MenuTriggerProps,
@@ -302,15 +383,17 @@ export {
   PopoverSurface,
   PopoverTrigger,
   arrowHeights,
+  /* eslint-disable-next-line deprecation/deprecation */
   popoverSurfaceClassName,
-  renderPopover,
-  renderPopoverSurface,
-  renderPopoverTrigger,
-  usePopover,
-  usePopoverContext,
-  usePopoverSurface,
-  usePopoverSurfaceStyles,
-  usePopoverTrigger,
+  popoverSurfaceClassNames,
+  renderPopover_unstable,
+  renderPopoverSurface_unstable,
+  renderPopoverTrigger_unstable,
+  usePopover_unstable,
+  usePopoverContext_unstable,
+  usePopoverSurface_unstable,
+  usePopoverSurfaceStyles_unstable,
+  usePopoverTrigger_unstable,
 } from '@fluentui/react-popover';
 export type {
   OnOpenChangeData,
@@ -325,7 +408,13 @@ export type {
   PopoverTriggerProps,
   PopoverTriggerState,
 } from '@fluentui/react-popover';
-export { Portal, elementContains, renderPortal, setVirtualParent, usePortal } from '@fluentui/react-portal';
+export {
+  Portal,
+  elementContains,
+  renderPortal_unstable,
+  setVirtualParent,
+  usePortal_unstable,
+} from '@fluentui/react-portal';
 export type { PortalProps, PortalState } from '@fluentui/react-portal';
 export {
   Body,
@@ -338,22 +427,50 @@ export {
   Title1,
   Title2,
   Title3,
+  /* eslint-disable-next-line deprecation/deprecation */
   bodyClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   captionClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   displayClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   headlineClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   largeTitleClassName,
-  renderText,
+  bodyClassNames,
+  captionClassNames,
+  displayClassNames,
+  headlineClassNames,
+  largeTitleClassNames,
+  renderText_unstable,
+  /* eslint-disable-next-line deprecation/deprecation */
   subheadlineClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   textClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   title1ClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   title2ClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   title3ClassName,
-  useText,
-  useTextStyles,
+  subheadlineClassNames,
+  textClassNames,
+  title1ClassNames,
+  title2ClassNames,
+  title3ClassNames,
+  useText_unstable,
+  useTextStyles_unstable,
 } from '@fluentui/react-text';
 export type { TextProps, TextSlots, TextState } from '@fluentui/react-text';
-export { Tooltip, renderTooltip, tooltipClassName, useTooltip, useTooltipStyles } from '@fluentui/react-tooltip';
+export {
+  Tooltip,
+  renderTooltip_unstable,
+  /* eslint-disable-next-line deprecation/deprecation */
+  tooltipClassName,
+  tooltipClassNames,
+  useTooltip_unstable,
+  useTooltipStyles_unstable,
+} from '@fluentui/react-tooltip';
 export type {
   OnVisibleChangeData,
   TooltipProps,

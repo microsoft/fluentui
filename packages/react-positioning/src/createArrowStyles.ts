@@ -1,6 +1,6 @@
-import { shorthands } from '@fluentui/react-make-styles';
+import { shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { MakeStylesStyle } from '@fluentui/react-make-styles';
+import type { GriffelStyle } from '@griffel/react';
 
 /**
  * Options parameter for the createArrowStyles function
@@ -19,21 +19,21 @@ export type CreateArrowStylesOptions = {
    *
    * @defaultvalue 1px
    */
-  borderWidth?: MakeStylesStyle['borderBottomWidth'];
+  borderWidth?: GriffelStyle['borderBottomWidth'];
 
   /**
    * The borderStyle for the arrow. Should be the same borderStyle as the parent element.
    *
    * @defaultvalue solid
    */
-  borderStyle?: MakeStylesStyle['borderBottomStyle'];
+  borderStyle?: GriffelStyle['borderBottomStyle'];
 
   /**
    * The borderColor of the arrow. Should be the same borderColor as the parent element.
    *
    * @defaultvalue tokens.colorTransparentStroke
    */
-  borderColor?: MakeStylesStyle['borderBottomColor'];
+  borderColor?: GriffelStyle['borderBottomColor'];
 };
 
 /**
@@ -58,7 +58,7 @@ export type CreateArrowStylesOptions = {
  *   )
  * ```
  */
-export function createArrowStyles(options: CreateArrowStylesOptions): MakeStylesStyle {
+export function createArrowStyles(options: CreateArrowStylesOptions): GriffelStyle {
   const {
     arrowHeight,
     borderWidth = '1px',

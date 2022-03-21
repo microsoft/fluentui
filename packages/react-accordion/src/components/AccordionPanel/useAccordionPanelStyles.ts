@@ -1,7 +1,14 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import type { AccordionPanelState } from './AccordionPanel.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import type { AccordionPanelSlots, AccordionPanelState } from './AccordionPanel.types';
 
+/**
+ * @deprecated Use `accordionPanelClassNames.root` instead.
+ */
 export const accordionPanelClassName = 'fui-AccordionPanel';
+export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots> = {
+  root: 'fui-AccordionPanel',
+};
 
 /**
  * Styles for the root slot
@@ -14,9 +21,9 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useAccordionPanelStyles = (state: AccordionPanelState) => {
+export const useAccordionPanelStyles_unstable = (state: AccordionPanelState) => {
   const styles = useStyles();
-  state.root.className = mergeClasses(accordionPanelClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(accordionPanelClassNames.root, styles.root, state.root.className);
 
   return state;
 };

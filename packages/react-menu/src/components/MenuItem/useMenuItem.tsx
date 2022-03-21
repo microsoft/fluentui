@@ -8,22 +8,24 @@ import {
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
-import { useMenuTriggerContext } from '../../contexts/menuTriggerContext';
+import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
 import { ChevronRightRegular as ChevronRightIcon, ChevronLeftRegular as ChevronLeftIcon } from '@fluentui/react-icons';
-import { useMenuListContext } from '../../contexts/menuListContext';
-import { useMenuContext } from '../../contexts/menuContext';
+import { useMenuListContext_unstable } from '../../contexts/menuListContext';
+import { useMenuContext_unstable } from '../../contexts/menuContext';
 import type { MenuItemProps, MenuItemState } from './MenuItem.types';
 
 /**
  * Returns the props and state required to render the component
  */
-export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
-  const hasSubmenu = useMenuTriggerContext() || props.hasSubmenu;
-  const hasIcons = useMenuListContext(context => context.hasIcons);
-  const hasCheckmarks = useMenuListContext(context => context.hasCheckmarks);
-  const setOpen = useMenuContext(context => context.setOpen);
-  const persistOnClickContext = useMenuContext(context => context.persistOnItemClick);
+export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
+  const hasIcons = useMenuListContext_unstable(context => context.hasIcons);
+  const hasCheckmarks = useMenuListContext_unstable(context => context.hasCheckmarks);
+  const setOpen = useMenuContext_unstable(context => context.setOpen);
+  const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
   const dismissedWithKeyboardRef = React.useRef(false);
+
+  const isSubmenuTrigger = useMenuTriggerContext_unstable();
+  const hasSubmenu = props.hasSubmenu ?? isSubmenuTrigger;
 
   const { dir } = useFluent();
   const innerRef = React.useRef<HTMLElement>(null);

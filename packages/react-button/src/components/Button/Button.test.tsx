@@ -1,11 +1,7 @@
 import * as React from 'react';
-import { fireEvent, render } from '@testing-library/react';
-import {
-  buttonAccessibilityBehaviorDefinition,
-  // buttonBehaviorDefinition,
-  validateBehavior,
-  ComponentTestFacade,
-} from '@fluentui/a11y-testing';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { buttonAccessibilityBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
 import { isConformant } from '../../common/isConformant';
 import { Button } from './Button';
 import { ButtonProps } from './Button.types';
@@ -14,6 +10,15 @@ describe('Button', () => {
   isConformant({
     Component: Button as React.FunctionComponent<ButtonProps>,
     displayName: 'Button',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+          },
+        },
+      ],
+    },
   });
 
   describe('meets accessibility requirements', () => {
@@ -29,120 +34,120 @@ describe('Button', () => {
 
   describe('when rendered as a button', () => {
     it('renders correctly', () => {
-      const result = render(<Button>This is a button</Button>);
-      expect(result.container).toMatchSnapshot();
+      const { getByRole } = render(<Button>This is a button</Button>);
+      const button = getByRole('button');
+
+      expect(button.tagName).toBe('BUTTON');
     });
 
     it('can be focused', () => {
-      const result = render(<Button>This is a button</Button>);
-      const button = result.getByRole('button');
+      const { getByRole } = render(<Button>This is a button</Button>);
+      const button = getByRole('button');
 
       expect(document.activeElement).not.toEqual(button);
-      button.focus();
+      userEvent.tab();
       expect(document.activeElement).toEqual(button);
     });
 
     it('cannot be focused when disabled has been passed to the component', () => {
-      const result = render(<Button disabled>This is a button</Button>);
-      const button = result.getByRole('button');
+      const { getByRole } = render(<Button disabled>This is a button</Button>);
+      const button = getByRole('button');
 
       expect(document.activeElement).not.toEqual(button);
-      button.focus();
+      userEvent.tab();
       expect(document.activeElement).not.toEqual(button);
     });
 
     it('can be focused when disabledFocusable has been passed to the component', () => {
-      const result = render(<Button disabledFocusable>This is a button</Button>);
-      const button = result.getByRole('button');
+      const { getByRole } = render(<Button disabledFocusable>This is a button</Button>);
+      const button = getByRole('button');
 
       expect(document.activeElement).not.toEqual(button);
-      button.focus();
+      userEvent.tab();
       expect(document.activeElement).toEqual(button);
     });
 
     it('can trigger a function by being clicked', () => {
       const onClick = jest.fn();
-      const result = render(<Button onClick={onClick}>This is a button</Button>);
+      const { getByRole } = render(<Button onClick={onClick}>This is a button</Button>);
 
-      fireEvent.click(result.getByRole('button'));
+      userEvent.click(getByRole('button'));
       expect(onClick).toHaveBeenCalled();
     });
 
-    it('does not trigger a function by being clicked when button is disabled', () => {
+    it('does not trigger a function by being clicked when disabled has been passed to the component', () => {
       const onClick = jest.fn();
-      const result = render(
+      const { getByRole } = render(
         <Button disabled onClick={onClick}>
           This is a button
         </Button>,
       );
 
-      fireEvent.click(result.getByRole('button'));
+      userEvent.click(getByRole('button'));
       expect(onClick).not.toHaveBeenCalled();
     });
 
-    it('does not trigger a function by being clicked when button is disabled and focusable', () => {
+    it('does not trigger a function by being clicked when disabledFocusable has been passed to the component', () => {
       const onClick = jest.fn();
-      const result = render(
+      const { getByRole } = render(
         <Button disabledFocusable onClick={onClick}>
           This is a button
         </Button>,
       );
 
-      fireEvent.click(result.getByRole('button'));
+      userEvent.click(getByRole('button'));
       expect(onClick).not.toHaveBeenCalled();
     });
   });
 
   describe('when rendered as an anchor', () => {
     it('renders correctly', () => {
-      const result = render(
+      const { getByRole } = render(
         <Button as="a" href="https://www.bing.com">
           This is a button
         </Button>,
       );
+      const anchor = getByRole('button');
 
-      const anchor = result.getByRole('button');
       expect(anchor.tagName).toBe('A');
-
-      expect(result.container).toMatchSnapshot();
     });
 
     it('can be focused', () => {
-      const result = render(
+      const { getByRole } = render(
         <Button as="a" href="https://www.bing.com">
           This is a button
         </Button>,
       );
-      const anchor = result.getByRole('button');
+      const anchor = getByRole('button');
 
       expect(document.activeElement).not.toEqual(anchor);
-      anchor.focus();
+      userEvent.tab();
       expect(document.activeElement).toEqual(anchor);
     });
 
     it('cannot be focused when disabled has been passed to the component', () => {
-      const result = render(
-        <Button as="a" href="https://www.bing.com" disabled>
+      const { getByRole } = render(
+        <Button as="a" disabled href="https://www.bing.com">
           This is a button
         </Button>,
       );
-      const anchor = result.getByRole('button');
+      const anchor = getByRole('button');
 
       expect(document.activeElement).not.toEqual(anchor);
-      anchor.focus();
+      userEvent.tab();
       expect(document.activeElement).not.toEqual(anchor);
     });
 
     it('can be focused when disabledFocusable has been passed to the component', () => {
-      const result = render(
-        <Button as="a" href="https://www.bing.com" disabledFocusable>
+      const { getByRole } = render(
+        <Button as="a" disabledFocusable href="https://www.bing.com">
           This is a button
         </Button>,
       );
-      const anchor = result.getByRole('button');
+      const anchor = getByRole('button');
 
       expect(document.activeElement).not.toEqual(anchor);
-      anchor.focus();
+      userEvent.tab();
       expect(document.activeElement).toEqual(anchor);
     });
   });

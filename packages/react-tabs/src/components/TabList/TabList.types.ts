@@ -1,6 +1,17 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TabValue } from '../Tab/Tab.types';
+
+export type RegisterTabData = {
+  /**
+   * The value of the selected tab.
+   */
+  value: TabValue;
+
+  ref: React.RefObject<HTMLElement>;
+};
+
+export type RegisterTabEventHandler = (data: RegisterTabData) => void;
 
 export type SelectTabData = {
   /**
@@ -17,10 +28,10 @@ export type TabListSlots = {
   /**
    * The slot associated with the root element of this tab list.
    */
-  root: IntrinsicShorthandProps<'div'>;
+  root: Slot<'div'>;
 };
 
-export type TabListCommons = {
+type TabListCommons = {
   /**
    * A tab list can supports 'transparent' and 'subtle' appearance.
    *- 'subtle': Minimizes emphasis to blend into the background until hovered or focused.
@@ -68,6 +79,11 @@ export type TabListProps = ComponentProps<TabListSlots> &
 
 export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> &
   Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical'>> & {
+    /** A callback to allow a tab to register itself with the tab list. */
+    onRegister: RegisterTabEventHandler;
+
+    /** A callback to allow a tab to unregister itself with the tab list. */
+    onUnregister: RegisterTabEventHandler;
     /**
      * A callback to allow a tab to select itself when pressed.
      */
@@ -85,6 +101,19 @@ export type TabListContextValues = {
 };
 
 /**
+ * A bounding rectangle of a tab
+ */
+export type TabContentRect = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
+/**
  * State used in rendering TabList.
  */
-export type TabListState = ComponentState<TabListSlots> & TabListContextValue;
+export type TabListState = ComponentState<Required<TabListSlots>> &
+  TabListContextValue & {
+    selectedTabRect?: TabContentRect;
+  };

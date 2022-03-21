@@ -99,7 +99,7 @@ export function fluentuiPostPublishValidation() {
   execCommandSync(gitRoot, 'git', ['reset', '--hard', `origin/${branch}`]); // sometimes lerna add gitHead in package.json after release
 
   // sync fluent version
-  execCommandSync(gitRoot, 'yarn', ['syncpack:fix']);
+  execCommandSync(gitRoot, 'yarn', ['syncpack fix-mismatches']);
   const gitStatus = execCommandSync(gitRoot, 'git', ['status', '--porcelain', `\\*package.json`]);
   if (gitStatus.length !== 0) {
     execCommandSync(gitRoot, 'git', ['add', `\\*package.json`]);
@@ -108,7 +108,7 @@ export function fluentuiPostPublishValidation() {
   }
 
   // make sure there's no more than one fluent versions
-  execCommandSync(gitRoot, 'yarn', ['syncpack:list']);
+  execCommandSync(gitRoot, 'yarn', ['syncpack', 'list-mismatches']);
 }
 
 // pack all public fluent ui packages, used by ci to store nightly built artifacts

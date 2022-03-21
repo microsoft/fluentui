@@ -21,6 +21,7 @@ coverage
 etc
 change
 __snapshots__
+.yarn/
 
 # package specific files
 apps/vr-tests/dndSim.js

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
-import { makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, shorthands } from '@griffel/react';
 
 import { Popover, PopoverTrigger, PopoverSurface } from '../index';
+import { PopperRefHandle } from '@fluentui/react-positioning';
 
 const useStyles = makeStyles({
   container: {
@@ -27,12 +28,19 @@ const ExampleContent = () => {
 };
 
 export const AnchorToCustomTarget = () => {
-  const [target, setTarget] = React.useState<HTMLElement | null>();
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const popperRef = React.useRef<PopperRefHandle>(null);
   const styles = useStyles();
+
+  React.useEffect(() => {
+    if (buttonRef.current) {
+      popperRef.current?.setTarget(buttonRef.current);
+    }
+  }, [buttonRef, popperRef]);
 
   return (
     <div className={styles.container}>
-      <Popover positioning={{ target }}>
+      <Popover positioning={{ popperRef }}>
         <PopoverTrigger>
           <Button>Popover trigger</Button>
         </PopoverTrigger>
@@ -42,7 +50,7 @@ export const AnchorToCustomTarget = () => {
         </PopoverSurface>
       </Popover>
 
-      <Button ref={setTarget}>Custom target</Button>
+      <Button ref={buttonRef}>Custom target</Button>
     </div>
   );
 };

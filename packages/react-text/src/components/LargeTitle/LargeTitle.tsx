@@ -1,9 +1,17 @@
 import type { FunctionComponent } from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles } from '@griffel/react';
 import { typographyStyles } from '../../typographyStyles/index';
 import { createWrapper, TextWrapperProps } from '../wrapper';
+import { SlotClassNames } from '@fluentui/react-utilities';
+import { TextSlots } from '../Text/Text.types';
 
+/**
+ * @deprecated Use `largeTitleClassNames.root` instead.
+ */
 export const largeTitleClassName = 'fui-LargeTitle';
+export const largeTitleClassNames: SlotClassNames<TextSlots> = {
+  root: 'fui-LargeTitle',
+};
 
 /**
  * Styles for the root slot
@@ -17,6 +25,6 @@ const useStyles = makeStyles({
  */
 export const LargeTitle: FunctionComponent<TextWrapperProps> = createWrapper({
   useStyles,
-  className: largeTitleClassName,
+  className: largeTitleClassNames.root,
   displayName: 'LargeTitle',
 });

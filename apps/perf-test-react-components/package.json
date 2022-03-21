@@ -1,0 +1,32 @@
+{
+  "name": "@fluentui/perf-test-react-components",
+  "description": "Perf tests for @fluentui/react-components.",
+  "version": "9.0.0-rc.0",
+  "private": true,
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*"
+  },
+  "dependencies": {
+    "@griffel/core": "1.0.7",
+    "@fluentui/react-avatar": "9.0.0-rc.5",
+    "@fluentui/react-button": "9.0.0-rc.5",
+    "@fluentui/react-provider": "9.0.0-rc.5",
+    "@fluentui/react-theme": "9.0.0-rc.4",
+    "@fluentui/scripts": "^1.0.0",
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "flamegrill": "0.2.0",
+    "lodash": "^4.17.15",
+    "querystring": "^0.2.0",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "tslib": "^2.1.0"
+  }
+}

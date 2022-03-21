@@ -7,7 +7,10 @@ import type { FluentProviderSlots, FluentProviderContextValues, FluentProviderSt
 /**
  * Render the final JSX of FluentProvider
  */
-export const renderFluentProvider = (state: FluentProviderState, contextValues: FluentProviderContextValues) => {
+export const renderFluentProvider_unstable = (
+  state: FluentProviderState,
+  contextValues: FluentProviderContextValues,
+) => {
   const { slots, slotProps } = getSlots<FluentProviderSlots>(state);
 
   return (

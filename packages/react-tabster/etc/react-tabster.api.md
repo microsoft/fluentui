@@ -4,12 +4,12 @@
 
 ```ts
 
-import type { MakeStylesStyle } from '@fluentui/react-make-styles';
+import type { GriffelStyle } from '@griffel/react';
 import type { RefObject } from 'react';
 import { Types } from 'tabster';
 
 // @public
-export const createCustomFocusIndicatorStyle: (style: MakeStylesStyle, options?: CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyle;
+export const createCustomFocusIndicatorStyle: (style: GriffelStyle, options?: CreateFocusIndicatorStyleRuleOptions) => GriffelStyle;
 
 // @public (undocumented)
 export interface CreateFocusIndicatorStyleRuleOptions {
@@ -20,7 +20,7 @@ export interface CreateFocusIndicatorStyleRuleOptions {
 // @public
 export const createFocusOutlineStyle: (options?: {
     style: Partial<FocusOutlineStyleOptions>;
-} & CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyle;
+} & CreateFocusIndicatorStyleRuleOptions) => GriffelStyle;
 
 // @public (undocumented)
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
@@ -38,7 +38,7 @@ export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions 
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
-    axis?: 'vertical' | 'horizontal';
+    axis?: 'vertical' | 'horizontal' | 'grid';
     circular?: boolean;
     memorizeCurrent?: boolean;
 }

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix an accessibility bug of TooltipHost when mouse leaves before timer triggers",
-  "packageName": "@fluentui/react",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}

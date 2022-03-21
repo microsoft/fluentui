@@ -1,0 +1,171 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Upgrading/from v8/Important changes" />
+
+# Important changes you should know about
+
+v9 introduces several paradigm shifts that were necessary to improve performance, ease development, and reduce bundle size.
+This resulted in some breaking changes you will need to handle as you upgrade.
+
+## Props vs. Children
+
+### v8
+
+In v8, several components had props that accepted arrays of data and used a map function to render the children.
+To allow control over rendering individual items, render props callbacks were added.
+
+Components that rendered large lists of items had lots of specific behavior (such as virtualization) hard coded within the component.
+
+For example, `ContextualMenuButton` takes `menuProps` containing menu data,
+an optional `menuAs` to control the rendering of menu items,
+and an optional `onMenuClick`.
+
+```tsx
+const menuProps: IContextualMenuProps = {
+  items: [
+    {
+      key: 'emailMessage',
+      text: 'Email message',
+    },
+    {
+      key: 'calendarEvent',
+      text: 'Calendar event',
+    },
+  ],
+  directionalHintFixed: true,
+};
+
+function _getMenu(props: IContextualMenuProps): JSX.Element {
+  return <ContextualMenu {...props} />;
+}
+
+function _onMenuClick(ev?: React.SyntheticEvent<any>) {
+  console.log(ev);
+}
+
+<DefaultButton text="New item" menuProps={menuProps} menuAs={_getMenu} onMenuClick={_onMenuClick} />;
+```
+
+### v9
+
+Components in v9 give you full control of rendering items by allowing you to pass child elements instead of data props.
+This allows you to define and compose children however you like: declaring JSX elements or writing your own map function.
+You don't have to define and pass separate renderprops functions to control the rendering of children.
+
+This means that your existing code passing arrays of data will need to be updated to render child elements.
+
+In v9, you get much more control over menus including what component triggers the display of the menu or submenu.
+By specifying the children you directly control the rendering of each child and can wire up onClick handlers directly
+rather than having to figure out which menuItem was clicked.
+
+```tsx
+<Menu>
+  <MenuTrigger>
+    <Button>New Item</Button>
+  </MenuTrigger>
+  <MenuPopover>
+    <MenuList>
+      <MenuItem onClick={onNewEmailMessage}>Email message</MenuItem>
+      <MenuItem onClick={onNewCalendarEvent}>Calendar event</MenuItem>
+    </MenuList>
+  </MenuPopover>
+</Menu>
+```
+
+You can continue to leverage existing data structures by writing a map function.
+With the map function separate from the Menu component, you get a lot more control.
+
+```tsx
+<Menu>
+  <MenuTrigger>
+    <Button>
+      New Item
+    </Button>
+  </MenuTrigger>
+  <MenuPopover>
+    <MenuList>
+      {menuItems.map(item => <MenuItem onClick={item.onClick}>{item.name}</MenuItem>)
+    </MenuList>
+  </MenuPopover>
+</Menu>
+```
+
+## Custom Styling & Theming
+
+There are significant styling and theming differences between v8 and v9.
+
+### v8
+
+In v8, the `styles` prop on components accepts javascript objects (IStyle).
+These could be parameterized to generate styles at runtime.
+Unfortunately, this has a negative impact on rendering performance.
+
+The ThemeProvider provided a theme object on the context.
+The theme contains a collection of component styles, color palettes, fonts, and spacing values.
+Components consumed the theme through the theme object in state or by using the `useTheme` hook.
+Legacy themes are supported through loadTheme and the theme customizer.
+
+For example, a `Button` can be styled to look like a primary button when hovered.
+
+```tsx
+const theme = useTheme();
+
+const customButtonStyles: IButtonStyles = {
+  rootHovered: {
+    backgroundColor: theme.semanticColors.primaryButtonBackground,
+    color: theme.semanticColors.primaryButtonText,
+  },
+};
+
+return (
+  <ThemeProvider>
+    <Button styles={customButtonStyles}>Hello Custom Styles</Button>
+  </ThemeProvider>
+);
+```
+
+### v9
+
+In v9, styles are created with the `makeStyles` function and combined with the `mergeClasses` function from [`@griffel/react`](https://github.com/microsoft/griffel).
+Components apply styles through the `className` property.
+The styles are created at build time, but never runtime (requires the use of `griffel`'s build-time optimization plugin).
+This allows styles to be deduped, optimized, and bundled for significantly smaller bundles and improved CSS performance.
+
+There is a new theme provider in v9 named `FluentProvider` that replaces v8's `ThemeProvider`.
+
+FluentProvider provides a theme using css variables referencing design tokens.
+The design tokens provide global colors, fonts, and spacing.
+There are alias tokens for general purpose component parts (e.g. background, border).
+Components consume the theme, by importing `tokens`, a collection of css var usage, and using them in `makeStyles`.
+
+FluentProvider can be nested multiple times in the hierarchy to create theme variations and `dir` changes for a scoped set of components.
+FluentProvider does **not** have a default theme like ThemeProvider, so you'll need to set the theme at your application's root for the components to be styled correctly.
+
+For example, the same `Button` customization as before would be done like this.
+
+```tsx
+const useStyles = makeStyles({
+  base: {
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackground,
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+  },
+});
+
+const customButtonStyles = useStyles();
+return <Button className={customButtonStyles.base}>Example</Button>;
+```
+
+## Component Part Customization
+
+In v8, parts of components were customized through render props callbacks.
+Part-specific callbacks were provided by individual components.
+Many callbacks included data payloads to allow you to pass data per item into a callback.
+
+In v9, part customization is done through a slots mechanism.
+The props for a component can define slots that allow you to replace the entire part with JSX,
+properties to pass to the default slot component style,
+or a render function.
+
+See the [Customizing Components with Slots](/docs/concepts-developer-customizing-components-with-slots--page) topic for detailed information on slots.

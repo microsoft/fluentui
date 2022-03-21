@@ -149,6 +149,8 @@ export interface IContextualMenuProps
 
   /**
    * Whether to focus on the contextual menu container (as opposed to the first menu item).
+   *
+   * Avoid using as it breaks the default focus behaviour when using assistive technologies.
    */
   shouldFocusOnContainer?: boolean;
 
@@ -231,6 +233,12 @@ export interface IContextualMenuProps
    * Method to override the render of the list of menu items.
    */
   onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
+
+  /**
+   * Method to wrap menu items. Gives the ability to wrap a custom
+   * tooltip to each menu item button.
+   */
+  onRenderContextualMenuItem?: IRenderFunction<IContextualMenuItem>;
 
   /**
    * Delay (in milliseconds) to wait before expanding / dismissing a submenu on mouseEnter or mouseLeave
@@ -348,7 +356,8 @@ export interface IContextualMenuItem {
   iconProps?: IIconProps;
 
   /**
-   * Custom render function for the menu item icon
+   * Custom render function for the menu item icon.
+   * iconProps must be present on at least one item for onRenderIcon to be called.
    */
   onRenderIcon?: IRenderFunction<IContextualMenuItemProps>;
 

@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { useRadio } from './useRadio';
-import { RadioProps } from './Radio.types';
-import { renderRadio } from './renderRadio';
-import { useRadioStyles } from './useRadioStyles';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { RadioProps } from './Radio.types';
+import { renderRadio_unstable } from './renderRadio';
+import { useRadio_unstable } from './useRadio';
+import { useRadioStyles_unstable } from './useRadioStyles';
 
 /**
- * A Radio component presents a set of options where only one option can be selected.
+ * Radio component is a wrapper for a radio button with a label.
  */
 export const Radio: ForwardRefComponent<RadioProps> = React.forwardRef((props, ref) => {
-  const state = useRadio(props, ref);
+  const state = useRadio_unstable(props, ref);
 
-  useRadioStyles(state);
-  return renderRadio(state);
+  useRadioStyles_unstable(state);
+  return renderRadio_unstable(state);
 });
 
 Radio.displayName = 'Radio';
