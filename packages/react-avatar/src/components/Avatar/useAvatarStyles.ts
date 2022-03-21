@@ -74,9 +74,9 @@ const useStyles = makeStyles({
     fontWeight: tokens.fontWeightSemibold,
   },
 
-  textCaption2: {
+  textCaption2Strong: {
     fontSize: tokens.fontSizeBase100,
-    fontWeight: tokens.fontWeightRegular,
+    fontWeight: tokens.fontWeightSemibold,
   },
   textCaption1Strong: { fontSize: tokens.fontSizeBase200 },
   textBody1Strong: { fontSize: tokens.fontSizeBase300 },
@@ -372,7 +372,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const rootClasses = [styles.root, sizeStyles[size], colorStyles[color]];
 
   if (size <= 24) {
-    rootClasses.push(styles.textCaption2);
+    rootClasses.push(styles.textCaption2Strong);
   } else if (size <= 28) {
     rootClasses.push(styles.textCaption1Strong);
   } else if (size <= 40) {
