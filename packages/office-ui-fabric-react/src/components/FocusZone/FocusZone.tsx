@@ -129,7 +129,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     return (
       <Tag
-        role='presentation'
+        aria-labelledby={ ariaLabelledBy }
+        aria-describedby={ ariaDescribedBy }
         {
         ...divProps
         }
@@ -142,8 +143,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         className={ css('ms-FocusZone', className) }
         ref={ this._root }
         data-focuszone-id={ this._id }
-        aria-labelledby={ ariaLabelledBy }
-        aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
         onFocus={ this._onFocus }
         onMouseDownCapture={ this._onMouseDown }
