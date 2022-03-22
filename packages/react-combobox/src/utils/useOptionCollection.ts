@@ -54,7 +54,6 @@ export const useOptionCollection = (children: React.ReactNode): OptionCollection
     const getIndexOfKey = (id: string) => optionKeys.indexOf(id);
 
     const getOptionByKey = (key: string) => {
-      console.log('get option by key', key, optionData.current, 'returning', optionData.current[key]);
       return optionData.current[key];
     };
 

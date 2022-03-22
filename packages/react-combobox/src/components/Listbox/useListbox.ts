@@ -27,16 +27,16 @@ export const useListbox_unstable = (
   } = optionCollection;
   const idBase = useId('listbox');
 
-  const [selectedKeys, selectKey] = useSelection(props);
+  const [selectedOptions, selectOption] = useSelection(props);
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
-  const onOptionClick = (event: React.MouseEvent<HTMLElement>, optionKey: string) => {
+  const onOptionClick = (event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
     // clicked option should always become active option
-    setActiveOption(getOptionByKey(optionKey));
+    setActiveOption(getOptionByKey(option.key));
 
     // handle selection change
-    selectKey(event, optionKey);
+    selectOption(event, option);
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -48,7 +48,7 @@ export const useListbox_unstable = (
     switch (action) {
       case 'Select':
       case 'CloseSelect':
-        activeOption && selectKey(event, activeOption.key);
+        activeOption && selectOption(event, activeOption);
         break;
       default:
         newIndex = getIndexFromAction(action, activeIndex, maxIndex);
@@ -68,7 +68,7 @@ export const useListbox_unstable = (
     idBase: ctx.idBase,
     onOptionClick: ctx.onOptionClick,
     registerOption: ctx.registerOption,
-    selectedKeys: ctx.selectedKeys,
+    selectedOptions: ctx.selectedOptions,
     unRegisterOption: ctx.unRegisterOption,
   }));
 
@@ -77,7 +77,7 @@ export const useListbox_unstable = (
     activeOption,
     idBase,
     onOptionClick,
-    selectedKeys,
+    selectedOptions,
   };
 
   return {

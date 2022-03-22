@@ -26,5 +26,5 @@ export type ListboxState = ComponentState<ListboxSlots> &
     idBase: string;
 
     /* Callback when an option is clicked, for internal use */
-    onOptionClick(event: React.MouseEvent, optionKey: string): void;
+    onOptionClick(event: React.MouseEvent, option: OptionValue): void;
   };

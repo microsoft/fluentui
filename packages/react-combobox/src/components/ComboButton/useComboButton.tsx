@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
-import { useContextSelector } from '@fluentui/react-context-selector';
-import { ComboboxContext } from '../../contexts/ComboboxContext';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import type { ComboButtonProps, ComboButtonState } from './ComboButton.types';
 
@@ -20,17 +18,10 @@ export const useComboButton_unstable = (
 ): ComboButtonState => {
   const { placeholder, value } = props;
 
-  const { activeOption, open } = useContextSelector(ComboboxContext, ctx => ({
-    activeOption: ctx.activeOption,
-    open: ctx.open,
-  }));
-
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'button',
   });
-
-  console.log('value is', value);
 
   return {
     components: {
@@ -48,8 +39,6 @@ export const useComboButton_unstable = (
         ref,
         role: 'combobox',
         type: 'button',
-        'aria-activedescendant': activeOption?.id,
-        'aria-expanded': open,
         children: value ? value : placeholder,
         ...nativeProps.primary,
       },

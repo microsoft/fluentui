@@ -36,7 +36,7 @@ export const useCombobox_unstable = (
   const idBase = useId('combobox');
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
-  const [selectedKeys, selectKey] = useSelection(props);
+  const [selectedOptions, selectOption] = useSelection(props);
 
   const [value, setValue] = useControllableState({
     state: props.value,
@@ -65,36 +65,32 @@ export const useCombobox_unstable = (
     containerRef: React.MutableRefObject<HTMLDivElement>;
   } = usePopper(popperOptions);
 
-  // update value based on selectedKeys
+  // update value based on selectedOptions
   React.useEffect(() => {
     let newValue;
     if (multiselect) {
-      newValue = selectedKeys.map(key => getOptionByKey(key).value).join(', ');
+      newValue = selectedOptions.map(option => option.value).join(', ');
     } else {
-      const selectedOption = getOptionByKey(selectedKeys[0]);
-      console.log('selected key:', selectedKeys[0], 'option:', selectedOption);
-      newValue = selectedOption ? selectedOption.value : undefined;
+      newValue = selectedOptions[0]?.value;
     }
 
-    console.log('set value to', newValue);
-
     setValue(newValue);
-  }, [getOptionByKey, multiselect, placeholder, selectedKeys, setValue]);
+  }, [multiselect, placeholder, selectedOptions, setValue]);
 
   const setOpen = (event: ComboboxOpenEvents, newState: boolean) => {
     onOpenChange?.(event, { open: newState });
     setOpenState(newState);
   };
 
-  const onOptionClick = (event: React.MouseEvent<HTMLElement>, optionKey: string) => {
+  const onOptionClick = (event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
     // clicked option should always become active option
-    setActiveOption(getOptionByKey(optionKey));
+    setActiveOption(getOptionByKey(option.key));
 
     // close on option click for single-select
     !multiselect && setOpen(event, false);
 
     // handle selection change
-    selectKey(event, optionKey);
+    selectOption(event, option);
   };
 
   const onTriggerClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -122,7 +118,7 @@ export const useCombobox_unstable = (
         !multiselect && setOpen(event, false);
       // fallthrough
       case 'Select':
-        activeOption && selectKey(event, activeOption.key);
+        activeOption && selectOption(event, activeOption);
         event.preventDefault();
         break;
       default:
@@ -165,6 +161,8 @@ export const useCombobox_unstable = (
       required: true,
       defaultProps: {
         ref: useMergedRefs(ref, popperTargetRef),
+        'aria-expanded': open,
+        'aria-activedescendant': open ? activeOption?.id : undefined,
         placeholder,
         value,
         onClick: onTriggerClick,
@@ -179,7 +177,7 @@ export const useCombobox_unstable = (
     onOptionClick,
     open,
     options,
-    selectedKeys,
+    selectedOptions,
     value,
   };
 };

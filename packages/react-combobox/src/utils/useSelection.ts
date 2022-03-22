@@ -1,33 +1,33 @@
 import { useControllableState } from '@fluentui/react-utilities';
-import { SelectionEvents, SelectionProps, SelectionValue } from './Selection.types';
+import { SelectedOption, SelectionEvents, SelectionProps, SelectionValue } from './Selection.types';
 
 export const useSelection = (props: SelectionProps): SelectionValue => {
-  const { initialSelectedKeys, multiselect, onSelect, selectedKeys: controlledSelectedKeys } = props;
+  const { initialSelectedOptions, multiselect, onSelect } = props;
 
-  const [selectedKeys, setSelectedKeys] = useControllableState({
-    state: controlledSelectedKeys,
-    defaultState: initialSelectedKeys,
+  const [selectedOptions, setSelectedOptions] = useControllableState({
+    state: props.selectedOptions,
+    defaultState: initialSelectedOptions,
     initialState: [],
   });
 
-  const selectKey = (event: SelectionEvents, optionKey: string) => {
+  const selectOption = (event: SelectionEvents, option: SelectedOption) => {
     if (multiselect) {
-      // toggle selected state of optionKey for multiselect
-      const isSelected = selectedKeys.indexOf(optionKey) > -1;
-      if (isSelected) {
+      // toggle selected state of the option for multiselect
+      const selectedIndex = selectedOptions.findIndex(o => o.key === option.key);
+      if (selectedIndex > -1) {
         // deselect option
-        setSelectedKeys(selectedKeys.filter(key => key !== optionKey));
+        setSelectedOptions([...selectedOptions.slice(0, selectedIndex), ...selectedOptions.slice(selectedIndex + 1)]);
       } else {
         // select option
-        setSelectedKeys([...selectedKeys, optionKey]);
+        setSelectedOptions([...selectedOptions, option]);
       }
     } else {
-      // always set selection to optionKey for single-select
-      setSelectedKeys([optionKey]);
+      // always set selection to option for single-select
+      setSelectedOptions([option]);
     }
 
-    onSelect?.(event, { optionKey });
+    onSelect?.(event, { option });
   };
 
-  return [selectedKeys, selectKey];
+  return [selectedOptions, selectOption];
 };

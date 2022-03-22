@@ -29,22 +29,27 @@ function getValueString(value: string | undefined, children: React.ReactNode) {
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
-  const { activeOption, idBase, onOptionClick, registerOption, selectedKeys, unRegisterOption } = useContextSelector(
-    ListboxContext,
-    ctx => ({
-      activeOption: ctx.activeOption,
-      idBase: ctx.idBase,
-      onOptionClick: ctx.onOptionClick,
-      registerOption: ctx.registerOption,
-      selectedKeys: ctx.selectedKeys,
-      unRegisterOption: ctx.unRegisterOption,
-    }),
-  );
+  const {
+    activeOption,
+    idBase,
+    onOptionClick,
+    registerOption,
+    selectedOptions = [],
+    unRegisterOption,
+  } = useContextSelector(ListboxContext, ctx => ({
+    activeOption: ctx.activeOption,
+    idBase: ctx.idBase,
+    onOptionClick: ctx.onOptionClick,
+    registerOption: ctx.registerOption,
+    selectedOptions: ctx.selectedOptions,
+    unRegisterOption: ctx.unRegisterOption,
+  }));
   const { id, fluentKey: key, disabled, value } = props;
-  const selected = key ? selectedKeys.indexOf(key) > -1 : false;
+  const selected = key ? !!selectedOptions.find(option => option.key === key) : false;
+  const optionValue = getValueString(value, props.children);
 
   // use the id if provided, otherwise construct id from key & idBase
-  const optionId = id || key ? `${idBase}-${props.fluentKey}` : undefined;
+  const optionId = id || key ? `${idBase}-${props.fluentKey}` : '';
 
   const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (disabled) {
@@ -52,19 +57,18 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       return;
     }
 
-    onOptionClick(event, key || '');
+    key && onOptionClick(event, { key, id: optionId, value: optionValue });
     props.onClick?.(event);
   };
 
   // register option data with context
   React.useEffect(() => {
-    const optionValue = getValueString(value, props.children);
     key && optionId && registerOption({ key, id: optionId, value: optionValue });
 
     return () => {
       key && unRegisterOption(key);
     };
-  }, [registerOption, unRegisterOption, optionId, key, value, props.children]);
+  }, [registerOption, unRegisterOption, optionId, key, optionValue]);
 
   return {
     components: {
@@ -86,7 +90,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
         children: 'x',
       },
     }),
-    isActive: !!(activeOption && id === activeOption.id),
+    isActive: !!(activeOption && optionId === activeOption.id),
     selected,
   };
 };

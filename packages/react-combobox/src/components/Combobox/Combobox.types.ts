@@ -92,7 +92,7 @@ export type ComboboxState = ComponentState<ComboboxSlots> &
     idBase: string;
 
     /* Callback when an option is clicked, for internal use */
-    onOptionClick(event: React.MouseEvent, optionKey: string): void;
+    onOptionClick(event: React.MouseEvent, option: OptionValue): void;
   };
 
 /**

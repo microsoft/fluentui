@@ -1,8 +1,16 @@
 import * as React from 'react';
 
+export type SelectedOption = {
+  /** The `key` prop of the option. */
+  key: string;
+
+  /** The desired display value of the options */
+  value: string;
+};
+
 export type SelectionProps = {
   /* For an uncontrolled component, sets the initial selection */
-  initialSelectedKeys?: string[];
+  initialSelectedOptions?: SelectedOption[];
 
   /**
    * Sets the selection type to multiselect.
@@ -19,16 +27,19 @@ export type SelectionProps = {
    * An array of selected option keys.
    * Use this with `onSelect` to directly control the selected option(s)
    */
-  selectedKeys?: string[];
+  selectedOptions?: SelectedOption[];
 };
 
-export type SelectionState = Required<Pick<SelectionProps, 'selectedKeys'>>;
+export type SelectionState = Required<Pick<SelectionProps, 'selectedOptions'>>;
 
 /* Values returned by the useSelection hook */
-export type SelectionValue = [selectedKeys: string[], selectKey: (event: SelectionEvents, optionKey: string) => void];
+export type SelectionValue = [
+  selectedOptions: SelectedOption[],
+  selectOption: (event: SelectionEvents, option: SelectedOption) => void,
+];
 
 /* Data for the onSelect callback */
-export type OnSelectData = { optionKey: string };
+export type OnSelectData = { option: SelectedOption };
 
 /* Possible event types for onSelect */
 export type SelectionEvents = React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>;
