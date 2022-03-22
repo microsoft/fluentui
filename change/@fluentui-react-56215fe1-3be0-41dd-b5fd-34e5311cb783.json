@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Rating: add focus outlines",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
