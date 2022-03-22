@@ -19,12 +19,6 @@ import type { Slot } from '@fluentui/react-utilities';
 export const renderToolbar_unstable: (state: ToolbarState, contextValues: ToolbarContextValues) => JSX.Element;
 
 // @public
-export const renderToolbarButton_unstable: (state: ToolbarButtonState) => JSX.Element;
-
-// @public
-export const renderToolbarDivider_unstable: (state: ToolbarDividerState) => JSX.Element;
-
-// @public
 export const Toolbar: ForwardRefComponent<ToolbarProps>;
 
 // @public
