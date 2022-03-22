@@ -20,7 +20,7 @@ export const StatusCalloutExample: React.FunctionComponent = () => {
           className={styles.callout}
           target={`#${buttonId}`}
           onDismiss={toggleIsCalloutVisible}
-          role="status"
+          role="alert"
           aria-live="assertive"
         >
           <DelayedRender>
