@@ -144,7 +144,13 @@ export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitBut
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
 
-  const { appearance, block, disabled, disabledFocusable } = state;
+  const {
+    appearance,
+    // eslint-disable-next-line deprecation/deprecation
+    block,
+    disabled,
+    disabledFocusable,
+  } = state;
 
   state.root.className = mergeClasses(
     splitButtonClassNames.root,
