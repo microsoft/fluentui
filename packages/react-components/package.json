@@ -10,6 +10,9 @@
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
+  "storybook": {
+    "url": "https://master--6002298f95a00c00213f4d55.chromatic.com"
+  },
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
