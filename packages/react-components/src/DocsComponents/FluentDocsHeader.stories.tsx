@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FluentGlobals, THEME_ID } from '@fluentui/react-storybook-addon';
 import { makeStyles } from '../index';
 import { ThemePicker } from './ThemePicker.stories';
+import { VersionSelector } from './VersionSelector.stories';
 
 const useStyles = makeStyles({
   root: theme => ({
@@ -24,6 +25,7 @@ export const FluentDocsHeader: React.FC<{ storybookGlobals: FluentGlobals }> = (
   return (
     <div className={styles.root}>
       <ThemePicker selectedThemeId={storybookGlobals[THEME_ID]} />
+      <VersionSelector />
     </div>
   );
 };
