@@ -80,15 +80,6 @@ export type ToolbarState = ComponentState<ToolbarSlots> & ToolbarCommons;
 export const useToolbar_unstable: (props: ToolbarProps, ref: React_2.Ref<HTMLElement>) => ToolbarState;
 
 // @public
-export const useToolbarButton_unstable: (props: ToolbarButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarButtonState;
-
-// @public
-export const useToolbarButtonStyles_unstable: (state: ToolbarButtonState) => ToolbarButtonState;
-
-// @public
-export const useToolbarDivider_unstable: (props: ToolbarDividerProps, ref: React_2.Ref<HTMLElement>) => ToolbarDividerState;
-
-// @public
 export const useToolbarDividerStyles_unstable: (state: ToolbarDividerState) => ToolbarDividerState;
 
 // @public
