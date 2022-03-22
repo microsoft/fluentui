@@ -19,6 +19,7 @@ describe('Menu', () => {
       'component-has-root-ref',
       'component-handles-classname',
       'component-has-static-classname',
+      'component-has-static-classnames-object',
       // Menu does not have own styles
       'make-styles-overrides-win',
     ],

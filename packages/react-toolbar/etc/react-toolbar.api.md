@@ -14,6 +14,7 @@ import { DividerState } from '@fluentui/react-divider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderToolbar_unstable: (state: ToolbarState, contextValues: ToolbarContextValues) => JSX.Element;

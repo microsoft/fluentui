@@ -9,6 +9,16 @@ describe('SplitButton', () => {
   isConformant({
     Component: SplitButton as React.FunctionComponent<SplitButtonProps>,
     displayName: 'SplitButton',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+            menuIcon: 'Test MenuIcon',
+          },
+        },
+      ],
+    },
   });
 
   it('renders correctly', () => {

@@ -33,7 +33,10 @@ const FolderCoverWithImage: React.FunctionComponent<IFolderCoverWithImageProps> 
   return renderFolderCoverWithLayout(folderCover, {
     children: (
       <img
-        src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+        title="example"
+        src={`//fabricweb.azureedge.net/fabric-website/placeholders/${Math.round(
+          imageSize.width,
+        )}x${Math.round(imageSize.height)}.png`}
       />
     ),
   });

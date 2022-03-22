@@ -283,6 +283,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   html: {
     extensions: ['htm', 'html', 'mht'],
   },
+  ipynb: {
+    extensions: ['nnb', 'ipynb'],
+  },
   link: {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
   },
@@ -416,6 +419,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
   },
   sharedfolder: {},
+  playlist: {},
   sway: {},
   sysfile: {
     extensions: [

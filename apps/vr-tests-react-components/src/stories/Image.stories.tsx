@@ -9,7 +9,9 @@ storiesOf('Image Converged', module)
   .addDecorator((story: () => React.ReactNode) => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
-  .addStory('Default', () => <Image src="https://via.placeholder.com/300x300" alt="Placeholder image" />)
+  .addStory('Default', () => (
+    <Image src="https://fabricweb.azureedge.net/fabric-website/placeholders/300x300.png" alt="Placeholder image" />
+  ))
   .addStory('Image Shape', () => (
     <>
       <div>
@@ -56,27 +58,45 @@ storiesOf('Image Converged', module)
   .addStory('Image Layout Fit', () => (
     <>
       <div style={{ height: 300, width: 400 }}>
-        <Image src="https://via.placeholder.com/600x200" alt="Placeholder for fit none" fit="none" />
+        <Image
+          src="https://fabricweb.azureedge.net/fabric-website/placeholders/600x200.png"
+          alt="Placeholder for fit none"
+          fit="none"
+        />
       </div>
       <div style={{ height: 300, width: 400 }}>
-        <Image src="https://via.placeholder.com/600x200" alt="Placeholder for fit center" fit="center" />
+        <Image
+          src="https://fabricweb.azureedge.net/fabric-website/placeholders/600x200.png"
+          alt="Placeholder for fit center"
+          fit="center"
+        />
       </div>
       <div style={{ height: 300, width: 400 }}>
-        <Image src="https://via.placeholder.com/600x200" alt="Placeholder for fit contain" fit="contain" />
+        <Image
+          src="https://fabricweb.azureedge.net/fabric-website/placeholders/600x200.png"
+          alt="Placeholder for fit contain"
+          fit="contain"
+        />
       </div>
       <div style={{ height: 300, width: 400 }}>
-        <Image src="https://via.placeholder.com/600x200" alt="Placeholder for fit cover" fit="cover" />
+        <Image
+          src="https://fabricweb.azureedge.net/fabric-website/placeholders/600x200.png"
+          alt="Placeholder for fit cover"
+          fit="cover"
+        />
       </div>
     </>
   ))
   .addStory('Image Fluid', () => (
     <>
       <div>
-        <Image src="https://via.placeholder.com/900x50" block />
+        <Image src="https://fabricweb.azureedge.net/fabric-website/placeholders/900x50.png" block />
       </div>
       <div>
-        <Image src="https://via.placeholder.com/100x100" block />
+        <Image src="https://fabricweb.azureedge.net/fabric-website/placeholders/100x100.png" block />
       </div>
     </>
   ))
-  .addStory('Image Shadow', () => <Image src="https://via.placeholder.com/900x50" shadow />);
+  .addStory('Image Shadow', () => (
+    <Image src="https://fabricweb.azureedge.net/fabric-website/placeholders/900x50.png" shadow />
+  ));

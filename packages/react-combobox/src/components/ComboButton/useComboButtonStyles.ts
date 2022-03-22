@@ -1,7 +1,14 @@
+import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
-import type { ComboButtonState } from './ComboButton.types';
+import type { ComboButtonSlots, ComboButtonState } from './ComboButton.types';
 
+/**
+ * @deprecated Use `comboButtonClassNames.root` instead.
+ */
 export const comboButtonClassName = 'fui-ComboButton';
+export const comboButtonClassNames: SlotClassNames<ComboButtonSlots> = {
+  root: 'fui-ComboButton',
+};
 
 /**
  * Styles for the root slot
@@ -19,7 +26,7 @@ const useStyles = makeStyles({
  */
 export const useComboButtonStyles_unstable = (state: ComboButtonState): ComboButtonState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(comboButtonClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(comboButtonClassNames.root, styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

@@ -1,9 +1,19 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import type { AccordionHeaderState } from './AccordionHeader.types';
+import type { AccordionHeaderSlots, AccordionHeaderState } from './AccordionHeader.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `accordionHeaderClassNames.root` instead.
+ */
 export const accordionHeaderClassName = 'fui-AccordionHeader';
+export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots> = {
+  root: 'fui-AccordionHeader',
+  button: 'fui-AccordionHeader__button',
+  expandIcon: 'fui-AccordionHeader__expandIcon',
+  icon: 'fui-AccordionHeader__icon',
+};
 
 const useStyles = makeStyles({
   // TODO: this should be extracted to another package
@@ -88,7 +98,7 @@ const useStyles = makeStyles({
 export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
-    accordionHeaderClassName,
+    accordionHeaderClassNames.root,
     styles.root,
     state.inline && styles.rootInline,
     state.disabled && styles.rootDisabled,
@@ -96,6 +106,7 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) =
   );
 
   state.button.className = mergeClasses(
+    accordionHeaderClassNames.button,
     styles.resetButton,
     styles.button,
     styles.focusIndicator,
@@ -108,6 +119,7 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) =
 
   if (state.expandIcon) {
     state.expandIcon.className = mergeClasses(
+      accordionHeaderClassNames.expandIcon,
       styles.expandIcon,
       state.expandIconPosition === 'start' && styles.expandIconStart,
       state.expandIconPosition === 'end' && styles.expandIconEnd,
@@ -116,6 +128,7 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) =
   }
   if (state.icon) {
     state.icon.className = mergeClasses(
+      accordionHeaderClassNames.icon,
       styles.icon,
       state.expandIconPosition === 'end' && styles.iconExpandIconEnd,
       state.icon.className,

@@ -25,6 +25,7 @@ storiesOf('Checkbox Converged', module)
   .addStory('disabled', () => <Checkbox disabled label="Disabled" />);
 
 storiesOf('Checkbox Converged', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))

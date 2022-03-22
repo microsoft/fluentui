@@ -1,8 +1,54 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Thu, 03 Mar 2022 07:24:25 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Mar 2022 07:45:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.4)
+
+Tue, 15 Mar 2022 07:45:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.3..@fluentui/theme_v2.6.4)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.8.1 ([PR #22094](https://github.com/microsoft/fluentui/pull/22094) by beachball)
+
+## [2.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.3)
+
+Fri, 11 Mar 2022 07:34:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.2..@fluentui/theme_v2.6.3)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.5.0 ([PR #22047](https://github.com/microsoft/fluentui/pull/22047) by beachball)
+- Bump @fluentui/utilities to v8.8.0 ([PR #22047](https://github.com/microsoft/fluentui/pull/22047) by beachball)
+
+## [2.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.2)
+
+Thu, 10 Mar 2022 07:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.1..@fluentui/theme_v2.6.2)
+
+### Patches
+
+- Adding exports entries for 2 more entry points to keep @uifabric/fluent-theme package compatible with the latest theme package. ([PR #22043](https://github.com/microsoft/fluentui/pull/22043) by dzearing@microsoft.com)
+
+## [2.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.1)
+
+Wed, 09 Mar 2022 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.0..@fluentui/theme_v2.6.1)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.7.0 ([PR #22008](https://github.com/microsoft/fluentui/pull/22008) by beachball)
+
+## [2.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.0)
+
+Tue, 08 Mar 2022 23:29:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.5.0..@fluentui/theme_v2.6.0)
+
+### Minor changes
+
+- Adding ./lib/createTheme export to @fluentui/theme package. ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by dzearing@microsoft.com)
 
 ## [2.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.5.0)
 

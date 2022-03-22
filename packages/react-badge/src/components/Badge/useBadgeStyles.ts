@@ -1,8 +1,16 @@
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { BadgeState } from './Badge.types';
+import type { BadgeSlots, BadgeState } from './Badge.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `badgeClassNames.root` instead.
+ */
 export const badgeClassName = 'fui-Badge';
+export const badgeClassNames: SlotClassNames<BadgeSlots> = {
+  root: 'fui-Badge',
+  icon: 'fui-Badge__icon',
+};
 
 const useRootStyles = makeStyles({
   base: {
@@ -261,7 +269,7 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
   const rootStyles = useRootStyles();
 
   state.root.className = mergeClasses(
-    badgeClassName,
+    badgeClassNames.root,
     rootStyles.base,
     rootStyles[state.size],
     rootStyles[state.shape],
@@ -275,7 +283,12 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
 
   const iconStyles = useIconStyles();
   if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
+    state.icon.className = mergeClasses(
+      badgeClassNames.icon,
+      iconStyles.base,
+      iconStyles[state.size],
+      state.icon.className,
+    );
   }
 
   return state;

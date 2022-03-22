@@ -18,7 +18,7 @@ export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
 // @public
 export const Switch: ForwardRefComponent<SwitchProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const switchClassName: string;
 
 // @public (undocumented)

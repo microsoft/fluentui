@@ -56,6 +56,6 @@ const Placeholder = () => (
   <div>
     <h4>Dynamic content</h4>
 
-    <img src="https://via.placeholder.com/400" />
+    <img src="https://fabricweb.azureedge.net/fabric-website/placeholders/400x400.png" />
   </div>
 );

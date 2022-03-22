@@ -10,7 +10,7 @@ exports[`MenuItem renders a default state 1`] = `
   tabIndex={0}
 >
   <span
-    className=""
+    className="fui-MenuItem__content"
   >
     Default MenuItem
   </span>

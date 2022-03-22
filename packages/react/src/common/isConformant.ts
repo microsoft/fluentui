@@ -12,6 +12,7 @@ export function isConformant<TProps = {}>(
       // Will enable with appropriate overrides separately
       'consistent-callback-names',
       'consistent-callback-args',
+      'component-has-static-classnames-object',
     ],
     componentPath: module!.parent!.filename.replace('.test', ''),
   };

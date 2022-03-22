@@ -1,7 +1,14 @@
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
-import type { MenuListState } from './MenuList.types';
+import type { MenuListSlots, MenuListState } from './MenuList.types';
 
+/**
+ * @deprecated Use `menuListClassNames.root` instead.
+ */
 export const menuListClassName = 'fui-MenuList';
+export const menuListClassNames: SlotClassNames<MenuListSlots> = {
+  root: 'fui-MenuList',
+};
 
 const useStyles = makeStyles({
   root: {
@@ -16,6 +23,6 @@ const useStyles = makeStyles({
  */
 export const useMenuListStyles_unstable = (state: MenuListState): MenuListState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(menuListClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(menuListClassNames.root, styles.root, state.root.className);
   return state;
 };

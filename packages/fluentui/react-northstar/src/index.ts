@@ -12,6 +12,7 @@ export { teamsDarkTheme } from './themes/teams-dark';
 export { teamsHighContrastTheme } from './themes/teams-high-contrast';
 export { teamsV2Theme } from './themes/teams-v2';
 export { teamsDarkV2Theme } from './themes/teams-dark-v2';
+export { teamsForcedColorsTheme } from './themes/teams-forced-colors';
 
 export * from './themes/types';
 export * from './themes/colorUtils';

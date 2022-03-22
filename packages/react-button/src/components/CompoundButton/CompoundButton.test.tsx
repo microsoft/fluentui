@@ -9,6 +9,17 @@ describe('CompoundButton', () => {
   isConformant({
     Component: CompoundButton as React.FunctionComponent<CompoundButtonProps>,
     displayName: 'CompoundButton',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+            children: 'Test Children',
+            secondaryContent: 'Test Secondary Content',
+          },
+        },
+      ],
+    },
   });
 
   describe('when rendered as a button', () => {
@@ -17,6 +28,12 @@ describe('CompoundButton', () => {
       const button = getByRole('button');
 
       expect(button.tagName).toBe('BUTTON');
+    });
+
+    it('renders secondaryContent even if no primary content was passed', () => {
+      const secondaryContentText = 'Secondary content';
+      const { queryByText } = render(<CompoundButton icon="Test icon" secondaryContent={secondaryContentText} />);
+      expect(queryByText(secondaryContentText)).toBeTruthy();
     });
 
     it('can be focused', () => {
