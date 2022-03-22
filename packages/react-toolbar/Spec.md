@@ -90,6 +90,16 @@ It's based on the `Checkbox` containing few styles overrides
 type ToolbarCheckboxProps = ComponentProps<Partial<CheckboxSlots>>;
 ```
 
+### ToolbarItemGroup
+
+It serves as general container for `ToolbarCheckboxProps` or `ToolbarRadioProps` hosting events for controls
+
+```typescript
+type ToolbarItemGroupProps = {
+  onChange: (itemName: string, value: boolean) => void;
+};
+```
+
 ## Structure
 
 - _**Public**_
