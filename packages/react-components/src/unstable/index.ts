@@ -88,14 +88,22 @@ export type {
 
 export {
   Slider,
-  sliderClassName,
+  sliderClassNames,
   useSliderState_unstable,
   useSliderStyles_unstable,
   useSlider_unstable,
   renderSlider_unstable,
 } from '@fluentui/react-slider';
-
 export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
+
+export {
+  Switch,
+  switchClassNames,
+  renderSwitch_unstable,
+  useSwitch_unstable,
+  useSwitchStyles_unstable,
+} from '@fluentui/react-switch';
+export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';
 
 export {
   Tab,
@@ -109,7 +117,6 @@ export {
   useTabListStyles_unstable,
   renderTabList_unstable,
 } from '@fluentui/react-tabs';
-
 export type {
   TabValue,
   TabProps,

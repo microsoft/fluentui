@@ -10,6 +10,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
@@ -21,9 +22,7 @@ export const Switch: ForwardRefComponent<SwitchProps>;
 export const switchClassName: string;
 
 // @public (undocumented)
-export const switchClassNames: {
-    [SlotName in keyof SwitchSlots]-?: string;
-};
+export const switchClassNames: SlotClassNames<SwitchSlots>;
 
 // @public (undocumented)
 export type SwitchOnChangeData = {

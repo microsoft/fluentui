@@ -24,7 +24,6 @@ describe('MenuTrigger', () => {
     ],
     Component: MenuTrigger,
     displayName: 'MenuTrigger',
-    skipAsPropTests: true,
     requiredProps: {
       children: <button>MenuTrigger</button>,
     },

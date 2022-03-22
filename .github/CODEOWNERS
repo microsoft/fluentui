@@ -86,6 +86,7 @@ packages/foundation-legacy/ @microsoft/cxe-red @khmakoto
 packages/merge-styles/ @dzearing
 packages/monaco-editor/ @ecraig12345
 packages/public-docsite-setup/ @ecraig12345
+packages/priority-overflow/ @microsoft/teams-prg
 packages/react-aria/ @microsoft/teams-prg
 packages/react-cards/ @microsoft/cxe-red @khmakoto
 packages/react-charting/ @microsoft/charting-team
@@ -97,6 +98,7 @@ packages/react-file-type-icons/ @jahnp @bigbadcapers
 packages/react-hooks/ @microsoft/cxe-red @ecraig12345
 packages/react-monaco-editor/ @ecraig12345
 packages/react-positioning/ @microsoft/teams-prg
+packages/react-priority-overflow/ @microsoft/teams-prg
 packages/react-shared-contexts/ @microsoft/teams-prg
 packages/react-storybook/ @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-storybook-addon/ @microsoft/cxe-prg
@@ -145,6 +147,7 @@ packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @ecraig12345
 packages/react-tabs/ @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-text/ @microsoft/cxe-prg
 packages/react-toolbar/ @microsoft/teams-prg @chpalac @ling1726
+packages/react-textarea/ @microsoft/cxe-red @sopranopillow
 packages/react-tooltip/ @microsoft/cxe-red @behowell @khmakoto
 
 ## Components

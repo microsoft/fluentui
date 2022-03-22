@@ -11,6 +11,7 @@ export const Status = () => {
       <PresenceBadge status="doNotDisturb" />
       <PresenceBadge status="offline" />
       <PresenceBadge status="outOfOffice" />
+      <PresenceBadge status="unknown" />
     </>
   );
 };
@@ -20,7 +21,7 @@ Status.parameters = {
     description: {
       story:
         'A presence badge supports `available`, `away`, `busy`, `doNotDisturb`, ' +
-        '`offline`, and `outOfOffice` status.' +
+        '`offline`, `outOfOffice` and `unknown` status.' +
         ' The default is `available`.',
     },
   },

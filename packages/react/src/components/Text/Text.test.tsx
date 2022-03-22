@@ -23,8 +23,6 @@ describe('Text', () => {
     displayName: 'Text',
     requiredProps: { children: 'content' },
     componentPath: path.join(__dirname, 'Text.ts'),
-    skipAsPropTests: false,
-    asPropHandlesRef: true,
     // Problem: Ref is not supported
     // Solution: Convert to FunctionComponent and support using forwardRef
     disabledTests: ['component-has-root-ref', 'component-handles-ref'],

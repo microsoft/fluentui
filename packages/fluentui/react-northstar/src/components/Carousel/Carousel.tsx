@@ -31,11 +31,11 @@ import {
   useUnhandledProps,
   useStateManager,
   mergeVariablesOverrides,
-  usePrevious,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { createCarouselManager, CarouselState, CarouselActions } from '@fluentui/state';
 import { CarouselPaddlesContainer } from './CarouselPaddlesContainer';
+import { getAnimationName } from './utils';
 
 export interface CarouselSlotClassNames {
   itemsContainer: string;
@@ -115,6 +115,18 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
 
   /** A navigation may be clickable */
   disableClickableNav?: boolean;
+
+  /** Define animation to slide on enter from previous item. */
+  animationEnterFromPrev?: string;
+
+  /** Define animation to slide on enter from next item. */
+  animationEnterFromNext?: string;
+
+  /** Define animation to slide on exit to previous item. */
+  animationExitToPrev?: string;
+
+  /** Define animation to slide on exit to next item. */
+  animationExitToNext?: string;
 }
 
 export type CarouselStylesProps = { isFromKeyboard: boolean; shouldFocusContainer: boolean };
@@ -127,6 +139,35 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
   pagination: `${carouselClassName}__pagination`,
   navigation: `${carouselClassName}__navigation`,
 };
+
+function useDirection(activeIndex: number, circular: boolean, itemsLength: number) {
+  const prevActiveIndex = React.useRef<number>(activeIndex);
+  React.useEffect(() => {
+    prevActiveIndex.current = activeIndex;
+  }, [activeIndex]);
+
+  const direction = React.useMemo(() => {
+    if (circular) {
+      if (activeIndex === 0 && prevActiveIndex.current === itemsLength - 1) {
+        return 'start';
+      }
+      if (activeIndex === itemsLength - 1 && prevActiveIndex.current === 0) {
+        return 'end';
+      }
+    }
+
+    if (activeIndex > prevActiveIndex.current) {
+      return 'start';
+    }
+    if (activeIndex < prevActiveIndex.current) {
+      return 'end';
+    }
+
+    return undefined;
+  }, [activeIndex, circular, itemsLength]);
+
+  return direction;
+}
 
 /**
  * A Carousel displays data organised as a gallery.
@@ -157,6 +198,10 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
     styles,
     variables,
     disableClickableNav,
+    animationEnterFromPrev,
+    animationEnterFromNext,
+    animationExitToPrev,
+    animationExitToNext,
   } = props;
 
   const ElementType = getElementType(props);
@@ -170,7 +215,8 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
     }),
   });
   const { ariaLiveOn, shouldFocusContainer, isFromKeyboard, activeIndex } = state;
-  const prevActiveIndex = usePrevious<number>(activeIndex);
+
+  const dir = useDirection(activeIndex, circular, items?.length);
 
   const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
     () => Array.from({ length: items?.length }, () => React.createRef()),
@@ -297,29 +343,17 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
             items.map((item, index) => {
               const itemRef = itemRefs[index];
               const active = activeIndex === index;
-              let slideToNext = prevActiveIndex < activeIndex;
-              const initialMounting = prevActiveIndex === -1;
-
-              if (circular && prevActiveIndex === items.length - 1 && activeIndex === 0) {
-                slideToNext = true;
-              } else if (circular && prevActiveIndex === 0 && activeIndex === items.length - 1) {
-                slideToNext = false;
-              }
+              const animationName = getAnimationName({
+                active,
+                dir,
+                animationEnterFromPrev,
+                animationEnterFromNext,
+                animationExitToPrev,
+                animationExitToNext,
+              });
 
               return (
-                <Animation
-                  key={item['key'] || index}
-                  mountOnEnter
-                  unmountOnExit
-                  visible={active}
-                  name={
-                    initialMounting || !active || prevActiveIndex === index
-                      ? ''
-                      : slideToNext
-                      ? 'carousel-slide-to-next-enter'
-                      : 'carousel-slide-to-previous-enter'
-                  }
-                >
+                <Animation visible={active} key={item['key'] || index} mountOnEnter unmountOnExit name={animationName}>
                   <Ref innerRef={itemRef}>
                     {CarouselItem.create(item, {
                       defaultProps: () => ({
@@ -515,12 +549,20 @@ Carousel.propTypes = {
   paddlePrevious: customPropTypes.itemShorthand,
   thumbnails: PropTypes.bool,
   disableClickableNav: PropTypes.bool,
+  animationEnterFromPrev: PropTypes.string,
+  animationEnterFromNext: PropTypes.string,
+  animationExitToPrev: PropTypes.string,
+  animationExitToNext: PropTypes.string,
 };
 
 Carousel.defaultProps = {
   accessibility: carouselBehavior,
   paddlePrevious: {},
   paddleNext: {},
+  animationEnterFromPrev: 'carousel-slide-to-previous-enter',
+  animationEnterFromNext: 'carousel-slide-to-next-enter',
+  animationExitToPrev: '',
+  animationExitToNext: '',
 };
 
 Carousel.Item = CarouselItem;

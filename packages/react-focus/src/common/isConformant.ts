@@ -6,7 +6,6 @@ export function isConformant<TProps = {}>(
 ) {
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     disabledTests: [
-      'has-docblock',
       'kebab-aria-attributes',
       // Focus* components don't have static classes
       'component-has-static-classname',
