@@ -26,6 +26,8 @@ export type ButtonCommons = {
   /**
    * A button can fill the width of its container.
    * @default false
+   *
+   * @deprecated - Use style overrides instead.
    */
   block: boolean;
 

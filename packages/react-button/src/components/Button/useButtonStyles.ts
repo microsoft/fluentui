@@ -358,7 +358,16 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
 
-  const { appearance, block, disabled, disabledFocusable, iconOnly, shape, size } = state;
+  const {
+    appearance,
+    // eslint-disable-next-line deprecation/deprecation
+    block,
+    disabled,
+    disabledFocusable,
+    iconOnly,
+    shape,
+    size,
+  } = state;
 
   state.root.className = mergeClasses(
     buttonClassNames.root,
