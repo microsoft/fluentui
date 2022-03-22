@@ -8,8 +8,8 @@ import type { PopoverContextValue } from '../popoverContext';
  */
 export const mockPopoverContext = (options: Partial<PopoverContextValue> = {}) => {
   const mockContext: PopoverContextValue = {
-    open: false,
     setOpen: () => null,
+    toggleOpen: () => null,
     triggerRef: { current: null },
     contentRef: { current: null },
     arrowRef: { current: null },

@@ -1,13 +1,20 @@
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles';
-import type { CompoundButtonState } from './CompoundButton.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { CompoundButtonSlots, CompoundButtonState } from './CompoundButton.types';
 
-export const compoundButtonClassName = 'fui-CompoundButton';
-
-const CompoundButtonClassNames = {
-  secondaryContent: `${compoundButtonClassName}-secondaryContent`,
+export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots> = {
+  root: 'fui-CompoundButton',
+  icon: 'fui-CompoundButton__icon',
+  contentContainer: 'fui-CompoundButton__contentContainer',
+  secondaryContent: 'fui-CompoundButton__secondaryContent',
 };
+
+/**
+ * @deprecated Use `compoundButtonClassName.root` instead.
+ */
+export const compoundButtonClassName = compoundButtonClassNames.root;
 
 const useRootStyles = makeStyles({
   // Base styles
@@ -16,18 +23,18 @@ const useRootStyles = makeStyles({
 
     height: 'auto',
 
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2Hover,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2Pressed,
       },
     },
@@ -38,52 +45,52 @@ const useRootStyles = makeStyles({
     /* No styles */
   },
   primary: {
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForegroundOnBrand,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundOnBrand,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundOnBrand,
       },
     },
   },
   subtle: {
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2BrandPressed,
       },
     },
   },
   transparent: {
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2BrandPressed,
       },
     },
@@ -111,18 +118,18 @@ const useRootStyles = makeStyles({
 
   // Disabled styles
   disabled: {
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForegroundDisabled,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundDisabled,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundDisabled,
       },
     },
@@ -198,7 +205,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   const { appearance, disabled, disabledFocusable, iconOnly, size } = state;
 
   state.root.className = mergeClasses(
-    compoundButtonClassName,
+    compoundButtonClassNames.root,
 
     // Root styles
     rootStyles.base,
@@ -215,15 +222,19 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
     state.root.className,
   );
 
-  if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles.base, state.icon.className);
-  }
+  state.contentContainer.className = mergeClasses(
+    compoundButtonClassNames.contentContainer,
+    contentContainerStyles.base,
+    state.contentContainer.className,
+  );
 
-  state.contentContainer.className = mergeClasses(contentContainerStyles.base, state.contentContainer.className);
+  if (state.icon) {
+    state.icon.className = mergeClasses(compoundButtonClassNames.icon, iconStyles.base, state.icon.className);
+  }
 
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(
-      CompoundButtonClassNames.secondaryContent,
+      compoundButtonClassNames.secondaryContent,
       secondaryContentStyles.base,
       secondaryContentStyles[size],
       state.secondaryContent.className,

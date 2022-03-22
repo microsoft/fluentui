@@ -10,7 +10,7 @@ import {
   modalize,
   on,
 } from '../../Utilities';
-import { useId, useConst, useMergedRefs } from '@fluentui/react-hooks';
+import { useId, useConst, useMergedRefs, useUnmount } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
 import type { IRefObject } from '../../Utilities';
 import type { IFocusTrapZoneProps, IFocusTrapZone } from './FocusTrapZone.types';
@@ -375,19 +375,6 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     </div>
   );
 }) as any;
-
-const useUnmount = (unmountFunction: () => void) => {
-  const unmountRef = React.useRef(unmountFunction);
-  unmountRef.current = unmountFunction;
-  React.useEffect(
-    () => () => {
-      if (unmountRef.current) {
-        unmountRef.current();
-      }
-    },
-    [unmountFunction],
-  );
-};
 
 FocusTrapZone.displayName = COMPONENT_NAME;
 FocusTrapZone.focusStack = [];

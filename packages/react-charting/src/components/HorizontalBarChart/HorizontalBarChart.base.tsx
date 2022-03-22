@@ -35,6 +35,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _uniqLineText: string;
   private _calloutId: string;
   private _refArray: IRefArrayData[];
+  private _calloutAnchorPoint: IChartDataPoint | null;
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);
@@ -61,7 +62,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
     return (
-      <div className={this._classNames.root}>
+      <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         {data!.map((points: IChartProps, index: number) => {
           if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
             datapoint = points.chartData![0].horizontalBarChartdata!.x;
@@ -158,11 +159,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   }
 
   private _hoverOn(hoverValue: string | number | Date | null, point: IChartDataPoint): void {
-    if (!this.state.isCalloutVisible || this.state.legend !== point.legend!) {
+    if ((!this.state.isCalloutVisible || this.state.legend !== point.legend!) && this._calloutAnchorPoint !== point) {
       const currentHoveredElement = find(
         this._refArray,
         (currentElement: IRefArrayData) => currentElement.index === point.legend,
       );
+      this._calloutAnchorPoint = point;
       this.setState({
         isCalloutVisible: true,
         hoverValue: hoverValue,
@@ -178,6 +180,11 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   }
 
   private _hoverOff(): void {
+    /**/
+  }
+
+  private _handleChartMouseLeave = () => {
+    this._calloutAnchorPoint = null;
     if (this.state.isCalloutVisible) {
       this.setState({
         isCalloutVisible: false,
@@ -187,7 +194,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         legend: '',
       });
     }
-  }
+  };
 
   private _adjustProps = (): void => {
     this._barHeight = this.props.barHeight || 8;

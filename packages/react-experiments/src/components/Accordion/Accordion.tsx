@@ -1,3 +1,4 @@
+/** @jsxRuntime classic */
 /** @jsx withSlots */
 import * as React from 'react';
 import { createComponent, withSlots, getSlots } from '@fluentui/foundation-legacy';

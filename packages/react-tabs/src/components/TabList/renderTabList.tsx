@@ -6,7 +6,6 @@ import { TabListContext } from './TabListContext';
 /**
  * Render the final JSX of TabList
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const renderTabList_unstable = (state: TabListState, contextValues: TabListContextValues) => {
   const { slots, slotProps } = getSlots<TabListSlots>(state);
 

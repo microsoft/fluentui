@@ -1,11 +1,17 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { TabListState } from './TabList.types';
+import type { TabListSlots, TabListState } from './TabList.types';
 import { tokens } from '@fluentui/react-theme';
-import { usePrevious } from '@fluentui/react-utilities';
+import { SlotClassNames, usePrevious } from '@fluentui/react-utilities';
 import { tabPendingDesignTokens } from '../../tab.constants';
 
+/**
+ * @deprecated Use `tabListClassNames.root` instead.
+ */
 export const tabListClassName = 'fui-TabList';
-export const tabListSelectionIndicatorName = 'fui-TabList_SelectionIndicator';
+export const tabListSelectionIndicatorName = 'fui-TabList__selectionIndicator';
+export const tabListClassNames: SlotClassNames<TabListSlots> = {
+  root: 'fui-TabList',
+};
 
 export const indicatorOffsetVar = '--selection-indicator-offset';
 export const indicatorLengthVar = '--selection-indicator-length';
@@ -91,7 +97,6 @@ const useVerticalIndicatorStyles = makeStyles({
 /**
  * Apply styling to the TabList slots based on the state
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const useTabListStyles_unstable = (state: TabListState): TabListState => {
   const { selectedTabRect: selectionIndicatorRect, selectedValue, size, vertical } = state;
 
@@ -104,7 +109,7 @@ export const useTabListStyles_unstable = (state: TabListState): TabListState => 
   const verticalIndicatorStyles = useVerticalIndicatorStyles();
 
   state.root.className = mergeClasses(
-    tabListClassName,
+    tabListClassNames.root,
     styles.root,
     vertical && styles.vertical,
     !!selectedValue && (vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base),

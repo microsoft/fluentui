@@ -66,6 +66,9 @@ export const divProperties: Record<string, number>;
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
 
 // @public
+export const fieldsetProperties: Record<string, number>;
+
+// @public
 export type FluentTriggerComponent = {
     isFluentTriggerComponent?: boolean;
 };
@@ -194,6 +197,11 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
         as: As;
     } & WithSlotRenderFunction<IntrisicElementProps<As>>;
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
+
+// @public
+export type SlotClassNames<Slots> = {
+    [SlotName in keyof Slots]-?: string;
+};
 
 // @public
 export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandValue | null | undefined>;

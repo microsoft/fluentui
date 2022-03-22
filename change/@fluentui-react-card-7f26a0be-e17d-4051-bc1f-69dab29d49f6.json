@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: top padding issues with CardPreview",
-  "packageName": "@fluentui/react-card",
-  "email": "39736248+andrefcdias@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

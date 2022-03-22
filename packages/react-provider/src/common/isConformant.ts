@@ -6,8 +6,6 @@ export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
 ) {
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
-    disabledTests: ['has-docblock'],
-    asPropHandlesRef: true,
     componentPath: module!.parent!.filename.replace('.test', ''),
     extraTests: griffelTests as TestObject<TProps>,
   };

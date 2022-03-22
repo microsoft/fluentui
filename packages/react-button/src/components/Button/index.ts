@@ -3,4 +3,9 @@ export * from './Button';
 export type { ButtonProps, ButtonSlots, ButtonState } from './Button.types';
 export * from './renderButton';
 export * from './useButton';
-export { buttonClassName, useButtonStyles_unstable } from './useButtonStyles';
+export {
+  /* eslint-disable-next-line deprecation/deprecation */
+  buttonClassName,
+  buttonClassNames,
+  useButtonStyles_unstable,
+} from './useButtonStyles';

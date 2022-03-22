@@ -84,6 +84,7 @@ describe('Tree', () => {
     testPath: __filename,
     constructorName: 'Tree',
     autoControlledProps: ['activeItemIds', 'selectedItemIds'],
+    skipAsPropTests: 'as-component',
   });
 
   describe('activeItemIds', () => {

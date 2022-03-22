@@ -38,7 +38,7 @@ export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions 
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
-    axis?: 'vertical' | 'horizontal';
+    axis?: 'vertical' | 'horizontal' | 'grid';
     circular?: boolean;
     memorizeCurrent?: boolean;
 }

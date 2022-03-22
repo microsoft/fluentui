@@ -14,7 +14,6 @@ import { SelectTabEvent } from '../TabList/TabList.types';
  * @param props - props from this instance of Tab
  * @param ref - reference to root HTMLElement of Tab
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
   const { content, icon, value } = props;
 

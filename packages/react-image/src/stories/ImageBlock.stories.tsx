@@ -3,8 +3,8 @@ import { Image } from '../Image';
 
 export const Block = () => (
   <>
-    <Image block src="https://via.placeholder.com/900x50" />
-    <Image block src="https://via.placeholder.com/100x100" />
+    <Image block src="https://fabricweb.azureedge.net/fabric-website/placeholders/900x50.png" />
+    <Image block src="https://fabricweb.azureedge.net/fabric-website/placeholders/100x100.png" />
   </>
 );
 Block.parameters = {

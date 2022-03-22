@@ -1,4 +1,6 @@
 import * as Enquirer from 'enquirer';
+import * as fs from 'fs';
+import * as path from 'path';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import {
   Tree,
@@ -15,6 +17,7 @@ import {
   visitNotIgnoredFiles,
   writeJson,
   WorkspaceConfiguration,
+  generateFiles,
 } from '@nrwl/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
@@ -376,17 +379,8 @@ describe('migrate-converged-pkg generator', () => {
 
       let jestConfig = getProjectJestConfig(projectConfig);
 
-      expect(jestConfig).toMatchInlineSnapshot(`
-        "const { createConfig } = require('@fluentui/scripts/jest/jest-resources');
-        const path = require('path');
-
-        const config = createConfig({
-        setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
-        snapshotSerializers: ['@griffel/jest-serializer'],
-        });
-
-        module.exports = config;"
-      `);
+      // Why not inline snapshot? -> this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+      expect(jestConfig).toMatchSnapshot();
 
       await generator(tree, options);
 
@@ -648,35 +642,14 @@ describe('migrate-converged-pkg generator', () => {
 
     it(`should remove @ts-ignore pragmas from all stories`, async () => {
       const { paths } = setup({ createDummyStories: true });
-      append(
-        tree,
-        paths.storyOne,
-        stripIndents`
-        // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        import { Button } from '@fluentui/react-button';
-
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        import { Text } from '@fluentui/react-text';
-      `,
-      );
+      // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+      const template = fs.readFileSync(path.join(__dirname, '__fixtures__', 'ts-ignore-story.ts__tmpl__'), 'utf-8');
+      append(tree, paths.storyOne, template);
 
       await generator(tree, options);
 
-      expect(tree.read(paths.storyOne)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "import * as Implementation from './index';
-        export const Foo = (props: FooProps) => { return <div>Foo</div>; }\\\\n
-
-
-
-        import { Button } from '@fluentui/react-button';
-
-
-
-        import { Text } from '@fluentui/react-text';"
-      `);
+      // Why not inline snapshot? -> this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+      expect(tree.read(paths.storyOne)?.toString('utf-8')).toMatchSnapshot();
     });
   });
 
@@ -750,10 +723,9 @@ describe('migrate-converged-pkg generator', () => {
 
       // support.js
       const supportFile = tree.read(paths.e2eSupport)?.toString('utf-8');
-      expect(supportFile).toMatchInlineSnapshot(`
-        "// workaround for https://github.com/cypress-io/cypress/issues/8599
-        import '@fluentui/scripts/cypress/support';"
-      `);
+
+      // Why not inline snapshot? -> this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+      expect(supportFile).toMatchSnapshot();
 
       // package.json updates
       const packageJson: PackageJson = readJson(tree, paths.packageJson);

@@ -9,6 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSlider_unstable: (state: SliderState) => JSX.Element;
@@ -17,7 +18,7 @@ export const renderSlider_unstable: (state: SliderState) => JSX.Element;
 export const Slider: ForwardRefComponent<SliderProps>;
 
 // @public (undocumented)
-export const sliderClassName = "fui-Slider";
+export const sliderClassNames: SlotClassNames<SliderSlots>;
 
 // @public (undocumented)
 export type SliderOnChangeData = {

@@ -5,4 +5,4 @@ export {
   FontWeights,
   IconFontSizes,
   createFontStyles,
-} from '@fluentui/theme/lib/fonts/index';
+} from '@fluentui/theme';

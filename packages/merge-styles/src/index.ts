@@ -11,7 +11,7 @@ export { DeepPartial } from './DeepPartial';
 // eslint-disable-next-line deprecation/deprecation
 export { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet, Omit } from './IStyleSet';
 
-export { ICSSRule, IFontFace, IFontWeight, IRawFontStyle, IRawStyleBase } from './IRawStyleBase';
+export { ICSSRule, ICSSPixelUnitRule, IFontFace, IFontWeight, IRawFontStyle, IRawStyleBase } from './IRawStyleBase';
 
 export { mergeStyles, mergeCss } from './mergeStyles';
 

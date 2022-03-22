@@ -23,11 +23,9 @@ export const Icon = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton
-              menuButton={triggerProps}
-              primaryActionButton="With calendar icon before contents"
-              icon={<CalendarMonthRegular />}
-            />
+            <SplitButton menuButton={triggerProps} icon={<CalendarMonthRegular />}>
+              With calendar icon before contents
+            </SplitButton>
           )}
         </MenuTrigger>
         <MenuPopover>
@@ -41,12 +39,9 @@ export const Icon = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton
-              menuButton={triggerProps}
-              primaryActionButton="With calendar icon after contents"
-              icon={<CalendarMonthRegular />}
-              iconPosition="after"
-            />
+            <SplitButton menuButton={triggerProps} icon={<CalendarMonthRegular />} iconPosition="after">
+              With calendar icon after contents
+            </SplitButton>
           )}
         </MenuTrigger>
         <MenuPopover>
@@ -63,12 +58,13 @@ export const Icon = () => {
             <SplitButton
               menuButton={triggerProps}
               primaryActionButton={{
-                children: 'With calendar icon and custom filter menu icon',
                 className: styles.longText,
               }}
               icon={<CalendarMonthRegular />}
               menuIcon={<FilterRegular />}
-            />
+            >
+              With calendar icon and custom filter menu icon
+            </SplitButton>
           )}
         </MenuTrigger>
         <MenuPopover>

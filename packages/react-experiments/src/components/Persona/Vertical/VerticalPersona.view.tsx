@@ -1,3 +1,4 @@
+/** @jsxRuntime classic */
 /** @jsx withSlots */
 import { PersonaCoin } from '../../PersonaCoin/PersonaCoin';
 import { getSlots, withSlots } from '@fluentui/foundation-legacy';
