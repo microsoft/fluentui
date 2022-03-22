@@ -17,32 +17,40 @@ export const tabSlotClassNames: SlotClassNames<TabSlots> = {
  */
 const useRootStyles = makeStyles({
   base: {
+    alignItems: 'center',
     backgroundColor: 'transparent',
     ...shorthands.borderColor('none'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.borderWidth(0),
-    columnGap: tabSpacingTokens.sNudge,
     cursor: 'pointer',
     display: 'flex',
     flexDirection: 'row',
     fontFamily: tokens.fontFamilyBase,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding(tabSpacingTokens.mNudge),
+    outlineStyle: 'none',
     position: 'relative',
     ...shorthands.overflow('hidden'),
+    textTransform: 'none',
   },
-  horizontal: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  vertical: {
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+  medium: {
+    columnGap: tabSpacingTokens.sNudge,
   },
   small: {
     columnGap: tabSpacingTokens.xxs,
+  },
+  mediumHorizontal: {
+    justifyContent: 'center',
+    ...shorthands.padding(tabSpacingTokens.m, tabSpacingTokens.sNudge),
+  },
+  mediumVertical: {
+    justifyContent: 'flex-start',
+    minWidth: '120px',
+    ...shorthands.padding(tabSpacingTokens.mNudge),
+  },
+  smallHorizontal: {
     ...shorthands.padding(tabSpacingTokens.sNudge),
   },
+  smallVertical: {},
   subtle: {
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
@@ -84,64 +92,143 @@ const useFocusStyles = makeStyles({
   }),
 });
 
-/**
- * Indicator styles for the root slot when horizontal.
- */
-const useHorizontalIndicatorStyles = makeStyles({
+/** Indicator styles for when pending selection */
+const usePendingIndicatorStyles = makeStyles({
   base: {
-    ':after': {
+    ':before': {
       backgroundColor: 'none',
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
+    },
+    ':hover:before': {
+      backgroundColor: tokens.colorNeutralStroke1,
+    },
+    ':active:before': {
+      backgroundColor: tokens.colorNeutralStroke1,
+    },
+  },
+  mediumHorizontal: {
+    ':before': {
+      height: tokens.strokeWidthThicker,
+      bottom: 0,
+      left: tabSpacingTokens.m,
+      right: tabSpacingTokens.m,
+    },
+  },
+  mediumVertical: {
+    ':before': {
+      height: '16px',
+      left: 0,
+      top: tabSpacingTokens.s,
+      width: tokens.strokeWidthThicker,
+    },
+    ':hover:before': {
+      left: 0,
+    },
+    ':active:before': {
+      left: 0,
+    },
+  },
+  smallHorizontal: {
+    ':before': {
+      height: tokens.strokeWidthThick,
+      bottom: 0,
+      left: tabSpacingTokens.sNudge,
+      right: tabSpacingTokens.sNudge,
+    },
+  },
+  smallVertical: {
+    ':before': {
+      height: '12px',
+      left: 0,
+      width: tokens.strokeWidthThicker,
+    },
+    ':hover:before': {
+      left: 0,
+    },
+    ':active:before': {
+      left: 0,
+    },
+  },
+});
+
+const useActiveIndicatorStyles = makeStyles({
+  base: {
+    ':after': {
+      backgroundColor: tokens.colorCompoundBrandForeground1,
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      boxSizing: 'border-box',
+      content: '""',
+      position: 'absolute',
+    },
+  },
+  mediumHorizontal: {
+    ':after': {
       height: tokens.strokeWidthThicker,
       bottom: '0',
       left: tabSpacingTokens.m,
       right: tabSpacingTokens.m,
     },
-    ':hover': {
-      ':after': {
-        backgroundColor: tokens.colorNeutralStroke1,
-      },
+    ':hover:after': {
+      left: tabSpacingTokens.sNudge,
+      right: tabSpacingTokens.sNudge,
+    },
+    ':active:after': {
+      left: tabSpacingTokens.sNudge,
+      right: tabSpacingTokens.sNudge,
     },
   },
-  small: {
+  mediumVertical: {
     ':after': {
-      height: tokens.strokeWidthThick,
-      left: tabSpacingTokens.s,
-      right: tabSpacingTokens.s,
-    },
-  },
-});
-
-/**
- * Indicator styles for the root slot when vertical.
- */
-const useVerticalIndicatorStyles = makeStyles({
-  base: {
-    ':before': {
-      backgroundColor: 'none',
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      boxSizing: 'border-box',
-      content: '""',
-      position: 'absolute',
-      left: '0',
-      top: tabSpacingTokens.m,
-      bottom: tabSpacingTokens.m,
+      left: 0,
+      height: '16px',
+      top: tabSpacingTokens.s,
       width: tokens.strokeWidthThicker,
     },
-    ':hover': {
-      ':before': {
-        backgroundColor: tokens.colorNeutralStroke1,
-      },
+    ':hover:after': {
+      height: '20px',
+      left: 0,
+      top: tabSpacingTokens.sNudge,
+    },
+    ':active:after': {
+      height: '20px',
+      left: 0,
+      top: tabSpacingTokens.sNudge,
     },
   },
-  small: {
-    ':before': {
-      top: tabSpacingTokens.s,
-      bottom: tabSpacingTokens.s,
-      width: tokens.strokeWidthThick,
+  smallHorizontal: {
+    ':after': {
+      bottom: '0',
+      height: tokens.strokeWidthThick,
+      left: tabSpacingTokens.sNudge,
+      right: tabSpacingTokens.sNudge,
+    },
+    ':hover:after': {
+      left: tabSpacingTokens.xs,
+      right: tabSpacingTokens.xs,
+    },
+    ':active:after': {
+      left: tabSpacingTokens.xs,
+      right: tabSpacingTokens.xs,
+    },
+  },
+  smallVertical: {
+    ':after': {
+      height: '12px',
+      left: '0',
+      top: 0,
+      bottom: tabSpacingTokens.sNudge,
+      width: tokens.strokeWidthThicker,
+    },
+    ':hover:after': {
+      height: '16px',
+      left: 0,
+    },
+    ':active:after': {
+      height: '16px',
+      left: 0,
     },
   },
 });
@@ -188,22 +275,41 @@ const useContentStyles = makeStyles({
 export const useTabStyles_unstable = (state: TabState): TabState => {
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
-  const horizontalIndicatorStyles = useHorizontalIndicatorStyles();
-  const verticalIndicatorStyles = useVerticalIndicatorStyles();
+  const pendingIndicatorStyles = usePendingIndicatorStyles();
+  const activeIndicatorStyles = useActiveIndicatorStyles();
   const iconStyles = useIconStyles();
   const contentStyles = useContentStyles();
 
   state.root.className = mergeClasses(
     tabSlotClassNames.root,
+
+    // root
     rootStyles.base,
     focusStyles.base,
-    state.size === 'small' && rootStyles.small,
     state.appearance === 'subtle' && rootStyles.subtle,
+    state.size === 'small' ? rootStyles.small : rootStyles.medium,
+    state.size !== 'small' && (state.vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
+    state.size === 'small' && (state.vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
     state.selected && rootStyles.selected,
-    !state.selected && (state.vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base),
+
+    // pending indicator
+    !state.selected && pendingIndicatorStyles.base,
+    !state.selected &&
+      state.size !== 'small' &&
+      (state.vertical ? pendingIndicatorStyles.mediumVertical : pendingIndicatorStyles.mediumHorizontal),
     !state.selected &&
       state.size === 'small' &&
-      (state.vertical ? verticalIndicatorStyles.small : horizontalIndicatorStyles.small),
+      (state.vertical ? pendingIndicatorStyles.smallVertical : pendingIndicatorStyles.smallHorizontal),
+
+    // active indicator
+    state.selected && activeIndicatorStyles.base,
+    state.selected &&
+      state.size !== 'small' &&
+      (state.vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
+    state.selected &&
+      state.size === 'small' &&
+      (state.vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
+
     state.root.className,
   );
 

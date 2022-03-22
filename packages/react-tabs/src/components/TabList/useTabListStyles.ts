@@ -108,28 +108,27 @@ const useVerticalIndicatorStyles = makeStyles({
  * Apply styling to the TabList slots based on the state
  */
 export const useTabListStyles_unstable = (state: TabListState): TabListState => {
-  const { selectedTabRect: selectionIndicatorRect, selectedValue, size, vertical } = state;
+  const { selectedTabRect: selectionIndicatorRect, /*selectedValue, size,*/ vertical } = state;
 
   // only animate when the selected rectangle has changed
-  const previousSelectionRect = usePrevious(selectionIndicatorRect);
+  // const previousSelectionRect = usePrevious(selectionIndicatorRect);
   // eslint-disable-next-line no-console
-  console.log('p/s', previousSelectionRect, selectedValue);
-  const shouldAnimate =
-    !!previousSelectionRect && previousSelectionRect.height !== 0 && previousSelectionRect.width !== 0;
+  // const shouldAnimate =
+  //   !!previousSelectionRect && previousSelectionRect.height !== 0 && previousSelectionRect.width !== 0;
 
   const styles = useStyles();
-  const horizontalIndicatorStyles = useHorizontalIndicatorStyles();
-  const verticalIndicatorStyles = useVerticalIndicatorStyles();
+  // const horizontalIndicatorStyles = useHorizontalIndicatorStyles();
+  // const verticalIndicatorStyles = useVerticalIndicatorStyles();
 
   state.root.className = mergeClasses(
     tabListClassName,
     styles.root,
     vertical && styles.vertical,
-    !!selectedValue && (vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base),
-    !!selectedValue && size === 'small' && (vertical ? verticalIndicatorStyles.small : horizontalIndicatorStyles.small),
-    !!selectedValue &&
-      shouldAnimate &&
-      (vertical ? verticalIndicatorStyles.animated : horizontalIndicatorStyles.animated),
+    // !!selectedValue && (vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base),
+    // !!selectedValue && size === 'small' && (vertical ? verticalIndicatorStyles.small : horizontalIndicatorStyles.small),
+    // !!selectedValue &&
+    //   shouldAnimate &&
+    //   (vertical ? verticalIndicatorStyles.animated : horizontalIndicatorStyles.animated),
     state.root.className,
   );
 
