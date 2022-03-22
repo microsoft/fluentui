@@ -7,7 +7,7 @@ describe('ToolbarDivider', () => {
   isConformant({
     Component: ToolbarDivider,
     displayName: 'ToolbarDivider',
-    disabledTests: ['component-has-static-classname'],
+    disabledTests: ['component-has-static-classname', 'component-has-static-classnames-object'],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
