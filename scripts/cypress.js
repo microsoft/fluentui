@@ -34,22 +34,31 @@ const isLocalRun = !process.env.DEPLOYURL;
 
 /** @type {Cypress.ConfigOptions} */
 const baseConfig = {
-  baseUrl: isLocalRun ? `http://localhost:${argv.port}` : `${process.env.DEPLOYURL}/${argv.package}/storybook`,
-  fixturesFolder: path.join(__dirname, 'cypress/fixtures'),
-  integrationFolder: '.',
-  pluginsFile: path.join(__dirname, 'cypress/plugins/index.js'),
-  retries: {
-    runMode: 2,
-    openMode: 0,
-  },
+  // baseUrl: isLocalRun ? `http://localhost:${argv.port}` : `${process.env.DEPLOYURL}/${argv.package}/storybook`,
+  // fixturesFolder: path.join(__dirname, 'cypress/fixtures'),
+  // integrationFolder: '.',
+  // pluginsFile: path.join(__dirname, 'cypress/plugins/index.js'),
+  // retries: {
+  //   runMode: 2,
+  //   openMode: 0,
+  // },
   // Screenshots go under <pkg>/cypress/screenshots and can be useful to look at after failures in
   // local headless runs (especially if the failure is specific to headless runs)
-  screenshotOnRunFailure: isLocalRun && argv.mode === 'run',
+  // screenshotOnRunFailure: isLocalRun && argv.mode === 'run',
   // due to https://github.com/cypress-io/cypress/issues/8599 this must point to a path within the package,
   // not a relative path into scripts
-  supportFile: 'e2e/support.js',
-  testFiles: ['**/e2e/**/*.e2e.ts'],
-  video: false,
+  // supportFile: 'e2e/support.js',
+  // testFiles: ['**/e2e/**/*.e2e.tsx'],
+  // video: false,
+  // component: {
+  //   testFiles: path.join(process.cwd(), 'e2e', '*.e2e.tsx'),
+  //   componentFolder: path.join(process.cwd(), 'src'),
+  // },
+  component: {
+    componentFolder: '../packages/react-menu/src',
+    testFiles: '../packages/react-menu/e2e/*.e2e.tsx',
+  },
+  pluginsFile: '../../scripts/cypress/plugins/index.js',
 };
 
 const run = () => {
@@ -63,6 +72,7 @@ const run = () => {
 
 const open = () => {
   cypress.open({
+    testingType: 'component',
     configFile: false,
     config: {
       ...baseConfig,

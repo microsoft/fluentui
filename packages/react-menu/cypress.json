@@ -1,0 +1,8 @@
+{
+  "video": false,
+  "component": {
+    "componentFolder": ".",
+    "testFiles": "e2e/*.e2e.tsx"
+  },
+  "pluginsFile": "../../scripts/cypress/plugins/index.js"
+}
