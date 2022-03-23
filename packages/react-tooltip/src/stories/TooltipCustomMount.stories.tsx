@@ -20,7 +20,7 @@ CustomMount.parameters = {
   docs: {
     description: {
       story: `Tooltips are rendered in a React Portal. By default that Portal is the outermost div.
-      A custom \`mountNode\` can be provded in the case that the tooltip needs to be rendered elsewhere.`,
+      A custom \`mountNode\` can be provided in the case that the tooltip needs to be rendered elsewhere.`,
     },
   },
 };
