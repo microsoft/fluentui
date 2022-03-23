@@ -121,6 +121,7 @@
   padding: 0;
   box-shadow: none;
   border: 1px solid var(--colorNeutralStroke1, #e1dfdd);
+  margin: 25px 0 40px;
 }
 
 #docs-root .innerZoomElementWrapper {
@@ -414,4 +415,20 @@ h2.fluent {
   font-family: 'Segoe UI';
   line-height: 36px;
   letter-spacing: -0.16px;
+}
+
+/* Sandpack */
+#docs-root .sp-preview-container {
+  padding: 20px;
+  border-radius: 16px 16px 0 0;
+}
+
+#docs-root .sp-preview-iframe {
+  flex: 0 1 auto;
+  min-height: 0;
+  margin-bottom: 40px;
+}
+
+#docs-root .sp-code-editor {
+  border-radius: 0 0 16px 16px;
 }
