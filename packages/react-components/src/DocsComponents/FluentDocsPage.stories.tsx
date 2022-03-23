@@ -1,18 +1,9 @@
 import * as React from 'react';
-import {
-  DocsContext,
-  ArgsTable,
-  Title,
-  Subtitle,
-  Description,
-  HeaderMdx,
-  Primary,
-  PRIMARY_STORY,
-  Stories,
-} from '@storybook/addon-docs';
+import { DocsContext, ArgsTable, Title, Subtitle, Description, PRIMARY_STORY } from '@storybook/addon-docs';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Toc, nameToHash } from './Toc.stories';
+import { Toc } from './Toc.stories';
 import { isHosted } from './isHosted';
+import { FluentDocsDocsStory } from './FluentDocsDocsStory.stories';
 
 const useStyles = makeStyles({
   divider: {
@@ -34,6 +25,7 @@ const useStyles = makeStyles({
   },
   container: {
     flexGrow: 1,
+    minWidth: 0,
   },
   // style overrides for when hosted in website
   hosted: {
@@ -46,6 +38,7 @@ const useStyles = makeStyles({
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
   const stories = context.componentStories();
+  // const stories = context.stories.getStoriesForKind(context.kind);
   const primaryStory = stories[0];
   const hosted = isHosted();
   const styles = useStyles();
@@ -70,12 +63,12 @@ export const FluentDocsPage = () => {
           <Subtitle />
           <Description />
           <hr className={styles.divider} />
-          <HeaderMdx as="h3" id={nameToHash(primaryStory.name)}>
-            {primaryStory.name}
-          </HeaderMdx>
-          <Primary />
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
+          {stories.map((story, index) => (
+            <React.Fragment key={index}>
+              <FluentDocsDocsStory {...story} />
+              {story === primaryStory && <ArgsTable story={PRIMARY_STORY} />}
+            </React.Fragment>
+          ))}
         </div>
         <div className={styles.toc}>
           <Toc stories={stories} />
