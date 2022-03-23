@@ -65,7 +65,8 @@
     "@fluentui/react-utilities": "9.0.0-rc.6",
     "@fluentui/react-text": "9.0.0-rc.6",
     "@griffel/react": "1.0.3",
-    "tslib": "^2.1.0"
+    "tslib": "^2.1.0",
+    "@codesandbox/sandpack-react": "0.15.2"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
