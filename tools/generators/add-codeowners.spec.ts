@@ -62,14 +62,14 @@ describe(`#addCodeowner`, () => {
       "
     `);
   });
+});
 
-  function createCodeowners(tree: Tree, options: { withPlaceholder?: boolean } = {}) {
-    setupCodeowners(tree, {
-      content: stripIndents`
+function createCodeowners(tree: Tree, options: { withPlaceholder?: boolean } = {}) {
+  setupCodeowners(tree, {
+    content: stripIndents`
      /packages/react-one @org/team-one
       /packages/react-one @org/team-two
      `,
-      ...options,
-    });
-  }
-});
+    ...options,
+  });
+}
