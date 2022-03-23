@@ -1,9 +1,10 @@
-import { Tree, stripIndents, addProjectConfiguration } from '@nrwl/devkit';
+import { Tree, addProjectConfiguration, stripIndents } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { addCodeowner } from './add-codeowners';
+import { setupCodeowners } from '../utils-testing';
+import { workspacePaths } from '../utils';
 
 describe(`#addCodeowner`, () => {
-  const codeownersPath = '/.github/CODEOWNERS';
   let tree: Tree;
 
   beforeEach(() => {
@@ -36,16 +37,16 @@ describe(`#addCodeowner`, () => {
   });
 
   it(`should throw if NX placeholder is missing`, () => {
-    setupCodeowners(tree, { withPlaceholder: false });
+    createCodeowners(tree, { withPlaceholder: false });
     expect(() => {
       addCodeowner(tree, { packageName: '@proj/react-three', owner: '@org/team-three' });
     }).toThrowErrorMatchingInlineSnapshot(`"CODEOWNERS is missing '# <%= NX-CODEOWNER-PLACEHOLDER %>' placeholder"`);
   });
 
   it(`should add codeowner`, () => {
-    setupCodeowners(tree);
+    createCodeowners(tree);
 
-    expect(tree.read(codeownersPath, 'utf8')).toMatchInlineSnapshot(`
+    expect(tree.read(workspacePaths.github.codeowners, 'utf8')).toMatchInlineSnapshot(`
       "/packages/react-one @org/team-one
       /packages/react-one @org/team-two
       # <%= NX-CODEOWNER-PLACEHOLDER %>"
@@ -53,7 +54,7 @@ describe(`#addCodeowner`, () => {
 
     addCodeowner(tree, { packageName: '@proj/react-three', owner: '@org/team-three' });
 
-    expect(tree.read(codeownersPath, 'utf8')).toMatchInlineSnapshot(`
+    expect(tree.read(workspacePaths.github.codeowners, 'utf8')).toMatchInlineSnapshot(`
       "/packages/react-one @org/team-one
       /packages/react-one @org/team-two
       /packages/react-three @org/team-three
@@ -62,16 +63,13 @@ describe(`#addCodeowner`, () => {
     `);
   });
 
-  function setupCodeowners(tree: Tree, options: { withPlaceholder?: boolean } = {}) {
-    const { withPlaceholder } = { withPlaceholder: true, ...options };
-
-    tree.write(
-      codeownersPath,
-      stripIndents`
-      /packages/react-one @org/team-one
+  function createCodeowners(tree: Tree, options: { withPlaceholder?: boolean } = {}) {
+    setupCodeowners(tree, {
+      content: stripIndents`
+     /packages/react-one @org/team-one
       /packages/react-one @org/team-two
-      ${withPlaceholder ? '# <%= NX-CODEOWNER-PLACEHOLDER %>' : ''}
-    `,
-    );
+     `,
+      ...options,
+    });
   }
 });
