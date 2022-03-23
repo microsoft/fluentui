@@ -1999,4 +1999,26 @@ describe('Dropdown', () => {
       expect(getItemNodeAtIndex(0)).toHaveTextContent(items[0]);
     });
   });
+
+  describe('accessibility trigger button aria labels', () => {
+    it('trigger button should not have aria-label', () => {
+      const { triggerButtonNode } = renderDropdown({ items });
+      expect(triggerButtonNode).not.toHaveAttribute('aria-label');
+    });
+
+    it('trigger button should not have aria-labelledby', () => {
+      const { triggerButtonNode } = renderDropdown({ items });
+      expect(triggerButtonNode).not.toHaveAttribute('aria-labelledby');
+    });
+
+    it('trigger button should have aria-labelledby from user prop', () => {
+      const { triggerButtonNode } = renderDropdown({ items, 'aria-labelledby': 'form-label' });
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby', 'form-label');
+    });
+
+    it('trigger button should not have aria-describedby', () => {
+      const { triggerButtonNode } = renderDropdown({ items });
+      expect(triggerButtonNode).not.toHaveAttribute('aria-describedby');
+    });
+  });
 });
