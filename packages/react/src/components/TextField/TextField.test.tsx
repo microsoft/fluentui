@@ -39,10 +39,6 @@ function sharedAfterEach() {
   }
 }
 
-function getInput(): HTMLInputElement {
-  return screen.getByRole('textbox') as HTMLInputElement;
-}
-
 describe('TextField snapshots', () => {
   beforeEach(sharedBeforeEach);
 
@@ -140,38 +136,47 @@ describe('TextField rendering values from props', () => {
   it('can render a value', () => {
     const testText = 'initial value';
     // use the noOp change handler because onChange is required when value is specified
-    render(<TextField value={testText} onChange={noOp} componentRef={textFieldRef} />);
-    expect(getInput().value).toEqual(testText);
+    const { getByRole } = render(<TextField value={testText} onChange={noOp} componentRef={textFieldRef} />);
+    const input = getByRole('textbox') as HTMLInputElement;
+    expect(input.value).toEqual(testText);
+    expect(textField!.value).toEqual(testText);
   });
 
   it('can render a value as a textarea', () => {
     const testText = 'This\nIs\nMultiline\nText\n';
-    render(<TextField value={testText} onChange={noOp} multiline componentRef={textFieldRef} />);
-    expect(getInput().value).toEqual(testText);
+    const { getByRole } = render(<TextField value={testText} onChange={noOp} multiline componentRef={textFieldRef} />);
+    const input = getByRole('textbox') as HTMLInputElement;
+    expect(input.value).toEqual(testText);
+    expect(textField!.value).toEqual(testText);
   });
 
   it('should render a value of 0 when given the number 0', () => {
-    render(<TextField value={0 as any} onChange={noOp} componentRef={textFieldRef} />);
-    expect(getInput().value).toEqual('0');
+    const { getByRole } = render(<TextField value={0 as any} onChange={noOp} componentRef={textFieldRef} />);
+    const input = getByRole('textbox') as HTMLInputElement;
+    expect(input.value).toEqual('0');
+    expect(textField!.value).toEqual('0');
   });
 
   it('can render a default value', () => {
     const testText = 'initial value';
-    render(<TextField defaultValue={testText} componentRef={textFieldRef} />);
-    expect(getInput().value).toEqual(testText);
+    const { getByRole } = render(<TextField defaultValue={testText} componentRef={textFieldRef} />);
+    const input = getByRole('textbox') as HTMLInputElement;
+    expect(input.value).toEqual(testText);
     expect(textField!.value).toEqual(testText);
   });
 
   it('can render a default value as a textarea', () => {
     const testText = 'This\nIs\nMultiline\nText\n';
-    render(<TextField defaultValue={testText} multiline componentRef={textFieldRef} />);
-    expect(getInput().value).toEqual(testText);
+    const { getByRole } = render(<TextField defaultValue={testText} multiline componentRef={textFieldRef} />);
+    const input = getByRole('textbox') as HTMLInputElement;
+    expect(input.value).toEqual(testText);
     expect(textField!.value).toEqual(testText);
   });
 
   it('should render a default value of 0 when given the number 0', () => {
-    render(<TextField defaultValue={0 as any} componentRef={textFieldRef} />);
-    expect(getInput().value).toEqual('0');
+    const { getByRole } = render(<TextField defaultValue={0 as any} componentRef={textFieldRef} />);
+    const input = getByRole('textbox') as HTMLInputElement;
+    expect(input.value).toEqual('0');
     expect(textField!.value).toEqual('0');
   });
 }); // end rendering values from props
@@ -185,8 +190,8 @@ describe('TextField basic props', () => {
     expect(container.querySelector('label')!.textContent).toEqual(exampleLabel);
   });
   it('should associate the label and input box', () => {
-    const { container } = render(<TextField label="text-field-label" defaultValue="whatever value" />);
-    const inputDOM = getInput();
+    const { container, getByRole } = render(<TextField label="text-field-label" defaultValue="whatever value" />);
+    const inputDOM = getByRole('textbox') as HTMLInputElement;
     const labelDOM = container.querySelector('label')!;
     // Assert the input ID and label FOR attribute are the same.
     expect(inputDOM!.id).toBeTruthy();
@@ -243,21 +248,25 @@ describe('TextField basic props', () => {
     expect(input.type).toEqual('password');
   });
   it('should not give an aria-labelledby if no label is provided', () => {
-    render(<TextField />);
-    expect(getInput().getAttribute('aria-labelledby')).toBeNull();
+    const { getByRole } = render(<TextField />);
+    const input = getByRole('textbox') as HTMLInputElement;
+    expect(input.getAttribute('aria-labelledby')).toBeNull();
   });
   it('should use explicitly defined aria-labelledby prop if one is given', () => {
     const sampleAriaLabelledby = 'sample for aria-labelledby';
-    render(<TextField label="text-field-label" aria-labelledby={sampleAriaLabelledby} />);
-    expect(getInput().getAttribute('aria-labelledby')).toEqual(sampleAriaLabelledby);
+    const { getByRole } = render(<TextField label="text-field-label" aria-labelledby={sampleAriaLabelledby} />);
+    const input = getByRole('textbox') as HTMLInputElement;
+    expect(input.getAttribute('aria-labelledby')).toEqual(sampleAriaLabelledby);
   });
   it('should render a disabled input element', () => {
-    render(<TextField disabled={true} />);
-    expect(getInput().disabled).toEqual(true);
+    const { getByRole } = render(<TextField disabled={true} />);
+    const input = getByRole('textbox') as HTMLInputElement;
+    expect(input.disabled).toEqual(true);
   });
   it('should render a readonly input element', () => {
-    render(<TextField readOnly={true} />);
-    expect(getInput().readOnly).toEqual(true);
+    const { getByRole } = render(<TextField readOnly={true} />);
+    const input = getByRole('textbox') as HTMLInputElement;
+    expect(input.readOnly).toEqual(true);
   });
   it('can render description text', () => {
     const testDescription = 'A custom description';
@@ -325,9 +334,10 @@ describe('TextField with error message', () => {
   it('should render error message when onGetErrorMessage returns a string', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
 
-    const { container } = render(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
+    const { container, getByRole } = render(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
+    const input = getByRole('textbox') as HTMLInputElement;
 
-    userEvent.type(getInput(), 'also invalid');
+    userEvent.type(input, 'also invalid');
     jest.runAllTimers();
 
     expect(validator).toHaveBeenCalledTimes(1);
@@ -337,9 +347,10 @@ describe('TextField with error message', () => {
   it('should render error message when onGetErrorMessage returns a JSX.Element', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessageJSX : ''));
 
-    const { container } = render(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
+    const { container, getByRole } = render(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
+    const input = getByRole('textbox') as HTMLInputElement;
 
-    userEvent.type(getInput(), 'also invalid');
+    userEvent.type(input, 'also invalid');
     jest.runAllTimers();
 
     expect(validator).toHaveBeenCalledTimes(1);
@@ -349,9 +360,10 @@ describe('TextField with error message', () => {
   it('should render error message when onGetErrorMessage returns a Promise<string>', () => {
     const validator = jest.fn((value: string) => Promise.resolve(value.length > 3 ? errorMessage : ''));
 
-    const { container } = render(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
+    const { container, getByRole } = render(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
+    const input = getByRole('textbox') as HTMLInputElement;
 
-    userEvent.type(getInput(), 'also invalid');
+    userEvent.type(input, 'also invalid');
 
     // Extra rounds of running everything to account for the debounced validator and the promise...
     jest.runAllTimers();
@@ -366,9 +378,10 @@ describe('TextField with error message', () => {
   it('should render error message when onGetErrorMessage returns a Promise<JSX.Element>', () => {
     const validator = jest.fn((value: string) => Promise.resolve(value.length > 3 ? errorMessageJSX : ''));
 
-    const { container } = render(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
+    const { container, getByRole } = render(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
+    const input = getByRole('textbox') as HTMLInputElement;
 
-    userEvent.type(getInput(), 'also invalid');
+    userEvent.type(input, 'also invalid');
 
     jest.runAllTimers();
     return flushPromises().then(() => {
@@ -440,29 +453,14 @@ describe('TextField with error message', () => {
 
   it('should not validate when receiving props when validating only on focus in', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
+    const baseProps = { validateOnFocusIn: true, onChange: noOp, onGetErrorMessage: validator, validateOnLoad: false };
 
-    const { container, rerender } = render(
-      <TextField
-        validateOnFocusIn
-        value="initial value"
-        onChange={noOp}
-        onGetErrorMessage={validator}
-        validateOnLoad={false}
-      />,
-    );
+    const { container, rerender } = render(<TextField {...baseProps} value="initial value" />);
     jest.runAllTimers();
     expect(validator).toHaveBeenCalledTimes(0);
     assertErrorMessage(container, false);
 
-    rerender(
-      <TextField
-        validateOnFocusIn
-        value="failValidationValue"
-        onChange={noOp}
-        onGetErrorMessage={validator}
-        validateOnLoad={false}
-      />,
-    );
+    rerender(<TextField {...baseProps} value="failValidationValue" />);
     jest.runAllTimers();
 
     expect(validator).toHaveBeenCalledTimes(0);
@@ -471,29 +469,14 @@ describe('TextField with error message', () => {
 
   it('should not validate when receiving props when validating only on focus out', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
+    const baseProps = { validateOnFocusOut: true, onChange: noOp, onGetErrorMessage: validator, validateOnLoad: false };
 
-    const { container, rerender } = render(
-      <TextField
-        validateOnFocusOut
-        value="initial value"
-        onChange={noOp}
-        onGetErrorMessage={validator}
-        validateOnLoad={false}
-      />,
-    );
+    const { container, rerender } = render(<TextField {...baseProps} value="initial value" />);
     jest.runAllTimers();
     expect(validator).toHaveBeenCalledTimes(0);
     assertErrorMessage(container, false);
 
-    rerender(
-      <TextField
-        validateOnFocusOut
-        value="failValidationValue"
-        onChange={noOp}
-        onGetErrorMessage={validator}
-        validateOnLoad={false}
-      />,
-    );
+    rerender(<TextField {...baseProps} value="failValidationValue" />);
     jest.runAllTimers();
 
     expect(validator).toHaveBeenCalledTimes(0);
@@ -503,11 +486,11 @@ describe('TextField with error message', () => {
   it('should trigger validation only on focus', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
 
-    const { container } = render(
+    const { container, getByRole } = render(
       <TextField defaultValue="initial value" onGetErrorMessage={validator} validateOnFocusIn />,
     );
 
-    const input = getInput();
+    const input = getByRole('textbox') as HTMLInputElement;
     userEvent.type(input, 'invalid value', { skipClick: true });
     expect(validator).toHaveBeenCalledTimes(1);
 
@@ -523,11 +506,11 @@ describe('TextField with error message', () => {
   it('should trigger validation only on blur', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
 
-    const { container } = render(
+    const { container, getByRole } = render(
       <TextField defaultValue="initial value" onGetErrorMessage={validator} validateOnFocusOut />,
     );
 
-    const input = getInput();
+    const input = getByRole('textbox') as HTMLInputElement;
     userEvent.type(input, 'invalid value');
     expect(validator).toHaveBeenCalledTimes(1);
 
@@ -543,15 +526,15 @@ describe('TextField with error message', () => {
   it('should trigger validation on both blur and focus', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
 
-    const { container } = render(
+    const { container, getByRole } = render(
       <TextField defaultValue="initial value" onGetErrorMessage={validator} validateOnFocusOut validateOnFocusIn />,
     );
 
-    const input = getInput();
+    const input = getByRole('textbox') as HTMLInputElement;
     userEvent.type(input, 'value before focus', { skipClick: true });
     expect(validator).toHaveBeenCalledTimes(1);
 
-    userEvent.type(input, 'value after foc ');
+    userEvent.type(input, 'value after foc');
     userEvent.type(input, 'value after focus');
     expect(validator).toHaveBeenCalledTimes(2);
     //triggers blur event
@@ -575,7 +558,7 @@ describe('TextField controlled vs uncontrolled usage', () => {
   function verifyWarningsAndValue(warningCount: number, value: string | undefined) {
     expect(warnFn).toHaveBeenCalledTimes(warningCount);
 
-    const inputDOM = getInput();
+    const inputDOM = screen.getByRole('textbox') as HTMLInputElement;
     // check both the DOM and the state to ensure they match
     expect(textField!.value).toEqual(value);
     expect(inputDOM!.value).toEqual(value);
@@ -653,13 +636,13 @@ describe('TextField controlled vs uncontrolled usage', () => {
   });
 
   it('respects update and warns if value goes from provided to undefined', () => {
-    const { rerender } = render(<TextField value={value1} onChange={noOp} componentRef={textFieldRef} />);
+    const { rerender, getByRole } = render(<TextField value={value1} onChange={noOp} componentRef={textFieldRef} />);
     expect(warnFn).toHaveBeenCalledTimes(0);
 
     rerender(<TextField value={undefined} onChange={noOp} componentRef={textFieldRef} />);
 
     expect(warnFn).toHaveBeenCalledTimes(1);
-    const inputDOM = getInput();
+    const inputDOM = getByRole('textbox') as HTMLInputElement;
     expect(textField!.value).toEqual(undefined);
     expect(inputDOM!.value).toEqual('');
   });
@@ -695,7 +678,7 @@ describe('TextField onChange', () => {
   function simulateAndVerifyChange(changeValue: string, calls: number, expectedValue?: string) {
     expectedValue = typeof expectedValue === 'string' ? expectedValue : changeValue;
 
-    const input = getInput();
+    const input = screen.getByRole('textbox') as HTMLInputElement;
     fireEvent.change(input, { target: { value: changeValue } });
 
     expect(onChange).toHaveBeenCalledTimes(calls);
@@ -767,7 +750,7 @@ describe('TextField onChange', () => {
   });
 }); // end on change
 
-// // Other things that don't fit into a category above
+// Other things that don't fit into a category above
 describe('TextField', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
@@ -787,17 +770,17 @@ describe('TextField', () => {
   });
 
   it('sets focus to the input via ITextField focus', () => {
-    render(<TextField componentRef={textFieldRef} />);
+    const { getByRole } = render(<TextField componentRef={textFieldRef} />);
 
-    const input = getInput();
+    const input = getByRole('textbox') as HTMLInputElement;
     textField!.focus();
     expect(document.activeElement).toBe(input);
   });
 
   it('blurs the input via ITextField blur', () => {
-    render(<TextField componentRef={textFieldRef} />);
+    const { getByRole } = render(<TextField componentRef={textFieldRef} />);
 
-    const input = getInput();
+    const input = getByRole('textbox') as HTMLInputElement;
 
     textField!.focus();
     expect(document.activeElement).toBe(input);
@@ -827,20 +810,20 @@ describe('TextField', () => {
   });
 
   it('maintains focus when switching single to multi line and back', () => {
-    const { rerender } = render(<TextField componentRef={textFieldRef} />);
+    const { rerender, getByRole } = render(<TextField componentRef={textFieldRef} />);
 
     // focus input
     textField!.focus();
-    expect(document.activeElement).toBe(getInput());
+    expect(document.activeElement).toBe(getByRole('textbox'));
 
     // switch to multiline
     rerender(<TextField multiline={true} />);
     // verify still focused
-    expect(document.activeElement).toBe(getInput());
+    expect(document.activeElement).toBe(getByRole('textbox'));
     // back to single line
     rerender(<TextField multiline={false} />);
     // verify still focused
-    expect(document.activeElement).toBe(getInput());
+    expect(document.activeElement).toBe(getByRole('textbox'));
   });
 
   it('maintains selection when switching single to multi line and back', () => {
