@@ -6,8 +6,8 @@ import { Button } from '@fluentui/react-button';
 
 import { Scenario } from './utils';
 
-import { useForm, Controller } from 'react-hook-form';
-import { usePubSub, PubSubProvider, PubSubContext } from '@cactuslab/usepubsub';
+import { useForm, Controller, OnSubmit } from 'react-hook-form';
+import { usePubSub, PubSubProvider, Handler } from '@cactuslab/usepubsub';
 
 const regexes = {
   onlyNameChars: /^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*$/,
@@ -26,9 +26,14 @@ interface FormInputs {
   password: string;
 }
 
+interface FormValidation {
+  subscribe: (channel: string, handler: Handler) => () => void;
+  unsubscribe: (channel: string, handler: Handler) => void;
+}
+
 interface ValidationMessageProps {
   id: string;
-  formValidation: PubSubContext;
+  formValidation: FormValidation;
 }
 const ValidationMessage: React.FC<ValidationMessageProps> = ({ id, formValidation, children }) => {
   const [isAlerting, setIsAlerting] = React.useState(true);
@@ -43,10 +48,56 @@ const ValidationMessage: React.FC<ValidationMessageProps> = ({ id, formValidatio
     return () => formValidation.unsubscribe(id, alert);
   }, [formValidation]);
   return (
-    <div role={isAlerting ? 'alert' : undefined} id={`${id}Errors`}>
+    <div role={isAlerting ? 'alert' : undefined} style={{ color: isAlerting ? 'red' : 'green' }} id={`${id}Errors`}>
       {children}
     </div>
   );
+};
+
+const useFormValidation = (
+  handleSubmit: (callback: OnSubmit<any>) => (e?: React.BaseSyntheticEvent) => Promise<void>,
+) => {
+  const pubSub = usePubSub();
+  const isSubmitting = React.useRef(false);
+
+  const wrappedHandleSubmit = React.useCallback(
+    (callback: OnSubmit<any>) => {
+      const handler = handleSubmit(callback);
+      return async (e: React.BaseSyntheticEvent) => {
+        isSubmitting.current = true;
+        const result = await handler(e);
+        isSubmitting.current = false;
+        return result;
+      };
+    },
+    [isSubmitting],
+  );
+
+  const onFieldValidated = React.useCallback(
+    (field: string) => {
+      if (!isSubmitting.current) {
+        pubSub.publish(field, 'validate');
+      }
+      return true;
+    },
+    [isSubmitting, pubSub],
+  );
+
+  const notifyFormFieldError = React.useCallback(
+    (field: string) => {
+      pubSub.publish(field, 'validate');
+      return true;
+    },
+    [pubSub],
+  );
+
+  return {
+    subscribe: pubSub.subscribe,
+    unsubscribe: pubSub.unsubscribe,
+    onFieldValidated,
+    handleSubmit: wrappedHandleSubmit,
+    notifyFormFieldError,
+  };
 };
 
 const RegistrationFormInputsAccessibility = () => {
@@ -56,7 +107,7 @@ const RegistrationFormInputsAccessibility = () => {
     reValidateMode: 'onBlur',
   });
 
-  const formValidation = usePubSub();
+  const formValidation = useFormValidation(handleSubmit);
 
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
@@ -69,11 +120,8 @@ const RegistrationFormInputsAccessibility = () => {
     const firstErrorName = Object.keys(errors)[0] as keyof FormInputs;
     const firstErrorField = document.getElementById(firstErrorName);
 
-    // Narrate the errors if the error field is already focused
-    if (document.activeElement === firstErrorField) {
-      formValidation.publish(firstErrorName, 'validate');
-      return;
-    }
+    formValidation.notifyFormFieldError(firstErrorName);
+
     if (firstErrorField) {
       firstErrorField.focus();
     }
@@ -100,7 +148,7 @@ const RegistrationFormInputsAccessibility = () => {
     <Scenario pageTitle="Registration form inputs">
       <h2>Registration form</h2>
       {!isSubmittedAndValid ? (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={formValidation.handleSubmit(onSubmit)}>
           <Label htmlFor="fullName">Full name:</Label>
           <Controller
             name="fullName"
@@ -123,7 +171,9 @@ const RegistrationFormInputsAccessibility = () => {
                 onlyNameChars: value => regexes.onlyNameChars.test(value),
                 startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
                 always: () => {
-                  formValidation.publish('fullName', 'validate');
+                  if (!formState.isSubmitting) {
+                    formValidation.onFieldValidated('fullName');
+                  }
                   return true;
                 },
               },
@@ -170,7 +220,9 @@ const RegistrationFormInputsAccessibility = () => {
                 onlyNameChars: value => regexes.onlyNameChars.test(value),
                 startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
                 always: () => {
-                  formValidation.publish('nickname', 'validate');
+                  if (!formState.isSubmitting) {
+                    formValidation.onFieldValidated('nickname');
+                  }
                   return true;
                 },
               },
@@ -216,7 +268,9 @@ const RegistrationFormInputsAccessibility = () => {
                 hasSpecialChar: value => regexes.hasSpecialChar.test(value),
                 noWhitespace: value => regexes.noWhitespace.test(value),
                 always: () => {
-                  formValidation.publish('password', 'validate');
+                  if (!formState.isSubmitting) {
+                    formValidation.onFieldValidated('password');
+                  }
                   return true;
                 },
               },
