@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 21 Mar 2022 07:39:45 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Mar 2022 07:37:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.62.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.62.2)
+
+Wed, 23 Mar 2022 07:37:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.62.1..@fluentui/react_v8.62.2)
+
+### Patches
+
+- Rating: add focus outlines ([PR #22184](https://github.com/microsoft/fluentui/pull/22184) by elcraig@microsoft.com)
 
 ## [8.62.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.62.1)
 
