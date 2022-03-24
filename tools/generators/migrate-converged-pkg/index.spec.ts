@@ -17,13 +17,14 @@ import {
   visitNotIgnoredFiles,
   writeJson,
   WorkspaceConfiguration,
-  generateFiles,
 } from '@nrwl/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
+import { setupCodeowners } from '../../utils-testing';
 
 import generator from './index';
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
+import { workspacePaths } from '../../utils';
 
 interface AssertedSchema extends MigrateConvergedPkgGeneratorSchema {
   name: string;
@@ -56,6 +57,7 @@ describe('migrate-converged-pkg generator', () => {
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
     tree = createTreeWithEmptyWorkspace();
+    tree = setupCodeowners(tree, { content: `` });
     tree.write(
       'jest.config.js',
       stripIndents`
@@ -1129,6 +1131,24 @@ describe('migrate-converged-pkg generator', () => {
       expect(configs[projects[1]].sourceRoot).toBeDefined();
       expect(configs[projects[2]].sourceRoot).not.toBeDefined();
       expect(configs[projects[3]].sourceRoot).not.toBeDefined();
+    });
+  });
+
+  describe(`--owner`, () => {
+    it(`should not do anything if not specified`, async () => {
+      const before = tree.read(workspacePaths.github.codeowners, 'utf8');
+      await generator(tree, { name: options.name });
+      const after = tree.read(workspacePaths.github.codeowners, 'utf8');
+
+      expect(after).toEqual(before);
+    });
+
+    it(`should add owner of particular package to CODEOWNERS`, async () => {
+      await generator(tree, { name: options.name, owner: '@org/team-awesome' });
+
+      const content = tree.read(workspacePaths.github.codeowners, 'utf8');
+
+      expect(content).toContain(`packages/react-dummy @org/team-awesome`);
     });
   });
 });

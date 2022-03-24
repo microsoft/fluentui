@@ -120,7 +120,7 @@ common/_semanticSlots.scss @microsoft/cxe-red @phkuo
 common/_themeOverrides.scss @microsoft/cxe-red @phkuo
 common/_common.scss @microsoft/cxe-red @phkuo
 
-## Component packages
+## vNext packages
 packages/react-accordion @microsoft/teams-prg @microsoft/cxe-coastal
 packages/react-avatar @microsoft/cxe-red @behowell @khmakoto
 packages/react-badge @microsoft/teams-prg @microsoft/cxe-red @behowell
@@ -148,6 +148,7 @@ packages/react-tabs @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-text @microsoft/cxe-prg
 packages/react-textarea @microsoft/cxe-red @sopranopillow
 packages/react-tooltip @microsoft/cxe-red @behowell @khmakoto
+# <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
 packages/react @microsoft/cxe-red
