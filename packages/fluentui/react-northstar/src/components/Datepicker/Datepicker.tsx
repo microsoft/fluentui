@@ -390,6 +390,7 @@ export const Datepicker = (React.forwardRef<HTMLDivElement, DatepickerProps>((pr
         createShorthand(Input, input, {
           defaultProps: () =>
             getA11yProps('input', {
+              allowManualInput,
               placeholder: props.inputPlaceholder,
               disabled: props.disabled,
               error: !!error,
