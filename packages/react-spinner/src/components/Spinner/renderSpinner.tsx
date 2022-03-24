@@ -7,7 +7,13 @@ import type { SpinnerState, SpinnerSlots } from './Spinner.types';
  */
 export const renderSpinner_unstable = (state: SpinnerState) => {
   const { slots, slotProps } = getSlots<SpinnerSlots>(state);
-
+  const { labelPosition } = state;
   // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      {(labelPosition === 'above' || labelPosition === 'before') && <slots.label {...slotProps.label} />}
+      <slots.spinner {...slotProps.spinner} />
+      {(labelPosition === 'below' || labelPosition === 'after') && <slots.label {...slotProps.label} />}
+    </slots.root>
+  );
 };
