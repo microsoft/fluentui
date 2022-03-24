@@ -79,7 +79,6 @@ jobs:
         inputs:
           artifactName: SBom-$(System.JobAttempt)
           targetPath: $(System.DefaultWorkingDirectory)/_manifest
-
-      - template: .devops/templates/cleanup.yml
-        parameters:
-          checkForModifiedFiles: false
+#      - template: .devops/templates/cleanup.yml
+#        parameters:
+#          checkForModifiedFiles: false
