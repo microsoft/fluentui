@@ -54,12 +54,12 @@ const getConvergencePackages = (tree: Tree) => {
 
   let convergencePackages: Package[] = [];
   projects.forEach((project, key) => {
-    if (project.projectType !== 'library' || !project.tags?.some(tag => tag === 'vNext')) return;
-
-    convergencePackages.push({
-      name: key,
-      folder: project.root,
-    });
+    if (project.projectType === 'library' && project.tags?.some(tag => tag === 'vNext')) {
+      convergencePackages.push({
+        name: key,
+        folder: project.root,
+      });
+    }
   });
 
   return convergencePackages;
