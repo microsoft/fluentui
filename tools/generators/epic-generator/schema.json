@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "epic-generator",
+  "type": "object",
+  "properties": {
+    "repository": {
+      "type": "string",
+      "description": "Repository to create issues at.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "title": {
+      "type": "string",
+      "description": "Title used in the creation of the epic",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      }
+    },
+    "message": {
+      "type": "string",
+      "description": "Message used in the body of the epic",
+      "$default": {
+        "$source": "argv",
+        "index": 2
+      }
+    }
+  },
+  "required": ["repository", "title"]
+}
