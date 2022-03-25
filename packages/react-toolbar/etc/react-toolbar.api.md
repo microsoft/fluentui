@@ -20,6 +20,9 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 export const renderToolbar_unstable: (state: ToolbarState, contextValues: ToolbarContextValues) => JSX.Element;
 
 // @public
+export const renderToolbarToggleButton_unstable: (state: ToolbarToggleButtonState) => JSX.Element;
+
+// @public
 export const Toolbar: ForwardRefComponent<ToolbarProps>;
 
 // @public
@@ -72,6 +75,28 @@ export type ToolbarSlots = {
 export type ToolbarState = ComponentState<ToolbarSlots> & ToolbarCommons;
 
 // @public
+export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
+
+// @public (undocumented)
+export const toolbarToggleButtonClassName = "fui-ToolbarToggleButton";
+
+// @public (undocumented)
+export const toolbarToggleButtonClassNames: SlotClassNames<ToolbarToggleButtonSlots>;
+
+// Warning: (ae-forgotten-export) The symbol "ToolbarToggleButtonCommons" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type ToolbarToggleButtonProps = ComponentProps<ToolbarToggleButtonSlots> & ToolbarToggleButtonCommons;
+
+// @public (undocumented)
+export type ToolbarToggleButtonSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type ToolbarToggleButtonState = ComponentState<ToolbarToggleButtonSlots> & ToolbarToggleButtonCommons;
+
+// @public
 export const useToolbar_unstable: (props: ToolbarProps, ref: React_2.Ref<HTMLElement>) => ToolbarState;
 
 // @public
@@ -79,6 +104,12 @@ export const useToolbarDividerStyles_unstable: (state: ToolbarDividerState) => T
 
 // @public
 export const useToolbarStyles_unstable: (state: ToolbarState) => ToolbarState;
+
+// @public
+export const useToolbarToggleButton_unstable: (props: ToolbarToggleButtonProps, ref: React_2.Ref<HTMLElement>) => ToolbarToggleButtonState;
+
+// @public
+export const useToolbarToggleButtonStyles_unstable: (state: ToolbarToggleButtonState) => ToolbarToggleButtonState;
 
 // (No @packageDocumentation comment for this package)
 
