@@ -31,7 +31,7 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
     spinner: resolveShorthand(props.spinner, {
       required: true,
       defaultProps: {
-        children: <DefaultSvg size={size} />,
+        children: <DefaultSvg />,
       },
     }),
     label: resolveShorthand(props.label, {

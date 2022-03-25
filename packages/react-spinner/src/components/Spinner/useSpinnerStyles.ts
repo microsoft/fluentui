@@ -9,6 +9,15 @@ export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
   label: 'fui-Spinner__label',
 };
 
+const rvalues = {
+  tiny: '9',
+  extraSmall: '11',
+  small: '13',
+  medium: '14.5',
+  large: '16.5',
+  extraLarge: '18.5',
+  huge: '20',
+};
 // Sizes for the Spinner
 const spinnnerSizes = {
   tiny: '20px',
@@ -50,82 +59,149 @@ const useRootStyles = makeStyles({
 const useLoaderStyles = makeStyles({
   // global SVG class
   spinnerSVG: {
-    animationName: 'rotate',
-    animationDuration: '3s',
-    animationIterationCount: 'infinite',
-    animationTimingFunction: 'linear',
-    backgroundColor: 'transparent',
+    [`& > svg`]: {
+      animationName: {
+        '0%': { transform: 'rotate(0deg)' },
+        '100%': { transform: 'rotate(360deg)' },
+      },
+      animationDuration: '3s',
+      animationIterationCount: 'infinite',
+      animationTimingFunction: 'linear',
+      backgroundColor: 'transparent',
+    },
+    [`& > svg > circle`]: {
+      cx: '50%',
+      cy: '50%',
+      fill: 'none',
+    },
   },
 
   tiny: {
-    height: spinnnerSizes.tiny,
-    width: spinnnerSizes.tiny,
-    strokeWidth: spinnerStrokeWidth.sWidth,
+    [`& > svg`]: {
+      height: spinnnerSizes.tiny,
+      width: spinnnerSizes.tiny,
+    },
+    [`& > svg > circle`]: {
+      strokeWidth: spinnerStrokeWidth.sWidth,
+      r: rvalues.tiny,
+    },
   },
 
   extraSmall: {
-    height: spinnnerSizes.extraSmall,
-    width: spinnnerSizes.extraSmall,
-    strokeWidth: spinnerStrokeWidth.sWidth,
+    [`& > svg`]: {
+      height: spinnnerSizes.extraSmall,
+      width: spinnnerSizes.extraSmall,
+    },
+    [`& > svg > circle`]: {
+      strokeWidth: spinnerStrokeWidth.sWidth,
+      r: rvalues.extraSmall,
+    },
   },
 
   small: {
-    height: spinnnerSizes.small,
-    width: spinnnerSizes.small,
-    strokeWidth: spinnerStrokeWidth.sWidth,
+    [`& > svg`]: {
+      height: spinnnerSizes.small,
+      width: spinnnerSizes.small,
+    },
+    [`& > svg > circle`]: {
+      strokeWidth: spinnerStrokeWidth.sWidth,
+      r: rvalues.small,
+    },
   },
 
   medium: {
-    height: spinnnerSizes.medium,
-    width: spinnnerSizes.medium,
-    strokeWidth: spinnerStrokeWidth.mWidth,
+    [`& > svg`]: {
+      height: spinnnerSizes.medium,
+      width: spinnnerSizes.medium,
+    },
+    [`& > svg > circle`]: {
+      strokeWidth: spinnerStrokeWidth.mWidth,
+      r: rvalues.medium,
+    },
   },
 
   large: {
-    height: spinnnerSizes.large,
-    width: spinnnerSizes.large,
-    strokeWidth: spinnerStrokeWidth.mWidth,
+    [`& > svg`]: {
+      height: spinnnerSizes.large,
+      width: spinnnerSizes.large,
+    },
+    [`& > svg > circle`]: {
+      strokeWidth: spinnerStrokeWidth.mWidth,
+      r: rvalues.large,
+    },
   },
 
   extraLarge: {
-    height: spinnnerSizes.extraLarge,
-    width: spinnnerSizes.extraLarge,
-    strokeWidth: spinnerStrokeWidth.mWidth,
+    [`& > svg`]: {
+      height: spinnnerSizes.extraLarge,
+      width: spinnnerSizes.extraLarge,
+    },
+    [`& > svg > circle`]: {
+      strokeWidth: spinnerStrokeWidth.mWidth,
+      r: rvalues.extraLarge,
+    },
   },
 
   huge: {
-    height: spinnnerSizes.huge,
-    width: spinnnerSizes.huge,
-    strokeWidth: spinnerStrokeWidth.lWidth,
+    [`& > svg`]: {
+      height: spinnnerSizes.huge,
+      width: spinnnerSizes.huge,
+    },
+    [`& > svg > circle`]: {
+      strokeWidth: spinnerStrokeWidth.lWidth,
+      r: rvalues.huge,
+    },
   },
 
   // global class for Spinner track
   spinnerTrack: {
-    stroke: tokens.colorBrandStroke2,
+    [`& > svg > circle#track`]: {
+      stroke: tokens.colorBrandStroke2,
+    },
   },
 
   // modifier class for Spinner track if appearance="inverted"
   spinnerTrackInverted: {
-    stroke: 'rgba(255,255,255,0.2)',
+    [`& > svg > circle#track`]: {
+      stroke: 'rgba(255,255,255,0.2)',
+    },
   },
 
   // global Spinner trail class
   spinnerTail: {
-    stroke: tokens.colorBrandStroke1,
-    animationName: 'dash',
-    animationDuration: '1.5s',
-    animationIterationCount: 'infinite',
-    // --easyEasy token
-    animationTimingFunction: 'cubic-bezier(0.33,0,0.67,1)',
-    zIndex: 999,
-    strokeLinecap: 'round',
-    transform: 'rotate(-90deg)',
-    transformOrigin: '50% 50%',
-  },
-  // modifier class for Spinner trail
+    [`& > svg > circle#tail`]: {
+      stroke: tokens.colorBrandStroke1,
+      animationName: {
+        '0%': {
+          strokeDasharray: '1,150',
+          strokeDashoffset: '0',
+        },
 
+        '50%': {
+          strokeDasharray: '90,150',
+          strokeDashoffset: '-35',
+        },
+
+        '100%': {
+          strokeDasharray: '90,150',
+          strokeDashoffset: '-124',
+        },
+      },
+      animationDuration: '1.5s',
+      animationIterationCount: 'infinite',
+      animationTimingFunction: 'cubic-bezier(0.33,0,0.67,1)',
+      //zIndex: 999,
+      strokeLinecap: 'round',
+      transform: 'rotate(-90deg)',
+      transformOrigin: '50% 50%',
+    },
+  },
+
+  // modifier class for Spinner trail
   spinnerTailInverted: {
-    stroke: tokens.colorNeutralStrokeOnBrand2,
+    [`& > svg > circle#tail`]: {
+      stroke: tokens.colorNeutralStrokeOnBrand2,
+    },
   },
 });
 
