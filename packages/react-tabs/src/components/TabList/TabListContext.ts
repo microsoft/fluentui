@@ -14,6 +14,7 @@ export const TabListContext: Context<TabListContextValue> = createContext<TabLis
   onSelect: () => {
     /* noop */
   },
+  registeredTabs: {},
   size: 'medium',
   vertical: false,
 });

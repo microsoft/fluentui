@@ -17,11 +17,11 @@ import { SelectTabEvent } from '../TabList/TabList.types';
 export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
   const { content, icon, value } = props;
 
-  const { appearance, selected, onRegister, onUnregister, onSelect, size, vertical } = useContextSelector(
+  const { appearance, selectedValue, onRegister, onUnregister, onSelect, size, vertical } = useContextSelector(
     TabListContext,
     ctx => ({
       appearance: ctx.appearance,
-      selected: ctx.selectedValue === value,
+      selectedValue: ctx.selectedValue,
       onRegister: ctx.onRegister,
       onUnregister: ctx.onUnregister,
       onSelect: ctx.onSelect,
@@ -30,9 +30,9 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     }),
   );
 
-  const onClick = useEventCallback((event: SelectTabEvent) => onSelect(event, { value }));
-
   const innerRef = React.useRef<HTMLElement>(null);
+  const mergedRef = useMergedRefs(ref, innerRef);
+  const onClick = useEventCallback((event: SelectTabEvent) => onSelect(event, { value }));
 
   React.useEffect(() => {
     onRegister({
@@ -54,7 +54,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
       content: 'span',
     },
     root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, innerRef),
+      ref: mergedRef,
       role: 'tab',
       tabIndex: 0,
       ...props,
@@ -64,7 +64,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     iconOnly: Boolean(iconShorthand?.children && !contentShorthand.children),
     content: contentShorthand,
     appearance,
-    selected,
+    selectedValue,
     size,
     value,
     vertical,

@@ -3,7 +3,12 @@ import type { TabSlots, TabState } from './Tab.types';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { tabContentSizes, tabSpacingTokens } from '../../tab.constants';
+import {
+  pendingContentSizeTokens,
+  pendingSpacingTokens,
+  tabIndicatorPadding,
+  tabIndicatorStrokeWidths,
+} from '../../tab.constants';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 export const tabSlotClassNames: SlotClassNames<TabSlots> = {
@@ -18,7 +23,7 @@ export const tabSlotClassNames: SlotClassNames<TabSlots> = {
 const useRootStyles = makeStyles({
   base: {
     alignItems: 'center',
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent ',
     ...shorthands.borderColor('none'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.borderWidth(0),
@@ -32,25 +37,25 @@ const useRootStyles = makeStyles({
     ...shorthands.overflow('hidden'),
     textTransform: 'none',
   },
-  medium: {
-    columnGap: tabSpacingTokens.sNudge,
-  },
-  small: {
-    columnGap: tabSpacingTokens.xxs,
-  },
   mediumHorizontal: {
+    columnGap: pendingSpacingTokens.sNudge,
     justifyContent: 'center',
-    ...shorthands.padding(tabSpacingTokens.m, tabSpacingTokens.sNudge),
+    ...shorthands.padding(pendingSpacingTokens.m, pendingSpacingTokens.mNudge),
   },
   mediumVertical: {
+    columnGap: pendingSpacingTokens.sNudge,
     justifyContent: 'flex-start',
     minWidth: '120px',
-    ...shorthands.padding(tabSpacingTokens.mNudge),
+    ...shorthands.padding(pendingSpacingTokens.sNudge, pendingSpacingTokens.mNudge),
   },
   smallHorizontal: {
-    ...shorthands.padding(tabSpacingTokens.sNudge),
+    columnGap: pendingSpacingTokens.xxs,
+    ...shorthands.padding(pendingSpacingTokens.sNudge, pendingSpacingTokens.sNudge),
   },
-  smallVertical: {},
+  smallVertical: {
+    columnGap: pendingSpacingTokens.xs,
+    ...shorthands.padding(pendingSpacingTokens.xxs, pendingSpacingTokens.sNudge),
+  },
   subtle: {
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
@@ -111,45 +116,34 @@ const usePendingIndicatorStyles = makeStyles({
   },
   mediumHorizontal: {
     ':before': {
-      height: tokens.strokeWidthThicker,
+      height: tabIndicatorStrokeWidths.mediumHorizontal,
       bottom: 0,
-      left: tabSpacingTokens.m,
-      right: tabSpacingTokens.m,
+      left: tabIndicatorPadding.mediumHorizontal,
+      right: tabIndicatorPadding.mediumHorizontal,
     },
   },
   mediumVertical: {
     ':before': {
-      height: '16px',
+      bottom: tabIndicatorPadding.mediumVertical,
       left: 0,
-      top: tabSpacingTokens.s,
-      width: tokens.strokeWidthThicker,
-    },
-    ':hover:before': {
-      left: 0,
-    },
-    ':active:before': {
-      left: 0,
+      top: tabIndicatorPadding.mediumVertical,
+      width: tabIndicatorStrokeWidths.mediumVertical,
     },
   },
   smallHorizontal: {
     ':before': {
-      height: tokens.strokeWidthThick,
       bottom: 0,
-      left: tabSpacingTokens.sNudge,
-      right: tabSpacingTokens.sNudge,
+      height: tabIndicatorStrokeWidths.smallHorizontal,
+      left: tabIndicatorPadding.smallHorizontal,
+      right: tabIndicatorPadding.smallHorizontal,
     },
   },
   smallVertical: {
     ':before': {
-      height: '12px',
+      bottom: tabIndicatorPadding.smallVertical,
       left: 0,
-      width: tokens.strokeWidthThicker,
-    },
-    ':hover:before': {
-      left: 0,
-    },
-    ':active:before': {
-      left: 0,
+      top: tabIndicatorPadding.smallVertical,
+      width: tabIndicatorStrokeWidths.smallVertical,
     },
   },
 });
@@ -162,73 +156,39 @@ const useActiveIndicatorStyles = makeStyles({
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
+      zIndex: 1,
     },
   },
   mediumHorizontal: {
     ':after': {
-      height: tokens.strokeWidthThicker,
       bottom: '0',
-      left: tabSpacingTokens.m,
-      right: tabSpacingTokens.m,
-    },
-    ':hover:after': {
-      left: tabSpacingTokens.sNudge,
-      right: tabSpacingTokens.sNudge,
-    },
-    ':active:after': {
-      left: tabSpacingTokens.sNudge,
-      right: tabSpacingTokens.sNudge,
+      height: tabIndicatorStrokeWidths.mediumHorizontal,
+      left: tabIndicatorPadding.mediumHorizontal,
+      right: tabIndicatorPadding.mediumHorizontal,
     },
   },
   mediumVertical: {
     ':after': {
+      bottom: tabIndicatorPadding.mediumVertical,
       left: 0,
-      height: '16px',
-      top: tabSpacingTokens.s,
-      width: tokens.strokeWidthThicker,
-    },
-    ':hover:after': {
-      height: '20px',
-      left: 0,
-      top: tabSpacingTokens.sNudge,
-    },
-    ':active:after': {
-      height: '20px',
-      left: 0,
-      top: tabSpacingTokens.sNudge,
+      top: tabIndicatorPadding.mediumVertical,
+      width: tabIndicatorStrokeWidths.mediumVertical,
     },
   },
   smallHorizontal: {
     ':after': {
-      bottom: '0',
-      height: tokens.strokeWidthThick,
-      left: tabSpacingTokens.sNudge,
-      right: tabSpacingTokens.sNudge,
-    },
-    ':hover:after': {
-      left: tabSpacingTokens.xs,
-      right: tabSpacingTokens.xs,
-    },
-    ':active:after': {
-      left: tabSpacingTokens.xs,
-      right: tabSpacingTokens.xs,
+      bottom: 0,
+      height: tabIndicatorStrokeWidths.smallHorizontal,
+      left: tabIndicatorPadding.smallHorizontal,
+      right: tabIndicatorPadding.smallHorizontal,
     },
   },
   smallVertical: {
     ':after': {
-      height: '12px',
+      bottom: tabIndicatorPadding.smallVertical,
       left: '0',
-      top: 0,
-      bottom: tabSpacingTokens.sNudge,
-      width: tokens.strokeWidthThicker,
-    },
-    ':hover:after': {
-      height: '16px',
-      left: 0,
-    },
-    ':active:after': {
-      height: '16px',
-      left: 0,
+      top: tabIndicatorPadding.smallVertical,
+      width: tabIndicatorStrokeWidths.smallVertical,
     },
   },
 });
@@ -241,6 +201,7 @@ const useIconStyles = makeStyles({
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
+    ...shorthands.overflow('hidden'),
   },
   // per design, the small and medium font sizes are the same.
   // the size prop only affects spacing.
@@ -261,11 +222,13 @@ const useIconStyles = makeStyles({
  */
 const useContentStyles = makeStyles({
   base: {
-    ...tabContentSizes.body1,
-    ...shorthands.padding(0, tabSpacingTokens.xxs),
+    ...pendingContentSizeTokens.body1,
+    ...shorthands.overflow('hidden'),
+    // content padding is the same for medium & small, horiztonal & vertical
+    ...shorthands.padding(0, pendingSpacingTokens.xxs),
   },
   selected: {
-    ...tabContentSizes.body1Strong,
+    ...pendingContentSizeTokens.body1Strong,
   },
 });
 
@@ -280,36 +243,31 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   const iconStyles = useIconStyles();
   const contentStyles = useContentStyles();
 
+  const { appearance, selectedValue, size, value, vertical } = state;
+  const selected = selectedValue === value;
+
   state.root.className = mergeClasses(
     tabSlotClassNames.root,
-
-    // root
     rootStyles.base,
     focusStyles.base,
-    state.appearance === 'subtle' && rootStyles.subtle,
-    state.size === 'small' ? rootStyles.small : rootStyles.medium,
-    state.size !== 'small' && (state.vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
-    state.size === 'small' && (state.vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
-    state.selected && rootStyles.selected,
+    appearance === 'subtle' && rootStyles.subtle,
+    size !== 'small' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
+    size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
+    selected && rootStyles.selected,
 
-    // pending indicator
-    !state.selected && pendingIndicatorStyles.base,
-    !state.selected &&
-      state.size !== 'small' &&
-      (state.vertical ? pendingIndicatorStyles.mediumVertical : pendingIndicatorStyles.mediumHorizontal),
-    !state.selected &&
-      state.size === 'small' &&
-      (state.vertical ? pendingIndicatorStyles.smallVertical : pendingIndicatorStyles.smallHorizontal),
+    // pending indicator (before pseudo element)
+    pendingIndicatorStyles.base,
+    size !== 'small' && (vertical ? pendingIndicatorStyles.mediumVertical : pendingIndicatorStyles.mediumHorizontal),
+    size === 'small' && (vertical ? pendingIndicatorStyles.smallVertical : pendingIndicatorStyles.smallHorizontal),
 
-    // active indicator
-    state.selected && activeIndicatorStyles.base,
-    state.selected &&
-      state.size !== 'small' &&
-      (state.vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
-    state.selected &&
-      state.size === 'small' &&
-      (state.vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
-
+    // active indicator (after pseudo element)
+    selected && activeIndicatorStyles.base,
+    selected &&
+      size !== 'small' &&
+      (vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
+    selected &&
+      size === 'small' &&
+      (vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
     state.root.className,
   );
 
@@ -317,7 +275,7 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
     state.icon.className = mergeClasses(
       tabSlotClassNames.icon,
       iconStyles.base,
-      iconStyles[state.size],
+      iconStyles[size],
       state.icon.className,
     );
   }
@@ -325,7 +283,7 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   state.content.className = mergeClasses(
     tabSlotClassNames.content,
     contentStyles.base,
-    state.selected && contentStyles.selected,
+    selected && contentStyles.selected,
     state.content.className,
   );
 

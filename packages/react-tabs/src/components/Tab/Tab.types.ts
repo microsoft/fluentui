@@ -5,6 +5,16 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
  */
 export type TabValue = unknown;
 
+/**
+ * A bounding rectangle of a tab
+ */
+export type TabContentRect = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
 export type TabSlots = {
   /**
    * Root of the component.
@@ -45,20 +55,23 @@ export type TabState = ComponentState<TabSlots> &
      */
     appearance?: string;
     /**
-     * If this tab is selected.
+     * A tab can have only an icon slot filled and no content.
      */
-    selected?: boolean;
+    iconOnly: boolean;
+    /**
+     * The current selected tab value.
+     */
+    selectedValue?: TabValue;
     /**
      * A tab can be either 'small' or 'medium' size.
      */
     size: 'small' | 'medium';
     /**
+     * This tab's value;
+     */
+    value: TabValue;
+    /**
      * A tab can arrange its content based on if the tabs in the list are arranged vertically.
      */
     vertical: boolean;
-
-    /**
-     * A tab can have only an icon slot filled and no content.
-     */
-    iconOnly: boolean;
   };

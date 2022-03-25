@@ -4,10 +4,13 @@ import { TabValue } from '../Tab/Tab.types';
 
 export type RegisterTabData = {
   /**
-   * The value of the selected tab.
+   * The value of the tab.
    */
   value: TabValue;
 
+  /**
+   * The reference to the tab HTML element.
+   */
   ref: React.RefObject<HTMLElement>;
 };
 
@@ -88,6 +91,15 @@ export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selected
      * A callback to allow a tab to select itself when pressed.
      */
     onSelect: SelectTabEventHandler;
+    /**
+     * The previous selected tab value.
+     * Useful for transitions when changing tabs.
+     */
+    previousSelectedValue?: TabValue;
+    /**
+     * The set of registered tabs by value
+     */
+    registeredTabs: Record<string, RegisterTabData>;
   };
 
 /**
@@ -101,19 +113,6 @@ export type TabListContextValues = {
 };
 
 /**
- * A bounding rectangle of a tab
- */
-export type TabContentRect = {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-};
-
-/**
  * State used in rendering TabList.
  */
-export type TabListState = ComponentState<Required<TabListSlots>> &
-  TabListContextValue & {
-    selectedTabRect?: TabContentRect;
-  };
+export type TabListState = ComponentState<Required<TabListSlots>> & TabListContextValue;
