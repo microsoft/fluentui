@@ -9229,7 +9229,7 @@ export interface ITooltipHostProps extends React_2.HTMLAttributes<HTMLDivElement
 
 // @public (undocumented)
 export interface ITooltipHostState {
-    // (undocumented)
+    // @deprecated (undocumented)
     isAriaPlaceholderRendered: boolean;
     // (undocumented)
     isTooltipVisible: boolean;
