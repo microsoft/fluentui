@@ -66,6 +66,14 @@ It's based on the `Divider` containing few styles overrides
 type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>>;
 ```
 
+### ToolbarToggleButton
+
+It serves as an override on top of `ToggleButton` limiting the possible props only to `size`, `appearance`, `disabled` and `disabledFocusable`
+
+```typescript
+type ToolbarToggleButtonProps = ComponentProps<Partial<ToggleButtonSlots>>;
+```
+
 ### ToolbarRadioGroup
 
 It's based on the `RadioGroup` containing few styles overrides
