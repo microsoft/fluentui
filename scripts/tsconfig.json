@@ -9,6 +9,7 @@
     "allowJs": true,
     "noImplicitAny": false,
     "strictNullChecks": false,
+    "resolveJsonModule": true,
     "typeRoots": ["../typings", "../node_modules/@types"],
     "types": ["node", "webpack-env"]
   },

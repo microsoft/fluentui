@@ -69,6 +69,15 @@ jobs:
           git reset --hard origin/master
         displayName: Publish changes and bump versions
 
+      - script: |
+          node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/createReleaseWithoutNotes.ts --token=$(githubPAT) --apply --debug
+          displayName: 'Create GitHub release'
+
+      - script: |
+          cd packages/react-components
+          CHROMATIC_PROJECT_TOKEN=$(chromaticProjectToken) yarn chromatic
+          displayName: 'Publish to Chromatic'
+
       - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
         displayName: 📒 Generate Manifest
         inputs:
