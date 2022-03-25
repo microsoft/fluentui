@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 25 Mar 2022 07:38:05 GMT",
+      "tag": "@fluentui/react_v8.62.3",
+      "version": "8.62.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b1bdeac784560bddabdd6f71d76f1b752ae73a1a",
+            "comment": "Fixed secondary text styling in PeoplePicker Personas when displayed in the input."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Mar 2022 07:37:29 GMT",
       "tag": "@fluentui/react_v8.62.2",
       "version": "8.62.2",
