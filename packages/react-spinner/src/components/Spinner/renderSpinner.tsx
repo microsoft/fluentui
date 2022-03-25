@@ -11,9 +11,9 @@ export const renderSpinner_unstable = (state: SpinnerState) => {
   // TODO Add additional slots in the appropriate place
   return (
     <slots.root {...slotProps.root}>
-      {(labelPosition === 'above' || labelPosition === 'before') && <slots.label {...slotProps.label} />}
-      <slots.spinner {...slotProps.spinner} />
-      {(labelPosition === 'below' || labelPosition === 'after') && <slots.label {...slotProps.label} />}
+      {slots.label && (labelPosition === 'above' || labelPosition === 'before') && <slots.label {...slotProps.label} />}
+      {slots.spinner && <slots.spinner {...slotProps.spinner} />}
+      {slots.label && (labelPosition === 'below' || labelPosition === 'after') && <slots.label {...slotProps.label} />}
     </slots.root>
   );
 };

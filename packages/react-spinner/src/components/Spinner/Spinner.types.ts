@@ -12,12 +12,12 @@ export type SpinnerSlots = {
    * The spinner slot receives the `className` and `style` that handles the spinning animation.
    * An svg is also rendered as a child of this slot
    */
-  spinner: Slot<'span'>;
+  spinner?: Slot<'span'>;
   /**
    * The label of the Slider.
    * The label slot receives the styling related to the text associated with the Spinner.
    */
-  label: Slot<typeof Label>;
+  label?: Slot<typeof Label>;
 };
 
 type SpinnerCommons = {
