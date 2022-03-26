@@ -1,4 +1,4 @@
-import { Anchor, Description, DocsStoryProps, Subheading } from '@storybook/addon-docs';
+import { Anchor, Description, DocsStoryProps, Story, Subheading } from '@storybook/addon-docs';
 import * as React from 'react';
 import {
   githubLightTheme,
@@ -6,9 +6,52 @@ import {
   SandpackPreview,
   SandpackProvider,
   SandpackThemeProvider,
+  useSandpack,
 } from '@codesandbox/sandpack-react';
 import '@codesandbox/sandpack-react/dist/index.css';
 import * as dedent from 'dedent';
+
+const LivePreview: React.FunctionComponent<DocsStoryProps> = ({ id }) => {
+  const [renderInline, setRenderInline] = React.useState(true);
+  const sandpack = useSandpack();
+
+  React.useEffect(() => {
+    const anchor = document.getElementById(`anchor--${id}`);
+    const iframe = anchor?.getElementsByTagName('iframe')?.item(0);
+
+    if (iframe) {
+      iframe.style.display = 'none';
+
+      sandpack.listen(msg => {
+        console.log('message', msg.type, msg);
+        if (msg.type === 'start') {
+          iframe.style.display = 'block';
+          setRenderInline(false);
+        }
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <SandpackPreview
+      actionsChildren={
+        <>
+          <button
+            type="button"
+            className="sp-button"
+            style={{ padding: 'var(--sp-space-1) var(--sp-space-3)' }}
+            onClick={() => window.alert('Bug reported!')}
+          >
+            Report bug
+          </button>
+        </>
+      }
+    >
+      <>{renderInline && <Story id={id} />}</>
+    </SandpackPreview>
+  );
+};
 
 // Most of this file is copied from Storybook's addons/docs/src/blocks/DocsStory.tsx
 export const FluentDocsDocsStory: React.FunctionComponent<DocsStoryProps> = ({
@@ -67,6 +110,7 @@ export const FluentDocsDocsStory: React.FunctionComponent<DocsStoryProps> = ({
               '@fluentui/react-components': '^9.0.0-beta', // necessary for FluentProvider
             },
           }}
+          autorun={false}
         >
           <SandpackThemeProvider
             theme={{
@@ -76,20 +120,7 @@ export const FluentDocsDocsStory: React.FunctionComponent<DocsStoryProps> = ({
               },
             }}
           >
-            <SandpackPreview
-              actionsChildren={
-                <>
-                  <button
-                    type="button"
-                    className="sp-button"
-                    style={{ padding: 'var(--sp-space-1) var(--sp-space-3)' }}
-                    onClick={() => window.alert('Bug reported!')}
-                  >
-                    Report bug
-                  </button>
-                </>
-              }
-            />
+            <LivePreview id={id} />
             <SandpackCodeEditor wrapContent={true} initMode={'lazy'} showInlineErrors={true} />
           </SandpackThemeProvider>
         </SandpackProvider>
