@@ -23,7 +23,6 @@ export const tabSlotClassNames: SlotClassNames<TabSlots> = {
 const useRootStyles = makeStyles({
   base: {
     alignItems: 'center',
-    backgroundColor: 'transparent ',
     ...shorthands.borderColor('none'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.borderWidth(0),
@@ -56,10 +55,54 @@ const useRootStyles = makeStyles({
     columnGap: pendingSpacingTokens.xs,
     ...shorthands.padding(pendingSpacingTokens.xxs, pendingSpacingTokens.sNudge),
   },
+  transparent: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ':hover': {
+      backgroundColor: tokens.colorTransparentBackgroundHover,
+    },
+    ':active': {
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
+    },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    '& .fui-Tab__icon': {
+      color: tokens.colorNeutralForeground2,
+    },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    ':hover .fui-Tab__icon': {
+      color: tokens.colorNeutralForeground2Hover,
+    },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    ':active .fui-Tab__icon': {
+      color: tokens.colorNeutralForeground2Pressed,
+    },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    '& .fui-Tab__content': {
+      color: tokens.colorNeutralForeground2,
+    },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    ':hover .fui-Tab__content': {
+      color: tokens.colorNeutralForeground2Hover,
+    },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    ':active .fui-Tab__content': {
+      color: tokens.colorNeutralForeground2Pressed,
+    },
+  },
   subtle: {
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
     },
+  },
+  disabled: {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    '& .fui-Tab__icon': {
+      color: tokens.colorNeutralForegroundDisabled,
+    },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    '& .fui-Tab__content': {
+      color: tokens.colorNeutralForegroundDisabled,
+    },
+    cursor: 'not-allowed',
   },
   selected: {
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -73,6 +116,18 @@ const useRootStyles = makeStyles({
     // eslint-disable-next-line @typescript-eslint/naming-convention
     ':active .fui-Tab__icon': {
       color: tokens.colorCompoundBrandForeground1Pressed,
+    },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    '& .fui-Tab__content': {
+      color: tokens.colorNeutralForeground1,
+    },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    ':hover .fui-Tab__content': {
+      color: tokens.colorNeutralForeground1Hover,
+    },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    ':active .fui-Tab__content': {
+      color: tokens.colorNeutralForeground1Pressed,
     },
   },
 });
@@ -110,10 +165,27 @@ const usePendingIndicatorStyles = makeStyles({
       position: 'absolute',
     },
     ':hover:before': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
     },
     ':active:before': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+    },
+  },
+  disabled: {
+    ':before': {
+      backgroundColor: 'none',
+      ...shorthands.borderStyle('solid'),
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      boxSizing: 'border-box',
+      content: '""',
+      position: 'absolute',
+    },
+    ':hover:before': {
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    },
+    ':active:before': {
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
   },
   mediumHorizontal: {
@@ -157,7 +229,29 @@ const usePendingIndicatorStyles = makeStyles({
 const useActiveIndicatorStyles = makeStyles({
   base: {
     ':after': {
-      ...shorthands.borderColor(tokens.colorCompoundBrandForeground1),
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderStyle('solid'),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      boxSizing: 'border-box',
+      content: '""',
+      position: 'absolute',
+      zIndex: 1,
+    },
+  },
+  selected: {
+    ':after': {
+      ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
+    },
+    ':hover:after': {
+      ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
+    },
+    ':active:after': {
+      ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
+    },
+  },
+  disabled: {
+    ':after': {
+      ...shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
       boxSizing: 'border-box',
@@ -254,31 +348,32 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   const iconStyles = useIconStyles();
   const contentStyles = useContentStyles();
 
-  const { appearance, selectedValue, size, value, vertical } = state;
+  const { appearance, disabled, selectedValue, size, value, vertical } = state;
   const selected = selectedValue === value;
 
   state.root.className = mergeClasses(
     tabSlotClassNames.root,
     rootStyles.base,
-    focusStyles.base,
-    appearance === 'subtle' && rootStyles.subtle,
     size !== 'small' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
     size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
-    selected && rootStyles.selected,
+    focusStyles.base,
+    disabled && rootStyles.disabled,
+    !disabled && appearance === 'subtle' && rootStyles.subtle,
+    !disabled && appearance === 'transparent' && rootStyles.transparent,
+    !disabled && selected && rootStyles.selected,
 
     // pending indicator (before pseudo element)
     pendingIndicatorStyles.base,
     size !== 'small' && (vertical ? pendingIndicatorStyles.mediumVertical : pendingIndicatorStyles.mediumHorizontal),
     size === 'small' && (vertical ? pendingIndicatorStyles.smallVertical : pendingIndicatorStyles.smallHorizontal),
+    disabled && pendingIndicatorStyles.disabled,
 
     // active indicator (after pseudo element)
-    selected && activeIndicatorStyles.base,
-    selected &&
-      size !== 'small' &&
-      (vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
-    selected &&
-      size === 'small' &&
-      (vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
+    activeIndicatorStyles.base,
+    size !== 'small' && (vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
+    size === 'small' && (vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
+    !disabled && selected && activeIndicatorStyles.selected,
+    disabled && selected && activeIndicatorStyles.disabled,
     state.root.className,
   );
 

@@ -35,6 +35,11 @@ export type TabSlots = {
 
 type TabCommons = {
   /**
+   * A tab can be set to disable interaction.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
    * The value that identifies this tab when selected.
    */
   value: TabValue;
@@ -49,7 +54,8 @@ export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
  * State used in rendering Tab
  */
 export type TabState = ComponentState<TabSlots> &
-  TabCommons & {
+  Omit<TabCommons, 'disabled'> &
+  Required<Pick<TabCommons, 'disabled'>> & {
     /**
      * A tab supports 'transparent' and 'subtle' appearance.
      */

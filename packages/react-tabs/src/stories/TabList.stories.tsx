@@ -7,6 +7,7 @@ export { Default } from './TabListDefault.stories';
 export { Horizontal } from './TabListHorizontal.stories';
 export { Vertical } from './TabListVertical.stories';
 export { Appearance } from './TabListAppearance.stories';
+export { Disabled } from './TabListDisabled.stories';
 export { SizeSmall } from './TabListSizeSmall.stories';
 export { SizeMedium } from './TabListSizeMedium.stories';
 export { WithIcon } from './TabListWithIcon.stories';

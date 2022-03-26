@@ -100,7 +100,7 @@ const calculateTabRect = (element: HTMLElement) => {
 export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabState => {
   const activeIndicatorStyles = useActiveIndicatorStyles();
 
-  const { selectedValue, value, vertical } = state;
+  const { disabled, selectedValue, value, vertical } = state;
   const selected = selectedValue === value;
 
   const { previousSelectedValue, registeredTabs } = useContextSelector(TabListContext, ctx => ({
@@ -151,6 +151,11 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   // the animation should only happen as the selection indicator returns to its
   // original position and not when set at the previous tabs position.
   const animating = indicatorStartOffset === 0 && indicatorEndOffset === 0;
+
+  // do not apply any animation if the tab is disabled
+  if (disabled) {
+    return state;
+  }
 
   state.root.className = mergeClasses(
     state.root.className,

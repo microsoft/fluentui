@@ -15,20 +15,29 @@ import { SelectTabEvent } from '../TabList/TabList.types';
  * @param ref - reference to root HTMLElement of Tab
  */
 export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
-  const { content, icon, value } = props;
+  const { content, disabled: tabDisabled, icon, value } = props;
 
-  const { appearance, selectedValue, onRegister, onUnregister, onSelect, size, vertical } = useContextSelector(
-    TabListContext,
-    ctx => ({
-      appearance: ctx.appearance,
-      selectedValue: ctx.selectedValue,
-      onRegister: ctx.onRegister,
-      onUnregister: ctx.onUnregister,
-      onSelect: ctx.onSelect,
-      size: ctx.size,
-      vertical: !!ctx.vertical,
-    }),
-  );
+  const {
+    appearance,
+    listDisabled,
+    selectedValue,
+    onRegister,
+    onUnregister,
+    onSelect,
+    size,
+    vertical,
+  } = useContextSelector(TabListContext, ctx => ({
+    appearance: ctx.appearance,
+    listDisabled: ctx.disabled,
+    selectedValue: ctx.selectedValue,
+    onRegister: ctx.onRegister,
+    onUnregister: ctx.onUnregister,
+    onSelect: ctx.onSelect,
+    size: ctx.size,
+    vertical: !!ctx.vertical,
+  }));
+
+  const disabled = listDisabled || tabDisabled;
 
   const innerRef = React.useRef<HTMLElement>(null);
   const mergedRef = useMergedRefs(ref, innerRef);
@@ -53,17 +62,19 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
       icon: 'span',
       content: 'span',
     },
-    root: getNativeElementProps('div', {
+    root: getNativeElementProps('button', {
       ref: mergedRef,
       role: 'tab',
       tabIndex: 0,
       ...props,
+      disabled,
       onClick,
     }),
     icon: iconShorthand,
     iconOnly: Boolean(iconShorthand?.children && !contentShorthand.children),
     content: contentShorthand,
     appearance,
+    disabled,
     selectedValue,
     size,
     value,

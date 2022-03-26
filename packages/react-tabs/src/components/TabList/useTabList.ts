@@ -19,7 +19,7 @@ import { TabValue } from '../Tab/Tab.types';
  * @param ref - reference to root HTMLElement of TabList
  */
 export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
-  const { appearance = 'transparent', onTabSelect, size = 'medium', vertical = false } = props;
+  const { appearance = 'transparent', disabled = false, onTabSelect, size = 'medium', vertical = false } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);
 
@@ -58,24 +58,6 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
     data.ref?.current;
   });
 
-  // calculate the selection indicator rectangle
-  // const selectedTabRect = React.useMemo(() => {
-  //   const listRect = innerRef.current?.getBoundingClientRect();
-  //   const tabRef: React.Ref<HTMLElement> = registeredTabs.current[JSON.stringify(selectedValue)]?.ref;
-  //   const tabRect = tabRef?.current?.getBoundingClientRect();
-
-  //   if (listRect && tabRect) {
-  //     return {
-  //       x: tabRect.x - listRect.x,
-  //       y: tabRect.y - listRect.y,
-  //       width: tabRect.width,
-  //       height: tabRect.height,
-  //     };
-  //   }
-  //   // calcRect is used to force updates when registered tabs change or resize occurs
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [calcRect, selectedValue]);
-
   return {
     components: {
       root: 'div',
@@ -87,6 +69,7 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
       ...props,
     }),
     appearance,
+    disabled,
     selectedValue,
     size,
     vertical,

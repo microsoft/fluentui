@@ -45,6 +45,12 @@ type TabListCommons = {
   appearance?: 'transparent' | 'subtle';
 
   /**
+   * A tab list can be set to disable interaction.
+   * @default false
+   */
+  disabled?: boolean;
+
+  /**
    * Raised when a tab is selected.
    */
   onTabSelect?: SelectTabEventHandler;
@@ -81,7 +87,7 @@ export type TabListProps = ComponentProps<TabListSlots> &
   };
 
 export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> &
-  Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical'>> & {
+  Required<Pick<TabListCommons, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
     /** A callback to allow a tab to register itself with the tab list. */
     onRegister: RegisterTabEventHandler;
 

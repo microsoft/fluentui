@@ -3,6 +3,7 @@ import { TabListContextValue, TabListContextValues, TabListState } from './TabLi
 export function useTabListContextValues(state: TabListState): TabListContextValues {
   const {
     appearance,
+    disabled,
     selectedValue: selectedKey,
     onRegister,
     onUnregister,
@@ -15,6 +16,7 @@ export function useTabListContextValues(state: TabListState): TabListContextValu
 
   const tabList: TabListContextValue = {
     appearance,
+    disabled,
     selectedValue: selectedKey,
     onSelect,
     onRegister,
