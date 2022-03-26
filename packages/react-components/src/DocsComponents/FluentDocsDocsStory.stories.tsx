@@ -23,7 +23,6 @@ const LivePreview: React.FunctionComponent<DocsStoryProps> = ({ id }) => {
       iframe.style.display = 'none';
 
       sandpack.listen(msg => {
-        console.log('message', msg.type, msg);
         if (msg.type === 'start') {
           iframe.style.display = 'block';
           setRenderInline(false);
