@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "live code editing",
+  "packageName": "@fluentui/react-components",
+  "email": "peter@draxler.ml",
+  "dependentChangeType": "patch"
+}
