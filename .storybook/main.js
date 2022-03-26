@@ -33,7 +33,6 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
     '@storybook/addon-a11y',
     '@storybook/addon-knobs/preset',
     'storybook-addon-performance',
-    'storybook-addon-export-to-codesandbox',
     '@fluentui/react-storybook-addon',
   ],
   webpackFinal: config => {

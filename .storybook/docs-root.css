@@ -419,14 +419,13 @@ h2.fluent {
 
 /* Sandpack */
 #docs-root .sp-preview-container {
-  padding: 20px;
+  padding: 20px 20px 55px 20px;
   border-radius: 16px 16px 0 0;
 }
 
 #docs-root .sp-preview-iframe {
   flex: 0 1 auto;
   min-height: 0;
-  margin-bottom: 40px;
 }
 
 #docs-root .sp-code-editor {
