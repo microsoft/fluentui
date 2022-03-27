@@ -5,7 +5,20 @@ exports[`Spinner renders a default state 1`] = `
   <div
     class="fui-Spinner"
   >
-    Default Spinner
+    <span
+      class="fui-Spinner__spinner"
+    >
+      <svg
+        role="progressbar"
+      >
+        <circle
+          id="track"
+        />
+        <circle
+          id="tail"
+        />
+      </svg>
+    </span>
   </div>
 </div>
 `;
