@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: Fixing issue where tabbing once focused on the Dropdown options would restore focus to the current Dropdown instead of going to the next/previous focusable elements.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
