@@ -125,19 +125,6 @@ const useTextAreaStyles = makeStyles({
     },
   },
 
-  none: {
-    resize: 'none',
-  },
-  both: {
-    resize: 'both',
-  },
-  horizontal: {
-    resize: 'horizontal',
-  },
-  vertical: {
-    resize: 'vertical',
-  },
-
   // The padding style adds both content and regular padding (from design spec), this is because the handle is not
   // affected by changing the padding of the root.
   small: {
@@ -163,6 +150,24 @@ const useTextAreaStyles = makeStyles({
 });
 
 /**
+ * Styles for the textArea's resize property
+ */
+const useTextAreaResizeStyles = makeStyles({
+  none: {
+    resize: 'none',
+  },
+  both: {
+    resize: 'both',
+  },
+  horizontal: {
+    resize: 'horizontal',
+  },
+  vertical: {
+    resize: 'vertical',
+  },
+});
+
+/**
  * Apply styling to the TextArea slots based on the state
  */
 export const useTextAreaStyles_unstable = (state: TextAreaState): TextAreaState => {
@@ -181,11 +186,12 @@ export const useTextAreaStyles_unstable = (state: TextAreaState): TextAreaState 
   );
 
   const textAreaStyles = useTextAreaStyles();
+  const textAreaResizeStyles = useTextAreaResizeStyles();
   state.textArea.className = mergeClasses(
     textAreaClassNames.textArea,
     textAreaStyles.base,
     textAreaStyles[size],
-    textAreaStyles[resize],
+    textAreaResizeStyles[resize],
     state.textArea.className,
   );
 
