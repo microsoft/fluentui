@@ -74,22 +74,6 @@ It serves as an override on top of `ToggleButton` limiting the possible props on
 type ToolbarToggleButtonProps = ComponentProps<Partial<ToggleButtonSlots>>;
 ```
 
-### ToolbarRadioGroup
-
-It's based on the `RadioGroup` containing few styles overrides
-
-```typescript
-type ToolbarRadioGroupProps = ComponentProps<Partial<RadioGroupSlots>>;
-```
-
-### ToolbarRadio
-
-It's based on the `Radio` containing few styles overrides
-
-```typescript
-type ToolbarRadioProps = ComponentProps<Partial<RadioSlots>>;
-```
-
 ### ToolbarCheckbox
 
 It's based on the `Checkbox` containing few styles overrides
@@ -100,11 +84,13 @@ type ToolbarCheckboxProps = ComponentProps<Partial<CheckboxSlots>>;
 
 ### ToolbarItemGroup
 
-It serves as general container for `ToolbarCheckboxProps` or `ToolbarRadioProps` hosting events for controls
+It serves as general container for `ToolbarCheckbox` or `ToolbarRadio` hosting events for controls, when regarding `ToolbarCheckbox` the usage of `ToolbarItemGroup` is optional but if used should contain only checkboxes that has the same `name` attribute and share the `onChange` callback.
 
 ```typescript
 type ToolbarItemGroupProps = {
-  onChange: (itemName: string, value: boolean) => void;
+  onChange?: (itemName: string, value: boolean) => void;
+  value?: boolean;
+  disabled?: boolean;
 };
 ```
 
@@ -119,12 +105,16 @@ type ToolbarItemGroupProps = {
   <ToolbarButton />
   <ToolbarButton />
   <ToolbarCheckbox />
-  <ToolbarRadioGroup>
+  <ToolbarItemGroup>
     <ToolbarRadio value="A" label="Option A" />
     <ToolbarRadio value="B" label="Option B" />
     <ToolbarRadio value="C" label="Option C" />
     <ToolbarRadio value="D" label="Option D" />
-  </ToolbarRadioGroup>
+  </ToolbarItemGroup>
+  <ToolbarItemGroup>
+    <ToolbarCheckbox name="typo" />
+    <ToolbarCheckbox name="typo" />
+  </ToolbarItemGroup>
 </Toolbar>
 ```
 
