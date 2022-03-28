@@ -42,6 +42,7 @@ export const FluentDocsPage = () => {
   const primaryStory = stories[0];
   const hosted = isHosted();
   const styles = useStyles();
+  const componentName = context.title.split('/').pop();
   // DEBUG
   // console.log('FluentDocsPage', context);
   // console.table(stories.map((s: StoreItem) => ({ id: s.id, kind: s.kind, name: s.name, story: s.story })));
@@ -65,7 +66,7 @@ export const FluentDocsPage = () => {
           <hr className={styles.divider} />
           {stories.map((story, index) => (
             <React.Fragment key={index}>
-              <FluentDocsDocsStory {...story} />
+              <FluentDocsDocsStory {...story} componentName={componentName} />
               {story === primaryStory && <ArgsTable story={PRIMARY_STORY} />}
             </React.Fragment>
           ))}
