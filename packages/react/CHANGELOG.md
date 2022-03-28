@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 23 Mar 2022 07:37:29 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Mar 2022 07:47:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.62.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.62.4)
+
+Mon, 28 Mar 2022 07:47:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.62.3..@fluentui/react_v8.62.4)
+
+### Patches
+
+- Dropdown: Fixing issue where tabbing once focused on the Dropdown options would restore focus to the current Dropdown instead of going to the next/previous focusable elements. ([PR #22197](https://github.com/microsoft/fluentui/pull/22197) by Humberto.Morimoto@microsoft.com)
+
+## [8.62.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.62.3)
+
+Fri, 25 Mar 2022 07:38:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.62.2..@fluentui/react_v8.62.3)
+
+### Patches
+
+- Fixed secondary text styling in PeoplePicker Personas when displayed in the input. ([PR #22200](https://github.com/microsoft/fluentui/pull/22200) by gcox@microsoft.com)
 
 ## [8.62.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.62.2)
 
