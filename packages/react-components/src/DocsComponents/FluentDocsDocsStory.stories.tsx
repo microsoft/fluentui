@@ -14,7 +14,7 @@ import newGithubIssueUrl from 'new-github-issue-url';
 import * as packageJson from '../../package.json';
 import bugReportTemplate from '../../../../.github/ISSUE_TEMPLATE/bug_report_vnext.md';
 
-const handleReportBug = (componentName?: string) => async (e: React.MouseEvent) => {
+const handleReportBug = (componentName: string) => async (e: React.MouseEvent) => {
   // create codesandbox
   let codesandboxUrl = '';
   const openInCSButton = e.currentTarget.nextElementSibling;
@@ -46,7 +46,7 @@ const handleReportBug = (componentName?: string) => async (e: React.MouseEvent) 
   window.open(newIssueUrl, '_blank');
 };
 
-const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName?: string }> = ({ id, componentName }) => {
+const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: string }> = ({ id, componentName }) => {
   const [renderInline, setRenderInline] = React.useState(true);
   const sandpack = useSandpack();
 
@@ -91,7 +91,7 @@ const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName?: st
 };
 
 // Most of this file is copied from Storybook's addons/docs/src/blocks/DocsStory.tsx
-export const FluentDocsDocsStory: React.FunctionComponent<DocsStoryProps & { componentName?: string }> = ({
+export const FluentDocsDocsStory: React.FunctionComponent<DocsStoryProps & { componentName: string }> = ({
   id,
   name,
   expanded = true,

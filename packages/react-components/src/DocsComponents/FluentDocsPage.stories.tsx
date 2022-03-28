@@ -42,7 +42,7 @@ export const FluentDocsPage = () => {
   const primaryStory = stories[0];
   const hosted = isHosted();
   const styles = useStyles();
-  const componentName = context.title.split('/').pop();
+  const componentName = context.title.split('/').pop() ?? 'Unknown';
   // DEBUG
   // console.log('FluentDocsPage', context);
   // console.table(stories.map((s: StoreItem) => ({ id: s.id, kind: s.kind, name: s.name, story: s.story })));
@@ -70,6 +70,7 @@ export const FluentDocsPage = () => {
               {story === primaryStory && <ArgsTable story={PRIMARY_STORY} />}
             </React.Fragment>
           ))}
+          <KnownIssues componentName={componentName} />
         </div>
         <div className={styles.toc}>
           <Toc stories={[...stories, { id: 'known-issues', name: 'Known issues' }]} />
