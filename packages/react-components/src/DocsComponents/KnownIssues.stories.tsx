@@ -137,11 +137,7 @@ export const KnownIssues: React.FC<{ componentName: string }> = ({ componentName
           (isError && 'Unable to load known issues. ') ||
           (issuesList.length === 0 && 'No issues are known. ') ||
           (issuesList.length > 0 && <br />)}
-        Is something not working well?{' '}
-        <a className={styles.link} href="#" target="_blank">
-          Report a bug
-        </a>{' '}
-        on GitHub.
+        Is something not working well? Use "Report bug" button on any example above to create a GitHub issue.
       </div>
     </>
   );
