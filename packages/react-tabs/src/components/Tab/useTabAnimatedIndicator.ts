@@ -7,8 +7,8 @@ import { useTimeout } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { TabListContext } from '../TabList/TabListContext';
 
-export const indicatorStartOffsetVar = '--indicator-start-offset';
-export const indicatorEndOffsetVar = '--indicator-end-offset';
+export const indicatorStartOffsetVar = '--fui-Tab__indicator--startOffset';
+export const indicatorEndOffsetVar = '--fui-Tab__indicator--endOffset';
 
 const useActiveIndicatorStyles = makeStyles({
   base: {

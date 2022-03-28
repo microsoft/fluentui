@@ -15,7 +15,7 @@ import { SelectTabEvent } from '../TabList/TabList.types';
  * @param ref - reference to root HTMLElement of Tab
  */
 export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
-  const { content, disabled: tabDisabled, icon, value } = props;
+  const { content, disabled: tabDisabled = false, icon, value } = props;
 
   const {
     appearance,

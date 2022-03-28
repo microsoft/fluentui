@@ -4,6 +4,7 @@ import { TabListContextValue } from './TabList.types';
 
 export const TabListContext: Context<TabListContextValue> = createContext<TabListContextValue>({
   appearance: 'transparent',
+  disabled: false,
   selectedValue: undefined,
   onRegister: () => {
     /* noop */

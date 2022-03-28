@@ -14,8 +14,10 @@ describe('Tab', () => {
 
   const defaultContext: TabListContextValue = {
     appearance: 'transparent',
+    disabled: false,
     size: 'medium',
     vertical: false,
+    registeredTabs: {},
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     onRegister: () => {},
     // eslint-disable-next-line @typescript-eslint/no-empty-function
