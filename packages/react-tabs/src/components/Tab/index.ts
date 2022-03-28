@@ -1,5 +1,6 @@
-export * from './Tab';
-export * from './Tab.types';
-export * from './renderTab';
-export * from './useTab';
-export * from './useTabStyles';
+export { Tab } from './Tab';
+export type { TabContentRect, TabProps, TabSlots, TabState, TabValue } from './Tab.types';
+export { renderTab_unstable } from './renderTab';
+export { useTab_unstable } from './useTab';
+export { tabClassName, tabClassNames, useTabStyles_unstable } from './useTabStyles';
+export { indicatorCssVars, useTabAnimatedIndicatorStyles_unstable } from './useTabAnimatedIndicator';

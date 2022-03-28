@@ -12,6 +12,12 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
+export const indicatorCssVars: {
+    startOffsetVar: string;
+    endOffsetVar: string;
+};
+
+// @public (undocumented)
 export type RegisterTabData = {
     value: TabValue;
     ref: React_2.RefObject<HTMLElement>;
@@ -40,6 +46,12 @@ export type SelectTabEventHandler = (event: SelectTabEvent, data: SelectTabData)
 // @public
 export const Tab: ForwardRefComponent<TabProps>;
 
+// @public (undocumented)
+export const tabClassName: string;
+
+// @public (undocumented)
+export const tabClassNames: SlotClassNames<TabSlots>;
+
 // @public
 export type TabContentRect = {
     x: number;
@@ -52,7 +64,7 @@ export type TabContentRect = {
 export const TabList: ForwardRefComponent<TabListProps>;
 
 // @public (undocumented)
-export const tabListClassName = "fui-TabList";
+export const tabListClassName: string;
 
 // Warning: (ae-forgotten-export) The symbol "TabListCommons" needs to be exported by the entry point index.d.ts
 //
@@ -76,6 +88,9 @@ export type TabListProps = ComponentProps<TabListSlots> & TabListCommons & {
 };
 
 // @public (undocumented)
+export const tabListSlotClassNames: SlotClassNames<TabListSlots>;
+
+// @public (undocumented)
 export type TabListSlots = {
     root: Slot<'div'>;
 };
@@ -87,9 +102,6 @@ export type TabListState = ComponentState<Required<TabListSlots>> & TabListConte
 //
 // @public
 export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
-
-// @public (undocumented)
-export const tabSlotClassNames: SlotClassNames<TabSlots>;
 
 // @public (undocumented)
 export type TabSlots = {
@@ -113,6 +125,9 @@ export type TabValue = unknown;
 
 // @public
 export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
+
+// @public
+export const useTabAnimatedIndicatorStyles_unstable: (state: TabState) => TabState;
 
 // @public
 export const useTabList_unstable: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;

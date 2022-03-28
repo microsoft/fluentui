@@ -7,8 +7,10 @@ import { useTimeout } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { TabListContext } from '../TabList/TabListContext';
 
-export const indicatorStartOffsetVar = '--fui-Tab__indicator--startOffset';
-export const indicatorEndOffsetVar = '--fui-Tab__indicator--endOffset';
+export const indicatorCssVars = {
+  startOffsetVar: '--fui-Tab__indicator--startOffset',
+  endOffsetVar: '--fui-Tab__indicator--endOffset',
+};
 
 const useActiveIndicatorStyles = makeStyles({
   base: {
@@ -55,26 +57,26 @@ const useActiveIndicatorStyles = makeStyles({
   },
   mediumHorizontal: {
     ':after': {
-      left: `calc(var(${indicatorStartOffsetVar}) + ${tabIndicatorPadding.mediumHorizontal})`,
-      right: `calc(var(${indicatorEndOffsetVar}) + ${tabIndicatorPadding.mediumHorizontal})`,
+      left: `calc(var(${indicatorCssVars.startOffsetVar}) + ${tabIndicatorPadding.mediumHorizontal})`,
+      right: `calc(var(${indicatorCssVars.endOffsetVar}) + ${tabIndicatorPadding.mediumHorizontal})`,
     },
   },
   mediumVertical: {
     ':after': {
-      top: `calc(var(${indicatorStartOffsetVar}) + ${tabIndicatorPadding.mediumVertical})`,
-      bottom: `calc(var(${indicatorEndOffsetVar}) + ${tabIndicatorPadding.mediumVertical})`,
+      top: `calc(var(${indicatorCssVars.startOffsetVar}) + ${tabIndicatorPadding.mediumVertical})`,
+      bottom: `calc(var(${indicatorCssVars.endOffsetVar}) + ${tabIndicatorPadding.mediumVertical})`,
     },
   },
   smallHorizontal: {
     ':after': {
-      left: `calc(var(${indicatorStartOffsetVar}) + ${tabIndicatorPadding.smallHorizontal})`,
-      right: `calc(var(${indicatorEndOffsetVar}) + ${tabIndicatorPadding.smallHorizontal})`,
+      left: `calc(var(${indicatorCssVars.startOffsetVar}) + ${tabIndicatorPadding.smallHorizontal})`,
+      right: `calc(var(${indicatorCssVars.endOffsetVar}) + ${tabIndicatorPadding.smallHorizontal})`,
     },
   },
   smallVertical: {
     ':after': {
-      top: `calc(var(${indicatorStartOffsetVar}) + ${tabIndicatorPadding.smallVertical})`,
-      bottom: `calc(var(${indicatorEndOffsetVar}) + ${tabIndicatorPadding.smallVertical})`,
+      top: `calc(var(${indicatorCssVars.startOffsetVar}) + ${tabIndicatorPadding.smallVertical})`,
+      bottom: `calc(var(${indicatorCssVars.endOffsetVar}) + ${tabIndicatorPadding.smallVertical})`,
     },
   },
 });
@@ -170,8 +172,8 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   );
 
   const rootCssVars = {
-    [indicatorStartOffsetVar]: `${indicatorStartOffset}px`,
-    [indicatorEndOffsetVar]: `${indicatorEndOffset}px`,
+    [indicatorCssVars.startOffsetVar]: `${indicatorStartOffset}px`,
+    [indicatorCssVars.endOffsetVar]: `${indicatorEndOffset}px`,
   };
 
   state.root.style = {

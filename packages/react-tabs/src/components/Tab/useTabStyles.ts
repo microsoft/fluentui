@@ -11,11 +11,14 @@ import {
 } from '../../tab.constants';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
-export const tabSlotClassNames: SlotClassNames<TabSlots> = {
+export const tabClassNames: SlotClassNames<TabSlots> = {
   root: 'fui-Tab',
   icon: 'fui-Tab__icon',
   content: 'fui-Tab__content',
 };
+
+// TODO temporary export to pass conformance test.
+export const tabClassName = tabClassNames.root;
 
 /**
  * Styles for the root slot
@@ -352,7 +355,7 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   const selected = selectedValue === value;
 
   state.root.className = mergeClasses(
-    tabSlotClassNames.root,
+    tabClassNames.root,
     rootStyles.base,
     size !== 'small' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
     size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
@@ -378,16 +381,11 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(
-      tabSlotClassNames.icon,
-      iconStyles.base,
-      iconStyles[size],
-      state.icon.className,
-    );
+    state.icon.className = mergeClasses(tabClassNames.icon, iconStyles.base, iconStyles[size], state.icon.className);
   }
 
   state.content.className = mergeClasses(
-    tabSlotClassNames.content,
+    tabClassNames.content,
     contentStyles.base,
     selected && contentStyles.selected,
     state.content.className,

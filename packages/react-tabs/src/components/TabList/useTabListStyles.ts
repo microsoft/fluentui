@@ -1,7 +1,13 @@
+import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
-import type { TabListState } from './TabList.types';
+import type { TabListSlots, TabListState } from './TabList.types';
 
-export const tabListClassName = 'fui-TabList';
+export const tabListSlotClassNames: SlotClassNames<TabListSlots> = {
+  root: 'fui-TabList',
+};
+
+// TODO temporary export to pass conformance test.
+export const tabListClassName = tabListSlotClassNames.root;
 
 /**
  * Styles for the root slot
