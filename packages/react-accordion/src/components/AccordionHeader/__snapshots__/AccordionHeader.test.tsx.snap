@@ -6,13 +6,13 @@ exports[`AccordionHeader renders a default state 1`] = `
 >
   <button
     aria-expanded={false}
-    className=""
+    className="fui-AccordionHeader__button"
     disabled={false}
     onClick={[Function]}
   >
     <span
       aria-hidden={true}
-      className=""
+      className="fui-AccordionHeader__expandIcon"
     >
       <svg
         aria-hidden={true}

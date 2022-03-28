@@ -15,7 +15,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const buttonClassName: string;
 
 // @public (undocumented)
@@ -28,7 +28,7 @@ export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommons>;
 
 // @public (undocumented)
 export type ButtonSlots = {
-    root: Slot<ARIAButtonSlotProps>;
+    root: NonNullable<Slot<ARIAButtonSlotProps>>;
     icon?: Slot<'span'>;
 };
 
@@ -40,7 +40,7 @@ export type ButtonState = ComponentState<ButtonSlots> & ButtonCommons & {
 // @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const compoundButtonClassName: string;
 
 // @public (undocumented)
@@ -61,7 +61,7 @@ export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<But
 // @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const menuButtonClassName: string;
 
 // @public (undocumented)
@@ -95,7 +95,7 @@ export const renderSplitButton_unstable: (state: SplitButtonState) => JSX.Elemen
 // @public
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const splitButtonClassName: string;
 
 // @public (undocumented)
@@ -106,7 +106,7 @@ export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonPro
 
 // @public (undocumented)
 export type SplitButtonSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     menuButton?: Slot<typeof MenuButton>;
     primaryActionButton?: Slot<typeof Button>;
 };
@@ -117,7 +117,7 @@ export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonSta
 // @public
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const toggleButtonClassName: string;
 
 // @public (undocumented)

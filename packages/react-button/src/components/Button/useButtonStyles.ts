@@ -8,8 +8,9 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Button',
   icon: 'fui-Button__icon',
 };
-
-// TODO temporary export to pass conformance test.
+/**
+ * @deprecated Use `buttonClassNames.root` instead.
+ */
 export const buttonClassName = buttonClassNames.root;
 
 const useRootStyles = makeStyles({
@@ -357,7 +358,16 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
 
-  const { appearance, block, disabled, disabledFocusable, iconOnly, shape, size } = state;
+  const {
+    appearance,
+    // eslint-disable-next-line deprecation/deprecation
+    block,
+    disabled,
+    disabledFocusable,
+    iconOnly,
+    shape,
+    size,
+  } = state;
 
   state.root.className = mergeClasses(
     buttonClassNames.root,

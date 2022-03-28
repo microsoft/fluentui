@@ -2,6 +2,108 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 28 Mar 2022 07:47:27 GMT",
+      "tag": "@fluentui/react_v8.62.4",
+      "version": "8.62.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d624e1517ddfb789de987b61aa3213b25e4b008b",
+            "comment": "Dropdown: Fixing issue where tabbing once focused on the Dropdown options would restore focus to the current Dropdown instead of going to the next/previous focusable elements."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Mar 2022 07:38:05 GMT",
+      "tag": "@fluentui/react_v8.62.3",
+      "version": "8.62.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b1bdeac784560bddabdd6f71d76f1b752ae73a1a",
+            "comment": "Fixed secondary text styling in PeoplePicker Personas when displayed in the input."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Mar 2022 07:37:29 GMT",
+      "tag": "@fluentui/react_v8.62.2",
+      "version": "8.62.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "844136cf9b375b098fc9b769c8a19f2ac9f5275c",
+            "comment": "Rating: add focus outlines"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Mar 2022 07:39:45 GMT",
+      "tag": "@fluentui/react_v8.62.1",
+      "version": "8.62.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "2286d915dd679920e727f0156bf41ddc29da094d",
+            "comment": "Adding style files to export maps."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Mar 2022 07:42:02 GMT",
+      "tag": "@fluentui/react_v8.62.0",
+      "version": "8.62.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f4ed6d116e253769f298f787de8a9461f76184b3",
+            "comment": "Stack: Adding basis prop to mimick flexBasis CSS property."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Mar 2022 07:38:50 GMT",
+      "tag": "@fluentui/react_v8.61.2",
+      "version": "8.61.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3afa35421e7cffc69d202172d3c57f4706d080f0",
+            "comment": "Combobox: Adding fixes for onChange and onPendingValueChanged callbacks."
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react",
+            "commit": "5c1c600d8640ee11ce61a788d3ddb21eef83cc68",
+            "comment": "Add proper ARIA role to overflow Pivot items"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.5.6",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Mar 2022 07:45:54 GMT",
       "tag": "@fluentui/react_v8.61.1",
       "version": "8.61.1",

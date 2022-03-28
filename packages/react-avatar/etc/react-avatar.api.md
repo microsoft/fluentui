@@ -10,12 +10,16 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const avatarClassName = "fui-Avatar";
+
+// @public (undocumented)
+export const avatarClassNames: SlotClassNames<AvatarSlots>;
 
 // @public
 export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';

@@ -8494,6 +8494,7 @@ export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, 
 // @public (undocumented)
 export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles>, React_2.HTMLAttributes<HTMLElement> {
     align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
+    basis?: React_2.CSSProperties['flexBasis'];
     className?: string;
     disableShrink?: boolean;
     grow?: boolean | number | 'inherit' | 'initial' | 'unset';

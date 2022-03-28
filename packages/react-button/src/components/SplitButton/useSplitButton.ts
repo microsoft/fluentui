@@ -15,6 +15,7 @@ export const useSplitButton_unstable = (
 ): SplitButtonState => {
   const {
     appearance,
+    // eslint-disable-next-line deprecation/deprecation
     block = false,
     children,
     disabled = false,

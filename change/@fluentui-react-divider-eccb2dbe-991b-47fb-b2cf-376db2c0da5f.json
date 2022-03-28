@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add static classnames to Divider",
+  "packageName": "@fluentui/react-divider",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
