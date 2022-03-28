@@ -29,9 +29,9 @@ The Slider component allows users to quickly select a value by dragging an icon 
 
 ```jsx
 <div className="fui-Slider">
-  <div className="fui-Slider-input" />
-  <div className="fui-Slider-rail" />
-  <div className="fui-Slider-thumb" />
+  <div className="fui-Slider__input" />
+  <div className="fui-Slider__rail" />
+  <div className="fui-Slider__thumb" />
 </div>
 ```
 
