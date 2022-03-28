@@ -54,15 +54,21 @@ const baseConfig = {
   //   testFiles: path.join(process.cwd(), 'e2e', '*.e2e.tsx'),
   //   componentFolder: path.join(process.cwd(), 'src'),
   // },
-  component: {
-    componentFolder: '../packages/react-menu/src',
-    testFiles: '../packages/react-menu/e2e/*.e2e.tsx',
+  video: false,
+  testFiles: path.join(process.cwd(), '**/*.e2e.tsx'),
+  componentFolder: process.cwd(),
+  retries: {
+    runMode: 2,
+    openMode: 0,
   },
-  pluginsFile: '../../scripts/cypress/plugins/index.js',
+  integrationFolder: '.',
+  supportFile: path.join(__dirname, './cypress/support/index.js'),
+  pluginsFile: path.join(__dirname, './cypress/plugins/index.js'),
 };
 
 const run = () => {
   return cypress.run({
+    testingType: 'component',
     configFile: false,
     config: {
       ...baseConfig,
