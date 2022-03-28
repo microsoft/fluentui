@@ -1,7 +1,5 @@
 # @fluentui/react-slider
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
-
 **Slider component for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
 Slider allows users to quickly select a value (or range) by dragging a thumb across a rail. It is often used when setting values with a relaxed precision such as audio volume and screen brightness.
