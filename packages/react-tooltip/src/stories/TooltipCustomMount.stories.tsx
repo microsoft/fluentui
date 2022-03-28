@@ -8,11 +8,12 @@ export const CustomMount = (props: Partial<TooltipProps>) => {
   const [ref, setRef] = React.useState<HTMLElement | null>();
 
   return (
-    <div ref={setRef}>
+    <>
       <Tooltip mountNode={ref} content="Example tooltip" relationship="label" {...props}>
         <Button icon={<SlideTextRegular />} size="large" />
       </Tooltip>
-    </div>
+      <div ref={setRef} />
+    </>
   );
 };
 

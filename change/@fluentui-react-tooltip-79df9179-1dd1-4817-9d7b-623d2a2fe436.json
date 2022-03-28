@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Add mountNode prop to tooltip",
+  "comment": "Add mountNode prop",
   "packageName": "@fluentui/react-tooltip",
   "email": "mgodbolt@microsoft.com",
   "dependentChangeType": "patch"
