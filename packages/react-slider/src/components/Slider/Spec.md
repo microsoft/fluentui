@@ -69,3 +69,13 @@ The Slider component allows users to quickly select a value by dragging an icon 
 ## Accessibility
 
 `Slider` design pattern: [W3 Slider](https://www.w3.org/TR/wai-aria-1.1/#slider)
+
+## Open UI Research
+
+https://open-ui.org/components/slider.research.parts
+https://open-ui.org/components/slider.research
+
+## Out of scope
+
+- built in marks
+- dual thumb 'ranged' slider
