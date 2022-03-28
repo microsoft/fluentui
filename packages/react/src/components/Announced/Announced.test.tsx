@@ -36,7 +36,6 @@ describe('Announced', () => {
     const component = getByRole('status');
 
     expect(component.tagName).toBe('DIV');
-    expect(component.getAttribute('role')).toBe('status');
     expect(component.getAttribute('aria-live')).toBe('polite');
   });
 
