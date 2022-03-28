@@ -52,9 +52,6 @@ export const tabClassName: string;
 // @public (undocumented)
 export const tabClassNames: SlotClassNames<TabSlots>;
 
-// @public (undocumented)
-export const tabClassNames: SlotClassNames<TabSlots>;
-
 // @public
 export type TabContentRect = {
     x: number;
@@ -68,9 +65,6 @@ export const TabList: ForwardRefComponent<TabListProps>;
 
 // @public (undocumented)
 export const tabListClassName: string;
-
-// @public (undocumented)
-export const tabListClassNames: SlotClassNames<TabListSlots>;
 
 // Warning: (ae-forgotten-export) The symbol "TabListCommons" needs to be exported by the entry point index.d.ts
 //

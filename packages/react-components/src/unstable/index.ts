@@ -123,31 +123,37 @@ export {
 } from '@fluentui/react-switch';
 export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';
 
-export {
-  Tab,
-  /* eslint-disable-next-line deprecation/deprecation */
-  tabClassName,
-  tabClassNames,
-  useTab_unstable,
-  useTabStyles_unstable,
-  renderTab_unstable,
-  TabList,
-  /* eslint-disable-next-line deprecation/deprecation */
-  tabListClassName,
-  tabListClassNames,
-  useTabList_unstable,
-  useTabListStyles_unstable,
-  renderTabList_unstable,
-} from '@fluentui/react-tabs';
 export type {
-  TabValue,
+  TabContentRect,
   TabProps,
+  TabSlots,
   TabState,
+  TabValue,
+  RegisterTabData,
+  RegisterTabEventHandler,
   SelectTabData,
   SelectTabEvent,
   SelectTabEventHandler,
-  TabListProps,
   TabListContextValue,
   TabListContextValues,
+  TabListProps,
+  TabListSlots,
   TabListState,
+} from '@fluentui/react-tabs';
+
+export {
+  indicatorCssVars,
+  renderTab_unstable,
+  Tab,
+  tabClassName,
+  tabClassNames,
+  useTabAnimatedIndicatorStyles_unstable,
+  useTabStyles_unstable,
+  useTab_unstable,
+  renderTabList_unstable,
+  TabList,
+  tabListClassName,
+  tabListSlotClassNames,
+  useTabListStyles_unstable,
+  useTabList_unstable,
 } from '@fluentui/react-tabs';

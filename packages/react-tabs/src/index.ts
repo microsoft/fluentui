@@ -1,35 +1,31 @@
+export type { TabContentRect, TabProps, TabSlots, TabState, TabValue } from './Tab';
 export {
-  Tab,
+  indicatorCssVars,
   renderTab_unstable,
-  // eslint-disable-next-line deprecation/deprecation
+  Tab,
   tabClassName,
   tabClassNames,
+  useTabAnimatedIndicatorStyles_unstable,
   useTabStyles_unstable,
   useTab_unstable,
 } from './Tab';
-export type { TabProps, TabSlots, TabState, TabValue } from './Tab';
-export {
-  TabList,
-  indicatorLengthVar,
-  indicatorOffsetVar,
-  renderTabList_unstable,
-  // eslint-disable-next-line deprecation/deprecation
-  tabListClassName,
-  tabListClassNames,
-  tabListSelectionIndicatorName,
-  useTabListStyles_unstable,
-  useTabList_unstable,
-} from './TabList';
 export type {
   RegisterTabData,
   RegisterTabEventHandler,
   SelectTabData,
   SelectTabEvent,
   SelectTabEventHandler,
-  TabContentRect,
   TabListContextValue,
   TabListContextValues,
   TabListProps,
   TabListSlots,
   TabListState,
+} from './TabList';
+export {
+  renderTabList_unstable,
+  TabList,
+  tabListClassName,
+  tabListSlotClassNames,
+  useTabListStyles_unstable,
+  useTabList_unstable,
 } from './TabList';
