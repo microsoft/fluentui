@@ -491,16 +491,17 @@ describe('TextField with error message', () => {
     );
 
     const input = getByRole('textbox') as HTMLInputElement;
-    userEvent.type(input, 'invalid value', { skipClick: true });
-    expect(validator).toHaveBeenCalledTimes(1);
-
-    userEvent.click(input);
+    userEvent.type(input, 'invalid value');
     expect(validator).toHaveBeenCalledTimes(2);
+
+    userEvent.click(container);
+    userEvent.click(input);
+    expect(validator).toHaveBeenCalledTimes(3);
 
     userEvent.click(container);
     userEvent.type(input, 'also ');
     userEvent.type(input, 'also invalid');
-    expect(validator).toHaveBeenCalledTimes(3);
+    expect(validator).toHaveBeenCalledTimes(4);
   });
 
   it('should trigger validation only on blur', () => {
