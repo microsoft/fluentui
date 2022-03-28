@@ -10,24 +10,62 @@ import {
 } from '@codesandbox/sandpack-react';
 import '@codesandbox/sandpack-react/dist/index.css';
 import * as dedent from 'dedent';
+import newGithubIssueUrl from 'new-github-issue-url';
+import * as packageJson from '../../package.json';
+import bugReportTemplate from '../../../../.github/ISSUE_TEMPLATE/bug_report_vnext.md';
 
-const LivePreview: React.FunctionComponent<DocsStoryProps> = ({ id }) => {
+const handleReportBug = (componentName?: string) => async (e: React.MouseEvent) => {
+  // create codesandbox
+  let codesandboxUrl = '';
+  const openInCSButton = e.currentTarget.nextElementSibling;
+  const codesandboxForm = openInCSButton?.getElementsByTagName('form').item(0);
+  if (codesandboxForm) {
+    const codesandboxFormData = new FormData(codesandboxForm);
+    codesandboxFormData.append('json', '1');
+    const codesandboxResponse = await fetch(codesandboxForm.action, {
+      method: 'post',
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      body: new URLSearchParams(codesandboxFormData),
+    });
+
+    const sandboxId = (await codesandboxResponse.json()).sandbox_id;
+    codesandboxUrl = `https://codesandbox.io/s/${sandboxId}`;
+  }
+
+  // open GitHub
+  const newIssueUrl = newGithubIssueUrl({
+    repoUrl: packageJson.repository.url,
+    title: '',
+    labels: ['Type: Bug :bug:', 'Fluent UI vNext', componentName ? `Component: ${componentName}` : ''],
+    body: bugReportTemplate
+      .replace('[package-versions]', packageJson.version)
+      .replace('[browser-and-os-versions]', navigator.userAgent)
+      .replace('[link-to-codesandbox]', codesandboxUrl),
+  });
+  window.open(newIssueUrl, '_blank');
+};
+
+const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName?: string }> = ({ id, componentName }) => {
   const [renderInline, setRenderInline] = React.useState(true);
   const sandpack = useSandpack();
 
   React.useEffect(() => {
-    const anchor = document.getElementById(`anchor--${id}`);
-    const iframe = anchor?.getElementsByTagName('iframe')?.item(0);
+    if (id) {
+      const anchor = document.getElementById(`anchor--${id}`);
+      const iframe = anchor?.getElementsByTagName('iframe')?.item(0);
 
-    if (iframe) {
-      iframe.style.display = 'none';
+      // toggle iframe/inline rendering
+      if (iframe) {
+        iframe.style.display = 'none';
 
-      sandpack.listen(msg => {
-        if (msg.type === 'start') {
-          iframe.style.display = 'block';
-          setRenderInline(false);
-        }
-      });
+        sandpack.listen(msg => {
+          if (msg.type === 'start') {
+            iframe.style.display = 'block';
+            setRenderInline(false);
+          }
+        });
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -40,7 +78,7 @@ const LivePreview: React.FunctionComponent<DocsStoryProps> = ({ id }) => {
             type="button"
             className="sp-button"
             style={{ padding: 'var(--sp-space-1) var(--sp-space-3)' }}
-            onClick={() => window.alert('Bug reported!')}
+            onClick={handleReportBug(componentName)}
           >
             Report bug
           </button>
@@ -53,12 +91,13 @@ const LivePreview: React.FunctionComponent<DocsStoryProps> = ({ id }) => {
 };
 
 // Most of this file is copied from Storybook's addons/docs/src/blocks/DocsStory.tsx
-export const FluentDocsDocsStory: React.FunctionComponent<DocsStoryProps> = ({
+export const FluentDocsDocsStory: React.FunctionComponent<DocsStoryProps & { componentName?: string }> = ({
   id,
   name,
   expanded = true,
   withToolbar = false,
   parameters = {},
+  componentName,
 }) => {
   const { docs } = parameters;
 
@@ -119,7 +158,7 @@ export const FluentDocsDocsStory: React.FunctionComponent<DocsStoryProps> = ({
               },
             }}
           >
-            <LivePreview id={id} />
+            <LivePreview id={id} componentName={componentName} />
             <SandpackCodeEditor wrapContent={true} initMode={'lazy'} showInlineErrors={true} />
           </SandpackThemeProvider>
         </SandpackProvider>
