@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "ChoiceGroup update from 20x to 18px",
+  "packageName": "@uifabric/experiments",
+  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
