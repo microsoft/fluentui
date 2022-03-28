@@ -2,6 +2,6 @@
 <!-- prettier-ignore -->
 ```jsx
 
-import { Slider } from '@fluentui/react-components/unstable';
+import { Slider } from '@fluentui/react-components';
 
 ```
