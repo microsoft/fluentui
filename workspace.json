@@ -731,6 +731,11 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/upgrade-examples-v8-v9": {
+      "root": "apps/upgrade-examples-v8-v9",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/vr-tests": {
       "root": "apps/vr-tests",
       "projectType": "application",
