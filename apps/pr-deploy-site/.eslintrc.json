@@ -1,13 +1,6 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/node"],
   "root": true,
-  "settings": {
-    "import/resolver": {
-      "typescript": {
-        "project": "../../tsconfig.json"
-      }
-    }
-  },
   "overrides": [
     {
       // pr-deploy-site.js is run without transpiling in all browsers, which means it must use

@@ -1,4 +1,4 @@
-import { FontWeightProperty } from 'csstype';
+import { Property } from 'csstype';
 import { pxToRem, stringLiteralsArray } from '../../../../utils';
 import { ItemType } from '../../../types';
 import { TeamsSchemeMappingWithAreas } from '../../types';
@@ -13,7 +13,7 @@ export interface DividerVariables {
   textColor: string;
   textFontSize: string;
   textLineHeight: string;
-  importantFontWeight: FontWeightProperty;
+  importantFontWeight: Property.FontWeight;
   dividerPadding: string;
 }
 

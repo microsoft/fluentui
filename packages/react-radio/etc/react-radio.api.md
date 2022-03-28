@@ -10,18 +10,25 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Radio: ForwardRefComponent<RadioProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const radioClassName = "fui-Radio";
+
+// @public (undocumented)
+export const radioClassNames: SlotClassNames<RadioSlots>;
 
 // @public
 export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const radioGroupClassName = "fui-RadioGroup";
+
+// @public (undocumented)
+export const radioGroupClassNames: SlotClassNames<RadioGroupSlots>;
 
 // @public
 export const RadioGroupContext: React_2.Context<RadioGroupContextValue>;
@@ -46,7 +53,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
 
 // @public (undocumented)
 export type RadioGroupSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -55,10 +62,16 @@ export type RadioGroupState = ComponentState<RadioGroupSlots> & Required<Pick<Ra
 };
 
 // @public
+export type RadioOnChangeData = {
+    value: string;
+};
+
+// @public
 export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'size'> & {
     value?: string;
     labelPosition?: 'after' | 'below';
     disabled?: boolean;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: RadioOnChangeData) => void;
 };
 
 // @public (undocumented)

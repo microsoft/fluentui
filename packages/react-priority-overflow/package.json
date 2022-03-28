@@ -14,6 +14,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -27,13 +28,11 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@fluentui/priority-overflow": "^9.0.0-alpha.0",
+    "@fluentui/react-context-selector": "9.0.0-rc.5",
     "@fluentui/react-theme": "9.0.0-rc.4",
     "@fluentui/react-utilities": "9.0.0-rc.5",
     "@griffel/react": "1.0.0",

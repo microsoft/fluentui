@@ -728,6 +728,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     protected onSuggestionRemove: (ev: React_2.MouseEvent<HTMLElement>, item: T, index: number) => void;
     // (undocumented)
     protected onSuggestionSelect(): void;
+    protected onWrapperClick: (ev: React_2.MouseEvent<HTMLInputElement>) => void;
     // (undocumented)
     refocusSuggestions: (keyCode: KeyCodes) => void;
     // (undocumented)
@@ -6378,8 +6379,11 @@ export interface ILabelStyles {
 export interface ILayer {
 }
 
-// @public (undocumented)
+// @public
 export interface ILayerHost {
+    hostId: string;
+    notifyLayersChanged(): void;
+    rootRef: React_2.MutableRefObject<HTMLDivElement | null>;
 }
 
 // @public (undocumented)

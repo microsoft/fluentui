@@ -88,7 +88,7 @@ jobs:
 
       # Since releases are scoped, this should warn for any packages that were mistakenly not included in scoping
       - script: |
-          yarn syncpack:list
+          yarn syncpack list-mismatches
         displayName: Check for dependency mismatches
 
       # TODO update release notes script for v9

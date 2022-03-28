@@ -66,6 +66,12 @@ var siteInfo = [
     icon: 'SpeedHigh',
     title: 'Perf Tests',
   },
+  {
+    package: '@fluentui/perf-test-react-components',
+    link: './perf-test-react-components/index.html',
+    icon: 'SpeedHigh',
+    title: 'Perf Tests React-Components',
+  },
 ];
 
 // location.pathname will be like /pull/17568/ or /heads/master/

@@ -90,22 +90,29 @@
   /* Neutrals / Web / Gray 200 #1B1A19 */
   color: #1b1a19;
   margin-top: 8px;
+}
+
+#docs-root .sbdocs-ul {
+  margin: 12px 0;
+}
+
+#docs-root .sbdocs-ul .sbdocs-li {
   list-style: none;
   position: relative;
 }
 
-#docs-root .sbdocs-li::before {
+#docs-root .sbdocs-ul .sbdocs-li::before {
   position: absolute;
   content: '•';
-  color: #bdbdbd;
+  color: #8d8d8d;
   font-size: 16px;
   line-height: 6px;
   top: calc(50% - 3px);
   left: -25px;
 }
 
-#docs-root .sbdocs-ul {
-  margin: 12px 0;
+#docs-root .sbdocs-ol .sbdocs-li {
+  color: #8d8d8d;
 }
 
 #docs-root .sbdocs-preview {
@@ -114,6 +121,7 @@
   padding: 0;
   box-shadow: none;
   border: 1px solid var(--colorNeutralStroke1, #e1dfdd);
+  margin: 25px 0 40px;
 }
 
 #docs-root .innerZoomElementWrapper {
@@ -407,4 +415,19 @@ h2.fluent {
   font-family: 'Segoe UI';
   line-height: 36px;
   letter-spacing: -0.16px;
+}
+
+/* Sandpack */
+#docs-root .sp-preview-container {
+  padding: 20px 20px 55px 20px;
+  border-radius: 16px 16px 0 0;
+}
+
+#docs-root .sp-preview-iframe {
+  flex: 0 1 auto;
+  min-height: 0;
+}
+
+#docs-root .sp-code-editor {
+  border-radius: 0 0 16px 16px;
 }

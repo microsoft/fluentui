@@ -21,16 +21,20 @@ jobs:
         displayName: yarn
 
       - script: |
-          NorthstarAffected=$(yarn --silent check-if-v0-v8-v9-affected --@fluentui/react-northstar)
-          V8Affected=$(yarn --silent check-if-v0-v8-v9-affected --@fluentui/react --@fluentui/react-components)
+          NorthstarAffected=$(yarn --silent check:affected-package --@fluentui/react-northstar)
+          V8Affected=$(yarn --silent check:affected-package --@fluentui/react)
+          ReactComponentsAffected=$(yarn --silent check:affected-package --@fluentui/react-components)
           if [[ $NorthstarAffected == true ]]; then
             echo "##vso[task.setvariable variable=NorthstarPackageAffected;isOutput=true]true"
           fi
           if [[ $V8Affected == true ]]; then
             echo "##vso[task.setvariable variable=V8PackageAffected;isOutput=true]true"
           fi
+          if [[ $ReactComponentsAffected == true ]]; then
+            echo "##vso[task.setvariable variable=ReactComponentsPackageAffected;isOutput=true]true"
+          fi
         name: PackagesAffected
-        displayName: Check if v8 and/or  northstar packages were affected
+        displayName: Check if v8, v9 and/or northstar packages were affected
 
   - job: PerfTestNorthstar
     displayName: Perf test for @fluentui/react-northstar
@@ -46,20 +50,17 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
-      # Build @fluentui/perf-test-northstar
       - script: |
           yarn lage build --to @fluentui/perf-test-northstar --to @fluentui/react-conformance --verbose
         condition: eq(variables.isPR, true)
         displayName: Build to Perf Test (Northstar)
 
-      # @fluentui/perf-test-northstar Baseline
       - script: |
           yarn perf:test:base
         condition: eq(variables.isPR, false)
         workingDirectory: packages/fluentui/perf-test-northstar
         displayName: Run Perf Test Base (Northstar)
 
-      # Run @fluentui/perf-test-northstar
       - script: |
           yarn perf:test
         condition: eq(variables.isPR, true)
@@ -119,14 +120,11 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
-      # Build v8 Perf Test
       - script: |
           yarn lage build --to perf-test --verbose
         condition: eq(variables.isPR, true)
-        workingDirectory: apps/perf-test
         displayName: Build to Perf Test
 
-      # V8: perf-test will build, bundle, and run-perftest
       - script: |
           yarn just perf-test
         condition: eq(variables.isPR, true)
@@ -152,5 +150,51 @@ jobs:
           blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
           status: '$(PerfCommentStatus)'
           uniqueId: 'perfComment9423'
+
+      - template: .devops/templates/cleanup.yml
+
+  - job: PerfTestReactComponents
+    displayName: Perf test for @fluentui/react-components
+    dependsOn: CheckIfPackagesAffected
+    condition: eq(dependencies.CheckIfPackagesAffected.outputs['PackagesAffected.ReactComponentsPackageAffected'], true)
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
+        displayName: yarn
+
+      - script: |
+          yarn lage build --to perf-test-react-components --verbose
+        condition: eq(variables.isPR, true)
+        displayName: Build to Perf Test
+
+      - script: |
+          yarn just perf-test
+        condition: eq(variables.isPR, true)
+        workingDirectory: apps/perf-test-react-components
+        displayName: Run Perf Test
+
+      - task: AzureUpload@2
+        condition: eq(variables.isPR, true)
+        displayName: Upload Perf Test Result to PR deploy site (React Components)
+        inputs:
+          SourcePath: 'apps/perf-test-react-components/dist'
+          azureSubscription: $(azureSubscription)
+          storage: $(azureStorage)
+          ContainerName: '$web'
+          BlobPrefix: '$(deployBasePath)/perf-test-react-components'
+
+      - task: GithubPRComment@0
+        condition: eq(variables.isPR, true)
+        displayName: 'Post @fluentui/react-components Perf Results to Github Pull Request'
+        inputs:
+          githubOwner: microsoft
+          githubRepo: 'fluentui'
+          blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePathReactComponents)'
+          status: '$(PerfCommentStatusReactComponents)'
+          uniqueId: 'perfComment9425'
 
       - template: .devops/templates/cleanup.yml

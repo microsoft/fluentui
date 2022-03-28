@@ -10,6 +10,9 @@
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
+  "storybook": {
+    "url": "https://master--6002298f95a00c00213f4d55.chromatic.com"
+  },
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
@@ -31,11 +34,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/react-accordion": "9.0.0-rc.5",
@@ -55,13 +54,16 @@
     "@fluentui/react-provider": "9.0.0-rc.5",
     "@fluentui/react-radio": "9.0.0-beta.2",
     "@fluentui/react-slider": "9.0.0-beta.10",
+    "@fluentui/react-switch": "9.0.0-rc.5",
     "@fluentui/react-tabs": "9.0.0-beta.8",
     "@fluentui/react-theme": "9.0.0-rc.4",
     "@fluentui/react-tooltip": "9.0.0-rc.5",
     "@fluentui/react-utilities": "9.0.0-rc.5",
     "@fluentui/react-text": "9.0.0-rc.5",
     "@griffel/react": "1.0.0",
-    "tslib": "^2.1.0"
+    "tslib": "^2.1.0",
+    "@codesandbox/sandpack-react": "0.15.2",
+    "new-github-issue-url": "^1.0.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

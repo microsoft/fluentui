@@ -2,6 +2,21 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Fri, 11 Mar 2022 07:34:40 GMT",
+      "tag": "@fluentui/merge-styles_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "f45738ec1d2156e69f6e3ce3fd0d063a6ee83026",
+            "comment": "Adding additional exports to support existing 1js imports (which will be resolved separately.)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Mar 2022 07:24:27 GMT",
       "tag": "@fluentui/merge-styles_v8.4.0",
       "version": "8.4.0",

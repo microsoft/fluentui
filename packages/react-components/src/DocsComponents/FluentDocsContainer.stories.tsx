@@ -13,13 +13,17 @@ interface FluentDocsContainerProps {
  * A container that wraps storybook's native docs container to add extra components to the docs experience
  */
 export const FluentDocsContainer: React.FC<FluentDocsContainerProps> = ({ children, context }) => {
+  // eslint-disable-next-line deprecation/deprecation
   const selectedTheme = themes.find(theme => theme.id === context.globals[THEME_ID]);
   const hosted = isHosted();
   return (
     <>
       {!hosted && (
         <FluentProvider theme={selectedTheme?.theme ?? webLightTheme}>
-          <FluentDocsHeader storybookGlobals={context.globals} />
+          <FluentDocsHeader
+            // eslint-disable-next-line deprecation/deprecation
+            storybookGlobals={context.globals}
+          />
         </FluentProvider>
       )}
 

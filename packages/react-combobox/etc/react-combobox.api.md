@@ -9,12 +9,16 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Combobox: ForwardRefComponent<ComboboxProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const comboboxClassName = "fui-Combobox";
+
+// @public (undocumented)
+export const comboboxClassNames: SlotClassNames<ComboboxSlots>;
 
 // @public (undocumented)
 export type ComboboxCommons = {};
@@ -33,8 +37,11 @@ export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxCommons;
 // @public
 export const ComboButton: ForwardRefComponent<ComboButtonProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const comboButtonClassName = "fui-ComboButton";
+
+// @public (undocumented)
+export const comboButtonClassNames: SlotClassNames<ComboButtonSlots>;
 
 // @public (undocumented)
 export type ComboButtonCommons = {};
@@ -53,8 +60,11 @@ export type ComboButtonState = ComponentState<ComboButtonSlots> & ComboButtonCom
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const listboxClassName = "fui-Listbox";
+
+// @public (undocumented)
+export const listboxClassNames: SlotClassNames<ListboxSlots>;
 
 // @public (undocumented)
 export type ListboxCommons = {};
@@ -74,8 +84,11 @@ export type ListboxState = ComponentState<ListboxSlots> & ListboxCommons;
 const Option_2: ForwardRefComponent<OptionProps>;
 export { Option_2 as Option }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const optionClassName = "fui-Option";
+
+// @public (undocumented)
+export const optionClassNames: SlotClassNames<OptionSlots>;
 
 // @public (undocumented)
 export type OptionCommons = {};
@@ -83,8 +96,11 @@ export type OptionCommons = {};
 // @public
 export const OptionGroup: ForwardRefComponent<OptionGroupProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const optionGroupClassName = "fui-OptionGroup";
+
+// @public (undocumented)
+export const optionGroupClassNames: SlotClassNames<OptionGroupSlots>;
 
 // @public (undocumented)
 export type OptionGroupCommons = {};

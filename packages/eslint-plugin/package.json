@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/eslint-plugin",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "description": "ESLint configuration and custom rules for Fluent UI",
   "main": "src/index.js",
   "repository": {

@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { series, resolveCwd, copyTask } from 'just-scripts';
+import { series, resolveCwd, copyTask, copyInstructionsTask, TaskFunction } from 'just-scripts';
 
-export function expandSourcePath(pattern) {
+export function expandSourcePath(pattern: string): string {
   if (!pattern) {
     return null;
   }
@@ -31,25 +31,49 @@ export function expandSourcePath(pattern) {
 }
 
 export function copy() {
-  let tasks = [];
-  let configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
+  const tasks: TaskFunction[] = [];
+  const configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
 
   if (!fs.existsSync(configPath)) {
     return;
   }
 
-  const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+  const config: { copyTo?: Record<string, Array<string> | string> } = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
   if (config && config.copyTo) {
-    for (let destination in config.copyTo) {
+    for (const destination in config.copyTo) {
       const sources = config.copyTo[destination];
-      destination = path.resolve(process.cwd(), destination);
-      tasks.push(
-        copyTask({
-          paths: sources.map(src => expandSourcePath(src)),
-          dest: destination,
-        }),
-      );
+      const destinationPath = path.resolve(process.cwd(), destination);
+
+      if (Array.isArray(sources)) {
+        const sourcePaths = sources.map(src => expandSourcePath(src));
+
+        tasks.push(
+          copyTask({
+            paths: sourcePaths,
+            dest: destinationPath,
+          }),
+        );
+
+        continue;
+      }
+
+      if (typeof sources === 'string') {
+        tasks.push(
+          copyInstructionsTask({
+            copyInstructions: [
+              {
+                sourceFilePath: sources,
+                destinationFilePath: destinationPath,
+              },
+            ],
+          }),
+        );
+
+        continue;
+      }
+
+      throw new Error('non supported API used. copyTo is a String Dictionary with values being string or string array');
     }
   }
 
