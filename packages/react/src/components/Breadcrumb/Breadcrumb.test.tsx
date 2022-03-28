@@ -81,18 +81,17 @@ describe('Breadcrumb', () => {
       { text: 'Test3', key: 'Test3', as: 'h1' },
     ];
 
-    const { container } = render(<Breadcrumb items={items2} />);
+    const { getAllByRole } = render(<Breadcrumb items={items2} />);
 
-    // get the first child of each list item (the actual item content)
-    const renderedItems = container.querySelectorAll('.ms-Breadcrumb-listItem > *:first-child');
+    const renderedItems = getAllByRole('listitem', { hidden: true });
     expect(renderedItems).toHaveLength(3);
     // should be a link since it has a href (even though it also has onclick)
-    expect(renderedItems[0].tagName).toBe('A');
+    expect(renderedItems[0].firstElementChild!.tagName).toBe('A');
     // should be a button since it doesn't have a href
     // (can't use a link without a href because it won't respond to key events)
-    expect(renderedItems[1].tagName).toBe('BUTTON');
+    expect(renderedItems[1].firstElementChild!.tagName).toBe('BUTTON');
     // specified type of h1 overrides default
-    expect(renderedItems[2].tagName).toBe('H1');
+    expect(renderedItems[2].firstElementChild!.tagName).toBe('H1');
   });
 
   it('calls the callback when an item is clicked', () => {
@@ -107,21 +106,19 @@ describe('Breadcrumb', () => {
       { text: 'Test2', key: 'Test2', onClick: clickCallback },
     ];
 
-    const { container } = render(<Breadcrumb items={items2} />);
+    const { getByRole } = render(<Breadcrumb items={items2} />);
 
-    const renderedItems = container.querySelectorAll('.ms-Breadcrumb-itemLink');
-
-    userEvent.click(renderedItems[0]);
+    userEvent.click(getByRole('link', { hidden: true }));
     expect(callbackValue).toEqual('Test1');
 
-    userEvent.click(renderedItems[1]);
+    userEvent.click(getByRole('button', { hidden: true }));
     expect(callbackValue).toEqual('Test2');
   });
 
   it('moves items to overflow in the correct order', () => {
-    const { container } = render(<Breadcrumb items={items} maxDisplayedItems={2} />);
-
-    expect(container.querySelectorAll('.ms-Breadcrumb-item')[0].textContent).toEqual('TestText3');
+    const { getAllByRole } = render(<Breadcrumb items={items} maxDisplayedItems={2} />);
+    const firstListItem = getAllByRole('listitem', { hidden: true })[1].firstElementChild;
+    expect(firstListItem!.textContent).toEqual('TestText3');
   });
 
   it('supports native props on the root element', () => {
@@ -131,12 +128,12 @@ describe('Breadcrumb', () => {
   });
 
   it('opens the overflow menu on click', () => {
-    const { container } = render(<Breadcrumb items={items} maxDisplayedItems={2} />);
+    const { getByRole, getAllByRole } = render(<Breadcrumb items={items} maxDisplayedItems={2} />);
 
-    const overflowButton = container.querySelector('.ms-Breadcrumb-overflowButton');
+    const overflowButton = getByRole('button', { hidden: true });
     userEvent.click(overflowButton!);
 
-    const overfowItems = document.querySelectorAll('.ms-ContextualMenu-item');
+    const overfowItems = getAllByRole('menuitem');
     expect(overfowItems).toHaveLength(2);
     expect(overfowItems[0].textContent).toEqual('TestText1');
     expect(overfowItems[1].textContent).toEqual('TestText2');
@@ -168,9 +165,9 @@ describe('Breadcrumb', () => {
         },
       ];
 
-      const { container } = render(<Breadcrumb items={itemsWithAdditionalProps} />);
+      const { getByRole } = render(<Breadcrumb items={itemsWithAdditionalProps} />);
 
-      const item = container.querySelector('.ms-Breadcrumb-item');
+      const item = getByRole('listitem', { hidden: true }).firstElementChild;
       expect(item!.getAttribute('aria-label')).toEqual("I'm an aria prop");
     });
   });
