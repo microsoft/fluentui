@@ -14,6 +14,14 @@ export interface TestOptions {
   'consistent-callback-args'?: {
     ignoreProps?: string[];
   };
+  'has-static-classnames'?: {
+    props: {
+      [key: string]: string | {};
+    };
+    expectedClassNames?: {
+      [key: string]: string;
+    };
+  }[];
 }
 
 export interface IsConformantOptions<TProps = {}> {

@@ -10,6 +10,15 @@ describe('Tab', () => {
   isConformant({
     Component: Tab,
     displayName: 'Tab',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+          },
+        },
+      ],
+    },
   });
 
   const defaultContext: TabListContextValue = {

@@ -21,6 +21,7 @@ import { PackageJson, TsConfig } from '../../types';
 import { arePromptsEnabled, getProjectConfig, getProjects, printUserLogs, prompt, UserLog } from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
+import { addCodeowner } from '../add-codeowners';
 
 interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
 
@@ -77,6 +78,10 @@ function runBatchMigration(tree: Tree, userLog: UserLog, projectNames?: string[]
 
 function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: UserLog) {
   const options = normalizeOptions(tree, schema);
+
+  if (options.owner) {
+    addCodeowner(tree, { owner: options.owner, packageName: options.name });
+  }
 
   // 1. update TsConfigs
   updatedLocalTsConfig(tree, options);

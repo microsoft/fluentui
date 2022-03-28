@@ -1,11 +1,19 @@
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { RadioState } from './Radio.types';
+import type { RadioSlots, RadioState } from './Radio.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `radioClassNames.root` instead.
+ */
 export const radioClassName = 'fui-Radio';
-const indicatorClassName = 'fui-Radio__indicator';
-const labelClassName = 'fui-Radio__label';
+export const radioClassNames: SlotClassNames<RadioSlots> = {
+  root: 'fui-Radio',
+  indicator: 'fui-Radio__indicator',
+  input: 'fui-Radio__input',
+  label: 'fui-Radio__label',
+};
 
 // TODO replace these spacing constants with theme values once they're on the theme
 const spacingHorizontalS = '8px';
@@ -50,33 +58,33 @@ const useInputStyles = makeStyles({
     },
 
     // When unchecked, hide the circle icon (child of the indicator)
-    [`:not(:checked) ~ .${indicatorClassName} > *`]: {
+    [`:not(:checked) ~ .${radioClassNames.indicator} > *`]: {
       opacity: '0',
     },
 
     // Colors for the unchecked state
     ':enabled:not(:checked)': {
-      [`& ~ .${labelClassName}`]: {
+      [`& ~ .${radioClassNames.label}`]: {
         color: tokens.colorNeutralForeground3,
       },
-      [`& ~ .${indicatorClassName}`]: {
+      [`& ~ .${radioClassNames.indicator}`]: {
         ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
       },
 
       ':hover': {
-        [`& ~ .${labelClassName}`]: {
+        [`& ~ .${radioClassNames.label}`]: {
           color: tokens.colorNeutralForeground2,
         },
-        [`& ~ .${indicatorClassName}`]: {
+        [`& ~ .${radioClassNames.indicator}`]: {
           ...shorthands.borderColor(tokens.colorNeutralStrokeAccessibleHover),
         },
       },
 
       ':hover:active': {
-        [`& ~ .${labelClassName}`]: {
+        [`& ~ .${radioClassNames.label}`]: {
           color: tokens.colorNeutralForeground1,
         },
-        [`& ~ .${indicatorClassName}`]: {
+        [`& ~ .${radioClassNames.indicator}`]: {
           ...shorthands.borderColor(tokens.colorNeutralStrokeAccessiblePressed),
         },
       },
@@ -84,23 +92,23 @@ const useInputStyles = makeStyles({
 
     // Colors for the checked state
     ':enabled:checked': {
-      [`& ~ .${labelClassName}`]: {
+      [`& ~ .${radioClassNames.label}`]: {
         color: tokens.colorNeutralForeground1,
       },
-      [`& ~ .${indicatorClassName}`]: {
+      [`& ~ .${radioClassNames.indicator}`]: {
         ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
         color: tokens.colorCompoundBrandForeground1,
       },
 
       ':hover': {
-        [`& ~ .${indicatorClassName}`]: {
+        [`& ~ .${radioClassNames.indicator}`]: {
           ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
           color: tokens.colorCompoundBrandForeground1Hover,
         },
       },
 
       ':hover:active': {
-        [`& ~ .${indicatorClassName}`]: {
+        [`& ~ .${radioClassNames.indicator}`]: {
           ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
           color: tokens.colorCompoundBrandForeground1Pressed,
         },
@@ -109,10 +117,10 @@ const useInputStyles = makeStyles({
 
     // Colors for the disabled state
     ':disabled': {
-      [`& ~ .${labelClassName}`]: {
+      [`& ~ .${radioClassNames.label}`]: {
         color: tokens.colorNeutralForegroundDisabled,
       },
-      [`& ~ .${indicatorClassName}`]: {
+      [`& ~ .${radioClassNames.indicator}`]: {
         ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
         color: tokens.colorNeutralForegroundDisabled,
       },
@@ -161,7 +169,7 @@ const useLabelStyles = makeStyles({
 export const useRadioStyles_unstable = (state: RadioState) => {
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
-    radioClassName,
+    radioClassNames.root,
     rootStyles.base,
     rootStyles.focusIndicator,
     state.labelPosition === 'below' && rootStyles.vertical,
@@ -169,15 +177,15 @@ export const useRadioStyles_unstable = (state: RadioState) => {
   );
 
   const inputStyles = useInputStyles();
-  state.input.className = mergeClasses(inputStyles.base, state.input.className);
+  state.input.className = mergeClasses(radioClassNames.input, inputStyles.base, state.input.className);
 
   const indicatorStyles = useIndicatorStyles();
-  state.indicator.className = mergeClasses(indicatorClassName, indicatorStyles.base, state.indicator.className);
+  state.indicator.className = mergeClasses(radioClassNames.indicator, indicatorStyles.base, state.indicator.className);
 
   const labelStyles = useLabelStyles();
   if (state.label) {
     state.label.className = mergeClasses(
-      labelClassName,
+      radioClassNames.label,
       labelStyles.base,
       state.labelPosition === 'below' && labelStyles.below,
       state.label.className,

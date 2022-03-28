@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Tue, 15 Mar 2022 07:45:54 GMT",
+      "tag": "@fluentui/utilities_v8.8.1",
+      "version": "8.8.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "4123478+tido64@users.noreply.github.com",
+            "package": "@fluentui/utilities",
+            "commit": "c2ec9d827e3af561d2bdc971d4949f6e8153a6ad",
+            "comment": "Ban `export *` in `@fluentui/utilities` for better tree-shakeability"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Mar 2022 07:34:41 GMT",
       "tag": "@fluentui/utilities_v8.8.0",
       "version": "8.8.0",

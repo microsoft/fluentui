@@ -7,6 +7,15 @@ describe('CardFooter', () => {
   isConformant({
     Component: CardFooter,
     displayName: 'CardFooter',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            action: 'Test Action',
+          },
+        },
+      ],
+    },
   });
 
   it('renders a default state', () => {
