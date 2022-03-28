@@ -1,4 +1,3 @@
-// your app's webpack.config.js
 const path = require('path');
 const custom = require('@fluentui/scripts/storybook/webpack.config');
 
