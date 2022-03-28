@@ -58,6 +58,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           // The dot
           ':after': [
             {
+              borderColor: extendedSemanticColors.checkboxBorderChecked,
               top: 4,
               left: 4,
             },
@@ -80,6 +81,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
                 },
                 ':after': {
                   borderColor: extendedSemanticColors.checkboxBorderChecked,
+                  backgroundColor: extendedSemanticColors.choiceGroupUncheckedDotHover,
                   top: 4,
                   left: 4,
                 },
