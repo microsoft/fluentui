@@ -8,7 +8,7 @@ export const Default = () => {
   return (
     <>
       <Label htmlFor={id}>Basic Example</Label>
-      <Slider defaultValue={20} id={id} />
+      <Slider onChange={(e, d) => console.log(e, d)} defaultValue={20} id={id} />
     </>
   );
 };
