@@ -15,6 +15,7 @@ describe('Tab', () => {
         {
           props: {
             icon: 'Test Icon',
+            content: 'Test Content',
           },
         },
       ],

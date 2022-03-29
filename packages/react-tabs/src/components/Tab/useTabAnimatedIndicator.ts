@@ -48,7 +48,7 @@ const useActiveIndicatorStyles = makeStyles({
         `${pendingAnimationEasingTokens.declerateMax},` +
         `${pendingAnimationEasingTokens.declerateMax}`,
     },
-    '@media (prefers-reduced-motion: reduce': {
+    '@media (prefers-reduced-motion: reduce)': {
       ':after': {
         transitionProperty: 'none',
         transitionDuration: '0ms',

@@ -25,7 +25,7 @@ export {
   renderTabList_unstable,
   TabList,
   tabListClassName,
-  tabListSlotClassNames,
+  tabListClassNames,
   useTabListStyles_unstable,
   useTabList_unstable,
 } from './TabList';
