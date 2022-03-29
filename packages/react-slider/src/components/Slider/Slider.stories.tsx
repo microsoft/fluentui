@@ -12,7 +12,7 @@ export * from './stories/SliderVertical.stories';
 export * from './stories/SliderDisabled.stories';
 
 export default {
-  title: 'Preview Components/Slider',
+  title: 'Components/Slider',
   component: Slider,
   parameters: {
     docs: {
