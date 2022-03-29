@@ -692,6 +692,8 @@ export interface ISelection<TItem = IObjectWithKey> {
     // (undocumented)
     count: number;
     // (undocumented)
+    getItemIndex?(key: string): number;
+    // (undocumented)
     getItems(): TItem[];
     // (undocumented)
     getSelectedCount(): number;
@@ -744,6 +746,8 @@ export interface ISelectionOptions<TItem = IObjectWithKey> {
     getKey?: (item: TItem, index?: number) => string | number;
     // (undocumented)
     items?: TItem[];
+    // (undocumented)
+    onItemsChanged?: () => void;
     // (undocumented)
     onSelectionChanged?: () => void;
     // (undocumented)
@@ -1055,6 +1059,8 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
     canSelectItem(item: TItem, index?: number): boolean;
     count: number;
     // (undocumented)
+    getItemIndex(key: string): number;
+    // (undocumented)
     getItems(): TItem[];
     // (undocumented)
     getKey(item: TItem, index?: number): string;
@@ -1103,6 +1109,9 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
 
 // @public (undocumented)
 export const SELECTION_CHANGE = "change";
+
+// @public (undocumented)
+export const SELECTION_ITEMS_CHANGE = "items-change";
 
 // @public (undocumented)
 export enum SelectionDirection {
