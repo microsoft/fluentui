@@ -73,7 +73,7 @@ export type SpinButtonCommons = {
   /**
    * Difference between two adjacent values of the control.
    * This value is used to calculate the precision of the input if no `precision` is given.
-   * The precision calculated this way will always be >= 0.
+   * The precision calculated this way will always be greater than or equal 0.
    * @defaultvalue 1
    */
   step: number;
