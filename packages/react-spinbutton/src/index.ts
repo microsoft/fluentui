@@ -7,8 +7,11 @@ export {
 } from './SpinButton';
 export type {
   SpinButtonOnChangeData,
+  SpinButtonChangeEvent,
   SpinButtonCommons,
   SpinButtonProps,
   SpinButtonSlots,
   SpinButtonState,
+  SpinButtonSpinState,
+  SpinButtonBounds,
 } from './SpinButton';

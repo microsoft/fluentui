@@ -18,6 +18,12 @@ export const renderSpinButton_unstable: (state: SpinButtonState) => JSX.Element;
 export const SpinButton: ForwardRefComponent<SpinButtonProps>;
 
 // @public (undocumented)
+export type SpinButtonBounds = 'none' | 'min' | 'max';
+
+// @public (undocumented)
+export type SpinButtonChangeEvent = React_2.MouseEvent<HTMLButtonElement> | React_2.ChangeEvent<HTMLElement> | React_2.FocusEvent<HTMLInputElement> | React_2.KeyboardEvent<HTMLInputElement> | React_2.WheelEvent<HTMLDivElement>;
+
+// @public (undocumented)
 export const spinButtonClassNames: SlotClassNames<SpinButtonSlots>;
 
 // @public (undocumented)
@@ -53,6 +59,9 @@ export type SpinButtonSlots = {
     decrementButton: NonNullable<Slot<'button'>>;
 };
 
+// @public (undocumented)
+export type SpinButtonSpinState = 'rest' | 'up' | 'down';
+
 // @public
 export type SpinButtonState = ComponentState<SpinButtonSlots> & Partial<SpinButtonCommons> & Pick<SpinButtonCommons, 'appearance' | 'size'> & {
     spinState: SpinButtonSpinState;
@@ -64,12 +73,6 @@ export const useSpinButton_unstable: (props: SpinButtonProps, ref: React_2.Ref<H
 
 // @public
 export const useSpinButtonStyles_unstable: (state: SpinButtonState) => SpinButtonState;
-
-// Warnings were encountered during analysis:
-//
-// dist/packages/react-spinbutton/src/components/SpinButton/SpinButton.types.d.ts:82:5 - (ae-forgotten-export) The symbol "SpinButtonChangeEvent" needs to be exported by the entry point index.d.ts
-// dist/packages/react-spinbutton/src/components/SpinButton/SpinButton.types.d.ts:121:5 - (ae-forgotten-export) The symbol "SpinButtonSpinState" needs to be exported by the entry point index.d.ts
-// dist/packages/react-spinbutton/src/components/SpinButton/SpinButton.types.d.ts:126:5 - (ae-forgotten-export) The symbol "SpinButtonBounds" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
