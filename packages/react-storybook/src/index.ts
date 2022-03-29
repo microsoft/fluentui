@@ -1,1 +1,1 @@
-export * from './decorators/index';
+export { withFluentProvider, withStrictMode } from './decorators/index';

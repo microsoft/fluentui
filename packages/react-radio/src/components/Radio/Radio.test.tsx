@@ -5,6 +5,8 @@ import { isConformant } from '../../common/isConformant';
 import { Radio } from './Radio';
 
 describe('Radio', () => {
+  const noOp = () => undefined;
+
   isConformant({
     Component: Radio,
     displayName: 'Radio',
@@ -63,13 +65,13 @@ describe('Radio', () => {
   });
 
   it('respects checked', () => {
-    const { getByRole } = render(<Radio checked />);
+    const { getByRole } = render(<Radio checked onChange={noOp} />);
     expect((getByRole('radio') as HTMLInputElement).checked).toBe(true);
   });
 
   it('respects checked updates', () => {
-    const { rerender, getByRole } = render(<Radio checked />);
-    rerender(<Radio checked={false} />);
+    const { rerender, getByRole } = render(<Radio checked onChange={noOp} />);
+    rerender(<Radio checked={false} onChange={noOp} />);
     expect((getByRole('radio') as HTMLInputElement).checked).toBe(false);
   });
 

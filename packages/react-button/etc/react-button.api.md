@@ -28,7 +28,7 @@ export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommons>;
 
 // @public (undocumented)
 export type ButtonSlots = {
-    root: Slot<ARIAButtonSlotProps>;
+    root: NonNullable<Slot<ARIAButtonSlotProps>>;
     icon?: Slot<'span'>;
 };
 
@@ -106,7 +106,7 @@ export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonPro
 
 // @public (undocumented)
 export type SplitButtonSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     menuButton?: Slot<typeof MenuButton>;
     primaryActionButton?: Slot<typeof Button>;
 };

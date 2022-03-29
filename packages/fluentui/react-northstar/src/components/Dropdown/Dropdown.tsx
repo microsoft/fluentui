@@ -552,7 +552,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
       },
       'aria-invalid': ariaInvalid,
       'aria-label': undefined,
-      'aria-labelledby': [ariaLabelledby, triggerButtonId].filter(l => !!l).join(' '),
+      ...(ariaLabelledby && { 'aria-labelledby': ariaLabelledby }),
       ...(open && { 'aria-expanded': true }),
     });
 

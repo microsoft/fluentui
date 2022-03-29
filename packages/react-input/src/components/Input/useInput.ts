@@ -17,7 +17,7 @@ import type { InputProps, InputState } from './Input.types';
  * @param ref - reference to `<input>` element of Input
  */
 export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputElement>): InputState => {
-  const { size = 'medium', appearance = 'outline', inline = false, onChange } = props;
+  const { size = 'medium', appearance = 'outline', onChange } = props;
 
   const [value, setValue] = useControllableState({
     state: props.value,
@@ -34,7 +34,6 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
   const state: InputState = {
     size,
     appearance,
-    inline,
     components: {
       root: 'span',
       input: 'input',
