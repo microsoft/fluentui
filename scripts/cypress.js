@@ -16,6 +16,7 @@ const argv = require('yargs')
   .option('mode', {
     describe: 'Choose a mode to run cypress',
     choices: ['run', 'open'],
+    default: 'open',
   })
   .demandOption('mode').argv;
 
