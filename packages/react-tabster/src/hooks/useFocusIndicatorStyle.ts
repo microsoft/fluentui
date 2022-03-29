@@ -142,7 +142,7 @@ export const getBottomFocusIndicator = (options: BottomFocusIndicatorOptions): G
 
   return {
     // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
-    ':after': {
+    '::after': {
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
@@ -171,7 +171,7 @@ export const getBottomFocusIndicator = (options: BottomFocusIndicatorOptions): G
       transitionDuration: '0.05s',
       transitionDelay: 'cubic-bezier(0.7,0,1,0.5)',
     },
-    [`:${selector}:after`]: {
+    [`:${selector}::after`]: {
       // Animation for focus IN
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
@@ -180,7 +180,7 @@ export const getBottomFocusIndicator = (options: BottomFocusIndicatorOptions): G
       transitionDuration: '0.2s',
       transitionDelay: 'cubic-bezier(0.1,0.9,0.2,1)',
     },
-    [`:${selector}:active:after`]: {
+    [`:${selector}::active:after`]: {
       // This is if the user clicks the field again while it's already focused
       borderBottomColor: pressedBorderColor,
     },
