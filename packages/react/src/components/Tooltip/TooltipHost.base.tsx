@@ -18,7 +18,7 @@ import { TooltipDelay } from './Tooltip.types';
 import type { ITooltipHostProps, ITooltipHostStyles, ITooltipHostStyleProps, ITooltipHost } from './TooltipHost.types';
 
 export interface ITooltipHostState {
-  /** @deprecated */
+  /** @deprecated No longer used internally */
   isAriaPlaceholderRendered: boolean;
   isTooltipVisible: boolean;
 }
