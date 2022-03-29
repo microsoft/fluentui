@@ -8,6 +8,15 @@ describe('Combobox', () => {
     Component: Combobox,
     displayName: 'Combobox',
     primarySlot: 'trigger',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            open: true,
+          },
+        },
+      ],
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

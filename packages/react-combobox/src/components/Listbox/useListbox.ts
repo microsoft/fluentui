@@ -5,7 +5,8 @@ import { useSelection } from '../../utils/useSelection';
 import { getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ListboxProps, ListboxState } from './Listbox.types';
-import { OptionCollectionState, OptionValue } from '../../utils/OptionCollection.types';
+import { useOptionCollection } from '../../utils/useOptionCollection';
+import { OptionValue } from '../../utils/OptionCollection.types';
 
 /**
  * Create the state required to render Listbox.
@@ -16,12 +17,9 @@ import { OptionCollectionState, OptionValue } from '../../utils/OptionCollection
  * @param props - props from this instance of Listbox
  * @param ref - reference to root HTMLElement of Listbox
  */
-export const useListbox_unstable = (
-  props: ListboxProps,
-  optionCollection: OptionCollectionState,
-  ref: React.Ref<HTMLElement>,
-): ListboxState => {
+export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
   const { multiselect } = props;
+  const optionCollection = useOptionCollection(props.children);
   const {
     collectionData: { count, getOptionAtIndex, getOptionByKey, getIndexOfKey },
   } = optionCollection;

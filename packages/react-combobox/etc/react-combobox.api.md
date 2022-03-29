@@ -51,8 +51,8 @@ export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> & 
 // @public (undocumented)
 export type ComboboxSlots = {
     root: NonNullable<Slot<'div'>>;
-    listbox: Slot<typeof Listbox>;
-    trigger: Slot<typeof ComboButton>;
+    listbox: NonNullable<Slot<typeof Listbox>>;
+    trigger: NonNullable<Slot<typeof ComboButton>>;
 };
 
 // Warning: (ae-forgotten-export) The symbol "OptionCollectionState" needs to be exported by the entry point index.d.ts
@@ -196,7 +196,7 @@ export const renderOption_unstable: (state: OptionState) => JSX.Element;
 export const renderOptionGroup_unstable: (state: OptionGroupState) => JSX.Element;
 
 // @public
-export const useCombobox_unstable: (props: ComboboxProps, optionCollection: OptionCollectionState, ref: React_2.Ref<HTMLButtonElement>) => ComboboxState;
+export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLButtonElement>) => ComboboxState;
 
 // @public
 export const useComboboxStyles_unstable: (state: ComboboxState) => ComboboxState;

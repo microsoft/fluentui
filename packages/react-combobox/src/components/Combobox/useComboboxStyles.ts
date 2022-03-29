@@ -17,6 +17,8 @@ export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
  */
 const useStyles = makeStyles({
   root: {},
+  listbox: {},
+  trigger: {},
 });
 
 /**
@@ -25,6 +27,8 @@ const useStyles = makeStyles({
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
   const styles = useStyles();
   state.root.className = mergeClasses(comboboxClassNames.root, styles.root, state.root.className);
+  state.listbox.className = mergeClasses(comboboxClassNames.listbox, styles.listbox, state.listbox.className);
+  state.trigger.className = mergeClasses(comboboxClassNames.trigger, styles.trigger, state.trigger.className);
 
   return state;
 };

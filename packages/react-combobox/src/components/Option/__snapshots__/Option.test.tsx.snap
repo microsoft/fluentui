@@ -5,12 +5,12 @@ exports[`Option renders a default state 1`] = `
   <div
     aria-selected="false"
     class="fui-Option"
-    id="-undefined"
+    id=""
     role="option"
   >
     <span
       aria-hidden="true"
-      class=""
+      class="fui-Option__checkIcon"
     >
       x
     </span>

@@ -8,7 +8,8 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
-import { OptionCollectionState, OptionValue } from '../../utils/OptionCollection.types';
+import { useOptionCollection } from '../../utils/useOptionCollection';
+import { OptionValue } from '../../utils/OptionCollection.types';
 import { useSelection } from '../../utils/useSelection';
 import { Listbox } from '../Listbox/Listbox';
 import { ComboButton } from '../ComboButton/ComboButton';
@@ -23,11 +24,9 @@ import type { ComboboxProps, ComboboxState, ComboboxOpenEvents } from './Combobo
  * @param props - props from this instance of Combobox
  * @param ref - reference to root HTMLElement of Combobox
  */
-export const useCombobox_unstable = (
-  props: ComboboxProps,
-  optionCollection: OptionCollectionState,
-  ref: React.Ref<HTMLButtonElement>,
-): ComboboxState => {
+export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLButtonElement>): ComboboxState => {
+  const optionCollection = useOptionCollection(props.children);
+
   const { inline = false, multiselect, onOpenChange, placeholder, positioning } = props;
   const {
     options,

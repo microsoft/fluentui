@@ -11,10 +11,10 @@ export type ComboboxSlots = {
   root: NonNullable<Slot<'div'>>;
 
   /* The dropdown listbox slot */
-  listbox: Slot<typeof Listbox>;
+  listbox: NonNullable<Slot<typeof Listbox>>;
 
   /* The primary slot, the element with role="combobox" */
-  trigger: Slot<typeof ComboButton>;
+  trigger: NonNullable<Slot<typeof ComboButton>>;
 };
 
 export type ComboboxCommons = {

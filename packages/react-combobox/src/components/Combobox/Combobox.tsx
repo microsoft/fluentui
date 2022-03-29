@@ -4,15 +4,13 @@ import { renderCombobox_unstable } from './renderCombobox';
 import { useComboboxStyles_unstable } from './useComboboxStyles';
 import type { ComboboxProps } from './Combobox.types';
 import { useComboboxContextValues } from '../../contexts/useComboboxContext';
-import { useOptionCollection } from '../../utils/useOptionCollection';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
  * Combobox component: a selection control that allows users to choose from a set of possible options
  */
 export const Combobox: ForwardRefComponent<ComboboxProps> = React.forwardRef((props, ref) => {
-  const optionCollection = useOptionCollection(props.children);
-  const state = useCombobox_unstable(props, optionCollection, ref);
+  const state = useCombobox_unstable(props, ref);
   const contextValues = useComboboxContextValues(state);
 
   useComboboxStyles_unstable(state);

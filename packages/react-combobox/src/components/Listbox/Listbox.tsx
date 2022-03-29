@@ -4,15 +4,13 @@ import { renderListbox_unstable } from './renderListbox';
 import { useListboxStyles_unstable } from './useListboxStyles';
 import type { ListboxProps } from './Listbox.types';
 import { useListboxContextValues } from '../../contexts/useListboxContext';
-import { useOptionCollection } from '../../utils/useOptionCollection';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
  * Listbox component: a standalone selection control, or the popup in a Combobox
  */
 export const Listbox: ForwardRefComponent<ListboxProps> = React.forwardRef((props, ref) => {
-  const optionCollection = useOptionCollection(props.children);
-  const state = useListbox_unstable(props, optionCollection, ref);
+  const state = useListbox_unstable(props, ref);
   const contextValues = useListboxContextValues(state);
 
   useListboxStyles_unstable(state);
