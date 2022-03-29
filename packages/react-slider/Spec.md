@@ -13,7 +13,7 @@ The Slider component allows users to quickly select a value by dragging an icon 
 
 - _**Public**_
   ```jsx
-  <Slider defaultValue={50} min={10} max={100} step={5} />
+  <Slider defaultValue={50} min={10} max={100} />
   ```
 - _**Internal**_
 
@@ -29,7 +29,7 @@ The Slider component allows users to quickly select a value by dragging an icon 
 
 ```jsx
 <div className="fui-Slider">
-  <input className="fui-Slider__input" />
+  <input className="fui-Slider__input" type="range" value="50" min="10" max="100" />
   <div className="fui-Slider__rail" />
   <div className="fui-Slider__thumb" />
 </div>
