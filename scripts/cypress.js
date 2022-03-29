@@ -63,6 +63,8 @@ if (argv.mode === 'open') {
       if (result.totalFailed) {
         throw new Error(`${result.totalFailed} failing E2E tests`);
       }
+
+      process.exit(0);
     })
     .catch(err => {
       console.error(err);
