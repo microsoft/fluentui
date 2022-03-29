@@ -444,28 +444,12 @@ describe('migrate-converged-pkg generator', () => {
       }
 
       let content = getJestSetupFile();
-      expect(content).toMatchInlineSnapshot(`
-        "/** Jest test setup file. */
-
-        const { configure } = require('enzyme');
-        const Adapter = require('enzyme-adapter-react-16');
-
-        // Configure enzyme.
-        configure({ adapter: new Adapter() });"
-      `);
+      expect(content).toMatchInlineSnapshot(`"/** Jest test setup file. */"`);
 
       await generator(tree, options);
 
       content = getJestSetupFile();
-      expect(content).toMatchInlineSnapshot(`
-        "/** Jest test setup file. */
-
-        const { configure } = require('enzyme');
-        const Adapter = require('enzyme-adapter-react-16');
-
-        // Configure enzyme.
-        configure({ adapter: new Adapter() });"
-      `);
+      expect(content).toMatchInlineSnapshot(`"/** Jest test setup file. */"`);
 
       tree.delete(jestSetupFilePath);
       expect(tree.exists(jestSetupFilePath)).toBeFalsy();
@@ -1242,12 +1226,6 @@ function setupDummyPackage(
     `,
     jestSetupFile: stripIndents`
      /** Jest test setup file. */
-
-    const { configure } = require('enzyme');
-    const Adapter = require('enzyme-adapter-react-16');
-
-    // Configure enzyme.
-    configure({ adapter: new Adapter() });
     `,
     npmConfig: stripIndents`
       *.api.json
