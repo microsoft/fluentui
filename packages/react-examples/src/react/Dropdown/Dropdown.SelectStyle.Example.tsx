@@ -37,12 +37,7 @@ const stackTokens: IStackTokens = { childrenGap: 20 };
 export const DropdownSelectStyleExample: React.FunctionComponent = () => {
   return (
     <Stack tokens={stackTokens}>
-      <Dropdown
-        placeholder="Select an option"
-        label="Basic uncontrolled example"
-        options={options}
-        styles={dropdownStyles}
-      />
+      <Dropdown placeholder="Select an option" label="Favorite Fruit" options={options} styles={dropdownStyles} />
     </Stack>
   );
 };
