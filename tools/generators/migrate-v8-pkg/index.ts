@@ -18,6 +18,7 @@ import { getProjectConfig, getProjects } from '../../utils';
 
 import { MigrateV8PkgGeneratorSchema } from './schema';
 import { PackageJson, TsConfig } from '../../types';
+import { eslintConfigObjectAst, getExtendsProp } from './lib/utils';
 
 interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
@@ -88,6 +89,12 @@ function getProjectMetadata(tree: Tree, project: ProjectConfiguration) {
   if (fileExists(joinPathFragments(project.root, '.eslintrc.json'))) {
     eslintConfig = readJson<Record<string, unknown>>(tree, joinPathFragments(project.root, '.eslintrc.json'));
   } else if (fileExists(joinPathFragments(project.root, '.eslintrc.js'))) {
+    const eslintConfigAST = eslintConfigObjectAst(
+      tree.read(joinPathFragments(project.root, '.eslintrc.js'), 'utf8') as string,
+    );
+
+    console.log(getExtendsProp(eslintConfigAST));
+
     eslintConfig = require(joinPathFragments(appRootPath, project.root, '.eslintrc.js'));
   }
 
