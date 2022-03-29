@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Cherry picked from 7.0 branch: reducing choicegroup radio button to 18px from 20px",
+  "packageName": "@fluentui/azure-themes",
+  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
