@@ -28,6 +28,29 @@ Where should upgrade helper code live?
 
 ## Detailed Design or Proposal
 
+### Option G: Create separate storybook projects for composition
+
+This would be separate storybooks under apps/ for v0->v9 and v8->9 that can
+be composed into the react-components storybook documentation.
+
+Suggested by Micah based on https://www.chromatic.com/docs/composition
+
+Pros
+
+- Same to adding stories to react-components.
+- Has room for other example apps and tools related to upgrade.
+
+Cons
+
+- Similar to adding stories to react-components, but without the con of adding a v8 or v0 weak dependencies to that package.
+- More projects in the tree to build
+
+CHOSEN: This option provides the best dependency management without affecting packages,
+avoid shipping packages of shims to npm, and encourages the behavior we want by integrating
+with documentation.
+
+## Discarded Solutions
+
 ### Option A: Create upgrade packages in the fluent repo
 
 These would be react-upgrade-v8 react-upgrade-v0 packages containing the shim components and functions.
@@ -47,6 +70,8 @@ Cons
 - Shipping a package to npm may entice customers to **never** move off of v8 entirely
 - Not a great place for the code-mod scripts
 
+DISCARDED: We don't want to ship these as packages permanently
+
 ### Option B: Create an annex folder in the fluent repo
 
 This would be a folder that is **not** part of the fluent build.
@@ -63,6 +88,8 @@ Cons
 - Could end up being unmanagable
 - Possible low quality with broken builds
 - Barrier to entry for customers to have to sync, build, and run examples.
+
+DISCARDED: The apps folder already provides a place for things outside packages.
 
 ### Option C: Put upgrade code in react-component/stories
 
@@ -81,6 +108,8 @@ Cons
 - react-components stories take a weak dependency on v8 due to shim dependency
 - Have to double check that it doesn't bloat the bundle size of react-components
 
+DISCARDED: Cannot take the v0 and v8 dependencies in react-components
+
 ### Option D: Make the upgrade repository public
 
 Make the upgrade repo public.
@@ -96,9 +125,14 @@ Cons
 - Hard to delete a public repo if customers depend on it
 - Barrier to entry since separate from storybook
 
+DISCARDED: The cost of creating a public complient repo for upgrade is too high.
+
 ### Option E: Create a community-contrib repo
 
 Pros/Cons similar to Option D
+
+DISCARDED (for now): The community contrib repo should be part of a bigger community engagement.
+We haven't planned that out enough to start with upgrade.
 
 ### Option F: Only create codesandbox.io sandboxes with shim code
 
@@ -117,9 +151,7 @@ Cons
 - Hard to share code between shims
 - Hard to catalog community contrib sandboxes
 
-## Discarded Solutions
-
-TBD post tech sync
+DISCARDED: Without a corporate account, these would get lost easily and be too difficult to keep up to date.
 
 ## Open Issues
 
