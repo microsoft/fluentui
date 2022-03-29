@@ -3,13 +3,13 @@ import { Slider } from '../../index';
 import type { Meta } from '@storybook/react';
 
 import descriptionMd from './SliderDescription.md';
-export * from './stories/SliderDefault.stories';
-export * from './stories/SliderSize.stories';
-export * from './stories/SliderControlled.stories';
-export * from './stories/SliderStep.stories';
-export * from './stories/SliderOrigin.stories';
-export * from './stories/SliderVertical.stories';
-export * from './stories/SliderDisabled.stories';
+export { Default } from './stories/SliderDefault.stories';
+export { Size } from './stories/SliderSize.stories';
+export { Controlled } from './stories/SliderControlled.stories';
+export { Step } from './stories/SliderStep.stories';
+export { Origin } from './stories/SliderOrigin.stories';
+export { Vertical } from './stories/SliderVertical.stories';
+export { Disabled } from './stories/SliderDisabled.stories';
 
 export default {
   title: 'Components/Slider',
