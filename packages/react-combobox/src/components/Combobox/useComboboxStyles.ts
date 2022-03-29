@@ -8,6 +8,8 @@ import type { ComboboxSlots, ComboboxState } from './Combobox.types';
 export const comboboxClassName = 'fui-Combobox';
 export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
   root: 'fui-Combobox',
+  listbox: 'fui-Combobox__listbox',
+  trigger: 'fui-Combobox__trigger',
 };
 
 /**

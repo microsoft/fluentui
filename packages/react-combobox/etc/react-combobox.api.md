@@ -18,6 +18,7 @@ export const Combobox: ForwardRefComponent<ComboboxProps>;
 // @public @deprecated (undocumented)
 export const comboboxClassName = "fui-Combobox";
 
+// @public (undocumented)
 export const comboboxClassNames: SlotClassNames<ComboboxSlots>;
 
 // @public (undocumented)
@@ -29,11 +30,21 @@ export type ComboboxCommons = {
     value?: string;
 };
 
+// @public
+export type ComboboxOpenChangeData = {
+    open: boolean;
+};
+
+// @public (undocumented)
+export type ComboboxOpenEvents = React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>;
+
 // Warning: (ae-forgotten-export) The symbol "SelectionProps" needs to be exported by the entry point index.d.ts
 //
 // @public
 export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> & ComboboxCommons & SelectionProps & {
-    onOpenChange?: (e: OpenEvents, data: OnOpenChangeData) => void;
+    defaultOpen?: boolean;
+    defaultValue?: string;
+    onOpenChange?: (e: ComboboxOpenEvents, data: ComboboxOpenChangeData) => void;
     positioning?: PositioningShorthand;
 };
 
@@ -51,7 +62,7 @@ export type ComboboxSlots = {
 export type ComboboxState = ComponentState<ComboboxSlots> & Required<Pick<ComboboxCommons, 'open' | 'inline'>> & Pick<ComboboxCommons, 'placeholder' | 'value'> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
     idBase: string;
-    onOptionClick(event: React_2.MouseEvent, optionKey: string): void;
+    onOptionClick(event: React_2.MouseEvent, option: OptionValue): void;
 };
 
 // @public
@@ -63,6 +74,7 @@ export const comboButtonClassName = "fui-ComboButton";
 // @public (undocumented)
 export const comboButtonClassNames: SlotClassNames<ComboButtonSlots>;
 
+// @public (undocumented)
 export type ComboButtonCommons = {
     appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
     placeholder?: string;
@@ -70,7 +82,7 @@ export type ComboButtonCommons = {
 };
 
 // @public
-export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & ComboButtonCommons & {};
+export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & ComboButtonCommons;
 
 // @public (undocumented)
 export type ComboButtonSlots = {
@@ -80,9 +92,7 @@ export type ComboButtonSlots = {
 };
 
 // @public
-export type ComboButtonState = ComponentState<ComboButtonSlots> & ComboButtonCommons & {
-    open: boolean;
-};
+export type ComboButtonState = ComponentState<ComboButtonSlots> & ComboButtonCommons;
 
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
@@ -92,9 +102,6 @@ export const listboxClassName = "fui-Listbox";
 
 // @public (undocumented)
 export const listboxClassNames: SlotClassNames<ListboxSlots>;
-
-// @public (undocumented)
-export type ListboxCommons = {};
 
 // @public
 export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
@@ -108,16 +115,8 @@ export type ListboxSlots = {
 export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
     idBase: string;
-    onOptionClick(event: React_2.MouseEvent, optionKey: string): void;
+    onOptionClick(event: React_2.MouseEvent, option: OptionValue): void;
 };
-
-// @public
-export type OnOpenChangeData = {
-    open: boolean;
-};
-
-// @public (undocumented)
-export type OpenEvents = React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>;
 
 // @public
 const Option_2: ForwardRefComponent<OptionProps> & {
@@ -131,6 +130,7 @@ export const optionClassName = "fui-Option";
 // @public (undocumented)
 export const optionClassNames: SlotClassNames<OptionSlots>;
 
+// @public (undocumented)
 export type OptionCommons = {
     disabled?: boolean;
 };
@@ -145,9 +145,6 @@ export const optionGroupClassName = "fui-OptionGroup";
 
 // @public (undocumented)
 export const optionGroupClassNames: SlotClassNames<OptionGroupSlots>;
-
-// @public (undocumented)
-export type OptionGroupCommons = {};
 
 // @public
 export type OptionGroupProps = ComponentProps<Partial<OptionGroupSlots>>;
@@ -170,7 +167,7 @@ export type OptionProps = ComponentProps<Partial<OptionSlots>> & OptionCommons &
 // @public (undocumented)
 export type OptionSlots = {
     root: NonNullable<Slot<'div'>>;
-    check: Slot<'span'>;
+    checkIcon: Slot<'span'>;
 };
 
 // @public
@@ -230,7 +227,7 @@ export const useOptionStyles_unstable: (state: OptionState) => OptionState;
 
 // Warnings were encountered during analysis:
 //
-// lib/components/Combobox/Combobox.types.d.ts:58:5 - (ae-forgotten-export) The symbol "OptionValue" needs to be exported by the entry point index.d.ts
+// lib/components/Combobox/Combobox.types.d.ts:66:5 - (ae-forgotten-export) The symbol "OptionValue" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

@@ -8,6 +8,7 @@ import type { OptionGroupSlots, OptionGroupState } from './OptionGroup.types';
 export const optionGroupClassName = 'fui-OptionGroup';
 export const optionGroupClassNames: SlotClassNames<OptionGroupSlots> = {
   root: 'fui-OptionGroup',
+  label: 'fui-OptionGroup__label',
 };
 
 /**
