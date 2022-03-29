@@ -22,7 +22,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/react-conformance": "*"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
