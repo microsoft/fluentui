@@ -25,6 +25,7 @@ interface Answers {
   packageName: string;
   target: 'react' | 'node';
   description: string;
+  codeowner: string;
   hasTests?: boolean;
   isConverged?: boolean;
 }
@@ -56,6 +57,18 @@ module.exports = (plop: NodePlopAPI) => {
         validate: (input: string) => !!input || 'Must enter a description',
       },
       {
+        type: 'list',
+        name: 'codeowner',
+        message: 'Provide team that owns this package',
+        choices: [
+          '@microsoft/fluentui-react-build',
+          '@microsoft/teams-prg',
+          '@microsoft/cxe-coastal',
+          '@microsoft/cxe-red',
+          '@microsoft/cxe-prg',
+        ],
+      },
+      {
         type: 'confirm',
         name: 'hasTests',
         message: 'Will this package have tests?',
@@ -84,6 +97,7 @@ module.exports = (plop: NodePlopAPI) => {
           /^.|-./g, // first char or char after -
           (substr, index) => (index > 0 ? ' ' : '') + substr.replace('-', '').toUpperCase(),
         ),
+        owner: answers.codeowner,
       };
 
       return [
@@ -131,7 +145,13 @@ module.exports = (plop: NodePlopAPI) => {
           console.log(`\nRunning migrate-converged-pkg...`);
           const migrateResult = spawnSync(
             'yarn',
-            ['nx', 'workspace-generator', 'migrate-converged-pkg', `--name='${data.packageNpmName}'`],
+            [
+              'nx',
+              'workspace-generator',
+              'migrate-converged-pkg',
+              `--name='${data.packageNpmName}'`,
+              `--owner='${data.owner}'`,
+            ],
             { cwd: root, stdio: 'inherit', shell: true },
           );
           if (migrateResult.status !== 0) {

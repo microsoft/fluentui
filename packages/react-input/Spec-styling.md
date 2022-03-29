@@ -28,14 +28,14 @@ Notes:
 
 ### Varying by field size
 
-| Style                         | Application                    | small               | medium           | large         |
-| ----------------------------- | ------------------------------ | ------------------- | ---------------- | ------------- |
-| height                        | root `minHeight`               | 24px                | 32px             | 40px          |
-| left/right padding            | root                           | sNudge              | mNudge           | m             |
-| left/right padding in content | input                          | xxs                 | xxs              | sNudge        |
-| content size                  | root, input (doesn't inherit)  | caption1 (base.200) | body1 (base.300) | base.400      |
-| ~~"icon" size~~               | n/a (icons not built in)       | ~~16Regular~~       | ~~20Regular~~    | ~~24Regular~~ |
-| spacing within root           | root `display: flex`, flex gap | xxs                 | xxs              | sNudge        |
+| Style                         | Application                    | small               | medium           | large     |
+| ----------------------------- | ------------------------------ | ------------------- | ---------------- | --------- |
+| height                        | root `minHeight`               | 24px                | 32px             | 40px      |
+| left/right padding            | root                           | sNudge              | mNudge           | m         |
+| left/right padding in content | input                          | xxs                 | xxs              | sNudge    |
+| content size                  | root, input (doesn't inherit)  | caption1 (base.200) | body1 (base.300) | base.400  |
+| "icon" size                   | contentBefore/after `> svg`    | 16Regular           | 20Regular        | 24Regular |
+| spacing within root           | root `display: flex`, flex gap | xxs                 | xxs              | sNudge    |
 
 ## Appearance colors and strokes
 

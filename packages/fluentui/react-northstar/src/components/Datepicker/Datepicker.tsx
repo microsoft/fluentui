@@ -288,6 +288,7 @@ export const Datepicker = (React.forwardRef<HTMLDivElement, DatepickerProps>((pr
     mapPropsToBehavior: () => ({
       'aria-invalid': ariaInvalid,
       'aria-labelledby': ariaLabelledby,
+      allowManualInput,
     }),
     rtl: context.rtl,
   });

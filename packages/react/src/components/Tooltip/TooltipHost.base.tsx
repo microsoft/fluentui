@@ -18,6 +18,7 @@ import { TooltipDelay } from './Tooltip.types';
 import type { ITooltipHostProps, ITooltipHostStyles, ITooltipHostStyleProps, ITooltipHost } from './TooltipHost.types';
 
 export interface ITooltipHostState {
+  /** @deprecated No longer used internally */
   isAriaPlaceholderRendered: boolean;
   isTooltipVisible: boolean;
 }
@@ -48,7 +49,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     initializeComponentRef(this);
 
     this.state = {
-      isAriaPlaceholderRendered: false,
+      isAriaPlaceholderRendered: false, // eslint-disable-line react/no-unused-state
       isTooltipVisible: false,
     };
 
@@ -77,7 +78,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       className,
     });
 
-    const { isAriaPlaceholderRendered, isTooltipVisible } = this.state;
+    const { isTooltipVisible } = this.state;
     const tooltipId = id || this._defaultTooltipId;
     const isContentPresent = !!(
       content ||
@@ -102,7 +103,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
         {children}
         {showTooltip && (
           <Tooltip
-            id={tooltipId}
+            id={`${tooltipId}--tooltip`}
             content={content}
             targetElement={this._getTargetElement()}
             directionalHint={directionalHint}
@@ -114,15 +115,13 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
             })}
             onMouseEnter={this._onTooltipMouseEnter}
             onMouseLeave={this._onTooltipMouseLeave}
-            {...getNativeProps(this.props, divProperties)}
+            {...getNativeProps(this.props, divProperties, ['id'])} // Make sure we use the id above
             {...tooltipProps}
           />
         )}
-        {isAriaPlaceholderRendered && (
-          <div id={tooltipId} role="none" style={hiddenContentStyle as React.CSSProperties}>
-            {content}
-          </div>
-        )}
+        <div hidden={true} id={tooltipId} style={hiddenContentStyle as React.CSSProperties}>
+          {content}
+        </div>
       </div>
     );
   }
@@ -211,7 +210,6 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     this._clearOpenTimer();
 
     if (delay !== TooltipDelay.zero) {
-      this.setState({ isAriaPlaceholderRendered: true });
       const delayTime = this._getDelayTime(delay!); // non-null assertion because we set it in `defaultProps`
 
       this._openTimerId = this._async.setTimeout(() => {
@@ -266,12 +264,6 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   };
 
   private _toggleTooltip = (isTooltipVisible: boolean): void => {
-    if (this.state.isAriaPlaceholderRendered) {
-      this.setState({
-        isAriaPlaceholderRendered: false,
-      });
-    }
-
     if (this.state.isTooltipVisible !== isTooltipVisible) {
       this.setState(
         { isTooltipVisible },

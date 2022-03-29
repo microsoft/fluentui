@@ -34,8 +34,6 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     options.baseUrl = '.';
     options.rootDir = './src';
     options.project = tsConfigLib;
-  } else {
-    options.target = 'es5';
   }
 
   return options;

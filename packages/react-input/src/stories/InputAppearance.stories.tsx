@@ -7,15 +7,28 @@ import { Input } from '../index';
 
 const useStyles = makeStyles({
   root: {
-    '& label': { display: 'block', paddingBottom: '2px' },
-    // filledLighter and filledDarker appearances depend on particular background colors,
-    // so the story includes wrapper divs around the example of each appearance
-    '> div': { ...shorthands.padding('20px'), ...shorthands.borderRadius('20px') },
-    '> div:not(:first-child)': { paddingTop: '10px' },
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap('20px'),
+    maxWidth: '400px',
+    '> div': {
+      // Stack the label above the field (with 2px gap per the design system)
+      display: 'flex',
+      flexDirection: 'column',
+      ...shorthands.gap('2px'),
+      // Align the examples horizontally to all match the extra padding on filled examples (below)
+      paddingLeft: '20px',
+      paddingRight: '20px',
+    },
   },
-  filledDarker: { backgroundColor: tokens.colorNeutralBackground1 },
-  // ideally should match doc site, #faf9f8
-  filledLighter: { backgroundColor: tokens.colorNeutralBackground2 },
+  // filledLighter and filledDarker appearances depend on particular background colors
+  filledLighter: {
+    backgroundColor: tokens.colorNeutralBackground2,
+    ...shorthands.borderRadius('20px'),
+    ...shorthands.padding('20px'),
+  },
+  // By default this will match the example background, so don't add padding above
+  filledDarker: { backgroundColor: tokens.colorNeutralBackground1, paddingBottom: '20px' },
 });
 
 export const Appearance = () => {

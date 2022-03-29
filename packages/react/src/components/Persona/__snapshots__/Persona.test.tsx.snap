@@ -134,6 +134,24 @@ exports[`Persona renders Persona children correctly 1`] = `
         role="none"
       >
         Kat Larrson
+        <div
+          hidden={true}
+          id="tooltip15"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Kat Larrson
+        </div>
       </div>
     </div>
     <div
@@ -332,6 +350,24 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         role="none"
       >
         Kat Larrson
+        <div
+          hidden={true}
+          id="tooltip2"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Kat Larrson
+        </div>
       </div>
     </div>
     <div
@@ -532,6 +568,24 @@ exports[`Persona renders Persona correctly with image 1`] = `
         role="none"
       >
         Kat Larrson
+        <div
+          hidden={true}
+          id="tooltip1"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Kat Larrson
+        </div>
       </div>
     </div>
     <div
@@ -713,6 +767,24 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         role="none"
       >
         Kat Larrson
+        <div
+          hidden={true}
+          id="tooltip0"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Kat Larrson
+        </div>
       </div>
     </div>
     <div
@@ -1154,6 +1226,24 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         role="none"
       >
         Swapnil Vaibhav
+        <div
+          hidden={true}
+          id="tooltip3"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Swapnil Vaibhav
+        </div>
       </div>
     </div>
     <div
@@ -1183,6 +1273,24 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         role="none"
       >
         Software Engineer
+        <div
+          hidden={true}
+          id="tooltip4"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Software Engineer
+        </div>
       </div>
     </div>
     <div
@@ -1213,6 +1321,24 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         role="none"
       >
         In a meeting
+        <div
+          hidden={true}
+          id="tooltip5"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          In a meeting
+        </div>
       </div>
     </div>
     <div
@@ -1243,6 +1369,24 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         role="none"
       >
         Available at 4:00pm
+        <div
+          hidden={true}
+          id="tooltip6"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Available at 4:00pm
+        </div>
       </div>
     </div>
   </div>
@@ -1345,6 +1489,24 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         role="none"
       >
         Swapnil Vaibhav
+        <div
+          hidden={true}
+          id="tooltip7"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Swapnil Vaibhav
+        </div>
       </div>
     </div>
     <div
@@ -1374,6 +1536,24 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         role="none"
       >
         Software Engineer
+        <div
+          hidden={true}
+          id="tooltip8"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Software Engineer
+        </div>
       </div>
     </div>
     <div
@@ -1404,6 +1584,24 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         role="none"
       >
         In a meeting
+        <div
+          hidden={true}
+          id="tooltip9"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          In a meeting
+        </div>
       </div>
     </div>
     <div
@@ -1434,6 +1632,24 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         role="none"
       >
         Available at 4:00pm
+        <div
+          hidden={true}
+          id="tooltip10"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Available at 4:00pm
+        </div>
       </div>
     </div>
   </div>
@@ -1671,6 +1887,24 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         role="none"
       >
         Swapnil Vaibhav
+        <div
+          hidden={true}
+          id="tooltip11"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Swapnil Vaibhav
+        </div>
       </div>
     </div>
     <div
@@ -1700,6 +1934,24 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         role="none"
       >
         Software Engineer
+        <div
+          hidden={true}
+          id="tooltip12"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Software Engineer
+        </div>
       </div>
     </div>
     <div
@@ -1730,6 +1982,24 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         role="none"
       >
         In a meeting
+        <div
+          hidden={true}
+          id="tooltip13"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          In a meeting
+        </div>
       </div>
     </div>
     <div
@@ -1760,6 +2030,24 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         role="none"
       >
         Available at 4:00pm
+        <div
+          hidden={true}
+          id="tooltip14"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Available at 4:00pm
+        </div>
       </div>
     </div>
   </div>

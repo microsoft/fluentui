@@ -1,8 +1,44 @@
 # Change Log - @fluentui/perf-test
 
-This log was last generated on Fri, 18 Mar 2022 07:42:02 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Mar 2022 07:47:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/perf-test_v1.0.0)
+
+Mon, 28 Mar 2022 07:47:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/perf-test_v1.0.0..@fluentui/perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.62.4 ([PR #22197](https://github.com/microsoft/fluentui/pull/22197) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/perf-test_v1.0.0)
+
+Fri, 25 Mar 2022 07:38:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/perf-test_v1.0.0..@fluentui/perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.62.3 ([PR #22201](https://github.com/microsoft/fluentui/pull/22201) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/perf-test_v1.0.0)
+
+Wed, 23 Mar 2022 07:37:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/perf-test_v1.0.0..@fluentui/perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.62.2 ([PR #22184](https://github.com/microsoft/fluentui/pull/22184) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/perf-test_v1.0.0)
+
+Mon, 21 Mar 2022 07:39:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/perf-test_v1.0.0..@fluentui/perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.62.1 ([PR #22161](https://github.com/microsoft/fluentui/pull/22161) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/perf-test_v1.0.0)
 
