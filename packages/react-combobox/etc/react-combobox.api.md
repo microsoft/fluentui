@@ -208,7 +208,7 @@ export const useComboButton_unstable: (props: ComboButtonProps, ref: React_2.Ref
 export const useComboButtonStyles_unstable: (state: ComboButtonState) => ComboButtonState;
 
 // @public
-export const useListbox_unstable: (props: ListboxProps, optionCollection: OptionCollectionState, ref: React_2.Ref<HTMLElement>) => ListboxState;
+export const useListbox_unstable: (props: ListboxProps, ref: React_2.Ref<HTMLElement>) => ListboxState;
 
 // @public
 export const useListboxStyles_unstable: (state: ListboxState) => ListboxState;
