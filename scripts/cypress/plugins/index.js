@@ -52,6 +52,28 @@ module.exports = (on, config) => {
     },
   };
 
-  on('dev-server:start', options => startDevServer({ options, webpackConfig }));
+  // Used by cypress https://github.com/cypress-io/cypress/blob/develop/npm/react/examples/webpack-options/cypress/plugins/index.js
+  // this is required to load commonjs babel plugin
+  process.env.BABEL_ENV = 'test';
+
+  /**
+   * Cypress Webpack devServer that uses esbuild-loader for speed,
+   * @type {import('@cypress/webpack-dev-server').ResolvedDevServerConfig['close'] | undefined}
+   */
+  let closeServer = undefined;
+  on('after:run', () => {
+    // Generally isn't necessary, but sometimes unexpected errors can cause the
+    // dev server to hand
+    if (closeServer) {
+      closeServer();
+    }
+  });
+
+  on('dev-server:start', options => {
+    return startDevServer({ options, webpackConfig }).then(server => {
+      closeServer = server.close;
+      return server;
+    });
+  });
   return config;
 };
