@@ -1,42 +1,43 @@
-import type { IFocusTrapZoneProps } from '@fluentui/react/lib/FocusTrapZone';
+import * as React from 'react';
+import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import type { IFocusTrapZoneProps, IFocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
+import { mount } from '@cypress/react';
 import type { FTZTestGlobals } from './types';
-
-/** Window with zero or more extra functions defined by some of the stories. */
-type FTZTestWindow = Cypress.AUTWindow & FTZTestGlobals;
-
-const ftzStoriesTitle = 'Components/FocusTrapZone/e2e';
-
-/**
- * Calls `window.setProps()` -- this must be defined by the story being tested
- */
-function setProps(props: IFocusTrapZoneProps) {
-  // Use should() to ensure that the call retries if setProps isn't defined yet
-  // (this can happen in headless mode, if the example isn't finished rendering)
-  cy.window().should(win => {
-    (win as FTZTestWindow).setProps!(props);
-  });
-}
+import { rootClass } from './shared';
 
 describe('FocusTrapZone', () => {
-  before(() => {
-    cy.visitStorybook({ qs: { e2e: '1' } });
-  });
-
   // These are basic tests of different props, but due to the reliance on focus behavior they're
   // best done in the browser.
   describe('Respects default and explicit prop values', () => {
-    beforeEach(() => {
-      cy.loadStory(ftzStoriesTitle, 'PropValues');
-    });
+    const PropValues = (props: IFocusTrapZoneProps) => {
+      const [buttonClicked, setButtonClicked] = React.useState('');
+
+      return (
+        <div className={rootClass} onClick={ev => setButtonClicked((ev.target as HTMLButtonElement).textContent || '')}>
+          <span id="buttonClicked" style={{ display: 'block' /* avoid inherited div styling */ }}>
+            clicked {buttonClicked}
+          </span>
+          <button>before</button>
+          <FocusTrapZone {...props}>
+            <button>first</button>
+            <button>mid</button>
+            <button className="last-class" id="last">
+              last
+            </button>
+          </FocusTrapZone>
+          <button>after</button>
+        </div>
+      );
+    };
 
     it('Focuses first child on mount', () => {
-      setProps({});
-
+      mount(<PropValues />);
       cy.focused().should('have.text', 'first');
     });
 
     it('Does not focus first child on mount with disableFirstFocus', () => {
-      setProps({ disableFirstFocus: true });
+      mount(<PropValues disableFirstFocus />);
 
       // Verify nothing is focused (note that document.activeElement will be body, but cy.focused()
       // uses :focus, and that's not set on body even if it's active)
@@ -44,7 +45,7 @@ describe('FocusTrapZone', () => {
     });
 
     it('Can click children inside the FTZ', () => {
-      setProps({});
+      mount(<PropValues />);
 
       // wait for first focus to finish
       cy.focused().should('have.text', 'first');
@@ -55,7 +56,7 @@ describe('FocusTrapZone', () => {
     });
 
     it('Restores focus to FTZ when clicking outside FTZ', () => {
-      setProps({});
+      mount(<PropValues />);
 
       // wait for first focus to finish to avoid timing issue
       cy.focused().should('have.text', 'first');
@@ -69,7 +70,7 @@ describe('FocusTrapZone', () => {
     });
 
     it('Restores focus to FTZ when programmatically focusing outside FTZ', () => {
-      setProps({});
+      mount(<PropValues />);
 
       // wait for first focus to finish to avoid timing issue
       cy.focused().should('have.text', 'first');
@@ -79,7 +80,7 @@ describe('FocusTrapZone', () => {
     });
 
     it('Allows clicks outside FTZ with isClickableOutsideFocusTrap but restores focus inside', () => {
-      setProps({ isClickableOutsideFocusTrap: true });
+      mount(<PropValues isClickableOutsideFocusTrap />);
 
       // wait for first focus to finish to avoid timing issue
       cy.focused().should('have.text', 'first');
@@ -93,7 +94,7 @@ describe('FocusTrapZone', () => {
     });
 
     it('Focuses first element when focus enters FTZ with tab', () => {
-      setProps({ disableFirstFocus: true });
+      mount(<PropValues disableFirstFocus forceFocusInsideTrap={false} />);
 
       // Start by programmatically focusing an element outside
       // (clicking it won't work in this case because that would send focus inside the trap)
@@ -106,7 +107,7 @@ describe('FocusTrapZone', () => {
     });
 
     it('Focuses last element when focus enters FTZ with shift+tab', () => {
-      setProps({ disableFirstFocus: true });
+      mount(<PropValues disableFirstFocus />);
 
       // Start by programmatically focusing an element outside
       // (clicking it won't work in this case because that would send focus inside the trap)
@@ -123,7 +124,7 @@ describe('FocusTrapZone', () => {
     // may reflect an actual bug in the function component conversion. Also, the intermittent
     // failure may indicate a timing issue with either the effects within FTZ, or with cypress.
     xit('Does not restore focus to FTZ when forceFocusInsideTrap is false', () => {
-      setProps({ forceFocusInsideTrap: false });
+      mount(<PropValues forceFocusInsideTrap />);
 
       // wait for first focus to finish to avoid timing issue
       cy.focused().should('have.text', 'first');
@@ -142,7 +143,7 @@ describe('FocusTrapZone', () => {
     });
 
     it('Does not focus first on mount while disabled', () => {
-      setProps({ disabled: true });
+      mount(<PropValues disabled />);
 
       // verify story rendered (to make sure we're not checking the base state of the page)
       cy.contains('first').should('exist');
@@ -151,14 +152,13 @@ describe('FocusTrapZone', () => {
     });
 
     it('Focuses on firstFocusableSelector on mount', () => {
-      // deprecated: this is actually a className, not a selector
-      setProps({ firstFocusableSelector: 'last-class' });
+      mount(<PropValues firstFocusableSelector="last-class" />);
 
       cy.focused().should('have.text', 'last');
     });
 
     it('Does not focus on firstFocusableSelector on mount while disabled', () => {
-      setProps({ firstFocusableSelector: 'last-class', disabled: true });
+      mount(<PropValues firstFocusableSelector="last-class" disabled />);
 
       // verify story rendered (to make sure we're not checking the base state of the page)
       cy.contains('first').should('exist');
@@ -167,25 +167,26 @@ describe('FocusTrapZone', () => {
     });
 
     it('Falls back to first focusable element with invalid firstFocusableSelector', () => {
-      setProps({ firstFocusableSelector: 'invalidSelector' });
+      mount(<PropValues firstFocusableSelector="invalidSelector" />);
 
       cy.focused().should('have.text', 'first');
     });
 
     it('Focuses on firstFocusableTarget selector on mount', () => {
-      setProps({ firstFocusableTarget: '#last' });
+      mount(<PropValues firstFocusableTarget="#last" />);
 
       cy.focused().should('have.text', 'last');
     });
 
     it('Focuses on firstFocusableTarget callback on mount', () => {
-      setProps({ firstFocusableTarget: element => element.querySelector('#last') });
+      // eslint-disable-next-line react/jsx-no-bind
+      mount(<PropValues firstFocusableTarget={element => element.querySelector('#last')} />);
 
       cy.focused().should('have.text', 'last');
     });
 
     it('Does not focus on firstFocusableTarget selector on mount while disabled', () => {
-      setProps({ firstFocusableTarget: '#last', disabled: true });
+      mount(<PropValues firstFocusableTarget="#last" disabled />);
 
       // verify story rendered (to make sure we're not checking the base state of the page)
       cy.contains('first').should('exist');
@@ -194,10 +195,8 @@ describe('FocusTrapZone', () => {
     });
 
     it('Does not focus on firstFocusableTarget callback on mount while disabled', () => {
-      setProps({
-        firstFocusableTarget: (element: HTMLElement) => element.querySelector('#last'),
-        disabled: true,
-      });
+      // eslint-disable-next-line react/jsx-no-bind
+      mount(<PropValues firstFocusableTarget={element => element.querySelector('#last')} disabled />);
 
       // verify story rendered (to make sure we're not checking the base state of the page)
       cy.contains('first').should('exist');
@@ -206,24 +205,97 @@ describe('FocusTrapZone', () => {
     });
 
     it('Falls back to first focusable element with invalid firstFocusableTarget selector', () => {
-      setProps({ firstFocusableTarget: '.invalidSelector' });
+      mount(<PropValues firstFocusableTarget=".invalidSelector" />);
 
       cy.focused().should('have.text', 'first');
     });
 
     it('Falls back to first focusable element with invalid firstFocusableTarget callback', () => {
-      setProps({ firstFocusableTarget: () => null });
+      // eslint-disable-next-line react/jsx-no-bind
+      mount(<PropValues firstFocusableTarget={() => null} />);
 
       cy.focused().should('have.text', 'first');
     });
   });
 
   describe('Tab and shift-tab wrap at extreme ends of the FTZ', () => {
-    // Note: all of the IDs in these tests refer to buttons
+    const TabWrappingButtonFocusZone = () => {
+      return (
+        <div className={rootClass}>
+          <FocusTrapZone forceFocusInsideTrap={false}>
+            <div>
+              <button>first</button>
+            </div>
+            <FocusZone direction={FocusZoneDirection.horizontal}>
+              <div>
+                <button>fzFirst</button>
+              </div>
+              <div>
+                <div>
+                  <button>fzMid1</button>
+                  <button>fzMid2</button>
+                  <button>fzLast</button>
+                </div>
+              </div>
+            </FocusZone>
+          </FocusTrapZone>
+        </div>
+      );
+    };
+
+    const TabWrappingMultiFocusZone = () => {
+      return (
+        <div className={rootClass}>
+          <FocusTrapZone forceFocusInsideTrap={false}>
+            <FocusZone direction={FocusZoneDirection.horizontal}>
+              <div>
+                <button>fz1First</button>
+              </div>
+              <div>
+                <button>fz1Mid</button>
+              </div>
+              <div>
+                <button>fz1Last</button>
+              </div>
+            </FocusZone>
+            <FocusZone direction={FocusZoneDirection.horizontal}>
+              <div>
+                <div>
+                  <button>fz2First</button>
+                  <button>fz2Mid</button>
+                  <button>fz2Last</button>
+                </div>
+              </div>
+            </FocusZone>
+          </FocusTrapZone>
+        </div>
+      );
+    };
+
+    const TabWrappingFocusZoneBumpers = () => {
+      return (
+        <div className={rootClass}>
+          <button>before</button>
+          <FocusTrapZone forceFocusInsideTrap={false}>
+            <FocusZone direction={FocusZoneDirection.horizontal}>
+              <button>fz1First</button>
+              <button>fz1Mid</button>
+              <button>fz1Last</button>
+            </FocusZone>
+            <button>mid</button>
+            <FocusZone direction={FocusZoneDirection.horizontal}>
+              <button>fz2First</button>
+              <button>fz2Mid</button>
+              <button>fz2Last</button>
+            </FocusZone>
+          </FocusTrapZone>
+          <button>after</button>
+        </div>
+      );
+    };
 
     it('can tab between a button and a FocusZone', () => {
-      // This story has a FTZ containing a button and a FocusZone (containing more buttons)
-      cy.loadStory(ftzStoriesTitle, 'TabWrappingButtonFocusZone');
+      mount(<TabWrappingButtonFocusZone />);
 
       // initial focus goes to the button
       cy.focused().should('have.text', 'first');
@@ -239,7 +311,7 @@ describe('FocusTrapZone', () => {
 
     it('can tab between multiple FocusZones with different button structures', () => {
       // This story has a FTZ containing two FocusZones (both containing buttons)
-      cy.loadStory(ftzStoriesTitle, 'TabWrappingMultiFocusZone');
+      mount(<TabWrappingMultiFocusZone />);
 
       // initial focus goes into the first FocusZone
       cy.focused().should('have.text', 'fz1First');
@@ -259,7 +331,7 @@ describe('FocusTrapZone', () => {
       () => {
         // This story has a FTZ containing a FocusZone (with buttons), a button, and another FocusZone (with buttons).
         // "Bookmark" refers to the first and last elements inside the FTZ.
-        cy.loadStory(ftzStoriesTitle, 'TabWrappingFocusZoneBumpers');
+        mount(<TabWrappingFocusZoneBumpers />);
 
         // wait for first focus to finish to avoid timing issue
         cy.focused().should('have.text', 'fz1First');
@@ -284,14 +356,22 @@ describe('FocusTrapZone', () => {
   });
 
   describe('Tab and shift-tab when the FTZ contains 0 tabbable items', () => {
-    beforeEach(() => {
-      // This story has a FocusTrapZone containing buttons with tabIndex=-1, so they can still be
-      // clicked or programmatically focused, but aren't keyboard-focusable with tab
-      cy.loadStory(ftzStoriesTitle, 'NoTabbableItems');
-    });
-
+    const NoTabbableItems = (props: IFocusTrapZoneProps) => {
+      return (
+        // don't render until props have been set
+        <div className={rootClass}>
+          <button>before</button>
+          <FocusTrapZone forceFocusInsideTrap {...props}>
+            <button tabIndex={-1}>first</button>
+            <button tabIndex={-1}>mid</button>
+            <button tabIndex={-1}>last</button>
+          </FocusTrapZone>
+          <button>after</button>
+        </div>
+      );
+    };
     it('focuses first focusable element when focusing first bumper', () => {
-      setProps({});
+      mount(<NoTabbableItems />);
 
       // wait for first focus to finish to avoid timing issue
       cy.focused().should('have.text', 'first');
@@ -306,7 +386,7 @@ describe('FocusTrapZone', () => {
     });
 
     it('focuses first focusable element when focusing last bumper', () => {
-      setProps({});
+      mount(<NoTabbableItems />);
 
       // wait for first focus to finish to avoid timing issue
       cy.focused().should('have.text', 'first');
@@ -320,7 +400,7 @@ describe('FocusTrapZone', () => {
     });
 
     it('focuses first focusable element when focusing outside of FTZ with 0 tabbable items', () => {
-      setProps({});
+      mount(<NoTabbableItems />);
 
       // wait for first focus to finish to avoid timing issue
       cy.focused().should('have.text', 'first');
@@ -335,7 +415,7 @@ describe('FocusTrapZone', () => {
     });
 
     it('focuses previously focused element when focusing outside of FTZ with 0 tabbable items', () => {
-      setProps({ focusPreviouslyFocusedInnerElement: true });
+      mount(<NoTabbableItems focusPreviouslyFocusedInnerElement />);
 
       // wait for first focus to finish to avoid timing issue
       cy.focused().should('have.text', 'first');
@@ -351,16 +431,32 @@ describe('FocusTrapZone', () => {
   });
 
   describe('Imperatively focusing the FTZ', () => {
-    function imperativeFocus() {
-      cy.window().then(win => (win as FTZTestWindow).imperativeFocus!());
-    }
+    let imperativeFocus: () => void = () => null;
+    const ImperativeFocus = (props: IFocusTrapZoneProps) => {
+      const focusTrapZoneRef = React.useRef<IFocusTrapZone>(null);
+      React.useEffect(() => {
+        imperativeFocus = () => focusTrapZoneRef.current?.focus();
+      }, []);
 
-    beforeEach(() => {
-      cy.loadStory(ftzStoriesTitle, 'ImperativeFocus');
-    });
+      return (
+        // don't render until props have been set
+        props && (
+          <div className={rootClass}>
+            <FocusTrapZone disableFirstFocus componentRef={focusTrapZoneRef} {...props}>
+              <button>first</button>
+              <FocusZone>
+                <button>mid</button>
+                <button>last</button>
+              </FocusZone>
+            </FocusTrapZone>
+            <button>after</button>
+          </div>
+        )
+      );
+    };
 
     it('goes to previously focused element when focusing the FTZ', async () => {
-      setProps({ focusPreviouslyFocusedInnerElement: true });
+      mount(<ImperativeFocus focusPreviouslyFocusedInnerElement />);
 
       // Manually focusing FTZ when FTZ has never had focus within should go to 1st focusable inner element.
       imperativeFocus();
@@ -381,7 +477,7 @@ describe('FocusTrapZone', () => {
     });
 
     it('goes to first focusable element when focusing the FTZ', async () => {
-      setProps({ focusPreviouslyFocusedInnerElement: false });
+      mount(<ImperativeFocus focusPreviouslyFocusedInnerElement={false} />);
 
       // Manually focusing FTZ when FTZ has never had focus within should go to 1st focusable inner element.
       imperativeFocus();
@@ -402,6 +498,59 @@ describe('FocusTrapZone', () => {
   });
 
   describe('focus stack', () => {
+    const getFocusStack: NonNullable<FTZTestGlobals['getFocusStack']> = () => FocusTrapZone.focusStack;
+    const FocusStack = () => {
+      // Whether to render each FocusTrapZone
+      const [shouldRender, setShouldRender] = React.useState([true, false, false, false, false]);
+
+      const updateFTZ = (num: 1 | 2 | 3 | 4, newValue: boolean) => {
+        setShouldRender(prevValues => {
+          const newValues = [...prevValues];
+          newValues[num] = newValue;
+          return newValues;
+        });
+      };
+
+      // React.useEffect(() => {
+      //   getFocusStack = () => FocusTrapZone.focusStack;
+      // }, []);
+      return (
+        <div className={rootClass}>
+          <FocusTrapZone id="ftz0">
+            ftz0
+            <button onClick={() => updateFTZ(1, true)}>add ftz1</button>
+            <button onClick={() => updateFTZ(3, true)}>add ftz3</button>
+            <button onClick={() => updateFTZ(4, true)}>add ftz4</button>
+          </FocusTrapZone>
+
+          {shouldRender[1] && (
+            <FocusTrapZone id="ftz1">
+              ftz1
+              <button onClick={() => updateFTZ(2, true)}>add ftz2</button>
+            </FocusTrapZone>
+          )}
+          {shouldRender[2] && (
+            <FocusTrapZone id="ftz2">
+              ftz2
+              <button onClick={() => updateFTZ(1, false)}>remove ftz1</button>
+              <button onClick={() => updateFTZ(2, false)}>remove ftz2</button>
+            </FocusTrapZone>
+          )}
+          {shouldRender[3] && (
+            <FocusTrapZone id="ftz3" forceFocusInsideTrap={false}>
+              ftz3
+              <button onClick={() => updateFTZ(3, false)}>remove ftz3</button>
+            </FocusTrapZone>
+          )}
+          {shouldRender[4] && (
+            <FocusTrapZone id="ftz4" disabled>
+              ftz4
+            </FocusTrapZone>
+          )}
+        </div>
+      );
+    };
+
     it('maintains a proper stack of FocusTrapZones as more are mounted/unmounted', () => {
       // TODO: try to find a way to test this concept without looking this deeply into the implementation
       // or using global functions
@@ -410,48 +559,35 @@ describe('FocusTrapZone', () => {
       // and the easiest way to do that in cypress is having the story expose a getFocusStack() global.
       // (Rendering FocusTrapZone.focusStack in the story doesn't work because updates to the array
       // don't trigger React updates, so it gets out of date.)
-
-      cy.loadStory(ftzStoriesTitle, 'FocusStack');
+      mount(<FocusStack />);
 
       // There should now be one focus trap zone.
       cy.get('#ftz0').should('exist');
       cy.focused().should('have.text', 'add ftz1'); // first button in ftz0
-      cy.window().should(win => {
-        // NOTE: This expectation should NOT be done in a helper because there will be no useful
-        // line/stack info if it fails (due to being run with eval() inside the test window).
-        expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0']);
-      });
+      cy.then(() => expect(getFocusStack()).to.deep.equal(['ftz0']));
 
       // add ftz1 and verify there are now two FTZs in the stack
       cy.contains('add ftz1').realClick();
       cy.get('#ftz1').should('exist');
       cy.focused().should('have.text', 'add ftz2'); // first button in ftz1
-      cy.window().should(win => {
-        expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0', 'ftz1']);
-      });
+      cy.then(() => expect(getFocusStack()).to.deep.equal(['ftz0', 'ftz1']));
 
       // add ftz2 => three FTZ in stack
       cy.contains('add ftz2').realClick();
       cy.get('#ftz2').should('exist');
       cy.focused().should('have.text', 'remove ftz1'); // first button in ftz2
-      cy.window().should(win => {
-        expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0', 'ftz1', 'ftz2']);
-      });
+      cy.then(() => expect(getFocusStack()).to.deep.equal(['ftz0', 'ftz1', 'ftz2']));
 
       // remove ftz1 => two FTZ in stack
       cy.contains('remove ftz1').realClick();
       cy.get('#ftz1').should('not.exist');
       cy.focused().should('have.text', 'remove ftz1'); // first button in ftz2
-      cy.window().should(win => {
-        expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0', 'ftz2']);
-      });
+      cy.then(() => expect(getFocusStack()).to.deep.equal(['ftz0', 'ftz2']));
 
       // remove ftz2 => one FTZ in stack
       cy.contains('remove ftz2').realClick();
       cy.get('#ftz2').should('not.exist');
-      cy.window().should(win => {
-        expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0']);
-      });
+      // expect(getFocusStack()).to.deep.equal(['ftz0']);
       // ftz2 will try to return focus to its initiator (the button in ftz1), but that button is gone,
       // so focus goes to document.body
       cy.focused().should('not.exist');
@@ -460,16 +596,12 @@ describe('FocusTrapZone', () => {
       cy.contains('add ftz3').realClick();
       cy.get('#ftz3').should('exist');
       cy.focused().should('have.text', 'remove ftz3'); // first button in ftz3
-      cy.window().should(win => {
-        expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0', 'ftz3']);
-      });
+      cy.then(() => expect(getFocusStack()).to.deep.equal(['ftz0', 'ftz3']));
 
       // remove ftz3 => one FTZ in stack
       cy.contains('remove ftz3').realClick();
       cy.get('#ftz3').should('not.exist');
-      cy.window().should(win => {
-        expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0']);
-      });
+      cy.then(() => expect(getFocusStack()).to.deep.equal(['ftz0']));
       // ftz3 returns focus to initiator after unmount
       cy.focused().should('have.text', 'add ftz3');
 
@@ -477,9 +609,7 @@ describe('FocusTrapZone', () => {
       cy.contains('add ftz4').realClick();
       cy.get('#ftz4').should('exist');
       cy.focused().should('have.text', 'add ftz4'); // clicked button in ftz0
-      cy.window().should(win => {
-        expect((win as FTZTestWindow).getFocusStack!()).to.deep.equal(['ftz0']);
-      });
+      cy.then(() => expect(getFocusStack()).to.deep.equal(['ftz0']));
     });
   });
 });
