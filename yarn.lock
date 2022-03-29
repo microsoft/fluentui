@@ -1673,17 +1673,6 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
-"@fluentui/react-conformance@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-conformance/-/react-conformance-0.12.0.tgz#a594c23dc369f3b9ad33a0197680103711607192"
-  integrity sha512-aYRflPU3voSa2xl3b1lEpwkM/cthbkMAYG7PicEybjdZtcBzx5TEafkQ/Sox6FYXryjsUGvt3ocg27s2dK3F9Q==
-  dependencies:
-    chalk "^2.4.2"
-    lodash "^4.17.15"
-    react-docgen-typescript "^2.1.0"
-    react-is "^16.6.3"
-    tslib "^2.1.0"
-
 "@fluentui/react-icons@^2.0.159-beta.10":
   version "2.0.159-beta.10"
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.159-beta.10.tgz#8934c05b415bbb1b46f9085c72eaf78fd7bad967"
