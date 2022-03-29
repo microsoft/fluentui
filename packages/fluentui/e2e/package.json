@@ -10,7 +10,7 @@
     "@fluentui/react-northstar-prototypes": "^0.61.0",
     "@types/react-router-dom": "^5.1.5",
     "cypress": "9.5.2",
-    "cypress-real-events": "1.2.0",
+    "cypress-real-events": "1.7.0",
     "lerna-alias": "^3.0.3-0",
     "lodash": "^4.17.15",
     "react-router-dom": "^5.2.0"
