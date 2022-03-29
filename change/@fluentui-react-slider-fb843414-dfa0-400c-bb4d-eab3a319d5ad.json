@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Move Slider to RC",
+  "comment": "Moved Slider to RC, updated exported CSS variable name",
   "packageName": "@fluentui/react-slider",
   "email": "mgodbolt@microsoft.com",
   "dependentChangeType": "patch"
