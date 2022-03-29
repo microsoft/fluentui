@@ -9914,6 +9914,11 @@ cypress-real-events@1.2.0:
   resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.2.0.tgz#17ee80b6b45ad6ade979423563a850dd1f8b024a"
   integrity sha512-C2B+ahormdD58ErZEmWgwFfAq1P0sp3ftYq58gbPBj0YM9pmfCiTcf82fgL61lFRG6f4EN2pMe0kCzLDPCzkKg==
 
+cypress-real-events@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.7.0.tgz#ad6a78de33af3af0e6437f5c713e30691c44472c"
+  integrity sha512-iyXp07j0V9sG3YClVDcvHN2DAQDgr+EjTID82uWDw6OZBlU3pXEBqTMNYqroz3bxlb0k+F74U81aZwzMNaKyew==
+
 cypress-storybook@0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/cypress-storybook/-/cypress-storybook-0.5.1.tgz#e71b14ecfbe16a70b9f003c8294143ef466db78f"

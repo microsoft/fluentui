@@ -163,7 +163,7 @@
     "cross-env": "^5.1.4",
     "css-loader": "5.0.1",
     "cypress": "9.5.2",
-    "cypress-real-events": "1.2.0",
+    "cypress-real-events": "1.7.0",
     "cypress-storybook": "0.5.1",
     "danger": "^6.0.5",
     "dedent": "0.7.0",
