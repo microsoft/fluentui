@@ -74,12 +74,6 @@ export const useSpinButton_unstable: (props: SpinButtonProps, ref: React_2.Ref<H
 // @public
 export const useSpinButtonStyles_unstable: (state: SpinButtonState) => SpinButtonState;
 
-// Warnings were encountered during analysis:
-//
-// dist/packages/react-spinbutton/src/components/SpinButton/SpinButton.types.d.ts:82:5 - (ae-forgotten-export) The symbol "SpinButtonChangeEvent" needs to be exported by the entry point index.d.ts
-// dist/packages/react-spinbutton/src/components/SpinButton/SpinButton.types.d.ts:121:5 - (ae-forgotten-export) The symbol "SpinButtonSpinState" needs to be exported by the entry point index.d.ts
-// dist/packages/react-spinbutton/src/components/SpinButton/SpinButton.types.d.ts:126:5 - (ae-forgotten-export) The symbol "SpinButtonBounds" needs to be exported by the entry point index.d.ts
-
 // (No @packageDocumentation comment for this package)
 
 ```
