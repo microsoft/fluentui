@@ -389,7 +389,6 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     appearance,
     input: state.input,
     root: state.root,
-    inline: true,
     components: {
       root: 'span',
       input: 'input',

@@ -14,7 +14,7 @@ import {
   SpinButtonChangeEvent,
   SpinButtonBounds,
 } from './SpinButton.types';
-import { calculatePrecision, precisionRound, getBound, clampWhenInRange } from '../../utils';
+import { calculatePrecision, precisionRound, getBound, clampWhenInRange } from '../../utils/index';
 import { ChevronUp16Regular, ChevronDown16Regular } from '@fluentui/react-icons';
 
 type InternalState = {
