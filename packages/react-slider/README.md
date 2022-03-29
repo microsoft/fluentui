@@ -9,7 +9,7 @@ Slider allows users to quickly select a value (or range) by dragging a thumb acr
 To import Slider:
 
 ```js
-import { Slider } from '@fluentui/react-components/unstable';
+import { Slider } from '@fluentui/react-components';
 ```
 
 Or pull directly from slider package to pin to a specific version.
