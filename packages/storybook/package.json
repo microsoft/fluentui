@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/storybook",
-  "version": "0.8.17",
+  "version": "0.8.18",
   "description": "Storybook addons for Fluent UI React",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -29,10 +29,10 @@
     "@fluentui/react-theme-provider": "^0.19.1",
     "@storybook/addon-knobs": "^5.3.8",
     "@storybook/addons": "^5.3.8",
-    "@uifabric/azure-themes": "^7.9.17",
-    "@uifabric/mdl2-theme": "^0.6.16",
-    "@uifabric/theme-samples": "^7.4.16",
-    "office-ui-fabric-react": "^7.183.1",
+    "@uifabric/azure-themes": "^7.9.18",
+    "@uifabric/mdl2-theme": "^0.6.17",
+    "@uifabric/theme-samples": "^7.4.17",
+    "office-ui-fabric-react": "^7.184.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

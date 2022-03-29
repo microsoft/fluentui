@@ -2,6 +2,21 @@
   "name": "a11y-tests",
   "entries": [
     {
+      "date": "Tue, 29 Mar 2022 12:26:06 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.184.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "1e75af466e42d4ef3641e9af5e5a00753fc429af",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Mar 2022 12:20:41 GMT",
       "tag": "a11y-tests_v7.0.0",
       "version": "7.0.0",

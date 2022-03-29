@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 18 Feb 2022 12:25:37 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Mar 2022 12:26:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.184.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.184.0)
+
+Tue, 29 Mar 2022 12:26:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.183.1..office-ui-fabric-react_v7.184.0)
+
+### Minor changes
+
+- Ensure Layer uses the specific element for LayerHost, for advanced projection scenarios (#21812) ([PR #22038](https://github.com/microsoft/fluentui/pull/22038) by tmichon@microsoft.com)
 
 ## [7.183.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.183.1)
 

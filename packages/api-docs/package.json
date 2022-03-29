@@ -34,6 +34,6 @@
     "@microsoft/api-extractor-model": "7.7.1",
     "@microsoft/tsdoc": "0.12.14",
     "fs-extra": "^8.1.0",
-    "office-ui-fabric-react": "^7.183.1"
+    "office-ui-fabric-react": "^7.184.0"
   }
 }
