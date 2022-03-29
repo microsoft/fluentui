@@ -37,10 +37,10 @@ describe('ChoiceGroup', () => {
   });
 
   it('does not use className prop from parent on label', () => {
-    const { container } = render(
+    const { getByRole } = render(
       <ChoiceGroup className="testClassName" label="test label" options={TEST_OPTIONS} required />,
     );
-    const label = container.querySelector('label');
+    const label = getByRole('radiogroup').firstElementChild;
     expect(label).toBeTruthy();
     expect(label!.textContent).toBe('test label');
     expect(label!.className).not.toContain('testClassName');
@@ -158,14 +158,14 @@ describe('ChoiceGroup', () => {
 
   it('can set role attribute to empty string', () => {
     const { container } = render(<ChoiceGroup options={TEST_OPTIONS} role="" />);
-    const role = container.querySelector('.ms-ChoiceFieldGroup')!.getAttribute('role');
+    const role = container.firstElementChild!.getAttribute('role');
     expect(role).toEqual('');
   });
 
   it('can set role attribute on the containing element', () => {
-    const { container } = render(<ChoiceGroup options={TEST_OPTIONS} role="Test" />);
-    const role = container.querySelector('.ms-ChoiceFieldGroup')!.getAttribute('role');
-    expect(role).toEqual('Test');
+    const { container } = render(<ChoiceGroup options={TEST_OPTIONS} role="radiogroup" />);
+    const role = container.firstElementChild!.getAttribute('role');
+    expect(role).toEqual('radiogroup');
   });
 
   it('can assign a custom aria label', () => {
@@ -224,7 +224,7 @@ describe('ChoiceGroup', () => {
 
   it('can render element id', () => {
     const { container } = render(<ChoiceGroup defaultSelectedKey="1" id="foo" options={TEST_OPTIONS} />);
-    const root = container.querySelector('.ms-ChoiceFieldGroup');
+    const root = container.firstElementChild;
     expect(root!.getAttribute('id')).toBe('foo');
   });
 
