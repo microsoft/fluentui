@@ -27,10 +27,10 @@
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
     "@types/react-dom": ">=16.8.0 <18.0.0",
-    "typescript": "^4.3.0"
+    "typescript": "^4.3.0",
+    "@fluentui/react-conformance": "^0.13.0"
   },
   "dependencies": {
-    "@fluentui/react-conformance": "^0.12.0",
     "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
   },
