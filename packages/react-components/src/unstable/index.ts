@@ -124,12 +124,11 @@ export {
 export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';
 
 export type {
-  TabContentRect,
   TabProps,
   TabSlots,
   TabState,
   TabValue,
-  RegisterTabData,
+  TabRegisterData,
   RegisterTabEventHandler,
   SelectTabData,
   SelectTabEvent,
@@ -142,8 +141,8 @@ export type {
 } from '@fluentui/react-tabs';
 
 export {
-  indicatorCssVars,
   renderTab_unstable,
+  tabIndicatorCssVars_unstable,
   Tab,
   tabClassName,
   tabClassNames,

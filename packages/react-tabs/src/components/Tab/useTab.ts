@@ -17,30 +17,17 @@ import { SelectTabEvent } from '../TabList/TabList.types';
 export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
   const { content, disabled: tabDisabled = false, icon, value } = props;
 
-  const {
-    appearance,
-    listDisabled,
-    selectedValue,
-    onRegister,
-    onUnregister,
-    onSelect,
-    size,
-    vertical,
-  } = useContextSelector(TabListContext, ctx => ({
-    appearance: ctx.appearance,
-    listDisabled: ctx.disabled,
-    selectedValue: ctx.selectedValue,
-    onRegister: ctx.onRegister,
-    onUnregister: ctx.onUnregister,
-    onSelect: ctx.onSelect,
-    size: ctx.size,
-    vertical: !!ctx.vertical,
-  }));
-
+  const appearance = useContextSelector(TabListContext, ctx => ctx.appearance);
+  const listDisabled = useContextSelector(TabListContext, ctx => ctx.disabled);
+  const selectedValue = useContextSelector(TabListContext, ctx => ctx.selectedValue);
+  const onRegister = useContextSelector(TabListContext, ctx => ctx.onRegister);
+  const onUnregister = useContextSelector(TabListContext, ctx => ctx.onUnregister);
+  const onSelect = useContextSelector(TabListContext, ctx => ctx.onSelect);
+  const size = useContextSelector(TabListContext, ctx => ctx.size);
+  const vertical = useContextSelector(TabListContext, ctx => !!ctx.vertical);
   const disabled = listDisabled || tabDisabled;
 
   const innerRef = React.useRef<HTMLElement>(null);
-  const mergedRef = useMergedRefs(ref, innerRef);
   const onClick = useEventCallback((event: SelectTabEvent) => onSelect(event, { value }));
 
   React.useEffect(() => {
@@ -63,9 +50,8 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
       content: 'span',
     },
     root: getNativeElementProps('button', {
-      ref: mergedRef,
+      ref: useMergedRefs(ref, innerRef),
       role: 'tab',
-      tabIndex: 0,
       ...props,
       disabled,
       onClick,

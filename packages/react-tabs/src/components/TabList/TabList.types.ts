@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TabValue } from '../Tab/Tab.types';
 
-export type RegisterTabData = {
+export type TabRegisterData = {
   /**
    * The value of the tab.
    */
@@ -14,7 +14,7 @@ export type RegisterTabData = {
   ref: React.RefObject<HTMLElement>;
 };
 
-export type RegisterTabEventHandler = (data: RegisterTabData) => void;
+export type RegisterTabEventHandler = (data: TabRegisterData) => void;
 
 export type SelectTabData = {
   /**
@@ -105,7 +105,7 @@ export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selected
     /**
      * The set of registered tabs by value
      */
-    registeredTabs: Record<string, RegisterTabData>;
+    registeredTabs: Record<string, TabRegisterData>;
   };
 
 /**

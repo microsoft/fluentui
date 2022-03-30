@@ -1,7 +1,7 @@
-export type { TabContentRect, TabProps, TabSlots, TabState, TabValue } from './Tab';
+export type { TabProps, TabSlots, TabState, TabValue } from './Tab';
 export {
-  indicatorCssVars,
   renderTab_unstable,
+  tabIndicatorCssVars_unstable,
   Tab,
   tabClassName,
   tabClassNames,
@@ -10,7 +10,7 @@ export {
   useTab_unstable,
 } from './Tab';
 export type {
-  RegisterTabData,
+  TabRegisterData,
   RegisterTabEventHandler,
   SelectTabData,
   SelectTabEvent,

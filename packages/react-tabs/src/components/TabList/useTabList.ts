@@ -6,7 +6,7 @@ import {
   useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import type { RegisterTabData, SelectTabData, SelectTabEvent, TabListProps, TabListState } from './TabList.types';
+import type { TabRegisterData, SelectTabData, SelectTabEvent, TabListProps, TabListState } from './TabList.types';
 import { TabValue } from '../Tab/Tab.types';
 
 /**
@@ -33,29 +33,23 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
 
   // considered usePrevious, but it is sensitive to re-renders
   // this could cause the previous to move to current in the case where the tab list re-renders.
-  const [previousSelectedValue, setPreviousSelectedValue] = useControllableState<TabValue | undefined>({
-    state: undefined,
-    defaultState: undefined,
-    initialState: undefined,
-  });
+  const previousSelectedValue = React.useRef<TabValue | undefined>(undefined);
 
   const onSelect = useEventCallback((event: SelectTabEvent, data: SelectTabData) => {
-    setPreviousSelectedValue(selectedValue);
+    previousSelectedValue.current = selectedValue;
     setSelectedValue(data.value);
     onTabSelect?.(event, data);
   });
 
   // when tabs register their refs, observe them for resize
-  const registeredTabs = React.useRef<Record<string, RegisterTabData>>({});
+  const registeredTabs = React.useRef<Record<string, TabRegisterData>>({});
 
-  const onRegister = useEventCallback((data: RegisterTabData) => {
+  const onRegister = useEventCallback((data: TabRegisterData) => {
     registeredTabs.current[JSON.stringify(data.value)] = data;
-    data.ref?.current;
   });
 
-  const onUnregister = useEventCallback((data: RegisterTabData) => {
+  const onUnregister = useEventCallback((data: TabRegisterData) => {
     delete registeredTabs.current[JSON.stringify(data.value)];
-    data.ref?.current;
   });
 
   return {
@@ -76,7 +70,7 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
     onRegister,
     onUnregister,
     onSelect,
-    previousSelectedValue,
+    previousSelectedValue: previousSelectedValue.current,
     registeredTabs: registeredTabs.current,
   };
 };

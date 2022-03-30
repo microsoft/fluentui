@@ -12,19 +12,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export const indicatorCssVars: {
-    startOffsetVar: string;
-    endOffsetVar: string;
-};
-
-// @public (undocumented)
-export type RegisterTabData = {
-    value: TabValue;
-    ref: React_2.RefObject<HTMLElement>;
-};
-
-// @public (undocumented)
-export type RegisterTabEventHandler = (data: RegisterTabData) => void;
+export type RegisterTabEventHandler = (data: TabRegisterData) => void;
 
 // @public
 export const renderTab_unstable: (state: TabState) => JSX.Element;
@@ -52,12 +40,10 @@ export const tabClassName: string;
 // @public (undocumented)
 export const tabClassNames: SlotClassNames<TabSlots>;
 
-// @public
-export type TabContentRect = {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
+// @public (undocumented)
+export const tabIndicatorCssVars_unstable: {
+    startOffsetVar: string;
+    endOffsetVar: string;
 };
 
 // @public
@@ -77,7 +63,7 @@ export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selected
     onUnregister: RegisterTabEventHandler;
     onSelect: SelectTabEventHandler;
     previousSelectedValue?: TabValue;
-    registeredTabs: Record<string, RegisterTabData>;
+    registeredTabs: Record<string, TabRegisterData>;
 };
 
 // @public
@@ -104,6 +90,12 @@ export type TabListState = ComponentState<Required<TabListSlots>> & TabListConte
 export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
 
 // @public (undocumented)
+export type TabRegisterData = {
+    value: TabValue;
+    ref: React_2.RefObject<HTMLElement>;
+};
+
+// @public (undocumented)
 export type TabSlots = {
     root: Slot<'button'>;
     icon?: Slot<'span'>;
@@ -116,7 +108,6 @@ export type TabState = ComponentState<TabSlots> & Omit<TabCommons, 'disabled'> &
     iconOnly: boolean;
     selectedValue?: TabValue;
     size: 'small' | 'medium';
-    value: TabValue;
     vertical: boolean;
 };
 

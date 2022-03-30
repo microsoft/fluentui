@@ -23,6 +23,7 @@ export const tabClassName = tabClassNames.root;
 /**
  * Styles for the root slot
  */
+/* eslint-disable @typescript-eslint/naming-convention */
 const useRootStyles = makeStyles({
   base: {
     alignItems: 'center',
@@ -66,27 +67,21 @@ const useRootStyles = makeStyles({
     ':active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     '& .fui-Tab__icon': {
       color: tokens.colorNeutralForeground2,
     },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     ':hover .fui-Tab__icon': {
       color: tokens.colorNeutralForeground2Hover,
     },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     ':active .fui-Tab__icon': {
       color: tokens.colorNeutralForeground2Pressed,
     },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     '& .fui-Tab__content': {
       color: tokens.colorNeutralForeground2,
     },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     ':hover .fui-Tab__content': {
       color: tokens.colorNeutralForeground2Hover,
     },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     ':active .fui-Tab__content': {
       color: tokens.colorNeutralForeground2Pressed,
     },
@@ -97,43 +92,36 @@ const useRootStyles = makeStyles({
     },
   },
   disabled: {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     '& .fui-Tab__icon': {
       color: tokens.colorNeutralForegroundDisabled,
     },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     '& .fui-Tab__content': {
       color: tokens.colorNeutralForegroundDisabled,
     },
     cursor: 'not-allowed',
   },
   selected: {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     '& .fui-Tab__icon': {
       color: tokens.colorCompoundBrandForeground1,
     },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     ':hover .fui-Tab__icon': {
       color: tokens.colorCompoundBrandForeground1Hover,
     },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     ':active .fui-Tab__icon': {
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     '& .fui-Tab__content': {
       color: tokens.colorNeutralForeground1,
     },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     ':hover .fui-Tab__content': {
       color: tokens.colorNeutralForeground1Hover,
     },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     ':active .fui-Tab__content': {
       color: tokens.colorNeutralForeground1Pressed,
     },
   },
 });
+/* eslint-enable @typescript-eslint/naming-convention */
 
 /**
  * Focus styles for the root slot
