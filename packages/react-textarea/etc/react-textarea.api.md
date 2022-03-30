@@ -20,8 +20,6 @@ export const TextArea: ForwardRefComponent<TextAreaProps>;
 // @public (undocumented)
 export const textAreaClassNames: SlotClassNames<TextAreaSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "TextAreaCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type TextAreaProps = Omit<ComponentProps<Partial<TextAreaSlots>, 'textArea'>, 'value' | 'defaultValue' | 'onChange' | 'size'> & Partial<TextAreaCommons> & {
     value?: string;
@@ -43,10 +41,6 @@ export const useTextArea_unstable: (props: TextAreaProps, ref: React_2.Ref<HTMLT
 
 // @public
 export const useTextAreaStyles_unstable: (state: TextAreaState) => TextAreaState;
-
-// Warnings were encountered during analysis:
-//
-// lib/components/TextArea/TextArea.types.d.ts:51:5 - (ae-forgotten-export) The symbol "TextAreaOnChangeData" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

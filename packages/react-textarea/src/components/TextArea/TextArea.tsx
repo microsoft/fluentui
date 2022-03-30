@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useTextArea_unstable } from './useTextArea';
 import { renderTextArea_unstable } from './renderTextArea';
+import { useTextArea_unstable } from './useTextArea';
 import { useTextAreaStyles_unstable } from './useTextAreaStyles';
-import type { TextAreaProps } from './TextArea.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { TextAreaProps } from './TextArea.types';
 
 /**
  * The TextArea component allows the user to enter and edit text in multiple lines.

@@ -1,6 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TextAreaSlots, TextAreaState } from './TextArea.types';
-import { getBottomFocusIndicator } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -31,6 +30,14 @@ const contentSizeTokens = {
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
   },
+};
+const motionDurations = {
+  ultraFast: '0.05s',
+  normal: '0.2s',
+};
+const motionCurves = {
+  accelerateMid: 'cubic-bezier(0.7,0,1,0.5)',
+  decelerateMid: 'cubic-bezier(0.1,0.9,0.2,1)',
 };
 const textAreaHeight = {
   small: '24px',
@@ -63,13 +70,55 @@ const useRootStyles = makeStyles({
     },
   },
 
-  interactive: getBottomFocusIndicator({
-    borderWidth: tokens.strokeWidthThick,
-    borderRadius: tokens.borderRadiusMedium,
-    borderColor: tokens.colorCompoundBrandStroke,
-    pressedBorderColor: tokens.colorCompoundBrandStrokePressed,
-    targetChild: 'textarea',
-  }),
+  interactive: {
+    // This is all for the bottom focus border.
+    // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
+    ':after': {
+      boxSizing: 'border-box',
+      content: '""',
+      position: 'absolute',
+      left: '-1px',
+      bottom: '-1px',
+      right: '-1px',
+
+      // Maintaining the correct corner radius:
+      // Use the whole border-radius as the height and only put radii on the bottom corners.
+      // (Otherwise the radius would be automatically reduced to fit available space.)
+      // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
+      height: `max(${tokens.strokeWidthThick}, ${tokens.borderRadiusMedium})`,
+      borderBottomLeftRadius: tokens.borderRadiusMedium,
+      borderBottomRightRadius: tokens.borderRadiusMedium,
+
+      // Flat 2px border:
+      // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
+      // (This could be done without trimming using `background: linear-gradient(...)`, but using
+      // borderBottom makes it easier for people to override the color if needed.)
+      ...shorthands.borderBottom(tokens.strokeWidthThick, 'solid', tokens.colorCompoundBrandStroke),
+      clipPath: `inset(calc(100% - ${tokens.strokeWidthThick}) 0 0 0)`,
+
+      // Animation for focus OUT
+      transform: 'scaleX(0)',
+      transitionProperty: 'transform',
+      transitionDuration: motionDurations.ultraFast,
+      transitionDelay: motionCurves.accelerateMid,
+    },
+    ':focus-within:after': {
+      // Animation for focus IN
+      transform: 'scaleX(1)',
+      transitionProperty: 'transform',
+      transitionDuration: motionDurations.normal,
+      transitionDelay: motionCurves.decelerateMid,
+    },
+    ':focus-within:active:after': {
+      // This is if the user clicks the field again while it's already focused
+      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+    },
+    ':focus-within': {
+      outlineWidth: tokens.strokeWidthThick,
+      outlineStyle: 'solid',
+      outlineColor: 'transparent',
+    },
+  },
 
   filledDarker: {
     backgroundColor: tokens.colorNeutralBackground3,
@@ -122,6 +171,10 @@ const useTextAreaStyles = makeStyles({
     '::selection': {
       color: tokens.colorNeutralForegroundInverted,
       backgroundColor: tokens.colorNeutralBackgroundInverted,
+    },
+
+    ':focus-visible': {
+      outlineStyle: 'none', // disable default browser outline
     },
   },
 
