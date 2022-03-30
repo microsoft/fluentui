@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, within } from '@testing-library/react';
+import { act, render, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { CommandBar } from './CommandBar';
 import { isConformant } from '../../common/isConformant';
@@ -9,6 +9,12 @@ import type { IContextualMenuItem } from '../../ContextualMenu';
 describe('CommandBar', () => {
   beforeEach(() => {
     resetIds();
+  });
+
+  afterEach(() => {
+    if ((setTimeout as any).mock) {
+      jest.useRealTimers();
+    }
   });
 
   it('renders commands correctly', () => {
@@ -46,6 +52,8 @@ describe('CommandBar', () => {
   });
 
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
+    jest.useFakeTimers();
+
     const { getByRole } = render(
       <CommandBar
         items={[
@@ -66,13 +74,20 @@ describe('CommandBar', () => {
         ]}
       />,
     );
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
+    act(() => {
+      jest.runAllTimers();
+    });
 
-    const menuItem = getByRole('menuitem', { hidden: true });
+    const menuItem = getByRole('menuitem');
     userEvent.click(menuItem);
     expect(getByRole('menu')).toBeTruthy();
   });
 
   it('passes event and item to button onClick callbacks', () => {
+    jest.useFakeTimers();
+
     let testValue: IContextualMenuItem | undefined;
 
     const itemData: IContextualMenuItem = {
@@ -89,12 +104,20 @@ describe('CommandBar', () => {
 
     const { getByRole } = render(<CommandBar items={[itemData]} />);
 
-    const menuItem = getByRole('menuitem', { hidden: true });
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    const menuItem = getByRole('menuitem');
     userEvent.click(menuItem);
     expect(testValue).toEqual(itemData);
   });
 
   it('keeps menu open after update if item is still present', () => {
+    jest.useFakeTimers();
+
     const items = [
       {
         text: 'TestText 1',
@@ -112,7 +135,13 @@ describe('CommandBar', () => {
     ];
     const { getByRole, rerender } = render(<CommandBar items={items} />);
 
-    const menuItem = getByRole('menuitem', { hidden: true });
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    const menuItem = getByRole('menuitem');
     userEvent.click(menuItem);
 
     // Make sure the menu is open before the re-render
@@ -126,32 +155,42 @@ describe('CommandBar', () => {
     });
     rerender(<CommandBar items={items} />);
 
+    act(() => {
+      jest.runAllTimers();
+    });
+
     // Make sure the menu is still open after the re-render
     expect(getByRole('menu')).toBeTruthy();
   });
 
-  it('closes menu after update if item is not longer present', () => {
-    const { getByRole, queryByRole, rerender } = render(
-      <CommandBar
-        items={[
-          {
-            text: 'TestText 1',
-            key: 'TestKey1',
-            subMenuProps: {
-              items: [
-                {
-                  text: 'SubmenuText 1',
-                  key: 'SubmenuKey1',
-                  className: 'SubMenuClass',
-                },
-              ],
-            },
-          },
-        ]}
-      />,
-    );
+  it('closes menu after update if item is no longer present', () => {
+    jest.useFakeTimers();
 
-    const menuItem = getByRole('menuitem', { hidden: true });
+    const items = [
+      {
+        text: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: {
+          items: [
+            {
+              text: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass',
+            },
+          ],
+        },
+      },
+    ];
+
+    const { getByRole, queryByRole, rerender } = render(<CommandBar items={items} />);
+
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    const menuItem = getByRole('menuitem');
     userEvent.click(menuItem);
 
     // Make sure the menu is open before the re-render
@@ -160,11 +199,17 @@ describe('CommandBar', () => {
     // Update the props, and re-render
     rerender(<CommandBar items={[]} />);
 
+    act(() => {
+      jest.runAllTimers();
+    });
+
     // Make sure the menu is still open after the re-render
     expect(queryByRole('menu')).toBeNull();
   });
 
   it('passes overflowButton menuProps to the menu, and prepend menuProps.items to top of overflow', () => {
+    jest.useFakeTimers();
+
     const items = [
       {
         name: 'Text1',
@@ -192,7 +237,13 @@ describe('CommandBar', () => {
       />,
     );
 
-    const overflowMenuButton = getAllByRole('menuitem', { hidden: true })[1];
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    const overflowMenuButton = getAllByRole('menuitem')[1];
     userEvent.click(overflowMenuButton);
 
     const overfowItems = within(getByRole('menu')).getAllByRole('menuitem');
@@ -204,6 +255,8 @@ describe('CommandBar', () => {
   });
 
   it('updates menu after update if item is still present', () => {
+    jest.useFakeTimers();
+
     const items = (subMenuItemClassName: string) => [
       {
         name: 'TestText 1',
@@ -222,7 +275,13 @@ describe('CommandBar', () => {
 
     const { getByRole, rerender } = render(<CommandBar items={items('SubMenuClass')} />);
 
-    const menuItem = getByRole('menuitem', { hidden: true });
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    const menuItem = getByRole('menuitem');
 
     userEvent.click(menuItem);
 
@@ -231,6 +290,10 @@ describe('CommandBar', () => {
 
     // Update the props, and re-render
     rerender(<CommandBar items={items('SubMenuClassUpdate')} />);
+
+    act(() => {
+      jest.runAllTimers();
+    });
 
     // Make sure the menu is still open after the re-render
     expect(getByRole('menu').querySelector('.SubMenuClassUpdate')).toBeTruthy();
