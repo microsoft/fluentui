@@ -172,6 +172,7 @@
     "enquirer": "2.3.6",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.15.2",
+    "esbuild": "0.14.27",
     "esbuild-loader": "2.18.0",
     "eslint": "7.25.0",
     "eslint-config-airbnb": "18.2.1",
