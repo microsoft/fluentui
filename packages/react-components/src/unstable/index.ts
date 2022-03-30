@@ -5,13 +5,9 @@ export {
   CardFooter,
   CardHeader,
   CardPreview,
-  /* eslint-disable-next-line deprecation/deprecation */
   cardClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
   cardFooterClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
   cardHeaderClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
   cardPreviewClassName,
   cardClassNames,
   cardFooterClassNames,
@@ -47,7 +43,6 @@ export type {
 
 export {
   Checkbox,
-  /* eslint-disable-next-line deprecation/deprecation */
   checkboxClassName,
   checkboxClassNames,
   renderCheckbox_unstable,
@@ -58,7 +53,6 @@ export type { CheckboxOnChangeData, CheckboxProps, CheckboxSlots, CheckboxState 
 
 export {
   Input,
-  /* eslint-disable-next-line deprecation/deprecation */
   inputClassName,
   inputClassNames,
   renderInput_unstable,
@@ -69,7 +63,6 @@ export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@flu
 
 export {
   Label,
-  /* eslint-disable-next-line deprecation/deprecation */
   labelClassName,
   labelClassNames,
   renderLabel_unstable,
@@ -80,11 +73,9 @@ export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
 
 export {
   Radio,
-  /* eslint-disable-next-line deprecation/deprecation */
   radioClassName,
   radioClassNames,
   RadioGroup,
-  /* eslint-disable-next-line deprecation/deprecation */
   radioGroupClassName,
   radioGroupClassNames,
   renderRadio_unstable,
@@ -125,14 +116,12 @@ export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '
 
 export {
   Tab,
-  /* eslint-disable-next-line deprecation/deprecation */
   tabClassName,
   tabClassNames,
   useTab_unstable,
   useTabStyles_unstable,
   renderTab_unstable,
   TabList,
-  /* eslint-disable-next-line deprecation/deprecation */
   tabListClassName,
   tabListClassNames,
   useTabList_unstable,
