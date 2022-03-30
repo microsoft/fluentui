@@ -9,6 +9,10 @@ export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
   label: 'fui-Spinner__label',
 };
 
+/*
+ * TODO: Update with proper tokens when added
+ * Radii for the Spinner circles
+ */
 const rvalues = {
   tiny: '9',
   extraSmall: '11',
@@ -18,7 +22,11 @@ const rvalues = {
   extraLarge: '18.5',
   huge: '20',
 };
-// Sizes for the Spinner
+
+/*
+ * TODO: Update with proper tokens when added
+ * Sizes for the Spinner
+ */
 const spinnnerSizes = {
   tiny: '20px',
   extraSmall: '24px',
@@ -29,14 +37,20 @@ const spinnnerSizes = {
   huge: '44px',
 };
 
-// Stroke widths for the Spinner
+/*
+ * TODO: Update with proper tokens when added
+ * Stroke widths for the Spinner
+ */
 const spinnerStrokeWidth = {
   sWidth: '2px',
   mWidth: '3px',
   lWidth: '4px',
 };
 
-// Label sizes for the Label slot
+/*
+ * TODO: Update with proper tokens when added
+ * Label sizes for the Spinner
+ */
 const labelSizeTokens = {
   body1: {
     fontSize: tokens.fontSizeBase300,
@@ -173,21 +187,21 @@ const useLoaderStyles = makeStyles({
 
   // global class for Spinner track
   spinnerTrack: {
-    [`& > svg > circle.spinner_Track`]: {
+    [`& > svg > circle.fui-spinner__Track`]: {
       stroke: tokens.colorNeutralBackground4,
     },
   },
 
   // modifier class for Spinner track if appearance="inverted"
   spinnerTrackInverted: {
-    [`& > svg > circle.spinner_Track`]: {
+    [`& > svg > circle.fui-spinner__Track`]: {
       stroke: tokens.colorNeutralBackgroundInverted,
     },
   },
 
   // global Spinner trail class
   spinnerTail: {
-    [`& > svg > circle.spinner_Tail`]: {
+    [`& > svg > circle.fui-spinner__Tail`]: {
       stroke: tokens.colorBrandStroke1,
       animationName: {
         '0%': {
@@ -208,7 +222,6 @@ const useLoaderStyles = makeStyles({
       animationDuration: '1.5s',
       animationIterationCount: 'infinite',
       animationTimingFunction: 'cubic-bezier(0.33,0,0.67,1)',
-      //zIndex: 999,
       strokeLinecap: 'round',
       transform: 'rotate(-90deg)',
       transformOrigin: '50% 50%',
@@ -217,7 +230,7 @@ const useLoaderStyles = makeStyles({
 
   // modifier class for Spinner trail
   spinnerTailInverted: {
-    [`& > svg > circle.spinner_Tail`]: {
+    [`& > svg > circle.fui-spinner__Tail`]: {
       stroke: tokens.colorNeutralStrokeOnBrand2,
       animationName: {
         '0%': {
@@ -238,7 +251,6 @@ const useLoaderStyles = makeStyles({
       animationDuration: '1.5s',
       animationIterationCount: 'infinite',
       animationTimingFunction: 'cubic-bezier(0.33,0,0.67,1)',
-      //zIndex: 999,
       strokeLinecap: 'round',
       transform: 'rotate(-90deg)',
       transformOrigin: '50% 50%',
