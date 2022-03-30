@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Panel: Fix transparent header on delayed body content renders",
+  "packageName": "@fluentui/react",
+  "email": "jacksonhe@microsoft.com",
+  "dependentChangeType": "patch"
+}
