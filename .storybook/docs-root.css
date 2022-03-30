@@ -426,6 +426,7 @@ h2.fluent {
 #docs-root .sp-preview-iframe {
   flex: 0 1 auto;
   min-height: 0;
+  height: 0;
 }
 
 #docs-root .sp-code-editor {
