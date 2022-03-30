@@ -297,6 +297,24 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                   role="none"
                 >
                   TestText3
+                  <div
+                    hidden={true}
+                    id="tooltip4"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText3
+                  </div>
                 </div>
               </span>
               <i
@@ -391,6 +409,24 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                   role="none"
                 >
                   TestText4
+                  <div
+                    hidden={true}
+                    id="tooltip5"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText4
+                  </div>
                 </div>
               </span>
             </li>
@@ -525,6 +561,24 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   role="none"
                 >
                   TestText1
+                  <div
+                    hidden={true}
+                    id="tooltip1"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText1
+                  </div>
                 </div>
               </span>
               <i
@@ -619,6 +673,24 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   role="none"
                 >
                   TestText2
+                  <div
+                    hidden={true}
+                    id="tooltip2"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText2
+                  </div>
                 </div>
               </span>
               <i
@@ -713,6 +785,24 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   role="none"
                 >
                   TestText3
+                  <div
+                    hidden={true}
+                    id="tooltip3"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText3
+                  </div>
                 </div>
               </span>
               <i
@@ -807,6 +897,24 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   role="none"
                 >
                   TestText4
+                  <div
+                    hidden={true}
+                    id="tooltip4"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText4
+                  </div>
                 </div>
               </span>
             </li>
@@ -941,6 +1049,24 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   role="none"
                 >
                   TestText1
+                  <div
+                    hidden={true}
+                    id="tooltip1"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText1
+                  </div>
                 </div>
               </span>
               <span>
@@ -1008,6 +1134,24 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   role="none"
                 >
                   TestText2
+                  <div
+                    hidden={true}
+                    id="tooltip2"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText2
+                  </div>
                 </div>
               </span>
               <span>
@@ -1075,6 +1219,24 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   role="none"
                 >
                   TestText3
+                  <div
+                    hidden={true}
+                    id="tooltip3"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText3
+                  </div>
                 </div>
               </span>
               <span>
@@ -1142,6 +1304,24 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   role="none"
                 >
                   TestText4
+                  <div
+                    hidden={true}
+                    id="tooltip4"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText4
+                  </div>
                 </div>
               </span>
             </li>
@@ -1276,6 +1456,24 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                   role="none"
                 >
                   TestText1
+                  <div
+                    hidden={true}
+                    id="tooltip1"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText1
+                  </div>
                 </div>
               </span>
               <i
@@ -2029,6 +2227,24 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                   role="none"
                 >
                   TestText3
+                  <div
+                    hidden={true}
+                    id="tooltip4"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText3
+                  </div>
                 </div>
               </span>
               <i
@@ -2123,6 +2339,24 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                   role="none"
                 >
                   TestText4
+                  <div
+                    hidden={true}
+                    id="tooltip5"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText4
+                  </div>
                 </div>
               </span>
             </li>
@@ -2257,6 +2491,24 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                   role="none"
                 >
                   TestText1
+                  <div
+                    hidden={true}
+                    id="tooltip1"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText1
+                  </div>
                 </div>
               </span>
               <i
@@ -2544,6 +2796,24 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                   role="none"
                 >
                   TestText4
+                  <div
+                    hidden={true}
+                    id="tooltip5"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "whiteSpace": "nowrap",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText4
+                  </div>
                 </div>
               </span>
             </li>

@@ -41,6 +41,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     relationship,
     showDelay = 250,
     hideDelay = 250,
+    mountNode,
   } = props;
 
   const [visible, setVisibleInternal] = useControllableState({ state: props.visible, initialState: false });
@@ -66,7 +67,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     visible,
     shouldRenderTooltip: visible,
     appearance,
-
+    mountNode,
     // Slots
     components: {
       content: 'div',

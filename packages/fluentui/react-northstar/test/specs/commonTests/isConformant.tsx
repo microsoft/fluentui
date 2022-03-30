@@ -10,13 +10,20 @@ import * as path from 'path';
 import * as React from 'react';
 import { ComponentType, ReactWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import { getDisplayName, mountWithProvider as mount, syntheticEvent, mountWithProvider, consoleUtil } from 'test/utils';
+import {
+  getDisplayName,
+  mountWithProvider as mount,
+  syntheticEvent,
+  consoleUtil,
+  EmptyThemeProvider,
+} from 'test/utils';
 
 import * as FluentUI from 'src/index';
 import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
 import { extraConformanceTests } from './extraConformanceTests';
 
-export interface Conformant<TProps = {}> extends Pick<IsConformantOptions<TProps>, 'disabledTests' | 'testOptions'> {
+export interface Conformant<TProps = {}>
+  extends Pick<IsConformantOptions<TProps>, 'disabledTests' | 'testOptions' | 'getTargetElement'> {
   /** Path to the test file. */
   testPath: string;
   constructorName?: string;
@@ -27,6 +34,8 @@ export interface Conformant<TProps = {}> extends Pick<IsConformantOptions<TProps
   requiredProps?: object;
   /** This component uses wrapper slot to wrap the 'meaningful' element. */
   wrapperComponent?: React.ElementType;
+  /** Helpers such as FocusZone and Ref which should be ignored when finding nontrivial children. */
+  helperComponents?: React.ElementType[];
   /** List of autocontrolled props for this component. */
   autoControlledProps?: string[];
   /** Child component that will receive unhandledProps. */
@@ -66,22 +75,21 @@ export function isConformant(
   } = options;
 
   const defaultConfig: IsConformantOptions = {
-    customMount: mountWithProvider,
+    renderOptions: { wrapper: EmptyThemeProvider },
     componentPath: testPath
       .replace(/test[/\\]specs/, 'src')
       .replace('-test.', '.')
       .replace(/.ts$/, '.tsx'),
     Component,
     displayName: constructorName,
-    // TODO enable component-has-root-ref and disable test where necessary.
-    // List of the components that will either require the test to be disabled or fixed: (https://hackmd.io/OAUn0pF6Qj-vc315wAHXLQ)
+    // v0 doesn't use the patterns these tests look at
     disabledTests: [
       'has-top-level-file',
       'consistent-callback-args',
-      // Disabled as v0 has different prefix
       'component-has-static-classname',
+      'component-has-static-classnames-object',
+      'component-has-static-classname-exported',
     ],
-    helperComponents: [Ref, RefFindNode, FocusZone],
     extraTests: extraConformanceTests,
   };
 

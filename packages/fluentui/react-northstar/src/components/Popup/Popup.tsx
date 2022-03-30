@@ -497,7 +497,7 @@ export const Popup: React.FC<PopupProps> &
 
   const dismissOnScroll = (e: TouchEvent | WheelEvent) => {
     // we only need to dismiss if the scroll happens outside the popup
-    if (!popupContentRef.current.contains(e.target as Node)) {
+    if (!elementContains(popupContentRef.current, e.target as HTMLElement)) {
       trySetOpen(false, e);
     }
   };

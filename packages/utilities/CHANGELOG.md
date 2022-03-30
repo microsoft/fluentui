@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Fri, 11 Mar 2022 07:34:41 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Mar 2022 07:45:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.8.1)
+
+Tue, 15 Mar 2022 07:45:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.8.0..@fluentui/utilities_v8.8.1)
+
+### Patches
+
+- Ban `export *` in `@fluentui/utilities` for better tree-shakeability ([PR #22046](https://github.com/microsoft/fluentui/pull/22046) by 4123478+tido64@users.noreply.github.com)
 
 ## [8.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.8.0)
 

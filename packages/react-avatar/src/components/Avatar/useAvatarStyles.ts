@@ -1,8 +1,19 @@
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { AvatarState } from './Avatar.types';
+import type { AvatarSlots, AvatarState } from './Avatar.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `avatarClassNames.root` instead.
+ */
 export const avatarClassName = 'fui-Avatar';
+export const avatarClassNames: SlotClassNames<AvatarSlots> = {
+  root: 'fui-Avatar',
+  image: 'fui-Avatar__image',
+  initials: 'fui-Avatar__initials',
+  icon: 'fui-Avatar__icon',
+  badge: 'fui-Avatar__badge',
+};
 
 //
 // TODO: All animation constants should go to theme or globals?
@@ -63,9 +74,9 @@ const useStyles = makeStyles({
     fontWeight: tokens.fontWeightSemibold,
   },
 
-  textCaption2: {
+  textCaption2Strong: {
     fontSize: tokens.fontSizeBase100,
-    fontWeight: tokens.fontWeightRegular,
+    fontWeight: tokens.fontWeightSemibold,
   },
   textCaption1Strong: { fontSize: tokens.fontSizeBase200 },
   textBody1Strong: { fontSize: tokens.fontSizeBase300 },
@@ -361,7 +372,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const rootClasses = [styles.root, sizeStyles[size], colorStyles[color]];
 
   if (size <= 24) {
-    rootClasses.push(styles.textCaption2);
+    rootClasses.push(styles.textCaption2Strong);
   } else if (size <= 28) {
     rootClasses.push(styles.textCaption1Strong);
   } else if (size <= 40) {
@@ -419,18 +430,23 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
     }
   }
 
-  state.root.className = mergeClasses(avatarClassName, ...rootClasses, state.root.className);
+  state.root.className = mergeClasses(avatarClassNames.root, ...rootClasses, state.root.className);
 
   if (state.badge) {
-    state.badge.className = mergeClasses(styles.badge, size >= 64 && styles.badgeLarge, state.badge.className);
+    state.badge.className = mergeClasses(
+      avatarClassNames.badge,
+      styles.badge,
+      size >= 64 && styles.badgeLarge,
+      state.badge.className,
+    );
   }
 
   if (state.image) {
-    state.image.className = mergeClasses(styles.image, state.image.className);
+    state.image.className = mergeClasses(avatarClassNames.image, styles.image, state.image.className);
   }
 
   if (state.initials) {
-    state.initials.className = mergeClasses(styles.iconInitials, state.initials.className);
+    state.initials.className = mergeClasses(avatarClassNames.initials, styles.iconInitials, state.initials.className);
   }
 
   if (state.icon) {
@@ -449,7 +465,12 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       iconSizeClass = styles.icon48;
     }
 
-    state.icon.className = mergeClasses(styles.iconInitials, iconSizeClass, state.icon.className);
+    state.icon.className = mergeClasses(
+      avatarClassNames.icon,
+      styles.iconInitials,
+      iconSizeClass,
+      state.icon.className,
+    );
   }
 
   return state;

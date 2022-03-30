@@ -10,6 +10,15 @@ describe('Button', () => {
   isConformant({
     Component: Button as React.FunctionComponent<ButtonProps>,
     displayName: 'Button',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+          },
+        },
+      ],
+    },
   });
 
   describe('meets accessibility requirements', () => {

@@ -513,6 +513,22 @@ exports[`ColorPicker renders correctly 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip1"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -683,6 +699,22 @@ exports[`ColorPicker renders correctly 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip7"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -853,6 +885,22 @@ exports[`ColorPicker renders correctly 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip13"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -1023,6 +1071,22 @@ exports[`ColorPicker renders correctly 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip19"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -1193,6 +1257,22 @@ exports[`ColorPicker renders correctly 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip25"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
         </tr>
@@ -1742,6 +1822,22 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip1"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -1912,6 +2008,22 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip7"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -2082,6 +2194,22 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip13"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -2252,6 +2380,22 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip19"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -2422,6 +2566,22 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip25"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
         </tr>
@@ -2948,6 +3108,22 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip1"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -3118,6 +3294,22 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip7"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -3288,6 +3480,22 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip13"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -3458,6 +3666,22 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip19"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -3628,6 +3852,22 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip25"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
         </tr>

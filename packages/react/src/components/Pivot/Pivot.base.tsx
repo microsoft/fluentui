@@ -247,6 +247,8 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
           .slice(overflowIndex)
           .filter(link => link.itemKey !== renderedSelectedKey)
           .map((link, index) => {
+            link.role = 'menuitem';
+
             return {
               key: link.itemKey || `${overflowIndex + index}`,
               onRender: () => renderPivotLink(linkCollection, link, renderedSelectedKey, classNames.linkInMenu),

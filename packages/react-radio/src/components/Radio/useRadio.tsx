@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
-import { getPartitionedNativeProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, resolveShorthand, useId, useMergedEventCallbacks } from '@fluentui/react-utilities';
 import { RadioGroupContext } from '../../contexts/RadioGroupContext';
 import type { RadioProps, RadioState } from './Radio.types';
 
@@ -24,12 +24,13 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
     labelPosition = group.layout === 'horizontalStacked' ? 'below' : 'after',
     disabled = group.disabled,
     required,
+    onChange,
   } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['checked', 'defaultChecked'],
+    excludedPropNames: ['checked', 'defaultChecked', 'onChange'],
   });
 
   const root = resolveShorthand(props.root, {
@@ -50,6 +51,8 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
       ...nativeProps.primary,
     },
   });
+
+  input.onChange = useMergedEventCallbacks(input.onChange, ev => onChange?.(ev, { value: ev.currentTarget.value }));
 
   const label = resolveShorthand(props.label, {
     defaultProps: {

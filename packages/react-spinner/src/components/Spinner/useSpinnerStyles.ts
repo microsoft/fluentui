@@ -1,7 +1,14 @@
+import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SpinnerState } from './Spinner.types';
+import type { SpinnerSlots, SpinnerState } from './Spinner.types';
 
+/**
+ * @deprecated Use `spinnerClassNames.root` instead.
+ */
 export const spinnerClassName = 'fui-Spinner';
+export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
+  root: 'fui-Spinner',
+};
 /**
  * Styles for the root slot
  */
@@ -18,7 +25,7 @@ const useStyles = makeStyles({
  */
 export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(spinnerClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(spinnerClassNames.root, styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
