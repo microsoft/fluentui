@@ -42,7 +42,6 @@ export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpda
 // @public (undocumented)
 export interface UseOverflowContainerReturn<TElement extends HTMLElement> {
     containerRef: React_2.RefObject<TElement>;
-    // Warning: (ae-forgotten-export) The symbol "OverflowContextValue" needs to be exported by the entry point index.d.ts
     registerItem: OverflowContextValue['registerItem'];
     updateOverflow: OverflowContextValue['updateOverflow'];
 }

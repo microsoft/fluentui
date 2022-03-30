@@ -12,8 +12,6 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
-// Warning: (ae-forgotten-export) The symbol "TextWrapperProps" needs to be exported by the entry point index.d.ts
-//
 // @public
 const Body_2: FunctionComponent<TextWrapperProps>;
 export { Body_2 as Body }
@@ -82,8 +80,6 @@ export const textClassName = "fui-Text";
 // @public (undocumented)
 export const textClassNames: SlotClassNames<TextSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "TextCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type TextProps = ComponentProps<TextSlots> & Partial<TextCommons>;
 
