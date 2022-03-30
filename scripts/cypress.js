@@ -65,7 +65,6 @@ if (argv.mode === 'open') {
         throw new Error(`${result.totalFailed} failing E2E tests`);
       }
 
-      console.log('cypress test run completed');
       process.exit(0);
     })
     .catch(err => {

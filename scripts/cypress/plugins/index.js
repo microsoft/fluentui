@@ -16,6 +16,7 @@
 const path = require('path');
 const { startDevServer } = require('@cypress/webpack-dev-server');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
+const tsConfigBase = require('../../../tsconfig.base.json');
 
 /**
  * Cypress Webpack devServer that uses esbuild-loader for speed,
@@ -45,7 +46,7 @@ module.exports = (on, config) => {
           loader: 'esbuild-loader',
           options: {
             loader: 'tsx',
-            target: 'es2019',
+            target: tsConfigBase.compilerOptions.target,
           },
         },
       ],
@@ -63,7 +64,7 @@ module.exports = (on, config) => {
   let closeServer = undefined;
   on('after:run', () => {
     // Generally isn't necessary, but sometimes unexpected errors can cause the
-    // dev server to hand
+    // dev server to hang
     if (closeServer) {
       closeServer();
     }
