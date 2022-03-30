@@ -1,8 +1,7 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-
+import { render, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { CommandBar } from './CommandBar';
-import { mount } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { resetIds } from '../../Utilities';
 import type { IContextualMenuItem } from '../../ContextualMenu';
@@ -12,45 +11,30 @@ describe('CommandBar', () => {
     resetIds();
   });
 
-  afterEach(() => {
-    for (let i = 0; i < document.body.children.length; i++) {
-      if (document.body.children[i].tagName === 'DIV') {
-        document.body.removeChild(document.body.children[i]);
-        i--;
-      }
-    }
-  });
-
   it('renders commands correctly', () => {
-    expect(
-      renderer
-        .create(
-          <CommandBar
-            items={[
-              { key: '1', text: 'asdf' },
-              { key: '2', text: 'asdf' },
-            ]}
-            className={'TestClassName'}
-          />,
-        )
-        .toJSON(),
-    ).toMatchSnapshot();
+    const { container } = render(
+      <CommandBar
+        items={[
+          { key: '1', text: 'asdf' },
+          { key: '2', text: 'asdf' },
+        ]}
+        className={'TestClassName'}
+      />,
+    );
+    expect(container).toMatchSnapshot();
   });
 
   it('renders empty farItems correctly', () => {
-    expect(
-      renderer
-        .create(
-          <CommandBar
-            items={[
-              { key: '1', text: 'asdf' },
-              { key: '2', text: 'asdf' },
-            ]}
-            farItems={[]}
-          />,
-        )
-        .toJSON(),
-    ).toMatchSnapshot();
+    const { container } = render(
+      <CommandBar
+        items={[
+          { key: '1', text: 'asdf' },
+          { key: '2', text: 'asdf' },
+        ]}
+        farItems={[]}
+      />,
+    );
+    expect(container).toMatchSnapshot();
   });
 
   isConformant({
@@ -62,7 +46,7 @@ describe('CommandBar', () => {
   });
 
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
-    const commandBar = mount(
+    const { getByRole } = render(
       <CommandBar
         items={[
           {
@@ -83,13 +67,9 @@ describe('CommandBar', () => {
       />,
     );
 
-    const menuItem = commandBar.find('.MenuItem button');
-
-    expect(menuItem.length).toEqual(1);
-
-    menuItem.simulate('click');
-
-    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
+    const menuItem = getByRole('menuitem', { hidden: true });
+    userEvent.click(menuItem);
+    expect(getByRole('menu')).toBeTruthy();
   });
 
   it('passes event and item to button onClick callbacks', () => {
@@ -107,59 +87,51 @@ describe('CommandBar', () => {
       },
     };
 
-    const commandBar = mount(<CommandBar items={[itemData]} />);
+    const { getByRole } = render(<CommandBar items={[itemData]} />);
 
-    const menuItem = commandBar.find('.MenuItem button');
-
-    menuItem.simulate('click');
-
+    const menuItem = getByRole('menuitem', { hidden: true });
+    userEvent.click(menuItem);
     expect(testValue).toEqual(itemData);
   });
 
   it('keeps menu open after update if item is still present', () => {
-    const commandBar = mount(
-      <CommandBar
-        items={[
-          {
-            text: 'TestText 1',
-            key: 'TestKey1',
-            subMenuProps: {
-              items: [
-                {
-                  text: 'SubmenuText 1',
-                  key: 'SubmenuKey1',
-                  className: 'SubMenuClass',
-                },
-              ],
+    const items = [
+      {
+        text: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: {
+          items: [
+            {
+              text: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass',
             },
-          },
-        ]}
-      />,
-    );
+          ],
+        },
+      },
+    ];
+    const { getByRole, rerender } = render(<CommandBar items={items} />);
 
-    const menuItem = commandBar.find('button');
-
-    menuItem.simulate('click');
+    const menuItem = getByRole('menuitem', { hidden: true });
+    userEvent.click(menuItem);
 
     // Make sure the menu is open before the re-render
-    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
+    expect(getByRole('menu')).toBeTruthy();
 
     // Update the props, and re-render
-    commandBar.setProps({
-      items: commandBar.props().items.concat([
-        {
-          name: 'Test Key 2',
-          key: 'TestKey2',
-        },
-      ]),
+    items.push({
+      text: 'Test Key 2',
+      key: 'TestKey2',
+      subMenuProps: { items: [{ text: 'SubmenuText 2', key: 'SubmenuKey2', className: 'SubmenuClass' }] },
     });
+    rerender(<CommandBar items={items} />);
 
     // Make sure the menu is still open after the re-render
-    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
+    expect(getByRole('menu')).toBeTruthy();
   });
 
   it('closes menu after update if item is not longer present', () => {
-    const commandBar = mount(
+    const { getByRole, queryByRole, rerender } = render(
       <CommandBar
         items={[
           {
@@ -179,20 +151,17 @@ describe('CommandBar', () => {
       />,
     );
 
-    const menuItem = commandBar.find('button');
-
-    menuItem.simulate('click');
+    const menuItem = getByRole('menuitem', { hidden: true });
+    userEvent.click(menuItem);
 
     // Make sure the menu is open before the re-render
-    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
+    expect(getByRole('menu')).toBeTruthy();
 
     // Update the props, and re-render
-    commandBar.setProps({
-      items: [],
-    });
+    rerender(<CommandBar items={[]} />);
 
     // Make sure the menu is still open after the re-render
-    expect(document.querySelector('.SubMenuClass')).toBeFalsy();
+    expect(queryByRole('menu')).toBeNull();
   });
 
   it('passes overflowButton menuProps to the menu, and prepend menuProps.items to top of overflow', () => {
@@ -210,7 +179,7 @@ describe('CommandBar', () => {
       },
     ];
 
-    const commandBar = mount(
+    const { getByRole, getAllByRole } = render(
       <CommandBar
         overflowButtonProps={{
           menuProps: {
@@ -223,16 +192,15 @@ describe('CommandBar', () => {
       />,
     );
 
-    const overflowMenuButton = commandBar.find('.ms-CommandBar-overflowButton');
+    const overflowMenuButton = getAllByRole('menuitem', { hidden: true })[1];
+    userEvent.click(overflowMenuButton);
 
-    overflowMenuButton.hostNodes().simulate('click');
-
-    const overfowItems = document.querySelectorAll('.ms-ContextualMenu-item');
+    const overfowItems = within(getByRole('menu')).getAllByRole('menuitem');
 
     expect(overfowItems).toHaveLength(2);
     expect(overfowItems[0].textContent).toEqual('Text3');
     expect(overfowItems[1].textContent).toEqual('Text2');
-    expect(document.querySelectorAll('.customMenuClass')).toHaveLength(1);
+    expect(getByRole('menu').querySelectorAll('.customMenuClass')!.length).toEqual(1);
   });
 
   it('updates menu after update if item is still present', () => {
@@ -252,21 +220,19 @@ describe('CommandBar', () => {
       },
     ];
 
-    const commandBar = mount(<CommandBar items={items('SubMenuClass')} />);
+    const { getByRole, rerender } = render(<CommandBar items={items('SubMenuClass')} />);
 
-    const menuItem = commandBar.find('button');
+    const menuItem = getByRole('menuitem', { hidden: true });
 
-    menuItem.simulate('click');
+    userEvent.click(menuItem);
 
     // Make sure the menu is open before the re-render
-    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
+    expect(getByRole('menu')).toBeTruthy();
 
-    // Re-render
-    commandBar.setProps({
-      items: items('SubMenuClassUpdate'),
-    });
+    // Update the props, and re-render
+    rerender(<CommandBar items={items('SubMenuClassUpdate')} />);
 
     // Make sure the menu is still open after the re-render
-    expect(document.querySelector('.SubMenuClassUpdate')).toBeTruthy();
+    expect(getByRole('menu').querySelector('.SubMenuClassUpdate')).toBeTruthy();
   });
 });
