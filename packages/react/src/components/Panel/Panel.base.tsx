@@ -381,7 +381,20 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   };
 
   private _onRenderBody = (props: IPanelProps): JSX.Element => {
-    return <div className={this._classNames.content}>{props.children}</div>;
+    const bodyContent = (content: HTMLDivElement | null): void => {
+      if (content) {
+        const observer = new MutationObserver(() => this._updateFooterPosition());
+        observer.observe(content, {
+          childList: true,
+        });
+      }
+    };
+
+    return (
+      <div ref={bodyContent} className={this._classNames.content}>
+        {props.children}
+      </div>
+    );
   };
 
   private _onRenderFooter = (props: IPanelProps): JSX.Element | null => {
