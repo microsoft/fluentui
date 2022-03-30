@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/upgrade-examples-v8-v9",
+  "entries": [
+    {
+      "date": "Wed, 30 Mar 2022 07:38:55 GMT",
+      "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react to v8.63.0",
+            "commit": "d7387b454501a9271b7ab2e75c6dd097bbbbb1bc"
+          }
+        ]
+      }
+    }
+  ]
+}

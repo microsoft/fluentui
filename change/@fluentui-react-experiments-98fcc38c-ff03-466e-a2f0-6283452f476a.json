@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Allow Tile rendering to be customized based on tile state",
-  "packageName": "@fluentui/react-experiments",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}

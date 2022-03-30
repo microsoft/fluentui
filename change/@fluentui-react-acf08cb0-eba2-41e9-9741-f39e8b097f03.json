@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Allow DetailsRow rendering to be customized based on row state",
-  "packageName": "@fluentui/react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}
