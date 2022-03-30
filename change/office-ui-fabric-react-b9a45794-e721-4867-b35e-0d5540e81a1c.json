@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixed secondary text styling in PeoplePicker Personas when displayed in the input.",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
