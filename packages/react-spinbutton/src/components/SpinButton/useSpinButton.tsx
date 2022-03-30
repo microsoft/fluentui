@@ -268,7 +268,10 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
   const commit = (e: SpinButtonChangeEvent, newValue?: number, newDisplayValue?: string) => {
     const valueChanged = newValue !== undefined && currentValue !== newValue;
-    const displayValueChanged = newDisplayValue !== undefined;
+    const displayValueChanged =
+      newDisplayValue !== undefined &&
+      internalState.current.previousTextValue !== undefined &&
+      internalState.current.previousTextValue !== newDisplayValue;
 
     let roundedValue;
     if (valueChanged) {
