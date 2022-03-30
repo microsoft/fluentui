@@ -1,5 +1,5 @@
 import { detectOverflow } from '@floating-ui/dom';
-import type { Middleware, Side } from '../floating-ui.types';
+import type { Middleware, Side } from '@floating-ui/dom';
 import type { FloatingUIOptions } from '../types';
 import { getSide } from '../utils/getSide';
 

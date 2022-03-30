@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Boundary as FloatingUIBoundary, Rect, Placement, VirtualElement } from './floating-ui.types';
+import { Boundary as FloatingUIBoundary, Rect, Placement, VirtualElement } from '@floating-ui/dom';
 
 export type OffsetFunctionParam = {
   floating: Rect;

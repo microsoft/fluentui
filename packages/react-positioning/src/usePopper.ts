@@ -4,7 +4,7 @@ import {
   arrow as arrowMiddleware,
   offset as offsetMiddleware,
 } from '@floating-ui/dom';
-import type { Middleware, Strategy, Placement, Coords, MiddlewareData } from './floating-ui.types';
+import type { Middleware, Strategy, Placement, Coords, MiddlewareData } from '@floating-ui/dom';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect, useFirstMount } from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';
