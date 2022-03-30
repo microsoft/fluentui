@@ -27,7 +27,7 @@ Because this can lose meaningful information, it is recommended to adjust styles
 
 The `Dropdown with wrapping option text` example demonstrates how to override truncation styles to support wrapping. The default style will continue to truncate to support existing implementations.
 
-#### Selected Option Styles
+#### Selected option styles
 
 The default styles for the selected option in single-select Dropdowns is a light grey background. This doesn't have strong contrast against the default white background, so adding custom selection styles is recommended and demonstrated in the "Dropdown with custom selected option styles" example.
 
