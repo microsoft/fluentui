@@ -6,12 +6,12 @@ export type TextareaSlots = {
    * Wrapper element used for displaying the borders for Textarea. This wrapper is needed due to the focus
    * indicator border animation. For more information, see Spec.md
    *
-   * The root only received a `className` and `style`. All other props are applied to the `textarea` slot.
+   * The root only receives `className` and `style`. All other props are applied to the `textarea` slot.
    */
   root: NonNullable<Slot<'span'>>;
 
   /**
-   * The `<textarea>` element. This is the primary slot, all native props and ref will be applied to this slot.
+   * The `<textarea>` element. This is the primary slot, all native props and ref are applied to this slot.
    */
   textarea: NonNullable<Slot<'textarea'>>;
 };
@@ -20,21 +20,21 @@ type TextareaCommons = {
   /**
    * Which direction the Textarea is allowed to be resized.
    *
-   * @defaultvalue none
+   * @default none
    */
   resize: 'none' | 'horizontal' | 'vertical' | 'both';
 
   /**
    * Size of the Textarea.
    *
-   * @defaultvalue medium
+   * @default medium
    */
   size: 'small' | 'medium' | 'large';
 
   /**
    * Styling the Textarea should use.
    *
-   * @defaultvalue outline
+   * @default outline
    */
   appearance: 'outline' | 'filledDarker' | 'filledLighter';
 };

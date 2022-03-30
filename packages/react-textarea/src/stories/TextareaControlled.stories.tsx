@@ -26,7 +26,7 @@ export const Controlled = () => {
   return (
     <div className={styles.container}>
       <Label htmlFor={textareaId} style={{ display: 'block' }}>
-        Controlled textarea limiting the value to 50 characters.
+        Controlled Textarea limiting the value to 50 characters.
       </Label>
       <Textarea value={value} onChange={onChange} id={textareaId} />
     </div>
