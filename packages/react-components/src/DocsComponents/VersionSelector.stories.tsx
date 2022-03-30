@@ -11,6 +11,7 @@ import {
   MenuItem,
 } from '../index';
 import { version as packageJsonVersion } from '../../package.json';
+import * as semver from 'semver';
 
 const useStyles = makeStyles({
   menuButton: {
@@ -37,12 +38,8 @@ const useStyles = makeStyles({
 });
 
 const onCheckedValueChange: MenuProps['onCheckedValueChange'] = (e, data) => {
-  const selectedUrl = data.checkedItems[0] + window.location.search;
-  if (window.top) {
-    window.top.location.href = selectedUrl;
-  } else {
-    window.location.href = selectedUrl;
-  }
+  const selectedUrl = data.checkedItems[0] + (window.top || window).location.search;
+  (window.top || window).location.href = selectedUrl;
 };
 
 /**
@@ -58,8 +55,19 @@ export const VersionSelector: React.FC = () => {
     // https://master--5ccbc373887ca40020446347.chromatic.com/metadata.json
     fetch('/metadata.json').then(async response => {
       if (response.ok) {
-        const metadata = await response.json();
-        setVersions(Object.entries(metadata.versions));
+        const versionsUnsorted: { [key: string]: string } = (await response.json()).versions;
+        const versionsCleaned: string[][] = [];
+
+        Object.entries(versionsUnsorted).forEach(([gitTag, url]) => {
+          const versionDirty = gitTag.split('_').pop() ?? '';
+          const versionClean = semver.clean(versionDirty, true);
+          if (versionDirty && versionClean) {
+            versionsCleaned.push([versionClean, url]);
+          }
+        });
+
+        const versionsSorted = versionsCleaned.sort(([a], [b]) => semver.compare(b, a));
+        setVersions(versionsSorted);
       }
     });
   }, []);
