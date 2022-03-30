@@ -3385,6 +3385,13 @@
   dependencies:
     esquery "^1.0.1"
 
+"@phenomnomnominal/tsquery@^4.0.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@phenomnomnominal/tsquery/-/tsquery-4.2.0.tgz#7742ff4af12ce673b0b601ba5515c934f1876b14"
+  integrity sha512-hR2U3uVcrrdkuG30ItQ+uFDs4ncZAybxWG0OjTE8ptPzVoU7GVeXpy+vMU8zX9EbmjGeITPw/su5HjYQyAH8bA==
+  dependencies:
+    esquery "^1.0.1"
+
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.1":
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.5.4.tgz#df0d0d855fc527db48aac93c218a0bf4ada41f99"
@@ -5660,6 +5667,13 @@
   version "16.0.4"
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-16.0.4.tgz#26aad98dd2c2a38e421086ea9ad42b9e51642977"
   integrity sha512-T8Yc9wt/5LbJyCaLiHPReJa0kApcIgJ7Bn735GjItUfh08Z1pJvu8QZqb9s+mMvKV6WUQRV7K2R46YbjMXTTJw==
+  dependencies:
+    "@types/yargs-parser" "*"
+
+"@types/yargs@^17.0.0":
+  version "17.0.10"
+  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-17.0.10.tgz#591522fce85d8739bca7b8bb90d048e4478d186a"
+  integrity sha512-gmEaFwpj/7f/ROdtIlci1R1VYU1J4j95m8T+Tj3iBgiBFKg1foE/PSl93bBd5T9LDXNPo8UlNN6W0qwD8O5OaA==
   dependencies:
     "@types/yargs-parser" "*"
 
@@ -11407,6 +11421,15 @@ eslint-config-prettier@8.3.0, eslint-config-prettier@^8.3.0:
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.3.0.tgz#f7471b20b6fe8a9a9254cc684454202886a2dd7a"
   integrity sha512-BgZuLUSeKzvlL/VUjx/Yb787VQ26RU3gGjA3iiFvdsp/2bMfVIWUVP7tjxtjS0e+HP409cPlPvNkQloz8C91ew==
 
+eslint-etc@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-etc/-/eslint-etc-5.1.0.tgz#7e99b80452fe8335065fddf7800e4495dc0922a0"
+  integrity sha512-Rmjl01h5smi5cbsFne2xpTuch2xNnwXiX2lbS4HttXUN5FwXKAwG1UEFBVGO1nC091YO/QyVahyfNPJSX2ae+g==
+  dependencies:
+    "@typescript-eslint/experimental-utils" "^5.0.0"
+    tsutils "^3.17.1"
+    tsutils-etc "^1.4.1"
+
 eslint-import-resolver-node@^0.3.6:
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/eslint-import-resolver-node/-/eslint-import-resolver-node-0.3.6.tgz#4048b958395da89668252001dbd9eca6b83bacbd"
@@ -11458,6 +11481,18 @@ eslint-plugin-es@^3.0.0:
   dependencies:
     eslint-utils "^2.0.0"
     regexpp "^3.0.0"
+
+eslint-plugin-etc@2.0.2, eslint-plugin-etc@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-etc/-/eslint-plugin-etc-2.0.2.tgz#98013013058209f5a1d364caf17caeb62bd817ce"
+  integrity sha512-g3b95LCdTCwZA8On9EICYL8m1NMWaiGfmNUd/ftZTeGZDXrwujKXUr+unYzqKjKFo1EbqJ31vt+Dqzrdm/sUcw==
+  dependencies:
+    "@phenomnomnominal/tsquery" "^4.0.0"
+    "@typescript-eslint/experimental-utils" "^5.0.0"
+    eslint-etc "^5.1.0"
+    requireindex "~1.2.0"
+    tslib "^2.0.0"
+    tsutils "^3.0.0"
 
 eslint-plugin-import@2.25.4, eslint-plugin-import@^2.22.1:
   version "2.25.4"
@@ -22438,6 +22473,11 @@ require-package-name@^2.0.1:
   resolved "https://registry.yarnpkg.com/require-package-name/-/require-package-name-2.0.1.tgz#c11e97276b65b8e2923f75dabf5fb2ef0c3841b9"
   integrity sha1-wR6XJ2tluOKSP3Xav1+y7ww4Qbk=
 
+requireindex@~1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.2.0.tgz#3463cdb22ee151902635aa6c9535d4de9c2ef1ef"
+  integrity sha512-L9jEkOi3ASd9PYit2cwRfyppc9NoABujTP8/5gFcbERmo5jUoAKovIC3fsF17pkTnGsrByysqX+Kxd2OTNI1ww==
+
 requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
@@ -25195,6 +25235,14 @@ tslib@^1.10.0, tslib@^1.13.0, tslib@^1.14.1, tslib@^1.8.1, tslib@^1.9.0, tslib@^
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
+tsutils-etc@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/tsutils-etc/-/tsutils-etc-1.4.1.tgz#bd42a0079d534765ab314d087f8a89c77a68723f"
+  integrity sha512-6UPYgc7OXcIW5tFxlsZF3OVSBvDInl/BkS3Xsu64YITXk7WrnWTVByKWPCThFDBp5gl5IGHOzGMdQuDCE7OL4g==
+  dependencies:
+    "@types/yargs" "^17.0.0"
+    yargs "^17.0.0"
+
 tsutils@^3.0.0, tsutils@^3.17.1:
   version "3.17.1"
   resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-3.17.1.tgz#ed719917f11ca0dee586272b2ac49e015a2dd759"
@@ -27078,10 +27126,10 @@ yargs@^16.1.1, yargs@^16.2.0:
     y18n "^5.0.5"
     yargs-parser "^20.2.2"
 
-yargs@^17.2.1:
-  version "17.3.1"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.3.1.tgz#da56b28f32e2fd45aefb402ed9c26f42be4c07b9"
-  integrity sha512-WUANQeVgjLbNsEmGk20f+nlHgOqzRFpiGWVaBrYGYIGANIIu3lWjoyi0fNlFmJkvfhCZ6BXINe7/W2O2bV4iaA==
+yargs@^17.0.0, yargs@^17.2.1:
+  version "17.4.0"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.4.0.tgz#9fc9efc96bd3aa2c1240446af28499f0e7593d00"
+  integrity sha512-WJudfrk81yWFSOkZYpAZx4Nt7V4xp7S/uJkX0CnxovMCt1wCE8LNftPpNuF9X/u9gN5nsD7ycYtRcDf2pL3UiA==
   dependencies:
     cliui "^7.0.2"
     escalade "^3.1.1"

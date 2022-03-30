@@ -13,7 +13,7 @@ const config = {
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['import', '@fluentui', '@rnx-kit', '@typescript-eslint', 'deprecation', 'jest', 'jsdoc'],
+  plugins: ['import', '@fluentui', '@rnx-kit', '@typescript-eslint', 'deprecation', 'jest', 'jsdoc', 'etc'],
   settings: {
     'import/resolver': {
       // @see https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
