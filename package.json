@@ -158,7 +158,7 @@
     "chalk": "4.1.0",
     "ci-info": "3.2.0",
     "clean-webpack-plugin": "3.0.0",
-    "cli-table3": "0.6.0",
+    "cli-table3": "0.6.1",
     "copy-webpack-plugin": "8.1.0",
     "cross-env": "^5.1.4",
     "css-loader": "5.0.1",
