@@ -12,10 +12,10 @@ exports[`Spinner renders a default state 1`] = `
         role="progressbar"
       >
         <circle
-          id="track"
+          class="spinner_Track"
         />
         <circle
-          id="tail"
+          class="spinner_Tail"
         />
       </svg>
     </span>
