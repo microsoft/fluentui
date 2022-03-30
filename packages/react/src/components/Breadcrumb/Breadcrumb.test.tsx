@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Breadcrumb } from './index';
 import { Icon } from '../../Icon';
@@ -17,6 +17,12 @@ describe('Breadcrumb', () => {
 
   beforeEach(() => {
     resetIds();
+  });
+
+  afterEach(() => {
+    if ((setTimeout as any).mock) {
+      jest.useRealTimers();
+    }
   });
 
   it('renders empty breadcrumb', () => {
@@ -75,6 +81,8 @@ describe('Breadcrumb', () => {
   });
 
   it('renders items with expected element type', () => {
+    jest.useFakeTimers();
+
     const items2: IBreadcrumbItem[] = [
       { text: 'Test1', key: 'Test1', href: 'http://bing.com', onClick: () => undefined },
       { text: 'Test2', key: 'Test2', onClick: () => undefined },
@@ -82,8 +90,11 @@ describe('Breadcrumb', () => {
     ];
 
     const { getAllByRole } = render(<Breadcrumb items={items2} />);
+    act(() => {
+      jest.runAllTimers();
+    });
 
-    const renderedItems = getAllByRole('listitem', { hidden: true });
+    const renderedItems = getAllByRole('listitem');
     expect(renderedItems).toHaveLength(3);
     // should be a link since it has a href (even though it also has onclick)
     expect(renderedItems[0].firstElementChild!.tagName).toBe('A');
@@ -95,6 +106,8 @@ describe('Breadcrumb', () => {
   });
 
   it('calls the callback when an item is clicked', () => {
+    jest.useFakeTimers();
+
     let callbackValue;
     const clickCallback = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) => {
       ev.preventDefault(); // in case it's a navigation event
@@ -107,30 +120,49 @@ describe('Breadcrumb', () => {
     ];
 
     const { getByRole } = render(<Breadcrumb items={items2} />);
+    act(() => {
+      jest.runAllTimers();
+    });
 
-    userEvent.click(getByRole('link', { hidden: true }));
+    userEvent.click(getByRole('link'));
     expect(callbackValue).toEqual('Test1');
 
-    userEvent.click(getByRole('button', { hidden: true }));
+    userEvent.click(getByRole('button'));
     expect(callbackValue).toEqual('Test2');
   });
 
   it('moves items to overflow in the correct order', () => {
+    jest.useFakeTimers();
+
     const { getAllByRole } = render(<Breadcrumb items={items} maxDisplayedItems={2} />);
-    const firstListItem = getAllByRole('listitem', { hidden: true })[1].firstElementChild;
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    const firstListItem = getAllByRole('listitem')[1].firstElementChild;
     expect(firstListItem!.textContent).toContain('TestText3');
   });
 
   it('supports native props on the root element', () => {
-    const { getByRole } = render(<Breadcrumb items={items} maxDisplayedItems={2} role="region" />);
+    jest.useFakeTimers();
 
-    expect(getByRole('region', { hidden: true })).toBeTruthy();
+    const { getByRole } = render(<Breadcrumb items={items} maxDisplayedItems={2} role="region" />);
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    expect(getByRole('region')).toBeTruthy();
   });
 
   it('opens the overflow menu on click', () => {
-    const { getByRole, getAllByRole } = render(<Breadcrumb items={items} maxDisplayedItems={2} />);
+    jest.useFakeTimers();
 
-    const overflowButton = getByRole('button', { hidden: true });
+    const { getByRole, getAllByRole } = render(<Breadcrumb items={items} maxDisplayedItems={2} />);
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    const overflowButton = getByRole('button');
     userEvent.click(overflowButton!);
 
     const overfowItems = getAllByRole('menuitem');
@@ -141,6 +173,8 @@ describe('Breadcrumb', () => {
 
   describe('ARIA prop propagation to breadcrumb items', () => {
     it('for Link', () => {
+      jest.useFakeTimers();
+
       const itemsWithAdditionalProps: IBreadcrumbItem[] = [
         {
           key: 'ItemKey1',
@@ -151,12 +185,17 @@ describe('Breadcrumb', () => {
       ];
 
       const { getByRole } = render(<Breadcrumb items={itemsWithAdditionalProps} />);
+      act(() => {
+        jest.runAllTimers();
+      });
 
-      const item = getByRole('link', { hidden: true });
+      const item = getByRole('link');
       expect(item.getAttribute('aria-label')).toEqual("I'm an aria prop");
     });
 
     it('for Tag', () => {
+      jest.useFakeTimers();
+
       const itemsWithAdditionalProps: IBreadcrumbItem[] = [
         {
           key: 'ItemKey1',
@@ -166,6 +205,9 @@ describe('Breadcrumb', () => {
       ];
 
       const { getByRole } = render(<Breadcrumb items={itemsWithAdditionalProps} />);
+      act(() => {
+        jest.runAllTimers();
+      });
 
       const item = getByRole('listitem', { hidden: true }).firstElementChild;
       expect(item!.getAttribute('aria-label')).toEqual("I'm an aria prop");
