@@ -66,6 +66,9 @@ export const TabList: ForwardRefComponent<TabListProps>;
 // @public (undocumented)
 export const tabListClassName: string;
 
+// @public (undocumented)
+export const tabListClassNames: SlotClassNames<TabListSlots>;
+
 // Warning: (ae-forgotten-export) The symbol "TabListCommons" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
@@ -86,9 +89,6 @@ export type TabListContextValues = {
 export type TabListProps = ComponentProps<TabListSlots> & TabListCommons & {
     defaultSelectedValue?: TabValue;
 };
-
-// @public (undocumented)
-export const tabListSlotClassNames: SlotClassNames<TabListSlots>;
 
 // @public (undocumented)
 export type TabListSlots = {
