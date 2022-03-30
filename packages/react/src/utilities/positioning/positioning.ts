@@ -757,9 +757,9 @@ function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | Point 
       // HTMLImgElements can have x and y values. The check for it being a point must go last.
     } else {
       const rectOrPoint: Point & Rectangle = target as Point & Rectangle;
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       const left = rectOrPoint.left || rectOrPoint.x;
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       const top = rectOrPoint.top || rectOrPoint.y;
       const right = rectOrPoint.right || left;
       const bottom = rectOrPoint.bottom || top;
@@ -987,9 +987,9 @@ export function getMaxHeight(
     ? _getRectangleFromIRect(bounds)
     : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
 
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   const left = rectOrPointTarget.left || rectOrPointTarget.x;
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   const top = rectOrPointTarget.top || rectOrPointTarget.y;
   const right = rectOrPointTarget.right || left;
   const bottom = rectOrPointTarget.bottom || top;
@@ -1046,9 +1046,9 @@ function _getBoundsFromTargetWindow(
   }
   // If the target is not null get x-axis and y-axis coordinates directly.
   else if (target !== null) {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     x = (target as Point).left || (target as MouseEvent | Point).x;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     y = (target as Point).top || (target as MouseEvent | Point).y;
   }
 

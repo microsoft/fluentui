@@ -132,7 +132,7 @@ export function getSemanticColors<TResult = Partial<ISemanticColors>>(
     result.listItemBackgroundChecked = neutralLight;
     result.listHeaderBackgroundPressed = neutralLight;
     result.menuItemBackgroundPressed = neutralLight;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     result.menuItemBackgroundChecked = neutralLight;
   }
   if (neutralLighter) {

@@ -188,7 +188,7 @@ const onButtonKeyDown = (
 ): ((ev: React.KeyboardEvent<HTMLButtonElement | HTMLDivElement>) => void) => (
   ev: React.KeyboardEvent<HTMLButtonElement>,
 ) => {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   switch (ev.which) {
     case KeyCodes.enter:
       callback?.();

@@ -39,7 +39,7 @@ export interface ISuggestions<T> {
  * Type T is the type of the items that are displayed.
  * {@docCategory Pickers}
  */
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line etc/no-deprecated
 export interface ISuggestionsProps<T> extends React.Props<any> {
   /**
    * Optional callback to access the ISuggestions interface. Use this instead of ref for accessing

@@ -10,7 +10,7 @@ export type Diff<T extends keyof any, U extends keyof any> = ({ [P in T]: P } &
 /**
  * @deprecated Use the version provided by TypeScript instead.
  */
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line etc/no-deprecated
 export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 
 /**
@@ -28,7 +28,7 @@ export type __MapToFunctionType<T> = Extract<T, Function> extends never
  * property.
  */
 export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = { [key: string]: any }> = {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any> };
@@ -38,7 +38,7 @@ export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = { [key: string]: 
  * A concatenated style set differs from `IStyleSet` in that subComponentStyles will always be a style function.
  */
 export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any> };
@@ -49,7 +49,7 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
  * into a class name. Additionally, all subComponentStyles are style functions.
  */
 export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string;
 } & {
   subComponentStyles: {

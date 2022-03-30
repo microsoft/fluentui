@@ -160,7 +160,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * for ref counting to work correctly!
    */
   private static _onKeyDownCapture(ev: KeyboardEvent): void {
-    // eslint-disable-next-line deprecation/deprecation, @fluentui/deprecated-keyboard-event-props
+    // eslint-disable-next-line etc/no-deprecated, @fluentui/deprecated-keyboard-event-props
     if (ev.which === KeyCodes.tab) {
       _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
     }
@@ -227,9 +227,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
       if (this.props.defaultTabbableElement && typeof this.props.defaultTabbableElement === 'string') {
         this._activeElement = this._getDocument().querySelector(this.props.defaultTabbableElement) as HTMLElement;
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line etc/no-deprecated
       } else if (this.props.defaultActiveElement) {
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line etc/no-deprecated
         this._activeElement = this._getDocument().querySelector(this.props.defaultActiveElement) as HTMLElement;
       }
 
@@ -285,7 +285,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   }
 
   public render(): React.ReactNode {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const { as: tag, elementType, rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
@@ -317,7 +317,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         // be replaced so that className is passed to getRootClass and is included there so
         // the class names will always be in the same order.
         className={css(getRootClass(), className)}
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line etc/no-deprecated
         ref={this._mergedRef(this.props.elementRef, this._root)}
         data-focuszone-id={this._id}
         // eslint-disable-next-line react/jsx-no-bind
@@ -392,7 +392,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   public focusElement(element: HTMLElement, forceAlignment?: boolean): boolean {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const { onBeforeFocus, shouldReceiveFocus } = this.props;
 
     if ((shouldReceiveFocus && !shouldReceiveFocus(element)) || (onBeforeFocus && !onBeforeFocus(element))) {
@@ -444,10 +444,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     const {
       onActiveElementChanged,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       doNotAllowFocusEventToPropagate,
       stopFocusPropagation,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       onFocusNotification,
       onFocus,
       shouldFocusInnerElementWhenReceivedFocus,
@@ -625,7 +625,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       return;
     }
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const { direction, disabled, isInnerZoneKeystroke, pagingSupportDisabled, shouldEnterInnerZone } = this.props;
 
     if (disabled) {
@@ -732,7 +732,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
         case KeyCodes.tab:
           if (
-            // eslint-disable-next-line deprecation/deprecation
+            // eslint-disable-next-line etc/no-deprecated
             this.props.allowTabKey ||
             this.props.handleTabKey === FocusZoneTabbableElements.all ||
             (this.props.handleTabKey === FocusZoneTabbableElements.inputOnly &&
@@ -956,7 +956,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _moveFocusDown(): boolean {
     let targetTop = -1;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const leftAlignment = this._focusAlignment.left || this._focusAlignment.x || 0;
 
     if (
@@ -998,7 +998,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _moveFocusUp(): boolean {
     let targetTop = -1;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const leftAlignment = this._focusAlignment.left || this._focusAlignment.x || 0;
 
     if (
@@ -1127,7 +1127,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     activeRect: ClientRect,
     targetRect: ClientRect,
   ): number => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const leftAlignment = this._focusAlignment.left || this._focusAlignment.x || 0;
     // ClientRect values can be floats that differ by very small fractions of a decimal.
     // If the difference between top and bottom are within a pixel then we should treat

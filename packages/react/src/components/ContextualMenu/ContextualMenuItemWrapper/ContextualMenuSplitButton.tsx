@@ -129,7 +129,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
   protected _onItemKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     const { item, onItemKeyDown } = this.props;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     if (ev.which === KeyCodes.enter) {
       this._executeItemClick(ev);
       ev.preventDefault();
@@ -154,7 +154,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
   private _renderSplitPrimaryButton(
     item: IContextualMenuItem,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     classNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,

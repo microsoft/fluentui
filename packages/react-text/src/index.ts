@@ -1,4 +1,3 @@
-/* eslint-disable deprecation/deprecation -- https://github.com/microsoft/fluentui/pull/21960#issuecomment-1068991851 */
 export {
   Text,
   renderText_unstable,

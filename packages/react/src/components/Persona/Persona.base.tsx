@@ -44,7 +44,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
      * Deprecation helper for getting text.
      */
     const getText = (): string => {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       return props.text || props.primaryText || '';
     };
 
@@ -129,7 +129,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
       initialsTextColor,
       isOutOfOffice,
       onPhotoLoadingStateChange,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       onRenderCoin,
       onRenderInitials,
       presence,

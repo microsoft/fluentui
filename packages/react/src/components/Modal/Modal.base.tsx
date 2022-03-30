@@ -118,12 +118,12 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       theme,
       topOffsetFixed,
       responsiveMode,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       onLayerDidMount,
       isModeless,
       dragOptions,
       onDismissed,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       enableAriaHiddenSiblings,
     } = props;
 
@@ -273,7 +273,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       // We need a global handleKeyDown event when we are in the move mode so that we can
       // handle the key presses and the components inside the modal do not get the events
       const handleKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line etc/no-deprecated
         if (ev.altKey && ev.ctrlKey && ev.keyCode === KeyCodes.space) {
           // CTRL + ALT + SPACE is handled during keyUp
           ev.preventDefault();
@@ -281,13 +281,13 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
           return;
         }
 
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line etc/no-deprecated
         const newLocal = ev.altKey || ev.keyCode === KeyCodes.escape;
         if (isModalMenuOpen && newLocal) {
           setModalMenuClose();
         }
 
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line etc/no-deprecated
         if (internalState.isInKeyboardMoveMode && (ev.keyCode === KeyCodes.escape || ev.keyCode === KeyCodes.enter)) {
           internalState.isInKeyboardMoveMode = false;
           ev.preventDefault();
@@ -298,7 +298,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
           let handledEvent = true;
           const delta = getMoveDelta(ev);
 
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line etc/no-deprecated
           switch (ev.keyCode) {
             /* eslint-disable no-fallthrough */
             case KeyCodes.escape:
@@ -358,7 +358,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       const handleKeyUp = (ev: React.KeyboardEvent<HTMLElement>): void => {
         // Needs to handle the CTRL + ALT + SPACE key during keyup due to FireFox bug:
         // https://bugzilla.mozilla.org/show_bug.cgi?id=1220143
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line etc/no-deprecated
         if (ev.altKey && ev.ctrlKey && ev.keyCode === KeyCodes.space) {
           if (elementContains(internalState.scrollableContent, ev.target as HTMLElement)) {
             toggleModalMenuOpen();

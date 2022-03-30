@@ -1,6 +1,6 @@
 export {
   Badge,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   badgeClassName,
   badgeClassNames,
   renderBadge_unstable,
@@ -10,7 +10,7 @@ export {
 export type { BadgeProps, BadgeSlots, BadgeState } from './Badge';
 export {
   PresenceBadge,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   presenceBadgeClassName,
   presenceBadgeClassNames,
   usePresenceBadgeStyles_unstable,
@@ -19,7 +19,7 @@ export {
 export type { PresenceBadgeProps, PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge';
 export {
   CounterBadge,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   counterBadgeClassName,
   counterBadgeClassNames,
   useCounterBadgeStyles_unstable,

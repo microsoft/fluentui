@@ -8,7 +8,7 @@ export { IStyleFunction, IStyleFunctionOrObject } from './IStyleFunction';
 
 export { DeepPartial } from './DeepPartial';
 
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line etc/no-deprecated
 export { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet, Omit } from './IStyleSet';
 
 export { ICSSRule, ICSSPixelUnitRule, IFontFace, IFontWeight, IRawFontStyle, IRawStyleBase } from './IRawStyleBase';

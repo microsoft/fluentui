@@ -29,7 +29,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       children,
       hostId,
       onLayerDidMount = () => undefined,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       onLayerMounted = () => undefined,
       onLayerWillUnmount,
       insertFirst,

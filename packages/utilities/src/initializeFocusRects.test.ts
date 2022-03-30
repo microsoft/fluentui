@@ -38,7 +38,7 @@ describe('initializeFocusRects', () => {
 
   beforeEach(() => {
     classNames = [];
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     initializeFocusRects(mockWindow as Window);
   });
 

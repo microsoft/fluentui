@@ -75,6 +75,6 @@ export const FocusZoneListExample: React.FunctionComponent = () => {
 };
 
 function _shouldEnterInnerZone(ev: React.KeyboardEvent<HTMLElement>): boolean {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   return ev.which === getRTLSafeKeyCode(KeyCodes.right);
 }

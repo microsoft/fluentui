@@ -44,10 +44,10 @@ export const TeachingBubbleBase: React.FunctionComponent<ITeachingBubbleProps> =
   const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
   const {
     calloutProps: setCalloutProps,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     targetElement,
     onDismiss,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     hasCloseButton = props.hasCloseIcon,
     isWide,
     styles,

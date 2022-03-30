@@ -1,6 +1,6 @@
 export {
   Image,
-  // eslint-disable-next-line deprecation/deprecation -- https://github.com/microsoft/fluentui/pull/21960#issuecomment-1068991851
+  // eslint-disable-next-line etc/no-deprecated -- https://github.com/microsoft/fluentui/pull/21960#issuecomment-1068991851
   imageClassName,
   imageClassNames,
   renderImage_unstable,

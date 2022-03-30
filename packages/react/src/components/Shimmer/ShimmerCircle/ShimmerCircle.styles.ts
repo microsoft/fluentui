@@ -8,7 +8,7 @@ const GlobalClassNames = {
 };
 
 export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   const { height, borderStyle, theme } = props;
 
   const { semanticColors } = theme;

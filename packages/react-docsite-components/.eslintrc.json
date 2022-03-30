@@ -2,6 +2,6 @@
   "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
   "root": true,
   "rules": {
-    "deprecation/deprecation": "off"
+    "etc/no-deprecated": "off"
   }
 }

@@ -122,7 +122,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       disabled,
       allowDisabledFocus,
       primaryDisabled,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       secondaryText = this.props.description,
       href,
       iconProps,
@@ -176,7 +176,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     const tag = renderAsAnchor ? 'a' : 'button';
 
     const nativeProps = getNativeProps(
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       assign(renderAsAnchor ? {} : { type: 'button' }, this.props.rootProps, this.props),
       renderAsAnchor ? anchorProperties : buttonProperties,
       [
@@ -225,7 +225,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
     const buttonProps = assign(nativeProps, {
       className: this._classNames.root,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       ref: this._mergedRef(this.props.elementRef, this._buttonElement),
       disabled: isPrimaryButtonDisabled && !allowDisabledFocus,
       onKeyDown: this._onKeyDown,
@@ -315,7 +315,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       onRenderIcon = this._onRenderIcon,
       onRenderAriaDescription = this._onRenderAriaDescription,
       onRenderChildren = this._onRenderChildren,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       onRenderMenu = this._onRenderMenu,
       onRenderMenuIcon = this._onRenderMenuIcon,
       disabled,
@@ -380,7 +380,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
    */
   private _shouldRenderMenu() {
     const { menuHidden } = this.state;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const { persistMenu, renderPersistedMenuHiddenOnMount } = this.props;
 
     if (!menuHidden) {
@@ -423,7 +423,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     const {
       text,
       children,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       secondaryText = this.props.description,
       onRenderText = this._onRenderText,
       onRenderDescription = this._onRenderDescription,
@@ -481,7 +481,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   };
 
   private _onRenderDescription = (props: IButtonProps) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const { secondaryText = this.props.description } = props;
 
     // ms-Button-description is only shown when the button type is compound.
@@ -739,7 +739,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
     // explicity cancelling event so click won't fire after this
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     if (this.props.disabled && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       ev.preventDefault();
       ev.stopPropagation();
@@ -797,7 +797,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   };
 
   private _onSplitButtonContainerKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       if (this._buttonElement.current) {
         this._buttonElement.current.click();
@@ -818,9 +818,9 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       this.props.onKeyDown(ev);
     }
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const isUp = ev.which === KeyCodes.up;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const isDown = ev.which === KeyCodes.down;
 
     if (!ev.defaultPrevented && this._isValidMenuOpenKey(ev)) {
@@ -834,7 +834,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       ev.stopPropagation();
     }
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       // We manually set the focus visibility to true if opening via Enter or Space to account for the scenario where
       // a user clicks on the button, closes the menu and then opens it via keyboard. In this scenario our default logic
@@ -916,10 +916,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>,
   ): boolean {
     if (this.props.menuTriggerKeyCode) {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       return ev.which === this.props.menuTriggerKeyCode;
     } else if (this.props.menuProps) {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
     }
 

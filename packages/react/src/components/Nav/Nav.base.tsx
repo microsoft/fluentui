@@ -146,7 +146,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties, ['onClick']) };
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const { expandButtonAriaLabel, styles, groups, theme } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -249,7 +249,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   };
 
   private _renderGroupHeader = (group: IRenderGroupHeaderProps): React.ReactElement<{}> => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const { styles, groups, theme, expandButtonAriaLabel } = this.props;
 
     const { isExpanded } = group;

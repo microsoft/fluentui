@@ -84,7 +84,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
         (itemRole === 'menuitemcheckbox' || itemRole === 'menuitemradio') && canCheck ? !!isChecked : undefined,
       'aria-selected': itemRole === 'menuitem' && canCheck ? !!isChecked : undefined,
       role: itemRole,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       style: item.style,
     };
 

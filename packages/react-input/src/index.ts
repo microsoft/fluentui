@@ -1,6 +1,6 @@
 export {
   Input,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   inputClassName,
   inputClassNames,
   renderInput_unstable,

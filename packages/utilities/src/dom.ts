@@ -13,7 +13,7 @@ export { isVirtualElement } from './dom/isVirtualElement';
 export { on } from './dom/on';
 export { portalContainsElement } from './dom/portalContainsElement';
 export {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   raiseClick,
 } from './dom/raiseClick';
 export { DATA_PORTAL_ATTRIBUTE, setPortalAttribute } from './dom/setPortalAttribute';

@@ -41,7 +41,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
       maxValue: 'type',
       minValue: 'type',
     });
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     if (this._type !== 'hue' && !(props.overlayColor || props.overlayStyle)) {
       warn(`ColorSlider: 'overlayColor' is required when 'type' is "alpha" or "transparency"`);
     }
@@ -71,7 +71,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     const type = this._type;
     const maxValue = this._maxValue;
     const {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       overlayStyle,
       overlayColor,
       theme,
@@ -127,7 +127,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   }
 
   private get _type(): IColorSliderProps['type'] {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const { isAlpha, type = isAlpha ? 'alpha' : 'hue' } = this.props;
     return type;
   }
@@ -143,7 +143,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
 
     // Intentionally DO NOT flip the color picker in RTL: its orientation is not very meaningful,
     // and getting all the math and styles flipped correctly is tricky
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     switch (ev.which) {
       case KeyCodes.left: {
         currentValue -= increment;

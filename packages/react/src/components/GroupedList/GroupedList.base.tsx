@@ -358,7 +358,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   };
 
   private _isInnerZoneKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     return ev.which === getRTLSafeKeyCode(KeyCodes.right);
   };
 

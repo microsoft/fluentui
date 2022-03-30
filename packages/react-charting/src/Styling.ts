@@ -38,11 +38,11 @@ export {
   createTheme,
   focusClear,
   fontFace,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   getEdgeChromiumNoHighContrastAdjustSelector,
   getFadedOverflowStyle,
   getFocusOutlineStyle,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   getFocusStyle,
   getGlobalClassNames,
   getHighContrastNoAdjustStyle,

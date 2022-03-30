@@ -325,7 +325,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
   };
 
   const onTextFieldKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     switch (ev.which) {
       case KeyCodes.enter:
         ev.preventDefault();

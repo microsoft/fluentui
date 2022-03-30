@@ -120,7 +120,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       alphaSliderHidden: 'alphaType',
     });
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     if (strings.hue) {
       // warnDeprecations can't handle nested deprecated props
       warn("ColorPicker property 'strings.hue' was used but has been deprecated. Use 'strings.hueAriaLabel' instead.");
@@ -180,7 +180,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       className,
       styles,
       alphaType,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       alphaSliderHidden = alphaType === 'none',
       tooltipProps,
     } = props;
@@ -218,7 +218,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
               <ColorSlider
                 className="is-hue"
                 type="hue"
-                // eslint-disable-next-line deprecation/deprecation
+                // eslint-disable-next-line etc/no-deprecated
                 ariaLabel={strings.hue || strings.hueAriaLabel}
                 value={color.h}
                 onChange={this._onHChanged}

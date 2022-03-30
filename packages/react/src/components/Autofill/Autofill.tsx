@@ -29,9 +29,9 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   private _async: Async;
 
   public static getDerivedStateFromProps(props: IAutofillProps, state: IAutofillState): IAutofillState | null {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     if (props.updateValueInWillReceiveProps) {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       const updatedInputValue = props.updateValueInWillReceiveProps();
       // Don't update if we have a null value or the value isn't changing
       // the value should still update if an empty string is passed in
@@ -232,7 +232,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     // Right now typing does not have isComposing, once that has been fixed any should be removed.
 
     if (!(ev.nativeEvent as any).isComposing) {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       switch (ev.which) {
         case KeyCodes.backspace:
           this._autoFillEnabled = false;
@@ -246,7 +246,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
           break;
         default:
           if (!this._autoFillEnabled) {
-            // eslint-disable-next-line deprecation/deprecation
+            // eslint-disable-next-line etc/no-deprecated
             if (this.props.enableAutofillOnKeyPress!.indexOf(ev.which) !== -1) {
               this._autoFillEnabled = true;
             }
@@ -322,7 +322,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       return;
     }
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const { onInputChange, onInputValueChange } = this.props;
     if (onInputChange) {
       newValue = onInputChange?.(newValue, composing) || '';

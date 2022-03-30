@@ -1,6 +1,6 @@
 export {
   Label,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   labelClassName,
   labelClassNames,
   renderLabel_unstable,

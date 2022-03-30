@@ -37,7 +37,7 @@ export interface IBasePicker<T> {
  * displaying persona's then type T could either be of Persona or IPersona props
  * {@docCategory Pickers}
  */
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line etc/no-deprecated
 export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Optional callback to access the IBasePicker interface. Use this instead of ref for accessing

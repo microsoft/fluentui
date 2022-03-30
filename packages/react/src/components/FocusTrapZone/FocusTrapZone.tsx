@@ -74,7 +74,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     elementToFocusOnDismiss,
     forceFocusInsideTrap = true,
     focusPreviouslyFocusedInnerElement,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     firstFocusableSelector,
     firstFocusableTarget,
     ignoreExternalFocusing,

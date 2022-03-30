@@ -165,7 +165,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       return item.onRender(item, () => undefined);
     }
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const itemText = item.text || item.name;
     const commandButtonProps: ICommandBarItemProps = {
       allowDisabledFocus: true,
@@ -212,7 +212,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
   private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
     return ev => {
       // inactive is deprecated. remove check in 7.0
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       if (item.inactive) {
         return;
       }

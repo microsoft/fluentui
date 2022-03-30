@@ -1,6 +1,6 @@
 export {
   Checkbox,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   checkboxClassName,
   checkboxClassNames,
   renderCheckbox_unstable,

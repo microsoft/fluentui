@@ -65,7 +65,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       directionalHintForRTL,
       hostClassName: className,
       id,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       setAriaDescribedBy = true,
       tooltipProps,
       styles,
@@ -243,7 +243,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   };
 
   private _onTooltipKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     if ((ev.which === KeyCodes.escape || ev.ctrlKey) && this.state.isTooltipVisible) {
       this._hideTooltip();
       ev.stopPropagation();

@@ -216,7 +216,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       ? internalState.latestLowerValue
       : internalState.latestValue;
     let diff = 0;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     switch (event.which) {
       case getRTLSafeKeyCode(KeyCodes.left, props.theme):
       case KeyCodes.down:

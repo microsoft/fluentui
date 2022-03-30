@@ -84,7 +84,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
       disabled,
       getAriaLabel,
       styles,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       min: minFromProps = props.allowZeroStars ? 0 : 1,
       max = 5,
       readOnly,

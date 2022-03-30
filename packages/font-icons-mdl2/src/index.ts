@@ -48,7 +48,7 @@ export function initializeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: II
   registerIconAliases();
 }
 
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line etc/no-deprecated
 export { IconNames } from './IconNames';
 
 import './version';

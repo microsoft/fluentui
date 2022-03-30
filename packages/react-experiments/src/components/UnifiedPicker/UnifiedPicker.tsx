@@ -332,7 +332,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       // Allow the caller to handle the key down
       onKeyDown?.(ev);
 
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       if (ev.ctrlKey && ev.which === KeyCodes.a) {
         selectAll();
       }
@@ -421,7 +421,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const _onInputKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<Autofill | HTMLElement>) => {
       if (isSuggestionsShown) {
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line etc/no-deprecated
         const keyCode = ev.which;
         switch (keyCode) {
           case KeyCodes.escape:

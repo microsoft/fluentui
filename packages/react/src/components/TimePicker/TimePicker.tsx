@@ -134,7 +134,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   );
 
   const evaluatePressedKey = (event: React.KeyboardEvent<IComboBox>) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     const charCode = event.charCode;
     if (
       !onFormatDate &&

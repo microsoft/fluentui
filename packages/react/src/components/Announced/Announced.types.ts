@@ -6,7 +6,7 @@ import type { IStyleFunctionOrObject } from '../../Utilities';
 /**
  * {@docCategory Announced}
  */
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line etc/no-deprecated
 export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * The status message the screen reader should announce.

@@ -309,9 +309,9 @@ export class Stylesheet {
       this._rules.push(rule);
     }
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     if (this._config.onInsertRule) {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line etc/no-deprecated
       this._config.onInsertRule(rule);
     }
 

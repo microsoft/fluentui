@@ -53,12 +53,12 @@ export type UseStylesOptions = {
  */
 export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle } = { [key: string]: IStyle }>(
   styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet),
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
 ): (options?: UseStylesOptions) => { [key in keyof TStyleSet]: string } {
   // Create graph of inputs to map to output.
   const graph = new Map();
 
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   return (options: UseStylesOptions = {}) => {
     let { theme } = options;
     const win = useWindow();

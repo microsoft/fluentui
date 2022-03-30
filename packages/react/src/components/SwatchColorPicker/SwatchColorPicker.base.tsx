@@ -66,7 +66,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
     focusOnHover,
     mouseLeaveParentSelector,
     onChange,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line etc/no-deprecated
     onColorChanged,
     onCellHovered,
     onCellFocused,
@@ -282,13 +282,13 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
   const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLButtonElement>): void => {
       if (
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line etc/no-deprecated
         ev.which === KeyCodes.up ||
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line etc/no-deprecated
         ev.which === KeyCodes.down ||
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line etc/no-deprecated
         ev.which === KeyCodes.left ||
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line etc/no-deprecated
         ev.which === KeyCodes.right
       ) {
         setNavigationTimeout();

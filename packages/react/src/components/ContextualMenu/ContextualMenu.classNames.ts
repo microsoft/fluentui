@@ -253,7 +253,7 @@ export const getItemStyles = (props: IContextualMenuItemStyleProps): IContextual
     className,
   } = props;
 
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line etc/no-deprecated
   return getItemClassNames(
     theme,
     disabled,
