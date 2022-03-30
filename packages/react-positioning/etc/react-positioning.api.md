@@ -104,9 +104,7 @@ export type PositioningVirtualElement = VirtualElement;
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
-// Warning: (ae-forgotten-export) The symbol "UseFloatingUIOptions" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
+// @public
 export function usePopper(options: UseFloatingUIOptions): {
     targetRef: React_2.MutableRefObject<any>;
     containerRef: React_2.MutableRefObject<any>;
