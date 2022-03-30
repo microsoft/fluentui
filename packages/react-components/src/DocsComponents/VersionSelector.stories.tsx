@@ -61,9 +61,7 @@ export const VersionSelector: React.FC = () => {
         Object.entries(tagUrlMap).forEach(([gitTag, url]) => {
           const versionDirty = gitTag.split('_').pop() ?? '';
           const versionClean = semver.clean(versionDirty, true);
-          if (versionDirty && versionClean) {
-            versionsCleaned.push([versionClean, url]);
-          }
+          versionsCleaned.push([versionClean ?? versionDirty ?? gitTag, url]);
         });
 
         const versionsSorted = versionsCleaned.sort(([a], [b]) => semver.compare(b, a));
