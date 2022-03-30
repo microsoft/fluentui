@@ -152,8 +152,7 @@ export type SpinButtonChangeEvent =
   | React.MouseEvent<HTMLButtonElement>
   | React.ChangeEvent<HTMLElement>
   | React.FocusEvent<HTMLInputElement>
-  | React.KeyboardEvent<HTMLInputElement>
-  | React.WheelEvent<HTMLDivElement>;
+  | React.KeyboardEvent<HTMLInputElement>;
 
 export type SpinButtonOnChangeData = {
   value?: number;
