@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
-import { TextArea } from '../TextArea';
+import { Textarea } from '../Textarea';
 import { makeStyles, shorthands } from '@griffel/react';
 
 const useStyles = makeStyles({
@@ -17,8 +17,8 @@ export const Disabled = () => {
 
   return (
     <div className={styles.container}>
-      <Label htmlFor={disabledId}>Disabled TextArea.</Label>
-      <TextArea id={disabledId} disabled />
+      <Label htmlFor={disabledId}>Disabled Textarea.</Label>
+      <Textarea id={disabledId} disabled />
     </div>
   );
 };

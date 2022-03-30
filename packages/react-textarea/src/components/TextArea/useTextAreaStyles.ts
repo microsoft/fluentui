@@ -1,11 +1,11 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { TextAreaSlots, TextAreaState } from './TextArea.types';
+import type { TextareaSlots, TextareaState } from './Textarea.types';
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
-export const textAreaClassNames: SlotClassNames<TextAreaSlots> = {
-  root: 'fui-TextArea',
-  textArea: 'fui-TextArea__textArea',
+export const textareaClassNames: SlotClassNames<TextareaSlots> = {
+  root: 'fui-Textarea',
+  textarea: 'fui-Textarea__textarea',
 };
 
 // TODO(sharing) use theme values once available
@@ -39,7 +39,7 @@ const motionCurves = {
   accelerateMid: 'cubic-bezier(0.7,0,1,0.5)',
   decelerateMid: 'cubic-bezier(0.1,0.9,0.2,1)',
 };
-const textAreaHeight = {
+const textareaHeight = {
   small: '24px',
   medium: '32px',
   large: '40px',
@@ -154,9 +154,9 @@ const useRootStyles = makeStyles({
 });
 
 /**
- * Styles for the textArea slot
+ * Styles for the textarea slot
  */
-const useTextAreaStyles = makeStyles({
+const useTextareaStyles = makeStyles({
   base: {
     ...shorthands.borderStyle('none'),
     ...shorthands.margin('0'),
@@ -181,7 +181,7 @@ const useTextAreaStyles = makeStyles({
   // The padding style adds both content and regular padding (from design spec), this is because the handle is not
   // affected by changing the padding of the root.
   small: {
-    height: textAreaHeight.small,
+    height: textareaHeight.small,
     ...shorthands.padding(
       '0',
       `calc(${spacingTokens.horizontal.mNudge} + ${spacingTokens.horizontal.xss})`,
@@ -191,21 +191,21 @@ const useTextAreaStyles = makeStyles({
     ...contentSizeTokens.caption1,
   },
   medium: {
-    height: textAreaHeight.medium,
+    height: textareaHeight.medium,
     ...shorthands.padding('0', `calc(${spacingTokens.horizontal.mNudge} + ${spacingTokens.horizontal.xss})`),
     ...contentSizeTokens.body1,
   },
   large: {
-    height: textAreaHeight.large,
+    height: textareaHeight.large,
     ...shorthands.padding('0', `calc(${spacingTokens.horizontal.m} + ${spacingTokens.horizontal.xss})`),
     ...contentSizeTokens.base400,
   },
 });
 
 /**
- * Styles for the textArea's resize property
+ * Styles for the textarea's resize property
  */
-const useTextAreaResizeStyles = makeStyles({
+const useTextareaResizeStyles = makeStyles({
   none: {
     resize: 'none',
   },
@@ -221,15 +221,15 @@ const useTextAreaResizeStyles = makeStyles({
 });
 
 /**
- * Apply styling to the TextArea slots based on the state
+ * Apply styling to the Textarea slots based on the state
  */
-export const useTextAreaStyles_unstable = (state: TextAreaState): TextAreaState => {
-  const disabled = state.textArea.disabled;
+export const useTextareaStyles_unstable = (state: TextareaState): TextareaState => {
+  const disabled = state.textarea.disabled;
   const { size, appearance, resize } = state;
 
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
-    textAreaClassNames.root,
+    textareaClassNames.root,
     rootStyles.base,
     rootStyles[appearance],
     disabled && rootStyles.disabled,
@@ -238,14 +238,14 @@ export const useTextAreaStyles_unstable = (state: TextAreaState): TextAreaState 
     state.root.className,
   );
 
-  const textAreaStyles = useTextAreaStyles();
-  const textAreaResizeStyles = useTextAreaResizeStyles();
-  state.textArea.className = mergeClasses(
-    textAreaClassNames.textArea,
-    textAreaStyles.base,
-    textAreaStyles[size],
-    textAreaResizeStyles[resize],
-    state.textArea.className,
+  const textareaStyles = useTextareaStyles();
+  const textareaResizeStyles = useTextareaResizeStyles();
+  state.textarea.className = mergeClasses(
+    textareaClassNames.textarea,
+    textareaStyles.base,
+    textareaStyles[size],
+    textareaResizeStyles[resize],
+    state.textarea.className,
   );
 
   return state;

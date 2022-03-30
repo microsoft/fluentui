@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
-import { TextArea } from '../index';
+import { Textarea } from '../index';
 import { Label } from '@fluentui/react-label';
 import { makeStyles, shorthands } from '@griffel/react';
 
@@ -21,20 +21,20 @@ export const Resize = () => {
   return (
     <div className={styles.container}>
       <div>
-        <Label htmlFor={noneId}>TextArea with resize set to "none".</Label>
-        <TextArea id={noneId} resize="none" />
+        <Label htmlFor={noneId}>Textarea with resize set to "none".</Label>
+        <Textarea id={noneId} resize="none" />
       </div>
       <div>
-        <Label htmlFor={verticalId}>TextArea with resize set to "vertical".</Label>
-        <TextArea id={verticalId} resize="vertical" />
+        <Label htmlFor={verticalId}>Textarea with resize set to "vertical".</Label>
+        <Textarea id={verticalId} resize="vertical" />
       </div>
       <div>
-        <Label htmlFor={horizontalId}>TextArea with resize set to "horizontal".</Label>
-        <TextArea id={horizontalId} resize="horizontal" />
+        <Label htmlFor={horizontalId}>Textarea with resize set to "horizontal".</Label>
+        <Textarea id={horizontalId} resize="horizontal" />
       </div>
       <div>
-        <Label htmlFor={bothId}>TextArea with resize set to "both".</Label>
-        <TextArea id={bothId} resize="both" />
+        <Label htmlFor={bothId}>Textarea with resize set to "both".</Label>
+        <Textarea id={bothId} resize="both" />
       </div>
     </div>
   );

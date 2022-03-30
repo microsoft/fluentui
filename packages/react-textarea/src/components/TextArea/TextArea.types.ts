@@ -1,38 +1,38 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-export type TextAreaSlots = {
+export type TextareaSlots = {
   /**
-   * Wrapper element used for displaying the borders for TextArea. This wrapper is needed due to the focus
+   * Wrapper element used for displaying the borders for Textarea. This wrapper is needed due to the focus
    * indicator border animation. For more information, see Spec.md
    *
-   * The root only received a `className` and `style`. All other props are applied to the `textArea` slot.
+   * The root only received a `className` and `style`. All other props are applied to the `textarea` slot.
    */
   root: NonNullable<Slot<'span'>>;
 
   /**
    * The `<textarea>` element. This is the primary slot, all native props and ref will be applied to this slot.
    */
-  textArea: NonNullable<Slot<'textarea'>>;
+  textarea: NonNullable<Slot<'textarea'>>;
 };
 
-type TextAreaCommons = {
+type TextareaCommons = {
   /**
-   * Which direction the TextArea is allowed to be resized.
+   * Which direction the Textarea is allowed to be resized.
    *
    * @defaultvalue none
    */
   resize: 'none' | 'horizontal' | 'vertical' | 'both';
 
   /**
-   * Size of the TextArea.
+   * Size of the Textarea.
    *
    * @defaultvalue medium
    */
   size: 'small' | 'medium' | 'large';
 
   /**
-   * Styling the TextArea should use.
+   * Styling the Textarea should use.
    *
    * @defaultvalue outline
    */
@@ -40,37 +40,37 @@ type TextAreaCommons = {
 };
 
 /**
- * TextArea Props
+ * Textarea Props
  */
-export type TextAreaProps = Omit<
-  ComponentProps<Partial<TextAreaSlots>, 'textArea'>,
+export type TextareaProps = Omit<
+  ComponentProps<Partial<TextareaSlots>, 'textarea'>,
   'value' | 'defaultValue' | 'onChange' | 'size'
 > &
-  Partial<TextAreaCommons> & {
+  Partial<TextareaCommons> & {
     /**
-     * The value of the TextArea.
+     * The value of the Textarea.
      */
     value?: string;
 
     /**
-     * The default value of the TextArea.
+     * The default value of the Textarea.
      */
     defaultValue?: string;
 
     /**
      * Callback for when the user changes the value.
      */
-    onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextAreaOnChangeData) => void;
+    onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
   };
 
 /**
- * State used in rendering TextArea
+ * State used in rendering Textarea
  */
-export type TextAreaState = ComponentState<TextAreaSlots> & TextAreaCommons;
+export type TextareaState = ComponentState<TextareaSlots> & TextareaCommons;
 
 /**
  * Data passed to the `onChange` callback when the textarea's value changes.
  */
-type TextAreaOnChangeData = {
+type TextareaOnChangeData = {
   value: string;
 };

@@ -1,4 +1,4 @@
 import * as React from 'react';
-import { TextArea, TextAreaProps } from '../index';
+import { Textarea, TextareaProps } from '../index';
 
-export const Default = (props: Partial<TextAreaProps>) => <TextArea {...props} />;
+export const Default = (props: Partial<TextareaProps>) => <Textarea {...props} />;

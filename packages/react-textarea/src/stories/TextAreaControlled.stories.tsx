@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { TextArea } from '../TextArea';
+import { Textarea } from '../Textarea';
 import { useId } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
-import type { TextAreaProps } from '../TextArea';
+import type { TextareaProps } from '../Textarea';
 import { makeStyles, shorthands } from '@griffel/react';
 
 const useStyles = makeStyles({
@@ -17,7 +17,7 @@ export const Controlled = () => {
   const styles = useStyles();
   const [value, setValue] = React.useState('initial value');
 
-  const onChange: TextAreaProps['onChange'] = (ev, data) => {
+  const onChange: TextareaProps['onChange'] = (ev, data) => {
     if (data.value.length <= 50) {
       setValue(data.value);
     }
@@ -28,7 +28,7 @@ export const Controlled = () => {
       <Label htmlFor={textareaId} style={{ display: 'block' }}>
         Controlled textarea limiting the value to 50 characters.
       </Label>
-      <TextArea value={value} onChange={onChange} id={textareaId} />
+      <Textarea value={value} onChange={onChange} id={textareaId} />
     </div>
   );
 };

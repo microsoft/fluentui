@@ -1,4 +1,4 @@
-import { TextArea } from '../index';
+import { Textarea } from '../index';
 
 import descriptionMd from './TextAreaDescription.md';
 
@@ -13,7 +13,7 @@ export { Uncontrolled } from './TextAreaUncontrolled.stories';
 
 export default {
   title: 'Components/TextArea',
-  component: TextArea,
+  component: Textarea,
   parameters: {
     docs: {
       description: {

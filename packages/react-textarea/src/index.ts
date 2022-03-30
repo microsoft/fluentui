@@ -1,8 +1,8 @@
 export {
-  TextArea,
-  renderTextArea_unstable,
-  textAreaClassNames,
-  useTextAreaStyles_unstable,
-  useTextArea_unstable,
-} from './TextArea';
-export type { TextAreaProps, TextAreaSlots, TextAreaState } from './TextArea';
+  Textarea,
+  renderTextarea_unstable,
+  textareaClassNames,
+  useTextareaStyles_unstable,
+  useTextarea_unstable,
+} from './Textarea';
+export type { TextareaProps, TextareaSlots, TextareaState } from './Textarea';

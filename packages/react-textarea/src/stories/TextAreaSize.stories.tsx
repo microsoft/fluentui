@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import { useId } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
-import { TextArea } from '../TextArea';
+import { Textarea } from '../Textarea';
 
 const useStyles = makeStyles({
   container: {
@@ -20,16 +20,16 @@ export const Size = () => {
   return (
     <div className={styles.container}>
       <div>
-        <Label htmlFor={smallId}>Small TextArea.</Label>
-        <TextArea id={smallId} size="small" />
+        <Label htmlFor={smallId}>Small Textarea.</Label>
+        <Textarea id={smallId} size="small" />
       </div>
       <div>
-        <Label htmlFor={mediumId}>Medium TextArea.</Label>
-        <TextArea id={mediumId} size="medium" />
+        <Label htmlFor={mediumId}>Medium Textarea.</Label>
+        <Textarea id={mediumId} size="medium" />
       </div>
       <div>
-        <Label htmlFor={largeId}>Large TextArea.</Label>
-        <TextArea id={largeId} size="large" />
+        <Label htmlFor={largeId}>Large Textarea.</Label>
+        <Textarea id={largeId} size="large" />
       </div>
     </div>
   );

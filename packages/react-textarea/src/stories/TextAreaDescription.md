@@ -1,1 +1,1 @@
-TextArea allows the user to enter and edit multiline text.
+Textarea allows the user to enter and edit multiline text.

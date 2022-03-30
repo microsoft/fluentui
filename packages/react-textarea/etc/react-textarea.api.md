@@ -12,35 +12,35 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTextArea_unstable: (state: TextAreaState) => JSX.Element;
+export const renderTextarea_unstable: (state: TextareaState) => JSX.Element;
 
 // @public
-export const TextArea: ForwardRefComponent<TextAreaProps>;
+export const Textarea: ForwardRefComponent<TextareaProps>;
 
 // @public (undocumented)
-export const textAreaClassNames: SlotClassNames<TextAreaSlots>;
+export const textareaClassNames: SlotClassNames<TextareaSlots>;
 
 // @public
-export type TextAreaProps = Omit<ComponentProps<Partial<TextAreaSlots>, 'textArea'>, 'value' | 'defaultValue' | 'onChange' | 'size'> & Partial<TextAreaCommons> & {
+export type TextareaProps = Omit<ComponentProps<Partial<TextareaSlots>, 'textarea'>, 'value' | 'defaultValue' | 'onChange' | 'size'> & Partial<TextareaCommons> & {
     value?: string;
     defaultValue?: string;
-    onChange?: (ev: React_2.ChangeEvent<HTMLTextAreaElement>, data: TextAreaOnChangeData) => void;
+    onChange?: (ev: React_2.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
 };
 
 // @public (undocumented)
-export type TextAreaSlots = {
+export type TextareaSlots = {
     root: NonNullable<Slot<'span'>>;
-    textArea: NonNullable<Slot<'textarea'>>;
+    textarea: NonNullable<Slot<'textarea'>>;
 };
 
 // @public
-export type TextAreaState = ComponentState<TextAreaSlots> & TextAreaCommons;
+export type TextareaState = ComponentState<TextareaSlots> & TextareaCommons;
 
 // @public
-export const useTextArea_unstable: (props: TextAreaProps, ref: React_2.Ref<HTMLTextAreaElement>) => TextAreaState;
+export const useTextarea_unstable: (props: TextareaProps, ref: React_2.Ref<HTMLTextAreaElement>) => TextareaState;
 
 // @public
-export const useTextAreaStyles_unstable: (state: TextAreaState) => TextAreaState;
+export const useTextareaStyles_unstable: (state: TextareaState) => TextareaState;
 
 // (No @packageDocumentation comment for this package)
 

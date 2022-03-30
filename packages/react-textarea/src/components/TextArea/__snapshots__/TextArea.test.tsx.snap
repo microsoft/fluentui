@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TextArea renders a default state 1`] = `
+exports[`Textarea renders a default state 1`] = `
 <div>
   <span
-    class="fui-TextArea"
+    class="fui-Textarea"
   >
     <textarea
-      class="fui-TextArea__textArea"
+      class="fui-Textarea__textarea"
     >
-      Default TextArea
+      Default Textarea
     </textarea>
   </span>
 </div>
