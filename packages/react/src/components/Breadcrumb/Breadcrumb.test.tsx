@@ -90,6 +90,8 @@ describe('Breadcrumb', () => {
     ];
 
     const { getAllByRole } = render(<Breadcrumb items={items2} />);
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
     act(() => {
       jest.runAllTimers();
     });
@@ -120,6 +122,8 @@ describe('Breadcrumb', () => {
     ];
 
     const { getByRole } = render(<Breadcrumb items={items2} />);
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
     act(() => {
       jest.runAllTimers();
     });
@@ -135,6 +139,8 @@ describe('Breadcrumb', () => {
     jest.useFakeTimers();
 
     const { getAllByRole } = render(<Breadcrumb items={items} maxDisplayedItems={2} />);
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
     act(() => {
       jest.runAllTimers();
     });
@@ -147,6 +153,8 @@ describe('Breadcrumb', () => {
     jest.useFakeTimers();
 
     const { getByRole } = render(<Breadcrumb items={items} maxDisplayedItems={2} role="region" />);
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
     act(() => {
       jest.runAllTimers();
     });
@@ -158,6 +166,8 @@ describe('Breadcrumb', () => {
     jest.useFakeTimers();
 
     const { getByRole, getAllByRole } = render(<Breadcrumb items={items} maxDisplayedItems={2} />);
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
     act(() => {
       jest.runAllTimers();
     });
@@ -185,6 +195,8 @@ describe('Breadcrumb', () => {
       ];
 
       const { getByRole } = render(<Breadcrumb items={itemsWithAdditionalProps} />);
+      //Initial rendering of component is "hidden" while measurements are made
+      // therefore we need to wait a bit before getting roles.
       act(() => {
         jest.runAllTimers();
       });
@@ -205,6 +217,8 @@ describe('Breadcrumb', () => {
       ];
 
       const { getByRole } = render(<Breadcrumb items={itemsWithAdditionalProps} />);
+      //Initial rendering of component is "hidden" while measurements are made
+      // therefore we need to wait a bit before getting roles.
       act(() => {
         jest.runAllTimers();
       });
