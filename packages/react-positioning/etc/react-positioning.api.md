@@ -104,7 +104,7 @@ export type PositioningVirtualElement = VirtualElement;
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
-// @public
+// @public (undocumented)
 export function usePopper(options: UseFloatingUIOptions): {
     targetRef: React_2.MutableRefObject<any>;
     containerRef: React_2.MutableRefObject<any>;
