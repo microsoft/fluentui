@@ -36,6 +36,24 @@ const spinnerStrokeWidth = {
   lWidth: '4px',
 };
 
+// Label sizes for the Label slot
+const labelSizeTokens = {
+  body1: {
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
+
+  subtitle2: {
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+  },
+
+  subtitle1: {
+    fontSize: tokens.fontSizeBase500,
+    lineHeight: tokens.lineHeightBase500,
+  },
+};
+
 /**
  * Styles for the root slot
  */
@@ -155,21 +173,21 @@ const useLoaderStyles = makeStyles({
 
   // global class for Spinner track
   spinnerTrack: {
-    [`& > svg > circle#track`]: {
-      stroke: tokens.colorBrandStroke2,
+    [`& > svg > circle.spinner_Track`]: {
+      stroke: tokens.colorNeutralBackground4,
     },
   },
 
   // modifier class for Spinner track if appearance="inverted"
   spinnerTrackInverted: {
-    [`& > svg > circle#track`]: {
-      stroke: 'rgba(255,255,255,0.2)',
+    [`& > svg > circle.spinner_Track`]: {
+      stroke: tokens.colorNeutralBackgroundInverted,
     },
   },
 
   // global Spinner trail class
   spinnerTail: {
-    [`& > svg > circle#tail`]: {
+    [`& > svg > circle.spinner_Tail`]: {
       stroke: tokens.colorBrandStroke1,
       animationName: {
         '0%': {
@@ -199,8 +217,31 @@ const useLoaderStyles = makeStyles({
 
   // modifier class for Spinner trail
   spinnerTailInverted: {
-    [`& > svg > circle#tail`]: {
+    [`& > svg > circle.spinner_Tail`]: {
       stroke: tokens.colorNeutralStrokeOnBrand2,
+      animationName: {
+        '0%': {
+          strokeDasharray: '1,150',
+          strokeDashoffset: '0',
+        },
+
+        '50%': {
+          strokeDasharray: '90,150',
+          strokeDashoffset: '-35',
+        },
+
+        '100%': {
+          strokeDasharray: '90,150',
+          strokeDashoffset: '-124',
+        },
+      },
+      animationDuration: '1.5s',
+      animationIterationCount: 'infinite',
+      animationTimingFunction: 'cubic-bezier(0.33,0,0.67,1)',
+      //zIndex: 999,
+      strokeLinecap: 'round',
+      transform: 'rotate(-90deg)',
+      transformOrigin: '50% 50%',
     },
   },
 });
@@ -213,6 +254,34 @@ const useLabelStyles = makeStyles({
 
   spinnerLabelInverted: {
     color: tokens.colorNeutralStrokeOnBrand2,
+  },
+
+  tiny: {
+    ...labelSizeTokens.body1,
+  },
+
+  extraSmall: {
+    ...labelSizeTokens.body1,
+  },
+
+  small: {
+    ...labelSizeTokens.body1,
+  },
+
+  medium: {
+    ...labelSizeTokens.subtitle2,
+  },
+
+  large: {
+    ...labelSizeTokens.subtitle2,
+  },
+
+  extraLarge: {
+    ...labelSizeTokens.subtitle2,
+  },
+
+  huge: {
+    ...labelSizeTokens.subtitle1,
   },
 });
 
@@ -241,12 +310,17 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
       size !== 'extra-large' && size !== 'extra-small' && spinnerStyles[size],
       state.appearance === 'inverted' ? spinnerStyles.spinnerTrackInverted : spinnerStyles.spinnerTrack,
       state.appearance === 'inverted' ? spinnerStyles.spinnerTailInverted : spinnerStyles.spinnerTail,
+      state.spinner.className,
     );
   }
   if (state.label) {
     state.label.className = mergeClasses(
       spinnerClassNames.label,
+      size === 'extra-small' && labelStyles.extraSmall,
+      size === 'extra-large' && labelStyles.extraLarge,
+      size !== 'extra-large' && size !== 'extra-small' && labelStyles[size],
       state.appearance === 'inverted' ? labelStyles.spinnerLabelInverted : labelStyles.spinnerLabel,
+      state.label.className,
     );
   }
 

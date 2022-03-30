@@ -15,7 +15,7 @@ import { DefaultSvg } from './DefaultSvg';
  */
 export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElement>): SpinnerState => {
   // Props
-  const { appearance = 'primary', labelPosition, size = 'medium', status = 'active' } = props;
+  const { appearance = 'primary', labelPosition = 'after', size = 'medium', status = 'active' } = props;
 
   const state: SpinnerState = {
     appearance,
