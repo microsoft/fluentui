@@ -162,6 +162,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     hasCloseButton,
     headerClassName,
     isAnimating,
+    isFooterSticky,
     isFooterAtBottom,
     isOnRightSide,
     isOpen,
@@ -360,9 +361,11 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
           },
         },
       },
+      isFooterSticky && {
+        borderTopColor: semanticColors.variantBorder,
+      },
       {
         background: semanticColors.bodyBackground,
-        borderTopColor: semanticColors.variantBorder,
       },
     ],
     footerInner: [
