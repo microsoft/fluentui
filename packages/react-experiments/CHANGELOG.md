@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Mon, 28 Mar 2022 07:47:27 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Mar 2022 07:38:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.8.0)
+
+Wed, 30 Mar 2022 07:38:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.7.7..@fluentui/react-experiments_v8.8.0)
+
+### Minor changes
+
+- Allow Tile rendering to be customized based on tile state ([PR #22081](https://github.com/microsoft/fluentui/pull/22081) by tmichon@microsoft.com)
+- Bump @fluentui/react to v8.63.0 ([PR #22110](https://github.com/microsoft/fluentui/pull/22110) by beachball)
 
 ## [8.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.7.7)
 

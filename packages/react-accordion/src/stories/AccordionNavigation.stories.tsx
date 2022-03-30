@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '../index';
 
-export const Navigable = (args: AccordionProps) => (
+export const Navigation = (args: AccordionProps) => (
   <Accordion {...args}>
     <AccordionItem value="1">
       <AccordionHeader>Accordion Header 1</AccordionHeader>
@@ -24,11 +24,11 @@ export const Navigable = (args: AccordionProps) => (
   </Accordion>
 );
 
-Navigable.args = {
-  navigable: true,
+Navigation.args = {
+  navigation: 'linear',
 } as AccordionProps;
 
-Navigable.parameters = {
+Navigation.parameters = {
   docs: {
     description: {
       story: 'An accordion supports keyboard navigation.',

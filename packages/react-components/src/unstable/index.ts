@@ -105,16 +105,6 @@ export type {
 } from '@fluentui/react-radio';
 
 export {
-  Slider,
-  sliderClassNames,
-  useSliderState_unstable,
-  useSliderStyles_unstable,
-  useSlider_unstable,
-  renderSlider_unstable,
-} from '@fluentui/react-slider';
-export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
-
-export {
   Switch,
   switchClassNames,
   renderSwitch_unstable,
