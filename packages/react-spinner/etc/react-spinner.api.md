@@ -12,9 +12,6 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-// @public (undocumented)
-export const DefaultSvg: () => JSX.Element;
-
 // @public
 export const renderSpinner_unstable: (state: SpinnerState) => JSX.Element;
 
