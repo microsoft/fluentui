@@ -75,6 +75,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
 
   /** Identifies the element (or elements) that labels the current element. Will be passed to `triggerButton`. */
   'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
+  'aria-describedby'?: AccessibilityAttributes['aria-describedby'];
 
   /** Indicates the entered value does not conform to the format expected by the application. Will be passed to `triggerButton`. */
   'aria-invalid'?: AccessibilityAttributes['aria-invalid'];
@@ -134,6 +135,8 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
    * @param messageGenerationProps - Object with properties to generate message from. See getA11yStatusMessage from Downshift repo.
    */
   getA11yStatusMessage?: (options: DownshiftA11yStatusMessageOptions<ShorthandValue<DropdownItemProps>>) => string;
+
+  getA11ySelectedItemsCountMessage?: (count: ShorthandValue<DropdownItemProps>) => string;
 
   /** A dropdown can highlight the first option when it opens. */
   highlightFirstItemOnOpen?: boolean;
@@ -374,6 +377,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
   const {
     'aria-labelledby': ariaLabelledby,
+    'aria-describedby': ariaDescribedby,
     'aria-invalid': ariaInvalid,
     clearable,
     clearIndicator,
@@ -387,6 +391,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     getA11ySelectionMessage,
     a11ySelectedItemsMessage,
     getA11yStatusMessage,
+    getA11ySelectedItemsCountMessage,
     inline,
     inverted,
     itemToString,
@@ -627,6 +632,18 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     });
   };
 
+  const getSelectedItemsNarration = id => {
+    // Get narration only if at least one item is selected and only in multiple case
+    if (value.length === 0 || !multiple) {
+      return null;
+    }
+    const narration = (
+      <span id={id} style={screenReaderContainerStyles}>
+        {value.length} items have been selected
+      </span>
+    );
+    return narration;
+  };
   const renderItemsList = (
     highlightedIndex: number,
     toggleMenu: () => void,
@@ -778,6 +795,8 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     return null;
   };
 
+  const selectedItemsNarrationId = `${dropdownSlotClassNames.container}-selectedItemsNarration`;
+  const selectedItemsNarration = getSelectedItemsNarration(selectedItemsNarrationId);
   const renderSelectedItems = () => {
     if (value.length === 0) {
       return null;
@@ -800,9 +819,12 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
       }),
     );
     return (
-      <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
-        {selectedItems}
-      </div>
+      <>
+        <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
+          {selectedItems}
+        </div>
+        {selectedItemsNarration}
+      </>
     );
   };
 
@@ -1129,6 +1151,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
             setSearchQuery(e.target.value);
           },
           'aria-labelledby': ariaLabelledby,
+          'aria-describedby': ariaDescribedby ? ariaDescribedby : selectedItemsNarrationId,
         }),
       },
       // same story as above for getRootProps.
@@ -1696,6 +1719,7 @@ Dropdown.propTypes = {
   fluid: PropTypes.bool,
   getA11ySelectionMessage: PropTypes.object,
   getA11yStatusMessage: PropTypes.func,
+  getA11ySelectedItemsCountMessage: PropTypes.func,
   highlightFirstItemOnOpen: PropTypes.bool,
   highlightedIndex: PropTypes.number,
   inline: PropTypes.bool,
