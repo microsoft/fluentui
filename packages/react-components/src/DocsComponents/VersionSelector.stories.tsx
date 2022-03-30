@@ -55,10 +55,10 @@ export const VersionSelector: React.FC = () => {
     // https://master--5ccbc373887ca40020446347.chromatic.com/metadata.json
     fetch('/metadata.json').then(async response => {
       if (response.ok) {
-        const versionsUnsorted: { [key: string]: string } = (await response.json()).versions;
         const versionsCleaned: string[][] = [];
+        const tagUrlMap: { [key: string]: string } = (await response.json()).versions;
 
-        Object.entries(versionsUnsorted).forEach(([gitTag, url]) => {
+        Object.entries(tagUrlMap).forEach(([gitTag, url]) => {
           const versionDirty = gitTag.split('_').pop() ?? '';
           const versionClean = semver.clean(versionDirty, true);
           if (versionDirty && versionClean) {
