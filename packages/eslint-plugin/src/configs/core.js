@@ -13,7 +13,7 @@ const config = {
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['import', '@fluentui', '@rnx-kit', '@typescript-eslint', 'deprecation', 'jest', 'jsdoc', 'etc'],
+  plugins: ['import', '@fluentui', '@rnx-kit', '@typescript-eslint', 'jest', 'jsdoc', 'etc'],
   settings: {
     'import/resolver': {
       // @see https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
@@ -235,9 +235,9 @@ const config = {
 /** @type {import("eslint").Linter.RulesRecord} */
 const typeAwareRules = {
   /**
-   * plugin: https://github.com/gund/eslint-plugin-deprecation
+   * plugin rule: https://github.com/cartant/eslint-plugin-etc/blob/main/docs/rules/no-deprecated.md
    */
-  'deprecation/deprecation': 'error',
+  'etc/no-deprecated': 'error',
 };
 
 /**

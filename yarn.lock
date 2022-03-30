@@ -5691,7 +5691,7 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@typescript-eslint/experimental-utils@4.22.0", "@typescript-eslint/experimental-utils@^2.19.2 || ^3.0.0", "@typescript-eslint/experimental-utils@^2.5.0", "@typescript-eslint/experimental-utils@^4.22.0", "@typescript-eslint/experimental-utils@^5.0.0":
+"@typescript-eslint/experimental-utils@4.22.0", "@typescript-eslint/experimental-utils@^2.5.0", "@typescript-eslint/experimental-utils@^4.22.0", "@typescript-eslint/experimental-utils@^5.0.0":
   version "4.22.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-4.22.0.tgz#68765167cca531178e7b650a53456e6e0bef3b1f"
   integrity sha512-xJXHHl6TuAxB5AWiVrGhvbGL8/hbiCQ8FiWwObO3r0fnvBdrbWEDy1hlvGQOAWc6qsCWuWMKdVWlLAEMpxnddg==
@@ -11456,15 +11456,6 @@ eslint-module-utils@^2.7.2:
   dependencies:
     debug "^3.2.7"
     find-up "^2.1.0"
-
-eslint-plugin-deprecation@1.2.1, eslint-plugin-deprecation@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-deprecation/-/eslint-plugin-deprecation-1.2.1.tgz#ab1b80d7d0b8ce694f646ed41e03f90d3f0fbcd0"
-  integrity sha512-8KFAWPO3AvF0szxIh1ivRtHotd1fzxVOuNR3NI8dfCsQKgcxu9fAgEY+eTKvCRLAwwI8kaDDfImMt+498+EgRw==
-  dependencies:
-    "@typescript-eslint/experimental-utils" "^2.19.2 || ^3.0.0"
-    tslib "^1.10.0"
-    tsutils "^3.0.0"
 
 eslint-plugin-es@4.1.0:
   version "4.1.0"
