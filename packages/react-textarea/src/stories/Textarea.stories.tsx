@@ -1,18 +1,18 @@
 import { Textarea } from '../index';
 
-import descriptionMd from './TextAreaDescription.md';
+import descriptionMd from './TextareaDescription.md';
 
-export { Default } from './TextAreaDefault.stories';
-export { Appearance } from './TextAreaAppearance.stories';
-export { Controlled } from './TextAreaControlled.stories';
-export { Disabled } from './TextAreaDisabled.stories';
-export { Placeholder } from './TextAreaPlaceholder.stories';
-export { Resize } from './TextAreaResize.stories';
-export { Size } from './TextAreaSize.stories';
-export { Uncontrolled } from './TextAreaUncontrolled.stories';
+export { Default } from './TextareaDefault.stories';
+export { Appearance } from './TextareaAppearance.stories';
+export { Controlled } from './TextareaControlled.stories';
+export { Disabled } from './TextareaDisabled.stories';
+export { Placeholder } from './TextareaPlaceholder.stories';
+export { Resize } from './TextareaResize.stories';
+export { Size } from './TextareaSize.stories';
+export { Uncontrolled } from './TextareaUncontrolled.stories';
 
 export default {
-  title: 'Components/TextArea',
+  title: 'Components/Textarea',
   component: Textarea,
   parameters: {
     docs: {
