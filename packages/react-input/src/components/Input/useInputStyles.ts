@@ -55,7 +55,7 @@ const fieldHeights = {
 
 const useRootStyles = makeStyles({
   base: {
-    display: 'flex',
+    display: 'inline-flex',
     alignItems: 'center',
     flexWrap: 'nowrap',
     ...shorthands.gap(horizontalSpacing.xxs),
@@ -128,9 +128,6 @@ const useRootStyles = makeStyles({
     ...shorthands.padding('0', horizontalSpacing.m),
     ...contentSizes[400],
     ...shorthands.gap(horizontalSpacing.sNudge),
-  },
-  inline: {
-    display: 'inline-flex',
   },
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
@@ -241,6 +238,16 @@ const useContentStyles = makeStyles({
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
   },
+  // Ensure resizable icons show up with the proper font size
+  small: {
+    '> svg': { fontSize: '16px' },
+  },
+  medium: {
+    '> svg': { fontSize: '20px' },
+  },
+  large: {
+    '> svg': { fontSize: '24px' },
+  },
 });
 
 /**
@@ -264,7 +271,6 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
-    state.inline && rootStyles.inline,
     filled && rootStyles.filled,
     disabled && rootStyles.disabled,
     state.root.className,
@@ -278,7 +284,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     state.input.className,
   );
 
-  const contentClasses = [contentStyles.base, disabled && contentStyles.disabled];
+  const contentClasses = [contentStyles.base, disabled && contentStyles.disabled, contentStyles[size]];
   if (state.contentBefore) {
     state.contentBefore.className = mergeClasses(
       inputClassNames.contentBefore,

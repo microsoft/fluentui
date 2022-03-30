@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
+import { ChevronDownRegular } from '@fluentui/react-icons';
 import type { SelectProps, SelectState } from './Select.types';
 
 /**
@@ -36,7 +37,10 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
         ...nativeProps.primary,
       },
     }),
-    icon: resolveShorthand(icon, { required: true }),
+    icon: resolveShorthand(icon, {
+      required: true,
+      defaultProps: { children: <ChevronDownRegular /> },
+    }),
     root: resolveShorthand(root, {
       required: true,
       defaultProps: nativeProps.root,

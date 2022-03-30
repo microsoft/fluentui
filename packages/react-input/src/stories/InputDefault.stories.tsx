@@ -2,20 +2,33 @@ import * as React from 'react';
 import { ArgTypes } from '@storybook/api';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
+import { makeStyles, shorthands } from '@griffel/react';
 import { Input } from '../index';
 import type { InputProps } from '../index';
 
-const labelStyle = { display: 'block', paddingBottom: '2px' };
+const useStyles = makeStyles({
+  root: {
+    // Stack the label above the field
+    display: 'flex',
+    flexDirection: 'column',
+    // Use 2px gap below the label (per the design system)
+    ...shorthands.gap('2px'),
+    // Prevent the example from taking the full width of the page (optional)
+    maxWidth: '400px',
+  },
+});
 
 export const Default = (props: InputProps) => {
   const inputId = useId('input');
+  const styles = useStyles();
+
   return (
-    <>
-      <Label htmlFor={inputId} size={props.size} disabled={props.disabled} style={labelStyle}>
+    <div className={styles.root}>
+      <Label htmlFor={inputId} size={props.size} disabled={props.disabled}>
         Sample input
       </Label>
       <Input id={inputId} {...props} />
-    </>
+    </div>
   );
 };
 

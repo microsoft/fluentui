@@ -118,7 +118,7 @@ describe('Breadcrumb', () => {
   it('moves items to overflow in the correct order', () => {
     const { getAllByRole } = render(<Breadcrumb items={items} maxDisplayedItems={2} />);
     const firstListItem = getAllByRole('listitem', { hidden: true })[1].firstElementChild;
-    expect(firstListItem!.textContent).toEqual('TestText3');
+    expect(firstListItem!.textContent).toContain('TestText3');
   });
 
   it('supports native props on the root element', () => {

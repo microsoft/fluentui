@@ -1,6 +1,6 @@
 import { isConformant } from 'test/specs/commonTests';
-import { FormDatepicker } from 'src/components/Form/FormDatepicker';
-import { Datepicker } from 'src/components/Datepicker/Datepicker';
+import { FormDatepicker, formDatepickerClassName } from 'src/components/Form/FormDatepicker';
+import { Datepicker, datepickerClassName } from 'src/components/Datepicker/Datepicker';
 
 describe('FormDatepicker', () => {
   isConformant(FormDatepicker, {
@@ -8,5 +8,9 @@ describe('FormDatepicker', () => {
     constructorName: 'FormDatepicker',
     forwardsRefTo: false,
     targetComponent: Datepicker,
+    getTargetElement: (result, attr) =>
+      attr === 'className'
+        ? result.container.querySelector(`.${formDatepickerClassName}`)
+        : result.container.querySelector(`.${datepickerClassName}`),
   });
 });

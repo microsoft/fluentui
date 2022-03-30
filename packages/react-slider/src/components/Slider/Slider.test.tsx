@@ -9,7 +9,7 @@ describe('Slider', () => {
     Component: Slider,
     displayName: 'Slider',
     primarySlot: 'input',
-    disabledTests: ['kebab-aria-attributes', 'component-has-static-classname'],
+    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
   afterEach(() => {
