@@ -2,6 +2,21 @@
   "name": "test-bundles",
   "entries": [
     {
+      "date": "Wed, 30 Mar 2022 12:25:54 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.184.1",
+            "author": "tmichon@microsoft.com",
+            "commit": "0d0b2c6733a74be61e241242b4c980b314dbfc50",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 29 Mar 2022 12:26:06 GMT",
       "tag": "test-bundles_v7.0.0",
       "version": "7.0.0",

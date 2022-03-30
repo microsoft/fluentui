@@ -1,8 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 22 Oct 2021 12:29:03 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Mar 2022 12:25:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.20.1](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.20.1)
+
+Wed, 30 Mar 2022 12:25:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.20.0..@uifabric/styling_v7.20.1)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.34.0 ([PR #22039](https://github.com/microsoft/fluentui/pull/22039) by tmichon@microsoft.com)
 
 ## [7.20.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.20.0)
 

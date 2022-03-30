@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Mar 2022 12:25:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.34.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.34.0)
+
+Wed, 30 Mar 2022 12:25:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.33.4..@uifabric/utilities_v7.34.0)
+
+### Minor changes
+
+- Improve Selection with more micro-management capabilities (#21970) ([PR #22039](https://github.com/microsoft/fluentui/pull/22039) by tmichon@microsoft.com)
 
 ## [7.33.4](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.33.4)
 

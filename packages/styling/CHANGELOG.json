@@ -2,6 +2,21 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Wed, 30 Mar 2022 12:25:54 GMT",
+      "tag": "@uifabric/styling_v7.20.1",
+      "version": "7.20.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.34.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "0d0b2c6733a74be61e241242b4c980b314dbfc50",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 Oct 2021 12:29:03 GMT",
       "tag": "@uifabric/styling_v7.20.0",
       "version": "7.20.0",

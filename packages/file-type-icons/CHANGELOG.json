@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Wed, 30 Mar 2022 12:25:54 GMT",
+      "tag": "@uifabric/file-type-icons_v7.8.8",
+      "version": "7.8.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ChoiceGroup update from 20x to 18px",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "4f5c073807bcf6fd952ee59d5caad6b7f2689aad",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Mar 2022 12:20:41 GMT",
       "tag": "@uifabric/file-type-icons_v7.8.7",
       "version": "7.8.7",

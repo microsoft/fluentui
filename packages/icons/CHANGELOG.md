@@ -1,8 +1,17 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Fri, 22 Oct 2021 12:29:03 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Mar 2022 12:25:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.3](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.6.3)
+
+Wed, 30 Mar 2022 12:25:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.6.2..@uifabric/icons_v7.6.3)
+
+### Patches
+
+- Bump @uifabric/styling to v7.20.1 ([PR #22039](https://github.com/microsoft/fluentui/pull/22039) by tmichon@microsoft.com)
 
 ## [7.6.2](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.6.2)
 

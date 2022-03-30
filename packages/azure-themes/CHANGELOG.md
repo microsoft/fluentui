@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Tue, 29 Mar 2022 12:26:06 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Mar 2022 12:25:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.9.19](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.9.19)
+
+Wed, 30 Mar 2022 12:25:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.9.18..@uifabric/azure-themes_v7.9.19)
+
+### Patches
+
+- ChoiceGroup update from 20x to 18px ([PR #22227](https://github.com/microsoft/fluentui/pull/22227) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [7.9.18](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.9.18)
 

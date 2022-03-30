@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Wed, 30 Mar 2022 12:25:54 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.19.2",
+      "version": "0.19.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-compose to v0.19.16",
+            "author": "tmichon@microsoft.com",
+            "commit": "0d0b2c6733a74be61e241242b4c980b314dbfc50",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 Oct 2021 12:29:03 GMT",
       "tag": "@fluentui/react-theme-provider_v0.19.1",
       "version": "0.19.1",

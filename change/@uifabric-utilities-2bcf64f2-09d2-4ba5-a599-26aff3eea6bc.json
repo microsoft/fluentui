@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Improve Selection with more micro-management capabilities (#21970)",
-  "packageName": "@uifabric/utilities",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}

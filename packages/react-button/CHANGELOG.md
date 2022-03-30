@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 22 Oct 2021 12:29:03 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Mar 2022 12:25:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.20.2)
+
+Wed, 30 Mar 2022 12:25:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.20.1..@fluentui/react-button_v0.20.2)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.34.0 ([PR #22039](https://github.com/microsoft/fluentui/pull/22039) by tmichon@microsoft.com)
 
 ## [0.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.20.1)
 

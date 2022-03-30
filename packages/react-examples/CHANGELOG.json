@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 30 Mar 2022 12:25:54 GMT",
+      "tag": "@fluentui/react-examples_v0.15.15",
+      "version": "0.15.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.9.19",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "4f5c073807bcf6fd952ee59d5caad6b7f2689aad",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 29 Mar 2022 12:26:06 GMT",
       "tag": "@fluentui/react-examples_v0.15.15",
       "version": "0.15.15",

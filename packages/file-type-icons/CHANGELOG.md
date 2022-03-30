@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Mon, 14 Mar 2022 12:20:41 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Mar 2022 12:25:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.8.8](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.8.8)
+
+Wed, 30 Mar 2022 12:25:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.8.7..@uifabric/file-type-icons_v7.8.8)
+
+### Patches
+
+- ChoiceGroup update from 20x to 18px ([PR #22227](https://github.com/microsoft/fluentui/pull/22227) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [7.8.7](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.8.7)
 

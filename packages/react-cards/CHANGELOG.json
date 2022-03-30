@@ -2,6 +2,21 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Wed, 30 Mar 2022 12:25:54 GMT",
+      "tag": "@uifabric/react-cards_v0.117.21",
+      "version": "0.117.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ChoiceGroup update from 20x to 18px",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "4f5c073807bcf6fd952ee59d5caad6b7f2689aad",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 29 Mar 2022 12:26:06 GMT",
       "tag": "@uifabric/react-cards_v0.117.20",
       "version": "0.117.20",

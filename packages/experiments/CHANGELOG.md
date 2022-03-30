@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 29 Mar 2022 12:26:06 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Mar 2022 12:25:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.42.13](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.42.13)
+
+Wed, 30 Mar 2022 12:25:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.42.12..@uifabric/experiments_v7.42.13)
+
+### Patches
+
+- ChoiceGroup update from 20x to 18px ([PR #22227](https://github.com/microsoft/fluentui/pull/22227) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [7.42.12](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.42.12)
 

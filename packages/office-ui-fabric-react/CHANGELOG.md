@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 29 Mar 2022 12:26:06 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Mar 2022 12:25:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.184.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.184.1)
+
+Wed, 30 Mar 2022 12:25:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.184.0..office-ui-fabric-react_v7.184.1)
+
+### Patches
+
+- Bump @uifabric/foundation to v7.10.2 ([PR #22039](https://github.com/microsoft/fluentui/pull/22039) by tmichon@microsoft.com)
 
 ## [7.184.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.184.0)
 
