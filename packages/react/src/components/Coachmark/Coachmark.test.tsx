@@ -71,6 +71,7 @@ describe('Coachmark', () => {
       />,
     );
 
+    //coachmark is hidden since it has a parent wrapper with role=presentation when not in a collapsed state.
     const coachmark = getByRole('dialog', { hidden: true });
     expect(coachmark.getAttribute('aria-labelledby')).toBe('aria label');
     expect(within(coachmark).queryByText('aria text')).toBeTruthy();
@@ -85,6 +86,7 @@ describe('Coachmark', () => {
       />,
     );
 
+    //coachmark is hidden since it has a parent wrapper with role=presentation when not in a collapsed state.
     const coachmark = getByRole('dialog', { hidden: true });
     expect(coachmark.getAttribute('aria-describedby')).toBe('aria description');
     expect(within(coachmark).queryByText('aria description text')).toBeTruthy();
