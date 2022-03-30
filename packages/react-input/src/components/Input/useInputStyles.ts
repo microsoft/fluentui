@@ -1,19 +1,8 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { getBottomFocusIndicator } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import type { InputSlots, InputState } from './Input.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { InputState } from './Input.types';
 
-/**
- * @deprecated Use `inputClassNames.root` instead.
- */
 export const inputClassName = 'fui-Input';
-export const inputClassNames: SlotClassNames<InputSlots> = {
-  root: 'fui-Input',
-  input: 'fui-Input__input',
-  contentBefore: 'fui-Input__contentBefore',
-  contentAfter: 'fui-Input__contentAfter',
-};
 
 // TODO(sharing) use theme values once available
 const horizontalSpacing = {
@@ -23,6 +12,14 @@ const horizontalSpacing = {
   s: '8px',
   mNudge: '10px',
   m: '12px',
+};
+const motionDurations = {
+  ultraFast: '0.05s',
+  normal: '0.2s',
+};
+const motionCurves = {
+  accelerateMid: 'cubic-bezier(0.7,0,1,0.5)',
+  decelerateMid: 'cubic-bezier(0.1,0.9,0.2,1)',
 };
 const contentSizes = {
   // TODO(sharing) shouldn't these be in the theme?
@@ -48,7 +45,7 @@ const fieldHeights = {
 
 const useRootStyles = makeStyles({
   base: {
-    display: 'inline-flex',
+    display: 'flex',
     alignItems: 'center',
     flexWrap: 'nowrap',
     ...shorthands.gap(horizontalSpacing.xxs),
@@ -57,13 +54,55 @@ const useRootStyles = makeStyles({
     position: 'relative',
     boxSizing: 'border-box',
   },
-  interactive: getBottomFocusIndicator({
-    borderWidth: tokens.strokeWidthThick,
-    borderRadius: tokens.borderRadiusMedium,
-    borderColor: tokens.colorCompoundBrandStroke,
-    pressedBorderColor: tokens.colorCompoundBrandStrokePressed,
-    targetChild: 'input',
-  }),
+  interactive: {
+    // This is all for the bottom focus border.
+    // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
+    ':after': {
+      boxSizing: 'border-box',
+      content: '""',
+      position: 'absolute',
+      left: '-1px',
+      bottom: '-1px',
+      right: '-1px',
+
+      // Maintaining the correct corner radius:
+      // Use the whole border-radius as the height and only put radii on the bottom corners.
+      // (Otherwise the radius would be automatically reduced to fit available space.)
+      // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
+      height: `max(2px, ${tokens.borderRadiusMedium})`,
+      borderBottomLeftRadius: tokens.borderRadiusMedium,
+      borderBottomRightRadius: tokens.borderRadiusMedium,
+
+      // Flat 2px border:
+      // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
+      // (This could be done without trimming using `background: linear-gradient(...)`, but using
+      // borderBottom makes it easier for people to override the color if needed.)
+      ...shorthands.borderBottom('2px', 'solid', tokens.colorCompoundBrandStroke),
+      clipPath: 'inset(calc(100% - 2px) 0 0 0)',
+
+      // Animation for focus OUT
+      transform: 'scaleX(0)',
+      transitionProperty: 'transform',
+      transitionDuration: motionDurations.ultraFast,
+      transitionDelay: motionCurves.accelerateMid,
+    },
+    ':focus-within:after': {
+      // Animation for focus IN
+      transform: 'scaleX(1)',
+      transitionProperty: 'transform',
+      transitionDuration: motionDurations.normal,
+      transitionDelay: motionCurves.decelerateMid,
+    },
+    ':focus-within:active:after': {
+      // This is if the user clicks the field again while it's already focused
+      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+    },
+    ':focus-within': {
+      outlineWidth: '2px',
+      outlineStyle: 'solid',
+      outlineColor: 'transparent',
+    },
+  },
   small: {
     minHeight: fieldHeights.small,
     ...shorthands.padding('0', horizontalSpacing.sNudge),
@@ -79,6 +118,9 @@ const useRootStyles = makeStyles({
     ...shorthands.padding('0', horizontalSpacing.m),
     ...contentSizes[400],
     ...shorthands.gap(horizontalSpacing.sNudge),
+  },
+  inline: {
+    display: 'inline-flex',
   },
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
@@ -189,16 +231,6 @@ const useContentStyles = makeStyles({
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
   },
-  // Ensure resizable icons show up with the proper font size
-  small: {
-    '> svg': { fontSize: '16px' },
-  },
-  medium: {
-    '> svg': { fontSize: '20px' },
-  },
-  large: {
-    '> svg': { fontSize: '24px' },
-  },
 });
 
 /**
@@ -214,7 +246,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   const contentStyles = useContentStyles();
 
   state.root.className = mergeClasses(
-    inputClassNames.root,
+    inputClassName,
     rootStyles.base,
     rootStyles[size],
     rootStyles[appearance],
@@ -222,33 +254,25 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
+    state.inline && rootStyles.inline,
     filled && rootStyles.filled,
     disabled && rootStyles.disabled,
     state.root.className,
   );
 
   state.input.className = mergeClasses(
-    inputClassNames.input,
     inputStyles.base,
     inputStyles[size],
     disabled && inputStyles.disabled,
     state.input.className,
   );
 
-  const contentClasses = [contentStyles.base, disabled && contentStyles.disabled, contentStyles[size]];
+  const contentClasses = [contentStyles.base, disabled && contentStyles.disabled];
   if (state.contentBefore) {
-    state.contentBefore.className = mergeClasses(
-      inputClassNames.contentBefore,
-      ...contentClasses,
-      state.contentBefore.className,
-    );
+    state.contentBefore.className = mergeClasses(...contentClasses, state.contentBefore.className);
   }
   if (state.contentAfter) {
-    state.contentAfter.className = mergeClasses(
-      inputClassNames.contentAfter,
-      ...contentClasses,
-      state.contentAfter.className,
-    );
+    state.contentAfter.className = mergeClasses(...contentClasses, state.contentAfter.className);
   }
 
   return state;

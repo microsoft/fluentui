@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Creating getBottomFocusIndicator for Input and TextArea.",
-  "packageName": "@fluentui/react-tabster",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}

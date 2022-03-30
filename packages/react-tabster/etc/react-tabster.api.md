@@ -8,15 +8,6 @@ import type { GriffelStyle } from '@griffel/react';
 import type { RefObject } from 'react';
 import { Types } from 'tabster';
 
-// @public (undocumented)
-export type BottomFocusIndicatorOptions = CreateFocusIndicatorStyleRuleOptions & {
-    borderWidth: string;
-    borderRadius: string;
-    borderColor: string;
-    pressedBorderColor: string;
-    targetChild?: keyof JSX.IntrinsicElements;
-};
-
 // @public
 export const createCustomFocusIndicatorStyle: (style: GriffelStyle, options?: CreateFocusIndicatorStyleRuleOptions) => GriffelStyle;
 
@@ -41,9 +32,6 @@ export type FocusOutlineStyleOptions = {
     outlineWidth: string;
     outlineOffset?: string | FocusOutlineOffset;
 };
-
-// @public
-export const getBottomFocusIndicator: (options: BottomFocusIndicatorOptions) => GriffelStyle;
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
