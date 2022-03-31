@@ -162,6 +162,7 @@ const useTextareaStyles = makeStyles({
     ...shorthands.margin('0'),
     backgroundColor: 'transparent',
     color: tokens.colorNeutralForeground1,
+    flexGrow: 1,
 
     '::placeholder': {
       color: tokens.colorNeutralForeground4,

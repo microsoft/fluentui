@@ -6,8 +6,10 @@ import { makeStyles, shorthands } from '@griffel/react';
 
 const useStyles = makeStyles({
   container: {
-    '> div': { ...shorthands.padding('20px') },
-    '& label': { display: 'block', marginBottom: '10px' },
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap('10px'),
+    '& > div': { display: 'flex', flexDirection: 'column', ...shorthands.gap('10px'), ...shorthands.padding('10px') },
   },
 });
 
