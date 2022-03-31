@@ -55,9 +55,9 @@ export type TabState = ComponentState<TabSlots> &
      */
     iconOnly: boolean;
     /**
-     * The current selected tab value.
+     * If this tab is selected
      */
-    selectedValue?: TabValue;
+    selected: boolean;
     /**
      * A tab can be either 'small' or 'medium' size.
      */

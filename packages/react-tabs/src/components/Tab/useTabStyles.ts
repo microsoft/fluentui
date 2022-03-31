@@ -340,8 +340,7 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   const iconStyles = useIconStyles();
   const contentStyles = useContentStyles();
 
-  const { appearance, disabled, selectedValue, size, value, vertical } = state;
-  const selected = selectedValue === value;
+  const { appearance, disabled, selected, size, vertical } = state;
 
   state.root.className = mergeClasses(
     tabClassNames.root,

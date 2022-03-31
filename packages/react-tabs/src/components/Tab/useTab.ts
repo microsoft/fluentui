@@ -19,7 +19,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
 
   const appearance = useContextSelector(TabListContext, ctx => ctx.appearance);
   const listDisabled = useContextSelector(TabListContext, ctx => ctx.disabled);
-  const selectedValue = useContextSelector(TabListContext, ctx => ctx.selectedValue);
+  const selected = useContextSelector(TabListContext, ctx => ctx.selectedValue === value);
   const onRegister = useContextSelector(TabListContext, ctx => ctx.onRegister);
   const onUnregister = useContextSelector(TabListContext, ctx => ctx.onUnregister);
   const onSelect = useContextSelector(TabListContext, ctx => ctx.onSelect);
@@ -61,7 +61,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     content: contentShorthand,
     appearance,
     disabled,
-    selectedValue,
+    selected,
     size,
     value,
     vertical,

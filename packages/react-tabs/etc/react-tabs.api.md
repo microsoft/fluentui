@@ -56,8 +56,11 @@ export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selected
     onRegister: RegisterTabEventHandler;
     onUnregister: RegisterTabEventHandler;
     onSelect: SelectTabEventHandler;
-    previousSelectedValue?: TabValue;
-    registeredTabs: Record<string, TabRegisterData>;
+    getRegisteredTabs: () => {
+        selectedValue?: TabValue;
+        previousSelectedValue?: TabValue;
+        registeredTabs: Record<string, TabRegisterData>;
+    };
 };
 
 // @public
@@ -100,7 +103,7 @@ export type TabSlots = {
 export type TabState = ComponentState<TabSlots> & Omit<TabCommons, 'disabled'> & Required<Pick<TabCommons, 'disabled'>> & {
     appearance?: string;
     iconOnly: boolean;
-    selectedValue?: TabValue;
+    selected: boolean;
     size: 'small' | 'medium';
     vertical: boolean;
 };

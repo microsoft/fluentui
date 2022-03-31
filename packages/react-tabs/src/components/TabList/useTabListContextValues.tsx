@@ -8,8 +8,7 @@ export function useTabListContextValues(state: TabListState): TabListContextValu
     onRegister,
     onUnregister,
     onSelect,
-    previousSelectedValue,
-    registeredTabs,
+    getRegisteredTabs,
     size,
     vertical,
   } = state;
@@ -21,8 +20,7 @@ export function useTabListContextValues(state: TabListState): TabListContextValu
     onSelect,
     onRegister,
     onUnregister,
-    previousSelectedValue,
-    registeredTabs,
+    getRegisteredTabs,
     size,
     vertical,
   };

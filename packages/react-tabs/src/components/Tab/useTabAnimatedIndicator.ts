@@ -6,6 +6,7 @@ import { pendingAnimationDurationTokens, pendingAnimationEasingTokens, tabIndica
 import { useTimeout } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { TabListContext } from '../TabList/TabListContext';
+import { TabRegisterData } from '../TabList/TabList.types';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const tabIndicatorCssVars_unstable = {
@@ -97,57 +98,50 @@ const calculateTabRect = (element: HTMLElement) => {
   return undefined;
 };
 
+const getRegisteredTabRect = (registeredTabs: Record<string, TabRegisterData>, value?: TabValue) => {
+  const element = value ? registeredTabs[JSON.stringify(value)]?.ref.current : undefined;
+  return element ? calculateTabRect(element) : undefined;
+};
+
 /**
  * Adds additional styling to the active tab selection indicator to create a sliding animation.
  */
 export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabState => {
+  const { disabled, selected, vertical } = state;
+
   const activeIndicatorStyles = useActiveIndicatorStyles();
-
-  const { disabled, selectedValue, value, vertical } = state;
-  const selected = selectedValue === value;
-
-  const { previousSelectedValue, registeredTabs } = useContextSelector(TabListContext, ctx => ({
-    previousSelectedValue: ctx.previousSelectedValue,
-    registeredTabs: ctx.registeredTabs,
-  }));
-
-  const previousSelectedTabRect = React.useMemo(() => {
-    const element = registeredTabs[JSON.stringify(previousSelectedValue)]?.ref.current;
-    return element ? calculateTabRect(element) : undefined;
-  }, [previousSelectedValue, registeredTabs]);
-
-  const selectedTabRect = React.useMemo(() => {
-    const element = registeredTabs[JSON.stringify(selectedValue)]?.ref.current;
-    return element ? calculateTabRect(element) : undefined;
-  }, [selectedValue, registeredTabs]);
-
   const [lastAnimatedFrom, setLastAnimatedFrom] = React.useState<TabValue>();
   const [setAnimateTimeout] = useTimeout();
+  const getRegisteredTabs = useContextSelector(TabListContext, ctx => ctx.getRegisteredTabs);
+
   let indicatorStartOffset = 0;
   let indicatorEndOffset = 0;
-  if (
-    selected &&
-    selectedTabRect &&
-    previousSelectedTabRect &&
-    previousSelectedValue &&
-    lastAnimatedFrom !== previousSelectedValue
-  ) {
-    indicatorStartOffset = vertical
-      ? previousSelectedTabRect.y - selectedTabRect.y
-      : previousSelectedTabRect.x - selectedTabRect.x;
+  if (selected) {
+    const { previousSelectedValue, selectedValue, registeredTabs } = getRegisteredTabs();
+    const previousSelectedTabRect = getRegisteredTabRect(registeredTabs, previousSelectedValue);
+    const selectedTabRect = getRegisteredTabRect(registeredTabs, selectedValue);
 
-    indicatorEndOffset = vertical
-      ? selectedTabRect.y + selectedTabRect.height - (previousSelectedTabRect.y + previousSelectedTabRect.height)
-      : selectedTabRect.x + selectedTabRect.width - (previousSelectedTabRect.x + previousSelectedTabRect.width);
+    if (
+      selectedTabRect &&
+      previousSelectedTabRect &&
+      previousSelectedValue &&
+      lastAnimatedFrom !== previousSelectedValue
+    ) {
+      indicatorStartOffset = vertical
+        ? previousSelectedTabRect.y - selectedTabRect.y
+        : previousSelectedTabRect.x - selectedTabRect.x;
 
-    setAnimateTimeout(() => {
-      setLastAnimatedFrom(previousSelectedValue);
-    }, 1);
-  }
+      indicatorEndOffset = vertical
+        ? selectedTabRect.y + selectedTabRect.height - (previousSelectedTabRect.y + previousSelectedTabRect.height)
+        : selectedTabRect.x + selectedTabRect.width - (previousSelectedTabRect.x + previousSelectedTabRect.width);
 
-  // need to clear the last animated from so that if this tab is selected again
-  // from the same previous tab as last time, that animation still happens.
-  if (!selected && lastAnimatedFrom) {
+      setAnimateTimeout(() => {
+        setLastAnimatedFrom(previousSelectedValue);
+      }, 1);
+    }
+  } else if (lastAnimatedFrom) {
+    // need to clear the last animated from so that if this tab is selected again
+    // from the same previous tab as last time, that animation still happens.
     setLastAnimatedFrom(undefined);
   }
 

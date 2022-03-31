@@ -33,15 +33,21 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
 
   // considered usePrevious, but it is sensitive to re-renders
   // this could cause the previous to move to current in the case where the tab list re-renders.
+  // these refs avoid getRegisteredTabs changing when selectedValue changes and causing
+  // renders for tabs that have not changed.
+  const currentSelectedValue = React.useRef<TabValue | undefined>(undefined);
   const previousSelectedValue = React.useRef<TabValue | undefined>(undefined);
 
+  React.useEffect(() => {
+    previousSelectedValue.current = currentSelectedValue.current;
+    currentSelectedValue.current = selectedValue;
+  }, [selectedValue]);
+
   const onSelect = useEventCallback((event: SelectTabEvent, data: SelectTabData) => {
-    previousSelectedValue.current = selectedValue;
     setSelectedValue(data.value);
     onTabSelect?.(event, data);
   });
 
-  // when tabs register their refs, observe them for resize
   const registeredTabs = React.useRef<Record<string, TabRegisterData>>({});
 
   const onRegister = useEventCallback((data: TabRegisterData) => {
@@ -51,6 +57,14 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
   const onUnregister = useEventCallback((data: TabRegisterData) => {
     delete registeredTabs.current[JSON.stringify(data.value)];
   });
+
+  const getRegisteredTabs = React.useCallback(() => {
+    return {
+      selectedValue: currentSelectedValue.current,
+      previousSelectedValue: previousSelectedValue.current,
+      registeredTabs: registeredTabs.current,
+    };
+  }, []);
 
   return {
     components: {
@@ -70,7 +84,6 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
     onRegister,
     onUnregister,
     onSelect,
-    previousSelectedValue: previousSelectedValue.current,
-    registeredTabs: registeredTabs.current,
+    getRegisteredTabs,
   };
 };

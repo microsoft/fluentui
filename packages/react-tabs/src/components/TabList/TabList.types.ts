@@ -98,14 +98,13 @@ export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selected
      */
     onSelect: SelectTabEventHandler;
     /**
-     * The previous selected tab value.
-     * Useful for transitions when changing tabs.
+     * Gets the registered tab data along with current and previous selected values.
      */
-    previousSelectedValue?: TabValue;
-    /**
-     * The set of registered tabs by value
-     */
-    registeredTabs: Record<string, TabRegisterData>;
+    getRegisteredTabs: () => {
+      selectedValue?: TabValue;
+      previousSelectedValue?: TabValue;
+      registeredTabs: Record<string, TabRegisterData>;
+    };
   };
 
 /**
