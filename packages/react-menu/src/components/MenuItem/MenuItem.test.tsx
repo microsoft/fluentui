@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, createEvent } from '@testing-library/react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { MenuItem } from './MenuItem';
 import * as renderer from 'react-test-renderer';
@@ -14,6 +14,19 @@ describe('MenuItem', () => {
   isConformant({
     Component: MenuItem,
     displayName: 'MenuItem',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+            checkmark: 'Test Checkmark',
+            submenuIndicator: 'Test Submenu Indicator',
+            content: 'Test Content',
+            secondaryContent: 'Test Secondary Content',
+          },
+        },
+      ],
+    },
   });
 
   /**
@@ -189,6 +202,21 @@ describe('MenuItem', () => {
 
     // Assert
     expect(setOpen).toHaveBeenCalledTimes(0);
+  });
+
+  it('should not keyboard click for a default prevented event', () => {
+    // Arrange
+    mockUseMenuContext();
+    const onClick = jest.fn();
+    const { getByRole } = render(<MenuItem onClick={onClick}>Item</MenuItem>);
+
+    // Act
+    const event = createEvent.keyDown(getByRole('menuitem'), { key: Enter });
+    event.preventDefault();
+    fireEvent(getByRole('menuitem'), event);
+
+    // Assert
+    expect(onClick).toHaveBeenCalledTimes(0);
   });
 
   it('should not call setOpen if the menu item controls a submenu', () => {

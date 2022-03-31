@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-aria",
-  "version": "9.0.0-rc.3",
+  "version": "9.0.0-rc.5",
   "description": "React helper to ensure ARIA",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,21 +27,11 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "@types/react-test-renderer": "^16.0.0",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "9.0.0-rc.3",
-    "@fluentui/react-utilities": "9.0.0-rc.3",
+    "@fluentui/keyboard-keys": "9.0.0-rc.4",
+    "@fluentui/react-utilities": "9.0.0-rc.5",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -56,5 +46,12 @@
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

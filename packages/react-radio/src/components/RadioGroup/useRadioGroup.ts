@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback, useId } from '@fluentui/react-utilities';
 import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
 
 /**
@@ -11,13 +11,35 @@ import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
  * @param props - props from this instance of RadioGroup
  * @param ref - reference to root HTMLElement of RadioGroup
  */
-export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HTMLElement>): RadioGroupState => {
-  const state: RadioGroupState = {
-    components: {
-      root: 'span',
-    },
-    root: getNativeElementProps('span', { ref, ...props }),
-  };
+export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HTMLDivElement>): RadioGroupState => {
+  const generatedName = useId('radiogroup-');
 
-  return state;
+  const { name = generatedName, value, defaultValue, disabled, layout = 'vertical', onChange } = props;
+
+  return {
+    layout,
+    context: React.useMemo(
+      () => ({
+        name,
+        value,
+        defaultValue,
+        disabled,
+        layout,
+      }),
+      [name, layout, value, defaultValue, disabled],
+    ),
+    components: {
+      root: 'div',
+    },
+    root: {
+      ref,
+      role: 'radiogroup',
+      ...getNativeElementProps('div', props, /*excludedPropNames:*/ ['onChange', 'name']),
+      onChange: useEventCallback(ev => {
+        if (onChange && ev.target instanceof HTMLInputElement && ev.target.type === 'radio') {
+          onChange(ev, { value: ev.target.value });
+        }
+      }),
+    },
+  };
 };

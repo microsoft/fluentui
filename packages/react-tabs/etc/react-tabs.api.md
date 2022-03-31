@@ -9,6 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const indicatorLengthVar = "--selection-indicator-length";
@@ -45,8 +46,11 @@ export type SelectTabEventHandler = (event: SelectTabEvent, data: SelectTabData)
 // @public
 export const Tab: ForwardRefComponent<TabProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const tabClassName = "fui-Tab";
+
+// @public (undocumented)
+export const tabClassNames: SlotClassNames<TabSlots>;
 
 // @public
 export type TabContentRect = {
@@ -59,11 +63,12 @@ export type TabContentRect = {
 // @public
 export const TabList: ForwardRefComponent<TabListProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const tabListClassName = "fui-TabList";
 
-// Warning: (ae-forgotten-export) The symbol "TabListCommons" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export const tabListClassNames: SlotClassNames<TabListSlots>;
+
 // @public (undocumented)
 export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical'>> & {
     onRegister: RegisterTabEventHandler;
@@ -82,7 +87,7 @@ export type TabListProps = ComponentProps<TabListSlots> & TabListCommons & {
 };
 
 // @public (undocumented)
-export const tabListSelectionIndicatorName = "fui-TabList_SelectionIndicator";
+export const tabListSelectionIndicatorName = "fui-TabList__selectionIndicator";
 
 // @public (undocumented)
 export type TabListSlots = {
@@ -94,8 +99,6 @@ export type TabListState = ComponentState<Required<TabListSlots>> & TabListConte
     selectedTabRect?: TabContentRect;
 };
 
-// Warning: (ae-forgotten-export) The symbol "TabCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
 

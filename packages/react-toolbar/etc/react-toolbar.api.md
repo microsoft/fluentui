@@ -9,6 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderToolbar_unstable: (state: ToolbarState) => JSX.Element;
@@ -26,10 +27,8 @@ export const Toolbar: ForwardRefComponent<ToolbarProps>;
 export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
 
 // @public (undocumented)
-export const toolbarButtonClassName = "fui-ToolbarButton";
+export const toolbarButtonClassNames: SlotClassNames<ToolbarButtonSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "ToolbarButtonCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type ToolbarButtonProps = ComponentProps<ToolbarButtonSlots> & ToolbarButtonCommons;
 
@@ -42,16 +41,14 @@ export type ToolbarButtonSlots = {
 export type ToolbarButtonState = ComponentState<ToolbarButtonSlots> & ToolbarButtonCommons;
 
 // @public (undocumented)
-export const toolbarClassName = "fui-Toolbar";
+export const toolbarClassNames: SlotClassNames<ToolbarSlots>;
 
 // @public
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
 
 // @public (undocumented)
-export const toolbarDividerClassName = "fui-ToolbarDivider";
+export const toolbarDividerClassNames: SlotClassNames<ToolbarDividerSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "ToolbarDividerCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type ToolbarDividerProps = ComponentProps<ToolbarDividerSlots> & ToolbarDividerCommons;
 
@@ -63,8 +60,6 @@ export type ToolbarDividerSlots = {
 // @public
 export type ToolbarDividerState = ComponentState<ToolbarDividerSlots> & ToolbarDividerCommons;
 
-// Warning: (ae-forgotten-export) The symbol "ToolbarCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type ToolbarProps = ComponentProps<ToolbarSlots> & ToolbarCommons;
 

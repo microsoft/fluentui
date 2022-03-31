@@ -1,8 +1,68 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Thu, 17 Feb 2022 07:28:31 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Mar 2022 07:45:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.8.1)
+
+Tue, 15 Mar 2022 07:45:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.8.0..@fluentui/utilities_v8.8.1)
+
+### Patches
+
+- Ban `export *` in `@fluentui/utilities` for better tree-shakeability ([PR #22046](https://github.com/microsoft/fluentui/pull/22046) by 4123478+tido64@users.noreply.github.com)
+
+## [8.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.8.0)
+
+Fri, 11 Mar 2022 07:34:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.7.0..@fluentui/utilities_v8.8.0)
+
+### Minor changes
+
+- Adding additional exports to support existing 1js imports (which will be resolved separately.) ([PR #22062](https://github.com/microsoft/fluentui/pull/22062) by dzearing@microsoft.com)
+- Bump @fluentui/merge-styles to v8.5.0 ([PR #22047](https://github.com/microsoft/fluentui/pull/22047) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.17 ([PR #22047](https://github.com/microsoft/fluentui/pull/22047) by beachball)
+
+## [8.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.7.0)
+
+Wed, 09 Mar 2022 07:37:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.6.0..@fluentui/utilities_v8.7.0)
+
+### Minor changes
+
+- Enhance selection to support better micro-management ([PR #21970](https://github.com/microsoft/fluentui/pull/21970) by tmichon@microsoft.com)
+
+## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.6.0)
+
+Thu, 03 Mar 2022 07:24:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.5.0..@fluentui/utilities_v8.6.0)
+
+### Minor changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/dom-utilities to v2.2.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/merge-styles to v8.4.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/set-version to v8.2.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.16 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+
+## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.5.0)
+
+Tue, 01 Mar 2022 07:23:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.4.3..@fluentui/utilities_v8.5.0)
+
+### Minor changes
+
+- Add useIsomorphicLayoutEffect ([PR #21899](https://github.com/microsoft/fluentui/pull/21899) by elcraig@microsoft.com)
+
+## [8.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.4.3)
+
+Thu, 24 Feb 2022 07:29:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.4.2..@fluentui/utilities_v8.4.3)
+
+### Patches
+
+- make ./packages/utilities/src/DelayedRender.tsx render during SSR ([PR #21785](https://github.com/microsoft/fluentui/pull/21785) by john.collier4@gmail.com)
 
 ## [8.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.4.2)
 

@@ -34,6 +34,10 @@ jobs:
         displayName: NX workspace lint
 
       - script: |
+          yarn check:installed-dependencies-versions
+        displayName: 'check packages: installed dependencies versions'
+
+      - script: |
           if [[ -n "$(targetBranch)" ]]; then
             yarn format --since $(targetBranch) --check
           else
@@ -102,8 +106,12 @@ jobs:
 
       # only run e2e tests when the appropriate storybook is published by scoping to relevant packages
       - script: |
-          yarn e2e $(sinceArg) --scope @fluentui/react-components --scope @fluentui/react
-        displayName: Cypress E2E tests
+          yarn e2e $(sinceArg) --scope @fluentui/react-components
+        displayName: v9 Cypress E2E tests
+
+      - script: |
+          yarn e2e $(sinceArg) --scope @fluentui/react
+        displayName: v8 Cypress E2E tests
 
       - template: .devops/templates/cleanup.yml
 

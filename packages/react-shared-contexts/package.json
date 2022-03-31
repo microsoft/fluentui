@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-shared-contexts",
-  "version": "9.0.0-rc.3",
+  "version": "9.0.0-rc.4",
   "description": "Fluent UI React Contexts shared by multiple components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -24,18 +24,10 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
-    "@types/react-test-renderer": "^16.0.0",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
-    "react": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-theme": "9.0.0-rc.3",
+    "@fluentui/react-theme": "9.0.0-rc.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -48,5 +40,12 @@
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/react-radio",
-  "version": "9.0.0-beta.1",
-  "private": true,
-  "description": "A Radio component presents a set of options where only one option can be selected.",
+  "version": "9.0.0-beta.2",
+  "description": "Fluent UI Radio component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -28,23 +27,14 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.3",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "@types/react-test-renderer": "^16.0.0",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.3"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "9.0.0-rc.3",
-    "@fluentui/react-label": "9.0.0-beta.7",
-    "@fluentui/react-tabster": "9.0.0-rc.3",
+    "@fluentui/react-icons": "^2.0.159-beta.10",
+    "@fluentui/react-label": "9.0.0-beta.9",
+    "@fluentui/react-tabster": "9.0.0-rc.5",
+    "@fluentui/react-theme": "9.0.0-rc.4",
+    "@fluentui/react-utilities": "9.0.0-rc.5",
     "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
   },
@@ -60,5 +50,12 @@
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

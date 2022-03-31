@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator, modifyDeprecatedDecoratorStyles } from '../utilities/index';
+import { TestWrapperDecorator, TestWrapperDecoratorFullWidth } from '../utilities/index';
 import {
   DocumentCard,
   DocumentCardPreview,
@@ -136,10 +136,7 @@ storiesOf('DocumentCard', module)
   ));
 
 storiesOf('DocumentCard', module)
-  // FIXME: SB6 duplicates same story ID decorators
-  // This is a temporary fix until we migrate to CSF format duplication problem
-  // - previously this used TestWrapperDecoratorFullWidth
-  .addDecorator(modifyDeprecatedDecoratorStyles({ mode: 'full' }))
+  .addDecorator(TestWrapperDecoratorFullWidth)
 
   .addDecorator(story =>
     // prettier-ignore

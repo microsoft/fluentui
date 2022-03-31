@@ -4,6 +4,7 @@ exports[`BasePicker renders correctly 1`] = `
 <div
   className="ms-BasePicker"
   onBlur={[Function]}
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
@@ -68,6 +69,7 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
 <div
   className="ms-BasePicker"
   onBlur={[Function]}
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
 >

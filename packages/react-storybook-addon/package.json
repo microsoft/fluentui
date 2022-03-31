@@ -27,13 +27,11 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@types/react": "16.9.42",
-    "@fluentui/scripts": "^1.0.0",
-    "react": "16.8.6"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-theme": "9.0.0-rc.3",
-    "@fluentui/react-provider": "9.0.0-rc.3",
+    "@fluentui/react-theme": "9.0.0-rc.4",
+    "@fluentui/react-provider": "9.0.0-rc.5",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -41,11 +39,11 @@
     "@types/react-dom": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0",
     "react-dom": ">=16.8.0 <18.0.0",
-    "@storybook/addons": "^6.3.6",
-    "@storybook/api": "^6.3.6",
-    "@storybook/components": "^6.3.6",
-    "@storybook/core-events": "^6.3.6",
-    "@storybook/theming": "^6.3.6"
+    "@storybook/addons": "^6.4.19",
+    "@storybook/api": "^6.4.19",
+    "@storybook/components": "^6.4.19",
+    "@storybook/core-events": "^6.4.19",
+    "@storybook/theming": "^6.4.19"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -53,5 +51,12 @@
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

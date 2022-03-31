@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { PublishedStoreItem } from '@storybook/client-api';
 import { addons } from '@storybook/addons';
 import { NAVIGATE_URL } from '@storybook/core-events';
 import { makeStyles, shorthands } from '../index';
@@ -59,7 +58,7 @@ const useTocStyles = makeStyles({
   },
 });
 
-type TocItem = PublishedStoreItem & { selected?: boolean };
+type TocItem = { name: string; id: string; selected?: boolean };
 
 // // Alternative approach to navigate - rerenders the iframe
 // // Usage: selectStory({ story: s.name, kind: s.kind });

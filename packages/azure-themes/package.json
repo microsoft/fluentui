@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/azure-themes",
-  "version": "8.1.140",
+  "version": "8.2.15",
   "description": "Azure themes for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -24,12 +24,11 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "react": "16.8.6"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.56.0",
-    "@fluentui/set-version": "^8.1.5",
+    "@fluentui/react": "^8.63.1",
+    "@fluentui/set-version": "^8.2.0",
     "tslib": "^2.1.0"
   }
 }

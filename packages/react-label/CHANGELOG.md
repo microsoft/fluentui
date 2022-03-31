@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Fri, 18 Feb 2022 13:35:32 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 05:17:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-beta.9)
+
+Fri, 04 Mar 2022 05:17:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-beta.8..@fluentui/react-label_v9.0.0-beta.9)
+
+### Changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.4 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+
+## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-beta.8)
+
+Tue, 01 Mar 2022 02:17:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-beta.7..@fluentui/react-label_v9.0.0-beta.8)
+
+### Changes
+
+- fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
 
 ## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-beta.7)
 

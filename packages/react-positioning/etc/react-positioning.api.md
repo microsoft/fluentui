@@ -71,7 +71,7 @@ export interface PopperOptions {
 // @public (undocumented)
 export type PopperRefHandle = {
     updatePosition: () => void;
-    setTarget: (target: HTMLElement) => void;
+    setTarget: (target: HTMLElement | PopperVirtualElement) => void;
 };
 
 // @public (undocumented)
@@ -95,8 +95,6 @@ export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
-// Warning: (ae-forgotten-export) The symbol "UsePopperOptions" needs to be exported by the entry point index.d.ts
-//
 // @public
 export function usePopper(options?: UsePopperOptions): {
     targetRef: React_2.MutableRefObject<any>;

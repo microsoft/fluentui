@@ -1,234 +1,194 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import type { RadioState } from './Radio.types';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import type { RadioSlots, RadioState } from './Radio.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `radioClassNames.root` instead.
+ */
 export const radioClassName = 'fui-Radio';
+export const radioClassNames: SlotClassNames<RadioSlots> = {
+  root: 'fui-Radio',
+  indicator: 'fui-Radio__indicator',
+  input: 'fui-Radio__input',
+  label: 'fui-Radio__label',
+};
+
+// TODO replace these spacing constants with theme values once they're on the theme
+const spacingHorizontalS = '8px';
+const spacingHorizontalM = '12px';
+
+// The indicator size is used by the indicator and label styles
+const indicatorSize = '16px';
 
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
+const useRootStyles = makeStyles({
+  base: {
     display: 'inline-flex',
     position: 'relative',
-    alignSelf: 'flex-start',
-    alignItems: 'center',
-    ...shorthands.padding('4px'),
-    userSelect: 'none',
-    cursor: 'pointer',
+    columnGap: spacingHorizontalM,
+    ...shorthands.padding(spacingHorizontalS),
   },
 
-  checked: {
-    color: tokens.colorNeutralForeground1,
-
-    // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
-    [`& .${radioClassName}-indicator`]: {
-      backgroundColor: tokens.colorCompoundBrandBackground,
-      color: tokens.colorNeutralForegroundInverted,
-      borderColor: tokens.colorBrandBackground,
-      boxShadow: '0 0 0 2px currentColor inset',
-    },
-
-    ':active': {
-      [`& .${radioClassName}-indicator`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
-      },
-    },
-
-    ':hover': {
-      [`& .${radioClassName}-indicator`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundHover,
-      },
-    },
-  },
-
-  unchecked: {
-    color: tokens.colorNeutralForeground3,
-
-    [`& .${radioClassName}-indicator`]: {
-      borderColor: tokens.colorNeutralStrokeAccessible,
-      '& > *': {
-        opacity: 0,
-      },
-    },
-
-    ':hover': {
-      color: tokens.colorNeutralForeground2,
-
-      [`& .${radioClassName}-indicator`]: {
-        borderColor: tokens.colorNeutralStrokeAccessibleHover,
-      },
-    },
-
-    ':active': {
-      color: tokens.colorNeutralForeground1,
-
-      [`& .${radioClassName}-indicator`]: {
-        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
-      },
-    },
-  },
-
-  disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    cursor: 'default',
-
-    [`& .${radioClassName}-indicator`]: {
-      borderColor: tokens.colorNeutralStrokeDisabled,
-      color: tokens.colorNeutralForegroundDisabled,
-      backgroundColor: tokens.colorNeutralBackground1,
-    },
-
-    ':hover': {
-      [`& .${radioClassName}-indicator`]: {
-        borderColor: tokens.colorNeutralStrokeDisabled,
-        color: tokens.colorNeutralForegroundDisabled,
-        backgroundColor: tokens.colorNeutralBackground1,
-      },
-    },
-
-    ':active': {
-      [`& .${radioClassName}-indicator`]: {
-        borderColor: tokens.colorNeutralStrokeDisabled,
-        color: tokens.colorNeutralForegroundDisabled,
-        backgroundColor: tokens.colorNeutralBackground1,
-      },
-    },
-  },
-
-  bottomLabelPosition: {
-    display: 'flex',
+  vertical: {
     flexDirection: 'column',
-    alignSelf: 'flex-start',
-  },
-
-  focusIndicator: createFocusOutlineStyle({ style: { outlineOffset: '2px' }, selector: 'focus-within' }),
-});
-
-const useContainerStyles = makeStyles({
-  container: {
-    position: 'relative',
-    display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: '12px',
+    rowGap: spacingHorizontalM,
   },
 
-  dimensions: {
-    width: '16px',
-    height: '16px',
-  },
-
-  bottomLabelPosition: {
-    marginRight: '0px',
-    marginBottom: '12px',
-  },
+  focusIndicator: createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 });
 
 const useInputStyles = makeStyles({
-  input: {
-    opacity: 0,
+  base: {
     position: 'absolute',
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: '100%',
+    boxSizing: 'border-box',
     ...shorthands.margin(0),
-    ...shorthands.padding(0),
-    cursor: 'pointer',
-  },
+    opacity: 0,
 
-  disabled: {
-    cursor: 'not-allowed',
-  },
-});
+    ':enabled': {
+      cursor: 'pointer',
+    },
 
-const useLabelStyles = makeStyles({
-  label: {
-    cursor: 'pointer',
-  },
+    // When unchecked, hide the circle icon (child of the indicator)
+    [`:not(:checked) ~ .${radioClassNames.indicator} > *`]: {
+      opacity: '0',
+    },
 
-  disabled: {
-    cursor: 'not-allowed',
-    color: tokens.colorNeutralForegroundDisabled,
+    // Colors for the unchecked state
+    ':enabled:not(:checked)': {
+      [`& ~ .${radioClassNames.label}`]: {
+        color: tokens.colorNeutralForeground3,
+      },
+      [`& ~ .${radioClassNames.indicator}`]: {
+        ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
+      },
+
+      ':hover': {
+        [`& ~ .${radioClassNames.label}`]: {
+          color: tokens.colorNeutralForeground2,
+        },
+        [`& ~ .${radioClassNames.indicator}`]: {
+          ...shorthands.borderColor(tokens.colorNeutralStrokeAccessibleHover),
+        },
+      },
+
+      ':hover:active': {
+        [`& ~ .${radioClassNames.label}`]: {
+          color: tokens.colorNeutralForeground1,
+        },
+        [`& ~ .${radioClassNames.indicator}`]: {
+          ...shorthands.borderColor(tokens.colorNeutralStrokeAccessiblePressed),
+        },
+      },
+    },
+
+    // Colors for the checked state
+    ':enabled:checked': {
+      [`& ~ .${radioClassNames.label}`]: {
+        color: tokens.colorNeutralForeground1,
+      },
+      [`& ~ .${radioClassNames.indicator}`]: {
+        ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
+        color: tokens.colorCompoundBrandForeground1,
+      },
+
+      ':hover': {
+        [`& ~ .${radioClassNames.indicator}`]: {
+          ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
+          color: tokens.colorCompoundBrandForeground1Hover,
+        },
+      },
+
+      ':hover:active': {
+        [`& ~ .${radioClassNames.indicator}`]: {
+          ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
+          color: tokens.colorCompoundBrandForeground1Pressed,
+        },
+      },
+    },
+
+    // Colors for the disabled state
+    ':disabled': {
+      [`& ~ .${radioClassNames.label}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
+      },
+      [`& ~ .${radioClassNames.indicator}`]: {
+        ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+        color: tokens.colorNeutralForegroundDisabled,
+      },
+    },
   },
 });
 
 const useIndicatorStyles = makeStyles({
-  indicator: {
-    width: '100%',
-    height: '100%',
-    fill: 'currentColor',
-    ...shorthands.overflow('hidden'),
+  base: {
+    width: indicatorSize,
+    height: indicatorSize,
+    fontSize: '12px',
+    boxSizing: 'border-box',
+    flexShrink: 0,
+
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'absolute',
-    boxSizing: 'border-box',
-    ...shorthands.borderStyle('solid'),
+    ...shorthands.overflow('hidden'),
+
+    ...shorthands.border(tokens.strokeWidthThin, 'solid'),
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    ...shorthands.borderWidth(tokens.strokeWidthThin),
+    fill: 'currentColor',
+    pointerEvents: 'none',
   },
 });
 
-const useSubtextStyles = makeStyles({
-  subtext: {
-    display: 'block',
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-    fontWeight: tokens.fontWeightRegular,
+const useLabelStyles = makeStyles({
+  base: {
+    alignSelf: 'center',
+    userSelect: 'none',
+
+    // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
+    // This prevents the label from expanding the height of the Radio, but preserves line height if the label wraps.
+    ...shorthands.margin(`calc((${indicatorSize} - ${tokens.lineHeightBase300}) / 2)`, 0),
+  },
+
+  below: {
+    textAlign: 'center',
   },
 });
 
 /**
  * Apply styling to the Radio slots based on the state
  */
-export const useRadioStyles_unstable = (state: RadioState): RadioState => {
-  const checkedState = state.checked ? 'checked' : 'unchecked';
-  const containerStyles = useContainerStyles();
-  const indicatorStyles = useIndicatorStyles();
-  const inputStyles = useInputStyles();
-  const labelStyles = useLabelStyles();
-  const subtextStyles = useSubtextStyles();
-  const styles = useStyles();
-
+export const useRadioStyles_unstable = (state: RadioState) => {
+  const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
-    radioClassName,
-    styles.root,
-    styles.focusIndicator,
-    styles[checkedState],
-    state.input.disabled && styles.disabled,
-    state.labelPosition === 'bottom' && styles.bottomLabelPosition,
+    radioClassNames.root,
+    rootStyles.base,
+    rootStyles.focusIndicator,
+    state.labelPosition === 'below' && rootStyles.vertical,
     state.root.className,
   );
 
-  state.input.className = mergeClasses(
-    containerStyles.dimensions,
-    inputStyles.input,
-    state.input.disabled && inputStyles.disabled,
-    state.input.className,
-  );
+  const inputStyles = useInputStyles();
+  state.input.className = mergeClasses(radioClassNames.input, inputStyles.base, state.input.className);
 
-  state.containerClassName = mergeClasses(
-    containerStyles.container,
-    state.labelPosition === 'bottom' && containerStyles.bottomLabelPosition,
-    containerStyles.dimensions,
-  );
+  const indicatorStyles = useIndicatorStyles();
+  state.indicator.className = mergeClasses(radioClassNames.indicator, indicatorStyles.base, state.indicator.className);
 
-  state.indicator.className = mergeClasses(
-    `${radioClassName}-indicator`,
-    indicatorStyles.indicator,
-    containerStyles.dimensions,
-    state.indicator.className,
-  );
-
-  state.label.className = mergeClasses(
-    labelStyles.label,
-    state.input.disabled && labelStyles.disabled,
-    state.label.className,
-  );
-
-  if (state.subtext) {
-    state.subtext.className = mergeClasses(subtextStyles.subtext, state.subtext.className);
+  const labelStyles = useLabelStyles();
+  if (state.label) {
+    state.label.className = mergeClasses(
+      radioClassNames.label,
+      labelStyles.base,
+      state.labelPosition === 'below' && labelStyles.below,
+      state.label.className,
+    );
   }
-
-  return state;
 };

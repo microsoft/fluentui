@@ -1,8 +1,82 @@
 # Change Log - @fluentui/scheme-utilities
 
-This log was last generated on Thu, 17 Feb 2022 07:28:31 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Mar 2022 07:45:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.5)
+
+Tue, 15 Mar 2022 07:45:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.4..@fluentui/scheme-utilities_v8.3.5)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.4 ([PR #22094](https://github.com/microsoft/fluentui/pull/22094) by beachball)
+
+## [8.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.4)
+
+Fri, 11 Mar 2022 07:34:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.3..@fluentui/scheme-utilities_v8.3.4)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.3 ([PR #22047](https://github.com/microsoft/fluentui/pull/22047) by beachball)
+
+## [8.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.3)
+
+Thu, 10 Mar 2022 07:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.2..@fluentui/scheme-utilities_v8.3.3)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.2 ([PR #22043](https://github.com/microsoft/fluentui/pull/22043) by beachball)
+
+## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.2)
+
+Wed, 09 Mar 2022 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.1..@fluentui/scheme-utilities_v8.3.2)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.1 ([PR #22008](https://github.com/microsoft/fluentui/pull/22008) by beachball)
+
+## [8.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.1)
+
+Tue, 08 Mar 2022 23:29:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.0..@fluentui/scheme-utilities_v8.3.1)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.0 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.0)
+
+Thu, 03 Mar 2022 07:24:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.2.15..@fluentui/scheme-utilities_v8.3.0)
+
+### Minor changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/theme to v2.5.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/set-version to v8.2.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+
+## [8.2.15](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.2.15)
+
+Tue, 01 Mar 2022 07:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.2.14..@fluentui/scheme-utilities_v8.2.15)
+
+### Patches
+
+- Bump @fluentui/theme to v2.4.12 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+
+## [8.2.14](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.2.14)
+
+Thu, 24 Feb 2022 07:29:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.2.13..@fluentui/scheme-utilities_v8.2.14)
+
+### Patches
+
+- Bump @fluentui/theme to v2.4.11 ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by beachball)
 
 ## [8.2.13](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.2.13)
 

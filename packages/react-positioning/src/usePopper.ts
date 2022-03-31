@@ -3,6 +3,7 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
 
+import { isIntersectingModifier } from './isIntersectingModifier';
 import {
   getScrollParent,
   applyRtlToOffset,
@@ -101,6 +102,8 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
         : false;
 
       const modifiers: PopperJs.Options['modifiers'] = [
+        isIntersectingModifier,
+
         /**
          * We are setting the position to `fixed` in the first effect to prevent scroll jumps in case of the content
          * with managed focus. Modifier sets the position to `fixed` before all other modifier effects. Another part of

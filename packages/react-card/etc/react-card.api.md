@@ -9,18 +9,30 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Card: ForwardRefComponent<CardProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const cardClassName = "fui-Card";
+
+// @public (undocumented)
+export const cardClassNames: SlotClassNames<CardSlots>;
+
+// @public (undocumented)
+export type CardCommons = {
+    appearance: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
+};
 
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const cardFooterClassName = "fui-CardFooter";
+
+// @public (undocumented)
+export const cardFooterClassNames: SlotClassNames<CardFooterSlots>;
 
 // @public
 export type CardFooterProps = ComponentProps<CardFooterSlots>;
@@ -37,8 +49,11 @@ export type CardFooterState = ComponentState<CardFooterSlots>;
 // @public
 export const CardHeader: ForwardRefComponent<CardHeaderProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const cardHeaderClassName = "fui-CardHeader";
+
+// @public (undocumented)
+export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots>;
 
 // @public
 export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
@@ -59,8 +74,11 @@ export type CardHeaderState = ComponentState<CardHeaderSlots>;
 // @public
 export const CardPreview: ForwardRefComponent<CardPreviewProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const cardPreviewClassName = "fui-CardPreview";
+
+// @public (undocumented)
+export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots>;
 
 // @public
 export type CardPreviewProps = ComponentProps<CardPreviewSlots>;

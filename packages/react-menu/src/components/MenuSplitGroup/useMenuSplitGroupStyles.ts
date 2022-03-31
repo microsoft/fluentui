@@ -1,20 +1,26 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { menuItemClassName } from '../MenuItem/useMenuItemStyles';
-import type { MenuSplitGroupState } from './MenuSplitGroup.types';
+import { menuItemClassNames } from '../MenuItem/useMenuItemStyles';
+import type { MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `menuSplitGroupClassNames.root` instead.
+ */
 export const menuSplitGroupClassName = 'fui-MenuSplitGroup';
-
+export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots> = {
+  root: 'fui-MenuSplitGroup',
+};
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    [`& > .${menuItemClassName}:nth-child(1)`]: {
+    [`& > .${menuItemClassNames.root}:nth-child(1)`]: {
       width: '100%',
     },
-    [`& > .${menuItemClassName}:nth-child(2)`]: {
+    [`& > .${menuItemClassNames.root}:nth-child(2)`]: {
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
       paddingLeft: 0,
@@ -34,6 +40,6 @@ const useStyles = makeStyles({
  */
 export const useMenuSplitGroupStyles_unstable = (state: MenuSplitGroupState): MenuSplitGroupState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(menuSplitGroupClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(menuSplitGroupClassNames.root, styles.root, state.root.className);
   return state;
 };

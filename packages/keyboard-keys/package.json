@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/keyboard-keys",
-  "version": "9.0.0-rc.3",
+  "version": "9.0.0-rc.4",
   "description": "Contains a set of keyboard constants for key and keyCode",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,12 +26,21 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "tslib": "^2.1.0"
+  },
   "beachball": {
     "disallowedChangeTypes": [
       "major",
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

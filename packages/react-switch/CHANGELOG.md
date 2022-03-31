@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Fri, 18 Feb 2022 13:35:34 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 05:17:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.5)
+
+Fri, 04 Mar 2022 05:17:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-rc.4..@fluentui/react-switch_v9.0.0-rc.5)
+
+### Changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Updating class names to use slot class names helper type. ([PR #21933](https://github.com/microsoft/fluentui/pull/21933) by email not defined)
+- Bump @fluentui/react-label to v9.0.0-beta.9 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.4 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.4)
+
+Tue, 01 Mar 2022 02:17:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-rc.3..@fluentui/react-switch_v9.0.0-rc.4)
+
+### Changes
+
+- Switch: Re-implementing component to make it simpler and making it adhere to latest patterns. ([PR #21849](https://github.com/microsoft/fluentui/pull/21849) by Humberto.Morimoto@microsoft.com)
+- fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- Bump @fluentui/react-label to v9.0.0-beta.8 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.3)
 

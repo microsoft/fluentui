@@ -12,6 +12,7 @@ const useTsBuildInfo =
 function prepareTsTaskConfig(options: TscTaskOptions) {
   // docs say pretty is on by default, but it's actually disabled when tsc is run in a
   // non-TTY context (which is what just-scripts tscTask does)
+  // https://github.com/nrwl/nx/issues/9069#issuecomment-1048028504
   options.pretty = true;
 
   if (getJustArgv().production) {
@@ -33,8 +34,6 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     options.baseUrl = '.';
     options.rootDir = './src';
     options.project = tsConfigLib;
-  } else {
-    options.target = 'es5';
   }
 
   return options;

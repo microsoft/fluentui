@@ -2,6 +2,60 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Fri, 04 Mar 2022 05:17:32 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-rc.5",
+      "version": "9.0.0-rc.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-utilities",
+            "commit": "852bd412ad6a682db9dfa44b7275f23fcaccb298",
+            "comment": "Adding helper type to define slot class names."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "294f4b7b4cd562451a8d4edfacde3b1872d2b76f",
+            "comment": "fix(shouldPreventDefaultOnKeyDown): return false for events that are default prevented"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.0-rc.4",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 02:17:39 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "1940164411685db2967f8452406bb703b94ec266",
+            "comment": "Ignore prefix in useId() when it is falsey."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "ae02eeac8cef2cd5decad088d0e45f296d400ef1",
+            "comment": "Add fieldset to getNativeElementProps"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Feb 2022 13:35:37 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-rc.3",
       "version": "9.0.0-rc.3",

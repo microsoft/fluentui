@@ -9,7 +9,7 @@ describe('Slider', () => {
     Component: Slider,
     displayName: 'Slider',
     primarySlot: 'input',
-    disabledTests: ['kebab-aria-attributes'],
+    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
   afterEach(() => {
@@ -122,11 +122,10 @@ describe('Slider', () => {
     expect(screen.getByRole('slider').getAttribute('type')).toEqual('range');
   });
 
-  it('applies ariaValueText', () => {
+  it('applies aria-valuetext', () => {
     const testValue = 'test-value';
-    const getTextValue = () => testValue;
 
-    render(<Slider getAriaValueText={getTextValue} />);
+    render(<Slider aria-valuetext={testValue} />);
 
     expect(screen.getByRole('slider').getAttribute('aria-valuetext')).toEqual(testValue);
   });

@@ -15,6 +15,15 @@ describe('ToggleButton', () => {
   isConformant({
     Component: ToggleButton as React.FunctionComponent<ToggleButtonProps>,
     displayName: 'ToggleButton',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+          },
+        },
+      ],
+    },
   });
 
   xdescribe('AccesibilityButtonBehavior', () => {

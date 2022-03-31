@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/theme",
-  "version": "2.4.10",
+  "version": "2.6.4",
   "description": "Basic building blocks for Fluent UI React Component themes",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,22 +25,92 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
-    "@fluentui/scripts": "^1.0.0",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
-    "react": "16.8.6"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/merge-styles": "^8.3.0",
-    "@fluentui/utilities": "^8.4.2",
-    "@fluentui/set-version": "^8.1.5",
+    "@fluentui/merge-styles": "^8.5.0",
+    "@fluentui/utilities": "^8.8.1",
+    "@fluentui/set-version": "^8.2.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./lib/colors/DefaultPalette": {
+      "types": "./lib/colors/DefaultPalette.d.ts",
+      "import": "./lib/colors/DefaultPalette.js",
+      "require": "./lib-commonjs/DefaultPalette.js"
+    },
+    "./lib/colors/FluentColors": {
+      "types": "./lib/colors/FluentColors.d.ts",
+      "import": "./lib/colors/FluentColors.js",
+      "require": "./lib-commonjs/FluentColors.js"
+    },
+    "./lib/createTheme": {
+      "types": "./lib/createTheme.d.ts",
+      "import": "./lib/createTheme.js",
+      "require": "./lib-commonjs/createTheme.js"
+    },
+    "./lib/effects/DefaultEffects": {
+      "types": "./lib/effects/DefaultEffects.d.ts",
+      "import": "./lib/effects/DefaultEffects.js",
+      "require": "./lib-commonjs/DefaultEffects.js"
+    },
+    "./lib/fonts/DefaultFontStyles": {
+      "types": "./lib/fonts/DefaultFontStyles.d.ts",
+      "import": "./lib/fonts/DefaultFontStyles.js",
+      "require": "./lib-commonjs/DefaultFontStyles.js"
+    },
+    "./lib/fonts/FluentFonts": {
+      "types": "./lib/fonts/FluentFonts.d.ts",
+      "import": "./lib/fonts/FluentFonts.js",
+      "require": "./lib-commonjs/FluentFonts.js"
+    },
+    "./lib/fonts/index": {
+      "types": "./lib/fonts/index.d.ts",
+      "import": "./lib/fonts/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./lib/motion/AnimationStyles": {
+      "types": "./lib/motion/AnimationStyles.d.ts",
+      "import": "./lib/motion/AnimationStyles.js",
+      "require": "./lib-commonjs/AnimationStyles.js"
+    },
+    "./lib/spacing/DefaultSpacing": {
+      "types": "./lib/spacing/DefaultSpacing.d.ts",
+      "import": "./lib/spacing/DefaultSpacing.js",
+      "require": "./lib-commonjs/DefaultSpacing.js"
+    },
+    "./lib/types/IAnimationStyles": {
+      "types": "./lib/types/IAnimationStyles.d.ts"
+    },
+    "./lib/types/IEffects": {
+      "types": "./lib/types/IEffects.d.ts"
+    },
+    "./lib/types/IFontStyles": {
+      "types": "./lib/types/IFontStyles.d.ts"
+    },
+    "./lib/types/IPalette": {
+      "types": "./lib/types/IPalette.d.ts"
+    },
+    "./lib/types/ISemanticColors": {
+      "types": "./lib/types/ISemanticColors.d.ts"
+    },
+    "./lib/types/ISemanticTextColors": {
+      "types": "./lib/types/ISemanticTextColors.d.ts"
+    },
+    "./lib/types/ISpacing": {
+      "types": "./lib/types/ISpacing.d.ts"
+    },
+    "./lib/types/ITheme": {
+      "types": "./lib/types/ITheme.d.ts"
+    }
   }
 }

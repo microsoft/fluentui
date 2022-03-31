@@ -66,6 +66,12 @@ var siteInfo = [
     icon: 'SpeedHigh',
     title: 'Perf Tests',
   },
+  {
+    package: '@fluentui/perf-test-react-components',
+    link: './perf-test-react-components/index.html',
+    icon: 'SpeedHigh',
+    title: 'Perf Tests React-Components',
+  },
 ];
 
 // location.pathname will be like /pull/17568/ or /heads/master/
@@ -75,6 +81,7 @@ if (hrefMatch) {
   var link = /** @type {HTMLAnchorElement} */ (document.getElementById('prLink'));
   if (hrefMatch[1] === 'heads') {
     // master or other branch CI
+    // eslint-disable-next-line @microsoft/sdl/no-inner-html -- Only used during PR publish, not production code.
     link.innerHTML = hrefMatch[2];
     link.href = repoUrl + '/tree/' + hrefMatch[2];
     // remove the PR-specific explanation
@@ -82,6 +89,7 @@ if (hrefMatch) {
     prExplanation.parentElement.removeChild(prExplanation);
   } else {
     // PR
+    // eslint-disable-next-line @microsoft/sdl/no-inner-html -- Only used during PR publish, not production code.
     link.innerHTML = 'PR #' + hrefMatch[2];
     link.href = repoUrl + '/pull/' + hrefMatch[2];
   }
@@ -93,6 +101,7 @@ siteInfo.forEach(function (info) {
   if (packages.indexOf(info.package) > -1) {
     var li = document.createElement('LI');
     li.className = 'Tile';
+    // eslint-disable-next-line @microsoft/sdl/no-inner-html -- Only used during PR publish, not production code.
     li.innerHTML =
       '<a href="' +
       info.link +

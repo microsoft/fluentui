@@ -4,10 +4,10 @@ exports[`Slider renders disabled Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    style="--fui-slider-rail-direction: 90deg; --fui-slider-thumb-position: 50%; --fui-slider-rail-offset: 0%; --fui-slider-rail-progress: 50%;"
+    style="--fui-Slider__rail--direction: 90deg; --fui-Slider__thumb--position: 50%; --fui-Slider__rail--offset: 0%; --fui-Slider__rail--progress: 50%;"
   >
     <input
-      class=""
+      class="fui-Slider__input"
       disabled=""
       id="slider-1"
       max="10"
@@ -16,10 +16,10 @@ exports[`Slider renders disabled Slider correctly 1`] = `
       value="5"
     />
     <div
-      class=""
+      class="fui-Slider__rail"
     />
     <div
-      class=""
+      class="fui-Slider__thumb"
     />
   </div>
 </div>
@@ -29,10 +29,10 @@ exports[`Slider renders horizontal Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    style="--fui-slider-rail-direction: 90deg; --fui-slider-thumb-position: 50%; --fui-slider-rail-offset: 0%; --fui-slider-rail-progress: 50%;"
+    style="--fui-Slider__rail--direction: 90deg; --fui-Slider__thumb--position: 50%; --fui-Slider__rail--offset: 0%; --fui-Slider__rail--progress: 50%;"
   >
     <input
-      class=""
+      class="fui-Slider__input"
       id="slider-1"
       max="10"
       min="0"
@@ -40,10 +40,10 @@ exports[`Slider renders horizontal Slider correctly 1`] = `
       value="5"
     />
     <div
-      class=""
+      class="fui-Slider__rail"
     />
     <div
-      class=""
+      class="fui-Slider__thumb"
     />
   </div>
 </div>
@@ -53,10 +53,10 @@ exports[`Slider renders horizontal origin Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    style="--fui-slider-rail-direction: 90deg; --fui-slider-thumb-position: 50%; --fui-slider-rail-offset: 20%; --fui-slider-rail-progress: 30%;"
+    style="--fui-Slider__rail--direction: 90deg; --fui-Slider__thumb--position: 50%; --fui-Slider__rail--offset: 20%; --fui-Slider__rail--progress: 30%;"
   >
     <input
-      class=""
+      class="fui-Slider__input"
       id="slider-1"
       max="10"
       min="0"
@@ -64,10 +64,10 @@ exports[`Slider renders horizontal origin Slider correctly 1`] = `
       value="5"
     />
     <div
-      class=""
+      class="fui-Slider__rail"
     />
     <div
-      class=""
+      class="fui-Slider__thumb"
     />
   </div>
 </div>
@@ -77,10 +77,10 @@ exports[`Slider renders vertical Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    style="--fui-slider-rail-direction: 0deg; --fui-slider-thumb-position: 50%; --fui-slider-rail-offset: 0%; --fui-slider-rail-progress: 50%;"
+    style="--fui-Slider__rail--direction: 0deg; --fui-Slider__thumb--position: 50%; --fui-Slider__rail--offset: 0%; --fui-Slider__rail--progress: 50%;"
   >
     <input
-      class=""
+      class="fui-Slider__input"
       id="slider-1"
       max="10"
       min="0"
@@ -89,10 +89,10 @@ exports[`Slider renders vertical Slider correctly 1`] = `
       value="5"
     />
     <div
-      class=""
+      class="fui-Slider__rail"
     />
     <div
-      class=""
+      class="fui-Slider__thumb"
     />
   </div>
 </div>
@@ -102,10 +102,10 @@ exports[`Slider renders vertical origin Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    style="--fui-slider-rail-direction: 0deg; --fui-slider-thumb-position: 50%; --fui-slider-rail-offset: 20%; --fui-slider-rail-progress: 30%;"
+    style="--fui-Slider__rail--direction: 0deg; --fui-Slider__thumb--position: 50%; --fui-Slider__rail--offset: 20%; --fui-Slider__rail--progress: 30%;"
   >
     <input
-      class=""
+      class="fui-Slider__input"
       id="slider-1"
       max="10"
       min="0"
@@ -114,10 +114,10 @@ exports[`Slider renders vertical origin Slider correctly 1`] = `
       value="5"
     />
     <div
-      class=""
+      class="fui-Slider__rail"
     />
     <div
-      class=""
+      class="fui-Slider__thumb"
     />
   </div>
 </div>

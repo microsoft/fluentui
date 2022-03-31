@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-hooks",
-  "version": "8.3.13",
+  "version": "8.5.3",
   "description": "Fluent UI React hooks.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,25 +25,24 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/test-utilities": "^8.2.0",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "@fluentui/test-utilities": "^8.2.0"
   },
   "dependencies": {
-    "@fluentui/react-window-provider": "^2.1.6",
-    "@fluentui/set-version": "^8.1.5",
-    "@fluentui/utilities": "^8.4.2",
+    "@fluentui/react-window-provider": "^2.2.0",
+    "@fluentui/set-version": "^8.2.0",
+    "@fluentui/utilities": "^8.8.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

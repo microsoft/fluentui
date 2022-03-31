@@ -2,6 +2,50 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Fri, 11 Mar 2022 19:51:47 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "21cde4a19dc74f1bcd812bca1b89d8207a3e98da",
+            "comment": "Add compat exports to date-time-utilities"
+          }
+        ],
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "fc2d2868c37f190fdfe61f98a1181f8af98a0122",
+            "comment": "Bump version to fix exports for partner team"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Mar 2022 07:24:25 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/date-time-utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Jan 2022 07:30:05 GMT",
       "tag": "@fluentui/date-time-utilities_v8.3.0",
       "version": "8.3.0",

@@ -2,6 +2,147 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Tue, 15 Mar 2022 07:45:54 GMT",
+      "tag": "@fluentui/utilities_v8.8.1",
+      "version": "8.8.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "4123478+tido64@users.noreply.github.com",
+            "package": "@fluentui/utilities",
+            "commit": "c2ec9d827e3af561d2bdc971d4949f6e8153a6ad",
+            "comment": "Ban `export *` in `@fluentui/utilities` for better tree-shakeability"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Mar 2022 07:34:41 GMT",
+      "tag": "@fluentui/utilities_v8.8.0",
+      "version": "8.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "f45738ec1d2156e69f6e3ce3fd0d063a6ee83026",
+            "comment": "Adding additional exports to support existing 1js imports (which will be resolved separately.)"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.0",
+            "commit": "8e02823339296401393a13fc2f38d4629ffe48b3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.17",
+            "commit": "8e02823339296401393a13fc2f38d4629ffe48b3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Mar 2022 07:37:29 GMT",
+      "tag": "@fluentui/utilities_v8.7.0",
+      "version": "8.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "fb377e0b4400b99499d69e9ca956fd433f3e2804",
+            "comment": "Enhance selection to support better micro-management"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Mar 2022 07:35:11 GMT",
+      "tag": "@fluentui/utilities_v8.6.0",
+      "version": "8.6.0",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Mar 2022 07:24:25 GMT",
+      "tag": "@fluentui/utilities_v8.6.0",
+      "version": "8.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.4.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.16",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 07:23:42 GMT",
+      "tag": "@fluentui/utilities_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "36821475e9f24b3212f998c3b23e625a6503183e",
+            "comment": "Add useIsomorphicLayoutEffect"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Feb 2022 07:29:50 GMT",
+      "tag": "@fluentui/utilities_v8.4.3",
+      "version": "8.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "john.collier4@gmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "73454794571f7a94672124631a4c939b3e5f1259",
+            "comment": "make ./packages/utilities/src/DelayedRender.tsx render during SSR"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Feb 2022 07:28:31 GMT",
       "tag": "@fluentui/utilities_v8.4.2",
       "version": "8.4.2",

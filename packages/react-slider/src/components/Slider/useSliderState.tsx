@@ -1,28 +1,23 @@
 import * as React from 'react';
 import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import {
-  railOffsetVar,
-  railStepsPercentVar,
-  railProgressVar,
-  thumbPositionVar,
-  railDirectionVar,
-} from './useSliderStyles';
+import { sliderCSSVars } from './useSliderStyles';
 import type { SliderState } from './Slider.types';
+
+const { railOffsetVar, railStepsPercentVar, railProgressVar, thumbPositionVar, railDirectionVar } = sliderCSSVars;
 
 const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
 };
 
 export const useSliderState_unstable = (state: SliderState) => {
-  const { value, defaultValue = 0, min = 0, max = 100, step = 1, getAriaValueText, origin } = state;
+  const { value, defaultValue = 0, min = 0, max = 100, step = 1, origin } = state;
   const { dir } = useFluent();
   const [currentValue, setCurrentValue] = useControllableState({
     state: value !== undefined ? clamp(value, min, max) : undefined,
     defaultState: clamp(defaultValue, min, max),
     initialState: 0,
   });
-
   const valuePercent = getPercent(currentValue, min, max);
   const originPercent = React.useMemo(() => {
     return origin !== undefined ? getPercent(origin, min, max) : 0;
@@ -61,7 +56,6 @@ export const useSliderState_unstable = (state: SliderState) => {
 
   // Input Props
   state.input.value = currentValue;
-  getAriaValueText && (state.input['aria-valuetext'] = getAriaValueText(currentValue!));
   state.input.onChange = onChange;
 
   return state;

@@ -190,10 +190,22 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/perf-test-react-components": {
+      "root": "apps/perf-test-react-components",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/pr-deploy-site": {
       "root": "apps/pr-deploy-site",
       "projectType": "application",
       "implicitDependencies": []
+    },
+    "@fluentui/priority-overflow": {
+      "root": "packages/priority-overflow",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/priority-overflow/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/projects-test": {
       "root": "packages/fluentui/projects-test",
@@ -489,6 +501,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-priority-overflow": {
+      "root": "packages/react-priority-overflow",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-priority-overflow/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-proptypes": {
       "root": "packages/fluentui/react-proptypes",
       "projectType": "library",
@@ -507,6 +526,11 @@
       "sourceRoot": "packages/react-radio/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-select": {
+      "root": "packages/react-select",
+      "projectType": "library",
+      "sourceRoot": "packages/react-select/src"
     },
     "@fluentui/react-select": {
       "root": "packages/react-select",
@@ -588,6 +612,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-textarea": {
+      "root": "packages/react-textarea",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-textarea/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-theme": {
       "root": "packages/react-theme",
       "projectType": "library",
@@ -629,11 +660,6 @@
     "@fluentui/scripts": {
       "root": "scripts",
       "projectType": "library",
-      "implicitDependencies": []
-    },
-    "@fluentui/server-rendered-app": {
-      "root": "apps/server-rendered-app",
-      "projectType": "application",
       "implicitDependencies": []
     },
     "@fluentui/set-version": {
@@ -708,6 +734,11 @@
     "@fluentui/utilities": {
       "root": "packages/utilities",
       "projectType": "library",
+      "implicitDependencies": []
+    },
+    "@fluentui/upgrade-examples-v8-v9": {
+      "root": "apps/upgrade-examples-v8-v9",
+      "projectType": "application",
       "implicitDependencies": []
     },
     "@fluentui/vr-tests": {

@@ -66,6 +66,9 @@ export const divProperties: Record<string, number>;
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
 
 // @public
+export const fieldsetProperties: Record<string, number>;
+
+// @public
 export type FluentTriggerComponent = {
     isFluentTriggerComponent?: boolean;
 };
@@ -73,8 +76,6 @@ export type FluentTriggerComponent = {
 // @public
 export const formProperties: Record<string, number>;
 
-// Warning: (ae-forgotten-export) The symbol "ObscureEventName" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
 
@@ -182,10 +183,6 @@ export const selectProperties: Record<string, number>;
 // @public
 export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.KeyboardEvent): boolean;
 
-// Warning: (ae-forgotten-export) The symbol "WithSlotShorthandValue" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "WithSlotRenderFunction" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "IntrisicElementProps" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
     as?: Type;
@@ -194,6 +191,11 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
         as: As;
     } & WithSlotRenderFunction<IntrisicElementProps<As>>;
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
+
+// @public
+export type SlotClassNames<Slots> = {
+    [SlotName in keyof Slots]-?: string;
+};
 
 // @public
 export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandValue | null | undefined>;
@@ -328,10 +330,6 @@ export const useUnmount: (callback: () => void) => void;
 
 // @public
 export const videoProperties: Record<string, number>;
-
-// Warnings were encountered during analysis:
-//
-// lib/compose/getSlots.d.ts:28:5 - (ae-forgotten-export) The symbol "ObjectSlotProps" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

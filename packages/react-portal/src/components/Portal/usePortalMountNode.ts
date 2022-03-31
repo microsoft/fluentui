@@ -13,13 +13,13 @@ export type UsePortalMountNodeOptions = {
 /**
  * Creates a new element on a document.body to mount portals
  */
-export const usePortalMountNode = (options: UsePortalMountNodeOptions) => {
+export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
   const themeClassName = useThemeClassName();
   const { targetDocument, dir } = useFluent();
 
   const element = React.useMemo(() => {
     if (targetDocument === undefined || options.disabled) {
-      return undefined;
+      return null;
     }
 
     const newElement = targetDocument.createElement('div');

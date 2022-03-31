@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { Portal } from '@fluentui/react-portal';
 import { MenuPopover } from './MenuPopover';
 import { isConformant } from '../../common/isConformant';
+import { MenuPopoverProps } from './MenuPopover.types';
 
 describe('MenuPopover', () => {
+  const testid = 'test';
+
   isConformant({
-    // FIXME disabled because it will test the virtual parent span
-    disabledTests: ['as-renders-html'],
     Component: MenuPopover,
     displayName: 'MenuPopover',
-    helperComponents: [Portal, 'span'],
+    requiredProps: { 'data-testid': testid } as MenuPopoverProps,
+    getTargetElement: result => result.getByTestId(testid),
   });
 
   it('renders a default state', () => {
@@ -26,7 +27,6 @@ describe('MenuPopover', () => {
     ['onKeyDown', fireEvent.keyDown],
   ])('should pass original %s handler to menu popup', (handler, trigger) => {
     // Arrange
-    const testid = 'test';
     const spy = jest.fn();
     const props = { [handler]: spy };
     const { getByTestId } = render(

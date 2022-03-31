@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-focus",
-  "version": "8.3.19",
+  "version": "8.5.6",
   "description": "Focus helpers to be used in React applications.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -29,25 +29,15 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/test-utilities": "^8.2.0",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "@types/react-test-renderer": "^16.0.0",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.15",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "@fluentui/jest-serializer-merge-styles": "^8.0.17"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^0.3.5",
-    "@fluentui/merge-styles": "^8.3.0",
-    "@fluentui/set-version": "^8.1.5",
-    "@fluentui/style-utilities": "^8.5.6",
-    "@fluentui/utilities": "^8.4.2",
+    "@fluentui/keyboard-key": "^0.4.0",
+    "@fluentui/merge-styles": "^8.5.0",
+    "@fluentui/set-version": "^8.2.0",
+    "@fluentui/style-utilities": "^8.6.5",
+    "@fluentui/utilities": "^8.8.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -56,5 +46,12 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

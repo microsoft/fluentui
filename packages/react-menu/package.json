@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-menu",
-  "version": "9.0.0-rc.3",
+  "version": "9.0.0-rc.5",
   "description": "Fluent UI menu component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -30,28 +30,19 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "9.0.0-beta.3",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "@types/react-test-renderer": "^16.0.0",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "9.0.0-rc.3",
-    "@fluentui/react-context-selector": "9.0.0-rc.3",
+    "@fluentui/keyboard-keys": "9.0.0-rc.4",
+    "@fluentui/react-context-selector": "9.0.0-rc.5",
     "@fluentui/react-icons": "^2.0.159-beta.10",
     "@griffel/react": "1.0.0",
-    "@fluentui/react-portal": "9.0.0-rc.3",
-    "@fluentui/react-positioning": "9.0.0-rc.3",
-    "@fluentui/react-shared-contexts": "9.0.0-rc.3",
-    "@fluentui/react-tabster": "9.0.0-rc.3",
-    "@fluentui/react-utilities": "9.0.0-rc.3",
+    "@fluentui/react-portal": "9.0.0-rc.5",
+    "@fluentui/react-positioning": "9.0.0-rc.5",
+    "@fluentui/react-shared-contexts": "9.0.0-rc.4",
+    "@fluentui/react-tabster": "9.0.0-rc.5",
+    "@fluentui/react-theme": "9.0.0-rc.4",
+    "@fluentui/react-utilities": "9.0.0-rc.5",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -66,5 +57,12 @@
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

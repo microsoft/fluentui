@@ -27,13 +27,11 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@types/react": "16.9.42",
-    "@fluentui/scripts": "^1.0.0",
-    "react": "16.8.6"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-provider": "9.0.0-rc.3",
-    "@fluentui/react-theme": "9.0.0-rc.3",
+    "@fluentui/react-provider": "9.0.0-rc.5",
+    "@fluentui/react-theme": "9.0.0-rc.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -48,5 +46,12 @@
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

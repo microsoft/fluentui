@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "2.2.3",
+  "version": "2.3.1",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -47,7 +47,7 @@
     "test-firefox:verbose": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
   },
   "devDependencies": {
-    "@storybook/html": "6.3.6",
+    "@storybook/html": "6.4.19",
     "@types/chai": "^4.2.11",
     "@types/chai-spies": "^1.0.1",
     "@types/karma": "^5.0.0",
@@ -61,7 +61,7 @@
     "istanbul": "^0.4.5",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jsdom-global": "3.0.2",
-    "karma": "^5.0.4",
+    "karma": "^6.3.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage": "^2.0.2",
     "karma-coverage-istanbul-reporter": "^3.0.0",
@@ -86,10 +86,10 @@
     "webpack": "^4.43.0"
   },
   "dependencies": {
-    "@microsoft/fast-colors": "^5.1.0",
-    "@microsoft/fast-element": "^1.6.0",
-    "@microsoft/fast-foundation": "^2.32.0",
-    "@microsoft/fast-web-utilities": "^5.0.0",
+    "@microsoft/fast-colors": "^5.1.5",
+    "@microsoft/fast-element": "^1.7.2",
+    "@microsoft/fast-foundation": "^2.33.6",
+    "@microsoft/fast-web-utilities": "^5.1.0",
     "tslib": "^1.13.0"
   }
 }

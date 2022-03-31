@@ -2,10 +2,7 @@ import * as React from 'react';
 import { ComponentDoc } from 'react-docgen-typescript';
 import * as ts from 'typescript';
 
-import { defaultTests } from './defaultTests';
-import { mount, ComponentType } from 'enzyme';
-
-export type Tests = keyof typeof defaultTests;
+import { render } from '@testing-library/react';
 
 /**
  * Individual test options
@@ -16,6 +13,18 @@ export interface TestOptions {
   };
   'consistent-callback-args'?: {
     ignoreProps?: string[];
+  };
+  'has-static-classnames'?: {
+    props: {
+      [key: string]: string | {};
+    };
+    expectedClassNames?: {
+      [key: string]: string;
+    };
+  }[];
+  'component-has-static-classname'?: {
+    /** Prefix for the classname, if not `fui-` */
+    prefix?: string;
   };
 }
 
@@ -33,20 +42,20 @@ export interface IsConformantOptions<TProps = {}> {
    */
   displayName: string;
   /**
-   * In case that the mount from enzyme does not work for the component, a custom mount function can be provided.
+   * Custom options passed to `@testing-library/react`'s `render` method.
    */
-  customMount?: typeof mount;
+  renderOptions?: Parameters<typeof render>[1];
   /**
    * If there are tests that aren't supposed to run on a component, this allows to opt out of any test.
    */
-  disabledTests?: Tests[];
+  disabledTests?: string[];
   /**
    * Optional flag that means the component is not exported at top level.
    * @defaultvalue false
    */
   isInternal?: boolean;
   /**
-   * Object that contains extra tests to run in case the component needs extra tests.
+   * Additional tests to run.
    */
   extraTests?: TestObject<TProps>;
   /**
@@ -63,32 +72,18 @@ export interface IsConformantOptions<TProps = {}> {
    */
   testOptions?: TestOptions;
   /**
-   * This component uses wrapper slot to wrap the 'meaningful' element.
-   */
-  wrapperComponent?: React.ElementType;
-  /**
-   * Helpers such as FocusZone and Ref which should be ignored when finding nontrivial children.
-   */
-  helperComponents?: React.ElementType[];
-  /**
-   * Whether to skip all tests for the `as` prop.
-   */
-  skipAsPropTests?: boolean;
-  /**
-   * If the component's 'as' property requires a ref, this will attach a forwardRef to the test component passed to 'as'
-   * and disable the as-renders-react-class test.
-   */
-  asPropHandlesRef?: boolean;
-  /**
    * An alternative name for the ref prop which resolves to
    * the root element (e.g. `elementRef`).
    * @defaultvalue 'ref'
    */
   elementRefName?: string;
   /**
-   * Child component that will receive unhandledProps.
+   * Get the element that will receive native props (or the specified native prop, if it matters)
    */
-  targetComponent?: ComponentType<TProps>;
+  getTargetElement?: (
+    renderResult: ReturnType<typeof render>,
+    attr: keyof React.AllHTMLAttributes<HTMLElement> | 'ref' | `data-${string}`,
+  ) => HTMLElement;
   /**
    * The name of the slot designated as "primary", which receives native props passed to the component.
    * This is 'root' by default, and only needs to be specified if it's a slot other than 'root'.

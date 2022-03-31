@@ -7,9 +7,11 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
+import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export type OnVisibleChangeData = {
@@ -22,11 +24,12 @@ export const renderTooltip_unstable: (state: TooltipState) => JSX.Element;
 // @public
 export const Tooltip: React_2.FC<TooltipProps> & FluentTriggerComponent;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const tooltipClassName = "fui-Tooltip";
 
-// Warning: (ae-forgotten-export) The symbol "TooltipCommons" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export const tooltipClassNames: SlotClassNames<TooltipSlots>;
+
 // @public
 export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'relationship'>> & Pick<TooltipCommons, 'relationship'> & {
     children?: (React_2.ReactElement & {

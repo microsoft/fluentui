@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Added MenuSplitGroup to exports",
+  "packageName": "@fluentui/react-components",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

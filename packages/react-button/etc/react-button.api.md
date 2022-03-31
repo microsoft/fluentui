@@ -10,21 +10,23 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
 
-// @public (undocumented)
-export const buttonClassName = "fui-Button";
+// @public @deprecated (undocumented)
+export const buttonClassName: string;
 
-// Warning: (ae-forgotten-export) The symbol "ButtonCommons" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export const buttonClassNames: SlotClassNames<ButtonSlots>;
+
 // @public (undocumented)
 export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommons>;
 
 // @public (undocumented)
 export type ButtonSlots = {
-    root: Slot<ARIAButtonSlotProps>;
+    root: NonNullable<Slot<ARIAButtonSlotProps>>;
     icon?: Slot<'span'>;
 };
 
@@ -36,8 +38,11 @@ export type ButtonState = ComponentState<ButtonSlots> & ButtonCommons & {
 // @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
+// @public @deprecated (undocumented)
+export const compoundButtonClassName: string;
+
 // @public (undocumented)
-export const compoundButtonClassName = "fui-CompoundButton";
+export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots>;
 
 // @public (undocumented)
 export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Partial<ButtonCommons>;
@@ -54,8 +59,11 @@ export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<But
 // @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 
+// @public @deprecated (undocumented)
+export const menuButtonClassName: string;
+
 // @public (undocumented)
-export const menuButtonClassName = "fui-MenuButton";
+export const menuButtonClassNames: SlotClassNames<MenuButtonSlots>;
 
 // @public (undocumented)
 export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<ButtonCommons, 'iconPosition'>>;
@@ -85,15 +93,18 @@ export const renderSplitButton_unstable: (state: SplitButtonState) => JSX.Elemen
 // @public
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 
+// @public @deprecated (undocumented)
+export const splitButtonClassName: string;
+
 // @public (undocumented)
-export const splitButtonClassName = "fui-SplitButton";
+export const splitButtonClassNames: SlotClassNames<SplitButtonSlots>;
 
 // @public (undocumented)
 export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonProps, 'root'> & Omit<MenuButtonProps, 'root'>;
 
 // @public (undocumented)
 export type SplitButtonSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     menuButton?: Slot<typeof MenuButton>;
     primaryActionButton?: Slot<typeof Button>;
 };
@@ -104,11 +115,12 @@ export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonSta
 // @public
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
 
-// @public (undocumented)
-export const toggleButtonClassName = "fui-ToggleButton";
+// @public @deprecated (undocumented)
+export const toggleButtonClassName: string;
 
-// Warning: (ae-forgotten-export) The symbol "ToggleButtonCommons" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;
+
 // @public (undocumented)
 export type ToggleButtonProps = ButtonProps & Partial<ToggleButtonCommons> & {
     defaultChecked?: boolean;

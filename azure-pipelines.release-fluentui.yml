@@ -31,6 +31,9 @@ variables:
     value: true
   - name: nightlyReleaseDate # used by nightly built docsite to setup codesandbox correctly
     value: empty
+  - group: InfoSec-SecurityResults
+  - name: tags
+    value: production,externalfacing
 
   # below are variables configurable at queue time, so they cannot appear in yml file
   # - name: publishDocsiteOnly # set it to true to only run Job_build_publish_doc
@@ -40,10 +43,12 @@ variables:
   # - name: version # version to publish to npm; only make sense when publishOfficial=true
   #   value: canary # value can only be canary/patch/minor
 
-pool: '1ES-Host-Ubuntu'
-
 jobs:
+  - template: .devops/templates/compliance-job.yml
+
   - job: Job_build_publish
+    dependsOn: Compliance
+    pool: '1ES-Host-Ubuntu'
     workspace:
       clean: all
     displayName: Build and Release Fluent Packages

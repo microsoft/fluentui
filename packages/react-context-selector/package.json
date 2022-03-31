@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-context-selector",
-  "version": "9.0.0-rc.3",
+  "version": "9.0.0-rc.5",
   "description": "React useContextSelector hook in userland",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,25 +25,18 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
-    "@types/scheduler": "^0.16.1",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "@types/react-test-renderer": "^16.0.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-is": "^16.6.3",
-    "react-test-renderer": "^16.3.0"
+    "react-is": "^16.6.3"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "9.0.0-rc.3",
-    "scheduler": "^0.20.1",
+    "@fluentui/react-utilities": "9.0.0-rc.5",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
     "@types/react-dom": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0",
-    "react-dom": ">=16.8.0 <18.0.0"
+    "react-dom": ">=16.8.0 <18.0.0",
+    "scheduler": "^0.19.0 || ^0.20.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -51,5 +44,12 @@
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }
