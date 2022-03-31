@@ -31,9 +31,9 @@ const getA11ySelectionMessage = {
   itemsCount: count => {
     let narration;
     if (count === 1) {
-      narration = `${count} item has been selected.`;
+      narration = `${count} item is selected.`;
     } else if (count >= 2) {
-      narration = `${count} items have been selected.`;
+      narration = `${count} items are selected.`;
     }
     return narration;
   },
