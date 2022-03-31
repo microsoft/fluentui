@@ -2337,11 +2337,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   /**
    * Get the aria autocomplete value for the combo box
    * @returns 'inline' if auto-complete automatically dynamic, 'both' if we have a list of possible values to pick from
-   * and can dynamically populate input, and 'none' if auto-complete is not enabled as we can't give user inputs.
+   * and can dynamically populate input, and 'list' if auto-complete is not enabled as selection is the only option.
    */
   private _getAriaAutoCompleteValue(): 'none' | 'inline' | 'list' | 'both' | undefined {
     const autoComplete = !this.props.disabled && this.props.autoComplete === 'on';
-    return autoComplete ? (this.props.allowFreeform ? 'inline' : 'both') : 'none';
+    return autoComplete ? (this.props.allowFreeform ? 'inline' : 'both') : 'list';
   }
 
   private _isPendingOption(item: IComboBoxOption): boolean {
