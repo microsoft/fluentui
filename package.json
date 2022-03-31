@@ -284,8 +284,7 @@
     "@types/jest-axe/axe-core": "4.2.1",
     "@types/react": "16.14.23",
     "@types/react-dom": "16.9.14",
-    "eslint": "7.25.0",
-    "immer": "9.0.12"
+    "eslint": "7.25.0"
   },
   "syncpack": {
     "prod": true,
