@@ -12,7 +12,7 @@ import '@codesandbox/sandpack-react/dist/index.css';
 import * as dedent from 'dedent';
 import newGithubIssueUrl from 'new-github-issue-url';
 import * as packageJson from '../../package.json';
-import bugReportTemplate from '../../../../.github/ISSUE_TEMPLATE/bug_report_vnext.md';
+import bugReportTemplate from '../../../../.github/ISSUE_TEMPLATE/bug_report_v9.md';
 
 const handleReportBug = (componentName: string) => async (e: React.MouseEvent) => {
   // create codesandbox
@@ -38,6 +38,7 @@ const handleReportBug = (componentName: string) => async (e: React.MouseEvent) =
     repoUrl: packageJson.repository.url,
     title: '',
     labels: ['Type: Bug :bug:', 'Fluent UI vNext', componentName ? `Component: ${componentName}` : ''],
+    template: `bug_report_v9_${componentName}_permit.md`,
     body: bugReportTemplate
       .replace('[package-versions]', packageJson.version)
       .replace('[browser-and-os-versions]', navigator.userAgent)

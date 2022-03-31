@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DocsContext, ArgsTable, Title, Subtitle, Description, PRIMARY_STORY } from '@storybook/addon-docs';
 import { makeStyles, shorthands } from '@griffel/react';
+import { KnownIssues } from './KnownIssues.stories';
 import { Toc } from './Toc.stories';
 import { isHosted } from './isHosted';
 import { FluentDocsDocsStory } from './FluentDocsDocsStory.stories';
@@ -42,7 +43,7 @@ export const FluentDocsPage = () => {
   const primaryStory = stories[0];
   const hosted = isHosted();
   const styles = useStyles();
-  const componentName = context.title.split('/').pop() ?? 'Unknown';
+  const componentName = context.title.split('/').pop().replaceAll(' ', '') ?? 'Unknown';
   // DEBUG
   // console.log('FluentDocsPage', context);
   // console.table(stories.map((s: StoreItem) => ({ id: s.id, kind: s.kind, name: s.name, story: s.story })));
