@@ -1,5 +1,5 @@
 ---
-labels: bug, documentation
+labels: bug
 ---
 
 ## Bug report
