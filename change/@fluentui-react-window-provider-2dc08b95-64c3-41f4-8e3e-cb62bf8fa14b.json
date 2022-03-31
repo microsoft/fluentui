@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Upgrade React Peer dependencies to include v18",
+  "packageName": "@fluentui/react-window-provider",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

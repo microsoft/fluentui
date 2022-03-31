@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Upgrade React peer dependency to include v18'",
+  "packageName": "@fluentui/utilities",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

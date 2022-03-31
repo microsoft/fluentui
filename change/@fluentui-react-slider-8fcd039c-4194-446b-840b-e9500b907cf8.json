@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Upgrade React Peer dependencies to include v18",
+  "packageName": "@fluentui/react-slider",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
