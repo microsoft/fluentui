@@ -1,3 +1,7 @@
+---
+labels: bug, documentation
+---
+
 ## Bug report
 
 <!--
