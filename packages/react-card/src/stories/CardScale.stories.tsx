@@ -42,6 +42,14 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     ...shorthands.border('5px', 'solid', tokens.colorNeutralStrokeAccessible),
   },
+  fixedSizeExample: {
+    width: '400px',
+    height: '75px',
+    justifyContent: 'center',
+  },
+  autoWidthExample: { height: '75px', justifyContent: 'center' },
+  autoHeightExample: { width: '400px' },
+  fluidExample: { justifyContent: 'center' },
 });
 export const CardScale = () => {
   const styles = useStyles();
@@ -51,7 +59,7 @@ export const CardScale = () => {
       <div>
         <h1>Default (fixed size)</h1>
         <div className={styles.container}>
-          <Card style={{ width: '400px', height: '75px', justifyContent: 'center' }}>
+          <Card className={styles.fixedSizeExample}>
             <SampleCardContent />
           </Card>
         </div>
@@ -59,7 +67,7 @@ export const CardScale = () => {
       <div>
         <h1>Auto width</h1>
         <div className={styles.container}>
-          <Card scale="auto-width" style={{ height: '75px', justifyContent: 'center' }}>
+          <Card scale="auto-width" className={styles.autoWidthExample}>
             <SampleCardContent />
           </Card>
         </div>
@@ -67,7 +75,7 @@ export const CardScale = () => {
       <div>
         <h1>Auto height</h1>
         <div className={styles.container}>
-          <Card scale="auto-height" style={{ width: '400px' }}>
+          <Card scale="auto-height" className={styles.autoHeightExample}>
             <SampleCardContent />
           </Card>
         </div>
@@ -91,7 +99,7 @@ export const CardScale = () => {
       <div>
         <h1>Fluid height</h1>
         <div className={styles.container}>
-          <Card scale="fluid-height" style={{ justifyContent: 'center' }}>
+          <Card scale="fluid-height" className={styles.fluidExample}>
             <SampleCardContent />
           </Card>
         </div>
@@ -99,7 +107,7 @@ export const CardScale = () => {
       <div>
         <h1>Fluid</h1>
         <div className={styles.container}>
-          <Card scale="fluid" style={{ justifyContent: 'center' }}>
+          <Card scale="fluid" className={styles.fluidExample}>
             <SampleCardContent />
           </Card>
         </div>
