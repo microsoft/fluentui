@@ -12,7 +12,7 @@ export const Icon = () => (
       With calendar icon after contents
     </CompoundButton>
     <Tooltip content="With calendar icon only" relationship="label">
-      <CompoundButton secondaryContent="Secondary content" icon={<CalendarMonthRegular />} />
+      <CompoundButton icon={<CalendarMonthRegular />} />
     </Tooltip>
   </>
 );

@@ -15,7 +15,7 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
  */
 export const toggleButtonClassName = toggleButtonClassNames.root;
 
-const useCheckedStyles = makeStyles({
+export const useCheckedStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackground1Selected,
@@ -102,7 +102,7 @@ const useCheckedStyles = makeStyles({
   },
 });
 
-const useDisabledStyles = makeStyles({
+export const useDisabledStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,

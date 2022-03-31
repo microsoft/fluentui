@@ -1,5 +1,5 @@
-import { useControllableState } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { useToggleable } from '../../utils/useToggleable';
 import { useButton_unstable } from '../Button/useButton';
 import type { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';
 
@@ -10,46 +10,12 @@ import type { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types'
  * @param ref - User provided ref to be passed to the ToggleButton component.
  */
 export const useToggleButton_unstable = (
-  { checked, defaultChecked, ...props }: ToggleButtonProps,
+  props: ToggleButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToggleButtonState => {
-  const { disabled, disabledFocusable } = props;
   const buttonState = useButton_unstable(props, ref);
-  const { role, onClick } = buttonState.root;
 
-  const [checkedValue, setCheckedValue] = useControllableState({
-    state: checked,
-    defaultState: defaultChecked,
-    initialState: false,
-  });
+  const toggleButtonState = useToggleable(props, buttonState);
 
-  const isCheckboxTypeRole = role === 'menuitemcheckbox' || role === 'checkbox';
-
-  return {
-    // Button state
-    ...buttonState,
-
-    // State calculated from a set of props
-    checked: checkedValue,
-
-    // Slots definition
-    root: {
-      ...buttonState.root,
-      [isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed']: checkedValue,
-      onClick: React.useCallback(
-        ev => {
-          if (!disabled && !disabledFocusable) {
-            onClick?.(ev);
-
-            if (ev.defaultPrevented) {
-              return;
-            }
-
-            setCheckedValue(!checkedValue);
-          }
-        },
-        [checkedValue, disabled, disabledFocusable, setCheckedValue, onClick],
-      ),
-    },
-  };
+  return toggleButtonState;
 };

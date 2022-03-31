@@ -153,8 +153,11 @@ export const useSplitButton_unstable: (props: SplitButtonProps, ref: React_2.Ref
 // @public (undocumented)
 export const useSplitButtonStyles_unstable: (state: SplitButtonState) => SplitButtonState;
 
+// @public (undocumented)
+export function useToggleable<TToggleButtonProps extends ToggleButtonProps, TButtonState extends ButtonState, TToggleButtonState extends ToggleButtonState & TButtonState>(props: TToggleButtonProps, buttonState: TButtonState): TToggleButtonState;
+
 // @public
-export const useToggleButton_unstable: ({ checked, defaultChecked, ...props }: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonState;
+export const useToggleButton_unstable: (props: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonState;
 
 // @public (undocumented)
 export const useToggleButtonStyles_unstable: (state: ToggleButtonState) => ToggleButtonState;

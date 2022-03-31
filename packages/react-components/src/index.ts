@@ -195,6 +195,7 @@ export {
   useMenuButtonStyles_unstable,
   useSplitButton_unstable,
   useSplitButtonStyles_unstable,
+  useToggleable,
   useToggleButton_unstable,
   useToggleButtonStyles_unstable,
 } from '@fluentui/react-button';
