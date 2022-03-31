@@ -125,6 +125,11 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
      * @param item - Dropdown removed element.
      */
     onRemove?: (item: ShorthandValue<DropdownItemProps>) => string;
+    /**
+     * Callback that creates custom accessibility message about the selected items count a screen reader narrates on input field focus.
+     * @param count - number of items selected.
+     */
+    itemsCount?: (count: number) => string;
   };
 
   /** A label for selected items listbox. */
@@ -135,8 +140,6 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
    * @param messageGenerationProps - Object with properties to generate message from. See getA11yStatusMessage from Downshift repo.
    */
   getA11yStatusMessage?: (options: DownshiftA11yStatusMessageOptions<ShorthandValue<DropdownItemProps>>) => string;
-
-  getA11ySelectedItemsCountMessage?: (count: ShorthandValue<DropdownItemProps>) => string;
 
   /** A dropdown can highlight the first option when it opens. */
   highlightFirstItemOnOpen?: boolean;
@@ -391,7 +394,6 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     getA11ySelectionMessage,
     a11ySelectedItemsMessage,
     getA11yStatusMessage,
-    getA11ySelectedItemsCountMessage,
     inline,
     inverted,
     itemToString,
@@ -435,6 +437,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
   const containerRef = React.useRef<HTMLDivElement>();
 
   const defaultTriggerButtonId = React.useMemo(() => _.uniqueId('dropdown-trigger-button-'), []);
+  const selectedItemsCountNarrationId = React.useMemo(() => _.uniqueId('dropdown-selected-items-count-'), []);
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Dropdown.handledProps, props);
@@ -632,17 +635,17 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     });
   };
 
-  const getSelectedItemsNarration = id => {
-    // Get narration only if at least one item is selected and only in multiple case
-    if (value.length === 0 || !multiple) {
+  const renderSelectedItemsCountNarration = id => {
+    // Get narration only if callback is provided, at least one item is selected and only in multiple case
+    if (!getA11ySelectionMessage || !getA11ySelectionMessage.itemsCount || value.length === 0 || !multiple) {
       return null;
     }
-    const narration = (
+    const narration = getA11ySelectionMessage.itemsCount(value.length);
+    return (
       <span id={id} style={screenReaderContainerStyles}>
-        {value.length} items have been selected
+        {narration}
       </span>
     );
-    return narration;
   };
   const renderItemsList = (
     highlightedIndex: number,
@@ -795,8 +798,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     return null;
   };
 
-  const selectedItemsNarrationId = `${dropdownSlotClassNames.container}-selectedItemsNarration`;
-  const selectedItemsNarration = getSelectedItemsNarration(selectedItemsNarrationId);
+  const selectedItemsCountNarration = renderSelectedItemsCountNarration(selectedItemsCountNarrationId);
   const renderSelectedItems = () => {
     if (value.length === 0) {
       return null;
@@ -823,7 +825,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
           {selectedItems}
         </div>
-        {selectedItemsNarration}
+        {selectedItemsCountNarration}
       </>
     );
   };
@@ -1151,7 +1153,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
             setSearchQuery(e.target.value);
           },
           'aria-labelledby': ariaLabelledby,
-          'aria-describedby': ariaDescribedby ? ariaDescribedby : selectedItemsNarrationId,
+          'aria-describedby': ariaDescribedby || selectedItemsCountNarrationId,
         }),
       },
       // same story as above for getRootProps.
@@ -1719,7 +1721,6 @@ Dropdown.propTypes = {
   fluid: PropTypes.bool,
   getA11ySelectionMessage: PropTypes.object,
   getA11yStatusMessage: PropTypes.func,
-  getA11ySelectedItemsCountMessage: PropTypes.func,
   highlightFirstItemOnOpen: PropTypes.bool,
   highlightedIndex: PropTypes.number,
   inline: PropTypes.bool,
