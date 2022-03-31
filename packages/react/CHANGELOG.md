@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 30 Mar 2022 07:38:54 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Mar 2022 07:38:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.63.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.63.1)
+
+Thu, 31 Mar 2022 07:38:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.63.0..@fluentui/react_v8.63.1)
+
+### Patches
+
+- adjust slider styles to match contrast ratios ([PR #22256](https://github.com/microsoft/fluentui/pull/22256) by mgodbolt@microsoft.com)
 
 ## [8.63.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.63.0)
 
