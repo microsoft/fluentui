@@ -1,7 +1,6 @@
 ---
-name: Bug report vNext
-about: Found a bug in Fluent UI React v9?
 labels: bug
+title: '[DATE]: [FEATURE NAME]'
 ---
 
 ## Bug report
