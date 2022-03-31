@@ -17,6 +17,7 @@ describe('MenuItem', () => {
     testPath: __filename,
     constructorName: 'MenuItem',
     wrapperComponent: MenuItemWrapper,
+    getTargetElement: result => result.getByRole('menuitem'),
     autoControlledProps: ['menuOpen'],
     testOptions: { 'consistent-callback-names': { ignoreProps: ['onActiveChanged'] } },
   });

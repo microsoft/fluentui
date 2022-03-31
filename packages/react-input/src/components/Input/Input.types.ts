@@ -45,12 +45,6 @@ export type InputProps = Omit<
   size?: 'small' | 'medium' | 'large';
 
   /**
-   * If true, the input will have inline display, allowing it be used within text content.
-   * If false (the default), the input will have block display.
-   */
-  inline?: boolean;
-
-  /**
    * Controls the colors and borders of the input.
    * @default 'outline'
    */
@@ -75,7 +69,7 @@ export type InputProps = Omit<
   /**
    * Called when the user changes the input's value.
    */
-  onChange?: (ev: React.FormEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => void;
 
   /**
    * An input can have different text-based [types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#input_types)
@@ -106,7 +100,7 @@ export type InputProps = Omit<
 /**
  * State used in rendering Input.
  */
-export type InputState = Required<Pick<InputProps, 'appearance' | 'inline' | 'size'>> & ComponentState<InputSlots>;
+export type InputState = Required<Pick<InputProps, 'appearance' | 'size'>> & ComponentState<InputSlots>;
 
 /**
  * Data passed to the `onChange` callback when a user changes the input's value.

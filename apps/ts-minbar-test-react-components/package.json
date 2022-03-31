@@ -5,7 +5,7 @@
   "description": "Testing Fluent UI React Components compatibility with Typescript 3.9",
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-components": "^9.0.0-rc.2"
+    "@fluentui/react-components": "^9.0.0-rc.6"
   },
   "scripts": {
     "build": "just-scripts build",

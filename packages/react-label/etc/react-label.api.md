@@ -20,8 +20,6 @@ export const labelClassName = "fui-Label";
 // @public (undocumented)
 export const labelClassNames: SlotClassNames<LabelSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "LabelCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommons> & {
     required?: boolean | Slot<'span'>;

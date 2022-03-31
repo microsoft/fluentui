@@ -29,8 +29,6 @@ export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
 // @public (undocumented)
 export const toolbarButtonClassNames: SlotClassNames<ToolbarButtonSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "ToolbarButtonCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type ToolbarButtonProps = ComponentProps<ToolbarButtonSlots> & ToolbarButtonCommons;
 
@@ -51,8 +49,6 @@ export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
 // @public (undocumented)
 export const toolbarDividerClassNames: SlotClassNames<ToolbarDividerSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "ToolbarDividerCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type ToolbarDividerProps = ComponentProps<ToolbarDividerSlots> & ToolbarDividerCommons;
 
@@ -64,8 +60,6 @@ export type ToolbarDividerSlots = {
 // @public
 export type ToolbarDividerState = ComponentState<ToolbarDividerSlots> & ToolbarDividerCommons;
 
-// Warning: (ae-forgotten-export) The symbol "ToolbarCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type ToolbarProps = ComponentProps<ToolbarSlots> & ToolbarCommons;
 
