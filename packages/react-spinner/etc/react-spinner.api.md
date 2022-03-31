@@ -28,7 +28,7 @@ export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & Partial<
 
 // @public (undocumented)
 export type SpinnerSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     spinner?: Slot<'span'>;
     label?: Slot<typeof Label>;
 };

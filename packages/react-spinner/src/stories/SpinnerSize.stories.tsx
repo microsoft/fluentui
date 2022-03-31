@@ -1,48 +1,31 @@
 import * as React from 'react';
-import { useId } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
 import { makeStyles, shorthands } from '@griffel/react';
 import { Spinner } from '../index';
 
 const useStyles = makeStyles({
   container: {
     '> div': { ...shorthands.padding('20px') },
-    '& label': { display: 'block', marginBottom: '10px' },
   },
 });
 
 export const Size = () => {
-  const tinyId = useId('tiny');
-  const extraSmallId = useId('extra-small');
-  const smallId = useId('small');
-  const mediumId = useId('medium');
-  const largeId = useId('large');
-  const extraLargeId = useId('extra-large');
-  const hugeId = useId('huge');
   const styles = useStyles();
 
   return (
     <div className={styles.container}>
-      <Label htmlFor={tinyId}>Tiny Spinner</Label>
-      <Spinner size="tiny" id={tinyId} />
+      <Spinner size="tiny" label="Tiny Spinner" />
 
-      <Label htmlFor={extraSmallId}>Extra Small Spinner</Label>
-      <Spinner size="extra-small" id={extraSmallId} />
+      <Spinner size="extra-small" label="Extra Small Spinner" />
 
-      <Label htmlFor={smallId}>Small Spinner</Label>
-      <Spinner size="small" id={smallId} />
+      <Spinner size="small" label="Small Spinner" />
 
-      <Label htmlFor={mediumId}>Medium Spinner</Label>
-      <Spinner size="medium" id={mediumId} />
+      <Spinner size="medium" label="Medium Spinner" />
 
-      <Label htmlFor={largeId}>Large Spinner</Label>
-      <Spinner size="large" id={largeId} />
+      <Spinner size="large" label="Large Spinner" />
 
-      <Label htmlFor={extraLargeId}>Extra Large Spinner</Label>
-      <Spinner size="extra-large" id={extraLargeId} />
+      <Spinner size="extra-large" label="Extra Large Spinner" />
 
-      <Label htmlFor={hugeId}>Huge Spinner</Label>
-      <Spinner size="huge" id={hugeId} />
+      <Spinner size="huge" label="Huge Spinner" />
     </div>
   );
 };

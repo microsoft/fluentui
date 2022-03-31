@@ -6,7 +6,7 @@ export type SpinnerSlots = {
    * The root of the Spinner.
    * The root slot receives the `className` and `style` specified directly on the `<Spinner>`.
    */
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
   /**
    * The slot for the animated svg.
    * The spinner slot receives the `className` and `style` that handles the spinning animation.
