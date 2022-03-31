@@ -3,9 +3,7 @@ import { mergeFontFaces } from '@fluentui/styles';
 describe('mergeFontFaces', () => {
   test('returns a compact array', () => {
     expect(
-      mergeFontFaces(
-        undefined,
-        null,
+      mergeFontFaces(undefined, [
         {
           name: 'Segoe UI',
           paths: ['public/fonts/segoe-ui-regular.woff2'],
@@ -21,7 +19,7 @@ describe('mergeFontFaces', () => {
           paths: ['public/fonts/segoe-ui-bold.woff2'],
           props: { fontWeight: 700 },
         },
-      ),
+      ]),
     ).toEqual([
       {
         name: 'Segoe UI',
