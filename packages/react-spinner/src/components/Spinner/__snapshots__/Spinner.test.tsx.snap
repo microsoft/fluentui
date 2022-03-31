@@ -12,10 +12,10 @@ exports[`Spinner renders a default state 1`] = `
         role="progressbar"
       >
         <circle
-          class="fui-spinner__Track"
+          class="fui-Spinner__Track"
         />
         <circle
-          class="fui-spinner__Tail"
+          class="fui-Spinner__Tail"
         />
       </svg>
     </span>

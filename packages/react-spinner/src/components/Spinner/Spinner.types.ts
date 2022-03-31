@@ -23,25 +23,25 @@ export type SpinnerSlots = {
 type SpinnerCommons = {
   /**
    * The appearance of the Spinner.
-   * @defaultValue 'primary'
+   * @default 'primary'
    */
   appearance?: 'primary' | 'inverted';
 
   /**
    * Where the label is positioned relative to the Spinner
-   * @defaultValue 'after'
+   * @default 'after'
    */
   labelPosition?: 'above' | 'below' | 'before' | 'after';
 
   /**
    * The size of the spinner.
-   * @defaultValue 'medium'
+   * @default 'medium'
    */
   size?: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
 
   /**
    * The status of the Spinner.
-   * @defaultValue 'active'
+   * @default 'active'
    */
   status?: 'active' | 'inactive';
 };

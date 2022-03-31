@@ -260,10 +260,6 @@ const useLoaderStyles = makeStyles({
 
 const useLabelStyles = makeStyles({
   // style for label
-  spinnerLabel: {
-    color: tokens.colorNeutralForeground1,
-  },
-
   spinnerLabelInverted: {
     color: tokens.colorNeutralStrokeOnBrand2,
   },
@@ -331,7 +327,7 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
       size === 'extra-small' && labelStyles.extraSmall,
       size === 'extra-large' && labelStyles.extraLarge,
       size !== 'extra-large' && size !== 'extra-small' && labelStyles[size],
-      state.appearance === 'inverted' ? labelStyles.spinnerLabelInverted : labelStyles.spinnerLabel,
+      state.appearance === 'inverted' && labelStyles.spinnerLabelInverted,
       state.label.className,
     );
   }
