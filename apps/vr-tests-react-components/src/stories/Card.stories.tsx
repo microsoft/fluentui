@@ -66,6 +66,70 @@ const useScaleStyles = makeStyles({
     ...shorthands.border('5px', 'solid', tokens.colorNeutralStrokeAccessible),
   },
 });
+const CardScale = () => {
+  const styles = useScaleStyles();
+
+  return (
+    <div className={styles.grid}>
+      <div>
+        <h1>Default (fixed size)</h1>
+        <div className={styles.container}>
+          <Card style={{ width: '400px', height: '75px', justifyContent: 'center' }}>
+            <SampleScaleContent />
+          </Card>
+        </div>
+      </div>
+      <div>
+        <h1>Auto width</h1>
+        <div className={styles.container}>
+          <Card scale="auto-width" style={{ height: '75px', justifyContent: 'center' }}>
+            <SampleScaleContent />
+          </Card>
+        </div>
+      </div>
+      <div>
+        <h1>Auto height</h1>
+        <div className={styles.container}>
+          <Card scale="auto-height" style={{ width: '400px' }}>
+            <SampleScaleContent />
+          </Card>
+        </div>
+      </div>
+      <div>
+        <h1>Auto</h1>
+        <div className={styles.container}>
+          <Card scale="auto">
+            <SampleScaleContent />
+          </Card>
+        </div>
+      </div>
+      <div>
+        <h1>Fluid width</h1>
+        <div className={styles.container}>
+          <Card scale="fluid-width">
+            <SampleScaleContent />
+          </Card>
+        </div>
+      </div>
+      <div>
+        <h1>Fluid height</h1>
+        <div className={styles.container}>
+          <Card scale="fluid-height" style={{ justifyContent: 'center' }}>
+            <SampleScaleContent />
+          </Card>
+        </div>
+      </div>
+      <div>
+        <h1>Fluid</h1>
+        <div className={styles.container}>
+          <Card scale="fluid" style={{ justifyContent: 'center' }}>
+            <SampleScaleContent />
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 storiesOf('Card', module)
   .addDecorator(story => (
@@ -111,70 +175,7 @@ storiesOf('Card', module)
       includeDarkMode: true,
     },
   )
-  .addStory('scale', () => {
-    const styles = useScaleStyles();
-
-    return (
-      <div className={styles.grid}>
-        <div>
-          <h1>Default (fixed size)</h1>
-          <div className={styles.container}>
-            <Card style={{ width: '400px', height: '75px', justifyContent: 'center' }}>
-              <SampleScaleContent />
-            </Card>
-          </div>
-        </div>
-        <div>
-          <h1>Auto width</h1>
-          <div className={styles.container}>
-            <Card scale="auto-width" style={{ height: '75px', justifyContent: 'center' }}>
-              <SampleScaleContent />
-            </Card>
-          </div>
-        </div>
-        <div>
-          <h1>Auto height</h1>
-          <div className={styles.container}>
-            <Card scale="auto-height" style={{ width: '400px' }}>
-              <SampleScaleContent />
-            </Card>
-          </div>
-        </div>
-        <div>
-          <h1>Auto</h1>
-          <div className={styles.container}>
-            <Card scale="auto">
-              <SampleScaleContent />
-            </Card>
-          </div>
-        </div>
-        <div>
-          <h1>Fluid width</h1>
-          <div className={styles.container}>
-            <Card scale="fluid-width">
-              <SampleScaleContent />
-            </Card>
-          </div>
-        </div>
-        <div>
-          <h1>Fluid height</h1>
-          <div className={styles.container}>
-            <Card scale="fluid-height" style={{ justifyContent: 'center' }}>
-              <SampleScaleContent />
-            </Card>
-          </div>
-        </div>
-        <div>
-          <h1>Fluid</h1>
-          <div className={styles.container}>
-            <Card scale="fluid" style={{ justifyContent: 'center' }}>
-              <SampleScaleContent />
-            </Card>
-          </div>
-        </div>
-      </div>
-    );
-  });
+  .addStory('scale', CardScale);
 
 storiesOf('Card', module)
   .addDecorator(story => (
