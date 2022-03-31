@@ -13,7 +13,7 @@ export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
  * TODO: Update with proper tokens when added
  * Radii for the Spinner circles
  */
-const rvalues = {
+const rValues = {
   tiny: '9',
   extraSmall: '11',
   small: '13',
@@ -45,6 +45,19 @@ const spinnerStrokeWidth = {
   sWidth: '2px',
   mWidth: '3px',
   lWidth: '4px',
+};
+
+/*
+ * TODO: Update with proper tokens when added
+ * Animation for Spinner
+ */
+const spinnerAnimation = {
+  container: {
+    animationDuration: '3s',
+    animationIterationCount: 'infinite',
+    animationTimingFunction: 'linear',
+    backgroundColor: 'transparent',
+  },
 };
 
 /*
@@ -91,17 +104,14 @@ const useRootStyles = makeStyles({
 const useLoaderStyles = makeStyles({
   // global SVG class
   spinnerSVG: {
-    [`& > svg`]: {
+    ['& > svg']: {
       animationName: {
         '0%': { transform: 'rotate(0deg)' },
         '100%': { transform: 'rotate(360deg)' },
       },
-      animationDuration: '3s',
-      animationIterationCount: 'infinite',
-      animationTimingFunction: 'linear',
-      backgroundColor: 'transparent',
+      ...spinnerAnimation.container,
     },
-    [`& > svg > circle`]: {
+    ['& > svg > circle']: {
       cx: '50%',
       cy: '50%',
       fill: 'none',
@@ -109,99 +119,99 @@ const useLoaderStyles = makeStyles({
   },
 
   tiny: {
-    [`& > svg`]: {
+    ['& > svg']: {
       height: spinnnerSizes.tiny,
       width: spinnnerSizes.tiny,
     },
-    [`& > svg > circle`]: {
+    ['& > svg > circle']: {
       strokeWidth: spinnerStrokeWidth.sWidth,
-      r: rvalues.tiny,
+      r: rValues.tiny,
     },
   },
 
   extraSmall: {
-    [`& > svg`]: {
+    ['& > svg']: {
       height: spinnnerSizes.extraSmall,
       width: spinnnerSizes.extraSmall,
     },
-    [`& > svg > circle`]: {
+    ['& > svg > circle']: {
       strokeWidth: spinnerStrokeWidth.sWidth,
-      r: rvalues.extraSmall,
+      r: rValues.extraSmall,
     },
   },
 
   small: {
-    [`& > svg`]: {
+    ['& > svg']: {
       height: spinnnerSizes.small,
       width: spinnnerSizes.small,
     },
-    [`& > svg > circle`]: {
+    ['& > svg > circle']: {
       strokeWidth: spinnerStrokeWidth.sWidth,
-      r: rvalues.small,
+      r: rValues.small,
     },
   },
 
   medium: {
-    [`& > svg`]: {
+    ['& > svg']: {
       height: spinnnerSizes.medium,
       width: spinnnerSizes.medium,
     },
-    [`& > svg > circle`]: {
+    ['& > svg > circle']: {
       strokeWidth: spinnerStrokeWidth.mWidth,
-      r: rvalues.medium,
+      r: rValues.medium,
     },
   },
 
   large: {
-    [`& > svg`]: {
+    ['& > svg']: {
       height: spinnnerSizes.large,
       width: spinnnerSizes.large,
     },
-    [`& > svg > circle`]: {
+    ['& > svg > circle']: {
       strokeWidth: spinnerStrokeWidth.mWidth,
-      r: rvalues.large,
+      r: rValues.large,
     },
   },
 
   extraLarge: {
-    [`& > svg`]: {
+    ['& > svg']: {
       height: spinnnerSizes.extraLarge,
       width: spinnnerSizes.extraLarge,
     },
-    [`& > svg > circle`]: {
+    ['& > svg > circle']: {
       strokeWidth: spinnerStrokeWidth.mWidth,
-      r: rvalues.extraLarge,
+      r: rValues.extraLarge,
     },
   },
 
   huge: {
-    [`& > svg`]: {
+    ['& > svg']: {
       height: spinnnerSizes.huge,
       width: spinnnerSizes.huge,
     },
-    [`& > svg > circle`]: {
+    ['& > svg > circle']: {
       strokeWidth: spinnerStrokeWidth.lWidth,
-      r: rvalues.huge,
+      r: rValues.huge,
     },
   },
 
   // global class for Spinner track
   spinnerTrack: {
-    [`& > svg > circle.fui-spinner__Track`]: {
+    ['& > svg > circle.fui-spinner__Track']: {
       stroke: tokens.colorNeutralBackground4,
     },
   },
 
   // modifier class for Spinner track if appearance="inverted"
   spinnerTrackInverted: {
-    [`& > svg > circle.fui-spinner__Track`]: {
+    ['& > svg > circle.fui-spinner__Track']: {
       stroke: tokens.colorNeutralBackgroundInverted,
     },
   },
 
   // global Spinner trail class
   spinnerTail: {
-    [`& > svg > circle.fui-spinner__Tail`]: {
+    ['& > svg > circle.fui-spinner__Tail']: {
       stroke: tokens.colorBrandStroke1,
       animationName: {
         '0%': {
@@ -230,7 +240,7 @@ const useLoaderStyles = makeStyles({
 
   // modifier class for Spinner trail
   spinnerTailInverted: {
-    [`& > svg > circle.fui-spinner__Tail`]: {
+    ['& > svg > circle.fui-spinner__Tail']: {
       stroke: tokens.colorNeutralStrokeOnBrand2,
       animationName: {
         '0%': {

@@ -9,6 +9,7 @@ exports[`Spinner renders a default state 1`] = `
       class="fui-Spinner__spinner"
     >
       <svg
+        class="fui-Spinner__Progressbar"
         role="progressbar"
       >
         <circle
