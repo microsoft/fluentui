@@ -27,13 +27,17 @@ describe('Tab', () => {
     disabled: false,
     size: 'medium',
     vertical: false,
-    registeredTabs: {},
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     onRegister: () => {},
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     onUnregister: () => {},
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     onSelect: () => {},
+    getRegisteredTabs: () => {
+      return {
+        registeredTabs: {},
+      };
+    },
   };
 
   it('renders correctly', () => {
