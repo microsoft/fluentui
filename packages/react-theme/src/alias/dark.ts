@@ -1,4 +1,4 @@
-import { black, blackAlpha, grey, white, whiteAlpha, sharedColors } from '../global/colors';
+import { black, blackAlpha, grey, grey14Alpha, white, whiteAlpha, sharedColors } from '../global/colors';
 import type { BrandVariants, GlobalSharedColors, ColorTokens, ColorPaletteTokens } from '../types';
 
 export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
@@ -75,8 +75,8 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorSubtleBackgroundHover: grey[22], // #383838 Global.Color.Grey.22
   colorSubtleBackgroundPressed: grey[18], // #2e2e2e Global.Color.Grey.18
   colorSubtleBackgroundSelected: grey[20], // #333333 Global.Color.Grey.20
-  colorSubtleBackgroundLightAlphaHover: whiteAlpha[10], // rgba(255, 255, 255, 0.1) Global.Color.WhiteAlpha.10
-  colorSubtleBackgroundLightAlphaPressed: whiteAlpha[5], // rgba(255, 255, 255, 0.05) Global.Color.WhiteAlpha.5
+  colorSubtleBackgroundLightAlphaHover: grey14Alpha[80], // rgba(36, 36, 36, 0.8) Global.Color.Grey14Alpha.80
+  colorSubtleBackgroundLightAlphaPressed: grey14Alpha[50], // rgba(36, 36, 36, 0.5) Global.Color.Grey14Alpha.50
   colorSubtleBackgroundLightAlphaSelected: 'transparent', // transparent undefined
   colorSubtleBackgroundInverted: 'transparent', // transparent undefined
   colorSubtleBackgroundInvertedHover: blackAlpha[10], // rgba(0, 0, 0, 0.1) Global.Color.BlackAlpha.10
@@ -90,6 +90,8 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralBackgroundInvertedDisabled: whiteAlpha[10], // rgba(255, 255, 255, 0.1) Global.Color.WhiteAlpha.10
   colorNeutralStencil1: grey[34], // #575757 Global.Color.Grey.34
   colorNeutralStencil2: grey[20], // #333333 Global.Color.Grey.20
+  colorBackgroundOverlay: blackAlpha[50], // rgba(0, 0, 0, 0.5) Global.Color.BlackAlpha.50
+  colorScrollbarOverlay: whiteAlpha[60], // rgba(255, 255, 255, 0.6) Global.Color.WhiteAlpha.60
   colorBrandBackground: brand[70], // #106ebe Global.Color.Brand.70
   colorBrandBackgroundHover: brand[80], // #0078d4 Global.Color.Brand.80
   colorBrandBackgroundPressed: brand[40], // #004578 Global.Color.Brand.40

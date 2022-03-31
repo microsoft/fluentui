@@ -22,20 +22,13 @@ describe('mergeSiteVariables', () => {
     });
   }
 
-  function testMergeSiteVariables(mergeSiteVariables) {
+  function testMergeSiteVariables(mergeSiteVariables: typeof mergeSiteVariables__PROD) {
     test(`always returns an object`, () => {
       expect(mergeSiteVariables({}, {})).toMatchObject({});
-      expect(mergeSiteVariables(null, null)).toMatchObject({});
+
       expect(mergeSiteVariables(undefined, undefined)).toMatchObject({});
-
-      expect(mergeSiteVariables(null, undefined)).toMatchObject({});
-      expect(mergeSiteVariables(undefined, null)).toMatchObject({});
-
       expect(mergeSiteVariables({}, undefined)).toMatchObject({});
       expect(mergeSiteVariables(undefined, {})).toMatchObject({});
-
-      expect(mergeSiteVariables({}, null)).toMatchObject({});
-      expect(mergeSiteVariables(null, {})).toMatchObject({});
     });
 
     test('always adds fontSizes', () => {
@@ -46,12 +39,6 @@ describe('mergeSiteVariables', () => {
     });
 
     test('gracefully handles null and undefined', () => {
-      expect(() => mergeSiteVariables({ color: 'black' }, null)).not.toThrow();
-      expect(() => mergeSiteVariables({ color: 'black' }, { color: null })).not.toThrow();
-
-      expect(() => mergeSiteVariables(null, { color: 'black' })).not.toThrow();
-      expect(() => mergeSiteVariables({ color: null }, { color: 'black' })).not.toThrow();
-
       expect(() => mergeSiteVariables({ color: 'black' }, undefined)).not.toThrow();
       expect(() => mergeSiteVariables({ color: 'black' }, { color: undefined })).not.toThrow();
 
