@@ -6,6 +6,7 @@ import {
   ComponentSlotStylesInput,
   ComponentSlotStylesPrepared,
   ComponentVariablesInput,
+  ComponentVariablesObject,
   ComponentVariablesPrepared,
   FontFace,
   SiteVariablesInput,
@@ -170,9 +171,11 @@ export const mergeComponentVariables__PROD = (
   variablesB: ComponentVariablesInput | undefined,
 ): ComponentVariablesPrepared => {
   if (variablesA && variablesB) {
-    return function mergedComponentVariables(...args) {
-      const resolvedVariablesA = typeof variablesA === 'function' ? variablesA(...args) : variablesA || {};
-      const resolvedVariablesB = typeof variablesB === 'function' ? variablesB(...args) : variablesB || {};
+    return function mergedComponentVariables(
+      siteVariables: SiteVariablesPrepared | undefined,
+    ): ComponentVariablesObject {
+      const resolvedVariablesA = typeof variablesA === 'function' ? variablesA(siteVariables) : variablesA || {};
+      const resolvedVariablesB = typeof variablesB === 'function' ? variablesB(siteVariables) : variablesB || {};
 
       return deepmerge(resolvedVariablesA, resolvedVariablesB);
     };
@@ -385,6 +388,10 @@ const mergeThemeStyles__PROD = (
 };
 
 const mergeThemeStyles__DEV: typeof mergeThemeStyles__PROD = (componentStylesA, componentStylesB) => {
+  if (!isDebugEnabled) {
+    return mergeThemeStyles__PROD(componentStylesA, componentStylesB);
+  }
+
   const initial: ThemeComponentStylesPrepared = {};
 
   return [componentStylesA, componentStylesB].reduce<ThemeComponentStylesPrepared>((themeComponentStyles, next) => {
