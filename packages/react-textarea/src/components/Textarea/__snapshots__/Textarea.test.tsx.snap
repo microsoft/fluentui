@@ -7,9 +7,7 @@ exports[`Textarea renders a default state 1`] = `
   >
     <textarea
       class="fui-Textarea__textarea"
-    >
-      Default Textarea
-    </textarea>
+    />
   </span>
 </div>
 `;
