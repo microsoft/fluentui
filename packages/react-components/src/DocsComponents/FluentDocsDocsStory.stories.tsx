@@ -30,7 +30,7 @@ const handleReportBug = (componentName: string) => async (e: React.MouseEvent) =
     });
 
     const sandboxId = (await codesandboxResponse.json()).sandbox_id;
-    codesandboxUrl = `https://codesandbox.io/s/${sandboxId}`;
+    codesandboxUrl = `https://codesandbox.io/s/${sandboxId}?file=/example.tsx`;
   }
 
   // open GitHub
