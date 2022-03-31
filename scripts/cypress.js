@@ -31,6 +31,9 @@ const baseConfig = {
     runMode: 2,
     openMode: 0,
   },
+  // Screenshots go under <pkg>/cypress/screenshots and can be useful to look at after failures in
+  // local headless runs (especially if the failure is specific to headless runs)
+  screenshotOnRunFailure: isLocalRun && argv.mode === 'run',
   integrationFolder: '.',
   supportFile: path.join(__dirname, './cypress/support/index.js'),
   pluginsFile: path.join(__dirname, './cypress/plugins/index.js'),
