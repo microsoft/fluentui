@@ -8,7 +8,7 @@ import { useContextSelector } from '@fluentui/react-context-selector';
 import { TabListContext } from '../TabList/TabListContext';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const tabIndicatorCssVars_unstable = {
+const tabIndicatorCssVars_unstable = {
   startOffsetVar: '--fui-Tab__indicator--startOffset',
   endOffsetVar: '--fui-Tab__indicator--endOffset',
 };

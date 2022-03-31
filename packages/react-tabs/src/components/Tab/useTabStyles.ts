@@ -10,6 +10,7 @@ import {
   tabIndicatorStrokeWidths,
 } from '../../tab.constants';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import { useTabAnimatedIndicatorStyles_unstable } from './useTabAnimatedIndicator';
 
 export const tabClassNames: SlotClassNames<TabSlots> = {
   root: 'fui-Tab',
@@ -378,6 +379,8 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
     selected && contentStyles.selected,
     state.content.className,
   );
+
+  useTabAnimatedIndicatorStyles_unstable(state);
 
   return state;
 };

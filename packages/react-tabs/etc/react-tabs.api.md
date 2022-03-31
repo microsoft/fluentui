@@ -40,12 +40,6 @@ export const tabClassName: string;
 // @public (undocumented)
 export const tabClassNames: SlotClassNames<TabSlots>;
 
-// @public (undocumented)
-export const tabIndicatorCssVars_unstable: {
-    startOffsetVar: string;
-    endOffsetVar: string;
-};
-
 // @public
 export const TabList: ForwardRefComponent<TabListProps>;
 
@@ -116,9 +110,6 @@ export type TabValue = unknown;
 
 // @public
 export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
-
-// @public
-export const useTabAnimatedIndicatorStyles_unstable: (state: TabState) => TabState;
 
 // @public
 export const useTabList_unstable: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;

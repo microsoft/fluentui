@@ -142,11 +142,9 @@ export type {
 
 export {
   renderTab_unstable,
-  tabIndicatorCssVars_unstable,
   Tab,
   tabClassName,
   tabClassNames,
-  useTabAnimatedIndicatorStyles_unstable,
   useTabStyles_unstable,
   useTab_unstable,
   renderTabList_unstable,
