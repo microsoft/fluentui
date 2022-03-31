@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { useTextarea_unstable } from './useTextarea';
 import { renderTextarea_unstable } from './renderTextarea';
+import { useTextarea_unstable } from './useTextarea';
 import { useTextareaStyles_unstable } from './useTextareaStyles';
-import type { TextareaProps } from './Textarea.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { TextareaProps } from './Textarea.types';
 
 /**
- * Textarea component - TODO: add more docs
+ * The Textarea component allows the user to enter and edit text in multiple lines.
  */
 export const Textarea: ForwardRefComponent<TextareaProps> = React.forwardRef((props, ref) => {
   const state = useTextarea_unstable(props, ref);
