@@ -1,5 +1,6 @@
 import { makeStyles } from '../index';
 import * as React from 'react';
+import { repository as packageRepository } from '../../package.json';
 
 type GitHubUser = {
   login: string;
@@ -64,9 +65,11 @@ export const KnownIssues: React.FC<{ componentName: string }> = ({ componentName
       setIsLoading(true);
       setIsError(false);
 
+      const repositoryIdentifier = packageRepository.url.split('/').slice(-2).join('/');
+
       try {
         const response = await fetch(
-          'https://api.github.com/repos/microsoft/fluentui/issues?' +
+          `https://api.github.com/repos/${repositoryIdentifier}/issues?` +
             new URLSearchParams({
               labels: ['Type: Bug :bug:', 'Fluent UI vNext', 'Component: ' + componentName].join(','),
             }),
