@@ -27,8 +27,6 @@ export interface CheckboxOnChangeData {
     checked: 'mixed' | boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "CheckboxCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & Partial<CheckboxCommons> & {
     children?: never;

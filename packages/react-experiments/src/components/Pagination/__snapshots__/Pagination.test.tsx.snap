@@ -1069,6 +1069,24 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           </i>
         </span>
       </button>
+      <div
+        hidden={true}
+        id="tooltip24"
+        style={
+          Object {
+            "border": 0,
+            "height": 1,
+            "margin": -1,
+            "overflow": "hidden",
+            "padding": 0,
+            "position": "absolute",
+            "whiteSpace": "nowrap",
+            "width": 1,
+          }
+        }
+      >
+        page 10
+      </div>
     </div>
   </div>
   <div

@@ -25,8 +25,6 @@ export type SliderOnChangeData = {
     value: number;
 };
 
-// Warning: (ae-forgotten-export) The symbol "SliderCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommons;
 

@@ -38,8 +38,6 @@ export interface FluentProviderContextValues extends Pick<FluentProviderState, '
     tooltip: TooltipContextType;
 }
 
-// Warning: (ae-forgotten-export) The symbol "FluentProviderCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface FluentProviderProps extends Omit<ComponentProps<FluentProviderSlots>, 'dir'>, Partial<FluentProviderCommons> {
     // (undocumented)

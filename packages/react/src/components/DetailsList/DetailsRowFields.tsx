@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { css } from '../../Utilities';
+import { composeRenderFunction, css } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import type { IColumn } from './DetailsList.types';
 import type { IDetailsRowFieldsProps } from './DetailsRowFields.types';
+import type { IDetailsColumnFieldProps } from './DetailsColumn.types';
 
 const getCellText = (item: any, column: IColumn): string => {
   let value = item && column && column.fieldName ? item[column.fieldName] : '';
@@ -30,8 +31,10 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
     cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
     item,
     itemIndex,
+    isSelected,
     onRenderItemColumn,
     getCellValueKey,
+    onRenderField: propsOnRenderField,
     cellsByColumn,
     enableUpdateAnimations,
     rowHeaderId,
@@ -43,24 +46,65 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
 
   const cellValueKeys = cellValueKeysRef.current || (cellValueKeysRef.current = {});
 
+  const defaultOnRenderField = React.useCallback(
+    (fieldProps: IDetailsColumnFieldProps): JSX.Element | null => {
+      const { column, cellValueKey, className, onRender, item: fieldItem, itemIndex: fieldItemIndex } = fieldProps;
+
+      const width: string | number =
+        typeof column.calculatedWidth === 'undefined'
+          ? 'auto'
+          : column.calculatedWidth +
+            cellStyleProps.cellLeftPadding +
+            cellStyleProps.cellRightPadding +
+            (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
+
+      const key = `${column.key}${cellValueKey !== undefined ? `-${cellValueKey}` : ''}`;
+
+      return (
+        <div
+          key={key}
+          id={column.isRowHeader ? rowHeaderId : undefined}
+          role={column.isRowHeader ? 'rowheader' : 'gridcell'}
+          aria-readonly
+          className={css(
+            column.className,
+            column.isMultiline && rowClassNames.isMultiline,
+            column.isRowHeader && rowClassNames.isRowHeader,
+            rowClassNames.cell,
+            column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded,
+            className,
+          )}
+          style={{ width }}
+          data-automationid="DetailsRowCell"
+          data-automation-key={column.key}
+        >
+          {onRender(fieldItem, fieldItemIndex, column)}
+        </div>
+      );
+    },
+    [rowClassNames, cellStyleProps, rowHeaderId],
+  );
+
   return (
     <div className={rowClassNames.fields} data-automationid="DetailsRowFields" role="presentation">
       {columns.map(column => {
-        const width: string | number =
-          typeof column.calculatedWidth === 'undefined'
-            ? 'auto'
-            : column.calculatedWidth +
-              cellStyleProps.cellLeftPadding +
-              cellStyleProps.cellRightPadding +
-              (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
+        const { getValueKey = getCellValueKey } = column;
 
-        const { onRender = onRenderItemColumn, getValueKey = getCellValueKey } = column;
-        const cellContentsRender =
-          cellsByColumn && column.key in cellsByColumn
-            ? cellsByColumn[column.key]
-            : onRender
-            ? onRender(item, itemIndex, column)
-            : getCellText(item, column);
+        const onRender =
+          (cellsByColumn && column.key in cellsByColumn && (() => cellsByColumn[column.key])) ||
+          column.onRender ||
+          onRenderItemColumn ||
+          defaultOnRender;
+
+        let onRenderField = defaultOnRenderField;
+
+        if (column.onRenderField) {
+          onRenderField = composeRenderFunction(column.onRenderField, onRenderField);
+        }
+
+        if (propsOnRenderField) {
+          onRenderField = composeRenderFunction(propsOnRenderField, onRenderField);
+        }
 
         const previousValueKey = cellValueKeys[column.key];
 
@@ -74,31 +118,24 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
 
         cellValueKeys[column.key] = cellValueKey;
 
-        // generate a key that auto-dirties when content changes, to force the container to re-render,
-        // to trigger animation
-        const key = `${column.key}${cellValueKey !== undefined ? `-${cellValueKey}` : ''}`;
-        return (
-          <div
-            key={key}
-            id={column.isRowHeader ? rowHeaderId : undefined}
-            role={column.isRowHeader ? 'rowheader' : 'gridcell'}
-            aria-readonly
-            className={css(
-              column.className,
-              column.isMultiline && rowClassNames.isMultiline,
-              column.isRowHeader && rowClassNames.isRowHeader,
-              rowClassNames.cell,
-              column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded,
-              showAnimation && rowClassNames.cellAnimation,
-            )}
-            style={{ width }}
-            data-automationid="DetailsRowCell"
-            data-automation-key={column.key}
-          >
-            {cellContentsRender}
-          </div>
-        );
+        return onRenderField({
+          item,
+          itemIndex,
+          isSelected,
+          column,
+          cellValueKey,
+          className: showAnimation ? rowClassNames.cellAnimation : undefined,
+          onRender,
+        });
       })}
     </div>
   );
 };
+
+function defaultOnRender(item?: any, index?: number, column?: IColumn): React.ReactNode {
+  if (!item || !column) {
+    return null;
+  }
+
+  return getCellText(item, column);
+}

@@ -25,8 +25,6 @@ export const accordionClassNames: SlotClassNames<AccordionSlots>;
 // @public (undocumented)
 export const AccordionContext: Context<AccordionContextValue>;
 
-// Warning: (ae-forgotten-export) The symbol "AccordionCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type AccordionContextValue = Omit<AccordionCommons, 'multiple'> & {
     openItems: AccordionItemValue[];
@@ -63,8 +61,6 @@ export type AccordionHeaderContextValues = {
 // @public (undocumented)
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
-// Warning: (ae-forgotten-export) The symbol "AccordionHeaderCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & Partial<AccordionHeaderCommons>;
 
@@ -97,8 +93,6 @@ export const accordionItemClassNames: SlotClassNames<AccordionItemSlots>;
 // @public (undocumented)
 export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
 
-// Warning: (ae-forgotten-export) The symbol "AccordionItemCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
     open: boolean;

@@ -4,6 +4,42 @@
 
 ```ts
 
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public
+export const renderTextarea_unstable: (state: TextareaState) => JSX.Element;
+
+// @public
+export const Textarea: ForwardRefComponent<TextareaProps>;
+
+// @public (undocumented)
+export const textareaClassName = "fui-Textarea";
+
+// @public (undocumented)
+export const textareaClassNames: SlotClassNames<TextareaSlots>;
+
+// @public
+export type TextareaProps = ComponentProps<TextareaSlots> & TextareaCommons;
+
+// @public (undocumented)
+export type TextareaSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TextareaState = ComponentState<TextareaSlots> & TextareaCommons;
+
+// @public
+export const useTextarea_unstable: (props: TextareaProps, ref: React_2.Ref<HTMLElement>) => TextareaState;
+
+// @public
+export const useTextareaStyles_unstable: (state: TextareaState) => TextareaState;
+
 // (No @packageDocumentation comment for this package)
 
 ```
