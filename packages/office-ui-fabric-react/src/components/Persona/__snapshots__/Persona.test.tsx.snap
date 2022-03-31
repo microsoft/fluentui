@@ -133,6 +133,23 @@ exports[`Persona renders Persona children correctly 1`] = `
         onMouseLeave={[Function]}
       >
         Kat Larrson
+        <div
+          hidden={true}
+          id="tooltip15"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Kat Larrson
+        </div>
       </div>
     </div>
     <div
@@ -330,6 +347,23 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         onMouseLeave={[Function]}
       >
         Kat Larrson
+        <div
+          hidden={true}
+          id="tooltip2"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Kat Larrson
+        </div>
       </div>
     </div>
     <div
@@ -533,6 +567,23 @@ exports[`Persona renders Persona correctly with image 1`] = `
         onMouseLeave={[Function]}
       >
         Kat Larrson
+        <div
+          hidden={true}
+          id="tooltip1"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Kat Larrson
+        </div>
       </div>
     </div>
     <div
@@ -713,6 +764,23 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         onMouseLeave={[Function]}
       >
         Kat Larrson
+        <div
+          hidden={true}
+          id="tooltip0"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Kat Larrson
+        </div>
       </div>
     </div>
     <div
@@ -1153,6 +1221,23 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onMouseLeave={[Function]}
       >
         Swapnil Vaibhav
+        <div
+          hidden={true}
+          id="tooltip3"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Swapnil Vaibhav
+        </div>
       </div>
     </div>
     <div
@@ -1181,6 +1266,23 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onMouseLeave={[Function]}
       >
         Software Engineer
+        <div
+          hidden={true}
+          id="tooltip4"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Software Engineer
+        </div>
       </div>
     </div>
     <div
@@ -1210,6 +1312,23 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onMouseLeave={[Function]}
       >
         In a meeting
+        <div
+          hidden={true}
+          id="tooltip5"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          In a meeting
+        </div>
       </div>
     </div>
     <div
@@ -1239,6 +1358,23 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onMouseLeave={[Function]}
       >
         Available at 4:00pm
+        <div
+          hidden={true}
+          id="tooltip6"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Available at 4:00pm
+        </div>
       </div>
     </div>
   </div>
@@ -1340,6 +1476,23 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         onMouseLeave={[Function]}
       >
         Swapnil Vaibhav
+        <div
+          hidden={true}
+          id="tooltip7"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Swapnil Vaibhav
+        </div>
       </div>
     </div>
     <div
@@ -1368,6 +1521,23 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         onMouseLeave={[Function]}
       >
         Software Engineer
+        <div
+          hidden={true}
+          id="tooltip8"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Software Engineer
+        </div>
       </div>
     </div>
     <div
@@ -1397,6 +1567,23 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         onMouseLeave={[Function]}
       >
         In a meeting
+        <div
+          hidden={true}
+          id="tooltip9"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          In a meeting
+        </div>
       </div>
     </div>
     <div
@@ -1426,6 +1613,23 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         onMouseLeave={[Function]}
       >
         Available at 4:00pm
+        <div
+          hidden={true}
+          id="tooltip10"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Available at 4:00pm
+        </div>
       </div>
     </div>
   </div>
@@ -1666,6 +1870,23 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onMouseLeave={[Function]}
       >
         Swapnil Vaibhav
+        <div
+          hidden={true}
+          id="tooltip11"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Swapnil Vaibhav
+        </div>
       </div>
     </div>
     <div
@@ -1694,6 +1915,23 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onMouseLeave={[Function]}
       >
         Software Engineer
+        <div
+          hidden={true}
+          id="tooltip12"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Software Engineer
+        </div>
       </div>
     </div>
     <div
@@ -1723,6 +1961,23 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onMouseLeave={[Function]}
       >
         In a meeting
+        <div
+          hidden={true}
+          id="tooltip13"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          In a meeting
+        </div>
       </div>
     </div>
     <div
@@ -1752,6 +2007,23 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onMouseLeave={[Function]}
       >
         Available at 4:00pm
+        <div
+          hidden={true}
+          id="tooltip14"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Available at 4:00pm
+        </div>
       </div>
     </div>
   </div>

@@ -142,7 +142,7 @@ describe('Persona', () => {
       wrapper = mount(<Persona text="Swapnil Vaibhav" />);
       result = wrapper.find(STYLES.primaryText);
       expect(result).toHaveLength(1);
-      expect(result.text()).toEqual('Swapnil Vaibhav');
+      expect(result.text().startsWith('Swapnil Vaibhav')).toBe(true);
       wrapper.unmount();
 
       wrapper = mount(<Persona text="+1 (555) 6789" />);
