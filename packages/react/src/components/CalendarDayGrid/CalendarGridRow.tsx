@@ -64,7 +64,7 @@ export const CalendarGridRow: React.FunctionComponent<ICalendarGridRowProps> = p
         </th>
       )}
       {week.map((day: IDayInfo, dayIndex: number) => (
-        <CalendarGridDayCell {...props} key={day.key} day={day} dayIndex={dayIndex} />
+        <CalendarGridDayCell {...props} onSelectDate={undefined} key={day.key} day={day} dayIndex={dayIndex} />
       ))}
     </tr>
   );

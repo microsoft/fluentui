@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fixes onSelectDate handler firing twice when using keyboard for selection",
+  "packageName": "@fluentui/react",
+  "email": "john.collier4@gmail.com",
+  "dependentChangeType": "patch"
+}
