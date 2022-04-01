@@ -9,8 +9,8 @@ import { TabRegisterData } from '../TabList/TabList.types';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const tabIndicatorCssVars_unstable = {
-  startOffsetVar: '--fui-Tab__indicator--startOffset',
-  endOffsetVar: '--fui-Tab__indicator--endOffset',
+  offsetVar: '--fui-Tab__indicator--offset',
+  scaleVar: '--fui-Tab__indicator--scale',
 };
 
 const useActiveIndicatorStyles = makeStyles({
@@ -18,17 +18,11 @@ const useActiveIndicatorStyles = makeStyles({
     // overflow is required to allow the selection indicator to animate outside the tab area.
     ...shorthands.overflow('visible'),
   },
-  animatedHorizontal: {
+  animated: {
     ':after': {
-      transitionProperty: 'left, width, right',
-      transitionDuration:
-        `${pendingAnimationDurationTokens.slow},` +
-        `${pendingAnimationDurationTokens.slow},` +
-        `${pendingAnimationDurationTokens.slow}`,
-      transitionTimingFunction:
-        `${pendingAnimationEasingTokens.declerateMax},` +
-        `${pendingAnimationEasingTokens.declerateMax},` +
-        `${pendingAnimationEasingTokens.declerateMax}`,
+      transitionProperty: 'transform',
+      transitionDuration: `${pendingAnimationDurationTokens.slow}`,
+      transitionTimingFunction: `${pendingAnimationEasingTokens.declerateMax}`,
     },
     '@media (prefers-reduced-motion: reduce)': {
       ':after': {
@@ -37,47 +31,42 @@ const useActiveIndicatorStyles = makeStyles({
       },
     },
   },
-  animatedVertical: {
+  horizontal: {
     ':after': {
-      transitionProperty: 'top, height, bottom',
-      transitionDuration:
-        `${pendingAnimationDurationTokens.slow},` +
-        `${pendingAnimationDurationTokens.slow},` +
-        `${pendingAnimationDurationTokens.slow}`,
-      transitionTimingFunction:
-        `${pendingAnimationEasingTokens.declerateMax},` +
-        `${pendingAnimationEasingTokens.declerateMax},` +
-        `${pendingAnimationEasingTokens.declerateMax}`,
+      transformOrigin: 'left',
+      transform: `translateX(var(${tabIndicatorCssVars_unstable.offsetVar}))
+    scaleX(var(${tabIndicatorCssVars_unstable.scaleVar}))`,
     },
-    '@media (prefers-reduced-motion: reduce)': {
-      ':after': {
-        transitionProperty: 'none',
-        transitionDuration: '0ms',
-      },
+  },
+  vertical: {
+    ':after': {
+      transformOrigin: 'top',
+      transform: `translateY(var(${tabIndicatorCssVars_unstable.offsetVar}))
+        scaleY(var(${tabIndicatorCssVars_unstable.scaleVar}))`,
     },
   },
   mediumHorizontal: {
     ':after': {
-      left: `calc(var(${tabIndicatorCssVars_unstable.startOffsetVar}) + ${tabIndicatorPadding.mediumHorizontal})`,
-      right: `calc(var(${tabIndicatorCssVars_unstable.endOffsetVar}) + ${tabIndicatorPadding.mediumHorizontal})`,
+      left: tabIndicatorPadding.mediumHorizontal,
+      right: tabIndicatorPadding.mediumHorizontal,
     },
   },
   mediumVertical: {
     ':after': {
-      top: `calc(var(${tabIndicatorCssVars_unstable.startOffsetVar}) + ${tabIndicatorPadding.mediumVertical})`,
-      bottom: `calc(var(${tabIndicatorCssVars_unstable.endOffsetVar}) + ${tabIndicatorPadding.mediumVertical})`,
+      top: tabIndicatorPadding.mediumVertical,
+      bottom: tabIndicatorPadding.mediumVertical,
     },
   },
   smallHorizontal: {
     ':after': {
-      left: `calc(var(${tabIndicatorCssVars_unstable.startOffsetVar}) + ${tabIndicatorPadding.smallHorizontal})`,
-      right: `calc(var(${tabIndicatorCssVars_unstable.endOffsetVar}) + ${tabIndicatorPadding.smallHorizontal})`,
+      left: tabIndicatorPadding.smallHorizontal,
+      right: tabIndicatorPadding.smallHorizontal,
     },
   },
   smallVertical: {
     ':after': {
-      top: `calc(var(${tabIndicatorCssVars_unstable.startOffsetVar}) + ${tabIndicatorPadding.smallVertical})`,
-      bottom: `calc(var(${tabIndicatorCssVars_unstable.endOffsetVar}) + ${tabIndicatorPadding.smallVertical})`,
+      top: tabIndicatorPadding.smallVertical,
+      bottom: tabIndicatorPadding.smallVertical,
     },
   },
 });
@@ -110,14 +99,14 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
 
   const activeIndicatorStyles = useActiveIndicatorStyles();
   const [lastAnimatedFrom, setLastAnimatedFrom] = React.useState<TabValue>();
-  const [animationOffsets, setAnimationOffsets] = React.useState({ start: 0, end: 0 });
+  const [animationValues, setAnimationValues] = React.useState({ offset: 0, scale: 1 });
   const getRegisteredTabs = useContextSelector(TabListContext, ctx => ctx.getRegisteredTabs);
 
   React.useEffect(() => {
     if (lastAnimatedFrom) {
-      setAnimationOffsets({ start: 0, end: 0 });
+      setAnimationValues({ offset: 0, scale: 1 });
     }
-  }, [lastAnimatedFrom, state.value]);
+  }, [lastAnimatedFrom]);
 
   if (selected) {
     const { previousSelectedValue, selectedValue, registeredTabs } = getRegisteredTabs();
@@ -130,15 +119,15 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
       previousSelectedValue &&
       lastAnimatedFrom !== previousSelectedValue
     ) {
-      const startOffset = vertical
+      const offset = vertical
         ? previousSelectedTabRect.y - selectedTabRect.y
         : previousSelectedTabRect.x - selectedTabRect.x;
 
-      const endOffset = vertical
-        ? selectedTabRect.y + selectedTabRect.height - (previousSelectedTabRect.y + previousSelectedTabRect.height)
-        : selectedTabRect.x + selectedTabRect.width - (previousSelectedTabRect.x + previousSelectedTabRect.width);
+      const scale = vertical
+        ? previousSelectedTabRect.height / selectedTabRect.height
+        : previousSelectedTabRect.width / selectedTabRect.width;
 
-      setAnimationOffsets({ start: startOffset, end: endOffset });
+      setAnimationValues({ offset, scale });
       setLastAnimatedFrom(previousSelectedValue);
     }
   } else if (lastAnimatedFrom) {
@@ -147,19 +136,20 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
     setLastAnimatedFrom(undefined);
   }
 
-  // the animation should only happen as the selection indicator returns to its
-  // original position and not when set at the previous tabs position.
-  const animating = animationOffsets.start === 0 && animationOffsets.end === 0;
-
   // do not apply any animation if the tab is disabled
   if (disabled) {
     return state;
   }
 
+  // the animation should only happen as the selection indicator returns to its
+  // original position and not when set at the previous tabs position.
+  const animating = animationValues.offset === 0 && animationValues.scale === 1;
+
   state.root.className = mergeClasses(
     state.root.className,
     selected && activeIndicatorStyles.base,
-    animating && (state.vertical ? activeIndicatorStyles.animatedVertical : activeIndicatorStyles.animatedHorizontal),
+    selected && animating && activeIndicatorStyles.animated,
+    selected && (vertical ? activeIndicatorStyles.vertical : activeIndicatorStyles.horizontal),
     selected &&
       state.size !== 'small' &&
       (state.vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
@@ -169,8 +159,8 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   );
 
   const rootCssVars = {
-    [tabIndicatorCssVars_unstable.startOffsetVar]: `${animationOffsets.start}px`,
-    [tabIndicatorCssVars_unstable.endOffsetVar]: `${animationOffsets.end}px`,
+    [tabIndicatorCssVars_unstable.offsetVar]: `${animationValues.offset}px`,
+    [tabIndicatorCssVars_unstable.scaleVar]: `${animationValues.scale}`,
   };
 
   state.root.style = {
