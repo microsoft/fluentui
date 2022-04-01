@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update tests in experiments",
+  "packageName": "@uifabric/experiments",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
