@@ -4,7 +4,7 @@ import { Body, Caption } from '@fluentui/react-text';
 
 import { Button } from '@fluentui/react-button';
 import { MoreVerticalRegular } from '@fluentui/react-icons';
-import { Card, CardHeader } from '../index'; // codesandbox-dependency: @fluentui/react-card ^9.0.0-beta
+import { Card, CardHeader } from '../index';
 import { makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
