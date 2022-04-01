@@ -3,7 +3,6 @@ import type { TabState, TabValue } from './Tab.types';
 
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { pendingAnimationDurationTokens, pendingAnimationEasingTokens, tabIndicatorPadding } from '../../tab.constants';
-import { useTimeout } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { TabListContext } from '../TabList/TabListContext';
 import { TabRegisterData } from '../TabList/TabList.types';
@@ -111,11 +110,15 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
 
   const activeIndicatorStyles = useActiveIndicatorStyles();
   const [lastAnimatedFrom, setLastAnimatedFrom] = React.useState<TabValue>();
-  const [setAnimateTimeout] = useTimeout();
+  const [animationOffsets, setAnimationOffsets] = React.useState({ start: 0, end: 0 });
   const getRegisteredTabs = useContextSelector(TabListContext, ctx => ctx.getRegisteredTabs);
 
-  let indicatorStartOffset = 0;
-  let indicatorEndOffset = 0;
+  React.useEffect(() => {
+    if (lastAnimatedFrom) {
+      setAnimationOffsets({ start: 0, end: 0 });
+    }
+  }, [lastAnimatedFrom, state.value]);
+
   if (selected) {
     const { previousSelectedValue, selectedValue, registeredTabs } = getRegisteredTabs();
     const previousSelectedTabRect = getRegisteredTabRect(registeredTabs, previousSelectedValue);
@@ -127,17 +130,16 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
       previousSelectedValue &&
       lastAnimatedFrom !== previousSelectedValue
     ) {
-      indicatorStartOffset = vertical
+      const startOffset = vertical
         ? previousSelectedTabRect.y - selectedTabRect.y
         : previousSelectedTabRect.x - selectedTabRect.x;
 
-      indicatorEndOffset = vertical
+      const endOffset = vertical
         ? selectedTabRect.y + selectedTabRect.height - (previousSelectedTabRect.y + previousSelectedTabRect.height)
         : selectedTabRect.x + selectedTabRect.width - (previousSelectedTabRect.x + previousSelectedTabRect.width);
 
-      setAnimateTimeout(() => {
-        setLastAnimatedFrom(previousSelectedValue);
-      }, 1);
+      setAnimationOffsets({ start: startOffset, end: endOffset });
+      setLastAnimatedFrom(previousSelectedValue);
     }
   } else if (lastAnimatedFrom) {
     // need to clear the last animated from so that if this tab is selected again
@@ -147,7 +149,7 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
 
   // the animation should only happen as the selection indicator returns to its
   // original position and not when set at the previous tabs position.
-  const animating = indicatorStartOffset === 0 && indicatorEndOffset === 0;
+  const animating = animationOffsets.start === 0 && animationOffsets.end === 0;
 
   // do not apply any animation if the tab is disabled
   if (disabled) {
@@ -167,8 +169,8 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   );
 
   const rootCssVars = {
-    [tabIndicatorCssVars_unstable.startOffsetVar]: `${indicatorStartOffset}px`,
-    [tabIndicatorCssVars_unstable.endOffsetVar]: `${indicatorEndOffset}px`,
+    [tabIndicatorCssVars_unstable.startOffsetVar]: `${animationOffsets.start}px`,
+    [tabIndicatorCssVars_unstable.endOffsetVar]: `${animationOffsets.end}px`,
   };
 
   state.root.style = {
