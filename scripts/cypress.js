@@ -35,6 +35,7 @@ const baseConfig = {
   // local headless runs (especially if the failure is specific to headless runs)
   screenshotOnRunFailure: isLocalRun && argv.mode === 'run',
   integrationFolder: '.',
+  fixturesFolder: path.join(__dirname, 'cypress/fixtures'),
   supportFile: path.join(__dirname, './cypress/support/index.js'),
   pluginsFile: path.join(__dirname, './cypress/plugins/index.js'),
 };
