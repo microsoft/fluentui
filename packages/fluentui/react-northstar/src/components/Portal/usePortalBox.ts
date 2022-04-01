@@ -9,9 +9,7 @@ type UsePortalBoxOptions = {
   target: Document;
 };
 
-export const PortalBoxContext = React.createContext<HTMLDivElement>(null);
-
-export const usePortalBox = (options: UsePortalBoxOptions): HTMLDivElement => {
+export const usePortalBox = (options: UsePortalBoxOptions): HTMLDivElement | null => {
   const { className, rtl, target } = options;
 
   const element: HTMLDivElement | null = React.useMemo(() => {
@@ -39,7 +37,7 @@ export const usePortalBox = (options: UsePortalBoxOptions): HTMLDivElement => {
   }, [className, element, rtl]);
 
   // This effect should always last as it removes element from HTML tree
-  useIsomorphicLayoutEffect(() => {
+  React.useEffect(() => {
     return () => {
       if (element) {
         target.body.removeChild(element);
