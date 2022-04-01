@@ -10,8 +10,7 @@
     "noImplicitAny": false,
     "strictNullChecks": false,
     "typeRoots": ["../typings", "../node_modules/@types"],
-    "types": ["node", "webpack-env"],
-    "resolveJsonModule": true
+    "types": ["node", "webpack-env"]
   },
   "include": ["."],
   "exclude": ["./create-package/plop-templates*"]

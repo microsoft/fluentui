@@ -14,17 +14,22 @@
 
 // @ts-check
 const path = require('path');
+const fs = require('fs');
 const { startDevServer } = require('@cypress/webpack-dev-server');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
-const tsConfigBase = require('../../../tsconfig.base.json');
 
 /**
  * Cypress Webpack devServer that uses esbuild-loader for speed,
  * @type {Cypress.PluginConfig}
  */
 module.exports = (on, config) => {
+  const tsConfigBasePath = path.resolve(__dirname, '../../../tsconfig.base.json');
+  /**
+   * @type {import("../../../tools/types").TsConfig}
+   */
+  const tsConfigBase = JSON.parse(fs.readFileSync(tsConfigBasePath).toString());
   const tsPaths = new TsconfigPathsPlugin({
-    configFile: path.resolve(__dirname, '../../../tsconfig.base.json'),
+    configFile: tsConfigBasePath,
   });
   /** @type import("webpack").Configuration */
   const webpackConfig = {
