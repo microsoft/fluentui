@@ -80,7 +80,7 @@ export const blackAlpha: Record<AlphaColors, string> = {
   '90': 'rgba(0, 0, 0, 0.9)',
 };
 
-export const grey14Alpha = {
+export const grey14Alpha: Record<AlphaColors, string> = {
   '5': 'rgba(36, 36, 36, 0.05)',
   '10': 'rgba(36, 36, 36, 0.1)',
   '20': 'rgba(36, 36, 36, 0.2)',
