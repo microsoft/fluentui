@@ -49,7 +49,7 @@ export type TabState = ComponentState<TabSlots> &
     /**
      * A tab supports 'transparent' and 'subtle' appearance.
      */
-    appearance?: string;
+    appearance?: 'transparent' | 'subtle';
     /**
      * A tab can have only an icon slot filled and no content.
      */

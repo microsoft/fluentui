@@ -34,7 +34,7 @@ const useActiveIndicatorStyles = makeStyles({
     '@media (prefers-reduced-motion: reduce)': {
       ':after': {
         transitionProperty: 'none',
-        transitionDuration: '0ms',
+        transitionDuration: '0.01ms',
       },
     },
   },
