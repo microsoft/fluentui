@@ -21,7 +21,7 @@ export const tabClassNames: SlotClassNames<TabSlots> = {
  */
 const useRootStyles = makeStyles({
   base: {
-    backgroundColor: 'none',
+    backgroundColor: 'red',
     ...shorthands.borderColor('none'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.borderWidth(tokens.strokeWidthThin),
