@@ -1,8 +1,6 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { TabListSlots, TabListState } from './TabList.types';
-import { tokens } from '@fluentui/react-theme';
-import { SlotClassNames, usePrevious } from '@fluentui/react-utilities';
-import { tabPendingDesignTokens } from '../../tab.constants';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
  * @deprecated Use `tabListClassNames.root` instead.
