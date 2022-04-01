@@ -121,9 +121,7 @@ export function createDefaultLayerHost(doc: Document): Node | null {
   host.setAttribute('id', 'fluent-default-layer-host');
   (host as HTMLElement).style.cssText = 'position:fixed;z-index:1000000';
 
-  // Using insertBefore rather than appendChild, due to other libraries like Tabster which can
-  // cause recomputations when elements are appended.
-  doc?.body.insertBefore(host, doc.body.lastElementChild);
+  doc?.body.appendChild(host);
 
   return host;
 }
