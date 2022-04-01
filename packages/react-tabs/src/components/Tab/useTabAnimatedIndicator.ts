@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { TabState, TabValue } from './Tab.types';
 
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { pendingAnimationDurationTokens, pendingAnimationEasingTokens, tabIndicatorPadding } from '../../tab.constants';
+import { pendingAnimationDurationTokens, pendingAnimationEasingTokens } from '../../tab.constants';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { TabListContext } from '../TabList/TabListContext';
 import { TabRegisterData } from '../TabList/TabList.types';
@@ -43,30 +43,6 @@ const useActiveIndicatorStyles = makeStyles({
       transformOrigin: 'top',
       transform: `translateY(var(${tabIndicatorCssVars_unstable.offsetVar}))
         scaleY(var(${tabIndicatorCssVars_unstable.scaleVar}))`,
-    },
-  },
-  mediumHorizontal: {
-    ':after': {
-      left: tabIndicatorPadding.mediumHorizontal,
-      right: tabIndicatorPadding.mediumHorizontal,
-    },
-  },
-  mediumVertical: {
-    ':after': {
-      top: tabIndicatorPadding.mediumVertical,
-      bottom: tabIndicatorPadding.mediumVertical,
-    },
-  },
-  smallHorizontal: {
-    ':after': {
-      left: tabIndicatorPadding.smallHorizontal,
-      right: tabIndicatorPadding.smallHorizontal,
-    },
-  },
-  smallVertical: {
-    ':after': {
-      top: tabIndicatorPadding.smallVertical,
-      bottom: tabIndicatorPadding.smallVertical,
     },
   },
 });
@@ -150,12 +126,6 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
     selected && activeIndicatorStyles.base,
     selected && animating && activeIndicatorStyles.animated,
     selected && (vertical ? activeIndicatorStyles.vertical : activeIndicatorStyles.horizontal),
-    selected &&
-      state.size !== 'small' &&
-      (state.vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
-    selected &&
-      state.size === 'small' &&
-      (state.vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
   );
 
   const rootCssVars = {

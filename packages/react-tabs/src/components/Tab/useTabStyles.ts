@@ -147,20 +147,23 @@ const useFocusStyles = makeStyles({
 /** Indicator styles for when pending selection */
 const usePendingIndicatorStyles = makeStyles({
   base: {
-    ':before': {
+    ':hover:before': {
       backgroundColor: 'none',
       ...shorthands.borderStyle('solid'),
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
     },
-    ':hover:before': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-    },
     ':active:before': {
+      backgroundColor: 'none',
+      ...shorthands.borderStyle('solid'),
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      boxSizing: 'border-box',
+      content: '""',
+      position: 'absolute',
     },
   },
   disabled: {
