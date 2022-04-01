@@ -194,53 +194,11 @@ const useLoaderStyles = makeStyles({
       r: rValues.huge,
     },
   },
+});
 
-  // global class for Spinner track
-  spinnerTrack: {
-    ['& > svg > circle.fui-spinner__Track']: {
-      stroke: tokens.colorNeutralBackground4,
-    },
-  },
-
-  // modifier class for Spinner track if appearance="inverted"
-  spinnerTrackInverted: {
-    ['& > svg > circle.fui-spinner__Track']: {
-      stroke: tokens.colorNeutralBackgroundInverted,
-    },
-  },
-
-  // global Spinner trail class
-  spinnerTail: {
-    ['& > svg > circle.fui-spinner__Tail']: {
-      stroke: tokens.colorBrandStroke1,
-      animationName: {
-        '0%': {
-          strokeDasharray: '1,150',
-          strokeDashoffset: '0',
-        },
-
-        '50%': {
-          strokeDasharray: '90,150',
-          strokeDashoffset: '-35',
-        },
-
-        '100%': {
-          strokeDasharray: '90,150',
-          strokeDashoffset: '-124',
-        },
-      },
-      animationDuration: '1.5s',
-      animationIterationCount: 'infinite',
-      animationTimingFunction: 'cubic-bezier(0.33,0,0.67,1)',
-      strokeLinecap: 'round',
-      transform: 'rotate(-90deg)',
-      transformOrigin: '50% 50%',
-    },
-  },
-
-  // modifier class for Spinner trail
-  spinnerTailInverted: {
-    ['& > svg > circle.fui-spinner__Tail']: {
+const useTrackStyles = makeStyles({
+  inverted: {
+    ['& > svg > circle.fui-Spinner__Tail']: {
       stroke: tokens.colorNeutralStrokeOnBrand2,
       animationName: {
         '0%': {
@@ -265,14 +223,45 @@ const useLoaderStyles = makeStyles({
       transform: 'rotate(-90deg)',
       transformOrigin: '50% 50%',
     },
+
+    ['& > svg > circle.fui-Spinner__Track']: {
+      stroke: tokens.colorNeutralBackgroundInverted,
+    },
+  },
+  primary: {
+    ['& > svg > circle.fui-Spinner__Tail']: {
+      stroke: tokens.colorBrandStroke1,
+      animationName: {
+        '0%': {
+          strokeDasharray: '1,150',
+          strokeDashoffset: '0',
+        },
+
+        '50%': {
+          strokeDasharray: '90,150',
+          strokeDashoffset: '-35',
+        },
+
+        '100%': {
+          strokeDasharray: '90,150',
+          strokeDashoffset: '-124',
+        },
+      },
+      animationDuration: '1.5s',
+      animationIterationCount: 'infinite',
+      animationTimingFunction: 'cubic-bezier(0.33,0,0.67,1)',
+      strokeLinecap: 'round',
+      transform: 'rotate(-90deg)',
+      transformOrigin: '50% 50%',
+    },
+    ['& > svg > circle.fui-Spinner__Track']: {
+      stroke: tokens.colorNeutralBackground4,
+    },
   },
 });
 
 const useLabelStyles = makeStyles({
   // style for label
-  spinnerLabelInverted: {
-    color: tokens.colorNeutralStrokeOnBrand2,
-  },
 
   tiny: {
     ...labelSizeTokens.body1,
@@ -311,6 +300,7 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
   const rootStyles = useRootStyles();
   const spinnerStyles = useLoaderStyles();
   const labelStyles = useLabelStyles();
+  const trackStyles = useTrackStyles();
 
   state.root.className = mergeClasses(
     spinnerClassNames.root,
@@ -319,15 +309,14 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
     (labelPosition === 'before' || labelPosition === 'after') && rootStyles.horizontal,
     state.root.className,
   );
-  if (state.spinner) {
+  if (state.spinner && state.appearance) {
     state.spinner.className = mergeClasses(
       spinnerClassNames.spinner,
       spinnerStyles.spinnerSVG,
       size === 'extra-small' && spinnerStyles.extraSmall,
       size === 'extra-large' && spinnerStyles.extraLarge,
       size !== 'extra-large' && size !== 'extra-small' && spinnerStyles[size],
-      state.appearance === 'inverted' ? spinnerStyles.spinnerTrackInverted : spinnerStyles.spinnerTrack,
-      state.appearance === 'inverted' ? spinnerStyles.spinnerTailInverted : spinnerStyles.spinnerTail,
+      trackStyles[state.appearance],
       state.spinner.className,
     );
   }
@@ -337,7 +326,6 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
       size === 'extra-small' && labelStyles.extraSmall,
       size === 'extra-large' && labelStyles.extraLarge,
       size !== 'extra-large' && size !== 'extra-small' && labelStyles[size],
-      state.appearance === 'inverted' && labelStyles.spinnerLabelInverted,
       state.label.className,
     );
   }
