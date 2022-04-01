@@ -72,6 +72,11 @@ Portals can be inspected by providing a `getTargetElement` function to `isConfor
 
 ```jsx
 
+// Assume that `Foo` is a component that renders a Portal.
+// It takes a prop called `idForPortal` that renders the
+// provided id in the Portal, allowing it to be looked up
+// via `getPortalElement()`.
+
 const getPortalElement = (result, attr) => {
   return result.baseElement.querySelector("#portal-id");
 };
