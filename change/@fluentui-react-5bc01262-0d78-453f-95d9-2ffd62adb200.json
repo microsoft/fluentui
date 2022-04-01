@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "New layers are now rendered within a container element. This means that injecting things like ContextualMenu will have less DOM layout recomputes, resulting in better performance.",
+  "packageName": "@fluentui/react",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch"
+}
