@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
-import { classNamesFunction, setPortalAttribute, setVirtualParent } from '../../Utilities';
-import { registerLayer, getDefaultTarget, unregisterLayer, getLayerHost } from './Layer.notification';
+import { classNamesFunction, getId, setPortalAttribute, setVirtualParent } from '../../Utilities';
+import { registerLayer, getDefaultTarget, unregisterLayer, getLayerHost, setDefaultTarget } from './Layer.notification';
 import { useIsomorphicLayoutEffect, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
 import type { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
@@ -54,7 +54,19 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
         return doc?.getElementById(hostId) ?? null;
       } else {
         const defaultHostSelector = getDefaultTarget();
-        return (defaultHostSelector ? doc?.querySelector(defaultHostSelector) : doc?.body) ?? null;
+
+        let host = defaultHostSelector && doc?.querySelector(defaultHostSelector);
+
+        // Create a container for injecting layers in. Having a container scopes layout computation.
+        if (!host) {
+          host = document.createElement('div');
+          host.setAttribute('id', 'fluent-default-layer-host');
+          (host as HTMLElement).style.cssText = 'position:fixed;z-index:1000000';
+
+          doc?.body.insertBefore(host, doc.body.lastElementChild);
+        }
+
+        return host;
       }
     };
 

@@ -3,7 +3,7 @@ import { ILayerHost } from './LayerHost.types';
 const _layersByHostId: { [hostId: string]: (() => void)[] } = {};
 const _layerHostsById: { [hostId: string]: ILayerHost[] } = {};
 
-let _defaultHostSelector: string | undefined;
+let _defaultHostSelector: string | undefined = '#fluent-default-layer-host';
 
 /**
  * Register a layer for a given host id
