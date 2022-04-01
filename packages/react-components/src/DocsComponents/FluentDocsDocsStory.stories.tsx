@@ -68,8 +68,7 @@ const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: str
         });
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   return (
     <SandpackPreview
