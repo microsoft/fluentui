@@ -164,15 +164,6 @@ const usePendingIndicatorStyles = makeStyles({
     },
   },
   disabled: {
-    ':before': {
-      backgroundColor: 'none',
-      ...shorthands.borderStyle('solid'),
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      boxSizing: 'border-box',
-      content: '""',
-      position: 'absolute',
-    },
     ':hover:before': {
       ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
@@ -244,12 +235,6 @@ const useActiveIndicatorStyles = makeStyles({
   disabled: {
     ':after': {
       ...shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
-      ...shorthands.borderStyle('solid'),
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      boxSizing: 'border-box',
-      content: '""',
-      position: 'absolute',
-      zIndex: 1,
     },
   },
   mediumHorizontal: {
@@ -360,11 +345,15 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
     disabled && pendingIndicatorStyles.disabled,
 
     // active indicator (after pseudo element)
-    activeIndicatorStyles.base,
-    size !== 'small' && (vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
-    size === 'small' && (vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
-    !disabled && selected && activeIndicatorStyles.selected,
-    disabled && selected && activeIndicatorStyles.disabled,
+    selected && activeIndicatorStyles.base,
+    selected && !disabled && activeIndicatorStyles.selected,
+    selected &&
+      size !== 'small' &&
+      (vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
+    selected &&
+      size === 'small' &&
+      (vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
+    selected && disabled && activeIndicatorStyles.disabled,
     state.root.className,
   );
 
