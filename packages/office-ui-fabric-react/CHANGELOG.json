@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 01 Apr 2022 12:26:13 GMT",
+      "tag": "office-ui-fabric-react_v7.184.2",
+      "version": "7.184.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed secondary text styling in PeoplePicker Personas when displayed in the input.",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "e5cd8411faf34b3a926c9b822856b603643a154e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Mar 2022 12:25:54 GMT",
       "tag": "office-ui-fabric-react_v7.184.1",
       "version": "7.184.1",

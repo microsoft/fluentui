@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 30 Mar 2022 12:25:54 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Apr 2022 12:26:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.184.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.184.2)
+
+Fri, 01 Apr 2022 12:26:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.184.1..office-ui-fabric-react_v7.184.2)
+
+### Patches
+
+- Fixed secondary text styling in PeoplePicker Personas when displayed in the input. ([PR #22258](https://github.com/microsoft/fluentui/pull/22258) by mgodbolt@microsoft.com)
 
 ## [7.184.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.184.1)
 
