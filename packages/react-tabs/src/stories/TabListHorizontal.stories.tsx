@@ -13,12 +13,12 @@ const useStyles = makeStyles({
   },
 });
 
-export const Vertical = () => {
+export const Horizontal = () => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedValue="tab2" vertical>
+      <TabList defaultSelectedValue="tab2">
         <Tab value="tab1">First Tab</Tab>
         <Tab value="tab2">Second Tab</Tab>
         <Tab value="tab3">Third Tab</Tab>
@@ -28,10 +28,10 @@ export const Vertical = () => {
   );
 };
 
-Vertical.parameters = {
+Horizontal.parameters = {
   docs: {
     description: {
-      story: 'The tabs within a tab list can be arranged vertically. The default is false.',
+      story: 'The tabs within a tab list are arranged horzontally by default.',
     },
   },
 };

@@ -14,24 +14,16 @@ const useStyles = makeStyles({
   },
 });
 
-export const WithIcon = () => {
+export const IconOnly = () => {
   const styles = useStyles();
 
   const renderTabs = () => {
     return (
       <>
-        <Tab icon={<CalendarMonthRegular />} value="tab1">
-          First Tab
-        </Tab>
-        <Tab icon={<CalendarMonthRegular />} value="tab2">
-          Second Tab
-        </Tab>
-        <Tab icon={<CalendarMonthRegular />} value="tab3">
-          Third Tab
-        </Tab>
-        <Tab icon={<CalendarMonthRegular />} value="tab4">
-          Fourth Tab
-        </Tab>
+        <Tab icon={<CalendarMonthRegular />} value="tab1" />
+        <Tab icon={<CalendarMonthRegular />} value="tab2" />
+        <Tab icon={<CalendarMonthRegular />} value="tab3" />
+        <Tab icon={<CalendarMonthRegular />} value="tab4" />
       </>
     );
   };
@@ -46,10 +38,10 @@ export const WithIcon = () => {
   );
 };
 
-WithIcon.parameters = {
+IconOnly.parameters = {
   docs: {
     description: {
-      story: 'A tab has an `icon` slot to display an icon before the tab content.',
+      story: 'Tabs can have an `icon` slot filled and no content..',
     },
   },
 };

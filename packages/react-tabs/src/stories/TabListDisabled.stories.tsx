@@ -1,7 +1,7 @@
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { makeStyles, shorthands } from '@griffel/react';
 import * as React from 'react';
 import { Tab, TabList } from '../index';
-import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
@@ -14,12 +14,12 @@ const useStyles = makeStyles({
   },
 });
 
-export const WithIcon = () => {
+export const Disabled = () => {
   const styles = useStyles();
 
-  const renderTabs = () => {
-    return (
-      <>
+  return (
+    <div className={styles.root}>
+      <TabList defaultSelectedValue="tab2" disabled>
         <Tab icon={<CalendarMonthRegular />} value="tab1">
           First Tab
         </Tab>
@@ -32,24 +32,31 @@ export const WithIcon = () => {
         <Tab icon={<CalendarMonthRegular />} value="tab4">
           Fourth Tab
         </Tab>
-      </>
-    );
-  };
-
-  return (
-    <div className={styles.root}>
-      <TabList defaultSelectedValue="tab2">{renderTabs()}</TabList>
-      <TabList defaultSelectedValue="tab2" vertical>
-        {renderTabs()}
+      </TabList>
+      <TabList defaultSelectedValue="tab2">
+        <Tab icon={<CalendarMonthRegular />} value="tab1">
+          First Tab
+        </Tab>
+        <Tab icon={<CalendarMonthRegular />} value="tab2" disabled>
+          Second Tab
+        </Tab>
+        <Tab icon={<CalendarMonthRegular />} value="tab3" disabled>
+          Third Tab
+        </Tab>
+        <Tab icon={<CalendarMonthRegular />} value="tab4">
+          Fourth Tab
+        </Tab>
       </TabList>
     </div>
   );
 };
 
-WithIcon.parameters = {
+Disabled.parameters = {
   docs: {
     description: {
-      story: 'A tab has an `icon` slot to display an icon before the tab content.',
+      story:
+        'A tab list can disable interaction for all its tabs. The default is `false`.' +
+        ' Individual tabs can also be disabled.',
     },
   },
 };
