@@ -101,7 +101,7 @@ export type TabSlots = {
 
 // @public
 export type TabState = ComponentState<TabSlots> & Omit<TabCommons, 'disabled'> & Required<Pick<TabCommons, 'disabled'>> & {
-    appearance?: string;
+    appearance?: 'transparent' | 'subtle';
     iconOnly: boolean;
     selected: boolean;
     size: 'small' | 'medium';
