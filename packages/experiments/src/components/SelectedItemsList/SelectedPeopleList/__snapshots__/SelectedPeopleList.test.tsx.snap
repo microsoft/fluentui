@@ -350,6 +350,23 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                 onMouseLeave={[Function]}
               >
                 Person A
+                <div
+                  hidden={true}
+                  id="tooltip4"
+                  style={
+                    Object {
+                      "border": 0,
+                      "height": 1,
+                      "margin": -1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "absolute",
+                      "width": 1,
+                    }
+                  }
+                >
+                  Person A
+                </div>
               </div>
             </div>
             <div
@@ -881,6 +898,23 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                 onMouseLeave={[Function]}
               >
                 Person B
+                <div
+                  hidden={true}
+                  id="tooltip12"
+                  style={
+                    Object {
+                      "border": 0,
+                      "height": 1,
+                      "margin": -1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "absolute",
+                      "width": 1,
+                    }
+                  }
+                >
+                  Person B
+                </div>
               </div>
             </div>
             <div
@@ -1419,6 +1453,23 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                 onMouseLeave={[Function]}
               >
                 Person A
+                <div
+                  hidden={true}
+                  id="tooltip20"
+                  style={
+                    Object {
+                      "border": 0,
+                      "height": 1,
+                      "margin": -1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "absolute",
+                      "width": 1,
+                    }
+                  }
+                >
+                  Person A
+                </div>
               </div>
             </div>
             <div
@@ -1950,6 +2001,23 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                 onMouseLeave={[Function]}
               >
                 Person B
+                <div
+                  hidden={true}
+                  id="tooltip28"
+                  style={
+                    Object {
+                      "border": 0,
+                      "height": 1,
+                      "margin": -1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "absolute",
+                      "width": 1,
+                    }
+                  }
+                >
+                  Person B
+                </div>
               </div>
             </div>
             <div

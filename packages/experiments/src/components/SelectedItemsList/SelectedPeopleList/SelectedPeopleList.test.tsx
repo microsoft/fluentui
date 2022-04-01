@@ -26,8 +26,8 @@ describe('SelectedPeopleList', () => {
 
     const personANodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person A') !== -1);
     const personBNodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person B') !== -1);
-    expect(personANodes.length).toEqual(1);
-    expect(personBNodes.length).toEqual(1);
+    expect(personANodes.length).toEqual(2);
+    expect(personBNodes.length).toEqual(2);
 
     expect(rendered.toJSON()).toMatchSnapshot();
   });
@@ -40,8 +40,8 @@ describe('SelectedPeopleList', () => {
 
     const personANodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person A') !== -1);
     const personBNodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person B') !== -1);
-    expect(personANodes.length).toEqual(1);
-    expect(personBNodes.length).toEqual(1);
+    expect(personANodes.length).toEqual(2);
+    expect(personBNodes.length).toEqual(2);
 
     expect(rendered.toJSON()).toMatchSnapshot();
   });
