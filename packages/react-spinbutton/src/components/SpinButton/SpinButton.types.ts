@@ -35,7 +35,6 @@ export type SpinButtonCommons = {
    *
    * Use this if you intend for the SpinButton to be an uncontrolled component which maintains its
    * own value. For a controlled component, use `value` instead. (Mutually exclusive with `value`.)
-   * @defaultvalue 0
    */
   defaultValue: number;
 
@@ -74,14 +73,14 @@ export type SpinButtonCommons = {
    * Difference between two adjacent values of the control.
    * This value is used to calculate the precision of the input if no `precision` is given.
    * The precision calculated this way will always be greater than or equal 0.
-   * @defaultvalue 1
+   * @default 1
    */
   step: number;
 
   /**
    * Large difference between two values. This should be greater than `step` and is used
    * when users hit the Page Up or Page Down keys.
-   * @defaultValue 1
+   * @default 1
    */
   stepPage: number;
 
