@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "live code editing",
+  "comment": "Improved documentation - enable users to edit code of examples, add integration with GitHub",
   "packageName": "@fluentui/react-components",
   "email": "peter@draxler.ml",
   "dependentChangeType": "patch"
