@@ -40,37 +40,18 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
   const [calcRect, setCalcRect] = React.useState(0);
   const recalcRect = useConst(() => () => setCalcRect(value => ++value));
 
-  // when this list or any tab resizes, recalculate the selection indicator rectangle
-  const resizeObserver = React.useMemo(
-    () =>
-      new ResizeObserver(entries => {
-        recalcRect();
-      }),
-    [recalcRect],
-  );
-
   // observe this list for resize
-  React.useEffect(() => {
-    const currentRef = innerRef.current;
-    currentRef && resizeObserver.observe(currentRef);
-
-    return () => {
-      currentRef && resizeObserver.unobserve(currentRef);
-    };
-  }, [resizeObserver]);
 
   // when tabs register their refs, observe them for resize
   const registeredTabs = React.useRef<Record<string, RegisterTabData>>({});
 
   const onRegister = useEventCallback((data: RegisterTabData) => {
     registeredTabs.current[JSON.stringify(data.value)] = data;
-    data.ref?.current && resizeObserver.observe(data.ref.current);
     recalcRect();
   });
 
   const onUnregister = useEventCallback((data: RegisterTabData) => {
     delete registeredTabs.current[JSON.stringify(data.value)];
-    data.ref?.current && resizeObserver.unobserve(data.ref.current);
     recalcRect();
   });
 
