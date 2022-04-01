@@ -39,7 +39,6 @@ const useStyles = makeStyles({
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
   const stories = context.componentStories();
-  // const stories = context.stories.getStoriesForKind(context.kind);
   const primaryStory = stories[0];
   const hosted = isHosted();
   const styles = useStyles();
