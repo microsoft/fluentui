@@ -118,7 +118,7 @@ export function unregisterLayerHost(hostId: string, layerHost: ILayerHost): void
  */
 export function createDefaultLayerHost(doc: Document): Node | null {
   const host = doc.createElement('div');
-  host.setAttribute('id', 'fluent-default-layer-host');
+  host.setAttribute('id', defaultHostId);
   (host as HTMLElement).style.cssText = 'position:fixed;z-index:1000000';
 
   doc?.body.appendChild(host);
