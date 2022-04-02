@@ -328,6 +328,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                           },
                         )}
                         ref={element => this._setDayCellRef(element, day, isNavigatedDate)}
+                        onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
                         onMouseOver={
                           dateRangeType !== DateRangeType.Day && day.isInBounds
                             ? this._onDayMouseOver(day.originalDate, weekIndex, dayIndex, dateRangeType)
@@ -348,7 +349,11 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                             ? this._onDayMouseUp(day.originalDate, weekIndex, dayIndex, dateRangeType)
                             : undefined
                         }
-                        role={'presentation'}
+                        role={'gridcell'}
+                        data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
+                        aria-disabled={!day.isInBounds}
+                        aria-current={day.isToday ? 'date' : undefined}
+                        aria-selected={day.isInBounds ? day.isSelected : undefined}
                       >
                         <button
                           key={day.key + 'button'}
@@ -357,18 +362,13 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                             ['ms-DatePicker-day--disabled ' + styles.dayIsDisabled]: !day.isInBounds,
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
                           })}
-                          onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
                           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
                           id={isNavigatedDate ? activeDescendantId : undefined}
-                          aria-readonly={true}
-                          aria-current={day.isToday ? 'date' : undefined}
-                          aria-selected={day.isInBounds ? day.isSelected : undefined}
-                          data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
-                          ref={element => this._setDayRef(element, day, isNavigatedDate)}
+                          data-is-focusable={false}
                           disabled={!allFocusable && !day.isInBounds}
                           aria-disabled={!day.isInBounds}
+                          tabIndex={-1}
                           type="button"
-                          role={'gridcell'}
                         >
                           <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
                         </button>
@@ -391,14 +391,12 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
     }
   }
 
-  private _setDayRef(element: HTMLElement | null, day: IDayInfo, isNavigatedDate: boolean): void {
+  private _setDayCellRef(element: HTMLElement | null, day: IDayInfo, isNavigatedDate: boolean): void {
+    this.days[day.key] = element;
+
     if (isNavigatedDate) {
       this.navigatedDay = element;
     }
-  }
-
-  private _setDayCellRef(element: HTMLElement | null, day: IDayInfo, isNavigatedDate: boolean): void {
-    this.days[day.key] = element;
   }
 
   private _getWeekCornerStyles(weeks: IDayInfo[][], dateRangeType: DateRangeType): IWeekCorners {

@@ -198,7 +198,7 @@ describe('DatePicker', () => {
 
     // open calendar and select first day
     textField.simulate('click');
-    const selectableDateInCalender = datePicker.find('.ms-DatePicker td button[data-is-focusable=true]').at(0);
+    const selectableDateInCalender = datePicker.find('.ms-DatePicker td[data-is-focusable=true] button').at(0);
     selectableDateInCalender.simulate('click');
 
     expect(datePicker.state('errorMessage')).toBe('');
