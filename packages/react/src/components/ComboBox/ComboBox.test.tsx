@@ -1,11 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-// import { ReactWrapper } from 'enzyme';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
-// import { safeCreate, safeMount } from '@fluentui/test-utilities';
 
 import { isConformant } from '../../common/isConformant';
 import { useKeytipRef } from '../../Keytips';
@@ -73,7 +70,7 @@ describe('ComboBox', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('Renders correctly when open', async () => {
+  it('Renders correctly when open', () => {
     // Mock createPortal so that the options list ends up inside the wrapper for snapshotting.
     mockCreatePortal();
 
