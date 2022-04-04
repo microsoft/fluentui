@@ -52,7 +52,7 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
       data.invisibleItems.forEach(x => (newState[x.id] = false));
       return newState;
     });
-    setGroupVisibility(groupVisibility);
+    setGroupVisibility(data.groupVisibility);
   };
 
   const { containerRef, registerItem, updateOverflow } = useOverflowContainer(update, {
