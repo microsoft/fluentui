@@ -147,7 +147,7 @@ describe('Breadcrumb', () => {
         .find('.ms-Breadcrumb-item')
         .first()
         .text(),
-    ).toEqual('TestText3');
+    ).toContain('TestText3');
   });
 
   it('supports native props on the root element', () => {

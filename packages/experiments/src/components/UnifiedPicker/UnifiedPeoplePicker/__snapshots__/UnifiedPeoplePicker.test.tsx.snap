@@ -582,6 +582,23 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         onMouseLeave={[Function]}
                       >
                         Annie Lindqvist
+                        <div
+                          hidden={true}
+                          id="tooltip6"
+                          style={
+                            Object {
+                              "border": 0,
+                              "height": 1,
+                              "margin": -1,
+                              "overflow": "hidden",
+                              "padding": 0,
+                              "position": "absolute",
+                              "width": 1,
+                            }
+                          }
+                        >
+                          Annie Lindqvist
+                        </div>
                       </div>
                     </div>
                     <div
@@ -611,6 +628,23 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         onMouseLeave={[Function]}
                       >
                         Designer
+                        <div
+                          hidden={true}
+                          id="tooltip7"
+                          style={
+                            Object {
+                              "border": 0,
+                              "height": 1,
+                              "margin": -1,
+                              "overflow": "hidden",
+                              "padding": 0,
+                              "position": "absolute",
+                              "width": 1,
+                            }
+                          }
+                        >
+                          Designer
+                        </div>
                       </div>
                     </div>
                     <div
@@ -640,6 +674,23 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         onMouseLeave={[Function]}
                       >
                         In a meeting
+                        <div
+                          hidden={true}
+                          id="tooltip8"
+                          style={
+                            Object {
+                              "border": 0,
+                              "height": 1,
+                              "margin": -1,
+                              "overflow": "hidden",
+                              "padding": 0,
+                              "position": "absolute",
+                              "width": 1,
+                            }
+                          }
+                        >
+                          In a meeting
+                        </div>
                       </div>
                     </div>
                     <div
@@ -669,6 +720,23 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         onMouseLeave={[Function]}
                       >
                         Available at 4:00pm
+                        <div
+                          hidden={true}
+                          id="tooltip9"
+                          style={
+                            Object {
+                              "border": 0,
+                              "height": 1,
+                              "margin": -1,
+                              "overflow": "hidden",
+                              "padding": 0,
+                              "position": "absolute",
+                              "width": 1,
+                            }
+                          }
+                        >
+                          Available at 4:00pm
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -156,6 +156,23 @@ exports[`Persona renders Persona correctly with image 1`] = `
         onMouseLeave={[Function]}
       >
         Kat Larrson
+        <div
+          hidden={true}
+          id="tooltip1"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Kat Larrson
+        </div>
       </div>
     </div>
     <div
@@ -336,6 +353,23 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         onMouseLeave={[Function]}
       >
         Kat Larrson
+        <div
+          hidden={true}
+          id="tooltip0"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "width": 1,
+            }
+          }
+        >
+          Kat Larrson
+        </div>
       </div>
     </div>
     <div

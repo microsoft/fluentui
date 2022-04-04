@@ -291,6 +291,23 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                   onMouseLeave={[Function]}
                 >
                   TestText3
+                  <div
+                    hidden={true}
+                    id="tooltip36"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText3
+                  </div>
                 </div>
               </span>
               <i
@@ -380,6 +397,23 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                   onMouseLeave={[Function]}
                 >
                   TestText4
+                  <div
+                    hidden={true}
+                    id="tooltip37"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText4
+                  </div>
                 </div>
               </span>
             </li>
@@ -509,6 +543,23 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText1
+                  <div
+                    hidden={true}
+                    id="tooltip2"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText1
+                  </div>
                 </div>
               </span>
               <i
@@ -598,6 +649,23 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText2
+                  <div
+                    hidden={true}
+                    id="tooltip3"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText2
+                  </div>
                 </div>
               </span>
               <i
@@ -687,6 +755,23 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText3
+                  <div
+                    hidden={true}
+                    id="tooltip4"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText3
+                  </div>
                 </div>
               </span>
               <i
@@ -776,6 +861,23 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText4
+                  <div
+                    hidden={true}
+                    id="tooltip5"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText4
+                  </div>
                 </div>
               </span>
             </li>
@@ -905,6 +1007,23 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText1
+                  <div
+                    hidden={true}
+                    id="tooltip13"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText1
+                  </div>
                 </div>
               </span>
               <span>
@@ -967,6 +1086,23 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText2
+                  <div
+                    hidden={true}
+                    id="tooltip14"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText2
+                  </div>
                 </div>
               </span>
               <span>
@@ -1029,6 +1165,23 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText3
+                  <div
+                    hidden={true}
+                    id="tooltip15"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText3
+                  </div>
                 </div>
               </span>
               <span>
@@ -1091,6 +1244,23 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText4
+                  <div
+                    hidden={true}
+                    id="tooltip16"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText4
+                  </div>
                 </div>
               </span>
             </li>
@@ -1220,6 +1390,23 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                   onMouseLeave={[Function]}
                 >
                   TestText1
+                  <div
+                    hidden={true}
+                    id="tooltip24"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText1
+                  </div>
                 </div>
               </span>
               <i
@@ -1965,6 +2152,23 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText3
+                  <div
+                    hidden={true}
+                    id="tooltip10"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText3
+                  </div>
                 </div>
               </span>
               <i
@@ -2054,6 +2258,23 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText4
+                  <div
+                    hidden={true}
+                    id="tooltip11"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText4
+                  </div>
                 </div>
               </span>
             </li>
@@ -2183,6 +2404,23 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                   onMouseLeave={[Function]}
                 >
                   TestText1
+                  <div
+                    hidden={true}
+                    id="tooltip18"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText1
+                  </div>
                 </div>
               </span>
               <i
@@ -2464,6 +2702,23 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                   onMouseLeave={[Function]}
                 >
                   TestText4
+                  <div
+                    hidden={true}
+                    id="tooltip22"
+                    style={
+                      Object {
+                        "border": 0,
+                        "height": 1,
+                        "margin": -1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "absolute",
+                        "width": 1,
+                      }
+                    }
+                  >
+                    TestText4
+                  </div>
                 </div>
               </span>
             </li>
