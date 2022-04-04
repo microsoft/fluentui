@@ -11,7 +11,7 @@ import { SankeyChartBasicExample } from './SankeyChart.Basic.Example';
 
 const SankeyChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/SankeyChart.Basic.Example.tsx') as string;
 
-export class PieChartPage extends React.Component<IComponentDemoPageProps, {}> {
+export class SankeyChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
