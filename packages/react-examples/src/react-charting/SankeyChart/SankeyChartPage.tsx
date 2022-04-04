@@ -42,6 +42,7 @@ export class SankeyChartPage extends React.Component<IComponentDemoPageProps, {}
             </p>
           </div>
         }
+        isFeedbackVisible={true}
       />
     );
   }
