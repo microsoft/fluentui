@@ -39,7 +39,7 @@ enum PointSize {
   invisibleSize = 1,
 }
 
-const DEFAULT_LINE_STROKE_SIZE = 4;
+const DEFAULT_LINE_STROKE_SIZE = 6;
 // The given shape of a icon must be 2.5 times bigger than line width (known as stroke width)
 const PATH_MULTIPLY_SIZE = 2.5;
 
