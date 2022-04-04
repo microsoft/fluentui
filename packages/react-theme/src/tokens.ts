@@ -90,6 +90,8 @@ export const tokens: Record<keyof Theme, string> = {
   colorNeutralBackgroundInvertedDisabled: 'var(--colorNeutralBackgroundInvertedDisabled)',
   colorNeutralStencil1: 'var(--colorNeutralStencil1)',
   colorNeutralStencil2: 'var(--colorNeutralStencil2)',
+  colorBackgroundOverlay: 'var(--colorBackgroundOverlay)',
+  colorScrollbarOverlay: 'var(--colorScrollbarOverlay)',
   colorBrandBackground: 'var(--colorBrandBackground)',
   colorBrandBackgroundHover: 'var(--colorBrandBackgroundHover)',
   colorBrandBackgroundPressed: 'var(--colorBrandBackgroundPressed)',

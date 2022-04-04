@@ -9,7 +9,7 @@ export type TabSlots = {
   /**
    * Root of the component.
    */
-  root: Slot<'div'>;
+  root: Slot<'button'>;
 
   /**
    * Icon that renders before the content.
@@ -25,6 +25,11 @@ export type TabSlots = {
 
 type TabCommons = {
   /**
+   * A tab can be set to disable interaction.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
    * The value that identifies this tab when selected.
    */
   value: TabValue;
@@ -39,15 +44,20 @@ export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
  * State used in rendering Tab
  */
 export type TabState = ComponentState<TabSlots> &
-  TabCommons & {
+  Omit<TabCommons, 'disabled'> &
+  Required<Pick<TabCommons, 'disabled'>> & {
     /**
      * A tab supports 'transparent' and 'subtle' appearance.
      */
-    appearance?: string;
+    appearance?: 'transparent' | 'subtle';
     /**
-     * If this tab is selected.
+     * A tab can have only an icon slot filled and no content.
      */
-    selected?: boolean;
+    iconOnly: boolean;
+    /**
+     * If this tab is selected
+     */
+    selected: boolean;
     /**
      * A tab can be either 'small' or 'medium' size.
      */

@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
-import { makeStyles } from '@griffel/react';
+import { makeStyles, shorthands } from '@griffel/react';
 import { Input } from '../index';
 
 const useStyles = makeStyles({
   root: {
-    '& label': { display: 'block', paddingBottom: '2px' },
-    '& label:not(:first-child)': { paddingTop: '20px' },
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap('20px'),
+    maxWidth: '400px',
+    // Stack the label above the field (with 2px gap per the design system)
+    '> div': { display: 'flex', flexDirection: 'column', ...shorthands.gap('2px') },
   },
 });
 
@@ -19,14 +23,20 @@ export const Type = () => {
 
   return (
     <div className={styles.root}>
-      <Label htmlFor={emailId}>Email</Label>
-      <Input type="email" id={emailId} />
+      <div>
+        <Label htmlFor={emailId}>Email</Label>
+        <Input type="email" id={emailId} />
+      </div>
 
-      <Label htmlFor={urlId}>URL</Label>
-      <Input type="url" id={urlId} />
+      <div>
+        <Label htmlFor={urlId}>URL</Label>
+        <Input type="url" id={urlId} />
+      </div>
 
-      <Label htmlFor={passwordId}>Password</Label>
-      <Input type="password" defaultValue="password" id={passwordId} />
+      <div>
+        <Label htmlFor={passwordId}>Password</Label>
+        <Input type="password" defaultValue="password" id={passwordId} />
+      </div>
     </div>
   );
 };

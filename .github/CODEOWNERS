@@ -21,13 +21,14 @@
 *.yml @microsoft/fluentui-react-build
 
 #### Build folders
-/.codesandbox/ @microsoft/fluentui-react-build
-/.devops/ @microsoft/fluentui-react-build
-/.github/workflows/ @microsoft/fluentui-react-build
-/.githooks/ @microsoft/fluentui-react-build
-/.storybook/ @microsoft/fluentui-react-build
-/.vscode/ @microsoft/fluentui-react-build
-/scripts/ @microsoft/fluentui-react-build
+/.codesandbox @microsoft/fluentui-react-build
+/.devcontainer @microsoft/fluentui-react-build
+/.devops @microsoft/fluentui-react-build
+/.github/workflows @microsoft/fluentui-react-build
+/.githooks @microsoft/fluentui-react-build
+/.storybook @microsoft/fluentui-react-build
+/.vscode @microsoft/fluentui-react-build
+/scripts @microsoft/fluentui-react-build
 /tools @microsoft/fluentui-react-build
 
 #### Root Build files
@@ -58,148 +59,149 @@
 /.github/ISSUE_TEMPLATE* @justSlone @jurokapsiar
 
 #### Fluent UI N*
-packages/a11y-rules/ @microsoft/fluentui-northstar
-packages/a11y-testing/ @microsoft/fluentui-northstar
-packages/fluentui/ @microsoft/fluentui-northstar
-packages/fluentui/react-northstar/src/components/Chat/ @microsoft/fluentui-northstar @Hirse
-packages/fluentui/react-northstar/src/themes/teams/components/Chat/ @microsoft/fluentui-northstar @Hirse
+packages/a11y-rules @microsoft/fluentui-northstar
+packages/a11y-testing @microsoft/fluentui-northstar
+packages/fluentui @microsoft/fluentui-northstar
+packages/fluentui/react-northstar/src/components/Chat @microsoft/fluentui-northstar @Hirse
+packages/fluentui/react-northstar/src/themes/teams/components/Chat @microsoft/fluentui-northstar @Hirse
 
 #### Web Components
 packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
 
 #### Apps
-# component-demo/
-public-docsite/ @ecraig12345 @micahgodbolt
-public-docsite-resources/ @ecraig12345 @micahgodbolt
-perf-test/ @microsoft/fluentui-react-build
-# ssr-tests/
+# component-demo
+public-docsite @ecraig12345 @micahgodbolt
+public-docsite-resources @ecraig12345 @micahgodbolt
+perf-test @microsoft/fluentui-react-build
+# ssr-tests
 
 #### Packages
-packages/azure-themes/ @hyoshis @Jacqueline-ms
-packages/bundle-size/ @microsoft/teams-prg
+packages/azure-themes @hyoshis @Jacqueline-ms
+packages/bundle-size @microsoft/teams-prg
 packages/date-time-utilities @ermercer @evlevy
-packages/eslint-plugin/ @microsoft/fluentui-react-build
-packages/foundation-legacy/ @microsoft/cxe-red @khmakoto
-# packages/font-icons-mdl2/
-# packages/jest-serializer-merge-styles/
+packages/eslint-plugin @microsoft/fluentui-react-build
+packages/foundation-legacy @microsoft/cxe-red @khmakoto
+# packages/font-icons-mdl2
+# packages/jest-serializer-merge-styles
 
-packages/merge-styles/ @dzearing
-packages/monaco-editor/ @ecraig12345
-packages/public-docsite-setup/ @ecraig12345
-packages/priority-overflow/ @microsoft/teams-prg
-packages/react-aria/ @microsoft/teams-prg
-packages/react-cards/ @microsoft/cxe-red @khmakoto
-packages/react-charting/ @microsoft/charting-team
-packages/react-conformance-griffel/ @microsoft/teams-prg
-packages/react-context-selector/ @microsoft/teams-prg
+packages/merge-styles @dzearing
+packages/monaco-editor @ecraig12345
+packages/public-docsite-setup @ecraig12345
+packages/priority-overflow @microsoft/teams-prg
+packages/react-aria @microsoft/teams-prg
+packages/react-cards @microsoft/cxe-red @khmakoto
+packages/react-charting @microsoft/charting-team
+packages/react-conformance-griffel @microsoft/teams-prg
+packages/react-context-selector @microsoft/teams-prg
 packages/react-date-time @ermercer @evlevy
-packages/react-docsite-components/ @ecraig12345 @micahgodbolt
-packages/react-file-type-icons/ @jahnp @bigbadcapers
-packages/react-hooks/ @microsoft/cxe-red @ecraig12345
-packages/react-monaco-editor/ @ecraig12345
-packages/react-positioning/ @microsoft/teams-prg
-packages/react-priority-overflow/ @microsoft/teams-prg
-packages/react-shared-contexts/ @microsoft/teams-prg
-packages/react-storybook/ @microsoft/cxe-prg @microsoft/teams-prg
-packages/react-storybook-addon/ @microsoft/cxe-prg
-packages/react-tabster/ @microsoft/teams-prg
-packages/react-theme/ @microsoft/teams-prg
-packages/react-utilities/ @microsoft/teams-prg
-packages/storybook/ @microsoft/cxe-prg @microsoft/teams-prg
-packages/style-utilities/ @dzearing
-packages/style-utilities/src/interfaces/ @phkuo @dzearing
-packages/style-utilities/src/styles/ @phkuo @dzearing
-packages/theme/ @dzearing
-# packages/utilities/
-packages/utilities/positioning/ @microsoft/cxe-red
+packages/react-docsite-components @ecraig12345 @micahgodbolt
+packages/react-file-type-icons @jahnp @bigbadcapers
+packages/react-hooks @microsoft/cxe-red @ecraig12345
+packages/react-monaco-editor @ecraig12345
+packages/react-positioning @microsoft/teams-prg
+packages/react-priority-overflow @microsoft/teams-prg
+packages/react-shared-contexts @microsoft/teams-prg
+packages/react-storybook @microsoft/cxe-prg @microsoft/teams-prg
+packages/react-storybook-addon @microsoft/cxe-prg
+packages/react-tabster @microsoft/teams-prg
+packages/react-theme @microsoft/teams-prg
+packages/react-utilities @microsoft/teams-prg
+packages/storybook @microsoft/cxe-prg @microsoft/teams-prg
+packages/style-utilities @dzearing
+packages/style-utilities/src/interfaces @phkuo @dzearing
+packages/style-utilities/src/styles @phkuo @dzearing
+packages/theme @dzearing
+# packages/utilities
+packages/utilities/positioning @microsoft/cxe-red
 
 ### Fabric
 # common/
-packages/common-styles/src/ @microsoft/cxe-red @phkuo
+packages/common-styles/src @microsoft/cxe-red @phkuo
 common/_semanticSlots.scss @microsoft/cxe-red @phkuo
 common/_themeOverrides.scss @microsoft/cxe-red @phkuo
 common/_common.scss @microsoft/cxe-red @phkuo
 
-## Component packages
-packages/react-accordion/ @microsoft/teams-prg @microsoft/cxe-coastal
-packages/react-avatar/ @microsoft/cxe-red @behowell @khmakoto
-packages/react-badge/ @microsoft/teams-prg @microsoft/cxe-red @behowell
-packages/react-button/ @microsoft/cxe-red @khmakoto
-packages/react-card/ @microsoft/cxe-prg
-packages/react-checkbox/ @microsoft/cxe-red @khmakoto
-packages/react-components/ @microsoft/teams-prg @microsoft/cxe-prg @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react-dialog/ @microsoft/cxe-prg
-packages/react-divider/ @microsoft/cxe-coastal
-packages/react-focus/ @microsoft/cxe-red @khmakoto
-packages/react-image/ @microsoft/cxe-prg
-packages/react-input/ @microsoft/cxe-red @ecraig12345
-packages/react-label/ @microsoft/cxe-red
-packages/react-link/ @microsoft/cxe-red @khmakoto @microsoft/cxe-coastal
-packages/react-menu/ @microsoft/teams-prg
-packages/react-popover/ @microsoft/teams-prg
-packages/react-portal/ @microsoft/teams-prg
-packages/react-provider/ @microsoft/teams-prg
-packages/react-radio/ @microsoft/cxe-red
-packages/react-select/ @microsoft/cxe-coastal @smhigley
-packages/react-slider/ @microsoft/cxe-coastal @micahgodbolt
-packages/react-spinner/ @microsoft/cxe-red @tomi-msft
-packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @ecraig12345
-packages/react-tabs/ @microsoft/cxe-coastal @geoffcoxmsft
-packages/react-text/ @microsoft/cxe-prg
-packages/react-textarea/ @microsoft/cxe-red @sopranopillow
-packages/react-tooltip/ @microsoft/cxe-red @behowell @khmakoto
+## vNext packages
+packages/react-accordion @microsoft/teams-prg @microsoft/cxe-coastal
+packages/react-avatar @microsoft/cxe-red @behowell @khmakoto
+packages/react-badge @microsoft/teams-prg @microsoft/cxe-red @behowell
+packages/react-button @microsoft/cxe-red @khmakoto
+packages/react-card @microsoft/cxe-prg
+packages/react-checkbox @microsoft/cxe-red @khmakoto
+packages/react-components @microsoft/teams-prg @microsoft/cxe-prg @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react-dialog @microsoft/cxe-prg
+packages/react-divider @microsoft/cxe-coastal
+packages/react-focus @microsoft/cxe-red @khmakoto
+packages/react-image @microsoft/cxe-prg
+packages/react-input @microsoft/cxe-red @ecraig12345
+packages/react-label @microsoft/cxe-red
+packages/react-link @microsoft/cxe-red @khmakoto @microsoft/cxe-coastal
+packages/react-menu @microsoft/teams-prg
+packages/react-popover @microsoft/teams-prg
+packages/react-portal @microsoft/teams-prg
+packages/react-provider @microsoft/teams-prg
+packages/react-radio @microsoft/cxe-red
+packages/react-select @microsoft/cxe-coastal @smhigley
+packages/react-slider @microsoft/cxe-coastal @micahgodbolt
+packages/react-spinner @microsoft/cxe-red @tomi-msft
+packages/react-switch @microsoft/cxe-red @behowell @khmakoto @ecraig12345
+packages/react-tabs @microsoft/cxe-coastal @geoffcoxmsft
+packages/react-text @microsoft/cxe-prg
+packages/react-textarea @microsoft/cxe-red @sopranopillow
+packages/react-tooltip @microsoft/cxe-red @behowell @khmakoto
+# <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
 packages/react @microsoft/cxe-red
-packages/react/src/components/ActivityItem/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/Announced/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/Breadcrumb/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/Button/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/Calendar/ @ermercer @evlevy
-packages/react/src/components/CalendarDayGrid/ @ermercer @evlevy
-packages/react/src/components/Check/ @microsoft/cxe-red @ThomasMichon @khmakoto
-packages/react/src/components/Checkbox/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/ChoiceGroup/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/Coachmark/ @microsoft/cxe-red @leddie24
-packages/react/src/components/ColorPicker/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/DatePicker/ @ermercer @evlevy
-packages/react/src/components/DetailsList/ @microsoft/cxe-red @ThomasMichon
-packages/react/src/components/DocumentCard/ @microsoft/cxe-red @yiminwu
-packages/react/src/components/Fabric/ @microsoft/cxe-red @dzearing
-packages/react/src/components/Facepile/ @microsoft/cxe-red @markionium @mtennoe
-packages/react/src/components/FolderCover/ @microsoft/cxe-red @ThomasMichon @bigbadcapers
-packages/react/src/components/FocusTrapZone/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/GroupedList/ @microsoft/cxe-red @ThomasMichon
-packages/react/src/components/HoverCard/ @microsoft/cxe-red @Jahnp @Vitalius1
-packages/react/src/components/Icon/ @microsoft/cxe-red @dzearing @ecraig12345
-packages/react/src/components/Image/ @microsoft/cxe-red @dzearing
-packages/react/src/components/Label/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/Layer/ @microsoft/cxe-red @ThomasMichon
-packages/react/src/components/Link/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/List/ @microsoft/cxe-red @ThomasMichon
-packages/react/src/components/MarqueeSelection/ @microsoft/cxe-red @ThomasMichon
-packages/react/src/components/MessageBar/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/Nav/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/Overlay/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/Panel/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/Persona/ @microsoft/cxe-red @markionium @mtennoe
-packages/react/src/components/PersonaCoin/ @microsoft/cxe-red @mtennoe @markionium
-packages/react/src/components/Pivot/ @microsoft/cxe-red @behowell
-packages/react/src/components/SearchBox/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/Shimmer/ @microsoft/cxe-red @Vitalius1
-packages/react/src/components/SpinButton/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/Stack/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/SwatchColorPicker/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/Text/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/TextField/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/Toggle/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/Tooltip/ @microsoft/cxe-red @behowell
-packages/react/src/components/WeeklyDayPicker/ @ermercer @evlevy
+packages/react/src/components/ActivityItem @microsoft/cxe-red @khmakoto
+packages/react/src/components/Announced @microsoft/cxe-red @khmakoto
+packages/react/src/components/Breadcrumb @microsoft/cxe-red @khmakoto
+packages/react/src/components/Button @microsoft/cxe-red @khmakoto
+packages/react/src/components/Calendar @ermercer @evlevy
+packages/react/src/components/CalendarDayGrid @ermercer @evlevy
+packages/react/src/components/Check @microsoft/cxe-red @ThomasMichon @khmakoto
+packages/react/src/components/Checkbox @microsoft/cxe-red @khmakoto
+packages/react/src/components/ChoiceGroup @microsoft/cxe-red @ecraig12345
+packages/react/src/components/Coachmark @microsoft/cxe-red @leddie24
+packages/react/src/components/ColorPicker @microsoft/cxe-red @ecraig12345
+packages/react/src/components/DatePicker @ermercer @evlevy
+packages/react/src/components/DetailsList @microsoft/cxe-red @ThomasMichon
+packages/react/src/components/DocumentCard @microsoft/cxe-red @yiminwu
+packages/react/src/components/Fabric @microsoft/cxe-red @dzearing
+packages/react/src/components/Facepile @microsoft/cxe-red @markionium @mtennoe
+packages/react/src/components/FolderCover @microsoft/cxe-red @ThomasMichon @bigbadcapers
+packages/react/src/components/FocusTrapZone @microsoft/cxe-red @khmakoto
+packages/react/src/components/GroupedList @microsoft/cxe-red @ThomasMichon
+packages/react/src/components/HoverCard @microsoft/cxe-red @Jahnp @Vitalius1
+packages/react/src/components/Icon @microsoft/cxe-red @dzearing @ecraig12345
+packages/react/src/components/Image @microsoft/cxe-red @dzearing
+packages/react/src/components/Label @microsoft/cxe-red @khmakoto
+packages/react/src/components/Layer @microsoft/cxe-red @ThomasMichon
+packages/react/src/components/Link @microsoft/cxe-red @khmakoto
+packages/react/src/components/List @microsoft/cxe-red @ThomasMichon
+packages/react/src/components/MarqueeSelection @microsoft/cxe-red @ThomasMichon
+packages/react/src/components/MessageBar @microsoft/cxe-red @ecraig12345
+packages/react/src/components/Nav @microsoft/cxe-red @ecraig12345
+packages/react/src/components/Overlay @microsoft/cxe-red @khmakoto
+packages/react/src/components/Panel @microsoft/cxe-red @khmakoto
+packages/react/src/components/Persona @microsoft/cxe-red @markionium @mtennoe
+packages/react/src/components/PersonaCoin @microsoft/cxe-red @mtennoe @markionium
+packages/react/src/components/Pivot @microsoft/cxe-red @behowell
+packages/react/src/components/SearchBox @microsoft/cxe-red @ecraig12345
+packages/react/src/components/Shimmer @microsoft/cxe-red @Vitalius1
+packages/react/src/components/SpinButton @microsoft/cxe-red @ecraig12345
+packages/react/src/components/Stack @microsoft/cxe-red @khmakoto
+packages/react/src/components/SwatchColorPicker @microsoft/cxe-red @ecraig12345
+packages/react/src/components/Text @microsoft/cxe-red @khmakoto
+packages/react/src/components/TextField @microsoft/cxe-red @ecraig12345
+packages/react/src/components/Toggle @microsoft/cxe-red @khmakoto
+packages/react/src/components/Tooltip @microsoft/cxe-red @behowell
+packages/react/src/components/WeeklyDayPicker @ermercer @evlevy
 
 ## Theming and styling
 packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @dzearing
 
 ## Experiments
-packages/react-experiments/src/components/Signals/ @ThomasMichon
-packages/react-experiments/src/components/Tile/ @ThomasMichon
-packages/react-experiments/src/components/TileList/ @ThomasMichon
+packages/react-experiments/src/components/Signals @ThomasMichon
+packages/react-experiments/src/components/Tile @ThomasMichon
+packages/react-experiments/src/components/TileList @ThomasMichon

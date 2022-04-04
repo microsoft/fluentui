@@ -34,9 +34,7 @@ describe('Tooltip', () => {
       'component-handles-classname',
       'component-has-static-classname',
       'component-has-static-classnames-object',
-      'as-renders-fc',
-      'as-passes-as-value',
-      'as-renders-html',
+      'component-has-static-classname-exported',
     ],
   });
 
