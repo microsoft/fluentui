@@ -149,7 +149,8 @@ packages/react-tabs @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-text @microsoft/cxe-prg
 packages/react-textarea @microsoft/cxe-red @sopranopillow
 packages/react-tooltip @microsoft/cxe-red @behowell @khmakoto
-# <%= NX-CODEOWNER-PLACEHOLDER %>
+packages/react-list @microsoft/teams-prg
+## <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
 packages/react @microsoft/cxe-red
