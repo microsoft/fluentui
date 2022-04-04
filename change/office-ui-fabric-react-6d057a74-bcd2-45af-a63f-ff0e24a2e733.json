@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "office-fabric-ui-react Calendar: move role=\"gridcell\" to the td element and make it the focus target",
-  "packageName": "office-ui-fabric-react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

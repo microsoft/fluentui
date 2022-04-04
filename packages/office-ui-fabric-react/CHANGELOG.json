@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 04 Apr 2022 12:25:50 GMT",
+      "tag": "office-ui-fabric-react_v7.185.0",
+      "version": "7.185.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "office-fabric-ui-react Calendar: move role=\"gridcell\" to the td element and make it the focus target",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "e8cce52b650e254aa7835fde0c12eadf5c0fda27",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 Apr 2022 12:26:13 GMT",
       "tag": "office-ui-fabric-react_v7.184.2",
       "version": "7.184.2",
