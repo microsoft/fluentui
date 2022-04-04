@@ -14,7 +14,7 @@
     },
     "stats": {
       "type": "boolean",
-      "description": "TODO"
+      "description": "Get statistics for how many projects have been migrated"
     }
   },
   "required": []

@@ -1,47 +1,51 @@
 import * as path from 'path';
-import * as fs from 'fs';
 import type { Linter } from 'eslint';
 import {
   logger,
   Tree,
   formatFiles,
-  installPackagesTask,
   names,
-  generateFiles,
   readProjectConfiguration,
   readJson,
   joinPathFragments,
+  ProjectConfiguration,
 } from '@nrwl/devkit';
-import { appRootPath, fileExists } from '@nrwl/tao/src/utils/app-root';
+import { fileExists } from '@nrwl/tao/src/utils/app-root';
 
 import { getProjectConfig, getProjects } from '../../utils';
 
 import { MigrateV8PkgGeneratorSchema } from './schema';
 import { PackageJson, TsConfig } from '../../types';
-import { eslintConfigObjectAst, getExtendsProp } from './lib/utils';
+import { getCjsConfigObjectAst, getASTconfigObjectProp } from './lib/utils';
 
-interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
+interface AssertedSchema extends MigrateV8PkgGeneratorSchema {
+  name: string;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {};
 
 export default async function (tree: Tree, schema: MigrateV8PkgGeneratorSchema) {
-  if (schema.stats) {
-    printStats(tree, schema);
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    return () => {};
+  const validatedSchema = await validateSchema(tree, schema);
+
+  if (hasSchemaFlag(validatedSchema, 'stats')) {
+    printStats(tree, validatedSchema);
+
+    return noop;
   }
 
-  const normalizedOptions = normalizeOptions(tree, schema);
-
-  addFiles(tree, normalizedOptions);
+  if (hasSchemaFlag(validatedSchema, 'name')) {
+    console.log('THIS ISNT DOING ANYTHING YET, use --stats 🤝');
+    const normalizedOptions = normalizeOptions(tree, validatedSchema);
+  }
 
   await formatFiles(tree);
 
-  return () => {
-    installPackagesTask(tree);
-  };
+  return noop;
 }
 
-function normalizeOptions(tree: Tree, options: MigrateV8PkgGeneratorSchema) {
+function normalizeOptions(tree: Tree, options: AssertedSchema) {
   const project = getProjectConfig(tree, { packageName: options.name });
 
   return {
@@ -52,20 +56,46 @@ function normalizeOptions(tree: Tree, options: MigrateV8PkgGeneratorSchema) {
 }
 
 /**
- * NOTE: remove this if your generator doesn't process any static/dynamic templates
+ *
+ * Narrows down Schema definition to true runtime shape after {@link validateSchema} is executed
+ * - also properly checks of truthiness of provided value
  */
-function addFiles(tree: Tree, options: NormalizedSchema) {
-  const templateOptions = {
-    ...options,
-    tmpl: '',
+function hasSchemaFlag<T extends MigrateV8PkgGeneratorSchema, K extends keyof T>(
+  schema: T,
+  flag: K,
+): schema is T & Record<K, NonNullable<T[K]>> {
+  return Boolean(schema[flag]);
+}
+async function validateSchema(tree: Tree, schema: MigrateV8PkgGeneratorSchema) {
+  const newSchema = { ...schema };
+
+  if (newSchema.name && newSchema.stats) {
+    throw new Error('--name and --stats are mutually exclusive');
+  }
+
+  const shouldValidateNameInput = () => {
+    return !newSchema.name && !newSchema.stats;
   };
 
-  generateFiles(
-    tree,
-    path.join(__dirname, 'files'),
-    path.join(options.projectConfig.root, options.name),
-    templateOptions,
-  );
+  if (shouldValidateNameInput()) {
+    throw new Error(`--name cannot be empty. Please provide name of the package.`);
+  }
+
+  if (newSchema.name) {
+    const projectNames = newSchema.name.split(',').filter(Boolean);
+
+    projectNames.forEach(projectName => {
+      const projectConfig = readProjectConfiguration(tree, projectName);
+
+      if (!isPackageV8(tree, projectConfig)) {
+        throw new Error(
+          `${newSchema.name} is not v8 package. Make sure to run the migration on packages with version 8.x.x`,
+        );
+      }
+    });
+  }
+
+  return newSchema;
 }
 
 function isPackageV8(tree: Tree, project: ProjectConfiguration) {
@@ -85,23 +115,31 @@ function isProjectMigrated<T extends ProjectConfiguration>(
 }
 
 function getProjectMetadata(tree: Tree, project: ProjectConfiguration) {
-  let eslintConfig: Linter.Config = {};
-  if (fileExists(joinPathFragments(project.root, '.eslintrc.json'))) {
-    eslintConfig = readJson<Record<string, unknown>>(tree, joinPathFragments(project.root, '.eslintrc.json'));
-  } else if (fileExists(joinPathFragments(project.root, '.eslintrc.js'))) {
-    const eslintConfigAST = eslintConfigObjectAst(
-      tree.read(joinPathFragments(project.root, '.eslintrc.js'), 'utf8') as string,
-    );
-
-    console.log(getExtendsProp(eslintConfigAST));
-
-    eslintConfig = require(joinPathFragments(appRootPath, project.root, '.eslintrc.js'));
-  }
-
   return {
     packageJson: readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json')),
-    eslintConfig: eslintConfig,
+    eslintConfig: getEslint(),
   };
+
+  function getEslint() {
+    const paths = {
+      json: joinPathFragments(project.root, '.eslintrc.json'),
+      js: joinPathFragments(project.root, '.eslintrc.js'),
+    };
+
+    if (tree.exists(paths.json)) {
+      const eslintConfig: Linter.Config = readJson<Record<string, unknown>>(tree, paths.json);
+      return eslintConfig;
+    }
+
+    if (tree.exists(paths.js)) {
+      const eslintConfigAST = getCjsConfigObjectAst(tree.read(paths.js, 'utf8') as string);
+      const extendsFieldValue = getASTconfigObjectProp(eslintConfigAST, 'extends');
+
+      const eslintConfig: Linter.Config = { extends: extendsFieldValue };
+
+      return eslintConfig;
+    }
+  }
 }
 
 function printStats(tree: Tree, options: MigrateV8PkgGeneratorSchema) {
@@ -131,10 +169,10 @@ function printStats(tree: Tree, options: MigrateV8PkgGeneratorSchema) {
   });
 
   function printProjectInfo(projectStat: ProjectStats) {
-    return `- ${projectStat.projectName} | ${projectStat.metadata.eslintConfig.extends}`;
+    return `- ${projectStat.projectName} | lint:${projectStat.metadata.eslintConfig?.extends}`;
   }
 
-  logger.info('Convergence DX migration stats:');
+  logger.info('V8 DX migration stats:');
   logger.info('='.repeat(80));
 
   logger.info(`Migrated (${stats.migrated.length}):`);
