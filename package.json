@@ -218,6 +218,7 @@
     "react-app-polyfill": "2.0.0",
     "react-dom": "16.14.0",
     "react-test-renderer": "16.14.0",
+    "sass": "1.49.11",
     "sass-loader": "12.4.0",
     "satisfied": "^1.1.1",
     "scheduler": "0.19.1",
