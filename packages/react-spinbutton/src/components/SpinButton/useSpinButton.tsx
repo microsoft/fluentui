@@ -249,6 +249,9 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     } else if (!e.shiftKey && e.key === Keys.End && max !== undefined) {
       commit(e, max);
       setSpinState('up');
+    } else if (e.key === Keys.Enter) {
+      commit(e, currentValue, textValue);
+      setSpinState('rest');
     } else if (e.key === Keys.Escape) {
       if (internalState.current.previousTextValue) {
         setTextValue(internalState.current.previousTextValue);
