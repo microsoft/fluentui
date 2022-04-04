@@ -1,16 +1,19 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
-import { makeStyles } from '@griffel/react';
+import { makeStyles, shorthands } from '@griffel/react';
 import { SearchRegular, DismissRegular } from '@fluentui/react-icons';
 import { Input } from '../index';
 
 const useStyles = makeStyles({
   root: {
-    '& label': { display: 'block', paddingBottom: '2px' },
-    '& label:not(:first-child)': { paddingTop: '20px' },
-    // Icons default to 1em; we want them a bit larger
-    '& svg': { fontSize: '20px' },
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap('20px'),
+    // Prevent the example from taking the full width of the page (optional)
+    maxWidth: '400px',
+    // Stack the label above the field (with 2px gap per the design system)
+    '> div': { display: 'flex', flexDirection: 'column', ...shorthands.gap('2px') },
   },
 });
 
@@ -22,14 +25,20 @@ export const ContentBeforeAfter = () => {
 
   return (
     <div className={styles.root}>
-      <Label htmlFor={beforeId}>Content before</Label>
-      <Input contentBefore={<SearchRegular />} id={beforeId} />
+      <div>
+        <Label htmlFor={beforeId}>Content before</Label>
+        <Input contentBefore={<SearchRegular />} id={beforeId} />
+      </div>
 
-      <Label htmlFor={afterId}>Content after</Label>
-      <Input contentAfter={<DismissRegular />} id={afterId} />
+      <div>
+        <Label htmlFor={afterId}>Content after</Label>
+        <Input contentAfter={<DismissRegular />} id={afterId} />
+      </div>
 
-      <Label htmlFor={bothId}>Content before and after</Label>
-      <Input contentBefore={<SearchRegular />} contentAfter={<DismissRegular />} id={bothId} />
+      <div>
+        <Label htmlFor={bothId}>Content before and after</Label>
+        <Input contentBefore={<SearchRegular />} contentAfter={<DismissRegular />} id={bothId} />
+      </div>
     </div>
   );
 };

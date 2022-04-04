@@ -10,39 +10,53 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { FunctionComponent } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
-// Warning: (ae-forgotten-export) The symbol "TextWrapperProps" needs to be exported by the entry point index.d.ts
-//
 // @public
 const Body_2: FunctionComponent<TextWrapperProps>;
 export { Body_2 as Body }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const bodyClassName = "fui-Body";
+
+// @public (undocumented)
+export const bodyClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Caption: FunctionComponent<TextWrapperProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const captionClassName = "fui-Caption";
+
+// @public (undocumented)
+export const captionClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Display: FunctionComponent<TextWrapperProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const displayClassName = "fui-Display";
+
+// @public (undocumented)
+export const displayClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Headline: FunctionComponent<TextWrapperProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const headlineClassName = "fui-Headline";
+
+// @public (undocumented)
+export const headlineClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const LargeTitle: FunctionComponent<TextWrapperProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const largeTitleClassName = "fui-LargeTitle";
+
+// @public (undocumented)
+export const largeTitleClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const renderText_unstable: (state: TextState) => JSX.Element;
@@ -50,18 +64,22 @@ export const renderText_unstable: (state: TextState) => JSX.Element;
 // @public
 export const Subheadline: FunctionComponent<TextWrapperProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const subheadlineClassName = "fui-Subheadline";
+
+// @public (undocumented)
+export const subheadlineClassNames: SlotClassNames<TextSlots>;
 
 // @public
 const Text_2: ForwardRefComponent<TextProps>;
 export { Text_2 as Text }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const textClassName = "fui-Text";
 
-// Warning: (ae-forgotten-export) The symbol "TextCommons" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export const textClassNames: SlotClassNames<TextSlots>;
+
 // @public
 export type TextProps = ComponentProps<TextSlots> & Partial<TextCommons>;
 
@@ -76,20 +94,29 @@ export type TextState = ComponentState<TextSlots> & TextCommons;
 // @public
 export const Title1: FunctionComponent<TextWrapperProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const title1ClassName = "fui-Title1";
+
+// @public (undocumented)
+export const title1ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Title2: FunctionComponent<TextWrapperProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const title2ClassName = "fui-Title2";
+
+// @public (undocumented)
+export const title2ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Title3: FunctionComponent<TextWrapperProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const title3ClassName = "fui-Title3";
+
+// @public (undocumented)
+export const title3ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const useText_unstable: (props: TextProps, ref: React_2.Ref<HTMLElement>) => TextState;

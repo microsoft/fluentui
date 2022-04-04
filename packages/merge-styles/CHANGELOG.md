@@ -1,8 +1,27 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Thu, 03 Feb 2022 07:29:40 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Mar 2022 07:34:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.0)
+
+Fri, 11 Mar 2022 07:34:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.4.0..@fluentui/merge-styles_v8.5.0)
+
+### Minor changes
+
+- Adding additional exports to support existing 1js imports (which will be resolved separately.) ([PR #22062](https://github.com/microsoft/fluentui/pull/22062) by dzearing@microsoft.com)
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.4.0)
+
+Thu, 03 Mar 2022 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.3.0..@fluentui/merge-styles_v8.4.0)
+
+### Minor changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/set-version to v8.2.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
 
 ## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.3.0)
 

@@ -10,10 +10,21 @@ describe('Tab', () => {
   isConformant({
     Component: Tab,
     displayName: 'Tab',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+            content: 'Test Content',
+          },
+        },
+      ],
+    },
   });
 
   const defaultContext: TabListContextValue = {
     appearance: 'transparent',
+    disabled: false,
     size: 'medium',
     vertical: false,
     // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -22,6 +33,11 @@ describe('Tab', () => {
     onUnregister: () => {},
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     onSelect: () => {},
+    getRegisteredTabs: () => {
+      return {
+        registeredTabs: {},
+      };
+    },
   };
 
   it('renders correctly', () => {

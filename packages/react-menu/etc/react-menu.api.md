@@ -13,6 +13,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { usePopperMouseTarget } from '@fluentui/react-positioning';
 
 // @public
@@ -44,8 +45,11 @@ export type MenuContextValues = {
 // @public
 export const MenuDivider: ForwardRefComponent<MenuDividerProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const menuDividerClassName = "fui-MenuDivider";
+
+// @public (undocumented)
+export const menuDividerClassNames: SlotClassNames<MenuDividerSlots>;
 
 // @public (undocumented)
 export type MenuDividerProps = ComponentProps<MenuDividerSlots>;
@@ -61,8 +65,11 @@ export type MenuDividerState = ComponentState<MenuDividerSlots>;
 // @public
 export const MenuGroup: ForwardRefComponent<MenuGroupProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const menuGroupClassName = "fui-MenuGroup";
+
+// @public (undocumented)
+export const menuGroupClassNames: SlotClassNames<MenuGroupSlots>;
 
 // @public (undocumented)
 export const MenuGroupContextProvider: React_2.Provider<MenuGroupContextValue>;
@@ -80,8 +87,11 @@ export type MenuGroupContextValues = {
 // @public
 export const MenuGroupHeader: ForwardRefComponent<MenuGroupHeaderProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const menuGroupHeaderClassName = "fui-MenuGroupHeader";
+
+// @public (undocumented)
+export const menuGroupHeaderClassNames: SlotClassNames<MenuGroupHeaderSlots>;
 
 // @public (undocumented)
 export type MenuGroupHeaderProps = ComponentProps<MenuGroupHeaderSlots>;
@@ -113,8 +123,11 @@ export const MenuItem: ForwardRefComponent<MenuItemProps>;
 // @public
 export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const menuItemCheckboxClassName = "fui-MenuItemCheckbox";
+
+// @public (undocumented)
+export const menuItemCheckboxClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>>;
 
 // @public (undocumented)
 export type MenuItemCheckboxProps = MenuItemProps & MenuItemSelectableProps;
@@ -122,19 +135,23 @@ export type MenuItemCheckboxProps = MenuItemProps & MenuItemSelectableProps;
 // @public (undocumented)
 export type MenuItemCheckboxState = MenuItemState & MenuItemSelectableState;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const menuItemClassName = "fui-MenuItem";
 
-// Warning: (ae-forgotten-export) The symbol "MenuItemCommons" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export const menuItemClassNames: SlotClassNames<MenuItemSlots>;
+
 // @public (undocumented)
 export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & MenuItemCommons;
 
 // @public
 export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const menuItemRadioClassName = "fui-MenuItemRadio";
+
+// @public (undocumented)
+export const menuItemRadioClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>>;
 
 // @public (undocumented)
 export type MenuItemRadioProps = MenuItemProps & MenuItemSelectableProps;
@@ -171,8 +188,11 @@ export type MenuItemState = ComponentState<MenuItemSlots> & MenuItemCommons;
 // @public
 export const MenuList: ForwardRefComponent<MenuListProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const menuListClassName = "fui-MenuList";
+
+// @public (undocumented)
+export const menuListClassNames: SlotClassNames<MenuListSlots>;
 
 // @public (undocumented)
 export const MenuListContext: Context<MenuListContextValue>;
@@ -189,8 +209,6 @@ export type MenuListContextValues = {
     menuList: MenuListContextValue;
 };
 
-// Warning: (ae-forgotten-export) The symbol "MenuListCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type MenuListProps = ComponentProps<MenuListSlots> & Partial<MenuListCommons>;
 
@@ -222,8 +240,11 @@ export type MenuOpenEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLEl
 // @public
 export const MenuPopover: ForwardRefComponent<MenuPopoverProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const menuPopoverClassName = "fui-MenuPopover";
+
+// @public (undocumented)
+export const menuPopoverClassNames: SlotClassNames<MenuPopoverSlots>;
 
 // @public
 export type MenuPopoverProps = ComponentProps<MenuPopoverSlots>;
@@ -238,8 +259,6 @@ export type MenuPopoverState = ComponentState<MenuPopoverSlots> & {
     inline: boolean;
 };
 
-// Warning: (ae-forgotten-export) The symbol "MenuCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type MenuProps = Partial<MenuCommons> & ComponentProps<MenuSlots> & {
     children: [JSX.Element, JSX.Element] | JSX.Element;
@@ -255,11 +274,12 @@ export type MenuSlots = {};
 // @public
 export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const menuSplitGroupClassName = "fui-MenuSplitGroup";
 
-// Warning: (ae-forgotten-export) The symbol "MenuSplitGroupCommons" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots>;
+
 // @public
 export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots> & MenuSplitGroupCommons;
 

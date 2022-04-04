@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
 import { classNamesFunction, setPortalAttribute, setVirtualParent } from '../../Utilities';
-import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
+import { registerLayer, getDefaultTarget, unregisterLayer, getLayerHost } from './Layer.notification';
 import { useIsomorphicLayoutEffect, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
 import type { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
@@ -43,16 +43,18 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
 
     // Returns the user provided hostId props element, the default target selector,
     // or undefined if document doesn't exist.
-    const getHost = (): Node | undefined => {
-      if (!doc) {
-        return undefined;
-      }
-
+    const getHost = (): Node | null => {
       if (hostId) {
-        return doc.getElementById(hostId) as Node;
+        const layerHost = getLayerHost(hostId);
+
+        if (layerHost) {
+          return layerHost.rootRef.current ?? null;
+        }
+
+        return doc?.getElementById(hostId) ?? null;
       } else {
         const defaultHostSelector = getDefaultTarget();
-        return defaultHostSelector ? (doc.querySelector(defaultHostSelector) as Node) : doc.body;
+        return (defaultHostSelector ? doc?.querySelector(defaultHostSelector) : doc?.body) ?? null;
       }
     };
 
@@ -74,22 +76,24 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     const createLayerElement = () => {
       const host = getHost();
 
-      if (!doc || !host) {
+      if (!host) {
         return;
       }
 
       // Remove and re-create any previous existing layer elements.
       removeLayerElement();
 
-      const el: HTMLDivElement = doc.createElement('div');
+      const el = (host.ownerDocument ?? doc)?.createElement('div');
 
-      el.className = classNames.root!;
-      setPortalAttribute(el);
-      setVirtualParent(el, rootRef.current!);
+      if (el) {
+        el.className = classNames.root!;
+        setPortalAttribute(el);
+        setVirtualParent(el, rootRef.current!);
 
-      insertFirst ? host.insertBefore(el, host.firstChild) : host.appendChild(el);
-      layerRef.current = el;
-      setNeedRaiseLayerMount(true);
+        insertFirst ? host.insertBefore(el, host.firstChild) : host.appendChild(el);
+        layerRef.current = el;
+        setNeedRaiseLayerMount(true);
+      }
     };
 
     useIsomorphicLayoutEffect(() => {

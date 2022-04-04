@@ -9,6 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSlider_unstable: (state: SliderState) => JSX.Element;
@@ -17,15 +18,13 @@ export const renderSlider_unstable: (state: SliderState) => JSX.Element;
 export const Slider: ForwardRefComponent<SliderProps>;
 
 // @public (undocumented)
-export const sliderClassName = "fui-Slider";
+export const sliderClassNames: SlotClassNames<SliderSlots>;
 
 // @public (undocumented)
 export type SliderOnChangeData = {
     value: number;
 };
 
-// Warning: (ae-forgotten-export) The symbol "SliderCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommons;
 

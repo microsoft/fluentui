@@ -716,6 +716,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     this._isCtrlPressed = ev.ctrlKey;
     this._isMetaPressed = ev.metaKey;
 
+    // eslint-disable-next-line deprecation/deprecation
     const keyCode = (ev as React.KeyboardEvent<HTMLElement>).keyCode;
     this._isTabPressed = keyCode ? keyCode === KeyCodes.tab : false;
   }

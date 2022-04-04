@@ -79,6 +79,13 @@ export interface IStackItemProps
   verticalFill?: boolean;
 
   /**
+   * Defines the initial main size of the StackItem, setting the size of the content box unless otherwise set with
+   * box-sizing.
+   * @defaultvalue auto
+   */
+  basis?: React.CSSProperties['flexBasis'];
+
+  /**
    * Defines order of the StackItem.
    * @defaultvalue 0
    */

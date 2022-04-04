@@ -2,6 +2,42 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Fri, 11 Mar 2022 07:34:40 GMT",
+      "tag": "@fluentui/merge-styles_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "f45738ec1d2156e69f6e3ce3fd0d063a6ee83026",
+            "comment": "Adding additional exports to support existing 1js imports (which will be resolved separately.)"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Mar 2022 07:24:27 GMT",
+      "tag": "@fluentui/merge-styles_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/merge-styles",
+            "comment": "Bump @fluentui/set-version to v8.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Feb 2022 07:29:40 GMT",
       "tag": "@fluentui/merge-styles_v8.3.0",
       "version": "8.3.0",

@@ -3,33 +3,34 @@ import * as React from 'react';
 import { PopoverSurface } from './PopoverSurface';
 import { render, fireEvent } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
-import { Portal } from '@fluentui/react-portal';
 import { mockPopoverContext } from '../../common/mockUsePopoverContext';
+import { PopoverSurfaceProps } from './PopoverSurface.types';
 
 jest.mock('../../popoverContext');
 
 describe('PopoverSurface', () => {
+  // PopoverSurface is rendered by a Portal so won't be available in the rendered container
+  const testid = 'component';
+  // also include an aria-label to prevent warnings in debug mode
+  const props = { 'data-testid': testid, 'aria-label': 'test' };
+
   isConformant({
-    // as render test will pass a span tag which is also considered one of the skipped helperComponents
-    disabledTests: ['as-renders-html'],
     Component: PopoverSurface,
     displayName: 'PopoverSurface',
-    helperComponents: [Portal, 'span'],
+    requiredProps: props as PopoverSurfaceProps,
+    getTargetElement: result => result.getByTestId(testid),
   });
 
   beforeEach(() => {
     resetIdsForTests();
-    mockPopoverContext({ open: true });
+    mockPopoverContext({});
   });
-
-  // PopoverSurface is rendered by a Portal so won't be available in the rendered container
-  const testid = 'component';
 
   /**
    * Note: see more visual regression tests for PopoverSurface in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const { getByTestId } = render(<PopoverSurface data-testid={testid}>Default PopoverSurface</PopoverSurface>);
+    const { getByTestId } = render(<PopoverSurface {...props}>Default PopoverSurface</PopoverSurface>);
     expect(getByTestId(testid)).toMatchSnapshot();
   });
 
@@ -41,7 +42,7 @@ describe('PopoverSurface', () => {
     // Arrange
     const spy = jest.fn();
     const { getByTestId } = render(
-      <PopoverSurface data-testid={testid} {...{ [handler]: spy }}>
+      <PopoverSurface {...props} {...{ [handler]: spy }}>
         Content
       </PopoverSurface>,
     );
@@ -53,19 +54,10 @@ describe('PopoverSurface', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('should not render when open is false', () => {
-    // Arrange
-    mockPopoverContext({ open: false });
-    const { queryByTestId } = render(<PopoverSurface data-testid={testid}>Content</PopoverSurface>);
-
-    // Assert
-    expect(queryByTestId(testid)).toBeNull();
-  });
-
   it('should set aria-modal true if focus trap is active', () => {
     // Arrange
-    mockPopoverContext({ open: true, trapFocus: true });
-    const { getByTestId } = render(<PopoverSurface data-testid={testid}>Content</PopoverSurface>);
+    mockPopoverContext({ trapFocus: true });
+    const { getByTestId } = render(<PopoverSurface {...props}>Content</PopoverSurface>);
 
     // Assert
     expect(getByTestId(testid).getAttribute('aria-modal')).toEqual('true');
@@ -73,8 +65,8 @@ describe('PopoverSurface', () => {
 
   it('should set role dialog if focus trap is active', () => {
     // Arrange
-    mockPopoverContext({ open: true, trapFocus: true });
-    const { queryByRole } = render(<PopoverSurface data-testid={testid}>Content</PopoverSurface>);
+    mockPopoverContext({ trapFocus: true });
+    const { queryByRole } = render(<PopoverSurface {...props}>Content</PopoverSurface>);
 
     // Assert
     expect(queryByRole('dialog')).not.toBeNull();
@@ -82,8 +74,8 @@ describe('PopoverSurface', () => {
 
   it('should set role complementary if focus trap is not active', () => {
     // Arrange
-    mockPopoverContext({ open: true, trapFocus: false });
-    const { getByTestId } = render(<PopoverSurface data-testid={testid}>Content</PopoverSurface>);
+    mockPopoverContext({ trapFocus: false });
+    const { getByTestId } = render(<PopoverSurface {...props}>Content</PopoverSurface>);
 
     // Assert
     expect(getByTestId(testid)).not.toBeNull();

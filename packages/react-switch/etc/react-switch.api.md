@@ -10,6 +10,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
@@ -17,21 +18,17 @@ export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
 // @public
 export const Switch: ForwardRefComponent<SwitchProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const switchClassName: string;
 
 // @public (undocumented)
-export const switchClassNames: {
-    [SlotName in keyof SwitchSlots]-?: string;
-};
+export const switchClassNames: SlotClassNames<SwitchSlots>;
 
 // @public (undocumented)
 export type SwitchOnChangeData = {
     checked: boolean;
 };
 
-// Warning: (ae-forgotten-export) The symbol "SwitchCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'onChange'> & Partial<SwitchCommons> & {
     defaultChecked?: boolean;

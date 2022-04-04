@@ -4,6 +4,7 @@ exports[`PeoplePicker renders correctly 1`] = `
 <div
   className="ms-BasePicker"
   onBlur={[Function]}
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
@@ -160,6 +161,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
 <div
   className="ms-BasePicker"
   onBlur={[Function]}
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
@@ -464,6 +466,24 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     role="none"
                   >
                     Annie Lindqvist
+                    <div
+                      hidden={true}
+                      id="tooltip2"
+                      style={
+                        Object {
+                          "border": 0,
+                          "height": 1,
+                          "margin": -1,
+                          "overflow": "hidden",
+                          "padding": 0,
+                          "position": "absolute",
+                          "whiteSpace": "nowrap",
+                          "width": 1,
+                        }
+                      }
+                    >
+                      Annie Lindqvist
+                    </div>
                   </div>
                 </div>
                 <div
@@ -494,6 +514,24 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     role="none"
                   >
                     Designer
+                    <div
+                      hidden={true}
+                      id="tooltip3"
+                      style={
+                        Object {
+                          "border": 0,
+                          "height": 1,
+                          "margin": -1,
+                          "overflow": "hidden",
+                          "padding": 0,
+                          "position": "absolute",
+                          "whiteSpace": "nowrap",
+                          "width": 1,
+                        }
+                      }
+                    >
+                      Designer
+                    </div>
                   </div>
                 </div>
                 <div
@@ -524,6 +562,24 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     role="none"
                   >
                     In a meeting
+                    <div
+                      hidden={true}
+                      id="tooltip4"
+                      style={
+                        Object {
+                          "border": 0,
+                          "height": 1,
+                          "margin": -1,
+                          "overflow": "hidden",
+                          "padding": 0,
+                          "position": "absolute",
+                          "whiteSpace": "nowrap",
+                          "width": 1,
+                        }
+                      }
+                    >
+                      In a meeting
+                    </div>
                   </div>
                 </div>
                 <div
@@ -554,6 +610,24 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     role="none"
                   >
                     Available at 4:00pm
+                    <div
+                      hidden={true}
+                      id="tooltip5"
+                      style={
+                        Object {
+                          "border": 0,
+                          "height": 1,
+                          "margin": -1,
+                          "overflow": "hidden",
+                          "padding": 0,
+                          "position": "absolute",
+                          "whiteSpace": "nowrap",
+                          "width": 1,
+                        }
+                      }
+                    >
+                      Available at 4:00pm
+                    </div>
                   </div>
                 </div>
               </div>

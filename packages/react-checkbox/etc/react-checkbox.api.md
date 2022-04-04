@@ -10,12 +10,16 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const checkboxClassName = "fui-Checkbox";
+
+// @public (undocumented)
+export const checkboxClassNames: SlotClassNames<CheckboxSlots>;
 
 // @public
 export interface CheckboxOnChangeData {
@@ -23,12 +27,10 @@ export interface CheckboxOnChangeData {
     checked: 'mixed' | boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "CheckboxCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & Partial<CheckboxCommons> & {
     children?: never;
-    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
     defaultChecked?: 'mixed' | boolean;
 };
 

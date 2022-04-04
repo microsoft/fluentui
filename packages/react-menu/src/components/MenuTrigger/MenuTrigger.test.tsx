@@ -19,12 +19,13 @@ describe('MenuTrigger', () => {
       'component-has-root-ref',
       'component-handles-classname',
       'component-has-static-classname',
+      'component-has-static-classnames-object',
+      'component-has-static-classname-exported',
       // MenuTrigger does not have own styles
       'make-styles-overrides-win',
     ],
     Component: MenuTrigger,
     displayName: 'MenuTrigger',
-    skipAsPropTests: true,
     requiredProps: {
       children: <button>MenuTrigger</button>,
     },

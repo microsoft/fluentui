@@ -2,6 +2,21 @@
   "name": "@fluentui/example-data",
   "entries": [
     {
+      "date": "Thu, 03 Mar 2022 07:24:26 GMT",
+      "tag": "@fluentui/example-data_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Dec 2021 07:31:32 GMT",
       "tag": "@fluentui/example-data_v8.3.0",
       "version": "8.3.0",

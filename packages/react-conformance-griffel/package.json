@@ -25,6 +25,12 @@
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/react-conformance": "*"
   },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "typescript": "^4.3.0",
+    "@fluentui/react-conformance": "^0.13.0"
+  },
   "dependencies": {
     "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"

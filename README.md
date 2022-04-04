@@ -4,7 +4,7 @@
 
 > :tada: :tada: :tada: **Version 8 of `@fluentui/react` is now available on npm!** :tada: :tada: :tada:
 >
-> See the [release notes](https://github.com/microsoft/fluentui/wiki/Version-8-release-notes) for more info, and please file an issue if you have any problems.
+> See the [v8 release notes](https://github.com/microsoft/fluentui/wiki/Version-8-release-notes) for more info, and please file an issue if you have any problems.
 
 Fluent UI web represents a collection of utilities, React components, and web components for building web applications.
 
@@ -18,6 +18,7 @@ The following table will help you navigate the 3 projects and understand their d
 | **Overview**    | Mature, refreshing with new concepts from react-northstar. | Newer, has concepts we're iterating on. | Web Component implementation of Fluent UI. |
 | **Used By**     | Office| Teams | Edge |
 | **Read Me**     | [README.md](/packages/react/README.md) | [README.md](/packages/fluentui/README.md) | [README.md](/packages/web-components/README.md) |
+| **Changelog** | [CHANGELOG.md](/packages/react/CHANGELOG.md) | [CHANGELOG.md](/packages/fluentui/CHANGELOG.md) | [CHANGELOG.md](/packages/web-components/CHANGELOG.md) |
 | **Repo**        | [./packages/react](/packages/react) | [./packages/fluentui/react-northstar](/packages/fluentui/react-northstar) | [./packages/web-components](/packages/web-components) |
 | **Quick Start** | [Quick Start](https://developer.microsoft.com/en-us/fluentui#/get-started/web) | [Quick Start](https://fluentsite.z22.web.core.windows.net/quick-start) | [See README.md](https://github.com/microsoft/fluentui/tree/master/packages/web-components/README.md) |
 | **Docs**        | [aka.ms/fluentui-react](https://aka.ms/fluentui-react) | [aka.ms/fluentui-react-northstar](https://aka.ms/fluentui-react-northstar) | [aka.ms/fluentui-web-components](https://aka.ms/fluentui-web-components) |
@@ -36,7 +37,7 @@ Usage of the fonts and icons referenced in Fluent UI React is subject to the ter
 
 ## Changelog
 
-We use [GitHub Releases](https://github.com/blog/1547-release-your-software) to manage our releases, including the changelog between every release. View a complete list of additions, fixes, and changes on the [releases](https://github.com/microsoft/fluentui/releases) page.
+You can view the complete list of additions, fixes, and changes in the CHANGELOG.md file for each package.
 
 ## Looking for Office UI Fabric React?
 

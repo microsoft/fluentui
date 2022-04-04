@@ -2,11 +2,7 @@
 
 exports[`Modal renders Draggable Modal correctly 1`] = `
 <body
-  class=
-
-      {
-        overflow: hidden !important;
-      }
+  class=""
 >
   <div
     class=
@@ -316,11 +312,7 @@ exports[`Modal renders Modal correctly 1`] = `
 
 exports[`Modal renders Modeless Modal correctly 1`] = `
 <body
-  class=
-
-      {
-        overflow: hidden !important;
-      }
+  class=""
 >
   <div
     class=

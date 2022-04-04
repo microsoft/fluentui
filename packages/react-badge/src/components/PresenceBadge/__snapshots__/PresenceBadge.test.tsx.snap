@@ -5,7 +5,9 @@ exports[`PresenceBadge renders a default state 1`] = `
   aria-hidden={true}
   className="fui-PresenceBadge"
 >
-  <span>
+  <span
+    className="fui-PresenceBadge__icon"
+  >
     <svg
       aria-hidden={true}
       className=""

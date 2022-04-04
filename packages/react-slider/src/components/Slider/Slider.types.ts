@@ -77,8 +77,8 @@ type SliderCommons = {
   disabled?: boolean;
 
   /**
-   * Whether to render the Slider vertically.
-   * @default `false` (renders horizontally)
+   * Render the Slider in a vertical orientation, smallest value on the bottom.
+   * @default `false`
    */
   vertical?: boolean;
 
@@ -98,11 +98,6 @@ type SliderCommons = {
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
-
-  /**
-   * The Slider's current value label to be read by the screen reader.
-   */
-  getAriaValueText?: (value: number) => string;
 };
 
 export type SliderOnChangeData = {

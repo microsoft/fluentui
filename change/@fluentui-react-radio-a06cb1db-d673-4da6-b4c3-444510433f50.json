@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove star exports from react-radio",
+  "packageName": "@fluentui/react-radio",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

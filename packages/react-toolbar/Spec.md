@@ -2,62 +2,139 @@
 
 ## Background
 
-_Description and use cases of this component_
+### Definition
+
+`Toolbar` is a surface that houses commands that operate on the content of the window, panel, or parent region it resides above. `Toolbar` is one of the most visible and recognizable way to surface commands, and can be an intuitive method for interacting with content on the page; however, if overloaded or poorly organized, they can be difficult to use and hide valuable commands from your user. `Toolbar` can also display a search box for finding content, hold simple commands as well as menus, or display the status of ongoing actions.
 
 ## Prior Art
 
-_Include background research done for this component_
+As a part of the spec definitions in Fluent UI, a research effort has been made through [Open UI](https://open-ui.org/). The current research proposal is available as an open source contribution undergoing review ([research proposal](https://github.com/openui/open-ui/pull/452))
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+## Comparison of `@fluentui/react` and `@fluentui/react-northstar`
 
-## Sample Code
+- All mentions of v7 or v8 == `@fluentui/react` ([docsite](https://developer.microsoft.com/en-us/fluentui#/))
+- All mentions of v0 == `@fluentui/react-northstar` ([docsite](https://fluentsite.z22.web.core.windows.net/))
 
-_Provide some representative example code that uses the proposed API for the component_
+The main difference between `@fluentui/react`'s `CommandBar` and `@fluentui/react-northstar`'s `Toolbar` is the right group of commands present in `CommandBar`.
+
+v0 `Toolbar` has support to children API with static components in `Toolbar` as `Toolbar.Button` etc...
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+The only layout variation is size differences, there are 2 sizes `medium` which is the default and `small`.
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+The `Toolbar` will implement a `children` based API and will leverage the use of `context` in the interaction and data flows of child components. To achieve `overflow` items once used inside `CommandBar` the component will leavarage from [priority-overflow](https://github.com/ling1726/priority-overflow)
+
+### Toolbar
+
+The root level component serves as a simple container for all possible ToolbarComponents
+
+```typescript
+type ToolbarProps = {
+  /**
+   * Defines toolbar size
+   * @default medium
+   */
+  size?: 'small' | 'medium';
+};
+```
+
+### ToolbarButton
+
+It serves as an override on top of `Button` limiting the possible props only to `size`, `appearance`, `disabled` and `disabledFocusable`
+
+```typescript
+type type ToolbarButtonProps = ComponentProps<ButtonSlots> &
+  Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable'>> & {
+
+  /**
+   * A button can have its content and borders styled for greater emphasis or to be subtle.
+   * - 'primary': Emphasizes the button as a primary action.
+   * - 'subtle': Minimizes emphasis to blend into the background until hovered or focused.
+   */
+  appearance?: 'primary' | 'subtle';
+;
+```
+
+### ToolbarDivider
+
+It's based on the `Divider` containing few styles overrides
+
+```typescript
+type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>>;
+```
+
+### ToolbarToggleButton
+
+It serves as an override on top of `ToggleButton` limiting the possible props only to `size`, `appearance`, `disabled` and `disabledFocusable`
+
+```typescript
+type ToolbarToggleButtonProps = ComponentProps<Partial<ToggleButtonSlots>>;
+```
+
+### ToolbarCheckbox
+
+It's based on the `Checkbox` containing few styles overrides
+
+```typescript
+type ToolbarCheckboxProps = ComponentProps<Partial<CheckboxSlots>>;
+```
+
+### ToolbarItemGroup
+
+It serves as general container for `ToolbarCheckbox` or `ToolbarRadio` hosting events for controls, when regarding `ToolbarCheckbox` the usage of `ToolbarItemGroup` is optional but if used should contain only checkboxes that has the same `name` attribute and share the `onChange` callback.
+
+```typescript
+type ToolbarItemGroupProps = {
+  onChange?: (itemName: string, value: boolean) => void;
+  value?: boolean;
+  disabled?: boolean;
+};
+```
 
 ## Structure
 
 - _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
 
-## Migration
+```jsx
+<Toolbar>
+  <ToolbarButton />
+  <ToolbarDivider />
+  <ToolbarButton />
+  <ToolbarButton />
+  <ToolbarCheckbox />
+  <ToolbarItemGroup>
+    <ToolbarRadio value="A" label="Option A" />
+    <ToolbarRadio value="B" label="Option B" />
+    <ToolbarRadio value="C" label="Option C" />
+    <ToolbarRadio value="D" label="Option D" />
+  </ToolbarItemGroup>
+  <ToolbarItemGroup>
+    <ToolbarCheckbox name="typo" />
+    <ToolbarCheckbox name="typo" />
+  </ToolbarItemGroup>
+</Toolbar>
+```
 
-_Describe what will need to be done to upgrade from the existing implementations:_
+- _**DOM**_
 
-- _Migration from v8_
-- _Migration from v0_
+```html
+<div role="toolbar">
+  <button />
+  <div />
+  <button />
+  <button />
+</div>
+```
 
 ## Behaviors
 
-_Explain how the component will behave in use, including:_
+#### **Keyboard**
 
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+The `Toolbar` will support the prescribed [ARIA keyboard interaction](https://www.w3.org/TR/wai-aria-practices/examples/toolbar/toolbar.html).
 
 ## Accessibility
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
-
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+- [Toolbar](https://www.w3.org/TR/wai-aria-1.1/#Toolbar): A collection of commonly used function buttons or controls represented in compact visual form.

@@ -1,50 +1,128 @@
-import type { TabState } from './Tab.types';
+import type { TabSlots, TabState } from './Tab.types';
 
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { tabPendingDesignTokens } from '../../tab.constants';
+import {
+  pendingContentSizeTokens,
+  pendingSpacingTokens,
+  tabIndicatorPadding,
+  tabIndicatorStrokeWidths,
+} from '../../tab.constants';
+import { SlotClassNames } from '@fluentui/react-utilities';
+import { useTabAnimatedIndicatorStyles_unstable } from './useTabAnimatedIndicator';
 
-export const tabClassName = 'fui-Tab';
+export const tabClassNames: SlotClassNames<TabSlots> = {
+  root: 'fui-Tab',
+  icon: 'fui-Tab__icon',
+  content: 'fui-Tab__content',
+};
+
+// TODO temporary export to pass conformance test.
+export const tabClassName = tabClassNames.root;
 
 /**
  * Styles for the root slot
  */
+/* eslint-disable @typescript-eslint/naming-convention */
 const useRootStyles = makeStyles({
   base: {
-    backgroundColor: 'none',
+    alignItems: 'center',
     ...shorthands.borderColor('none'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.borderWidth(tokens.strokeWidthThin),
-    columnGap: tabPendingDesignTokens.gap.medium,
+    ...shorthands.borderWidth(0),
     cursor: 'pointer',
     display: 'flex',
     flexDirection: 'row',
     fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding(tabPendingDesignTokens.tabPadding.medium),
+    outlineStyle: 'none',
     position: 'relative',
     ...shorthands.overflow('hidden'),
+    textTransform: 'none',
   },
-  horizontal: {
-    alignItems: 'center',
+  mediumHorizontal: {
+    columnGap: pendingSpacingTokens.sNudge,
     justifyContent: 'center',
+    ...shorthands.padding(pendingSpacingTokens.m, pendingSpacingTokens.mNudge),
   },
-  vertical: {
-    alignItems: 'center',
+  mediumVertical: {
+    columnGap: pendingSpacingTokens.sNudge,
     justifyContent: 'flex-start',
+    minWidth: '120px',
+    ...shorthands.padding(pendingSpacingTokens.sNudge, pendingSpacingTokens.mNudge),
   },
-  small: {
-    ...shorthands.padding(tabPendingDesignTokens.tabPadding.small),
-    columnGap: tabPendingDesignTokens.gap.small,
+  smallHorizontal: {
+    columnGap: pendingSpacingTokens.xxs,
+    ...shorthands.padding(pendingSpacingTokens.sNudge, pendingSpacingTokens.sNudge),
+  },
+  smallVertical: {
+    columnGap: pendingSpacingTokens.xs,
+    ...shorthands.padding(pendingSpacingTokens.xxs, pendingSpacingTokens.sNudge),
+  },
+  transparent: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ':hover': {
+      backgroundColor: tokens.colorTransparentBackgroundHover,
+    },
+    ':active': {
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
+    },
+    '& .fui-Tab__icon': {
+      color: tokens.colorNeutralForeground2,
+    },
+    ':hover .fui-Tab__icon': {
+      color: tokens.colorNeutralForeground2Hover,
+    },
+    ':active .fui-Tab__icon': {
+      color: tokens.colorNeutralForeground2Pressed,
+    },
+    '& .fui-Tab__content': {
+      color: tokens.colorNeutralForeground2,
+    },
+    ':hover .fui-Tab__content': {
+      color: tokens.colorNeutralForeground2Hover,
+    },
+    ':active .fui-Tab__content': {
+      color: tokens.colorNeutralForeground2Pressed,
+    },
   },
   subtle: {
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
     },
   },
+  disabled: {
+    '& .fui-Tab__icon': {
+      color: tokens.colorNeutralForegroundDisabled,
+    },
+    '& .fui-Tab__content': {
+      color: tokens.colorNeutralForegroundDisabled,
+    },
+    cursor: 'not-allowed',
+  },
+  selected: {
+    '& .fui-Tab__icon': {
+      color: tokens.colorCompoundBrandForeground1,
+    },
+    ':hover .fui-Tab__icon': {
+      color: tokens.colorCompoundBrandForeground1Hover,
+    },
+    ':active .fui-Tab__icon': {
+      color: tokens.colorCompoundBrandForeground1Pressed,
+    },
+    '& .fui-Tab__content': {
+      color: tokens.colorNeutralForeground1,
+    },
+    ':hover .fui-Tab__content': {
+      color: tokens.colorNeutralForeground1Hover,
+    },
+    ':active .fui-Tab__content': {
+      color: tokens.colorNeutralForeground1Pressed,
+    },
+  },
 });
+/* eslint-enable @typescript-eslint/naming-convention */
 
 /**
  * Focus styles for the root slot
@@ -66,62 +144,136 @@ const useFocusStyles = makeStyles({
   }),
 });
 
-/**
- * Indicator styles for the root slot when horizontal.
- */
-const useHorizontalIndicatorStyles = makeStyles({
+/** Indicator styles for when pending selection */
+const usePendingIndicatorStyles = makeStyles({
   base: {
-    ':after': {
+    ':hover:before': {
       backgroundColor: 'none',
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.borderStyle('solid'),
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
-      height: tabPendingDesignTokens.indicatorThickness,
-      bottom: '0',
-      left: tabPendingDesignTokens.tabPadding.medium,
-      right: tabPendingDesignTokens.tabPadding.medium,
     },
-    ':hover': {
-      ':after': {
-        backgroundColor: tokens.colorNeutralStroke1,
-      },
+    ':active:before': {
+      backgroundColor: 'none',
+      ...shorthands.borderStyle('solid'),
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      boxSizing: 'border-box',
+      content: '""',
+      position: 'absolute',
     },
   },
-  small: {
-    ':after': {
-      left: tabPendingDesignTokens.tabPadding.small,
-      right: tabPendingDesignTokens.tabPadding.small,
+  disabled: {
+    ':hover:before': {
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    },
+    ':active:before': {
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    },
+  },
+  mediumHorizontal: {
+    ':before': {
+      bottom: 0,
+      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumHorizontal} / 2.0)`),
+      height: tabIndicatorStrokeWidths.mediumHorizontal,
+      left: tabIndicatorPadding.mediumHorizontal,
+      right: tabIndicatorPadding.mediumHorizontal,
+    },
+  },
+  mediumVertical: {
+    ':before': {
+      bottom: tabIndicatorPadding.mediumVertical,
+      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumVertical} / 2.0)`),
+      left: 0,
+      top: tabIndicatorPadding.mediumVertical,
+      width: tabIndicatorStrokeWidths.mediumVertical,
+    },
+  },
+  smallHorizontal: {
+    ':before': {
+      bottom: 0,
+      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallHorizontal} / 2.0)`),
+      height: tabIndicatorStrokeWidths.smallHorizontal,
+      left: tabIndicatorPadding.smallHorizontal,
+      right: tabIndicatorPadding.smallHorizontal,
+    },
+  },
+  smallVertical: {
+    ':before': {
+      bottom: tabIndicatorPadding.smallVertical,
+      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallVertical} / 2.0)`),
+      left: 0,
+      top: tabIndicatorPadding.smallVertical,
+      width: tabIndicatorStrokeWidths.smallVertical,
     },
   },
 });
 
-/**
- * Indicator styles for the root slot when vertical.
- */
-const useVerticalIndicatorStyles = makeStyles({
+const useActiveIndicatorStyles = makeStyles({
   base: {
-    ':before': {
-      backgroundColor: 'none',
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ':after': {
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderStyle('solid'),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
-      width: tabPendingDesignTokens.indicatorThickness,
-      left: '0',
-      top: tabPendingDesignTokens.tabPadding.medium,
-      bottom: tabPendingDesignTokens.tabPadding.medium,
-    },
-    ':hover': {
-      ':before': {
-        backgroundColor: tokens.colorNeutralStroke1,
-      },
+      zIndex: 1,
     },
   },
-  small: {
-    ':before': {
-      top: tabPendingDesignTokens.tabPadding.small,
-      bottom: tabPendingDesignTokens.tabPadding.small,
+  selected: {
+    ':after': {
+      ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
+    },
+    ':hover:after': {
+      ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
+    },
+    ':active:after': {
+      ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
+    },
+  },
+  disabled: {
+    ':after': {
+      ...shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
+    },
+  },
+  mediumHorizontal: {
+    ':after': {
+      bottom: '0',
+      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumHorizontal} / 2.0)`),
+      height: tabIndicatorStrokeWidths.mediumHorizontal,
+      left: tabIndicatorPadding.mediumHorizontal,
+      right: tabIndicatorPadding.mediumHorizontal,
+    },
+  },
+  mediumVertical: {
+    ':after': {
+      bottom: tabIndicatorPadding.mediumVertical,
+      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumVertical} / 2.0)`),
+      left: 0,
+      top: tabIndicatorPadding.mediumVertical,
+      width: tabIndicatorStrokeWidths.mediumVertical,
+    },
+  },
+  smallHorizontal: {
+    ':after': {
+      bottom: 0,
+      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallHorizontal} / 2.0)`),
+      height: tabIndicatorStrokeWidths.smallHorizontal,
+      left: tabIndicatorPadding.smallHorizontal,
+      right: tabIndicatorPadding.smallHorizontal,
+    },
+  },
+  smallVertical: {
+    ':after': {
+      bottom: tabIndicatorPadding.smallVertical,
+      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallVertical} / 2.0)`),
+      left: '0',
+      top: tabIndicatorPadding.smallVertical,
+      width: tabIndicatorStrokeWidths.smallVertical,
     },
   },
 });
@@ -134,6 +286,7 @@ const useIconStyles = makeStyles({
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
+    ...shorthands.overflow('hidden'),
   },
   // per design, the small and medium font sizes are the same.
   // the size prop only affects spacing.
@@ -154,47 +307,71 @@ const useIconStyles = makeStyles({
  */
 const useContentStyles = makeStyles({
   base: {
-    paddingLeft: tabPendingDesignTokens.contentPadding.medium,
-    paddingRight: tabPendingDesignTokens.contentPadding.medium,
+    ...pendingContentSizeTokens.body1,
+    ...shorthands.overflow('hidden'),
+    // content padding is the same for medium & small, horiztonal & vertical
+    ...shorthands.padding(0, pendingSpacingTokens.xxs),
   },
-  small: {
-    paddingLeft: tabPendingDesignTokens.contentPadding.small,
-    paddingRight: tabPendingDesignTokens.contentPadding.small,
+  selected: {
+    ...pendingContentSizeTokens.body1Strong,
   },
 });
 
 /**
  * Apply styling to the Tab slots based on the state
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const useTabStyles_unstable = (state: TabState): TabState => {
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
-  const horizontalIndicatorStyles = useHorizontalIndicatorStyles();
-  const verticalIndicatorStyles = useVerticalIndicatorStyles();
+  const pendingIndicatorStyles = usePendingIndicatorStyles();
+  const activeIndicatorStyles = useActiveIndicatorStyles();
   const iconStyles = useIconStyles();
   const contentStyles = useContentStyles();
 
+  const { appearance, disabled, selected, size, vertical } = state;
+
   state.root.className = mergeClasses(
-    tabClassName,
+    tabClassNames.root,
     rootStyles.base,
+    size !== 'small' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
+    size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
     focusStyles.base,
-    state.size === 'small' && rootStyles.small,
-    state.appearance === 'subtle' && rootStyles.subtle,
-    state.vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base,
-    state.size === 'small' && (state.vertical ? verticalIndicatorStyles.small : horizontalIndicatorStyles.small),
+    disabled && rootStyles.disabled,
+    !disabled && appearance === 'subtle' && rootStyles.subtle,
+    !disabled && appearance === 'transparent' && rootStyles.transparent,
+    !disabled && selected && rootStyles.selected,
+
+    // pending indicator (before pseudo element)
+    pendingIndicatorStyles.base,
+    size !== 'small' && (vertical ? pendingIndicatorStyles.mediumVertical : pendingIndicatorStyles.mediumHorizontal),
+    size === 'small' && (vertical ? pendingIndicatorStyles.smallVertical : pendingIndicatorStyles.smallHorizontal),
+    disabled && pendingIndicatorStyles.disabled,
+
+    // active indicator (after pseudo element)
+    selected && activeIndicatorStyles.base,
+    selected && !disabled && activeIndicatorStyles.selected,
+    selected &&
+      size !== 'small' &&
+      (vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
+    selected &&
+      size === 'small' &&
+      (vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
+    selected && disabled && activeIndicatorStyles.disabled,
     state.root.className,
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
+    state.icon.className = mergeClasses(tabClassNames.icon, iconStyles.base, iconStyles[size], state.icon.className);
   }
 
   state.content.className = mergeClasses(
+    tabClassNames.content,
     contentStyles.base,
-    state.size === 'small' && contentStyles.small,
+    selected && contentStyles.selected,
     state.content.className,
   );
+
+  useTabAnimatedIndicatorStyles_unstable(state);
 
   return state;
 };

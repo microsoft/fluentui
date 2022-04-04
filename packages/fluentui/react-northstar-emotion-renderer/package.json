@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-northstar-emotion-renderer",
   "description": "A CSS-in-JS renderer based on Emotion for FluentUI React Northstar.",
-  "version": "0.60.1",
+  "version": "0.61.0",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
@@ -9,18 +9,16 @@
     "@emotion/serialize": "^1.0.2",
     "@emotion/sheet": "^1.0.1",
     "@emotion/utils": "^1.0.0",
-    "@fluentui/react-northstar-styles-renderer": "^0.60.1",
-    "@fluentui/styles": "^0.60.1",
+    "@fluentui/react-northstar-styles-renderer": "^0.61.0",
+    "@fluentui/styles": "^0.61.0",
     "stylis": "^4.0.6",
     "stylis-plugin-rtl": "^2.1.0"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
-    "@types/react": "16.9.42",
     "@types/stylis": "4.0.0",
-    "lerna-alias": "^3.0.3-0",
-    "react": "16.8.6"
+    "lerna-alias": "^3.0.3-0"
   },
   "files": [
     "dist"
@@ -31,8 +29,8 @@
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react": "^16.8.0 || ^17",
+    "react-dom": "^16.8.0 || ^17"
   },
   "publishConfig": {
     "access": "public"

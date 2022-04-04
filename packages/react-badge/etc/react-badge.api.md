@@ -9,15 +9,17 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Badge: ForwardRefComponent<BadgeProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const badgeClassName = "fui-Badge";
 
-// Warning: (ae-forgotten-export) The symbol "BadgeCommons" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export const badgeClassNames: SlotClassNames<BadgeSlots>;
+
 // @public (undocumented)
 export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & Partial<BadgeCommons>;
 
@@ -33,11 +35,12 @@ export type BadgeState = ComponentState<BadgeSlots> & BadgeCommons;
 // @public
 export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const counterBadgeClassName = "fui-CounterBadge";
 
-// Warning: (ae-forgotten-export) The symbol "CounterBadgeCommons" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export const counterBadgeClassNames: SlotClassNames<BadgeSlots>;
+
 // @public (undocumented)
 export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape' | 'color'> & Partial<CounterBadgeCommons>;
 
@@ -47,11 +50,12 @@ export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'shape' | 'color
 // @public
 export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const presenceBadgeClassName = "fui-PresenceBadge";
 
-// Warning: (ae-forgotten-export) The symbol "PresenceBadgeCommons" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export const presenceBadgeClassNames: SlotClassNames<BadgeSlots>;
+
 // @public (undocumented)
 export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root'>>, 'color'> & Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
 
@@ -59,7 +63,7 @@ export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root'>>, 
 export type PresenceBadgeState = PresenceBadgeCommons & ComponentState<BadgeSlots>;
 
 // @public (undocumented)
-export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
+export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb' | 'unknown';
 
 // @public (undocumented)
 export const renderBadge_unstable: (state: BadgeState) => JSX.Element;

@@ -208,7 +208,7 @@ export type ObjectSlotProp<TProps extends GenericDictionary> = TProps & {
 
 export type SlotProp<TProps> =
   | React.ReactChild
-  | React.ReactNodeArray
+  | React.ReactNode[]
   | React.ReactPortal
   | boolean
   | null

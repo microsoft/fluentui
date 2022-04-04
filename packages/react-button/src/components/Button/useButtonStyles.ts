@@ -1,9 +1,17 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import type { ButtonState } from './Button.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { ButtonSlots, ButtonState } from './Button.types';
 
-export const buttonClassName = 'fui-Button';
+export const buttonClassNames: SlotClassNames<ButtonSlots> = {
+  root: 'fui-Button',
+  icon: 'fui-Button__icon',
+};
+/**
+ * @deprecated Use `buttonClassNames.root` instead.
+ */
+export const buttonClassName = buttonClassNames.root;
 
 const useRootStyles = makeStyles({
   // Base styles
@@ -350,10 +358,19 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
 
-  const { appearance, block, disabled, disabledFocusable, iconOnly, shape, size } = state;
+  const {
+    appearance,
+    // eslint-disable-next-line deprecation/deprecation
+    block,
+    disabled,
+    disabledFocusable,
+    iconOnly,
+    shape,
+    size,
+  } = state;
 
   state.root.className = mergeClasses(
-    buttonClassName,
+    buttonClassNames.root,
 
     // Root styles
     rootStyles.base,
@@ -380,7 +397,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles.base, iconStyles[size], state.icon.className);
+    state.icon.className = mergeClasses(buttonClassNames.icon, iconStyles.base, iconStyles[size], state.icon.className);
   }
 
   return state;

@@ -32,6 +32,8 @@ const iconMap = (
       return presenceOfflineRegular[size];
     case 'outOfOffice':
       return presenceOofRegular[size];
+    case 'unknown':
+      return presenceUnknownRegular[size];
   }
 };
 
