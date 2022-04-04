@@ -39,7 +39,7 @@ enum PointSize {
   invisibleSize = 1,
 }
 
-const DEFAULT_LINE_STROKE_SIZE = 6;
+const DEFAULT_LINE_STROKE_SIZE = 4;
 // The given shape of a icon must be 2.5 times bigger than line width (known as stroke width)
 const PATH_MULTIPLY_SIZE = 2.5;
 
@@ -79,7 +79,7 @@ const _getPointPath = (x: number, y: number, w: number, index: number): string =
      L${x + w / 2} ${y + 0.2886 * w}
      L${x - w / 2} ${y + 0.2886 * w} Z`,
     //hexagon
-    `M${x - 0.5 * w} ${y - 0.866 * w}
+    `M${x - 0.51 * w} ${y - 0.866 * w}
      L${x + 0.5 * w} ${y - 0.866 * w}
      L${x + w} ${y}
      L${x + 0.5 * w} ${y + 0.866 * w}
