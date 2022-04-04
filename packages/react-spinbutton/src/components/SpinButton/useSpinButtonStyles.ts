@@ -12,7 +12,7 @@ export const spinButtonClassNames: SlotClassNames<SpinButtonSlots> = {
 };
 
 const spinButtonExtraClassNames = {
-  button: 'fui-SpinButton__button',
+  buttonActive: 'fui-SpinButton__button_active',
 };
 
 // TODO(sharing) use theme values once available
@@ -213,7 +213,7 @@ const useButtonStyles = makeStyles({
         color: tokens.colorNeutralForeground3Pressed,
         backgroundColor: tokens.colorSubtleBackgroundPressed,
       },
-      [`&.${spinButtonExtraClassNames.button}_active`]: {
+      [`&.${spinButtonExtraClassNames.buttonActive}`]: {
         color: tokens.colorNeutralForeground3Pressed,
         backgroundColor: tokens.colorSubtleBackgroundPressed,
       },
@@ -234,7 +234,7 @@ const useButtonStyles = makeStyles({
         color: tokens.colorNeutralForeground3Hover,
         backgroundColor: tokens.colorSubtleBackgroundHover,
       },
-      [`:active,&.${spinButtonExtraClassNames.button}_active`]: {
+      [`:active,&.${spinButtonExtraClassNames.buttonActive}`]: {
         color: tokens.colorNeutralForeground3Pressed,
         backgroundColor: tokens.colorSubtleBackgroundPressed,
       },
@@ -252,7 +252,7 @@ const useButtonStyles = makeStyles({
         color: tokens.colorNeutralForeground3BrandHover,
         backgroundColor: tokens.colorSubtleBackgroundHover,
       },
-      [`:active,&.${spinButtonExtraClassNames.button}_active`]: {
+      [`:active,&.${spinButtonExtraClassNames.buttonActive}`]: {
         color: tokens.colorNeutralForeground3BrandPressed,
         backgroundColor: tokens.colorSubtleBackgroundPressed,
       },
@@ -269,7 +269,7 @@ const useButtonStyles = makeStyles({
       color: tokens.colorNeutralForeground3BrandHover,
       backgroundColor: tokens.colorSubtleBackgroundHover,
     },
-    [`:active,&.${spinButtonExtraClassNames.button}_active`]: {
+    [`:active,&.${spinButtonExtraClassNames.buttonActive}`]: {
       color: tokens.colorNeutralForeground3BrandPressed,
       backgroundColor: tokens.colorSubtleBackgroundPressed,
     },
@@ -305,7 +305,7 @@ const useButtonDisabledStyles = makeStyles({
         color: tokens.colorNeutralForegroundDisabled,
         backgroundColor: 'transparent',
       },
-      [`&.${spinButtonExtraClassNames.button}_active`]: {
+      [`&.${spinButtonExtraClassNames.buttonActive}`]: {
         color: tokens.colorNeutralForegroundDisabled,
         backgroundColor: 'transparent',
       },
@@ -323,7 +323,7 @@ const useButtonDisabledStyles = makeStyles({
         color: tokens.colorNeutralForegroundDisabled,
         backgroundColor: 'transparent',
       },
-      [`&.${spinButtonExtraClassNames.button}_active`]: {
+      [`&.${spinButtonExtraClassNames.buttonActive}`]: {
         color: tokens.colorNeutralForegroundDisabled,
         backgroundColor: 'transparent',
       },
@@ -341,7 +341,7 @@ const useButtonDisabledStyles = makeStyles({
         color: tokens.colorNeutralForegroundDisabled,
         backgroundColor: 'transparent',
       },
-      [`&.${spinButtonExtraClassNames.button}_active`]: {
+      [`&.${spinButtonExtraClassNames.buttonActive}`]: {
         color: tokens.colorNeutralForegroundDisabled,
         backgroundColor: 'transparent',
       },
@@ -359,7 +359,7 @@ const useButtonDisabledStyles = makeStyles({
         color: tokens.colorNeutralForegroundDisabled,
         backgroundColor: 'transparent',
       },
-      [`&.${spinButtonExtraClassNames.button}_active`]: {
+      [`&.${spinButtonExtraClassNames.buttonActive}`]: {
         color: tokens.colorNeutralForegroundDisabled,
         backgroundColor: 'transparent',
       },
@@ -412,7 +412,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
 
   state.incrementButton.className = mergeClasses(
     spinButtonClassNames.incrementButton,
-    state.spinState === 'up' && `${spinButtonExtraClassNames.button}_active`,
+    state.spinState === 'up' && `${spinButtonExtraClassNames.buttonActive}`,
     buttonStyles.base,
     buttonStyles.incrementButton,
     buttonStyles[appearance],
@@ -424,7 +424,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   );
   state.decrementButton.className = mergeClasses(
     spinButtonClassNames.decrementButton,
-    state.spinState === 'down' && `${spinButtonExtraClassNames.button}_active`,
+    state.spinState === 'down' && `${spinButtonExtraClassNames.buttonActive}`,
     buttonStyles.base,
     buttonStyles.decrementButton,
     buttonStyles[appearance],
