@@ -3,7 +3,8 @@ import { ILayerHost } from './LayerHost.types';
 const _layersByHostId: { [hostId: string]: (() => void)[] } = {};
 const _layerHostsById: { [hostId: string]: ILayerHost[] } = {};
 
-let _defaultHostSelector: string | undefined;
+const defaultHostId = 'fluent-default-layer-host';
+let _defaultHostSelector: string | undefined = `#${defaultHostId}`;
 
 /**
  * Register a layer for a given host id
@@ -109,6 +110,30 @@ export function unregisterLayerHost(hostId: string, layerHost: ILayerHost): void
     if (layerHosts.length === 0) {
       delete _layerHostsById[hostId];
     }
+  }
+}
+
+/**
+ * When no default layer host is provided, this function is executed to create the default host.
+ */
+export function createDefaultLayerHost(doc: Document): Node | null {
+  const host = doc.createElement('div');
+  host.setAttribute('id', defaultHostId);
+  (host as HTMLElement).style.cssText = 'position:fixed;z-index:1000000';
+
+  doc?.body.appendChild(host);
+
+  return host;
+}
+
+/**
+ * This function can be optionally called to clean up the default layer host as needed.
+ */
+export function cleanupDefaultLayerHost(doc: Document) {
+  const host = doc.querySelector(`#${defaultHostId}`);
+
+  if (host) {
+    doc.removeChild(host);
   }
 }
 
