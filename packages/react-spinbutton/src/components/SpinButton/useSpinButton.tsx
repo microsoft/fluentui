@@ -112,7 +112,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       defaultProps: {
         ref,
         autoComplete: 'off',
-        size: input?.size,
         role: 'spinbutton',
         appearance: appearance,
         ...nativeProps.primary,
