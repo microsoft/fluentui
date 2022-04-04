@@ -2,15 +2,18 @@
 
 ## Background
 
-_Description and use cases of this component_
+A list is a collection of related sequential items. The items are agnostic of layout and any content may be used.
+Items may be either single selectable or multi selectable. List items are atomic and should not contain nested
+content within by default.
 
 ## Prior Art
 
 _Include background research done for this component_
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+- Open UI research: [openui/openui#512](https://github.com/openui/open-ui/pull/512)
+- [Component epic issue]()
+
+### Comparison of V0 and v8
 
 ## Sample Code
 
