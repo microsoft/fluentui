@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(react-theme) Add theme tokens bundle size fixture",
-  "packageName": "@fluentui/react-theme",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -2,6 +2,7 @@
   "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
   "root": true,
   "rules": {
+    "@rnx-kit/no-export-all": ["error", { "expand": "all" }],
     "prefer-const": "off"
   }
 }

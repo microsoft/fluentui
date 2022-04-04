@@ -78,7 +78,7 @@ const renderStaticStyles = (renderer: Renderer, theme: ThemeInput, siteVariables
     } else if (_.isPlainObject(staticStyle)) {
       renderObject(staticStyle as StaticStyleObject);
     } else if (_.isFunction(staticStyle)) {
-      const preparedSiteVariables = mergeSiteVariables(siteVariables);
+      const preparedSiteVariables = mergeSiteVariables(undefined, siteVariables);
       renderObject((staticStyle as StaticStyleFunction)(preparedSiteVariables));
     } else {
       throw new Error(
@@ -204,7 +204,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
   const RenderProvider = outgoingContext.renderer.Provider;
 
   return (
-    <RenderProvider>
+    <RenderProvider target={outgoingContext.target}>
       <Unstable_FluentContextProvider value={outgoingContext}>
         <PortalBoxContext.Provider value={element}>
           <ElementType {...elementProps}>{children}</ElementType>

@@ -242,6 +242,7 @@ export { ShareToIcon } from './components/ShareToIcon';
 export { ShieldKeyholeIcon } from './components/ShieldKeyholeIcon';
 export { Shift24hIcon } from './components/Shift24hIcon';
 export { ShiftActivityIcon } from './components/ShiftActivityIcon';
+export { SignatureIcon } from './components/SignatureIcon';
 export { SkypeColorIcon } from './components/SkypeColorIcon';
 export { SkypeLogoIcon } from './components/SkypeLogoIcon';
 export { SpeakerMuteIcon } from './components/SpeakerMuteIcon';

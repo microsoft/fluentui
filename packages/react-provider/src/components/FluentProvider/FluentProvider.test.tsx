@@ -3,7 +3,6 @@ import * as React from 'react';
 import { FluentProvider } from './FluentProvider';
 import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../common/isConformant';
-import { ProviderContext } from '@fluentui/react-shared-contexts';
 
 describe('FluentProvider', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -17,8 +16,6 @@ describe('FluentProvider', () => {
     disabledTests: ['component-handles-classname'],
     Component: FluentProvider,
     displayName: 'FluentProvider',
-    skipAsPropTests: true,
-    helperComponents: [ProviderContext.Provider],
   });
 
   afterEach(() => {

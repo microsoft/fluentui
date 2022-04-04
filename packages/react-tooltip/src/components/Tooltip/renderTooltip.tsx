@@ -6,18 +6,18 @@ import type { TooltipSlots, TooltipState } from './Tooltip.types';
 /**
  * Render the final JSX of Tooltip
  */
-export const renderTooltip = (state: TooltipState) => {
+export const renderTooltip_unstable = (state: TooltipState) => {
   const { slots, slotProps } = getSlots<TooltipSlots>(state);
 
   return (
     <>
-      {state.root.children}
+      {state.children}
       {state.shouldRenderTooltip && (
-        <Portal>
-          <slots.root {...slotProps.root}>
+        <Portal mountNode={state.mountNode}>
+          <slots.content {...slotProps.content}>
             {state.withArrow && <div ref={state.arrowRef} className={state.arrowClassName} />}
-            {state.content}
-          </slots.root>
+            {state.content.children}
+          </slots.content>
         </Portal>
       )}
     </>

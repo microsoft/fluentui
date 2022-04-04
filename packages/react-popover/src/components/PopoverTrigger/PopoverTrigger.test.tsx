@@ -12,13 +12,14 @@ describe('PopoverTrigger', () => {
     Component: PopoverTrigger,
     displayName: 'PopoverTrigger',
     requiredProps: { children: <span /> },
-    skipAsPropTests: true,
     disabledTests: [
       // PopoverTrigger does not render DOM elements
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
       'component-has-static-classname',
+      'component-has-static-classnames-object',
+      'component-has-static-classname-exported',
       // PopoverTrigger does not have own styles
       'make-styles-overrides-win',
     ],

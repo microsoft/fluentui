@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Move arrowHeight and tooltipBorderRadius into a shared constants.ts file",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

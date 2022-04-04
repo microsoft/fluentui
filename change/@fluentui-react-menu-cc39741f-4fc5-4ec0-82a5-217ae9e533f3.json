@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update react-icons usage to resizable icons",
-  "packageName": "@fluentui/react-menu",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

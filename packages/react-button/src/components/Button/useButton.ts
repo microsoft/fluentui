@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useARIAButton } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { ButtonProps, ButtonState } from './Button.types';
 
@@ -8,10 +9,14 @@ import type { ButtonProps, ButtonState } from './Button.types';
  * @param props - User provided props to the Button component.
  * @param ref - User provided ref to be passed to the Button component.
  */
-export const useButton = (props: ButtonProps, ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>): ButtonState => {
+export const useButton_unstable = (
+  props: ButtonProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+): ButtonState => {
   const {
     appearance,
     as,
+    // eslint-disable-next-line deprecation/deprecation
     block = false,
     disabled = false,
     disabledFocusable = false,
@@ -43,7 +48,7 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLButtonElement |
 
     root: getNativeElementProps(
       as || 'button',
-      useARIAButton(props, {
+      useARIAButton<ARIAButtonSlotProps>(props, {
         required: true,
         defaultProps: {
           // useARIAButton isn't working with React.Ref<HTMLButtonElement | HTMLAnchorElement>

@@ -12,22 +12,16 @@ import {
   writeJson,
   updateProjectConfiguration,
   serializeJson,
+  generateFiles,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
 
 import { PackageJson, TsConfig } from '../../types';
-import {
-  arePromptsEnabled,
-  getProjectConfig,
-  getProjects,
-  printUserLogs,
-  prompt,
-  updateJestConfig,
-  UserLog,
-} from '../../utils';
+import { arePromptsEnabled, getProjectConfig, getProjects, printUserLogs, prompt, UserLog } from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
+import { addCodeowner } from '../add-codeowners';
 
 interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
 
@@ -85,13 +79,16 @@ function runBatchMigration(tree: Tree, userLog: UserLog, projectNames?: string[]
 function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: UserLog) {
   const options = normalizeOptions(tree, schema);
 
+  if (options.owner) {
+    addCodeowner(tree, { owner: options.owner, packageName: options.name });
+  }
+
   // 1. update TsConfigs
   updatedLocalTsConfig(tree, options);
   updatedBaseTsConfig(tree, options);
 
   // 2. update Jest
   updateLocalJestConfig(tree, options);
-  updateRootJestConfig(tree, options);
 
   // update package npm scripts
   updateNpmScripts(tree, options);
@@ -118,7 +115,7 @@ const templates = {
   },
   apiExtractor: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-    extends: '@fluentui/scripts/api-extractor/api-extractor.common.json',
+    extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
   },
   tsconfig: (options: { platform: 'node' | 'web'; js: boolean; hasConformance: boolean }) => {
     return {
@@ -204,9 +201,10 @@ const templates = {
       },
     };
   },
-  babelConfig: (options: { extraPlugins: Array<string> }) => {
+  babelConfig: (options: { extraPresets: Array<string> }) => {
     return {
-      plugins: [...options.extraPlugins, 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+      presets: [...options.extraPresets],
+      plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
     };
   },
   jestSetup: stripIndents`
@@ -216,7 +214,7 @@ const templates = {
       // @ts-check
 
       /**
-      * @type {jest.InitialOptions}
+      * @type {import('@jest/types').Config.InitialOptions}
       */
       module.exports = {
         displayName: '${options.pkgName}',
@@ -232,7 +230,7 @@ const templates = {
         },
         coverageDirectory: './coverage',
         setupFilesAfterEnv: ['${options.testSetupFilePath}'],
-        ${options.addSnapshotSerializers ? `snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],` : ''}
+        ${options.addSnapshotSerializers ? `snapshotSerializers: ['@griffel/jest-serializer'],` : ''}
       };
   `,
   storybook: {
@@ -272,10 +270,6 @@ const templates = {
     },
   },
   e2e: {
-    support: stripIndents`
-    // workaround for https://github.com/cypress-io/cypress/issues/8599
-    import '@fluentui/scripts/cypress/support';
-    `,
     tsconfig: {
       extends: '../tsconfig.json',
       compilerOptions: {
@@ -713,7 +707,8 @@ function setupE2E(tree: Tree, options: NormalizedSchema) {
 
   writeJson<TsConfig>(tree, options.paths.e2e.tsconfig, templates.e2e.tsconfig);
 
-  tree.write(options.paths.e2e.support, templates.e2e.support);
+  // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  generateFiles(tree, joinPathFragments(__dirname, 'files', 'e2e'), options.paths.e2e.rootFolder, { tmpl: '' });
 
   updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
     json.references?.push({
@@ -742,7 +737,7 @@ function shouldSetupE2E(tree: Tree, options: NormalizedSchema) {
 
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   const jestSetupFilePath = options.paths.jestSetupFile;
-  const packagesThatTriggerAddingSnapshots = [`@${options.workspaceConfig.npmScope}/react-make-styles`];
+  const packagesThatTriggerAddingSnapshots = [`@griffel/react`];
 
   const packageJson = readJson<PackageJson>(tree, options.paths.packageJson);
   packageJson.dependencies = packageJson.dependencies ?? {};
@@ -760,12 +755,6 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   if (!tree.exists(jestSetupFilePath)) {
     tree.write(jestSetupFilePath, templates.jestSetup);
   }
-
-  return tree;
-}
-
-function updateRootJestConfig(tree: Tree, options: NormalizedSchema) {
-  updateJestConfig(tree, { project: options.name });
 
   return tree;
 }
@@ -849,28 +838,13 @@ function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
 }
 
 function setupBabel(tree: Tree, options: NormalizedSchema) {
-  const currentProjectNpmScope = `@${options.workspaceConfig.npmScope}`;
   const pkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
   pkgJson.dependencies = pkgJson.dependencies || {};
   pkgJson.devDependencies = pkgJson.devDependencies || {};
 
-  const shouldAddMakeStylesPlugin =
-    !options.name.includes('make-styles') &&
-    (pkgJson.dependencies[`${currentProjectNpmScope}/react-make-styles`] ||
-      pkgJson.dependencies[`${currentProjectNpmScope}/make-styles`]);
-
-  const extraPlugins = shouldAddMakeStylesPlugin ? ['module:@fluentui/babel-make-styles'] : [];
-
-  const config = templates.babelConfig({ extraPlugins });
-
-  const babelMakeStylesProjectName = `${currentProjectNpmScope}/babel-make-styles`;
-  if (shouldAddMakeStylesPlugin) {
-    const babelMakeStylesProject = getProjectConfig(tree, { packageName: babelMakeStylesProjectName });
-    const babelMakeStylesPkgJson: PackageJson = readJson(tree, babelMakeStylesProject.paths.packageJson);
-    pkgJson.devDependencies[babelMakeStylesProjectName] = `${babelMakeStylesPkgJson.version}`;
-  } else {
-    delete pkgJson.devDependencies[babelMakeStylesProjectName];
-  }
+  const shouldAddGriffelPreset = pkgJson.dependencies['@griffel/react'];
+  const extraPresets = shouldAddGriffelPreset ? ['@griffel'] : [];
+  const config = templates.babelConfig({ extraPresets });
 
   tree.write(options.paths.babelConfig, serializeJson(config));
   writeJson(tree, options.paths.packageJson, pkgJson);

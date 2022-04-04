@@ -115,9 +115,28 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
   return {
     projectConfig,
     workspaceConfig,
+    /**
+     * package name without npmScope (@scopeName)
+     */
+    normalizedPkgName: options.packageName.replace(`@${workspaceConfig.npmScope}/`, ''),
     paths,
   };
 }
+
+export const workspacePaths = {
+  workspace: '/workspace.json',
+  nx: '/nx.json',
+  tsconfig: '/tsconfig.base.json',
+  packageJson: '/package.json',
+  jest: { preset: '/jest.preset.js', config: '/jest.config.js' },
+  github: {
+    root: '/.github',
+    codeowners: joinPathFragments('/.github', 'CODEOWNERS'),
+  },
+  storybook: {
+    root: '/.storyboook',
+  },
+};
 
 export type UserLog = Array<{ type: keyof typeof logger; message: string }>;
 export function printUserLogs(logs: UserLog) {

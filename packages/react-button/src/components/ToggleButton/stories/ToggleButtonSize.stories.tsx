@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ToggleButton } from '../../../ToggleButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { ToggleButton } from '../../../ToggleButton';
 
 export const Size = () => {
   return (

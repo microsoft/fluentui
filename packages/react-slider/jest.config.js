@@ -1,7 +1,7 @@
 // @ts-check
 
 /**
- * @type {jest.InitialOptions}
+ * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
   displayName: 'react-slider',
@@ -17,5 +17,5 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],
+  snapshotSerializers: ['@griffel/jest-serializer'],
 };

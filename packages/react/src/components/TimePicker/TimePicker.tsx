@@ -1,6 +1,13 @@
 import * as React from 'react';
+import { useConst } from '@fluentui/react-hooks';
 import { KeyCodes } from '../../Utilities';
-import { TimeConstants, addMinutes, formatTimeString, ceilMinuteToIncrement } from '@fluentui/date-time-utilities';
+import {
+  TimeConstants,
+  addMinutes,
+  formatTimeString,
+  ceilMinuteToIncrement,
+  getDateFromTimeSelection,
+} from '@fluentui/date-time-utilities';
 import { ComboBox } from '../../ComboBox';
 import type { IComboBox, IComboBoxOption } from '../../ComboBox';
 import type { ITimePickerProps, ITimeRange, ITimePickerStrings } from './TimePicker.types';
@@ -31,9 +38,10 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   useHour12 = false,
   timeRange,
   strings = getDefaultStrings(useHour12, showSeconds),
+  defaultValue,
+  onChange,
   onFormatDate,
   onValidateUserInput,
-  onChange,
   ...rest
 }: ITimePickerProps) => {
   const [userText, setUserText] = React.useState<string>('');
@@ -41,15 +49,21 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
+  const initialValue = useConst(defaultValue || new Date());
+  const baseDate: Date = React.useMemo(() => generateBaseDate(increments, timeRange, initialValue), [
+    increments,
+    timeRange,
+    initialValue,
+  ]);
+
   const timePickerOptions: IComboBoxOption[] = React.useMemo(() => {
     const optionsList = Array(optionsCount);
     for (let i = 0; i < optionsCount; i++) {
       optionsList[i] = 0;
     }
-    const defaultTime = generateDefaultTime(increments, timeRange);
 
     return optionsList.map((_, index) => {
-      const option = addMinutes(defaultTime, increments * index);
+      const option = addMinutes(baseDate, increments * index);
       option.setSeconds(0);
       const optionText = onFormatDate ? onFormatDate(option) : formatTimeString(option, showSeconds, useHour12);
       return {
@@ -57,16 +71,12 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         text: optionText,
       };
     });
-  }, [timeRange, increments, optionsCount, showSeconds, onFormatDate, useHour12]);
+  }, [baseDate, increments, optionsCount, showSeconds, onFormatDate, useHour12]);
 
   const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>(timePickerOptions[0].key);
 
   const onInputChange = React.useCallback(
     (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string): void => {
-      if (onChange) {
-        onChange(event, option, index, value);
-      }
-
       const validateUserInput = (userInput: string): string => {
         let errorMessageToDisplay = '';
         let regex: RegExp;
@@ -101,31 +111,40 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         updatedUserText = option.text;
       }
 
+      if (onChange && !errorMessageToDisplay) {
+        const selectedTime = value || option?.text || '';
+        const date = getDateFromTimeSelection(useHour12, baseDate, selectedTime);
+        onChange(event, date);
+      }
+
       setErrorMessage(errorMessageToDisplay);
       setUserText(updatedUserText);
       setSelectedKey(key);
     },
     [
+      baseDate,
       allowFreeform,
+      onChange,
       onFormatDate,
       onValidateUserInput,
       showSeconds,
       useHour12,
-      onChange,
       strings.invalidInputErrorMessage,
     ],
   );
 
   const evaluatePressedKey = (event: React.KeyboardEvent<IComboBox>) => {
+    // eslint-disable-next-line deprecation/deprecation
+    const charCode = event.charCode;
     if (
       !onFormatDate &&
       // Only permit input of digits, space, colon, A/P/M characters
       !(
-        (event.charCode >= KeyCodes.zero && event.charCode <= KeyCodes.colon) ||
-        event.charCode === KeyCodes.space ||
-        event.charCode === KeyCodes.a ||
-        event.charCode === KeyCodes.m ||
-        event.charCode === KeyCodes.p
+        (charCode >= KeyCodes.zero && charCode <= KeyCodes.colon) ||
+        charCode === KeyCodes.space ||
+        charCode === KeyCodes.a ||
+        charCode === KeyCodes.m ||
+        charCode === KeyCodes.p
       )
     ) {
       event.preventDefault();
@@ -156,14 +175,13 @@ const clampTimeRange = (timeRange: ITimeRange): ITimeRange => {
   };
 };
 
-const generateDefaultTime = (increments: number, timeRange: ITimeRange | undefined) => {
-  const newDefaultTime = new Date();
+const generateBaseDate = (increments: number, timeRange: ITimeRange | undefined, baseDate: Date) => {
   if (timeRange) {
     const clampedTimeRange = clampTimeRange(timeRange);
-    newDefaultTime.setHours(clampedTimeRange.start);
+    baseDate.setHours(clampedTimeRange.start);
   }
 
-  return ceilMinuteToIncrement(newDefaultTime, increments);
+  return ceilMinuteToIncrement(baseDate, increments);
 };
 
 const getDropdownOptionsCount = (increments: number, timeRange: ITimeRange | undefined) => {

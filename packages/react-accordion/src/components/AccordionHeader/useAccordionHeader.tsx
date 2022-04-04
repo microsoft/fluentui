@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
-import { useAccordionItemContext } from '../AccordionItem/index';
+import { useAccordionItemContext_unstable } from '../AccordionItem/index';
 import { useARIAButton } from '@fluentui/react-aria';
 import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
 import { useContextSelector } from '@fluentui/react-context-selector';
@@ -13,9 +13,12 @@ import { useFluent } from '@fluentui/react-shared-contexts';
  * @param props - AccordionHeader properties
  * @param ref - reference to root HTMLElement of AccordionHeader
  */
-export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<HTMLElement>): AccordionHeaderState => {
-  const { icon, button, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
-  const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext();
+export const useAccordionHeader_unstable = (
+  props: AccordionHeaderProps,
+  ref: React.Ref<HTMLElement>,
+): AccordionHeaderState => {
+  const { as, icon, button, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
+  const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext_unstable();
 
   /**
    * force disabled state on button if accordion isn't collapsible
@@ -59,9 +62,8 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
       expandIcon: 'span',
       icon: 'div',
     },
-    root: getNativeElementProps('div', {
+    root: getNativeElementProps(as || 'div', {
       ref,
-      role: 'heading',
       ...props,
     }),
     icon: resolveShorthand(icon),

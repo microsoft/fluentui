@@ -1,34 +1,29 @@
 {
   "name": "@fluentui/react-bindings",
   "description": "A set of components and hooks to build components libraries and UI kits.",
-  "version": "0.60.1",
+  "version": "0.61.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
-    "@fluentui/accessibility": "^0.60.1",
-    "@fluentui/react-component-event-listener": "^0.60.1",
-    "@fluentui/react-component-ref": "^0.60.1",
-    "@fluentui/react-northstar-fela-renderer": "^0.60.1",
-    "@fluentui/react-northstar-styles-renderer": "^0.60.1",
-    "@fluentui/state": "^0.60.1",
-    "@fluentui/styles": "^0.60.1",
+    "@fluentui/accessibility": "^0.61.0",
+    "@fluentui/react-component-event-listener": "^0.61.0",
+    "@fluentui/react-component-ref": "^0.61.0",
+    "@fluentui/react-northstar-fela-renderer": "^0.61.0",
+    "@fluentui/react-northstar-styles-renderer": "^0.61.0",
+    "@fluentui/state": "^0.61.0",
+    "@fluentui/styles": "^0.61.0",
     "@uifabric/utilities": "^7.32.3",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
-    "react-is": "^16.6.3",
-    "scheduler": "^0.20.1"
+    "react-is": "^16.6.3"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
     "@types/classnames": "^2.2.9",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "lerna-alias": "^3.0.3-0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "lerna-alias": "^3.0.3-0"
   },
   "files": [
     "dist"
@@ -39,8 +34,9 @@
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react": "^16.8.0 || ^17",
+    "react-dom": "^16.8.0 || ^17",
+    "scheduler": "^0.19.0 || ^0.20.0"
   },
   "publishConfig": {
     "access": "public"

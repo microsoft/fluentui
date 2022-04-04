@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "update stories to not use CSS shorthands in styles",
-  "packageName": "@fluentui/react-portal",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

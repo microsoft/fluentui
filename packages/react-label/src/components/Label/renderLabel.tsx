@@ -5,13 +5,13 @@ import type { LabelState, LabelSlots } from './Label.types';
 /**
  * Render the final JSX of Label
  */
-export const renderLabel = (state: LabelState) => {
+export const renderLabel_unstable = (state: LabelState) => {
   const { slots, slotProps } = getSlots<LabelSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
       {state.root.children}
-      <slots.required {...slotProps.required} />
+      {slots.required && <slots.required {...slotProps.required} />}
     </slots.root>
   );
 };

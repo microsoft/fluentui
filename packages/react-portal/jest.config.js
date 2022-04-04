@@ -1,7 +1,7 @@
 // @ts-check
 
 /**
- * @type {jest.InitialOptions}
+ * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
   displayName: 'react-portal',
@@ -17,5 +17,4 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],
 };

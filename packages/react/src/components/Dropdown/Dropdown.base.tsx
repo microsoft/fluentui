@@ -31,7 +31,7 @@ import { ResponsiveMode, useResponsiveMode } from '../../ResponsiveMode';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
 // import and use V7 Checkbox to ensure no breaking changes.
 import { Checkbox } from '../../Checkbox';
-import { getPropsWithDefaults } from '@fluentui/utilities';
+import { getNextElement, getPreviousElement, getPropsWithDefaults } from '@fluentui/utilities';
 import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
 import type { IStyleFunctionOrObject } from '../../Utilities';
 import type {
@@ -56,7 +56,7 @@ const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>()
 // eslint-disable-next-line deprecation/deprecation
 interface IDropdownInternalProps extends Omit<IDropdownProps, 'ref'>, IWithResponsiveModeState {
   hoisted: {
-    rootRef: React.Ref<HTMLDivElement>;
+    rootRef: React.RefObject<HTMLDivElement>;
     selectedIndices: number[];
     setSelectedIndices: React.Dispatch<React.SetStateAction<number[]>>;
   };
@@ -738,8 +738,9 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
   private _renderSeparator(item: IDropdownOption): JSX.Element | null {
     const { index, key } = item;
+    const separatorClassName = item.hidden ? this._classNames.dropdownDividerHidden : this._classNames.dropdownDivider;
     if (index! > 0) {
-      return <div role="separator" key={key} className={this._classNames.dropdownDivider} />;
+      return <div role="separator" key={key} className={separatorClassName} />;
     }
     return null;
   }
@@ -747,8 +748,12 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   private _renderHeader(item: IDropdownOption): JSX.Element {
     const { onRenderOption = this._onRenderOption } = this.props;
     const { key, id } = item;
+    const headerClassName = item.hidden
+      ? this._classNames.dropdownItemHeaderHidden
+      : this._classNames.dropdownItemHeader;
+
     return (
-      <div id={id} key={key} className={this._classNames.dropdownItemHeader}>
+      <div id={id} key={key} className={headerClassName}>
         {onRenderOption(item, this._onRenderOption)}
       </div>
     );
@@ -1175,7 +1180,17 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
       case KeyCodes.tab:
         this.setState({ isOpen: false });
-        return;
+
+        const document = getDocument();
+
+        if (document) {
+          if (ev.shiftKey) {
+            getPreviousElement(document.body, this._dropDown.current)?.focus();
+          } else {
+            getNextElement(document.body, this._dropDown.current)?.focus();
+          }
+        }
+        break;
 
       default:
         return;

@@ -32,6 +32,7 @@ export type ColorTokens = {
   colorCompoundBrandForeground1Pressed: string;
   colorBrandForeground1: string;
   colorBrandForeground2: string;
+  colorNeutralForeground1Static: string;
   colorNeutralForegroundInverted: string;
   colorNeutralForegroundInvertedHover: string;
   colorNeutralForegroundInvertedPressed: string;
@@ -89,6 +90,8 @@ export type ColorTokens = {
   colorNeutralBackgroundInvertedDisabled: string;
   colorNeutralStencil1: string;
   colorNeutralStencil2: string;
+  colorBackgroundOverlay: string;
+  colorScrollbarOverlay: string;
   colorBrandBackground: string;
   colorBrandBackgroundHover: string;
   colorBrandBackgroundPressed: string;

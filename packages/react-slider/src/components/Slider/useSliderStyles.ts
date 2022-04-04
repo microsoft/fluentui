@@ -1,26 +1,37 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import type { SliderState } from './Slider.types';
+import type { SliderState, SliderSlots } from './Slider.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const sliderClassName = 'fui-Slider';
+export const sliderClassNames: SlotClassNames<SliderSlots> = {
+  root: 'fui-Slider',
+  rail: 'fui-Slider__rail',
+  thumb: 'fui-Slider__thumb',
+  input: 'fui-Slider__input',
+};
 
-const thumbSizeVar = `--fui-slider-thumb-size`;
-const railSizeVar = `--fui-slider-rail-size`;
-const railColorVar = `--fui-slider-rail-color`;
-const progressColorVar = `--fui-slider-progress-color`;
-const thumbColorVar = `--fui-slider-thumb-color`;
+// Internal CSS variables
+const thumbSizeVar = `--fui-Slider__thumb--size`;
+const railSizeVar = `--fui-Slider__rail--size`;
+const railColorVar = `--fui-Slider__rail--color`;
+const progressColorVar = `--fui-Slider__progress--color`;
+const thumbColorVar = `--fui-Slider__thumb--color`;
 
-export const railDirectionVar = `--fui-slider-rail-direction`;
-export const railOffsetVar = `--fui-slider-rail-offset`;
-export const railProgressVar = `--fui-slider-rail-progress`;
-export const railStepsPercentVar = `--fui-slider-rail-steps-percent`;
-export const thumbPositionVar = `--fui-slider-thumb-position`;
+export const sliderCSSVars = {
+  railDirectionVar: `--fui-Slider__rail--direction`,
+  railOffsetVar: `--fui-Slider__rail--offset`,
+  railProgressVar: `--fui-Slider__rail--progress`,
+  railStepsPercentVar: `--fui-Slider__rail--steps-percent`,
+  thumbPositionVar: `--fui-Slider__thumb--position`,
+};
+
+const { railDirectionVar, railOffsetVar, railStepsPercentVar, railProgressVar, thumbPositionVar } = sliderCSSVars;
 
 /**
  * Styles for the root slot
  */
-export const useRootStyles = makeStyles({
+const useRootStyles = makeStyles({
   root: {
     position: 'relative',
     display: 'inline-grid',
@@ -34,11 +45,13 @@ export const useRootStyles = makeStyles({
   small: {
     [thumbSizeVar]: '16px',
     [railSizeVar]: '2px',
+    minHeight: '24px',
   },
 
   medium: {
     [thumbSizeVar]: '20px',
     [railSizeVar]: '4px',
+    minHeight: '32px',
   },
 
   horizontal: {
@@ -64,12 +77,26 @@ export const useRootStyles = makeStyles({
       [thumbColorVar]: tokens.colorBrandBackgroundPressed,
       [progressColorVar]: tokens.colorBrandBackgroundPressed,
     },
+    '@media (forced-colors: active)': {
+      [railColorVar]: 'CanvasText',
+      [thumbColorVar]: 'Highlight',
+      [progressColorVar]: 'Highlight',
+      ':hover': {
+        [thumbColorVar]: 'Highlight',
+        [progressColorVar]: 'Highlight',
+      },
+    },
   },
 
   disabled: {
     [thumbColorVar]: tokens.colorNeutralForegroundDisabled,
     [railColorVar]: tokens.colorNeutralBackgroundDisabled,
     [progressColorVar]: tokens.colorNeutralForegroundDisabled,
+    '@media (forced-colors: active)': {
+      [railColorVar]: 'GrayText',
+      [thumbColorVar]: 'GrayText',
+      [progressColorVar]: 'GrayText',
+    },
   },
 
   focusIndicatorHorizontal: createFocusOutlineStyle({
@@ -86,7 +113,7 @@ export const useRootStyles = makeStyles({
 /**
  * Styles for the rail slot
  */
-export const useRailStyles = makeStyles({
+const useRailStyles = makeStyles({
   rail: {
     ...shorthands.borderRadius(tokens.borderRadiusXLarge),
     pointerEvents: 'none',
@@ -95,6 +122,8 @@ export const useRailStyles = makeStyles({
     gridColumnStart: 'slider',
     gridColumnEnd: 'slider',
     position: 'relative',
+    forcedColorAdjust: 'none',
+    // Background gradient represents the progress of the slider
     backgroundImage: `linear-gradient(
       var(${railDirectionVar}),
       var(${railColorVar}) 0%,
@@ -109,6 +138,7 @@ export const useRailStyles = makeStyles({
     ':before': {
       content: "''",
       position: 'absolute',
+      // Repeating gradient represents the steps if provided
       backgroundImage: `repeating-linear-gradient(
         var(${railDirectionVar}),
         #0000 0%,
@@ -143,13 +173,14 @@ export const useRailStyles = makeStyles({
 /**
  * Styles for the thumb slot
  */
-export const useThumbStyles = makeStyles({
+const useThumbStyles = makeStyles({
   thumb: {
     position: 'absolute',
     width: `var(${thumbSizeVar})`,
     height: `var(${thumbSizeVar})`,
     pointerEvents: 'none',
     outlineStyle: 'none',
+    forcedColorAdjust: 'none',
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${thumbColorVar})`,
@@ -207,38 +238,42 @@ const useInputStyles = makeStyles({
 /**
  * Apply styling to the Slider slots based on the state
  */
-export const useSliderStyles = (state: SliderState): SliderState => {
+export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const rootStyles = useRootStyles();
   const railStyles = useRailStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
+  const isVertical = state.vertical;
 
   state.root.className = mergeClasses(
-    sliderClassName,
+    sliderClassNames.root,
     rootStyles.root,
-    state.vertical ? rootStyles.focusIndicatorVertical : rootStyles.focusIndicatorHorizontal,
+    isVertical ? rootStyles.focusIndicatorVertical : rootStyles.focusIndicatorHorizontal,
     rootStyles[state.size!],
-    state.vertical ? rootStyles.vertical : rootStyles.horizontal,
+    isVertical ? rootStyles.vertical : rootStyles.horizontal,
     state.disabled ? rootStyles.disabled : rootStyles.enabled,
     state.root.className,
   );
 
   state.rail.className = mergeClasses(
+    sliderClassNames.rail,
     railStyles.rail,
-    state.vertical ? railStyles.vertical : railStyles.horizontal,
+    isVertical ? railStyles.vertical : railStyles.horizontal,
     state.rail.className,
   );
 
   state.thumb.className = mergeClasses(
+    sliderClassNames.thumb,
     thumbStyles.thumb,
-    state.vertical ? thumbStyles.vertical : thumbStyles.horizontal,
+    isVertical ? thumbStyles.vertical : thumbStyles.horizontal,
     state.disabled && thumbStyles.disabled,
     state.thumb.className,
   );
 
   state.input.className = mergeClasses(
+    sliderClassNames.input,
     inputStyles.input,
-    state.vertical ? inputStyles.vertical : inputStyles.horizontal,
+    isVertical ? inputStyles.vertical : inputStyles.horizontal,
     state.input.className,
   );
 

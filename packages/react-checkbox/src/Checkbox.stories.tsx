@@ -2,18 +2,18 @@ import * as React from 'react';
 import { Meta } from '@storybook/react';
 import { Checkbox } from './index';
 
-export * from './CheckboxDefault.stories';
-export * from './CheckboxChecked.stories';
-export * from './CheckboxMixed.stories';
-export * from './CheckboxDisabled.stories';
-export * from './CheckboxLarge.stories';
-export * from './CheckboxLabelBefore.stories';
-export * from './CheckboxLabelWrapping.stories';
-export * from './CheckboxRequired.stories';
-export * from './CheckboxCircular.stories';
+export { Default } from './CheckboxDefault.stories';
+export { Checked } from './CheckboxChecked.stories';
+export { Mixed } from './CheckboxMixed.stories';
+export { Disabled } from './CheckboxDisabled.stories';
+export { Large } from './CheckboxLarge.stories';
+export { LabelBefore } from './CheckboxLabelBefore.stories';
+export { LabelWrapping } from './CheckboxLabelWrapping.stories';
+export { Required } from './CheckboxRequired.stories';
+export { Circular } from './CheckboxCircular.stories';
 
 export default {
-  title: 'Components/Checkbox',
+  title: 'Preview Components/Checkbox',
   component: Checkbox,
 
   decorators: [

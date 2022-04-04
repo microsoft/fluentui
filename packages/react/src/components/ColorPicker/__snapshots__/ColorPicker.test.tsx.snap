@@ -513,6 +513,22 @@ exports[`ColorPicker renders correctly 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip1"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -671,7 +687,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField6"
+                      id="TextField8"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -683,6 +699,22 @@ exports[`ColorPicker renders correctly 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip7"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -841,7 +873,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField10"
+                      id="TextField14"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -853,6 +885,22 @@ exports[`ColorPicker renders correctly 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip13"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -1011,7 +1059,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField14"
+                      id="TextField20"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -1023,6 +1071,22 @@ exports[`ColorPicker renders correctly 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip19"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -1181,7 +1245,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField18"
+                      id="TextField26"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -1193,6 +1257,22 @@ exports[`ColorPicker renders correctly 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip25"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
         </tr>
@@ -1742,6 +1822,22 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip1"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -1900,7 +1996,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField6"
+                      id="TextField8"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -1912,6 +2008,22 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip7"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -2070,7 +2182,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField10"
+                      id="TextField14"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -2082,6 +2194,22 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip13"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -2240,7 +2368,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField14"
+                      id="TextField20"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -2252,6 +2380,22 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip19"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -2410,7 +2554,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField18"
+                      id="TextField26"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -2422,6 +2566,22 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip25"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
         </tr>
@@ -2948,6 +3108,22 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip1"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -3106,7 +3282,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField6"
+                      id="TextField8"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -3118,6 +3294,22 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip7"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -3276,7 +3468,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField10"
+                      id="TextField14"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -3288,6 +3480,22 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip13"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -3446,7 +3654,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField14"
+                      id="TextField20"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -3458,6 +3666,22 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip19"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
           <td>
@@ -3616,7 +3840,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
-                      id="TextField18"
+                      id="TextField26"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -3628,6 +3852,22 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                hidden={true}
+                id="tooltip25"
+                style={
+                  Object {
+                    "border": 0,
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                  }
+                }
+              />
             </div>
           </td>
         </tr>

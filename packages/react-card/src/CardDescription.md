@@ -1,3 +1,12 @@
-**This component is available for limited production use, please contact us if you intend to use it in your product.**
-
-**The APIs will change before final release as functionality is still being added.**
+<!-- Don't allow prettier to collapse code block into single line -->
+<!-- prettier-ignore -->
+> **⚠️ Preview components are considered unstable:**
+>
+> ```jsx
+>
+> import { Card } from '@fluentui/react-components/unstable';
+>
+> ```
+>
+> - Features and APIs may change before final release
+> - Please contact us if you intend to use this in your product

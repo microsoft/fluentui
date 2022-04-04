@@ -1,12 +1,12 @@
 import { getSlots } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useARIAButton } from './useARIAButton';
-import type { ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ARIAButtonShorthandProps } from './useARIAButton';
+import type { ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ARIAButtonSlotProps } from './useARIAButton';
 
 type Slots = {
-  root: IntrinsicShorthandProps<'div'>;
-  button: ARIAButtonShorthandProps;
+  root: Slot<'div'>;
+  button: Slot<ARIAButtonSlotProps>;
 };
 
 interface State extends ComponentState<Slots> {}
@@ -34,7 +34,7 @@ export const Default = (args: DefaultArgs) => {
 
 export const Anchor = (args: DefaultArgs) => {
   type AnchorSlots = {
-    root: ARIAButtonShorthandProps;
+    root: ARIAButtonSlotProps;
   };
   const props = useARIAButton(
     {

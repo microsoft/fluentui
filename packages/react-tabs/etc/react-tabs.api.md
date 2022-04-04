@@ -7,14 +7,18 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public (undocumented)
+export type RegisterTabEventHandler = (data: TabRegisterData) => void;
 
 // @public
-export const renderTab: (state: TabState) => JSX.Element;
+export const renderTab_unstable: (state: TabState) => JSX.Element;
 
 // @public
-export const renderTabList: (state: TabListState, contextValues: TabListContextValues) => JSX.Element;
+export const renderTabList_unstable: (state: TabListState, contextValues: TabListContextValues) => JSX.Element;
 
 // @public (undocumented)
 export type SelectTabData = {
@@ -31,31 +35,30 @@ export type SelectTabEventHandler = (event: SelectTabEvent, data: SelectTabData)
 export const Tab: ForwardRefComponent<TabProps>;
 
 // @public (undocumented)
-export const tabClassName = "fui-Tab";
+export const tabClassName: string;
 
 // @public (undocumented)
-export type TabCommons = {
-    value: TabValue;
-};
+export const tabClassNames: SlotClassNames<TabSlots>;
 
 // @public
 export const TabList: ForwardRefComponent<TabListProps>;
 
 // @public (undocumented)
-export const tabListClassName = "fui-TabList";
+export const tabListClassName: string;
 
 // @public (undocumented)
-export type TabListCommons = {
-    appearance?: 'transparent' | 'subtle';
-    onTabSelect?: SelectTabEventHandler;
-    selectedValue?: TabValue;
-    size?: 'small' | 'medium';
-    vertical?: boolean;
-};
+export const tabListClassNames: SlotClassNames<TabListSlots>;
 
 // @public (undocumented)
-export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical'>> & {
+export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListCommons, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
+    onRegister: RegisterTabEventHandler;
+    onUnregister: RegisterTabEventHandler;
     onSelect: SelectTabEventHandler;
+    getRegisteredTabs: () => {
+        selectedValue?: TabValue;
+        previousSelectedValue?: TabValue;
+        registeredTabs: Record<string, TabRegisterData>;
+    };
 };
 
 // @public
@@ -70,26 +73,33 @@ export type TabListProps = ComponentProps<TabListSlots> & TabListCommons & {
 
 // @public (undocumented)
 export type TabListSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public
-export type TabListState = ComponentState<TabListSlots> & TabListContextValue;
+export type TabListState = ComponentState<Required<TabListSlots>> & TabListContextValue;
 
 // @public
-export type TabProps = ComponentProps<TabSlots> & TabCommons;
+export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
+
+// @public (undocumented)
+export type TabRegisterData = {
+    value: TabValue;
+    ref: React_2.RefObject<HTMLElement>;
+};
 
 // @public (undocumented)
 export type TabSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    icon?: IntrinsicShorthandProps<'span'>;
-    content: IntrinsicShorthandProps<'span'>;
+    root: Slot<'button'>;
+    icon?: Slot<'span'>;
+    content: NonNullable<Slot<'span'>>;
 };
 
 // @public
-export type TabState = ComponentState<TabSlots> & TabCommons & {
-    appearance?: string;
-    selected?: boolean;
+export type TabState = ComponentState<TabSlots> & Omit<TabCommons, 'disabled'> & Required<Pick<TabCommons, 'disabled'>> & {
+    appearance?: 'transparent' | 'subtle';
+    iconOnly: boolean;
+    selected: boolean;
     size: 'small' | 'medium';
     vertical: boolean;
 };
@@ -98,16 +108,16 @@ export type TabState = ComponentState<TabSlots> & TabCommons & {
 export type TabValue = unknown;
 
 // @public
-export const useTab: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
+export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
 
 // @public
-export const useTabList: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
+export const useTabList_unstable: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
 
 // @public
-export const useTabListStyles: (state: TabListState) => TabListState;
+export const useTabListStyles_unstable: (state: TabListState) => TabListState;
 
 // @public
-export const useTabStyles: (state: TabState) => TabState;
+export const useTabStyles_unstable: (state: TabState) => TabState;
 
 // (No @packageDocumentation comment for this package)
 

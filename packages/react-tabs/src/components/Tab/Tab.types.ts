@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
  * Any value that identifies a specific tab.
@@ -9,21 +9,26 @@ export type TabSlots = {
   /**
    * Root of the component.
    */
-  root: IntrinsicShorthandProps<'div'>;
+  root: Slot<'button'>;
 
   /**
    * Icon that renders before the content.
    */
-  icon?: IntrinsicShorthandProps<'span'>;
+  icon?: Slot<'span'>;
 
   /**
    * Component children are placed in this slot
    * Avoid using the `children` property in this slot in favour of Component children whenever possible.
    */
-  content: IntrinsicShorthandProps<'span'>;
+  content: NonNullable<Slot<'span'>>;
 };
 
-export type TabCommons = {
+type TabCommons = {
+  /**
+   * A tab can be set to disable interaction.
+   * @default false
+   */
+  disabled?: boolean;
   /**
    * The value that identifies this tab when selected.
    */
@@ -33,21 +38,26 @@ export type TabCommons = {
 /**
  * Tab Props
  */
-export type TabProps = ComponentProps<TabSlots> & TabCommons;
+export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
 
 /**
  * State used in rendering Tab
  */
 export type TabState = ComponentState<TabSlots> &
-  TabCommons & {
+  Omit<TabCommons, 'disabled'> &
+  Required<Pick<TabCommons, 'disabled'>> & {
     /**
      * A tab supports 'transparent' and 'subtle' appearance.
      */
-    appearance?: string;
+    appearance?: 'transparent' | 'subtle';
     /**
-     * If this tab is selected.
+     * A tab can have only an icon slot filled and no content.
      */
-    selected?: boolean;
+    iconOnly: boolean;
+    /**
+     * If this tab is selected
+     */
+    selected: boolean;
     /**
      * A tab can be either 'small' or 'medium' size.
      */

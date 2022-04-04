@@ -6,6 +6,7 @@ import {
   shallowCompare,
   getNativeProps,
   divProperties,
+  composeComponentAs,
 } from '../../Utilities';
 import { CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck } from './DetailsRowCheck';
@@ -186,6 +187,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       onRenderCheck = this._onRenderCheck,
       onRenderDetailsCheckbox,
       onRenderItemColumn,
+      onRenderField,
       getCellValueKey,
       selectionMode,
       rowWidth = 0,
@@ -196,7 +198,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       checkButtonAriaLabel,
       checkboxCellClassName,
       /** Alias rowFieldsAs as RowFields and default to DetailsRowFields if rowFieldsAs does not exist */
-      rowFieldsAs: RowFields = DetailsRowFields,
+      rowFieldsAs,
       selection,
       indentWidth,
       enableUpdateAnimations,
@@ -261,6 +263,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       this._rowClassNames = rowClassNames;
     }
 
+    const RowFields = rowFieldsAs ? composeComponentAs(rowFieldsAs, DetailsRowFields) : DetailsRowFields;
+
     const rowFields = (
       <RowFields
         rowClassNames={this._rowClassNames}
@@ -269,8 +273,10 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         columns={columns}
         item={item}
         itemIndex={itemIndex}
+        isSelected={isSelected}
         columnStartIndex={(showCheckbox ? 1 : 0) + (groupNestingDepth ? 1 : 0)}
         onRenderItemColumn={onRenderItemColumn}
+        onRenderField={onRenderField}
         getCellValueKey={getCellValueKey}
         enableUpdateAnimations={enableUpdateAnimations}
         cellStyleProps={cellStyleProps}
@@ -280,6 +286,13 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const defaultRole = 'row';
     const role = this.props.role ? this.props.role : defaultRole;
     this._ariaRowDescriptionId = getId('DetailsRow-description');
+
+    // When the user does not specify any column is a row-header in the columns props,
+    // The aria-labelledby of the checkbox does not specify {id}-header.
+    const hasRowHeader = columns.some(column => {
+      return !!column.isRowHeader;
+    });
+    const ariaLabelledby = `${id}-checkbox` + (hasRowHeader ? ` ${id}-header` : '');
 
     return (
       <FocusZone
@@ -319,14 +332,14 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
           </span>
         ) : null}
         {showCheckbox && (
-          <div role="gridcell" aria-colindex={1} data-selection-toggle={true} className={this._classNames.checkCell}>
+          <div role="gridcell" data-selection-toggle={true} className={this._classNames.checkCell}>
             {onRenderCheck({
               id: id ? `${id}-checkbox` : undefined,
               selected: isSelected,
               selectionMode,
               anySelected: isSelectionModal,
               'aria-label': checkButtonAriaLabel,
-              'aria-labelledby': id ? `${id}-checkbox ${id}-header` : undefined,
+              'aria-labelledby': id ? ariaLabelledby : undefined,
               canSelect,
               compact,
               className: this._classNames.check,

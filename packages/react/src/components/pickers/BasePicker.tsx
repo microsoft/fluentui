@@ -246,7 +246,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   public render(): JSX.Element {
     const { suggestedDisplayValue, isFocused, items } = this.state;
     const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;
-    const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
+
+    const suggestionsVisible = !!this.state.suggestionsVisible;
+    const suggestionsAvailable = suggestionsVisible ? this._ariaMap.suggestionList : undefined;
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
@@ -285,6 +287,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         onKeyDown={this.onKeyDown}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
+        onClick={this.onWrapperClick}
       >
         {this.renderCustomAlert(classNames.screenReaderText)}
         <span id={`${this._ariaMap.selectedItems}-label`} hidden>
@@ -314,10 +317,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
                 onBlur={this.onInputBlur}
                 onInputValueChange={this.onInputChange}
                 suggestedDisplayValue={suggestedDisplayValue}
-                aria-activedescendant={this.getActiveDescendant()}
+                aria-activedescendant={suggestionsVisible ? this.getActiveDescendant() : undefined}
                 aria-controls={suggestionsAvailable}
                 aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
-                aria-expanded={!!this.state.suggestionsVisible}
+                aria-expanded={suggestionsVisible}
                 aria-haspopup="listbox"
                 aria-label={comboLabel}
                 role="combobox"
@@ -584,6 +587,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
           this.props.onBlur(ev as React.FocusEvent<HTMLInputElement>);
         }
       }
+    }
+  };
+
+  /**
+   * Resets focus to last element in wrapper div if clicking back into Picker that has hit item limit
+   */
+  protected onWrapperClick = (ev: React.MouseEvent<HTMLInputElement>): void => {
+    if (!this.canAddItems()) {
+      this.resetFocus(this.state.items.length - 1);
     }
   };
 
@@ -1039,7 +1051,9 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     const { suggestedDisplayValue, isFocused } = this.state;
     const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;
 
-    const suggestionsAvailable: string | undefined = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
+    const suggestionsVisible = !!this.state.suggestionsVisible;
+
+    const suggestionsAvailable: string | undefined = suggestionsVisible ? this._ariaMap.suggestionList : undefined;
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
@@ -1075,7 +1089,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       <div ref={this.root} onBlur={this.onBlur} onFocus={this.onFocus}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.renderCustomAlert(classNames.screenReaderText)}
-          <div className={classNames.text} aria-owns={suggestionsAvailable || undefined}>
+          <div className={classNames.text} aria-owns={suggestionsAvailable}>
             <Autofill
               {...(inputProps as any)}
               className={classNames.input}
@@ -1085,9 +1099,9 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               onClick={this.onClick}
               onInputValueChange={this.onInputChange}
               suggestedDisplayValue={suggestedDisplayValue}
-              aria-activedescendant={this.getActiveDescendant()}
-              aria-controls={suggestionsAvailable || undefined}
-              aria-expanded={!!this.state.suggestionsVisible}
+              aria-activedescendant={suggestionsVisible ? this.getActiveDescendant() : undefined}
+              aria-controls={suggestionsAvailable}
+              aria-expanded={suggestionsVisible}
               aria-haspopup="listbox"
               aria-label={comboLabel}
               role="combobox"

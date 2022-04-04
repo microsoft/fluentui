@@ -44,7 +44,7 @@ _This property suffered no changes and can be left as is._
 
 The `nowrap` property was changed to `wrap` and it is `true` by default. You can achieve the same result as `nowrap` by using:
 
-```
+```tsx
 <Text wrap={false}>Not wrapped</Text>
 ```
 
@@ -69,7 +69,7 @@ Variants are now represented with tokens that you can override on a theme level.
 
 You can use them with Text as such:
 
-```
+```tsx
 <Text size={300}>Text</Text>
 ```
 
@@ -88,8 +88,10 @@ _This property suffered no changes and can be left as is._
 
 To achieve the same result with the new `truncate` property, you'll need to do the following:
 
-```
-<Text block truncate wrap={false}>Not wrapped</Text>
+```tsx
+<Text block truncate wrap={false}>
+  Not wrapped
+</Text>
 ```
 
 This is due to `truncate` changing the CSS property `text-overflow` to `ellipsis`.
@@ -109,7 +111,7 @@ While the name remains the same, the values are now represented with integer tok
 
 You can use them with Text as such:
 
-```
+```tsx
 <Text size={300}>Text</Text>
 ```
 
@@ -129,18 +131,20 @@ Northstar design tokens:
 
 - Color: `siteVariables.colors.brand[600]`
 
-```
-const useStyles = makeStyles(theme => ({
+```tsx
+import { makeStyles, Text } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
   root: {
-     color: 'rgb(98, 100, 167)'
+    color: 'rgb(98, 100, 167)',
   },
-})
+});
 
 const MyComponent = () => {
-    const styles = useStyles()
+  const styles = useStyles();
 
-    return <Text className={styles.root}>{...}</Text>
-}
+  return <Text className={styles.root}>{/* ... */}</Text>;
+};
 ```
 
 ##### **teamsDarkTheme**
@@ -149,18 +153,20 @@ Northstar design tokens:
 
 - Color: `siteVariables.colors.brand[400]`
 
-```
-const useStyles = makeStyles(theme => ({
+```tsx
+import { makeStyles, Text } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
   root: {
-     color: 'rgb(166, 167, 220)'
+    color: 'rgb(166, 167, 220)',
   },
-})
+});
 
 const MyComponent = () => {
-    const styles = useStyles()
+  const styles = useStyles();
 
-    return <Text className={styles.root}>{...}</Text>
-}
+  return <Text className={styles.root}>{/* ... */}</Text>;
+};
 ```
 
 ##### **teamsHighContrastTheme**
@@ -169,18 +175,20 @@ Northstar design tokens:
 
 - Color: `siteVariables.accessibleYellow`
 
-```
-const useStyles = makeStyles(theme => ({
+```tsx
+import { makeStyles, Text } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
   root: {
-     color: 'rgb(255, 255, 1)'
+    color: 'rgb(255, 255, 1)',
   },
-})
+});
 
 const MyComponent = () => {
-    const styles = useStyles()
+  const styles = useStyles();
 
-    return <Text className={styles.root}>{...}</Text>
-}
+  return <Text className={styles.root}>{/* ... */}</Text>;
+};
 ```
 
 #### Using `atMention="me"`
@@ -192,19 +200,21 @@ Northstar design tokens:
 - Color: `siteVariables.colors.orange[400]`
 - Font weight: `siteVariables.fontWeightBold`
 
-```
-const useStyles = makeStyles(theme => ({
+```tsx
+import { makeStyles, Text } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
   root: {
-     color: 'rgb(204, 74, 49)',
-     fontWeight: 700
+    color: 'rgb(204, 74, 49)',
+    fontWeight: 700,
   },
-})
+});
 
 const MyComponent = () => {
-    const styles = useStyles()
+  const styles = useStyles();
 
-    return <Text className={styles.root}>{...}</Text>
-}
+  return <Text className={styles.root}>{/* ... */}</Text>;
+};
 ```
 
 ##### **teamsDarkTheme**
@@ -214,19 +224,21 @@ Northstar design tokens:
 - Color: `siteVariables.colors.orange[300]`
 - Font weight: `siteVariables.fontWeightBold`
 
-```
-const useStyles = makeStyles(theme => ({
+```tsx
+import { makeStyles, Text } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
   root: {
-     color: 'rgb(233, 117, 72)',
-     fontWeight: 700
+    color: 'rgb(233, 117, 72)',
+    fontWeight: 700,
   },
-})
+});
 
 const MyComponent = () => {
-    const styles = useStyles()
+  const styles = useStyles();
 
-    return <Text className={styles.root}>{...}</Text>
-}
+  return <Text className={styles.root}>{/* ... */}</Text>;
+};
 ```
 
 ##### **teamsHighContrastTheme**
@@ -236,37 +248,41 @@ Northstar design tokens:
 - Color: `siteVariables.accessibleYellow`
 - Font weight: `siteVariables.fontWeightBold`
 
-```
-const useStyles = makeStyles(theme => ({
+```tsx
+import { makeStyles, Text } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
   root: {
-     color: 'rgb(255, 255, 1)',
-     fontWeight: 700
+    color: 'rgb(255, 255, 1)',
+    fontWeight: 700,
   },
-})
+});
 
 const MyComponent = () => {
-    const styles = useStyles()
+  const styles = useStyles();
 
-    return <Text className={styles.root}>{...}</Text>
-}
+  return <Text className={styles.root}>{/* ... */}</Text>;
+};
 ```
 
 ### color
 
 This property was deprecated. Below is a simple example on how to achieve the same result:
 
-```
-const useStyles = makeStyles(theme => ({
+```tsx
+import { makeStyles, Text } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
   root: {
-    color: //Your color here
+    color: '__ put your color there __',
   },
-})
+});
 
 const MyComponent = () => {
-    const styles = useStyles()
+  const styles = useStyles();
 
-    return <Text className={styles.root}>{...}</Text>
-}
+  return <Text className={styles.root}>{/* ... */}</Text>;
+};
 ```
 
 _Read more about the CSS prop: [color](https://developer.mozilla.org/en-US/docs/Web/CSS/color)_
@@ -276,13 +292,13 @@ _Read more about the CSS prop: [color](https://developer.mozilla.org/en-US/docs/
 The `content` prop works the same way as the native `children` prop in React.
 You can either use:
 
-```
+```tsx
 <Text children="Hello World!" />
 ```
 
 Or the common and recomended way:
 
-```
+```tsx
 <Text>Hello World!</Text>
 ```
 
@@ -297,6 +313,8 @@ Northstar design tokens:
 - Color: `siteVariables.colors.grey[250]`
 
 ```
+import { makeStyles, Text } from '@fluentui/react-components';
+
 const useStyles = makeStyles(theme => ({
   root: {
      color: 'rgb(200, 198, 196)'
@@ -317,6 +335,8 @@ Northstar design tokens:
 - Color: `siteVariables.colors.grey[450]`
 
 ```
+import { makeStyles, Text } from '@fluentui/react-components';
+
 const useStyles = makeStyles(theme => ({
   root: {
      color: 'rgb(96, 94, 92)'
@@ -337,6 +357,8 @@ Northstar design tokens:
 - Color: `siteVariables.accessibleGreen`
 
 ```
+import { makeStyles, Text } from '@fluentui/react-components';
+
 const useStyles = makeStyles(theme => ({
   root: {
      color: 'rgb(63, 242, 63)'
@@ -361,6 +383,8 @@ Northstar design tokens:
 - Color: `siteVariables.colorScheme.red.foreground`
 
 ```
+import { makeStyles, Text } from '@fluentui/react-components';
+
 const useStyles = makeStyles(theme => ({
   root: {
      color: 'rgb(196, 49, 75)'
@@ -381,6 +405,8 @@ Northstar design tokens:
 - Color: `siteVariables.colors.red[300]`
 
 ```
+import { makeStyles, Text } from '@fluentui/react-components';
+
 const useStyles = makeStyles(theme => ({
   root: {
      color: 'rgb(231, 53, 80)'
@@ -401,6 +427,8 @@ Northstar design tokens:
 - Color: `siteVariables.red`
 
 ```
+import { makeStyles, Text } from '@fluentui/react-components';
+
 const useStyles = makeStyles(theme => ({
   root: {
      color: 'rgb(255, 0, 0)'
@@ -426,6 +454,8 @@ Northstar design tokens:
 - Font weight: `siteVariables.fontWeightBold`
 
 ```
+import { makeStyles, Text } from '@fluentui/react-components';
+
 const useStyles = makeStyles(theme => ({
   root: {
      color: 'rgb(196, 49, 75)',
@@ -448,6 +478,8 @@ Northstar design tokens:
 - Font weight: `siteVariables.fontWeightBold`
 
 ```
+import { makeStyles, Text } from '@fluentui/react-components';
+
 const useStyles = makeStyles(theme => ({
   root: {
      color: 'rgb(231, 53, 80)',
@@ -470,6 +502,8 @@ Northstar design tokens:
 - Font weight: `siteVariables.fontWeightBold`
 
 ```
+import { makeStyles, Text } from '@fluentui/react-components';
+
 const useStyles = makeStyles(theme => ({
   root: {
      color: 'rgb(255, 0, 0)',
@@ -495,6 +529,8 @@ Northstar design tokens:
 - Color: `siteVariables.colors.green[600]`
 
 ```
+import { makeStyles, Text } from '@fluentui/react-components';
+
 const useStyles = makeStyles(theme => ({
   root: {
      color: 'rgb(35, 123, 75)'
@@ -515,6 +551,8 @@ Northstar design tokens:
 - Color: `siteVariables.colors.green[200]`
 
 ```
+import { makeStyles, Text } from '@fluentui/react-components';
+
 const useStyles = makeStyles(theme => ({
   root: {
      color: 'rgb(146, 195, 83)'
@@ -534,36 +572,40 @@ Northstar design tokens:
 
 - Color: `siteVariables.colors.green[200]`
 
-```
-const useStyles = makeStyles(theme => ({
+```tsx
+import { makeStyles, Text } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
   root: {
-     color: 'rgb(146, 195, 83)'
+    color: 'rgb(146, 195, 83)',
   },
-})
+});
 
 const MyComponent = () => {
-    const styles = useStyles()
+  const styles = useStyles();
 
-    return <Text className={styles.root}>{...}</Text>
-}
+  return <Text className={styles.root}>{/* ... */}</Text>;
+};
 ```
 
 ### temporary [DEPRECATED]
 
 This property was deprecated. Given that this property depends on the applied style, you can find below examples on how to achieve the same results in the default, dark and high contrast themes:
 
-```
-const useStyles = makeStyles(theme => ({
+```tsx
+import { makeStyles, Text } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
   root: {
-     fontStyle: 'italic'
+    fontStyle: 'italic',
   },
-})
+});
 
 const MyComponent = () => {
-    const styles = useStyles()
+  const styles = useStyles();
 
-    return <Text className={styles.root}>{...}</Text>
-}
+  return <Text className={styles.root}>{/* ... */}</Text>;
+};
 ```
 
 ### timestamp [DEPRECATED]
@@ -576,18 +618,20 @@ Northstar design tokens:
 
 - Color: `siteVariables.colorScheme.default.foreground1`
 
-```
-const useStyles = makeStyles(theme => ({
+```tsx
+import { makeStyles, Text } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
   root: {
-     color: 'rgb(72, 70, 68)'
+    color: 'rgb(72, 70, 68)',
   },
-})
+});
 
 const MyComponent = () => {
-    const styles = useStyles()
+  const styles = useStyles();
 
-    return <Text className={styles.root}>{...}</Text>
-}
+  return <Text className={styles.root}>{/* ... */}</Text>;
+};
 ```
 
 #### **teamsDarkTheme**
@@ -596,18 +640,20 @@ Northstar design tokens:
 
 - Color: `siteVariables.colorScheme.default.foreground1`
 
-```
-const useStyles = makeStyles(theme => ({
+```tsx
+import { makeStyles, Text } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
   root: {
-     color: 'rgb(138, 136, 134)'
+    color: 'rgb(138, 136, 134)',
   },
-})
+});
 
 const MyComponent = () => {
-    const styles = useStyles()
+  const styles = useStyles();
 
-    return <Text className={styles.root}>{...}</Text>
-}
+  return <Text className={styles.root}>{/* ... */}</Text>;
+};
 ```
 
 #### **teamsHighContrastTheme**
@@ -616,23 +662,25 @@ Northstar design tokens:
 
 - Color: `siteVariables.colors.white`
 
-```
-const useStyles = makeStyles(theme => ({
+```tsx
+import { makeStyles, Text } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
   root: {
-     color: 'rgb(255, 255, 255)'
+    color: 'rgb(255, 255, 255)',
   },
-})
+});
 
 const MyComponent = () => {
-    const styles = useStyles()
+  const styles = useStyles();
 
-    return <Text className={styles.root}>{...}</Text>
-}
+  return <Text className={styles.root}>{/* ... */}</Text>;
+};
 ```
 
 ### variables [DEPRECATED]
 
-For v9, this feature is no longer supported. The alternative is to apply styles through `make-styles`. Below is an example of a migration:
+For v9, this feature is no longer supported. The alternative is to apply styles through `makeStyles()` (see [Griffel](https://github.com/microsoft/griffel) docs for more details). Below is an example of a migration:
 
 #### v0 (Northstar) implementation
 
@@ -644,18 +692,20 @@ const MyComponent = () => {
 
 #### v9 (Fluent UI) implementation
 
-```
-const useStyles = makeStyles(theme => ({
+```tsx
+import { makeStyles, Text } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
   red: {
-     color: 'red'
+    color: 'red',
   },
-})
+});
 
 const MyComponent = () => {
-    const styles = useStyles()
+  const styles = useStyles();
 
-    return <Text className={styles.root}>{...}</Text>
-}
+  return <Text className={styles.root}>{/* ... */}</Text>;
+};
 ```
 
 ### weight
@@ -677,4 +727,4 @@ _This property suffered no changes and can be left as is._
 
 ### styles
 
-_This property suffered no changes and can be used as is. However, we highly recommend that you migrate to a `make-styles` styling solution for performance reasons._
+_This property suffered no changes and can be used as is. However, we highly recommend that you migrate to `makeStyles()` (a [Griffel](https://github.com/microsoft/griffel) styling solution) for performance reasons._

@@ -1,8 +1,18 @@
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { InputState } from './Input.types';
+import type { InputSlots, InputState } from './Input.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `inputClassNames.root` instead.
+ */
 export const inputClassName = 'fui-Input';
+export const inputClassNames: SlotClassNames<InputSlots> = {
+  root: 'fui-Input',
+  input: 'fui-Input__input',
+  contentBefore: 'fui-Input__contentBefore',
+  contentAfter: 'fui-Input__contentAfter',
+};
 
 // TODO(sharing) use theme values once available
 const horizontalSpacing = {
@@ -45,7 +55,7 @@ const fieldHeights = {
 
 const useRootStyles = makeStyles({
   base: {
-    display: 'flex',
+    display: 'inline-flex',
     alignItems: 'center',
     flexWrap: 'nowrap',
     ...shorthands.gap(horizontalSpacing.xxs),
@@ -118,9 +128,6 @@ const useRootStyles = makeStyles({
     ...shorthands.padding('0', horizontalSpacing.m),
     ...contentSizes[400],
     ...shorthands.gap(horizontalSpacing.sNudge),
-  },
-  inline: {
-    display: 'inline-flex',
   },
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
@@ -231,12 +238,22 @@ const useContentStyles = makeStyles({
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
   },
+  // Ensure resizable icons show up with the proper font size
+  small: {
+    '> svg': { fontSize: '16px' },
+  },
+  medium: {
+    '> svg': { fontSize: '20px' },
+  },
+  large: {
+    '> svg': { fontSize: '24px' },
+  },
 });
 
 /**
  * Apply styling to the Input slots based on the state
  */
-export const useInputStyles = (state: InputState): InputState => {
+export const useInputStyles_unstable = (state: InputState): InputState => {
   const { size, appearance } = state;
   const disabled = state.input.disabled;
   const filled = appearance.startsWith('filled');
@@ -246,7 +263,7 @@ export const useInputStyles = (state: InputState): InputState => {
   const contentStyles = useContentStyles();
 
   state.root.className = mergeClasses(
-    inputClassName,
+    inputClassNames.root,
     rootStyles.base,
     rootStyles[size],
     rootStyles[appearance],
@@ -254,25 +271,33 @@ export const useInputStyles = (state: InputState): InputState => {
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
-    state.inline && rootStyles.inline,
     filled && rootStyles.filled,
     disabled && rootStyles.disabled,
     state.root.className,
   );
 
   state.input.className = mergeClasses(
+    inputClassNames.input,
     inputStyles.base,
     inputStyles[size],
     disabled && inputStyles.disabled,
     state.input.className,
   );
 
-  const contentClasses = [contentStyles.base, disabled && contentStyles.disabled];
+  const contentClasses = [contentStyles.base, disabled && contentStyles.disabled, contentStyles[size]];
   if (state.contentBefore) {
-    state.contentBefore.className = mergeClasses(...contentClasses, state.contentBefore.className);
+    state.contentBefore.className = mergeClasses(
+      inputClassNames.contentBefore,
+      ...contentClasses,
+      state.contentBefore.className,
+    );
   }
   if (state.contentAfter) {
-    state.contentAfter.className = mergeClasses(...contentClasses, state.contentAfter.className);
+    state.contentAfter.className = mergeClasses(
+      inputClassNames.contentAfter,
+      ...contentClasses,
+      state.contentAfter.className,
+    );
   }
 
   return state;
