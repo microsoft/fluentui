@@ -1,10 +1,30 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, Button, Menu, MenuTrigger, MenuPopover, MenuList } from '@fluentui/react-components';
+import {
+  makeStyles,
+  mergeClasses,
+  Button,
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  shorthands,
+} from '@fluentui/react-components';
 import { Overflow } from '../components/Overflow';
 import { useOverflowMenu } from '../useOverflowMenu';
 import { TestOverflowItem, TestOverflowItemProps, TestOverflowMenuItem } from './utils.stories';
 
+const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    flexWrap: 'nowrap',
+    minWidth: 0,
+    ...shorthands.overflow('hidden'),
+  },
+});
+
 export const Selection = () => {
+  const styles = useStyles();
+
   const [selected, setSelected] = React.useState<string>('0');
 
   const onSelect = (itemId: string) => {
@@ -15,10 +35,12 @@ export const Selection = () => {
 
   return (
     <Overflow>
-      {itemIds.map(i => (
-        <OverflowSelectionItem onSelectItem={onSelect} key={i} id={i} selected={selected === i} />
-      ))}
-      <OverflowMenu itemIds={itemIds} onSelect={onSelect} />
+      <div className={styles.container}>
+        {itemIds.map(i => (
+          <OverflowSelectionItem onSelectItem={onSelect} key={i} id={i} selected={selected === i} />
+        ))}
+        <OverflowMenu itemIds={itemIds} onSelect={onSelect} />
+      </div>
     </Overflow>
   );
 };
