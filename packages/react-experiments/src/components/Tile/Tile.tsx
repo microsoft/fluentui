@@ -1,12 +1,26 @@
 import * as React from 'react';
 import { Check } from '@fluentui/react/lib/Check';
 import { SELECTION_CHANGE } from '@fluentui/react/lib/Selection';
-import { css, initializeComponentRef, getId, getNativeProps, divProperties, EventGroup } from '../../Utilities';
+import {
+  css,
+  initializeComponentRef,
+  getId,
+  getNativeProps,
+  divProperties,
+  EventGroup,
+  composeRenderFunction,
+} from '../../Utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
 import * as CheckStylesModule from './Check.scss';
-import type { ITileProps, TileSize } from './Tile.types';
-import type { ISize } from '../../Utilities';
+import type {
+  ITileBackgroundProps,
+  ITileForegroundProps,
+  ITileLayout,
+  ITileNameplateProps,
+  ITileProps,
+  TileSize,
+} from './Tile.types';
 
 const TileStyles: any = TileStylesModule;
 const SignalStyles: any = SignalStylesModule;
@@ -138,8 +152,8 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       selectionIndex = -1,
       invokeSelection = false,
       selection,
-      background,
-      foreground,
+      background: propsBackground,
+      foreground: propsForeground,
       showBackgroundFrame = false,
       showForegroundFrame = false,
       hideBackground = false,
@@ -163,6 +177,9 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       ariaLabelSelected,
       nameplateOnlyOnHover,
       disabled = false,
+      onRenderBackground: propsOnRenderBackground,
+      onRenderForeground: propsOnRenderForeground,
+      onRenderNameplate: propsOnRenderNameplate,
       ...divProps
     } = this.props;
 
@@ -171,6 +188,22 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     const { isSelectable = !disabled && !!selection && selectionIndex > -1 } = this.props;
     const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
     const ariaLabelWithSelectState = isSelected && ariaLabelSelected ? `${ariaLabel}, ${ariaLabelSelected}` : ariaLabel;
+
+    const tileLayout = getTileLayoutFromProps(this.props);
+
+    const background = typeof propsBackground === 'function' ? propsBackground(tileLayout) : propsBackground;
+    const foreground = typeof propsForeground === 'function' ? propsForeground(tileLayout) : propsForeground;
+
+    const onRenderBackground = propsOnRenderBackground
+      ? composeRenderFunction(propsOnRenderBackground, this._onRenderBackground)
+      : this._onRenderBackground;
+    const onRenderForeground = propsOnRenderForeground
+      ? composeRenderFunction(propsOnRenderForeground, this._onRenderForeground)
+      : this._onRenderForeground;
+    const onRenderNameplate = propsOnRenderNameplate
+      ? composeRenderFunction(propsOnRenderNameplate, this._onRenderNameplate)
+      : this._onRenderNameplate;
+
     const content = (
       <>
         {ariaLabel ? (
@@ -178,25 +211,25 @@ export class Tile extends React.Component<ITileProps, ITileState> {
             {ariaLabelWithSelectState}
           </span>
         ) : null}
-        {background
-          ? this._onRenderBackground({
-              background: background,
-              hideBackground,
-            })
-          : null}
-        {foreground
-          ? this._onRenderForeground({
-              foreground: foreground,
-              hideForeground,
-            })
-          : null}
-        {itemName || itemActivity
-          ? this._onRenderNameplate({
-              name: itemName,
-              activity: itemActivity,
-              onlyOnHover: !!nameplateOnlyOnHover,
-            })
-          : null}
+        {onRenderBackground({
+          background,
+          hideBackground,
+          ...tileLayout,
+          isSelected,
+        })}
+        {onRenderForeground({
+          foreground,
+          hideForeground,
+          ...tileLayout,
+          isSelected,
+        })}
+        {onRenderNameplate({
+          itemName,
+          itemActivity,
+          nameplateOnlyOnHover,
+          ...tileLayout,
+          isSelected,
+        })}
       </>
     );
 
@@ -264,87 +297,88 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     );
   }
 
-  private _onRenderBackground({
-    background,
-    hideBackground,
-  }: {
-    background: ITileProps['background'];
-    hideBackground: boolean;
-  }): JSX.Element | null {
-    const finalBackground =
-      typeof background === 'function' ? background(getTileLayoutFromProps(this.props)) : background;
+  private _onRenderBackground = (backgroundProps?: ITileBackgroundProps): JSX.Element | null => {
+    if (!backgroundProps) {
+      return null;
+    }
 
-    return finalBackground ? (
+    const { background, hideBackground, className } = backgroundProps;
+
+    return background ? (
       <span
         key="background"
-        className={css('ms-Tile-background', TileStyles.background, {
-          [`ms-Tile-background--hide ${TileStyles.backgroundHide}`]: hideBackground,
-        })}
+        className={css(
+          'ms-Tile-background',
+          TileStyles.background,
+          {
+            [`ms-Tile-background--hide ${TileStyles.backgroundHide}`]: hideBackground,
+          },
+          className,
+        )}
       >
-        {finalBackground}
+        {background}
       </span>
     ) : null;
-  }
+  };
 
-  private _onRenderForeground({
-    foreground,
-    hideForeground,
-  }: {
-    foreground: ITileProps['foreground'];
-    hideForeground: boolean;
-  }): JSX.Element | null {
-    const finalForeground =
-      typeof foreground === 'function' ? foreground(getTileLayoutFromProps(this.props)) : foreground;
+  private _onRenderForeground = (foregroundProps?: ITileForegroundProps): JSX.Element | null => {
+    if (!foregroundProps) {
+      return null;
+    }
 
-    return finalForeground ? (
+    const { foreground, hideForeground, className } = foregroundProps;
+
+    return foreground ? (
       <span key="foreground" role="presentation" className={css('ms-Tile-aboveNameplate', TileStyles.aboveNameplate)}>
         <span role="presentation" className={css('ms-Tile-content', TileStyles.content)}>
           <span
             role="presentation"
-            className={css('ms-Tile-foreground', TileStyles.foreground, {
-              [`ms-Tile-foreground--hide ${TileStyles.foregroundHide}`]: hideForeground,
-            })}
+            className={css(
+              'ms-Tile-foreground',
+              TileStyles.foreground,
+              {
+                [`ms-Tile-foreground--hide ${TileStyles.foregroundHide}`]: hideForeground,
+              },
+              className,
+            )}
           >
-            {finalForeground}
+            {foreground}
           </span>
         </span>
       </span>
     ) : null;
-  }
+  };
 
-  private _onRenderNameplate({
-    name,
-    activity,
-    onlyOnHover,
-  }: {
-    name: React.ReactNode;
-    activity: React.ReactNode;
-    onlyOnHover: boolean;
-  }): JSX.Element {
-    return (
+  private _onRenderNameplate = (nameplateProps?: ITileNameplateProps): JSX.Element | null => {
+    if (!nameplateProps) {
+      return null;
+    }
+
+    const { itemName, itemActivity, nameplateOnlyOnHover, className } = nameplateProps;
+
+    return itemName || itemActivity ? (
       <span
         key="nameplate"
-        className={css('ms-Tile-nameplate', TileStyles.nameplate, { [TileStyles.onlyOnHover]: onlyOnHover })}
+        className={css(
+          'ms-Tile-nameplate',
+          TileStyles.nameplate,
+          { [TileStyles.onlyOnHover]: nameplateOnlyOnHover },
+          className,
+        )}
       >
-        {name ? (
-          <span
-            id={this._nameId}
-            className={css('ms-Tile-name', TileStyles.name, { [TileStyles.onlyOnHover]: onlyOnHover })}
-          >
-            {name}
+        {itemName ? (
+          <span id={this._nameId} className={css('ms-Tile-name', TileStyles.name)}>
+            {itemName}
           </span>
         ) : null}
-        {activity ? (
-          <span
-            id={this._activityId}
-            className={css('ms-Tile-activity', TileStyles.activity, { [TileStyles.onlyOnHover]: onlyOnHover })}
-          >
-            {activity}
+        {itemActivity ? (
+          <span id={this._activityId} className={css('ms-Tile-activity', TileStyles.activity)}>
+            {itemActivity}
           </span>
         ) : null}
       </span>
-    );
-  }
+    ) : null;
+  };
 
   private _onRenderCheck({ isSelected }: { isSelected: boolean }): JSX.Element {
     const { toggleSelectionAriaLabel } = this.props;
@@ -378,10 +412,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
   };
 }
 
-export interface ITileLayout {
-  foregroundSize?: ISize | undefined;
-  backgroundSize?: ISize | undefined;
-}
+export type { ITileLayout };
 
 export function getTileLayout(tileElement: JSX.Element): ITileLayout {
   const tileProps: ITileProps = tileElement.props;

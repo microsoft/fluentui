@@ -349,6 +349,24 @@ Array [
                 role="none"
               >
                 Person A
+                <div
+                  hidden={true}
+                  id="tooltip4"
+                  style={
+                    Object {
+                      "border": 0,
+                      "height": 1,
+                      "margin": -1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "absolute",
+                      "whiteSpace": "nowrap",
+                      "width": 1,
+                    }
+                  }
+                >
+                  Person A
+                </div>
               </div>
             </div>
             <div
@@ -881,6 +899,24 @@ Array [
                 role="none"
               >
                 Person B
+                <div
+                  hidden={true}
+                  id="tooltip12"
+                  style={
+                    Object {
+                      "border": 0,
+                      "height": 1,
+                      "margin": -1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "absolute",
+                      "whiteSpace": "nowrap",
+                      "width": 1,
+                    }
+                  }
+                >
+                  Person B
+                </div>
               </div>
             </div>
             <div
@@ -1418,6 +1454,24 @@ Array [
                 role="none"
               >
                 Person A
+                <div
+                  hidden={true}
+                  id="tooltip20"
+                  style={
+                    Object {
+                      "border": 0,
+                      "height": 1,
+                      "margin": -1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "absolute",
+                      "whiteSpace": "nowrap",
+                      "width": 1,
+                    }
+                  }
+                >
+                  Person A
+                </div>
               </div>
             </div>
             <div
@@ -1950,6 +2004,24 @@ Array [
                 role="none"
               >
                 Person B
+                <div
+                  hidden={true}
+                  id="tooltip28"
+                  style={
+                    Object {
+                      "border": 0,
+                      "height": 1,
+                      "margin": -1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "absolute",
+                      "whiteSpace": "nowrap",
+                      "width": 1,
+                    }
+                  }
+                >
+                  Person B
+                </div>
               </div>
             </div>
             <div

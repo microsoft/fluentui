@@ -80,6 +80,19 @@ export const blackAlpha: Record<AlphaColors, string> = {
   '90': 'rgba(0, 0, 0, 0.9)',
 };
 
+export const grey14Alpha: Record<AlphaColors, string> = {
+  '5': 'rgba(36, 36, 36, 0.05)',
+  '10': 'rgba(36, 36, 36, 0.1)',
+  '20': 'rgba(36, 36, 36, 0.2)',
+  '30': 'rgba(36, 36, 36, 0.3)',
+  '40': 'rgba(36, 36, 36, 0.4)',
+  '50': 'rgba(36, 36, 36, 0.5)',
+  '60': 'rgba(36, 36, 36, 0.6)',
+  '70': 'rgba(36, 36, 36, 0.7)',
+  '80': 'rgba(36, 36, 36, 0.8)',
+  '90': 'rgba(36, 36, 36, 0.9)',
+};
+
 export const white = '#ffffff';
 
 export const black = '#000000';

@@ -12,19 +12,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export const indicatorLengthVar = "--selection-indicator-length";
-
-// @public (undocumented)
-export const indicatorOffsetVar = "--selection-indicator-offset";
-
-// @public (undocumented)
-export type RegisterTabData = {
-    value: TabValue;
-    ref: React_2.RefObject<HTMLElement>;
-};
-
-// @public (undocumented)
-export type RegisterTabEventHandler = (data: RegisterTabData) => void;
+export type RegisterTabEventHandler = (data: TabRegisterData) => void;
 
 // @public
 export const renderTab_unstable: (state: TabState) => JSX.Element;
@@ -46,36 +34,31 @@ export type SelectTabEventHandler = (event: SelectTabEvent, data: SelectTabData)
 // @public
 export const Tab: ForwardRefComponent<TabProps>;
 
-// @public @deprecated (undocumented)
-export const tabClassName = "fui-Tab";
+// @public (undocumented)
+export const tabClassName: string;
 
 // @public (undocumented)
 export const tabClassNames: SlotClassNames<TabSlots>;
 
 // @public
-export type TabContentRect = {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-};
-
-// @public
 export const TabList: ForwardRefComponent<TabListProps>;
 
-// @public @deprecated (undocumented)
-export const tabListClassName = "fui-TabList";
+// @public (undocumented)
+export const tabListClassName: string;
 
 // @public (undocumented)
 export const tabListClassNames: SlotClassNames<TabListSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "TabListCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical'>> & {
+export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListCommons, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
     onRegister: RegisterTabEventHandler;
     onUnregister: RegisterTabEventHandler;
     onSelect: SelectTabEventHandler;
+    getRegisteredTabs: () => {
+        selectedValue?: TabValue;
+        previousSelectedValue?: TabValue;
+        registeredTabs: Record<string, TabRegisterData>;
+    };
 };
 
 // @public
@@ -89,34 +72,34 @@ export type TabListProps = ComponentProps<TabListSlots> & TabListCommons & {
 };
 
 // @public (undocumented)
-export const tabListSelectionIndicatorName = "fui-TabList__selectionIndicator";
-
-// @public (undocumented)
 export type TabListSlots = {
     root: Slot<'div'>;
 };
 
 // @public
-export type TabListState = ComponentState<Required<TabListSlots>> & TabListContextValue & {
-    selectedTabRect?: TabContentRect;
-};
+export type TabListState = ComponentState<Required<TabListSlots>> & TabListContextValue;
 
-// Warning: (ae-forgotten-export) The symbol "TabCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
 
 // @public (undocumented)
+export type TabRegisterData = {
+    value: TabValue;
+    ref: React_2.RefObject<HTMLElement>;
+};
+
+// @public (undocumented)
 export type TabSlots = {
-    root: Slot<'div'>;
+    root: Slot<'button'>;
     icon?: Slot<'span'>;
     content: NonNullable<Slot<'span'>>;
 };
 
 // @public
-export type TabState = ComponentState<TabSlots> & TabCommons & {
-    appearance?: string;
-    selected?: boolean;
+export type TabState = ComponentState<TabSlots> & Omit<TabCommons, 'disabled'> & Required<Pick<TabCommons, 'disabled'>> & {
+    appearance?: 'transparent' | 'subtle';
+    iconOnly: boolean;
+    selected: boolean;
     size: 'small' | 'medium';
     vertical: boolean;
 };

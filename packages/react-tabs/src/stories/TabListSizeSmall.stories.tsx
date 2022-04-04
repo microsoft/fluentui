@@ -1,7 +1,7 @@
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { makeStyles, shorthands } from '@griffel/react';
 import * as React from 'react';
-import { Tab, TabList, TabProps } from '../index';
+import { Tab, TabList } from '../index';
 
 const useStyles = makeStyles({
   root: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const SizeSmall = (props: Partial<TabProps>) => {
+export const SizeSmall = () => {
   const styles = useStyles();
 
   const renderTabs = () => {
