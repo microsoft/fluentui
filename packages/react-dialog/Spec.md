@@ -72,18 +72,18 @@ In v0, the Dialog component expects all the content through props, including the
 
 ## API proposal
 
-Dialog component is composed by 5 sub-components: Trigger, Content, Header, Body and Footer.
+Dialog component is composed by 5 sub-components: Header, Body, Footer Trigger and/or Content.
 
 ### Components
 
-| Component     | Purpose                                                                                 |
-| ------------- | --------------------------------------------------------------------------------------- |
-| Dialog        | The main wrapper component.                                                             |
-| DialogHeader  | (optional) Component for the title and the close button.                                |
-| DialogBody    | (optional) Component for the main content of dialog.                                    |
-| DialogFooter  | (optional) Component for the main actions of dialog.                                    |
-| DialogTrigger | (optional) Component for the trigger action of dialog.                                  |
-| DialogContent | (optional) Component wrapper for the header, body and footer when a trigger is present. |
+| Component     | Purpose                                                                               |
+| ------------- | ------------------------------------------------------------------------------------- |
+| Dialog        | The main wrapper component.                                                           |
+| DialogHeader  | (optional) Component for the title and the close button.                              |
+| DialogBody    | (optional) Component for the main content of dialog.                                  |
+| DialogFooter  | (optional) Component for the main actions of dialog.                                  |
+| DialogTrigger | (optional) Component for the trigger action of dialog.                                |
+| DialogContent | (optional) Component wrapper for the header, body and footer when trigger is present. |
 
 ## Dialog
 
@@ -97,11 +97,11 @@ The dialog is a container which handles styling (border, background etc.) and th
 
 | Property     | Values                        | Default   | Purpose                                                      |
 | ------------ | ----------------------------- | --------- | ------------------------------------------------------------ |
-| type         | `modal`, `non-modal`, `alert` | `modal`   | Dialog variations                                            |
-| open         | boolean                       | `false`   | Set to `true` when the dialog is visible                     |
+| type         | `modal`, `non-modal`, `alert` | `modal`   | Dialog variations.                                           |
+| open         | boolean                       | `false`   | Set to `true` when the dialog is visible.                    |
 | defaultOpen  | boolean                       | undefined | The initial state of open. Used for uncontrolled open state. |
 | onOpenChange | `() => void`                  | undefined | Callback when the open state of the dialog changes.          |
-| overlay      | _slot_                        | undefined | Dimmed background of dialog                                  |
+| overlay      | _slot_                        | undefined | Dimmed background of dialog.                                 |
 
 - `type` property (dialog variations):
 
@@ -112,7 +112,7 @@ The dialog is a container which handles styling (border, background etc.) and th
   - `alert`: is a special type of modal dialogs that interrupts the user's workflow to communicate an important message or ask for a decision. Unlike a typical modal dialog, the user must take an action through the options given to dismiss the dialog, and it cannot be dismissed through the dimmed background or escape key.
 
 - `overlay` slot:
-  - The default overlay is rendered as a `<div>` with styling
+  - The default overlay is rendered as a `<div>` with styling.
   - This slot expects a `<div>` element which will replace the default overlay.
   - The overlay should have `aria-hidden="true"`.
 
@@ -128,7 +128,7 @@ The dragging functionality of the dialog (`draggable`) will not be part of the i
 
 ## Dialog Header
 
-The DialogHeader component will expect to have a dialog title/header and will show by default the close (X icon) button.
+The DialogHeader component will expect to have a dialog title/header and will show the close (X icon) button if specified so.
 
 ### DOM
 
@@ -246,8 +246,8 @@ export type DialogTriggerProps = {
 </Button>
 
 <Dialog open={isOpen}>
-  <DialogHeader onClose={() => alert("dialog closed")}>Dialog title</DialogHeader>
-  <DialogBody>Dialog's main content</DialogBody>
+  <DialogHeader onClose={() => alert("dialog closed")}>Missing Subject</DialogHeader>
+  <DialogBody>Do you want to send this message without a subject?</DialogBody>
   <DialogFooter
     primaryAction={<Button>Submit</Button>}
     secondaryAction={<Button>Cancel</Button>} />
@@ -259,8 +259,8 @@ export type DialogTriggerProps = {
 
   {open => (
     <DialogContent>
-      <DialogHeader>Dialog title</DialogHeader>
-      <DialogBody>Dialog's main content</DialogBody>
+      <DialogHeader>Missing Subject</DialogHeader>
+      <DialogBody>Do you want to send this message without a subject?</DialogBody>
       <DialogFooter primaryAction={<Button onClick={open}>Submit</Button>} />
     </DialogContent>
   )}
@@ -281,7 +281,7 @@ export type DialogTriggerProps = {
     </header>
     <div class="fui-dialog-body">Do you want to send this message without a subject?</div>
     <footer class="fui-dialog-footer">
-      <button className="fui-dialog-footer__primaryAction">Send</button>
+      <button className="fui-dialog-footer__primaryAction">Submit</button>
       <button className="fui-dialog-footer__secondaryAcrion">Cancel<button>
     </footer>
   </div>
