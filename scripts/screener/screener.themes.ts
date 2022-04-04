@@ -1,3 +1,7 @@
-import { ScreenerThemeName } from './screener.types';
+import { ScreenerTheme } from './screener.types';
 
-export const ALL_THEMES: ScreenerThemeName[] = ['teamsV2', 'teamsDarkV2', 'teamsHighContrast'];
+export const ALL_THEMES: ScreenerTheme[] = [
+  { name: 'teamsV2', testResultName: 'teams' },
+  { name: 'teamsDarkV2', testResultName: 'teamsDark' },
+  { name: 'teamsHighContrast' },
+];
