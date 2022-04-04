@@ -175,7 +175,7 @@ function setupDummyPackage(
       ...normalizedOptions.tsConfig,
     },
     jestConfig: stripIndents`
-      const { createConfig, resolveMergeStylesSerializer } = require('@fluentui/scripts/jest/jest-resources');
+      const { createConfig, resolveMergeStylesSerializer } = require('@proj/scripts/jest/jest-resources');
       const path = require('path');
 
       const config = createConfig({
@@ -189,7 +189,7 @@ function setupDummyPackage(
      /** Jest test setup file. */
 
       const { configure } = require('enzyme');
-      const { initializeIcons } = require('@fluentui/font-icons-mdl2');
+      const { initializeIcons } = require('@proj/font-icons-mdl2');
       const Adapter = require('enzyme-adapter-react-16');
 
       // Initialize icons.
