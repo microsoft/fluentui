@@ -338,6 +338,33 @@ describe('SpinButton', () => {
     expect(onChange.mock.calls[0][1]).toEqual({ value: undefined, displayValue: '123' });
   });
 
+  it('updates value via text input on Enter press when uncontrolled', () => {
+    render(<SpinButton defaultValue={1} />);
+
+    const spinButton = getSpinButtonInput();
+    userEvent.type(spinButton, '23');
+    expect(spinButton.value).toEqual('123');
+    userEvent.type(spinButton, '{enter}');
+
+    expect(spinButton.value).toEqual('123');
+  });
+
+  it('updates value via text input on Enter press when controlled', () => {
+    const onChange = jest.fn();
+
+    render(<SpinButton value={1} onChange={onChange} />);
+    const spinButton = getSpinButtonInput();
+
+    userEvent.type(spinButton, '23');
+
+    expect(onChange).not.toHaveBeenCalled();
+    expect(spinButton.value).toEqual('123');
+    userEvent.type(spinButton, '{enter}');
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: undefined, displayValue: '123' });
+  });
+
   it('allows values outside bounds via text input when uncontrolled', () => {
     const onChange = jest.fn();
     render(<SpinButton defaultValue={1} min={0} max={10} onChange={onChange} />);
