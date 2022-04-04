@@ -50,16 +50,6 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
           />
         }
         isHeaderVisible={this.props.isHeaderVisible}
-        overview={
-          <div>
-            <p>
-              Use a horizontal bar graph to compare between different values that are hierarchically equivalent. The
-              rectangular bar length is proportional to the values they represent. There will always be a maximum data
-              value (color) that is used to represent the total length.
-            </p>
-            <p>Numerical values are represented through abbreviations. </p>
-          </div>
-        }
       />
     );
   }

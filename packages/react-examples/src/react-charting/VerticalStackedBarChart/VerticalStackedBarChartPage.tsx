@@ -55,15 +55,6 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
           />
         }
         isHeaderVisible={this.props.isHeaderVisible}
-        overview={
-          <div>
-            <p>
-              Stacked vertical bar chart shows comparsions between categories of data, but with the ability to break
-              down and compare parts of a whole. Each bar in the chart represents a whole, and sections within the bar
-              represents different parts or categories of that whole t
-            </p>
-          </div>
-        }
       />
     );
   }
