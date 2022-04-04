@@ -1001,6 +1001,18 @@ describe('migrate-converged-pkg generator', () => {
       expect(projectConfig.sourceRoot).toBe(`${projectConfig.root}/src`);
     });
 
+    it(`should set project 'implicitDependencies' in workspace.json`, async () => {
+      let projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.implicitDependencies).toBe(undefined);
+
+      await generator(tree, options);
+
+      projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.implicitDependencies).toEqual([]);
+    });
+
     it(`should set project 'vNext' and 'platform:web' tag in nx.json if its a web package`, async () => {
       let projectConfig = readProjectConfiguration(tree, options.name);
       expect(projectConfig.tags).toBe(undefined);
