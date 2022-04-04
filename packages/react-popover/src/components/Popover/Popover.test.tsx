@@ -8,6 +8,7 @@ describe('Popover', () => {
   isConformant({
     Component: Popover,
     displayName: 'Popover',
+    requiredProps: { children: <div>hello</div> },
     disabledTests: [
       // Popover does not render DOM elements
       'component-handles-ref',
@@ -15,6 +16,7 @@ describe('Popover', () => {
       'component-handles-classname',
       'component-has-static-classname',
       'component-has-static-classnames-object',
+      'component-has-static-classname-exported',
       // Popover does not have own styles
       'make-styles-overrides-win',
     ],

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-tabs fit and finish",
+  "packageName": "@fluentui/react-tabs",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

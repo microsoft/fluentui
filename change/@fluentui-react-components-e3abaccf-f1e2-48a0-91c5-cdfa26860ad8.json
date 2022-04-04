@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "turn on storyStoreV7 to enable codesplitting",
+  "packageName": "@fluentui/react-components",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "none"
+}

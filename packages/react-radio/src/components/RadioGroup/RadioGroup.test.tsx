@@ -168,7 +168,7 @@ describe('RadioGroup', () => {
     const { getByDisplayValue } = render(
       <RadioGroup>
         <Radio value="a" />
-        <Radio value="b" checked />
+        <Radio value="b" checked onChange={() => undefined} />
         <Radio value="c" />
       </RadioGroup>,
     );

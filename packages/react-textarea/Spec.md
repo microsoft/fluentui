@@ -52,7 +52,6 @@ In some libraries, `TextArea` is a variant of `TextField` or `Input`.
 - Visual variants
   - `Filled Darker`: TextArea has a gray background and no outline.
   - `Filled Lighter`: TextArea has a white background and no outline.
-  - `Underline`: TextArea has a gray background and a line on the bottom.
   - `Outline`: TextArea has a white background, outline, and a line on the bottom.
 - Behavior variants
   - `Disabled`: TextArea has a gray background, gray text, outline, and interaction is disabled.
@@ -85,7 +84,7 @@ type TextAreaProps = {
    *
    * @defaultvalue outline
    */
-  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+  appearance?: 'outline' | 'filledDarker' | 'filledLighter';
 
   /**
    * The value of the TextArea. Used when the component is controlled.
@@ -103,6 +102,9 @@ type TextAreaProps = {
   onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextAreaOnChangeData) => void;
 };
 
+/**
+ * Data passed to the `onChange` callback when the textarea's value changes.
+ */
 type TextAreaOnChangeData = {
   value: string;
 };

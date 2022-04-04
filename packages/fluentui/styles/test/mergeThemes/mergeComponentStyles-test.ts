@@ -30,7 +30,7 @@ describe('mergeComponentStyles', () => {
     });
   }
 
-  function testMergeComponentStyles(mergeComponentStyles) {
+  function testMergeComponentStyles(mergeComponentStyles: typeof mergeComponentStyles__PROD) {
     test(`always returns an object`, () => {
       expect(mergeComponentStyles({}, {})).toMatchObject({});
       expect(mergeComponentStyles(null, null)).toMatchObject({});
@@ -46,21 +46,19 @@ describe('mergeComponentStyles', () => {
       expect(mergeComponentStyles(null, {})).toMatchObject({});
     });
 
-    test('gracefully handles null and undefined', () => {
+    test('gracefully handles undefined', () => {
       const styles = { root: { color: 'black' } };
-      const stylesWithNull = { root: { color: null }, icon: null };
       const stylesWithUndefined = { root: { color: undefined }, icon: undefined };
 
       expect(() => mergeComponentStyles(styles, null)).not.toThrow();
-      expect(() => mergeComponentStyles(styles, stylesWithNull)).not.toThrow();
-
       expect(() => mergeComponentStyles(null, styles)).not.toThrow();
-      expect(() => mergeComponentStyles(stylesWithNull, styles)).not.toThrow();
 
       expect(() => mergeComponentStyles(styles, undefined)).not.toThrow();
+      // @ts-expect-error
       expect(() => mergeComponentStyles(styles, stylesWithUndefined)).not.toThrow();
 
       expect(() => mergeComponentStyles(undefined, styles)).not.toThrow();
+      // @ts-expect-error
       expect(() => mergeComponentStyles(stylesWithUndefined, styles)).not.toThrow();
     });
 
@@ -85,8 +83,7 @@ describe('mergeComponentStyles', () => {
 
     test('converts target only component parts to functions', () => {
       const target = { root: { color: 'red' } };
-
-      const merged = mergeComponentStyles(target);
+      const merged = mergeComponentStyles(undefined, target);
 
       expect(merged.root).toBeInstanceOf(Function);
     });
@@ -110,7 +107,16 @@ describe('mergeComponentStyles', () => {
         },
       };
       const merged = mergeComponentStyles(target, source);
-      expect(merged.root()).toMatchObject({
+
+      const styleFunctionParams = {
+        props: {},
+        variables: {},
+        theme: emptyTheme,
+        disableAnimations: false,
+        rtl: false,
+      };
+
+      expect(merged.root(styleFunctionParams)).toMatchObject({
         display: 'inline-block',
         color: 'blue',
         '::before': {

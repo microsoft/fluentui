@@ -18,6 +18,7 @@ export const fontFamily =
 export const fontWeightRegular = '400';
 export const fontWeightBold = '700';
 export const inputControlHeight = '24px';
+export const choiceGroupDimensions = '18px';
 export const inputControlPadding = '12px';
 export const inputControlHeightInner = '20px';
 export const textAlignCenter = 'center';

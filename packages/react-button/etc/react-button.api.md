@@ -21,8 +21,6 @@ export const buttonClassName: string;
 // @public (undocumented)
 export const buttonClassNames: SlotClassNames<ButtonSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "ButtonCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommons>;
 
@@ -123,8 +121,6 @@ export const toggleButtonClassName: string;
 // @public (undocumented)
 export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "ToggleButtonCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type ToggleButtonProps = ButtonProps & Partial<ToggleButtonCommons> & {
     defaultChecked?: boolean;

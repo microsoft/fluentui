@@ -19,6 +19,7 @@ describe('PopoverTrigger', () => {
       'component-handles-classname',
       'component-has-static-classname',
       'component-has-static-classnames-object',
+      'component-has-static-classname-exported',
       // PopoverTrigger does not have own styles
       'make-styles-overrides-win',
     ],

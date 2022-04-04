@@ -50,8 +50,10 @@ export const overridesWin: ConformanceTest = (componentInfo, testInfo) => {
     document.body.appendChild(container);
   });
 
-  afterEach(() => {
+  afterEach(async () => {
     if (container) {
+      const ReactDOM = await import('react-dom');
+      ReactDOM.unmountComponentAtNode(container);
       document.body.removeChild(container);
     }
 
