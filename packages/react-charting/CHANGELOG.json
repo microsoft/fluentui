@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 04 Apr 2022 07:42:21 GMT",
+      "tag": "@fluentui/react-charting_v5.9.15",
+      "version": "5.9.15",
+      "comments": {
+        "none": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b49286c5206b71fc675350641d0b67aedc02f34d",
+            "comment": "Updated readme file"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 31 Mar 2022 07:38:07 GMT",
       "tag": "@fluentui/react-charting_v5.9.15",
       "version": "5.9.15",
