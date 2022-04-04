@@ -42,7 +42,7 @@ export const parameters = {
       'react-dom': 'latest', // for React
       'react-scripts': 'latest', // necessary when using typescript in CodeSandbox
       '@fluentui/react-components': 'rc', // necessary for FluentProvider
-      '@fluentui/react-icons': 'beta', // necessary for FluentProvider
+      '@fluentui/react-icons': 'beta',
     },
     indexTsx: dedent`
           import * as ReactDOM from 'react-dom';
