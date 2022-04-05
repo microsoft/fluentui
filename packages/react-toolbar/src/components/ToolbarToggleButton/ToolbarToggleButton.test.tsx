@@ -2,10 +2,11 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { ToolbarToggleButton } from './ToolbarToggleButton';
 import { isConformant } from '../../common/isConformant';
+import { ToggleButtonProps } from '@fluentui/react-button';
 
 describe('ToolbarToggleButton', () => {
   isConformant({
-    Component: ToolbarToggleButton,
+    Component: ToolbarToggleButton as React.FunctionComponent<ToggleButtonProps>,
     displayName: 'ToolbarToggleButton',
   });
 
