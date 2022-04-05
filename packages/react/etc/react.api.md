@@ -941,6 +941,9 @@ export function clamp(value: number, max: number, min?: number): number;
 
 export { classNamesFunction }
 
+// @public
+export function cleanupDefaultLayerHost(doc: Document): void;
+
 // @public (undocumented)
 export const Coachmark: React_2.FunctionComponent<ICoachmarkProps>;
 
@@ -1117,6 +1120,9 @@ export function correctHSV(color: IHSV): IHSV;
 export function correctRGB(color: IRGB): IRGB;
 
 export { createArray }
+
+// @public
+export function createDefaultLayerHost(doc: Document): Node | null;
 
 export { createFontStyles }
 
