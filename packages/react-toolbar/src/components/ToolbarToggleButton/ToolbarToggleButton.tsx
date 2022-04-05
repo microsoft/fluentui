@@ -9,7 +9,7 @@ import {
 import { useToolbarContext } from '../Toolbar/ToolbarContext';
 
 /**
- * ToolbarToggleButton component - TODO: add more docs
+ * ToolbarToggleButton component
  */
 export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps> = React.forwardRef((props, ref) => {
   const { size } = useToolbarContext();
