@@ -187,7 +187,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     wrapperColorActive: siteVars.colors.grey[500],
     wrapperColorFocus: siteVars.colors.grey[500],
     wrapperColorHover: undefined,
-    primaryWrapperColorHover: siteVars.colors.white,
+    primaryWrapperColorHover: siteVars.colors.black,
     wrapperBackgroundColorFocus: siteVars.colors.grey[150],
 
     activeWrapperBackgroundColorHover: undefined,

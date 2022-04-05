@@ -198,7 +198,6 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
           ...(iconOnly && getIconFillOrOutlineStyles({ outline: false })),
           ...(primary
             ? {
-                color: v.colorActive,
                 ...(iconOnly && { color: 'inherit' }),
                 ...(!active && underlined && underlinedItem(v.underlinedBorderColor || colors.backgroundActive)),
               }
