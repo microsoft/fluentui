@@ -33,9 +33,9 @@ jobs:
           yarn nx run @fluentui/nx-workspace-tools:check-graph
         displayName: NX workspace lint
 
-      - script: |
-          yarn check:installed-dependencies-versions
-        displayName: 'check packages: installed dependencies versions'
+      # - script: |
+      #     yarn check:installed-dependencies-versions
+      #   displayName: 'check packages: installed dependencies versions'
 
       - script: |
           if [[ -n "$(targetBranch)" ]]; then
@@ -46,12 +46,12 @@ jobs:
         displayName: check formatting
 
       ## Danger.js checks for Fluent UI N*
-      - script: |
-          yarn danger ci
-        displayName: danger
-        condition: eq(variables.isPR, true)
-        env:
-          DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
+      # - script: |
+      #     yarn danger ci
+      #   displayName: danger
+      #   condition: eq(variables.isPR, true)
+      #   env:
+      #     DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
           yarn buildci  $(sinceArg)
