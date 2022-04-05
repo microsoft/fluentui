@@ -1,9 +1,9 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { OptionValue, OptionCollectionState } from '../../utils/OptionCollection.types';
+import type { OptionValue, OptionCollectionState } from '../../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../../utils/Selection.types';
-import { ComboboxContextValue } from '../../contexts/ComboboxContext';
+import type { ComboboxContextValue } from '../../contexts/ComboboxContext';
 import { Listbox } from '../Listbox/Listbox';
 import { ComboButton } from '../ComboButton/ComboButton';
 

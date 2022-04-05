@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { OptionValue, OptionCollectionState } from '../../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../../utils/Selection.types';
-import { ListboxContextValue } from '../../contexts/ListboxContext';
+import type { ListboxContextValue } from '../../contexts/ListboxContext';
 
 export type ListboxSlots = {
   /* The root slot, a `<div>` with `role="listbox"` */
