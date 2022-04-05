@@ -23,6 +23,7 @@ export const cardClassNames: SlotClassNames<CardSlots>;
 // @public (undocumented)
 export type CardCommons = {
     appearance: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
+    focusable: boolean | 'noTab' | 'tabExit' | 'tabOnly';
 };
 
 // @public
