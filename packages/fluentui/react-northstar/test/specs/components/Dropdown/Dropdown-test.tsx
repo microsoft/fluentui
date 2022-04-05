@@ -1251,6 +1251,26 @@ describe('Dropdown', () => {
 
       expect(getA11yMessageContainerNode()).toHaveTextContent('');
     });
+
+    it('input has the aria-describedby attribute after an item has been selected', () => {
+      const itemToBeClickedIndex = 1;
+      const { clickOnItemAtIndex, searchInputNode } = renderDropdown({
+        defaultOpen: true,
+        getA11ySelectionMessage: { itemsCount: count => `${count} item is  selected.` },
+        search: true,
+        multiple: true,
+      });
+
+      clickOnItemAtIndex(itemToBeClickedIndex);
+
+      /*
+      act(() => {
+        jest.runAllTimers();
+      });
+*/
+
+      expect(searchInputNode).toHaveAttribute('aria-describedby');
+    });
   });
 
   describe('searchQuery', () => {
