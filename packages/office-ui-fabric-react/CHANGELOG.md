@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 04 Apr 2022 12:25:50 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Apr 2022 12:26:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.185.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.185.1)
+
+Tue, 05 Apr 2022 12:26:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.185.0..office-ui-fabric-react_v7.185.1)
+
+### Patches
+
+- Cherry Pick: Fix Tooltip to better support iOS VoiceOver to 7.0 ([PR #22278](https://github.com/microsoft/fluentui/pull/22278) by seanmonahan@microsoft.com)
 
 ## [7.185.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.185.0)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Cherry Pick: Fix Tooltip to better support iOS VoiceOver to 7.0",
-  "packageName": "office-ui-fabric-react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
