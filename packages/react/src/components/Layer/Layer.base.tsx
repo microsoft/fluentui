@@ -2,7 +2,13 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
 import { classNamesFunction, setPortalAttribute, setVirtualParent } from '../../Utilities';
-import { registerLayer, getDefaultTarget, unregisterLayer, getLayerHost } from './Layer.notification';
+import {
+  registerLayer,
+  getDefaultTarget,
+  unregisterLayer,
+  getLayerHost,
+  createDefaultLayerHost,
+} from './Layer.notification';
 import { useIsomorphicLayoutEffect, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
 import type { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
@@ -54,7 +60,17 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
         return doc?.getElementById(hostId) ?? null;
       } else {
         const defaultHostSelector = getDefaultTarget();
-        return (defaultHostSelector ? doc?.querySelector(defaultHostSelector) : doc?.body) ?? null;
+
+        // Find the host.
+        let host: Node | null = defaultHostSelector ? (doc?.querySelector(defaultHostSelector) as Node) : null;
+
+        // If no host is available, create a container for injecting layers in.
+        // Having a container scopes layout computation.
+        if (!host && doc) {
+          host = createDefaultLayerHost(doc);
+        }
+
+        return host;
       }
     };
 
