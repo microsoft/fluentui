@@ -7,3 +7,6 @@ export * from './useOverflowContainer';
 export * from './useOverflowCount';
 export * from './useOverflowItem';
 export * from './useOverflowMenu';
+
+export type { OverflowItemProps } from './components/OverflowItem';
+export { OverflowItem } from './components/OverflowItem';
