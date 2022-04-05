@@ -33,6 +33,10 @@
   },
   "dependencies": {
     "@griffel/react": "1.0.0",
+    "@fluentui/keyboard-keys": "9.0.0-rc.4",
+    "@fluentui/react-icons": "^2.0.159-beta.10",
+    "@fluentui/react-input": "9.0.0-beta.5",
+    "@fluentui/react-theme": "9.0.0-rc.4",
     "@fluentui/react-utilities": "9.0.0-rc.5",
     "tslib": "^2.1.0"
   },
