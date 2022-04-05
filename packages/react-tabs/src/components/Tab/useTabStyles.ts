@@ -57,7 +57,7 @@ const useRootStyles = makeStyles({
     ...shorthands.padding(pendingSpacingTokens.sNudge, pendingSpacingTokens.sNudge),
   },
   smallVertical: {
-    columnGap: pendingSpacingTokens.xs,
+    columnGap: pendingSpacingTokens.xxs,
     ...shorthands.padding(pendingSpacingTokens.xxs, pendingSpacingTokens.sNudge),
   },
   transparent: {
