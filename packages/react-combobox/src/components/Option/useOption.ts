@@ -29,14 +29,15 @@ function getValueString(value: string | undefined, children: React.ReactNode) {
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
+  const { id, fluentKey: key, disabled, value } = props;
+
   // context values
-  const activeOption = useContextSelector(ListboxContext, ctx => ctx.activeOption);
+  const active = useContextSelector(ListboxContext, ctx => ctx.activeOption?.id === id);
   const idBase = useContextSelector(ListboxContext, ctx => ctx.idBase);
   const onOptionClick = useContextSelector(ListboxContext, ctx => ctx.onOptionClick);
   const registerOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
   const selectedOptions = useContextSelector(ListboxContext, ctx => ctx.selectedOptions);
 
-  const { id, fluentKey: key, disabled, value } = props;
   const selected = key ? !!selectedOptions.find(option => option.key === key) : false;
   const optionValue = getValueString(value, props.children);
 
@@ -80,7 +81,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
         children: 'x',
       },
     }),
-    active: !!(activeOption && optionId === activeOption.id),
+    active,
     selected,
   };
 };
