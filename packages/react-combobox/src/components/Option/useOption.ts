@@ -32,17 +32,21 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   const { id, fluentKey: key, disabled, value } = props;
 
   // context values
-  const active = useContextSelector(ListboxContext, ctx => ctx.activeOption?.id === id);
   const idBase = useContextSelector(ListboxContext, ctx => ctx.idBase);
   const onOptionClick = useContextSelector(ListboxContext, ctx => ctx.onOptionClick);
   const registerOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
   const selectedOptions = useContextSelector(ListboxContext, ctx => ctx.selectedOptions);
 
+  // use the id if provided, otherwise construct id from key & idBase
+  const optionId = id || key ? `${idBase}-${key}` : '';
+
+  // current active option?
+  const active = useContextSelector(ListboxContext, ctx => {
+    return ctx.activeOption?.id !== undefined && ctx.activeOption?.id === optionId;
+  });
+
   const selected = key ? !!selectedOptions.find(option => option.key === key) : false;
   const optionValue = getValueString(value, props.children);
-
-  // use the id if provided, otherwise construct id from key & idBase
-  const optionId = id || key ? `${idBase}-${props.fluentKey}` : '';
 
   const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (disabled) {

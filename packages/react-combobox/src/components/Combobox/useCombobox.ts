@@ -4,6 +4,7 @@ import {
   getPartitionedNativeProps,
   resolveShorthand,
   useControllableState,
+  useFirstMount,
   useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
@@ -36,13 +37,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
   const { selectedOptions, selectOption } = useSelection(props);
-
-  const [value, setValue] = useControllableState({
-    state: props.value,
-    defaultState: props.defaultValue,
-    initialState: undefined,
-  });
-
   const [open, setOpenState] = useControllableState({
     state: props.open,
     defaultState: props.defaultOpen,
@@ -65,16 +59,23 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   } = usePopper(popperOptions);
 
   // update value based on selectedOptions
-  React.useEffect(() => {
-    let newValue;
-    if (multiselect) {
-      newValue = selectedOptions.map(option => option.value).join(', ');
-    } else {
-      newValue = selectedOptions[0]?.value;
+  const isFirstMount = useFirstMount();
+  const value = React.useMemo(() => {
+    // don't compute value if it is defined through props,
+    if (props.value !== undefined) {
+      return props.value;
     }
 
-    setValue(newValue);
-  }, [multiselect, placeholder, selectedOptions, setValue]);
+    if (isFirstMount && props.defaultValue !== undefined) {
+      return props.defaultValue;
+    }
+
+    if (multiselect) {
+      return selectedOptions.map(option => option.value).join(', ');
+    }
+
+    return selectedOptions[0]?.value;
+  }, [isFirstMount, multiselect, props.defaultValue, props.value, selectedOptions]);
 
   const setOpen = (event: ComboboxOpenEvents, newState: boolean) => {
     onOpenChange?.(event, { open: newState });
