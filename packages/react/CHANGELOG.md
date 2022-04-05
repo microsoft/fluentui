@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 28 Mar 2022 07:47:27 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Apr 2022 20:01:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.64.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.0)
+
+Mon, 04 Apr 2022 20:01:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.63.1..@fluentui/react_v8.64.0)
+
+### Minor changes
+
+- New layers are now rendered within a container element. This means that injecting things like ContextualMenu will have less DOM layout recomputes, resulting in better performance. ([PR #22295](https://github.com/microsoft/fluentui/pull/22295) by dzearing@microsoft.com)
+
+## [8.63.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.63.1)
+
+Thu, 31 Mar 2022 07:38:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.63.0..@fluentui/react_v8.63.1)
+
+### Patches
+
+- adjust slider styles to match contrast ratios ([PR #22256](https://github.com/microsoft/fluentui/pull/22256) by mgodbolt@microsoft.com)
+
+## [8.63.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.63.0)
+
+Wed, 30 Mar 2022 07:38:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.62.4..@fluentui/react_v8.63.0)
+
+### Minor changes
+
+- Allow DetailsRow rendering to be customized based on row state ([PR #22081](https://github.com/microsoft/fluentui/pull/22081) by tmichon@microsoft.com)
+
+### Patches
+
+- Respect isDayPickerVisible prop in Calendar on mobile ([PR #22110](https://github.com/microsoft/fluentui/pull/22110) by livoratom@gmail.com)
+- Fix Tooltip to better support iOS VoiceOver ([PR #22216](https://github.com/microsoft/fluentui/pull/22216) by seanmonahan@microsoft.com)
 
 ## [8.62.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.62.4)
 

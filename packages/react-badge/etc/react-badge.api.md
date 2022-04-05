@@ -20,8 +20,6 @@ export const badgeClassName = "fui-Badge";
 // @public (undocumented)
 export const badgeClassNames: SlotClassNames<BadgeSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "BadgeCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & Partial<BadgeCommons>;
 
@@ -43,8 +41,6 @@ export const counterBadgeClassName = "fui-CounterBadge";
 // @public (undocumented)
 export const counterBadgeClassNames: SlotClassNames<BadgeSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "CounterBadgeCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape' | 'color'> & Partial<CounterBadgeCommons>;
 
@@ -60,8 +56,6 @@ export const presenceBadgeClassName = "fui-PresenceBadge";
 // @public (undocumented)
 export const presenceBadgeClassNames: SlotClassNames<BadgeSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "PresenceBadgeCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root'>>, 'color'> & Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
 

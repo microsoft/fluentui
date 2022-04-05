@@ -11,22 +11,22 @@ export const sliderClassNames: SlotClassNames<SliderSlots> = {
   input: 'fui-Slider__input',
 };
 
-// Internal CSS variables. Private until we want to commit to them
-const thumbSizeVar = `--fui-slider-thumb-size`;
-const railSizeVar = `--fui-slider-rail-size`;
-const railColorVar = `--fui-slider-rail-color`;
-const progressColorVar = `--fui-slider-progress-color`;
-const thumbColorVar = `--fui-slider-thumb-color`;
+// Internal CSS variables
+const thumbSizeVar = `--fui-Slider__thumb--size`;
+const railSizeVar = `--fui-Slider__rail--size`;
+const railColorVar = `--fui-Slider__rail--color`;
+const progressColorVar = `--fui-Slider__progress--color`;
+const thumbColorVar = `--fui-Slider__thumb--color`;
 
-export const sliderStyleVars = {
-  railDirectionVar: `--fui-slider-rail-direction`,
-  railOffsetVar: `--fui-slider-rail-offset`,
-  railProgressVar: `--fui-slider-rail-progress`,
-  railStepsPercentVar: `--fui-slider-rail-steps-percent`,
-  thumbPositionVar: `--fui-slider-thumb-position`,
+export const sliderCSSVars = {
+  railDirectionVar: `--fui-Slider__rail--direction`,
+  railOffsetVar: `--fui-Slider__rail--offset`,
+  railProgressVar: `--fui-Slider__rail--progress`,
+  railStepsPercentVar: `--fui-Slider__rail--steps-percent`,
+  thumbPositionVar: `--fui-Slider__thumb--position`,
 };
 
-const { railDirectionVar, railOffsetVar, railStepsPercentVar, railProgressVar, thumbPositionVar } = sliderStyleVars;
+const { railDirectionVar, railOffsetVar, railStepsPercentVar, railProgressVar, thumbPositionVar } = sliderCSSVars;
 
 /**
  * Styles for the root slot

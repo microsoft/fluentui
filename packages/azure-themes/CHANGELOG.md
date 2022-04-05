@@ -1,8 +1,36 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Mon, 28 Mar 2022 07:47:27 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Apr 2022 20:01:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.2.16)
+
+Mon, 04 Apr 2022 20:01:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.2.15..@fluentui/azure-themes_v8.2.16)
+
+### Patches
+
+- Bump @fluentui/react to v8.64.0 ([PR #22295](https://github.com/microsoft/fluentui/pull/22295) by beachball)
+
+## [8.2.15](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.2.15)
+
+Thu, 31 Mar 2022 07:38:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.2.14..@fluentui/azure-themes_v8.2.15)
+
+### Patches
+
+- Bump @fluentui/react to v8.63.1 ([PR #22247](https://github.com/microsoft/fluentui/pull/22247) by beachball)
+
+## [8.2.14](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.2.14)
+
+Wed, 30 Mar 2022 07:38:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.2.13..@fluentui/azure-themes_v8.2.14)
+
+### Patches
+
+- Cherry picked from 7.0 branch: reducing choicegroup radio button to 18px from 20px ([PR #22230](https://github.com/microsoft/fluentui/pull/22230) by 30805892+Jacqueline-ms@users.noreply.github.com)
+- Bump @fluentui/react to v8.63.0 ([PR #22110](https://github.com/microsoft/fluentui/pull/22110) by beachball)
 
 ## [8.2.13](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.2.13)
 

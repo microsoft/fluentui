@@ -273,6 +273,7 @@ import { renderPopover_unstable } from '@fluentui/react-popover';
 import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
 import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
 import { renderPortal_unstable } from '@fluentui/react-portal';
+import { renderSlider_unstable } from '@fluentui/react-slider';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
 import { renderText_unstable } from '@fluentui/react-text';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
@@ -283,6 +284,12 @@ import { setVirtualParent } from '@fluentui/react-portal';
 import { ShadowBrandTokens } from '@fluentui/react-theme';
 import { ShadowTokens } from '@fluentui/react-theme';
 import { shorthands } from '@griffel/react';
+import { Slider } from '@fluentui/react-slider';
+import { sliderClassNames } from '@fluentui/react-slider';
+import { SliderOnChangeData } from '@fluentui/react-slider';
+import { SliderProps } from '@fluentui/react-slider';
+import { SliderSlots } from '@fluentui/react-slider';
+import { SliderState } from '@fluentui/react-slider';
 import { SplitButton } from '@fluentui/react-button';
 import { splitButtonClassName } from '@fluentui/react-button';
 import { splitButtonClassNames } from '@fluentui/react-button';
@@ -398,6 +405,9 @@ import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
 import { usePortal_unstable } from '@fluentui/react-portal';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
+import { useSlider_unstable } from '@fluentui/react-slider';
+import { useSliderState_unstable } from '@fluentui/react-slider';
+import { useSliderStyles_unstable } from '@fluentui/react-slider';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
 import { useText_unstable } from '@fluentui/react-text';
@@ -948,6 +958,8 @@ export { renderPopoverTrigger_unstable }
 
 export { renderPortal_unstable }
 
+export { renderSlider_unstable }
+
 export { renderSplitButton_unstable }
 
 export { renderText_unstable }
@@ -967,6 +979,18 @@ export { ShadowBrandTokens }
 export { ShadowTokens }
 
 export { shorthands }
+
+export { Slider }
+
+export { sliderClassNames }
+
+export { SliderOnChangeData }
+
+export { SliderProps }
+
+export { SliderSlots }
+
+export { SliderState }
 
 export { SplitButton }
 
@@ -1197,6 +1221,12 @@ export { usePopoverTrigger_unstable }
 export { usePortal_unstable }
 
 export { usePresenceBadge_unstable }
+
+export { useSlider_unstable }
+
+export { useSliderState_unstable }
+
+export { useSliderStyles_unstable }
 
 export { useSplitButton_unstable }
 

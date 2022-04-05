@@ -2,7 +2,7 @@ import { Accordion } from '../Accordion';
 export { Default } from './AccordionDefault.stories';
 export { Collapsible } from './AccordionCollapsible.stories';
 export { Multiple } from './AccordionMultiple.stories';
-export { Navigable } from './AccordionNavigable.stories';
+export { Navigation } from './AccordionNavigation.stories';
 export { OpenItems } from './AccordionOpenItems.stories';
 export { Sizes } from './AccordionSizes.stories';
 export { HeadingLevels } from './AccordionHeaders.stories';
@@ -29,9 +29,12 @@ export default {
       defaultValue: false,
       control: 'boolean',
     },
-    navigable: {
-      defaultValue: false,
-      control: 'boolean',
+    navigation: {
+      defaultValue: undefined,
+      control: {
+        type: 'select',
+        options: [undefined, 'linear', 'circular'],
+      },
     },
     multiple: {
       defaultValue: false,
