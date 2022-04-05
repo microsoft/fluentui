@@ -13,6 +13,7 @@ import type {
   IGroupHeaderProps,
   IGroupHeaderCheckboxProps,
 } from './GroupHeader.types';
+import { IGroup } from './GroupedList.types';
 
 const getClassNames = classNamesFunction<IGroupHeaderStyleProps, IGroupHeaderStyles>();
 
@@ -252,12 +253,25 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     return <FastCheck theme={checkboxProps.theme} checked={checkboxProps.checked} />;
   }
 
+  private _defaultGroupCountRender(group: IGroup) {
+    return (
+      <span className={this._classNames.headerCount}>
+        ({group.count}
+        {group.hasMoreData && '+'})
+      </span>
+    );
+  }
+
   private _onRenderTitle = (props: IGroupHeaderProps): JSX.Element | null => {
-    const { group, ariaColSpan } = props;
+    const { group, ariaColSpan, onRenderGroupCount } = props;
 
     if (!group) {
       return null;
     }
+
+    const finalOnRenderGroupCount = onRenderGroupCount
+      ? composeRenderFunction(onRenderGroupCount, this._defaultGroupCountRender)
+      : this._defaultGroupCountRender;
 
     return (
       <div className={this._classNames.title} id={this._id} role="gridcell" aria-colspan={ariaColSpan}>
@@ -268,10 +282,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
           // so far. That's the reason we need to use "+" to show we might have more items than count
           // indicates.
         }
-        <span className={this._classNames.headerCount}>
-          ({group.count}
-          {group.hasMoreData && '+'})
-        </span>
+        {finalOnRenderGroupCount}
       </div>
     );
   };

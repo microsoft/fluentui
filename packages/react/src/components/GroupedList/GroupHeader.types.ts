@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
-import type { IGroupDividerProps } from './GroupedList.types';
+import type { IGroup, IGroupDividerProps } from './GroupedList.types';
 import type { IStyle, ITheme } from '../../Styling';
 
 /**
@@ -33,6 +33,11 @@ export interface IGroupHeaderProps extends IGroupDividerProps {
    * @defaultvalue true
    */
   useFastIcons?: boolean;
+
+  /**
+   * If provided, can be used to render a custom group count
+   */
+  onRenderGroupCount?: IRenderFunction<IGroup>;
 }
 
 /**

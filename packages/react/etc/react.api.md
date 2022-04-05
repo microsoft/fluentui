@@ -5977,6 +5977,7 @@ export interface IGroupHeaderProps extends IGroupDividerProps {
     expandButtonIcon?: string;
     expandButtonProps?: React_2.HTMLAttributes<HTMLButtonElement>;
     groupedListId?: string;
+    onRenderGroupCount?: IRenderFunction<IGroup>;
     onRenderGroupHeaderCheckbox?: IRenderFunction<IGroupHeaderCheckboxProps>;
     selectAllButtonProps?: React_2.HTMLAttributes<HTMLButtonElement>;
     styles?: IStyleFunctionOrObject<IGroupHeaderStyleProps, IGroupHeaderStyles>;

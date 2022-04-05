@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add onRenderGroupCount to render a custom group count",
+  "packageName": "@fluentui/react",
+  "email": "xingwa@microsoft.com",
+  "dependentChangeType": "patch"
+}
