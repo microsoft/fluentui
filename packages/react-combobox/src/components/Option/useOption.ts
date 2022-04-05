@@ -29,21 +29,13 @@ function getValueString(value: string | undefined, children: React.ReactNode) {
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
-  const {
-    activeOption,
-    idBase,
-    onOptionClick,
-    registerOption,
-    selectedOptions = [],
-    unRegisterOption,
-  } = useContextSelector(ListboxContext, ctx => ({
-    activeOption: ctx.activeOption,
-    idBase: ctx.idBase,
-    onOptionClick: ctx.onOptionClick,
-    registerOption: ctx.registerOption,
-    selectedOptions: ctx.selectedOptions,
-    unRegisterOption: ctx.unRegisterOption,
-  }));
+  // context values
+  const activeOption = useContextSelector(ListboxContext, ctx => ctx.activeOption);
+  const idBase = useContextSelector(ListboxContext, ctx => ctx.idBase);
+  const onOptionClick = useContextSelector(ListboxContext, ctx => ctx.onOptionClick);
+  const registerOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
+  const selectedOptions = useContextSelector(ListboxContext, ctx => ctx.selectedOptions);
+
   const { id, fluentKey: key, disabled, value } = props;
   const selected = key ? !!selectedOptions.find(option => option.key === key) : false;
   const optionValue = getValueString(value, props.children);
@@ -63,12 +55,10 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
 
   // register option data with context
   React.useEffect(() => {
-    key && optionId && registerOption({ key, id: optionId, value: optionValue });
-
-    return () => {
-      key && unRegisterOption(key);
-    };
-  }, [registerOption, unRegisterOption, optionId, key, optionValue]);
+    if (key && optionId) {
+      return registerOption({ key, id: optionId, value: optionValue });
+    }
+  }, [registerOption, optionId, key, optionValue]);
 
   return {
     components: {
@@ -90,7 +80,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
         children: 'x',
       },
     }),
-    isActive: !!(activeOption && optionId === activeOption.id),
+    active: !!(activeOption && optionId === activeOption.id),
     selected,
   };
 };

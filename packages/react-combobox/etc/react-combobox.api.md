@@ -22,12 +22,8 @@ export const comboboxClassName = "fui-Combobox";
 export const comboboxClassNames: SlotClassNames<ComboboxSlots>;
 
 // @public (undocumented)
-export type ComboboxCommons = {
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-    inline?: boolean;
-    open?: boolean;
-    placeholder?: string;
-    value?: string;
+export type ComboboxContextValues = {
+    combobox: ComboboxContextValue;
 };
 
 // @public
@@ -38,6 +34,7 @@ export type ComboboxOpenChangeData = {
 // @public (undocumented)
 export type ComboboxOpenEvents = React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>;
 
+// Warning: (ae-forgotten-export) The symbol "ComboboxCommons" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "SelectionProps" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -74,13 +71,8 @@ export const comboButtonClassName = "fui-ComboButton";
 // @public (undocumented)
 export const comboButtonClassNames: SlotClassNames<ComboButtonSlots>;
 
-// @public (undocumented)
-export type ComboButtonCommons = {
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-    placeholder?: string;
-    value?: string;
-};
-
+// Warning: (ae-forgotten-export) The symbol "ComboButtonCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & ComboButtonCommons;
 
@@ -102,6 +94,11 @@ export const listboxClassName = "fui-Listbox";
 
 // @public (undocumented)
 export const listboxClassNames: SlotClassNames<ListboxSlots>;
+
+// @public (undocumented)
+export type ListboxContextValues = {
+    listbox: ListboxContextValue;
+};
 
 // @public
 export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
@@ -130,11 +127,6 @@ export const optionClassName = "fui-Option";
 // @public (undocumented)
 export const optionClassNames: SlotClassNames<OptionSlots>;
 
-// @public (undocumented)
-export type OptionCommons = {
-    disabled?: boolean;
-};
-
 // @public
 export const OptionGroup: ForwardRefComponent<OptionGroupProps> & {
     fluentComponentType?: string;
@@ -158,6 +150,8 @@ export type OptionGroupSlots = {
 // @public
 export type OptionGroupState = ComponentState<OptionGroupSlots>;
 
+// Warning: (ae-forgotten-export) The symbol "OptionCommons" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type OptionProps = ComponentProps<Partial<OptionSlots>> & OptionCommons & {
     fluentKey?: string;
@@ -172,20 +166,16 @@ export type OptionSlots = {
 
 // @public
 export type OptionState = ComponentState<OptionSlots> & OptionCommons & {
-    isActive: boolean;
+    active: boolean;
     selected: boolean;
 };
 
-// Warning: (ae-forgotten-export) The symbol "ComboboxContextValues" needs to be exported by the entry point index.d.ts
-//
 // @public
 export const renderCombobox_unstable: (state: ComboboxState, contextValues: ComboboxContextValues) => JSX.Element;
 
 // @public
 export const renderComboButton_unstable: (state: ComboButtonState) => JSX.Element;
 
-// Warning: (ae-forgotten-export) The symbol "ListboxContextValues" needs to be exported by the entry point index.d.ts
-//
 // @public
 export const renderListbox_unstable: (state: ListboxState, contextValues: ListboxContextValues) => JSX.Element;
 
@@ -227,7 +217,9 @@ export const useOptionStyles_unstable: (state: OptionState) => OptionState;
 
 // Warnings were encountered during analysis:
 //
-// lib/components/Combobox/Combobox.types.d.ts:66:5 - (ae-forgotten-export) The symbol "OptionValue" needs to be exported by the entry point index.d.ts
+// lib/components/Combobox/Combobox.types.d.ts:67:5 - (ae-forgotten-export) The symbol "OptionValue" needs to be exported by the entry point index.d.ts
+// lib/components/Combobox/Combobox.types.d.ts:72:5 - (ae-forgotten-export) The symbol "ComboboxContextValue" needs to be exported by the entry point index.d.ts
+// lib/components/Listbox/Listbox.types.d.ts:22:5 - (ae-forgotten-export) The symbol "ListboxContextValue" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

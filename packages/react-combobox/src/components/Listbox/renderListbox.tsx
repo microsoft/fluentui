@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { ListboxState, ListboxSlots } from './Listbox.types';
+import type { ListboxContextValues, ListboxState, ListboxSlots } from './Listbox.types';
 import { ListboxContext } from '../../contexts/ListboxContext';
-import { ListboxContextValues } from '../../contexts/ListboxContext';
 
 /**
  * Render the final JSX of Listbox

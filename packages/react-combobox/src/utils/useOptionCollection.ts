@@ -68,18 +68,18 @@ export const useOptionCollection = (children: React.ReactNode): OptionCollection
     };
   }, [children]);
 
-  const { registerOption, unRegisterOption } = React.useMemo(() => {
+  const registerOption = React.useMemo(() => {
     const register = (option: OptionValue) => {
       if (option && option.key) {
         optionData.current[option.key] = option;
       }
+
+      return (id: string) => {
+        delete optionData.current[id];
+      };
     };
 
-    const unRegister = (id: string) => {
-      delete optionData.current[id];
-    };
-
-    return { registerOption: register, unRegisterOption: unRegister };
+    return register;
   }, []);
 
   return {
@@ -87,6 +87,5 @@ export const useOptionCollection = (children: React.ReactNode): OptionCollection
     collectionData: collectionData,
     options: optionData.current,
     registerOption,
-    unRegisterOption,
   };
 };

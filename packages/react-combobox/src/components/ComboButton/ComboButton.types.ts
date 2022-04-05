@@ -11,7 +11,7 @@ export type ComboButtonSlots = {
   expandIcon: Slot<'span'>;
 };
 
-export type ComboButtonCommons = {
+type ComboButtonCommons = {
   /**
    * Controls the colors and borders of the combobox.
    * @default 'outline'

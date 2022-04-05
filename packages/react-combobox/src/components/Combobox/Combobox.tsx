@@ -3,7 +3,7 @@ import { useCombobox_unstable } from './useCombobox';
 import { renderCombobox_unstable } from './renderCombobox';
 import { useComboboxStyles_unstable } from './useComboboxStyles';
 import type { ComboboxProps } from './Combobox.types';
-import { useComboboxContextValues } from '../../contexts/useComboboxContext';
+import { useComboboxContextValues } from '../../contexts/useComboboxContextValues';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**

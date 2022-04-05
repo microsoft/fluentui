@@ -25,7 +25,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   } = optionCollection;
   const idBase = useId('listbox');
 
-  const [selectedOptions, selectOption] = useSelection(props);
+  const { selectedOptions, selectOption } = useSelection(props);
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
@@ -67,7 +67,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     onOptionClick: ctx.onOptionClick,
     registerOption: ctx.registerOption,
     selectedOptions: ctx.selectedOptions,
-    unRegisterOption: ctx.unRegisterOption,
   }));
 
   // without a parent combobox context, provide values directly from Listbox

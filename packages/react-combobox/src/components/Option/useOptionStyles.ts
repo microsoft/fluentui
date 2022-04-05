@@ -51,13 +51,13 @@ const useStyles = makeStyles({
  * Apply styling to the Option slots based on the state
  */
 export const useOptionStyles_unstable = (state: OptionState): OptionState => {
-  const { isActive, selected } = state;
+  const { active, selected } = state;
   const styles = useStyles();
   state.root.className = mergeClasses(
     optionClassNames.root,
     styles.root,
     selected && styles.selected,
-    isActive && styles.active,
+    active && styles.active,
     state.root.className,
   );
 

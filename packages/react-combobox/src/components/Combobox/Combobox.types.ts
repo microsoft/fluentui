@@ -3,6 +3,7 @@ import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { OptionValue, OptionCollectionState } from '../../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../../utils/Selection.types';
+import { ComboboxContextValue } from '../../contexts/ComboboxContext';
 import { Listbox } from '../Listbox/Listbox';
 import { ComboButton } from '../ComboButton/ComboButton';
 
@@ -17,7 +18,7 @@ export type ComboboxSlots = {
   trigger: NonNullable<Slot<typeof ComboButton>>;
 };
 
-export type ComboboxCommons = {
+type ComboboxCommons = {
   /**
    * Controls the colors and borders of the combobox.
    * @default 'outline'
@@ -94,6 +95,10 @@ export type ComboboxState = ComponentState<ComboboxSlots> &
     /* Callback when an option is clicked, for internal use */
     onOptionClick(event: React.MouseEvent, option: OptionValue): void;
   };
+
+export type ComboboxContextValues = {
+  combobox: ComboboxContextValue;
+};
 
 /**
  * Data for the Combobox onOpenChange event.

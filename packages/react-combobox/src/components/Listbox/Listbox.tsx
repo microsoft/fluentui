@@ -3,7 +3,7 @@ import { useListbox_unstable } from './useListbox';
 import { renderListbox_unstable } from './renderListbox';
 import { useListboxStyles_unstable } from './useListboxStyles';
 import type { ListboxProps } from './Listbox.types';
-import { useListboxContextValues } from '../../contexts/useListboxContext';
+import { useListboxContextValues } from '../../contexts/useListboxContextValues';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**

@@ -10,7 +10,7 @@ export type SelectedOption = {
 
 export type SelectionProps = {
   /* For an uncontrolled component, sets the initial selection */
-  initialSelectedOptions?: SelectedOption[];
+  defaultSelectedOptions?: SelectedOption[];
 
   /**
    * Sets the selection type to multiselect.
@@ -33,10 +33,10 @@ export type SelectionProps = {
 export type SelectionState = Required<Pick<SelectionProps, 'selectedOptions'>>;
 
 /* Values returned by the useSelection hook */
-export type SelectionValue = [
-  selectedOptions: SelectedOption[],
-  selectOption: (event: SelectionEvents, option: SelectedOption) => void,
-];
+export type SelectionValue = {
+  selectedOptions: SelectedOption[];
+  selectOption: (event: SelectionEvents, option: SelectedOption) => void;
+};
 
 /* Data for the onSelect callback */
 export type OnSelectData = { option: SelectedOption };

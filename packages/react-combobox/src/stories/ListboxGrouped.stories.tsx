@@ -6,12 +6,12 @@ import { OptionGroup } from '../OptionGroup';
 export const GroupedOptions = (props: Partial<ListboxProps>) => {
   const land = ['Cat', 'Dog', 'Ferret', 'Hamster'];
   const water = ['Fish', 'Jellyfish', 'Octopus', 'Seal'];
-  const idBase = useId('listbox-grouped');
+  const listboxId = useId('listbox-grouped');
 
   return (
     <>
-      <label id={idBase}>Best Pet</label>
-      <Listbox aria-labelledby={idBase} {...props}>
+      <label id={listboxId}>Best Pet</label>
+      <Listbox aria-labelledby={listboxId} {...props}>
         <OptionGroup label="Land animals">
           {land.map(option => (
             <Option key={option}>{option}</Option>

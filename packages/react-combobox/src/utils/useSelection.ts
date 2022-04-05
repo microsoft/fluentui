@@ -2,11 +2,11 @@ import { useControllableState } from '@fluentui/react-utilities';
 import { SelectedOption, SelectionEvents, SelectionProps, SelectionValue } from './Selection.types';
 
 export const useSelection = (props: SelectionProps): SelectionValue => {
-  const { initialSelectedOptions, multiselect, onSelect } = props;
+  const { defaultSelectedOptions, multiselect, onSelect } = props;
 
   const [selectedOptions, setSelectedOptions] = useControllableState({
     state: props.selectedOptions,
-    defaultState: initialSelectedOptions,
+    defaultState: defaultSelectedOptions,
     initialState: [],
   });
 
@@ -29,5 +29,5 @@ export const useSelection = (props: SelectionProps): SelectionValue => {
     onSelect?.(event, { option });
   };
 
-  return [selectedOptions, selectOption];
+  return { selectedOptions, selectOption };
 };

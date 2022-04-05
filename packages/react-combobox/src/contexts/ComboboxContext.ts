@@ -1,5 +1,4 @@
 import { createContext } from '@fluentui/react-context-selector';
-import type { Context } from '@fluentui/react-context-selector';
 import { ComboboxState } from '../components/Combobox/Combobox.types';
 
 /**
@@ -7,14 +6,10 @@ import { ComboboxState } from '../components/Combobox/Combobox.types';
  */
 export type ComboboxContextValue = Pick<
   ComboboxState,
-  'activeOption' | 'idBase' | 'onOptionClick' | 'open' | 'registerOption' | 'selectedOptions' | 'unRegisterOption'
+  'activeOption' | 'idBase' | 'onOptionClick' | 'open' | 'registerOption' | 'selectedOptions'
 >;
 
-export type ComboboxContextValues = {
-  combobox: ComboboxContextValue;
-};
-
-export const ComboboxContext: Context<ComboboxContextValue> = createContext<ComboboxContextValue>({
+export const ComboboxContext = createContext<ComboboxContextValue>({
   activeOption: undefined,
   idBase: '',
   onOptionClick() {
@@ -23,9 +18,6 @@ export const ComboboxContext: Context<ComboboxContextValue> = createContext<Comb
   open: false,
   selectedOptions: [],
   registerOption() {
-    // noop
-  },
-  unRegisterOption() {
     // noop
   },
 });

@@ -8,7 +8,7 @@ export type OptionSlots = {
   checkIcon: Slot<'span'>;
 };
 
-export type OptionCommons = {
+type OptionCommons = {
   /**
    * Sets an option to the `disabled` state.
    * Disabled options cannot be selected, but are still keyboard navigable
@@ -40,7 +40,7 @@ export type OptionProps = ComponentProps<Partial<OptionSlots>> &
 export type OptionState = ComponentState<OptionSlots> &
   OptionCommons & {
     /* If true, this is the currently highlighted option */
-    isActive: boolean;
+    active: boolean;
 
     /* If true, the option is selected */
     selected: boolean;

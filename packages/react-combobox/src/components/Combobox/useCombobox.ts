@@ -35,7 +35,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   const idBase = useId('combobox');
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
-  const [selectedOptions, selectOption] = useSelection(props);
+  const { selectedOptions, selectOption } = useSelection(props);
 
   const [value, setValue] = useControllableState({
     state: props.value,
