@@ -39,7 +39,7 @@ export type SelectionValue = {
 };
 
 /* Data for the onSelect callback */
-export type OnSelectData = { option: SelectedOption };
+export type OnSelectData = { option: SelectedOption; selectedOptions: SelectedOption[] };
 
 /* Possible event types for onSelect */
 export type SelectionEvents = React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>;

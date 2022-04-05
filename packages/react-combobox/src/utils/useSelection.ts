@@ -11,22 +11,23 @@ export const useSelection = (props: SelectionProps): SelectionValue => {
   });
 
   const selectOption = (event: SelectionEvents, option: SelectedOption) => {
+    // for single-select, always return the selected option
+    let newSelection = [option];
+
+    // toggle selected state of the option for multiselect
     if (multiselect) {
-      // toggle selected state of the option for multiselect
       const selectedIndex = selectedOptions.findIndex(o => o.key === option.key);
       if (selectedIndex > -1) {
         // deselect option
-        setSelectedOptions([...selectedOptions.slice(0, selectedIndex), ...selectedOptions.slice(selectedIndex + 1)]);
+        newSelection = [...selectedOptions.slice(0, selectedIndex), ...selectedOptions.slice(selectedIndex + 1)];
       } else {
         // select option
-        setSelectedOptions([...selectedOptions, option]);
+        newSelection = [...selectedOptions, option];
       }
-    } else {
-      // always set selection to option for single-select
-      setSelectedOptions([option]);
     }
 
-    onSelect?.(event, { option });
+    setSelectedOptions(newSelection);
+    onSelect?.(event, { option, selectedOptions: newSelection });
   };
 
   return { selectedOptions, selectOption };
