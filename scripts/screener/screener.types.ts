@@ -92,6 +92,10 @@ export type ScreenerThemeName = 'teams' | 'teamsDark' | 'teamsHighContrast' | 't
 
 export type ScreenerTheme = {
   name: ScreenerThemeName;
+  /*
+   * Decouples the test name from the theme name.
+   * Useful to remap tests to different themes to avoid generating new screenshots
+   */
   testResultName?: ScreenerThemeName;
 };
 
