@@ -3,6 +3,24 @@ import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { CardCommons, CardProps, CardState } from './Card.types';
 import { useFocusableGroup, UseFocusableGroupOptions } from '@fluentui/react-tabster';
 
+const getFocusStrategy = (focus: CardCommons['focusable']): UseFocusableGroupOptions['tabBehavior'] => {
+  const focusMap = {
+    noTab: 'limitedTrapFocus',
+    tabExit: 'limited',
+    tabOnly: 'unlimited',
+  } as const;
+
+  if (focus === false) {
+    return undefined;
+  }
+
+  if (focus === true) {
+    return focusMap.noTab;
+  }
+
+  return focusMap[focus];
+};
+
 /**
  * Create the state required to render Card.
  *
@@ -15,18 +33,9 @@ import { useFocusableGroup, UseFocusableGroupOptions } from '@fluentui/react-tab
 export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>): CardState => {
   const { appearance = 'filled', focusable = false } = props;
 
-  let groupperAttrs = {};
-  if (focusable !== false) {
-    const focusMap: { [key in Exclude<CardCommons['focusable'], boolean>]: UseFocusableGroupOptions['tabBehavior'] } = {
-      noTab: 'limitedTrapFocus',
-      tabExit: 'limited',
-      tabOnly: 'unlimited',
-    };
-
-    groupperAttrs = useFocusableGroup({
-      tabBehavior: focusable === true ? focusMap['noTab'] : focusMap[focusable],
-    });
-  }
+  const groupperAttrs = useFocusableGroup({
+    tabBehavior: getFocusStrategy(focusable),
+  });
 
   return {
     appearance,
@@ -36,7 +45,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
     root: getNativeElementProps(props.as || 'div', {
       ref,
       role: 'group',
-      tabIndex: focusable !== false && 0,
+      tabIndex: focusable !== false ? 0 : undefined,
       ...groupperAttrs,
       ...props,
     }),
