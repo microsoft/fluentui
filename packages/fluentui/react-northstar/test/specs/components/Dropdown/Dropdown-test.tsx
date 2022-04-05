@@ -1263,12 +1263,6 @@ describe('Dropdown', () => {
 
       clickOnItemAtIndex(itemToBeClickedIndex);
 
-      /*
-      act(() => {
-        jest.runAllTimers();
-      });
-*/
-
       expect(searchInputNode).toHaveAttribute('aria-describedby');
     });
   });
