@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Change combobox aria-autocomplete to 'list' when autoComplete is off",
+  "packageName": "@fluentui/react",
+  "email": "dennisgeorge.mec@gmail.com",
+  "dependentChangeType": "patch"
+}
