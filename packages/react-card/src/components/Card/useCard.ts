@@ -36,6 +36,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
     root: getNativeElementProps(props.as || 'div', {
       ref,
       role: 'group',
+      tabIndex: focusable !== false && 0,
       ...groupperAttrs,
       ...props,
     }),
