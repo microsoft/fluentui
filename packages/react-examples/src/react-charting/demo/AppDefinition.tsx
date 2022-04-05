@@ -38,6 +38,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/horizontalbarchart',
         },
         {
+          component: require<any>('../MultiStackedBarChart/MultiStackedBarChartPage').MultiStackedBarChartPage,
+          key: 'MultiStackedBarChart',
+          name: 'MultiStackedBarChart',
+          url: '#/examples/MultiStackedBarChart',
+        },
+        {
           component: require<any>('../PieChart/PieChartPage').PieChartPage,
           key: 'PieChart',
           name: 'PieChart',

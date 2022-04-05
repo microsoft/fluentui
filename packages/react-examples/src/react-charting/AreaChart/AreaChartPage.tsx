@@ -57,7 +57,6 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
             </p>
           </div>
         }
-        isFeedbackVisible={true}
       />
     );
   }
