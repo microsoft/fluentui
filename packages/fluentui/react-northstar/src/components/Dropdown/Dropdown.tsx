@@ -62,6 +62,7 @@ export interface DropdownSlotClassNames {
   container: string;
   toggleIndicator: string;
   item: string;
+  itemsCount: string;
   itemsList: string;
   searchInput: string;
   selectedItem: string;
@@ -303,6 +304,7 @@ export const dropdownSlotClassNames: DropdownSlotClassNames = {
   container: `${dropdownClassName}__container`,
   toggleIndicator: `${dropdownClassName}__toggle-indicator`,
   item: `${dropdownClassName}__item`,
+  itemsCount: `${dropdownClassName}__items-count`,
   itemsList: `${dropdownClassName}__items-list`,
   searchInput: `${dropdownClassName}__searchinput`,
   selectedItem: `${dropdownClassName}__selecteditem`,
@@ -642,7 +644,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     }
     const narration = getA11ySelectionMessage.itemsCount(value.length);
     return (
-      <span id={id} style={screenReaderContainerStyles}>
+      <span id={id} className={dropdownSlotClassNames.itemsCount} style={screenReaderContainerStyles}>
         {narration}
       </span>
     );

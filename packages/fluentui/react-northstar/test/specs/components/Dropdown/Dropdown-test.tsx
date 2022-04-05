@@ -1252,9 +1252,9 @@ describe('Dropdown', () => {
       expect(getA11yMessageContainerNode()).toHaveTextContent('');
     });
 
-    it('input has the aria-describedby attribute after an item has been selected', () => {
+    it('has items count narration element associated via aria-describedby after an item has been selected', () => {
       const itemToBeClickedIndex = 1;
-      const { clickOnItemAtIndex, searchInputNode } = renderDropdown({
+      const { clickOnItemAtIndex, searchInputNode, getItemsCountNode } = renderDropdown({
         defaultOpen: true,
         getA11ySelectionMessage: { itemsCount: count => `${count} item is  selected.` },
         search: true,
@@ -1262,8 +1262,12 @@ describe('Dropdown', () => {
       });
 
       clickOnItemAtIndex(itemToBeClickedIndex);
+      const itemsCountNode = getItemsCountNode();
+      const itemsCountNodeId = itemsCountNode.getAttribute('id');
 
-      expect(searchInputNode).toHaveAttribute('aria-describedby');
+      expect(searchInputNode).toHaveAttribute('aria-describedby', itemsCountNodeId);
+
+      expect(itemsCountNode).toHaveTextContent('1 item is selected.');
     });
   });
 
