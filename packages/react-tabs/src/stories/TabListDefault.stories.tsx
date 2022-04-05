@@ -1,6 +1,6 @@
 import { makeStyles, shorthands } from '@griffel/react';
 import * as React from 'react';
-import { Tab, TabList, TabProps } from '../index';
+import { Tab, TabList, TabListProps } from '../index';
 
 const useStyles = makeStyles({
   root: {
@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = (props: Partial<TabProps>) => {
+export const Default = (props: Partial<TabListProps>) => {
   const styles = useStyles();
 
   return (
