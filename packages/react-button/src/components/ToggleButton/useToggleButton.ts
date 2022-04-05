@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useToggleable } from '../../utils/useToggleable';
+import { useMergedEventCallbacks } from '@fluentui/react-utilities';
+import { useToggleState } from '../../utils/useToggleState';
 import { useButton_unstable } from '../Button/useButton';
 import type { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';
 
@@ -14,8 +15,28 @@ export const useToggleButton_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToggleButtonState => {
   const buttonState = useButton_unstable(props, ref);
+  const { onClick, role } = buttonState.root;
 
-  const toggleButtonState = useToggleable(props, buttonState);
+  const { 'aria-checked': ariaChecked, 'aria-pressed': ariaPressed, checked, onClick: onToggleClick } = useToggleState({
+    ...props,
+    role,
+  });
 
-  return toggleButtonState;
+  return {
+    ...buttonState,
+
+    // State calculated from a set of props
+    checked,
+
+    // Slots definition
+    root: {
+      ...buttonState.root,
+      'aria-checked': ariaChecked,
+      'aria-pressed': ariaPressed,
+      onClick: useMergedEventCallbacks(
+        onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>,
+        onToggleClick,
+      ),
+    },
+  };
 };

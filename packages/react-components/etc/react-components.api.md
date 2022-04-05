@@ -414,6 +414,7 @@ import { useText_unstable } from '@fluentui/react-text';
 import { useTextStyles_unstable } from '@fluentui/react-text';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
+import { useToggleState } from '@fluentui/react-button';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
 import { webDarkTheme } from '@fluentui/react-theme';
@@ -1239,6 +1240,8 @@ export { useTextStyles_unstable }
 export { useToggleButton_unstable }
 
 export { useToggleButtonStyles_unstable }
+
+export { useToggleState }
 
 export { useTooltip_unstable }
 

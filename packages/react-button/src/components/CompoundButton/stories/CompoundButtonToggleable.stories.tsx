@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { useMergedEventCallbacks } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
-import { useToggleable } from '../../../utils';
+import { useToggleState } from '../../../utils';
 import {
   renderCompoundButton_unstable,
   useCompoundButton_unstable,
@@ -15,9 +16,41 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { CompoundButtonProps, CompoundButtonState } from '../../../CompoundButton';
 import type { ToggleButtonProps, ToggleButtonState } from '../../../ToggleButton';
 
-const useToggleCompoundButtonStyles = (
-  state: CompoundButtonState & ToggleButtonState,
-): CompoundButtonState & ToggleButtonState => {
+type ToggleCompoundButtonProps = CompoundButtonProps & ToggleButtonProps;
+type ToggleCompoundButtonState = CompoundButtonState & ToggleButtonState;
+
+const useToggleCompoundButton = (
+  props: ToggleCompoundButtonProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+): ToggleCompoundButtonState => {
+  const compoundButtonState = useCompoundButton_unstable(props, ref);
+  const { onClick, role } = compoundButtonState.root;
+
+  const { 'aria-checked': ariaChecked, 'aria-pressed': ariaPressed, checked, onClick: onToggleClick } = useToggleState({
+    ...props,
+    role,
+  });
+
+  return {
+    ...compoundButtonState,
+
+    // State calculated from a set of props
+    checked,
+
+    // Slots definition
+    root: {
+      ...compoundButtonState.root,
+      'aria-checked': ariaChecked,
+      'aria-pressed': ariaPressed,
+      onClick: useMergedEventCallbacks(
+        onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>,
+        onToggleClick,
+      ),
+    },
+  };
+};
+
+const useToggleCompoundButtonStyles = (state: ToggleCompoundButtonState): ToggleCompoundButtonState => {
   const checkedStyles = useToggleButtonCheckedStyles();
   const disabledStyles = useToggleButtonDisabledStyles();
 
@@ -41,17 +74,13 @@ const useToggleCompoundButtonStyles = (
   return state;
 };
 
-const ToggleCompoundButton: ForwardRefComponent<CompoundButtonProps & ToggleButtonProps> = React.forwardRef(
-  (props, ref) => {
-    const compoundButtonState = useCompoundButton_unstable(props, ref);
+const ToggleCompoundButton: ForwardRefComponent<ToggleCompoundButtonProps> = React.forwardRef((props, ref) => {
+  const state = useToggleCompoundButton(props, ref);
 
-    const toggleCompoundButtonState = useToggleable(props, compoundButtonState);
+  useToggleCompoundButtonStyles(state);
 
-    useToggleCompoundButtonStyles(toggleCompoundButtonState);
-
-    return renderCompoundButton_unstable(toggleCompoundButtonState);
-  },
-) as ForwardRefComponent<CompoundButtonProps & ToggleButtonProps>;
+  return renderCompoundButton_unstable(state);
+}) as ForwardRefComponent<ToggleCompoundButtonProps>;
 
 export const Toggleable = () => (
   <ToggleCompoundButton icon={<CalendarMonthRegular />} secondaryContent="Secondary content">
