@@ -97,12 +97,13 @@ export type SpinnerProps = ComponentProps &
 
 ```html
 <span class="fui-Spinner">
-  <!-- Label for Spinner. Defaults to Loading... -->
+  <!-- Label for Spinner -->
   <span className="fui-Spinner__label">Loading...</span>
   <span className="fui-Spinner__spinner">
-    <svg>
-      <circle></circle>
-      <circle></circle>
+    <!-- Svg that receives the animation. Classnames are used for animation -->
+    <svg role="progressbar" className="fui-Spinner__Progressbar">
+      <circle className="fui-Spinner__Track" />
+      <circle className="fui-Spinner__Tail" />
     </svg>
   </span>
 </span>
@@ -118,7 +119,7 @@ See [MIGRATION.md]().
 
 - **Display** - The Spinner will use the following priority:
 
-  - Adding the `inverted` prop or the setting the `indeterminate` prop to false will alter the way that the Spinner is displayed.
+  - Adding the `inverted` will alter the way that the Spinner is displayed.
 
 ### Interaction
 
