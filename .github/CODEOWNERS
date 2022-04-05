@@ -106,7 +106,7 @@ packages/office-ui-fabric-react/src/components/Dialog/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/DocumentCard/ @yiminwu
 packages/office-ui-fabric-react/src/components/Dropdown/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/Fabric/ @dzearing
-packages/office-ui-fabric-react/src/components/Facepile/ @markionium @mtennoe @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/Facepile/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/FolderCover/ @microsoft/cxe-red @ThomasMichon @bigbadcapers
 packages/office-ui-fabric-react/src/components/FocusTrapZone/ @microsoft/cxe-red @khmakoto
 packages/office-ui-fabric-react/src/components/FocusZone/ @microsoft/cxe-red @khmakoto
@@ -125,9 +125,9 @@ packages/office-ui-fabric-react/src/components/Nav/ @microsoft/cxe-red @ecraig12
 packages/office-ui-fabric-react/src/components/OverflowSet/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/Overlay/ @microsoft/cxe-red @khmakoto
 packages/office-ui-fabric-react/src/components/Panel/ @microsoft/cxe-red @khmakoto
-packages/office-ui-fabric-react/src/components/Persona/ @markionium @mtennoe
-packages/office-ui-fabric-react/src/components/PersonaCoin/ @mtennoe @markionium
-packages/office-ui-fabric-react/src/components/Persona/PersonaConsts.tsx @mtennoe
+packages/office-ui-fabric-react/src/components/Persona/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/PersonaCoin/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/Persona/PersonaConsts.tsx @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/pickers/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/Pivot/ @microsoft/cxe-red @behowell
 packages/office-ui-fabric-react/src/components/Popup/ @microsoft/cxe-red
