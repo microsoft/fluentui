@@ -8,6 +8,11 @@ describe('ToolbarToggleButton', () => {
   isConformant({
     Component: ToolbarToggleButton as React.FunctionComponent<ToggleButtonProps>,
     displayName: 'ToolbarToggleButton',
+    disabledTests: [
+      'component-has-static-classname',
+      'component-has-static-classname-exported',
+      'component-has-static-classnames-object',
+    ],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
