@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { createFontStyles } from 'office-ui-fabric-react/lib/Styling';
+import { TestWrapperDecorator } from '../utilities/index';
+import { createFontStyles } from '@fluentui/react/lib/Styling';
 
 const RepresentativeText = (props: { style: React.CSSProperties }) => (
   <div style={{ color: '#333333' }}>
@@ -21,16 +20,20 @@ const RepresentativeText = (props: { style: React.CSSProperties }) => (
       <p id="vi">Hãy khám phá một số tính năng mới.</p>
       <p id="zh-Hans">让我们来探索一些新功能。</p>
       <p id="zh-Hant">讓我們探索一些新的功能。</p>
+      <p id="hy">Եկեք ուսումնասիրենք մի քանի նոր առանձնահատկություններ:</p>
+      <p id="ka">მოდით შეისწავლონ ახალი ფუნქციები.</p>
     </div>
   </div>
 );
+
+const Weights = [300, 400, 600, 700];
 
 function getStyle(lang: string) {
   return createFontStyles(lang).medium as React.CSSProperties;
 }
 
 storiesOf('Fonts', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -39,8 +42,17 @@ storiesOf('Fonts', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
+  .addStory('Weights', () => (
+    <div style={getStyle('en')}>
+      {Weights.map(weight => (
+        <p key={weight} style={{ fontWeight: weight }}>
+          Weight {weight}: Testing fontweight
+        </p>
+      ))}
+    </div>
+  ))
   .addStory('Arabic', () => <RepresentativeText style={getStyle('ar')} />)
   .addStory('Chinese (Simplified)', () => <RepresentativeText style={getStyle('zh-Hans')} />)
   .addStory('Chinese (Traditional)', () => <RepresentativeText style={getStyle('zh-Hant')} />)
@@ -53,4 +65,6 @@ storiesOf('Fonts', module)
   .addStory('Korean', () => <RepresentativeText style={getStyle('ko')} />)
   .addStory('Thai', () => <RepresentativeText style={getStyle('th')} />)
   .addStory('Vietnamese', () => <RepresentativeText style={getStyle('vi')} />)
-  .addStory('West European', () => <RepresentativeText style={getStyle('en')} />);
+  .addStory('West European', () => <RepresentativeText style={getStyle('en')} />)
+  .addStory('Armenian', () => <RepresentativeText style={getStyle('hy')} />)
+  .addStory('Georgian', () => <RepresentativeText style={getStyle('ka')} />);

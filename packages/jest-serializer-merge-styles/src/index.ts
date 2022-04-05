@@ -1,5 +1,4 @@
-import { Stylesheet } from '@uifabric/merge-styles';
-import './version';
+import { Stylesheet } from '@fluentui/merge-styles';
 
 /**
  * Jest serialize function which takes in a given (className) value, a serialize function, and

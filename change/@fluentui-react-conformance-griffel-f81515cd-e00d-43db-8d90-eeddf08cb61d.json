@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "use actual version for react-conformance",
+  "packageName": "@fluentui/react-conformance-griffel",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}

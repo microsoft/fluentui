@@ -1,6 +1,2457 @@
 {
-  "name": "@uifabric/utilities",
+  "name": "@fluentui/utilities",
   "entries": [
+    {
+      "date": "Tue, 15 Mar 2022 07:45:54 GMT",
+      "tag": "@fluentui/utilities_v8.8.1",
+      "version": "8.8.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "4123478+tido64@users.noreply.github.com",
+            "package": "@fluentui/utilities",
+            "commit": "c2ec9d827e3af561d2bdc971d4949f6e8153a6ad",
+            "comment": "Ban `export *` in `@fluentui/utilities` for better tree-shakeability"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Mar 2022 07:34:41 GMT",
+      "tag": "@fluentui/utilities_v8.8.0",
+      "version": "8.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "f45738ec1d2156e69f6e3ce3fd0d063a6ee83026",
+            "comment": "Adding additional exports to support existing 1js imports (which will be resolved separately.)"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.0",
+            "commit": "8e02823339296401393a13fc2f38d4629ffe48b3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.17",
+            "commit": "8e02823339296401393a13fc2f38d4629ffe48b3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Mar 2022 07:37:29 GMT",
+      "tag": "@fluentui/utilities_v8.7.0",
+      "version": "8.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "fb377e0b4400b99499d69e9ca956fd433f3e2804",
+            "comment": "Enhance selection to support better micro-management"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Mar 2022 07:35:11 GMT",
+      "tag": "@fluentui/utilities_v8.6.0",
+      "version": "8.6.0",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Mar 2022 07:24:25 GMT",
+      "tag": "@fluentui/utilities_v8.6.0",
+      "version": "8.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.4.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.16",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 07:23:42 GMT",
+      "tag": "@fluentui/utilities_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "36821475e9f24b3212f998c3b23e625a6503183e",
+            "comment": "Add useIsomorphicLayoutEffect"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Feb 2022 07:29:50 GMT",
+      "tag": "@fluentui/utilities_v8.4.3",
+      "version": "8.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "john.collier4@gmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "73454794571f7a94672124631a4c939b3e5f1259",
+            "comment": "make ./packages/utilities/src/DelayedRender.tsx render during SSR"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Feb 2022 07:28:31 GMT",
+      "tag": "@fluentui/utilities_v8.4.2",
+      "version": "8.4.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "jarmit@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9",
+            "comment": "Store the styles property in a local variable so the rest of the props are not bound to the concatednatedStyles function"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Feb 2022 07:27:48 GMT",
+      "tag": "@fluentui/utilities_v8.4.1",
+      "version": "8.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "99a30a94f7c44064de9a20e26650aa609f4dc78d",
+            "comment": "modalize: don't access document in SSR"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Feb 2022 07:30:50 GMT",
+      "tag": "@fluentui/utilities_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "ae67454c2af28710b9d197ce91fd2ded069d9ebf",
+            "comment": "Marked \"raiseClick()\" as deprecated"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Feb 2022 07:29:41 GMT",
+      "tag": "@fluentui/utilities_v8.3.10",
+      "version": "8.3.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.3.0",
+            "commit": "946f57cad4378ec779605d466ef1df3dd88ebc78"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.15",
+            "commit": "946f57cad4378ec779605d466ef1df3dd88ebc78"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jan 2022 23:32:11 GMT",
+      "tag": "@fluentui/utilities_v8.3.9",
+      "version": "8.3.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.2.3",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.14",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Dec 2021 07:26:41 GMT",
+      "tag": "@fluentui/utilities_v8.3.8",
+      "version": "8.3.8",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "f71032d515f2395d85e935f075f8dbfede670b05",
+            "comment": "Fix test issues"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.2.0",
+            "commit": "d7d472d3564c7c08465743b2517e4f29428b87b4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Dec 2021 07:31:29 GMT",
+      "tag": "@fluentui/utilities_v8.3.8",
+      "version": "8.3.8",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "test(utilities): fix test with JSDOM 16 in place"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.1.0",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Dec 2021 07:30:35 GMT",
+      "tag": "@fluentui/utilities_v8.3.7",
+      "version": "8.3.7",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "3360b45ec159250b1346c91afad7dce138e6bc20",
+            "comment": "Update API file to version generated by typescript 4.3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 14:54:16 GMT",
+      "tag": "@fluentui/utilities_v8.3.7",
+      "version": "8.3.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.1.5",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.2.2",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.1.5",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.13",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.0.9",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Nov 2021 07:31:59 GMT",
+      "tag": "@fluentui/utilities_v8.3.6",
+      "version": "8.3.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.2.1",
+            "commit": "1aa9eec5d9dd53544b2755af4d177246a9ec939d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.12",
+            "commit": "1aa9eec5d9dd53544b2755af4d177246a9ec939d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Nov 2021 07:37:01 GMT",
+      "tag": "@fluentui/utilities_v8.3.5",
+      "version": "8.3.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "42315bf9bdc7810cd0fba0cc77ecb975d95ea86e",
+            "comment": "Add isElementVisibleAndNotHidden utility function"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 07:37:17 GMT",
+      "tag": "@fluentui/utilities_v8.3.4",
+      "version": "8.3.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mail@emanuel-kluge.de",
+            "package": "@fluentui/utilities",
+            "comment": "fix(utilities): add missing minLength-property to text fields",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Sep 2021 22:17:07 GMT",
+      "tag": "@fluentui/utilities_v8.3.3",
+      "version": "8.3.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.2.0",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.11",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/utilities_v8.3.2",
+      "version": "8.3.2",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/utilities",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/utilities to v8.3.2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/utilities_v8.3.2",
+      "version": "8.3.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update osDetector.ts to resolve the issuse that win.navigator may be null in some ssr framework",
+            "author": "xiaowxie@microsoft.com",
+            "commit": "53bd7afcd68378ee0c1047636e4bacb5f31aef3a",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Aug 2021 07:35:19 GMT",
+      "tag": "@fluentui/utilities_v8.3.1",
+      "version": "8.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.10",
+            "author": "arujain@microsoft.com",
+            "commit": "e6ee3ff194c59ee27e853387fad06f161e63652c",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/utilities_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/dom-utilities to v2.1.4",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/utilities_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/dom-utilities to v2.1.4",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/utilities_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Moving type-based imports/exports to use \"import type\" and \"export type\" to enable isolatedModules.",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/utilities_v8.2.2",
+      "version": "8.2.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/dom-utilities to v2.1.4",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/utilities_v8.2.1",
+      "version": "8.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/dom-utilities to v2.1.3",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jun 2021 07:35:16 GMT",
+      "tag": "@fluentui/utilities_v8.2.0",
+      "version": "8.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updated KeyCodes.",
+            "author": "jamwu@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Jun 2021 07:38:15 GMT",
+      "tag": "@fluentui/utilities_v8.1.2",
+      "version": "8.1.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/dom-utilities to v2.1.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 May 2021 07:41:54 GMT",
+      "tag": "@fluentui/utilities_v8.1.1",
+      "version": "8.1.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update eslint-disables in tests",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "505db08044507a6a9260459a1013897ca68a2ed6",
+            "package": "@fluentui/utilities"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/dom-utilities to v2.1.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "@fluentui/utilities_v8.1.0",
+      "version": "8.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Upgrade to ts 4.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/utilities"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/dom-utilities to v2.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.5",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Bump @fluentui/merge-styles to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Bump @fluentui/test-utilities to v8.0.4",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/utilities_v8.0.5",
+      "version": "8.0.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/dom-utilities to v2.0.3",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Apr 2021 07:33:33 GMT",
+      "tag": "@fluentui/utilities_v8.0.4",
+      "version": "8.0.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unneeded react-app-polyfill devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "fdc32557d49e5d70ea7e4af8957102d415b44547",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Apr 2021 14:55:56 GMT",
+      "tag": "@fluentui/utilities_v8.0.4",
+      "version": "8.0.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix parsing recipient display name for pill initials",
+            "author": "jaredi@microsoft.com",
+            "commit": "f3a06cfc20204db5ea8222709437a59b54ff235a",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 00:53:43 GMT",
+      "tag": "@fluentui/utilities_v8.0.3",
+      "version": "8.0.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Deprecate unused getResourceUrl and setBaseUrl",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 07:36:20 GMT",
+      "tag": "@fluentui/utilities_v8.0.2",
+      "version": "8.0.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unneeded scripts",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/utilities_v8.0.2",
+      "version": "8.0.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "fix(utilities): make pkg compile in strict mode",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/utilities_v8.0.2",
+      "version": "8.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/utilities_v8.0.1",
+      "version": "8.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Release version 8",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.15",
+      "version": "8.0.0-beta.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove unused prop-types dependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.14",
+      "version": "8.0.0-beta.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find.",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.13",
+      "version": "8.0.0-beta.13",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/dom-utilities to v2.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.12",
+      "version": "8.0.0-beta.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.12",
+      "version": "8.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/test-utilities to v8.0.0-beta.6",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.11",
+      "version": "8.0.0-beta.11",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/dom-utilities to v2.0.0-beta.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.11",
+      "version": "8.0.0-beta.11",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix merge to correctly handle array value.",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.10",
+      "version": "8.0.0-beta.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.10",
+      "version": "8.0.0-beta.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Delete update-api script which is no longer needed",
+            "author": "elcraig@microsoft.com",
+            "commit": "943a9ef5768a9cd77ade84217d142f93b1be6127",
+            "package": "@fluentui/utilities"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Remove sinon dependency and setRenderSpy utility",
+            "author": "elcraig@microsoft.com",
+            "commit": "6bd0ce75decd9f62c40967bd7a59bfff960a0105",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.9",
+      "version": "8.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Nov 2020 12:30:44 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.6",
+      "version": "8.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Modify getInitials to strip [xyz] and {xyz} just like it strips (xyz)",
+            "author": "elvonspa@microsoft.com",
+            "commit": "be9b211dc65086d9ce1194c25d0a88aade3428f1",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Nov 2020 12:32:23 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.5",
+      "version": "8.0.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update Customizer deprecation message.",
+            "author": "xgao@microsoft.com",
+            "commit": "f17bf808e08939ad938b3645425b8f7db1de9363",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Nov 2020 12:32:47 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.4",
+      "version": "8.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove TS < 3.7 compat code",
+            "author": "elcraig@microsoft.com",
+            "commit": "2858fcaf942682621467b87aaef5d1be47f8ce47",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Oct 2020 12:32:24 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.3",
+      "version": "8.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "isIE11 utility should use getWindow to get the window",
+            "author": "elcraig@microsoft.com",
+            "commit": "117d6ff2a1def8d26e93822c1baf05fbf4f7e865",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Oct 2020 12:35:09 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.2",
+      "version": "8.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Store last language setting in sessionStorage not localStorage by default",
+            "author": "elcraig@microsoft.com",
+            "commit": "71be729ba7274a809f4dcdd98a708b57c9568e0c",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Oct 2020 12:39:59 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.1",
+      "version": "8.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Async: update setTimeout to use internal error logging method",
+            "author": "elcraig@microsoft.com",
+            "commit": "1491aa2a78a528064e2b33df46f6c864be878403",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/utilities_v8.0.0-beta.0",
+      "version": "8.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities",
+            "author": "ololubek@microsoft.com",
+            "commit": "c6ae2b350037deb4e0bea07cdbdfe2e93455f4b1",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "getId now can take in a blank string as prefix.",
+            "author": "dzearing@hotmail.com",
+            "commit": "eff1a9885b9d67c6d811babc657fa1df778c16ac",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Deprecate Customizer.",
+            "author": "xgao@microsoft.com",
+            "commit": "10a51aeeeb8071a4b289a39ab55eb8b030d91439",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Rename @uifabric/styling to @fluentui/style-utilities",
+            "author": "elcraig@microsoft.com",
+            "commit": "5158b5e4050cb04e9c22e0d5292cd96cc674746e",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Rename @uifabric/set-version to @fluentui/set-version",
+            "author": "ololubek@microsoft.com",
+            "commit": "2eba5d5be163a7a64975f058dc38b465f2363064",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Rename @uifabric/merge-styles to @fluentui/merge-styles",
+            "author": "ololubek@microsoft.com",
+            "commit": "30c25030ee043ded4a2afb86c7eb02a506ce9fdb",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Remove react-dom from peerDependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "c57941f88df0dd5e7a9e10da84471e435b669ef8",
+            "package": "@fluentui/utilities"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update npmignore",
+            "author": "elcraig@microsoft.com",
+            "commit": "aec02d96e7cef745e9867c03a528426a5ad28038",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Rename build-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "32a158fd2c7fca8dc308a3e41f692817e6c26c44",
+            "package": "@fluentui/utilities"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@uifabric/utilities_v7.32.3",
+      "version": "7.32.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix for Styled pure functions to have a displayName.",
+            "author": "czearing@outlook.com",
+            "commit": "a89efd72e645e6e20869d6f33717f11554a8711a",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@uifabric/utilities_v7.32.0",
+      "version": "7.32.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Consume virtual DOM functions from new location",
+            "author": "tmichon@microsoft.com",
+            "commit": "0903cff93e15f9865634c79a42fb2fbc14e7964e",
+            "package": "@uifabric/utilities"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@uifabric/utilities_v7.31.0",
+      "version": "7.31.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@uifabric/utilities_v7.31.0",
+      "version": "7.31.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "createMergedRef: fix internal typings",
+            "author": "elcraig@microsoft.com",
+            "commit": "17e0cf28afe34918bce1d80454d3ee2c022f8467",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@uifabric/utilities_v7.30.0",
+      "version": "7.30.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating debounce and throttle type definitions for correctness to include a better inferred type for the throttled/debounced function",
+            "author": "sllynn8907@gmail.com",
+            "commit": "a021da77bff91b5df0f3b3ea97ecf7e7b6f6267c",
+            "package": "@uifabric/utilities"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Added document type to element parameter within on.ts utility.",
+            "author": "czearing@outlook.com",
+            "commit": "89eca359d7534b9bb6d7476cdf92781ea82c3dea",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Aug 2020 12:43:53 GMT",
+      "tag": "@uifabric/utilities_v7.28.0",
+      "version": "7.28.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `createMergedRef` utility for merging refs in a class component.",
+            "author": "dzearing@hotmail.com",
+            "commit": "79d99c0b79518ff201cd070e7aa597d5ba8d1864",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/utilities_v7.27.0",
+      "version": "7.27.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating getNativeProps default attribute set to include \"ref\" as a safe prop.",
+            "author": "dzearing@microsoft.com",
+            "commit": "427a8b1215a1f2510f41361b4e6b4d583a397c7c",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Adding `omit` helper to performantly create shallow object clones which omit a few props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "6ba23f1b86ab544afc2a7ff97a815a291ee17f8b",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Aug 2020 12:40:14 GMT",
+      "tag": "@uifabric/utilities_v7.26.1",
+      "version": "7.26.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "useCustomizationSettings: fix not getting correct settings from context when context updates, use it in styled",
+            "author": "xgao@microsoft.com",
+            "commit": "cbb81ccb1b78a8801abc8c272af331adb73edad0",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 12:40:48 GMT",
+      "tag": "@uifabric/utilities_v7.26.0",
+      "version": "7.26.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `omit` helper to performantly create shallow object clones which omit a few props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "6ba23f1b86ab544afc2a7ff97a815a291ee17f8b",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@uifabric/utilities_v7.25.1",
+      "version": "7.25.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "omit: changed to for in for more perf improvement.",
+            "author": "dzearing@microsoft.com",
+            "commit": "2525478b18ee3fd3a66063d3fda329ee0d7b8a55",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Aug 2020 12:45:42 GMT",
+      "tag": "@uifabric/utilities_v7.25.0",
+      "version": "7.25.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix warnControlledUsage doc comment",
+            "author": "elcraig@microsoft.com",
+            "commit": "ac40ad122cd2d1855ff06231c43403bf52054556",
+            "package": "@uifabric/utilities"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding omit utility as a tiny helper for cloning an object but omitting a few values. This is significantly faster than object spreading or using reduce.",
+            "author": "dzearing@microsoft.com",
+            "commit": "bc90b07e1da53cd189082f7b7bbf4d1118967c95",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jul 2020 12:47:45 GMT",
+      "tag": "@uifabric/utilities_v7.24.6",
+      "version": "7.24.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "useCustomizationSettings: get settings from CustomizerContext if exists.",
+            "author": "xgao@microsoft.com",
+            "commit": "f1047c3cd6fb28b558d2b40a005dc87a2f4ec714",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "@uifabric/utilities_v7.24.5",
+      "version": "7.24.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix \"rules of hooks\" lint rule violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "7bea3a43f5f01a3aef8a36813b8d88484aa021bc",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@uifabric/utilities_v7.24.4",
+      "version": "7.24.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable react-hooks lint rules for now",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jul 2020 12:38:41 GMT",
+      "tag": "@uifabric/utilities_v7.24.3",
+      "version": "7.24.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: useFocusRects should resolve window inside useEffect",
+            "author": "olfedias@microsoft.com",
+            "commit": "346cd61df2ce2268f4126eab1b31a173904ff4c2",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@uifabric/utilities_v7.24.2",
+      "version": "7.24.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/utilities_v7.24.1",
+      "version": "7.24.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint and fix some violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@uifabric/utilities_v7.24.0",
+      "version": "7.24.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "findScrollableParent: Adding missing `Window` and `undefined` return types.",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "ab11a59f02301dd0ba7226bcd5104c88fdbc2909",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Jul 2020 12:36:49 GMT",
+      "tag": "@uifabric/utilities_v7.23.0",
+      "version": "7.23.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Refactor styled to return a functional component (with optional ref attribute)",
+            "author": "miclo@microsoft.com",
+            "commit": "017dc3372393a5e4b327e1c90134c1858ed9abfd",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jun 2020 12:33:36 GMT",
+      "tag": "@uifabric/utilities_v7.22.0",
+      "version": "7.22.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "getNativeProps: changed to object lookups rather than array searching to determine native props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "7932ae5eef247af9b914e8f05efdaac0b64914f8",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2020 12:36:08 GMT",
+      "tag": "@uifabric/utilities_v7.21.4",
+      "version": "7.21.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix scroll position math for overscrolling (#13555)",
+            "author": "kai@substantial.com",
+            "commit": "3b18ead88c11bfaba0b0cfbe8a31360234dbece6",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/utilities_v7.21.3",
+      "version": "7.21.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "@uifabric/utilities_v7.21.1",
+      "version": "7.21.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add test util for react-test-renderer create with act wrapped",
+            "author": "xgao@microsoft.com",
+            "commit": "b0b4d703ec1178f2f3d80ead4d78a72e5fc64554",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/utilities_v7.21.0",
+      "version": "7.21.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Jun 2020 12:45:48 GMT",
+      "tag": "@uifabric/utilities_v7.21.0",
+      "version": "7.21.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add new Modalization utility",
+            "author": "phkuo@microsoft.com",
+            "commit": "4dd6a5e2364c96dde8d2034979cddd7e7e84fa4d",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@uifabric/utilities_v7.20.3",
+      "version": "7.20.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing side effect code that was breaking webpack treeshaking.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d5ed2c3804a58cb774bec86160df899fd7a8cb5a",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Removing side-effect code which was causing webpack to bail out of optimizations.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8ea7b001f627900e4f85afc2bcbfad9e326d1f9a",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Fixed prototype pollution vulnerability.",
+            "author": "esteban.230@hotmail.com",
+            "commit": "8961cec412264cd6d30edc46df383c617adf83c4",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 May 2020 12:42:08 GMT",
+      "tag": "@uifabric/utilities_v7.20.2",
+      "version": "7.20.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add autoCapitalize property",
+            "author": "suprememilanfan@gmail.com",
+            "commit": "13bd77d6062dfbf0209043275a581536aa5cad56",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 May 2020 12:40:00 GMT",
+      "tag": "@uifabric/utilities_v7.20.1",
+      "version": "7.20.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Selection: respect 0 as selected key",
+            "author": "elcraig@microsoft.com",
+            "commit": "08fa1c9b45c9c9938241740e71b9091a97067d0f",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/utilities_v7.20.0",
+      "version": "7.20.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "findIndex: add fromIndex parameter",
+            "author": "elcraig@microsoft.com",
+            "commit": "56db85a8a435bfafe0354bf5b74eb56be92e3a35",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 May 2020 12:37:35 GMT",
+      "tag": "@uifabric/utilities_v7.19.0",
+      "version": "7.19.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `getNativeElementProps` helper which takes the element tag name in + props and filters out unrecognized props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "bb3a1059eabff7a81c6666ec7319e66af5d74351",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/utilities_v7.18.0",
+      "version": "7.18.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix customizer doc comment formatting",
+            "author": "elcraig@microsoft.com",
+            "commit": "b00701979e60e1dd5e438f579086442bc0ddfc68",
+            "package": "@uifabric/utilities"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add useCustomizationSettings hook",
+            "author": "xgao@microsoft.com",
+            "commit": "ecbfff23b83b795d51d73322a4938a2f6ed682bf",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 12:42:20 GMT",
+      "tag": "@uifabric/utilities_v7.17.2",
+      "version": "7.17.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Selection added `items` to prop constructor options",
+            "author": "czearing@outlook.com",
+            "commit": "bb98a4971572bd9383d900cccb37650752329c8f",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 May 2020 12:34:32 GMT",
+      "tag": "@uifabric/utilities_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add utility to apply default props for function components",
+            "author": "miclo@microsoft.com",
+            "commit": "5a7901923692d45d70d9cb54fb127c108a5cd8e2",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "@uifabric/utilities_v7.16.4",
+      "version": "7.16.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update styled and classNamesFunction to support scss base styles",
+            "author": "xgao@microsoft.com",
+            "commit": "1619b355712d83844b4b63283e9370b5ff6a17f5",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/utilities_v7.16.2",
+      "version": "7.16.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@uifabric/utilities_v7.16.1",
+      "version": "7.16.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing errors when building @fluentui/docs.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "6c055de8e22610b9f96d29e0667f019d669b7df1",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Apr 2020 12:34:09 GMT",
+      "tag": "@uifabric/utilities_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Point: Renaming IPoint to point, x to left and y to top and deprecating old names.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "beb8886ffcbccd2bbef9c4e7a8afd742497289a5",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Apr 2020 12:34:50 GMT",
+      "tag": "@uifabric/utilities_v7.15.11",
+      "version": "7.15.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "classNamesFunction: fix not traversing the changed styles function",
+            "author": "xgao@microsoft.com",
+            "commit": "1d6687743e9fdf6a7a20a61ee61d18d36f45e0d0",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Revert changes to 'on': it should not use React events",
+            "author": "behowell@microsoft.com",
+            "commit": "65a2edff2455c57d4af59cc3e054ca8f4af1e499",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Fix lint rule violation",
+            "author": "elcraig@microsoft.com",
+            "commit": "03aa5f753a01c7a4fe0fb6ba8591027e9d3c9db3",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 19 Apr 2020 02:02:09 GMT",
+      "tag": "@uifabric/utilities_v7.15.10",
+      "version": "7.15.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "classNamesFunction: add warning on cache full",
+            "author": "xgao@microsoft.com",
+            "commit": "890f38c5ebe341a34bdc59417a6b777a3c646047",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 12:37:31 GMT",
+      "tag": "@uifabric/utilities_v7.15.8",
+      "version": "7.15.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update 'on' function to accept React events",
+            "author": "behowell@microsoft.com",
+            "commit": "971317f1d7dadb1f212b0bbd17e8e54e12e888f5",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/utilities_v7.15.7",
+      "version": "7.15.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Remove irrelevant details; Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "merge: null values are now preserved.",
+            "author": "dzearing@microsoft.com",
+            "commit": "12d36c3b78e090b1d3c24555fc9de63903a7ccae",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/utilities_v7.15.6",
+      "version": "7.15.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Apr 2020 12:28:27 GMT",
+      "tag": "@uifabric/utilities_v7.15.5",
+      "version": "7.15.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Customizable: improve perf by avoid mutating styles when concatination is enabled",
+            "author": "xgao@microsoft.com",
+            "commit": "7236969c06c5d5e732da1087e229de9db9881309"
+          },
+          {
+            "comment": "fix: fix typings for asAsync & internal usages of React.Children.map",
+            "author": "olfedias@microsoft.com",
+            "commit": "5d5891f4757c292ad5a59a7522a00437ae7ac248"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Mar 2020 19:10:08 GMT",
+      "tag": "@uifabric/utilities_v7.15.4",
+      "version": "7.15.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing errors when building @fluentui/docs.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "524cd85eadff8b8a370811031f7ad4c22f151cfd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/utilities_v7.15.3",
+      "version": "7.15.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/utilities_v7.15.2",
+      "version": "7.15.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/utilities_v7.15.1",
+      "version": "7.15.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Mar 2020 12:28:58 GMT",
+      "tag": "@uifabric/utilities_v7.15.0",
+      "version": "7.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "deprecate BaseComonent, remove all usages of BaseComponent and initializeFocusRects",
+            "author": "xgao@microsoft.com",
+            "commit": "cb3fa154d4cfc66bc9f31942c3657581d1d814ad"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Mar 2020 12:28:27 GMT",
+      "tag": "@uifabric/utilities_v7.14.1",
+      "version": "7.14.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "BaseComponent: remove initializeDir",
+            "author": "xgao@microsoft.com",
+            "commit": "131e068b5fa9f9fe838ecdaf7b1a1bf691ac8b36"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Mar 2020 12:35:00 GMT",
+      "tag": "@uifabric/utilities_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "convert initializeFocusRects to hook",
+            "author": "xgao@microsoft.com",
+            "commit": "b0ce989570bbf0394bb14913017150357ebccee2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Mar 2020 12:25:14 GMT",
+      "tag": "@uifabric/utilities_v7.13.2",
+      "version": "7.13.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Skips unnecessary equality check in shallowCompare to increase performance",
+            "author": "chce@netcompany.com",
+            "commit": "e590df08d02260882e225af34674b61285d66261"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@uifabric/utilities_v7.13.1",
+      "version": "7.13.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cleanup: Removing 'use strict' directive in ts files since modules are emitted with a 'use strict' prologue.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5cb5db07119d744a8a5247b6b0780f9005604b2d"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove typedef rule override",
+            "author": "elcraig@microsoft.com",
+            "commit": "12186bf0a00e97c34af5c510007b70610876c500"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Mar 2020 12:27:24 GMT",
+      "tag": "@uifabric/utilities_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Turning on tslint 'deprecation' rule.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "54a88d96894aeb605e765a1d3d66e02198c38a7e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Feb 2020 12:20:14 GMT",
+      "tag": "@uifabric/utilities_v7.12.4",
+      "version": "7.12.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "styled: do not create new styles function if styles prop is not changed",
+            "author": "xgao@microsoft.com",
+            "commit": "33fd9733154fab69a3ed29f39fea34d8f07bc632"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Feb 2020 12:20:16 GMT",
+      "tag": "@uifabric/utilities_v7.12.3",
+      "version": "7.12.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix memory leak caused by closure in scroll util",
+            "author": "xgao@microsoft.com",
+            "commit": "98b4a5b9b0bfb6d7c21f729b8f1dd550f0945b9c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Feb 2020 12:21:05 GMT",
+      "tag": "@uifabric/utilities_v7.12.2",
+      "version": "7.12.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add syncpack and synchronize dependencies. Refresh fluent import.",
+            "author": "jagore@microsoft.com",
+            "commit": "fb51dde1a365f7aad0cffbe23f01254ba1f31ebf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@uifabric/utilities_v7.12.1",
+      "version": "7.12.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Utilities: forcing a publish, as the NPM outage last week did not seem to publish 7.12.1 of utilities.",
+            "author": "dzearing@hotmail.com",
+            "commit": "71bcef681c8fbb6b01fb74a27b89fc3d0e921f74"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Feb 2020 12:24:27 GMT",
+      "tag": "@uifabric/utilities_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Replacing deprecated StatelessComponent references with FunctionComponent.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a2d743b178cecab012e4a7335c7e518d0c9b26c7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/utilities_v7.11.8",
+      "version": "7.11.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "update enzyme",
+            "author": "kchau@microsoft.com",
+            "commit": "495983aec20488918f3d1ee87a8af92cb93d208f"
+          },
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/utilities_v7.11.6",
+      "version": "7.11.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "33b1c3474b1b8e899a1c24a4c1ee973908686df1"
+          },
+          {
+            "comment": "uniting build across fluent and fabric",
+            "author": "kchau@microsoft.com",
+            "commit": "f9503d808bc0971e843024c9fb679c0ed5a67fbb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
+      "tag": "@uifabric/utilities_v7.11.5",
+      "version": "7.11.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix prettier error after upgrade prettier to 1.19.1",
+            "author": "xgao@microsoft.com",
+            "commit": "2242effd3e5226f313ef16f9c18ed3db87d548c4"
+          },
+          {
+            "comment": "bumping versions to fix broken publishes",
+            "author": "kchau@microsoft.com",
+            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/utilities_v7.11.4",
+      "version": "7.11.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2020 02:32:17 GMT",
+      "tag": "@uifabric/utilities_v7.11.2",
+      "version": "7.11.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads.",
+            "author": "jagore@microsoft.com",
+            "commit": "52dc239bf89dbe76daa5f4776ee4368957938a1a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jan 2020 12:28:58 GMT",
+      "tag": "@uifabric/utilities_v7.11.1",
+      "version": "7.11.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Upgrade repo to TS3.7.",
+            "author": "jagore@microsoft.com",
+            "commit": "e04fd44af0b978bc0c8c55658bf6b9d0ff3eac49"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jan 2020 12:28:56 GMT",
+      "tag": "@uifabric/utilities_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add composeComponentAs to compose React decorator components",
+            "author": "tmichon@microsoft.com",
+            "commit": "0ad2440153218b174cb0d6a12d91c0ca1764c2f6"
+          },
+          {
+            "comment": "Change focus class behavior: Alternate between 'hidden' and 'visible' classes",
+            "author": "paflakst@microsoft.com",
+            "commit": "bee187d4f1dec7d264a9dea28ffd3b93fc56302e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jan 2020 12:34:52 GMT",
+      "tag": "@uifabric/utilities_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "memoizeFunction: The items for which callback method returned null/undefined value, null/undefined was being stored in cache for these items. In this PR, a new flag is introduced based on which the cached undefined/null value can be updated till the time non-undefined/null value is encountered for the first time.",
+            "author": "vishgup@microsoft.com",
+            "commit": "cee2f1aee7bc1e19362683cb7f2d1f098159b88d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/utilities_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Jan 2020 12:29:10 GMT",
+      "tag": "@uifabric/utilities_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Selection: accept generic item type",
+            "author": "elcraig@microsoft.com",
+            "commit": "fd4b72e61ce81ab4dc8ff2e7ffe6d455a8996694"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "getClassNames: fix for LTR in RTL context.",
+            "author": "jdh@microsoft.com",
+            "commit": "14b05e455f69d29e88703ce13a3f8f4a139ed61c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Dec 2019 12:32:45 GMT",
+      "tag": "@uifabric/utilities_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "scroll.ts: added allowOverscrollOnElement, alternative to allowScrollOnElement that allows body scroll on touch devices",
+            "author": "dmitriy.ravdin@siemens.com",
+            "commit": "00c16da9f0d9ee3de29c6de6a0aa32d50397cdcc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Dec 2019 12:29:42 GMT",
+      "tag": "@uifabric/utilities_v7.7.1",
+      "version": "7.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add select to be a focusable target for focus utility",
+            "author": "joschect@microsoft.com",
+            "commit": "1268c4eac18a6c1b19f95c33cb2eb3988d54b47f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 15 Dec 2019 23:45:36 GMT",
+      "tag": "@uifabric/utilities_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "getRTL uses RTL flag on theme if present.",
+            "author": "jdh@microsoft.com",
+            "commit": "3bfff30ef0a5a091100d67ab970e470cb3e696fb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Nov 2019 12:33:30 GMT",
+      "tag": "@uifabric/utilities_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "AutoScroll: Add horizontal scrolling",
+            "author": "v-mare@microsoft.com",
+            "commit": "32bd9f52b12622a74b93f7f1ad032e0efeb1d27c"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix \"the the\" to \"the\"",
+            "author": "the.kinnikuman@gmail.com",
+            "commit": "fc378d1cf157c6022db9e2d2b9a4422e3872a824"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Oct 2019 12:33:45 GMT",
+      "tag": "@uifabric/utilities_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Reverting dependency on ReactDOM findDOMNode in getWindow and getDocument helpers to avoid bundle problems for partners.",
+            "author": "dzearing@microsoft.com",
+            "commit": "60e9282babcde13e7ad810d99113a1399e13d479"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "@uifabric/utilities_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Async methods can now take a React component as the target being passed to `getWindow`.",
+            "author": "dzearing@microsoft.com",
+            "commit": "930e9059016e06f0b7ad6b44ac7a62e094600f59"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Oct 2019 12:33:48 GMT",
+      "tag": "@uifabric/utilities_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Async helpers now take in a target element which will be used to find the window object.",
+            "author": "dzearing@microsoft.com",
+            "commit": "565f663abf4a51090c4d81abf185cb405105ba54"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Sep 2019 12:32:32 GMT",
+      "tag": "@uifabric/utilities_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "mergeStyles and mergeStyleSets have a companion method which accepts options for setting RTL",
+            "author": "jdh@microsoft.com",
+            "commit": "db3504b65c6363d9d840d58076a31abe8bade56a"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Minor refinement to mergeAriaAttributeValues to correctly handleu false, therefore allowing (`cond && \"something\").",
+            "author": "cliff.koh@microsoft.com",
+            "commit": "640471f2eb88fec33cbc46a96d60aedd4db8a647"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Sep 2019 12:33:15 GMT",
+      "tag": "@uifabric/utilities_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Customizations: add a way to batch updates",
+            "author": "phkuo@microsoft.com",
+            "commit": "3e60b124b6f072b741a68c5559ed7cf5241fe379"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Sep 2019 12:34:28 GMT",
+      "tag": "@uifabric/utilities_v7.0.11",
+      "version": "7.0.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Consuming latest merge-styles bits with `concatStyleSetsWithProps`.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8065917a76a5e08b27721e34e13903adba3730f1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Sep 2019 12:34:47 GMT",
+      "tag": "@uifabric/utilities_v7.0.10",
+      "version": "7.0.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move getId to its own file",
+            "author": "elcraig@microsoft.com",
+            "commit": "c7a6e4ebaa063a7516e1ffb53ee1c12166df9258"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2019 04:09:58 GMT",
+      "tag": "@uifabric/utilities_v7.0.9",
+      "version": "7.0.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix version file",
+            "author": "kchau@microsoft.com",
+            "commit": "fbccfaf91bfe3c77d95c614ac2cb69b7c9e1dad1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "@uifabric/utilities_v7.0.8",
+      "version": "7.0.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update npmignores, delete unused jest setup files",
+            "author": "elcraig@microsoft.com",
+            "commit": "b12aaa280221562003af1e0f02aa5f3a5b008041"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "@uifabric/utilities_v7.0.7",
+      "version": "7.0.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "addding dynamic import and patching ts",
+            "author": "esteban.230@hotmail.com",
+            "commit": "400f6f3ea28aacfd8f65435a8cc3dac391576a42"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "@uifabric/utilities_v7.0.7",
+      "version": "7.0.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "moving to lerna",
+            "author": "kchau@microsoft.com",
+            "commit": "181d2d537ec5feaaed43f35412d6f2d8b523d690"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/utilities_v7.0.7",
+      "version": "7.0.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/utilities_v7.0.6",
+      "version": "7.0.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
     {
       "version": "7.0.6",
       "tag": "@uifabric/utilities_v7.0.6",

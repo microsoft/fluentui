@@ -1,0 +1,413 @@
+{
+  "fontName": "fabric-icons-14",
+  "fontFamilyName": "FabricMDL2Icons-14",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": true,
+  "chunkSubsets": true,
+  "hashFontFileName": true,
+  "subsetChunkSettings": {
+    "maxSubsetSize": 100
+  },
+  "glyphs": [
+    {
+      "name": "Snooze",
+      "unicode": "F4BD"
+    },
+    {
+      "name": "WaffleOffice365",
+      "unicode": "F4E0"
+    },
+    {
+      "name": "ImageSearch",
+      "unicode": "F4E8"
+    },
+    {
+      "name": "NewsSearch",
+      "unicode": "F4E9"
+    },
+    {
+      "name": "VideoSearch",
+      "unicode": "F4EA"
+    },
+    {
+      "name": "R",
+      "unicode": "F4EB"
+    },
+    {
+      "name": "FontColorA",
+      "unicode": "F4EC"
+    },
+    {
+      "name": "FontColorSwatch",
+      "unicode": "F4ED"
+    },
+    {
+      "name": "LightWeight",
+      "unicode": "F4EE"
+    },
+    {
+      "name": "NormalWeight",
+      "unicode": "F4EF"
+    },
+    {
+      "name": "SemiboldWeight",
+      "unicode": "F4F0"
+    },
+    {
+      "name": "GroupObject",
+      "unicode": "F4F1"
+    },
+    {
+      "name": "UngroupObject",
+      "unicode": "F4F2"
+    },
+    {
+      "name": "AlignHorizontalLeft",
+      "unicode": "F4F3"
+    },
+    {
+      "name": "AlignHorizontalCenter",
+      "unicode": "F4F4"
+    },
+    {
+      "name": "AlignHorizontalRight",
+      "unicode": "F4F5"
+    },
+    {
+      "name": "AlignVerticalTop",
+      "unicode": "F4F6"
+    },
+    {
+      "name": "AlignVerticalCenter",
+      "unicode": "F4F7"
+    },
+    {
+      "name": "AlignVerticalBottom",
+      "unicode": "F4F8"
+    },
+    {
+      "name": "HorizontalDistributeCenter",
+      "unicode": "F4F9"
+    },
+    {
+      "name": "VerticalDistributeCenter",
+      "unicode": "F4FA"
+    },
+    {
+      "name": "Ellipse",
+      "unicode": "F4FB"
+    },
+    {
+      "name": "Line",
+      "unicode": "F4FC"
+    },
+    {
+      "name": "Octagon",
+      "unicode": "F4FD"
+    },
+    {
+      "name": "Hexagon",
+      "unicode": "F4FE"
+    },
+    {
+      "name": "Pentagon",
+      "unicode": "F4FF"
+    },
+    {
+      "name": "RightTriangle",
+      "unicode": "F500"
+    },
+    {
+      "name": "HalfCircle",
+      "unicode": "F501"
+    },
+    {
+      "name": "QuarterCircle",
+      "unicode": "F502"
+    },
+    {
+      "name": "ThreeQuarterCircle",
+      "unicode": "F503"
+    },
+    {
+      "name": "6PointStar",
+      "unicode": "F504"
+    },
+    {
+      "name": "12PointStar",
+      "unicode": "F505"
+    },
+    {
+      "name": "ArrangeBringToFront",
+      "unicode": "F506"
+    },
+    {
+      "name": "ArrangeSendToBack",
+      "unicode": "F507"
+    },
+    {
+      "name": "ArrangeSendBackward",
+      "unicode": "F508"
+    },
+    {
+      "name": "ArrangeBringForward",
+      "unicode": "F509"
+    },
+    {
+      "name": "BorderDash",
+      "unicode": "F50A"
+    },
+    {
+      "name": "BorderDot",
+      "unicode": "F50B"
+    },
+    {
+      "name": "LineStyle",
+      "unicode": "F50C"
+    },
+    {
+      "name": "LineThickness",
+      "unicode": "F50D"
+    },
+    {
+      "name": "WindowEdit",
+      "unicode": "F50E"
+    },
+    {
+      "name": "HintText",
+      "unicode": "F50F"
+    },
+    {
+      "name": "MediaAdd",
+      "unicode": "F510"
+    },
+    {
+      "name": "AnchorLock",
+      "unicode": "F511"
+    },
+    {
+      "name": "AutoHeight",
+      "unicode": "F512"
+    },
+    {
+      "name": "ChartSeries",
+      "unicode": "F513"
+    },
+    {
+      "name": "ChartXAngle",
+      "unicode": "F514"
+    },
+    {
+      "name": "ChartYAngle",
+      "unicode": "F515"
+    },
+    {
+      "name": "Combobox",
+      "unicode": "F516"
+    },
+    {
+      "name": "LineSpacing",
+      "unicode": "F517"
+    },
+    {
+      "name": "Padding",
+      "unicode": "F518"
+    },
+    {
+      "name": "PaddingTop",
+      "unicode": "F519"
+    },
+    {
+      "name": "PaddingBottom",
+      "unicode": "F51A"
+    },
+    {
+      "name": "PaddingLeft",
+      "unicode": "F51B"
+    },
+    {
+      "name": "PaddingRight",
+      "unicode": "F51C"
+    },
+    {
+      "name": "NavigationFlipper",
+      "unicode": "F51D"
+    },
+    {
+      "name": "AlignJustify",
+      "unicode": "F51E"
+    },
+    {
+      "name": "TextOverflow",
+      "unicode": "F51F"
+    },
+    {
+      "name": "VisualsFolder",
+      "unicode": "F520"
+    },
+    {
+      "name": "VisualsStore",
+      "unicode": "F521"
+    },
+    {
+      "name": "PictureCenter",
+      "unicode": "F522"
+    },
+    {
+      "name": "PictureFill",
+      "unicode": "F523"
+    },
+    {
+      "name": "PicturePosition",
+      "unicode": "F524"
+    },
+    {
+      "name": "PictureStretch",
+      "unicode": "F525"
+    },
+    {
+      "name": "PictureTile",
+      "unicode": "F526"
+    },
+    {
+      "name": "Slider",
+      "unicode": "F527"
+    },
+    {
+      "name": "SliderHandleSize",
+      "unicode": "F528"
+    },
+    {
+      "name": "DefaultRatio",
+      "unicode": "F529"
+    },
+    {
+      "name": "NumberSequence",
+      "unicode": "F52A"
+    },
+    {
+      "name": "GUID",
+      "unicode": "F52B"
+    },
+    {
+      "name": "ReportAdd",
+      "unicode": "F52C"
+    },
+    {
+      "name": "DashboardAdd",
+      "unicode": "F52D"
+    },
+    {
+      "name": "MapPinSolid",
+      "unicode": "F52E"
+    },
+    {
+      "name": "WebPublish",
+      "unicode": "F52F"
+    },
+    {
+      "name": "PieSingleSolid",
+      "unicode": "F530"
+    },
+    {
+      "name": "BlockedSolid",
+      "unicode": "F531"
+    },
+    {
+      "name": "DrillDown",
+      "unicode": "F532"
+    },
+    {
+      "name": "DrillDownSolid",
+      "unicode": "F533"
+    },
+    {
+      "name": "DrillExpand",
+      "unicode": "F534"
+    },
+    {
+      "name": "DrillShow",
+      "unicode": "F535"
+    },
+    {
+      "name": "SpecialEvent",
+      "unicode": "F536"
+    },
+    {
+      "name": "OneDriveFolder16",
+      "unicode": "F53B"
+    },
+    {
+      "name": "FunctionalManagerDashboard",
+      "unicode": "F542"
+    },
+    {
+      "name": "BIDashboard",
+      "unicode": "F543"
+    },
+    {
+      "name": "CodeEdit",
+      "unicode": "F544"
+    },
+    {
+      "name": "RenewalCurrent",
+      "unicode": "F545"
+    },
+    {
+      "name": "RenewalFuture",
+      "unicode": "F546"
+    },
+    {
+      "name": "SplitObject",
+      "unicode": "F547"
+    },
+    {
+      "name": "BulkUpload",
+      "unicode": "F548"
+    },
+    {
+      "name": "DownloadDocument",
+      "unicode": "F549"
+    },
+    {
+      "name": "GreetingCard",
+      "unicode": "F54B"
+    },
+    {
+      "name": "Flower",
+      "unicode": "F54E"
+    },
+    {
+      "name": "WaitlistConfirm",
+      "unicode": "F550"
+    },
+    {
+      "name": "WaitlistConfirmMirrored",
+      "unicode": "F551"
+    },
+    {
+      "name": "LaptopSecure",
+      "unicode": "F552"
+    },
+    {
+      "name": "DragObject",
+      "unicode": "F553"
+    },
+    {
+      "name": "EntryView",
+      "unicode": "F554"
+    },
+    {
+      "name": "EntryDecline",
+      "unicode": "F555"
+    },
+    {
+      "name": "ContactCardSettings",
+      "unicode": "F556"
+    },
+    {
+      "name": "ContactCardSettingsMirrored",
+      "unicode": "F557"
+    }
+  ]
+}

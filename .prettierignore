@@ -1,22 +1,41 @@
-package.json
+# generated or imported files
 package-deps.json
-shrinkwrap.yml
 CHANGELOG.*
-fabric-icons-*
 version.ts
-dndSim.js
-packages/tslint-rules/tslint.json
-
-*.d.ts
 *.api.md
+api-report.md
 *.scss.ts
 _*.scss
+yarn.lock
 
+# generated folders
+node_modules
 lib
 lib-amd
 lib-esm
 lib-commonjs
 dist
-node_modules
 common/changes
 common/scripts
+coverage
+etc
+change
+__snapshots__
+.yarn/
+
+# package specific files
+apps/vr-tests/dndSim.js
+packages/monaco-editor/esm
+packages/monaco-editor/monaco-typescript.d.ts
+packages/font-icons-mdl2/**/fabric-icons-*
+packages/fluentui/**/componentInfo
+packages/fluentui/docs/src/behaviorMenu.json
+packages/fluentui/docs/src/exampleMenus
+packages/fluentui/docs/src/exampleSources
+packages/fluentui/ability-attributes/src/schema.ts
+packages/web-components/src/**/*.styles.ts
+packages/web-components/**/*.spec.ts
+packages/web-components/src/default-palette.ts
+
+# template files which actually follow a different language's formatting
+*.hbs

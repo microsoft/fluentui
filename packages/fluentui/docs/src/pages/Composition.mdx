@@ -1,0 +1,54 @@
+import { Alert } from '@fluentui/react-northstar';
+
+export const meta = {
+  title: 'Composition',
+  previous: { name: 'Shorthand Props', url: '/shorthand-props' },
+  next: { name: 'Icons', url: '/icon-viewer' },
+};
+
+## `as` prop
+
+Fluent UI provides a way to compose React components through the `as` prop. It allows to compose component features and props without adding extra nested components.
+
+```jsx
+<>
+  {/* 🧱 Each Fluent UI component has a default value for `as` prop */}
+  {/* Will output: <h1 class="ui-header" /> */}
+  <Header />
+  {/* Uses another tag: <h2 class="ui-header" /> */}
+  <Header as="h2" />
+</>
+```
+
+<Alert warning>
+  <p>
+    Using <code>as</code> prop can change the behavior of the component. If this prop is used it is the responsibility
+    of the consumer to verify accessibility and styling aspects of the component and handle them correctly.
+  </p>
+</Alert>
+
+## Unhandled props & DOM attributes
+
+Our components handle only props that are defined in their interfaces, all unhandled props are passed to the component you are rendering `as`. It means that all HTML props are supported on all Fluent UI components.
+
+```jsx
+<>
+  {/* `type` is an unhandled prop on `Button` and is passed through ⬇️*/}
+  {/* Will output: <button class="ui-button" type="submit" /> */}
+  <Button type="submit" />
+  {/* `onLoad` and `onError` will be passed to `img` */}
+  {/* Will output: <img class="ui-image" src="//via.placeholder.com/300" /> */}
+  <Image src="//via.placeholder.com/300" onLoad={() => alert('Loaded')} onError={() => alert('Error')} />
+</>
+```
+
+This is also essential for working with third party libraries like `react-router`.
+
+```jsx
+import { Link } from 'react-router-dom';
+
+// 💡 `to` prop is not handled in `Button` and will be passed to `Link` component
+<Button as={Link} to="/home">
+  To homepage
+</Button>;
+```

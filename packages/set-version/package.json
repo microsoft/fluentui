@@ -1,30 +1,34 @@
 {
-  "name": "@uifabric/set-version",
-  "version": "7.0.0",
-  "description": "Non-Fabric specific package version setter",
+  "name": "@fluentui/set-version",
+  "version": "8.2.0",
+  "description": "Non-Fabric-specific package version setter",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "code-style": "npx just-scripts code-style",
-    "just": "npx just-scripts"
+    "build": "just-scripts build",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test"
   },
   "devDependencies": {
-    "@types/jest": "23.0.0",
-    "@uifabric/prettier-rules": "^7.0.2",
-    "@uifabric/tslint-rules": "^7.0.2",
-    "@uifabric/build": "^7.0.0"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "tslib": "^1.7.1"
+    "tslib": "^2.1.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

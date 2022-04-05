@@ -9,9 +9,9 @@ module.exports.logStartTask = (packageName, task) => {
 
 module.exports.logEndTask = (packageName, task, startTime, errorMessage) => {
   console.log(
-    `${getTimePrefix(packageName)} ${getPassFail(errorMessage === undefined)}: ${chalk.cyan(task)} (${getDuration(startTime)})${
-      errorMessage ? chalk.white(': ') + chalk.red(errorMessage) : ''
-    }`
+    `${getTimePrefix(packageName)} ${getPassFail(errorMessage === undefined)}: ${chalk.cyan(task)} (${getDuration(
+      startTime,
+    )})${errorMessage ? chalk.white(': ') + chalk.red(errorMessage) : ''}`,
   );
 };
 
@@ -24,7 +24,8 @@ module.exports.logStatus = taskStatus => {
 module.exports.logEndBuild = (packageName, passed, startTime) => {
   console.log();
   console.log(
-    `${chalk.grey('============') +
+    `${
+      chalk.grey('============') +
       chalk.white('[ ') +
       chalk.cyan(packageName) +
       chalk.white(' ]') +
@@ -36,8 +37,9 @@ module.exports.logEndBuild = (packageName, passed, startTime) => {
       chalk.white('[ ') +
       getDuration(startTime) +
       chalk.white(' ]') +
-      chalk.grey('============')}
-  `
+      chalk.grey('============')
+    }
+  `,
   );
 };
 

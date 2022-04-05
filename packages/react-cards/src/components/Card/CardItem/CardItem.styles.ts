@@ -1,23 +1,31 @@
-import { getGlobalClassNames } from '@uifabric/styling';
+import { getGlobalClassNames } from '@fluentui/react/lib/Styling';
 import { ICardItemComponent, ICardItemStylesReturnType, ICardItemTokenReturnType } from './CardItem.types';
 
 const GlobalClassNames = {
-  root: 'ms-CardItem'
+  root: 'ms-CardItem',
 };
 
 const baseTokens: ICardItemComponent['tokens'] = {
-  padding: 0
+  padding: 0,
 };
 
 const filledTokens: ICardItemComponent['tokens'] = {
-  margin: 0
+  margin: 0,
 };
 
+/**
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const CardItemTokens: ICardItemComponent['tokens'] = (props, theme): ICardItemTokenReturnType => [
   baseTokens,
-  props.fill && filledTokens
+  props.fill && filledTokens,
 ];
 
+/**
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const CardItemStyles: ICardItemComponent['styles'] = (props, theme, tokens): ICardItemStylesReturnType => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -27,8 +35,8 @@ export const CardItemStyles: ICardItemComponent['styles'] = (props, theme, token
       classNames.root,
       {
         margin: tokens.margin,
-        padding: tokens.padding
-      }
-    ]
+        padding: tokens.padding,
+      },
+    ],
   };
 };

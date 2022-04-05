@@ -1,12 +1,12 @@
 /** Jest test setup file. */
 
-const { setIconOptions } = require('office-ui-fabric-react/lib/Styling');
+const { setIconOptions } = require('@fluentui/react/lib/Styling');
 const { configure } = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
 
 // Suppress icon warnings.
 setIconOptions({
-  disableWarnings: true
+  disableWarnings: true,
 });
 
 // Mock requestAnimationFrame for React 16+.

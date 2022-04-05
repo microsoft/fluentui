@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "update `mountNode` types to accept HTMLElement",
+  "packageName": "@fluentui/react-portal",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

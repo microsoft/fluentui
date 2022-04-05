@@ -1,17 +1,23 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { Panel, PanelType, SearchBox } from 'office-ui-fabric-react';
+import { TestWrapperDecorator } from '../utilities/index';
+import { DefaultButton, Panel, PanelType, PrimaryButton, SearchBox } from '@fluentui/react';
 
 const defaultProps = {
   isOpen: true,
-  children: 'Content goes here'
+  children: 'Content goes here',
 };
 
+const onRenderFooterContent = () => (
+  <div>
+    <PrimaryButton>Save</PrimaryButton>
+    <DefaultButton>Cancel</DefaultButton>
+  </div>
+);
+
 storiesOf('Panel', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -20,14 +26,14 @@ storiesOf('Panel', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory(
     'Small left w/ close button',
     () => (
       <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedNear} headerText="Small" />
     ),
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory(
     'Small fixed right w/ close button',
@@ -39,7 +45,7 @@ storiesOf('Panel', module)
         headerText="Small fixed"
       />
     ),
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory('Small fluid right', () => (
     <Panel {...defaultProps} type={PanelType.smallFluid} headerText="Small fluid" />
@@ -47,7 +53,7 @@ storiesOf('Panel', module)
   .addStory(
     'Medium right',
     () => <Panel {...defaultProps} type={PanelType.medium} headerText="Medium" />,
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory('Large right', () => (
     <Panel {...defaultProps} type={PanelType.large} headerText="Large" />
@@ -76,10 +82,22 @@ storiesOf('Panel', module)
       headerText="No navigation"
       hasCloseButton={false}
     />
+  ))
+  .addStory('With no header, close button', () => (
+    <Panel {...defaultProps} type={PanelType.smallFixedFar} hasCloseButton={true} />
+  ))
+  .addStory('With footer at the bottom', () => (
+    <Panel
+      {...defaultProps}
+      type={PanelType.smallFixedFar}
+      headerText="Footer at bottom"
+      onRenderFooterContent={onRenderFooterContent}
+      isFooterAtBottom={true}
+    />
   ));
 
 storiesOf('Panel', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -108,5 +126,5 @@ storiesOf('Panel', module)
         </Panel>
       </div>
     ),
-    { rtl: true }
+    { includeRtl: true },
   );

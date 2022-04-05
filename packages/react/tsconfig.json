@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "lib",
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
+    "isolatedModules": true,
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "lib": ["es5", "dom", "es2015.promise"],
+    "skipLibCheck": true,
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["jest", "custom-global"]
+  },
+  "include": ["src"]
+}

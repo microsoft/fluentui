@@ -1,3 +1,0 @@
-- [Web Spinner](#/controls/web/spinner)
-- [iOS Spinner](#/controls/ios/spinner)
-- [Android Spinner](#/controls/android/spinner)

@@ -1,42 +1,18 @@
 {
-  "name": "test-bundles",
-  "version": "7.0.0",
-  "description": "Testing the button for bundling.",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "sideEffects": [
-    "lib/version.js"
-  ],
-  "typings": "lib/index.d.ts",
+  "name": "@fluentui/test-bundles",
+  "version": "1.0.0",
+  "description": "Testing Fluent UI React bundle sizes.",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
-  },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
-    "start": "npx just-scripts dev"
+    "bundle:size": "just-scripts bundle",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts"
   },
   "devDependencies": {
-    "@types/react": "16.8.11",
-    "@types/react-dom": "16.8.4",
-    "@types/webpack-env": "1.13.9",
-    "@uifabric/prettier-rules": "^7.0.2",
-    "@uifabric/tslint-rules": "^7.0.2",
-    "@uifabric/build": "^7.0.0"
-  },
-  "dependencies": {
-    "@uifabric/experiments": "^7.4.1",
-    "@uifabric/set-version": "^7.0.0",
-    "@uifabric/styling": "^7.1.1",
-    "office-ui-fabric-react": "^7.7.1",
-    "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6",
-    "tslib": "^1.7.1"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0",
+    "parallel-webpack": "^2.6.0"
   }
 }

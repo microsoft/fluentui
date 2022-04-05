@@ -1,3 +1,5 @@
+import { getWindow } from './dom/getWindow';
+
 declare function setTimeout(cb: Function, delay: number): number;
 declare function setInterval(cb: Function, delay: number): number;
 
@@ -17,10 +19,10 @@ export class Async {
   private _animationFrameIds: { [id: number]: boolean } | null = null;
   private _isDisposed: boolean;
   private _parent: object | null;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onErrorHandler: ((e: any) => void) | undefined;
   private _noop: () => void;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(parent?: object, onError?: (e: any) => void) {
     this._isDisposed = false;
     this._parent = parent || null;
@@ -97,7 +99,6 @@ export class Async {
         this._timeoutIds = {};
       }
 
-      /* tslint:disable:ban-native-functions */
       timeoutId = setTimeout(() => {
         // Time to execute the timeout, enqueue it as a foreground task to be executed.
 
@@ -108,12 +109,9 @@ export class Async {
           }
           callback.apply(this._parent);
         } catch (e) {
-          if (this._onErrorHandler) {
-            this._onErrorHandler(e);
-          }
+          this._logError(e);
         }
       }, duration);
-      /* tslint:enable:ban-native-functions */
 
       this._timeoutIds[timeoutId] = true;
     }
@@ -127,27 +125,26 @@ export class Async {
    */
   public clearTimeout(id: number): void {
     if (this._timeoutIds && this._timeoutIds[id]) {
-      /* tslint:disable:ban-native-functions */
       clearTimeout(id);
       delete this._timeoutIds[id];
-      /* tslint:enable:ban-native-functions */
     }
   }
 
   /**
    * SetImmediate override, which will auto cancel the immediate during dispose.
    * @param callback - Callback to execute.
+   * @param targetElement - Optional target element to use for identifying the correct window.
    * @returns The setTimeout id.
    */
-  public setImmediate(callback: () => void): number {
+  public setImmediate(callback: () => void, targetElement?: Element | null): number {
     let immediateId = 0;
+    const win = getWindow(targetElement)!;
 
     if (!this._isDisposed) {
       if (!this._immediateIds) {
         this._immediateIds = {};
       }
 
-      /* tslint:disable:ban-native-functions */
       let setImmediateCallback = () => {
         // Time to execute the timeout, enqueue it as a foreground task to be executed.
 
@@ -162,8 +159,7 @@ export class Async {
         }
       };
 
-      immediateId = window.setTimeout(setImmediateCallback, 0);
-      /* tslint:enable:ban-native-functions */
+      immediateId = win.setTimeout(setImmediateCallback, 0);
 
       this._immediateIds[immediateId] = true;
     }
@@ -174,13 +170,14 @@ export class Async {
   /**
    * Clears the immediate.
    * @param id - Id to cancel.
+   * @param targetElement - Optional target element to use for identifying the correct window.
    */
-  public clearImmediate(id: number): void {
+  public clearImmediate(id: number, targetElement?: Element | null): void {
+    const win = getWindow(targetElement)!;
+
     if (this._immediateIds && this._immediateIds[id]) {
-      /* tslint:disable:ban-native-functions */
-      window.clearTimeout(id);
+      win.clearTimeout(id);
       delete this._immediateIds[id];
-      /* tslint:enable:ban-native-functions */
     }
   }
 
@@ -198,7 +195,6 @@ export class Async {
         this._intervalIds = {};
       }
 
-      /* tslint:disable:ban-native-functions */
       intervalId = setInterval(() => {
         // Time to execute the interval callback, enqueue it as a foreground task to be executed.
         try {
@@ -207,7 +203,6 @@ export class Async {
           this._logError(e);
         }
       }, duration);
-      /* tslint:enable:ban-native-functions */
 
       this._intervalIds[intervalId] = true;
     }
@@ -221,10 +216,8 @@ export class Async {
    */
   public clearInterval(id: number): void {
     if (this._intervalIds && this._intervalIds[id]) {
-      /* tslint:disable:ban-native-functions */
       clearInterval(id);
       delete this._intervalIds[id];
-      /* tslint:enable:ban-native-functions */
     }
   }
 
@@ -235,23 +228,24 @@ export class Async {
    * function will return the result of the last func call.
    *
    * Note: If leading and trailing options are true func will be called on the trailing edge of
-   * the timeout only if the the throttled function is invoked more than once during the wait timeout.
+   * the timeout only if the throttled function is invoked more than once during the wait timeout.
    *
    * @param func - The function to throttle.
    * @param wait - The number of milliseconds to throttle executions to. Defaults to 0.
    * @param options - The options object.
    * @returns The new throttled function.
    */
-  public throttle<T extends Function>(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public throttle<T extends (...args: any[]) => any>(
     func: T,
     wait?: number,
     options?: {
       leading?: boolean;
       trailing?: boolean;
-    }
-  ): T | (() => void) {
+    },
+  ): T {
     if (this._isDisposed) {
-      return this._noop;
+      return this._noop as T;
     }
 
     let waitMS = wait || 0;
@@ -259,7 +253,7 @@ export class Async {
     let trailing = true;
     let lastExecuteTime = 0;
     let lastResult: T;
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let lastArgs: any[];
     let timeoutId: number | null = null;
 
@@ -272,7 +266,7 @@ export class Async {
     }
 
     let callback = (userCall?: boolean) => {
-      let now = new Date().getTime();
+      let now = Date.now();
       let delta = now - lastExecuteTime;
       let waitLength = leading ? waitMS - delta : waitMS;
       if (delta >= waitMS && (!userCall || leading)) {
@@ -289,11 +283,11 @@ export class Async {
       return lastResult;
     };
 
-    // tslint:disable-next-line:no-any
-    let resultFunction: () => T = (...args: any[]) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let resultFunction = ((...args: any[]): any => {
       lastArgs = args;
       return callback(true);
-    };
+    }) as T;
 
     return resultFunction;
   }
@@ -305,7 +299,7 @@ export class Async {
    * to the debounced function will return the result of the last func call.
    *
    * Note: If leading and trailing options are true func will be called on the trailing edge of
-   * the timeout only if the the debounced function is invoked more than once during the wait
+   * the timeout only if the debounced function is invoked more than once during the wait
    * timeout.
    *
    * @param func - The function to debounce.
@@ -313,26 +307,25 @@ export class Async {
    * @param options - The options object.
    * @returns The new debounced function.
    */
-  public debounce<T extends Function>(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public debounce<T extends (...args: any[]) => any>(
     func: T,
     wait?: number,
     options?: {
       leading?: boolean;
       maxWait?: number;
       trailing?: boolean;
-    }
-  ): ICancelable<T> & (() => void) {
+    },
+  ): ICancelable<T> & T {
     if (this._isDisposed) {
-      let noOpFunction: ICancelable<T> & (() => T) = (() => {
+      let noOpFunction = (() => {
         /** Do nothing */
-      }) as ICancelable<T> & (() => T);
+      }) as ICancelable<T> & T;
 
       noOpFunction.cancel = () => {
         return;
       };
-      /* tslint:disable:no-any */
-      noOpFunction.flush = (() => null) as any;
-      /* tslint:enable:no-any */
+      noOpFunction.flush = ((() => null) as unknown) as () => ReturnType<T>;
       noOpFunction.pending = () => false;
 
       return noOpFunction;
@@ -343,9 +336,9 @@ export class Async {
     let trailing = true;
     let maxWait: number | null = null;
     let lastCallTime = 0;
-    let lastExecuteTime = new Date().getTime();
-    let lastResult: T;
-    // tslint:disable-next-line:no-any
+    let lastExecuteTime = Date.now();
+    let lastResult: ReturnType<T>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let lastArgs: any[];
     let timeoutId: number | null = null;
 
@@ -375,7 +368,7 @@ export class Async {
     };
 
     let callback = (userCall?: boolean) => {
-      let now = new Date().getTime();
+      let now = Date.now();
       let executeImmediately = false;
       if (userCall) {
         if (leading && now - lastCallTime >= waitMS) {
@@ -413,23 +406,23 @@ export class Async {
     let cancel = (): void => {
       if (pending()) {
         // Mark the debounced function as having executed
-        markExecuted(new Date().getTime());
+        markExecuted(Date.now());
       }
     };
 
-    let flush = (): T => {
+    let flush = () => {
       if (pending()) {
-        invokeFunction(new Date().getTime());
+        invokeFunction(Date.now());
       }
 
       return lastResult;
     };
 
-    // tslint:disable-next-line:no-any
-    let resultFunction: ICancelable<T> & (() => T) = ((...args: any[]) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let resultFunction = ((...args: any[]) => {
       lastArgs = args;
       return callback(true);
-    }) as ICancelable<T> & (() => T);
+    }) as ICancelable<T> & T;
 
     resultFunction.cancel = cancel;
     resultFunction.flush = flush;
@@ -438,15 +431,15 @@ export class Async {
     return resultFunction;
   }
 
-  public requestAnimationFrame(callback: () => void): number {
+  public requestAnimationFrame(callback: () => void, targetElement?: Element | null): number {
     let animationFrameId = 0;
+    const win = getWindow(targetElement)!;
 
     if (!this._isDisposed) {
       if (!this._animationFrameIds) {
         this._animationFrameIds = {};
       }
 
-      /* tslint:disable:ban-native-functions */
       let animationFrameCallback = () => {
         try {
           // Now delete the record and call the callback.
@@ -460,10 +453,9 @@ export class Async {
         }
       };
 
-      animationFrameId = window.requestAnimationFrame
-        ? window.requestAnimationFrame(animationFrameCallback)
-        : window.setTimeout(animationFrameCallback, 0);
-      /* tslint:enable:ban-native-functions */
+      animationFrameId = win.requestAnimationFrame
+        ? win.requestAnimationFrame(animationFrameCallback)
+        : win.setTimeout(animationFrameCallback, 0);
 
       this._animationFrameIds[animationFrameId] = true;
     }
@@ -471,16 +463,16 @@ export class Async {
     return animationFrameId;
   }
 
-  public cancelAnimationFrame(id: number): void {
+  public cancelAnimationFrame(id: number, targetElement?: Element | null): void {
+    const win = getWindow(targetElement)!;
+
     if (this._animationFrameIds && this._animationFrameIds[id]) {
-      /* tslint:disable:ban-native-functions */
-      window.cancelAnimationFrame ? window.cancelAnimationFrame(id) : window.clearTimeout(id);
-      /* tslint:enable:ban-native-functions */
+      win.cancelAnimationFrame ? win.cancelAnimationFrame(id) : win.clearTimeout(id);
       delete this._animationFrameIds[id];
     }
   }
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   protected _logError(e: any): void {
     if (this._onErrorHandler) {
       this._onErrorHandler(e);
@@ -488,8 +480,9 @@ export class Async {
   }
 }
 
-export type ICancelable<T> = {
-  flush: () => T;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ICancelable<T extends (...args: any[]) => any> = {
+  flush: () => ReturnType<T>;
   cancel: () => void;
   pending: () => boolean;
 };

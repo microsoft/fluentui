@@ -1,18 +1,18 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { MessageBarButton, Link, MessageBar, MessageBarType } from 'office-ui-fabric-react';
+import { TestWrapperDecorator } from '../utilities/index';
+import { Link, MessageBar, MessageBarType } from '@fluentui/react';
+import { MessageBarButton } from '@fluentui/react/lib/Button';
 
 const noop = (): void => undefined;
-// tslint:disable:max-line-length
 const longText =
+  // eslint-disable-next-line @fluentui/max-len
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vestibulum tellus at malesuada vestibulum. Pellentesque eget mi sagittis, sagittis nisi a, tristique nisl. Sed sed consequat neque, et dignissim ipsum. Integer in neque vestibulum, aliquet erat nec, vestibulum ex. Nullam et imperdiet lectus. Cras tempus eu tortor a elementum. Proin non justo lacus. Donec tincidunt laoreet malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean augue nisl, lobortis ut sodales eu, convallis in metus.';
 const link = <Link href="www.bing.com">Visit our website</Link>;
 
 storiesOf('MessageBar', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -21,13 +21,15 @@ storiesOf('MessageBar', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
-  .addStory('Root', () => <MessageBar>Info/default message bar. {link}</MessageBar>, { rtl: true })
+  .addStory('Root', () => <MessageBar>Info/default message bar. {link}</MessageBar>, {
+    includeRtl: true,
+  })
   .addStory(
     'Root dismiss',
     () => <MessageBar onDismiss={noop}>Info/default message bar. {link}</MessageBar>,
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory('Root dismiss single line', () => (
     <MessageBar onDismiss={noop} isMultiline={false}>
@@ -48,7 +50,7 @@ storiesOf('MessageBar', module)
         mauris. {link}
       </MessageBar>
     ),
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory(
     'Root actions',
@@ -64,7 +66,7 @@ storiesOf('MessageBar', module)
         Info/default message bar. {link}
       </MessageBar>
     ),
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory(
     'Root actions single line',
@@ -81,7 +83,7 @@ storiesOf('MessageBar', module)
         Info/default message bar. {link}
       </MessageBar>
     ),
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory(
     'Root dismiss and action',
@@ -98,7 +100,7 @@ storiesOf('MessageBar', module)
         Info/default message bar. {link}
       </MessageBar>
     ),
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory(
     'Root dismiss and action single line',
@@ -116,29 +118,29 @@ storiesOf('MessageBar', module)
         Info/default message bar. {link}
       </MessageBar>
     ),
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory(
     'Root multiline',
     () => <MessageBar isMultiline>Info/default message bar. {longText}</MessageBar>,
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory(
     'Root overflow',
     () => <MessageBar isMultiline={false}>Info/default message bar. {longText} </MessageBar>,
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory('Error', () =>
     // prettier-ignore
     <MessageBar messageBarType={MessageBarType.error}>
       Error message bar. {link}
-    </MessageBar>
+    </MessageBar>,
   )
   .addStory('Blocked', () =>
     // prettier-ignore
     <MessageBar messageBarType={MessageBarType.blocked}>
       Blocked message bar. {link}
-    </MessageBar>
+    </MessageBar>,
   )
   .addStory('Severe Warning', () => (
     <MessageBar messageBarType={MessageBarType.severeWarning}>
@@ -149,11 +151,11 @@ storiesOf('MessageBar', module)
     // prettier-ignore
     <MessageBar messageBarType={MessageBarType.success}>
       Success message bar. {link}
-    </MessageBar>
+    </MessageBar>,
   )
   .addStory('Warning', () =>
     // prettier-ignore
     <MessageBar messageBarType={MessageBarType.warning}>
       Warning message bar. {link}
-    </MessageBar>
+    </MessageBar>,
   );

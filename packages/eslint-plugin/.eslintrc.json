@@ -1,0 +1,14 @@
+{
+  // eslint config for the package itself
+  "extends": ["plugin:@fluentui/eslint-plugin/node"],
+  "root": true,
+  "overrides": [
+    {
+      "files": ["src/rules/*.js"],
+      "rules": {
+        // too many false positives on node types
+        "@typescript-eslint/naming-convention": "off"
+      }
+    }
+  ]
+}

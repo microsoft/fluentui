@@ -13,7 +13,7 @@ describe('extendComponent', () => {
 
         extendComponent<Foo>(this, {
           componentDidMount: () => didMount++,
-          componentWillUnmount: () => willUnmount++
+          componentWillUnmount: () => willUnmount++,
         });
       }
       public componentDidMount(): void {

@@ -7,7 +7,7 @@ describe('EventGroup', () => {
     let parent = {
       cb: () => {
         timesCalled++;
-      }
+      },
     };
     let eg = new EventGroup(parent);
     let ev = document.createEvent('HTMLEvents');
@@ -33,7 +33,7 @@ describe('EventGroup', () => {
     let parent = {
       cb: () => {
         timesCalled++;
-      }
+      },
     };
 
     let parentEvents = new EventGroup(parent);
@@ -71,20 +71,20 @@ describe('EventGroup', () => {
     let root = {
       cb: () => {
         rootCalled++;
-      }
+      },
     };
     let child = {
       parent: root,
       cb: () => {
         childCalled++;
         return childResponse;
-      }
+      },
     };
     let grandChild = {
       parent: child,
       cb: () => {
         grandChildCalled++;
-      }
+      },
     };
     let rootEvents = new EventGroup(root);
     let childEvents = new EventGroup(child);
@@ -136,7 +136,7 @@ describe('EventGroup', () => {
       onChildClick: () => {
         childCalled++;
         return childResponse;
-      }
+      },
     };
 
     let parentEvents = new EventGroup(parent);
@@ -144,10 +144,7 @@ describe('EventGroup', () => {
     parentEvents.on(childDiv, 'click', parent.onChildClick);
     parentEvents.on(rootDiv, 'click', parent.onRootClick);
 
-    document.body
-      .appendChild(rootDiv)
-      .appendChild(childDiv)
-      .appendChild(grandChildButton);
+    document.body.appendChild(rootDiv).appendChild(childDiv).appendChild(grandChildButton);
 
     try {
       let ev = document.createEvent('HTMLEvents');
@@ -187,7 +184,7 @@ describe('EventGroup', () => {
       },
       cb2: () => {
         cb2Called++;
-      }
+      },
     };
 
     let parentEvents = new EventGroup(parent);
@@ -238,7 +235,7 @@ describe('EventGroup', () => {
     let parent = {
       cb: () => {
         timesCalled++;
-      }
+      },
     };
     let eg = new EventGroup(parent);
 

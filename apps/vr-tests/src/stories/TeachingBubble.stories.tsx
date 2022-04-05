@@ -1,14 +1,12 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities';
-import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { TestWrapperDecoratorTall } from '../utilities/index';
+import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
 
-// tslint:disable:max-line-length
 storiesOf('TeachingBubble', module)
-  .addDecorator(FabricDecoratorTall)
+  .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps().snapshot('default', { cropTo: '.ms-TeachingBubble' }).end()}
@@ -21,11 +19,13 @@ storiesOf('TeachingBubble', module)
     () => {
       return (
         <TeachingBubble
-          illustrationImage={{ src: 'http://placehold.it/364x140' }}
+          illustrationImage={{
+            src: 'http://fabricweb.azureedge.net/fabric-website/placeholders/364x220.png',
+          }}
           calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
           isWide={true}
           hasSmallHeadline={true}
-          hasCloseIcon={true}
+          hasCloseButton={true}
           primaryButtonProps={{ children: 'Got it' }}
           headline="Discover what’s trending around you"
         >
@@ -34,15 +34,15 @@ storiesOf('TeachingBubble', module)
         </TeachingBubble>
       );
     },
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory('SmallHeadline', () => {
     return (
       <TeachingBubble
         hasSmallHeadline={true}
-        hasCloseIcon={true}
+        hasCloseButton={true}
         primaryButtonProps={{
-          children: 'Got it'
+          children: 'Got it',
         }}
         headline="Discover what’s trending around you"
       >

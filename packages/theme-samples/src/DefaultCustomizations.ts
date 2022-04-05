@@ -1,11 +1,13 @@
-import { createTheme, ICustomizations } from 'office-ui-fabric-react';
-import { addVariants } from '@uifabric/variants';
+import { createTheme } from '@fluentui/react';
+import { addVariants } from '@fluentui/scheme-utilities';
+import type { ICustomizations } from '@fluentui/react';
+
+export const DefaultTheme = createTheme();
+addVariants(DefaultTheme);
 
 export const DefaultCustomizations: ICustomizations = {
   settings: {
-    theme: createTheme({})
+    theme: DefaultTheme,
   },
-  scopedSettings: {}
+  scopedSettings: {},
 };
-
-addVariants(DefaultCustomizations.settings.theme);

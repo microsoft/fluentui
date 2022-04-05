@@ -1,0 +1,38 @@
+{
+  // Controls the rendering size of tabs in characters. Accepted values: "auto", 2, 4, 6, etc. If set to "auto", the value will be guessed when a file is opened.
+  "editor.tabSize": 2,
+  // When opening a file, `editor.tabSize` and `editor.insertSpaces` will be detected based on the file contents.
+  "editor.detectIndentation": false,
+  // When enabled, will trim trailing whitespace when you save a file.
+  "files.trimTrailingWhitespace": true,
+  // Controls if the editor should automatically close brackets after opening them
+  "editor.autoClosingBrackets": false,
+  // Controls whether the editor should render whitespace characters
+  "editor.renderWhitespace": "all",
+  // Controls if the editor will insert spaces for tabs. Accepted values:  "auto", true, false. If set to "auto", the value will be guessed when a file is opened.
+  "editor.insertSpaces": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/bower_components": true,
+    "**/coverage": true,
+    "**/*.scss.ts": true
+  },
+  // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/lib": true,
+    "**/lib-commonjs": true,
+    "**/lib-amd": true,
+    "**/dist": true,
+    "**/*.scss.ts": true
+  },
+  // Controls after how many characters the editor will wrap to the next line. Setting this to 0 turns on viewport width wrapping
+  "editor.wordWrapColumn": 140,
+  "eslint.enable": true,
+  "eslint.workingDirectories": [{ "mode": "auto" }], // infer working directory based on .eslintrc/package.json location
+  // Defines space handling after opening and before closing JSX expression braces. Requires TypeScript >= 2.0.6.
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+  "editor.formatOnSave": true,
+  "typescript.tsdk": "../../node_modules/typescript/lib"
+}

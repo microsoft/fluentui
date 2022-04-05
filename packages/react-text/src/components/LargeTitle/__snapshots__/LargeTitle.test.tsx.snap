@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LargeTitle renders a default state 1`] = `
+<div>
+  <span
+    class="fui-LargeTitle fui-Text"
+  >
+    Default LargeTitle
+  </span>
+</div>
+`;

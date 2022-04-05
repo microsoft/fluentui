@@ -1,18 +1,38 @@
-import { ICustomizations } from 'office-ui-fabric-react';
+import { ICustomizations } from '@fluentui/react';
 import { AzureThemeDark } from './azure/AzureThemeDark';
 import { AzureThemeLight } from './azure/AzureThemeLight';
-import { AzureStyleSettings } from './azure/AzureStyleSettings';
+import { AzureThemeHighContrastLight } from './azure/AzureThemeHighContrastLight';
+import { AzureThemeHighContrastDark } from './azure/AzureThemeHighContrastDark';
+
+const { components: darkScopedSettings, ...darkThemeSettings } = AzureThemeDark;
+const { components: lightScopedSettings, ...lightThemeSettings } = AzureThemeLight;
+const { components: hcLightScopedSettings, ...hcLightThemeSettings } = AzureThemeHighContrastLight;
+const { components: hcDarkScopedSettings, ...hcDarkThemeSettings } = AzureThemeHighContrastDark;
 
 export const AzureCustomizationsDark: ICustomizations = {
   settings: {
-    theme: { ...AzureThemeDark }
+    theme: darkThemeSettings,
   },
-  scopedSettings: { ...AzureStyleSettings(AzureThemeDark) }
+  scopedSettings: { ...darkScopedSettings },
 };
 
 export const AzureCustomizationsLight: ICustomizations = {
   settings: {
-    theme: { ...AzureThemeLight }
+    theme: lightThemeSettings,
   },
-  scopedSettings: { ...AzureStyleSettings(AzureThemeLight) }
+  scopedSettings: { ...lightScopedSettings },
+};
+
+export const AzureCustomizationsHighContrastLight: ICustomizations = {
+  settings: {
+    theme: hcLightThemeSettings,
+  },
+  scopedSettings: { ...hcLightScopedSettings },
+};
+
+export const AzureCustomizationsHighContrastDark: ICustomizations = {
+  settings: {
+    theme: hcDarkThemeSettings,
+  },
+  scopedSettings: { ...hcDarkScopedSettings },
 };

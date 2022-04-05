@@ -1,4 +1,5 @@
-import { createComponent } from '@uifabric/foundation';
+import * as React from 'react';
+import { createComponent } from '@fluentui/foundation-legacy';
 import { CardView } from './Card.view';
 import { CardStyles as styles, CardTokens as tokens } from './Card.styles';
 import { ICardProps } from './Card.types';
@@ -9,9 +10,13 @@ import { ICardSectionProps } from './CardSection/CardSection.types';
 
 const CardStatics = {
   Item: CardItem,
-  Section: CardSection
+  Section: CardSection,
 };
 
+/**
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const Card: React.FunctionComponent<ICardProps> & {
   Item: React.FunctionComponent<ICardItemProps>;
   Section: React.FunctionComponent<ICardSectionProps>;
@@ -19,7 +24,11 @@ export const Card: React.FunctionComponent<ICardProps> & {
   displayName: 'Card',
   styles,
   tokens,
-  statics: CardStatics
+  statics: CardStatics,
 });
 
+/**
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ */
 export default Card;

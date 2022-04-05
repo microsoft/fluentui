@@ -1,4 +1,4 @@
-import { IOverlayStyleProps, IOverlayStyles } from 'office-ui-fabric-react/lib/Overlay';
+import { IOverlayStyleProps, IOverlayStyles } from '@fluentui/react/lib/Overlay';
 import { CommonSemanticColors } from '../AzureColors';
 
 export const OverlayStyles = (props: IOverlayStyleProps): Partial<IOverlayStyles> => {
@@ -6,11 +6,11 @@ export const OverlayStyles = (props: IOverlayStyleProps): Partial<IOverlayStyles
   return {
     root: [
       {
-        backgroundColor: CommonSemanticColors.overlay.light
+        backgroundColor: CommonSemanticColors.overlay.light,
       },
       isDark && {
-        backgroundColor: CommonSemanticColors.overlay.dark
-      }
-    ]
+        backgroundColor: CommonSemanticColors.overlay.dark,
+      },
+    ],
   };
 };

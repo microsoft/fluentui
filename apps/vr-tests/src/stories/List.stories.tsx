@@ -1,14 +1,13 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { List } from 'office-ui-fabric-react';
+import { TestWrapperDecorator } from '../utilities/index';
+import { List } from '@fluentui/react';
 
-// tslint:disable:max-line-length
+/* eslint-disable @fluentui/max-len */
 const items = [
   {
-    thumbnail: '//placehold.it/233x233',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/233x233.png',
     key: 'item-0 sit Lorem culpa cillum',
     name: 'reprehenderit dolore nulla laborum officia',
     description:
@@ -17,10 +16,10 @@ const items = [
     shape: 'triangle',
     location: 'Los Angeles',
     width: 233,
-    height: 233
+    height: 233,
   },
   {
-    thumbnail: '//placehold.it/210x210',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/210x210.png',
     key: 'item-1 dolor elit, sit mollit',
     name: 'consectetur ipsum tempor nostrud commodo',
     description:
@@ -29,10 +28,10 @@ const items = [
     shape: 'triangle',
     location: 'Los Angeles',
     width: 210,
-    height: 210
+    height: 210,
   },
   {
-    thumbnail: '//placehold.it/231x231',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/231x231.png',
     key: 'item-2 dolor reprehenderit id sint',
     name: 'velit nisi aliquip do minim',
     description:
@@ -41,10 +40,10 @@ const items = [
     shape: 'circle',
     location: 'Chicago',
     width: 231,
-    height: 231
+    height: 231,
   },
   {
-    thumbnail: '//placehold.it/158x158',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/158x158.png',
     key: 'item-3 magna Ut nisi dolor',
     name: 'nostrud in reprehenderit eu anim',
     description:
@@ -53,10 +52,10 @@ const items = [
     shape: 'circle',
     location: 'Seattle',
     width: 158,
-    height: 158
+    height: 158,
   },
   {
-    thumbnail: '//placehold.it/165x165',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/165x165.png',
     key: 'item-4 nisi proident, in dolore',
     name: 'nostrud Duis aliquip Lorem sunt',
     description:
@@ -65,10 +64,10 @@ const items = [
     shape: 'triangle',
     location: 'Portland',
     width: 165,
-    height: 165
+    height: 165,
   },
   {
-    thumbnail: '//placehold.it/226x226',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/226x226.png',
     key: 'item-5 mollit elit, ex elit,',
     name: 'nulla ipsum esse Lorem sed',
     description:
@@ -77,10 +76,10 @@ const items = [
     shape: 'triangle',
     location: 'New York',
     width: 226,
-    height: 226
+    height: 226,
   },
   {
-    thumbnail: '//placehold.it/182x182',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/182x182.png',
     key: 'item-6 ut irure dolor et',
     name: 'nulla consectetur eiusmod velit sed',
     description:
@@ -89,10 +88,10 @@ const items = [
     shape: 'circle',
     location: 'Los Angeles',
     width: 182,
-    height: 182
+    height: 182,
   },
   {
-    thumbnail: '//placehold.it/206x206',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/206x206.png',
     key: 'item-7 non ad consequat. mollit',
     name: 'sint quis in Excepteur enim',
     description:
@@ -101,10 +100,10 @@ const items = [
     shape: 'square',
     location: 'Seattle',
     width: 206,
-    height: 206
+    height: 206,
   },
   {
-    thumbnail: '//placehold.it/240x240',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/240x240.png',
     key: 'item-8 enim et aliqua. enim',
     name: 'in commodo dolore ea Duis',
     description:
@@ -113,10 +112,10 @@ const items = [
     shape: 'square',
     location: 'Chicago',
     width: 240,
-    height: 240
+    height: 240,
   },
   {
-    thumbnail: '//placehold.it/158x158',
+    thumbnail: '//fabricweb.azureedge.net/fabric-website/placeholders/158x158.png',
     key: 'item-9 reprehenderit minim cillum do',
     name: 'dolore et sed dolore sed',
     description:
@@ -125,14 +124,14 @@ const items = [
     shape: 'circle',
     location: 'New York',
     width: 158,
-    height: 158
-  }
+    height: 158,
+  },
 ];
 
 const onRenderCell = (item: any) => <div>{item.name}</div>;
 
 storiesOf('List', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -141,6 +140,6 @@ storiesOf('List', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
-  .addStory('Root', () => <List items={items} onRenderCell={onRenderCell} />, { rtl: true });
+  .addStory('Root', () => <List items={items} onRenderCell={onRenderCell} />, { includeRtl: true });

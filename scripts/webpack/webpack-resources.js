@@ -1,82 +1,78 @@
+// @ts-check
+
+/**
+ * @typedef {import("webpack").Configuration} WebpackConfig
+ * @typedef {WebpackConfig & { devServer?: object }} WebpackServeConfig
+ * @typedef {import("webpack").ModuleOptions} WebpackModule
+ * @typedef {import("webpack").Configuration['output']} WebpackOutput
+ */
+/** */
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
-const resolve = require('resolve');
+/** @type {(c1: Partial<WebpackServeConfig>, c2: Partial<WebpackServeConfig>) => WebpackServeConfig} */
 const merge = require('../tasks/merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const getResolveAlias = require('./getResolveAlias');
+const { findGitRoot } = require('../monorepo/index');
 
+// @ts-ignore
 const webpackVersion = require('webpack/package.json').version;
+const getDefaultEnvironmentVars = require('./getDefaultEnvironmentVars');
+
 console.log(`Webpack version: ${webpackVersion}`);
 
-let isValidEnv = false;
+const gitRoot = findGitRoot();
 
-function validateEnv() {
-  if (!isValidEnv) {
-    try {
-      const resolvedPolyfill = resolve.sync('react-app-polyfill/ie11', { basedir: process.cwd() });
-      isValidEnv = !!resolvedPolyfill;
-    } catch (e) {
-      console.error('Please make sure the package "react-app-polyfill" is in the package.json dependencies');
-      process.exit(1);
-    }
-  }
-}
-
-function shouldPrepend(config) {
-  const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
-  const excludedProjects = ['perf-test', 'test-bundles'];
-  const exportedAsBundle = config.output && (config.output.libraryTarget === 'umd' || config.output.libraryTarget === 'var');
-  const hasReactAsDependency =
-    (packageJson.dependencies && Object.keys(packageJson.dependencies).includes('react')) ||
-    (packageJson.devDependencies && Object.keys(packageJson.devDependencies).includes('react'));
-  return !exportedAsBundle && hasReactAsDependency && !excludedProjects.includes(packageJson.name);
-}
+const cssRule = {
+  test: /\.css$/,
+  include: /node_modules/,
+  use: ['style-loader', 'css-loader'],
+};
 
 /**
- * Prepends the entry points with a react 16 compatible polyfill but only for sites that have react as a dependency
+ * As of webpack 5, you have to add the `es5` target for IE 11 compatibility.
+ * Otherwise it will output lambdas for smaller bundle size.
+ * https://webpack.js.org/migrate/5/#need-to-support-an-older-browser-like-ie-11
  */
-function createEntryWithPolyfill(entry, config) {
-  if (shouldPrepend(config) && entry) {
-    validateEnv();
-
-    const polyfill = 'react-app-polyfill/ie11';
-    if (typeof entry === 'string') {
-      return [polyfill, entry];
-    } else if (Array.isArray(entry)) {
-      return [polyfill, ...entry];
-    } else if (typeof entry === 'object') {
-      const newEntry = { ...entry };
-
-      Object.keys(entry).forEach(entryPoint => {
-        newEntry[entryPoint] = createEntryWithPolyfill(entry[entryPoint], config);
-      });
-
-      return newEntry;
-    }
-  }
-
-  return entry;
-}
+const target = ['web', 'es5'];
 
 module.exports = {
   webpack,
 
-  createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps) {
-    const resolveLoader = {
-      modules: [path.resolve(__dirname, '../node_modules'), path.resolve(process.cwd(), 'node_modules')]
-    };
+  /** Get the list of node_modules directories where loaders should be resolved */
+  getResolveLoaderDirs: () => [
+    'node_modules',
+    path.resolve(__dirname, '../node_modules'),
+    path.resolve(__dirname, '../../node_modules'),
+  ],
 
+  /**
+   * @param {string} bundleName - Name for the bundle file. Usually either the unscoped name, or
+   * the scoped name with a - instead of / between the parts.
+   * @param {boolean} isProduction - whether it's a production build.
+   * @param {Partial<WebpackConfig>} customConfig - partial custom webpack config, merged into each full config object.
+   * @param {boolean} [onlyProduction] - whether to only generate the production config.
+   * @param {boolean} [excludeSourceMaps] - whether to skip generating source maps.
+   * @param {boolean} [profile] - whether to profile the bundle using webpack-bundle-analyzer.
+   * @returns {WebpackConfig[]} array of configs.
+   */
+  createConfig(bundleName, isProduction, customConfig, onlyProduction, excludeSourceMaps, profile) {
+    const packageName = path.basename(process.cwd());
+
+    /** @type {WebpackModule} */
     const module = {
       noParse: [/autoit.js/],
       rules: excludeSourceMaps
-        ? []
+        ? [cssRule]
         : [
             {
               test: /\.js$/,
               use: 'source-map-loader',
-              enforce: 'pre'
-            }
-          ]
+              enforce: 'pre',
+            },
+            cssRule,
+          ],
     };
 
     const devtool = 'cheap-module-source-map';
@@ -90,15 +86,15 @@ module.exports = {
             output: {
               filename: `[name].js`,
               path: path.resolve(process.cwd(), 'dist'),
-              pathinfo: false
+              pathinfo: false,
             },
-            resolveLoader,
             module,
+            target,
             devtool,
-            plugins: getPlugins(packageName, false)
+            plugins: getPlugins(packageName, false),
           },
-          customConfig
-        )
+          customConfig,
+        ),
       );
     }
 
@@ -109,58 +105,136 @@ module.exports = {
             mode: 'production',
             output: {
               filename: `[name].min.js`,
-              path: path.resolve(process.cwd(), 'dist')
+              path: path.resolve(process.cwd(), 'dist'),
             },
 
-            resolveLoader,
             module,
+            target,
             devtool: excludeSourceMaps ? undefined : devtool,
-            plugins: getPlugins(packageName, true)
+            plugins: getPlugins(packageName, true, profile),
           },
-          customConfig
-        )
+          customConfig,
+        ),
       );
     }
 
     for (let config of configs) {
-      config.entry = createEntryWithPolyfill(config.entry, config);
+      config.resolveLoader = {
+        modules: [
+          'node_modules',
+          path.resolve(__dirname, '../node_modules'),
+          path.resolve(__dirname, '../../node_modules'),
+        ],
+      };
     }
 
     return configs;
   },
 
-  createServeConfig(customConfig) {
-    const config = merge(
+  /**
+   * Creates a standard bundle config for a package.
+   * @param {object} options
+   * @param {string|WebpackOutput} options.output - If a string, name for the output varible.
+   * If an object, full custom `output` config.
+   * @param {string} [options.bundleName] - Name for the bundle file. Defaults to the package folder name
+   * (unscoped package name).
+   * @param {string} [options.entry] - custom entry if not `./lib/index.js`
+   * @param {boolean} [options.isProduction] - whether it's a production build.
+   * @param {boolean} [options.onlyProduction] - whether to generate the production config.
+   * @param {Partial<WebpackConfig>} [options.customConfig] - partial custom webpack config, merged into each full config object
+   * @returns {WebpackConfig[]}
+   */
+  createBundleConfig(options) {
+    const {
+      output,
+      bundleName = path.basename(process.cwd()),
+      entry = './lib/index.js',
+      isProduction = process.argv.includes('--mode=production'),
+      onlyProduction = false,
+      customConfig = {},
+    } = options;
+
+    return module.exports.createConfig(
+      bundleName,
+      isProduction,
+      merge(
+        {
+          entry: {
+            [bundleName]: entry,
+          },
+
+          output:
+            typeof output === 'string'
+              ? {
+                  libraryTarget: 'var',
+                  library: output,
+                }
+              : output,
+
+          externals: {
+            react: 'React',
+            'react-dom': 'ReactDOM',
+          },
+
+          resolve: {
+            alias: getResolveAlias(true /*useLib*/),
+          },
+        },
+        customConfig,
+      ),
+      onlyProduction,
+    );
+  },
+
+  /**
+   * Create a standard serve config for a legacy demo app.
+   * Note that this assumes a base directory (for serving and output) of `dist/demo`.
+   * @param {Partial<WebpackServeConfig>} customConfig - partial custom webpack config, merged into the full config
+   * @param {string} [outputFolder] - output folder (package-relative) if not `dist/demo`
+   * @returns {WebpackServeConfig}
+   */
+  createServeConfig(customConfig, outputFolder = 'dist/demo') {
+    const outputPath = path.join(process.cwd(), outputFolder);
+    return merge(
       {
         devServer: {
-          inline: true,
+          // As of Webpack 5, this will open the browser at 127.0.0.1 by default
+          host: 'localhost',
           port: 4322,
-          contentBase: path.resolve(process.cwd(), 'dist')
+          static: outputPath,
         },
 
         mode: 'development',
 
-        resolveLoader: {
-          modules: [path.resolve(__dirname, '../node_modules'), path.resolve(process.cwd(), 'node_modules')]
+        output: {
+          filename: `[name].js`,
+          libraryTarget: 'umd',
+          path: outputPath,
         },
+
         resolve: {
-          extensions: ['.ts', '.tsx', '.js']
+          extensions: ['.ts', '.tsx', '.js'],
+        },
+
+        resolveLoader: {
+          modules: module.exports.getResolveLoaderDirs(),
         },
 
         devtool: 'eval',
 
         module: {
           rules: [
+            cssRule,
             {
               test: [/\.tsx?$/],
               use: {
                 loader: 'ts-loader',
                 options: {
                   experimentalWatchApi: true,
-                  transpileOnly: true
-                }
+                  transpileOnly: true,
+                },
               },
-              exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/]
+              exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/],
             },
             {
               test: /\.scss$/,
@@ -168,71 +242,95 @@ module.exports = {
               exclude: [/node_modules/],
               use: [
                 {
-                  loader: '@microsoft/loader-load-themed-styles' // creates style nodes from JS strings
+                  loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
                 },
                 {
                   loader: 'css-loader', // translates CSS into CommonJS
                   options: {
+                    esModule: false,
                     modules: true,
                     importLoaders: 2,
-                    localIdentName: '[name]_[local]_[hash:base64:5]',
-                    minimize: false
-                  }
+                  },
                 },
                 {
                   loader: 'postcss-loader',
                   options: {
-                    plugins: function() {
-                      return [require('autoprefixer')];
-                    }
-                  }
+                    postcssOptions: {
+                      plugins: ['autoprefixer'],
+                    },
+                  },
                 },
                 {
-                  loader: 'sass-loader'
-                }
-              ]
-            }
-          ]
+                  loader: 'sass-loader',
+                },
+              ],
+            },
+          ],
         },
 
         plugins: [
-          // TODO: will investigate why this doesn't work on mac
-          // new WebpackNotifierPlugin(),
-          new ForkTsCheckerWebpackPlugin()
-          // This sends output to stderr for some reason, which makes rush build say
-          // "succeeded with warnings" when there were no real warnings
-          // ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()])
-        ]
+          ...(process.env.TF_BUILD || process.env.SKIP_TYPECHECK ? [] : [new ForkTsCheckerWebpackPlugin()]),
+          ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin({})]),
+        ],
+
+        target,
       },
-      customConfig
+      customConfig,
     );
+  },
 
-    config.entry = createEntryWithPolyfill(config.entry, config);
+  /**
+   * Create a serve config for a package with a legacy demo app in the examples package at
+   * `packages/react-examples/src/some-package/demo/index.tsx`.
+   * Note that this assumes a base directory (for serving and output) of `dist/demo` and will
+   * include `react-app-polyfill/ie11` for IE 11 support.
+   * @returns {WebpackServeConfig}
+   */
+  createLegacyDemoAppConfig() {
+    const packageName = path.basename(process.cwd());
 
-    return config;
-  }
+    const reactExamples = path.join(gitRoot, 'packages/react-examples');
+    const demoEntryInExamples = path.join(reactExamples, 'src', packageName, 'demo/index.tsx');
+
+    if (!fs.existsSync(demoEntryInExamples)) {
+      throw new Error(`${packageName} does not have a legacy demo app (expected location: ${demoEntryInExamples})`);
+    }
+
+    return module.exports.createServeConfig({
+      entry: {
+        'demo-app': ['react-app-polyfill/ie11', demoEntryInExamples],
+      },
+
+      output: {
+        path: path.join(process.cwd(), 'dist/demo'),
+        filename: 'demo-app.js',
+      },
+
+      resolve: {
+        // Use the aliases for react-examples since the examples and demo may depend on some things
+        // that the package itself doesn't (and it will include the aliases for all the package's deps)
+        alias: getResolveAlias(false /*useLib*/, reactExamples),
+        fallback: {
+          path: require.resolve('path-browserify'),
+        },
+      },
+    });
+  },
 };
 
-function getPlugins(bundleName, isProduction) {
+function getPlugins(bundleName, isProduction, profile) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+  const plugins = [new webpack.DefinePlugin(getDefaultEnvironmentVars(isProduction))];
 
-  const plugins = [];
-
-  if (isProduction) {
+  if (isProduction && profile) {
     plugins.push(
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         reportFilename: bundleName + '.stats.html',
         openAnalyzer: false,
-        generateStatsFile: true,
-        statsOptions: {
-          source: false,
-          reasons: false,
-          chunks: false
-        },
-        statsFilename: bundleName + '.stats.json',
-        logLevel: 'warn'
-      })
+        generateStatsFile: false,
+        logLevel: 'warn',
+      }),
     );
   }
 

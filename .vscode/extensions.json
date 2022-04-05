@@ -3,6 +3,8 @@
   // for the documentation about the extensions.json format
   "recommendations": [
     // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+    "dbaeumer.vscode-eslint",
+    "asvetliakov.snapshot-tools",
     "esbenp.prettier-vscode"
   ]
 }

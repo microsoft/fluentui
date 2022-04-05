@@ -1,6 +1,821 @@
 {
-  "name": "@uifabric/test-utilities",
+  "name": "@fluentui/test-utilities",
   "entries": [
+    {
+      "date": "Tue, 08 Mar 2022 07:35:11 GMT",
+      "tag": "@fluentui/test-utilities_v8.2.0",
+      "version": "8.2.0",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/test-utilities",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Dec 2021 07:26:40 GMT",
+      "tag": "@fluentui/test-utilities_v8.2.0",
+      "version": "8.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/test-utilities",
+            "commit": "f71032d515f2395d85e935f075f8dbfede670b05",
+            "comment": "Simplify safeMount attach API"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Dec 2021 07:31:28 GMT",
+      "tag": "@fluentui/test-utilities_v8.1.0",
+      "version": "8.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/test-utilities",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "feat: improve test utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.8",
+      "version": "8.0.8",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/test-utilities",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.8",
+      "version": "8.0.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.8",
+      "version": "8.0.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.8",
+      "version": "8.0.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.3",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.7",
+      "version": "8.0.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Jun 2021 07:38:15 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.6",
+      "version": "8.0.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 May 2021 07:41:54 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.5",
+      "version": "8.0.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.4",
+      "version": "8.0.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.3",
+      "version": "8.0.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Apr 2021 07:33:33 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.2",
+      "version": "8.0.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unneeded react-app-polyfill devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "fdc32557d49e5d70ea7e4af8957102d415b44547",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 00:53:43 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.2",
+      "version": "8.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 07:36:20 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.1",
+      "version": "8.0.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unneeded scripts",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.1",
+      "version": "8.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Release major version",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.9",
+      "version": "8.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Built files use commonjs only.",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.8",
+      "version": "8.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find.",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.7",
+      "version": "8.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.0-beta.6",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.6",
+      "version": "8.0.0-beta.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.6",
+      "version": "8.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add getCSSRules helper to retrieve css text from stylesheet.",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.5",
+      "version": "8.0.0-beta.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.0-beta.5",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.5",
+      "version": "8.0.0-beta.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.5",
+      "version": "8.0.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
+            "author": "dzearing@microsoft.com",
+            "commit": "9c2c4a61c7d9eb8d153945ff57962118b569ea5b",
+            "package": "@fluentui/test-utilities"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Delete update-api script which is no longer needed",
+            "author": "elcraig@microsoft.com",
+            "commit": "943a9ef5768a9cd77ade84217d142f93b1be6127",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.4",
+      "version": "8.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.0",
+      "version": "8.0.0-beta.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Rename build-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "32a158fd2c7fca8dc308a3e41f692817e6c26c44",
+            "package": "@fluentui/test-utilities"
+          },
+          {
+            "comment": "Update npmignore",
+            "author": "elcraig@microsoft.com",
+            "commit": "aec02d96e7cef745e9867c03a528426a5ad28038",
+            "package": "@fluentui/test-utilities"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/test-utilities"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Rename @uifabric/set-version to @fluentui/set-version",
+            "author": "ololubek@microsoft.com",
+            "commit": "2eba5d5be163a7a64975f058dc38b465f2363064",
+            "package": "@fluentui/test-utilities"
+          },
+          {
+            "comment": "Remove react-dom from peerDependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "c57941f88df0dd5e7a9e10da84471e435b669ef8",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/test-utilities_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove same-package path aliases",
+            "author": "elcraig@microsoft.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 23:15:07 GMT",
+      "tag": "@uifabric/test-utilities_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add the ability to specify reder options to safeCreate",
+            "author": "miclo@microsoft.com",
+            "commit": "2a65fb9d5df81f57e7289ebbcdfb8f52553402b3",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@uifabric/test-utilities_v7.2.2",
+      "version": "7.2.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Delete API report which isn't being updated",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@uifabric/test-utilities_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Making safeMount take the callback as optional.",
+            "author": "dzearing@hotmail.com",
+            "commit": "1037c4327a0fb0b8deb18f04c0d08ef49492c76a",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.37",
+      "version": "7.0.37",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix misleading docs for safeMount",
+            "author": "elcraig@microsoft.com",
+            "commit": "673554b124199cfe65a271ccc9e778c26ca244e7",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.32",
+      "version": "7.0.32",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/test-utilities"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix for the test-utility safeMount to check if wrapper should unmount.",
+            "author": "czearing@outlook.com",
+            "commit": "e105904735ba78f93b9a99862ff3e833248228a8",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Jul 2020 12:36:49 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.31",
+      "version": "7.0.31",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Wrap renderer.create() in renderer.act() to trigger React hooks",
+            "author": "miclo@microsoft.com",
+            "commit": "017dc3372393a5e4b327e1c90134c1858ed9abfd",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.29",
+      "version": "7.0.29",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.27",
+      "version": "7.0.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding missing peerDependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.21",
+      "version": "7.0.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.17",
+      "version": "7.0.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.16",
+      "version": "7.0.16",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.15",
+      "version": "7.0.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.14",
+      "version": "7.0.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.13",
+      "version": "7.0.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.10",
+      "version": "7.0.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.10",
+      "version": "7.0.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "update enzyme",
+            "author": "kchau@microsoft.com",
+            "commit": "495983aec20488918f3d1ee87a8af92cb93d208f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.10",
+      "version": "7.0.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d"
+          },
+          {
+            "comment": "uniting build across fluent and fabric",
+            "author": "kchau@microsoft.com",
+            "commit": "f9503d808bc0971e843024c9fb679c0ed5a67fbb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.9",
+      "version": "7.0.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "bumping versions to fix broken publishes",
+            "author": "kchau@microsoft.com",
+            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.8",
+      "version": "7.0.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.6",
+      "version": "7.0.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2019 04:09:58 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.6",
+      "version": "7.0.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix version file",
+            "author": "kchau@microsoft.com",
+            "commit": "fbccfaf91bfe3c77d95c614ac2cb69b7c9e1dad1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.5",
+      "version": "7.0.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update npmignores, delete unused jest setup files",
+            "author": "elcraig@microsoft.com",
+            "commit": "b12aaa280221562003af1e0f02aa5f3a5b008041"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.4",
+      "version": "7.0.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.3",
+      "version": "7.0.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          },
+          {
+            "comment": "adding build cache",
+            "author": "kchau@microsoft.com",
+            "commit": "babf367fa3a2f05d6689b9ea0a0cdb765b282380"
+          }
+        ]
+      }
+    },
     {
       "version": "7.0.3",
       "tag": "@uifabric/test-utilities_v7.0.3",

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es2019", "dom"],
+    "baseUrl": "../../",
+    "paths": {
+      "@fluentui/scripts": ["scripts"],
+      "@fluentui/*": ["packages/fluentui/*/src"]
+    },
+    "types": ["node", "jest"],
+    "jsx": "react",
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "pretty": true,
+    "allowJs": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}

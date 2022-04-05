@@ -1,2 +1,0 @@
-- [Android List Cells](#/controls/android/listcells)
-- [iOS List Cells](#/controls/ios/listcells)

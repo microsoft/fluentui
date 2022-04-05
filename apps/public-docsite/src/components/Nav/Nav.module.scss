@@ -1,0 +1,206 @@
+@import '../../styles/common';
+
+$nav-group-header-height: 32px;
+
+.navWrapper {
+  max-height: 100%;
+  padding-bottom: 20px;
+}
+
+.nav {
+  padding-top: 8px;
+  overflow-y: hidden;
+}
+
+.links {
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  display: block;
+
+  a {
+    color: $ms-color-neutralPrimary;
+    font-weight: $ms-font-weight-semibold;
+    font-size: $ms-font-size-m;
+    line-height: 1.5;
+    display: block;
+    position: relative;
+    padding: 8px;
+    @include ms-padding-left($App-padding-md);
+    @include focus-outline-static();
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $ms-color-neutralPrimary;
+    }
+  }
+
+  &.isActive:not(.isHomePage),
+  &.hasActiveChild {
+    a {
+      background: $ms-color-neutralLighter;
+    }
+  }
+
+  &:hover:not(.isActive):not(.hasActiveChild):not(.isHomePage) {
+    a {
+      background: $ms-color-neutralLighterAlt;
+    }
+  }
+
+  // Closed by default
+  .links {
+    display: none;
+  }
+
+  // Open when immediate parent or one of the children is active
+  &.isActive,
+  &.hasActiveChild {
+    > .links {
+      display: block;
+      @include ms-margin-left(16px);
+    }
+  }
+}
+
+.links .links {
+  @include ms-padding-left(16px);
+}
+
+.searchBoxWrapper {
+  display: flex;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.searchBox {
+  flex: 1;
+  @include ms-padding-left(0);
+  @include ms-padding-right(32px);
+}
+
+// The home page link
+.isHomePage a,
+.isHomePage.isActive a {
+  font-size: $ms-font-size-xl;
+  font-weight: $ms-font-weight-semibold;
+  color: $ms-color-white;
+}
+
+// Second-level links
+.isSubMenu {
+  .link {
+    a {
+      font-size: $ms-font-size-s;
+      font-weight: $ms-font-weight-regular;
+
+      &:hover {
+        background: $ms-color-neutralLight;
+      }
+    }
+
+    &.isActive,
+    &:hover {
+      > a:first-child {
+        background: $ms-color-neutralLight;
+      }
+
+      // Hide the line indicators on submenus
+      &::before {
+        display: none;
+      }
+    }
+
+    &.hasActiveChild {
+      > a:first-child {
+        font-weight: $ms-font-weight-semibold;
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
+.matchesFilter {
+  font-weight: $ms-font-weight-bold;
+}
+
+.filterButton {
+  position: absolute;
+  @include ms-right(0);
+  bottom: 1px;
+}
+
+.externalIcon {
+  @include ms-fontColor-themePrimary;
+  @include ms-fontSize-16;
+  @include ms-margin-left(8px);
+  position: absolute;
+  top: 5px;
+}
+
+.section {
+  display: flex;
+  min-height: $nav-group-header-height;
+
+  .link a {
+    font-weight: $ms-font-weight-regular;
+  }
+
+  :global(.ms-CollapsibleSection) {
+    width: 100%;
+
+    button {
+      cursor: pointer;
+      padding: 8px 0;
+      @include ms-text-align(left);
+      height: auto;
+      align-items: center;
+      line-height: normal;
+
+      span {
+        color: $ms-color-neutralPrimary;
+        font-size: $ms-font-size-m;
+        font-weight: $ms-font-weight-semibold;
+      }
+
+      i {
+        @include ms-margin-right(16px);
+        @include ms-margin-left(8px);
+        color: $ms-color-neutralSecondary;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      &:hover {
+        background: transparent;
+
+        span {
+          color: $ms-color-neutralDark;
+        }
+      }
+    }
+
+    .section {
+      :global(.ms-CollapsibleSection) {
+        button {
+          span {
+            font-weight: $ms-font-weight-regular;
+          }
+
+          i {
+            margin-top: 3px;
+            @include ms-margin-right(18px);
+            font-size: 14px;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+}

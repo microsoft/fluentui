@@ -1,5 +1,5 @@
 import { extractStyleParts } from './extractStyleParts';
-import { mergeStyles } from './mergeStyles';
+import { mergeCss } from './mergeStyles';
 import { Stylesheet, InjectionMode } from './Stylesheet';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
@@ -19,7 +19,7 @@ describe('extractStyleParts', () => {
   });
 
   it('can expand previously registered rules', () => {
-    const className = mergeStyles({ left: 1 });
+    const className = mergeCss({ left: 1 });
     const { classes, objects } = extractStyleParts(className, { left: 2 });
 
     expect(classes).toEqual([]);

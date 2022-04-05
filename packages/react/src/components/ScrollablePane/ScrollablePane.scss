@@ -1,0 +1,32 @@
+@import '~@fluentui/common-styles/src/common';
+
+.root {
+  overflow-y: auto;
+  max-height: inherit;
+  height: inherit;
+  -webkit-overflow-scrolling: touch;
+}
+
+.stickyAbove,
+.stickyBelow {
+  position: absolute;
+  pointer-events: auto;
+  width: 100%;
+  z-index: 1;
+}
+
+.stickyAbove {
+  top: 0;
+
+  @include high-contrast {
+    border-bottom: 1px solid WindowText;
+  }
+}
+
+.stickyBelow {
+  bottom: 0;
+
+  @include high-contrast {
+    border-top: 1px solid WindowText;
+  }
+}

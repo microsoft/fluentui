@@ -1,0 +1,48 @@
+{
+  "name": "@fluentui/react-hooks",
+  "version": "8.5.3",
+  "description": "Fluent UI React hooks.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start-test": "just-scripts jest-watch",
+    "just": "just-scripts"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/test-utilities": "^8.2.0"
+  },
+  "dependencies": {
+    "@fluentui/react-window-provider": "^2.2.0",
+    "@fluentui/set-version": "^8.2.0",
+    "@fluentui/utilities": "^8.8.1",
+    "tslib": "^2.1.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
+  }
+}

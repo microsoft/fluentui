@@ -1,0 +1,103 @@
+@import '../../styles/common';
+
+$icon-size: 16px;
+
+.platformPicker {
+  padding-bottom: 24px;
+}
+
+.platformPickerList {
+  padding: 0;
+  grid-gap: 12px 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  -ms-grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+}
+
+.platformItem {
+  display: block;
+}
+
+.button {
+  width: 100%;
+  min-width: 100%;
+  height: 40px;
+  padding: 8px;
+  border: 1px solid $ms-color-neutralQuaternary;
+  font-size: $ms-font-size-s;
+  @include focus-border(-1px);
+
+  :global(.ms-Button-label) {
+    line-height: 1.25;
+  }
+
+  &:not([disabled]) {
+    color: $ms-color-neutralSecondary;
+  }
+
+  .icon {
+    color: $ms-color-neutralSecondary;
+    width: $icon-size;
+    height: $icon-size;
+    margin: 0;
+
+    path {
+      stroke: $ms-color-neutralSecondary;
+    }
+
+    @include high-contrast {
+      color: WindowText;
+
+      path {
+        stroke: WindowText;
+      }
+    }
+  }
+
+  .webIcon {
+    position: relative;
+    top: 1px;
+  }
+
+  .windowsLogo {
+    width: $icon-size - 2px;
+    height: $icon-size - 2px;
+    font-size: $icon-size - 2px;
+  }
+
+  &:hover:not([disabled]) {
+    color: $ms-color-neutralSecondary;
+
+    path {
+      stroke: $ms-color-neutralSecondary;
+    }
+
+    @include high-contrast {
+      color: WindowText;
+
+      path {
+        stroke: WindowText;
+      }
+    }
+  }
+
+  &.activePlatform:not([disabled]) {
+    color: $ms-color-black;
+
+    .icon {
+      color: $ms-color-black;
+
+      path {
+        stroke: $ms-color-black;
+      }
+
+      @include high-contrast {
+        color: Highlight;
+
+        path {
+          stroke: Highlight;
+        }
+      }
+    }
+  }
+}

@@ -1,40 +1,28 @@
 {
-  "name": "@uifabric/jest-serializer-merge-styles",
-  "version": "7.0.3",
+  "name": "@fluentui/jest-serializer-merge-styles",
+  "version": "8.0.17",
   "description": "Jest serializer for merge-styles.",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "sideEffects": [
-    "lib/version.js"
-  ],
+  "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build-jest-serializer-merge-styles",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
-    "start-test": "npx just-scripts jest-watch"
+    "build": "just-scripts build",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@types/jest": "23.0.0",
-    "@types/react": "16.8.11",
-    "@types/react-dom": "16.8.4",
-    "@types/react-test-renderer": "^16.0.0",
-    "@uifabric/prettier-rules": "^7.0.2",
-    "@uifabric/tslint-rules": "^7.0.2",
-    "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0",
-    "@uifabric/build": "^7.0.0"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.0",
-    "@uifabric/merge-styles": "^7.1.1"
+    "@fluentui/merge-styles": "^8.5.0"
   }
 }

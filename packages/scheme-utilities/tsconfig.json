@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "outDir": "lib",
+    "module": "commonjs",
+    "lib": ["es5", "dom"],
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "isolatedModules": true
+  },
+  "include": ["src"]
+}

@@ -1,4 +1,5 @@
 import { _isSSR } from './setSSR';
+
 /**
  * Helper to get the document object. Note that in popup window cases, document
  * might be the wrong document, which is why we look at ownerDocument for the
@@ -11,6 +12,8 @@ export function getDocument(rootElement?: HTMLElement | null): Document | undefi
   if (_isSSR || typeof document === 'undefined') {
     return undefined;
   } else {
-    return rootElement && rootElement.ownerDocument ? rootElement.ownerDocument : document;
+    const el = rootElement as Element;
+
+    return el && el.ownerDocument ? el.ownerDocument : document;
   }
 }

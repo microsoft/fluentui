@@ -1,38 +1,41 @@
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
+import * as StyleConstants from '../Constants';
+import { ITheme } from '@fluentui/react/lib/Styling';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     root: {
+      height: StyleConstants.inputControlHeight,
+      padding: '0px 16px',
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.primaryButtonBorder}`,
+    },
+    rootFocused: {
+      selectors: {
+        '::after': {
+          outlineColor: `${semanticColors.primaryButtonText} !important`,
+        },
+      },
       backgroundColor: semanticColors.primaryButtonBackground,
-      color: semanticColors.primaryButtonText
-    },
-    rootDisabled: {
-      backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
-      color: semanticColors.primaryButtonTextDisabled
-    },
-    rootHovered: {
-      backgroundColor: semanticColors.primaryButtonBackgroundHovered,
-      color: semanticColors.primaryButtonTextHovered
-    },
-    rootPressed: {
-      backgroundColor: semanticColors.primaryButtonBackgroundPressed,
-      color: semanticColors.primaryButtonTextPressed
+      color: semanticColors.primaryButtonText,
+      borderColor: extendedSemanticColors.primaryCompoundButtonBorder,
     },
     rootChecked: {
-      backgroundColor: semanticColors.primaryButtonBackgroundPressed,
-      color: semanticColors.primaryButtonTextPressed,
-      border: 'none'
+      border: 'none',
     },
     rootCheckedHovered: {
       backgroundColor: semanticColors.primaryButtonBackgroundHovered,
-      color: semanticColors.primaryButtonTextHovered
+      color: semanticColors.primaryButtonTextHovered,
     },
     rootCheckedPressed: {
       backgroundColor: semanticColors.primaryButtonBackgroundPressed,
-      color: semanticColors.primaryButtonTextPressed
-    }
+      color: semanticColors.primaryButtonTextPressed,
+    },
+    rootDisabled: {
+      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
+    },
   };
 };

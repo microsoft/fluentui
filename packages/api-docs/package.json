@@ -1,27 +1,28 @@
 {
-  "name": "@uifabric/api-docs",
-  "version": "7.0.2",
-  "description": "A package that transforms .api.json files into page.json files",
-  "main": "lib-commonjs/index.js",
-  "typings": "lib/index.d.ts",
+  "name": "@fluentui/api-docs",
+  "version": "8.2.1",
+  "description": "Transforms API Extractor .api.json files into .page.json files",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
   "license": "MIT",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
-    "build": "npx just-scripts build && node ./lib-commonjs/generatePageJsonFiles.js",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean"
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test"
   },
   "devDependencies": {
-    "just-scripts": "~0.20.0",
-    "@types/node": "^8.10.29",
-    "@uifabric/merge-styles": "^7.1.1",
-    "@uifabric/styling": "^7.1.1",
-    "@uifabric/tslint-rules": "^7.0.2",
-    "@uifabric/utilities": "^7.0.6",
-    "office-ui-fabric-react": "^7.7.1"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@microsoft/tsdoc": "0.12.9",
-    "@microsoft/api-extractor-model": "7.1.1",
-    "@microsoft/node-core-library": "~3.9.0"
+    "@microsoft/api-extractor-model": "7.13.3",
+    "@microsoft/tsdoc": "0.13.2",
+    "fs-extra": "^8.1.0"
   }
 }

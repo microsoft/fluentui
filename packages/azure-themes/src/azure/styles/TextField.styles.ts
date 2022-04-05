@@ -1,72 +1,101 @@
-import { ITextFieldStyleProps, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
-import { FontSizes } from '../AzureType';
+import { ITextFieldStyleProps, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import * as StyleConstants from '../Constants';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextFieldStyles> => {
   const { focused, disabled, hasErrorMessage, multiline, theme } = props;
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     fieldGroup: [
       !multiline && {
-        height: StyleConstants.inputControlHeight
+        height: StyleConstants.inputControlHeight,
       },
+      !hasErrorMessage && {
+        borderColor: semanticColors.inputBorder,
+        selectors: {
+          '::after': {
+            borderColor: extendedSemanticColors.controlFocus,
+          },
+        },
+      },
+      !focused &&
+        !disabled && {
+          selectors: {
+            ':hover': {
+              borderColor: semanticColors.inputText,
+            },
+          },
+        },
       focused && {
-        borderColor: semanticColors.focusBorder
+        borderColor: semanticColors.focusBorder,
       },
       disabled && {
-        borderColor: semanticColors.disabledBodyText
+        borderColor: extendedSemanticColors.textFieldBorderDisabled,
+        backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
       },
       hasErrorMessage && [
         {
-          borderWidth: StyleConstants.borderWidthError
+          borderWidth: StyleConstants.borderWidthError,
         },
         focused && {
           borderColor: semanticColors.focusBorder,
           selectors: {
             '&:focus, &:hover': {
-              borderColor: semanticColors.focusBorder
-            }
-          }
-        }
-      ]
+              borderColor: semanticColors.focusBorder,
+            },
+          },
+        },
+      ],
     ],
     icon: {
-      bottom: 2
+      bottom: 2,
     },
     prefix: {
-      fontSize: FontSizes.size12
+      fontSize: theme.fonts.medium.fontSize,
     },
     suffix: {
-      fontSize: FontSizes.size12
+      fontSize: theme.fonts.medium.fontSize,
     },
     field: [
       {
         color: semanticColors.inputText,
-        backgroundColor: semanticColors.inputBackground,
-        fontSize: FontSizes.size12,
+        backgroundColor: extendedSemanticColors.controlBackground,
+        fontSize: theme.fonts.medium.fontSize,
         selectors: {
           '::placeholder': {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic'
+            fontStyle: 'italic',
           },
           ':-ms-input-placeholder': {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic'
+            fontStyle: 'italic',
           },
           '::-webkit-input-placeholder': {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic'
-          }
-        }
+            fontStyle: 'italic',
+          },
+        },
       },
       disabled && {
-        color: semanticColors.disabledBodyText,
-        backgroundColor: semanticColors.disabledBackground
-      }
+        color: semanticColors.primaryButtonTextDisabled,
+        backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
+        selectors: {
+          '::placeholder': {
+            color: semanticColors.disabledBodyText,
+          },
+          ':-ms-input-placeholder': {
+            color: semanticColors.disabledBodyText,
+          },
+          '::-webkit-input-placeholder': {
+            color: semanticColors.disabledBodyText,
+          },
+        },
+      },
     ],
     errorMessage: {
-      color: semanticColors.errorText
-    }
+      color: semanticColors.errorText,
+    },
   };
 };

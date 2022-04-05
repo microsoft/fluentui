@@ -1,0 +1,28 @@
+@import '~@fluentui/common-styles/src/common';
+
+.pickerText {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid $ms-color-neutralTertiary;
+  min-width: 180px;
+  padding: 1px;
+  min-height: 32px;
+  &:hover {
+    border-color: $ms-color-themeLight;
+  }
+}
+
+.pickerInput {
+  height: 34px;
+  border: none;
+  flex-grow: 1;
+  outline: none;
+  padding: 0 6px 0px;
+  margin: 1px;
+
+  &::-ms-clear {
+    display: none;
+  }
+}

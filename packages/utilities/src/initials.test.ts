@@ -37,9 +37,34 @@ describe('getInitials', () => {
     expect(result).toEqual('DG');
   });
 
+  it('calculates an expected initials in LTR with brackets', () => {
+    let result = getInitials('David Goff [The man]', false);
+    expect(result).toEqual('DG');
+  });
+
+  it('calculates an expected initials in LTR with curly braces', () => {
+    let result = getInitials('David {The man} Goff', false);
+    expect(result).toEqual('DG');
+  });
+
   it('calculates an expected initials in LTR with multiple parentheses, extra spaces, and unwanted characters', () => {
     let result = getInitials(' !@#$%^&*()=+ (Alpha) David   (The man) `~<>,./?[]{}|   Goff   (Gamma)    ', false);
     expect(result).toEqual('DG');
+  });
+
+  it('calculates an expected initials in LTR with multiple types of unwanted text', () => {
+    let result = getInitials(' !@#$%^&*()=+ (Alpha) David   (The man) `~<>,./?[]{}|   Goff   (Gamma)  [Beta]  ', false);
+    expect(result).toEqual('DG');
+  });
+
+  it('calculates an expected initials in LTR with angled bracket enclosure', () => {
+    let result = getInitials('Kevin Jameson <Kevin.Jameson@example.com>', false);
+    expect(result).toEqual('KJ');
+  });
+
+  it('calculates an expected initials in LTR with multiple types of enclosures', () => {
+    let result = getInitials('Kevin Jameson (Kevin.Jameson@example.com) <Kevin.Jameson@example.com>', false);
+    expect(result).toEqual('KJ');
   });
 
   it('calculates an expected initials in RTL if one was not specified', () => {

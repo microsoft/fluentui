@@ -1,0 +1,47 @@
+{
+  "name": "@fluentui/react-component-ref",
+  "description": "A set of components and utils to deal with React refs.",
+  "version": "0.61.0",
+  "author": "Oleksandr Fediashov <olfedias@microsoft.com>",
+  "bugs": "https://github.com/microsoft/fluentui/issues",
+  "dependencies": {
+    "@babel/runtime": "^7.10.4",
+    "react-is": "^16.6.3"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0",
+    "@types/react-is": "^16.7.1",
+    "lerna-alias": "^3.0.3-0"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-component-ref",
+  "jsnext:main": "dist/es/index.js",
+  "license": "MIT",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17",
+    "react-dom": "^16.8.0 || ^17"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "microsoft/fluentui.git",
+  "gulp": {
+    "componentInfo": "./src/[A-Z]*.tsx"
+  },
+  "scripts": {
+    "build": "gulp bundle:package:no-umd && yarn build:info",
+    "build:info": "gulp build:component-info",
+    "clean": "gulp clean:component-info bundle:package:clean",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
+    "test": "gulp test",
+    "test:watch": "gulp test:watch"
+  },
+  "sideEffects": false,
+  "types": "dist/es/index.d.ts"
+}

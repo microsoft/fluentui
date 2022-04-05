@@ -1,0 +1,4 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react-northstar"],
+  "root": true
+}

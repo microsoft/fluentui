@@ -1,0 +1,2240 @@
+{
+  "name": "@fluentui/react-focus",
+  "entries": [
+    {
+      "date": "Tue, 15 Mar 2022 07:45:54 GMT",
+      "tag": "@fluentui/react-focus_v8.5.5",
+      "version": "8.5.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.6.5",
+            "commit": "aa2315c7c3fbaf648b69adbb2fbe62fa327ef25f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.8.1",
+            "commit": "aa2315c7c3fbaf648b69adbb2fbe62fa327ef25f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Mar 2022 07:34:41 GMT",
+      "tag": "@fluentui/react-focus_v8.5.4",
+      "version": "8.5.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/merge-styles to v8.5.0",
+            "commit": "8e02823339296401393a13fc2f38d4629ffe48b3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.6.4",
+            "commit": "8e02823339296401393a13fc2f38d4629ffe48b3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.8.0",
+            "commit": "8e02823339296401393a13fc2f38d4629ffe48b3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.17",
+            "commit": "8e02823339296401393a13fc2f38d4629ffe48b3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Mar 2022 07:34:50 GMT",
+      "tag": "@fluentui/react-focus_v8.5.3",
+      "version": "8.5.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.6.3",
+            "commit": "7bc56445c4661c1766b1403881da858b40f84be7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Mar 2022 07:37:30 GMT",
+      "tag": "@fluentui/react-focus_v8.5.2",
+      "version": "8.5.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.6.2",
+            "commit": "2b63eed95dae656f1b3df3bd316c4f91d793cba5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.7.0",
+            "commit": "2b63eed95dae656f1b3df3bd316c4f91d793cba5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Mar 2022 23:29:58 GMT",
+      "tag": "@fluentui/react-focus_v8.5.1",
+      "version": "8.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.6.1",
+            "commit": "3e2137c854ccf90b1382d3d1d66a6a6fdd4b310f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Mar 2022 07:35:09 GMT",
+      "tag": "@fluentui/react-focus_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Mar 2022 07:24:23 GMT",
+      "tag": "@fluentui/react-focus_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/keyboard-key to v0.4.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/merge-styles to v8.4.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/set-version to v8.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.6.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.6.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.16",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 07:23:43 GMT",
+      "tag": "@fluentui/react-focus_v8.3.21",
+      "version": "8.3.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.5.8",
+            "commit": "cda6e1e291a31a0484ff8fbb30cbb67945569b15"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.5.0",
+            "commit": "cda6e1e291a31a0484ff8fbb30cbb67945569b15"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Feb 2022 07:29:50 GMT",
+      "tag": "@fluentui/react-focus_v8.3.20",
+      "version": "8.3.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.5.7",
+            "commit": "17618b2b24ce013569c74a505b2212eba18caf54"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.4.3",
+            "commit": "17618b2b24ce013569c74a505b2212eba18caf54"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Feb 2022 07:28:31 GMT",
+      "tag": "@fluentui/react-focus_v8.3.19",
+      "version": "8.3.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.5.6",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.4.2",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Feb 2022 07:27:49 GMT",
+      "tag": "@fluentui/react-focus_v8.3.18",
+      "version": "8.3.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.5.5",
+            "commit": "a0c8a3f6d02b6493e923006679a8cfb648c1e003"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.4.1",
+            "commit": "a0c8a3f6d02b6493e923006679a8cfb648c1e003"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Feb 2022 07:30:49 GMT",
+      "tag": "@fluentui/react-focus_v8.3.17",
+      "version": "8.3.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "ae67454c2af28710b9d197ce91fd2ded069d9ebf",
+            "comment": "Update FocusZone keyboard event handling to support modifier keys"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.5.4",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.4.0",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Feb 2022 07:29:41 GMT",
+      "tag": "@fluentui/react-focus_v8.3.16",
+      "version": "8.3.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/merge-styles to v8.3.0",
+            "commit": "946f57cad4378ec779605d466ef1df3dd88ebc78"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.5.3",
+            "commit": "946f57cad4378ec779605d466ef1df3dd88ebc78"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.3.10",
+            "commit": "946f57cad4378ec779605d466ef1df3dd88ebc78"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.15",
+            "commit": "946f57cad4378ec779605d466ef1df3dd88ebc78"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jan 2022 23:32:11 GMT",
+      "tag": "@fluentui/react-focus_v8.3.14",
+      "version": "8.3.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/merge-styles to v8.2.3",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.5.2",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.3.9",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.14",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Dec 2021 07:26:41 GMT",
+      "tag": "@fluentui/react-focus_v8.3.13",
+      "version": "8.3.13",
+      "comments": {
+        "none": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/test-utilities to v8.2.0",
+            "commit": "d7d472d3564c7c08465743b2517e4f29428b87b4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Dec 2021 07:31:28 GMT",
+      "tag": "@fluentui/react-focus_v8.3.13",
+      "version": "8.3.13",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "test(react-focus): make test work with new JSDOM"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.5.1",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.3.8",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/test-utilities to v8.1.0",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Dec 2021 07:30:35 GMT",
+      "tag": "@fluentui/react-focus_v8.3.11",
+      "version": "8.3.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "3360b45ec159250b1346c91afad7dce138e6bc20",
+            "comment": "Add missing null check detected by typescript 4.3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 14:54:16 GMT",
+      "tag": "@fluentui/react-focus_v8.3.9",
+      "version": "8.3.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/keyboard-key to v0.3.5",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/merge-styles to v8.2.2",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/set-version to v8.1.5",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.5.0",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.3.7",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.13",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Nov 2021 07:31:59 GMT",
+      "tag": "@fluentui/react-focus_v8.3.7",
+      "version": "8.3.7",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "254c94e904a48912c2c08dd9d39d83b027263e80",
+            "comment": "disable conformance test"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/merge-styles to v8.2.1",
+            "commit": "1aa9eec5d9dd53544b2755af4d177246a9ec939d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.4.2",
+            "commit": "1aa9eec5d9dd53544b2755af4d177246a9ec939d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.3.6",
+            "commit": "1aa9eec5d9dd53544b2755af4d177246a9ec939d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.12",
+            "commit": "1aa9eec5d9dd53544b2755af4d177246a9ec939d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Nov 2021 07:37:02 GMT",
+      "tag": "@fluentui/react-focus_v8.3.6",
+      "version": "8.3.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.4.1",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.3.5",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Nov 2021 07:32:08 GMT",
+      "tag": "@fluentui/react-focus_v8.3.5",
+      "version": "8.3.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.4.0",
+            "commit": "4094351f75ec358c549d02d044d599d0dda84481"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Oct 2021 07:39:42 GMT",
+      "tag": "@fluentui/react-focus_v8.3.4",
+      "version": "8.3.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-focus",
+            "comment": "fix(FocusZone): prevent restoration when flag is set",
+            "commit": "1563a46da13fce14d6fe59778d057b75d3c16b41"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Oct 2021 07:28:35 GMT",
+      "tag": "@fluentui/react-focus_v8.3.3",
+      "version": "8.3.3",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "comment": "Disable consistent-callback-args test",
+            "commit": "619163b3e099a775a2486a21e0187cec86b2b7c2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 07:37:17 GMT",
+      "tag": "@fluentui/react-focus_v8.3.2",
+      "version": "8.3.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.3.4",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.3.4",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Sep 2021 22:17:07 GMT",
+      "tag": "@fluentui/react-focus_v8.3.1",
+      "version": "8.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/merge-styles to v8.2.0",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.3.3",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.3.3",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.11",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Sep 2021 07:37:27 GMT",
+      "tag": "@fluentui/react-focus_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "peter.varholak@gmail.com",
+            "package": "@fluentui/react-focus",
+            "comment": "implement granular control over shouldRaiseClicks",
+            "commit": "dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-focus_v8.2.2",
+      "version": "8.2.2",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-focus",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-focus",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/react-focus to v8.2.2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react-focus_v8.2.2",
+      "version": "8.2.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "disable 'consistent-callback-args' test in FocusZone",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/react-focus_v8.2.2",
+      "version": "8.2.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "8f887d05e8f2fed8433b147c6e175d8297455c51",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Aug 2021 07:35:19 GMT",
+      "tag": "@fluentui/react-focus_v8.2.1",
+      "version": "8.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.10",
+            "author": "arujain@microsoft.com",
+            "commit": "e6ee3ff194c59ee27e853387fad06f161e63652c",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/react-focus_v8.2.0",
+      "version": "8.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating TypeScript type-only imports/exports to use import/export syntax.",
+            "author": "dzearing@hotmail.com",
+            "commit": "0198c05dad393704afbe8aeab6c5cdf6005bcc5a",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.3.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.3.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.9",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.3.4",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/merge-styles to v8.1.4",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.4",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.1.4",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/react-focus_v8.1.11",
+      "version": "8.1.11",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.3.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/react-focus_v8.1.11",
+      "version": "8.1.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.3.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/react-focus_v8.1.10",
+      "version": "8.1.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.2.2",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Jul 2021 07:35:37 GMT",
+      "tag": "@fluentui/react-focus_v8.1.9",
+      "version": "8.1.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.2.1",
+            "author": "ashwin.gokhale98@gmail.com",
+            "commit": "4cde131df311f85971d5034ccc2b70bcf1da372f",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 22:32:58 GMT",
+      "tag": "@fluentui/react-focus_v8.1.8",
+      "version": "8.1.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.3",
+            "author": "elcraig@microsoft.com",
+            "commit": "12b74625dec55bd1919f6370513043d87705e5ea",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 07:35:36 GMT",
+      "tag": "@fluentui/react-focus_v8.1.7",
+      "version": "8.1.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.2.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "c9c64e89dc89e1f2abd145d132bb0624c40bd4ed",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/react-focus_v8.1.6",
+      "version": "8.1.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.2.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jun 2021 07:35:16 GMT",
+      "tag": "@fluentui/react-focus_v8.1.5",
+      "version": "8.1.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.2.0",
+            "author": "jamwu@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Jun 2021 07:40:20 GMT",
+      "tag": "@fluentui/react-focus_v8.1.4",
+      "version": "8.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.1.3",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4693f5b04ae4e2c8d0e205dff58264ebb790c569",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Jun 2021 07:38:15 GMT",
+      "tag": "@fluentui/react-focus_v8.1.3",
+      "version": "8.1.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.1.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 May 2021 07:41:54 GMT",
+      "tag": "@fluentui/react-focus_v8.1.2",
+      "version": "8.1.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update conformance tests in all packages to use a package-level isConformant wrapper with  appropriate generics for props",
+            "author": "elcraig@microsoft.com",
+            "commit": "1e6ad173e2cfa18cfcae13311be7916f1b241432",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.1.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 May 2021 07:34:20 GMT",
+      "tag": "@fluentui/react-focus_v8.1.1",
+      "version": "8.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "616b4b7c381c757871e8a590564d8eff7337834c",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "@fluentui/react-focus_v8.1.0",
+      "version": "8.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Upgrade to ts 4.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.5",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.3.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/merge-styles to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.3.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react-focus_v8.0.8",
+      "version": "8.0.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-focus_v8.0.7",
+      "version": "8.0.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.5",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Apr 2021 07:33:33 GMT",
+      "tag": "@fluentui/react-focus_v8.0.7",
+      "version": "8.0.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unneeded react-app-polyfill devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "fdc32557d49e5d70ea7e4af8957102d415b44547",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Apr 2021 14:55:56 GMT",
+      "tag": "@fluentui/react-focus_v8.0.7",
+      "version": "8.0.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.4",
+            "author": "jaredi@microsoft.com",
+            "commit": "f3a06cfc20204db5ea8222709437a59b54ff235a",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 00:53:43 GMT",
+      "tag": "@fluentui/react-focus_v8.0.6",
+      "version": "8.0.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.3",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Mar 2021 07:34:45 GMT",
+      "tag": "@fluentui/react-focus_v8.0.5",
+      "version": "8.0.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.2.15",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Mar 2021 07:32:44 GMT",
+      "tag": "@fluentui/react-focus_v8.0.4",
+      "version": "8.0.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.4",
+            "author": "elcraig@microsoft.com",
+            "commit": "8bbe3d16c5c00716dfcbafa6d693437b8d090da3",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-focus_v8.0.3",
+      "version": "8.0.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/react-focus_v8.0.3",
+      "version": "8.0.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.3",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/react-focus_v8.0.2",
+      "version": "8.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix webpack bundle",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/react-focus_v8.0.1",
+      "version": "8.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Release version 8",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.25",
+      "version": "8.0.0-beta.25",
+      "comments": {
+        "none": [
+          {
+            "comment": "make @fluentui/react-conformance public",
+            "author": "altinokd@microsoft.com",
+            "commit": "9de2c9938c00408da7746d4b3f6fe7f80b37e37f",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.1",
+            "author": "altinokd@microsoft.com",
+            "commit": "9de2c9938c00408da7746d4b3f6fe7f80b37e37f",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.24",
+      "version": "8.0.0-beta.24",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.0-beta.7",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.23",
+      "version": "8.0.0-beta.23",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find.",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.22",
+      "version": "8.0.0-beta.22",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.13",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.2.13",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.21",
+      "version": "8.0.0-beta.21",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.21",
+      "version": "8.0.0-beta.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.12",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.20",
+      "version": "8.0.0-beta.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "FocusZone: Removing FocusZone type from event callbacks.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8616847c2b05ad48cdffd7d63606842bc37232bd",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.19",
+      "version": "8.0.0-beta.19",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.11",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.19",
+      "version": "8.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.11",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Feb 2021 12:20:17 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.18",
+      "version": "8.0.0-beta.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating snapshots.",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.18",
+      "version": "8.0.0-beta.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Feb 2021 12:21:54 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.18",
+      "version": "8.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "FocusZone: Removing contextual RTL checks to get rid of react-theme-provider dependency from react-focus package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "f38e9344e83936ae95a008116b9b63881f464944",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.16",
+      "version": "8.0.0-beta.16",
+      "comments": {
+        "none": [
+          {
+            "comment": "Delete update-api script which is no longer needed",
+            "author": "elcraig@microsoft.com",
+            "commit": "943a9ef5768a9cd77ade84217d142f93b1be6127",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Remove incorrect mock of requestAnimationFrame",
+            "author": "elcraig@microsoft.com",
+            "commit": "6bd0ce75decd9f62c40967bd7a59bfff960a0105",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
+            "author": "dzearing@microsoft.com",
+            "commit": "9c2c4a61c7d9eb8d153945ff57962118b569ea5b",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Clean up some prop comments and deprecated messages",
+            "author": "elcraig@microsoft.com",
+            "commit": "2e22b74a17aa6a8ce8d354730717b9517cdef7cd",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.15",
+      "version": "8.0.0-beta.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Dec 2020 12:27:00 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.12",
+      "version": "8.0.0-beta.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "Docs change to add theme switcher to color pages",
+            "author": "jukapsia@microsoft.com",
+            "commit": "59619dfb92882010c0181e166481d3b83ab641cf",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Nov 2020 12:28:18 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.9",
+      "version": "8.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Removing dist/storybook from the npm output.",
+            "author": "dzearing@hotmail.com",
+            "commit": "a1be96b8a7e3641f35d8a1377cd0368947e5d4e0",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Nov 2020 12:32:25 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.7",
+      "version": "8.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "FocusZone: Consuming theme information from ThemeContext to provide it when calling getRTL.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "f48beb130378a63cae4b7e9f95f492d81fbb60bd",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.0",
+      "version": "8.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove unneeded package dependencies.",
+            "author": "xgao@microsoft.com",
+            "commit": "9775badfc989f8820a437367a53f761cc3ca7512",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Rename @uifabric/set-version to @fluentui/set-version",
+            "author": "ololubek@microsoft.com",
+            "commit": "2eba5d5be163a7a64975f058dc38b465f2363064",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Rename @uifabric/merge-styles to @fluentui/merge-styles",
+            "author": "ololubek@microsoft.com",
+            "commit": "30c25030ee043ded4a2afb86c7eb02a506ce9fdb",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities",
+            "author": "ololubek@microsoft.com",
+            "commit": "c6ae2b350037deb4e0bea07cdbdfe2e93455f4b1",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Remove react-dom from peerDependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "c57941f88df0dd5e7a9e10da84471e435b669ef8",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Use webpack config helper and update npmignore",
+            "author": "elcraig@microsoft.com",
+            "commit": "aec02d96e7cef745e9867c03a528426a5ad28038",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Implementing ref conformance tests.",
+            "author": "czearing@outlook.com",
+            "commit": "1daae9cb3c49e7254fe8f92228d64298cdec95db",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Rename build-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "32a158fd2c7fca8dc308a3e41f692817e6c26c44",
+            "package": "@fluentui/react-focus"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react-focus_v7.16.8",
+      "version": "7.16.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove same-package path aliases",
+            "author": "elcraig@microsoft.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@fluentui/react-focus_v7.16.7",
+      "version": "7.16.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating isConformant version.",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@fluentui/react-focus_v7.16.6",
+      "version": "7.16.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: Moving custom onFocus call at the end of private onFocus logic.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "1a1c112eb9daeecf9693cf2bfe2741fbaf51e777",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Adding isConformant file and implementing conformance tests.",
+            "author": "czearing@outlook.com",
+            "commit": "a89efd72e645e6e20869d6f33717f11554a8711a",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/react-focus_v7.16.2",
+      "version": "7.16.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Sep 2020 12:26:26 GMT",
+      "tag": "@fluentui/react-focus_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding forceAlignment attribute to focusElement to set focus alignment according to the element provided.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "d1423ec6ee302d74966497ba4b8f6abb022aa884",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Sep 2020 12:28:23 GMT",
+      "tag": "@fluentui/react-focus_v7.15.1",
+      "version": "7.15.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix typo in docs",
+            "author": "elcraig@microsoft.com",
+            "commit": "17e0cf28afe34918bce1d80454d3ee2c022f8467",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Sep 2020 12:26:41 GMT",
+      "tag": "@fluentui/react-focus_v7.15.0",
+      "version": "7.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add temporary elementRef prop to FocusZone.",
+            "author": "czearing@outlook.com",
+            "commit": "05b9c8e6a0118a4073a8d308bd0583405762a4fd",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "@fluentui/react-focus_v7.12.22",
+      "version": "7.12.22",
+      "comments": {
+        "none": [
+          {
+            "comment": "Sync with published versions",
+            "author": "xgao@microsoft.com",
+            "commit": "06b783216e8652f356324d10fb5bf8c50a7f44c3",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix memory leak in FocusZone",
+            "author": "mistastn@microsoft.com",
+            "commit": "042d257c2ebd8a9353a3c8fc9dfdf39084c498dc",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/react-focus_v7.12.19",
+      "version": "7.12.19",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@fluentui/react-focus_v7.12.18",
+      "version": "7.12.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Additional HTMLElement casts have been added in a few places for better typing. This should not impact the public API surface.",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "ab11a59f02301dd0ba7226bcd5104c88fdbc2909",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/react-focus_v7.12.12",
+      "version": "7.12.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@fluentui/react-focus_v7.12.8",
+      "version": "7.12.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@fluentui/react-focus_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding shouldRaiseClicks prop to allow for opt-in/opt-out way to invoke clicks on focusable elements.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "06d4f3a093cf6d531c8a9b40c596e4ff324b3090",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: Defaulting to false for the preventDefaultWhenHandled prop to maintain old behavior.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b9d1f305e0d7235fa0b635816bfb4bb3795ab0d8",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@fluentui/react-focus_v7.11.5",
+      "version": "7.11.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating build tool dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "291a31d412dc4871b9f9446915e7d2a64bc46ab5",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 May 2020 12:33:48 GMT",
+      "tag": "@fluentui/react-focus_v7.11.2",
+      "version": "7.11.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding `@fluentui/keyboard-key` as a dependency.",
+            "author": "dzearing@microsoft.com",
+            "commit": "c6063b9e659c491e3d34b9ee12457013a23b9d35",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@fluentui/react-focus_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Converging defaultTabbableElement/defaultActiveElement and bringing shouldFocusInnerElementWhenReceivedFocus to v7.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "edc643b525f1ee1607cdcaca0f91ff4b6c4ef877",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adding keyboard-key to FocusZone.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce5c014aa4c23951afe4d1ca5e45ddb711e2f0fc",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@fluentui/react-focus_v7.10.2",
+      "version": "7.10.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "@fluentui/react-focus_v7.10.1",
+      "version": "7.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix pagingSupportDisabled handling in FocusZone",
+            "author": "jukapsia@microsoft.com",
+            "commit": "5628dcfce4afc45bd66137522fa9b0fc3f27f53e",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@fluentui/react-focus_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding pagingSupportDisabled prop to provide a way to opt out of paging support via the Page Up and Page Down keys.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "6c055de8e22610b9f96d29e0667f019d669b7df1",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adding missing changes due to move from IPoint to Point.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5b4b9b5feeac6f08f14125be35d7af1ffb7039cf",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 May 2020 12:33:29 GMT",
+      "tag": "@fluentui/react-focus_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Bringing preventFocusRestoration functionality to v7.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce067e65e8fee3fb56fcea401b920237e7879ff0",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 May 2020 00:19:21 GMT",
+      "tag": "@fluentui/react-focus_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Using v0 prop names for props where names differed and deprecating old ones.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "91115267502dc233cd9d513133d52344cef2e1f8",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Apr 2020 12:34:09 GMT",
+      "tag": "@fluentui/react-focus_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating IPoint, x and y references to Point, left and top respectively.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "beb8886ffcbccd2bbef9c4e7a8afd742497289a5",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Apr 2020 12:33:11 GMT",
+      "tag": "@fluentui/react-focus_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: Adding check to see if element has editable content in Home and End keystroke scenarios.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "bac880223a3c116f74707efcedc8552c472760cd",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "FocusZone: Bringing shouldResetActiveElementWhenTabFromZone to v7.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "27b38b5587696508bbb09969da7de886db947d39",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Apr 2020 12:32:40 GMT",
+      "tag": "@fluentui/react-focus_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding preventDefaultWhenHandled to v7 version.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "2859bacd22e5a42dd4ba9128c4f61b792234c8f9",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: Updating comment for preventDefaultWhenHandled prop.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a7de477cfecd904300a45c78cfad3f3a456de035",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 12:37:31 GMT",
+      "tag": "@fluentui/react-focus_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "cbf3c8eaa552f7c60485968f18d5cdf373844492",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "FocusZone: Bringing shouldFocusOnMount prop from v0 to v7.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "cbf3c8eaa552f7c60485968f18d5cdf373844492",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 05:06:13 GMT",
+      "tag": "@fluentui/react-focus_v7.3.1",
+      "version": "7.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: Replacing use of 'on' helper with native eventing.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8a155ad45348707cd27bd524926485933ae3c377",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@fluentui/react-focus_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding focusLast imperative method to v7.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "030cf5bdc02f32cdc4b0549836d0c17aa3ee3772",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: Updating comment of allowFocusRoot to be more descriptive of its functionality.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "1cd43457876168890e024bc5222c8e0a39becb37",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "none": [
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@fluentui/react-focus_v7.1.13",
+      "version": "7.1.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Mar 2020 19:10:08 GMT",
+      "tag": "@fluentui/react-focus_v7.1.12",
+      "version": "7.1.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix repository URL",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b176fb14a33703416889336d7a7d3cb691bb874"
+          },
+          {
+            "comment": "react-focus: Updating README to reflect package purpose.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "7e78b42ae69784b2d0f0039700e89f61c18305b2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@fluentui/react-focus_v7.1.10",
+      "version": "7.1.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@fluentui/react-focus_v7.1.8",
+      "version": "7.1.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@fluentui/react-focus_v7.1.3",
+      "version": "7.1.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove typedef rule override",
+            "author": "elcraig@microsoft.com",
+            "commit": "12186bf0a00e97c34af5c510007b70610876c500"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Mar 2020 12:25:44 GMT",
+      "tag": "@fluentui/react-focus_v7.1.1",
+      "version": "7.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: When parking focus needs to be detected, IE11 returns `null` for `activeElement`, causing focus to not be restored. We now check for `null` to ensure the feature works correctly in this environment.",
+            "author": "dzearing@microsoft.com",
+            "commit": "c0146e0beb2f04b485bd1c3aea57058c6733c53a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@fluentui/react-focus_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating deprecated ReactType to non-deprecated ElementType.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "98f285874162b07863e6c9d59816df44312ad35e"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "ef95f984ea819393b994222b1d7b3c4c4f159b9f"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Move examples to examples package",
+            "author": "elcraig@microsoft.com",
+            "commit": "10d0914fdfaeef69a41db83a57f1da1ee1404040"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Feb 2020 12:20:16 GMT",
+      "tag": "@fluentui/react-focus_v0.0.6",
+      "version": "0.0.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "React-focus: Enabling storybook in new package.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "9c46caf35247dfe4063301b81248d1fc6971c013"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@fluentui/react-focus_v0.0.4",
+      "version": "0.0.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Feb 2020 23:22:22 GMT",
+      "tag": "@fluentui/react-focus_v0.0.2",
+      "version": "0.0.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Delete new prettier rules references",
+            "author": "elcraig@microsoft.com",
+            "commit": "ab2a5a693a3846e78b11355e8af1943e63c826f6"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "react-focus package being added to move out focus utilities from the main package.",
+            "author": "dzearing@microsoft.com",
+            "commit": "11cd4d92381ce732d63ec48199a430dcf7c47a3d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Feb 2020 12:20:22 GMT",
+      "tag": "@fluentui/react-focus_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Delete new prettier rules references",
+            "author": "elcraig@microsoft.com",
+            "commit": "ab2a5a693a3846e78b11355e8af1943e63c826f6"
+          }
+        ]
+      }
+    }
+  ]
+}

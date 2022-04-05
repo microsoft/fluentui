@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { HoverCard } from 'office-ui-fabric-react';
+import { TestWrapperDecorator } from '../utilities/index';
+import { HoverCard } from '@fluentui/react';
 
 const onRenderCardContent = (item: any) => {
   return (
@@ -17,11 +16,11 @@ const onRenderCardContent = (item: any) => {
 const expandingCardProps = {
   onRenderCompactCard: onRenderCardContent,
   onRenderExpandedCard: onRenderCardContent,
-  renderData: { test: 'Hello World!' }
+  renderData: { test: 'Hello World!' },
 };
 
 storiesOf('HoverCard', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -32,7 +31,7 @@ storiesOf('HoverCard', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory(
     'Root',
@@ -45,5 +44,5 @@ storiesOf('HoverCard', module)
         Hover over me
       </HoverCard>
     ),
-    { rtl: true }
+    { includeRtl: true },
   );

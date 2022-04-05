@@ -1,0 +1,18 @@
+import { {{componentName}} } from '../index';
+
+import descriptionMd from './{{componentName}}Description.md';
+import bestPracticesMd from './{{componentName}}BestPractices.md';
+
+export { Default } from './{{componentName}}Default.stories';
+
+export default {
+  title: 'Components/{{componentName}}',
+  component: {{componentName}},
+  parameters: {
+    docs: {
+      description: {
+        component: [descriptionMd, bestPracticesMd].join('\n'),
+      }
+    }
+  }
+};

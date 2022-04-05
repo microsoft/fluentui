@@ -1,0 +1,11 @@
+{
+  "extends": "../../../scripts/typescript/tsconfig.fluentui",
+  "compilerOptions": {
+    "composite": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "outDir": "dist/dts"
+  },
+  "include": ["src", "test"],
+  "references": []
+}

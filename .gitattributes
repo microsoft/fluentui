@@ -1,5 +1,5 @@
-# Don't allow people to merge changes to these generated files, because the result
-# may be invalid.  You need to run "rush update" again.
-shrinkwrap.yaml              merge=binary
-npm-shrinkwrap.json          merge=binary
-yarn.lock                    merge=binary
+# Ignore yarn binary from Languages bar - see https://github.com/github/linguist
+.yarn/releases/*.js linguist-vendored
+
+# API files should be checked in with Unix-style newlines
+*.api.md text=auto

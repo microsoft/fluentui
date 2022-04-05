@@ -1,4 +1,4 @@
-import { ISettings, ISettingsFunction } from './Customizations';
+import type { ISettings, ISettingsFunction } from './Customizations';
 
 /**
  * Merge new and old settings, giving priority to new settings.
@@ -13,7 +13,10 @@ export function mergeSettings(oldSettings: ISettings = {}, newSettings?: ISettin
   return mergeSettingsWith(oldSettings);
 }
 
-export function mergeScopedSettings(oldSettings: ISettings = {}, newSettings?: ISettings | ISettingsFunction): ISettings {
+export function mergeScopedSettings(
+  oldSettings: ISettings = {},
+  newSettings?: ISettings | ISettingsFunction,
+): ISettings {
   const mergeSettingsWith = _isSettingsFunction(newSettings) ? newSettings : _scopedSettingsMergeWith(newSettings);
 
   return mergeSettingsWith(oldSettings);

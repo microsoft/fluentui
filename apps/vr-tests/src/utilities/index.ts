@@ -1,19 +1,17 @@
-import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
-import { initializeFolderCovers } from '@uifabric/experiments/lib/FolderCover';
+import { initializeIcons } from '@fluentui/react/lib/Icons';
+import { initializeFolderCovers } from '@fluentui/react-experiments/lib/FolderCover';
+import { ExtendedStoryApi } from './types';
 
 initializeIcons();
 initializeFolderCovers();
 
-export interface IStoryConfig {
-  rtl?: boolean;
-}
-
-declare module '@storybook/react' {
-  // tslint:disable-next-line:interface-name
-  interface Story {
-    addStory(storyName: string, callback: RenderFunction, config?: IStoryConfig): this;
+declare module '@storybook/addons' {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  interface StoryApi {
+    /** adds a story, but via VR Tests' addon which auto adds variants like RTL */
+    addStory: ExtendedStoryApi['addStory'];
   }
 }
 
-export * from './FabricDecorator';
+export * from './TestWrapperDecorator';
 export * from './DevOnlyStoryHeader';

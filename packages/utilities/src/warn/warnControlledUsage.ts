@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
     valueOnChange: {},
     valueDefaultValue: {},
     controlledToUncontrolled: {},
-    uncontrolledToControlled: {}
+    uncontrolledToControlled: {},
   };
 }
 
@@ -53,14 +53,22 @@ export interface IWarnControlledUsageParams<P> {
  *    and the component is not read-only
  * - Both the value and defaultValue props are provided
  * - The component is attempting to switch between controlled and uncontrolled
- * - The value or default value are null (unless allowNullValue is set)
  *
  * The messages mimic the warnings React gives for these error conditions on input elements.
  * The warning will only be displayed once per component ID.
  */
 export function warnControlledUsage<P>(params: IWarnControlledUsageParams<P>): void {
   if (process.env.NODE_ENV !== 'production') {
-    const { componentId, componentName, defaultValueProp, props, oldProps, onChangeProp, readOnlyProp, valueProp } = params;
+    const {
+      componentId,
+      componentName,
+      defaultValueProp,
+      props,
+      oldProps,
+      onChangeProp,
+      readOnlyProp,
+      valueProp,
+    } = params;
 
     // This warning logic closely follows what React does for native <input> elements.
 
@@ -76,7 +84,7 @@ export function warnControlledUsage<P>(params: IWarnControlledUsageParams<P>): v
         warn(
           `Warning: You provided a '${valueProp}' prop to a ${componentName} without an '${onChangeProp}' handler. ` +
             `This will render a read-only field. If the field should be mutable use '${defaultValueProp}'. ` +
-            `Otherwise, set '${onChangeProp}'${readOnlyProp ? ` or '${readOnlyProp}'` : ''}.`
+            `Otherwise, set '${onChangeProp}'${readOnlyProp ? ` or '${readOnlyProp}'` : ''}.`,
         );
       }
 
@@ -88,7 +96,7 @@ export function warnControlledUsage<P>(params: IWarnControlledUsageParams<P>): v
           `Warning: You provided both '${valueProp}' and '${defaultValueProp}' to a ${componentName}. ` +
             `Form fields must be either controlled or uncontrolled (specify either the '${valueProp}' prop, ` +
             `or the '${defaultValueProp}' prop, but not both). Decide between using a controlled or uncontrolled ` +
-            `${componentName} and remove one of these props. More info: https://fb.me/react-controlled-components`
+            `${componentName} and remove one of these props. More info: https://fb.me/react-controlled-components`,
         );
       }
     }
@@ -105,7 +113,7 @@ export function warnControlledUsage<P>(params: IWarnControlledUsageParams<P>): v
           `Warning: A component is changing ${oldType} ${componentName} to be ${newType}. ` +
             `${componentName}s should not switch from controlled to uncontrolled (or vice versa). ` +
             `Decide between using controlled or uncontrolled for the lifetime of the component. ` +
-            `More info: https://fb.me/react-controlled-components`
+            `More info: https://fb.me/react-controlled-components`,
         );
       }
     }

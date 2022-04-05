@@ -1,9 +1,11 @@
-import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '@uifabric/foundation';
-import { IBaseProps } from '@uifabric/utilities';
-import { IStackItemProps, IStackItemSlots, IStackItemTokens } from 'office-ui-fabric-react';
+import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '@fluentui/foundation-legacy';
+import { IStackItemProps, IStackItemSlots, IStackItemTokens } from '@fluentui/react/lib/Stack';
+import { IBaseProps } from '@fluentui/react/lib/Utilities';
 
 /**
- * {@docCategory CardItem}
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ * {@docCategory Card}
  */
 export type ICardItemComponent = IComponent<ICardItemProps, ICardItemTokens, ICardItemStyles, ICardItemViewProps>;
 
@@ -12,32 +14,44 @@ export type ICardItemComponent = IComponent<ICardItemProps, ICardItemTokens, ICa
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 
 /**
- * {@docCategory CardItem}
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ * {@docCategory Card}
  */
 export type ICardItemTokenReturnType = ReturnType<Extract<ICardItemComponent['tokens'], Function>>;
 
 /**
- * {@docCategory CardItem}
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ * {@docCategory Card}
  */
 export type ICardItemStylesReturnType = ReturnType<Extract<ICardItemComponent['styles'], Function>>;
 
 /**
- * {@docCategory CardItem}
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ * {@docCategory Card}
  */
 export type ICardItemSlot = ISlotProp<ICardItemProps>;
 
 /**
- * {@docCategory CardItem}
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ * {@docCategory Card}
  */
 export interface ICardItemSlots extends IStackItemSlots {}
 
 /**
- * {@docCategory CardItem}
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ * {@docCategory Card}
  */
 export interface ICardItem {}
 
 /**
- * {@docCategory CardItem}
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ * {@docCategory Card}
  */
 export interface ICardItemProps
   extends ICardItemSlots,
@@ -46,21 +60,29 @@ export interface ICardItemProps
     IBaseProps<ICardItem> {
   /**
    * Determines if the CardItem should disregard the children margin specified by Card.
+   * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+   * future.
    */
   fill?: boolean;
 }
 
 /**
- * {@docCategory CardItem}
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ * {@docCategory Card}
  */
 export interface ICardItemViewProps extends ICardItemProps {}
 
 /**
- * {@docCategory CardItem}
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ * {@docCategory Card}
  */
 export interface ICardItemTokens extends IStackItemTokens {}
 
 /**
- * {@docCategory CardItem}
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ * {@docCategory Card}
  */
 export type ICardItemStyles = IComponentStyles<ICardItemSlots>;

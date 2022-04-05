@@ -1,18 +1,20 @@
-import { ISpinButtonStyles } from 'office-ui-fabric-react/lib/SpinButton';
-import { ITheme } from 'office-ui-fabric-react';
-import { FontSizes } from '../AzureType';
+import { ISpinButtonStyleProps, ISpinButtonStyles } from '@fluentui/react/lib/SpinButton';
+import { IStyleFunction } from '@fluentui/react/lib/Utilities';
 
-export const SpinButtonStyles = (theme: ITheme): Partial<ISpinButtonStyles> => {
-  const { semanticColors } = theme;
+export const SpinButtonStyles: IStyleFunction<ISpinButtonStyleProps, ISpinButtonStyles> = (
+  props: ISpinButtonStyleProps,
+) => {
+  const { theme } = props;
+
   return {
     input: {
-      backgroundColor: semanticColors.inputBackground,
-      color: semanticColors.inputText,
-      fontSize: FontSizes.size12
+      backgroundColor: theme.semanticColors.inputBackground,
+      color: theme.semanticColors.inputText,
+      fontSize: theme.fonts.medium.fontSize,
     },
     inputTextSelected: {
-      color: semanticColors.inputText,
-      fontSize: FontSizes.size12
-    }
+      color: theme.semanticColors.inputText,
+      fontSize: theme.fonts.medium.fontSize,
+    },
   };
 };

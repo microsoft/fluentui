@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-us">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" user-scalable="no" />
+    <title>Fluent UI React Examples</title>
+  </head>
+
+  <body>
+    <div id="content"></div>
+    <script type="text/javascript">
+      // @ts-check
+      window.FabricConfig = {
+        // Uncommenting this prevents the fontfaces from being registered.
+        // Alternatively you can specify a base url which contains the font/icon assets.
+        // fontBaseUrl: '',
+        // mergeStyles: {
+        //   injectionMode: 2
+        // }
+      };
+
+      var isLocal = ['localhost', '[::]', '127.0.0.1'].indexOf(location.hostname) !== -1;
+
+      var minMatch = location.search.match(/\bmin=([01])\b/);
+      var minParam = minMatch && minMatch[1];
+      var useMinified = minParam !== '0' && (minParam === '1' || location.pathname === '/fabric-react/master/');
+      var jsSuffix = useMinified ? '.min.js' : '.js';
+
+      window.MonacoConfig = {
+        baseUrl: '.',
+        useMinified: useMinified,
+      };
+
+      function loadScript(src) {
+        var s = document.createElement('script');
+        s.src = src;
+        s.async = false;
+        document.body.appendChild(s);
+      }
+
+      loadScript('demo-app' + jsSuffix);
+    </script>
+  </body>
+</html>

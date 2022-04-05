@@ -1,18 +1,17 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { TestWrapperDecorator } from '../utilities/index';
 import {
   Dropdown,
   DropdownMenuItemType,
   IDropdownProps,
   Icon,
-  IDropdownOption
-} from 'office-ui-fabric-react';
+  IDropdownOption,
+} from '@fluentui/react';
 
 storiesOf('Dropdown', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -22,6 +21,8 @@ storiesOf('Dropdown', module)
         .click('.ms-Dropdown')
         .hover('.ms-Dropdown')
         .snapshot('click', { cropTo: '.ms-Layer' })
+        .hover('.ms-Dropdown-item')
+        .snapshot('hover item', { cropTo: '.ms-Layer' })
         .end()}
     >
       {story()}
@@ -41,29 +42,13 @@ storiesOf('Dropdown', module)
           { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
           { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
           { key: 'F', text: 'Option f', disabled: true },
-          { key: 'G', text: 'Option g' }
+          { key: 'G', text: 'Option g' },
+          { key: 'Long', text: 'Option long long long long long long long long long' },
         ]}
       />
     ),
-    { rtl: true }
+    { includeRtl: true },
   )
-  .addStory('Disabled', () => (
-    <Dropdown
-      placeholder="Select an Option"
-      label="Basic example:"
-      ariaLabel="Basic dropdown example"
-      disabled
-      options={[
-        { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
-        { key: 'A', text: 'Option a' },
-        { key: 'B', text: 'Option b' },
-        { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
-        { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
-        { key: 'F', text: 'Option f' },
-        { key: 'G', text: 'Option g' }
-      ]}
-    />
-  ))
   .addStory('Disabled option selected', () => (
     <Dropdown
       placeholder="Select an Option"
@@ -77,7 +62,7 @@ storiesOf('Dropdown', module)
         { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
         { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
         { key: 'F', text: 'Option f', disabled: true },
-        { key: 'G', text: 'Option g' }
+        { key: 'G', text: 'Option g' },
       ]}
     />
   ))
@@ -94,11 +79,12 @@ storiesOf('Dropdown', module)
           { key: 'Apple', text: 'apple' },
           { key: 'Banana', text: 'banana', disabled: true },
           { key: 'Lemon', text: 'lemon', disabled: true },
-          { key: 'Orange', text: 'orange' }
+          { key: 'Orange', text: 'orange' },
+          { key: 'Long', text: 'Option long long long long long long long long long' },
         ]}
       />
     ),
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory(
     'Custom Dropdown',
@@ -164,9 +150,64 @@ storiesOf('Dropdown', module)
           { key: 'G', text: 'Option g', data: { icon: 'EmojiNeutral' } },
           { key: 'H', text: 'Option h', data: { icon: 'ChatInviteFriend' } },
           { key: 'I', text: 'Option i', data: { icon: 'SecurityGroup' } },
-          { key: 'J', text: 'Option j', data: { icon: 'AddGroup' } }
+          { key: 'J', text: 'Option j', data: { icon: 'AddGroup' } },
         ]}
       />
     ),
-    { rtl: true }
-  );
+    { includeRtl: true },
+  )
+  .addStory('Required', () => (
+    <Dropdown
+      placeholder="Select an Option"
+      label="Required dropdown example:"
+      required={true}
+      options={[
+        { key: 'A', text: 'Option a' },
+        { key: 'B', text: 'Option b' },
+      ]}
+    />
+  ))
+  .addStory('Required without label', () => (
+    <Dropdown
+      placeholder="Select an Option"
+      required={true}
+      options={[
+        { key: 'A', text: 'Option a' },
+        { key: 'B', text: 'Option b' },
+      ]}
+    />
+  ));
+
+storiesOf('Dropdown Disabled', module)
+  .addDecorator(TestWrapperDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('.ms-Dropdown')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('.ms-Dropdown')
+        .hover('.ms-Dropdown')
+        .snapshot('click', { cropTo: '.ms-Layer' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Root', () => (
+    <Dropdown
+      placeholder="Select an Option"
+      label="Basic example:"
+      ariaLabel="Basic dropdown example"
+      disabled
+      options={[
+        { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
+        { key: 'A', text: 'Option a' },
+        { key: 'B', text: 'Option b' },
+        { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
+        { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
+        { key: 'F', text: 'Option f' },
+        { key: 'G', text: 'Option g' },
+      ]}
+    />
+  ));

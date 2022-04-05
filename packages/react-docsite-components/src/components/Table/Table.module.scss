@@ -1,0 +1,63 @@
+@import '../../styles/common';
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  :global(.ms-Image) {
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+.head .row,
+.body .row:not(:last-of-type) {
+  border-bottom: 1px solid $ms-color-gray60;
+}
+
+.head {
+  .row {
+    @include ms-borderColor-gray160;
+  }
+}
+
+.body {
+}
+
+.row {
+  /* no-op */
+}
+
+.cell {
+  @include ms-fontColor-gray130;
+}
+
+.headerCell {
+  @include ms-fontWeight-semibold;
+  @include ms-fontColor-gray160;
+  @include ms-text-align(left);
+  white-space: nowrap;
+}
+
+.headerCell,
+.cell {
+  @include ms-fontSize-14;
+  padding: 14px;
+  vertical-align: top;
+
+  &:first-of-type {
+    @include ms-padding-left(0);
+  }
+
+  // Make images follow text alignment.
+  &[style*='text-align'] {
+    :global(.ms-mdImage) {
+      img {
+        display: inline-block;
+      }
+    }
+  }
+}

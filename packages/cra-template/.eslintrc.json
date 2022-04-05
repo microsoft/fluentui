@@ -1,0 +1,13 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react"],
+  "root": true,
+  "overrides": [
+    {
+      "files": ["template/**/*.{ts,tsx}"],
+      "rules": {
+        // the rule can't understand that the actual list of deps is in template.json
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
+}

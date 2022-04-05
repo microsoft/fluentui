@@ -1,9 +1,9 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { Fabric, OverflowSet, IconButton, IOverflowSetItemProps } from 'office-ui-fabric-react';
+import { TestWrapperDecorator } from '../utilities/index';
+import { Fabric, OverflowSet, IOverflowSetItemProps } from '@fluentui/react';
+import { IconButton } from '@fluentui/react/lib/Button';
 
 const onRenderItem = (item: IOverflowSetItemProps) => item.name;
 const onRenderOverflowButton = (overflowItems: any[]) => {
@@ -11,7 +11,7 @@ const onRenderOverflowButton = (overflowItems: any[]) => {
 };
 
 storiesOf('OverflowSet', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -32,22 +32,22 @@ storiesOf('OverflowSet', module)
           items={[
             { key: 'item1', name: 'Link 1' },
             { key: 'item2', name: 'Link 2' },
-            { key: 'item3', name: 'Link 3' }
+            { key: 'item3', name: 'Link 3' },
           ]}
           overflowItems={[
             { key: 'item4', name: 'Overflow Link 1' },
-            { key: 'item5', name: 'Overflow Link 2' }
+            { key: 'item5', name: 'Overflow Link 2' },
           ]}
           onRenderOverflowButton={onRenderOverflowButton}
           onRenderItem={onRenderItem}
         />
       </Fabric>
     ),
-    { rtl: true }
+    { includeRtl: true },
   );
 
 storiesOf('OverflowSet variant', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -56,7 +56,7 @@ storiesOf('OverflowSet variant', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Vertical Direction', () => (
     <Fabric>
@@ -65,11 +65,11 @@ storiesOf('OverflowSet variant', module)
         items={[
           { key: 'item1', name: 'Link 1' },
           { key: 'item2', name: 'Link 2' },
-          { key: 'item3', name: 'Link 3' }
+          { key: 'item3', name: 'Link 3' },
         ]}
         overflowItems={[
           { key: 'item4', name: 'Overflow Link 1' },
-          { key: 'item5', name: 'Overflow Link 2' }
+          { key: 'item5', name: 'Overflow Link 2' },
         ]}
         onRenderOverflowButton={onRenderOverflowButton}
         onRenderItem={onRenderItem}

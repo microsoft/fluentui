@@ -1,0 +1,27 @@
+{
+  "name": "@fluentui/digest",
+  "version": "0.61.0",
+  "private": true,
+  "main": "lib/digest.js",
+  "module": "lib/digest.js",
+  "license": "MIT",
+  "bin": {
+    "digest": "./bin/digest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/digest"
+  },
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "test": "just-scripts test"
+  },
+  "dependencies": {
+    "just-scripts": "1.6.1",
+    "querystring": "^0.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

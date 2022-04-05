@@ -17,10 +17,7 @@
     "skipLibCheck": true,
     "preserveConstEnums": true,
     "lib": ["es5", "dom"],
-    "paths": {
-      "@uifabric/theme-samples/lib/*": ["./src/*"],
-      "@uifabric/theme-samples": ["./src"]
-    }
+    "isolatedModules": true
   },
   "include": ["src"]
 }

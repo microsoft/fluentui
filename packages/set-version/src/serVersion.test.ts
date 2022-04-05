@@ -7,7 +7,7 @@ describe('setVersion', () => {
     setVersion('a', '1');
     setVersion('a', '1');
 
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect((window as any).__packages__.a.length).toBe(1);
   });
 });

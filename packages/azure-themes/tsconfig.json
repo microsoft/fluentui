@@ -16,11 +16,7 @@
     "skipLibCheck": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es5", "dom"],
-    "paths": {
-      "@uifabric/azure-themes/lib/*": ["./src/*"],
-      "@uifabric/azure-themes": ["./src"]
-    }
+    "lib": ["es5", "dom"]
   },
   "include": ["src"]
 }

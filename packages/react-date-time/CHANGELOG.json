@@ -1,0 +1,5680 @@
+{
+  "name": "@fluentui/react-date-time",
+  "entries": [
+    {
+      "date": "Mon, 04 Apr 2022 20:01:04 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.16",
+      "version": "8.4.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.64.0",
+            "commit": "ddbf6041c6d19d952e2779550d4fd03f4c9869cf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 31 Mar 2022 07:38:07 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.15",
+      "version": "8.4.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.63.1",
+            "commit": "1cdf7704eb322c7bb621c9dd6188f75928c6532a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Mar 2022 07:38:55 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.14",
+      "version": "8.4.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.63.0",
+            "commit": "d7387b454501a9271b7ab2e75c6dd097bbbbb1bc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Mar 2022 07:47:27 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.13",
+      "version": "8.4.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.62.4",
+            "commit": "d624e1517ddfb789de987b61aa3213b25e4b008b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Mar 2022 07:38:05 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.12",
+      "version": "8.4.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.62.3",
+            "commit": "a21fa782c76760d8735b3e6ed081dc3db6f59591"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Mar 2022 07:37:29 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.11",
+      "version": "8.4.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.62.2",
+            "commit": "844136cf9b375b098fc9b769c8a19f2ac9f5275c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Mar 2022 07:39:45 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.10",
+      "version": "8.4.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.62.1",
+            "commit": "2286d915dd679920e727f0156bf41ddc29da094d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Mar 2022 07:42:02 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.9",
+      "version": "8.4.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.62.0",
+            "commit": "8c862ab1147fd38bc5008c85d1644f992561f89f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Mar 2022 07:38:51 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.8",
+      "version": "8.4.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.61.2",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Mar 2022 07:45:54 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.7",
+      "version": "8.4.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.61.1",
+            "commit": "aa2315c7c3fbaf648b69adbb2fbe62fa327ef25f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 12 Mar 2022 01:04:50 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.6",
+      "version": "8.4.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.61.0",
+            "commit": "dca5474ce261e4ea38e3b803b35a3bc802549ee0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Mar 2022 19:51:48 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.5",
+      "version": "8.4.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.60.4",
+            "commit": "fc2d2868c37f190fdfe61f98a1181f8af98a0122"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Mar 2022 07:34:41 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.4",
+      "version": "8.4.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.60.3",
+            "commit": "8e02823339296401393a13fc2f38d4629ffe48b3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Mar 2022 07:34:50 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.3",
+      "version": "8.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.60.2",
+            "commit": "7bc56445c4661c1766b1403881da858b40f84be7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Mar 2022 07:37:30 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.2",
+      "version": "8.4.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.60.1",
+            "commit": "2b63eed95dae656f1b3df3bd316c4f91d793cba5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Mar 2022 23:29:58 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.1",
+      "version": "8.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.60.0",
+            "commit": "3e2137c854ccf90b1382d3d1d66a6a6fdd4b310f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Mar 2022 07:35:08 GMT",
+      "tag": "@fluentui/react-date-time_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-date-time",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          }
+        ],
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.59.0",
+            "commit": "60ed06606c639e16816723dd6a2d635692004819"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Mar 2022 07:41:14 GMT",
+      "tag": "@fluentui/react-date-time_v8.3.2",
+      "version": "8.3.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.58.0",
+            "commit": "966ed6ca242079a1865d0011972205afba1ab85d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Mar 2022 07:42:05 GMT",
+      "tag": "@fluentui/react-date-time_v8.3.1",
+      "version": "8.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.57.1",
+            "commit": "62865d15abd07125ff3968c739e387d6fd840f00"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Mar 2022 07:24:28 GMT",
+      "tag": "@fluentui/react-date-time_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-date-time",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.57.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/set-version to v8.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Mar 2022 07:23:06 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.37",
+      "version": "8.2.37",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.56.3",
+            "commit": "d8ab052dcb2a452d879f9a01ae8abd30fd44f57b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 07:23:43 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.36",
+      "version": "8.2.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.56.2",
+            "commit": "cda6e1e291a31a0484ff8fbb30cbb67945569b15"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Feb 2022 07:29:50 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.35",
+      "version": "8.2.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.56.1",
+            "commit": "17618b2b24ce013569c74a505b2212eba18caf54"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Feb 2022 07:26:36 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.34",
+      "version": "8.2.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.56.0",
+            "commit": "2170ed575f77bc6852cfe5a2fe4974c7f9a64a9e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Feb 2022 07:28:31 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.33",
+      "version": "8.2.33",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.55.3",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Feb 2022 07:26:37 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.32",
+      "version": "8.2.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.55.2",
+            "commit": "9fe22334a3de49bb4e0d6c68fc1e97493d567066"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Feb 2022 07:27:49 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.31",
+      "version": "8.2.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.55.1",
+            "commit": "a0c8a3f6d02b6493e923006679a8cfb648c1e003"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Feb 2022 07:32:10 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.30",
+      "version": "8.2.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.55.0",
+            "commit": "96d9c93544464bcc5ec36b7c5d724b77ae499c73"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Feb 2022 07:30:50 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.29",
+      "version": "8.2.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.54.0",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Feb 2022 07:25:34 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.28",
+      "version": "8.2.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.53.0",
+            "commit": "d77594d2930fe0d19904dab6b703f629811dbfe4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Feb 2022 07:31:42 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.27",
+      "version": "8.2.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.52.3",
+            "commit": "e1926bfeca2a0ae5a469133a0c8257a7e4883332"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Feb 2022 07:29:41 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.26",
+      "version": "8.2.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.52.2",
+            "commit": "946f57cad4378ec779605d466ef1df3dd88ebc78"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Feb 2022 07:26:26 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.25",
+      "version": "8.2.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.52.1",
+            "commit": "c4912723213bb1a15b4af2f6c7962bc32064bf4a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Jan 2022 07:27:30 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.24",
+      "version": "8.2.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.52.0",
+            "commit": "940de09b95aa1cefcac9a1f6bbfa9499419e3634"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Jan 2022 07:26:01 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.23",
+      "version": "8.2.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.51.1",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jan 2022 07:30:06 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.22",
+      "version": "8.2.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.51.0",
+            "commit": "6a6e258c405b907be8b2723d9bc68a15afa3dc18"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 Jan 2022 07:26:13 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.21",
+      "version": "8.2.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.50.1",
+            "commit": "f6116328d6599342eef231f81d3c0724478a3d47"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Jan 2022 07:26:06 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.20",
+      "version": "8.2.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.50.0",
+            "commit": "d514b3e0eed345184ec1e81d4b563c3b0be73d5b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Jan 2022 09:43:48 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.19",
+      "version": "8.2.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.49.7",
+            "commit": "5e128714ba386902c0650ce61dfdeedee71ec0c8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Jan 2022 07:28:39 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.18",
+      "version": "8.2.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.49.6",
+            "commit": "5ab766c40fb058ea9756ba5b5942768c016a5391"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Jan 2022 07:30:58 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.17",
+      "version": "8.2.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.49.5",
+            "commit": "a9c3d10d957ef651a0f9f43c86e565f18c8edffa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Jan 2022 07:32:29 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.16",
+      "version": "8.2.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.49.4",
+            "commit": "3bc0517363984081469903ee137a06543f825f1c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Jan 2022 07:29:05 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.15",
+      "version": "8.2.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.49.3",
+            "commit": "d61d7925180bc36f13e83c6512c8f3e1885025a2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Jan 2022 07:26:30 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.14",
+      "version": "8.2.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.49.2",
+            "commit": "ecca467a89869ec2812b160b26a7f68fa69dac10"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Jan 2022 07:27:47 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.13",
+      "version": "8.2.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.49.1",
+            "commit": "8c37bdfa24fecc3eb93eb52e2dbe1c68ac0869f1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jan 2022 23:32:11 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.12",
+      "version": "8.2.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.49.0",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Dec 2021 07:29:45 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.11",
+      "version": "8.2.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.48.1",
+            "commit": "36d59e339779ed43ffa112594bb7c3b339c8ca2e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Dec 2021 07:26:41 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.10",
+      "version": "8.2.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.48.0",
+            "commit": "d7d472d3564c7c08465743b2517e4f29428b87b4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Dec 2021 07:31:29 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.9",
+      "version": "8.2.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.47.3",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Dec 2021 07:30:02 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.8",
+      "version": "8.2.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.47.2",
+            "commit": "f1be0a9728e05ca33ad67e77ae7d1cba3384106f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Dec 2021 07:30:35 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.7",
+      "version": "8.2.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.47.1",
+            "commit": "89deee5b2a8a5da67a557cd6b19fe9c51ab36de1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Dec 2021 07:27:18 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.6",
+      "version": "8.2.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.47.0",
+            "commit": "442708a3657b4deb5c607bed865b3f29a4a8c7ad"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Dec 2021 07:28:19 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.5",
+      "version": "8.2.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.46.3",
+            "commit": "a0ab3454ed8854df966ed71793ac6cb7154b35f2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Dec 2021 07:31:33 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.4",
+      "version": "8.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.46.2",
+            "commit": "ebf02572f71df78caaedac9c8ea5e91412c3694c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Dec 2021 07:36:12 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.3",
+      "version": "8.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.46.1",
+            "commit": "131c59c96177944b46ac63905a592f22e20ec67c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Dec 2021 07:41:09 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.2",
+      "version": "8.2.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.46.0",
+            "commit": "cf1891a601027de3f4c9f0db27cebe469f7f44ce"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Nov 2021 07:37:33 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.1",
+      "version": "8.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.45.0",
+            "commit": "b2deb9be17a76cce366fffb466d34ebd1fc45405"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 14:54:15 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.0",
+      "version": "8.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-date-time",
+            "commit": "cf59ae965a25831ad4969e5cda932a4c15938a9e",
+            "comment": "Removing export stars in favor of named exports."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.44.0",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/set-version to v8.1.5",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Nov 2021 07:27:34 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.103",
+      "version": "8.1.103",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.43.0",
+            "commit": "c0273fdc690bcb4903869508714e2585abd3bed1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Nov 2021 07:36:14 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.102",
+      "version": "8.1.102",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.42.5",
+            "commit": "c9ccb6f37d96cf26698fd918a4d7b20a383398bf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Nov 2021 07:45:28 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.101",
+      "version": "8.1.101",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.42.4",
+            "commit": "67a015efa01f6b07a701798d97c8edb3495834a0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Nov 2021 07:29:22 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.100",
+      "version": "8.1.100",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.42.3",
+            "commit": "8faa94d1143b3853d88630c40e66e50dd247f997"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Nov 2021 07:36:21 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.99",
+      "version": "8.1.99",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.42.2",
+            "commit": "8825574c42f414c26f9d49238be02ca7dcb44cfe"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Nov 2021 07:36:41 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.98",
+      "version": "8.1.98",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.42.1",
+            "commit": "9edaf68d440c3196d4660b91384a1587339b7b47"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Nov 2021 07:29:05 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.97",
+      "version": "8.1.97",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.42.0",
+            "commit": "906d31cfa368c25d75f23e47821299575eda1eb1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Nov 2021 07:31:59 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.96",
+      "version": "8.1.96",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.41.4",
+            "commit": "1aa9eec5d9dd53544b2755af4d177246a9ec939d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Nov 2021 07:38:11 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.95",
+      "version": "8.1.95",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.41.3",
+            "commit": "627ad67f1163946f1c539002bdcd63eda760c9c6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Nov 2021 07:35:50 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.94",
+      "version": "8.1.94",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.41.2",
+            "commit": "0025eeb8203f876d31f935d6143d5c6c16e86a2b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Nov 2021 07:36:39 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.93",
+      "version": "8.1.93",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.41.1",
+            "commit": "01492e29df9145ceb3ea61375c5d471e1c69ff5d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Nov 2021 07:29:42 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.92",
+      "version": "8.1.92",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.41.0",
+            "commit": "bc5ff01fb0274e706b15ab03304bd8c39f8f8cb8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Nov 2021 07:36:03 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.91",
+      "version": "8.1.91",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.40.0",
+            "commit": "260f9a36c899ed1bbc7d471ec48c72e768d01997"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Nov 2021 07:37:02 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.90",
+      "version": "8.1.90",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.39.0",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Nov 2021 07:32:08 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.89",
+      "version": "8.1.89",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.38.0",
+            "commit": "4094351f75ec358c549d02d044d599d0dda84481"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Oct 2021 07:29:08 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.88",
+      "version": "8.1.88",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.37.6",
+            "commit": "0e0cf06c34f78d54db4468a602a17b0a5a30ac87"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Oct 2021 07:29:14 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.87",
+      "version": "8.1.87",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.37.5",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Oct 2021 07:29:17 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.86",
+      "version": "8.1.86",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.37.4",
+            "commit": "fe4563c46b374c9c4d5543d501cd50cc4a629146"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Oct 2021 07:39:42 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.85",
+      "version": "8.1.85",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.37.3",
+            "commit": "1563a46da13fce14d6fe59778d057b75d3c16b41"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Oct 2021 07:38:02 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.84",
+      "version": "8.1.84",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.37.2",
+            "commit": "a88fb53fb38a20912b7ddea33b5f3313a721e148"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Oct 2021 07:28:35 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.83",
+      "version": "8.1.83",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.37.1",
+            "commit": "619163b3e099a775a2486a21e0187cec86b2b7c2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Oct 2021 07:30:01 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.82",
+      "version": "8.1.82",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.37.0",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 Oct 2021 07:31:28 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.81",
+      "version": "8.1.81",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.36.5",
+            "commit": "ea816dbc383501f27379294e8f3b2de61478cb7e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 Oct 2021 07:36:36 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.80",
+      "version": "8.1.80",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.36.4",
+            "commit": "3c73c74d6e50e7cca640c663b5407e90e35c378b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Oct 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.79",
+      "version": "8.1.79",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.36.3",
+            "commit": "3c3fae80fd74eb02fa0daa59b49afde39de83370"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 07:37:17 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.78",
+      "version": "8.1.78",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.36.2",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 Oct 2021 07:27:12 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.77",
+      "version": "8.1.77",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.36.1",
+            "commit": "4d8e599a31b788186f896a599a7d4e989d9098b1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Sep 2021 07:31:40 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.76",
+      "version": "8.1.76",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.36.0",
+            "commit": "78e4c398a39d6323feebf360eb37859ee26535d6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Sep 2021 07:36:23 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.75",
+      "version": "8.1.75",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.35.2",
+            "commit": "e726d8b364e68d28821710ea168b3ee0f7a23345"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Sep 2021 22:17:07 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.74",
+      "version": "8.1.74",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.35.1",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Sep 2021 07:37:27 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.73",
+      "version": "8.1.73",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.35.0",
+            "commit": "dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Sep 2021 07:34:24 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.72",
+      "version": "8.1.72",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.34.7",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Sep 2021 07:35:13 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.71",
+      "version": "8.1.71",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.34.6",
+            "commit": "e356b30fbc9830f64d23ca4d73cc0ad11e48faf3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Sep 2021 09:55:02 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.70",
+      "version": "8.1.70",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.34.5",
+            "commit": "23ad143fe61e38a508eb6aa3578e8e1026dc6a6c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Sep 2021 07:42:34 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.69",
+      "version": "8.1.69",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.34.4",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.68",
+      "version": "8.1.68",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-date-time",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-date-time",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/react-date-time to v8.1.68"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Sep 2021 07:38:39 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.68",
+      "version": "8.1.68",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-date-time",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c",
+            "comment": "Bump @fluentui/react-date-time to v8.1.68"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 07:38:18 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.67",
+      "version": "8.1.67",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmitry@grechka.family",
+            "package": "@fluentui/react-date-time",
+            "commit": "fe05da92ddc2742135a689b7b990f8152bd752c3",
+            "comment": "Bump @fluentui/react-date-time to v8.1.67"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Sep 2021 07:37:03 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.66",
+      "version": "8.1.66",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-date-time",
+            "commit": "39625b321acf26a327021e5d904f6f91dbf9a9e2",
+            "comment": "Bump @fluentui/react-date-time to v8.1.66"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.65",
+      "version": "8.1.65",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.33.0",
+            "author": "tschao@microsoft.com",
+            "commit": "da0edb6f63c6209ba2d608b45d1c9d8ac219cb50",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Sep 2021 07:39:06 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.64",
+      "version": "8.1.64",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.32.0",
+            "author": "shujathlive@gmail.com",
+            "commit": "7d9180debc95b08349c4df48b854c1bf5fe2dd46",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Sep 2021 07:34:11 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.63",
+      "version": "8.1.63",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.31.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "3d0232b6ce5213b5bb4a9ccd9a926268a4fad478",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.62",
+      "version": "8.1.62",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.4",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.62",
+      "version": "8.1.62",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.4",
+            "author": "gcox@microsoft.com",
+            "commit": "b2d5440a8434649f6a2a11b12b18557c606a70cd",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.61",
+      "version": "8.1.61",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.3",
+            "author": "olfedias@microsoft.com",
+            "commit": "8f887d05e8f2fed8433b147c6e175d8297455c51",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Sep 2021 07:39:56 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.60",
+      "version": "8.1.60",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.2",
+            "author": "gcox@microsoft.com",
+            "commit": "66fe45c6e8aea6af84014186505fb37a2c27b881",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.60",
+      "version": "8.1.60",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.1",
+            "author": "tmichon@microsoft.com",
+            "commit": "6e818d76d4bea22b0fc701828cdcbfe58fda24d5",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Aug 2021 07:35:05 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.59",
+      "version": "8.1.59",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.0",
+            "author": "richard@einfinity.co.uk",
+            "commit": "b9845c29770ba058344f01f02f5e111da0d31cbb",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Aug 2021 07:35:19 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.58",
+      "version": "8.1.58",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.29.2",
+            "author": "arujain@microsoft.com",
+            "commit": "e6ee3ff194c59ee27e853387fad06f161e63652c",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.57",
+      "version": "8.1.57",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.29.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Aug 2021 07:35:43 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.57",
+      "version": "8.1.57",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.29.1",
+            "author": "keyou@microsoft.com",
+            "commit": "0d9443614ded375ef210549eeb3ab3e3bba965ed",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.56",
+      "version": "8.1.56",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.29.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.56",
+      "version": "8.1.56",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.29.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Aug 2021 07:36:39 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.55",
+      "version": "8.1.55",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.28.2",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f700ae31aceafa040df5ac61e094a1f73c2dd6c7",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.54",
+      "version": "8.1.54",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.28.1",
+            "author": "keyou@microsoft.com",
+            "commit": "aad82f693eaf0c95e8b8ab6961d4b4d46d79d57f",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Aug 2021 07:34:46 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.53",
+      "version": "8.1.53",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.28.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fb73c0df8c9bca3c0630c096924d68563199a88b",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Aug 2021 07:34:54 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.52",
+      "version": "8.1.52",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.27.2",
+            "author": "olfedias@microsoft.com",
+            "commit": "954ba1d43684df75942a18c0ef05dc99187729ff",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.51",
+      "version": "8.1.51",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.27.1",
+            "author": "kinhln@microsoft.com",
+            "commit": "4d150e69ac2c7e7620e3b5e356d21d5e4a39256a",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Aug 2021 07:34:24 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.50",
+      "version": "8.1.50",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.27.0",
+            "author": "behowell@microsoft.com",
+            "commit": "c0e62e6319d0e35c3e630382e891d6bee2795ec0",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.49",
+      "version": "8.1.49",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.26.2",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Aug 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.48",
+      "version": "8.1.48",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.26.1",
+            "author": "czearing@outlook.com",
+            "commit": "a122a999f7cd93d569870373a804ace33f082cf5",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Jul 2021 07:35:22 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.47",
+      "version": "8.1.47",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.26.0",
+            "author": "rezha@microsoft.com",
+            "commit": "4be0412e53a7563614bd6303ab1242dc3bc27368",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Jul 2021 07:35:37 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.46",
+      "version": "8.1.46",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.25.0",
+            "author": "ololubek@microsoft.com",
+            "commit": "c0ef1a690b0e3a9b21da54540331a0a3be8108ef",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jul 2021 07:34:11 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.45",
+      "version": "8.1.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.24.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "dd4b9d08ba552d05f57fdddd6234279db8582f45",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Jul 2021 07:34:27 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.44",
+      "version": "8.1.44",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.10",
+            "author": "behowell@microsoft.com",
+            "commit": "e80bb05701a11190ea9c65ac81b35932a620a8cb",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.43",
+      "version": "8.1.43",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.9",
+            "author": "behowell@microsoft.com",
+            "commit": "2d62b36cdc1330c6984882d48c7f0e25473ac1a1",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.42",
+      "version": "8.1.42",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.8",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "fc6cc7d73c8d61587e26cd19b3bc9db3abd077a6",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Jul 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.7",
+            "author": "litong@microsoft.com",
+            "commit": "0088f43064b789f856c461f5574f2ca51fe19c4a",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jul 2021 22:23:17 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.40",
+      "version": "8.1.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.6",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "cf8d7a43d6de92501cef58200aff21fb3d1590a5",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Jul 2021 07:32:14 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.39",
+      "version": "8.1.39",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.5",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "2d09c451d74f72d248d805e875865ab5944661df",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Jul 2021 00:35:31 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.39",
+      "version": "8.1.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.4",
+            "author": "ilrosen@microsoft.com",
+            "commit": "581307da7a88ba9a2b74d5b213ab989729468f5f",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.38",
+      "version": "8.1.38",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.3",
+            "author": "behowell@microsoft.com",
+            "commit": "77457de1a3be11dfe66b3634daaa35d7ab23cef9",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Jul 2021 07:28:19 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.37",
+      "version": "8.1.37",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.2",
+            "author": "makopch@microsoft.com",
+            "commit": "54d610936b6670ecfe3c1577ed779af25c27ef3e",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 22:32:58 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.36",
+      "version": "8.1.36",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.1",
+            "author": "behowell@microsoft.com",
+            "commit": "035ba0498cee783b11b31dffa0cbf595b73d6ec8",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 07:35:36 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "c9c64e89dc89e1f2abd145d132bb0624c40bd4ed",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Jul 2021 07:33:23 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.34",
+      "version": "8.1.34",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.22.3",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "394b16b92fae7773125c32edc1df56c7758cba4e",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.34",
+      "version": "8.1.34",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.22.3",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Jul 2021 07:32:49 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.33",
+      "version": "8.1.33",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.22.2",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "6b7dca368ae9ce805f8c9663ebbb6018024f8b8b",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Jul 2021 07:32:54 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.32",
+      "version": "8.1.32",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.22.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "9babbdb459a85f5ec7640b35e921d17a675f7856",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Jul 2021 07:35:05 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.31",
+      "version": "8.1.31",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.22.0",
+            "author": "nikolenkoanton92@gmail.com",
+            "commit": "a7015bc278ac653e2030571598e27cc88c8d1044",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Jun 2021 07:33:32 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.30",
+      "version": "8.1.30",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.21.1",
+            "author": "makopch@microsoft.com",
+            "commit": "bed5091b9baf6359298e40849e2810fb0c80ba85",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jun 2021 07:35:16 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.29",
+      "version": "8.1.29",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.21.0",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Jun 2021 07:31:35 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.28",
+      "version": "8.1.28",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.20.2",
+            "author": "czearing@outlook.com",
+            "commit": "78a001da63401022bbcb1cef142240d2c9671e53",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Jun 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.28",
+      "version": "8.1.28",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.20.2",
+            "author": "czearing@outlook.com",
+            "commit": "175dd17740eab5d2c05f3c6779a2afbb3fd85227",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Jun 2021 07:35:11 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.28",
+      "version": "8.1.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.20.2",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "59b3902db0c883c5cc91dc8870d8f268d56ef6be",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 07:34:33 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.27",
+      "version": "8.1.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.20.1",
+            "author": "ololubek@microsoft.com",
+            "commit": "7116a5d3ee9db3228898a3be5f4b065a128eeaba",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jun 2021 07:30:58 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.26",
+      "version": "8.1.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.20.0",
+            "author": "khhuynh@microsoft.com",
+            "commit": "c67362c086adf01363d1bb85a4303c35852a7d6c",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Jun 2021 07:34:24 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.25",
+      "version": "8.1.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.19.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f6086b15f2734ede419d5d7ac3418b7bdf990060",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Jun 2021 07:40:20 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.24",
+      "version": "8.1.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.19.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "d07a25897e1a867be07a19481c8ee5724e63d70e",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Jun 2021 07:34:26 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.23",
+      "version": "8.1.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.18.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "2fc9d47408c198024227e40ecf53a56485a508a2",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Jun 2021 07:32:59 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.22",
+      "version": "8.1.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.17.4",
+            "author": "lorejoh12@gmail.com",
+            "commit": "605ed42353ab19f4ac6b105ef3a5e905d56c703a",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Jun 2021 07:33:38 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.21",
+      "version": "8.1.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.17.3",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "e81620081c85eaf0224b3bc290bf15f589ca7281",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Jun 2021 07:32:44 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.20",
+      "version": "8.1.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.17.2",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "e81620081c85eaf0224b3bc290bf15f589ca7281",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Jun 2021 07:38:15 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.19",
+      "version": "8.1.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 07:37:23 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.18",
+      "version": "8.1.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.17.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "e42563e7234d25c653d34fac07fb0f1be37d0f0f",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Jun 2021 07:36:03 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.17",
+      "version": "8.1.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.16.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ee223627df7fc52726f04cef2d42d7cdb42b815",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 May 2021 07:33:15 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.17",
+      "version": "8.1.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.16.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8c0ff9f25a1fc1ae46a9e5b342ba97c22f5050de",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 May 2021 07:33:21 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.16",
+      "version": "8.1.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.15.1",
+            "author": "hetanthakkar1@gmail.com",
+            "commit": "004478f9f4363524f218ddf1f67da8c520488065",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 May 2021 07:35:43 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.15",
+      "version": "8.1.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.15.0",
+            "author": "hetanthakkar1@gmail.com",
+            "commit": "8ddef3b35072dcc048b10eeb3d89cf32ae1e71f7",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 May 2021 01:11:03 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.14",
+      "version": "8.1.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.15",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "5756b9d913b4716a81a1d63e8ccf2099ab078742",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 May 2021 07:35:28 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.13",
+      "version": "8.1.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.14",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d8654fc0474e66b73536fac9f51090000e89970c",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 May 2021 07:34:54 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.12",
+      "version": "8.1.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.13",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "c00f815bfb9b2cfea4e2c60a79fd219ad023bded",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 May 2021 07:41:54 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.11",
+      "version": "8.1.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.12",
+            "author": "elcraig@microsoft.com",
+            "commit": "505db08044507a6a9260459a1013897ca68a2ed6",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 May 2021 07:34:20 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.10",
+      "version": "8.1.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.11",
+            "author": "martinhochel@microsoft.com",
+            "commit": "616b4b7c381c757871e8a590564d8eff7337834c",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 May 2021 07:34:38 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.9",
+      "version": "8.1.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.10",
+            "author": "zhigzhen@microsoft.com",
+            "commit": "644df65321367dd615548b2877293d5268595c2b",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 May 2021 07:33:48 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.8",
+      "version": "8.1.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.9",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "6f5eb945a92b483141ee732b2ef439206a026627",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 May 2021 07:35:10 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.7",
+      "version": "8.1.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.8",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "8ae04eedf0f6b332d32da6cfeab59776251b70b0",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 May 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.6",
+      "version": "8.1.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.7",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "a51398178a1519e74485a8f6b31c5d3fca09c0b4",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 May 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.5",
+      "version": "8.1.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.6",
+            "author": "oliver.webb@starleaf.com",
+            "commit": "2119518232b6d1a822ef2fa99bb488312053c4c5",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 May 2021 07:36:07 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.4",
+      "version": "8.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.5",
+            "author": "cujurgen@microsoft.com",
+            "commit": "cbb18aa631e7376359e7765fa7e5b6ca11b75621",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 May 2021 07:34:34 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.3",
+      "version": "8.1.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.4",
+            "author": "anhw@microsoft.com",
+            "commit": "6701eb20d01c4b846624b1c3f9ea37ed8c4ee72a",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 May 2021 07:35:51 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.2",
+      "version": "8.1.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.3",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "83930898b3f9e0972bf994dc55e66b477d12ea3c",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.1",
+      "version": "8.1.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.2",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "30a71c476a4c57a0be40ccef3717a456b354e0d6",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 May 2021 07:36:35 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.1",
+      "version": "8.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.1",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "83c7ebbe3aae5cb052e4f1405cbc8d68dc79aa8f",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.0",
+      "version": "8.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Upgrade to ts 4.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-date-time"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.0",
+            "author": "jdh@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Apr 2021 07:32:59 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.32",
+      "version": "8.0.32",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.13.1",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "0c1058d6057d25eb97a73482e026ee00719175de",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 07:34:03 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.31",
+      "version": "8.0.31",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.13.0",
+            "author": "jolamusg@microsoft.com",
+            "commit": "7d2a0ee3af7ab8a13f4cf007bfed6aeebde35b23",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Apr 2021 07:34:31 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.30",
+      "version": "8.0.30",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.12.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "5f36a1e53dbb353f48089303ce281bd7dfac0ee7",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.29",
+      "version": "8.0.29",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.12.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.28",
+      "version": "8.0.28",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.11.2",
+            "author": "b.sjursen@gmail.com",
+            "commit": "0bae195a92606a9de6549af2a47fa716c5298fc9",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Apr 2021 07:33:33 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.28",
+      "version": "8.0.28",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.11.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "fdc32557d49e5d70ea7e4af8957102d415b44547",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 07:32:08 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.28",
+      "version": "8.0.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.11.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "6168a30a5b8c0b053eb6343cb160ce609b01f397",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Apr 2021 07:34:12 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.27",
+      "version": "8.0.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.10.1",
+            "author": "miclo@microsoft.com",
+            "commit": "79e54368e24723655df2a1fa017f730fd642677f",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Apr 2021 14:55:56 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.26",
+      "version": "8.0.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.10.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "05b637939efd48a53391dac8587ec527aaee8891",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 10 Apr 2021 03:23:10 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.25",
+      "version": "8.0.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.9.4",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "4e5a243010c67069e4aeef715863cf3abc9dc319",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 23:42:49 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.24",
+      "version": "8.0.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.9.3",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "51828b1013e47654a6f4898110572fd9f334c12e",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 07:31:06 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.23",
+      "version": "8.0.23",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.9.2",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "f2b20a55b5bbe88021e45230b4b59c8528749e94",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Apr 2021 07:33:06 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.23",
+      "version": "8.0.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.9.2",
+            "author": "joschect@microsoft.com",
+            "commit": "ae21a051f71e7f7f71621f711a1da8dcb9284826",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Apr 2021 08:04:03 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.22",
+      "version": "8.0.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.9.1",
+            "author": "vapullur@microsoft.com",
+            "commit": "144f51f3db8bc7477969665376281504539b6712",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Apr 2021 07:34:10 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.21",
+      "version": "8.0.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.9.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "aa9c8ebb50c8a119a4d4f0acad37aacedb55e6d1",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Apr 2021 07:33:24 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.20",
+      "version": "8.0.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.8.0",
+            "author": "miclo@microsoft.com",
+            "commit": "c47f4a89c46f9864d569ee3547ec25800b38d2c2",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 00:53:43 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.19",
+      "version": "8.0.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.7.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Mar 2021 07:34:45 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.18",
+      "version": "8.0.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.7.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Mar 2021 07:33:24 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.17",
+      "version": "8.0.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.6.1",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "2338c30df092ac05df393631bb8e59bcd9fec7b0",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Mar 2021 07:32:21 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.16",
+      "version": "8.0.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.6.0",
+            "author": "anhw@microsoft.com",
+            "commit": "a8767b680206226010a1a3e6cf9b426ed66612b1",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Mar 2021 07:34:09 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.15",
+      "version": "8.0.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.5.1",
+            "author": "behowell@microsoft.com",
+            "commit": "6cfa186ffffe07c197608ecee665bc597376ff4a",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Mar 2021 20:15:34 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.14",
+      "version": "8.0.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.5.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "af62904b3f024c1f66d97982914c281f1ad748a9",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Mar 2021 07:33:22 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.13",
+      "version": "8.0.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.4.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "fc2d46e7f8a3b1e67efc77702174c6b229ace241",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 07:35:44 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.12",
+      "version": "8.0.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.3.2",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "63a804f60429b5440329f875dc4f8b697d9a6e5b",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Mar 2021 07:32:44 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.11",
+      "version": "8.0.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.3.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "37448af671102cd6dcef2fcf300a1ef0c6293b99",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.10",
+      "version": "8.0.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.3.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.10",
+      "version": "8.0.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-date-time"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.2.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Mar 2021 07:33:03 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.9",
+      "version": "8.0.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.2.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "31651de68dbcb15deea1ba0f42d670acb00e2115",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 07:34:39 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.8",
+      "version": "8.0.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.8",
+            "author": "dzearing@microsoft.com",
+            "commit": "488a8c6c28291969b164bb34563ab41e877371a2",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Mar 2021 07:32:29 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.7",
+      "version": "8.0.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.7",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fac7ea5e97dc1d8c87f3279e1132b09545158b58",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 07 Mar 2021 23:34:51 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.6",
+      "version": "8.0.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.6",
+            "author": "miclo@microsoft.com",
+            "commit": "5e06dfbf2d4e421934d09521a178d4acec404d02",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Mar 2021 20:30:59 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.5",
+      "version": "8.0.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.5",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "45fbce608a02afd1928f80fa7cec784a667e9b60",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 07:45:18 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.5",
+      "version": "8.0.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.4",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "93b84367718a637734537c8a34bfe807c23faa36",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.4",
+      "version": "8.0.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix webpack bundle",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Mar 2021 07:24:27 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.3",
+      "version": "8.0.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.2",
+            "author": "feodor@appveyor.com",
+            "commit": "e21d069d3c5ae040a5990d3359a532f0742db21a",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Mar 2021 07:20:46 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.2",
+      "version": "8.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.1",
+            "author": "hantatsang@gmail.com",
+            "commit": "058c7645b6289f54e3cb378183096771e7fdddad",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.1",
+      "version": "8.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Release version 8",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-date-time"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.53",
+      "version": "8.0.0-beta.53",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.63",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "23722afddd66499a1c29c511a01fe5f5ca191c76",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.52",
+      "version": "8.0.0-beta.52",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.62",
+            "author": "altinokd@microsoft.com",
+            "commit": "9de2c9938c00408da7746d4b3f6fe7f80b37e37f",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 07:19:56 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.51",
+      "version": "8.0.0-beta.51",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.61",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "c17273e7dcdb5da25451da134b0c8259dbf72ca3",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.50",
+      "version": "8.0.0-beta.50",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.60",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.49",
+      "version": "8.0.0-beta.49",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.59",
+            "author": "elcraig@microsoft.com",
+            "commit": "d6fc0dc21b4eca678267c2beb17bdafe80f8890a",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.48",
+      "version": "8.0.0-beta.48",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find.",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.47",
+      "version": "8.0.0-beta.47",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-date-time"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.57",
+            "author": "evlevy@microsoft.com",
+            "commit": "98d7d6b2ebcd4b2fa79c80b08e5719d5f0fdfa7f",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.46",
+      "version": "8.0.0-beta.46",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "add labels to calendar tables, date header button, and tweak label wording for conciseness",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "b6432f371a9ed22b31657dbe9b57699bbff439ba",
+            "package": "@fluentui/react-date-time"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.56",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.0-beta.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.45",
+      "version": "8.0.0-beta.45",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.55",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.44",
+      "version": "8.0.0-beta.44",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.54",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "bfc63e446500e60e38ac0ac0a023c7721152a832",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.43",
+      "version": "8.0.0-beta.43",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.53",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.43",
+      "version": "8.0.0-beta.43",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.53",
+            "author": "elcraig@microsoft.com",
+            "commit": "70b63061357489ccc43878d0d0b054953690d5b2",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Feb 2021 12:20:53 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.42",
+      "version": "8.0.0-beta.42",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.52",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "06e8eda9b5b6eefb3c3c9d34a92998e605a99e8f",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 12:24:19 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.41",
+      "version": "8.0.0-beta.41",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "[BREAKING] Move components to @fluentui/react and re-export from there (working around a circular dependency)",
+            "author": "elcraig@microsoft.com",
+            "commit": "47b42efbbe9e869864973f3b2cb717e6112b8106",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.40",
+      "version": "8.0.0-beta.40",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-internal to v8.0.0-beta.44",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Feb 2021 12:20:17 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.39",
+      "version": "8.0.0-beta.39",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disabling component-handles-classname test for CalendarDayGrid.",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.39",
+      "version": "8.0.0-beta.39",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.36",
+      "version": "8.0.0-beta.36",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
+            "author": "dzearing@microsoft.com",
+            "commit": "9c2c4a61c7d9eb8d153945ff57962118b569ea5b",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Clean up some prop comments and deprecated messages",
+            "author": "elcraig@microsoft.com",
+            "commit": "2e22b74a17aa6a8ce8d354730717b9517cdef7cd",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Update high contrast to support forced colors",
+            "author": "sareiff@microsoft.com",
+            "commit": "f9189e435dc8e73337ff40c54ac6af47567d9639",
+            "package": "@fluentui/react-date-time"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Delete update-api script which is no longer needed",
+            "author": "elcraig@microsoft.com",
+            "commit": "943a9ef5768a9cd77ade84217d142f93b1be6127",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Remove incorrect mock of requestAnimationFrame",
+            "author": "elcraig@microsoft.com",
+            "commit": "6bd0ce75decd9f62c40967bd7a59bfff960a0105",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.33",
+      "version": "8.0.0-beta.33",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 31 Dec 2020 12:30:02 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.26",
+      "version": "8.0.0-beta.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "swapping arrows for decade picker, which were backwards",
+            "author": "lorejoh12@gmail.com",
+            "commit": "6537ee66190784eb1a04bd765546efff09d451a1",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "@fluentui/react-date-time Calendar: fix use of gridcell role",
+            "author": "peterelliott@microsoft.com",
+            "commit": "9a4995b0437ff05317f80b765e6b110b60a18cdb",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Oct 2020 12:39:59 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.2",
+      "version": "8.0.0-beta.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove incorrect usage of expect.toBeDefined",
+            "author": "elcraig@microsoft.com",
+            "commit": "1491aa2a78a528064e2b33df46f6c864be878403",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/react-date-time_v8.0.0-beta.0",
+      "version": "8.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename @uifabric/date-time to @fluentui/react-date-time",
+            "author": "elcraig@microsoft.com",
+            "commit": "499bddf9cc43b09c839294cea5f066d852656b87",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Rename office-ui-fabric-react package and update references",
+            "author": "elcraig@microsoft.com",
+            "commit": "c23194868dfef332395fef60df74d2e86dff7241",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Fix imports to reference physical files.",
+            "author": "xgao@microsoft.com",
+            "commit": "8396178690de955489a25133f8c257537238c6bf",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Don't publish demo app; remove unused example-app-base dev dependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "aec02d96e7cef745e9867c03a528426a5ad28038",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Implementing ref conformance tests and updating CalendarDayGrid's FocusZone ref to an elementRef.",
+            "author": "czearing@outlook.com",
+            "commit": "1daae9cb3c49e7254fe8f92228d64298cdec95db",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Rename @uifabric/styling to @fluentui/style-utilities",
+            "author": "elcraig@microsoft.com",
+            "commit": "5158b5e4050cb04e9c22e0d5292cd96cc674746e",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Rename @uifabric/set-version to @fluentui/set-version",
+            "author": "ololubek@microsoft.com",
+            "commit": "2eba5d5be163a7a64975f058dc38b465f2363064",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities",
+            "author": "ololubek@microsoft.com",
+            "commit": "c6ae2b350037deb4e0bea07cdbdfe2e93455f4b1",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Prepare for exporting from @fluentui/react: Reuse shared types and defaults; add missing exports; improve interface names",
+            "author": "elcraig@microsoft.com",
+            "commit": "c838c580546dffb42b3eda95f55899c93c14b396",
+            "package": "@fluentui/react-date-time"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove legacy demo app webpack config",
+            "author": "elcraig@microsoft.com",
+            "commit": "42dd013887414826ea5ba71ba936d52a580938b9",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Rename build-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "32a158fd2c7fca8dc308a3e41f692817e6c26c44",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Update references to doc site-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "820f5a34d43c6a573ffa8a9191f03b73e5d29666",
+            "package": "@fluentui/react-date-time"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/date-time_v7.17.15",
+      "version": "7.17.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Sep 2020 00:46:56 GMT",
+      "tag": "@uifabric/date-time_v7.17.14",
+      "version": "7.17.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Set font-family inherit on button element.",
+            "author": "xgao@microsoft.com",
+            "commit": "fc211d8c6104f6f10948e6654513a6606bc35429",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@uifabric/date-time_v7.17.13",
+      "version": "7.17.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating isConformant version.",
+            "author": "czearing@outlook.com",
+            "commit": "261dea7a150115ce904768724cbeac80ded20382",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2020 12:25:45 GMT",
+      "tag": "@uifabric/date-time_v7.17.12",
+      "version": "7.17.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding isConformant file and implementing conformance tests.",
+            "author": "czearing@outlook.com",
+            "commit": "a89efd72e645e6e20869d6f33717f11554a8711a",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@uifabric/date-time_v7.17.8",
+      "version": "7.17.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@uifabric/date-time_v7.17.6",
+      "version": "7.17.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Sep 2020 12:27:31 GMT",
+      "tag": "@uifabric/date-time_v7.17.6",
+      "version": "7.17.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove useConstCallback usage",
+            "author": "elcraig@microsoft.com",
+            "commit": "2869bb85292cacba94abafc815bb415624abf48f",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Sep 2020 12:26:41 GMT",
+      "tag": "@uifabric/date-time_v7.17.1",
+      "version": "7.17.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Calendar: Adding aria-current=date to present day.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "cc1426d7243d09539f3abfccd073d21d9cef6fd3",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Sep 2020 12:27:02 GMT",
+      "tag": "@uifabric/date-time_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add wrapper styling to datepicker",
+            "author": "kevin@infinite.red",
+            "commit": "0edae7de07888f5d4f7373264c8c19e676447baa",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@uifabric/date-time_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding fix for scenario where DatePicker is fully controlled and the internal selected date updates, but the formatted date does not. Also adding example to verify in the future",
+            "author": "lorejoh12@gmail.com",
+            "commit": "16b89ba85706c711f61a685e06533796f5da4e31",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/date-time_v7.14.4",
+      "version": "7.14.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@uifabric/date-time_v7.14.2",
+      "version": "7.14.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding fix for first day of week changing away from Sunday that I broke with previous PR",
+            "author": "lorejoh12@gmail.com",
+            "commit": "c5359a60c35654de2847bf32bcb58f989375df42",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Aug 2020 05:47:07 GMT",
+      "tag": "@uifabric/date-time_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding dayGridProps to weeklyDayPicker so it can pass them through to the underlying day grid. Adding example of marking days to show usage",
+            "author": "lorejoh12@gmail.com",
+            "commit": "a20547d3dc9136acdb7ab32470728ea779d54fe6",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/date-time_v7.13.10",
+      "version": "7.13.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 00:30:40 GMT",
+      "tag": "@uifabric/date-time_v7.13.7",
+      "version": "7.13.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Refactor DatePicker as a function component",
+            "author": "miclo@microsoft.com",
+            "commit": "655580570512c48006a04ea80fd66e6273e7fae8",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Aug 2020 12:39:43 GMT",
+      "tag": "@uifabric/date-time_v7.13.6",
+      "version": "7.13.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": " ",
+            "author": "lorejoh12@gmail.com",
+            "commit": "b0ad85aef3e82623a7146c33a696f215ccbd26ee",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jul 2020 12:45:55 GMT",
+      "tag": "@uifabric/date-time_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding ability to mark calendar days with a callback function",
+            "author": "lorejoh12@gmail.com",
+            "commit": "4f6d22e0094842f600d122cc6eba05075919ed5b",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@uifabric/date-time_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix next and previous month/week aria labels in weekly day picker, export new default strings",
+            "author": "lorejoh12@gmail.com",
+            "commit": "44b99ab5e98f0c80e10b0d141a54903a328be450",
+            "package": "@uifabric/date-time"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix \"rules of hooks\" lint rule violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "2534fd78ec65b88a5049c7d2d9e54d1103159852",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@uifabric/date-time_v7.11.5",
+      "version": "7.11.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable react-hooks lint rules for now",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "@uifabric/date-time_v7.11.2",
+      "version": "7.11.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding accessibility fixes for alt+tab to datepicker, turn button -> div if not clickable, and high contrast color selectors",
+            "author": "lorejoh12@gmail.com",
+            "commit": "30fc4c9ad3b2b9236027b477e27eb742f8419cca",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/date-time_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint; add missing explicit react-hooks dependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/date-time"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "enable datepicker callout open ",
+            "author": "shrallap@microsoft.com",
+            "commit": "ec36a5c214cfc9a9262f8100013734f61952e95a",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Jul 2020 12:40:33 GMT",
+      "tag": "@uifabric/date-time_v7.10.8",
+      "version": "7.10.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "refactoring the date time examples into separate files to fix storybook. Also fixing bug in Calendar where externally controlled date does not navigate the calendar when the date changes",
+            "author": "lorejoh12@gmail.com",
+            "commit": "385517ff6b14786e1ea744f3de61d06a34be7822",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@uifabric/date-time_v7.10.7",
+      "version": "7.10.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Migrate Calendar components to function components",
+            "author": "miclo@microsoft.com",
+            "commit": "31047ace0c9dd27fc6f3d3fa4cf2acd4639e0ad9",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jul 2020 12:35:23 GMT",
+      "tag": "@uifabric/date-time_v7.10.2",
+      "version": "7.10.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "High Contrast in Edge Chromium: fix Label and TextField.",
+            "author": "xgao@microsoft.com",
+            "commit": "967a2d4d1879c1683f3c8bd9ea9cd4884944d396",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2020 12:36:08 GMT",
+      "tag": "@uifabric/date-time_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "CalendarDayGrid: migrate component to function component",
+            "author": "miclo@microsoft.com",
+            "commit": "30df63d7bf33234647171b8fc5fb5122154674e1",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/date-time_v7.9.3",
+      "version": "7.9.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@uifabric/date-time"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Jun 2020 12:38:09 GMT",
+      "tag": "@uifabric/date-time_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Extract helper functions from date-time/Calendar",
+            "author": "pompomon@gmail.com",
+            "commit": "15dc5e8e782565c75bc5d637813cee8be2b8a384",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jun 2020 12:37:16 GMT",
+      "tag": "@uifabric/date-time_v7.8.101",
+      "version": "7.8.101",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add Datetime utilities package",
+            "author": "pompomon@gmail.com",
+            "commit": "ae2604b53ac23c13faf40e8dd7de76e324a1c456",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/date-time_v7.8.100",
+      "version": "7.8.100",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@uifabric/date-time_v7.8.74",
+      "version": "7.8.74",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots for merge-styles change to not generate class with no styles",
+            "author": "pingj@microsoft.com",
+            "commit": "a5b44ed833a4614d1333fa161ffd8fd467d33446",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/date-time_v7.8.73",
+      "version": "7.8.73",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/date-time_v7.8.55",
+      "version": "7.8.55",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/date-time"
+          },
+          {
+            "comment": "Fixed a bug in the DatePicker causing an existing validation error to be cleared when tabbing through the component.",
+            "author": "michaelmajgaard@outlook.com",
+            "commit": "ae8d486c544cd9a6461ab705f37cb5b01718db5d",
+            "package": "@uifabric/date-time"
+          }
+        ],
+        "none": [
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/date-time_v7.8.53",
+      "version": "7.8.53",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/date-time_v7.8.45",
+      "version": "7.8.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/date-time_v7.8.44",
+      "version": "7.8.44",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/date-time_v7.8.43",
+      "version": "7.8.43",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Mar 2020 12:28:58 GMT",
+      "tag": "@uifabric/date-time_v7.8.41",
+      "version": "7.8.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove all usages of BaseComponent and initializeFocusRects",
+            "author": "xgao@microsoft.com",
+            "commit": "cb3fa154d4cfc66bc9f31942c3657581d1d814ad"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Mar 2020 12:28:27 GMT",
+      "tag": "@uifabric/date-time_v7.8.40",
+      "version": "7.8.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CalendarDayGrid: navigatedDate should have defaultValue of today",
+            "author": "aneeshak@microsoft.com",
+            "commit": "57428b9f8b27b0aa6d048cbab9d43ac2f0f83b2e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@uifabric/date-time_v7.8.28",
+      "version": "7.8.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed date time doc page file layout",
+            "author": "elcraig@microsoft.com",
+            "commit": "75169c615330c4b0cc41a09c35f9d52fff9925a6"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "ef95f984ea819393b994222b1d7b3c4c4f159b9f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Feb 2020 12:20:16 GMT",
+      "tag": "@uifabric/date-time_v7.8.25",
+      "version": "7.8.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DatePicker: Fixing onSelectDate event being called twice when allowTextInput is set to true.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "14fa26d0ce716ddb08a64adeb81e1e3507cd2493"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@uifabric/date-time_v7.8.23",
+      "version": "7.8.23",
+      "comments": {
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/date-time_v7.8.20",
+      "version": "7.8.20",
+      "comments": {
+        "none": [
+          {
+            "comment": "update enzyme",
+            "author": "kchau@microsoft.com",
+            "commit": "495983aec20488918f3d1ee87a8af92cb93d208f"
+          },
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/date-time_v7.8.17",
+      "version": "7.8.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d"
+          },
+          {
+            "comment": "moved storybook config",
+            "author": "kchau@microsoft.com",
+            "commit": "5612f0eff3ea9ce3f6d367979b208f3c2489d330"
+          },
+          {
+            "comment": "uniting build across fluent and fabric",
+            "author": "kchau@microsoft.com",
+            "commit": "f9503d808bc0971e843024c9fb679c0ed5a67fbb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Feb 2020 20:04:10 GMT",
+      "tag": "@uifabric/date-time_v7.8.14",
+      "version": "7.8.14",
+      "comments": {
+        "none": [
+          {
+            "comment": "DateTime: fix broken test",
+            "author": "joschect@microsoft.com",
+            "commit": "65e124a96e3d37e81a0a9cadf5ad36ec36a2df60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
+      "tag": "@uifabric/date-time_v7.8.13",
+      "version": "7.8.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix prettier error after upgrade prettier to 1.19.1",
+            "author": "xgao@microsoft.com",
+            "commit": "2242effd3e5226f313ef16f9c18ed3db87d548c4"
+          },
+          {
+            "comment": "bumping versions to fix broken publishes",
+            "author": "kchau@microsoft.com",
+            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/date-time_v7.8.10",
+      "version": "7.8.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "updates yarn start experience to storybook for packages that have examples",
+            "author": "kchau@microsoft.com",
+            "commit": "b907cd26f0ee1d1a52c68a624186d255deaa1893"
+          },
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jan 2020 12:30:27 GMT",
+      "tag": "@uifabric/date-time_v7.8.8",
+      "version": "7.8.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DatePicker: Fixing issue with formatted dates.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a215a47453932f4f63827eb343fe2c2995c04ea0"
+          },
+          {
+            "comment": "Updating text field validation in date-time package to check new value rather than old one.",
+            "author": "chce@netcompany.com",
+            "commit": "981f2259375f3a70e209d032bad4d79d0712261f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2020 02:32:17 GMT",
+      "tag": "@uifabric/date-time_v7.8.5",
+      "version": "7.8.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads.",
+            "author": "jagore@microsoft.com",
+            "commit": "52dc239bf89dbe76daa5f4776ee4368957938a1a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2020 01:24:12 GMT",
+      "tag": "@uifabric/date-time_v7.8.4",
+      "version": "7.8.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DatePicker: error message for required field is not cleared when date is selected from calendar",
+            "author": "xgao@microsoft.com",
+            "commit": "ab9fe1c2d9033071770cba02c00728f120feac45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/date-time_v7.8.3",
+      "version": "7.8.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "bumping load-themed-styles to take advantage of es6 version of it",
+            "author": "kchau@microsoft.com",
+            "commit": "9041aee981e0ad058920172d078af2d2cc2292db"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Dec 2019 12:30:26 GMT",
+      "tag": "@uifabric/date-time_v7.8.2",
+      "version": "7.8.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Allow focus on CalendarMonth header.",
+            "author": "phtucker@microsoft.com",
+            "commit": "eab10d89ac29a4ee1ec72358ba9237c2f0a09178"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2019 12:33:21 GMT",
+      "tag": "@uifabric/date-time_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated snapshots",
+            "author": "betrue@microsoft.com",
+            "commit": "287bff63b4a7803d0c8ff21bc9f927777fc2ceb3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Dec 2019 12:36:28 GMT",
+      "tag": "@uifabric/date-time_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DatePicker: Making styles accept functions and objects and not only functions.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "70a9d673ea890e14275f57548e01b9c6d1e7c07e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Nov 2019 12:32:11 GMT",
+      "tag": "@uifabric/date-time_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "applying a custom ref callback for days in the calendardaygrid to allow consumers to specify their own properties directly on the dom element",
+            "author": "jolore@microsoft.com",
+            "commit": "326c5fde19df5d2f2c18aff5df3ee33ec87d14fa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Nov 2019 12:31:13 GMT",
+      "tag": "@uifabric/date-time_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Accessibility fixes for date-time Calendar, adding new strings for new aria labels and fixing aria-live regions",
+            "author": "jolore@microsoft.com",
+            "commit": "2e06318622eba26ed36ded82a07969a71e966e6e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Nov 2019 12:30:32 GMT",
+      "tag": "@uifabric/date-time_v7.5.7",
+      "version": "7.5.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating work week hover state to match the actual days that are going to be selected. The mouse over state still takes the whole week into account",
+            "author": "jolore@microsoft.com",
+            "commit": "81548bf2b1f2092d423578a5a7a8261317a46059"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Nov 2019 12:30:07 GMT",
+      "tag": "@uifabric/date-time_v7.5.6",
+      "version": "7.5.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change files",
+            "author": "betrue@microsoft.com",
+            "commit": "1cd1d65557c39786eef998001daa1548909dbd56"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Oct 2019 19:36:52 GMT",
+      "tag": "@uifabric/date-time_v7.5.5",
+      "version": "7.5.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed accessibility of today in date-time package",
+            "author": "betrue@microsoft.com",
+            "commit": "11e879f58c5599686bfb80ef79b91ac1549cb42e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Oct 2019 12:31:42 GMT",
+      "tag": "@uifabric/date-time_v7.5.4",
+      "version": "7.5.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "phtucker@microsoft.com",
+            "commit": "5a715f5fd66c852bd0d26dff62ee8924c5924d1b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Oct 2019 12:32:05 GMT",
+      "tag": "@uifabric/date-time_v7.5.3",
+      "version": "7.5.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix getDerivedStateFromProps signatures",
+            "author": "elcraig@microsoft.com",
+            "commit": "437c49f055744dc64f13e6ef8c71f5f2d5110d0a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "@uifabric/date-time_v7.5.2",
+      "version": "7.5.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes publish issue from beachball",
+            "author": "odbuild@microsoft.com",
+            "commit": "f1469dff26babb9e6970c5e7a22c5f9e3542c8eb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Sep 2019 12:35:16 GMT",
+      "tag": "@uifabric/date-time_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jolore@microsoft.com",
+            "commit": "3000b21eb6f268f5ffe788720e0cea2810edfb27"
+          },
+          {
+            "comment": "initial commit of multi-day day view implementation. Lots of style updates to allow the hover states to work- previously hover states were always static, but now the classes have to update dynamically as the mouse moves over days",
+            "author": "jolore@microsoft.com",
+            "commit": "472ab496b3fe9f811b1d4842fec5fdbd2aacbb19"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Sep 2019 12:34:56 GMT",
+      "tag": "@uifabric/date-time_v7.4.8",
+      "version": "7.4.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing focus outline in IE11. The outline in IE11 does not show if it overflows the div it's in unless we explicitly set overflow: visible on the div (other browsers have this as the default).",
+            "author": "jolore@microsoft.com",
+            "commit": "12f8a6108f9a9451745988002902256b6c917536"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Sep 2019 12:35:43 GMT",
+      "tag": "@uifabric/date-time_v7.4.7",
+      "version": "7.4.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove codepen-loader usage",
+            "author": "elcraig@microsoft.com",
+            "commit": "d637c537d4a367e7a2e3e5e8e5fe7c902e8d3b31"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Sep 2019 12:33:15 GMT",
+      "tag": "@uifabric/date-time_v7.4.6",
+      "version": "7.4.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon Accessibility updates: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided.",
+            "author": "marygans@microsoft.com",
+            "commit": "df4c69f030235b4039f9104d30639acfb29dfca0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Sep 2019 12:34:47 GMT",
+      "tag": "@uifabric/date-time_v7.4.5",
+      "version": "7.4.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DatePicker: call custom text field onChange handler if it exists in default onChange handler",
+            "author": "naethell@microsoft.com",
+            "commit": "66c08397d029b26f7044440f86232aa72ae4d352"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2019 04:09:58 GMT",
+      "tag": "@uifabric/date-time_v7.4.4",
+      "version": "7.4.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix version file",
+            "author": "kchau@microsoft.com",
+            "commit": "fbccfaf91bfe3c77d95c614ac2cb69b7c9e1dad1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Aug 2019 12:30:00 GMT",
+      "tag": "@uifabric/date-time_v7.4.3",
+      "version": "7.4.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "small bug fixes. Fix overflow issue in firefox, fix mouse hover issue in all, fix perf issue in month view rendering of Calendar",
+            "author": "jolore@microsoft.com",
+            "commit": "a80d436207a5133c6cd130a48e1fe506de845dd5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Aug 2019 12:30:49 GMT",
+      "tag": "@uifabric/date-time_v7.4.2",
+      "version": "7.4.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots.",
+            "author": "dzearing@hotmail.com",
+            "commit": "b6b375776d9518c1e909d69ba85544367961cf88"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "@uifabric/date-time_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update npmignores, delete unused jest setup files",
+            "author": "elcraig@microsoft.com",
+            "commit": "b12aaa280221562003af1e0f02aa5f3a5b008041"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Aug 2019 12:30:43 GMT",
+      "tag": "@uifabric/date-time_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9.",
+            "author": "jagore@microsoft.com",
+            "commit": "ce48383da2d27474122aef769af0c313e29281d0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Aug 2019 12:32:41 GMT",
+      "tag": "@uifabric/date-time_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Moves aria-label to same element as role=combobox on the datepicker as required by the aria docs",
+            "author": "susunda@microsoft.com",
+            "commit": "0e3ed9ae44d851bed560587b2876fea575d38a41"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Aug 2019 12:32:07 GMT",
+      "tag": "@uifabric/date-time_v7.2.1",
+      "version": "7.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing broken IE11 by removing findIndex call, fixing the weeklydaypicker not rerendering when passed new initial date",
+            "author": "jolore@microsoft.com",
+            "commit": "3e3a88e08225630c5e19cf648610ff7f85e5cf1f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "@uifabric/date-time_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "finishing up the slide animation to apply to calendar and month and year pickers, and allow consumer to specify direction",
+            "author": "jolore@microsoft.com",
+            "commit": "a10caf8c33e725c3e61c8f3f7b434dd74551302b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Jul 2019 12:27:56 GMT",
+      "tag": "@uifabric/date-time_v7.1.7",
+      "version": "7.1.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update Date-time readme",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "440e00c27ba3c162d6d2145b80ae578684d366b0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "@uifabric/date-time_v7.1.7",
+      "version": "7.1.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing issue where buttons don't hide if they have focus, adding touch for navigation",
+            "author": "jolore@microsoft.com",
+            "commit": "c32b92aa6da7e582a87ed1e2f9426a5409850af9"
+          },
+          {
+            "comment": "Improve how to get the min query string",
+            "author": "elcraig@microsoft.com",
+            "commit": "17b31ca8739504e1d4c7b7dcaa725091254d0eb5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/date-time_v7.1.6",
+      "version": "7.1.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          },
+          {
+            "comment": "bumping versions to match what was published already",
+            "author": "kchau@microsoft.com",
+            "commit": "75e4ad16a2e6a54672e4929a9e003c7fd6f6ae52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/date-time_v7.1.4",
+      "version": "7.1.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          },
+          {
+            "comment": "adding build cache",
+            "author": "kchau@microsoft.com",
+            "commit": "babf367fa3a2f05d6689b9ea0a0cdb765b282380"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Jul 2019 12:29:39 GMT",
+      "tag": "@uifabric/date-time_v7.1.4",
+      "version": "7.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix date conversion for weeklydaypicker",
+            "author": "jolore@microsoft.com",
+            "commit": "f1273794e8c4402a86656689185bc7deb01151e4"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.3",
+      "tag": "@uifabric/date-time_v7.1.3",
+      "date": "Mon, 01 Jul 2019 18:51:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adds react-app-polyfill",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "40245650abdfb17e9f1cd6472f3671380237bcc2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.5` to `^7.0.6`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.2` to `^7.6.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.2` to `^7.1.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.2` to `^7.0.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.2",
+      "tag": "@uifabric/date-time_v7.1.2",
+      "date": "Wed, 26 Jun 2019 12:23:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots",
+            "author": "Aftab Hassan <afhassan@microsoft.com>",
+            "commit": "f9fda8aacd9edf109370ebd191e1b5085f954e22"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.5.2` to `^7.5.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.1",
+      "tag": "@uifabric/date-time_v7.1.1",
+      "date": "Thu, 20 Jun 2019 12:27:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing min/max date being ignored",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "cfadf2c43851577223994b1a5ee6516f8c328f25"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.2` to `^7.4.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.0` to `^7.1.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.0",
+      "tag": "@uifabric/date-time_v7.1.0",
+      "date": "Mon, 17 Jun 2019 12:26:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding new weekdaypicker component, refactoring calendardaygrid out of calendarday to share with new component",
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "59313f6e34af73f0141f4932bb71a39c778f5d55"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.2.0` to `^7.3.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.2",
+      "tag": "@uifabric/date-time_v7.0.2",
+      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix missing assets in production build.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/codepen-loader\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.1` to `^7.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.1",
+      "tag": "@uifabric/date-time_v7.0.1",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/codepen-loader\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.3.3",
+      "tag": "@uifabric/date-time_v6.3.3",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Re-export shared date utilities rather than duplicating",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "5e4f160e47e77f4ccdb0457160b22d321b25d4fc"
+          },
+          {
+            "comment": "Render demo app with Markdown instead of PageMarkdown",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d7047fc795ab94f49a9e14649b2f5fc4ae082f43"
+          },
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.1` to `^6.49.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.0` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.1` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.9` to `^6.0.10`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.3.2",
+      "tag": "@uifabric/date-time_v6.3.2",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "upgrade to api-extractor 7.1.6",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a5bbc76367eb01e993f20796955569f422a538b2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.0` to `^6.48.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.40.1` to `^6.41.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.3` to `^6.189.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.3.1",
+      "tag": "@uifabric/date-time_v6.3.1",
+      "date": "Mon, 10 Jun 2019 12:23:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Snapshot updates to components for adding aria-hidden to icon component conditionally",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "8e4f91a21866140b041266f6840af828b491600c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.2` to `^6.189.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.3.0",
+      "tag": "@uifabric/date-time_v6.3.0",
+      "date": "Fri, 07 Jun 2019 12:21:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "styling updates for datetime calendar",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "e5b8518175fe378ccc6a16e2674af4bccbdd4a16"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.1` to `^6.189.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.1",
+      "tag": "@uifabric/date-time_v6.2.1",
+      "date": "Wed, 05 Jun 2019 12:22:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add tooltips to Calendar buttons without text and fix text overflow bug in calendar header button with long names",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "d069e8b786d2e32251a5b6160d6ebbb8a051ceba"
+          },
+          {
+            "comment": "TextField: adds aria-labelledby to input",
+            "author": "staciecarroll <42977041+staciecarroll@users.noreply.github.com>",
+            "commit": "24e90baf27358385fa92df6ae70048183663fd89"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.6` to `^6.48.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.39.3` to `^6.40.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.188.2` to `^6.189.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.0",
+      "tag": "@uifabric/date-time_v6.2.0",
+      "date": "Mon, 03 Jun 2019 12:23:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating DatePicker and Calendar accessibility",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "2c587d46a192ed40adb633d6dd54941bf697a8ff"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "passing through props as the api expects them to be",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "999d6478e31bc32f1880e03bd38823eb36e513ef"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.187.2` to `^6.188.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.1.2",
+      "tag": "@uifabric/date-time_v6.1.2",
+      "date": "Tue, 21 May 2019 12:20:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use shared demo app bootstrapping code",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "3d93653335bbd66e7faec628e64b4c380dbfe82d"
+          },
+          {
+            "comment": "DatePicker: keep validation errors after noop",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "97a5855cdb0f2c99269e6b435231577998bd1621"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.183.0` to `^6.184.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.21.1` to `^6.22.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.1.1",
+      "tag": "@uifabric/date-time_v6.1.1",
+      "date": "Tue, 14 May 2019 07:50:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Fabric assets link",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "4cbda272f3ba109cdff14d9ff1b603564b73ea2a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.5` to `^6.47.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.38.2` to `^6.38.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.181.0` to `^6.181.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/codepen-loader\" from `^0.1.1` to `^0.1.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.20.0` to `^6.20.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.8` to `^6.0.9`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^1.0.1` to `^1.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^1.0.1` to `^1.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.1.0",
+      "tag": "@uifabric/date-time_v6.1.0",
+      "date": "Wed, 08 May 2019 12:37:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding DatePicker component and examples",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "702ca5371c733b30487c03e96dd097756d6ba4ee"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.177.0` to `^6.178.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.4",
+      "tag": "@uifabric/date-time_v6.0.4",
+      "date": "Sat, 04 May 2019 00:01:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CalendarDay: adjust styles to center align the selected days and months.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "867dc3bba916ce3528ffe2beafa370f7ea3a73bb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.2` to `^6.47.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.1` to `^6.176.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.16.1` to `^6.17.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.3",
+      "tag": "@uifabric/date-time_v6.0.3",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use new getFocusStyle helper",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "376e3c909728320b23dfdf60dd581f712064763a"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.46.1` to `^6.47.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.37.0` to `^6.37.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.173.0` to `^6.174.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.4` to `^6.15.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.2",
+      "tag": "@uifabric/date-time_v6.0.2",
+      "date": "Tue, 16 Apr 2019 12:32:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add Calendar to top level export",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "ede25d9f31745cde4f402988299fea52d2b5df59"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.166.1` to `^6.167.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.13.2` to `^6.14.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.1",
+      "tag": "@uifabric/date-time_v6.0.1",
+      "date": "Mon, 15 Apr 2019 12:33:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump to create first major release",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "74343561e50c139afb1aa51f5f952212ad0e9662"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.45.3` to `^6.46.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.166.0` to `^6.166.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.3.5",
+      "tag": "@uifabric/date-time_v0.3.5",
+      "date": "Tue, 02 Apr 2019 00:38:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing keros errors and some accessibility semantic issues with grids",
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "ce9d7d57c847078fbc0c97deb89f1c71299739ff"
+          },
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.45.1` to `^6.45.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.2` to `^6.35.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.0` to `^6.164.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.13.0` to `^6.13.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.7` to `^6.0.8`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.3.4",
+      "tag": "@uifabric/date-time_v0.3.4",
+      "date": "Wed, 27 Mar 2019 12:34:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update api file generated by api-extractor 7]",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "84a6854128de7b11e1b3babb41569be749786f8d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.45.0 <7.0.0` to `>=6.45.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.35.1 <7.0.0` to `>=6.35.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.161.0 <7.0.0` to `>=6.162.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.12.3 <7.0.0` to `>=6.12.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.3.3",
+      "tag": "@uifabric/date-time_v0.3.3",
+      "date": "Fri, 15 Mar 2019 12:34:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use codepen loader in examples",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "faeffcb5cc3b937dd45edc0a4188eebd987b0048"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.35.0 <7.0.0` to `>=6.35.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.156.0 <7.0.0` to `>=6.157.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.3.2",
+      "tag": "@uifabric/date-time_v0.3.2",
+      "date": "Tue, 12 Mar 2019 12:31:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating calendaryear to work when react version upgrades",
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "3cf52bb0edb9fcfcbc6a6666131a53c18a696d6f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.34.0 <7.0.0` to `>=6.35.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.154.0 <7.0.0` to `>=6.155.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.3.1",
+      "tag": "@uifabric/date-time_v0.3.1",
+      "date": "Tue, 05 Mar 2019 17:33:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add type annotations based on update to \"styled\"",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "846c063f27dbc440ea9773ff735420d0ba7c1754"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.44.0 <7.0.0` to `>=6.44.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.32.1 <7.0.0` to `>=6.33.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.150.1 <7.0.0` to `>=6.151.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.3.0",
+      "tag": "@uifabric/date-time_v0.3.0",
+      "date": "Thu, 28 Feb 2019 13:29:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "cherry picking restricted dates functionality to date-time package calendar",
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "8a1722266fef99cdc8602bd00d422f085a761de8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.146.1 <7.0.0` to `>=6.146.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.2",
+      "tag": "@uifabric/date-time_v0.2.2",
+      "date": "Tue, 12 Feb 2019 13:36:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Calendar: adding type=\"button\" in Calendar buttons so they don't submit by default inside forms",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "8272c4c861b4d1d44854aa71ec988ead7498d570"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.137.0 <7.0.0` to `>=6.138.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.1",
+      "tag": "@uifabric/date-time_v0.2.1",
+      "date": "Wed, 16 Jan 2019 13:38:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Port year-picking to date-time package",
+            "author": "Evan Levy <evlevy@microsoft.com>",
+            "commit": "ad66a786355b332c854d9e6c6f2afe43068f6236"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.125.0 <7.0.0` to `>=6.126.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.0 <7.0.0` to `>=6.11.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.0",
+      "tag": "@uifabric/date-time_v0.2.0",
+      "date": "Thu, 29 Nov 2018 19:34:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Creating the initial date-time package, including the first stage of the Calendar component css-in-js refactor, and creating the example page.",
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "19e7ec09c2a85b84743d6960f9bff1aed402593e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.35.0 <7.0.0` to `>=6.37.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.3 <7.0.0` to `>=6.108.0 <7.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,7 +1,5 @@
-import { FontSizes } from '../AzureType';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
-import { IToggleStyleProps, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
-import { BaseColors } from '../AzureColors';
+import { IToggleStyleProps, IToggleStyles } from '@fluentui/react/lib/Toggle';
 
 export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> => {
   const { theme, disabled, checked } = props;
@@ -12,48 +10,112 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
     container: {},
     pill: [
       {
-        backgroundColor: semanticColors.bodyBackground
+        backgroundColor: semanticColors.bodyBackground,
+        selectors: {
+          '&:hover': {
+            backgroundColor: extendedSemanticColors.radioButtonPillUncheckedHover,
+          },
+          '&::after': {
+            outlineColor: `${extendedSemanticColors.ButtonBorderFocus} !important`,
+          },
+        },
       },
-      checked && {
-        backgroundColor: extendedSemanticColors.controlAccent
-      },
-      disabled && {
-        backgroundColor: extendedSemanticColors.controlOutlineDisabled
-      },
-      !checked &&
+      checked && [
+        {
+          backgroundColor: extendedSemanticColors.controlFocus,
+          selectors: {
+            '&:hover': {
+              backgroundColor: extendedSemanticColors.radioButtonPillCheckedHover,
+            },
+          },
+        },
         disabled && {
-          backgroundColor: semanticColors.disabledBackground
-        }
+          backgroundColor: extendedSemanticColors.checkBoxDisabled,
+          selectors: {
+            '&:hover': {
+              backgroundColor: `${extendedSemanticColors.checkBoxDisabled}`,
+            },
+          },
+        },
+      ],
+      !checked && [
+        {
+          backgroundColor: extendedSemanticColors.bodyBackground,
+          border: `1px solid ${extendedSemanticColors.ButtonBorderFocus} !important`,
+
+          selectors: {
+            '&:hover': {
+              border: `1px solid ${extendedSemanticColors.buttonTextHovered} !important`,
+            },
+          },
+        },
+        disabled && {
+          border: `1px solid ${extendedSemanticColors.checkBoxDisabled} !important`,
+
+          selectors: {
+            '&:hover': {
+              backgroundColor: extendedSemanticColors.bodyBackground,
+              border: `1px solid ${extendedSemanticColors.checkBoxDisabled} !important`,
+            },
+          },
+        },
+      ],
     ],
     // toggle circle
     thumb: [
-      {
-        backgroundColor: extendedSemanticColors.controlOutlineHovered
-      },
-      disabled && {
-        backgroundColor: semanticColors.disabledBodyText
-      },
-      checked &&
-        !disabled && {
-          backgroundColor: BaseColors.WHITE
-        }
+      checked && [
+        {
+          backgroundColor: extendedSemanticColors.buttonBackground,
+        },
+        disabled && {
+          backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
+        },
+      ],
+      !checked && [
+        {
+          backgroundColor: extendedSemanticColors.ButtonBorderFocus,
+          selectors: {
+            '&:hover': {
+              backgroundColor: extendedSemanticColors.buttonTextHovered,
+            },
+          },
+        },
+        disabled && {
+          backgroundColor: extendedSemanticColors.checkBoxDisabled,
+          selectors: {
+            '&:hover': {
+              backgroundColor: extendedSemanticColors.checkBoxDisabled,
+            },
+          },
+        },
+      ],
     ],
     root: [
       {
-        fontSize: FontSizes.size12,
+        fontSize: theme.fonts.medium.fontSize,
         selectors: {
           '.ms-Toggle-stateText': {
-            color: semanticColors.bodyText
-          }
-        }
+            color: semanticColors.bodyText,
+          },
+          '&:hover': {
+            '.ms-Toggle-stateText': {
+              color: extendedSemanticColors.buttonTextHovered,
+            },
+          },
+        },
       },
       disabled && {
         selectors: {
           '.ms-Toggle-stateText': {
-            color: semanticColors.disabledBodyText
-          }
-        }
-      }
-    ]
+            color: semanticColors.disabledBodyText,
+          },
+          '&:hover': {
+            '.ms-Toggle-stateText': {
+              color: semanticColors.disabledBodyText,
+            },
+          },
+        },
+      },
+    ],
   };
 };

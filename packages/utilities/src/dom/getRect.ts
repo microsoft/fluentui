@@ -1,4 +1,5 @@
-import { IRectangle } from '../IRectangle';
+import type { IRectangle } from '../IRectangle';
+
 /**
  * Helper to get bounding client rect. Passing in window will get the window size.
  *
@@ -14,9 +15,9 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
         width: window.innerWidth,
         height: window.innerHeight,
         right: window.innerWidth,
-        bottom: window.innerHeight
+        bottom: window.innerHeight,
       };
-    } else if ((element as HTMLElement).getBoundingClientRect) {
+    } else if ((element as { getBoundingClientRect?: unknown }).getBoundingClientRect) {
       rect = (element as HTMLElement).getBoundingClientRect();
     }
   }

@@ -1,12 +1,11 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { ActivityItem, Icon } from 'office-ui-fabric-react';
+import { TestWrapperDecorator } from '../utilities/index';
+import { ActivityItem, Icon } from '@fluentui/react';
 
 storiesOf('ActivityItem', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -15,7 +14,7 @@ storiesOf('ActivityItem', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory(
     'Root',
@@ -27,7 +26,7 @@ storiesOf('ActivityItem', module)
         timeStamp="timeStamp text"
       />
     ),
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory(
     'Personas',
@@ -37,14 +36,14 @@ storiesOf('ActivityItem', module)
           { imageInitials: 'AB' },
           { imageInitials: 'CD' },
           { imageInitials: 'EF' },
-          { imageInitials: 'GH' }
+          { imageInitials: 'GH' },
         ]}
         activityDescription={<span>description text</span>}
         comments={<span>comment text</span>}
         timeStamp="timeStamp text"
       />
     ),
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory('Compact', () => (
     <ActivityItem

@@ -1,0 +1,12 @@
+{
+  "migrations": [
+    {
+      "version": "13.6.0-beta.0",
+      "description": "Remove old options that are no longer used",
+      "cli": "nx",
+      "implementation": "./src/migrations/update-13-6-0/remove-old-task-runner-options",
+      "package": "@nrwl/workspace",
+      "name": "13-6-0-remove-old-task-runner-options"
+    }
+  ]
+}

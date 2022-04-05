@@ -19,20 +19,20 @@ import {
   RecordSignal,
   ReadOnlySignal,
   FollowedSignal,
-  NotFollowedSignal
-} from '@uifabric/experiments';
+  NotFollowedSignal,
+} from '@fluentui/react-experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { Fabric } from 'office-ui-fabric-react';
+import { TestWrapperDecorator } from '../utilities/index';
+import { Fabric } from '@fluentui/react';
 
 interface ISignalExampleProps {
   name: string;
   signal: React.ReactNode;
 }
 
-const SignalExample: React.StatelessComponent<ISignalExampleProps> = (
-  props: ISignalExampleProps
+const SignalExample: React.FunctionComponent<ISignalExampleProps> = (
+  props: ISignalExampleProps,
 ): JSX.Element => {
   return (
     <div>
@@ -44,7 +44,7 @@ const SignalExample: React.StatelessComponent<ISignalExampleProps> = (
 };
 
 storiesOf('Signals', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}

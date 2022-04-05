@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "es5",
     "outDir": "lib",
@@ -10,10 +11,10 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "strict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
     "lib": ["es6", "dom"],
-    "typeRoots": ["node_modules/@types"],
-    "types": ["webpack-env", "webpack-node-externals"],
+    "types": ["webpack-env"],
     "skipLibCheck": true
   },
   "include": ["src"]

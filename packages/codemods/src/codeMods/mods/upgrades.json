@@ -1,0 +1,14 @@
+{
+  "name": "@fluent-ui codemods",
+  "upgrades": [
+    {
+      "name": "",
+      "type": "",
+      "version": "",
+      "options": {
+        "from": {},
+        "to": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+@import '~@fluentui/common-styles/src/common';
+
+/*
+Note: For icon alignment, please only use relative positioning in em units.
+Do not change the flex alignment or justification, or use vertical-alignment.
+It is important that Signals scale based on font-size and do not interfere with alternate alignment
+settings used by the parent control.
+*/
+
+.newSignal {
+  width: 0;
+  height: 1em;
+  position: relative;
+  @include margin-right(0);
+  line-height: 1em;
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+.newIcon {
+  position: absolute;
+  bottom: 100%;
+  @include right(-0.15em);
+  font-size: 0.66em;
+  margin-bottom: -0.9em;
+}
+
+.comments {
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+.commentsIcon {
+  vertical-align: middle;
+}
+
+.commentsCount {
+  @include margin-left(0.2em);
+  font-size: 0.9em;
+  font-weight: $ms-font-weight-semibold;
+  vertical-align: baseline;
+}
+
+.trending {
+  color: $ms-color-green;
+}
+
+.blocked {
+  color: $ms-color-redDark;
+}
+
+.warning {
+  color: #cf3902;
+}
+
+.shared {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.folder {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.lock {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.missingMetadata {
+  color: #cf3902;
+}
+
+.youCheckedOut {
+  color: $ms-color-redDark;
+}
+
+.someoneCheckedOut {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.awaitingApproval {
+  color: #ad3100;
+}
+
+.mention {
+  position: relative;
+
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+.unseenEdit {
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+.unseenReply {
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+i.unseenReply {
+  top: 0.25em;
+}
+
+.emailed {
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+i.emailed {
+  top: 0.25em;
+}
+
+.malwareDetected {
+  color: $ms-color-redDark;
+}
+
+.readOnly {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.external {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.record {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.liveEdit {
+  display: none; // Not implemented.
+}
+
+.bookmarkOutline {
+  color: $ms-color-neutralSecondary;
+}
+
+.bookmarkFilled {
+  color: $ms-color-neutralSecondary;
+}
+
+.needsRepublishing {
+  color: $ms-color-yellowDark;
+}
+
+.itemScheduled {
+  color: $ms-color-neutralSecondary;
+}

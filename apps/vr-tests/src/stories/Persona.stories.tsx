@@ -1,10 +1,9 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { IPersonaProps, Persona, PersonaPresence, PersonaSize } from 'office-ui-fabric-react';
-import { TestImages } from '../common/TestImages';
+import { TestWrapperDecorator } from '../utilities/index';
+import { IPersonaProps, Persona, PersonaPresence, PersonaSize } from '@fluentui/react';
+import { TestImages } from '@fluentui/example-data';
 
 const examplePersona: IPersonaProps = {
   imageUrl: TestImages.personaFemale,
@@ -12,12 +11,12 @@ const examplePersona: IPersonaProps = {
   text: 'Annie Lindqvist',
   secondaryText: 'Software Engineer',
   tertiaryText: 'In a meeting',
-  optionalText: 'Available at 4:00pm'
+  optionalText: 'Available at 4:00pm',
 };
 
 // prettier-ignore
 storiesOf('Persona', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     <Screener
       steps={new Screener.Steps()
@@ -182,7 +181,20 @@ storiesOf('Persona', module)
         />
       </div>
     ),
-    { rtl: true }
+    { includeRtl: true }
+  )
+  .addStory(
+    'size120',
+    () => (
+      <div>
+        <Persona
+          {...examplePersona}
+          size={PersonaSize.size120}
+          presence={PersonaPresence.blocked}
+        />
+      </div>
+    ),
+    { includeRtl: true }
   )
   .addStory(
     'Initials',
@@ -192,7 +204,7 @@ storiesOf('Persona', module)
         imageUrl={undefined}
       />
     ),
-    { rtl: true }
+    { includeRtl: true }
   )
   .addStory('Persona with children', () => (
     <Persona { ...examplePersona }>

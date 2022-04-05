@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-us">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" user-scalable="no" />
+    <title>Fluent UI React Examples</title>
+  </head>
+
+  <body>
+    <div id="content"></div>
+    <script type="text/javascript">
+      // @ts-check
+      window.FabricConfig = {
+        // Uncommenting this prevents the fontfaces from being registered.
+        // Alternatively you can specify a base url which contains the font/icon assets.
+        // fontBaseUrl: '',
+        // mergeStyles: {
+        //   injectionMode: 2
+        // }
+      };
+
+      var isLocal = ['localhost', '[::]', '127.0.0.1'].indexOf(location.hostname) !== -1;
+
+      var isDev = getParameterByName('dev') === '1' || !!getParameterByName('strict');
+      var minParam = getParameterByName('min');
+      var useMinified =
+        !isDev && minParam !== '0' && (minParam === '1' || location.pathname === '/fabric-react/master/');
+
+      function loadScript(src) {
+        var s = document.createElement('script');
+        s.src = src;
+        s.async = false;
+        document.body.appendChild(s);
+      }
+
+      loadScript(useMinified ? 'demo-app.min.js' : 'demo-app.js');
+
+      function getParameterByName(name, url) {
+        if (!url) {
+          url = location.href;
+        }
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      }
+    </script>
+  </body>
+</html>

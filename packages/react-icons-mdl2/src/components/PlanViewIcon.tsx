@@ -1,0 +1,13 @@
+import * as React from 'react';
+import createSvgIcon from '../utils/createSvgIcon';
+
+const PlanViewIcon = createSvgIcon({
+  svg: ({ classes }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" className={classes.svg} focusable="false">
+      <path d="M128 256v384h1920v128H128v1152H0V128h2048v128H128zm128 640h128v128H256V896zm256 0h128v128H512V896zm256 0h128v128H768V896zm256 0h128v128h-128V896zm256 0h128v128h-128V896zm256 0h128v128h-128V896zm256 0h128v128h-128V896zM256 1408h128v128H256v-128zm256 0h128v128H512v-128zm256 0h128v128H768v-128zm256 0h128v128h-128v-128zm256 0h128v128h-128v-128zm256 0h128v128h-128v-128zm256 0h128v128h-128v-128zM256 1152h128v128H256v-128zm256 0h128v128H512v-128zm256 0h128v128H768v-128zm256 0h128v128h-128v-128zm256 0h128v128h-128v-128zm256 0h128v128h-128v-128zm256 0h128v128h-128v-128zM256 1664h128v128H256v-128zm256 0h128v128H512v-128zm256 0h128v128H768v-128zm256 0h128v128h-128v-128zm256 0h128v128h-128v-128z" />
+    </svg>
+  ),
+  displayName: 'PlanViewIcon',
+});
+
+export default PlanViewIcon;

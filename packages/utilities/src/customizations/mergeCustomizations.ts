@@ -1,6 +1,6 @@
 import { mergeSettings, mergeScopedSettings } from './mergeSettings';
-import { ICustomizerProps } from './Customizer.types';
-import { ICustomizerContext } from './CustomizerContext';
+import type { ICustomizerProps } from './Customizer.types';
+import type { ICustomizerContext } from './CustomizerContext';
 
 /**
  * Merge props and customizations giving priority to props over context.
@@ -16,7 +16,7 @@ export function mergeCustomizations(props: ICustomizerProps, parentContext: ICus
     customizations: {
       settings: mergeSettings(customizations.settings, props.settings),
       scopedSettings: mergeScopedSettings(customizations.scopedSettings, props.scopedSettings),
-      inCustomizerContext: true
-    }
+      inCustomizerContext: true,
+    },
   };
 }

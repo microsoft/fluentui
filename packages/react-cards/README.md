@@ -1,32 +1,8 @@
-# @uifabric/react-cards
+# @fluentui/react-cards
 
-**Card components for [Office UI Fabric React](http://dev.microsoft.com/fabric)**
+> **For the converged Card components, see `@fluentui/react-card` instead.**
 
-##### What are Card components?
+**Deprecated experimental Card components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/))
 
-A `Card` is a surface to display content and actions about a single topic. It acts as a container for actionable information like text, images and icons.
-
-`Card` components abstract styling properties and utilize them in tandem with theme variables. Some of the properties they abstract are:
-
-- Paddings
-- Widths
-- Heights
-- Shadowing
-- Borders
-- Colors
-
-This package is intended to contain different variants of `Card` components to be leveraged when building applications using UI Fabric.
-
-Please take note that, at the moment, these are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
-
-To import ReactCards components:
-
-```js
-import { ComponentName } from '@uifabric/react-cards';
-```
-
-Once the ReactCards component graduates to a production release, the component will be available at:
-
-```js
-import { ComponentName } from 'office-ui-fabric-react';
-```
+These components never graduated from experimental status and were going to be removed in Fluent UI React version 8, but they've been added back for now to avoid breaking apps that were already using them. **Do not use these components in new code!**

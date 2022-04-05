@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { Panel, PanelType, Dialog, DialogType } from 'office-ui-fabric-react';
+import { TestWrapperDecorator } from '../utilities/index';
+import { Panel, PanelType, Dialog, DialogType } from '@fluentui/react';
 
 storiesOf('FocusTrapZones', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -34,13 +34,14 @@ storiesOf('FocusTrapZones', module)
             dialogContentProps={{
               type: DialogType.normal,
               title:
-                'This dialog uses Modal, which also makes use of Layer and FocusTrapZone. Focus should be trapped in the dialog.',
-              subText: "Focus will move back to the panel if you press 'OK' or 'Cancel'."
+                'This dialog uses Modal, which also makes use of Layer and FocusTrapZone. ' +
+                'Focus should be trapped in the dialog.',
+              subText: "Focus will move back to the panel if you press 'OK' or 'Cancel'.",
             }}
             modalProps={{
               titleAriaId: 'myLabelId',
               subtitleAriaId: 'mySubTextId',
-              isBlocking: false
+              isBlocking: false,
             }}
           >
             {null}
@@ -48,7 +49,7 @@ storiesOf('FocusTrapZones', module)
         </Panel>
       </div>
     ),
-    { rtl: true }
+    { includeRtl: true },
   )
   .addStory('Panel on its own', () => (
     <div>

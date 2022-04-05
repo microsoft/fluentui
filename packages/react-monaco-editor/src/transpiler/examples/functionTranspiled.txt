@@ -1,0 +1,6 @@
+import * as React from 'react';
+import { Label } from '@fluentui/react/lib/Label';
+export var LabelBasicExample = function () {
+    return (React.createElement("div", null,
+        React.createElement(Label, null, "I'm a Label")));
+};

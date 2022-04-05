@@ -1,0 +1,413 @@
+{
+  "fontName": "fabric-icons-3",
+  "fontFamilyName": "FabricMDL2Icons-3",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": true,
+  "chunkSubsets": true,
+  "hashFontFileName": true,
+  "subsetChunkSettings": {
+    "maxSubsetSize": 100
+  },
+  "glyphs": [
+    {
+      "name": "ChevronDownSmall",
+      "unicode": "E96E"
+    },
+    {
+      "name": "ChevronLeftSmall",
+      "unicode": "E96F"
+    },
+    {
+      "name": "ChevronRightSmall",
+      "unicode": "E970"
+    },
+    {
+      "name": "ChevronUpMed",
+      "unicode": "E971"
+    },
+    {
+      "name": "ChevronDownMed",
+      "unicode": "E972"
+    },
+    {
+      "name": "ChevronLeftMed",
+      "unicode": "E973"
+    },
+    {
+      "name": "ChevronRightMed",
+      "unicode": "E974"
+    },
+    {
+      "name": "Devices2",
+      "unicode": "E975"
+    },
+    {
+      "name": "PC1",
+      "unicode": "E977"
+    },
+    {
+      "name": "PresenceChickletVideo",
+      "unicode": "E979"
+    },
+    {
+      "name": "Reply",
+      "unicode": "E97A"
+    },
+    {
+      "name": "HalfAlpha",
+      "unicode": "E97E"
+    },
+    {
+      "name": "ConstructionCone",
+      "unicode": "E98F"
+    },
+    {
+      "name": "DoubleChevronLeftMed",
+      "unicode": "E991"
+    },
+    {
+      "name": "Volume0",
+      "unicode": "E992"
+    },
+    {
+      "name": "Volume1",
+      "unicode": "E993"
+    },
+    {
+      "name": "Volume2",
+      "unicode": "E994"
+    },
+    {
+      "name": "Volume3",
+      "unicode": "E995"
+    },
+    {
+      "name": "Chart",
+      "unicode": "E999"
+    },
+    {
+      "name": "Robot",
+      "unicode": "E99A"
+    },
+    {
+      "name": "Manufacturing",
+      "unicode": "E99C"
+    },
+    {
+      "name": "LockSolid",
+      "unicode": "E9A2"
+    },
+    {
+      "name": "FitPage",
+      "unicode": "E9A6"
+    },
+    {
+      "name": "FitWidth",
+      "unicode": "E9A7"
+    },
+    {
+      "name": "BidiLtr",
+      "unicode": "E9AA"
+    },
+    {
+      "name": "BidiRtl",
+      "unicode": "E9AB"
+    },
+    {
+      "name": "RightDoubleQuote",
+      "unicode": "E9B1"
+    },
+    {
+      "name": "Sunny",
+      "unicode": "E9BD"
+    },
+    {
+      "name": "CloudWeather",
+      "unicode": "E9BE"
+    },
+    {
+      "name": "Cloudy",
+      "unicode": "E9BF"
+    },
+    {
+      "name": "PartlyCloudyDay",
+      "unicode": "E9C0"
+    },
+    {
+      "name": "PartlyCloudyNight",
+      "unicode": "E9C1"
+    },
+    {
+      "name": "ClearNight",
+      "unicode": "E9C2"
+    },
+    {
+      "name": "RainShowersDay",
+      "unicode": "E9C3"
+    },
+    {
+      "name": "Rain",
+      "unicode": "E9C4"
+    },
+    {
+      "name": "Thunderstorms",
+      "unicode": "E9C6"
+    },
+    {
+      "name": "RainSnow",
+      "unicode": "E9C7"
+    },
+    {
+      "name": "Snow",
+      "unicode": "E9C8"
+    },
+    {
+      "name": "BlowingSnow",
+      "unicode": "E9C9"
+    },
+    {
+      "name": "Frigid",
+      "unicode": "E9CA"
+    },
+    {
+      "name": "Fog",
+      "unicode": "E9CB"
+    },
+    {
+      "name": "Squalls",
+      "unicode": "E9CC"
+    },
+    {
+      "name": "Duststorm",
+      "unicode": "E9CD"
+    },
+    {
+      "name": "Unknown",
+      "unicode": "E9CE"
+    },
+    {
+      "name": "Precipitation",
+      "unicode": "E9CF"
+    },
+    {
+      "name": "Ribbon",
+      "unicode": "E9D1"
+    },
+    {
+      "name": "AreaChart",
+      "unicode": "E9D2"
+    },
+    {
+      "name": "Assign",
+      "unicode": "E9D3"
+    },
+    {
+      "name": "FlowChart",
+      "unicode": "E9D4"
+    },
+    {
+      "name": "CheckList",
+      "unicode": "E9D5"
+    },
+    {
+      "name": "Diagnostic",
+      "unicode": "E9D9"
+    },
+    {
+      "name": "Generate",
+      "unicode": "E9DA"
+    },
+    {
+      "name": "LineChart",
+      "unicode": "E9E6"
+    },
+    {
+      "name": "Equalizer",
+      "unicode": "E9E9"
+    },
+    {
+      "name": "BarChartHorizontal",
+      "unicode": "E9EB"
+    },
+    {
+      "name": "BarChartVertical",
+      "unicode": "E9EC"
+    },
+    {
+      "name": "Freezing",
+      "unicode": "E9EF"
+    },
+    {
+      "name": "FunnelChart",
+      "unicode": "E9F1"
+    },
+    {
+      "name": "Processing",
+      "unicode": "E9F5"
+    },
+    {
+      "name": "Quantity",
+      "unicode": "E9F8"
+    },
+    {
+      "name": "ReportDocument",
+      "unicode": "E9F9"
+    },
+    {
+      "name": "StackColumnChart",
+      "unicode": "E9FC"
+    },
+    {
+      "name": "SnowShowerDay",
+      "unicode": "E9FD"
+    },
+    {
+      "name": "HailDay",
+      "unicode": "EA00"
+    },
+    {
+      "name": "WorkFlow",
+      "unicode": "EA01"
+    },
+    {
+      "name": "HourGlass",
+      "unicode": "EA03"
+    },
+    {
+      "name": "StoreLogoMed20",
+      "unicode": "EA04"
+    },
+    {
+      "name": "TimeSheet",
+      "unicode": "EA05"
+    },
+    {
+      "name": "TriangleSolid",
+      "unicode": "EA08"
+    },
+    {
+      "name": "UpgradeAnalysis",
+      "unicode": "EA0B"
+    },
+    {
+      "name": "VideoSolid",
+      "unicode": "EA0C"
+    },
+    {
+      "name": "RainShowersNight",
+      "unicode": "EA0F"
+    },
+    {
+      "name": "SnowShowerNight",
+      "unicode": "EA11"
+    },
+    {
+      "name": "Teamwork",
+      "unicode": "EA12"
+    },
+    {
+      "name": "HailNight",
+      "unicode": "EA13"
+    },
+    {
+      "name": "PeopleAdd",
+      "unicode": "EA15"
+    },
+    {
+      "name": "Glasses",
+      "unicode": "EA16"
+    },
+    {
+      "name": "DateTime2",
+      "unicode": "EA17"
+    },
+    {
+      "name": "Shield",
+      "unicode": "EA18"
+    },
+    {
+      "name": "Header1",
+      "unicode": "EA19"
+    },
+    {
+      "name": "PageAdd",
+      "unicode": "EA1A"
+    },
+    {
+      "name": "NumberedList",
+      "unicode": "EA1C"
+    },
+    {
+      "name": "PowerBILogo",
+      "unicode": "EA1E"
+    },
+    {
+      "name": "Info2",
+      "unicode": "EA1F"
+    },
+    {
+      "name": "MusicInCollectionFill",
+      "unicode": "EA36"
+    },
+    {
+      "name": "Asterisk",
+      "unicode": "EA38"
+    },
+    {
+      "name": "ErrorBadge",
+      "unicode": "EA39"
+    },
+    {
+      "name": "CircleFill",
+      "unicode": "EA3B"
+    },
+    {
+      "name": "Record2",
+      "unicode": "EA3F"
+    },
+    {
+      "name": "AllAppsMirrored",
+      "unicode": "EA40"
+    },
+    {
+      "name": "BookmarksMirrored",
+      "unicode": "EA41"
+    },
+    {
+      "name": "BulletedListMirrored",
+      "unicode": "EA42"
+    },
+    {
+      "name": "CaretHollowMirrored",
+      "unicode": "EA45"
+    },
+    {
+      "name": "CaretSolidMirrored",
+      "unicode": "EA46"
+    },
+    {
+      "name": "ChromeBackMirrored",
+      "unicode": "EA47"
+    },
+    {
+      "name": "ClearSelectionMirrored",
+      "unicode": "EA48"
+    },
+    {
+      "name": "ClosePaneMirrored",
+      "unicode": "EA49"
+    },
+    {
+      "name": "DockLeftMirrored",
+      "unicode": "EA4C"
+    },
+    {
+      "name": "DoubleChevronLeftMedMirrored",
+      "unicode": "EA4D"
+    },
+    {
+      "name": "GoMirrored",
+      "unicode": "EA4F"
+    }
+  ]
+}

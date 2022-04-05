@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OverflowSet snapshot tests basicSnapshot 1`] = `
+<div
+  className=
+      ms-OverflowSet
+      {
+        display: flex;
+        flex-wrap: nowrap;
+        position: relative;
+      }
+  role="group"
+/>
+`;
+
+exports[`OverflowSet snapshot tests snapshot with classname 1`] = `
+<div
+  className=
+      ms-OverflowSet
+      foobar
+      {
+        display: flex;
+        flex-wrap: nowrap;
+        position: relative;
+      }
+  role="group"
+/>
+`;
+
+exports[`OverflowSet snapshot tests snapshot with classname and vertical layout 1`] = `
+<div
+  className=
+      ms-OverflowSet
+      foobar
+      {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        position: relative;
+      }
+  role="group"
+/>
+`;

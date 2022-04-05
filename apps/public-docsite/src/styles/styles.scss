@@ -1,0 +1,18 @@
+// @todo: This file generates styles.scss.ts. Often when changing a Sass file
+//        that is imported (e.g. _base.scss) it will trigger a reload but doesn't
+//        actually build the .ts file, so the changes aren't visible.
+
+// Shared
+@import './common';
+
+// Reset all browser styling
+@import './reset';
+
+// Fluent UI overrides
+@import './overrides';
+
+// Base styles
+@import './base';
+
+// Typography
+@import './typography';

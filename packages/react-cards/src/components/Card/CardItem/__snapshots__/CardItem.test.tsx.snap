@@ -6,7 +6,7 @@ exports[`Card Item renders correctly 1`] = `
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: stretch;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -15,9 +15,10 @@ exports[`Card Item renders correctly 1`] = `
         flex-direction: column;
         flex-wrap: nowrap;
         height: inherit;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -30,9 +31,12 @@ exports[`Card Item renders correctly 1`] = `
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -41,6 +45,7 @@ exports[`Card Item renders correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -62,13 +67,13 @@ exports[`Card Item renders correctly 1`] = `
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the first item in a Compact Card 1`] = `
+exports[`Card Item renders correctly when filling up the margins while being the first item in a Horizontal Card 1`] = `
 <div
   className=
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: flex-start;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -77,9 +82,10 @@ exports[`Card Item renders correctly when filling up the margins while being the
         flex-direction: row;
         flex-wrap: nowrap;
         height: auto;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -92,9 +98,12 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -103,6 +112,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -128,6 +138,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -155,7 +166,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: stretch;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -164,9 +175,10 @@ exports[`Card Item renders correctly when filling up the margins while being the
         flex-direction: column;
         flex-wrap: nowrap;
         height: inherit;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -179,9 +191,12 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -190,6 +205,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -215,6 +231,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -236,13 +253,13 @@ exports[`Card Item renders correctly when filling up the margins while being the
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the last item in a Compact Card 1`] = `
+exports[`Card Item renders correctly when filling up the margins while being the last item in a Horizontal Card 1`] = `
 <div
   className=
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: flex-start;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -251,9 +268,10 @@ exports[`Card Item renders correctly when filling up the margins while being the
         flex-direction: row;
         flex-wrap: nowrap;
         height: auto;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -266,9 +284,12 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -277,6 +298,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -302,6 +324,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -329,7 +352,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: stretch;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -338,9 +361,10 @@ exports[`Card Item renders correctly when filling up the margins while being the
         flex-direction: column;
         flex-wrap: nowrap;
         height: inherit;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -353,9 +377,12 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -364,6 +391,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -389,6 +417,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -410,13 +439,13 @@ exports[`Card Item renders correctly when filling up the margins while being the
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the middle item in a Compact Card 1`] = `
+exports[`Card Item renders correctly when filling up the margins while being the middle item in a Horizontal Card 1`] = `
 <div
   className=
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: flex-start;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -425,9 +454,10 @@ exports[`Card Item renders correctly when filling up the margins while being the
         flex-direction: row;
         flex-wrap: nowrap;
         height: auto;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -440,9 +470,12 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -451,6 +484,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -476,6 +510,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -501,6 +536,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -528,7 +564,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: stretch;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -537,9 +573,10 @@ exports[`Card Item renders correctly when filling up the margins while being the
         flex-direction: column;
         flex-wrap: nowrap;
         height: inherit;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -552,9 +589,12 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -563,6 +603,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -588,6 +629,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -613,6 +655,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -634,13 +677,13 @@ exports[`Card Item renders correctly when filling up the margins while being the
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the only item in a Compact Card 1`] = `
+exports[`Card Item renders correctly when filling up the margins while being the only item in a Horizontal Card 1`] = `
 <div
   className=
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: flex-start;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -649,9 +692,10 @@ exports[`Card Item renders correctly when filling up the margins while being the
         flex-direction: row;
         flex-wrap: nowrap;
         height: auto;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -664,9 +708,12 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -675,6 +722,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -702,7 +750,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: stretch;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -711,9 +759,10 @@ exports[`Card Item renders correctly when filling up the margins while being the
         flex-direction: column;
         flex-wrap: nowrap;
         height: inherit;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -726,9 +775,12 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -737,6 +789,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -764,7 +817,7 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: stretch;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -773,9 +826,10 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
         flex-direction: column;
         flex-wrap: nowrap;
         height: inherit;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -788,9 +842,12 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -799,6 +856,7 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;

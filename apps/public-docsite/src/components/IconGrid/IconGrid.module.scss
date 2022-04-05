@@ -1,0 +1,59 @@
+@import '../../styles/common';
+
+.root {
+  min-height: 200px;
+}
+
+.loading {
+  margin: 20px 0;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  li {
+    align-items: center;
+    color: $ms-color-neutralPrimaryAlt;
+    display: flex;
+    flex-direction: column;
+    font-size: $font-size-bigger;
+    height: 80px;
+    justify-content: space-around;
+    padding: 8px;
+    width: 80px;
+    overflow: hidden;
+
+    .iconName {
+      color: $ms-color-neutralPrimary;
+      font-size: $ms-font-size-xs;
+      opacity: 0;
+      transition: opacity $ms-animation-duration-2 $ms-animation-ease-1;
+    }
+
+    &:hover {
+      overflow: visible;
+
+      .iconName {
+        opacity: 1;
+      }
+    }
+  }
+
+  i {
+    &:hover {
+      z-index: 1;
+
+      &:global(.hoverIcon) {
+        background-color: $ms-color-neutralLight;
+        padding: 0 8px;
+      }
+    }
+  }
+}
+
+.searchBox {
+  margin: 20px 0;
+  max-width: 320px;
+}

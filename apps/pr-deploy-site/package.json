@@ -1,26 +1,18 @@
 {
-  "name": "@uifabric/pr-deploy-site",
-  "version": "7.0.0",
+  "name": "@fluentui/pr-deploy-site",
+  "version": "1.0.0",
   "description": "A site to be deployed as a static site to view what is built during PR",
   "main": "index.js",
+  "private": true,
   "scripts": {
-    "build": "npx just-scripts copy",
-    "just": "npx just-scripts"
+    "clean": "just-scripts clean",
+    "generate:site": "just-scripts generate:site",
+    "lint": "eslint --ext .js,.ts --cache .",
+    "type-check": "tsc -p ."
   },
   "license": "MIT",
-  "dependencies": {
-    "@uifabric/charting": "^0.133.1",
-    "@uifabric/date-time": "^7.1.4",
-    "@uifabric/experiments": "^7.4.1",
-    "@uifabric/fabric-website-resources": "^7.2.0",
-    "@uifabric/fabric-website": "^7.2.4",
-    "@uifabric/foundation-scenarios": "^0.102.0",
-    "perf-test": "^7.0.0",
-    "test-bundles": "^7.0.0",
-    "theming-designer": "^7.0.0",
-    "todo-app": "^7.0.0"
-  },
   "devDependencies": {
-    "@uifabric/build": "^7.0.0"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0"
   }
 }

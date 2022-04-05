@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TooltipHost renders correctly 1`] = `
+<div
+  className=
+      ms-TooltipHost
+      {
+        display: inline;
+      }
+  onBlurCapture={[Function]}
+  onFocusCapture={[Function]}
+  onKeyDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  role="none"
+>
+  <div
+    hidden={true}
+    id="tooltip0"
+    style={
+      Object {
+        "border": 0,
+        "height": 1,
+        "margin": -1,
+        "overflow": "hidden",
+        "padding": 0,
+        "position": "absolute",
+        "whiteSpace": "nowrap",
+        "width": 1,
+      }
+    }
+  />
+</div>
+`;

@@ -1,0 +1,61 @@
+@import '../../styles/common';
+
+.table {
+  color: $ms-color-neutralPrimary;
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-regular;
+  margin-bottom: 20px;
+  width: 100%;
+
+  thead {
+    tr {
+      border-bottom: 1px solid $ms-color-neutralSecondaryAlt;
+    }
+
+    th {
+      font-weight: $ms-font-weight-semibold;
+      color: $ms-color-neutralSecondary;
+      @include text-align(left);
+    }
+  }
+
+  tbody {
+    font-size: $ms-font-size-m;
+
+    td {
+      line-height: normal;
+
+      &:first-child {
+        width: 1%;
+        white-space: nowrap;
+        @include ms-padding-right(20px);
+      }
+    }
+  }
+
+  tr {
+    border-bottom: 1px solid $ms-color-neutralTertiaryAlt;
+  }
+
+  th,
+  td {
+    padding: 8px;
+    vertical-align: top;
+  }
+}
+
+.tableMobile {
+  tbody {
+    tr {
+      &:first-child {
+        border-bottom: 2px solid $ms-color-neutralSecondaryAlt;
+      }
+
+      td:first-child {
+        color: $ms-color-neutralSecondary;
+        padding: 8px auto 8px 8px;
+        @include ms-padding-right(35px);
+      }
+    }
+  }
+}

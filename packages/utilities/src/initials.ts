@@ -1,9 +1,18 @@
 /**
- * Regular expression matching characters to ignore when calculating the initials.
- * The first part matches characters within parenthesis, including the parenthesis.
- * The second part matches special ASCII characters except space, plus some unicode special characters.
+ * Regular expressions matching characters to ignore when calculating the initials.
  */
-const UNWANTED_CHARS_REGEX: RegExp = /\([^)]*\)|[\0-\u001F\!-/:-@\[-`\{-\u00BF\u0250-\u036F\uD800-\uFFFF]/g;
+
+/**
+ * Regular expression matching characters within various types of enclosures, including the enclosures themselves
+ *  so for example, (xyz) [xyz] {xyz} <xyz> all would be ignored
+ */
+const UNWANTED_ENCLOSURES_REGEX: RegExp = /[\(\[\{\<][^\)\]\}\>]*[\)\]\}\>]/g;
+
+/**
+ * Regular expression matching special ASCII characters except space, plus some unicode special characters.
+ * Applies after unwanted enclosures have been removed
+ */
+const UNWANTED_CHARS_REGEX: RegExp = /[\0-\u001F\!-/:-@\[-`\{-\u00BF\u0250-\u036F\uD800-\uFFFF]/g;
 
 /**
  * Regular expression matching phone numbers. Applied after chars matching UNWANTED_CHARS_REGEX have been removed
@@ -19,11 +28,11 @@ const MULTIPLE_WHITESPACES_REGEX: RegExp = /\s+/g;
  * Arabic:   Arabic, Arabic Supplement, Arabic Extended-A.
  * Korean:   Hangul Jamo, Hangul Compatibility Jamo, Hangul Jamo Extended-A, Hangul Syllables, Hangul Jamo Extended-B.
  * Japanese: Hiragana, Katakana.
- * CJK:      CJK Unified Ideographs Extension A, CJK Unified Ideographs, CJK Compatibility Ideographs, CJK Unified Ideographs Extension B
+ * CJK:      CJK Unified Ideographs Extension A, CJK Unified Ideographs, CJK Compatibility Ideographs,
+ *             CJK Unified Ideographs Extension B
  */
-/* tslint:disable:max-line-length */
+// eslint-disable-next-line @fluentui/max-len
 const UNSUPPORTED_TEXT_REGEX: RegExp = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u1100-\u11FF\u3130-\u318F\uA960-\uA97F\uAC00-\uD7AF\uD7B0-\uD7FF\u3040-\u309F\u30A0-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]|[\uD840-\uD869][\uDC00-\uDED6]/;
-/* tslint:enable:max-line-length */
 
 function getInitialsLatin(displayName: string, isRtl: boolean): string {
   let initials = '';
@@ -48,6 +57,7 @@ function getInitialsLatin(displayName: string, isRtl: boolean): string {
 }
 
 function cleanupDisplayName(displayName: string): string {
+  displayName = displayName.replace(UNWANTED_ENCLOSURES_REGEX, '');
   displayName = displayName.replace(UNWANTED_CHARS_REGEX, '');
   displayName = displayName.replace(MULTIPLE_WHITESPACES_REGEX, ' ');
   displayName = displayName.trim();
@@ -60,7 +70,11 @@ function cleanupDisplayName(displayName: string): string {
  *
  * @public
  */
-export function getInitials(displayName: string | undefined | null, isRtl: boolean, allowPhoneInitials?: boolean): string {
+export function getInitials(
+  displayName: string | undefined | null,
+  isRtl: boolean,
+  allowPhoneInitials?: boolean,
+): string {
   if (!displayName) {
     return '';
   }

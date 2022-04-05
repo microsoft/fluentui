@@ -1,0 +1,66 @@
+import { Flex, Grid, Segment } from '@fluentui/react-northstar';
+import ExampleSnippet from '../components/ExampleSnippet/ExampleSnippet';
+
+export const meta = {
+  title: 'Layout',
+  previous: { name: 'Colors', url: 'colors' },
+  next: { name: 'Integrate Custom Components', url: 'integrate-custom-components' },
+};
+
+## Overview
+
+Fluent UI has `Flex` and `Grid` components to handle layout aspects, they represent corresponding [CSS layout modules](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Introduction). `Flex` is made for one dimensional layouts and `Grid` is made for two dimensional layouts.
+
+## `Flex`
+
+`Flex` is for either columns _or_ rows. This means that if you are laying out items in one direction (for example buttons inside a header), then you should use `Flex`.
+
+![Flex layout](https://fabricweb.azureedge.net/fabric-website/assets/images/flex.svg)
+![Flex layout](https://fabricweb.azureedge.net/fabric-website/assets/images/flex-column.svg)
+
+`Flex` component addresses all common [Flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox) layout scenarios and defines additional props to address most common [Flexbox usage scenarios](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Typical_Use_Cases_of_Flexbox) (e.g. `push` prop). `Flex.Item` component can be used to tweak flex styles of individual child item and will not produce additional DOM nodes.
+
+<ExampleSnippet>
+  <Flex gap="gap.small">
+    <Segment color="brand" content="Home" inverted />
+    <Segment color="green" content="Search" inverted />
+    <Flex.Item push>
+      <Segment color="red" content="Logout" inverted />
+    </Flex.Item>
+  </Flex>
+</ExampleSnippet>
+<ExampleSnippet>
+  <Flex column>
+    <Segment color="brand" content="Header" inverted />
+    <Segment content="Content" />
+    <Segment color="green" content="Footer" inverted />
+  </Flex>
+</ExampleSnippet>
+
+You can learn more in [Flex component docs](/components/flex).
+
+## `Grid`
+
+`Grid` is for lining things up in columns _and_ rows, it implements [Grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout) module.
+
+![Grid layout](https://fabricweb.azureedge.net/fabric-website/assets/images/grid-page.svg)
+![Grid layout](https://fabricweb.azureedge.net/fabric-website/assets/images/grid.svg)
+
+<ExampleSnippet>
+  <Grid columns="repeat(4, 1fr)" rows="50px 150px 50px">
+    <Segment color="brand" content="Header" inverted styles={{ gridColumn: 'span 4' }} />
+    <Segment color="green" content="Menu" inverted styles={{ gridColumn: 'span 1' }} />
+    <Segment content="Content" styles={{ gridColumn: 'span 3' }} />
+    <Segment color="brand" content="Footer" inverted styles={{ gridColumn: 'span 4' }} />
+  </Grid>
+</ExampleSnippet>
+<ExampleSnippet>
+  <Grid columns="repeat(2, 1fr)">
+    <Segment color="brand" content="Header" inverted styles={{ gridColumn: '1/3', gridRow: 1 }} />
+    <Segment color="red" content="Menu" inverted styles={{ gridColumn: '3', gridRow: '1/3' }} />
+    <Segment color="green" content="Notes" inverted styles={{ gridColumn: '1', gridRow: '2' }} />
+    <Segment color="grey" content="News" inverted styles={{ gridColumn: '2', gridRow: '2' }} />
+  </Grid>
+</ExampleSnippet>
+
+More examples are available in [Grid component docs](/components/grid).

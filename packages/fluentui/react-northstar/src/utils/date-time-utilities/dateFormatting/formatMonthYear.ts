@@ -1,0 +1,9 @@
+import { IDateGridStrings } from './dateFormatting.types';
+
+/**
+ * Format date to a month-year string
+ * @param date - input date to format
+ * @param strings - localized strings
+ */
+export const formatMonthYear = (date: Date, strings: IDateGridStrings) =>
+  `${strings.months[date.getMonth()]} ${date.getFullYear()}`;

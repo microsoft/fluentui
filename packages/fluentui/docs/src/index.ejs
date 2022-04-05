@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href='<%= __BASENAME__ %>'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" type="image/x-icon" href='<%= __PROD__ ? 'https://fabricweb.azureedge.net/fabric-website/assets/images/fluent-ui-logo.png' : 'https://fabricweb.azureedge.net/fabric-website/assets/images/fluent-ui-logo-dev.png' %>'/>
+  <title>Fluent UI</title>
+  <script>
+    // Redirect to HTTPs
+    // We need poor-mans client side redirects because we persist app router urls in localStorage
+    if (location.hostname === 'fluentsite.z22.web.core.windows.net' && location.protocol !== 'https:') {
+      location.href = location.href.replace('http:', 'https:')
+    }
+    // Apply gh-pages SPA redirect that was applied in 404.html
+    // ----------------------------------------
+    (function() {
+      var redirect = sessionStorage.redirect
+      delete sessionStorage.redirect
+      if (redirect && redirect !== location.href) {
+        history.replaceState(null, null, redirect)
+      }
+    })()
+
+    var versions = {
+      babelStandalone: "<%= htmlWebpackPlugin.options.versions.babelStandalone %>",
+    };
+  </script>
+  <style>
+    html {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <script src='https://cdn.jsdelivr.net/npm/core-js-bundle/minified.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/whatwg-fetch/dist/fetch.umd.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.1/anchor.min.js"></script>
+  <script
+    crossOrigin="anonymous"
+    src="https://cdn.jsdelivr.net/combine/npm/prettier@<%= htmlWebpackPlugin.options.versions.prettier %>/standalone.min.js,npm/prettier@<%= htmlWebpackPlugin.options.versions.prettier %>/parser-babel.min.js,npm/prettier@<%= htmlWebpackPlugin.options.versions.prettier %>/parser-html.min.js,npm/prettier@<%= htmlWebpackPlugin.options.versions.prettier %>/parser-typescript.min.js"
+  ></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.16.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/react-vis@<%= htmlWebpackPlugin.options.versions.reactVis %>/dist/style.min.css" />
+
+  <style>
+    html, body {
+      background: #f7f7f7;
+    }
+
+    /* AnchorsJS */
+
+    .anchorjs-link {
+      position: absolute;
+      transition: margin-left .25s, color .25s, opacity 0.25s;
+      margin-left: -0.2em;
+      color: #777;
+      opacity: 0;
+    }
+
+    h1:hover > .anchorjs-link:not(:hover),
+    h2:hover > .anchorjs-link:not(:hover),
+    h3:hover > .anchorjs-link:not(:hover),
+    h4:hover > .anchorjs-link:not(:hover),
+    h5:hover > .anchorjs-link:not(:hover),
+    h6:hover > .anchorjs-link:not(:hover) {
+      margin-left: 0em;
+      opacity: 0.5;
+    }
+
+    .anchorjs-link:hover {
+      margin-left: 0em;
+      color: cornflowerblue;
+      opacity: 1;
+    }
+
+    /* Doc site styles */
+
+    #introduction-page p {
+      font-size: 1.125em;
+      margin: 1.5em 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #777;
+      padding-left: 0.5rem;
+      margin-left: 0;
+      opacity: 0.8;
+    }
+
+    pre {
+      margin: 0;
+    }
+
+    code:not([class*="language-"]) {
+      font-size: 87.5%;
+      background-color: rgba(0, 0, 0, 0.04);
+      border-radius: 3px;
+      white-space: pre;
+      display: inline-block;
+    }
+
+    code:not([class*="language-"])::before {
+      letter-spacing: -0.2em;
+      content: "\00a0";
+    }
+
+    code:not([class*="language-"])::after {
+      letter-spacing: -0.2em;
+      content: "\00a0";
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</body>
+</html>

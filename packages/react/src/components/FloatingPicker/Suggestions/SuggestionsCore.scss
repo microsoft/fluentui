@@ -1,0 +1,23 @@
+@import '~@fluentui/common-styles/src/common';
+
+.suggestionsContainer {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 300px;
+
+  :global(.ms-Suggestion-item) {
+    &:hover {
+      background-color: $ms-color-neutralLighter;
+      cursor: pointer;
+    }
+  }
+
+  :global(.is-suggested) {
+    background-color: $ms-color-themeLighter;
+
+    &:hover {
+      background-color: $ms-color-themeLight;
+      cursor: pointer;
+    }
+  }
+}

@@ -17,7 +17,7 @@ export const safeRequestAnimationFrame = (component: React.Component): ((cb: Fun
       extendComponent(component, {
         componentWillUnmount: () => {
           activeTimeouts.forEach((id: number) => cancelAnimationFrame(id));
-        }
+        },
       });
     }
 

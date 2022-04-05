@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "target": "es5",
+    // ensure webpack can split async imports into separate chunks
+    "module": "esnext",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "lib": ["es2015", "dom"],
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["webpack-env", "custom-global"]
+  },
+  "include": ["src"]
+}

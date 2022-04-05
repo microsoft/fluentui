@@ -12,7 +12,7 @@
 export function hoistStatics<TSource extends Object, TDest>(source: TSource, dest: TDest): TDest {
   for (const name in source) {
     if (source.hasOwnProperty(name)) {
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (dest as any)[name] = source[name];
     }
   }

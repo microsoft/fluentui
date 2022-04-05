@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "id": "version-string-replace",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Library name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "bumpType": {
+      "type": "string",
+      "description": "Same kinds of bumps permitted by semver https://github.com/npm/node-semver"
+    },
+    "prereleaseTag": {
+      "type": "string",
+      "description": "Prerelease tag e.g. alpha"
+    },
+    "all": {
+      "type": "boolean",
+      "description": "Bumps all v9 packages at once"
+    },
+    "exclude": {
+      "type": "string",
+      "description": "Comma-delimited list of packages that should not be bumped when using the --all flag"
+    }
+  },
+  "required": ["bumpType"]
+}

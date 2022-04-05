@@ -1,4 +1,6 @@
-import { ISettingsMap, warn } from './warn';
+import { warn } from './warn';
+import type { ISettingsMap } from './warn';
+
 /**
  * Warns when two props which are mutually exclusive are both being used.
  *
@@ -13,7 +15,10 @@ export function warnMutuallyExclusive<P>(componentName: string, props: P, exclus
       if (props && props[propName] !== undefined) {
         let propInExclusiveMapValue = exclusiveMap[propName];
         if (propInExclusiveMapValue && props[propInExclusiveMapValue as keyof P] !== undefined) {
-          warn(`${componentName} property '${propName}' is mutually exclusive with '${exclusiveMap[propName]}'. Use one or the other.`);
+          warn(
+            `${componentName} property '${propName}' is mutually exclusive with '${exclusiveMap[propName]}'. ` +
+              `Use one or the other.`,
+          );
         }
       }
     }

@@ -1,0 +1,494 @@
+@import '~@fluentui/common-styles/src/common';
+
+.tile {
+  @include focus-clear();
+
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0; // Reset the stacking context.
+  background-color: $ms-color-white;
+  transition: transform 0.1s linear;
+  color: $ms-color-neutralPrimary;
+
+  user-select: none;
+
+  &.invokable:hover,
+  &.selectable:hover {
+    background-color: $ms-color-neutralLighter;
+
+    &.selected {
+      background-color: $ms-color-neutralQuaternaryAlt;
+    }
+  }
+
+  &.selected {
+    background-color: $ms-color-neutralLight;
+
+    &.isFluentStyling {
+      .name {
+        font-weight: $ms-font-weight-semibold;
+      }
+    }
+  }
+
+  @include focus(true) {
+    background-color: $ms-color-neutralLighter;
+
+    &.isFluentStyling {
+      background-color: transparent;
+    }
+
+    &.selected {
+      background-color: $ms-color-neutralQuaternaryAlt; // Todo need a color variable.
+    }
+  }
+
+  @include focus(true) {
+    outline: 1px solid $ms-color-neutralSecondary;
+
+    &.selected {
+      outline: 1px solid $ms-color-themePrimary;
+
+      &.isFluentStyling {
+        outline: 1px solid $ms-color-neutralSecondary;
+      }
+    }
+  }
+
+  &.hasBackgroundFrame {
+    box-shadow: 0 1px 3px 1px rgba(1, 1, 0, 0.05);
+
+    &.invokable:hover,
+    &.selectable:hover {
+      outline: 1px solid $ms-color-neutralTertiaryAlt;
+    }
+
+    @include focus(true) {
+      outline: 1px solid $ms-color-neutralSecondary;
+
+      &.selected {
+        outline: 1px solid $ms-color-themePrimary;
+      }
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      pointer-events: none;
+      border: 2px solid $ms-color-white;
+    }
+  }
+
+  &.invokable:active {
+    transform: scale(0.95);
+  }
+}
+
+.label {
+  @include ms-screenReaderOnly;
+}
+
+.description {
+  @include ms-screenReaderOnly;
+}
+
+.link {
+  border: none;
+  background: transparent;
+
+  @include focus-clear();
+
+  position: absolute;
+  padding: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
+
+  pointer-events: none;
+}
+
+.foreground {
+  display: inline-flex;
+  position: relative;
+  overflow: visible;
+  max-width: 100%;
+  max-height: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.2s linear;
+
+  .tile.invokable & {
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  &.foregroundHide {
+    opacity: 0;
+  }
+
+  .hasForegroundFrame & {
+    background-color: $ms-color-white;
+    box-shadow: 0 1px 3px 1px rgba(1, 1, 0, 0.05);
+    min-width: 32px;
+    min-height: 32px;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      pointer-events: none;
+      border: 2px solid $ms-color-white;
+    }
+  }
+}
+
+.check {
+  @include focus-border($position: absolute);
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  top: 0;
+  @include right(0);
+  border: none;
+  background: none;
+  background-color: transparent;
+  opacity: 0;
+  box-sizing: border-box;
+  padding: 6px;
+
+  .tile.uninvokable & {
+    width: 100%;
+    height: 100%;
+  }
+
+  .tile.selectable & {
+    display: flex;
+  }
+
+  .tile.selected &,
+  .tile.selectable:hover &,
+  .tile.showCheck & {
+    opacity: 1;
+  }
+
+  @include focus(true) {
+    opacity: 1;
+  }
+}
+
+.tile {
+  @include focus(true) {
+    .check {
+      opacity: 1;
+    }
+  }
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .tile.invokable & {
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  opacity: 1;
+
+  transition: opacity 0.2s linear;
+
+  &.backgroundHide {
+    opacity: 0;
+  }
+}
+
+.aboveNameplate {
+  flex: 1;
+  position: relative;
+  margin: 16px 16px 0 16px;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .hasForegroundFrame & {
+    justify-content: flex-end;
+  }
+}
+
+.nameplate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  margin: auto 0 0 0;
+  padding: 12px 8px;
+  text-align: center;
+  z-index: 0;
+
+  .name {
+    .tile.invokable & {
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    transition: color 0.2s linear;
+
+    .tile.invokable .link:hover & {
+      text-decoration: underline;
+
+      .isFluentStyling & {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .activity {
+    transition: color 0.2s linear;
+  }
+
+  .tile.hasBackgroundFrame & {
+    align-items: flex-start;
+    padding: 12px 10px;
+  }
+}
+
+.signal {
+  display: inline-block;
+
+  &.storageSignal {
+    @include margin-left(4px);
+  }
+
+  &.socialSignal {
+    @include margin-right(4px);
+  }
+
+  &.lifecycleSignal {
+    @include margin-right(4px);
+  }
+}
+
+.name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-weight: $ms-font-weight-regular;
+  color: $ms-color-neutralPrimary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+
+  @include margin-left(-8px);
+  @include padding-left(8px);
+
+  &,
+  .isLarge & {
+    font-size: $ms-font-size-m;
+
+    // Simulate a 15px line-height by using negative margins.
+    // This allows extenders and descenders to fit while still enforcing bounds
+    // for overflow: ellipsis.
+    height: 30px;
+    margin-top: -7px;
+    margin-bottom: -8px;
+  }
+
+  .isSmall & {
+    font-size: $ms-font-size-s;
+
+    // Simulate a 12px line-height by using negative margins.
+    // This allows extenders and descenders to fit while still enforcing bounds
+    // for overflow: ellipsis.
+    height: 24px;
+    margin-top: -5px;
+    margin-bottom: -7px;
+  }
+}
+
+.activity {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-weight: $ms-font-weight-regular;
+  font-size: $ms-font-size-s;
+  color: $ms-color-neutralSecondary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+
+  // Simulate a 20px line-height by using negative margins.
+  // This allows extenders and descenders to fit while still enforcing bounds
+  // for overflow: ellipsis.
+  height: 24px;
+  margin-bottom: -4px;
+
+  @include margin-left(-8px);
+  @include padding-left(8px);
+}
+
+.hasBackgroundFrame {
+  .name {
+    display: block;
+    @include LTR {
+      justify-content: left;
+    }
+    @include RTL {
+      justify-content: right;
+    }
+
+    &,
+    .isLarge .isSmall & {
+      font-size: $ms-font-size-m;
+      height: auto;
+      padding-top: 6px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      line-height: $ms-font-size-m + 8px;
+    }
+  }
+
+  .activity {
+    font-size: $ms-font-size-s;
+    display: block;
+    @include LTR {
+      justify-content: left;
+      text-align: left;
+    }
+    @include RTL {
+      justify-content: left;
+      text-align: left;
+    }
+
+    height: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: $ms-font-size-s + 8px;
+  }
+}
+
+.hasBackground {
+  .nameplate {
+    &:before {
+      position: absolute;
+      content: '';
+      display: block;
+      top: -4px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: linear-gradient(
+        to top,
+        rgba(#000, 0.65) 0%,
+        rgba(#000, 0.65 * 0.85) 55%,
+        rgba(#000, 0.65 * 0.3) 80%,
+        rgba(#000, 0) 100%
+      );
+      z-index: -1;
+      transition: opacity 0.2s linear;
+      opacity: 0;
+    }
+  }
+
+  .onlyOnHover {
+    .name {
+      opacity: 0;
+      transition: transform 0.25s ease-out, opacity 0.2s linear, color 0.2s linear;
+      transform: translateY(1rem);
+    }
+
+    .activity {
+      opacity: 0;
+      transition: transform 0.25s ease-out, opacity 0.2s linear, color 0.2s linear;
+      transform: translateY(1rem);
+    }
+  }
+
+  &:hover,
+  &.selected {
+    .onlyOnHover .name {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    .onlyOnHover .activity {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+
+  &.showBackground {
+    &:hover,
+    &.selected {
+      .onlyOnHover.nameplate:before {
+        opacity: 1;
+      }
+    }
+
+    .nameplate:not(.onlyOnHover):before {
+      opacity: 1;
+    }
+
+    .name {
+      // text appearing on tile must be white irrespective of theme
+      color: #fff;
+      text-shadow: 0.5px 0.5px 2px rgba(#000, 0.55);
+    }
+
+    .activity {
+      // text appearing on tile must be white irrespective of theme
+      color: #fff;
+      text-shadow: 0.5px 0.5px 2px rgba(#000, 0.55);
+    }
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+}

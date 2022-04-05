@@ -1,0 +1,65 @@
+import { Alert, Button, Flex } from '@fluentui/react-northstar';
+import { SkypeLogoIcon } from '@fluentui/react-icons-northstar';
+import ExampleSnippet from '../../../components/ExampleSnippet/ExampleSnippet';
+
+## Recipes
+
+There are several advices that might help when using `Flex` component.
+
+### Flex.Item should be used sparingly
+
+<Alert warning>
+  <p>
+    Use <code>Flex.Item</code> component to wrap child elements only in case if their flex styles should be overriden.
+  </p>
+</Alert>
+
+There is no strict need to use `Flex.Item` component as a direct child of `Flex` - one may use `Flex.Item` component only when it is necessary to tweak flex styles of individual child item.
+
+<ExampleSnippet>
+  <Flex gap="gap.small">
+    <Button content="Accept" />
+    <Button content="Deny" />
+  </Flex>
+</ExampleSnippet>
+
+Each `Flex.Item` element being introduced without any props specified should be considered for removal.
+
+<ExampleSnippet>
+  <Flex gap="gap.small">
+    <Button content="Accept" />
+    <Flex.Item>
+      <Button content="Deny" />
+    </Flex.Item>
+  </Flex>
+</ExampleSnippet>
+
+### Optimize amount of DOM elements rendered
+
+One of the most representative examples - a navigation menu, it will have a menu bar with logo on the left side and set of nav links on the right. Quite often this is achieved by introducing a top-level flex container with two children: first is a logo, and the second one is another container (`Flex`, renders to `<div />`)}) with a group of buttons:
+
+<ExampleSnippet>
+  <Flex space="between">
+    <Button content="Logo" icon={<SkypeLogoIcon />} />
+    <Flex gap="gap.small">
+      <Button content="Page 1" />
+      <Button content="Page 2" />
+      <Button content="Page 3" />
+    </Flex>
+  </Flex>
+</ExampleSnippet>
+
+This approach introduces unnecessary nesting level - it is possible to achieve the same goal by using just top-level container, with no buttons container:
+
+<ExampleSnippet>
+  <Flex gap="gap.small">
+    <Button content="Logo" icon={<SkypeLogoIcon />} />
+    <Flex.Item push>
+      <Button content="Page 1" />
+    </Flex.Item>
+    <Button content="Page 2" />
+    <Button content="Page 3" />
+  </Flex>
+</ExampleSnippet>
+
+Note that `Flex.Item` doesn't result in any additional DOM element rendered - its sole purpose is just to pass style props to its child. Please, consider to review set of examples on this page - as there might be an example that suits your needs.
