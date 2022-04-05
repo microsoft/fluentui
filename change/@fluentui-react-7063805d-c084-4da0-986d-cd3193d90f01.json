@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Stack: Adding basis prop to mimick flexBasis CSS property.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -21,14 +21,12 @@ export const buttonClassName: string;
 // @public (undocumented)
 export const buttonClassNames: SlotClassNames<ButtonSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "ButtonCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommons>;
 
 // @public (undocumented)
 export type ButtonSlots = {
-    root: Slot<ARIAButtonSlotProps>;
+    root: NonNullable<Slot<ARIAButtonSlotProps>>;
     icon?: Slot<'span'>;
 };
 
@@ -106,7 +104,7 @@ export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonPro
 
 // @public (undocumented)
 export type SplitButtonSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     menuButton?: Slot<typeof MenuButton>;
     primaryActionButton?: Slot<typeof Button>;
 };
@@ -123,8 +121,6 @@ export const toggleButtonClassName: string;
 // @public (undocumented)
 export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "ToggleButtonCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type ToggleButtonProps = ButtonProps & Partial<ToggleButtonCommons> & {
     defaultChecked?: boolean;

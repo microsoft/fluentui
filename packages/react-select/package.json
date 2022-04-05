@@ -23,7 +23,6 @@
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-select/src && yarn docs",
-    "bundle:storybook": "just-scripts storybook:build",
     "storybook": "start-storybook",
     "type-check": "tsc -b tsconfig.json"
   },
@@ -33,6 +32,8 @@
     "@fluentui/react-conformance-griffel": "9.0.0-beta.3"
   },
   "dependencies": {
+    "@fluentui/react-icons": "^2.0.159-beta.10",
+    "@fluentui/react-theme": "9.0.0-rc.4",
     "@fluentui/react-utilities": "9.0.0-rc.5",
     "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"

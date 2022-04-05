@@ -443,6 +443,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-list": {
+      "root": "packages/react-list",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-list/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-menu": {
       "root": "packages/react-menu",
       "projectType": "library",
@@ -725,6 +732,11 @@
       "projectType": "library",
       "sourceRoot": "typings",
       "tags": ["platform:any"]
+    },
+    "@fluentui/upgrade-examples-v8-v9": {
+      "root": "apps/upgrade-examples-v8-v9",
+      "projectType": "application",
+      "implicitDependencies": []
     },
     "@fluentui/utilities": {
       "root": "packages/utilities",
