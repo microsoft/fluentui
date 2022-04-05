@@ -19,25 +19,19 @@ describe('Spinner', () => {
     disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
-  it('renders a default state', () => {
-    const result = render(<Spinner>Default Spinner</Spinner>);
-    expect(result.container).toMatchSnapshot();
+  it('has role progressbar', () => {
+    const result = render(<Spinner label="Default Spinner" />);
+    expect(result.queryByRole('progessbar')).toBeDefined();
   });
 
   it('renders Spinner with a label', () => {
     const result = render(<Spinner label="Loading" />);
-    expect(result.container).toMatchSnapshot();
+    expect(result.getByText('Loading')).toBeDefined();
+    expect(result.queryByRole('progessbar')).toBeDefined();
   });
 
   it('doesnt render svg when status is inactive', () => {
     const result = render(<Spinner status="inactive" />);
     expect(result.queryByRole('progessbar')).toBeNull();
-  });
-
-  describe('Accessibility Tests', () => {
-    it('has role progressbar', () => {
-      const result = render(<Spinner />);
-      expect(result.queryByRole('progessbar')).toBeDefined();
-    });
   });
 });
