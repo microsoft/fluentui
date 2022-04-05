@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { ToolbarDivider } from './ToolbarDivider';
+import { ToolbarToggleButton } from './ToolbarToggleButton';
 import { isConformant } from '../../common/isConformant';
+import { ToggleButtonProps } from '@fluentui/react-button';
 
-describe('ToolbarDivider', () => {
+describe('ToolbarToggleButton', () => {
   isConformant({
-    Component: ToolbarDivider,
-    displayName: 'ToolbarDivider',
+    Component: ToolbarToggleButton as React.FunctionComponent<ToggleButtonProps>,
+    displayName: 'ToolbarToggleButton',
     disabledTests: [
       'component-has-static-classname',
       'component-has-static-classname-exported',
@@ -17,7 +18,7 @@ describe('ToolbarDivider', () => {
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<ToolbarDivider>Default ToolbarDivider</ToolbarDivider>);
+    const result = render(<ToolbarToggleButton>Default ToolbarToggleButton</ToolbarToggleButton>);
     expect(result.container).toMatchSnapshot();
   });
 });
