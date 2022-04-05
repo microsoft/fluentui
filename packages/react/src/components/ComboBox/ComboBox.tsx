@@ -2338,6 +2338,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * Get the aria autocomplete value for the combo box
    * @returns 'inline' if auto-complete automatically dynamic, 'both' if we have a list of possible values to pick from
    * and can dynamically populate input, and 'list' if auto-complete is not enabled as selection is the only option.
+   * Ideally, this should be 'none' if auto-complete is not enabled, but there is a known bug in Edge
+   * where the callout may appear over the combo box if this attribute is set to 'none'
    */
   private _getAriaAutoCompleteValue(): 'none' | 'inline' | 'list' | 'both' | undefined {
     const autoComplete = !this.props.disabled && this.props.autoComplete === 'on';
