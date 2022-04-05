@@ -156,10 +156,20 @@ const useButtonStyles = makeStyles({
     ...shorthands.border(0),
     position: 'absolute',
 
+    outlineStyle: 'none',
+    height: '100%',
+
+    ':hover': {
+      cursor: 'pointer',
+    },
+
+    ':active': {
+      outlineStyle: 'none',
+    },
+
     ':disabled': {
       cursor: 'not-allowed',
     },
-    height: '100%',
   },
 
   incrementButton: {
