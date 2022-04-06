@@ -73,12 +73,14 @@ export {
   imageProperties,
   imgProperties,
   inputProperties,
+  isFluentTrigger,
   labelProperties,
   liProperties,
   olProperties,
   omit,
   optionProperties,
   selectProperties,
+  shouldPreventDefaultOnKeyDown,
   tableProperties,
   tdProperties,
   textAreaProperties,
@@ -86,3 +88,4 @@ export {
   trProperties,
   videoProperties,
 } from './utils/index';
+export type { FluentTriggerComponent } from './utils/index';

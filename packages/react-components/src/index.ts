@@ -101,6 +101,7 @@ export {
   imageProperties,
   imgProperties,
   inputProperties,
+  isFluentTrigger,
   labelProperties,
   liProperties,
   olProperties,
@@ -109,6 +110,7 @@ export {
   resetIdsForTests,
   resolveShorthand,
   selectProperties,
+  shouldPreventDefaultOnKeyDown,
   tableProperties,
   tdProperties,
   textAreaProperties,
@@ -136,6 +138,7 @@ export {
   SSRContext,
   SSRProvider,
 } from '@fluentui/react-utilities';
+export type { FluentTriggerComponent } from '@fluentui/react-utilities';
 export type {
   AsIntrinsicElement,
   ComponentProps,

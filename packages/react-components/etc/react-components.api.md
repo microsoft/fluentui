@@ -44,7 +44,11 @@ import { AccordionState } from '@fluentui/react-accordion';
 import { AccordionToggleData } from '@fluentui/react-accordion';
 import { AccordionToggleEvent } from '@fluentui/react-accordion';
 import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
+import { anchorProperties } from '@fluentui/react-utilities';
+import { applyTriggerPropsToChildren } from '@fluentui/react-utilities';
 import { arrowHeights } from '@fluentui/react-popover';
+import { AsIntrinsicElement } from '@fluentui/react-utilities';
+import { audioProperties } from '@fluentui/react-utilities';
 import { Avatar } from '@fluentui/react-avatar';
 import { avatarClassName } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
@@ -58,6 +62,8 @@ import { badgeClassNames } from '@fluentui/react-badge';
 import { BadgeProps } from '@fluentui/react-badge';
 import { BadgeSlots } from '@fluentui/react-badge';
 import { BadgeState } from '@fluentui/react-badge';
+import { baseElementEvents } from '@fluentui/react-utilities';
+import { baseElementProperties } from '@fluentui/react-utilities';
 import { Body as Body_2 } from '@fluentui/react-text';
 import { bodyClassName } from '@fluentui/react-text';
 import { bodyClassNames } from '@fluentui/react-text';
@@ -66,14 +72,21 @@ import { BrandVariants } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
 import { buttonClassName } from '@fluentui/react-button';
 import { buttonClassNames } from '@fluentui/react-button';
+import { buttonProperties } from '@fluentui/react-utilities';
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
+import { canUseDOM } from '@fluentui/react-utilities';
 import { Caption } from '@fluentui/react-text';
 import { captionClassName } from '@fluentui/react-text';
 import { captionClassNames } from '@fluentui/react-text';
+import { clamp } from '@fluentui/react-utilities';
+import { colGroupProperties } from '@fluentui/react-utilities';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
 import { ColorTokens } from '@fluentui/react-theme';
+import { colProperties } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
 import { CompoundButton } from '@fluentui/react-button';
 import { compoundButtonClassName } from '@fluentui/react-button';
 import { compoundButtonClassNames } from '@fluentui/react-button';
@@ -85,11 +98,15 @@ import { counterBadgeClassName } from '@fluentui/react-badge';
 import { counterBadgeClassNames } from '@fluentui/react-badge';
 import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { createDarkTheme } from '@fluentui/react-theme';
 import { createDOMRenderer } from '@griffel/react';
+import { CreateFocusIndicatorStyleRuleOptions } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
+import { defaultSSRContextValue } from '@fluentui/react-utilities';
 import { Display } from '@fluentui/react-text';
 import { displayClassName } from '@fluentui/react-text';
 import { displayClassNames } from '@fluentui/react-text';
@@ -99,7 +116,10 @@ import { dividerClassNames } from '@fluentui/react-divider';
 import { DividerProps } from '@fluentui/react-divider';
 import { DividerSlots } from '@fluentui/react-divider';
 import { DividerState } from '@fluentui/react-divider';
+import { divProperties } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
+import { ExtractSlotProps } from '@fluentui/react-utilities';
+import { fieldsetProperties } from '@fluentui/react-utilities';
 import { FluentProvider } from '@fluentui/react-provider';
 import { fluentProviderClassName } from '@fluentui/react-provider';
 import { fluentProviderClassNames } from '@fluentui/react-provider';
@@ -107,18 +127,37 @@ import { FluentProviderContextValues } from '@fluentui/react-provider';
 import { FluentProviderProps } from '@fluentui/react-provider';
 import { FluentProviderSlots } from '@fluentui/react-provider';
 import { FluentProviderState } from '@fluentui/react-provider';
+import { FluentTriggerComponent } from '@fluentui/react-utilities';
+import { FocusOutlineOffset } from '@fluentui/react-tabster';
+import { FocusOutlineStyleOptions } from '@fluentui/react-tabster';
 import { FontFamilyTokens } from '@fluentui/react-theme';
 import { FontSizeTokens } from '@fluentui/react-theme';
 import { FontWeightTokens } from '@fluentui/react-theme';
+import { formProperties } from '@fluentui/react-utilities';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeProps } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps } from '@fluentui/react-utilities';
+import { getRTLSafeKey } from '@fluentui/react-utilities';
+import { getSlots } from '@fluentui/react-utilities';
+import { getTriggerChild } from '@fluentui/react-utilities';
 import { Headline } from '@fluentui/react-text';
 import { headlineClassName } from '@fluentui/react-text';
 import { headlineClassNames } from '@fluentui/react-text';
+import { htmlElementProperties } from '@fluentui/react-utilities';
+import { iframeProperties } from '@fluentui/react-utilities';
 import { Image as Image_2 } from '@fluentui/react-image';
 import { imageClassName } from '@fluentui/react-image';
 import { imageClassNames } from '@fluentui/react-image';
+import { imageProperties } from '@fluentui/react-utilities';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
+import { imgProperties } from '@fluentui/react-utilities';
+import { inputProperties } from '@fluentui/react-utilities';
+import { isFluentTrigger } from '@fluentui/react-utilities';
+import { IsSingleton } from '@fluentui/react-utilities';
+import { labelProperties } from '@fluentui/react-utilities';
 import { LargeTitle } from '@fluentui/react-text';
 import { largeTitleClassName } from '@fluentui/react-text';
 import { largeTitleClassNames } from '@fluentui/react-text';
@@ -129,6 +168,7 @@ import { linkClassNames } from '@fluentui/react-link';
 import { LinkProps } from '@fluentui/react-link';
 import { LinkSlots } from '@fluentui/react-link';
 import { LinkState } from '@fluentui/react-link';
+import { liProperties } from '@fluentui/react-utilities';
 import { makeStaticStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
 import { Menu } from '@fluentui/react-menu';
@@ -216,9 +256,12 @@ import { MenuTriggerContextProvider } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
 import { mergeClasses } from '@griffel/react';
+import { olProperties } from '@fluentui/react-utilities';
+import { omit } from '@fluentui/react-utilities';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
+import { optionProperties } from '@fluentui/react-utilities';
 import { PartialTheme } from '@fluentui/react-theme';
 import { Popover } from '@fluentui/react-popover';
 import { PopoverContext } from '@fluentui/react-popover';
@@ -244,6 +287,8 @@ import { presenceBadgeClassNames } from '@fluentui/react-badge';
 import { PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
+import { PropsWithoutRef } from '@fluentui/react-utilities';
+import { RefObjectFunction } from '@fluentui/react-utilities';
 import { renderAccordion_unstable } from '@fluentui/react-accordion';
 import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
 import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
@@ -279,32 +324,50 @@ import { renderText_unstable } from '@fluentui/react-text';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
 import { renderToStyleElements } from '@griffel/react';
+import { ReplaceNullWithUndefined } from '@fluentui/react-utilities';
+import { resetIdsForTests } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import { ResolveShorthandFunction } from '@fluentui/react-utilities';
+import { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import { SelectableHandler } from '@fluentui/react-menu';
+import { selectProperties } from '@fluentui/react-utilities';
 import { setVirtualParent } from '@fluentui/react-portal';
 import { ShadowBrandTokens } from '@fluentui/react-theme';
 import { ShadowTokens } from '@fluentui/react-theme';
 import { shorthands } from '@griffel/react';
+import { shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 import { Slider } from '@fluentui/react-slider';
 import { sliderClassNames } from '@fluentui/react-slider';
 import { SliderOnChangeData } from '@fluentui/react-slider';
 import { SliderProps } from '@fluentui/react-slider';
 import { SliderSlots } from '@fluentui/react-slider';
 import { SliderState } from '@fluentui/react-slider';
+import { Slot } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotPropsRecord } from '@fluentui/react-utilities';
+import { SlotRenderFunction } from '@fluentui/react-utilities';
+import { Slots } from '@fluentui/react-utilities';
+import { SlotShorthandValue } from '@fluentui/react-utilities';
 import { SplitButton } from '@fluentui/react-button';
 import { splitButtonClassName } from '@fluentui/react-button';
 import { splitButtonClassNames } from '@fluentui/react-button';
 import { SplitButtonProps } from '@fluentui/react-button';
 import { SplitButtonSlots } from '@fluentui/react-button';
 import { SplitButtonState } from '@fluentui/react-button';
+import { SSRContext } from '@fluentui/react-utilities';
+import { SSRContextValue } from '@fluentui/react-utilities';
 import { SSRProvider } from '@fluentui/react-utilities';
 import { StrokeWidthTokens } from '@fluentui/react-theme';
 import { Subheadline } from '@fluentui/react-text';
 import { subheadlineClassName } from '@fluentui/react-text';
 import { subheadlineClassNames } from '@fluentui/react-text';
+import { tableProperties } from '@fluentui/react-utilities';
+import { tdProperties } from '@fluentui/react-utilities';
 import { teamsDarkTheme } from '@fluentui/react-theme';
 import { teamsHighContrastTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { Text as Text_2 } from '@fluentui/react-text';
+import { textAreaProperties } from '@fluentui/react-utilities';
 import { textClassName } from '@fluentui/react-text';
 import { textClassNames } from '@fluentui/react-text';
 import { TextProps } from '@fluentui/react-text';
@@ -312,6 +375,7 @@ import { TextSlots } from '@fluentui/react-text';
 import { TextState } from '@fluentui/react-text';
 import { Theme } from '@fluentui/react-theme';
 import { themeToTokensObject } from '@fluentui/react-theme';
+import { thProperties } from '@fluentui/react-utilities';
 import { Title1 } from '@fluentui/react-text';
 import { title1ClassName } from '@fluentui/react-text';
 import { title1ClassNames } from '@fluentui/react-text';
@@ -334,7 +398,10 @@ import { TooltipProps } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
 import { TooltipState } from '@fluentui/react-tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-tooltip';
+import { trProperties } from '@fluentui/react-utilities';
 import { UninitializedMenuListState } from '@fluentui/react-menu';
+import { UnionToIntersection } from '@fluentui/react-utilities';
+import { UnknownSlotProps } from '@fluentui/react-utilities';
 import { useAccordion_unstable } from '@fluentui/react-accordion';
 import { useAccordionContextValues_unstable } from '@fluentui/react-accordion';
 import { useAccordionHeader_unstable } from '@fluentui/react-accordion';
@@ -347,25 +414,42 @@ import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { UseArrowNavigationGroupOptions } from '@fluentui/react-tabster';
 import { useAvatar_unstable } from '@fluentui/react-avatar';
 import { useAvatarStyles_unstable } from '@fluentui/react-avatar';
 import { useBadge_unstable } from '@fluentui/react-badge';
 import { useBadgeStyles_unstable } from '@fluentui/react-badge';
+import { useBoolean } from '@fluentui/react-utilities';
+import { UseBooleanCallbacks } from '@fluentui/react-utilities';
 import { useButton_unstable } from '@fluentui/react-button';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
 import { useCompoundButton_unstable } from '@fluentui/react-button';
 import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
+import { useConst } from '@fluentui/react-utilities';
+import { useControllableState } from '@fluentui/react-utilities';
+import { UseControllableStateOptions } from '@fluentui/react-utilities';
 import { useCounterBadge_unstable } from '@fluentui/react-badge';
 import { useCounterBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
+import { useEventCallback } from '@fluentui/react-utilities';
+import { useFirstMount } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-provider';
 import { useFluentProvider_unstable } from '@fluentui/react-provider';
 import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
 import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
+import { useFocusableGroup } from '@fluentui/react-tabster';
+import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
+import { useFocusFinders } from '@fluentui/react-tabster';
+import { useForceUpdate } from '@fluentui/react-utilities';
+import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useIsSSR } from '@fluentui/react-utilities';
+import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { useLink_unstable } from '@fluentui/react-link';
 import { useLinkState_unstable } from '@fluentui/react-link';
 import { useLinkStyles_unstable } from '@fluentui/react-link';
@@ -398,6 +482,14 @@ import { useMenuSplitGroup_unstable } from '@fluentui/react-menu';
 import { useMenuSplitGroupStyles_unstable } from '@fluentui/react-menu';
 import { useMenuTrigger_unstable } from '@fluentui/react-menu';
 import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
+import { useMergedEventCallbacks } from '@fluentui/react-utilities';
+import { useMergedRefs } from '@fluentui/react-utilities';
+import { useModalAttributes } from '@fluentui/react-tabster';
+import { UseModalAttributesOptions } from '@fluentui/react-tabster';
+import { useMount } from '@fluentui/react-utilities';
+import { UseOnClickOrScrollOutsideOptions } from '@fluentui/react-utilities';
+import { useOnClickOutside } from '@fluentui/react-utilities';
+import { useOnScrollOutside } from '@fluentui/react-utilities';
 import { usePopover_unstable } from '@fluentui/react-popover';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { usePopoverSurface_unstable } from '@fluentui/react-popover';
@@ -405,17 +497,23 @@ import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
 import { usePortal_unstable } from '@fluentui/react-portal';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
+import { usePrevious } from '@fluentui/react-utilities';
 import { useSlider_unstable } from '@fluentui/react-slider';
 import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
+import { useSSRContext } from '@fluentui/react-utilities';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useText_unstable } from '@fluentui/react-text';
 import { useTextStyles_unstable } from '@fluentui/react-text';
+import { useTimeout } from '@fluentui/react-utilities';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
+import { useUnmount } from '@fluentui/react-utilities';
+import { videoProperties } from '@fluentui/react-utilities';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webHighContrastTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -500,7 +598,15 @@ export { AccordionToggleEvent }
 
 export { AccordionToggleEventHandler }
 
+export { anchorProperties }
+
+export { applyTriggerPropsToChildren }
+
 export { arrowHeights }
+
+export { AsIntrinsicElement }
+
+export { audioProperties }
 
 export { Avatar }
 
@@ -528,6 +634,10 @@ export { BadgeSlots }
 
 export { BadgeState }
 
+export { baseElementEvents }
+
+export { baseElementProperties }
+
 export { Body_2 as Body }
 
 export { bodyClassName }
@@ -544,11 +654,15 @@ export { buttonClassName }
 
 export { buttonClassNames }
 
+export { buttonProperties }
+
 export { ButtonProps }
 
 export { ButtonSlots }
 
 export { ButtonState }
+
+export { canUseDOM }
 
 export { Caption }
 
@@ -556,9 +670,19 @@ export { captionClassName }
 
 export { captionClassNames }
 
+export { clamp }
+
+export { colGroupProperties }
+
 export { ColorPaletteTokens }
 
 export { ColorTokens }
+
+export { colProperties }
+
+export { ComponentProps }
+
+export { ComponentState }
 
 export { CompoundButton }
 
@@ -582,15 +706,23 @@ export { CounterBadgeProps }
 
 export { CounterBadgeState }
 
+export { createCustomFocusIndicatorStyle }
+
 export { createDarkTheme }
 
 export { createDOMRenderer }
+
+export { CreateFocusIndicatorStyleRuleOptions }
+
+export { createFocusOutlineStyle }
 
 export { createHighContrastTheme }
 
 export { createLightTheme }
 
 export { createTeamsDarkTheme }
+
+export { defaultSSRContextValue }
 
 export { Display }
 
@@ -610,7 +742,13 @@ export { DividerSlots }
 
 export { DividerState }
 
+export { divProperties }
+
 export { elementContains }
+
+export { ExtractSlotProps }
+
+export { fieldsetProperties }
 
 export { FluentProvider }
 
@@ -626,11 +764,33 @@ export { FluentProviderSlots }
 
 export { FluentProviderState }
 
+export { FluentTriggerComponent }
+
+export { FocusOutlineOffset }
+
+export { FocusOutlineStyleOptions }
+
 export { FontFamilyTokens }
 
 export { FontSizeTokens }
 
 export { FontWeightTokens }
+
+export { formProperties }
+
+export { ForwardRefComponent }
+
+export { getNativeElementProps }
+
+export { getNativeProps }
+
+export { getPartitionedNativeProps }
+
+export { getRTLSafeKey }
+
+export { getSlots }
+
+export { getTriggerChild }
 
 export { Headline }
 
@@ -638,17 +798,33 @@ export { headlineClassName }
 
 export { headlineClassNames }
 
+export { htmlElementProperties }
+
+export { iframeProperties }
+
 export { Image_2 as Image }
 
 export { imageClassName }
 
 export { imageClassNames }
 
+export { imageProperties }
+
 export { ImageProps }
 
 export { ImageSlots }
 
 export { ImageState }
+
+export { imgProperties }
+
+export { inputProperties }
+
+export { isFluentTrigger }
+
+export { IsSingleton }
+
+export { labelProperties }
 
 export { LargeTitle }
 
@@ -669,6 +845,8 @@ export { LinkProps }
 export { LinkSlots }
 
 export { LinkState }
+
+export { liProperties }
 
 export { makeStaticStyles }
 
@@ -844,11 +1022,17 @@ export { MenuTriggerState }
 
 export { mergeClasses }
 
+export { olProperties }
+
+export { omit }
+
 export { OnOpenChangeData }
 
 export { OnVisibleChangeData }
 
 export { OpenPopoverEvents }
+
+export { optionProperties }
 
 export { PartialTheme }
 
@@ -899,6 +1083,10 @@ export { PresenceBadgeProps }
 export { PresenceBadgeState }
 
 export { PresenceBadgeStatus }
+
+export { PropsWithoutRef }
+
+export { RefObjectFunction }
 
 export { renderAccordion_unstable }
 
@@ -970,7 +1158,19 @@ export { renderTooltip_unstable }
 
 export { renderToStyleElements }
 
+export { ReplaceNullWithUndefined }
+
+export { resetIdsForTests }
+
+export { resolveShorthand }
+
+export { ResolveShorthandFunction }
+
+export { ResolveShorthandOptions }
+
 export { SelectableHandler }
+
+export { selectProperties }
 
 export { setVirtualParent }
 
@@ -979,6 +1179,8 @@ export { ShadowBrandTokens }
 export { ShadowTokens }
 
 export { shorthands }
+
+export { shouldPreventDefaultOnKeyDown }
 
 export { Slider }
 
@@ -992,6 +1194,18 @@ export { SliderSlots }
 
 export { SliderState }
 
+export { Slot }
+
+export { SlotClassNames }
+
+export { SlotPropsRecord }
+
+export { SlotRenderFunction }
+
+export { Slots }
+
+export { SlotShorthandValue }
+
 export { SplitButton }
 
 export { splitButtonClassName }
@@ -1004,6 +1218,10 @@ export { SplitButtonSlots }
 
 export { SplitButtonState }
 
+export { SSRContext }
+
+export { SSRContextValue }
+
 export { SSRProvider }
 
 export { StrokeWidthTokens }
@@ -1014,6 +1232,10 @@ export { subheadlineClassName }
 
 export { subheadlineClassNames }
 
+export { tableProperties }
+
+export { tdProperties }
+
 export { teamsDarkTheme }
 
 export { teamsHighContrastTheme }
@@ -1021,6 +1243,8 @@ export { teamsHighContrastTheme }
 export { teamsLightTheme }
 
 export { Text_2 as Text }
+
+export { textAreaProperties }
 
 export { textClassName }
 
@@ -1035,6 +1259,8 @@ export { TextState }
 export { Theme }
 
 export { themeToTokensObject }
+
+export { thProperties }
 
 export { Title1 }
 
@@ -1080,7 +1306,13 @@ export { TooltipState }
 
 export { TooltipTriggerProps }
 
+export { trProperties }
+
 export { UninitializedMenuListState }
+
+export { UnionToIntersection }
+
+export { UnknownSlotProps }
 
 export { useAccordion_unstable }
 
@@ -1106,6 +1338,10 @@ export { useAccordionPanelStyles_unstable }
 
 export { useAccordionStyles_unstable }
 
+export { useArrowNavigationGroup }
+
+export { UseArrowNavigationGroupOptions }
+
 export { useAvatar_unstable }
 
 export { useAvatarStyles_unstable }
@@ -1113,6 +1349,10 @@ export { useAvatarStyles_unstable }
 export { useBadge_unstable }
 
 export { useBadgeStyles_unstable }
+
+export { useBoolean }
+
+export { UseBooleanCallbacks }
 
 export { useButton_unstable }
 
@@ -1124,6 +1364,12 @@ export { useCompoundButton_unstable }
 
 export { useCompoundButtonStyles_unstable }
 
+export { useConst }
+
+export { useControllableState }
+
+export { UseControllableStateOptions }
+
 export { useCounterBadge_unstable }
 
 export { useCounterBadgeStyles_unstable }
@@ -1131,6 +1377,10 @@ export { useCounterBadgeStyles_unstable }
 export { useDivider_unstable }
 
 export { useDividerStyles_unstable }
+
+export { useEventCallback }
+
+export { useFirstMount }
 
 export { useFluent }
 
@@ -1140,9 +1390,25 @@ export { useFluentProviderContextValues_unstable }
 
 export { useFluentProviderStyles_unstable }
 
+export { useFocusableGroup }
+
+export { UseFocusableGroupOptions }
+
+export { useFocusFinders }
+
+export { useForceUpdate }
+
+export { useId }
+
 export { useImage_unstable }
 
 export { useImageStyles_unstable }
+
+export { useIsomorphicLayoutEffect }
+
+export { useIsSSR }
+
+export { useKeyboardNavAttribute }
 
 export { useLink_unstable }
 
@@ -1208,6 +1474,22 @@ export { useMenuTrigger_unstable }
 
 export { useMenuTriggerContext_unstable }
 
+export { useMergedEventCallbacks }
+
+export { useMergedRefs }
+
+export { useModalAttributes }
+
+export { UseModalAttributesOptions }
+
+export { useMount }
+
+export { UseOnClickOrScrollOutsideOptions }
+
+export { useOnClickOutside }
+
+export { useOnScrollOutside }
+
 export { usePopover_unstable }
 
 export { usePopoverContext_unstable }
@@ -1222,6 +1504,8 @@ export { usePortal_unstable }
 
 export { usePresenceBadge_unstable }
 
+export { usePrevious }
+
 export { useSlider_unstable }
 
 export { useSliderState_unstable }
@@ -1232,9 +1516,15 @@ export { useSplitButton_unstable }
 
 export { useSplitButtonStyles_unstable }
 
+export { useSSRContext }
+
+export { useTabsterAttributes }
+
 export { useText_unstable }
 
 export { useTextStyles_unstable }
+
+export { useTimeout }
 
 export { useToggleButton_unstable }
 
@@ -1243,6 +1533,10 @@ export { useToggleButtonStyles_unstable }
 export { useTooltip_unstable }
 
 export { useTooltipStyles_unstable }
+
+export { useUnmount }
+
+export { videoProperties }
 
 export { webDarkTheme }
 
