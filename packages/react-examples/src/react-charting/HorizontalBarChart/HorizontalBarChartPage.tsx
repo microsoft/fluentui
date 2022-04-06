@@ -21,7 +21,7 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="HorizontalBarChart"
+        title="Horizontal Bar Chart"
         componentName="HorizontalBarChartExample"
         exampleCards={
           <div>

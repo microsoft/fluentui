@@ -21,7 +21,7 @@ export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}>
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="DonutChart"
+        title="Donut Chart"
         componentName="DonutChartExample"
         exampleCards={
           <div>

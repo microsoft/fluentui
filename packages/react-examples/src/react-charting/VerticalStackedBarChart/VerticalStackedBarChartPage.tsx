@@ -23,7 +23,7 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="VerticalBarChart"
+        title="Vertical Stacked Bar Chart"
         componentName="VerticalBarChartExample"
         exampleCards={
           <div>

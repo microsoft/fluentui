@@ -23,7 +23,7 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="LineChart"
+        title="Line Chart"
         componentName="LineChartExample"
         exampleCards={
           <div>

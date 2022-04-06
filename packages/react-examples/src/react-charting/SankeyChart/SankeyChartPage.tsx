@@ -15,7 +15,7 @@ export class SankeyChartPage extends React.Component<IComponentDemoPageProps, {}
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="SankeyChart"
+        title="Sankey Chart"
         componentName="SankeyChartExample"
         exampleCards={
           <div>
