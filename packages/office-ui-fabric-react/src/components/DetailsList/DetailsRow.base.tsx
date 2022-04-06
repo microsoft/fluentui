@@ -7,6 +7,7 @@ import {
   shallowCompare,
   getNativeProps,
   divProperties,
+  composeComponentAs,
 } from '../../Utilities';
 import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck } from './DetailsRowCheck';
@@ -184,6 +185,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       onRenderCheck = this._onRenderCheck,
       onRenderDetailsCheckbox,
       onRenderItemColumn,
+      onRenderField,
       getCellValueKey,
       selectionMode,
       rowWidth = 0,
@@ -194,7 +196,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       checkButtonAriaLabel,
       checkboxCellClassName,
       /** Alias rowFieldsAs as RowFields and default to DetailsRowFields if rowFieldsAs does not exist */
-      rowFieldsAs: RowFields = DetailsRowFields,
+      rowFieldsAs,
       selection,
       indentWidth,
       enableUpdateAnimations,
@@ -254,6 +256,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       this._rowClassNames = rowClassNames;
     }
 
+    const RowFields = rowFieldsAs ? composeComponentAs(rowFieldsAs, DetailsRowFields) : DetailsRowFields;
+
     const rowFields = (
       <RowFields
         rowClassNames={this._rowClassNames}
@@ -262,8 +266,10 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         columns={columns}
         item={item}
         itemIndex={itemIndex}
+        isSelected={isSelected}
         columnStartIndex={(showCheckbox ? 1 : 0) + (groupNestingDepth ? 1 : 0)}
         onRenderItemColumn={onRenderItemColumn}
+        onRenderField={onRenderField}
         getCellValueKey={getCellValueKey}
         enableUpdateAnimations={enableUpdateAnimations}
         cellStyleProps={cellStyleProps}

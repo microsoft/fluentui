@@ -6,7 +6,7 @@ import { ISelection, SelectionMode } from '../../utilities/selection/interfaces'
 import { IDragDropHelper, IDragDropEvents } from '../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction, IComponentAs } from '../../Utilities';
 import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
@@ -73,7 +73,7 @@ export interface IDetailsItemProps {
  * {@docCategory DetailsList}
  */
 export interface IDetailsRowBaseProps
-  extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'>,
+  extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey' | 'onRenderField'>,
     IBaseProps<IDetailsRow>,
     IDetailsItemProps {
   /**
@@ -180,7 +180,7 @@ export interface IDetailsRowBaseProps
   /**
    * DOM element into which to render row field
    */
-  rowFieldsAs?: React.ComponentType<IDetailsRowFieldsProps>;
+  rowFieldsAs?: IComponentAs<IDetailsRowFieldsProps>;
 
   /**
    * Overriding class name

@@ -17,6 +17,7 @@ import {
   IDetailsColumnProps,
   IDetailsColumnStyles,
   IDetailsColumnFilterIconProps,
+  IDetailsColumnFieldProps,
 } from './DetailsColumn.types';
 
 export {
@@ -195,6 +196,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * If a column definition provides its own `onRender` method, that will be used instead of this.
    */
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
+
+  /**
+   * Render function which is composed around rendering every cell.
+   */
+  onRenderField?: IRenderFunction<IDetailsColumnFieldProps>;
 
   /**
    * If provided, will be the "default" item column cell value return.
@@ -435,6 +441,8 @@ export interface IColumn {
 
   /** Custom override for the parent list's `getCellValueKey`. */
   getValueKey?: (item?: any, index?: number, column?: IColumn) => string;
+
+  onRenderField?: IRenderFunction<IDetailsColumnFieldProps>;
 
   /** Custom renderer for column header divider. */
   onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
