@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Render ExampleCard titles as h3, and update document title to reflect current page",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
