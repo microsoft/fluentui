@@ -43,7 +43,7 @@ export const getFocusedStyles = ({
     ...(primary &&
       !vertical &&
       !underlined && {
-        color: v.primaryWrapperColor,
+        color: v.primaryWrapperColorFocus,
       }),
 
     ...(vertical && {
