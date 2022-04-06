@@ -142,7 +142,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
       {
         legend: 'legend1',
         data: chart1Points,
-        color: DefaultPalette.accent,
+        color: '#0099BC',
       },
     ];
 

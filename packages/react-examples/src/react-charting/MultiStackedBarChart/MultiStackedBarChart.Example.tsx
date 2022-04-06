@@ -1,37 +1,36 @@
 import * as React from 'react';
 import { IChartDataPoint, MultiStackedBarChart, IChartProps } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export const MultiStackedBarChartExample: React.FunctionComponent = () => {
   const firstChartPoints: IChartDataPoint[] = [
     {
       legend: 'Debit card numbers (EU and USA)',
       data: 40,
-      color: DefaultPalette.blue,
+      color: '#0099BC',
       callOutAccessibilityData: { ariaLabel: 'Bar series 1 of 5 Debit card numbers (EU and USA) 40' },
     },
     {
       legend: 'Passport numbers (USA)',
       data: 23,
-      color: DefaultPalette.blue,
+      color: '#77004D',
       callOutAccessibilityData: { ariaLabel: 'Bar series 2 of 5 Passport numbers (USA) 23' },
     },
     {
       legend: 'Social security numbers',
       data: 35,
-      color: DefaultPalette.blue,
+      color: '#4F68ED',
       callOutAccessibilityData: { ariaLabel: 'Bar series 3 of 5 Social security numbers 35' },
     },
     {
       legend: 'Credit card numbers',
       data: 87,
-      color: DefaultPalette.blue,
+      color: '#AE8C00',
       callOutAccessibilityData: { ariaLabel: 'Bar series 4 of 5 Credit card numbers 87' },
     },
     {
       legend: 'Tax identification numbers (USA)',
       data: 87,
-      color: DefaultPalette.blue,
+      color: '#004E8C',
       callOutAccessibilityData: { ariaLabel: 'Bar series 5 of 5 Tax identification numbers (USA) 87' },
     },
   ];
@@ -39,31 +38,31 @@ export const MultiStackedBarChartExample: React.FunctionComponent = () => {
     {
       legend: 'Debit card numbers (EU and USA)',
       data: 40,
-      color: DefaultPalette.blue,
+      color: '#0099BC',
       callOutAccessibilityData: { ariaLabel: 'Bar series 1 of 5 Debit card numbers (EU and USA) 40' },
     },
     {
       legend: 'Passport numbers (USA)',
       data: 56,
-      color: DefaultPalette.blue,
+      color: '#77004D',
       callOutAccessibilityData: { ariaLabel: 'Bar series 2 of 5 Passport numbers (USA) 56' },
     },
     {
       legend: 'Social security numbers',
       data: 35,
-      color: DefaultPalette.blue,
+      color: '#4F68ED',
       callOutAccessibilityData: { ariaLabel: 'Bar series 3 of 5 Social security numbers 35' },
     },
     {
       legend: 'Credit card numbers',
       data: 92,
-      color: DefaultPalette.blue,
+      color: '#AE8C00',
       callOutAccessibilityData: { ariaLabel: 'Bar series 4 of 5 Credit card numbers 92' },
     },
     {
       legend: 'Tax identification numbers (USA)',
       data: 87,
-      color: DefaultPalette.blue,
+      color: '#004E8C',
       callOutAccessibilityData: { ariaLabel: 'Bar series 5 of 5 Tax identification numbers (USA) 87' },
     },
   ];
@@ -72,13 +71,13 @@ export const MultiStackedBarChartExample: React.FunctionComponent = () => {
     {
       legend: 'Phone Numbers',
       data: 40,
-      color: DefaultPalette.blue,
+      color: '#881798',
       callOutAccessibilityData: { ariaLabel: 'Bar series 1 of 2 Phone Numbers 40' },
     },
     {
       legend: 'Credit card Numbers',
       data: 23,
-      color: DefaultPalette.blue,
+      color: '#AE8C00',
       callOutAccessibilityData: { ariaLabel: 'Bar series 2 of 2 Credit card Numbers 23' },
     },
   ];

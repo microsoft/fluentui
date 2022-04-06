@@ -1,21 +1,20 @@
 import * as React from 'react';
 import { IChartDataPoint, MultiStackedBarChart, IChartProps } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export const MultiStackedBarChartWithPlaceholderExample: React.FC = () => {
   const firstChartPoints: IChartDataPoint[] = [
-    { legend: 'Malware', data: 40, color: DefaultPalette.blue },
-    { legend: 'Phishing', data: 23, color: DefaultPalette.blue },
-    { legend: 'Spam and bulk', data: 35, color: DefaultPalette.blue },
+    { legend: 'Malware', data: 40, color: '#0099BC' },
+    { legend: 'Phishing', data: 23, color: '#77004D' },
+    { legend: 'Spam and bulk', data: 35, color: '#4F68ED' },
     { data: 87, placeHolder: true },
   ];
 
   const secondChartPoints: IChartDataPoint[] = [
-    { legend: 'Malicious links', data: 40, color: DefaultPalette.blue },
+    { legend: 'Malicious links', data: 40, color: '#AE8C00' },
     {
       legend: 'Malicious attachments',
       data: 23,
-      color: DefaultPalette.blue,
+      color: '#004E8C',
     },
     { data: 106, placeHolder: true },
   ];

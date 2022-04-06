@@ -25,10 +25,10 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
     super(props);
     this.state = {
       dynamicData: [
-        { legend: 'first', data: 40, color: DefaultPalette.blueLight },
-        { legend: 'second', data: 20, color: DefaultPalette.purpleLight },
-        { legend: 'third', data: 30, color: DefaultPalette.yellowLight },
-        { legend: 'fourth', data: 10, color: DefaultPalette.neutralSecondary },
+        { legend: 'first', data: 40, color: '#0099BC' },
+        { legend: 'second', data: 20, color: '#77004D' },
+        { legend: 'third', data: 30, color: '#4f67ed' },
+        { legend: 'fourth', data: 10, color: '#ae8c00' },
       ],
     };
 
