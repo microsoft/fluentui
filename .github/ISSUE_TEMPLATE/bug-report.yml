@@ -41,6 +41,9 @@ body:
         1. Do not link to, screenshot or reference a Microsoft product in this description.
         2. Please check ARIA component examples to ensure it is not a screen reader or browser issue. If the issue concerns screen reader behavior that reproduces on HTML elements or ARIA Practices examples (https://w3c.github.io/aria-practices/), it should be filed with the respective browser or screen reading software and not the Fluent UI repo.
         3. There is documentation or best practice info to support your expected behavior (review https://w3c.github.io/aria/ for accessibility guidance.)
+
+        **Additional note for Microsoft employees:**
+        Please file accessibility issues in our internal tracker (http://aka.ms/fluentui-a11y). This helps with tracking accessibility progress within the company.
       options:
         - 'yes'
         - 'no'
