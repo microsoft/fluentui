@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Allow list items to render based on their selection sates (#22081)",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
