@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Add sankey chart to documentation",
-  "packageName": "@fluentui/react-charting",
-  "email": "atishay.jain@microsoft.com",
-  "dependentChangeType": "none"
-}
