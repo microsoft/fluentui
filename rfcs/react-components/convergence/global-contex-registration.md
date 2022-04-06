@@ -4,7 +4,7 @@
 
 ## Summary
 
-This RFC proposes that all Fluent UI contexts be registered in the global scope when created. Global scop means
+This RFC proposes that all Fluent UI contexts be registered in the global scope when created. Global scope means
 `window` for browser environments or the `global` object for nodejs environments when using SSR.
 
 ## Problem statement
