@@ -31,7 +31,7 @@ module.exports = (on, config) => {
   const tsPaths = new TsconfigPathsPlugin({
     configFile: tsConfigBasePath,
   });
-  /** @type import("webpack").Configuration */
+  /** @type {import("webpack").Configuration} */
   const webpackConfig = {
     resolve: {
       extensions: ['.js', '.ts', '.jsx', '.tsx'],
