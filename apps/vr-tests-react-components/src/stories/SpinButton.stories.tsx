@@ -69,17 +69,87 @@ storiesOf('SpinButton Converged', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('At Min Bound', () => <SpinButton value={10} min={10} />, {
+  .addStory('Disabled', () => <SpinButton disabled value={10} />, {
     includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
-  })
+  });
+
+// The order of increment/decrement mouse down matters for max bound
+storiesOf('SpinButton Converged', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('rest', { cropTo })
+        .hover('input')
+        .snapshot('hoverInput', { cropTo })
+
+        .hover(`.${spinButtonClassNames.incrementButton}`)
+        .snapshot('hoverIncrement', { cropTo })
+
+        .hover(`.${spinButtonClassNames.decrementButton}`)
+        .snapshot('hoverDecrement', { cropTo })
+
+        .mouseDown(`.${spinButtonClassNames.incrementButton}`)
+        .wait(250)
+        .snapshot('mouseDownIncrement', { cropTo })
+        .mouseUp(`.${spinButtonClassNames.incrementButton}`)
+
+        .mouseDown(`.${spinButtonClassNames.decrementButton}`)
+        .wait(250)
+        .snapshot('mouseDownDecrement', { cropTo })
+        .mouseUp(`.${spinButtonClassNames.decrementButton}`)
+
+        .click('input')
+        .wait(250) // let focus border animation finish
+        .snapshot('focused', { cropTo })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
   .addStory('At Max Bound', () => <SpinButton value={10} max={10} />, {
     includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
-  })
-  .addStory('Disabled', () => <SpinButton disabled value={10} />, {
+  });
+
+// The order of increment/decrement mouse down matters for min bound
+storiesOf('SpinButton Converged', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('rest', { cropTo })
+        .hover('input')
+        .snapshot('hoverInput', { cropTo })
+
+        .hover(`.${spinButtonClassNames.incrementButton}`)
+        .snapshot('hoverIncrement', { cropTo })
+
+        .hover(`.${spinButtonClassNames.decrementButton}`)
+        .snapshot('hoverDecrement', { cropTo })
+
+        .mouseDown(`.${spinButtonClassNames.decrementButton}`)
+        .wait(250)
+        .snapshot('mouseDownDecrement', { cropTo })
+        .mouseUp(`.${spinButtonClassNames.decrementButton}`)
+
+        .mouseDown(`.${spinButtonClassNames.incrementButton}`)
+        .wait(250)
+        .snapshot('mouseDownIncrement', { cropTo })
+        .mouseUp(`.${spinButtonClassNames.incrementButton}`)
+
+        .click('input')
+        .wait(250) // let focus border animation finish
+        .snapshot('focused', { cropTo })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('At Min Bound', () => <SpinButton value={10} min={10} />, {
     includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,

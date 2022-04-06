@@ -422,7 +422,7 @@ describe('SpinButton', () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it('is disabled', () => {
+  it('can be disabled', () => {
     const { getAllByRole } = render(<SpinButton disabled={true} defaultValue={1} />);
 
     expect(getSpinButtonInput().disabled).toEqual(true);

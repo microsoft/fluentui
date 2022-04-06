@@ -160,4 +160,4 @@ export type SpinButtonOnChangeData = {
 };
 
 export type SpinButtonSpinState = 'rest' | 'up' | 'down';
-export type SpinButtonBounds = 'none' | 'min' | 'max';
+export type SpinButtonBounds = 'none' | 'min' | 'max' | 'both';

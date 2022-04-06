@@ -302,6 +302,10 @@ const useButtonStyles = makeStyles({
 const useButtonDisabledStyles = makeStyles({
   base: {
     cursor: 'not-allowed',
+
+    ':hover': {
+      cursor: 'not-allowed',
+    },
   },
 
   outline: {
@@ -428,8 +432,8 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     buttonStyles[appearance],
     filled && buttonStyles.filledIncrement,
     size === 'small' ? buttonStyles.incrementButtonSmall : buttonStyles.incrementButtonMedium,
-    atBound === 'max' && buttonDisabledStyles.base,
-    atBound === 'max' && buttonDisabledStyles[appearance],
+    (atBound === 'max' || atBound === 'both') && buttonDisabledStyles.base,
+    (atBound === 'max' || atBound === 'both') && buttonDisabledStyles[appearance],
     state.incrementButton.className,
   );
   state.decrementButton.className = mergeClasses(
@@ -440,8 +444,8 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     buttonStyles[appearance],
     filled && buttonStyles.filledDecrement,
     size === 'small' ? buttonStyles.decrementButtonSmall : buttonStyles.decrementButtonMedium,
-    atBound === 'min' && buttonDisabledStyles.base,
-    atBound === 'min' && buttonDisabledStyles[appearance],
+    (atBound === 'min' || atBound === 'both') && buttonDisabledStyles.base,
+    (atBound === 'min' || atBound === 'both') && buttonDisabledStyles[appearance],
     state.decrementButton.className,
   );
 
