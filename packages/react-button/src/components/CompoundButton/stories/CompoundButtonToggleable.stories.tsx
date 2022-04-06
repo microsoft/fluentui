@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { useMergedEventCallbacks } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
-import { useToggleState } from '../../../utils';
+import { useToggleState } from '../../../utils/useToggleState';
 import {
   renderCompoundButton_unstable,
   useCompoundButton_unstable,
