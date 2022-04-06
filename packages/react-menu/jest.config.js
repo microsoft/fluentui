@@ -1,7 +1,7 @@
 // @ts-check
 
 /**
- * @type {jest.InitialOptions}
+ * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
   displayName: 'react-menu',

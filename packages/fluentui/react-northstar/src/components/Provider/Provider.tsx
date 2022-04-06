@@ -78,7 +78,7 @@ const renderStaticStyles = (renderer: Renderer, theme: ThemeInput, siteVariables
     } else if (_.isPlainObject(staticStyle)) {
       renderObject(staticStyle as StaticStyleObject);
     } else if (_.isFunction(staticStyle)) {
-      const preparedSiteVariables = mergeSiteVariables(siteVariables);
+      const preparedSiteVariables = mergeSiteVariables(undefined, siteVariables);
       renderObject((staticStyle as StaticStyleFunction)(preparedSiteVariables));
     } else {
       throw new Error(

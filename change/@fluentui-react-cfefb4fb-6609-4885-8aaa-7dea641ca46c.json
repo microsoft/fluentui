@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix Tooltip to better support iOS VoiceOver",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

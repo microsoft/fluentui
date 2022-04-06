@@ -941,6 +941,9 @@ export function clamp(value: number, max: number, min?: number): number;
 
 export { classNamesFunction }
 
+// @public
+export function cleanupDefaultLayerHost(doc: Document): void;
+
 // @public (undocumented)
 export const Coachmark: React_2.FunctionComponent<ICoachmarkProps>;
 
@@ -1117,6 +1120,9 @@ export function correctHSV(color: IHSV): IHSV;
 export function correctRGB(color: IRGB): IRGB;
 
 export { createArray }
+
+// @public
+export function createDefaultLayerHost(doc: Document): Node | null;
 
 export { createFontStyles }
 
@@ -3643,6 +3649,8 @@ export interface IColumn {
     onColumnResize?: (width?: number) => void;
     onRender?: (item?: any, index?: number, column?: IColumn) => any;
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
+    // (undocumented)
+    onRenderField?: IRenderFunction<IDetailsColumnFieldProps>;
     onRenderFilterIcon?: IRenderFunction<IDetailsColumnFilterIconProps>;
     onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
     sortAscendingAriaLabel?: string;
@@ -4289,6 +4297,17 @@ export interface IDetailsCheckboxProps {
 }
 
 // @public (undocumented)
+export interface IDetailsColumnFieldProps {
+    cellValueKey?: string;
+    className?: string;
+    column: IColumn;
+    isSelected?: boolean;
+    item: any;
+    itemIndex: number;
+    onRender: (item?: any, index?: any, column?: IColumn) => React_2.ReactNode;
+}
+
+// @public (undocumented)
 export interface IDetailsColumnFilterIconProps extends IIconProps {
     // (undocumented)
     columnProps?: IDetailsColumnProps;
@@ -4559,6 +4578,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     onRenderCheckbox?: IRenderFunction<IDetailsListCheckboxProps>;
     onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
     onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
+    onRenderField?: IRenderFunction<IDetailsColumnFieldProps>;
     onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React_2.ReactNode;
     onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React_2.ReactNode;
     onRenderRow?: IRenderFunction<IDetailsRowProps>;
@@ -4629,7 +4649,7 @@ export interface IDetailsRow {
 }
 
 // @public (undocumented)
-export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
+export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey' | 'onRenderField'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
     cellsByColumn?: {
         [columnKey: string]: React_2.ReactNode;
     };
@@ -4661,7 +4681,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onWillUnmount?: (row?: DetailsRowBase) => void;
     role?: string;
-    rowFieldsAs?: React_2.ComponentType<IDetailsRowFieldsProps>;
+    rowFieldsAs?: IComponentAs<IDetailsRowFieldsProps>;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
     useFastIcons?: boolean;
@@ -4708,6 +4728,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     compact?: boolean;
     // (undocumented)
     enableUpdateAnimations?: boolean;
+    isSelected?: boolean;
     item: any;
     itemIndex: number;
     rowClassNames: {
@@ -7025,7 +7046,7 @@ export interface IOverlayStyles {
 }
 
 // @public
-export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
+export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey' | 'onRenderField'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
 
 // @public (undocumented)
 export interface IPage<T = any> {

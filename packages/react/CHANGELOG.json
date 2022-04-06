@@ -2,6 +2,80 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 06 Apr 2022 07:34:57 GMT",
+      "tag": "@fluentui/react_v8.64.1",
+      "version": "8.64.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dennisgeorge.mec@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "cbf9e71dd01eb76d51a50f37981ab2c12f30a0f2",
+            "comment": "Change combobox aria-autocomplete to 'list' when autoComplete is off"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 Apr 2022 20:01:03 GMT",
+      "tag": "@fluentui/react_v8.64.0",
+      "version": "8.64.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ddbf6041c6d19d952e2779550d4fd03f4c9869cf",
+            "comment": "New layers are now rendered within a container element. This means that injecting things like ContextualMenu will have less DOM layout recomputes, resulting in better performance."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 31 Mar 2022 07:38:07 GMT",
+      "tag": "@fluentui/react_v8.63.1",
+      "version": "8.63.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "85639d1b51422690a1cb92d3f9ec8526672c2c22",
+            "comment": "adjust slider styles to match contrast ratios"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Mar 2022 07:38:54 GMT",
+      "tag": "@fluentui/react_v8.63.0",
+      "version": "8.63.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "livoratom@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "d7387b454501a9271b7ab2e75c6dd097bbbbb1bc",
+            "comment": "Respect isDayPickerVisible prop in Calendar on mobile"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0844caf318ae0c5ac484019a23cdf167c5ba25ae",
+            "comment": "Fix Tooltip to better support iOS VoiceOver"
+          }
+        ],
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "bf1b1834b871a08f39bc2a94b85c865380711576",
+            "comment": "Allow DetailsRow rendering to be customized based on row state"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Mar 2022 07:47:27 GMT",
       "tag": "@fluentui/react_v8.62.4",
       "version": "8.62.4",

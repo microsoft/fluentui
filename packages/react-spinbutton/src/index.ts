@@ -1,18 +1,17 @@
 export {
   SpinButton,
   renderSpinButton_unstable,
-  /* eslint-disable-next-line deprecation/deprecation */
-  spinButtonClassName,
   spinButtonClassNames,
   useSpinButtonStyles_unstable,
   useSpinButton_unstable,
 } from './SpinButton';
 export type {
-  SpinButtonChangeData,
+  SpinButtonOnChangeData,
+  SpinButtonChangeEvent,
   SpinButtonCommons,
-  SpinButtonFormatter,
-  SpinButtonParser,
   SpinButtonProps,
   SpinButtonSlots,
   SpinButtonState,
+  SpinButtonSpinState,
+  SpinButtonBounds,
 } from './SpinButton';

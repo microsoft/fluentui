@@ -392,7 +392,7 @@ describe('migrate-converged-pkg generator', () => {
         "// @ts-check
 
         /**
-        * @type {jest.InitialOptions}
+        * @type {import('@jest/types').Config.InitialOptions}
         */
         module.exports = {
         displayName: 'react-dummy',
@@ -999,6 +999,18 @@ describe('migrate-converged-pkg generator', () => {
       projectConfig = readProjectConfiguration(tree, options.name);
 
       expect(projectConfig.sourceRoot).toBe(`${projectConfig.root}/src`);
+    });
+
+    it(`should set project 'implicitDependencies' in workspace.json`, async () => {
+      let projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.implicitDependencies).toBe(undefined);
+
+      await generator(tree, options);
+
+      projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.implicitDependencies).toEqual([]);
     });
 
     it(`should set project 'vNext' and 'platform:web' tag in nx.json if its a web package`, async () => {

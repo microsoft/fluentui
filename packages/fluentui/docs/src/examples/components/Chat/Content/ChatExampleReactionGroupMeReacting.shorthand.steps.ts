@@ -1,4 +1,4 @@
-import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
+import { ALL_THEMES, ScreenerTestsConfig } from '@fluentui/scripts/screener';
 import { reactionClassName, chatMessageSlotClassNames } from '@fluentui/react-northstar';
 
 const selectors = {
@@ -7,7 +7,7 @@ const selectors = {
 };
 
 const config: ScreenerTestsConfig = {
-  themes: ['teams', 'teamsDark', 'teamsHighContrast', 'teamsV2', 'teamsDarkV2'],
+  themes: ALL_THEMES,
   steps: [
     builder => builder.click(selectors.reaction).snapshot('Clicks the first reaction'),
     (builder, keys) => builder.keys(selectors.reaction, keys.tab).snapshot('Set focus on the second reaction'),
