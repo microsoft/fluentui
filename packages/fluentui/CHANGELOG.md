@@ -30,7 +30,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Use v2 theme by default in screener tests @jurokapsiar ([#22286](https://github.com/microsoft/fluentui/pull/22286))
 
 ### Features
-- Add selected items count narration by screen reader for search multiple selection Dropdown @adamsamec ([22269](https://github.com/microsoft/fluentui/pull/22269))
+- Add selected items count narration by screen reader for search multiple selection Dropdown @adamsamec ([#22269](https://github.com/microsoft/fluentui/pull/22269))
 
 <!--------------------------------[ v0.61.0 ]------------------------------- -->
 ## [v0.61.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.61.0) (2022-03-10)
