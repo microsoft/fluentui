@@ -8,16 +8,22 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../AreaChart/AreaChartPage').AreaChart,
-          key: 'AreaChart',
-          name: 'Area Chart',
-          url: '#/examples/areachart',
+          component: require<any>('../Legends/LegendsPage').LegendsPage,
+          key: 'Legends',
+          name: 'Legends',
+          url: '#/examples/Legends',
         },
         {
           component: require<any>('../LineChart/LineChartPage').LineChartPage,
           key: 'LineChart',
           name: 'Line Chart',
           url: '#/examples/linechart',
+        },
+        {
+          component: require<any>('../AreaChart/AreaChartPage').AreaChart,
+          key: 'AreaChart',
+          name: 'Area Chart',
+          url: '#/examples/areachart',
         },
         {
           component: require<any>('../VerticalBarChart/VerticalBarChartPage').VerticalBarChartPage,
@@ -32,10 +38,22 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/VerticalStackedBarChart',
         },
         {
+          component: require<any>('../GroupedVerticalBarChart/GroupedVerticalBarChartPage').GroupedVerticalBarChart,
+          key: 'GroupedVerticalBarChart',
+          name: 'Grouped Vertical Bar Chart',
+          url: '#/examples/GroupedVerticalBarChart',
+        },
+        {
           component: require<any>('../HorizontalBarChart/HorizontalBarChartPage').HorizontalBarChartPage,
           key: 'HorizontalBarChart',
           name: 'Horizontal Bar Chart',
           url: '#/examples/horizontalbarchart',
+        },
+        {
+          component: require<any>('../StackedBarChart/StackedBarChartPage').StackedBarChartPage,
+          key: 'StackedBarChart',
+          name: 'Stacked Bar Chart',
+          url: '#/examples/stackedbarchart',
         },
         {
           component: require<any>('../MultiStackedBarChart/MultiStackedBarChartPage').MultiStackedBarChartPage,
@@ -54,24 +72,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'DonutChart',
           name: 'Donut Chart',
           url: '#/examples/Donutchart',
-        },
-        {
-          component: require<any>('../Legends/LegendsPage').LegendsPage,
-          key: 'Legends',
-          name: 'Legends',
-          url: '#/examples/Legends',
-        },
-        {
-          component: require<any>('../StackedBarChart/StackedBarChartPage').StackedBarChartPage,
-          key: 'StackedBarChart',
-          name: 'Stacked Bar Chart',
-          url: '#/examples/stackedbarchart',
-        },
-        {
-          component: require<any>('../GroupedVerticalBarChart/GroupedVerticalBarChartPage').GroupedVerticalBarChart,
-          key: 'GroupedVerticalBarChart',
-          name: 'Grouped Vertical Bar Chart',
-          url: '#/examples/GroupedVerticalBarChart',
         },
         {
           component: require<any>('../HeatMapChart/HeatMapChartPage').HeatMapChart,
