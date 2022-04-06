@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "exclude e2e tests from extraneuous modules eslint",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}
