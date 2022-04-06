@@ -18,6 +18,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+###Features
+- Add selected items count narration by screen reader for search multiple selection Dropdown @adamsamec ([22269](https://github.com/microsoft/fluentui/pull/22269))
+
 ### BREAKING CHANGES
 - `mergeThemes()` and other `merge*` functions used for styling accept only two parameters @layershifter ([#22123](https://github.com/microsoft/fluentui/pull/22123))
 
