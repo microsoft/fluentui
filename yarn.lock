@@ -2797,7 +2797,7 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@linaria/babel-preset@^3.0.0-beta.14":
+"@linaria/babel-preset@3.0.0-beta.14", "@linaria/babel-preset@^3.0.0-beta.14":
   version "3.0.0-beta.14"
   resolved "https://registry.yarnpkg.com/@linaria/babel-preset/-/babel-preset-3.0.0-beta.14.tgz#4f204e12948dd9e8a540374806b7c1a64d3b7918"
   integrity sha512-NtR9g4VUy43J9g2rvhgb3lcVLs0V4cmDeZAA/BkiaRIrU1M/nEbnRRlpbD3U149Q9XuPU+cuyqvA/zk3zbrufw==

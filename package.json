@@ -84,6 +84,7 @@
     "@griffel/jest-serializer": "1.0.3",
     "@griffel/react": "1.0.3",
     "@griffel/webpack-loader": "2.0.3",
+    "@linaria/babel-preset": "3.0.0-beta.14",
     "@microsoft/api-extractor": "7.18.1",
     "@microsoft/eslint-plugin-sdl": "0.1.9",
     "@nrwl/cli": "13.8.1",
