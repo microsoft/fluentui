@@ -39,10 +39,8 @@ body:
         **PLEASE NOTE:**
 
         1. Do not link to, screenshot or reference a Microsoft product in this description.
-        2. Our screen reader support is limited to Edge + Narrator.
-          - Please check ARIA component examples to ensure it is not a screen reader or browser issue.
-          - Issues that do not reproduce in Edge + Narrator, and aren't caused by obvious invalid aria values, should be filed with the respective screen reading software, not the Fluent UI repo.
-        3. There is documentation or best practice that supports your expected behavior (review [WAI-ARIA](https://www.w3.org/TR/wai-aria-1.1/) for accessibility guidance.)
+        2. Please check ARIA component examples to ensure it is not a screen reader or browser issue. If the issue concerns screen reader behavior that reproduces on HTML elements or ARIA Practices examples (https://w3c.github.io/aria-practices/), it should be filed with the respective browser or screen reading software and not the Fluent UI repo.
+        3. There is documentation or best practice info to support your expected behavior (review https://w3c.github.io/aria/ for accessibility guidance.)
       options:
         - 'yes'
         - 'no'
