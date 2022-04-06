@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { AreaChart, ICustomizedCalloutData } from '@fluentui/react-charting';
 import { IAreaChartProps, ChartHoverCard } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 
 interface IAreaChartBasicState {

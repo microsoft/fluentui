@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { AreaChart } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import * as d3 from 'd3-format';
 import { ILineChartProps } from '@fluentui/react-charting';
 
