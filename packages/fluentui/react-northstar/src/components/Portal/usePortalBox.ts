@@ -6,16 +6,14 @@ import { isBrowser } from '../../utils/isBrowser';
 type UsePortalBoxOptions = {
   className: string;
   rtl: boolean;
-  target: Document;
+  target: Document | undefined;
 };
 
-export const PortalBoxContext = React.createContext<HTMLDivElement>(null);
-
-export const usePortalBox = (options: UsePortalBoxOptions): HTMLDivElement => {
+export const usePortalBox = (options: UsePortalBoxOptions): HTMLDivElement | null => {
   const { className, rtl, target } = options;
 
   const element: HTMLDivElement | null = React.useMemo(() => {
-    const newElement = isBrowser() ? target.createElement('div') : null;
+    const newElement = isBrowser() && target ? target.createElement('div') : null;
 
     // Element should be attached to DOM during render to make elements that will be rendered
     // inside accessible in effects of child components
@@ -39,7 +37,7 @@ export const usePortalBox = (options: UsePortalBoxOptions): HTMLDivElement => {
   }, [className, element, rtl]);
 
   // This effect should always last as it removes element from HTML tree
-  useIsomorphicLayoutEffect(() => {
+  React.useEffect(() => {
     return () => {
       if (element) {
         target.body.removeChild(element);

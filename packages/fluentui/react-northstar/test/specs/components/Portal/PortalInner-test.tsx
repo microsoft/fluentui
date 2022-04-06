@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { PortalContext } from 'src/components/Provider/portalContext';
 import { PortalInner, PortalInnerProps } from 'src/components/Portal/PortalInner';
 import { mountWithProvider } from 'test/utils';
 
@@ -36,6 +37,46 @@ describe('PortalInner', () => {
       wrapper.unmount();
 
       expect(onUnmount).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('document.body', () => {
+    it('adds an element to document.body', () => {
+      const className = 'a-sample-classname';
+      const wrapper = mountWithProvider(
+        <PortalContext.Provider value={{ className }}>
+          <PortalInner>
+            <div />
+          </PortalInner>
+        </PortalContext.Provider>,
+      );
+
+      expect(document.querySelector(`.${className}`)).toBeInTheDocument();
+
+      // element should be removed on unmount
+      wrapper.unmount();
+      expect(document.querySelector(`.${className}`)).not.toBeInTheDocument();
+    });
+
+    it('reacts on "className" update and keeps node in HTML tree', () => {
+      const className = 'a-sample-classname';
+      const wrapper = mountWithProvider(
+        <PortalContext.Provider value={{ className }}>
+          <PortalInner>
+            <div id="sample" />
+          </PortalInner>
+        </PortalContext.Provider>,
+      );
+
+      expect(document.querySelector(`.${className}`)).toBeInTheDocument();
+      expect(document.querySelector(`.${className} #sample`)).toBeInTheDocument();
+
+      const newClassName = 'an-another-classname';
+      wrapper.setProps({ value: { className: newClassName } });
+
+      expect(document.querySelector(`.${className}`)).not.toBeInTheDocument();
+      expect(document.querySelector(`.${newClassName}`)).toBeInTheDocument();
+      expect(document.querySelector(`.${newClassName} #sample`)).toBeInTheDocument();
     });
   });
 });
