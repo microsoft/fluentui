@@ -21,12 +21,15 @@ function createSnapshot(component: JSX.Element, theme = {}) {
     div,
   );
 
-  const css = renderToString(felaRenderer);
-  const formattedCss = format(css, { parser: 'css', useTabs: false, tabWidth: 2 });
   // jest-react-fela used htmltojsx to format the HTML, but that no longer works with React 17
   // due to importing a removed module. Various alternatives are available, but in this case,
   // all the things to be serialized are simple enough that we can just use innerHTML directly.
-  return `${formattedCss}\n\n${div.innerHTML}`;
+  const innerHTML = div.innerHTML;
+  ReactDOM.unmountComponentAtNode(div);
+
+  const css = renderToString(felaRenderer);
+  const formattedCss = format(css, { parser: 'css', useTabs: false, tabWidth: 2 });
+  return `${formattedCss}\n\n${innerHTML}`;
 }
 
 describe('felaRenderer', () => {
