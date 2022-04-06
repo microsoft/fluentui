@@ -27,7 +27,7 @@ export class SankeyChartPage extends React.Component<IComponentDemoPageProps, {}
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/SankeyChart.Basic.Example.tsx'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/SankeyChart/SankeyChart.types.ts'),
             ]}
           />
         }
