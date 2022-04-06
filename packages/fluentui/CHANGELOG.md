@@ -18,7 +18,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
-###Features
+### Features
 - Add selected items count narration by screen reader for search multiple selection Dropdown @adamsamec ([22269](https://github.com/microsoft/fluentui/pull/22269))
 
 ### BREAKING CHANGES
