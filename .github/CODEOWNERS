@@ -149,6 +149,7 @@ packages/react-tabs @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-text @microsoft/cxe-prg
 packages/react-textarea @microsoft/cxe-red @sopranopillow
 packages/react-tooltip @microsoft/cxe-red @behowell @khmakoto
+packages/react-list @microsoft/teams-prg
 packages/react-toolbar/ @microsoft/teams-prg @chpalac @ling1726
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
@@ -169,7 +170,7 @@ packages/react/src/components/DatePicker @ermercer @evlevy
 packages/react/src/components/DetailsList @microsoft/cxe-red @ThomasMichon
 packages/react/src/components/DocumentCard @microsoft/cxe-red @yiminwu
 packages/react/src/components/Fabric @microsoft/cxe-red @dzearing
-packages/react/src/components/Facepile @microsoft/cxe-red @markionium @mtennoe
+packages/react/src/components/Facepile @microsoft/cxe-red
 packages/react/src/components/FolderCover @microsoft/cxe-red @ThomasMichon @bigbadcapers
 packages/react/src/components/FocusTrapZone @microsoft/cxe-red @khmakoto
 packages/react/src/components/GroupedList @microsoft/cxe-red @ThomasMichon
@@ -185,8 +186,8 @@ packages/react/src/components/MessageBar @microsoft/cxe-red
 packages/react/src/components/Nav @microsoft/cxe-red
 packages/react/src/components/Overlay @microsoft/cxe-red @khmakoto
 packages/react/src/components/Panel @microsoft/cxe-red @khmakoto
-packages/react/src/components/Persona @microsoft/cxe-red @markionium @mtennoe
-packages/react/src/components/PersonaCoin @microsoft/cxe-red @mtennoe @markionium
+packages/react/src/components/Persona @microsoft/cxe-red
+packages/react/src/components/PersonaCoin @microsoft/cxe-red
 packages/react/src/components/Pivot @microsoft/cxe-red @behowell
 packages/react/src/components/SearchBox @microsoft/cxe-red
 packages/react/src/components/Shimmer @microsoft/cxe-red

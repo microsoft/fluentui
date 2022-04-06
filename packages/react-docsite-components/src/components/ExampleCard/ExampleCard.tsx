@@ -77,6 +77,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   public render(): JSX.Element {
     const {
       title,
+      titleAs: TitleAs = 'h3',
       children,
       styles,
       isRightAligned = false,
@@ -113,7 +114,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
           return (
             <div className={css(classNames.root, isCodeVisible && 'is-codeVisible')}>
               <div className={classNames.header}>
-                <span className={classNames.title}>{title}</span>
+                <TitleAs className={classNames.title}>{title}</TitleAs>
                 <div className={classNames.toggleButtons}>
                   {(codepenJS || this._transformedInitialCode) && (
                     <CodepenComponent

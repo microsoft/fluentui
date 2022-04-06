@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 06 Apr 2022 07:34:57 GMT",
+      "tag": "@fluentui/react_v8.64.1",
+      "version": "8.64.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dennisgeorge.mec@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "cbf9e71dd01eb76d51a50f37981ab2c12f30a0f2",
+            "comment": "Change combobox aria-autocomplete to 'list' when autoComplete is off"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 Apr 2022 20:01:03 GMT",
       "tag": "@fluentui/react_v8.64.0",
       "version": "8.64.0",
