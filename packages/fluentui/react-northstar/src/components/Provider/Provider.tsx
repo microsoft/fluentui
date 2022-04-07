@@ -31,7 +31,7 @@ import { ChildrenComponentProps, setUpWhatInput, tryCleanupWhatInput, UIComponen
 
 import { mergeProviderContexts } from '../../utils/mergeProviderContexts';
 import { ProviderConsumer } from './ProviderConsumer';
-import { usePortalBox, PortalBoxContext } from './usePortalBox';
+import { PortalContext, PortalContextValue } from './portalContext';
 
 export interface ProviderProps extends ChildrenComponentProps, UIComponentProps {
   rtl?: boolean;
@@ -167,11 +167,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
     telemetry: undefined,
   });
 
-  const element = usePortalBox({
-    className: classes.root,
-    target: outgoingContext.target,
-    rtl: outgoingContext.rtl,
-  });
+  const portalContextValue = React.useMemo<PortalContextValue>(() => ({ className: classes.root }), [classes.root]);
 
   useIsomorphicLayoutEffect(() => {
     renderFontFaces(outgoingContext.renderer, props.theme);
@@ -206,9 +202,9 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
   return (
     <RenderProvider target={outgoingContext.target}>
       <Unstable_FluentContextProvider value={outgoingContext}>
-        <PortalBoxContext.Provider value={element}>
+        <PortalContext.Provider value={portalContextValue}>
           <ElementType {...elementProps}>{children}</ElementType>
-        </PortalBoxContext.Provider>
+        </PortalContext.Provider>
       </Unstable_FluentContextProvider>
     </RenderProvider>
   );

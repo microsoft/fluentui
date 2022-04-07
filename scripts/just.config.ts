@@ -55,7 +55,7 @@ export function preset() {
   task('copy', copy);
   task('jest', jestTask);
   task('jest-watch', jestWatch);
-  task('sass', sass);
+  task('sass', sass());
   task('ts:postprocess', postprocessTask());
   task('postprocess:amd', postprocessAmdTask);
   task('postprocess:commonjs', postprocessCommonjsTask);

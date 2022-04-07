@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolbarToggleButton renders a default state 1`] = `
+<div>
+  <button
+    aria-pressed="false"
+    class="fui-Button fui-ToggleButton"
+    type="button"
+  >
+    Default ToolbarToggleButton
+  </button>
+</div>
+`;
