@@ -105,16 +105,6 @@ export type {
 } from '@fluentui/react-radio';
 
 export {
-  Slider,
-  sliderClassNames,
-  useSliderState_unstable,
-  useSliderStyles_unstable,
-  useSlider_unstable,
-  renderSlider_unstable,
-} from '@fluentui/react-slider';
-export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
-
-export {
   Switch,
   switchClassNames,
   renderSwitch_unstable,
@@ -123,31 +113,34 @@ export {
 } from '@fluentui/react-switch';
 export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';
 
-export {
-  Tab,
-  /* eslint-disable-next-line deprecation/deprecation */
-  tabClassName,
-  tabClassNames,
-  useTab_unstable,
-  useTabStyles_unstable,
-  renderTab_unstable,
-  TabList,
-  /* eslint-disable-next-line deprecation/deprecation */
-  tabListClassName,
-  tabListClassNames,
-  useTabList_unstable,
-  useTabListStyles_unstable,
-  renderTabList_unstable,
-} from '@fluentui/react-tabs';
 export type {
-  TabValue,
   TabProps,
+  TabSlots,
   TabState,
+  TabValue,
+  TabRegisterData,
+  RegisterTabEventHandler,
   SelectTabData,
   SelectTabEvent,
   SelectTabEventHandler,
-  TabListProps,
   TabListContextValue,
   TabListContextValues,
+  TabListProps,
+  TabListSlots,
   TabListState,
+} from '@fluentui/react-tabs';
+
+export {
+  renderTab_unstable,
+  Tab,
+  tabClassName,
+  tabClassNames,
+  useTabStyles_unstable,
+  useTab_unstable,
+  renderTabList_unstable,
+  TabList,
+  tabListClassName,
+  tabListClassNames,
+  useTabListStyles_unstable,
+  useTabList_unstable,
 } from '@fluentui/react-tabs';

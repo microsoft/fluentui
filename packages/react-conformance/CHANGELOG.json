@@ -2,6 +2,36 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Wed, 06 Apr 2022 07:34:57 GMT",
+      "tag": "@fluentui/react-conformance_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "none": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "767b195d0d768aa7dd85bcb40af4370fd747dc11",
+            "comment": "Add comment to react-conformance Portal docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Mar 2022 07:39:04 GMT",
+      "tag": "@fluentui/react-conformance_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "efc07509578008b6be1c5dd69fee1aad5a7775c2",
+            "comment": "BREAKING CHANGE: Switch from Enzyme to `@testing-library/react` and remove Enzyme-specific APIs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Mar 2022 07:38:50 GMT",
       "tag": "@fluentui/react-conformance_v0.12.0",
       "version": "0.12.0",

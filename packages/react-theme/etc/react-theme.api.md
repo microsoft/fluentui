@@ -260,6 +260,8 @@ export type ColorTokens = {
     colorNeutralBackgroundInvertedDisabled: string;
     colorNeutralStencil1: string;
     colorNeutralStencil2: string;
+    colorBackgroundOverlay: string;
+    colorScrollbarOverlay: string;
     colorBrandBackground: string;
     colorBrandBackgroundHover: string;
     colorBrandBackgroundPressed: string;

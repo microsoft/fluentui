@@ -20,8 +20,6 @@ export const dividerClassName = "fui-Divider";
 // @public (undocumented)
 export const dividerClassNames: SlotClassNames<DividerSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "DividerCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type DividerProps = ComponentProps<Partial<DividerSlots>> & Partial<DividerCommons>;
 

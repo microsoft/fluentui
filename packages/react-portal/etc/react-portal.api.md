@@ -12,8 +12,6 @@ export function elementContains(parent: HTMLElement | null, child: HTMLElement |
 // @public
 export const Portal: React_2.FC<PortalProps>;
 
-// Warning: (ae-forgotten-export) The symbol "PortalCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type PortalProps = Partial<PortalCommons>;
 

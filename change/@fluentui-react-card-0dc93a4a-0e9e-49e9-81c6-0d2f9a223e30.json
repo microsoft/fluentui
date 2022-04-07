@@ -1,0 +1,10 @@
+{
+  "type": "none",
+  "comment": {
+    "title": "",
+    "value": ""
+  },
+  "packageName": "@fluentui/react-card",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "none"
+}

@@ -1,5 +1,5 @@
 import { dropdownSearchInputSlotClassNames, dropdownSlotClassNames } from '@fluentui/react-northstar';
-import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
+import { ScreenerTestsConfig, ALL_THEMES } from '@fluentui/scripts/screener';
 
 const selectors = {
   toggleIndicator: `.${dropdownSlotClassNames.toggleIndicator}`,
@@ -9,7 +9,7 @@ const selectors = {
 };
 
 const config: ScreenerTestsConfig = {
-  themes: ['teams', 'teamsDark', 'teamsHighContrast'],
+  themes: ALL_THEMES,
   steps: [
     (builder, keys) =>
       builder

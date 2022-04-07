@@ -1,19 +1,22 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type OptionGroupSlots = {
-  root: Slot<'div'>;
-};
+  /* The root group wrapper */
+  root: NonNullable<Slot<'div'>>;
 
-export type OptionGroupCommons = {
-  // TODO Add things shared between props and state here
+  /*
+   * The option group label, displayed as static text before the child options.
+   * If not using label, it's recommended to set `aria-label` directly on the OptionGroup instead.
+   */
+  label?: Slot<'span'>;
 };
 
 /**
  * OptionGroup Props
  */
-export type OptionGroupProps = ComponentProps<OptionGroupSlots> & OptionGroupCommons;
+export type OptionGroupProps = ComponentProps<Partial<OptionGroupSlots>>;
 
 /**
  * State used in rendering OptionGroup
  */
-export type OptionGroupState = ComponentState<OptionGroupSlots> & OptionGroupCommons;
+export type OptionGroupState = ComponentState<OptionGroupSlots>;

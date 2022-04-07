@@ -1,11 +1,13 @@
+import { useFluentContext, useIsomorphicLayoutEffect } from '@fluentui/react-bindings';
+import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+
 import { isBrowser, ChildrenComponentProps, commonPropTypes } from '../../utils';
-import { PortalBoxContext } from '../Provider/usePortalBox';
-import * as customPropTypes from '@fluentui/react-proptypes';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-bindings';
+import { PortalContext } from '../Provider/portalContext';
+import { usePortalBox } from './usePortalBox';
 
 export interface PortalInnerProps extends ChildrenComponentProps {
   /** Existing element the portal should be bound to. */
@@ -30,18 +32,22 @@ export interface PortalInnerProps extends ChildrenComponentProps {
  * A PortalInner is a container for Portal's content.
  */
 export const PortalInner: React.FC<PortalInnerProps> = props => {
-  const context = React.useContext(PortalBoxContext);
   const { children, mountNode } = props;
 
+  const { className } = React.useContext(PortalContext);
+  const { target, rtl } = useFluentContext();
+
+  const box = usePortalBox({ className, target, rtl });
   // PortalInner should render elements even without a context
   // eslint-disable-next-line
-  const target: HTMLElement | null = isBrowser() ? context || document.body : null;
-  const container: HTMLElement | null = mountNode || target;
+  const container: HTMLElement | null = isBrowser() ? mountNode || box || document.body : null;
+
   useIsomorphicLayoutEffect(() => {
     _.invoke(props, 'onMount', props);
 
     return () => _.invoke(props, 'onUnmount', props);
   }, []);
+
   return container && ReactDOM.createPortal(children, container);
 };
 
