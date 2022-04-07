@@ -29,7 +29,6 @@
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
-    "@cactuslab/usepubsub": "^1.0.2",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",
     "@fluentui/scripts": "^1.0.0",
