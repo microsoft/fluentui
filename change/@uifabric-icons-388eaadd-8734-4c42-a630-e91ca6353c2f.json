@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Cherrypick update initializeIcons call",
+  "packageName": "@uifabric/icons",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
