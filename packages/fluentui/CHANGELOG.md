@@ -27,6 +27,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Popup` opened from right click (on `context`), to not dismiss when scrolling happens in nested Popup @yaunboxue-amber ([#22087](https://github.com/microsoft/fluentui/pull/22087))
 - Fix `Dropdown` not annoucing placeholder/default value with VoiceOver on macOS @aubreyquinn ([#22173](https://github.com/microsoft/fluentui/pull/22173))
 - Fix `Datepicker` by adding `aria-haspopup="true"` when `allowManualInput` is set to false @chpalac ([#22201](https://github.com/microsoft/fluentui/pull/22201))
+- Fix `Attachment` progress-bar overflow @Hirse ([#22115](https://github.com/microsoft/fluentui/pull/22115))
 - Use v2 theme by default in screener tests @jurokapsiar ([#22286](https://github.com/microsoft/fluentui/pull/22286))
 
 ### Features
