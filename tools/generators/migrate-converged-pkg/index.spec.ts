@@ -443,21 +443,13 @@ describe('migrate-converged-pkg generator', () => {
         return tree.read(jestSetupFilePath)?.toString('utf-8');
       }
 
-      let content = getJestSetupFile();
-      expect(content).toMatchInlineSnapshot(`"/** Jest test setup file. */"`);
-
-      await generator(tree, options);
-
-      content = getJestSetupFile();
-      expect(content).toMatchInlineSnapshot(`"/** Jest test setup file. */"`);
-
       tree.delete(jestSetupFilePath);
       expect(tree.exists(jestSetupFilePath)).toBeFalsy();
 
       await generator(tree, options);
 
-      content = getJestSetupFile();
-      expect(content).toMatchInlineSnapshot(`"/** Jest test setup file. */"`);
+      expect(tree.exists(jestSetupFilePath)).toBeTruthy();
+      expect(getJestSetupFile()).toMatchInlineSnapshot(`"/** Jest test setup file. */"`);
     });
   });
 

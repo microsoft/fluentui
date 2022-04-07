@@ -753,19 +753,7 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
 
   tree.write(options.paths.jestConfig, templates.jest(config));
 
-  if (tree.exists(jestSetupFilePath)) {
-    const content = tree.read(jestSetupFilePath)!.toString('utf-8');
-    const newContent = content.replace(
-      stripIndents`const { configure } = require('enzyme');
-        const Adapter = require('enzyme-adapter-react-16');
-
-        // Configure enzyme.
-        configure({ adapter: new Adapter() });"
-      `,
-      '',
-    );
-    tree.write(jestSetupFilePath, newContent);
-  } else {
+  if (!tree.exists(jestSetupFilePath)) {
     tree.write(jestSetupFilePath, templates.jestSetup);
   }
 
