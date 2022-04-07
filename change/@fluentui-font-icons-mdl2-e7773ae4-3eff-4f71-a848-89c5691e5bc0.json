@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Update initializeIcons to add user defined URL in argument",
+  "packageName": "@fluentui/font-icons-mdl2",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
