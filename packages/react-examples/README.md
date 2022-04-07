@@ -6,23 +6,13 @@ This package is only meant to be consumed by variants of the Fluent UI documenta
 
 ## Architecture
 
-This package contains various root folders within `src`
+Each folder under `src` is the unscoped name of a package, containing examples for that package. For example, the examples for `@fluentui/react` are under `src/react`.
 
-```sh
-|- src/
-|--- e2e/
-|--- azure-themes/
-|--- react/
-|--- react-cards/
-|--- react-charting/
-|--- react-experiments/
-|--- react-focus/
-```
+The examples under `react` (plus `react-focus` and `react-cards`) are used on the [public documentation site](https://developer.microsoft.com/fluentui) via `apps/public-docsite`, and [aka.ms/fluentdemo](https://aka.ms/fluentdemo) via `apps/public-docsite-resources`.
 
-1. `e2e/` contains helpers for e2e ? TODO
-2. rest of the folders contain particular package `stories` and documentation content for `public-docsite` and `public-docsite-resources`
+The other packages' examples are only used for local development and on the [PR deploy site](https://fluentuipr.z22.web.core.windows.net/heads/master/).
 
-### Structure of documentation/storybook folders
+### Structure of package documentation folders
 
 1. Folder name reflects a package name omitting the npm scope.
 
@@ -34,7 +24,7 @@ For example `src/react/Panel` contains stories and documentation site content fo
 
 **Subfolder contains following types files with enforced naming:**
 
-1. story files: `<Sub-Folder-Name>.<Story-Tree-Title-Name>.Example.tsx`
+1. example/story files: `<ComponentName>.<ExampleName>.Example.tsx`
 
    - file name needs to match identifier name being exported from the file.
 
@@ -42,7 +32,7 @@ For example `src/react/Panel` contains stories and documentation site content fo
 
    - for example: file named `Panel.Basic.Example.tsx` --needs to export--> `export const PanelBasicExample = () => {...}`
 
-2. documentation file: `<Sub-Folder-Name>.doc.tsx`
+2. documentation file: `<ComponentName>.doc.tsx` -- if your example is not added to this file, it won't show up on the public doc site.
 3. additional documentation within `doc` folder written in markdown: `doc/*.md`
 
 **Dependency graph:**
