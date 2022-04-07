@@ -47,6 +47,7 @@ export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentSty
   }),
   content: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'block',
+    fontSize: '12px',
     padding: v.padding,
     textAlign: 'left',
 
