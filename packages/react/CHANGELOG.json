@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 07 Apr 2022 07:35:27 GMT",
+      "tag": "@fluentui/react_v8.64.1",
+      "version": "8.64.1",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "67dd475e49182d17dbf7d9195c5df9bce02b7b3c",
+            "comment": "chore: Update e2e tests to use cypress component testing"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Apr 2022 07:34:57 GMT",
       "tag": "@fluentui/react_v8.64.1",
       "version": "8.64.1",
