@@ -233,7 +233,8 @@ describe('Popup', () => {
         domEvent.keyDown(`span#${triggerId}`, { keyCode: keyboardKey.Enter });
       });
 
-      expect(document.querySelector(`#${contentId}`)).toBeDefined();
+      // not related but this was wrong--toBeDefined checks for undefined ONLY => null will pass
+      expect(document.querySelector(`#${contentId}`)).not.toBeNull();
       expect(document.querySelector(`#${contentId2}`)).toBe(null);
 
       ReactTestUtils.act(() => {
@@ -241,10 +242,12 @@ describe('Popup', () => {
       });
 
       expect(document.querySelector(`#${contentId}`)).toBe(null);
-      expect(document.querySelector(`#${contentId2}`)).toBeDefined();
+      expect(document.querySelector(`#${contentId2}`)).not.toBeNull();
 
-      ReactDOM.unmountComponentAtNode(attachTo);
-      document.body.removeChild(attachTo);
+      // this gives an error:
+      //   NotFoundError: The node to be removed is not a child of this node.
+      // ReactDOM.unmountComponentAtNode(attachTo);
+      // document.body.removeChild(attachTo);
     });
   });
 
