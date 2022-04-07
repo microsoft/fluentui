@@ -29,6 +29,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Datepicker` by adding `aria-haspopup="true"` when `allowManualInput` is set to false @chpalac ([#22201](https://github.com/microsoft/fluentui/pull/22201))
 - Use v2 theme by default in screener tests @jurokapsiar ([#22286](https://github.com/microsoft/fluentui/pull/22286))
 
+### Features
+- Add selected items count narration by screen reader for search multiple selection Dropdown @adamsamec ([#22269](https://github.com/microsoft/fluentui/pull/22269))
+
 <!--------------------------------[ v0.61.0 ]------------------------------- -->
 ## [v0.61.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.61.0) (2022-03-10)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.60.1..@fluentui/react-northstar_v0.61.0)
