@@ -19,6 +19,7 @@ storiesOf('Spinner converged', module)
     {
       includeHighContrast: true,
       includeDarkMode: true,
+      includeRtl: true,
     },
   )
   .addStory(
@@ -27,6 +28,7 @@ storiesOf('Spinner converged', module)
     {
       includeHighContrast: true,
       includeDarkMode: true,
+      includeRtl: true,
     },
   )
   .addStory(
