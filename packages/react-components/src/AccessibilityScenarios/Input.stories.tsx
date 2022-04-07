@@ -120,7 +120,7 @@ const RegistrationFormInputsAccessibility = () => {
     const firstErrorName = Object.keys(errors)[0] as keyof FormInputs;
     const firstErrorField = document.getElementById(firstErrorName);
 
-    formValidation.notifyFormFieldError(firstErrorName);
+    setTimeout(() => formValidation.notifyFormFieldError(firstErrorName), 200);
 
     if (firstErrorField) {
       firstErrorField.focus();
