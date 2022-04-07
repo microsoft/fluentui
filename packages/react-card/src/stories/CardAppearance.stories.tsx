@@ -63,7 +63,7 @@ const SampleCard = (props: CardProps) => {
   );
 };
 
-export const AppearanceCard = () => {
+export const Appearance = () => {
   const styles = useStyles();
 
   return (
