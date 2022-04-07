@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-textarea",
   "version": "9.0.0-alpha.0",
-  "private": true,
+  "private": false,
   "description": "Fluent UI TextArea component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
