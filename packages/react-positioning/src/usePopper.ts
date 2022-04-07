@@ -412,7 +412,7 @@ export function usePopper(
   }, [handlePopperUpdate, options.enabled]);
   useIsomorphicLayoutEffect(
     () => {
-      if (!isFirstMount) {
+      if (!isFirstMount()) {
         popperInstanceRef.current?.setOptions(
           resolvePopperOptions(overrideTargetRef.current ?? targetRef.current, containerRef.current, arrowRef.current),
         );

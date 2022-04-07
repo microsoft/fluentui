@@ -66,7 +66,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
       return props.value;
     }
 
-    if (isFirstMount && props.defaultValue !== undefined) {
+    if (isFirstMount() && props.defaultValue !== undefined) {
       return props.defaultValue;
     }
 
