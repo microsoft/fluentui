@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: update usage of useFirstMount which returns a closure",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

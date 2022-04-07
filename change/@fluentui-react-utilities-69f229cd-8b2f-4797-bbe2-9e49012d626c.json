@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Update usage of useFirstMount to support concurrent mode, and returns closure",
+  "packageName": "@fluentui/react-utilities",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
