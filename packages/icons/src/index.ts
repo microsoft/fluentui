@@ -22,7 +22,11 @@ import { IIconOptions } from '@uifabric/styling';
 import { registerIconAliases } from './iconAliases';
 const DEFAULT_BASE_URL = 'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20210407.001/assets/icons/';
 
-export function initializeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: IIconOptions): void {
+export function initializeIcons(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  baseUrl: string = (window as any)?.FabricConfig.fontBaseUrl ?? DEFAULT_BASE_URL,
+  options?: IIconOptions,
+): void {
   [
     i,
     i0,
