@@ -1,9 +1,10 @@
 import { useFluentContext, RendererContext } from '@fluentui/react-bindings';
 import { CreateRenderer, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { ThemeInput } from '@fluentui/styles';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import * as React from 'react';
 
+import { PortalContext } from 'src/components/Provider/portalContext';
 import { Provider } from 'src/components/Provider/Provider';
 import { ProviderConsumer } from 'src/components/Provider/ProviderConsumer';
 
@@ -31,6 +32,28 @@ describe('Provider', () => {
 
   test('has a ProviderConsumer subcomponent', () => {
     expect(require('src/index.ts').Provider.Consumer).toEqual(ProviderConsumer);
+  });
+
+  describe('as', () => {
+    it('allows to render a "React.Fragment"', () => {
+      const wrapper = mount(
+        <Provider as={React.Fragment}>
+          <div id="foo" />
+        </Provider>,
+      );
+
+      expect(wrapper.html()).toMatchInlineSnapshot(`"<div id=\\"foo\\"></div>"`);
+    });
+
+    it('does not render "PortalContext.Provider" when is a "React.Fragment"', () => {
+      const wrapper = shallow(
+        <Provider as={React.Fragment}>
+          <div id="foo" />
+        </Provider>,
+      );
+
+      expect(wrapper.find(PortalContext.Provider).exists()).toBe(false);
+    });
   });
 
   describe('overwrite', () => {
