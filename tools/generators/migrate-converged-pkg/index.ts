@@ -214,7 +214,7 @@ const templates = {
       // @ts-check
 
       /**
-      * @type {jest.InitialOptions}
+      * @type {import('@jest/types').Config.InitialOptions}
       */
       module.exports = {
         displayName: '${options.pkgName}',
@@ -501,6 +501,7 @@ function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
     ...options.projectConfig,
     sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
     tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', tags[packageType]]),
+    implicitDependencies: uniqueArray([...(options.projectConfig.implicitDependencies ?? [])]),
   });
 
   return tree;

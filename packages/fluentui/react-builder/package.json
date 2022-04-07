@@ -13,7 +13,7 @@
     "@fluentui/react-icons-northstar": "^0.61.0",
     "@fluentui/react-northstar": "^0.61.0",
     "axe-core": "3.5.0",
-    "immer": "^8.0.1",
+    "immer": "^9.0.12",
     "lodash": "^4.17.15",
     "lz-string": "^1.4.4",
     "react": "16.14.0",
@@ -21,7 +21,7 @@
     "react-dom": "16.14.0",
     "react-frame-component": "^4.1.1",
     "react-is": "^16.6.3",
-    "use-immer": "^0.4.1"
+    "use-immer": "^0.6.0"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
