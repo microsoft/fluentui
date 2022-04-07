@@ -1,5 +1,6 @@
 import config from '@fluentui/scripts/config';
 import * as fs from 'fs-extra';
+import * as fsExtra from 'fs-extra';
 import * as path from 'path';
 import {
   addResolutionPathsForProjectPackages,
@@ -21,9 +22,14 @@ async function performTest() {
     logger(`✔️ Temporary directories created under ${tempPaths.root}`);
 
     // Install dependencies, using the minimum TS version supported for consumers
-    const dependencies = ['@types/react', '@types/react-dom', 'react', 'react-dom', `typescript@${tsVersion}`].join(
-      ' ',
-    );
+    const dependencies = [
+      '@types/react',
+      '@types/react-dom',
+      'react',
+      'react-dom',
+      `typescript@${tsVersion}`,
+      'patch-package',
+    ].join(' ');
     await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
     logger(`✔️ Dependencies were installed`);
 
@@ -37,6 +43,11 @@ async function performTest() {
     fs.mkdirSync(path.join(tempPaths.testApp, 'src'));
     fs.copyFileSync(scaffoldPath('index.tsx'), path.join(tempPaths.testApp, 'src/index.tsx'));
     fs.copyFileSync(scaffoldPath('tsconfig.json'), path.join(tempPaths.testApp, 'tsconfig.json'));
+
+    fs.mkdirSync(path.join(tempPaths.testApp, 'patches/'));
+    fsExtra.copySync(scaffoldPath('patches/'), path.join(tempPaths.testApp, 'patches/'));
+    await shEcho(`yarn patch-package`, tempPaths.testApp);
+
     logger(`✔️ Source and configs were copied`);
 
     await shEcho(`npx npm-which yarn`);

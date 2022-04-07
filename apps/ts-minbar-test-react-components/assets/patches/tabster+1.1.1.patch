@@ -1,0 +1,912 @@
+diff --git a/node_modules/tabster/dist/index.d.ts b/node_modules/tabster/dist/index.d.ts
+index fa580a3..e1d9e58 100644
+--- a/node_modules/tabster/dist/index.d.ts
++++ b/node_modules/tabster/dist/index.d.ts
+@@ -2,4 +2,906 @@
+  * Copyright (c) Microsoft Corporation. All rights reserved.
+  * Licensed under the MIT License.
+  */
+-export { createTabster, disposeTabster, forceCleanup, getTabsterAttribute, setTabsterAttribute, getGroupper, getMover, getCrossOrigin, getDeloser, getModalizer, getObservedElement, getOutline, getCurrentTabster, getInternal, overrideBasics, makeNoOp, isNoOp, Types, } from "./Tabster";
++declare const TabsterAttributeName = "data-tabster";
++declare const TabsterDummyInputAttributeName = "data-tabster-dummy";
++declare const DeloserEventName = "tabster:deloser";
++declare const ModalizerEventName = "tabster:modalizer";
++declare const MoverEventName = "tabster:mover";
++interface TabsterEventWithDetails<D> extends Event {
++    details: D;
++}
++interface TabsterDOMAttribute {
++    [TabsterAttributeName]: string | undefined;
++}
++interface TabsterCoreProps {
++    autoRoot?: RootProps;
++    /**
++     * Allows all tab key presses under the tabster root to be controlled by tabster
++     * @default true
++     */
++    controlTab?: boolean;
++    /**
++     * When controlTab is false, Root doesn't have dummy inputs by default.
++     * This option allows to enable dummy inputs on Root.
++     */
++    rootDummyInputs?: boolean;
++}
++interface TabsterCore extends Pick<TabsterCoreProps, "controlTab" | "rootDummyInputs"> {
++    keyboardNavigation: KeyboardNavigationState;
++    focusedElement: FocusedElementState;
++    focusable: FocusableAPI;
++    root: RootAPI;
++    uncontrolled: UncontrolledAPI;
++}
++declare type GetTabster = () => TabsterCore;
++declare type GetWindow = () => Window;
++declare type SubscribableCallback<A, B = undefined> = (val: A, details: B) => void;
++interface Subscribable<A, B = undefined> {
++    subscribe(callback: SubscribableCallback<A, B>): void;
++    unsubscribe(callback: SubscribableCallback<A, B>): void;
++}
++interface KeyboardNavigationState extends Subscribable<boolean> {
++    isNavigatingWithKeyboard(): boolean;
++}
++interface FocusedElementDetails {
++    relatedTarget?: HTMLElement;
++    isFocusedProgrammatically?: boolean;
++}
++interface FocusedElementState extends Subscribable<HTMLElement | undefined, FocusedElementDetails> {
++    getFocusedElement(): HTMLElement | undefined;
++    getLastFocusedElement(): HTMLElement | undefined;
++    focus(element: HTMLElement, noFocusedProgrammaticallyFlag?: boolean, noAccessibleCheck?: boolean): boolean;
++    focusDefault(container: HTMLElement): boolean;
++    focusFirst(props: FindFirstProps): boolean;
++    focusLast(props: FindFirstProps): boolean;
++    resetFocus(container: HTMLElement): boolean;
++}
++interface WeakHTMLElement<D = undefined> {
++    get(): HTMLElement | undefined;
++    getData(): D | undefined;
++}
++interface TabsterPart<P> {
++    readonly id: string;
++    getElement(): HTMLElement | undefined;
++    getProps(): P;
++    setProps(props: P): void;
++}
++interface ObservedElementProps {
++    name: string;
++    details?: any;
++}
++interface ObservedElementDetails extends ObservedElementProps {
++    accessibility?: ObservedElementAccesibility;
++}
++declare type ObservedElementAccesibility = ObservedElementAccesibilities[keyof ObservedElementAccesibilities];
++interface ObservedElementAccesibilities {
++    Any: 0;
++    Accessible: 1;
++    Focusable: 2;
++}
++declare const ObservedElementAccesibilities: ObservedElementAccesibilities;
++interface ObservedElementAsyncRequest<T> {
++    result: Promise<T>;
++    cancel(): void;
++}
++interface ObservedElementAPI extends Subscribable<HTMLElement, ObservedElementDetails> {
++    getElement(observedName: string, accessibility?: ObservedElementAccesibility): HTMLElement | null;
++    waitElement(observedName: string, timeout: number, accessibility?: ObservedElementAccesibility): ObservedElementAsyncRequest<HTMLElement | null>;
++    requestFocus(observedName: string, timeout: number): ObservedElementAsyncRequest<boolean>;
++}
++interface CrossOriginElement {
++    readonly uid: string;
++    readonly ownerId: string;
++    readonly id?: string;
++    readonly rootId?: string;
++    readonly observedName?: string;
++    readonly observedDetails?: string;
++    focus(noFocusedProgrammaticallyFlag?: boolean, noAccessibleCheck?: boolean): Promise<boolean>;
++}
++interface CrossOriginSentTo {
++    [id: string]: true;
++}
++interface CrossOriginTransactionTypes {
++    Bootstrap: 1;
++    FocusElement: 2;
++    State: 3;
++    GetElement: 4;
++    RestoreFocusInDeloser: 5;
++    Ping: 6;
++}
++declare type CrossOriginTransactionType = CrossOriginTransactionTypes[keyof CrossOriginTransactionTypes];
++interface CrossOriginTransactionData<I, O> {
++    transaction: string;
++    type: CrossOriginTransactionType;
++    isResponse: boolean;
++    timestamp: number;
++    owner: string;
++    sentto: CrossOriginSentTo;
++    timeout?: number;
++    target?: string;
++    beginData?: I;
++    endData?: O;
++}
++declare type CrossOriginTransactionSend = (data: CrossOriginTransactionData<any, any>) => void;
++interface CrossOriginMessage {
++    data: CrossOriginTransactionData<any, any>;
++    send: CrossOriginTransactionSend;
++}
++interface CrossOriginFocusedElementState extends Subscribable<CrossOriginElement | undefined, FocusedElementDetails> {
++    focus(element: CrossOriginElement, noFocusedProgrammaticallyFlag?: boolean, noAccessibleCheck?: boolean): Promise<boolean>;
++    focusById(elementId: string, rootId?: string, noFocusedProgrammaticallyFlag?: boolean, noAccessibleCheck?: boolean): Promise<boolean>;
++    focusByObservedName(observedName: string, timeout?: number, rootId?: string, noFocusedProgrammaticallyFlag?: boolean, noAccessibleCheck?: boolean): Promise<boolean>;
++}
++interface CrossOriginObservedElementState extends Subscribable<CrossOriginElement, ObservedElementProps> {
++    getElement(observedName: string, accessibility?: ObservedElementAccesibility): Promise<CrossOriginElement | null>;
++    waitElement(observedName: string, timeout: number, accessibility?: ObservedElementAccesibility): Promise<CrossOriginElement | null>;
++    requestFocus(observedName: string, timeout: number): Promise<boolean>;
++}
++interface CrossOriginAPI {
++    focusedElement: CrossOriginFocusedElementState;
++    observedElement: CrossOriginObservedElementState;
++    setup(sendUp?: CrossOriginTransactionSend | null): (msg: CrossOriginMessage) => void;
++    isSetUp(): boolean;
++}
++interface OutlineProps {
++    areaClass: string;
++    outlineClass: string;
++    outlineColor: string;
++    outlineWidth: number;
++    zIndex: number;
++}
++interface OutlinedElementProps {
++    isIgnored?: boolean;
++}
++interface OutlineAPI {
++    setup(props?: Partial<OutlineProps>): void;
++}
++interface DeloserElementActions {
++    focusDefault: () => boolean;
++    focusFirst: () => boolean;
++    resetFocus: () => boolean;
++    clearHistory: (preserveExisting?: boolean) => void;
++    setSnapshot: (index: number) => void;
++    isActive: () => boolean;
++}
++declare type RestoreFocusOrder = RestoreFocusOrders[keyof RestoreFocusOrders];
++interface RestoreFocusOrders {
++    History: 0;
++    DeloserDefault: 1;
++    RootDefault: 2;
++    DeloserFirst: 3;
++    RootFirst: 4;
++}
++declare const RestoreFocusOrders: RestoreFocusOrders;
++interface DeloserProps {
++    restoreFocusOrder?: RestoreFocusOrder;
++    noSelectorCheck?: boolean;
++}
++interface Deloser extends TabsterPart<DeloserProps> {
++    readonly uid: string;
++    dispose(): void;
++    isActive(): boolean;
++    setActive(active: boolean): void;
++    getActions(): DeloserElementActions;
++    setSnapshot(index: number): void;
++    focusFirst(): boolean;
++    unshift(element: HTMLElement): void;
++    focusDefault(): boolean;
++    resetFocus(): boolean;
++    findAvailable(): HTMLElement | null;
++    clearHistory(preserveExisting?: boolean): void;
++    customFocusLostHandler(element: HTMLElement): boolean;
++}
++declare type DeloserConstructor = (tabster: TabsterInternal, element: HTMLElement, props: DeloserProps) => Deloser;
++interface DeloserAPI {
++    getActions(element: HTMLElement): DeloserElementActions | undefined;
++    pause(): void;
++    resume(restore?: boolean): void;
++}
++interface FocusableProps {
++    isDefault?: boolean;
++    isIgnored?: boolean;
++    /**
++     * Do not determine an element's focusability based on aria-disabled.
++     */
++    ignoreAriaDisabled?: boolean;
++    /**
++     * Exclude element (and all subelements) from Mover navigation.
++     */
++    excludeFromMover?: boolean;
++}
++interface FocusableAcceptElementState {
++    container: HTMLElement;
++    currentCtx?: TabsterContext;
++    from: HTMLElement | null;
++    fromCtx?: TabsterContext;
++    isForward: boolean;
++    found?: boolean;
++    foundElement?: HTMLElement;
++    nextUncontrolled?: HTMLElement;
++    nextGroupper?: HTMLElement;
++    nextMover?: HTMLElement;
++    acceptCondition: (el: HTMLElement) => boolean;
++    includeProgrammaticallyFocusable?: boolean;
++    ignoreGroupper?: boolean;
++    ignoreUncontrolled?: boolean;
++    ignoreAccessibiliy?: boolean;
++    grouppers: {
++        [id: string]: {
++            isActive: boolean | undefined;
++            isInside: boolean;
++            first?: HTMLElement | null;
++        };
++    };
++}
++interface FindFocusableProps {
++    /**
++     * The container used for the search
++     */
++    container?: HTMLElement;
++    /**
++     * The elemet to start from
++     */
++    currentElement?: HTMLElement;
++    /**
++     * includes elements that can be focused programmatically
++     */
++    includeProgrammaticallyFocusable?: boolean;
++    ignoreGroupper?: boolean;
++    /**
++     * Ignore uncontrolled areas.
++     */
++    ignoreUncontrolled?: boolean;
++    /**
++     * Ignore accessibility check.
++     */
++    ignoreAccessibiliy?: boolean;
++    prev?: boolean;
++    /**
++     * @param el element visited
++     * @returns if an element should be accepted
++     */
++    acceptCondition?(el: HTMLElement): boolean;
++    /**
++     * A callback that will be called if an uncontrolled area is met.
++     * @param el uncontrolled element.
++     */
++    onUncontrolled?(el: HTMLElement): void;
++}
++declare type FindFirstProps = Pick<FindFocusableProps, "container" | "includeProgrammaticallyFocusable" | "ignoreGroupper" | "ignoreUncontrolled" | "ignoreAccessibiliy">;
++declare type FindNextProps = Pick<FindFocusableProps, "currentElement" | "container" | "includeProgrammaticallyFocusable" | "ignoreGroupper" | "ignoreUncontrolled" | "ignoreAccessibiliy" | "onUncontrolled">;
++declare type FindDefaultProps = Pick<FindFocusableProps, "container" | "includeProgrammaticallyFocusable" | "ignoreGroupper" | "ignoreAccessibiliy">;
++declare type FindAllProps = Pick<FindFocusableProps, "container" | "includeProgrammaticallyFocusable" | "ignoreGroupper" | "acceptCondition" | "ignoreUncontrolled" | "ignoreAccessibiliy"> & {
++    container: HTMLElement;
++    skipDefaultCheck?: boolean;
++};
++interface FocusableAPI {
++    getProps(element: HTMLElement): FocusableProps;
++    isFocusable(element: HTMLElement, includeProgrammaticallyFocusable?: boolean, noVisibleCheck?: boolean, noAccessibleCheck?: boolean): boolean;
++    isVisible(element: HTMLElement): boolean;
++    isAccessible(element: HTMLElement): boolean;
++    findFirst(options: FindFirstProps): HTMLElement | null | undefined;
++    findLast(options: FindFirstProps): HTMLElement | null | undefined;
++    findNext(options: FindNextProps): HTMLElement | null | undefined;
++    findPrev(options: FindNextProps): HTMLElement | null | undefined;
++    findDefault(options: FindDefaultProps): HTMLElement | null;
++    /**
++     * @returns All focusables in a given context that satisfy an given condition
++     */
++    findAll(options: FindAllProps): HTMLElement[];
++    findElement(options: FindFocusableProps): HTMLElement | null | undefined;
++}
++interface Visibilities {
++    Invisible: 0;
++    PartiallyVisible: 1;
++    Visible: 2;
++}
++declare const Visibilities: Visibilities;
++declare type Visibility = Visibilities[keyof Visibilities];
++interface MoverElementState {
++    isCurrent: boolean | undefined;
++    visibility: Visibility;
++}
++interface MoverDirections {
++    Both: 0;
++    Vertical: 1;
++    Horizontal: 2;
++    Grid: 3;
++}
++declare const MoverDirections: MoverDirections;
++declare type MoverDirection = MoverDirections[keyof MoverDirections];
++declare type NextTabbable = {
++    element: HTMLElement | null | undefined;
++    uncontrolled?: HTMLElement;
++};
++interface MoverProps {
++    direction?: MoverDirection;
++    memorizeCurrent?: boolean;
++    tabbable?: boolean;
++    /**
++     * Whether to allow cyclic navigation in the mover
++     * Can only be applied if navigationType is MoverKeys.Arrows
++     *
++     * @defaultValue false
++     */
++    cyclic?: boolean;
++    /**
++     * In case we need a rich state of the elements inside a Mover,
++     * we can track it. It takes extra resourses and might affect
++     * performance when a Mover has many elements inside, so make sure
++     * you use this prop when it is really needed.
++     */
++    trackState?: boolean;
++    /**
++     * When set to Visibility.Visible or Visibility.PartiallyVisible,
++     * uses the visibility part of the trackState prop to be able to
++     * go to first/last visible element (instead of first/last focusable
++     * element in DOM) when tabbing from outside of the mover.
++     */
++    visibilityAware?: Visibility;
++    disableHomeEndKeys?: boolean;
++}
++declare type MoverEvent = TabsterEventWithDetails<MoverElementState>;
++interface Mover extends TabsterPart<MoverProps> {
++    readonly id: string;
++    dispose(): void;
++    setCurrent(element: HTMLElement | undefined): boolean;
++    getCurrent(): HTMLElement | null;
++    getState(element: HTMLElement): MoverElementState | undefined;
++    forceUpdate(): void;
++    findNextTabbable(current: HTMLElement, prev?: boolean): NextTabbable | null;
++    acceptElement(element: HTMLElement, state: FocusableAcceptElementState): number | undefined;
++}
++declare type MoverConstructor = (tabster: TabsterInternal, element: HTMLElement, props: MoverProps) => Mover;
++interface MoverAPI {
++}
++interface GroupperTabbabilities {
++    Unlimited: 0;
++    Limited: 1;
++    LimitedTrapFocus: 2;
++}
++declare const GroupperTabbabilities: GroupperTabbabilities;
++declare type GroupperTabbability = GroupperTabbabilities[keyof GroupperTabbabilities];
++interface GroupperProps {
++    tabbability?: GroupperTabbability;
++}
++interface Groupper extends TabsterPart<GroupperProps> {
++    readonly id: string;
++    dispose(): void;
++    makeTabbable(isUnlimited: boolean): void;
++    shouldTabInside(): boolean;
++    isActive(): boolean | undefined;
++    setFirst(element: HTMLElement | undefined): void;
++    getFirst(): HTMLElement | undefined;
++    findNextTabbable(current: HTMLElement, prev?: boolean): NextTabbable | null;
++    acceptElement(element: HTMLElement, state: FocusableAcceptElementState): number | undefined;
++}
++declare type GroupperConstructor = (tabster: TabsterInternal, element: HTMLElement, props: GroupperProps) => Groupper;
++interface GroupperAPI {
++}
++interface GroupperInternalAPI {
++    forgetCurrentGrouppers(): void;
++}
++interface ModalizerProps {
++    id: string;
++    isOthersAccessible?: boolean;
++    isAlwaysAccessible?: boolean;
++    isNoFocusFirst?: boolean;
++    isNoFocusDefault?: boolean;
++}
++declare type ModalizerEventDetails = {
++    eventName: "beforefocusout";
++};
++declare type ModalizerEvent = TabsterEventWithDetails<ModalizerEventDetails>;
++interface Modalizer extends TabsterPart<ModalizerProps> {
++    readonly internalId: string;
++    readonly userId: string;
++    /**
++     * @returns - Whether the element is inside the modalizer
++     */
++    contains(element: HTMLElement): boolean;
++    dispose(): void;
++    isActive(): boolean;
++    onBeforeFocusOut(): boolean;
++    /**
++     * Sets the active state of the modalizr
++     * When active, sets `aria-hidden` on all other elements
++     * Reverts `aria-hidden` changes when set to inactive
++     *
++     * @param active Whether the modalizer is active
++     */
++    setActive(active: boolean): void;
++}
++declare type ModalizerConstructor = (tabster: TabsterInternal, element: HTMLElement, props: ModalizerProps) => Modalizer;
++interface RootProps {
++    restoreFocusOrder?: RestoreFocusOrder;
++}
++interface Root extends TabsterPart<RootProps> {
++    readonly uid: string;
++    dispose(): void;
++    moveOutWithDefaultAction(backwards: boolean): void;
++}
++declare type RootConstructor = (tabster: TabsterInternal, element: HTMLElement, props: RootProps) => Root;
++interface GetTabsterContextOptions {
++    /**
++     * Should visit **all** element ancestors to verify if `dir='rtl'` is set
++     */
++    checkRtl?: boolean;
++    /**
++     * Return all grouppers and movers walking up the DOM from the context element.
++     */
++    allMoversGrouppers?: boolean;
++}
++interface TabsterContext {
++    root: Root;
++    modalizer?: Modalizer;
++    groupper?: Groupper;
++    mover?: Mover;
++    isGroupperFirst?: boolean;
++    /**
++     * Whether `dir='rtl'` is set on an ancestor
++     */
++    isRtl?: boolean;
++    /**
++     * The uncontrolled container of this element (if any).
++     */
++    uncontrolled?: HTMLElement;
++    allMoversGrouppers?: ({
++        isMover: true;
++        mover: Mover;
++    } | {
++        isMover: false;
++        groupper: Groupper;
++    })[];
++    isExcludedFromMover?: boolean;
++}
++interface RootFocusEventDetails {
++    element: HTMLElement;
++    fromAdjacent?: boolean;
++}
++interface RootAPI {
++    eventTarget: EventTarget;
++}
++interface UncontrolledAPI {
++}
++interface ModalizerAPI {
++    /**
++     * Activates a Modalizer and focuses the first or default element within
++     *
++     * @param elementFromModalizer An element that belongs to a Modalizer
++     * @param noFocusFirst Do not focus on the first element in the Modalizer
++     * @param noFocusDefault Do not focus the default element in the Modalizre
++     */
++    focus(elementFromModalizer: HTMLElement, noFocusFirst?: boolean, noFocusDefault?: boolean): boolean;
++}
++interface DeloserOnElement {
++    deloser: Deloser;
++}
++interface RootOnElement {
++    root: Root;
++}
++interface ModalizerOnElement {
++    modalizer: Modalizer;
++}
++interface FocusableOnElement {
++    focusable: FocusableProps;
++}
++interface MoverOnElement {
++    mover: Mover;
++}
++interface GroupperOnElement {
++    groupper: Groupper;
++}
++interface UncontrolledOnElement {
++    uncontrolled: Record<string, never>;
++}
++interface ObservedOnElement {
++    observed: ObservedElementProps;
++}
++interface OutlineOnElement {
++    outline: OutlinedElementProps;
++}
++declare type TabsterAttributeProps = Partial<{
++    deloser: DeloserProps;
++    root: RootProps;
++    uncontrolled: UncontrolledOnElement["uncontrolled"];
++    modalizer: ModalizerProps;
++    focusable: FocusableProps;
++    groupper: GroupperProps;
++    mover: MoverProps;
++    observed: ObservedElementProps;
++    outline: OutlinedElementProps;
++}>;
++interface TabsterAttributeOnElement {
++    string: string;
++    object: TabsterAttributeProps;
++}
++interface TabsterAugmentedAttributes {
++    [name: string]: string | null;
++}
++declare type TabsterOnElement = Partial<RootOnElement & DeloserOnElement & ModalizerOnElement & FocusableOnElement & MoverOnElement & GroupperOnElement & ObservedOnElement & OutlineOnElement & UncontrolledOnElement>;
++interface OutlineElements {
++    container: HTMLDivElement;
++    left: HTMLDivElement;
++    top: HTMLDivElement;
++    right: HTMLDivElement;
++    bottom: HTMLDivElement;
++}
++interface TabsterElementStorageEntry {
++    tabster?: TabsterOnElement;
++    attr?: TabsterAttributeOnElement;
++    aug?: TabsterAugmentedAttributes;
++}
++interface TabsterElementStorage {
++    [uid: string]: TabsterElementStorageEntry;
++}
++declare type DisposeFunc = () => void;
++interface InternalAPI {
++    stopObserver(): void;
++    resumeObserver(syncState: boolean): void;
++}
++interface TabsterInternal extends TabsterCore {
++    storageEntry(element: HTMLElement, addremove?: boolean): TabsterElementStorageEntry | undefined;
++    getWindow: GetWindow;
++    groupper?: GroupperAPI;
++    mover?: MoverAPI;
++    outline?: OutlineAPI;
++    deloser?: DeloserAPI;
++    modalizer?: ModalizerAPI;
++    observedElement?: ObservedElementAPI;
++    crossOrigin?: CrossOriginAPI;
++    uncontrolled: UncontrolledAPI;
++    internal: InternalAPI;
++    groupperDispose?: DisposeFunc;
++    moverDispose?: DisposeFunc;
++    outlineDispose?: DisposeFunc;
++    rootDispose?: DisposeFunc;
++    deloserDispose?: DisposeFunc;
++    modalizerDispose?: DisposeFunc;
++    observedElementDispose?: DisposeFunc;
++    crossOriginDispose?: DisposeFunc;
++    createRoot: RootConstructor;
++    updateRoot: (root: Root, removed?: boolean) => void;
++    createGroupper?: GroupperConstructor;
++    createMover?: MoverConstructor;
++    createDeloser?: DeloserConstructor;
++    createModalizer?: ModalizerConstructor;
++    updateObserved?: (element: HTMLElement) => void;
++    updateModalizer?: (modalizer: Modalizer, removed?: boolean) => void;
++    _version: string;
++    _noop: boolean;
++}
++interface TabsterCompat {
++    attributeTransform?: <P>(old: P) => TabsterAttributeProps;
++}
++
++declare const Types_d_TabsterAttributeName: typeof TabsterAttributeName;
++declare const Types_d_TabsterDummyInputAttributeName: typeof TabsterDummyInputAttributeName;
++declare const Types_d_DeloserEventName: typeof DeloserEventName;
++declare const Types_d_ModalizerEventName: typeof ModalizerEventName;
++declare const Types_d_MoverEventName: typeof MoverEventName;
++type Types_d_TabsterEventWithDetails<D> = TabsterEventWithDetails<D>;
++type Types_d_TabsterDOMAttribute = TabsterDOMAttribute;
++type Types_d_TabsterCoreProps = TabsterCoreProps;
++type Types_d_TabsterCore = TabsterCore;
++type Types_d_GetTabster = GetTabster;
++type Types_d_GetWindow = GetWindow;
++type Types_d_SubscribableCallback<A, B = undefined> = SubscribableCallback<A, B>;
++type Types_d_Subscribable<A, B = undefined> = Subscribable<A, B>;
++type Types_d_KeyboardNavigationState = KeyboardNavigationState;
++type Types_d_FocusedElementDetails = FocusedElementDetails;
++type Types_d_FocusedElementState = FocusedElementState;
++type Types_d_WeakHTMLElement<D = undefined> = WeakHTMLElement<D>;
++type Types_d_TabsterPart<P> = TabsterPart<P>;
++type Types_d_ObservedElementProps = ObservedElementProps;
++type Types_d_ObservedElementDetails = ObservedElementDetails;
++declare const Types_d_ObservedElementAccesibilities: typeof ObservedElementAccesibilities;
++type Types_d_ObservedElementAccesibility = ObservedElementAccesibility;
++type Types_d_ObservedElementAsyncRequest<T> = ObservedElementAsyncRequest<T>;
++type Types_d_ObservedElementAPI = ObservedElementAPI;
++type Types_d_CrossOriginElement = CrossOriginElement;
++type Types_d_CrossOriginSentTo = CrossOriginSentTo;
++type Types_d_CrossOriginTransactionTypes = CrossOriginTransactionTypes;
++type Types_d_CrossOriginTransactionType = CrossOriginTransactionType;
++type Types_d_CrossOriginTransactionData<I, O> = CrossOriginTransactionData<I, O>;
++type Types_d_CrossOriginTransactionSend = CrossOriginTransactionSend;
++type Types_d_CrossOriginMessage = CrossOriginMessage;
++type Types_d_CrossOriginFocusedElementState = CrossOriginFocusedElementState;
++type Types_d_CrossOriginObservedElementState = CrossOriginObservedElementState;
++type Types_d_CrossOriginAPI = CrossOriginAPI;
++type Types_d_OutlineProps = OutlineProps;
++type Types_d_OutlinedElementProps = OutlinedElementProps;
++type Types_d_OutlineAPI = OutlineAPI;
++type Types_d_DeloserElementActions = DeloserElementActions;
++declare const Types_d_RestoreFocusOrders: typeof RestoreFocusOrders;
++type Types_d_RestoreFocusOrder = RestoreFocusOrder;
++type Types_d_DeloserProps = DeloserProps;
++type Types_d_Deloser = Deloser;
++type Types_d_DeloserConstructor = DeloserConstructor;
++type Types_d_DeloserAPI = DeloserAPI;
++type Types_d_FocusableProps = FocusableProps;
++type Types_d_FocusableAcceptElementState = FocusableAcceptElementState;
++type Types_d_FindFocusableProps = FindFocusableProps;
++type Types_d_FindFirstProps = FindFirstProps;
++type Types_d_FindNextProps = FindNextProps;
++type Types_d_FindDefaultProps = FindDefaultProps;
++type Types_d_FindAllProps = FindAllProps;
++type Types_d_FocusableAPI = FocusableAPI;
++declare const Types_d_Visibilities: typeof Visibilities;
++type Types_d_Visibility = Visibility;
++type Types_d_MoverElementState = MoverElementState;
++declare const Types_d_MoverDirections: typeof MoverDirections;
++type Types_d_MoverDirection = MoverDirection;
++type Types_d_NextTabbable = NextTabbable;
++type Types_d_MoverProps = MoverProps;
++type Types_d_MoverEvent = MoverEvent;
++type Types_d_Mover = Mover;
++type Types_d_MoverConstructor = MoverConstructor;
++type Types_d_MoverAPI = MoverAPI;
++declare const Types_d_GroupperTabbabilities: typeof GroupperTabbabilities;
++type Types_d_GroupperTabbability = GroupperTabbability;
++type Types_d_GroupperProps = GroupperProps;
++type Types_d_Groupper = Groupper;
++type Types_d_GroupperConstructor = GroupperConstructor;
++type Types_d_GroupperAPI = GroupperAPI;
++type Types_d_GroupperInternalAPI = GroupperInternalAPI;
++type Types_d_ModalizerProps = ModalizerProps;
++type Types_d_ModalizerEventDetails = ModalizerEventDetails;
++type Types_d_ModalizerEvent = ModalizerEvent;
++type Types_d_Modalizer = Modalizer;
++type Types_d_ModalizerConstructor = ModalizerConstructor;
++type Types_d_RootProps = RootProps;
++type Types_d_Root = Root;
++type Types_d_RootConstructor = RootConstructor;
++type Types_d_GetTabsterContextOptions = GetTabsterContextOptions;
++type Types_d_TabsterContext = TabsterContext;
++type Types_d_RootFocusEventDetails = RootFocusEventDetails;
++type Types_d_RootAPI = RootAPI;
++type Types_d_UncontrolledAPI = UncontrolledAPI;
++type Types_d_ModalizerAPI = ModalizerAPI;
++type Types_d_DeloserOnElement = DeloserOnElement;
++type Types_d_RootOnElement = RootOnElement;
++type Types_d_ModalizerOnElement = ModalizerOnElement;
++type Types_d_FocusableOnElement = FocusableOnElement;
++type Types_d_MoverOnElement = MoverOnElement;
++type Types_d_GroupperOnElement = GroupperOnElement;
++type Types_d_UncontrolledOnElement = UncontrolledOnElement;
++type Types_d_ObservedOnElement = ObservedOnElement;
++type Types_d_OutlineOnElement = OutlineOnElement;
++type Types_d_TabsterAttributeProps = TabsterAttributeProps;
++type Types_d_TabsterAttributeOnElement = TabsterAttributeOnElement;
++type Types_d_TabsterAugmentedAttributes = TabsterAugmentedAttributes;
++type Types_d_TabsterOnElement = TabsterOnElement;
++type Types_d_OutlineElements = OutlineElements;
++type Types_d_TabsterElementStorageEntry = TabsterElementStorageEntry;
++type Types_d_TabsterElementStorage = TabsterElementStorage;
++type Types_d_DisposeFunc = DisposeFunc;
++type Types_d_InternalAPI = InternalAPI;
++type Types_d_TabsterInternal = TabsterInternal;
++type Types_d_TabsterCompat = TabsterCompat;
++declare namespace Types_d {
++  export {
++    Types_d_TabsterAttributeName as TabsterAttributeName,
++    Types_d_TabsterDummyInputAttributeName as TabsterDummyInputAttributeName,
++    Types_d_DeloserEventName as DeloserEventName,
++    Types_d_ModalizerEventName as ModalizerEventName,
++    Types_d_MoverEventName as MoverEventName,
++    Types_d_TabsterEventWithDetails as TabsterEventWithDetails,
++    Types_d_TabsterDOMAttribute as TabsterDOMAttribute,
++    Types_d_TabsterCoreProps as TabsterCoreProps,
++    Types_d_TabsterCore as TabsterCore,
++    Types_d_GetTabster as GetTabster,
++    Types_d_GetWindow as GetWindow,
++    Types_d_SubscribableCallback as SubscribableCallback,
++    Types_d_Subscribable as Subscribable,
++    Types_d_KeyboardNavigationState as KeyboardNavigationState,
++    Types_d_FocusedElementDetails as FocusedElementDetails,
++    Types_d_FocusedElementState as FocusedElementState,
++    Types_d_WeakHTMLElement as WeakHTMLElement,
++    Types_d_TabsterPart as TabsterPart,
++    Types_d_ObservedElementProps as ObservedElementProps,
++    Types_d_ObservedElementDetails as ObservedElementDetails,
++    Types_d_ObservedElementAccesibilities as ObservedElementAccesibilities,
++    Types_d_ObservedElementAccesibility as ObservedElementAccesibility,
++    Types_d_ObservedElementAsyncRequest as ObservedElementAsyncRequest,
++    Types_d_ObservedElementAPI as ObservedElementAPI,
++    Types_d_CrossOriginElement as CrossOriginElement,
++    Types_d_CrossOriginSentTo as CrossOriginSentTo,
++    Types_d_CrossOriginTransactionTypes as CrossOriginTransactionTypes,
++    Types_d_CrossOriginTransactionType as CrossOriginTransactionType,
++    Types_d_CrossOriginTransactionData as CrossOriginTransactionData,
++    Types_d_CrossOriginTransactionSend as CrossOriginTransactionSend,
++    Types_d_CrossOriginMessage as CrossOriginMessage,
++    Types_d_CrossOriginFocusedElementState as CrossOriginFocusedElementState,
++    Types_d_CrossOriginObservedElementState as CrossOriginObservedElementState,
++    Types_d_CrossOriginAPI as CrossOriginAPI,
++    Types_d_OutlineProps as OutlineProps,
++    Types_d_OutlinedElementProps as OutlinedElementProps,
++    Types_d_OutlineAPI as OutlineAPI,
++    Types_d_DeloserElementActions as DeloserElementActions,
++    Types_d_RestoreFocusOrders as RestoreFocusOrders,
++    Types_d_RestoreFocusOrder as RestoreFocusOrder,
++    Types_d_DeloserProps as DeloserProps,
++    Types_d_Deloser as Deloser,
++    Types_d_DeloserConstructor as DeloserConstructor,
++    Types_d_DeloserAPI as DeloserAPI,
++    Types_d_FocusableProps as FocusableProps,
++    Types_d_FocusableAcceptElementState as FocusableAcceptElementState,
++    Types_d_FindFocusableProps as FindFocusableProps,
++    Types_d_FindFirstProps as FindFirstProps,
++    Types_d_FindNextProps as FindNextProps,
++    Types_d_FindDefaultProps as FindDefaultProps,
++    Types_d_FindAllProps as FindAllProps,
++    Types_d_FocusableAPI as FocusableAPI,
++    Types_d_Visibilities as Visibilities,
++    Types_d_Visibility as Visibility,
++    Types_d_MoverElementState as MoverElementState,
++    Types_d_MoverDirections as MoverDirections,
++    Types_d_MoverDirection as MoverDirection,
++    Types_d_NextTabbable as NextTabbable,
++    Types_d_MoverProps as MoverProps,
++    Types_d_MoverEvent as MoverEvent,
++    Types_d_Mover as Mover,
++    Types_d_MoverConstructor as MoverConstructor,
++    Types_d_MoverAPI as MoverAPI,
++    Types_d_GroupperTabbabilities as GroupperTabbabilities,
++    Types_d_GroupperTabbability as GroupperTabbability,
++    Types_d_GroupperProps as GroupperProps,
++    Types_d_Groupper as Groupper,
++    Types_d_GroupperConstructor as GroupperConstructor,
++    Types_d_GroupperAPI as GroupperAPI,
++    Types_d_GroupperInternalAPI as GroupperInternalAPI,
++    Types_d_ModalizerProps as ModalizerProps,
++    Types_d_ModalizerEventDetails as ModalizerEventDetails,
++    Types_d_ModalizerEvent as ModalizerEvent,
++    Types_d_Modalizer as Modalizer,
++    Types_d_ModalizerConstructor as ModalizerConstructor,
++    Types_d_RootProps as RootProps,
++    Types_d_Root as Root,
++    Types_d_RootConstructor as RootConstructor,
++    Types_d_GetTabsterContextOptions as GetTabsterContextOptions,
++    Types_d_TabsterContext as TabsterContext,
++    Types_d_RootFocusEventDetails as RootFocusEventDetails,
++    Types_d_RootAPI as RootAPI,
++    Types_d_UncontrolledAPI as UncontrolledAPI,
++    Types_d_ModalizerAPI as ModalizerAPI,
++    Types_d_DeloserOnElement as DeloserOnElement,
++    Types_d_RootOnElement as RootOnElement,
++    Types_d_ModalizerOnElement as ModalizerOnElement,
++    Types_d_FocusableOnElement as FocusableOnElement,
++    Types_d_MoverOnElement as MoverOnElement,
++    Types_d_GroupperOnElement as GroupperOnElement,
++    Types_d_UncontrolledOnElement as UncontrolledOnElement,
++    Types_d_ObservedOnElement as ObservedOnElement,
++    Types_d_OutlineOnElement as OutlineOnElement,
++    Types_d_TabsterAttributeProps as TabsterAttributeProps,
++    Types_d_TabsterAttributeOnElement as TabsterAttributeOnElement,
++    Types_d_TabsterAugmentedAttributes as TabsterAugmentedAttributes,
++    Types_d_TabsterOnElement as TabsterOnElement,
++    Types_d_OutlineElements as OutlineElements,
++    Types_d_TabsterElementStorageEntry as TabsterElementStorageEntry,
++    Types_d_TabsterElementStorage as TabsterElementStorage,
++    Types_d_DisposeFunc as DisposeFunc,
++    Types_d_InternalAPI as InternalAPI,
++    Types_d_TabsterInternal as TabsterInternal,
++    Types_d_TabsterCompat as TabsterCompat,
++  };
++}
++
++/*!
++ * Copyright (c) Microsoft Corporation. All rights reserved.
++ * Licensed under the MIT License.
++ */
++
++interface WindowWithTabsterInstance extends Window {
++    __tabsterInstance?: TabsterCore;
++}
++
++/*!
++ * Copyright (c) Microsoft Corporation. All rights reserved.
++ * Licensed under the MIT License.
++ */
++
++/**
++ * Extends Window to include an internal Tabster instance.
++ */
++declare class Tabster implements TabsterCore, TabsterInternal {
++    private _storage;
++    private _unobserve;
++    private _win;
++    private _forgetMemorizedTimer;
++    private _forgetMemorizedElements;
++    _version: string;
++    _noop: boolean;
++    keyboardNavigation: KeyboardNavigationState;
++    focusedElement: FocusedElementState;
++    focusable: FocusableAPI;
++    root: RootAPI;
++    uncontrolled: UncontrolledAPI;
++    controlTab: boolean;
++    rootDummyInputs: boolean;
++    internal: InternalAPI;
++    groupper?: GroupperAPI;
++    mover?: MoverAPI;
++    outline?: OutlineAPI;
++    deloser?: DeloserAPI;
++    modalizer?: ModalizerAPI;
++    observedElement?: ObservedElementAPI;
++    crossOrigin?: CrossOriginAPI;
++    groupperDispose?: DisposeFunc;
++    moverDispose?: DisposeFunc;
++    outlineDispose?: DisposeFunc;
++    rootDispose?: DisposeFunc;
++    deloserDispose?: DisposeFunc;
++    modalizerDispose?: DisposeFunc;
++    observedElementDispose?: DisposeFunc;
++    crossOriginDispose?: DisposeFunc;
++    createRoot: RootConstructor;
++    updateRoot: (root: Root, removed?: boolean) => void;
++    createGroupper?: GroupperConstructor;
++    createMover?: MoverConstructor;
++    createDeloser?: DeloserConstructor;
++    createModalizer?: ModalizerConstructor;
++    updateObserved?: (element: HTMLElement) => void;
++    updateModalizer?: (modalzier: Modalizer, removed?: boolean) => void;
++    constructor(win: Window, props?: TabsterCoreProps);
++    protected dispose(): void;
++    static dispose(instance: TabsterCore): void;
++    storageEntry(element: HTMLElement, addremove?: boolean): TabsterElementStorageEntry | undefined;
++    getWindow: () => WindowWithTabsterInstance;
++    static forceCleanup(tabster: Tabster): void;
++}
++
++declare function forceCleanup(tabster: Tabster): void;
++/**
++ * Creates an instance of Tabster, returns the current window instance if it already exists.
++ */
++declare function createTabster(win: Window, props?: TabsterCoreProps): TabsterCore;
++/**
++ * Creates a new groupper instance or returns an existing one
++ * @param tabster Tabster instance
++ */
++declare function getGroupper(tabster: TabsterCore): GroupperAPI;
++/**
++ * Creates a new mover instance or returns an existing one
++ * @param tabster Tabster instance
++ */
++declare function getMover(tabster: TabsterCore): MoverAPI;
++declare function getOutline(tabster: TabsterCore): OutlineAPI;
++/**
++ * Creates a new new deloser instance or returns an existing one
++ * @param tabster Tabster instance
++ * @param props Deloser props
++ */
++declare function getDeloser(tabster: TabsterCore, props?: {
++    autoDeloser: DeloserProps;
++}): DeloserAPI;
++/**
++ * Creates a new modalizer instance or returns an existing one
++ * @param tabster Tabster instance
++ */
++declare function getModalizer(tabster: TabsterCore): ModalizerAPI;
++declare function getObservedElement(tabster: TabsterCore): ObservedElementAPI;
++declare function getCrossOrigin(tabster: TabsterCore): CrossOriginAPI;
++declare function getInternal(tabster: TabsterCore): InternalAPI;
++declare function disposeTabster(tabster: TabsterCore): void;
++declare function getTabsterAttribute(props: TabsterAttributeProps): TabsterDOMAttribute;
++declare function getTabsterAttribute(props: TabsterAttributeProps, plain: true): string;
++/**
++ * Sets or updates Tabster attribute of the element.
++ * @param element an element to set data-tabster attribute on.
++ * @param newProps new Tabster props to set.
++ * @param update if true, newProps will be merged with the existing props.
++ *  When true and the value of a property in newProps is undefined, the property
++ *  will be removed from the attribute.
++ */
++declare function setTabsterAttribute(element: HTMLElement, newProps: TabsterAttributeProps, update?: boolean): void;
++/**
++ * Returns an instance of Tabster if it already exists on the window .
++ * @param win window instance that could contain an Tabster instance.
++ */
++declare function getCurrentTabster(win: Window): TabsterCore | undefined;
++declare function makeNoOp(tabster: TabsterCore, noop: boolean): void;
++declare function isNoOp(tabster: TabsterCore): boolean;
++
++export { Types_d as Types, createTabster, disposeTabster, forceCleanup, getCrossOrigin, getCurrentTabster, getDeloser, getGroupper, getInternal, getModalizer, getMover, getObservedElement, getOutline, getTabsterAttribute, isNoOp, makeNoOp, setTabsterAttribute };
