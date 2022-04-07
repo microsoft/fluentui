@@ -275,8 +275,8 @@ export type UseControllableStateOptions<State> = {
 // @public
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
 
-// @public
-export function useFirstMount(): boolean;
+// @public (undocumented)
+export function useFirstMount(): () => boolean;
 
 // @public
 export function useForceUpdate(): DispatchWithoutAction;
