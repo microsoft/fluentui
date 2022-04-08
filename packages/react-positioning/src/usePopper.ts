@@ -122,17 +122,15 @@ export function usePopper(
   // Add window resize and scroll listeners to update position
   useIsomorphicLayoutEffect(() => {
     const win = targetDocument?.defaultView;
-    if (!win) {
-      return;
+    if (win) {
+      win.addEventListener('resize', updatePosition);
+      win.addEventListener('scroll', updatePosition);
+
+      return () => {
+        win.removeEventListener('resize', updatePosition);
+        win.removeEventListener('scroll', updatePosition);
+      };
     }
-
-    win.addEventListener('resize', updatePosition);
-    win.addEventListener('scroll', updatePosition);
-
-    return () => {
-      window.removeEventListener('resize', updatePosition);
-      window.removeEventListener('scroll', updatePosition);
-    };
   }, [updatePosition, targetDocument]);
 
   if (process.env.NODE_ENV !== 'production') {
