@@ -88,8 +88,12 @@ const useRootStyles = makeStyles({
     },
   },
   subtle: {
+    backgroundColor: tokens.colorSubtleBackground,
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorSubtleBackgroundHover,
+    },
+    ':active': {
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
   },
   disabled: {
