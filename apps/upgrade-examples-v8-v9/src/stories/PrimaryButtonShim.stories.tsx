@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { CommandButton, IButtonProps, Icon, IIconProps } from '@fluentui/react';
+import { PrimaryButton, IButtonProps } from '@fluentui/react';
 import { Button, webLightTheme, FluentProvider, makeStyles } from '@fluentui/react-components';
-import { CommandButtonShim } from '../shims/Button';
+import { PrimaryButtonShim } from '../shims/ButtonShim';
 
 const useStyles = makeStyles({
   root: {
@@ -15,25 +15,23 @@ const useStyles = makeStyles({
   },
 });
 
-const addIcon: IIconProps = { iconName: 'Add' };
-
-export const Command = (props: IButtonProps) => {
+export const PrimaryButtonStory = (props: IButtonProps) => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
       <h3>8.0</h3>
-      <h3>CommandButtonShim</h3>
+      <h3>PrimaryButtonShim</h3>
       <h3>9.0</h3>
-      <CommandButton iconProps={addIcon}>Command</CommandButton>
+      <PrimaryButton {...props}>Primary</PrimaryButton>
       <FluentProvider theme={webLightTheme}>
-        <CommandButtonShim iconProps={addIcon}>Command</CommandButtonShim>
+        <PrimaryButtonShim {...props}>Primary</PrimaryButtonShim>
       </FluentProvider>
       <FluentProvider theme={webLightTheme}>
-        <Button appearance="transparent" icon={<Icon {...addIcon} />}>
-          Command
-        </Button>
+        <Button appearance="primary">Primary</Button>
       </FluentProvider>
     </div>
   );
 };
+
+PrimaryButtonStory.storyName = 'PrimaryButton';

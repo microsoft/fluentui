@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ActionButton, IButtonProps, Icon, IIconProps } from '@fluentui/react';
 import { Button, webLightTheme, FluentProvider, makeStyles } from '@fluentui/react-components';
-import { ActionButtonShim } from '../shims/Button';
+import { ActionButtonShim } from '../shims/ButtonShim';
 
 const useStyles = makeStyles({
   root: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 
 const addIcon: IIconProps = { iconName: 'Add' };
 
-export const Action = (props: IButtonProps) => {
+export const ActionButtonStory = (props: IButtonProps) => {
   const styles = useStyles();
 
   return (
@@ -37,3 +37,5 @@ export const Action = (props: IButtonProps) => {
     </div>
   );
 };
+
+ActionButtonStory.storyName = 'ActionButton';

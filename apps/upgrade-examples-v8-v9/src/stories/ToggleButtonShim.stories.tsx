@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton, IButtonProps, Icon, IIconProps, initializeIcons } from '@fluentui/react';
 import { webLightTheme, FluentProvider, makeStyles, ToggleButton } from '@fluentui/react-components';
-import { ToggleButtonShim } from '../shims/Button';
+import { ToggleButtonShim } from '../shims/ButtonShim';
 
 initializeIcons();
 
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 const volume0Icon: IIconProps = { iconName: 'Volume0' };
 const volume3Icon: IIconProps = { iconName: 'Volume3' };
 
-export const Toggle = (props: IButtonProps) => {
+export const ToggleButtonStory = (props: IButtonProps) => {
   const styles = useStyles();
   const [muted1, setMuted1] = React.useState(false);
   const [muted2, setMuted2] = React.useState(false);
@@ -59,3 +59,5 @@ export const Toggle = (props: IButtonProps) => {
     </div>
   );
 };
+
+ToggleButtonStory.storyName = 'ToggleButton';

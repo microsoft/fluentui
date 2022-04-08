@@ -6,7 +6,7 @@ import {
   FluentProvider,
   makeStyles,
 } from '@fluentui/react-components';
-import { CompoundButtonShim } from '../shims/Button';
+import { CompoundButtonShim } from '../shims/ButtonShim';
 
 const useStyles = makeStyles({
   root: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Compound = (props: IButtonProps) => {
+export const CompoundButtonStory = (props: IButtonProps) => {
   const styles = useStyles();
 
   return (
@@ -38,3 +38,5 @@ export const Compound = (props: IButtonProps) => {
     </div>
   );
 };
+
+CompoundButtonStory.storyName = 'CompoundButton';
