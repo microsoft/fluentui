@@ -116,10 +116,6 @@ const createIssue = (repo: string, issue: MigrationIssue, templateTitle: string)
 
   let command = `gh issue create --repo "${repo}" --title "${title}" --body "${message}"`;
 
-  if (issue.assignee !== undefined) {
-    command += ` --assignee ${issue.assignee}`;
-  }
-
   const issueUrl = execSync(command).toString().trim();
 
   return issueUrl;
