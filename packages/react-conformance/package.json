@@ -19,8 +19,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/react-is": "^16.7.1"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "lodash": "^4.17.15",
