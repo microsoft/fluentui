@@ -147,10 +147,10 @@ describe('ColorPicker', () => {
   });
 
   it('hides alpha control slider', () => {
-    const { getAllByRole, queryByRole } = render(<ColorPicker color={white} alphaType="none" />);
+    const { container, getAllByRole, queryByRole } = render(<ColorPicker color={white} alphaType="none" />);
 
     const alphaSlider = queryByRole('slider', { name: 'Alpha' });
-    const tableHeaders = getAllByRole('group')[1].firstElementChild!.firstElementChild!.children;
+    const tableHeaders = container.querySelectorAll('thead td');
 
     // There should only be table headers and inputs for hex, red, green, and blue (no alpha)
     expect(alphaSlider).toBeFalsy();
@@ -160,18 +160,18 @@ describe('ColorPicker', () => {
   });
 
   it('shows preview box', () => {
-    const { container } = render(<ColorPicker color="#FFFFFF" showPreview={true} />);
+    const { getAllByRole } = render(<ColorPicker color="#FFFFFF" showPreview={true} />);
 
-    const previewBox = container.firstElementChild!.querySelector('.is-preview');
+    const previewBox = getAllByRole('group')[0].querySelector('.is-preview');
 
     // There should be one preview box
     expect(previewBox).toBeTruthy();
   });
 
   it('hides preview box', () => {
-    const { container } = render(<ColorPicker color="#FFFFFF" showPreview={false} />);
+    const { getAllByRole } = render(<ColorPicker color="#FFFFFF" showPreview={false} />);
 
-    const previewBox = container.firstElementChild!.querySelector('.is-preview');
+    const previewBox = getAllByRole('group')[0].querySelector('.is-preview');
 
     // There should be one preview box
     expect(previewBox).toBeFalsy();
@@ -229,23 +229,23 @@ describe('ColorPicker', () => {
   });
 
   it('uses default aria label', () => {
-    const { container, rerender } = render(<ColorPicker color="#abcdef" />);
-    expect(container.firstElementChild!.getAttribute('aria-label')).toBe(
+    const { getAllByRole, rerender } = render(<ColorPicker color="#abcdef" />);
+    expect(getAllByRole('group')[0].getAttribute('aria-label')).toBe(
       'Color picker, Red 171 Green 205 Blue 239 Alpha 100% selected.',
     );
 
     rerender(<ColorPicker color="rgba(255, 0, 0, 0.5)" />);
 
-    expect(container.firstElementChild!.getAttribute('aria-label')).toBe(
+    expect(getAllByRole('group')[0].getAttribute('aria-label')).toBe(
       'Color picker, Red 255 Green 0 Blue 0 Alpha 50% selected.',
     );
   });
 
   it('can use custom aria label', () => {
-    const { container } = render(
+    const { getAllByRole } = render(
       <ColorPicker color="#abcdef" strings={{ rootAriaLabelFormat: 'custom color picker {0}' }} />,
     );
-    expect(container.firstElementChild!.getAttribute('aria-label')).toBe(
+    expect(getAllByRole('group')[0].getAttribute('aria-label')).toBe(
       'custom color picker Red 171 Green 205 Blue 239 Alpha 100%',
     );
   });
