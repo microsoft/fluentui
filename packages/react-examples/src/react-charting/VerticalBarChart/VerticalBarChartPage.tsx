@@ -64,6 +64,17 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
               along the vertical axis.
             </p>
             <p>The bar widths are proportional to the number of bars and space available within the charting area.</p>
+            <br />
+            <h3>Implementation details</h3>
+            <p>
+              The current vertical bar charts implementation is in the cartesian coordinate system. The cartesian
+              coordinate system is represented by Cartesian Chart which serves as the base class for vertical bar charts
+            </p>
+          </div>
+        }
+        bestPractices={
+          <div>
+            <p>Coming soon.</p>
           </div>
         }
       />
