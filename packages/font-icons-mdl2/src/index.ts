@@ -24,7 +24,7 @@ const DEFAULT_BASE_URL = 'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_2
 
 export function initializeIcons(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  baseUrl: string = (window as any)?.FabricConfig.fontBaseUrl ?? DEFAULT_BASE_URL,
+  baseUrl: string = (window as any)?.FabricConfig?.fontBaseUrl ?? DEFAULT_BASE_URL,
   options?: IIconOptions,
 ): void {
   [
