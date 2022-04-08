@@ -659,20 +659,19 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   );
 
   return (
-    // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
-    // with JAWS.
     <div
       ref={rootRef}
       className={classNames.root}
       data-automationid="DetailsList"
       data-is-scrollable="false"
-      aria-label={ariaLabel}
       {...(shouldApplyApplicationRole ? { role: 'application' } : {})}
     >
       <FocusRects />
       <div
         role={role}
-        aria-label={ariaLabelForGrid}
+        // ariaLabel is a legacy prop that used to be applied on the root node, which has poor AT support
+        // it is now treated as a fallback to ariaLabelForGrid for legacy support
+        aria-label={ariaLabelForGrid || ariaLabel}
         aria-rowcount={isPlaceholderData ? -1 : rowCount}
         aria-colcount={colCount}
         aria-readonly="true"
