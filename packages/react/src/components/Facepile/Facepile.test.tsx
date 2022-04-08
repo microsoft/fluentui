@@ -176,11 +176,10 @@ describe('Facepile', () => {
       />,
     );
 
-    const addButton = getAllByRole('button')[0];
-    const overflowButton = getAllByRole('button')[1];
+    const [addButton, overflowButton] = getAllByRole('button');
 
-    expect(addButton.firstElementChild!.firstElementChild!.className).toContain('ms-Persona--size32');
-    expect(overflowButton.firstElementChild!.firstElementChild!.className).toContain('ms-Persona--size32');
+    expect(addButton.querySelectorAll('.ms-Persona--size32')).toBeTruthy();
+    expect(overflowButton.querySelectorAll('.ms-Persona--size32')).toBeTruthy();
 
     const faces = getAllByRole('listitem');
 
