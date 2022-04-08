@@ -6,7 +6,7 @@ import {
 } from '@floating-ui/dom';
 import type { Middleware, Strategy, Placement, Coords, MiddlewareData } from '@floating-ui/dom';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { canUseDOM, useIsomorphicLayoutEffect, useFirstMount } from '@fluentui/react-utilities';
+import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
 import type { FloatingUIOptions, PositioningProps, PositioningVirtualElement } from './types';
@@ -251,8 +251,6 @@ function useFloatingUIOptions(options: FloatingUIOptions) {
 }
 
 function useContainerRef(updatePosition: () => void, enabled: boolean) {
-  const isFirst = useFirstMount();
-
   return useCallbackRef<HTMLElement | null>(null, (container, prevContainer) => {
     if (container && enabled) {
       // When the container is first resolved, set position `fixed` to avoid scroll jumps.
@@ -262,32 +260,20 @@ function useContainerRef(updatePosition: () => void, enabled: boolean) {
 
     toggleScrollListener(container, prevContainer, updatePosition);
 
-    if (!isFirst()) {
-      updatePosition();
-    }
+    updatePosition();
   });
 }
 
 function useTargetRef(updatePosition: () => void) {
-  const isFirst = useFirstMount();
-
   return useCallbackRef<HTMLElement | PositioningVirtualElement | null>(null, (target, prevTarget) => {
     toggleScrollListener(target, prevTarget, updatePosition);
 
-    if (!isFirst()) {
-      updatePosition();
-    }
+    updatePosition();
   });
 }
 
 function useArrowRef(updatePosition: () => void) {
-  const isFirst = useFirstMount();
-
-  return useCallbackRef<HTMLElement | null>(null, () => {
-    if (!isFirst()) {
-      updatePosition();
-    }
-  });
+  return useCallbackRef<HTMLElement | null>(null, updatePosition);
 }
 
 /**

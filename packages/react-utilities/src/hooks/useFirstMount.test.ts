@@ -10,15 +10,14 @@ describe('useFirstMount', () => {
     rerender();
 
     // Assert
-    expect(result.current()).toBe(false);
+    expect(result.current).toBe(false);
   });
 
   it('should return true after first render', () => {
     // Act
-    let result: boolean | undefined = undefined;
-    renderHook(() => (result = useFirstMount()()));
+    const { result } = renderHook(useFirstMount);
 
     // Assert
-    expect(result).toBe(true);
+    expect(result.current).toBe(true);
   });
 });

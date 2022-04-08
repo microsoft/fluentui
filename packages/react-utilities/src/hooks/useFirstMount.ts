@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 /**
  * Checks if components was mounted the first time.
@@ -11,12 +10,13 @@ import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
  * @example
  * const isFirstMount = useFirstMount();
  */
-export function useFirstMount(): () => boolean {
+export function useFirstMount(): boolean {
   const isFirst = React.useRef(true);
 
-  useIsomorphicLayoutEffect(() => {
+  if (isFirst.current) {
     isFirst.current = false;
-  }, []);
+    return true;
+  }
 
-  return () => isFirst.current;
+  return isFirst.current;
 }
