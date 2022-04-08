@@ -102,6 +102,8 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Provider.handledProps, props);
 
+  const rendersReactFragment = ElementType === React.Fragment;
+
   const telemetry = React.useMemo<Telemetry | undefined>(() => {
     if (!telemetryRef) {
       return undefined;
@@ -146,28 +148,33 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
     rtlProps.dir = outgoingContext.rtl ? 'rtl' : 'ltr';
   }
 
-  const { classes } = unstable_getStyles({
-    allDisplayNames: [Provider.displayName],
-    className: providerClassName,
-    primaryDisplayName: Provider.displayName,
-    componentProps: {},
-    inlineStylesProps: {
-      className,
-      design,
-      styles,
-      variables,
-    },
+  // Perf optimisation
+  // Do not invoke styling layer is there is no need
+  const { classes } = rendersReactFragment
+    ? { classes: { root: '' } }
+    : unstable_getStyles({
+        allDisplayNames: [Provider.displayName],
+        className: providerClassName,
+        primaryDisplayName: Provider.displayName,
+        componentProps: {},
+        inlineStylesProps: {
+          className,
+          design,
+          styles,
+          variables,
+        },
 
-    disableAnimations: outgoingContext.disableAnimations,
-    performance: outgoingContext.performance,
-    renderer: outgoingContext.renderer,
-    rtl: outgoingContext.rtl,
-    theme: outgoingContext.theme,
-    saveDebug: _.noop,
-    telemetry: undefined,
-  });
+        disableAnimations: outgoingContext.disableAnimations,
+        performance: outgoingContext.performance,
+        renderer: outgoingContext.renderer,
+        rtl: outgoingContext.rtl,
+        theme: outgoingContext.theme,
+        saveDebug: _.noop,
+        telemetry: undefined,
+      });
 
   const portalContextValue = React.useMemo<PortalContextValue>(() => ({ className: classes.root }), [classes.root]);
+  const RenderProvider = outgoingContext.renderer.Provider;
 
   useIsomorphicLayoutEffect(() => {
     renderFontFaces(outgoingContext.renderer, props.theme);
@@ -188,22 +195,26 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
     };
   }, []);
 
-  // do not spread anything - React.Fragment can only have `key` and `children` props
-  const elementProps =
-    ElementType === React.Fragment
-      ? {}
-      : {
-          className: classes.root,
-          ...rtlProps,
-          ...unhandledProps,
-        };
-  const RenderProvider = outgoingContext.renderer.Provider;
+  // If a Fragment is rendered:
+  // - do not spread anything to an element - React.Fragment can only have `key` and `children` props
+  // - as we don't apply styles "PortalContext.Provider" should not be rendered
+  if (rendersReactFragment) {
+    return (
+      <RenderProvider target={outgoingContext.target}>
+        <Unstable_FluentContextProvider value={outgoingContext}>
+          <>{children}</>
+        </Unstable_FluentContextProvider>
+      </RenderProvider>
+    );
+  }
 
   return (
     <RenderProvider target={outgoingContext.target}>
       <Unstable_FluentContextProvider value={outgoingContext}>
         <PortalContext.Provider value={portalContextValue}>
-          <ElementType {...elementProps}>{children}</ElementType>
+          <ElementType className={classes.root} {...rtlProps} {...unhandledProps}>
+            {children}
+          </ElementType>
         </PortalContext.Provider>
       </Unstable_FluentContextProvider>
     </RenderProvider>
