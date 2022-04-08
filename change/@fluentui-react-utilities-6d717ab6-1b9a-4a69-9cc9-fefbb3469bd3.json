@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "BREAKING: useFirstMount now returns a function getter so that it can be used in closures",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
