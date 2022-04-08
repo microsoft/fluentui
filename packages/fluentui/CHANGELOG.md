@@ -24,6 +24,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Do not render styles in Provider when "as" is "React.Fragment" @layershifter ([#22359](https://github.com/microsoft/fluentui/pull/22359))
 
 ### Fixes
+- `Tooltip` text size should be 12 by default @petr-duda ([#22407](https://github.com/microsoft/fluentui/pull/22407))
 - Add transparent borders to slider @ling1726 ([#22089](https://github.com/microsoft/fluentui/pull/22089))
 - Fix `Popup` opened from right click (on `context`), to not dismiss when scrolling happens in nested Popup @yaunboxue-amber ([#22087](https://github.com/microsoft/fluentui/pull/22087))
 - Fix `Dropdown` not annoucing placeholder/default value with VoiceOver on macOS @aubreyquinn ([#22173](https://github.com/microsoft/fluentui/pull/22173))
