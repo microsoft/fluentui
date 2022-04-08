@@ -186,9 +186,23 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
     return (
       <>
         <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          aria-label="change Width"
+          onChange={this._onWidthChange}
+        />
         <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          aria-label="change Height"
+          onChange={this._onHeightChange}
+        />
         <div style={rootStyle}>
           <AreaChart
             height={this.state.height}
