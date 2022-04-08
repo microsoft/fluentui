@@ -161,8 +161,8 @@ describe('ColorPicker', () => {
 
   it('shows preview box', () => {
     const { getAllByRole } = render(<ColorPicker color="#FFFFFF" showPreview={true} />);
-
-    const previewBox = getAllByRole('group')[0].querySelector('.is-preview');
+    const colorPickerRoot = getAllByRole('group')[0];
+    const previewBox = colorPickerRoot.querySelector('.is-preview');
 
     // There should be one preview box
     expect(previewBox).toBeTruthy();
@@ -170,8 +170,8 @@ describe('ColorPicker', () => {
 
   it('hides preview box', () => {
     const { getAllByRole } = render(<ColorPicker color="#FFFFFF" showPreview={false} />);
-
-    const previewBox = getAllByRole('group')[0].querySelector('.is-preview');
+    const colorPickerRoot = getAllByRole('group')[0];
+    const previewBox = colorPickerRoot.querySelector('.is-preview');
 
     // There should be one preview box
     expect(previewBox).toBeFalsy();
@@ -230,22 +230,22 @@ describe('ColorPicker', () => {
 
   it('uses default aria label', () => {
     const { getAllByRole, rerender } = render(<ColorPicker color="#abcdef" />);
-    expect(getAllByRole('group')[0].getAttribute('aria-label')).toBe(
+    const colorPickerRoot = getAllByRole('group')[0];
+    expect(colorPickerRoot.getAttribute('aria-label')).toBe(
       'Color picker, Red 171 Green 205 Blue 239 Alpha 100% selected.',
     );
 
     rerender(<ColorPicker color="rgba(255, 0, 0, 0.5)" />);
 
-    expect(getAllByRole('group')[0].getAttribute('aria-label')).toBe(
-      'Color picker, Red 255 Green 0 Blue 0 Alpha 50% selected.',
-    );
+    expect(colorPickerRoot.getAttribute('aria-label')).toBe('Color picker, Red 255 Green 0 Blue 0 Alpha 50% selected.');
   });
 
   it('can use custom aria label', () => {
     const { getAllByRole } = render(
       <ColorPicker color="#abcdef" strings={{ rootAriaLabelFormat: 'custom color picker {0}' }} />,
     );
-    expect(getAllByRole('group')[0].getAttribute('aria-label')).toBe(
+    const colorPickerRoot = getAllByRole('group')[0];
+    expect(colorPickerRoot.getAttribute('aria-label')).toBe(
       'custom color picker Red 171 Green 205 Blue 239 Alpha 100%',
     );
   });
