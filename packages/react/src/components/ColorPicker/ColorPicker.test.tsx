@@ -638,11 +638,11 @@ describe('ColorPicker', () => {
     // input too long "pasted" => use substring
     userEvent.clear(hexInput);
     userEvent.type(hexInput, '1234567');
-    validateChange({ calls: 6, prop: 'hex', value: '123456', input: hexInput });
+    validateChange({ calls: 1, prop: 'hex', value: '123456', input: hexInput });
 
     // invalid new value too long "pasted" => ignore
     userEvent.paste(hexInput, 'hello world');
-    validateChange({ calls: 6, prop: 'hex', value: '123456', input: hexInput });
+    validateChange({ calls: 1, prop: 'hex', value: '123456', input: hexInput });
   });
 
   it('reverts to previous valid hex value on blur if input is too short', () => {
