@@ -133,9 +133,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     selectionMode = selection.mode,
     selectionPreservedOnEmptyClick,
     selectionZoneProps,
+    // eslint-disable-next-line deprecation/deprecation
     ariaLabel,
     ariaLabelForGrid,
     rowElementEventMap,
+    // eslint-disable-next-line deprecation/deprecation
     shouldApplyApplicationRole = false,
     getKey,
     listProps,

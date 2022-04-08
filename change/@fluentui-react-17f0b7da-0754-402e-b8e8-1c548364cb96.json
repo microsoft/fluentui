@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix ariaLabel and ariaLabelForGrid weirdness, add deprecation warning for shouldApplyApplicationRole",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
