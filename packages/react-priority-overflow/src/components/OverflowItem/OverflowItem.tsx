@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useMergedRefs } from '@fluentui/react-utilities';
+import { applyTriggerPropsToChildren, useMergedRefs } from '@fluentui/react-utilities';
 import { useOverflowItem } from '../../useOverflowItem';
 import { OverflowItemProps } from './OverflowItem.types';
 
@@ -11,6 +11,7 @@ export const OverflowItem = React.forwardRef((props: OverflowItemProps, ref) => 
   const { id, groupId, priority, children } = props;
 
   const containerRef = useOverflowItem(id, priority, groupId);
-  const mergedRef = useMergedRefs(containerRef, ref);
-  return React.cloneElement(React.Children.only(children), { ref: mergedRef });
+  return applyTriggerPropsToChildren(children, {
+    ref: useMergedRefs(containerRef, ref),
+  });
 });
