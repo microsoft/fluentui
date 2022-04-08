@@ -160,27 +160,27 @@ describe('ColorPicker', () => {
   });
 
   it('shows preview box', () => {
-    const { getAllByRole } = render(<ColorPicker color="#FFFFFF" showPreview={true} />);
+    const { container } = render(<ColorPicker color="#FFFFFF" showPreview={true} />);
 
-    const previewBox = getAllByRole('group')[0].querySelector('.is-preview');
+    const previewBox = container.firstElementChild!.querySelector('.is-preview');
 
     // There should be one preview box
     expect(previewBox).toBeTruthy();
   });
 
   it('hides preview box', () => {
-    const { getAllByRole } = render(<ColorPicker color="#FFFFFF" showPreview={false} />);
+    const { container } = render(<ColorPicker color="#FFFFFF" showPreview={false} />);
 
-    const previewBox = getAllByRole('group')[0].querySelector('.is-preview');
+    const previewBox = container.firstElementChild!.querySelector('.is-preview');
 
     // There should be one preview box
     expect(previewBox).toBeFalsy();
   });
 
   it('renders default RGBA/Hex strings', () => {
-    const { getAllByRole } = render(<ColorPicker color="#FFFFFF" />);
+    const { container, getAllByRole } = render(<ColorPicker color="#FFFFFF" />);
 
-    const tableHeaders = Array.from(getAllByRole('group')[1].firstElementChild!.firstElementChild!.children);
+    const tableHeaders = container.querySelectorAll('thead td');
     const strings = ColorPickerBase.defaultProps.strings!;
     const textHeaders = [strings.hex, strings.red, strings.green, strings.blue, strings.alpha];
 
@@ -209,9 +209,9 @@ describe('ColorPicker', () => {
       hueAriaLabel: 'custom hue',
     };
 
-    const { getAllByRole } = render(<ColorPicker color="#FFFFFF" strings={customStrings} />);
+    const { container, getAllByRole } = render(<ColorPicker color="#FFFFFF" strings={customStrings} />);
 
-    const tableHeaders = Array.from(getAllByRole('group')[1].firstElementChild!.firstElementChild!.children);
+    const tableHeaders = container.querySelectorAll('thead td');
     tableHeaders.forEach((node, index) => {
       expect(node.textContent).toEqual(fields[index]);
     });
@@ -229,30 +229,30 @@ describe('ColorPicker', () => {
   });
 
   it('uses default aria label', () => {
-    const { getAllByRole, rerender } = render(<ColorPicker color="#abcdef" />);
-    expect(getAllByRole('group')[0].getAttribute('aria-label')).toBe(
+    const { container, rerender } = render(<ColorPicker color="#abcdef" />);
+    expect(container.firstElementChild!.getAttribute('aria-label')).toBe(
       'Color picker, Red 171 Green 205 Blue 239 Alpha 100% selected.',
     );
 
     rerender(<ColorPicker color="rgba(255, 0, 0, 0.5)" />);
 
-    expect(getAllByRole('group')[0].getAttribute('aria-label')).toBe(
+    expect(container.firstElementChild!.getAttribute('aria-label')).toBe(
       'Color picker, Red 255 Green 0 Blue 0 Alpha 50% selected.',
     );
   });
 
   it('can use custom aria label', () => {
-    const { getAllByRole } = render(
+    const { container } = render(
       <ColorPicker color="#abcdef" strings={{ rootAriaLabelFormat: 'custom color picker {0}' }} />,
     );
-    expect(getAllByRole('group')[0].getAttribute('aria-label')).toBe(
+    expect(container.firstElementChild!.getAttribute('aria-label')).toBe(
       'custom color picker Red 171 Green 205 Blue 239 Alpha 100%',
     );
   });
 
   it('handles transparency', () => {
     const color = getColorFromString('rgba(20, 30, 40, 0.3)')!;
-    const { getAllByRole } = render(
+    const { container, getAllByRole } = render(
       <ColorPicker color={color} alphaType="transparency" onChange={noOp} componentRef={colorPickerRef} />,
     );
 
@@ -260,7 +260,7 @@ describe('ColorPicker', () => {
     const inputs = getAllByRole('textbox') as HTMLInputElement[];
     verifyInputs(inputs, color, 'transparency');
 
-    const tableHeaders = Array.from(getAllByRole('group')[1].firstElementChild!.firstElementChild!.children);
+    const tableHeaders = container.querySelectorAll('thead td');
 
     expect(tableHeaders[4].textContent).toBe('Transparency');
   });
@@ -285,13 +285,13 @@ describe('ColorPicker', () => {
     const inputs = getAllByRole('textbox') as HTMLInputElement[];
     expect(inputs.length).toBe(5);
 
-    inputs.forEach(input => {
+    userEvent.click(inputs[0]);
+    for (let i = 1; i < inputs.length; i++) {
       userEvent.tab();
-      userEvent.tab({ shift: true });
 
       expect(colorPicker!.color.hex).toEqual(colorStringValue);
       expect(colorChangeSpy).toHaveBeenCalledTimes(0);
-    });
+    }
   });
 
   it('allows updating text fields', () => {
@@ -303,27 +303,27 @@ describe('ColorPicker', () => {
 
     const redInput = inputs[1];
     userEvent.clear(redInput);
-    userEvent.paste(redInput, '255');
-    validateChange({ calls: 1, prop: 'str', value: '#ff0000' });
-    validateChange({ calls: 1, prop: 'r', value: 255, input: redInput });
+    userEvent.type(redInput, '255');
+    validateChange({ calls: 3, prop: 'str', value: '#ff0000' });
+    validateChange({ calls: 3, prop: 'r', value: 255, input: redInput });
     // blur and make sure nothing changes
     userEvent.click(container);
-    validateChange({ calls: 1, prop: 'str', value: '#ff0000' });
+    validateChange({ calls: 3, prop: 'str', value: '#ff0000' });
 
     const hexInput = inputs[0];
     userEvent.clear(hexInput);
-    userEvent.paste(hexInput, '00ff00');
-    validateChange({ calls: 2, prop: 'str', value: '#00ff00' });
-    validateChange({ calls: 2, prop: 'hex', value: '00ff00', input: hexInput });
+    userEvent.type(hexInput, '00ff00');
+    validateChange({ calls: 4, prop: 'str', value: '#00ff00' });
+    validateChange({ calls: 4, prop: 'hex', value: '00ff00', input: hexInput });
     userEvent.click(container);
-    validateChange({ calls: 2, prop: 'str', value: '#00ff00' });
+    validateChange({ calls: 4, prop: 'str', value: '#00ff00' });
 
     const alphaInput = inputs[4];
     userEvent.clear(alphaInput);
-    userEvent.paste(alphaInput, '50');
+    userEvent.type(alphaInput, '50');
     userEvent.click(container);
-    validateChange({ calls: 3, prop: 'str', value: 'rgba(0, 255, 0, 0.5)' });
-    validateChange({ calls: 3, prop: 'a', value: 50 });
+    validateChange({ calls: 6, prop: 'str', value: 'rgba(0, 255, 0, 0.5)' });
+    validateChange({ calls: 6, prop: 'a', value: 50 });
   });
 
   it('handles updating transparency text field', () => {
@@ -334,8 +334,8 @@ describe('ColorPicker', () => {
     const transparencyInput = getAllByRole('textbox')[4] as HTMLInputElement;
 
     userEvent.clear(transparencyInput);
-    userEvent.paste(transparencyInput, '30');
-    expect(onChange).toHaveBeenCalledTimes(1);
+    userEvent.type(transparencyInput, '30');
+    expect(onChange).toHaveBeenCalledTimes(2);
     expect(updatedColor!.t).toBe(30);
     expect(colorPicker!.color.t).toBe(30);
     expect(transparencyInput.value).toBe('30');
@@ -353,20 +353,20 @@ describe('ColorPicker', () => {
 
     const redInput = inputs[1];
     userEvent.clear(redInput);
-    userEvent.paste(redInput, '255');
-    validateChange({ calls: 1, prop: 'str', value: '#ff0000' });
-    validateChange({ calls: 1, prop: 'r', value: 255, input: redInput });
+    userEvent.type(redInput, '255');
+    validateChange({ calls: 3, prop: 'str', value: '#ff0000' });
+    validateChange({ calls: 3, prop: 'r', value: 255, input: redInput });
     // blur and make sure nothing changes
     userEvent.click(container);
-    validateChange({ calls: 1, prop: 'str', value: '#ff0000' });
+    validateChange({ calls: 3, prop: 'str', value: '#ff0000' });
 
     const hexInput = inputs[0];
     userEvent.clear(hexInput);
-    userEvent.paste(hexInput, '00ff00');
-    validateChange({ calls: 2, prop: 'str', value: '#00ff00' });
-    validateChange({ calls: 2, prop: 'hex', value: '00ff00', input: hexInput });
+    userEvent.type(hexInput, '00ff00');
+    validateChange({ calls: 4, prop: 'str', value: '#00ff00' });
+    validateChange({ calls: 4, prop: 'hex', value: '00ff00', input: hexInput });
     userEvent.click(container);
-    validateChange({ calls: 2, prop: 'str', value: '#00ff00' });
+    validateChange({ calls: 4, prop: 'str', value: '#00ff00' });
   });
 
   it('does not update if default prevented', () => {
@@ -392,24 +392,24 @@ describe('ColorPicker', () => {
 
     // valid value => accepted
     userEvent.clear(redInput);
-    userEvent.paste(redInput, '12');
-    validateChange({ calls: 1, prop: 'r', value: 12, input: redInput });
+    userEvent.type(redInput, '12');
+    validateChange({ calls: 2, prop: 'r', value: 12, input: redInput });
 
     // decimal added to valid value => totally ignored
     userEvent.type(redInput, '.');
-    validateChange({ calls: 1, prop: 'r', value: 12 });
+    validateChange({ calls: 2, prop: 'r', value: 12 });
 
     // non-number added to valid value => totally ignored
     userEvent.type(redInput, 'x');
-    validateChange({ calls: 1, prop: 'r', value: 12 });
+    validateChange({ calls: 2, prop: 'r', value: 12 });
 
     // empty value => color not updated, value preserved
     userEvent.clear(redInput);
-    validateChange({ calls: 1, prop: 'r', value: 12, input: redInput, inputValue: '' });
+    validateChange({ calls: 2, prop: 'r', value: 12, input: redInput, inputValue: '' });
 
     // non-number in empty field => totally ignored
     userEvent.type(redInput, 'x');
-    validateChange({ calls: 1, prop: 'r', value: 12, input: redInput, inputValue: '' });
+    validateChange({ calls: 2, prop: 'r', value: 12, input: redInput, inputValue: '' });
   });
 
   it('reverts to previous valid RGBA value on blur if field is empty', () => {
@@ -421,16 +421,16 @@ describe('ColorPicker', () => {
 
     // valid value => accepted
     userEvent.clear(redInput);
-    userEvent.paste(redInput, '123');
-    validateChange({ calls: 1, prop: 'r', value: 123, input: redInput });
+    userEvent.type(redInput, '123');
+    validateChange({ calls: 3, prop: 'r', value: 123, input: redInput });
 
     // empty value => color not updated, value preserved
     userEvent.clear(redInput);
-    validateChange({ calls: 1, prop: 'r', value: 123, input: redInput, inputValue: '' });
+    validateChange({ calls: 3, prop: 'r', value: 123, input: redInput, inputValue: '' });
 
     // reverts to previous valid value on blur
     userEvent.click(container);
-    validateChange({ calls: 1, prop: 'r', value: 123 });
+    validateChange({ calls: 3, prop: 'r', value: 123 });
   });
 
   it('clamps RGB input too large', () => {
@@ -440,17 +440,17 @@ describe('ColorPicker', () => {
 
     const redInput = getAllByRole('textbox')[1] as HTMLInputElement;
     userEvent.clear(redInput);
-    userEvent.paste(redInput, '123');
-    validateChange({ calls: 1, prop: 'r', value: 123, input: redInput });
+    userEvent.type(redInput, '123');
+    validateChange({ calls: 3, prop: 'r', value: 123, input: redInput });
 
     // value too large => allowed in field but onChange not called
     userEvent.clear(redInput);
-    userEvent.paste(redInput, '456');
-    validateChange({ calls: 1, prop: 'r', value: 123, input: redInput, inputValue: '456' });
+    userEvent.type(redInput, '456');
+    validateChange({ calls: 5, prop: 'r', value: 45, input: redInput, inputValue: '456' });
 
     // blur => value clamped
     userEvent.click(container);
-    validateChange({ calls: 2, prop: 'r', value: 255, input: redInput });
+    validateChange({ calls: 6, prop: 'r', value: 255, input: redInput });
   });
 
   it('clamps alpha input too large', () => {
@@ -461,17 +461,17 @@ describe('ColorPicker', () => {
     const alphaInput = getAllByRole('textbox')[4] as HTMLInputElement;
 
     userEvent.clear(alphaInput);
-    userEvent.paste(alphaInput, '50');
-    validateChange({ calls: 1, prop: 'a', value: 50, input: alphaInput });
+    userEvent.type(alphaInput, '50');
+    validateChange({ calls: 2, prop: 'a', value: 50, input: alphaInput });
 
     // value too large => allowed in field but onChange not called
     userEvent.clear(alphaInput);
-    userEvent.paste(alphaInput, '123');
-    validateChange({ calls: 1, prop: 'a', value: 50, input: alphaInput, inputValue: '123' });
+    userEvent.type(alphaInput, '123');
+    validateChange({ calls: 4, prop: 'a', value: 12, input: alphaInput, inputValue: '123' });
 
     // blur => value clamped
     userEvent.click(container);
-    validateChange({ calls: 2, prop: 'a', value: 100, input: alphaInput });
+    validateChange({ calls: 5, prop: 'a', value: 100, input: alphaInput });
   });
 
   it('shows error state and tooltip for invalid red value', () => {
@@ -540,23 +540,23 @@ describe('ColorPicker', () => {
 
     // valid value => accepted
     userEvent.clear(redInput);
-    userEvent.paste(redInput, '123');
-    validateChange({ calls: 1, prop: 'r', value: 123, input: redInput });
+    userEvent.type(redInput, '123');
+    validateChange({ calls: 3, prop: 'r', value: 123, input: redInput });
 
     // extra char added => use existing substring
     userEvent.type(redInput, '4');
-    validateChange({ calls: 1, prop: 'r', value: 123, input: redInput });
+    validateChange({ calls: 3, prop: 'r', value: 123, input: redInput });
 
     // new value too long "pasted" => use substring
     userEvent.clear(redInput);
     userEvent.paste(redInput, '1000');
-    validateChange({ calls: 2, prop: 'r', value: 100, input: redInput });
+    validateChange({ calls: 4, prop: 'r', value: 100, input: redInput });
 
     // invalid new value too long "pasted" => use substring but don't call onChange
     userEvent.clear(redInput);
     userEvent.paste(redInput, '4567');
 
-    validateChange({ calls: 2, prop: 'r', value: 100, input: redInput, inputValue: '456' });
+    validateChange({ calls: 4, prop: 'r', value: 100, input: redInput, inputValue: '456' });
   });
 
   it('handles 3-char hex value', () => {
@@ -567,7 +567,7 @@ describe('ColorPicker', () => {
     const hexInput = getAllByRole('textbox')[0] as HTMLInputElement;
 
     userEvent.clear(hexInput);
-    userEvent.paste(hexInput, 'faf');
+    userEvent.type(hexInput, 'faf');
     expect(onChange).toHaveBeenCalledTimes(0);
     expect(hexInput.value).toBe('faf');
 
@@ -586,13 +586,13 @@ describe('ColorPicker', () => {
     for (let i = 2; i <= 5; i++) {
       const hexSubstr = testHexValue.substring(0, i);
       userEvent.clear(hexInput);
-      userEvent.paste(hexInput, hexSubstr);
+      userEvent.type(hexInput, hexSubstr);
       validateChange({ calls: 0, prop: 'hex', value: '000000', input: hexInput, inputValue: hexSubstr });
     }
 
     // Only the full-length value should trigger onChange
     userEvent.clear(hexInput);
-    userEvent.paste(hexInput, testHexValue);
+    userEvent.type(hexInput, testHexValue);
     validateChange({ calls: 1, prop: 'hex', value: testHexValue, input: hexInput });
   });
 
@@ -604,7 +604,7 @@ describe('ColorPicker', () => {
     const testHexValue = 'F1F2F3';
 
     userEvent.clear(hexInput);
-    userEvent.paste(hexInput, testHexValue);
+    userEvent.type(hexInput, testHexValue);
 
     validateChange({ calls: 1, prop: 'hex', value: testHexValue.toLowerCase(), input: hexInput });
     validateChange({ calls: 1, prop: 'str', value: '#' + testHexValue });
@@ -617,10 +617,10 @@ describe('ColorPicker', () => {
 
     const hexInput = getAllByRole('textbox')[0] as HTMLInputElement;
 
-    userEvent.paste(hexInput, 'hello');
+    userEvent.type(hexInput, 'hello');
     validateChange({ calls: 0, prop: 'hex', value: '000000', input: hexInput });
     userEvent.clear(hexInput);
-    userEvent.paste(hexInput, 'abc');
+    userEvent.type(hexInput, 'abc');
     validateChange({ calls: 0, prop: 'hex', value: '000000', input: hexInput, inputValue: 'abc' });
 
     userEvent.type(hexInput, 'h');
@@ -637,12 +637,12 @@ describe('ColorPicker', () => {
 
     // input too long "pasted" => use substring
     userEvent.clear(hexInput);
-    userEvent.paste(hexInput, '1234567');
-    validateChange({ calls: 1, prop: 'hex', value: '123456', input: hexInput });
+    userEvent.type(hexInput, '1234567');
+    validateChange({ calls: 6, prop: 'hex', value: '123456', input: hexInput });
 
     // invalid new value too long "pasted" => ignore
     userEvent.paste(hexInput, 'hello world');
-    validateChange({ calls: 1, prop: 'hex', value: '123456', input: hexInput });
+    validateChange({ calls: 6, prop: 'hex', value: '123456', input: hexInput });
   });
 
   it('reverts to previous valid hex value on blur if input is too short', () => {
