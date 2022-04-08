@@ -49,7 +49,7 @@ describe('Facepile', () => {
   it('renders with only add button if no personas found and addButtonProps are not null', () => {
     const { getAllByRole } = render(<Facepile personas={[]} addButtonProps={{}} showAddButton={true} />);
 
-    expect(getAllByRole('button').length).toEqual(1);
+    expect(getAllByRole('button')).toHaveLength(1);
   });
 
   it('renders chevron overflow button if overflowButtonProps are not null and OverflowButtonType is downArrow', () => {
@@ -57,7 +57,7 @@ describe('Facepile', () => {
       <Facepile personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.downArrow} />,
     );
 
-    expect(getAllByRole('button').length).toEqual(1);
+    expect(getAllByRole('button')).toHaveLength(1);
   });
 
   it('renders more overflow button if overflowButtonProps are not null as OverflowButtonType is more', () => {
@@ -65,7 +65,7 @@ describe('Facepile', () => {
       <Facepile personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.more} />,
     );
 
-    expect(getAllByRole('button').length).toEqual(1);
+    expect(getAllByRole('button')).toHaveLength(1);
   });
 
   // eslint-disable-next-line @fluentui/max-len
@@ -74,7 +74,7 @@ describe('Facepile', () => {
       <Facepile personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.descriptive} />,
     );
 
-    expect(queryAllByRole('button').length).toEqual(0);
+    expect(queryAllByRole('button')).toHaveLength(0);
   });
 
   // eslint-disable-next-line @fluentui/max-len
@@ -92,7 +92,7 @@ describe('Facepile', () => {
     const personasDisplayed = getAllByRole('listitem');
 
     expect(overflowButton.className).toContain('ms-Facepile-descriptiveOverflowButton');
-    expect(personasDisplayed.length).toEqual(5);
+    expect(personasDisplayed).toHaveLength(5);
   });
 
   it('renders descriptive overflow button with comma-delimited persona names as title value by default', () => {
@@ -141,7 +141,7 @@ describe('Facepile', () => {
         maxDisplayablePersonas={2}
       />,
     );
-    expect(getAllByRole('listitem').length).toEqual(2);
+    expect(getAllByRole('listitem')).toHaveLength(2);
   });
 
   it('persona is clickable if onClick property is set', () => {
@@ -160,7 +160,7 @@ describe('Facepile', () => {
 
     const buttons = getAllByRole('button');
 
-    expect(buttons.length).toEqual(1);
+    expect(buttons).toHaveLength(1);
     userEvent.click(buttons[0]);
     expect(clicked).toEqual(1);
   });
@@ -178,12 +178,12 @@ describe('Facepile', () => {
 
     const [addButton, overflowButton] = getAllByRole('button');
 
-    expect(addButton.querySelectorAll('.ms-Persona--size32')).toBeTruthy();
-    expect(overflowButton.querySelectorAll('.ms-Persona--size32')).toBeTruthy();
+    expect(addButton.querySelectorAll('.ms-Persona--size32')).toHaveLength(1);
+    expect(overflowButton.querySelectorAll('.ms-Persona--size32')).toHaveLength(1);
 
     const faces = getAllByRole('listitem');
 
-    expect(faces.length).toEqual(facepilePersonas.length);
+    expect(faces).toHaveLength(facepilePersonas.length);
     for (let i = 0; i < faces.length; ++i) {
       expect(faces[i].querySelector('.ms-Persona--size32')).toBeTruthy();
     }
@@ -194,27 +194,27 @@ describe('Facepile', () => {
     const { getAllByRole, rerender } = render(
       <Facepile personas={facepilePersonas} personaSize={PersonaSize.size24} />,
     );
-    expect(getAllByRole('listitem').length).toEqual(facepilePersonas.length);
+    expect(getAllByRole('listitem')).toHaveLength(facepilePersonas.length);
     getAllByRole('listitem').forEach(node => {
-      expect(node.querySelectorAll('.ms-Persona--size24').length).toEqual(1);
+      expect(node.querySelectorAll('.ms-Persona--size24')).toHaveLength(1);
     });
     // Test small size renders
     rerender(<Facepile personas={facepilePersonas} personaSize={PersonaSize.size40} />);
-    expect(getAllByRole('listitem').length).toEqual(facepilePersonas.length);
+    expect(getAllByRole('listitem')).toHaveLength(facepilePersonas.length);
     getAllByRole('listitem').forEach(node => {
-      expect(node.querySelectorAll('.ms-Persona--size40').length).toEqual(1);
+      expect(node.querySelectorAll('.ms-Persona--size40')).toHaveLength(1);
     });
   });
 
   it('renders Persona control if exactly one persona is sent in props', () => {
     const { getAllByRole } = render(<Facepile personas={facepilePersonas.slice(0, 1)} overflowPersonas={[]} />);
 
-    expect(getAllByRole('listitem').length).toEqual(1);
+    expect(getAllByRole('listitem')).toHaveLength(1);
   });
 
   it('renders no Persona or PersonaCoin if 0 is passed in for maxDisplayablePersonas', () => {
     const { queryAllByRole } = render(<Facepile personas={facepilePersonas} maxDisplayablePersonas={0} />);
 
-    expect(queryAllByRole('listitem').length).toEqual(0);
+    expect(queryAllByRole('listitem')).toHaveLength(0);
   });
 });
