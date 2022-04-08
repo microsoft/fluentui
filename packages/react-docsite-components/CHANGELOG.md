@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Thu, 31 Mar 2022 07:38:07 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Apr 2022 07:34:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.7.0)
+
+Wed, 06 Apr 2022 07:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.6.16..@fluentui/react-docsite-components_v8.7.0)
+
+### Minor changes
+
+- Render ExampleCard titles as h3, and update document title to reflect current page ([PR #22266](https://github.com/microsoft/fluentui/pull/22266) by elcraig@microsoft.com)
+- Bump @fluentui/react to v8.64.1 ([PR #22266](https://github.com/microsoft/fluentui/pull/22266) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.3.17 ([PR #22266](https://github.com/microsoft/fluentui/pull/22266) by beachball)
+
+## [8.6.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.6.16)
+
+Mon, 04 Apr 2022 20:01:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.6.15..@fluentui/react-docsite-components_v8.6.16)
+
+### Patches
+
+- Bump @fluentui/react to v8.64.0 ([PR #22295](https://github.com/microsoft/fluentui/pull/22295) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.3.16 ([PR #22295](https://github.com/microsoft/fluentui/pull/22295) by beachball)
 
 ## [8.6.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.6.15)
 

@@ -7,6 +7,15 @@ describe('OptionGroup', () => {
   isConformant({
     Component: OptionGroup,
     displayName: 'OptionGroup',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            label: 'group label',
+          },
+        },
+      ],
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

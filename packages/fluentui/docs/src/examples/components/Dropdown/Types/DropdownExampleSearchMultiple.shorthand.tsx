@@ -28,6 +28,15 @@ const DropdownExampleSearchMultiple = () => (
 const getA11ySelectionMessage = {
   onAdd: item => `${item} selected. Press left or right arrow keys to navigate selected items.`,
   onRemove: item => `${item} has been removed.`,
+  itemsCount: count => {
+    let narration;
+    if (count === 1) {
+      narration = `${count} item is selected.`;
+    } else if (count >= 2) {
+      narration = `${count} items are selected.`;
+    }
+    return narration;
+  },
 };
 
 export default DropdownExampleSearchMultiple;
