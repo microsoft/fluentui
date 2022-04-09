@@ -1,3 +1,12 @@
+/**
+ * Monaco editor global configuration.
+ * This should match `packages/public-docsite-setup/src/types.ts`.
+ *
+ * (The types aren't shared directly because this package is intended to be usable outside of Fluent
+ * and therefore shouldn't depend on an internal-use package, and `@fluentui/public-docsite-setup`
+ * must be used in old Fabric versions where pulling in this package's newer typescript output
+ * could cause problems due to unsupported syntax.)
+ */
 export interface IMonacoConfig {
   /** Root path where the Monaco files will be at runtime */
   baseUrl: string;
