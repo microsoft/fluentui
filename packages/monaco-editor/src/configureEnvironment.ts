@@ -15,9 +15,6 @@ const globalObj = (typeof self !== 'undefined' ? self : typeof window !== 'undef
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   MonacoEnvironment?: any;
   MonacoConfig?: IMonacoConfig;
-  // TODO: remove once public-docsite homepage.htm is updated
-  appPath?: string;
-  jsSuffix?: string;
 };
 
 const labelMap: { [key: string]: string } = {
@@ -30,35 +27,16 @@ const labelMap: { [key: string]: string } = {
   json: 'json',
 };
 
-function getMonacoConfig(): IMonacoConfig | undefined {
-  return (
-    globalObj.MonacoConfig ||
-    // TODO: remove once public-docsite homepage.htm is updated
-    // temporary back-compat hack
-    (globalObj.MonacoEnvironment && globalObj.appPath && globalObj.jsSuffix
-      ? {
-          baseUrl: globalObj.appPath,
-          useMinified: globalObj.jsSuffix === '.min.js',
-          crossDomain: globalObj.location.hostname.indexOf('microsoft.com') !== -1,
-        }
-      : undefined)
-  );
-}
-
-// TODO: remove once public-docsite homepage.htm is updated
-let hasConfigured = false;
-
 /**
  * Add required global configuration to make Monaco work. (Doesn't directly load anything.)
  * If neither `config` nor the global `MonacoConfig` are provided, does nothing.
  * @param config - Configuration settings. Defaults to the `MonacoConfig` global if it exists.
  */
 export function configureEnvironment(config?: IMonacoConfig): void {
-  config = config || getMonacoConfig();
-  if (!!(globalObj.MonacoEnvironment && hasConfigured) || !config) {
+  config = config || globalObj.MonacoConfig;
+  if (globalObj.MonacoEnvironment || !config) {
     return;
   }
-  hasConfigured = true;
 
   const { baseUrl, useMinified, crossDomain } = config!;
   const baseUrlNoSlash = baseUrl.slice(-1) === '/' ? baseUrl.slice(0, -1) : baseUrl;
