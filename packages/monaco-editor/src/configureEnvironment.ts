@@ -60,18 +60,7 @@ export function configureEnvironment(config?: IMonacoConfig): void {
         // If the JS files will be on a different domain (the CDN) instead of the domain the HTML
         // is running on, we have to load the web worker scripts using a proxy. More info:
         // https://github.com/microsoft/monaco-editor/blob/master/docs/integrate-amd-cross.md
-
-        // Next part varies for Chrome/Firefox/new Edge old Edge (new Edge uses Edg/ in UA)
-        const isEdge = / Edge\//.test(navigator.userAgent);
-        if (!isEdge) {
-          // This approach (suggested in the docs) works in Chrome but not old Edge
-          return 'data:text/javascript;charset=utf-8,' + encodeURIComponent(`importScripts("${path}");`);
-        } else {
-          // This works in Edge but causes workers to run on the UI thread in Chrome
-          // https://benohead.com/cross-domain-cross-browser-web-workers/
-          const blob = new Blob([`importScripts("${path}")`], { type: 'application/javascript' });
-          return URL.createObjectURL(blob);
-        }
+        return 'data:text/javascript;charset=utf-8,' + encodeURIComponent(`importScripts("${path}");`);
       }
       return path;
     },
