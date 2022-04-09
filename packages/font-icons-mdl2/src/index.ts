@@ -22,9 +22,15 @@ import { IIconOptions } from '@fluentui/style-utilities';
 import { registerIconAliases } from './iconAliases';
 const DEFAULT_BASE_URL = 'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20210407.001/assets/icons/';
 
+declare global {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    FabricConfig: any;
+  }
+}
 export function initializeIcons(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  baseUrl: string = (window as any)?.FabricConfig?.fontBaseUrl ?? DEFAULT_BASE_URL,
+  baseUrl: string = window.FabricConfig?.fontBaseUrl ?? DEFAULT_BASE_URL,
   options?: IIconOptions,
 ): void {
   [
