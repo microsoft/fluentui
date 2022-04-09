@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add types for all `@fluentui/react` dependencies, and wrap exported examples with `ThemeProvider` rather than `Fabric`",
+  "packageName": "@fluentui/react-monaco-editor",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
