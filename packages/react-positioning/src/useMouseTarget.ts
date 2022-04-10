@@ -10,7 +10,7 @@ import type { PositioningVirtualElement } from './types';
  * @param initialState - initializes a user provided state similar to useState
  * @returns state and dispatcher for a Popper virtual element that uses native/synthetic mouse events
  */
-export const usePopperMouseTarget = (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement)) => {
+export const useMouseTarget = (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement)) => {
   const [virtualElement, setVirtualElement] = React.useState<PositioningVirtualElement | undefined>(initialState);
 
   const setVirtualMouseTarget = (event: React.MouseEvent | MouseEvent | undefined | null) => {
@@ -28,7 +28,7 @@ export const usePopperMouseTarget = (initialState?: PositioningVirtualElement | 
 
     if (!(mouseevent instanceof MouseEvent) && process.env.NODE_ENV !== 'production') {
       // eslint-disable-next-line no-console
-      console.error('usePopperMouseTarget should only be used with MouseEvent');
+      console.error('useMouseTarget should only be used with MouseEvent');
     }
 
     const contextTarget = createVirtualElementFromClick(mouseevent);

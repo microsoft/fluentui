@@ -28,7 +28,7 @@ import {
   DATA_POSITIONING_PLACEMENT,
 } from './contants';
 
-export function usePopper(
+export function usePositioning(
   options: UseFloatingUIOptions,
 ): {
   // React refs are supposed to be contravariant

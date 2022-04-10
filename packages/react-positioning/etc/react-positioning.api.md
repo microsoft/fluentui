@@ -6,7 +6,6 @@
 
 import { Boundary as Boundary_2 } from '@floating-ui/dom';
 import type { GriffelStyle } from '@griffel/react';
-import { Placement } from '@floating-ui/dom';
 import * as React_2 from 'react';
 import { Rect } from '@floating-ui/dom';
 import { VirtualElement } from '@floating-ui/dom';
@@ -28,14 +27,6 @@ export function createArrowHeightStyles(arrowHeight: number): {
 
 // @public
 export function createArrowStyles(options: CreateArrowStylesOptions): GriffelStyle;
-
-// @public
-export type CreateArrowStylesOptions = {
-    arrowHeight: number | undefined;
-    borderWidth?: GriffelStyle['borderBottomWidth'];
-    borderStyle?: GriffelStyle['borderBottomStyle'];
-    borderColor?: GriffelStyle['borderBottomColor'];
-};
 
 // @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
@@ -62,13 +53,14 @@ export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHei
 export type Offset = OffsetFunction | OffsetObject | number;
 
 // @public (undocumented)
-export type OffsetFunction = (param: OffsetFunctionParam) => OffsetObject;
+export type OffsetFunction = (param: OffsetFunctionParam) => OffsetObject | number;
 
 // @public (undocumented)
 export type OffsetFunctionParam = {
-    floating: Rect;
-    reference: Rect;
-    placement: Placement;
+    positioned: Rect;
+    target: Rect;
+    position: Position;
+    alignment?: Alignment;
 };
 
 // @public (undocumented)
@@ -78,17 +70,17 @@ export type OffsetObject = {
 };
 
 // @public (undocumented)
-export type PopperRefHandle = {
+export type Position = 'above' | 'below' | 'before' | 'after';
+
+// @public (undocumented)
+export type PositioningImperativeRef = {
     updatePosition: () => void;
     setTarget: (target: HTMLElement | PositioningVirtualElement) => void;
 };
 
 // @public (undocumented)
-export type Position = 'above' | 'below' | 'before' | 'after';
-
-// @public (undocumented)
 export interface PositioningProps extends Omit<FloatingUIOptions, 'positionFixed' | 'unstable_disableTether'> {
-    popperRef?: React_2.Ref<PopperRefHandle>;
+    imperativeRef?: React_2.Ref<PositioningImperativeRef>;
     target?: HTMLElement | PositioningVirtualElement | null;
 }
 
@@ -104,15 +96,15 @@ export type PositioningVirtualElement = VirtualElement;
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
+// @public
+export const useMouseTarget: (initialState?: VirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [VirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
+
 // @public (undocumented)
-export function usePopper(options: UseFloatingUIOptions): {
+export function usePositioning(options: UseFloatingUIOptions): {
     targetRef: React_2.MutableRefObject<any>;
     containerRef: React_2.MutableRefObject<any>;
     arrowRef: React_2.MutableRefObject<any>;
 };
-
-// @public
-export const usePopperMouseTarget: (initialState?: VirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [VirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
 
 // (No @packageDocumentation comment for this package)
 

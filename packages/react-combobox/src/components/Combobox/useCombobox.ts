@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolvePositioningShorthand, usePopper } from '@fluentui/react-positioning';
+import { resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import {
   getPartitionedNativeProps,
   resolveShorthand,
@@ -56,7 +56,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   }: {
     targetRef: React.MutableRefObject<HTMLButtonElement>;
     containerRef: React.MutableRefObject<HTMLDivElement>;
-  } = usePopper(popperOptions);
+  } = usePositioning(popperOptions);
 
   // update value based on selectedOptions
   const isFirstMount = useFirstMount();

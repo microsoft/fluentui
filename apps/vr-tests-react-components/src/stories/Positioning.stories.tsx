@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  usePopper,
+  usePositioning,
   createArrowStyles,
   PositioningProps,
   PositioningVirtualElement,
@@ -103,7 +103,7 @@ const Box = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement
 
 const PositionAndAlignProps: React.FC<{ positionFixed?: boolean }> = ({ positionFixed }) => {
   const styles = useStyles();
-  const positionedRefs = positions.reduce<ReturnType<typeof usePopper>[]>((acc, cur) => {
+  const positionedRefs = positions.reduce<ReturnType<typeof usePositioning>[]>((acc, cur) => {
     const popperOptions: PositioningProps = { position: cur[0], align: cur[1] };
     // positionFixed is not public yet
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -112,7 +112,7 @@ const PositionAndAlignProps: React.FC<{ positionFixed?: boolean }> = ({ position
 
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const positioningRefs = usePopper(popperOptions);
+    const positioningRefs = usePositioning(popperOptions);
     acc.push(positioningRefs);
     return acc;
   }, []);
@@ -131,10 +131,14 @@ const PositionAndAlignProps: React.FC<{ positionFixed?: boolean }> = ({ position
 
 const Offset = () => {
   const styles = useStyles();
-  const positionedRefs = positions.reduce<ReturnType<typeof usePopper>[]>((acc, cur) => {
+  const positionedRefs = positions.reduce<ReturnType<typeof usePositioning>[]>((acc, cur) => {
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const positioningRefs = usePopper({ position: cur[0], align: cur[1], offset: { crossAxis: 10, mainAxis: 10 } });
+    const positioningRefs = usePositioning({
+      position: cur[0],
+      align: cur[1],
+      offset: { crossAxis: 10, mainAxis: 10 },
+    });
     acc.push(positioningRefs);
     return acc;
   }, []);
@@ -153,10 +157,10 @@ const Offset = () => {
 
 const OffsetFunction = () => {
   const styles = useStyles();
-  const positionedRefs = positions.reduce<ReturnType<typeof usePopper>[]>((acc, cur) => {
+  const positionedRefs = positions.reduce<ReturnType<typeof usePositioning>[]>((acc, cur) => {
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const positioningRefs = usePopper({
+    const positioningRefs = usePositioning({
       position: cur[0],
       align: cur[1],
       offset: () => ({ crossAxis: 10, mainAxis: 10 }),
@@ -179,10 +183,10 @@ const OffsetFunction = () => {
 
 const CoverTarget = () => {
   const styles = useStyles();
-  const positionedRefs = positions.reduce<ReturnType<typeof usePopper>[]>((acc, cur) => {
+  const positionedRefs = positions.reduce<ReturnType<typeof usePositioning>[]>((acc, cur) => {
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const positioningRefs = usePopper({ position: cur[0], align: cur[1], coverTarget: true });
+    const positioningRefs = usePositioning({ position: cur[0], align: cur[1], coverTarget: true });
     acc.push(positioningRefs);
     return acc;
   }, []);
@@ -202,8 +206,8 @@ const CoverTarget = () => {
 const VerticalFlip = () => {
   const styles = useStyles();
   const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
-  const topPopper = usePopper({ position: 'above', flipBoundary: boundary ?? undefined });
-  const bottomPopper = usePopper({ position: 'below', flipBoundary: boundary ?? undefined });
+  const topPopper = usePositioning({ position: 'above', flipBoundary: boundary ?? undefined });
+  const bottomPopper = usePositioning({ position: 'below', flipBoundary: boundary ?? undefined });
 
   return (
     <div
@@ -225,8 +229,8 @@ const VerticalFlip = () => {
 const HorizontalFlip = () => {
   const styles = useStyles();
   const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
-  const startPopper = usePopper({ position: 'before', flipBoundary: boundary ?? undefined });
-  const endPopper = usePopper({ position: 'after', flipBoundary: boundary ?? undefined });
+  const startPopper = usePositioning({ position: 'before', flipBoundary: boundary ?? undefined });
+  const endPopper = usePositioning({ position: 'after', flipBoundary: boundary ?? undefined });
   const { dir } = useFluent();
   const marginDir = dir === 'ltr' ? 'marginLeft' : 'marginRight';
 
@@ -246,8 +250,8 @@ const HorizontalFlip = () => {
 const VerticalOverflow = () => {
   const styles = useStyles();
   const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
-  const topPopper = usePopper({ position: 'after', overflowBoundary: boundary ?? undefined });
-  const bottomPopper = usePopper({ position: 'after', overflowBoundary: boundary ?? undefined });
+  const topPopper = usePositioning({ position: 'after', overflowBoundary: boundary ?? undefined });
+  const bottomPopper = usePositioning({ position: 'after', overflowBoundary: boundary ?? undefined });
 
   return (
     <div
@@ -269,8 +273,8 @@ const VerticalOverflow = () => {
 const HorizontalOverflow = () => {
   const styles = useStyles();
   const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
-  const startPopper = usePopper({ position: 'below', overflowBoundary: boundary ?? undefined });
-  const endPopper = usePopper({ position: 'below', overflowBoundary: boundary ?? undefined });
+  const startPopper = usePositioning({ position: 'below', overflowBoundary: boundary ?? undefined });
+  const endPopper = usePositioning({ position: 'below', overflowBoundary: boundary ?? undefined });
   const { dir } = useFluent();
   const marginDir = dir === 'ltr' ? 'marginLeft' : 'marginRight';
 
@@ -294,7 +298,7 @@ const HorizontalOverflow = () => {
 const Pinned = () => {
   const styles = useStyles();
   const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
-  const { containerRef, targetRef } = usePopper({
+  const { containerRef, targetRef } = usePositioning({
     position: 'above',
     flipBoundary: boundary ?? undefined,
     pinned: true,
@@ -314,10 +318,10 @@ const Pinned = () => {
 
 const Arrow: React.FC = () => {
   const styles = useStyles();
-  const positionedRefs = positions.reduce<ReturnType<typeof usePopper>[]>((acc, cur) => {
+  const positionedRefs = positions.reduce<ReturnType<typeof usePositioning>[]>((acc, cur) => {
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const positioningRefs = usePopper({ position: cur[0], align: cur[1] });
+    const positioningRefs = usePositioning({ position: cur[0], align: cur[1] });
     acc.push(positioningRefs);
     return acc;
   }, []);
@@ -339,7 +343,7 @@ const Arrow: React.FC = () => {
 
 const AutoSize = () => {
   const styles = useStyles();
-  const { containerRef, targetRef } = usePopper({
+  const { containerRef, targetRef } = usePositioning({
     position: 'below',
     autoSize: true,
   });
@@ -380,7 +384,7 @@ const AutoSize = () => {
 const DisableTether = () => {
   const styles = useStyles();
   const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
-  const { containerRef, targetRef } = usePopper({
+  const { containerRef, targetRef } = usePositioning({
     position: 'above',
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
@@ -418,7 +422,7 @@ const DisableTether = () => {
 const VirtualElement = () => {
   const [target, setTarget] = React.useState<HTMLButtonElement | null>(null);
 
-  const { containerRef, targetRef } = usePopper({
+  const { containerRef, targetRef } = usePositioning({
     position: 'below',
     align: 'end',
   });
@@ -444,7 +448,7 @@ const VirtualElement = () => {
 const TargetProp = () => {
   const [target, setTarget] = React.useState<HTMLButtonElement | null>(null);
 
-  const { containerRef } = usePopper({
+  const { containerRef } = usePositioning({
     target,
     position: 'below',
     align: 'end',
@@ -462,7 +466,7 @@ const ImperativeTarget = () => {
   const imperativeRef = React.useRef<PositioningImperativeRef>({ updatePosition: () => null, setTarget: () => null });
   const ref = React.useRef<HTMLButtonElement>(null);
 
-  const { containerRef } = usePopper({
+  const { containerRef } = usePositioning({
     imperativeRef,
     position: 'below',
     align: 'end',
@@ -484,7 +488,7 @@ const ImperativeTarget = () => {
 
 const VisibilityModifiers = () => {
   const styles = useStyles();
-  const popper = usePopper({ align: 'center', position: 'above' });
+  const popper = usePositioning({ align: 'center', position: 'above' });
 
   return (
     <>

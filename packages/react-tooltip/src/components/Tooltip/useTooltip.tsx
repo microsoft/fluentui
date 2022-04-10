@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeArrowOffset, resolvePositioningShorthand, usePopper } from '@fluentui/react-positioning';
+import { mergeArrowOffset, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import {
   applyTriggerPropsToChildren,
@@ -103,7 +103,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     targetRef: React.MutableRefObject<unknown>;
     containerRef: React.MutableRefObject<HTMLDivElement>;
     arrowRef: React.MutableRefObject<HTMLDivElement>;
-  } = usePopper(popperOptions);
+  } = usePositioning(popperOptions);
 
   state.content.ref = useMergedRefs(state.content.ref, containerRef);
   state.arrowRef = arrowRef;
