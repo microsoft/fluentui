@@ -4,8 +4,8 @@ import { Button } from '@fluentui/react-button';
 import { PositioningProps } from '@fluentui/react-positioning';
 
 export const OffsetFunction = () => {
-  const offset: PositioningProps['offset'] = ({ floating, reference, placement }) => {
-    return { crossAxis: 10, mainAxis: floating.width / 2 };
+  const offset: PositioningProps['offset'] = ({ positioned, target, position, alignment }) => {
+    return { crossAxis: 10, mainAxis: positioned.width / 2 };
   };
 
   return (

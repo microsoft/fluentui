@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Tooltip } from '@fluentui/react-components';
-import { PopperRefHandle, PositioningVirtualElement } from '@fluentui/react-positioning';
+import { PositioningImperativeRef, PositioningVirtualElement } from '@fluentui/react-positioning';
 
 export const ImperativeAnchorTarget = () => {
-  const popperRef = React.useRef<PopperRefHandle>(null);
+  const imperativeRef = React.useRef<PositioningImperativeRef>(null);
   const [open, setOpen] = React.useState(false);
 
   const onMouseMove = React.useCallback((e: React.MouseEvent) => {
@@ -22,7 +22,7 @@ export const ImperativeAnchorTarget = () => {
     const virtualElement: PositioningVirtualElement = {
       getBoundingClientRect: getRect(e.clientX, e.clientY),
     };
-    popperRef.current?.setTarget(virtualElement);
+    imperativeRef.current?.setTarget(virtualElement);
   }, []);
 
   const onMouseEnter = React.useCallback(() => {
@@ -40,7 +40,7 @@ export const ImperativeAnchorTarget = () => {
     <>
       <Tooltip
         visible={open}
-        positioning={{ popperRef, offset: { crossAxis: 0, mainAxis: 15 } }}
+        positioning={{ imperativeRef, offset: { crossAxis: 0, mainAxis: 15 } }}
         content="Follows the cursor"
         relationship="label"
       />
@@ -68,7 +68,7 @@ ImperativeAnchorTarget.parameters = {
   docs: {
     description: {
       story: [
-        'The `popperRef` positioning prop provides an [imperative handle](https://reactjs.org/docs/hooks-reference.html#useimperativehandle)',
+        'The `imperativeRef` positioning prop provides an [imperative handle](https://reactjs.org/docs/hooks-reference.html#useimperativehandle)',
         'to manually position an element. The target can be a normal HTML element or a virtual element such as a',
         'coordinate on the viewport',
         'This can be useful to reduce the number of renders required, for example when the positioned element',

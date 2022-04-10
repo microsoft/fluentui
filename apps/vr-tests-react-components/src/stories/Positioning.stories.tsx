@@ -4,7 +4,7 @@ import {
   createArrowStyles,
   PositioningProps,
   PositioningVirtualElement,
-  PopperRefHandle,
+  PositioningImperativeRef,
 } from '@fluentui/react-positioning';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { useMergedRefs } from '@fluentui/react-utilities';
@@ -112,8 +112,8 @@ const PositionAndAlignProps: React.FC<{ positionFixed?: boolean }> = ({ position
 
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const popperRefs = usePopper(popperOptions);
-    acc.push(popperRefs);
+    const positioningRefs = usePopper(popperOptions);
+    acc.push(positioningRefs);
     return acc;
   }, []);
 
@@ -134,8 +134,8 @@ const Offset = () => {
   const positionedRefs = positions.reduce<ReturnType<typeof usePopper>[]>((acc, cur) => {
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const popperRefs = usePopper({ position: cur[0], align: cur[1], offset: { crossAxis: 10, mainAxis: 10 } });
-    acc.push(popperRefs);
+    const positioningRefs = usePopper({ position: cur[0], align: cur[1], offset: { crossAxis: 10, mainAxis: 10 } });
+    acc.push(positioningRefs);
     return acc;
   }, []);
 
@@ -156,8 +156,12 @@ const OffsetFunction = () => {
   const positionedRefs = positions.reduce<ReturnType<typeof usePopper>[]>((acc, cur) => {
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const popperRefs = usePopper({ position: cur[0], align: cur[1], offset: () => ({ crossAxis: 10, mainAxis: 10 }) });
-    acc.push(popperRefs);
+    const positioningRefs = usePopper({
+      position: cur[0],
+      align: cur[1],
+      offset: () => ({ crossAxis: 10, mainAxis: 10 }),
+    });
+    acc.push(positioningRefs);
     return acc;
   }, []);
 
@@ -178,8 +182,8 @@ const CoverTarget = () => {
   const positionedRefs = positions.reduce<ReturnType<typeof usePopper>[]>((acc, cur) => {
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const popperRefs = usePopper({ position: cur[0], align: cur[1], coverTarget: true });
-    acc.push(popperRefs);
+    const positioningRefs = usePopper({ position: cur[0], align: cur[1], coverTarget: true });
+    acc.push(positioningRefs);
     return acc;
   }, []);
 
@@ -313,8 +317,8 @@ const Arrow: React.FC = () => {
   const positionedRefs = positions.reduce<ReturnType<typeof usePopper>[]>((acc, cur) => {
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const popperRefs = usePopper({ position: cur[0], align: cur[1] });
-    acc.push(popperRefs);
+    const positioningRefs = usePopper({ position: cur[0], align: cur[1] });
+    acc.push(positioningRefs);
     return acc;
   }, []);
 
@@ -455,18 +459,18 @@ const TargetProp = () => {
 };
 
 const ImperativeTarget = () => {
-  const popperRef = React.useRef<PopperRefHandle>({ updatePosition: () => null, setTarget: () => null });
+  const imperativeRef = React.useRef<PositioningImperativeRef>({ updatePosition: () => null, setTarget: () => null });
   const ref = React.useRef<HTMLButtonElement>(null);
 
   const { containerRef } = usePopper({
-    popperRef,
+    imperativeRef,
     position: 'below',
     align: 'end',
   });
 
   React.useEffect(() => {
     if (ref.current) {
-      popperRef.current.setTarget(ref.current);
+      imperativeRef.current.setTarget(ref.current);
     }
   }, []);
 
