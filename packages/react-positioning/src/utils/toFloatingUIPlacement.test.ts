@@ -1,7 +1,7 @@
-import { getPlacement } from './positioningHelper';
+import { toFloatingUIPlacement } from './toFloatingUIPlacement';
 import type { Alignment, Position } from '../types';
 
-describe('getPlacement', () => {
+describe('toFloatingUIPlacement', () => {
   it.each([
     //[align, position, placement, rtlPlacement]
     ['start', 'above', 'top-start', 'top-start'],
@@ -24,8 +24,8 @@ describe('getPlacement', () => {
     'should use align: "%s" position: "%s" and return LTR placement: "%s" and RTL placement: "%s"',
     (align, position, expectedPlacement, expectedRtlPlacement) => {
       // Act
-      const placement = getPlacement(align as Alignment, position as Position);
-      const rtlPlacement = getPlacement(align as Alignment, position as Position, true);
+      const placement = toFloatingUIPlacement(align as Alignment, position as Position);
+      const rtlPlacement = toFloatingUIPlacement(align as Alignment, position as Position, true);
 
       // Assert
       expect(placement).toEqual(expectedPlacement);

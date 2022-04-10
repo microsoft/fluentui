@@ -45,9 +45,10 @@ describe('mergeArrowOffset', () => {
 
     expect(
       mergedOffsetFn({
-        floating: { height: 0, x: 0, y: 0, width: 0 },
-        placement: 'bottom-end',
-        reference: { height: 0, x: 0, y: 0, width: 0 },
+        positioned: { height: 0, x: 0, y: 0, width: 0 },
+        position: 'above',
+        alignment: 'start',
+        target: { height: 0, x: 0, y: 0, width: 0 },
       }),
     ).toEqual(expectedOffset);
   });

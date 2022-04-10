@@ -1,6 +1,6 @@
 import { shift as baseShift, limitShift } from '@floating-ui/dom';
 import type { FloatingUIOptions } from '../types';
-import { getBoundary } from '../utils/getBoundary';
+import { getBoundary } from '../utils/index';
 
 export interface ShiftMiddlewareOptions extends Pick<FloatingUIOptions, 'overflowBoundary'> {
   hasScrollableElement?: boolean;

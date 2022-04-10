@@ -1,14 +1,14 @@
 import { detectOverflow } from '@floating-ui/dom';
 import type { Middleware, Side } from '@floating-ui/dom';
 import type { FloatingUIOptions } from '../types';
-import { getSide } from '../utils/getSide';
+import { parseFloatingUIPlacement } from '../utils/index';
 
 export function maxSize(autoSize: FloatingUIOptions['autoSize']): Middleware {
   return {
     name: 'maxSize',
     fn: async middlewareArguments => {
       const { placement, rects, elements, middlewareData } = middlewareArguments;
-      const basePlacement = getSide(placement);
+      const basePlacement = parseFloatingUIPlacement(placement).side;
 
       const overflow = await detectOverflow(middlewareArguments);
       const { x, y } = middlewareData.shift || { x: 0, y: 0 };

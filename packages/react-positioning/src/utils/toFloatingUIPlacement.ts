@@ -1,8 +1,8 @@
-import type { Placement } from '@floating-ui/dom';
+import type { Placement, Side, Alignment as FloatingUIAlignment } from '@floating-ui/dom';
 import type { Alignment, Position } from '../types';
 
-type PlacementPosition = 'top' | 'bottom' | 'left' | 'right';
-type PlacementAlign = 'start' | 'end' | ''; // '' represents center
+type PlacementPosition = Side;
+type PlacementAlign = FloatingUIAlignment;
 
 const getPositionMap = (rtl?: boolean): Record<Position, PlacementPosition> => ({
   above: 'top',
@@ -13,12 +13,12 @@ const getPositionMap = (rtl?: boolean): Record<Position, PlacementPosition> => (
 
 // Floating UI automatically flips alignment
 // https://github.com/floating-ui/floating-ui/issues/1563
-const getAlignmentMap = (): Record<Alignment, PlacementAlign> => ({
+const getAlignmentMap = (): Record<Alignment, PlacementAlign | undefined> => ({
   start: 'start',
   end: 'end',
   top: 'start',
   bottom: 'end',
-  center: '',
+  center: undefined,
 });
 
 const shouldAlignToCenter = (p?: Position, a?: Alignment): boolean => {
@@ -29,9 +29,10 @@ const shouldAlignToCenter = (p?: Position, a?: Alignment): boolean => {
 };
 
 /**
+ * Maps internal positioning values to Floating UI placement
  * @see positioningHelper.test.ts for expected placement values
  */
-export const getPlacement = (align?: Alignment, position?: Position, rtl?: boolean): Placement | undefined => {
+export const toFloatingUIPlacement = (align?: Alignment, position?: Position, rtl?: boolean): Placement | undefined => {
   const alignment = shouldAlignToCenter(position, align) ? 'center' : align;
 
   const computedPosition = position && getPositionMap(rtl)[position];

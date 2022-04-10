@@ -1,12 +1,12 @@
 import type { Middleware } from '@floating-ui/dom';
-import { getSide } from '../utils/getSide';
+import { parseFloatingUIPlacement } from '../utils/index';
 
 export function coverTarget(): Middleware {
   return {
     name: 'coverTarget',
     fn: middlewareArguments => {
       const { placement, rects, x, y } = middlewareArguments;
-      const basePlacement = getSide(placement);
+      const basePlacement = parseFloatingUIPlacement(placement).side;
       const newCoords = { x, y };
 
       switch (basePlacement) {

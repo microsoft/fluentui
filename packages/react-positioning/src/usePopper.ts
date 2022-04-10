@@ -1,34 +1,32 @@
-import {
-  computePosition,
-  hide as hideMiddleware,
-  arrow as arrowMiddleware,
-  offset as offsetMiddleware,
-} from '@floating-ui/dom';
+import { computePosition, hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
 import type { Middleware, Strategy, Placement, Coords, MiddlewareData } from '@floating-ui/dom';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
 import type { FloatingUIOptions, PositioningProps, PositioningVirtualElement } from './types';
-import { getPlacement } from './utils/positioningHelper';
-import { useCallbackRef } from './utils/useCallbackRef';
+import {
+  useCallbackRef,
+  toFloatingUIPlacement,
+  toggleScrollListener,
+  hasAutofocusFilter,
+  debounce,
+  hasScrollParent,
+} from './utils/index';
 import {
   shift as shiftMiddleware,
   flip as flipMiddleware,
   coverTarget as coverTargetMiddleware,
   maxSize as maxSizeMiddleware,
+  offset as offsetMiddleware,
   intersecting as intersectingMiddleware,
 } from './middleware/index';
-import { hasScrollParent } from './utils/getScrollParent';
-import { debounce } from './utils/debounce';
 import {
   DATA_POSITIONING_ESCAPED,
   DATA_POSITIONING_INTERSECTING,
   DATA_POSITIONING_HIDDEN,
   DATA_POSITIONING_PLACEMENT,
 } from './contants';
-import { toggleScrollListener } from './utils/toggleScrollListener';
-import { hasAutofocusFilter } from './utils/hasAutoFocusFilter';
 
 export function usePopper(
   options: UseFloatingUIOptions,
@@ -86,7 +84,7 @@ export function usePopper(
   const arrowRef = useArrowRef(updatePosition);
 
   React.useImperativeHandle(
-    options.popperRef,
+    options.imperativeRef,
     () => ({
       updatePosition,
       setTarget: (target: HTMLElement | PositioningVirtualElement) => {
@@ -212,7 +210,7 @@ function useFloatingUIOptions(options: FloatingUIOptions) {
     ) => {
       const hasScrollableElement = hasScrollParent(container);
 
-      const placement = getPlacement(align, position, isRtl);
+      const placement = toFloatingUIPlacement(align, position, isRtl);
       const middleware = [
         offset && offsetMiddleware(offset),
         coverTarget && coverTargetMiddleware(),

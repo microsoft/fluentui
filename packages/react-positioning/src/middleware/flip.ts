@@ -1,6 +1,6 @@
 import { flip as baseFlip } from '@floating-ui/dom';
 import type { FloatingUIOptions } from '../types';
-import { getBoundary } from '../utils/getBoundary';
+import { getBoundary } from '../utils/index';
 
 export interface FlipMiddlewareOptions extends Pick<FloatingUIOptions, 'flipBoundary'> {
   hasScrollableElement?: boolean;
