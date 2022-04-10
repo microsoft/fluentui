@@ -25,7 +25,8 @@ export type SlotShorthandValue = React.ReactChild | React.ReactNodeArray | React
  * it shouldn't be used as the type of a slot.
  */
 export type UnknownSlotProps = Pick<React.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
-  as?: keyof JSX.IntrinsicElements;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
 };
 
 /**
@@ -48,7 +49,7 @@ type WithSlotRenderFunction<Props extends { children?: unknown }> = Props & {
  *
  * Reference: https://developer.mozilla.org/en-US/docs/Glossary/Empty_element
  */
-type EmptyIntrisicElements =
+type EmptyIntrinsicElements =
   | 'area'
   | 'base'
   | 'br'
@@ -69,8 +70,21 @@ type EmptyIntrisicElements =
  * * Removes legacy string ref.
  * * Disallows children for empty tags like 'img'.
  */
-type IntrisicElementProps<Type extends keyof JSX.IntrinsicElements> = React.PropsWithRef<JSX.IntrinsicElements[Type]> &
-  (Type extends EmptyIntrisicElements ? { children?: never } : {});
+type IntrinsicElementProps<Type extends keyof JSX.IntrinsicElements> = React.PropsWithRef<JSX.IntrinsicElements[Type]> &
+  (Type extends EmptyIntrinsicElements ? { children?: never } : {});
+
+type WithComponentType<Props, Type> = Props extends AsIntrinsicElement<infer AsList>
+  ? {
+      [As in AsList]: WithSlotRenderFunction<
+        (Props extends { as: unknown }
+          ? { as: As | Type; children?: unknown }
+          : Props extends { as?: unknown }
+          ? { as?: As | Type; children?: unknown }
+          : { children?: unknown }) &
+          Omit<Props, 'as'>
+      >;
+    }[AsList]
+  : { as?: Type | undefined } & WithSlotRenderFunction<Omit<Props, 'as'>>;
 
 /**
  * The props type and shorthand value for a slot. Type is either a single intrinsic element like `'div'`,
@@ -101,13 +115,13 @@ export type Slot<
   ?
       | WithSlotShorthandValue<
           Type extends keyof JSX.IntrinsicElements // Intrinsic elements like `div`
-            ? { as?: Type } & WithSlotRenderFunction<IntrisicElementProps<Type>>
+            ? { as?: Type } & WithSlotRenderFunction<IntrinsicElementProps<Type>>
             : Type extends React.ComponentType<infer Props> // Component types like `typeof Button`
-            ? WithSlotRenderFunction<Props>
+            ? WithComponentType<Props, Type>
             : Type // Props types like `ButtonProps`
         >
       | {
-          [As in AlternateAs]: { as: As } & WithSlotRenderFunction<IntrisicElementProps<As>>;
+          [As in AlternateAs]: { as: As } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
         }[AlternateAs]
       | null
   : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
@@ -172,13 +186,47 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
  */
 export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | undefined : T;
 
+type WithoutComponentType<Props> = Props extends { as?: unknown }
+  ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Omit<Props, 'as'> & { as: Exclude<Props['as'], React.ComponentType<any>> }
+  : Props;
+
+// type Test = {
+//   as?:
+//     | 'button'
+//     | React.ForwardRefExoticComponent<
+//         { children: React.ReactNode } & React.RefAttributes<HTMLButtonElement | HTMLAnchorElement>
+//       >;
+//   prop1?: string;
+//   prop2?: number;
+// };
+// type Test2 = WithoutComponentType<Test>;
+// type Test3 = {
+//   as:
+//     | 'button'
+//     | React.ForwardRefExoticComponent<
+//         { children: React.ReactNode } & React.RefAttributes<HTMLButtonElement | HTMLAnchorElement>
+//       >;
+//   prop1?: string;
+//   prop2?: number;
+// };
+// type Test4 = WithoutComponentType<Test3>;
+// type Test5<Props> = Props extends { as: infer As } ? As : Props extends { as?: infer As2 } ? As2 | undefined : never;
+// type Test6 = Test5<{ as?: 'a' }>;
+// type Test7 = Test5<{ as: 'button' }>;
+// type CheckUndefined<Type> = Type extends undefined ? undefined : Type;
+// type Test8 = CheckUndefined<'button' | undefined>;
+// type Test9 = CheckUndefined<'button'>;
+// type Test10 = WithComponentType<{ as?: 'button' }, React.ComponentType>;
+// type Test11 = WithComponentType<{ as: 'a' }, React.ComponentType>;
+
 /**
  * Defines the State object of a component given its slots.
  */
 export type ComponentState<Slots extends SlotPropsRecord> = {
   components: {
     [Key in keyof Slots]-?:
-      | React.ComponentType<ExtractSlotProps<Slots[Key]>>
+      | React.ComponentType<WithoutComponentType<ExtractSlotProps<Slots[Key]>>>
       | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   };
 } & {

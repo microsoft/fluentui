@@ -48,7 +48,7 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
 // @public
 export type ComponentState<Slots extends SlotPropsRecord> = {
     components: {
-        [Key in keyof Slots]-?: React_2.ComponentType<ExtractSlotProps<Slots[Key]>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+        [Key in keyof Slots]-?: React_2.ComponentType<WithoutComponentType<ExtractSlotProps<Slots[Key]>>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     };
 } & {
     [Key in keyof Slots]: ReplaceNullWithUndefined<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>;
@@ -186,10 +186,10 @@ export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.Keyboar
 // @public
 export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
     as?: Type;
-} & WithSlotRenderFunction<IntrisicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? WithSlotRenderFunction<Props> : Type> | {
+} & WithSlotRenderFunction<IntrinsicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? WithComponentType<Props, Type> : Type> | {
     [As in AlternateAs]: {
         as: As;
-    } & WithSlotRenderFunction<IntrisicElementProps<As>>;
+    } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
 // @public
@@ -246,7 +246,8 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
 
 // @public
 export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
-    as?: keyof JSX.IntrinsicElements;
+    as?: keyof JSX.IntrinsicElements | React_2.ComponentType<any>;
+    componentAs?: React_2.ComponentType<unknown>;
 };
 
 // @public

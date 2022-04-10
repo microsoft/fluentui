@@ -75,7 +75,7 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
 
   const slot = (state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
     ? asProp || state.components?.[slotName] || 'div'
-    : state.components[slotName]) as React.ElementType<R[K]>;
+    : asProp || state.components[slotName]) as React.ElementType<R[K]>;
 
   if (typeof children === 'function') {
     const render = children as SlotRenderFunction<R[K]>;
@@ -87,7 +87,7 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
     ];
   }
 
-  const shouldOmitAsProp = typeof slot === 'string' && state[slotName]?.as;
+  const shouldOmitAsProp = state[slotName]?.as;
   const slotProps = (shouldOmitAsProp ? omit(state[slotName]!, ['as']) : state[slotName]) as R[K];
 
   return [slot, slotProps];

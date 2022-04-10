@@ -14,6 +14,7 @@ export { SizeMedium } from './stories/SplitButtonSizeMedium.stories';
 export { SizeLarge } from './stories/SplitButtonSizeLarge.stories';
 export { Disabled } from './stories/SplitButtonDisabled.stories';
 export { WithLongText } from './stories/SplitButtonWithLongText.stories';
+export { Toggleable } from './stories/SplitButtonToggleable.stories';
 
 export default {
   title: 'Components/SplitButton',
