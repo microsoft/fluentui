@@ -165,7 +165,7 @@
     "cypress": "9.5.2",
     "cypress-real-events": "1.7.0",
     "cypress-storybook": "0.5.1",
-    "danger": "^6.0.5",
+    "danger": "^11.0.0",
     "dedent": "0.7.0",
     "del": "6.0.0",
     "enhanced-resolve": "5.8.2",
