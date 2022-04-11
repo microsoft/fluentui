@@ -1,9 +1,7 @@
 /**
- * Setup
+ * Setup for northstar/v0 packages (under packages/fluentui).
  * This is the bootstrap code that is run before any tests, utils, mocks.
  */
-
-/* eslint-disable no-console */
 
 const enzyme = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
