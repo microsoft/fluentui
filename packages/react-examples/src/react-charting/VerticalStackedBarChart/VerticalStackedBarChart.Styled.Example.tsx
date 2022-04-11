@@ -136,7 +136,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             value={this.state.barCornerRadius}
             min={0}
             max={10}
-            aria-label="Change Range"
+            aria-label="Change BarCornerRadius"
             onChange={e => this.setState({ barCornerRadius: +e.target.value })}
           />
           <label>BarMinimumHeight:</label>

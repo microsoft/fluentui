@@ -216,7 +216,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
           value={this.state.barGapMax}
           min={0}
           max={10}
-          aria-label="BarGapMax"
+          aria-label="change BarGapMax"
           onChange={e => this.setState({ barGapMax: +e.target.value })}
         />
         <Checkbox
