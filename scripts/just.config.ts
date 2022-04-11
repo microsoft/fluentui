@@ -23,6 +23,7 @@ import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
 import { isConvergedPackage } from './monorepo/index';
 import { getJustArgv } from './tasks/argv';
+import { tokenPipeline } from './tasks/token-pipeline';
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -74,6 +75,7 @@ export function preset() {
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
   task('babel:postprocess', babel);
+  task('token-pipeline', tokenPipeline);
 
   task('ts:compile', () => {
     return args.commonjs
