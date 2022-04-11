@@ -107,6 +107,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             value={this.state.width}
             min={200}
             max={1000}
+            aria-label="Change Width"
             onChange={e => this.setState({ width: +e.target.value })}
           />
           <label>Height:</label>
@@ -115,6 +116,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             value={this.state.height}
             min={200}
             max={1000}
+            aria-label="change Height"
             onChange={e => this.setState({ height: +e.target.value })}
           />
         </div>
@@ -125,6 +127,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             value={this.state.barGapMax}
             min={0}
             max={10}
+            aria-label="change BarGapMax"
             onChange={e => this.setState({ barGapMax: +e.target.value })}
           />
           <label>BarCornerRadius:</label>
@@ -133,6 +136,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             value={this.state.barCornerRadius}
             min={0}
             max={10}
+            aria-label="Change Range"
             onChange={e => this.setState({ barCornerRadius: +e.target.value })}
           />
           <label>BarMinimumHeight:</label>
@@ -141,6 +145,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             value={this.state.barMinimumHeight}
             min={0}
             max={10}
+            aria-label="Change BarMinimumHeight"
             onChange={e => this.setState({ barMinimumHeight: +e.target.value })}
           />
           <ChoiceGroup
