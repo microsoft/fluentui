@@ -20,11 +20,21 @@ import { initializeIcons as i17 } from './fabric-icons-17';
 
 import { IIconOptions } from '@uifabric/styling';
 import { registerIconAliases } from './iconAliases';
+import { useWindow } from '@fluentui/react-window-provider';
 const DEFAULT_BASE_URL = 'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20210407.001/assets/icons/';
 
+declare global {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    FabricConfig: any;
+  }
+}
+
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const win = useWindow();
 export function initializeIcons(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  baseUrl: string = (window as any)?.FabricConfig?.fontBaseUrl ?? DEFAULT_BASE_URL,
+  baseUrl: string = win?.FabricConfig?.fontBaseUrl ?? DEFAULT_BASE_URL,
   options?: IIconOptions,
 ): void {
   [

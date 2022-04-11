@@ -30,6 +30,7 @@
   "dependencies": {
     "@uifabric/set-version": "^7.0.24",
     "@uifabric/styling": "^7.20.1",
+    "@fluentui/react-window-provider": "^2.2.0",
     "tslib": "^1.10.0"
   }
 }
