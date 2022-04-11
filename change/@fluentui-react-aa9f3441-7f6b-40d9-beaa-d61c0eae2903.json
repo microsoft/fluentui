@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
