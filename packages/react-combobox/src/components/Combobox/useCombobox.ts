@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolvePositioningShorthand, usePopper } from '@fluentui/react-positioning';
+import { Offset, resolvePositioningShorthand, usePopper } from '@fluentui/react-positioning';
 import {
   getPartitionedNativeProps,
   resolveShorthand,
@@ -28,7 +28,15 @@ import type { ComboboxProps, ComboboxState, ComboboxOpenEvents } from './Combobo
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLButtonElement>): ComboboxState => {
   const optionCollection = useOptionCollection(props.children);
 
-  const { inline = false, multiselect, onOpenChange, placeholder, positioning } = props;
+  const {
+    appearance = 'outline',
+    inline = false,
+    multiselect,
+    onOpenChange,
+    placeholder,
+    positioning,
+    size = 'medium',
+  } = props;
   const {
     options,
     collectionData: { count, getOptionAtIndex, getIndexOfKey, getOptionByKey },
@@ -47,6 +55,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   const popperOptions = {
     position: 'below' as const,
     align: 'start' as const,
+    offset: [0, 2] as Offset,
     ...resolvePositioningShorthand(positioning),
   };
 
@@ -154,6 +163,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
       required: true,
       defaultProps: {
         ref: popperContainerRef,
+        multiselect,
         tabIndex: undefined,
       },
     }),
@@ -172,12 +182,14 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     }),
     ...optionCollection,
     activeOption,
+    appearance,
     idBase,
     inline,
     onOptionClick,
     open,
     options,
     selectedOptions,
+    size,
     value,
   };
 };
