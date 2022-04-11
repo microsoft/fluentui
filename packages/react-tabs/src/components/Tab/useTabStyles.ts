@@ -57,7 +57,7 @@ const useRootStyles = makeStyles({
     ...shorthands.padding(pendingSpacingTokens.sNudge, pendingSpacingTokens.sNudge),
   },
   smallVertical: {
-    columnGap: pendingSpacingTokens.xs,
+    columnGap: pendingSpacingTokens.xxs,
     ...shorthands.padding(pendingSpacingTokens.xxs, pendingSpacingTokens.sNudge),
   },
   transparent: {
@@ -88,11 +88,17 @@ const useRootStyles = makeStyles({
     },
   },
   subtle: {
+    backgroundColor: tokens.colorSubtleBackground,
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorSubtleBackgroundHover,
+    },
+    ':active': {
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
   },
   disabled: {
+    backgroundColor: tokens.colorTransparentBackground,
+
     '& .fui-Tab__icon': {
       color: tokens.colorNeutralForegroundDisabled,
     },
@@ -336,10 +342,10 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
     size !== 'small' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
     size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
     focusStyles.base,
-    disabled && rootStyles.disabled,
     !disabled && appearance === 'subtle' && rootStyles.subtle,
     !disabled && appearance === 'transparent' && rootStyles.transparent,
     !disabled && selected && rootStyles.selected,
+    disabled && rootStyles.disabled,
 
     // pending indicator (before pseudo element)
     pendingIndicatorStyles.base,

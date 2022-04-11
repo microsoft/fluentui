@@ -152,8 +152,7 @@ export type SpinButtonChangeEvent =
   | React.MouseEvent<HTMLButtonElement>
   | React.ChangeEvent<HTMLElement>
   | React.FocusEvent<HTMLInputElement>
-  | React.KeyboardEvent<HTMLInputElement>
-  | React.WheelEvent<HTMLDivElement>;
+  | React.KeyboardEvent<HTMLInputElement>;
 
 export type SpinButtonOnChangeData = {
   value?: number;
@@ -161,4 +160,4 @@ export type SpinButtonOnChangeData = {
 };
 
 export type SpinButtonSpinState = 'rest' | 'up' | 'down';
-export type SpinButtonBounds = 'none' | 'min' | 'max';
+export type SpinButtonBounds = 'none' | 'min' | 'max' | 'both';

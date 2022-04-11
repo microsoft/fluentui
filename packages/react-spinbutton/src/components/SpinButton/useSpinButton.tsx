@@ -135,7 +135,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     }),
   };
 
-  const [setWheelTimeout] = useTimeout();
   const [setStepTimeout, clearStepTimeout] = useTimeout();
 
   React.useEffect(() => {
@@ -151,21 +150,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     }
     setTextValue(newTextValue);
   }, [value, displayValue, currentValue, precision, setAtBound, min, max]);
-
-  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    if (props.disabled) {
-      return;
-    }
-
-    const spinDir = e.deltaY > 0 ? 'down' : 'up';
-    // TODO: Might want to debounce this
-    setSpinState(spinDir);
-    stepValue(e, spinDir);
-
-    setWheelTimeout(() => {
-      setSpinState('rest');
-    }, 250);
-  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (inputType === 'spinners-only') {
@@ -225,6 +209,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     commit(e, currentValue, textValue);
+    internalState.current.previousTextValue = undefined;
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -268,7 +253,10 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
   const commit = (e: SpinButtonChangeEvent, newValue?: number, newDisplayValue?: string) => {
     const valueChanged = newValue !== undefined && currentValue !== newValue;
-    const displayValueChanged = newDisplayValue !== undefined;
+    const displayValueChanged =
+      newDisplayValue !== undefined &&
+      internalState.current.previousTextValue !== undefined &&
+      internalState.current.previousTextValue !== newDisplayValue;
 
     let roundedValue;
     if (valueChanged) {
@@ -282,13 +270,12 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       onChange?.(e, { value: roundedValue, displayValue: newDisplayValue });
     }
   };
-  state.root.onWheel = useMergedEventCallbacks(state.root.onWheel, handleWheel);
 
   state.input.value = textValue;
   state.input['aria-valuemin'] = min;
   state.input['aria-valuemax'] = max;
   state.input['aria-valuenow'] = currentValue;
-  state.input['aria-valuetext'] = displayValue ?? undefined;
+  state.input['aria-valuetext'] = (value !== undefined && displayValue) || undefined;
   state.input.onChange = useMergedEventCallbacks(state.input.onChange, handleInputChange);
   state.input.onBlur = useMergedEventCallbacks(state.input.onBlur, handleBlur);
   state.input.onKeyDown = useMergedEventCallbacks(state.input.onKeyDown, handleKeyDown);
