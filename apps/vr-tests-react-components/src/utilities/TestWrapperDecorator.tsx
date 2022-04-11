@@ -43,21 +43,6 @@ export const TestWrapperDecoratorFullWidth: DecoratorFunction<ExtendedStoryFnRet
   </div>
 );
 
-// export const TestWrapperDecoratorNoAnimation: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
-//   <div style={{ display: 'flex' }}>
-//     <div
-//       className="testWrapper"
-//       style={{
-//         padding: '10px',
-//         overflow: 'hidden',
-//         transition: 'none !important',
-//         animation: 'none !important',
-//       }}
-//     >
-//       {story()}
-//     </div>
-//   </div>
-// );
 const useNoAnimationStyles = makeStyles({
   root: {
     animationDuration: '0s !important',
