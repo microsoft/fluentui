@@ -44,7 +44,9 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   onValidateUserInput,
   ...rest
 }: ITimePickerProps) => {
-  const [userText, setUserText] = React.useState<string>('');
+  const [userText, setUserText] = React.useState<string>(
+    defaultValue ? formatTimeString(defaultValue, showSeconds, useHour12) : '',
+  );
   const [errorMessage, setErrorMessage] = React.useState<string>('');
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
@@ -73,7 +75,9 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
     });
   }, [baseDate, increments, optionsCount, showSeconds, onFormatDate, useHour12]);
 
-  const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>(timePickerOptions[0].key);
+  const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>(
+    defaultValue ? undefined : timePickerOptions[0].key,
+  );
 
   const onInputChange = React.useCallback(
     (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string): void => {
