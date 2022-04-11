@@ -20,7 +20,7 @@ import { initializeIcons as i17 } from './fabric-icons-17';
 
 import { IIconOptions } from '@uifabric/styling';
 import { registerIconAliases } from './iconAliases';
-import { useWindow } from '@fluentui/react-window-provider';
+import { getWindow } from '@uifabric/utilities';
 const DEFAULT_BASE_URL = 'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20210407.001/assets/icons/';
 
 declare global {
@@ -31,8 +31,7 @@ declare global {
   }
 }
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const win = useWindow();
+const win = getWindow();
 export function initializeIcons(
   baseUrl: string = win?.FabricConfig?.fontBaseUrl ?? DEFAULT_BASE_URL,
   options?: IIconOptions,
