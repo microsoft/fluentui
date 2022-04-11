@@ -264,12 +264,12 @@ const marigold: ColorVariants = {
 };
 
 const yellow: ColorVariants = {
-  shade50: '#282400',
-  shade40: '#4c4400',
-  shade30: '#8e7f00',
-  shade20: '#c0ad00',
-  shade10: '#e4cc00',
   primary: '#fde300',
+  shade10: '#e4cc00',
+  shade20: '#c0ad00',
+  shade30: '#817400',
+  shade40: '#4c4400',
+  shade50: '#282400',
   tint10: '#fde61e',
   tint20: '#fdea3d',
   tint30: '#feee66',

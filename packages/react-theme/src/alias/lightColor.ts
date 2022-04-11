@@ -1,5 +1,5 @@
-import { black, blackAlpha, grey, white, whiteAlpha, sharedColors } from '../global/colors';
-import type { BrandVariants, GlobalSharedColors, ColorTokens, ColorPaletteTokens } from '../types';
+import { black, blackAlpha, grey, white, whiteAlpha } from '../global/colors';
+import type { BrandVariants, ColorTokens } from '../types';
 
 export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralForeground1: grey[14], // #242424 Global.Color.Grey.14
@@ -141,22 +141,3 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorBrandShadowAmbient: 'rgba(0,0,0,0.30)', // rgba(0,0,0,0.30) undefined
   colorBrandShadowKey: 'rgba(0,0,0,0.25)', // rgba(0,0,0,0.25) undefined
 });
-
-export const colorPaletteTokens: ColorPaletteTokens = (Object.keys(sharedColors) as Array<
-  keyof GlobalSharedColors
->).reduce((acc, sharedColor) => {
-  const color = sharedColor.slice(0, 1).toUpperCase() + sharedColor.slice(1);
-  const sharedColorTokens = {
-    [`colorPalette${color}Background1`]: sharedColors[sharedColor].tint60,
-    [`colorPalette${color}Background2`]: sharedColors[sharedColor].tint40,
-    [`colorPalette${color}Background3`]: sharedColors[sharedColor].primary,
-    [`colorPalette${color}Foreground1`]: sharedColors[sharedColor].shade10,
-    [`colorPalette${color}Foreground2`]: sharedColors[sharedColor].shade30,
-    [`colorPalette${color}Foreground3`]: sharedColors[sharedColor].primary,
-    [`colorPalette${color}BorderActive`]: sharedColors[sharedColor].primary,
-    [`colorPalette${color}Border1`]: sharedColors[sharedColor].tint40,
-    [`colorPalette${color}Border2`]: sharedColors[sharedColor].primary,
-  };
-
-  return { ...acc, ...sharedColorTokens };
-}, {} as ColorPaletteTokens);
