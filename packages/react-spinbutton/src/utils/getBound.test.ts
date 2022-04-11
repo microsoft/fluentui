@@ -11,6 +11,10 @@ describe('SpinButton getBound Util', () => {
     expect(getBound(10, undefined, 10)).toBe('max');
   });
 
+  it('should return "both"', () => {
+    expect(getBound(1, 1, 1)).toBe('both');
+  });
+
   it('should return "none"', () => {
     expect(getBound(5, 0, 10)).toBe('none');
     expect(getBound(5)).toBe('none');
