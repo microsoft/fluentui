@@ -10,7 +10,7 @@ const path = require('path');
  * @param {import('webpack').Configuration & { [key: string]: any }} config - Webpack config to merge the
  * monaco-related config into. It must be an object (not an array or function). `config.entry`
  * also must be an object (not a string, array, or function).
- * @param {object} [options]
+ * @param {Object} [options]
  * @param {boolean} [options.includeAllLanguages] - If true, include all language contributions in the main
  * Monaco bundle and add entry configs for CSS/HTML/JSON workers in addition to TS. If false (default),
  * only include TS features.
@@ -40,17 +40,12 @@ function addMonacoWebpackConfig(config, options = {}) {
     try {
       // copy-webpack-plugin is not listed in dependencies or peerDependencies because it's optional
       const CopyWebpackPlugin = require('copy-webpack-plugin');
-      const fontBasePath = path.resolve(__dirname, '../esm/vs/base/browser/ui');
-      let fontPath = path.join(fontBasePath, 'codicons/codicon/codicon.ttf');
-      // TODO remove this part for monaco 0.19.0 after monaco update PR merges
-      if (!fs.existsSync(fontPath)) {
-        fontPath = path.join(fontBasePath, 'codiconLabel/codicon/codicon.ttf');
+      const fontPath = path.resolve(__dirname, '../esm/vs/base/browser/ui/codicons/codicon/codicon.ttf');
+      if (fs.existsSync(fontPath)) {
+        extraPlugins.push(new CopyWebpackPlugin({ patterns: [{ from: fontPath, to: outDir }] }));
+      } else {
+        console.warn(`[addMonacoWebpackConfig] Monaco icon font not found at ${fontPath}`);
       }
-      extraPlugins.push(
-        new CopyWebpackPlugin({
-          patterns: [{ from: fontPath, to: outDir }],
-        }),
-      );
     } catch (err) {
       console.warn('[addMonacoWebpackConfig] To copy fonts, please ensure copy-webpack-plugin is installed');
     }
