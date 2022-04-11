@@ -73,9 +73,15 @@ type EmptyIntrinsicElements =
 type IntrinsicElementProps<Type extends keyof JSX.IntrinsicElements> = React.PropsWithRef<JSX.IntrinsicElements[Type]> &
   (Type extends EmptyIntrinsicElements ? { children?: never } : {});
 
+/**
+ * Helper type for {@link Slot}.
+ * Used when the type passed to Slot is a component type like `typeof Button`.
+ * Adds the component type as a possible value for `as` while maintaining its union discriminator property.
+ */
 type WithComponentType<Props, Type> = Props extends AsIntrinsicElement<infer AsList>
   ? {
       [As in AsList]: WithSlotRenderFunction<
+        // Determine if `as` is optional or not to be able to properly discriminate the union.
         (Props extends { as: unknown }
           ? { as: As | Type; children?: unknown }
           : Props extends { as?: unknown }
@@ -186,39 +192,15 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
  */
 export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | undefined : T;
 
+/**
+ * Helper type for {@link ComponentState}.
+ * Removes the `React.ComponentType` type that might have been added earlier from the `as` prop as that pertains to the
+ * component props API we want to surface but does not pertain the `components` definition inside of component state.
+ */
 type WithoutComponentType<Props> = Props extends { as?: unknown }
   ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Omit<Props, 'as'> & { as: Exclude<Props['as'], React.ComponentType<any>> }
   : Props;
-
-// type Test = {
-//   as?:
-//     | 'button'
-//     | React.ForwardRefExoticComponent<
-//         { children: React.ReactNode } & React.RefAttributes<HTMLButtonElement | HTMLAnchorElement>
-//       >;
-//   prop1?: string;
-//   prop2?: number;
-// };
-// type Test2 = WithoutComponentType<Test>;
-// type Test3 = {
-//   as:
-//     | 'button'
-//     | React.ForwardRefExoticComponent<
-//         { children: React.ReactNode } & React.RefAttributes<HTMLButtonElement | HTMLAnchorElement>
-//       >;
-//   prop1?: string;
-//   prop2?: number;
-// };
-// type Test4 = WithoutComponentType<Test3>;
-// type Test5<Props> = Props extends { as: infer As } ? As : Props extends { as?: infer As2 } ? As2 | undefined : never;
-// type Test6 = Test5<{ as?: 'a' }>;
-// type Test7 = Test5<{ as: 'button' }>;
-// type CheckUndefined<Type> = Type extends undefined ? undefined : Type;
-// type Test8 = CheckUndefined<'button' | undefined>;
-// type Test9 = CheckUndefined<'button'>;
-// type Test10 = WithComponentType<{ as?: 'button' }, React.ComponentType>;
-// type Test11 = WithComponentType<{ as: 'a' }, React.ComponentType>;
 
 /**
  * Defines the State object of a component given its slots.

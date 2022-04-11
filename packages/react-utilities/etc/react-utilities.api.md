@@ -247,7 +247,6 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
 // @public
 export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
     as?: keyof JSX.IntrinsicElements | React_2.ComponentType<any>;
-    componentAs?: React_2.ComponentType<unknown>;
 };
 
 // @public
