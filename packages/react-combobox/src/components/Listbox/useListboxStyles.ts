@@ -1,5 +1,5 @@
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { ListboxSlots, ListboxState } from './Listbox.types';
 
 /**
@@ -14,11 +14,12 @@ export const listboxClassNames: SlotClassNames<ListboxSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
+  // TODO: add themed styles
   root: {
-    // TODO Add default styles for the root element
+    boxShadow: '0px 0px 2px 0px #0000001F, 0px 8px 16px 0px #00000024',
+    ...shorthands.borderRadius('4px'),
+    backgroundColor: '#fff',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -27,9 +28,6 @@ const useStyles = makeStyles({
 export const useListboxStyles_unstable = (state: ListboxState): ListboxState => {
   const styles = useStyles();
   state.root.className = mergeClasses(listboxClassNames.root, styles.root, state.root.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
 
   return state;
 };

@@ -537,7 +537,9 @@
     "@fluentui/react-select": {
       "root": "packages/react-select",
       "projectType": "library",
-      "sourceRoot": "packages/react-select/src"
+      "sourceRoot": "packages/react-select/src",
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
     },
     "@fluentui/react-shared-contexts": {
       "root": "packages/react-shared-contexts",

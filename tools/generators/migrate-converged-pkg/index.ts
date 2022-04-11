@@ -501,6 +501,7 @@ function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
     ...options.projectConfig,
     sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
     tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', tags[packageType]]),
+    implicitDependencies: uniqueArray([...(options.projectConfig.implicitDependencies ?? [])]),
   });
 
   return tree;

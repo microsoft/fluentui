@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: Update e2e tests to use cypress component testing",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}

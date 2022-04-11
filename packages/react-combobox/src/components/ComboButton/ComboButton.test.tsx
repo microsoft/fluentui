@@ -7,6 +7,7 @@ describe('ComboButton', () => {
   isConformant({
     Component: ComboButton,
     displayName: 'ComboButton',
+    primarySlot: 'content',
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
