@@ -15,9 +15,9 @@ body:
       label: Library
       description: Which library is affected
       options:
-        - React Northstart / v0 (@fluentui/react-northstart)
+        - React Northstar / v0 (@fluentui/react-northstar)
         - React / v8 (@fluentui/react)
-        - React Components / vNext (@fluentui/react-components)
+        - React Components / v9 (@fluentui/react-components)
         - Web Components (@fluentui/web-components)
     validations:
       required: true
@@ -53,9 +53,9 @@ body:
       label: Reproduction
       description: |
         Please provide a link to one of following browser tools based on library version:
-        - React Northstart / v0 - https://codesandbox.io/
+        - React Northstar / v0 - https://codesandbox.io/s/fluent-ui-template-8ismt
         - React / v8  - https://aka.ms/fluentpen
-        - React Components / vNext - https://codesandbox.io/
+        - React Components / v9 - https://codesandbox.io/
         - Web Components - https://codesandbox.io/
 
         Or a link to a repo that can reproduce the problem you ran into.

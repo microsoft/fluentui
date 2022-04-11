@@ -15,9 +15,9 @@ body:
       label: Library
       description: To which library would this be added to
       options:
-        - React Northstart / v0 (@fluentui/react-northstart)
+        - React Northstar / v0 (@fluentui/react-northstar)
         - React / v8 (@fluentui/react)
-        - React Components / vNext (@fluentui/react-components)
+        - React Components / v9 (@fluentui/react-components)
         - Web Components (@fluentui/web-components)
     validations:
       required: true
