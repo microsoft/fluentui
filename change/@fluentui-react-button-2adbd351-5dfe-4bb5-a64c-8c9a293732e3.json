@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adding SplitButtonToggleable example to showcase new composition functionality.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

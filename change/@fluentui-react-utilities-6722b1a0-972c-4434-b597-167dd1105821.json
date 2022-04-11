@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "compose: Adding ability to use `as` prop to replace a slot with another one that extends the original's props",
+  "packageName": "@fluentui/react-utilities",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
