@@ -1,13 +1,24 @@
 import * as React from 'react';
+import { Portal } from '@fluentui/react-portal';
 import { getSlots } from '@fluentui/react-utilities';
-import type { ComboboxState, ComboboxSlots } from './Combobox.types';
+import type { ComboboxContextValues, ComboboxState, ComboboxSlots } from './Combobox.types';
+import { ComboboxContext } from '../../contexts/ComboboxContext';
 
 /**
  * Render the final JSX of Combobox
  */
-export const renderCombobox_unstable = (state: ComboboxState) => {
+export const renderCombobox_unstable = (state: ComboboxState, contextValues: ComboboxContextValues) => {
   const { slots, slotProps } = getSlots<ComboboxSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  const listbox = <slots.listbox {...slotProps.listbox}>{slotProps.root.children}</slots.listbox>;
+  const popup = state.inline ? listbox : <Portal>{listbox}</Portal>;
+
+  return (
+    <slots.root {...slotProps.root}>
+      <ComboboxContext.Provider value={contextValues.combobox}>
+        <slots.trigger {...slotProps.trigger} />
+        {state.open ? popup : null}
+      </ComboboxContext.Provider>
+    </slots.root>
+  );
 };

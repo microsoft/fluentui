@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adding Textarea to react-components.",
+  "packageName": "@fluentui/react-components",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}

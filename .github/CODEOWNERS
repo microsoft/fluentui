@@ -143,6 +143,7 @@ packages/react-provider @microsoft/teams-prg
 packages/react-radio @microsoft/cxe-red
 packages/react-select @microsoft/cxe-coastal @smhigley
 packages/react-slider @microsoft/cxe-coastal @micahgodbolt
+packages/react-spinbutton @microsoft/cxe-red @spmonahan
 packages/react-spinner @microsoft/cxe-red @tomi-msft
 packages/react-switch @microsoft/cxe-red @behowell @khmakoto
 packages/react-tabs @microsoft/cxe-coastal @geoffcoxmsft

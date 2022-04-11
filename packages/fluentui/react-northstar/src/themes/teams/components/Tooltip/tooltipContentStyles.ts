@@ -3,6 +3,7 @@ import { TooltipContentStylesProps } from '../../../../components/Tooltip/Toolti
 import { TooltipContentVariables } from './tooltipContentVariables';
 import { getContainerStyles, getPointerStyles } from '../../getPointerStyles';
 import { pointerSvgUrl } from '../../pointerSvgUrl';
+import { pxToRem } from '../../../../utils';
 
 export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProps, TooltipContentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -47,6 +48,7 @@ export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentSty
   }),
   content: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'block',
+    fontSize: pxToRem(12),
     padding: v.padding,
     textAlign: 'left',
 

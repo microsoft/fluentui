@@ -8,6 +8,10 @@ import type { ComboButtonState, ComboButtonSlots } from './ComboButton.types';
 export const renderComboButton_unstable = (state: ComboButtonState) => {
   const { slots, slotProps } = getSlots<ComboButtonSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      <slots.content {...slotProps.content} />
+      <slots.expandIcon {...slotProps.expandIcon} />
+    </slots.root>
+  );
 };
