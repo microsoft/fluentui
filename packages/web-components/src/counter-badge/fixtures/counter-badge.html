@@ -1,0 +1,79 @@
+<style>
+  .container {
+    display: flex;
+    gap: 8px;
+  }
+</style>
+<h1>Counter Badge</h1>
+
+<h2>Default</h2>
+<fluent-counter-badge></fluent-counter-badge>
+
+<h3>Count</h3>
+<fluent-counter-badge></fluent-counter-badge>
+<fluent-counter-badge showzero></fluent-counter-badge>
+<fluent-counter-badge count="55"></fluent-counter-badge>
+<fluent-counter-badge count="155"></fluent-counter-badge>
+<fluent-counter-badge>100</fluent-counter-badge>
+
+<h2>Appearance</h2>
+
+<h3>Default</h3>
+<fluent-counter-badge count="5"></fluent-counter-badge>
+
+<h3>Filled</h3>
+<fluent-counter-badge appearance="filled" count="5"></fluent-counter-badge>
+
+<h3>Ghost</h3>
+<fluent-counter-badge appearance="ghost" count="5"></fluent-counter-badge>
+
+<h2>Sizes</h2>
+
+<h3>Tiny</h3>
+<fluent-counter-badge size="tiny" count="5"></fluent-counter-badge>
+
+<h3>Extra-Small</h3>
+<fluent-counter-badge size="extra-small" count="5"></fluent-counter-badge>
+
+<h3>Small</h3>
+<fluent-counter-badge size="small" count="5"></fluent-counter-badge>
+
+<h3>Medium</h3>
+<fluent-counter-badge size="medium" count="5"></fluent-counter-badge>
+
+<h3>Large</h3>
+<fluent-counter-badge size="large" count="5"></fluent-counter-badge>
+
+<h3>Extra-Large</h3>
+<fluent-counter-badge size="extra-large" count="5"></fluent-counter-badge>
+
+<h2>Shapes</h2>
+
+<h3>Rounded</h3>
+<fluent-counter-badge shape="rounded" count="5"></fluent-counter-badge>
+
+<h3>Circular</h3>
+<fluent-counter-badge shape="circular" count="5"></fluent-counter-badge>
+
+<h2>Color</h2>
+
+<h3>Filled</h3>
+<div class="container">
+  <fluent-counter-badge appearance="filled" color="brand" count="5"></fluent-counter-badge>
+  <fluent-counter-badge appearance="filled" color="danger" count="5"></fluent-counter-badge>
+  <fluent-counter-badge appearance="filled" color="important" count="5"></fluent-counter-badge>
+  <fluent-counter-badge appearance="filled" color="informative" count="5"></fluent-counter-badge>
+</div>
+
+<h3>Ghost</h3>
+<div class="container">
+  <fluent-counter-badge appearance="ghost" color="brand" count="5"></fluent-counter-badge>
+  <fluent-counter-badge appearance="ghost" color="danger" count="5"></fluent-counter-badge>
+  <fluent-counter-badge appearance="ghost" color="important" count="5"></fluent-counter-badge>
+  <fluent-counter-badge appearance="ghost" color="informative" count="5"></fluent-counter-badge>
+</div>
+
+<h2>Dot</h2>
+<fluent-counter-badge dot count="5"></fluent-counter-badge>
+<fluent-counter-badge dot count="0" count="5" color="danger"></fluent-counter-badge>
+<fluent-counter-badge dot showZero count="5" color="important"></fluent-counter-badge>

@@ -1,25 +1,17 @@
-import { css, ElementStyles } from '@microsoft/fast-element';
-import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
-import {
-  bodyFont,
-  designUnit,
-  neutralForegroundRest,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
-} from '../design-tokens';
+import { css } from '@microsoft/fast-element';
+import { display } from '@microsoft/fast-foundation';
+import { tokens } from '@fluentui/react-theme';
 
-export const accordionStyles: (
-  context: ElementDefinitionContext,
-  definition: FoundationElementDefinition,
-) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
-  css`
+export const accordionStyles = css`
     ${display('flex')} :host {
       box-sizing: border-box;
       flex-direction: column;
-      font-family: ${bodyFont};
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
-      color: ${neutralForegroundRest};
-      gap: calc(${designUnit} * 1px);
+    }
+
+    :host([disabled]) ::slotted(fluent-accordion-item) {
+      background-image: none;
+      pointer-events: none;
+      user-select: none;
+      color: ${tokens.colorNeutralForegroundDisabled};
     }
   `;

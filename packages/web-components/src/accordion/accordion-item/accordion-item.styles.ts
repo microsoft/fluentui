@@ -1,84 +1,32 @@
-import { css, ElementStyles } from '@microsoft/fast-element';
+import { css } from '@microsoft/fast-element';
 import {
-  AccordionItemOptions,
-  DesignToken,
   display,
-  ElementDefinitionContext,
   focusVisible,
-  forcedColorsStylesheetBehavior,
 } from '@microsoft/fast-foundation';
-import { SystemColors } from '@microsoft/fast-web-utilities';
-import { Swatch } from '../../color/swatch';
-import {
-  bodyFont,
-  controlCornerRadius,
-  designUnit,
-  focusStrokeOuter,
-  focusStrokeWidth,
-  layerCornerRadius,
-  neutralFillLayerAltRest,
-  neutralFillLayerRecipe,
-  neutralFillLayerRest,
-  neutralFillStealthRecipe,
-  neutralForegroundRest,
-  neutralStrokeLayerRest,
-  strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
-} from '../../design-tokens';
-import { heightNumber } from '../../styles/size';
+import { tokens } from '@fluentui/react-theme';
 
-const neutralFillStealthRestOnNeutralFillLayerRest = DesignToken.create<Swatch>(
-  'neutral-fill-stealth-rest-on-neutral-fill-layer-rest',
-).withDefault((target: HTMLElement) => {
-  const baseRecipe = neutralFillLayerRecipe.getValueFor(target);
-  const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
-  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target).rest).rest;
-});
-
-const neutralFillStealthHoverOnNeutralFillLayerRest = DesignToken.create<Swatch>(
-  'neutral-fill-stealth-hover-on-neutral-fill-layer-rest',
-).withDefault((target: HTMLElement) => {
-  const baseRecipe = neutralFillLayerRecipe.getValueFor(target);
-  const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
-  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target).rest).hover;
-});
-
-const neutralFillStealthActiveOnNeutralFillLayerRest = DesignToken.create<Swatch>(
-  'neutral-fill-stealth-active-on-neutral-fill-layer-rest',
-).withDefault((target: HTMLElement) => {
-  const baseRecipe = neutralFillLayerRecipe.getValueFor(target);
-  const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
-  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target).rest).active;
-});
-
-export const accordionItemStyles: (
-  context: ElementDefinitionContext,
-  definition: AccordionItemOptions,
-) => ElementStyles = (context: ElementDefinitionContext, definition: AccordionItemOptions) =>
-  css`
+export const accordionItemStyles = css`
     ${display('flex')} :host {
       box-sizing: border-box;
-      font-family: ${bodyFont};
+      font-family: ${tokens.fontFamilyBase};
+      font-size: ${tokens.fontSizeBase300};
       flex-direction: column;
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
-      background: ${neutralFillLayerRest};
-      color: ${neutralForegroundRest};
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeLayerRest};
-      border-radius: calc(${layerCornerRadius} * 1px);
+      margin: 0;
+      padding: 0 10px;
+      background: ${tokens.colorNeutralBackground1};
+      color: ${tokens.colorNeutralForeground1};
+      border-radius: 2px;
+      width: calc(100% - 22px);
+      --accordion-item-height: 44px;
     }
 
     .region {
       display: none;
-      padding: calc(${designUnit} * 2 * 1px);
-      background: ${neutralFillLayerAltRest};
     }
 
     .heading {
-      display: grid;
+      display: flex;
       position: relative;
-      grid-template-columns: auto 1fr auto auto;
       align-items: center;
     }
 
@@ -86,15 +34,15 @@ export const accordionItemStyles: (
       appearance: none;
       border: none;
       background: none;
-      grid-column: 2;
-      grid-row: 1;
+      order: 3;
       outline: none;
-      margin: calc(${designUnit} * 3 * 1px) 0;
-      padding: 0 calc(${designUnit} * 2 * 1px);
+      margin: 0;
       text-align: left;
       color: inherit;
       cursor: pointer;
       font-family: inherit;
+      font-size: inherit;
+      height: var(--accordion-item-height);
     }
 
     .button::before {
@@ -107,93 +55,81 @@ export const accordionItemStyles: (
       cursor: pointer;
     }
 
+    /* needs focus styles */
     .button:${focusVisible}::before {
       outline: none;
-      border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
-      border-radius: calc(${layerCornerRadius} * 1px);
-      box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter};
-    }
-
-    :host(.expanded) .button:${focusVisible}::before {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
     }
 
     :host(.expanded) .region {
       display: block;
-      border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeLayerRest};
-      border-bottom-left-radius: calc((${layerCornerRadius} - ${strokeWidth}) * 1px);
-      border-bottom-right-radius: calc((${layerCornerRadius} - ${strokeWidth}) * 1px);
+      margin-inline: 12px;
     }
 
-    .icon {
+    .expand-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      grid-column: 4;
+      order: 1;
       pointer-events: none;
-      background: ${neutralFillStealthRestOnNeutralFillLayerRest};
-      border-radius: calc(${controlCornerRadius} * 1px);
+    }
+
+    .expand-icon,
+    ::slotted([slot="start"]) {
+      margin-inline-end: 8px;
+    }
+
+    :host([expanded]) .expand-icon {
+      transform: rotate(90deg);
+    }
+
+    ::slotted([slot="start"]) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      order: 2;
+    }
+
+    ::slotted([slot="end"]) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-inline-start: 8px;
+      order: 4;
+    }
+
+    .expand-icon,
+    ::slotted([slot="start"]),
+    ::slotted([slot="end"]) {
       fill: currentcolor;
-      width: calc(${heightNumber} * 1px);
-      height: calc(${heightNumber} * 1px);
-      margin: calc(${designUnit} * 2 * 1px);
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
     }
 
-    .heading:hover .icon {
-      background: ${neutralFillStealthHoverOnNeutralFillLayerRest};
+    :host([size="small"]) {
+      --accordion-item-height: 32px;
     }
 
-    .heading:active .icon {
-      background: ${neutralFillStealthActiveOnNeutralFillLayerRest};
+    :host([size="small"]) .button {
+      font-size: ${tokens.fontSizeBase200};
     }
 
-    slot[name='collapsed-icon'] {
-      display: flex;
+    :host([size="large"]) .button {
+      font-size: ${tokens.fontSizeBase400};
     }
 
-    :host(.expanded) slot[name='collapsed-icon'] {
-      display: none;
+    :host([size="extra-large"]) .button {
+      font-size: ${tokens.fontSizeBase500};
     }
 
-    slot[name='expanded-icon'] {
-      display: none;
+    :host([expand-icon-position="end"]) .expand-icon {
+      margin-inline-end: 0;
+      margin-inline-start: auto;
+      order: 4;
+      transform: rotate(90deg);
     }
 
-    :host(.expanded) slot[name='expanded-icon'] {
-      display: flex;
+    :host([expanded][expand-icon-position="end"]) .expand-icon {
+      transform: rotate(-90deg);
     }
-
-    .start {
-      display: flex;
-      align-items: center;
-      padding-inline-start: calc(${designUnit} * 2 * 1px);
-      justify-content: center;
-      grid-column: 1;
-    }
-
-    .end {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      grid-column: 3;
-    }
-
-    .icon,
-    .start,
-    .end {
-      position: relative;
-    }
-  `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        .button:${focusVisible}::before {
-          border-color: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${SystemColors.Highlight};
-        }
-        .icon {
-          fill: ${SystemColors.ButtonText};
-        }
-      `,
-    ),
-  );
+  `;

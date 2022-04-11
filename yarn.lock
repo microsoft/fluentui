@@ -1686,6 +1686,13 @@
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.159-beta.10.tgz#8934c05b415bbb1b46f9085c72eaf78fd7bad967"
   integrity sha512-Y2pDtl6ofeqGI/M/C3T6KbFy+deT1TkQ5aMO3TWN4XgAYQb5Sww56WeuX+sQNnnIXN21HIJOS6Hw1frFtCPv0w==
 
+"@fluentui/react-theme@9.0.0-rc.1":
+  version "9.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-theme/-/react-theme-9.0.0-rc.1.tgz#f18ce6ab705fc9825fbb42ca859948b5b3bc3b7c"
+  integrity sha512-FD+GYoZjQhpGqa1rB1BLqJtY7CKSFrBKK36O+w3NJRBdZHez1fuBubQKVecYF31h98u/g34nIbiW7VbtyTndnA==
+  dependencies:
+    tslib "^2.1.0"
+
 "@griffel/babel-preset@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.0.0.tgz#2e44d06dc857c89a42f6550e331dd1ea4efc0a72"
@@ -2939,23 +2946,23 @@
     eslint-plugin-react "7.24.0"
     eslint-plugin-security "1.4.0"
 
-"@microsoft/fast-colors@^5.1.5":
-  version "5.1.5"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-colors/-/fast-colors-5.1.5.tgz#3d7dacae85c263030c793ba457991d4cdcec7538"
-  integrity sha512-g8FByhbmRxibSpHkDE90CLCsh61HzH4ujPBG5N1zWXgM8LtzaF6OYBzfd8uGJ/md+SGeHf3aH9fcT8HTCbarXw==
+"@microsoft/fast-colors@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-colors/-/fast-colors-5.2.0.tgz#a2cf362ccb11c682a5c5802c1467049991ea11d0"
+  integrity sha512-EAGkf8xnBGHCV5ICKXZCuIn9uzC1pnnfrnMsgg0rJD7y2OXFr1CzP7niL1UG9XfPvZYh//IQgMAP71qdJYr2Ug==
 
-"@microsoft/fast-element@^1.7.2":
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.7.2.tgz#b381c95b1c0f04faa5819785e1cd92b4d9f9ae8a"
-  integrity sha512-bV+wFQUoMtyd1ccwE6k8CVjWSWQv9wgMj6nA2j2l5EtcN8+/XT23Ljce98GaMdIBARYpb35RQwCQq7stVWZUTg==
+"@microsoft/fast-element@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.9.0.tgz#9d3bb5a029772c0e99c230acdcd6df9640a55715"
+  integrity sha512-VxDwoLEEQRRxXfLOB5Llzha9WWvjVJHZFHNE1mn2s1QV5IAkOhrYrhFe9vzv50eI6CqazChDyHDy1km3+rn0wg==
 
-"@microsoft/fast-foundation@^2.33.6":
-  version "2.33.6"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.33.6.tgz#8f6964b1a41a26e25195041212a86ab1f363d47e"
-  integrity sha512-geROGEc760qBXqeYfCDn6Vlq0fXegpqUdVyUD/Fo1BvzI/MbxFqMy37wAEzzqB7B9XcPAoav34cBriWtEWE+gw==
+"@microsoft/fast-foundation@^2.41.0":
+  version "2.41.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.41.1.tgz#1ac604b71c2b31b181b46a50da2ec9985deca24e"
+  integrity sha512-q3t43CVsYrLeBbmiY6+GvV0/uUqnz7anmagD8qMBpHIpC6XpEERGBNbyC6AxQrRoBrYBFFhBJRTPn7vCqi4iPA==
   dependencies:
-    "@microsoft/fast-element" "^1.7.2"
-    "@microsoft/fast-web-utilities" "^5.1.0"
+    "@microsoft/fast-element" "^1.9.0"
+    "@microsoft/fast-web-utilities" "^5.2.0"
     tabbable "^5.2.0"
     tslib "^1.13.0"
 
@@ -2965,6 +2972,13 @@
   integrity sha512-S2PCxI4XqtIxLM1N7i/NuIAgx+mJM01+mDzyB3vZlYibAkOT0bzp5YZCp+coXowokSin/nK5T2kqShMXEzI6Jg==
   dependencies:
     exenv-es6 "^1.0.0"
+
+"@microsoft/fast-web-utilities@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-5.2.0.tgz#0d150f74a7e7f95dcf81c0bcf189bc9774747d11"
+  integrity sha512-Ri5FR4MotdAPKeFLo/yhZu6/xMVo/H9OXcGaC/qiQo+U0zY8cLPCViGmHYYgxpCYviS4VpgqPL5dslTE6wg9Yg==
+  dependencies:
+    exenv-es6 "^1.1.1"
 
 "@microsoft/load-themed-styles@1.10.26", "@microsoft/load-themed-styles@^1.10.26":
   version "1.10.26"
@@ -12213,6 +12227,11 @@ exenv-es6@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/exenv-es6/-/exenv-es6-1.0.0.tgz#bd459136369af17cf33f959b5af58803d4068c80"
   integrity sha512-fcG/TX8Ruv9Ma6PBaiNsUrHRJzVzuFMP6LtPn/9iqR+nr9mcLeEOGzXQGLC5CVQSXGE98HtzW2mTZkrCA3XrDg==
+
+exenv-es6@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/exenv-es6/-/exenv-es6-1.1.1.tgz#80b7a8c5af24d53331f755bac07e84abb1f6de67"
+  integrity sha512-vlVu3N8d6yEMpMsEm+7sUBAI81aqYYuEvfK0jNqmdb/OPXzzH7QWDDnVjMvDSY47JdHEqx/dfC/q8WkfoTmpGQ==
 
 exit@^0.1.2:
   version "0.1.2"

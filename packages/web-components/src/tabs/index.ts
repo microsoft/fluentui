@@ -1,32 +1,19 @@
-import { Tabs, tabsTemplate as template } from '@microsoft/fast-foundation';
+import { customElement } from '@microsoft/fast-element';
+import { Tabs } from './tabs';
+import { tabsTemplate as template } from './tabs.template';
 import { tabsStyles as styles } from './tabs.styles';
 
 /**
- * The Fluent Tabs Custom Element. Implements {@link @microsoft/fast-foundation#Tabs},
- * {@link @microsoft/fast-foundation#tabsTemplate}
+ * THe Tabs component
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fluent-tabs\>
+ * Generates HTML Element: `<fluent-tabs>`
  */
-export const fluentTabs = Tabs.compose({
-  baseName: 'tabs',
+@customElement({
+  name: 'fluent-tabs',
   template,
   styles,
-});
-
-export * from './tab';
-export * from './tab-panel';
-
-/**
- * Styles for Tabs
- * @public
- */
-export const tabsStyles = styles;
-
-/**
- * Tabs base class
- * @public
- */
-export { Tabs };
+})
+export class FluentTabs extends Tabs {}

@@ -1,26 +1,34 @@
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+  }
+</style>
 <h1>Radio Group</h1>
 
 <h4>Defaults</h4>
 <div>
   <fluent-radio-group name="numbers">
-    <label style="color: --var(neutral-foreground-rest)" slot="label"> Numbers </label>
     <fluent-radio value="one">One</fluent-radio>
     <fluent-radio value="two">Two</fluent-radio>
+    <fluent-radio value="three">Three</fluent-radio>
+    <fluent-radio value="four">Four</fluent-radio>
   </fluent-radio-group>
 </div>
 
 <h4>Single radio</h4>
-<div style="display: flex; flex-direction: column; margin-top: 12px">
+<div class="container">
   <fluent-radio-group name="players">
-    <label style="color: --var(neutral-foreground-rest)" slot="label"> Best basketball players </label>
+    <label slot="label"> Best basketball players </label>
     <fluent-radio value="airjordan">Michael Jordan</fluent-radio>
   </fluent-radio-group>
 </div>
 
-<h4>With label outside group</h4>
-<div style="display: flex; flex-direction: column; margin-top: 12px">
-  <label id="label1">Outside label</label>
-  <fluent-radio-group required="true" aria-labelledby="label1" name="fruits" orientation="vertical">
+<h4>LabelledBy</h4>
+<div class="container">
+  <fluent-radio-group required="true" aria-labelledby="label1" name="fruits">
+    <label id="label1" slot="label">Choose a fruit</label>
     <fluent-radio value="apples">Apples</fluent-radio>
     <fluent-radio value="oranges">Oranges</fluent-radio>
     <fluent-radio value="bananas">Bananas</fluent-radio>
@@ -33,44 +41,80 @@
   </fluent-radio-group>
 </div>
 
-<h4>Within toolbar</h4>
-<div role="toolbar" style="display: flex; flex-direction: column; margin-top: 12px">
-  <div style="display: flex; flex-direction: row; align-items: stretch; width: 100%">
-    <button style="width: 40px; margin-right: 4px">go</button>
-    <fluent-radio-group required="true" name="navigation">
-      <fluent-radio value="back">back</fluent-radio>
-      <fluent-radio value="forward">forward</fluent-radio>
-      <fluent-radio value="refresh">refresh</fluent-radio>
-    </fluent-radio-group>
-    <button style="width: 40px; margin-left: 4px">stop</button>
-  </div>
+<h4>Orientation: Horizontal</h4>
+<div style="margin-top: 12px">
+  <label style="display: none" id="label2">Favorite Color</label>
+  <fluent-radio-group orientation="horizontal" aria-labelledby="label2" name="color">
+    <fluent-radio value="red">Red</fluent-radio>
+    <fluent-radio value="green">Green</fluent-radio>
+    <fluent-radio value="Blue">Blue</fluent-radio>
+  </fluent-radio-group>
 </div>
 
-<h4>Disabled</h4>
-<div style="display: flex; flex-direction: column; margin-top: 12px">
-  <label id="label2">Disabled radio group</label>
-  <fluent-radio-group disabled aria-labelledby="label2" name="cars">
-    <fluent-radio value="lambo">Lamborghini</fluent-radio>
-    <fluent-radio value="ferari">Ferari</fluent-radio>
+<h4>Orientation: Vertical</h4>
+<div style="margin-top: 12px">
+  <label style="display: none" id="label3">Favorite Pizza Topping</label>
+  <fluent-radio-group orientation="vertical" aria-labelledby="label3" name="topping">
+    <fluent-radio value="pepperoni">Pepperoni</fluent-radio>
+    <fluent-radio value="mushrooms">Mushrooms</fluent-radio>
+    <fluent-radio value="pineapple">Pineapple</fluent-radio>
   </fluent-radio-group>
 </div>
 
 <h4>Readonly</h4>
-<div style="display: flex; flex-direction: column; margin-top: 12px">
+<div class="container">
   <label id="label3">readonly radio group</label>
-  <fluent-radio-group readonly aria-labelledby="label3" name="office">
+  <fluent-radio-group value="word" readonly aria-labelledby="label3" name="office">
     <fluent-radio value="word">Word</fluent-radio>
     <fluent-radio value="excel">Excel</fluent-radio>
   </fluent-radio-group>
 </div>
 
-<h4>Preset value</h4>
-<div style="display: flex; flex-direction: column; margin-top: 12px">
-  <label id="label4">Preset selected-value</label>
-  <fluent-radio-group value="maverick" aria-labelledby="label4" name="best-pilot">
+<h4>Stacked</h4>
+<div class="container">
+  <fluent-radio-group stacked value="maverick" aria-labelledby="label4" name="best-pilot">
     <fluent-radio value="ice-man">Ice Man</fluent-radio>
     <fluent-radio value="maverick">Maverick</fluent-radio>
     <fluent-radio value="viper">Viper</fluent-radio>
     <fluent-radio value="jester">Jester</fluent-radio>
+  </fluent-radio-group>
+</div>
+
+<h4>Disabled</h4>
+<div class="container">
+  <label id="label5">Choose an option:</label>
+  <fluent-radio-group disabled aria-labelledby="label5" name="option">
+    <fluent-radio checked value="a">Option A</fluent-radio>
+    <fluent-radio value="b">Option B</fluent-radio>
+    <fluent-radio value="c">Option C</fluent-radio>
+    <fluent-radio value="d">Option D</fluent-radio>
+  </fluent-radio-group>
+</div>
+
+<h4>Disabled: A single radio can be disabled</h4>
+<div class="container">
+  <label id="label5">Choose an option:</label>
+  <fluent-radio-group aria-labelledby="label5" name="option">
+    <fluent-radio checked value="a">Option A</fluent-radio>
+    <fluent-radio value="b">Option B</fluent-radio>
+    <fluent-radio disabled value="c">Option C</fluent-radio>
+    <fluent-radio value="d">Option D</fluent-radio>
+  </fluent-radio-group>
+</div>
+
+<h4>
+  Label subtext: Radio's label supports any formatted text. In this example, smaller text is below the main label text.
+</h4>
+<div class="container">
+  <label id="label6">Choose an option:</label>
+  <fluent-radio-group aria-labelledby="label6" name="option">
+    <fluent-radio value="a"
+      ><span>Option A <span>This is an example subtext of the first option</span></span></fluent-radio
+    >
+    <fluent-radio value="b"
+      ><span
+        >Option B<fluent-text size="100"><span>This is another example of subtext.</span></fluent-text></span
+      ></fluent-radio
+    >
   </fluent-radio-group>
 </div>

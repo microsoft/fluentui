@@ -1,78 +1,62 @@
-import { css, ElementStyles } from '@microsoft/fast-element';
-import { SystemColors } from '@microsoft/fast-web-utilities';
-import {
-  display,
-  ElementDefinitionContext,
-  forcedColorsStylesheetBehavior,
-  FoundationElementDefinition,
-} from '@microsoft/fast-foundation';
-import {
-  accentFillRest,
-  bodyFont,
-  controlCornerRadius,
-  focusStrokeWidth,
-  neutralForegroundRest,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
-} from '../design-tokens';
-import { heightNumber } from '../styles';
+import { css } from "@microsoft/fast-element";
+import { display } from "@microsoft/fast-foundation";
+import { tokens } from '@fluentui/react-theme';
+import { tabPaddingM } from '../tab/tab.styles';
 
-export const tabsStyles: (
-  context: ElementDefinitionContext,
-  definition: FoundationElementDefinition,
-) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
-  css`
-      ${display('grid')} :host {
+/**
+ * Styles for Tabs
+ * @public
+ */
+export const tabsStyles = css`
+    ${display('grid')} :host {
         box-sizing: border-box;
-        font-family: ${bodyFont};
-        font-size: ${typeRampBaseFontSize};
-        line-height: ${typeRampBaseLineHeight};
-        color: ${neutralForegroundRest};
         grid-template-columns: auto 1fr auto;
         grid-template-rows: auto 1fr;
-      }
+        gap: 12px;
+    }
 
-      .tablist {
+    .tablist {
         display: grid;
-        grid-template-rows: calc(${heightNumber} * 1px); auto;
+        grid-template-rows: 1fr auto;
         grid-template-columns: auto;
         position: relative;
         width: max-content;
         align-self: end;
-      }
+    }
 
-      .start,
-      .end {
+    .start,
+    .end {
         align-self: center;
-      }
+    }
 
-      .activeIndicator {
+    .active-indicator {
         grid-row: 2;
         grid-column: 1;
-        width: 20px;
-        height: 3px;
-        border-radius: calc(${controlCornerRadius} * 1px);
+        width: calc(100% - (${tabPaddingM} * 2));
+        height: 2px;
+        border-radius: ${tokens.borderRadiusMedium};
         justify-self: center;
-        background: ${accentFillRest};
-      }
+        background: ${tokens.colorBrandStroke1};
+    }
 
-      .activeIndicatorTransition {
-        transition: transform 0.2s ease-in-out;
-      }
+    .active-indicator-transition {
+    transition: transform 0.2s ease-in-out;
+    }
 
-      .tabpanel {
+    .tabpanel {
         grid-row: 2;
         grid-column-start: 1;
         grid-column-end: 4;
         position: relative;
-      }
+    }
 
-      :host(.vertical) {
+    :host(.vertical) {
         grid-template-rows: auto 1fr auto;
         grid-template-columns: auto 1fr;
-      }
+        gap: 0 12px;
+    }
 
-      :host(.vertical) .tablist {
+    :host(.vertical) .tablist {
         grid-row-start: 2;
         grid-row-end: 2;
         display: grid;
@@ -83,39 +67,31 @@ export const tabsStyles: (
         justify-self: end;
         align-self: flex-start;
         width: 100%;
-      }
+    }
 
-      :host(.vertical) .tabpanel {
+    :host(.vertical) .tabpanel {
         grid-column: 2;
         grid-row-start: 1;
         grid-row-end: 4;
-      }
+    }
 
-      :host(.vertical) .end {
+    :host(.vertical) .end {
         grid-row: 3;
-      }
+    }
 
-      :host(.vertical) .activeIndicator {
+    :host(.vertical) .active-indicator {
         grid-column: 1;
         grid-row: 1;
-        width: 3px;
-        height: 20px;
-        margin-inline-start: calc(${focusStrokeWidth} * 1px);
-        border-radius: calc(${controlCornerRadius} * 1px);
+        width: 2px;
+        height: calc(100% - (${tabPaddingM} * 2));
         align-self: center;
-        background: ${accentFillRest};
-      }
+    }
 
-      :host(.vertical) .activeIndicatorTransition {
+    :host(.vertical) .active-indicator-transition {
         transition: transform 0.2s linear;
-      }
-    `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        .activeIndicator,
-        :host(.vertical) .activeIndicator {
-          background: ${SystemColors.Highlight};
-        }
-      `,
-    ),
-  );
+    }
+
+    :host(.vertical) ::slotted(fluent-tab-panel) {
+        padding: 10px 0;
+    }
+`;

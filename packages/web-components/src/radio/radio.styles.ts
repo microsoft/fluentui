@@ -1,197 +1,129 @@
-import { css, ElementStyles } from '@microsoft/fast-element';
-import { SystemColors } from '@microsoft/fast-web-utilities';
+import { css } from '@microsoft/fast-element';
 import {
-  disabledCursor,
   display,
-  ElementDefinitionContext,
   focusVisible,
-  forcedColorsStylesheetBehavior,
-  RadioOptions,
 } from '@microsoft/fast-foundation';
-import { heightNumber } from '../styles';
-import {
-  accentFillActive,
-  accentFillHover,
-  accentFillRest,
-  bodyFont,
-  designUnit,
-  disabledOpacity,
-  fillColor,
-  focusStrokeOuter,
-  foregroundOnAccentRest,
-  neutralFillInputAltActive,
-  neutralFillInputAltFocus,
-  neutralFillInputAltHover,
-  neutralFillInputAltRest,
-  neutralForegroundRest,
-  neutralStrokeStrongActive,
-  neutralStrokeStrongHover,
-  neutralStrokeStrongRest,
-  strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
-} from '../design-tokens';
+import { tokens } from "@fluentui/react-theme";
 
-export const radioStyles: (context: ElementDefinitionContext, definition: RadioOptions) => ElementStyles = (
-  context: ElementDefinitionContext,
-  definition: RadioOptions,
-) =>
-  css`
-    ${display('inline-flex')} :host {
-      --input-size: calc((${heightNumber} / 2) + ${designUnit});
-      align-items: center;
-      outline: none;
-      ${
-        /*
-         * Chromium likes to select label text or the default slot when
-         * the radio button is clicked. Maybe there is a better solution here?
-         */ ''
-      } user-select: none;
-      position: relative;
-      flex-direction: row;
-      transition: all 0.2s ease-in-out;
-    }
+// TODO replace these spacing constants with theme values once they're on the theme
+const spacingHorizontalS = '8px';
+const spacingHorizontalM = '12px';
 
-    .control {
-      position: relative;
-      width: calc(var(--input-size) * 1px);
-      height: calc(var(--input-size) * 1px);
-      box-sizing: border-box;
-      border-radius: 50%;
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
-      background: ${neutralFillInputAltRest};
-      outline: none;
-      cursor: pointer;
-    }
+// The indicator size is used by the indicator and label styles
+const indicatorSize = '16px';
 
-    .label__hidden {
-      display: none;
-      visibility: hidden;
-    }
+export const radioStyles = css`
+${display('inline-flex')} :host {
+  font-family: ${tokens.fontFamilyBase};
+  align-items: center;
+  outline: none;
+  ${
+    /*
+     * Chromium likes to select label text or the default slot when
+     * the radio button is clicked. Maybe there is a better solution here?
+     */ ''
+  } user-select: none;
+  position: relative;
+  flex-direction: row;
+  gap: ${spacingHorizontalM};
+  padding: 6px;
+  font-size: ${tokens.fontSizeBase300};
+  line-height: ${tokens.lineHeightBase300};
+  color: ${tokens.colorNeutralForeground3};
+  transition: all 0.2s ease-in-out;
+}
 
-    .label {
-      font-family: ${bodyFont};
-      color: ${neutralForegroundRest};
-      ${
-        /* Need to discuss with Brian how HorizontalSpacingNumber can work. https://github.com/microsoft/fast/issues/2766 */ ''
-      } padding-inline-start: calc(${designUnit} * 2px + 2px);
-      margin-inline-end: calc(${designUnit} * 2px + 2px);
-      cursor: pointer;
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
-    }
+::slotted(*) {
+  display: inline-flex;
+  flex-direction: column;
+}
 
-    .control,
-    slot[name='checked-indicator'] {
-      flex-shrink: 0;
-    }
+:host(:not.readonly),
+:host(:not([disabled])) {
+  cursor: pointer;
+}
 
-    slot[name='checked-indicator'] {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      fill: ${foregroundOnAccentRest};
-      opacity: 0;
-      pointer-events: none;
-    }
+.control {
+  position: relative;
+  width: ${indicatorSize};
+  height: ${indicatorSize};
+  font-size: 12px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: ${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible};
+  /* background: none; */
+  outline: none;
+}
 
-    :host(:not(.disabled):hover) .control {
-      background: ${neutralFillInputAltHover};
-      border-color: ${neutralStrokeStrongHover};
-    }
+.control,
+slot[name='checked-indicator'] {
+  flex-shrink: 0;
+}
 
-    :host(:not(.disabled):active) .control {
-      background: ${neutralFillInputAltActive};
-      border-color: ${neutralStrokeStrongActive};
-    }
+slot[name='checked-indicator'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  opacity: 0;
+  pointer-events: none;
+}
 
-    :host(:not(.disabled):active) slot[name='checked-indicator'] {
-      opacity: 1;
-    }
+:host(:not([disabled]):hover) {
+  color: ${tokens.colorNeutralForeground2};
+}
 
-    :host(:${focusVisible}) .control {
-      box-shadow: 0 0 0 1px ${fillColor}, 0 0 0 3px ${focusStrokeOuter};
-      background: ${neutralFillInputAltFocus};
-      border-color: ${focusStrokeOuter};
-    }
+:host(:not([disabled]):hover) .control {
+  border-color: ${tokens.colorNeutralStrokeAccessibleHover};
+}
 
-    :host(.checked) .control {
-      background: ${accentFillRest};
-      border-color: transparent;
-    }
+:host(:not([disabled]):active) .control {
+  border-color: ${tokens.colorNeutralStrokeAccessiblePressed};
+}
 
-    :host(.checked:not(.disabled):hover) .control {
-      background: ${accentFillHover};
-      border-color: transparent;
-    }
+:host([aria-checked="true"]:not([disabled])) {
+  color: ${tokens.colorNeutralForeground1};
+}
 
-    :host(.checked:not(.disabled):active) .control {
-      background: ${accentFillActive};
-      border-color: transparent;
-    }
+:host([aria-checked="true"]:not([disabled])) slot[name='checked-indicator'] {
+  opacity: 1;
+}
 
-    :host(.disabled) .label,
-    :host(.readonly) .label,
-    :host(.readonly) .control,
-    :host(.disabled) .control {
-      cursor: ${disabledCursor};
-    }
+/* need focus styles
+  :host(:${focusVisible}) .control {}
+*/
 
-    :host(.checked) slot[name='checked-indicator'] {
-      opacity: 1;
-    }
+:host([aria-checked="true"]) .control {
+  border-color: ${tokens.colorCompoundBrandStroke};
+  color: ${tokens.colorCompoundBrandForeground1};
+}
 
-    :host(.disabled) {
-      opacity: ${disabledOpacity};
-    }
-  `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        .control {
-          background: ${SystemColors.Field};
-          border-color: ${SystemColors.FieldText};
-        }
-        :host(:not(.disabled):hover) .control,
-        :host(:not(.disabled):active) .control {
-          border-color: ${SystemColors.Highlight};
-        }
-        :host(:${focusVisible}) .control {
-          forced-color-adjust: none;
-          box-shadow: 0 0 0 1px ${SystemColors.Field}, 0 0 0 3px ${SystemColors.FieldText};
-          background: ${SystemColors.Field};
-          border-color: ${SystemColors.Highlight};
-        }
-        :host(.checked:not(.disabled):hover) .control,
-        :host(.checked:not(.disabled):active) .control {
-          border-color: ${SystemColors.Highlight};
-          background: ${SystemColors.Highlight};
-        }
-        :host(.checked:${focusVisible}) .control {
-          box-shadow: 0 0 0 1px ${SystemColors.Field}, 0 0 0 3px ${SystemColors.FieldText};
-        }
-        :host(.checked) slot[name='checked-indicator'] {
-          fill: ${SystemColors.Highlight};
-        }
-        :host(.checked:hover) .control slot[name='checked-indicator'] {
-          fill: ${SystemColors.HighlightText};
-        }
-        :host(.disabled) {
-          opacity: 1;
-        }
-        :host(.disabled) .label {
-          color: ${SystemColors.GrayText};
-        }
-        :host(.disabled) .control,
-        :host(.checked.disabled) .control {
-          background: ${SystemColors.Field};
-          border-color: ${SystemColors.GrayText};
-        }
-        :host(.disabled) slot[name='checked-indicator'],
-        :host(.checked.disabled) slot[name='checked-indicator'] {
-          fill: ${SystemColors.GrayText};
-        }
-      `,
-    ),
-  );
+:host([aria-checked="true"]:not([disabled]):hover) {
+  color: ${tokens.colorNeutralForeground1};
+}
+
+:host([aria-checked="true"]:not([disabled]):hover) .control {
+  border-color: ${tokens.colorCompoundBrandStrokeHover};
+  color: ${tokens.colorCompoundBrandForeground1Hover};
+}
+
+:host([aria-checked="true"]:not([disabled]):active) .control {
+  border-color: ${tokens.colorCompoundBrandStrokePressed};
+  color: ${tokens.colorCompoundBrandForeground1Pressed};
+}
+
+:host([aria-checked="true"]) slot[name='checked-indicator'] {
+  opacity: 1;
+}
+
+:host([disabled]) {
+  color: ${tokens.colorNeutralForegroundDisabled};
+}
+
+:host([disabled]) .control {
+  border-color: ${tokens.colorNeutralStrokeDisabled};
+  color: ${tokens.colorNeutralForegroundDisabled};
+}
+  `

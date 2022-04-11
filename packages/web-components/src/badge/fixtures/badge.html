@@ -1,24 +1,159 @@
 <style>
-  fluent-badge {
-    --badge-fill-highlight: #ffd800;
-    --badge-fill-lowlight: #333;
-    --badge-color-highlight: #000;
-    --badge-color-lowlight: #fff;
+  .container {
+    display: flex;
+    gap: 8px;
   }
 </style>
 <h1>Badge</h1>
-<h4>Default</h4>
-<fluent-badge>Badge</fluent-badge>
-<h4>Lightweight</h4>
-<fluent-badge appearance="lightweight">Badge</fluent-badge>
-<h4>Accent</h4>
-<fluent-badge appearance="accent">Badge</fluent-badge>
-<h4>Neutral</h4>
-<fluent-badge appearance="neutral">Badge</fluent-badge>
-<h4>With map</h4>
-<fluent-badge fill="highlight" color="highlight">Badge</fluent-badge>
-<fluent-badge fill="lowlight" color="lowlight">Badge</fluent-badge>
-<h2>Circular</h2>
-<fluent-badge circular appearance="accent"> 9 </fluent-badge>
-<fluent-badge circular appearance="accent"> 99 </fluent-badge>
-<fluent-badge circular appearance="accent"> 9999999 </fluent-badge>
+
+<h2>Default</h2>
+<fluent-badge></fluent-badge>
+
+<h2>Appearance</h2>
+
+<h3>Default</h3>
+<fluent-badge></fluent-badge>
+
+<h3>Filled</h3>
+<fluent-badge appearance="filled">999+</fluent-badge>
+
+<h3>Ghost</h3>
+<fluent-badge appearance="ghost">999+</fluent-badge>
+
+<h3>Outline</h3>
+<fluent-badge appearance="outlined">999+</fluent-badge>
+
+<h3>Tint</h3>
+<fluent-badge appearance="tint">999+</fluent-badge>
+
+<h2>Sizes</h2>
+
+<h3>Tiny</h3>
+<fluent-badge size="tiny"></fluent-badge>
+
+<h3>Extra-Small</h3>
+<fluent-badge size="extra-small"></fluent-badge>
+
+<h3>Small</h3>
+<fluent-badge size="small"></fluent-badge>
+
+<h3>Medium</h3>
+<fluent-badge size="medium"></fluent-badge>
+
+<h3>Large</h3>
+<fluent-badge size="large"></fluent-badge>
+
+<h3>Extra-Large</h3>
+<fluent-badge size="extra-large"></fluent-badge>
+
+<h2>Shapes</h2>
+
+<h3>Square</h3>
+<fluent-badge shape="square"></fluent-badge>
+
+<h3>Rounded</h3>
+<fluent-badge shape="rounded"></fluent-badge>
+
+<h3>Circular</h3>
+<fluent-badge shape="circular"></fluent-badge>
+
+<h2>Color</h2>
+
+<h3>Filled</h3>
+<div class="container">
+  <fluent-badge appearance="filled" color="brand">Brand</fluent-badge>
+  <fluent-badge appearance="filled" color="danger">Danger</fluent-badge>
+  <fluent-badge appearance="filled" color="important">Important</fluent-badge>
+  <fluent-badge appearance="filled" color="informative">Informative</fluent-badge>
+  <fluent-badge appearance="filled" color="severe">Severe</fluent-badge>
+  <fluent-badge appearance="filled" color="success">Success</fluent-badge>
+  <fluent-badge appearance="filled" color="warning">Warning</fluent-badge>
+</div>
+
+<h3>Ghost</h3>
+<div class="container">
+  <fluent-badge appearance="ghost" color="brand">Brand</fluent-badge>
+  <fluent-badge appearance="ghost" color="danger">Danger</fluent-badge>
+  <fluent-badge appearance="ghost" color="important">Important</fluent-badge>
+  <fluent-badge appearance="ghost" color="informative">Informative</fluent-badge>
+  <fluent-badge appearance="ghost" color="severe">Severe</fluent-badge>
+  <fluent-badge appearance="ghost" color="success">Success</fluent-badge>
+  <fluent-badge appearance="ghost" color="warning">Warning</fluent-badge>
+</div>
+
+<h3>Outline</h3>
+<div class="container">
+  <fluent-badge appearance="outline" color="brand">Brand</fluent-badge>
+  <fluent-badge appearance="outline" color="danger">Danger</fluent-badge>
+  <fluent-badge appearance="outline" color="important">Important</fluent-badge>
+  <fluent-badge appearance="outline" color="informative">Informative</fluent-badge>
+  <fluent-badge appearance="outline" color="severe">Severe</fluent-badge>
+  <fluent-badge appearance="outline" color="success">Success</fluent-badge>
+  <fluent-badge appearance="outline" color="warning">Warning</fluent-badge>
+</div>
+
+<h3>Tint</h3>
+<div class="container">
+  <fluent-badge appearance="tint" color="brand">Brand</fluent-badge>
+  <fluent-badge appearance="tint" color="danger">Danger</fluent-badge>
+  <fluent-badge appearance="tint" color="important">Important</fluent-badge>
+  <fluent-badge appearance="tint" color="informative">Informative</fluent-badge>
+  <fluent-badge appearance="tint" color="severe">Severe</fluent-badge>
+  <fluent-badge appearance="tint" color="success">Success</fluent-badge>
+  <fluent-badge appearance="tint" color="warning">Warning</fluent-badge>
+</div>
+
+<h2>Icon</h2>
+<h3>Tiny</h3>
+<fluent-badge size="tiny">
+  <svg width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path
+      d="M4.5 4h1.59c.2.58.76 1 1.41 1h3c.65 0 1.2-.42 1.41-1h1.59c.28 0 .5.22.5.5v1a.5.5 0 001 0v-1c0-.83-.67-1.5-1.5-1.5h-1.59c-.2-.58-.76-1-1.41-1h-3c-.65 0-1.2.42-1.41 1H4.5C3.67 3 3 3.67 3 4.5v12c0 .83.67 1.5 1.5 1.5h3a.5.5 0 000-1h-3a.5.5 0 01-.5-.5v-12c0-.28.22-.5.5-.5zm3 0a.5.5 0 010-1h3a.5.5 0 010 1h-3zm3 3C9.67 7 9 7.67 9 8.5v8c0 .83.67 1.5 1.5 1.5h5c.83 0 1.5-.67 1.5-1.5v-8c0-.83-.67-1.5-1.5-1.5h-5zM10 8.5c0-.28.22-.5.5-.5h5c.28 0 .5.22.5.5v8a.5.5 0 01-.5.5h-5a.5.5 0 01-.5-.5v-8z"
+    ></path>
+  </svg>
+</fluent-badge>
+
+<h3>Extra-Small</h3>
+<fluent-badge size="extra-small">
+  <svg width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path
+      d="M4.5 4h1.59c.2.58.76 1 1.41 1h3c.65 0 1.2-.42 1.41-1h1.59c.28 0 .5.22.5.5v1a.5.5 0 001 0v-1c0-.83-.67-1.5-1.5-1.5h-1.59c-.2-.58-.76-1-1.41-1h-3c-.65 0-1.2.42-1.41 1H4.5C3.67 3 3 3.67 3 4.5v12c0 .83.67 1.5 1.5 1.5h3a.5.5 0 000-1h-3a.5.5 0 01-.5-.5v-12c0-.28.22-.5.5-.5zm3 0a.5.5 0 010-1h3a.5.5 0 010 1h-3zm3 3C9.67 7 9 7.67 9 8.5v8c0 .83.67 1.5 1.5 1.5h5c.83 0 1.5-.67 1.5-1.5v-8c0-.83-.67-1.5-1.5-1.5h-5zM10 8.5c0-.28.22-.5.5-.5h5c.28 0 .5.22.5.5v8a.5.5 0 01-.5.5h-5a.5.5 0 01-.5-.5v-8z"
+    ></path>
+  </svg>
+</fluent-badge>
+
+<h3>Small</h3>
+<fluent-badge size="small">
+  <svg width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path
+      d="M4.5 4h1.59c.2.58.76 1 1.41 1h3c.65 0 1.2-.42 1.41-1h1.59c.28 0 .5.22.5.5v1a.5.5 0 001 0v-1c0-.83-.67-1.5-1.5-1.5h-1.59c-.2-.58-.76-1-1.41-1h-3c-.65 0-1.2.42-1.41 1H4.5C3.67 3 3 3.67 3 4.5v12c0 .83.67 1.5 1.5 1.5h3a.5.5 0 000-1h-3a.5.5 0 01-.5-.5v-12c0-.28.22-.5.5-.5zm3 0a.5.5 0 010-1h3a.5.5 0 010 1h-3zm3 3C9.67 7 9 7.67 9 8.5v8c0 .83.67 1.5 1.5 1.5h5c.83 0 1.5-.67 1.5-1.5v-8c0-.83-.67-1.5-1.5-1.5h-5zM10 8.5c0-.28.22-.5.5-.5h5c.28 0 .5.22.5.5v8a.5.5 0 01-.5.5h-5a.5.5 0 01-.5-.5v-8z"
+    ></path>
+  </svg>
+</fluent-badge>
+
+<h3>Medium</h3>
+<fluent-badge size="medium">
+  <svg width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path
+      d="M4.5 4h1.59c.2.58.76 1 1.41 1h3c.65 0 1.2-.42 1.41-1h1.59c.28 0 .5.22.5.5v1a.5.5 0 001 0v-1c0-.83-.67-1.5-1.5-1.5h-1.59c-.2-.58-.76-1-1.41-1h-3c-.65 0-1.2.42-1.41 1H4.5C3.67 3 3 3.67 3 4.5v12c0 .83.67 1.5 1.5 1.5h3a.5.5 0 000-1h-3a.5.5 0 01-.5-.5v-12c0-.28.22-.5.5-.5zm3 0a.5.5 0 010-1h3a.5.5 0 010 1h-3zm3 3C9.67 7 9 7.67 9 8.5v8c0 .83.67 1.5 1.5 1.5h5c.83 0 1.5-.67 1.5-1.5v-8c0-.83-.67-1.5-1.5-1.5h-5zM10 8.5c0-.28.22-.5.5-.5h5c.28 0 .5.22.5.5v8a.5.5 0 01-.5.5h-5a.5.5 0 01-.5-.5v-8z"
+    ></path>
+  </svg>
+</fluent-badge>
+
+<h3>Large</h3>
+<fluent-badge size="large">
+  <svg width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path
+      d="M4.5 4h1.59c.2.58.76 1 1.41 1h3c.65 0 1.2-.42 1.41-1h1.59c.28 0 .5.22.5.5v1a.5.5 0 001 0v-1c0-.83-.67-1.5-1.5-1.5h-1.59c-.2-.58-.76-1-1.41-1h-3c-.65 0-1.2.42-1.41 1H4.5C3.67 3 3 3.67 3 4.5v12c0 .83.67 1.5 1.5 1.5h3a.5.5 0 000-1h-3a.5.5 0 01-.5-.5v-12c0-.28.22-.5.5-.5zm3 0a.5.5 0 010-1h3a.5.5 0 010 1h-3zm3 3C9.67 7 9 7.67 9 8.5v8c0 .83.67 1.5 1.5 1.5h5c.83 0 1.5-.67 1.5-1.5v-8c0-.83-.67-1.5-1.5-1.5h-5zM10 8.5c0-.28.22-.5.5-.5h5c.28 0 .5.22.5.5v8a.5.5 0 01-.5.5h-5a.5.5 0 01-.5-.5v-8z"
+    ></path>
+  </svg>
+</fluent-badge>
+
+<h3>Extra-Large</h3>
+<fluent-badge size="extra-large">
+  <svg width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path
+      d="M4.5 4h1.59c.2.58.76 1 1.41 1h3c.65 0 1.2-.42 1.41-1h1.59c.28 0 .5.22.5.5v1a.5.5 0 001 0v-1c0-.83-.67-1.5-1.5-1.5h-1.59c-.2-.58-.76-1-1.41-1h-3c-.65 0-1.2.42-1.41 1H4.5C3.67 3 3 3.67 3 4.5v12c0 .83.67 1.5 1.5 1.5h3a.5.5 0 000-1h-3a.5.5 0 01-.5-.5v-12c0-.28.22-.5.5-.5zm3 0a.5.5 0 010-1h3a.5.5 0 010 1h-3zm3 3C9.67 7 9 7.67 9 8.5v8c0 .83.67 1.5 1.5 1.5h5c.83 0 1.5-.67 1.5-1.5v-8c0-.83-.67-1.5-1.5-1.5h-5zM10 8.5c0-.28.22-.5.5-.5h5c.28 0 .5.22.5.5v8a.5.5 0 01-.5.5h-5a.5.5 0 01-.5-.5v-8z"
+    ></path>
+  </svg>
+</fluent-badge>

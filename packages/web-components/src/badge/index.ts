@@ -1,48 +1,19 @@
-import { attr, DOM } from '@microsoft/fast-element';
-import { Badge as FoundationBadge, badgeTemplate as template } from '@microsoft/fast-foundation';
+import { customElement } from '@microsoft/fast-element';
+import { Badge } from './badge';
+import { badgeTemplate as template } from './badge.template';
 import { badgeStyles as styles } from './badge.styles';
 
 /**
- * Badge appearance options.
- * @public
- */
-export type BadgeAppearance = 'accent' | 'lightweight' | 'neutral' | string;
-
-/**
- * The Fluent Badge class
- * @internal
- */
-export class Badge extends FoundationBadge {
-  @attr({ mode: 'fromView' })
-  public appearance: BadgeAppearance = 'lightweight';
-  private appearanceChanged(oldValue: BadgeAppearance, newValue: BadgeAppearance): void {
-    if (oldValue !== newValue) {
-      DOM.queueUpdate(() => {
-        this.classList.add(newValue);
-        this.classList.remove(oldValue);
-      });
-    }
-  }
-}
-
-/**
- * The Fluent Badge Element. Implements {@link @microsoft/fast-foundation#Badge},
- * {@link @microsoft/fast-foundation#badgeTemplate}
+ * THe Badge component
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fluent-badge\>
+ * Generates HTML Element: `<fluent-badge>`
  */
-export const fluentBadge = Badge.compose({
-  baseName: 'badge',
-  baseClass: FoundationBadge,
+@customElement({
+  name: 'fluent-badge',
   template,
   styles,
-});
-
-/**
- * Styles for Badge
- * @public
- */
-export const badgeStyles = styles;
+})
+export class FluentBadge extends Badge {}
