@@ -9,7 +9,8 @@ import SampleCard from './SampleCard';
 const useStyles = makeStyles({
   container: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     ...shorthands.gap('16px'),
   },
   header: {
