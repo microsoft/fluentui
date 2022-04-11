@@ -44,9 +44,8 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   onValidateUserInput,
   ...rest
 }: ITimePickerProps) => {
-  const [userText, setUserText] = React.useState<string>(
-    defaultValue ? formatTimeString(defaultValue, showSeconds, useHour12) : '',
-  );
+  const defaultTime = defaultValue && formatTimeString(defaultValue, showSeconds, useHour12);
+  const [userText, setUserText] = React.useState<string>(defaultTime || '');
   const [errorMessage, setErrorMessage] = React.useState<string>('');
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
@@ -76,7 +75,8 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   }, [baseDate, increments, optionsCount, showSeconds, onFormatDate, useHour12]);
 
   const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>(
-    defaultValue ? undefined : timePickerOptions[0].key,
+    // if default time exists and does not match the first picker option, don't set a selected key
+    defaultTime && defaultTime !== timePickerOptions[0].text ? undefined : timePickerOptions[0].key,
   );
 
   const onInputChange = React.useCallback(
