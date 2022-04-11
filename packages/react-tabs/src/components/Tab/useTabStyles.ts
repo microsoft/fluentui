@@ -93,7 +93,25 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundHover,
     },
     ':active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: tokens.colorSubtleBackgroundPressed,
+    },
+    '& .fui-Tab__icon': {
+      color: tokens.colorNeutralForeground2,
+    },
+    ':hover .fui-Tab__icon': {
+      color: tokens.colorNeutralForeground2Hover,
+    },
+    ':active .fui-Tab__icon': {
+      color: tokens.colorNeutralForeground2Pressed,
+    },
+    '& .fui-Tab__content': {
+      color: tokens.colorNeutralForeground2,
+    },
+    ':hover .fui-Tab__content': {
+      color: tokens.colorNeutralForeground2Hover,
+    },
+    ':active .fui-Tab__content': {
+      color: tokens.colorNeutralForeground2Pressed,
     },
   },
   disabled: {
