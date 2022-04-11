@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Update monaco-editor to 0.33.0",
+  "packageName": "@fluentui/monaco-editor",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

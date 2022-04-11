@@ -18932,15 +18932,10 @@ moment-timezone@^0.5.31:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.2.tgz#00910c60b20843bcba52d37d58c628b47b1f20e4"
   integrity sha512-UgzG4rvxYpN15jgCmVJwac49h9ly9NurikMWGPdVxm8GZD6XjkKPxDTjQQ43gtGgnV3X0cAyWDdP2Wexoquifg==
 
-monaco-editor@0.19.0:
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.19.0.tgz#c6e774210f3b292ff739e96f45a1cc78bf5ac2e7"
-  integrity sha512-ida++HI/s9V8ma8yYS9CAS0UJEFwW1gbt9G6oviEdv/aHhFd/kV3sXrINqC63TVdKzOZdKjPRRCOPJJ80zvLbw==
-
-monaco-typescript@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/monaco-typescript/-/monaco-typescript-3.6.1.tgz#69a545a45e2a6d036a50d78508792b856f9968d7"
-  integrity sha512-VXzS/s/YoQlolf7zRsM7PGVhY+HUTTHcLzFCx1QxuyOpoY1uFlUaMeTIV/AMYzMjSqHIiJ58kNiWjoP1YNsaAQ==
+monaco-editor@0.33.0:
+  version "0.33.0"
+  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.33.0.tgz#842e244f3750a2482f8a29c676b5684e75ff34af"
+  integrity sha512-VcRWPSLIUEgQJQIE0pVT8FcGBIgFoxz7jtqctE+IiCxWugD0DwgyQBcZBhdSrdMC84eumoqMZsGl2GTreOzwqw==
 
 moo@^0.4.3:
   version "0.4.3"
