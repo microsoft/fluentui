@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update LICENSE in react-icons-mdl2",
-  "packageName": "@fluentui/react-icons-mdl2",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}
