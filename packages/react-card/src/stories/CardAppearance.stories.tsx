@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { Headline } from '@fluentui/react-text';
 import { makeStyles, shorthands } from '@griffel/react';
 
-import SampleCard from './SampleCard';
+import { SampleCard } from './SampleCard.stories';
 
 const useStyles = makeStyles({
   container: {

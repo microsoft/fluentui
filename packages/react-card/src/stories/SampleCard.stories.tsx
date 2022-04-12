@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-const SampleCard = (props: CardProps) => {
+export const SampleCard = (props: CardProps) => {
   const styles = useStyles();
 
   return (
@@ -42,5 +42,3 @@ const SampleCard = (props: CardProps) => {
     </Card>
   );
 };
-
-export default SampleCard;
