@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix memory leak in makeStyles.ts (#22474)",
+  "packageName": "@fluentui/react",
+  "email": "jisong@microsoft.com",
+  "dependentChangeType": "patch"
+}
