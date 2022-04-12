@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `mergeThemes()` and other `merge*` functions used for styling accept only two parameters @layershifter ([#22123](https://github.com/microsoft/fluentui/pull/22123))
 - Create portal elements in separate elements @layershifter ([#22329](https://github.com/microsoft/fluentui/pull/22329))
 - Do not render styles in Provider when "as" is "React.Fragment" @layershifter ([#22359](https://github.com/microsoft/fluentui/pull/22359))
+- Move `react-is` to `peerDependencies` and allow 16 or 17 @ecraig12345 ([#22326](https://github.com/microsoft/fluentui/pull/22326))
 
 ### Fixes
 - `Tooltip` text size should be 12 by default @petr-duda ([#22407](https://github.com/microsoft/fluentui/pull/22407))
@@ -31,6 +32,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Datepicker` by adding `aria-haspopup="true"` when `allowManualInput` is set to false @chpalac ([#22201](https://github.com/microsoft/fluentui/pull/22201))
 - Fix `Attachment` progress-bar overflow @Hirse ([#22115](https://github.com/microsoft/fluentui/pull/22115))
 - Use v2 theme by default in screener tests @jurokapsiar ([#22286](https://github.com/microsoft/fluentui/pull/22286))
+- Allow React 17 in `peerDependencies` of all packages @ecraig12345 ([#22326](https://github.com/microsoft/fluentui/pull/22326))
 
 ### Features
 - Add selected items count narration by screen reader for search multiple selection Dropdown @adamsamec ([#22269](https://github.com/microsoft/fluentui/pull/22269))

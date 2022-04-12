@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Bump React dependency to 17",
+  "packageName": "@fluentui/codemods",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Use React 17 in export to codepen",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

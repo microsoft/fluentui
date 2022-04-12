@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Move react-is to peer dependencies and allow 17",
+  "packageName": "@fluentui/react-conformance",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
