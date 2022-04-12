@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Upgrade react-dom peer dependency to include v18'",
+  "packageName": "@fluentui/react-textarea",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
