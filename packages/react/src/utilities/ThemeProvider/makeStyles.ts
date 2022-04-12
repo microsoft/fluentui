@@ -69,7 +69,7 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
 
     const id = renderer.getId();
     const isStyleFunction = typeof styleOrFunction === 'function';
-    const path = isStyleFunction ? [id, win, theme] : [id, win];
+    const path = isStyleFunction ? [id, theme] : [id];
     let value = graphGet(graph, path);
 
     if (!value) {
