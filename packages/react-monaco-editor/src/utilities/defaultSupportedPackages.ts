@@ -59,15 +59,16 @@ if (typesContext) {
   // Use some defaults for jest tests (real types won't be loaded)
   const loadTypes = () => '';
   fabricGroup.packages.push(
-    // TODO: this probably needs to be dynamically generated so it doesn't break every time we
-    // add a new component package exported by @fluentui/react
+    { packageName: '@fluentui/date-time-utilities', loadTypes },
+    { packageName: '@fluentui/dom-utilities', loadTypes },
     { packageName: '@fluentui/font-icons-mdl2', loadTypes },
     { packageName: '@fluentui/foundation-legacy', loadTypes },
     { packageName: '@fluentui/merge-styles', loadTypes },
     { packageName: '@fluentui/react', loadTypes },
-    { packageName: '@fluentui/date-time-utilities', loadTypes },
     { packageName: '@fluentui/react-focus', loadTypes },
+    { packageName: '@fluentui/react-window-provider', loadTypes },
     { packageName: '@fluentui/style-utilities', loadTypes },
+    { packageName: '@fluentui/theme', loadTypes },
     { packageName: '@fluentui/utilities', loadTypes },
   );
   hooksGroup.packages.push({ packageName: '@fluentui/react-hooks', loadTypes });

@@ -102,9 +102,9 @@ const childrenStyle: ICSSInJSStyle = {
 class ComponentExample extends React.Component<ComponentExampleProps, ComponentExampleState> {
   kebabExamplePath: string;
 
-  static getClearedActiveState = () => ({
+  static getClearedActiveState = (showRtl: boolean = false) => ({
     showCode: false,
-    showRtl: false,
+    showRtl,
     showVariables: false,
     showTransparent: false,
   });
@@ -149,7 +149,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     props.history.replace({ ...props.history.location, search: `?${nextQueryString}` });
   };
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props: ComponentExampleProps, state) {
     const anchorName = ComponentExample.getAnchorName(props);
     const isActiveHash = ComponentExample.isActiveHash(props);
     const isActive = !!state.showCode || !!state.showVariables;
@@ -164,7 +164,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
 
     // deactivate examples when switching from one to the next
     if (!isActiveHash && state.prevHash !== nextHash) {
-      Object.assign(nextState, ComponentExample.getClearedActiveState());
+      Object.assign(nextState, ComponentExample.getClearedActiveState(props.examplePath.endsWith('.rtl')));
     }
 
     return nextState;
@@ -188,11 +188,10 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       componentVariables: {},
       usedVariables: {},
       showCode: isActiveHash,
-      showRtl: false,
+      showRtl: props.examplePath.endsWith('.rtl'),
       showTransparent: false,
       showVariables: false,
       ...(isActiveHash && ComponentExample.getStateFromURL(props)),
-      ...(/\.rtl$/.test(props.examplePath) && { showRtl: true }),
       // FIXME: this is potentially dangerous operation. Original author should specifi explicit return type of `ComponentExample.getStateFromURL` call to match the state shape
     } as ComponentExampleState;
   }

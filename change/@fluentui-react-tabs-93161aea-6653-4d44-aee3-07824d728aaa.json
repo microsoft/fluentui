@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix subtle style on tabs",
+  "packageName": "@fluentui/react-tabs",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

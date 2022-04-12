@@ -3,7 +3,6 @@ The `PeoplePicker` is used to select one or more entities, such as people or gro
 The `PeoplePicker` control handles keyboard input, field expanding and collapsing, and truncation automatically.
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
-
 ### People Picker
 
 <img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_peoplepicker_01_light.png?text=LightMode" />

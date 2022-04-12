@@ -14,7 +14,7 @@ describe('Popup With Close in the content and hover trigger', () => {
   });
 
   it('When opened by hover, a click on content should not close popup, a click button should close popup', () => {
-    cy.hover(popupTrigger);
+    cy.hoverOn(popupTrigger);
     cy.visible(popupContent);
 
     cy.clickOn(popupContent);
@@ -25,7 +25,7 @@ describe('Popup With Close in the content and hover trigger', () => {
   });
 
   it('When opened by hover & click, should be kept it opened on content click', () => {
-    cy.hover(popupTrigger);
+    cy.hoverOn(popupTrigger);
     cy.visible(popupContent);
 
     cy.clickOn(popupTrigger);

@@ -1,7 +1,6 @@
 To determine initials for an avatar, the code initially tries to extract two-letter initials from `contactName`. If that isn't successful, it falls back to trying the first initial of the `contactEmail`. If the algorithm fails to extract a character from the `contactEmail`, it falls back to the `#` character to represent the generic user.
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
-
 ### Initials
 
 ```Swift

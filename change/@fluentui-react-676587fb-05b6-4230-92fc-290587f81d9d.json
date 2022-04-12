@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "adjust slider styles to match contrast ratios",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

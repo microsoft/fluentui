@@ -1,5 +1,5 @@
 ---
-name: Bug report
+name: Bug report (Deprecated)
 about: Found a bug in Fluent UI React?
 ---
 
