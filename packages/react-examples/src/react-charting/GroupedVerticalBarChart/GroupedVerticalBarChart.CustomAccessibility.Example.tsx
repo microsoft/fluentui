@@ -169,22 +169,22 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
     ];
     return (
       <>
-        <label>change Width:</label>
+        <label for="changeWidth1">change Width:</label>
         <input
           type="range"
           value={this.state.width}
           min={200}
           max={1000}
-          aria-label="change Width"
+          id="changeWidth1"
           onChange={this._onWidthChange}
         />
-        <label>change Height:</label>
+        <label for="changeHeight1">change Height:</label>
         <input
           type="range"
           value={this.state.height}
           min={200}
           max={1000}
-          aria-label="change Height"
+          id="changeHeight1"
           onChange={this._onHeightChange}
         />
         <ChoiceGroup

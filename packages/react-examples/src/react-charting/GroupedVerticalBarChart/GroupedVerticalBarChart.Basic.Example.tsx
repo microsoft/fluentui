@@ -134,32 +134,32 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
       <>
-        <label>change Width:</label>
+        <label for="changeWidth">change Width:</label>
         <input
           type="range"
           value={this.state.width}
           min={200}
           max={1000}
-          aria-label="change Width"
+          id="changeWidth"
           onChange={this._onWidthChange}
         />
-        <label>change Height:</label>
+        <label fOR="changeHeight">change Height:</label>
         <input
           type="range"
           value={this.state.height}
           min={200}
           max={1000}
-          aria-label="change Height"
+          id="changeHeight"
           onChange={this._onHeightChange}
         />
         <br />
-        <label>change Barwidth:</label>
+        <label for="changeBarwidth">change Barwidth:</label>
         <input
           type="range"
           value={this.state.barwidth}
           min={10}
           max={70}
-          aria-label="change Barwidth"
+          id="changeBarwidth"
           onChange={this._onBarwidthChange}
         />
         <label>{this.state.barwidth}</label>
