@@ -8,6 +8,7 @@ import type { OptionGroupSlots, OptionGroupState } from './OptionGroup.types';
 export const optionGroupClassName = 'fui-OptionGroup';
 export const optionGroupClassNames: SlotClassNames<OptionGroupSlots> = {
   root: 'fui-OptionGroup',
+  label: 'fui-OptionGroup__label',
 };
 
 /**
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
     // TODO Add default styles for the root element
   },
 
-  // TODO add additional classes for different states and/or slots
+  label: {},
 });
 
 /**
@@ -28,8 +29,9 @@ export const useOptionGroupStyles_unstable = (state: OptionGroupState): OptionGr
   const styles = useStyles();
   state.root.className = mergeClasses(optionGroupClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  if (state.label) {
+    state.label.className = mergeClasses(optionGroupClassNames.label, styles.label, state.label.className);
+  }
 
   return state;
 };

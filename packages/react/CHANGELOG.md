@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 31 Mar 2022 07:38:07 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Apr 2022 07:39:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.64.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.3)
+
+Tue, 12 Apr 2022 07:39:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.64.2..@fluentui/react_v8.64.3)
+
+### Patches
+
+- Bump @fluentui/font-icons-mdl2 to v8.3.0 ([PR #22439](https://github.com/microsoft/fluentui/pull/22439) by beachball)
+
+## [8.64.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.2)
+
+Mon, 11 Apr 2022 07:40:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.64.1..@fluentui/react_v8.64.2)
+
+### Patches
+
+- fix(react): Panel - make theming work and sticky styling consistent ([PR #22408](https://github.com/microsoft/fluentui/pull/22408) by martinhochel@microsoft.com)
+
+## [8.64.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.1)
+
+Wed, 06 Apr 2022 07:34:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.64.0..@fluentui/react_v8.64.1)
+
+### Patches
+
+- Change combobox aria-autocomplete to 'list' when autoComplete is off ([PR #22271](https://github.com/microsoft/fluentui/pull/22271) by dennisgeorge.mec@gmail.com)
+
+## [8.64.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.0)
+
+Mon, 04 Apr 2022 20:01:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.63.1..@fluentui/react_v8.64.0)
+
+### Minor changes
+
+- New layers are now rendered within a container element. This means that injecting things like ContextualMenu will have less DOM layout recomputes, resulting in better performance. ([PR #22295](https://github.com/microsoft/fluentui/pull/22295) by dzearing@microsoft.com)
 
 ## [8.63.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.63.1)
 

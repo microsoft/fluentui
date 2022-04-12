@@ -1,8 +1,8 @@
-import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
+import { ScreenerTestsConfig, ALL_THEMES } from '@fluentui/scripts/screener';
 import { getHoverScreenerSteps } from '../commonScreenerSteps';
 
 const config: ScreenerTestsConfig = {
-  themes: ['teams', 'teamsDark', 'teamsHighContrast'],
+  themes: ALL_THEMES,
   steps: getHoverScreenerSteps(),
 };
 
