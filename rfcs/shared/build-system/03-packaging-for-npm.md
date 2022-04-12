@@ -10,12 +10,30 @@ _List contributors to the proposal here: @hotell_
 
 ## Problem statement
 
-We ship lot of unnecessary stuff to our consumers:
+We ship unnecessary things to our consumers:
 
 - story files
 - source files
 - various configurations and metadata
+- all emitted type declaration files (`.d.ts`)
 - others...
+
+## Detailed Design or Proposal
+
+> **💡 NOTE:** This proposal/guide applies only for vNext packages and libraries using new DX
+
+This is a living document that will describe various proposals that all aim to improve following common goals:
+
+- packaging size to npm registry
+- faster install/over the wire transfer/less bytes
+- faster packages consumption/processing by consumers
+- better security for consumers
+- clear defined public APIs boundaries
+- better tree-shaking capabilities
+
+### 1. `.npmignore` cleanup _(implemented)_
+
+#### Problem statement
 
 What we ship is driven by our current npm package setup, which looks like following:
 
@@ -84,19 +102,9 @@ total files:   518
 
 > **NOTE:** The issue with `.cache` (Jest cache) was addressed separately by moving the cache under `<package root>/node_modules/.cache/jest`, following the convention used by other tools' caches.
 
-## Detailed Design or Proposal
+#### Detailed Design or Proposal
 
-> **💡 NOTE:** This proposal/guide applies only for vNext packages and libraries using new DX
-
-This is a living document that will describe various proposals that all aim to improve following common goals:
-
-- packaging size to npm registry
-- faster install/over the wire transfer/less bytes
-- faster packages consumption/processing by consumers
-- better security for consumers
-- better tree-shaking capabilities
-
-### 1. `.npmignore` cleanup _(implemented)_
+update `.npmignore` to following setup:
 
 **`<package>/.npmignore`**
 
@@ -167,6 +175,14 @@ This approach significantly improves our current situation:
 ### 2. shipping only type definition rollup
 
 > **NOTE:** to make this RFC more focused this will be covered in followup PR's if needed
+
+#### Problem statement
+
+- TBA
+
+#### Detailed Design or Proposal
+
+- TBA
 
 #### Pros
 
