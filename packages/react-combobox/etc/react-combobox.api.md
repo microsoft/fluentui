@@ -50,7 +50,7 @@ export type ComboboxSlots = {
 };
 
 // @public
-export type ComboboxState = ComponentState<ComboboxSlots> & Required<Pick<ComboboxCommons, 'open' | 'inline'>> & Pick<ComboboxCommons, 'placeholder' | 'value'> & OptionCollectionState & SelectionState & {
+export type ComboboxState = ComponentState<ComboboxSlots> & Required<Pick<ComboboxCommons, 'appearance' | 'open' | 'inline' | 'size'>> & Pick<ComboboxCommons, 'placeholder' | 'value'> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
     idBase: string;
     onOptionClick(event: React_2.MouseEvent, option: OptionValue): void;
@@ -76,7 +76,7 @@ export type ComboButtonSlots = {
 };
 
 // @public
-export type ComboButtonState = ComponentState<ComboButtonSlots> & ComboButtonCommons;
+export type ComboButtonState = ComponentState<ComboButtonSlots> & ComboButtonCommons & Pick<ComboboxState, 'appearance' | 'size'>;
 
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
@@ -113,9 +113,6 @@ const Option_2: ForwardRefComponent<OptionProps> & {
 };
 export { Option_2 as Option }
 
-// @public @deprecated (undocumented)
-export const optionClassName = "fui-Option";
-
 // @public (undocumented)
 export const optionClassNames: SlotClassNames<OptionSlots>;
 
@@ -123,9 +120,6 @@ export const optionClassNames: SlotClassNames<OptionSlots>;
 export const OptionGroup: ForwardRefComponent<OptionGroupProps> & {
     fluentComponentType?: string;
 };
-
-// @public @deprecated (undocumented)
-export const optionGroupClassName = "fui-OptionGroup";
 
 // @public (undocumented)
 export const optionGroupClassNames: SlotClassNames<OptionGroupSlots>;
@@ -157,6 +151,7 @@ export type OptionSlots = {
 // @public
 export type OptionState = ComponentState<OptionSlots> & OptionCommons & {
     active: boolean;
+    multiselect?: boolean;
     selected: boolean;
 };
 
