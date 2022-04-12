@@ -25,9 +25,6 @@ export const avatarClassNames: SlotClassNames<AvatarSlots>;
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 
 // @public (undocumented)
-export const avatarGroupClassName = "fui-AvatarGroup";
-
-// @public (undocumented)
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
 
 // @public
