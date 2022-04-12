@@ -9,3 +9,4 @@ export {
 } from './Avatar';
 export type { AvatarNamedColor, AvatarProps, AvatarSlots, AvatarState } from './Avatar';
 export { getInitials } from './utils/index';
+export * from './AvatarGroup';
