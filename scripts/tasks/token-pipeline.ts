@@ -8,7 +8,7 @@ import execSync from '../exec-sync';
 import { createTempDir } from '../projects-test';
 
 const themes = <const>['light', 'dark', 'teamsDark', 'highContrast'];
-type ArrayValues<T> = T extends readonly [infer Head, ...infer Rest] ? Head | ArrayValues<Rest> : never;
+type TupleValues<T> = T extends readonly [infer H, ...infer R] ? T[number] : never;
 
 function getGeneratedFiles(tmpDir: string, repoRoot: string) {
   return [
@@ -23,7 +23,7 @@ function getGeneratedFiles(tmpDir: string, repoRoot: string) {
   ];
 }
 
-function runPipeline(theme: ArrayValues<typeof themes>, pipelineDir: string, outDir: string) {
+function runPipeline(theme: TupleValues<typeof themes>, pipelineDir: string, outDir: string) {
   console.log(`npx transform-tokens --in src/global.json --in src/${_.kebabCase(theme)}.json --out ${outDir}/${theme}`);
   execSync(
     `npx transform-tokens --in src/global.json --in src/${_.kebabCase(theme)}.json --out ${outDir}/${theme}`,
