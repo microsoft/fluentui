@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update internal type usage to reflect new monaco-editor version",
-  "packageName": "@fluentui/react-monaco-editor",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
