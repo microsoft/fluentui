@@ -33,7 +33,9 @@ export const resolveShorthand: ResolveShorthandFunction = (value, options) => {
   if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value) || isValidElement(value)) {
     resolvedShorthand.children = value;
   } else if (typeof value === 'object') {
-    resolvedShorthand = value;
+    // TODO: "Type 'readonly ReactNode[]' has no properties in common with type 'UnknownSlotProps'."
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    resolvedShorthand = value as any;
   }
 
   return defaultProps ? { ...defaultProps, ...resolvedShorthand } : resolvedShorthand;

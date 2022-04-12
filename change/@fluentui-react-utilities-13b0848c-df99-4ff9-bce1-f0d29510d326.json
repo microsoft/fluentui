@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "work around new type issue",
+  "packageName": "@fluentui/react-utilities",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}
