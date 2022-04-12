@@ -3,10 +3,6 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { ListboxSlots, ListboxState } from './Listbox.types';
 
-/**
- * @deprecated Use `listboxClassNames.root` instead.
- */
-export const listboxClassName = 'fui-Listbox';
 export const listboxClassNames: SlotClassNames<ListboxSlots> = {
   root: 'fui-Listbox',
 };

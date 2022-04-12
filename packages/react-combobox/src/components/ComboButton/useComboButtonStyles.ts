@@ -3,10 +3,6 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { ComboButtonSlots, ComboButtonState } from './ComboButton.types';
 
-/**
- * @deprecated Use `comboButtonClassNames.root` instead.
- */
-export const comboButtonClassName = 'fui-ComboButton';
 export const comboButtonClassNames: SlotClassNames<ComboButtonSlots> = {
   root: 'fui-ComboButton',
   content: 'fui-ComboButton__content',
