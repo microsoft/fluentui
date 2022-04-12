@@ -5,6 +5,7 @@ export { Default } from './stories/CardDefault.stories';
 export { AppearanceCard } from './stories/CardAppearance.stories';
 export { ActionCard } from './stories/CardAction.stories';
 export { GridCard } from './stories/CardGrid.stories';
+export { CardScale } from './stories/CardScale.stories';
 
 export default {
   title: 'Preview Components/Card',

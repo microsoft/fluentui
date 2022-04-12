@@ -4,8 +4,9 @@ export type CardSlots = {
   root: Slot<'div'>;
 };
 
-export type CardCommons = {
+type CardCommons = {
   appearance: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
+  scale?: 'auto-width' | 'auto-height' | 'auto' | 'fluid-width' | 'fluid-height' | 'fluid';
 };
 
 /**

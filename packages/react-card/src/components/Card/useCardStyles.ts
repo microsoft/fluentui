@@ -33,6 +33,27 @@ const useStyles = makeStyles({
     },
   },
 
+  scaleAutoWidth: {
+    width: 'fit-content',
+  },
+  scaleAutoHeight: {
+    height: 'fit-content',
+  },
+  scaleAuto: {
+    width: 'fit-content',
+    height: 'fit-content',
+  },
+  scaleFluidWidth: {
+    width: '100%',
+  },
+  scaleFluidHeight: {
+    height: '100%',
+  },
+  scaleFluid: {
+    width: '100%',
+    height: '100%',
+  },
+
   filledInteractive: {
     cursor: 'pointer',
     backgroundColor: tokens.colorNeutralBackground1,
@@ -121,6 +142,28 @@ const useStyles = makeStyles({
 export const useCardStyles_unstable = (state: CardState): CardState => {
   const styles = useStyles();
 
+  const appearanceStyles = {
+    filled: styles.filled,
+    'filled-alternative': styles.filledAlternative,
+    outline: styles.outline,
+    subtle: styles.subtle,
+  };
+  const interactiveAppearanceStyles = {
+    filled: styles.filledInteractive,
+    'filled-alternative': styles.filledAlternativeInteractive,
+    outline: styles.outlineInteractive,
+    subtle: styles.subtleInteractive,
+  };
+
+  const scaleStyles = {
+    'auto-width': styles.scaleAutoWidth,
+    'auto-height': styles.scaleAutoHeight,
+    auto: styles.scaleAuto,
+    'fluid-width': styles.scaleFluidWidth,
+    'fluid-height': styles.scaleFluidHeight,
+    fluid: styles.scaleFluid,
+  };
+
   const interactive =
     state.root.onClick ||
     state.root.onMouseUp ||
@@ -133,14 +176,8 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   state.root.className = mergeClasses(
     cardClassNames.root,
     styles.root,
-    state.appearance === 'filled' && styles.filled,
-    state.appearance === 'filled-alternative' && styles.filledAlternative,
-    state.appearance === 'outline' && styles.outline,
-    state.appearance === 'subtle' && styles.subtle,
-    interactive && state.appearance === 'filled' && styles.filledInteractive,
-    interactive && state.appearance === 'filled-alternative' && styles.filledAlternativeInteractive,
-    interactive && state.appearance === 'outline' && styles.outlineInteractive,
-    interactive && state.appearance === 'subtle' && styles.subtleInteractive,
+    interactive ? interactiveAppearanceStyles[state.appearance] : appearanceStyles[state.appearance],
+    state.scale && scaleStyles[state.scale],
     state.root.className,
   );
 

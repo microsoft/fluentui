@@ -52,7 +52,9 @@ const SampleCard = (props: CardProps) => {
         }
         description={<Caption>Developer</Caption>}
       />
-      Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
+      <div>
+        Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
+      </div>
       <CardFooter>
         <Button appearance="primary" icon={<Open16Regular />}>
           Open
