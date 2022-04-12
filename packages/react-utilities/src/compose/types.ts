@@ -90,7 +90,7 @@ type WithComponentType<Props, Type> = Props extends AsIntrinsicElement<infer AsL
           Omit<Props, 'as'>
       >;
     }[AsList]
-  : { as?: Type | undefined } & WithSlotRenderFunction<Omit<Props, 'as'>>;
+  : { as?: Type } & WithSlotRenderFunction<Omit<Props, 'as'>>;
 
 /**
  * The props type and shorthand value for a slot. Type is either a single intrinsic element like `'div'`,
