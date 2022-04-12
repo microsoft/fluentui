@@ -15,9 +15,6 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Combobox: ForwardRefComponent<ComboboxProps>;
 
-// @public @deprecated (undocumented)
-export const comboboxClassName = "fui-Combobox";
-
 // @public (undocumented)
 export const comboboxClassNames: SlotClassNames<ComboboxSlots>;
 
@@ -59,9 +56,6 @@ export type ComboboxState = ComponentState<ComboboxSlots> & Required<Pick<Combob
 // @public
 export const ComboButton: ForwardRefComponent<ComboButtonProps>;
 
-// @public @deprecated (undocumented)
-export const comboButtonClassName = "fui-ComboButton";
-
 // @public (undocumented)
 export const comboButtonClassNames: SlotClassNames<ComboButtonSlots>;
 
@@ -80,9 +74,6 @@ export type ComboButtonState = ComponentState<ComboButtonSlots> & ComboButtonCom
 
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
-
-// @public @deprecated (undocumented)
-export const listboxClassName = "fui-Listbox";
 
 // @public (undocumented)
 export const listboxClassNames: SlotClassNames<ListboxSlots>;
