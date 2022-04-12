@@ -4,6 +4,7 @@ import {
   resolveShorthand,
   useControllableState,
   useMergedEventCallbacks,
+  useMergedRefs,
   useTimeout,
 } from '@fluentui/react-utilities';
 import * as Keys from '@fluentui/keyboard-keys';
@@ -34,6 +35,16 @@ const MAX_SPIN_TIME_MS = 1000;
 // pull this out into a util function in the SpinButton package.
 const lerp = (start: number, end: number, percent: number): number => start + (end - start) * percent;
 
+// TODO: discuss this with design
+// const selectEntireRange = (input: HTMLInputElement | null): void => {
+//   if (!input) {
+//     return;
+//   }
+
+//   input.focus();
+//   input.setSelectionRange(0, input.value.length);
+// };
+
 /**
  * Create the state required to render SpinButton.
  *
@@ -47,7 +58,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['onChange', 'size'],
+    excludedPropNames: ['onChange', 'size', 'min', 'max'],
   });
 
   const {
@@ -91,6 +102,8 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     spinDelay: DEFAULT_SPIN_DELAY_MS,
   });
 
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
   const state: SpinButtonState = {
     size,
     appearance,
@@ -110,10 +123,11 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     input: resolveShorthand(input, {
       required: true,
       defaultProps: {
-        ref,
+        ref: useMergedRefs(ref, inputRef),
         autoComplete: 'off',
         role: 'spinbutton',
         appearance: appearance,
+        type: 'text',
         ...nativeProps.primary,
       },
     }),
@@ -150,6 +164,13 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     }
     setTextValue(newTextValue);
   }, [value, displayValue, currentValue, precision, setAtBound, min, max]);
+
+  // TODO: see TODO at the top of this file for selectEntireRange
+  // React.useEffect(() => {
+  //   if (spinState !== 'rest') {
+  //     selectEntireRange(inputRef.current);
+  //   }
+  // }, [textValue, spinState]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (inputType === 'spinners-only') {
