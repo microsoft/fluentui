@@ -10,31 +10,52 @@ The AvatarGroup component represents multiple people or entities. Avatar groups 
 
 There's no current research in OpenUI's website.
 
-| Library                                                                               | Name         | Notes |
-| ------------------------------------------------------------------------------------- | ------------ | ----- |
-| [Fluent UI v8](https://developer.microsoft.com/en-us/fluentui#/controls/web/facepile) | Facepile     |       |
-| [Attlassian](https://atlassian.design/components/avatar-group/examples)               | Avatar group |       |
-| [Sales Force](https://www.lightningdesignsystem.com/components/avatar-group/)         | Avatar Group |       |
-| [Ant Design](https://ant.design/components/avatar/)                                   | Avatar.Group |       |
-| [Primer React](https://primer.style/react/AvatarStack)                                | AvatarStack  |       |
+| Library                                                                               | Name         | Notes                                                                                         |
+| ------------------------------------------------------------------------------------- | ------------ | --------------------------------------------------------------------------------------------- |
+| [Fluent UI v8](https://developer.microsoft.com/en-us/fluentui#/controls/web/facepile) | Facepile     | Receives list of `IFacepilePersona` to represent each avatar.                                 |
+| [Attlassian](https://atlassian.design/components/avatar-group/examples)               | Avatar group | Component uses data prop, which is a list of "entries" to represent each avatar in the group. |
+| [Ant Design](https://ant.design/components/avatar/)                                   | Avatar.Group | Uses subcomponent `<Avatar.Group>` to group the avatars given as children.                    |
+| [Primer React](https://primer.style/react/AvatarStack)                                | AvatarStack  | Acts similar to a FlexBox, avatars are given as children and grouped.                         |
 
 ### Comparison v8 and v0
 
-There's only one existent component similar to AvatarGroup in v8. v0 doesn't have an equivalent of this component.
+There's only one existent component similar to AvatarGroup in v8 `Facepile`. v0 doesn't have an equivalent of this component.
 
-- v8 - [Facepile](https://developer.microsoft.com/en-us/fluentui#/controls/web/facepile)
+- v8 [Facepile](https://developer.microsoft.com/en-us/fluentui#/controls/web/facepile)
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+TODO: _Link to Open UI research_
+
+Epic issue: [#22240](https://github.com/microsoft/fluentui/issues/22240)
 
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
+```jsx
+import { AvatarGroup, AvatarData, Avatar } from '@fluentui/react-avatar';
+
+const avatarData: AvatarData[] = {};
+
+const App = () => {
+  return (
+    <AvatarGroup layout="grid" size={20}>
+      <Avatar color="colorful" name="Katri Athokas" />
+      <Avatar color="colorful" name="Elvia Atkins" />
+      <Avatar color="colorful" name="Cameron Evans" />
+      <Avatar color="colorful" name="Wanda Howard" />
+      <Avatar color="colorful" name="Mona Kane" />
+    </AvatarGroup>
+  );
+};
+```
+
+- > To handle the avatars (since we are not accepting a data prop), we'll use `react-priority-overflow`.
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+There are three layout variants in AvatarGroup:
+
+- Grid layout (Default): Avatars are spaced evenly and there can be a maximum of five of them.
+- Stacked layout: Avatars are overlaped evenly and there can be a maximum of five of them.
+- Pie layout: There can be a minimum of two Avatars and a maximum of three. This layout does not overflow and provides a tooltip/popover for more details.
 
 ## API
 
