@@ -33,7 +33,7 @@
     "@types/lodash": "^4.14.149",
     "@types/puppeteer": "1.12.3",
     "@types/read-pkg-up": "^6.0.0",
-    "async": "^2.6.1",
+    "async": "^3.2.2",
     "babel-plugin-annotate-pure-imports": "^1.0.0-1",
     "babel-plugin-iife-wrap-react-components": "^1.0.0-5",
     "babel-plugin-lodash": "^3.3.4",
