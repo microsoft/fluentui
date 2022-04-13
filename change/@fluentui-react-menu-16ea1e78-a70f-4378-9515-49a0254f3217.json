@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Replace `usePopper` usage with `usePositioning`",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
