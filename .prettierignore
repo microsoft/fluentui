@@ -26,7 +26,6 @@ __snapshots__
 # package specific files
 apps/vr-tests/dndSim.js
 packages/monaco-editor/esm
-packages/monaco-editor/monaco-typescript.d.ts
 packages/font-icons-mdl2/**/fabric-icons-*
 packages/fluentui/**/componentInfo
 packages/fluentui/docs/src/behaviorMenu.json

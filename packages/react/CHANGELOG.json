@@ -2,6 +2,36 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 12 Apr 2022 07:39:33 GMT",
+      "tag": "@fluentui/react_v8.64.3",
+      "version": "8.64.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.3.0",
+            "commit": "72fa867ab6b084656b53c8f644df74b31077ae15"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 Apr 2022 07:40:57 GMT",
+      "tag": "@fluentui/react_v8.64.2",
+      "version": "8.64.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "dbb5d179a354ec24205cee6e421b7446b3ed4a21",
+            "comment": "fix(react): Panel - make theming work and sticky styling consistent"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Apr 2022 07:35:27 GMT",
       "tag": "@fluentui/react_v8.64.1",
       "version": "8.64.1",

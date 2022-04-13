@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-monaco-editor
 
-This log was last generated on Wed, 06 Apr 2022 07:34:58 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Apr 2022 07:39:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.3.19)
+
+Tue, 12 Apr 2022 07:39:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.3.18..@fluentui/react-monaco-editor_v1.3.19)
+
+### Patches
+
+- Update internal type usage to reflect new monaco-editor version ([PR #22443](https://github.com/microsoft/fluentui/pull/22443) by elcraig@microsoft.com)
+- Add types for all `@fluentui/react` dependencies, and wrap exported examples with `ThemeProvider` rather than `Fabric` ([PR #22444](https://github.com/microsoft/fluentui/pull/22444) by elcraig@microsoft.com)
+- Bump @fluentui/react to v8.64.3 ([PR #22439](https://github.com/microsoft/fluentui/pull/22439) by beachball)
+- Bump @fluentui/monaco-editor to v1.2.0 ([PR #22439](https://github.com/microsoft/fluentui/pull/22439) by beachball)
+
+## [1.3.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.3.18)
+
+Mon, 11 Apr 2022 07:40:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.3.17..@fluentui/react-monaco-editor_v1.3.18)
+
+### Patches
+
+- Bump @fluentui/react to v8.64.2 ([PR #22446](https://github.com/microsoft/fluentui/pull/22446) by beachball)
 
 ## [1.3.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.3.17)
 

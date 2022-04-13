@@ -21,16 +21,23 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### BREAKING CHANGES
 - `mergeThemes()` and other `merge*` functions used for styling accept only two parameters @layershifter ([#22123](https://github.com/microsoft/fluentui/pull/22123))
 - Create portal elements in separate elements @layershifter ([#22329](https://github.com/microsoft/fluentui/pull/22329))
+- Do not render styles in Provider when "as" is "React.Fragment" @layershifter ([#22359](https://github.com/microsoft/fluentui/pull/22359))
 
 ### Fixes
+- `Tooltip` text size should be 12 by default @petr-duda ([#22407](https://github.com/microsoft/fluentui/pull/22407))
 - Add transparent borders to slider @ling1726 ([#22089](https://github.com/microsoft/fluentui/pull/22089))
 - Fix `Popup` opened from right click (on `context`), to not dismiss when scrolling happens in nested Popup @yaunboxue-amber ([#22087](https://github.com/microsoft/fluentui/pull/22087))
 - Fix `Dropdown` not annoucing placeholder/default value with VoiceOver on macOS @aubreyquinn ([#22173](https://github.com/microsoft/fluentui/pull/22173))
 - Fix `Datepicker` by adding `aria-haspopup="true"` when `allowManualInput` is set to false @chpalac ([#22201](https://github.com/microsoft/fluentui/pull/22201))
+- Fix `Attachment` progress-bar overflow @Hirse ([#22115](https://github.com/microsoft/fluentui/pull/22115))
 - Use v2 theme by default in screener tests @jurokapsiar ([#22286](https://github.com/microsoft/fluentui/pull/22286))
 
 ### Features
 - Add selected items count narration by screen reader for search multiple selection Dropdown @adamsamec ([#22269](https://github.com/microsoft/fluentui/pull/22269))
+- Update northstar v2 themes colors @jurokapsiar ([#22328](https://github.com/microsoft/fluentui/pull/22328))
+
+### Documentation
+- Ensure RTL examples show up in rtl direction @Hirse ([#22129](https://github.com/microsoft/fluentui/pull/22129))
 
 <!--------------------------------[ v0.61.0 ]------------------------------- -->
 ## [v0.61.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.61.0) (2022-03-10)

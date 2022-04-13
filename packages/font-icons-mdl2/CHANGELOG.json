@@ -2,6 +2,21 @@
   "name": "@fluentui/font-icons-mdl2",
   "entries": [
     {
+      "date": "Tue, 12 Apr 2022 07:39:32 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "f1ed2ba54d90c2a94df15198097648d130ba7006",
+            "comment": "Update initializeIcons to add user defined URL in argument"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Mar 2022 07:45:54 GMT",
       "tag": "@fluentui/font-icons-mdl2_v8.2.5",
       "version": "8.2.5",

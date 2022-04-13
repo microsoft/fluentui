@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 06 Apr 2022 07:34:57 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Apr 2022 07:39:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.64.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.3)
+
+Tue, 12 Apr 2022 07:39:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.64.2..@fluentui/react_v8.64.3)
+
+### Patches
+
+- Bump @fluentui/font-icons-mdl2 to v8.3.0 ([PR #22439](https://github.com/microsoft/fluentui/pull/22439) by beachball)
+
+## [8.64.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.2)
+
+Mon, 11 Apr 2022 07:40:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.64.1..@fluentui/react_v8.64.2)
+
+### Patches
+
+- fix(react): Panel - make theming work and sticky styling consistent ([PR #22408](https://github.com/microsoft/fluentui/pull/22408) by martinhochel@microsoft.com)
 
 ## [8.64.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.1)
 

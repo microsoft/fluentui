@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updated to decrease gap of small vertical tab per figma change",
+  "packageName": "@fluentui/react-tabs",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

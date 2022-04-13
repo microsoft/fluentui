@@ -2,6 +2,54 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Tue, 12 Apr 2022 07:39:33 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.3.19",
+      "version": "1.3.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "e49dc444524e81550e4c7a5206db795ee44ea232",
+            "comment": "Update internal type usage to reflect new monaco-editor version"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "c1502884f4f422e6e7c3beba1cd07a2318efd37e",
+            "comment": "Add types for all `@fluentui/react` dependencies, and wrap exported examples with `ThemeProvider` rather than `Fabric`"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.64.3",
+            "commit": "72fa867ab6b084656b53c8f644df74b31077ae15"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/monaco-editor to v1.2.0",
+            "commit": "72fa867ab6b084656b53c8f644df74b31077ae15"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 Apr 2022 07:40:58 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.3.18",
+      "version": "1.3.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.64.2",
+            "commit": "09dc74f8c3586eb7320b8ae296621acd6ebe3505"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Apr 2022 07:34:58 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.3.17",
       "version": "1.3.17",

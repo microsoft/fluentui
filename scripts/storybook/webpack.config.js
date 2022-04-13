@@ -92,13 +92,5 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
 
   config.optimization.minimize = false;
 
-  if (process.env.TF_BUILD) {
-    console.log(
-      'Storybook webpack config:',
-      // Plugins have circular references, and they're probably not the issue here
-      JSON.stringify(config, (key, value) => (key === 'plugins' ? undefined : value), 2),
-    );
-  }
-
   return config;
 };
