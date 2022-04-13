@@ -63,12 +63,29 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
   return (options: UseStylesOptions = {}) => {
     let { theme } = options;
     let winId: string | undefined;
-
+    // Retain a dictionary of window ids we're tracking
+    const allWindows = new Set<string>();
     const win = useWindow() as (Window & { __id__: string }) | undefined;
     if (win) {
       win.__id__ = win.__id__ || getId();
       winId = win.__id__;
+      if (!allWindows.has(winId)) {
+        allWindows.add(winId);
+        win.addEventListener('unload', () => cleanupMapEntries(winId));
+      }
+      // cleanupMapEntries will
+      // 1. remove all the graph branches for the window,
+      // 2. remove the event listener,
+      // 3. delete the allWindows entry.
+      const cleanupMapEntries = (id: string | undefined) => {
+        if (id) {
+          graph.delete(winId);
+          win.removeEventListener('unload', () => cleanupMapEntries(id));
+          allWindows.delete(id);
+        }
+      };
     }
+
     const contextualTheme = useTheme();
 
     theme = theme || contextualTheme;
@@ -76,7 +93,7 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
 
     const id = renderer.getId();
     const isStyleFunction = typeof styleOrFunction === 'function';
-    const path = [id, winId, theme];
+    const path = [winId, id, theme];
     let value = graphGet(graph, path);
 
     if (!value) {
