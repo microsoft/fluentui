@@ -24,7 +24,8 @@ const useStyles = makeStyles({
   },
 });
 
-export type TestOverflowItemProps = Omit<React.HTMLAttributes<HTMLButtonElement>, 'id'> & OverflowItemProps;
+export type TestOverflowItemProps = Omit<React.HTMLAttributes<HTMLButtonElement>, 'id'> &
+  Omit<OverflowItemProps, 'children'>;
 
 export const TestOverflowItem: React.FC<TestOverflowItemProps> = props => {
   const { id, priority, groupId, ...rest } = props;
