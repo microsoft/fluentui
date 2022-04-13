@@ -151,7 +151,7 @@ packages/react-text @microsoft/cxe-prg
 packages/react-textarea @microsoft/cxe-red @sopranopillow
 packages/react-tooltip @microsoft/cxe-red @behowell @khmakoto
 packages/react-list @microsoft/teams-prg
-packages/react-toolbar/ @microsoft/teams-prg @chpalac @ling1726
+packages/react-toolbar @microsoft/teams-prg @chpalac @ling1726
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
