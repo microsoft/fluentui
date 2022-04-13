@@ -15,6 +15,7 @@ const TeachingBubbleIllustrationExampleCode = require('!raw-loader?esModule=fals
 const TeachingBubbleWideIllustrationExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.WideIllustration.Example.tsx') as string;
 const TeachingBubbleSmallHeadlineExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.SmallHeadline.Example.tsx') as string;
 const TeachingBubbleMultiStepExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.MultiStep.Example.tsx') as string;
+const TeachingBubbleButtonOrderExample = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.ButtonPrder.Example.tsx') as string;
 
 export const TeachingBubblePageProps: IDocPageProps = {
   title: 'TeachingBubble',
@@ -30,6 +31,11 @@ export const TeachingBubblePageProps: IDocPageProps = {
       title: 'TeachingBubble Wide',
       code: TeachingBubbleWideExampleCode,
       view: <TeachingBubbleWideExample />,
+    },
+    {
+      title: 'TeachingBubble with custon button order',
+      code: TeachingBubbleButtonOrderExample,
+      view: <TeachingBubbleButtonOrderExample />,
     },
     {
       title: 'TeachingBubble Condensed',
