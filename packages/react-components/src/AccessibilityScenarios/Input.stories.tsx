@@ -46,7 +46,7 @@ const ValidationMessage: React.FC<ValidationMessageProps> = ({ id, formValidatio
   React.useEffect(() => {
     formValidation.subscribe(id, alert);
     return () => formValidation.unsubscribe(id, alert);
-  }, [formValidation]);
+  }, [formValidation, alert, id]);
   return (
     <div role={isAlerting ? 'alert' : undefined} style={{ color: isAlerting ? 'red' : 'green' }} id={`${id}Errors`}>
       {children}
@@ -55,13 +55,13 @@ const ValidationMessage: React.FC<ValidationMessageProps> = ({ id, formValidatio
 };
 
 const useFormValidation = (
-  handleSubmit: (callback: OnSubmit<any>) => (e?: React.BaseSyntheticEvent) => Promise<void>,
+  handleSubmit: (callback: OnSubmit<FormInputs>) => (e?: React.BaseSyntheticEvent) => Promise<void>,
 ) => {
   const pubSub = usePubSub();
   const isSubmitting = React.useRef(false);
 
   const wrappedHandleSubmit = React.useCallback(
-    (callback: OnSubmit<any>) => {
+    (callback: OnSubmit<FormInputs>) => {
       const handler = handleSubmit(callback);
       return async (e: React.BaseSyntheticEvent) => {
         isSubmitting.current = true;
@@ -70,7 +70,7 @@ const useFormValidation = (
         return result;
       };
     },
-    [isSubmitting],
+    [isSubmitting, handleSubmit],
   );
 
   const onFieldValidated = React.useCallback(
@@ -125,7 +125,7 @@ const RegistrationFormInputsAccessibility = () => {
     if (firstErrorField) {
       firstErrorField.focus();
     }
-  }, [errors, formState]);
+  }, [errors, formState, formValidation]);
 
   React.useEffect(() => {
     if (isSubmittedAndValid) {
