@@ -1,6 +1,5 @@
 import config from '@fluentui/scripts/config';
 import * as fs from 'fs-extra';
-import * as fsExtra from 'fs-extra';
 import * as path from 'path';
 import {
   addResolutionPathsForProjectPackages,
@@ -45,7 +44,7 @@ async function performTest() {
     fs.copyFileSync(scaffoldPath('tsconfig.json'), path.join(tempPaths.testApp, 'tsconfig.json'));
 
     fs.mkdirSync(path.join(tempPaths.testApp, 'patches/'));
-    fsExtra.copySync(scaffoldPath('patches/'), path.join(tempPaths.testApp, 'patches/'));
+    fs.copySync(scaffoldPath('patches/'), path.join(tempPaths.testApp, 'patches/'));
     await shEcho(`yarn patch-package`, tempPaths.testApp);
 
     logger(`✔️ Source and configs were copied`);
