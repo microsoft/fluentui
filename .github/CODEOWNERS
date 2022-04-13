@@ -69,11 +69,19 @@ packages/fluentui/react-northstar/src/themes/teams/components/Chat @microsoft/fl
 packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
 
 #### Apps
-# component-demo
-public-docsite @microsoft/fluentui-v8-website
-public-docsite-resources @microsoft/fluentui-v8-website
-perf-test @microsoft/fluentui-react-build
-# ssr-tests
+apps/public-docsite @microsoft/fluentui-v8-website
+apps/public-docsite-resources @microsoft/fluentui-v8-website
+apps/perf-test @microsoft/fluentui-react-build
+apps/perf-test-react-components @microsoft/fluentui-react-build
+apps/ts-minbar-test-react @microsoft/fluentui-react-build
+apps/ts-minbar-test-react-components @microsoft/fluentui-react-build
+apps/vr-tests @microsoft/fluentui-react
+apps/vr-tests-react-components @microsoft/fluentui-react
+apps/ssr-tests @microsoft/fluentui-react
+apps/pr-deploy-site @microsoft/fluentui-react-build
+apps/test-bundles @microsoft/fluentui-react
+apps/upgrade-examples-v8-v9 @microsoft/fluentui-v8-website
+apps/theming-designer @microsoft/fluentui-react
 
 #### Packages
 packages/azure-themes @hyoshis @Jacqueline-ms
