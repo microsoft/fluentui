@@ -15,6 +15,8 @@ export { Appearance } from './SpinButtonAppearance.stories';
 export { RTL } from './SpinButtonRTL.stories';
 export { Disabled } from './SpinButtonDisabled.stories';
 export { InputType } from './SpinButtonInputType.stories';
+export { Strings } from './SpinButtonStrings.stories';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 
 const useDecoratorStyles = makeStyles({
