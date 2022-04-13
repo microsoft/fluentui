@@ -70,7 +70,6 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     componentRef,
     disabled,
     disableFirstFocus,
-    elementToFocusOnDismiss,
     forceFocusInsideTrap,
     focusPreviouslyFocusedInnerElement,
     // eslint-disable-next-line deprecation/deprecation
@@ -151,7 +150,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
 
   /** Used in root div focus/blur handlers */
   const focusBumper = (isFirstBumper: boolean) => {
-    if (props.disabled || !root.current) {
+    if (disabled || !root.current) {
       return;
     }
 
@@ -208,7 +207,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
   };
 
   /** Called to restore focus on unmount or props change. (useEventCallback ensures latest prop values are used.) */
-  const returnFocusToInitiator = useEventCallback((previousActiveElement: HTMLElement | null | undefined) => {
+  const returnFocusToInitiator = useEventCallback((elementToFocusOnDismiss: HTMLElement | null) => {
     FocusTrapZone.focusStack = FocusTrapZone.focusStack!.filter(value => internalState.focusStackId !== value);
 
     if (!doc) {
@@ -216,14 +215,13 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     }
 
     const activeElement = doc.activeElement as HTMLElement;
-    const elementToFocus = elementToFocusOnDismiss || previousActiveElement;
     if (
       !disableRestoreFocus &&
-      typeof elementToFocus?.focus === 'function' &&
+      typeof elementToFocusOnDismiss?.focus === 'function' &&
       // only restore focus if the current focused element is within the FTZ, or if nothing is focused
       (elementContains(root.current, activeElement) || activeElement === doc.body)
     ) {
-      focusElementAsync(elementToFocus);
+      focusElementAsync(elementToFocusOnDismiss);
     }
   });
 
@@ -273,15 +271,15 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     // Transition from forceFocusInsideTrap / FTZ disabled to enabled (or initial mount)
     FocusTrapZone.focusStack!.push(internalState.focusStackId);
 
-    const previousActiveElement = doc?.activeElement as HTMLElement;
+    const elementToFocusOnDismiss = props.elementToFocusOnDismiss || (doc!.activeElement as HTMLElement | null);
 
-    if (!disableFirstFocus && !elementContains(root.current, elementToFocusOnDismiss || previousActiveElement)) {
+    if (!disableFirstFocus && !elementContains(root.current, elementToFocusOnDismiss)) {
       focusFTZ();
     }
 
     // To match existing behavior, always return focus on cleanup (even if we didn't handle
     // initial focus), but it's debatable whether that's correct
-    return () => returnFocusToInitiator(previousActiveElement);
+    return () => returnFocusToInitiator(elementToFocusOnDismiss);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run when these two props change
   }, [forceFocusInsideTrap, disabled]);
