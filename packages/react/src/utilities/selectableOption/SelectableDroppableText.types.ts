@@ -83,8 +83,12 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement>
   onRenderItem?: IRenderFunction<ISelectableOption>;
 
   /**
-   * Optional custom renderer for normal options only.
-   * Use `onRenderItem` to control rendering for separators and headers as well.
+   * Optional custom renderer for normal and header options.
+   * @remarks
+   * Param `option: ISelectableOption` has attribute `itemType`,
+   * use this to specify normal vs. header option render logic.
+   * @remarks
+   * Use `onRenderItem` to control rendering for separators as well.
    */
   onRenderOption?: IRenderFunction<ISelectableOption>;
 
