@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix: Update usages of react-positioning",
+  "comment": "BREAKING: Updates related to internal bump of Popper.js to Floating UI",
   "packageName": "@fluentui/react-popover",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"

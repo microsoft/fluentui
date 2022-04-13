@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix: update usages of positioning API",
+  "comment": "BREAKING: Updates related to internal bump of Popper.js to Floating UI",
   "packageName": "@fluentui/react-tooltip",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
