@@ -487,7 +487,7 @@ describe('FocusTrapZone', () => {
       );
     };
 
-    it('goes to previously focused element when focusing the FTZ', async () => {
+    it('goes to previously focused element when focusing the FTZ', () => {
       const componentRef = React.createRef<IFocusTrapZone>();
       mount(<ImperativeFocus focusPreviouslyFocusedInnerElement componentRef={componentRef} />);
 
