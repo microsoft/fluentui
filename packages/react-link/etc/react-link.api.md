@@ -20,8 +20,6 @@ export const linkClassName = "fui-Link";
 // @public (undocumented)
 export const linkClassNames: SlotClassNames<LinkSlots>;
 
-// Warning: (ae-forgotten-export) The symbol "LinkCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
 

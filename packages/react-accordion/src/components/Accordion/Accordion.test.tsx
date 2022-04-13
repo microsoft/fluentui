@@ -2,13 +2,11 @@ import * as React from 'react';
 import { Accordion } from './Accordion';
 import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../common/isConformant';
-import { AccordionContext } from './AccordionContext';
 
 describe('Accordion', () => {
   isConformant({
     Component: Accordion,
     displayName: 'Accordion',
-    helperComponents: [AccordionContext.Provider],
     // Accordion does not have own styles
     disabledTests: ['make-styles-overrides-win'],
   });

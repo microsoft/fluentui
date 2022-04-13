@@ -15,6 +15,7 @@ describe('Tab', () => {
         {
           props: {
             icon: 'Test Icon',
+            content: 'Test Content',
           },
         },
       ],
@@ -23,6 +24,7 @@ describe('Tab', () => {
 
   const defaultContext: TabListContextValue = {
     appearance: 'transparent',
+    disabled: false,
     size: 'medium',
     vertical: false,
     // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -31,6 +33,11 @@ describe('Tab', () => {
     onUnregister: () => {},
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     onSelect: () => {},
+    getRegisteredTabs: () => {
+      return {
+        registeredTabs: {},
+      };
+    },
   };
 
   it('renders correctly', () => {

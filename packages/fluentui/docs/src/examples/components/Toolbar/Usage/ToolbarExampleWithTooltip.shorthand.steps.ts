@@ -1,12 +1,12 @@
 import { toolbarClassName, toolbarItemClassName } from '@fluentui/react-northstar';
-import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
+import { ScreenerTestsConfig, ALL_THEMES } from '@fluentui/scripts/screener';
 
 const selectors = {
   item: (itemIndex: number) => `.${toolbarClassName} .${toolbarItemClassName}:nth-child(${itemIndex})`,
 };
 
 const config: ScreenerTestsConfig = {
-  themes: ['teams', 'teamsDark', 'teamsHighContrast'],
+  themes: ALL_THEMES,
   steps: [
     (builder, keys) =>
       builder

@@ -392,7 +392,7 @@ describe('migrate-converged-pkg generator', () => {
         "// @ts-check
 
         /**
-        * @type {jest.InitialOptions}
+        * @type {import('@jest/types').Config.InitialOptions}
         */
         module.exports = {
         displayName: 'react-dummy',
@@ -443,37 +443,13 @@ describe('migrate-converged-pkg generator', () => {
         return tree.read(jestSetupFilePath)?.toString('utf-8');
       }
 
-      let content = getJestSetupFile();
-      expect(content).toMatchInlineSnapshot(`
-        "/** Jest test setup file. */
-
-        const { configure } = require('enzyme');
-        const Adapter = require('enzyme-adapter-react-16');
-
-        // Configure enzyme.
-        configure({ adapter: new Adapter() });"
-      `);
-
-      await generator(tree, options);
-
-      content = getJestSetupFile();
-      expect(content).toMatchInlineSnapshot(`
-        "/** Jest test setup file. */
-
-        const { configure } = require('enzyme');
-        const Adapter = require('enzyme-adapter-react-16');
-
-        // Configure enzyme.
-        configure({ adapter: new Adapter() });"
-      `);
-
       tree.delete(jestSetupFilePath);
       expect(tree.exists(jestSetupFilePath)).toBeFalsy();
 
       await generator(tree, options);
 
-      content = getJestSetupFile();
-      expect(content).toMatchInlineSnapshot(`"/** Jest test setup file. */"`);
+      expect(tree.exists(jestSetupFilePath)).toBeTruthy();
+      expect(getJestSetupFile()).toMatchInlineSnapshot(`"/** Jest test setup file. */"`);
     });
   });
 
@@ -1001,6 +977,18 @@ describe('migrate-converged-pkg generator', () => {
       expect(projectConfig.sourceRoot).toBe(`${projectConfig.root}/src`);
     });
 
+    it(`should set project 'implicitDependencies' in workspace.json`, async () => {
+      let projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.implicitDependencies).toBe(undefined);
+
+      await generator(tree, options);
+
+      projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.implicitDependencies).toEqual([]);
+    });
+
     it(`should set project 'vNext' and 'platform:web' tag in nx.json if its a web package`, async () => {
       let projectConfig = readProjectConfiguration(tree, options.name);
       expect(projectConfig.tags).toBe(undefined);
@@ -1230,12 +1218,6 @@ function setupDummyPackage(
     `,
     jestSetupFile: stripIndents`
      /** Jest test setup file. */
-
-    const { configure } = require('enzyme');
-    const Adapter = require('enzyme-adapter-react-16');
-
-    // Configure enzyme.
-    configure({ adapter: new Adapter() });
     `,
     npmConfig: stripIndents`
       *.api.json

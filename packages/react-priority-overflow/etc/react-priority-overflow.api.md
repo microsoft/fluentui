@@ -20,12 +20,15 @@ export const DATA_OVERFLOW_MENU = "data-overflow-menu";
 // @public (undocumented)
 export const DATA_OVERFLOWING = "data-overflowing";
 
-// @public (undocumented)
-export const Overflow: React_2.ForwardRefExoticComponent<OverflowProps & React_2.RefAttributes<HTMLDivElement>>;
+// @public
+export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<ObserveOptions, "padding" | "overflowDirection" | "overflowAxis" | "minimumVisible">> & {
+    children: React_2.ReactElement;
+} & React_2.RefAttributes<unknown>>;
 
-// @public (undocumented)
-export interface OverflowProps extends React_2.HTMLAttributes<HTMLDivElement>, Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'> {
-}
+// @public
+export type OverflowProps = Partial<Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'>> & {
+    children: React_2.ReactElement;
+};
 
 // @public (undocumented)
 export const updateVisibilityAttribute: OnUpdateItemVisibility;
@@ -42,7 +45,6 @@ export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpda
 // @public (undocumented)
 export interface UseOverflowContainerReturn<TElement extends HTMLElement> {
     containerRef: React_2.RefObject<TElement>;
-    // Warning: (ae-forgotten-export) The symbol "OverflowContextValue" needs to be exported by the entry point index.d.ts
     registerItem: OverflowContextValue['registerItem'];
     updateOverflow: OverflowContextValue['updateOverflow'];
 }

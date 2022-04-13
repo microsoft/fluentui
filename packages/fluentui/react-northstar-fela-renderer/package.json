@@ -13,6 +13,7 @@
     "fela-plugin-fallback-value": "^10.6.1",
     "fela-plugin-placeholder-prefixer": "^10.6.1",
     "fela-plugin-rtl": "^10.6.1",
+    "fela-tools": "^10.6.1",
     "fela-utils": "^10.6.1",
     "inline-style-expand-shorthand": "^1.2.0",
     "lodash": "^4.17.15",

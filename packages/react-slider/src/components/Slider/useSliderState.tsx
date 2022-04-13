@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { sliderStyleVars } from './useSliderStyles';
+import { sliderCSSVars } from './useSliderStyles';
 import type { SliderState } from './Slider.types';
 
-const { railOffsetVar, railStepsPercentVar, railProgressVar, thumbPositionVar, railDirectionVar } = sliderStyleVars;
+const { railOffsetVar, railStepsPercentVar, railProgressVar, thumbPositionVar, railDirectionVar } = sliderCSSVars;
 
 const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;

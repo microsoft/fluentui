@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixed secondary text styling in PeoplePicker Personas when displayed in the input.",
-  "packageName": "@fluentui/react",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

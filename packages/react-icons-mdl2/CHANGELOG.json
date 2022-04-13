@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons-mdl2",
   "entries": [
     {
+      "date": "Mon, 11 Apr 2022 07:40:58 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.3.6",
+      "version": "1.3.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-icons-mdl2",
+            "commit": "158ef0b202f08a2f017af10b8d8df38106d7d5a3",
+            "comment": "Update LICENSE in react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Mar 2022 07:45:54 GMT",
       "tag": "@fluentui/react-icons-mdl2_v1.3.5",
       "version": "1.3.5",
