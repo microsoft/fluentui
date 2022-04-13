@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add a way to load editor fonts, and remove back-compat code that's no longer needed",
+  "packageName": "@fluentui/monaco-editor",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
