@@ -174,7 +174,6 @@ This approach significantly improves our current situation:
 
 ### 2. shipping type declarations (TypeScript)
 
-> **NOTE:** to make this RFC more focused this will be covered in followup PR's if needed
 
 #### Problem statement
 
