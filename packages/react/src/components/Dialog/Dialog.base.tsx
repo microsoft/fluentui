@@ -102,11 +102,11 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
     };
 
     let dialogDraggableClassName: string | undefined;
-    const dragOptions = modalProps?.dragOptions;
+    const dragOptions = { ...modalProps?.dragOptions };
 
     // if we are draggable, make sure we are using the correct
     // draggable classname and selectors
-    if (dragOptions && !dragOptions.dragHandleSelector) {
+    if (dragOptions && !modalProps?.dragOptions?.dragHandleSelector) {
       dialogDraggableClassName = 'ms-Dialog-draggable-header';
       dragOptions.dragHandleSelector = `.${dialogDraggableClassName}`;
     }
