@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Moved focus pivot styles to only effect links not in overflow",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
