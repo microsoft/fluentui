@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Hoist react-is devDependencies to the repo root",
+  "packageName": "@fluentui/react-conformance",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}
