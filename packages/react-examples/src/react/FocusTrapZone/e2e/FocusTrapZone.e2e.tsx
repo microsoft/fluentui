@@ -4,6 +4,7 @@ import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
 import type { IFocusTrapZoneProps, IFocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
+import { css } from '@fluentui/react/lib/Utilities';
 
 /** Styles to make the example easier to visually follow when debugging */
 const rootClass = mergeStyles({
@@ -71,12 +72,17 @@ describe('FocusTrapZone', () => {
       // wait for first focus to finish to avoid timing issue
       cy.focused().should('have.text', 'first');
 
+      // click a button besides the first one
+      cy.contains('mid').realClick();
+      cy.focused().should('have.text', 'mid');
+      cy.get('#buttonClicked').should('have.text', 'clicked mid');
+
       // try to click on button outside FTZ
       cy.contains('before').realClick();
       // it focuses first button inside FTZ instead
       cy.focused().should('have.text', 'first');
       // and the click isn't respected
-      cy.get('#buttonClicked').should('have.text', 'clicked ');
+      cy.get('#buttonClicked').should('have.text', 'clicked mid');
     });
 
     it('Restores focus to FTZ when programmatically focusing outside FTZ', () => {
@@ -84,6 +90,10 @@ describe('FocusTrapZone', () => {
 
       // wait for first focus to finish to avoid timing issue
       cy.focused().should('have.text', 'first');
+
+      // click/focus a button besides the first one
+      cy.contains('mid').realClick();
+      cy.focused().should('have.text', 'mid');
 
       cy.contains('after').focus();
       cy.focused().should('have.text', 'first');
@@ -129,28 +139,45 @@ describe('FocusTrapZone', () => {
       cy.focused().should('have.text', 'last');
     });
 
-    // TODO: investigate why this intermittently fails and re-enable.
-    // It succeeds if you set disableFirstFocus: true, but the failure with first focus enabled
-    // may reflect an actual bug in the function component conversion. Also, the intermittent
-    // failure may indicate a timing issue with either the effects within FTZ, or with cypress.
-    xit('Does not restore focus to FTZ when forceFocusInsideTrap is false', () => {
+    it('Does not restore focus to FTZ when forceFocusInsideTrap is false', () => {
       mount(<PropValues forceFocusInsideTrap={false} />);
 
       // wait for first focus to finish to avoid timing issue
       cy.focused().should('have.text', 'first');
 
-      // click a button outside => respected
-      cy.contains('after').realClick();
+      // programmatic focus outside => respected
+      cy.contains('after').focus();
       cy.focused().should('have.text', 'after');
 
       // focus back inside
       cy.contains('mid').realClick();
       cy.focused().should('have.text', 'mid');
 
-      // programmatic focus outside => respected
-      cy.contains('after').focus();
-      cy.focused().should('have.text', 'after');
+      // click a button outside => click not respected, focus not changed
+      // (since this test doesn't have isClickableOutsideFocusTrap=true)
+      cy.contains('button', 'after').realClick();
+      cy.get('#buttonClicked').should('have.text', 'clicked mid');
+      cy.focused().should('have.text', 'first');
     });
+
+    it(
+      'Does not restore focus to FTZ and allows clicks outside when forceFocusInsideTrap=false and ' +
+        'isClickableOutsideFocusTrap=true',
+      () => {
+        mount(<PropValues forceFocusInsideTrap={false} isClickableOutsideFocusTrap />);
+
+        // wait for first focus to finish to avoid timing issue
+        cy.focused().should('have.text', 'first');
+
+        // click a button outside => respected
+        cy.contains('after').click();
+        cy.focused().should('have.text', 'after');
+
+        // focus back inside
+        cy.contains('mid').realClick();
+        cy.focused().should('have.text', 'mid');
+      },
+    );
 
     it('Does not focus first on mount while disabled', () => {
       mount(<PropValues disabled />);
@@ -447,16 +474,16 @@ describe('FocusTrapZone', () => {
 
     const ImperativeFocus = (props: IFocusTrapZoneProps) => {
       return (
-          <div className={rootClass}>
+        <div className={rootClass}>
           <FocusTrapZone disableFirstFocus forceFocusInsideTrap={false} isClickableOutsideFocusTrap {...props}>
-              <button>first</button>
-              <FocusZone>
-                <button>mid</button>
-                <button>last</button>
-              </FocusZone>
-            </FocusTrapZone>
-            <button>after</button>
-          </div>
+            <button>first</button>
+            <FocusZone>
+              <button>mid</button>
+              <button>last</button>
+            </FocusZone>
+          </FocusTrapZone>
+          <button>after</button>
+        </div>
       );
     };
 
@@ -501,6 +528,104 @@ describe('FocusTrapZone', () => {
       // Manually focusing FTZ should go to the first focusable element.
       imperativeFocus(componentRef);
       cy.focused().should('have.text', 'first');
+    });
+  });
+
+  describe('returning focus to initiator', () => {
+    const rootButtonsClass = mergeStyles({ '> button': { display: 'block' } });
+
+    const ReturnFocus = (props: IFocusTrapZoneProps) => {
+      const [showFTZ, setShowFTZ] = React.useState(false);
+
+      return (
+        <div className={css(rootClass, rootButtonsClass)}>
+          <button>before 1</button>
+          {showFTZ && (
+            <FocusTrapZone {...props}>
+              <button>first</button>
+              <button onClick={() => setShowFTZ(false)}>hide FTZ</button>
+              <button>last</button>
+            </FocusTrapZone>
+          )}
+          {/* the extra buttons are to ensure it's focusing the intended element not using some fallback */}
+          <button>other 1</button>
+          <button onClick={() => setShowFTZ(true)}>show FTZ</button>
+          <button>other 2</button>
+        </div>
+      );
+    };
+
+    it('returns focus on unmount', () => {
+      mount(<ReturnFocus />);
+
+      // show the FTZ
+      cy.contains('show FTZ').realClick();
+      // verify it was shown and focus went in
+      cy.contains('first').should('exist').should('have.focus');
+
+      // hide the FTZ
+      cy.contains('hide FTZ').realClick();
+      // verify it's hidden and initiating button is re-focused
+      cy.contains('first').should('not.exist');
+      cy.focused().should('have.text', 'show FTZ');
+    });
+
+    it('does not return focus on unmount if disableRestoreFocus is set', () => {
+      mount(<ReturnFocus disableRestoreFocus />);
+
+      // show the FTZ
+      cy.contains('show FTZ').realClick();
+      // verify it was shown and focus went in
+      cy.contains('first').should('exist').should('have.focus');
+
+      // hide the FTZ
+      cy.contains('hide FTZ').realClick();
+      // verify it's hidden and nothing is focused
+      cy.contains('first').should('not.exist');
+      cy.focused().should('not.exist');
+    });
+
+    it('does not return focus on unmount if ignoreExternalFocusing (deprecated) is set', () => {
+      mount(<ReturnFocus ignoreExternalFocusing />);
+
+      // show the FTZ
+      cy.contains('show FTZ').realClick();
+      // verify it was shown and focus went in
+      cy.contains('first').should('exist').should('have.focus');
+
+      // hide the FTZ
+      cy.contains('hide FTZ').realClick();
+      // verify it's hidden and nothing is focused
+      cy.contains('first').should('not.exist');
+      cy.focused().should('not.exist');
+    });
+
+    it('returns focus if forceFocusInsideTrap changes to false', () => {
+      mount(<ReturnFocus />).then(({ rerender }) => {
+        // show the FTZ
+        cy.contains('show FTZ').realClick();
+        // verify it was shown and focus went in
+        cy.contains('first').should('exist').should('have.focus');
+
+        // disable forceFocusInsideTrap
+        rerender(<ReturnFocus forceFocusInsideTrap={false} />);
+        // initiating button is re-focused
+        cy.focused().should('have.text', 'show FTZ');
+      });
+    });
+
+    it('returns focus if disabled changes to true', () => {
+      mount(<ReturnFocus />).then(({ rerender }) => {
+        // show the FTZ
+        cy.contains('show FTZ').realClick();
+        // verify it was shown and focus went in
+        cy.contains('first').should('exist').should('have.focus');
+
+        // disable FTZ
+        rerender(<ReturnFocus disabled />);
+        // initiating button is re-focused
+        cy.focused().should('have.text', 'show FTZ');
+      });
     });
   });
 

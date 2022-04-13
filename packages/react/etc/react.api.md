@@ -1647,7 +1647,7 @@ export const FocusTrapCallout: React_2.FunctionComponent<IFocusTrapCalloutProps>
 
 // @public (undocumented)
 export const FocusTrapZone: React_2.FunctionComponent<IFocusTrapZoneProps> & {
-    focusStack: string[];
+    focusStack?: string[];
 };
 
 export { FocusZone }
