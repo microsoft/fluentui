@@ -10,8 +10,8 @@ import {
   MenuItemProps,
   makeStyles,
 } from '@fluentui/react-components';
-import type { OverflowItemProps } from '../components/OverflowItem';
-import { OverflowItem } from '../components/OverflowItem';
+import type { OverflowItemProps } from '../components/OverflowItem/OverflowItem.types';
+import { OverflowItem } from '../components/OverflowItem/OverflowItem';
 import { useOverflowMenu } from '../useOverflowMenu';
 import { useIsOverflowItemVisible } from '../useIsOverflowItemVisible';
 import { useIsOverflowGroupVisible } from '../useIsOverflowGroupVisible';
