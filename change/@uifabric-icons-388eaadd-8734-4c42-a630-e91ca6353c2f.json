@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Updating initializeIcons to add user defined URL in argument.",
+  "packageName": "@uifabric/icons",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
