@@ -1,4 +1,5 @@
 import { useTheme } from './useTheme';
+import { getId } from '@fluentui/utilities';
 import { useWindow } from '@fluentui/react-window-provider';
 import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
 import type { IStyle } from '@fluentui/style-utilities';
@@ -61,7 +62,13 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
   // eslint-disable-next-line deprecation/deprecation
   return (options: UseStylesOptions = {}) => {
     let { theme } = options;
-    const win = useWindow();
+    let winId: string | undefined;
+
+    const win = useWindow() as (Window & { __id__: string }) | undefined;
+    if (win) {
+      win.__id__ = win.__id__ || getId();
+      winId = win.__id__;
+    }
     const contextualTheme = useTheme();
 
     theme = theme || contextualTheme;
@@ -69,7 +76,7 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
 
     const id = renderer.getId();
     const isStyleFunction = typeof styleOrFunction === 'function';
-    const path = isStyleFunction ? [id, win, theme] : [id, win];
+    const path = [id, winId, theme];
     let value = graphGet(graph, path);
 
     if (!value) {
