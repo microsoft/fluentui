@@ -72,7 +72,7 @@ const getCodeowners = (): Ownership[] => {
     const [path, ...owners] = line.split(' ');
 
     return {
-      path,
+      path: path.replace(/\/+$/, ''),
       owners,
     };
   });
