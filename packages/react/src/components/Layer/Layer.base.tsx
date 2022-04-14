@@ -1,3 +1,4 @@
+import { usePortalCompat } from '@fluentui/react-portal-compat';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
@@ -17,6 +18,8 @@ const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
 export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<HTMLDivElement, ILayerProps>(
   (props, ref) => {
+    const registerPortalEl = usePortalCompat();
+
     const rootRef = React.useRef<HTMLSpanElement>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
     const layerRef = React.useRef<HTMLDivElement>();
@@ -119,7 +122,13 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
         registerLayer(hostId, createLayerElement);
       }
 
+      const unregisterPortalEl = layerRef.current ? registerPortalEl(layerRef.current) : undefined;
+
       return () => {
+        if (unregisterPortalEl) {
+          unregisterPortalEl();
+        }
+
         removeLayerElement();
 
         if (hostId) {

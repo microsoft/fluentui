@@ -1,5 +1,6 @@
 import { useFluentContext, useIsomorphicLayoutEffect } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import { usePortalCompat } from '@fluentui/react-portal-compat';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -36,11 +37,16 @@ export const PortalInner: React.FC<PortalInnerProps> = props => {
 
   const { className } = React.useContext(PortalContext);
   const { target, rtl } = useFluentContext();
+  const registerPortalEl = usePortalCompat();
 
   const box = usePortalBox({ className, target, rtl });
   // PortalInner should render elements even without a context
   // eslint-disable-next-line
   const container: HTMLElement | null = isBrowser() ? mountNode || box || document.body : null;
+
+  useIsomorphicLayoutEffect(() => {
+    return registerPortalEl(box);
+  }, [box, registerPortalEl]);
 
   useIsomorphicLayoutEffect(() => {
     _.invoke(props, 'onMount', props);
