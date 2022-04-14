@@ -1,3 +1,4 @@
+//@ts-ignore
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import {
   Tree,
@@ -15,6 +16,7 @@ import { MigratePackagesGeneratorSchema } from './schema';
 import { TsConfig } from '../../types';
 
 type ReadProjectConfiguration = ReturnType<typeof readProjectConfiguration>;
+const noop = () => null;
 
 describe('migrate-packages generator', () => {
   let tree: Tree;
@@ -25,14 +27,10 @@ describe('migrate-packages generator', () => {
   };
 
   beforeEach(() => {
+    jest.restoreAllMocks();
+    jest.spyOn(console, 'log').mockImplementation(noop);
+
     tree = createTreeWithEmptyWorkspace();
-    tree.write(
-      'jest.config.js',
-      stripIndents`
-      module.exports = {
-          projects: []
-      }`,
-    );
     tree = setupDummyPackage(tree, {
       ...options,
       name: options.name!,
@@ -95,7 +93,6 @@ describe('migrate-packages generator', () => {
       expect(tree.exists(`packages/${options.destination}/package.json`)).toBeTruthy();
       expect(tree.exists(`packages/${options.destination}/tsconfig.json`)).toBeTruthy();
       expect(tree.exists(`packages/${options.destination}/.babelrc.json`)).toBeTruthy();
-      expect(tree.exists(`packages/${options.destination}/jest.config.js`)).toBeTruthy();
       expect(tree.exists(`packages/${options.destination}/config/tests.js`)).toBeTruthy();
       expect(tree.exists(`packages/${options.destination}/.npmignore`)).toBeTruthy();
     });
@@ -106,7 +103,6 @@ describe('migrate-packages generator', () => {
       expect(tree.exists(`packages/${options.name}/package.json`)).toBeFalsy();
       expect(tree.exists(`packages/${options.name}/tsconfig.json`)).toBeFalsy();
       expect(tree.exists(`packages/${options.name}/.babelrc.json`)).toBeFalsy();
-      expect(tree.exists(`packages/${options.name}/jest.config.js`)).toBeFalsy();
       expect(tree.exists(`packages/${options.name}/config/tests.js`)).toBeFalsy();
       expect(tree.exists(`packages/${options.name}/.npmignore`)).toBeFalsy();
     });
@@ -227,17 +223,6 @@ function setupDummyPackage(
     tsConfig: {
       ...normalizedOptions.tsConfig,
     },
-    jestConfig: stripIndents`
-      const { createConfig } = require('@fluentui/scripts/jest/jest-resources');
-      const path = require('path');
-
-      const config = createConfig({
-        setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
-        snapshotSerializers: ['@griffel/jest-serializer'],
-      });
-
-      module.exports = config;
-    `,
     jestSetupFile: stripIndents`
      /** Jest test setup file. */
     `,
@@ -305,7 +290,6 @@ function setupDummyPackage(
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
   tree.write(`${paths.root}/tsconfig.json`, serializeJson(templates.tsConfig));
   tree.write(`${paths.root}/.babelrc.json`, serializeJson(templates.babelConfig));
-  tree.write(`${paths.root}/jest.config.js`, templates.jestConfig);
   tree.write(`${paths.root}/config/tests.js`, templates.jestSetupFile);
   tree.write(`${paths.root}/.npmignore`, templates.npmConfig);
   tree.write(`${paths.root}/src/index.ts`, `export const greet = 'hello' `);
