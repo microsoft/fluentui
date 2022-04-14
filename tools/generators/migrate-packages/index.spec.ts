@@ -1,4 +1,3 @@
-//@ts-ignore
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import {
   Tree,
@@ -29,6 +28,21 @@ describe('migrate-packages generator', () => {
   beforeEach(() => {
     jest.restoreAllMocks();
     jest.spyOn(console, 'log').mockImplementation(noop);
+
+    const nxJsonConfig = {
+      npmScope: 'proj',
+      affected: { defaultBase: 'main' },
+      tasksRunnerOptions: {
+        default: {
+          runner: '@nrwl/workspace/tasks-runners/default',
+          options: { cacheableOperations: ['build', 'lint', 'test', 'e2e'] },
+        },
+      },
+      workspaceLayout: {
+        libsDir: 'packages',
+      },
+    };
+    tree.write(`nx.json`, serializeJson(nxJsonConfig));
 
     tree = createTreeWithEmptyWorkspace();
     tree = setupDummyPackage(tree, {
@@ -94,7 +108,6 @@ describe('migrate-packages generator', () => {
       expect(tree.exists(`packages/${options.destination}/tsconfig.json`)).toBeTruthy();
       expect(tree.exists(`packages/${options.destination}/.babelrc.json`)).toBeTruthy();
       expect(tree.exists(`packages/${options.destination}/config/tests.js`)).toBeTruthy();
-      expect(tree.exists(`packages/${options.destination}/.npmignore`)).toBeTruthy();
     });
     it('should delete files from the old location', async () => {
       await generator(tree, options);
@@ -104,7 +117,6 @@ describe('migrate-packages generator', () => {
       expect(tree.exists(`packages/${options.name}/tsconfig.json`)).toBeFalsy();
       expect(tree.exists(`packages/${options.name}/.babelrc.json`)).toBeFalsy();
       expect(tree.exists(`packages/${options.name}/config/tests.js`)).toBeFalsy();
-      expect(tree.exists(`packages/${options.name}/.npmignore`)).toBeFalsy();
     });
   });
 
@@ -226,72 +238,20 @@ function setupDummyPackage(
     jestSetupFile: stripIndents`
      /** Jest test setup file. */
     `,
-    npmConfig: stripIndents`
-      *.api.json
-      *.config.js
-      *.log
-      *.nuspec
-      *.test.*
-      *.yml
-      .editorconfig
-      .eslintrc*
-      .eslintcache
-      .gitattributes
-      .gitignore
-      .vscode
-      coverage
-      dist/storybook
-      dist/*.stats.html
-      dist/*.stats.json
-      dist/demo
-      fabric-test*
-      gulpfile.js
-      images
-      index.html
-      jsconfig.json
-      node_modules
-      results
-      src/**/*
-      !src/**/examples/*.tsx
-      !src/**/docs/**/*.md
-      !src/**/*.types.ts
-      temp
-      tsconfig.json
-      tsd.json
-      tslint.json
-      typings
-      visualtests
-    `,
     babelConfig: {
       ...normalizedOptions.babelConfig,
     },
   };
 
-  const tsConfigBase = parseJson(tree.read('tsconfig.base.json')!.toString('utf8')!);
-  // Add new dummy package to tsconfig.base.json paths.
-  tsConfigBase.compilerOptions.paths[options.name] = [`packages/${options.name}/src/index.ts`];
-
-  const nxJsonConfig = {
-    npmScope: 'proj',
-    affected: { defaultBase: 'main' },
-    tasksRunnerOptions: {
-      default: {
-        runner: '@nrwl/workspace/tasks-runners/default',
-        options: { cacheableOperations: ['build', 'lint', 'test', 'e2e'] },
-      },
-    },
-    workspaceLayout: {
-      libsDir: 'packages',
-    },
-  };
+  const tsConfigBase: TsConfig = parseJson(tree.read('tsconfig.base.json')!.toString('utf8')!);
+  // Add newly added dummy package to tsconfig.base.json paths.
+  tsConfigBase!.compilerOptions!.paths![options.name] = [`packages/${options.name}/src/index.ts`];
 
   tree.write(`tsconfig.base.json`, serializeJson(tsConfigBase));
-  tree.write(`nx.json`, serializeJson(nxJsonConfig));
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
   tree.write(`${paths.root}/tsconfig.json`, serializeJson(templates.tsConfig));
   tree.write(`${paths.root}/.babelrc.json`, serializeJson(templates.babelConfig));
   tree.write(`${paths.root}/config/tests.js`, templates.jestSetupFile);
-  tree.write(`${paths.root}/.npmignore`, templates.npmConfig);
   tree.write(`${paths.root}/src/index.ts`, `export const greet = 'hello' `);
   tree.write(
     `${paths.root}/src/index.test.ts`,
