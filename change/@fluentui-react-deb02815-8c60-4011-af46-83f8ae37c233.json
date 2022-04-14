@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Added onScroll callback for calloutProps in ComboBox.",
+  "packageName": "@fluentui/react",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
