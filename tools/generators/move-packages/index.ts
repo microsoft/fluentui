@@ -3,25 +3,25 @@ import { moveGenerator } from '@nrwl/workspace/generators';
 import { PackageJson } from '../../types';
 import { getProjects } from '../../utils';
 
-import { MigratePackagesGeneratorSchema } from './schema';
+import { MovePackagesGeneratorSchema } from './schema';
 
-export default async function (tree: Tree, schema: MigratePackagesGeneratorSchema) {
+export default async function (tree: Tree, schema: MovePackagesGeneratorSchema) {
   validateSchema(schema);
 
   if (hasSchemaFlag(schema, 'allConverged')) {
-    runBatchMigration(tree, schema, isPackageConverged);
+    runBatchMove(tree, schema, isPackageConverged);
   } else if (hasSchemaFlag(schema, 'allV8')) {
-    runBatchMigration(tree, schema, isV8Package);
+    runBatchMove(tree, schema, isV8Package);
   } else {
-    migratePackage(tree, schema);
+    movePackage(tree, schema);
   }
 
   await formatFiles(tree);
 }
 
-function runBatchMigration(
+function runBatchMove(
   tree: Tree,
-  schema: MigratePackagesGeneratorSchema,
+  schema: MovePackagesGeneratorSchema,
   libraryVersionChecker: (tree: Tree, project: ProjectConfiguration) => boolean,
 ) {
   const projects = getProjects(tree);
@@ -30,7 +30,7 @@ function runBatchMigration(
       const destination = `${schema.destination}/${projectName.split('/')[1]}`;
       console.log(`Attempting to move ${projectName} to ${destination}`);
 
-      migratePackage(tree, {
+      movePackage(tree, {
         name: projectName,
         destination: destination,
         updateImportPath: schema.updateImportPath,
@@ -39,7 +39,7 @@ function runBatchMigration(
   }
 }
 
-function migratePackage(tree: Tree, schema: MigratePackagesGeneratorSchema) {
+function movePackage(tree: Tree, schema: MovePackagesGeneratorSchema) {
   const { name, destination, updateImportPath = false } = schema;
 
   moveGenerator(tree, {
@@ -62,7 +62,7 @@ function migratePackage(tree: Tree, schema: MigratePackagesGeneratorSchema) {
   });
 }
 
-function validateSchema(schema: MigratePackagesGeneratorSchema) {
+function validateSchema(schema: MovePackagesGeneratorSchema) {
   const { name, allConverged, allV8 } = schema;
 
   if (name && allConverged) {
@@ -86,7 +86,7 @@ function getNewProjectName(path: string) {
   return path.replace(/\//g, '-');
 }
 
-function hasSchemaFlag<T extends MigratePackagesGeneratorSchema, K extends keyof T>(
+function hasSchemaFlag<T extends MovePackagesGeneratorSchema, K extends keyof T>(
   schema: T,
   flag: K,
 ): schema is T & Record<K, NonNullable<T[K]>> {

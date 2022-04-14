@@ -1,4 +1,4 @@
-export interface MigratePackagesGeneratorSchema {
+export interface MovePackagesGeneratorSchema {
   /**
    * The name of the package to move.
    */
@@ -13,11 +13,11 @@ export interface MigratePackagesGeneratorSchema {
    */
   updateImportPath?: boolean;
   /**
-   * Flag to migrate all converged packages to a new location.
+   * Flag to move all converged packages to a new location.
    */
   allConverged?: boolean;
   /**
-   * Flag to migrate all v8 packages to a new location.
+   * Flag to move all v8 packages to a new location.
    */
   allV8?: boolean;
 }

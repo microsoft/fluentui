@@ -11,15 +11,15 @@ import {
 } from '@nrwl/devkit';
 
 import generator from './index';
-import { MigratePackagesGeneratorSchema } from './schema';
+import { MovePackagesGeneratorSchema } from './schema';
 import { TsConfig } from '../../types';
 
 type ReadProjectConfiguration = ReturnType<typeof readProjectConfiguration>;
 const noop = () => null;
 
-describe('migrate-packages generator', () => {
+describe('move-packages generator', () => {
   let tree: Tree;
-  const options: MigratePackagesGeneratorSchema = {
+  const options: MovePackagesGeneratorSchema = {
     name: '@proj/test',
     destination: 'testFolder/test',
     updateImportPath: false,
@@ -128,7 +128,7 @@ describe('migrate-packages generator', () => {
       setupDummyPackage(tree, { name: '@proj/react-old', version: '8.0.1' });
     });
 
-    it(`should run migration on all v9 packages in batch`, async () => {
+    it(`should move all v9 packages in batch`, async () => {
       const projects = [
         options.name!,
         '@proj/react-foo',
@@ -155,7 +155,7 @@ describe('migrate-packages generator', () => {
       setupDummyPackage(tree, { name: '@proj/react-old', version: '9.0.1' });
     });
 
-    it(`should run migration on all v8 packages in batch`, async () => {
+    it(`should move all v8 packages in batch`, async () => {
       const projects = [
         options.name!,
         '@proj/react-foo',

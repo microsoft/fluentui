@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
   "cli": "nx",
-  "id": "migrate-packages",
+  "id": "move-packages",
   "type": "object",
   "properties": {
     "name": {
@@ -26,11 +26,11 @@
     },
     "allConverged": {
       "type": "boolean",
-      "description": "Migrate all converged packages to a new location."
+      "description": "Move all converged packages to a new location."
     },
     "allV8": {
       "type": "boolean",
-      "description": "Migrate all v8 packages to a new location."
+      "description": "Move all v8 packages to a new location."
     }
   },
   "required": ["destination"]
