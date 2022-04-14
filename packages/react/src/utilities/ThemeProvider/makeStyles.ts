@@ -70,7 +70,7 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
   // 2. remove the event listener,
   // 3. delete the allWindows entry.
   const cleanupMapEntries = (ev: PageTransitionEvent) => {
-    const win = ev.target as WindowWithId;
+    const win = ev.currentTarget as WindowWithId;
     const winId = win.__id__;
     graph.delete(winId);
     win.removeEventListener('unload', cleanupMapEntries);
