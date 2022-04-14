@@ -21,7 +21,7 @@ describe('migrate-packages generator', () => {
   const options: MigratePackagesGeneratorSchema = {
     name: '@proj/test',
     destination: 'testFolder/test',
-    updateImportPath: true,
+    updateImportPath: false,
   };
 
   beforeEach(() => {
