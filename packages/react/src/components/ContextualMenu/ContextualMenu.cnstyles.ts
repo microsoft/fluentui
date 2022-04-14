@@ -172,7 +172,6 @@ export const getMenuItemStyles = memoizeFunction(
       },
       checkmarkIcon: {
         color: semanticColors.bodySubtext,
-        selectors: {},
       },
       subMenuIcon: {
         height: CONTEXTUAL_MENU_ITEM_HEIGHT,
