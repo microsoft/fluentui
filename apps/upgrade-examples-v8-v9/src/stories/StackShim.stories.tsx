@@ -1,18 +1,8 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { Button } from '@fluentui/react-components';
-import { Stack, IStackProps } from '@fluentui/react';
+import { Button, makeStyles } from '@fluentui/react-components';
+import { Checkbox, Dropdown, IDropdownOption, DropdownMenuItemType, Stack, TextField } from '@fluentui/react';
 import { StackShim, StackItemShim } from '../shims/StackShim';
-
-// export { DefaultButtonStory as DefaultButton } from './DefaultButtonShim.stories';
-// export { PrimaryButtonStory as PrimaryButton } from './PrimaryButtonShim.stories';
-// export { ActionButtonStory as ActionButton } from './ActionButtonShim.stories';
-// export { CommandButtonStory as CommandButton } from './CommandButtonShim.stories';
-// export { CompoundButtonStory as CompoundButton } from './CompoundButtonShim.stories';
-// export { ToggleButtonStory as ToggleButton } from './ToggleButtonShim.stories';
-
-import { Checkbox, Dropdown, IDropdownOption, DropdownMenuItemType, TextField } from '@fluentui/react';
-import { makeStyles } from '@fluentui/react-components';
 
 const horizontalAlignOptions: IDropdownOption[] = [
   {
