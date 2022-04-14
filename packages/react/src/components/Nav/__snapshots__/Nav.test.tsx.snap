@@ -70,6 +70,17 @@ exports[`Nav render Nav with overrides correctly 1`] = `
               &::-moz-focus-inner {
                 border: 0;
               }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #605e5c;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
               &:visited {
                 color: #323130;
               }
@@ -653,7 +664,7 @@ exports[`Nav renders Nav correctly 1`] = `
                           vertical-align: middle;
                         }
                   >
-
+                    
                   </div>
                 </span>
               </button>
