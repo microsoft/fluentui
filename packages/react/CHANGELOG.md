@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 12 Apr 2022 07:39:33 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Apr 2022 07:38:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.64.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.4)
+
+Thu, 14 Apr 2022 07:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.64.3..@fluentui/react_v8.64.4)
+
+### Patches
+
+- Moved focus pivot styles to only effect links not in overflow ([PR #22490](https://github.com/microsoft/fluentui/pull/22490) by mgodbolt@microsoft.com)
+- Dropdown: Fixing issue where, if previous/next tabbable element is inside FocusZone then tabbing with Dropdown open will skip it. ([PR #22488](https://github.com/microsoft/fluentui/pull/22488) by Humberto.Morimoto@microsoft.com)
+- Added onScroll callback for calloutProps in ComboBox. ([PR #22501](https://github.com/microsoft/fluentui/pull/22501) by email not defined)
 
 ## [8.64.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.3)
 

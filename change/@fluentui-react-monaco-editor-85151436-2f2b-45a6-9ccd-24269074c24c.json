@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Remove UMD bundle",
-  "packageName": "@fluentui/react-monaco-editor",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

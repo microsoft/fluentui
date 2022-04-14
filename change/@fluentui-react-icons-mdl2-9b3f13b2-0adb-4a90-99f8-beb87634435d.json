@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add forced-color-adjust to icon styles to ensure high contrast color works as expected",
-  "packageName": "@fluentui/react-icons-mdl2",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

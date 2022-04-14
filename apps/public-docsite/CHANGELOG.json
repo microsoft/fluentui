@@ -2,6 +2,57 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Thu, 14 Apr 2022 07:38:11 GMT",
+      "tag": "@fluentui/public-docsite_v8.2.41",
+      "version": "8.2.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react to v8.64.4",
+            "commit": "df18b862d5f9cd3bd1780b3cc6a44b4f7c9fda19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-docsite-components to v8.7.3",
+            "commit": "df18b862d5f9cd3bd1780b3cc6a44b4f7c9fda19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-experiments to v8.8.6",
+            "commit": "df18b862d5f9cd3bd1780b3cc6a44b4f7c9fda19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.3.7",
+            "commit": "df18b862d5f9cd3bd1780b3cc6a44b4f7c9fda19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-icons-mdl2-branded to v1.2.7",
+            "commit": "df18b862d5f9cd3bd1780b3cc6a44b4f7c9fda19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/theme-samples to v8.4.20",
+            "commit": "df18b862d5f9cd3bd1780b3cc6a44b4f7c9fda19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.4.0",
+            "commit": "df18b862d5f9cd3bd1780b3cc6a44b4f7c9fda19"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Apr 2022 07:39:33 GMT",
       "tag": "@fluentui/public-docsite_v8.2.41",
       "version": "8.2.41",

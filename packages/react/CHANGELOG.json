@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 14 Apr 2022 07:38:09 GMT",
+      "tag": "@fluentui/react_v8.64.4",
+      "version": "8.64.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4db219d06e9450976364a3f8af4109ae48320237",
+            "comment": "Moved focus pivot styles to only effect links not in overflow"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b55bed7eaecbe1859164bc05d24d979cc0e9b212",
+            "comment": "Dropdown: Fixing issue where, if previous/next tabbable element is inside FocusZone then tabbing with Dropdown open will skip it."
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react",
+            "commit": "df18b862d5f9cd3bd1780b3cc6a44b4f7c9fda19",
+            "comment": "Added onScroll callback for calloutProps in ComboBox."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Apr 2022 07:39:33 GMT",
       "tag": "@fluentui/react_v8.64.3",
       "version": "8.64.3",
