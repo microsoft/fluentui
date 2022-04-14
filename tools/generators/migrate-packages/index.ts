@@ -41,7 +41,7 @@ function runBatchMigration(
 
 function migratePackage(tree: Tree, schema: MigratePackagesGeneratorSchema) {
   const { name, destination, updateImportPath = true } = schema;
-  const jsonFile = 'workspace.json';
+  const newProjectName = getNewProjectName(schema.destination);
 
   moveGenerator(tree, {
     projectName: name!,
@@ -51,13 +51,23 @@ function migratePackage(tree: Tree, schema: MigratePackagesGeneratorSchema) {
 
   // moveGenerator automatically renames the package so this overwrites that change
   // and sets it back to the original package name.
-  updateJson(tree, jsonFile, json => {
-    const newProjectName = getNewProjectName(schema.destination);
-
+  updateJson(tree, 'workspace.json', json => {
     for (const [projectName, value] of Object.entries(json.projects)) {
       if (projectName === newProjectName) {
         json.projects[schema.name!] = value;
         delete json.projects[newProjectName];
+      }
+    }
+    return json;
+  });
+
+  // moveGenerator automatically renames the package so this overwrites that change
+  // and sets it back to the original package name.
+  updateJson(tree, 'tsconfig.base.json', json => {
+    for (const [projectName, value] of Object.entries(json.compilerOptions.paths)) {
+      if (projectName.includes(newProjectName)) {
+        json.compilerOptions.paths[schema.name!] = value;
+        delete json.compilerOptions.paths[`@fluentui/${newProjectName}`];
       }
     }
     return json;
