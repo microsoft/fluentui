@@ -127,12 +127,21 @@ const useRootStyles = makeStyles({
   },
 
   disabled: {
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('GrayText'),
+    },
+  },
+
+  outlineDisabled: {
     '::before': {
       ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
       ...shorthands.borderRadius(tokens.borderRadiusMedium), // because underline doesn't usually have a radius
-      '@media (forced-colors: active)': {
-        ...shorthands.borderColor('GrayText'),
-      },
+    },
+  },
+
+  underlineDisabled: {
+    '::before': {
+      ...shorthands.borderBottom('1px', 'solid', tokens.colorTransparentStrokeDisabled),
     },
   },
 });
@@ -159,7 +168,7 @@ const useButtonStyles = makeStyles({
     outlineStyle: 'none',
     height: '100%',
 
-    ':hover': {
+    ':enabled:hover': {
       cursor: 'pointer',
     },
 
@@ -247,19 +256,16 @@ const useButtonStyles = makeStyles({
     },
   },
 
-  // These designs are not yet finalized so this is copy-paste for the "outline"
-  // appearance.
   underline: {
     backgroundColor: 'transparent',
     color: tokens.colorNeutralForeground3,
-    ...shorthands.borderRadius(0),
     ':enabled': {
       ':hover': {
-        color: tokens.colorNeutralForeground3Hover,
+        color: tokens.colorNeutralForeground3,
         backgroundColor: tokens.colorSubtleBackgroundHover,
       },
       [`:active,&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: tokens.colorNeutralForeground3Pressed,
+        color: tokens.colorNeutralForeground3,
         backgroundColor: tokens.colorSubtleBackgroundPressed,
       },
     },
@@ -449,6 +455,8 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
     disabled && rootStyles.disabled,
+    disabled && appearance === 'outline' && rootStyles.outlineDisabled,
+    disabled && appearance === 'underline' && rootStyles.underlineDisabled,
     rootClassName, // Make sure any original class name is applied last
   );
 
