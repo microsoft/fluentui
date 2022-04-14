@@ -1653,6 +1653,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       this._isScrollIdle = false;
     }
 
+    if (this.props.calloutProps?.onScroll) {
+      this.props.calloutProps.onScroll();
+    }
+
     this._scrollIdleTimeoutId = this._async.setTimeout(() => {
       this._isScrollIdle = true;
     }, ScrollIdleDelay);

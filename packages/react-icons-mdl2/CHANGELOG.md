@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icons-mdl2
 
-This log was last generated on Mon, 11 Apr 2022 07:40:58 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Apr 2022 07:38:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.7)
+
+Thu, 14 Apr 2022 07:38:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.3.6..@fluentui/react-icons-mdl2_v1.3.7)
+
+### Patches
+
+- add forced-color-adjust to icon styles to ensure high contrast color works as expected ([PR #22495](https://github.com/microsoft/fluentui/pull/22495) by mgodbolt@microsoft.com)
 
 ## [1.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.6)
 

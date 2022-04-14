@@ -1185,9 +1185,9 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
         if (document) {
           if (ev.shiftKey) {
-            getPreviousElement(document.body, this._dropDown.current)?.focus();
+            getPreviousElement(document.body, this._dropDown.current, false, false, true, true)?.focus();
           } else {
-            getNextElement(document.body, this._dropDown.current)?.focus();
+            getNextElement(document.body, this._dropDown.current, false, false, true, true)?.focus();
           }
         }
         break;

@@ -18,13 +18,15 @@ In your `webpack.config.js`, call the `addMonacoWebpackConfig` helper to add Mon
 const { addMonacoWebpackConfig } = require('@fluentui/monaco-editor/scripts/addMonacoWebpackConfig');
 
 // Somewhere in this file, call:
-config = addMonacoWebpackConfig(originalConfig, includeAllLanguages);
+config = addMonacoWebpackConfig(originalConfig, options);
 ```
 
 Parameters:
 
 - `config` (`webpack.Configuration`): Your configuration object. Its `entry` **must** be an object (not an array or function), and the `output.globalObject` setting (if any) will be ignored.
-- `includeAllLanguages` (`boolean`):
+- `options` (object, optional):
+  - `outDir` (`string`, optional): output directory where font files should be copied (requires `copy-webpack-plugin` to be installed)
+  - `includeAllLanguages` (`boolean`, optional):
   - `false` (default): Imports for `@fluentui/monaco-editor` will be remapped to `@fluentui/monaco-editor/lib/monacoCoreBundle`, which includes only core editor features and TypeScript language features. Entry configs will be added for the main editor worker (`editor.worker.js`) and TS worker (`ts.worker.js`) but not other languages.
   - `true`: Imports for `@fluentui/monaco-editor` will be remapped to `@fluentui/monaco-editor/lib/monacoBundle`, which includes all language contributions. Also, entry configs will be added for CSS/HTML/JSON workers in addition to TS.
 
