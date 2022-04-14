@@ -40,7 +40,7 @@ function runBatchMigration(
 }
 
 function migratePackage(tree: Tree, schema: MigratePackagesGeneratorSchema) {
-  const { name, destination, updateImportPath = true } = schema;
+  const { name, destination, updateImportPath = false } = schema;
   const newProjectName = getNewProjectName(schema.destination);
 
   moveGenerator(tree, {

@@ -22,7 +22,7 @@
     "updateImportPath": {
       "type": "boolean",
       "description": "Update package import path",
-      "default": true
+      "default": false
     },
     "allConverged": {
       "type": "boolean",

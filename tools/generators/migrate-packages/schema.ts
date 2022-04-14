@@ -8,8 +8,8 @@ export interface MigratePackagesGeneratorSchema {
    */
   destination: string;
   /**
-   * Where the generator should update the import path to reflect the new location.
-   * @default true
+   * Whether the generator should update the import path to reflect the new location.
+   * @default false
    */
   updateImportPath?: boolean;
   /**
