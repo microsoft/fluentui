@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix makestyles to re-register styles for objects upon theme change, and fix memory leak where we keep copy of window",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
