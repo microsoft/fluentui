@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/portal-compat-demo",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
-    "preview": "vite preview"
+    "bundle": "vite build",
+    "start": "vite"
   },
   "dependencies": {
     "@fluentui/react": "^8.64.3",

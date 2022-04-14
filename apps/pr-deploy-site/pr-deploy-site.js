@@ -19,6 +19,12 @@ var siteInfo = [
     title: '@fluentui/react storybook',
   },
   {
+    package: '@fluentui/portal-compat-demo',
+    link: './portal-compat-demo/index.html',
+    icon: 'FavoriteStar',
+    title: 'Portal demo',
+  },
+  {
     package: '@fluentui/public-docsite',
     link: './public-docsite/index.html',
     icon: 'Website',

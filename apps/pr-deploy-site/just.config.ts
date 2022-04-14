@@ -18,6 +18,7 @@ const instructions = copyInstructions.copyFilesToDestinationDirectory(
 // prevent scoped/partial builds from working. (Since the demo site has both v0 and v8 packages,
 // it would cause both of those dependency trees to get built every time.)
 const dependencies = [
+  '@fluentui/portal-compat-demo',
   '@fluentui/docs',
   '@fluentui/perf-test-northstar',
   '@fluentui/public-docsite-resources',
