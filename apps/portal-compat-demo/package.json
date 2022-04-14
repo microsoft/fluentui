@@ -7,8 +7,8 @@
     "start": "vite"
   },
   "dependencies": {
-    "@fluentui/react": "^8.64.3",
-    "@fluentui/react-northstar": "^0.61.0",
+    "@fluentui/react": "^8.64.4",
+    "@fluentui/react-northstar": "^0.62.0",
     "react": "16.14.0",
     "react-dom": "16.14.0"
   },
