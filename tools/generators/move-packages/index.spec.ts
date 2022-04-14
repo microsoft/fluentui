@@ -29,6 +29,8 @@ describe('move-packages generator', () => {
     jest.restoreAllMocks();
     jest.spyOn(console, 'log').mockImplementation(noop);
 
+    tree = createTreeWithEmptyWorkspace();
+
     const nxJsonConfig = {
       npmScope: 'proj',
       affected: { defaultBase: 'main' },
@@ -44,7 +46,6 @@ describe('move-packages generator', () => {
     };
     tree.write(`nx.json`, serializeJson(nxJsonConfig));
 
-    tree = createTreeWithEmptyWorkspace();
     tree = setupDummyPackage(tree, {
       ...options,
       name: options.name!,
