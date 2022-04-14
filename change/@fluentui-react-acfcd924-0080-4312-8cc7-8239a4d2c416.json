@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: Focus container by default when opened by click event.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
