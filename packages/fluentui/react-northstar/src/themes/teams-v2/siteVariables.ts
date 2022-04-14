@@ -21,6 +21,7 @@ export const colors = {
     440: '#666',
     450: '#616161',
     460: '#5c5c5c',
+    475: '#525252',
     500: '#424242',
     550: '#3d3d3d',
     600: '#333',
@@ -121,7 +122,7 @@ export const colorScheme = {
     background5: colors.brand['100'],
 
     foreground: colors.brand['600'],
-    foreground1: colors.brand['600'],
+    foreground1: colors.brand['700'],
     foreground2: colors.brand['700'],
     foreground3: colors.brand['200'],
     foreground4: colors.white,
@@ -154,7 +155,7 @@ export const colorScheme = {
     backgroundActive: colors.brand['600'],
     backgroundActive1: colors.brand['600'],
 
-    borderActive: colors.grey['200'],
+    borderActive: colors.grey['270'],
     borderActive1: colors.brand['50'],
     borderActive2: colors.brand['300'],
 
