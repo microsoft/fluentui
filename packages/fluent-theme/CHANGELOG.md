@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Tue, 05 Apr 2022 12:26:01 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Apr 2022 12:27:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.22](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.6.22)
+
+Thu, 14 Apr 2022 12:27:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.6.21..@uifabric/fluent-theme_v7.6.22)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.185.2 ([PR #22415](https://github.com/microsoft/fluentui/pull/22415) by ololubek@microsoft.com)
 
 ## [7.6.21](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.6.21)
 

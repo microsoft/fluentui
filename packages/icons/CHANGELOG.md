@@ -1,8 +1,17 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Wed, 30 Mar 2022 12:25:54 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Apr 2022 12:27:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.7.0)
+
+Thu, 14 Apr 2022 12:27:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.6.3..@uifabric/icons_v7.7.0)
+
+### Minor changes
+
+- Updating initializeIcons to add user defined URL in argument. ([PR #22415](https://github.com/microsoft/fluentui/pull/22415) by ololubek@microsoft.com)
 
 ## [7.6.3](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.6.3)
 
