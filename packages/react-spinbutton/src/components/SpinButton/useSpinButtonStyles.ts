@@ -144,6 +144,12 @@ const useRootStyles = makeStyles({
       ...shorthands.borderBottom('1px', 'solid', tokens.colorTransparentStrokeDisabled),
     },
   },
+
+  filledDisabled: {
+    '::before': {
+      ...shorthands.border('1px', 'solid', tokens.colorTransparentStrokeDisabled),
+    },
+  },
 });
 
 const useInputStyles = makeStyles({
@@ -279,12 +285,16 @@ const useButtonStyles = makeStyles({
 
     ':enabled': {
       ':hover': {
-        color: tokens.colorNeutralForeground3BrandHover,
-        backgroundColor: tokens.colorSubtleBackgroundHover,
+        color: tokens.colorNeutralForeground3Hover,
+        backgroundColor: tokens.colorNeutralBackground3Hover,
       },
-      [`:active,&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: tokens.colorNeutralForeground3BrandPressed,
-        backgroundColor: tokens.colorSubtleBackgroundPressed,
+      ':active': {
+        color: tokens.colorNeutralForeground3Pressed,
+        backgroundColor: tokens.colorNeutralBackground3Pressed,
+      },
+      [`&.${spinButtonExtraClassNames.buttonActive}`]: {
+        color: tokens.colorNeutralForeground3Pressed,
+        backgroundColor: tokens.colorNeutralBackground3Pressed,
       },
     },
     ':disabled': {
@@ -309,11 +319,11 @@ const useButtonStyles = makeStyles({
   },
 
   filledIncrement: {
-    clipPath: `inset(1px 1px 0 0 round 0 ${tokens.borderRadiusMedium} 0 0)`,
+    // clipPath: `inset(1px 1px 0 0 round 0 ${tokens.borderRadiusMedium} 0 0)`,
   },
 
   filledDecrement: {
-    clipPath: `inset(0 1px 1px 0 round 0 0 ${tokens.borderRadiusMedium} 0)`,
+    // clipPath: `inset(0 1px 1px 0 round 0 0 ${tokens.borderRadiusMedium} 0)`,
   },
 });
 
@@ -451,12 +461,14 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     rootStyles.base,
     appearance === 'outline' && rootStyles.outline,
     appearance === 'underline' && rootStyles.underline,
+    filled && rootStyles.filled,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
     disabled && rootStyles.disabled,
     disabled && appearance === 'outline' && rootStyles.outlineDisabled,
     disabled && appearance === 'underline' && rootStyles.underlineDisabled,
+    disabled && filled && rootStyles.filledDisabled,
     rootClassName, // Make sure any original class name is applied last
   );
 
