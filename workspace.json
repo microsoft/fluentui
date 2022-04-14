@@ -185,6 +185,11 @@
       "projectType": "application",
       "implicitDependencies": []
     },
+    "@fluentui/portal-compat-demo": {
+      "root": "apps/portal-compat-demo",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/perf-test-northstar": {
       "root": "packages/fluentui/perf-test-northstar",
       "projectType": "library",
