@@ -302,28 +302,22 @@ const useButtonStyles = makeStyles({
     },
   },
   filledLighter: {
-    color: tokens.colorNeutralForeground3,
     backgroundColor: 'transparent',
+    color: tokens.colorNeutralForeground3,
 
-    ':hover': {
-      color: tokens.colorNeutralForeground3BrandHover,
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-    },
-    [`:active,&.${spinButtonExtraClassNames.buttonActive}`]: {
-      color: tokens.colorNeutralForeground3BrandPressed,
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
+    ':enabled': {
+      ':hover': {
+        color: tokens.colorNeutralForeground3Hover,
+        backgroundColor: tokens.colorNeutralBackground1Hover,
+      },
+      [`:active,&.${spinButtonExtraClassNames.buttonActive}`]: {
+        color: tokens.colorNeutralForeground3Pressed,
+        backgroundColor: tokens.colorNeutralBackground1Pressed,
+      },
     },
     ':disabled': {
       color: tokens.colorNeutralForegroundDisabled,
     },
-  },
-
-  filledIncrement: {
-    // clipPath: `inset(1px 1px 0 0 round 0 ${tokens.borderRadiusMedium} 0 0)`,
-  },
-
-  filledDecrement: {
-    // clipPath: `inset(0 1px 1px 0 round 0 0 ${tokens.borderRadiusMedium} 0)`,
   },
 });
 
@@ -478,7 +472,6 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     buttonStyles.base,
     buttonStyles.incrementButton,
     buttonStyles[appearance],
-    filled && buttonStyles.filledIncrement,
     size === 'small' ? buttonStyles.incrementButtonSmall : buttonStyles.incrementButtonMedium,
     (atBound === 'max' || atBound === 'both') && buttonDisabledStyles.base,
     (atBound === 'max' || atBound === 'both') && buttonDisabledStyles[appearance],
@@ -490,7 +483,6 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     buttonStyles.base,
     buttonStyles.decrementButton,
     buttonStyles[appearance],
-    filled && buttonStyles.filledDecrement,
     size === 'small' ? buttonStyles.decrementButtonSmall : buttonStyles.decrementButtonMedium,
     (atBound === 'min' || atBound === 'both') && buttonDisabledStyles.base,
     (atBound === 'min' || atBound === 'both') && buttonDisabledStyles[appearance],
