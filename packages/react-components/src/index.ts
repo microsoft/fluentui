@@ -214,6 +214,8 @@ export type {
   SplitButtonState,
   ToggleButtonProps,
   ToggleButtonState,
+  ToggleProps,
+  ToggleState,
 } from '@fluentui/react-button';
 export {
   Divider,

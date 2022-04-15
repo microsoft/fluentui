@@ -2,9 +2,12 @@ import * as React from 'react';
 import { useControllableState } from '@fluentui/react-utilities';
 import type { ToggleButtonProps } from '../ToggleButton';
 
-type ToggleProps = Pick<ToggleButtonProps, 'checked' | 'defaultChecked' | 'disabled' | 'disabledFocusable' | 'role'>;
+export type ToggleProps = Pick<
+  ToggleButtonProps,
+  'checked' | 'defaultChecked' | 'disabled' | 'disabledFocusable' | 'role'
+>;
 
-type ToggleState = {
+export type ToggleState = {
   'aria-checked'?: React.AriaAttributes['aria-checked'];
   'aria-pressed'?: React.AriaAttributes['aria-pressed'];
   checked: boolean;
