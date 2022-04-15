@@ -30,13 +30,11 @@ Epic issue: [#22240](https://github.com/microsoft/fluentui/issues/22240)
 ## Sample Code
 
 ```jsx
-import { AvatarGroup, AvatarData, Avatar } from '@fluentui/react-avatar';
-
-const avatarData: AvatarData[] = {};
+import { AvatarGroup, Avatar } from '@fluentui/react-avatar';
 
 const App = () => {
   return (
-    <AvatarGroup layout="grid" size={20}>
+    <AvatarGroup layout="grid" size={32}>
       <Avatar color="colorful" name="Katri Athokas" />
       <Avatar color="colorful" name="Elvia Atkins" />
       <Avatar color="colorful" name="Cameron Evans" />
@@ -47,38 +45,73 @@ const App = () => {
 };
 ```
 
-- > To handle the avatars (since we are not accepting a data prop), we'll use `react-priority-overflow`.
-
 ## Variants
 
 There are three layout variants in AvatarGroup:
 
 - Grid layout (Default): Avatars are spaced evenly and there can be a maximum of five of them.
 - Stacked layout: Avatars are overlaped evenly and there can be a maximum of five of them.
-- Pie layout: There can be a minimum of two Avatars and a maximum of three. This layout does not overflow and provides a tooltip/popover for more details.
+- Pie layout: There can be a minimum of two Avatars and a maximum of three. This layout does not overflow and provides a popover for more details.
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+See [Avatar]
 
 ## Structure
 
 - _**Public**_
+
+```jsx
+<AvatarGroup layout="grid" size={32}>
+  <Avatar color="colorful" name="Katri Athokas" />
+  <Avatar color="colorful" name="Elvia Atkins" />
+  <Avatar color="colorful" name="Cameron Evans" />
+  <Avatar color="colorful" name="Wanda Howard" />
+  <Avatar color="colorful" name="Mona Kane" />
+</AvatarGroup>
+```
+
 - _**Internal**_
+
+```jsx
+<slots.root {...slotProps.root}>
+  {state.root.children}
+  {slots.popoverSurface && slots.popoverTrigger && (
+    <Popover>
+      <PopoverTrigger>
+        <slots.popoverTrigger {...slotProps.popoverTrigger} />
+      </PopoverTrigger>
+      <slots.popoverSurface {...slotProps.popoverSurface} />
+    </Popover>
+  )}
+</slots.root>
+```
+
 - _**DOM** - how the component will be rendered as HTML elements_
+
+```html
+<div className="fui-AvatarGroup">
+  <Avatar />
+  <Avatar />
+  <Avatar />
+  <Avatar />
+  <span className="fui-Popover__Trigger">
+    <button>+1</button>
+  </span>
+</div>
+```
 
 ## Migration
 
-_Describe what will need to be done to upgrade from the existing implementations:_
-
-- _Migration from v8_
-- _Migration from v0_
+See [MIGRATION-AvatarGroup.md](MIGRATION-AvatarGroup.md) for details.
 
 ## Behaviors
 
 _Explain how the component will behave in use, including:_
 
 - _Component States_
+  - Overflowed state: When there are more Avatars than the `maxAvatars`, an overflow indicator will be rendered that can be clicked to look at the rest of the avatars.
+    - `Pie` layout: There's no overflowed state and no overflow indicator. By default if the AvatarGroup is clicked, a popover with the avats is rendered.
 - _Interaction_
   - _Keyboard_
   - _Cursor_
@@ -89,8 +122,8 @@ _Explain how the component will behave in use, including:_
 
 Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
 
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
+- There's no native element for this component.
+
 - Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
 - Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
 - Specify texts for **state change announcements** - [ARIA live regions
