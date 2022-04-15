@@ -1,5 +1,5 @@
 ---
-name: Feature request
+name: Feature request (Deprecated)
 about: Do you have feature or improvement suggestion for Fluent UI React?
 ---
 

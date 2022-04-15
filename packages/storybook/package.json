@@ -22,13 +22,13 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.64.0",
-    "@fluentui/theme": "^2.6.4",
+    "@fluentui/react": "^8.65.0",
+    "@fluentui/theme": "^2.6.5",
     "@storybook/addon-knobs": "6.4.0",
     "@storybook/addon-essentials": "6.4.19",
     "@storybook/addons": "6.4.19",
-    "@fluentui/azure-themes": "^8.2.16",
-    "@fluentui/theme-samples": "^8.4.16",
+    "@fluentui/azure-themes": "^8.2.21",
+    "@fluentui/theme-samples": "^8.4.21",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

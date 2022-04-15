@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Nav: Remove duplicative active focus styles from chevron",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
