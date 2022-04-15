@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
+import { PopoverSurface } from '@fluentui/react-popover';
 
 /**
  * Create the state required to render AvatarGroup.
@@ -12,17 +13,29 @@ import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
  * @param ref - reference to root HTMLElement of AvatarGroup
  */
 export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<HTMLElement>): AvatarGroupState => {
+  const { maxAvatars = 5, layout = 'grid', size = 32 } = props;
+
   return {
-    // TODO add appropriate props/defaults
+    maxAvatars,
+    layout,
+    size,
     components: {
       // TODO add each slot's element type or component
       root: 'div',
+      popoverSurface: PopoverSurface,
+      popoverTrigger: 'span',
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('div', {
       ref,
       ...props,
+    }),
+    popoverSurface: resolveShorthand(props.popoverSurface, {
+      required: true,
+    }),
+    popoverTrigger: resolveShorthand(props.popoverTrigger, {
+      required: true,
     }),
   };
 };

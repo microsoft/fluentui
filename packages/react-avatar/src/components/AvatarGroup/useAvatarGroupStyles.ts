@@ -4,8 +4,8 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots> = {
   root: 'fui-AvatarGroup',
-  // TODO: add class names for all slots on AvatarGroupSlots.
-  // Should be of the form `<slotName>: 'fui-AvatarGroup__<slotName>`
+  popoverSurface: 'fui-AvatarGroup__popoverSurface',
+  popoverTrigger: 'fui-AvatarGroup__popoverSurface',
 };
 
 /**

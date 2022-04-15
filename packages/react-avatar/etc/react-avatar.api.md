@@ -7,6 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { PopoverSurface } from '@fluentui/react-popover';
 import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -28,11 +29,13 @@ export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
 
 // @public
-export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & AvatarGroupCommons;
+export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & Partial<AvatarGroupCommons>;
 
 // @public (undocumented)
 export type AvatarGroupSlots = {
     root: Slot<'div'>;
+    popoverTrigger?: Slot<'span'>;
+    popoverSurface?: Slot<typeof PopoverSurface>;
 };
 
 // @public
