@@ -2,7 +2,6 @@ import {
   concatStyleSets,
   getFocusStyle,
   HighContrastSelector,
-  IRawStyle,
   ITheme,
   getScreenSelector,
   ScreenWidthMaxMedium,
