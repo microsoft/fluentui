@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixed Dialogs ability to be draggable",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

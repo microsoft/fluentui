@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 14 Apr 2022 07:38:09 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Apr 2022 07:42:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.65.0)
+
+Fri, 15 Apr 2022 07:42:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.64.4..@fluentui/react_v8.65.0)
+
+### Minor changes
+
+- fix ariaLabel and ariaLabelForGrid weirdness, add deprecation warning for shouldApplyApplicationRole ([PR #22436](https://github.com/microsoft/fluentui/pull/22436) by sarah.higley@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.6 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.3.1 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/merge-styles to v8.5.1 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/react-focus to v8.5.7 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/react-hooks to v8.5.4 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/style-utilities to v8.6.6 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/theme to v2.6.5 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/utilities to v8.8.2 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/common-styles to v1.0.38 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.18 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+
+### Patches
+
+- Fixing onScrollToItem in ComboBox by using the getPendingSelectedIndex instead of checking state. ([PR #22505](https://github.com/microsoft/fluentui/pull/22505) by email not defined)
+- Updating TeachingBubble to follow best practices, with primary action being on the left and secondary action on the right ([PR #22473](https://github.com/microsoft/fluentui/pull/22473) by email not defined)
+- ContextualMenu: Focus container by default when opened by click event. ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by Humberto.Morimoto@microsoft.com)
+- Fixed Dialogs ability to be draggable ([PR #22481](https://github.com/microsoft/fluentui/pull/22481) by mgodbolt@microsoft.com)
+- Fix makestyles to re-register styles for objects upon theme change, and fix memory leak where we keep copy of window ([PR #22493](https://github.com/microsoft/fluentui/pull/22493) by mgodbolt@microsoft.com)
 
 ## [8.64.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.4)
 

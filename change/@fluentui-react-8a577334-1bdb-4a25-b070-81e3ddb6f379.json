@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating TeachingBubble to follow best practices, with primary action being on the left and secondary action on the right",
-  "packageName": "@fluentui/react",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}

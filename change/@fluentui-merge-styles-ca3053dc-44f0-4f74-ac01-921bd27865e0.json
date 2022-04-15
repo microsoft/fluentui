@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding missing package.json export for ssr",
-  "packageName": "@fluentui/merge-styles",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}
