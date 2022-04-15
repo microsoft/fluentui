@@ -7,7 +7,9 @@ import {
   RadioGroup,
   Text,
   teamsTheme,
+  teamsV2Theme,
   teamsDarkTheme,
+  teamsDarkV2Theme,
   teamsHighContrastTheme,
 } from '@fluentui/react-northstar';
 // @ts-ignore
@@ -24,9 +26,19 @@ const items = [
     value: 'teamsTheme',
   },
   {
+    key: 'light_v2',
+    label: 'Teams Light V2',
+    value: 'teamsV2Theme',
+  },
+  {
     key: 'dark',
     label: 'Teams Dark',
     value: 'teamsDarkTheme',
+  },
+  {
+    key: 'dark_v2',
+    label: 'Teams Dark V2',
+    value: 'teamsDarkV2Theme',
   },
   {
     key: 'hc',
@@ -38,6 +50,8 @@ const items = [
 const themes = {
   teamsTheme,
   teamsDarkTheme,
+  teamsV2Theme,
+  teamsDarkV2Theme,
   teamsHighContrastTheme,
 };
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixed onRenderOption docs to note that regular AND header types are affected",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -277,7 +277,7 @@ const templates = {
         types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         lib: ['ES2019', 'dom'],
       },
-      include: ['**/*.ts'],
+      include: ['**/*.ts', '**/*.tsx'],
     },
   },
   npmIgnoreConfig:
@@ -501,6 +501,7 @@ function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
     ...options.projectConfig,
     sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
     tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', tags[packageType]]),
+    implicitDependencies: uniqueArray([...(options.projectConfig.implicitDependencies ?? [])]),
   });
 
   return tree;

@@ -2,10 +2,11 @@
 
 exports[`ToolbarButton renders a default state 1`] = `
 <div>
-  <div
-    class="fui-ToolbarButton"
+  <button
+    class="fui-Button"
+    type="button"
   >
     Default ToolbarButton
-  </div>
+  </button>
 </div>
 `;

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: Fix high contrast colors",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
