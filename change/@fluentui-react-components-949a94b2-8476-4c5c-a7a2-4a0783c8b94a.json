@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Exporting useToggleable from @fluentui/react-button.",
+  "comment": "Exporting useToggleState from @fluentui/react-button.",
   "packageName": "@fluentui/react-components",
   "email": "Humberto.Morimoto@microsoft.com",
   "dependentChangeType": "patch"
