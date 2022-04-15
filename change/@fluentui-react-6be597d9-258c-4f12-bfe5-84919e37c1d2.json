@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "useThemeProviderState should only memoize on the content but not the reference to the object",
+  "packageName": "@fluentui/react",
+  "email": "jarmit@microsoft.com",
+  "dependentChangeType": "patch"
+}
