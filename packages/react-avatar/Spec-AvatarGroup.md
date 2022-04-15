@@ -21,11 +21,9 @@ There's no current research in OpenUI's website.
 
 There's only one existent component similar to AvatarGroup in v8 `Facepile`. v0 doesn't have an equivalent of this component.
 
-- v8 [Facepile](https://developer.microsoft.com/en-us/fluentui#/controls/web/facepile)
+- v8 [Facepile](https://developer.microsoft.com/en-us/fluentui#/controls/web/facepile): Only offers grid layout and offers three overflow indicators.
 
-TODO: _Link to Open UI research_
-
-Epic issue: [#22240](https://github.com/microsoft/fluentui/issues/22240)
+## Epic issue: [#22240](https://github.com/microsoft/fluentui/issues/22240)
 
 ## Sample Code
 
@@ -55,7 +53,7 @@ There are three layout variants in AvatarGroup:
 
 ## API
 
-See [Avatar]
+See [AvatarGroup.types.ts](./src/components/AvatarGroup/AvatarGroup.types.ts) for more details.
 
 ## Structure
 
@@ -113,9 +111,8 @@ _Explain how the component will behave in use, including:_
   - Overflowed state: When there are more Avatars than the `maxAvatars`, an overflow indicator will be rendered that can be clicked to look at the rest of the avatars.
     - `Pie` layout: There's no overflowed state and no overflow indicator. By default if the AvatarGroup is clicked, a popover with the avats is rendered.
 - _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
+  - _Keyboard_: Overflow indicator is the only focusable element.
+  - _Cursor_ and _Touch_: When overflow indicator is clicked, the popover is displayed with the avatars that overflow.
   - _Screen readers_
 
 ## Accessibility
