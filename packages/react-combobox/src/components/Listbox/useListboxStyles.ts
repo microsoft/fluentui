@@ -1,20 +1,11 @@
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { horizontalSpacing } from '../../utils/internalTokens';
 import type { ListboxSlots, ListboxState } from './Listbox.types';
 
 export const listboxClassNames: SlotClassNames<ListboxSlots> = {
   root: 'fui-Listbox',
-};
-
-// TODO(sharing) use theme values once available
-const horizontalSpacing = {
-  xxs: '2px',
-  xs: '4px',
-  sNudge: '6px',
-  s: '8px',
-  mNudge: '10px',
-  m: '12px',
 };
 
 /**

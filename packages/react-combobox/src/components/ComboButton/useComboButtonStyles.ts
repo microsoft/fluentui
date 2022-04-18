@@ -1,6 +1,7 @@
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { horizontalSpacing, iconSizes, motionCurves, motionDurations } from '../../utils/internalTokens';
 import type { ComboButtonSlots, ComboButtonState } from './ComboButton.types';
 
 export const comboButtonClassNames: SlotClassNames<ComboButtonSlots> = {
@@ -9,43 +10,10 @@ export const comboButtonClassNames: SlotClassNames<ComboButtonSlots> = {
   expandIcon: 'fui-ComboButton__expandIcon',
 };
 
-/*
- * TODO: a number of spacing and animation values are shared with other form controls.
- * We should probably find a way to share these values between form controls in the theme.
- */
-
-const horizontalSpacing = {
-  xxs: '2px',
-  xs: '4px',
-  sNudge: '6px',
-  s: '8px',
-  mNudge: '10px',
-  m: '12px',
-};
-
-const iconSizes = {
-  small: '16px',
-  medium: '20px',
-  large: '24px',
-};
-
-const motionDurations = {
-  ultraFast: '0.05s',
-  normal: '0.2s',
-};
-
-const motionCurves = {
-  accelerateMid: 'cubic-bezier(0.7,0,1,0.5)',
-  decelerateMid: 'cubic-bezier(0.1,0.9,0.2,1)',
-};
-
-/* end of shared values */
-
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  // TODO: add themed styles
   root: {
     ...shorthands.border('1px', 'solid', 'transparent'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
@@ -77,13 +45,13 @@ const useStyles = makeStyles({
       transitionDuration: motionDurations.ultraFast,
       transitionDelay: motionCurves.accelerateMid,
     },
-    ':focus-within:after': {
+    ':focus-within::after': {
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
       transitionDuration: motionDurations.normal,
       transitionDelay: motionCurves.decelerateMid,
     },
-    ':focus-within:active:after': {
+    ':focus-within:active::after': {
       borderBottomColor: tokens.colorCompoundBrandStrokePressed,
     },
   },
@@ -95,6 +63,7 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     columnGap: horizontalSpacing.xxs,
     display: 'flex',
+    flexWrap: 'nowrap',
     justifyContent: 'space-between',
     textAlign: 'left',
     width: '100%',
@@ -127,7 +96,6 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
-    color: 'red',
   },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,

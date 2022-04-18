@@ -1,17 +1,12 @@
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { horizontalSpacing } from '../../utils/internalTokens';
 import type { OptionSlots, OptionState } from './Option.types';
 
 export const optionClassNames: SlotClassNames<OptionSlots> = {
   root: 'fui-Option',
   checkIcon: 'fui-Option__checkIcon',
-};
-
-// TODO(sharing) use theme values once available
-const horizontalSpacing = {
-  xs: '4px',
-  sNudge: '6px',
 };
 
 /**
@@ -42,7 +37,7 @@ const useStyles = makeStyles({
   active: {
     // taken from @fluentui/react-tabster
     // cannot use createFocusIndicatorStyle() directly, since we aren't using the :focus selector
-    ':after': {
+    '::after': {
       content: '""',
       position: 'absolute',
       pointerEvents: 'none',

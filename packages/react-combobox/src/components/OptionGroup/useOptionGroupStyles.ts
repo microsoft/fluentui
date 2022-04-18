@@ -1,19 +1,12 @@
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { horizontalSpacing } from '../../utils/internalTokens';
 import type { OptionGroupSlots, OptionGroupState } from './OptionGroup.types';
 
 export const optionGroupClassNames: SlotClassNames<OptionGroupSlots> = {
   root: 'fui-OptionGroup',
   label: 'fui-OptionGroup__label',
-};
-
-// TODO(sharing) use theme values once available
-const horizontalSpacing = {
-  xxs: '2px',
-  xs: '4px',
-  sNudge: '6px',
-  s: '8px',
 };
 
 /**
