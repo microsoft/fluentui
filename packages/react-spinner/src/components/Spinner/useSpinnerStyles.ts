@@ -104,6 +104,9 @@ const useRootStyles = makeStyles({
 const useLoaderStyles = makeStyles({
   // global SVG class
   spinnerSVG: {
+    ':focus-visible': {
+      outlineStyle: 'none',
+    },
     ['& > svg']: {
       animationName: {
         '0%': { transform: 'rotate(0deg)' },
