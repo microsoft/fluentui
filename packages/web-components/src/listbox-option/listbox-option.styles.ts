@@ -24,8 +24,8 @@ import {
   neutralFillStealthHover,
   neutralFillStealthRest,
   neutralForegroundRest,
-  typeRampBase,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const optionStyles: (
   context: ElementDefinitionContext,

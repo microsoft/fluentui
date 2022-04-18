@@ -6,7 +6,8 @@ import {
   forcedColorsStylesheetBehavior,
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
-import { designUnit, disabledOpacity, neutralStrokeStrongRest, strokeWidth, typeRampMinus1 } from '../design-tokens';
+import { designUnit, disabledOpacity, neutralStrokeStrongRest, strokeWidth } from '../design-tokens';
+import { typeRampMinus1 } from '../styles/patterns/type-ramp';
 
 export const sliderLabelStyles: (
   context: ElementDefinitionContext,

@@ -30,8 +30,8 @@ import {
   neutralStrokeStrongHover,
   neutralStrokeStrongRest,
   strokeWidth,
-  typeRampBase,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const switchStyles: (context: ElementDefinitionContext, definition: SwitchOptions) => ElementStyles = (
   context: ElementDefinitionContext,

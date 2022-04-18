@@ -26,8 +26,8 @@ import {
   neutralStrokeInputRest,
   neutralStrokeRest,
   strokeWidth,
-  typeRampBase,
 } from '../../design-tokens';
+import { typeRampBase } from '../patterns/type-ramp';
 import { heightNumber } from '../size';
 
 const placeholderRest = DesignToken.create<Swatch>('input-placeholder-rest').withDefault((target: HTMLElement) => {

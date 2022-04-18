@@ -17,9 +17,9 @@ import {
   neutralForegroundHint,
   neutralForegroundRest,
   strokeWidth,
-  typeRampBase,
 } from '../design-tokens';
 import { DirectionalStyleSheetBehavior } from '../styles';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 /**
  * LTR styles for calendar

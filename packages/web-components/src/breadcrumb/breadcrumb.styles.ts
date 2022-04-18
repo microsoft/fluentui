@@ -1,6 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
-import { typeRampBase } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const breadcrumbStyles: (
   context: ElementDefinitionContext,

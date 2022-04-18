@@ -8,9 +8,9 @@ import {
   neutralFillSecondaryRest,
   neutralForegroundRest,
   strokeWidth,
-  typeRampMinus1,
   typeRampMinus1LineHeight,
 } from '../design-tokens';
+import { typeRampMinus1 } from '../styles/patterns/type-ramp';
 
 export const badgeStyles: (
   context: ElementDefinitionContext,

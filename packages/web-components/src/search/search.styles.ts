@@ -16,7 +16,8 @@ import {
   inputStyles,
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
-import { controlCornerRadius, density, designUnit, neutralFillInputRecipe, neutralFillStealthRecipe, neutralForegroundRest, typeRampBase } from '../design-tokens';
+import { controlCornerRadius, density, designUnit, neutralFillInputRecipe, neutralFillStealthRecipe, neutralForegroundRest } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 import { Swatch } from '../color/swatch';
 
 

@@ -12,8 +12,8 @@ import {
   focusStrokeOuter,
   focusStrokeWidth,
   neutralForegroundRest,
-  typeRampBase,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const dataGridCellStyles: (
   context: ElementDefinitionContext,

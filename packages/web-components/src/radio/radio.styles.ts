@@ -27,8 +27,8 @@ import {
   neutralStrokeStrongHover,
   neutralStrokeStrongRest,
   strokeWidth,
-  typeRampBase,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const radioStyles: (context: ElementDefinitionContext, definition: RadioOptions) => ElementStyles = (
   context: ElementDefinitionContext,

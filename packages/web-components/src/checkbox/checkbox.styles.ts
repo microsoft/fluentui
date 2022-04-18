@@ -28,8 +28,8 @@ import {
   neutralStrokeStrongHover,
   neutralStrokeStrongRest,
   strokeWidth,
-  typeRampBase,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const checkboxStyles: (context: ElementDefinitionContext, definition: CheckboxOptions) => ElementStyles = (
   context: ElementDefinitionContext,

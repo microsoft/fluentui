@@ -11,9 +11,9 @@ import {
   controlCornerRadius,
   focusStrokeWidth,
   neutralForegroundRest,
-  typeRampBase,
 } from '../design-tokens';
 import { heightNumber } from '../styles';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const tabsStyles: (
   context: ElementDefinitionContext,

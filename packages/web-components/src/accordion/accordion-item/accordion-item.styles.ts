@@ -22,8 +22,8 @@ import {
   neutralForegroundRest,
   neutralStrokeLayerRest,
   strokeWidth,
-  typeRampBase,
 } from '../../design-tokens';
+import { typeRampBase } from '../../styles/patterns/type-ramp';
 import { heightNumber } from '../../styles/size';
 
 const neutralFillStealthRestOnNeutralFillLayerRest = DesignToken.create<Swatch>(

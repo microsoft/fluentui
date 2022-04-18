@@ -33,8 +33,8 @@ import {
   neutralStrokeControlHover,
   neutralStrokeControlRest,
   strokeWidth,
-  typeRampBase,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const selectFilledStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (
   context: ElementDefinitionContext,

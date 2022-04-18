@@ -19,8 +19,8 @@ import {
   neutralForegroundHint,
   neutralForegroundRest,
   strokeWidth,
-  typeRampBase,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const menuItemStyles: (context: ElementDefinitionContext, definition: MenuItemOptions) => ElementStyles = (
   context: ElementDefinitionContext,

@@ -16,8 +16,8 @@ import {
   focusStrokeWidth,
   neutralForegroundRest,
   strokeWidth,
-  typeRampBase,
 } from '../../design-tokens';
+import { typeRampBase } from '../../styles/patterns/type-ramp';
 
 export const tabStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles =
   (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>

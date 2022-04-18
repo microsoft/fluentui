@@ -28,9 +28,9 @@ import {
   neutralFillStealthRest,
   neutralForegroundRest,
   strokeWidth,
-  typeRampBase,
 } from '../design-tokens';
 import { Swatch } from '../color/swatch';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 const ltr = css`
   .expand-collapse-button svg {
