@@ -81,7 +81,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     root: getNativeElementProps('div', {
       ref,
       role: 'option',
-      'aria-disabled': disabled ? 'true' : null,
+      'aria-disabled': disabled ? 'true' : undefined,
       'aria-selected': `${selected}`,
       id: optionId,
       ...props,

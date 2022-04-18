@@ -60,7 +60,7 @@ const useStyles = makeStyles({
     },
 
     // bottom focus border, shared with Input, Select, and SpinButton
-    ':after': {
+    '::after': {
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',

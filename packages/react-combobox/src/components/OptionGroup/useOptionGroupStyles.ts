@@ -37,7 +37,6 @@ const useStyles = makeStyles({
   label: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     color: tokens.colorNeutralForeground3,
-    columnGap: horizontalSpacing.xxs,
     display: 'block',
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightSemibold,
