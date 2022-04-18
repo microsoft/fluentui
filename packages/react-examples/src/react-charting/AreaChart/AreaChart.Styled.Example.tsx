@@ -110,22 +110,22 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
 
     return (
       <>
-        <label for="changeWidth3">change Width:</label>
+        <label for="changeWidth_condition">change Width:</label>
         <input
           type="range"
           value={this.state.width}
           min={200}
           max={1000}
-          id="changeWidth3"
+          id="changeWidth_condition"
           onChange={this._onWidthChange}
         />
-        <label for="changeHeight3">change Height:</label>
+        <label for="changeHeight_condition">change Height:</label>
         <input
           type="range"
           value={this.state.height}
           min={200}
           max={1000}
-          id="changeHeight3"
+          id="changeHeight_condition"
           onChange={this._onHeightChange}
         />
         <div style={rootStyle}>

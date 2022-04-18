@@ -101,51 +101,51 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
     return (
       <>
         <div>
-          <label for="ChangeWidth3">Width:</label>
+          <label for="ChangeWidth_condition">Width:</label>
           <input
             type="range"
             value={this.state.width}
             min={200}
             max={1000}
-            id="ChangeWidth3"
+            id="ChangeWidth_condition"
             onChange={e => this.setState({ width: +e.target.value })}
           />
-          <label for="changeHeight3">Height:</label>
+          <label for="changeHeight_condition">Height:</label>
           <input
             type="range"
             value={this.state.height}
             min={200}
             max={1000}
-            id="changeHeight3"
+            id="changeHeight_condition"
             onChange={e => this.setState({ height: +e.target.value })}
           />
         </div>
         <div>
-          <label for="changeBarGapMax3">BarGapMax:</label>
+          <label for="changeBarGapMax_condition">BarGapMax:</label>
           <input
             type="range"
             value={this.state.barGapMax}
             min={0}
             max={10}
-            id="changeBarGapMax3"
+            id="changeBarGapMax_condition"
             onChange={e => this.setState({ barGapMax: +e.target.value })}
           />
-          <label for="ChangeBarCornerRadius3">BarCornerRadius:</label>
+          <label for="ChangeBarCornerRadius_condition">BarCornerRadius:</label>
           <input
             type="range"
             value={this.state.barCornerRadius}
             min={0}
             max={10}
-            id="ChangeBarCornerRadius3"
+            id="ChangeBarCornerRadius_condition"
             onChange={e => this.setState({ barCornerRadius: +e.target.value })}
           />
-          <label for="ChangeBarMinimumHeight3">BarMinimumHeight:</label>
+          <label for="ChangeBarMinimumHeight_condition">BarMinimumHeight:</label>
           <input
             type="range"
             value={this.state.barMinimumHeight}
             min={0}
             max={10}
-            id="ChangeBarMinimumHeight3"
+            id="ChangeBarMinimumHeight_condition"
             onChange={e => this.setState({ barMinimumHeight: +e.target.value })}
           />
           <ChoiceGroup
