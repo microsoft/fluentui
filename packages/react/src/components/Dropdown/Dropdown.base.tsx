@@ -411,6 +411,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     );
   }
 
+  /**
+   * Close menu callout if it is open
+   */
+  public dismissMenu = (): void => {
+    const { isOpen } = this.state;
+    isOpen && this.setState({ isOpen: false });
+  };
+
   public focus(shouldOpenOnFocus?: boolean): void {
     if (this._dropDown.current) {
       this._dropDown.current.focus();
