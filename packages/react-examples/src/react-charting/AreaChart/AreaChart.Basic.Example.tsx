@@ -155,22 +155,22 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
 
     return (
       <>
-        <label for="changeWidth">change Width:</label>
+        <label for="changeWidth_Basic">change Width:</label>
         <input
           type="range"
           value={this.state.width}
           min={200}
           max={1000}
-          id="changeWidth"
+          id="changeWidth_Basic"
           onChange={this._onWidthChange}
         />
-        <label for="changeHeight">change Height:</label>
+        <label for="changeHeight_Basic">change Height:</label>
         <input
           type="range"
           value={this.state.height}
           min={200}
           max={1000}
-          id="changeHeight"
+          id="changeHeight_Basic"
           onChange={this._onHeightChange}
         />
         <ChoiceGroup options={options} defaultSelectedKey="basicExample" onChange={this._onChange} label="Pick one" />

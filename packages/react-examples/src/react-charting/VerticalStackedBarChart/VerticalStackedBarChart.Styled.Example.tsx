@@ -101,33 +101,33 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
     return (
       <>
         <div>
-          <label for="ChangeWidth_condition">Width:</label>
+          <label for="ChangeWidth_Styled">Width:</label>
           <input
             type="range"
             value={this.state.width}
             min={200}
             max={1000}
-            id="ChangeWidth_condition"
+            id="ChangeWidth_Styled"
             onChange={e => this.setState({ width: +e.target.value })}
           />
-          <label for="changeHeight_condition">Height:</label>
+          <label for="changeHeight_Styled">Height:</label>
           <input
             type="range"
             value={this.state.height}
             min={200}
             max={1000}
-            id="changeHeight_condition"
+            id="changeHeight_Styled"
             onChange={e => this.setState({ height: +e.target.value })}
           />
         </div>
         <div>
-          <label for="changeBarGapMax_condition">BarGapMax:</label>
+          <label for="changeBarGapMax_Styled">BarGapMax:</label>
           <input
             type="range"
             value={this.state.barGapMax}
             min={0}
             max={10}
-            id="changeBarGapMax_condition"
+            id="changeBarGapMax_Styled"
             onChange={e => this.setState({ barGapMax: +e.target.value })}
           />
           <label for="ChangeBarCornerRadius_condition">BarCornerRadius:</label>

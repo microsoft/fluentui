@@ -189,31 +189,31 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
 
     return (
       <>
-        <label for="changeWidth_basic">change Width:</label>
+        <label for="changeWidth_Callout">change Width:</label>
         <input
           type="range"
           value={this.state.width}
           min={200}
           max={1000}
-          id="changeWidth_basic"
+          id="changeWidth_Callout"
           onChange={this._onWidthChange}
         />
-        <label for="changeHeight_basic">change Height:</label>
+        <label for="changeHeight_Callout">change Height:</label>
         <input
           type="range"
           value={this.state.height}
           min={200}
           max={1000}
-          id="changeHeight_basic"
+          id="changeHeight_Callout"
           onChange={this._onHeightChange}
         />
-        <label for="changeBarGapMax_Basic">BarGapMax:</label>
+        <label for="changeBarGapMax_Callout">BarGapMax:</label>
         <input
           type="range"
           value={this.state.barGapMax}
           min={0}
           max={10}
-          id="changeBarGapMax_Basic"
+          id="changeBarGapMax_Callout"
           onChange={e => this.setState({ barGapMax: +e.target.value })}
         />
         <ChoiceGroup

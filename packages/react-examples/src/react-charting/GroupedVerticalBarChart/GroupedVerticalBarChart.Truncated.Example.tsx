@@ -80,22 +80,22 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
       <>
-        <label for="changeWidth_condition">change Width:</label>
+        <label for="changeWidth_Truncated">change Width:</label>
         <input
           type="range"
           value={this.state.width}
           min={200}
           max={1000}
-          id="changeWidth_condition"
+          id="changeWidth_Truncated"
           onChange={this._onWidthChange}
         />
-        <label for="changeHeight_condition">change Height:</label>
+        <label for="changeHeight_Truncated">change Height:</label>
         <input
           type="range"
           value={this.state.height}
           min={200}
           max={1000}
-          id="changeHeight_condition"
+          id="changeHeight_Truncated"
           onChange={this._onHeightChange}
         />
         <div style={rootStyle}>
