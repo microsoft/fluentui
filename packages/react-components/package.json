@@ -51,6 +51,7 @@
     "@fluentui/react-provider": "9.0.0-rc.5",
     "@fluentui/react-radio": "9.0.0-beta.2",
     "@fluentui/react-slider": "9.0.0-beta.10",
+    "@fluentui/react-spinner": "9.0.0-beta.6",
     "@fluentui/react-switch": "9.0.0-rc.5",
     "@fluentui/react-tabs": "9.0.0-beta.8",
     "@fluentui/react-textarea": "9.0.0-alpha.0",

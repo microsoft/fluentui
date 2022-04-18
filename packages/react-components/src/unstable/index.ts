@@ -105,6 +105,15 @@ export type {
 } from '@fluentui/react-radio';
 
 export {
+  Spinner,
+  spinnerClassNames,
+  renderSpinner_unstable,
+  useSpinner_unstable,
+  useSpinnerStyles_unstable,
+} from '@fluentui/react-spinner';
+export type { SpinnerProps, SpinnerSlots, SpinnerState } from '@fluentui/react-spinner';
+
+export {
   Switch,
   switchClassNames,
   renderSwitch_unstable,
