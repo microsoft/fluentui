@@ -7,28 +7,40 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Card: ForwardRefComponent<CardProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const cardClassName = "fui-Card";
+
+// @public (undocumented)
+export const cardClassNames: SlotClassNames<CardSlots>;
+
+// @public (undocumented)
+export type CardCommons = {
+    appearance: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
+};
 
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const cardFooterClassName = "fui-CardFooter";
+
+// @public (undocumented)
+export const cardFooterClassNames: SlotClassNames<CardFooterSlots>;
 
 // @public
 export type CardFooterProps = ComponentProps<CardFooterSlots>;
 
 // @public (undocumented)
 export type CardFooterSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    action?: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
+    action?: Slot<'div'>;
 };
 
 // @public
@@ -37,20 +49,23 @@ export type CardFooterState = ComponentState<CardFooterSlots>;
 // @public
 export const CardHeader: ForwardRefComponent<CardHeaderProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const cardHeaderClassName = "fui-CardHeader";
 
+// @public (undocumented)
+export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots>;
+
 // @public
-export type CardHeaderProps = ComponentProps<CardHeaderSlots>;
+export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 
 // @public (undocumented)
 export type CardHeaderSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    image: IntrinsicShorthandProps<'div'>;
-    content?: IntrinsicShorthandProps<'div'>;
-    header: IntrinsicShorthandProps<'span'>;
-    description: IntrinsicShorthandProps<'span'>;
-    action?: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
+    image: Slot<'div'>;
+    content?: Slot<'div'>;
+    header: Slot<'span'>;
+    description: Slot<'span'>;
+    action?: Slot<'div'>;
 };
 
 // @public
@@ -59,31 +74,34 @@ export type CardHeaderState = ComponentState<CardHeaderSlots>;
 // @public
 export const CardPreview: ForwardRefComponent<CardPreviewProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const cardPreviewClassName = "fui-CardPreview";
+
+// @public (undocumented)
+export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots>;
 
 // @public
 export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
 
 // @public (undocumented)
 export type CardPreviewSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    logo?: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
+    logo?: Slot<'div'>;
 };
 
 // @public
 export type CardPreviewState = ComponentState<CardPreviewSlots>;
 
 // @public
-export type CardProps = ComponentProps<CardSlots>;
+export type CardProps = ComponentProps<CardSlots> & Partial<CardCommons>;
 
 // @public (undocumented)
 export type CardSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public
-export type CardState = ComponentState<CardSlots>;
+export type CardState = ComponentState<CardSlots> & CardCommons;
 
 // @public
 export const renderCard_unstable: (state: CardState) => JSX.Element;

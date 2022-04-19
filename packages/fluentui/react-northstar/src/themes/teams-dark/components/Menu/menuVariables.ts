@@ -45,7 +45,8 @@ export const menuVariables = (siteVars: any): Partial<MenuVariables> => ({
   wrapperBackgroundColorFocus: siteVars.colors.brand[400],
   underlinedWrapperColorHover: siteVars.colors.white,
 
-  primaryWrapperColorFocus: siteVars.colors.white,
+  primaryWrapperColorFocus: siteVars.colors.black,
+  primaryWrapperColor: siteVars.colors.white,
   primaryWrapperBackgroundColorFocus: siteVars.colors.brand[400],
 
   indicatorColor: siteVars.colors.grey[250],

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/date-time-utilities",
-  "version": "8.3.0",
+  "version": "8.5.0",
   "description": "Date-time utilities",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,7 +27,29 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.1.5",
+    "@fluentui/set-version": "^8.2.0",
     "tslib": "^2.1.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./lib/dateMath/dateMath": {
+      "types": "./lib/dateMath/dateMath.d.ts",
+      "import": "./lib/dateMath/dateMath.js",
+      "require": "./lib-commonjs/dateMath.js"
+    },
+    "./lib/dateValues/dateValues": {
+      "types": "./lib/dateValues/dateValues.d.ts",
+      "import": "./lib/dateValues/dateValues.js",
+      "require": "./lib-commonjs/dateValues.js"
+    },
+    "./lib/dateValues/timeConstants": {
+      "types": "./lib/dateValues/timeConstants.d.ts",
+      "import": "./lib/dateValues/timeConstants.js",
+      "require": "./lib-commonjs/dateValues/timeConstants.js"
+    }
   }
 }

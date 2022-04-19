@@ -1,7 +1,7 @@
-import { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuPopoverSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  root: Slot<'div'>;
 };
 
 /**

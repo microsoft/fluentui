@@ -4,26 +4,23 @@
 
 ```ts
 
-import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const accordionClassName = "fui-Accordion";
 
 // @public (undocumented)
-export type AccordionCommons = {
-    navigable: boolean;
-    multiple: boolean;
-    collapsible: boolean;
-};
+export const accordionClassNames: SlotClassNames<AccordionSlots>;
 
 // @public (undocumented)
 export const AccordionContext: Context<AccordionContextValue>;
@@ -42,15 +39,11 @@ export type AccordionContextValues = {
 // @public
 export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const accordionHeaderClassName = "fui-AccordionHeader";
 
 // @public (undocumented)
-export type AccordionHeaderCommons = {
-    size: AccordionHeaderSize;
-    expandIconPosition: AccordionHeaderExpandIconPosition;
-    inline: boolean;
-};
+export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots>;
 
 // @public (undocumented)
 export type AccordionHeaderContextValue = {
@@ -69,17 +62,17 @@ export type AccordionHeaderContextValues = {
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
 // @public (undocumented)
-export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
+export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & Partial<AccordionHeaderCommons>;
 
 // @public (undocumented)
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    button: ARIAButtonShorthandProps;
-    expandIcon: IntrinsicShorthandProps<'span'>;
-    icon?: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+    button: NonNullable<Slot<ARIAButtonSlotProps>>;
+    expandIcon: Slot<'span'>;
+    icon?: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -91,14 +84,11 @@ export type AccordionIndex = number | number[];
 // @public
 export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const accordionItemClassName = "fui-AccordionItem";
 
 // @public (undocumented)
-export type AccordionItemCommons = {
-    disabled: boolean;
-    value: AccordionItemValue;
-};
+export const accordionItemClassNames: SlotClassNames<AccordionItemSlots>;
 
 // @public (undocumented)
 export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
@@ -119,7 +109,7 @@ export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<Ac
 
 // @public (undocumented)
 export type AccordionItemSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -131,15 +121,18 @@ export type AccordionItemValue = unknown;
 // @public
 export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const accordionPanelClassName = "fui-AccordionPanel";
+
+// @public (undocumented)
+export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots>;
 
 // @public (undocumented)
 export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 
 // @public (undocumented)
 export type AccordionPanelSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -156,7 +149,7 @@ export type AccordionProps = ComponentProps<AccordionSlots> & Partial<AccordionC
 
 // @public (undocumented)
 export type AccordionSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const APP_TITLE = 'Fluent UI usage scenarios';
+const APP_TITLE = 'Accessibility Scenarios';
 const APP_TITLE_SEPARATOR = ' | ';
 
 interface FullscreenLinkProps {

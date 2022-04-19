@@ -7,7 +7,7 @@ export const WithLongText = () => (
   <>
     <Menu>
       <MenuTrigger>
-        <MenuButton>Text</MenuButton>
+        <MenuButton>Short text</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>
@@ -20,7 +20,7 @@ export const WithLongText = () => (
 
     <Menu>
       <MenuTrigger>
-        <MenuButton>Text truncates after it hits the max width token value</MenuButton>
+        <MenuButton>Long text truncates after it hits the max width of the component</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>
@@ -35,7 +35,7 @@ export const WithLongText = () => (
 WithLongText.parameters = {
   docs: {
     description: {
-      story: 'Text truncates after it hits the max width theme token value.',
+      story: 'Text truncates after it hits the max width of the component.',
     },
   },
 };

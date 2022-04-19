@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Remove enzyme from react-utilities tests",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "none"
-}

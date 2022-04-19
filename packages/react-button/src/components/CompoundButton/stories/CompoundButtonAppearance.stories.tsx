@@ -3,18 +3,18 @@ import { CompoundButton } from '../../../CompoundButton';
 
 export const Appearance = () => (
   <>
-    <CompoundButton secondaryContent="This is the secondary content">Default button</CompoundButton>
-    <CompoundButton secondaryContent="This is the secondary content" appearance="primary">
-      Primary button
+    <CompoundButton secondaryContent="Secondary content">Default</CompoundButton>
+    <CompoundButton secondaryContent="Secondary content" appearance="primary">
+      Primary
     </CompoundButton>
-    <CompoundButton secondaryContent="This is the secondary content" appearance="outline">
-      Outline button
+    <CompoundButton secondaryContent="Secondary content" appearance="outline">
+      Outline
     </CompoundButton>
-    <CompoundButton secondaryContent="This is the secondary content" appearance="subtle">
-      Subtle button
+    <CompoundButton secondaryContent="Secondary content" appearance="subtle">
+      Subtle
     </CompoundButton>
-    <CompoundButton secondaryContent="This is the secondary content" appearance="transparent">
-      Transparent button
+    <CompoundButton secondaryContent="Secondary content" appearance="transparent">
+      Transparent
     </CompoundButton>
   </>
 );

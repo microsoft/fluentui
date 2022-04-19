@@ -19,7 +19,9 @@ storiesOf('TeachingBubble', module)
     () => {
       return (
         <TeachingBubble
-          illustrationImage={{ src: 'http://via.placeholder.com/364x220' }}
+          illustrationImage={{
+            src: 'http://fabricweb.azureedge.net/fabric-website/placeholders/364x220.png',
+          }}
           calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
           isWide={true}
           hasSmallHeadline={true}

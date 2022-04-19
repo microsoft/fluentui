@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator, modifyDeprecatedDecoratorStyles } from '../utilities/index';
+import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/index';
 import { TagPicker, Fabric, ITag } from '@fluentui/react';
 
 const testTags: ITag[] = [
@@ -33,6 +33,7 @@ storiesOf('TagPicker', module)
   .addStory('TagPicker disabled', () => <TagPicker onResolveSuggestions={getList} disabled />);
 
 storiesOf('TagPicker', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -82,10 +83,7 @@ storiesOf('TagPicker', module)
   );
 
 storiesOf('TagPicker', module)
-  // FIXME: SB6 duplicates same story ID decorators
-  // This is a temporary fix until we migrate to CSF format duplication problem
-  // - previously this used TestWrapperDecoratorFixedWidth
-  .addDecorator(modifyDeprecatedDecoratorStyles({ mode: 'fixed' }))
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}

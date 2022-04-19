@@ -1,65 +1,57 @@
 import * as React from 'react';
-import { shorthands, makeStyles } from '@griffel/react';
-
 import { Tooltip } from '../Tooltip';
-
-const useStyles = makeStyles({
-  targetContainer: {
-    display: 'inline-grid',
-    gridTemplateColumns: 'repeat(5, 1fr)',
-    gridTemplateRows: 'repeat(5, 64px)',
-    ...shorthands.gap('4px'),
-    ...shorthands.margin('16px 128px'),
-  },
-});
+import { Button } from '@fluentui/react-button';
+import { ArrowStepOutRegular, ArrowStepOverRegular } from '@fluentui/react-icons';
 
 export const Positioning = () => {
-  const styles = useStyles();
+  /* eslint-disable react/jsx-key */
+  const positions = [
+    ['above-start', <ArrowStepOverRegular transform="rotate(-90)" />],
+    ['above', <ArrowStepOutRegular />],
+    ['above-end', <ArrowStepOverRegular transform="rotate(90) scale(-1 1)" />],
+
+    ['before-top', <ArrowStepOverRegular transform="scale(-1 1)" />],
+    ['before', <ArrowStepOutRegular transform="rotate(-90)" />],
+    ['before-bottom', <ArrowStepOverRegular transform="rotate(180)" />],
+
+    ['after-top', <ArrowStepOverRegular />],
+    ['after', <ArrowStepOutRegular transform="rotate(90)" />],
+    ['after-bottom', <ArrowStepOverRegular transform="rotate(180) scale(-1 1)" />],
+
+    ['below-start', <ArrowStepOverRegular transform="rotate(-90) scale(-1 1)" />],
+    ['below', <ArrowStepOutRegular transform="rotate(180)" />],
+    ['below-end', <ArrowStepOverRegular transform="rotate(90)" />],
+  ] as const;
 
   return (
-    <>
-      <div>Each of these buttons places the tooltip in a different location relative to its trigger button.</div>
-      <div className={styles.targetContainer}>
-        <Tooltip content="above start" positioning="above-start">
-          <button style={{ gridArea: '1 / 2' }}>above start</button>
+    <div
+      style={{
+        display: 'grid',
+        margin: '24px 128px',
+        gap: '4px',
+        gridTemplateAreas:
+          '".             above-start   above         above-end     .            "' +
+          '"before-top    .             .             .             after-top    "' +
+          '"before        .             .             .             after        "' +
+          '"before-bottom .             .             .             after-bottom "' +
+          '".             below-start   below         below-end     .            "',
+      }}
+    >
+      {positions.map(([position, icon]) => (
+        <Tooltip withArrow positioning={position} content={position} relationship="label">
+          <Button icon={icon} size="large" style={{ gridArea: position, minWidth: '64px', height: '64px' }} />
         </Tooltip>
-        <Tooltip content="above center" positioning="above">
-          <button style={{ gridArea: '1 / 3' }}>above center</button>
-        </Tooltip>
-        <Tooltip content="above end" positioning="above-end">
-          <button style={{ gridArea: '1 / 4' }}>above end</button>
-        </Tooltip>
-
-        <Tooltip content="before top" positioning="before-top">
-          <button style={{ gridArea: '2 / 1' }}>before top</button>
-        </Tooltip>
-        <Tooltip content="before center" positioning="before">
-          <button style={{ gridArea: '3 / 1' }}>before center</button>
-        </Tooltip>
-        <Tooltip content="before bottom" positioning="before-bottom">
-          <button style={{ gridArea: '4 / 1' }}>before bottom</button>
-        </Tooltip>
-
-        <Tooltip content="after top" positioning="after-top">
-          <button style={{ gridArea: '2 / 5' }}>after top</button>
-        </Tooltip>
-        <Tooltip content="after center" positioning="after">
-          <button style={{ gridArea: '3 / 5' }}>after center</button>
-        </Tooltip>
-        <Tooltip content="after bottom" positioning="after-bottom">
-          <button style={{ gridArea: '4 / 5' }}>after bottom</button>
-        </Tooltip>
-
-        <Tooltip content="below start" positioning="below-start">
-          <button style={{ gridArea: '5 / 2' }}>below start</button>
-        </Tooltip>
-        <Tooltip content="below center" positioning="below">
-          <button style={{ gridArea: '5 / 3' }}>below center</button>
-        </Tooltip>
-        <Tooltip content="below end" positioning="below-end">
-          <button style={{ gridArea: '5 / 4' }}>below end</button>
-        </Tooltip>
-      </div>
-    </>
+      ))}
+    </div>
   );
+};
+
+Positioning.parameters = {
+  docs: {
+    description: {
+      story: `The positioning attribute can be used to change the relative placement of the tooltip to its anchor.
+        <br />
+        Hover or focus the buttons in the example to see the tooltip's placement.`,
+    },
+  },
 };

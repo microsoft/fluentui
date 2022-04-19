@@ -12,6 +12,7 @@ import {
   writeJson,
   updateProjectConfiguration,
   serializeJson,
+  generateFiles,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
@@ -20,6 +21,7 @@ import { PackageJson, TsConfig } from '../../types';
 import { arePromptsEnabled, getProjectConfig, getProjects, printUserLogs, prompt, UserLog } from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
+import { addCodeowner } from '../add-codeowners';
 
 interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
 
@@ -77,6 +79,10 @@ function runBatchMigration(tree: Tree, userLog: UserLog, projectNames?: string[]
 function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: UserLog) {
   const options = normalizeOptions(tree, schema);
 
+  if (options.owner) {
+    addCodeowner(tree, { owner: options.owner, packageName: options.name });
+  }
+
   // 1. update TsConfigs
   updatedLocalTsConfig(tree, options);
   updatedBaseTsConfig(tree, options);
@@ -109,7 +115,7 @@ const templates = {
   },
   apiExtractor: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-    extends: '@fluentui/scripts/api-extractor/api-extractor.common.json',
+    extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
   },
   tsconfig: (options: { platform: 'node' | 'web'; js: boolean; hasConformance: boolean }) => {
     return {
@@ -208,7 +214,7 @@ const templates = {
       // @ts-check
 
       /**
-      * @type {jest.InitialOptions}
+      * @type {import('@jest/types').Config.InitialOptions}
       */
       module.exports = {
         displayName: '${options.pkgName}',
@@ -264,10 +270,6 @@ const templates = {
     },
   },
   e2e: {
-    support: stripIndents`
-    // workaround for https://github.com/cypress-io/cypress/issues/8599
-    import '@fluentui/scripts/cypress/support';
-    `,
     tsconfig: {
       extends: '../tsconfig.json',
       compilerOptions: {
@@ -275,7 +277,7 @@ const templates = {
         types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         lib: ['ES2019', 'dom'],
       },
-      include: ['**/*.ts'],
+      include: ['**/*.ts', '**/*.tsx'],
     },
   },
   npmIgnoreConfig:
@@ -499,6 +501,7 @@ function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
     ...options.projectConfig,
     sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
     tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', tags[packageType]]),
+    implicitDependencies: uniqueArray([...(options.projectConfig.implicitDependencies ?? [])]),
   });
 
   return tree;
@@ -705,7 +708,8 @@ function setupE2E(tree: Tree, options: NormalizedSchema) {
 
   writeJson<TsConfig>(tree, options.paths.e2e.tsconfig, templates.e2e.tsconfig);
 
-  tree.write(options.paths.e2e.support, templates.e2e.support);
+  // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  generateFiles(tree, joinPathFragments(__dirname, 'files', 'e2e'), options.paths.e2e.rootFolder, { tmpl: '' });
 
   updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
     json.references?.push({

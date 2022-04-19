@@ -84,10 +84,10 @@ describe('FocusZone', () => {
     Component: FocusZone,
     displayName: 'FocusZone',
     disabledTests: [
-      // Their is no existing top level FocusZone.ts file.
+      // There is no top level FocusZone.ts file.
       'has-top-level-file',
+      'component-has-static-classnames-object',
     ],
-    asPropHandlesRef: true,
     elementRefName: 'elementRef',
     testOptions: {
       'consistent-callback-names': { ignoreProps: ['onActiveElementChanged'] },

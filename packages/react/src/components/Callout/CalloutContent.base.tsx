@@ -507,7 +507,10 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
           {beakVisible && <div className={classNames.beak} style={getBeakPosition(positions)} />}
           {beakVisible && <div className={classNames.beakCurtain} />}
           <Popup
-            {...getNativeProps(props, ARIA_ROLE_ATTRIBUTES)}
+            // don't use getNativeElementProps for role and roledescription because it will also
+            // pass through data-* props (resulting in them being used in two places)
+            role={props.role}
+            aria-roledescription={props['aria-roledescription']}
             ariaDescribedBy={ariaDescribedBy}
             ariaLabel={ariaLabel}
             ariaLabelledBy={ariaLabelledBy}

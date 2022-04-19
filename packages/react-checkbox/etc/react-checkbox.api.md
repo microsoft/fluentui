@@ -5,26 +5,21 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentSlotProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
+import { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const checkboxClassName = "fui-Checkbox";
 
 // @public (undocumented)
-export interface CheckboxCommons {
-    checked: 'mixed' | boolean;
-    circular: boolean;
-    labelPosition: 'before' | 'after';
-    size: 'medium' | 'large';
-}
+export const checkboxClassNames: SlotClassNames<CheckboxSlots>;
 
 // @public
 export interface CheckboxOnChangeData {
@@ -33,18 +28,18 @@ export interface CheckboxOnChangeData {
 }
 
 // @public
-export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & Partial<CheckboxCommons> & {
+export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & Partial<CheckboxCommons> & {
     children?: never;
-    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
     defaultChecked?: 'mixed' | boolean;
 };
 
 // @public (undocumented)
 export type CheckboxSlots = {
-    root: IntrinsicShorthandProps<'span'>;
-    label?: ComponentSlotProps<typeof Label>;
-    input: IntrinsicShorthandProps<'input'>;
-    indicator: IntrinsicShorthandProps<'div'>;
+    root: NonNullable<Slot<'span'>>;
+    label?: Slot<typeof Label>;
+    input: NonNullable<Slot<'input'>>;
+    indicator: Slot<'div'>;
 };
 
 // @public

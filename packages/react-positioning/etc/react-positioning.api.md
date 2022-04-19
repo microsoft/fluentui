@@ -54,8 +54,24 @@ export type OffsetFunctionParam = {
 };
 
 // @public (undocumented)
+export interface PopperOptions {
+    align?: Alignment;
+    arrowPadding?: number;
+    autoSize?: AutoSize;
+    coverTarget?: boolean;
+    flipBoundary?: Boundary;
+    offset?: Offset;
+    overflowBoundary?: Boundary;
+    pinned?: boolean;
+    position?: Position;
+    positionFixed?: boolean;
+    unstable_disableTether?: boolean | 'all';
+}
+
+// @public (undocumented)
 export type PopperRefHandle = {
     updatePosition: () => void;
+    setTarget: (target: HTMLElement | PopperVirtualElement) => void;
 };
 
 // @public (undocumented)
@@ -65,17 +81,8 @@ export type PopperVirtualElement = PopperJs.VirtualElement;
 export type Position = 'above' | 'below' | 'before' | 'after';
 
 // @public (undocumented)
-export interface PositioningProps {
-    align?: Alignment;
-    arrowPadding?: number;
-    autoSize?: AutoSize;
-    coverTarget?: boolean;
-    flipBoundary?: Boundary;
-    offset?: Offset;
-    overflowBoundary?: Boundary;
-    pinned?: boolean;
+export interface PositioningProps extends Omit<PopperOptions, 'positionFixed' | 'unstable_disableTether'> {
     popperRef?: React_2.Ref<PopperRefHandle>;
-    position?: Position;
     target?: HTMLElement | PopperVirtualElement | null;
 }
 
@@ -88,10 +95,8 @@ export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
-// Warning: (ae-forgotten-export) The symbol "PopperOptions" needs to be exported by the entry point index.d.ts
-//
 // @public
-export function usePopper(options?: PopperOptions): {
+export function usePopper(options?: UsePopperOptions): {
     targetRef: React_2.MutableRefObject<any>;
     containerRef: React_2.MutableRefObject<any>;
     arrowRef: React_2.MutableRefObject<any>;

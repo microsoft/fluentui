@@ -13,12 +13,6 @@ export function elementContains(parent: HTMLElement | null, child: HTMLElement |
 export const Portal: React_2.FC<PortalProps>;
 
 // @public (undocumented)
-export type PortalCommons = {
-    children: React_2.ReactNode;
-    mountNode: HTMLDivElement | undefined;
-};
-
-// @public (undocumented)
 export type PortalProps = Partial<PortalCommons>;
 
 // @public (undocumented)

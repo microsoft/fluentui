@@ -31,7 +31,9 @@ Multiple.args = {
 Multiple.parameters = {
   docs: {
     description: {
-      story: 'An accordion supports multiple panels expanded simultaneously.',
+      story:
+        // eslint-disable-next-line @fluentui/max-len
+        "An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened by default, `multiple` will also be collapsed by default on the first render",
     },
   },
 };

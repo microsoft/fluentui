@@ -1,3 +1,5 @@
+import { transparentColors } from '../teams/colors';
+
 export const colors = {
   black: '#000',
   white: '#fff',
@@ -33,16 +35,16 @@ export const colors = {
   },
   brand: {
     50: '#e8ebfa',
-    100: '#dce0fa',
+    100: '#dcdffa',
     200: '#c5cbfa',
-    300: '#9299f7',
-    400: '#7f85f5',
-    450: '#7f85f5',
-    500: '#7579eb',
+    300: '#acb3fa',
+    400: '#9399f5',
+    450: '#9399f5',
+    500: '#7a80eb',
     600: '#5b5fc7',
-    700: '#4f52b2',
-    800: '#444791',
-    900: '#3d3e78',
+    700: '#444791',
+    800: '#3d3e78',
+    900: '#383966',
     1000: '#2f2f4a',
   },
 };
@@ -56,7 +58,7 @@ export const colorScheme = {
     foreground4: colors.white,
     foreground5: colors.grey['100'],
     foreground6: colors.grey['200'],
-    foreground7: colors.grey['750'],
+    foreground7: colors.grey['450'],
 
     background: colors.white,
     background1: colors.grey['25'],
@@ -64,6 +66,8 @@ export const colorScheme = {
     background3: colors.grey['100'],
     background4: colors.grey['150'],
     background5: colors.grey['200'],
+    background6: colors.grey['150'],
+    background7: colors.grey['50'],
 
     border: colors.grey['230'],
     border1: colors.grey['100'],
@@ -84,6 +88,7 @@ export const colorScheme = {
 
     foregroundPressed: colors.grey['750'],
     backgroundPressed: colors.grey['200'],
+    backgroundPressed2: colors.grey['50'],
 
     foregroundActive: colors.grey['750'],
     foregroundActive1: colors.white,
@@ -131,15 +136,16 @@ export const colorScheme = {
 
     borderHover: colors.brand['300'],
 
-    backgroundHover: colors.brand['600'],
+    backgroundHover: colors.brand['700'],
     backgroundHover1: colors.brand['50'],
+    backgroundHover3: colors.brand['600'],
 
     foregroundPressed: colors.brand['700'],
     foregroundPressed1: colors.white,
 
     backgroundPressed: colors.brand['800'],
 
-    borderPressed: colors.brand['300'],
+    borderPressed: transparentColors.onyx['700'],
 
     foregroundActive: colors.brand['600'],
     foregroundActive1: colors.brand['600'],

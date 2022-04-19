@@ -1,520 +1,635 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Dropdown multi-select Renders correctly 1`] = `
-<div
-  className="ms-Dropdown-container"
->
+<div>
   <div
-    aria-expanded="false"
-    aria-haspopup="listbox"
-    className=
-        ms-Dropdown
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          border-color: #605e5c;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          outline: 0px;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
-          position: relative;
-          user-select: none;
-        }
-        &:hover .ms-Dropdown-title {
-          border-color: #323130;
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Dropdown-title {
-          border-color: Highlight;
-        }
-        &:focus .ms-Dropdown-title {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-title {
-          color: Highlight;
-        }
-        &:focus:after {
-          border-radius: 2px;
-          border: 2px solid #0078d4;
-          box-sizing: border-box;
-          content: '';
-          height: 100%;
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          top: 0px;
-          width: 100%;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
-          color: Highlight;
-        }
-        &:active .ms-Dropdown-title {
-          border-color: #0078d4;
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Dropdown-title {
-          border-color: Highlight;
-        }
-        &:hover .ms-Dropdown-caretDown {
-          color: #323130;
-        }
-        &:focus .ms-Dropdown-caretDown {
-          color: #323130;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-caretDown {
-          color: Highlight;
-        }
-        &:active .ms-Dropdown-caretDown {
-          color: #323130;
-        }
-        &:hover .ms-Dropdown-titleIsPlaceHolder {
-          color: #323130;
-        }
-        &:focus .ms-Dropdown-titleIsPlaceHolder {
-          color: #323130;
-        }
-        &:active .ms-Dropdown-titleIsPlaceHolder {
-          color: #323130;
-        }
-        &:hover .ms-Dropdown-title--hasError {
-          border-color: #a4262c;
-        }
-        &:active .ms-Dropdown-title--hasError {
-          border-color: #a4262c;
-        }
-    data-is-focusable={true}
-    data-ktp-target={true}
-    id="Dropdown0"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    role="combobox"
-    tabIndex={0}
+    class="ms-Dropdown-container"
   >
-    <span
-      aria-invalid={false}
-      className=
-          ms-Dropdown-title
-          ms-Dropdown-titleIsPlaceHolder
+    <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      class=
+          ms-Dropdown
           {
-            background-color: #ffffff;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             border-color: #605e5c;
-            border-radius: 2px;
-            border-style: solid;
-            border-width: 1px;
             box-shadow: none;
             box-sizing: border-box;
-            color: #605e5c;
-            cursor: pointer;
-            display: block;
-            height: 32px;
-            line-height: 30px;
+            color: #323130;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
-            overflow: hidden;
-            padding-bottom: 0;
-            padding-left: 8px;
-            padding-right: 28px;
-            padding-top: 0;
+            outline: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
             position: relative;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            user-select: none;
           }
-      id="Dropdown0-option"
-    />
-    <span
-      className=
-          ms-Dropdown-caretDownWrapper
-          {
-            cursor: pointer;
-            height: 32px;
-            line-height: 30px;
-            padding-top: 1px;
+          &:hover .ms-Dropdown-title {
+            border-color: #323130;
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Dropdown-title {
+            border-color: Highlight;
+          }
+          &:focus .ms-Dropdown-title {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-title {
+            color: Highlight;
+          }
+          &:focus:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            box-sizing: border-box;
+            content: '';
+            height: 100%;
+            left: 0px;
+            pointer-events: none;
             position: absolute;
-            right: 8px;
             top: 0px;
+            width: 100%;
           }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+            color: Highlight;
+          }
+          &:active .ms-Dropdown-title {
+            border-color: #0078d4;
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Dropdown-title {
+            border-color: Highlight;
+          }
+          &:hover .ms-Dropdown-caretDown {
+            color: #323130;
+          }
+          &:focus .ms-Dropdown-caretDown {
+            color: #323130;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-caretDown {
+            color: Highlight;
+          }
+          &:active .ms-Dropdown-caretDown {
+            color: #323130;
+          }
+          &:hover .ms-Dropdown-titleIsPlaceHolder {
+            color: #323130;
+          }
+          &:focus .ms-Dropdown-titleIsPlaceHolder {
+            color: #323130;
+          }
+          &:active .ms-Dropdown-titleIsPlaceHolder {
+            color: #323130;
+          }
+          &:hover .ms-Dropdown-title--hasError {
+            border-color: #a4262c;
+          }
+          &:active .ms-Dropdown-title--hasError {
+            border-color: #a4262c;
+          }
+      data-is-focusable="true"
+      data-ktp-target="true"
+      id="Dropdown0"
+      role="combobox"
+      tabindex="0"
     >
-      <i
-        aria-hidden={true}
-        className=
-            ms-Dropdown-caretDown
+      <span
+        aria-invalid="false"
+        class=
+            ms-Dropdown-title
+            ms-Dropdown-titleIsPlaceHolder
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
+              background-color: #ffffff;
+              border-color: #605e5c;
+              border-radius: 2px;
+              border-style: solid;
+              border-width: 1px;
+              box-shadow: none;
+              box-sizing: border-box;
               color: #605e5c;
-              display: inline-block;
-              font-family: "FabricMDL2Icons";
-              font-size: 12px;
-              font-style: normal;
-              font-weight: normal;
-              pointer-events: none;
-              speak: none;
+              cursor: pointer;
+              display: block;
+              height: 32px;
+              line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow: hidden;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 28px;
+              padding-top: 0;
+              position: relative;
+              text-overflow: ellipsis;
+              white-space: nowrap;
             }
-        data-icon-name="ChevronDown"
+        id="Dropdown0-option"
+      />
+      <span
+        class=
+            ms-Dropdown-caretDownWrapper
+            {
+              cursor: pointer;
+              height: 32px;
+              line-height: 30px;
+              padding-top: 1px;
+              position: absolute;
+              right: 8px;
+              top: 0px;
+            }
       >
-        
-      </i>
-    </span>
+        <i
+          aria-hidden="true"
+          class=
+              ms-Dropdown-caretDown
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-size: 12px;
+                font-style: normal;
+                font-weight: normal;
+                pointer-events: none;
+                speak: none;
+              }
+          data-icon-name="ChevronDown"
+        >
+          
+        </i>
+      </span>
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown multi-select Renders correctly when open 1`] = `
-<div
-  aria-owns="Dropdown0-list"
-  class="ms-Dropdown-container"
+<body
+  class="ms-Fabric--isFocusHidden"
 >
   <div
-    aria-activedescendant="Dropdown0-list1"
-    aria-controls="Dropdown0-list"
-    aria-expanded="true"
-    aria-haspopup="listbox"
-    class=
-        ms-Dropdown
-        is-open
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          border-color: #605e5c;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          outline: 0px;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
-          position: relative;
-          user-select: none;
-        }
-        &:hover .ms-Dropdown-title {
-          border-color: #605e5c;
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Dropdown-title {
-          border-color: Highlight;
-        }
-        &:focus .ms-Dropdown-title {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-title {
-          color: Highlight;
-        }
-        &:focus:after {
-          border-radius: 2px;
-          border: 2px solid #0078d4;
-          box-sizing: border-box;
-          content: '';
-          height: 100%;
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          top: 0px;
-          width: 100%;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
-          color: Highlight;
-        }
-        &:active .ms-Dropdown-title {
-          border-color: #0078d4;
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Dropdown-title {
-          border-color: Highlight;
-        }
-        &:hover .ms-Dropdown-caretDown {
-          color: #323130;
-        }
-        &:focus .ms-Dropdown-caretDown {
-          color: #323130;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-caretDown {
-          color: Highlight;
-        }
-        &:active .ms-Dropdown-caretDown {
-          color: #323130;
-        }
-        &:hover .ms-Dropdown-titleIsPlaceHolder {
-          color: #323130;
-        }
-        &:focus .ms-Dropdown-titleIsPlaceHolder {
-          color: #323130;
-        }
-        &:active .ms-Dropdown-titleIsPlaceHolder {
-          color: #323130;
-        }
-        &:hover .ms-Dropdown-title--hasError {
-          border-color: #a4262c;
-        }
-        &:active .ms-Dropdown-title--hasError {
-          border-color: #a4262c;
-        }
-    data-is-focusable="true"
-    data-ktp-target="true"
-    id="Dropdown0"
-    role="combobox"
-    tabindex="0"
-  >
-    <span
-      aria-invalid="false"
-      class=
-          ms-Dropdown-title
-          {
-            background-color: #ffffff;
-            border-color: #605e5c;
-            border-radius: 0 0 2px 2px;
-            border-style: solid;
-            border-width: 1px;
-            box-shadow: none;
-            box-sizing: border-box;
-            cursor: pointer;
-            display: block;
-            height: 32px;
-            line-height: 30px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow: hidden;
-            padding-bottom: 0;
-            padding-left: 8px;
-            padding-right: 28px;
-            padding-top: 0;
-            position: relative;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      id="Dropdown0-option"
-    >
-      1
-    </span>
-    <span
-      class=
-          ms-Dropdown-caretDownWrapper
-          {
-            cursor: pointer;
-            height: 32px;
-            line-height: 30px;
-            padding-top: 1px;
-            position: absolute;
-            right: 8px;
-            top: 0px;
-          }
-    >
-      <i
-        aria-hidden="true"
-        class=
-            ms-Dropdown-caretDown
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #605e5c;
-              display: inline-block;
-              font-family: "FabricMDL2Icons";
-              font-size: 12px;
-              font-style: normal;
-              font-weight: normal;
-              pointer-events: none;
-              speak: none;
-            }
-        data-icon-name="ChevronDown"
-      >
-        
-      </i>
-    </span>
-  </div>
-  <span
-    class="ms-layer"
+    id="fluent-default-layer-host"
+    style="position: fixed; z-index: 1000000;"
   >
     <div
       class=
-          ms-Fabric
-          ms-Layer-content
+          ms-Layer
+          ms-Layer--fixed
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #323130;
+            bottom: 0px;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            visibility: visible;
+            left: 0px;
+            position: fixed;
+            right: 0px;
+            top: 0px;
+            visibility: hidden;
+            z-index: 1000000;
           }
-          & button {
-            font-family: inherit;
-          }
-          & input {
-            font-family: inherit;
-          }
-          & textarea {
-            font-family: inherit;
-          }
+      data-portal-element="true"
     >
       <div
         class=
-            ms-Callout-container
+            ms-Fabric
+            ms-Layer-content
             {
-              position: relative;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              visibility: visible;
+            }
+            & button {
+              font-family: inherit;
+            }
+            & input {
+              font-family: inherit;
+            }
+            & textarea {
+              font-family: inherit;
             }
       >
         <div
           class=
-              ms-Callout
-              ms-Dropdown-callout
+              ms-Callout-container
               {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                border-radius: 2px 2px 0 0;
-                box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
-                box-sizing: border-box;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                outline: transparent;
-                position: absolute;
-                width: 200px;
+                position: relative;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                border-color: WindowText;
-                border-style: solid;
-                border-width: 1px;
-              }
-              &::-moz-focus-inner {
-                border: 0px;
-              }
-              & .ms-Callout-main {
-                border-radius: 2px 2px 0 0;
-              }
-          style="opacity: 0; filter: opacity(0); pointer-events: none;"
-          tabindex="-1"
         >
           <div
             class=
-                ms-Callout-main
+                ms-Callout
+                ms-Dropdown-callout
                 {
-                  background-color: #ffffff;
-                  border-radius: 2px;
-                  overflow-x: hidden;
-                  overflow-y: auto;
-                  position: relative;
-                  width: 100%;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border-radius: 2px 2px 0 0;
+                  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+                  box-sizing: border-box;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  outline: transparent;
+                  position: absolute;
+                  width: 200px;
                 }
-            style="outline: none; max-height: 100%;"
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  border-color: WindowText;
+                  border-style: solid;
+                  border-width: 1px;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                }
+                & .ms-Callout-main {
+                  border-radius: 2px 2px 0 0;
+                }
+            style="opacity: 0; filter: opacity(0); pointer-events: none;"
+            tabindex="-1"
           >
             <div
               class=
-
-                  &:focus {
-                    outline: 0px;
+                  ms-Callout-main
+                  {
+                    background-color: #ffffff;
+                    border-radius: 2px;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    position: relative;
+                    width: 100%;
                   }
-              tabindex="0"
+              style="outline: none; max-height: 100%;"
             >
               <div
-                aria-multiselectable="true"
                 class=
-                    ms-FocusZone
-                    ms-Dropdown-items
+
                     &:focus {
-                      outline: none;
+                      outline: 0px;
                     }
-                    {
-                      display: block;
-                    }
-                data-focuszone-id="FocusZone1"
-                id="Dropdown0-list"
-                role="listbox"
+                tabindex="0"
               >
                 <div
-                  aria-labelledby="Dropdown0Header1"
-                  role="group"
+                  aria-multiselectable="true"
+                  class=
+                      ms-FocusZone
+                      ms-Dropdown-items
+                      &:focus {
+                        outline: none;
+                      }
+                      {
+                        display: block;
+                      }
+                  data-focuszone-id="FocusZone1"
+                  id="Dropdown0-list"
+                  role="listbox"
                 >
                   <div
-                    class=
-                        ms-Dropdown-header
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          background-color: transparent;
-                          background: none;
-                          border: none;
-                          color: #0078d4;
-                          cursor: default;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 600;
-                          height: 36px;
-                          line-height: 36px;
-                          padding-bottom: 0;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 0;
-                          text-align: left;
-                          user-select: none;
-                        }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                          -ms-high-contrast-adjust: none;
-                          color: GrayText;
-                          forced-color-adjust: none;
-                        }
-                    id="Dropdown0Header1"
+                    aria-labelledby="Dropdown0Header1"
+                    role="group"
                   >
-                    <span
+                    <div
                       class=
-                          ms-Dropdown-optionText
+                          ms-Dropdown-header
                           {
-                            margin-bottom: 1px;
-                            margin-left: 1px;
-                            margin-right: 1px;
-                            margin-top: 1px;
-                            max-width: 100%;
-                            min-width: 0px;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            background-color: transparent;
+                            background: none;
+                            border: none;
+                            color: #0078d4;
+                            cursor: default;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 600;
+                            height: 36px;
+                            line-height: 36px;
+                            padding-bottom: 0;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 0;
+                            text-align: left;
+                            user-select: none;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                            -ms-high-contrast-adjust: none;
+                            color: GrayText;
+                            forced-color-adjust: none;
+                          }
+                      id="Dropdown0Header1"
+                    >
+                      <span
+                        class=
+                            ms-Dropdown-optionText
+                            {
+                              margin-bottom: 1px;
+                              margin-left: 1px;
+                              margin-right: 1px;
+                              margin-top: 1px;
+                              max-width: 100%;
+                              min-width: 0px;
+                              overflow-wrap: break-word;
+                              overflow: hidden;
+                              text-overflow: ellipsis;
+                              white-space: nowrap;
+                              word-wrap: break-word;
+                            }
+                      >
+                        Header 1
+                      </span>
+                    </div>
+                    <div
+                      class=
+                          ms-Checkbox
+                          is-checked
+                          is-enabled
+                          ms-Dropdown-item
+                          {
+                            align-items: center;
+                            background-color: #edebe9;
+                            border-radius: 0px;
+                            border: 1px solid transparent;
+                            box-sizing: border-box;
+                            color: #201f1e;
+                            cursor: pointer;
+                            display: flex;
+                            height: 0px;
+                            line-height: 20px;
+                            min-height: 36px;
                             overflow-wrap: break-word;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                            padding-right: 0px;
+                            padding-top: 0px;
+                            position: relative;
+                            text-align: left;
+                            width: 100%;
                             word-wrap: break-word;
                           }
+                          &:hover .ms-Checkbox-checkbox {
+                            background: #005a9e;
+                            border-color: #005a9e;
+                          }
+                          &:focus .ms-Checkbox-checkbox {
+                            background: #005a9e;
+                            border-color: #005a9e;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                            background-color: Highlight;
+                            border-color: Highlight;
+                            border: none;
+                            color: HighlightText;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
+                            background: Highlight;
+                            border-color: Highlight;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-checkbox {
+                            background: Highlight;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkbox {
+                            background: Highlight;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkmark {
+                            color: Window;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
+                            color: Window;
+                          }
+                          &:hover .ms-Checkbox-text {
+                            color: #201f1e;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
+                            color: WindowText;
+                          }
+                          &:focus .ms-Checkbox-text {
+                            color: #201f1e;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
+                            color: WindowText;
+                          }
+                          & .ms-Button-flexContainer {
+                            width: 100%;
+                          }
+                          &:hover:focus {
+                            background-color: #edebe9;
+                            color: #201f1e;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:focus {
+                            background-color: Highlight;
+                            border-color: Highlight;
+                            color: HighlightText;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){&:hover:focus {
+                            -ms-high-contrast-adjust: none;
+                            forced-color-adjust: none;
+                          }
+                          &:focus {
+                            background-color: #edebe9;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+                            background-color: Highlight;
+                            border-color: Highlight;
+                            color: HighlightText;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){&:focus {
+                            -ms-high-contrast-adjust: none;
+                            forced-color-adjust: none;
+                          }
+                          &:active {
+                            background-color: #f3f2f1;
+                            color: #201f1e;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+                            background-color: Highlight;
+                            border-color: Highlight;
+                            color: HighlightText;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){&:active {
+                            -ms-high-contrast-adjust: none;
+                            forced-color-adjust: none;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            bottom: 0px;
+                            left: 0px;
+                            right: 0px;
+                            top: 0px;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){& {
+                            -ms-high-contrast-adjust: none;
+                            forced-color-adjust: none;
+                          }
                     >
-                      Header 1
-                    </span>
+                      <input
+                        aria-posinset="1"
+                        aria-selected="true"
+                        aria-setsize="2"
+                        checked=""
+                        class=
+
+                            {
+                              background: none;
+                              opacity: 0;
+                              position: absolute;
+                            }
+                            .ms-Fabric--isFocusVisible &:focus + label::before {
+                              outline-offset: 0px;
+                              outline: 1px solid #605e5c;
+                            }
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                              outline: 1px solid WindowText;
+                            }
+                        data-index="1"
+                        data-is-focusable="true"
+                        data-ktp-execute-target="true"
+                        id="Dropdown0-list1"
+                        role="option"
+                        tabindex="0"
+                        type="checkbox"
+                      />
+                      <label
+                        class=
+                            ms-Checkbox-label
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              align-items: center;
+                              align-self: stretch;
+                              cursor: pointer;
+                              display: flex;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 14px;
+                              font-weight: 400;
+                              padding-bottom: 0;
+                              padding-left: 8px;
+                              padding-right: 8px;
+                              padding-top: 0;
+                              position: relative;
+                              user-select: none;
+                              width: 100%;
+                            }
+                            &::before {
+                              bottom: 0px;
+                              content: "";
+                              left: 0px;
+                              pointer-events: none;
+                              position: absolute;
+                              right: 0px;
+                              top: 0px;
+                            }
+                        for="Dropdown0-list1"
+                      >
+                        <div
+                          class=
+                              ms-Checkbox-checkbox
+                              {
+                                align-items: center;
+                                background: #0078d4;
+                                border-color: #0078d4;
+                                border-radius: 2px;
+                                border: 1px solid #323130;
+                                box-sizing: border-box;
+                                display: flex;
+                                flex-shrink: 0;
+                                height: 20px;
+                                justify-content: center;
+                                margin-right: 4px;
+                                overflow: hidden;
+                                position: relative;
+                                transition-duration: 200ms;
+                                transition-property: background, border, border-color;
+                                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                                width: 20px;
+                              }
+                              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                -ms-high-contrast-adjust: none;
+                                background: Highlight;
+                                border-color: Highlight;
+                                forced-color-adjust: none;
+                              }
+                          data-ktp-target="true"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class=
+                                ms-Checkbox-checkmark
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  color: #ffffff;
+                                  display: inline-block;
+                                  font-family: "FabricMDL2Icons";
+                                  font-style: normal;
+                                  font-weight: normal;
+                                  opacity: 1;
+                                  speak: none;
+                                }
+                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                  -ms-high-contrast-adjust: none;
+                                  color: Window;
+                                  forced-color-adjust: none;
+                                }
+                            data-icon-name="CheckMark"
+                          >
+                            
+                          </i>
+                        </div>
+                        <span
+                          class=
+                              ms-Dropdown-optionText
+                              {
+                                margin-bottom: 1px;
+                                margin-left: 1px;
+                                margin-right: 1px;
+                                margin-top: 1px;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          1
+                        </span>
+                      </label>
+                    </div>
+                    <div
+                      class=
+                          ms-Dropdown-divider
+                          {
+                            background-color: #edebe9;
+                            height: 1px;
+                          }
+                      role="separator"
+                    />
                   </div>
                   <div
                     class=
                         ms-Checkbox
-                        is-checked
                         is-enabled
                         ms-Dropdown-item
                         {
                           align-items: center;
-                          background-color: #edebe9;
+                          background-color: transparent;
                           border-radius: 0px;
                           border: 1px solid transparent;
                           box-sizing: border-box;
-                          color: #201f1e;
                           cursor: pointer;
                           display: flex;
                           height: 0px;
@@ -531,34 +646,20 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           word-wrap: break-word;
                         }
                         &:hover .ms-Checkbox-checkbox {
-                          background: #005a9e;
-                          border-color: #005a9e;
-                        }
-                        &:focus .ms-Checkbox-checkbox {
-                          background: #005a9e;
-                          border-color: #005a9e;
-                        }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                          background-color: Highlight;
-                          border-color: Highlight;
-                          border: none;
-                          color: HighlightText;
+                          border-color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
-                          background: Highlight;
                           border-color: Highlight;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-checkbox {
-                          background: Highlight;
+                        &:focus .ms-Checkbox-checkbox {
+                          border-color: #323130;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkbox {
-                          background: Highlight;
-                        }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkmark {
-                          color: Window;
+                        &:hover .ms-Checkbox-checkmark {
+                          color: #605e5c;
+                          opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
-                          color: Window;
+                          color: Highlight;
                         }
                         &:hover .ms-Checkbox-text {
                           color: #201f1e;
@@ -576,7 +677,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           width: 100%;
                         }
                         &:hover:focus {
-                          background-color: #edebe9;
+                          background-color: #f3f2f1;
                           color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:focus {
@@ -589,7 +690,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           forced-color-adjust: none;
                         }
                         &:focus {
-                          background-color: #edebe9;
+                          background-color: transparent;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                           background-color: Highlight;
@@ -601,7 +702,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           forced-color-adjust: none;
                         }
                         &:active {
-                          background-color: #f3f2f1;
+                          background-color: #ffffff;
                           color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
@@ -619,16 +720,15 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           right: 0px;
                           top: 0px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){& {
-                          -ms-high-contrast-adjust: none;
-                          forced-color-adjust: none;
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          border: none;
                         }
+                    title="test"
                   >
                     <input
-                      aria-posinset="1"
-                      aria-selected="true"
+                      aria-posinset="2"
+                      aria-selected="false"
                       aria-setsize="2"
-                      checked=""
                       class=
 
                           {
@@ -643,12 +743,13 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                             outline: 1px solid WindowText;
                           }
-                      data-index="1"
+                      data-index="3"
                       data-is-focusable="true"
                       data-ktp-execute-target="true"
-                      id="Dropdown0-list1"
+                      id="Dropdown0-list3"
                       role="option"
-                      tabindex="0"
+                      tabindex="-1"
+                      title="test"
                       type="checkbox"
                     />
                     <label
@@ -681,15 +782,13 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             right: 0px;
                             top: 0px;
                           }
-                      for="Dropdown0-list1"
+                      for="Dropdown0-list3"
                     >
                       <div
                         class=
                             ms-Checkbox-checkbox
                             {
                               align-items: center;
-                              background: #0078d4;
-                              border-color: #0078d4;
                               border-radius: 2px;
                               border: 1px solid #323130;
                               box-sizing: border-box;
@@ -707,8 +806,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             }
                             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
-                              background: Highlight;
-                              border-color: Highlight;
+                              border-color: WindowText;
                               forced-color-adjust: none;
                             }
                         data-ktp-target="true"
@@ -725,7 +823,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                                 font-family: "FabricMDL2Icons";
                                 font-style: normal;
                                 font-weight: normal;
-                                opacity: 1;
+                                opacity: 0;
                                 speak: none;
                               }
                               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -755,257 +853,10 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                               word-wrap: break-word;
                             }
                       >
-                        1
+                        2
                       </span>
                     </label>
                   </div>
-                  <div
-                    class=
-                        ms-Dropdown-divider
-                        {
-                          background-color: #edebe9;
-                          height: 1px;
-                        }
-                    role="separator"
-                  />
-                </div>
-                <div
-                  class=
-                      ms-Checkbox
-                      is-enabled
-                      ms-Dropdown-item
-                      {
-                        align-items: center;
-                        background-color: transparent;
-                        border-radius: 0px;
-                        border: 1px solid transparent;
-                        box-sizing: border-box;
-                        cursor: pointer;
-                        display: flex;
-                        height: 0px;
-                        line-height: 20px;
-                        min-height: 36px;
-                        overflow-wrap: break-word;
-                        padding-bottom: 0px;
-                        padding-left: 0px;
-                        padding-right: 0px;
-                        padding-top: 0px;
-                        position: relative;
-                        text-align: left;
-                        width: 100%;
-                        word-wrap: break-word;
-                      }
-                      &:hover .ms-Checkbox-checkbox {
-                        border-color: #323130;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
-                        border-color: Highlight;
-                      }
-                      &:focus .ms-Checkbox-checkbox {
-                        border-color: #323130;
-                      }
-                      &:hover .ms-Checkbox-checkmark {
-                        color: #605e5c;
-                        opacity: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
-                        color: Highlight;
-                      }
-                      &:hover .ms-Checkbox-text {
-                        color: #201f1e;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
-                        color: WindowText;
-                      }
-                      &:focus .ms-Checkbox-text {
-                        color: #201f1e;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
-                        color: WindowText;
-                      }
-                      & .ms-Button-flexContainer {
-                        width: 100%;
-                      }
-                      &:hover:focus {
-                        background-color: #f3f2f1;
-                        color: #201f1e;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:focus {
-                        background-color: Highlight;
-                        border-color: Highlight;
-                        color: HighlightText;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){&:hover:focus {
-                        -ms-high-contrast-adjust: none;
-                        forced-color-adjust: none;
-                      }
-                      &:focus {
-                        background-color: transparent;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-                        background-color: Highlight;
-                        border-color: Highlight;
-                        color: HighlightText;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){&:focus {
-                        -ms-high-contrast-adjust: none;
-                        forced-color-adjust: none;
-                      }
-                      &:active {
-                        background-color: #ffffff;
-                        color: #201f1e;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-                        background-color: Highlight;
-                        border-color: Highlight;
-                        color: HighlightText;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){&:active {
-                        -ms-high-contrast-adjust: none;
-                        forced-color-adjust: none;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        bottom: 0px;
-                        left: 0px;
-                        right: 0px;
-                        top: 0px;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                        border: none;
-                      }
-                  title="test"
-                >
-                  <input
-                    aria-posinset="2"
-                    aria-selected="false"
-                    aria-setsize="2"
-                    class=
-
-                        {
-                          background: none;
-                          opacity: 0;
-                          position: absolute;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus + label::before {
-                          outline-offset: 0px;
-                          outline: 1px solid #605e5c;
-                        }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                          outline: 1px solid WindowText;
-                        }
-                    data-index="3"
-                    data-is-focusable="true"
-                    data-ktp-execute-target="true"
-                    id="Dropdown0-list3"
-                    role="option"
-                    tabindex="-1"
-                    title="test"
-                    type="checkbox"
-                  />
-                  <label
-                    class=
-                        ms-Checkbox-label
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          align-items: center;
-                          align-self: stretch;
-                          cursor: pointer;
-                          display: flex;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
-                          padding-bottom: 0;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 0;
-                          position: relative;
-                          user-select: none;
-                          width: 100%;
-                        }
-                        &::before {
-                          bottom: 0px;
-                          content: "";
-                          left: 0px;
-                          pointer-events: none;
-                          position: absolute;
-                          right: 0px;
-                          top: 0px;
-                        }
-                    for="Dropdown0-list3"
-                  >
-                    <div
-                      class=
-                          ms-Checkbox-checkbox
-                          {
-                            align-items: center;
-                            border-radius: 2px;
-                            border: 1px solid #323130;
-                            box-sizing: border-box;
-                            display: flex;
-                            flex-shrink: 0;
-                            height: 20px;
-                            justify-content: center;
-                            margin-right: 4px;
-                            overflow: hidden;
-                            position: relative;
-                            transition-duration: 200ms;
-                            transition-property: background, border, border-color;
-                            transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                            width: 20px;
-                          }
-                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                            -ms-high-contrast-adjust: none;
-                            border-color: WindowText;
-                            forced-color-adjust: none;
-                          }
-                      data-ktp-target="true"
-                    >
-                      <i
-                        aria-hidden="true"
-                        class=
-                            ms-Checkbox-checkmark
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #ffffff;
-                              display: inline-block;
-                              font-family: "FabricMDL2Icons";
-                              font-style: normal;
-                              font-weight: normal;
-                              opacity: 0;
-                              speak: none;
-                            }
-                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                              -ms-high-contrast-adjust: none;
-                              color: Window;
-                              forced-color-adjust: none;
-                            }
-                        data-icon-name="CheckMark"
-                      >
-                        
-                      </i>
-                    </div>
-                    <span
-                      class=
-                          ms-Dropdown-optionText
-                          {
-                            margin-bottom: 1px;
-                            margin-left: 1px;
-                            margin-right: 1px;
-                            margin-top: 1px;
-                            max-width: 100%;
-                            min-width: 0px;
-                            overflow-wrap: break-word;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;
-                            word-wrap: break-word;
-                          }
-                    >
-                      2
-                    </span>
-                  </label>
                 </div>
               </div>
             </div>
@@ -1013,514 +864,896 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
         </div>
       </div>
     </div>
-  </span>
-</div>
+  </div>
+  <div>
+    <div
+      aria-owns="Dropdown0-list"
+      class="ms-Dropdown-container"
+    >
+      <div
+        aria-activedescendant="Dropdown0-list1"
+        aria-controls="Dropdown0-list"
+        aria-expanded="true"
+        aria-haspopup="listbox"
+        class=
+            ms-Dropdown
+            is-open
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-color: #605e5c;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              outline: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              user-select: none;
+            }
+            &:hover .ms-Dropdown-title {
+              border-color: #605e5c;
+              color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Dropdown-title {
+              border-color: Highlight;
+            }
+            &:focus .ms-Dropdown-title {
+              color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-title {
+              color: Highlight;
+            }
+            &:focus:after {
+              border-radius: 2px;
+              border: 2px solid #0078d4;
+              box-sizing: border-box;
+              content: '';
+              height: 100%;
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+              color: Highlight;
+            }
+            &:active .ms-Dropdown-title {
+              border-color: #0078d4;
+              color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Dropdown-title {
+              border-color: Highlight;
+            }
+            &:hover .ms-Dropdown-caretDown {
+              color: #323130;
+            }
+            &:focus .ms-Dropdown-caretDown {
+              color: #323130;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-caretDown {
+              color: Highlight;
+            }
+            &:active .ms-Dropdown-caretDown {
+              color: #323130;
+            }
+            &:hover .ms-Dropdown-titleIsPlaceHolder {
+              color: #323130;
+            }
+            &:focus .ms-Dropdown-titleIsPlaceHolder {
+              color: #323130;
+            }
+            &:active .ms-Dropdown-titleIsPlaceHolder {
+              color: #323130;
+            }
+            &:hover .ms-Dropdown-title--hasError {
+              border-color: #a4262c;
+            }
+            &:active .ms-Dropdown-title--hasError {
+              border-color: #a4262c;
+            }
+        data-is-focusable="true"
+        data-ktp-target="true"
+        id="Dropdown0"
+        role="combobox"
+        tabindex="0"
+      >
+        <span
+          aria-atomic="true"
+          aria-invalid="false"
+          aria-live="polite"
+          class=
+              ms-Dropdown-title
+              {
+                background-color: #ffffff;
+                border-color: #605e5c;
+                border-radius: 0 0 2px 2px;
+                border-style: solid;
+                border-width: 1px;
+                box-shadow: none;
+                box-sizing: border-box;
+                cursor: pointer;
+                display: block;
+                height: 32px;
+                line-height: 30px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                overflow: hidden;
+                padding-bottom: 0;
+                padding-left: 8px;
+                padding-right: 28px;
+                padding-top: 0;
+                position: relative;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          id="Dropdown0-option"
+        >
+          1
+        </span>
+        <span
+          class=
+              ms-Dropdown-caretDownWrapper
+              {
+                cursor: pointer;
+                height: 32px;
+                line-height: 30px;
+                padding-top: 1px;
+                position: absolute;
+                right: 8px;
+                top: 0px;
+              }
+        >
+          <i
+            aria-hidden="true"
+            class=
+                ms-Dropdown-caretDown
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 12px;
+                  font-style: normal;
+                  font-weight: normal;
+                  pointer-events: none;
+                  speak: none;
+                }
+            data-icon-name="ChevronDown"
+          >
+            
+          </i>
+        </span>
+      </div>
+      <span
+        class="ms-layer"
+      />
+    </div>
+  </div>
+</body>
 `;
 
 exports[`Dropdown single-select Renders correctly 1`] = `
-<div
-  className="ms-Dropdown-container"
->
+<div>
   <div
-    aria-expanded="false"
-    aria-haspopup="listbox"
-    className=
-        ms-Dropdown
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          border-color: #605e5c;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          outline: 0px;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
-          position: relative;
-          user-select: none;
-        }
-        &:hover .ms-Dropdown-title {
-          border-color: #323130;
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Dropdown-title {
-          border-color: Highlight;
-        }
-        &:focus .ms-Dropdown-title {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-title {
-          color: Highlight;
-        }
-        &:focus:after {
-          border-radius: 2px;
-          border: 2px solid #0078d4;
-          box-sizing: border-box;
-          content: '';
-          height: 100%;
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          top: 0px;
-          width: 100%;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
-          color: Highlight;
-        }
-        &:active .ms-Dropdown-title {
-          border-color: #0078d4;
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Dropdown-title {
-          border-color: Highlight;
-        }
-        &:hover .ms-Dropdown-caretDown {
-          color: #323130;
-        }
-        &:focus .ms-Dropdown-caretDown {
-          color: #323130;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-caretDown {
-          color: Highlight;
-        }
-        &:active .ms-Dropdown-caretDown {
-          color: #323130;
-        }
-        &:hover .ms-Dropdown-titleIsPlaceHolder {
-          color: #323130;
-        }
-        &:focus .ms-Dropdown-titleIsPlaceHolder {
-          color: #323130;
-        }
-        &:active .ms-Dropdown-titleIsPlaceHolder {
-          color: #323130;
-        }
-        &:hover .ms-Dropdown-title--hasError {
-          border-color: #a4262c;
-        }
-        &:active .ms-Dropdown-title--hasError {
-          border-color: #a4262c;
-        }
-    data-is-focusable={true}
-    data-ktp-target={true}
-    id="Dropdown0"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    role="combobox"
-    tabIndex={0}
+    class="ms-Dropdown-container"
   >
-    <span
-      aria-invalid={false}
-      className=
-          ms-Dropdown-title
-          ms-Dropdown-titleIsPlaceHolder
+    <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      class=
+          ms-Dropdown
           {
-            background-color: #ffffff;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             border-color: #605e5c;
-            border-radius: 2px;
-            border-style: solid;
-            border-width: 1px;
             box-shadow: none;
             box-sizing: border-box;
-            color: #605e5c;
-            cursor: pointer;
-            display: block;
-            height: 32px;
-            line-height: 30px;
+            color: #323130;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
-            overflow: hidden;
-            padding-bottom: 0;
-            padding-left: 8px;
-            padding-right: 28px;
-            padding-top: 0;
+            outline: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
             position: relative;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            user-select: none;
           }
-      id="Dropdown0-option"
-    />
-    <span
-      className=
-          ms-Dropdown-caretDownWrapper
-          {
-            cursor: pointer;
-            height: 32px;
-            line-height: 30px;
-            padding-top: 1px;
+          &:hover .ms-Dropdown-title {
+            border-color: #323130;
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Dropdown-title {
+            border-color: Highlight;
+          }
+          &:focus .ms-Dropdown-title {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-title {
+            color: Highlight;
+          }
+          &:focus:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            box-sizing: border-box;
+            content: '';
+            height: 100%;
+            left: 0px;
+            pointer-events: none;
             position: absolute;
-            right: 8px;
             top: 0px;
+            width: 100%;
           }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+            color: Highlight;
+          }
+          &:active .ms-Dropdown-title {
+            border-color: #0078d4;
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Dropdown-title {
+            border-color: Highlight;
+          }
+          &:hover .ms-Dropdown-caretDown {
+            color: #323130;
+          }
+          &:focus .ms-Dropdown-caretDown {
+            color: #323130;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-caretDown {
+            color: Highlight;
+          }
+          &:active .ms-Dropdown-caretDown {
+            color: #323130;
+          }
+          &:hover .ms-Dropdown-titleIsPlaceHolder {
+            color: #323130;
+          }
+          &:focus .ms-Dropdown-titleIsPlaceHolder {
+            color: #323130;
+          }
+          &:active .ms-Dropdown-titleIsPlaceHolder {
+            color: #323130;
+          }
+          &:hover .ms-Dropdown-title--hasError {
+            border-color: #a4262c;
+          }
+          &:active .ms-Dropdown-title--hasError {
+            border-color: #a4262c;
+          }
+      data-is-focusable="true"
+      data-ktp-target="true"
+      id="Dropdown0"
+      role="combobox"
+      tabindex="0"
     >
-      <i
-        aria-hidden={true}
-        className=
-            ms-Dropdown-caretDown
+      <span
+        aria-invalid="false"
+        class=
+            ms-Dropdown-title
+            ms-Dropdown-titleIsPlaceHolder
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
+              background-color: #ffffff;
+              border-color: #605e5c;
+              border-radius: 2px;
+              border-style: solid;
+              border-width: 1px;
+              box-shadow: none;
+              box-sizing: border-box;
               color: #605e5c;
-              display: inline-block;
-              font-family: "FabricMDL2Icons";
-              font-size: 12px;
-              font-style: normal;
-              font-weight: normal;
-              pointer-events: none;
-              speak: none;
+              cursor: pointer;
+              display: block;
+              height: 32px;
+              line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow: hidden;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 28px;
+              padding-top: 0;
+              position: relative;
+              text-overflow: ellipsis;
+              white-space: nowrap;
             }
-        data-icon-name="ChevronDown"
+        id="Dropdown0-option"
+      />
+      <span
+        class=
+            ms-Dropdown-caretDownWrapper
+            {
+              cursor: pointer;
+              height: 32px;
+              line-height: 30px;
+              padding-top: 1px;
+              position: absolute;
+              right: 8px;
+              top: 0px;
+            }
       >
-        
-      </i>
-    </span>
+        <i
+          aria-hidden="true"
+          class=
+              ms-Dropdown-caretDown
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-size: 12px;
+                font-style: normal;
+                font-weight: normal;
+                pointer-events: none;
+                speak: none;
+              }
+          data-icon-name="ChevronDown"
+        >
+          
+        </i>
+      </span>
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown single-select Renders correctly when open 1`] = `
-<div
-  aria-owns="Dropdown0-list"
-  class="ms-Dropdown-container"
->
-  <div
-    aria-activedescendant="Dropdown0-list1"
-    aria-controls="Dropdown0-list"
-    aria-expanded="true"
-    aria-haspopup="listbox"
-    class=
-        ms-Dropdown
-        is-open
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          border-color: #605e5c;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          outline: 0px;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
-          position: relative;
-          user-select: none;
-        }
-        &:hover .ms-Dropdown-title {
-          border-color: #605e5c;
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Dropdown-title {
-          border-color: Highlight;
-        }
-        &:focus .ms-Dropdown-title {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-title {
-          color: Highlight;
-        }
-        &:focus:after {
-          border-radius: 2px;
-          border: 2px solid #0078d4;
-          box-sizing: border-box;
-          content: '';
-          height: 100%;
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          top: 0px;
-          width: 100%;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
-          color: Highlight;
-        }
-        &:active .ms-Dropdown-title {
-          border-color: #0078d4;
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Dropdown-title {
-          border-color: Highlight;
-        }
-        &:hover .ms-Dropdown-caretDown {
-          color: #323130;
-        }
-        &:focus .ms-Dropdown-caretDown {
-          color: #323130;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-caretDown {
-          color: Highlight;
-        }
-        &:active .ms-Dropdown-caretDown {
-          color: #323130;
-        }
-        &:hover .ms-Dropdown-titleIsPlaceHolder {
-          color: #323130;
-        }
-        &:focus .ms-Dropdown-titleIsPlaceHolder {
-          color: #323130;
-        }
-        &:active .ms-Dropdown-titleIsPlaceHolder {
-          color: #323130;
-        }
-        &:hover .ms-Dropdown-title--hasError {
-          border-color: #a4262c;
-        }
-        &:active .ms-Dropdown-title--hasError {
-          border-color: #a4262c;
-        }
-    data-is-focusable="true"
-    data-ktp-target="true"
-    id="Dropdown0"
-    role="combobox"
-    tabindex="0"
-  >
-    <span
-      aria-invalid="false"
-      class=
-          ms-Dropdown-title
-          {
-            background-color: #ffffff;
-            border-color: #605e5c;
-            border-radius: 0 0 2px 2px;
-            border-style: solid;
-            border-width: 1px;
-            box-shadow: none;
-            box-sizing: border-box;
-            cursor: pointer;
-            display: block;
-            height: 32px;
-            line-height: 30px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow: hidden;
-            padding-bottom: 0;
-            padding-left: 8px;
-            padding-right: 28px;
-            padding-top: 0;
-            position: relative;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      id="Dropdown0-option"
+<body>
+  <div>
+    <div
+      aria-owns="Dropdown0-list"
+      class="ms-Dropdown-container"
     >
-      1
-    </span>
-    <span
-      class=
-          ms-Dropdown-caretDownWrapper
-          {
-            cursor: pointer;
-            height: 32px;
-            line-height: 30px;
-            padding-top: 1px;
-            position: absolute;
-            right: 8px;
-            top: 0px;
-          }
-    >
-      <i
-        aria-hidden="true"
+      <div
+        aria-activedescendant="Dropdown0-list1"
+        aria-controls="Dropdown0-list"
+        aria-expanded="true"
+        aria-haspopup="listbox"
         class=
-            ms-Dropdown-caretDown
+            ms-Dropdown
+            is-open
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #605e5c;
-              display: inline-block;
-              font-family: "FabricMDL2Icons";
-              font-size: 12px;
-              font-style: normal;
-              font-weight: normal;
-              pointer-events: none;
-              speak: none;
+              border-color: #605e5c;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              outline: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              user-select: none;
             }
-        data-icon-name="ChevronDown"
+            &:hover .ms-Dropdown-title {
+              border-color: #605e5c;
+              color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Dropdown-title {
+              border-color: Highlight;
+            }
+            &:focus .ms-Dropdown-title {
+              color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-title {
+              color: Highlight;
+            }
+            &:focus:after {
+              border-radius: 2px;
+              border: 2px solid #0078d4;
+              box-sizing: border-box;
+              content: '';
+              height: 100%;
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+              color: Highlight;
+            }
+            &:active .ms-Dropdown-title {
+              border-color: #0078d4;
+              color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Dropdown-title {
+              border-color: Highlight;
+            }
+            &:hover .ms-Dropdown-caretDown {
+              color: #323130;
+            }
+            &:focus .ms-Dropdown-caretDown {
+              color: #323130;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-caretDown {
+              color: Highlight;
+            }
+            &:active .ms-Dropdown-caretDown {
+              color: #323130;
+            }
+            &:hover .ms-Dropdown-titleIsPlaceHolder {
+              color: #323130;
+            }
+            &:focus .ms-Dropdown-titleIsPlaceHolder {
+              color: #323130;
+            }
+            &:active .ms-Dropdown-titleIsPlaceHolder {
+              color: #323130;
+            }
+            &:hover .ms-Dropdown-title--hasError {
+              border-color: #a4262c;
+            }
+            &:active .ms-Dropdown-title--hasError {
+              border-color: #a4262c;
+            }
+        data-is-focusable="true"
+        data-ktp-target="true"
+        id="Dropdown0"
+        role="combobox"
+        tabindex="0"
       >
-        
-      </i>
-    </span>
+        <span
+          aria-atomic="true"
+          aria-invalid="false"
+          aria-live="polite"
+          class=
+              ms-Dropdown-title
+              {
+                background-color: #ffffff;
+                border-color: #605e5c;
+                border-radius: 0 0 2px 2px;
+                border-style: solid;
+                border-width: 1px;
+                box-shadow: none;
+                box-sizing: border-box;
+                cursor: pointer;
+                display: block;
+                height: 32px;
+                line-height: 30px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                overflow: hidden;
+                padding-bottom: 0;
+                padding-left: 8px;
+                padding-right: 28px;
+                padding-top: 0;
+                position: relative;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          id="Dropdown0-option"
+        >
+          1
+        </span>
+        <span
+          class=
+              ms-Dropdown-caretDownWrapper
+              {
+                cursor: pointer;
+                height: 32px;
+                line-height: 30px;
+                padding-top: 1px;
+                position: absolute;
+                right: 8px;
+                top: 0px;
+              }
+        >
+          <i
+            aria-hidden="true"
+            class=
+                ms-Dropdown-caretDown
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 12px;
+                  font-style: normal;
+                  font-weight: normal;
+                  pointer-events: none;
+                  speak: none;
+                }
+            data-icon-name="ChevronDown"
+          >
+            
+          </i>
+        </span>
+      </div>
+      <span
+        class="ms-layer"
+      />
+    </div>
   </div>
-  <span
-    class="ms-layer"
+  <div
+    id="fluent-default-layer-host"
+    style="position: fixed; z-index: 1000000;"
   >
     <div
       class=
-          ms-Fabric
-          ms-Layer-content
+          ms-Layer
+          ms-Layer--fixed
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #323130;
+            bottom: 0px;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            visibility: visible;
+            left: 0px;
+            position: fixed;
+            right: 0px;
+            top: 0px;
+            visibility: hidden;
+            z-index: 1000000;
           }
-          & button {
-            font-family: inherit;
-          }
-          & input {
-            font-family: inherit;
-          }
-          & textarea {
-            font-family: inherit;
-          }
+      data-portal-element="true"
     >
       <div
         class=
-            ms-Callout-container
+            ms-Fabric
+            ms-Layer-content
             {
-              position: relative;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              visibility: visible;
+            }
+            & button {
+              font-family: inherit;
+            }
+            & input {
+              font-family: inherit;
+            }
+            & textarea {
+              font-family: inherit;
             }
       >
         <div
           class=
-              ms-Callout
-              ms-Dropdown-callout
+              ms-Callout-container
               {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                border-radius: 2px 2px 0 0;
-                box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
-                box-sizing: border-box;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                outline: transparent;
-                position: absolute;
-                width: 200px;
+                position: relative;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                border-color: WindowText;
-                border-style: solid;
-                border-width: 1px;
-              }
-              &::-moz-focus-inner {
-                border: 0px;
-              }
-              & .ms-Callout-main {
-                border-radius: 2px 2px 0 0;
-              }
-          style="opacity: 0; filter: opacity(0); pointer-events: none;"
-          tabindex="-1"
         >
           <div
             class=
-                ms-Callout-main
+                ms-Callout
+                ms-Dropdown-callout
                 {
-                  background-color: #ffffff;
-                  border-radius: 2px;
-                  overflow-x: hidden;
-                  overflow-y: auto;
-                  position: relative;
-                  width: 100%;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border-radius: 2px 2px 0 0;
+                  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+                  box-sizing: border-box;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  outline: transparent;
+                  position: absolute;
+                  width: 200px;
                 }
-            style="outline: none; max-height: 100%;"
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  border-color: WindowText;
+                  border-style: solid;
+                  border-width: 1px;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                }
+                & .ms-Callout-main {
+                  border-radius: 2px 2px 0 0;
+                }
+            style="opacity: 0; filter: opacity(0); pointer-events: none;"
+            tabindex="-1"
           >
             <div
               class=
-
-                  &:focus {
-                    outline: 0px;
+                  ms-Callout-main
+                  {
+                    background-color: #ffffff;
+                    border-radius: 2px;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    position: relative;
+                    width: 100%;
                   }
-              tabindex="0"
+              style="outline: none; max-height: 100%;"
             >
               <div
                 class=
-                    ms-FocusZone
-                    ms-Dropdown-items
+
                     &:focus {
-                      outline: none;
+                      outline: 0px;
                     }
-                    {
-                      display: block;
-                    }
-                data-focuszone-id="FocusZone1"
-                id="Dropdown0-list"
-                role="listbox"
+                tabindex="0"
               >
                 <div
-                  aria-labelledby="Dropdown0Header1"
-                  role="group"
+                  class=
+                      ms-FocusZone
+                      ms-Dropdown-items
+                      &:focus {
+                        outline: none;
+                      }
+                      {
+                        display: block;
+                      }
+                  data-focuszone-id="FocusZone1"
+                  id="Dropdown0-list"
+                  role="listbox"
                 >
                   <div
-                    class=
-                        ms-Dropdown-header
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          background-color: transparent;
-                          background: none;
-                          border: none;
-                          color: #0078d4;
-                          cursor: default;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 600;
-                          height: 36px;
-                          line-height: 36px;
-                          padding-bottom: 0;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 0;
-                          text-align: left;
-                          user-select: none;
-                        }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                          -ms-high-contrast-adjust: none;
-                          color: GrayText;
-                          forced-color-adjust: none;
-                        }
-                    id="Dropdown0Header1"
+                    aria-labelledby="Dropdown0Header1"
+                    role="group"
                   >
-                    <span
+                    <div
                       class=
-                          ms-Dropdown-optionText
+                          ms-Dropdown-header
                           {
-                            margin-bottom: 1px;
-                            margin-left: 1px;
-                            margin-right: 1px;
-                            margin-top: 1px;
-                            max-width: 100%;
-                            min-width: 0px;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            background-color: transparent;
+                            background: none;
+                            border: none;
+                            color: #0078d4;
+                            cursor: default;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 600;
+                            height: 36px;
+                            line-height: 36px;
+                            padding-bottom: 0;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 0;
+                            text-align: left;
+                            user-select: none;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                            -ms-high-contrast-adjust: none;
+                            color: GrayText;
+                            forced-color-adjust: none;
+                          }
+                      id="Dropdown0Header1"
+                    >
+                      <span
+                        class=
+                            ms-Dropdown-optionText
+                            {
+                              margin-bottom: 1px;
+                              margin-left: 1px;
+                              margin-right: 1px;
+                              margin-top: 1px;
+                              max-width: 100%;
+                              min-width: 0px;
+                              overflow-wrap: break-word;
+                              overflow: hidden;
+                              text-overflow: ellipsis;
+                              white-space: nowrap;
+                              word-wrap: break-word;
+                            }
+                      >
+                        Header 1
+                      </span>
+                    </div>
+                    <button
+                      aria-posinset="1"
+                      aria-selected="true"
+                      aria-setsize="2"
+                      class=
+                          ms-Button
+                          ms-Button--action
+                          ms-Button--command
+                          ms-Dropdown-item
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            align-items: center;
+                            background-color: #edebe9;
+                            border-radius: 0px;
+                            border: 1px solid transparent;
+                            box-sizing: border-box;
+                            color: #201f1e;
+                            cursor: pointer;
+                            display: flex;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            height: 0px;
+                            line-height: 20px;
+                            min-height: 36px;
+                            outline: transparent;
                             overflow-wrap: break-word;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;
+                            padding-bottom: 0;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 0;
+                            position: relative;
+                            text-align: left;
+                            text-decoration: none;
+                            user-select: none;
+                            width: 100%;
                             word-wrap: break-word;
                           }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 0px;
+                            content: "";
+                            left: 0px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 0px;
+                            top: 0px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            bottom: -2px;
+                            left: -2px;
+                            outline-color: ButtonText;
+                            right: -2px;
+                            top: -2px;
+                          }
+                          &:active > * {
+                            left: 0px;
+                            position: relative;
+                            top: 0px;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                            background-color: Highlight;
+                            border-color: Highlight;
+                            border: none;
+                            color: HighlightText;
+                          }
+                          &:hover {
+                            color: #0078d4;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                            color: Highlight;
+                          }
+                          &:hover .ms-Button-icon {
+                            color: #0078d4;
+                          }
+                          &:focus {
+                            background-color: #edebe9;
+                          }
+                          &:active {
+                            background-color: #f3f2f1;
+                            color: #201f1e;
+                          }
+                          &:active .ms-Button-icon {
+                            color: #004578;
+                          }
+                          & .ms-Button-flexContainer {
+                            width: 100%;
+                          }
+                          &:hover:focus {
+                            background-color: #edebe9;
+                            color: #201f1e;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:focus {
+                            background-color: Highlight;
+                            border-color: Highlight;
+                            color: HighlightText;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){&:hover:focus {
+                            -ms-high-contrast-adjust: none;
+                            forced-color-adjust: none;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+                            background-color: Highlight;
+                            border-color: Highlight;
+                            color: HighlightText;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){&:focus {
+                            -ms-high-contrast-adjust: none;
+                            forced-color-adjust: none;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+                            background-color: Highlight;
+                            border-color: Highlight;
+                            color: HighlightText;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){&:active {
+                            -ms-high-contrast-adjust: none;
+                            forced-color-adjust: none;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){& {
+                            -ms-high-contrast-adjust: none;
+                            forced-color-adjust: none;
+                          }
+                      data-index="1"
+                      data-is-focusable="true"
+                      id="Dropdown0-list1"
+                      role="option"
+                      tabindex="0"
+                      type="button"
                     >
-                      Header 1
-                    </span>
+                      <span
+                        class=
+                            ms-Button-flexContainer
+                            {
+                              align-items: center;
+                              display: flex;
+                              flex-wrap: nowrap;
+                              height: 100%;
+                              justify-content: flex-start;
+                            }
+                        data-automationid="splitbuttonprimary"
+                      >
+                        <span
+                          class=
+                              ms-Dropdown-optionText
+                              {
+                                margin-bottom: 1px;
+                                margin-left: 1px;
+                                margin-right: 1px;
+                                margin-top: 1px;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          1
+                        </span>
+                      </span>
+                    </button>
+                    <div
+                      class=
+                          ms-Dropdown-divider
+                          {
+                            background-color: #edebe9;
+                            height: 1px;
+                          }
+                      role="separator"
+                    />
                   </div>
                   <button
-                    aria-posinset="1"
-                    aria-selected="true"
+                    aria-posinset="2"
+                    aria-selected="false"
                     aria-setsize="2"
                     class=
                         ms-Button
@@ -1531,11 +1764,11 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
                           align-items: center;
-                          background-color: #edebe9;
+                          background-color: transparent;
                           border-radius: 0px;
                           border: 1px solid transparent;
                           box-sizing: border-box;
-                          color: #201f1e;
+                          color: #323130;
                           cursor: pointer;
                           display: flex;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1584,10 +1817,8 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           top: 0px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                          background-color: Highlight;
-                          border-color: Highlight;
+                          border-color: Window;
                           border: none;
-                          color: HighlightText;
                         }
                         &:hover {
                           color: #0078d4;
@@ -1599,10 +1830,10 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           color: #0078d4;
                         }
                         &:focus {
-                          background-color: #edebe9;
+                          background-color: transparent;
                         }
                         &:active {
-                          background-color: #f3f2f1;
+                          background-color: #ffffff;
                           color: #201f1e;
                         }
                         &:active .ms-Button-icon {
@@ -1612,7 +1843,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           width: 100%;
                         }
                         &:hover:focus {
-                          background-color: #edebe9;
+                          background-color: #f3f2f1;
                           color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:focus {
@@ -1642,15 +1873,12 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){& {
-                          -ms-high-contrast-adjust: none;
-                          forced-color-adjust: none;
-                        }
-                    data-index="1"
+                    data-index="3"
                     data-is-focusable="true"
-                    id="Dropdown0-list1"
+                    id="Dropdown0-list3"
                     role="option"
-                    tabindex="0"
+                    tabindex="-1"
+                    title="test"
                     type="button"
                   >
                     <span
@@ -1682,189 +1910,17 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                               word-wrap: break-word;
                             }
                       >
-                        1
+                        2
                       </span>
                     </span>
                   </button>
-                  <div
-                    class=
-                        ms-Dropdown-divider
-                        {
-                          background-color: #edebe9;
-                          height: 1px;
-                        }
-                    role="separator"
-                  />
                 </div>
-                <button
-                  aria-posinset="2"
-                  aria-selected="false"
-                  aria-setsize="2"
-                  class=
-                      ms-Button
-                      ms-Button--action
-                      ms-Button--command
-                      ms-Dropdown-item
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        align-items: center;
-                        background-color: transparent;
-                        border-radius: 0px;
-                        border: 1px solid transparent;
-                        box-sizing: border-box;
-                        color: #323130;
-                        cursor: pointer;
-                        display: flex;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
-                        height: 0px;
-                        line-height: 20px;
-                        min-height: 36px;
-                        outline: transparent;
-                        overflow-wrap: break-word;
-                        padding-bottom: 0;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 0;
-                        position: relative;
-                        text-align: left;
-                        text-decoration: none;
-                        user-select: none;
-                        width: 100%;
-                        word-wrap: break-word;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 0px;
-                        content: "";
-                        left: 0px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 0px;
-                        top: 0px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        bottom: -2px;
-                        left: -2px;
-                        outline-color: ButtonText;
-                        right: -2px;
-                        top: -2px;
-                      }
-                      &:active > * {
-                        left: 0px;
-                        position: relative;
-                        top: 0px;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                        border-color: Window;
-                        border: none;
-                      }
-                      &:hover {
-                        color: #0078d4;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                        color: Highlight;
-                      }
-                      &:hover .ms-Button-icon {
-                        color: #0078d4;
-                      }
-                      &:focus {
-                        background-color: transparent;
-                      }
-                      &:active {
-                        background-color: #ffffff;
-                        color: #201f1e;
-                      }
-                      &:active .ms-Button-icon {
-                        color: #004578;
-                      }
-                      & .ms-Button-flexContainer {
-                        width: 100%;
-                      }
-                      &:hover:focus {
-                        background-color: #f3f2f1;
-                        color: #201f1e;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:focus {
-                        background-color: Highlight;
-                        border-color: Highlight;
-                        color: HighlightText;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){&:hover:focus {
-                        -ms-high-contrast-adjust: none;
-                        forced-color-adjust: none;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-                        background-color: Highlight;
-                        border-color: Highlight;
-                        color: HighlightText;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){&:focus {
-                        -ms-high-contrast-adjust: none;
-                        forced-color-adjust: none;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-                        background-color: Highlight;
-                        border-color: Highlight;
-                        color: HighlightText;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active), screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white){&:active {
-                        -ms-high-contrast-adjust: none;
-                        forced-color-adjust: none;
-                      }
-                  data-index="3"
-                  data-is-focusable="true"
-                  id="Dropdown0-list3"
-                  role="option"
-                  tabindex="-1"
-                  title="test"
-                  type="button"
-                >
-                  <span
-                    class=
-                        ms-Button-flexContainer
-                        {
-                          align-items: center;
-                          display: flex;
-                          flex-wrap: nowrap;
-                          height: 100%;
-                          justify-content: flex-start;
-                        }
-                    data-automationid="splitbuttonprimary"
-                  >
-                    <span
-                      class=
-                          ms-Dropdown-optionText
-                          {
-                            margin-bottom: 1px;
-                            margin-left: 1px;
-                            margin-right: 1px;
-                            margin-top: 1px;
-                            max-width: 100%;
-                            min-width: 0px;
-                            overflow-wrap: break-word;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;
-                            word-wrap: break-word;
-                          }
-                    >
-                      2
-                    </span>
-                  </span>
-                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </span>
-</div>
+  </div>
+</body>
 `;

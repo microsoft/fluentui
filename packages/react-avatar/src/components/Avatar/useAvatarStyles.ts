@@ -1,8 +1,19 @@
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { AvatarState } from './Avatar.types';
+import type { AvatarSlots, AvatarState } from './Avatar.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `avatarClassNames.root` instead.
+ */
 export const avatarClassName = 'fui-Avatar';
+export const avatarClassNames: SlotClassNames<AvatarSlots> = {
+  root: 'fui-Avatar',
+  image: 'fui-Avatar__image',
+  initials: 'fui-Avatar__initials',
+  icon: 'fui-Avatar__icon',
+  badge: 'fui-Avatar__badge',
+};
 
 //
 // TODO: All animation constants should go to theme or globals?
@@ -61,12 +72,11 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     fontFamily: tokens.fontFamilyBase,
     fontWeight: tokens.fontWeightSemibold,
-    boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke} inset`,
   },
 
-  textCaption2: {
+  textCaption2Strong: {
     fontSize: tokens.fontSizeBase100,
-    fontWeight: tokens.fontWeightRegular,
+    fontWeight: tokens.fontWeightSemibold,
   },
   textCaption1Strong: { fontSize: tokens.fontSizeBase200 },
   textBody1Strong: { fontSize: tokens.fontSizeBase300 },
@@ -138,12 +148,6 @@ const useStyles = makeStyles({
   shadow16: { ':before': { boxShadow: tokens.shadow16 } },
   shadow28: { ':before': { boxShadow: tokens.shadow28 } },
 
-  // TODO: use proper tokens instead of "rgba(0,120,212,0.3)"
-  glow4: { ':before': { boxShadow: `${tokens.shadow4}, 0 0 4px 2px rgba(0,120,212,0.3)` } },
-  glow8: { ':before': { boxShadow: `${tokens.shadow8}, 0 0 8px 2px rgba(0,120,212,0.3)` } },
-  glow16: { ':before': { boxShadow: `${tokens.shadow16}, 0 0 8px 2px rgba(0,120,212,0.3)` } },
-  glow28: { ':before': { boxShadow: `${tokens.shadow28}, 0 0 28px 4px rgba(0,120,212,0.3)` } },
-
   inactive: {
     opacity: '0.8',
     transform: 'scale(0.875)',
@@ -184,19 +188,22 @@ const useStyles = makeStyles({
     verticalAlign: 'top',
   },
 
-  iconLabel: {
+  iconInitials: {
     position: 'absolute',
+    boxSizing: 'border-box',
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
     lineHeight: '1',
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
 
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     verticalAlign: 'center',
     textAlign: 'center',
+    userSelect: 'none',
     ...shorthands.borderRadius('inherit'),
   },
 
@@ -365,7 +372,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const rootClasses = [styles.root, sizeStyles[size], colorStyles[color]];
 
   if (size <= 24) {
-    rootClasses.push(styles.textCaption2);
+    rootClasses.push(styles.textCaption2Strong);
   } else if (size <= 28) {
     rootClasses.push(styles.textCaption1Strong);
   } else if (size <= 40) {
@@ -393,7 +400,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   if (active === 'active' || active === 'inactive') {
     rootClasses.push(styles.activeOrInactive);
 
-    if (activeAppearance.includes('ring')) {
+    if (activeAppearance === 'ring' || activeAppearance === 'ring-shadow') {
       rootClasses.push(styles.ring);
 
       if (size <= 48) {
@@ -405,7 +412,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       }
     }
 
-    if (activeAppearance.includes('shadow')) {
+    if (activeAppearance === 'shadow' || activeAppearance === 'ring-shadow') {
       if (size <= 28) {
         rootClasses.push(styles.shadow4);
       } else if (size <= 48) {
@@ -417,36 +424,29 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       }
     }
 
-    if (activeAppearance.includes('glow')) {
-      if (size <= 28) {
-        rootClasses.push(styles.glow4);
-      } else if (size <= 48) {
-        rootClasses.push(styles.glow8);
-      } else if (size <= 64) {
-        rootClasses.push(styles.glow16);
-      } else {
-        rootClasses.push(styles.glow28);
-      }
-    }
-
     // Note: The inactive style overrides some of the activeAppearance styles and must be applied after them
     if (active === 'inactive') {
       rootClasses.push(styles.inactive);
     }
   }
 
-  state.root.className = mergeClasses(avatarClassName, ...rootClasses, state.root.className);
+  state.root.className = mergeClasses(avatarClassNames.root, ...rootClasses, state.root.className);
 
   if (state.badge) {
-    state.badge.className = mergeClasses(styles.badge, size >= 64 && styles.badgeLarge, state.badge.className);
+    state.badge.className = mergeClasses(
+      avatarClassNames.badge,
+      styles.badge,
+      size >= 64 && styles.badgeLarge,
+      state.badge.className,
+    );
   }
 
   if (state.image) {
-    state.image.className = mergeClasses(styles.image, state.image.className);
+    state.image.className = mergeClasses(avatarClassNames.image, styles.image, state.image.className);
   }
 
   if (state.initials) {
-    state.initials.className = mergeClasses(styles.iconLabel, state.initials.className);
+    state.initials.className = mergeClasses(avatarClassNames.initials, styles.iconInitials, state.initials.className);
   }
 
   if (state.icon) {
@@ -465,7 +465,12 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       iconSizeClass = styles.icon48;
     }
 
-    state.icon.className = mergeClasses(styles.iconLabel, iconSizeClass, state.icon.className);
+    state.icon.className = mergeClasses(
+      avatarClassNames.icon,
+      styles.iconInitials,
+      iconSizeClass,
+      state.icon.className,
+    );
   }
 
   return state;

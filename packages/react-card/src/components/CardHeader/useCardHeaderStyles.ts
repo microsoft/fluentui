@@ -1,7 +1,19 @@
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { CardHeaderState } from './CardHeader.types';
+import type { CardHeaderSlots, CardHeaderState } from './CardHeader.types';
 
+/**
+ * @deprecated Use `cardHeaderClassNames.root` instead.
+ */
 export const cardHeaderClassName = 'fui-CardHeader';
+export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots> = {
+  root: 'fui-CardHeader',
+  image: 'fui-CardHeader__image',
+  content: 'fui-CardHeader__content',
+  header: 'fui-CardHeader__header',
+  description: 'fui-CardHeader__description',
+  action: 'fui-CardHeader__action',
+};
 
 /**
  * Styles for the root slot
@@ -48,14 +60,26 @@ const useStyles = makeStyles({
  */
 export const useCardHeaderStyles_unstable = (state: CardHeaderState): CardHeaderState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(cardHeaderClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(cardHeaderClassNames.root, styles.root, state.root.className);
 
   if (state.image) {
-    state.image.className = mergeClasses(styles.image, state.image.className);
+    state.image.className = mergeClasses(cardHeaderClassNames.image, styles.image, state.image.className);
   }
 
   if (state.content) {
-    state.content.className = mergeClasses(styles.textContainer, state.content.className);
+    state.content.className = mergeClasses(cardHeaderClassNames.content, styles.textContainer, state.content.className);
+  }
+
+  if (state.header) {
+    state.header.className = mergeClasses(cardHeaderClassNames.header, state.header.className);
+  }
+
+  if (state.description) {
+    state.description.className = mergeClasses(cardHeaderClassNames.description, state.description.className);
+  }
+
+  if (state.action) {
+    state.action.className = mergeClasses(cardHeaderClassNames.action, state.action.className);
   }
 
   return state;

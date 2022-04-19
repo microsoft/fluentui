@@ -2,6 +2,72 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Fri, 15 Apr 2022 07:42:46 GMT",
+      "tag": "@fluentui/merge-styles_v8.5.1",
+      "version": "8.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/merge-styles",
+            "commit": "b13b2d03788979116a222c17d73f523c523f7684",
+            "comment": "Adding missing package.json export for ssr"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Mar 2022 07:34:40 GMT",
+      "tag": "@fluentui/merge-styles_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "f45738ec1d2156e69f6e3ce3fd0d063a6ee83026",
+            "comment": "Adding additional exports to support existing 1js imports (which will be resolved separately.)"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Mar 2022 07:24:27 GMT",
+      "tag": "@fluentui/merge-styles_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/merge-styles",
+            "comment": "Bump @fluentui/set-version to v8.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Feb 2022 07:29:40 GMT",
+      "tag": "@fluentui/merge-styles_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beavi@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "847b92996b5b4a6f8d192ab572396ab2de2ba819",
+            "comment": "Add logical margins CSS properties to IRawStyleBase"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Jan 2022 23:32:10 GMT",
       "tag": "@fluentui/merge-styles_v8.2.3",
       "version": "8.2.3",

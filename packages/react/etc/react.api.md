@@ -4,12 +4,12 @@
 
 ```ts
 
-import { addDays } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
+import { addDays } from '@fluentui/date-time-utilities';
 import { addDirectionalKeyCode } from '@fluentui/utilities';
 import { addElementAtIndex } from '@fluentui/utilities';
-import { addMonths } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
-import { addWeeks } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
-import { addYears } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
+import { addMonths } from '@fluentui/date-time-utilities';
+import { addWeeks } from '@fluentui/date-time-utilities';
+import { addYears } from '@fluentui/date-time-utilities';
 import { allowOverscrollOnElement } from '@fluentui/utilities';
 import { allowScrollOnElement } from '@fluentui/utilities';
 import { anchorProperties } from '@fluentui/utilities';
@@ -35,8 +35,8 @@ import { colGroupProperties } from '@fluentui/utilities';
 import { ColorClassNames } from '@fluentui/style-utilities';
 import { colProperties } from '@fluentui/utilities';
 import { CommunicationColors } from '@fluentui/theme';
-import { compareDatePart } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
-import { compareDates } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
+import { compareDatePart } from '@fluentui/date-time-utilities';
+import { compareDates } from '@fluentui/date-time-utilities';
 import { ComponentsStyles } from '@fluentui/theme';
 import { ComponentStyles } from '@fluentui/theme';
 import { composeComponentAs } from '@fluentui/utilities';
@@ -57,7 +57,7 @@ import { DATA_IS_SCROLLABLE_ATTRIBUTE } from '@fluentui/utilities';
 import { DATA_PORTAL_ATTRIBUTE } from '@fluentui/utilities';
 import { DateRangeType } from '@fluentui/date-time-utilities';
 import { DayOfWeek } from '@fluentui/date-time-utilities';
-import { DAYS_IN_WEEK } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
+import { DAYS_IN_WEEK } from '@fluentui/date-time-utilities';
 import { DefaultEffects } from '@fluentui/style-utilities';
 import { DefaultFontStyles } from '@fluentui/style-utilities';
 import { DefaultPalette } from '@fluentui/style-utilities';
@@ -98,13 +98,13 @@ import { FontWeights } from '@fluentui/style-utilities';
 import { format } from '@fluentui/utilities';
 import { formProperties } from '@fluentui/utilities';
 import { getChildren } from '@fluentui/utilities';
-import { getDatePartHashValue } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
-import { getDateRangeArray } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
+import { getDatePartHashValue } from '@fluentui/date-time-utilities';
+import { getDateRangeArray } from '@fluentui/date-time-utilities';
 import { getDistanceBetweenPoints } from '@fluentui/utilities';
 import { getDocument } from '@fluentui/utilities';
 import { getEdgeChromiumNoHighContrastAdjustSelector } from '@fluentui/style-utilities';
 import { getElementIndexPath } from '@fluentui/utilities';
-import { getEndDateOfWeek } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
+import { getEndDateOfWeek } from '@fluentui/date-time-utilities';
 import { getFadedOverflowStyle } from '@fluentui/style-utilities';
 import { getFirstFocusable } from '@fluentui/utilities';
 import { getFirstTabbable } from '@fluentui/utilities';
@@ -122,8 +122,8 @@ import { getInputFocusStyle } from '@fluentui/style-utilities';
 import { getLanguage } from '@fluentui/utilities';
 import { getLastFocusable } from '@fluentui/utilities';
 import { getLastTabbable } from '@fluentui/utilities';
-import { getMonthEnd } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
-import { getMonthStart } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
+import { getMonthEnd } from '@fluentui/date-time-utilities';
+import { getMonthStart } from '@fluentui/date-time-utilities';
 import { getNativeElementProps } from '@fluentui/utilities';
 import { getNativeProps } from '@fluentui/utilities';
 import { getNextElement } from '@fluentui/utilities';
@@ -137,15 +137,15 @@ import { getRTL } from '@fluentui/utilities';
 import { getRTLSafeKeyCode } from '@fluentui/utilities';
 import { getScreenSelector } from '@fluentui/style-utilities';
 import { getScrollbarWidth } from '@fluentui/utilities';
-import { getStartDateOfWeek } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
+import { getStartDateOfWeek } from '@fluentui/date-time-utilities';
 import { getTheme } from '@fluentui/style-utilities';
 import { getThemedContext } from '@fluentui/style-utilities';
 import { getVirtualParent } from '@fluentui/utilities';
-import { getWeekNumber } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
-import { getWeekNumbersInMonth } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
+import { getWeekNumber } from '@fluentui/date-time-utilities';
+import { getWeekNumbersInMonth } from '@fluentui/date-time-utilities';
 import { getWindow } from '@fluentui/utilities';
-import { getYearEnd } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
-import { getYearStart } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
+import { getYearEnd } from '@fluentui/date-time-utilities';
+import { getYearStart } from '@fluentui/date-time-utilities';
 import { GlobalClassNames } from '@fluentui/style-utilities';
 import { GlobalSettings } from '@fluentui/utilities';
 import { hasHorizontalOverflow } from '@fluentui/utilities';
@@ -176,8 +176,8 @@ import { IconFontSizes } from '@fluentui/style-utilities';
 import { IconNames } from '@fluentui/font-icons-mdl2';
 import { ICSPSettings } from '@fluentui/style-utilities';
 import { ICssInput } from '@fluentui/utilities';
-import type { ICSSPixelUnitRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
-import type { ICSSRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
+import type { ICSSPixelUnitRule } from '@fluentui/merge-styles';
+import type { ICSSRule } from '@fluentui/merge-styles';
 import { ICustomizableProps } from '@fluentui/utilities';
 import { ICustomizations } from '@fluentui/utilities';
 import { ICustomizerContext } from '@fluentui/utilities';
@@ -247,7 +247,7 @@ import { ISettingsFunction } from '@fluentui/utilities';
 import { ISettingsMap } from '@fluentui/utilities';
 import { IsFocusVisibleClassName } from '@fluentui/utilities';
 import { isIE11 } from '@fluentui/utilities';
-import { isInDateRangeArray } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
+import { isInDateRangeArray } from '@fluentui/date-time-utilities';
 import { isIOS } from '@fluentui/utilities';
 import { ISize } from '@fluentui/utilities';
 import type { ISlotProp } from '@fluentui/foundation-legacy';
@@ -283,7 +283,7 @@ import { mergeStyles } from '@fluentui/style-utilities';
 import { mergeStyleSets } from '@fluentui/style-utilities';
 import { mergeThemes } from '@fluentui/theme';
 import { modalize } from '@fluentui/utilities';
-import { MonthOfYear } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
+import { MonthOfYear } from '@fluentui/date-time-utilities';
 import { MotionAnimations } from '@fluentui/theme';
 import { MotionDurations } from '@fluentui/theme';
 import { MotionTimings } from '@fluentui/theme';
@@ -340,7 +340,7 @@ import { setFocusVisibility } from '@fluentui/utilities';
 import { setIconOptions } from '@fluentui/style-utilities';
 import { setLanguage } from '@fluentui/utilities';
 import { setMemoizeWeakMap } from '@fluentui/utilities';
-import { setMonth } from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
+import { setMonth } from '@fluentui/date-time-utilities';
 import { setPortalAttribute } from '@fluentui/utilities';
 import { setRTL } from '@fluentui/utilities';
 import { setSSR } from '@fluentui/utilities';
@@ -361,7 +361,7 @@ import { textAreaProperties } from '@fluentui/utilities';
 import { Theme } from '@fluentui/theme';
 import { ThemeSettingName } from '@fluentui/style-utilities';
 import { thProperties } from '@fluentui/utilities';
-import { TimeConstants } from '@fluentui/date-time-utilities/lib/dateValues/timeConstants';
+import { TimeConstants } from '@fluentui/date-time-utilities';
 import { toMatrix } from '@fluentui/utilities';
 import { trProperties } from '@fluentui/utilities';
 import { unhoistMethods } from '@fluentui/utilities';
@@ -728,6 +728,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     protected onSuggestionRemove: (ev: React_2.MouseEvent<HTMLElement>, item: T, index: number) => void;
     // (undocumented)
     protected onSuggestionSelect(): void;
+    protected onWrapperClick: (ev: React_2.MouseEvent<HTMLInputElement>) => void;
     // (undocumented)
     refocusSuggestions: (keyCode: KeyCodes) => void;
     // (undocumented)
@@ -940,6 +941,9 @@ export function clamp(value: number, max: number, min?: number): number;
 
 export { classNamesFunction }
 
+// @public
+export function cleanupDefaultLayerHost(doc: Document): void;
+
 // @public (undocumented)
 export const Coachmark: React_2.FunctionComponent<ICoachmarkProps>;
 
@@ -1116,6 +1120,9 @@ export function correctHSV(color: IHSV): IHSV;
 export function correctRGB(color: IRGB): IRGB;
 
 export { createArray }
+
+// @public
+export function createDefaultLayerHost(doc: Document): Node | null;
 
 export { createFontStyles }
 
@@ -1542,9 +1549,9 @@ export { FabricPerformance }
 // @public (undocumented)
 export enum FabricSlots {
     // (undocumented)
-    black = 20,
+    black = 21,
     // (undocumented)
-    neutralDark = 19,
+    neutralDark = 20,
     // (undocumented)
     neutralLight = 11,
     // (undocumented)
@@ -1552,15 +1559,17 @@ export enum FabricSlots {
     // (undocumented)
     neutralLighterAlt = 9,
     // (undocumented)
-    neutralPrimary = 18,
+    neutralPrimary = 19,
     // (undocumented)
-    neutralPrimaryAlt = 17,
+    neutralPrimaryAlt = 18,
     // (undocumented)
     neutralQuaternary = 13,
     // (undocumented)
     neutralQuaternaryAlt = 12,
     // (undocumented)
-    neutralSecondary = 16,
+    neutralSecondary = 17,
+    // (undocumented)
+    neutralSecondaryAlt = 16,
     // (undocumented)
     neutralTertiary = 15,
     // (undocumented)
@@ -1584,7 +1593,7 @@ export enum FabricSlots {
     // (undocumented)
     themeTertiary = 4,
     // (undocumented)
-    white = 21
+    white = 22
 }
 
 // @public
@@ -2449,14 +2458,22 @@ export interface IButtonGridCellProps<T> {
     index?: number;
     item: T;
     label?: string;
-    onClick?: (item: T) => void;
-    onFocus?: (item: T) => void;
-    onHover?: (item?: T) => void;
+    // (undocumented)
+    onClick?: (item: T, event?: React_2.MouseEvent<HTMLButtonElement>) => void;
+    // (undocumented)
+    onFocus?: (item: T, event?: React_2.FocusEvent<HTMLButtonElement>) => void;
+    // (undocumented)
+    onHover?: (item?: T, event?: React_2.MouseEvent<HTMLButtonElement>) => void;
+    // (undocumented)
     onKeyDown?: (ev: React_2.KeyboardEvent<HTMLButtonElement>) => void;
+    // (undocumented)
     onMouseEnter?: (ev: React_2.MouseEvent<HTMLButtonElement>) => boolean;
+    // (undocumented)
     onMouseLeave?: (ev: React_2.MouseEvent<HTMLButtonElement>) => void;
+    // (undocumented)
     onMouseMove?: (ev: React_2.MouseEvent<HTMLButtonElement>) => boolean;
     onRenderItem: (item: T) => JSX.Element;
+    // (undocumented)
     onWheel?: (ev: React_2.MouseEvent<HTMLButtonElement>) => void;
     role?: string;
     selected?: boolean;
@@ -3405,11 +3422,11 @@ export interface IColorPickerGridCellProps {
     isRadio?: boolean;
     item: IColorCellProps;
     label?: string;
-    onClick?: (item: IColorCellProps) => void;
+    onClick?: (item: IColorCellProps, event?: React_2.MouseEvent<HTMLButtonElement>) => void;
     // (undocumented)
-    onFocus?: (item: IColorCellProps) => void;
+    onFocus?: (item: IColorCellProps, event?: React_2.FormEvent<HTMLButtonElement>) => void;
     // (undocumented)
-    onHover?: (item?: IColorCellProps) => void;
+    onHover?: (item?: IColorCellProps, event?: React_2.MouseEvent<HTMLButtonElement>) => void;
     // (undocumented)
     onKeyDown?: (ev: React_2.KeyboardEvent<HTMLButtonElement>) => void;
     onMouseEnter?: (ev: React_2.MouseEvent<HTMLButtonElement>) => boolean;
@@ -3634,6 +3651,8 @@ export interface IColumn {
     onColumnResize?: (width?: number) => void;
     onRender?: (item?: any, index?: number, column?: IColumn) => any;
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
+    // (undocumented)
+    onRenderField?: IRenderFunction<IDetailsColumnFieldProps>;
     onRenderFilterIcon?: IRenderFunction<IDetailsColumnFilterIconProps>;
     onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
     sortAscendingAriaLabel?: string;
@@ -4091,6 +4110,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     onItemClick?: (ev?: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
     onMenuDismissed?: (contextualMenu?: IContextualMenuProps) => void;
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
+    onRenderContextualMenuItem?: IRenderFunction<IContextualMenuItem>;
     onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
     onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
     onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
@@ -4276,6 +4296,17 @@ export interface IDetailsCheckboxProps {
     checked: boolean;
     // (undocumented)
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IDetailsColumnFieldProps {
+    cellValueKey?: string;
+    className?: string;
+    column: IColumn;
+    isSelected?: boolean;
+    item: any;
+    itemIndex: number;
+    onRender: (item?: any, index?: any, column?: IColumn) => React_2.ReactNode;
 }
 
 // @public (undocumented)
@@ -4502,6 +4533,7 @@ export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {
 
 // @public (undocumented)
 export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
+    // @deprecated
     ariaLabel?: string;
     ariaLabelForGrid?: string;
     ariaLabelForListHeader?: string;
@@ -4549,6 +4581,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     onRenderCheckbox?: IRenderFunction<IDetailsListCheckboxProps>;
     onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
     onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
+    onRenderField?: IRenderFunction<IDetailsColumnFieldProps>;
     onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React_2.ReactNode;
     onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React_2.ReactNode;
     onRenderRow?: IRenderFunction<IDetailsRowProps>;
@@ -4565,6 +4598,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     selectionPreservedOnEmptyClick?: boolean;
     selectionZoneProps?: ISelectionZoneProps;
     setKey?: string;
+    // @deprecated
     shouldApplyApplicationRole?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsListStyleProps, IDetailsListStyles>;
     theme?: ITheme;
@@ -4619,7 +4653,7 @@ export interface IDetailsRow {
 }
 
 // @public (undocumented)
-export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
+export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey' | 'onRenderField'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
     cellsByColumn?: {
         [columnKey: string]: React_2.ReactNode;
     };
@@ -4651,7 +4685,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onWillUnmount?: (row?: DetailsRowBase) => void;
     role?: string;
-    rowFieldsAs?: React_2.ComponentType<IDetailsRowFieldsProps>;
+    rowFieldsAs?: IComponentAs<IDetailsRowFieldsProps>;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
     useFastIcons?: boolean;
@@ -4698,6 +4732,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     compact?: boolean;
     // (undocumented)
     enableUpdateAnimations?: boolean;
+    isSelected?: boolean;
     item: any;
     itemIndex: number;
     rowClassNames: {
@@ -5378,6 +5413,7 @@ export interface IDragOptions {
 
 // @public (undocumented)
 export interface IDropdown {
+    dismissMenu: () => void;
     // (undocumented)
     focus: (shouldOpenOnFocus?: boolean) => void;
     readonly selectedOptions: IDropdownOption[];
@@ -5433,9 +5469,11 @@ export interface IDropdownStyles {
     caretDownWrapper: IStyle;
     dropdown: IStyle;
     dropdownDivider: IStyle;
+    dropdownDividerHidden: IStyle;
     dropdownItem: IStyle;
     dropdownItemDisabled: IStyle;
     dropdownItemHeader: IStyle;
+    dropdownItemHeaderHidden: IStyle;
     dropdownItemHidden: IStyle;
     dropdownItems: IStyle;
     dropdownItemSelected: IStyle;
@@ -5647,6 +5685,7 @@ export interface IFacepileProps extends React_2.ClassAttributes<FacepileBase> {
     maxDisplayablePersonas?: number;
     onRenderPersona?: IRenderFunction<IFacepilePersona>;
     onRenderPersonaCoin?: IRenderFunction<IFacepilePersona>;
+    onRenderPersonaWrapper?: IRenderFunction<IFacepilePersona>;
     overflowButtonProps?: IButtonProps;
     overflowButtonType?: OverflowButtonType;
     overflowPersonas?: IFacepilePersona[];
@@ -6368,8 +6407,11 @@ export interface ILabelStyles {
 export interface ILayer {
 }
 
-// @public (undocumented)
+// @public
 export interface ILayerHost {
+    hostId: string;
+    notifyLayersChanged(): void;
+    rootRef: React_2.MutableRefObject<HTMLDivElement | null>;
 }
 
 // @public (undocumented)
@@ -6703,10 +6745,12 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     delayedRender?: boolean;
     dismissButtonAriaLabel?: string;
     dismissIconProps?: IIconProps;
+    expandButtonProps?: IButtonProps;
     isMultiline?: boolean;
     messageBarIconProps?: IIconProps;
     messageBarType?: MessageBarType;
     onDismiss?: (ev?: React_2.MouseEvent<HTMLElement | BaseButton | Button>) => any;
+    // @deprecated
     overflowButtonAriaLabel?: string;
     role?: 'alert' | 'status' | 'none';
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
@@ -6757,6 +6801,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
     dragOptions?: IDragOptions;
+    // @deprecated
     enableAriaHiddenSiblings?: boolean;
     isAlert?: boolean;
     isBlocking?: boolean;
@@ -6847,6 +6892,7 @@ export interface INavLinkGroup {
     collapseByDefault?: boolean;
     expandAriaLabel?: string;
     groupData?: any;
+    isExpanded?: boolean;
     links: INavLink[];
     name?: string;
     onHeaderClick?: (ev?: React_2.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
@@ -7007,7 +7053,7 @@ export interface IOverlayStyles {
 }
 
 // @public
-export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
+export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey' | 'onRenderField'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
 
 // @public (undocumented)
 export interface IPage<T = any> {
@@ -7490,6 +7536,8 @@ export interface IPopupProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     ariaLabel?: string;
     ariaLabelledBy?: string;
     className?: string;
+    // @deprecated
+    enableAriaHiddenSiblings?: boolean;
     onDismiss?: (ev?: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
     onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     role?: string;
@@ -7594,6 +7642,7 @@ export { IProcessedStyleSet }
 
 // @public (undocumented)
 export interface IProgressIndicatorProps extends React_2.ClassAttributes<ProgressIndicatorBase> {
+    ariaLabel?: string;
     ariaValueText?: string;
     barHeight?: number;
     className?: string;
@@ -8030,6 +8079,7 @@ export interface ISelectionZoneProps extends React_2.ClassAttributes<SelectionZo
     onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
     onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
     selection: ISelection;
+    selectionClearedOnSurfaceClick?: boolean;
     selectionMode?: SelectionMode_2;
     selectionPreservedOnEmptyClick?: boolean;
 }
@@ -8472,6 +8522,7 @@ export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, 
 // @public (undocumented)
 export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles>, React_2.HTMLAttributes<HTMLElement> {
     align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
+    basis?: React_2.CSSProperties['flexBasis'];
     className?: string;
     disableShrink?: boolean;
     grow?: boolean | number | 'inherit' | 'initial' | 'unset';
@@ -8795,8 +8846,8 @@ export interface ISwatchColorPickerProps extends React_2.RefAttributes<HTMLEleme
     // @deprecated (undocumented)
     isControlled?: boolean;
     mouseLeaveParentSelector?: string | undefined;
-    onCellFocused?: (id?: string, color?: string) => void;
-    onCellHovered?: (id?: string, color?: string) => void;
+    onCellFocused?: (id?: string, color?: string, event?: React_2.FormEvent<HTMLButtonElement>) => void;
+    onCellHovered?: (id?: string, color?: string, event?: React_2.MouseEvent<HTMLButtonElement>) => void;
     onChange?: (event: React_2.FormEvent<HTMLElement>, id: string | undefined, color: string | undefined) => void;
     // @deprecated (undocumented)
     onColorChanged?: (id?: string, color?: string) => void;
@@ -9206,7 +9257,7 @@ export interface ITooltipHostProps extends React_2.HTMLAttributes<HTMLDivElement
 
 // @public (undocumented)
 export interface ITooltipHostState {
-    // (undocumented)
+    // @deprecated (undocumented)
     isAriaPlaceholderRendered: boolean;
     // (undocumented)
     isTooltipVisible: boolean;

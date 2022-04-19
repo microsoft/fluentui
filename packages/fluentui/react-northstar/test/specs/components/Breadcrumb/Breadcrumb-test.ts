@@ -5,5 +5,6 @@ describe('Breadcrumb', () => {
   isConformant(Breadcrumb, {
     testPath: __filename,
     constructorName: 'Breadcrumb',
+    skipAsPropTests: 'as-component',
   });
 });

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolbarDivider renders a default state 1`] = `
+<div>
+  <div
+    aria-labelledby="divider-7"
+    aria-orientation="vertical"
+    class="fui-Divider"
+    role="separator"
+  >
+    <div
+      class="fui-Divider__wrapper"
+      id="divider-7"
+    >
+      Default ToolbarDivider
+    </div>
+  </div>
+</div>
+`;

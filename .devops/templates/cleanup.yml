@@ -5,9 +5,9 @@ parameters:
 
 steps:
   - script: |
-      npm run check-for-modified-files
+      yarn check:modified-files
     condition: ${{ parameters.checkForModifiedFiles }}
-    displayName: check for modified files
+    displayName: 'check: modified files'
 
   # In theory the "workspace: clean: all" setting should handle this, but it doesn't always seem to work.
   # ReallyClean is a custom task from our internal UI Fabric azure-devops-tasks repo which attempts to

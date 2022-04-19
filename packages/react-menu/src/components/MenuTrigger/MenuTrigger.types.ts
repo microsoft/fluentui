@@ -4,7 +4,9 @@ export type MenuTriggerProps = {
   /**
    * Explicitly require single child or render function
    */
-  children: (React.ReactElement & { ref?: React.Ref<unknown> }) | ((props: MenuTriggerChildProps) => React.ReactNode);
+  children:
+    | (React.ReactElement & { ref?: React.Ref<unknown> })
+    | ((props: MenuTriggerChildProps) => React.ReactElement | null);
 };
 
 /**
@@ -22,5 +24,6 @@ export type MenuTriggerChildProps = Required<
 };
 
 export type MenuTriggerState = {
-  children: React.ReactNode;
+  children: React.ReactElement | null;
+  isSubmenu: boolean;
 };

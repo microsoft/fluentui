@@ -7,8 +7,10 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
@@ -16,39 +18,36 @@ export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
 // @public
 export const Switch: ForwardRefComponent<SwitchProps>;
 
-// @public (undocumented)
-export const switchClassName = "fui-Switch";
+// @public @deprecated (undocumented)
+export const switchClassName: string;
 
 // @public (undocumented)
-export interface SwitchCommons {
-    checked?: boolean;
+export const switchClassNames: SlotClassNames<SwitchSlots>;
+
+// @public (undocumented)
+export type SwitchOnChangeData = {
+    checked: boolean;
+};
+
+// @public
+export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'onChange'> & Partial<SwitchCommons> & {
     defaultChecked?: boolean;
-    disabled?: boolean;
-    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
-        checked: boolean;
-    }) => void;
-}
-
-// @public (undocumented)
-export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange'>, SwitchCommons {
-}
-
-// @public (undocumented)
-export type SwitchSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    track: IntrinsicShorthandProps<'div'>;
-    thumbWrapper: IntrinsicShorthandProps<'div'>;
-    thumb: IntrinsicShorthandProps<'div'>;
-    input: IntrinsicShorthandProps<'input'>;
-    activeRail: IntrinsicShorthandProps<'div'>;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => void;
 };
 
 // @public (undocumented)
-export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommons {
-}
+export type SwitchSlots = {
+    root: NonNullable<Slot<'div'>>;
+    indicator: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>>;
+    label?: Slot<typeof Label>;
+};
 
 // @public
-export const useSwitch_unstable: (props: SwitchProps, ref: React_2.Ref<HTMLElement>) => SwitchState;
+export type SwitchState = ComponentState<SwitchSlots> & SwitchCommons;
+
+// @public
+export const useSwitch_unstable: (props: SwitchProps, ref: React_2.Ref<HTMLInputElement>) => SwitchState;
 
 // @public
 export const useSwitchStyles_unstable: (state: SwitchState) => SwitchState;

@@ -1,134 +1,229 @@
 # @fluentui/react-switch Spec
 
+**GitHub Epic issue** - [Switch Convergence #19409](https://github.com/microsoft/fluentui/issues/19409)
+
 ## Background
 
-Previously called Toggle in OUFR and Checkbox in Stardust, the Switch component
-introduces a quick way of switching between Boolean values by pressing the thumb.
+Previously called `Toggle` in v8 and `Checkbox` in v0, the `Switch` component introduces a quick way of switching between on/off states by clicking/tapping the thumb.
 
 ## Prior Art
 
-Upon investigating other component libraries, it was decided to:
+### Open UI
 
-1. Change the name to Switch
+The Open UI [Switch Research](https://open-ui.org/components/switch) page shows that the component is used in UI platforms across the web, with the `Switch` moniker being the most prominently used across major component libraries.
 
-Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen`, and `Fast`) Switch appears to be a more prominently used name.
+### Comparison of v8 and v0
 
-[Open UI](https://open-ui.org/components/switch)
-[Epic Issue](https://github.com/microsoft/fluentui/issues/19409)
+The existing components are:
+
+- v8 - [Toggle](https://developer.microsoft.com/en-us/fluentui#/controls/web/toggle)
+- v0 - [Checkbox](https://fluentsite.z22.web.core.windows.net/0.52.2/components/checkbox/definition)
+
+### [Toggle in v8/Fabric](https://developer.microsoft.com/en-us/fluentui#/controls/web/toggle)
+
+The v8 `Toggle` component
+
+supports both `indeterminate` and `checked` states. In this case, an input tag is used and its opacity is set to 0. This allows for the logic to be performed by the native element while a div is rendered to show the styled checkbox.
+
+Example
+
+```tsx
+<Checkbox
+  label="Indeterminate checkbox (controlled)"
+  indeterminate={isIndeterminate}
+  checked={isChecked}
+  onChange={onChange}
+/>
+```
+
+Component props:
+
+| Prop             | Description                                                                                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ariaLabel`      | Text for screen-reader to announce as the name of the toggle.                                                                                |
+| `as`             | Render the root element as another type.                                                                                                     |
+| `checked`        | Checked state of the toggle. If you are maintaining state yourself, use this property. Otherwise use `defaultChecked`.                       |
+| `componentRef`   | Optional callback to access the IToggle interface. Use this instead of ref for accessing the public methods and properties of the component. |
+| `defaultChecked` | Initial state of the toggle. If you want the toggle to maintain its own state, use this. Otherwise use `checked`.                            |
+| `disabled`       | Optional disabled flag.                                                                                                                      |
+| `inlineLabel`    | Whether the label (not the onText/offText) should bbe positioned inline with the toggle control.                                             |
+| `label`          | A label for the toggle.                                                                                                                      |
+| `offText`        | Text to display when toggle is OFF.                                                                                                          |
+| `onChange`       | Callback issued when the value changes.                                                                                                      |
+| `onText`         | Text to display when toggle is ON.                                                                                                           |
+| `role`           | Whether to use the 'switch' role (ARIA 1.1) or the 'checkbox' role (ARIA 1.0).                                                               |
+| `styles`         | Optional styles for the component.                                                                                                           |
+| `theme`          | Theme provided by HOC.                                                                                                                       |
+
+### [Checkbox in v0/Northstar](https://fluentsite.z22.web.core.windows.net/0.56.0/components/checkbox/definition)
+
+The v0 `Checkbox` component
+
+supports a mixed state, which is the same as indeterminate in v8. It is rendered as a `div` with `role="checkbox"` and does not use the native input element.
+
+```tsx
+// string
+<Checkbox label="Make my profile visible" />
+
+// jsx
+<Checkbox
+  label={
+    <span>
+      Long labels will wrap and the indicator <br /> should remain top-aligned.
+    </span>
+  }
+/>
+```
+
+Component props:
+
+| Prop             | Description                                                        |
+| ---------------- | ------------------------------------------------------------------ |
+| `accessibility`  | Accessibility behavior if overridden by the user.                  |
+| `as`             | Render as given string or component.                               |
+| `checked`        | Checkbox's checked state.                                          |
+| `className`      | Additional styles.                                                 |
+| `defaultChecked` | Whether the checkbox should be set to checked by default.          |
+| `design`         | ...                                                                |
+| `disabled`       | Whether the checkbox is disabled or not.                           |
+| `indicator`      | Checkbox's icon indicator.                                         |
+| `label`          | Label text or jsx to be rendered in the label.                     |
+| `labelPosition`  | Whether the label is rendered on left or right (`start` or `end`). |
+| `onChange`       | Event handler to be called after checked state has changed.        |
+| `onClick`        | Event handler to be called after the checkbox is clicked.          |
+| `styles`         | Additional styles.                                                 |
+| `toggle`         | Render a toggle style checkbox with on and off choices.            |
+| `variables`      | Additional styles.                                                 |
 
 ## Sample Code
 
-```jsx=
+```tsx
 <Switch checked />
 <Switch checked disabled/>
 <Switch checked onChange={onChange}/>
 ```
 
+https://github.com/microsoft/fluentui/blob/master/packages/react-checkbox/src/components/Checkbox/Checkbox.types.ts
+
 ## API
 
-| Name           | V0      | V8      | Description                                                                 |
-| -------------- | ------- | ------- | --------------------------------------------------------------------------- |
-| checked        | &check; | &check; | The value of the Switch. If `true` then the Switch will be enabled.         |
-| defaultChecked | &check; | &check; | The default value of the Switch. If `true` then the Switch will be enabled. |
-| disabled       | &check; | &check; | Whether the Switch should be disabled.                                      |
-| onChange       | &check; | &check; | Callback to be called when the checked state value changes.                 |
+### Switch Props
 
-## Migration
-
-<img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="100"/>
-
-| Name          | Description                                                                   | Reason                                                             |
-| ------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| indicator     | A checkbox's indicator icon can be customized.                                | Toggle will have a slot for the thumb.                             |
-| label         | A checkbox can render a label next to its indicator.                          | To be decided on how it is handled                                 |
-| labelPosition | Determines whether the label should be positioned before or after the Switch. | To be decided on how it is handled                                 |
-| onClick       | Called after a checkbox is clicked.                                           | The native input element handles onClick.                          |
-| toggle        | A checkbox can be formatted to show an "on or off" choice.                    | Toggle is separated from checkbox due to vast styling differences. |
-
-<img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="120"/>
-
-| Name          | Description                                                                                     | Reason                              |
-| ------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------- |
-| componentRef  | Optional callback to access the IToggle interface.                                              | Not used in converged components    |
-| label         | A label for the toggle.                                                                         | To be decided on how it is handled. |
-| labelPosition | Determines whether the label should be positioned before or after the Switch.                   | To be decided on how it is handled  |
-| onText        | Text to display when toggle is ON.                                                              | To be decided.                      |
-| offText       | Text to display when toggle is OFF.                                                             | To be decided.                      |
-| ariaLabel     | Text for screen-reader to announce as the name of the toggle.                                   | Toggle has a hidden input element.  |
-| onAriaLabel   | @deprecated Use `ariaLabel` for name, and let the metadata convey state                         | deprecated                          |
-| offAriaLabel  | @deprecated Use `ariaLabel` for name, and let the metadata convey state                         | deprecated                          |
-| inlineLabel   | Whether the label (not the onText/offText) should be positioned inline with the toggle control. | It can be manually styled           |
-| onChanged     | @deprecated Use `onChange` instead.                                                             | deprecated                          |
-| theme         | Theme provided by HOC.                                                                          | Not used in converged components    |
-| styles        | Optional styles for the component.                                                              | Not used in converged components    |
-| role          | Whether to use the 'switch' role (ARIA 1.1) or the 'checkbox' role (ARIA 1.0).                  | Toggle has a hidden input element.  |
+See [Switch.types.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-switch/src/components/Switch/Switch.types.ts).
 
 ## Structure
 
-- _**Public**_
+### Slots
 
-```jsx=
-<Switch checked={true}/>
+- `root` - The outer `<div>` wrapping the `indicator`, `input` and `label` to provide the correct layout styling.
+- `indicator` - The track and the thumb sliding over it indicating the on and off status of the Switch.
+- `input` - The visually hidden `<input type="checkbox">` that handles the `Switch`'s functionality. This is the **primary** slot: it receives all of the native props passed to the `Switch` component. It has opacity 0 and overlaps the entire `root` slot, for hit testing.
+- `label` - (optional) The `<label>` describing this `Switch`.
+
+### Public
+
+```tsx
+<Switch checked={true} />
 ```
 
-- _**Internal**_
+### Internal
 
-```jsx=
+```tsx
 <slots.root {...slotProps.root}>
-  <slots.track {...slotProps.track} />
-  <slots.thumbWrapper {...slotProps.thumbWrapper}>
-    <slots.thumb {...slotProps.thumb} />
-  </slots.thumbWrapper>
-  <input type="checkbox" />
-</slots.root>;
+  <slots.input {...slotProps.input} />
+  {labelPosition !== 'after' && slots.label && <slots.label {...slotProps.label} />}
+  <slots.indicator {...slotProps.indicator} />
+  {labelPosition === 'after' && slots.label && <slots.label {...slotProps.label} />}
+</slots.root>
 ```
 
-- _**DOM**_
+### DOM
 
-```jsx=
-<div className="fui-Switch">
-  <div className="fui-Switch-track" />
-  <div className="fui-Switch-thumbWrapper">
-    <div className="fui-Switch-thumb" />
+_With label before the track thumb indicator:_
+
+```tsx
+<div class="fui-Switch">
+  <input class="fui-Switch__input" id="switch-1" role="switch" type="checkbox" />
+  <label class="fui-Switch__label" for="switch-1" />
+  <div aria-hidden="true" class="fui-Switch__indicator">
+    <CircleFilled />
   </div>
-  <input type="checkbox" />
-</div>;
+</div>
 ```
+
+_With label after the track thumb indicator:_
+
+```tsx
+<div class="fui-Switch">
+  <input class="fui-Switch__input" id="switch-1" role="switch" type="checkbox" />
+  <div aria-hidden="true" class="fui-Switch__indicator">
+    <CircleFilled />
+  </div>
+  <label class="fui-Switch__label" for="switch-1" />
+</div>
+```
+
+## Migration
+
+See [MIGRATION.md](MIGRATION.md).
 
 ## Behaviors
 
-### Component States
+### States
 
-- **Disabled**
-  - When disabled, all events are ignored, and the Switch's value never updates.
-  - Does not allow focus.
-  - The cursor changes to `not-allowed`.
-- **Checked**
-  - Switch is off when the “thumb” is indicated on the left.
-  - Switch is on when the thumb is indicated on the right.
-  - This is switched in RTL.
-  - When toggling switches on and off, the on state should change using the checked state appearance styles.
+The following section describes the different states in which a `Switch` can be throughout the course of interaction with it.
 
-### Hover
+#### Enabled state
 
-The cursor changes to the hand icon. The outline of the Switch and thumb should also darken. This helps reinforce that the area is interactive.
+An enabled `Switch` communicates interaction by having styling that invites the user to click/tap on it to toggle between on/off states.
 
-### Keyboard
+#### Disabled state
 
-Since the Switch is an interactive component, it must be focusable and keyboard accessible.
-The expected keyboard shortcut for activating a Switch is the spacebar key.
+A disabled `Switch` is non-interactive, ignoring all events and never updating its value. It does not allow focus and changes its styling to indicates this lack of interaction.
 
-1. Use the spacebar to switch off
-2. Use the spacebar to switch on
+#### Hovered state
 
-### Cursor
+A hovered `Switch` changes styling to communicate that the user has placed a cursor above it.
 
-Clicking triggers toggling the state change. The thumb animates from right to left [on > off] and left to right [off > on]
+#### Pressed state
 
-### Touch
+A pressed `Switch` changes styling to communicate that the user is currently pressing it.
 
-Touch follows the same behavior as the cursor.
+#### Unchecked state
+
+An unchecked `Switch` has the thumb on the left (right in RTL) and styling to indicate that it is off.
+
+#### Checked state
+
+A checked `Switch` has the thumb on the right (left in RTL) and styling to indicate that it is on.
+
+### Interaction
+
+### Keyboard interaction
+
+The following is a set of keys that interact with the `Switch` component:
+
+| Key     | Description                     |
+| ------- | ------------------------------- |
+| `Space` | Switches between on/off states. |
+
+### Cursor interaction
+
+- `click`: Triggers a toggle between on and off values. The thumb animates from left to right [off > on] and right to left [on > off] to reflect this change (the directions are reversed in RTL).
+
+### Touch interaction
+
+The same behavior as above is traslated for touch events.
 
 ## Accessibility
 
-Accessibility will be handled by the hidden `<input type="checkbox" />` element and follows the same pattern.
+### Relevant documents
+
+- [WAI-ARIA 1.1 Spec](https://www.w3.org/TR/wai-aria-1.1/#switch)
+- [WAI-ARIA 1.2 Spec](https://www.w3.org/TR/wai-aria-1.2/#switch)
+- [WAI-ARIA 1.2 Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.2/#switch)
+
+### Expected behavior
+
+- Switch uses a standard HTML `<input type="checkbox">` with `role="switch"` set and does not require any additional handling for aria on the input element.
+- The track and thumb indicator has `aria-hidden="true"` as it is a purely visual representation of the state of the underlying input.

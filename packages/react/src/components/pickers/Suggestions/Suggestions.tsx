@@ -196,7 +196,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
             {forceResolveText}
           </CommandButton>
         )}
-        {isLoading && <Spinner {...spinnerClassNameOrStyles} label={loadingText} />}
+        {isLoading && <Spinner {...spinnerClassNameOrStyles} ariaLabel={loadingText} label={loadingText} />}
         {hasNoSuggestions ? noResults() : this._renderSuggestions()}
         {searchForMoreText && moreSuggestionsAvailable && (
           <CommandButton
@@ -211,7 +211,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
             {searchForMoreText}
           </CommandButton>
         )}
-        {isSearching ? <Spinner {...spinnerClassNameOrStyles} label={searchingText} /> : null}
+        {isSearching ? <Spinner {...spinnerClassNameOrStyles} ariaLabel={searchingText} label={searchingText} /> : null}
         {footerTitle && !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ? (
           <div className={this._classNames.title}>{footerTitle(this.props)}</div>
         ) : null}

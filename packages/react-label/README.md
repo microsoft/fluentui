@@ -11,9 +11,10 @@ To use the `Label` component import it from `@fluentui/react-label` and use it a
 ```tsx
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
+import { useId } from '@fluentui/react-utilities';
 
 export const labelExample = () => {
-  const inputId = React.useId('firstNameLabel');
+  const inputId = useId('firstNameLabel-');
 
   return (
     <>

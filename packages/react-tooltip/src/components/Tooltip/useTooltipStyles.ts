@@ -2,9 +2,16 @@ import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createArrowStyles } from '@fluentui/react-positioning';
 import { tokens } from '@fluentui/react-theme';
 import { arrowHeight } from './private/constants';
-import type { TooltipState } from './Tooltip.types';
+import type { TooltipSlots, TooltipState } from './Tooltip.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `tooltipClassNames.root` instead.
+ */
 export const tooltipClassName = 'fui-Tooltip';
+export const tooltipClassNames: SlotClassNames<TooltipSlots> = {
+  content: 'fui-Tooltip__content',
+};
 
 /**
  * Styles for the tooltip
@@ -49,12 +56,14 @@ const useStyles = makeStyles({
 export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => {
   const styles = useStyles();
 
-  state.root.className = mergeClasses(
+  state.content.className = mergeClasses(
+    /* eslint-disable-next-line deprecation/deprecation */
     tooltipClassName,
+    tooltipClassNames.content,
     styles.root,
     state.appearance === 'inverted' && styles.inverted,
     state.visible && styles.visible,
-    state.root.className,
+    state.content.className,
   );
 
   state.arrowClassName = styles.arrow;

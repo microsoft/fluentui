@@ -11,7 +11,7 @@ import * as React_2 from 'react';
 export const anchorProperties: Record<string, number>;
 
 // @public
-export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>> | ((props: TTriggerProps) => React_2.ReactNode) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactNode;
+export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>> | ((props: TTriggerProps) => React_2.ReactElement | null) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactElement | null;
 
 // @public
 export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = {
@@ -42,25 +42,17 @@ export const colGroupProperties: Record<string, number>;
 // @public (undocumented)
 export const colProperties: Record<string, number>;
 
-// @public (undocumented)
-export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> = Omit<{
-    [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
-}, Primary & 'root'> & PropsWithoutRef<Shorthands[Primary]>;
+// @public
+export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
 
 // @public
-export type ComponentSlotProps<Component extends React_2.ComponentType> = Component extends React_2.ComponentType<infer Props> ? ObjectShorthandProps<Props> : never;
-
-// @public (undocumented)
-export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
+export type ComponentState<Slots extends SlotPropsRecord> = {
     components: {
-        [Key in keyof Shorthands]-?: React_2.ComponentType<NonNullable<Shorthands[Key]> extends ObjectShorthandProps<infer P> ? P : NonNullable<Shorthands[Key]>> | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+        [Key in keyof Slots]-?: React_2.ComponentType<ExtractSlotProps<Slots[Key]>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     };
-} & Shorthands;
-
-// @public
-export type DefaultObjectShorthandProps = ObjectShorthandProps<Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
-    as?: keyof JSX.IntrinsicElements;
-}>;
+} & {
+    [Key in keyof Slots]: ReplaceNullWithUndefined<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>;
+};
 
 // Warning: (ae-internal-missing-underscore) The name "defaultSSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -71,10 +63,19 @@ export const defaultSSRContextValue: SSRContextValue;
 export const divProperties: Record<string, number>;
 
 // @public
+export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
+
+// @public
+export const fieldsetProperties: Record<string, number>;
+
+// @public
+export type FluentTriggerComponent = {
+    isFluentTriggerComponent?: boolean;
+};
+
+// @public
 export const formProperties: Record<string, number>;
 
-// Warning: (ae-forgotten-export) The symbol "ObscureEventName" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
 
@@ -85,25 +86,30 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
-export const getPartitionedNativeProps: ({ primarySlotTagName, props, excludedPropNames, }: {
+export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className">, ExcludedPropKeys extends Extract<keyof Props, string> = never>({ primarySlotTagName, props, excludedPropNames, }: {
     primarySlotTagName: keyof JSX.IntrinsicElements;
-    props: Pick<React_2.HTMLAttributes<HTMLElement>, 'style' | 'className'>;
-    excludedPropNames?: string[] | undefined;
+    props: Props;
+    excludedPropNames?: ExcludedPropKeys[] | undefined;
 }) => {
     root: {
         style: React_2.CSSProperties | undefined;
         className: string | undefined;
     };
-    primary: React_2.HTMLAttributes<any>;
+    primary: Omit<Props, ExcludedPropKeys>;
 };
 
 // @public
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
 // @public
-export function getSlots<R extends ObjectShorthandPropsRecord>(state: ComponentState<R>): {
+export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slots: Slots<R>;
-    slotProps: SlotProps<R>;
+    slotProps: ObjectSlotProps<R>;
+};
+
+// @public
+export const getTriggerChild: (children: React_2.ReactNode) => React_2.ReactElement & {
+    ref?: React_2.Ref<unknown>;
 };
 
 // @public
@@ -122,13 +128,7 @@ export const imgProperties: Record<string, number>;
 export const inputProperties: Record<string, number>;
 
 // @public
-export type IntrinsicShorthandProps<DefaultAs extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<DefaultAs> extends false ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types' : ({
-    as?: DefaultAs;
-} & ObjectShorthandProps<React_2.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>) | {
-    [As in AlternateAs]: {
-        as: As;
-    } & ObjectShorthandProps<React_2.PropsWithRef<JSX.IntrinsicElements[As]>>;
-}[AlternateAs];
+export const isFluentTrigger: (element: React_2.ReactElement) => boolean | undefined;
 
 // @public
 export type IsSingleton<T extends string> = {
@@ -142,26 +142,10 @@ export const labelProperties: Record<string, number>;
 export const liProperties: Record<string, number>;
 
 // @public
-export const nullRender: () => null;
-
-// @public
-export type ObjectShorthandProps<Props extends {
-    children?: React_2.ReactNode;
-} = {}> = Props & {
-    children?: Props['children'] | ShorthandRenderFunction<Props>;
-};
-
-// @public (undocumented)
-export type ObjectShorthandPropsRecord = Record<string, DefaultObjectShorthandProps | undefined>;
-
-// @public
 export const olProperties: Record<string, number>;
 
 // @public
 export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
-
-// @public
-export const onlyChild: <P>(child: boolean | React_2.ReactText | React_2.ReactFragment | React_2.ReactPortal | React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>> | null | undefined) => React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>>;
 
 // @public (undocumented)
 export const optionProperties: Record<string, number>;
@@ -173,13 +157,22 @@ export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Om
 export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
 
 // @public
+export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | undefined : T;
+
+// @public
 export function resetIdsForTests(): void;
 
 // @public
-export function resolveShorthand<Props extends DefaultObjectShorthandProps, Required extends boolean = false>(value: ShorthandProps<Props>, options?: ResolveShorthandOptions<Props, Required>): Required extends false ? Props | undefined : Props;
+export const resolveShorthand: ResolveShorthandFunction;
 
 // @public (undocumented)
-export type ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> = {
+export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
+    <P extends Props | null>(value: P | SlotShorthandValue | undefined, options?: ResolveShorthandOptions<P, true>): ReplaceNullWithUndefined<P>;
+    <P extends Props | null>(value: P | SlotShorthandValue | undefined, options?: ResolveShorthandOptions<P, boolean>): ReplaceNullWithUndefined<P> | undefined;
+};
+
+// @public (undocumented)
+export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
     required?: Required;
     defaultProps?: Props;
 };
@@ -187,19 +180,36 @@ export type ResolveShorthandOptions<Props extends Record<string, any>, Required 
 // @public
 export const selectProperties: Record<string, number>;
 
-// @public (undocumented)
-export type ShorthandProps<Props extends DefaultObjectShorthandProps> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | number | null | undefined | Props;
-
-// @public (undocumented)
-export type ShorthandRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'children' | 'as'>) => React_2.ReactNode;
-
 // @public
 export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.KeyboardEvent): boolean;
 
-// @public (undocumented)
-export type Slots<S extends ObjectShorthandPropsRecord> = {
-    [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As> ? As : S[K] extends ObjectShorthandProps<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<NonNullable<S[K]>>;
+// @public
+export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
+    as?: Type;
+} & WithSlotRenderFunction<IntrisicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? WithSlotRenderFunction<Props> : Type> | {
+    [As in AlternateAs]: {
+        as: As;
+    } & WithSlotRenderFunction<IntrisicElementProps<As>>;
+}[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
+
+// @public
+export type SlotClassNames<Slots> = {
+    [SlotName in keyof Slots]-?: string;
 };
+
+// @public
+export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandValue | null | undefined>;
+
+// @public (undocumented)
+export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'children' | 'as'>) => React_2.ReactNode;
+
+// @public (undocumented)
+export type Slots<S extends SlotPropsRecord> = {
+    [K in keyof S]: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As> ? As : ExtractSlotProps<S[K]> extends React_2.ComponentType<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<ExtractSlotProps<S[K]>>;
+};
+
+// @public
+export type SlotShorthandValue = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal;
 
 // Warning: (ae-incompatible-release-tags) The symbol "SSRContext" is marked as @public, but its signature references "SSRContextValue" which is marked as @internal
 //
@@ -233,6 +243,11 @@ export const trProperties: Record<string, number>;
 
 // @public
 export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
+
+// @public
+export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+    as?: keyof JSX.IntrinsicElements;
+};
 
 // @public
 export function useBoolean(initialState: boolean): [boolean, UseBooleanCallbacks];
@@ -276,6 +291,9 @@ export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 export function useIsSSR(): boolean;
 
 // @public
+export function useMergedEventCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
+
+// @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @public
@@ -308,25 +326,10 @@ export function useSSRContext(): SSRContextValue;
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
 
 // @public
-export function useTriggerElement<TriggerProps extends React_2.HTMLProps<unknown>>(options: UseTriggerElementOptions<TriggerProps>): React_2.ReactNode;
-
-// @public (undocumented)
-export type UseTriggerElementOptions<TriggerProps> = {
-    children: React_2.ReactElement | ((props: TriggerProps) => React_2.ReactNode) | null | undefined;
-    ref: React_2.Ref<unknown> | undefined;
-    outerProps: React_2.HTMLProps<unknown>;
-    overrideProps: TriggerProps;
-};
-
-// @public
 export const useUnmount: (callback: () => void) => void;
 
 // @public
 export const videoProperties: Record<string, number>;
-
-// Warnings were encountered during analysis:
-//
-// lib/compose/getSlots.d.ts:28:5 - (ae-forgotten-export) The symbol "SlotProps" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

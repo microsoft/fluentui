@@ -1,18 +1,26 @@
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { AccordionHeader } from './AccordionHeader';
+import { AccordionHeaderProps } from './AccordionHeader.types';
 import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../common/isConformant';
-import { AccordionHeaderContext } from './AccordionHeaderContext';
 import { Accordion } from '../Accordion/Accordion';
 import { AccordionItem } from '../AccordionItem';
 import { AccordionPanel } from '../AccordionPanel';
 
 describe('AccordionHeader', () => {
-  isConformant({
+  isConformant<AccordionHeaderProps>({
     Component: AccordionHeader,
     displayName: 'AccordionHeader',
-    helperComponents: [AccordionHeaderContext.Provider],
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+          },
+        },
+      ],
+    },
   });
 
   afterEach(() => {

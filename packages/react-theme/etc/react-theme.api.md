@@ -260,6 +260,8 @@ export type ColorTokens = {
     colorNeutralBackgroundInvertedDisabled: string;
     colorNeutralStencil1: string;
     colorNeutralStencil2: string;
+    colorBackgroundOverlay: string;
+    colorScrollbarOverlay: string;
     colorBrandBackground: string;
     colorBrandBackgroundHover: string;
     colorBrandBackgroundPressed: string;
@@ -406,6 +408,9 @@ export const teamsLightTheme: Theme;
 
 // @public (undocumented)
 export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
+
+// @public
+export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record<keyof TTheme, string>;
 
 // @public (undocumented)
 export const tokens: Record<keyof Theme, string>;

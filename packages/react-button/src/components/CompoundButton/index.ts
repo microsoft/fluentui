@@ -2,4 +2,9 @@ export * from './CompoundButton';
 export * from './CompoundButton.types';
 export * from './renderCompoundButton';
 export * from './useCompoundButton';
-export { compoundButtonClassName, useCompoundButtonStyles_unstable } from './useCompoundButtonStyles';
+export {
+  /* eslint-disable-next-line deprecation/deprecation */
+  compoundButtonClassName,
+  compoundButtonClassNames,
+  useCompoundButtonStyles_unstable,
+} from './useCompoundButtonStyles';

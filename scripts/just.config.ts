@@ -14,6 +14,7 @@ import { webpack, webpackDevServer } from './tasks/webpack';
 import { apiExtractor } from './tasks/api-extractor';
 import { lintImports } from './tasks/lint-imports';
 import { prettier } from './tasks/prettier';
+import { screener } from './tasks/screener';
 import { checkForModifiedFiles } from './tasks/check-for-modified-files';
 import { generateVersionFiles } from './tasks/generate-version-files';
 import { postprocessTask } from './tasks/postprocess';
@@ -54,7 +55,7 @@ export function preset() {
   task('copy', copy);
   task('jest', jestTask);
   task('jest-watch', jestWatch);
-  task('sass', sass);
+  task('sass', sass());
   task('ts:postprocess', postprocessTask());
   task('postprocess:amd', postprocessAmdTask);
   task('postprocess:commonjs', postprocessCommonjsTask);
@@ -122,6 +123,8 @@ export function preset() {
     'bundle',
     condition('webpack', () => fs.existsSync(path.join(process.cwd(), 'webpack.config.js'))),
   );
+
+  task('screener', screener);
 }
 
 preset.basic = basicPreset;

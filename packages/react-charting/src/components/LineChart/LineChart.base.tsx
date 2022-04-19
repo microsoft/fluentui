@@ -28,6 +28,7 @@ import {
   tooltipOfXAxislabels,
   Points,
   pointTypes,
+  getMinMaxOfYAxis,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -139,7 +140,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _borderId: string;
   private _verticalLine: string;
   private _colorFillBarPatternId: string;
-  private _uniqueCallOutID: string;
+  private _uniqueCallOutID: string | null;
   private _refArray: IRefArrayData[];
   private margins: IMargins;
   private eventLabelHeight: number = 36;
@@ -166,7 +167,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._refArray = [];
     this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
     this._colorFillBars = [];
-    this._colorFillBarsOpacity = 0.4;
+    this._colorFillBarsOpacity = 0.5;
     this._calloutPoints = calloutData(this._points) || [];
     this._circleId = getId('circle');
     this._lineId = getId('lineID');
@@ -174,6 +175,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._verticalLine = getId('verticalLine');
     this._colorFillBarPatternId = getId('colorFillBarPattern');
     this._tooltipId = getId('LineChartTooltipId_');
+
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
       (this.eventLabelHeight = props.eventAnnotationProps.labelHeight);
@@ -244,6 +246,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         getGraphData={this._initializeLineChartData}
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         customizedCallout={this._getCustomizedCallout()}
+        onChartMouseLeave={this._handleChartMouseLeave}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -257,7 +260,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   y1={0}
                   x2={0}
                   y2={props.containerHeight}
-                  stroke={'steelblue'}
+                  stroke={'#C8C8C8'}
                   id={this._verticalLine}
                   visibility={'hidden'}
                   strokeDasharray={'5,5'}
@@ -314,7 +317,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._xAxisScale = xScale;
     this._yAxisScale = yScale;
     this._renderedColorFillBars = this.props.colorFillBars ? this._createColorFillBars(containerHeight) : [];
-    this.lines = this._createLines(xElement!);
+    this.lines = this._createLines(xElement!, containerHeight!);
   };
 
   private _handleSingleLegendSelectionAction = (lineChartItem: LineChartDataWithIndex | IColorFillBarsProps) => {
@@ -477,7 +480,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       }
     }
   };
-  private _createLines(xElement: SVGElement): JSX.Element[] {
+  private _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
     const lines: JSX.Element[] = [];
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
@@ -493,6 +496,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const lineColor: string = this._points[i].color;
       const { activePoint } = this.state;
       const { theme } = this.props;
+      const verticaLineHeight = containerHeight - this.margins.bottom! + 6;
       if (this._points[i].data.length === 1) {
         const { x: x1, y: y1, xAxisCalloutData, xAxisCalloutAccessibilityData } = this._points[i].data[0];
         const circleId = `${this._circleId}${i}`;
@@ -504,10 +508,26 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             cx={this._xAxisScale(x1)}
             cy={this._yAxisScale(y1)}
             fill={activePoint === circleId ? theme!.palette.white : lineColor}
-            onMouseOver={this._handleHover.bind(this, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
-            onMouseMove={this._handleHover.bind(this, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+            onMouseOver={this._handleHover.bind(
+              this,
+              x1,
+              y1,
+              verticaLineHeight,
+              xAxisCalloutData,
+              circleId,
+              xAxisCalloutAccessibilityData,
+            )}
+            onMouseMove={this._handleHover.bind(
+              this,
+              x1,
+              y1,
+              verticaLineHeight,
+              xAxisCalloutData,
+              circleId,
+              xAxisCalloutAccessibilityData,
+            )}
             onMouseOut={this._handleMouseOut}
-            strokeWidth={activePoint === circleId ? 2 : 0}
+            strokeWidth={activePoint === circleId ? DEFAULT_LINE_STROKE_SIZE : 0}
             stroke={activePoint === circleId ? lineColor : ''}
           />,
         );
@@ -540,8 +560,24 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             key={circleId}
             d={path}
             data-is-focusable={i === 0 ? true : false}
-            onMouseOver={this._handleHover.bind(this, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
-            onMouseMove={this._handleHover.bind(this, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+            onMouseOver={this._handleHover.bind(
+              this,
+              x1,
+              y1,
+              verticaLineHeight,
+              xAxisCalloutData,
+              circleId,
+              xAxisCalloutAccessibilityData,
+            )}
+            onMouseMove={this._handleHover.bind(
+              this,
+              x1,
+              y1,
+              verticaLineHeight,
+              xAxisCalloutData,
+              circleId,
+              xAxisCalloutAccessibilityData,
+            )}
             onMouseOut={this._handleMouseOut}
             onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
             onBlur={this._handleMouseOut}
@@ -549,7 +585,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
             fill={this._getPointFill(lineColor, circleId, j, false)}
             stroke={lineColor}
-            strokeWidth={2}
+            strokeWidth={strokeWidth}
           />,
         );
         if (j + 1 === this._points[i].data.length) {
@@ -576,6 +612,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               onMouseOver={this._handleHover.bind(
                 this,
                 x2,
+                y2,
+                verticaLineHeight,
                 lastCirlceXCallout,
                 lastCircleId,
                 lastCirlceXCalloutAccessibilityData,
@@ -583,6 +621,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               onMouseMove={this._handleHover.bind(
                 this,
                 x2,
+                y2,
+                verticaLineHeight,
                 lastCirlceXCallout,
                 lastCircleId,
                 lastCirlceXCalloutAccessibilityData,
@@ -596,7 +636,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
               fill={this._getPointFill(lineColor, lastCircleId, j, true)}
               stroke={lineColor}
-              strokeWidth={2}
+              strokeWidth={strokeWidth}
             />,
           );
           /* eslint-enable react/jsx-no-bind */
@@ -640,6 +680,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 onMouseOver={this._handleHover.bind(
                   this,
                   x1,
+                  y1,
+                  verticaLineHeight,
                   xAxisCalloutData,
                   circleId,
                   xAxisCalloutAccessibilityData,
@@ -647,6 +689,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 onMouseMove={this._handleHover.bind(
                   this,
                   x1,
+                  y1,
+                  verticaLineHeight,
                   xAxisCalloutData,
                   circleId,
                   xAxisCalloutAccessibilityData,
@@ -718,6 +762,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     } else {
       this._colorFillBars = this.props.colorFillBars!;
     }
+
+    const yMinMaxValues = getMinMaxOfYAxis(this._points, ChartTypes.LineChart);
+    const FILL_Y_PADDING = 3;
     for (let i = 0; i < this._colorFillBars.length; i++) {
       const colorFillBar = this._colorFillBars[i];
       const colorFillBarId = getId(colorFillBar.legend.replace(/\W/g, ''));
@@ -741,9 +788,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             fill={colorFillBar.applyPattern ? `url(#${this._colorFillBarPatternId}${i})` : colorFillBar.color}
             fillOpacity={opacity}
             x={this._xAxisScale(startX)}
-            y={this._yAxisScale(0) - containerHeight}
+            y={this._yAxisScale(yMinMaxValues.endValue) - FILL_Y_PADDING}
             width={Math.abs(this._xAxisScale(endX) - this._xAxisScale(startX))}
-            height={containerHeight}
+            height={
+              this._yAxisScale(this.props.yMinValue || 0) - this._yAxisScale(yMinMaxValues.endValue) + FILL_Y_PADDING
+            }
             key={`${colorFillBarId}${j}`}
           />,
         );
@@ -764,7 +813,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         key={`${this._colorFillBarPatternId}${id}`}
         patternUnits={'userSpaceOnUse'}
       >
-        <path d={stripePath} stroke={color} strokeWidth={2} />
+        <path d={stripePath} stroke={color} strokeWidth={1.25} />
       </pattern>
     );
   };
@@ -800,6 +849,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const xVal = x instanceof Date ? x.getTime() : x;
     const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
     // if no points need to be called out then don't show vertical line and callout card
+
     if (found) {
       const _this = this;
       d3Select('#' + circleId).attr('aria-labelledby', `toolTip${this._uniqueCallOutID}`);
@@ -829,32 +879,38 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _handleHover = (
     x: number | Date,
+    y: number | Date,
+    lineHeight: number,
     xAxisCalloutData: string,
     circleId: string,
     xAxisCalloutAccessibilityData: IAccessibilityProps,
     mouseEvent: React.MouseEvent<SVGElement>,
   ) => {
     mouseEvent.persist();
-    this._uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
     const xVal = x instanceof Date ? x.getTime() : x;
     const _this = this;
     const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
     // if no points need to be called out then don't show vertical line and callout card
+
     if (found) {
       d3Select(`#${this._verticalLine}`)
-        .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
-        .attr('visibility', 'visibility');
-      this.setState({
-        isCalloutVisible: true,
-        refSelected: mouseEvent,
-        hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
-        YValueHover: found.values,
-        stackCalloutProps: found!,
-        dataPointCalloutProps: found!,
-        activePoint: circleId,
-        xAxisCalloutAccessibilityData,
-      });
+        .attr('transform', () => `translate(${_this._xAxisScale(x)}, ${_this._yAxisScale(y)})`)
+        .attr('visibility', 'visibility')
+        .attr('y2', `${lineHeight - _this._yAxisScale(y)}`);
+      if (this._uniqueCallOutID !== circleId) {
+        this._uniqueCallOutID = circleId;
+        this.setState({
+          isCalloutVisible: true,
+          refSelected: `#${circleId}`,
+          hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
+          YValueHover: found.values,
+          stackCalloutProps: found!,
+          dataPointCalloutProps: found!,
+          activePoint: circleId,
+          xAxisCalloutAccessibilityData,
+        });
+      }
     } else {
       this.setState({
         activePoint: circleId,
@@ -876,6 +932,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _handleMouseOut = () => {
     d3Select(`#${this._verticalLine}`).attr('visibility', 'hidden');
+  };
+
+  private _handleChartMouseLeave = () => {
+    this._uniqueCallOutID = null;
     this.setState({
       isCalloutVisible: false,
       activePoint: '',

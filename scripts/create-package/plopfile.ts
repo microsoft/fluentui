@@ -25,6 +25,7 @@ interface Answers {
   packageName: string;
   target: 'react' | 'node';
   description: string;
+  codeowner: string;
   hasTests?: boolean;
   isConverged?: boolean;
 }
@@ -56,6 +57,18 @@ module.exports = (plop: NodePlopAPI) => {
         validate: (input: string) => !!input || 'Must enter a description',
       },
       {
+        type: 'list',
+        name: 'codeowner',
+        message: 'Provide team that owns this package',
+        choices: [
+          '@microsoft/fluentui-react-build',
+          '@microsoft/teams-prg',
+          '@microsoft/cxe-coastal',
+          '@microsoft/cxe-red',
+          '@microsoft/cxe-prg',
+        ],
+      },
+      {
         type: 'confirm',
         name: 'hasTests',
         message: 'Will this package have tests?',
@@ -84,6 +97,7 @@ module.exports = (plop: NodePlopAPI) => {
           /^.|-./g, // first char or char after -
           (substr, index) => (index > 0 ? ' ' : '') + substr.replace('-', '').toUpperCase(),
         ),
+        owner: answers.codeowner,
       };
 
       return [
@@ -131,7 +145,13 @@ module.exports = (plop: NodePlopAPI) => {
           console.log(`\nRunning migrate-converged-pkg...`);
           const migrateResult = spawnSync(
             'yarn',
-            ['nx', 'workspace-generator', 'migrate-converged-pkg', `--name='${data.packageNpmName}'`],
+            [
+              'nx',
+              'workspace-generator',
+              'migrate-converged-pkg',
+              `--name='${data.packageNpmName}'`,
+              `--owner='${data.owner}'`,
+            ],
             { cwd: root, stdio: 'inherit', shell: true },
           );
           if (migrateResult.status !== 0) {
@@ -204,12 +224,10 @@ function replaceVersionsFromReference(
   }
 
   if (answers.isConverged) {
-    // Update the version and beachball config in package.json to match the current v9 ones
-    if (packageJsons[0].version?.[0] === '9') {
-      newPackageJson.version = packageJsons[0].version;
-    } else {
+    if (packageJsons[0].version?.[0] !== '9') {
       throw new Error(`Converged reference package ${packageJsons[0].name} does not appear to have version 9.x`);
     }
+    // Update beachball config in package.json to match the current v9
     if (packageJsons[0].beachball) {
       newPackageJson.beachball = packageJsons[0].beachball;
     }

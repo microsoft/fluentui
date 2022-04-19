@@ -1,172 +1,156 @@
 import * as React from 'react';
-import { Switch } from './Switch';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../common/isConformant';
-import { resetIdsForTests } from '@fluentui/react-utilities';
+import { Switch } from './Switch';
+import type { SwitchOnChangeData } from './Switch.types';
 
 describe('Switch', () => {
-  beforeEach(() => {
-    resetIdsForTests();
-  });
-
   isConformant({
     Component: Switch,
     displayName: 'Switch',
+    primarySlot: 'input',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            label: 'Test Label',
+          },
+        },
+      ],
+    },
   });
 
-  describe('Snapshot Tests', () => {
-    it('renders a basic Switch unchecked', () => {
-      const { container } = render(<Switch defaultChecked={false} />);
-      expect(container).toMatchSnapshot();
+  describe('on component render', () => {
+    it('renders a default state correctly', () => {
+      const { getByRole } = render(<Switch />);
+      const input = getByRole('switch');
+
+      expect(input.tagName).toEqual('INPUT');
+      expect(input.getAttribute('type')).toEqual('checkbox');
     });
 
-    it('renders a basic Switch checked', () => {
-      const { container } = render(<Switch defaultChecked />);
-      expect(container).toMatchSnapshot();
+    it('respects id prop', () => {
+      const id = 'switch';
+      const { getByRole } = render(<Switch id={id} />);
+      const input = getByRole('switch');
+
+      expect(input.id).toEqual(id);
     });
 
-    it('renders a disabled Switch unchecked', () => {
-      const { container } = render(<Switch defaultChecked={false} />);
-      expect(container).toMatchSnapshot();
+    it('forwards ref to the input element', () => {
+      const switchRef = React.createRef<HTMLInputElement>();
+      const { getByRole } = render(<Switch ref={switchRef} />);
+      const input = getByRole('switch');
+
+      expect(switchRef.current).toEqual(input);
     });
 
-    it('renders a disabled Switch checked', () => {
-      const { container } = render(<Switch defaultChecked={true} />);
-      expect(container).toMatchSnapshot();
+    it('defaults to unchecked', () => {
+      const { getByRole } = render(<Switch />);
+      const input = getByRole('switch') as HTMLInputElement;
+
+      expect(input.checked).toBe(false);
+    });
+
+    it('respects defaultChecked prop', () => {
+      const { getByRole } = render(<Switch defaultChecked />);
+      const input = getByRole('switch') as HTMLInputElement;
+
+      expect(input.checked).toBe(true);
+    });
+
+    it('respects checked prop', () => {
+      const { getByRole } = render(<Switch checked />);
+      const input = getByRole('switch') as HTMLInputElement;
+
+      expect(input.checked).toBe(true);
     });
   });
 
-  describe('Unit Tests', () => {
-    it('handles id prop', () => {
-      render(<Switch id="test_id" data-testid="test" />);
-      const switchRoot = screen.getByTestId('test');
-      expect(switchRoot.getAttribute('id')).toEqual('test_id');
+  describe('on state changes', () => {
+    it('ignores defaultChecked updates', () => {
+      const { getByRole, rerender } = render(<Switch defaultChecked />);
+      const input = getByRole('switch') as HTMLInputElement;
+
+      expect(input.checked).toBe(true);
+      rerender(<Switch defaultChecked={false} />);
+      expect(input.checked).toBe(true);
     });
 
-    it('applies the defaultChecked prop', () => {
-      const inputRef = React.createRef<HTMLInputElement>();
-      render(<Switch defaultChecked={true} input={{ ref: inputRef }} />);
-      expect(inputRef.current?.checked).toEqual(true);
+    it('triggers a change in the checked state if it is uncontrolled', () => {
+      const { getAllByRole } = render(
+        <>
+          <Switch defaultChecked={false} />
+          <Switch defaultChecked={true} />
+        </>,
+      );
+      const [initiallyUnchecked, initiallyChecked] = getAllByRole('switch') as HTMLInputElement[];
+
+      expect(initiallyUnchecked.checked).toBe(false);
+      userEvent.click(initiallyUnchecked);
+      expect(initiallyUnchecked.checked).toBe(true);
+      userEvent.click(initiallyUnchecked);
+      expect(initiallyUnchecked.checked).toBe(false);
+
+      expect(initiallyChecked.checked).toBe(true);
+      userEvent.click(initiallyChecked);
+      expect(initiallyChecked.checked).toBe(false);
+      userEvent.click(initiallyChecked);
+      expect(initiallyChecked.checked).toBe(true);
     });
 
-    it('applies the checked prop', () => {
-      const inputRef = React.createRef<HTMLInputElement>();
-      render(<Switch checked={true} input={{ ref: inputRef }} />);
-      expect(inputRef.current?.checked).toEqual(true);
+    it('does not trigger a change in the checked state if it is controlled', () => {
+      const { getAllByRole } = render(
+        <>
+          <Switch checked={false} />
+          <Switch checked={true} />
+        </>,
+      );
+      const [unchecked, checked] = getAllByRole('switch') as HTMLInputElement[];
+
+      expect(unchecked.checked).toBe(false);
+      userEvent.click(unchecked);
+      expect(unchecked.checked).toBe(false);
+
+      expect(checked.checked).toBe(true);
+      userEvent.click(checked);
+      expect(checked.checked).toBe(true);
     });
 
-    it('does not update when the controlled checked prop is provided', () => {
-      const inputRef = React.createRef<HTMLInputElement>();
-      const eventHandler = jest.fn();
+    it('does not trigger a change in the checked state if it is disabled', () => {
+      const { getAllByRole } = render(
+        <>
+          <Switch defaultChecked={false} disabled />
+          <Switch defaultChecked={true} disabled />
+        </>,
+      );
+      const [unchecked, checked] = getAllByRole('switch') as HTMLInputElement[];
 
-      render(<Switch data-testid="root-element" checked={false} onChange={eventHandler} input={{ ref: inputRef }} />);
-      const rootElement = screen.getByTestId('root-element');
+      expect(unchecked.checked).toBe(false);
+      userEvent.click(unchecked);
+      expect(unchecked.checked).toBe(false);
 
-      fireEvent.pointerDown(rootElement);
-      fireEvent.pointerUp(rootElement);
-
-      expect(eventHandler).toBeCalledTimes(1);
-      expect(eventHandler.mock.calls[0][1]).toEqual({ checked: true });
-      expect(inputRef.current?.checked).toEqual(false);
+      expect(checked.checked).toBe(true);
+      userEvent.click(checked);
+      expect(checked.checked).toBe(true);
     });
 
     it('calls onChange with the correct value', () => {
-      const eventHandler = jest.fn();
+      const onChange = jest.fn<void, [React.ChangeEvent<HTMLInputElement>, SwitchOnChangeData]>();
+      const { getByRole } = render(<Switch onChange={onChange} />);
+      const input = getByRole('switch');
 
-      render(<Switch data-testid="root-element" onChange={eventHandler} />);
+      expect(onChange).not.toHaveBeenCalled();
 
-      const rootElement = screen.getByTestId('root-element');
-      expect(eventHandler).toBeCalledTimes(0);
+      userEvent.click(input);
+      userEvent.click(input);
+      userEvent.click(input);
 
-      fireEvent.pointerDown(rootElement);
-      fireEvent.pointerUp(rootElement);
-      fireEvent.pointerDown(rootElement);
-      fireEvent.pointerUp(rootElement);
-      fireEvent.pointerDown(rootElement);
-      fireEvent.pointerUp(rootElement);
-
-      expect(eventHandler).toBeCalledTimes(3);
-      expect(eventHandler.mock.calls[2][1]).toEqual({ checked: true });
-    });
-
-    it('does not allow change on a disabled Switch', () => {
-      const inputRef = React.createRef<HTMLInputElement>();
-      const eventHandler = jest.fn();
-
-      render(<Switch defaultChecked onChange={eventHandler} input={{ ref: inputRef }} data-testid="test" disabled />);
-      const switchRoot = screen.getByTestId('test');
-
-      expect(eventHandler).toBeCalledTimes(0);
-      fireEvent.click(switchRoot);
-      expect(eventHandler).toBeCalledTimes(0);
-      expect(inputRef?.current?.checked).toEqual(true);
-    });
-
-    it('handles keydown events', () => {
-      const inputRef = React.createRef<HTMLInputElement>();
-      const onChange = jest.fn();
-
-      render(<Switch onChange={onChange} data-testid="test" input={{ ref: inputRef }} />);
-      const rootElement = screen.getByTestId('test');
-
-      expect(onChange).toBeCalledTimes(0);
-
-      fireEvent.keyUp(rootElement, { key: ' ' });
-      expect(onChange).toBeCalledTimes(1);
+      expect(onChange).toHaveBeenCalledTimes(3);
       expect(onChange.mock.calls[0][1]).toEqual({ checked: true });
-      expect(inputRef?.current?.checked).toEqual(true);
-
-      fireEvent.keyUp(rootElement, { key: ' ' });
-      expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({ checked: false });
-      expect(inputRef?.current?.checked).toEqual(false);
-    });
-
-    it('handles onKeyUp callback', () => {
-      const eventHandler = jest.fn();
-
-      render(<Switch onKeyUp={eventHandler} data-testid="test" />);
-      const rootElement = screen.getByTestId('test');
-
-      expect(eventHandler).toBeCalledTimes(0);
-
-      fireEvent.keyUp(rootElement, { key: ' ' });
-      expect(eventHandler).toBeCalledTimes(1);
-    });
-
-    it('handles onPointerDown callback', () => {
-      const eventHandler = jest.fn();
-
-      render(<Switch data-testid="root-element" onPointerDown={eventHandler} />);
-      const rootElement = screen.getByTestId('root-element');
-
-      expect(eventHandler).toBeCalledTimes(0);
-      fireEvent.pointerDown(rootElement);
-      expect(eventHandler).toBeCalledTimes(1);
-    });
-
-    it('does not allow focus on disabled Switch', () => {
-      const switchRef = React.createRef<HTMLInputElement>();
-
-      render(<Switch ref={switchRef} data-testid="test" disabled />);
-
-      expect(document.activeElement).toEqual(document.body);
-      switchRef?.current?.focus();
-      expect(document.activeElement).toEqual(document.body);
-    });
-  });
-
-  describe('Accessibility Tests', () => {
-    it('renders the input slot as input', () => {
-      const { container } = render(<Switch input={{ className: 'test' }} />);
-      const inputElement = container.querySelector('.test');
-      expect(inputElement?.tagName).toEqual('INPUT');
-    });
-
-    it('provides the input slot with a type of checkbox', () => {
-      const { container } = render(<Switch input={{ className: 'test' }} />);
-      const inputElement = container.querySelector('.test');
-      expect(inputElement?.getAttribute('type')).toEqual('checkbox');
+      expect(onChange.mock.calls[2][1]).toEqual({ checked: true });
     });
   });
 });

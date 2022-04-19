@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type InputSlots = {
   /**
@@ -9,7 +9,7 @@ export type InputSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Input>`.
    * All other top-level native props will be applied to the primary slot, `input`.
    */
-  root: IntrinsicShorthandProps<'span'>;
+  root: NonNullable<Slot<'span'>>;
 
   /**
    * The actual `<input>` element. `type="text"` will be automatically applied unless overridden.
@@ -18,17 +18,17 @@ export type InputSlots = {
    * (except `className` and `style`, which go to the `root` slot). The top-level `ref` will
    * also go here.
    */
-  input: IntrinsicShorthandProps<'input'>;
+  input: NonNullable<Slot<'input'>>;
 
   /** Element before the input text, within the input border */
-  contentBefore?: IntrinsicShorthandProps<'span'>;
+  contentBefore?: Slot<'span'>;
 
   /** Element after the input text, within the input border */
-  contentAfter?: IntrinsicShorthandProps<'span'>;
+  contentAfter?: Slot<'span'>;
 };
 
 export type InputProps = Omit<
-  ComponentProps<InputSlots, 'input'>,
+  ComponentProps<Partial<InputSlots>, 'input'>,
   // `children` is unsupported. The rest of these native props have customized definitions.
   'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'
 > & {
@@ -43,12 +43,6 @@ export type InputProps = Omit<
   // (we could add `htmlSize` for the native functionality if someone needs it)
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/size
   size?: 'small' | 'medium' | 'large';
-
-  /**
-   * If true, the input will have inline display, allowing it be used within text content.
-   * If false (the default), the input will have block display.
-   */
-  inline?: boolean;
 
   /**
    * Controls the colors and borders of the input.
@@ -75,7 +69,7 @@ export type InputProps = Omit<
   /**
    * Called when the user changes the input's value.
    */
-  onChange?: (ev: React.FormEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => void;
 
   /**
    * An input can have different text-based [types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#input_types)
@@ -106,7 +100,7 @@ export type InputProps = Omit<
 /**
  * State used in rendering Input.
  */
-export type InputState = Required<Pick<InputProps, 'appearance' | 'inline' | 'size'>> & ComponentState<InputSlots>;
+export type InputState = Required<Pick<InputProps, 'appearance' | 'size'>> & ComponentState<InputSlots>;
 
 /**
  * Data passed to the `onChange` callback when a user changes the input's value.

@@ -74,7 +74,9 @@ const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbn
 
     return (
       <img
-        src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+        src={`//fabricweb.azureedge.net/fabric-website/placeholders/${Math.round(
+          imageSize.width,
+        )}x${Math.round(imageSize.height)}.png`}
         style={{ display: 'block' }}
       />
     );
@@ -108,7 +110,9 @@ const MediaTileWithThumbnail: React.FunctionComponent<IMediaTileWithThumbnailPro
   function renderBackground(backgroundProps: ITileBackgroundProps) {
     return (
       <img
-        src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+        src={`//fabricweb.azureedge.net/fabric-website/placeholders/${Math.round(
+          imageSize.width,
+        )}x${Math.round(imageSize.height)}.png`}
         style={{ display: 'block' }}
       />
     );

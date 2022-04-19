@@ -1,5 +1,7 @@
 // @ts-check
 
+// Jest setup file for all v8 packages
+
 // Mock requestAnimationFrame and cancelAnimationFrame for all packages
 // @ts-ignore
 global.requestAnimationFrame = callback => {

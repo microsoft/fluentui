@@ -1,43 +1,40 @@
-import * as React from 'react';
 import { PresenceBadge } from '@fluentui/react-badge';
-import type {
-  ComponentProps,
-  ComponentSlotProps,
-  ComponentState,
-  IntrinsicShorthandProps,
-  ShorthandRenderFunction,
-} from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AvatarSlots = {
-  root: Omit<IntrinsicShorthandProps<'span'>, 'color'> & { children?: never };
+  root: Slot<'span'>;
 
   /**
-   * This overidden in the component's props, it's only here to make `getSlots` work
-   * `img`  is an exception since it should never accept children, but can accept a children render function
+   * The Avatar's image.
+   *
+   * Usage e.g.: `image={{ src: '...' }}`
    */
-  image?: IntrinsicShorthandProps<'img'>;
+  image?: Slot<'img'>;
 
   /**
-   * (optional) Custom initials. By default, this will be derived from the `name` using `getInitials`.
+   * (optional) Custom initials.
+   *
+   * It is usually not necessary to specify custom initials; by default they will be derived from the `name` prop,
+   * using the `getInitials` function.
    *
    * The initials are displayed when there is no image (including while the image is loading).
    */
-  initials?: IntrinsicShorthandProps<'span'>;
+  initials?: Slot<'span'>;
 
   /**
    * Icon to be displayed when the avatar doesn't have an image or initials.
    *
    * @defaultvalue `PersonRegular` (the default icon's size depends on the Avatar's size)
    */
-  icon?: IntrinsicShorthandProps<'span'>;
+  icon?: Slot<'span'>;
 
   /**
    * Badge to show the avatar's presence status.
    */
-  badge?: ComponentSlotProps<typeof PresenceBadge>;
+  badge?: Slot<typeof PresenceBadge>;
 };
 
-export type AvatarCommons = Omit<React.HTMLAttributes<HTMLElement>, 'children'> & {
+type AvatarCommons = {
   /**
    * The name of the person or entity represented by this Avatar. This should always be provided if it is available.
    *
@@ -83,7 +80,7 @@ export type AvatarCommons = Omit<React.HTMLAttributes<HTMLElement>, 'children'> 
    *
    * @defaultvalue ring
    */
-  activeAppearance: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+  activeAppearance: 'ring' | 'shadow' | 'ring-shadow';
 
   /**
    * The color when displaying either an icon or initials.
@@ -141,16 +138,7 @@ export type AvatarNamedColor =
 /**
  * Properties for Avatar
  */
-export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'image'> &
-  Partial<AvatarCommons> & {
-    /**
-     * The Avatar's image. Cannot be typed as a normal slot since it should not accept any children
-     * but can accept a children render function.
-     */
-    image?: Omit<IntrinsicShorthandProps<'img'>, 'children'> & {
-      children?: ShorthandRenderFunction<React.HTMLAttributes<HTMLImageElement>>;
-    };
-  };
+export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & Partial<AvatarCommons>;
 
 /**
  * State used in rendering Avatar

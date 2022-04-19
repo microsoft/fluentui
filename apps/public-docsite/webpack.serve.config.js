@@ -14,7 +14,8 @@ const { getLoadSiteConfig } = require('@fluentui/public-docsite-setup/scripts/ge
 /** @type {typeof import('@fluentui/public-docsite-setup').BUNDLE_NAME} */
 const entryPointName = 'fabric-site';
 
-const outDir = 'dist';
+const outDirName = 'dist';
+const outDir = path.join(__dirname, outDirName);
 
 /** @type {webpack.Configuration[]} */
 module.exports = [
@@ -22,7 +23,7 @@ module.exports = [
   {
     ...getLoadSiteConfig({
       libraryPath: path.dirname(require.resolve('@fluentui/react/package.json')),
-      outDir: path.join(__dirname, outDir),
+      outDir,
       isProduction: false,
       CopyWebpackPlugin,
       webpack,
@@ -32,36 +33,39 @@ module.exports = [
     // devServer: {
     //   host: 'localhost',
     //   port: 4322,
-    //   static: path.join(__dirname, outDir),
+    //   static: outDir,
     // },
   },
   // Rest of site (comment out if serving previously built files)
   resources.createServeConfig(
-    addMonacoWebpackConfig({
-      entry: {
-        [entryPointName]: ['react-app-polyfill/ie11', './src/root.tsx'],
+    addMonacoWebpackConfig(
+      {
+        entry: {
+          [entryPointName]: ['react-app-polyfill/ie11', './src/root.tsx'],
+        },
+
+        output: {
+          chunkFilename: `${entryPointName}-[name].js`,
+        },
+
+        // The website config intentionally doesn't have React as an external because we bundle it
+        // to ensure we get a consistent version.
+
+        optimization: {
+          removeAvailableModules: false,
+        },
+
+        plugins: [
+          // This plugin was added to ignore warnings wherever types are imported.
+          new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }),
+        ],
+
+        resolve: {
+          alias: getResolveAlias(),
+        },
       },
-
-      output: {
-        chunkFilename: `${entryPointName}-[name].js`,
-      },
-
-      // The website config intentionally doesn't have React as an external because we bundle it
-      // to ensure we get a consistent version.
-
-      optimization: {
-        removeAvailableModules: false,
-      },
-
-      plugins: [
-        // This plugin was added to ignore warnings wherever types are imported.
-        new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }),
-      ],
-
-      resolve: {
-        alias: getResolveAlias(),
-      },
-    }),
-    outDir,
+      { outDir },
+    ),
+    outDirName,
   ),
 ];

@@ -18,12 +18,14 @@ import type { MenuItemProps, MenuItemState } from './MenuItem.types';
  * Returns the props and state required to render the component
  */
 export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
-  const hasSubmenu = useMenuTriggerContext_unstable() || props.hasSubmenu;
   const hasIcons = useMenuListContext_unstable(context => context.hasIcons);
   const hasCheckmarks = useMenuListContext_unstable(context => context.hasCheckmarks);
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
   const dismissedWithKeyboardRef = React.useRef(false);
+
+  const isSubmenuTrigger = useMenuTriggerContext_unstable();
+  const hasSubmenu = props.hasSubmenu ?? isSubmenuTrigger;
 
   const { dir } = useFluent();
   const innerRef = React.useRef<HTMLElement>(null);
