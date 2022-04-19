@@ -1,11 +1,9 @@
+import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { horizontalSpacing } from '../../utils/internalTokens';
 import type { ListboxSlots, ListboxState } from './Listbox.types';
 
-/**
- * @deprecated Use `listboxClassNames.root` instead.
- */
-export const listboxClassName = 'fui-Listbox';
 export const listboxClassNames: SlotClassNames<ListboxSlots> = {
   root: 'fui-Listbox',
 };
@@ -14,11 +12,15 @@ export const listboxClassNames: SlotClassNames<ListboxSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  // TODO: add themed styles
   root: {
-    boxShadow: '0px 0px 2px 0px #0000001F, 0px 8px 16px 0px #00000024',
-    ...shorthands.borderRadius('4px'),
-    backgroundColor: '#fff',
+    boxShadow: `${tokens.shadow16}`,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    backgroundColor: tokens.colorNeutralBackground1,
+    display: 'flex',
+    flexDirection: 'column',
+    minWidth: '160px',
+    ...shorthands.padding(horizontalSpacing.xs),
+    rowGap: horizontalSpacing.xxs,
   },
 });
 

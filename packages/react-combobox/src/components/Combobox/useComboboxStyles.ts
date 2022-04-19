@@ -2,10 +2,6 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { ComboboxSlots, ComboboxState } from './Combobox.types';
 
-/**
- * @deprecated Use `comboboxClassNames.root` instead.
- */
-export const comboboxClassName = 'fui-Combobox';
 export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
   root: 'fui-Combobox',
   listbox: 'fui-Combobox__listbox',

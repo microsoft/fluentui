@@ -38,6 +38,7 @@
     "@fluentui/react-icons": "^2.0.166-rc.3",
     "@fluentui/react-portal": "9.0.0-rc.5",
     "@fluentui/react-positioning": "9.0.0-rc.5",
+    "@fluentui/react-theme": "9.0.0-rc.4",
     "@fluentui/react-utilities": "9.0.0-rc.5",
     "@griffel/react": "1.0.3",
     "tslib": "^2.1.0"

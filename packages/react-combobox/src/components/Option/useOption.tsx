@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
+import { CheckmarkFilled, CheckboxUncheckedFilled, CheckboxCheckedFilled } from '@fluentui/react-icons';
 import { ListboxContext } from '../../contexts/ListboxContext';
 import type { OptionProps, OptionState } from './Option.types';
 
@@ -33,6 +34,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
 
   // context values
   const idBase = useContextSelector(ListboxContext, ctx => ctx.idBase);
+  const multiselect = useContextSelector(ListboxContext, ctx => ctx.multiselect);
   const onOptionClick = useContextSelector(ListboxContext, ctx => ctx.onOptionClick);
   const registerOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
   const selectedOptions = useContextSelector(ListboxContext, ctx => ctx.selectedOptions);
@@ -47,6 +49,12 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
 
   const selected = key ? !!selectedOptions.find(option => option.key === key) : false;
   const optionValue = getValueString(value, props.children);
+
+  // check icon
+  let CheckIcon = <CheckmarkFilled />;
+  if (multiselect) {
+    CheckIcon = selected ? <CheckboxCheckedFilled /> : <CheckboxUncheckedFilled />;
+  }
 
   const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (disabled) {
@@ -73,6 +81,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     root: getNativeElementProps('div', {
       ref,
       role: 'option',
+      'aria-disabled': disabled ? 'true' : undefined,
       'aria-selected': `${selected}`,
       id: optionId,
       ...props,
@@ -82,10 +91,12 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       required: true,
       defaultProps: {
         'aria-hidden': 'true',
-        children: 'x',
+        children: CheckIcon,
       },
     }),
     active,
+    disabled,
+    multiselect,
     selected,
   };
 };
