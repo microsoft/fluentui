@@ -126,11 +126,11 @@ _Explain how the component will behave in use, including:_
 
 ## Accessibility
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
+Base accessibility information is included in the design document. After the spec is filled and reviewed, outcomes from it need to be communicated to design and incorporated in the design document.
 
 - There's no native element for this component.
 
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
+- `AvatarGroup` will have a role of `group` and slots will be handled by their respective slot type.
 - Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
 - Specify texts for **state change announcements** - [ARIA live regions
   ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)

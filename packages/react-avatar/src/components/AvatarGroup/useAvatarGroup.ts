@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { PopoverSurface } from '@fluentui/react-popover';
+import { Button } from '@fluentui/react-button';
 
 /**
  * Create the state required to render AvatarGroup.
@@ -23,7 +24,7 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
       // TODO add each slot's element type or component
       root: 'div',
       popoverSurface: PopoverSurface,
-      popoverTrigger: 'span',
+      popoverTrigger: Button,
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
