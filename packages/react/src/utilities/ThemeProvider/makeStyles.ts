@@ -5,34 +5,32 @@ import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
 import type { IStyle } from '@fluentui/style-utilities';
 import type { Theme } from '@fluentui/theme';
 
-const graphGet = (graphNode: Map<any, any>, path: any[]): any | undefined => {
-  for (const key of path) {
-    graphNode = graphNode.get(key);
+type GraphPath = readonly [windowId: string | undefined, id: number, theme: Theme | undefined];
+type StylesClasMapping<TStyleSet extends { [key in keyof TStyleSet]: IStyle }> = { [key in keyof TStyleSet]: string };
+type Graph<TStyleSet extends { [key in keyof TStyleSet]: IStyle }> = Map<
+  string | undefined,
+  Map<number, Map<Theme | undefined, StylesClasMapping<TStyleSet>>>
+>;
 
-    if (!graphNode) {
-      return;
-    }
-  }
-
-  return graphNode;
+const graphGet = <TStyleSet extends { [key in keyof TStyleSet]: IStyle }>(
+  graphNode: Graph<TStyleSet>,
+  [windowId, id, theme]: GraphPath,
+): StylesClasMapping<TStyleSet> | undefined => {
+  return graphNode.get(windowId)?.get(id)?.get(theme);
 };
 
-const graphSet = (graphNode: Map<any, any>, path: any[], value: any) => {
-  for (let i = 0; i < path.length - 1; i++) {
-    const key = path[i];
+const graphSet = <TStyleSet extends { [key in keyof TStyleSet]: IStyle }>(
+  graphNode: Graph<TStyleSet>,
+  [windowId, id, theme]: GraphPath,
+  value: StylesClasMapping<TStyleSet>,
+) => {
+  const windowNode = graphNode.get(windowId) ?? new Map<number, Map<Theme | undefined, StylesClasMapping<TStyleSet>>>();
+  graphNode.set(windowId, windowNode);
 
-    let current = graphNode.get(key);
+  const idNode = windowNode.get(id) ?? new Map<Theme | undefined, StylesClasMapping<TStyleSet>>();
+  windowNode.set(id, idNode);
 
-    if (!current) {
-      current = new Map();
-
-      graphNode.set(key, current);
-    }
-
-    graphNode = current;
-  }
-
-  graphNode.set(path[path.length - 1], value);
+  idNode.set(theme, value);
 };
 
 /**
@@ -59,9 +57,9 @@ type WindowWithId = Window & {
 export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle } = { [key: string]: IStyle }>(
   styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet),
   // eslint-disable-next-line deprecation/deprecation
-): (options?: UseStylesOptions) => { [key in keyof TStyleSet]: string } {
+): (options?: UseStylesOptions) => StylesClasMapping<TStyleSet> {
   // Create graph of inputs to map to output.
-  const graph = new Map();
+  const graph: Graph<TStyleSet> = new Map();
   // Retain a dictionary of window ids we're tracking
   const allWindows = new Set<string>();
 
@@ -78,7 +76,7 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
   };
 
   // eslint-disable-next-line deprecation/deprecation
-  return (options: UseStylesOptions = {}) => {
+  return (options: UseStylesOptions = {}): StylesClasMapping<TStyleSet> => {
     let { theme } = options;
     let winId: string | undefined;
     const win = useWindow() as WindowWithId | undefined;
@@ -97,17 +95,24 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
     const renderer = mergeStylesRenderer;
 
     const id = renderer.getId();
-    const isStyleFunction = typeof styleOrFunction === 'function';
-    const path = [winId, id, theme];
+    const path: GraphPath = [winId, id, theme] as const;
     let value = graphGet(graph, path);
 
     if (!value) {
-      const styles = isStyleFunction ? (styleOrFunction as (theme: Theme) => TStyleSet)(theme!) : styleOrFunction;
+      const styles = isStyleFunction(styleOrFunction)
+        ? (styleOrFunction as (theme: Theme) => TStyleSet)(theme!)
+        : styleOrFunction;
 
-      value = mergeStylesRenderer.renderStyles(styles, { targetWindow: win, rtl: !!theme!.rtl });
+      value = mergeStylesRenderer.renderStyles<TStyleSet>(styles, { targetWindow: win, rtl: !!theme!.rtl });
       graphSet(graph, path, value);
     }
 
     return value;
   };
+}
+
+function isStyleFunction<TStyleSet extends { [key in keyof TStyleSet]: IStyle }>(
+  styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet),
+): styleOrFunction is (theme: Theme) => TStyleSet {
+  return typeof styleOrFunction === 'function';
 }
