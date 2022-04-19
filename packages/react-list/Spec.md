@@ -69,6 +69,16 @@ for React class components, or initialization in a `useState` or `useRef` call i
 
 ##### Marquee selection
 
+V8 List components support marquee selection (drag a container and select items within the container) through the
+addition of a `MarqueeSelection` component that wraps the list component. The non-standard selection API is used to power
+selection by invoking items and marquee selection.
+
+```tsx
+<MarqueeSelection selection={this._selection}>
+  <DetailsList selection={this._selection} />
+</MarqueeSelection>
+```
+
 #### Appearance
 
 Both components have similar philosophies for displaying a vertical oriented list of items. V0 has a stronger layout
@@ -306,7 +316,42 @@ Multi selectable
 
 ### v8
 
+#### Keyboard navigation without selection
+
+V8 List components that use keyboard navigation without any selection behavior should be
+replaced with the `MenuList` component which provides the correct menu roles that will
+communicate to screen reader users that keyboard navigation is possible. `MenuItem` is also
+a surface-like comoponent that accepts JSX children.
+
+#### Selection
+
+Lists with selectable items should be replaced with the `Listbox` component.
+
+Instead of using `selection.setKeyselected` or similar imperative methods during component mount or an effect
+to set default selected items, `defaultSelectedItems` prop should be used.
+
+Controlling the component should be done with `selectedItems` and `onChange` handler with component state.
+
 ### v0
+
+#### Keyboard navigation without selection
+
+The V0 List component that use keyboard navigation without any selection behavior should be
+replaced with the `MenuList` component which provides the correct menu roles that will
+communicate to screen reader users that keyboard navigation is possible. `MenuItem` is also
+a surface-like comoponent that accepts JSX children.
+
+#### Selection
+
+Lists with selectable items should be replaced with the `Listbox` component.
+
+Controlling the component should be done with `selectedItems` and `onChange` handler with component state. Individual
+controlling of items will no longer be supported.
+
+#### Layout
+
+Specific layouts will no longer be supported in the new `ListItem` component, users will be responsible for
+creating their own layouts within list items.
 
 ## Behaviors
 
