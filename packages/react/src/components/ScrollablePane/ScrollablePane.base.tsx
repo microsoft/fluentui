@@ -211,8 +211,6 @@ export class ScrollablePaneBase
         {...getNativeProps(
           {
             ...this.props,
-
-            onScroll: undefined,
           },
           divProperties,
           // on React 17 onScroll is not being invoked on root element,
