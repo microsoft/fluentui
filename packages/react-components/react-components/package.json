@@ -21,7 +21,7 @@
     "lint": "just-scripts lint",
     "start": "yarn storybook",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/src && yarn docs",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-components/src && yarn docs",
     "storybook": "node ../../../scripts/storybook/runner --port 3000 -s ./public --no-manager-cache",
     "storybook:docs": "yarn storybook --docs",
     "build-storybook": "build-storybook -s ./public -o ./dist/storybook --docs",
