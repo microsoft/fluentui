@@ -1653,6 +1653,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       this._isScrollIdle = false;
     }
 
+    if (this.props.calloutProps?.onScroll) {
+      this.props.calloutProps.onScroll();
+    }
+
     this._scrollIdleTimeoutId = this._async.setTimeout(() => {
       this._isScrollIdle = true;
     }, ScrollIdleDelay);
@@ -1664,15 +1668,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _scrollIntoView(): void {
     const { onScrollToItem, scrollSelectedToTop } = this.props;
 
-    const { currentPendingValueValidIndex, currentPendingValue } = this.state;
+    const currentPendingSelectedInded = this._getPendingSelectedIndex(true);
 
     if (onScrollToItem) {
       // Use the custom scroll handler
-      onScrollToItem(
-        currentPendingValueValidIndex >= 0 || currentPendingValue !== ''
-          ? currentPendingValueValidIndex
-          : this._getFirstSelectedIndex(),
-      );
+      onScrollToItem(currentPendingSelectedInded >= 0 ? currentPendingSelectedInded : this._getFirstSelectedIndex());
     } else if (this._selectedElement.current && this._selectedElement.current.offsetParent) {
       let alignToTop = true;
 

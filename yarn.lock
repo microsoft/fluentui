@@ -5525,7 +5525,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-is@^16.7.1":
+"@types/react-is@16.7.1":
   version "16.7.1"
   resolved "https://registry.yarnpkg.com/@types/react-is/-/react-is-16.7.1.tgz#d3f1c68c358c00ce116b55ef5410cf486dd08539"
   integrity sha512-dMLFD2cCsxtDgMkTydQCM0PxDq8vwc6uN5M/jRktDfYvH3nQj6pjC9OrCXS2lKlYoYTNJorI/dI8x9dpLshexQ==
@@ -18937,15 +18937,10 @@ moment-timezone@^0.5.31:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.2.tgz#00910c60b20843bcba52d37d58c628b47b1f20e4"
   integrity sha512-UgzG4rvxYpN15jgCmVJwac49h9ly9NurikMWGPdVxm8GZD6XjkKPxDTjQQ43gtGgnV3X0cAyWDdP2Wexoquifg==
 
-monaco-editor@0.19.0:
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.19.0.tgz#c6e774210f3b292ff739e96f45a1cc78bf5ac2e7"
-  integrity sha512-ida++HI/s9V8ma8yYS9CAS0UJEFwW1gbt9G6oviEdv/aHhFd/kV3sXrINqC63TVdKzOZdKjPRRCOPJJ80zvLbw==
-
-monaco-typescript@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/monaco-typescript/-/monaco-typescript-3.6.1.tgz#69a545a45e2a6d036a50d78508792b856f9968d7"
-  integrity sha512-VXzS/s/YoQlolf7zRsM7PGVhY+HUTTHcLzFCx1QxuyOpoY1uFlUaMeTIV/AMYzMjSqHIiJ58kNiWjoP1YNsaAQ==
+monaco-editor@0.33.0:
+  version "0.33.0"
+  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.33.0.tgz#842e244f3750a2482f8a29c676b5684e75ff34af"
+  integrity sha512-VcRWPSLIUEgQJQIE0pVT8FcGBIgFoxz7jtqctE+IiCxWugD0DwgyQBcZBhdSrdMC84eumoqMZsGl2GTreOzwqw==
 
 moo@^0.4.3:
   version "0.4.3"
@@ -21657,15 +21652,15 @@ react-inspector@^5.1.0:
     is-dom "^1.0.0"
     prop-types "^15.0.0"
 
+react-is@16.12.0, react-is@^16.12.0, react-is@^16.6.0, react-is@^16.6.3, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6, react-is@^16.9.0:
+  version "16.12.0"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
+  integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
+
 react-is@17.0.2, react-is@^17.0.1, react-is@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
-
-react-is@^16.12.0, react-is@^16.6.0, react-is@^16.6.3, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6, react-is@^16.9.0:
-  version "16.12.0"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
-  integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
 
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
@@ -24572,10 +24567,10 @@ table@^6.0.4:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tabster@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-1.1.1.tgz#010dce319edb2a2671af2e7e862008d0c442dd7a"
-  integrity sha512-h8PPDMHeT9Np/MLqijfZAaWgn/Y0okz9mLu+f0aRMX+534oM5NA45ySrQ1oeORpCPRawbcjCwdmTHq4C0xJhCw==
+tabster@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-1.3.2.tgz#99b3b76aed20d822fc64a4eb62567bb359d9b7f9"
+  integrity sha512-8k6AcXo4wuSbK6y6R9iP9RxM8qDRk5wYY/0PbNSvp+FgJ3QagXXFnp6nqof0VHNmEPqrajm2BCpX635q60/oSQ==
   dependencies:
     keyborg "^1.1.0"
     tslib "^2.3.1"

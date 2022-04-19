@@ -1,4 +1,5 @@
 import { useTheme } from './useTheme';
+import { getId } from '@fluentui/utilities';
 import { useWindow } from '@fluentui/react-window-provider';
 import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
 import type { IStyle } from '@fluentui/style-utilities';
@@ -42,6 +43,10 @@ export type UseStylesOptions = {
   theme?: Theme;
 };
 
+type WindowWithId = Window & {
+  __id__: string;
+};
+
 /**
  * Registers a css object, optionally as a function of the theme.
  *
@@ -57,11 +62,35 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
 ): (options?: UseStylesOptions) => { [key in keyof TStyleSet]: string } {
   // Create graph of inputs to map to output.
   const graph = new Map();
+  // Retain a dictionary of window ids we're tracking
+  const allWindows = new Set<string>();
+
+  // cleanupMapEntries will
+  // 1. remove all the graph branches for the window,
+  // 2. remove the event listener,
+  // 3. delete the allWindows entry.
+  const cleanupMapEntries = (ev: PageTransitionEvent) => {
+    const win = ev.currentTarget as WindowWithId;
+    const winId = win.__id__;
+    graph.delete(winId);
+    win.removeEventListener('unload', cleanupMapEntries);
+    allWindows.delete(winId);
+  };
 
   // eslint-disable-next-line deprecation/deprecation
   return (options: UseStylesOptions = {}) => {
     let { theme } = options;
-    const win = useWindow();
+    let winId: string | undefined;
+    const win = useWindow() as WindowWithId | undefined;
+    if (win) {
+      win.__id__ = win.__id__ || getId();
+      winId = win.__id__;
+      if (!allWindows.has(winId)) {
+        allWindows.add(winId);
+        win.addEventListener('unload', cleanupMapEntries);
+      }
+    }
+
     const contextualTheme = useTheme();
 
     theme = theme || contextualTheme;
@@ -69,7 +98,7 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
 
     const id = renderer.getId();
     const isStyleFunction = typeof styleOrFunction === 'function';
-    const path = isStyleFunction ? [id, win, theme] : [id, win];
+    const path = [winId, id, theme];
     let value = graphGet(graph, path);
 
     if (!value) {

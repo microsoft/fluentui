@@ -231,6 +231,20 @@ const useButtonStyles = makeStyles({
     ':disabled': {
       color: tokens.colorNeutralForegroundDisabled,
     },
+    '@media (forced-colors: active)': {
+      color: 'ButtonText',
+      ':enabled': {
+        ':hover': {
+          color: 'ButtonText',
+        },
+        ':active': {
+          color: 'ButtonText',
+        },
+        [`&.${spinButtonExtraClassNames.buttonActive}`]: {
+          color: 'ButtonText',
+        },
+      },
+    },
   },
 
   // These designs are not yet finalized so this is copy-paste for the "outline"
@@ -322,6 +336,20 @@ const useButtonDisabledStyles = makeStyles({
       [`&.${spinButtonExtraClassNames.buttonActive}`]: {
         color: tokens.colorNeutralForegroundDisabled,
         backgroundColor: 'transparent',
+      },
+    },
+    '@media (forced-colors: active)': {
+      color: 'GrayText',
+      ':enabled': {
+        ':hover': {
+          color: 'GrayText',
+        },
+        ':active': {
+          color: 'GrayText',
+        },
+        [`&.${spinButtonExtraClassNames.buttonActive}`]: {
+          color: 'GrayText',
+        },
       },
     },
   },
