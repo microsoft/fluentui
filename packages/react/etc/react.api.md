@@ -9625,8 +9625,6 @@ export { LocalizedFontFamilies }
 
 export { LocalizedFontNames }
 
-// Warning: (ae-forgotten-export) The symbol "StylesClasMapping" needs to be exported by the entry point index.d.ts
-//
 // @public @deprecated
 export function makeStyles<TStyleSet extends {
     [key in keyof TStyleSet]: IStyle;
@@ -10657,6 +10655,13 @@ export enum StickyPositionType {
 export { styled }
 
 export { StyleFunction }
+
+// @public (undocumented)
+export type StylesClasMapping<TStyleSet extends {
+    [key in keyof TStyleSet]: IStyle;
+}> = {
+    [key in keyof TStyleSet]: string;
+};
 
 export { Stylesheet }
 
