@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing star exports at src/index.ts",
+  "packageName": "@fluentui/react-utilities",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
