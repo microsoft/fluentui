@@ -119,8 +119,7 @@ packages/style-utilities @dzearing
 packages/style-utilities/src/interfaces @phkuo @dzearing
 packages/style-utilities/src/styles @phkuo @dzearing
 packages/theme @dzearing
-# packages/utilities
-packages/utilities/positioning @microsoft/cxe-red
+packages/utilities @microsoft/cxe-red
 
 ### Fabric
 # common/
