@@ -2,7 +2,6 @@ import { Tree, formatFiles, joinPathFragments, updateJson, readJson, ProjectConf
 import { moveGenerator } from '@nrwl/workspace/generators';
 import { PackageJson } from '../../types';
 import { getProjects } from '../../utils';
-import * as path from 'path';
 
 import { MovePackagesGeneratorSchema } from './schema';
 
@@ -116,12 +115,17 @@ function isV8Package(tree: Tree, project: ProjectConfiguration) {
 
 function updateReadMe(tree: Tree, schema: MovePackagesGeneratorSchema) {
   const { name, destination } = schema;
-  const readMePath = path.join(destination, 'README.md');
-  if (!name || !tree.exists(readMePath)) {
-    return;
+  if (name) {
+    const project = getProjects(tree).get(name) as ProjectConfiguration;
+    const readMePath = joinPathFragments(project.root, 'README.md');
+
+    if (!tree.exists(readMePath)) {
+      return;
+    }
+
+    const newName = new RegExp(`${getNewProjectName(destination)}`, 'g');
+    const readMeFile = tree.read(readMePath, 'utf8');
+    const updatedReadMeFile = readMeFile!.replace(newName, name);
+    tree.write(readMePath, updatedReadMeFile);
   }
-  const newName = new RegExp(`${getNewProjectName(destination)}`, 'g');
-  const readMeFile = tree.read(readMePath, 'utf8');
-  const updatedReadMeFile = readMeFile!.replace(newName, name);
-  tree.write(readMePath, updatedReadMeFile);
 }
