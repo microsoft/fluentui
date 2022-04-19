@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   root: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     position: 'relative',
-    color: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralForeground2,
     backgroundColor: tokens.colorNeutralBackground1,
     paddingRight: '10px',
     paddingLeft: '10px',
