@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/state",
   "description": "A set of utils to create framework agnostic and reusable state managers",
-  "version": "0.61.0",
+  "version": "0.62.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {

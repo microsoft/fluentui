@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "target": "ES2015",
+    "target": "ES2019",
     "module": "esnext",
     "moduleResolution": "node",
     "lib": ["ES2015", "dom"],
@@ -39,6 +39,7 @@
       "@fluentui/react-menu": ["packages/react-menu/src/index.ts"],
       "@fluentui/react-popover": ["packages/react-popover/src/index.ts"],
       "@fluentui/react-portal": ["packages/react-portal/src/index.ts"],
+      "@fluentui/react-portal-compat": ["packages/react-portal-compat/src/index.ts"],
       "@fluentui/react-positioning": ["packages/react-positioning/src/index.ts"],
       "@fluentui/react-priority-overflow": ["packages/react-priority-overflow/src/index.ts"],
       "@fluentui/react-provider": ["packages/react-provider/src/index.ts"],

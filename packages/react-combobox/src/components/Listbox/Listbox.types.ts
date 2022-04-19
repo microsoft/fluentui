@@ -1,19 +1,35 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { OptionValue, OptionCollectionState } from '../../utils/OptionCollection.types';
+import { SelectionProps, SelectionState } from '../../utils/Selection.types';
+import type { ListboxContextValue } from '../../contexts/ListboxContext';
 
 export type ListboxSlots = {
+  /* The root slot, a `<div>` with `role="listbox"` */
   root: Slot<'div'>;
-};
-
-export type ListboxCommons = {
-  // TODO Add things shared between props and state here
 };
 
 /**
  * Listbox Props
  */
-export type ListboxProps = ComponentProps<ListboxSlots> & ListboxCommons;
+export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
 
 /**
  * State used in rendering Listbox
  */
-export type ListboxState = ComponentState<ListboxSlots> & ListboxCommons;
+export type ListboxState = ComponentState<ListboxSlots> &
+  OptionCollectionState &
+  SelectionState & {
+    /* Option data for the currently highlighted option (not the selected option) */
+    activeOption?: OptionValue;
+
+    /* Unique id string that can be used as a base for default option ids */
+    idBase: string;
+
+    /* Callback when an option is clicked, for internal use */
+    onOptionClick(event: React.MouseEvent, option: OptionValue): void;
+  };
+
+export type ListboxContextValues = {
+  listbox: ListboxContextValue;
+};

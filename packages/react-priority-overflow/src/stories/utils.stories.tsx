@@ -10,7 +10,8 @@ import {
   MenuItemProps,
   makeStyles,
 } from '@fluentui/react-components';
-import { useOverflowItem } from '../useOverflowItem';
+import type { OverflowItemProps } from '../components/OverflowItem/OverflowItem.types';
+import { OverflowItem } from '../components/OverflowItem/OverflowItem';
 import { useOverflowMenu } from '../useOverflowMenu';
 import { useIsOverflowItemVisible } from '../useIsOverflowItemVisible';
 import { useIsOverflowGroupVisible } from '../useIsOverflowGroupVisible';
@@ -22,23 +23,22 @@ const useStyles = makeStyles({
     paddingRight: '2px',
   },
 });
+
+export type TestOverflowItemProps = Omit<React.HTMLAttributes<HTMLButtonElement>, 'id'> &
+  Omit<OverflowItemProps, 'children'>;
+
 export const TestOverflowItem: React.FC<TestOverflowItemProps> = props => {
   const { id, priority, groupId, ...rest } = props;
   const styles = useStyles();
-  const ref = useOverflowItem<HTMLDivElement>(id, priority, groupId);
 
   return (
-    <div ref={ref} className={styles.overflowItem}>
-      <Button {...rest}>Item {id}</Button>
-    </div>
+    <OverflowItem id={id} groupId={groupId} priority={priority}>
+      <Button className={styles.overflowItem} {...rest}>
+        Item {id}
+      </Button>
+    </OverflowItem>
   );
 };
-
-export interface TestOverflowItemProps extends Omit<React.HTMLAttributes<HTMLButtonElement>, 'id'> {
-  id: string;
-  groupId?: string;
-  priority?: number;
-}
 
 export const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();

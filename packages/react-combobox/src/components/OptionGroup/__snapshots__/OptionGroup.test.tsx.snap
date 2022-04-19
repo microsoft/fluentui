@@ -4,6 +4,7 @@ exports[`OptionGroup renders a default state 1`] = `
 <div>
   <div
     class="fui-OptionGroup"
+    role="group"
   >
     Default OptionGroup
   </div>
