@@ -2,6 +2,7 @@ import { Tree, formatFiles, joinPathFragments, updateJson, readJson, ProjectConf
 import { moveGenerator } from '@nrwl/workspace/generators';
 import { PackageJson } from '../../types';
 import { getProjects } from '../../utils';
+import * as path from 'path';
 
 import { MovePackagesGeneratorSchema } from './schema';
 
@@ -42,9 +43,14 @@ function runBatchMove(
 function movePackage(tree: Tree, schema: MovePackagesGeneratorSchema) {
   const { name, destination, updateImportPath = false } = schema;
 
+  if (!name) {
+    return;
+  }
+
   moveGenerator(tree, {
-    projectName: name!,
+    projectName: name,
     destination: destination,
+    importPath: name,
     updateImportPath: updateImportPath,
   });
 
@@ -60,6 +66,11 @@ function movePackage(tree: Tree, schema: MovePackagesGeneratorSchema) {
     }
     return json;
   });
+
+  // moveGenerator automatically updates the Readme file of the packages to replace
+  // the package name with a new name based on the "destination" flag. This check
+  // reverts the changes it makes.
+  updateReadMe(tree, schema);
 }
 
 function validateSchema(schema: MovePackagesGeneratorSchema) {
@@ -82,8 +93,8 @@ function validateSchema(schema: MovePackagesGeneratorSchema) {
   }
 }
 
-function getNewProjectName(path: string) {
-  return path.replace(/\//g, '-');
+function getNewProjectName(destinationPath: string) {
+  return destinationPath.replace(/\//g, '-');
 }
 
 function hasSchemaFlag<T extends MovePackagesGeneratorSchema, K extends keyof T>(
@@ -101,4 +112,16 @@ function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
 function isV8Package(tree: Tree, project: ProjectConfiguration) {
   const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
   return packageJson.version.startsWith('8.');
+}
+
+function updateReadMe(tree: Tree, schema: MovePackagesGeneratorSchema) {
+  const { name, destination } = schema;
+  const readMePath = path.join(destination, 'README.md');
+  if (!name || !tree.exists(readMePath)) {
+    return;
+  }
+  const newName = new RegExp(`${getNewProjectName(destination)}`, 'g');
+  const readMeFile = tree.read(readMePath, 'utf8');
+  const updatedReadMeFile = readMeFile!.replace(newName, name);
+  tree.write(readMePath, updatedReadMeFile);
 }
