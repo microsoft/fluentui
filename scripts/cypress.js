@@ -38,6 +38,10 @@ const baseConfig = {
   fixturesFolder: path.join(__dirname, 'cypress/fixtures'),
   supportFile: path.join(__dirname, './cypress/support/index.js'),
   pluginsFile: path.join(__dirname, './cypress/plugins/index.js'),
+  env: {
+    // Used in ./plugins/index.js to choose the webpack devtool
+    mode: argv.mode,
+  },
 };
 
 const run = () => {

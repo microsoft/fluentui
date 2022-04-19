@@ -695,7 +695,7 @@ describe('migrate-converged-pkg generator', () => {
           lib: ['ES2019', 'dom'],
           types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         },
-        include: ['**/*.ts'],
+        include: ['**/*.ts', '**/*.tsx'],
       });
       expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './e2e/tsconfig.json' }]));
 
