@@ -90,8 +90,6 @@ import { CounterBadgeState } from '@fluentui/react-badge';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { createDarkTheme } from '@fluentui/react-theme';
 import { createDOMRenderer } from '@griffel/react';
-import { CreateFocusIndicatorStyleRuleOptions } from '@fluentui/react-tabster';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
@@ -112,7 +110,6 @@ import { FluentProviderContextValues } from '@fluentui/react-provider';
 import { FluentProviderProps } from '@fluentui/react-provider';
 import { FluentProviderSlots } from '@fluentui/react-provider';
 import { FluentProviderState } from '@fluentui/react-provider';
-import { FocusOutlineStyleOptions } from '@fluentui/react-tabster';
 import { FontFamilyTokens } from '@fluentui/react-theme';
 import { FontSizeTokens } from '@fluentui/react-theme';
 import { FontWeightTokens } from '@fluentui/react-theme';
@@ -625,10 +622,6 @@ export { createDarkTheme }
 
 export { createDOMRenderer }
 
-export { CreateFocusIndicatorStyleRuleOptions }
-
-export { createFocusOutlineStyle }
-
 export { createHighContrastTheme }
 
 export { createLightTheme }
@@ -668,8 +661,6 @@ export { FluentProviderProps }
 export { FluentProviderSlots }
 
 export { FluentProviderState }
-
-export { FocusOutlineStyleOptions }
 
 export { FontFamilyTokens }
 

@@ -28,7 +28,6 @@ export type {
 } from '@fluentui/react-provider';
 export {
   createCustomFocusIndicatorStyle,
-  createFocusOutlineStyle,
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,
@@ -36,8 +35,6 @@ export {
   useModalAttributes,
 } from '@fluentui/react-tabster';
 export type {
-  CreateFocusIndicatorStyleRuleOptions,
-  FocusOutlineStyleOptions,
   UseArrowNavigationGroupOptions,
   UseFocusableGroupOptions,
   UseModalAttributesOptions,
