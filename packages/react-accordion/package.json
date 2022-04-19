@@ -35,7 +35,7 @@
     "@fluentui/react-aria": "9.0.0-rc.5",
     "@fluentui/react-context-selector": "9.0.0-rc.5",
     "@fluentui/react-shared-contexts": "9.0.0-rc.4",
-    "@fluentui/react-icons": "^2.0.159-beta.10",
+    "@fluentui/react-icons": "^2.0.166-rc.3",
     "@griffel/react": "1.0.3",
     "@fluentui/react-tabster": "9.0.0-rc.5",
     "@fluentui/react-theme": "9.0.0-rc.4",
