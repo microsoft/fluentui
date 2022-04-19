@@ -7,6 +7,8 @@ export { RelationshipLabel } from './TooltipRelationshipLabel.stories';
 export { RelationshipDescription } from './TooltipRelationshipDescription.stories';
 export { Inverted } from './TooltipInverted.stories';
 export { WithArrow } from './TooltipWithArrow.stories';
+export { Styled } from './TooltipStyled.stories';
+export { CustomMount } from './TooltipCustomMount.stories';
 export { Controlled } from './TooltipControlled.stories';
 export { Positioning } from './TooltipPositioning.stories';
 export { Target } from './TooltipTarget.stories';

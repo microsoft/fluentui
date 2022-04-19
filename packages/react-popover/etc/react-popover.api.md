@@ -17,6 +17,7 @@ import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { usePopperMouseTarget } from '@fluentui/react-positioning';
 
 // @public (undocumented)
@@ -39,8 +40,6 @@ export const PopoverContext: Context<PopoverContextValue>;
 // @public
 export type PopoverContextValue = Pick<PopoverState, 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus'>;
 
-// Warning: (ae-forgotten-export) The symbol "PopoverCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type PopoverProps = Partial<PopoverCommons> & {
     children: [JSX.Element, JSX.Element] | JSX.Element;
@@ -66,8 +65,11 @@ export type PopoverState = PopoverCommons & Pick<PopoverProps, 'children'> & {
 // @public
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const popoverSurfaceClassName = "fui-PopoverSurface";
+
+// @public (undocumented)
+export const popoverSurfaceClassNames: SlotClassNames<PopoverSurfaceSlots>;
 
 // @public
 export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;

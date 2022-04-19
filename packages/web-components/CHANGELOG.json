@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 08 Mar 2022 23:29:58 GMT",
+      "tag": "@fluentui/web-components_v2.3.1",
+      "version": "2.3.1",
+      "comments": {
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "61d1ec16271c2beff80f449c35b10e0b8a1817b5",
+            "comment": "basic storybook upgrade without the new story store format"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Mar 2022 07:41:14 GMT",
       "tag": "@fluentui/web-components_v2.3.1",
       "version": "2.3.1",

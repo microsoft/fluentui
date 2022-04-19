@@ -4,11 +4,35 @@ import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../common/isConformant';
 import { MenuButton } from './MenuButton';
 import { MenuButtonProps } from './MenuButton.types';
+import { menuButtonClassNames } from './useMenuButtonStyles';
 
 describe('MenuButton', () => {
   isConformant({
     Component: MenuButton as React.FunctionComponent<MenuButtonProps>,
     displayName: 'MenuButton',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+            menuIcon: 'Test MenuIcon',
+          },
+          expectedClassNames: {
+            root: menuButtonClassNames.root,
+            icon: menuButtonClassNames.icon,
+          },
+        },
+        {
+          props: {
+            menuIcon: 'Test MenuIcon',
+          },
+          expectedClassNames: {
+            root: menuButtonClassNames.root,
+            menuIcon: menuButtonClassNames.menuIcon,
+          },
+        },
+      ],
+    },
   });
 
   describe('when rendered as a button', () => {

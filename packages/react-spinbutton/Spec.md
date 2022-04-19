@@ -84,7 +84,7 @@ The [WAI-ARIA spec for SpinButton](https://www.w3.org/TR/wai-aria-practices/#spi
 
 Fluent UI v8 (Fabric) ships a `SpinButton` control. This control supports directly typing values into the input field, stepping via step buttons, clamping values in a min-max range and suffixes on the displayed value. The control also supports variants like including an icon in the label, label positioning and styling overrides. `SpinButton` has RTL support and implements the correct ARIA attributes for proper accessibility support.
 
-One interesting aspect of `SpinButton` in v8 is that the `value` prop (the prop that dictates the actual current value of the control) is a string but `min`, `max` and `step` are all numbers. This is in keeping with `<input type="number">` where the `value` attribute is also a string but it feels odd for a React component that works with numeric values to take in a string `value` prop.
+One interesting aspect of `SpinButton` in v8 is that the `value` prop (the prop that dictates the actual current value of the control) is a string but `min`, `max` and `step` are all numbers. This is in keeping with `<input type="number">` where the `value` attribute is also a string but it feels odd for a React component that works with numeric values to take in a string `value` prop. As an aside, `<input type="number">` has an additional property called [`valueAsNumber`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement) that is meant for retrieving the value as a `Number`.
 
 v8 supports an optional icon that appears before the label. As none of the other v8 input controls support adding an icon next to the label as part of their component APIs and how [labeling will work for vNext inputs is still an open question](https://github.com/microsoft/fluentui/issues/19627#issuecomment-1022646775) this feature will be omitted from this spec. Having an icon by the control can be achieved by aligning an icon with the control or perhaps by updating the vNext `Label` component to support icons.
 
@@ -169,7 +169,8 @@ Inspecting a native number input with devtools shows that it implements the [spi
 
 ```tsx
 type SpinButtonChangeData = {
-  value: number;
+  value?: number;
+  displayValue?: string;
 };
 
 const [value, setValue] = useState<number>(2);
@@ -187,39 +188,39 @@ type SpinButtonChangeData = {
   value: number;
 };
 
-type SpinButtonFormatter = (value: number) => string;
-type SpinButtonParser = (formattedValue: string) => number;
-
-const [value, setValue] = useState<number>(3);
-const onControlledExampleChange = (_event, data: SpinButtonChangeData) => {
-  setValue(data.value);
-};
+type FormatterFn = (value: number) => string;
+type ParserFn = (formattedValue: string) => number;
 
 // Takes a number in and returns a formatted string
 // Ex: 12 becomes "12 pt"
-const fontFormatter: SpinButtonFormatter = value => {
+const fontFormatter: FormatterFn = value => {
   return `${value} pt`;
 };
 
 // Takes a formatted string in and returns a number
 // Ex: "12 pt" becomes 12
-const fontParser: SpinButtonParser = formattedValue => {
+const fontParser: ParserFn = formattedValue => {
   return parseFloat(formattedValue);
 };
 
-// Controlled
+const [value, setValue] = useState<number>(3);
+const [displayValue, setDisplayValue] = useState<string>(formatter(3));)
+
+const onControlledExampleChange = (_event, data: SpinButtonChangeData) => {
+  if (data.value !== undefined) {
+    setValue(data.value);
+    setDisplayValue(fontFormatter(data.value));
+  } else if (data.displayValue !== undefined) {
+    const nextValue = fontParser(data.displayValue);
+    setValue(nextValue);
+    setDisplayValue(fontFormatter(nextValue));
+  }
+};
+
 <SpinButton
   value={value}
-  formatter={fontFormatter}
-  parser={fontParser}
+  displayValue={displayValue}
   onChange={onControlledExampleChange}
-/>
-
-// Uncontrolled
-<SpinButton
-  defaultValue={4}
-  formatter={fontFormatter}
-  parser={fontParser}
 />
 ```
 
@@ -238,11 +239,7 @@ A very basic example to demonstrate how formatting will work in practice.
 - _**Public**_
 
 ```tsx
-const formatter = (value: number): string => {
-  return `${$value.toFixed(2)}`;
-};
-
-<SpinButton value={10} min={1} max={100} step={5} formatter={formatter} />;
+<SpinButton value={10} displayValue="$10.00" min={1} max={100} step={5} />
 ```
 
 - _**Internal**_
@@ -250,14 +247,14 @@ const formatter = (value: number): string => {
 ```tsx
 <slots.root {...slotProps.root}>
   <slots.input {...slotProps.input} />
-  <slots.incrementControl {...slots.incrementControl} />
-  <slots.decrementControl {...slots.decrementControl} />
+  <slots.incrementButton {...slots.incrementButton} />
+  <slots.decrementButton {...slots.decrementButton} />
 </slots.root>
 ```
 
 - _**DOM** - how the component will be rendered as HTML elements_
 
-Note that `aria-valuetext` is conditionally rendered. In this case it is rendered because formatting it applied in this example with the `formatter` prop in JSX.
+Note that `aria-valuetext` is conditionally rendered. In this case it is rendered because formatting is applied in this example by the `displayValue` prop in JSX.
 
 ```html
 <!-- root slot -->
@@ -289,7 +286,7 @@ _Describe what will need to be done to upgrade from the existing implementations
 
 1. Ensure `value` prop is a number, not a string
 2. Replace `onIncrement` and `onDecrement` callbacks with `onChange`.
-   1. Increment/decrement logic can be handled by comparing `data.value` and `data.prevValue` in the `onChange` callback.
+   1. Increment/decrement logic can be handled by comparing `data.value` and the current React/Redux/etc state value in the `onChange` callback.
 3. Update `onChange` callback to handle new signature.
 4. Remove `onValidate` callback.
 5. Change ARIA props.
@@ -302,13 +299,20 @@ Not applicable as v0 does not implement this component or one like it.
 
 ## Behaviors
 
-`SpinButton`'s `value` prop is always a number, in contrast to the v8 implementation that gave `value` a string type. `SpinButton`s manipulate numeric values and making `value` a number aligns it with the other related props: `min`, `max` and `step`. `SpinButton`'s `value` is always displayed as a string which is determined with the `formatter()` function. By default this function stringifies `value` but it can do more sophisticated formatting like apply currency formatting. The inverse of `formatter()` is `parser()` which takes the stringified display value and converts it back to a number. The default implementation calls `parseFloat()` on the display value. `parser()` is called when a user directly types a value into `SpinButton`'s `<input>` element so this value can be converted to a number for computation. If `parser()` returns a non-number value (e.g., `NaN`, `undefined`, `null`) `value` will not be changed.
+`SpinButton`'s `value` prop is always a number, in contrast to the v8 implementation that gave `value` a string type. `SpinButton`s manipulate numeric values and making `value` a number aligns it with the other related props: `min`, `max` and `step`. `SpinButton`'s `value` is always displayed as a string which is determined by the `displayValue` prop or by stringifying `value` when `displayValue` is not provided (for uncontrolled `SpinButton`s `defaultValue` is stringified rather than `value`).
 
-`formatter()` and `parser()` allow users to hook into `SpinButton`'s display behavior without having to reimplement features like clamping `value` between `min` and `max` which is required when adding [custom suffixes in v8](https://codepen.io/seanms/pen/QWqpQWp).
+`SpinButton` users may apply custom formatting to the component by providing a value to the `displayValue` prop.
 
-`SpinButton` does not allow values less than `min` or greater than `max` when these props are specified. When using the step buttons/arrow keys the value will not step outside the min/max bounds. If a value is typed into `<input>` that is outside the min/max range it will be clamped to the relevant bound, that is values less than `min` will be set to `min` and values greater than `max` will be set to `max`.
+Values outside of the min/max bounds can be provided to `SpinButton` and they will be displayed. When stepping the value with the step buttons or hotkeys the value will not be stepped outside of the min/max bounds. If the value starts outside of the min/max bounds and is stepped it will update to a value outside of the bounds. Once the value is stepped inside the min/max bounds it will be clamped to this range.
 
-Aside from min/max range clamping `SpinButton` does not currently implement any input validation.
+For example, assume a `SpinButton` with min=5, max=10, value=1 and step=1. Incrementing `value` with the stepper will increase it to 2.
+
+Any value may be typing into the `<input>` element of `SpinButton`. When typing into the input `SpinButton` enters an intermediate state where changes to the input are not applied to `value`. Instead the user must "commit" their edits to trigger a `value` update. This can be done two ways:
+
+1. Blur the input field (i.e., tab or click away)
+2. Use one of `SpinButton`'s hotkeys to modify the value.
+
+Aside from min/max range clamping behavior described above `SpinButton` does not currently implement any input validation.
 
 No error states are currently implemented.
 

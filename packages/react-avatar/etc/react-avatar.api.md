@@ -10,18 +10,37 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const avatarClassName = "fui-Avatar";
+
+// @public (undocumented)
+export const avatarClassNames: SlotClassNames<AvatarSlots>;
+
+// @public
+export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
+
+// @public (undocumented)
+export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
+
+// @public
+export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & AvatarGroupCommons;
+
+// @public (undocumented)
+export type AvatarGroupSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & AvatarGroupCommons;
 
 // @public
 export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
 
-// Warning: (ae-forgotten-export) The symbol "AvatarCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & Partial<AvatarCommons>;
 
@@ -45,8 +64,17 @@ export function getInitials(displayName: string | undefined | null, isRtl: boole
 // @public (undocumented)
 export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
 
+// @public
+export const renderAvatarGroup_unstable: (state: AvatarGroupState) => JSX.Element;
+
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
+
+// @public
+export const useAvatarGroup_unstable: (props: AvatarGroupProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupState;
+
+// @public
+export const useAvatarGroupStyles_unstable: (state: AvatarGroupState) => AvatarGroupState;
 
 // @public (undocumented)
 export const useAvatarStyles_unstable: (state: AvatarState) => AvatarState;

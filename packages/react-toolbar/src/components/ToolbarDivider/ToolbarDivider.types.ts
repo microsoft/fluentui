@@ -1,19 +1,12 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-
-export type ToolbarDividerSlots = {
-  root: Slot<'div'>;
-};
-
-type ToolbarDividerCommons = {
-  // TODO Add things shared between props and state here
-};
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { DividerSlots, DividerState } from '@fluentui/react-divider';
 
 /**
  * ToolbarDivider Props
  */
-export type ToolbarDividerProps = ComponentProps<ToolbarDividerSlots> & ToolbarDividerCommons;
+export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>>;
 
 /**
  * State used in rendering ToolbarDivider
  */
-export type ToolbarDividerState = ComponentState<ToolbarDividerSlots> & ToolbarDividerCommons;
+export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & DividerState;

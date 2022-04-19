@@ -9,12 +9,16 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Input: ForwardRefComponent<InputProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const inputClassName = "fui-Input";
+
+// @public (undocumented)
+export const inputClassNames: SlotClassNames<InputSlots>;
 
 // @public
 export type InputOnChangeData = {
@@ -25,11 +29,10 @@ export type InputOnChangeData = {
 export type InputProps = Omit<ComponentProps<Partial<InputSlots>, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
     children?: never;
     size?: 'small' | 'medium' | 'large';
-    inline?: boolean;
     appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
     defaultValue?: string;
     value?: string;
-    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => void;
     type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'number' | 'time' | 'week';
 };
 
@@ -42,7 +45,7 @@ export type InputSlots = {
 };
 
 // @public
-export type InputState = Required<Pick<InputProps, 'appearance' | 'inline' | 'size'>> & ComponentState<InputSlots>;
+export type InputState = Required<Pick<InputProps, 'appearance' | 'size'>> & ComponentState<InputSlots>;
 
 // @public
 export const renderInput_unstable: (state: InputState) => JSX.Element;

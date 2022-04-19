@@ -1,6 +1,6 @@
 import { isConformant } from 'test/specs/commonTests';
-import { FormSlider } from 'src/components/Form/FormSlider';
-import { Slider } from 'src/components/Slider/Slider';
+import { FormSlider, formSliderClassName } from 'src/components/Form/FormSlider';
+import { Slider, sliderClassName } from 'src/components/Slider/Slider';
 
 describe('FormSlider', () => {
   isConformant(FormSlider, {
@@ -15,5 +15,9 @@ describe('FormSlider', () => {
       onKeyPress: 'input',
       onKeyUp: 'input',
     },
+    getTargetElement: (result, attr) =>
+      attr === 'className'
+        ? result.container.querySelector(`.${formSliderClassName}`)
+        : result.container.querySelector(`.${sliderClassName}`),
   });
 });

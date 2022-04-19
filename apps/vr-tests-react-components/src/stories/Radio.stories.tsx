@@ -33,6 +33,7 @@ storiesOf('Radio Converged', module)
   });
 
 storiesOf('Radio Converged', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))

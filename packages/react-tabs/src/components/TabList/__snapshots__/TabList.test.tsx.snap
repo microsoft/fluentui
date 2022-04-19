@@ -17,39 +17,42 @@ exports[`TabList renders with tabs 1`] = `
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
     role="tablist"
   >
-    <div
+    <button
       class="fui-Tab"
       role="tab"
-      tabindex="0"
+      style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      value="1"
     >
       <span
-        class=""
+        class="fui-Tab__content"
       >
         First
       </span>
-    </div>
-    <div
+    </button>
+    <button
       class="fui-Tab"
       role="tab"
-      tabindex="0"
+      style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      value="2"
     >
       <span
-        class=""
+        class="fui-Tab__content"
       >
         Second
       </span>
-    </div>
-    <div
+    </button>
+    <button
       class="fui-Tab"
       role="tab"
-      tabindex="0"
+      style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      value="3"
     >
       <span
-        class=""
+        class="fui-Tab__content"
       >
         Third
       </span>
-    </div>
+    </button>
   </div>
 </div>
 `;

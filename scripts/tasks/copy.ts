@@ -1,8 +1,8 @@
-import * as fs from 'fs';
+import * as fs from 'fs-extra';
 import * as path from 'path';
-import { series, resolveCwd, copyTask } from 'just-scripts';
+import { series, resolveCwd, copyTask, copyInstructionsTask } from 'just-scripts';
 
-export function expandSourcePath(pattern) {
+export function expandSourcePath(pattern: string): string {
   if (!pattern) {
     return null;
   }
@@ -31,27 +31,43 @@ export function expandSourcePath(pattern) {
 }
 
 export function copy() {
-  let tasks = [];
-  let configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
+  const configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
 
   if (!fs.existsSync(configPath)) {
     return;
   }
 
-  const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+  const config: { copyTo?: { [destination: string]: string | string[] } } = fs.readJSONSync(configPath);
+  const errorText =
+    'config/pre-copy.json must have this structure: { copyTo: { [destination: string]: string | string[] } }';
 
-  if (config && config.copyTo) {
-    for (let destination in config.copyTo) {
-      const sources = config.copyTo[destination];
-      destination = path.resolve(process.cwd(), destination);
-      tasks.push(
-        copyTask({
-          paths: sources.map(src => expandSourcePath(src)),
-          dest: destination,
-        }),
-      );
-    }
+  if (!config.copyTo) {
+    throw new Error(errorText);
   }
+
+  const tasks = Object.entries(config.copyTo).map(([destination, sources]) => {
+    const destinationPath = path.resolve(process.cwd(), destination);
+
+    if (Array.isArray(sources)) {
+      return copyTask({
+        paths: sources.map(src => expandSourcePath(src)),
+        dest: destinationPath,
+      });
+    }
+
+    if (typeof sources === 'string') {
+      return copyInstructionsTask({
+        copyInstructions: [
+          {
+            sourceFilePath: sources,
+            destinationFilePath: destinationPath,
+          },
+        ],
+      });
+    }
+
+    throw new Error(errorText);
+  });
 
   return series.apply(null, tasks);
 }

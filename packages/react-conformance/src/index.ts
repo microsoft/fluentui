@@ -1,3 +1,2 @@
 export { isConformant } from './isConformant';
-export * from './types';
-export { getComponent } from './utils/index';
+export type { ConformanceTest, IsConformantOptions, TestObject, TestOptions } from './types';

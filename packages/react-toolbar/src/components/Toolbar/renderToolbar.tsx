@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { ToolbarState, ToolbarSlots } from './Toolbar.types';
+import type { ToolbarState, ToolbarSlots, ToolbarContextValues } from './Toolbar.types';
+import { ToolbarContext } from './ToolbarContext';
 
 /**
  * Render the final JSX of Toolbar
  */
-export const renderToolbar_unstable = (state: ToolbarState) => {
+export const renderToolbar_unstable = (state: ToolbarState, contextValues: ToolbarContextValues) => {
   const { slots, slotProps } = getSlots<ToolbarSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <ToolbarContext.Provider value={contextValues.toolbar}>
+      <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>
+    </ToolbarContext.Provider>
+  );
 };

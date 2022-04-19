@@ -1,13 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+
 import { ReactWrapper } from 'enzyme';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+import { safeCreate, safeMount } from '@fluentui/test-utilities';
+
+import { isConformant } from '../../common/isConformant';
+import { Autofill } from '../../Autofill';
+import { useKeytipRef } from '../../Keytips';
+import { SelectableOptionMenuItemType } from '../../SelectableOption';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { ComboBox } from './ComboBox';
-import { SelectableOptionMenuItemType } from '../../SelectableOption';
-import { isConformant } from '../../common/isConformant';
-import { safeCreate, safeMount } from '@fluentui/test-utilities';
-import { useKeytipRef } from '../../Keytips';
-import { Autofill } from '../../Autofill';
 import type { IComboBox, IComboBoxOption } from './ComboBox.types';
 
 const OPTION_SELECTOR = '.ms-ComboBox-option';
@@ -507,6 +512,30 @@ describe('ComboBox', () => {
     });
   });
 
+  it('Changing selected option with keyboard triggers onChange with the correct value', () => {
+    const onChange = jest.fn<
+      void,
+      [React.FormEvent<IComboBox>, IComboBoxOption | undefined, number | undefined, string | undefined]
+    >();
+    render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS3} onChange={onChange} />);
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    userEvent.tab();
+    userEvent.keyboard('{arrowdown}');
+    userEvent.tab();
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual(DEFAULT_OPTIONS3[2]);
+    expect(onChange.mock.calls[0][2]).toEqual(2);
+    expect(onChange.mock.calls[0][3]).toEqual(DEFAULT_OPTIONS3[2].text);
+
+    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS3} />, wrapper => {
+      wrapper.find('input').simulate('keydown', { which: KeyCodes.up });
+      expect(wrapper.find('input').props().value).toEqual('Bar');
+    });
+  });
+
   it('Cannot insert text while disabled', () => {
     safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled />, wrapper => {
       wrapper.find('input').simulate('keydown', { which: KeyCodes.a });
@@ -667,12 +696,10 @@ describe('ComboBox', () => {
   });
 
   it('Can type a complete option with autocomplete and allowFreeform on and submit it', () => {
-    let updatedOption: IComboBoxOption | undefined;
-    let updatedIndex: number | undefined;
-    const onChange = jest.fn((event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => {
-      updatedOption = option;
-      updatedIndex = index;
-    });
+    const onChange = jest.fn<
+      void,
+      [React.FormEvent<IComboBox>, IComboBoxOption | undefined, number | undefined, string | undefined]
+    >();
     const initialOption = { key: '1', text: 'Text' };
 
     safeMount(<ComboBox options={[initialOption]} autoComplete="on" allowFreeform onChange={onChange} />, wrapper => {
@@ -683,8 +710,9 @@ describe('ComboBox', () => {
       inputElement.simulate('input', { target: { value: 'text' } });
       inputElement.simulate('keydown', { which: KeyCodes.enter });
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(updatedOption).toEqual(initialOption);
-      expect(updatedIndex).toEqual(0);
+      expect(onChange.mock.calls[0][1]).toEqual(initialOption);
+      expect(onChange.mock.calls[0][2]).toEqual(0);
+      expect(onChange.mock.calls[0][3]).toEqual(initialOption.text);
 
       wrapper.update();
       expect(wrapper.find('input').props().value).toEqual('Text');

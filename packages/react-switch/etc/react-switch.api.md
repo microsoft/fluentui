@@ -18,7 +18,7 @@ export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
 // @public
 export const Switch: ForwardRefComponent<SwitchProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const switchClassName: string;
 
 // @public (undocumented)
@@ -29,8 +29,6 @@ export type SwitchOnChangeData = {
     checked: boolean;
 };
 
-// Warning: (ae-forgotten-export) The symbol "SwitchCommons" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'onChange'> & Partial<SwitchCommons> & {
     defaultChecked?: boolean;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DecoratorFunction } from '@storybook/addons';
 import { ExtendedStoryFnReturnType } from './types';
+import { makeStyles, mergeClasses } from '@griffel/react';
 
 export const TestWrapperDecorator: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
   <div style={{ display: 'flex' }}>
@@ -42,50 +43,30 @@ export const TestWrapperDecoratorFullWidth: DecoratorFunction<ExtendedStoryFnRet
   </div>
 );
 
-const mapper = { default: '', fixed: '300px', full: '100%' };
-
-/**
- * Temporary helper to modify already decorated stories for screener DOM container
- * This should be used for all stories that use same story ID multiple times and need different decorator
- *
- * > **Why is this needed:**
- * >
- * > SB6 duplicates same story ID decorators (until we migrate to CSF format duplication problem this is a workaround)
- *
- * @example
- * ```
- // this adds first decorator
- storiesOf('SpinButton', module).addDecorator(TestWrapperDecorator)...
-
- // this adds another decorator to same DOM tree
- storiesOf('SpinButton', module).addDecorator(TestWrapperDecoratorFullWidth)...
-
- // this results having following DOM tree
- // ↓ ↓ ↓
-   <TestWrapperDecoratorFullWidth>
-     <TestWrapperDecorator>
-       <Story/>
-    </TestWrapperDecorator>
-  </TestWrapperDecoratorFullWidth>
-```
- */
-export function modifyDeprecatedDecoratorStyles(options: {
-  mode: keyof typeof mapper;
-}): DecoratorFunction<ExtendedStoryFnReturnType> {
-  const { mode } = options;
-  return story => {
-    return (
-      <span
-        ref={el => {
-          if (!el) {
-            return;
-          }
-          const testWrapperNode = el.querySelector('.testWrapper') as HTMLDivElement;
-          testWrapperNode.style.width = mapper[mode];
+const useNoAnimationStyles = makeStyles({
+  root: {
+    animationDuration: '0s !important',
+    transitionDuration: '0s !important',
+    '& *': {
+      animationDuration: '0s !important',
+      transitionDuration: '0s !important',
+    },
+  },
+});
+export const TestWrapperDecoratorNoAnimation: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
+  const noAnimationStyles = useNoAnimationStyles();
+  const className = mergeClasses(noAnimationStyles.root, 'testWrapper');
+  return (
+    <div style={{ display: 'flex' }}>
+      <div
+        className={className}
+        style={{
+          padding: '10px',
+          overflow: 'hidden',
         }}
       >
         {story()}
-      </span>
-    );
-  };
-}
+      </div>
+    </div>
+  );
+};

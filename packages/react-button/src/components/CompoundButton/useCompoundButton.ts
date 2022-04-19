@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
-import type { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
 import { useButton_unstable } from '../Button/index';
+import type { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
 
 /**
  * Given user props, defines default props for the CompoundButton, calls useButtonState, and returns processed state.
@@ -12,7 +12,7 @@ export const useCompoundButton_unstable = (
   { contentContainer, secondaryContent, ...props }: CompoundButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): CompoundButtonState => {
-  return {
+  const state: CompoundButtonState = {
     // Button state
     ...useButton_unstable(props, ref),
 
@@ -26,4 +26,9 @@ export const useCompoundButton_unstable = (
     contentContainer: resolveShorthand(contentContainer, { required: true }),
     secondaryContent: resolveShorthand(secondaryContent),
   };
+
+  // Recalculate iconOnly to take into account secondaryContent.
+  state.iconOnly = Boolean(state.icon?.children && !props.children && !state.secondaryContent?.children);
+
+  return state;
 };

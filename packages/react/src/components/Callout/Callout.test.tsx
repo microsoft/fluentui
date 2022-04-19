@@ -25,7 +25,6 @@ describe('Callout', () => {
   isConformant({
     Component: Callout,
     displayName: 'Callout',
-    targetComponent: CalloutContent,
     requiredProps: { doNotLayer: true },
     disabledTests: ['component-handles-classname'],
   });

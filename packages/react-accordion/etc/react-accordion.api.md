@@ -11,18 +11,20 @@ import type { Context } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const accordionClassName = "fui-Accordion";
+
+// @public (undocumented)
+export const accordionClassNames: SlotClassNames<AccordionSlots>;
 
 // @public (undocumented)
 export const AccordionContext: Context<AccordionContextValue>;
 
-// Warning: (ae-forgotten-export) The symbol "AccordionCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type AccordionContextValue = Omit<AccordionCommons, 'multiple'> & {
     openItems: AccordionItemValue[];
@@ -37,8 +39,11 @@ export type AccordionContextValues = {
 // @public
 export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const accordionHeaderClassName = "fui-AccordionHeader";
+
+// @public (undocumented)
+export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots>;
 
 // @public (undocumented)
 export type AccordionHeaderContextValue = {
@@ -56,8 +61,6 @@ export type AccordionHeaderContextValues = {
 // @public (undocumented)
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
-// Warning: (ae-forgotten-export) The symbol "AccordionHeaderCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & Partial<AccordionHeaderCommons>;
 
@@ -81,14 +84,15 @@ export type AccordionIndex = number | number[];
 // @public
 export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const accordionItemClassName = "fui-AccordionItem";
+
+// @public (undocumented)
+export const accordionItemClassNames: SlotClassNames<AccordionItemSlots>;
 
 // @public (undocumented)
 export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
 
-// Warning: (ae-forgotten-export) The symbol "AccordionItemCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
     open: boolean;
@@ -117,8 +121,11 @@ export type AccordionItemValue = unknown;
 // @public
 export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const accordionPanelClassName = "fui-AccordionPanel";
+
+// @public (undocumented)
+export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots>;
 
 // @public (undocumented)
 export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;

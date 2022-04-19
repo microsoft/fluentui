@@ -2,147 +2,148 @@
 
 exports[`Modal renders Draggable Modal correctly 1`] = `
 <body
-  class=
-
-      {
-        overflow: hidden !important;
-      }
+  class=""
 >
-  <div
-    class=
-        ms-Layer
-        ms-Layer--fixed
-        ms-Modal-Layer
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          bottom: 0px;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: unset;
-          left: 0px;
-          position: static;
-          right: 0px;
-          top: 0px;
-          visibility: hidden;
-          width: unset;
-          z-index: 1000000;
-        }
-    data-portal-element="true"
-  >
-    <div
-      class=
-          ms-Fabric
-          ms-Layer-content
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #323130;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            visibility: visible;
-          }
-          & button {
-            font-family: inherit;
-          }
-          & input {
-            font-family: inherit;
-          }
-          & textarea {
-            font-family: inherit;
-          }
-    >
-      <div
-        aria-modal="false"
-        role="dialog"
-        style="outline: none;"
-      >
-        <div
-          class=
-              ms-Modal
-              is-open
-              test-className
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                align-items: center;
-                background-color: transparent;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 100%;
-                justify-content: center;
-                opacity: 1;
-                pointer-events: auto;
-                position: absolute;
-                transition: opacity 0.267s;
-                width: 100%;
-              }
-        >
-          <div
-            class=
-                ms-Dialog-main
-                test-containerClassName
-                {
-                  background-color: #ffffff;
-                  border-radius: 2px;
-                  box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
-                  box-sizing: border-box;
-                  cursor: move;
-                  max-height: calc(100% - 32px);
-                  max-width: calc(100% - 32px);
-                  min-height: 176px;
-                  min-width: 288px;
-                  outline: 3px solid transparent;
-                  overflow-y: auto;
-                  position: relative;
-                  text-align: left;
-                  z-index: 1000000;
-                }
-            id="ModalFocusTrapZone0"
-            style="transform: translate(0px, 0px);"
-          >
-            <div
-              aria-hidden="true"
-              data-is-focus-trap-zone-bumper="true"
-              data-is-visible="true"
-              style="pointer-events: none; position: fixed;"
-              tabindex="0"
-            />
-            <div
-              class=
-                  ms-Modal-scrollableContent
-                  {
-                    flex-grow: 1;
-                    max-height: 100vh;
-                    overflow-y: auto;
-                  }
-                  @supports (-webkit-overflow-scrolling: touch){& {
-                    max-height: 768px;
-                  }
-              data-is-scrollable="true"
-            >
-              Test Content
-            </div>
-            <div
-              aria-hidden="true"
-              data-is-focus-trap-zone-bumper="true"
-              data-is-visible="true"
-              style="pointer-events: none; position: fixed;"
-              tabindex="0"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <div>
     <span
       class="ms-layer"
     />
+  </div>
+  <div
+    id="fluent-default-layer-host"
+    style="position: fixed; z-index: 1000000;"
+  >
+    <div
+      class=
+          ms-Layer
+          ms-Layer--fixed
+          ms-Modal-Layer
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            bottom: 0px;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: unset;
+            left: 0px;
+            position: static;
+            right: 0px;
+            top: 0px;
+            visibility: hidden;
+            width: unset;
+            z-index: 1000000;
+          }
+      data-portal-element="true"
+    >
+      <div
+        class=
+            ms-Fabric
+            ms-Layer-content
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              visibility: visible;
+            }
+            & button {
+              font-family: inherit;
+            }
+            & input {
+              font-family: inherit;
+            }
+            & textarea {
+              font-family: inherit;
+            }
+      >
+        <div
+          aria-modal="false"
+          role="dialog"
+          style="outline: none;"
+        >
+          <div
+            class=
+                ms-Modal
+                is-open
+                test-className
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: transparent;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 100%;
+                  justify-content: center;
+                  opacity: 1;
+                  pointer-events: auto;
+                  position: absolute;
+                  transition: opacity 0.267s;
+                  width: 100%;
+                }
+          >
+            <div
+              class=
+                  ms-Dialog-main
+                  test-containerClassName
+                  {
+                    background-color: #ffffff;
+                    border-radius: 2px;
+                    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
+                    box-sizing: border-box;
+                    cursor: move;
+                    max-height: calc(100% - 32px);
+                    max-width: calc(100% - 32px);
+                    min-height: 176px;
+                    min-width: 288px;
+                    outline: 3px solid transparent;
+                    overflow-y: auto;
+                    position: relative;
+                    text-align: left;
+                    z-index: 1000000;
+                  }
+              id="ModalFocusTrapZone0"
+              style="transform: translate(0px, 0px);"
+            >
+              <div
+                aria-hidden="true"
+                data-is-focus-trap-zone-bumper="true"
+                data-is-visible="true"
+                style="pointer-events: none; position: fixed;"
+                tabindex="0"
+              />
+              <div
+                class=
+                    ms-Modal-scrollableContent
+                    {
+                      flex-grow: 1;
+                      max-height: 100vh;
+                      overflow-y: auto;
+                    }
+                    @supports (-webkit-overflow-scrolling: touch){& {
+                      max-height: 768px;
+                    }
+                data-is-scrollable="true"
+              >
+                Test Content
+              </div>
+              <div
+                aria-hidden="true"
+                data-is-focus-trap-zone-bumper="true"
+                data-is-visible="true"
+                style="pointer-events: none; position: fixed;"
+                tabindex="0"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 `;
@@ -163,149 +164,154 @@ exports[`Modal renders Modal correctly 1`] = `
     />
   </div>
   <div
-    class=
-        ms-Layer
-        ms-Layer--fixed
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          bottom: 0px;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          left: 0px;
-          position: fixed;
-          right: 0px;
-          top: 0px;
-          visibility: hidden;
-          z-index: 1000000;
-        }
-    data-portal-element="true"
+    id="fluent-default-layer-host"
+    style="position: fixed; z-index: 1000000;"
   >
     <div
       class=
-          ms-Fabric
-          ms-Layer-content
+          ms-Layer
+          ms-Layer--fixed
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #323130;
+            bottom: 0px;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            visibility: visible;
+            left: 0px;
+            position: fixed;
+            right: 0px;
+            top: 0px;
+            visibility: hidden;
+            z-index: 1000000;
           }
-          & button {
-            font-family: inherit;
-          }
-          & input {
-            font-family: inherit;
-          }
-          & textarea {
-            font-family: inherit;
-          }
+      data-portal-element="true"
     >
       <div
-        aria-modal="true"
-        role="dialog"
-        style="outline: none;"
+        class=
+            ms-Fabric
+            ms-Layer-content
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              visibility: visible;
+            }
+            & button {
+              font-family: inherit;
+            }
+            & input {
+              font-family: inherit;
+            }
+            & textarea {
+              font-family: inherit;
+            }
       >
         <div
-          class=
-              ms-Modal
-              is-open
-              test-className
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                align-items: center;
-                background-color: transparent;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 100%;
-                justify-content: center;
-                opacity: 1;
-                pointer-events: auto;
-                position: fixed;
-                transition: opacity 0.267s;
-                width: 100%;
-              }
-          role="document"
+          aria-modal="true"
+          role="dialog"
+          style="outline: none;"
         >
           <div
-            aria-hidden="true"
             class=
-                ms-Overlay
-                ms-Overlay--dark
+                ms-Modal
+                is-open
+                test-className
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: rgba(0,0,0,.4);
-                  bottom: 0px;
+                  align-items: center;
+                  background-color: transparent;
+                  display: flex;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  left: 0px;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  height: 100%;
+                  justify-content: center;
+                  opacity: 1;
+                  pointer-events: auto;
+                  position: fixed;
+                  transition: opacity 0.267s;
+                  width: 100%;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                  border: 1px solid WindowText;
-                  opacity: 0;
-                }
-          />
-          <div
-            class=
-                ms-Dialog-main
-                test-containerClassName
-                {
-                  background-color: #ffffff;
-                  border-radius: 2px;
-                  box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
-                  box-sizing: border-box;
-                  max-height: calc(100% - 32px);
-                  max-width: calc(100% - 32px);
-                  min-height: 176px;
-                  min-width: 288px;
-                  outline: 3px solid transparent;
-                  overflow-y: auto;
-                  position: relative;
-                  text-align: left;
-                }
-            id="ModalFocusTrapZone0"
+            role="document"
           >
             <div
               aria-hidden="true"
-              data-is-focus-trap-zone-bumper="true"
-              data-is-visible="true"
-              style="pointer-events: none; position: fixed;"
-              tabindex="0"
+              class=
+                  ms-Overlay
+                  ms-Overlay--dark
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: rgba(0,0,0,.4);
+                    bottom: 0px;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    border: 1px solid WindowText;
+                    opacity: 0;
+                  }
             />
             <div
               class=
-                  ms-Modal-scrollableContent
+                  ms-Dialog-main
+                  test-containerClassName
                   {
-                    flex-grow: 1;
-                    max-height: 100vh;
+                    background-color: #ffffff;
+                    border-radius: 2px;
+                    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
+                    box-sizing: border-box;
+                    max-height: calc(100% - 32px);
+                    max-width: calc(100% - 32px);
+                    min-height: 176px;
+                    min-width: 288px;
+                    outline: 3px solid transparent;
                     overflow-y: auto;
+                    position: relative;
+                    text-align: left;
                   }
-                  @supports (-webkit-overflow-scrolling: touch){& {
-                    max-height: 768px;
-                  }
-              data-is-scrollable="true"
+              id="ModalFocusTrapZone0"
             >
-              Test Content
+              <div
+                aria-hidden="true"
+                data-is-focus-trap-zone-bumper="true"
+                data-is-visible="true"
+                style="pointer-events: none; position: fixed;"
+                tabindex="0"
+              />
+              <div
+                class=
+                    ms-Modal-scrollableContent
+                    {
+                      flex-grow: 1;
+                      max-height: 100vh;
+                      overflow-y: auto;
+                    }
+                    @supports (-webkit-overflow-scrolling: touch){& {
+                      max-height: 768px;
+                    }
+                data-is-scrollable="true"
+              >
+                Test Content
+              </div>
+              <div
+                aria-hidden="true"
+                data-is-focus-trap-zone-bumper="true"
+                data-is-visible="true"
+                style="pointer-events: none; position: fixed;"
+                tabindex="0"
+              />
             </div>
-            <div
-              aria-hidden="true"
-              data-is-focus-trap-zone-bumper="true"
-              data-is-visible="true"
-              style="pointer-events: none; position: fixed;"
-              tabindex="0"
-            />
           </div>
         </div>
       </div>
@@ -316,145 +322,146 @@ exports[`Modal renders Modal correctly 1`] = `
 
 exports[`Modal renders Modeless Modal correctly 1`] = `
 <body
-  class=
-
-      {
-        overflow: hidden !important;
-      }
+  class=""
 >
-  <div
-    class=
-        ms-Layer
-        ms-Layer--fixed
-        ms-Modal-Layer
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          bottom: 0px;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: unset;
-          left: 0px;
-          position: static;
-          right: 0px;
-          top: 0px;
-          visibility: hidden;
-          width: unset;
-          z-index: 1000000;
-        }
-    data-portal-element="true"
-  >
-    <div
-      class=
-          ms-Fabric
-          ms-Layer-content
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #323130;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            visibility: visible;
-          }
-          & button {
-            font-family: inherit;
-          }
-          & input {
-            font-family: inherit;
-          }
-          & textarea {
-            font-family: inherit;
-          }
-    >
-      <div
-        aria-modal="false"
-        role="dialog"
-        style="outline: none;"
-      >
-        <div
-          class=
-              ms-Modal
-              is-open
-              test-className
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                align-items: center;
-                background-color: transparent;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 100%;
-                justify-content: center;
-                opacity: 1;
-                pointer-events: auto;
-                position: absolute;
-                transition: opacity 0.267s;
-                width: 100%;
-              }
-        >
-          <div
-            class=
-                ms-Dialog-main
-                test-containerClassName
-                {
-                  background-color: #ffffff;
-                  border-radius: 2px;
-                  box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
-                  box-sizing: border-box;
-                  max-height: calc(100% - 32px);
-                  max-width: calc(100% - 32px);
-                  min-height: 176px;
-                  min-width: 288px;
-                  outline: 3px solid transparent;
-                  overflow-y: auto;
-                  position: relative;
-                  text-align: left;
-                  z-index: 1000000;
-                }
-            id="ModalFocusTrapZone0"
-          >
-            <div
-              aria-hidden="true"
-              data-is-focus-trap-zone-bumper="true"
-              data-is-visible="true"
-              style="pointer-events: none; position: fixed;"
-              tabindex="0"
-            />
-            <div
-              class=
-                  ms-Modal-scrollableContent
-                  {
-                    flex-grow: 1;
-                    max-height: 100vh;
-                    overflow-y: auto;
-                  }
-                  @supports (-webkit-overflow-scrolling: touch){& {
-                    max-height: 768px;
-                  }
-              data-is-scrollable="true"
-            >
-              Test Content
-            </div>
-            <div
-              aria-hidden="true"
-              data-is-focus-trap-zone-bumper="true"
-              data-is-visible="true"
-              style="pointer-events: none; position: fixed;"
-              tabindex="0"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <div>
     <span
       class="ms-layer"
     />
+  </div>
+  <div
+    id="fluent-default-layer-host"
+    style="position: fixed; z-index: 1000000;"
+  >
+    <div
+      class=
+          ms-Layer
+          ms-Layer--fixed
+          ms-Modal-Layer
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            bottom: 0px;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: unset;
+            left: 0px;
+            position: static;
+            right: 0px;
+            top: 0px;
+            visibility: hidden;
+            width: unset;
+            z-index: 1000000;
+          }
+      data-portal-element="true"
+    >
+      <div
+        class=
+            ms-Fabric
+            ms-Layer-content
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              visibility: visible;
+            }
+            & button {
+              font-family: inherit;
+            }
+            & input {
+              font-family: inherit;
+            }
+            & textarea {
+              font-family: inherit;
+            }
+      >
+        <div
+          aria-modal="false"
+          role="dialog"
+          style="outline: none;"
+        >
+          <div
+            class=
+                ms-Modal
+                is-open
+                test-className
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: transparent;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 100%;
+                  justify-content: center;
+                  opacity: 1;
+                  pointer-events: auto;
+                  position: absolute;
+                  transition: opacity 0.267s;
+                  width: 100%;
+                }
+          >
+            <div
+              class=
+                  ms-Dialog-main
+                  test-containerClassName
+                  {
+                    background-color: #ffffff;
+                    border-radius: 2px;
+                    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
+                    box-sizing: border-box;
+                    max-height: calc(100% - 32px);
+                    max-width: calc(100% - 32px);
+                    min-height: 176px;
+                    min-width: 288px;
+                    outline: 3px solid transparent;
+                    overflow-y: auto;
+                    position: relative;
+                    text-align: left;
+                    z-index: 1000000;
+                  }
+              id="ModalFocusTrapZone0"
+            >
+              <div
+                aria-hidden="true"
+                data-is-focus-trap-zone-bumper="true"
+                data-is-visible="true"
+                style="pointer-events: none; position: fixed;"
+                tabindex="0"
+              />
+              <div
+                class=
+                    ms-Modal-scrollableContent
+                    {
+                      flex-grow: 1;
+                      max-height: 100vh;
+                      overflow-y: auto;
+                    }
+                    @supports (-webkit-overflow-scrolling: touch){& {
+                      max-height: 768px;
+                    }
+                data-is-scrollable="true"
+              >
+                Test Content
+              </div>
+              <div
+                aria-hidden="true"
+                data-is-focus-trap-zone-bumper="true"
+                data-is-visible="true"
+                style="pointer-events: none; position: fixed;"
+                tabindex="0"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 `;

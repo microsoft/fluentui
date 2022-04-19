@@ -7,11 +7,15 @@ export function isConformant<TProps = {}>(
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     disabledTests: [
       'kebab-aria-attributes',
-      // Disabled as v8 has different prefix
+      // v8 has a different prefix, and there's a setting for that now,
+      // but a lot of components don't set a consistent/expected classname
       'component-has-static-classname',
+      // v8 doesn't export classnames
+      'component-has-static-classname-exported',
       // Will enable with appropriate overrides separately
       'consistent-callback-names',
       'consistent-callback-args',
+      'component-has-static-classnames-object',
     ],
     componentPath: module!.parent!.filename.replace('.test', ''),
   };

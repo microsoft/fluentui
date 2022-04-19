@@ -1,20 +1,45 @@
 import { createFelaRenderer } from '@fluentui/react-northstar-fela-renderer';
 import { ICSSInJSStyle } from '@fluentui/styles';
-// @ts-ignore
-import { createSnapshot } from 'jest-react-fela';
+import { renderToString } from 'fela-tools';
+import { format } from 'prettier';
 import * as React from 'react';
-import { FelaComponent } from 'react-fela';
+import * as ReactDOM from 'react-dom';
+import { FelaComponent, RendererProvider, ThemeProvider } from 'react-fela';
 
 const felaRenderer = (createFelaRenderer() as any).getOriginalRenderer();
 
+function createSnapshot(component: JSX.Element, theme = {}) {
+  const div = document.createElement('div');
+
+  // reset renderer to have a clean setup
+  felaRenderer.clear();
+
+  ReactDOM.render(
+    <RendererProvider renderer={felaRenderer}>
+      <ThemeProvider theme={theme}>{component}</ThemeProvider>
+    </RendererProvider>,
+    div,
+  );
+
+  // jest-react-fela used htmltojsx to format the HTML, but that no longer works with React 17
+  // due to importing a removed module. Various alternatives are available, but in this case,
+  // all the things to be serialized are simple enough that we can just use innerHTML directly.
+  const innerHTML = div.innerHTML;
+  ReactDOM.unmountComponentAtNode(div);
+
+  const css = renderToString(felaRenderer);
+  const formattedCss = format(css, { parser: 'css', useTabs: false, tabWidth: 2 });
+  return `${formattedCss}\n\n${innerHTML}`;
+}
+
 describe('felaRenderer', () => {
   test('basic styles are rendered', () => {
-    const snapshot = createSnapshot(<FelaComponent style={{ color: 'red' }} />, {}, felaRenderer);
+    const snapshot = createSnapshot(<FelaComponent style={{ color: 'red' }} />);
     expect(snapshot).toMatchSnapshot();
   });
 
   test('CSS fallback values are rendered', () => {
-    const snapshot = createSnapshot(<FelaComponent style={{ color: ['red', 'blue'] as any }} />, {}, felaRenderer);
+    const snapshot = createSnapshot(<FelaComponent style={{ color: ['red', 'blue'] as any }} />);
     expect(snapshot).toMatchSnapshot();
   });
 
@@ -37,7 +62,7 @@ describe('felaRenderer', () => {
       animationDuration: '5s',
     };
 
-    const snapshot = createSnapshot(<FelaComponent style={styles as any} />, {}, felaRenderer);
+    const snapshot = createSnapshot(<FelaComponent style={styles as any} />);
     expect(snapshot).toMatchSnapshot();
   });
 
@@ -55,7 +80,7 @@ describe('felaRenderer', () => {
       },
     };
 
-    const snapshot = createSnapshot(<FelaComponent style={styles as any} />, {}, felaRenderer);
+    const snapshot = createSnapshot(<FelaComponent style={styles as any} />);
     expect(snapshot).toMatchSnapshot();
   });
 
@@ -73,17 +98,17 @@ describe('felaRenderer', () => {
       },
     };
 
-    const snapshot = createSnapshot(<FelaComponent style={styles as any} disableAnimations />, {}, felaRenderer);
+    const snapshot = createSnapshot(<FelaComponent style={styles as any} disableAnimations />);
     expect(snapshot).toMatchSnapshot();
   });
 
   test('marginLeft is rendered into marginRight due to RTL', () => {
-    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px' }} />, { rtl: true }, felaRenderer);
+    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px' }} />, { rtl: true });
     expect(snapshot).toMatchSnapshot();
   });
 
   test('marginLeft is rendered into marginLeft due to RTL with `noFlip`', () => {
-    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px /* @noflip */' }} />, {}, felaRenderer);
+    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px /* @noflip */' }} />);
     expect(snapshot).toMatchSnapshot();
   });
 
@@ -96,8 +121,6 @@ describe('felaRenderer', () => {
           borderColor: 'rgba(51,204, 51, 1) rgba(51,0,204, 1)',
         }}
       />,
-      {},
-      felaRenderer,
     );
     expect(snapshot).toMatchSnapshot();
   });
@@ -120,8 +143,6 @@ describe('felaRenderer', () => {
           },
         }}
       />,
-      {},
-      felaRenderer,
     );
     expect(snapshot).toMatchSnapshot();
   });

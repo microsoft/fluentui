@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Tooltip } from './Tooltip';
 import { isConformant } from '../../common/isConformant';
+import type { IsConformantOptions } from '@fluentui/react-conformance';
 import { render, RenderResult } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
@@ -22,17 +23,21 @@ function getByRoleTooltip(result: RenderResult) {
   return tooltip!;
 }
 
+export const getTooltipElement: IsConformantOptions['getTargetElement'] = (result, attr) => {
+  return queryByRoleTooltip(result)!;
+};
+
 describe('Tooltip', () => {
   isConformant({
     Component: Tooltip,
     displayName: 'Tooltip',
-    requiredProps: { content: 'Example', children: <button /> },
+    requiredProps: { content: 'Example', children: <button />, visible: true },
+    getTargetElement: getTooltipElement,
     disabledTests: [
       // Tooltip renders into a Portal, which confuses these tests
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
-      'component-has-static-classname',
     ],
   });
 

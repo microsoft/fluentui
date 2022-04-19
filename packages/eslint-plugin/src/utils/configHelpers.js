@@ -5,7 +5,7 @@ const path = require('path');
 const jju = require('jju');
 
 const testFiles = [
-  '**/*{.,-}{test,spec}.{ts,tsx}',
+  '**/*{.,-}{test,spec,e2e}.{ts,tsx}',
   '**/{test,tests}/**',
   '**/testUtilities.{ts,tsx}',
   '**/common/{isConformant,snapshotSerializers}.{ts,tsx}',
@@ -132,7 +132,7 @@ module.exports = {
    * @returns {import("eslint").Linter.ConfigOverride[]} A single-entry array with a config for TS files if
    * *not* running lint-staged (or empty array for lint-staged)
    */
-  getTypeInfoRuleOverrides: (rules, tsconfigPath) => {
+  getTypeInfoRuleOverrides: (rules, tsconfigPath = path.join(process.cwd(), 'tsconfig.json')) => {
     if (isLintStaged) {
       return [];
     }
@@ -140,16 +140,14 @@ module.exports = {
     // Type info-dependent rules must only apply to TS files included in a project.
     // Usually this is files under src, but check the tsconfig to verify.
     const tsGlob = '**/*.{ts,tsx}';
-    let tsFiles = [`src/${tsGlob}`];
-    tsconfigPath = tsconfigPath || path.join(process.cwd(), 'tsconfig.json');
 
     if (!fs.existsSync(tsconfigPath)) {
       return [];
     }
 
     /**
-       * Note that this approach only accounts for a single level of extends. JJU is used for parsing
-       * the tsconfig because Typescript functions are more complex than necessary.
+       * Note that this approach only accounts for a single level of extends.
+       * - JJU is used for tsconfig parsing because Typescript configs support JS comments (JSON5 "standard")
        *
        * @type {{
           extends: string;
@@ -159,29 +157,9 @@ module.exports = {
           references?: Array<{path:string}>
           }}
        */
-    let tsconfig = jju.parse(fs.readFileSync(tsconfigPath).toString());
+    const tsconfig = jju.parse(fs.readFileSync(tsconfigPath).toString());
 
-    /**
-     * Handle any necessary extends merging here, make sure to treat just like native tsconfigs would
-     */
-    if (tsconfig.extends) {
-      const parentTsConfigPath = path.join(path.dirname(tsconfigPath), tsconfig.extends);
-      /** @type { typeof tsconfig } */
-      const parentTsConfig = jju.parse(fs.readFileSync(parentTsConfigPath).toString());
-
-      // Extending config overrides parent files, include and exclude
-      // https://www.typescriptlang.org/tsconfig#extends
-      tsconfig = {
-        ...parentTsConfig,
-        ...tsconfig,
-        compilerOptions: {
-          ...parentTsConfig.compilerOptions,
-          ...tsconfig.compilerOptions,
-        },
-      };
-    }
-
-    // if project is using solution TS style config (process references)
+    // vNext setup - if project is using solution TS style config (process references)
     if (tsconfig.references) {
       return [
         {
@@ -194,10 +172,11 @@ module.exports = {
       ];
     }
 
+    // v8.v0 setup
+
+    let tsFiles = [`src/${tsGlob}`];
     if (tsconfig.include) {
-      tsFiles = /** @type {string[]} */ (tsconfig.include).map(
-        includePath => `${includePath.replace(/\*.*/, '')}/${tsGlob}`,
-      );
+      tsFiles = tsconfig.include.map(includePath => `${includePath.replace(/\*.*/, '')}/${tsGlob}`);
     } else if (tsconfig.compilerOptions && tsconfig.compilerOptions.rootDir) {
       tsFiles = [`${tsconfig.compilerOptions.rootDir}/${tsGlob}`];
     }

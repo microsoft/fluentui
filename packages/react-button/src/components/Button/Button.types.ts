@@ -5,7 +5,7 @@ export type ButtonSlots = {
   /**
    * Root of the component that renders as either a `<button>` tag or an `<a>` tag.
    */
-  root: Slot<ARIAButtonSlotProps>;
+  root: NonNullable<Slot<ARIAButtonSlotProps>>;
 
   /**
    * Icon that renders either before or after the `children` as specified by the `iconPosition` prop.
@@ -26,6 +26,8 @@ export type ButtonCommons = {
   /**
    * A button can fill the width of its container.
    * @default false
+   *
+   * @deprecated - Use style overrides instead.
    */
   block: boolean;
 

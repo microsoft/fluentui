@@ -1,0 +1,55 @@
+name: Check packages
+on:
+  pull_request:
+
+jobs:
+  dependency-mismatches:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const syncpackVersion = require('./package.json').devDependencies.syncpack;
+
+            if (typeof syncpackVersion !== 'string') {
+              core.setFailed("Please check 'package.json', it should include 'syncpack' in 'devDependencies'")
+              return
+            }
+
+            core.exportVariable('SYNCPACK_VERSION', syncpackVersion);
+
+      - run: |
+          npx syncpack@$SYNCPACK_VERSION list-mismatches
+
+  change-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const beachballVersion = require('./package.json').devDependencies.beachball;
+
+            if (typeof beachballVersion !== 'string') {
+              core.setFailed("Please check 'package.json', it should include 'beachball' in 'devDependencies'")
+              return
+            }
+
+            core.exportVariable('BEACHBALL_VERSION', beachballVersion);
+
+      - run: |
+          cp scripts/beachball/.beachballrc.base.json .beachballrc.json
+          npx beachball@$BEACHBALL_VERSION check

@@ -9,16 +9,18 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 const Image_2: ForwardRefComponent<ImageProps>;
 export { Image_2 as Image }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const imageClassName = "fui-Image";
 
-// Warning: (ae-forgotten-export) The symbol "ImageCommons" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export const imageClassNames: SlotClassNames<ImageSlots>;
+
 // @public (undocumented)
 export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
 

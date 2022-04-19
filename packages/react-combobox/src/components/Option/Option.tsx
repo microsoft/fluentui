@@ -6,13 +6,17 @@ import type { OptionProps } from './Option.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Option component initial component build
+ * Option component: a styled child option of a Combobox
  */
-export const Option: ForwardRefComponent<OptionProps> = React.forwardRef((props, ref) => {
-  const state = useOption_unstable(props, ref);
+export const Option: ForwardRefComponent<OptionProps> & { fluentComponentType?: string } = React.forwardRef(
+  (props, ref) => {
+    const state = useOption_unstable(props, ref);
 
-  useOptionStyles_unstable(state);
-  return renderOption_unstable(state);
-});
+    useOptionStyles_unstable(state);
+    return renderOption_unstable(state);
+  },
+);
+
+Option.fluentComponentType = 'Option';
 
 Option.displayName = 'Option';

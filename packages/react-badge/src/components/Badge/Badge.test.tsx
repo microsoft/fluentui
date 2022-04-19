@@ -8,6 +8,13 @@ describe('Badge', () => {
   isConformant({
     Component: Badge,
     displayName: 'Badge',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: { icon: 'Test Icon' },
+        },
+      ],
+    },
   });
 
   let wrapper: ReactWrapper | undefined;

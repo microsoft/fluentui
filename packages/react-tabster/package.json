@@ -15,6 +15,7 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "e2e": "e2e",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "storybook": "node ../../scripts/storybook/runner",
@@ -34,7 +35,7 @@
     "@fluentui/react-theme": "9.0.0-rc.4",
     "@fluentui/react-utilities": "9.0.0-rc.5",
     "keyborg": "^1.1.0",
-    "tabster": "^1.2.2",
+    "tabster": "^1.3.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

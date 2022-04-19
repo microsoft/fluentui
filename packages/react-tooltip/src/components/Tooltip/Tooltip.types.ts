@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { PortalProps } from '@fluentui/react-portal';
 
 /**
  * Slot properties for Tooltip
@@ -15,7 +16,7 @@ export type TooltipSlots = {
 /**
  * Properties and state for Tooltip
  */
-type TooltipCommons = {
+type TooltipCommons = Pick<PortalProps, 'mountNode'> & {
   /**
    * (Required) Specifies whether this tooltip is acting as the description or label of its trigger element.
    *
