@@ -79,9 +79,7 @@ export {
   useId,
   useIsSSR,
   useMergedRefs,
-  useMount,
   useSSRContext,
-  useUnmount,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
@@ -92,8 +90,6 @@ export type {
   Slot,
   SlotClassNames,
   SlotPropsRecord,
-  UseBooleanCallbacks,
-  UseControllableStateOptions,
 } from '@fluentui/react-utilities';
 
 // Components

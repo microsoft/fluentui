@@ -367,13 +367,11 @@ import { useAvatar_unstable } from '@fluentui/react-avatar';
 import { useAvatarStyles_unstable } from '@fluentui/react-avatar';
 import { useBadge_unstable } from '@fluentui/react-badge';
 import { useBadgeStyles_unstable } from '@fluentui/react-badge';
-import { UseBooleanCallbacks } from '@fluentui/react-utilities';
 import { useButton_unstable } from '@fluentui/react-button';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
 import { useCompoundButton_unstable } from '@fluentui/react-button';
 import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
-import { UseControllableStateOptions } from '@fluentui/react-utilities';
 import { useCounterBadge_unstable } from '@fluentui/react-badge';
 import { useCounterBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useDivider_unstable } from '@fluentui/react-divider';
@@ -425,7 +423,6 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
-import { useMount } from '@fluentui/react-utilities';
 import { usePopover_unstable } from '@fluentui/react-popover';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { usePopoverSurface_unstable } from '@fluentui/react-popover';
@@ -445,7 +442,6 @@ import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
-import { useUnmount } from '@fluentui/react-utilities';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webHighContrastTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -1176,8 +1172,6 @@ export { useBadge_unstable }
 
 export { useBadgeStyles_unstable }
 
-export { UseBooleanCallbacks }
-
 export { useButton_unstable }
 
 export { useButtonStyles_unstable }
@@ -1187,8 +1181,6 @@ export { useCheckmarkStyles_unstable }
 export { useCompoundButton_unstable }
 
 export { useCompoundButtonStyles_unstable }
-
-export { UseControllableStateOptions }
 
 export { useCounterBadge_unstable }
 
@@ -1292,8 +1284,6 @@ export { useModalAttributes }
 
 export { UseModalAttributesOptions }
 
-export { useMount }
-
 export { usePopover_unstable }
 
 export { usePopoverContext_unstable }
@@ -1331,8 +1321,6 @@ export { useToggleButtonStyles_unstable }
 export { useTooltip_unstable }
 
 export { useTooltipStyles_unstable }
-
-export { useUnmount }
 
 export { webDarkTheme }
 
