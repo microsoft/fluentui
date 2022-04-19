@@ -2,13 +2,9 @@
 
 ## Background
 
-A list is a collection of related sequential items. The items are agnostic of layout and any content may be used.
-Items may be either single selectable or multi selectable. List items are surfaces that should be able to contain
-any kind of content.
+A list is a collection of related sequential items. The items are not bound to any specific layout. List items are surfaces that should be able to contain any kind of content. Items may be either single selectable or multi selectable.
 
 ## Prior Art
-
-_Include background research done for this component_
 
 - Open UI research: [openui/openui#512](https://github.com/openui/open-ui/pull/512)
 - [Component epic issue]()
@@ -64,14 +60,14 @@ _selection = new Selection({
 <DetailsList items={items} selectionMode={SelectionMode.multiple} setKey="multiple" selection={_selection} />;
 ```
 
-The v8 pattern is completely unorthodox with the React design patterns since it relies on either class members
+The v8 pattern does not follow standard React design patterns since it relies on either class members
 for React class components, or initialization in a `useState` or `useRef` call in a functional component.
 
 ##### Marquee selection
 
 V8 List components support marquee selection (drag a container and select items within the container) through the
 addition of a `MarqueeSelection` component that wraps the list component. The non-standard selection API is used to power
-selection by invoking items and marquee selection.
+selection by sharing the same reference to the `Selection` object.
 
 ```tsx
 <MarqueeSelection selection={this._selection}>
@@ -81,13 +77,13 @@ selection by invoking items and marquee selection.
 
 #### Appearance
 
-Both components have similar philosophies for displaying a vertical oriented list of items. V0 has a stronger layout
+Both components have similar philosophies for displaying a vertical list of items. V0 has a stronger layout
 implication that v8, but is still fully customizable if needed.
 
-Grid layout is a feature that v8 has that is not supported by the v0 `List` at all.
+Grid layout is a scenario v8 has documented that is not supported by the v0 `List` at all.
 
 Compact layout is also possible with `DetailsList`, which reduces the extra spacing between list items and removes
-padding with the the boundary of the list.
+padding with the boundary of the list.
 
 v8 selection scenarios for `List` components will use a checkbox for each item, whereas v0 will use background color
 changes to indicate selection.
@@ -106,12 +102,11 @@ docsite that show users how to virtualize v0 components:
 - [Virtualized sticky tree](https://fluentsite.z22.web.core.windows.net/0.61.0/virtualized-sticky-tree)
 - [Virtualized table](https://fluentsite.z22.web.core.windows.net/0.61.0/virtualized-table)
 
-The `List` component in v0 does not have such a prototype since there has been no real ask in Teams to support such
-a scenario.
+The `List` component in v0 does not have such a prototype all popular virtualization libraries use lists as the simplest example.
 
 #### Keyboard navigation
 
-Both libraries allows keyboard navigation for their list components.
+Both libraries allow keyboard navigation for their list components.
 
 v8 list components enable keyboard navigation without any changes to the underlying DOM elements.
 
@@ -181,7 +176,7 @@ Selectable listbox with multiselect
 
 ```tsx
 <Listbox multiselect>
-  <ListboxOption value="2">Option 1</ListboxOption>
+  <ListboxOption value="1">Option 1</ListboxOption>
   <ListboxOption value="2">Option 2</ListboxOption>
   <ListboxOption value="3">Option 3</ListboxOption>
   <ListboxOption value="4">Option 4</ListboxOption>
