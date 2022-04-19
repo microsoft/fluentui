@@ -14,6 +14,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -29,6 +30,7 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "9.0.0-beta.3",
+    "@fluentui/react-label": "9.0.0-beta.9",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {

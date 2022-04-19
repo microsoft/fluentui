@@ -7,13 +7,16 @@ import bestPracticesMd from './SpinButtonBestPractices.md';
 
 export { Controlled } from './SpinButtonControlled.stories';
 export { Uncontrolled } from './SpinButtonUncontrolled.stories';
+export { Bounds } from './SpinButtonBounds.stories';
+export { DisplayValue } from './SpinButtonDisplayValue.stories';
+export { Step } from './SpinButtonStep.stories';
 export { Size } from './SpinButtonSize.stories';
 export { Appearance } from './SpinButtonAppearance.stories';
 export { RTL } from './SpinButtonRTL.stories';
 export { Disabled } from './SpinButtonDisabled.stories';
-export { DisplayValue } from './SpinButtonDisplayValue.stories';
-export { Step } from './SpinButtonStep.stories';
 export { InputType } from './SpinButtonInputType.stories';
+export { Strings } from './SpinButtonStrings.stories';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 
 const useDecoratorStyles = makeStyles({

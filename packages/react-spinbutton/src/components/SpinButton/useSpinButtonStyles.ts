@@ -48,16 +48,20 @@ const useRootStyles = makeStyles({
       content: '""',
       boxSizing: 'border-box',
       position: 'absolute',
-      top: '-1px',
-      right: '-1px',
-      bottom: '-1px',
-      left: '-1px',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
       ...shorthands.borderRadius(tokens.borderRadiusMedium),
       pointerEvents: 'none',
       zIndex: 10,
     },
 
-    '::after': {
+    // TODO: change this to `::after`. Needs to be changed at the same time as react-input.
+    ':after': {
+      right: 0,
+      bottom: 0,
+      left: 0,
       zIndex: 20,
     },
   },
@@ -152,10 +156,20 @@ const useButtonStyles = makeStyles({
     ...shorthands.border(0),
     position: 'absolute',
 
+    outlineStyle: 'none',
+    height: '100%',
+
+    ':hover': {
+      cursor: 'pointer',
+    },
+
+    ':active': {
+      outlineStyle: 'none',
+    },
+
     ':disabled': {
       cursor: 'not-allowed',
     },
-    height: 'calc(100% + 1px)', // handle the 1px negative poisitioning
   },
 
   incrementButton: {
@@ -164,8 +178,6 @@ const useButtonStyles = makeStyles({
     gridRowStart: '1',
     gridRowEnd: '2',
     ...shorthands.borderRadius(0, tokens.borderRadiusMedium, 0, 0),
-    top: '-1px',
-    right: '-1px',
   },
 
   // TODO: revisit these padding numbers for aligning the icon.
@@ -189,8 +201,6 @@ const useButtonStyles = makeStyles({
     gridRowStart: '2',
     gridRowEnd: '3',
     ...shorthands.borderRadius(0, 0, tokens.borderRadiusMedium, 0),
-    right: '-1px',
-    bottom: '-1px',
   },
 
   decrementButtonSmall: {
@@ -220,6 +230,20 @@ const useButtonStyles = makeStyles({
     },
     ':disabled': {
       color: tokens.colorNeutralForegroundDisabled,
+    },
+    '@media (forced-colors: active)': {
+      color: 'ButtonText',
+      ':enabled': {
+        ':hover': {
+          color: 'ButtonText',
+        },
+        ':active': {
+          color: 'ButtonText',
+        },
+        [`&.${spinButtonExtraClassNames.buttonActive}`]: {
+          color: 'ButtonText',
+        },
+      },
     },
   },
 
@@ -292,6 +316,10 @@ const useButtonStyles = makeStyles({
 const useButtonDisabledStyles = makeStyles({
   base: {
     cursor: 'not-allowed',
+
+    ':hover': {
+      cursor: 'not-allowed',
+    },
   },
 
   outline: {
@@ -308,6 +336,20 @@ const useButtonDisabledStyles = makeStyles({
       [`&.${spinButtonExtraClassNames.buttonActive}`]: {
         color: tokens.colorNeutralForegroundDisabled,
         backgroundColor: 'transparent',
+      },
+    },
+    '@media (forced-colors: active)': {
+      color: 'GrayText',
+      ':enabled': {
+        ':hover': {
+          color: 'GrayText',
+        },
+        ':active': {
+          color: 'GrayText',
+        },
+        [`&.${spinButtonExtraClassNames.buttonActive}`]: {
+          color: 'GrayText',
+        },
       },
     },
   },
@@ -398,7 +440,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   });
 
   state.root.className = mergeClasses(
-    state.root.className,
+    state.root.className, // Get the classes from useInputStyles_unstable
     spinButtonClassNames.root,
     rootStyles.base,
     appearance === 'outline' && rootStyles.outline,
@@ -407,7 +449,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
     disabled && rootStyles.disabled,
-    rootClassName,
+    rootClassName, // Make sure any original class name is applied last
   );
 
   state.incrementButton.className = mergeClasses(
@@ -418,8 +460,8 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     buttonStyles[appearance],
     filled && buttonStyles.filledIncrement,
     size === 'small' ? buttonStyles.incrementButtonSmall : buttonStyles.incrementButtonMedium,
-    atBound === 'max' && buttonDisabledStyles.base,
-    atBound === 'max' && buttonDisabledStyles[appearance],
+    (atBound === 'max' || atBound === 'both') && buttonDisabledStyles.base,
+    (atBound === 'max' || atBound === 'both') && buttonDisabledStyles[appearance],
     state.incrementButton.className,
   );
   state.decrementButton.className = mergeClasses(
@@ -430,8 +472,8 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     buttonStyles[appearance],
     filled && buttonStyles.filledDecrement,
     size === 'small' ? buttonStyles.decrementButtonSmall : buttonStyles.decrementButtonMedium,
-    atBound === 'min' && buttonDisabledStyles.base,
-    atBound === 'min' && buttonDisabledStyles[appearance],
+    (atBound === 'min' || atBound === 'both') && buttonDisabledStyles.base,
+    (atBound === 'min' || atBound === 'both') && buttonDisabledStyles[appearance],
     state.decrementButton.className,
   );
 

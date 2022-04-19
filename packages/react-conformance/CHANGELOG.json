@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Thu, 14 Apr 2022 07:38:09 GMT",
+      "tag": "@fluentui/react-conformance_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "b48c03cff249019cf845af18a7f63dacf46d5218",
+            "comment": "Hoist react-is devDependencies to the repo root"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Apr 2022 07:34:57 GMT",
       "tag": "@fluentui/react-conformance_v0.13.0",
       "version": "0.13.0",
