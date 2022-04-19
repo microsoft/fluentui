@@ -55,6 +55,7 @@ export type {
   StrokeWidthTokens,
   Theme,
 } from '@fluentui/react-theme';
+export { useThemeClassName } from '@fluentui/react-shared-contexts';
 export { SSRProvider } from '@fluentui/react-utilities';
 
 // Components
