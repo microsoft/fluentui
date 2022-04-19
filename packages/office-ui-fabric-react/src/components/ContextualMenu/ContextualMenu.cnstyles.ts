@@ -2,7 +2,6 @@ import {
   concatStyleSets,
   getFocusStyle,
   HighContrastSelector,
-  IRawStyle,
   ITheme,
   getScreenSelector,
   ScreenWidthMaxMedium,
@@ -15,21 +14,6 @@ import { memoizeFunction } from '../../Utilities';
 export const CONTEXTUAL_MENU_ITEM_HEIGHT = 36;
 
 const MediumScreenSelector = getScreenSelector(0, ScreenWidthMaxMedium);
-
-const getItemHighContrastStyles = memoizeFunction(
-  (): IRawStyle => {
-    return {
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: 'Highlight',
-          borderColor: 'Highlight',
-          color: 'HighlightText',
-          ...getHighContrastNoAdjustStyle(),
-        },
-      },
-    };
-  },
-);
 
 export const getMenuItemStyles = memoizeFunction(
   (theme: ITheme): IMenuItemStyles => {
@@ -76,6 +60,7 @@ export const getMenuItemStyles = memoizeFunction(
         pointerEvents: 'none',
         selectors: {
           [HighContrastSelector]: {
+            // ensure disabled text looks different than enabled
             color: 'GrayText',
             opacity: 1,
             ...getHighContrastNoAdjustStyle(),
@@ -93,11 +78,9 @@ export const getMenuItemStyles = memoizeFunction(
             color: palette.neutralPrimary,
           },
         },
-        ...getItemHighContrastStyles(),
       },
       rootFocused: {
         backgroundColor: palette.white,
-        ...getItemHighContrastStyles(),
       },
       rootChecked: {
         selectors: {
@@ -105,7 +88,6 @@ export const getMenuItemStyles = memoizeFunction(
             color: palette.neutralPrimary,
           },
         },
-        ...getItemHighContrastStyles(),
       },
       rootPressed: {
         backgroundColor: ContextualMenuItemBackgroundSelectedColor,
@@ -117,12 +99,22 @@ export const getMenuItemStyles = memoizeFunction(
             color: palette.neutralPrimary,
           },
         },
-        ...getItemHighContrastStyles(),
       },
       rootExpanded: {
         backgroundColor: ContextualMenuItemBackgroundSelectedColor,
         color: semanticColors.bodyTextChecked,
-        ...getItemHighContrastStyles(),
+        selectors: {
+          '.ms-ContextualMenu-submenuIcon': {
+            [HighContrastSelector]: {
+              // icons inside of anchor tags are not properly inheriting color in high contrast
+              color: 'inherit',
+            },
+          },
+          [HighContrastSelector]: {
+            // allow change in background/text to be visible
+            ...getHighContrastNoAdjustStyle(),
+          },
+        },
       },
       linkContent: {
         whiteSpace: 'nowrap',
@@ -175,36 +167,12 @@ export const getMenuItemStyles = memoizeFunction(
       },
       iconColor: {
         color: semanticColors.menuIcon,
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'inherit',
-          },
-          ['$root:hover &']: {
-            selectors: {
-              [HighContrastSelector]: {
-                color: 'HighlightText',
-              },
-            },
-          },
-          ['$root:focus &']: {
-            selectors: {
-              [HighContrastSelector]: {
-                color: 'HighlightText',
-              },
-            },
-          },
-        },
       },
       iconDisabled: {
         color: semanticColors.disabledBodyText,
       },
       checkmarkIcon: {
         color: semanticColors.bodySubtext,
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'HighlightText',
-          },
-        },
       },
       subMenuIcon: {
         height: CONTEXTUAL_MENU_ITEM_HEIGHT,
@@ -224,9 +192,6 @@ export const getMenuItemStyles = memoizeFunction(
           },
           [MediumScreenSelector]: {
             fontSize: IconFontSizes.medium, // 16px
-          },
-          [HighContrastSelector]: {
-            color: 'HighlightText',
           },
         },
       },
