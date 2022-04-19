@@ -8,6 +8,7 @@ export { updateVisibilityAttribute, useOverflowContainer } from './useOverflowCo
 export { useOverflowCount } from './useOverflowCount';
 export { useOverflowItem } from './useOverflowItem';
 export { useOverflowMenu } from './useOverflowMenu';
+export { useOverflowVisibility } from './useOverflowVisibility';
 
 export type { OverflowItemProps } from './components/OverflowItem/OverflowItem.types';
 export { OverflowItem } from './components/OverflowItem/OverflowItem';

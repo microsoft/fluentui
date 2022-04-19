@@ -73,6 +73,12 @@ export function useOverflowMenu<TElement extends HTMLElement>(id?: string): {
     isOverflowing: boolean;
 };
 
+// @public
+export const useOverflowVisibility: () => {
+    isItemVisible: (id: string) => boolean;
+    isGroupVisible: (id: string) => OverflowGroupState;
+};
+
 // (No @packageDocumentation comment for this package)
 
 ```
