@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add dismissMenu prop to Dropdown",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

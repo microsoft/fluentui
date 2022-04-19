@@ -1,8 +1,17 @@
 # Change Log - @fluentui/font-icons-mdl2
 
-This log was last generated on Fri, 15 Apr 2022 07:42:48 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 21:39:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/font-icons-mdl2_v8.3.2)
+
+Tue, 19 Apr 2022 21:39:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/font-icons-mdl2_v8.3.1..@fluentui/font-icons-mdl2_v8.3.2)
+
+### Patches
+
+- Update Window interface to add FabricConfig ([PR #22537](https://github.com/microsoft/fluentui/pull/22537) by ololubek@microsoft.com)
 
 ## [8.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/font-icons-mdl2_v8.3.1)
 

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/upgrade-examples-v8-v9
 
-This log was last generated on Mon, 18 Apr 2022 07:38:04 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 21:39:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/upgrade-examples-v8-v9_v1.0.0)
+
+Tue, 19 Apr 2022 21:39:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/upgrade-examples-v8-v9_v1.0.0..@fluentui/upgrade-examples-v8-v9_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.66.0 ([PR #22550](https://github.com/microsoft/fluentui/pull/22550) by beachball)
+- Bump @fluentui/react-components to v9.0.0-rc.7 ([PR #22550](https://github.com/microsoft/fluentui/pull/22550) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/upgrade-examples-v8-v9_v1.0.0)
 
