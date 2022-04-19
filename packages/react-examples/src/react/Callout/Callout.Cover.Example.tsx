@@ -15,6 +15,7 @@ export const CalloutCoverExample: React.FunctionComponent = () => {
         <Callout
           coverTarget
           ariaLabelledBy={labelId}
+          role="dialog"
           className={styles.callout}
           onDismiss={toggleIsCalloutVisible}
           target={`#${buttonId}`}

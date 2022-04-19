@@ -251,7 +251,10 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    */
   getKey?: (item: any, index?: number) => string;
 
-  /** Accessible label describing or summarizing the list. */
+  /**
+   * Accessible label describing or summarizing the list.
+   * @deprecated use `ariaLabelForGrid`
+   */
   ariaLabel?: string;
 
   /** Accessible label for the row check button, e.g. "select row". */
@@ -269,6 +272,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * Whether the role `application` should be applied to the list.
    * @defaultvalue false
+   * @deprecated using the application role in this case is an antipattern, and heavily discouraged.
    */
   shouldApplyApplicationRole?: boolean;
 

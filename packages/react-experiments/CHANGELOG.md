@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Tue, 12 Apr 2022 07:39:33 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Apr 2022 07:38:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.8.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.8.8)
+
+Mon, 18 Apr 2022 07:38:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.8.7..@fluentui/react-experiments_v8.8.8)
+
+### Patches
+
+- Bump @fluentui/react to v8.65.1 ([PR #22524](https://github.com/microsoft/fluentui/pull/22524) by beachball)
+
+## [8.8.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.8.7)
+
+Fri, 15 Apr 2022 07:42:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.8.6..@fluentui/react-experiments_v8.8.7)
+
+### Patches
+
+- Bump @fluentui/react to v8.65.0 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/theme to v2.6.5 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.6 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.3.1 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/merge-styles to v8.5.1 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/react-hooks to v8.5.4 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/style-utilities to v8.6.6 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/utilities to v8.8.2 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/common-styles to v1.0.38 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.18 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+
+## [8.8.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.8.6)
+
+Thu, 14 Apr 2022 07:38:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.8.5..@fluentui/react-experiments_v8.8.6)
+
+### Patches
+
+- Bump @fluentui/react to v8.64.4 ([PR #22501](https://github.com/microsoft/fluentui/pull/22501) by beachball)
 
 ## [8.8.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.8.5)
 

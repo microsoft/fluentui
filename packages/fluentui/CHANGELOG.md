@@ -18,6 +18,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- Align `ChatMessageReadStatus` position with `ChatMessage` @Hirse ([#22494](https://github.com/microsoft/fluentui/pull/22494))
+
 ### Documentation
 - Clean up `Attachment` examples @Hirse ([#22496](https://github.com/microsoft/fluentui/pull/22496))
 

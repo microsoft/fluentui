@@ -268,7 +268,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         },
       },
       hasCustomNavigation && {
-        marginTop: 'inherit',
+        paddingTop: 'inherit',
       },
       // - Ensures that the sticky header always has a background to prevent overlaps on scroll.
       // - Adds consistent behavior with how Footer is being handled
