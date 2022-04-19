@@ -32,8 +32,8 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
     },
   });
 
-  if (labelShorthand && spinnerShortHand && spinnerShortHand['aria-labelledby']) {
-    spinnerShortHand!['aria-labelledby'] = labelShorthand.id;
+  if (labelShorthand && spinnerShortHand && !spinnerShortHand['aria-labelledby']) {
+    spinnerShortHand['aria-labelledby'] = labelShorthand.id;
   }
 
   const state: SpinnerState = {
