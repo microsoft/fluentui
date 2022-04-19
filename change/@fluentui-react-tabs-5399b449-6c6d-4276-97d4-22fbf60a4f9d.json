@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Set disabled tab background to transparent",
+  "packageName": "@fluentui/react-tabs",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

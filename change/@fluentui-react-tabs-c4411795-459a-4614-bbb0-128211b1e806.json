@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Set subtle tab background to subtle background tokens",
+  "packageName": "@fluentui/react-tabs",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

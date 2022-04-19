@@ -19,7 +19,7 @@ export async function nextjs() {
   logger(`✔️ Temporary directories created under ${tempPaths.root}`);
 
   logger('STEP 1. Add dependencies to test project');
-  const dependencies = ['next', 'react', 'react-dom'].join(' ');
+  const dependencies = ['next', 'react@17', 'react-dom@17'].join(' ');
   await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
   logger(`✔️ Dependencies were installed`);
 
