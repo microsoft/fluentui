@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Fri, 04 Mar 2022 05:17:33 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 19:17:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-rc.6)
+
+Tue, 19 Apr 2022 19:17:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-rc.5..@fluentui/react-avatar_v9.0.0-rc.6)
+
+### Changes
+
+- Add static classnames to Avatar ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+- Avatar: Fix style for sizes 20 and 24 to have semibold fontWeight instead of regular. ([PR #22146](https://github.com/microsoft/fluentui/pull/22146) by Humberto.Morimoto@microsoft.com)
+- Removing star exports. ([PR #22113](https://github.com/microsoft/fluentui/pull/22113) by Humberto.Morimoto@microsoft.com)
+- update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10 ([PR #22512](https://github.com/microsoft/fluentui/pull/22512) by seanmonahan@microsoft.com)
+- add missing dependencies ([PR #21924](https://github.com/microsoft/fluentui/pull/21924) by martinhochel@microsoft.com)
+- chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.5 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.5 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.4 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-rc.5)
 

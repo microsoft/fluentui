@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix missing dependencies and lint warnings",
-  "packageName": "@fluentui/react-tabs",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

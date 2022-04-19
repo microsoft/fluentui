@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Disabling lint rule for deprecated [component]ClassName exports.",
-  "packageName": "@fluentui/react-button",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

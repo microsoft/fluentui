@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 18 Apr 2022 07:38:03 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 21:39:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.66.0)
+
+Tue, 19 Apr 2022 21:39:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.65.1..@fluentui/react_v8.66.0)
+
+### Minor changes
+
+- add dismissMenu prop to Dropdown ([PR #22535](https://github.com/microsoft/fluentui/pull/22535) by sarah.higley@microsoft.com)
+- Bump @fluentui/font-icons-mdl2 to v8.3.2 ([PR #22550](https://github.com/microsoft/fluentui/pull/22550) by beachball)
+
+### Patches
+
+- Adding neutralSecondaryAlt to Theming designer and 'dedeprecating' it from Fabric slots. ([PR #22529](https://github.com/microsoft/fluentui/pull/22529) by email not defined)
 
 ## [8.65.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.65.1)
 

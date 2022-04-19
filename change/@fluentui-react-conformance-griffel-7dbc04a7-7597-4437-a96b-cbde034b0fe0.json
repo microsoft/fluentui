@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "add react-conformance missing dependency",
-  "packageName": "@fluentui/react-conformance-griffel",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

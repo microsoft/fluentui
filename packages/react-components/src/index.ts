@@ -27,6 +27,20 @@ export type {
   FluentProviderState,
 } from '@fluentui/react-provider';
 export {
+  createCustomFocusIndicatorStyle,
+  useArrowNavigationGroup,
+  useFocusableGroup,
+  useFocusFinders,
+  useKeyboardNavAttribute,
+  useModalAttributes,
+} from '@fluentui/react-tabster';
+export type {
+  UseArrowNavigationGroupOptions,
+  UseFocusableGroupOptions,
+  UseModalAttributesOptions,
+} from '@fluentui/react-tabster';
+
+export {
   createDarkTheme,
   createHighContrastTheme,
   createLightTheme,
@@ -55,7 +69,28 @@ export type {
   StrokeWidthTokens,
   Theme,
 } from '@fluentui/react-theme';
-export { SSRProvider } from '@fluentui/react-utilities';
+export {
+  getNativeElementProps,
+  getNativeProps,
+  getPartitionedNativeProps,
+  getSlots,
+  resetIdsForTests,
+  resolveShorthand,
+  useId,
+  useIsSSR,
+  useMergedRefs,
+  useSSRContext,
+} from '@fluentui/react-utilities';
+export type {
+  ComponentProps,
+  ComponentState,
+  ForwardRefComponent,
+  ResolveShorthandFunction,
+  ResolveShorthandOptions,
+  Slot,
+  SlotClassNames,
+  SlotPropsRecord,
+} from '@fluentui/react-utilities';
 
 // Components
 export {

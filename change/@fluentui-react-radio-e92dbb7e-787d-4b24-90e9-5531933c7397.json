@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10",
-  "packageName": "@fluentui/react-radio",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

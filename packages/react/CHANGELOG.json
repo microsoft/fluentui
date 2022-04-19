@@ -2,6 +2,35 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 19 Apr 2022 21:39:15 GMT",
+      "tag": "@fluentui/react_v8.66.0",
+      "version": "8.66.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0c99bdfe1edab478a10b570ba39e045e787f7951",
+            "comment": "add dismissMenu prop to Dropdown"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.3.2",
+            "commit": "959aac722b7a9a4d8d4240e1235dde4694eb3c2d"
+          }
+        ],
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react",
+            "commit": "6e2669cea6ccca3ddcefc83b07a46bcaa90fcd72",
+            "comment": "Adding neutralSecondaryAlt to Theming designer and 'dedeprecating' it from Fabric slots."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Apr 2022 07:38:03 GMT",
       "tag": "@fluentui/react_v8.65.1",
       "version": "8.65.1",

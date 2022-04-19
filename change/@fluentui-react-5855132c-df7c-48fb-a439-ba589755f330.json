@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "icon of group header is not shrink",
+  "packageName": "@fluentui/react",
+  "email": "15898297@qq.com",
+  "dependentChangeType": "patch"
+}
