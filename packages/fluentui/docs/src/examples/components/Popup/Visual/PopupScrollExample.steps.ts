@@ -2,9 +2,9 @@ import { buttonClassName } from '@fluentui/react-northstar';
 import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const selectors = {
-  triggerButtonPopupWithTrapFocus: `.${buttonClassName}[title*="PopupWithTrapFocus"]`,
-  triggerButtonControlledPopupWithFocus: `.${buttonClassName}[title*="ControlledPopupWithFocus"]`,
-  triggerButtonInlineControlledPopupWithFocus: `.${buttonClassName}[title*="InlineControlledPopupWithFocus"]`,
+  triggerButtonPopupWithTrapFocus: `.${buttonClassName}[title*="Show popup with focus"]`,
+  triggerButtonControlledPopupWithFocus: `.${buttonClassName}[title*="Show controlled popup"]`,
+  triggerButtonInlineControlledPopupWithFocus: `.${buttonClassName}[title*="Show controlled popup inline"]`,
 };
 
 const config: ScreenerTestsConfig = {

@@ -1,6 +1,7 @@
-import type { Theme } from '@fluentui/react-theme';
-import type { MakeStyles, MakeStylesStyleRule } from '@fluentui/make-styles';
+import { tokens } from '@fluentui/react-theme';
 import { KEYBOARD_NAV_SELECTOR } from '../symbols';
+import { shorthands } from '@griffel/react';
+import type { GriffelStyle } from '@griffel/react';
 
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
 export type FocusOutlineStyleOptions = {
@@ -21,7 +22,7 @@ export type FocusOutlineStyleOptions = {
  * @param options - Configures the style of the focus outline
  * @returns focus outline styles object
  */
-const getFocusOutlineStyles = (options: FocusOutlineStyleOptions) => {
+const getFocusOutlineStyles = (options: FocusOutlineStyleOptions): GriffelStyle => {
   const { outlineRadius, outlineColor, outlineOffset, outlineWidth } = options;
 
   const outlineOffsetTop = (outlineOffset as FocusOutlineOffset)?.top || outlineOffset;
@@ -30,18 +31,17 @@ const getFocusOutlineStyles = (options: FocusOutlineStyleOptions) => {
   const outlineOffsetRight = (outlineOffset as FocusOutlineOffset)?.right || outlineOffset;
 
   return {
-    borderColor: 'transparent',
+    ...shorthands.borderColor('transparent'),
     ':after': {
       content: '""',
       position: 'absolute',
       pointerEvents: 'none',
-      boxSizing: 'outline-box',
       zIndex: 1,
 
-      borderStyle: 'solid',
-      borderWidth: outlineWidth,
-      borderRadius: outlineRadius,
-      borderColor: outlineColor,
+      ...shorthands.borderStyle('solid'),
+      ...shorthands.borderWidth(outlineWidth),
+      ...shorthands.borderRadius(outlineRadius),
+      ...shorthands.borderColor(outlineColor),
 
       top: !outlineOffset ? `-${outlineWidth}` : `calc(0px - ${outlineWidth} - ${outlineOffsetTop})`,
       bottom: !outlineOffset ? `-${outlineWidth}` : `calc(0px - ${outlineWidth} - ${outlineOffsetBottom})`,
@@ -63,41 +63,39 @@ const defaultOptions: CreateFocusIndicatorStyleRuleOptions = {
  * NOTE: The element with the focus outline needs to have `position: relative` so that the
  * pseudo element can be properly positioned.
  *
- * @param theme - Theme used in @see makeStyles
  * @param options - Configure the style of the focus outline
  * @returns focus outline styles object for @see makeStyles
  */
 export const createFocusOutlineStyle = (
-  theme: Theme,
   options: {
     style: Partial<FocusOutlineStyleOptions>;
   } & CreateFocusIndicatorStyleRuleOptions = { style: {}, ...defaultOptions },
-): MakeStyles => ({
+): GriffelStyle => ({
   ':focus-visible': {
-    outline: 'none',
+    outlineStyle: 'none',
   },
   [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]: getFocusOutlineStyles({
-    outlineColor: theme.colorStrokeFocus2,
-    outlineRadius: theme.borderRadiusMedium,
-    // FIXME: theme.global.strokeWidth.thick causes some weird bugs
+    outlineColor: tokens.colorStrokeFocus2,
+    outlineRadius: tokens.borderRadiusMedium,
+    // FIXME: tokens.strokeWidthThick causes some weird bugs
     outlineWidth: '2px',
     ...options.style,
   }),
 });
 
 /**
- * Creates a style rule for @see makeStyles that includes the necessary selectors for focus.
+ * Creates a style for @see makeStyles that includes the necessary selectors for focus.
  * Should be used only when @see createFocusOutlineStyle does not fit requirements
  *
- * @param rule - styling applied on focus, defaults to @see getDefaultFocusOutlineStyes
+ * @param style - styling applied on focus, defaults to @see getDefaultFocusOutlineStyes
+ * @param options - Configure the style of the focus outline
  */
 export const createCustomFocusIndicatorStyle = (
-  rule: MakeStylesStyleRule<Theme>,
+  style: GriffelStyle,
   options: CreateFocusIndicatorStyleRuleOptions = defaultOptions,
-): MakeStylesStyleRule<Theme> => theme => ({
+): GriffelStyle => ({
   ':focus-visible': {
-    outline: 'none',
+    outlineStyle: 'none',
   },
-  [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]:
-    typeof rule === 'function' ? rule(theme) : rule,
+  [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]: style,
 });

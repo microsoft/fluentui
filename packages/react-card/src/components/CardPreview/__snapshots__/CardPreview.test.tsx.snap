@@ -3,11 +3,11 @@
 exports[`CardPreview renders a default state 1`] = `
 <div>
   <div
-    class="fluentui-react-card-preview"
+    class="fui-CardPreview"
   >
     Default CardPreview
     <div
-      class=""
+      class="fui-CardPreview__logo"
     >
       Logo slot
     </div>

@@ -116,6 +116,7 @@ export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
 
   return (
     <MultiStackedBarChart
+      culture={window.navigator.language}
       data={data}
       hideDenominator={hideDenominator}
       hideRatio={hideRatio}

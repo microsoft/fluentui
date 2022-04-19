@@ -5,7 +5,7 @@ import { SelectedPeopleListPageProps } from '@fluentui/react-examples/lib/react/
 
 export const SelectedPeopleListPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/SelectedPeopleList.page.json')}
+    jsonDocs={require('../../../dist/api/react/SelectedPeopleList.page.json')}
     {...{ ...SelectedPeopleListPageProps, ...props }}
   />
 );

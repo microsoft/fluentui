@@ -3,24 +3,30 @@
 exports[`CardHeader renders a default state 1`] = `
 <div>
   <div
-    class=""
+    class="fui-CardHeader"
   >
     <div
-      class=""
+      class="fui-CardHeader__image"
     >
       Image slot
     </div>
     <div
-      class=""
+      class="fui-CardHeader__content"
     >
-      <span>
+      <span
+        class="fui-CardHeader__header"
+      >
         Title slot
       </span>
-      <span>
+      <span
+        class="fui-CardHeader__description"
+      >
         Description slot
       </span>
     </div>
-    <div>
+    <div
+      class="fui-CardHeader__action"
+    >
       Action slot
     </div>
   </div>

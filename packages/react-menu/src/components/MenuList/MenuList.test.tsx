@@ -4,13 +4,12 @@ import * as renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { isConformant } from '../../common/isConformant';
-import { MenuListContext, MenuListProvider } from '../../contexts/menuListContext';
+import { MenuListContext } from '../../contexts/menuListContext';
 
 describe('MenuList', () => {
   isConformant({
     Component: MenuList,
     displayName: 'MenuList',
-    helperComponents: [MenuListProvider],
     disabledTests: [
       // MenuTrigger does not have own styles
       'make-styles-overrides-win',

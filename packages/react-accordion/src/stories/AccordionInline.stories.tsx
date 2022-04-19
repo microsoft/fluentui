@@ -1,14 +1,5 @@
 import * as React from 'react';
-import {
-  AccordionItem,
-  AccordionHeader,
-  AccordionPanel,
-  Accordion,
-  AccordionHeaderProps,
-  // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-} from '@fluentui/react-accordion';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionHeaderProps } from '../index';
 
 export const Inline = (args: AccordionHeaderProps) => (
   <Accordion>
@@ -40,7 +31,7 @@ Inline.args = {
 Inline.parameters = {
   docs: {
     description: {
-      story: 'A Accordion Header can be set to be `inline`',
+      story: 'An accordion header can be set to `inline`',
     },
   },
 };

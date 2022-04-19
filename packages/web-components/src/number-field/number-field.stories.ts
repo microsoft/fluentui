@@ -35,6 +35,7 @@ export default {
     },
     step: {
       control: { type: 'number' },
+      defaultValue: 1,
     },
     size: {
       control: { type: 'number' },
@@ -90,7 +91,7 @@ NumberField.args = {
 };
 
 const example = `
-<fluent-number-field></fluent-number-field>
+<fluent-number-field appearance="outline" ></fluent-number-field>
 `;
 
 NumberField.parameters = {

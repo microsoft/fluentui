@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { Link, MessageBar, MessageBarType } from '@fluentui/react';
 import { MessageBarButton } from '@fluentui/react/lib/Button';
 
@@ -12,7 +12,7 @@ const longText =
 const link = <Link href="www.bing.com">Visit our website</Link>;
 
 storiesOf('MessageBar', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener

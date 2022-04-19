@@ -1,22 +1,13 @@
 import * as React from 'react';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuProps } from '@fluentui/react-menu';
-
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { Button } from '@fluentui/react-button';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, shorthands } from '@griffel/react';
+
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuProps } from '../index';
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
-    gap: '10px',
+    ...shorthands.gap('10px'),
   },
 
   indicator: {

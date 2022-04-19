@@ -33,11 +33,7 @@ export const ThemeClassNameContext: React_2.Context<string>;
 export type ThemeClassNameContextValue = string;
 
 // @public (undocumented)
-export const ThemeContext: React_2.Context<ThemeContextValue>;
-
-// @public (undocumented)
-export interface ThemeContextValue extends Theme {
-}
+export const ThemeContext: React_2.Context<Theme | Partial<Theme> | undefined>;
 
 // @public
 export const TooltipContext: React_2.Context<TooltipContextType>;
@@ -56,7 +52,7 @@ export function useFluent(): ProviderContextValue;
 export const useMenuContext: () => MinimalMenuProps;
 
 // @public (undocumented)
-export function useTheme(): ThemeContextValue;
+export function useTheme(): Theme | Partial<Theme> | undefined;
 
 // @public (undocumented)
 export function useThemeClassName(): ThemeClassNameContextValue;

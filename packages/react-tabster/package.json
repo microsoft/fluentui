@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tabster",
-  "version": "9.0.0-beta.1",
+  "version": "9.0.0-rc.5",
   "description": "Utilities for focus management and facade for tabster",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -15,31 +15,27 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "e2e": "e2e",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "storybook": "start-storybook",
+    "storybook": "node ../../scripts/storybook/runner",
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-tabster/src && yarn docs",
-    "start": "yarn storybook"
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-tabster/src && yarn docs",
+    "start": "yarn storybook",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "@types/react-test-renderer": "^16.0.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/make-styles": "9.0.0-beta.1",
-    "@fluentui/react-make-styles": "9.0.0-beta.1",
-    "@fluentui/react-shared-contexts": "9.0.0-beta.1",
-    "@fluentui/react-utilities": "9.0.0-beta.1",
-    "keyborg": "^1.0.0",
-    "tabster": "^1.0.0",
+    "@griffel/react": "1.0.3",
+    "@fluentui/react-shared-contexts": "9.0.0-rc.4",
+    "@fluentui/react-theme": "9.0.0-rc.4",
+    "@fluentui/react-utilities": "9.0.0-rc.5",
+    "keyborg": "^1.1.0",
+    "tabster": "^1.3.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -49,11 +45,17 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

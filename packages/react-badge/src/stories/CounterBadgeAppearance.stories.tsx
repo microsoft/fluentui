@@ -1,8 +1,6 @@
 import * as React from 'react';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { CounterBadge, CounterBadgeProps } from '@fluentui/react-badge';
+
+import { CounterBadge, CounterBadgeProps } from '../index';
 
 export const Appearance = (args: CounterBadgeProps) => {
   return (
@@ -20,7 +18,7 @@ Appearance.args = {
 Appearance.parameters = {
   docs: {
     description: {
-      story: 'A CounterBadge can have appearance as `ghost`, `filled`',
+      story: 'A counter badge can have a `ghost` or `filled` appearance. The default is `filled`.',
     },
   },
 };

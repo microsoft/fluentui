@@ -1,23 +1,23 @@
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type DividerSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  /**
+   * Root of the component that renders as a `<div>` tag.
+   */
+  root: Slot<'div'>;
 
   /**
    * Accessibility wrapper for content when presented.
-   * A shorthand prop can be a literal, object, or
-   * JSX. The `children` prop of the object can be a render function,
-   * taking in the original slot component and props.
    */
-  wrapper: IntrinsicShorthandProps<'div'>;
+  wrapper: Slot<'div'>;
 };
 
-export type DividerCommons = {
+type DividerCommons = {
   /**
    * Determines the alignment of the content within the divider.
    * @defaultvalue 'center'
    */
-  alignContent: 'start' | 'end' | 'center';
+  alignContent: 'start' | 'center' | 'end';
 
   /**
    * A divider can have one of the preset appearances.
@@ -26,18 +26,18 @@ export type DividerCommons = {
   appearance?: 'brand' | 'strong' | 'subtle';
 
   /**
-   * Adds padding to the beginning and end of the divider
+   * Adds padding to the beginning and end of the divider.
    * @default false
    */
   inset: boolean;
 
   /**
-   * A divider can be horizontal (default) or vertical
+   * A divider can be horizontal (default) or vertical.
    * @default false
    */
   vertical: boolean;
 };
 
-export type DividerProps = ComponentProps<DividerSlots> & Partial<DividerCommons>;
+export type DividerProps = ComponentProps<Partial<DividerSlots>> & Partial<DividerCommons>;
 
 export type DividerState = ComponentState<DividerSlots> & DividerCommons;

@@ -2,6 +2,7 @@ import { danger, fail, warn, markdown, message } from 'danger';
 
 import detectNonApprovedDependencies from './scripts/dangerjs/detectNonApprovedDependencies';
 import checkChangelog from './scripts/dangerjs/checkChangelog';
+import { checkStorybookVersions } from './scripts/dangerjs/checkStorybookVersions';
 
 /**
  * This trick (of explicitly passing Danger JS utils as function arg, instead of importing them at places where needed)
@@ -12,4 +13,5 @@ const dangerJS = { danger, fail, warn, markdown, message };
 export default async () => {
   await checkChangelog(dangerJS);
   await detectNonApprovedDependencies(dangerJS);
+  await checkStorybookVersions(dangerJS);
 };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type PortalCommons = {
+type PortalCommons = {
   /**
    * React children
    */
@@ -9,7 +9,7 @@ export type PortalCommons = {
    * Where the portal children are mounted on DOM
    * @defaultValue a new element on document.body without any styling
    */
-  mountNode: HTMLDivElement | undefined;
+  mountNode: HTMLElement | null;
 };
 
 export type PortalProps = Partial<PortalCommons>;

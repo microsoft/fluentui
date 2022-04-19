@@ -1,42 +1,50 @@
 import * as React from 'react';
-import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
+import {
+  applyTriggerPropsToChildren,
+  getTriggerChild,
+  shouldPreventDefaultOnKeyDown,
+  useMergedRefs,
+  useMergedEventCallbacks,
+  useEventCallback,
+} from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
-import { usePopoverContext } from '../../popoverContext';
-import type { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
+import { usePopoverContext_unstable } from '../../popoverContext';
+import type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 
 /**
  * Create the state required to render PopoverTrigger.
  *
  * The returned state can be modified with hooks such as usePopoverTriggerStyles,
- * before being passed to renderPopoverTrigger.
+ * before being passed to renderPopoverTrigger_unstable.
  *
  * @param props - props from this instance of PopoverTrigger
  */
-export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerState => {
-  const setOpen = usePopoverContext(context => context.setOpen);
-  const open = usePopoverContext(context => context.open);
-  const triggerRef = usePopoverContext(context => context.triggerRef);
-  const openOnHover = usePopoverContext(context => context.openOnHover);
-  const openOnContext = usePopoverContext(context => context.openOnContext);
+export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverTriggerState => {
+  const { children } = props;
+  const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
+
+  const setOpen = usePopoverContext_unstable(context => context.setOpen);
+  const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
+  const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
+  const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
+  const openOnContext = usePopoverContext_unstable(context => context.openOnContext);
+  const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
   const { triggerAttributes } = useModalAttributes();
 
-  const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+  const onContextMenu = (e: React.MouseEvent<HTMLElement>) => {
     if (openOnContext) {
       e.preventDefault();
       setOpen(e, true);
     }
+  };
 
-    child.props?.onContextMenu?.(e);
-  });
-
-  const onClick = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+  const onClick = (e: React.MouseEvent<HTMLElement>) => {
     if (!openOnContext) {
-      setOpen(e, !open);
+      toggleOpen(e);
     }
-    child.props?.onClick?.(e);
-  });
+  };
 
-  const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
+  const onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
     if (shouldPreventDefaultOnKeyDown(e) && (e.key === ' ' || e.key === 'Enter')) {
       e.preventDefault();
       (e.target as HTMLElement)?.click();
@@ -45,36 +53,31 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
     if (e.key === 'Escape') {
       setOpen(e, false);
     }
-
-    child.props?.onKeyDown?.(e);
-  });
+  };
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnHover) {
       setOpen(e, true);
     }
-    child.props?.onMouseEnter?.(e);
   });
 
-  const onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+  const onMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
     if (openOnHover) {
       setOpen(e, false);
     }
-    child.props?.onMouseLeave?.(e);
-  });
+  };
 
-  const child = React.Children.only(props.children);
   return {
-    children: React.cloneElement(child, {
+    children: applyTriggerPropsToChildren<PopoverTriggerChildProps>(props.children, {
       ...triggerAttributes,
-      'aria-haspopup': 'true',
-      ...child.props,
-      onClick,
-      onMouseEnter,
-      onKeyDown,
-      onMouseLeave,
-      onContextMenu,
-      ref: useMergedRefs(((child as unknown) as React.ReactElement & React.RefAttributes<unknown>).ref, triggerRef),
+      'aria-haspopup': trapFocus ? 'dialog' : 'true',
+      ...child?.props,
+      onClick: useMergedEventCallbacks(child?.props?.onClick, onClick),
+      onMouseEnter: useMergedEventCallbacks(child?.props?.onMouseEnter, onMouseEnter),
+      onKeyDown: useMergedEventCallbacks(child?.props?.onKeyDown, onKeyDown),
+      onMouseLeave: useMergedEventCallbacks(child?.props?.onMouseLeave, onMouseLeave),
+      onContextMenu: useMergedEventCallbacks(child?.props?.onContextMenu, onContextMenu),
+      ref: useMergedRefs(triggerRef, child?.ref),
     }),
   };
 };

@@ -66,9 +66,3 @@ export function generatePageJsonFiles(options: IPageJsonOptions): void {
     fse.writeFileSync(pageJsonPath, json);
   }
 }
-
-// For running in debugger
-if (require.main === module) {
-  const config: IPageJsonOptions = require('../config/api-docs');
-  generatePageJsonFiles(config);
-}

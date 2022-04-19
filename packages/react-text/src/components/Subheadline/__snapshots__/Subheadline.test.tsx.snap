@@ -3,7 +3,7 @@
 exports[`Subheadline renders a default state 1`] = `
 <div>
   <span
-    class=""
+    class="fui-Subheadline fui-Text"
   >
     Default Subheadline
   </span>

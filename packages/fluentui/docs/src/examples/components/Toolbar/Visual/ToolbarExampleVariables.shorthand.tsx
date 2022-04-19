@@ -44,9 +44,10 @@ const ToolbarExampleVariables = () => {
               { kind: 'divider', key: 'divider-variables', variables: { dividerBorder: 'orange' } },
 
               // ToolbarItem
-              { key: 'item', active: true, icon: <SkypeLogoIcon /> },
+              { key: 'item', active: true, icon: <SkypeLogoIcon />, title: 'skype' },
               {
                 key: 'item-variables',
+                title: 'skype',
                 active: true,
                 icon: <SkypeLogoIcon />,
                 variables: { foregroundActive: 'orange' },
@@ -67,11 +68,13 @@ const ToolbarExampleVariables = () => {
             icon: <CallVideoIcon />,
             key: 'item',
             active: true,
+            title: 'Call Video',
           },
           {
             icon: <CallVideoIcon />,
             key: 'item-variables',
             active: true,
+            title: 'Call Video',
             variables: { foregroundActive: 'green' },
           },
 
@@ -79,6 +82,7 @@ const ToolbarExampleVariables = () => {
           {
             icon: <MoreIcon />,
             key: 'item-menu',
+            title: 'Menu',
             menu: {
               accessibility: notAutoFocusToolbarMenuBehavior,
               popper: {
@@ -133,6 +137,7 @@ const ToolbarExampleVariables = () => {
           {
             icon: <MoreIcon />,
             key: 'item-menu-variables',
+            title: 'Menu',
             menu: {
               accessibility: notAutoFocusToolbarMenuBehavior,
               popper: {

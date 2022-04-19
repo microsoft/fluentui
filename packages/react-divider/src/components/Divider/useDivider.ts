@@ -4,26 +4,31 @@ import type { DividerProps, DividerState } from './Divider.types';
 
 /**
  * Returns the props and state required to render the component
- * @param props - Divider properties
- * @param ref - reference to root HTMLElement of Divider
+ * @param props - User-provided props to the Divider component.
+ * @param ref - User-provided ref to be passed to the Divider component.
  */
-export const useDivider = (props: DividerProps, ref: React.Ref<HTMLElement>): DividerState => {
-  const { alignContent = 'center', inset = false, vertical = false, appearance, wrapper } = props;
+export const useDivider_unstable = (props: DividerProps, ref: React.Ref<HTMLElement>): DividerState => {
+  const { alignContent = 'center', appearance, inset = false, vertical = false, wrapper } = props;
   const dividerId = useId('divider-');
 
   return {
+    // Props passed at the top-level
     alignContent,
+    appearance,
     inset,
     vertical,
-    appearance,
+
+    // Slots definition
     components: {
       root: 'div',
       wrapper: 'div',
     },
+
     root: getNativeElementProps('div', {
       ...props,
       ref,
       role: 'separator',
+      'aria-orientation': vertical ? 'vertical' : 'horizontal',
       'aria-labelledby': props.children ? dividerId : undefined,
     }),
     wrapper: resolveShorthand(wrapper, {

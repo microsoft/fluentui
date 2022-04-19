@@ -33,7 +33,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
   directionalHintForRTL?: DirectionalHint;
 
   /**
-   * The gap between the Callout and the target
+   * The gap between the Callout and the target, specified as number of pixels
    * @defaultvalue 0
    */
   gapSpace?: number;

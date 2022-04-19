@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Image } from '../index';
+import { Image } from '../Image';
 
-export const ImageFallback = () => (
+export const Fallback = () => (
   <div style={{ display: 'flex', gap: 8 }}>
     <Image
       alt="Allan's avatar"
@@ -19,7 +19,7 @@ export const ImageFallback = () => (
     />
   </div>
 );
-ImageFallback.parameters = {
+Fallback.parameters = {
   docs: {
     description: {
       story:

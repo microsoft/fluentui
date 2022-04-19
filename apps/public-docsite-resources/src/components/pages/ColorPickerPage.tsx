@@ -4,7 +4,7 @@ import { ColorPickerPageProps } from '@fluentui/react-examples/lib/react/ColorPi
 
 export const ColorPickerPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/ColorPicker.page.json')}
+    jsonDocs={require('../../../dist/api/react/ColorPicker.page.json')}
     {...{ ...ColorPickerPageProps, ...props }}
   />
 );

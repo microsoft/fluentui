@@ -12,7 +12,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard } from '../../utilities/index';
+import { ChartHoverCard, convertToLocaleString } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -46,6 +46,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
   private _classNames: IProcessedStyleSet<IMultiStackedBarChartStyles>;
   private _calloutId: string;
+  private _calloutAnchorPoint: IChartDataPoint | null;
 
   public constructor(props: IMultiStackedBarChartProps) {
     super(props);
@@ -67,7 +68,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   public render(): JSX.Element {
-    const { data, theme } = this.props;
+    const { data, theme, culture } = this.props;
     this._adjustProps();
     const { palette } = theme!;
     const legends = this._getLegendData(data!, this.props.hideRatio!, palette);
@@ -94,7 +95,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
 
     return (
-      <div className={this._classNames.root}>
+      <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         {bars}
         {!this.props.hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
         <Callout
@@ -114,7 +115,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             {this.props.onRenderCalloutPerDataPoint ? (
               this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
             ) : (
-              <ChartHoverCard Legend={legendName} YValue={calloutYVal} color={this.state.color} />
+              <ChartHoverCard Legend={legendName} YValue={calloutYVal} color={this.state.color} culture={culture} />
             )}
           </>
         </Callout>
@@ -130,6 +131,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     hideDenominator: boolean,
     href?: string,
   ): JSX.Element {
+    const { culture } = this.props;
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
@@ -210,25 +212,25 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const hideNumber = hideRatio === undefined ? false : hideRatio;
     const showRatio = !hideNumber && data!.chartData!.length === 2;
     const showNumber = !hideNumber && data!.chartData!.length === 1;
-
+    const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (
       <div className={this._classNames.singleChartRoot}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
-              <div {...this._getAccessibleDataObject(data!.chartTitleAccessibilityData)}>
+              <div {...this._getAccessibleDataObject(data!.chartTitleAccessibilityData, culture)}>
                 <strong>{data!.chartTitle}</strong>
               </div>
             )}
             {showRatio && (
               <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <strong>{data!.chartData![0].data ? data!.chartData![0].data : 0}</strong>
-                {!hideDenominator && <span>/{total}</span>}
+                <strong>{getChartData()}</strong>
+                {!hideDenominator && <span>/{convertToLocaleString(total, culture)}</span>}
               </div>
             )}
             {showNumber && (
               <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <strong>{data!.chartData![0].data}</strong>
+                <strong>{getChartData()}</strong>
               </div>
             )}
           </div>
@@ -399,9 +401,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     mouseEvent.persist();
 
     if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)
+      (this.state.isLegendSelected === false ||
+        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)) &&
+      this._calloutAnchorPoint !== point
     ) {
+      this._calloutAnchorPoint = point;
       this.setState({
         refSelected: mouseEvent,
         isCalloutVisible: true,
@@ -417,10 +421,15 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   private _onBarLeave(): void {
+    /**/
+  }
+
+  private _handleChartMouseLeave = () => {
+    this._calloutAnchorPoint = null;
     this.setState({
       isCalloutVisible: false,
     });
-  }
+  };
 
   private _redirectToUrl(href: string | undefined): void {
     href ? (window.location.href = href) : '';

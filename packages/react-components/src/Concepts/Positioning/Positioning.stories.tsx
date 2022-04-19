@@ -8,10 +8,11 @@ export { CoverTarget } from './PositioningCoverTarget.stories';
 export { OffsetValue } from './PositioningOffsetValue.stories';
 export { OffsetFunction } from './PositioningOffsetFunction.stories';
 export { AnchorToTarget } from './PositioningAnchorToTarget.stories';
-export { PopperImperativeHandle } from './PositioningPopperImperativeHandle.stories';
+export { ImperativeAnchorTarget } from './PositioningImperativeAnchorTarget.stories';
+export { ImperativePositionUpdate } from './PositioningImperativePositionUpdate.stories';
 
 export default {
-  title: 'Concepts/Developer/Positioning',
+  title: 'Concepts/Developer/Positioning Components',
   component: Positioning,
   parameters: {
     layout: 'centered',

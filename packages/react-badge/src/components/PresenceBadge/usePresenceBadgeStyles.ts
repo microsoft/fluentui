@@ -1,70 +1,117 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { useBadgeStyles } from '../../Badge';
+import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { BadgeSlots } from '../Badge/Badge.types';
 import type { PresenceBadgeState } from './PresenceBadge.types';
 
+/**
+ * @deprecated Use `presenceBadgeClassNames.root` instead.
+ */
+export const presenceBadgeClassName = 'fui-PresenceBadge';
+export const presenceBadgeClassNames: SlotClassNames<BadgeSlots> = {
+  root: 'fui-PresenceBadge',
+  icon: 'fui-PresenceBadge__icon',
+};
+
 const useStyles = makeStyles({
-  root: theme => ({
-    padding: 0,
-    borderWidth: theme.strokeWidthThick,
-  }),
-  thinBorder: theme => ({
-    borderWidth: theme.strokeWidthThin,
-  }),
-  statusBusy: theme => ({
-    backgroundColor: theme.colorPaletteRedBackground3,
-    borderColor: theme.colorPaletteRedBackground3,
-  }),
-  statusAway: theme => ({
-    backgroundColor: theme.colorPaletteMarigoldBackground3,
-    borderColor: theme.colorPaletteMarigoldBackground3,
-  }),
-  statusAvailable: theme => ({
-    backgroundColor: theme.colorPaletteLightGreenForeground3,
-    borderColor: theme.colorPaletteLightGreenForeground3,
-  }),
-  statusOffline: theme => ({
-    backgroundColor: theme.colorNeutralBackground1,
-    color: theme.colorNeutralForeground3,
-    borderColor: theme.colorNeutralForeground3,
-  }),
-  statusOutOfOffice: theme => ({
-    backgroundColor: theme.colorNeutralBackground1,
-    color: theme.colorPaletteBerryForeground3,
-    borderColor: theme.colorPaletteBerryForeground3,
-  }),
-  outOfOffice: theme => ({
-    backgroundColor: theme.colorNeutralBackground1,
-  }),
-  outOfOfficeAvailable: theme => ({
-    color: theme.colorPaletteLightGreenForeground3,
-  }),
-  outOfOfficeBusy: theme => ({
-    color: theme.colorPaletteRedBackground3,
-  }),
-  outOfOfficeAway: theme => ({
-    color: theme.colorPaletteMarigoldBackground3,
-  }),
+  root: {
+    ...shorthands.padding(0),
+    display: 'inline-flex',
+    boxSizing: 'border-box',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    '& span': {
+      display: 'flex',
+    },
+    ...shorthands.borderRadius('50%'),
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
+  statusBusy: {
+    color: tokens.colorPaletteRedBackground3,
+  },
+  statusAway: {
+    color: tokens.colorPaletteMarigoldBackground3,
+  },
+  statusAvailable: {
+    color: tokens.colorPaletteLightGreenForeground3,
+  },
+  statusOffline: {
+    color: tokens.colorNeutralForeground3,
+  },
+  statusOutOfOffice: {
+    color: tokens.colorPaletteBerryForeground3,
+  },
+  outOfOffice: {
+    color: tokens.colorNeutralBackground1,
+  },
+  outOfOfficeAvailable: {
+    color: tokens.colorPaletteLightGreenForeground3,
+  },
+  outOfOfficeBusy: {
+    color: tokens.colorPaletteRedBackground3,
+  },
+  outOfOfficeAway: {
+    color: tokens.colorPaletteMarigoldBackground3,
+  },
+
+  // Icons are not resizeable, and these sizes are currently missing
+  // use `!important` to size the currently available icons to the missing ones
+  //
+  tiny: {
+    aspectRatio: '1',
+    width: '6px',
+    '& svg': {
+      width: '6px !important',
+      height: '6px !important',
+    },
+  },
+  large: {
+    aspectRatio: '1',
+    width: '20px',
+    '& svg': {
+      width: '20px !important',
+      height: '20px !important',
+    },
+  },
+  extraLarge: {
+    aspectRatio: '1',
+    width: '28px',
+    '& svg': {
+      width: '28px !important',
+      height: '28px !important',
+    },
+  },
 });
 
 /**
  * Applies style classnames to slots
  */
-export const usePresenceBadgeStyles = (state: PresenceBadgeState): PresenceBadgeState => {
+export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): PresenceBadgeState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
+    presenceBadgeClassNames.root,
     styles.root,
-    (state.status === 'busy' || state.status === 'doNotDisturb') && styles.statusBusy,
+    ['busy', 'doNotDisturb', 'unknown'].includes(state.status) && styles.statusBusy,
     state.status === 'away' && styles.statusAway,
     state.status === 'available' && styles.statusAvailable,
     state.status === 'offline' && styles.statusOffline,
     state.status === 'outOfOffice' && styles.statusOutOfOffice,
     state.outOfOffice && styles.outOfOffice,
     state.outOfOffice && state.status === 'available' && styles.outOfOfficeAvailable,
-    state.outOfOffice && (state.status === 'busy' || state.status === 'doNotDisturb') && styles.outOfOfficeBusy,
+    state.outOfOffice && ['busy', 'doNotDisturb', 'unknown'].includes(state.status) && styles.outOfOfficeBusy,
     state.outOfOffice && state.status === 'away' && styles.outOfOfficeAway,
-    (state.size === 'tiny' || state.size === 'extra-small') && styles.thinBorder,
+    state.outOfOffice && state.status === 'offline' && styles.statusOffline,
+    state.outOfOffice && state.status === 'outOfOffice' && styles.statusOutOfOffice,
+    state.size === 'tiny' && styles.tiny,
+    state.size === 'large' && styles.large,
+    state.size === 'extra-large' && styles.extraLarge,
     state.root.className,
   );
 
-  return useBadgeStyles(state) as PresenceBadgeState;
+  if (state.icon) {
+    state.icon.className = mergeClasses(presenceBadgeClassNames.icon, state.icon.className);
+  }
+
+  return state;
 };

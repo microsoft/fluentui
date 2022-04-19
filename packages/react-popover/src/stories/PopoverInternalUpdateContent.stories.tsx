@@ -1,24 +1,8 @@
 import * as React from 'react';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from '@fluentui/react-popover';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { Button } from '@fluentui/react-button';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles } from '@griffel/react';
 
-// FIXME need to redeclare types because type imports are under @ts-ignore
-export type OpenPopoverEvents =
-  | MouseEvent
-  | TouchEvent
-  | React.MouseEvent<HTMLElement>
-  | React.KeyboardEvent<HTMLElement>
-  | React.FocusEvent<HTMLElement>;
+import { Popover, PopoverProps, PopoverTrigger, PopoverSurface } from '../index';
 
 const useStyles = makeStyles({
   contentHeader: {
@@ -41,7 +25,7 @@ export const InternalUpdateContent = () => {
   const [visible, setVisible] = React.useState(false);
 
   const changeContent = () => setVisible(true);
-  const onOpenChange = (e: OpenPopoverEvents, data: { open: boolean }) => {
+  const onOpenChange: PopoverProps['onOpenChange'] = (e, data) => {
     if (data.open === false) {
       setVisible(false);
     }

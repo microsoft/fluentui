@@ -31,14 +31,14 @@ const CheckboxTemplate = ({ checked, disabled, label, required }) =>
 export const Checkbox = CheckboxTemplate.bind({});
 
 Checkbox.args = {
-  label: 'Label',
+  label: 'Label string',
   checked: false,
   disabled: false,
   required: false,
 };
 
 const example = `
-<fluent-checkbox>Checkbox</fluent-checkbox>
+<fluent-checkbox>Label string</fluent-checkbox>
 `;
 
 Checkbox.parameters = {

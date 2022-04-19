@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { ChevronDown20Regular, ChevronDown24Regular } from '@fluentui/react-icons';
+import { ChevronDownRegular } from '@fluentui/react-icons';
 import { resolveShorthand } from '@fluentui/react-utilities';
-import { useButton } from '../Button/index';
+import { useButton_unstable } from '../Button/index';
 import type { MenuButtonProps, MenuButtonState } from './MenuButton.types';
 
 /**
  * Given user props, returns the final state for a MenuButton.
  */
-export const useMenuButton = (
+export const useMenuButton_unstable = (
   { menuIcon, ...props }: MenuButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): MenuButtonState => {
-  const buttonState = useButton(props, ref);
+  const buttonState = useButton_unstable(props, ref);
   return {
     // Button state
     ...buttonState,
@@ -28,7 +28,7 @@ export const useMenuButton = (
 
     menuIcon: resolveShorthand(menuIcon, {
       defaultProps: {
-        children: buttonState.size === 'large' ? <ChevronDown24Regular /> : <ChevronDown20Regular />,
+        children: <ChevronDownRegular />,
       },
       required: true,
     }),

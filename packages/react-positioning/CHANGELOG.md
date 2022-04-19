@@ -1,8 +1,97 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 06 Oct 2021 10:37:22 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 05:17:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-rc.5)
+
+Fri, 04 Mar 2022 05:17:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-rc.4..@fluentui/react-positioning_v9.0.0-rc.5)
+
+### Changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- fix: `popperRef.setTarget` should accept virtual element type ([PR #21875](https://github.com/microsoft/fluentui/pull/21875) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.4 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.4 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.5 ([PR #21947](https://github.com/microsoft/fluentui/pull/21947) by beachball)
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-rc.4)
+
+Tue, 01 Mar 2022 02:17:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-rc.3..@fluentui/react-positioning_v9.0.0-rc.4)
+
+### Changes
+
+- feat: add isIntersectingModifier to usePopper ([PR #21855](https://github.com/microsoft/fluentui/pull/21855) by olfedias@microsoft.com)
+- fix: Add react-theme as dependency ([PR #21825](https://github.com/microsoft/fluentui/pull/21825) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.4 ([PR #21884](https://github.com/microsoft/fluentui/pull/21884) by beachball)
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-rc.3)
+
+Fri, 18 Feb 2022 13:35:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-rc.1..@fluentui/react-positioning_v9.0.0-rc.3)
+
+### Changes
+
+- fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.3 ([PR #21800](https://github.com/microsoft/fluentui/pull/21800) by beachball)
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-rc.1)
+
+Thu, 10 Feb 2022 08:50:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-beta.4..@fluentui/react-positioning_v9.0.0-rc.1)
+
+### Changes
+
+- use new types from makeStyles core ([PR #20786](https://github.com/microsoft/fluentui/pull/20786) by olfedias@microsoft.com)
+- Replacing use of functions in makeStyles with direct use of tokens. ([PR #21051](https://github.com/microsoft/fluentui/pull/21051) by Humberto.Morimoto@microsoft.com)
+- Fix tooltip arrow's high contrast border in RTL ([PR #21354](https://github.com/microsoft/fluentui/pull/21354) by behowell@microsoft.com)
+- use Griffel packages ([PR #21421](https://github.com/microsoft/fluentui/pull/21421) by olfedias@microsoft.com)
+- feat: Imperative `setTarget` for `usePopper` and `positioning` ([PR #21632](https://github.com/microsoft/fluentui/pull/21632) by lingfangao@hotmail.com)
+- Adds @noflip annotation to data-popper-placement styles ([PR #20845](https://github.com/microsoft/fluentui/pull/20845) by bsunderhus@microsoft.com)
+- update styles to not use CSS shorthands ([PR #20842](https://github.com/microsoft/fluentui/pull/20842) by olfedias@microsoft.com)
+- Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
+- Fix popover arrow styling ([PR #21086](https://github.com/microsoft/fluentui/pull/21086) by behowell@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-beta.4)
+
+Thu, 25 Nov 2021 08:34:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-beta.3..@fluentui/react-positioning_v9.0.0-beta.4)
+
+### Changes
+
+- Add utility function to create styles for an arrow element ([PR #20541](https://github.com/microsoft/fluentui/pull/20541) by lingfangao@hotmail.com)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-beta.3)
+
+Fri, 12 Nov 2021 13:25:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-beta.2..@fluentui/react-positioning_v9.0.0-beta.3)
+
+### Changes
+
+- Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-beta.2)
+
+Wed, 27 Oct 2021 12:14:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-beta.1..@fluentui/react-positioning_v9.0.0-beta.2)
+
+### Changes
+
+- added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- Bump @fluentui/react-shared-contexts to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
 
 ## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-beta.1)
 

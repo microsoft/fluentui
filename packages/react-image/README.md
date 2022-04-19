@@ -51,3 +51,7 @@ The DOM structure will result into:
 Image component is build upon the `<img/>` tag, which does support all the native attributes. Additionaly, the following properties are available: `bordered`, `fit`, `block`, `shape` and `shadow`.
 
 For more information on the component, please refer to the [API documentation](https://aka.ms/fluentui-storybook).
+
+## Migration
+
+For migrating from older versions of FluentUI, please check out the [migration guide](./MIGRATION.md)

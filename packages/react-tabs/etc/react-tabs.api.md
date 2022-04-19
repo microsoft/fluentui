@@ -4,99 +4,120 @@
 
 ```ts
 
-import type { IButtonProps } from '@fluentui/react/lib/Button';
-import type { IKeytipProps } from '@fluentui/react';
-import type { IRefObject } from '@fluentui/utilities';
-import type { IRenderFunction } from '@fluentui/utilities';
-import type { IStyle } from '@fluentui/style-utilities';
-import type { IStyleFunctionOrObject } from '@fluentui/utilities';
-import type { ITheme } from '@fluentui/style-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public (undocumented)
+export type RegisterTabEventHandler = (data: TabRegisterData) => void;
 
 // @public
-export type TabFormatType = 'links' | 'tabs';
-
-// @public (undocumented)
-export class TabItem extends React_2.Component<TabItemProps, {}> {
-    constructor(props: TabItemProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
-
-// @public (undocumented)
-export interface TabItemProps extends React_2.HTMLAttributes<HTMLDivElement> {
-    alwaysRender?: boolean;
-    ariaLabel?: string;
-    componentRef?: IRefObject<{}>;
-    headerButtonProps?: IButtonProps | {
-        [key: string]: string | number | boolean;
-    };
-    headerText?: string;
-    itemCount?: number | string;
-    itemIcon?: string;
-    itemKey?: string;
-    keytipProps?: IKeytipProps;
-    onRenderTab?: IRenderFunction<TabItemProps>;
-}
+export const renderTab_unstable: (state: TabState) => JSX.Element;
 
 // @public
-export const Tabs: React_2.FunctionComponent<TabsProps>;
+export const renderTabList_unstable: (state: TabListState, contextValues: TabListContextValues) => JSX.Element;
 
 // @public (undocumented)
-export const TabsBase: React_2.FunctionComponent<TabsProps>;
-
-// @public (undocumented)
-export interface TabsImperativeHandle {
-    focus(): void;
-}
-
-// @public
-export type TabSizeType = 'normal' | 'large';
-
-// @public (undocumented)
-export interface TabsProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
-    className?: string;
-    componentRef?: React_2.RefObject<TabsImperativeHandle>;
-    defaultSelectedKey?: string;
-    getTabId?: (itemKey: string, index: number) => string;
-    headersOnly?: boolean;
-    onTabClick?: (item?: TabItem, ev?: React_2.MouseEvent<HTMLElement>) => void;
-    overflowBehavior?: 'none' | 'menu';
-    selectedKey?: string | null;
-    styles?: IStyleFunctionOrObject<TabsStyleProps, TabsStyles>;
-    tabFormat?: TabFormatType;
-    tabSize?: TabSizeType;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export type TabsStyleProps = Required<Pick<TabsProps, 'theme'>> & Pick<TabsProps, 'className'> & {
-    tabSize?: TabSizeType;
-    tabFormat?: TabFormatType;
+export type SelectTabData = {
+    value: TabValue;
 };
 
 // @public (undocumented)
-export interface TabsStyles {
-    // (undocumented)
-    count: IStyle;
-    // (undocumented)
-    icon: IStyle;
-    // (undocumented)
-    itemContainer?: IStyle;
-    // (undocumented)
-    overflowMenuButton: IStyle;
-    root: IStyle;
-    // (undocumented)
-    tab: IStyle;
-    // (undocumented)
-    tabContent: IStyle;
-    // (undocumented)
-    tabInMenu: IStyle;
-    // (undocumented)
-    tabIsSelected: IStyle;
-    // (undocumented)
-    text: IStyle;
-}
+export type SelectTabEvent<E = HTMLElement> = React_2.MouseEvent<E> | React_2.KeyboardEvent<E>;
+
+// @public (undocumented)
+export type SelectTabEventHandler = (event: SelectTabEvent, data: SelectTabData) => void;
+
+// @public
+export const Tab: ForwardRefComponent<TabProps>;
+
+// @public (undocumented)
+export const tabClassName: string;
+
+// @public (undocumented)
+export const tabClassNames: SlotClassNames<TabSlots>;
+
+// @public
+export const TabList: ForwardRefComponent<TabListProps>;
+
+// @public (undocumented)
+export const tabListClassName: string;
+
+// @public (undocumented)
+export const tabListClassNames: SlotClassNames<TabListSlots>;
+
+// @public (undocumented)
+export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListCommons, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
+    onRegister: RegisterTabEventHandler;
+    onUnregister: RegisterTabEventHandler;
+    onSelect: SelectTabEventHandler;
+    getRegisteredTabs: () => {
+        selectedValue?: TabValue;
+        previousSelectedValue?: TabValue;
+        registeredTabs: Record<string, TabRegisterData>;
+    };
+};
+
+// @public
+export type TabListContextValues = {
+    tabList: TabListContextValue;
+};
+
+// @public
+export type TabListProps = ComponentProps<TabListSlots> & TabListCommons & {
+    defaultSelectedValue?: TabValue;
+};
+
+// @public (undocumented)
+export type TabListSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TabListState = ComponentState<Required<TabListSlots>> & TabListContextValue;
+
+// @public
+export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
+
+// @public (undocumented)
+export type TabRegisterData = {
+    value: TabValue;
+    ref: React_2.RefObject<HTMLElement>;
+};
+
+// @public (undocumented)
+export type TabSlots = {
+    root: Slot<'button'>;
+    icon?: Slot<'span'>;
+    content: NonNullable<Slot<'span'>>;
+};
+
+// @public
+export type TabState = ComponentState<TabSlots> & Omit<TabCommons, 'disabled'> & Required<Pick<TabCommons, 'disabled'>> & {
+    appearance?: 'transparent' | 'subtle';
+    iconOnly: boolean;
+    selected: boolean;
+    size: 'small' | 'medium';
+    vertical: boolean;
+};
+
+// @public
+export type TabValue = unknown;
+
+// @public
+export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
+
+// @public
+export const useTabList_unstable: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
+
+// @public
+export const useTabListStyles_unstable: (state: TabListState) => TabListState;
+
+// @public
+export const useTabStyles_unstable: (state: TabState) => TabState;
 
 // (No @packageDocumentation comment for this package)
 

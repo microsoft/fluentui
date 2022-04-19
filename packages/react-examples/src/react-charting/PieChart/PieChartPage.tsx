@@ -17,7 +17,7 @@ export class PieChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="PieChart"
+        title="Pie Chart"
         componentName="PieChartExample"
         exampleCards={
           <div>

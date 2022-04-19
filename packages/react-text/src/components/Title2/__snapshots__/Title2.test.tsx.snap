@@ -3,7 +3,7 @@
 exports[`Title2 renders a default state 1`] = `
 <div>
   <span
-    class=""
+    class="fui-Title2 fui-Text"
   >
     Default Title2
   </span>

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
-    "lib": ["es2015", "dom"],
+    "lib": ["es2019", "dom"],
     "baseUrl": "../../",
     "paths": {
       "@fluentui/scripts": ["scripts"],
@@ -10,7 +10,6 @@
     },
     "types": ["node", "jest"],
     "jsx": "react",
-    "importHelpers": true,
     "isolatedModules": true,
     "moduleResolution": "node",
     "pretty": true,

@@ -13,12 +13,21 @@ export type ScreenerRunnerConfig = {
     compareSVGDOM: number; // Pass if SVG DOM is the same. Defaults to false.
   };
 
-  states: ScreenerRunnerStep[];
+  states: ScreenerState[];
 
   alwaysAcceptBaseBranch: boolean;
   baseBranch: string;
   commit: string;
   failureExitCode: number;
+
+  /** Base url of deployed storybook screener should test */
+  baseUrl: string;
+};
+
+export type ScreenerState = {
+  url: string;
+  name: string;
+  steps?: ScreenerRunnerStep[];
 };
 
 export type ScreenerRunnerStep = {
@@ -81,10 +90,32 @@ export interface ScreenerStepBuilder {
 /** Keys of `themes` object exported from `@fluentui/react-northstar/src/index`. */
 export type ScreenerThemeName = 'teams' | 'teamsDark' | 'teamsHighContrast' | 'teamsV2' | 'teamsDarkV2';
 
+export type ScreenerTheme = {
+  name: ScreenerThemeName;
+  /*
+   * Decouples the test name from the theme name.
+   * Useful to remap tests to different themes to avoid generating new screenshots
+   */
+  testResultName?: ScreenerThemeName;
+};
+
 export type ScreenerStep = (steps: ScreenerStepBuilder, keys: ScreenerRunnerKeys) => ScreenerStepBuilder;
 export type ScreenerSteps = ScreenerStep[];
 
 export type ScreenerTestsConfig = {
   steps?: ScreenerStep[];
-  themes?: ScreenerThemeName[];
+  themes?: ScreenerTheme[];
 };
+
+export interface ScreenerProxyPayload {
+  /** Commit hash */
+  commit: string;
+  /** Url to the screener test run */
+  url: string;
+  /** The status of the github check */
+  status?: 'in_progress' | 'completed';
+  /** How the github check was completed. Only 'skipped' will actually pass the check */
+  conclusion?: 'failure' | 'skipped' | 'cancelled';
+  /** Name of the screener project for the screener run */
+  project?: string;
+}

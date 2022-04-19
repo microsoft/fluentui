@@ -7,7 +7,7 @@ import type { PortalProps } from '@fluentui/react-portal';
  */
 export type PopoverSize = 'small' | 'medium' | 'large';
 
-export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
+type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
   /**
    * Controls the opening of the Popover
    */
@@ -61,8 +61,8 @@ export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
  */
 export type PopoverProps = Partial<PopoverCommons> & {
   /**
-   * Can contain two children including {@link PopoverTrigger} and {@link PopoverPopover}.
-   * Alternatively can only contain {@link PopoverPopover} if using a custom `target`.
+   * Can contain two children including {@link PopoverTrigger} and {@link PopoverSurface}.
+   * Alternatively can only contain {@link PopoverSurface} if using a custom `target`.
    */
   children: [JSX.Element, JSX.Element] | JSX.Element;
 };
@@ -76,6 +76,10 @@ export type PopoverState = PopoverCommons &
      * Callback to open/close the Popover
      */
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
+    /**
+     * Callback to toggle the open state of the Popover
+     */
+    toggleOpen: (e: OpenPopoverEvents) => void;
     /**
      * Ref of the PopoverTrigger
      */
@@ -98,12 +102,16 @@ export type PopoverState = PopoverCommons &
     setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
 
     size: NonNullable<PopoverProps['size']>;
+
+    popoverTrigger: React.ReactElement | undefined;
+
+    popoverSurface: React.ReactElement | undefined;
   };
 
 /**
  * Data attached to open/close events
  */
-export type OnOpenChangeData = Pick<PopoverState, 'open'>;
+export type OnOpenChangeData = { open: boolean };
 
 /**
  * The supported events that will trigger open/close of the menu

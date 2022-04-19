@@ -1,8 +1,72 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Tue, 28 Sep 2021 22:17:07 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Apr 2022 07:42:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.1)
+
+Fri, 15 Apr 2022 07:42:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.5.0..@fluentui/merge-styles_v8.5.1)
+
+### Patches
+
+- Adding missing package.json export for ssr ([PR #22504](https://github.com/microsoft/fluentui/pull/22504) by email not defined)
+
+## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.0)
+
+Fri, 11 Mar 2022 07:34:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.4.0..@fluentui/merge-styles_v8.5.0)
+
+### Minor changes
+
+- Adding additional exports to support existing 1js imports (which will be resolved separately.) ([PR #22062](https://github.com/microsoft/fluentui/pull/22062) by dzearing@microsoft.com)
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.4.0)
+
+Thu, 03 Mar 2022 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.3.0..@fluentui/merge-styles_v8.4.0)
+
+### Minor changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/set-version to v8.2.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.3.0)
+
+Thu, 03 Feb 2022 07:29:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.2.3..@fluentui/merge-styles_v8.3.0)
+
+### Minor changes
+
+- Add logical margins CSS properties to IRawStyleBase ([PR #21372](https://github.com/microsoft/fluentui/pull/21372) by beavi@microsoft.com)
+
+## [8.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.2.3)
+
+Mon, 03 Jan 2022 23:32:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.2.2..@fluentui/merge-styles_v8.2.3)
+
+### Patches
+
+- Add new css properties into `IRawStyleBase` ([PR #18915](https://github.com/microsoft/fluentui/pull/18915) by 1586939317@qq.com)
+
+## [8.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.2.2)
+
+Thu, 25 Nov 2021 14:54:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.2.1..@fluentui/merge-styles_v8.2.2)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.1.5 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+
+## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.2.1)
+
+Wed, 10 Nov 2021 07:31:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.2.0..@fluentui/merge-styles_v8.2.1)
+
+### Patches
+
+- Add some logic to stylesheet that will do a simple append instead of using insert before if the reference node isn't actually a child of the document head. ([PR #20439](https://github.com/microsoft/fluentui/pull/20439) by tabrumle@microsoft.com)
 
 ## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.2.0)
 

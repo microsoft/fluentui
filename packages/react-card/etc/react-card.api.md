@@ -4,135 +4,140 @@
 
 ```ts
 
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
-import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import type { ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Card: ForwardRefComponent<CardProps>;
 
-// @public
-export type CardDefaultedProps = never;
+// @public @deprecated (undocumented)
+export const cardClassName = "fui-Card";
+
+// @public (undocumented)
+export const cardClassNames: SlotClassNames<CardSlots>;
+
+// @public (undocumented)
+export type CardCommons = {
+    appearance: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
+};
 
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
-// @public
-export type CardFooterDefaultedProps = never;
+// @public @deprecated (undocumented)
+export const cardFooterClassName = "fui-CardFooter";
+
+// @public (undocumented)
+export const cardFooterClassNames: SlotClassNames<CardFooterSlots>;
 
 // @public
-export interface CardFooterProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
-    action?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-}
+export type CardFooterProps = ComponentProps<CardFooterSlots>;
+
+// @public (undocumented)
+export type CardFooterSlots = {
+    root: Slot<'div'>;
+    action?: Slot<'div'>;
+};
 
 // @public
-export type CardFooterShorthandProps = 'action';
-
-// @public
-export const cardFooterShorthandProps: CardFooterShorthandProps[];
-
-// @public
-export interface CardFooterState extends ComponentStateCompat<CardFooterProps, CardFooterShorthandProps, CardFooterDefaultedProps> {
-    ref: React_2.Ref<HTMLElement>;
-}
+export type CardFooterState = ComponentState<CardFooterSlots>;
 
 // @public
 export const CardHeader: ForwardRefComponent<CardHeaderProps>;
 
-// @public
-export type CardHeaderDefaultedProps = never;
+// @public @deprecated (undocumented)
+export const cardHeaderClassName = "fui-CardHeader";
+
+// @public (undocumented)
+export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots>;
 
 // @public
-export interface CardHeaderProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
-    action?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    content?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    description: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    header: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    image: ShorthandPropsCompat<React_2.ImgHTMLAttributes<HTMLImageElement>>;
-}
+export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
+
+// @public (undocumented)
+export type CardHeaderSlots = {
+    root: Slot<'div'>;
+    image: Slot<'div'>;
+    content?: Slot<'div'>;
+    header: Slot<'span'>;
+    description: Slot<'span'>;
+    action?: Slot<'div'>;
+};
 
 // @public
-export type CardHeaderShorthandProps = 'image' | 'content' | 'header' | 'description' | 'action';
-
-// @public
-export const cardHeaderShorthandPropsCompat: CardHeaderShorthandProps[];
-
-// @public
-export interface CardHeaderState extends ComponentStateCompat<CardHeaderProps, CardHeaderShorthandProps> {
-    ref: React_2.Ref<HTMLElement>;
-}
+export type CardHeaderState = ComponentState<CardHeaderSlots>;
 
 // @public
 export const CardPreview: ForwardRefComponent<CardPreviewProps>;
 
-// @public
-export type CardPreviewDefaultedProps = never;
+// @public @deprecated (undocumented)
+export const cardPreviewClassName = "fui-CardPreview";
+
+// @public (undocumented)
+export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots>;
 
 // @public
-export interface CardPreviewProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
-    logo?: ShorthandPropsCompat<React_2.ImgHTMLAttributes<HTMLImageElement>>;
-}
+export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
+
+// @public (undocumented)
+export type CardPreviewSlots = {
+    root: Slot<'div'>;
+    logo?: Slot<'div'>;
+};
 
 // @public
-export type CardPreviewShorthandProps = 'logo';
+export type CardPreviewState = ComponentState<CardPreviewSlots>;
 
 // @public
-export const cardPreviewShorthandPropsCompat: CardPreviewShorthandProps[];
+export type CardProps = ComponentProps<CardSlots> & Partial<CardCommons>;
+
+// @public (undocumented)
+export type CardSlots = {
+    root: Slot<'div'>;
+};
 
 // @public
-export interface CardPreviewState extends ComponentStateCompat<CardPreviewProps, CardPreviewShorthandProps, CardPreviewDefaultedProps> {
-    ref: React_2.Ref<HTMLElement>;
-}
+export type CardState = ComponentState<CardSlots> & CardCommons;
 
 // @public
-export interface CardProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
-}
+export const renderCard_unstable: (state: CardState) => JSX.Element;
 
 // @public
-export type CardShorthandProps = never;
+export const renderCardFooter_unstable: (state: CardFooterState) => JSX.Element;
 
 // @public
-export interface CardState extends CardProps, ComponentStateCompat<CardProps, CardShorthandProps, CardDefaultedProps> {
-    ref: React_2.Ref<HTMLElement>;
-}
+export const renderCardHeader_unstable: (state: CardHeaderState) => JSX.Element;
 
 // @public
-export const renderCard: (state: CardState) => JSX.Element;
+export const renderCardPreview_unstable: (state: CardPreviewState) => JSX.Element;
 
 // @public
-export const renderCardFooter: (state: CardFooterState) => JSX.Element;
+export const useCard_unstable: (props: CardProps, ref: React_2.Ref<HTMLElement>) => CardState;
 
 // @public
-export const renderCardHeader: (state: CardHeaderState) => JSX.Element;
+export const useCardFooter_unstable: (props: CardFooterProps, ref: React_2.Ref<HTMLElement>) => CardFooterState;
 
 // @public
-export const renderCardPreview: (state: CardPreviewState) => JSX.Element;
+export const useCardFooterStyles_unstable: (state: CardFooterState) => CardFooterState;
 
 // @public
-export const useCard: (props: CardProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CardProps | undefined) => CardState;
+export const useCardHeader_unstable: (props: CardHeaderProps, ref: React_2.Ref<HTMLElement>) => CardHeaderState;
 
 // @public
-export const useCardFooter: (props: CardFooterProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CardFooterProps | undefined) => CardFooterState;
+export const useCardHeaderStyles_unstable: (state: CardHeaderState) => CardHeaderState;
 
 // @public
-export const useCardFooterStyles: (state: CardFooterState) => CardFooterState;
+export const useCardPreview_unstable: (props: CardPreviewProps, ref: React_2.Ref<HTMLElement>) => CardPreviewState;
 
 // @public
-export const useCardHeader: (props: CardHeaderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CardHeaderProps | undefined) => CardHeaderState;
+export const useCardPreviewStyles_unstable: (state: CardPreviewState) => CardPreviewState;
 
 // @public
-export const useCardHeaderStyles: (state: CardHeaderState) => CardHeaderState;
-
-// @public
-export const useCardPreview: (props: CardPreviewProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CardPreviewProps | undefined) => CardPreviewState;
-
-// @public
-export const useCardPreviewStyles: (state: CardPreviewState) => CardPreviewState;
-
-// @public
-export const useCardStyles: (state: CardState) => CardState;
+export const useCardStyles_unstable: (state: CardState) => CardState;
 
 // (No @packageDocumentation comment for this package)
 

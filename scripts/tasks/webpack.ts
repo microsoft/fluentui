@@ -2,12 +2,10 @@ import { webpackCliTask, argv, logger } from 'just-scripts';
 import * as path from 'path';
 import * as fs from 'fs';
 import execSync from '../exec-sync';
-import { Arguments } from 'yargs-parser';
-
-type JustArguments<T extends Record<string, unknown>> = Arguments & T;
+import { getJustArgv } from './argv';
 
 export function webpack() {
-  const args: JustArguments<Partial<{ production: boolean }>> = argv();
+  const args = getJustArgv();
   return webpackCliTask({
     webpackCliArgs: args.production ? ['--mode=production'] : [],
     nodeArgs: ['--max-old-space-size=4096'],

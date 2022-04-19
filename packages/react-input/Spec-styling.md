@@ -10,102 +10,103 @@ General abbreviations used:
 
 ## Sizes
 
+Notes:
+
 - padding and gap values are from (theoretical) `spacing.horizontal` unless otherwise specified
-- bookend-related sizes are from separate bookends page (everything except L/R padding and spacing within inherits from default)
 - interpretation:
-  - "spacing between icon before and content"/"spacing between content and icon after 1" => "spacing start/end to content"
-  - "spacing between icon after 1 and icon after 2" => "spacing within insideEnd" because we're not going to have two icon slots
-  - bookend "spacing between content and icon" => "spacing within bookend"
+  - "spacing between icon before and content"/"spacing between content and icon after 1" => "spacing within root"
+  - "spacing between icon after 1 and icon after 2" => "spacing within contentBefore/After" because we're not going to have two icon slots
   - omitted "focus indicator" b/c that's handled elsewhere
 
-| Style         | All                 |
-| ------------- | ------------------- |
-| v-align       | vertically centered |
-| border radius | medium              |
+### For all field sizes
 
-| Style                         | medium           | small               | large     |
-| ----------------------------- | ---------------- | ------------------- | --------- |
-| height                        | 32px             | 24px                | 40px      |
-| left/right padding            | mNudge           | sNudge              | m         |
-| left/right padding in content | xxs              | "                   | sNudge    |
-| bookends left/right padding   | s                | sNudge              | m         |
-| content size                  | body1 (base.300) | caption1 (base.200) | base.400  |
-| "icon" size                   | 20Regular        | 16Regular           | 24Regular |
-| spacing start/end to content  | xxs              | "                   | sNudge    |
-| spacing within insideEnd      | xs               | "                   | "         |
-| spacing within bookend        | xs               | "                   | "         |
+| Style                                  | Application               | All                 |
+| -------------------------------------- | ------------------------- | ------------------- |
+| v-align                                | root                      | vertically centered |
+| border radius                          | root (unless underlined)  | medium              |
+| ~~spacing within contentBefore/After~~ | n/a (add later if needed) | xs                  |
 
-### Sizes application
+### Varying by field size
 
-| Style                         | Slot                         | Notes                                                            |
-| ----------------------------- | ---------------------------- | ---------------------------------------------------------------- |
-| v-align                       | root, inputWrapper           | ???                                                              |
-| height                        | root                         | ? as minHeight or height ?                                       |
-| border radius                 | bookends, inputWrapper, root | set where borders or shadow are defined; don't use if underlined |
-| left/right padding            | inputWrapper                 | padding                                                          |
-| left/right padding in content | input                        | padding                                                          |
-| bookends left/right padding   | bookends                     | padding                                                          |
-| content size                  | root, input                  | fontSize; doesn't inherit to input                               |
-| "icon" size                   | n/a                          | no icons built in                                                |
-| spacing start/end to content  | inputWrapper                 | display: flex (also to grow input), flex gap                     |
-| spacing within insideEnd      | insideEnd                    | display: flex, flex gap                                          |
-| spacing within bookends       | bookends                     | display: flex, flex gap                                          |
+| Style                         | Application                    | small               | medium           | large     |
+| ----------------------------- | ------------------------------ | ------------------- | ---------------- | --------- |
+| height                        | root `minHeight`               | 24px                | 32px             | 40px      |
+| left/right padding            | root                           | sNudge              | mNudge           | m         |
+| left/right padding in content | input                          | xxs                 | xxs              | sNudge    |
+| content size                  | root, input (doesn't inherit)  | caption1 (base.200) | body1 (base.300) | base.400  |
+| "icon" size                   | contentBefore/after `> svg`    | 16Regular           | 20Regular        | 24Regular |
+| spacing within root           | root `display: flex`, flex gap | xxs                 | xxs              | sNudge    |
 
 ## Appearance colors and strokes
 
-- italics = thick border
+Notes:
+
+- borders are thin (1px) unless otherwise noted
+- "in focus indicator" means the bottom border (applied to `:after`)
 - interpreting "compound brand stroke 1 pressed" as compoundBrandStrokePressed
-- appears that focus and keyboard focus styles are the same
+- mouse and keyboard focus styles are the same
 
-| Style                                      | All                       |
-| ------------------------------------------ | ------------------------- |
-| content                                    | neutralForeground1        |
-| content disabled                           | neutralForegroundDisabled |
-| placeholder                                | neutralForeground4        |
-| placeholder disabled                       | neutralForegroundDisabled |
-| "icon" color                               | neutralForeground3        |
-| "icon" color disabled                      | neutralForegroundDisabled |
-| background disabled                        | transparentBackground     |
-| border disabled                            | neutralStrokeDisabled     |
-| in focus indicator (bottom border)         | _compoundBrandStroke_     |
-| in focus indicator (bottom border) pressed | _^Pressed_                |
-| cursor disabled                            | not-allowed               |
+TODO Open questions:
 
-| Style                | filledDarker       | filledLighter      | underline                | outline              |
-| -------------------- | ------------------ | ------------------ | ------------------------ | -------------------- |
-| shadow               | shadow2            | "                  | none                     | "                    |
-| background           | neutralBackground3 | neutralBackground1 | transparentBackground    | neutralBackground1   |
-| border               | transparentStroke  | "                  | none                     | neutralStroke1       |
-| border hover         | ^Interactive       | "                  | n/a                      | ^Hover               |
-| border pressed       | ^                  | "                  | n/a                      | ^^Pressed            |
-| border focused       | ^                  | "                  | n/a                      | n/a (neutralStroke1) |
-| borderBottom         | n/a                | n/a                | neutralStrokeAccessible  | "                    |
-| borderBottom hover   | n/a                | n/a                | ^Hover                   | "                    |
-| borderBottom pressed | n/a                | n/a                | _^^Pressed_              | "                    |
-| borderBottom focused | n/a                | n/a                | n/a (in focus indicator) | "                    |
+- What color should the focus indicator be while animating? (pressed or non-pressed color)
+- For borderBottom pressed:
+  - The designs for outline/underline show a thick bottom border in the pressed state as the focus indicator animates in, but this isn't included in the animation demoing the focus border (and I can't tell if Windows 11 uses it).
+  - This wide border could be added on the root (while maintaining the blue focus border) using `:focus-within:before` + setting the bottom border color on `:focus-within`.
 
-### Appearance application
+### For all appearances
 
-| Style                      | Slot                | Notes                                                    |
-| -------------------------- | ------------------- | -------------------------------------------------------- |
-| content color              | input               | other things have their own colors                       |
-| placeholder color          | input               | `::placeholder`                                          |
-| "icon" color               | insideStart/End     |                                                          |
-| shadow                     | root                | encompasses bookends; requires rounding root corners     |
-| background                 | inputWrapper, input | bookends have separate background; input doesn't inherit |
-| border                     | inputWrapper        |                                                          |
-| border hover               | TODO inputWrapper   | `:hover`                                                 |
-| border pressed             | TODO                |                                                          |
-| border focused             | TODO inputWrapper   | `:focus-within`                                          |
-| borderBottom               | inputWrapper        |                                                          |
-| borderBottom hover         | TODO inputWrapper   | `:hover`                                                 |
-| borderBottom pressed       | TODO                |                                                          |
-| borderBottom focused       | n/a                 | handled by focus indicator                               |
-| in focus indicator         | TODO                |                                                          |
-| in focus indicator pressed | TODO                |                                                          |
-| cursor                     | root, input         |                                                          |
+| Style                      | Application                      | All                       |
+| -------------------------- | -------------------------------- | ------------------------- |
+| content color              | input                            | neutralForeground1        |
+| content color disabled     | ^                                | neutralForegroundDisabled |
+| placeholder color          | input `::placeholder`            | neutralForeground4        |
+| placeholder color disabled | ^                                | neutralForegroundDisabled |
+| "icon" color               | contentBefore/After              | neutralForeground3        |
+| "icon" color disabled      | ^                                | neutralForegroundDisabled |
+| background disabled        | root, input                      | transparentBackground     |
+| border disabled            | root                             | neutralStrokeDisabled     |
+| ~~borderBottom focused~~   | n/a (covered by focus indicator) |                           |
+| in focus indicator         | root `:focus-within:after`       | thick compoundBrandStroke |
+| in focus indicator pressed | root `:after`                    | thick ^Pressed            |
+| cursor disabled            | root, input                      | not-allowed               |
 
-## Bookend appearance (TODO)
+### Varying per appearance
+
+| Style                | Application          | outline                 | underline             | filledDarker       | filledLighter      |
+| -------------------- | -------------------- | ----------------------- | --------------------- | ------------------ | ------------------ |
+| shadow               | root                 | none                    | "                     | shadow2            | "                  |
+| background           | root, input          | neutralBackground1      | transparentBackground | neutralBackground3 | neutralBackground1 |
+| border               | root                 | neutralStroke1          | none                  | transparentStroke  | "                  |
+| border hover         | root `:hover`        | ^Hover                  | n/a                   | ^Interactive       | "                  |
+| border pressed       | root `:active`       | ^^Pressed               | n/a                   | ^                  | "                  |
+| border focused       | root `:focus-within` | n/a (neutralStroke1)    | n/a                   | ^                  | "                  |
+| borderBottom         | root                 | neutralStrokeAccessible | "                     | n/a                | n/a                |
+| borderBottom hover   | root `:hover`        | ^Hover                  | "                     | n/a                | n/a                |
+| borderBottom pressed | TODO (see ? above)   | thick ^^Pressed         | "                     | n/a                | n/a                |
+
+### In focus indicator
+
+|           | focus in                   | focus out        |
+| --------- | -------------------------- | ---------------- |
+| apply to  | root `:focus-within:after` | root `:after`    |
+| transform | scaleX 0-1                 | scaleX 1-0       |
+| duration  | normal (200ms)             | ultraFast (50ms) |
+| easing    | decelerateMid              | accelerateMid    |
+
+## Bookends (deferred)
+
+Bookend implementation has been deferred and will likely be handled in a separate component, but leaving these for reference.
+
+### Sizes
+
+| Style              | small               | medium | large |
+| ------------------ | ------------------- | ------ | ----- |
+| v-align            | vertically centered | "      | "     |
+| border radius      | medium              | "      | "     |
+| left/right padding | sNudge              | s      | m     |
+| spacing within     | xs                  | "      | "     |
+
+### Appearance
 
 | Style           | filled             | brand                    | transparent           |
 | --------------- | ------------------ | ------------------------ | --------------------- |
@@ -117,3 +118,8 @@ General abbreviations used:
 - Inner border ("border right") color is applied separately to before/after bookends.
 - Others are applied in obvious way to both bookends.
 - All borders are thin (1px).
+
+### Changes to default input appearance
+
+- Remove rounded corners from input
+- For filled inputs with shadow, change the shadow to also encompass the bookends

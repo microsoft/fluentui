@@ -10,8 +10,8 @@ const doList = [
     {link('reported issue', 'https://bugs.chromium.org/p/chromium/issues/detail?id=1040924')} for details).
   </Text>,
   'Provide localized string for items positioning using `getItemPositionText` prop.',
-  'Provide localized string of the "carousel" using `ariaRoleDescription` prop.',
-  'Provide label to the carousel using `ariaLabel` prop.',
+  'Provide localized string of the "carousel" using `aria-roledescription` prop.',
+  'Provide label to the carousel using `aria-label` prop.',
   <Box>
     If carousel contains `navigation`:
     <ul>

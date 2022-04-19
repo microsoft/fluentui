@@ -2,20 +2,12 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useTimeout } from './useTimeout';
 
 describe('useTimeout', () => {
-  jest.useFakeTimers();
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
 
-  it('calls the underlying setTimeout/clearTimeout API', () => {
-    const [setTestTimeout, clearTestTimeout] = renderHook(() => useTimeout()).result.current;
-    const callback = jest.fn();
-
-    setTestTimeout(callback, 1000);
-
-    expect(setTimeout).toHaveBeenCalledTimes(1);
-    expect(setTimeout).toHaveBeenCalledWith(callback, 1000);
-
-    clearTestTimeout();
-
-    expect(clearTimeout).toHaveBeenCalledTimes(1);
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   it('calls the callback only after the timeout has elapsed', () => {

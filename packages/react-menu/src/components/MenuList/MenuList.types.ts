@@ -1,7 +1,16 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import { MenuListContextValue } from '../../contexts/menuListContext';
-import { SelectableHandler } from '../../selectable/index';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { MenuListContextValue } from '../../contexts/menuListContext';
+import type { SelectableHandler } from '../../selectable/index';
+
+export type MenuCheckedValueChangeEvent = React.MouseEvent | React.KeyboardEvent;
+
+export type MenuCheckedValueChangeData = {
+  /** The name of the value */
+  name: string;
+  /** The items for this value that are checked */
+  checkedItems: string[];
+};
 
 export type MenuListCommons = {
   /**
@@ -10,15 +19,7 @@ export type MenuListCommons = {
    * @param event - React's original SyntheticEvent
    * @param data - A data object with relevant information
    */
-  onCheckedValueChange?: (
-    e: React.MouseEvent | React.KeyboardEvent,
-    data: {
-      /** The name of the value */
-      name: string;
-      /** The items for this value that are checked */
-      checkedItems: string[];
-    },
-  ) => void;
+  onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
 
   /**
    * Map of all checked values
@@ -42,7 +43,7 @@ export type MenuListCommons = {
 };
 
 export type MenuListSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  root: Slot<'div'>;
 };
 
 export type MenuListProps = ComponentProps<MenuListSlots> & Partial<MenuListCommons>;

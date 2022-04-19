@@ -7,7 +7,6 @@ import {
   menuAsToolbarBehavior,
 } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useAutoControlled,
@@ -17,6 +16,7 @@ import {
   useTelemetry,
   useUnhandledProps,
   useMergedRefs,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -61,7 +61,8 @@ import { PortalInner } from '../Portal/PortalInner';
 import { Reaction, ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { Text, TextProps } from '../Text/Text';
-import { ChatDensity, useChatDensityContext } from './chatDensityContext';
+import { useChatContextSelectors } from './chatContext';
+import { ChatDensity } from './chatDensity';
 import { ChatItemContext } from './chatItemContext';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
@@ -216,14 +217,25 @@ function partitionActionMenuPropsFromShorthand<P>(
 /**
  * A ChatMessage represents a single message in chat.
  */
-export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
-  FluentComponentStaticProps<ChatMessageProps> = props => {
+export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((inputProps, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
 
   const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
-  const chatDensity = useChatDensityContext();
+  const chatProps = useChatContextSelectors({
+    density: v => v.density,
+    accessibility: v => v.behaviors.message,
+  });
+
+  const props = {
+    ...inputProps,
+    density: inputProps.density === undefined ? chatProps.density : inputProps.density,
+    accessibility:
+      inputProps.accessibility === undefined
+        ? chatProps.accessibility || chatMessageBehavior
+        : inputProps.accessibility,
+  };
   const {
     accessibility,
     attached = parentAttached,
@@ -234,7 +246,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     className,
     compactBody,
     content,
-    density = chatDensity,
+    density,
     design,
     details,
     header,
@@ -576,6 +588,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
             onMouseEnter: handleMouseEnter,
             onMouseLeave: handleMouseLeave,
             onKeyDown: handleKeyDown,
+            ref,
             ...rtlTextContainer.getAttributes({ forElements: [children] }),
             ...unhandledProps,
           })}
@@ -588,12 +601,12 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, ChatMessageProps> &
+  FluentComponentStaticProps<ChatMessageProps>;
 
 ChatMessage.displayName = 'ChatMessage';
 
 ChatMessage.defaultProps = {
-  accessibility: chatMessageBehavior,
   badgePosition: 'end',
   positionActionMenu: true,
   reactionGroupPosition: 'start',

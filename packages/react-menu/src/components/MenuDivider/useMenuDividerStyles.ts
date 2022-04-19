@@ -1,18 +1,28 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import type { MenuDividerState } from './MenuDivider.types';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import type { MenuDividerSlots, MenuDividerState } from './MenuDivider.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+/**
+ * @deprecated Use `menuDividerClassNames.root` instead.
+ */
+export const menuDividerClassName = 'fui-MenuDivider';
+export const menuDividerClassNames: SlotClassNames<MenuDividerSlots> = {
+  root: 'fui-MenuDivider',
+};
 
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     height: '1px',
-    margin: '4px -5px 4px -5px',
+    ...shorthands.margin('4px', '-5px', '4px', '-5px'),
     width: 'auto',
-    backgroundColor: theme.colorNeutralStroke2,
-  }),
+    backgroundColor: tokens.colorNeutralStroke2,
+  },
 });
 
-export const useMenuDividerStyles = (state: MenuDividerState) => {
+export const useMenuDividerStyles_unstable = (state: MenuDividerState) => {
   const styles = useStyles();
-  state.root.className = mergeClasses(styles.root, state.root.className);
+  state.root.className = mergeClasses(menuDividerClassNames.root, styles.root, state.root.className);
 
   return state;
 };

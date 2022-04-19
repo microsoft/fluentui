@@ -1,8 +1,6 @@
 import * as React from 'react';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { PresenceBadge } from '@fluentui/react-badge';
+
+import { PresenceBadge } from '../index';
 
 export const Status = () => {
   return (
@@ -13,6 +11,7 @@ export const Status = () => {
       <PresenceBadge status="doNotDisturb" />
       <PresenceBadge status="offline" />
       <PresenceBadge status="outOfOffice" />
+      <PresenceBadge status="unknown" />
     </>
   );
 };
@@ -21,8 +20,9 @@ Status.parameters = {
   docs: {
     description: {
       story:
-        'A PresenceBadge supports `available`, `away`, `busy`, `doNotDisutrb`, ' +
-        '`offline`, and `outOfOffice` status',
+        'A presence badge supports `available`, `away`, `busy`, `doNotDisturb`, ' +
+        '`offline`, `outOfOffice` and `unknown` status.' +
+        ' The default is `available`.',
     },
   },
 };

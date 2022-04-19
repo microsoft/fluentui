@@ -1,14 +1,14 @@
 // @ts-check
 
 /**
- * @type {jest.InitialOptions}
+ * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
   displayName: 'react-context-selector',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
-      tsConfig: '<rootDir>/tsconfig.json',
+      tsConfig: '<rootDir>/tsconfig.spec.json',
       diagnostics: false,
     },
   },

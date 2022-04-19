@@ -4,33 +4,31 @@
 
 ```ts
 
-import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
 
+// @public @deprecated (undocumented)
+export const accordionClassName = "fui-Accordion";
+
 // @public (undocumented)
-export type AccordionCommons = {
-    navigable: boolean;
-    multiple: boolean;
-    collapsible: boolean;
-};
+export const accordionClassNames: SlotClassNames<AccordionSlots>;
 
 // @public (undocumented)
 export const AccordionContext: Context<AccordionContextValue>;
 
 // @public (undocumented)
-export type AccordionContextValue = {
-    navigable: boolean;
+export type AccordionContextValue = Omit<AccordionCommons, 'multiple'> & {
     openItems: AccordionItemValue[];
-    requestToggle: AccordionToggleEventHandler;
+    requestToggle: (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 };
 
 // @public (undocumented)
@@ -41,12 +39,11 @@ export type AccordionContextValues = {
 // @public
 export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
 
+// @public @deprecated (undocumented)
+export const accordionHeaderClassName = "fui-AccordionHeader";
+
 // @public (undocumented)
-export type AccordionHeaderCommons = {
-    size: AccordionHeaderSize;
-    expandIconPosition: AccordionHeaderExpandIconPosition;
-    inline: boolean;
-};
+export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots>;
 
 // @public (undocumented)
 export type AccordionHeaderContextValue = {
@@ -62,30 +59,20 @@ export type AccordionHeaderContextValues = {
 };
 
 // @public (undocumented)
-export const AccordionHeaderExpandIcon: ForwardRefComponent<AccordionHeaderExpandIconProps>;
-
-// @public (undocumented)
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
 // @public (undocumented)
-export type AccordionHeaderExpandIconProps = IntrinsicShorthandProps<'span'>;
-
-// @public (undocumented)
-export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
-
-// @public
-export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots>;
+export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & Partial<AccordionHeaderCommons>;
 
 // @public (undocumented)
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    button: ARIAButtonShorthandProps;
-    expandIcon: AccordionHeaderExpandIconProps;
-    icon?: IntrinsicShorthandProps<'div'>;
-    children: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+    button: NonNullable<Slot<ARIAButtonSlotProps>>;
+    expandIcon: Slot<'span'>;
+    icon?: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -97,18 +84,18 @@ export type AccordionIndex = number | number[];
 // @public
 export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 
+// @public @deprecated (undocumented)
+export const accordionItemClassName = "fui-AccordionItem";
+
 // @public (undocumented)
-export type AccordionItemCommons = {
-    disabled: boolean;
-};
+export const accordionItemClassNames: SlotClassNames<AccordionItemSlots>;
 
 // @public (undocumented)
 export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
 
 // @public (undocumented)
-export type AccordionItemContextValue = {
+export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
     open: boolean;
-    disabled: boolean;
     onHeaderClick(ev: React_2.MouseEvent | React_2.KeyboardEvent): void;
 };
 
@@ -118,16 +105,11 @@ export type AccordionItemContextValues = {
 };
 
 // @public (undocumented)
-export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<AccordionItemCommons> & {
-    value: AccordionItemValue;
-};
-
-// @public
-export const accordionItemShorthandProps: Array<keyof AccordionItemSlots>;
+export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<AccordionItemCommons> & Pick<AccordionItemCommons, 'value'>;
 
 // @public (undocumented)
 export type AccordionItemSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -139,15 +121,18 @@ export type AccordionItemValue = unknown;
 // @public
 export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
 
+// @public @deprecated (undocumented)
+export const accordionPanelClassName = "fui-AccordionPanel";
+
+// @public (undocumented)
+export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots>;
+
 // @public (undocumented)
 export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 
-// @public
-export const accordionPanelShorthandProps: Array<keyof AccordionPanelSlots>;
-
 // @public (undocumented)
 export type AccordionPanelSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -163,11 +148,8 @@ export type AccordionProps = ComponentProps<AccordionSlots> & Partial<AccordionC
 };
 
 // @public (undocumented)
-export const accordionShorthandProps: Array<keyof AccordionSlots>;
-
-// @public (undocumented)
 export type AccordionSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -185,46 +167,52 @@ export type AccordionToggleEvent<E = HTMLElement> = React_2.MouseEvent<E> | Reac
 export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 
 // @public
-export const renderAccordion: (state: AccordionState, contextValues: AccordionContextValues) => JSX.Element;
+export const renderAccordion_unstable: (state: AccordionState, contextValues: AccordionContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionHeader: (state: AccordionHeaderState, contextValues: AccordionHeaderContextValues) => JSX.Element;
+export const renderAccordionHeader_unstable: (state: AccordionHeaderState, contextValues: AccordionHeaderContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionItem: (state: AccordionItemState, contextValues: AccordionItemContextValues) => JSX.Element;
+export const renderAccordionItem_unstable: (state: AccordionItemState, contextValues: AccordionItemContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionPanel: (state: AccordionPanelState) => JSX.Element | null;
+export const renderAccordionPanel_unstable: (state: AccordionPanelState) => JSX.Element | null;
+
+// @public
+export const useAccordion_unstable: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
 
 // @public (undocumented)
-export const useAccordion: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
+export function useAccordionContextValues_unstable(state: AccordionState): AccordionContextValues;
+
+// @public
+export const useAccordionHeader_unstable: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
 
 // @public (undocumented)
-export function useAccordionContextValues(state: AccordionState): AccordionContextValues;
+export function useAccordionHeaderContextValues_unstable(state: AccordionHeaderState): AccordionHeaderContextValues;
 
 // @public
-export const useAccordionHeader: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
+export const useAccordionHeaderStyles_unstable: (state: AccordionHeaderState) => AccordionHeaderState;
+
+// @public
+export const useAccordionItem_unstable: (props: AccordionItemProps, ref: React_2.Ref<HTMLElement>) => AccordionItemState;
 
 // @public (undocumented)
-export function useAccordionHeaderContextValues(state: AccordionHeaderState): AccordionHeaderContextValues;
-
-// @public
-export const useAccordionHeaderStyles: (state: AccordionHeaderState) => AccordionHeaderState;
-
-// @public
-export const useAccordionItem: (props: AccordionItemProps, ref: React_2.Ref<HTMLElement>) => AccordionItemState;
+export const useAccordionItemContext_unstable: () => AccordionItemContextValue;
 
 // @public (undocumented)
-export const useAccordionItemContext: () => AccordionItemContextValue;
+export function useAccordionItemContextValues_unstable(state: AccordionItemState): AccordionItemContextValues;
 
 // @public (undocumented)
-export function useAccordionItemContextValues(state: AccordionItemState): AccordionItemContextValues;
+export const useAccordionItemStyles_unstable: (state: AccordionItemState) => AccordionItemState;
 
 // @public
-export const useAccordionPanel: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
+export const useAccordionPanel_unstable: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
 
 // @public
-export const useAccordionPanelStyles: (state: AccordionPanelState) => AccordionPanelState;
+export const useAccordionPanelStyles_unstable: (state: AccordionPanelState) => AccordionPanelState;
+
+// @public (undocumented)
+export const useAccordionStyles_unstable: (state: AccordionState) => AccordionState;
 
 // (No @packageDocumentation comment for this package)
 

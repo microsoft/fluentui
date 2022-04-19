@@ -5,7 +5,8 @@ export type ThemeName =
   | 'teamsDarkTheme'
   | 'teamsHighContrastTheme'
   | 'teamsV2Theme'
-  | 'teamsDarkV2Theme';
+  | 'teamsDarkV2Theme'
+  | 'teamsForcedColorsTheme';
 export type ThemeOption = { text: string; value: ThemeName };
 
 export type ThemeContextData = {
@@ -15,13 +16,14 @@ export type ThemeContextData = {
 };
 
 export const themeContextDefaults: ThemeContextData = {
-  themeName: 'teamsTheme',
+  themeName: 'teamsV2Theme',
   themeOptions: [
     { text: 'Teams', value: 'teamsTheme' },
     { text: 'Teams Dark', value: 'teamsDarkTheme' },
     { text: 'Teams High Contrast', value: 'teamsHighContrastTheme' },
     { text: 'Teams V2', value: 'teamsV2Theme' },
     { text: 'Teams Dark V2', value: 'teamsDarkV2Theme' },
+    { text: 'Teams Forced Colors', value: 'teamsForcedColorsTheme' },
   ],
   changeTheme: () => {},
 };

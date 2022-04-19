@@ -12,6 +12,7 @@ export { teamsDarkTheme } from './themes/teams-dark';
 export { teamsHighContrastTheme } from './themes/teams-high-contrast';
 export { teamsV2Theme } from './themes/teams-v2';
 export { teamsDarkV2Theme } from './themes/teams-dark-v2';
+export { teamsForcedColorsTheme } from './themes/teams-forced-colors';
 
 export * from './themes/types';
 export * from './themes/colorUtils';
@@ -62,6 +63,7 @@ export * from './components/Chat/ChatMessage';
 export * from './components/Chat/ChatMessageDetails';
 export * from './components/Chat/ChatMessageHeader';
 export * from './components/Chat/ChatMessageReadStatus';
+export * from './components/Chat/chatDensity';
 
 export * from './components/Checkbox/Checkbox';
 
@@ -159,6 +161,7 @@ export * from './components/Popup/PopupContent';
 
 export * from './components/Portal/Portal';
 
+export { PortalContext } from './components/Provider/portalContext';
 export * from './components/Provider/Provider';
 export * from './components/Provider/ProviderConsumer';
 

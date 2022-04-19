@@ -23,8 +23,9 @@ The generator also bumps the versions in any dependent packages.
 - [Options](#options)
   - [`name`](#name)
   - [`all`](#all)
-  - [`match`](#match)
-  - [`replace`](#replace)
+  - [`exclude`](#exclude)
+  - [`bumpType`](#bumpType)
+  - [`prereleaseTag`](#prereleaseTag)
 
 <!-- tocstop -->
 
@@ -66,6 +67,12 @@ Bump all vNext packages from beta (9.0.0-beta) to full release. The actual bumpt
 yarn nx workspace-generator version-bump --all --bumpType minor
 ```
 
+Bump all vNext packages for a nightly release (0.0.0-nightly).
+
+```sh
+yarn nx workspace-generator version-bump --all --bumpType nightly --prereleaseTag nightly
+```
+
 ## Options
 
 #### `name`
@@ -81,6 +88,12 @@ Package/library name (needs to be full name of the package, scope included - e.g
 Type: `boolean`
 
 Run batch migration on all vNext packages with the tag `platform:web` in `nx.json`
+
+#### `exclude`
+
+Type: `string`
+
+Comma-delimited list of packages that should not be bumped when using the `--all` flag
 
 #### `bumpType`
 

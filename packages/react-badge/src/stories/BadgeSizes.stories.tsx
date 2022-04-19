@@ -1,8 +1,6 @@
 import * as React from 'react';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { Badge } from '@fluentui/react-badge';
+
+import { Badge } from '../index';
 
 export const Sizes = () => {
   return (
@@ -20,7 +18,9 @@ export const Sizes = () => {
 Sizes.parameters = {
   docs: {
     description: {
-      story: 'A Badge supports `tiny`, `extra-small`, `small`, `medium`, `large`, and `extra-large` sizes',
+      story:
+        'A badge supports `tiny`, `extra-small`, `small`, `medium`, `large`, and `extra-large` sizes.' +
+        ' The default is `medium`.',
     },
   },
 };

@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { Image } from '../index';
+import { Image } from '../Image';
 
-export const ImageBlock = () => (
+export const Block = () => (
   <>
-    <Image block src="https://via.placeholder.com/900x50" />
-    <Image block src="https://via.placeholder.com/100x100" />
+    <Image block src="https://fabricweb.azureedge.net/fabric-website/placeholders/900x50.png" />
+    <Image block src="https://fabricweb.azureedge.net/fabric-website/placeholders/100x100.png" />
   </>
 );
-ImageBlock.parameters = {
+Block.parameters = {
   docs: {
     description: {
       story: 'An Image can be maximized in order to fill its parent container.',

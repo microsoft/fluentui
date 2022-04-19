@@ -5,8 +5,6 @@ import scenarioIterations from '../src/scenarioIterations';
 import { scenarioRenderTypes, DefaultRenderTypes } from '../src/scenarioRenderTypes';
 import { argv } from '@fluentui/scripts';
 
-import { getFluentPerfRegressions } from './fluentPerfRegressions';
-
 // TODO: consolidate with newer version of fluent perf-test
 
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
@@ -102,6 +100,9 @@ const iterationsDefault = 5000;
 //        await page.goto(testUrl);
 //        await page.tracing.stop();
 
+// Hardcoded PR deploy URL for local testing
+const DEPLOY_URL = 'fluentuipr.z22.web.core.windows.net';
+
 const urlForDeployPath = process.env.DEPLOYURL
   ? `${process.env.DEPLOYURL}/perf-test`
   : 'file://' + path.resolve(__dirname, '../dist/');
@@ -113,7 +114,7 @@ const urlForDeployPath = process.env.DEPLOYURL
 const urlForDeploy = 'file://' + path.resolve(__dirname, '../dist/') + '/index.html';
 
 const targetPath = `heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
-const urlForMaster = `https://${process.env.DEPLOYHOST}/${targetPath}/perf-test/index.html`;
+const urlForMaster = `https://${process.env.DEPLOYHOST || DEPLOY_URL}/${targetPath}/perf-test/index.html`;
 
 const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');
@@ -198,7 +199,7 @@ export async function getPerfRegressions() {
 
   const scenarioResults: CookResults = await flamegrill.cook(scenarios, scenarioConfig);
 
-  const comment = createReport(scenarioSettings, scenarioResults) + getFluentPerfRegressions();
+  const comment = createReport(scenarioSettings, scenarioResults);
 
   // TODO: determine status according to perf numbers
   const status = 'success';

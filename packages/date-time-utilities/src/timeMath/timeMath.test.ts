@@ -69,4 +69,74 @@ describe('timeMath', () => {
     result = TimeMath.ceilMinuteToIncrement(date, 60);
     expect(result.getMinutes()).toBe(0);
   });
+
+  it('can get date from time selection', () => {
+    const baseDate = new Date('November 25, 2021 09:15:00');
+
+    let result: Date;
+    result = TimeMath.getDateFromTimeSelection(false, baseDate, '11:30');
+    expect(result.getMonth()).toBe(10);
+    expect(result.getDate()).toBe(25);
+    expect(result.getHours()).toBe(11);
+    expect(result.getMinutes()).toBe(30);
+
+    result = TimeMath.getDateFromTimeSelection(true, baseDate, '12:00 am');
+    expect(result.getMonth()).toBe(10);
+    expect(result.getDate()).toBe(26);
+    expect(result.getHours()).toBe(0);
+    expect(result.getMinutes()).toBe(0);
+
+    result = TimeMath.getDateFromTimeSelection(false, baseDate, '7:00:00');
+    expect(result.getMonth()).toBe(10);
+    expect(result.getDate()).toBe(26);
+    expect(result.getHours()).toBe(7);
+    expect(result.getMinutes()).toBe(0);
+
+    result = TimeMath.getDateFromTimeSelection(true, baseDate, '4:20 PM');
+    expect(result.getMonth()).toBe(10);
+    expect(result.getDate()).toBe(25);
+    expect(result.getHours()).toBe(16);
+    expect(result.getMinutes()).toBe(20);
+
+    result = TimeMath.getDateFromTimeSelection(false, baseDate, '9:15');
+    expect(result.getMonth()).toBe(10);
+    expect(result.getDate()).toBe(25);
+    expect(result.getHours()).toBe(9);
+    expect(result.getMinutes()).toBe(15);
+
+    result = TimeMath.getDateFromTimeSelection(true, baseDate, '9:00 am');
+    expect(result.getMonth()).toBe(10);
+    expect(result.getDate()).toBe(26);
+    expect(result.getHours()).toBe(9);
+    expect(result.getMinutes()).toBe(0);
+  });
+
+  it('can get date from time selection over New Years', () => {
+    const baseDate = new Date('December 31, 2021 08:00:00');
+
+    let result: Date;
+    result = TimeMath.getDateFromTimeSelection(false, baseDate, '00:00');
+    expect(result.getMonth()).toBe(0);
+    expect(result.getDate()).toBe(1);
+    expect(result.getHours()).toBe(0);
+    expect(result.getMinutes()).toBe(0);
+
+    result = TimeMath.getDateFromTimeSelection(true, baseDate, '11:59 pm');
+    expect(result.getMonth()).toBe(11);
+    expect(result.getDate()).toBe(31);
+    expect(result.getHours()).toBe(23);
+    expect(result.getMinutes()).toBe(59);
+
+    result = TimeMath.getDateFromTimeSelection(false, baseDate, '07:59');
+    expect(result.getMonth()).toBe(0);
+    expect(result.getDate()).toBe(1);
+    expect(result.getHours()).toBe(7);
+    expect(result.getMinutes()).toBe(59);
+
+    result = TimeMath.getDateFromTimeSelection(true, baseDate, '1:30 pm');
+    expect(result.getMonth()).toBe(11);
+    expect(result.getDate()).toBe(31);
+    expect(result.getHours()).toBe(13);
+    expect(result.getMinutes()).toBe(30);
+  });
 });

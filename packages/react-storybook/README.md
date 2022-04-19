@@ -22,8 +22,8 @@ You need to register fluentui decorators on your particular level (global/story/
 // @filename: .storybook/preview.js
 
 import { withKnobs } from '@storybook/addon-knobs';
-import { withFluentProvider, withStrictMode } from '@fluentui/react-storybook';
+import { withStrictMode } from '@fluentui/react-storybook';
 
 // Register decorators on global level
-export const decorators = [withKnobs, withFluentProvider, withStrictMode];
+export const decorators = [withKnobs, withStrictMode];
 ```

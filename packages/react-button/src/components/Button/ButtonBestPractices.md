@@ -1,4 +1,7 @@
-## Best practices
+<details>
+<summary>
+ Best Practices
+</summary>
 
 ### Layout
 
@@ -20,3 +23,5 @@
 - Make sure it's clear what will happen when people interact with the button. Be concise; usually a single verb
   is best. Include a noun if there is any room for interpretation about what the verb means.
   For example, "Delete folder" or "Create account".
+
+</details>

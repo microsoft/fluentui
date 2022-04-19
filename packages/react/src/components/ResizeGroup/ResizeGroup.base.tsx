@@ -414,15 +414,16 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
           if (!refToMeasure.current) {
             return 0;
           }
+          const measuredBoundingRect = refToMeasure.current.getBoundingClientRect();
           return props.direction === ResizeGroupDirection.vertical
-            ? refToMeasure.current.scrollHeight
-            : refToMeasure.current.scrollWidth;
+            ? measuredBoundingRect.height
+            : measuredBoundingRect.width;
         },
         containerDimension,
       );
 
       updateResizeState(nextState);
-    });
+    }, rootRef.current);
   });
 
   const win = useWindow();

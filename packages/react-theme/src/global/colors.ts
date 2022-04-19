@@ -54,10 +54,6 @@ export const grey: Record<Greys, string> = {
   '100': '#ffffff',
 };
 
-export const white = '#ffffff';
-
-export const black = '#000000';
-
 export const whiteAlpha: Record<AlphaColors, string> = {
   '5': 'rgba(255, 255, 255, 0.05)',
   '10': 'rgba(255, 255, 255, 0.1)',
@@ -83,6 +79,23 @@ export const blackAlpha: Record<AlphaColors, string> = {
   '80': 'rgba(0, 0, 0, 0.8)',
   '90': 'rgba(0, 0, 0, 0.9)',
 };
+
+export const grey14Alpha: Record<AlphaColors, string> = {
+  '5': 'rgba(36, 36, 36, 0.05)',
+  '10': 'rgba(36, 36, 36, 0.1)',
+  '20': 'rgba(36, 36, 36, 0.2)',
+  '30': 'rgba(36, 36, 36, 0.3)',
+  '40': 'rgba(36, 36, 36, 0.4)',
+  '50': 'rgba(36, 36, 36, 0.5)',
+  '60': 'rgba(36, 36, 36, 0.6)',
+  '70': 'rgba(36, 36, 36, 0.7)',
+  '80': 'rgba(36, 36, 36, 0.8)',
+  '90': 'rgba(36, 36, 36, 0.9)',
+};
+
+export const white = '#ffffff';
+
+export const black = '#000000';
 
 export const hcHyperlink = '#ffff00';
 
@@ -251,12 +264,12 @@ const marigold: ColorVariants = {
 };
 
 const yellow: ColorVariants = {
-  shade50: '#282400',
-  shade40: '#4c4400',
-  shade30: '#8e7f00',
-  shade20: '#c0ad00',
-  shade10: '#e4cc00',
   primary: '#fde300',
+  shade10: '#e4cc00',
+  shade20: '#c0ad00',
+  shade30: '#817400',
+  shade40: '#4c4400',
+  shade50: '#282400',
   tint10: '#fde61e',
   tint20: '#fdea3d',
   tint30: '#feee66',
@@ -821,18 +834,18 @@ const anchor: ColorVariants = {
 };
 
 const charcoal: ColorVariants = {
-  shade50: '#130204',
-  shade40: '#230308',
-  shade30: '#420610',
-  shade20: '#590815',
-  shade10: '#690a19',
-  primary: '#750b1c',
-  tint10: '#861b2c',
-  tint20: '#962f3f',
-  tint30: '#ac4f5e',
-  tint40: '#d69ca5',
-  tint50: '#e9c7cd',
-  tint60: '#f9f0f2',
+  shade50: '#090909',
+  shade40: '#111111',
+  shade30: '#202020',
+  shade20: '#2b2b2b',
+  shade10: '#333333',
+  primary: '#393939',
+  tint10: '#515151',
+  tint20: '#686868',
+  tint30: '#888888',
+  tint40: '#c4c4c4',
+  tint50: '#dfdfdf',
+  tint60: '#f7f7f7',
 };
 
 export const sharedColors: GlobalSharedColors = {

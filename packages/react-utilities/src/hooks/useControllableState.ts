@@ -3,37 +3,43 @@ import { useConst } from './useConst';
 
 export type UseControllableStateOptions<State> = {
   /**
-   * User provided default state or factory initializer
+   * User-provided default state or initializer, for uncontrolled usage.
    */
   defaultState?: State | (() => State);
   /**
-   * User provided controllable state, undefined state means internal state will be used
+   * User-provided controlled state. `undefined` means internal state will be used.
    */
   state: State | undefined;
   /**
-   * Used to initialize state if all user provided states are undefined
+   * Used as the initial state if `state` and `defaultState` are both `undefined`.
+   * If `undefined` is the correct initial state, pass that here.
    */
   initialState: State;
 };
-
-function isUndefined(state: unknown): state is undefined {
-  return typeof state === 'undefined';
-}
 
 function isFactoryDispatch<State>(newState: React.SetStateAction<State>): newState is (prevState: State) => State {
   return typeof newState === 'function';
 }
 
 /**
- * A useState 'like' hook that allows optional user control
- * Useful for components which allow uncontrolled and controlled behaviour for users
- * @returns - https://reactjs.org/docs/hooks-state.html
+ * A `useState`-like hook to manage a value that could be either controlled or uncontrolled,
+ * such as a checked state or text input string.
+ *
+ * Unlike `setState`, it's okay to call the returned updater (dispatch) function for either a
+ * controlled or uncontrolled component. Calls will only be respected if the component is uncontrolled.
+ *
+ * @returns Same as [`useState`](https://reactjs.org/docs/hooks-reference.html#usestate): an array
+ * of the current value and an updater (dispatch) function. The updater function is referentially
+ * stable (won't change during the component's lifecycle). It can take either a new value, or a
+ * function which is passed the previous value and returns the new value. Unlike `setState`, calls
+ * to the updater function will only be respected if the component is uncontrolled.
+ * @see https://reactjs.org/docs/uncontrolled-components.html
  */
 export const useControllableState = <State>(
   options: UseControllableStateOptions<State>,
 ): [State, React.Dispatch<React.SetStateAction<State>>] => {
   const isControlled = useIsControlled(options.state);
-  const initialState = isUndefined(options.defaultState) ? options.initialState : options.defaultState;
+  const initialState = typeof options.defaultState === 'undefined' ? options.initialState : options.defaultState;
   const [internalState, setInternalState] = React.useState<State>(initialState);
 
   const state = isControlled ? (options.state as State) : internalState;

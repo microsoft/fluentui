@@ -63,14 +63,24 @@ export interface IAreaChartState extends IBasestate {
   stackCalloutProps?: ICustomizedCalloutData;
   nearestCircleToHighlight: number | string | Date | null;
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
+  isShowCalloutPending: boolean;
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _createSet: (data: IChartProps) => { colors: string[]; stackedInfo: any; calloutPoints: any };
+  private _createSet: (
+    data: IChartProps,
+  ) => {
+    colors: string[];
+    opacity: number[];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    stackedInfo: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    calloutPoints: any;
+  };
   private _colors: string[];
+  private _opacity: number[];
   private _uniqueIdForGraph: string;
   private _verticalLineId: string;
   private _circleId: string;
@@ -101,6 +111,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       displayOfLine: InterceptVisibility.hide,
       isCircleClicked: false,
       nearestCircleToHighlight: null,
+      isShowCalloutPending: false,
     };
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
@@ -114,10 +125,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   public render(): JSX.Element {
     const { lineChartData, chartTitle } = this.props.data;
-    const { colors, stackedInfo, calloutPoints } = this._createSet(this.props.data);
+    const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(this.props.data);
     this._calloutPoints = calloutPoints;
     const isXAxisDateType = getXAxisType(lineChartData!);
     this._colors = colors;
+    this._opacity = opacity;
     this._stackedData = stackedInfo.stackedData;
     const legends: JSX.Element = this._getLegendData(this.props.theme!.palette, lineChartData!);
 
@@ -156,6 +168,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         getGraphData={this._getGraphData}
         getmargins={this._getMargins}
         customizedCallout={this._getCustomizedCallout()}
+        onChartMouseLeave={this._handleChartMouseLeave}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -240,12 +253,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     });
     const nearestCircleToHighlight =
       axisType === XAxisTypes.DateAxis ? (pointToHighlight as Date).getTime() : pointToHighlight;
+    const pointToHighlightUpdated = this.state.nearestCircleToHighlight !== nearestCircleToHighlight;
     // if no points need to be called out then don't show vertical line and callout card
-    if (found) {
+    if (found && pointToHighlightUpdated && !this.state.isShowCalloutPending) {
       this.setState({
-        refSelected: mouseEvent,
-        isCalloutVisible: true,
         nearestCircleToHighlight: nearestCircleToHighlight,
+        isCalloutVisible: false,
+        isShowCalloutPending: true,
         lineXValue: this._xAxisRectScale(pointToHighlight),
         displayOfLine: InterceptVisibility.show,
         isCircleClicked: false,
@@ -256,6 +270,26 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         xAxisCalloutAccessibilityData,
       });
     } else {
+      /*
+      When above if condition is false but found=true, it means either
+
+      1). pointToHighlightUpdated is false. 
+      For this case we dont need to do anything.
+
+      2). isShowCalloutPending is true. 
+      For this case there will be no callout updation for the event.
+      This condition has been added to prevent repeated callout flashing.
+      Currently there is a fraction of second delay between hover event and subsequent callout refresh.
+      In the meantime if another event is received, the callout continues to flash for the set of 
+      intermediate hover events.
+
+      This does not cause any issue as the user interaction takes atleast a fraction of second and the final 
+      callout state is ultimately achieved.
+      If a user performs very swift mouse maneuver, the intermediate events will be lost but the callout experience
+      remains smooth.
+      */
+    }
+    if (!found) {
       this.setState({
         isCalloutVisible: false,
         nearestCircleToHighlight: nearestCircleToHighlight,
@@ -268,6 +302,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
    * just cleaning up the state which we have set in the mouse move event
    */
   private _onRectMouseOut = () => {
+    /**/
+  };
+
+  private _handleChartMouseLeave = () => {
     this.setState({
       refSelected: null,
       isCalloutVisible: false,
@@ -310,12 +348,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const allChartPoints: ILineChartDataPoint[] = [];
     const dataSet: IAreaChartDataSetPoint[] = [];
     const colors: string[] = [];
+    const opacity: number[] = [];
     const calloutPoints = calloutData(points!);
 
     points &&
       points.length &&
       points.forEach((singleChartPoint: ILineChartPoints) => {
         colors.push(singleChartPoint.color);
+        opacity.push(singleChartPoint.opacity || 1);
         allChartPoints.push(...singleChartPoint.data);
       });
 
@@ -352,6 +392,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     return {
       colors,
+      opacity,
       keys,
       stackedInfo,
       calloutPoints,
@@ -493,17 +534,28 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
   };
 
-  private _updateCircleFillColor = (xDataPoint: number | Date, lineColor: string): string => {
-    if (this.state.isCircleClicked && this.state.nearestCircleToHighlight === xDataPoint) {
-      return lineColor;
-    } else {
-      return this.state.nearestCircleToHighlight === xDataPoint ? this.props.theme!.palette.white : lineColor;
+  private _updateCircleFillColor = (xDataPoint: number | Date, lineColor: string, circleId: string): string => {
+    let fillColor = lineColor;
+    if (this.state.nearestCircleToHighlight === xDataPoint) {
+      if (this.state.isShowCalloutPending) {
+        this.setState({
+          refSelected: `#${circleId}`,
+          isCalloutVisible: true,
+          isShowCalloutPending: false,
+        });
+      }
+      if (!this.state.isCircleClicked) {
+        fillColor = this.props.theme!.palette.white;
+      }
     }
+
+    return fillColor;
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _drawGraph = (containerHeight: number, xScale: any, yScale: any, xElement: SVGElement): JSX.Element[] => {
     const points = this.props.data.lineChartData!;
+    const { pointOptions, pointLineOptions } = this.props.data;
     const area = d3Area()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => xScale(d.xVal))
@@ -535,11 +587,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             onMouseMove={this._onRectMouseMove}
             onMouseOut={this._onRectMouseOut}
             onMouseOver={this._onRectMouseMove}
+            {...points[index]!.lineOptions}
           />
           <path
             id={`${index}-graph-${this._uniqueIdForGraph}`}
             d={area(singleStackedData)!}
             fill={this._colors[index]}
+            opacity={this._opacity[index]}
             fillOpacity={this._getOpacity(points[index]!.legend)}
             onMouseMove={this._onRectMouseMove}
             onMouseOut={this._onRectMouseOut}
@@ -549,6 +603,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       );
     });
 
+    const circleRadius = pointOptions && pointOptions.r ? Number(pointOptions.r) : 8;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
       if (points.length === index) {
@@ -567,14 +622,15 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 data-is-focusable={true}
                 cx={xScale(singlePoint.xVal)}
                 cy={yScale(singlePoint.values[1])}
-                r={this._getCircleRadius(xDataPoint)}
                 stroke={lineColor}
                 strokeWidth={3}
                 visibility={this.state.nearestCircleToHighlight ? 'visibility' : 'hidden'}
-                fill={this._updateCircleFillColor(xDataPoint, lineColor)}
+                fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
                 onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
+                {...pointOptions}
+                r={this._getCircleRadius(xDataPoint, circleRadius)}
               />
             );
           })}
@@ -594,6 +650,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         stroke={lineColor!}
         opacity={0.5}
         visibility={this.state.displayOfLine}
+        {...pointLineOptions}
       />,
     );
     const classNames = getClassNames(this.props.styles!, {
@@ -623,12 +680,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return graph;
   };
 
-  private _getCircleRadius = (xDataPoint: number): number => {
+  private _getCircleRadius = (xDataPoint: number, circleRadius: number): number => {
     const { isCircleClicked, nearestCircleToHighlight } = this.state;
     if (isCircleClicked && nearestCircleToHighlight === xDataPoint) {
       return 1;
     } else if (nearestCircleToHighlight === xDataPoint) {
-      return 8;
+      return circleRadius;
     } else {
       return 0;
     }

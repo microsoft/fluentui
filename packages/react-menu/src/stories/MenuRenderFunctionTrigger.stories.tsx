@@ -1,23 +1,13 @@
 import * as React from 'react';
-import { ChevronDown16Regular } from '@fluentui/react-icons';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuTriggerChildProps } from '@fluentui/react-menu';
+import { ChevronDownRegular } from '@fluentui/react-icons';
 
-// FIXME need to redeclare types since type import is under a @ts-ignore
-type MenuOpenEvents =
-  | MouseEvent
-  | TouchEvent
-  | React.MouseEvent<HTMLElement>
-  | React.KeyboardEvent<HTMLElement>
-  | React.FocusEvent<HTMLElement>;
+import { Menu, MenuProps, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuTriggerChildProps } from '../index';
 
 const buttonStyle = { height: 22, verticalAlign: 'middle' };
 
 export const RenderFunctionTrigger = () => {
   const [open, setOpen] = React.useState(false);
-  const onOpenChange = (e: MenuOpenEvents, data: { open: boolean }) => {
+  const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
     setOpen(data.open);
   };
 
@@ -28,7 +18,7 @@ export const RenderFunctionTrigger = () => {
           <div>
             <button style={buttonStyle}>Custom Trigger</button>
             <button {...props} style={buttonStyle}>
-              <ChevronDown16Regular />
+              <ChevronDownRegular fontSize={16} />
             </button>
           </div>
         )}

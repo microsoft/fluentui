@@ -1,30 +1,26 @@
 import * as React from 'react';
+import { Meta } from '@storybook/react';
 import { Checkbox } from './index';
 
-export const CheckboxVariations = () => (
-  <div style={{ display: 'flex', gap: '14px', flexDirection: 'column' }}>
-    <Checkbox>Simple Checkbox</Checkbox>
-    <Checkbox circular>Circular Checkbox</Checkbox>
-    <Checkbox labelPosition="before">Checkbox with label positioned before</Checkbox>
-    <Checkbox required>Required Checkbox</Checkbox>
-    <Checkbox size="large">Large Checkbox</Checkbox>
-    <Checkbox />
-    <Checkbox disabled />
-    <Checkbox disabled defaultChecked="mixed" />
-    <Checkbox disabled defaultChecked={true} />
-  </div>
-);
-
-export const CheckboxStates = () => (
-  <div style={{ display: 'flex', gap: '14px', flexDirection: 'column' }}>
-    <Checkbox>Unchecked Checkbox</Checkbox>
-    <Checkbox defaultChecked>Checked Checkbox</Checkbox>
-    <Checkbox defaultChecked="mixed">Mixed Checkbox</Checkbox>
-    <Checkbox disabled>Disabled Checkbox</Checkbox>
-  </div>
-);
+export { Default } from './CheckboxDefault.stories';
+export { Checked } from './CheckboxChecked.stories';
+export { Mixed } from './CheckboxMixed.stories';
+export { Disabled } from './CheckboxDisabled.stories';
+export { Large } from './CheckboxLarge.stories';
+export { LabelBefore } from './CheckboxLabelBefore.stories';
+export { LabelWrapping } from './CheckboxLabelWrapping.stories';
+export { Required } from './CheckboxRequired.stories';
+export { Circular } from './CheckboxCircular.stories';
 
 export default {
-  title: 'Components/Checkbox',
+  title: 'Preview Components/Checkbox',
   component: Checkbox,
-};
+
+  decorators: [
+    Story => (
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', padding: '12px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+} as Meta;

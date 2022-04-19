@@ -46,7 +46,7 @@ OffsetValue.parameters = {
   docs: {
     description: {
       story: [
-        'The positionined element can be offset from the target element. The offset value can be set either by:',
+        'The positioned element can be offset from the target element. The offset value can be set either by:',
         '',
         '- Simple array with X and Y axis values',
         '- A function that returns the array offset value',

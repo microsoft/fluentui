@@ -1,5 +1,4 @@
 import config from '@fluentui/scripts/config';
-import sh from '@fluentui/scripts/gulp/sh';
 import fs from 'fs-extra';
 import path from 'path';
 
@@ -7,17 +6,19 @@ import {
   addResolutionPathsForProjectPackages,
   packProjectPackages,
   performBrowserTest,
-  createTempDir,
+  prepareTempDirs,
   log,
+  shEcho,
 } from '@fluentui/scripts/projects-test';
 
 export async function rollup() {
   const logger = log('test:projects:rollup');
 
   const scaffoldPath = config.paths.withRootAt(path.resolve(__dirname, '../assets/rollup'));
-  const tmpDirectory = createTempDir('project-rollup-');
+  const tempPaths = prepareTempDirs('project-rollup-');
+  logger(`✔️ Temporary directories created under ${tempPaths.root}`);
 
-  logger(`✔️ Temporary directory was created: ${tmpDirectory}`);
+  logger('STEP 1. Add dependencies to test project');
 
   const rollupVersion = '2.7.3';
   const dependencies = [
@@ -26,27 +27,32 @@ export async function rollup() {
     'rollup-plugin-commonjs',
     'rollup-plugin-node-resolve',
     'rollup-plugin-json',
-    'react',
-    'react-dom',
+    'react@17',
+    'react-dom@17',
   ].join(' ');
 
-  await sh(`yarn add ${dependencies}`, tmpDirectory);
+  await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
   logger(`✔️ Dependencies were installed`);
 
-  const packedPackages = await packProjectPackages(logger, config.paths.packages(), ['@fluentui/react-northstar']);
-  await addResolutionPathsForProjectPackages(tmpDirectory);
+  logger('STEP 2. Add Fluent UI dependency to test project');
 
-  await sh(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tmpDirectory);
+  const packedPackages = await packProjectPackages(logger, config.paths.packages(), ['@fluentui/react-northstar']);
+  await addResolutionPathsForProjectPackages(tempPaths.testApp);
+
+  await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tempPaths.testApp);
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
-  fs.copyFileSync(scaffoldPath('app.js'), path.resolve(tmpDirectory, 'app.js'));
-  fs.copyFileSync(scaffoldPath('rollup.config.js'), path.resolve(tmpDirectory, 'rollup.config.js'));
-  fs.copyFileSync(scaffoldPath('index.html'), path.resolve(tmpDirectory, 'index.html'));
+  logger('STEP 3. Copy scaffold files to test project');
+  fs.copyFileSync(scaffoldPath('app.js'), path.resolve(tempPaths.testApp, 'app.js'));
+  fs.copyFileSync(scaffoldPath('rollup.config.js'), path.resolve(tempPaths.testApp, 'rollup.config.js'));
+  fs.copyFileSync(scaffoldPath('index.html'), path.resolve(tempPaths.testApp, 'index.html'));
   logger(`✔️ Source and bundler's config were created`);
 
-  await sh(`yarn rollup -c`, tmpDirectory);
-  logger(`✔️ Example project was successfully built: ${tmpDirectory}`);
+  logger('STEP 4. Build test project');
+  await shEcho(`yarn rollup -c`, tempPaths.testApp);
+  logger(`✔️ Example project was successfully built: ${tempPaths.testApp}`);
 
-  await performBrowserTest(tmpDirectory);
+  logger('STEP 5. Load the test app in the browser');
+  await performBrowserTest(tempPaths.testApp);
   logger(`✔️ Browser test was passed`);
 }

@@ -143,6 +143,7 @@ export const ScrollablePaneDetailsListExample: React.FunctionComponent = () => {
         styles={gridStyles}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="select row"
         onItemInvoked={onItemInvoked}
       />
     </div>

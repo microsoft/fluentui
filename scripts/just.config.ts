@@ -1,5 +1,4 @@
-import { task, series, parallel, condition, option, argv, addResolvePath } from 'just-scripts';
-import { Arguments } from 'yargs-parser';
+import { task, series, parallel, condition, option, addResolvePath } from 'just-scripts';
 
 import path from 'path';
 import fs from 'fs';
@@ -15,6 +14,7 @@ import { webpack, webpackDevServer } from './tasks/webpack';
 import { apiExtractor } from './tasks/api-extractor';
 import { lintImports } from './tasks/lint-imports';
 import { prettier } from './tasks/prettier';
+import { screener } from './tasks/screener';
 import { checkForModifiedFiles } from './tasks/check-for-modified-files';
 import { generateVersionFiles } from './tasks/generate-version-files';
 import { postprocessTask } from './tasks/postprocess';
@@ -22,22 +22,7 @@ import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
 import { isConvergedPackage } from './monorepo/index';
-
-interface BasicPresetArgs extends Arguments {
-  babel: boolean;
-  production: boolean;
-  webpackConfig: string;
-  commonjs: boolean;
-  cached: boolean;
-  registry: string;
-  push: boolean;
-  package: string;
-  min: boolean;
-}
-
-function getJustArgv() {
-  return argv() as Partial<BasicPresetArgs>;
-}
+import { getJustArgv } from './tasks/argv';
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -63,12 +48,14 @@ function basicPreset() {
 export function preset() {
   basicPreset();
 
+  const args = getJustArgv();
+
   task('no-op', () => {}).cached();
   task('clean', clean);
   task('copy', copy);
   task('jest', jestTask);
   task('jest-watch', jestWatch);
-  task('sass', sass);
+  task('sass', sass());
   task('ts:postprocess', postprocessTask());
   task('postprocess:amd', postprocessAmdTask);
   task('postprocess:commonjs', postprocessCommonjsTask);
@@ -78,7 +65,7 @@ export function preset() {
   task('eslint', eslint);
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
-  task('webpack-dev-server', webpackDevServer(getJustArgv()));
+  task('webpack-dev-server', webpackDevServer(args));
   task('api-extractor', apiExtractor());
   task('lint-imports', lintImports);
   task('prettier', prettier);
@@ -89,15 +76,13 @@ export function preset() {
   task('babel:postprocess', babel);
 
   task('ts:compile', () => {
-    const args = getJustArgv();
-
     return args.commonjs
       ? series('ts:commonjs-only')
       : parallel(
           // Converged packages must always build commonjs because of babel-make-styles transforms
           condition('ts:commonjs', () => !args.min || isConvergedPackage()),
           'ts:esm',
-          condition('ts:amd', () => !!args.production),
+          condition('ts:amd', () => !!args.production && !isConvergedPackage()),
         );
   });
 
@@ -130,7 +115,7 @@ export function preset() {
       'copy',
       'sass',
       'ts',
-      condition('api-extractor', () => !getJustArgv().min),
+      condition('api-extractor', () => !args.min),
     ),
   ).cached();
 
@@ -138,6 +123,8 @@ export function preset() {
     'bundle',
     condition('webpack', () => fs.existsSync(path.join(process.cwd(), 'webpack.config.js'))),
   );
+
+  task('screener', screener);
 }
 
 preset.basic = basicPreset;

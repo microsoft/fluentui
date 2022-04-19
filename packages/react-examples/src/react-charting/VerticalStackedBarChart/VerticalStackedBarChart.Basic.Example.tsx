@@ -212,6 +212,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         />
         <div style={rootStyle}>
           <VerticalStackedBarChart
+            culture={window.navigator.language}
             chartTitle="Vertical stacked bar chart basic example"
             barGapMax={this.state.barGapMax}
             data={data}

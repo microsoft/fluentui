@@ -14,10 +14,6 @@ export const menuItemIconStyles: ComponentSlotStylesPrepared<MenuItemIconStylesP
     '& > :first-child': {
       height: '100%',
       width: '100%',
-      '& svg': {
-        height: '100%',
-        width: '100%',
-      },
     },
 
     ...(p.hasContent && {

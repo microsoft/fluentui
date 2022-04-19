@@ -12,7 +12,7 @@ export default {
 };
 
 const BadgeTemplate = ({ appearance, label }) => `
-  <fluent-badge 
+  <fluent-badge
     ${appearance ? `appearance="${appearance}"` : ''}
   >${label}</fluent-badge>`;
 
@@ -26,7 +26,7 @@ Badge.args = {
 Badge.parameters = {
   docs: {
     source: {
-      code: `<fluent-badge appearance="neutral">Text</fluent-badge>`,
+      code: `<fluent-badge appearance="accent">Text</fluent-badge>`,
     },
   },
 };

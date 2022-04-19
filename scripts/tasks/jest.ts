@@ -1,37 +1,43 @@
-import { jestTask, argv, JestTaskOptions } from 'just-scripts';
+import { jestTask, JestTaskOptions } from 'just-scripts';
 import * as path from 'path';
-
-/**
- * Partial support of native jest CLI arguments https://jestjs.io/docs/en/cli
- * > Why partial support only? just jestTask limits support to only those specified as return value of this function
- */
-const commonArgs = (): JestTaskOptions => {
-  const args: JestTaskOptions = argv();
-  return {
-    ...((process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME || args.runInBand) && { runInBand: true }),
-    ...((args.u || args.updateSnapshot) && { updateSnapshot: true }),
-    clearCache: args.clearCache,
-    config: args.config,
-    watch: args.watch,
-    coverage: args.coverage,
-    passWithNoTests: args.passWithNoTests === undefined ? true : args.passWithNoTests,
-    testNamePattern: args.testNamePattern,
-    testPathPattern: args.testPathPattern,
-
-    // Just specific config
-    nodeArgs: args.nodeArgs,
-    // pass forward positional args (to narrow down tests to be run)
-    _: (args._ || []).filter(arg => arg !== 'jest' && arg !== 'jest-watch'),
-  };
-};
+import unparse from 'yargs-unparser';
+import { getJustArgv, JustArgs } from './argv';
 
 const commonJestTask = (options: JestTaskOptions = {}) => {
+  const {
+    runInBand = !!(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME),
+    passWithNoTests = true,
+    nodeArgs,
+    _ = [],
+    // args for our just preset which should not be passed through to jest
+    cached,
+    commonjs,
+    min,
+    package: packageName,
+    production,
+    push,
+    registry,
+    // these args without explicit handling will be passed directly through to jest
+    ...otherArgs
+  } = getJustArgv() as JustArgs & JestTaskOptions;
+
   return jestTask({
-    ...commonArgs(),
+    runInBand,
+    passWithNoTests,
+    nodeArgs, // Just-specific config
+
+    _: [
+      // jestTask doesn't have explicit support for all jest args (https://jestjs.io/docs/en/cli),
+      // so unparse any extra args and pass them through here
+      ...unparse({ ...otherArgs, _: [] }),
+      // and pass any positional args (to narrow down tests to be run)
+      ..._.filter(arg => arg !== 'jest' && arg !== 'jest-watch'),
+    ],
+
     env: {
       ...process.env,
       NODE_ENV: 'test',
-      PACKAGE_NAME: argv().package,
+      PACKAGE_NAME: packageName,
     },
     ...options,
   });

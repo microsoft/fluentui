@@ -1,3 +1,8 @@
+<style>
+  div.docs-story > div:first-child {
+    height: 1550px !important;
+  }
+</style>
 <div style="height: 100%; overflow: hidden; display: flex; flex-direction: column">
   <fluent-anchored-region
     anchor="anchor-fixed"
@@ -16,7 +21,7 @@
     style="
       position: fixed;
       height: 80px;
-      width: 100%;
+      width: 60%;
       background: darkgray;
       overflow: hidden;
       display: flex;
@@ -46,8 +51,10 @@
       id="viewport-default"
       style="position: relative; height: 400px; width: 400px; background: lightgray; overflow: scroll"
     >
-      <div style="height: 1000px; width: 1000px">
-        <button id="anchor-default" style="margin-left: 500px; margin-top: 500px">anchor</button>
+      <div style="height: 360px; width: 400px">
+        <fluent-button appearance="stealth" id="anchor-default" style="margin-left: 100px; margin-top: 100px">
+          anchor</fluent-button
+        >
         <fluent-anchored-region
           anchor="anchor-default"
           viewport="viewport-default"
@@ -64,7 +71,7 @@
       id="viewport-locked"
       style="height: 400px; width: 400px; background: lightgray; overflow: scroll; position: relative"
     >
-      <div style="height: 1000px; width: 1000px">
+      <div style="height: 360px; width: 400px">
         <fluent-anchored-region
           anchor="anchor-locked"
           viewport="viewport-locked"
@@ -73,7 +80,7 @@
           horizontal-positioning-mode="locktodefault"
           horizontal-default-position="right"
         >
-          <div style="height: 150px; width: 150px; background: green"></div>
+          <div style="height: 50px; width: 50px; background: green"></div>
         </fluent-anchored-region>
         <div style="position: relative; height: 0; width: 0">
           <fluent-anchored-region
@@ -98,7 +105,9 @@
           <div style="height: 50px; width: 50px; background: blue"></div>
         </fluent-anchored-region>
         <div></div>
-        <button id="anchor-locked" style="margin-left: 500px; margin-top: 500px">anchor</button>
+        <fluent-button appearance="stealth" id="anchor-locked" style="margin-left: 100px; margin-top: 100px"
+          >anchor
+        </fluent-button>
       </div>
     </div>
 
@@ -107,8 +116,10 @@
       id="viewport-scaling-update"
       style="height: 400px; width: 400px; background: lightgray; overflow: scroll; position: relative"
     >
-      <div style="height: 1000px; width: 1000px; overflow: hidden">
-        <button id="anchor-scaling-update" style="margin-left: 500px; margin-top: 500px">anchor</button>
+      <div style="height: 400px; width: 400px; overflow: hidden">
+        <fluent-button appearance="stealth" id="anchor-scaling-update" style="margin-left: 100px; margin-top: 100px">
+          anchor</fluent-button
+        >
         <fluent-anchored-region
           id="region-scaling-update"
           anchor="anchor-scaling-update"
@@ -118,7 +129,7 @@
           horizontal-positioning-mode="dynamic"
           horizontal-scaling="fill"
         >
-          <div style="height: 100%; width: 100%; background: yellow"></div>
+          <div style="height: 60px; width: 60px; background: yellow"></div>
         </fluent-anchored-region>
       </div>
     </div>
@@ -126,10 +137,12 @@
     <h4>Scaling via offset</h4>
     <div
       id="viewport-scaling-offset"
-      style="height: 400px; width: 400px; background: lightgray; overflow: scroll; position: relative"
+      style="height: 360px; width: 400px; background: lightgray; overflow: scroll; position: relative"
     >
-      <div style="height: 1000px; width: 1000px; overflow: hidden">
-        <button id="anchor-scaling-offset" style="margin-left: 500px; margin-top: 500px">anchor</button>
+      <div style="height: 360px; width: 400px; overflow: hidden">
+        <fluent-button appearance="stealth" id="anchor-scaling-offset" style="margin-left: 100px; margin-top: 100px">
+          anchor</fluent-button
+        >
         <fluent-anchored-region
           id="region-scaling-offset"
           anchor="anchor-scaling-offset"
@@ -139,7 +152,7 @@
           horizontal-positioning-mode="dynamic"
           horizontal-scaling="fill"
         >
-          <div style="height: 100%; width: 100%; background: yellow"></div>
+          <div style="height: 40px; width: 60px; background: yellow"></div>
         </fluent-anchored-region>
       </div>
     </div>
@@ -149,8 +162,10 @@
       id="viewport-inset"
       style="position: relative; height: 400px; width: 400px; background: lightgray; overflow: scroll"
     >
-      <div style="height: 1000px; width: 1000px; overflow: hidden">
-        <button id="anchor-inset" style="margin-left: 500px; margin-top: 500px">anchor</button>
+      <div style="height: 360px; width: 400px; overflow: hidden">
+        <fluent-button appearance="stealth" id="anchor-inset" style="margin-left: 100px; margin-top: 100px"
+          >anchor
+        </fluent-button>
         <fluent-anchored-region
           anchor="anchor-inset"
           viewport="viewport-inset"
@@ -167,10 +182,12 @@
     <h4>Thresholds</h4>
     <div
       id="viewport-thresholds"
-      style="position: relative; height: 400px; width: 400px; background: lightgray; overflow: scroll"
+      style="position: relative; height: 360px; width: 400px; background: lightgray; overflow: scroll"
     >
-      <div style="height: 1000px; width: 1000px; overflow: hidden">
-        <button id="anchor-thresholds" style="margin-left: 500px; margin-top: 500px">anchor</button>
+      <div style="height: 360px; width: 400px; overflow: hidden">
+        <fluent-button appearance="stealth" id="anchor-thresholds" style="margin-left: 100px; margin-top: 100px"
+          >anchor
+        </fluent-button>
         <fluent-anchored-region
           anchor="anchor-thresholds"
           viewport="viewport-thresholds"
@@ -189,10 +206,10 @@
     <h4>Toggle anchor</h4>
     <div
       id="viewport-toggle-anchor"
-      style="position: relative; height: 400px; width: 400px; background: lightgray; overflow: scroll"
+      style="position: relative; height: 360px; width: 400px; background: lightgray; overflow: scroll"
     >
-      <div style="height: 1000px; width: 1000px; overflow: hidden">
-        <button id="toggle-anchor-anchor1" style="margin-left: 400px; margin-top: 500px">Set anchor 1</button>
+      <div style="height: 360px; width: 400px; overflow: hidden">
+        <button id="toggle-anchor-anchor1" style="margin-left: 100px; margin-top: 100px">Set anchor 1</button>
         <button id="toggle-anchor-anchor2">Set anchor 2</button>
         <fluent-anchored-region
           id="toggle-anchor-region"
@@ -211,8 +228,10 @@
       id="viewport-toggle-positions"
       style="position: relative; height: 400px; width: 400px; background: lightgray; overflow: scroll"
     >
-      <div style="height: 1000px; width: 1000px; overflow: hidden">
-        <button id="anchor-toggle-positions" style="margin-left: 400px; margin-top: 500px">anchor</button>
+      <div style="height: 400px; width: 400px; overflow: hidden">
+        <fluent-button appearance="stealth" id="anchor-toggle-positions" style="margin-left: 100px; margin-top: 100px">
+          anchor</fluent-button
+        >
         <fluent-anchored-region
           id="toggle-positions-region"
           anchor="anchor-toggle-positions"
@@ -226,7 +245,7 @@
           <div id="toggle-positions-large" style="height: 100px; width: 100px; background: yellow"></div>
         </fluent-anchored-region>
         <div style="margin-top: 20px; display: flex; flex-direction: row">
-          <button id="toggle-positions-horizontal" style="margin-left: 250px; margin-top: 120px">
+          <button id="toggle-positions-horizontal" style="margin-left: 10px; margin-top: 120px">
             toggle horizontal
           </button>
           <button id="toggle-positions-vertical" style="margin-top: 120px">toggle vertical</button>
@@ -242,7 +261,7 @@
       style="position: relative; height: 400px; width: 400px; background: lightgray; overflow: scroll"
       dir="rtl"
     >
-      <div style="height: 1000px; width: 1000px">
+      <div style="height: 400px; width: 400px">
         <fluent-anchored-region
           anchor="anchor-rtl-dynamic"
           viewport="viewport-rtl-dynamic"
@@ -252,7 +271,9 @@
         >
           <div style="height: 100px; width: 100px; background: yellow"></div>
         </fluent-anchored-region>
-        <button id="anchor-rtl-dynamic" style="margin-right: 500px; margin-top: 500px">anchor</button>
+        <fluent-button appearance="stealth" id="anchor-rtl-dynamic" style="margin-right: 100px; margin-top: 140px">
+          anchor</fluent-button
+        >
       </div>
     </div>
 
@@ -261,7 +282,7 @@
       id="viewport-anchor-sized"
       style="position: relative; height: 400px; width: 400px; background: lightgray; overflow: scroll"
     >
-      <div style="height: 1000px; width: 1000px">
+      <div style="height: 400px; width: 400px">
         <fluent-anchored-region
           anchor="anchor-anchor-sized"
           viewport="viewport-anchor-sized"
@@ -273,7 +294,7 @@
         >
           <div style="height: 100%; width: 100%; background: yellow"></div>
         </fluent-anchored-region>
-        <button id="anchor-anchor-sized" style="margin-left: 500px; margin-top: 500px">anchor</button>
+        <button id="anchor-anchor-sized" style="margin-left: 100px; margin-top: 100px">anchor</button>
       </div>
     </div>
 
@@ -283,8 +304,8 @@
       dir="rtl"
       style="position: relative; height: 400px; width: 400px; background: lightgray; overflow: scroll"
     >
-      <div style="height: 1000px; width: 1000px">
-        <button id="anchor-rtl-fill" style="margin-right: 500px; margin-top: 500px">anchor</button>
+      <div style="height: 400px; width: 400px">
+        <button id="anchor-rtl-fill" style="margin-right: 100px; margin-top: 100px">anchor</button>
         <fluent-anchored-region
           anchor="anchor-rtl-fill"
           viewport="viewport-rtl-fill"
@@ -303,8 +324,8 @@
       id="viewport-se"
       style="position: relative; height: 400px; width: 400px; background: lightgray; overflow: scroll"
     >
-      <div style="height: 1000px; width: 1000px">
-        <button id="anchor-se" style="margin-left: 500px; margin-top: 500px">anchor</button>
+      <div style="height: 400px; width: 400px">
+        <button id="anchor-se" style="margin-left: 100px; margin-top: 100px">anchor</button>
         <fluent-anchored-region
           anchor="anchor-se"
           viewport="viewport-se"
@@ -331,8 +352,8 @@
       dir="rtl"
       style="position: relative; height: 400px; width: 400px; background: lightgray; overflow: scroll"
     >
-      <div style="height: 1000px; width: 1000px">
-        <button id="anchor-rtl-se" style="margin-right: 500px; margin-top: 500px">anchor</button>
+      <div style="height: 400px; width: 400px">
+        <button id="anchor-rtl-se" style="margin-right: 100px; margin-top: 100px">anchor</button>
         <fluent-anchored-region
           anchor="anchor-rtl-se"
           viewport="viewport-rtl-se"

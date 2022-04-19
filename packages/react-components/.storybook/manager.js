@@ -1,8 +1,6 @@
 import { addons } from '@storybook/addons';
-import theme from './theme';
+import fluentStorybookTheme from './theme';
 
 addons.setConfig({
-  showPanel: true,
-  panelPosition: 'right',
-  theme,
+  theme: fluentStorybookTheme,
 });

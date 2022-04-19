@@ -18,6 +18,7 @@ export class Toolbar extends FoundationToolbar {}
  */
 export const fluentToolbar = Toolbar.compose({
   baseName: 'toolbar',
+  baseClass: FoundationToolbar,
   template,
   styles,
 });

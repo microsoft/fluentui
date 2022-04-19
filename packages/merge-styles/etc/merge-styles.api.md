@@ -51,6 +51,9 @@ export interface ICSPSettings {
 }
 
 // @public (undocumented)
+export type ICSSPixelUnitRule = string | number;
+
+// @public (undocumented)
 export type ICSSRule = 'initial' | 'inherit' | 'unset';
 
 // @public
@@ -91,7 +94,6 @@ export interface IRawFontStyle {
     font?: ICSSRule | string;
     fontFamily?: ICSSRule | string;
     fontKerning?: ICSSRule | string;
-    // Warning: (ae-forgotten-export) The symbol "ICSSPixelUnitRule" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "ICSSPercentageRule" needs to be exported by the entry point index.d.ts
     fontSize?: ICSSRule | 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | 'larger' | 'smaller' | ICSSPixelUnitRule | ICSSPercentageRule;
     fontSizeAdjust?: ICSSRule | 'none' | number | string;
@@ -241,6 +243,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     hyphenateLimitZone?: ICSSRule | string;
     hyphens?: ICSSRule | string;
     justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | string;
+    justifyItems?: ICSSRule | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | 'left' | 'right' | 'safe left' | 'safe right' | 'unsafe left' | 'unsafe right' | 'legacy' | 'legacy left' | 'legacy right' | 'legacy center' | string;
     justifySelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | 'left' | 'right' | 'safe left' | 'safe right' | 'unsafe left' | 'unsafe right' | string;
     left?: ICSSRule | ICSSPixelUnitRule;
     letterSpacing?: ICSSRule | string;
@@ -250,7 +253,11 @@ export interface IRawStyleBase extends IRawFontStyle {
     listStylePosition?: ICSSRule | string;
     listStyleType?: ICSSRule | string;
     margin?: ICSSRule | ICSSPixelUnitRule;
+    marginBlockEnd?: ICSSRule | ICSSPixelUnitRule;
+    marginBlockStart?: ICSSRule | ICSSPixelUnitRule;
     marginBottom?: ICSSRule | ICSSPixelUnitRule;
+    marginInlineEnd?: ICSSRule | ICSSPixelUnitRule;
+    marginInlineStart?: ICSSRule | ICSSPixelUnitRule;
     marginLeft?: ICSSRule | ICSSPixelUnitRule;
     marginRight?: ICSSRule | ICSSPixelUnitRule;
     marginTop?: ICSSRule | ICSSPixelUnitRule;
@@ -303,6 +310,9 @@ export interface IRawStyleBase extends IRawFontStyle {
     pauseBefore?: ICSSRule | string;
     perspective?: ICSSRule | string;
     perspectiveOrigin?: ICSSRule | string;
+    placeContent?: ICSSRule | 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | ICSSOverflowAndSelfPositionRule | string;
+    placeItems?: ICSSRule | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | string;
+    placeSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | string;
     pointerEvents?: ICSSRule | string;
     position?: ICSSRule | 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
     quotes?: ICSSRule | string;

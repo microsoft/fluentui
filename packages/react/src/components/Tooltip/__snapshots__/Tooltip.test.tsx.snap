@@ -73,6 +73,7 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
               border-radius: 2px;
               box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
               box-sizing: border-box;
+              display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -105,6 +106,7 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
                 overflow-x: hidden;
                 overflow-y: auto;
                 position: relative;
+                width: 100%;
               }
           onKeyDown={[Function]}
           onMouseDown={[Function]}
@@ -117,9 +119,7 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
             }
           }
         >
-          <div
-            role="tooltip"
-          >
+          <div>
             <div />
           </div>
         </div>

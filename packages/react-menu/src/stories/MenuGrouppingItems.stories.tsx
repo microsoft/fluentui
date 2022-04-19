@@ -1,26 +1,11 @@
 import * as React from 'react';
-import {
-  Menu,
-  MenuTrigger,
-  MenuList,
-  MenuItem,
-  MenuGroup,
-  MenuDivider,
-  MenuGroupHeader,
-  MenuPopover,
-  // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-} from '@fluentui/react-menu';
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuGroup, MenuDivider, MenuGroupHeader, MenuPopover } from '../index';
 
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { Button } from '@fluentui/react-button';
 import {
-  Cut20Regular as CutIcon,
-  ClipboardPaste20Regular as PasteIcon,
-  Edit20Regular as EditIcon,
+  CutRegular as CutIcon,
+  ClipboardPasteRegular as PasteIcon,
+  EditRegular as EditIcon,
 } from '@fluentui/react-icons';
 
 export const GrouppingItems = () => (
@@ -54,7 +39,7 @@ GrouppingItems.parameters = {
     description: {
       story: [
         'A menu can be divided in to separate groups, using the `MenuGroup` and `MenuGroupHeader`',
-        'components ensures correct accessible markdown screen reader users',
+        'components. This ensures the correct accessible markup is rendered for screen reader users.',
       ].join('\n'),
     },
   },

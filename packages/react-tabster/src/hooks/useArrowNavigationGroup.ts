@@ -4,10 +4,10 @@ import { useTabster } from './useTabster';
 
 export interface UseArrowNavigationGroupOptions {
   /**
-   * Focus will navigate vertically or horizontally, defaults to horizontally
+   * Focus will navigate vertically, horizontally or in both directions (grid), defaults to horizontally
    * @defaultValue vertical
    */
-  axis?: 'vertical' | 'horizontal';
+  axis?: 'vertical' | 'horizontal' | 'grid';
   /**
    * Focus will cycle to the first/last elements of the group without stopping
    */
@@ -23,7 +23,7 @@ export interface UseArrowNavigationGroupOptions {
  * A hook that returns the necessary tabster attributes to support arrow key navigation
  * @param options - Options to configure keyboard navigation
  */
-export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions) => {
+export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions): Types.TabsterDOMAttribute => {
   const tabster = useTabster();
 
   if (tabster) {
@@ -43,6 +43,8 @@ function axisToMoverDirection(axis: UseArrowNavigationGroupOptions['axis']): Typ
   switch (axis) {
     case 'horizontal':
       return Types.MoverDirections.Horizontal;
+    case 'grid':
+      return Types.MoverDirections.Grid;
 
     case 'vertical':
     default:

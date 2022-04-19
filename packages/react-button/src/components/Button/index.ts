@@ -1,5 +1,11 @@
 export * from './Button';
-export * from './Button.types';
+// Explicit exports to omit ButtonCommons
+export type { ButtonProps, ButtonSlots, ButtonState } from './Button.types';
 export * from './renderButton';
 export * from './useButton';
-export { useButtonStyles } from './useButtonStyles';
+export {
+  /* eslint-disable-next-line deprecation/deprecation */
+  buttonClassName,
+  buttonClassNames,
+  useButtonStyles_unstable,
+} from './useButtonStyles';

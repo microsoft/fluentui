@@ -9,15 +9,15 @@ import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monore
  */
 export function getScopes(): string[] {
   const allPackageInfo = getAllPackageInfo();
+  const vNextPackagePaths = getVNextPackagePaths(allPackageInfo);
 
   if (process.env.RELEASE_VNEXT) {
-    return [...getVNextPackagePaths(allPackageInfo), ...getSharedPackagePaths(allPackageInfo)];
+    return [...vNextPackagePaths, ...getSharedPackagePaths(allPackageInfo)];
   }
 
-  const ignoreVNextScope = getVNextPackagePaths(allPackageInfo).map(path => `!${path}`);
-  // Northstar is never published with beachbal
-  const ignoreNorthstarScope = '!packages/fluentui/*';
-  return [ignoreNorthstarScope, ...ignoreVNextScope];
+  const ignoreVNextScope = vNextPackagePaths.map(path => `!${path}`);
+
+  return [...ignoreVNextScope];
 }
 
 function getVNextPackagePaths(allPackageInfo: AllPackageInfo) {
@@ -37,7 +37,7 @@ function getSharedPackagePaths(allPackageInfo: AllPackageInfo) {
     .map(packageInfo => {
       // These packages depend on converged packages, but are private
       // Can be included in the publish scope so that dependencies are bumped correctly.
-      const privateNonConverged = ['perf-test', 'vr-tests'];
+      const privateNonConverged = ['@fluentui/perf-test', '@fluentui/vr-tests'];
 
       if (privateNonConverged.includes(packageInfo.packageJson.name)) {
         return packageInfo.packagePath;

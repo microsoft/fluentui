@@ -4,9 +4,54 @@
 
 ```ts
 
+import { Args } from '@storybook/api';
+import { StoryContext } from '@storybook/addons';
+import type { Theme } from '@fluentui/react-theme';
+
+// @public
+export interface FluentGlobals extends Args {
+    // (undocumented)
+    [THEME_ID]?: ThemeIds;
+}
+
 // @public (undocumented)
-const _default: {};
-export default _default;
+export interface FluentStoryContext extends StoryContext {
+    // (undocumented)
+    globals: FluentGlobals;
+}
+
+// @public (undocumented)
+export const THEME_ID: "storybook/fluentui-react-addon/theme";
+
+// @public (undocumented)
+export type ThemeIds = typeof themes[number]['id'];
+
+// @public (undocumented)
+export const themes: readonly [{
+    readonly id: "web-light";
+    readonly label: "Web Light";
+    readonly theme: Theme;
+}, {
+    readonly id: "web-dark";
+    readonly label: "Web Dark";
+    readonly theme: Theme;
+}, {
+    readonly id: "web-high-contrast";
+    readonly label: "Web High Contrast";
+    readonly theme: Theme;
+}, {
+    readonly id: "teams-light";
+    readonly label: "Teams Light";
+    readonly theme: Theme;
+}, {
+    readonly id: "teams-dark";
+    readonly label: "Teams Dark";
+    readonly theme: Theme;
+}, {
+    readonly id: "teams-high-contrast";
+    readonly label: "Teams High Contrast";
+    readonly theme: Theme;
+}];
 
 // (No @packageDocumentation comment for this package)
 

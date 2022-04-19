@@ -7,50 +7,54 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Input: ForwardRefComponent<InputProps>;
 
+// @public @deprecated (undocumented)
+export const inputClassName = "fui-Input";
+
 // @public (undocumented)
-export interface InputCommons {
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-    // (undocumented)
-    inline?: boolean;
+export const inputClassNames: SlotClassNames<InputSlots>;
+
+// @public
+export type InputOnChangeData = {
+    value: string;
+};
+
+// @public (undocumented)
+export type InputProps = Omit<ComponentProps<Partial<InputSlots>, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
+    children?: never;
     size?: 'small' | 'medium' | 'large';
-}
-
-// @public
-export interface InputProps extends InputCommons, Omit<ComponentProps<Partial<InputSlots>>, 'children'> {
-}
-
-// @public
-export const inputShorthandProps: (keyof InputSlots)[];
+    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    defaultValue?: string;
+    value?: string;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+    type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'number' | 'time' | 'week';
+};
 
 // @public (undocumented)
 export type InputSlots = {
-    root: IntrinsicShorthandProps<'span'>;
-    input: IntrinsicShorthandProps<'input'>;
-    inputWrapper: IntrinsicShorthandProps<'span'>;
-    bookendBefore?: IntrinsicShorthandProps<'span'>;
-    bookendAfter?: IntrinsicShorthandProps<'span'>;
-    insideStart?: IntrinsicShorthandProps<'span'>;
-    insideEnd?: IntrinsicShorthandProps<'span'>;
+    root: NonNullable<Slot<'span'>>;
+    input: NonNullable<Slot<'input'>>;
+    contentBefore?: Slot<'span'>;
+    contentAfter?: Slot<'span'>;
 };
 
 // @public
-export interface InputState extends InputCommons, ComponentState<InputSlots> {
-}
+export type InputState = Required<Pick<InputProps, 'appearance' | 'size'>> & ComponentState<InputSlots>;
 
 // @public
-export const renderInput: (state: InputState) => JSX.Element;
+export const renderInput_unstable: (state: InputState) => JSX.Element;
 
 // @public
-export const useInput: (props: InputProps, ref: React_2.Ref<HTMLElement>) => InputState;
+export const useInput_unstable: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;
 
 // @public
-export const useInputStyles: (state: InputState) => InputState;
+export const useInputStyles_unstable: (state: InputState) => InputState;
 
 // (No @packageDocumentation comment for this package)
 

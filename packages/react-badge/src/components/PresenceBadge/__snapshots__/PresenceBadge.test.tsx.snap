@@ -3,26 +3,24 @@
 exports[`PresenceBadge renders a default state 1`] = `
 <div
   aria-hidden={true}
-  className=""
+  className="fui-PresenceBadge"
 >
   <span
-    className=""
+    className="fui-PresenceBadge__icon"
   >
-    <span
+    <svg
       aria-hidden={true}
       className=""
-      role="presentation"
+      fill="currentColor"
+      height={16}
+      viewBox="0 0 16 16"
+      width={16}
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <svg
-        className=""
-        viewBox="0 0 2048 2048"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M1570 437q42 0 78 15t64 43 42 63 16 79q0 40-15 77t-43 65l-794 795q-28 28-65 43t-77 16q-40 0-77-15t-65-44l-362-362q-28-28-43-65t-16-77q0-42 16-78t43-64 63-42 79-16q40 0 77 15t65 43l220 220 652-653q28-28 65-43t77-15z"
-        />
-      </svg>
-    </span>
+      <path
+        d="M8 16A8 8 0 108 0a8 8 0 000 16zm3.7-9.3l-4 4a1 1 0 01-1.41 0l-2-2a1 1 0 111.42-1.4L7 8.58l3.3-3.3a1 1 0 011.4 1.42z"
+      />
+    </svg>
   </span>
 </div>
 `;

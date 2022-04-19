@@ -1,8 +1,125 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Tue, 21 Sep 2021 07:42:34 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Mar 2022 07:39:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.13.0)
+
+Tue, 29 Mar 2022 07:39:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.12.0..@fluentui/react-conformance_v0.13.0)
+
+### Minor changes
+
+- BREAKING CHANGE: Switch from Enzyme to `@testing-library/react` and remove Enzyme-specific APIs ([PR #22009](https://github.com/microsoft/fluentui/pull/22009) by elcraig@microsoft.com)
+
+## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.12.0)
+
+Wed, 16 Mar 2022 07:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.11.0..@fluentui/react-conformance_v0.12.0)
+
+### Minor changes
+
+- Add conformance tests for static classnames ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.11.0)
+
+Tue, 08 Mar 2022 07:35:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.10.1..@fluentui/react-conformance_v0.11.0)
+
+### Minor changes
+
+- BREAKING CHANGE: Remove some tests and options specific to `@fluentui/react-northstar` ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by elcraig@microsoft.com)
+
+## [0.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.10.1)
+
+Fri, 11 Feb 2022 07:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.10.0..@fluentui/react-conformance_v0.10.1)
+
+### Patches
+
+- Clear document.body after each test to avoid interference between tests ([PR #21664](https://github.com/microsoft/fluentui/pull/21664) by elcraig@microsoft.com)
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.10.0)
+
+Fri, 07 Jan 2022 07:27:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.9.2..@fluentui/react-conformance_v0.10.0)
+
+### Minor changes
+
+- add option 'tsconfigDir'; change default tsconfig dir to component path ([PR #21113](https://github.com/microsoft/fluentui/pull/21113) by yuanboxue@microsoft.com)
+
+## [0.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.9.2)
+
+Wed, 15 Dec 2021 07:31:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.9.1..@fluentui/react-conformance_v0.9.2)
+
+### Patches
+
+- chore: update all jest deps to v25 + apply single version policy ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by martinhochel@microsoft.com)
+
+## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.9.1)
+
+Tue, 14 Dec 2021 07:30:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.9.0..@fluentui/react-conformance_v0.9.1)
+
+### Patches
+
+- Fix consistent-callback-args test to handle string literal types ([PR #20904](https://github.com/microsoft/fluentui/pull/20904) by behowell@microsoft.com)
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.9.0)
+
+Fri, 10 Dec 2021 07:30:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.8.0..@fluentui/react-conformance_v0.9.0)
+
+### Minor changes
+
+- Update typescript to 4.3 and update react-docgen-typescript ([PR #20909](https://github.com/microsoft/fluentui/pull/20909) by elcraig@microsoft.com)
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.8.0)
+
+Tue, 30 Nov 2021 07:37:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.7.2..@fluentui/react-conformance_v0.8.0)
+
+### Minor changes
+
+- Add test preventing accidental application of native size prop ([PR #20833](https://github.com/microsoft/fluentui/pull/20833) by elcraig@microsoft.com)
+
+## [0.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.7.2)
+
+Thu, 25 Nov 2021 14:54:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.7.1..@fluentui/react-conformance_v0.7.2)
+
+### Patches
+
+- Update component-has-root-ref test to support primarySlot ([PR #20617](https://github.com/microsoft/fluentui/pull/20617) by behowell@microsoft.com)
+
+## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.7.1)
+
+Mon, 15 Nov 2021 07:29:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.7.0..@fluentui/react-conformance_v0.7.1)
+
+### Patches
+
+- fix paths generated in defaultErrorMessages ([PR #20580](https://github.com/microsoft/fluentui/pull/20580) by olfedias@microsoft.com)
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.7.0)
+
+Wed, 10 Nov 2021 07:31:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.6.0..@fluentui/react-conformance_v0.7.0)
+
+### Minor changes
+
+- add new test for classnames ([PR #20383](https://github.com/microsoft/fluentui/pull/20383) by olfedias@microsoft.com)
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.6.0)
+
+Thu, 21 Oct 2021 07:28:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.5.1..@fluentui/react-conformance_v0.6.0)
+
+### Minor changes
+
+- Implement additional tests in consistent-callback-args ([PR #20281](https://github.com/microsoft/fluentui/pull/20281) by olfedias@microsoft.com)
 
 ## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.5.1)
 

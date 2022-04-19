@@ -728,6 +728,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                 border-radius: 2px;
                 box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                 box-sizing: border-box;
+                display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -754,6 +755,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                   overflow-x: hidden;
                   overflow-y: auto;
                   position: relative;
+                  width: 100%;
                 }
             style="outline: none; max-height: 100%;"
           >
@@ -770,204 +772,209 @@ exports[`ComboBox Renders correctly when open 1`] = `
                 role="listbox"
               >
                 <div
-                  class=
-                      ms-ComboBox-header
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        background-color: none;
-                        border-style: none;
-                        color: #0078d4;
-                        cursor: default;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 600;
-                        height: 36px;
-                        line-height: 36px;
-                        padding-bottom: 0;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 0;
-                        text-align: left;
-                        user-select: none;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                        -ms-high-contrast-adjust: none;
-                        color: GrayText;
-                        forced-color-adjust: none;
-                      }
+                  aria-labelledby="ComboBox0header"
+                  role="group"
                 >
-                  <span
+                  <div
                     class=
-                        ms-ComboBox-optionText
+                        ms-ComboBox-header
                         {
-                          display: inline-block;
-                          max-width: 100%;
-                          min-width: 0px;
-                          overflow-wrap: break-word;
-                          overflow: hidden;
-                          text-overflow: ellipsis;
-                          white-space: nowrap;
-                          word-wrap: break-word;
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: none;
+                          border-style: none;
+                          color: #0078d4;
+                          cursor: default;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 600;
+                          height: 36px;
+                          line-height: 36px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
+                          text-align: left;
+                          user-select: none;
                         }
-                  >
-                    Header
-                  </span>
-                </div>
-                <button
-                  aria-selected="false"
-                  class=
-                      ms-Button
-                      ms-Button--action
-                      ms-Button--command
-                      ms-ComboBox-option
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        background-color: transparent;
-                        border-color: transparent;
-                        border-radius: 0px;
-                        border-style: solid;
-                        border-width: 1px;
-                        border: 1px solid transparent;
-                        box-sizing: border-box;
-                        color: #323130;
-                        cursor: pointer;
-                        display: block;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
-                        height: auto;
-                        line-height: 20px;
-                        min-height: 36px;
-                        outline: transparent;
-                        overflow-wrap: break-word;
-                        padding-bottom: 0;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 0;
-                        position: relative;
-                        text-align: left;
-                        text-decoration: none;
-                        user-select: none;
-                        width: 100%;
-                        word-wrap: break-word;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 2px;
-                        content: "";
-                        left: 2px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 2px;
-                        top: 2px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        bottom: -2px;
-                        left: -2px;
-                        outline-color: ButtonText;
-                        right: -2px;
-                        top: -2px;
-                      }
-                      &:active > * {
-                        left: 0px;
-                        position: relative;
-                        top: 0px;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                        border-color: Background;
-                        border: none;
-                      }
-                      &.ms-Checkbox {
-                        align-items: center;
-                        display: flex;
-                      }
-                      &.ms-Button--command:hover:active {
-                        background-color: #edebe9;
-                      }
-                      & .ms-Checkbox-label {
-                        width: 100%;
-                      }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #201f1e;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                        color: Highlight;
-                      }
-                      &:hover .ms-Button-icon {
-                        color: #0078d4;
-                      }
-                      &:focus {
-                        background-color: #f3f2f1;
-                      }
-                      &:active {
-                        color: #000000;
-                      }
-                      &:active .ms-Button-icon {
-                        color: #004578;
-                      }
-                  data-index="1"
-                  data-is-focusable="true"
-                  id="ComboBox0-list1"
-                  role="option"
-                  title="Option 1"
-                  type="button"
-                >
-                  <span
-                    class=
-                        ms-Button-flexContainer
-                        {
-                          align-items: center;
-                          display: flex;
-                          flex-wrap: nowrap;
-                          height: 100%;
-                          justify-content: flex-start;
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          -ms-high-contrast-adjust: none;
+                          color: GrayText;
+                          forced-color-adjust: none;
                         }
-                    data-automationid="splitbuttonprimary"
+                    id="ComboBox0header"
                   >
                     <span
                       class=
-
+                          ms-ComboBox-optionText
+                          {
+                            display: inline-block;
+                            max-width: 100%;
+                            min-width: 0px;
+                            overflow-wrap: break-word;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            word-wrap: break-word;
+                          }
+                    >
+                      Header
+                    </span>
+                  </div>
+                  <button
+                    aria-selected="false"
+                    class=
+                        ms-Button
+                        ms-Button--action
+                        ms-Button--command
+                        ms-ComboBox-option
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: transparent;
+                          border-color: transparent;
+                          border-radius: 0px;
+                          border-style: solid;
+                          border-width: 1px;
+                          border: 1px solid transparent;
+                          box-sizing: border-box;
+                          color: #323130;
+                          cursor: pointer;
+                          display: block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: auto;
+                          line-height: 20px;
+                          min-height: 36px;
+                          outline: transparent;
+                          overflow-wrap: break-word;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
+                          position: relative;
+                          text-align: left;
+                          text-decoration: none;
+                          user-select: none;
+                          width: 100%;
+                          word-wrap: break-word;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 2px;
+                          content: "";
+                          left: 2px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 2px;
+                          top: 2px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          border-color: Background;
+                          border: none;
+                        }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Button--command:hover:active {
+                          background-color: #edebe9;
+                        }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
+                        &:hover {
+                          background-color: #f3f2f1;
+                          color: #201f1e;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                          color: Highlight;
+                        }
+                        &:hover .ms-Button-icon {
+                          color: #0078d4;
+                        }
+                        &:focus {
+                          background-color: #f3f2f1;
+                        }
+                        &:active {
+                          color: #000000;
+                        }
+                        &:active .ms-Button-icon {
+                          color: #004578;
+                        }
+                    data-index="1"
+                    data-is-focusable="true"
+                    id="ComboBox0-list1"
+                    role="option"
+                    type="button"
+                  >
+                    <span
+                      class=
+                          ms-Button-flexContainer
                           {
                             align-items: center;
                             display: flex;
-                            max-width: 100%;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: flex-start;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                       <span
                         class=
-                            ms-ComboBox-optionText
+
                             {
-                              display: inline-block;
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
-                              min-width: 0px;
-                              overflow-wrap: break-word;
-                              overflow: hidden;
-                              text-overflow: ellipsis;
-                              white-space: nowrap;
-                              word-wrap: break-word;
                             }
                       >
-                        Option 1
+                        <span
+                          class=
+                              ms-ComboBox-optionText
+                              {
+                                display: inline-block;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          Option 1
+                        </span>
                       </span>
                     </span>
-                  </span>
-                </button>
-                <div
-                  class=
-                      ms-ComboBox-divider
-                      {
-                        background-color: #edebe9;
-                        height: 1px;
-                      }
-                  role="separator"
-                />
+                  </button>
+                  <div
+                    class=
+                        ms-ComboBox-divider
+                        {
+                          background-color: #edebe9;
+                          height: 1px;
+                        }
+                    role="separator"
+                  />
+                </div>
                 <button
                   aria-selected="true"
                   class=
@@ -1077,7 +1084,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
                   data-is-focusable="true"
                   id="ComboBox0-list3"
                   role="option"
-                  title="Option 2"
                   type="button"
                 >
                   <span
@@ -1489,6 +1495,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                 border-radius: 2px;
                 box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                 box-sizing: border-box;
+                display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -1515,6 +1522,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                   overflow-x: hidden;
                   overflow-y: auto;
                   position: relative;
+                  width: 100%;
                 }
             style="outline: none; max-height: 100%;"
           >
@@ -1522,6 +1530,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
               class="ms-ComboBox-optionsContainerWrapper "
             >
               <div
+                aria-multiselectable="true"
                 class=
                     ms-ComboBox-optionsContainer
                     {
@@ -1531,228 +1540,38 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                 role="listbox"
               >
                 <div
-                  class=
-                      ms-ComboBox-header
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        background-color: none;
-                        border-style: none;
-                        color: #0078d4;
-                        cursor: default;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 600;
-                        height: 36px;
-                        line-height: 36px;
-                        padding-bottom: 0;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 0;
-                        text-align: left;
-                        user-select: none;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                        -ms-high-contrast-adjust: none;
-                        color: GrayText;
-                        forced-color-adjust: none;
-                      }
+                  aria-labelledby="ComboBox0header"
+                  role="group"
                 >
-                  <span
+                  <div
                     class=
-                        ms-ComboBox-optionText
-                        {
-                          display: inline-block;
-                          max-width: 100%;
-                          min-width: 0px;
-                          overflow-wrap: break-word;
-                          overflow: hidden;
-                          text-overflow: ellipsis;
-                          white-space: nowrap;
-                          word-wrap: break-word;
-                        }
-                  >
-                    Header
-                  </span>
-                </div>
-                <div
-                  class=
-                      ms-Checkbox
-                      is-enabled
-                      ms-ComboBox-option
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        background-color: transparent;
-                        border-color: transparent;
-                        border-radius: 0px;
-                        border-style: solid;
-                        border-width: 1px;
-                        box-sizing: border-box;
-                        cursor: pointer;
-                        display: block;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
-                        height: auto;
-                        line-height: 20px;
-                        min-height: 36px;
-                        overflow-wrap: break-word;
-                        padding-bottom: 0;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 0;
-                        position: relative;
-                        text-align: left;
-                        width: 100%;
-                        word-wrap: break-word;
-                      }
-                      &:hover .ms-Checkbox-checkbox {
-                        border-color: #323130;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
-                        border-color: Highlight;
-                      }
-                      &:focus .ms-Checkbox-checkbox {
-                        border-color: #323130;
-                      }
-                      &:hover .ms-Checkbox-checkmark {
-                        color: #605e5c;
-                        opacity: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
-                        color: Highlight;
-                      }
-                      &:hover .ms-Checkbox-text {
-                        color: #201f1e;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
-                        color: WindowText;
-                      }
-                      &:focus .ms-Checkbox-text {
-                        color: #201f1e;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
-                        color: WindowText;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                        border-color: Background;
-                        border: none;
-                      }
-                      &.ms-Checkbox {
-                        align-items: center;
-                        display: flex;
-                      }
-                      &.ms-Button--command:hover:active {
-                        background-color: #edebe9;
-                      }
-                      & .ms-Checkbox-label {
-                        width: 100%;
-                      }
-                  title="Option 1"
-                >
-                  <input
-                    aria-selected="false"
-                    class=
-
-                        {
-                          background: none;
-                          opacity: 0;
-                          position: absolute;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus + label::before {
-                          outline-offset: 2px;
-                          outline: 1px solid #605e5c;
-                        }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                          outline: 1px solid WindowText;
-                        }
-                    data-index="1"
-                    data-is-focusable="true"
-                    data-ktp-execute-target="true"
-                    id="ComboBox0-list1"
-                    role="option"
-                    title="Option 1"
-                    type="checkbox"
-                  />
-                  <label
-                    class=
-                        ms-Checkbox-label
+                        ms-ComboBox-header
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          align-items: center;
-                          cursor: pointer;
-                          display: flex;
+                          background-color: none;
+                          border-style: none;
+                          color: #0078d4;
+                          cursor: default;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                           font-size: 14px;
-                          font-weight: 400;
-                          position: relative;
+                          font-weight: 600;
+                          height: 36px;
+                          line-height: 36px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
+                          text-align: left;
                           user-select: none;
                         }
-                        &::before {
-                          bottom: 0px;
-                          content: "";
-                          left: 0px;
-                          pointer-events: none;
-                          position: absolute;
-                          right: 0px;
-                          top: 0px;
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          -ms-high-contrast-adjust: none;
+                          color: GrayText;
+                          forced-color-adjust: none;
                         }
-                    for="ComboBox0-list1"
+                    id="ComboBox0header"
                   >
-                    <div
-                      class=
-                          ms-Checkbox-checkbox
-                          {
-                            align-items: center;
-                            border-radius: 2px;
-                            border: 1px solid #323130;
-                            box-sizing: border-box;
-                            display: flex;
-                            flex-shrink: 0;
-                            height: 20px;
-                            justify-content: center;
-                            margin-right: 4px;
-                            overflow: hidden;
-                            position: relative;
-                            transition-duration: 200ms;
-                            transition-property: background, border, border-color;
-                            transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                            width: 20px;
-                          }
-                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                            -ms-high-contrast-adjust: none;
-                            border-color: WindowText;
-                            forced-color-adjust: none;
-                          }
-                      data-ktp-target="true"
-                    >
-                      <i
-                        aria-hidden="true"
-                        class=
-                            ms-Checkbox-checkmark
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #ffffff;
-                              display: inline-block;
-                              font-family: "FabricMDL2Icons";
-                              font-style: normal;
-                              font-weight: normal;
-                              opacity: 0;
-                              speak: none;
-                            }
-                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                              -ms-high-contrast-adjust: none;
-                              color: Window;
-                              forced-color-adjust: none;
-                            }
-                        data-icon-name="CheckMark"
-                      >
-                        
-                      </i>
-                    </div>
                     <span
                       class=
                           ms-ComboBox-optionText
@@ -1767,19 +1586,213 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                             word-wrap: break-word;
                           }
                     >
-                      Option 1
+                      Header
                     </span>
-                  </label>
+                  </div>
+                  <div
+                    class=
+                        ms-Checkbox
+                        is-enabled
+                        ms-ComboBox-option
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: transparent;
+                          border-color: transparent;
+                          border-radius: 0px;
+                          border-style: solid;
+                          border-width: 1px;
+                          box-sizing: border-box;
+                          cursor: pointer;
+                          display: block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: auto;
+                          line-height: 20px;
+                          min-height: 36px;
+                          overflow-wrap: break-word;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
+                          position: relative;
+                          text-align: left;
+                          width: 100%;
+                          word-wrap: break-word;
+                        }
+                        &:hover .ms-Checkbox-checkbox {
+                          border-color: #323130;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
+                          border-color: Highlight;
+                        }
+                        &:focus .ms-Checkbox-checkbox {
+                          border-color: #323130;
+                        }
+                        &:hover .ms-Checkbox-checkmark {
+                          color: #605e5c;
+                          opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
+                          color: Highlight;
+                        }
+                        &:hover .ms-Checkbox-text {
+                          color: #201f1e;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
+                          color: WindowText;
+                        }
+                        &:focus .ms-Checkbox-text {
+                          color: #201f1e;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
+                          color: WindowText;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          border-color: Background;
+                          border: none;
+                        }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Button--command:hover:active {
+                          background-color: #edebe9;
+                        }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
+                  >
+                    <input
+                      aria-selected="false"
+                      class=
+
+                          {
+                            background: none;
+                            opacity: 0;
+                            position: absolute;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus + label::before {
+                            outline-offset: 2px;
+                            outline: 1px solid #605e5c;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                            outline: 1px solid WindowText;
+                          }
+                      data-index="1"
+                      data-is-focusable="true"
+                      data-ktp-execute-target="true"
+                      id="ComboBox0-list1"
+                      role="option"
+                      type="checkbox"
+                    />
+                    <label
+                      class=
+                          ms-Checkbox-label
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            align-items: center;
+                            cursor: pointer;
+                            display: flex;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            position: relative;
+                            user-select: none;
+                          }
+                          &::before {
+                            bottom: 0px;
+                            content: "";
+                            left: 0px;
+                            pointer-events: none;
+                            position: absolute;
+                            right: 0px;
+                            top: 0px;
+                          }
+                      for="ComboBox0-list1"
+                    >
+                      <div
+                        class=
+                            ms-Checkbox-checkbox
+                            {
+                              align-items: center;
+                              border-radius: 2px;
+                              border: 1px solid #323130;
+                              box-sizing: border-box;
+                              display: flex;
+                              flex-shrink: 0;
+                              height: 20px;
+                              justify-content: center;
+                              margin-right: 4px;
+                              overflow: hidden;
+                              position: relative;
+                              transition-duration: 200ms;
+                              transition-property: background, border, border-color;
+                              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                              width: 20px;
+                            }
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
+                              border-color: WindowText;
+                              forced-color-adjust: none;
+                            }
+                        data-ktp-target="true"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class=
+                              ms-Checkbox-checkmark
+                              {
+                                -moz-osx-font-smoothing: grayscale;
+                                -webkit-font-smoothing: antialiased;
+                                color: #ffffff;
+                                display: inline-block;
+                                font-family: "FabricMDL2Icons";
+                                font-style: normal;
+                                font-weight: normal;
+                                opacity: 0;
+                                speak: none;
+                              }
+                              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                -ms-high-contrast-adjust: none;
+                                color: Window;
+                                forced-color-adjust: none;
+                              }
+                          data-icon-name="CheckMark"
+                        >
+                          
+                        </i>
+                      </div>
+                      <span
+                        class=
+                            ms-ComboBox-optionText
+                            {
+                              display: inline-block;
+                              max-width: 100%;
+                              min-width: 0px;
+                              overflow-wrap: break-word;
+                              overflow: hidden;
+                              text-overflow: ellipsis;
+                              white-space: nowrap;
+                              word-wrap: break-word;
+                            }
+                      >
+                        Option 1
+                      </span>
+                    </label>
+                  </div>
+                  <div
+                    class=
+                        ms-ComboBox-divider
+                        {
+                          background-color: #edebe9;
+                          height: 1px;
+                        }
+                    role="separator"
+                  />
                 </div>
-                <div
-                  class=
-                      ms-ComboBox-divider
-                      {
-                        background-color: #edebe9;
-                        height: 1px;
-                      }
-                  role="separator"
-                />
                 <div
                   class=
                       ms-Checkbox
@@ -1863,7 +1876,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                       & .ms-Checkbox-label {
                         width: 100%;
                       }
-                  title="Option 2"
                 >
                   <input
                     aria-selected="true"
@@ -1887,7 +1899,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                     data-ktp-execute-target="true"
                     id="ComboBox0-list3"
                     role="option"
-                    title="Option 2"
                     type="checkbox"
                   />
                   <label

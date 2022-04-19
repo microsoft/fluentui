@@ -1,24 +1,34 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import type { TextState } from './Text.types';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import type { TextSlots, TextState } from './Text.types';
+import { SlotClassNames } from '@fluentui/react-utilities';
+
+/**
+ * @deprecated Use `textClassNames.root` instead.
+ */
+export const textClassName = 'fui-Text';
+export const textClassNames: SlotClassNames<TextSlots> = {
+  root: 'fui-Text',
+};
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: theme => ({
-    fontFamily: theme.fontFamilyBase,
-    fontSize: theme.fontSizeBase300,
-    lineHeight: theme.lineHeightBase300,
-    fontWeight: theme.fontWeightRegular,
+  root: {
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+    fontWeight: tokens.fontWeightRegular,
     textAlign: 'start',
     display: 'inline',
     whiteSpace: 'normal',
-    overflow: 'visible',
+    ...shorthands.overflow('visible'),
     textOverflow: 'clip',
-  }),
+  },
   nowrap: {
     whiteSpace: 'nowrap',
-    overflow: 'hidden',
+    ...shorthands.overflow('hidden'),
   },
   truncate: {
     textOverflow: 'ellipsis',
@@ -30,62 +40,62 @@ const useStyles = makeStyles({
     fontStyle: 'italic',
   },
   underline: {
-    textDecoration: 'underline',
+    textDecorationLine: 'underline',
   },
   strikethrough: {
-    textDecoration: 'line-through',
+    textDecorationLine: 'line-through',
   },
   strikethroughUnderline: {
-    textDecoration: 'line-through underline',
+    textDecorationLine: 'line-through underline',
   },
-  base100: theme => ({
-    fontSize: theme.fontSizeBase100,
-    lineHeight: theme.lineHeightBase100,
-  }),
-  base200: theme => ({
-    fontSize: theme.fontSizeBase200,
-    lineHeight: theme.lineHeightBase200,
-  }),
-  base400: theme => ({
-    fontSize: theme.fontSizeBase400,
-    lineHeight: theme.lineHeightBase400,
-  }),
-  base500: theme => ({
-    fontSize: theme.fontSizeBase500,
-    lineHeight: theme.lineHeightBase500,
-  }),
-  base600: theme => ({
-    fontSize: theme.fontSizeBase600,
-    lineHeight: theme.lineHeightBase600,
-  }),
-  hero700: theme => ({
-    fontSize: theme.fontSizeHero700,
-    lineHeight: theme.lineHeightHero700,
-  }),
-  hero800: theme => ({
-    fontSize: theme.fontSizeHero800,
-    lineHeight: theme.lineHeightHero800,
-  }),
-  hero900: theme => ({
-    fontSize: theme.fontSizeHero900,
-    lineHeight: theme.lineHeightHero900,
-  }),
-  hero1000: theme => ({
-    fontSize: theme.fontSizeHero1000,
-    lineHeight: theme.lineHeightHero1000,
-  }),
-  monospace: theme => ({
-    fontFamily: theme.fontFamilyMonospace,
-  }),
-  numeric: theme => ({
-    fontFamily: theme.fontFamilyNumeric,
-  }),
-  weightMedium: theme => ({
-    fontWeight: theme.fontWeightMedium,
-  }),
-  weightSemibold: theme => ({
-    fontWeight: theme.fontWeightSemibold,
-  }),
+  base100: {
+    fontSize: tokens.fontSizeBase100,
+    lineHeight: tokens.lineHeightBase100,
+  },
+  base200: {
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+  },
+  base400: {
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+  },
+  base500: {
+    fontSize: tokens.fontSizeBase500,
+    lineHeight: tokens.lineHeightBase500,
+  },
+  base600: {
+    fontSize: tokens.fontSizeBase600,
+    lineHeight: tokens.lineHeightBase600,
+  },
+  hero700: {
+    fontSize: tokens.fontSizeHero700,
+    lineHeight: tokens.lineHeightHero700,
+  },
+  hero800: {
+    fontSize: tokens.fontSizeHero800,
+    lineHeight: tokens.lineHeightHero800,
+  },
+  hero900: {
+    fontSize: tokens.fontSizeHero900,
+    lineHeight: tokens.lineHeightHero900,
+  },
+  hero1000: {
+    fontSize: tokens.fontSizeHero1000,
+    lineHeight: tokens.lineHeightHero1000,
+  },
+  monospace: {
+    fontFamily: tokens.fontFamilyMonospace,
+  },
+  numeric: {
+    fontFamily: tokens.fontFamilyNumeric,
+  },
+  weightMedium: {
+    fontWeight: tokens.fontWeightMedium,
+  },
+  weightSemibold: {
+    fontWeight: tokens.fontWeightSemibold,
+  },
   alignCenter: {
     textAlign: 'center',
   },
@@ -100,10 +110,11 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Text slots based on the state
  */
-export const useTextStyles = (state: TextState): TextState => {
+export const useTextStyles_unstable = (state: TextState): TextState => {
   const styles = useStyles();
 
   state.root.className = mergeClasses(
+    textClassNames.root,
     styles.root,
     state.wrap === false && styles.nowrap,
     state.truncate && styles.truncate,

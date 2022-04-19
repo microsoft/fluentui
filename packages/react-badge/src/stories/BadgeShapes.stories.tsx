@@ -1,8 +1,6 @@
 import * as React from 'react';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { Badge } from '@fluentui/react-badge';
+
+import { Badge } from '../index';
 
 export const Shapes = () => {
   return (
@@ -17,7 +15,7 @@ export const Shapes = () => {
 Shapes.parameters = {
   docs: {
     description: {
-      story: 'A Badge can be represented in the `square`, `rounded` and `circular` shapes.',
+      story: 'A badge can have `square`, `rounded` or `circular` shape. The default is `circular`.',
     },
   },
 };

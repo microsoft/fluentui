@@ -75,46 +75,55 @@ You can learn more about `tsconfig.json` options in [the official TypeScript doc
 Next, create a `webpack.config.js` file in the root of your project folder with the following source:
 
 ```js
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const path = require('path');
 
-module.exports = function (env, { mode }) {
+module.exports = function(env, { mode }) {
   const production = mode === 'production';
   return {
     mode: production ? 'production' : 'development',
     devtool: production ? 'source-map' : 'inline-source-map',
     entry: {
-      app: ['./src/main.ts'],
+      app: ['./src/main.ts']
     },
     output: {
+      filename: 'bundle.js'
       filename: 'bundle.js',
+      publicPath:'/'
     },
     resolve: {
       extensions: ['.ts', '.js'],
-      modules: ['src', 'node_modules'],
+      modules: ['src', 'node_modules']
     },
     devServer: {
       port: 9000,
       historyApiFallback: true,
-      writeToDisk: true,
       open: !process.env.CI,
-      lazy: false,
+      devMiddleware: {
+        writeToDisk: true,
+      },
+      static: {
+        directory: path.join(__dirname, './')
+      }
     },
-    plugins: [new CleanWebpackPlugin()],
+    plugins: [
+      new CleanWebpackPlugin()
+    ],
     module: {
       rules: [
         {
           test: /\.ts$/i,
           use: [
             {
-              loader: 'ts-loader',
-            },
+              loader: 'ts-loader'
+            }
           ],
-          exclude: /node_modules/,
-        },
-      ],
-    },
-  };
-};
+          exclude: /node_modules/
+        }
+      ]
+    }
+  }
+}
 ```
 
 This setup uses `ts-loader` to process TypeScript. It will also enable both a production mode and a development mode that watches your source, recompiling and refreshing your browser as things change. You can read more about Webpack configuration in [the official Webpack documentation](https://webpack.js.org/).

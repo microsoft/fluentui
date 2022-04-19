@@ -1,47 +1,43 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import type { CardHeaderProps, CardHeaderShorthandProps, CardHeaderState } from './CardHeader.types';
-
-/**
- * Array of all shorthand properties listed in CardHeaderShorthandProps
- */
-export const cardHeaderShorthandPropsCompat: CardHeaderShorthandProps[] = [
-  'image',
-  'content',
-  'header',
-  'description',
-  'action',
-];
-
-const mergeProps = makeMergeProps<CardHeaderState>({ deepMerge: cardHeaderShorthandPropsCompat });
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
 
 /**
  * Create the state required to render CardHeader.
  *
- * The returned state can be modified with hooks such as useCardHeaderStyles,
- * before being passed to renderCardHeader.
+ * The returned state can be modified with hooks such as useCardHeaderStyles_unstable,
+ * before being passed to renderCardHeader_unstable.
  *
  * @param props - props from this instance of CardHeader
  * @param ref - reference to root HTMLElement of CardHeader
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const useCardHeader = (
-  props: CardHeaderProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: CardHeaderProps,
-): CardHeaderState => {
-  const state = mergeProps(
-    {
-      image: { as: 'div' },
-      content: { as: 'div', children: React.Fragment },
-      header: { as: 'span' },
-      description: { as: 'span' },
-      action: { as: 'div' },
-      ref,
-    },
-    defaultProps && resolveShorthandProps(defaultProps, cardHeaderShorthandPropsCompat),
-    resolveShorthandProps(props, cardHeaderShorthandPropsCompat),
-  );
+export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HTMLElement>): CardHeaderState => {
+  const { image, content, header, description, action } = props;
 
-  return state;
+  return {
+    components: {
+      root: 'div',
+      image: 'div',
+      content: 'div',
+      header: 'span',
+      description: 'span',
+      action: 'div',
+    },
+
+    root: getNativeElementProps('div', {
+      ref,
+      ...props,
+    }),
+    image: resolveShorthand(image, {
+      required: true,
+    }),
+    content: resolveShorthand(content || {}),
+    header: resolveShorthand(header, {
+      required: true,
+    }),
+    description: resolveShorthand(description, {
+      required: true,
+    }),
+    action: resolveShorthand(action),
+  };
 };

@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 
 import config from '../config';
-import { DangerJS } from './types';
+import { DangerJS, StructuredDiff } from './types';
 import { DangerDSLType } from 'danger';
 
 const CHANGELOG_FILE = 'packages/fluentui/CHANGELOG.md';
@@ -30,10 +30,10 @@ const getMalformedChangelogEntries = async (danger: DangerDSLType): Promise<stri
 };
 
 const getAddedLinesFromChangelog = async (danger: DangerDSLType): Promise<{ content: string; ln: number }[]> => {
-  return danger.git.structuredDiffForFile(CHANGELOG_FILE).then(changelogDiff => {
+  return danger.git.structuredDiffForFile(CHANGELOG_FILE).then((changelogDiff: StructuredDiff) => {
     if (changelogDiff) {
       return changelogDiff.chunks.reduce((acc, chunk) => {
-        const filteredLines = chunk.changes.filter((change: any) => change.type === 'add');
+        const filteredLines = chunk.changes.filter(change => change.type === 'add');
         return acc.concat(filteredLines);
       }, []);
     }

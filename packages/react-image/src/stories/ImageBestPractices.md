@@ -1,4 +1,7 @@
-## Best Practices
+<details>
+<summary>
+ Best Practices
+</summary>
 
 ### Do
 
@@ -13,3 +16,5 @@
 - Don't include "image of", "picture of" etc. in the `alt` attribute since it is redundant.
 
 - Don't repeat the same information that is already on the page on the `alt` attribute.
+
+</details>

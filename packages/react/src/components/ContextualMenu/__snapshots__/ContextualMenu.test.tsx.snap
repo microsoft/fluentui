@@ -207,6 +207,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                   border-radius: 2px;
                   box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                   box-sizing: border-box;
+                  display: flex;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -241,6 +242,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                     overflow-x: hidden;
                     overflow-y: auto;
                     position: relative;
+                    width: 100%;
                   }
               onKeyDown={[Function]}
               onMouseDown={[Function]}
@@ -285,7 +287,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                         font-weight: 400;
                         min-width: 180px;
                       }
-                  data-focuszone-id="FocusZone4"
+                  data-focuszone-id="FocusZone3"
                   onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseDownCapture={[Function]}
@@ -372,42 +374,26 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                               background-color: #f3f2f1;
                               color: #201f1e;
                             }
-                            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                              -ms-high-contrast-adjust: none;
-                              background-color: Highlight;
-                              border-color: Highlight;
-                              color: HighlightText;
-                              forced-color-adjust: none;
+                            &:hover .ms-ContextualMenu-icon {
+                              color: #106ebe;
+                            }
+                            &:hover .ms-ContextualMenu-submenuIcon {
+                              color: #323130;
                             }
                             &:active {
                               background-color: #edebe9;
                             }
-                            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-                              -ms-high-contrast-adjust: none;
-                              background-color: Highlight;
-                              border-color: Highlight;
-                              color: HighlightText;
-                              forced-color-adjust: none;
+                            &:active .ms-ContextualMenu-icon {
+                              color: #005a9e;
+                            }
+                            &:active .ms-ContextualMenu-submenuIcon {
+                              color: #323130;
                             }
                             .ms-Fabric--isFocusVisible &:focus {
                               background-color: #ffffff;
                             }
-                            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
-                              -ms-high-contrast-adjust: none;
-                              background-color: Highlight;
-                              border-color: Highlight;
-                              color: HighlightText;
-                              forced-color-adjust: none;
-                            }
                             .ms-Fabric--isFocusVisible &:focus:hover {
                               background-color: #ffffff;
-                            }
-                            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:hover {
-                              -ms-high-contrast-adjust: none;
-                              background-color: Highlight;
-                              border-color: Highlight;
-                              color: HighlightText;
-                              forced-color-adjust: none;
                             }
                             .ms-Fabric--isFocusVisible &:hover {
                               background: inherit;
@@ -441,7 +427,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                                   margin-left: 4px;
                                   margin-right: 4px;
                                   margin-top: 0;
-                                  overflow: hidden;
                                   text-overflow: ellipsis;
                                   vertical-align: middle;
                                   white-space: nowrap;
@@ -477,9 +462,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                                 }
                                 @media only screen and (min-width: 0px) and (max-width: 639px){& {
                                   font-size: 16px;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  color: HighlightText;
                                 }
                             data-icon-name="ChevronRight"
                           >

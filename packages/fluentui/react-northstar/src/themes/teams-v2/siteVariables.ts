@@ -1,3 +1,5 @@
+import { transparentColors } from '../teams/colors';
+
 export const colors = {
   black: '#000',
   white: '#fff',
@@ -32,18 +34,18 @@ export const colors = {
     910: '#0a0a0a',
   },
   brand: {
-    50: '#e9eaf6',
-    100: '#dbdcf0',
-    200: '#c7c9ff',
-    300: '#b2b5ff',
-    400: '#a6a7dc',
-    450: '#9ea2ff',
-    500: '#7479dc',
-    600: '#6264a7',
-    700: '#494b83',
-    800: '#464775',
-    900: '#3d3e66',
-    1000: '#323348',
+    50: '#e8ebfa',
+    100: '#dcdffa',
+    200: '#c5cbfa',
+    300: '#acb3fa',
+    400: '#9399f5',
+    450: '#9399f5',
+    500: '#7a80eb',
+    600: '#5b5fc7',
+    700: '#444791',
+    800: '#3d3e78',
+    900: '#383966',
+    1000: '#2f2f4a',
   },
 };
 
@@ -56,7 +58,7 @@ export const colorScheme = {
     foreground4: colors.white,
     foreground5: colors.grey['100'],
     foreground6: colors.grey['200'],
-    foreground7: colors.grey['750'],
+    foreground7: colors.grey['450'],
 
     background: colors.white,
     background1: colors.grey['25'],
@@ -64,6 +66,8 @@ export const colorScheme = {
     background3: colors.grey['100'],
     background4: colors.grey['150'],
     background5: colors.grey['200'],
+    background6: colors.grey['150'],
+    background7: colors.grey['50'],
 
     border: colors.grey['230'],
     border1: colors.grey['100'],
@@ -84,6 +88,7 @@ export const colorScheme = {
 
     foregroundPressed: colors.grey['750'],
     backgroundPressed: colors.grey['200'],
+    backgroundPressed2: colors.grey['50'],
 
     foregroundActive: colors.grey['750'],
     foregroundActive1: colors.white,
@@ -133,13 +138,14 @@ export const colorScheme = {
 
     backgroundHover: colors.brand['700'],
     backgroundHover1: colors.brand['50'],
+    backgroundHover3: colors.brand['600'],
 
     foregroundPressed: colors.brand['700'],
     foregroundPressed1: colors.white,
 
     backgroundPressed: colors.brand['800'],
 
-    borderPressed: colors.brand['300'],
+    borderPressed: transparentColors.onyx['700'],
 
     foregroundActive: colors.brand['600'],
     foregroundActive1: colors.brand['600'],

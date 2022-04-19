@@ -1,13 +1,13 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities/index';
+import { TestWrapperDecoratorTall } from '../utilities/index';
 import { Breadcrumb } from '@fluentui/react';
 
 const noOp = () => undefined;
 
 storiesOf('Breadcrumb', module)
-  .addDecorator(FabricDecoratorTall)
+  .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -74,6 +74,7 @@ storiesOf('Breadcrumb', module)
 
 // Stories for hovering over actionable and non-actionable items
 storiesOf('Breadcrumb', module)
+  .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

@@ -1,6 +1,5 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -8,6 +7,7 @@ import {
   useStyles,
   useTelemetry,
   mergeVariablesOverrides,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -57,7 +57,7 @@ export const avatarClassName = 'ui-avatar';
 /**
  * An Avatar is a graphical representation of a user.
  */
-export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStaticProps<AvatarProps> = props => {
+export const Avatar = (React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
   setStart();
@@ -133,10 +133,10 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStatic
   const hasGlyph = !!image || !!icon;
 
   const result = (
-    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
+    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
       {hasGlyph && (imageElement || iconElement)}
       {!hasGlyph && labelElement}
-      {createShorthand(AvatarStatus, status, {
+      {createShorthand(AvatarStatus, status as ShorthandValue<AvatarStatusProps & { as: 'span' }>, {
         defaultProps: () =>
           getA11Props('status', {
             size,
@@ -153,7 +153,7 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStatic
   setEnd();
 
   return result;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, AvatarProps> & FluentComponentStaticProps<AvatarProps>;
 
 Avatar.displayName = 'Avatar';
 

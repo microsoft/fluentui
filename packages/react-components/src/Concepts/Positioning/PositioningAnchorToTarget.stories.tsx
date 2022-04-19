@@ -25,7 +25,7 @@ AnchorToTarget.parameters = {
       story: [
         'Components with positioned slots will generally also contain the target which the positioned element will',
         'anchor on. It is also possible to select another DOM element for the anchor of the positioned slot. This',
-        'can be useful in scenarios where the same instance of a positioned components needs to be reused',
+        'can be useful in scenarios where the same instance of a positioned component needs to be reused.',
       ].join('\n'),
     },
   },

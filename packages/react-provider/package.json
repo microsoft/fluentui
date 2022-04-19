@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-provider",
-  "version": "9.0.0-beta.1",
+  "version": "9.0.0-rc.5",
   "description": "Fluent UI React provider component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,40 +14,29 @@
   "scripts": {
     "build": "just-scripts build",
     "bundle-size": "bundle-size measure",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-provider/src && yarn docs",
-    "storybook": "start-storybook",
-    "start": "yarn storybook"
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-provider/src && yarn docs",
+    "storybook": "node ../../scripts/storybook/runner",
+    "start": "yarn storybook",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "9.0.0-beta.1",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-beta.1",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-make-styles": "9.0.0-beta.1",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/jest": "24.9.1",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.3",
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "9.0.0-beta.1",
-    "@fluentui/react-shared-contexts": "9.0.0-beta.1",
-    "@fluentui/react-tabster": "9.0.0-beta.1",
-    "@fluentui/react-theme": "9.0.0-beta.1",
-    "@fluentui/react-utilities": "9.0.0-beta.1",
+    "@griffel/react": "1.0.3",
+    "@fluentui/react-shared-contexts": "9.0.0-rc.4",
+    "@fluentui/react-tabster": "9.0.0-rc.5",
+    "@fluentui/react-theme": "9.0.0-rc.4",
+    "@fluentui/react-utilities": "9.0.0-rc.5",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -57,11 +46,17 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",
       "patch"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

@@ -2,6 +2,81 @@
   "name": "@fluentui/bundle-size",
   "entries": [
     {
+      "date": "Wed, 15 Dec 2021 07:31:27 GMT",
+      "tag": "@fluentui/bundle-size_v1.1.4",
+      "version": "1.1.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/bundle-size",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "fixup! fixup! chore: update all jest deps to v25 + apply single version policy"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Dec 2021 07:27:44 GMT",
+      "tag": "@fluentui/bundle-size_v1.1.4",
+      "version": "1.1.4",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/bundle-size",
+            "commit": "e8092e63498f4d42c54a11325172dd3e6f2d65d6",
+            "comment": "fix: incorrect promise test"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Dec 2021 07:36:11 GMT",
+      "tag": "@fluentui/bundle-size_v1.1.4",
+      "version": "1.1.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/bundle-size",
+            "commit": "2f1e97b40799b217c781df5df68434721b331c0d",
+            "comment": "Adds missing dependencies to bundle-size"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 14:54:12 GMT",
+      "tag": "@fluentui/bundle-size_v1.1.3",
+      "version": "1.1.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/bundle-size",
+            "commit": "d35f28080d37c8026e7d407d368946e01f17cf2e",
+            "comment": "Adds missing dependencies to bundle-size tool"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Nov 2021 07:36:21 GMT",
+      "tag": "@fluentui/bundle-size_v1.1.2",
+      "version": "1.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/bundle-size",
+            "commit": "a75c8c07c5296206b998f9500baced6952e3f81b",
+            "comment": "Adds verification to compilation error"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Sep 2021 07:34:24 GMT",
       "tag": "@fluentui/bundle-size_v1.1.1",
       "version": "1.1.1",

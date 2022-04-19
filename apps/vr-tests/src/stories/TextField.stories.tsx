@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth } from '../utilities/index';
+import { TestWrapperDecoratorFixedWidth } from '../utilities/index';
 import { TextField } from '@fluentui/react';
 
 storiesOf('TextField', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -22,7 +22,7 @@ storiesOf('TextField', module)
   ))
   .addStory('Root', () => <TextField label="Standard" />)
   .addStory('Placeholder', () => <TextField label="Standard" placeholder="Placeholder" />, {
-    rtl: true,
+    includeRtl: true,
   })
   .addStory('Disabled', () => <TextField label="Disabled" disabled />)
   .addStory('Required', () => <TextField label="Required" required />)
@@ -64,16 +64,16 @@ storiesOf('TextField', module)
       />
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory(
     'Prefix with Value, Disabled',
     () => <TextField label="Prefix" prefix="https://" defaultValue="example.com" disabled />,
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory('Suffix', () => <TextField label="Suffix" suffix=".com" />, {
-    rtl: true,
+    includeRtl: true,
   });

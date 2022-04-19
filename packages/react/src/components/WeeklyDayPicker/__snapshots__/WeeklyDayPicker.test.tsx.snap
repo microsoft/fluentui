@@ -132,7 +132,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
     <table
       aria-activedescendant="id__0"
       aria-multiselectable="false"
-      aria-readonly="true"
       className=
 
           {
@@ -592,7 +591,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           role="presentation"
         >
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -645,14 +646,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="21, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -692,9 +691,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -705,7 +704,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -758,14 +759,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="22, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -805,9 +804,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -818,7 +817,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -871,14 +872,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="23, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -918,9 +917,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -931,7 +930,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -984,14 +985,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="24, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -1031,9 +1030,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1044,7 +1043,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -1097,14 +1098,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="25, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -1144,9 +1143,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1157,7 +1156,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -1210,14 +1211,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="26, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -1257,9 +1256,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1270,7 +1269,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -1323,14 +1324,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="27, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -1370,9 +1369,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1389,6 +1388,8 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
 
         >
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
 
                 {
@@ -1465,18 +1466,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-label="28, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -1516,10 +1516,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1530,6 +1529,8 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
 
                 {
@@ -1606,18 +1607,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-label="29, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -1657,10 +1657,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1671,6 +1670,8 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
 
                 {
@@ -1747,18 +1748,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-label="30, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -1798,10 +1798,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1812,6 +1811,8 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
 
                 {
@@ -1888,18 +1889,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-label="31, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -1939,10 +1939,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1953,6 +1952,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-current="date"
+            aria-disabled={false}
+            aria-selected={true}
             className=
                 ms-CalendarDay-daySelected
                 {
@@ -2064,19 +2066,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: HighlightText!important;
                   forced-color-adjust: none;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
+            tabIndex={0}
           >
             <button
-              aria-current="date"
-              aria-disabled={false}
               aria-label="1, January, 2019"
-              aria-readonly={true}
-              aria-selected={true}
               className=
                   ms-CalendarDay-dayIsToday
                   {
@@ -2129,12 +2130,10 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     color: Window!important;
                     forced-color-adjust: none;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
               id="id__0"
-              onKeyDown={[Function]}
-              role="gridcell"
-              tabIndex={0}
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2145,6 +2144,8 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
 
                 {
@@ -2217,18 +2218,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &:after {
                   border-right: 1px solid #605e5c;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-label="2, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -2268,10 +2268,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2282,6 +2281,8 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
 
                 {
@@ -2354,18 +2355,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &:after {
                   border-right: 1px solid #605e5c;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-label="3, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -2405,10 +2405,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2434,7 +2433,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           role="presentation"
         >
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -2483,14 +2484,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="4, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -2530,9 +2529,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2543,7 +2542,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -2592,14 +2593,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="5, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -2639,9 +2638,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2652,7 +2651,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -2701,14 +2702,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="6, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -2748,9 +2747,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2761,7 +2760,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -2810,14 +2811,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="7, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -2857,9 +2856,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2870,7 +2869,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -2919,14 +2920,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="8, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -2966,9 +2965,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2979,7 +2978,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -3028,14 +3029,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="9, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -3075,9 +3074,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -3088,7 +3087,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -3137,14 +3138,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="10, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -3184,9 +3183,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -3426,7 +3425,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
     <table
       aria-activedescendant="id__0"
       aria-multiselectable="false"
-      aria-readonly="true"
       className=
 
           {
@@ -3886,7 +3884,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           role="presentation"
         >
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -3939,14 +3939,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="23, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -3986,9 +3984,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -3999,7 +3997,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -4052,14 +4052,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="24, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -4099,9 +4097,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4112,7 +4110,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -4165,14 +4165,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="25, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -4212,9 +4210,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4225,7 +4223,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -4278,14 +4278,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="26, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -4325,9 +4323,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4338,7 +4336,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -4391,14 +4391,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="27, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -4438,9 +4436,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4451,7 +4449,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -4504,14 +4504,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="28, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -4551,9 +4549,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4564,7 +4562,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -4617,14 +4617,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="29, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -4664,9 +4662,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4683,6 +4681,8 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
 
         >
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
 
                 {
@@ -4759,18 +4759,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-label="30, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -4810,10 +4809,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4824,6 +4822,8 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
 
                 {
@@ -4900,18 +4900,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-label="31, December, 2018"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -4951,10 +4950,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4965,6 +4963,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-current="date"
+            aria-disabled={false}
+            aria-selected={true}
             className=
                 ms-CalendarDay-daySelected
                 {
@@ -5076,19 +5077,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: HighlightText!important;
                   forced-color-adjust: none;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
+            tabIndex={0}
           >
             <button
-              aria-current="date"
-              aria-disabled={false}
               aria-label="1, January, 2019"
-              aria-readonly={true}
-              aria-selected={true}
               className=
                   ms-CalendarDay-dayIsToday
                   {
@@ -5141,12 +5141,10 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     color: Window!important;
                     forced-color-adjust: none;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
               id="id__0"
-              onKeyDown={[Function]}
-              role="gridcell"
-              tabIndex={0}
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5157,6 +5155,8 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
 
                 {
@@ -5229,18 +5229,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &:after {
                   border-right: 1px solid #605e5c;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-label="2, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -5280,10 +5279,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5294,6 +5292,8 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
 
                 {
@@ -5366,18 +5366,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &:after {
                   border-right: 1px solid #605e5c;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-label="3, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -5417,10 +5416,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5431,6 +5429,8 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
 
                 {
@@ -5503,18 +5503,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &:after {
                   border-right: 1px solid #605e5c;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-label="4, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -5554,10 +5553,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5568,6 +5566,8 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
 
                 {
@@ -5640,18 +5640,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &:after {
                   border-right: 1px solid #605e5c;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-label="5, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -5691,10 +5690,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5720,7 +5718,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           role="presentation"
         >
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -5769,14 +5769,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="6, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -5816,9 +5814,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5829,7 +5827,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -5878,14 +5878,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="7, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -5925,9 +5923,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5938,7 +5936,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -5987,14 +5987,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="8, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -6034,9 +6032,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -6047,7 +6045,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -6096,14 +6096,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="9, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -6143,9 +6141,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -6156,7 +6154,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -6205,14 +6205,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="10, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -6252,9 +6250,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -6265,7 +6263,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -6314,14 +6314,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="11, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -6361,9 +6359,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -6374,7 +6372,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -6423,14 +6423,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
               aria-label="12, January, 2019"
-              aria-readonly={true}
-              aria-selected={false}
               className=
 
                   {
@@ -6470,9 +6468,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span

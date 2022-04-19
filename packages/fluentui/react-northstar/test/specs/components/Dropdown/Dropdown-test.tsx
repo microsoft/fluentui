@@ -6,7 +6,7 @@ import { Dropdown } from 'src/components/Dropdown/Dropdown';
 import { dropdownSelectedItemSlotClassNames } from 'src/components/Dropdown/DropdownSelectedItem';
 import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 import { implementsPopperProps } from 'test/specs/commonTests/implementsPopperProps';
-import { findIntrinsicElement } from 'test/utils';
+import { createTestContainer, findIntrinsicElement } from 'test/utils';
 import { DropdownItemProps } from 'src/components/Dropdown/DropdownItem';
 import { ShorthandValue } from 'src/types';
 import { List } from 'src/components/List/List';
@@ -202,11 +202,13 @@ describe('Dropdown', () => {
     });
 
     it('when set to "true" by trigger button click will move focus to the items list', () => {
-      const { clickOnTriggerButton, itemsListNode } = renderDropdown();
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const { clickOnTriggerButton, itemsListNode } = renderDropdown(undefined, testContainer);
 
       clickOnTriggerButton();
 
       expect(itemsListNode).toHaveFocus();
+      removeTestContainer();
     });
 
     it('is "false" when blurred by Tab on items list', () => {
@@ -1249,6 +1251,24 @@ describe('Dropdown', () => {
 
       expect(getA11yMessageContainerNode()).toHaveTextContent('');
     });
+
+    it('has items count narration element associated via aria-describedby after an item has been selected', () => {
+      const itemToBeClickedIndex = 1;
+      const { clickOnItemAtIndex, searchInputNode, getItemsCountNode } = renderDropdown({
+        defaultOpen: true,
+        getA11ySelectionMessage: { itemsCount: count => `${count} item is  selected.` },
+        search: true,
+        multiple: true,
+      });
+
+      clickOnItemAtIndex(itemToBeClickedIndex);
+      const itemsCountNode = getItemsCountNode();
+      const itemsCountNodeId = itemsCountNode.getAttribute('id');
+
+      expect(searchInputNode).toHaveAttribute('aria-describedby', itemsCountNodeId);
+
+      expect(itemsCountNode).toHaveTextContent('1 item is selected.');
+    });
   });
 
   describe('searchQuery', () => {
@@ -1422,111 +1442,156 @@ describe('Dropdown', () => {
 
   describe('activeSelectedIndex', () => {
     it('is set on active item click', () => {
-      const { getSelectedItemNodeAtIndex, clickOnSelectedItemAtIndex } = renderDropdown({
-        multiple: true,
-        value: [items[2]],
-      });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const { getSelectedItemNodeAtIndex, clickOnSelectedItemAtIndex } = renderDropdown(
+        {
+          multiple: true,
+          value: [items[2]],
+        },
+        testContainer,
+      );
 
       clickOnSelectedItemAtIndex(0);
 
       expect(getSelectedItemNodeAtIndex(0)).toHaveFocus();
+      removeTestContainer();
     });
 
     it('is set as last index on left arrow from the search query', () => {
-      const { getSelectedItemNodeAtIndex, keyDownOnSearchInput } = renderDropdown({
-        multiple: true,
-        value: [items[0], items[1], items[2]],
-        search: true,
-      });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const { getSelectedItemNodeAtIndex, keyDownOnSearchInput } = renderDropdown(
+        {
+          multiple: true,
+          value: [items[0], items[1], items[2]],
+          search: true,
+        },
+        testContainer,
+      );
 
       keyDownOnSearchInput('ArrowLeft');
 
       expect(getSelectedItemNodeAtIndex(2)).toHaveFocus();
+      removeTestContainer();
     });
 
     it('is set as last index on left arrow from the trigger button', () => {
-      const { getSelectedItemNodeAtIndex, keyDownOnTriggerButton } = renderDropdown({
-        multiple: true,
-        value: [items[0], items[1], items[2]],
-      });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const { getSelectedItemNodeAtIndex, keyDownOnTriggerButton } = renderDropdown(
+        {
+          multiple: true,
+          value: [items[0], items[1], items[2]],
+        },
+        testContainer,
+      );
 
       keyDownOnTriggerButton('ArrowLeft');
 
       expect(getSelectedItemNodeAtIndex(2)).toHaveFocus();
+      removeTestContainer();
     });
 
     it('is updated on arrow navigation after being set by click', () => {
-      const { getSelectedItemNodeAtIndex, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown({
-        multiple: true,
-        value: [items[0], items[1], items[2]],
-      });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const { getSelectedItemNodeAtIndex, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown(
+        {
+          multiple: true,
+          value: [items[0], items[1], items[2]],
+        },
+        testContainer,
+      );
 
       clickOnSelectedItemAtIndex(2);
       keyDownOnSelectedItemAtIndex(2, 'ArrowLeft');
 
       expect(getSelectedItemNodeAtIndex(1)).toHaveFocus();
+      removeTestContainer();
     });
 
     it('stays as "0" on left arrow from the first selected item', () => {
-      const { getSelectedItemNodeAtIndex, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown({
-        multiple: true,
-        value: [items[0], items[1], items[2]],
-      });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const { getSelectedItemNodeAtIndex, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown(
+        {
+          multiple: true,
+          value: [items[0], items[1], items[2]],
+        },
+        testContainer,
+      );
 
       clickOnSelectedItemAtIndex(0);
       keyDownOnSelectedItemAtIndex(0, 'ArrowLeft');
 
       expect(getSelectedItemNodeAtIndex(0)).toHaveFocus();
+      removeTestContainer();
     });
 
     it('gets unset on right arrow from the last selected item and moves focus to trigger button', () => {
-      const { triggerButtonNode, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown({
-        multiple: true,
-        value: [items[0], items[1], items[2]],
-      });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const { triggerButtonNode, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown(
+        {
+          multiple: true,
+          value: [items[0], items[1], items[2]],
+        },
+        testContainer,
+      );
 
       clickOnSelectedItemAtIndex(2);
       keyDownOnSelectedItemAtIndex(2, 'ArrowRight');
 
       expect(triggerButtonNode).toHaveFocus();
+      removeTestContainer();
     });
 
     it('gets unset on the removal of selected item and moves focus to trigger button', () => {
-      const { triggerButtonNode, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown({
-        multiple: true,
-        value: [items[0], items[1], items[2]],
-      });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const { triggerButtonNode, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown(
+        {
+          multiple: true,
+          value: [items[0], items[1], items[2]],
+        },
+        testContainer,
+      );
 
       clickOnSelectedItemAtIndex(2);
       keyDownOnSelectedItemAtIndex(2, 'Delete');
 
       expect(triggerButtonNode).toHaveFocus();
+      removeTestContainer();
     });
 
     it('gets unset on right arrow from the last selected item and moves focus to search input', () => {
-      const { searchInputNode, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown({
-        multiple: true,
-        value: [items[0], items[1], items[2]],
-        search: true,
-      });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const { searchInputNode, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown(
+        {
+          multiple: true,
+          value: [items[0], items[1], items[2]],
+          search: true,
+        },
+        testContainer,
+      );
 
       clickOnSelectedItemAtIndex(2);
       keyDownOnSelectedItemAtIndex(2, 'ArrowRight');
 
       expect(searchInputNode).toHaveFocus();
+      removeTestContainer();
     });
 
     it('gets unset on the removal of selected item and moves focus to search input', () => {
-      const { searchInputNode, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown({
-        multiple: true,
-        value: [items[0], items[1], items[2]],
-        search: true,
-      });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const { searchInputNode, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown(
+        {
+          multiple: true,
+          value: [items[0], items[1], items[2]],
+          search: true,
+        },
+        testContainer,
+      );
 
       clickOnSelectedItemAtIndex(2);
       keyDownOnSelectedItemAtIndex(2, 'Delete');
 
       expect(searchInputNode).toHaveFocus();
+      removeTestContainer();
     });
   });
 
@@ -1557,19 +1622,23 @@ describe('Dropdown', () => {
 
   describe('toggleIndicatorNode', () => {
     it('moves focus to list at click', () => {
-      const { clickOnToggleIndicator, itemsListNode } = renderDropdown();
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const { clickOnToggleIndicator, itemsListNode } = renderDropdown(undefined, testContainer);
 
       clickOnToggleIndicator();
 
       expect(itemsListNode).toHaveFocus();
+      removeTestContainer();
     });
 
     it('moves focus to input in search mode', () => {
-      const { clickOnToggleIndicator, searchInputNode } = renderDropdown({ search: true });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const { clickOnToggleIndicator, searchInputNode } = renderDropdown({ search: true }, testContainer);
 
       clickOnToggleIndicator();
 
       expect(searchInputNode).toHaveFocus();
+      removeTestContainer();
     });
   });
 
@@ -1786,15 +1855,19 @@ describe('Dropdown', () => {
 
   describe('disabled', () => {
     it('allows no action on the trigger button', () => {
+      const { testContainer, removeTestContainer } = createTestContainer();
       const {
         clickOnTriggerButton,
         focusTriggerButton,
         getItemNodes,
         triggerButtonNode,
         keyDownOnTriggerButton,
-      } = renderDropdown({
-        disabled: true,
-      });
+      } = renderDropdown(
+        {
+          disabled: true,
+        },
+        testContainer,
+      );
 
       expect(triggerButtonNode).toHaveAttribute('disabled');
 
@@ -1809,19 +1882,24 @@ describe('Dropdown', () => {
       keyDownOnTriggerButton('ArrowDown');
 
       expect(getItemNodes()).toHaveLength(0);
+      removeTestContainer();
     });
 
     it('allows no action on the search input', () => {
+      const { testContainer, removeTestContainer } = createTestContainer();
       const {
         keyDownOnSearchInput,
         clickOnSearchInput,
         focusSearchInput,
         getItemNodes,
         searchInputNode,
-      } = renderDropdown({
-        disabled: true,
-        search: true,
-      });
+      } = renderDropdown(
+        {
+          disabled: true,
+          search: true,
+        },
+        testContainer,
+      );
 
       expect(searchInputNode).toHaveAttribute('disabled');
 
@@ -1836,12 +1914,17 @@ describe('Dropdown', () => {
       clickOnSearchInput();
 
       expect(searchInputNode).not.toHaveFocus();
+      removeTestContainer();
     });
 
     it('allows no action on the toggle indicator', () => {
-      const { clickOnToggleIndicator, toggleIndicatorNode, getItemNodes } = renderDropdown({
-        disabled: true,
-      });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const { clickOnToggleIndicator, toggleIndicatorNode, getItemNodes } = renderDropdown(
+        {
+          disabled: true,
+        },
+        testContainer,
+      );
 
       clickOnToggleIndicator();
 
@@ -1850,6 +1933,7 @@ describe('Dropdown', () => {
       toggleIndicatorNode.focus();
 
       expect(toggleIndicatorNode).not.toHaveFocus();
+      removeTestContainer();
     });
   });
 
@@ -1931,6 +2015,28 @@ describe('Dropdown', () => {
 
       expect(getItemNodes()).toHaveLength(1);
       expect(getItemNodeAtIndex(0)).toHaveTextContent(items[0]);
+    });
+  });
+
+  describe('accessibility trigger button aria labels', () => {
+    it('trigger button should not have aria-label', () => {
+      const { triggerButtonNode } = renderDropdown({ items });
+      expect(triggerButtonNode).not.toHaveAttribute('aria-label');
+    });
+
+    it('trigger button should not have aria-labelledby', () => {
+      const { triggerButtonNode } = renderDropdown({ items });
+      expect(triggerButtonNode).not.toHaveAttribute('aria-labelledby');
+    });
+
+    it('trigger button should have aria-labelledby from user prop', () => {
+      const { triggerButtonNode } = renderDropdown({ items, 'aria-labelledby': 'form-label' });
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby', 'form-label');
+    });
+
+    it('trigger button should not have aria-describedby', () => {
+      const { triggerButtonNode } = renderDropdown({ items });
+      expect(triggerButtonNode).not.toHaveAttribute('aria-describedby');
     });
   });
 });

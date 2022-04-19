@@ -1,6 +1,13 @@
 import * as yargsParser from 'yargs-parser';
 import type * as Enquirer from 'enquirer';
-import { joinPathFragments, logger, readProjectConfiguration, readWorkspaceConfiguration, Tree } from '@nrwl/devkit';
+import {
+  joinPathFragments,
+  logger,
+  readProjectConfiguration,
+  readWorkspaceConfiguration,
+  Tree,
+  getProjects as getAllProjects,
+} from '@nrwl/devkit';
 
 /**
  * CLI prompts abstraction to trigger dynamic prompts within a generator
@@ -77,10 +84,18 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
   const paths = {
     configRoot: joinPathFragments(projectConfig.root, 'config'),
     packageJson: joinPathFragments(projectConfig.root, 'package.json'),
-    tsconfig: joinPathFragments(projectConfig.root, 'tsconfig.json'),
+    tsconfig: {
+      main: joinPathFragments(projectConfig.root, 'tsconfig.json'),
+      lib: joinPathFragments(projectConfig.root, 'tsconfig.lib.json'),
+      test: joinPathFragments(projectConfig.root, 'tsconfig.spec.json'),
+    },
+    sourceRoot: joinPathFragments(projectConfig.root, 'src'),
+    conformanceSetup: joinPathFragments(projectConfig.root, 'src', 'common', 'isConformant.ts'),
     babelConfig: joinPathFragments(projectConfig.root, '.babelrc.json'),
     jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
+    jestSetupFile: joinPathFragments(projectConfig.root, 'config', 'tests.js'),
     rootTsconfig: '/tsconfig.base.json',
+    rootPackageJson: '/package.json',
     rootJestPreset: '/jest.preset.js',
     rootJestConfig: '/jest.config.js',
     npmConfig: joinPathFragments(projectConfig.root, '.npmignore'),
@@ -90,14 +105,38 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
       main: joinPathFragments(projectConfig.root, '.storybook/main.js'),
       preview: joinPathFragments(projectConfig.root, '.storybook/preview.js'),
     },
+    e2e: {
+      rootFolder: joinPathFragments(projectConfig.root, 'e2e'),
+      support: joinPathFragments(projectConfig.root, 'e2e', 'support.js'),
+      tsconfig: joinPathFragments(projectConfig.root, 'e2e', 'tsconfig.json'),
+    },
   };
 
   return {
     projectConfig,
     workspaceConfig,
+    /**
+     * package name without npmScope (@scopeName)
+     */
+    normalizedPkgName: options.packageName.replace(`@${workspaceConfig.npmScope}/`, ''),
     paths,
   };
 }
+
+export const workspacePaths = {
+  workspace: '/workspace.json',
+  nx: '/nx.json',
+  tsconfig: '/tsconfig.base.json',
+  packageJson: '/package.json',
+  jest: { preset: '/jest.preset.js', config: '/jest.config.js' },
+  github: {
+    root: '/.github',
+    codeowners: joinPathFragments('/.github', 'CODEOWNERS'),
+  },
+  storybook: {
+    root: '/.storyboook',
+  },
+};
 
 export type UserLog = Array<{ type: keyof typeof logger; message: string }>;
 export function printUserLogs(logs: UserLog) {
@@ -106,4 +145,29 @@ export function printUserLogs(logs: UserLog) {
   logs.forEach(log => logger[log.type](log.message));
 
   logger.log(`${'='.repeat(80)}\n`);
+}
+
+/**
+ * Overridden `@nrwl/devkit#getProjects` function
+ * Get all workspace projects or only subset, if projectNames array is specified
+ *
+ * @param tree
+ * @param projectNames - array of project names. Use this to return only subset of projects
+ */
+export function getProjects(tree: Tree, projectNames?: string[]) {
+  const allProjects = getAllProjects(tree);
+
+  if (Array.isArray(projectNames) && projectNames.length > 0) {
+    const pickedProjects: ReturnType<typeof getAllProjects> = new Map();
+
+    for (const [projectName, projectConfig] of allProjects.entries()) {
+      if (projectNames.includes(projectName)) {
+        pickedProjects.set(projectName, projectConfig);
+      }
+    }
+
+    return pickedProjects;
+  }
+
+  return allProjects;
 }

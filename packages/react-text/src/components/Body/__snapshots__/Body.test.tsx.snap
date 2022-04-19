@@ -3,7 +3,7 @@
 exports[`Body renders a default state 1`] = `
 <div>
   <span
-    class=""
+    class="fui-Body fui-Text"
   >
     Default Body
   </span>

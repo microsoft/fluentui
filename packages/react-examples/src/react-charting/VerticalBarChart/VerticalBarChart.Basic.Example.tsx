@@ -159,6 +159,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         />
         <div style={rootStyle}>
           <VerticalBarChart
+            culture={window.navigator.language}
             chartTitle="Vertical bar chart basic example "
             data={points}
             width={this.state.width}

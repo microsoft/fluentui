@@ -6,7 +6,7 @@ import {
   useFluentContext,
   useUnhandledProps,
   useStyles,
-  ComponentWithAs,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
@@ -60,10 +60,7 @@ export const dividerClassName = 'ui-divider';
 /**
  * A Divider visually segments content.
  */
-export const Divider: ComponentWithAs<'div', DividerProps> &
-  FluentComponentStaticProps<DividerProps> & {
-    Content: typeof DividerContent;
-  } = props => {
+export const Divider = (React.forwardRef<HTMLDivElement, DividerProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Divider.displayName, context.telemetry);
   setStart();
@@ -111,6 +108,7 @@ export const Divider: ComponentWithAs<'div', DividerProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -120,7 +118,10 @@ export const Divider: ComponentWithAs<'div', DividerProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, DividerProps> &
+  FluentComponentStaticProps<DividerProps> & {
+    Content: typeof DividerContent;
+  };
 
 Divider.displayName = 'Divider';
 

@@ -16,6 +16,7 @@ import {
   ConstrainMode,
   DetailsListLayoutMode,
   ColumnDragEndLocation,
+  IColumnDragDropDetails,
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
 import { SelectAllVisibility } from '../DetailsList/DetailsHeader.types';
@@ -132,9 +133,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     selectionMode = selection.mode,
     selectionPreservedOnEmptyClick,
     selectionZoneProps,
+    // eslint-disable-next-line deprecation/deprecation
     ariaLabel,
     ariaLabelForGrid,
     rowElementEventMap,
+    // eslint-disable-next-line deprecation/deprecation
     shouldApplyApplicationRole = false,
     getKey,
     listProps,
@@ -173,6 +176,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     rowElementEventMap: eventsToRegister,
     onRenderMissingItem,
     onRenderItemColumn,
+    onRenderField,
     getCellValueKey,
     getRowAriaLabel,
     getRowAriaDescribedBy,
@@ -436,10 +440,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       onRenderHeader: finalOnRenderDetailsGroupHeader,
       // pass through custom group header checkbox label
       headerProps: {
+        ...groupProps?.headerProps,
         selectAllButtonProps: {
           'aria-label': checkButtonGroupAriaLabel,
+          ...groupProps?.headerProps?.selectAllButtonProps,
         },
-        ...groupProps?.headerProps,
       },
     };
   }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, checkButtonGroupAriaLabel, role]);
@@ -487,6 +492,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         onDidMount: onRowDidMount,
         onWillUnmount: onRowWillUnmount,
         onRenderItemColumn,
+        onRenderField,
         getCellValueKey,
         eventsToRegister,
         dragDropEvents,
@@ -527,6 +533,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       onRowDidMount,
       onRowWillUnmount,
       onRenderItemColumn,
+      onRenderField,
       getCellValueKey,
       eventsToRegister,
       dragDropEvents,
@@ -573,7 +580,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
   const focusZoneInnerProps: IFocusZoneProps = {
     ...focusZoneProps,
-    componentRef: focusZoneRef,
+    componentRef: focusZoneProps && focusZoneProps.componentRef ? focusZoneProps.componentRef : focusZoneRef,
     className: classNames.focusZone,
     direction: focusZoneProps ? focusZoneProps.direction : FocusZoneDirection.vertical,
     shouldEnterInnerZone:
@@ -654,20 +661,19 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   );
 
   return (
-    // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
-    // with JAWS.
     <div
       ref={rootRef}
       className={classNames.root}
       data-automationid="DetailsList"
       data-is-scrollable="false"
-      aria-label={ariaLabel}
       {...(shouldApplyApplicationRole ? { role: 'application' } : {})}
     >
       <FocusRects />
       <div
         role={role}
-        aria-label={ariaLabelForGrid}
+        // ariaLabel is a legacy prop that used to be applied on the root node, which has poor AT support
+        // it is now treated as a fallback to ariaLabelForGrid for legacy support
+        aria-label={ariaLabelForGrid || ariaLabel}
         aria-rowcount={isPlaceholderData ? -1 : rowCount}
         aria-colcount={colCount}
         aria-readonly="true"
@@ -842,6 +848,48 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       return this._groupedList.current.getStartItemIndexInView();
     }
     return 0;
+  }
+
+  public updateColumn(column: IColumn, options: { width?: number; newColumnIndex?: number }) {
+    const NO_COLUMNS: IColumn[] = [];
+
+    const { columns = NO_COLUMNS, selectionMode, checkboxVisibility, columnReorderOptions } = this.props;
+    const { width, newColumnIndex } = options;
+    const index = columns.findIndex(col => col.key === column.key);
+
+    if (width) {
+      this._onColumnResized(column, width, index!);
+    }
+
+    if (newColumnIndex !== undefined && columnReorderOptions) {
+      const isCheckboxColumnHidden =
+        selectionMode === SelectionMode.none || checkboxVisibility === CheckboxVisibility.hidden;
+
+      const showCheckbox = checkboxVisibility !== CheckboxVisibility.hidden;
+      const columnIndex = (showCheckbox ? 2 : 1) + index!;
+
+      const draggedIndex = isCheckboxColumnHidden ? columnIndex - 1 : columnIndex - 2;
+      const targetIndex = isCheckboxColumnHidden ? newColumnIndex - 1 : newColumnIndex - 2;
+
+      const frozenColumnCountFromStart = columnReorderOptions.frozenColumnCountFromStart ?? 0;
+      const frozenColumnCountFromEnd = columnReorderOptions.frozenColumnCountFromEnd ?? 0;
+      const isValidTargetIndex =
+        targetIndex >= frozenColumnCountFromStart && targetIndex < columns.length - frozenColumnCountFromEnd;
+
+      if (isValidTargetIndex) {
+        if (columnReorderOptions.onColumnDrop) {
+          const dragDropDetails: IColumnDragDropDetails = {
+            draggedIndex: draggedIndex,
+            targetIndex: targetIndex,
+          };
+          columnReorderOptions.onColumnDrop(dragDropDetails);
+          /* eslint-disable deprecation/deprecation */
+        } else if (columnReorderOptions.handleColumnReorder) {
+          columnReorderOptions.handleColumnReorder(draggedIndex, targetIndex);
+          /* eslint-enable deprecation/deprecation */
+        }
+      }
+    }
   }
 
   public componentWillUnmount(): void {
@@ -1436,6 +1484,7 @@ export function buildColumns(
   isSortedDescending?: boolean,
   groupedColumnKey?: string,
   isMultiline?: boolean,
+  columnActionsMode?: ColumnActionsMode,
 ) {
   const columns: IColumn[] = [];
 
@@ -1456,7 +1505,7 @@ export function buildColumns(
           isSorted: sortedColumnKey === propName,
           isSortedDescending: !!isSortedDescending,
           isRowHeader: false,
-          columnActionsMode: ColumnActionsMode.clickable,
+          columnActionsMode: columnActionsMode ?? ColumnActionsMode.clickable,
           isResizable: canResizeColumns,
           onColumnClick: onColumnClick,
           isGrouped: groupedColumnKey === propName,

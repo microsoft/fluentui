@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { useBadge } from '../Badge/index';
+import { useBadge_unstable } from '../Badge/index';
 import type { CounterBadgeProps, CounterBadgeState } from './CounterBadge.types';
 
 /**
  * Returns the props and state required to render the component
  */
-export const useCounterBadge = (props: CounterBadgeProps, ref: React.Ref<HTMLElement>): CounterBadgeState => {
+export const useCounterBadge_unstable = (props: CounterBadgeProps, ref: React.Ref<HTMLElement>): CounterBadgeState => {
   const {
     shape = 'circular',
     appearance = 'filled',
@@ -16,7 +16,7 @@ export const useCounterBadge = (props: CounterBadgeProps, ref: React.Ref<HTMLEle
   } = props;
 
   const state: CounterBadgeState = {
-    ...useBadge(props, ref),
+    ...(useBadge_unstable(props, ref) as CounterBadgeState),
     shape,
     appearance,
     showZero,

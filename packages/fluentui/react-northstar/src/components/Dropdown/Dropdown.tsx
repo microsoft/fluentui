@@ -3,9 +3,10 @@ import {
   useAutoControlled,
   useStyles,
   useUnhandledProps,
-  ComponentWithAs,
   useFluentContext,
   useTelemetry,
+  ForwardRefWithAs,
+  useMergedRefs,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -61,6 +62,7 @@ export interface DropdownSlotClassNames {
   container: string;
   toggleIndicator: string;
   item: string;
+  itemsCount: string;
   itemsList: string;
   searchInput: string;
   selectedItem: string;
@@ -74,6 +76,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
 
   /** Identifies the element (or elements) that labels the current element. Will be passed to `triggerButton`. */
   'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
+  'aria-describedby'?: AccessibilityAttributes['aria-describedby'];
 
   /** Indicates the entered value does not conform to the format expected by the application. Will be passed to `triggerButton`. */
   'aria-invalid'?: AccessibilityAttributes['aria-invalid'];
@@ -123,6 +126,11 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
      * @param item - Dropdown removed element.
      */
     onRemove?: (item: ShorthandValue<DropdownItemProps>) => string;
+    /**
+     * Callback that creates custom accessibility message about the selected items count a screen reader narrates on input field focus.
+     * @param count - number of items selected.
+     */
+    itemsCount?: (count: number) => string;
   };
 
   /** A label for selected items listbox. */
@@ -296,6 +304,7 @@ export const dropdownSlotClassNames: DropdownSlotClassNames = {
   container: `${dropdownClassName}__container`,
   toggleIndicator: `${dropdownClassName}__toggle-indicator`,
   item: `${dropdownClassName}__item`,
+  itemsCount: `${dropdownClassName}__items-count`,
   itemsList: `${dropdownClassName}__items-list`,
   searchInput: `${dropdownClassName}__searchinput`,
   selectedItem: `${dropdownClassName}__selecteditem`,
@@ -365,12 +374,7 @@ const isEmpty = prop => {
  * [Issue 991203: VoiceOver doesn't narrate properly elements in the input/combobox](https://bugs.chromium.org/p/chromium/issues/detail?id=991203)
  * [JAWS - ESC (ESCAPE) not closing collapsible listbox (dropdown) on first time #528](https://github.com/FreedomScientific/VFO-standards-support/issues/528)
  */
-export const Dropdown: ComponentWithAs<'div', DropdownProps> &
-  FluentComponentStaticProps<DropdownProps> & {
-    Item: typeof DropdownItem;
-    SearchInput: typeof DropdownSearchInput;
-    SelectedItem: typeof DropdownSelectedItem;
-  } = props => {
+export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Dropdown.displayName, context.telemetry);
 
@@ -378,6 +382,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
 
   const {
     'aria-labelledby': ariaLabelledby,
+    'aria-describedby': ariaDescribedby,
     'aria-invalid': ariaInvalid,
     clearable,
     clearIndicator,
@@ -418,7 +423,6 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     align,
     flipBoundary,
     overflowBoundary,
-    popperRef,
     position,
     positionFixed,
     offset,
@@ -435,6 +439,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   const containerRef = React.useRef<HTMLDivElement>();
 
   const defaultTriggerButtonId = React.useMemo(() => _.uniqueId('dropdown-trigger-button-'), []);
+  const selectedItemsCountNarrationId = React.useMemo(() => _.uniqueId('dropdown-selected-items-count-'), []);
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Dropdown.handledProps, props);
@@ -509,6 +514,12 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     rtl: context.rtl,
   });
 
+  const popperRef = useMergedRefs(props.popperRef);
+
+  React.useLayoutEffect(() => {
+    popperRef.current?.updatePosition();
+  }, [filteredItems?.length, popperRef]);
+
   const clearA11ySelectionMessage = React.useMemo(
     () =>
       _.debounce(() => {
@@ -551,7 +562,8 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       },
       'aria-invalid': ariaInvalid,
       'aria-label': undefined,
-      'aria-labelledby': [ariaLabelledby, triggerButtonId].filter(l => !!l).join(' '),
+      ...(ariaLabelledby && { 'aria-labelledby': ariaLabelledby }),
+      ...(open && { 'aria-expanded': true }),
     });
 
     const { onClick, onFocus, onBlur, onKeyDown, ...restTriggerButtonProps } = triggerButtonProps;
@@ -625,6 +637,18 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     });
   };
 
+  const renderSelectedItemsCountNarration = id => {
+    // Get narration only if callback is provided, at least one item is selected and only in multiple case
+    if (!getA11ySelectionMessage || !getA11ySelectionMessage.itemsCount || value.length === 0 || !multiple) {
+      return null;
+    }
+    const narration = getA11ySelectionMessage.itemsCount(value.length);
+    return (
+      <span id={id} className={dropdownSlotClassNames.itemsCount} style={screenReaderContainerStyles}>
+        {narration}
+      </span>
+    );
+  };
   const renderItemsList = (
     highlightedIndex: number,
     toggleMenu: () => void,
@@ -776,6 +800,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     return null;
   };
 
+  const selectedItemsCountNarration = renderSelectedItemsCountNarration(selectedItemsCountNarrationId);
   const renderSelectedItems = () => {
     if (value.length === 0) {
       return null;
@@ -798,9 +823,12 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       }),
     );
     return (
-      <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
-        {selectedItems}
-      </div>
+      <>
+        <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
+          {selectedItems}
+        </div>
+        {selectedItemsCountNarration}
+      </>
     );
   };
 
@@ -939,6 +967,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       case Downshift.stateChangeTypes.clickButton:
       case Downshift.stateChangeTypes.keyDownSpaceButton:
         newState.open = changes.isOpen;
+        newState.itemIsFromKeyboard = isFromKeyboard;
 
         if (changes.isOpen) {
           const highlightedIndexOnArrowKeyOpen = getHighlightedIndexOnArrowKeyOpen(changes);
@@ -1125,7 +1154,8 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
             // https://github.com/facebook/react/issues/955#issuecomment-469352730
             setSearchQuery(e.target.value);
           },
-          'aria-labelledby': null,
+          'aria-labelledby': ariaLabelledby,
+          'aria-describedby': ariaDescribedby || selectedItemsCountNarrationId,
         }),
       },
       // same story as above for getRootProps.
@@ -1523,6 +1553,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       className={classes.root}
       onBlur={handleOnBlur}
       onChange={handleChange}
+      ref={ref}
       {...unhandledProps}
       {...(process.env.NODE_ENV === 'test' && { 'data-test-focused': focused })}
     >
@@ -1594,8 +1625,8 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
               >
                 <div ref={selectedItemsRef} className={cx(dropdownSlotClassNames.selectedItems, classes.selectedItems)}>
                   {/* We previously were rendering the trigger button after selected items list,
-                  after listbox wrapper was introduced we moved it to before and
-                   set as absolute to avoid visual regressions   */}
+                    after listbox wrapper was introduced we moved it to before and
+                     set as absolute to avoid visual regressions   */}
                   {!search && renderTriggerButton(getToggleButtonProps)}
                   {multiple && renderSelectedItems()}
                   {search &&
@@ -1662,7 +1693,12 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, DropdownProps> &
+  FluentComponentStaticProps<DropdownProps> & {
+    Item: typeof DropdownItem;
+    SearchInput: typeof DropdownSearchInput;
+    SelectedItem: typeof DropdownSelectedItem;
+  };
 
 Dropdown.displayName = 'Dropdown';
 

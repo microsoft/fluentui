@@ -1,15 +1,7 @@
 import * as React from 'react';
-import { RocketIcon } from '../icons.stories';
-import {
-  AccordionItem,
-  AccordionHeader,
-  AccordionPanel,
-  Accordion,
-  AccordionHeaderProps,
-  // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-} from '@fluentui/react-accordion';
+import { RocketRegular as RocketIcon } from '@fluentui/react-icons';
+
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionHeaderProps } from '../index';
 
 export const WithIcon = (args: AccordionHeaderProps) => (
   <Accordion>
@@ -41,7 +33,7 @@ WithIcon.args = {
 WithIcon.parameters = {
   docs: {
     description: {
-      story: 'A Accordion can have a custom extra icon',
+      story: 'An accordion header can contain an icon.',
     },
   },
 };

@@ -1,8 +1,5 @@
 import * as React from 'react';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '@fluentui/react-accordion';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '../index';
 
 export const Multiple = (args: AccordionProps) => (
   <Accordion {...args}>
@@ -34,7 +31,9 @@ Multiple.args = {
 Multiple.parameters = {
   docs: {
     description: {
-      story: 'A Accordion can support multiple Panels open at the same time',
+      story:
+        // eslint-disable-next-line @fluentui/max-len
+        "An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened by default, `multiple` will also be collapsed by default on the first render",
     },
   },
 };

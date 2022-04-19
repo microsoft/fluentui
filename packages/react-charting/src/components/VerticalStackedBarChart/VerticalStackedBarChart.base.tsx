@@ -26,6 +26,7 @@ import {
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ChartTypes,
+  IAxisData,
   getAccessibleDataObject,
   XAxisTypes,
   getTypeOfAxis,
@@ -83,6 +84,8 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _createLegendsForLine: (data: IVerticalStackedChartProps[]) => LineLegends[];
   private _lineObject: LineObject;
   private _tooltipId: string;
+  private _yMax: number;
+  private _calloutAnchorPoint: IVSChartDataPoint | null;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -177,7 +180,9 @@ export class VerticalStackedBarChartBase extends React.Component<
         }
         getmargins={this._getMargins}
         getGraphData={this._getGraphData}
+        getAxisData={this._getAxisData}
         customizedCallout={this._getCustomizedCallout()}
+        onChartMouseLeave={this._handleChartMouseLeave}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -400,6 +405,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         Legend={props.legend}
         YValue={props.yAxisCalloutData}
         color={props.color}
+        culture={this.props.culture}
       />
     ) : null;
   }
@@ -533,9 +539,11 @@ export class VerticalStackedBarChartBase extends React.Component<
     refSelected: React.MouseEvent<SVGElement> | SVGGElement,
   ): void {
     if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)
+      (this.state.isLegendSelected === false ||
+        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)) &&
+      this._calloutAnchorPoint !== point
     ) {
+      this._calloutAnchorPoint = point;
       this.setState({
         refSelected,
         isCalloutVisible: true,
@@ -616,6 +624,11 @@ export class VerticalStackedBarChartBase extends React.Component<
   }
 
   private _handleMouseOut = (): void => {
+    /**/
+  };
+
+  private _handleChartMouseLeave = (): void => {
+    this._calloutAnchorPoint = null;
     this.setState({
       isCalloutVisible: false,
       activeXAxisDataPoint: '',
@@ -629,10 +642,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     this.props.onBarClick?.(mouseEvent, data);
     this.props.href ? (window.location.href = this.props.href) : '';
   }
-
-  private _getYMax = (dataset: IDataPoint[]) => {
-    return Math.max(d3Max(dataset, (point: IDataPoint) => point.y)!, this.props.yMaxValue || 0);
-  };
 
   private _getBarGapAndScale(
     bars: IVSChartDataPoint[],
@@ -810,7 +819,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   };
 
   private _getScales = (containerHeight: number, containerWidth: number, isNumeric: boolean) => {
-    const yMax = this._getYMax(this._dataset);
+    const yMax = this._yMax;
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
       .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
@@ -873,5 +882,12 @@ export class VerticalStackedBarChartBase extends React.Component<
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _getAxisData = (yAxisData: IAxisData) => {
+    if (yAxisData && yAxisData.yAxisDomainValues.length) {
+      const { yAxisDomainValues: domainValue } = yAxisData;
+      this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
+    }
   };
 }

@@ -23,6 +23,13 @@ export interface IColorPickerGridCellProps {
   idPrefix?: string;
 
   /**
+   * If true, uses radio semantics for the color cell.
+   * This should be set to true for cells within a single-row colorpicker.
+   * @defaultvalue false
+   */
+  isRadio?: boolean;
+
+  /**
    * Tooltip and aria label for this item
    */
   label?: string;
@@ -80,11 +87,11 @@ export interface IColorPickerGridCellProps {
   /**
    * Handler for when a color cell is clicked.
    */
-  onClick?: (item: IColorCellProps) => void;
+  onClick?: (item: IColorCellProps, event?: React.MouseEvent<HTMLButtonElement>) => void;
 
-  onHover?: (item?: IColorCellProps) => void;
+  onHover?: (item?: IColorCellProps, event?: React.MouseEvent<HTMLButtonElement>) => void;
 
-  onFocus?: (item: IColorCellProps) => void;
+  onFocus?: (item: IColorCellProps, event?: React.FormEvent<HTMLButtonElement>) => void;
 
   /**
    * Custom styles for the component.

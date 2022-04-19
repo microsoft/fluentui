@@ -420,6 +420,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
       'onChange',
       'value',
+      'aria-describedby',
+      'aria-labelledby',
     ]);
 
     const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
@@ -477,6 +479,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * {@inheritdoc}
    */
   public focus = (shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): void => {
+    if (this.props.disabled) {
+      return;
+    }
+
     if (this._autofill.current) {
       if (useFocusAsync) {
         focusAsync(this._autofill.current);
@@ -540,7 +546,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       label,
       disabled,
       ariaLabel,
-      ariaDescribedBy,
+      ariaDescribedBy = this.props['aria-describedby'],
       required,
       errorMessage,
       buttonIconProps,
@@ -563,6 +569,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       this._hasFocus() && this.props.multiSelect && multiselectAccessibleText
         ? multiselectAccessibleText
         : placeholderProp;
+
+    const labelledBy = [this.props['aria-labelledby'], label && this._id + '-label'].join(' ').trim();
 
     return (
       <div
@@ -590,7 +598,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-autocomplete={this._getAriaAutoCompleteValue()}
           role="combobox"
           readOnly={disabled}
-          aria-labelledby={label && this._id + '-label'}
+          aria-labelledby={labelledBy ? labelledBy : undefined}
           aria-label={ariaLabel && !label ? ariaLabel : undefined}
           aria-describedby={
             errorMessage !== undefined ? mergeAriaAttributeValues(ariaDescribedBy, errorMessageId) : ariaDescribedBy
@@ -758,6 +766,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     if (this.props.disabled) {
       this._handleInputWhenDisabled(null /* event */);
       return;
+    }
+
+    if (this.props.onInputValueChange) {
+      this.props.onInputValueChange(updatedValue);
     }
 
     this.props.allowFreeform
@@ -1043,7 +1055,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
       // Call onChange after state is updated
       if (onChange) {
-        onChange(submitPendingValueEvent, option, index, undefined);
+        onChange(submitPendingValueEvent, option, index, getPreviewText(option));
       }
     }
     if (this.props.multiSelect && this.state.isOpen) {
@@ -1080,12 +1092,12 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // If it is then resolve it asynchronously.
       if (Array.isArray(newOptions)) {
         this.props.hoisted.setCurrentOptions(newOptions);
-      } else if (newOptions && newOptions.then) {
+      } else if (newOptions && (newOptions as PromiseLike<IComboBoxOption[]>).then) {
         // Ensure that the promise will only use the callback if it was the most recent one
         // and update the state when the promise returns
-        const promise: PromiseLike<IComboBoxOption[]> = (this._currentPromise = newOptions);
-        promise.then((newOptionsFromPromise: IComboBoxOption[]) => {
-          if (promise === this._currentPromise) {
+        this._currentPromise = newOptions;
+        newOptions.then((newOptionsFromPromise: IComboBoxOption[]) => {
+          if (newOptions === this._currentPromise) {
             this.props.hoisted.setCurrentOptions(newOptionsFromPromise);
           }
         });
@@ -1331,7 +1343,62 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
   // Render List of items
   private _onRenderList = (props: IComboBoxProps): JSX.Element => {
-    const { onRenderItem, options, label, ariaLabel } = props;
+    const { onRenderItem = this._onRenderItem, label, ariaLabel, multiSelect } = props;
+
+    let queue: { id?: string; items: JSX.Element[] } = { items: [] };
+    let renderedList: JSX.Element[] = [];
+
+    const emptyQueue = (): void => {
+      const newGroup = queue.id
+        ? [
+            <div role="group" key={queue.id} aria-labelledby={queue.id}>
+              {queue.items}
+            </div>,
+          ]
+        : queue.items;
+
+      renderedList = [...renderedList, ...newGroup];
+      // Flush items and id
+      queue = { items: [] };
+    };
+
+    const placeRenderedOptionIntoQueue = (item: IComboBoxOption, index: number) => {
+      /*
+        Case Header
+          empty queue if it's not already empty
+          ensure unique ID for header and set queue ID
+          push header into queue
+        Case Divider
+          push divider into queue if not first item
+          empty queue if not already empty
+        Default
+          push item into queue
+      */
+      switch (item.itemType) {
+        case SelectableOptionMenuItemType.Header:
+          queue.items.length > 0 && emptyQueue();
+
+          const id = this._id + item.key;
+          queue.items.push(onRenderItem({ id, ...item, index }, this._onRenderItem)!);
+          queue.id = id;
+          break;
+        case SelectableOptionMenuItemType.Divider:
+          index > 0 && queue.items.push(onRenderItem({ ...item, index }, this._onRenderItem)!);
+
+          queue.items.length > 0 && emptyQueue();
+          break;
+        default:
+          queue.items.push(onRenderItem({ ...item, index }, this._onRenderItem)!);
+      }
+    };
+
+    // Place options into the queue. Queue will be emptied anytime a Header or Divider is encountered
+    props.options.forEach((item: IComboBoxOption, index: number) => {
+      placeRenderedOptionIntoQueue(item, index);
+    });
+
+    // Push remaining items into all renderedList
+    queue.items.length > 0 && emptyQueue();
 
     const id = this._id;
     return (
@@ -1340,9 +1407,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         className={this._classNames.optionsContainer}
         aria-labelledby={label && id + '-label'}
         aria-label={ariaLabel && !label ? ariaLabel : undefined}
+        aria-multiselectable={multiSelect ? 'true' : undefined}
         role="listbox"
       >
-        {options.map(item => onRenderItem?.(item, this._onRenderItem))}
+        {renderedList}
       </div>
     );
   };
@@ -1383,7 +1451,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const { onRenderOption = this._onRenderOptionContent } = this.props;
 
     return (
-      <div key={item.key} className={this._classNames.header}>
+      <div id={item.id} key={item.key} className={this._classNames.header}>
         {onRenderOption(item, this._onRenderOptionContent)}
       </div>
     );
@@ -1397,7 +1465,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const isIndeterminate: boolean = this._isOptionIndeterminate(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
-    const title = item.title ?? getPreviewText(item);
+    const title = item.title;
 
     const onRenderCheckboxLabel = () => onRenderOption(item, this._onRenderOptionContent);
 
@@ -1585,6 +1653,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       this._isScrollIdle = false;
     }
 
+    if (this.props.calloutProps?.onScroll) {
+      this.props.calloutProps.onScroll();
+    }
+
     this._scrollIdleTimeoutId = this._async.setTimeout(() => {
       this._isScrollIdle = true;
     }, ScrollIdleDelay);
@@ -1596,44 +1668,35 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _scrollIntoView(): void {
     const { onScrollToItem, scrollSelectedToTop } = this.props;
 
-    const { currentPendingValueValidIndex, currentPendingValue } = this.state;
+    const currentPendingSelectedInded = this._getPendingSelectedIndex(true);
 
     if (onScrollToItem) {
       // Use the custom scroll handler
-      onScrollToItem(
-        currentPendingValueValidIndex >= 0 || currentPendingValue !== ''
-          ? currentPendingValueValidIndex
-          : this._getFirstSelectedIndex(),
-      );
+      onScrollToItem(currentPendingSelectedInded >= 0 ? currentPendingSelectedInded : this._getFirstSelectedIndex());
     } else if (this._selectedElement.current && this._selectedElement.current.offsetParent) {
+      let alignToTop = true;
+
       // We are using refs, scroll the ref into view
-      if (scrollSelectedToTop) {
-        this._selectedElement.current.offsetParent.scrollIntoView(true);
-      } else {
-        let alignToTop = true;
+      if (this._comboBoxMenu.current && this._comboBoxMenu.current.offsetParent) {
+        const scrollableParent = this._comboBoxMenu.current.offsetParent;
+        const selectedElement = this._selectedElement.current.offsetParent;
 
-        if (this._comboBoxMenu.current && this._comboBoxMenu.current.offsetParent) {
-          const scrollableParentRect = this._comboBoxMenu.current.offsetParent.getBoundingClientRect();
-          const selectedElementRect = this._selectedElement.current.offsetParent.getBoundingClientRect();
+        const { offsetHeight, offsetTop } = selectedElement as HTMLElement;
+        const { offsetHeight: parentOffsetHeight, scrollTop } = scrollableParent as HTMLElement;
 
-          // If we are completely in view then we do not need to scroll
-          if (
-            scrollableParentRect.top <= selectedElementRect.top &&
-            scrollableParentRect.top + scrollableParentRect.height >=
-              selectedElementRect.top + selectedElementRect.height
-          ) {
-            return;
-          }
+        const isAbove = offsetTop < scrollTop;
+        const isBelow = offsetTop + offsetHeight > scrollTop + parentOffsetHeight;
 
-          // If we are lower than the scrollable parent viewport then we should align to the bottom
-          if (
-            scrollableParentRect.top + scrollableParentRect.height <=
-            selectedElementRect.top + selectedElementRect.height
-          ) {
-            alignToTop = false;
-          }
+        if (isAbove || scrollSelectedToTop) {
+          alignToTop = false;
+          scrollableParent.scrollTo(0, offsetTop);
+        } else if (isBelow) {
+          scrollableParent.scrollTo(0, offsetTop - parentOffsetHeight + offsetHeight);
         }
+      }
 
+      // if _comboboxMenu doesn't exist, fall back to scrollIntoView
+      else {
         this._selectedElement.current.offsetParent.scrollIntoView(alignToTop);
       }
     }
@@ -1819,7 +1882,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const { currentPendingValue, currentPendingValueValidIndex, currentPendingValueValidIndexOnHover } = this.state;
 
     let newPendingIndex: number | undefined = undefined;
-    let newPendingValue: string | undefined = undefined;
+    let newPendingValue: string | undefined = prevState.currentPendingValue;
 
     if (
       currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover &&
@@ -1966,6 +2029,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           return;
         }
 
+        // do not scroll page
+        ev.preventDefault();
+
         // Go to the previous option
         this._setPendingInfoFromIndexAndDirection(index, SearchDirection.backward);
         break;
@@ -1981,6 +2047,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           if (currentPendingValueValidIndexOnHover === HoverStatus.clearAll) {
             index = -1;
           }
+
+          // do not scroll page
+          ev.preventDefault();
 
           // Got to the next option
           this._setPendingInfoFromIndexAndDirection(index, SearchDirection.forward);
@@ -2026,6 +2095,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
         // If we get here and we got either and ALT key
         // or meta key, let the event propagate
+        // eslint-disable-next-line deprecation/deprecation
         if (ev.keyCode === KeyCodes.alt || ev.key === 'Meta' /* && isOpen */) {
           return;
         }
@@ -2267,11 +2337,13 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   /**
    * Get the aria autocomplete value for the combo box
    * @returns 'inline' if auto-complete automatically dynamic, 'both' if we have a list of possible values to pick from
-   * and can dynamically populate input, and 'none' if auto-complete is not enabled as we can't give user inputs.
+   * and can dynamically populate input, and 'list' if auto-complete is not enabled as selection is the only option.
+   * Ideally, this should be 'none' if auto-complete is not enabled, but there is a known bug in Edge
+   * where the callout may appear over the combo box if this attribute is set to 'none'
    */
   private _getAriaAutoCompleteValue(): 'none' | 'inline' | 'list' | 'both' | undefined {
     const autoComplete = !this.props.disabled && this.props.autoComplete === 'on';
-    return autoComplete ? (this.props.allowFreeform ? 'inline' : 'both') : 'none';
+    return autoComplete ? (this.props.allowFreeform ? 'inline' : 'both') : 'list';
   }
 
   private _isPendingOption(item: IComboBoxOption): boolean {

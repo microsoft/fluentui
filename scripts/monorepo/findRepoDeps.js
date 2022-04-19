@@ -5,13 +5,14 @@ const getAllPackageInfo = require('./getAllPackageInfo');
 
 /**
  * @param {import('./index').PackageJson} packageJson
+ * @param {boolean|undefined} dev
  */
-function getDeps(packageJson) {
+function getDeps(packageJson, dev) {
   if (!packageJson) {
     return [];
   }
 
-  return Object.keys({ ...(packageJson.dependencies || {}), ...(packageJson.devDependencies || {}) });
+  return Object.keys({ ...packageJson.dependencies, ...(dev && packageJson.devDependencies) });
 }
 
 /** @type {import('./index').PackageInfo[]} */
@@ -20,18 +21,20 @@ let cwdForRepoDeps;
 
 /**
  * Find all the dependencies (and their dependencies) within the repo for a specific package (in the CWD when this was called)
- * @param {string} [cwd] optional different cwd
+ * @param {object} [options]
+ * @param {string} [options.cwd] optional different cwd
+ * @param {boolean} [options.dev] include dev deps, default true
  * @returns {import('./index').PackageInfo[]}
  */
-function findRepoDeps(cwd) {
-  cwd = cwd || process.cwd();
+function findRepoDeps(options = {}) {
+  const { cwd = process.cwd(), dev = true } = options;
   if (repoDeps && cwdForRepoDeps === cwd) {
     return repoDeps;
   }
 
   const packageInfo = getAllPackageInfo();
   const packageJson = readConfig('package.json', cwd);
-  const packageDeps = getDeps(packageJson);
+  const packageDeps = getDeps(packageJson, dev);
   /** @type {Set<string>} */
   const result = new Set();
 
@@ -41,7 +44,7 @@ function findRepoDeps(cwd) {
     if (dep && packageInfo[dep]) {
       result.add(dep);
 
-      getDeps(packageInfo[dep].packageJson).forEach(child => {
+      getDeps(packageInfo[dep].packageJson, dev).forEach(child => {
         if (child && packageInfo[child] && !result.has(child)) {
           packageDeps.push(child);
         }

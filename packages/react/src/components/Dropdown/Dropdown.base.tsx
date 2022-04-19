@@ -31,7 +31,7 @@ import { ResponsiveMode, useResponsiveMode } from '../../ResponsiveMode';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
 // import and use V7 Checkbox to ensure no breaking changes.
 import { Checkbox } from '../../Checkbox';
-import { getPropsWithDefaults } from '@fluentui/utilities';
+import { getNextElement, getPreviousElement, getPropsWithDefaults } from '@fluentui/utilities';
 import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
 import type { IStyleFunctionOrObject } from '../../Utilities';
 import type {
@@ -56,7 +56,7 @@ const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>()
 // eslint-disable-next-line deprecation/deprecation
 interface IDropdownInternalProps extends Omit<IDropdownProps, 'ref'>, IWithResponsiveModeState {
   hoisted: {
-    rootRef: React.Ref<HTMLDivElement>;
+    rootRef: React.RefObject<HTMLDivElement>;
     selectedIndices: number[];
     setSelectedIndices: React.Dispatch<React.SetStateAction<number[]>>;
   };
@@ -193,6 +193,11 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   private _listId: string;
   private _optionId: string;
   private _isScrollIdle: boolean;
+  /** Flag for tracking if the Callout has previously been positioned.
+   *  This is necessary to properly control focus state when the width
+   *  of the Dropdown is dynamic (e.g, "fit-content").
+   */
+  private _hasBeenPositioned: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
   /** True if the most recent keydown event was for alt (option) or meta (command). */
@@ -252,6 +257,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     this._listId = this._id + '-list';
     this._optionId = this._id + '-option';
     this._isScrollIdle = true;
+    this._hasBeenPositioned = false;
 
     this._sizePosCache.updateOptions(options);
 
@@ -281,6 +287,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
     if (prevState.isOpen === true && this.state.isOpen === false) {
       this._gotMouseMove = false;
+      this._hasBeenPositioned = false;
 
       if (this.props.onDismiss) {
         this.props.onDismiss();
@@ -731,8 +738,9 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
   private _renderSeparator(item: IDropdownOption): JSX.Element | null {
     const { index, key } = item;
+    const separatorClassName = item.hidden ? this._classNames.dropdownDividerHidden : this._classNames.dropdownDivider;
     if (index! > 0) {
-      return <div role="separator" key={key} className={this._classNames.dropdownDivider} />;
+      return <div role="separator" key={key} className={separatorClassName} />;
     }
     return null;
   }
@@ -740,8 +748,12 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   private _renderHeader(item: IDropdownOption): JSX.Element {
     const { onRenderOption = this._onRenderOption } = this.props;
     const { key, id } = item;
+    const headerClassName = item.hidden
+      ? this._classNames.dropdownItemHeaderHidden
+      : this._classNames.dropdownItemHeader;
+
     return (
-      <div id={id} key={key} className={this._classNames.dropdownItemHeader}>
+      <div id={id} key={key} className={headerClassName}>
         {onRenderOption(item, this._onRenderOption)}
       </div>
     );
@@ -848,11 +860,17 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       this._requestAnimationFrame(() => {
         const selectedIndices = this.props.hoisted.selectedIndices;
         if (this._focusZone.current) {
-          if (selectedIndices && selectedIndices[0] && !this.props.options[selectedIndices[0]].disabled) {
+          if (
+            !this._hasBeenPositioned &&
+            selectedIndices &&
+            selectedIndices[0] &&
+            !this.props.options[selectedIndices[0]].disabled
+          ) {
             const element: HTMLElement | null = getDocument()!.getElementById(`${this._id}-list${selectedIndices[0]}`);
             if (element) {
               this._focusZone.current.focusElement(element);
             }
+            this._hasBeenPositioned = true;
           } else {
             this._focusZone.current.focus();
           }
@@ -1162,7 +1180,17 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
       case KeyCodes.tab:
         this.setState({ isOpen: false });
-        return;
+
+        const document = getDocument();
+
+        if (document) {
+          if (ev.shiftKey) {
+            getPreviousElement(document.body, this._dropDown.current, false, false, true, true)?.focus();
+          } else {
+            getNextElement(document.body, this._dropDown.current, false, false, true, true)?.focus();
+          }
+        }
+        break;
 
       default:
         return;

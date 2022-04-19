@@ -7,40 +7,39 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Divider: ForwardRefComponent<DividerProps>;
 
-// @public (undocumented)
-export type DividerCommons = {
-    alignContent: 'start' | 'end' | 'center';
-    appearance?: 'brand' | 'strong' | 'subtle';
-    inset: boolean;
-    vertical: boolean;
-};
+// @public @deprecated (undocumented)
+export const dividerClassName = "fui-Divider";
 
 // @public (undocumented)
-export type DividerProps = ComponentProps<DividerSlots> & Partial<DividerCommons>;
+export const dividerClassNames: SlotClassNames<DividerSlots>;
+
+// @public (undocumented)
+export type DividerProps = ComponentProps<Partial<DividerSlots>> & Partial<DividerCommons>;
 
 // @public (undocumented)
 export type DividerSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    wrapper: IntrinsicShorthandProps<'div'>;
+    root: Slot<'div'>;
+    wrapper: Slot<'div'>;
 };
 
 // @public (undocumented)
 export type DividerState = ComponentState<DividerSlots> & DividerCommons;
 
 // @public
-export const renderDivider: (state: DividerState) => JSX.Element;
+export const renderDivider_unstable: (state: DividerState) => JSX.Element;
 
 // @public
-export const useDivider: (props: DividerProps, ref: React_2.Ref<HTMLElement>) => DividerState;
+export const useDivider_unstable: (props: DividerProps, ref: React_2.Ref<HTMLElement>) => DividerState;
 
-// @public
-export const useDividerStyles: (state: DividerState) => DividerState;
+// @public (undocumented)
+export const useDividerStyles_unstable: (state: DividerState) => DividerState;
 
 // (No @packageDocumentation comment for this package)
 

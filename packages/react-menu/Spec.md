@@ -619,7 +619,7 @@ const menu = (
 
 ```html
 <!-- expected DOM output  -->
-<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<button aria-haspopup="menu" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
   <div role="menuitem" tabindex="-1">Option 2</div>
@@ -644,7 +644,7 @@ const menu = (
 
 ```html
 <!-- expected DOM output  -->
-<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<button aria-haspopup="menu" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">
     <span role="presentation"><svg>FileIcon</svg></span>
@@ -682,7 +682,7 @@ const menu = (
 
 ```html
 <!-- expected DOM output  -->
-<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<button aria-haspopup="menu" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
   <div role="separator" aria-hidden="true"></div>
@@ -719,7 +719,7 @@ const menu = (
 
 ```html
 <!-- expected DOM output  -->
-<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<button aria-haspopup="menu" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
   <div role="separator" aria-hidden="true"></div>
@@ -758,10 +758,10 @@ const menu = (
 
 ```html
 <!-- expected DOM output  -->
-<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<button aria-haspopup="menu" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
-  <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trigger">Open submenu</div>
+  <div role="menuitem" tabindex="-1" aria-haspopup="menu" aria-expanded="false" id="submenu-trigger">Open submenu</div>
 </div>
 
 <!-- expected DOM output for submenu  -->
@@ -843,7 +843,7 @@ const menuSelectableSections = (
 ```
 
 ```html
-<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<button aria-haspopup="menu" aria-expanded="true" id="trigger">Open menu</button>
 
 <!-- expected DOM output for basic checkbox  -->
 <div role="menu" aria-labelledby="trigger">
@@ -882,9 +882,12 @@ const menuSplitbutton= (
     <MenuList>
       <MenuItem>Option 1</MenuItem>
       <Menu>
-        <MenuTrigger>
-          <MenuItemSplit></MenuItemSplit>
-        </MenuTrigger>
+        <MenuSplitGroup>
+          <MenuItem>Main action</MenuItem>
+          <MenuTrigger>
+            <MenuItem />
+          </MenuTrigger>
+        </MenuSplitGroup>
         <MenuItem>Option 1</MenuItem>
         <MenuItem>Option 2</MenuItem>
         <MenuItem>Option 3</MenuItem>
@@ -897,7 +900,7 @@ const menuSplitbutton= (
 ```html
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
-  <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trigger">Open submenu</div>
+  <div role="menuitem" tabindex="-1" aria-haspopup="menu" aria-expanded="false" id="submenu-trigger">Open submenu</div>
 </div>
 
 <!-- expected DOM output  -->
@@ -905,7 +908,7 @@ const menuSplitbutton= (
   <div role="menuitem" tabindex="0">Option 1</div>
   <div role="group">
     <div role="menuitem" tabindex="-1">content slot</div>
-    <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trgger">
+    <div role="menuitem" tabindex="-1" aria-haspopup="menu" aria-expanded="false" id="submenu-trgger">
       <svg>indicator icon</svg>
     </div>
   </div>
@@ -958,11 +961,13 @@ Below is a set of diagrams that tries to illustrates all the interactions menus 
 
 All of the above Mouse events seen previously should apply to the part of the split button that is intended to open a submenu.
 
-Once the submenu is open, the same behavior as in the [previous section](#submenu-trigger/navigation) applies with the exception of returning focus to the splitbutton, which is shown in the images below.
+> TODO convert these diagrams to excalidraw or smth that is text format
+> TODO add extra descriptions to diagrams
 
-![Using up/down arrow key](./etc/images/splitbutton-up-down.jpg)
-
-![Using left/right arrow key](./etc/images/splitbutton-left-right.jpg)
+<img src="./etc/images/menu-interactions/Slide19.PNG" width="700" />
+<img src="./etc/images/menu-interactions/Slide20.PNG" width="700" />
+<img src="./etc/images/menu-interactions/Slide21.PNG" width="700" />
+<img src="./etc/images/menu-interactions/Slide22.PNG" width="700" />
 
 ### MenuItem selection
 

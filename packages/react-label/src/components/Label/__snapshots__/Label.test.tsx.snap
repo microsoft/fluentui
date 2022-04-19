@@ -4,12 +4,13 @@ exports[`Label renders a custom asterisk 1`] = `
 <body>
   <div>
     <label
-      class=""
+      class="fui-Label"
       data-testid="label-id"
     >
       I'm a label
       <span
-        class=""
+        aria-hidden="true"
+        class="fui-Label__required"
       >
         foo
       </span>
@@ -21,7 +22,7 @@ exports[`Label renders a custom asterisk 1`] = `
 exports[`Label renders a default state 1`] = `
 <div>
   <label
-    class=""
+    class="fui-Label"
   >
     Default Label
   </label>

@@ -5,7 +5,7 @@ import { ExtendedPeoplePickerPageProps } from '@fluentui/react-examples/lib/reac
 
 export const ExtendedPeoplePickerPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/ExtendedPeoplePicker.page.json')}
+    jsonDocs={require('../../../dist/api/react/ExtendedPeoplePicker.page.json')}
     {...{ ...ExtendedPeoplePickerPageProps, ...props }}
   />
 );

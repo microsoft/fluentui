@@ -1,5 +1,15 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import type { CardFooterState } from './CardFooter.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import type { CardFooterSlots, CardFooterState } from './CardFooter.types';
+
+/**
+ * @deprecated Use `cardFooterClassNames.root` instead.
+ */
+export const cardFooterClassName = 'fui-CardFooter';
+export const cardFooterClassNames: SlotClassNames<CardFooterSlots> = {
+  root: 'fui-CardFooter',
+  action: 'fui-CardFooter__action',
+};
 
 /**
  * Styles for the root slot
@@ -8,7 +18,7 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'row',
-    gap: '12px',
+    ...shorthands.gap('12px'),
   },
   action: {
     marginLeft: 'auto',
@@ -18,12 +28,12 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the CardFooter slots based on the state
  */
-export const useCardFooterStyles = (state: CardFooterState): CardFooterState => {
+export const useCardFooterStyles_unstable = (state: CardFooterState): CardFooterState => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.className);
+  state.root.className = mergeClasses(cardFooterClassNames.root, styles.root, state.root.className);
 
   if (state.action) {
-    state.action.className = mergeClasses(styles.action, state.action.className);
+    state.action.className = mergeClasses(cardFooterClassNames.action, styles.action, state.action.className);
   }
 
   return state;

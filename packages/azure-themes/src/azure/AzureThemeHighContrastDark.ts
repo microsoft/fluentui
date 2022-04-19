@@ -142,6 +142,14 @@ const highContrastDarkExtendedSemanticColors: Partial<IExtendedSemanticColors> =
   teachingBubbleSecondaryBackground: HighContrastDarkSemanticColors.teachingBubble.rest.secondaryBackround,
   teachingBubbleText: HighContrastDarkSemanticColors.teachingBubble.rest.text,
   textFieldBorderDisabled: HighContrastDarkSemanticColors.primaryButton.disabled.border,
+  calendarBackground: HighContrastDarkSemanticColors.calendar.background,
+  calendarTextRest: HighContrastDarkSemanticColors.calendar.text.rest,
+  calendarTextHover: HighContrastDarkSemanticColors.calendar.text.hover,
+  calendarTextDisabled: HighContrastDarkSemanticColors.calendar.text.disabled,
+  calendarTextOutside: HighContrastDarkSemanticColors.calendar.text.outside,
+  calendarBackgroundBorder: HighContrastDarkSemanticColors.calendar.button.border,
+  calendarBackgroundSelected: HighContrastDarkSemanticColors.calendar.button.selected,
+  calendarBackgroundHover: HighContrastDarkSemanticColors.calendar.button.hover,
 
   // temporary work around for high contrast themes
   choiceGroupContainerBorder: '1px',

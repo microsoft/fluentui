@@ -15,7 +15,7 @@ export default {
 
 const MenuItemTemplate = ({ checked, disabled }) => `
   <fluent-menu-item
-    ${checked ? `checked="${checked}"` : ''}
+    ${checked ? 'checked role="menuitemcheckbox"' : ''}
     ${disabled ? 'disabled' : ''}
   >Menu item 1</fluent-menu-item>
 `;

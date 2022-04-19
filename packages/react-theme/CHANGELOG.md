@@ -1,8 +1,72 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Wed, 06 Oct 2021 10:37:22 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 05:17:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.4)
+
+Fri, 04 Mar 2022 05:17:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-rc.3..@fluentui/react-theme_v9.0.0-rc.4)
+
+### Changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.3)
+
+Fri, 18 Feb 2022 13:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-rc.1..@fluentui/react-theme_v9.0.0-rc.3)
+
+### Changes
+
+- fix: Source maps contain original source code ([PR #21690](https://github.com/microsoft/fluentui/pull/21690) by lingfangao@hotmail.com)
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.1)
+
+Thu, 10 Feb 2022 08:51:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-beta.4..@fluentui/react-theme_v9.0.0-rc.1)
+
+### Changes
+
+- feat(react-theme): Add colorNeutralForeground1Static token ([PR #21385](https://github.com/microsoft/fluentui/pull/21385) by miroslav.stastny@microsoft.com)
+- updating brand colors ([PR #20140](https://github.com/microsoft/fluentui/pull/20140) by andmarti@microsoft.com)
+- feat: Export tokens as mapping to CSS variables ([PR #21026](https://github.com/microsoft/fluentui/pull/21026) by Humberto.Morimoto@microsoft.com)
+- Extend brand ramp from 13 to 16 tokens ([PR #20884](https://github.com/microsoft/fluentui/pull/20884) by miroslav.stastny@microsoft.com)
+- remove mergeThemes API ([PR #21278](https://github.com/microsoft/fluentui/pull/21278) by martinhochel@microsoft.com)
+- Theme: Adding function to programmatically generate tokens object based on a theme. ([PR #21548](https://github.com/microsoft/fluentui/pull/21548) by Humberto.Morimoto@microsoft.com)
+- Remove `themeToCSSVariables` function ([PR #20828](https://github.com/microsoft/fluentui/pull/20828) by bsunderhus@microsoft.com)
+- feat(react-theme) Add border1 color token for shared colors ([PR #20963](https://github.com/microsoft/fluentui/pull/20963) by miroslav.stastny@microsoft.com)
+- Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-beta.4)
+
+Thu, 25 Nov 2021 08:34:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-beta.3..@fluentui/react-theme_v9.0.0-beta.4)
+
+### Changes
+
+- feat(react-theme): update shadow design tokens ([PR #20604](https://github.com/microsoft/fluentui/pull/20604) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-beta.3)
+
+Fri, 12 Nov 2021 13:25:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-beta.2..@fluentui/react-theme_v9.0.0-beta.3)
+
+### Changes
+
+- Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- feat(react-theme): add/update design tokens ([PR #20569](https://github.com/microsoft/fluentui/pull/20569) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-beta.2)
+
+Wed, 27 Oct 2021 12:14:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-beta.1..@fluentui/react-theme_v9.0.0-beta.2)
+
+### Changes
+
+- fix(reat-theme): Remove template literal types for color palette ([PR #20251](https://github.com/microsoft/fluentui/pull/20251) by lingfangao@hotmail.com)
+- added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
 
 ## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-beta.1)
 

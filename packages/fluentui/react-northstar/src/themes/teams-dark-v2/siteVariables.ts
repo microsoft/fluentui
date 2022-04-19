@@ -1,4 +1,5 @@
 import { colors as colorsV2 } from '../teams-v2/siteVariables';
+import { transparentColors } from '../teams/colors';
 
 export const colors = colorsV2;
 
@@ -11,7 +12,7 @@ export const colorScheme = {
     foreground4: colors.white,
     foreground5: colors.grey['450'],
     foreground6: colors.grey['550'],
-    foreground7: colors.white,
+    foreground7: colors.grey['220'],
 
     background: colors.grey['700'],
     background1: colors.grey['750'],
@@ -19,11 +20,15 @@ export const colorScheme = {
     background3: colors.grey['870'],
     background4: colors.grey['550'],
     background5: colors.grey['600'],
+    background6: colors.grey['910'],
+    background7: colors.grey['850'],
 
     border: colors.grey['450'],
     border1: colors.grey['850'],
     border2: colors.grey['900'],
     border3: colors.grey['550'],
+
+    borderPressed: transparentColors.silver['500'],
 
     foregroundHover: colors.white,
     foregroundHover1: colors.white,
@@ -39,6 +44,7 @@ export const colorScheme = {
 
     foregroundPressed: colors.white,
     backgroundPressed: colors.grey['650'],
+    backgroundPressed2: colors.grey['850'],
 
     foregroundActive: colors.white,
     foregroundActive1: colors.white,
@@ -63,7 +69,7 @@ export const colorScheme = {
     backgroundDisabled1: colors.grey['800'],
   },
   brand: {
-    background: colors.brand['600'],
+    background: colors.brand['700'],
     background1: colors.brand['1000'],
     background2: colors.brand['900'],
     background3: colors.brand['1000'],
@@ -86,8 +92,9 @@ export const colorScheme = {
 
     borderHover: colors.brand['600'],
 
-    backgroundHover: colors.brand['700'],
+    backgroundHover: colors.brand['600'],
     backgroundHover1: colors.brand['900'],
+    backgroundHover3: colors.grey['750'],
 
     foregroundPressed: colors.brand['200'],
     foregroundPressed1: colors.white,

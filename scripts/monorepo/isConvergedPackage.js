@@ -17,7 +17,15 @@ function isConvergedPackage(packagePathOrJson) {
     !packagePathOrJson || typeof packagePathOrJson === 'string'
       ? readConfig('package.json', /** @type {string|undefined} */ (packagePathOrJson))
       : packagePathOrJson;
-  return !!packageJson && semver.major(packageJson.version) >= 9;
+  return !!packageJson && (semver.major(packageJson.version) >= 9 || isNightlyVersion(packageJson.version));
+}
+
+/**
+ * Determins if a version is the 0.0.0 nightly version used by converged packages
+ * @param {string} version
+ */
+function isNightlyVersion(version) {
+  return semver.major(version) === 0 && semver.minor(version) === 0 && semver.patch(version) === 0;
 }
 
 module.exports = isConvergedPackage;

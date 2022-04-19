@@ -339,6 +339,9 @@ function _adjustFitWithinBounds(
     elementEstimate = _flipToFit(element, target, bounding, positionData, gap);
   }
   const outOfBounds = _getOutOfBoundsEdges(elementEstimate.elementRectangle, bounding);
+  // if directionalHintFixed is specified, we need to force the target edge to not change
+  // we need *-1 because targetEdge refers to the target's edge; the callout edge is the opposite
+  const fixedEdge = directionalHintFixed ? -elementEstimate.targetEdge : undefined;
 
   if (outOfBounds.length > 0) {
     if (alignTargetEdge) {
@@ -354,11 +357,14 @@ function _adjustFitWithinBounds(
             _getOutOfBoundsEdges(flippedElementEstimate.elementRectangle, bounding),
             elementEstimate,
             bounding,
+            fixedEdge,
           );
         }
+      } else {
+        elementEstimate = _alignOutOfBoundsEdges(outOfBounds, elementEstimate, bounding, fixedEdge);
       }
     } else {
-      elementEstimate = _alignOutOfBoundsEdges(outOfBounds, elementEstimate, bounding);
+      elementEstimate = _alignOutOfBoundsEdges(outOfBounds, elementEstimate, bounding, fixedEdge);
     }
   }
 
@@ -370,19 +376,30 @@ function _adjustFitWithinBounds(
  * @param outOfBoundsEdges - Array of edges that are out of bounds
  * @param elementEstimate - The current element positioning estimate
  * @param bounding - The current bounds
+ * @param preserveEdge - Specify an edge that should not be modified
  */
 function _alignOutOfBoundsEdges(
   outOfBoundsEdges: RectangleEdge[],
   elementEstimate: IElementPosition,
   bounding: Rectangle,
+  preserveEdge?: RectangleEdge,
 ) {
   for (const direction of outOfBoundsEdges) {
-    let edgeAttempt = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
-    const inBounds = _isEdgeInBounds(edgeAttempt, bounding, direction * -1);
-    // only update estimate if the attempt didn't break out of the opposite bounding edge
-    if (!inBounds) {
-      edgeAttempt = _moveEdge(edgeAttempt, direction * -1, _getEdgeValue(bounding, direction * -1), false);
+    let edgeAttempt;
+
+    // if preserveEdge is specified, do not call _alignEdges, skip directly to _moveEdge
+    // this is because _alignEdges will move the opposite edge
+    if (preserveEdge && preserveEdge === direction * -1) {
+      edgeAttempt = _moveEdge(elementEstimate.elementRectangle, direction, _getEdgeValue(bounding, direction), false);
       elementEstimate.forcedInBounds = true;
+    } else {
+      edgeAttempt = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
+      const inBounds = _isEdgeInBounds(edgeAttempt, bounding, direction * -1);
+      // only update estimate if the attempt didn't break out of the opposite bounding edge
+      if (!inBounds) {
+        edgeAttempt = _moveEdge(edgeAttempt, direction * -1, _getEdgeValue(bounding, direction * -1), false);
+        elementEstimate.forcedInBounds = true;
+      }
     }
 
     elementEstimate.elementRectangle = edgeAttempt;
@@ -475,6 +492,17 @@ function _finalizeReturnEdge(
 }
 
 /**
+ * Whether or not the considered edge of the elementRectangle is lying on the edge of the bounds
+ * @param elementRectangle The rectangle whose edge we are considering
+ * @param bounds The rectangle marking the bounds
+ * @param edge The target edge we're considering
+ * @returns If the target edge of the elementRectangle is in the same location as that edge of the bounds
+ */
+function _isEdgeOnBounds(elementRectangle: Rectangle, edge: RectangleEdge, bounds?: Rectangle): boolean {
+  return bounds !== undefined && _getEdgeValue(elementRectangle, edge) === _getEdgeValue(bounds, edge);
+}
+
+/**
  * Finalizes the element position based on the hostElement. Only returns the
  * rectangle values to position such that they are anchored to the target.
  * This helps prevent resizing from looking very strange.
@@ -496,7 +524,13 @@ function _finalizeElementPosition(
   const hostRect: Rectangle = _getRectangleFromElement(hostElement);
   const elementEdge = coverTarget ? targetEdge : targetEdge * -1;
   let returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
-  if (!doNotFinalizeReturnEdge) {
+
+  // If we are finalizing the return edge, choose the edge such that we grow away from the bounds
+  // If we are not finalizing the return edge but the opposite edge is flush against the bounds,
+  // choose that as the anchor edge so the element rect can grow away from the bounds' edge
+  // In this case there will not be a visual difference because there is no more room for the elementRectangle to grow
+  // in the usual direction
+  if (!doNotFinalizeReturnEdge || _isEdgeOnBounds(elementRectangle, getOppositeEdge(returnEdge), bounds)) {
     returnEdge = _finalizeReturnEdge(elementRectangle, returnEdge, bounds);
   }
 

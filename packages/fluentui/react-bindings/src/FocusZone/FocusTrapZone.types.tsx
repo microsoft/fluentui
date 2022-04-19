@@ -68,4 +68,6 @@ export interface FocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement>
    * If it has never had a focused descendant before, behavior falls back to the first focused descendant.
    */
   focusPreviouslyFocusedInnerElement?: boolean;
+
+  innerRef?: any;
 }

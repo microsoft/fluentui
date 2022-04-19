@@ -1,7 +1,7 @@
 import { useId, usePrevious } from '@fluentui/react-utilities';
-import { themeToCSSVariables } from '@fluentui/react-theme';
 import * as React from 'react';
 import type { FluentProviderState } from './FluentProvider.types';
+import { fluentProviderClassNames } from './useFluentProviderStyles';
 
 /**
  * Writes a theme as css variables in a style tag on the provided targetDocument as a rule applied to a CSS class
@@ -11,7 +11,7 @@ import type { FluentProviderState } from './FluentProvider.types';
 export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
   const { targetDocument, theme } = options;
 
-  const styleTagId = useId('fluent-provider');
+  const styleTagId = useId(fluentProviderClassNames.root);
   const styleTag = React.useMemo(() => {
     if (!targetDocument) {
       return null;
@@ -24,11 +24,12 @@ export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 't
   }, [styleTagId, targetDocument]);
 
   const cssRule = React.useMemo(() => {
-    const cssVars = themeToCSSVariables(theme);
-    const cssVarsAsString = Object.keys(cssVars).reduce((cssVarRule, cssVar) => {
-      cssVarRule += `${cssVar}: ${cssVars[cssVar]}; `;
-      return cssVarRule;
-    }, '');
+    const cssVarsAsString = theme
+      ? (Object.keys(theme) as (keyof typeof theme)[]).reduce((cssVarRule, cssVar) => {
+          cssVarRule += `--${cssVar}: ${theme[cssVar]}; `;
+          return cssVarRule;
+        }, '')
+      : '';
 
     // result: .fluent-provider1 { --css-var: '#fff' }
     return `.${styleTagId} { ${cssVarsAsString} }`;
@@ -49,8 +50,7 @@ export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 't
   React.useEffect(() => {
     return () => {
       if (styleTag) {
-        // IE11 safe node removal, otherwise use node.remove()
-        styleTag.parentElement?.removeChild(styleTag);
+        styleTag.remove();
       }
     };
   }, [styleTag]);

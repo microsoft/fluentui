@@ -4,7 +4,9 @@ export type MenuTriggerProps = {
   /**
    * Explicitly require single child or render function
    */
-  children: (React.ReactElement & { ref?: React.Ref<unknown> }) | ((props: MenuTriggerChildProps) => React.ReactNode);
+  children:
+    | (React.ReactElement & { ref?: React.Ref<unknown> })
+    | ((props: MenuTriggerChildProps) => React.ReactElement | null);
 };
 
 /**
@@ -13,17 +15,15 @@ export type MenuTriggerProps = {
 export type MenuTriggerChildProps = Required<
   Pick<
     React.HTMLAttributes<HTMLElement>,
-    | 'onClick'
-    | 'onMouseEnter'
-    | 'onMouseLeave'
-    | 'onContextMenu'
-    | 'onKeyDown'
-    | 'aria-haspopup'
-    | 'aria-expanded'
-    | 'id'
+    'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onMouseMove' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'id'
   >
 > & {
   ref?: React.Ref<never>;
+  // aria-expanded should only be present when the menu when it is not a submenu
+  'aria-expanded': boolean | undefined;
 };
 
-export type MenuTriggerState = MenuTriggerProps;
+export type MenuTriggerState = {
+  children: React.ReactElement | null;
+  isSubmenu: boolean;
+};

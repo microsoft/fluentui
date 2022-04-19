@@ -6,7 +6,7 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "Package name",
+      "description": "Library name or comma delimited library names to execute migration on multiple libraries.",
       "$default": {
         "$source": "argv",
         "index": 0
@@ -20,6 +20,11 @@
     "all": {
       "type": "boolean",
       "description": "Run generator on all vNext packages"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Add particular team to CODEOWNERS file",
+      "pattern": "^@[/-\\w]+$"
     }
   },
   "required": []

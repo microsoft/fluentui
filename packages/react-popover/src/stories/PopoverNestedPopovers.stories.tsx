@@ -1,16 +1,8 @@
 import * as React from 'react';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { Button } from '@fluentui/react-button';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles } from '@griffel/react';
+
+import { Popover, PopoverTrigger, PopoverSurface } from '../index';
 
 const useStyles = makeStyles({
   contentHeader: {
@@ -18,46 +10,57 @@ const useStyles = makeStyles({
   },
 });
 
-const ExampleContent = () => {
+const FirstNestedPopover = () => {
   const styles = useStyles();
+  const id = 'first';
   return (
-    <div>
-      <h3 className={styles.contentHeader}>Popover content</h3>
+    <Popover trapFocus>
+      <PopoverTrigger>
+        <Button>First nested trigger</Button>
+      </PopoverTrigger>
 
-      <div>This is some popover content</div>
-    </div>
+      <PopoverSurface aria-labelledby={id}>
+        <div>
+          <h3 id={id} className={styles.contentHeader}>
+            Popover content
+          </h3>
+
+          <div>This is some popover content</div>
+        </div>
+        <Button>First nested button</Button>
+        <SecondNestedPopover />
+        <SecondNestedPopover />
+      </PopoverSurface>
+    </Popover>
   );
 };
 
-const FirstNestedPopover = () => (
-  <Popover trapFocus>
-    <PopoverTrigger>
-      <Button>First nested trigger</Button>
-    </PopoverTrigger>
+const SecondNestedPopover = () => {
+  const styles = useStyles();
+  const id = 'second';
+  return (
+    <Popover trapFocus>
+      <PopoverTrigger>
+        <Button>Second nested trigger</Button>
+      </PopoverTrigger>
 
-    <PopoverSurface>
-      <ExampleContent />
-      <Button>First nested button</Button>
-      <SecondNestedPopover />
-      <SecondNestedPopover />
-    </PopoverSurface>
-  </Popover>
-);
+      <PopoverSurface aria-labelledby={id}>
+        <div>
+          <h3 id={id} className={styles.contentHeader}>
+            Popover content
+          </h3>
 
-const SecondNestedPopover = () => (
-  <Popover trapFocus>
-    <PopoverTrigger>
-      <Button>Second nested trigger</Button>
-    </PopoverTrigger>
-
-    <PopoverSurface>
-      <ExampleContent />
-      <Button>Second nested button</Button>
-    </PopoverSurface>
-  </Popover>
-);
+          <div>This is some popover content</div>
+        </div>
+        <Button>Second nested button</Button>
+      </PopoverSurface>
+    </Popover>
+  );
+};
 
 export const NestedPopovers = () => {
+  const id = 'root';
+  const styles = useStyles();
   return (
     <Popover trapFocus>
       <PopoverTrigger>
@@ -65,7 +68,13 @@ export const NestedPopovers = () => {
       </PopoverTrigger>
 
       <PopoverSurface>
-        <ExampleContent />
+        <div>
+          <h3 id={id} className={styles.contentHeader}>
+            Popover content
+          </h3>
+
+          <div>This is some popover content</div>
+        </div>
         <Button>Root button</Button>
         <FirstNestedPopover />
       </PopoverSurface>

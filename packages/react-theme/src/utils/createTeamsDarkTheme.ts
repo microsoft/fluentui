@@ -1,4 +1,6 @@
-import { colorPaletteTokens, generateColorTokens } from '../alias/teamsDark';
+import { colorPaletteTokens } from '../alias/teamsDarkColorPalette';
+import { generateColorTokens } from '../alias/teamsDarkColor';
+
 import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index';
 import { createShadowTokens } from './shadows';
 import type { BrandVariants, Theme } from '../types';
@@ -18,5 +20,6 @@ export const createTeamsDarkTheme: (brand: BrandVariants) => Theme = brand => {
     ...colorPaletteTokens,
 
     ...createShadowTokens(colorTokens.colorNeutralShadowAmbient, colorTokens.colorNeutralShadowKey),
+    ...createShadowTokens(colorTokens.colorBrandShadowAmbient, colorTokens.colorBrandShadowKey, 'Brand'),
   };
 };

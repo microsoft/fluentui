@@ -12,9 +12,10 @@ export default {
 };
 
 const AnchorTemplate = ({ appearance, label }) => `
-  <fluent-anchor 
+  <fluent-anchor
+    href="javascript:void"
     ${appearance ? `appearance="${appearance}"` : ''}
-  >
+    >
     ${label}
   </fluent-anchor>
 `;
@@ -22,7 +23,7 @@ const AnchorTemplate = ({ appearance, label }) => `
 export const Anchor = AnchorTemplate.bind({});
 
 const example = `
-<fluent-anchor href="#">Anchor</fluent-anchor>
+<fluent-anchor href="#" appearance="neutral">Anchor</fluent-anchor>
 `;
 
 Anchor.args = {

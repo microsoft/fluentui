@@ -73,7 +73,7 @@ class DirectionalStyleSheetBehaviorSubscription implements Subscriber {
   ) {}
 
   public handleChange({ target, token }: DesignTokenChangeRecord<typeof directionDesignToken>) {
-    this.attach(token.getValueFor(target));
+    this.attach(token.getValueFor(this.source));
   }
 
   public attach(direction: Direction) {

@@ -1,5 +1,4 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { themeToCSSVariables } from '@fluentui/react-theme';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
 import { useThemeStyleTag } from './useThemeStyleTag';
@@ -8,17 +7,10 @@ import type { Theme } from '@fluentui/react-theme';
 jest.mock('@fluentui/react-theme');
 
 describe('useThemeStyleTag', () => {
-  const emptyTheme = ({} as unknown) as Theme;
-
-  const testCssVariables: ReturnType<typeof themeToCSSVariables> = {
-    '--css-variable-1': '1',
-    '--css-variable-2': '2',
-  };
-
-  beforeEach(() => {
-    (themeToCSSVariables as jest.Mock).mockReset();
-    (themeToCSSVariables as jest.Mock).mockReturnValue(testCssVariables);
-  });
+  const defaultTheme = ({
+    'css-variable-1': '1',
+    'css-variable-2': '2',
+  } as unknown) as Theme;
 
   afterEach(() => {
     resetIdsForTests();
@@ -26,7 +18,7 @@ describe('useThemeStyleTag', () => {
 
   it('should render style tag', () => {
     // Act
-    const { result } = renderHook(() => useThemeStyleTag({ theme: emptyTheme, targetDocument: document }));
+    const { result } = renderHook(() => useThemeStyleTag({ theme: defaultTheme, targetDocument: document }));
 
     // Assert
     expect(document.getElementById(result.current)).not.toBeNull();
@@ -34,7 +26,7 @@ describe('useThemeStyleTag', () => {
 
   it('should remove style tag on unmount', () => {
     // Arrange
-    const { result, unmount } = renderHook(() => useThemeStyleTag({ theme: emptyTheme, targetDocument: document }));
+    const { result, unmount } = renderHook(() => useThemeStyleTag({ theme: defaultTheme, targetDocument: document }));
 
     // Act
     unmount();
@@ -45,7 +37,7 @@ describe('useThemeStyleTag', () => {
 
   it('should render css variables in theme', () => {
     // Act
-    const { result } = renderHook(() => useThemeStyleTag({ theme: emptyTheme, targetDocument: document }));
+    const { result } = renderHook(() => useThemeStyleTag({ theme: defaultTheme, targetDocument: document }));
 
     // Assert
     const tag = document.getElementById(result.current) as HTMLStyleElement;
@@ -53,26 +45,23 @@ describe('useThemeStyleTag', () => {
     const rule = sheet.cssRules[0] as CSSStyleRule;
 
     expect(rule.selectorText).toEqual(`.${result.current}`);
-    expect(themeToCSSVariables).toHaveBeenCalledTimes(1);
-    expect(rule.cssText).toMatchInlineSnapshot(`".fluent-provider1 {--css-variable-1: 1; --css-variable-2: 2;}"`);
+    expect(rule.cssText).toMatchInlineSnapshot(`".fui-FluentProvider1 {--css-variable-1: 1; --css-variable-2: 2;}"`);
   });
 
   it('should update style tag on theme change', () => {
     // Arrange
-    let theme = emptyTheme;
+    let theme = defaultTheme;
     const { result, rerender } = renderHook(() => useThemeStyleTag({ theme, targetDocument: document }));
 
     // Act
-    theme = { ...emptyTheme };
-    (themeToCSSVariables as jest.Mock).mockReturnValue({ '--css-variable-update': 'xxx' });
+    theme = ({ 'css-variable-update': 'xxx' } as unknown) as Theme;
     rerender();
 
     // Assert
     const tag = document.getElementById(result.current) as HTMLStyleElement;
     const sheet = tag.sheet as CSSStyleSheet;
     const rule = sheet.cssRules[0] as CSSStyleRule;
-    expect(themeToCSSVariables).toHaveBeenCalledTimes(2);
     expect(rule.selectorText).toEqual(`.${result.current}`);
-    expect(rule.cssText).toMatchInlineSnapshot(`".fluent-provider1 {--css-variable-update: xxx;}"`);
+    expect(rule.cssText).toMatchInlineSnapshot(`".fui-FluentProvider1 {--css-variable-update: xxx;}"`);
   });
 });
