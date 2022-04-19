@@ -267,11 +267,15 @@ const useButtonStyles = makeStyles({
     color: tokens.colorNeutralForeground3,
     ':enabled': {
       ':hover': {
-        color: tokens.colorNeutralForeground3,
+        color: tokens.colorNeutralForeground3Hover,
         backgroundColor: tokens.colorSubtleBackgroundHover,
       },
-      [`:active,&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: tokens.colorNeutralForeground3,
+      ':active': {
+        color: tokens.colorNeutralForeground3Pressed,
+        backgroundColor: tokens.colorSubtleBackgroundPressed,
+      },
+      [`&.${spinButtonExtraClassNames.buttonActive}`]: {
+        color: tokens.colorNeutralForeground3Pressed,
         backgroundColor: tokens.colorSubtleBackgroundPressed,
       },
     },
