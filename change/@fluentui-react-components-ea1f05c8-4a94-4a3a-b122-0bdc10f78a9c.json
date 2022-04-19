@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Re-exporting everything from @fluentui/react-tabster and @fluentui/react-utilities in @fluentui/react-components.",
-  "packageName": "@fluentui/react-components",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

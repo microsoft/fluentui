@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "CompoundButton: Fixing bug where component was iconOnly even when secondaryContent was being provided.",
-  "packageName": "@fluentui/react-button",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
