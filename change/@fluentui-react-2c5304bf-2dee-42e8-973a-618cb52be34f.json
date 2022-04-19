@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix issue where focus outline was not showing for toggle button in IE11",
+  "packageName": "@fluentui/react",
+  "email": "nsavas@microsoft.com",
+  "dependentChangeType": "patch"
+}
