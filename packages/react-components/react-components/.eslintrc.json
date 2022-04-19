@@ -5,12 +5,21 @@
     {
       "files": "**/index.ts",
       "rules": {
-        "@rnx-kit/no-export-all": ["error", { "expand": "all" }],
+        "@rnx-kit/no-export-all": [
+          "error",
+          {
+            "expand": "all"
+          }
+        ],
         "@fluentui/ban-imports": [
           "error",
           {
             "pathRegex": ".*",
-            "names": [{ "regex": "Commons$" }],
+            "names": [
+              {
+                "regex": "Commons$"
+              }
+            ],
             "message": "Commons types should not be exported from @fluentui/react-components"
           }
         ]

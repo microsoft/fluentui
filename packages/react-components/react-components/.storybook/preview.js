@@ -1,4 +1,4 @@
-import * as rootPreview from '../../../.storybook/preview';
+import * as rootPreview from '../../../../.storybook/preview';
 import { FluentDocsContainer } from '../src/DocsComponents/FluentDocsContainer.stories';
 import { FluentDocsPage } from '../src/DocsComponents/FluentDocsPage.stories';
 

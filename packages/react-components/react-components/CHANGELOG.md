@@ -6,7 +6,7 @@ This log was last generated on Fri, 04 Mar 2022 19:49:34 GMT and should not be m
 
 ## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.6)
 
-Fri, 04 Mar 2022 19:49:34 GMT 
+Fri, 04 Mar 2022 19:49:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.5..@fluentui/react-components_v9.0.0-rc.6)
 
 ### Changes
@@ -16,7 +16,7 @@ Fri, 04 Mar 2022 19:49:34 GMT
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.5)
 
-Fri, 04 Mar 2022 05:17:28 GMT 
+Fri, 04 Mar 2022 05:17:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.4..@fluentui/react-components_v9.0.0-rc.5)
 
 ### Changes
@@ -94,7 +94,7 @@ Fri, 04 Mar 2022 05:17:28 GMT
 
 ## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.4)
 
-Tue, 01 Mar 2022 02:17:34 GMT 
+Tue, 01 Mar 2022 02:17:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.3..@fluentui/react-components_v9.0.0-rc.4)
 
 ### Changes
@@ -141,7 +141,7 @@ Tue, 01 Mar 2022 02:17:34 GMT
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.3)
 
-Fri, 18 Feb 2022 13:35:27 GMT 
+Fri, 18 Feb 2022 13:35:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.1..@fluentui/react-components_v9.0.0-rc.3)
 
 ### Changes
@@ -228,7 +228,7 @@ Fri, 18 Feb 2022 13:35:27 GMT
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.1)
 
-Thu, 10 Feb 2022 08:50:26 GMT 
+Thu, 10 Feb 2022 08:50:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-beta.5..@fluentui/react-components_v9.0.0-rc.1)
 
 ### Changes
@@ -245,7 +245,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - Replacing use of functions in makeStyles with direct use of tokens. ([PR #21058](https://github.com/microsoft/fluentui/pull/21058) by Humberto.Morimoto@microsoft.com)
   - Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
   - update styles to not use CSS shorthands ([PR #20795](https://github.com/microsoft/fluentui/pull/20795) by olfedias@microsoft.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
   - Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
   - Update documentation stories ([PR #21298](https://github.com/microsoft/fluentui/pull/21298) by behowell@microsoft.com)
@@ -253,14 +253,14 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - Fix tooltip arrow rendering, and add high contrast border around Tooltip ([PR #21086](https://github.com/microsoft/fluentui/pull/21086) by behowell@microsoft.com)
   - Remove Tooltip's inverted prop in favor of the appearance prop ([PR #21327](https://github.com/microsoft/fluentui/pull/21327) by behowell@microsoft.com)
 - `@fluentui/react-utilities`
-  - Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - getSlots: remove slotNames param, and infer from state.components instead ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
   - add useTriggerElement() hook ([PR #21225](https://github.com/microsoft/fluentui/pull/21225) by olfedias@microsoft.com)
   - Removes nullRender from react-utilities ([PR #21576](https://github.com/microsoft/fluentui/pull/21576) by bsunderhus@microsoft.com)
   - update applyTriggerPropsToChildren() to return React.ReactElement or null ([PR #21609](https://github.com/microsoft/fluentui/pull/21609) by olfedias@microsoft.com)
   - Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
   - Adding ComponentSlotProps to allow ref to be passed in composite components. ([PR #20890](https://github.com/microsoft/fluentui/pull/20890) by Humberto.Morimoto@microsoft.com)
-  - Renaming most *Shorthand* composition types to *SlotProps* so they better reflect what the types do. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
+  - Renaming most _Shorthand_ composition types to _SlotProps_ so they better reflect what the types do. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
   - Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
   - Update trigger utilities to handle nested triggers ([PR #21495](https://github.com/microsoft/fluentui/pull/21495) by behowell@microsoft.com)
   - [breaking] Remove useControllableValue hook (use useControllableState instead) ([PR #20865](https://github.com/microsoft/fluentui/pull/20865) by elcraig@microsoft.com)
@@ -270,7 +270,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - standardize trigger implementation & cloning ([PR #21609](https://github.com/microsoft/fluentui/pull/21609) by olfedias@microsoft.com)
   - update styles to not use CSS shorthands ([PR #20796](https://github.com/microsoft/fluentui/pull/20796) by olfedias@microsoft.com)
   - fix: Use role=complementary for Popovers without focus traps ([PR #21416](https://github.com/microsoft/fluentui/pull/21416) by lingfangao@hotmail.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
   - Replacing use of functions in makeStyles with direct use of tokens ([PR #21049](https://github.com/microsoft/fluentui/pull/21049) by Humberto.Morimoto@microsoft.com)
   - Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
@@ -280,7 +280,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - remove export of commons types ([PR #21660](https://github.com/microsoft/fluentui/pull/21660) by mgodbolt@microsoft.com)
   - Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
 - `@fluentui/react-portal`
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - remove export of commons types ([PR #21660](https://github.com/microsoft/fluentui/pull/21660) by mgodbolt@microsoft.com)
   - Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
   - remove unused dependency on Griffel ([PR #21393](https://github.com/microsoft/fluentui/pull/21393) by olfedias@microsoft.com)
@@ -307,10 +307,10 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - Remove `themeToCSSVariables` function ([PR #20828](https://github.com/microsoft/fluentui/pull/20828) by bsunderhus@microsoft.com)
   - Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
   - Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
 - `@fluentui/react-shared-contexts`
   - make the ThemeContext TS API reflect runtime and remove redundant ThemeContextValue ([PR #21286](https://github.com/microsoft/fluentui/pull/21286) by martinhochel@microsoft.com)
-  - Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
 - `@fluentui/react-slider`
   - Using ComponentSlotProps instead of ObjectShorthandProps. ([PR #20890](https://github.com/microsoft/fluentui/pull/20890) by Humberto.Morimoto@microsoft.com)
@@ -328,7 +328,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - update styles to not use CSS shorthands ([PR #20844](https://github.com/microsoft/fluentui/pull/20844) by olfedias@microsoft.com)
   - Replacing use of functions in makeStyles with direct use of tokens. ([PR #21056](https://github.com/microsoft/fluentui/pull/21056) by Humberto.Morimoto@microsoft.com)
   - Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster. ([PR #21035](https://github.com/microsoft/fluentui/pull/21035) by Humberto.Morimoto@microsoft.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - Bump Fluent UI dependencies to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
 - `@fluentui/react-tabster`
   - feat: Support `options` for `findNextFocusable` and `findPrevFocusable` focus finders ([PR #21095](https://github.com/microsoft/fluentui/pull/21095) by lingfangao@hotmail.com)
@@ -341,7 +341,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - update styles to not use CSS shorthands ([PR #20842](https://github.com/microsoft/fluentui/pull/20842) by olfedias@microsoft.com)
 - `@fluentui/react-text`
   - Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - use makeStyles types from proper package ([PR #20786](https://github.com/microsoft/fluentui/pull/20786) by olfedias@microsoft.com)
   - Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
   - remove export of commons types ([PR #21660](https://github.com/microsoft/fluentui/pull/21660) by mgodbolt@microsoft.com)
@@ -374,7 +374,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - Added aria-orientation to divider ([PR #21292](https://github.com/microsoft/fluentui/pull/21292) by gcox@microsoft.com)
   - Added missing descriptions to divider stories ([PR #21067](https://github.com/microsoft/fluentui/pull/21067) by gcox@microsoft.com)
   - Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - Updating use of tokens.fontWeight now that we don't need to use casting. ([PR #21217](https://github.com/microsoft/fluentui/pull/21217) by Humberto.Morimoto@microsoft.com)
   - Replace make-styles packages with griffel equivalents. ([PR #21433](https://github.com/microsoft/fluentui/pull/21433) by olfedias@microsoft.com)
 - `@fluentui/react-image`
@@ -383,12 +383,12 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - use Griffel packages ([PR #21432](https://github.com/microsoft/fluentui/pull/21432) by olfedias@microsoft.com)
   - Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
   - Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
   - Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
   - update styles to not use CSS shorthands ([PR #20818](https://github.com/microsoft/fluentui/pull/20818) by olfedias@microsoft.com)
 - `@fluentui/react-input`
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
   - Fix styling issues found in accessibility review ([PR #21205](https://github.com/microsoft/fluentui/pull/21205) by elcraig@microsoft.com)
   - Bump Fluent UI dependencies to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
@@ -406,7 +406,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
   - react-label: Replacing use of functions in makeStyles with direct use of tokens. ([PR #21046](https://github.com/microsoft/fluentui/pull/21046) by Humberto.Morimoto@microsoft.com)
   - Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - Updating use of tokens.fontWeight now that we don't need to use casting. ([PR #21217](https://github.com/microsoft/fluentui/pull/21217) by Humberto.Morimoto@microsoft.com)
 - `@fluentui/react-link`
   - Updating use of tokens.fontWeight now that we don't need to use casting. ([PR #21217](https://github.com/microsoft/fluentui/pull/21217) by Humberto.Morimoto@microsoft.com)
@@ -416,7 +416,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
   - Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
   - update styles to not use CSS shorthands ([PR #20819](https://github.com/microsoft/fluentui/pull/20819) by olfedias@microsoft.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - use Griffel packages ([PR #21429](https://github.com/microsoft/fluentui/pull/21429) by olfedias@microsoft.com)
   - react-link: Replacing use of functions in makeStyles with direct use of tokens. ([PR #21047](https://github.com/microsoft/fluentui/pull/21047) by Humberto.Morimoto@microsoft.com)
 - `@fluentui/react-menu`
@@ -426,7 +426,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - update @fluentui/react-icons package ([PR #21498](https://github.com/microsoft/fluentui/pull/21498) by olfedias@microsoft.com)
   - Allow `MenuTrigger` to be wrapped by another trigger ([PR #21225](https://github.com/microsoft/fluentui/pull/21225) by lingfangao@hotmail.com)
   - update types related to trigger (allow only React.ReactElement & null) ([PR #21609](https://github.com/microsoft/fluentui/pull/21609) by olfedias@microsoft.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster. ([PR #21035](https://github.com/microsoft/fluentui/pull/21035) by Humberto.Morimoto@microsoft.com)
   - Remove component's shorthandProps array ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
   - update styles to not use CSS shorthands ([PR #20820](https://github.com/microsoft/fluentui/pull/20820) by olfedias@microsoft.com)
@@ -463,14 +463,14 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - update @fluentui/react-icons package ([PR #21498](https://github.com/microsoft/fluentui/pull/21498) by olfedias@microsoft.com)
   - use Griffel packages ([PR #21437](https://github.com/microsoft/fluentui/pull/21437) by olfedias@microsoft.com)
   - react-badge: Replacing use of functions in makeStyles with direct use of tokens. ([PR #21038](https://github.com/microsoft/fluentui/pull/21038) by Humberto.Morimoto@microsoft.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - fix: Add uniform padding and modify gaps ([PR #20974](https://github.com/microsoft/fluentui/pull/20974) by lingfangao@hotmail.com)
 - `@fluentui/react-button`
   - Using ComponentSlotProps instead of ObjectShorthandProps. ([PR #20890](https://github.com/microsoft/fluentui/pull/20890) by Humberto.Morimoto@microsoft.com)
   - Button: Changing border radius of small button to borderRadiusMedium from borderRadiusSmall. ([PR #21494](https://github.com/microsoft/fluentui/pull/21494) by Humberto.Morimoto@microsoft.com)
   - Replace make-styles packages with griffel equivalents. ([PR #21436](https://github.com/microsoft/fluentui/pull/21436) by olfedias@microsoft.com)
   - Update react-icons usage to resizable icons ([PR #21074](https://github.com/microsoft/fluentui/pull/21074) by ololubek@microsoft.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
   - (fix): Update react-icons dependency to latest version ([PR #20943](https://github.com/microsoft/fluentui/pull/20943) by ololubek@microsoft.com)
   - Replacing use of functions in makeStyles with direct use of tokens. ([PR #21039](https://github.com/microsoft/fluentui/pull/21039) by Humberto.Morimoto@microsoft.com)
@@ -492,7 +492,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - react-card: Replacing use of functions in makeStyles with direct use of tokens. ([PR #21040](https://github.com/microsoft/fluentui/pull/21040) by Humberto.Morimoto@microsoft.com)
   - Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
   - Remove empty CardCommons type and outdated boilerplate comments ([PR #21150](https://github.com/microsoft/fluentui/pull/21150) by elcraig@microsoft.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - use Griffel packages ([PR #21417](https://github.com/microsoft/fluentui/pull/21417) by olfedias@microsoft.com)
   - Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
   - update styles no not use CSS shorthands ([PR #20794](https://github.com/microsoft/fluentui/pull/20794) by olfedias@microsoft.com)
@@ -510,7 +510,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - update @fluentui/react-icons package ([PR #21498](https://github.com/microsoft/fluentui/pull/21498) by olfedias@microsoft.com)
   - Replacing use of functions in makeStyles with direct use of tokens. ([PR #21041](https://github.com/microsoft/fluentui/pull/21041) by Humberto.Morimoto@microsoft.com)
   - Bump Fluent UI dependencies to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - Refactor component Slot typings ([PR #21518](https://github.com/microsoft/fluentui/pull/21518) by behowell@microsoft.com)
   - Refactor Checkbox to use label as a slot instead of being the root ([PR #20904](https://github.com/microsoft/fluentui/pull/20904) by behowell@microsoft.com)
 - `@fluentui/react-components`
@@ -527,7 +527,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - Remove AccordionHeaderExpandIcon ([PR #21218](https://github.com/microsoft/fluentui/pull/21218) by behowell@microsoft.com)
   - Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
   - breaking: stop exporting useTheme hook ([PR #21257](https://github.com/microsoft/fluentui/pull/21257) by olfedias@microsoft.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - Add Input components (exported as /unstable) ([PR #21142](https://github.com/microsoft/fluentui/pull/21142) by elcraig@microsoft.com)
   - remove mergeThemes from public API ([PR #21278](https://github.com/microsoft/fluentui/pull/21278) by martinhochel@microsoft.com)
   - Remove components' shorthandProps array exports ([PR #21134](https://github.com/microsoft/fluentui/pull/21134) by behowell@microsoft.com)
@@ -548,7 +548,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
   - update semantic elements and ARIA roles in react-accordion, add heading level story ([PR #21401](https://github.com/microsoft/fluentui/pull/21401) by sarah.higley@microsoft.com)
   - Update react-icons usage to resizable icons ([PR #21074](https://github.com/microsoft/fluentui/pull/21074) by ololubek@microsoft.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - Updating based on changes to composition types. ([PR #20891](https://github.com/microsoft/fluentui/pull/20891) by Humberto.Morimoto@microsoft.com)
   - Updating packages based on changes to focusIndicator functions to remove functions from makeStyles in @fluentui/react-tabster. ([PR #21035](https://github.com/microsoft/fluentui/pull/21035) by Humberto.Morimoto@microsoft.com)
   - Replacing use of functions in makeStyles with direct use of tokens. ([PR #21036](https://github.com/microsoft/fluentui/pull/21036) by Humberto.Morimoto@microsoft.com)
@@ -565,7 +565,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
   - update @fluentui/react-icons package ([PR #21498](https://github.com/microsoft/fluentui/pull/21498) by olfedias@microsoft.com)
   - Replace make-styles packages with griffel equivalents. ([PR #21439](https://github.com/microsoft/fluentui/pull/21439) by olfedias@microsoft.com)
   - Update documentation stories ([PR #21519](https://github.com/microsoft/fluentui/pull/21519) by behowell@microsoft.com)
-  - BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+  - BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
   - Export the default getInitials implementation ([PR #21445](https://github.com/microsoft/fluentui/pull/21445) by behowell@microsoft.com)
   - (fix): Update react-icons dependency to latest version ([PR #20943](https://github.com/microsoft/fluentui/pull/20943) by ololubek@microsoft.com)
   - remove export of commons types ([PR #21660](https://github.com/microsoft/fluentui/pull/21660) by mgodbolt@microsoft.com)
@@ -584,7 +584,7 @@ Thu, 10 Feb 2022 08:50:26 GMT
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-beta.5)
 
-Thu, 25 Nov 2021 08:34:09 GMT 
+Thu, 25 Nov 2021 08:34:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-beta.4..@fluentui/react-components_v9.0.0-beta.5)
 
 ### Changes
@@ -627,7 +627,7 @@ Thu, 25 Nov 2021 08:34:09 GMT
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-beta.4)
 
-Fri, 12 Nov 2021 13:25:06 GMT 
+Fri, 12 Nov 2021 13:25:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-beta.3..@fluentui/react-components_v9.0.0-beta.4)
 
 ### Changes
@@ -864,7 +864,7 @@ Tue, 05 Oct 2021 09:28:07 GMT
   - Adds ForwardRefComponent to components declaration ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by bsunderhus@microsoft.com)
 - `@fluentui/react-avatar`
   - Adds ForwardRefComponent to components declaration ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by bsunderhus@microsoft.com)
-  - Fix Avatar stories after  #19449 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by bsunderhus@microsoft.com)
+  - Fix Avatar stories after #19449 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by bsunderhus@microsoft.com)
 - `@fluentui/react-badge`
   - Adds ForwardRefComponent to react-badge components declaration ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by bsunderhus@microsoft.com)
 - `@fluentui/react-button`
