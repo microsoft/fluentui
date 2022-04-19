@@ -40,7 +40,7 @@ variables:
   #   value: false
   # - name: publishOfficial # set it to true to publish package to npm, and publish docsite for official releases
   #   value: false
-  # - name: version # version to publish to npm; only make sense when publishOfficial=true
+  # - name: releaseVersion # version to publish to npm; only make sense when publishOfficial=true
   #   value: canary # value can only be canary/patch/minor
 
 jobs:
@@ -120,7 +120,7 @@ jobs:
             echo "registry=https://registry.npmjs.org/" >> packages/fluentui/.npmrc
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> packages/fluentui/.npmrc
 
-            yarn release:fluentui:$(version) --yes
+            yarn release:fluentui:$(releaseVersion) --yes
 
             yarn release:fluentui:post-validation
 
@@ -173,7 +173,7 @@ jobs:
 
       - task: CmdLine@2
         displayName: 'Set base path and version'
-        condition: and(succeeded(), eq(variables.publishOfficial, true), ne(variables.version, 'canary'))
+        condition: and(succeeded(), eq(variables.publishOfficial, true), ne(variables.releaseVersion, 'canary'))
         inputs:
           script: |
             ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
@@ -184,7 +184,7 @@ jobs:
 
       - task: CmdLine@2
         displayName: 'Set base path and version for canary'
-        condition: and(succeeded(), eq(variables.publishOfficial, true), eq(variables.version, 'canary'))
+        condition: and(succeeded(), eq(variables.publishOfficial, true), eq(variables.releaseVersion, 'canary'))
         inputs:
           script: |
             ver=`node -p "require('./packages/fluentui/lerna.json').version"`

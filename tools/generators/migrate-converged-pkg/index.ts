@@ -277,7 +277,7 @@ const templates = {
         types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         lib: ['ES2019', 'dom'],
       },
-      include: ['**/*.ts'],
+      include: ['**/*.ts', '**/*.tsx'],
     },
   },
   npmIgnoreConfig:

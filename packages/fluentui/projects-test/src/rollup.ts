@@ -27,8 +27,8 @@ export async function rollup() {
     'rollup-plugin-commonjs',
     'rollup-plugin-node-resolve',
     'rollup-plugin-json',
-    'react',
-    'react-dom',
+    'react@17',
+    'react-dom@17',
   ].join(' ');
 
   await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);

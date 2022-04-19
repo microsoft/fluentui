@@ -18,10 +18,10 @@ export const renderSpinButton_unstable: (state: SpinButtonState) => JSX.Element;
 export const SpinButton: ForwardRefComponent<SpinButtonProps>;
 
 // @public (undocumented)
-export type SpinButtonBounds = 'none' | 'min' | 'max';
+export type SpinButtonBounds = 'none' | 'min' | 'max' | 'both';
 
 // @public (undocumented)
-export type SpinButtonChangeEvent = React_2.MouseEvent<HTMLButtonElement> | React_2.ChangeEvent<HTMLElement> | React_2.FocusEvent<HTMLInputElement> | React_2.KeyboardEvent<HTMLInputElement> | React_2.WheelEvent<HTMLDivElement>;
+export type SpinButtonChangeEvent = React_2.MouseEvent<HTMLButtonElement> | React_2.ChangeEvent<HTMLElement> | React_2.FocusEvent<HTMLInputElement> | React_2.KeyboardEvent<HTMLInputElement>;
 
 // @public (undocumented)
 export const spinButtonClassNames: SlotClassNames<SpinButtonSlots>;
@@ -40,6 +40,7 @@ export type SpinButtonCommons = {
     appearance: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
     size: 'small' | 'medium';
     inputType: 'all' | 'spinners-only';
+    strings?: SpinButtonStrings;
 };
 
 // @public (undocumented)
@@ -66,6 +67,12 @@ export type SpinButtonSpinState = 'rest' | 'up' | 'down';
 export type SpinButtonState = ComponentState<SpinButtonSlots> & Partial<SpinButtonCommons> & Pick<SpinButtonCommons, 'appearance' | 'size'> & {
     spinState: SpinButtonSpinState;
     atBound: SpinButtonBounds;
+};
+
+// @public (undocumented)
+export type SpinButtonStrings = {
+    incrementButtonLabel: string;
+    decrementButtonLabel: string;
 };
 
 // @public

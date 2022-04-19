@@ -8,6 +8,10 @@ import type { OptionState, OptionSlots } from './Option.types';
 export const renderOption_unstable = (state: OptionState) => {
   const { slots, slotProps } = getSlots<OptionSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      <slots.checkIcon {...slotProps.checkIcon} />
+      {slotProps.root.children}
+    </slots.root>
+  );
 };

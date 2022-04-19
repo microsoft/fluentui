@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/perf-test-northstar",
   "description": "Perf tests for fluentui.",
-  "version": "0.61.0",
+  "version": "0.62.0",
   "private": true,
   "scripts": {
     "build": "just-scripts build",
@@ -12,9 +12,9 @@
     "perf:test:base": "just-scripts perf-test --base"
   },
   "devDependencies": {
-    "@fluentui/digest": "^0.61.0",
-    "@fluentui/react-northstar": "^0.61.0",
-    "@fluentui/react-northstar-prototypes": "^0.61.0",
+    "@fluentui/digest": "^0.62.0",
+    "@fluentui/react-northstar": "^0.62.0",
+    "@fluentui/react-northstar-prototypes": "^0.62.0",
     "flamegrill": "0.2.0"
   },
   "publishConfig": {
