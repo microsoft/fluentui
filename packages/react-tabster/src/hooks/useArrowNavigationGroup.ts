@@ -23,7 +23,7 @@ export interface UseArrowNavigationGroupOptions {
  * A hook that returns the necessary tabster attributes to support arrow key navigation
  * @param options - Options to configure keyboard navigation
  */
-export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions) => {
+export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions): Types.TabsterDOMAttribute => {
   const tabster = useTabster();
 
   if (tabster) {
