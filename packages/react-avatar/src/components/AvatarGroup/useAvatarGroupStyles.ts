@@ -5,7 +5,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots> = {
   root: 'fui-AvatarGroup',
   popoverSurface: 'fui-AvatarGroup__popoverSurface',
-  popoverTrigger: 'fui-AvatarGroup__popoverSurface',
+  popoverTrigger: 'fui-AvatarGroup__popoverTrigger',
 };
 
 /**
@@ -28,6 +28,14 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+
+  if (state.popoverSurface) {
+    state.popoverSurface.className = mergeClasses(avatarGroupClassNames.popoverSurface, state.popoverSurface.className);
+  }
+
+  if (state.popoverTrigger) {
+    state.popoverTrigger.className = mergeClasses(avatarGroupClassNames.popoverTrigger, state.popoverTrigger.className);
+  }
 
   return state;
 };

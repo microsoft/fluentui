@@ -47,9 +47,11 @@ const App = () => {
 
 There are three layout variants in AvatarGroup:
 
-- Grid layout (Default): Avatars are spaced evenly and there can be a maximum of five of them.
-- Stacked layout: Avatars are overlaped evenly and there can be a maximum of five of them.
-- Pie layout: There can be a minimum of two Avatars and a maximum of three. This layout does not overflow and provides a popover for more details.
+- Grid layout (Default): Avatars are spaced evenly.
+- Stacked layout: Avatars are overlaped evenly.
+- Pie layout: by default, there can be a minimum of two Avatars and a maximum of three. This layout does not overflow and provides a popover for more details.
+
+- > For Grid and Stacked layouts, by default there is a maximum of 5 avatars before overflowing.
 
 ## API
 
@@ -95,9 +97,14 @@ See [AvatarGroup.types.ts](./src/components/AvatarGroup/AvatarGroup.types.ts) fo
   <Avatar />
   <Avatar />
   <Avatar />
-  <span className="fui-Popover__Trigger">
+  <span className="fui-AvatarGroup__popoverTrigger">
     <button>+1</button>
   </span>
+</div>
+
+// on document.body
+<div class="fui-AvatarGroup__popoverSurface" role="complementary">
+  <!-- List of overflowed avatars with name -->
 </div>
 ```
 
