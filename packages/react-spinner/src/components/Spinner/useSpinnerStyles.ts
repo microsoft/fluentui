@@ -234,7 +234,7 @@ const useTrackStyles = makeStyles({
   primary: {
     ['& > svg > circle.fui-Spinner__Tail']: {
       stroke: tokens.colorBrandStroke1,
-      '@media screen and (-ms-high-contrast: active)': {
+      '@media screen and (forced-colors: active)': {
         stroke: tokens.colorNeutralStrokeOnBrand2,
       },
       animationName: {
@@ -262,7 +262,7 @@ const useTrackStyles = makeStyles({
     },
     ['& > svg > circle.fui-Spinner__Track']: {
       stroke: tokens.colorNeutralBackground4,
-      '@media screen and (-ms-high-contrast: active)': {
+      '@media screen and (forced-colors: active)': {
         stroke: tokens.colorNeutralBackgroundInverted,
       },
     },
