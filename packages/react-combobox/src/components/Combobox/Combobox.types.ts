@@ -108,4 +108,7 @@ export type ComboboxOpenChangeData = {
 };
 
 /* Possible event types for onOpen */
-export type ComboboxOpenEvents = React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>;
+export type ComboboxOpenEvents =
+  | React.MouseEvent<HTMLElement>
+  | React.KeyboardEvent<HTMLElement>
+  | React.FocusEvent<HTMLElement>;

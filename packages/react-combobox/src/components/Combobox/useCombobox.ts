@@ -43,6 +43,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     initialState: false,
   });
 
+  // handle trigger focus/blur
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const ignoreTriggerBlur = React.useRef(false);
+
   // popper
   const popperOptions = {
     position: 'below' as const,
@@ -93,11 +97,92 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     selectOption(event, option);
   };
 
-  const onTriggerClick = (event: React.MouseEvent<HTMLElement>) => {
-    setOpen(event, !open);
+  const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'button',
+    excludedPropNames: ['children'],
+  });
+
+  const state: ComboboxState = {
+    components: {
+      root: 'div',
+      listbox: Listbox,
+      trigger: ComboButton,
+    },
+    root: resolveShorthand(props.root, {
+      required: true,
+      defaultProps: {
+        children: props.children,
+        ...rootNativeProps,
+      },
+    }),
+    listbox: resolveShorthand(props.listbox, {
+      required: true,
+      defaultProps: {
+        ref: popperContainerRef,
+        tabIndex: undefined,
+      },
+    }),
+    trigger: resolveShorthand(props.trigger, {
+      required: true,
+      defaultProps: {
+        ref: useMergedRefs(ref, triggerRef, popperTargetRef),
+        'aria-expanded': open,
+        'aria-activedescendant': open ? activeOption?.id : undefined,
+        placeholder,
+        value,
+        ...triggerNativeProps,
+      },
+    }),
+    ...optionCollection,
+    activeOption,
+    idBase,
+    inline,
+    onOptionClick,
+    open,
+    options,
+    selectedOptions,
+    value,
   };
 
-  const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+  /*
+   * Handle focus when clicking the listbox popup:
+   * 1. Move focus back to the button/input when the listbox is clicked (otherwise it goes to body)
+   * 2. Do not close the listbox on button/input blur when clicking into the listbox
+   */
+  const { onClick: onListboxClick, onMouseDown: onListboxMouseDown } = state.listbox;
+  state.listbox.onClick = event => {
+    triggerRef.current?.focus();
+
+    onListboxClick?.(event);
+  };
+
+  state.listbox.onMouseDown = event => {
+    ignoreTriggerBlur.current = true;
+
+    onListboxMouseDown?.(event);
+  };
+
+  // the trigger should open/close the popup on click or blur
+  const { onBlur: onTriggerBlur, onClick: onTriggerClick, onKeyDown: onTriggerKeyDown } = state.trigger;
+  state.trigger.onBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
+    if (!ignoreTriggerBlur.current) {
+      setOpen(event, false);
+    }
+
+    ignoreTriggerBlur.current = false;
+
+    onTriggerBlur?.(event);
+  };
+
+  state.trigger.onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setOpen(event, !open);
+
+    onTriggerClick?.(event);
+  };
+
+  // handle combobox keyboard interaction
+  state.trigger.onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     const action = getDropdownActionFromKey(event, { open, multiselect });
     const maxIndex = count - 1;
     const activeIndex = activeOption ? getIndexOfKey(activeOption.key) : -1;
@@ -121,6 +206,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
         activeOption && selectOption(event, activeOption);
         event.preventDefault();
         break;
+      case 'Tab':
+        activeOption && selectOption(event, activeOption);
+        break;
       default:
         newIndex = getIndexFromAction(action, activeIndex, maxIndex);
     }
@@ -129,55 +217,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
       event.preventDefault();
       setActiveOption(getOptionAtIndex(newIndex));
     }
+
+    onTriggerKeyDown?.(event);
   };
 
-  const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'button',
-    excludedPropNames: ['children'],
-  });
-
-  return {
-    components: {
-      root: 'div',
-      listbox: Listbox,
-      trigger: ComboButton,
-    },
-    root: resolveShorthand(props.root, {
-      required: true,
-      defaultProps: {
-        children: props.children,
-        ...rootNativeProps,
-      },
-    }),
-    listbox: resolveShorthand(props.listbox, {
-      required: true,
-      defaultProps: {
-        ref: popperContainerRef,
-        tabIndex: undefined,
-      },
-    }),
-    trigger: resolveShorthand(props.trigger, {
-      required: true,
-      defaultProps: {
-        ref: useMergedRefs(ref, popperTargetRef),
-        'aria-expanded': open,
-        'aria-activedescendant': open ? activeOption?.id : undefined,
-        placeholder,
-        value,
-        onClick: onTriggerClick,
-        onKeyDown,
-        ...triggerNativeProps,
-      },
-    }),
-    ...optionCollection,
-    activeOption,
-    idBase,
-    inline,
-    onOptionClick,
-    open,
-    options,
-    selectedOptions,
-    value,
-  };
+  return state;
 };
