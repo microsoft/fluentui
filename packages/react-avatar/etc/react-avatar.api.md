@@ -4,6 +4,7 @@
 
 ```ts
 
+import { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -34,7 +35,7 @@ export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & Partial<Avatar
 // @public (undocumented)
 export type AvatarGroupSlots = {
     root: Slot<'div'>;
-    popoverTrigger?: Slot<'span'>;
+    popoverTrigger?: Slot<typeof Button>;
     popoverSurface?: Slot<typeof PopoverSurface>;
 };
 
