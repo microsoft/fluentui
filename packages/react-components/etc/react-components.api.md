@@ -72,7 +72,6 @@ import { ButtonState } from '@fluentui/react-button';
 import { Caption } from '@fluentui/react-text';
 import { captionClassName } from '@fluentui/react-text';
 import { captionClassNames } from '@fluentui/react-text';
-import { clamp } from '@fluentui/react-utilities';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
 import { ColorTokens } from '@fluentui/react-theme';
 import { ComponentProps } from '@fluentui/react-utilities';
@@ -121,7 +120,6 @@ import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getNativeProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
-import { getRTLSafeKey } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { Headline } from '@fluentui/react-text';
 import { headlineClassName } from '@fluentui/react-text';
@@ -229,7 +227,6 @@ import { MenuTriggerContextProvider } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
 import { mergeClasses } from '@griffel/react';
-import { omit } from '@fluentui/react-utilities';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
@@ -293,6 +290,7 @@ import { renderText_unstable } from '@fluentui/react-text';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
 import { renderToStyleElements } from '@griffel/react';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import { ResolveShorthandOptions } from '@fluentui/react-utilities';
@@ -301,7 +299,6 @@ import { setVirtualParent } from '@fluentui/react-portal';
 import { ShadowBrandTokens } from '@fluentui/react-theme';
 import { ShadowTokens } from '@fluentui/react-theme';
 import { shorthands } from '@griffel/react';
-import { shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 import { Slider } from '@fluentui/react-slider';
 import { sliderClassNames } from '@fluentui/react-slider';
 import { SliderOnChangeData } from '@fluentui/react-slider';
@@ -317,8 +314,6 @@ import { splitButtonClassNames } from '@fluentui/react-button';
 import { SplitButtonProps } from '@fluentui/react-button';
 import { SplitButtonSlots } from '@fluentui/react-button';
 import { SplitButtonState } from '@fluentui/react-button';
-import { SSRContext } from '@fluentui/react-utilities';
-import { SSRProvider } from '@fluentui/react-utilities';
 import { StrokeWidthTokens } from '@fluentui/react-theme';
 import { Subheadline } from '@fluentui/react-text';
 import { subheadlineClassName } from '@fluentui/react-text';
@@ -375,15 +370,12 @@ import { useAvatar_unstable } from '@fluentui/react-avatar';
 import { useAvatarStyles_unstable } from '@fluentui/react-avatar';
 import { useBadge_unstable } from '@fluentui/react-badge';
 import { useBadgeStyles_unstable } from '@fluentui/react-badge';
-import { useBoolean } from '@fluentui/react-utilities';
 import { UseBooleanCallbacks } from '@fluentui/react-utilities';
 import { useButton_unstable } from '@fluentui/react-button';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
 import { useCompoundButton_unstable } from '@fluentui/react-button';
 import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
-import { useConst } from '@fluentui/react-utilities';
-import { useControllableState } from '@fluentui/react-utilities';
 import { UseControllableStateOptions } from '@fluentui/react-utilities';
 import { useCounterBadge_unstable } from '@fluentui/react-badge';
 import { useCounterBadgeStyles_unstable } from '@fluentui/react-badge';
@@ -433,7 +425,6 @@ import { useMenuSplitGroup_unstable } from '@fluentui/react-menu';
 import { useMenuSplitGroupStyles_unstable } from '@fluentui/react-menu';
 import { useMenuTrigger_unstable } from '@fluentui/react-menu';
 import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
-import { useMergedEventCallbacks } from '@fluentui/react-utilities';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
@@ -451,10 +442,8 @@ import { useSliderStyles_unstable } from '@fluentui/react-slider';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
 import { useSSRContext } from '@fluentui/react-utilities';
-import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useText_unstable } from '@fluentui/react-text';
 import { useTextStyles_unstable } from '@fluentui/react-text';
-import { useTimeout } from '@fluentui/react-utilities';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
@@ -600,8 +589,6 @@ export { captionClassName }
 
 export { captionClassNames }
 
-export { clamp }
-
 export { ColorPaletteTokens }
 
 export { ColorTokens }
@@ -697,8 +684,6 @@ export { getNativeElementProps }
 export { getNativeProps }
 
 export { getPartitionedNativeProps }
-
-export { getRTLSafeKey }
 
 export { getSlots }
 
@@ -914,8 +899,6 @@ export { MenuTriggerState }
 
 export { mergeClasses }
 
-export { omit }
-
 export { OnOpenChangeData }
 
 export { OnVisibleChangeData }
@@ -1042,6 +1025,8 @@ export { renderTooltip_unstable }
 
 export { renderToStyleElements }
 
+export { resetIdsForTests }
+
 export { resolveShorthand }
 
 export { ResolveShorthandFunction }
@@ -1057,8 +1042,6 @@ export { ShadowBrandTokens }
 export { ShadowTokens }
 
 export { shorthands }
-
-export { shouldPreventDefaultOnKeyDown }
 
 export { Slider }
 
@@ -1089,10 +1072,6 @@ export { SplitButtonProps }
 export { SplitButtonSlots }
 
 export { SplitButtonState }
-
-export { SSRContext }
-
-export { SSRProvider }
 
 export { StrokeWidthTokens }
 
@@ -1206,8 +1185,6 @@ export { useBadge_unstable }
 
 export { useBadgeStyles_unstable }
 
-export { useBoolean }
-
 export { UseBooleanCallbacks }
 
 export { useButton_unstable }
@@ -1219,10 +1196,6 @@ export { useCheckmarkStyles_unstable }
 export { useCompoundButton_unstable }
 
 export { useCompoundButtonStyles_unstable }
-
-export { useConst }
-
-export { useControllableState }
 
 export { UseControllableStateOptions }
 
@@ -1322,8 +1295,6 @@ export { useMenuTrigger_unstable }
 
 export { useMenuTriggerContext_unstable }
 
-export { useMergedEventCallbacks }
-
 export { useMergedRefs }
 
 export { useModalAttributes }
@@ -1358,13 +1329,9 @@ export { useSplitButtonStyles_unstable }
 
 export { useSSRContext }
 
-export { useTabsterAttributes }
-
 export { useText_unstable }
 
 export { useTextStyles_unstable }
-
-export { useTimeout }
 
 export { useToggleButton_unstable }
 

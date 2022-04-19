@@ -34,7 +34,6 @@ export {
   useFocusFinders,
   useKeyboardNavAttribute,
   useModalAttributes,
-  useTabsterAttributes,
 } from '@fluentui/react-tabster';
 export type {
   CreateFocusIndicatorStyleRuleOptions,
@@ -74,28 +73,18 @@ export type {
   Theme,
 } from '@fluentui/react-theme';
 export {
-  clamp,
   getNativeElementProps,
   getNativeProps,
   getPartitionedNativeProps,
-  getRTLSafeKey,
   getSlots,
-  omit,
+  resetIdsForTests,
   resolveShorthand,
-  shouldPreventDefaultOnKeyDown,
-  useBoolean,
-  useConst,
-  useControllableState,
   useId,
   useIsSSR,
-  useMergedEventCallbacks,
   useMergedRefs,
   useMount,
   useSSRContext,
-  useTimeout,
   useUnmount,
-  SSRContext,
-  SSRProvider,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
