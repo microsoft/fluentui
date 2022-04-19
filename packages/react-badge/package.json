@@ -32,8 +32,8 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.159-beta.10",
-    "@griffel/react": "1.0.0",
+    "@fluentui/react-icons": "^2.0.166-rc.3",
+    "@griffel/react": "1.0.3",
     "@fluentui/react-theme": "9.0.0-rc.4",
     "@fluentui/react-utilities": "9.0.0-rc.5",
     "tslib": "^2.1.0"

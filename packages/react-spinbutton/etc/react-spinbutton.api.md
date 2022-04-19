@@ -40,6 +40,7 @@ export type SpinButtonCommons = {
     appearance: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
     size: 'small' | 'medium';
     inputType: 'all' | 'spinners-only';
+    strings?: SpinButtonStrings;
 };
 
 // @public (undocumented)
@@ -66,6 +67,12 @@ export type SpinButtonSpinState = 'rest' | 'up' | 'down';
 export type SpinButtonState = ComponentState<SpinButtonSlots> & Partial<SpinButtonCommons> & Pick<SpinButtonCommons, 'appearance' | 'size'> & {
     spinState: SpinButtonSpinState;
     atBound: SpinButtonBounds;
+};
+
+// @public (undocumented)
+export type SpinButtonStrings = {
+    incrementButtonLabel: string;
+    decrementButtonLabel: string;
 };
 
 // @public

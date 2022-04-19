@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 15 Apr 2022 07:42:46 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Apr 2022 07:38:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.65.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.65.1)
+
+Mon, 18 Apr 2022 07:38:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.65.0..@fluentui/react_v8.65.1)
+
+### Patches
+
+- Fixed onRenderOption docs to note that regular AND header types are affected ([PR #22513](https://github.com/microsoft/fluentui/pull/22513) by mgodbolt@microsoft.com)
+- Panel: fix extra margin when custom navigation is used ([PR #22524](https://github.com/microsoft/fluentui/pull/22524) by mgodbolt@microsoft.com)
+- Nav: Remove duplicative active focus styles from chevron ([PR #22514](https://github.com/microsoft/fluentui/pull/22514) by mgodbolt@microsoft.com)
+- ContextualMenu: Fix high contrast colors ([PR #22518](https://github.com/microsoft/fluentui/pull/22518) by mgodbolt@microsoft.com)
 
 ## [8.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.65.0)
 
