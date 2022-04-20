@@ -30,7 +30,7 @@ export type SelectionProps = {
   selectedOptions?: SelectedOption[];
 };
 
-export type SelectionState = Required<Pick<SelectionProps, 'selectedOptions'>>;
+export type SelectionState = Required<Pick<SelectionProps, 'selectedOptions'>> & Pick<SelectionProps, 'multiselect'>;
 
 /* Values returned by the useSelection hook */
 export type SelectionValue = {

@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { SpinButton } from './SpinButton';
 import { isConformant } from '../../common/isConformant';
 import * as Keys from '@fluentui/keyboard-keys';
+import { SpinButtonStrings } from './SpinButton.types';
 
 const getSpinButtonInput = (): HTMLInputElement => {
   return screen.getByRole('spinbutton') as HTMLInputElement;
@@ -18,7 +19,7 @@ describe('SpinButton', () => {
   });
 
   it('renders a default uncontrolled state', () => {
-    render(<SpinButton defaultValue={10} />);
+    const { getAllByRole } = render(<SpinButton defaultValue={10} />);
 
     const spinButton = getSpinButtonInput();
     expect(spinButton.value).toEqual('10');
@@ -26,10 +27,14 @@ describe('SpinButton', () => {
     expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
+
+    const [incrementButton, decrementButton] = getAllByRole('button');
+    expect(incrementButton.getAttribute('aria-label')).toEqual('Increment by 1');
+    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement by 1');
   });
 
   it('renders a default controlled state', () => {
-    render(<SpinButton value={1} onChange={jest.fn()} />);
+    const { getAllByRole } = render(<SpinButton value={1} onChange={jest.fn()} />);
 
     const spinButton = getSpinButtonInput();
     expect(spinButton.value).toEqual('1');
@@ -37,6 +42,10 @@ describe('SpinButton', () => {
     expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
+
+    const [incrementButton, decrementButton] = getAllByRole('button');
+    expect(incrementButton.getAttribute('aria-label')).toEqual('Increment by 1');
+    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement by 1');
   });
 
   it('does not render `displayValue` when uncontrolled', () => {
@@ -500,5 +509,33 @@ describe('SpinButton', () => {
 
     userEvent.type(spinButton, '23');
     expect(onChange).toHaveBeenCalledTimes(6); // no change should fire
+  });
+
+  it('applies custom strings', () => {
+    const strings: SpinButtonStrings = {
+      incrementButtonLabel: `Increment SpinButton by {step}`,
+      decrementButtonLabel: `Decrement It`,
+    };
+
+    const { getAllByRole } = render(<SpinButton strings={strings} defaultValue={0} />);
+
+    const [incrementButton, decrementButton] = getAllByRole('button');
+    expect(incrementButton.getAttribute('aria-label')).toEqual('Increment SpinButton by 1');
+    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement It');
+  });
+
+  it('overrides custom strings with slot props', () => {
+    const strings: SpinButtonStrings = {
+      incrementButtonLabel: `Increment SpinButton by {step}`,
+      decrementButtonLabel: `Decrement It`,
+    };
+
+    const { getAllByRole } = render(
+      <SpinButton strings={strings} defaultValue={0} incrementButton={{ 'aria-label': 'Increment Override' }} />,
+    );
+
+    const [incrementButton, decrementButton] = getAllByRole('button');
+    expect(incrementButton.getAttribute('aria-label')).toEqual('Increment Override');
+    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement It');
   });
 });

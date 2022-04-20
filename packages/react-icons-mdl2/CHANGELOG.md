@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-icons-mdl2
 
-This log was last generated on Thu, 14 Apr 2022 07:38:10 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Apr 2022 07:42:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.8)
+
+Fri, 15 Apr 2022 07:42:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.3.7..@fluentui/react-icons-mdl2_v1.3.8)
+
+### Patches
+
+- Bump @fluentui/react-icon-provider to v1.3.6 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/utilities to v8.8.2 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
 
 ## [1.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.7)
 

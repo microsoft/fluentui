@@ -38,7 +38,7 @@ export enum FabricSlots {
   neutralQuaternary, // BaseSlots.backgroundColor, Shade[Shade.Shade5]);
   neutralTertiaryAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
   neutralTertiary, // BaseSlots.foregroundColor, Shade[Shade.Shade3]);
-  // deprecated: neutralSecondaryAlt, // BaseSlots.foregroundColor, Shade[Shade.Shade4]);
+  neutralSecondaryAlt, // BaseSlots.foregroundColor, Shade[Shade.Shade4]);
   neutralSecondary, // BaseSlots.foregroundColor, Shade[Shade.Shade5]);
   neutralPrimaryAlt, // BaseSlots.foregroundColor, Shade[Shade.Shade6]);
   neutralPrimary, // BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
@@ -135,6 +135,7 @@ export function themeRulesStandardCreator(): IThemeRules {
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralTertiaryAlt], BaseSlots.backgroundColor, Shade.Shade6, true);
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralTertiary], BaseSlots.foregroundColor, Shade.Shade3);
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralSecondary], BaseSlots.foregroundColor, Shade.Shade4);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralSecondaryAlt], BaseSlots.foregroundColor, Shade.Shade4);
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralPrimaryAlt], BaseSlots.foregroundColor, Shade.Shade5);
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralPrimary], BaseSlots.foregroundColor, Shade.Unshaded);
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralDark], BaseSlots.foregroundColor, Shade.Shade7);
@@ -153,6 +154,7 @@ export function themeRulesStandardCreator(): IThemeRules {
   slotRules[FabricSlots[FabricSlots.neutralDark]].color = getColorFromString('#201f1e');
   slotRules[FabricSlots[FabricSlots.neutralPrimaryAlt]].color = getColorFromString('#3b3a39');
   slotRules[FabricSlots[FabricSlots.neutralSecondary]].color = getColorFromString('#605e5c');
+  slotRules[FabricSlots[FabricSlots.neutralSecondaryAlt]].color = getColorFromString('#8a8886');
   slotRules[FabricSlots[FabricSlots.neutralTertiary]].color = getColorFromString('#a19f9d');
   slotRules[FabricSlots[FabricSlots.white]].color = getColorFromString('#ffffff');
 
@@ -176,6 +178,7 @@ export function themeRulesStandardCreator(): IThemeRules {
   slotRules[FabricSlots[FabricSlots.neutralDark]].isCustomized = true;
   slotRules[FabricSlots[FabricSlots.neutralPrimaryAlt]].isCustomized = true;
   slotRules[FabricSlots[FabricSlots.neutralSecondary]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.neutralSecondaryAlt]].isCustomized = true;
   slotRules[FabricSlots[FabricSlots.neutralTertiary]].isCustomized = true;
   slotRules[FabricSlots[FabricSlots.white]].isCustomized = true;
 

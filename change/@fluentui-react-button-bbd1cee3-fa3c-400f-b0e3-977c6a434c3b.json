@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add deprecation messages to react-button",
-  "packageName": "@fluentui/react-button",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

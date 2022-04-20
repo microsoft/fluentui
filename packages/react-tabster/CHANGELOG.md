@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Fri, 04 Mar 2022 05:17:31 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 19:16:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-rc.6)
+
+Tue, 19 Apr 2022 19:16:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-rc.5..@fluentui/react-tabster_v9.0.0-rc.6)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- Removing star exports at src/index.ts. ([PR #22367](https://github.com/microsoft/fluentui/pull/22367) by Humberto.Morimoto@microsoft.com)
+- fix styles in getFocusOutlineStyles() ([PR #22070](https://github.com/microsoft/fluentui/pull/22070) by olfedias@microsoft.com)
+- feat(react-tabster): Add grid navigation ([PR #22085](https://github.com/microsoft/fluentui/pull/22085) by jukapsia@microsoft.com)
+- Upgrading tabster to latest version. ([PR #22492](https://github.com/microsoft/fluentui/pull/22492) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.5 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.5 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-rc.5)
 
