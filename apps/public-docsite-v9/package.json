@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/upgrade-examples-v8-v9",
+  "name": "@fluentui/public-docsite-v9",
   "version": "1.0.0",
   "private": true,
   "description": "A collection of examples demonstrating how to upgrade from v8 to v9",
@@ -14,7 +14,9 @@
     "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/react-storybook-addon": "9.0.0-rc.1",
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/react": "^8.66.1",
