@@ -264,6 +264,7 @@
       "apps/*",
       "packages/*",
       "packages/fluentui/*",
+      "packages/react-components/*",
       "scripts",
       "tools",
       "typings"
