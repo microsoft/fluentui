@@ -1,5 +1,12 @@
 // @ts-check
-const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
+
+/**
+ * @typedef {new (config:{include: RegExp | RegExp[]}) => import('webpack').WebpackPluginInstance} IgnoreNotFoundExportWebpackPlugin
+ */
+
+// @ts-ignore - this plugin ships no types nor are does these exist on DefinitelyTyped repo
+const _IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
+const IgnoreNotFoundExportWebpackPlugin = /** @type {IgnoreNotFoundExportWebpackPlugin} */ (_IgnoreNotFoundExportWebpackPlugin);
 const path = require('path');
 const findGitRoot = require('../monorepo/findGitRoot');
 const getResolveAlias = require('../webpack/getResolveAlias');
@@ -20,68 +27,70 @@ module.exports = config => {
     ],
   };
 
-  config.module.rules.push(
-    {
-      test: /\.(ts|tsx)$/,
-      use: [
-        {
-          loader: require.resolve('ts-loader'),
-          options: {
-            transpileOnly: true,
-            experimentalWatchApi: true,
-            configFile: path.join(process.cwd(), 'tsconfig.json'),
-          },
-        },
-      ],
-    },
-    {
-      test: /\.scss$/,
-      enforce: 'pre',
-      exclude: [/node_modules/],
-      use: [
-        {
-          loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
-        },
-        {
-          loader: 'css-loader', // translates CSS into CommonJS
-          options: {
-            esModule: false,
-            modules: true,
-            importLoaders: 2,
-          },
-        },
-        {
-          loader: 'postcss-loader',
-          options: {
-            postcssOptions: {
-              plugins: ['autoprefixer'],
+  if (config.module && config.module.rules) {
+    config.module.rules.push(
+      {
+        test: /\.(ts|tsx)$/,
+        use: [
+          {
+            loader: require.resolve('ts-loader'),
+            options: {
+              transpileOnly: true,
+              experimentalWatchApi: true,
+              configFile: path.join(process.cwd(), 'tsconfig.json'),
             },
           },
-        },
-        {
-          loader: 'sass-loader',
-        },
-      ],
-    },
-    {
-      test: /\.(gif|jpg|jpeg|png|svg)$/,
-      loader: 'file-loader',
-      options: {
-        name: '[name].[ext]',
+        ],
       },
-    },
-    {
-      test: /\.(woff|woff2|ttf)$/,
-      loader: 'file-loader',
-      options: {
-        name: '[name].[ext]',
+      {
+        test: /\.scss$/,
+        enforce: 'pre',
+        exclude: [/node_modules/],
+        use: [
+          {
+            loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
+          },
+          {
+            loader: 'css-loader', // translates CSS into CommonJS
+            options: {
+              esModule: false,
+              modules: true,
+              importLoaders: 2,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: ['autoprefixer'],
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
       },
-    },
-    {
-      test: /\.md$/,
-      loader: 'raw-loader',
-    },
-  );
+      {
+        test: /\.(gif|jpg|jpeg|png|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+        },
+      },
+      {
+        test: /\.(woff|woff2|ttf)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+        },
+      },
+      {
+        test: /\.md$/,
+        loader: 'raw-loader',
+      },
+    );
+  }
 
   config.resolve = {
     ...config.resolve,
