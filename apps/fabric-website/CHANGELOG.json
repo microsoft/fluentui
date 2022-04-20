@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 20 Apr 2022 12:24:18 GMT",
+      "tag": "@uifabric/fabric-website_v7.17.15",
+      "version": "7.17.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.185.3",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "f9f20e2a6f284ef3f3f08d6dde7d3fa002d11862",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Apr 2022 12:27:44 GMT",
       "tag": "@uifabric/fabric-website_v7.17.15",
       "version": "7.17.15",

@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 14 Apr 2022 12:27:44 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Apr 2022 12:24:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.185.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.185.3)
+
+Wed, 20 Apr 2022 12:24:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.185.2..office-ui-fabric-react_v7.185.3)
+
+### Patches
+
+- ContextualMenu: Fix high contrast colors ([PR #22522](https://github.com/microsoft/fluentui/pull/22522) by mgodbolt@microsoft.com)
 
 ## [7.185.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.185.2)
 
