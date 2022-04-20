@@ -18,6 +18,9 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
   const { appearance = 'primary', labelPosition = 'after', size = 'medium', status = 'active' } = props;
   const baseId = useId('spinner');
 
+  const { tabIndex, ...rest } = props;
+  const nativeRoot = getNativeElementProps('div', { ref, ...rest }, ['size']);
+
   const labelShorthand = resolveShorthand(props.label, {
     defaultProps: {
       id: baseId,
@@ -29,6 +32,7 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
     required: true,
     defaultProps: {
       children: <DefaultSvg />,
+      tabIndex: tabIndex,
     },
   });
 
@@ -46,7 +50,7 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
       spinner: 'span',
       label: Label,
     },
-    root: getNativeElementProps('div', { ref, ...props }, ['size']),
+    root: nativeRoot,
     spinner: spinnerShortHand,
     label: labelShorthand,
   };

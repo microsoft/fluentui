@@ -105,7 +105,7 @@ const useLoaderStyles = makeStyles({
   // global SVG class
   spinnerSVG: {
     ':focus-visible': {
-      outlineStyle: 'none',
+      outlineStyle: '3px solid transparent',
     },
     ['& > svg']: {
       animationName: {
