@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Move to new common folder",
+  "packageName": "@fluentui/react-components",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}
