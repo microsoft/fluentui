@@ -168,7 +168,7 @@ function printStats(tree: Tree, options: MigrateV8PkgGeneratorSchema) {
     stats.notMigrated.push({ projectName, metadata, ...project });
   });
 
-  function printProjectInfo(projectStat: ProjectStats) {
+  function createProjectInfoMessage(projectStat: ProjectStats) {
     return `- ${projectStat.projectName} | lint:${projectStat.metadata.eslintConfig?.extends}`;
   }
 
@@ -176,11 +176,11 @@ function printStats(tree: Tree, options: MigrateV8PkgGeneratorSchema) {
   logger.info('='.repeat(80));
 
   logger.info(`Migrated (${stats.migrated.length}):`);
-  logger.info(stats.migrated.map(printProjectInfo).join('\n'));
+  logger.info(stats.migrated.map(createProjectInfoMessage).join('\n'));
 
   logger.info('='.repeat(80));
   logger.info(`Not migrated (${stats.notMigrated.length}):`);
-  logger.info(stats.notMigrated.map(printProjectInfo).join('\n'));
+  logger.info(stats.notMigrated.map(createProjectInfoMessage).join('\n'));
 
   return tree;
 }
