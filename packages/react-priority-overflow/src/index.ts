@@ -1,9 +1,13 @@
-export * from './components/Overflow';
-export * from './constants';
-export * from './types';
-export * from './useIsOverflowGroupVisible';
-export * from './useIsOverflowItemVisible';
-export * from './useOverflowContainer';
-export * from './useOverflowCount';
-export * from './useOverflowItem';
-export * from './useOverflowMenu';
+export { Overflow } from './components/Overflow';
+export type { OverflowProps } from './components/Overflow';
+export { DATA_OVERFLOWING, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './constants';
+export type { UseOverflowContainerReturn } from './types';
+export { useIsOverflowGroupVisible } from './useIsOverflowGroupVisible';
+export { useIsOverflowItemVisible } from './useIsOverflowItemVisible';
+export { updateVisibilityAttribute, useOverflowContainer } from './useOverflowContainer';
+export { useOverflowCount } from './useOverflowCount';
+export { useOverflowItem } from './useOverflowItem';
+export { useOverflowMenu } from './useOverflowMenu';
+
+export type { OverflowItemProps } from './components/OverflowItem/OverflowItem.types';
+export { OverflowItem } from './components/OverflowItem/OverflowItem';

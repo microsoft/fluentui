@@ -1,8 +1,45 @@
 # Change Log - @fluentui/upgrade-examples-v8-v9
 
-This log was last generated on Tue, 12 Apr 2022 07:39:33 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 21:39:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/upgrade-examples-v8-v9_v1.0.0)
+
+Tue, 19 Apr 2022 21:39:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/upgrade-examples-v8-v9_v1.0.0..@fluentui/upgrade-examples-v8-v9_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.66.0 ([PR #22550](https://github.com/microsoft/fluentui/pull/22550) by beachball)
+- Bump @fluentui/react-components to v9.0.0-rc.7 ([PR #22550](https://github.com/microsoft/fluentui/pull/22550) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/upgrade-examples-v8-v9_v1.0.0)
+
+Mon, 18 Apr 2022 07:38:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/upgrade-examples-v8-v9_v1.0.0..@fluentui/upgrade-examples-v8-v9_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.65.1 ([PR #22524](https://github.com/microsoft/fluentui/pull/22524) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/upgrade-examples-v8-v9_v1.0.0)
+
+Fri, 15 Apr 2022 07:42:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/upgrade-examples-v8-v9_v1.0.0..@fluentui/upgrade-examples-v8-v9_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.65.0 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/upgrade-examples-v8-v9_v1.0.0)
+
+Thu, 14 Apr 2022 07:38:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/upgrade-examples-v8-v9_v1.0.0..@fluentui/upgrade-examples-v8-v9_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.64.4 ([PR #22501](https://github.com/microsoft/fluentui/pull/22501) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/upgrade-examples-v8-v9_v1.0.0)
 

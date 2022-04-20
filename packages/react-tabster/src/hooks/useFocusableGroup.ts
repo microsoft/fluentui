@@ -13,7 +13,7 @@ export interface UseFocusableGroupOptions {
  * A hook that returns the necessary tabster attributes to support groupping.
  * @param options - Options to configure keyboard navigation
  */
-export const useFocusableGroup = (options?: UseFocusableGroupOptions) => {
+export const useFocusableGroup = (options?: UseFocusableGroupOptions): Types.TabsterDOMAttribute => {
   const tabster = useTabster();
 
   if (tabster) {

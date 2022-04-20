@@ -501,6 +501,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-portal-compat": {
+      "root": "packages/react-portal-compat",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-portal-compat/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-positioning": {
       "root": "packages/react-positioning",
       "projectType": "library",

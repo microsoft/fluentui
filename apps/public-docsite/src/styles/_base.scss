@@ -35,6 +35,19 @@
     border: none;
   }
 
+  // Remove dotted outline added by MWF's main.css
+  [contentEditable=true]:focus,
+  [tabindex]:focus,
+  a[href]:focus,
+  area[href]:focus,
+  button:focus,
+  iframe:focus,
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none !important;
+  }
+
   // Example card headers
   .ExampleCard-title {
     @include ms-fontSize-20;

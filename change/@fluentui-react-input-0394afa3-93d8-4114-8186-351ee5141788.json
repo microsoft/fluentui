@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removing star exports.",
-  "packageName": "@fluentui/react-input",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

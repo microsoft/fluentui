@@ -26,8 +26,9 @@ const DEFAULT_BASE_URL = 'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_2
 declare global {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    FabricConfig: any;
+    FabricConfig?: {
+      fontBaseUrl?: string;
+    };
   }
 }
 

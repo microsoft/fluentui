@@ -1,8 +1,72 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 12 Apr 2022 07:39:33 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 21:39:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.66.0)
+
+Tue, 19 Apr 2022 21:39:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.65.1..@fluentui/react_v8.66.0)
+
+### Minor changes
+
+- add dismissMenu prop to Dropdown ([PR #22535](https://github.com/microsoft/fluentui/pull/22535) by sarah.higley@microsoft.com)
+- Bump @fluentui/font-icons-mdl2 to v8.3.2 ([PR #22550](https://github.com/microsoft/fluentui/pull/22550) by beachball)
+
+### Patches
+
+- Adding neutralSecondaryAlt to Theming designer and 'dedeprecating' it from Fabric slots. ([PR #22529](https://github.com/microsoft/fluentui/pull/22529) by email not defined)
+
+## [8.65.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.65.1)
+
+Mon, 18 Apr 2022 07:38:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.65.0..@fluentui/react_v8.65.1)
+
+### Patches
+
+- Fixed onRenderOption docs to note that regular AND header types are affected ([PR #22513](https://github.com/microsoft/fluentui/pull/22513) by mgodbolt@microsoft.com)
+- Panel: fix extra margin when custom navigation is used ([PR #22524](https://github.com/microsoft/fluentui/pull/22524) by mgodbolt@microsoft.com)
+- Nav: Remove duplicative active focus styles from chevron ([PR #22514](https://github.com/microsoft/fluentui/pull/22514) by mgodbolt@microsoft.com)
+- ContextualMenu: Fix high contrast colors ([PR #22518](https://github.com/microsoft/fluentui/pull/22518) by mgodbolt@microsoft.com)
+
+## [8.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.65.0)
+
+Fri, 15 Apr 2022 07:42:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.64.4..@fluentui/react_v8.65.0)
+
+### Minor changes
+
+- fix ariaLabel and ariaLabelForGrid weirdness, add deprecation warning for shouldApplyApplicationRole ([PR #22436](https://github.com/microsoft/fluentui/pull/22436) by sarah.higley@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.6 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.3.1 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/merge-styles to v8.5.1 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/react-focus to v8.5.7 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/react-hooks to v8.5.4 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/style-utilities to v8.6.6 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/theme to v2.6.5 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/utilities to v8.8.2 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/common-styles to v1.0.38 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.18 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+
+### Patches
+
+- Fixing onScrollToItem in ComboBox by using the getPendingSelectedIndex instead of checking state. ([PR #22505](https://github.com/microsoft/fluentui/pull/22505) by email not defined)
+- Updating TeachingBubble to follow best practices, with primary action being on the left and secondary action on the right ([PR #22473](https://github.com/microsoft/fluentui/pull/22473) by email not defined)
+- ContextualMenu: Focus container by default when opened by click event. ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by Humberto.Morimoto@microsoft.com)
+- Fixed Dialogs ability to be draggable ([PR #22481](https://github.com/microsoft/fluentui/pull/22481) by mgodbolt@microsoft.com)
+- Fix makestyles to re-register styles for objects upon theme change, and fix memory leak where we keep copy of window ([PR #22493](https://github.com/microsoft/fluentui/pull/22493) by mgodbolt@microsoft.com)
+
+## [8.64.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.4)
+
+Thu, 14 Apr 2022 07:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.64.3..@fluentui/react_v8.64.4)
+
+### Patches
+
+- Moved focus pivot styles to only effect links not in overflow ([PR #22490](https://github.com/microsoft/fluentui/pull/22490) by mgodbolt@microsoft.com)
+- Dropdown: Fixing issue where, if previous/next tabbable element is inside FocusZone then tabbing with Dropdown open will skip it. ([PR #22488](https://github.com/microsoft/fluentui/pull/22488) by Humberto.Morimoto@microsoft.com)
+- Added onScroll callback for calloutProps in ComboBox. ([PR #22501](https://github.com/microsoft/fluentui/pull/22501) by email not defined)
 
 ## [8.64.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.64.3)
 

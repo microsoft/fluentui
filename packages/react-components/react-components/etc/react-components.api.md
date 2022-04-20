@@ -73,6 +73,8 @@ import { captionClassName } from '@fluentui/react-text';
 import { captionClassNames } from '@fluentui/react-text';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
 import { ColorTokens } from '@fluentui/react-theme';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
 import { CompoundButton } from '@fluentui/react-button';
 import { compoundButtonClassName } from '@fluentui/react-button';
 import { compoundButtonClassNames } from '@fluentui/react-button';
@@ -84,6 +86,7 @@ import { counterBadgeClassName } from '@fluentui/react-badge';
 import { counterBadgeClassNames } from '@fluentui/react-badge';
 import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { createDarkTheme } from '@fluentui/react-theme';
 import { createDOMRenderer } from '@griffel/react';
 import { createHighContrastTheme } from '@fluentui/react-theme';
@@ -109,6 +112,11 @@ import { FluentProviderState } from '@fluentui/react-provider';
 import { FontFamilyTokens } from '@fluentui/react-theme';
 import { FontSizeTokens } from '@fluentui/react-theme';
 import { FontWeightTokens } from '@fluentui/react-theme';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeProps } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps } from '@fluentui/react-utilities';
+import { getSlots } from '@fluentui/react-utilities';
 import { Headline } from '@fluentui/react-text';
 import { headlineClassName } from '@fluentui/react-text';
 import { headlineClassNames } from '@fluentui/react-text';
@@ -278,6 +286,10 @@ import { renderText_unstable } from '@fluentui/react-text';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
 import { renderToStyleElements } from '@griffel/react';
+import { resetIdsForTests } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import { ResolveShorthandFunction } from '@fluentui/react-utilities';
+import { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import { SelectableHandler } from '@fluentui/react-menu';
 import { setVirtualParent } from '@fluentui/react-portal';
 import { ShadowBrandTokens } from '@fluentui/react-theme';
@@ -289,13 +301,15 @@ import { SliderOnChangeData } from '@fluentui/react-slider';
 import { SliderProps } from '@fluentui/react-slider';
 import { SliderSlots } from '@fluentui/react-slider';
 import { SliderState } from '@fluentui/react-slider';
+import { Slot } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotPropsRecord } from '@fluentui/react-utilities';
 import { SplitButton } from '@fluentui/react-button';
 import { splitButtonClassName } from '@fluentui/react-button';
 import { splitButtonClassNames } from '@fluentui/react-button';
 import { SplitButtonProps } from '@fluentui/react-button';
 import { SplitButtonSlots } from '@fluentui/react-button';
 import { SplitButtonState } from '@fluentui/react-button';
-import { SSRProvider } from '@fluentui/react-utilities';
 import { StrokeWidthTokens } from '@fluentui/react-theme';
 import { Subheadline } from '@fluentui/react-text';
 import { subheadlineClassName } from '@fluentui/react-text';
@@ -346,6 +360,8 @@ import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { UseArrowNavigationGroupOptions } from '@fluentui/react-tabster';
 import { useAvatar_unstable } from '@fluentui/react-avatar';
 import { useAvatarStyles_unstable } from '@fluentui/react-avatar';
 import { useBadge_unstable } from '@fluentui/react-badge';
@@ -363,8 +379,14 @@ import { useFluent } from '@fluentui/react-provider';
 import { useFluentProvider_unstable } from '@fluentui/react-provider';
 import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
 import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
+import { useFocusableGroup } from '@fluentui/react-tabster';
+import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
+import { useFocusFinders } from '@fluentui/react-tabster';
+import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
+import { useIsSSR } from '@fluentui/react-utilities';
+import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { useLink_unstable } from '@fluentui/react-link';
 import { useLinkState_unstable } from '@fluentui/react-link';
 import { useLinkStyles_unstable } from '@fluentui/react-link';
@@ -397,6 +419,9 @@ import { useMenuSplitGroup_unstable } from '@fluentui/react-menu';
 import { useMenuSplitGroupStyles_unstable } from '@fluentui/react-menu';
 import { useMenuTrigger_unstable } from '@fluentui/react-menu';
 import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
+import { useMergedRefs } from '@fluentui/react-utilities';
+import { useModalAttributes } from '@fluentui/react-tabster';
+import { UseModalAttributesOptions } from '@fluentui/react-tabster';
 import { usePopover_unstable } from '@fluentui/react-popover';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { usePopoverSurface_unstable } from '@fluentui/react-popover';
@@ -409,6 +434,7 @@ import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
+import { useSSRContext } from '@fluentui/react-utilities';
 import { useText_unstable } from '@fluentui/react-text';
 import { useTextStyles_unstable } from '@fluentui/react-text';
 import { useToggleButton_unstable } from '@fluentui/react-button';
@@ -559,7 +585,15 @@ export { ColorPaletteTokens };
 
 export { ColorTokens };
 
+<<<<<<< HEAD:packages/react-components/react-components/etc/react-components.api.md
 export { CompoundButton };
+=======
+export { ComponentProps }
+
+export { ComponentState }
+
+export { CompoundButton }
+>>>>>>> master:packages/react-components/etc/react-components.api.md
 
 export { compoundButtonClassName };
 
@@ -581,7 +615,13 @@ export { CounterBadgeProps };
 
 export { CounterBadgeState };
 
+<<<<<<< HEAD:packages/react-components/react-components/etc/react-components.api.md
 export { createDarkTheme };
+=======
+export { createCustomFocusIndicatorStyle }
+
+export { createDarkTheme }
+>>>>>>> master:packages/react-components/etc/react-components.api.md
 
 export { createDOMRenderer };
 
@@ -631,7 +671,21 @@ export { FontSizeTokens };
 
 export { FontWeightTokens };
 
+<<<<<<< HEAD:packages/react-components/react-components/etc/react-components.api.md
 export { Headline };
+=======
+export { ForwardRefComponent }
+
+export { getNativeElementProps }
+
+export { getNativeProps }
+
+export { getPartitionedNativeProps }
+
+export { getSlots }
+
+export { Headline }
+>>>>>>> master:packages/react-components/etc/react-components.api.md
 
 export { headlineClassName };
 
@@ -969,7 +1023,19 @@ export { renderTooltip_unstable };
 
 export { renderToStyleElements };
 
+<<<<<<< HEAD:packages/react-components/react-components/etc/react-components.api.md
 export { SelectableHandler };
+=======
+export { resetIdsForTests }
+
+export { resolveShorthand }
+
+export { ResolveShorthandFunction }
+
+export { ResolveShorthandOptions }
+
+export { SelectableHandler }
+>>>>>>> master:packages/react-components/etc/react-components.api.md
 
 export { setVirtualParent };
 
@@ -991,7 +1057,17 @@ export { SliderSlots };
 
 export { SliderState };
 
+<<<<<<< HEAD:packages/react-components/react-components/etc/react-components.api.md
 export { SplitButton };
+=======
+export { Slot }
+
+export { SlotClassNames }
+
+export { SlotPropsRecord }
+
+export { SplitButton }
+>>>>>>> master:packages/react-components/etc/react-components.api.md
 
 export { splitButtonClassName };
 
@@ -1003,9 +1079,13 @@ export { SplitButtonSlots };
 
 export { SplitButtonState };
 
+<<<<<<< HEAD:packages/react-components/react-components/etc/react-components.api.md
 export { SSRProvider };
 
 export { StrokeWidthTokens };
+=======
+export { StrokeWidthTokens }
+>>>>>>> master:packages/react-components/etc/react-components.api.md
 
 export { Subheadline };
 
@@ -1105,7 +1185,15 @@ export { useAccordionPanelStyles_unstable };
 
 export { useAccordionStyles_unstable };
 
+<<<<<<< HEAD:packages/react-components/react-components/etc/react-components.api.md
 export { useAvatar_unstable };
+=======
+export { useArrowNavigationGroup }
+
+export { UseArrowNavigationGroupOptions }
+
+export { useAvatar_unstable }
+>>>>>>> master:packages/react-components/etc/react-components.api.md
 
 export { useAvatarStyles_unstable };
 
@@ -1139,11 +1227,31 @@ export { useFluentProviderContextValues_unstable };
 
 export { useFluentProviderStyles_unstable };
 
+<<<<<<< HEAD:packages/react-components/react-components/etc/react-components.api.md
 export { useImage_unstable };
+=======
+export { useFocusableGroup }
+
+export { UseFocusableGroupOptions }
+
+export { useFocusFinders }
+
+export { useId }
+
+export { useImage_unstable }
+>>>>>>> master:packages/react-components/etc/react-components.api.md
 
 export { useImageStyles_unstable };
 
+<<<<<<< HEAD:packages/react-components/react-components/etc/react-components.api.md
 export { useLink_unstable };
+=======
+export { useIsSSR }
+
+export { useKeyboardNavAttribute }
+
+export { useLink_unstable }
+>>>>>>> master:packages/react-components/etc/react-components.api.md
 
 export { useLinkState_unstable };
 
@@ -1207,7 +1315,17 @@ export { useMenuTrigger_unstable };
 
 export { useMenuTriggerContext_unstable };
 
+<<<<<<< HEAD:packages/react-components/react-components/etc/react-components.api.md
 export { usePopover_unstable };
+=======
+export { useMergedRefs }
+
+export { useModalAttributes }
+
+export { UseModalAttributesOptions }
+
+export { usePopover_unstable }
+>>>>>>> master:packages/react-components/etc/react-components.api.md
 
 export { usePopoverContext_unstable };
 
@@ -1231,7 +1349,13 @@ export { useSplitButton_unstable };
 
 export { useSplitButtonStyles_unstable };
 
+<<<<<<< HEAD:packages/react-components/react-components/etc/react-components.api.md
 export { useText_unstable };
+=======
+export { useSSRContext }
+
+export { useText_unstable }
+>>>>>>> master:packages/react-components/etc/react-components.api.md
 
 export { useTextStyles_unstable };
 

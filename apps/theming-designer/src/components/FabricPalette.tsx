@@ -233,15 +233,16 @@ export const FabricPalette: React.FunctionComponent<IFabricPaletteProps> = (prop
               />
             </Text>
             <Text as="td">{themeRules[FabricSlots[FabricSlots.themeLight]].color.str}</Text>
+
             <Text as="td">
               <FabricSlotWidget
-                slotRule={themeRules[FabricSlots[FabricSlots.white]]}
-                slot={FabricSlots.white}
+                slotRule={themeRules[FabricSlots[FabricSlots.neutralSecondaryAlt]]}
+                slot={FabricSlots.neutralSecondaryAlt}
                 onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{themeRules[FabricSlots[FabricSlots.white]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralSecondaryAlt]].color.str}</Text>
           </tr>
           <tr>
             <Text as="td">
@@ -253,6 +254,15 @@ export const FabricPalette: React.FunctionComponent<IFabricPaletteProps> = (prop
               />
             </Text>
             <Text as="td">{themeRules[FabricSlots[FabricSlots.themeLighter]].color.str}</Text>
+            <Text as="td">
+              <FabricSlotWidget
+                slotRule={themeRules[FabricSlots[FabricSlots.white]]}
+                slot={FabricSlots.white}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
+                directionalHint={DirectionalHint.leftCenter}
+              />
+            </Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.white]].color.str}</Text>
           </tr>
           <tr>
             <Text as="td">

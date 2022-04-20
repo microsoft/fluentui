@@ -1,8 +1,152 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 04 Mar 2022 19:49:34 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 19:16:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.7)
+
+Tue, 19 Apr 2022 19:16:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.6..@fluentui/react-components_v9.0.0-rc.7)
+
+### Changes
+
+- `@fluentui/react-link`
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - Removing star exports. ([PR #22112](https://github.com/microsoft/fluentui/pull/22112) by Humberto.Morimoto@microsoft.com)
+  - Add static classnames to Link ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+- `@fluentui/react-menu`
+  - fix(MenuItem): Alignment for non v9 icons ([PR #21949](https://github.com/microsoft/fluentui/pull/21949) by gcox@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - Add static classnames to Menu ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+  - update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10 ([PR #22512](https://github.com/microsoft/fluentui/pull/22512) by seanmonahan@microsoft.com)
+- `@fluentui/react-popover`
+  - Add static classnames to Popover ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- `@fluentui/react-portal`
+  - update `mountNode` types to accept HTMLElement ([PR #22153](https://github.com/microsoft/fluentui/pull/22153) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - Add static classnames to Provider ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- `@fluentui/react-radio`
+  - Deprecate static classname string for Radio. ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+  - Remove star exports from react-radio ([PR #22106](https://github.com/microsoft/fluentui/pull/22106) by seanmonahan@microsoft.com)
+  - Add onChange event prop to Radio ([PR #22104](https://github.com/microsoft/fluentui/pull/22104) by seanmonahan@microsoft.com)
+  - update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10 ([PR #22512](https://github.com/microsoft/fluentui/pull/22512) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - Radio/RadioGroup API alignment. ([PR #22065](https://github.com/microsoft/fluentui/pull/22065) by seanmonahan@microsoft.com)
+- `@fluentui/react-slider`
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - Removing star exports. ([PR #22150](https://github.com/microsoft/fluentui/pull/22150) by Humberto.Morimoto@microsoft.com)
+  - add inline slider, update tests and examples ([PR #21813](https://github.com/microsoft/fluentui/pull/21813) by mgodbolt@microsoft.com)
+  - Moved Slider to RC, updated exported CSS variable name ([PR #22224](https://github.com/microsoft/fluentui/pull/22224) by mgodbolt@microsoft.com)
+- `@fluentui/react-switch`
+  - Add deprecation messages to react-switch ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10 ([PR #22512](https://github.com/microsoft/fluentui/pull/22512) by seanmonahan@microsoft.com)
+  - Removing star exports. ([PR #22139](https://github.com/microsoft/fluentui/pull/22139) by Humberto.Morimoto@microsoft.com)
+  - Switch: Updating spec and migration guide to reflect latest state of the component. ([PR #22011](https://github.com/microsoft/fluentui/pull/22011) by email not defined)
+- `@fluentui/react-tabs`
+  - Set disabled tab background to transparent ([PR #22342](https://github.com/microsoft/fluentui/pull/22342) by gcox@microsoft.com)
+  - Add static classnames to Tabs ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - Removing star exports. ([PR #22151](https://github.com/microsoft/fluentui/pull/22151) by Humberto.Morimoto@microsoft.com)
+  - fix missing dependencies and lint warnings ([PR #21924](https://github.com/microsoft/fluentui/pull/21924) by martinhochel@microsoft.com)
+  - Fix subtle style on tabs ([PR #22439](https://github.com/microsoft/fluentui/pull/22439) by gcox@microsoft.com)
+  - react-tabs fit and finish ([PR #22225](https://github.com/microsoft/fluentui/pull/22225) by gcox@microsoft.com)
+  - Set subtle tab background to subtle background tokens ([PR #22346](https://github.com/microsoft/fluentui/pull/22346) by gcox@microsoft.com)
+  - Updated to decrease gap of small vertical tab per figma change ([PR #22335](https://github.com/microsoft/fluentui/pull/22335) by gcox@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - Removing star exports at src/index.ts. ([PR #22367](https://github.com/microsoft/fluentui/pull/22367) by Humberto.Morimoto@microsoft.com)
+  - fix styles in getFocusOutlineStyles() ([PR #22070](https://github.com/microsoft/fluentui/pull/22070) by olfedias@microsoft.com)
+  - feat(react-tabster): Add grid navigation ([PR #22085](https://github.com/microsoft/fluentui/pull/22085) by jukapsia@microsoft.com)
+  - Upgrading tabster to latest version. ([PR #22492](https://github.com/microsoft/fluentui/pull/22492) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-text`
+  - Add static classnames to Text ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- `@fluentui/react-theme`
+  - fix(react-theme): Update yellow shared color ([PR #22450](https://github.com/microsoft/fluentui/pull/22450) by miroslav.stastny@microsoft.com)
+  - feat(react-theme): update color tokens ([PR #22238](https://github.com/microsoft/fluentui/pull/22238) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-tooltip`
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - Removing star exports. ([PR #22156](https://github.com/microsoft/fluentui/pull/22156) by Humberto.Morimoto@microsoft.com)
+  - Add mountNode prop ([PR #22134](https://github.com/microsoft/fluentui/pull/22134) by mgodbolt@microsoft.com)
+  - Add static classnames to Tooltip ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+- `@fluentui/react-utilities`
+  - Removing star exports at src/index.ts ([PR #22367](https://github.com/microsoft/fluentui/pull/22367) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-accordion`
+  - Add static classnames to Accordion ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+  - add missing dependencies ([PR #21924](https://github.com/microsoft/fluentui/pull/21924) by martinhochel@microsoft.com)
+  - update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10 ([PR #22512](https://github.com/microsoft/fluentui/pull/22512) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- `@fluentui/react-avatar`
+  - Add static classnames to Avatar ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+  - Avatar: Fix style for sizes 20 and 24 to have semibold fontWeight instead of regular. ([PR #22146](https://github.com/microsoft/fluentui/pull/22146) by Humberto.Morimoto@microsoft.com)
+  - Removing star exports. ([PR #22113](https://github.com/microsoft/fluentui/pull/22113) by Humberto.Morimoto@microsoft.com)
+  - update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10 ([PR #22512](https://github.com/microsoft/fluentui/pull/22512) by seanmonahan@microsoft.com)
+  - add missing dependencies ([PR #21924](https://github.com/microsoft/fluentui/pull/21924) by martinhochel@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- `@fluentui/react-badge`
+  - Removing star exports. ([PR #22114](https://github.com/microsoft/fluentui/pull/22114) by Humberto.Morimoto@microsoft.com)
+  - update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10 ([PR #22512](https://github.com/microsoft/fluentui/pull/22512) by seanmonahan@microsoft.com)
+  - PresenceBadge: Adding unknown status. ([PR #21951](https://github.com/microsoft/fluentui/pull/21951) by Humberto.Morimoto@microsoft.com)
+  - Add static classnames to Badge ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- `@fluentui/react-button`
+  - Disabling lint rule for deprecated [component]ClassName exports. ([PR #22131](https://github.com/microsoft/fluentui/pull/22131) by Humberto.Morimoto@microsoft.com)
+  - Button: Deprecating block prop. ([PR #22148](https://github.com/microsoft/fluentui/pull/22148) by Humberto.Morimoto@microsoft.com)
+  - Button components: Making root a non-nullable slot. ([PR #22147](https://github.com/microsoft/fluentui/pull/22147) by Humberto.Morimoto@microsoft.com)
+  - CompoundButton: Fixing bug where component was iconOnly even when secondaryContent was being provided. ([PR #22107](https://github.com/microsoft/fluentui/pull/22107) by Humberto.Morimoto@microsoft.com)
+  - Removing star exports. ([PR #22111](https://github.com/microsoft/fluentui/pull/22111) by Humberto.Morimoto@microsoft.com)
+  - Add deprecation messages to react-button ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10 ([PR #22512](https://github.com/microsoft/fluentui/pull/22512) by seanmonahan@microsoft.com)
+- `@fluentui/react-card`
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - Add static classnames to Card ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+- `@fluentui/react-checkbox`
+  - Add static classnames to Checkbox ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+  - Remove star exports from react-checkbox ([PR #22108](https://github.com/microsoft/fluentui/pull/22108) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - Update Checkbox onChange event parameter to be of type ChangeEvent instead of type FormEvent. ([PR #22057](https://github.com/microsoft/fluentui/pull/22057) by seanmonahan@microsoft.com)
+  - update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10 ([PR #22512](https://github.com/microsoft/fluentui/pull/22512) by seanmonahan@microsoft.com)
+- `@fluentui/react-components`
+  - Adding Textarea to react-components. ([PR #22413](https://github.com/microsoft/fluentui/pull/22413) by email not defined)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - Updated exports for react-tabs unstable ([PR #22225](https://github.com/microsoft/fluentui/pull/22225) by gcox@microsoft.com)
+  - Added MenuSplitGroup to exports ([PR #21964](https://github.com/microsoft/fluentui/pull/21964) by gcox@microsoft.com)
+  - Exports Slider from the main package, removes Slider from unstable ([PR #22224](https://github.com/microsoft/fluentui/pull/22224) by mgodbolt@microsoft.com)
+  - Update classNames exports from react-components. ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+  - Re-exporting everything from @fluentui/react-tabster and @fluentui/react-utilities in @fluentui/react-components. ([PR #22367](https://github.com/microsoft/fluentui/pull/22367) by Humberto.Morimoto@microsoft.com)
+  - Adding Switch to @fluentui/react-components/unstable. ([PR #21987](https://github.com/microsoft/fluentui/pull/21987) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - Fix cleanup of overridesWin test ([PR #22009](https://github.com/microsoft/fluentui/pull/22009) by elcraig@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - add react-conformance missing dependency ([PR #21924](https://github.com/microsoft/fluentui/pull/21924) by martinhochel@microsoft.com)
+- `@fluentui/react-context-selector`
+  - Move `scheduler` to a peer dependency and allow appropriate versions for React 16 or 17 ([PR #21769](https://github.com/microsoft/fluentui/pull/21769) by elcraig@microsoft.com)
+- `@fluentui/react-divider`
+  - Removing star exports. ([PR #22136](https://github.com/microsoft/fluentui/pull/22136) by Humberto.Morimoto@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - Add static classnames to Divider ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+- `@fluentui/react-image`
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - Add static classnames to Image ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+- `@fluentui/react-input`
+  - Removing star exports. ([PR #22140](https://github.com/microsoft/fluentui/pull/22140) by Humberto.Morimoto@microsoft.com)
+  - Update onChange event type ([PR #22233](https://github.com/microsoft/fluentui/pull/22233) by seanmonahan@microsoft.com)
+  - BREAKING CHANGE: Remove `inline` prop and use `display: inline-flex` by default ([PR #21935](https://github.com/microsoft/fluentui/pull/21935) by elcraig@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - Add static classnames to Input ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+- `@fluentui/react-label`
+  - Add static classnames to Label ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+  - Removing star exports. ([PR #22138](https://github.com/microsoft/fluentui/pull/22138) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.6)
 

@@ -43,6 +43,12 @@ type ComboboxCommons = {
   placeholder?: string;
 
   /**
+   * Controls the size of the combobox faceplate
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium' | 'large';
+
+  /**
    * The value displayed by the Combobox.
    * Use this with `onSelect` to directly control the displayed value string
    */
@@ -82,7 +88,7 @@ export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> &
  * State used in rendering Combobox
  */
 export type ComboboxState = ComponentState<ComboboxSlots> &
-  Required<Pick<ComboboxCommons, 'open' | 'inline'>> &
+  Required<Pick<ComboboxCommons, 'appearance' | 'open' | 'inline' | 'size'>> &
   Pick<ComboboxCommons, 'placeholder' | 'value'> &
   OptionCollectionState &
   SelectionState & {
