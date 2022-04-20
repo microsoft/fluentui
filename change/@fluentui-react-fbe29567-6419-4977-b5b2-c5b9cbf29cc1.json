@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "update contextmenu to focus submenu containers on click or hover",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
