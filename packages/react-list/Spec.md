@@ -7,7 +7,7 @@ A list is a collection of related sequential items. The items are not bound to a
 ## Prior Art
 
 - Open UI research: [openui/openui#512](https://github.com/openui/open-ui/pull/512)
-- [Component epic issue]()
+- [Component epic issue](https://github.com/microsoft/fluentui/issues/22562)
 
 ### Comparison of V0 and v8
 
