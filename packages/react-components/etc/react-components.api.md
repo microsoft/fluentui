@@ -311,6 +311,7 @@ import { splitButtonClassNames } from '@fluentui/react-button';
 import { SplitButtonProps } from '@fluentui/react-button';
 import { SplitButtonSlots } from '@fluentui/react-button';
 import { SplitButtonState } from '@fluentui/react-button';
+import { SSRProvider } from '@fluentui/react-utilities';
 import { StrokeWidthTokens } from '@fluentui/react-theme';
 import { Subheadline } from '@fluentui/react-text';
 import { subheadlineClassName } from '@fluentui/react-text';
@@ -1059,6 +1060,8 @@ export { SplitButtonProps }
 export { SplitButtonSlots }
 
 export { SplitButtonState }
+
+export { SSRProvider }
 
 export { StrokeWidthTokens }
 
