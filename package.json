@@ -300,6 +300,7 @@
       "package.json",
       "apps/*/package.json",
       "packages/!(web-components)/package.json",
+      "packages/react-components/*/package.json",
       "packages/fluentui/*/package.json",
       "scripts/package.json"
     ],
