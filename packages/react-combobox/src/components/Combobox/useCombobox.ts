@@ -5,7 +5,6 @@ import {
   resolveShorthand,
   useControllableState,
   useFirstMount,
-  useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
@@ -26,7 +25,7 @@ import type { ComboboxProps, ComboboxState, ComboboxOpenEvents } from './Combobo
  * @param ref - reference to root HTMLElement of Combobox
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLButtonElement>): ComboboxState => {
-  const optionCollection = useOptionCollection(props.children);
+  const optionCollection = useOptionCollection();
 
   const {
     appearance = 'outline',
@@ -38,10 +37,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     size = 'medium',
   } = props;
   const {
-    options,
-    collectionData: { count, getOptionAtIndex, getIndexOfKey, getOptionByKey },
+    collectionData: { count, getOptionAtIndex, getIndexOfId, getOptionById },
   } = optionCollection;
-  const idBase = useId('combobox');
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
   const { selectedOptions, selectOption } = useSelection(props);
@@ -97,7 +94,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
 
   const onOptionClick = (event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
     // clicked option should always become active option
-    setActiveOption(getOptionByKey(option.key));
+    setActiveOption(getOptionById(option.id));
 
     // close on option click for single-select
     !multiselect && setOpen(event, false);
@@ -147,11 +144,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     ...optionCollection,
     activeOption,
     appearance,
-    idBase,
     inline,
     onOptionClick,
     open,
-    options,
     selectedOptions,
     size,
     value,
@@ -196,8 +191,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   // handle combobox keyboard interaction
   state.trigger.onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     const action = getDropdownActionFromKey(event, { open, multiselect });
-    const maxIndex = count - 1;
-    const activeIndex = activeOption ? getIndexOfKey(activeOption.key) : -1;
+    const maxIndex = count() - 1;
+    const activeIndex = activeOption ? getIndexOfId(activeOption.id) : -1;
     let newIndex = activeIndex;
 
     switch (action) {

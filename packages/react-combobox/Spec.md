@@ -89,8 +89,8 @@ In contrast, v9 defines options as children of the Combobox control:
 
 ```tsx
 <Combobox>
-  <Option key="A">Option A</Option>
-  <Option key="B">Option B</Option>
+  <Option>Option A</Option>
+  <Option>Option B</Option>
 </Combobox>
 ```
 
@@ -99,12 +99,12 @@ Groups of options in v9 are also defined as children, rather than through the `o
 ```tsx
 <Combobox>
   <OptionGroup label="Group 1">
-    <Option key="A">Option A</Option>
-    <Option key="B">Option B</Option>
+    <Option>Option A</Option>
+    <Option>Option B</Option>
   </OptionGroup>
   <OptionGroup label="Group 2">
-    <Option key="C">Option C</Option>
-    <Option key="D">Option D</Option>
+    <Option>Option C</Option>
+    <Option>Option D</Option>
   </OptionGroup>
 </Combobox>
 ```
@@ -389,8 +389,8 @@ type SimpleOptionProps = {
   /* Sets an option to the `disabled` state */
   disabled?: boolean;
 
-  /** The key is a required prop for Combobox Options */
-  key: string;
+  /** The id of the Option */
+  id: string;
 
   /** Defines a string value for the option, used for the parent Combobox's value */
   value?: string;

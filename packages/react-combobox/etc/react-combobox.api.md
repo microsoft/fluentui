@@ -49,7 +49,6 @@ export type ComboboxSlots = {
 // @public
 export type ComboboxState = ComponentState<ComboboxSlots> & Required<Pick<ComboboxCommons, 'appearance' | 'open' | 'inline' | 'size'>> & Pick<ComboboxCommons, 'placeholder' | 'value'> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
-    idBase: string;
     onOptionClick(event: React_2.MouseEvent, option: OptionValue): void;
 };
 
@@ -94,7 +93,6 @@ export type ListboxSlots = {
 // @public
 export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
-    idBase: string;
     onOptionClick(event: React_2.MouseEvent, option: OptionValue): void;
 };
 
@@ -129,7 +127,6 @@ export type OptionGroupState = ComponentState<OptionGroupSlots>;
 
 // @public
 export type OptionProps = ComponentProps<Partial<OptionSlots>> & OptionCommons & {
-    fluentKey?: string;
     value?: string;
 };
 

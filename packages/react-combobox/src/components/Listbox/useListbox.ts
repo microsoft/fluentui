@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
 import { useSelection } from '../../utils/useSelection';
 import { getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
@@ -19,11 +19,10 @@ import { OptionValue } from '../../utils/OptionCollection.types';
  */
 export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
   const { multiselect } = props;
-  const optionCollection = useOptionCollection(props.children);
+  const optionCollection = useOptionCollection();
   const {
-    collectionData: { count, getOptionAtIndex, getOptionByKey, getIndexOfKey },
+    collectionData: { count, getOptionAtIndex, getOptionById, getIndexOfId },
   } = optionCollection;
-  const idBase = useId('listbox');
 
   const { selectedOptions, selectOption } = useSelection(props);
 
@@ -31,7 +30,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
 
   const onOptionClick = (event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
     // clicked option should always become active option
-    setActiveOption(getOptionByKey(option.key));
+    setActiveOption(getOptionById(option.id));
 
     // handle selection change
     selectOption(event, option);
@@ -39,8 +38,8 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     const action = getDropdownActionFromKey(event, { open: true });
-    const maxIndex = count - 1;
-    const activeIndex = activeOption ? getIndexOfKey(activeOption.key) : -1;
+    const maxIndex = count() - 1;
+    const activeIndex = activeOption ? getIndexOfId(activeOption.id) : -1;
     let newIndex = activeIndex;
 
     switch (action) {
@@ -62,7 +61,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   // get state from parent combobox, if it exists
   const hasComboboxContext = useHasParentContext(ComboboxContext);
   const comboboxActiveOption = useContextSelector(ComboboxContext, ctx => ctx.activeOption);
-  const comboboxIdBase = useContextSelector(ComboboxContext, ctx => ctx.idBase);
   const comboboxOnOptionClick = useContextSelector(ComboboxContext, ctx => ctx.onOptionClick);
   // const comboboxRegisterOption = useContextSelector(ComboboxContext, ctx => ctx.registerOption);
   const comboboxSelectedOptions = useContextSelector(ComboboxContext, ctx => ctx.selectedOptions);
@@ -71,13 +69,11 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   const optionContextValues = hasComboboxContext
     ? {
         activeOption: comboboxActiveOption,
-        idBase: comboboxIdBase,
         onOptionClick: comboboxOnOptionClick,
         selectedOptions: comboboxSelectedOptions,
       }
     : {
         activeOption,
-        idBase,
         onOptionClick,
         selectedOptions,
       };
