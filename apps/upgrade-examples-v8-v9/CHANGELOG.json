@@ -2,6 +2,27 @@
   "name": "@fluentui/upgrade-examples-v8-v9",
   "entries": [
     {
+      "date": "Wed, 20 Apr 2022 07:39:23 GMT",
+      "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react to v8.66.1",
+            "commit": "4b81713ae85eb859fd0b597e7ae81979589a28dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.0.0-rc.7",
+            "commit": "4b81713ae85eb859fd0b597e7ae81979589a28dc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 21:39:15 GMT",
       "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
       "version": "1.0.0",

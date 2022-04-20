@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 19 Apr 2022 21:39:15 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Apr 2022 07:39:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.66.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.66.1)
+
+Wed, 20 Apr 2022 07:39:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.66.0..@fluentui/react_v8.66.1)
+
+### Patches
+
+- Fix issue where focus outline was not showing for toggle button in IE11 ([PR #21618](https://github.com/microsoft/fluentui/pull/21618) by nsavas@microsoft.com)
+- icon of group header is not shrink ([PR #22020](https://github.com/microsoft/fluentui/pull/22020) by 15898297@qq.com)
+- Moves onScroll method on ScrollablePane from root to container ([PR #20123](https://github.com/microsoft/fluentui/pull/20123) by bsunderhus@microsoft.com)
 
 ## [8.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.66.0)
 

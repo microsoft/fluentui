@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 20 Apr 2022 07:39:22 GMT",
+      "tag": "@fluentui/react_v8.66.1",
+      "version": "8.66.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "nsavas@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5f759e690f7899c5d85f8ae5d42db482833c56a9",
+            "comment": "Fix issue where focus outline was not showing for toggle button in IE11"
+          },
+          {
+            "author": "15898297@qq.com",
+            "package": "@fluentui/react",
+            "commit": "6da8d2a907c97f4eb2bb1fe09569720f42247bd3",
+            "comment": "icon of group header is not shrink"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d3afef1cf098b14e3ca9bd87f4b724e68ddbcc04",
+            "comment": "Moves onScroll method on ScrollablePane from root to container"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 21:39:15 GMT",
       "tag": "@fluentui/react_v8.66.0",
       "version": "8.66.0",
