@@ -6,11 +6,15 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "Library name",
+      "description": "Library name or comma delimited library names to execute migration on multiple libraries.",
       "$default": {
         "$source": "argv",
         "index": 0
       }
+    },
+    "stats": {
+      "type": "boolean",
+      "description": "Get statistics for how many projects have been migrated"
     }
   },
   "required": []

@@ -34,7 +34,7 @@ const useDecoratorStyles = makeStyles({
 });
 
 const meta: Meta = {
-  title: 'Components/SpinButton',
+  title: 'Preview Components/SpinButton',
   component: SpinButton,
   parameters: {
     docs: {
