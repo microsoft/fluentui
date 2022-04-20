@@ -33,7 +33,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2Pressed,
       },
@@ -55,7 +55,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundOnBrand,
       },
@@ -72,7 +72,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2BrandPressed,
       },
@@ -89,7 +89,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2BrandPressed,
       },
@@ -128,7 +128,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundDisabled,
       },

@@ -71,7 +71,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: tokens.colorNeutralForegroundInverted,
       },
@@ -89,7 +89,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: tokens.colorNeutralStroke1Hover,
       },
@@ -107,7 +107,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: tokens.colorNeutralStroke1Hover,
       },
@@ -132,7 +132,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: tokens.colorNeutralStrokeDisabled,
       },
