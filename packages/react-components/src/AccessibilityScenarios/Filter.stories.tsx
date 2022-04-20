@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Button } from '@fluentui/react-button';
 import { Label } from '@fluentui/react-label';
-import { Input } from '@fluentui/react-input';
+import { Input, InputOnChangeData } from '@fluentui/react-input';
 import { MenuList, MenuItem } from '@fluentui/react-menu';
 
 import { Scenario } from './utils';
@@ -233,23 +233,37 @@ const countries = [
 ];
 
 export const FilterScenario: React.FunctionComponent = () => {
-  const [filterText, setFilterText] = React.useState();
-  const filterTextLowerCase = filterText.toLowerCase();
+  const [filterText, setFilterText] = React.useState('');
 
-  const filterCountry = country => {
+  const filterTextLowerCase = React.useMemo(() => filterText.toLowerCase(), [filterText]);
+
+  const filterCountry = (country: string) => {
     return country.toLowerCase().includes(filterTextLowerCase);
   };
 
-  const handleFilterChange = () => {};
+  const handleClearFilterClick = () => {
+    setFilterText('');
+  };
+
+  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
+    setFilterText(data.value);
+  };
 
   return (
     <Scenario pageTitle="Filter scenario">
       <Label htmlFor="filterText">Country filter</Label>
-      <Input type="text" id="filterText" name="filterText" onChange={handleFilterChange} />
-      <Button>Clear filter</Button>
-      <MenuList>
+      <Input
+        type="text"
+        id="filterText"
+        name="filterText"
+        value={filterText}
+        onChange={handleFilterChange}
+        aria-controls="countriesList"
+      />
+      <Button onClick={handleClearFilterClick}>Clear filter</Button>
+      <MenuList id="countriesList" role="listbox">
         {countries.filter(filterCountry).map(country => (
-          <MenuItem>{country}</MenuItem>
+          <MenuItem role="option">{country}</MenuItem>
         ))}
       </MenuList>
     </Scenario>
