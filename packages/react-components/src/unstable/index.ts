@@ -105,6 +105,25 @@ export type {
 } from '@fluentui/react-radio';
 
 export {
+  SpinButton,
+  renderSpinButton_unstable,
+  spinButtonClassNames,
+  useSpinButtonStyles_unstable,
+  useSpinButton_unstable,
+} from '@fluentui/react-spinbutton';
+
+export type {
+  SpinButtonOnChangeData,
+  SpinButtonChangeEvent,
+  SpinButtonProps,
+  SpinButtonSlots,
+  SpinButtonState,
+  SpinButtonSpinState,
+  SpinButtonBounds,
+  SpinButtonStrings,
+} from '@fluentui/react-spinbutton';
+
+export {
   Spinner,
   spinnerClassNames,
   renderSpinner_unstable,
