@@ -3,6 +3,7 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots, ButtonState } from './Button.types';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 
 export const buttonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Button',
@@ -43,6 +44,12 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForeground1,
 
       cursor: 'pointer',
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
     },
 
     ':active': {
@@ -51,6 +58,12 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForeground1,
 
       outlineStyle: 'none',
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
     },
   },
 
