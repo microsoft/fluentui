@@ -58,7 +58,7 @@ function normalizeOptions(tree: Tree, options: AssertedSchema) {
 /**
  *
  * Narrows down Schema definition to true runtime shape after {@link validateSchema} is executed
- * - also properly checks of truthiness of provided value
+ * - also properly checks the truthiness of the provided value
  */
 function hasSchemaFlag<T extends MigrateV8PkgGeneratorSchema, K extends keyof T>(
   schema: T,
