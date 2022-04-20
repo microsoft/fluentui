@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Button } from '@fluentui/react-components';
 
 export { DefaultButtonStory as DefaultButton } from './DefaultButtonShim.stories';

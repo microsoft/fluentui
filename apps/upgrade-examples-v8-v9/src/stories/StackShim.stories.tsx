@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Button, makeStyles } from '@fluentui/react-components';
 import { Checkbox, Dropdown, IDropdownOption, DropdownMenuItemType, Stack, TextField } from '@fluentui/react';
 import { StackShim, StackItemShim } from '../shims/StackShim/index';
@@ -68,8 +68,12 @@ export const StackShimStory = () => {
   const [childrenGapToken, setChildrenGapToken] = React.useState<number | string>('10');
   const [paddingToken, setPaddingToken] = React.useState<number | string>('10px');
 
-  const onCheckboxChange = (ev: React.ChangeEvent<HTMLInputElement>, checked?: boolean) => {
-    const { name } = ev.target;
+  const onCheckboxChange = (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
+    if (!ev) {
+      return;
+    }
+
+    const { name } = ev.target as HTMLInputElement;
 
     setState({ ...state, [name]: checked });
   };
@@ -97,6 +101,7 @@ export const StackShimStory = () => {
   };
   const stackItemStyles = { root: { backgroundColor: 'lightblue' } };
   const stackItemShimStyles = shimStyles.stackItem;
+
   return (
     <Stack styles={{ root: { width: '100%' } }}>
       <h1>Stack Playground</h1>

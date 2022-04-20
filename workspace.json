@@ -745,7 +745,9 @@
     "@fluentui/upgrade-examples-v8-v9": {
       "root": "apps/upgrade-examples-v8-v9",
       "projectType": "application",
-      "implicitDependencies": []
+      "sourceRoot": "apps/upgrade-examples-v8-v9/src",
+      "implicitDependencies": [],
+      "tags": ["platform:web", "vNext", "v8"]
     },
     "@fluentui/utilities": {
       "root": "packages/utilities",

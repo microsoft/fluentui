@@ -1,18 +1,18 @@
-const path = require('path');
-const custom = require('@fluentui/scripts/storybook/webpack.config');
+const rootMain = require('../../../.storybook/main');
+const custom = require('../../../scripts/storybook/webpack.config');
 
-module.exports = {
+module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript' | 'features' | 'previewHead'>} */ ({
   stories: ['../src/**/*.stories.tsx'],
-  core: {
-    builder: 'webpack5',
-  },
-  babel: {},
+  core: rootMain.core,
   typescript: {
-    // disable react-docgen-typescript (totally not needed here, slows things down a lot)
+    // disable react-docgen-typescript (totally not needed here, slows things down a lot) - for v8
     reactDocgen: false,
   },
-  webpackFinal: config => {
-    return custom(config);
+  webpackFinal: (config, options) => {
+    const localConfigV9 = /** @type typeof config */ ({ ...rootMain.webpackFinal(config, options) });
+    const localConfig = custom(localConfigV9);
+
+    return localConfig;
   },
   addons: ['@storybook/addon-actions'],
-};
+});
