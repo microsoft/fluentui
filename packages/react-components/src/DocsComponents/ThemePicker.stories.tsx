@@ -1,15 +1,5 @@
 import * as React from 'react';
-import {
-  Button,
-  MenuButton,
-  Menu,
-  MenuPopover,
-  MenuItemRadio,
-  MenuList,
-  MenuTrigger,
-  makeStyles,
-  MenuProps,
-} from '../index';
+import { MenuButton, Menu, MenuPopover, MenuItemRadio, MenuList, MenuTrigger, makeStyles, MenuProps } from '../index';
 import { themes, ThemeIds, THEME_ID } from '@fluentui/react-storybook-addon';
 import addons from '@storybook/addons';
 
@@ -44,32 +34,24 @@ export const ThemePicker: React.FC<{ selectedThemeId?: string }> = ({ selectedTh
   const selectedTheme = themes.find(theme => theme.id === selectedThemeId);
 
   return (
-    // TODO: remove this
-    <>
-      <Menu
-        onCheckedValueChange={onCheckedValueChange}
-        checkedValues={{ theme: selectedThemeId ? [selectedThemeId] : [] }}
-      >
-        <MenuTrigger>
-          <MenuButton className={styles.menuButton} menuIcon={{ className: styles.chevronIcon }}>
-            {selectedTheme?.label ?? 'Theme'}
-          </MenuButton>
-        </MenuTrigger>
-        <MenuPopover className={styles.menuPopover}>
-          <MenuList>
-            {themes.map(theme => (
-              <MenuItemRadio name="theme" value={theme.id} key={theme.id}>
-                {theme.label}
-              </MenuItemRadio>
-            ))}
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-      <Button>Default</Button>
-      <Button appearance="primary">Primary</Button>
-      <Button appearance="outline">Outline</Button>
-      <Button appearance="subtle">Subtle</Button>
-      <Button appearance="transparent">Transparent</Button>
-    </>
+    <Menu
+      onCheckedValueChange={onCheckedValueChange}
+      checkedValues={{ theme: selectedThemeId ? [selectedThemeId] : [] }}
+    >
+      <MenuTrigger>
+        <MenuButton className={styles.menuButton} menuIcon={{ className: styles.chevronIcon }}>
+          {selectedTheme?.label ?? 'Theme'}
+        </MenuButton>
+      </MenuTrigger>
+      <MenuPopover className={styles.menuPopover}>
+        <MenuList>
+          {themes.map(theme => (
+            <MenuItemRadio name="theme" value={theme.id} key={theme.id}>
+              {theme.label}
+            </MenuItemRadio>
+          ))}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
   );
 };
