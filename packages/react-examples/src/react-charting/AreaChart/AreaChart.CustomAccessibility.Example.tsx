@@ -145,7 +145,7 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
 
     return (
       <>
-        <label for="changeWidth_Custom">change Width:</label>
+        <label htmlFor="changeWidth_Custom">change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -154,7 +154,7 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
           id="changeWidth_Custom"
           onChange={this._onWidthChange}
         />
-        <label for="changeHeight_Custom">change Height:</label>
+        <label htmlFor="changeHeight_Custom">change Height:</label>
         <input
           type="range"
           value={this.state.height}

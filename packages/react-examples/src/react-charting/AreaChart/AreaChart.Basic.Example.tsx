@@ -155,7 +155,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
 
     return (
       <>
-        <label for="changeWidth_Basic">change Width:</label>
+        <label htmlFor="changeWidth_Basic">change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -164,7 +164,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
           id="changeWidth_Basic"
           onChange={this._onWidthChange}
         />
-        <label for="changeHeight_Basic">change Height:</label>
+        <label htmlFor="changeHeight_Basic">change Height:</label>
         <input
           type="range"
           value={this.state.height}

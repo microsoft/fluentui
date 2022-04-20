@@ -110,7 +110,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
 
     return (
       <>
-        <label for="changeWidth_Styled">change Width:</label>
+        <label htmlFor="changeWidth_Styled">change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -119,7 +119,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
           id="changeWidth_Styled"
           onChange={this._onWidthChange}
         />
-        <label for="changeHeight_Styled">change Height:</label>
+        <label htmlFor="changeHeight_Styled">change Height:</label>
         <input
           type="range"
           value={this.state.height}

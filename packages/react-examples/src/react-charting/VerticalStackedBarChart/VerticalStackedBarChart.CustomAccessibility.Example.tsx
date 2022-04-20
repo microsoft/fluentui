@@ -156,7 +156,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
 
     return (
       <>
-        <label for="changeWidth_Custom">change Width:</label>
+        <label htmlFor="changeWidth_Custom">change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -165,7 +165,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
           id="changeWidth_Custom"
           onChange={this._onWidthChange}
         />
-        <label for="changeHeight_Custom">change Height:</label>
+        <label htmlFor="changeHeight_Custom">change Height:</label>
         <input
           type="range"
           value={this.state.height}
@@ -174,7 +174,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
           id="changeHeight_Custom"
           onChange={this._onHeightChange}
         />
-        <label for="ChangeBarGapMax_Custom">BarGapMax:</label>
+        <label htmlFor="ChangeBarGapMax_Custom">BarGapMax:</label>
         <input
           type="range"
           value={this.state.barGapMax}

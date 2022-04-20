@@ -103,7 +103,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
       <>
-        <label for="changeWidth_Styled">change Width:</label>
+        <label htmlFor="changeWidth_Styled">change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -112,7 +112,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
           id="changeWidth_Styled"
           onChange={this._onWidthChange}
         />
-        <label for="changeHeight_Styled">change Height:</label>
+        <label htmlFor="changeHeight_Styled">change Height:</label>
         <input
           type="range"
           value={this.state.height}

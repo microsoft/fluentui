@@ -101,7 +101,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
     return (
       <>
         <div>
-          <label for="ChangeWidth_Styled">Width:</label>
+          <label htmlFor="ChangeWidth_Styled">Width:</label>
           <input
             type="range"
             value={this.state.width}
@@ -110,7 +110,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             id="ChangeWidth_Styled"
             onChange={e => this.setState({ width: +e.target.value })}
           />
-          <label for="changeHeight_Styled">Height:</label>
+          <label htmlFor="changeHeight_Styled">Height:</label>
           <input
             type="range"
             value={this.state.height}
@@ -121,7 +121,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
           />
         </div>
         <div>
-          <label for="changeBarGapMax_Styled">BarGapMax:</label>
+          <label htmlFor="changeBarGapMax_Styled">BarGapMax:</label>
           <input
             type="range"
             value={this.state.barGapMax}
@@ -130,7 +130,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             id="changeBarGapMax_Styled"
             onChange={e => this.setState({ barGapMax: +e.target.value })}
           />
-          <label for="ChangeBarCornerRadius_condition">BarCornerRadius:</label>
+          <label htmlFor="ChangeBarCornerRadius_condition">BarCornerRadius:</label>
           <input
             type="range"
             value={this.state.barCornerRadius}
@@ -139,7 +139,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             id="ChangeBarCornerRadius_condition"
             onChange={e => this.setState({ barCornerRadius: +e.target.value })}
           />
-          <label for="ChangeBarMinimumHeight_condition">BarMinimumHeight:</label>
+          <label htmlFor="ChangeBarMinimumHeight_condition">BarMinimumHeight:</label>
           <input
             type="range"
             value={this.state.barMinimumHeight}

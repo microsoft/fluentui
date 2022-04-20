@@ -192,7 +192,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
 
     return (
       <>
-        <label for="changeWidth_Basic">change Width:</label>
+        <label htmlFor="changeWidth_Basic">change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -201,7 +201,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
           id="changeWidth_Basic"
           onChange={this._onWidthChange}
         />
-        <label for="changeHeight_Basic">change Height:</label>
+        <label htmlFor="changeHeight_Basic">change Height:</label>
         <input
           type="range"
           value={this.state.height}
@@ -210,7 +210,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
           id="changeHeight_Basic"
           onChange={this._onHeightChange}
         />
-        <label for="changeBarGapMax_Basic">BarGapMax:</label>
+        <label htmlFor="changeBarGapMax_Basic">BarGapMax:</label>
         <input
           type="range"
           value={this.state.barGapMax}
