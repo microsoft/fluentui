@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import { useFocusableGroup } from '@fluentui/react-tabster';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/AccordionContext';
 import type { AccordionItemProps, AccordionItemState } from './AccordionItem.types';
@@ -16,8 +15,6 @@ export const useAccordionItem_unstable = (
   ref: React.Ref<HTMLElement>,
 ): AccordionItemState => {
   const { value, disabled = false } = props;
-  const navigation = useContextSelector(AccordionContext, ctx => ctx.navigation);
-  const focusableProps = useFocusableGroup();
 
   const requestToggle = useContextSelector(AccordionContext, ctx => ctx.requestToggle);
   const open = useContextSelector(AccordionContext, ctx => ctx.openItems.includes(value));
@@ -37,7 +34,6 @@ export const useAccordionItem_unstable = (
     root: getNativeElementProps('div', {
       ref: ref,
       ...props,
-      ...(navigation && focusableProps),
     }),
   };
 };

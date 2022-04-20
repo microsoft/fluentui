@@ -1,13 +1,12 @@
+import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { horizontalSpacing } from '../../utils/internalTokens';
 import type { OptionGroupSlots, OptionGroupState } from './OptionGroup.types';
 
-/**
- * @deprecated Use `optionGroupClassNames.root` instead.
- */
-export const optionGroupClassName = 'fui-OptionGroup';
 export const optionGroupClassNames: SlotClassNames<OptionGroupSlots> = {
   root: 'fui-OptionGroup',
+  label: 'fui-OptionGroup__label',
 };
 
 /**
@@ -15,10 +14,28 @@ export const optionGroupClassNames: SlotClassNames<OptionGroupSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: horizontalSpacing.xxs,
+
+    '&:not(:last-child)::after': {
+      content: '""',
+      ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
+      display: 'block',
+      paddingBottom: horizontalSpacing.xs,
+      marginBottom: horizontalSpacing.xs,
+    },
   },
 
-  // TODO add additional classes for different states and/or slots
+  label: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    color: tokens.colorNeutralForeground3,
+    display: 'block',
+    fontSize: tokens.fontSizeBase200,
+    fontWeight: tokens.fontWeightSemibold,
+    lineHeight: tokens.lineHeightBase200,
+    ...shorthands.padding(horizontalSpacing.s, horizontalSpacing.sNudge),
+  },
 });
 
 /**
@@ -28,8 +45,9 @@ export const useOptionGroupStyles_unstable = (state: OptionGroupState): OptionGr
   const styles = useStyles();
   state.root.className = mergeClasses(optionGroupClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  if (state.label) {
+    state.label.className = mergeClasses(optionGroupClassNames.label, styles.label, state.label.className);
+  }
 
   return state;
 };

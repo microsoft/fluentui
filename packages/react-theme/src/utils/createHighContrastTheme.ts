@@ -1,4 +1,6 @@
-import { colorPaletteTokens, generateColorTokens } from '../alias/highContrast';
+import { colorPaletteTokens } from '../alias/highContrastColorPalette';
+import { generateColorTokens } from '../alias/highContrastColor';
+
 import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index';
 import { createShadowTokens } from './shadows';
 import type { Theme } from '../types';

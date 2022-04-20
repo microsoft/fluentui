@@ -20,12 +20,26 @@ export const DATA_OVERFLOW_MENU = "data-overflow-menu";
 // @public (undocumented)
 export const DATA_OVERFLOWING = "data-overflowing";
 
-// @public (undocumented)
-export const Overflow: React_2.ForwardRefExoticComponent<OverflowProps & React_2.RefAttributes<HTMLDivElement>>;
+// @public
+export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<ObserveOptions, "padding" | "overflowDirection" | "overflowAxis" | "minimumVisible">> & {
+    children: React_2.ReactElement;
+} & React_2.RefAttributes<unknown>>;
 
-// @public (undocumented)
-export interface OverflowProps extends React_2.HTMLAttributes<HTMLDivElement>, Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'> {
-}
+// @public
+export const OverflowItem: React_2.ForwardRefExoticComponent<OverflowItemProps & React_2.RefAttributes<unknown>>;
+
+// @public
+export type OverflowItemProps = {
+    id: string;
+    groupId?: string;
+    priority?: number;
+    children: React_2.ReactElement;
+};
+
+// @public
+export type OverflowProps = Partial<Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'>> & {
+    children: React_2.ReactElement;
+};
 
 // @public (undocumented)
 export const updateVisibilityAttribute: OnUpdateItemVisibility;

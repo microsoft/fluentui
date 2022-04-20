@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Radio/RadioGroup API alignment.",
-  "packageName": "@fluentui/react-radio",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

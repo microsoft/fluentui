@@ -7,15 +7,13 @@ exports[`felaRenderer CSS fallback values are rendered 1`] = `
 }
 
 
-<div className=a />;
-"
+<div class=\\"a\\"></div>"
 `;
 
 exports[`felaRenderer animations are not applied if animations are disabled 1`] = `
 "
 
-<div className />;
-"
+<div class=\\"\\"></div>"
 `;
 
 exports[`felaRenderer array returned by keyframe results in CSS fallback values 1`] = `
@@ -61,8 +59,7 @@ exports[`felaRenderer array returned by keyframe results in CSS fallback values 
 }
 
 
-<div className=a />;
-"
+<div class=\\"a\\"></div>"
 `;
 
 exports[`felaRenderer basic styles are rendered 1`] = `
@@ -71,8 +68,7 @@ exports[`felaRenderer basic styles are rendered 1`] = `
 }
 
 
-<div className=a />;
-"
+<div class=\\"a\\"></div>"
 `;
 
 exports[`felaRenderer keyframe colors are rendered 1`] = `
@@ -110,8 +106,7 @@ exports[`felaRenderer keyframe colors are rendered 1`] = `
 }
 
 
-<div className=a b />;
-"
+<div class=\\"a b\\"></div>"
 `;
 
 exports[`felaRenderer marginLeft is rendered into marginLeft due to RTL with \`noFlip\` 1`] = `
@@ -120,8 +115,7 @@ exports[`felaRenderer marginLeft is rendered into marginLeft due to RTL with \`n
 }
 
 
-<div className=a />;
-"
+<div class=\\"a\\"></div>"
 `;
 
 exports[`felaRenderer marginLeft is rendered into marginRight due to RTL 1`] = `
@@ -130,8 +124,7 @@ exports[`felaRenderer marginLeft is rendered into marginRight due to RTL 1`] = `
 }
 
 
-<div className=a />;
-"
+<div class=\\"a\\"></div>"
 `;
 
 exports[`felaRenderer prefixes required styles 1`] = `
@@ -182,8 +175,7 @@ exports[`felaRenderer prefixes required styles 1`] = `
 }
 
 
-<div className=a b c d e f g h i />;
-"
+<div class=\\"a b c d e f g h i\\"></div>"
 `;
 
 exports[`felaRenderer styles are expanded to longhand values 1`] = `
@@ -213,6 +205,5 @@ exports[`felaRenderer styles are expanded to longhand values 1`] = `
 }
 
 
-<div className=a b c d e f g h />;
-"
+<div class=\\"a b c d e f g h\\"></div>"
 `;

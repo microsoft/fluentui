@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { ToolbarProps, ToolbarState } from './Toolbar.types';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Toolbar.
@@ -12,6 +13,11 @@ import type { ToolbarProps, ToolbarState } from './Toolbar.types';
  * @param ref - reference to root HTMLElement of Toolbar
  */
 export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElement>): ToolbarState => {
+  const arrowNavigationProps = useArrowNavigationGroup({
+    circular: true,
+    axis: 'horizontal',
+  });
+
   return {
     // TODO add appropriate props/defaults
     components: {
@@ -22,7 +28,9 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
     // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('div', {
       ref,
+      ...arrowNavigationProps,
       ...props,
     }),
+    ...props,
   };
 };

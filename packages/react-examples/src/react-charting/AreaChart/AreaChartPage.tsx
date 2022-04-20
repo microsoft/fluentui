@@ -47,6 +47,16 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
           />
         }
         isHeaderVisible={this.props.isHeaderVisible}
+        overview={
+          <div>
+            <p>
+              Area charts depict a time-series relationship. But unlike line charts, they can also visually represent
+              volume. Information is graphed on two axes, using data points connected by line segments. The area between
+              the axis and this line is commonly emphasized with color or shading for legibility. Most often area charts
+              compare two or more categories.
+            </p>
+          </div>
+        }
       />
     );
   }

@@ -936,8 +936,12 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       onMenuClick(ev, this.props);
     }
 
+    // focus on the container by default when the menu is opened with a click event
+    const shouldFocusOnContainer =
+      menuProps?.shouldFocusOnContainer || (ev.nativeEvent as PointerEvent).pointerType === 'mouse';
+
     if (!ev.defaultPrevented) {
-      this._onToggleMenu(menuProps?.shouldFocusOnContainer || false);
+      this._onToggleMenu(shouldFocusOnContainer);
       ev.preventDefault();
       ev.stopPropagation();
     }

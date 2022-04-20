@@ -1,4 +1,6 @@
-import { colorPaletteTokens, generateColorTokens } from '../alias/dark';
+import { colorPaletteTokens } from '../alias/darkColorPalette';
+import { generateColorTokens } from '../alias/darkColor';
+
 import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index';
 import { createShadowTokens } from './shadows';
 import type { BrandVariants, Theme } from '../types';

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adding neutralSecondaryAlt to Theming designer and 'dedeprecating' it from Fabric slots.",
+  "packageName": "@fluentui/react",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}

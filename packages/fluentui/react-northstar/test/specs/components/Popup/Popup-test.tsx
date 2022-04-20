@@ -253,7 +253,7 @@ describe('Popup', () => {
       // reset body, because then "firstElementChild" was not properly getting right element
       document.body.innerHTML = '';
       mountWithProvider(<Popup trigger={<button />} content="Content" open />);
-      const contentElement = document.body.firstElementChild;
+      const contentElement = document.body.firstElementChild.firstElementChild;
 
       expect(contentElement.classList.contains(popupContentClassName)).toEqual(true);
     });
