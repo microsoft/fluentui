@@ -76,6 +76,7 @@ export {
   getSlots,
   resetIdsForTests,
   resolveShorthand,
+  SSRProvider,
   useId,
   useIsSSR,
   useMergedRefs,
