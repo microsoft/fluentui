@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "User Story 4809 - Making center text bold and adjusting thickness of donut chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "ankityadav@microsoft.com",
+  "dependentChangeType": "patch"
+}
