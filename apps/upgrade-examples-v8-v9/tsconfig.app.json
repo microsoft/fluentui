@@ -2,7 +2,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "types": []
+    "lib": ["ES2019", "dom"],
+    "types": ["static-assets", "environment"]
   },
+  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx", "**/*.stories.ts", "**/*.stories.tsx"],
   "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

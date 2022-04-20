@@ -1,12 +1,17 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2019",
     "outDir": "lib",
     "module": "ESNext",
     "jsx": "react",
     "sourceMap": true,
     "noEmit": true,
+    "isolatedModules": true,
+    "strictPropertyInitialization": false,
+    "strictBindCallApply": false,
+    "strictFunctionTypes": false,
+    "noImplicitThis": false,
     "experimentalDecorators": true,
     "preserveConstEnums": true,
     "skipLibCheck": true,
