@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Panel: fix extra margin when custom navigation is used",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

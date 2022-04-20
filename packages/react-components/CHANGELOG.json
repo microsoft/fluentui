@@ -2,6 +2,1124 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 19 Apr 2022 19:16:44 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-rc.7",
+      "version": "9.0.0-rc.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "9c7743e4df78f4ab9c3c8d009c532b60b0356198",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Link"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "966ed6ca242079a1865d0011972205afba1ab85d",
+            "comment": "fix(MenuItem): Alignment for non v9 icons"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Menu"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "bea6aecfed8612f7b0664ab8bac77c5fccee1efb",
+            "comment": "update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Popover"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "8e3c8527ab8f6779dc3db03fd14d1d77b7fcf709",
+            "comment": "update `mountNode` types to accept HTMLElement"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Provider"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Deprecate static classname string for Radio."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "c0c9b30ae2393775eac02870f6b04cade31ef3ac",
+            "comment": "Remove star exports from react-radio"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "c6af0f7fa900a2f497f4c7477bb05ca2c59c7987",
+            "comment": "Add onChange event prop to Radio"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "bea6aecfed8612f7b0664ab8bac77c5fccee1efb",
+            "comment": "update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "0f509ed4c7e26548ae9d27e3001bd8db4784e838",
+            "comment": "Radio/RadioGroup API alignment."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "a302a52dbea435e71aeee8d66ad74d0a411f982a",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "2226401b0f1dc7eb977276164c203c13eb2b0cb5",
+            "comment": "add inline slider, update tests and examples"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "cd1325747168c6a13810e5ce1248bb9b2e7d3e95",
+            "comment": "Moved Slider to RC, updated exported CSS variable name"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add deprecation messages to react-switch"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "bea6aecfed8612f7b0664ab8bac77c5fccee1efb",
+            "comment": "update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "956f5731d132a960d313f3a9e794ce4e1c990e68",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-switch",
+            "commit": "99b11f73ab60b87b45c554403f7abcc21c713454",
+            "comment": "Switch: Updating spec and migration guide to reflect latest state of the component."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "b514b6072c080c6d3539cfc67c4a3e554d9bb775",
+            "comment": "Set disabled tab background to transparent"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Tabs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "ad93ede78815d6767af5bf496ea6ad3ab6f47120",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "8722596e561b57decfe9aa79121db844737102ff",
+            "comment": "fix missing dependencies and lint warnings"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "72fa867ab6b084656b53c8f644df74b31077ae15",
+            "comment": "Fix subtle style on tabs"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "374dca7b9d662f71a1f81297d7e4f4ea95615645",
+            "comment": "react-tabs fit and finish"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "69bcdf2f52fe6a8bf7d5f7ca71be74d753202356",
+            "comment": "Set subtle tab background to subtle background tokens"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "f098bb23b512e4084534238f2eca794a39a5c2e0",
+            "comment": "Updated to decrease gap of small vertical tab per figma change"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "9c8592decacb9f7b1dc608a03c9f991918806008",
+            "comment": "Removing star exports at src/index.ts."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "829295c714ac9ff8063f5e086513574ad2e7990b",
+            "comment": "fix styles in getFocusOutlineStyles()"
+          },
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "dc1f7a2c0cb8e7a3cc51d69ce3327f44d29109d1",
+            "comment": "feat(react-tabster): Add grid navigation"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "2fcf8bd0341c71507dc625eeb60b4acda6369672",
+            "comment": "Upgrading tabster to latest version."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Text"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "d7e4ddf20d1ecb71d3dfc450c65ffde8c7394e3b",
+            "comment": "fix(react-theme): Update yellow shared color"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "a91094de0bcf0467126052b6785fcbddd5ef0045",
+            "comment": "feat(react-theme): update color tokens"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "36aea1f643cc8a18befeff397dd9147aea591040",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "f10cc045484b962652a400ef2ef4f3412c8d168b",
+            "comment": "Add mountNode prop"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Tooltip"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "9c8592decacb9f7b1dc608a03c9f991918806008",
+            "comment": "Removing star exports at src/index.ts"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Accordion"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "8722596e561b57decfe9aa79121db844737102ff",
+            "comment": "add missing dependencies"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "bea6aecfed8612f7b0664ab8bac77c5fccee1efb",
+            "comment": "update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Avatar"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "b819815318c0089f48416dc023567578efb31a46",
+            "comment": "Avatar: Fix style for sizes 20 and 24 to have semibold fontWeight instead of regular."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "3c919593c36ada045063934822a779e23259f06a",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "bea6aecfed8612f7b0664ab8bac77c5fccee1efb",
+            "comment": "update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "8722596e561b57decfe9aa79121db844737102ff",
+            "comment": "add missing dependencies"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "dff926519f57df390afefee4351fc488bc7c4569",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "bea6aecfed8612f7b0664ab8bac77c5fccee1efb",
+            "comment": "update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "1f83caa61c5bea877ec67667ef748aaaf50ad14b",
+            "comment": "PresenceBadge: Adding unknown status."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Badge"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "e0660222b8d9f4f38a61b718c18d4c67e52c8df9",
+            "comment": "Disabling lint rule for deprecated [component]ClassName exports."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "1209d5881f9d9d581b481aa82979a22ce371cf8b",
+            "comment": "Button: Deprecating block prop."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "8c862ab1147fd38bc5008c85d1644f992561f89f",
+            "comment": "Button components: Making root a non-nullable slot."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "fac31825b58253b8b98c14b90090c97db2957373",
+            "comment": "CompoundButton: Fixing bug where component was iconOnly even when secondaryContent was being provided."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "6bee76a70a7490557cd2b5c2b5639ab6bed2e6a1",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add deprecation messages to react-button"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "bea6aecfed8612f7b0664ab8bac77c5fccee1efb",
+            "comment": "update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Card"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Checkbox"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "80746a7f3462c2fa4ff15a92d6e196c67d652f6a",
+            "comment": "Remove star exports from react-checkbox"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "477b45728732361e02047be15de5113d1e6d01ac",
+            "comment": "Update Checkbox onChange event parameter to be of type ChangeEvent instead of type FormEvent."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "bea6aecfed8612f7b0664ab8bac77c5fccee1efb",
+            "comment": "update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-components",
+            "commit": "98042e9b8eb9d4dd78f1e42e79db6a2e33404b9d",
+            "comment": "Adding Textarea to react-components."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "374dca7b9d662f71a1f81297d7e4f4ea95615645",
+            "comment": "Updated exports for react-tabs unstable"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "aca39831bbc53fa90d5490824f374caf0b2f8c3a",
+            "comment": "Added MenuSplitGroup to exports"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "cd1325747168c6a13810e5ce1248bb9b2e7d3e95",
+            "comment": "Exports Slider from the main package, removes Slider from unstable"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Update classNames exports from react-components."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "9c8592decacb9f7b1dc608a03c9f991918806008",
+            "comment": "Re-exporting everything from @fluentui/react-tabster and @fluentui/react-utilities in @fluentui/react-components."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "e9ff98fc35142313a9e10891ca755a53e46c4fb7",
+            "comment": "Adding Switch to @fluentui/react-components/unstable."
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "efc07509578008b6be1c5dd69fee1aad5a7775c2",
+            "comment": "Fix cleanup of overridesWin test"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "8722596e561b57decfe9aa79121db844737102ff",
+            "comment": "add react-conformance missing dependency"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Move `scheduler` to a peer dependency and allow appropriate versions for React 16 or 17"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "e519870c385707ae78e160e4b1a671ec97d5f6ec",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Divider"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Image"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "3651218a1e8069fd6fcb095ef5d30139f8c01ff4",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "43cb8a8072c6f9340296f080c725d2d6c9dfa325",
+            "comment": "Update onChange event type"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "3e9421d1cf1545a8ab9fce425f3695e62ac99d73",
+            "comment": "BREAKING CHANGE: Remove `inline` prop and use `display: inline-flex` by default"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Input"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Label"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "19dbc6a15819f699b3313e2a9b822b8456b2a59c",
+            "comment": "Removing star exports."
+          }
+        ],
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "67dd475e49182d17dbf7d9195c5df9bce02b7b3c",
+            "comment": "chore: Update e2e tests to use cypress component testing"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "67dd475e49182d17dbf7d9195c5df9bce02b7b3c",
+            "comment": "chore: Update e2e tests to use cypress component testing"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "67dd475e49182d17dbf7d9195c5df9bce02b7b3c",
+            "comment": "chore: Update e2e tests to use cypress component testing"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "320b8bbba1e498c65d011f3fae09dee98e7a11bb",
+            "comment": "refactor: autofix no export star at index file for cxe-prg packages"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-textarea",
+            "commit": "98042e9b8eb9d4dd78f1e42e79db6a2e33404b9d",
+            "comment": "Adding label to Default story and making package public."
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-tooltip",
+            "commit": "df80d6f3552e939c7eee343876251a873313139a",
+            "comment": "Updated documenation for guidance on interactive content in a Tooltip."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-avatar",
+            "commit": "83f32d33d0750e9afad10b98a98040c70919f7cf",
+            "comment": "Added AvatarGroup component to react-avatar"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "13c32e184b7960671754582de21f3555bf9f02f3",
+            "comment": "Remove config file that's no longer needed"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": {
+              "title": "",
+              "value": ""
+            }
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "d07a94aa25cf00c471a17883bd53f71fc1dc4d25",
+            "comment": "Cleanup of Card storybook"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "320b8bbba1e498c65d011f3fae09dee98e7a11bb",
+            "comment": "refactor: autofix no export star at index file for cxe-prg packages"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "81b795baa776cd6a9390287de2fe91559956cab3",
+            "comment": "Add upgrade documentation to storybook."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "8722596e561b57decfe9aa79121db844737102ff",
+            "comment": "chore(react-components): fix lint issues exposed by import/no-extrenaus-dependency rule"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "f2ce28fab79965a81508e21b7914396222d6bf0b",
+            "comment": "turn on storyStoreV7 to enable codesplitting"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "df62b071cf725c01cf639e3cf559c99f2ae8cb00",
+            "comment": "fix: react-conformance version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "92ed7e05c40cda1d5cfd052a6490d5c14a269d97",
+            "comment": "use actual version for react-conformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "99815674d85a275128ebe7acda2e48bea4eb5813",
+            "comment": "chore: move react-conformance to peerDeps to resolve dep issues when RC is bumped"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "b48c03cff249019cf845af18a7f63dacf46d5218",
+            "comment": "Hoist react-is devDependencies to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "320b8bbba1e498c65d011f3fae09dee98e7a11bb",
+            "comment": "refactor: autofix no export star at index file for cxe-prg packages"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Mar 2022 19:49:34 GMT",
       "tag": "@fluentui/react-components_v9.0.0-rc.6",
       "version": "9.0.0-rc.6",

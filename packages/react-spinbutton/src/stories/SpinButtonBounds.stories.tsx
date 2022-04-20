@@ -27,8 +27,9 @@ export const Bounds = () => {
 
   return (
     <>
-      <Label htmlFor={id}>Bounded SpinButton (min: 0, max: 20)</Label>
+      <Label htmlFor={id}>Bounded SpinButton</Label>
       <SpinButton value={spinButtonValue} min={0} max={20} onChange={onSpinButtonChange} id={id} />
+      <p>min: 0, max: 20</p>
     </>
   );
 };

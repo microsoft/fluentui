@@ -1,4 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComboboxState } from '../Combobox/Combobox.types';
 
 export type ComboButtonSlots = {
   /* The wrapper slot */
@@ -37,4 +38,6 @@ export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content
 /**
  * State used in rendering ComboButton
  */
-export type ComboButtonState = ComponentState<ComboButtonSlots> & ComboButtonCommons;
+export type ComboButtonState = ComponentState<ComboButtonSlots> &
+  ComboButtonCommons &
+  Pick<ComboboxState, 'appearance' | 'size'>;

@@ -18,6 +18,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- Align `ChatMessageReadStatus` position with `ChatMessage` @Hirse ([#22494](https://github.com/microsoft/fluentui/pull/22494))
+- Add missing export for `PortalContext` @layershifter ([#22448](https://github.com/microsoft/fluentui/pull/22448))
+
 <!--------------------------------[ v0.62.0 ]------------------------------- -->
 ## [v0.62.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.62.0) (2022-04-08)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.61.0..@fluentui/react-northstar_v0.62.0)

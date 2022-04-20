@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Exports Slider from the main package, removes Slider from unstable",
-  "packageName": "@fluentui/react-components",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

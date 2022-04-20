@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 15 Apr 2022 07:42:46 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Apr 2022 07:39:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.66.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.66.1)
+
+Wed, 20 Apr 2022 07:39:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.66.0..@fluentui/react_v8.66.1)
+
+### Patches
+
+- Fix issue where focus outline was not showing for toggle button in IE11 ([PR #21618](https://github.com/microsoft/fluentui/pull/21618) by nsavas@microsoft.com)
+- icon of group header is not shrink ([PR #22020](https://github.com/microsoft/fluentui/pull/22020) by 15898297@qq.com)
+- Moves onScroll method on ScrollablePane from root to container ([PR #20123](https://github.com/microsoft/fluentui/pull/20123) by bsunderhus@microsoft.com)
+
+## [8.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.66.0)
+
+Tue, 19 Apr 2022 21:39:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.65.1..@fluentui/react_v8.66.0)
+
+### Minor changes
+
+- add dismissMenu prop to Dropdown ([PR #22535](https://github.com/microsoft/fluentui/pull/22535) by sarah.higley@microsoft.com)
+- Bump @fluentui/font-icons-mdl2 to v8.3.2 ([PR #22550](https://github.com/microsoft/fluentui/pull/22550) by beachball)
+
+### Patches
+
+- Adding neutralSecondaryAlt to Theming designer and 'dedeprecating' it from Fabric slots. ([PR #22529](https://github.com/microsoft/fluentui/pull/22529) by email not defined)
+
+## [8.65.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.65.1)
+
+Mon, 18 Apr 2022 07:38:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.65.0..@fluentui/react_v8.65.1)
+
+### Patches
+
+- Fixed onRenderOption docs to note that regular AND header types are affected ([PR #22513](https://github.com/microsoft/fluentui/pull/22513) by mgodbolt@microsoft.com)
+- Panel: fix extra margin when custom navigation is used ([PR #22524](https://github.com/microsoft/fluentui/pull/22524) by mgodbolt@microsoft.com)
+- Nav: Remove duplicative active focus styles from chevron ([PR #22514](https://github.com/microsoft/fluentui/pull/22514) by mgodbolt@microsoft.com)
+- ContextualMenu: Fix high contrast colors ([PR #22518](https://github.com/microsoft/fluentui/pull/22518) by mgodbolt@microsoft.com)
 
 ## [8.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.65.0)
 

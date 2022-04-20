@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Fri, 04 Mar 2022 05:17:31 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 19:17:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.5)
+
+Tue, 19 Apr 2022 19:17:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-rc.4..@fluentui/react-theme_v9.0.0-rc.5)
+
+### Changes
+
+- fix(react-theme): Update yellow shared color ([PR #22450](https://github.com/microsoft/fluentui/pull/22450) by miroslav.stastny@microsoft.com)
+- feat(react-theme): update color tokens ([PR #22238](https://github.com/microsoft/fluentui/pull/22238) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.4)
 
