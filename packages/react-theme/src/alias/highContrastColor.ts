@@ -37,6 +37,10 @@ export const generateColorTokens = (): ColorTokens => ({
   colorBrandForegroundLinkHover: hcHyperlink, // LinkText Global.Color.hcHyperlink
   colorBrandForegroundLinkPressed: hcHyperlink, // LinkText Global.Color.hcHyperlink
   colorBrandForegroundLinkSelected: hcHyperlink, // LinkText Global.Color.hcHyperlink
+  colorNeutralForeground2Link: hcHyperlink, // LinkText Global.Color.hcHyperlink
+  colorNeutralForeground2LinkHover: hcHyperlink, // LinkText Global.Color.hcHyperlink
+  colorNeutralForeground2LinkPressed: hcHyperlink, // LinkText Global.Color.hcHyperlink
+  colorNeutralForeground2LinkSelected: hcHyperlink, // LinkText Global.Color.hcHyperlink
   colorCompoundBrandForeground1: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandForeground1Hover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandForeground1Pressed: hcHighlight, // Highlight Global.Color.hcHighlight
