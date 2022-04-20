@@ -129,17 +129,6 @@ export type ToggleButtonProps = ButtonProps & Partial<ToggleButtonCommons> & {
 // @public (undocumented)
 export type ToggleButtonState = ButtonState & ToggleButtonCommons;
 
-// @public (undocumented)
-export type ToggleProps = Pick<ToggleButtonProps, 'checked' | 'defaultChecked' | 'disabled' | 'disabledFocusable' | 'role'>;
-
-// @public (undocumented)
-export type ToggleState = {
-    'aria-checked'?: React_2.AriaAttributes['aria-checked'];
-    'aria-pressed'?: React_2.AriaAttributes['aria-pressed'];
-    checked: boolean;
-    onClick: React_2.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
-};
-
 // @public
 export const useButton_unstable: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
 
@@ -171,7 +160,7 @@ export const useToggleButton_unstable: (props: ToggleButtonProps, ref: React_2.R
 export const useToggleButtonStyles_unstable: (state: ToggleButtonState) => ToggleButtonState;
 
 // @public (undocumented)
-export function useToggleState<TToggleButtonProps extends ToggleProps>(props: TToggleButtonProps): ToggleState;
+export function useToggleState<TToggleButtonProps extends ToggleButtonProps, TButtonState extends Partial<ButtonState>, TToggleButtonState extends ToggleButtonState>(props: TToggleButtonProps, state: TButtonState): TToggleButtonState;
 
 // (No @packageDocumentation comment for this package)
 

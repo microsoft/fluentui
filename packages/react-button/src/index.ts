@@ -50,4 +50,3 @@ export {
 export type { ToggleButtonProps, ToggleButtonState } from './ToggleButton';
 
 export { useToggleState } from './utils/index';
-export type { ToggleProps, ToggleState } from './utils/index';

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-import { useMergedEventCallbacks } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
 import { useToggleState } from '../../../utils/useToggleState';
 import {
@@ -24,30 +23,8 @@ const useToggleCompoundButton = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToggleCompoundButtonState => {
   const compoundButtonState = useCompoundButton_unstable(props, ref);
-  const { onClick, role } = compoundButtonState.root;
 
-  const { 'aria-checked': ariaChecked, 'aria-pressed': ariaPressed, checked, onClick: onToggleClick } = useToggleState({
-    ...props,
-    role,
-  });
-
-  return {
-    ...compoundButtonState,
-
-    // State calculated from a set of props
-    checked,
-
-    // Slots definition
-    root: {
-      ...compoundButtonState.root,
-      'aria-checked': ariaChecked,
-      'aria-pressed': ariaPressed,
-      onClick: useMergedEventCallbacks(
-        onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>,
-        onToggleClick,
-      ),
-    },
-  };
+  return useToggleState(props, compoundButtonState);
 };
 
 const useToggleCompoundButtonStyles = (state: ToggleCompoundButtonState): ToggleCompoundButtonState => {

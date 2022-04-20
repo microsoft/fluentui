@@ -1,21 +1,15 @@
 import * as React from 'react';
-import { useControllableState } from '@fluentui/react-utilities';
-import type { ToggleButtonProps } from '../ToggleButton';
+import { useControllableState, useMergedEventCallbacks } from '@fluentui/react-utilities';
+import type { ButtonState } from '../Button';
+import type { ToggleButtonProps, ToggleButtonState } from '../ToggleButton';
 
-export type ToggleProps = Pick<
-  ToggleButtonProps,
-  'checked' | 'defaultChecked' | 'disabled' | 'disabledFocusable' | 'role'
->;
-
-export type ToggleState = {
-  'aria-checked'?: React.AriaAttributes['aria-checked'];
-  'aria-pressed'?: React.AriaAttributes['aria-pressed'];
-  checked: boolean;
-  onClick: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
-};
-
-export function useToggleState<TToggleButtonProps extends ToggleProps>(props: TToggleButtonProps): ToggleState {
-  const { checked, defaultChecked, disabled, disabledFocusable, role } = props;
+export function useToggleState<
+  TToggleButtonProps extends ToggleButtonProps,
+  TButtonState extends Partial<ButtonState>,
+  TToggleButtonState extends ToggleButtonState
+>(props: TToggleButtonProps, state: TButtonState): TToggleButtonState {
+  const { checked, defaultChecked, disabled, disabledFocusable } = props;
+  const { onClick, role } = state.root || {};
 
   const [checkedValue, setCheckedValue] = useControllableState({
     state: checked,
@@ -25,7 +19,7 @@ export function useToggleState<TToggleButtonProps extends ToggleProps>(props: TT
 
   const isCheckboxTypeRole = role === 'menuitemcheckbox' || role === 'checkbox';
 
-  const onClick = React.useCallback(
+  const onToggleClick = React.useCallback(
     ev => {
       if (!disabled && !disabledFocusable) {
         if (ev.defaultPrevented) {
@@ -39,8 +33,17 @@ export function useToggleState<TToggleButtonProps extends ToggleProps>(props: TT
   );
 
   return {
+    ...state,
+
     checked: checkedValue,
-    [isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed']: checkedValue,
-    onClick,
-  };
+
+    root: {
+      ...state.root,
+      [isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed']: checkedValue,
+      onClick: useMergedEventCallbacks(
+        onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>,
+        onToggleClick,
+      ),
+    },
+  } as TToggleButtonState;
 }

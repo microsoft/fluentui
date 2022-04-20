@@ -341,8 +341,6 @@ import { toggleButtonClassName } from '@fluentui/react-button';
 import { toggleButtonClassNames } from '@fluentui/react-button';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
-import { ToggleProps } from '@fluentui/react-button';
-import { ToggleState } from '@fluentui/react-button';
 import { tokens } from '@fluentui/react-theme';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { tooltipClassName } from '@fluentui/react-tooltip';
@@ -1123,10 +1121,6 @@ export { toggleButtonClassNames }
 export { ToggleButtonProps }
 
 export { ToggleButtonState }
-
-export { ToggleProps }
-
-export { ToggleState }
 
 export { tokens }
 
