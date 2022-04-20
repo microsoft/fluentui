@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { Button } from '@fluentui/react-button';
 import { Label } from '@fluentui/react-label';
 import { Input } from '@fluentui/react-input';
 import { MenuList, MenuItem } from '@fluentui/react-menu';
@@ -232,12 +233,22 @@ const countries = [
 ];
 
 export const FilterScenario: React.FunctionComponent = () => {
+  const [filterText, setFilterText] = React.useState();
+  const filterTextLowerCase = filterText.toLowerCase();
+
+  const filterCountry = country => {
+    return country.toLowerCase().includes(filterTextLowerCase);
+  };
+
+  const handleFilterChange = () => {};
+
   return (
     <Scenario pageTitle="Filter scenario">
       <Label htmlFor="filterText">Country filter</Label>
-      <Input type="text" id="filterText" name="filterText" />
+      <Input type="text" id="filterText" name="filterText" onChange={handleFilterChange} />
+      <Button>Clear filter</Button>
       <MenuList>
-        {countries.map(country => (
+        {countries.filter(filterCountry).map(country => (
           <MenuItem>{country}</MenuItem>
         ))}
       </MenuList>
