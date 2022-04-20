@@ -97,18 +97,14 @@ export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState 
 };
 
 // @public
-const Option_2: ForwardRefComponent<OptionProps> & {
-    fluentComponentType?: string;
-};
+const Option_2: ForwardRefComponent<OptionProps>;
 export { Option_2 as Option }
 
 // @public (undocumented)
 export const optionClassNames: SlotClassNames<OptionSlots>;
 
 // @public
-export const OptionGroup: ForwardRefComponent<OptionGroupProps> & {
-    fluentComponentType?: string;
-};
+export const OptionGroup: ForwardRefComponent<OptionGroupProps>;
 
 // @public (undocumented)
 export const optionGroupClassNames: SlotClassNames<OptionGroupSlots>;
