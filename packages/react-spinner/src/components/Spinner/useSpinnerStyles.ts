@@ -104,6 +104,9 @@ const useRootStyles = makeStyles({
 const useLoaderStyles = makeStyles({
   // global SVG class
   spinnerSVG: {
+    ':focus-visible': {
+      outlineStyle: '3px solid transparent',
+    },
     ['& > svg']: {
       animationName: {
         '0%': { transform: 'rotate(0deg)' },
@@ -231,6 +234,9 @@ const useTrackStyles = makeStyles({
   primary: {
     ['& > svg > circle.fui-Spinner__Tail']: {
       stroke: tokens.colorBrandStroke1,
+      '@media screen and (forced-colors: active)': {
+        stroke: tokens.colorNeutralStrokeOnBrand2,
+      },
       animationName: {
         '0%': {
           strokeDasharray: '1,150',
@@ -256,6 +262,9 @@ const useTrackStyles = makeStyles({
     },
     ['& > svg > circle.fui-Spinner__Track']: {
       stroke: tokens.colorNeutralBackground4,
+      '@media screen and (forced-colors: active)': {
+        stroke: tokens.colorNeutralBackgroundInverted,
+      },
     },
   },
 });

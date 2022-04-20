@@ -2,6 +2,36 @@
   "name": "@fluentui/theme-samples",
   "entries": [
     {
+      "date": "Wed, 20 Apr 2022 07:39:23 GMT",
+      "tag": "@fluentui/theme-samples_v8.4.24",
+      "version": "8.4.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.66.1",
+            "commit": "4b81713ae85eb859fd0b597e7ae81979589a28dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Apr 2022 21:39:15 GMT",
+      "tag": "@fluentui/theme-samples_v8.4.23",
+      "version": "8.4.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.66.0",
+            "commit": "959aac722b7a9a4d8d4240e1235dde4694eb3c2d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Apr 2022 07:38:04 GMT",
       "tag": "@fluentui/theme-samples_v8.4.22",
       "version": "8.4.22",

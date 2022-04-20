@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Fri, 04 Mar 2022 05:17:34 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 19:17:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-rc.6)
+
+Tue, 19 Apr 2022 19:17:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-rc.5..@fluentui/react-badge_v9.0.0-rc.6)
+
+### Changes
+
+- Removing star exports. ([PR #22114](https://github.com/microsoft/fluentui/pull/22114) by Humberto.Morimoto@microsoft.com)
+- update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10 ([PR #22512](https://github.com/microsoft/fluentui/pull/22512) by seanmonahan@microsoft.com)
+- PresenceBadge: Adding unknown status. ([PR #21951](https://github.com/microsoft/fluentui/pull/21951) by Humberto.Morimoto@microsoft.com)
+- Add static classnames to Badge ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+- chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.5 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.4 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-rc.5)
 

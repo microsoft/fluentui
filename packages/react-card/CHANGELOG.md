@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Fri, 04 Mar 2022 05:17:35 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 19:17:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.11)
+
+Tue, 19 Apr 2022 19:17:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.10..@fluentui/react-card_v9.0.0-beta.11)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- Add static classnames to Card ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.5 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.4 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-text to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-button to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
 
 ## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.10)
 
