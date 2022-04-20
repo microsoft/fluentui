@@ -4,7 +4,7 @@
 
 ## Summary
 
-This RFC proposes introduce compatibility between components in different Fluent UI versions that use [`ReactDOM.createPortal()`](https://reactjs.org/docs/portals.html) via:
+This RFC proposes compatibility measures between components in different Fluent UI versions that use [`ReactDOM.createPortal()`](https://reactjs.org/docs/portals.html) via:
 
 - usage of same values for `z-index`
 - usage of separate React context to assign CSS class that handles CSS variables from Fluent UI React v9
