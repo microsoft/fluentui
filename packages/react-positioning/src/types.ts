@@ -9,7 +9,7 @@ type Rect = {
 };
 
 export type OffsetFunctionParam = {
-  positioned: Rect;
+  positionedElement: Rect;
   target: Rect;
   position: Position;
   alignment?: Alignment;

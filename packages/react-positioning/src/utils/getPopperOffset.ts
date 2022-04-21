@@ -45,7 +45,7 @@ export function getPopperOffset(rawOffset: Offset | undefined): PopperOffsetValu
 
   return ({ popper, reference, placement }) => {
     const { position, alignment } = fromPopperPlacement(placement);
-    const computedOffset = rawOffset({ positioned: popper, target: reference, position, alignment });
+    const computedOffset = rawOffset({ positionedElement: popper, target: reference, position, alignment });
     if (typeof computedOffset === 'number') {
       return [0, computedOffset];
     }
