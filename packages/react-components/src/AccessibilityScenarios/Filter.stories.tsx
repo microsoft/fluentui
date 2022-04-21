@@ -234,38 +234,58 @@ const countries = [
 
 export const FilterScenario: React.FunctionComponent = () => {
   const [filterText, setFilterText] = React.useState('');
-
   const filterTextLowerCase = React.useMemo(() => filterText.toLowerCase(), [filterText]);
+
+  const filterInputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    filterInputRef.current?.addEventListener('keydown', handleFilterInputKeyDown);
+    return () => {
+      filterInputRef.current?.removeEventListener('keydown', handleFilterInputKeyDown);
+    };
+  }, []);
+
+  const handleFilterInputKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'ArrowDown') {
+      // alert(document.getElementById('countryItem1'));
+      document.getElementById('countryItem0')?.focus();
+    }
+  };
+
+  const handleFilterInputChange = (event: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
+    setFilterText(data.value);
+  };
+
+  const handleClearButtonClick = () => {
+    setFilterText('');
+  };
 
   const filterCountry = (country: string) => {
     return country.toLowerCase().includes(filterTextLowerCase);
   };
 
-  const handleClearFilterClick = () => {
-    setFilterText('');
-  };
-
-  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
-    setFilterText(data.value);
-  };
-
   return (
     <Scenario pageTitle="Filter scenario">
-      <Label htmlFor="filterText">Country filter</Label>
-      <Input
-        type="text"
-        id="filterText"
-        name="filterText"
-        value={filterText}
-        onChange={handleFilterChange}
-        aria-controls="countriesList"
-      />
-      <Button onClick={handleClearFilterClick}>Clear filter</Button>
-      <MenuList id="countriesList" role="listbox">
-        {countries.filter(filterCountry).map(country => (
-          <MenuItem role="option">{country}</MenuItem>
-        ))}
-      </MenuList>
+      <form autoComplete="off">
+        <Label htmlFor="filterText">Country filter</Label>
+        <Input
+          type="text"
+          input={{ ref: filterInputRef }}
+          id="filterText"
+          name="filterText"
+          value={filterText}
+          onChange={handleFilterInputChange}
+          aria-controls="countriesListbox"
+        />
+        <Button onClick={handleClearButtonClick}>Clear filter</Button>
+        <MenuList id="countriesListbox" role="listbox">
+          {countries.filter(filterCountry).map((country, index) => (
+            <MenuItem id={`countryItem${index}`} role="option">
+              {country}
+            </MenuItem>
+          ))}
+        </MenuList>
+      </form>
     </Scenario>
   );
 };
