@@ -18,7 +18,7 @@ function getVnextStories() {
       const name = pkgName.replace('@fluentui/', '');
       const storiesGlob = '/src/**/*.stories.@(ts|tsx|mdx)';
       const pkgUnmigratedPath = `../../${name}`;
-      const pkgMigratedPath = `../'${name}`;
+      const pkgMigratedPath = `../${name}`;
 
       if (fs.existsSync(pkgUnmigratedPath + '/package.json')) {
         return `../${pkgUnmigratedPath}${storiesGlob}`;
