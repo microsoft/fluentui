@@ -129,6 +129,13 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
   const prevMonthInBounds = minDate ? compareDatePart(minDate, getMonthStart(navigatedDate)) < 0 : true;
   const nextMonthInBounds = maxDate ? compareDatePart(getMonthEnd(navigatedDate), maxDate) < 0 : true;
 
+  const prevMonthAriaLabel = strings.prevMonthAriaLabel
+    ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()]
+    : undefined;
+  const nextMonthAriaLabel = strings.nextMonthAriaLabel
+    ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()]
+    : undefined;
+
   // use aria-disabled instead of disabled so focus is not lost
   // when a prev/next button becomes disabled after being clicked
   return (
@@ -141,12 +148,9 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
         aria-disabled={!prevMonthInBounds}
         onClick={prevMonthInBounds ? onSelectPrevMonth : undefined}
         onKeyDown={prevMonthInBounds ? onButtonKeyDown(onSelectPrevMonth) : undefined}
-        title={
-          strings.prevMonthAriaLabel
-            ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()]
-            : undefined
-        }
+        title={prevMonthAriaLabel}
         type="button"
+        aria-label={prevMonthAriaLabel}
       >
         <Icon iconName={leftNavigationIcon} />
       </button>
@@ -158,12 +162,9 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
         aria-disabled={!nextMonthInBounds}
         onClick={nextMonthInBounds ? onSelectNextMonth : undefined}
         onKeyDown={nextMonthInBounds ? onButtonKeyDown(onSelectNextMonth) : undefined}
-        title={
-          strings.nextMonthAriaLabel
-            ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()]
-            : undefined
-        }
+        title={nextMonthAriaLabel}
         type="button"
+        aria-label={nextMonthAriaLabel}
       >
         <Icon iconName={rightNavigationIcon} />
       </button>
