@@ -160,7 +160,7 @@ export const useToggleButton_unstable: (props: ToggleButtonProps, ref: React_2.R
 export const useToggleButtonStyles_unstable: (state: ToggleButtonState) => ToggleButtonState;
 
 // @public (undocumented)
-export function useToggleState<TToggleButtonProps extends ToggleButtonProps, TButtonState extends Partial<ButtonState>, TToggleButtonState extends ToggleButtonState>(props: TToggleButtonProps, state: TButtonState): TToggleButtonState;
+export function useToggleState<TToggleButtonProps extends Pick<ToggleButtonProps, 'checked' | 'defaultChecked' | 'disabled' | 'disabledFocusable'>, TButtonState extends Pick<ButtonState, 'root'>, TToggleButtonState extends Pick<ToggleButtonState, 'checked' | 'root'>>(props: TToggleButtonProps, state: TButtonState): TToggleButtonState;
 
 // (No @packageDocumentation comment for this package)
 

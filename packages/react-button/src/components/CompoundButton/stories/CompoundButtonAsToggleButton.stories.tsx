@@ -59,13 +59,13 @@ const ToggleCompoundButton: ForwardRefComponent<ToggleCompoundButtonProps> = Rea
   return renderCompoundButton_unstable(state);
 }) as ForwardRefComponent<ToggleCompoundButtonProps>;
 
-export const Toggleable = () => (
+export const AsToggleButton = () => (
   <ToggleCompoundButton icon={<CalendarMonthRegular />} secondaryContent="Secondary content">
     Example
   </ToggleCompoundButton>
 );
 
-Toggleable.parameters = {
+AsToggleButton.parameters = {
   docs: {
     description: {
       story: 'A compound button can be recomposed via its hooks to be toggleable',
