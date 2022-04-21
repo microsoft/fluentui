@@ -7,7 +7,7 @@ describe(`main utils`, () => {
       const actual = utils.getVnextStories();
 
       const expected = [
-        expect.stringContaining('../../react-'),
+        expect.stringContaining('../../../react-'),
         expect.stringContaining('/src/**/*.stories.@(ts|tsx|mdx)'),
       ];
 

@@ -14,7 +14,15 @@ function getVnextStories() {
 
   return Object.keys(dependencies)
     .filter(pkgName => pkgName.startsWith('@fluentui/'))
-    .map(pkgName => '../../../' + pkgName.replace('@fluentui/', '') + '/src/**/*.stories.@(ts|tsx|mdx)');
+    .map(pkgName => {
+      const oldPath = '../../' + pkgName.replace('@fluentui/', '') + '/src/**/*.stories.@(ts|tsx|mdx)';
+      const newPath = '../../../' + pkgName.replace('@fluentui/', '') + '/src/**/*.stories.@(ts|tsx|mdx)';
+      if (fs.existsSync(oldPath)) {
+        return oldPath;
+      } else {
+        return newPath;
+      }
+    });
 }
 
 exports.getVnextStories = getVnextStories;
