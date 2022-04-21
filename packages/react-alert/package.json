@@ -1,0 +1,44 @@
+{
+  "name": "@fluentui/react-alert",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An alert component that displays a brief message",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start": "just-scripts dev:storybook",
+    "start-test": "just-scripts jest-watch",
+    "test": "just-scripts test",
+    "update-snapshots": "just-scripts jest -u"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "",
+    "@fluentui/react-conformance": "",
+    "@fluentui/react-conformance-griffel": "",
+    "@fluentui/scripts": ""
+  },
+  "dependencies": {
+    "@fluentui/react-theme": "",
+    "@fluentui/react-utilities": "",
+    "@griffel/react": "",
+    "tslib": ""
+  },
+  "peerDependencies": {
+    "@types/react": "",
+    "@types/react-dom": "",
+    "react": "",
+    "react-dom": ""
+  }
+}
