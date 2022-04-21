@@ -30,10 +30,22 @@ const useCheckedStyles = makeStyles({
       color: tokens.colorNeutralForeground1,
     },
 
-    ':active': {
+    ':hover:active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
       color: tokens.colorNeutralForeground1,
+    },
+  },
+
+  // High contrast styles
+  highContrast: {
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('Highlight'),
+      color: 'Highlight',
+
+      ':focus': {
+        ...shorthands.borderColor('Highlight'),
+      },
     },
   },
 
@@ -45,7 +57,7 @@ const useCheckedStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackgroundHover,
     },
 
-    ':active': {
+    ':hover:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
   },
@@ -60,7 +72,7 @@ const useCheckedStyles = makeStyles({
       color: tokens.colorNeutralForegroundOnBrand,
     },
 
-    ':active': {
+    ':hover:active': {
       backgroundColor: tokens.colorBrandBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundOnBrand,
@@ -77,7 +89,7 @@ const useCheckedStyles = makeStyles({
       color: tokens.colorNeutralForeground2BrandHover,
     },
 
-    ':active': {
+    ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandPressed,
@@ -94,7 +106,7 @@ const useCheckedStyles = makeStyles({
       color: tokens.colorNeutralForeground2BrandHover,
     },
 
-    ':active': {
+    ':hover:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandPressed,
@@ -115,7 +127,7 @@ const useDisabledStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
     },
 
-    ':active': {
+    ':hover:active': {
       backgroundColor: tokens.colorNeutralBackgroundDisabled,
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
       color: tokens.colorNeutralForegroundDisabled,
@@ -133,7 +145,7 @@ const useDisabledStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
     },
 
-    ':active': {
+    ':hover:active': {
       ...shorthands.borderColor('transparent'),
     },
   },
@@ -146,7 +158,7 @@ const useDisabledStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
     },
 
-    ':active': {
+    ':hover:active': {
       backgroundColor: 'transparent',
       ...shorthands.borderColor('transparent'),
     },
@@ -160,7 +172,7 @@ const useDisabledStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
     },
 
-    ':active': {
+    ':hover:active': {
       backgroundColor: 'transparent',
       ...shorthands.borderColor('transparent'),
     },
@@ -178,6 +190,7 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
 
     // Checked styles
     checked && checkedStyles.base,
+    checked && checkedStyles.highContrast,
     appearance && checked && checkedStyles[appearance],
 
     // Disabled styles
