@@ -151,6 +151,27 @@ const useRootStyles = makeStyles({
       },
     },
   },
+
+  // Disabled high contrast styles
+  disabledHighContrast: {
+    '@media (forced-colors: active)': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: 'GrayText',
+      },
+
+      ':hover': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: 'GrayText',
+        },
+      },
+
+      ':hover:active': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: 'GrayText',
+        },
+      },
+    },
+  },
 });
 
 const useRootIconOnlyStyles = makeStyles({
@@ -232,6 +253,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
 
     // Disabled styles
     (disabled || disabledFocusable) && rootStyles.disabled,
+    (disabled || disabledFocusable) && rootStyles.disabledHighContrast,
 
     // Icon-only styles
     iconOnly && rootIconOnlyStyles[size],
