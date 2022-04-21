@@ -11,6 +11,7 @@ import { DocumentCardType } from './DocumentCard.types';
 import type { IProcessedStyleSet } from '../../Styling';
 import type {
   IDocumentCard,
+  IDocumentCardContext,
   IDocumentCardProps,
   IDocumentCardStyleProps,
   IDocumentCardStyles,
@@ -19,6 +20,8 @@ import type {
 const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardStyles>();
 
 const COMPONENT_NAME = 'DocumentCard';
+
+export const DocumentCardContext = React.createContext<IDocumentCardContext>({});
 
 /**
  * {@docCategory DocumentCard}
@@ -69,7 +72,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
     // if this element is actionable it should have an aria role
     const role = this.props.role || (actionable ? (onClick ? 'button' : 'link') : undefined);
     const tabIndex = actionable ? 0 : undefined;
-    const updatedChildren = passPropsToTitle(children, { role, tabIndex });
+    const documentCardContextValue = { role, tabIndex };
 
     return (
       <div
@@ -81,7 +84,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
         style={style}
         {...nativeProps}
       >
-        {updatedChildren}
+        <DocumentCardContext.Provider value={documentCardContextValue}>{children}</DocumentCardContext.Provider>
       </div>
     );
   }
@@ -120,23 +123,4 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
       ev.stopPropagation();
     }
   };
-}
-
-function passPropsToTitle(
-  children: React.ReactNode,
-  addedProps: {
-    role?: string;
-    tabIndex?: number;
-  },
-): React.ReactNode {
-  return React.Children.map(children, child => {
-    if (!React.isValidElement(child)) {
-      return child;
-    }
-
-    return React.cloneElement(child, {
-      ...(child.props.title && addedProps),
-      children: passPropsToTitle(child.props.children, addedProps),
-    });
-  });
 }
