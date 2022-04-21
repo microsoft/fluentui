@@ -1,7 +1,6 @@
 import { Tree, formatFiles, joinPathFragments, updateJson, readJson, ProjectConfiguration } from '@nrwl/devkit';
 import { moveGenerator } from '@nrwl/workspace/generators';
-import { PackageJson } from '../../types';
-import { getProjects } from '../../utils';
+import { getProjects, hasSchemaFlag, isPackageConverged, isV8Package } from '../../utils';
 
 import { MovePackagesGeneratorSchema } from './schema';
 
@@ -97,23 +96,10 @@ function getNewProjectName(destinationPath: string) {
   return destinationPath.replace(/\//g, '-');
 }
 
-function hasSchemaFlag<T extends MovePackagesGeneratorSchema, K extends keyof T>(
-  schema: T,
-  flag: K,
-): schema is T & Record<K, NonNullable<T[K]>> {
-  return Boolean(schema[flag]);
-}
-
-function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
-  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
-  return packageJson.version.startsWith('9.');
-}
-
-function isV8Package(tree: Tree, project: ProjectConfiguration) {
-  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
-  return packageJson.version.startsWith('8.');
-}
-
+/**
+ * The moveGenerator automatically renames the package and updates the README.md file to reflect that change.
+ * This function restores the contents of the README.md file back to original state.
+ */
 function updateReadMe(tree: Tree, schema: MovePackagesGeneratorSchema) {
   const { name, destination } = schema;
   if (name) {
