@@ -48,7 +48,7 @@ export type OffsetFunction = (param: OffsetFunctionParam) => OffsetObject | Offs
 
 // @public (undocumented)
 export type OffsetFunctionParam = {
-    positioned: Rect;
+    positionedElement: Rect;
     target: Rect;
     position: Position;
     alignment?: Alignment;
