@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-keys",
   "entries": [
     {
+      "date": "Tue, 19 Apr 2022 19:17:06 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Mar 2022 05:17:32 GMT",
       "tag": "@fluentui/keyboard-keys_v9.0.0-rc.4",
       "version": "9.0.0-rc.4",

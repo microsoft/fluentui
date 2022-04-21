@@ -17,13 +17,17 @@ export interface UseArrowNavigationGroupOptions {
    * available) when tabbing from outside of the group
    */
   memorizeCurrent?: boolean;
+  /**
+   * Allow tabbing within the arrow navigation group items.
+   */
+  tabbable?: boolean;
 }
 
 /**
  * A hook that returns the necessary tabster attributes to support arrow key navigation
  * @param options - Options to configure keyboard navigation
  */
-export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions) => {
+export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions): Types.TabsterDOMAttribute => {
   const tabster = useTabster();
 
   if (tabster) {
@@ -35,6 +39,7 @@ export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions
       cyclic: !!options?.circular,
       direction: axisToMoverDirection(options?.axis ?? 'vertical'),
       memorizeCurrent: options?.memorizeCurrent,
+      tabbable: options?.tabbable,
     },
   });
 };

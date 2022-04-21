@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
+import { useContextSelector } from '@fluentui/react-context-selector';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
+import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
+import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ComboButtonProps, ComboButtonState } from './ComboButton.types';
 
 /**
@@ -17,6 +19,9 @@ export const useComboButton_unstable = (
   ref: React.Ref<HTMLButtonElement>,
 ): ComboButtonState => {
   const { placeholder, value } = props;
+
+  const appearance = useContextSelector(ComboboxContext, ctx => ctx.appearance);
+  const size = useContextSelector(ComboboxContext, ctx => ctx.size);
 
   const nativeProps = getPartitionedNativeProps({
     props,
@@ -49,5 +54,7 @@ export const useComboButton_unstable = (
         children: <ChevronDownIcon />,
       },
     }),
+    appearance,
+    size,
   };
 };

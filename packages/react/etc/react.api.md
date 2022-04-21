@@ -1549,9 +1549,9 @@ export { FabricPerformance }
 // @public (undocumented)
 export enum FabricSlots {
     // (undocumented)
-    black = 20,
+    black = 21,
     // (undocumented)
-    neutralDark = 19,
+    neutralDark = 20,
     // (undocumented)
     neutralLight = 11,
     // (undocumented)
@@ -1559,15 +1559,17 @@ export enum FabricSlots {
     // (undocumented)
     neutralLighterAlt = 9,
     // (undocumented)
-    neutralPrimary = 18,
+    neutralPrimary = 19,
     // (undocumented)
-    neutralPrimaryAlt = 17,
+    neutralPrimaryAlt = 18,
     // (undocumented)
     neutralQuaternary = 13,
     // (undocumented)
     neutralQuaternaryAlt = 12,
     // (undocumented)
-    neutralSecondary = 16,
+    neutralSecondary = 17,
+    // (undocumented)
+    neutralSecondaryAlt = 16,
     // (undocumented)
     neutralTertiary = 15,
     // (undocumented)
@@ -1591,7 +1593,7 @@ export enum FabricSlots {
     // (undocumented)
     themeTertiary = 4,
     // (undocumented)
-    white = 21
+    white = 22
 }
 
 // @public
@@ -4531,6 +4533,7 @@ export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {
 
 // @public (undocumented)
 export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
+    // @deprecated
     ariaLabel?: string;
     ariaLabelForGrid?: string;
     ariaLabelForListHeader?: string;
@@ -4595,6 +4598,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     selectionPreservedOnEmptyClick?: boolean;
     selectionZoneProps?: ISelectionZoneProps;
     setKey?: string;
+    // @deprecated
     shouldApplyApplicationRole?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsListStyleProps, IDetailsListStyles>;
     theme?: ITheme;
@@ -5407,6 +5411,7 @@ export interface IDragOptions {
 
 // @public (undocumented)
 export interface IDropdown {
+    dismissMenu: () => void;
     // (undocumented)
     focus: (shouldOpenOnFocus?: boolean) => void;
     readonly selectedOptions: IDropdownOption[];

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-context-selector
 
-This log was last generated on Fri, 04 Mar 2022 05:17:36 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 19:17:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-rc.6)
+
+Tue, 19 Apr 2022 19:17:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.0.0-rc.5..@fluentui/react-context-selector_v9.0.0-rc.6)
+
+### Changes
+
+- Move `scheduler` to a peer dependency and allow appropriate versions for React 16 or 17 ([PR #21769](https://github.com/microsoft/fluentui/pull/21769) by elcraig@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-rc.5)
 

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Meta } from '@storybook/react';
 import { Combobox } from '../index';
 
@@ -18,11 +17,4 @@ export default {
       },
     },
   },
-  decorators: [
-    Story => (
-      <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-        <Story />
-      </div>
-    ),
-  ],
 } as Meta;

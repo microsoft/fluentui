@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add deprecation messages to react-switch",
-  "packageName": "@fluentui/react-switch",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
