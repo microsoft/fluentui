@@ -24,7 +24,7 @@ const getAlignmentMap = (position: Position): Record<PopperAlignment, Alignment>
 };
 
 /**
- * Maps Floating UI placement to positioning values
+ * Maps Popper.js placement to positioning values
  * @see positioningHelper.test.ts for expected placement values
  */
 export const fromPopperPlacement = (placement: Placement): { position: Position; alignment?: Alignment } => {

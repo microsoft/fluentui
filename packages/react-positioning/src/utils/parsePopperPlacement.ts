@@ -2,7 +2,7 @@ import type { BasePlacement, Placement, Variation } from '@popperjs/core';
 
 /**
  * Parses Popper placement and returns the different components
- * @param placement - the floating ui placement (i.e. bottom-start)
+ * @param placement - the Popper.js placement (i.e. bottom-start)
  *
  * @returns side and alignment components of the placement
  */

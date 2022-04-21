@@ -12,7 +12,7 @@ export type PopperOffsetValue = [number | null | undefined, number | null | unde
 export type PopperOffset = PopperOffsetValue | PopperOffsetFunction;
 
 /**
- * Type taken from Floating UI since it is not exported
+ * Type taken from Popper.js since it is not exported
  */
 export type PopperOffsetFunctionParam = {
   popper: Rect;
@@ -21,14 +21,14 @@ export type PopperOffsetFunctionParam = {
 };
 
 /**
- * Type taken from Floating UI since it is not exported
+ * Type taken from Popper.js since it is not exported
  */
 export type PopperOffsetFunction = (args: { popper: Rect; reference: Rect; placement: Placement }) => PopperOffsetValue;
 
 /**
- * Shim to transform offset values from this library to Floating UI
+ * Shim to transform offset values from this library to Popper.js
  * @param rawOffset Offset from this library
- * @returns An offset value compatible with Floating UI
+ * @returns An offset value compatible with Popper.js
  */
 export function getPopperOffset(rawOffset: Offset | undefined): PopperOffsetValue | PopperOffsetFunction | undefined {
   if (rawOffset === undefined) {

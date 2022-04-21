@@ -11,7 +11,7 @@ import {
   getReactFiberFromNode,
   getBoundary,
   useCallbackRef,
-  getBasePlacement,
+  parsePopperPlacement,
 } from './utils/index';
 import type { PositioningVirtualElement, PositioningOptions, PositioningProps } from './types';
 import { getPopperOffset } from './utils/getPopperOffset';
@@ -189,7 +189,7 @@ function usePopperOptions(options: PositioningOptions, popperOriginalPositionRef
             const overflow = PopperJs.detectOverflow(state, modifierOptions);
             const { x, y } = state.modifiersData.preventOverflow || { x: 0, y: 0 };
             const { width, height } = state.rects.popper;
-            const basePlacement = getBasePlacement(state.placement);
+            const basePlacement = parsePopperPlacement(state.placement).basePlacement;
 
             const widthProp: keyof PopperJs.SideObject = basePlacement === 'left' ? 'left' : 'right';
             const heightProp: keyof PopperJs.SideObject = basePlacement === 'top' ? 'top' : 'bottom';
@@ -231,7 +231,7 @@ function usePopperOptions(options: PositioningOptions, popperOriginalPositionRef
           phase: 'main',
           requiresIfExists: ['offset', 'preventOverflow', 'flip'],
           fn({ state }: PopperJs.ModifierArguments<{}>) {
-            const basePlacement = getBasePlacement(state.placement);
+            const basePlacement = parsePopperPlacement(state.placement).basePlacement;
             switch (basePlacement) {
               case 'bottom':
                 state.modifiersData.popperOffsets!.y -= state.rects.reference.height;
