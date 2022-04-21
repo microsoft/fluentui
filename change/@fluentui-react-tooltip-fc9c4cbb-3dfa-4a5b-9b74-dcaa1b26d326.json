@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "BREAKING: changes to positioning prop",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
