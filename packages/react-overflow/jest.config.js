@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-priority-overflow',
+  displayName: 'react-overflow',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {

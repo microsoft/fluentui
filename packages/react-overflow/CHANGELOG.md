@@ -1,10 +1,10 @@
-# Change Log - @fluentui/react-priority-overflow
+# Change Log - @fluentui/react-overflow
 
 This log was last generated on Tue, 19 Apr 2022 19:17:29 GMT and should not be manually modified.
 
 <!-- Start content -->
 
-## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-priority-overflow_v9.0.0-alpha.0)
+## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-alpha.0)
 
 Tue, 19 Apr 2022 19:17:29 GMT
 

@@ -41,7 +41,7 @@
       "@fluentui/react-portal": ["packages/react-portal/src/index.ts"],
       "@fluentui/react-portal-compat": ["packages/react-portal-compat/src/index.ts"],
       "@fluentui/react-positioning": ["packages/react-positioning/src/index.ts"],
-      "@fluentui/react-priority-overflow": ["packages/react-priority-overflow/src/index.ts"],
+      "@fluentui/react-overflow": ["packages/react-overflow/src/index.ts"],
       "@fluentui/react-provider": ["packages/react-provider/src/index.ts"],
       "@fluentui/react-radio": ["packages/react-radio/src/index.ts"],
       "@fluentui/react-select": ["packages/react-select/src/index.ts"],
