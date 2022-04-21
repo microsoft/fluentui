@@ -5,7 +5,6 @@
 ```ts
 
 import type { GriffelStyle } from '@griffel/react';
-import * as PopperJs from '@popperjs/core';
 import * as React_2 from 'react';
 
 // @public (undocumented)
@@ -103,7 +102,7 @@ export type PositioningVirtualElement = {
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
 // @public
-export const useMouseTarget: (initialState?: PopperJs.VirtualElement | (() => PopperJs.VirtualElement) | undefined) => readonly [PopperJs.VirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
+export const useMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [PositioningVirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
 
 // @public
 export function usePositioning(options?: UsePopperOptions): {
