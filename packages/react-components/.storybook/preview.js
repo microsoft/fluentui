@@ -1,17 +1,10 @@
 import * as rootPreview from '../../../.storybook/preview';
-import { FluentDocsContainer } from '../src/DocsComponents/FluentDocsContainer.stories';
-import { FluentDocsPage } from '../src/DocsComponents/FluentDocsPage.stories';
-
-/** @type {typeof rootPreview.decorators} */
-export const decorators = [...rootPreview.decorators];
 
 /** @type {typeof rootPreview.parameters} */
 export const parameters = {
   ...rootPreview.parameters,
   docs: {
     ...rootPreview.parameters.docs,
-    container: FluentDocsContainer,
-    page: FluentDocsPage,
   },
   options: {
     storySort: {

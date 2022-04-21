@@ -3,17 +3,7 @@ const rootMain = require('../../../.storybook/main');
 
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)', ...utils.getVnextStories()],
-  addons: [
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        configureJSX: true,
-        babelOptions: {},
-        sourceLoaderOptions: null,
-        transcludeMarkdown: true,
-      },
-    },
-  ],
+  addons: ['@fluentui/react-storybook-addon', '@storybook/addon-docs'],
   core: {
     builder: 'webpack5',
   },
@@ -29,5 +19,4 @@ module.exports = {
 
     return localConfig;
   },
-  addons: ['@storybook/addon-actions', '@storybook/addon-docs'],
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FluentGlobals, THEME_ID } from '@fluentui/react-storybook-addon';
 import { tokens } from '@fluentui/react-theme';
-import { shorthands, makeStyles } from '../index';
+import { shorthands, makeStyles } from '@griffel/react';
 import { ThemePicker } from './ThemePicker.stories';
 
 const useStyles = makeStyles({
