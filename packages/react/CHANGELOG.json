@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 21 Apr 2022 07:36:48 GMT",
+      "tag": "@fluentui/react_v8.66.2",
+      "version": "8.66.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "14bee91b201e71123a60558f983be2398262fb44",
+            "comment": "update contextmenu to focus submenu containers on click or hover"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 20 Apr 2022 07:39:22 GMT",
       "tag": "@fluentui/react_v8.66.1",
       "version": "8.66.1",
