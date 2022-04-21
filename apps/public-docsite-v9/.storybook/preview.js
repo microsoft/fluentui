@@ -1,15 +1,5 @@
-// import * as rootPreview from '../../../.storybook/preview';
-// import { FluentDocsContainer } from '../src/DocsComponents/FluentDocsContainer.stories';
-// import { FluentDocsPage } from '../src/DocsComponents/FluentDocsPage.stories';
-
 /** @type {typeof rootPreview.parameters} */
 export const parameters = {
-  // ...rootPreview.parameters,
-  // docs: {
-  //   ...rootPreview.parameters.docs,
-  //   container: FluentDocsContainer,
-  //   page: FluentDocsPage,
-  // },
   options: {
     storySort: {
       method: 'alphabetical',
@@ -25,14 +15,7 @@ export const parameters = {
           'Upgrading',
           [
             'from v8',
-            [
-              'Overview',
-              'Important changes',
-              'Planning your journey',
-              'Component Mapping',
-              'Troubleshooting',
-              'Button',
-            ],
+            ['Overview', 'Important changes', 'Planning your journey', 'Component Mapping', 'Troubleshooting'],
           ],
         ],
         'Theme',
