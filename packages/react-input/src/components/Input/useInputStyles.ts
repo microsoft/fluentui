@@ -67,7 +67,7 @@ const useRootStyles = makeStyles({
   interactive: {
     // This is all for the bottom focus border.
     // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
-    ':after': {
+    '::after': {
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
@@ -96,14 +96,14 @@ const useRootStyles = makeStyles({
       transitionDuration: motionDurations.ultraFast,
       transitionDelay: motionCurves.accelerateMid,
     },
-    ':focus-within:after': {
+    ':focus-within::after': {
       // Animation for focus IN
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
       transitionDuration: motionDurations.normal,
       transitionDelay: motionCurves.decelerateMid,
     },
-    ':focus-within:active:after': {
+    ':focus-within:active::after': {
       // This is if the user clicks the field again while it's already focused
       borderBottomColor: tokens.colorCompoundBrandStrokePressed,
     },
@@ -158,7 +158,7 @@ const useRootStyles = makeStyles({
     ':active,:focus-within': {
       borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
     },
-    ':after': shorthands.borderRadius(0), // remove rounded corners from focus underline
+    '::after': shorthands.borderRadius(0), // remove rounded corners from focus underline
   },
   filled: {
     boxShadow: tokens.shadow2, // optional shadow for filled appearances

@@ -80,7 +80,7 @@ apps/vr-tests-react-components @microsoft/fluentui-react
 apps/ssr-tests @microsoft/fluentui-react
 apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/test-bundles @microsoft/fluentui-react
-apps/upgrade-examples-v8-v9 @microsoft/cxe-red @microsoft/cxe-coastal
+apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-coastal
 apps/theming-designer @microsoft/fluentui-react
 
 #### Packages
