@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import type { SpinnerProps, SpinnerState } from './Spinner.types';
 import { Label } from '@fluentui/react-label';
 import { DefaultSvg } from './DefaultSvg';
@@ -16,6 +16,29 @@ import { DefaultSvg } from './DefaultSvg';
 export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElement>): SpinnerState => {
   // Props
   const { appearance = 'primary', labelPosition = 'after', size = 'medium', status = 'active' } = props;
+  const baseId = useId('spinner');
+
+  const { tabIndex, ...rest } = props;
+  const nativeRoot = getNativeElementProps('div', { ref, ...rest }, ['size']);
+
+  const labelShorthand = resolveShorthand(props.label, {
+    defaultProps: {
+      id: baseId,
+    },
+    required: false,
+  });
+
+  const spinnerShortHand = resolveShorthand(props.spinner, {
+    required: true,
+    defaultProps: {
+      children: <DefaultSvg />,
+     tabIndex,
+    },
+  });
+
+  if (labelShorthand && spinnerShortHand && !spinnerShortHand['aria-labelledby']) {
+    spinnerShortHand['aria-labelledby'] = labelShorthand.id;
+  }
 
   const state: SpinnerState = {
     appearance,
@@ -27,16 +50,9 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
       spinner: 'span',
       label: Label,
     },
-    root: getNativeElementProps('div', { ref, ...props }, ['size']),
-    spinner: resolveShorthand(props.spinner, {
-      required: true,
-      defaultProps: {
-        children: <DefaultSvg />,
-      },
-    }),
-    label: resolveShorthand(props.label, {
-      required: false,
-    }),
+    root: nativeRoot,
+    spinner: spinnerShortHand,
+    label: labelShorthand,
   };
   return state;
 };

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Fri, 04 Mar 2022 05:17:32 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 19:17:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.6)
+
+Tue, 19 Apr 2022 19:17:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-rc.5..@fluentui/react-utilities_v9.0.0-rc.6)
+
+### Changes
+
+- Removing star exports at src/index.ts ([PR #22367](https://github.com/microsoft/fluentui/pull/22367) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.5)
 

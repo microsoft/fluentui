@@ -2,6 +2,47 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Tue, 19 Apr 2022 19:17:02 GMT",
+      "tag": "@fluentui/react-textarea_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "none": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-textarea",
+            "commit": "98042e9b8eb9d4dd78f1e42e79db6a2e33404b9d",
+            "comment": "Adding label to Default story and making package public."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.5",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.6",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.4",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Mar 2022 05:17:40 GMT",
       "tag": "@fluentui/react-textarea_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

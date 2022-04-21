@@ -127,12 +127,27 @@ const useRootStyles = makeStyles({
   },
 
   disabled: {
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('GrayText'),
+    },
+  },
+
+  outlineDisabled: {
     '::before': {
       ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
       ...shorthands.borderRadius(tokens.borderRadiusMedium), // because underline doesn't usually have a radius
-      '@media (forced-colors: active)': {
-        ...shorthands.borderColor('GrayText'),
-      },
+    },
+  },
+
+  underlineDisabled: {
+    '::before': {
+      ...shorthands.borderBottom('1px', 'solid', tokens.colorTransparentStrokeDisabled),
+    },
+  },
+
+  filledDisabled: {
+    '::before': {
+      ...shorthands.border('1px', 'solid', tokens.colorTransparentStrokeDisabled),
     },
   },
 });
@@ -159,7 +174,7 @@ const useButtonStyles = makeStyles({
     outlineStyle: 'none',
     height: '100%',
 
-    ':hover': {
+    ':enabled:hover': {
       cursor: 'pointer',
     },
 
@@ -231,34 +246,21 @@ const useButtonStyles = makeStyles({
     ':disabled': {
       color: tokens.colorNeutralForegroundDisabled,
     },
-    '@media (forced-colors: active)': {
-      color: 'ButtonText',
-      ':enabled': {
-        ':hover': {
-          color: 'ButtonText',
-        },
-        ':active': {
-          color: 'ButtonText',
-        },
-        [`&.${spinButtonExtraClassNames.buttonActive}`]: {
-          color: 'ButtonText',
-        },
-      },
-    },
   },
 
-  // These designs are not yet finalized so this is copy-paste for the "outline"
-  // appearance.
   underline: {
     backgroundColor: 'transparent',
     color: tokens.colorNeutralForeground3,
-    ...shorthands.borderRadius(0),
     ':enabled': {
       ':hover': {
         color: tokens.colorNeutralForeground3Hover,
         backgroundColor: tokens.colorSubtleBackgroundHover,
       },
-      [`:active,&.${spinButtonExtraClassNames.buttonActive}`]: {
+      ':active': {
+        color: tokens.colorNeutralForeground3Pressed,
+        backgroundColor: tokens.colorSubtleBackgroundPressed,
+      },
+      [`&.${spinButtonExtraClassNames.buttonActive}`]: {
         color: tokens.colorNeutralForeground3Pressed,
         backgroundColor: tokens.colorSubtleBackgroundPressed,
       },
@@ -273,12 +275,16 @@ const useButtonStyles = makeStyles({
 
     ':enabled': {
       ':hover': {
-        color: tokens.colorNeutralForeground3BrandHover,
-        backgroundColor: tokens.colorSubtleBackgroundHover,
+        color: tokens.colorNeutralForeground3Hover,
+        backgroundColor: tokens.colorNeutralBackground3Hover,
       },
-      [`:active,&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: tokens.colorNeutralForeground3BrandPressed,
-        backgroundColor: tokens.colorSubtleBackgroundPressed,
+      ':active': {
+        color: tokens.colorNeutralForeground3Pressed,
+        backgroundColor: tokens.colorNeutralBackground3Pressed,
+      },
+      [`&.${spinButtonExtraClassNames.buttonActive}`]: {
+        color: tokens.colorNeutralForeground3Pressed,
+        backgroundColor: tokens.colorNeutralBackground3Pressed,
       },
     },
     ':disabled': {
@@ -286,28 +292,22 @@ const useButtonStyles = makeStyles({
     },
   },
   filledLighter: {
-    color: tokens.colorNeutralForeground3,
     backgroundColor: 'transparent',
+    color: tokens.colorNeutralForeground3,
 
-    ':hover': {
-      color: tokens.colorNeutralForeground3BrandHover,
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-    },
-    [`:active,&.${spinButtonExtraClassNames.buttonActive}`]: {
-      color: tokens.colorNeutralForeground3BrandPressed,
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
+    ':enabled': {
+      ':hover': {
+        color: tokens.colorNeutralForeground3Hover,
+        backgroundColor: tokens.colorNeutralBackground1Hover,
+      },
+      [`:active,&.${spinButtonExtraClassNames.buttonActive}`]: {
+        color: tokens.colorNeutralForeground3Pressed,
+        backgroundColor: tokens.colorNeutralBackground1Pressed,
+      },
     },
     ':disabled': {
       color: tokens.colorNeutralForegroundDisabled,
     },
-  },
-
-  filledIncrement: {
-    clipPath: `inset(1px 1px 0 0 round 0 ${tokens.borderRadiusMedium} 0 0)`,
-  },
-
-  filledDecrement: {
-    clipPath: `inset(0 1px 1px 0 round 0 0 ${tokens.borderRadiusMedium} 0)`,
   },
 });
 
@@ -336,20 +336,6 @@ const useButtonDisabledStyles = makeStyles({
       [`&.${spinButtonExtraClassNames.buttonActive}`]: {
         color: tokens.colorNeutralForegroundDisabled,
         backgroundColor: 'transparent',
-      },
-    },
-    '@media (forced-colors: active)': {
-      color: 'GrayText',
-      ':enabled': {
-        ':hover': {
-          color: 'GrayText',
-        },
-        ':active': {
-          color: 'GrayText',
-        },
-        [`&.${spinButtonExtraClassNames.buttonActive}`]: {
-          color: 'GrayText',
-        },
       },
     },
   },
@@ -445,10 +431,14 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     rootStyles.base,
     appearance === 'outline' && rootStyles.outline,
     appearance === 'underline' && rootStyles.underline,
+    filled && rootStyles.filled,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
     disabled && rootStyles.disabled,
+    disabled && appearance === 'outline' && rootStyles.outlineDisabled,
+    disabled && appearance === 'underline' && rootStyles.underlineDisabled,
+    disabled && filled && rootStyles.filledDisabled,
     rootClassName, // Make sure any original class name is applied last
   );
 
@@ -458,7 +448,6 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     buttonStyles.base,
     buttonStyles.incrementButton,
     buttonStyles[appearance],
-    filled && buttonStyles.filledIncrement,
     size === 'small' ? buttonStyles.incrementButtonSmall : buttonStyles.incrementButtonMedium,
     (atBound === 'max' || atBound === 'both') && buttonDisabledStyles.base,
     (atBound === 'max' || atBound === 'both') && buttonDisabledStyles[appearance],
@@ -470,7 +459,6 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     buttonStyles.base,
     buttonStyles.decrementButton,
     buttonStyles[appearance],
-    filled && buttonStyles.filledDecrement,
     size === 'small' ? buttonStyles.decrementButtonSmall : buttonStyles.decrementButtonMedium,
     (atBound === 'min' || atBound === 'both') && buttonDisabledStyles.base,
     (atBound === 'min' || atBound === 'both') && buttonDisabledStyles[appearance],

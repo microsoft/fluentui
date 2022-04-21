@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Fri, 04 Mar 2022 05:17:36 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Apr 2022 19:17:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-rc.6)
+
+Tue, 19 Apr 2022 19:17:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-rc.5..@fluentui/react-image_v9.0.0-rc.6)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- Add static classnames to Image ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.5 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.4 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-rc.5)
 

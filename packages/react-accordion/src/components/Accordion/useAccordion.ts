@@ -26,6 +26,7 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
 
   const arrowNavigationProps = useArrowNavigationGroup({
     circular: navigation === 'circular',
+    tabbable: true,
   });
 
   const requestToggle = useEventCallback((event: AccordionToggleEvent, data: AccordionToggleData) => {

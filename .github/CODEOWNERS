@@ -80,7 +80,7 @@ apps/vr-tests-react-components @microsoft/fluentui-react
 apps/ssr-tests @microsoft/fluentui-react
 apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/test-bundles @microsoft/fluentui-react
-apps/upgrade-examples-v8-v9 @microsoft/fluentui-v8-website
+apps/upgrade-examples-v8-v9 @microsoft/cxe-red @microsoft/cxe-coastal
 apps/theming-designer @microsoft/fluentui-react
 
 #### Packages
@@ -119,8 +119,7 @@ packages/style-utilities @dzearing
 packages/style-utilities/src/interfaces @phkuo @dzearing
 packages/style-utilities/src/styles @phkuo @dzearing
 packages/theme @dzearing
-# packages/utilities
-packages/utilities/positioning @microsoft/cxe-red
+packages/utilities @microsoft/cxe-red
 
 ### Fabric
 # common/
