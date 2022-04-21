@@ -1,5 +1,6 @@
 import * as PopperJs from '@popperjs/core';
-import type { Alignment, Offset, OffsetFunction, OffsetFunctionParam, Position } from '../types';
+import type { Alignment, Position } from '../types';
+import { PopperOffset, PopperOffsetFunction, PopperOffsetFunctionParam } from './getPopperOffset';
 
 type PlacementPosition = 'top' | 'bottom' | 'left' | 'right';
 type PlacementAlign = 'start' | 'end' | ''; // '' represents center
@@ -42,7 +43,7 @@ export const getPlacement = (align?: Alignment, position?: Position, rtl?: boole
   return computedPosition || ('auto' as PopperJs.Placement);
 };
 
-export const applyRtlToOffset = (offset: Offset | undefined): Offset | undefined => {
+export const applyRtlToOffset = (offset: PopperOffset | undefined): PopperOffset | undefined => {
   if (typeof offset === 'undefined') {
     return undefined;
   }
@@ -53,5 +54,5 @@ export const applyRtlToOffset = (offset: Offset | undefined): Offset | undefined
     return offset;
   }
 
-  return ((param: OffsetFunctionParam) => applyRtlToOffset(offset(param))) as OffsetFunction;
+  return ((param: PopperOffsetFunctionParam) => applyRtlToOffset(offset(param))) as PopperOffsetFunction;
 };

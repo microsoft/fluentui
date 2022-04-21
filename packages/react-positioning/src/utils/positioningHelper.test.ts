@@ -1,5 +1,6 @@
 import { getPlacement, applyRtlToOffset } from './positioningHelper';
-import type { Alignment, Position, OffsetFunction, OffsetFunctionParam } from '../types';
+import type { Alignment, Position } from '../types';
+import { PopperOffsetFunction, PopperOffsetFunctionParam } from './getPopperOffset';
 
 describe('getPlacement', () => {
   it.each([
@@ -42,10 +43,10 @@ describe('applyRtlOffset', () => {
 
   it('flips an axis value RTL for a function', () => {
     // Arrange
-    const offsetFn: OffsetFunction = () => [10, 10];
-    const flippedFn = applyRtlToOffset(offsetFn) as OffsetFunction;
+    const offsetFn: PopperOffsetFunction = () => [10, 10];
+    const flippedFn = applyRtlToOffset(offsetFn) as PopperOffsetFunction;
 
     // Assert
-    expect(flippedFn(({} as unknown) as OffsetFunctionParam)).toEqual([-10, 10]);
+    expect(flippedFn(({} as unknown) as PopperOffsetFunctionParam)).toEqual([-10, 10]);
   });
 });

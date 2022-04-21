@@ -1,15 +1,27 @@
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
 
-export type OffsetFunctionParam = {
-  popper: PopperJs.Rect;
-  reference: PopperJs.Rect;
-  placement: PopperJs.Placement;
+type Rect = {
+  width: number;
+  height: number;
+  x: number;
+  y: number;
 };
 
-export type OffsetFunction = (param: OffsetFunctionParam) => [number | null | undefined, number | null | undefined];
+export type OffsetFunctionParam = {
+  positioned: Rect;
+  target: Rect;
+  position: Position;
+  alignment?: Alignment;
+};
 
-export type Offset = OffsetFunction | [number | null | undefined, number | null | undefined];
+export type OffsetObject = { crossAxis?: number; mainAxis: number };
+
+export type OffsetShorthand = number;
+
+export type OffsetFunction = (param: OffsetFunctionParam) => OffsetObject | OffsetShorthand;
+
+export type Offset = OffsetFunction | OffsetObject | OffsetShorthand;
 
 export type Position = 'above' | 'below' | 'before' | 'after';
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
@@ -18,9 +30,9 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
-export type PopperRefHandle = {
+export type PositioningImperativeRef = {
   /**
-   * Updates the position of the popper imperatively.
+   * Updates the position imperatively.
    * Useful when the position of the target changes from other factors than scrolling of window resize.
    */
   updatePosition: () => void;
@@ -29,19 +41,19 @@ export type PopperRefHandle = {
    * Sets the target and updates positioning imperatively.
    * Useful for avoiding double renders with the target option.
    */
-  setTarget: (target: HTMLElement | PopperVirtualElement) => void;
+  setTarget: (target: HTMLElement | PositioningVirtualElement) => void;
 };
 
-export type PopperVirtualElement = PopperJs.VirtualElement;
+export type PositioningVirtualElement = PopperJs.VirtualElement;
 
-export interface PopperOptions {
+export interface PositioningOptions {
   /** Alignment for the component. Only has an effect if used with the @see position option */
   align?: Alignment;
 
-  /** The element which will define the boundaries of the popper position for the flip behavior. */
+  /** The element which will define the boundaries of the positioned element for the flip behavior. */
   flipBoundary?: Boundary;
 
-  /** The element which will define the boundaries of the popper position for the overflow behavior. */
+  /** The element which will define the boundaries of the positioned element for the overflow behavior. */
   overflowBoundary?: Boundary;
 
   /**
@@ -53,13 +65,13 @@ export interface PopperOptions {
   position?: Position;
 
   /**
-   * Enables the Popper box to position itself in 'fixed' mode (default value is position: 'absolute')
+   * Enables the position element to be positioned with 'fixed' (default value is position: 'absolute')
    * @default false
    */
   positionFixed?: boolean;
 
   /**
-   * Lets you displace a popper element from its reference element.
+   * Lets you displace a positioned element from its reference element.
    * This can be useful if you need to apply some margin between them or if you need to fine tune the
    * position according to some custom logic.
    */
@@ -72,7 +84,7 @@ export interface PopperOptions {
   arrowPadding?: number;
 
   /**
-   * Applies max-height and max-width on popper to fit it within the available space in viewport.
+   * Applies max-height and max-width on the positioned element to fit it within the available space in viewport.
    * true enables this for both width and height when overflow happens.
    * 'always' applies `max-height`/`max-width` regardless of overflow.
    * 'height' applies `max-height` when overflow happens, and 'width' for `max-width`
@@ -92,7 +104,7 @@ export interface PopperOptions {
   pinned?: boolean;
 
   /**
-   * When the reference element or the viewport is outside viewport allows a popper element to be fully in viewport.
+   * When the reference element or the viewport is outside viewport allows a positioned element to be fully in viewport.
    * "all" enables this behavior for all axis.
    */
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -101,14 +113,14 @@ export interface PopperOptions {
 
 export interface PositioningProps
   // "positionFixed" & "unstable_disableTether" are not exported as public API (yet)
-  extends Omit<PopperOptions, 'positionFixed' | 'unstable_disableTether'> {
+  extends Omit<PositioningOptions, 'positionFixed' | 'unstable_disableTether'> {
   /** An imperative handle to Popper methods. */
-  popperRef?: React.Ref<PopperRefHandle>;
+  positioningRef?: React.Ref<PositioningImperativeRef>;
 
   /**
-   * Manual override for popper target. Useful for scenarios where a component accepts user prop to override target
+   * Manual override for the target element. Useful for scenarios where a component accepts user prop to override target
    */
-  target?: HTMLElement | PopperVirtualElement | null;
+  target?: HTMLElement | PositioningVirtualElement | null;
 }
 
 export type PositioningShorthandValue =

@@ -7,10 +7,10 @@ import {
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import {
-  usePopper,
+  usePositioning,
   resolvePositioningShorthand,
   mergeArrowOffset,
-  usePopperMouseTarget,
+  useMouseTarget,
 } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -26,7 +26,7 @@ import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.ty
  * @param props - props from this instance of Popover
  */
 export const usePopover_unstable = (props: PopoverProps): PopoverState => {
-  const [contextTarget, setContextTarget] = usePopperMouseTarget();
+  const [contextTarget, setContextTarget] = useMouseTarget();
   const initialState = {
     size: 'medium',
     contextTarget,
@@ -65,36 +65,36 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     [setOpen, open],
   );
 
-  const popperRefs = usePopoverRefs(initialState);
+  const positioningRefs = usePopoverRefs(initialState);
 
   const { targetDocument } = useFluent();
   useOnClickOutside({
     contains: elementContains,
     element: targetDocument,
     callback: ev => setOpen(ev, false),
-    refs: [popperRefs.triggerRef, popperRefs.contentRef],
+    refs: [positioningRefs.triggerRef, positioningRefs.contentRef],
     disabled: !open,
   });
   useOnScrollOutside({
     contains: elementContains,
     element: targetDocument,
     callback: ev => setOpen(ev, false),
-    refs: [popperRefs.triggerRef, popperRefs.contentRef],
+    refs: [positioningRefs.triggerRef, positioningRefs.contentRef],
     disabled: !open || !initialState.openOnContext, // only close on scroll for context
   });
 
   const { findFirstFocusable } = useFocusFinders();
 
   React.useEffect(() => {
-    if (open && popperRefs.contentRef.current) {
-      const firstFocusable = findFirstFocusable(popperRefs.contentRef.current);
+    if (open && positioningRefs.contentRef.current) {
+      const firstFocusable = findFirstFocusable(positioningRefs.contentRef.current);
       firstFocusable?.focus();
     }
-  }, [findFirstFocusable, open, popperRefs.contentRef]);
+  }, [findFirstFocusable, open, positioningRefs.contentRef]);
 
   return {
     ...initialState,
-    ...popperRefs,
+    ...positioningRefs,
     popoverTrigger,
     popoverSurface,
     open,
@@ -169,7 +169,7 @@ function usePopoverRefs(
     popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeights[state.size]);
   }
 
-  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePopper(popperOptions);
+  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePositioning(popperOptions);
 
   return {
     triggerRef,

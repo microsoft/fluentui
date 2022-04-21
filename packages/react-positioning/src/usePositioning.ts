@@ -13,7 +13,8 @@ import {
   useCallbackRef,
   getBasePlacement,
 } from './utils/index';
-import type { PopperVirtualElement, PopperOptions, PositioningProps } from './types';
+import type { PositioningVirtualElement, PositioningOptions, PositioningProps } from './types';
+import { getPopperOffset } from './utils/getPopperOffset';
 
 type PopperInstance = PopperJs.Instance & { isFirstRun?: boolean };
 
@@ -59,7 +60,7 @@ function hasAutofocusFilter(node: Node) {
  * A callback is used there intentionally as some of Popper.js modifiers require DOM nodes (targer, container, arrow)
  * that can't be resolved properly during an initial rendering.
  */
-function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: React.MutableRefObject<string>) {
+function usePopperOptions(options: PositioningOptions, popperOriginalPositionRef: React.MutableRefObject<string>) {
   const {
     align,
     arrowPadding,
@@ -84,7 +85,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
       offset
         ? {
             name: 'offset',
-            options: { offset: isRtl ? applyRtlToOffset(offset) : offset },
+            options: { offset: isRtl ? applyRtlToOffset(getPopperOffset(offset)) : getPopperOffset(offset) },
           }
         : null,
     [offset, isRtl],
@@ -284,7 +285,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
  * - contains a specific to React fix related to initial positioning when containers have components with managed focus
  *   to avoid focus jumps
  */
-export function usePopper(
+export function usePositioning(
   options: UsePopperOptions = {},
 ): {
   // React refs are supposed to be contravariant
@@ -370,15 +371,19 @@ export function usePopper(
   const arrowRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
 
   // Stores external target from options.target or setTarget
-  const overrideTargetRef = useCallbackRef<HTMLElement | PopperVirtualElement | null>(null, handlePopperUpdate, true);
+  const overrideTargetRef = useCallbackRef<HTMLElement | PositioningVirtualElement | null>(
+    null,
+    handlePopperUpdate,
+    true,
+  );
 
   React.useImperativeHandle(
-    options.popperRef,
+    options.positioningRef,
     () => ({
       updatePosition: () => {
         popperInstanceRef.current?.update();
       },
-      setTarget: (target: HTMLElement | PopperVirtualElement) => {
+      setTarget: (target: HTMLElement | PositioningVirtualElement) => {
         if (options.target && process.env.NODE_ENV !== 'production') {
           const err = new Error();
           // eslint-disable-next-line no-console

@@ -1,4 +1,4 @@
-import type { Offset } from '../types';
+import type { Offset, OffsetObject } from '../types';
 
 /**
  * Generally when adding an arrow to popper, it's necessary to offset the position of the popper by the
@@ -9,33 +9,28 @@ import type { Offset } from '../types';
  * @returns User offset augmented with arrow height
  */
 export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset {
-  let offsetWithArrow = userOffset;
-  if (!userOffset) {
-    return [0, arrowHeight];
+  if (typeof userOffset === 'number') {
+    return addArrowOffset(userOffset, arrowHeight);
   }
 
-  if (Array.isArray(offsetWithArrow)) {
-    setArrowOffset(offsetWithArrow, arrowHeight);
-    return offsetWithArrow;
+  if (typeof userOffset === 'object' && userOffset !== null) {
+    return addArrowOffset(userOffset, arrowHeight);
   }
 
-  if (typeof offsetWithArrow === 'function') {
-    const userOffsetFn = offsetWithArrow;
-    offsetWithArrow = offsetParams => {
-      const offset = userOffsetFn(offsetParams);
-      setArrowOffset(offset, arrowHeight);
-      return offset;
+  if (typeof userOffset === 'function') {
+    return offsetParams => {
+      const offset = userOffset(offsetParams);
+      return addArrowOffset(offset, arrowHeight);
     };
   }
 
-  // This should never happen
-  return [0, 0] as never;
+  return { mainAxis: arrowHeight };
 }
 
-const setArrowOffset = (offset: [number | null | undefined, number | null | undefined], arrowHeight: number) => {
-  if (offset[1] !== null && offset[1] !== undefined) {
-    offset[1] += arrowHeight;
-  } else {
-    offset[1] = arrowHeight;
+const addArrowOffset = (offset: OffsetObject | number, arrowHeight: number): OffsetObject => {
+  if (typeof offset === 'number') {
+    return { mainAxis: offset + arrowHeight };
   }
+
+  return { ...offset, mainAxis: (offset.mainAxis ?? 0) + arrowHeight };
 };

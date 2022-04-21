@@ -1,10 +1,10 @@
-import type { PopperVirtualElement } from './types';
+import type { PositioningVirtualElement } from './types';
 
 /**
  * Creates a virtual element based on the position of a click event
  * Can be used as a target for popper in scenarios such as context menus
  */
-export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVirtualElement {
+export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement {
   const left = nativeEvent.clientX;
   const top = nativeEvent.clientY;
   const right = left + 1;

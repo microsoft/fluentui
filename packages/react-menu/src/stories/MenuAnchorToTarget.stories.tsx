@@ -3,11 +3,11 @@ import * as React from 'react';
 import { Menu, MenuList, MenuItem, MenuPopover, MenuProps } from '../index';
 
 import { Button } from '@fluentui/react-button';
-import { PopperRefHandle } from '@fluentui/react-positioning';
+import { PositioningImperativeRef } from '@fluentui/react-positioning';
 
 export const AnchorToCustomTarget = () => {
   const buttonRef = React.useRef<HTMLButtonElement>(null);
-  const popperRef = React.useRef<PopperRefHandle>(null);
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const [open, setOpen] = React.useState(false);
   const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
     setOpen(data.open);
@@ -15,9 +15,9 @@ export const AnchorToCustomTarget = () => {
 
   React.useEffect(() => {
     if (buttonRef.current) {
-      popperRef.current?.setTarget(buttonRef.current);
+      positioningRef.current?.setTarget(buttonRef.current);
     }
-  }, [buttonRef, popperRef]);
+  }, [buttonRef, positioningRef]);
 
   return (
     <>
@@ -25,7 +25,7 @@ export const AnchorToCustomTarget = () => {
       <Button ref={buttonRef} onClick={() => setOpen(s => !s)}>
         Custom target
       </Button>
-      <Menu open={open} onOpenChange={onOpenChange} positioning={{ popperRef }}>
+      <Menu open={open} onOpenChange={onOpenChange} positioning={{ positioningRef }}>
         <MenuPopover>
           <MenuList>
             <MenuItem>New </MenuItem>

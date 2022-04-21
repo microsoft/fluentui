@@ -11,14 +11,14 @@ import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
-import type { PopperVirtualElement } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { usePopperMouseTarget } from '@fluentui/react-positioning';
+import type { useMouseTarget } from '@fluentui/react-positioning';
 
 // @public (undocumented)
 export const arrowHeights: Record<PopoverSize, number>;
@@ -55,8 +55,8 @@ export type PopoverState = PopoverCommons & Pick<PopoverProps, 'children'> & {
     triggerRef: React_2.MutableRefObject<HTMLElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
-    contextTarget: PopperVirtualElement | undefined;
-    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
+    contextTarget: PositioningVirtualElement | undefined;
+    setContextTarget: ReturnType<typeof useMouseTarget>[1];
     size: NonNullable<PopoverProps['size']>;
     popoverTrigger: React_2.ReactElement | undefined;
     popoverSurface: React_2.ReactElement | undefined;

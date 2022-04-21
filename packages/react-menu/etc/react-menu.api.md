@@ -4,17 +4,17 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { usePopperMouseTarget } from '@fluentui/react-positioning';
+import type { useMouseTarget } from '@fluentui/react-positioning';
 
 // @public
 export const Menu: React_2.FC<MenuProps>;
@@ -300,8 +300,8 @@ export type MenuState = MenuCommons & ComponentState<MenuSlots> & {
     triggerRef: React_2.MutableRefObject<HTMLElement>;
     triggerId: string;
     isSubmenu: boolean;
-    contextTarget: ReturnType<typeof usePopperMouseTarget>[0];
-    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
+    contextTarget: ReturnType<typeof useMouseTarget>[0];
+    setContextTarget: ReturnType<typeof useMouseTarget>[1];
 };
 
 // @public
