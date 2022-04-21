@@ -1,37 +1,63 @@
 import { mergeArrowOffset } from './mergeArrowOffset';
-import type { Offset } from '../types';
+import type { OffsetFunction, OffsetObject } from '../types';
 
 describe('mergeArrowOffset', () => {
   it.each([null, undefined])('should return arrow offset when user offset is %s', userOffset => {
-    expect(mergeArrowOffset(userOffset, 1)).toEqual([0, 1]);
+    expect(mergeArrowOffset(userOffset, 1)).toEqual({ mainAxis: 1 });
   });
 
-  it.each([
+  const cases = [
     [
-      [0, 0],
-      [0, 1],
+      { crossAxis: 0, mainAxis: 0 },
+      { crossAxis: 0, mainAxis: 1 },
     ],
     [
-      [0, 1],
-      [0, 2],
+      { crossAxis: 0, mainAxis: 1 },
+      { crossAxis: 0, mainAxis: 2 },
     ],
     [
-      [0, undefined],
-      [0, 1],
+      { crossAxis: 0, mainAxis: undefined },
+      { crossAxis: 0, mainAxis: 1 },
     ],
     [
-      [0, null],
-      [0, 1],
+      { crossAxis: 0, mainAxis: null },
+      { crossAxis: 0, mainAxis: 1 },
     ],
     [
-      [undefined, 0],
-      [undefined, 1],
+      { crossAxis: undefined, mainAxis: 0 },
+      { crossAxis: undefined, mainAxis: 1 },
     ],
     [
-      [null, 0],
-      [null, 1],
+      { crossAxis: null, mainAxis: 0 },
+      { crossAxis: null, mainAxis: 1 },
     ],
-  ])('should return arrow offset when user offset is %s', (userOffset, expectedOffset) => {
-    expect(mergeArrowOffset((userOffset as unknown) as Offset, 1)).toEqual(expectedOffset);
+  ] as const;
+
+  it.each(cases)('should return arrow offset when user offset object is %s', (userOffset, expectedOffset) => {
+    const mergedOffsetObject = mergeArrowOffset(userOffset as OffsetObject, 1) as OffsetObject;
+
+    expect(mergedOffsetObject).toEqual(expectedOffset);
+  });
+
+  it.each(cases)('should return arrow offset when user offset function returns %s', (userOffset, expectedOffset) => {
+    const offsetFn = () => userOffset;
+    const mergedOffsetFn = mergeArrowOffset(offsetFn as OffsetFunction, 1) as OffsetFunction;
+
+    expect(
+      mergedOffsetFn({
+        positioned: { height: 0, x: 0, y: 0, width: 0 },
+        position: 'above',
+        alignment: 'start',
+        target: { height: 0, x: 0, y: 0, width: 0 },
+      }),
+    ).toEqual(expectedOffset);
+  });
+
+  it.each(cases)('should return arrow offset when user offset number shorthand is %s', (userOffset, expectedOffset) => {
+    const shorthand = userOffset.mainAxis;
+    const mergedOffset = mergeArrowOffset(shorthand, 1) as OffsetObject;
+
+    const expectedOffsetWithoutCrossAxis = { mainAxis: expectedOffset.mainAxis };
+    expect(mergedOffset).toEqual(expectedOffsetWithoutCrossAxis);
   });
 });
