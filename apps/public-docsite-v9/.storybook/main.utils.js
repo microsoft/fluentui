@@ -14,7 +14,7 @@ function getVnextStories() {
 
   const dependencies = /** @type {Record<string,string>} */ (packageJson.dependencies);
 
-  return Object.keys(dependencies)
+  return Object.keys({ ...dependencies, '@fluentui/react-components': '' })
     .filter(pkgName => pkgName.startsWith('@fluentui/'))
     .map(pkgName => '../../../packages/' + pkgName.replace('@fluentui/', '') + '/src/**/*.stories.@(ts|tsx|mdx)');
 }
