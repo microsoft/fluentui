@@ -166,24 +166,24 @@ function useSubMenuState(
   const [expandedMenuItemKey, setExpandedMenuItemKey] = React.useState<string>();
   const [submenuTarget, setSubmenuTarget] = React.useState<HTMLElement>();
   /** True if the menu was expanded by mouse click OR hover (as opposed to by keyboard) */
-  const [expandedByMouseClick, setExpandedByMouseClick] = React.useState<boolean>();
+  const [shouldFocusOnContainer, setShouldFocusOnContainer] = React.useState<boolean>();
   const subMenuId = useId(COMPONENT_NAME, id);
 
   const closeSubMenu = React.useCallback(() => {
-    setExpandedByMouseClick(undefined);
+    setShouldFocusOnContainer(undefined);
     setExpandedMenuItemKey(undefined);
     setSubmenuTarget(undefined);
   }, []);
 
   const openSubMenu = React.useCallback(
-    ({ key: submenuItemKey }: IContextualMenuItem, target: HTMLElement, openedByMouseClick?: boolean) => {
+    ({ key: submenuItemKey }: IContextualMenuItem, target: HTMLElement, focusContainer?: boolean) => {
       if (expandedMenuItemKey === submenuItemKey) {
         return;
       }
 
       target.focus();
 
-      setExpandedByMouseClick(openedByMouseClick);
+      setShouldFocusOnContainer(focusContainer);
       setExpandedMenuItemKey(submenuItemKey);
       setSubmenuTarget(target);
     },
@@ -210,7 +210,7 @@ function useSubMenuState(
         isSubMenu: true,
         id: subMenuId,
         shouldFocusOnMount: true,
-        shouldFocusOnContainer: expandedByMouseClick,
+        shouldFocusOnContainer,
         directionalHint: getRTL(theme) ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
         className,
         gapSpace: 0,
