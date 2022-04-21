@@ -17,13 +17,13 @@ function getVnextStories() {
     .map(pkgName => {
       const name = pkgName.replace('@fluentui/', '');
       const storiesGlob = '/src/**/*.stories.@(ts|tsx|mdx)';
-      const pkgUnmigratedPath = '../../' + name;
-      const pkgMigratedPath = '../' + name;
+      const pkgUnmigratedPath = `../../${name}`;
+      const pkgMigratedPath = `../'${name}`;
 
       if (fs.existsSync(pkgUnmigratedPath + '/package.json')) {
-        return '../' + pkgUnmigratedPath + storiesGlob;
+        return `../${pkgUnmigratedPath}${storiesGlob}`;
       } else {
-        return '../' + pkgMigratedPath + storiesGlob;
+        return `../${pkgMigratedPath}${storiesGlob}`;
       }
     });
 }
