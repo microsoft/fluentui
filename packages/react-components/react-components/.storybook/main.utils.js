@@ -15,10 +15,10 @@ function getVnextStories() {
   return Object.keys(dependencies)
     .filter(pkgName => pkgName.startsWith('@fluentui/'))
     .map(pkgName => {
-      const package = pkgName.replace('@fluentui/', '');
+      const name = pkgName.replace('@fluentui/', '');
       const storiesGlob = '/src/**/*.stories.@(ts|tsx|mdx)';
-      const pkgUnmigratedPath = '../../' + package;
-      const pkgMigratedPath = '../' + package;
+      const pkgUnmigratedPath = '../../' + name;
+      const pkgMigratedPath = '../' + name;
 
       if (fs.existsSync(pkgUnmigratedPath + '/package.json')) {
         return '../' + pkgUnmigratedPath + storiesGlob;
