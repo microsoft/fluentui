@@ -887,6 +887,70 @@ export type StrokeWidthTokens = {
   strokeWidthThickest: string;
 };
 
+export type SpacingTokens = {
+  none: string;
+  xxs: string;
+  xs: string;
+  sNudge: string;
+  s: string;
+  mNudge: string;
+  m: string;
+  l: string;
+  xl: string;
+  xxl: string;
+  xxxl: string;
+};
+
+export type HorizontalSpacingTokens = {
+  spacingHorizontalNone: string;
+  spacingHorizontalXXS: string;
+  spacingHorizontalXS: string;
+  spacingHorizontalSNudge: string;
+  spacingHorizontalS: string;
+  spacingHorizontalMNudge: string;
+  spacingHorizontalM: string;
+  spacingHorizontalL: string;
+  spacingHorizontalXL: string;
+  spacingHorizontalXXL: string;
+  spacingHorizontalXXXl: string;
+};
+
+export type VerticalSpacingTokens = {
+  spacingVerticalNone: string;
+  spacingVerticalXXS: string;
+  spacingVerticalXS: string;
+  spacingVerticalSNudge: string;
+  spacingVerticalS: string;
+  spacingVerticalMNudge: string;
+  spacingVerticalM: string;
+  spacingVerticalL: string;
+  spacingVerticalXL: string;
+  spacingVerticalXXL: string;
+  spacingVerticalXXXl: string;
+};
+
+export type DurationTokens = {
+  durationUltraFast: string;
+  durationFaster: string;
+  durationFast: string;
+  durationNormal: string;
+  durationSlow: string;
+  durationSlower: string;
+  durationUltraSlow: string;
+};
+
+export type CurveTokens = {
+  curveAccelerateMax: string;
+  curveAccelerateMid: string;
+  curveAccelerateMin: string;
+  curveDecelerateMax: string;
+  curveDecelerateMid: string;
+  curveDecelerateMin: string;
+  curveEasyEaseMax: string;
+  curveEasyEase: string;
+  curveLinear: string;
+};
+
 /**
  * Design tokens for shadow levels
  */
@@ -969,6 +1033,10 @@ export type Theme = FontSizeTokens &
   LineHeightTokens &
   BorderRadiusTokens &
   StrokeWidthTokens &
+  HorizontalSpacingTokens &
+  VerticalSpacingTokens &
+  DurationTokens &
+  CurveTokens &
   ShadowTokens &
   ShadowBrandTokens &
   FontFamilyTokens &
