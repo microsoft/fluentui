@@ -16,22 +16,18 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'nowrap',
     flexShrink: 0,
-    position: 'relative',
+    flexWrap: 'nowrap',
     ...shorthands.overflow('hidden'),
+    position: 'relative',
   },
   horizontal: {
     alignItems: 'center',
     flexDirection: 'row',
-    minWidth: '0',
-    width: '100%',
   },
   vertical: {
-    flexDirection: 'column',
     alignItems: 'flex-start',
-    minHeight: '0',
-    height: '100%',
+    flexDirection: 'column',
   },
 });
 
