@@ -239,9 +239,14 @@ export const FilterScenario: React.FunctionComponent = () => {
   const filterInputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
-    filterInputRef.current?.addEventListener('keydown', handleFilterInputKeyDown);
+    const filterInput = filterInputRef.current;
+    if (filterInput) {
+      filterInput.addEventListener('keydown', handleFilterInputKeyDown);
+    }
     return () => {
-      filterInputRef.current?.removeEventListener('keydown', handleFilterInputKeyDown);
+      if (filterInput) {
+        filterInput.removeEventListener('keydown', handleFilterInputKeyDown);
+      }
     };
   }, []);
 
@@ -280,7 +285,7 @@ export const FilterScenario: React.FunctionComponent = () => {
         <Button onClick={handleClearButtonClick}>Clear filter</Button>
         <MenuList id="countriesListbox" role="listbox">
           {countries.filter(filterCountry).map((country, index) => (
-            <MenuItem id={`countryItem${index}`} role="option">
+            <MenuItem key={index} id={`countryItem${index}`} role="option">
               {country}
             </MenuItem>
           ))}
