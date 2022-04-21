@@ -10,13 +10,14 @@ export function createVirtualElementFromClick(nativeEvent: MouseEvent): Position
   const right = left + 1;
   const bottom = top + 1;
 
-  function getBoundingClientRect(): ClientRect {
+  function getBoundingClientRect() {
     return {
       left,
       top,
       right,
       bottom,
-
+      x: left,
+      y: top,
       height: 1,
       width: 1,
     };

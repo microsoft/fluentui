@@ -1,4 +1,3 @@
-import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
 
 type Rect = {
@@ -28,7 +27,7 @@ export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 
 export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
 
-export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
+export type Boundary = HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 
 export type PositioningImperativeRef = {
   /**
@@ -44,7 +43,19 @@ export type PositioningImperativeRef = {
   setTarget: (target: HTMLElement | PositioningVirtualElement) => void;
 };
 
-export type PositioningVirtualElement = PopperJs.VirtualElement;
+export type PositioningVirtualElement = {
+  getBoundingClientRect: () => {
+    x: number;
+    y: number;
+    top: number;
+    left: number;
+    bottom: number;
+    right: number;
+    width: number;
+    height: number;
+  };
+  contextElement?: Element;
+};
 
 export interface PositioningOptions {
   /** Alignment for the component. Only has an effect if used with the @see position option */

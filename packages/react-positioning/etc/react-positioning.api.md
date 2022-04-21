@@ -15,7 +15,7 @@ export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
 
 // @public (undocumented)
-export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
+export type Boundary = HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 
 // @public
 export function createArrowHeightStyles(arrowHeight: number): {
@@ -85,7 +85,19 @@ export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 'below' | 'below-start' | 'below-end' | 'before' | 'before-top' | 'before-bottom' | 'after' | 'after-top' | 'after-bottom';
 
 // @public (undocumented)
-export type PositioningVirtualElement = PopperJs.VirtualElement;
+export type PositioningVirtualElement = {
+    getBoundingClientRect: () => {
+        x: number;
+        y: number;
+        top: number;
+        left: number;
+        bottom: number;
+        right: number;
+        width: number;
+        height: number;
+    };
+    contextElement?: Element;
+};
 
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
