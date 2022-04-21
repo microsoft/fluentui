@@ -8,6 +8,9 @@ import {
   serializeJson,
   WorkspaceConfiguration,
   parseJson,
+  getProjects,
+  joinPathFragments,
+  ProjectConfiguration,
 } from '@nrwl/devkit';
 
 import generator from './index';
@@ -118,6 +121,14 @@ describe('move-packages generator', () => {
       expect(tree.exists(`packages/${options.name}/tsconfig.json`)).toBeFalsy();
       expect(tree.exists(`packages/${options.name}/.babelrc.json`)).toBeFalsy();
       expect(tree.exists(`packages/${options.name}/config/tests.js`)).toBeFalsy();
+    });
+    it('should update storybook main.js module.exports type to the new relative path', async () => {
+      await generator(tree, options);
+      const newPath = '../../../../.storybook/main';
+      const project = getProjects(tree).get(options.name as string) as ProjectConfiguration;
+      const storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
+      const storybookMainJsFile = tree.read(storybookMainJsPath, 'utf8') as string;
+      expect(storybookMainJsFile.split(' ').filter(s => s.includes(newPath))).toHaveLength(2);
     });
   });
 
@@ -264,6 +275,24 @@ function setupDummyPackage(
       });
     });
   `,
+  );
+  tree.write(
+    `${paths.root}/.storybook/main.js`,
+    `const rootMain = require('../../../.storybook/main');
+
+      module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+        ...rootMain,
+        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
+        addons: [...rootMain.addons],
+        webpackFinal: (config, options) => {
+          const localConfig = { ...rootMain.webpackFinal(config, options) };
+
+          // add your own webpack tweaks if needed
+
+          return localConfig;
+        },
+      });
+      `,
   );
 
   addProjectConfiguration(tree, pkgName, {
