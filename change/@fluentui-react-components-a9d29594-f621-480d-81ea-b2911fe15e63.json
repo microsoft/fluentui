@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Reexport react-spinner in react-components",
+  "packageName": "@fluentui/react-components",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
