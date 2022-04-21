@@ -54,6 +54,24 @@ const useRootStyles = makeStyles({
     },
   },
 
+  // High contrast styles
+  highContrast: {
+    '@media (forced-colors: active)': {
+      ':focus': {
+        ...shorthands.borderColor('ButtonText'),
+      },
+
+      ':hover': {
+        ...shorthands.borderColor('Highlight'),
+        color: 'Highlight',
+      },
+
+      ':hover:active': {
+        color: 'Highlight',
+      },
+    },
+  },
+
   // Block styles
   block: {
     maxWidth: '100%',
@@ -200,6 +218,28 @@ const useRootDisabledStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
 
       cursor: 'not-allowed',
+    },
+  },
+
+  // High contrast styles
+  highContrast: {
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('GrayText'),
+      color: 'GrayText',
+
+      ':focus': {
+        ...shorthands.borderColor('GrayText'),
+      },
+
+      ':hover': {
+        ...shorthands.borderColor('GrayText'),
+        color: 'GrayText',
+      },
+
+      ':hover:active': {
+        ...shorthands.borderColor('GrayText'),
+        color: 'GrayText',
+      },
     },
   },
 
@@ -374,6 +414,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
 
     // Root styles
     rootStyles.base,
+    rootStyles.highContrast,
     block && rootStyles.block,
     appearance && rootStyles[appearance],
     rootStyles[size],
@@ -381,6 +422,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
 
     // Disabled styles
     (disabled || disabledFocusable) && rootDisabledStyles.base,
+    (disabled || disabledFocusable) && rootDisabledStyles.highContrast,
     appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
 
     // Focus styles

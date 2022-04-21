@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Button: Stop applying active styles when mouse moves away while it is being held and ToggleButton: Fixing checked styles in High Contrast mode.",
+  "comment": "Button: Stop applying active styles when mouse moves away while it is being held and improving styles in High Contrast mode.",
   "packageName": "@fluentui/react-button",
   "email": "Humberto.Morimoto@microsoft.com",
   "dependentChangeType": "patch"

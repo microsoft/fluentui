@@ -40,6 +40,23 @@ const useRootStyles = makeStyles({
     },
   },
 
+  // High contrast styles
+  highContrast: {
+    '@media (forced-colors: active)': {
+      ':hover': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: 'Highlight',
+        },
+      },
+
+      ':hover:active': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: 'Highlight',
+        },
+      },
+    },
+  },
+
   // Appearance variations
   outline: {
     /* No styles */
@@ -209,6 +226,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
 
     // Root styles
     rootStyles.base,
+    rootStyles.highContrast,
     appearance && rootStyles[appearance],
     rootStyles[size],
 

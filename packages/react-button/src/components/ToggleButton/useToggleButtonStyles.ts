@@ -24,28 +24,27 @@ const useCheckedStyles = makeStyles({
 
     ...shorthands.borderWidth(tokens.strokeWidthThin),
 
-    '@media (forced-colors: active)': {
-      backgroundColor: 'Highlight',
-      forcedColorAdjust: 'none',
-    },
-
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
       color: tokens.colorNeutralForeground1,
-
-      '@media (forced-colors: active)': {
-        backgroundColor: 'Highlight',
-      },
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
       color: tokens.colorNeutralForeground1,
+    },
+  },
 
-      '@media (forced-colors: active)': {
-        backgroundColor: 'Highlight',
+  // High contrast styles
+  highContrast: {
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('Highlight'),
+      color: 'Highlight',
+
+      ':focus': {
+        ...shorthands.borderColor('Highlight'),
       },
     },
   },
@@ -67,28 +66,16 @@ const useCheckedStyles = makeStyles({
     ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForegroundOnBrand,
 
-    '@media (forced-colors: active)': {
-      color: 'HighlightText',
-    },
-
     ':hover': {
       backgroundColor: tokens.colorBrandBackgroundHover,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundOnBrand,
-
-      '@media (forced-colors: active)': {
-        color: 'HighlightText',
-      },
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorBrandBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundOnBrand,
-
-      '@media (forced-colors: active)': {
-        color: 'HighlightText',
-      },
     },
   },
   subtle: {
@@ -96,28 +83,16 @@ const useCheckedStyles = makeStyles({
     ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForeground2BrandSelected,
 
-    '@media (forced-colors: active)': {
-      color: 'HighlightText',
-    },
-
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandHover,
-
-      '@media (forced-colors: active)': {
-        color: 'HighlightText',
-      },
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandPressed,
-
-      '@media (forced-colors: active)': {
-        color: 'HighlightText',
-      },
     },
   },
   transparent: {
@@ -125,28 +100,16 @@ const useCheckedStyles = makeStyles({
     ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForeground2BrandSelected,
 
-    '@media (forced-colors: active)': {
-      color: 'HighlightText',
-    },
-
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandHover,
-
-      '@media (forced-colors: active)': {
-        color: 'HighlightText',
-      },
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandPressed,
-
-      '@media (forced-colors: active)': {
-        color: 'HighlightText',
-      },
     },
   },
 });
@@ -227,6 +190,7 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
 
     // Checked styles
     checked && checkedStyles.base,
+    checked && checkedStyles.highContrast,
     appearance && checked && checkedStyles[appearance],
 
     // Disabled styles

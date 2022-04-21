@@ -29,20 +29,18 @@ const useFocusStyles = makeStyles({
 });
 
 const useRootStyles = makeStyles({
-  // Base rootStyles
+  // Base styles
   base: {
     display: 'inline-flex',
     justifyContent: 'stretch',
     position: 'relative',
     verticalAlign: 'middle',
 
-    // Use classnames to increase specificy of rootStyles and avoid collisions.
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0,
     },
 
-    // Use classnames to increase specificy of rootStyles and avoid collisions.
     [`& .${splitButtonClassNames.menuButton}`]: {
       borderLeftWidth: 0,
       borderTopLeftRadius: 0,
@@ -50,17 +48,16 @@ const useRootStyles = makeStyles({
     },
   },
 
-  // Block rootStyles
+  // Block styles
   block: {
     width: '100%',
   },
 
   // Appearance variations
   outline: {
-    /* No rootStyles */
+    /* No styles */
   },
   primary: {
-    // Use classnames to increase specificy of rootStyles and avoid collisions.
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
       borderRightColor: tokens.colorNeutralForegroundInverted,
     },
@@ -78,7 +75,6 @@ const useRootStyles = makeStyles({
     },
   },
   subtle: {
-    // Use classnames to increase specificy of rootStyles and avoid collisions.
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
       borderRightColor: tokens.colorNeutralStroke1Hover,
     },
@@ -96,7 +92,6 @@ const useRootStyles = makeStyles({
     },
   },
   transparent: {
-    // Use classnames to increase specificy of rootStyles and avoid collisions.
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
       borderRightColor: tokens.colorNeutralStroke1Hover,
     },
@@ -119,9 +114,8 @@ const useRootStyles = makeStyles({
   rounded: {},
   square: {},
 
-  // Disabled rootStyles
+  // Disabled styles
   disabled: {
-    // Use classnames to increase specificy of rootStyles and avoid collisions.
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
       borderRightColor: tokens.colorNeutralStrokeDisabled,
     },
@@ -135,6 +129,27 @@ const useRootStyles = makeStyles({
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: tokens.colorNeutralStrokeDisabled,
+      },
+    },
+  },
+
+  // Disabled high contrast styles
+  disabledHighContrast: {
+    '@media (forced-colors: active)': {
+      [`& .${splitButtonClassNames.primaryActionButton}`]: {
+        borderRightColor: 'GrayText',
+      },
+
+      ':hover': {
+        [`& .${splitButtonClassNames.primaryActionButton}`]: {
+          borderRightColor: 'GrayText',
+        },
+      },
+
+      ':hover:active': {
+        [`& .${splitButtonClassNames.primaryActionButton}`]: {
+          borderRightColor: 'GrayText',
+        },
       },
     },
   },
@@ -158,6 +173,7 @@ export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitBut
     block && rootStyles.block,
     appearance && rootStyles[appearance],
     (disabled || disabledFocusable) && rootStyles.disabled,
+    (disabled || disabledFocusable) && rootStyles.disabledHighContrast,
     state.root.className,
   );
 
