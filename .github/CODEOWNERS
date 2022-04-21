@@ -162,7 +162,9 @@ packages/react-tooltip @microsoft/cxe-red @behowell @khmakoto
 packages/react-list @microsoft/teams-prg
 packages/react-toolbar @microsoft/teams-prg @chpalac @ling1726
 packages/react-portal-compat @microsoft/teams-prg
+#packages/react-alert @microsoft/teams-prg
 ## <%= NX-CODEOWNER-PLACEHOLDER %>
+
 
 ## Components
 packages/react @microsoft/cxe-red
