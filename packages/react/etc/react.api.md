@@ -5064,6 +5064,14 @@ export interface IDocumentCardActivityStyles {
 }
 
 // @public (undocumented)
+export interface IDocumentCardContext {
+    // (undocumented)
+    role?: string;
+    // (undocumented)
+    tabIndex?: number;
+}
+
+// @public (undocumented)
 export interface IDocumentCardDetails {
 }
 
