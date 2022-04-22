@@ -7,33 +7,33 @@ import type { Theme } from '@fluentui/theme';
 import { useEffect } from 'react';
 
 type GraphPath = readonly [windowId: string | undefined, id: number, theme: Theme | undefined];
-export type StylesClasMapping<TStyleSet extends { [key in keyof TStyleSet]: IStyle }> = {
+export type StylesClassMapping<TStyleSet extends { [key in keyof TStyleSet]: IStyle }> = {
   [key in keyof TStyleSet]: string;
 };
 type Graph<TStyleSet extends { [key in keyof TStyleSet]: IStyle }> = Map<
   string | undefined,
-  Map<number, Map<Theme | undefined, { classMap: StylesClasMapping<TStyleSet>; refCount: number }>>
+  Map<number, Map<Theme | undefined, { classMap: StylesClassMapping<TStyleSet>; refCount: number }>>
 >;
 
 const graphGet = <TStyleSet extends { [key in keyof TStyleSet]: IStyle }>(
   graphNode: Graph<TStyleSet>,
   [windowId, id, theme]: GraphPath,
-): StylesClasMapping<TStyleSet> | undefined => {
+): StylesClassMapping<TStyleSet> | undefined => {
   return graphNode.get(windowId)?.get(id)?.get(theme)?.classMap;
 };
 
 const graphSet = <TStyleSet extends { [key in keyof TStyleSet]: IStyle }>(
   graphNode: Graph<TStyleSet>,
   [windowId, id, theme]: GraphPath,
-  classMap: StylesClasMapping<TStyleSet>,
+  classMap: StylesClassMapping<TStyleSet>,
 ) => {
   const windowNode =
     graphNode.get(windowId) ??
-    new Map<number, Map<Theme | undefined, { classMap: StylesClasMapping<TStyleSet>; refCount: number }>>();
+    new Map<number, Map<Theme | undefined, { classMap: StylesClassMapping<TStyleSet>; refCount: number }>>();
   graphNode.set(windowId, windowNode);
 
   const idNode =
-    windowNode.get(id) ?? new Map<Theme | undefined, { classMap: StylesClasMapping<TStyleSet>; refCount: number }>();
+    windowNode.get(id) ?? new Map<Theme | undefined, { classMap: StylesClassMapping<TStyleSet>; refCount: number }>();
   windowNode.set(id, idNode);
 
   idNode.set(theme, { classMap, refCount: 0 });
@@ -95,7 +95,7 @@ type WindowWithId = Window & {
 export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle } = { [key: string]: IStyle }>(
   styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet),
   // eslint-disable-next-line deprecation/deprecation
-): (options?: UseStylesOptions) => StylesClasMapping<TStyleSet> {
+): (options?: UseStylesOptions) => StylesClassMapping<TStyleSet> {
   // Create graph of inputs to map to output.
   const graph: Graph<TStyleSet> = new Map();
   // Retain a dictionary of window ids we're tracking
@@ -114,7 +114,7 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
   };
 
   // eslint-disable-next-line deprecation/deprecation
-  return (options: UseStylesOptions = {}): StylesClasMapping<TStyleSet> => {
+  return (options: UseStylesOptions = {}): StylesClassMapping<TStyleSet> => {
     let { theme } = options;
     let winId: string | undefined;
     const win = useWindow() as WindowWithId | undefined;

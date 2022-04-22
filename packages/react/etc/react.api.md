@@ -9630,7 +9630,7 @@ export function makeStyles<TStyleSet extends {
     [key in keyof TStyleSet]: IStyle;
 } = {
     [key: string]: IStyle;
-}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => StylesClasMapping<TStyleSet>;
+}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => StylesClassMapping<TStyleSet>;
 
 export { mapEnumByName }
 
@@ -10657,7 +10657,7 @@ export { styled }
 export { StyleFunction }
 
 // @public (undocumented)
-export type StylesClasMapping<TStyleSet extends {
+export type StylesClassMapping<TStyleSet extends {
     [key in keyof TStyleSet]: IStyle;
 }> = {
     [key in keyof TStyleSet]: string;
