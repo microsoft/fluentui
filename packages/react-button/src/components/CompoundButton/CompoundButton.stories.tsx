@@ -11,6 +11,7 @@ export { Icon } from './stories/CompoundButtonIcon.stories';
 export { Size } from './stories/CompoundButtonSize.stories';
 export { Disabled } from './stories/CompoundButtonDisabled.stories';
 export { WithLongText } from './stories/CompoundButtonWithLongText.stories';
+export { AsToggleButton } from './stories/CompoundButtonAsToggleButton.stories';
 
 export default {
   title: 'Components/CompoundButton',

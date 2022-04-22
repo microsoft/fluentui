@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 20 Apr 2022 07:39:22 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Apr 2022 07:36:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.66.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.66.2)
+
+Thu, 21 Apr 2022 07:36:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.66.1..@fluentui/react_v8.66.2)
+
+### Patches
+
+- update contextmenu to focus submenu containers on click or hover ([PR #22577](https://github.com/microsoft/fluentui/pull/22577) by sarah.higley@microsoft.com)
 
 ## [8.66.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.66.1)
 

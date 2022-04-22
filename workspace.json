@@ -742,8 +742,8 @@
       "sourceRoot": "typings",
       "tags": ["platform:any"]
     },
-    "@fluentui/upgrade-examples-v8-v9": {
-      "root": "apps/upgrade-examples-v8-v9",
+    "@fluentui/public-docsite-v9": {
+      "root": "apps/public-docsite-v9",
       "projectType": "application",
       "implicitDependencies": []
     },

@@ -32,7 +32,7 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
     required: true,
     defaultProps: {
       children: <DefaultSvg />,
-     tabIndex,
+      tabIndex,
     },
   });
 

@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { MenuButtonProps, SplitButton } from '../../../index';
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 export const SizeMedium = () => {
   const [primaryActionButtonRef, setPrimaryActionButtonRef] = React.useState<
@@ -31,7 +33,7 @@ export const SizeMedium = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} icon={<CalendarMonthRegular />} size="medium">
+            <SplitButton menuButton={triggerProps} icon={<CalendarMonth />} size="medium">
               Medium with calendar icon
             </SplitButton>
           )}
@@ -56,7 +58,7 @@ export const SizeMedium = () => {
               <SplitButton
                 menuButton={triggerProps}
                 primaryActionButton={{ ref: setPrimaryActionButtonRef }}
-                icon={<CalendarMonthRegular />}
+                icon={<CalendarMonth />}
                 size="medium"
               />
             </Tooltip>

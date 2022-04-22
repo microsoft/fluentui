@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { ToggleButton } from '../../../ToggleButton';
 
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+
 export const Icon = () => (
   <>
-    <ToggleButton icon={<CalendarMonthRegular />}>With calendar icon before contents</ToggleButton>
-    <ToggleButton icon={<CalendarMonthRegular />} iconPosition="after">
+    <ToggleButton icon={<CalendarMonth />}>With calendar icon before contents</ToggleButton>
+    <ToggleButton icon={<CalendarMonth />} iconPosition="after">
       With calendar icon after contents
     </ToggleButton>
     <Tooltip content="With calendar icon only" relationship="label">
-      <ToggleButton icon={<CalendarMonthRegular />} aria-label="Icon only" />
+      <ToggleButton icon={<CalendarMonth />} aria-label="Icon only" />
     </Tooltip>
   </>
 );

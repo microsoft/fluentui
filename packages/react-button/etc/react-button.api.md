@@ -154,10 +154,13 @@ export const useSplitButton_unstable: (props: SplitButtonProps, ref: React_2.Ref
 export const useSplitButtonStyles_unstable: (state: SplitButtonState) => SplitButtonState;
 
 // @public
-export const useToggleButton_unstable: ({ checked, defaultChecked, ...props }: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonState;
+export const useToggleButton_unstable: (props: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonState;
 
 // @public (undocumented)
 export const useToggleButtonStyles_unstable: (state: ToggleButtonState) => ToggleButtonState;
+
+// @public (undocumented)
+export function useToggleState<TToggleButtonProps extends Pick<ToggleButtonProps, 'checked' | 'defaultChecked' | 'disabled' | 'disabledFocusable'>, TButtonState extends Pick<ButtonState, 'root'>, TToggleButtonState extends Pick<ToggleButtonState, 'checked' | 'root'>>(props: TToggleButtonProps, state: TButtonState): TToggleButtonState;
 
 // (No @packageDocumentation comment for this package)
 

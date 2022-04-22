@@ -33,9 +33,26 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2Pressed,
+      },
+    },
+  },
+
+  // High contrast styles
+  highContrast: {
+    '@media (forced-colors: active)': {
+      ':hover': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: 'Highlight',
+        },
+      },
+
+      ':hover:active': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: 'Highlight',
+        },
       },
     },
   },
@@ -55,7 +72,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundOnBrand,
       },
@@ -72,7 +89,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2BrandPressed,
       },
@@ -89,7 +106,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2BrandPressed,
       },
@@ -128,9 +145,30 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundDisabled,
+      },
+    },
+  },
+
+  // Disabled high contrast styles
+  disabledHighContrast: {
+    '@media (forced-colors: active)': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: 'GrayText',
+      },
+
+      ':hover': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: 'GrayText',
+        },
+      },
+
+      ':hover:active': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: 'GrayText',
+        },
       },
     },
   },
@@ -209,11 +247,13 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
 
     // Root styles
     rootStyles.base,
+    rootStyles.highContrast,
     appearance && rootStyles[appearance],
     rootStyles[size],
 
     // Disabled styles
     (disabled || disabledFocusable) && rootStyles.disabled,
+    (disabled || disabledFocusable) && rootStyles.disabledHighContrast,
 
     // Icon-only styles
     iconOnly && rootIconOnlyStyles[size],
