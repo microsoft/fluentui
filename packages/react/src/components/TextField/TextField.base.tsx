@@ -80,7 +80,7 @@ export class TextFieldBase
   private _latestValidateValue: string | undefined;
   private _hasWarnedNullValue: boolean | undefined;
   private _textElement = React.createRef<HTMLTextAreaElement | HTMLInputElement>();
-  private _classNames: IProcessedStyleSet<ITextFieldStyles>;
+  private _classNames!: IProcessedStyleSet<ITextFieldStyles>;
   private _async: Async;
   /** Most recent value from a change or input event, to help avoid processing events twice */
   private _lastChangeValue: string | undefined;
@@ -420,7 +420,10 @@ export class TextFieldBase
     });
   };
 
-  private _onRenderLabel = (props: ITextFieldProps): JSX.Element | null => {
+  private _onRenderLabel = (
+    props: ITextFieldProps,
+    // defaultRender?: (props?: ITextFieldProps) => JSX.Element | null,
+  ): JSX.Element | null => {
     const { label, required } = props;
     // IProcessedStyleSet definition requires casting for what Label expects as its styles prop
     const labelStyles = this._classNames.subComponentStyles
@@ -559,7 +562,7 @@ export class TextFieldBase
       onBlur: this._onBlur,
     };
 
-    const defaultRender = (updatedInputProps: React.InputHTMLAttributes<HTMLInputElement>) => {
+    const defaultRender: ITextFieldProps['onRenderInput'] = updatedInputProps => {
       return <input {...updatedInputProps} />;
     };
     const onRenderInput = this.props.onRenderInput || defaultRender;

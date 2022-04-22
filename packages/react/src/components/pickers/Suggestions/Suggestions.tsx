@@ -40,8 +40,8 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
   protected _searchForMoreButton = React.createRef<IButton>();
   protected _selectedElement = React.createRef<HTMLDivElement>();
   protected _scrollContainer = React.createRef<HTMLDivElement>();
-  private activeSelectedElement: HTMLDivElement | null;
-  private _classNames: Partial<IProcessedStyleSet<ISuggestionsStyles>>;
+  private activeSelectedElement!: HTMLDivElement | null;
+  private _classNames!: Partial<IProcessedStyleSet<ISuggestionsStyles>>;
 
   constructor(suggestionsProps: ISuggestionsProps<T>) {
     super(suggestionsProps);

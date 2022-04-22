@@ -4,6 +4,8 @@ import { CODE_FONT_FAMILY, DEFAULT_WIDTH, DEFAULT_HEIGHT } from './consts';
 import type { IEditorProps } from './Editor.types';
 import type { IMonacoTextModel } from '../interfaces/index';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Any = any;
 /**
  * Language-agnostic wrapper for a Monaco editor instance.
  */
@@ -34,12 +36,12 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
   const divRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const model = (modelRef.current = monaco.editor.createModel(
+    const model = (modelRef.current = (monaco as Any).editor.createModel(
       code,
       language,
-      filename ? monaco.Uri.parse(filename) : undefined,
+      filename ? (monaco as Any).Uri.parse(filename) : undefined,
     ));
-    const editor = monaco.editor.create(divRef.current!, {
+    const editor = (monaco as Any).editor.create(divRef.current!, {
       minimap: { enabled: false },
       fontFamily: CODE_FONT_FAMILY,
       ariaLabel,

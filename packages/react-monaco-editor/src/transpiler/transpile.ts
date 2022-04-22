@@ -11,6 +11,9 @@ const win = getWindow() as
     })
   | undefined;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Any = any;
+
 /**
  * Transpile the model's current code from TS to JS.
  */
@@ -19,16 +22,19 @@ const win = getWindow() as
 export function transpile(model: IMonacoTextModel): Promise<ITransformedCode> {
   const transpiledOutput: ITransformedCode = { error: undefined, output: undefined };
   const filename = model.uri.toString();
-  return monaco.languages.typescript
+  return (monaco as Any).languages.typescript
     .getTypeScriptWorker()
-    .then(getWorker => getWorker(model.uri))
-    .then(worker => {
-      return worker.getEmitOutput(filename).then(output => {
+    .then((getWorker: Any) => getWorker(model.uri))
+    .then((worker: Any) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return worker.getEmitOutput(filename).then((output: any) => {
         // Get diagnostics to find out if there were any syntax errors (there's also getSemanticDiagnostics
         // for type errors etc, but it may be better to allow the user to just find and fix those
         // via intellisense rather than blocking compilation, since they may be non-fatal)
-        return worker.getSyntacticDiagnostics(filename).then(syntacticDiagnostics => {
-          syntacticDiagnostics = syntacticDiagnostics.filter(d => d.category === 1 /*error*/);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return worker.getSyntacticDiagnostics(filename).then((syntacticDiagnostics: any) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          syntacticDiagnostics = syntacticDiagnostics.filter((d: any) => d.category === 1 /*error*/);
 
           if (syntacticDiagnostics.length) {
             // Don't try to run the example if there's a syntax error
@@ -46,7 +52,7 @@ export function transpile(model: IMonacoTextModel): Promise<ITransformedCode> {
         });
       });
     })
-    .catch(ex => {
+    .catch((ex: Any) => {
       // Log the error to the console so people can see the full stack/etc if they want
       // eslint-disable-next-line no-console
       console.error(ex);

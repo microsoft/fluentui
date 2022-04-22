@@ -94,17 +94,19 @@ const STYLESHEET_SETTING = '__stylesheet__';
  */
 const REUSE_STYLE_NODE = typeof navigator !== 'undefined' && /rv:11.0/.test(navigator.userAgent);
 
-let _global: (Window | {}) & {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+type _Global = Window & {
   [STYLESHEET_SETTING]?: Stylesheet;
   FabricConfig?: {
     mergeStyles?: IStyleSheetConfig;
     serializedStylesheet?: ISerializedStylesheet;
   };
-} = {};
+};
+let _global: _Global;
 
 // Grab window.
 try {
-  _global = window || {};
+  _global = (window || {}) as _Global;
 } catch {
   /* leave as blank object */
 }

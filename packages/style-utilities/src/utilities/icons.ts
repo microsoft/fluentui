@@ -229,7 +229,7 @@ function _warnDuplicateIcon(iconName: string): void {
   if (!options.disableWarnings) {
     _missingIcons.push(iconName);
     if (_missingIconsTimer === undefined) {
-      _missingIconsTimer = setTimeout(() => {
+      _missingIconsTimer = window.setTimeout(() => {
         warn(
           `Some icons were re-registered. Applications should only call registerIcons for any given ` +
             `icon once. Redefining what an icon is may have unintended consequences. Duplicates ` +

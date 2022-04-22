@@ -18,7 +18,7 @@ export class ExpandingCardBase extends React.Component<IExpandingCardProps, IExp
     directionalHintFixed: true,
   };
 
-  private _classNames: { [key in keyof IExpandingCardStyles]: string };
+  private _classNames!: { [key in keyof IExpandingCardStyles]: string };
   private _expandedElem = React.createRef<HTMLDivElement>();
   private _async: Async;
 

@@ -5,6 +5,8 @@ declare namespace NodeJS {
     LAGE_PACKAGE_NAME?: string;
     CI?: string;
     TF_BUILD?: string;
+    LOCAL?: string;
+    LOCAL_LIBRARY_VERSION?: string;
   }
 
   /**

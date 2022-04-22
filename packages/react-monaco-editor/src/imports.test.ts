@@ -1,3 +1,5 @@
+export {};
+
 describe('monaco imports', () => {
   // The 2nd test is meant to verify that Monaco hasn't been included somewhere it shouldn't be,
   // since that would cause a significant bundle size impact to consumers.

@@ -28,7 +28,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     strings: DEFAULT_STRINGS,
   };
 
-  private _classNames: IProcessedStyleSet<IPaginationStyles>;
+  private _classNames!: IProcessedStyleSet<IPaginationStyles>;
 
   constructor(props: IPaginationProps) {
     super(props);

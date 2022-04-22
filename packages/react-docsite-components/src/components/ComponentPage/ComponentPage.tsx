@@ -45,7 +45,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
 
   private _baseUrl: string;
   private _showOnlyExamples: boolean;
-  private _styles: IProcessedStyleSet<IComponentPageStyles>;
+  private _styles!: IProcessedStyleSet<IComponentPageStyles>;
 
   constructor(props: IComponentPageProps) {
     super(props);

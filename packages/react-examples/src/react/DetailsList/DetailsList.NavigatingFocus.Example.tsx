@@ -61,5 +61,6 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
 }
 
 function generateItems(parent: string): string[] {
+  // @ts-expect-error - fixme
   return Array.prototype.map.call('ABCDEFGHI', (name: string) => parent + 'Folder ' + name);
 }

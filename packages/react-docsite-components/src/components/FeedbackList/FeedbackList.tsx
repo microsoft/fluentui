@@ -25,8 +25,8 @@ export interface IListItem {
 const getClassNames = classNamesFunction<IFeedbackListStyleProps, IFeedbackListStyles>();
 
 export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedbackListState, IListItem> {
-  private _classNames: IProcessedStyleSet<IFeedbackListStyles>;
-  private _isMounted: boolean;
+  private _classNames!: IProcessedStyleSet<IFeedbackListStyles>;
+  private _isMounted!: boolean;
 
   constructor(props: IFeedbackListProps) {
     super(props);

@@ -1,4 +1,4 @@
-import custom from '@fluentui/scripts/storybook/webpack.config';
+import custom from '../../../scripts/storybook/webpack.config';
 import * as path from 'path';
 import { merge } from 'webpack-merge';
 

@@ -24,7 +24,7 @@ export function useOnEvent<TElement extends Element, TEvent extends Event>(
       return;
     }
 
-    const dispose = on(actualElement, eventName, (ev: TEvent) => callbackRef.current(ev), useCapture);
+    const dispose = on(actualElement, eventName, ev => callbackRef.current(ev as TEvent), useCapture);
     return dispose;
   }, [element, eventName, useCapture]);
 }

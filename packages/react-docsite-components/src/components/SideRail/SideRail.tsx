@@ -21,8 +21,8 @@ const getClassNames = classNamesFunction<ISideRailStyleProps, ISideRailStyles>()
 
 class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
   public readonly state: ISideRailState = {};
-  private _classNames: IProcessedStyleSet<ISideRailStyles>;
-  private _observer: IntersectionObserver;
+  private _classNames!: IProcessedStyleSet<ISideRailStyles>;
+  private _observer!: IntersectionObserver;
 
   public componentDidMount(): void {
     if (typeof IntersectionObserver !== 'undefined') {

@@ -38,7 +38,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     compact: false,
   };
 
-  private _classNames: IProcessedStyleSet<IGroupedListStyles>;
+  private _classNames!: IProcessedStyleSet<IGroupedListStyles>;
 
   private _list = React.createRef<List>();
 

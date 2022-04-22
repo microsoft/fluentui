@@ -6,7 +6,7 @@ function getHiddenElements() {
     if (el.getAttribute('aria-hidden') === 'true') {
       hiddenIds.push(el.id);
     }
-    Array.from(el.children).forEach(walkTree);
+    (Array.from(el.children) as HTMLElement[]).forEach(walkTree);
   }
 
   const hiddenIds: string[] = [];

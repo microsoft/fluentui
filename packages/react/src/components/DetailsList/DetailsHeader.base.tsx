@@ -44,7 +44,7 @@ export class DetailsHeaderBase
     useFastIcons: true,
   };
 
-  private _classNames: IProcessedStyleSet<IDetailsHeaderStyles>;
+  private _classNames!: IProcessedStyleSet<IDetailsHeaderStyles>;
   private _rootElement = React.createRef<HTMLElement>();
   private _events: EventGroup;
   private _rootComponent = React.createRef<IFocusZone>();

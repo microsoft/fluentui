@@ -126,8 +126,8 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       menuItems.push({
         key: 'Edit',
         text: this.props.editMenuItemText,
-        onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
-          this._beginEditing(menuItem.data);
+        onClick: (ev, menuItem) => {
+          this._beginEditing(menuItem!.data);
         },
         data: item,
       });
@@ -137,8 +137,8 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       menuItems.push({
         key: 'Remove',
         text: this.props.removeMenuItemText,
-        onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
-          this.removeItem(menuItem.data as IExtendedPersonaProps);
+        onClick: (ev, menuItem) => {
+          this.removeItem(menuItem!.data as IExtendedPersonaProps);
         },
         data: item,
       });
@@ -148,9 +148,9 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       menuItems.push({
         key: 'Copy',
         text: this.props.copyMenuItemText,
-        onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
+        onClick: (ev, menuItem) => {
           if (this.props.onCopyItems) {
-            (this.copyItems as (items: IExtendedPersonaProps[]) => void)([menuItem.data] as IExtendedPersonaProps[]);
+            (this.copyItems as (items: IExtendedPersonaProps[]) => void)([menuItem!.data] as IExtendedPersonaProps[]);
           }
         },
         data: item,

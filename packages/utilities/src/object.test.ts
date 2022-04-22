@@ -41,7 +41,7 @@ describe('mapEnumByName', () => {
       fourth,
     }
 
-    const result = mapEnumByName(Foo, (name: string) => {
+    const result = mapEnumByName(Foo, name => {
       return name;
     });
 
@@ -56,7 +56,7 @@ describe('mapEnumByName', () => {
       fourth,
     }
 
-    const result = mapEnumByName(Foo, (name: string) => {
+    const result = mapEnumByName(Foo, name => {
       if (name === 'first' || name === 'third') {
         return name;
       }

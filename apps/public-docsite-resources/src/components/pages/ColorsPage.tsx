@@ -51,7 +51,7 @@ class Content extends React.Component {
 ReactDOM.render(<Content />,document.getElementById('content'));`;
 
 export class ColorsPage extends React.Component<{}, IColorsPageState> {
-  private _semanticSlotColorChangeTimeout: number;
+  private _semanticSlotColorChangeTimeout!: number;
   private _async: Async;
 
   constructor(props: {}) {

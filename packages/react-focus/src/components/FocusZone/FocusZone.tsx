@@ -121,7 +121,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   private _id: string;
 
   /** The most recently focused child element. */
-  private _activeElement: HTMLElement | null;
+  private _activeElement!: HTMLElement | null;
 
   /**
    * The index path to the last focused child element.
@@ -132,12 +132,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Flag to define when we've intentionally parked focus on the root element to temporarily
    * hold focus until items appear within the zone.
    */
-  private _isParked: boolean;
+  private _isParked!: boolean;
 
   /** The child element with tabindex=0. */
-  private _defaultFocusElement: HTMLElement | null;
+  private _defaultFocusElement!: HTMLElement | null;
   private _focusAlignment: Point;
-  private _isInnerZone: boolean;
+  private _isInnerZone!: boolean;
   private _parkedTabIndex: string | null | undefined;
 
   /** Used to allow moving to next focusable element even when we're focusing on a input element when pressing tab */

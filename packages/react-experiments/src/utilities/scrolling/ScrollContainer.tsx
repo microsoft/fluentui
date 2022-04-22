@@ -28,9 +28,9 @@ export const ScrollContainerContextTypes = {
 export class ScrollContainer extends React.Component<IScrollContainerProps> implements IScrollContainer {
   public static childContextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
 
-  private _observer: IntersectionObserver;
+  private _observer!: IntersectionObserver;
 
-  private _root: HTMLDivElement;
+  private _root!: HTMLDivElement;
 
   private _callbacks: IVisibleCallback[] = [];
   private _pendingElements: Element[] = [];

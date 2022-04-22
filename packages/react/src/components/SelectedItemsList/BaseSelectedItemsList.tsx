@@ -15,7 +15,7 @@ export interface IBaseSelectedItemsListState<T> {
 export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
   extends React.Component<P, IBaseSelectedItemsListState<T>>
   implements IBaseSelectedItemsList<T> {
-  protected root: HTMLElement;
+  protected root!: HTMLElement;
   private _defaultSelection: Selection;
 
   public static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>) {

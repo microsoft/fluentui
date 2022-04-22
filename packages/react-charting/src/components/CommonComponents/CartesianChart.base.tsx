@@ -57,15 +57,15 @@ export interface ICartesianChartState {
  * 3.Fit parent Continer
  */
 export class CartesianChartBase extends React.Component<IModifiedCartesianChartProps, ICartesianChartState> {
-  private _classNames: IProcessedStyleSet<ICartesianChartStyles>;
-  private chartContainer: HTMLDivElement;
-  private legendContainer: HTMLDivElement;
+  private _classNames!: IProcessedStyleSet<ICartesianChartStyles>;
+  private chartContainer!: HTMLDivElement;
+  private legendContainer!: HTMLDivElement;
   private minLegendContainerHeight: number = 32;
-  private xAxisElement: SVGElement | null;
-  private yAxisElement: SVGElement | null;
+  private xAxisElement!: SVGElement | null;
+  private yAxisElement!: SVGElement | null;
   private margins: IMargins;
   private idForGraph: string;
-  private _reqID: number;
+  private _reqID!: number;
   private _isRtl: boolean = getRTL();
 
   constructor(props: IModifiedCartesianChartProps) {

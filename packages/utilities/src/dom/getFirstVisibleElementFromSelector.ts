@@ -12,5 +12,5 @@ export function getFirstVisibleElementFromSelector(selector: string): Element | 
   const elements = getDocument()!.querySelectorAll(selector);
 
   // Iterate across the elements that match the selector and return the first visible/non-hidden element
-  return Array.from(elements).find((element: HTMLElement) => isElementVisibleAndNotHidden(element));
+  return Array.from(elements).find(element => isElementVisibleAndNotHidden(element as HTMLElement));
 }

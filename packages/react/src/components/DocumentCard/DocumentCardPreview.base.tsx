@@ -18,7 +18,7 @@ const getClassNames = classNamesFunction<IDocumentCardPreviewStyleProps, IDocume
  * {@docCategory DocumentCard}
  */
 export class DocumentCardPreviewBase extends React.Component<IDocumentCardPreviewProps, any> {
-  private _classNames: IProcessedStyleSet<IDocumentCardPreviewStyles>;
+  private _classNames!: IProcessedStyleSet<IDocumentCardPreviewStyles>;
 
   constructor(props: IDocumentCardPreviewProps) {
     super(props);

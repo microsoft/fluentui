@@ -27,7 +27,6 @@ const StackView: IStackComponent['view'] = props => {
   ) {
     stackChildren = stackChildren[0].props.children;
   }
-
   stackChildren = React.Children.map(stackChildren, (child: React.ReactElement<IStackItemProps>, index: number) => {
     if (!child) {
       return null;

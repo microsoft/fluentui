@@ -21,6 +21,7 @@ import {
 } from '@fluentui/react';
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 
+// @ts-expect-error - this is wrong and should be fixed
 import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example';
 
 import { ThemeProvider as DeprecatedThemeProvider } from '@fluentui/foundation-legacy';

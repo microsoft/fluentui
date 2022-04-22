@@ -20,7 +20,7 @@ export interface IBaseFloatingPickerState {
 export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   extends React.Component<P, IBaseFloatingPickerState>
   implements IBaseFloatingPicker {
-  protected selection: Selection;
+  protected selection!: Selection;
 
   protected root = React.createRef<HTMLDivElement>();
   protected suggestionStore: SuggestionsStore<T>;
@@ -28,7 +28,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   protected SuggestionsControlOfProperType: new (
     props: ISuggestionsControlProps<T>,
   ) => SuggestionsControl<T> = SuggestionsControl as new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
-  protected currentPromise: PromiseLike<T[]>;
+  protected currentPromise!: PromiseLike<T[]>;
   protected isComponentMounted: boolean = false;
 
   private _async: Async;

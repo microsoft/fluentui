@@ -129,6 +129,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
       activity="Created Feb 23, 2016"
       people={[{ name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale }]}
     />
+    {/* @ts-expect-error - fixme */}
     <DocumentCardActions actions={documentCardActions} views={432} />
   </DocumentCard>
 );

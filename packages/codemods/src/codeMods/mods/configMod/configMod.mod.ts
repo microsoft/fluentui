@@ -15,7 +15,7 @@ import { findJsxTag, renameProp, getImportsByPath, repathImport, renameImport } 
 import { Ok, Err } from '../../../helpers/result';
 import { MaybeDictionary, isSomething } from '../../../helpers/maybe';
 
-import jsonObj from '../upgrades.json';
+import * as jsonObj from '../upgrades.json';
 
 /* Creates and returns an array of CodeMod objects from a JSON file. Optionally takes in
    an array of functions from user to turn into codemods as well. */

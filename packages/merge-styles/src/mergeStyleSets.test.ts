@@ -173,20 +173,6 @@ describe('mergeStyleSets', () => {
       isCollapsed: boolean;
     }
 
-    interface IStyles extends IStyleSet {
-      root: IStyle;
-      subComponentStyles: {
-        button: IStyleFunctionOrObject<ISubComponentStyleProps, IStyleSet<ISubComponentStyles>>;
-      };
-    }
-
-    interface IStylesWithStyleObjectAsSubCommponent extends IStyleSet<IStyles> {
-      root: IStyle;
-      subComponentStyles: {
-        button: Partial<IStyleSet<ISubComponentStyles>>;
-      };
-    }
-
     /** Button component as of test writing has this interface. */
     const LegacySubComponent: (props: { styles: Partial<ISubComponentStyles> }) => any = (props: {
       styles: Partial<ISubComponentStyles>;

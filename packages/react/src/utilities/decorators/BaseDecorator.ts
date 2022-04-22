@@ -2,9 +2,9 @@ import * as React from 'react';
 import { hoistMethods, unhoistMethods } from '../../Utilities';
 
 export class BaseDecorator<TProps, TState> extends React.Component<TProps, TState> {
-  protected _composedComponentInstance: React.Component<TProps, TState>;
+  protected _composedComponentInstance!: React.Component<TProps, TState>;
 
-  private _hoisted: string[];
+  private _hoisted!: string[];
 
   constructor(props: TProps) {
     super(props);

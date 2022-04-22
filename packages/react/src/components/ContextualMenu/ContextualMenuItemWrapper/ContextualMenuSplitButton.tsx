@@ -25,10 +25,10 @@ export interface IContextualMenuSplitButtonState {}
 const TouchIdleDelay = 500; /* ms */
 
 export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
-  private _splitButton: HTMLDivElement;
+  private _splitButton!: HTMLDivElement;
   private _lastTouchTimeoutId: number | undefined;
-  private _processingTouch: boolean;
-  private _ariaDescriptionId: string;
+  private _processingTouch!: boolean;
+  private _ariaDescriptionId!: string;
 
   private _async: Async;
   private _events: EventGroup;
@@ -107,7 +107,9 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             aria-setsize={totalItemCount}
             onMouseEnter={this._onItemMouseEnterPrimary}
             onMouseLeave={
-              onItemMouseLeave ? onItemMouseLeave.bind(this, { ...item, subMenuProps: null, items: null }) : undefined
+              onItemMouseLeave
+                ? onItemMouseLeave.bind(this, { ...item, subMenuProps: undefined, items: undefined })
+                : undefined
             }
             onMouseMove={this._onItemMouseMovePrimary}
             onKeyDown={this._onItemKeyDown}

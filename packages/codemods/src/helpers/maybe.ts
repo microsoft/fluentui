@@ -17,7 +17,7 @@ export interface Nothing<T> extends MaybeChain<T> {
 }
 
 class MB<T> implements MaybeChain<T> {
-  public something: boolean;
+  public something!: boolean;
   public value: T | undefined;
   public __isMaybe: true = true;
 

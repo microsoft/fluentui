@@ -6,7 +6,7 @@ import type { IProcessedStyleSet } from '../../Styling';
 const getClassNames = classNamesFunction<IDialogFooterStyleProps, IDialogFooterStyles>();
 
 export class DialogFooterBase extends React.Component<IDialogFooterProps, {}> {
-  private _classNames: IProcessedStyleSet<IDialogFooterStyles>;
+  private _classNames!: IProcessedStyleSet<IDialogFooterStyles>;
 
   constructor(props: IDialogFooterProps) {
     super(props);

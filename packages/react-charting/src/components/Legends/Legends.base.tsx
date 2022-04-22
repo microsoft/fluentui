@@ -45,8 +45,8 @@ export interface ILegendState {
   selectedLegends: string[];
 }
 export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
-  private _hoverCardRef: HTMLDivElement;
-  private _classNames: IProcessedStyleSet<ILegendsStyles>;
+  private _hoverCardRef!: HTMLDivElement;
+  private _classNames!: IProcessedStyleSet<ILegendsStyles>;
 
   public constructor(props: ILegendsProps) {
     super(props);

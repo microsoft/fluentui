@@ -18,8 +18,8 @@ export interface IDragDropHelperParams {
 
 export class DragDropHelper implements IDragDropHelper {
   private _dragEnterCounts: { [key: string]: number };
-  private _isDragging: boolean;
-  private _dragData: {
+  private _isDragging!: boolean;
+  private _dragData!: {
     eventTarget: EventTarget | null;
     clientX: number;
     clientY: number;
@@ -34,7 +34,7 @@ export class DragDropHelper implements IDragDropHelper {
       dispose: () => void;
     };
   };
-  private _events: EventGroup;
+  private _events!: EventGroup;
   private _lastId: number;
   private _initialized: boolean;
 

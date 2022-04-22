@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { mergeStyleSets, Stack, Toggle } from '@fluentui/react';
 import { useBoolean } from '@fluentui/react-hooks';
 import { EditorWrapper } from '../components/EditorWrapper';

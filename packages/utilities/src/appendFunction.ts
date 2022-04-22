@@ -10,6 +10,6 @@ export function appendFunction(parent: any, ...functions: any[]): () => void {
   }
 
   return (...args: any[]): void => {
-    functions.forEach((f: () => void) => f && f.apply(parent, args));
+    functions.forEach((f: () => void) => f && f.apply(parent, args as []));
   };
 }

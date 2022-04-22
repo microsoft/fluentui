@@ -95,9 +95,9 @@ export interface IHeatMapChartState {
 }
 const getClassNames = classNamesFunction<IHeatMapChartStyleProps, IHeatMapChartStyles>();
 export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> {
-  private _classNames: IProcessedStyleSet<IHeatMapChartStyles>;
-  private _stringXAxisDataPoints: string[];
-  private _stringYAxisDataPoints: string[];
+  private _classNames!: IProcessedStyleSet<IHeatMapChartStyles>;
+  private _stringXAxisDataPoints!: string[];
+  private _stringYAxisDataPoints!: string[];
   private _createSet: (
     data: IHeatMapChartData[],
     xDate: string | undefined,
@@ -105,7 +105,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     yDate: string | undefined,
     yNum: string | undefined,
   ) => DataSet;
-  private _dataSet: RectanglesGraphData;
+  private _dataSet!: RectanglesGraphData;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _colorScale: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -119,7 +119,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _rectRefArray: { [key: string]: IRectRef } = {};
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
-  private _calloutAnchorPoint: FlattenData | null;
+  private _calloutAnchorPoint!: FlattenData | null;
   public constructor(props: IHeatMapChartProps) {
     super(props);
     const { x, y } = this._getXandY();

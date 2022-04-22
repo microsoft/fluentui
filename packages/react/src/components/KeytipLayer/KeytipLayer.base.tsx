@@ -65,15 +65,15 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   private _events: EventGroup;
   private _async: Async;
 
-  private _keytipTree: KeytipTree;
+  private _keytipTree!: KeytipTree;
 
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
-  private _classNames: { [key in keyof IKeytipLayerStyles]: string };
+  private _classNames!: { [key in keyof IKeytipLayerStyles]: string };
   private _currentSequence: string;
   private _newCurrentKeytipSequences?: string[];
 
   private _delayedKeytipQueue: string[] = [];
-  private _delayedQueueTimeout: number;
+  private _delayedQueueTimeout!: number;
 
   private _keyHandled = false;
 

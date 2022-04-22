@@ -203,12 +203,12 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   /** True if the most recent keydown event was for alt (option) or meta (command). */
   private _lastKeyDownWasAltOrMeta: boolean | undefined;
   private _sizePosCache: DropdownSizePosCache = new DropdownSizePosCache();
-  private _classNames: IProcessedStyleSet<IDropdownStyles>;
+  private _classNames!: IProcessedStyleSet<IDropdownStyles>;
   private _requestAnimationFrame = safeRequestAnimationFrame(this);
   /** Flag for when we get the first mouseMove */
-  private _gotMouseMove: boolean;
+  private _gotMouseMove!: boolean;
   /** Flag for tracking whether focus is triggered by click (alternatively triggered by keyboard nav) */
-  private _isFocusedByClick: boolean;
+  private _isFocusedByClick!: boolean;
 
   constructor(props: IDropdownInternalProps) {
     super(props);

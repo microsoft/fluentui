@@ -42,8 +42,8 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   private _transformedInitialCode: string | undefined;
 
   private _exampleCardTheme: IExampleCardTheme[] | undefined;
-  private _themeOptions: IDropdownOption[];
-  private _classNames: IProcessedStyleSet<IExampleCardStyles>;
+  private _themeOptions!: IDropdownOption[];
+  private _classNames!: IProcessedStyleSet<IExampleCardStyles>;
   private _activeTheme: Theme | undefined;
   private _isStrict: boolean;
 

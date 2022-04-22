@@ -24,12 +24,12 @@ const getClassNames = classNamesFunction<IAppStyleProps, IAppStyles>();
 @withResponsiveMode
 export class AppBase extends React.Component<IAppProps, IAppState> {
   public state: IAppState = { isMenuVisible: false, isMenuClosing: false };
-  private _classNames: IProcessedStyleSet<IAppStyles>;
+  private _classNames!: IProcessedStyleSet<IAppStyles>;
   private _showOnlyExamples: boolean;
   private _isStrict: boolean;
   private _disposables: Function[];
   private _appTitle: string;
-  private _prevPath: string;
+  private _prevPath!: string;
 
   constructor(props: IAppProps) {
     super(props);

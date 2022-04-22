@@ -8,7 +8,6 @@ import { SelectionMode } from './interfaces';
 import { isConformant } from '../../common/isConformant';
 
 import { KeyCodes, EventGroup } from '../../Utilities';
-import type { IObjectWithKey } from './interfaces';
 
 const SELECTABLE_ITEMS = [{ key: 'a' }, { key: 'b' }, { key: 'c' }, { key: 'd' }, { key: 'e' }];
 
@@ -42,7 +41,7 @@ function _initializeSelection(props?: { selectionMode?: SelectionMode; enableTou
       disableAutoSelectOnInputElements={true}
       enterModalOnTouch={true}
       enableTouchInvocationTarget={enableTouchInvocationTarget}
-      onItemInvoked={(item: IObjectWithKey) => {
+      onItemInvoked={item => {
         _onItemInvokeCalled++;
         _lastItemInvoked = item;
       }}

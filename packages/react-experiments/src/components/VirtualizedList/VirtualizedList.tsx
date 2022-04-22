@@ -28,7 +28,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
   IVirtualizedListState
 > {
   public static contextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
-  public context: IScrollContainerContext;
+  public context!: IScrollContainerContext;
 
   private _root = React.createRef<HTMLDivElement>();
 

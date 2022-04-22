@@ -29,7 +29,7 @@ export interface IThemeGeneratorPageState {
 }
 
 export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageState> {
-  private _semanticSlotColorChangeTimeout: number;
+  private _semanticSlotColorChangeTimeout!: number;
   private _async: Async;
 
   constructor(props: {}) {

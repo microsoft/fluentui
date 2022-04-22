@@ -10,7 +10,7 @@ const getClassNames = classNamesFunction<IPlatformBarStyleProps, IPlatformBarSty
 export class PlatformBarBase<TPlatforms extends string = string> extends React.PureComponent<
   IPlatformBarProps<TPlatforms>
 > {
-  private _classNames: { [key in keyof IPlatformBarStyles]: string };
+  private _classNames!: { [key in keyof IPlatformBarStyles]: string };
 
   public render(): JSX.Element {
     const { styles, theme, platforms, innerWidth } = this.props;

@@ -59,7 +59,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
 
   private _overflowSet = React.createRef<IOverflowSet>();
   private _resizeGroup = React.createRef<IResizeGroup>();
-  private _classNames: { [key in keyof ICommandBarStyles]: string };
+  private _classNames!: { [key in keyof ICommandBarStyles]: string };
 
   constructor(props: ICommandBarProps) {
     super(props);
@@ -209,7 +209,9 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     return <Type {...(props as ICommandBarItemProps)} />;
   };
 
-  private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
+  private _onButtonClick(
+    item: ICommandBarItemProps,
+  ): (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void {
     return ev => {
       // inactive is deprecated. remove check in 7.0
       // eslint-disable-next-line deprecation/deprecation

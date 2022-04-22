@@ -77,8 +77,8 @@ const Main = (props: IStackProps) => (
 );
 
 export class ThemingDesigner extends React.Component<{}, IThemingDesignerState> {
-  private _colorChangeTimeout: number;
-  private _fabricPaletteColorChangeTimeout: number;
+  private _colorChangeTimeout!: number;
+  private _fabricPaletteColorChangeTimeout!: number;
   private _async: Async;
 
   constructor(props: {}) {
@@ -153,7 +153,7 @@ export class ThemingDesigner extends React.Component<{}, IThemingDesignerState> 
       const { themeRules } = this.state;
       if (themeRules) {
         const currentIsDark = isDark(themeRules[FabricSlots[fabricSlot]].color!);
-        ThemeGenerator.setSlot(themeRules[FabricSlots[fabricSlot]], newColor, currentIsDark, true, true);
+        ThemeGenerator.setSlot(themeRules[FabricSlots[fabricSlot]], newColor!, currentIsDark, true, true);
         if (currentIsDark !== isDark(themeRules[FabricSlots[fabricSlot]].color!)) {
           // isInverted got swapped, so need to refresh slots with new shading rules
           ThemeGenerator.insureSlots(themeRules, currentIsDark);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IThemeRules, FabricSlots, IThemeSlotRule } from '@fluentui/react/lib/ThemeGenerator';
+import { FabricSlots, IThemeSlotRule } from '@fluentui/react/lib/ThemeGenerator';
 import { IColor } from '@fluentui/react/lib/Color';
 import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 import { mergeStyles } from '@fluentui/merge-styles';
@@ -58,10 +58,10 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
         <Stack horizontal styles={colorBoxAndHexStringClassName} gap={5}>
           <div
             className={fabricPaletteColorBox}
-            style={{ backgroundColor: slotRule.color.str }}
+            style={{ backgroundColor: slotRule!.color!.str }}
             onClick={this._onColorBoxClick}
           />
-          <div>{slotRule.name}</div>
+          <div>{slotRule!.name}</div>
         </Stack>
         {isColorPickerVisible && (
           <Callout
@@ -71,7 +71,7 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
             setInitialFocus={true}
             onDismiss={this._onCalloutDismiss}
           >
-            <ColorPicker color={slotRule.color} onChange={this._onColorPickerChange} alphaSliderHidden={true} />
+            <ColorPicker color={slotRule!.color!} onChange={this._onColorPickerChange} alphaSliderHidden={true} />
           </Callout>
         )}
       </div>

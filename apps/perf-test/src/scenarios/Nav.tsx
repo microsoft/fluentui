@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Nav, INavLink } from '@fluentui/react/lib/Nav';
+import { Nav } from '@fluentui/react/lib/Nav';
 
 const groups = [
   {

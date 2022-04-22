@@ -31,14 +31,14 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   public static defaultProps: Partial<IDonutChartProps> = {
     innerRadius: 0,
   };
-  public _colors: scale.ScaleOrdinal<string, {}>;
-  private _classNames: IProcessedStyleSet<IDonutChartStyles>;
-  private _rootElem: HTMLElement | null;
+  public _colors!: scale.ScaleOrdinal<string, {}>;
+  private _classNames!: IProcessedStyleSet<IDonutChartStyles>;
+  private _rootElem!: HTMLElement | null;
   private _uniqText: string;
   /* eslint-disable @typescript-eslint/no-explicit-any */
   private _currentHoverElement: any;
   private _calloutId: string;
-  private _calloutAnchorPoint: IChartDataPoint | null;
+  private _calloutAnchorPoint!: IChartDataPoint | null;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,

@@ -171,7 +171,7 @@ export class EventGroup {
   public on(
     target: any,
     eventName: string,
-    callback: (args?: any) => void,
+    callback: (...args: any[]) => void,
     options?: boolean | AddEventListenerOptions,
   ): void {
     if (eventName.indexOf(',') > -1) {

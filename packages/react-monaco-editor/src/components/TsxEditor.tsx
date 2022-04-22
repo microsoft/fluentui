@@ -9,7 +9,10 @@ import type { ITsxEditorProps } from './TsxEditor.types';
 import type { IMonacoTextModel, ICompilerOptions, IPackageGroup } from '../interfaces/index';
 import type { IEditorProps } from './Editor.types';
 
-const typescript = monaco.languages.typescript;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Any = any;
+
+const typescript = (monaco as Any).languages.typescript;
 const typescriptDefaults = typescript.typescriptDefaults;
 
 const filePrefix = 'file:///';

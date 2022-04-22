@@ -62,29 +62,29 @@ export function themeRulesStandardCreator(): IThemeRules {
 
   /*** BASE COLORS and their SHADES */
   // iterate through each base slot and make the SlotRules for those
-  mapEnumByName(BaseSlots, (baseSlot: string) => {
+  mapEnumByName(BaseSlots, baseSlot => {
     // first make the SlotRule for the unshaded base Color
-    slotRules[baseSlot] = {
-      name: baseSlot,
+    slotRules[baseSlot!] = {
+      name: baseSlot!,
       isCustomized: true,
       dependentRules: [],
     };
 
     // then make a rule for each shade of this base color, but skip unshaded
-    mapEnumByName(Shade, (shadeName: string, shadeValue: Shade) => {
+    mapEnumByName(Shade, (shadeName, shadeValue) => {
       if (shadeName === Shade[Shade.Unshaded]) {
         return;
       }
-      const inherits = slotRules[baseSlot];
+      const inherits = slotRules[baseSlot!];
       const thisSlotRule = {
-        name: baseSlot + shadeName,
-        inherits: slotRules[baseSlot],
-        asShade: shadeValue,
+        name: baseSlot! + shadeName,
+        inherits: slotRules[baseSlot!],
+        asShade: shadeValue as Shade,
         isCustomized: false,
         isBackgroundShade: baseSlot === BaseSlots[BaseSlots.backgroundColor] ? true : false,
         dependentRules: [],
       };
-      slotRules[baseSlot + shadeName] = thisSlotRule;
+      slotRules[baseSlot! + shadeName] = thisSlotRule;
       inherits.dependentRules.push(thisSlotRule);
 
       return undefined;

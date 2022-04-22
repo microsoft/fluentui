@@ -21,7 +21,7 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
     },
   };
 
-  private _classNames: IProcessedStyleSet<ITooltipStyles>;
+  private _classNames!: IProcessedStyleSet<ITooltipStyles>;
 
   public render(): JSX.Element {
     const {

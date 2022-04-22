@@ -66,7 +66,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
   const [uncastValue, setValue] = useControllableValue(
     props.value,
     defaultValue,
-    (ev: React.ChangeEvent<HTMLInputElement> | undefined, newValue: string) => {
+    (ev: React.ChangeEvent<HTMLInputElement> | undefined, newValue) => {
       if (ev && ev.timeStamp === prevChangeTimestamp.current) {
         // For historical reasons, SearchBox handles both onInput and onChange (we can't modify this
         // outside a major version due to potential to break partners' tests and possibly apps).

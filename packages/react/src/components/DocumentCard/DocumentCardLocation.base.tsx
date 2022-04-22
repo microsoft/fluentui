@@ -13,7 +13,7 @@ const getClassNames = classNamesFunction<IDocumentCardLocationStyleProps, IDocum
  * {@docCategory DocumentCard}
  */
 export class DocumentCardLocationBase extends React.Component<IDocumentCardLocationProps, any> {
-  private _classNames: IProcessedStyleSet<IDocumentCardLocationStyles>;
+  private _classNames!: IProcessedStyleSet<IDocumentCardLocationStyles>;
 
   constructor(props: IDocumentCardLocationProps) {
     super(props);

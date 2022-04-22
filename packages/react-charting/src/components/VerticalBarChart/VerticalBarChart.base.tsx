@@ -54,21 +54,21 @@ export interface IVerticalBarChartState extends IBasestate {
 type ColorScale = (_p?: number) => string;
 
 export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps, IVerticalBarChartState> {
-  private _points: IVerticalBarChartDataPoint[];
-  private _barWidth: number;
-  private _colors: string[];
-  private _classNames: IProcessedStyleSet<IVerticalBarChartStyles>;
+  private _points!: IVerticalBarChartDataPoint[];
+  private _barWidth!: number;
+  private _colors!: string[];
+  private _classNames!: IProcessedStyleSet<IVerticalBarChartStyles>;
   private _refArray: IRefArrayData[];
   private _calloutId: string;
-  private margins: IMargins;
+  private margins!: IMargins;
   private _isRtl: boolean = getRTL();
-  private _bars: JSX.Element[];
-  private _xAxisLabels: string[];
-  private _yMax: number;
+  private _bars!: JSX.Element[];
+  private _xAxisLabels!: string[];
+  private _yMax!: number;
   private _isHavingLine: boolean;
   private _tooltipId: string;
   private _xAxisType: XAxisTypes;
-  private _calloutAnchorPoint: IVerticalBarChartDataPoint | null;
+  private _calloutAnchorPoint!: IVerticalBarChartDataPoint | null;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);

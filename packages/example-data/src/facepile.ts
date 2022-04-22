@@ -55,8 +55,8 @@ export const facepilePersonas: IExampleFacepilePersona[] = [
     imageUrl: TestImages.personaFemale,
     personaName: 'Annie Lindqvist',
     data: '50%',
-    onClick: (ev: unknown, persona: IExampleFacepilePersona) =>
-      alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
+    onClick: (ev: unknown, persona?: IExampleFacepilePersona) =>
+      alert('You clicked on ' + persona!.personaName + '. Extra data: ' + persona!.data),
   },
   {
     imageUrl: TestImages.personaFemale,
@@ -66,8 +66,8 @@ export const facepilePersonas: IExampleFacepilePersona[] = [
   {
     personaName: 'Alex Lundberg',
     data: '75%',
-    onClick: (ev: unknown, persona: IExampleFacepilePersona) =>
-      alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
+    onClick: (ev: unknown, persona?: IExampleFacepilePersona) =>
+      alert('You clicked on ' + persona!.personaName + '. Extra data: ' + persona!.data),
   },
   {
     personaName: 'Roko Kolar',
@@ -85,8 +85,8 @@ export const facepilePersonas: IExampleFacepilePersona[] = [
     personaName: 'Valentina Lovric',
     initialsColor: PersonaInitialsColor.lightBlue,
     data: 'Emp1234',
-    onClick: (ev: unknown, persona: IExampleFacepilePersona) =>
-      alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
+    onClick: (ev: unknown, persona?: IExampleFacepilePersona) =>
+      alert('You clicked on ' + persona!.personaName + '. Extra data: ' + persona!.data),
   },
   {
     imageUrl: TestImages.personaMale,
@@ -106,8 +106,8 @@ export const facepilePersonas: IExampleFacepilePersona[] = [
     personaName: 'Aaron Reid2',
     initialsColor: PersonaInitialsColor.magenta,
     data: 'Emp1234',
-    onClick: (ev: unknown, persona: IExampleFacepilePersona) =>
-      alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
+    onClick: (ev: unknown, persona?: IExampleFacepilePersona) =>
+      alert('You clicked on ' + persona!.personaName + '. Extra data: ' + persona!.data),
   },
   {
     imageUrl: TestImages.personaMale,

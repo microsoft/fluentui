@@ -31,10 +31,10 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     hideLegend: false,
     ignoreFixStyle: false,
   };
-  private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
+  private _classNames!: IProcessedStyleSet<IStackedBarChartStyles>;
   private _calloutId: string;
   private _refArray: IRefArrayData[];
-  private _calloutAnchorPoint: IChartDataPoint | null;
+  private _calloutAnchorPoint!: IChartDataPoint | null;
 
   public constructor(props: IStackedBarChartProps) {
     super(props);

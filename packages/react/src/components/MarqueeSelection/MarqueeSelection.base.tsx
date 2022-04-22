@@ -45,7 +45,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
   private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
   private _dragOrigin: Point | undefined;
-  private _rootRect: IRectangle;
+  private _rootRect!: IRectangle;
   private _lastMouseEvent: MouseEvent | undefined;
   private _autoScroll: AutoScroll | undefined;
   private _selectedIndicies: { [key: string]: boolean } | undefined;
@@ -54,9 +54,9 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
   private _allSelectedIndices: { [key: string]: boolean } | undefined;
   private _scrollableParent?: HTMLElement;
   private _scrollableSurface?: HTMLElement;
-  private _scrollTop: number;
-  private _scrollLeft: number;
-  private _isTouch: boolean;
+  private _scrollTop!: number;
+  private _scrollLeft!: number;
+  private _isTouch!: boolean;
 
   constructor(props: IMarqueeSelectionProps) {
     super(props);

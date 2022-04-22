@@ -30,12 +30,12 @@ export interface IHorizontalBarChartState {
 }
 
 export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartProps, IHorizontalBarChartState> {
-  private _barHeight: number;
-  private _classNames: IProcessedStyleSet<IHorizontalBarChartStyles>;
+  private _barHeight!: number;
+  private _classNames!: IProcessedStyleSet<IHorizontalBarChartStyles>;
   private _uniqLineText: string;
   private _calloutId: string;
   private _refArray: IRefArrayData[];
-  private _calloutAnchorPoint: IChartDataPoint | null;
+  private _calloutAnchorPoint!: IChartDataPoint | null;
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);

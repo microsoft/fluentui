@@ -35,7 +35,7 @@ export class ExtendedPeoplePickerControlledExample extends React.Component<{}, I
   private _selectedItemsListProps: ISelectedPeopleProps;
   private _focusZoneProps: IFocusZoneProps;
   private _suggestionProps: IBaseFloatingPickerSuggestionProps;
-  private _classNames: IProcessedStyleSet<IClassNames>;
+  private _classNames!: IProcessedStyleSet<IClassNames>;
 
   constructor(props: {}) {
     super(props);

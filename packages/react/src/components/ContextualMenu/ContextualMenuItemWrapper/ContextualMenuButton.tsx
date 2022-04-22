@@ -9,7 +9,7 @@ import type { IKeytipProps } from '../../../Keytip';
 
 export class ContextualMenuButton extends ContextualMenuItemWrapper {
   private _btn = React.createRef<HTMLButtonElement>();
-  private _ariaDescriptionId: string;
+  private _ariaDescriptionId!: string;
 
   private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
     return {

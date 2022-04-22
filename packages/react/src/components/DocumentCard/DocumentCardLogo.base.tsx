@@ -14,7 +14,7 @@ const getClassNames = classNamesFunction<IDocumentCardLogoStyleProps, IDocumentC
  * {@docCategory DocumentCard}
  */
 export class DocumentCardLogoBase extends React.Component<IDocumentCardLogoProps, any> {
-  private _classNames: IProcessedStyleSet<IDocumentCardLogoStyles>;
+  private _classNames!: IProcessedStyleSet<IDocumentCardLogoStyles>;
 
   constructor(props: IDocumentCardLogoProps) {
     super(props);

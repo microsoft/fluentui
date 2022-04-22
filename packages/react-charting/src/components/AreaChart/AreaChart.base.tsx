@@ -79,21 +79,21 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     calloutPoints: any;
   };
-  private _colors: string[];
-  private _opacity: number[];
+  private _colors!: string[];
+  private _opacity!: number[];
   private _uniqueIdForGraph: string;
   private _verticalLineId: string;
   private _circleId: string;
-  private _uniqueCallOutID: string;
+  private _uniqueCallOutID!: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _stackedData: any;
-  private _chart: JSX.Element[];
-  private margins: IMargins;
+  private _chart!: JSX.Element[];
+  private margins!: IMargins;
   private _rectId: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxisRectScale: any;
   // determines if the given area chart has multiple stacked bar charts
-  private _isMultiStackChart: boolean;
+  private _isMultiStackChart!: boolean;
   private _tooltipId: string;
 
   public constructor(props: IAreaChartProps) {
@@ -273,17 +273,17 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       /*
       When above if condition is false but found=true, it means either
 
-      1). pointToHighlightUpdated is false. 
+      1). pointToHighlightUpdated is false.
       For this case we dont need to do anything.
 
-      2). isShowCalloutPending is true. 
+      2). isShowCalloutPending is true.
       For this case there will be no callout updation for the event.
       This condition has been added to prevent repeated callout flashing.
       Currently there is a fraction of second delay between hover event and subsequent callout refresh.
-      In the meantime if another event is received, the callout continues to flash for the set of 
+      In the meantime if another event is received, the callout continues to flash for the set of
       intermediate hover events.
 
-      This does not cause any issue as the user interaction takes atleast a fraction of second and the final 
+      This does not cause any issue as the user interaction takes atleast a fraction of second and the final
       callout state is ultimately achieved.
       If a user performs very swift mouse maneuver, the intermediate events will be lost but the callout experience
       remains smooth.

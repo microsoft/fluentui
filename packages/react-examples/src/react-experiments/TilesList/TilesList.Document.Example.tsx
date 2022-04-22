@@ -19,6 +19,7 @@ import {
   createShimmerGroups,
   onRenderTilesListExampleRoot,
   onRenderTilesListExampleRow,
+  // @ts-expect-error - this is wrong and should be fixed
 } from '@fluentui/react-examples/lib/react-experiments/TilesList/ExampleHelpers';
 import { ShimmerElementType, ShimmerElementsGroup } from '@fluentui/react/lib/Shimmer';
 

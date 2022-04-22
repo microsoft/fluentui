@@ -40,14 +40,14 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
 
   // The wrapping div that gets the hover events
   private _hoverCard = React.createRef<HTMLDivElement>();
-  private _dismissTimerId: number;
-  private _openTimerId: number;
-  private _currentMouseTarget: EventTarget | null;
+  private _dismissTimerId!: number;
+  private _openTimerId!: number;
+  private _currentMouseTarget!: EventTarget | null;
 
   private _nativeDismissEvent: (ev?: any) => void;
   private _childDismissEvent: (ev?: any) => void;
 
-  private _classNames: { [key in keyof IHoverCardStyles]: string };
+  private _classNames!: { [key in keyof IHoverCardStyles]: string };
 
   private _async: Async;
   private _events: EventGroup;

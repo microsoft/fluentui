@@ -51,8 +51,8 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   private _async: Async;
   private _events: EventGroup;
   private _panel = React.createRef<HTMLDivElement>();
-  private _classNames: IProcessedStyleSet<IPanelStyles>;
-  private _scrollableContent: HTMLDivElement | null;
+  private _classNames!: IProcessedStyleSet<IPanelStyles>;
+  private _scrollableContent!: HTMLDivElement | null;
   private _animationCallback: number | null = null;
   private _hasCustomNavigation: boolean = !!(this.props.onRenderNavigation || this.props.onRenderNavigationContent);
   private _headerTextId: string | undefined;

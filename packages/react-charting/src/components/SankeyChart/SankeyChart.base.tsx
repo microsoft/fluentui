@@ -12,9 +12,9 @@ export class SankeyChartBase extends React.Component<
     containerHeight: number;
   }
 > {
-  private _classNames: IProcessedStyleSet<ISankeyChartStyles>;
-  private chartContainer: HTMLDivElement;
-  private _reqID: number;
+  private _classNames!: IProcessedStyleSet<ISankeyChartStyles>;
+  private chartContainer!: HTMLDivElement;
+  private _reqID!: number;
   constructor(props: ISankeyChartProps) {
     super(props);
     this.state = {

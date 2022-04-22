@@ -59,23 +59,23 @@ export class GroupedVerticalBarChartBase extends React.Component<
     data: IGroupedVerticalBarChartData[],
   ) => // eslint-disable-next-line @typescript-eslint/no-explicit-any
   { keys: string[]; xAxisLabels: string[]; datasetForBars: any };
-  private _dataset: IGVDataPoint[];
-  private _keys: string[];
-  private _xAxisLabels: string[];
+  private _dataset!: IGVDataPoint[];
+  private _keys!: string[];
+  private _xAxisLabels!: string[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _datasetForBars: any;
-  private margins: IMargins;
-  private _groupedVerticalBarGraph: JSX.Element[];
-  private _classNames: IProcessedStyleSet<IGroupedVerticalBarChartStyles>;
+  private margins!: IMargins;
+  private _groupedVerticalBarGraph!: JSX.Element[];
+  private _classNames!: IProcessedStyleSet<IGroupedVerticalBarChartStyles>;
   private _refArray: IRefArrayData[];
-  private _yMax: number;
+  private _yMax!: number;
   private _calloutId: string;
   private _tooltipId: string;
-  private _isNumeric: XAxisTypes;
+  private _isNumeric!: XAxisTypes;
   private _isRtl: boolean = getRTL();
-  private _isCustomBarWidth: boolean;
-  private _x1TotalBandWidth: number;
-  private _calloutAnchorPoint: IGVBarChartSeriesPoint | null;
+  private _isCustomBarWidth!: boolean;
+  private _x1TotalBandWidth!: number;
+  private _calloutAnchorPoint!: IGVBarChartSeriesPoint | null;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);

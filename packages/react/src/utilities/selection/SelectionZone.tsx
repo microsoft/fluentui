@@ -139,13 +139,13 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
   private _async: Async;
   private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
-  private _isCtrlPressed: boolean;
-  private _isShiftPressed: boolean;
-  private _isMetaPressed: boolean;
-  private _isTabPressed: boolean;
-  private _shouldHandleFocus: boolean;
+  private _isCtrlPressed!: boolean;
+  private _isShiftPressed!: boolean;
+  private _isMetaPressed!: boolean;
+  private _isTabPressed!: boolean;
+  private _shouldHandleFocus!: boolean;
   private _shouldHandleFocusTimeoutId: number | undefined;
-  private _isTouch: boolean;
+  private _isTouch!: boolean;
   private _isTouchTimeoutId: number | undefined;
 
   public static getDerivedStateFromProps(

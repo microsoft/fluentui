@@ -73,8 +73,8 @@ describe('TooltipHost', () => {
     expect(tooltip.prop('directionalHint')).toEqual(directionalHint);
     expect(tooltip.prop('directionalHintForRTL')).toEqual(directionalHintForRTL);
 
-    Object.keys(tooltipProps).forEach((key: keyof ITooltipProps) => {
-      expect(tooltip.prop(key)).toEqual(tooltipProps[key]);
+    Object.keys(tooltipProps).forEach(key => {
+      expect(tooltip.prop(key)).toEqual(tooltipProps[key as keyof ITooltipProps]);
     });
   });
 

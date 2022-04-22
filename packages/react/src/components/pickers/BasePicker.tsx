@@ -533,15 +533,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     });
   };
 
-  protected onSuggestionClick = (ev: React.MouseEvent<HTMLElement>, item: any, index: number): void => {
-    this.addItemByIndex(index);
+  protected onSuggestionClick = (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number): void => {
+    this.addItemByIndex(index!);
   };
 
-  protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: T, index: number): void => {
+  protected onSuggestionRemove = (ev?: React.MouseEvent<HTMLElement>, item?: T, index?: number): void => {
     if (this.props.onRemoveSuggestion) {
-      this.props.onRemoveSuggestion(item);
+      this.props.onRemoveSuggestion(item!);
     }
-    this.suggestionStore.removeSuggestion(index);
+    this.suggestionStore.removeSuggestion(index!);
   };
 
   protected onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {

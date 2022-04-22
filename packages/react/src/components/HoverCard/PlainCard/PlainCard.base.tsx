@@ -7,7 +7,7 @@ import type { IPlainCardProps, IPlainCardStyles, IPlainCardStyleProps } from './
 const getClassNames = classNamesFunction<IPlainCardStyleProps, IPlainCardStyles>();
 
 export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
-  private _classNames: { [key in keyof IPlainCardStyles]: string };
+  private _classNames!: { [key in keyof IPlainCardStyles]: string };
 
   constructor(props: IPlainCardProps) {
     super(props);

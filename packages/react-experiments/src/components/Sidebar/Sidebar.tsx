@@ -24,10 +24,10 @@ export interface ISidebarState {
 }
 
 export class Sidebar extends React.Component<ISidebarProps, ISidebarState> implements ISidebar {
-  private _theme: ITheme;
-  private _classNames: ISidebarClassNames;
-  private _colors: SidebarColors;
-  private _buttonStyles: IButtonStyles;
+  private _theme!: ITheme;
+  private _classNames!: ISidebarClassNames;
+  private _colors!: SidebarColors;
+  private _buttonStyles!: IButtonStyles;
 
   constructor(props: ISidebarProps) {
     super(props);

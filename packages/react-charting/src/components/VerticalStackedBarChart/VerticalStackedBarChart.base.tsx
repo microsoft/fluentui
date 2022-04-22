@@ -70,22 +70,22 @@ export class VerticalStackedBarChartBase extends React.Component<
   IVerticalStackedBarChartProps,
   IVerticalStackedBarChartState
 > {
-  private _points: IVerticalStackedChartProps[];
+  private _points!: IVerticalStackedChartProps[];
   private _dataset: IDataPoint[];
-  private _xAxisLabels: string[];
-  private _bars: JSX.Element[];
-  private _xAxisType: XAxisTypes;
-  private _barWidth: number;
-  private _additionalSpace: number;
+  private _xAxisLabels!: string[];
+  private _bars!: JSX.Element[];
+  private _xAxisType!: XAxisTypes;
+  private _barWidth!: number;
+  private _additionalSpace!: number;
   private _calloutId: string;
-  private _colors: string[];
-  private margins: IMargins;
+  private _colors!: string[];
+  private margins!: IMargins;
   private _isRtl: boolean = getRTL();
   private _createLegendsForLine: (data: IVerticalStackedChartProps[]) => LineLegends[];
-  private _lineObject: LineObject;
+  private _lineObject!: LineObject;
   private _tooltipId: string;
-  private _yMax: number;
-  private _calloutAnchorPoint: IVSChartDataPoint | null;
+  private _yMax!: number;
+  private _calloutAnchorPoint!: IVSChartDataPoint | null;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);

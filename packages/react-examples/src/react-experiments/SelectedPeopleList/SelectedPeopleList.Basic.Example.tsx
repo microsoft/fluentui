@@ -10,7 +10,7 @@ export interface IPeopleSelectedItemsListExampleState {
 }
 
 export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
-  private index: number;
+  private index!: number;
   private addMultipleKey = 50;
 
   constructor(props: {}) {

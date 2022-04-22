@@ -54,12 +54,12 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   private _focusZone = React.createRef<IFocusZone>();
   private _droppingClassNames: string;
   /** Whether this.props.onDidMount has been called */
-  private _onDidMountCalled: boolean;
+  private _onDidMountCalled!: boolean;
   private _dragDropSubscription?: IDisposable;
 
-  private _classNames: IProcessedStyleSet<IDetailsRowStyles>;
-  private _rowClassNames: IDetailsRowFieldsProps['rowClassNames'];
-  private _ariaRowDescriptionId: string;
+  private _classNames!: IProcessedStyleSet<IDetailsRowStyles>;
+  private _rowClassNames!: IDetailsRowFieldsProps['rowClassNames'];
+  private _ariaRowDescriptionId!: string;
 
   public static getDerivedStateFromProps(
     nextProps: IDetailsRowBaseProps,

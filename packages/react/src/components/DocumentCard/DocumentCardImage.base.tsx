@@ -19,7 +19,7 @@ const getClassNames = classNamesFunction<IDocumentCardImageStyleProps, IDocument
  * {@docCategory DocumentCard}
  */
 export class DocumentCardImageBase extends React.Component<IDocumentCardImageProps, IDocumentCardImageState> {
-  private _classNames: IProcessedStyleSet<IDocumentCardImageStyles>;
+  private _classNames!: IProcessedStyleSet<IDocumentCardImageStyles>;
 
   constructor(props: IDocumentCardImageProps) {
     super(props);

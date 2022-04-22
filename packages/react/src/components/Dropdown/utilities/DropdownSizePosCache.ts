@@ -12,8 +12,8 @@ import type { IDropdownOption } from '../Dropdown.types';
  * cache should provide a little bit of relief.
  */
 export class DropdownSizePosCache {
-  private _cachedOptions: IDropdownOption[];
-  private _displayOnlyOptionsCache: number[];
+  private _cachedOptions!: IDropdownOption[];
+  private _displayOnlyOptionsCache!: number[];
   private _size = 0;
 
   /**

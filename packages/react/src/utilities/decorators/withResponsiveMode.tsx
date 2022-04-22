@@ -77,7 +77,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
   // eslint-disable-next-line deprecation/deprecation
   const resultClass = class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
     public static contextType = WindowContext;
-    public context: React.ContextType<typeof WindowContext>;
+    public context!: React.ContextType<typeof WindowContext>;
 
     private _events: EventGroup;
 

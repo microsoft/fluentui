@@ -140,12 +140,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _borderId: string;
   private _verticalLine: string;
   private _colorFillBarPatternId: string;
-  private _uniqueCallOutID: string | null;
+  private _uniqueCallOutID!: string | null;
   private _refArray: IRefArrayData[];
-  private margins: IMargins;
+  private margins!: IMargins;
   private eventLabelHeight: number = 36;
-  private lines: JSX.Element[];
-  private _renderedColorFillBars: JSX.Element[];
+  private lines!: JSX.Element[];
+  private _renderedColorFillBars!: JSX.Element[];
   private _colorFillBars: IColorFillBarsProps[];
   private _colorFillBarsOpacity: number;
   private _tooltipId: string;

@@ -152,14 +152,7 @@ export function composed<
   const { factoryOptions = {}, view } = options;
   const { defaultProp } = factoryOptions;
 
-  const ResultComponent: IFoundationComponent<
-    TComponentProps,
-    TTokens,
-    TStyleSet,
-    TViewProps,
-    TComponentSlots,
-    TStatics
-  > = (
+  const ResultComponent = ((
     componentProps: TViewProps &
       IStyleableComponentProps<TViewProps, TTokens, TStyleSet> & { children?: React.ReactNode },
   ) => {
@@ -268,7 +261,7 @@ export function composed<
         : getSlots(viewProps, options.slots);
 
     return view ? view(viewProps, Slots) : null;
-  };
+  }) as IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>;
 
   ResultComponent.displayName = options.displayName || (view && view.name);
 

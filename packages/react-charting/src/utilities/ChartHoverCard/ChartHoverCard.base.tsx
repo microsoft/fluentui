@@ -5,7 +5,7 @@ import { convertToLocaleString } from '../index';
 
 const getClassNames = classNamesFunction<IChartHoverCardStyleProps, IChartHoverCardStyles>();
 export class ChartHoverCardBase extends React.Component<IChartHoverCardProps, {}> {
-  private _classNames: IProcessedStyleSet<IChartHoverCardStyles>;
+  private _classNames!: IProcessedStyleSet<IChartHoverCardStyles>;
   public render(): React.ReactNode {
     const { color, Legend, XValue, YValue, styles, theme, ratio, descriptionMessage, culture } = this.props;
     this._classNames = getClassNames(styles!, {

@@ -24,7 +24,7 @@ const SHIMMER_LINE_VS_CELL_WIDTH_RATIO = 0.95;
 
 export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsListProps, {}> {
   private _shimmerItems: null[];
-  private _classNames: IProcessedStyleSet<IShimmeredDetailsListStyles>;
+  private _classNames!: IProcessedStyleSet<IShimmeredDetailsListStyles>;
 
   constructor(props: IShimmeredDetailsListProps) {
     super(props);

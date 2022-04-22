@@ -95,7 +95,7 @@ export interface IDetailsListAdvancedExampleState {
 }
 
 export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
-  private _isFetchingItems: boolean;
+  private _isFetchingItems!: boolean;
   private _selection: Selection;
   private _allItems: IExampleItem[];
 

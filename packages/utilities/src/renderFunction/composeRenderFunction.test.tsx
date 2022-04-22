@@ -7,8 +7,8 @@ interface IExampleProps {
   value: string;
 }
 
-const renderBase = (props: IExampleProps): JSX.Element | null => {
-  return <div data-value={props.value} />;
+const renderBase: IRenderFunction<IExampleProps> = props => {
+  return <div data-value={props!.value} />;
 };
 
 const renderDecoratorA = (

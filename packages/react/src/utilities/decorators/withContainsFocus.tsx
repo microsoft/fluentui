@@ -9,7 +9,7 @@ export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>
     TProps & { containsFocus?: boolean },
     { containsFocus?: boolean }
   > {
-    private _newContainsFocus: boolean;
+    private _newContainsFocus!: boolean;
     private _delayedSetContainsFocus: () => void;
     private _async: Async;
 

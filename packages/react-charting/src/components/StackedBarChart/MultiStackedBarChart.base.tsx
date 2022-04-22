@@ -44,9 +44,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     hideDenominator: [],
   };
 
-  private _classNames: IProcessedStyleSet<IMultiStackedBarChartStyles>;
+  private _classNames!: IProcessedStyleSet<IMultiStackedBarChartStyles>;
   private _calloutId: string;
-  private _calloutAnchorPoint: IChartDataPoint | null;
+  private _calloutAnchorPoint!: IChartDataPoint | null;
 
   public constructor(props: IMultiStackedBarChartProps) {
     super(props);

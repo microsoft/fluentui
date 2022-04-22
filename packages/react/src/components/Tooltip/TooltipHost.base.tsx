@@ -35,12 +35,12 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   // The wrapping div that gets the hover events
   private _tooltipHost = React.createRef<HTMLDivElement>();
 
-  private _classNames: { [key in keyof ITooltipHostStyles]: string };
+  private _classNames!: { [key in keyof ITooltipHostStyles]: string };
   private _async: Async;
-  private _dismissTimerId: number;
-  private _openTimerId: number;
+  private _dismissTimerId!: number;
+  private _openTimerId!: number;
   private _defaultTooltipId = getId('tooltip');
-  private _ignoreNextFocusEvent: boolean;
+  private _ignoreNextFocusEvent!: boolean;
 
   // Constructor
   constructor(props: ITooltipHostProps) {

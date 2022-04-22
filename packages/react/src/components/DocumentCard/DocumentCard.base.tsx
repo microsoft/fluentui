@@ -29,7 +29,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
   };
 
   private _rootElement = React.createRef<HTMLDivElement>();
-  private _classNames: IProcessedStyleSet<IDocumentCardStyles>;
+  private _classNames!: IProcessedStyleSet<IDocumentCardStyles>;
 
   constructor(props: IDocumentCardProps) {
     super(props);

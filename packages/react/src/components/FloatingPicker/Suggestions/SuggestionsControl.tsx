@@ -57,8 +57,8 @@ export class SuggestionsHeaderFooterItem extends React.Component<ISuggestionsHea
  * Class when used with SuggestionsStore, renders a suggestions control with customizable headers and footers
  */
 export class SuggestionsControl<T> extends React.Component<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
-  protected _forceResolveButton: IButton;
-  protected _searchForMoreButton: IButton;
+  protected _forceResolveButton!: IButton;
+  protected _searchForMoreButton!: IButton;
   protected _selectedElement = React.createRef<HTMLDivElement>();
   protected _suggestions = React.createRef<SuggestionsCore<T>>();
   private SuggestionsOfProperType: new (

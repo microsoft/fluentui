@@ -73,7 +73,7 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
     const win = ev.currentTarget as WindowWithId;
     const winId = win.__id__;
     graph.delete(winId);
-    win.removeEventListener('unload', cleanupMapEntries);
+    win.removeEventListener('unload', cleanupMapEntries as (ev: Event) => void);
     allWindows.delete(winId);
   };
 
@@ -87,7 +87,7 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
       winId = win.__id__;
       if (!allWindows.has(winId)) {
         allWindows.add(winId);
-        win.addEventListener('unload', cleanupMapEntries);
+        win.addEventListener('unload', cleanupMapEntries as (ev: Event) => void);
       }
     }
 

@@ -74,8 +74,8 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   private _labelId: string;
   private _descriptionId: string;
   private _ariaDescriptionId: string;
-  private _classNames: IButtonClassNames;
-  private _processingTouch: boolean;
+  private _classNames!: IButtonClassNames;
+  private _processingTouch!: boolean;
   private _lastTouchTimeoutId: number | undefined;
   private _renderedVisibleMenu: boolean = false;
 

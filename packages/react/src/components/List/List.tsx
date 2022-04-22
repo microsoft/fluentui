@@ -116,29 +116,29 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   };
   private _focusedIndex: number;
   private _scrollElement?: HTMLElement;
-  private _hasCompletedFirstRender: boolean;
+  private _hasCompletedFirstRender!: boolean;
 
   // surface rect relative to window
   private _surfaceRect: IRectangle | undefined;
 
   // The visible rect that we're required to render given the current list state.
-  private _requiredRect: IRectangle | null;
+  private _requiredRect!: IRectangle | null;
 
   // The visible rect that we're allowed to keep rendered. Pages outside of this rect will be removed.
-  private _allowedRect: IRectangle;
+  private _allowedRect!: IRectangle;
 
   // The rect that is visible to the user
   private _visibleRect: IRectangle | undefined;
 
   // materialized rect around visible items, relative to surface
-  private _materializedRect: IRectangle | null;
+  private _materializedRect!: IRectangle | null;
 
   private _requiredWindowsAhead: number;
   private _requiredWindowsBehind: number;
 
   private _measureVersion: number;
   private _scrollHeight?: number;
-  private _scrollTop: number;
+  private _scrollTop!: number;
   private _pageCache: IPageCache<T>;
 
   public static getDerivedStateFromProps<U = any>(

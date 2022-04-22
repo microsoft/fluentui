@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
 import { _getLineStarts, _getErrorLineInfo, _getErrorMessages, _supportedPackageToGlobalMap } from './transpileHelpers';
 import { SUPPORTED_PACKAGES } from '../utilities/defaultSupportedPackages';
 import type { IDiagnostic } from './transpileHelpers';

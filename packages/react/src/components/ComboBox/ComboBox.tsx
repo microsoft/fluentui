@@ -235,13 +235,13 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _autoCompleteTimeout: number | undefined;
 
   /** Promise used when resolving the comboBox options */
-  private _currentPromise: PromiseLike<IComboBoxOption[]>;
+  private _currentPromise!: PromiseLike<IComboBoxOption[]>;
 
   /** The current visible value sent to the auto fill on render */
   private _currentVisibleValue: string | undefined;
-  private _classNames: IComboBoxClassNames;
+  private _classNames!: IComboBoxClassNames;
   private _isScrollIdle: boolean;
-  private _hasPendingValue: boolean;
+  private _hasPendingValue!: boolean;
   private _scrollIdleTimeoutId: number | undefined;
   private _processingTouch: boolean;
   private _lastTouchTimeoutId: number | undefined;
@@ -253,7 +253,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * The general rule of thumb is if the menu was launched via the keyboard focus should go back
    * to the input, if it was dropped via the mouse focus should not be forced back to the input.
    */
-  private _focusInputAfterClose: boolean;
+  private _focusInputAfterClose!: boolean;
 
   /** Flag for when we get the first mouseMove */
   private _gotMouseMove: boolean;

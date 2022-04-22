@@ -1,1 +1,1 @@
-export { IDocPageProps as IDemoPageProps } from '@fluentui/react/lib/common/DocPage.types';
+export type { IDocPageProps as IDemoPageProps } from '@fluentui/react/lib/common/DocPage.types';

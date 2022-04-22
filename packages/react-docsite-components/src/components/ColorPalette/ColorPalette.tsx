@@ -26,7 +26,7 @@ export interface IColorPaletteState {
 }
 
 class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPaletteState> {
-  private _classNames: IProcessedStyleSet<IColorPaletteStyles>;
+  private _classNames!: IProcessedStyleSet<IColorPaletteStyles>;
 
   public constructor(props: IColorPaletteProps) {
     super(props);

@@ -15,7 +15,7 @@ const getClassNames = classNamesFunction<IDocumentCardStatusStyleProps, IDocumen
  * {@docCategory DocumentCard}
  */
 export class DocumentCardStatusBase extends React.Component<IDocumentCardStatusProps, any> {
-  private _classNames: IProcessedStyleSet<IDocumentCardStatusStyles>;
+  private _classNames!: IProcessedStyleSet<IDocumentCardStatusStyles>;
 
   constructor(props: IDocumentCardStatusProps) {
     super(props);

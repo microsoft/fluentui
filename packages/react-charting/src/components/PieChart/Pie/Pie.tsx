@@ -13,7 +13,7 @@ export class Pie extends React.Component<IPieProps, {}> {
       /* eslint-disable @typescript-eslint/no-explicit-any */
       .value((d: any) => d.y),
   };
-  private colors: scale.ScaleOrdinal<string | number, any>;
+  private colors!: scale.ScaleOrdinal<string | number, any>;
 
   constructor(props: IPieProps) {
     super(props);

@@ -19,7 +19,7 @@ const imageStyling = mergeStyles({
 });
 
 export class ChicletCardBase extends React.Component<IChicletCardProps, {}> {
-  private _classNames: { [key in keyof IChicletCardStyles]: string };
+  private _classNames!: { [key in keyof IChicletCardStyles]: string };
 
   public render(): JSX.Element {
     const { title, description, url, onClick, className, footer, theme, styles } = this.props;

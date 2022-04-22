@@ -36,7 +36,7 @@ export class ScrollablePaneBase
   private _contentContainer = React.createRef<HTMLDivElement>();
   private _subscribers: Set<Function>;
   private _stickies: Set<Sticky>;
-  private _mutationObserver: MutationObserver;
+  private _mutationObserver!: MutationObserver;
   private _notifyThrottled: () => void;
   private _async: Async;
   private _events: EventGroup;
@@ -94,7 +94,7 @@ export class ScrollablePaneBase
     if ('MutationObserver' in window) {
       this._mutationObserver = new MutationObserver(mutation => {
         // Function to check if mutation is occuring in stickyAbove or stickyBelow
-        function checkIfMutationIsSticky(mutationRecord: MutationRecord): boolean {
+        function checkIfMutationIsSticky(this: ScrollablePaneBase, mutationRecord: MutationRecord): boolean {
           if (this.stickyAbove !== null && this.stickyBelow !== null) {
             return this.stickyAbove.contains(mutationRecord.target) || this.stickyBelow.contains(mutationRecord.target);
           }

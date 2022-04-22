@@ -72,8 +72,8 @@ describe('Tooltip', () => {
 
     const callout = component.find('Callout');
 
-    Object.keys(calloutProps).forEach((key: keyof ICalloutProps) => {
-      expect(callout.prop(key)).toEqual(calloutProps[key]);
+    Object.keys(calloutProps).forEach(key => {
+      expect(callout.prop(key)).toEqual(calloutProps[key as keyof ICalloutProps]);
     });
 
     expect(callout.prop('tabIndex')).toEqual(-1);

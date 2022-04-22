@@ -26,7 +26,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     expandButtonProps: { 'aria-label': 'expand collapse group' },
   };
 
-  private _classNames: IProcessedStyleSet<IGroupHeaderStyles>;
+  private _classNames!: IProcessedStyleSet<IGroupHeaderStyles>;
   private _id: string;
 
   public static getDerivedStateFromProps(

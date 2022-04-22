@@ -18,7 +18,7 @@ import type {
 } from './EditingItem.types';
 
 export class EditingItem extends React.Component<IEditingSelectedPeopleItemProps, IPeoplePickerItemState> {
-  private _editingInput: HTMLInputElement;
+  private _editingInput!: HTMLInputElement;
   private _editingFloatingPicker = React.createRef<FloatingPeoplePicker>();
 
   constructor(props: IEditingSelectedPeopleItemProps) {

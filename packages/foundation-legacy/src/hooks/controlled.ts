@@ -18,7 +18,7 @@ export function useControlledState<TProps, TProp extends keyof TProps, TDefaultP
   props: Readonly<TProps>,
   propName: TProp,
   options?: IControlledStateOptions<TProps, TProp, TDefaultProp>,
-): [TProps[TProp] | undefined, React.Dispatch<React.SetStateAction<TProps[TProp]>>] {
+): [TProps[TProp] | undefined, React.Dispatch<React.SetStateAction<TProps[TProp] | undefined>>] {
   let defaultValue: TProps[TProp] | undefined;
   if (options) {
     if (options.defaultPropName && props[options.defaultPropName] !== undefined) {

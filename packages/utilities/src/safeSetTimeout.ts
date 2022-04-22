@@ -8,15 +8,16 @@ import { extendComponent } from './extendComponent';
  * accesses things within the component after being unmounted.
  */
 export const safeSetTimeout = (component: React.Component) => {
-  let activeTimeouts: Set<NodeJS.Timer>;
+  type Timer = ReturnType<typeof window.setTimeout>;
+  let activeTimeouts: Set<Timer>;
 
   return (cb: Function, duration: number) => {
     if (!activeTimeouts) {
-      activeTimeouts = new Set<NodeJS.Timer>();
+      activeTimeouts = new Set<Timer>();
 
       extendComponent(component, {
         componentWillUnmount: () => {
-          activeTimeouts.forEach((id: NodeJS.Timer) => clearTimeout(id));
+          activeTimeouts.forEach((id: Timer) => clearTimeout(id));
         },
       });
     }

@@ -51,7 +51,7 @@ const PLACEHOLDER_SIZES: {
 const getClassNames = classNamesFunction<IShimmerTileStyleProps, IShimmerTileStyles>();
 
 export class ShimmerTileBase extends React.Component<IShimmerTileProps, {}> {
-  private _classNames: { [key in keyof IShimmerTileStyles]: string };
+  private _classNames!: { [key in keyof IShimmerTileStyles]: string };
 
   constructor(props: IShimmerTileProps) {
     super(props);

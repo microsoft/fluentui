@@ -16,7 +16,7 @@ const getClassNames = classNamesFunction<IDocumentCardActivityStyleProps, IDocum
  * {@docCategory DocumentCard}
  */
 export class DocumentCardActivityBase extends React.Component<IDocumentCardActivityProps, any> {
-  private _classNames: IProcessedStyleSet<IDocumentCardActivityStyles>;
+  private _classNames!: IProcessedStyleSet<IDocumentCardActivityStyles>;
 
   constructor(props: IDocumentCardActivityProps) {
     super(props);
