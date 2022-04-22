@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { mergeClasses } from '@griffel/react';
 import { useToggleState } from '../../../utils/useToggleState';
 import {
@@ -59,9 +59,11 @@ const ToggleCompoundButton: ForwardRefComponent<ToggleCompoundButtonProps> = Rea
   return renderCompoundButton_unstable(state);
 }) as ForwardRefComponent<ToggleCompoundButtonProps>;
 
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+
 export const AsToggleButton = () => (
-  <ToggleCompoundButton icon={<CalendarMonthRegular />} secondaryContent="Secondary content">
-    Example
+  <ToggleCompoundButton icon={<CalendarMonth />} secondaryContent="Secondary content">
+    Compound button that can be toggled
   </ToggleCompoundButton>
 );
 

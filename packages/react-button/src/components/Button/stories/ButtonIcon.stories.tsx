@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { Button } from '../../../Button';
 
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+
 export const Icon = () => (
   <>
-    <Button icon={<CalendarMonthRegular />}>With calendar icon before contents</Button>
-    <Button icon={<CalendarMonthRegular />} iconPosition="after">
+    <Button icon={<CalendarMonth />}>With calendar icon before contents</Button>
+    <Button icon={<CalendarMonth />} iconPosition="after">
       With calendar icon after contents
     </Button>
     <Tooltip content="With calendar icon only" relationship="label">
-      <Button icon={<CalendarMonthRegular />} />
+      <Button icon={<CalendarMonth />} />
     </Tooltip>
   </>
 );

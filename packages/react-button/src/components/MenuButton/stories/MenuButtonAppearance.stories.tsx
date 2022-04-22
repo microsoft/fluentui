@@ -1,7 +1,5 @@
 import * as React from 'react';
-
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-
 import { MenuButton } from '../../../MenuButton';
 
 export const Appearance = () => (
