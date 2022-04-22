@@ -48,7 +48,7 @@ const useRootStyles = makeStyles({
     ':active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      color: tokens.colorNeutralForeground1,
+      color: tokens.colorNeutralForeground1Pressed,
 
       outlineStyle: 'none',
     },
