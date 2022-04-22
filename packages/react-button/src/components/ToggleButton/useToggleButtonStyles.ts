@@ -21,7 +21,7 @@ export const useCheckedStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorNeutralBackground1Selected,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    color: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralForeground1Selected,
 
     ...shorthands.borderWidth(tokens.strokeWidthThin),
 
@@ -35,13 +35,13 @@ export const useCheckedStyles = makeStyles({
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      color: tokens.colorNeutralForeground1,
+      color: tokens.colorNeutralForeground1Hover,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      color: tokens.colorNeutralForeground1,
+      color: tokens.colorNeutralForeground1Pressed,
     },
   },
 

@@ -41,7 +41,7 @@ const useRootStyles = makeStyles({
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      color: tokens.colorNeutralForeground1,
+      color: tokens.colorNeutralForeground1Hover,
 
       cursor: 'pointer',
 
@@ -56,7 +56,7 @@ const useRootStyles = makeStyles({
     ':hover:active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      color: tokens.colorNeutralForeground1,
+      color: tokens.colorNeutralForeground1Pressed,
 
       outlineStyle: 'none',
 
