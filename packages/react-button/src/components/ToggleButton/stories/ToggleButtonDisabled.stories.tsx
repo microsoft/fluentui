@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { ToggleButton } from '../../../ToggleButton';
 
 export const Disabled = () => {
@@ -13,10 +12,8 @@ export const Disabled = () => {
         <ToggleButton disabledFocusable>Disabled focusable state</ToggleButton>
       </div>
       <div style={groupStyles}>
-        <ToggleButton appearance="primary" icon={<CalendarMonthRegular />}>
-          Enabled state
-        </ToggleButton>
-        <ToggleButton appearance="primary" disabled icon={<CalendarMonthRegular />}>
+        <ToggleButton appearance="primary">Enabled state</ToggleButton>
+        <ToggleButton appearance="primary" disabled>
           Disabled state
         </ToggleButton>
         <ToggleButton appearance="primary" disabledFocusable>

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update Window interface to add FabricConfig",
-  "packageName": "@fluentui/font-icons-mdl2",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

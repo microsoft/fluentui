@@ -2,6 +2,65 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Tue, 19 Apr 2022 19:17:01 GMT",
+      "tag": "@fluentui/react-text_v9.0.0-rc.6",
+      "version": "9.0.0-rc.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Text"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.5",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.6",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.4",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          }
+        ],
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "320b8bbba1e498c65d011f3fae09dee98e7a11bb",
+            "comment": "refactor: autofix no export star at index file for cxe-prg packages"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Mar 2022 05:17:31 GMT",
       "tag": "@fluentui/react-text_v9.0.0-rc.5",
       "version": "9.0.0-rc.5",

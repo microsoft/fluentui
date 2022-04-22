@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "use ::after pseudo element in styles",
+  "packageName": "@fluentui/react-input",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
