@@ -373,8 +373,8 @@ storiesOf('ToggleButton Converged', module)
   .addStory('Default', () => <ToggleButton id={buttonId}>Hello, world</ToggleButton>, {
     includeRtl: true,
     // https://github.com/microsoft/fluentui/issues/21998
-    // includeHighContrast: true,
-    // includeDarkMode: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
   })
   .addStory('Circular', () => (
     <ToggleButton id={buttonId} shape="circular">
