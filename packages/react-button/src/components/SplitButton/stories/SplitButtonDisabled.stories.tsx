@@ -22,7 +22,7 @@ export const Disabled = () => {
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} disabled>
-              Disabled stat
+              Disabled state
             </SplitButton>
           )}
         </MenuTrigger>

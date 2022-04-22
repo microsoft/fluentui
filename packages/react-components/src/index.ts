@@ -233,6 +233,7 @@ export {
   useSplitButtonStyles_unstable,
   useToggleButton_unstable,
   useToggleButtonStyles_unstable,
+  useToggleState,
 } from '@fluentui/react-button';
 export type {
   ButtonProps,

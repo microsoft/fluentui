@@ -57,8 +57,7 @@ const useRootStyles = makeStyles({
       zIndex: 10,
     },
 
-    // TODO: change this to `::after`. Needs to be changed at the same time as react-input.
-    ':after': {
+    '::after': {
       right: 0,
       bottom: 0,
       left: 0,
