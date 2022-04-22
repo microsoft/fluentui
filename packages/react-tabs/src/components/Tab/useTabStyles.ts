@@ -34,6 +34,7 @@ const useRootStyles = makeStyles({
     cursor: 'pointer',
     display: 'flex',
     flexDirection: 'row',
+    flexShrink: 0,
     fontFamily: tokens.fontFamilyBase,
     lineHeight: tokens.lineHeightBase300,
     outlineStyle: 'none',
