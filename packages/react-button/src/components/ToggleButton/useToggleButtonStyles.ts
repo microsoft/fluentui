@@ -1,5 +1,6 @@
-import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { tokens } from '@fluentui/react-theme';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots } from '../Button/Button.types';
@@ -23,6 +24,13 @@ export const useCheckedStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
 
     ...shorthands.borderWidth(tokens.strokeWidthThin),
+
+    [`& .${iconFilledClassName}`]: {
+      display: 'inline',
+    },
+    [`& .${iconRegularClassName}`]: {
+      display: 'none',
+    },
 
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,

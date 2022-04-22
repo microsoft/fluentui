@@ -1,9 +1,9 @@
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots, ButtonState } from './Button.types';
-import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 
 export const buttonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Button',
@@ -44,6 +44,7 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForeground1,
 
       cursor: 'pointer',
+
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -58,6 +59,7 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForeground1,
 
       outlineStyle: 'none',
+
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -223,6 +225,13 @@ const useRootDisabledStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
 
       cursor: 'not-allowed',
+
+      [`& .${iconFilledClassName}`]: {
+        display: 'none',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'inline',
+      },
     },
 
     ':hover:active': {
@@ -231,6 +240,13 @@ const useRootDisabledStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
 
       cursor: 'not-allowed',
+
+      [`& .${iconFilledClassName}`]: {
+        display: 'none',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'inline',
+      },
     },
   },
 
