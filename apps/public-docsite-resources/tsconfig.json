@@ -1,25 +1,12 @@
 {
+  "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
-    "baseUrl": ".",
+    "noEmit": true,
+    "target": "ES2015",
+    "lib": ["ES2015", "dom"],
     "outDir": "lib",
-    "target": "es5",
-    "module": "commonjs",
     "jsx": "react",
-    "declaration": true,
-    "sourceMap": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "preserveConstEnums": true,
-    "noImplicitThis": true,
-    "skipLibCheck": true,
-    "lib": ["es5", "dom", "es2015.promise"],
-    "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["webpack-env", "custom-global"]
+    "types": ["environment", "webpack-env"]
   },
   "include": ["src"]
 }

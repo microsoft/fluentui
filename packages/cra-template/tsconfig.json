@@ -1,7 +1,12 @@
 {
-  "extends": "../../scripts/tsconfig.json",
+  "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
-    "noEmit": true
+    "esModuleInterop": true,
+    "module": "CommonJS",
+    "target": "ES2015",
+    "lib": ["ES2015"],
+    "noEmit": true,
+    "types": ["node"]
   },
   "include": ["scripts"],
   "exclude": ["node_modules", "template"]

@@ -1,23 +1,14 @@
 {
+  "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "dist",
-    "target": "ES2019",
-    "module": "CommonJS",
+    "noEmit": true,
+    "target": "ES2015",
+    "outDir": "lib",
+    "lib": ["ES2015", "dom"],
     "jsx": "react",
     "declaration": true,
-    "sourceMap": true,
-    "experimentalDecorators": true,
     "importHelpers": true,
-    "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "preserveConstEnums": true,
-    "lib": ["ES2019", "DOM"],
-    "types": ["jest"],
-    "isolatedModules": true
+    "types": ["jest", "environment"]
   },
   "include": ["src"]
 }

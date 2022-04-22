@@ -1,21 +1,12 @@
 {
+  "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
-    "target": "es5",
-    "outDir": "lib",
-    "module": "commonjs",
-    "jsx": "react",
-    "declaration": true,
-    "sourceMap": true,
     "noEmit": true,
-    "experimentalDecorators": true,
-    "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "preserveConstEnums": true,
-    "skipLibCheck": true,
-    "types": ["webpack-env", "@storybook/react", "screener-storybook"]
+    "target": "ES2015",
+    "lib": ["ES2015"],
+    "outDir": "lib",
+    "jsx": "react",
+    "types": ["@storybook/react", "screener-storybook"]
   },
   "include": ["src"]
 }

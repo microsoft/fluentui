@@ -1,16 +1,13 @@
 {
+  "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
-    "target": "es5",
+    "noEmit": true,
+    "target": "ES2015",
     "outDir": "lib",
-    "module": "commonjs",
-    "lib": ["es5", "dom"],
+    "lib": ["ES2015", "dom"],
+    "jsx": "react",
     "declaration": true,
-    "sourceMap": true,
     "importHelpers": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
     "types": ["jest"]
   },
   "include": ["src"]

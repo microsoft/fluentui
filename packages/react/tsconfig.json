@@ -1,25 +1,14 @@
 {
+  "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
-    "baseUrl": ".",
+    "noEmit": true,
+    "target": "ES2015",
     "outDir": "lib",
-    "target": "es5",
-    "module": "commonjs",
+    "lib": ["ES2015", "dom"],
     "jsx": "react",
-    "isolatedModules": true,
     "declaration": true,
-    "sourceMap": true,
-    "experimentalDecorators": true,
     "importHelpers": true,
-    "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "preserveConstEnums": true,
-    "lib": ["es5", "dom", "es2015.promise"],
-    "skipLibCheck": true,
-    "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "custom-global"]
+    "types": ["jest", "environment"]
   },
   "include": ["src"]
 }

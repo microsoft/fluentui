@@ -1,28 +1,14 @@
 {
+  "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "dist",
-    "target": "es5",
-    "module": "commonjs",
+    "noEmit": true,
+    "target": "ES2017",
+    "outDir": "lib",
+    "lib": ["ES2017", "dom"],
     "jsx": "react",
     "declaration": true,
-    "sourceMap": true,
-    "experimentalDecorators": true,
     "importHelpers": true,
-    "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "preserveConstEnums": true,
-    "skipLibCheck": true,
-    "lib": ["es5", "dom", "es2015.promise"],
-    "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["webpack-env", "custom-global", "node", "cypress", "cypress-storybook/cypress", "cypress-real-events"],
-    "paths": {
-      "@fluentui/react-examples/lib/*": ["./src/*"],
-      "@fluentui/react-examples": ["./src"]
-    }
+    "types": ["jest", "webpack-env", "environment", "cypress", "cypress-storybook/cypress", "cypress-real-events"]
   },
   "include": ["src"]
 }

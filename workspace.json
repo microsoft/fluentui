@@ -19,7 +19,8 @@
     "@fluentui/api-docs": {
       "root": "packages/api-docs",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:node"]
     },
     "@fluentui/azure-themes": {
       "root": "packages/azure-themes",
@@ -46,17 +47,20 @@
     "@fluentui/codemods": {
       "root": "packages/codemods",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:node"]
     },
     "@fluentui/common-styles": {
       "root": "packages/common-styles",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:web"]
     },
     "@fluentui/cra-template": {
       "root": "packages/cra-template",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:any"]
     },
     "@fluentui/date-time-utilities": {
       "root": "packages/date-time-utilities",
@@ -81,7 +85,8 @@
     "@fluentui/dom-utilities": {
       "root": "packages/dom-utilities",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:web"]
     },
     "@fluentui/e2e": {
       "root": "packages/fluentui/e2e",
@@ -138,7 +143,8 @@
     "@fluentui/monaco-editor": {
       "root": "packages/monaco-editor",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:web"]
     },
     "@fluentui/nx-workspace-tools": {
       "root": "tools",
@@ -183,7 +189,8 @@
     "@fluentui/perf-test": {
       "root": "apps/perf-test",
       "projectType": "application",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8"]
     },
     "@fluentui/perf-test-northstar": {
       "root": "packages/fluentui/perf-test-northstar",
@@ -215,17 +222,20 @@
     "@fluentui/public-docsite": {
       "root": "apps/public-docsite",
       "projectType": "application",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8"]
     },
     "@fluentui/public-docsite-resources": {
       "root": "apps/public-docsite-resources",
       "projectType": "application",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8"]
     },
     "@fluentui/public-docsite-setup": {
       "root": "packages/public-docsite-setup",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:node"]
     },
     "@fluentui/react": {
       "root": "packages/react",
@@ -287,12 +297,14 @@
     "@fluentui/react-cards": {
       "root": "packages/react-cards",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8"]
     },
     "@fluentui/react-charting": {
       "root": "packages/react-charting",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8"]
     },
     "@fluentui/react-checkbox": {
       "root": "packages/react-checkbox",
@@ -398,17 +410,20 @@
     "@fluentui/react-icon-provider": {
       "root": "packages/react-icon-provider",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:web"]
     },
     "@fluentui/react-icons-mdl2": {
       "root": "packages/react-icons-mdl2",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:web"]
     },
     "@fluentui/react-icons-mdl2-branded": {
       "root": "packages/react-icons-mdl2-branded",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:web"]
     },
     "@fluentui/react-icons-northstar": {
       "root": "packages/fluentui/react-icons-northstar",
@@ -460,7 +475,8 @@
     "@fluentui/react-monaco-editor": {
       "root": "packages/react-monaco-editor",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:web"]
     },
     "@fluentui/react-northstar": {
       "root": "packages/fluentui/react-northstar",
@@ -661,7 +677,8 @@
     "@fluentui/react-window-provider": {
       "root": "packages/react-window-provider",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:web"]
     },
     "@fluentui/scheme-utilities": {
       "root": "packages/scheme-utilities",
@@ -681,7 +698,8 @@
     "@fluentui/ssr-tests": {
       "root": "apps/ssr-tests",
       "projectType": "application",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8"]
     },
     "@fluentui/state": {
       "root": "packages/fluentui/state",
@@ -691,7 +709,8 @@
     "@fluentui/storybook": {
       "root": "packages/storybook",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:web"]
     },
     "@fluentui/style-utilities": {
       "root": "packages/style-utilities",
@@ -716,7 +735,8 @@
     "@fluentui/theme": {
       "root": "packages/theme",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:web"]
     },
     "@fluentui/theme-samples": {
       "root": "packages/theme-samples",
@@ -726,7 +746,8 @@
     "@fluentui/theming-designer": {
       "root": "apps/theming-designer",
       "projectType": "application",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8"]
     },
     "@fluentui/ts-minbar-test-react": {
       "root": "apps/ts-minbar-test-react",
@@ -755,7 +776,8 @@
     "@fluentui/vr-tests": {
       "root": "apps/vr-tests",
       "projectType": "application",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8"]
     },
     "@fluentui/vr-tests-react-components": {
       "root": "apps/vr-tests-react-components",

@@ -1,25 +1,15 @@
 {
+  "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "dist",
-    "target": "es5",
-    "module": "commonjs",
-    "jsx": "react",
+    "module": "CommonJS",
+    "noEmit": true,
+    "target": "ES2015",
+    "isolatedModules": false,
+    "outDir": "lib",
+    "lib": ["ES2015"],
     "declaration": true,
-    "sourceMap": true,
-    "experimentalDecorators": true,
     "importHelpers": true,
-    "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "skipLibCheck": true,
-    "moduleResolution": "node",
-    "preserveConstEnums": true,
-    "downlevelIteration": true,
-    "lib": ["es2017"],
-    "types": []
+    "types": ["node", "environment"]
   },
   "include": ["src"]
 }
