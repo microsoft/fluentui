@@ -325,6 +325,30 @@ export const createLightTheme: (brand: BrandVariants) => Theme;
 export const createTeamsDarkTheme: (brand: BrandVariants) => Theme;
 
 // @public (undocumented)
+export type CurveTokens = {
+    curveAccelerateMax: string;
+    curveAccelerateMid: string;
+    curveAccelerateMin: string;
+    curveDecelerateMax: string;
+    curveDecelerateMid: string;
+    curveDecelerateMin: string;
+    curveEasyEaseMax: string;
+    curveEasyEase: string;
+    curveLinear: string;
+};
+
+// @public (undocumented)
+export type DurationTokens = {
+    durationUltraFast: string;
+    durationFaster: string;
+    durationFast: string;
+    durationNormal: string;
+    durationSlow: string;
+    durationSlower: string;
+    durationUltraSlow: string;
+};
+
+// @public (undocumented)
 export type FontFamilyTokens = {
     fontFamilyBase: string;
     fontFamilyMonospace: string;
@@ -350,6 +374,21 @@ export type FontWeightTokens = {
     fontWeightRegular: number;
     fontWeightMedium: number;
     fontWeightSemibold: number;
+};
+
+// @public (undocumented)
+export type HorizontalSpacingTokens = {
+    spacingHorizontalNone: string;
+    spacingHorizontalXXS: string;
+    spacingHorizontalXS: string;
+    spacingHorizontalSNudge: string;
+    spacingHorizontalS: string;
+    spacingHorizontalMNudge: string;
+    spacingHorizontalM: string;
+    spacingHorizontalL: string;
+    spacingHorizontalXL: string;
+    spacingHorizontalXXL: string;
+    spacingHorizontalXXXl: string;
 };
 
 // @public (undocumented)
@@ -390,6 +429,21 @@ export type ShadowTokens = {
 };
 
 // @public (undocumented)
+export type SpacingTokens = {
+    none: string;
+    xxs: string;
+    xs: string;
+    sNudge: string;
+    s: string;
+    mNudge: string;
+    m: string;
+    l: string;
+    xl: string;
+    xxl: string;
+    xxxl: string;
+};
+
+// @public (undocumented)
 export type StrokeWidthTokens = {
     strokeWidthThin: string;
     strokeWidthThick: string;
@@ -407,13 +461,28 @@ export const teamsHighContrastTheme: Theme;
 export const teamsLightTheme: Theme;
 
 // @public (undocumented)
-export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
+export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & HorizontalSpacingTokens & VerticalSpacingTokens & DurationTokens & CurveTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
 
 // @public
 export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record<keyof TTheme, string>;
 
 // @public (undocumented)
 export const tokens: Record<keyof Theme, string>;
+
+// @public (undocumented)
+export type VerticalSpacingTokens = {
+    spacingVerticalNone: string;
+    spacingVerticalXXS: string;
+    spacingVerticalXS: string;
+    spacingVerticalSNudge: string;
+    spacingVerticalS: string;
+    spacingVerticalMNudge: string;
+    spacingVerticalM: string;
+    spacingVerticalL: string;
+    spacingVerticalXL: string;
+    spacingVerticalXXL: string;
+    spacingVerticalXXXl: string;
+};
 
 // @public (undocumented)
 export const webDarkTheme: Theme;

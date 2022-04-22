@@ -67,6 +67,11 @@ export type {
   ShadowBrandTokens,
   ShadowTokens,
   StrokeWidthTokens,
+  SpacingTokens,
+  HorizontalSpacingTokens,
+  VerticalSpacingTokens,
+  DurationTokens,
+  CurveTokens,
   Theme,
 } from '@fluentui/react-theme';
 export {
