@@ -22,10 +22,14 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     options.sourceMap = true;
   }
 
+  const tsConfigProjectRoot = 'tsconfig.json';
   const tsConfigLib = 'tsconfig.lib.json';
   const isUsingTsSolutionConfigs = fs.existsSync(resolveCwd(tsConfigLib));
 
-  if (isUsingTsSolutionConfigs) {
+  const tsConfig = JSON.parse(fs.readFileSync(resolveCwd(tsConfigProjectRoot), 'utf-8'));
+  const isUsingV8pathAliases = tsConfig.extends && tsConfig.extends.includes('tsconfig.base.v8.json');
+
+  if (isUsingTsSolutionConfigs || isUsingV8pathAliases) {
     // For converged packages (which use TS path aliases), explicitly set `baseUrl` and `rootDir` to current package root.
     // > - This is a temporary workaround for current way of building packages via lage and just scripts.
     // > - Without setting baseUrl we would get all aliased packages build within outDir
@@ -33,7 +37,7 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     logger.info(`📣 TSC: package is using TS path aliases. Overriding tsconfig settings.`);
     options.baseUrl = '.';
     options.rootDir = './src';
-    options.project = tsConfigLib;
+    options.project = isUsingTsSolutionConfigs ? tsConfigLib : tsConfigProjectRoot;
   }
 
   return options;
