@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Exported new theme types",
+  "packageName": "@fluentui/react-components",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
