@@ -18,8 +18,8 @@ storiesOf('Button Converged', module)
   .addStory('Default', () => <Button id={buttonId}>Hello, world</Button>, {
     includeRtl: true,
     // https://github.com/microsoft/fluentui/issues/21998
-    // includeHighContrast: true,
-    // includeDarkMode: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
   })
   .addStory('Circular', () => (
     <Button id={buttonId} shape="circular">
