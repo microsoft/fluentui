@@ -2,7 +2,6 @@
   "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
     "module": "CommonJS",
-    "noEmit": true,
     "resolveJsonModule": true,
     "target": "ES2015",
     "outDir": "lib",

@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
-    "noEmit": true,
     "target": "ES2017",
     "outDir": "lib",
     "lib": ["ES2017", "dom"],
