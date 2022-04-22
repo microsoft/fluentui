@@ -17,7 +17,6 @@ storiesOf('Button Converged', module)
   .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <Button id={buttonId}>Hello, world</Button>, {
     includeRtl: true,
-    // https://github.com/microsoft/fluentui/issues/21998
     includeHighContrast: true,
     includeDarkMode: true,
   })
@@ -372,7 +371,6 @@ storiesOf('ToggleButton Converged', module)
   .addDecorator(story => <Screener steps={steps}>{story()}</Screener>)
   .addStory('Default', () => <ToggleButton id={buttonId}>Hello, world</ToggleButton>, {
     includeRtl: true,
-    // https://github.com/microsoft/fluentui/issues/21998
     includeHighContrast: true,
     includeDarkMode: true,
   })
