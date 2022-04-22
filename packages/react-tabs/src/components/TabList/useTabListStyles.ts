@@ -22,11 +22,11 @@ const useStyles = makeStyles({
     position: 'relative',
   },
   horizontal: {
-    alignItems: 'center',
+    alignItems: 'stretch',
     flexDirection: 'row',
   },
   vertical: {
-    alignItems: 'flex-start',
+    alignItems: 'stretch',
     flexDirection: 'column',
   },
 });
