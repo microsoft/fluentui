@@ -3,7 +3,7 @@ import { TeamsCategoryColorSchemeMapping } from '../teams/types';
 import { ColorSchemeMapping } from '../../themes/types';
 import { createColorScheme as createEmptyColorScheme } from '../teams/colors';
 
-export const accessibleYellow = '#ffff01';
+export const accessibleYellow = '#ffff00';
 export const accessibleGreen = '#3ff23f'; // always disabled color in high contrast
 export const accessibleCyan = '#1aebff';
 export const red = '#f00';
