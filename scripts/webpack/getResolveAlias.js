@@ -4,6 +4,10 @@ const path = require('path');
 const { findRepoDeps, findGitRoot } = require('../monorepo/index');
 const { readConfig } = require('../read-config');
 
+/**
+ *
+ * @param {string} [entryPoint]
+ */
 function getOutputPath(entryPoint) {
   return entryPoint && entryPoint.includes('dist/es') ? 'dist/es' : 'lib';
 }

@@ -3,7 +3,13 @@
 const fs = require('fs');
 const path = require('path');
 
+/**
+ * @type {string}
+ */
 let cwdForGitRoot;
+/**
+ * @type {string}
+ */
 let gitRoot;
 
 function findGitRoot() {
