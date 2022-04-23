@@ -31,26 +31,32 @@ export const themes: readonly [{
     readonly id: "web-light";
     readonly label: "Web Light";
     readonly theme: Theme;
+    readonly exportName: "webLightTheme";
 }, {
     readonly id: "web-dark";
     readonly label: "Web Dark";
     readonly theme: Theme;
+    readonly exportName: "webDarkTheme";
 }, {
     readonly id: "web-high-contrast";
     readonly label: "Web High Contrast";
     readonly theme: Theme;
+    readonly exportName: "webHighContrastTheme";
 }, {
     readonly id: "teams-light";
     readonly label: "Teams Light";
     readonly theme: Theme;
+    readonly exportName: "teamsLightTheme";
 }, {
     readonly id: "teams-dark";
     readonly label: "Teams Dark";
     readonly theme: Theme;
+    readonly exportName: "teamsDarkTheme";
 }, {
     readonly id: "teams-high-contrast";
     readonly label: "Teams High Contrast";
     readonly theme: Theme;
+    readonly exportName: "tmsHighContrastTheme";
 }];
 
 // (No @packageDocumentation comment for this package)

@@ -89,14 +89,9 @@ const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: str
 };
 
 // Most of this file is copied from Storybook's addons/docs/src/blocks/DocsStory.tsx
-export const FluentDocsDocsStory: React.FunctionComponent<DocsStoryProps & { componentName: string }> = ({
-  id,
-  name,
-  expanded = true,
-  withToolbar = false,
-  parameters = {},
-  componentName,
-}) => {
+export const FluentDocsDocsStory: React.FunctionComponent<
+  DocsStoryProps & { componentName: string; fluentThemeExportName: string }
+> = ({ id, name, expanded = true, withToolbar = false, parameters = {}, componentName, fluentThemeExportName }) => {
   const { docs } = parameters;
 
   if (!name) {
@@ -126,24 +121,27 @@ export const FluentDocsDocsStory: React.FunctionComponent<DocsStoryProps & { com
                 // https://github.com/microsoft/fluentui-storybook-addons/issues/12
                 code: dedent`
             import * as ReactDOM from 'react-dom';
-            import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+            import { FluentProvider, FLUENT_THEME_EXPORT_NAME } from '@fluentui/react-components';
             import { STORY_NAME as Example } from './example';
             //
             // You can edit this example in "example.tsx".
             //
             ReactDOM.render(
-                <FluentProvider theme={webLightTheme}>
+                <FluentProvider theme={FLUENT_THEME_EXPORT_NAME}>
                     <Example />
                 </FluentProvider>,
                 document.getElementById('root'),
-            );`.replace('STORY_NAME', name.replace(new RegExp(' ', 'g'), '')),
+            );`
+                  .replace('STORY_NAME', name.replace(new RegExp(' ', 'g'), ''))
+                  .replace('FLUENT_THEME_EXPORT_NAME', fluentThemeExportName)
+                  .replace('FLUENT_THEME_EXPORT_NAME', fluentThemeExportName),
               },
             },
             dependencies: {
               react: '^17.0.0',
               'react-dom': '^17.0.0',
               'react-scripts': '^4.0.0',
-              '@fluentui/react-components': '^9.0.0-beta', // necessary for FluentProvider
+              '@fluentui/react-components': packageJson.version, // necessary for FluentProvider
             },
           }}
           autorun={false}

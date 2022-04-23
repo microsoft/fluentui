@@ -5,6 +5,8 @@ import { KnownIssues } from './KnownIssues.stories';
 import { Toc } from './Toc.stories';
 import { isHosted } from './isHosted';
 import { FluentDocsDocsStory } from './FluentDocsDocsStory.stories';
+import { THEME_ID } from '../../../react-storybook-addon/src/index';
+import { defaultTheme, themes } from '../../../react-storybook-addon/src/theme';
 
 const useStyles = makeStyles({
   divider: {
@@ -42,7 +44,12 @@ export const FluentDocsPage = () => {
   const primaryStory = stories[0];
   const hosted = isHosted();
   const styles = useStyles();
-  const componentName = context.title.split('/').pop().replaceAll(' ', '') ?? 'Unknown';
+  const componentName = context.title.split('/').pop()?.replace(' ', '').replace(' ', '') ?? 'Unknown';
+
+  // eslint-disable-next-line deprecation/deprecation
+  const fluentThemeID = (context.globals && context.globals[THEME_ID]) ?? defaultTheme.id;
+  const fluentThemeExportName = themes.find(theme => theme.id === fluentThemeID)?.exportName ?? 'webLightTheme';
+
   // DEBUG
   // console.log('FluentDocsPage', context);
   // console.table(stories.map((s: StoreItem) => ({ id: s.id, kind: s.kind, name: s.name, story: s.story })));
@@ -66,7 +73,11 @@ export const FluentDocsPage = () => {
           <hr className={styles.divider} />
           {stories.map((story, index) => (
             <React.Fragment key={index}>
-              <FluentDocsDocsStory {...story} componentName={componentName} />
+              <FluentDocsDocsStory
+                {...story}
+                componentName={componentName}
+                fluentThemeExportName={fluentThemeExportName}
+              />
               {story === primaryStory && <ArgsTable story={PRIMARY_STORY} />}
             </React.Fragment>
           ))}
