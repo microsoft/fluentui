@@ -432,3 +432,7 @@ h2.fluent {
 #docs-root .sp-code-editor {
   border-radius: 0 0 16px 16px;
 }
+
+#docs-root .sp-button {
+  cursor: pointer;
+}
