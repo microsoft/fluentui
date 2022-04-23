@@ -54,7 +54,7 @@ const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: str
   React.useEffect(() => {
     if (id) {
       const anchor = document.getElementById(`anchor--${id}`);
-      const iframe = anchor?.getElementsByTagName('iframe')?.item(0);
+      const iframe = anchor?.querySelector('iframe');
 
       // toggle iframe/inline rendering
       if (iframe) {
