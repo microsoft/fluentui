@@ -48,7 +48,7 @@ const handleReportBug = (componentName: string) => async (e: React.MouseEvent) =
 };
 
 const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: string }> = ({ id, componentName }) => {
-  const [renderInline, setRenderInline] = React.useState(true);
+  const [renderMode, setRenderMode] = React.useState<'storybook' | 'sandpack'>('storybook');
   const sandpack = useSandpack();
 
   React.useEffect(() => {
@@ -63,7 +63,7 @@ const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: str
         sandpack.listen(msg => {
           if (msg.type === 'start') {
             iframe.style.display = 'block';
-            setRenderInline(false);
+            setRenderMode('sandpack');
           }
         });
       }
@@ -85,7 +85,7 @@ const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: str
         </>
       }
     >
-      <>{renderInline && <Story id={id} />}</>
+      {renderMode === 'storybook' && <Story id={id} />}
     </SandpackPreview>
   );
 };
