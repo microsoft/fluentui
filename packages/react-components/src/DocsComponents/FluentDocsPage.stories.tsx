@@ -44,7 +44,7 @@ export const FluentDocsPage = () => {
   const primaryStory = stories[0];
   const hosted = isHosted();
   const styles = useStyles();
-  const componentName = context.title.split('/').pop()?.replace(' ', '').replace(' ', '') ?? 'Unknown';
+  const componentName = context.title.split('/').pop()?.replace(new RegExp(' ', 'g'), '') ?? 'Unknown';
 
   // eslint-disable-next-line deprecation/deprecation
   const fluentThemeID = (context.globals && context.globals[THEME_ID]) ?? defaultTheme.id;
