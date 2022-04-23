@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "Improved documentation - enable users to edit code of examples, add integration with GitHub",
   "packageName": "@fluentui/react-components",
   "email": "peter@draxler.ml",
