@@ -134,10 +134,21 @@ const useInputStyles = makeStyles({
 
       [`& ~ .${checkboxClassNames.label}`]: {
         color: tokens.colorNeutralForegroundDisabled,
+        '@media (forced-colors: active)': {
+          color: 'GrayText',
+        },
       },
       [`& ~ .${checkboxClassNames.indicator}`]: {
         ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
         color: tokens.colorNeutralForegroundDisabled,
+        '@media (forced-colors: active)': {
+          color: 'GrayText',
+        },
+      },
+      [`& ~ .${checkboxClassNames.indicator} svg`]: {
+        '@media (forced-colors: active)': {
+          color: 'GrayText',
+        },
       },
     },
   },

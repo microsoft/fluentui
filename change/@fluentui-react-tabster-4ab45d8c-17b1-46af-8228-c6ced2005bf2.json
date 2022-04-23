@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(react-tabster): Add grid navigation",
-  "packageName": "@fluentui/react-tabster",
-  "email": "jukapsia@microsoft.com",
-  "dependentChangeType": "patch"
-}

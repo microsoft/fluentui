@@ -48,3 +48,5 @@ export {
   useToggleButton_unstable,
 } from './ToggleButton';
 export type { ToggleButtonProps, ToggleButtonState } from './ToggleButton';
+
+export { useToggleState } from './utils/index';

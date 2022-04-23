@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "DocumentCard: parent container is no longer focusable and now has role=group to improve a11y experience",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

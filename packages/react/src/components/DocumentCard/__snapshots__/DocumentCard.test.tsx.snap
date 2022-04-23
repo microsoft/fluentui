@@ -36,7 +36,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
       & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
         padding-top: 4px;
       }
-  data-is-focusable={false}
+  role="group"
 >
   <div
     className=
@@ -71,7 +71,28 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
           padding-left: 16px;
           padding-right: 16px;
           padding-top: 8px;
+          position: relative;
           word-wrap: break-word;
+        }
+        &:focus {
+          outline: 0px solid;
+        }
+        .ms-Fabric--isFocusVisible &:focus {
+          border-color: #605e5c;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border-radius: 2px;
+          border: 2px solid #605e5c;
+          bottom: -1px;
+          content: '';
+          left: -1px;
+          pointer-events: none;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border-color: Highlight;
         }
     title=""
   >

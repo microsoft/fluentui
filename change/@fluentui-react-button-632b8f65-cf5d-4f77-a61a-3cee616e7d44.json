@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Button: Use filled icons on hover.",
+  "packageName": "@fluentui/react-button",
+  "email": "annkelle@microsoft.com",
+  "dependentChangeType": "none"
+}

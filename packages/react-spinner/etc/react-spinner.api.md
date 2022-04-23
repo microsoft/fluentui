@@ -7,9 +7,10 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSpinner_unstable: (state: SpinnerState) => JSX.Element;
@@ -17,18 +18,17 @@ export const renderSpinner_unstable: (state: SpinnerState) => JSX.Element;
 // @public
 export const Spinner: ForwardRefComponent<SpinnerProps>;
 
-// @public @deprecated (undocumented)
-export const spinnerClassName = "fui-Spinner";
-
 // @public (undocumented)
 export const spinnerClassNames: SlotClassNames<SpinnerSlots>;
 
 // @public
-export type SpinnerProps = ComponentProps<SpinnerSlots> & SpinnerCommons;
+export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & Partial<SpinnerCommons>;
 
 // @public (undocumented)
 export type SpinnerSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
+    spinner?: Slot<'span'>;
+    label?: Slot<typeof Label>;
 };
 
 // @public

@@ -8,6 +8,9 @@ import type { TextareaState, TextareaSlots } from './Textarea.types';
 export const renderTextarea_unstable = (state: TextareaState) => {
   const { slots, slotProps } = getSlots<TextareaSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      <slots.textarea {...slotProps.textarea} />
+    </slots.root>
+  );
 };

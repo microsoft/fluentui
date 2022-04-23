@@ -14,6 +14,7 @@ const renderDropdown = (props: DropdownProps = {}, attachTo?: HTMLElement) => {
   const searchInputWrapper = findIntrinsicElement(wrapper, `.${dropdownSearchInputSlotClassNames.input}`);
   const itemsListWrapper = findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.itemsList}`);
   const getItemsWrapper = () => findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.item}`);
+  const getItemsCountWrapper = () => findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.itemsCount}`);
   const getSelectedItemsWrapper = () => findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.selectedItem}`);
   const getSelectedItemWrapperAtIndex = index => getSelectedItemsWrapper().at(index);
   const getItemWrapperAtIndex = index => getItemsWrapper().at(index);
@@ -28,6 +29,7 @@ const renderDropdown = (props: DropdownProps = {}, attachTo?: HTMLElement) => {
     itemsListNode: itemsListWrapper.getDOMNode<HTMLElement>(),
     searchInputNode: searchInputWrapper.length ? searchInputWrapper.getDOMNode<HTMLInputElement>() : null,
     getA11yMessageContainerNode: () => findIntrinsicElement(wrapper, '[role="status"]').getDOMNode(),
+    getItemsCountNode: () => getItemsCountWrapper().getDOMNode<HTMLElement>(),
     getItemNodes: () => getItemsWrapper().map(nodeWrapper => nodeWrapper.getDOMNode()),
     getItemNodeAtIndex: index => getItemWrapperAtIndex(index).getDOMNode(),
     getSelectedItemNodes: () => getSelectedItemsWrapper().map(nodeWrapper => nodeWrapper.getDOMNode()),

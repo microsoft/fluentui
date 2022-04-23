@@ -34,12 +34,12 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     }
 
     overflowManager.observe(containerRef.current, {
-      overflowDirection,
-      overflowAxis,
-      padding,
-      minimumVisible,
-      onUpdateItemVisibility,
-      onUpdateOverflow: updateOverflowItems,
+      overflowDirection: overflowDirection ?? 'end',
+      overflowAxis: overflowAxis ?? 'horizontal',
+      padding: padding ?? 10,
+      minimumVisible: minimumVisible ?? 0,
+      onUpdateItemVisibility: onUpdateItemVisibility ?? (() => undefined),
+      onUpdateOverflow: updateOverflowItems ?? (() => undefined),
     });
 
     return () => {

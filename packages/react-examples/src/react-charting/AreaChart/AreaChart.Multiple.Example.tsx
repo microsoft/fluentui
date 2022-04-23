@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { AreaChart } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import * as d3 from 'd3-format';
 import { ILineChartProps } from '@fluentui/react-charting';
 
@@ -163,17 +162,17 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
       {
         legend: 'legend1',
         data: chart1Points,
-        color: DefaultPalette.accent,
+        color: '#0099BC',
       },
       {
         legend: 'legend2',
         data: chart2Points,
-        color: DefaultPalette.blueLight,
+        color: '#77004D',
       },
       {
         legend: 'legend3',
         data: chart3Points,
-        color: DefaultPalette.blueDark,
+        color: '#4F68ED',
       },
     ];
 
@@ -185,10 +184,24 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
 
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <label htmlFor="changeWidth_Multiple">change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          id="changeWidth_Multiple"
+          onChange={this._onWidthChange}
+        />
+        <label htmlFor="changeHeight_Multiple">change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight_Multiple"
+          onChange={this._onHeightChange}
+        />
         <div style={rootStyle}>
           <AreaChart
             height={this.state.height}

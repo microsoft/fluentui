@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(Button): Text color in HC mode for hover, active and checked states.",
+  "packageName": "@fluentui/react-button",
+  "email": "jukapsia@microsoft.com",
+  "dependentChangeType": "patch"
+}

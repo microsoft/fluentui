@@ -105,6 +105,34 @@ export type {
 } from '@fluentui/react-radio';
 
 export {
+  SpinButton,
+  renderSpinButton_unstable,
+  spinButtonClassNames,
+  useSpinButtonStyles_unstable,
+  useSpinButton_unstable,
+} from '@fluentui/react-spinbutton';
+
+export type {
+  SpinButtonOnChangeData,
+  SpinButtonChangeEvent,
+  SpinButtonProps,
+  SpinButtonSlots,
+  SpinButtonState,
+  SpinButtonSpinState,
+  SpinButtonBounds,
+  SpinButtonStrings,
+} from '@fluentui/react-spinbutton';
+
+export {
+  Spinner,
+  spinnerClassNames,
+  renderSpinner_unstable,
+  useSpinner_unstable,
+  useSpinnerStyles_unstable,
+} from '@fluentui/react-spinner';
+export type { SpinnerProps, SpinnerSlots, SpinnerState } from '@fluentui/react-spinner';
+
+export {
   Switch,
   switchClassNames,
   renderSwitch_unstable,
@@ -114,30 +142,42 @@ export {
 export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';
 
 export {
-  Tab,
-  /* eslint-disable-next-line deprecation/deprecation */
-  tabClassName,
-  tabClassNames,
-  useTab_unstable,
-  useTabStyles_unstable,
-  renderTab_unstable,
-  TabList,
-  /* eslint-disable-next-line deprecation/deprecation */
-  tabListClassName,
-  tabListClassNames,
-  useTabList_unstable,
-  useTabListStyles_unstable,
-  renderTabList_unstable,
-} from '@fluentui/react-tabs';
+  Textarea,
+  textareaClassNames,
+  renderTextarea_unstable,
+  useTextarea_unstable,
+  useTextareaStyles_unstable,
+} from '@fluentui/react-textarea';
+export type { TextareaProps, TextareaSlots, TextareaState } from '@fluentui/react-textarea';
+
 export type {
-  TabValue,
   TabProps,
+  TabSlots,
   TabState,
+  TabValue,
+  TabRegisterData,
+  RegisterTabEventHandler,
   SelectTabData,
   SelectTabEvent,
   SelectTabEventHandler,
-  TabListProps,
   TabListContextValue,
   TabListContextValues,
+  TabListProps,
+  TabListSlots,
   TabListState,
+} from '@fluentui/react-tabs';
+
+export {
+  renderTab_unstable,
+  Tab,
+  tabClassName,
+  tabClassNames,
+  useTabStyles_unstable,
+  useTab_unstable,
+  renderTabList_unstable,
+  TabList,
+  tabListClassName,
+  tabListClassNames,
+  useTabListStyles_unstable,
+  useTabList_unstable,
 } from '@fluentui/react-tabs';

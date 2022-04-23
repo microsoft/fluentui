@@ -7,7 +7,10 @@ import {
   readWorkspaceConfiguration,
   Tree,
   getProjects as getAllProjects,
+  ProjectConfiguration,
+  readJson,
 } from '@nrwl/devkit';
+import { PackageJson } from './types';
 
 /**
  * CLI prompts abstraction to trigger dynamic prompts within a generator
@@ -170,4 +173,18 @@ export function getProjects(tree: Tree, projectNames?: string[]) {
   }
 
   return allProjects;
+}
+
+export function hasSchemaFlag<T, K extends keyof T>(schema: T, flag: K): schema is T & Record<K, NonNullable<T[K]>> {
+  return Boolean(schema[flag]);
+}
+
+export function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
+  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
+  return packageJson.version.startsWith('9.');
+}
+
+export function isV8Package(tree: Tree, project: ProjectConfiguration) {
+  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
+  return packageJson.version.startsWith('8.');
 }
