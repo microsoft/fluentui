@@ -73,16 +73,14 @@ const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: str
   return (
     <SandpackPreview
       actionsChildren={
-        <>
-          <button
-            type="button"
-            className="sp-button"
-            style={{ padding: 'var(--sp-space-1) var(--sp-space-3)' }}
-            onClick={handleReportBug(componentName)}
-          >
-            Report bug
-          </button>
-        </>
+        <button
+          type="button"
+          className="sp-button"
+          style={{ padding: 'var(--sp-space-1) var(--sp-space-3)' }}
+          onClick={handleReportBug(componentName)}
+        >
+          Report bug
+        </button>
       }
     >
       {renderMode === 'storybook' && <Story id={id} />}
