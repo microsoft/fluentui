@@ -110,7 +110,7 @@ export const FluentDocsDocsStory: React.FunctionComponent<DocsStoryProps & { com
       <div className="sbdocs sbdocs-preview">
         <SandpackProvider
           css={{ width: 'fit-content' }}
-          template="react"
+          template="react-ts"
           bundlerURL="https://sandpack-bundler.pages.dev"
           openPaths={['/example.tsx']}
           customSetup={{
