@@ -49,6 +49,9 @@ describe('move-packages generator', () => {
     };
     tree.write(`nx.json`, serializeJson(nxJsonConfig));
 
+    const codeOwners = `packages/test @dummyOwner`;
+    tree.write(`/.github/CODEOWNERS`, codeOwners);
+
     tree = setupDummyPackage(tree, {
       ...options,
       name: options.name!,
@@ -129,6 +132,14 @@ describe('move-packages generator', () => {
       const storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
       const storybookMainJsFile = tree.read(storybookMainJsPath, 'utf8') as string;
       expect(storybookMainJsFile.split(' ').filter(s => s.includes(newPath))).toHaveLength(2);
+    });
+    it('should update the CODEOWNERS file with the new relative path', async () => {
+      await generator(tree, options);
+      const newPath = `packages/${options.destination}`;
+      const oldPath = `packages/${options.name}`;
+      const codeOwnersFile = tree.read(joinPathFragments('/.github', 'CODEOWNERS'), 'utf8') as string;
+      expect(codeOwnersFile.split(' ').filter(s => s.includes(oldPath))).toHaveLength(0);
+      expect(codeOwnersFile.split(' ').filter(s => s.includes(newPath))).toHaveLength(1);
     });
   });
 

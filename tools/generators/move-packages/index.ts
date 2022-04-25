@@ -152,7 +152,7 @@ function updateCodeOwners(tree: Tree, schema: MovePackagesGeneratorSchema) {
     }
 
     const codeOwnersFile = tree.read(codeownersPath, 'utf8') as string;
-    const updateCodeOwndersFile = codeOwnersFile.replace(oldPackagePath, newPackagePath);
-    tree.write(codeownersPath, updateCodeOwndersFile);
+    const updatedCodeOwnersFile = codeOwnersFile.replace(oldPackagePath, newPackagePath);
+    tree.write(codeownersPath, updatedCodeOwnersFile);
   }
 }
