@@ -52,6 +52,12 @@ const useStyles = makeStyles({
     color: '#0078d4',
     textDecorationLine: 'none',
   },
+  knownIssuesList: {
+    marginBottom: '20px',
+  },
+  statusDiv: {
+    marginBottom: '20px',
+  },
 });
 
 export const KnownIssues: React.FC<{ componentName: string }> = ({ componentName }) => {
@@ -89,7 +95,7 @@ export const KnownIssues: React.FC<{ componentName: string }> = ({ componentName
     <>
       <div id="known-issues">
         <h2>Known issues</h2>
-        <div>
+        <div className={styles.knownIssuesList}>
           {issuesList.map((issue: GitHubIssue, index) => (
             <div className={styles.issue} key={index}>
               <div className={styles.openIssueIconContainer}>
@@ -119,16 +125,11 @@ export const KnownIssues: React.FC<{ componentName: string }> = ({ componentName
             </div>
           ))}
         </div>
-        {(isLoading && (
-          <>
-            Loading ...
-            <br />
-            <br />
-          </>
-        )) ||
-          (isError && 'Unable to load known issues. ') ||
-          (issuesList.length === 0 && 'No issues are known. ') ||
-          (issuesList.length > 0 && <br />)}
+        <div className={styles.statusDiv}>
+          {isLoading && 'Loading ...'}
+          {isError && 'Unable to load known issues.'}
+          {!isLoading && !isError && issuesList.length === 0 && 'No issues are known.'}
+        </div>
         Is something not working properly? Use the "Report bug" button on any example above to create a GitHub issue.
       </div>
     </>
