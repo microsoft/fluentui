@@ -73,6 +73,7 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, innerRef),
       role: 'tablist',
+      'aria-disabled': disabled ? 'true' : undefined,
       ...focusAttributes,
       ...props,
     }),

@@ -52,8 +52,9 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     root: getNativeElementProps('button', {
       ref: useMergedRefs(ref, innerRef),
       role: 'tab',
+      'aria-disabled': disabled ? 'true' : undefined,
+      'aria-selected': `${selected}`,
       ...props,
-      disabled,
       onClick,
     }),
     icon: iconShorthand,
