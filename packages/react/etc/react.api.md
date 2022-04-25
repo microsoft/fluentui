@@ -5064,6 +5064,14 @@ export interface IDocumentCardActivityStyles {
 }
 
 // @public (undocumented)
+export interface IDocumentCardContext {
+    // (undocumented)
+    role?: string;
+    // (undocumented)
+    tabIndex?: number;
+}
+
+// @public (undocumented)
 export interface IDocumentCardDetails {
 }
 
@@ -9630,9 +9638,7 @@ export function makeStyles<TStyleSet extends {
     [key in keyof TStyleSet]: IStyle;
 } = {
     [key: string]: IStyle;
-}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => {
-    [key in keyof TStyleSet]: string;
-};
+}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => StylesClassMapping<TStyleSet>;
 
 export { mapEnumByName }
 
@@ -10657,6 +10663,13 @@ export enum StickyPositionType {
 export { styled }
 
 export { StyleFunction }
+
+// @public (undocumented)
+export type StylesClassMapping<TStyleSet extends {
+    [key in keyof TStyleSet]: IStyle;
+}> = {
+    [key in keyof TStyleSet]: string;
+};
 
 export { Stylesheet }
 

@@ -50,6 +50,7 @@ export {
   teamsHighContrastTheme,
   teamsLightTheme,
   tokens,
+  typeographyStyles,
   webDarkTheme,
   webHighContrastTheme,
   webLightTheme,
@@ -68,6 +69,7 @@ export type {
   ShadowTokens,
   StrokeWidthTokens,
   Theme,
+  TypeographyStyles,
 } from '@fluentui/react-theme';
 export {
   getNativeElementProps,
@@ -233,6 +235,7 @@ export {
   useSplitButtonStyles_unstable,
   useToggleButton_unstable,
   useToggleButtonStyles_unstable,
+  useToggleState,
 } from '@fluentui/react-button';
 export type {
   ButtonProps,

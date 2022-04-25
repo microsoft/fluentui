@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Tue, 19 Apr 2022 19:16:49 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Apr 2022 09:32:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-rc.7)
+
+Mon, 25 Apr 2022 09:32:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-rc.6..@fluentui/react-provider_v9.0.0-rc.7)
+
+### Changes
+
+- feat: export useFluentProviderThemeStyleTag from @fluentui/react-provider ([PR #22601](https://github.com/microsoft/fluentui/pull/22601) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.0.0-rc.7 ([PR #22601](https://github.com/microsoft/fluentui/pull/22601) by beachball)
 
 ## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-rc.6)
 

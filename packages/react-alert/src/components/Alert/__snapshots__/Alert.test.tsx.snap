@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert renders a default state 1`] = `
+<div>
+  <div
+    class="fui-Alert"
+  >
+    Default Alert
+  </div>
+</div>
+`;
