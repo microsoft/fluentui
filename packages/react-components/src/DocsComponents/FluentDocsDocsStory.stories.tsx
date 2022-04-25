@@ -1,3 +1,5 @@
+// This implementation is based on Storybook's addons/docs/src/blocks/DocsStory.tsx
+
 import { Anchor, Description, DocsStoryProps, Story, Subheading } from '@storybook/addon-docs';
 import * as React from 'react';
 import {
@@ -94,7 +96,6 @@ const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: str
   );
 };
 
-// Most of this file is copied from Storybook's addons/docs/src/blocks/DocsStory.tsx
 export const FluentDocsDocsStory: React.FunctionComponent<
   DocsStoryProps & { componentName: string; fluentThemeExportName: string }
 > = ({ id, name, expanded = true, withToolbar = false, parameters = {}, componentName, fluentThemeExportName }) => {
