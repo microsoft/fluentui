@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-// import { Input } from '@fluentui/react-input';
+import { Input } from '@fluentui/react-input';
 import * as React from 'react';
 
 export type SpinButtonSlots = {
@@ -17,6 +17,8 @@ export type SpinButtonSlots = {
    * This is the primary slot.
    */
   input: NonNullable<Slot<'input'>>;
+
+  inputExample: NonNullable<Slot<typeof Input>>;
 
   /**
    * Renders the increment control.
