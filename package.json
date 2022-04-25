@@ -261,7 +261,7 @@
   "license": "MIT",
   "workspaces": {
     "packages": [
-      "apps/!(public-docsite-v9)",
+      "apps/*",
       "packages/*",
       "packages/fluentui/*",
       "scripts",
