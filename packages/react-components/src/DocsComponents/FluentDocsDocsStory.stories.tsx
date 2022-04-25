@@ -14,6 +14,11 @@ import newGithubIssueUrl from 'new-github-issue-url';
 import * as packageJson from '../../package.json';
 import bugReportTemplate from '../../../../.github/ISSUE_TEMPLATE/bug_report_v9.md';
 
+const removeStoryConfiguration = (storyName: string, fullSource: string) => {
+  const regex = new RegExp(`${storyName}\.parameters = {.*};`, 's');
+  return fullSource.replace(regex, '').trim();
+};
+
 const handleReportBug = (componentName: string) => async (e: React.MouseEvent) => {
   // create codesandbox
   let codesandboxUrl = '';
@@ -93,11 +98,12 @@ const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: str
 export const FluentDocsDocsStory: React.FunctionComponent<
   DocsStoryProps & { componentName: string; fluentThemeExportName: string }
 > = ({ id, name, expanded = true, withToolbar = false, parameters = {}, componentName, fluentThemeExportName }) => {
-  const { docs } = parameters;
-
   if (!name) {
     return null;
   }
+
+  const { docs } = parameters;
+  const storyName = name.replace(new RegExp(' ', 'g'), '');
 
   return (
     <Anchor storyId={id ?? ''}>
@@ -114,7 +120,7 @@ export const FluentDocsDocsStory: React.FunctionComponent<
             entry: '/index.tsx',
             main: '/example.tsx',
             files: {
-              '/example.tsx': parameters.fullSource,
+              '/example.tsx': removeStoryConfiguration(storyName, parameters.fullSource),
               '/index.html': '<div id="root"></div>',
               '/index.tsx': {
                 // use originalStoryFn because users can override the `storyName` property.
@@ -134,7 +140,7 @@ export const FluentDocsDocsStory: React.FunctionComponent<
                 </FluentProvider>,
                 document.getElementById('root'),
             );`
-                  .replace('STORY_NAME', name.replace(new RegExp(' ', 'g'), ''))
+                  .replace('STORY_NAME', storyName)
                   .replace('FLUENT_THEME_EXPORT_NAME', fluentThemeExportName)
                   .replace('FLUENT_THEME_EXPORT_NAME', fluentThemeExportName),
               },
