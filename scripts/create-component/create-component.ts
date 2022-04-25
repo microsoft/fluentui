@@ -93,6 +93,11 @@ module.exports = (plop: NodePlopAPI) => {
           skipIfExists: true,
           templateFiles: ['plop-templates/**/*'],
         },
+        {
+          type: 'add',
+          path: '.github/ISSUE_TEMPLATE/bug_report_v9_{{componentName}}_permit.md',
+          templateFile: 'github-issue-template.md',
+        },
         () => appendToPackageIndex(data),
         () => {
           console.log(`${chalk.green('✔')} Component files created!`);
@@ -113,6 +118,8 @@ module.exports = (plop: NodePlopAPI) => {
             cwd: root,
             stdio: 'inherit',
           });
+
+          console.log(`📝 Don't forget to create a "Component: ${answers.componentName}" label on GitHub!`);
 
           return 'Component ready!';
         },
