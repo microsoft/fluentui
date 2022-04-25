@@ -2,8 +2,7 @@ import * as React from 'react';
 import { DocsContainer, DocsContextProps } from '@storybook/addon-docs';
 import { FluentStoryContext, THEME_ID, themes } from '@fluentui/react-storybook-addon';
 import { FluentDocsHeader } from './FluentDocsHeader.stories';
-import { webLightTheme } from '@fluentui/react-theme';
-import { FluentProvider } from '@fluentui/react-components';
+import { webLightTheme, FluentProvider } from '@fluentui/react-components';
 
 interface IFluentDocsContainerProps {
   context: FluentStoryContext & DocsContextProps;
