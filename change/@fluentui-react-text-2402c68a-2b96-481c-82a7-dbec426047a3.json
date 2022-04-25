@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updated to use global typography styles",
+  "packageName": "@fluentui/react-text",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
