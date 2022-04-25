@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { CompoundButton } from '../../../CompoundButton';
 
 export const Disabled = () => {
@@ -9,26 +8,21 @@ export const Disabled = () => {
     <>
       <div style={groupStyles}>
         <CompoundButton secondaryContent="Secondary content">Enabled state</CompoundButton>
-        <CompoundButton secondaryContent="Secondary content" disabled>
+        <CompoundButton disabled secondaryContent="Secondary content">
           Disabled state
         </CompoundButton>
-        <CompoundButton secondaryContent="Secondary content" disabledFocusable>
+        <CompoundButton disabledFocusable secondaryContent="Secondary content">
           Disabled focusable state
         </CompoundButton>
       </div>
       <div style={groupStyles}>
-        <CompoundButton secondaryContent="Secondary content" appearance="primary" icon={<CalendarMonthRegular />}>
+        <CompoundButton appearance="primary" secondaryContent="Secondary content">
           Enabled state
         </CompoundButton>
-        <CompoundButton
-          secondaryContent="Secondary content"
-          appearance="primary"
-          disabled
-          icon={<CalendarMonthRegular />}
-        >
+        <CompoundButton appearance="primary" disabled secondaryContent="Secondary content">
           Disabled state
         </CompoundButton>
-        <CompoundButton secondaryContent="Secondary content" appearance="primary" disabledFocusable>
+        <CompoundButton appearance="primary" disabledFocusable secondaryContent="Secondary content">
           Disabled focusable state
         </CompoundButton>
       </div>

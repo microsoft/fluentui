@@ -1,6 +1,7 @@
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots, ButtonState } from './Button.types';
 
@@ -40,17 +41,31 @@ const useRootStyles = makeStyles({
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      color: tokens.colorNeutralForeground1,
+      color: tokens.colorNeutralForeground1Hover,
 
       cursor: 'pointer',
+
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      color: tokens.colorNeutralForeground1,
+      color: tokens.colorNeutralForeground1Pressed,
 
       outlineStyle: 'none',
+
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
     },
   },
 
@@ -210,6 +225,13 @@ const useRootDisabledStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
 
       cursor: 'not-allowed',
+
+      [`& .${iconFilledClassName}`]: {
+        display: 'none',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'inline',
+      },
     },
 
     ':hover:active': {
@@ -218,6 +240,13 @@ const useRootDisabledStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
 
       cursor: 'not-allowed',
+
+      [`& .${iconFilledClassName}`]: {
+        display: 'none',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'inline',
+      },
     },
   },
 

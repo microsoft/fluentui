@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { CalendarMonthRegular, FilterRegular } from '@fluentui/react-icons';
+import {
+  bundleIcon,
+  CalendarMonthFilled,
+  CalendarMonthRegular,
+  FilterFilled,
+  FilterRegular,
+} from '@fluentui/react-icons';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { makeStyles } from '@griffel/react';
@@ -10,6 +16,9 @@ const useStyles = makeStyles({
     maxWidth: '350px',
   },
 });
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+const Filter = bundleIcon(FilterFilled, FilterRegular);
 
 export const Icon = () => {
   const [primaryActionButtonRef, setPrimaryActionButtonRef] = React.useState<
@@ -23,7 +32,7 @@ export const Icon = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} icon={<CalendarMonthRegular />}>
+            <SplitButton menuButton={triggerProps} icon={<CalendarMonth />}>
               With calendar icon before contents
             </SplitButton>
           )}
@@ -39,7 +48,7 @@ export const Icon = () => {
       <Menu positioning="below-end">
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} icon={<CalendarMonthRegular />} iconPosition="after">
+            <SplitButton menuButton={triggerProps} icon={<CalendarMonth />} iconPosition="after">
               With calendar icon after contents
             </SplitButton>
           )}
@@ -60,8 +69,8 @@ export const Icon = () => {
               primaryActionButton={{
                 className: styles.longText,
               }}
-              icon={<CalendarMonthRegular />}
-              menuIcon={<FilterRegular />}
+              icon={<CalendarMonth />}
+              menuIcon={<Filter />}
             >
               With calendar icon and custom filter menu icon
             </SplitButton>
@@ -86,7 +95,7 @@ export const Icon = () => {
               <SplitButton
                 menuButton={triggerProps}
                 primaryActionButton={{ ref: setPrimaryActionButtonRef }}
-                icon={<CalendarMonthRegular />}
+                icon={<CalendarMonth />}
               />
             </Tooltip>
           )}

@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 19 Apr 2022 19:17:12 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Apr 2022 09:32:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.7)
+
+Mon, 25 Apr 2022 09:32:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.6..@fluentui/react-button_v9.0.0-rc.7)
+
+### Changes
+
+- Adding useToggleState hook to scaffold toggleable behavior for individual consumption. ([PR #22279](https://github.com/microsoft/fluentui/pull/22279) by Humberto.Morimoto@microsoft.com)
+- fix(Button): Text color in HC mode for hover, active and checked states. ([PR #22566](https://github.com/microsoft/fluentui/pull/22566) by jukapsia@microsoft.com)
+- Button: Stop applying active styles when mouse moves away while it is being held and improving styles in High Contrast mode. ([PR #22574](https://github.com/microsoft/fluentui/pull/22574) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-tabster to v9.0.0-rc.7 ([PR #22601](https://github.com/microsoft/fluentui/pull/22601) by beachball)
 
 ## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.6)
 

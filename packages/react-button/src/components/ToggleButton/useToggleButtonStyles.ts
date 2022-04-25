@@ -1,5 +1,6 @@
-import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { tokens } from '@fluentui/react-theme';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots } from '../Button/Button.types';
@@ -15,25 +16,32 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
  */
 export const toggleButtonClassName = toggleButtonClassNames.root;
 
-const useCheckedStyles = makeStyles({
+export const useCheckedStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackground1Selected,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    color: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralForeground1Selected,
 
     ...shorthands.borderWidth(tokens.strokeWidthThin),
+
+    [`& .${iconFilledClassName}`]: {
+      display: 'inline',
+    },
+    [`& .${iconRegularClassName}`]: {
+      display: 'none',
+    },
 
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      color: tokens.colorNeutralForeground1,
+      color: tokens.colorNeutralForeground1Hover,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      color: tokens.colorNeutralForeground1,
+      color: tokens.colorNeutralForeground1Pressed,
     },
   },
 
@@ -114,7 +122,7 @@ const useCheckedStyles = makeStyles({
   },
 });
 
-const useDisabledStyles = makeStyles({
+export const useDisabledStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,

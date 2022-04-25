@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 21 Apr 2022 07:36:48 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Apr 2022 07:37:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.67.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.67.0)
+
+Mon, 25 Apr 2022 07:37:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.66.2..@fluentui/react_v8.67.0)
+
+### Minor changes
+
+- DocumentCard: parent container is no longer focusable and now has role=group to improve a11y experience ([PR #21461](https://github.com/microsoft/fluentui/pull/21461) by tristan.watanabe@gmail.com)
+
+### Patches
+
+- Fix memory leak in makeStyles by counting references ([PR #22555](https://github.com/microsoft/fluentui/pull/22555) by miclo@microsoft.com)
+- add focus styles to DocumentCardTitle ([PR #22612](https://github.com/microsoft/fluentui/pull/22612) by sarah.higley@microsoft.com)
 
 ## [8.66.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.66.2)
 
