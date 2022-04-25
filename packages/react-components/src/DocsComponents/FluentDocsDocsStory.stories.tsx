@@ -18,7 +18,7 @@ const handleReportBug = (componentName: string) => async (e: React.MouseEvent) =
   // create codesandbox
   let codesandboxUrl = '';
   const openInCSButton = e.currentTarget.nextElementSibling;
-  const codesandboxForm = openInCSButton?.getElementsByTagName('form').item(0);
+  const codesandboxForm = openInCSButton?.querySelector('form');
   if (codesandboxForm) {
     const codesandboxFormData = new FormData(codesandboxForm);
     codesandboxFormData.append('json', '1');
@@ -60,7 +60,7 @@ const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: str
       if (iframe) {
         iframe.style.display = 'none';
 
-        sandpack.listen(msg => {
+        return sandpack.listen(msg => {
           if (msg.type === 'start') {
             iframe.style.display = 'block';
             setRenderMode('sandpack');
@@ -68,7 +68,8 @@ const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: str
         });
       }
     }
-  }, [id, sandpack]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   return (
     <SandpackPreview
@@ -83,7 +84,7 @@ const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: str
         </button>
       }
     >
-      {renderMode === 'storybook' && <Story id={id} />}
+      <>{renderMode === 'storybook' && <Story id={id} />}</>
     </SandpackPreview>
   );
 };
@@ -109,7 +110,7 @@ export const FluentDocsDocsStory: React.FunctionComponent<
           bundlerURL="https://sandpack-bundler.pages.dev"
           openPaths={['/example.tsx']}
           customSetup={{
-            environment: 'create-react-app',
+            environment: 'create-react-app-typescript',
             entry: '/index.tsx',
             main: '/example.tsx',
             files: {
@@ -120,6 +121,7 @@ export const FluentDocsDocsStory: React.FunctionComponent<
                 // We need the name of the exported function, not the actual story
                 // https://github.com/microsoft/fluentui-storybook-addons/issues/12
                 code: dedent`
+            import * as React from 'react';
             import * as ReactDOM from 'react-dom';
             import { FluentProvider, FLUENT_THEME_EXPORT_NAME } from '@fluentui/react-components';
             import { STORY_NAME as Example } from './example';
