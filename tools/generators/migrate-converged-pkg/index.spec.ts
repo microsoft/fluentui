@@ -162,6 +162,30 @@ describe('migrate-converged-pkg generator', () => {
         expect(promptSpy).toHaveBeenCalledTimes(0);
       });
     });
+
+    describe(`projectType execution`, () => {
+      it(`should do limited migration for "application"`, async () => {
+        tree.write('apps/my-app/src/index.ts', `import * as React from 'react';`);
+        writeJson(tree, 'apps/my-app/package.json', { name: '@proj/my-app', private: true, version: '9.0.0' });
+        writeJson(tree, 'apps/my-app/tsconfig.json', { compilerOptions: {}, include: ['src'] });
+        addProjectConfiguration(tree, '@proj/my-app', {
+          root: 'apps/my-app',
+          projectType: 'application',
+          targets: {},
+        });
+
+        const loggerInfoSpy = jest.spyOn(logger, 'warn');
+
+        await generator(tree, { name: '@proj/my-app' });
+
+        expect(loggerInfoSpy.mock.calls.flat()).toMatchInlineSnapshot(`
+          Array [
+            "NOTE: you're trying to migrate an Application - @proj/my-app.
+          We apply limited migration steps at the moment.",
+          ]
+        `);
+      });
+    });
   });
 
   describe(`tsconfig updates`, () => {
