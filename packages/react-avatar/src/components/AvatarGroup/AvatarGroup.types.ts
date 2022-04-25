@@ -66,7 +66,7 @@ export type AvatarGroupState = ComponentState<AvatarGroupSlots> &
 export type AvatarGroupStrings = {
   /**
    * Label applied to the overflow indicator's tooltip.
-   * Can include the token "\{\value}" which will be replaced with the number of overflowed avatars.
+   * Can include the token "\{value\}" which will be replaced with the number of overflowed avatars.
    */
   tooltipLabel: string;
 };
