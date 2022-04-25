@@ -57,42 +57,31 @@ const useStyles = makeStyles({
 export const KnownIssues: React.FC<{ componentName: string }> = ({ componentName }) => {
   const [isError, setIsError] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [isLoaded, setIsLoaded] = React.useState(false);
   const [issuesList, setIssuesList] = React.useState<GitHubIssue[]>([]);
 
   React.useEffect(() => {
-    async function fetchData() {
-      setIsLoading(true);
-      setIsError(false);
+    setIsLoading(true);
+    setIsError(false);
 
-      const repositoryIdentifier = packageRepository.url.split('/').slice(-2).join('/');
+    const repositoryIdentifier = packageRepository.url.split('/').slice(-2).join('/');
 
-      try {
-        const response = await fetch(
-          `https://api.github.com/repos/${repositoryIdentifier}/issues?` +
-            new URLSearchParams({
-              labels: ['Type: Bug :bug:', 'Fluent UI vNext', 'Component: ' + componentName].join(','),
-            }),
-        );
-        const issuesJson: GitHubIssue[] = await response.json();
-
-        if ((response.status >= 400 && response.status < 600) || !Array.isArray(issuesList)) {
-          throw new Error('Bad response returned from GitHub');
+    fetch(
+      `https://api.github.com/repos/${repositoryIdentifier}/issues?` +
+        new URLSearchParams({
+          labels: ['Type: Bug :bug:', 'Fluent UI vNext', 'Component: ' + componentName].join(','),
+        }),
+    )
+      .then(response => {
+        if (response.status >= 200 && response.status <= 299) {
+          return response.json();
+        } else {
+          throw Error(`Bad response returned from GitHub: ${response.statusText}`);
         }
-
-        setIssuesList(issuesJson);
-        setIsLoaded(true);
-      } catch {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    if (!isLoaded && !isLoading) {
-      fetchData();
-    }
-  }, [componentName, issuesList, isLoaded, isLoading]);
+      })
+      .then(setIssuesList)
+      .catch(error => setIsError(true))
+      .finally(() => setIsLoading(false));
+  }, [componentName]);
 
   const styles = useStyles();
 
