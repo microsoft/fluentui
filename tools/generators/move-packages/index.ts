@@ -142,7 +142,7 @@ function updateStorybookTypeImport(tree: Tree, schema: MovePackagesGeneratorSche
 function updateCodeOwners(tree: Tree, schema: MovePackagesGeneratorSchema) {
   const { name, destination } = schema;
   if (name) {
-    const oldPackageName = name.split('/')[1];
+    const pkgName = name.split('/')[1];
     const codeownersPath = joinPathFragments('/.github', 'CODEOWNERS');
 
     if (!tree.exists(codeownersPath)) {
@@ -150,7 +150,7 @@ function updateCodeOwners(tree: Tree, schema: MovePackagesGeneratorSchema) {
     }
 
     const codeOwnersFile = tree.read(codeownersPath, 'utf8') as string;
-    const updatedCodeOwnersFile = codeOwnersFile.replace(oldPackageName, destination);
+    const updatedCodeOwnersFile = codeOwnersFile.replace(pkgName, destination);
     tree.write(codeownersPath, updatedCodeOwnersFile);
   }
 }
