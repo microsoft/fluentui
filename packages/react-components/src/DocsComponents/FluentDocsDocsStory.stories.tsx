@@ -21,7 +21,9 @@ const removeStoryConfiguration = (storyName: string, fullSource: string) => {
   return fullSource.replace(regex, '').trim();
 };
 
-const handleReportBug = (componentName: string) => async (e: React.MouseEvent) => {
+const handleReportBug = (componentName: string, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => async (
+  e: React.MouseEvent,
+) => {
   // create codesandbox
   let codesandboxUrl = '';
   const openInCSButton = e.currentTarget.nextElementSibling;
@@ -36,7 +38,9 @@ const handleReportBug = (componentName: string) => async (e: React.MouseEvent) =
       body: new URLSearchParams(codesandboxFormData),
     });
 
+    setLoading(true);
     const sandboxId = (await codesandboxResponse.json()).sandbox_id;
+    setLoading(false);
     codesandboxUrl = `https://codesandbox.io/s/${sandboxId}?file=/example.tsx`;
   }
 
@@ -56,6 +60,7 @@ const handleReportBug = (componentName: string) => async (e: React.MouseEvent) =
 
 const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: string }> = ({ id, componentName }) => {
   const [renderMode, setRenderMode] = React.useState<'storybook' | 'sandpack'>('storybook');
+  const [isReportBugLoading, setReportBugLoading] = React.useState(true);
   const sandpack = useSandpack();
 
   React.useEffect(() => {
@@ -85,9 +90,9 @@ const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: str
           type="button"
           className="sp-button"
           style={{ padding: 'var(--sp-space-1) var(--sp-space-3)' }}
-          onClick={handleReportBug(componentName)}
+          onClick={handleReportBug(componentName, setReportBugLoading)}
         >
-          Report bug
+          {isReportBugLoading ? 'Loading' : 'Report bug'}
         </button>
       }
     >
