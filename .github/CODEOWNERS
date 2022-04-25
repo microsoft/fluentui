@@ -137,7 +137,7 @@ packages/react-button @microsoft/cxe-red @khmakoto
 packages/react-card @microsoft/cxe-prg
 packages/react-checkbox @microsoft/cxe-red @khmakoto
 packages/react-combobox @microsoft/cxe-coastal @smhigley
-packages/react-components @microsoft/fluentui-react
+packages/react-components/react-components @microsoft/fluentui-react
 packages/react-dialog @microsoft/cxe-prg
 packages/react-divider @microsoft/cxe-coastal
 packages/react-focus @microsoft/cxe-red @khmakoto
