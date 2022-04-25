@@ -1,4 +1,4 @@
-import { Tree, formatFiles, joinPathFragments, updateJson, readJson, ProjectConfiguration } from '@nrwl/devkit';
+import { Tree, formatFiles, joinPathFragments, updateJson, ProjectConfiguration } from '@nrwl/devkit';
 import { moveGenerator } from '@nrwl/workspace/generators';
 import { getProjects, hasSchemaFlag, isPackageConverged, isV8Package } from '../../utils';
 
@@ -70,6 +70,7 @@ function movePackage(tree: Tree, schema: MovePackagesGeneratorSchema) {
   // reverts the changes it makes.
   updateReadMe(tree, schema);
   updateStorybookTypeImport(tree, schema);
+  updateCodeOwners(tree, schema);
 }
 
 function validateSchema(schema: MovePackagesGeneratorSchema) {
@@ -122,7 +123,7 @@ function updateReadMe(tree: Tree, schema: MovePackagesGeneratorSchema) {
  * storybook relative path.
  */
 function updateStorybookTypeImport(tree: Tree, schema: MovePackagesGeneratorSchema) {
-  const { name, destination } = schema;
+  const { name } = schema;
   if (name) {
     const project = getProjects(tree).get(name) as ProjectConfiguration;
     const storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
@@ -135,5 +136,23 @@ function updateStorybookTypeImport(tree: Tree, schema: MovePackagesGeneratorSche
     const [newStorybookPath, oldStorybookPath] = storybookMainJsFile.match(/\([^)]*\)/g) as RegExpMatchArray;
     const updatedStorybookMainJsFile = storybookMainJsFile.replace(oldStorybookPath, newStorybookPath);
     tree.write(storybookMainJsPath, updatedStorybookMainJsFile);
+  }
+}
+
+function updateCodeOwners(tree: Tree, schema: MovePackagesGeneratorSchema) {
+  const { name, destination } = schema;
+  if (name) {
+    const project = getProjects(tree).get(name) as ProjectConfiguration;
+    const oldPackagePath = 'packages/' + name.split('/')[1];
+    const newPackagePath = project.root;
+    const codeownersPath = joinPathFragments('/.github', 'CODEOWNERS');
+
+    if (!tree.exists(codeownersPath)) {
+      return;
+    }
+
+    const codeOwnersFile = tree.read(codeownersPath, 'utf8') as string;
+    const updateCodeOwndersFile = codeOwnersFile.replace(oldPackagePath, newPackagePath);
+    tree.write(codeownersPath, updateCodeOwndersFile);
   }
 }
