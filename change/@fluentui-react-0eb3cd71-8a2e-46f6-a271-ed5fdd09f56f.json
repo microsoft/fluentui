@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix memory leak in makeStyles by counting references",
-  "packageName": "@fluentui/react",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch"
-}

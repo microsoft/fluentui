@@ -1,8 +1,17 @@
-# Change Log - @fluentui/upgrade-examples-v8-v9
+# Change Log - @fluentui/public-docsite-v9
 
-This log was last generated on Thu, 21 Apr 2022 07:36:48 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Apr 2022 07:37:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-v9_v1.0.0)
+
+Mon, 25 Apr 2022 07:37:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/upgrade-examples-v8-v9_v1.0.0..@fluentui/public-docsite-v9_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.67.0 ([PR #22548](https://github.com/microsoft/fluentui/pull/22548) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/upgrade-examples-v8-v9_v1.0.0)
 
