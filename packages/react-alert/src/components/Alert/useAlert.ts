@@ -12,11 +12,17 @@ import type { AlertProps, AlertState } from './Alert.types';
  * @param ref - reference to root HTMLElement of Alert
  */
 export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>): AlertState => {
+  const { intent, content } = props;
+
+  // TODO - Where should the logic for deciding the intent based icon go?
+
   return {
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
       root: 'div',
+      icon: 'span',
+      content: 'span',
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),

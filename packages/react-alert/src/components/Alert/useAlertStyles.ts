@@ -5,8 +5,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const alertClassName = 'fui-Alert';
 export const alertClassNames: SlotClassNames<AlertSlots> = {
   root: 'fui-Alert',
-  // TODO: add class names for all slots on AlertSlots.
-  // Should be of the form `<slotName>: 'fui-Alert__<slotName>`
+  icon: 'fui-Alert__icon',
+  content: 'fui-Alert__content',
+  action: 'fui-Alert__action',
 };
 
 /**

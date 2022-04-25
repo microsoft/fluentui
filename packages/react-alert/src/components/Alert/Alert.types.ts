@@ -5,7 +5,7 @@ export type AlertSlots = {
   root: NonNullable<Slot<'div'>>;
   icon: NonNullable<Slot<'span'>>;
   content: NonNullable<Slot<'span'>>;
-  action: NonNullable<Slot<'button'>>;
+  action: NonNullable<Slot<'span'>>;
 };
 
 type AlertCommons = {
