@@ -1,17 +1,15 @@
 const utils = require('./main.utils');
 const rootMain = require('../../../.storybook/main');
 
-module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)', ...utils.getVnextStories()],
-  addons: ['@fluentui/react-storybook-addon', '@storybook/addon-docs'],
-  core: {
-    builder: 'webpack5',
-  },
-  babel: {},
-  typescript: {
-    // disable react-docgen-typescript (totally not needed here, slows things down a lot)
-    reactDocgen: false,
-  },
+module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+  ...rootMain,
+  stories: [
+    ...rootMain.stories,
+    '../src/**/*.stories.mdx',
+    '../src/**/*.stories.@(ts|tsx)',
+    ...utils.getVnextStories(),
+  ],
+  addons: [...rootMain.addons],
   webpackFinal: (config, options) => {
     const localConfig = { ...rootMain.webpackFinal(config, options) };
 
@@ -19,4 +17,4 @@ module.exports = {
 
     return localConfig;
   },
-};
+});

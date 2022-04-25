@@ -1,8 +1,12 @@
 import { FluentDocsContainer } from '../src/DocsComponents/FluentDocsContainer.stories';
 import { FluentDocsPage } from '../src/DocsComponents/FluentDocsPage.stories';
+import * as rootPreview from '../../../.storybook/preview';
 
+/** @type {typeof rootPreview.parameters} */
 export const parameters = {
+  ...rootPreview.parameters,
   docs: {
+    ...rootPreview.parameters.docs,
     container: FluentDocsContainer,
     page: FluentDocsPage,
   },
