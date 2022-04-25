@@ -22,7 +22,7 @@
     "@fluentui/react": "^8.67.0",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/storybook": "^1.0.0",
-    "@fluentui/react-components": "^9.0.0-rc.7",
+    "@fluentui/react-components": "^9.0.0-rc.8",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "tslib": "^2.1.0"
