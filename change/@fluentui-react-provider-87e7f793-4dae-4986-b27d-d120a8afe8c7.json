@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: export useFluentProviderThemeStyleTag from @fluentui/react-provider",
-  "packageName": "@fluentui/react-provider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
