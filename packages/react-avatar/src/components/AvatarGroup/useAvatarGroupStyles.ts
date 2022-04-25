@@ -8,6 +8,10 @@ export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots> = {
   popoverTrigger: 'fui-AvatarGroup__popoverTrigger',
 };
 
+export const extraAvatarGroupClassNames = {
+  popoverSurfaceItem: 'fui-AvatarGroup__popoverSurfaceItem',
+};
+
 /**
  * Styles for the root slot
  */

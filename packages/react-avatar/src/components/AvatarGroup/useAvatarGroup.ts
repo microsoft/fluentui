@@ -3,6 +3,7 @@ import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { PopoverSurface } from '@fluentui/react-popover';
 import { Button } from '@fluentui/react-button';
+import { avatarGroupDefaultStrings } from './AvatarGroup.strings';
 
 /**
  * Create the state required to render AvatarGroup.
@@ -14,12 +15,23 @@ import { Button } from '@fluentui/react-button';
  * @param ref - reference to root HTMLElement of AvatarGroup
  */
 export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<HTMLElement>): AvatarGroupState => {
-  const { maxAvatars = 5, layout = 'grid', size = 32 } = props;
+  const {
+    iconOverflowIndicator = false,
+    layout = 'grid',
+    children,
+    maxAvatars = 5,
+    size = 32,
+    strings = avatarGroupDefaultStrings,
+  } = props;
 
   return {
     maxAvatars,
     layout,
     size,
+    strings: strings,
+    iconOverflowIndicator,
+    // TODO: Replace with actual logic.
+    tooltipContent: strings.tooltipLabel.replace('{value}', String(10)),
     components: {
       // TODO add each slot's element type or component
       root: 'div',
@@ -32,11 +44,19 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
       ref,
       ...props,
     }),
-    popoverSurface: resolveShorthand(props.popoverSurface, {
-      required: true,
-    }),
     popoverTrigger: resolveShorthand(props.popoverTrigger, {
       required: true,
+      defaultProps: {
+        // TODO: Update children
+        children: '+10',
+      },
+    }),
+    popoverSurface: resolveShorthand(props.popoverSurface, {
+      required: true,
+      defaultProps: {
+        // TODO: Update children
+        children: children,
+      },
     }),
   };
 };

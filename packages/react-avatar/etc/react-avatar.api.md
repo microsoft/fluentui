@@ -13,6 +13,7 @@ import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { TooltipProps } from '@fluentui/react-tooltip';
 
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;
@@ -40,7 +41,9 @@ export type AvatarGroupSlots = {
 };
 
 // @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & AvatarGroupCommons;
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & AvatarGroupCommons & {
+    tooltipContent: TooltipProps['content'];
+};
 
 // @public
 export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';

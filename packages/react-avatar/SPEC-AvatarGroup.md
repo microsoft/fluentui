@@ -21,7 +21,7 @@ There's no current research in OpenUI's website.
 
 There's only one existent component similar to AvatarGroup in v8 `Facepile`. v0 doesn't have an equivalent of this component.
 
-- v8 [Facepile](https://developer.microsoft.com/en-us/fluentui#/controls/web/facepile): Only offers grid layout and offers three overflow indicators.
+- v8 [Facepile](https://developer.microsoft.com/en-us/fluentui#/controls/web/facepile): Only offers grid layout and offers three overflow indicator styles.
 
 ## Epic issue: [#22240](https://github.com/microsoft/fluentui/issues/22240)
 
@@ -49,15 +49,19 @@ There are three layout variants in AvatarGroup:
 
 - Grid layout (Default): Avatars are spaced evenly.
 - Stacked layout: Avatars are overlaped evenly.
-- Pie layout: by default, there can be a minimum of two Avatars and a maximum of three. This layout does not overflow and provides a popover for more details.
+- Pie layout: For the pie layout there can be a minimum of two Avatars and a maximum of three. This layout does not overflow and provides a popover for more details.
 
-- > For Grid and Stacked layouts, by default there is a maximum of 5 avatars before overflowing.
+  - If the size of the avatar group is `36` or smaller then only the first letter of the initials will be displayed.
+  - `maxAvatars` will be ignored when using this layout.
+
+- For Grid and Stacked layouts, by default there is a maximum of 5 avatars before overflowing.
 
 ## API
 
 See [AvatarGroup.types.ts](./src/components/AvatarGroup/AvatarGroup.types.ts) for more details.
 
 - `size`: Group size will override the children's current size. This is to ensure that the `AvatarGroup`'s spacing is correct because it changes depending on the group size.
+- `popoverSurface`: All Avatars in `popoverSurface` will have a size of 24 and will be encased in a div to apply stylings.
 
 ## Structure
 
@@ -78,10 +82,12 @@ See [AvatarGroup.types.ts](./src/components/AvatarGroup/AvatarGroup.types.ts) fo
 ```jsx
 <slots.root {...slotProps.root}>
   {state.root.children}
-  {slots.popoverSurface && slots.popoverTrigger && (
-    <Popover>
+  {slots.popoverSurface && slots.popoverTrigger && slotProps.popoverSurface.children && (
+    <Popover trapFocus size="small">
       <PopoverTrigger>
-        <slots.popoverTrigger {...slotProps.popoverTrigger} />
+        <Tooltip content={state.tooltipContent} relationship="description" appearance="inverted">
+          <slots.popoverTrigger {...slotProps.popoverTrigger} />
+        </Tooltip>
       </PopoverTrigger>
       <slots.popoverSurface {...slotProps.popoverSurface} />
     </Popover>
@@ -97,14 +103,20 @@ See [AvatarGroup.types.ts](./src/components/AvatarGroup/AvatarGroup.types.ts) fo
   <Avatar />
   <Avatar />
   <Avatar />
-  <span className="fui-AvatarGroup__popoverTrigger">
-    <button>+1</button>
-  </span>
+  <button>+1</button>
 </div>
 
 // on document.body
 <div class="fui-AvatarGroup__popoverSurface" role="complementary">
-  <!-- List of overflowed avatars with name -->
+  <div class="fui-AvatarGroup__popoverSurfaceItem">
+    <Avatar />
+    <label />
+  </div>
+  <!-- ... -->
+  <div class="fui-AvatarGroup__popoverSurfaceItem">
+    <Avatar />
+    <label />
+  </div>
 </div>
 ```
 
@@ -118,11 +130,15 @@ _Explain how the component will behave in use, including:_
 
 - _Component States_
   - Overflowed state: When there are more Avatars than the `maxAvatars`, an overflow indicator will be rendered that can be clicked to look at the rest of the avatars.
-    - `Pie` layout: There's no overflowed state and no overflow indicator. By default if the AvatarGroup is clicked, a popover with the avats is rendered.
+    - `Pie` layout: since `maxAvatars` is ignored, the overflow indicator will be rendered strictly when there's more than three avatars.
 - _Interaction_
-  - _Keyboard_: Overflow indicator is the only focusable element.
-  - _Cursor_ and _Touch_: When overflow indicator is clicked, the popover is displayed with the avatars that overflow.
-  - _Screen readers_
+  - _Keyboard_: Overflow indicator can be intereacted with the keyboard and when enter is pressed a popover that traps focus will be rendered.
+  - _Cursor_ and _Touch_: When overflow indicator is clicked, the popover is displayed with the avatars that overflow. When the overflow indicator is hovered, a tooltip will read the number of people overflowed (`{value} more people` by default).
+  - _Screen readers_:
+    - `Avatar`: logic is handled by `Avatar` component.
+    - `AvatarGroup`:
+      - When a label is used alongside `AvatarGroup` and focused, all Avatars are read. If the overflow indicator is rendered, the popover localized text is read.
+      - Avatars can be focused and the name will be read . To get to the overflowed avatars, the Popover must be triggered and will get focus letting the user traverse through the overflowed Avatars.
 
 ## Accessibility
 
@@ -131,9 +147,9 @@ Base accessibility information is included in the design document. After the spe
 - There's no native element for this component.
 
 - `AvatarGroup` will have a role of `group` and slots will be handled by their respective slot type.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+- Only the overflow indicator will be focusable by the keyboard. After the overflow indicator is pressed, the popover will handle focus using the `trapFocus` prop.
+- There are no live-regions in `AvatarGroup`.
+- A Tooltip will appear when the overflow indicator is hovered or focused.
+  - Screen reader: when overflow indicator is rendered and focused, screen reader will read the content of the tooltip.
+  - Tooltip cannot be focused itself.
+- Focus will only be trapped when the overflow indicator is triggered.
