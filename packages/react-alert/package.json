@@ -32,6 +32,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@fluentui/react-avatar": "9.0.0-rc.6",
     "@fluentui/react-theme": "9.0.0-rc.5",
     "@fluentui/react-utilities": "9.0.0-rc.6",
     "@griffel/react": "1.0.3",
