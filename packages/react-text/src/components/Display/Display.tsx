@@ -1,7 +1,7 @@
 import type { FunctionComponent } from 'react';
 import { makeStyles } from '@griffel/react';
-import { typographyStyles } from '../../typographyStyles/index';
 import { createWrapper, TextWrapperProps } from '../wrapper';
+import { typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { TextSlots } from '../Text/Text.types';
 
