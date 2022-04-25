@@ -10,7 +10,7 @@ export { CompoundButtonStory as CompoundButton } from './CompoundButtonShim.stor
 export { ToggleButtonStory as ToggleButton } from './ToggleButtonShim.stories';
 
 export default {
-  title: 'Concepts/Upgrading/from v8/Button/Shims',
+  title: 'Concepts/Upgrading/from v8/Shims/Button',
   component: Button,
   decorators: [
     Story => (
