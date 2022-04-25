@@ -749,11 +749,6 @@
       "sourceRoot": "typings",
       "tags": ["platform:any"]
     },
-    "@fluentui/public-docsite-v9": {
-      "root": "apps/public-docsite-v9",
-      "projectType": "application",
-      "implicitDependencies": []
-    },
     "@fluentui/utilities": {
       "root": "packages/utilities",
       "projectType": "library",

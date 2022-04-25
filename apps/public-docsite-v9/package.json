@@ -7,26 +7,18 @@
     "build": "just-scripts build",
     "build-storybook": "build-storybook -s ./public -o ./dist/storybook --docs",
     "chromatic": "npx chromatic@6.4.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
-    "storybook": "node ../../scripts/storybook/runner --port 3000 -s ./public --no-manager-cache",
+    "storybook": "start-storybook -p 6006 -s public",
     "storybook:docs": "yarn storybook --docs"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/eslint-plugin": "*"
   },
   "dependencies": {
     "@fluentui/react": "^8.67.0",
-    "@fluentui/scripts": "^1.0.0",
-    "@fluentui/storybook": "^1.0.0",
     "@fluentui/react-components": "^9.0.0-rc.8",
-    "@fluentui/react-storybook-addon": "9.0.0-rc.1",
     "@fluentui/react-theme": "9.0.0-rc.5",
     "@griffel/react": "1.0.3",
+    "@storybook/react": "^6.4.22",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "tslib": "^2.1.0"
