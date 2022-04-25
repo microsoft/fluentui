@@ -349,6 +349,8 @@ import { TooltipProps } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
 import { TooltipState } from '@fluentui/react-tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-tooltip';
+import { TypeographyStyles } from '@fluentui/react-theme';
+import { typeographyStyles } from '@fluentui/react-theme';
 import { UninitializedMenuListState } from '@fluentui/react-menu';
 import { useAccordion_unstable } from '@fluentui/react-accordion';
 import { useAccordionContextValues_unstable } from '@fluentui/react-accordion';
@@ -441,6 +443,7 @@ import { useText_unstable } from '@fluentui/react-text';
 import { useTextStyles_unstable } from '@fluentui/react-text';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
+import { useToggleState } from '@fluentui/react-button';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
 import { webDarkTheme } from '@fluentui/react-theme';
@@ -1137,6 +1140,10 @@ export { TooltipState }
 
 export { TooltipTriggerProps }
 
+export { TypeographyStyles }
+
+export { typeographyStyles }
+
 export { UninitializedMenuListState }
 
 export { useAccordion_unstable }
@@ -1320,6 +1327,8 @@ export { useTextStyles_unstable }
 export { useToggleButton_unstable }
 
 export { useToggleButtonStyles_unstable }
+
+export { useToggleState }
 
 export { useTooltip_unstable }
 

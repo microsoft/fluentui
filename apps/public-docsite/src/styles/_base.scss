@@ -36,16 +36,16 @@
   }
 
   // Remove dotted outline added by MWF's main.css
-  [contentEditable=true]:focus,
-  [tabindex]:focus,
-  a[href]:focus,
-  area[href]:focus,
-  button:focus,
-  iframe:focus,
-  input:focus,
-  select:focus,
-  textarea:focus {
-    outline: none !important;
+  body [contentEditable=true]:focus,
+  body [tabindex]:focus,
+  body a[href]:focus,
+  body area[href]:focus,
+  body button:focus,
+  body iframe:focus,
+  body input:focus,
+  body select:focus,
+  body textarea:focus {
+    outline: none;
   }
 
   // Example card headers

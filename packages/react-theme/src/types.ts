@@ -871,6 +871,31 @@ export type TextAlignments = {
   justify: TextAlignment;
 };
 
+type TypeographyStyle = {
+  fontSize: string;
+  fontWeight: string;
+  lineHeight: string;
+};
+
+export type TypeographyStyles = {
+  body1: TypeographyStyle;
+  body1Strong: TypeographyStyle;
+  body1Stronger: TypeographyStyle;
+  caption1: TypeographyStyle;
+  caption1Strong: TypeographyStyle;
+  caption1Stronger: TypeographyStyle;
+  caption2: TypeographyStyle;
+  caption2Strong: TypeographyStyle;
+  subtitle1: TypeographyStyle;
+  subtitle2: TypeographyStyle;
+  subtitle2Stronger: TypeographyStyle;
+  title1: TypeographyStyle;
+  title2: TypeographyStyle;
+  title3: TypeographyStyle;
+  largeTitle: TypeographyStyle;
+  display: TypeographyStyle;
+};
+
 export type BorderRadiusTokens = {
   borderRadiusNone: string;
   borderRadiusSmall: string;

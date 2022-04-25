@@ -1,8 +1,42 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 19 Apr 2022 19:16:44 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Apr 2022 09:32:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.8)
+
+Mon, 25 Apr 2022 09:32:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.7..@fluentui/react-components_v9.0.0-rc.8)
+
+### Changes
+
+- `@fluentui/react-spinbutton`
+  - use ::after pseudo element in styles ([PR #22591](https://github.com/microsoft/fluentui/pull/22591) by seanmonahan@microsoft.com)
+  - react-spinbutton: remove private from package.json ([PR #22568](https://github.com/microsoft/fluentui/pull/22568) by seanmonahan@microsoft.com)
+- `@fluentui/react-spinner`
+  - Reexport react-spinner in react-components ([PR #22531](https://github.com/microsoft/fluentui/pull/22531) by ololubek@microsoft.com)
+- `@fluentui/react-tabs`
+  - Added styles to support future overflow calcs ([PR #22548](https://github.com/microsoft/fluentui/pull/22548) by gcox@microsoft.com)
+- `@fluentui/react-tabster`
+  - Adjusting accordion keyboard navigation. ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by marata@microsoft.com)
+- `@fluentui/react-accordion`
+  - Adjusting accordion keyboard navigation. ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by marata@microsoft.com)
+- `@fluentui/react-button`
+  - Adding useToggleState hook to scaffold toggleable behavior for individual consumption. ([PR #22279](https://github.com/microsoft/fluentui/pull/22279) by Humberto.Morimoto@microsoft.com)
+  - fix(Button): Text color in HC mode for hover, active and checked states. ([PR #22566](https://github.com/microsoft/fluentui/pull/22566) by jukapsia@microsoft.com)
+  - Button: Stop applying active styles when mouse moves away while it is being held and improving styles in High Contrast mode. ([PR #22574](https://github.com/microsoft/fluentui/pull/22574) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-checkbox`
+  - Fix disabled HCM styles in Checkbox. ([PR #22595](https://github.com/microsoft/fluentui/pull/22595) by mgodbolt@microsoft.com)
+- `@fluentui/react-components`
+  - react-components: add SpinButton to /unstable ([PR #22568](https://github.com/microsoft/fluentui/pull/22568) by seanmonahan@microsoft.com)
+  - Exporting useToggleState from @fluentui/react-button. ([PR #22279](https://github.com/microsoft/fluentui/pull/22279) by Humberto.Morimoto@microsoft.com)
+  - Reexport react-spinner in react-components ([PR #22531](https://github.com/microsoft/fluentui/pull/22531) by ololubek@microsoft.com)
+  - fix: restore SSRProvider export ([PR #22560](https://github.com/microsoft/fluentui/pull/22560) by olfedias@microsoft.com)
+- `@fluentui/react-input`
+  - use ::after pseudo element in styles ([PR #22591](https://github.com/microsoft/fluentui/pull/22591) by seanmonahan@microsoft.com)
+- `@fluentui/react-provider`
+  - feat: export useFluentProviderThemeStyleTag from @fluentui/react-provider ([PR #22601](https://github.com/microsoft/fluentui/pull/22601) by olfedias@microsoft.com)
 
 ## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.7)
 

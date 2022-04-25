@@ -2,6 +2,29 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Mon, 25 Apr 2022 09:32:15 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-rc.7",
+      "version": "9.0.0-rc.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d",
+            "comment": "Adjusting accordion keyboard navigation."
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "31e8b97573aeba761d14b937378bb95d578c4c90",
+            "comment": "docs(react-tabster): remove old info about provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:16:59 GMT",
       "tag": "@fluentui/react-tabster_v9.0.0-rc.6",
       "version": "9.0.0-rc.6",
