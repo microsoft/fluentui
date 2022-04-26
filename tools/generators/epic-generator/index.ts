@@ -20,7 +20,7 @@ function validateSchema(schema: EpicGeneratorSchema): Required<EpicGeneratorSche
   };
 }
 
-const checkAuthentication = async () => {
+const checkAuthentication = () => {
   const authStatus = execSync(`gh auth status`).toString();
 
   if (authStatus.search('You are not logged into any GitHub hosts') > 0) {
