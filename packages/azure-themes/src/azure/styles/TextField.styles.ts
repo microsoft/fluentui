@@ -9,6 +9,13 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
 
   return {
     fieldGroup: [
+      {
+        selectors: {
+          '.ms-TextField-reveal': {
+            height: 22,
+          },
+        },
+      },
       !multiline && {
         height: StyleConstants.inputControlHeight,
       },
