@@ -11,7 +11,7 @@ export function getVNextChangelogGroups(): ChangelogGroupOptions {
 
   return {
     masterPackageName: '@fluentui/react-components',
-    changelogPath: 'packages/react-components',
+    changelogPath: 'packages/react-components/react-components',
     include: vNextPackagePaths,
   };
 }
