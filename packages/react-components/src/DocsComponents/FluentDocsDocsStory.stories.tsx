@@ -121,10 +121,7 @@ export const FluentDocsDocsStory: React.FunctionComponent<
           template="react-ts"
           // The following line sets bundler to a beta version. It speeds up the bundling time from
           // cca 1 minute to cca 10 seconds. More info: https://github.com/codesandbox/sandpack/discussions/416
-          // We don't use it, because as Sandpack is developing it, new bugs are being introduced and live edit
-          // stops working without any change on our side.
-          // It can be fixed by self-hosting the bundler and testing after each update.
-          // bundlerURL="https://sandpack-bundler.pages.dev"
+          bundlerURL="https://sandpack-bundler.pages.dev"
           openPaths={['/example.tsx']}
           customSetup={{
             environment: 'create-react-app-typescript',
