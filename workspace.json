@@ -283,9 +283,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-button": {
-      "root": "packages/react-button",
+      "root": "packages/react-components/react-button",
       "projectType": "library",
-      "sourceRoot": "packages/react-button/src",
+      "sourceRoot": "packages/react-components/react-button/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },

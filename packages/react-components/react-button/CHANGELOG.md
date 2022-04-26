@@ -6,7 +6,7 @@ This log was last generated on Mon, 25 Apr 2022 09:32:16 GMT and should not be m
 
 ## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.7)
 
-Mon, 25 Apr 2022 09:32:16 GMT 
+Mon, 25 Apr 2022 09:32:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.6..@fluentui/react-button_v9.0.0-rc.7)
 
 ### Changes
@@ -18,7 +18,7 @@ Mon, 25 Apr 2022 09:32:16 GMT
 
 ## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.6)
 
-Tue, 19 Apr 2022 19:17:12 GMT 
+Tue, 19 Apr 2022 19:17:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.5..@fluentui/react-button_v9.0.0-rc.6)
 
 ### Changes
@@ -39,7 +39,7 @@ Tue, 19 Apr 2022 19:17:12 GMT
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.5)
 
-Fri, 04 Mar 2022 05:17:34 GMT 
+Fri, 04 Mar 2022 05:17:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.4..@fluentui/react-button_v9.0.0-rc.5)
 
 ### Changes
@@ -54,7 +54,7 @@ Fri, 04 Mar 2022 05:17:34 GMT
 
 ## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.4)
 
-Tue, 01 Mar 2022 02:17:35 GMT 
+Tue, 01 Mar 2022 02:17:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.3..@fluentui/react-button_v9.0.0-rc.4)
 
 ### Changes
@@ -66,7 +66,7 @@ Tue, 01 Mar 2022 02:17:35 GMT
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.3)
 
-Fri, 18 Feb 2022 13:35:28 GMT 
+Fri, 18 Feb 2022 13:35:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.1..@fluentui/react-button_v9.0.0-rc.3)
 
 ### Changes
@@ -84,7 +84,7 @@ Fri, 18 Feb 2022 13:35:28 GMT
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.1)
 
-Thu, 10 Feb 2022 08:51:46 GMT 
+Thu, 10 Feb 2022 08:51:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-beta.5..@fluentui/react-button_v9.0.0-rc.1)
 
 ### Changes
@@ -93,7 +93,7 @@ Thu, 10 Feb 2022 08:51:46 GMT
 - Button: Changing border radius of small button to borderRadiusMedium from borderRadiusSmall. ([PR #21494](https://github.com/microsoft/fluentui/pull/21494) by Humberto.Morimoto@microsoft.com)
 - Replace make-styles packages with griffel equivalents. ([PR #21436](https://github.com/microsoft/fluentui/pull/21436) by olfedias@microsoft.com)
 - Update react-icons usage to resizable icons ([PR #21074](https://github.com/microsoft/fluentui/pull/21074) by ololubek@microsoft.com)
-- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
 - Bump Fluent UI packages to 9.0.0-rc ([PR #21623](https://github.com/microsoft/fluentui/pull/21623) by lingfangao@hotmail.com)
 - (fix): Update react-icons dependency to latest version ([PR #20943](https://github.com/microsoft/fluentui/pull/20943) by ololubek@microsoft.com)
 - Replacing use of functions in makeStyles with direct use of tokens. ([PR #21039](https://github.com/microsoft/fluentui/pull/21039) by Humberto.Morimoto@microsoft.com)
@@ -117,7 +117,7 @@ Thu, 10 Feb 2022 08:51:46 GMT
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.5)
 
-Thu, 25 Nov 2021 08:34:12 GMT 
+Thu, 25 Nov 2021 08:34:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-beta.4..@fluentui/react-button_v9.0.0-beta.5)
 
 ### Changes
@@ -134,7 +134,7 @@ Thu, 25 Nov 2021 08:34:12 GMT
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.4)
 
-Fri, 12 Nov 2021 13:25:16 GMT 
+Fri, 12 Nov 2021 13:25:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-beta.3..@fluentui/react-button_v9.0.0-beta.4)
 
 ### Changes
@@ -154,7 +154,7 @@ Fri, 12 Nov 2021 13:25:16 GMT
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.3)
 
-Wed, 27 Oct 2021 12:14:15 GMT 
+Wed, 27 Oct 2021 12:14:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-beta.2..@fluentui/react-button_v9.0.0-beta.3)
 
 ### Changes
@@ -172,7 +172,7 @@ Wed, 27 Oct 2021 12:14:15 GMT
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.2)
 
-Tue, 12 Oct 2021 19:45:58 GMT 
+Tue, 12 Oct 2021 19:45:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-beta.1..@fluentui/react-button_v9.0.0-beta.2)
 
 ### Changes
@@ -182,7 +182,7 @@ Tue, 12 Oct 2021 19:45:58 GMT
 
 ## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.1)
 
-Wed, 06 Oct 2021 10:37:22 GMT 
+Wed, 06 Oct 2021 10:37:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.101..@fluentui/react-button_v9.0.0-beta.1)
 
 ### Changes
@@ -200,7 +200,7 @@ Wed, 06 Oct 2021 10:37:22 GMT
 
 ## [9.0.0-alpha.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.101)
 
-Tue, 05 Oct 2021 12:47:58 GMT 
+Tue, 05 Oct 2021 12:47:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.100..@fluentui/react-button_v9.0.0-alpha.101)
 
 ### Changes
@@ -215,7 +215,7 @@ Tue, 05 Oct 2021 12:47:58 GMT
 
 ## [9.0.0-alpha.100](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.100)
 
-Tue, 05 Oct 2021 09:28:07 GMT 
+Tue, 05 Oct 2021 09:28:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.99..@fluentui/react-button_v9.0.0-alpha.100)
 
 ### Changes
@@ -232,7 +232,7 @@ Tue, 05 Oct 2021 09:28:07 GMT
 
 ## [9.0.0-alpha.99](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.99)
 
-Fri, 01 Oct 2021 14:13:08 GMT 
+Fri, 01 Oct 2021 14:13:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.97..@fluentui/react-button_v9.0.0-alpha.99)
 
 ### Changes
@@ -250,7 +250,7 @@ Fri, 01 Oct 2021 14:13:08 GMT
 
 ## [9.0.0-alpha.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.97)
 
-Fri, 01 Oct 2021 12:30:46 GMT 
+Fri, 01 Oct 2021 12:30:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.96..@fluentui/react-button_v9.0.0-alpha.97)
 
 ### Changes
@@ -261,7 +261,7 @@ Fri, 01 Oct 2021 12:30:46 GMT
 
 ## [9.0.0-alpha.96](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.96)
 
-Fri, 01 Oct 2021 09:44:56 GMT 
+Fri, 01 Oct 2021 09:44:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.95..@fluentui/react-button_v9.0.0-alpha.96)
 
 ### Changes
@@ -272,7 +272,7 @@ Fri, 01 Oct 2021 09:44:56 GMT
 
 ## [9.0.0-alpha.95](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.95)
 
-Thu, 30 Sep 2021 09:18:15 GMT 
+Thu, 30 Sep 2021 09:18:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.94..@fluentui/react-button_v9.0.0-alpha.95)
 
 ### Changes
@@ -281,7 +281,7 @@ Thu, 30 Sep 2021 09:18:15 GMT
 
 ## [9.0.0-alpha.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.94)
 
-Wed, 29 Sep 2021 08:06:11 GMT 
+Wed, 29 Sep 2021 08:06:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.93..@fluentui/react-button_v9.0.0-alpha.94)
 
 ### Changes
@@ -295,7 +295,7 @@ Wed, 29 Sep 2021 08:06:11 GMT
 
 ## [9.0.0-alpha.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.93)
 
-Mon, 27 Sep 2021 08:06:00 GMT 
+Mon, 27 Sep 2021 08:06:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.92..@fluentui/react-button_v9.0.0-alpha.93)
 
 ### Changes
@@ -310,7 +310,7 @@ Mon, 27 Sep 2021 08:06:00 GMT
 
 ## [9.0.0-alpha.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.92)
 
-Fri, 24 Sep 2021 09:17:17 GMT 
+Fri, 24 Sep 2021 09:17:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.91..@fluentui/react-button_v9.0.0-alpha.92)
 
 ### Changes
@@ -325,7 +325,7 @@ Fri, 24 Sep 2021 09:17:17 GMT
 
 ## [9.0.0-alpha.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.91)
 
-Thu, 23 Sep 2021 08:21:34 GMT 
+Thu, 23 Sep 2021 08:21:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.90..@fluentui/react-button_v9.0.0-alpha.91)
 
 ### Changes
@@ -341,7 +341,7 @@ Thu, 23 Sep 2021 08:21:34 GMT
 
 ## [9.0.0-alpha.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.90)
 
-Wed, 22 Sep 2021 10:10:07 GMT 
+Wed, 22 Sep 2021 10:10:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.89..@fluentui/react-button_v9.0.0-alpha.90)
 
 ### Changes
@@ -358,7 +358,7 @@ Wed, 22 Sep 2021 10:10:07 GMT
 
 ## [9.0.0-alpha.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.89)
 
-Tue, 21 Sep 2021 07:42:34 GMT 
+Tue, 21 Sep 2021 07:42:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.88..@fluentui/react-button_v9.0.0-alpha.89)
 
 ### Changes
@@ -373,7 +373,7 @@ Tue, 21 Sep 2021 07:42:34 GMT
 
 ## [9.0.0-alpha.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.88)
 
-Mon, 20 Sep 2021 07:36:26 GMT 
+Mon, 20 Sep 2021 07:36:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.87..@fluentui/react-button_v9.0.0-alpha.88)
 
 ### Changes
@@ -383,7 +383,7 @@ Mon, 20 Sep 2021 07:36:26 GMT
 
 ## [9.0.0-alpha.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.87)
 
-Fri, 17 Sep 2021 07:35:26 GMT 
+Fri, 17 Sep 2021 07:35:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.86..@fluentui/react-button_v9.0.0-alpha.87)
 
 ### Changes
@@ -394,7 +394,7 @@ Fri, 17 Sep 2021 07:35:26 GMT
 
 ## [9.0.0-alpha.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.86)
 
-Thu, 16 Sep 2021 07:38:39 GMT 
+Thu, 16 Sep 2021 07:38:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.85..@fluentui/react-button_v9.0.0-alpha.86)
 
 ### Changes
@@ -403,7 +403,7 @@ Thu, 16 Sep 2021 07:38:39 GMT
 
 ## [9.0.0-alpha.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.85)
 
-Tue, 14 Sep 2021 20:09:02 GMT 
+Tue, 14 Sep 2021 20:09:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.84..@fluentui/react-button_v9.0.0-alpha.85)
 
 ### Changes
@@ -412,7 +412,7 @@ Tue, 14 Sep 2021 20:09:02 GMT
 
 ## [9.0.0-alpha.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.84)
 
-Fri, 10 Sep 2021 16:31:53 GMT 
+Fri, 10 Sep 2021 16:31:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.83..@fluentui/react-button_v9.0.0-alpha.84)
 
 ### Changes
@@ -422,7 +422,7 @@ Fri, 10 Sep 2021 16:31:53 GMT
 
 ## [9.0.0-alpha.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.83)
 
-Fri, 10 Sep 2021 07:39:51 GMT 
+Fri, 10 Sep 2021 07:39:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.82..@fluentui/react-button_v9.0.0-alpha.83)
 
 ### Changes
@@ -431,7 +431,7 @@ Fri, 10 Sep 2021 07:39:51 GMT
 
 ## [9.0.0-alpha.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.82)
 
-Wed, 08 Sep 2021 07:34:11 GMT 
+Wed, 08 Sep 2021 07:34:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.81..@fluentui/react-button_v9.0.0-alpha.82)
 
 ### Changes
@@ -440,7 +440,7 @@ Wed, 08 Sep 2021 07:34:11 GMT
 
 ## [9.0.0-alpha.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.81)
 
-Mon, 06 Sep 2021 07:34:53 GMT 
+Mon, 06 Sep 2021 07:34:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.80..@fluentui/react-button_v9.0.0-alpha.81)
 
 ### Changes
@@ -449,7 +449,7 @@ Mon, 06 Sep 2021 07:34:53 GMT
 
 ## [9.0.0-alpha.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.80)
 
-Fri, 03 Sep 2021 00:13:07 GMT 
+Fri, 03 Sep 2021 00:13:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.79..@fluentui/react-button_v9.0.0-alpha.80)
 
 ### Changes
@@ -458,7 +458,7 @@ Fri, 03 Sep 2021 00:13:07 GMT
 
 ## [9.0.0-alpha.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.79)
 
-Thu, 02 Sep 2021 07:36:46 GMT 
+Thu, 02 Sep 2021 07:36:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.78..@fluentui/react-button_v9.0.0-alpha.79)
 
 ### Patches
@@ -471,7 +471,7 @@ Thu, 02 Sep 2021 07:36:46 GMT
 
 ## [9.0.0-alpha.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.78)
 
-Wed, 01 Sep 2021 07:39:56 GMT 
+Wed, 01 Sep 2021 07:39:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.77..@fluentui/react-button_v9.0.0-alpha.78)
 
 ### Changes
@@ -480,7 +480,7 @@ Wed, 01 Sep 2021 07:39:56 GMT
 
 ## [9.0.0-alpha.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.77)
 
-Tue, 31 Aug 2021 07:37:47 GMT 
+Tue, 31 Aug 2021 07:37:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.76..@fluentui/react-button_v9.0.0-alpha.77)
 
 ### Changes
@@ -489,7 +489,7 @@ Tue, 31 Aug 2021 07:37:47 GMT
 
 ## [9.0.0-alpha.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.76)
 
-Mon, 30 Aug 2021 07:35:05 GMT 
+Mon, 30 Aug 2021 07:35:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.75..@fluentui/react-button_v9.0.0-alpha.76)
 
 ### Changes
@@ -498,7 +498,7 @@ Mon, 30 Aug 2021 07:35:05 GMT
 
 ## [9.0.0-alpha.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.75)
 
-Fri, 27 Aug 2021 07:33:32 GMT 
+Fri, 27 Aug 2021 07:33:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.74..@fluentui/react-button_v9.0.0-alpha.75)
 
 ### Changes
@@ -507,7 +507,7 @@ Fri, 27 Aug 2021 07:33:32 GMT
 
 ## [9.0.0-alpha.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.74)
 
-Thu, 26 Aug 2021 07:35:43 GMT 
+Thu, 26 Aug 2021 07:35:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.73..@fluentui/react-button_v9.0.0-alpha.74)
 
 ### Changes
@@ -516,7 +516,7 @@ Thu, 26 Aug 2021 07:35:43 GMT
 
 ## [9.0.0-alpha.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.73)
 
-Fri, 20 Aug 2021 07:37:28 GMT 
+Fri, 20 Aug 2021 07:37:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.72..@fluentui/react-button_v9.0.0-alpha.73)
 
 ### Changes
@@ -525,7 +525,7 @@ Fri, 20 Aug 2021 07:37:28 GMT
 
 ## [9.0.0-alpha.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.72)
 
-Thu, 19 Aug 2021 07:41:35 GMT 
+Thu, 19 Aug 2021 07:41:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.71..@fluentui/react-button_v9.0.0-alpha.72)
 
 ### Changes
@@ -534,7 +534,7 @@ Thu, 19 Aug 2021 07:41:35 GMT
 
 ## [9.0.0-alpha.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.71)
 
-Wed, 18 Aug 2021 07:33:54 GMT 
+Wed, 18 Aug 2021 07:33:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.70..@fluentui/react-button_v9.0.0-alpha.71)
 
 ### Changes
@@ -543,7 +543,7 @@ Wed, 18 Aug 2021 07:33:54 GMT
 
 ## [9.0.0-alpha.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.70)
 
-Fri, 13 Aug 2021 07:36:34 GMT 
+Fri, 13 Aug 2021 07:36:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.69..@fluentui/react-button_v9.0.0-alpha.70)
 
 ### Changes
@@ -552,7 +552,7 @@ Fri, 13 Aug 2021 07:36:34 GMT
 
 ## [9.0.0-alpha.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.69)
 
-Wed, 11 Aug 2021 07:34:54 GMT 
+Wed, 11 Aug 2021 07:34:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.68..@fluentui/react-button_v9.0.0-alpha.69)
 
 ### Changes
@@ -561,7 +561,7 @@ Wed, 11 Aug 2021 07:34:54 GMT
 
 ## [9.0.0-alpha.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.68)
 
-Fri, 06 Aug 2021 07:35:14 GMT 
+Fri, 06 Aug 2021 07:35:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.67..@fluentui/react-button_v9.0.0-alpha.68)
 
 ### Changes
@@ -570,7 +570,7 @@ Fri, 06 Aug 2021 07:35:14 GMT
 
 ## [9.0.0-alpha.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.67)
 
-Tue, 03 Aug 2021 07:39:30 GMT 
+Tue, 03 Aug 2021 07:39:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.66..@fluentui/react-button_v9.0.0-alpha.67)
 
 ### Patches
@@ -583,7 +583,7 @@ Tue, 03 Aug 2021 07:39:30 GMT
 
 ## [9.0.0-alpha.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.66)
 
-Mon, 02 Aug 2021 07:36:20 GMT 
+Mon, 02 Aug 2021 07:36:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.65..@fluentui/react-button_v9.0.0-alpha.66)
 
 ### Changes
@@ -592,7 +592,7 @@ Mon, 02 Aug 2021 07:36:20 GMT
 
 ## [9.0.0-alpha.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.65)
 
-Mon, 26 Jul 2021 07:37:30 GMT 
+Mon, 26 Jul 2021 07:37:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.64..@fluentui/react-button_v9.0.0-alpha.65)
 
 ### Changes
@@ -601,7 +601,7 @@ Mon, 26 Jul 2021 07:37:30 GMT
 
 ## [9.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.64)
 
-Fri, 23 Jul 2021 07:38:19 GMT 
+Fri, 23 Jul 2021 07:38:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.63..@fluentui/react-button_v9.0.0-alpha.64)
 
 ### Changes
@@ -612,7 +612,7 @@ Fri, 23 Jul 2021 07:38:19 GMT
 
 ## [9.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.63)
 
-Thu, 22 Jul 2021 07:36:55 GMT 
+Thu, 22 Jul 2021 07:36:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.62..@fluentui/react-button_v9.0.0-alpha.63)
 
 ### Changes
@@ -621,7 +621,7 @@ Thu, 22 Jul 2021 07:36:55 GMT
 
 ## [9.0.0-alpha.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.62)
 
-Tue, 20 Jul 2021 22:23:17 GMT 
+Tue, 20 Jul 2021 22:23:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.61..@fluentui/react-button_v9.0.0-alpha.62)
 
 ### Changes
@@ -630,7 +630,7 @@ Tue, 20 Jul 2021 22:23:17 GMT
 
 ## [9.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.61)
 
-Fri, 16 Jul 2021 22:53:17 GMT 
+Fri, 16 Jul 2021 22:53:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.60..@fluentui/react-button_v9.0.0-alpha.61)
 
 ### Changes
@@ -639,7 +639,7 @@ Fri, 16 Jul 2021 22:53:17 GMT
 
 ## [9.0.0-alpha.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.60)
 
-Thu, 15 Jul 2021 07:36:18 GMT 
+Thu, 15 Jul 2021 07:36:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.59..@fluentui/react-button_v9.0.0-alpha.60)
 
 ### Changes
@@ -648,7 +648,7 @@ Thu, 15 Jul 2021 07:36:18 GMT
 
 ## [9.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.59)
 
-Tue, 13 Jul 2021 22:32:58 GMT 
+Tue, 13 Jul 2021 22:32:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.58..@fluentui/react-button_v9.0.0-alpha.59)
 
 ### Patches
@@ -657,7 +657,7 @@ Tue, 13 Jul 2021 22:32:58 GMT
 
 ## [9.0.0-alpha.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.58)
 
-Tue, 13 Jul 2021 07:35:36 GMT 
+Tue, 13 Jul 2021 07:35:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.57..@fluentui/react-button_v9.0.0-alpha.58)
 
 ### Changes
@@ -666,7 +666,7 @@ Tue, 13 Jul 2021 07:35:36 GMT
 
 ## [9.0.0-alpha.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.57)
 
-Mon, 12 Jul 2021 07:33:23 GMT 
+Mon, 12 Jul 2021 07:33:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.56..@fluentui/react-button_v9.0.0-alpha.57)
 
 ### Changes
@@ -675,7 +675,7 @@ Mon, 12 Jul 2021 07:33:23 GMT
 
 ## [9.0.0-alpha.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.56)
 
-Fri, 09 Jul 2021 07:39:31 GMT 
+Fri, 09 Jul 2021 07:39:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.55..@fluentui/react-button_v9.0.0-alpha.56)
 
 ### Patches
@@ -688,7 +688,7 @@ Fri, 09 Jul 2021 07:39:31 GMT
 
 ## [9.0.0-alpha.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.55)
 
-Fri, 02 Jul 2021 23:15:55 GMT 
+Fri, 02 Jul 2021 23:15:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.54..@fluentui/react-button_v9.0.0-alpha.55)
 
 ### Changes
@@ -697,7 +697,7 @@ Fri, 02 Jul 2021 23:15:55 GMT
 
 ## [9.0.0-alpha.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.54)
 
-Fri, 02 Jul 2021 07:37:06 GMT 
+Fri, 02 Jul 2021 07:37:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.53..@fluentui/react-button_v9.0.0-alpha.54)
 
 ### Changes
@@ -706,7 +706,7 @@ Fri, 02 Jul 2021 07:37:06 GMT
 
 ## [9.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.53)
 
-Thu, 01 Jul 2021 07:35:05 GMT 
+Thu, 01 Jul 2021 07:35:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.52..@fluentui/react-button_v9.0.0-alpha.53)
 
 ### Changes
@@ -715,7 +715,7 @@ Thu, 01 Jul 2021 07:35:05 GMT
 
 ## [9.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.52)
 
-Wed, 30 Jun 2021 07:38:35 GMT 
+Wed, 30 Jun 2021 07:38:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.51..@fluentui/react-button_v9.0.0-alpha.52)
 
 ### Changes
@@ -724,7 +724,7 @@ Wed, 30 Jun 2021 07:38:35 GMT
 
 ## [9.0.0-alpha.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.51)
 
-Tue, 29 Jun 2021 07:33:32 GMT 
+Tue, 29 Jun 2021 07:33:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.50..@fluentui/react-button_v9.0.0-alpha.51)
 
 ### Changes
@@ -733,7 +733,7 @@ Tue, 29 Jun 2021 07:33:32 GMT
 
 ## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.50)
 
-Wed, 23 Jun 2021 07:31:49 GMT 
+Wed, 23 Jun 2021 07:31:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.49..@fluentui/react-button_v9.0.0-alpha.50)
 
 ### Changes
@@ -742,7 +742,7 @@ Wed, 23 Jun 2021 07:31:49 GMT
 
 ## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.49)
 
-Tue, 22 Jun 2021 07:35:11 GMT 
+Tue, 22 Jun 2021 07:35:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.48..@fluentui/react-button_v9.0.0-alpha.49)
 
 ### Changes
@@ -751,7 +751,7 @@ Tue, 22 Jun 2021 07:35:11 GMT
 
 ## [9.0.0-alpha.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.48)
 
-Tue, 15 Jun 2021 07:40:20 GMT 
+Tue, 15 Jun 2021 07:40:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.47..@fluentui/react-button_v9.0.0-alpha.48)
 
 ### Changes
@@ -760,7 +760,7 @@ Tue, 15 Jun 2021 07:40:20 GMT
 
 ## [9.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.47)
 
-Fri, 11 Jun 2021 07:34:26 GMT 
+Fri, 11 Jun 2021 07:34:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.46..@fluentui/react-button_v9.0.0-alpha.47)
 
 ### Changes
@@ -771,7 +771,7 @@ Fri, 11 Jun 2021 07:34:26 GMT
 
 ## [9.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.46)
 
-Thu, 10 Jun 2021 07:32:59 GMT 
+Thu, 10 Jun 2021 07:32:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.45..@fluentui/react-button_v9.0.0-alpha.46)
 
 ### Changes
@@ -780,7 +780,7 @@ Thu, 10 Jun 2021 07:32:59 GMT
 
 ## [9.0.0-alpha.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.45)
 
-Wed, 09 Jun 2021 07:33:38 GMT 
+Wed, 09 Jun 2021 07:33:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.44..@fluentui/react-button_v9.0.0-alpha.45)
 
 ### Changes
@@ -789,7 +789,7 @@ Wed, 09 Jun 2021 07:33:38 GMT
 
 ## [9.0.0-alpha.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.44)
 
-Mon, 07 Jun 2021 07:38:15 GMT 
+Mon, 07 Jun 2021 07:38:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.43..@fluentui/react-button_v9.0.0-alpha.44)
 
 ### Patches
@@ -802,7 +802,7 @@ Mon, 07 Jun 2021 07:38:15 GMT
 
 ## [9.0.0-alpha.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.43)
 
-Fri, 04 Jun 2021 07:37:23 GMT 
+Fri, 04 Jun 2021 07:37:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.42..@fluentui/react-button_v9.0.0-alpha.43)
 
 ### Changes
@@ -811,7 +811,7 @@ Fri, 04 Jun 2021 07:37:23 GMT
 
 ## [9.0.0-alpha.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.42)
 
-Thu, 03 Jun 2021 07:36:03 GMT 
+Thu, 03 Jun 2021 07:36:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.41..@fluentui/react-button_v9.0.0-alpha.42)
 
 ### Changes
@@ -820,7 +820,7 @@ Thu, 03 Jun 2021 07:36:03 GMT
 
 ## [9.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.41)
 
-Wed, 02 Jun 2021 07:37:15 GMT 
+Wed, 02 Jun 2021 07:37:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.40..@fluentui/react-button_v9.0.0-alpha.41)
 
 ### Changes
@@ -829,7 +829,7 @@ Wed, 02 Jun 2021 07:37:15 GMT
 
 ## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.40)
 
-Wed, 26 May 2021 07:35:43 GMT 
+Wed, 26 May 2021 07:35:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.39..@fluentui/react-button_v9.0.0-alpha.40)
 
 ### Changes
@@ -838,7 +838,7 @@ Wed, 26 May 2021 07:35:43 GMT
 
 ## [9.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.39)
 
-Fri, 21 May 2021 07:34:54 GMT 
+Fri, 21 May 2021 07:34:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.38..@fluentui/react-button_v9.0.0-alpha.39)
 
 ### Changes
@@ -847,7 +847,7 @@ Fri, 21 May 2021 07:34:54 GMT
 
 ## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.38)
 
-Thu, 20 May 2021 07:41:54 GMT 
+Thu, 20 May 2021 07:41:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.37..@fluentui/react-button_v9.0.0-alpha.38)
 
 ### Patches
@@ -860,7 +860,7 @@ Thu, 20 May 2021 07:41:54 GMT
 
 ## [9.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.37)
 
-Wed, 19 May 2021 07:34:20 GMT 
+Wed, 19 May 2021 07:34:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.36..@fluentui/react-button_v9.0.0-alpha.37)
 
 ### Patches
@@ -873,7 +873,7 @@ Wed, 19 May 2021 07:34:20 GMT
 
 ## [9.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.36)
 
-Tue, 18 May 2021 07:34:38 GMT 
+Tue, 18 May 2021 07:34:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.35..@fluentui/react-button_v9.0.0-alpha.36)
 
 ### Changes
@@ -882,7 +882,7 @@ Tue, 18 May 2021 07:34:38 GMT
 
 ## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.35)
 
-Thu, 13 May 2021 07:36:55 GMT 
+Thu, 13 May 2021 07:36:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.34..@fluentui/react-button_v9.0.0-alpha.35)
 
 ### Changes
@@ -891,7 +891,7 @@ Thu, 13 May 2021 07:36:55 GMT
 
 ## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.34)
 
-Wed, 12 May 2021 07:36:20 GMT 
+Wed, 12 May 2021 07:36:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.33..@fluentui/react-button_v9.0.0-alpha.34)
 
 ### Changes
@@ -900,7 +900,7 @@ Wed, 12 May 2021 07:36:20 GMT
 
 ## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.33)
 
-Mon, 10 May 2021 07:36:07 GMT 
+Mon, 10 May 2021 07:36:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.32..@fluentui/react-button_v9.0.0-alpha.33)
 
 ### Changes
@@ -909,7 +909,7 @@ Mon, 10 May 2021 07:36:07 GMT
 
 ## [9.0.0-alpha.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.32)
 
-Wed, 05 May 2021 07:36:50 GMT 
+Wed, 05 May 2021 07:36:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.31..@fluentui/react-button_v9.0.0-alpha.32)
 
 ### Changes
@@ -918,7 +918,7 @@ Wed, 05 May 2021 07:36:50 GMT
 
 ## [9.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.31)
 
-Mon, 03 May 2021 07:45:19 GMT 
+Mon, 03 May 2021 07:45:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.30..@fluentui/react-button_v9.0.0-alpha.31)
 
 ### Changes
@@ -927,7 +927,7 @@ Mon, 03 May 2021 07:45:19 GMT
 
 ## [9.0.0-alpha.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.30)
 
-Fri, 30 Apr 2021 07:42:23 GMT 
+Fri, 30 Apr 2021 07:42:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.29..@fluentui/react-button_v9.0.0-alpha.30)
 
 ### Patches
@@ -944,7 +944,7 @@ Fri, 30 Apr 2021 07:42:23 GMT
 
 ## [9.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.29)
 
-Tue, 27 Apr 2021 07:34:03 GMT 
+Tue, 27 Apr 2021 07:34:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.28..@fluentui/react-button_v9.0.0-alpha.29)
 
 ### Changes
@@ -953,7 +953,7 @@ Tue, 27 Apr 2021 07:34:03 GMT
 
 ## [9.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.28)
 
-Mon, 26 Apr 2021 07:34:31 GMT 
+Mon, 26 Apr 2021 07:34:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.27..@fluentui/react-button_v9.0.0-alpha.28)
 
 ### Changes
@@ -962,7 +962,7 @@ Mon, 26 Apr 2021 07:34:31 GMT
 
 ## [9.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.27)
 
-Fri, 23 Apr 2021 07:37:10 GMT 
+Fri, 23 Apr 2021 07:37:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.26..@fluentui/react-button_v9.0.0-alpha.27)
 
 ### Patches
@@ -975,7 +975,7 @@ Fri, 23 Apr 2021 07:37:10 GMT
 
 ## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.26)
 
-Thu, 22 Apr 2021 07:33:28 GMT 
+Thu, 22 Apr 2021 07:33:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.25..@fluentui/react-button_v9.0.0-alpha.26)
 
 ### Changes
@@ -984,7 +984,7 @@ Thu, 22 Apr 2021 07:33:28 GMT
 
 ## [9.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.25)
 
-Wed, 21 Apr 2021 07:31:50 GMT 
+Wed, 21 Apr 2021 07:31:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.24..@fluentui/react-button_v9.0.0-alpha.25)
 
 ### Changes
@@ -993,7 +993,7 @@ Wed, 21 Apr 2021 07:31:50 GMT
 
 ## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.24)
 
-Tue, 20 Apr 2021 07:31:35 GMT 
+Tue, 20 Apr 2021 07:31:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.23..@fluentui/react-button_v9.0.0-alpha.24)
 
 ### Changes
@@ -1002,7 +1002,7 @@ Tue, 20 Apr 2021 07:31:35 GMT
 
 ## [9.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.23)
 
-Fri, 16 Apr 2021 18:08:21 GMT 
+Fri, 16 Apr 2021 18:08:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.22..@fluentui/react-button_v9.0.0-alpha.23)
 
 ### Changes
@@ -1011,7 +1011,7 @@ Fri, 16 Apr 2021 18:08:21 GMT
 
 ## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.22)
 
-Wed, 14 Apr 2021 07:34:12 GMT 
+Wed, 14 Apr 2021 07:34:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.21..@fluentui/react-button_v9.0.0-alpha.22)
 
 ### Changes
@@ -1020,7 +1020,7 @@ Wed, 14 Apr 2021 07:34:12 GMT
 
 ## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.21)
 
-Fri, 09 Apr 2021 07:31:06 GMT 
+Fri, 09 Apr 2021 07:31:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.20..@fluentui/react-button_v9.0.0-alpha.21)
 
 ### Changes
@@ -1029,7 +1029,7 @@ Fri, 09 Apr 2021 07:31:06 GMT
 
 ## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.20)
 
-Thu, 08 Apr 2021 07:33:06 GMT 
+Thu, 08 Apr 2021 07:33:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.19..@fluentui/react-button_v9.0.0-alpha.20)
 
 ### Changes
@@ -1038,7 +1038,7 @@ Thu, 08 Apr 2021 07:33:06 GMT
 
 ## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.19)
 
-Thu, 01 Apr 2021 20:13:37 GMT 
+Thu, 01 Apr 2021 20:13:37 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.18..@fluentui/react-button_v9.0.0-alpha.19)
 
 ### Changes
@@ -1047,7 +1047,7 @@ Thu, 01 Apr 2021 20:13:37 GMT
 
 ## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.18)
 
-Wed, 31 Mar 2021 00:53:43 GMT 
+Wed, 31 Mar 2021 00:53:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.17..@fluentui/react-button_v9.0.0-alpha.18)
 
 ### Patches
@@ -1064,7 +1064,7 @@ Wed, 31 Mar 2021 00:53:43 GMT
 
 ## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.17)
 
-Tue, 30 Mar 2021 07:34:45 GMT 
+Tue, 30 Mar 2021 07:34:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.16..@fluentui/react-button_v9.0.0-alpha.17)
 
 ### Patches
@@ -1077,7 +1077,7 @@ Tue, 30 Mar 2021 07:34:45 GMT
 
 ## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.16)
 
-Fri, 26 Mar 2021 07:32:34 GMT 
+Fri, 26 Mar 2021 07:32:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.15..@fluentui/react-button_v9.0.0-alpha.16)
 
 ### Changes
@@ -1087,7 +1087,7 @@ Fri, 26 Mar 2021 07:32:34 GMT
 
 ## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.15)
 
-Thu, 25 Mar 2021 07:33:24 GMT 
+Thu, 25 Mar 2021 07:33:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.14..@fluentui/react-button_v9.0.0-alpha.15)
 
 ### Changes
@@ -1097,7 +1097,7 @@ Thu, 25 Mar 2021 07:33:24 GMT
 
 ## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.14)
 
-Tue, 23 Mar 2021 07:31:43 GMT 
+Tue, 23 Mar 2021 07:31:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.13..@fluentui/react-button_v9.0.0-alpha.14)
 
 ### Changes
@@ -1106,7 +1106,7 @@ Tue, 23 Mar 2021 07:31:43 GMT
 
 ## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.13)
 
-Thu, 18 Mar 2021 20:15:34 GMT 
+Thu, 18 Mar 2021 20:15:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.12..@fluentui/react-button_v9.0.0-alpha.13)
 
 ### Changes
@@ -1115,7 +1115,7 @@ Thu, 18 Mar 2021 20:15:34 GMT
 
 ## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.12)
 
-Wed, 17 Mar 2021 07:35:44 GMT 
+Wed, 17 Mar 2021 07:35:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.11..@fluentui/react-button_v9.0.0-alpha.12)
 
 ### Changes
@@ -1124,7 +1124,7 @@ Wed, 17 Mar 2021 07:35:44 GMT
 
 ## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.11)
 
-Tue, 16 Mar 2021 07:32:44 GMT 
+Tue, 16 Mar 2021 07:32:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.10..@fluentui/react-button_v9.0.0-alpha.11)
 
 ### Patches
@@ -1133,7 +1133,7 @@ Tue, 16 Mar 2021 07:32:44 GMT
 
 ## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.10)
 
-Mon, 15 Mar 2021 07:36:20 GMT 
+Mon, 15 Mar 2021 07:36:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.9..@fluentui/react-button_v9.0.0-alpha.10)
 
 ### Changes
@@ -1142,7 +1142,7 @@ Mon, 15 Mar 2021 07:36:20 GMT
 
 ## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.9)
 
-Fri, 12 Mar 2021 20:04:27 GMT 
+Fri, 12 Mar 2021 20:04:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.8..@fluentui/react-button_v9.0.0-alpha.9)
 
 ### Patches
@@ -1155,7 +1155,7 @@ Fri, 12 Mar 2021 20:04:27 GMT
 
 ## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.8)
 
-Wed, 10 Mar 2021 07:34:39 GMT 
+Wed, 10 Mar 2021 07:34:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.7..@fluentui/react-button_v9.0.0-alpha.8)
 
 ### Changes
@@ -1164,7 +1164,7 @@ Wed, 10 Mar 2021 07:34:39 GMT
 
 ## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.7)
 
-Fri, 05 Mar 2021 20:30:59 GMT 
+Fri, 05 Mar 2021 20:30:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.6..@fluentui/react-button_v9.0.0-alpha.7)
 
 ### Changes
@@ -1173,7 +1173,7 @@ Fri, 05 Mar 2021 20:30:59 GMT
 
 ## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.6)
 
-Wed, 03 Mar 2021 00:10:09 GMT 
+Wed, 03 Mar 2021 00:10:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.5..@fluentui/react-button_v9.0.0-alpha.6)
 
 ### Patches
@@ -1186,7 +1186,7 @@ Wed, 03 Mar 2021 00:10:09 GMT
 
 ## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.5)
 
-Tue, 02 Mar 2021 07:24:27 GMT 
+Tue, 02 Mar 2021 07:24:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.4..@fluentui/react-button_v9.0.0-alpha.5)
 
 ### Changes
@@ -1195,7 +1195,7 @@ Tue, 02 Mar 2021 07:24:27 GMT
 
 ## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.4)
 
-Fri, 26 Feb 2021 01:16:27 GMT 
+Fri, 26 Feb 2021 01:16:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.3..@fluentui/react-button_v9.0.0-alpha.4)
 
 ### Patches
@@ -1215,7 +1215,7 @@ Fri, 26 Feb 2021 01:16:27 GMT
 
 ## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.3)
 
-Thu, 25 Feb 2021 20:16:39 GMT 
+Thu, 25 Feb 2021 20:16:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.2..@fluentui/react-button_v9.0.0-alpha.3)
 
 ### Changes
@@ -1224,7 +1224,7 @@ Thu, 25 Feb 2021 20:16:39 GMT
 
 ## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.2)
 
-Thu, 25 Feb 2021 01:15:27 GMT 
+Thu, 25 Feb 2021 01:15:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.1..@fluentui/react-button_v9.0.0-alpha.2)
 
 ### Patches
@@ -1233,7 +1233,7 @@ Thu, 25 Feb 2021 01:15:27 GMT
 
 ## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.1)
 
-Wed, 24 Feb 2021 00:05:29 GMT 
+Wed, 24 Feb 2021 00:05:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.35..@fluentui/react-button_v9.0.0-alpha.1)
 
 ### Changes
@@ -1242,7 +1242,7 @@ Wed, 24 Feb 2021 00:05:29 GMT
 
 ## [1.0.0-beta.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.35)
 
-Mon, 22 Feb 2021 12:26:22 GMT 
+Mon, 22 Feb 2021 12:26:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.34..@fluentui/react-button_v1.0.0-beta.35)
 
 ### Changes
@@ -1251,7 +1251,7 @@ Mon, 22 Feb 2021 12:26:22 GMT
 
 ## [1.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.34)
 
-Thu, 18 Feb 2021 19:38:50 GMT 
+Thu, 18 Feb 2021 19:38:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.33..@fluentui/react-button_v1.0.0-beta.34)
 
 ### Patches
@@ -1265,7 +1265,7 @@ Thu, 18 Feb 2021 19:38:50 GMT
 
 ## [1.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.33)
 
-Thu, 18 Feb 2021 12:27:34 GMT 
+Thu, 18 Feb 2021 12:27:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.32..@fluentui/react-button_v1.0.0-beta.33)
 
 ### Changes
@@ -1276,7 +1276,7 @@ Thu, 18 Feb 2021 12:27:34 GMT
 
 ## [1.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.32)
 
-Mon, 15 Feb 2021 12:22:00 GMT 
+Mon, 15 Feb 2021 12:22:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.31..@fluentui/react-button_v1.0.0-beta.32)
 
 ### Changes
@@ -1285,7 +1285,7 @@ Mon, 15 Feb 2021 12:22:00 GMT
 
 ## [1.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.31)
 
-Fri, 12 Feb 2021 12:26:20 GMT 
+Fri, 12 Feb 2021 12:26:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.30..@fluentui/react-button_v1.0.0-beta.31)
 
 ### Patches
@@ -1299,7 +1299,7 @@ Fri, 12 Feb 2021 12:26:20 GMT
 
 ## [1.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.30)
 
-Thu, 11 Feb 2021 00:58:10 GMT 
+Thu, 11 Feb 2021 00:58:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.29..@fluentui/react-button_v1.0.0-beta.30)
 
 ### Changes
@@ -1308,7 +1308,7 @@ Thu, 11 Feb 2021 00:58:10 GMT
 
 ## [1.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.29)
 
-Tue, 09 Feb 2021 00:56:52 GMT 
+Tue, 09 Feb 2021 00:56:52 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.28..@fluentui/react-button_v1.0.0-beta.29)
 
 ### Patches
@@ -1321,7 +1321,7 @@ Tue, 09 Feb 2021 00:56:52 GMT
 
 ## [1.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.28)
 
-Mon, 08 Feb 2021 12:23:08 GMT 
+Mon, 08 Feb 2021 12:23:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.27..@fluentui/react-button_v1.0.0-beta.28)
 
 ### Changes
@@ -1330,7 +1330,7 @@ Mon, 08 Feb 2021 12:23:08 GMT
 
 ## [1.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.27)
 
-Wed, 03 Feb 2021 05:51:40 GMT 
+Wed, 03 Feb 2021 05:51:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.26..@fluentui/react-button_v1.0.0-beta.27)
 
 ### Changes
@@ -1339,7 +1339,7 @@ Wed, 03 Feb 2021 05:51:40 GMT
 
 ## [1.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.26)
 
-Tue, 02 Feb 2021 12:21:54 GMT 
+Tue, 02 Feb 2021 12:21:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.25..@fluentui/react-button_v1.0.0-beta.26)
 
 ### Changes
@@ -1349,7 +1349,7 @@ Tue, 02 Feb 2021 12:21:54 GMT
 
 ## [1.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.25)
 
-Mon, 01 Feb 2021 12:23:48 GMT 
+Mon, 01 Feb 2021 12:23:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.24..@fluentui/react-button_v1.0.0-beta.25)
 
 ### Changes
@@ -1358,7 +1358,7 @@ Mon, 01 Feb 2021 12:23:48 GMT
 
 ## [1.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.24)
 
-Thu, 28 Jan 2021 12:25:56 GMT 
+Thu, 28 Jan 2021 12:25:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.23..@fluentui/react-button_v1.0.0-beta.24)
 
 ### Changes
@@ -1368,7 +1368,7 @@ Thu, 28 Jan 2021 12:25:56 GMT
 
 ## [1.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.23)
 
-Sat, 23 Jan 2021 05:20:07 GMT 
+Sat, 23 Jan 2021 05:20:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.22..@fluentui/react-button_v1.0.0-beta.23)
 
 ### Changes
@@ -1377,7 +1377,7 @@ Sat, 23 Jan 2021 05:20:07 GMT
 
 ## [1.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.22)
 
-Fri, 22 Jan 2021 12:24:49 GMT 
+Fri, 22 Jan 2021 12:24:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.21..@fluentui/react-button_v1.0.0-beta.22)
 
 ### Changes
@@ -1386,17 +1386,17 @@ Fri, 22 Jan 2021 12:24:49 GMT
 
 ## [1.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.21)
 
-Thu, 21 Jan 2021 12:36:12 GMT 
+Thu, 21 Jan 2021 12:36:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.19..@fluentui/react-button_v1.0.0-beta.21)
 
 ### Changes
 
 - Button: Enable pointer-events so that tooltip can be attached to disabledFocusable Button. ([PR #16508](https://github.com/microsoft/fluentui/pull/16508) by jukapsia@microsoft.com)
--  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+- Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [1.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.19)
 
-Thu, 14 Jan 2021 12:31:15 GMT 
+Thu, 14 Jan 2021 12:31:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.17..@fluentui/react-button_v1.0.0-beta.19)
 
 ### Changes
@@ -1405,7 +1405,7 @@ Thu, 14 Jan 2021 12:31:15 GMT
 
 ## [1.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.17)
 
-Fri, 11 Dec 2020 12:28:01 GMT 
+Fri, 11 Dec 2020 12:28:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.14..@fluentui/react-button_v1.0.0-beta.17)
 
 ### Changes
@@ -1414,7 +1414,7 @@ Fri, 11 Dec 2020 12:28:01 GMT
 
 ## [1.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.14)
 
-Tue, 01 Dec 2020 12:38:05 GMT 
+Tue, 01 Dec 2020 12:38:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.13..@fluentui/react-button_v1.0.0-beta.14)
 
 ### Changes
@@ -1423,7 +1423,7 @@ Tue, 01 Dec 2020 12:38:05 GMT
 
 ## [1.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.13)
 
-Mon, 23 Nov 2020 12:31:40 GMT 
+Mon, 23 Nov 2020 12:31:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.12..@fluentui/react-button_v1.0.0-beta.13)
 
 ### Changes
@@ -1432,7 +1432,7 @@ Mon, 23 Nov 2020 12:31:40 GMT
 
 ## [1.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.12)
 
-Wed, 18 Nov 2020 12:30:07 GMT 
+Wed, 18 Nov 2020 12:30:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.11..@fluentui/react-button_v1.0.0-beta.12)
 
 ### Changes
@@ -1441,17 +1441,17 @@ Wed, 18 Nov 2020 12:30:07 GMT
 
 ## [1.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.11)
 
-Tue, 17 Nov 2020 12:36:24 GMT 
+Tue, 17 Nov 2020 12:36:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.9..@fluentui/react-button_v1.0.0-beta.11)
 
 ### Changes
 
-- Updating arguments of style hook.  ([PR #15952](https://github.com/microsoft/fluentui/pull/15952) by dzearing@hotmail.com)
+- Updating arguments of style hook. ([PR #15952](https://github.com/microsoft/fluentui/pull/15952) by dzearing@hotmail.com)
 - Updating classes hooks derived from Button to actually derive from Button. ([PR #15955](https://github.com/microsoft/fluentui/pull/15955) by xgao@microsoft.com)
 
 ## [1.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.9)
 
-Fri, 06 Nov 2020 12:34:34 GMT 
+Fri, 06 Nov 2020 12:34:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.8..@fluentui/react-button_v1.0.0-beta.9)
 
 ### Changes
@@ -1460,7 +1460,7 @@ Fri, 06 Nov 2020 12:34:34 GMT
 
 ## [1.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.8)
 
-Thu, 05 Nov 2020 12:29:43 GMT 
+Thu, 05 Nov 2020 12:29:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.7..@fluentui/react-button_v1.0.0-beta.8)
 
 ### Changes
@@ -1469,7 +1469,7 @@ Thu, 05 Nov 2020 12:29:43 GMT
 
 ## [1.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.7)
 
-Wed, 04 Nov 2020 12:34:30 GMT 
+Wed, 04 Nov 2020 12:34:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.4..@fluentui/react-button_v1.0.0-beta.7)
 
 ### Changes
@@ -1478,7 +1478,7 @@ Wed, 04 Nov 2020 12:34:30 GMT
 
 ## [1.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.4)
 
-Wed, 28 Oct 2020 12:32:24 GMT 
+Wed, 28 Oct 2020 12:32:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.1..@fluentui/react-button_v1.0.0-beta.4)
 
 ### Changes
@@ -1487,7 +1487,7 @@ Wed, 28 Oct 2020 12:32:24 GMT
 
 ## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.1)
 
-Fri, 23 Oct 2020 23:25:40 GMT 
+Fri, 23 Oct 2020 23:25:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.0..@fluentui/react-button_v1.0.0-beta.1)
 
 ### Changes
@@ -1496,7 +1496,7 @@ Fri, 23 Oct 2020 23:25:40 GMT
 
 ## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.0)
 
-Fri, 23 Oct 2020 03:26:15 GMT 
+Fri, 23 Oct 2020 03:26:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.14.3..@fluentui/react-button_v1.0.0-beta.0)
 
 ### Changes
@@ -1515,7 +1515,7 @@ Fri, 23 Oct 2020 03:26:15 GMT
 
 ## [0.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.14.3)
 
-Sun, 27 Sep 2020 04:20:52 GMT 
+Sun, 27 Sep 2020 04:20:52 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.14.2..@fluentui/react-button_v0.14.3)
 
 ### Patches
@@ -1524,7 +1524,7 @@ Sun, 27 Sep 2020 04:20:52 GMT
 
 ## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.14.2)
 
-Fri, 25 Sep 2020 12:25:17 GMT 
+Fri, 25 Sep 2020 12:25:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.14.0..@fluentui/react-button_v0.14.2)
 
 ### Patches
@@ -1534,7 +1534,7 @@ Fri, 25 Sep 2020 12:25:17 GMT
 
 ## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.14.0)
 
-Wed, 23 Sep 2020 12:27:48 GMT 
+Wed, 23 Sep 2020 12:27:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.13.1..@fluentui/react-button_v0.14.0)
 
 ### Minor changes
@@ -1547,7 +1547,7 @@ Wed, 23 Sep 2020 12:27:48 GMT
 
 ## [0.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.13.1)
 
-Thu, 17 Sep 2020 15:52:49 GMT 
+Thu, 17 Sep 2020 15:52:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.13.0..@fluentui/react-button_v0.13.1)
 
 ### Patches
@@ -1556,7 +1556,7 @@ Thu, 17 Sep 2020 15:52:49 GMT
 
 ## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.13.0)
 
-Thu, 17 Sep 2020 12:25:04 GMT 
+Thu, 17 Sep 2020 12:25:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.12.6..@fluentui/react-button_v0.13.0)
 
 ### Minor changes
@@ -1565,7 +1565,7 @@ Thu, 17 Sep 2020 12:25:04 GMT
 
 ## [0.12.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.12.5)
 
-Tue, 15 Sep 2020 12:26:06 GMT 
+Tue, 15 Sep 2020 12:26:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.12.4..@fluentui/react-button_v0.12.5)
 
 ### Patches
@@ -1574,7 +1574,7 @@ Tue, 15 Sep 2020 12:26:06 GMT
 
 ## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.12.0)
 
-Wed, 09 Sep 2020 12:24:19 GMT 
+Wed, 09 Sep 2020 12:24:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.11.6..@fluentui/react-button_v0.12.0)
 
 ### Minor changes
@@ -1587,7 +1587,7 @@ Wed, 09 Sep 2020 12:24:19 GMT
 
 ## [0.11.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.11.6)
 
-Mon, 07 Sep 2020 12:26:26 GMT 
+Mon, 07 Sep 2020 12:26:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.11.5..@fluentui/react-button_v0.11.6)
 
 ### Patches
@@ -1596,7 +1596,7 @@ Mon, 07 Sep 2020 12:26:26 GMT
 
 ## [0.11.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.11.5)
 
-Fri, 04 Sep 2020 12:28:23 GMT 
+Fri, 04 Sep 2020 12:28:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.11.0..@fluentui/react-button_v0.11.5)
 
 ### Patches
@@ -1605,7 +1605,7 @@ Fri, 04 Sep 2020 12:28:23 GMT
 
 ## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.11.0)
 
-Fri, 28 Aug 2020 12:29:20 GMT 
+Fri, 28 Aug 2020 12:29:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.10.3..@fluentui/react-button_v0.11.0)
 
 ### Minor changes
@@ -1614,7 +1614,7 @@ Fri, 28 Aug 2020 12:29:20 GMT
 
 ## [0.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.10.3)
 
-Tue, 25 Aug 2020 12:36:19 GMT 
+Tue, 25 Aug 2020 12:36:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.10.1..@fluentui/react-button_v0.10.3)
 
 ### Patches
@@ -1623,7 +1623,7 @@ Tue, 25 Aug 2020 12:36:19 GMT
 
 ## [0.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.10.1)
 
-Thu, 20 Aug 2020 12:37:22 GMT 
+Thu, 20 Aug 2020 12:37:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.10.0..@fluentui/react-button_v0.10.1)
 
 ### Patches
@@ -1633,7 +1633,7 @@ Thu, 20 Aug 2020 12:37:22 GMT
 
 ## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.10.0)
 
-Wed, 19 Aug 2020 12:44:33 GMT 
+Wed, 19 Aug 2020 12:44:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.9.4..@fluentui/react-button_v0.10.0)
 
 ### Minor changes
@@ -1642,7 +1642,7 @@ Wed, 19 Aug 2020 12:44:33 GMT
 
 ## [0.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.9.4)
 
-Tue, 18 Aug 2020 07:58:00 GMT 
+Tue, 18 Aug 2020 07:58:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.9.0..@fluentui/react-button_v0.9.4)
 
 ### Patches
@@ -1651,7 +1651,7 @@ Tue, 18 Aug 2020 07:58:00 GMT
 
 ## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.9.0)
 
-Tue, 11 Aug 2020 05:47:07 GMT 
+Tue, 11 Aug 2020 05:47:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.8.0..@fluentui/react-button_v0.9.0)
 
 ### Minor changes
@@ -1661,7 +1661,7 @@ Tue, 11 Aug 2020 05:47:07 GMT
 
 ## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.8.0)
 
-Mon, 10 Aug 2020 06:19:21 GMT 
+Mon, 10 Aug 2020 06:19:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.7.14..@fluentui/react-button_v0.8.0)
 
 ### Minor changes
@@ -1670,7 +1670,7 @@ Mon, 10 Aug 2020 06:19:21 GMT
 
 ## [0.7.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.7.9)
 
-Mon, 27 Jul 2020 12:42:21 GMT 
+Mon, 27 Jul 2020 12:42:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.7.3..@fluentui/react-button_v0.7.9)
 
 ### Patches
@@ -1679,7 +1679,7 @@ Mon, 27 Jul 2020 12:42:21 GMT
 
 ## [0.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.7.3)
 
-Fri, 17 Jul 2020 12:38:41 GMT 
+Fri, 17 Jul 2020 12:38:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.7.1..@fluentui/react-button_v0.7.3)
 
 ### Patches
@@ -1688,7 +1688,7 @@ Fri, 17 Jul 2020 12:38:41 GMT
 
 ## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.7.0)
 
-Thu, 09 Jul 2020 21:59:04 GMT 
+Thu, 09 Jul 2020 21:59:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.6.2..@fluentui/react-button_v0.7.0)
 
 ### Minor changes
@@ -1697,7 +1697,7 @@ Thu, 09 Jul 2020 21:59:04 GMT
 
 ## [0.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.6.2)
 
-Thu, 02 Jul 2020 12:42:11 GMT 
+Thu, 02 Jul 2020 12:42:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.6.0..@fluentui/react-button_v0.6.2)
 
 ### Patches
@@ -1706,7 +1706,7 @@ Thu, 02 Jul 2020 12:42:11 GMT
 
 ## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.6.0)
 
-Tue, 30 Jun 2020 12:33:36 GMT 
+Tue, 30 Jun 2020 12:33:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.5.1..@fluentui/react-button_v0.6.0)
 
 ### Minor changes
@@ -1715,7 +1715,7 @@ Tue, 30 Jun 2020 12:33:36 GMT
 
 ## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.5.1)
 
-Fri, 26 Jun 2020 12:36:28 GMT 
+Fri, 26 Jun 2020 12:36:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.5.0..@fluentui/react-button_v0.5.1)
 
 ### Patches
@@ -1725,7 +1725,7 @@ Fri, 26 Jun 2020 12:36:28 GMT
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.5.0)
 
-Thu, 25 Jun 2020 12:50:17 GMT 
+Thu, 25 Jun 2020 12:50:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.4.0..@fluentui/react-button_v0.5.0)
 
 ### Minor changes
@@ -1738,7 +1738,7 @@ Thu, 25 Jun 2020 12:50:17 GMT
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.4.0)
 
-Tue, 23 Jun 2020 12:41:54 GMT 
+Tue, 23 Jun 2020 12:41:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.7..@fluentui/react-button_v0.4.0)
 
 ### Minor changes
@@ -1747,7 +1747,7 @@ Tue, 23 Jun 2020 12:41:54 GMT
 
 ## [0.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.7)
 
-Mon, 22 Jun 2020 12:42:16 GMT 
+Mon, 22 Jun 2020 12:42:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.6..@fluentui/react-button_v0.3.7)
 
 ### Patches
@@ -1756,7 +1756,7 @@ Mon, 22 Jun 2020 12:42:16 GMT
 
 ## [0.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.6)
 
-Fri, 19 Jun 2020 12:38:09 GMT 
+Fri, 19 Jun 2020 12:38:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.5..@fluentui/react-button_v0.3.6)
 
 ### Patches
@@ -1765,7 +1765,7 @@ Fri, 19 Jun 2020 12:38:09 GMT
 
 ## [0.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.5)
 
-Thu, 18 Jun 2020 12:37:09 GMT 
+Thu, 18 Jun 2020 12:37:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.3..@fluentui/react-button_v0.3.5)
 
 ### Patches
@@ -1774,7 +1774,7 @@ Thu, 18 Jun 2020 12:37:09 GMT
 
 ## [0.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.3)
 
-Tue, 16 Jun 2020 17:35:36 GMT 
+Tue, 16 Jun 2020 17:35:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.0..@fluentui/react-button_v0.3.3)
 
 ### Patches
@@ -1783,7 +1783,7 @@ Tue, 16 Jun 2020 17:35:36 GMT
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.0)
 
-Fri, 12 Jun 2020 18:29:07 GMT 
+Fri, 12 Jun 2020 18:29:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.2.0..@fluentui/react-button_v0.3.0)
 
 ### Minor changes
@@ -1797,7 +1797,7 @@ Fri, 12 Jun 2020 18:29:07 GMT
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.2.0)
 
-Mon, 08 Jun 2020 12:34:34 GMT 
+Mon, 08 Jun 2020 12:34:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.1.13..@fluentui/react-button_v0.2.0)
 
 ### Minor changes
@@ -1806,7 +1806,7 @@ Mon, 08 Jun 2020 12:34:34 GMT
 
 ## [0.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.1.13)
 
-Fri, 05 Jun 2020 05:09:39 GMT 
+Fri, 05 Jun 2020 05:09:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.1.12..@fluentui/react-button_v0.1.13)
 
 ### Patches
@@ -1816,7 +1816,7 @@ Fri, 05 Jun 2020 05:09:39 GMT
 
 ## [0.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.1.12)
 
-Tue, 02 Jun 2020 12:36:30 GMT 
+Tue, 02 Jun 2020 12:36:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.1.11..@fluentui/react-button_v0.1.12)
 
 ### Patches
@@ -1825,7 +1825,7 @@ Tue, 02 Jun 2020 12:36:30 GMT
 
 ## [0.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.1.11)
 
-Mon, 01 Jun 2020 12:32:45 GMT 
+Mon, 01 Jun 2020 12:32:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.1.4..@fluentui/react-button_v0.1.11)
 
 ### Patches
@@ -1834,12 +1834,12 @@ Mon, 01 Jun 2020 12:32:45 GMT
 
 ## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.1.4)
 
-Wed, 20 May 2020 12:31:10 GMT 
+Wed, 20 May 2020 12:31:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.1.1..@fluentui/react-button_v0.1.4)
 
 ### Patches
 
-- feat(compose): expose __self slot ([PR #13115](https://github.com/microsoft/fluentui/pull/13115) by olfedias@microsoft.com)
+- feat(compose): expose \_\_self slot ([PR #13115](https://github.com/microsoft/fluentui/pull/13115) by olfedias@microsoft.com)
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.1.1)
 
