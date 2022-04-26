@@ -52,17 +52,17 @@ interface MigrationIssueMap {
 const getConvergedPackages = (tree: Tree) => {
   const projects = getProjects(tree);
 
-  let convergencePackages: Package[] = [];
+  let convergedPackages: Package[] = [];
   projects.forEach((project, key) => {
     if (project.projectType === 'library' && project.tags?.some(tag => tag === 'vNext')) {
-      convergencePackages.push({
+      convergedPackages.push({
         name: key,
         folder: project.root,
       });
     }
   });
 
-  return convergencePackages;
+  return convergedPackages;
 };
 
 const getCodeowners = (): Ownership[] => {
