@@ -23,14 +23,6 @@ yarn nx workspace-generator epic-generator ...
 
 Create an epic and sub-issues on the `microsoft/fluentui` repository with the title `Migrate vNext packages`.
 
-Leveraging positional parameters:
-
-```sh
-yarn nx workspace-generator epic-generator "microsoft/fluentui" "Migrate vNext packages"
-```
-
-With named parameters:
-
 ```sh
 yarn nx workspace-generator epic-generator --repository="microsoft/fluentui" --title="Migrate vNext packages"
 ```

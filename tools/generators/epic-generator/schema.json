@@ -6,27 +6,15 @@
   "properties": {
     "repository": {
       "type": "string",
-      "description": "Repository to create issues at.",
-      "$default": {
-        "$source": "argv",
-        "index": 0
-      }
+      "description": "Repository to create issues at."
     },
     "title": {
       "type": "string",
-      "description": "Title used in the creation of the epic",
-      "$default": {
-        "$source": "argv",
-        "index": 1
-      }
+      "description": "Title used in the creation of the epic"
     },
     "message": {
       "type": "string",
-      "description": "Message used in the body of the epic",
-      "$default": {
-        "$source": "argv",
-        "index": 2
-      }
+      "description": "Message used in the body of the epic"
     }
   },
   "required": ["title"]
