@@ -1581,6 +1581,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             "fontFamily": "inherit",
           }
         }
+        title="1"
         type="text"
         value="1"
       />
