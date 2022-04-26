@@ -128,6 +128,12 @@ const Example = () => (
       <TextField disabled value="disabled text" />
       <TextField placeholder="Hello" />
       <TextField errorMessage="Error message!" />
+      <TextField
+        label="Password with reveal button"
+        type="password"
+        canRevealPassword
+        revealPasswordAriaLabel="Show password"
+      />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
