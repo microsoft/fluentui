@@ -2924,27 +2924,27 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-colors/-/fast-colors-5.1.5.tgz#3d7dacae85c263030c793ba457991d4cdcec7538"
   integrity sha512-g8FByhbmRxibSpHkDE90CLCsh61HzH4ujPBG5N1zWXgM8LtzaF6OYBzfd8uGJ/md+SGeHf3aH9fcT8HTCbarXw==
 
-"@microsoft/fast-element@^1.7.2":
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.7.2.tgz#b381c95b1c0f04faa5819785e1cd92b4d9f9ae8a"
-  integrity sha512-bV+wFQUoMtyd1ccwE6k8CVjWSWQv9wgMj6nA2j2l5EtcN8+/XT23Ljce98GaMdIBARYpb35RQwCQq7stVWZUTg==
+"@microsoft/fast-element@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.9.0.tgz#9d3bb5a029772c0e99c230acdcd6df9640a55715"
+  integrity sha512-VxDwoLEEQRRxXfLOB5Llzha9WWvjVJHZFHNE1mn2s1QV5IAkOhrYrhFe9vzv50eI6CqazChDyHDy1km3+rn0wg==
 
-"@microsoft/fast-foundation@^2.33.6":
-  version "2.33.6"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.33.6.tgz#8f6964b1a41a26e25195041212a86ab1f363d47e"
-  integrity sha512-geROGEc760qBXqeYfCDn6Vlq0fXegpqUdVyUD/Fo1BvzI/MbxFqMy37wAEzzqB7B9XcPAoav34cBriWtEWE+gw==
+"@microsoft/fast-foundation@^2.42.0":
+  version "2.42.2"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.42.2.tgz#d5453a9814a84926d516da1950124d07ed14307f"
+  integrity sha512-kHQ+UNWdlk+/doe7tmSCg5NRM20TeAspLivO9ohzEjKYYy0qe5jHB3Pr4nIEqyMYgFwFLfSHUNOkOdczRVIulg==
   dependencies:
-    "@microsoft/fast-element" "^1.7.2"
-    "@microsoft/fast-web-utilities" "^5.1.0"
+    "@microsoft/fast-element" "^1.9.0"
+    "@microsoft/fast-web-utilities" "^5.3.0"
     tabbable "^5.2.0"
     tslib "^1.13.0"
 
-"@microsoft/fast-web-utilities@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-5.1.0.tgz#e060fea2b47c2dcfb4a9ba90a55559f0844d1cdb"
-  integrity sha512-S2PCxI4XqtIxLM1N7i/NuIAgx+mJM01+mDzyB3vZlYibAkOT0bzp5YZCp+coXowokSin/nK5T2kqShMXEzI6Jg==
+"@microsoft/fast-web-utilities@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-5.3.0.tgz#cf6031cc2d4b6668649006d2a0877920f8c0d2fd"
+  integrity sha512-bC3JEM0tOFpxFOWTnBIFUwcH58BzBbW5zJFYcYvgNOSs4GN7Jg/90VJfiAqyEYyzxM6HPQbQUjQqOBytwwGT1g==
   dependencies:
-    exenv-es6 "^1.0.0"
+    exenv-es6 "^1.1.1"
 
 "@microsoft/load-themed-styles@1.10.26", "@microsoft/load-themed-styles@^1.10.26":
   version "1.10.26"
@@ -11911,10 +11911,10 @@ executable@^4.1.0, executable@^4.1.1:
   dependencies:
     pify "^2.2.0"
 
-exenv-es6@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/exenv-es6/-/exenv-es6-1.0.0.tgz#bd459136369af17cf33f959b5af58803d4068c80"
-  integrity sha512-fcG/TX8Ruv9Ma6PBaiNsUrHRJzVzuFMP6LtPn/9iqR+nr9mcLeEOGzXQGLC5CVQSXGE98HtzW2mTZkrCA3XrDg==
+exenv-es6@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/exenv-es6/-/exenv-es6-1.1.1.tgz#80b7a8c5af24d53331f755bac07e84abb1f6de67"
+  integrity sha512-vlVu3N8d6yEMpMsEm+7sUBAI81aqYYuEvfK0jNqmdb/OPXzzH7QWDDnVjMvDSY47JdHEqx/dfC/q8WkfoTmpGQ==
 
 exit-hook@^1.0.0:
   version "1.1.1"
