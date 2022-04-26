@@ -204,13 +204,6 @@ export const CalendarMonthBase: React.FunctionComponent<ICalendarMonthProps> = p
     ? format(strings.monthPickerHeaderAriaLabel, yearString)
     : yearString;
 
-  const prevYearAriaLabel = strings.prevYearAriaLabel
-    ? strings.prevYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, -1))
-    : undefined;
-  const nextYearAriaLabel = strings.nextYearAriaLabel
-    ? strings.nextYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, 1))
-    : undefined;
-
   return (
     <div className={classNames.root}>
       <div className={classNames.headerContainer}>
@@ -225,7 +218,6 @@ export const CalendarMonthBase: React.FunctionComponent<ICalendarMonthProps> = p
           aria-atomic={true}
           // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
           aria-live="polite"
-          key={yearString}
         >
           {yearString}
         </button>
@@ -238,9 +230,12 @@ export const CalendarMonthBase: React.FunctionComponent<ICalendarMonthProps> = p
             tabIndex={isPrevYearInBounds ? undefined : allFocusable ? 0 : -1}
             onClick={isPrevYearInBounds ? onSelectPrevYear : undefined}
             onKeyDown={isPrevYearInBounds ? onButtonKeyDown(onSelectPrevYear) : undefined}
-            title={prevYearAriaLabel}
+            title={
+              strings.prevYearAriaLabel
+                ? strings.prevYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, -1))
+                : undefined
+            }
             type="button"
-            aria-label={prevYearAriaLabel}
           >
             <Icon iconName={getRTL() ? rightNavigationIcon : leftNavigationIcon} />
           </button>
@@ -252,9 +247,12 @@ export const CalendarMonthBase: React.FunctionComponent<ICalendarMonthProps> = p
             tabIndex={isNextYearInBounds ? undefined : allFocusable ? 0 : -1}
             onClick={isNextYearInBounds ? onSelectNextYear : undefined}
             onKeyDown={isNextYearInBounds ? onButtonKeyDown(onSelectNextYear) : undefined}
-            title={nextYearAriaLabel}
+            title={
+              strings.nextYearAriaLabel
+                ? strings.nextYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, 1))
+                : undefined
+            }
             type="button"
-            aria-label={nextYearAriaLabel}
           >
             <Icon iconName={getRTL() ? leftNavigationIcon : rightNavigationIcon} />
           </button>

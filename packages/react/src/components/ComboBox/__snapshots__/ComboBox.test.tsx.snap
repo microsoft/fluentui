@@ -198,7 +198,6 @@ exports[`ComboBox Renders correctly 1`] = `
         role="combobox"
         spellcheck="false"
         style="font-family: inherit;"
-        title="testValue"
         type="text"
         value="testValue"
       />
@@ -530,7 +529,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
         role="combobox"
         spellcheck="false"
         style="font-family: inherit;"
-        title="Option 2"
         type="text"
         value="Option 2"
       />
@@ -1300,7 +1298,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
         role="combobox"
         spellcheck="false"
         style="font-family: inherit;"
-        title=""
         type="text"
         value=""
       />
@@ -2192,7 +2189,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
         role="combobox"
         spellcheck="false"
         style="font-family: inherit;"
-        title=""
         type="text"
         value=""
       />

@@ -267,7 +267,6 @@ const CalendarYearNavArrow: React.FunctionComponent<ICalendarYearNavArrowProps> 
       type="button"
       title={ariaLabelString}
       disabled={disabled}
-      aria-label={ariaLabelString}
     >
       <Icon iconName={isLeftNavigation ? navigationIcons.leftNavigation : navigationIcons.rightNavigation} />
     </button>
@@ -351,7 +350,6 @@ const CalendarYearTitle: React.FunctionComponent<ICalendarYearHeaderProps> = pro
         aria-atomic={true}
         // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
         aria-live="polite"
-        key={currentDateRange}
       >
         {onRenderYear(fromYear)} - {onRenderYear(toYear)}
       </button>
