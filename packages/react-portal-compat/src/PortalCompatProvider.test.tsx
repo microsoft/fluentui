@@ -7,12 +7,17 @@ import * as React from 'react';
 
 import { PortalCompatProvider } from './PortalCompatProvider';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {};
+
 describe('PortalCompatProvider', () => {
   afterEach(() => {
     resetIdsForTests();
   });
 
   it('registers a function in a context', () => {
+    jest.spyOn(console, 'warn').mockImplementation(noop);
+
     const { result } = renderHook(() => usePortalCompat(), { wrapper: PortalCompatProvider });
 
     expect(result.current).toBeInstanceOf(Function);
@@ -71,5 +76,16 @@ describe('PortalCompatProvider', () => {
     result.current(element);
 
     expect(element.classList.length).toBe(0);
+  });
+
+  it('logs a warning when does not have top level FluentProvider', () => {
+    const warn = jest.fn().mockImplementation(noop);
+    jest.spyOn(console, 'warn').mockImplementation(warn);
+
+    renderHook(() => usePortalCompat(), { wrapper: PortalCompatProvider });
+
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining('PortalCompatProvider: "useThemeClassName()" hook returned an empty string'),
+    );
   });
 });
