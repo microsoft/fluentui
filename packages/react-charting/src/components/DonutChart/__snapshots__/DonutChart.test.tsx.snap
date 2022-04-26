@@ -57,7 +57,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.5573057031869559,-54.99717638527632A55,55,0,0,1,46.73279225303567,29.000795303484512L-7.285479676900243,-5.284106913895056Z"
+              d="M0.5499908333791704,-54.99725002291659A55,55,0,0,1,46.728934607128515,29.007010712631306L0,0Z"
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
@@ -73,7 +73,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
 
                   {
                     fill: #323130;
-                    font-size: 18px;
+                    font-size: 28px;
                     font-weight: 700;
                   }
                   @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
@@ -97,7 +97,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M46.13550560220268,29.9418623807726A55,55,0,1,1,-0.5573057031869993,-54.99717638527632L-0.5573057031869456,8.982728447036306Z"
+              d="M46.13948759271731,29.935725892008794A55,55,0,1,1,-0.5499908333792137,-54.99725002291659L0,0Z"
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
@@ -113,7 +113,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
 
                   {
                     fill: #323130;
-                    font-size: 18px;
+                    font-size: 28px;
                     font-weight: 700;
                   }
                   @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
@@ -440,7 +440,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
 
                   {
                     fill: #323130;
-                    font-size: 18px;
+                    font-size: 28px;
                     font-weight: 700;
                   }
                   @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
@@ -480,7 +480,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
 
                   {
                     fill: #323130;
-                    font-size: 18px;
+                    font-size: 28px;
                     font-weight: 700;
                   }
                   @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
@@ -807,7 +807,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
 
                   {
                     fill: #323130;
-                    font-size: 18px;
+                    font-size: 28px;
                     font-weight: 700;
                   }
                   @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
@@ -847,7 +847,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
 
                   {
                     fill: #323130;
-                    font-size: 18px;
+                    font-size: 28px;
                     font-weight: 700;
                   }
                   @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
@@ -940,7 +940,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
 
                   {
                     fill: #323130;
-                    font-size: 18px;
+                    font-size: 28px;
                     font-weight: 700;
                   }
                   @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
@@ -980,7 +980,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
 
                   {
                     fill: #323130;
-                    font-size: 18px;
+                    font-size: 28px;
                     font-weight: 700;
                   }
                   @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
@@ -1307,7 +1307,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
 
                   {
                     fill: #323130;
-                    font-size: 18px;
+                    font-size: 28px;
                     font-weight: 700;
                   }
                   @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
@@ -1349,7 +1349,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
 
                   {
                     fill: #323130;
-                    font-size: 18px;
+                    font-size: 28px;
                     font-weight: 700;
                   }
                   @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
