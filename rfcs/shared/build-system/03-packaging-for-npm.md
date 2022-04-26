@@ -174,6 +174,7 @@ This approach significantly improves our current situation:
 
 ### 2. shipping type declarations (TypeScript)
 
+
 #### Problem statement
 
 To be able to provide TypeScript support to our consumers we generate declaration files during `tsc` invocation.
