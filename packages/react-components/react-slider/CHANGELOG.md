@@ -6,7 +6,7 @@ This log was last generated on Mon, 25 Apr 2022 09:32:19 GMT and should not be m
 
 ## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.12)
 
-Mon, 25 Apr 2022 09:32:19 GMT 
+Mon, 25 Apr 2022 09:32:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.11..@fluentui/react-slider_v9.0.0-beta.12)
 
 ### Changes
@@ -15,7 +15,7 @@ Mon, 25 Apr 2022 09:32:19 GMT
 
 ## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.11)
 
-Tue, 19 Apr 2022 19:16:53 GMT 
+Tue, 19 Apr 2022 19:16:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.10..@fluentui/react-slider_v9.0.0-beta.11)
 
 ### Changes
@@ -33,7 +33,7 @@ Tue, 19 Apr 2022 19:16:53 GMT
 
 ## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.10)
 
-Fri, 04 Mar 2022 05:17:29 GMT 
+Fri, 04 Mar 2022 05:17:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.9..@fluentui/react-slider_v9.0.0-beta.10)
 
 ### Changes
@@ -48,7 +48,7 @@ Fri, 04 Mar 2022 05:17:29 GMT
 
 ## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.9)
 
-Tue, 01 Mar 2022 02:17:38 GMT 
+Tue, 01 Mar 2022 02:17:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.8..@fluentui/react-slider_v9.0.0-beta.9)
 
 ### Changes
@@ -60,7 +60,7 @@ Tue, 01 Mar 2022 02:17:38 GMT
 
 ## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.8)
 
-Fri, 18 Feb 2022 13:35:34 GMT 
+Fri, 18 Feb 2022 13:35:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.6..@fluentui/react-slider_v9.0.0-beta.8)
 
 ### Changes
@@ -74,7 +74,7 @@ Fri, 18 Feb 2022 13:35:34 GMT
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.6)
 
-Thu, 10 Feb 2022 08:50:49 GMT 
+Thu, 10 Feb 2022 08:50:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.5..@fluentui/react-slider_v9.0.0-beta.6)
 
 ### Changes
@@ -93,7 +93,7 @@ Thu, 10 Feb 2022 08:50:49 GMT
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.5)
 
-Thu, 25 Nov 2021 08:34:17 GMT 
+Thu, 25 Nov 2021 08:34:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.4..@fluentui/react-slider_v9.0.0-beta.5)
 
 ### Changes
@@ -109,7 +109,7 @@ Thu, 25 Nov 2021 08:34:17 GMT
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.4)
 
-Fri, 12 Nov 2021 13:25:32 GMT 
+Fri, 12 Nov 2021 13:25:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.3..@fluentui/react-slider_v9.0.0-beta.4)
 
 ### Changes
@@ -128,7 +128,7 @@ Fri, 12 Nov 2021 13:25:32 GMT
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.3)
 
-Wed, 27 Oct 2021 12:14:22 GMT 
+Wed, 27 Oct 2021 12:14:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.2..@fluentui/react-slider_v9.0.0-beta.3)
 
 ### Changes
@@ -145,7 +145,7 @@ Wed, 27 Oct 2021 12:14:22 GMT
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.2)
 
-Tue, 12 Oct 2021 19:45:58 GMT 
+Tue, 12 Oct 2021 19:45:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.1..@fluentui/react-slider_v9.0.0-beta.2)
 
 ### Changes
@@ -154,7 +154,7 @@ Tue, 12 Oct 2021 19:45:58 GMT
 
 ## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.1)
 
-Wed, 06 Oct 2021 10:37:22 GMT 
+Wed, 06 Oct 2021 10:37:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.18..@fluentui/react-slider_v9.0.0-beta.1)
 
 ### Changes
@@ -171,7 +171,7 @@ Wed, 06 Oct 2021 10:37:22 GMT
 
 ## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.18)
 
-Tue, 05 Oct 2021 12:47:58 GMT 
+Tue, 05 Oct 2021 12:47:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.17..@fluentui/react-slider_v9.0.0-alpha.18)
 
 ### Changes
@@ -185,7 +185,7 @@ Tue, 05 Oct 2021 12:47:58 GMT
 
 ## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.17)
 
-Tue, 05 Oct 2021 09:28:07 GMT 
+Tue, 05 Oct 2021 09:28:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.16..@fluentui/react-slider_v9.0.0-alpha.17)
 
 ### Changes
@@ -201,7 +201,7 @@ Tue, 05 Oct 2021 09:28:07 GMT
 
 ## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.16)
 
-Fri, 01 Oct 2021 14:13:08 GMT 
+Fri, 01 Oct 2021 14:13:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.14..@fluentui/react-slider_v9.0.0-alpha.16)
 
 ### Changes
@@ -218,7 +218,7 @@ Fri, 01 Oct 2021 14:13:08 GMT
 
 ## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.14)
 
-Fri, 01 Oct 2021 09:44:56 GMT 
+Fri, 01 Oct 2021 09:44:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.13..@fluentui/react-slider_v9.0.0-alpha.14)
 
 ### Changes
@@ -228,7 +228,7 @@ Fri, 01 Oct 2021 09:44:56 GMT
 
 ## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.13)
 
-Wed, 29 Sep 2021 08:06:11 GMT 
+Wed, 29 Sep 2021 08:06:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.12..@fluentui/react-slider_v9.0.0-alpha.13)
 
 ### Changes
@@ -243,7 +243,7 @@ Wed, 29 Sep 2021 08:06:11 GMT
 
 ## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.12)
 
-Mon, 27 Sep 2021 08:06:00 GMT 
+Mon, 27 Sep 2021 08:06:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.11..@fluentui/react-slider_v9.0.0-alpha.12)
 
 ### Changes
@@ -259,7 +259,7 @@ Mon, 27 Sep 2021 08:06:00 GMT
 
 ## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.11)
 
-Fri, 24 Sep 2021 09:17:17 GMT 
+Fri, 24 Sep 2021 09:17:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.10..@fluentui/react-slider_v9.0.0-alpha.11)
 
 ### Changes
@@ -274,7 +274,7 @@ Fri, 24 Sep 2021 09:17:17 GMT
 
 ## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.10)
 
-Thu, 23 Sep 2021 08:21:34 GMT 
+Thu, 23 Sep 2021 08:21:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.9..@fluentui/react-slider_v9.0.0-alpha.10)
 
 ### Changes
@@ -289,7 +289,7 @@ Thu, 23 Sep 2021 08:21:34 GMT
 
 ## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.9)
 
-Wed, 22 Sep 2021 10:10:07 GMT 
+Wed, 22 Sep 2021 10:10:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.8..@fluentui/react-slider_v9.0.0-alpha.9)
 
 ### Changes
@@ -305,7 +305,7 @@ Wed, 22 Sep 2021 10:10:07 GMT
 
 ## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.8)
 
-Tue, 21 Sep 2021 07:42:34 GMT 
+Tue, 21 Sep 2021 07:42:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.7..@fluentui/react-slider_v9.0.0-alpha.8)
 
 ### Changes
@@ -322,7 +322,7 @@ Tue, 21 Sep 2021 07:42:34 GMT
 
 ## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.7)
 
-Mon, 20 Sep 2021 07:36:26 GMT 
+Mon, 20 Sep 2021 07:36:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.6..@fluentui/react-slider_v9.0.0-alpha.7)
 
 ### Changes
@@ -331,7 +331,7 @@ Mon, 20 Sep 2021 07:36:26 GMT
 
 ## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.6)
 
-Fri, 17 Sep 2021 07:35:26 GMT 
+Fri, 17 Sep 2021 07:35:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.5..@fluentui/react-slider_v9.0.0-alpha.6)
 
 ### Changes
@@ -341,7 +341,7 @@ Fri, 17 Sep 2021 07:35:26 GMT
 
 ## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.5)
 
-Thu, 16 Sep 2021 07:38:39 GMT 
+Thu, 16 Sep 2021 07:38:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.4..@fluentui/react-slider_v9.0.0-alpha.5)
 
 ### Changes
@@ -351,7 +351,7 @@ Thu, 16 Sep 2021 07:38:39 GMT
 
 ## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.4)
 
-Tue, 14 Sep 2021 20:09:02 GMT 
+Tue, 14 Sep 2021 20:09:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.3..@fluentui/react-slider_v9.0.0-alpha.4)
 
 ### Changes
@@ -360,7 +360,7 @@ Tue, 14 Sep 2021 20:09:02 GMT
 
 ## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.3)
 
-Fri, 10 Sep 2021 16:31:53 GMT 
+Fri, 10 Sep 2021 16:31:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.2..@fluentui/react-slider_v9.0.0-alpha.3)
 
 ### Changes
@@ -370,7 +370,7 @@ Fri, 10 Sep 2021 16:31:53 GMT
 
 ## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.2)
 
-Fri, 10 Sep 2021 07:39:51 GMT 
+Fri, 10 Sep 2021 07:39:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.1..@fluentui/react-slider_v9.0.0-alpha.2)
 
 ### Changes
@@ -379,7 +379,7 @@ Fri, 10 Sep 2021 07:39:51 GMT
 
 ## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.1)
 
-Thu, 09 Sep 2021 07:39:06 GMT 
+Thu, 09 Sep 2021 07:39:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.1)
 
 ### Changes
@@ -388,7 +388,7 @@ Thu, 09 Sep 2021 07:39:06 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Mon, 06 Sep 2021 07:34:53 GMT 
+Mon, 06 Sep 2021 07:34:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Changes
@@ -397,7 +397,7 @@ Mon, 06 Sep 2021 07:34:53 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Thu, 02 Sep 2021 07:36:46 GMT 
+Thu, 02 Sep 2021 07:36:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Patches
@@ -410,7 +410,7 @@ Thu, 02 Sep 2021 07:36:46 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Wed, 01 Sep 2021 07:39:56 GMT 
+Wed, 01 Sep 2021 07:39:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Changes
@@ -419,7 +419,7 @@ Wed, 01 Sep 2021 07:39:56 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Tue, 31 Aug 2021 07:37:47 GMT 
+Tue, 31 Aug 2021 07:37:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Changes
@@ -428,7 +428,7 @@ Tue, 31 Aug 2021 07:37:47 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Fri, 27 Aug 2021 07:33:32 GMT 
+Fri, 27 Aug 2021 07:33:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Changes
@@ -437,7 +437,7 @@ Fri, 27 Aug 2021 07:33:32 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Thu, 26 Aug 2021 07:35:43 GMT 
+Thu, 26 Aug 2021 07:35:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Changes
@@ -446,7 +446,7 @@ Thu, 26 Aug 2021 07:35:43 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Thu, 19 Aug 2021 07:41:35 GMT 
+Thu, 19 Aug 2021 07:41:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Changes
@@ -455,7 +455,7 @@ Thu, 19 Aug 2021 07:41:35 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Fri, 13 Aug 2021 07:36:34 GMT 
+Fri, 13 Aug 2021 07:36:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Changes
@@ -464,7 +464,7 @@ Fri, 13 Aug 2021 07:36:34 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Wed, 11 Aug 2021 07:34:54 GMT 
+Wed, 11 Aug 2021 07:34:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Changes
@@ -473,7 +473,7 @@ Wed, 11 Aug 2021 07:34:54 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Fri, 06 Aug 2021 07:35:14 GMT 
+Fri, 06 Aug 2021 07:35:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Changes
@@ -482,7 +482,7 @@ Fri, 06 Aug 2021 07:35:14 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Tue, 03 Aug 2021 07:39:30 GMT 
+Tue, 03 Aug 2021 07:39:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Patches
@@ -494,7 +494,7 @@ Tue, 03 Aug 2021 07:39:30 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Mon, 02 Aug 2021 07:36:20 GMT 
+Mon, 02 Aug 2021 07:36:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Changes
@@ -503,7 +503,7 @@ Mon, 02 Aug 2021 07:36:20 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Mon, 26 Jul 2021 07:37:30 GMT 
+Mon, 26 Jul 2021 07:37:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Changes
@@ -512,7 +512,7 @@ Mon, 26 Jul 2021 07:37:30 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Fri, 23 Jul 2021 07:38:19 GMT 
+Fri, 23 Jul 2021 07:38:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Changes
@@ -521,7 +521,7 @@ Fri, 23 Jul 2021 07:38:19 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Thu, 22 Jul 2021 07:36:55 GMT 
+Thu, 22 Jul 2021 07:36:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.0..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Changes
@@ -530,7 +530,7 @@ Thu, 22 Jul 2021 07:36:55 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.0)
 
-Thu, 15 Jul 2021 07:36:18 GMT 
+Thu, 15 Jul 2021 07:36:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.122..@fluentui/react-slider_v9.0.0-alpha.0)
 
 ### Changes
@@ -539,7 +539,7 @@ Thu, 15 Jul 2021 07:36:18 GMT
 
 ## [1.0.0-beta.122](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.122)
 
-Tue, 13 Jul 2021 22:32:58 GMT 
+Tue, 13 Jul 2021 22:32:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.121..@fluentui/react-slider_v1.0.0-beta.122)
 
 ### Patches
@@ -549,7 +549,7 @@ Tue, 13 Jul 2021 22:32:58 GMT
 
 ## [1.0.0-beta.121](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.121)
 
-Tue, 13 Jul 2021 07:35:36 GMT 
+Tue, 13 Jul 2021 07:35:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.120..@fluentui/react-slider_v1.0.0-beta.121)
 
 ### Patches
@@ -559,7 +559,7 @@ Tue, 13 Jul 2021 07:35:36 GMT
 
 ## [1.0.0-beta.120](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.120)
 
-Fri, 09 Jul 2021 07:39:31 GMT 
+Fri, 09 Jul 2021 07:39:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.119..@fluentui/react-slider_v1.0.0-beta.120)
 
 ### Patches
@@ -575,7 +575,7 @@ Fri, 09 Jul 2021 07:39:31 GMT
 
 ## [1.0.0-beta.119](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.119)
 
-Thu, 08 Jul 2021 07:32:49 GMT 
+Thu, 08 Jul 2021 07:32:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.118..@fluentui/react-slider_v1.0.0-beta.119)
 
 ### Patches
@@ -584,7 +584,7 @@ Thu, 08 Jul 2021 07:32:49 GMT
 
 ## [1.0.0-beta.118](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.118)
 
-Wed, 07 Jul 2021 07:32:54 GMT 
+Wed, 07 Jul 2021 07:32:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.117..@fluentui/react-slider_v1.0.0-beta.118)
 
 ### Patches
@@ -593,7 +593,7 @@ Wed, 07 Jul 2021 07:32:54 GMT
 
 ## [1.0.0-beta.117](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.117)
 
-Thu, 01 Jul 2021 07:35:05 GMT 
+Thu, 01 Jul 2021 07:35:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.116..@fluentui/react-slider_v1.0.0-beta.117)
 
 ### Patches
@@ -602,7 +602,7 @@ Thu, 01 Jul 2021 07:35:05 GMT
 
 ## [1.0.0-beta.116](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.116)
 
-Tue, 29 Jun 2021 07:33:32 GMT 
+Tue, 29 Jun 2021 07:33:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.115..@fluentui/react-slider_v1.0.0-beta.116)
 
 ### Patches
@@ -611,7 +611,7 @@ Tue, 29 Jun 2021 07:33:32 GMT
 
 ## [1.0.0-beta.115](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.115)
 
-Mon, 28 Jun 2021 07:35:16 GMT 
+Mon, 28 Jun 2021 07:35:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.114..@fluentui/react-slider_v1.0.0-beta.115)
 
 ### Patches
@@ -623,7 +623,7 @@ Mon, 28 Jun 2021 07:35:16 GMT
 
 ## [1.0.0-beta.114](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.114)
 
-Tue, 22 Jun 2021 07:35:11 GMT 
+Tue, 22 Jun 2021 07:35:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.113..@fluentui/react-slider_v1.0.0-beta.114)
 
 ### Patches
@@ -632,7 +632,7 @@ Tue, 22 Jun 2021 07:35:11 GMT
 
 ## [1.0.0-beta.113](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.113)
 
-Mon, 21 Jun 2021 07:34:33 GMT 
+Mon, 21 Jun 2021 07:34:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.112..@fluentui/react-slider_v1.0.0-beta.113)
 
 ### Patches
@@ -641,7 +641,7 @@ Mon, 21 Jun 2021 07:34:33 GMT
 
 ## [1.0.0-beta.112](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.112)
 
-Fri, 18 Jun 2021 07:30:58 GMT 
+Fri, 18 Jun 2021 07:30:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.111..@fluentui/react-slider_v1.0.0-beta.112)
 
 ### Patches
@@ -650,7 +650,7 @@ Fri, 18 Jun 2021 07:30:58 GMT
 
 ## [1.0.0-beta.111](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.111)
 
-Wed, 16 Jun 2021 07:34:24 GMT 
+Wed, 16 Jun 2021 07:34:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.110..@fluentui/react-slider_v1.0.0-beta.111)
 
 ### Patches
@@ -659,7 +659,7 @@ Wed, 16 Jun 2021 07:34:24 GMT
 
 ## [1.0.0-beta.110](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.110)
 
-Tue, 15 Jun 2021 07:40:20 GMT 
+Tue, 15 Jun 2021 07:40:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.109..@fluentui/react-slider_v1.0.0-beta.110)
 
 ### Patches
@@ -669,7 +669,7 @@ Tue, 15 Jun 2021 07:40:20 GMT
 
 ## [1.0.0-beta.109](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.109)
 
-Fri, 11 Jun 2021 07:34:26 GMT 
+Fri, 11 Jun 2021 07:34:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.108..@fluentui/react-slider_v1.0.0-beta.109)
 
 ### Patches
@@ -678,7 +678,7 @@ Fri, 11 Jun 2021 07:34:26 GMT
 
 ## [1.0.0-beta.108](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.108)
 
-Thu, 10 Jun 2021 07:32:59 GMT 
+Thu, 10 Jun 2021 07:32:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.107..@fluentui/react-slider_v1.0.0-beta.108)
 
 ### Patches
@@ -687,7 +687,7 @@ Thu, 10 Jun 2021 07:32:59 GMT
 
 ## [1.0.0-beta.107](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.107)
 
-Wed, 09 Jun 2021 07:33:38 GMT 
+Wed, 09 Jun 2021 07:33:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.106..@fluentui/react-slider_v1.0.0-beta.107)
 
 ### Patches
@@ -696,7 +696,7 @@ Wed, 09 Jun 2021 07:33:38 GMT
 
 ## [1.0.0-beta.106](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.106)
 
-Tue, 08 Jun 2021 07:32:44 GMT 
+Tue, 08 Jun 2021 07:32:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.105..@fluentui/react-slider_v1.0.0-beta.106)
 
 ### Patches
@@ -705,7 +705,7 @@ Tue, 08 Jun 2021 07:32:44 GMT
 
 ## [1.0.0-beta.105](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.105)
 
-Mon, 07 Jun 2021 07:38:15 GMT 
+Mon, 07 Jun 2021 07:38:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.104..@fluentui/react-slider_v1.0.0-beta.105)
 
 ### Patches
@@ -721,7 +721,7 @@ Mon, 07 Jun 2021 07:38:15 GMT
 
 ## [1.0.0-beta.104](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.104)
 
-Fri, 04 Jun 2021 07:37:23 GMT 
+Fri, 04 Jun 2021 07:37:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.103..@fluentui/react-slider_v1.0.0-beta.104)
 
 ### Patches
@@ -730,7 +730,7 @@ Fri, 04 Jun 2021 07:37:23 GMT
 
 ## [1.0.0-beta.103](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.103)
 
-Mon, 31 May 2021 07:33:15 GMT 
+Mon, 31 May 2021 07:33:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.102..@fluentui/react-slider_v1.0.0-beta.103)
 
 ### Patches
@@ -739,7 +739,7 @@ Mon, 31 May 2021 07:33:15 GMT
 
 ## [1.0.0-beta.102](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.102)
 
-Thu, 27 May 2021 07:33:21 GMT 
+Thu, 27 May 2021 07:33:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.101..@fluentui/react-slider_v1.0.0-beta.102)
 
 ### Patches
@@ -748,7 +748,7 @@ Thu, 27 May 2021 07:33:21 GMT
 
 ## [1.0.0-beta.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.101)
 
-Wed, 26 May 2021 07:35:43 GMT 
+Wed, 26 May 2021 07:35:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.100..@fluentui/react-slider_v1.0.0-beta.101)
 
 ### Patches
@@ -757,7 +757,7 @@ Wed, 26 May 2021 07:35:43 GMT
 
 ## [1.0.0-beta.100](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.100)
 
-Tue, 25 May 2021 01:11:03 GMT 
+Tue, 25 May 2021 01:11:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.99..@fluentui/react-slider_v1.0.0-beta.100)
 
 ### Patches
@@ -766,7 +766,7 @@ Tue, 25 May 2021 01:11:03 GMT
 
 ## [1.0.0-beta.99](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.99)
 
-Mon, 24 May 2021 07:35:28 GMT 
+Mon, 24 May 2021 07:35:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.98..@fluentui/react-slider_v1.0.0-beta.99)
 
 ### Patches
@@ -775,7 +775,7 @@ Mon, 24 May 2021 07:35:28 GMT
 
 ## [1.0.0-beta.98](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.98)
 
-Fri, 21 May 2021 07:34:54 GMT 
+Fri, 21 May 2021 07:34:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.97..@fluentui/react-slider_v1.0.0-beta.98)
 
 ### Patches
@@ -784,7 +784,7 @@ Fri, 21 May 2021 07:34:54 GMT
 
 ## [1.0.0-beta.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.97)
 
-Thu, 20 May 2021 07:41:54 GMT 
+Thu, 20 May 2021 07:41:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.96..@fluentui/react-slider_v1.0.0-beta.97)
 
 ### Patches
@@ -800,7 +800,7 @@ Thu, 20 May 2021 07:41:54 GMT
 
 ## [1.0.0-beta.96](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.96)
 
-Wed, 19 May 2021 07:34:20 GMT 
+Wed, 19 May 2021 07:34:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.95..@fluentui/react-slider_v1.0.0-beta.96)
 
 ### Patches
@@ -810,7 +810,7 @@ Wed, 19 May 2021 07:34:20 GMT
 
 ## [1.0.0-beta.95](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.95)
 
-Tue, 18 May 2021 07:34:38 GMT 
+Tue, 18 May 2021 07:34:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.94..@fluentui/react-slider_v1.0.0-beta.95)
 
 ### Patches
@@ -819,7 +819,7 @@ Tue, 18 May 2021 07:34:38 GMT
 
 ## [1.0.0-beta.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.94)
 
-Mon, 17 May 2021 07:33:48 GMT 
+Mon, 17 May 2021 07:33:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.93..@fluentui/react-slider_v1.0.0-beta.94)
 
 ### Patches
@@ -828,7 +828,7 @@ Mon, 17 May 2021 07:33:48 GMT
 
 ## [1.0.0-beta.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.93)
 
-Fri, 14 May 2021 07:35:10 GMT 
+Fri, 14 May 2021 07:35:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.92..@fluentui/react-slider_v1.0.0-beta.93)
 
 ### Patches
@@ -837,7 +837,7 @@ Fri, 14 May 2021 07:35:10 GMT
 
 ## [1.0.0-beta.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.92)
 
-Thu, 13 May 2021 07:36:55 GMT 
+Thu, 13 May 2021 07:36:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.91..@fluentui/react-slider_v1.0.0-beta.92)
 
 ### Patches
@@ -846,7 +846,7 @@ Thu, 13 May 2021 07:36:55 GMT
 
 ## [1.0.0-beta.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.91)
 
-Wed, 12 May 2021 07:36:20 GMT 
+Wed, 12 May 2021 07:36:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.90..@fluentui/react-slider_v1.0.0-beta.91)
 
 ### Patches
@@ -855,7 +855,7 @@ Wed, 12 May 2021 07:36:20 GMT
 
 ## [1.0.0-beta.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.90)
 
-Mon, 10 May 2021 07:36:07 GMT 
+Mon, 10 May 2021 07:36:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.89..@fluentui/react-slider_v1.0.0-beta.90)
 
 ### Patches
@@ -864,7 +864,7 @@ Mon, 10 May 2021 07:36:07 GMT
 
 ## [1.0.0-beta.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.89)
 
-Fri, 07 May 2021 07:34:34 GMT 
+Fri, 07 May 2021 07:34:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.88..@fluentui/react-slider_v1.0.0-beta.89)
 
 ### Patches
@@ -873,7 +873,7 @@ Fri, 07 May 2021 07:34:34 GMT
 
 ## [1.0.0-beta.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.88)
 
-Thu, 06 May 2021 07:35:51 GMT 
+Thu, 06 May 2021 07:35:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.87..@fluentui/react-slider_v1.0.0-beta.88)
 
 ### Patches
@@ -882,7 +882,7 @@ Thu, 06 May 2021 07:35:51 GMT
 
 ## [1.0.0-beta.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.87)
 
-Tue, 04 May 2021 07:36:35 GMT 
+Tue, 04 May 2021 07:36:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.86..@fluentui/react-slider_v1.0.0-beta.87)
 
 ### Patches
@@ -891,7 +891,7 @@ Tue, 04 May 2021 07:36:35 GMT
 
 ## [1.0.0-beta.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.86)
 
-Fri, 30 Apr 2021 07:42:23 GMT 
+Fri, 30 Apr 2021 07:42:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.85..@fluentui/react-slider_v1.0.0-beta.86)
 
 ### Patches
@@ -911,7 +911,7 @@ Fri, 30 Apr 2021 07:42:23 GMT
 
 ## [1.0.0-beta.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.85)
 
-Wed, 28 Apr 2021 07:32:59 GMT 
+Wed, 28 Apr 2021 07:32:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.84..@fluentui/react-slider_v1.0.0-beta.85)
 
 ### Patches
@@ -920,7 +920,7 @@ Wed, 28 Apr 2021 07:32:59 GMT
 
 ## [1.0.0-beta.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.84)
 
-Tue, 27 Apr 2021 07:34:03 GMT 
+Tue, 27 Apr 2021 07:34:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.83..@fluentui/react-slider_v1.0.0-beta.84)
 
 ### Patches
@@ -929,7 +929,7 @@ Tue, 27 Apr 2021 07:34:03 GMT
 
 ## [1.0.0-beta.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.83)
 
-Mon, 26 Apr 2021 07:34:31 GMT 
+Mon, 26 Apr 2021 07:34:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.82..@fluentui/react-slider_v1.0.0-beta.83)
 
 ### Patches
@@ -938,7 +938,7 @@ Mon, 26 Apr 2021 07:34:31 GMT
 
 ## [1.0.0-beta.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.82)
 
-Fri, 23 Apr 2021 07:37:10 GMT 
+Fri, 23 Apr 2021 07:37:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.81..@fluentui/react-slider_v1.0.0-beta.82)
 
 ### Patches
@@ -954,7 +954,7 @@ Fri, 23 Apr 2021 07:37:10 GMT
 
 ## [1.0.0-beta.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.81)
 
-Fri, 16 Apr 2021 07:32:08 GMT 
+Fri, 16 Apr 2021 07:32:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.80..@fluentui/react-slider_v1.0.0-beta.81)
 
 ### Patches
@@ -963,7 +963,7 @@ Fri, 16 Apr 2021 07:32:08 GMT
 
 ## [1.0.0-beta.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.80)
 
-Wed, 14 Apr 2021 07:34:12 GMT 
+Wed, 14 Apr 2021 07:34:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.79..@fluentui/react-slider_v1.0.0-beta.80)
 
 ### Patches
@@ -972,7 +972,7 @@ Wed, 14 Apr 2021 07:34:12 GMT
 
 ## [1.0.0-beta.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.79)
 
-Tue, 13 Apr 2021 14:55:56 GMT 
+Tue, 13 Apr 2021 14:55:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.78..@fluentui/react-slider_v1.0.0-beta.79)
 
 ### Patches
@@ -984,7 +984,7 @@ Tue, 13 Apr 2021 14:55:56 GMT
 
 ## [1.0.0-beta.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.78)
 
-Sat, 10 Apr 2021 03:23:10 GMT 
+Sat, 10 Apr 2021 03:23:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.77..@fluentui/react-slider_v1.0.0-beta.78)
 
 ### Patches
@@ -993,7 +993,7 @@ Sat, 10 Apr 2021 03:23:10 GMT
 
 ## [1.0.0-beta.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.77)
 
-Fri, 09 Apr 2021 23:42:49 GMT 
+Fri, 09 Apr 2021 23:42:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.76..@fluentui/react-slider_v1.0.0-beta.77)
 
 ### Patches
@@ -1002,7 +1002,7 @@ Fri, 09 Apr 2021 23:42:49 GMT
 
 ## [1.0.0-beta.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.76)
 
-Thu, 08 Apr 2021 07:33:06 GMT 
+Thu, 08 Apr 2021 07:33:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.75..@fluentui/react-slider_v1.0.0-beta.76)
 
 ### Patches
@@ -1011,7 +1011,7 @@ Thu, 08 Apr 2021 07:33:06 GMT
 
 ## [1.0.0-beta.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.75)
 
-Wed, 07 Apr 2021 08:04:03 GMT 
+Wed, 07 Apr 2021 08:04:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.74..@fluentui/react-slider_v1.0.0-beta.75)
 
 ### Patches
@@ -1020,7 +1020,7 @@ Wed, 07 Apr 2021 08:04:03 GMT
 
 ## [1.0.0-beta.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.74)
 
-Tue, 06 Apr 2021 07:34:10 GMT 
+Tue, 06 Apr 2021 07:34:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.73..@fluentui/react-slider_v1.0.0-beta.74)
 
 ### Patches
@@ -1029,7 +1029,7 @@ Tue, 06 Apr 2021 07:34:10 GMT
 
 ## [1.0.0-beta.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.73)
 
-Thu, 01 Apr 2021 07:33:24 GMT 
+Thu, 01 Apr 2021 07:33:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.72..@fluentui/react-slider_v1.0.0-beta.73)
 
 ### Patches
@@ -1038,7 +1038,7 @@ Thu, 01 Apr 2021 07:33:24 GMT
 
 ## [1.0.0-beta.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.72)
 
-Wed, 31 Mar 2021 00:53:43 GMT 
+Wed, 31 Mar 2021 00:53:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.71..@fluentui/react-slider_v1.0.0-beta.72)
 
 ### Patches
@@ -1054,7 +1054,7 @@ Wed, 31 Mar 2021 00:53:43 GMT
 
 ## [1.0.0-beta.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.71)
 
-Tue, 30 Mar 2021 07:34:45 GMT 
+Tue, 30 Mar 2021 07:34:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.70..@fluentui/react-slider_v1.0.0-beta.71)
 
 ### Patches
@@ -1067,7 +1067,7 @@ Tue, 30 Mar 2021 07:34:45 GMT
 
 ## [1.0.0-beta.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.70)
 
-Thu, 25 Mar 2021 07:33:24 GMT 
+Thu, 25 Mar 2021 07:33:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.69..@fluentui/react-slider_v1.0.0-beta.70)
 
 ### Patches
@@ -1076,7 +1076,7 @@ Thu, 25 Mar 2021 07:33:24 GMT
 
 ## [1.0.0-beta.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.69)
 
-Wed, 24 Mar 2021 07:32:21 GMT 
+Wed, 24 Mar 2021 07:32:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.68..@fluentui/react-slider_v1.0.0-beta.69)
 
 ### Patches
@@ -1085,7 +1085,7 @@ Wed, 24 Mar 2021 07:32:21 GMT
 
 ## [1.0.0-beta.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.68)
 
-Mon, 22 Mar 2021 07:34:09 GMT 
+Mon, 22 Mar 2021 07:34:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.67..@fluentui/react-slider_v1.0.0-beta.68)
 
 ### Patches
@@ -1094,7 +1094,7 @@ Mon, 22 Mar 2021 07:34:09 GMT
 
 ## [1.0.0-beta.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.67)
 
-Thu, 18 Mar 2021 20:15:34 GMT 
+Thu, 18 Mar 2021 20:15:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.66..@fluentui/react-slider_v1.0.0-beta.67)
 
 ### Patches
@@ -1103,7 +1103,7 @@ Thu, 18 Mar 2021 20:15:34 GMT
 
 ## [1.0.0-beta.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.66)
 
-Thu, 18 Mar 2021 07:33:22 GMT 
+Thu, 18 Mar 2021 07:33:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.65..@fluentui/react-slider_v1.0.0-beta.66)
 
 ### Patches
@@ -1113,7 +1113,7 @@ Thu, 18 Mar 2021 07:33:22 GMT
 
 ## [1.0.0-beta.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.65)
 
-Wed, 17 Mar 2021 07:35:44 GMT 
+Wed, 17 Mar 2021 07:35:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.64..@fluentui/react-slider_v1.0.0-beta.65)
 
 ### Patches
@@ -1122,7 +1122,7 @@ Wed, 17 Mar 2021 07:35:44 GMT
 
 ## [1.0.0-beta.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.64)
 
-Tue, 16 Mar 2021 07:32:44 GMT 
+Tue, 16 Mar 2021 07:32:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.63..@fluentui/react-slider_v1.0.0-beta.64)
 
 ### Patches
@@ -1132,7 +1132,7 @@ Tue, 16 Mar 2021 07:32:44 GMT
 
 ## [1.0.0-beta.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.63)
 
-Mon, 15 Mar 2021 07:36:20 GMT 
+Mon, 15 Mar 2021 07:36:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.62..@fluentui/react-slider_v1.0.0-beta.63)
 
 ### Changes
@@ -1141,7 +1141,7 @@ Mon, 15 Mar 2021 07:36:20 GMT
 
 ## [1.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.62)
 
-Fri, 12 Mar 2021 20:04:27 GMT 
+Fri, 12 Mar 2021 20:04:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.61..@fluentui/react-slider_v1.0.0-beta.62)
 
 ### Patches
@@ -1151,7 +1151,7 @@ Fri, 12 Mar 2021 20:04:27 GMT
 
 ## [1.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.61)
 
-Thu, 11 Mar 2021 07:33:03 GMT 
+Thu, 11 Mar 2021 07:33:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.60..@fluentui/react-slider_v1.0.0-beta.61)
 
 ### Patches
@@ -1160,7 +1160,7 @@ Thu, 11 Mar 2021 07:33:03 GMT
 
 ## [1.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.60)
 
-Wed, 10 Mar 2021 07:34:39 GMT 
+Wed, 10 Mar 2021 07:34:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.59..@fluentui/react-slider_v1.0.0-beta.60)
 
 ### Patches
@@ -1169,7 +1169,7 @@ Wed, 10 Mar 2021 07:34:39 GMT
 
 ## [1.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.59)
 
-Tue, 09 Mar 2021 07:32:29 GMT 
+Tue, 09 Mar 2021 07:32:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.58..@fluentui/react-slider_v1.0.0-beta.59)
 
 ### Patches
@@ -1178,7 +1178,7 @@ Tue, 09 Mar 2021 07:32:29 GMT
 
 ## [1.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.58)
 
-Sun, 07 Mar 2021 23:34:51 GMT 
+Sun, 07 Mar 2021 23:34:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.57..@fluentui/react-slider_v1.0.0-beta.58)
 
 ### Patches
@@ -1187,7 +1187,7 @@ Sun, 07 Mar 2021 23:34:51 GMT
 
 ## [1.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.57)
 
-Wed, 03 Mar 2021 07:45:18 GMT 
+Wed, 03 Mar 2021 07:45:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.56..@fluentui/react-slider_v1.0.0-beta.57)
 
 ### Patches
@@ -1196,7 +1196,7 @@ Wed, 03 Mar 2021 07:45:18 GMT
 
 ## [1.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.56)
 
-Wed, 03 Mar 2021 00:10:09 GMT 
+Wed, 03 Mar 2021 00:10:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.55..@fluentui/react-slider_v1.0.0-beta.56)
 
 ### Patches
@@ -1209,7 +1209,7 @@ Wed, 03 Mar 2021 00:10:09 GMT
 
 ## [1.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.55)
 
-Tue, 02 Mar 2021 07:24:27 GMT 
+Tue, 02 Mar 2021 07:24:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.54..@fluentui/react-slider_v1.0.0-beta.55)
 
 ### Patches
@@ -1218,7 +1218,7 @@ Tue, 02 Mar 2021 07:24:27 GMT
 
 ## [1.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.54)
 
-Mon, 01 Mar 2021 07:20:46 GMT 
+Mon, 01 Mar 2021 07:20:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.53..@fluentui/react-slider_v1.0.0-beta.54)
 
 ### Patches
@@ -1227,7 +1227,7 @@ Mon, 01 Mar 2021 07:20:46 GMT
 
 ## [1.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.53)
 
-Fri, 26 Feb 2021 01:16:27 GMT 
+Fri, 26 Feb 2021 01:16:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.52..@fluentui/react-slider_v1.0.0-beta.53)
 
 ### Patches
@@ -1248,7 +1248,7 @@ Fri, 26 Feb 2021 01:16:27 GMT
 
 ## [1.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.52)
 
-Thu, 25 Feb 2021 20:16:39 GMT 
+Thu, 25 Feb 2021 20:16:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.51..@fluentui/react-slider_v1.0.0-beta.52)
 
 ### Changes
@@ -1257,7 +1257,7 @@ Thu, 25 Feb 2021 20:16:39 GMT
 
 ## [1.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.51)
 
-Thu, 25 Feb 2021 01:15:27 GMT 
+Thu, 25 Feb 2021 01:15:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.50..@fluentui/react-slider_v1.0.0-beta.51)
 
 ### Patches
@@ -1266,7 +1266,7 @@ Thu, 25 Feb 2021 01:15:27 GMT
 
 ## [1.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.50)
 
-Wed, 24 Feb 2021 07:19:56 GMT 
+Wed, 24 Feb 2021 07:19:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.49..@fluentui/react-slider_v1.0.0-beta.50)
 
 ### Changes
@@ -1275,7 +1275,7 @@ Wed, 24 Feb 2021 07:19:56 GMT
 
 ## [1.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.49)
 
-Wed, 24 Feb 2021 00:05:29 GMT 
+Wed, 24 Feb 2021 00:05:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.48..@fluentui/react-slider_v1.0.0-beta.49)
 
 ### Changes
@@ -1284,7 +1284,7 @@ Wed, 24 Feb 2021 00:05:29 GMT
 
 ## [1.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.48)
 
-Mon, 22 Feb 2021 12:26:22 GMT 
+Mon, 22 Feb 2021 12:26:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.47..@fluentui/react-slider_v1.0.0-beta.48)
 
 ### Changes
@@ -1293,7 +1293,7 @@ Mon, 22 Feb 2021 12:26:22 GMT
 
 ## [1.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.47)
 
-Thu, 18 Feb 2021 19:38:50 GMT 
+Thu, 18 Feb 2021 19:38:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.46..@fluentui/react-slider_v1.0.0-beta.47)
 
 ### Changes
@@ -1302,7 +1302,7 @@ Thu, 18 Feb 2021 19:38:50 GMT
 
 ## [1.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.46)
 
-Thu, 18 Feb 2021 12:27:34 GMT 
+Thu, 18 Feb 2021 12:27:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.45..@fluentui/react-slider_v1.0.0-beta.46)
 
 ### Changes
@@ -1311,7 +1311,7 @@ Thu, 18 Feb 2021 12:27:34 GMT
 
 ## [1.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.45)
 
-Mon, 15 Feb 2021 12:22:00 GMT 
+Mon, 15 Feb 2021 12:22:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.44..@fluentui/react-slider_v1.0.0-beta.45)
 
 ### Changes
@@ -1320,7 +1320,7 @@ Mon, 15 Feb 2021 12:22:00 GMT
 
 ## [1.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.44)
 
-Fri, 12 Feb 2021 12:26:20 GMT 
+Fri, 12 Feb 2021 12:26:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.43..@fluentui/react-slider_v1.0.0-beta.44)
 
 ### Changes
@@ -1329,7 +1329,7 @@ Fri, 12 Feb 2021 12:26:20 GMT
 
 ## [1.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.43)
 
-Thu, 11 Feb 2021 00:58:10 GMT 
+Thu, 11 Feb 2021 00:58:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.42..@fluentui/react-slider_v1.0.0-beta.43)
 
 ### Changes
@@ -1338,7 +1338,7 @@ Thu, 11 Feb 2021 00:58:10 GMT
 
 ## [1.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.42)
 
-Wed, 10 Feb 2021 12:20:53 GMT 
+Wed, 10 Feb 2021 12:20:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.41..@fluentui/react-slider_v1.0.0-beta.42)
 
 ### Changes
@@ -1347,7 +1347,7 @@ Wed, 10 Feb 2021 12:20:53 GMT
 
 ## [1.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.41)
 
-Tue, 09 Feb 2021 12:24:19 GMT 
+Tue, 09 Feb 2021 12:24:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.40..@fluentui/react-slider_v1.0.0-beta.41)
 
 ### Changes
@@ -1356,7 +1356,7 @@ Tue, 09 Feb 2021 12:24:19 GMT
 
 ## [1.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.40)
 
-Tue, 09 Feb 2021 00:56:52 GMT 
+Tue, 09 Feb 2021 00:56:52 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.39..@fluentui/react-slider_v1.0.0-beta.40)
 
 ### Changes
@@ -1365,7 +1365,7 @@ Tue, 09 Feb 2021 00:56:52 GMT
 
 ## [1.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.38)
 
-Mon, 01 Feb 2021 12:23:48 GMT 
+Mon, 01 Feb 2021 12:23:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.36..@fluentui/react-slider_v1.0.0-beta.38)
 
 ### Changes
@@ -1374,7 +1374,7 @@ Mon, 01 Feb 2021 12:23:48 GMT
 
 ## [1.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.36)
 
-Thu, 28 Jan 2021 12:25:56 GMT 
+Thu, 28 Jan 2021 12:25:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.33..@fluentui/react-slider_v1.0.0-beta.36)
 
 ### Changes
@@ -1385,16 +1385,16 @@ Thu, 28 Jan 2021 12:25:56 GMT
 
 ## [1.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.33)
 
-Thu, 21 Jan 2021 12:36:12 GMT 
+Thu, 21 Jan 2021 12:36:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.0..@fluentui/react-slider_v1.0.0-beta.33)
 
 ### Changes
 
--  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+- Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.0)
 
-Fri, 23 Oct 2020 03:26:15 GMT 
+Fri, 23 Oct 2020 03:26:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v0.3.8..@fluentui/react-slider_v1.0.0-beta.0)
 
 ### Changes
@@ -1407,7 +1407,7 @@ Fri, 23 Oct 2020 03:26:15 GMT
 
 ## [0.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v0.3.8)
 
-Fri, 25 Sep 2020 12:25:17 GMT 
+Fri, 25 Sep 2020 12:25:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v0.3.6..@fluentui/react-slider_v0.3.8)
 
 ### Patches
@@ -1416,7 +1416,7 @@ Fri, 25 Sep 2020 12:25:17 GMT
 
 ## [0.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v0.3.5)
 
-Tue, 22 Sep 2020 12:25:45 GMT 
+Tue, 22 Sep 2020 12:25:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v0.3.0..@fluentui/react-slider_v0.3.5)
 
 ### Patches
@@ -1425,7 +1425,7 @@ Tue, 22 Sep 2020 12:25:45 GMT
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v0.3.0)
 
-Wed, 16 Sep 2020 12:27:22 GMT 
+Wed, 16 Sep 2020 12:27:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v0.2.1..@fluentui/react-slider_v0.3.0)
 
 ### Minor changes
@@ -1434,7 +1434,7 @@ Wed, 16 Sep 2020 12:27:22 GMT
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v0.2.1)
 
-Mon, 31 Aug 2020 12:25:46 GMT 
+Mon, 31 Aug 2020 12:25:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v0.1.1..@fluentui/react-slider_v0.2.1)
 
 ### Patches

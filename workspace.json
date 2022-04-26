@@ -577,9 +577,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-slider": {
-      "root": "packages/react-slider",
+      "root": "packages/react-components/react-slider",
       "projectType": "library",
-      "sourceRoot": "packages/react-slider/src",
+      "sourceRoot": "packages/react-components/react-slider/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
