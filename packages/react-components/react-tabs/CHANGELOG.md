@@ -6,7 +6,7 @@ This log was last generated on Mon, 25 Apr 2022 09:32:15 GMT and should not be m
 
 ## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.0.0-beta.10)
 
-Mon, 25 Apr 2022 09:32:15 GMT 
+Mon, 25 Apr 2022 09:32:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.0.0-beta.9..@fluentui/react-tabs_v9.0.0-beta.10)
 
 ### Changes
@@ -16,7 +16,7 @@ Mon, 25 Apr 2022 09:32:15 GMT
 
 ## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.0.0-beta.9)
 
-Tue, 19 Apr 2022 19:16:56 GMT 
+Tue, 19 Apr 2022 19:16:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.0.0-beta.8..@fluentui/react-tabs_v9.0.0-beta.9)
 
 ### Changes
@@ -38,7 +38,7 @@ Tue, 19 Apr 2022 19:16:56 GMT
 
 ## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.0.0-beta.8)
 
-Fri, 04 Mar 2022 05:17:30 GMT 
+Fri, 04 Mar 2022 05:17:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.0.0-beta.7..@fluentui/react-tabs_v9.0.0-beta.8)
 
 ### Changes
@@ -51,7 +51,7 @@ Fri, 04 Mar 2022 05:17:30 GMT
 
 ## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.0.0-beta.7)
 
-Tue, 01 Mar 2022 02:17:39 GMT 
+Tue, 01 Mar 2022 02:17:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.0.0-beta.6..@fluentui/react-tabs_v9.0.0-beta.7)
 
 ### Changes
@@ -63,7 +63,7 @@ Tue, 01 Mar 2022 02:17:39 GMT
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.0.0-beta.6)
 
-Fri, 18 Feb 2022 13:35:35 GMT 
+Fri, 18 Feb 2022 13:35:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.0.0-beta.4..@fluentui/react-tabs_v9.0.0-beta.6)
 
 ### Changes

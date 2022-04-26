@@ -54,7 +54,7 @@
       "@fluentui/react-storybook": ["packages/react-storybook/src/index.ts"],
       "@fluentui/react-storybook-addon": ["packages/react-storybook-addon/src/index.ts"],
       "@fluentui/react-switch": ["packages/react-switch/src/index.ts"],
-      "@fluentui/react-tabs": ["packages/react-tabs/src/index.ts"],
+      "@fluentui/react-tabs": ["packages/react-components/react-tabs/src/index.ts"],
       "@fluentui/react-tabster": ["packages/react-tabster/src/index.ts"],
       "@fluentui/react-text": ["packages/react-text/src/index.ts"],
       "@fluentui/react-textarea": ["packages/react-textarea/src/index.ts"],

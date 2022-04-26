@@ -619,9 +619,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-tabs": {
-      "root": "packages/react-tabs",
+      "root": "packages/react-components/react-tabs",
       "projectType": "library",
-      "sourceRoot": "packages/react-tabs/src",
+      "sourceRoot": "packages/react-components/react-tabs/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
