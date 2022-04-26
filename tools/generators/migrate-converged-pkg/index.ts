@@ -83,6 +83,16 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
     addCodeowner(tree, { owner: options.owner, packageName: options.name });
   }
 
+  if (options.projectConfig.projectType === 'application') {
+    logger.warn(
+      stripIndents`
+      NOTE: you're trying to migrate an Application - ${options.name}.
+      We apply limited migration steps at the moment.
+      `,
+    );
+    return;
+  }
+
   // 1. update TsConfigs
   updatedLocalTsConfig(tree, options);
   updatedBaseTsConfig(tree, options);

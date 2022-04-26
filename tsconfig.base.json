@@ -4,7 +4,7 @@
     "target": "ES2019",
     "module": "esnext",
     "moduleResolution": "node",
-    "lib": ["ES2015", "dom"],
+    "lib": ["ES2019", "dom"],
     "sourceMap": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
