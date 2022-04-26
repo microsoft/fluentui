@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "change ie11 fix from star selector to span to avoid perf issues",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
