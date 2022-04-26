@@ -31,7 +31,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-portal-compat-context": "9.0.0",
+    "@fluentui/react-portal-compat-context": "9.0.0-rc.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
