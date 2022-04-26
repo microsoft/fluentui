@@ -49,7 +49,7 @@ interface MigrationIssueMap {
   [key: string]: MigrationIssue;
 }
 
-const getConvergencePackages = (tree: Tree) => {
+const getConvergedPackages = (tree: Tree) => {
   const projects = getProjects(tree);
 
   let convergencePackages: Package[] = [];
@@ -90,7 +90,7 @@ const mapOwnerships = (packages: Package[], ownerships: Ownership[]): Package[] 
 };
 
 const getPackages = (tree: Tree) => {
-  const packages = getConvergencePackages(tree);
+  const packages = getConvergedPackages(tree);
 
   const ownerships = getCodeowners();
 
