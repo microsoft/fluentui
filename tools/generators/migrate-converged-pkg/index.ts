@@ -18,10 +18,19 @@ import * as path from 'path';
 import * as os from 'os';
 
 import { PackageJson, TsConfig } from '../../types';
-import { arePromptsEnabled, getProjectConfig, getProjects, printUserLogs, prompt, UserLog } from '../../utils';
+import {
+  arePromptsEnabled,
+  getProjectConfig,
+  getProjects,
+  isPackageConverged,
+  printUserLogs,
+  prompt,
+  UserLog,
+} from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 import { addCodeowner } from '../add-codeowners';
+import { printStats } from '../print-stats';
 
 interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
 
@@ -37,7 +46,12 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   const validatedSchema = await validateSchema(tree, schema);
 
   if (hasSchemaFlag(validatedSchema, 'stats')) {
-    printStats(tree, validatedSchema);
+    printStats(tree, {
+      projects: getProjects(tree),
+      title: 'Converged DX',
+      isMigratedCheck: isProjectMigrated,
+      shouldProcessPackage: isPackageConverged,
+    });
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     return () => {};
   }
@@ -409,44 +423,6 @@ async function triggerDynamicPrompts() {
       name: 'name',
     },
   ]);
-}
-
-function printStats(tree: Tree, options: MigrateConvergedPkgGeneratorSchema) {
-  const allProjects = getProjects(tree);
-  const stats = {
-    migrated: [] as Array<ProjectConfiguration & { projectName: string }>,
-    notMigrated: [] as Array<ProjectConfiguration & { projectName: string }>,
-  };
-
-  allProjects.forEach((project, projectName) => {
-    if (!isPackageConverged(tree, project)) {
-      return;
-    }
-
-    if (isProjectMigrated(tree, project)) {
-      stats.migrated.push({ projectName, ...project });
-
-      return;
-    }
-    stats.notMigrated.push({ projectName, ...project });
-  });
-
-  logger.info('Convergence DX migration stats:');
-  logger.info('='.repeat(80));
-
-  logger.info(`Migrated (${stats.migrated.length}):`);
-  logger.info(stats.migrated.map(projectStat => `- ${projectStat.projectName}`).join('\n'));
-
-  logger.info('='.repeat(80));
-  logger.info(`Not migrated (${stats.notMigrated.length}):`);
-  logger.info(stats.notMigrated.map(projectStat => `- ${projectStat.projectName}`).join('\n'));
-
-  return tree;
-}
-
-function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
-  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
-  return packageJson.version.startsWith('9.');
 }
 
 function isProjectMigrated<T extends ProjectConfiguration>(
