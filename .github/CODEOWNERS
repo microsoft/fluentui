@@ -82,6 +82,7 @@ apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/test-bundles @microsoft/fluentui-react
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
+apps/ssr-tests-v9 @microsoft/fluentui-react-build
 
 #### Packages
 packages/azure-themes @hyoshis @Jacqueline-ms
