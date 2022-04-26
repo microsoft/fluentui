@@ -2,6 +2,27 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Mon, 25 Apr 2022 09:32:17 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.0-beta.12",
+      "version": "9.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "1cb4002d46236c724a274ff5abafc1c1e99397e2",
+            "comment": "Fix disabled HCM styles in Checkbox."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.7",
+            "commit": "02ca1d3c198452c1693067f5f18bd01b2ed5d6e6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:17:16 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.0-beta.11",
       "version": "9.0.0-beta.11",

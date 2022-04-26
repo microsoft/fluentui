@@ -3,10 +3,9 @@ import { DocsContext, ArgsTable, Title, Subtitle, Description, PRIMARY_STORY } f
 import { makeStyles, shorthands } from '@griffel/react';
 import { KnownIssues } from './KnownIssues.stories';
 import { Toc } from './Toc.stories';
-import { isHosted } from './isHosted';
 import { FluentDocsDocsStory } from './FluentDocsDocsStory.stories';
-import { THEME_ID } from '../../../react-storybook-addon/src/index';
-import { defaultTheme, themes } from '../../../react-storybook-addon/src/theme';
+import { defaultTheme, themes } from '@fluentui/react-storybook-addon/src/theme';
+import { THEME_ID } from '@fluentui/react-storybook-addon';
 
 const useStyles = makeStyles({
   divider: {
@@ -30,23 +29,14 @@ const useStyles = makeStyles({
     flexGrow: 1,
     minWidth: 0,
   },
-  // style overrides for when hosted in website
-  hosted: {
-    '& h1': {
-      marginTop: '-12px !important',
-    },
-  },
 });
 
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
   const stories = context.componentStories();
   const primaryStory = stories[0];
-  const hosted = isHosted();
   const styles = useStyles();
   const componentName = context.title.split('/').pop()?.replace(new RegExp(' ', 'g'), '') ?? 'Unknown';
-
-  // eslint-disable-next-line deprecation/deprecation
   const fluentThemeID = (context.globals && context.globals[THEME_ID]) ?? defaultTheme.id;
   const fluentThemeExportName = themes.find(theme => theme.id === fluentThemeID)?.exportName ?? 'webLightTheme';
 
@@ -63,7 +53,7 @@ export const FluentDocsPage = () => {
   // );
 
   return (
-    <div className={hosted ? styles.hosted : ''}>
+    <div>
       <Title />
 
       <div className={styles.wrapper}>

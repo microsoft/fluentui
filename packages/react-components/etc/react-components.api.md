@@ -349,6 +349,8 @@ import { TooltipProps } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
 import { TooltipState } from '@fluentui/react-tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-tooltip';
+import { TypeographyStyles } from '@fluentui/react-theme';
+import { typeographyStyles } from '@fluentui/react-theme';
 import { UninitializedMenuListState } from '@fluentui/react-menu';
 import { useAccordion_unstable } from '@fluentui/react-accordion';
 import { useAccordionContextValues_unstable } from '@fluentui/react-accordion';
@@ -1137,6 +1139,10 @@ export { TooltipSlots }
 export { TooltipState }
 
 export { TooltipTriggerProps }
+
+export { TypeographyStyles }
+
+export { typeographyStyles }
 
 export { UninitializedMenuListState }
 

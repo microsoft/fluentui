@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "use ::after pseudo element in styles",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

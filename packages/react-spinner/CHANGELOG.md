@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Tue, 19 Apr 2022 19:17:29 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Apr 2022 09:32:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.0-beta.7)
+
+Mon, 25 Apr 2022 09:32:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.0.0-beta.6..@fluentui/react-spinner_v9.0.0-beta.7)
+
+### Changes
+
+- Reexport react-spinner in react-components ([PR #22531](https://github.com/microsoft/fluentui/pull/22531) by ololubek@microsoft.com)
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.0-beta.6)
 

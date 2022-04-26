@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { MenuButton, Menu, MenuPopover, MenuItemRadio, MenuList, MenuTrigger, makeStyles, MenuProps } from '../index';
+import {
+  makeStyles,
+  Menu,
+  MenuButton,
+  MenuItemRadio,
+  MenuList,
+  MenuPopover,
+  MenuProps,
+  MenuTrigger,
+} from '@fluentui/react-components';
 import { themes, ThemeIds, THEME_ID } from '@fluentui/react-storybook-addon';
 import addons from '@storybook/addons';
 

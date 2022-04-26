@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "react-components: add SpinButton to /unstable",
+  "comment": "Exported typeography styles",
   "packageName": "@fluentui/react-components",
-  "email": "seanmonahan@microsoft.com",
+  "email": "gcox@microsoft.com",
   "dependentChangeType": "patch"
 }

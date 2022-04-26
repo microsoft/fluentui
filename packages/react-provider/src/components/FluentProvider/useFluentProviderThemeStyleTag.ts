@@ -8,7 +8,7 @@ import { fluentProviderClassNames } from './useFluentProviderStyles';
  *
  * @returns CSS class to apply the rule
  */
-export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
+export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
   const { targetDocument, theme } = options;
 
   const styleTagId = useId(fluentProviderClassNames.root);
