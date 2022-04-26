@@ -21,9 +21,9 @@ export type AvatarGroupSlots = {
 type AvatarGroupCommons = {
   /**
    * Layout the Avatars should be displayed as.
-   * @default grid
+   * @default spread
    */
-  layout: 'grid' | 'stacked' | 'pie';
+  layout: 'spread' | 'stack' | 'pie';
 
   /**
    * Maximum number of Avatars to be displayed before overflowing.

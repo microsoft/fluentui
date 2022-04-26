@@ -2,7 +2,7 @@
 
 ## Background
 
-AvatarGroup represents multiple people or entities. AvatarGroups can be represented in a stacked layout, pie layout, and grid layout.
+AvatarGroup represents multiple people or entities. AvatarGroups can be represented in a spread, stack, or pie layout.
 
 ## Prior Art
 
@@ -21,7 +21,7 @@ There's no current research in OpenUI's website.
 
 There's only one existent component similar to AvatarGroup in v8 `Facepile`. v0 doesn't have an equivalent of this component.
 
-- v8 [Facepile](https://developer.microsoft.com/en-us/fluentui#/controls/web/facepile): Only offers grid layout and offers three overflow indicator styles.
+- v8 [Facepile](https://developer.microsoft.com/en-us/fluentui#/controls/web/facepile): Only offers spread layout and offers three overflow indicator styles.
 
 ## Epic issue: [#22240](https://github.com/microsoft/fluentui/issues/22240)
 
@@ -32,7 +32,7 @@ import { AvatarGroup, Avatar } from '@fluentui/react-avatar';
 
 const App = () => {
   return (
-    <AvatarGroup layout="grid" size={32}>
+    <AvatarGroup layout="spread" size={32}>
       <Avatar color="colorful" name="Katri Athokas" />
       <Avatar color="colorful" name="Elvia Atkins" />
       <Avatar color="colorful" name="Cameron Evans" />
@@ -47,14 +47,14 @@ const App = () => {
 
 There are three layout variants in AvatarGroup:
 
-- Grid layout (Default): Avatars are spaced evenly.
-- Stacked layout: Avatars are overlaped evenly.
+- Spread layout (Default): Avatars are spaced evenly.
+- Stack layout: Avatars are overlaped evenly.
 - Pie layout: For the pie layout there can be a minimum of two Avatars and a maximum of three. This layout does not overflow and provides a popover for more details.
 
   - If the size of the avatar group is `36` or smaller then only the first letter of the initials will be displayed.
   - `maxAvatars` will be ignored when using this layout.
 
-- For Grid and Stacked layouts, by default there is a maximum of 5 avatars before overflowing.
+- For `Spread` and `Stack` layouts, by default have a maximum of 5 avatars before overflowing.
 
 ## API
 
@@ -62,18 +62,48 @@ See [AvatarGroup.types.ts](./src/components/AvatarGroup/AvatarGroup.types.ts) fo
 
 - `size`: Group size will override the children's current size. This is to ensure that the `AvatarGroup`'s spacing is correct because it changes depending on the group size.
 - `popoverSurface`: All Avatars in `popoverSurface` will have a size of 24 and will be encased in a div to apply stylings.
+- Avatar `color`: AvatarGroup's colors will follow the following order, but they can be overriden by providing a color specific color on a given avatar.
+
+#### Color override example:
+
+In this example, the first Avatar will have a `darkRed` color, while all the other avatars will follow the color order.
+
+```jsx
+<AvatarGroup>
+  <Avatar color="darkRed" name="Katri Athokas" />
+  <Avatar name="Elvia Atkins" />
+  <Avatar name="Cameron Evans" />
+  <Avatar name="Wanda Howard" />
+  <Avatar name="Mona Kane" />
+</AvatarGroup>
+```
+
+#### Color order:
+
+|                       |                       |                       |
+| --------------------- | --------------------- | --------------------- |
+| Avatar 1: Red         | Avatar 11: Lilac      | Avatar 21: Peach      |
+| Avatar 2: Blue        | Avatar 12: Anchor     | Avatar 22: Steel      |
+| Avatar 3: Purple      | Avatar 13: Dark Green | Avatar 23: Navy       |
+| Avatar 4: Forest      | Avatar 14: Pumpkin    | Avatar 24: Seafoam    |
+| Avatar 5: Pink        | Avatar 15: Dark Red   | Avatar 25: Magenta    |
+| Avatar 6: Lavender    | Avatar 16: Mink       | Avatar 26: Beige      |
+| Avatar 7: Teal        | Avatar 17: Grape      | Avatar 27: Light Teal |
+| Avatar 8: Gold        | Avatar 18: Platinum   | Avatar 28: Gold       |
+| Avatar 9: Cranberry   | Avatar 19: Royal Blue | Avatar 29: Plum       |
+| Avatar 10: Cornflower | Avatar 20: Brown      | Avatar 30: Marigold   |
 
 ## Structure
 
 - _**Public**_
 
 ```jsx
-<AvatarGroup layout="grid" size={32}>
-  <Avatar color="colorful" name="Katri Athokas" />
-  <Avatar color="colorful" name="Elvia Atkins" />
-  <Avatar color="colorful" name="Cameron Evans" />
-  <Avatar color="colorful" name="Wanda Howard" />
-  <Avatar color="colorful" name="Mona Kane" />
+<AvatarGroup layout="spread" size={32}>
+  <Avatar name="Katri Athokas" />
+  <Avatar name="Elvia Atkins" />
+  <Avatar name="Cameron Evans" />
+  <Avatar name="Wanda Howard" />
+  <Avatar name="Mona Kane" />
 </AvatarGroup>
 ```
 
@@ -98,7 +128,7 @@ See [AvatarGroup.types.ts](./src/components/AvatarGroup/AvatarGroup.types.ts) fo
 - _**DOM** - how the component will be rendered as HTML elements_
 
 ```html
-<div className="fui-AvatarGroup">
+<div className="fui-AvatarGroup" role="group">
   <Avatar />
   <Avatar />
   <Avatar />
@@ -133,7 +163,7 @@ _Explain how the component will behave in use, including:_
     - `Pie` layout: since `maxAvatars` is ignored, the overflow indicator will be rendered strictly when there's more than three avatars.
 - _Interaction_
   - _Keyboard_: Overflow indicator can be intereacted with the keyboard and when enter is pressed a popover that traps focus will be rendered.
-  - _Cursor_ and _Touch_: When overflow indicator is clicked, the popover is displayed with the avatars that overflow. When the overflow indicator is hovered, a tooltip will read the number of people overflowed (`{value} more people` by default).
+  - _Cursor_ and _Touch_: When overflow indicator is clicked, the popover is displayed with the avatars that overflow. When the overflow indicator is hovered, a tooltip will read the number of people overflowed (`{numOverflowAvatars} more people` by default).
   - _Screen readers_:
     - `Avatar`: logic is handled by `Avatar` component.
     - `AvatarGroup`:

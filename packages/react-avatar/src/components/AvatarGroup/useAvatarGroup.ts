@@ -17,7 +17,7 @@ import { avatarGroupDefaultStrings } from './AvatarGroup.strings';
 export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<HTMLElement>): AvatarGroupState => {
   const {
     overflowIndicator = 'number-overflowed',
-    layout = 'grid',
+    layout = 'spread',
     children,
     maxAvatars = 5,
     size = 32,
