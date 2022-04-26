@@ -1,10 +1,10 @@
 import { tokens } from '../tokens';
-import { TypeographyStyles } from '../types';
+import { TypographyStyles } from '../types';
 
 /**
- * Global typeography styles (fontSize, fontWeight, and lineHeight)
+ * Global typography styles (fontSize, fontWeight, and lineHeight)
  */
-export const typeographyStyles: TypeographyStyles = {
+export const typographyStyles: TypographyStyles = {
   body1: {
     fontSize: tokens.fontSizeBase300,
     fontWeight: tokens.fontWeightRegular,
