@@ -1,4 +1,4 @@
-import * as rootPreview from '../../../.storybook/preview';
+import * as rootPreview from '../../../../.storybook/preview';
 
 /** @type {typeof rootPreview.parameters} */
 export const parameters = {

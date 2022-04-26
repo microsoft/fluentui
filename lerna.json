@@ -1,5 +1,13 @@
 {
-  "packages": ["apps/*", "packages/*", "scripts", "packages/fluentui/*", "tools", "typings"],
+  "packages": [
+    "apps/*",
+    "packages/*",
+    "packages/react-components/*",
+    "scripts",
+    "packages/fluentui/*",
+    "tools",
+    "typings"
+  ],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "version": "0.0.0"
