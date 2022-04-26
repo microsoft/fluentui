@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { useThemeClassName } from '@fluentui/react-components';
+import { fluentProviderClassNames, useThemeClassName } from '@fluentui/react-components';
 import { PortalCompatContextProvider } from '@fluentui/react-portal-compat-context';
 
 import type { RegisterPortalFn } from '@fluentui/react-portal-compat-context';
+
+const CLASS_NAME_REGEX = new RegExp(`(${fluentProviderClassNames.root}\\d+)`);
 
 export const PortalCompatProvider: React.FC = props => {
   const { children } = props;
@@ -11,7 +13,7 @@ export const PortalCompatProvider: React.FC = props => {
   const cssVariablesClassName = React.useMemo<string | undefined>(
     // "themeClassName" may contain multiple classes while we want to add only a class that hosts CSS variables
     // Keep in sync with "packages/react-provider/src/components/FluentProvider/useThemeStyleTag.ts"
-    () => themeClassName.match(/(fui-FluentProvider\d+)/)?.[1],
+    () => themeClassName.match(CLASS_NAME_REGEX)?.[1],
     [themeClassName],
   );
 

@@ -29,8 +29,11 @@ describe('PortalCompatProvider', () => {
     });
 
     expect(result.current(element)).toBeInstanceOf(Function);
-    expect(element.classList.length).toBe(1);
-    expect(element.classList.item(0)).toMatch(/fui-FluentProvider\d/);
+    expect(element.classList).toMatchInlineSnapshot(`
+      DOMTokenList {
+        "0": "fui-FluentProvider1",
+      }
+    `);
   });
 
   it('during unregister remove a className from "ThemeClassNameContext" context', () => {
@@ -45,7 +48,11 @@ describe('PortalCompatProvider', () => {
     });
     const unregister = result.current(element);
 
-    expect(element.classList.length).toBe(1);
+    expect(element.classList).toMatchInlineSnapshot(`
+      DOMTokenList {
+        "0": "fui-FluentProvider1",
+      }
+    `);
     expect(unregister).toBeInstanceOf(Function);
 
     expect(unregister()).toBeUndefined();
