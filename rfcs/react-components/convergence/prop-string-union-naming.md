@@ -69,3 +69,5 @@ In cases where values have long names using `spinal-case` provides visual distin
 ### Cons
 
 1. Some people may prefer `camelCase`
+2. This is a breaking change for anything in stable.
+   1. We have an issue to track proposed breaking changes in [#22130](https://github.com/microsoft/fluentui/issues/22130)
