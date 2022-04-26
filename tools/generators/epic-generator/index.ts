@@ -4,7 +4,7 @@ import { execSync } from 'child_process';
 import fetch from 'node-fetch';
 import { EpicGeneratorSchema } from './schema';
 
-function validateSchema(schema: EpicGeneratorSchema) {
+function validateSchema(schema: EpicGeneratorSchema): Required<EpicGeneratorSchema> {
   if (schema.repository !== undefined && !schema.repository.match(/[A-z-]+\/[A-z-]+/)) {
     throw new Error('Must provide a valid repository for the issue');
   }
