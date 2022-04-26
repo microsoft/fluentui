@@ -12,7 +12,7 @@ export const PortalCompatProvider: React.FC = props => {
   const themeClassName = useThemeClassName();
   const cssVariablesClassName = React.useMemo<string | undefined>(
     // "themeClassName" may contain multiple classes while we want to add only a class that hosts CSS variables
-    // Keep in sync with "packages/react-provider/src/components/FluentProvider/useThemeStyleTag.ts"
+    // Keep in sync with "packages/react-provider/src/components/FluentProvider/useFluentProviderThemeStyleTag.ts"
     () => themeClassName.match(CLASS_NAME_REGEX)?.[1],
     [themeClassName],
   );
