@@ -19,7 +19,7 @@ export class DonutChartCustomCalloutExample extends React.Component<IDonutChartP
     return (
       <DonutChart
         data={data}
-        innerRadius={55}
+        innerRadius={64}
         href={'https://developer.microsoft.com/en-us/'}
         legendsOverflowText={'overflow Items'}
         hideLegend={true}

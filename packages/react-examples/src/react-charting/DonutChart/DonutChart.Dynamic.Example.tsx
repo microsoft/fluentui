@@ -45,7 +45,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
       <div>
         <DonutChart
           data={data}
-          innerRadius={55}
+          innerRadius={64}
           legendProps={{
             allowFocusOnLegends: true,
           }}

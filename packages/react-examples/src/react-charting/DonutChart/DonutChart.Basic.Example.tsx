@@ -20,7 +20,7 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}
       <DonutChart
         culture={window.navigator.language}
         data={data}
-        innerRadius={55}
+        innerRadius={64}
         href={'https://developer.microsoft.com/en-us/'}
         legendsOverflowText={'overflow Items'}
         hideLegend={true}

@@ -20,7 +20,7 @@ export const getStyles = (props: IArcProps): IArcStyles => {
       strokeWidth: 4,
     },
     insideDonutString: {
-      fontSize: FontSizes.large,
+      fontSize: FontSizes.size28,
       fontWeight: FontWeights.bold,
       fill: theme.semanticColors.bodyText,
       selectors: {

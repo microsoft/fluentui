@@ -32,7 +32,7 @@ export class DonutChartCustomAccessibilityExample extends React.Component<IDonut
     return (
       <DonutChart
         data={data}
-        innerRadius={55}
+        innerRadius={64}
         href={'https://developer.microsoft.com/en-us/'}
         legendsOverflowText={'overflow Items'}
         hideLegend={true}
