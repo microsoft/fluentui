@@ -135,7 +135,7 @@ packages/react-components/react-avatar @microsoft/cxe-red @behowell @khmakoto
 packages/react-badge @microsoft/teams-prg @microsoft/cxe-red @behowell
 packages/react-components/react-button @microsoft/cxe-red @khmakoto
 packages/react-card @microsoft/cxe-prg
-packages/react-checkbox @microsoft/cxe-red @khmakoto
+packages/react-components/react-checkbox @microsoft/cxe-red @khmakoto
 packages/react-combobox @microsoft/cxe-coastal @smhigley
 packages/react-components @microsoft/fluentui-react
 packages/react-dialog @microsoft/cxe-prg

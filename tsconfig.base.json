@@ -23,7 +23,7 @@
       "@fluentui/react-badge": ["packages/react-badge/src/index.ts"],
       "@fluentui/react-button": ["packages/react-components/react-button/src/index.ts"],
       "@fluentui/react-card": ["packages/react-card/src/index.ts"],
-      "@fluentui/react-checkbox": ["packages/react-checkbox/src/index.ts"],
+      "@fluentui/react-checkbox": ["packages/react-components/react-checkbox/src/index.ts"],
       "@fluentui/react-combobox": ["packages/react-combobox/src/index.ts"],
       "@fluentui/react-components": ["packages/react-components/src/index.ts"],
       "@fluentui/react-conformance": ["packages/react-conformance/src/index.ts"],

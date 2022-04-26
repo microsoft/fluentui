@@ -307,9 +307,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-checkbox": {
-      "root": "packages/react-checkbox",
+      "root": "packages/react-components/react-checkbox",
       "projectType": "library",
-      "sourceRoot": "packages/react-checkbox/src",
+      "sourceRoot": "packages/react-components/react-checkbox/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
