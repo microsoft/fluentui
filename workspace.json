@@ -227,6 +227,11 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/public-docsite-v9": {
+      "root": "apps/public-docsite-v9",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/react": {
       "root": "packages/react",
       "projectType": "library",
@@ -344,7 +349,9 @@
     "@fluentui/react-conformance-griffel": {
       "root": "packages/react-conformance-griffel",
       "projectType": "library",
-      "sourceRoot": "packages/react-conformance-griffel/src"
+      "sourceRoot": "packages/react-conformance-griffel/src",
+      "tags": ["vNext", "platform:node"],
+      "implicitDependencies": []
     },
     "@fluentui/react-context-selector": {
       "root": "packages/react-context-selector",
@@ -755,11 +762,6 @@
       "projectType": "library",
       "sourceRoot": "typings",
       "tags": ["platform:any"]
-    },
-    "@fluentui/public-docsite-v9": {
-      "root": "apps/public-docsite-v9",
-      "projectType": "application",
-      "implicitDependencies": []
     },
     "@fluentui/utilities": {
       "root": "packages/utilities",
