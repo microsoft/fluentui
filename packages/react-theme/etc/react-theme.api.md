@@ -197,6 +197,10 @@ export type ColorTokens = {
     colorBrandForegroundLinkHover: string;
     colorBrandForegroundLinkPressed: string;
     colorBrandForegroundLinkSelected: string;
+    colorNeutralForeground2Link: string;
+    colorNeutralForeground2LinkHover: string;
+    colorNeutralForeground2LinkPressed: string;
+    colorNeutralForeground2LinkSelected: string;
     colorCompoundBrandForeground1: string;
     colorCompoundBrandForeground1Hover: string;
     colorCompoundBrandForeground1Pressed: string;

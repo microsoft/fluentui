@@ -16,6 +16,7 @@ import {
 import generator from './index';
 import { MovePackagesGeneratorSchema } from './schema';
 import { TsConfig } from '../../types';
+import { setupCodeowners } from '../../utils-testing';
 
 type ReadProjectConfiguration = ReturnType<typeof readProjectConfiguration>;
 const noop = () => null;
@@ -33,6 +34,8 @@ describe('move-packages generator', () => {
     jest.spyOn(console, 'log').mockImplementation(noop);
 
     tree = createTreeWithEmptyWorkspace();
+
+    setupCodeowners(tree, { content: `packages/test @dummyOwner` });
 
     const nxJsonConfig = {
       npmScope: 'proj',
@@ -123,12 +126,33 @@ describe('move-packages generator', () => {
       expect(tree.exists(`packages/${options.name}/config/tests.js`)).toBeFalsy();
     });
     it('should update storybook main.js module.exports type to the new relative path', async () => {
-      await generator(tree, options);
       const newPath = '../../../../.storybook/main';
-      const project = getProjects(tree).get(options.name as string) as ProjectConfiguration;
-      const storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
-      const storybookMainJsFile = tree.read(storybookMainJsPath, 'utf8') as string;
-      expect(storybookMainJsFile.split(' ').filter(s => s.includes(newPath))).toHaveLength(2);
+      let project = getProjects(tree).get(options.name as string) as ProjectConfiguration;
+      let storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
+
+      let storybookMainJsFile = tree.read(storybookMainJsPath, 'utf8') as string;
+      expect(storybookMainJsFile.indexOf(newPath) !== -1).toBeFalsy();
+
+      await generator(tree, options);
+
+      project = getProjects(tree).get(options.name as string) as ProjectConfiguration;
+      storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
+      storybookMainJsFile = tree.read(storybookMainJsPath, 'utf8') as string;
+      expect(storybookMainJsFile.indexOf(newPath) !== -1).toBeTruthy();
+    });
+    it('should update the CODEOWNERS file with the new relative path', async () => {
+      const oldOwnerDeclaration = `packages/test @dummyOwner`;
+      const newOwnerDeclaration = `packages/${options.destination} @dummyOwner`;
+      const codeOwnersPath = joinPathFragments('/.github', 'CODEOWNERS');
+
+      let codeOwnersFile = tree.read(codeOwnersPath, 'utf8') as string;
+      expect(codeOwnersFile.indexOf(oldOwnerDeclaration) !== -1).toBeTruthy();
+
+      await generator(tree, options);
+
+      codeOwnersFile = tree.read(codeOwnersPath, 'utf8') as string;
+      expect(codeOwnersFile.indexOf(oldOwnerDeclaration) !== -1).toBeFalsy();
+      expect(codeOwnersFile.indexOf(newOwnerDeclaration) !== -1).toBeTruthy();
     });
   });
 
