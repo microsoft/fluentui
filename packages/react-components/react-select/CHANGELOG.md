@@ -6,7 +6,7 @@ This log was last generated on Tue, 19 Apr 2022 19:17:29 GMT and should not be m
 
 ## [9.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.0)
 
-Tue, 19 Apr 2022 19:17:29 GMT 
+Tue, 19 Apr 2022 19:17:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.0.0-beta.0..@fluentui/react-select_v9.0.0-beta.0)
 
 ### Changes
@@ -17,7 +17,7 @@ Tue, 19 Apr 2022 19:17:29 GMT
 
 ## [9.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.0)
 
-Fri, 04 Mar 2022 05:17:40 GMT 
+Fri, 04 Mar 2022 05:17:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.0.0-beta.0..@fluentui/react-select_v9.0.0-beta.0)
 
 ### Changes
@@ -26,7 +26,7 @@ Fri, 04 Mar 2022 05:17:40 GMT
 
 ## [9.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.0)
 
-Tue, 01 Mar 2022 02:17:40 GMT 
+Tue, 01 Mar 2022 02:17:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.0.0-beta.0..@fluentui/react-select_v9.0.0-beta.0)
 
 ### Changes
