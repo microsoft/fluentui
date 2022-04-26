@@ -31,7 +31,7 @@ const checkAuthentication = () => {
 interface Package {
   name: string;
   folder: string;
-  owners?: string[];
+  owners: string[];
 }
 
 interface Ownership {
@@ -58,6 +58,7 @@ const getConvergedPackages = (tree: Tree) => {
       convergedPackages.push({
         name: key,
         folder: project.root,
+        owners: [],
       });
     }
   });
@@ -123,7 +124,7 @@ const createIssue = (repo: string, issue: MigrationIssue, templateTitle: string)
 
 const generateIssues = (repo: string, templateTitle: string, packages: Package[]) => {
   const migrationIssues = packages.reduce<MigrationIssueMap>((acc, pckg) => {
-    const teamOwner = pckg.owners!.find(owner => owner.startsWith('@microsoft/'));
+    const teamOwner = pckg.owners.find(owner => owner.startsWith('@microsoft/'));
     const key = teamOwner || 'ownerless';
 
     if (key in acc) {
