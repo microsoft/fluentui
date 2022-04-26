@@ -48,12 +48,6 @@ const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
       <Text>13px body text</Text>
-      <TextField
-        label="Password with reveal button"
-        type="password"
-        canRevealPassword
-        revealPasswordAriaLabel="Show password"
-      />
       <Label>MessageBar / InfoBox</Label>
       <MessageBarBasicExample />
       <Label>TeachingBubble</Label>
@@ -147,6 +141,12 @@ const Example = () => (
       <TextField placeholder="Hello" />
       <TextField label="Standard" multiline rows={3} />
       <TextField errorMessage="Error message!" />
+      <TextField
+        label="Password with reveal button"
+        type="password"
+        canRevealPassword
+        revealPasswordAriaLabel="Show password"
+      />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
