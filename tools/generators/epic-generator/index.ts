@@ -45,7 +45,7 @@ interface MigrationIssue {
   packages: Package[];
 }
 
-type MigrationIssueMap = Record<string, MigrationIssue>;
+type MigrationIssues = Record<string, MigrationIssue>;
 
 const getConvergedPackages = (tree: Tree) => {
   const projects = getProjects(tree);
@@ -121,7 +121,7 @@ const createIssue = (repo: string, issue: MigrationIssue, templateTitle: string)
 };
 
 const generateIssues = (repo: string, templateTitle: string, packages: Package[]) => {
-  const migrationIssues = packages.reduce<MigrationIssueMap>((acc, pckg) => {
+  const migrationIssues = packages.reduce<MigrationIssues>((acc, pckg) => {
     const teamOwner = pckg.owners.find(owner => owner.startsWith('@microsoft/'));
     const key = teamOwner || 'ownerless';
 
@@ -144,7 +144,7 @@ const generateIssues = (repo: string, templateTitle: string, packages: Package[]
   return migrationIssues;
 };
 
-const updateEpicWithIssues = (epicUrl: string, issueMap: MigrationIssueMap, message: string) => {
+const updateEpicWithIssues = (epicUrl: string, issueMap: MigrationIssues, message: string) => {
   const packageList = Object.values(issueMap)
     .map(issue => {
       return stripIndents`
