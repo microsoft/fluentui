@@ -39,7 +39,6 @@ export type SpinButtonCommons = {
     precision: number;
     appearance: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
     size: 'small' | 'medium';
-    inputType: 'all' | 'spinners-only';
     strings?: SpinButtonStrings;
 };
 
