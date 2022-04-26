@@ -1,5 +1,5 @@
 ---
-labels: "Type: Bug :bug:", "Fluent UI vNext", "Component: Link"
+labels: 'Type: Bug :bug:, Fluent UI vNext, Component: Link'
 ---
 
 <!--

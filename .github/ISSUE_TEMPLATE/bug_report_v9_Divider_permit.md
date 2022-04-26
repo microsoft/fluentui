@@ -1,5 +1,5 @@
 ---
-labels: "Type: Bug :bug:", "Fluent UI vNext", "Component: Divider"
+labels: 'Type: Bug :bug:, Fluent UI vNext, Component: Divider'
 ---
 
 <!--
