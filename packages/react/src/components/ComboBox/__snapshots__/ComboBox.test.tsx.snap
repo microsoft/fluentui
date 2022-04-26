@@ -256,7 +256,7 @@ exports[`ComboBox Renders correctly 1`] = `
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -589,7 +589,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -860,7 +860,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                             right: -2px;
                             top: -2px;
                           }
-                          &:active > * {
+                          &:active > span {
                             left: 0px;
                             position: relative;
                             top: 0px;
@@ -1015,7 +1015,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           right: -2px;
                           top: -2px;
                         }
-                        &:active > * {
+                        &:active > span {
                           left: 0px;
                           position: relative;
                           top: 0px;
@@ -1359,7 +1359,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -2250,7 +2250,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;

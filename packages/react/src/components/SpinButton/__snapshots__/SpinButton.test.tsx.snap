@@ -209,7 +209,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -348,7 +348,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -652,7 +652,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -791,7 +791,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
