@@ -27,7 +27,7 @@ type AvatarGroupCommons = {
 
   /**
    * Maximum number of Avatars to be displayed before overflowing.
-   * NOTE: if pie layout is used, `maxAvatars` will be overwritten.
+   * NOTE: if pie layout is used, `maxAvatars` will be ignored.
    * @default 5
    */
   maxAvatars: number;
@@ -39,10 +39,10 @@ type AvatarGroupCommons = {
   size: AvatarSizes;
 
   /**
-   * Wheter the overflow indicator should render an icon instead of the number of overflowed avatars.
+   * Whether the overflow indicator should render an icon instead of the number of overflowed avatars.
    * @default false
    */
-  iconOverflowIndicator: boolean;
+  overflowIndicator: 'number-overflowed' | 'icon';
 
   /**
    * Strings for localizing text in the tooltip.
@@ -65,8 +65,8 @@ export type AvatarGroupState = ComponentState<AvatarGroupSlots> &
 
 export type AvatarGroupStrings = {
   /**
-   * Label applied to the overflow indicator's tooltip.
-   * Can include the token "\{value\}" which will be replaced with the number of overflowed avatars.
+   * Text applied to the overflow indicator's tooltip.
+   * Can include the token "\{numOverflowedAvatars\}" which will be replaced with the number of overflowed avatars.
    */
-  tooltipLabel: string;
+  tooltipContent: string;
 };

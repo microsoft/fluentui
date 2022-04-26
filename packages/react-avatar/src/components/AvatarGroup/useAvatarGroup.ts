@@ -16,7 +16,7 @@ import { avatarGroupDefaultStrings } from './AvatarGroup.strings';
  */
 export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<HTMLElement>): AvatarGroupState => {
   const {
-    iconOverflowIndicator = false,
+    overflowIndicator = 'number-overflowed',
     layout = 'grid',
     children,
     maxAvatars = 5,
@@ -29,9 +29,9 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     layout,
     size,
     strings: strings,
-    iconOverflowIndicator,
+    overflowIndicator,
     // TODO: Replace with actual logic.
-    tooltipContent: strings.tooltipLabel.replace('{value}', String(10)),
+    tooltipContent: strings.tooltipContent.replace('{numOverflowedAvatars}', String(10)),
     components: {
       // TODO add each slot's element type or component
       root: 'div',

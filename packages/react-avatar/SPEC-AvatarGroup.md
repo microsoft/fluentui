@@ -2,7 +2,7 @@
 
 ## Background
 
-The AvatarGroup component represents multiple people or entities. Avatar groups can be represented in a stacked layout, pie layout, and grid layout.
+AvatarGroup represents multiple people or entities. AvatarGroups can be represented in a stacked layout, pie layout, and grid layout.
 
 ## Prior Art
 
