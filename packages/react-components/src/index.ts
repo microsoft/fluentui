@@ -50,6 +50,7 @@ export {
   teamsHighContrastTheme,
   teamsLightTheme,
   tokens,
+  typeographyStyles,
   webDarkTheme,
   webHighContrastTheme,
   webLightTheme,
@@ -68,6 +69,7 @@ export type {
   ShadowTokens,
   StrokeWidthTokens,
   Theme,
+  TypeographyStyles,
 } from '@fluentui/react-theme';
 export {
   getNativeElementProps,

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs(react-tabster): remove old info about provider",
-  "packageName": "@fluentui/react-tabster",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

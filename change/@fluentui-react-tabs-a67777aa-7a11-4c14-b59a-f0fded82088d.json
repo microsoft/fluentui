@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Added styles to support future overflow calcs",
-  "packageName": "@fluentui/react-tabs",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

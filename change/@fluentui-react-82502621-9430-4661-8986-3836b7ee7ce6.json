@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add focus styles to DocumentCardTitle",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

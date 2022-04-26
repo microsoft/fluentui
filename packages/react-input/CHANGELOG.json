@@ -2,6 +2,21 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Mon, 25 Apr 2022 09:32:18 GMT",
+      "tag": "@fluentui/react-input_v9.0.0-beta.7",
+      "version": "9.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "8dfec41a7126d9d1514d46d6ef15e9316e6b8ee1",
+            "comment": "use ::after pseudo element in styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:17:25 GMT",
       "tag": "@fluentui/react-input_v9.0.0-beta.6",
       "version": "9.0.0-beta.6",

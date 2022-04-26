@@ -2,6 +2,21 @@
   "name": "@fluentui/react-spinner",
   "entries": [
     {
+      "date": "Mon, 25 Apr 2022 09:32:15 GMT",
+      "tag": "@fluentui/react-spinner_v9.0.0-beta.7",
+      "version": "9.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "1cfb2361e0c8de06d93d0ba0578a809aaa5d0c0b",
+            "comment": "Reexport react-spinner in react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:17:29 GMT",
       "tag": "@fluentui/react-spinner_v9.0.0-beta.6",
       "version": "9.0.0-beta.6",

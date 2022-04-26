@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-slider",
-  "version": "9.0.0-beta.11",
+  "version": "9.0.0-beta.12",
   "description": "Fluent UI React Slider component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -35,7 +35,7 @@
   "dependencies": {
     "@griffel/react": "1.0.3",
     "@fluentui/react-shared-contexts": "9.0.0-rc.5",
-    "@fluentui/react-tabster": "9.0.0-rc.6",
+    "@fluentui/react-tabster": "9.0.0-rc.7",
     "@fluentui/react-theme": "9.0.0-rc.5",
     "@fluentui/react-utilities": "9.0.0-rc.6",
     "tslib": "^2.1.0"
