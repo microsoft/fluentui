@@ -6,11 +6,11 @@ import { EpicGeneratorSchema } from './schema';
 
 function validateSchema(schema: EpicGeneratorSchema): Required<EpicGeneratorSchema> {
   if (schema.repository !== undefined && !schema.repository.match(/[A-z-]+\/[A-z-]+/)) {
-    throw new Error('Must provide a valid repository for the issue');
+    throw new Error('Must provide a valid repository with the format {owner}/{repositoryName}');
   }
 
   if ((schema.title || '').trim() === '') {
-    throw new Error('Must provide a valid title for the issue');
+    throw new Error('Must provide a title for the issue');
   }
 
   return {
