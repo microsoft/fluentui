@@ -131,7 +131,7 @@ common/_common.scss @microsoft/cxe-red @phkuo
 ## vNext packages
 packages/keyboard-keys @microsoft/teams-prg
 packages/react-accordion @microsoft/teams-prg @microsoft/cxe-coastal
-packages/react-avatar @microsoft/cxe-red @behowell @khmakoto
+packages/react-components/react-avatar @microsoft/cxe-red @behowell @khmakoto
 packages/react-badge @microsoft/teams-prg @microsoft/cxe-red @behowell
 packages/react-button @microsoft/cxe-red @khmakoto
 packages/react-card @microsoft/cxe-prg

@@ -259,9 +259,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-avatar": {
-      "root": "packages/react-avatar",
+      "root": "packages/react-components/react-avatar",
       "projectType": "library",
-      "sourceRoot": "packages/react-avatar/src",
+      "sourceRoot": "packages/react-components/react-avatar/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
