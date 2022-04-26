@@ -6,7 +6,6 @@ import { webLightTheme } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
 import { Card, CardFooter, CardHeader } from '@fluentui/react-card';
 import type { CardProps } from '@fluentui/react-card';
-import 'cypress-real-events/support';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
