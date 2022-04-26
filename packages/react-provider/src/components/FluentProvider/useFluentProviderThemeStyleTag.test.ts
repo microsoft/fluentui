@@ -1,12 +1,12 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
-import { useThemeStyleTag } from './useThemeStyleTag';
+import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { Theme } from '@fluentui/react-theme';
 
 jest.mock('@fluentui/react-theme');
 
-describe('useThemeStyleTag', () => {
+describe('useFluentProviderThemeStyleTag', () => {
   const defaultTheme = ({
     'css-variable-1': '1',
     'css-variable-2': '2',
@@ -18,7 +18,9 @@ describe('useThemeStyleTag', () => {
 
   it('should render style tag', () => {
     // Act
-    const { result } = renderHook(() => useThemeStyleTag({ theme: defaultTheme, targetDocument: document }));
+    const { result } = renderHook(() =>
+      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document }),
+    );
 
     // Assert
     expect(document.getElementById(result.current)).not.toBeNull();
@@ -26,7 +28,9 @@ describe('useThemeStyleTag', () => {
 
   it('should remove style tag on unmount', () => {
     // Arrange
-    const { result, unmount } = renderHook(() => useThemeStyleTag({ theme: defaultTheme, targetDocument: document }));
+    const { result, unmount } = renderHook(() =>
+      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document }),
+    );
 
     // Act
     unmount();
@@ -37,7 +41,9 @@ describe('useThemeStyleTag', () => {
 
   it('should render css variables in theme', () => {
     // Act
-    const { result } = renderHook(() => useThemeStyleTag({ theme: defaultTheme, targetDocument: document }));
+    const { result } = renderHook(() =>
+      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document }),
+    );
 
     // Assert
     const tag = document.getElementById(result.current) as HTMLStyleElement;
@@ -51,7 +57,7 @@ describe('useThemeStyleTag', () => {
   it('should update style tag on theme change', () => {
     // Arrange
     let theme = defaultTheme;
-    const { result, rerender } = renderHook(() => useThemeStyleTag({ theme, targetDocument: document }));
+    const { result, rerender } = renderHook(() => useFluentProviderThemeStyleTag({ theme, targetDocument: document }));
 
     // Act
     theme = ({ 'css-variable-update': 'xxx' } as unknown) as Theme;

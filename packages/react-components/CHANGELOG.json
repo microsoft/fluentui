@@ -2,6 +2,125 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 25 Apr 2022 09:32:14 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-rc.8",
+      "version": "9.0.0-rc.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "8dfec41a7126d9d1514d46d6ef15e9316e6b8ee1",
+            "comment": "use ::after pseudo element in styles"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "af7befccb9b4897cf99c8a4283ab2cbd80018f69",
+            "comment": "react-spinbutton: remove private from package.json"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "1cfb2361e0c8de06d93d0ba0578a809aaa5d0c0b",
+            "comment": "Reexport react-spinner in react-components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "9b558cf266817f6499fece14e71bd90e98385a6b",
+            "comment": "Added styles to support future overflow calcs"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d",
+            "comment": "Adjusting accordion keyboard navigation."
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d",
+            "comment": "Adjusting accordion keyboard navigation."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "4c11854b93b331f12cdaa7ee0628b01667acba12",
+            "comment": "Adding useToggleState hook to scaffold toggleable behavior for individual consumption."
+          },
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "3f8fffc216f60fb8b055461a6725d76983d131c0",
+            "comment": "fix(Button): Text color in HC mode for hover, active and checked states."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "8ca44964836cefd3c435e9cf9a6ef78ceb256258",
+            "comment": "Button: Stop applying active styles when mouse moves away while it is being held and improving styles in High Contrast mode."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "1cb4002d46236c724a274ff5abafc1c1e99397e2",
+            "comment": "Fix disabled HCM styles in Checkbox."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "af7befccb9b4897cf99c8a4283ab2cbd80018f69",
+            "comment": "react-components: add SpinButton to /unstable"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "4c11854b93b331f12cdaa7ee0628b01667acba12",
+            "comment": "Exporting useToggleState from @fluentui/react-button."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "1cfb2361e0c8de06d93d0ba0578a809aaa5d0c0b",
+            "comment": "Reexport react-spinner in react-components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "319234c25f29defac6afc728dd109737fd1b803f",
+            "comment": "fix: restore SSRProvider export"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "8dfec41a7126d9d1514d46d6ef15e9316e6b8ee1",
+            "comment": "use ::after pseudo element in styles"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "02ca1d3c198452c1693067f5f18bd01b2ed5d6e6",
+            "comment": "feat: export useFluentProviderThemeStyleTag from @fluentui/react-provider"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "31e8b97573aeba761d14b937378bb95d578c4c90",
+            "comment": "docs(react-tabster): remove old info about provider"
+          },
+          {
+            "author": "annkelle@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "155d4932b7cf3a544fa4f4605b5acc5cf74be763",
+            "comment": "Button: Use filled icons on hover."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:16:44 GMT",
       "tag": "@fluentui/react-components_v9.0.0-rc.7",
       "version": "9.0.0-rc.7",

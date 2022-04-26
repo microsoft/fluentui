@@ -2,6 +2,35 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 25 Apr 2022 07:37:24 GMT",
+      "tag": "@fluentui/react_v8.67.0",
+      "version": "8.67.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "miclo@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "15e9cd77b663bfc839f05b9f5a580bf6556faa59",
+            "comment": "Fix memory leak in makeStyles by counting references"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d02a316b5de5ca273dc39ee101208a70412264bb",
+            "comment": "add focus styles to DocumentCardTitle"
+          }
+        ],
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "7d300d21963cd2530522b14ef0b931bdfde86f12",
+            "comment": "DocumentCard: parent container is no longer focusable and now has role=group to improve a11y experience"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Apr 2022 07:36:48 GMT",
       "tag": "@fluentui/react_v8.66.2",
       "version": "8.66.2",

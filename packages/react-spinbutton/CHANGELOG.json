@@ -2,6 +2,33 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Mon, 25 Apr 2022 09:32:14 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.0.0-beta.7",
+      "version": "9.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "8dfec41a7126d9d1514d46d6ef15e9316e6b8ee1",
+            "comment": "use ::after pseudo element in styles"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "af7befccb9b4897cf99c8a4283ab2cbd80018f69",
+            "comment": "react-spinbutton: remove private from package.json"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-input to v9.0.0-beta.7",
+            "commit": "02ca1d3c198452c1693067f5f18bd01b2ed5d6e6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:17:29 GMT",
       "tag": "@fluentui/react-spinbutton_v9.0.0-beta.6",
       "version": "9.0.0-beta.6",

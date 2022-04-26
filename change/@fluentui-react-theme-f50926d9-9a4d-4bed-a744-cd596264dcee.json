@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Added typeography styles",
+  "packageName": "@fluentui/react-theme",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

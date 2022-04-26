@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding useToggleState hook to scaffold toggleable behavior for individual consumption.",
-  "packageName": "@fluentui/react-button",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
