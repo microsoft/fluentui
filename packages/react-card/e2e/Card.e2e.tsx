@@ -64,7 +64,7 @@ describe('Card', () => {
       });
     });
 
-    describe('focusable=true | "noTab"', () => {
+    describe('focusable=true | "no-tab"', () => {
       it('should be focusable', () => {
         mountFluent(<CardSample focusable />);
 
@@ -126,9 +126,9 @@ describe('Card', () => {
       });
     });
 
-    describe('focusable="tabExit"', () => {
+    describe('focusable="tab-exit"', () => {
       it('should be focusable', () => {
-        mountFluent(<CardSample focusable="tabExit" />);
+        mountFluent(<CardSample focusable="tab-exit" />);
 
         const card = cy.get('#card');
 
@@ -140,7 +140,7 @@ describe('Card', () => {
       });
 
       it('should focus inner elements on EnterKey press', () => {
-        mountFluent(<CardSample focusable="tabExit" />);
+        mountFluent(<CardSample focusable="tab-exit" />);
 
         cy.get('#card').focus();
 
@@ -150,7 +150,7 @@ describe('Card', () => {
       });
 
       it('should not focus inner elements on Tab press', () => {
-        mountFluent(<CardSample focusable="tabExit" />);
+        mountFluent(<CardSample focusable="tab-exit" />);
 
         cy.get('#card').focus();
 
@@ -161,7 +161,7 @@ describe('Card', () => {
       });
 
       it('should exit on Tab press', () => {
-        mountFluent(<CardSample focusable="tabExit" />);
+        mountFluent(<CardSample focusable="tab-exit" />);
 
         cy.get('#close-button').focus();
 
@@ -171,7 +171,7 @@ describe('Card', () => {
       });
 
       it('should focus parent on Esc press', () => {
-        mountFluent(<CardSample focusable="tabExit" />);
+        mountFluent(<CardSample focusable="tab-exit" />);
 
         cy.get('#card').focus().realPress('Enter');
 
@@ -183,9 +183,9 @@ describe('Card', () => {
       });
     });
 
-    describe('focusable="tabOnly"', () => {
+    describe('focusable="tab-only"', () => {
       it('should be focusable', () => {
-        mountFluent(<CardSample focusable="tabOnly" />);
+        mountFluent(<CardSample focusable="tab-only" />);
 
         const card = cy.get('#card');
 
@@ -197,7 +197,7 @@ describe('Card', () => {
       });
 
       it('should focus inner elements on EnterKey press', () => {
-        mountFluent(<CardSample focusable="tabOnly" />);
+        mountFluent(<CardSample focusable="tab-only" />);
 
         cy.get('#card').focus();
 
@@ -207,7 +207,7 @@ describe('Card', () => {
       });
 
       it('should focus inner elements on Tab press', () => {
-        mountFluent(<CardSample focusable="tabOnly" />);
+        mountFluent(<CardSample focusable="tab-only" />);
 
         cy.get('#card').focus();
 
@@ -218,7 +218,7 @@ describe('Card', () => {
       });
 
       it('should exit on Tab press', () => {
-        mountFluent(<CardSample focusable="tabOnly" />);
+        mountFluent(<CardSample focusable="tab-only" />);
 
         cy.get('#close-button').focus();
 
@@ -228,7 +228,7 @@ describe('Card', () => {
       });
 
       it('should focus parent on Esc press', () => {
-        mountFluent(<CardSample focusable="tabOnly" />);
+        mountFluent(<CardSample focusable="tab-only" />);
 
         cy.get('#card').focus().realPress('Enter');
 

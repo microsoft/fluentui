@@ -6,7 +6,7 @@ export type CardSlots = {
 
 export type CardCommons = {
   appearance: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
-  focusable: boolean | 'noTab' | 'tabExit' | 'tabOnly';
+  focusable: boolean | 'no-tab' | 'tab-exit' | 'tab-only';
 };
 
 /**

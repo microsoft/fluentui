@@ -5,9 +5,9 @@ import { useFocusableGroup, UseFocusableGroupOptions } from '@fluentui/react-tab
 
 const getFocusStrategy = (focus: CardCommons['focusable']): UseFocusableGroupOptions['tabBehavior'] => {
   const focusMap = {
-    noTab: 'limitedTrapFocus',
-    tabExit: 'limited',
-    tabOnly: 'unlimited',
+    'no-tab': 'limitedTrapFocus',
+    'tab-exit': 'limited',
+    'tab-only': 'unlimited',
   } as const;
 
   if (focus === false) {
@@ -15,7 +15,7 @@ const getFocusStrategy = (focus: CardCommons['focusable']): UseFocusableGroupOpt
   }
 
   if (focus === true) {
-    return focusMap.noTab;
+    return focusMap['no-tab'];
   }
 
   return focusMap[focus];
