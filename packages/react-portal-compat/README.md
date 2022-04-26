@@ -1,6 +1,6 @@
 # @fluentui/react-portal-compat
 
-Compat components for [React Portals](https://reactjs.org/docs/portals.html) between `@fluentui/react-components` & `@fluentui/react` or `@fluentui/react-northstar`.
+Compat layer for [React Portals](https://reactjs.org/docs/portals.html) between `@fluentui/react-components` & `@fluentui/react` or `@fluentui/react-northstar`.
 
 With `PortalCompatProvider` components from `@fluentui/react-components` can be rendered properly in Portals created by `@fluentui/react` or `@fluentui/react-northstar`.
 
