@@ -29,7 +29,7 @@ export const Focus = () => {
         <Title3 block>'noTab' | true</Title3>
         <Text block>
           The Card will be focusable and trap the focus. You can use Tab to navigate between the contents and escaping
-          focus only by clicking the Esc key.
+          focus only by pressing the Esc key.
         </Text>
       </div>
       <SampleCard focusable />
