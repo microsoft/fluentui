@@ -23,13 +23,17 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralForeground4: grey[60], // #999999 Global.Color.Grey.60
   colorNeutralForegroundDisabled: grey[36], // #5c5c5c Global.Color.Grey.36
   colorNeutralForegroundInvertedDisabled: whiteAlpha[40], // rgba(255, 255, 255, 0.4) Global.Color.WhiteAlpha.40
-  colorBrandForegroundLink: brand[90], // #1890f1 Global.Color.Brand.90
+  colorBrandForegroundLink: brand[100], // #2899f5 Global.Color.Brand.100
   colorBrandForegroundLinkHover: brand[110], // #3aa0f3 Global.Color.Brand.110
-  colorBrandForegroundLinkPressed: brand[100], // #2899f5 Global.Color.Brand.100
-  colorBrandForegroundLinkSelected: brand[90], // #1890f1 Global.Color.Brand.90
-  colorCompoundBrandForeground1: brand[90], // #1890f1 Global.Color.Brand.90
-  colorCompoundBrandForeground1Hover: brand[100], // #2899f5 Global.Color.Brand.100
-  colorCompoundBrandForeground1Pressed: brand[80], // #0078d4 Global.Color.Brand.80
+  colorBrandForegroundLinkPressed: brand[90], // #1890f1 Global.Color.Brand.90
+  colorBrandForegroundLinkSelected: brand[100], // #2899f5 Global.Color.Brand.100
+  colorNeutralForeground2Link: grey[84], // #d6d6d6 Global.Color.Grey.84
+  colorNeutralForeground2LinkHover: white, // #ffffff Global.Color.White
+  colorNeutralForeground2LinkPressed: white, // #ffffff Global.Color.White
+  colorNeutralForeground2LinkSelected: white, // #ffffff Global.Color.White
+  colorCompoundBrandForeground1: brand[100], // #2899f5 Global.Color.Brand.100
+  colorCompoundBrandForeground1Hover: brand[110], // #3aa0f3 Global.Color.Brand.110
+  colorCompoundBrandForeground1Pressed: brand[90], // #1890f1 Global.Color.Brand.90
   colorBrandForeground1: brand[100], // #2899f5 Global.Color.Brand.100
   colorBrandForeground2: brand[110], // #3aa0f3 Global.Color.Brand.110
   colorNeutralForeground1Static: grey[14], // #242424 Global.Color.Grey.14

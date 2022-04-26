@@ -71,6 +71,7 @@ export type {
   Theme,
   TypeographyStyles,
 } from '@fluentui/react-theme';
+export { useThemeClassName } from '@fluentui/react-shared-contexts';
 export {
   getNativeElementProps,
   getNativeProps,

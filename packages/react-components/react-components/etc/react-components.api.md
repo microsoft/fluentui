@@ -441,6 +441,7 @@ import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
 import { useSSRContext } from '@fluentui/react-utilities';
 import { useText_unstable } from '@fluentui/react-text';
 import { useTextStyles_unstable } from '@fluentui/react-text';
+import { useThemeClassName } from '@fluentui/react-shared-contexts';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { useToggleState } from '@fluentui/react-button';
@@ -1323,6 +1324,8 @@ export { useSSRContext }
 export { useText_unstable }
 
 export { useTextStyles_unstable }
+
+export { useThemeClassName }
 
 export { useToggleButton_unstable }
 

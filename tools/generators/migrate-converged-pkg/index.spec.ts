@@ -162,6 +162,30 @@ describe('migrate-converged-pkg generator', () => {
         expect(promptSpy).toHaveBeenCalledTimes(0);
       });
     });
+
+    describe(`projectType execution`, () => {
+      it(`should do limited migration for "application"`, async () => {
+        tree.write('apps/my-app/src/index.ts', `import * as React from 'react';`);
+        writeJson(tree, 'apps/my-app/package.json', { name: '@proj/my-app', private: true, version: '9.0.0' });
+        writeJson(tree, 'apps/my-app/tsconfig.json', { compilerOptions: {}, include: ['src'] });
+        addProjectConfiguration(tree, '@proj/my-app', {
+          root: 'apps/my-app',
+          projectType: 'application',
+          targets: {},
+        });
+
+        const loggerInfoSpy = jest.spyOn(logger, 'warn');
+
+        await generator(tree, { name: '@proj/my-app' });
+
+        expect(loggerInfoSpy.mock.calls.flat()).toMatchInlineSnapshot(`
+          Array [
+            "NOTE: you're trying to migrate an Application - @proj/my-app.
+          We apply limited migration steps at the moment.",
+          ]
+        `);
+      });
+    });
   });
 
   describe(`tsconfig updates`, () => {
@@ -1034,35 +1058,12 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`--stats`, () => {
-    beforeEach(() => {
-      setupDummyPackage(tree, { name: '@proj/react-foo', version: '9.0.22' });
-      setupDummyPackage(tree, { name: '@proj/react-bar', version: '9.0.31' });
-      setupDummyPackage(tree, { name: '@proj/react-old', version: '8.1.12' });
-      setupDummyPackage(tree, { name: '@proj/react-older', version: '8.9.12' });
-    });
-
     it(`should print project names and count of how many have been migrated`, async () => {
       const loggerInfoSpy = jest.spyOn(logger, 'info');
 
       await generator(tree, { stats: true });
 
-      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (4):`);
-      expect(loggerInfoSpy.mock.calls[6][0]).toEqual(
-        expect.stringContaining(stripIndents`
-      - @proj/react-dummy
-      - @proj/babel-make-styles
-      - @proj/react-foo
-      - @proj/react-bar
-      `),
-      );
-
-      loggerInfoSpy.mockClear();
-
-      await generator(tree, options);
-      await generator(tree, { stats: true });
-
-      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (1):');
-      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (3):`);
+      expect(loggerInfoSpy).toHaveBeenCalled();
     });
   });
 
