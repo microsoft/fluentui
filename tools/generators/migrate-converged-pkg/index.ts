@@ -192,6 +192,7 @@ const templates = {
 
         if (options.platform === 'node') {
           tsConfig.compilerOptions.module = 'CommonJS';
+          tsConfig.compilerOptions.types = uniqueArray([...(tsConfig.compilerOptions.types ?? []), 'node']);
         }
         if (options.platform === 'web') {
           tsConfig.compilerOptions.lib?.push('dom');
@@ -225,16 +226,26 @@ const templates = {
       },
     };
   },
-  babelConfig: (options: { extraPresets: Array<string> }) => {
+  babelConfig: (options: { platform: 'node' | 'web'; extraPresets: Array<string> }) => {
+    const plugins = ['annotate-pure-calls'];
+    if (options.platform === 'web') {
+      plugins.push('@babel/transform-react-pure-annotations');
+    }
+
     return {
       presets: [...options.extraPresets],
-      plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+      plugins,
     };
   },
   jestSetup: stripIndents`
    /** Jest test setup file. */
   `,
-  jest: (options: { pkgName: string; addSnapshotSerializers: boolean; testSetupFilePath: string }) => stripIndents`
+  jest: (options: {
+    platform: 'node' | 'web';
+    pkgName: string;
+    addSnapshotSerializers: boolean;
+    testSetupFilePath: string;
+  }) => stripIndents`
       // @ts-check
 
       /**
@@ -724,6 +735,7 @@ function shouldSetupE2E(tree: Tree, options: NormalizedSchema) {
 
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   const jestSetupFilePath = options.paths.jestSetupFile;
+  const packageType = getPackageType(tree, options);
   const packagesThatTriggerAddingSnapshots = [`@griffel/react`];
 
   const packageJson = readJson<PackageJson>(tree, options.paths.packageJson);
@@ -731,11 +743,12 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
 
   const config = {
     pkgName: options.normalizedPkgName,
-    addSnapshotSerializers: Object.keys(packageJson.dependencies).some(pkgDepName =>
-      packagesThatTriggerAddingSnapshots.includes(pkgDepName),
-    ),
+    addSnapshotSerializers:
+      packageType === 'web' &&
+      Object.keys(packageJson.dependencies).some(pkgDepName => packagesThatTriggerAddingSnapshots.includes(pkgDepName)),
     testSetupFilePath: `./${path.basename(options.paths.configRoot)}/tests.js`,
-  };
+    platform: packageType,
+  } as const;
 
   tree.write(options.paths.jestConfig, templates.jest(config));
 
@@ -826,12 +839,13 @@ function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
 
 function setupBabel(tree: Tree, options: NormalizedSchema) {
   const pkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
+  const packageType = getPackageType(tree, options);
   pkgJson.dependencies = pkgJson.dependencies || {};
   pkgJson.devDependencies = pkgJson.devDependencies || {};
 
-  const shouldAddGriffelPreset = pkgJson.dependencies['@griffel/react'];
+  const shouldAddGriffelPreset = pkgJson.dependencies['@griffel/react'] && packageType === 'web';
   const extraPresets = shouldAddGriffelPreset ? ['@griffel'] : [];
-  const config = templates.babelConfig({ extraPresets });
+  const config = templates.babelConfig({ extraPresets, platform: packageType });
 
   tree.write(options.paths.babelConfig, serializeJson(config));
   writeJson(tree, options.paths.packageJson, pkgJson);

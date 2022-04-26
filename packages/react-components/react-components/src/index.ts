@@ -50,7 +50,7 @@ export {
   teamsHighContrastTheme,
   teamsLightTheme,
   tokens,
-  typeographyStyles,
+  typographyStyles,
   webDarkTheme,
   webHighContrastTheme,
   webLightTheme,
@@ -69,7 +69,7 @@ export type {
   ShadowTokens,
   StrokeWidthTokens,
   Theme,
-  TypeographyStyles,
+  TypographyStyles,
 } from '@fluentui/react-theme';
 export { useThemeClassName } from '@fluentui/react-shared-contexts';
 export {

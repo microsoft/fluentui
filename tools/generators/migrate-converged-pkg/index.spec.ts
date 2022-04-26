@@ -924,10 +924,6 @@ describe('migrate-converged-pkg generator', () => {
       const babelConfigPath = `${projectConfig.root}/.babelrc.json`;
       return readJson(tree, babelConfigPath);
     }
-    function getPackageJson(projectConfig: ReadProjectConfiguration) {
-      const packageJsonPath = `${projectConfig.root}/package.json`;
-      return readJson<PackageJson>(tree, packageJsonPath);
-    }
 
     it(`should setup .babelrc.json`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
@@ -983,7 +979,7 @@ describe('migrate-converged-pkg generator', () => {
 
       expect(babelConfig).toEqual({
         presets: [],
-        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+        plugins: ['annotate-pure-calls'],
       });
     });
   });
