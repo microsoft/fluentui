@@ -60,7 +60,7 @@ const handleReportBug = (componentName: string, setLoading: React.Dispatch<React
 
 const LivePreview: React.FunctionComponent<DocsStoryProps & { componentName: string }> = ({ id, componentName }) => {
   const [renderMode, setRenderMode] = React.useState<'storybook' | 'sandpack'>('storybook');
-  const [isReportBugLoading, setReportBugLoading] = React.useState(true);
+  const [isReportBugLoading, setReportBugLoading] = React.useState(false);
   const sandpack = useSandpack();
 
   React.useEffect(() => {
