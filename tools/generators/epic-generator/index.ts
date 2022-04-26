@@ -45,9 +45,7 @@ interface MigrationIssue {
   packages: Package[];
 }
 
-interface MigrationIssueMap {
-  [key: string]: MigrationIssue;
-}
+type MigrationIssueMap = Record<string, MigrationIssue>;
 
 const getConvergedPackages = (tree: Tree) => {
   const projects = getProjects(tree);
