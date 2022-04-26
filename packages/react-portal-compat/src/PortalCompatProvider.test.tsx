@@ -1,10 +1,10 @@
 import { ThemeClassNameContext } from '@fluentui/react-shared-contexts';
+import { usePortalCompat } from '@fluentui/react-portal-compat-context';
 import { FluentProvider } from '@fluentui/react-provider';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
-import { usePortalCompat } from './PortalCompatContext';
 import { PortalCompatProvider } from './PortalCompatProvider';
 
 describe('PortalCompatProvider', () => {

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useThemeClassName } from '@fluentui/react-components';
+import { PortalCompatContextProvider } from '@fluentui/react-portal-compat-context';
 
-import { PortalCompatContext } from './PortalCompatContext';
-import { RegisterPortalFn } from './types';
+import type { RegisterPortalFn } from '@fluentui/react-portal-compat-context';
 
 export const PortalCompatProvider: React.FC = props => {
   const { children } = props;
@@ -30,5 +30,5 @@ export const PortalCompatProvider: React.FC = props => {
     [cssVariablesClassName],
   );
 
-  return <PortalCompatContext.Provider value={registerPortalEl}>{children}</PortalCompatContext.Provider>;
+  return <PortalCompatContextProvider value={registerPortalEl}>{children}</PortalCompatContextProvider>;
 };
