@@ -197,6 +197,10 @@ export type ColorTokens = {
     colorBrandForegroundLinkHover: string;
     colorBrandForegroundLinkPressed: string;
     colorBrandForegroundLinkSelected: string;
+    colorNeutralForeground2Link: string;
+    colorNeutralForeground2LinkHover: string;
+    colorNeutralForeground2LinkPressed: string;
+    colorNeutralForeground2LinkSelected: string;
     colorCompoundBrandForeground1: string;
     colorCompoundBrandForeground1Hover: string;
     colorCompoundBrandForeground1Pressed: string;
@@ -414,6 +418,29 @@ export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record
 
 // @public (undocumented)
 export const tokens: Record<keyof Theme, string>;
+
+// @public (undocumented)
+export type TypeographyStyles = {
+    body1: TypeographyStyle;
+    body1Strong: TypeographyStyle;
+    body1Stronger: TypeographyStyle;
+    caption1: TypeographyStyle;
+    caption1Strong: TypeographyStyle;
+    caption1Stronger: TypeographyStyle;
+    caption2: TypeographyStyle;
+    caption2Strong: TypeographyStyle;
+    subtitle1: TypeographyStyle;
+    subtitle2: TypeographyStyle;
+    subtitle2Stronger: TypeographyStyle;
+    title1: TypeographyStyle;
+    title2: TypeographyStyle;
+    title3: TypeographyStyle;
+    largeTitle: TypeographyStyle;
+    display: TypeographyStyle;
+};
+
+// @public
+export const typeographyStyles: TypeographyStyles;
 
 // @public (undocumented)
 export const webDarkTheme: Theme;

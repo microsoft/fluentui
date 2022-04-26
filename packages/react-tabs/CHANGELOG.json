@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Mon, 25 Apr 2022 09:32:15 GMT",
+      "tag": "@fluentui/react-tabs_v9.0.0-beta.10",
+      "version": "9.0.0-beta.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "9b558cf266817f6499fece14e71bd90e98385a6b",
+            "comment": "Added styles to support future overflow calcs"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.7",
+            "commit": "02ca1d3c198452c1693067f5f18bd01b2ed5d6e6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:16:56 GMT",
       "tag": "@fluentui/react-tabs_v9.0.0-beta.9",
       "version": "9.0.0-beta.9",

@@ -1,26 +1,20 @@
 import { debounce } from './debounce';
 import { createPriorityQueue } from './priorityQueue';
-import type {
-  OnUpdateItemVisibility,
-  OnUpdateOverflow,
-  OverflowDirection,
-  OverflowGroupState,
-  OverflowItemEntry,
-  OverflowManager,
-  OverflowAxis,
-} from './types';
+import type { OverflowGroupState, OverflowItemEntry, OverflowManager, ObserveOptions } from './types';
 
 /**
  * @returns overflow manager instance
  */
 export function createOverflowManager(): OverflowManager {
-  let onUpdateOverflow: OnUpdateOverflow = () => null;
-  let onUpdateItemVisibility: OnUpdateItemVisibility = () => null;
-  let overflowDirection: OverflowDirection = 'end';
-  let overflowAxis: OverflowAxis = 'horizontal';
   let container: HTMLElement | undefined;
-  let padding = 10;
-  let minimumVisible = 0;
+  const options: Required<ObserveOptions> = {
+    padding: 10,
+    overflowAxis: 'horizontal',
+    overflowDirection: 'end',
+    minimumVisible: 0,
+    onUpdateItemVisibility: () => undefined,
+    onUpdateOverflow: () => undefined,
+  };
 
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowGroups: Record<string, { visibleItemIds: Set<string>; invisibleItemIds: Set<string> }> = {};
@@ -42,7 +36,7 @@ export function createOverflowManager(): OverflowManager {
     }
 
     const positionStatusBit =
-      overflowDirection === 'end' ? Node.DOCUMENT_POSITION_FOLLOWING : Node.DOCUMENT_POSITION_PRECEDING;
+      options.overflowDirection === 'end' ? Node.DOCUMENT_POSITION_FOLLOWING : Node.DOCUMENT_POSITION_PRECEDING;
 
     // equal priority, use DOM order
     // eslint-disable-next-line no-bitwise
@@ -60,7 +54,7 @@ export function createOverflowManager(): OverflowManager {
     }
 
     const positionStatusBit =
-      overflowDirection === 'end' ? Node.DOCUMENT_POSITION_PRECEDING : Node.DOCUMENT_POSITION_FOLLOWING;
+      options.overflowDirection === 'end' ? Node.DOCUMENT_POSITION_PRECEDING : Node.DOCUMENT_POSITION_FOLLOWING;
 
     // equal priority, use DOM order
     // eslint-disable-next-line no-bitwise
@@ -68,7 +62,7 @@ export function createOverflowManager(): OverflowManager {
   });
 
   const getOffsetSize = (el: HTMLElement) => {
-    return overflowAxis === 'horizontal' ? el.offsetWidth : el.offsetHeight;
+    return options.overflowAxis === 'horizontal' ? el.offsetWidth : el.offsetHeight;
   };
 
   const makeItemVisible = () => {
@@ -76,7 +70,7 @@ export function createOverflowManager(): OverflowManager {
     visibleItemQueue.enqueue(nextVisible);
 
     const item = overflowItems[nextVisible];
-    onUpdateItemVisibility({ item, visible: true });
+    options.onUpdateItemVisibility({ item, visible: true });
     if (item.groupId) {
       overflowGroups[item.groupId].invisibleItemIds.delete(item.id);
       overflowGroups[item.groupId].visibleItemIds.add(item.id);
@@ -91,7 +85,7 @@ export function createOverflowManager(): OverflowManager {
 
     const item = overflowItems[nextInvisible];
     const width = getOffsetSize(item.element);
-    onUpdateItemVisibility({ item, visible: false });
+    options.onUpdateItemVisibility({ item, visible: false });
     if (item.groupId) {
       overflowGroups[item.groupId].visibleItemIds.delete(item.id);
       overflowGroups[item.groupId].invisibleItemIds.add(item.id);
@@ -118,7 +112,7 @@ export function createOverflowManager(): OverflowManager {
       }
     });
 
-    onUpdateOverflow({ visibleItems, invisibleItems, groupVisibility });
+    options.onUpdateOverflow({ visibleItems, invisibleItems, groupVisibility });
   };
 
   const processOverflowItems = (availableSize: number) => {
@@ -142,7 +136,7 @@ export function createOverflowManager(): OverflowManager {
     }
     // Remove items until there's no more overlap
     while (currentWidth > availableSize && visibleItemQueue.size() > 0) {
-      if (visibleItemQueue.size() === minimumVisible) {
+      if (visibleItemQueue.size() === options.minimumVisible) {
         break;
       }
       currentWidth -= makeItemInvisible();
@@ -159,22 +153,14 @@ export function createOverflowManager(): OverflowManager {
       return;
     }
 
-    const availableSize = getOffsetSize(container) - padding;
+    const availableSize = getOffsetSize(container) - options.padding;
     processOverflowItems(availableSize);
   };
 
   const update: OverflowManager['update'] = debounce(forceUpdate);
 
-  const observe: OverflowManager['observe'] = (observedContainer, options) => {
-    ({
-      padding = 10,
-      overflowAxis = 'horizontal',
-      overflowDirection = 'end',
-      minimumVisible = 0,
-      onUpdateItemVisibility,
-      onUpdateOverflow,
-    } = options);
-
+  const observe: OverflowManager['observe'] = (observedContainer, userOptions) => {
+    Object.assign(options, userOptions);
     container = observedContainer;
     resizeObserver.observe(container);
   };

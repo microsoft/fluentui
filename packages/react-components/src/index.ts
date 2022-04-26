@@ -50,6 +50,7 @@ export {
   teamsHighContrastTheme,
   teamsLightTheme,
   tokens,
+  typeographyStyles,
   webDarkTheme,
   webHighContrastTheme,
   webLightTheme,
@@ -68,6 +69,7 @@ export type {
   ShadowTokens,
   StrokeWidthTokens,
   Theme,
+  TypeographyStyles,
 } from '@fluentui/react-theme';
 export { useThemeClassName } from '@fluentui/react-shared-contexts';
 export {
@@ -77,6 +79,7 @@ export {
   getSlots,
   resetIdsForTests,
   resolveShorthand,
+  SSRProvider,
   useId,
   useIsSSR,
   useMergedRefs,
@@ -233,6 +236,7 @@ export {
   useSplitButtonStyles_unstable,
   useToggleButton_unstable,
   useToggleButtonStyles_unstable,
+  useToggleState,
 } from '@fluentui/react-button';
 export type {
   ButtonProps,

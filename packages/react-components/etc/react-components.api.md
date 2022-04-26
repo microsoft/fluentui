@@ -311,6 +311,7 @@ import { splitButtonClassNames } from '@fluentui/react-button';
 import { SplitButtonProps } from '@fluentui/react-button';
 import { SplitButtonSlots } from '@fluentui/react-button';
 import { SplitButtonState } from '@fluentui/react-button';
+import { SSRProvider } from '@fluentui/react-utilities';
 import { StrokeWidthTokens } from '@fluentui/react-theme';
 import { Subheadline } from '@fluentui/react-text';
 import { subheadlineClassName } from '@fluentui/react-text';
@@ -348,6 +349,8 @@ import { TooltipProps } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
 import { TooltipState } from '@fluentui/react-tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-tooltip';
+import { TypeographyStyles } from '@fluentui/react-theme';
+import { typeographyStyles } from '@fluentui/react-theme';
 import { UninitializedMenuListState } from '@fluentui/react-menu';
 import { useAccordion_unstable } from '@fluentui/react-accordion';
 import { useAccordionContextValues_unstable } from '@fluentui/react-accordion';
@@ -441,6 +444,7 @@ import { useTextStyles_unstable } from '@fluentui/react-text';
 import { useThemeClassName } from '@fluentui/react-shared-contexts';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
+import { useToggleState } from '@fluentui/react-button';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
 import { webDarkTheme } from '@fluentui/react-theme';
@@ -1061,6 +1065,8 @@ export { SplitButtonSlots }
 
 export { SplitButtonState }
 
+export { SSRProvider }
+
 export { StrokeWidthTokens }
 
 export { Subheadline }
@@ -1134,6 +1140,10 @@ export { TooltipSlots }
 export { TooltipState }
 
 export { TooltipTriggerProps }
+
+export { TypeographyStyles }
+
+export { typeographyStyles }
 
 export { UninitializedMenuListState }
 
@@ -1320,6 +1330,8 @@ export { useThemeClassName }
 export { useToggleButton_unstable }
 
 export { useToggleButtonStyles_unstable }
+
+export { useToggleState }
 
 export { useTooltip_unstable }
 

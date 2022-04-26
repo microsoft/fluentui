@@ -239,6 +239,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-alert": {
+      "root": "packages/react-alert",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-alert/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-aria": {
       "root": "packages/react-aria",
       "projectType": "library",
@@ -508,6 +515,13 @@
       "sourceRoot": "packages/react-portal-compat/src",
       "tags": ["vNext", "platform:web"]
     },
+    "@fluentui/react-portal-compat-context": {
+      "root": "packages/react-portal-compat-context",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-portal-compat-context/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-positioning": {
       "root": "packages/react-positioning",
       "projectType": "library",
@@ -742,8 +756,8 @@
       "sourceRoot": "typings",
       "tags": ["platform:any"]
     },
-    "@fluentui/upgrade-examples-v8-v9": {
-      "root": "apps/upgrade-examples-v8-v9",
+    "@fluentui/public-docsite-v9": {
+      "root": "apps/public-docsite-v9",
       "projectType": "application",
       "implicitDependencies": []
     },

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Tue, 19 Apr 2022 19:17:25 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Apr 2022 09:32:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.0-beta.7)
+
+Mon, 25 Apr 2022 09:32:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.0.0-beta.6..@fluentui/react-input_v9.0.0-beta.7)
+
+### Changes
+
+- use ::after pseudo element in styles ([PR #22591](https://github.com/microsoft/fluentui/pull/22591) by seanmonahan@microsoft.com)
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.0-beta.6)
 
