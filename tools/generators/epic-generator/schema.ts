@@ -2,7 +2,7 @@ export interface EpicGeneratorSchema {
   /**
    * Repository to create issues at.
    */
-  repository: string;
+  repository?: string;
 
   /**
    * Title of the main issue/epic

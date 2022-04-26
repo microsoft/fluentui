@@ -29,5 +29,5 @@
       }
     }
   },
-  "required": ["repository", "title"]
+  "required": ["title"]
 }

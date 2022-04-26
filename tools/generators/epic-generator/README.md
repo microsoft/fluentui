@@ -40,6 +40,7 @@ yarn nx workspace-generator epic-generator --repository="microsoft/fluentui" --t
 #### `repository`
 
 Type: `string`
+Default: "microsoft/fluentui"
 
 Full name of the GitHub repository to create the issues on.
 

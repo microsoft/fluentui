@@ -5,7 +5,7 @@ import fetch from 'node-fetch';
 import { EpicGeneratorSchema } from './schema';
 
 function validateSchema(schema: EpicGeneratorSchema) {
-  if (!schema.repository.match(/[A-z-]+\/[A-z-]+/)) {
+  if (schema.repository !== undefined && !schema.repository.match(/[A-z-]+\/[A-z-]+/)) {
     throw new Error('Must provide a valid repository for the issue');
   }
 
@@ -14,7 +14,7 @@ function validateSchema(schema: EpicGeneratorSchema) {
   }
 
   return {
-    repository: schema.repository,
+    repository: schema.repository || 'microsoft/fluentui',
     title: schema.title,
     message: schema.message || '*Description to be added*',
   };
