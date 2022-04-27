@@ -6,18 +6,6 @@ exports[`AvatarGroup renders a default state 1`] = `
     class="fui-AvatarGroup"
   >
     Default AvatarGroup
-    <button
-      aria-describedby="tooltip-2"
-      aria-haspopup="dialog"
-      class="fui-Button fui-AvatarGroup__popoverTrigger"
-      data-tabster="{\\"deloser\\":{}}"
-      type="button"
-    >
-      +10
-    </button>
-    <span
-      hidden=""
-    />
   </div>
 </div>
 `;

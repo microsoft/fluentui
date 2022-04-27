@@ -2,7 +2,7 @@
 
 ## Background
 
-AvatarGroup represents multiple people or entities. AvatarGroups can be represented in a spread, stack, or pie layout.
+AvatarGroup represents a group of multiple people or entities by taking care of the arrangement of individual Avatars in a spread, stack, or pie layout.
 
 ## Prior Art
 
@@ -48,13 +48,13 @@ const App = () => {
 There are three layout variants in AvatarGroup:
 
 - Spread layout (Default): Avatars are spaced evenly.
-- Stack layout: Avatars are overlaped evenly.
+- Stack layout: Avatars are overlapped evenly.
 - Pie layout: For the pie layout there can be a minimum of two Avatars and a maximum of three. This layout does not overflow and provides a popover for more details.
 
   - If the size of the avatar group is `36` or smaller then only the first letter of the initials will be displayed.
   - `maxAvatars` will be ignored when using this layout.
 
-- For `Spread` and `Stack` layouts, by default have a maximum of 5 avatars before overflowing.
+- The `spread` and `stack` layouts have a maximum of 5 avatars before overflowing by default, which can be overridden via the `maxAvatars` prop.
 
 ## API
 
@@ -62,11 +62,11 @@ See [AvatarGroup.types.ts](./src/components/AvatarGroup/AvatarGroup.types.ts) fo
 
 - `size`: Group size will override the children's current size. This is to ensure that the `AvatarGroup`'s spacing is correct because it changes depending on the group size.
 - `popoverSurface`: All Avatars in `popoverSurface` will have a size of 24 and will be encased in a div to apply stylings.
-- Avatar `color`: AvatarGroup's colors will follow the following order, but they can be overriden by providing a color specific color on a given avatar.
+- Avatar `color`: AvatarGroup's colors will follow the order below, but they can be overriden by providing a color specific color on a given avatar.
 
 #### Color override example:
 
-In this example, the first Avatar will have a `darkRed` color, while all the other avatars will follow the color order.
+In this example, the first Avatar will have a `darkRed` color, while all the other avatars will follow the default color order.
 
 ```jsx
 <AvatarGroup>
@@ -162,13 +162,13 @@ _Explain how the component will behave in use, including:_
   - Overflowed state: When there are more Avatars than the `maxAvatars`, an overflow indicator will be rendered that can be clicked to look at the rest of the avatars.
     - `Pie` layout: since `maxAvatars` is ignored, the overflow indicator will be rendered strictly when there's more than three avatars.
 - _Interaction_
-  - _Keyboard_: Overflow indicator can be intereacted with the keyboard and when enter is pressed a popover that traps focus will be rendered.
+  - _Keyboard_: Overflow indicator can be interacted with the keyboard and when enter is pressed a popover that traps focus will be rendered.
   - _Cursor_ and _Touch_: When overflow indicator is clicked, the popover is displayed with the avatars that overflow. When the overflow indicator is hovered, a tooltip will read the number of people overflowed (`{numOverflowAvatars} more people` by default).
   - _Screen readers_:
     - `Avatar`: logic is handled by `Avatar` component.
     - `AvatarGroup`:
       - When a label is used alongside `AvatarGroup` and focused, all Avatars are read. If the overflow indicator is rendered, the popover localized text is read.
-      - Avatars can be focused and the name will be read . To get to the overflowed avatars, the Popover must be triggered and will get focus letting the user traverse through the overflowed Avatars.
+      - Avatars can be focused and the name will be read. To get to the Avatars in the overflow menu, the Popover must be triggered, which will in turn set focus on it and let the user traverse through the set of overflowed Avatars.
 
 ## Accessibility
 
