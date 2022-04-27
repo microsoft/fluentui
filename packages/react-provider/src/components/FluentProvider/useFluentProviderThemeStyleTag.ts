@@ -36,8 +36,8 @@ export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState
   }, [theme, styleTagId]);
   const previousCssRule = usePrevious(cssRule);
 
-  if (styleTag && styleTag.sheet && previousCssRule !== cssRule) {
-    const sheet = styleTag.sheet as CSSStyleSheet;
+  if (styleTag?.sheet && previousCssRule !== cssRule) {
+    const sheet = styleTag.sheet;
 
     if (sheet.cssRules.length > 0) {
       sheet.deleteRule(0);
