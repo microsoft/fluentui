@@ -162,6 +162,30 @@ describe('migrate-converged-pkg generator', () => {
         expect(promptSpy).toHaveBeenCalledTimes(0);
       });
     });
+
+    describe(`projectType execution`, () => {
+      it(`should do limited migration for "application"`, async () => {
+        tree.write('apps/my-app/src/index.ts', `import * as React from 'react';`);
+        writeJson(tree, 'apps/my-app/package.json', { name: '@proj/my-app', private: true, version: '9.0.0' });
+        writeJson(tree, 'apps/my-app/tsconfig.json', { compilerOptions: {}, include: ['src'] });
+        addProjectConfiguration(tree, '@proj/my-app', {
+          root: 'apps/my-app',
+          projectType: 'application',
+          targets: {},
+        });
+
+        const loggerInfoSpy = jest.spyOn(logger, 'warn');
+
+        await generator(tree, { name: '@proj/my-app' });
+
+        expect(loggerInfoSpy.mock.calls.flat()).toMatchInlineSnapshot(`
+          Array [
+            "NOTE: you're trying to migrate an Application - @proj/my-app.
+          We apply limited migration steps at the moment.",
+          ]
+        `);
+      });
+    });
   });
 
   describe(`tsconfig updates`, () => {
@@ -209,7 +233,7 @@ describe('migrate-converged-pkg generator', () => {
       const tsConfigTest = getTsConfig.test();
 
       expect(tsConfigMain).toEqual({
-        extends: '../../tsconfig.base.json',
+        extends: '../../../tsconfig.base.json',
         compilerOptions: {
           importHelpers: true,
           isolatedModules: true,
@@ -396,7 +420,7 @@ describe('migrate-converged-pkg generator', () => {
         */
         module.exports = {
         displayName: 'react-dummy',
-        preset: '../../jest.preset.js',
+        preset: '../../../jest.preset.js',
         globals: {
         'ts-jest': {
         tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -530,9 +554,9 @@ describe('migrate-converged-pkg generator', () => {
       );
 
       expect(tree.read(`${projectStorybookConfigPath}/main.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "const rootMain = require('../../../.storybook/main');
+        "const rootMain = require('../../../../.storybook/main');
 
-        module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+        module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
         stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
@@ -547,7 +571,7 @@ describe('migrate-converged-pkg generator', () => {
       `);
 
       expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "import * as rootPreview from '../../../.storybook/preview';
+        "import * as rootPreview from '../../../../.storybook/preview';
 
         /** @type {typeof rootPreview.decorators} */
         export const decorators = [...rootPreview.decorators];
@@ -695,7 +719,7 @@ describe('migrate-converged-pkg generator', () => {
           lib: ['ES2019', 'dom'],
           types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         },
-        include: ['**/*.ts'],
+        include: ['**/*.ts', '**/*.tsx'],
       });
       expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './e2e/tsconfig.json' }]));
 
@@ -738,14 +762,14 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.scripts).toEqual({
         docs: 'api-extractor run --config=config/api-extractor.local.json --local',
         // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-dummy/src && yarn docs`,
+        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-dummy/src && yarn docs`,
         build: 'just-scripts build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
         just: 'just-scripts',
         lint: 'just-scripts lint',
         start: 'yarn storybook',
-        storybook: 'node ../../scripts/storybook/runner',
+        storybook: 'node ../../../scripts/storybook/runner',
         test: 'jest --passWithNoTests',
         'type-check': 'tsc -b tsconfig.json',
       });
@@ -780,7 +804,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.scripts).toEqual({
         build: 'just-scripts build',
         // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/babel-make-styles/src && yarn docs`,
+        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/babel-make-styles/src && yarn docs`,
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
         docs: 'api-extractor run --config=config/api-extractor.local.json --local',
@@ -900,10 +924,6 @@ describe('migrate-converged-pkg generator', () => {
       const babelConfigPath = `${projectConfig.root}/.babelrc.json`;
       return readJson(tree, babelConfigPath);
     }
-    function getPackageJson(projectConfig: ReadProjectConfiguration) {
-      const packageJsonPath = `${projectConfig.root}/package.json`;
-      return readJson<PackageJson>(tree, packageJsonPath);
-    }
 
     it(`should setup .babelrc.json`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
@@ -959,7 +979,7 @@ describe('migrate-converged-pkg generator', () => {
 
       expect(babelConfig).toEqual({
         presets: [],
-        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+        plugins: ['annotate-pure-calls'],
       });
     });
   });
@@ -1034,35 +1054,12 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`--stats`, () => {
-    beforeEach(() => {
-      setupDummyPackage(tree, { name: '@proj/react-foo', version: '9.0.22' });
-      setupDummyPackage(tree, { name: '@proj/react-bar', version: '9.0.31' });
-      setupDummyPackage(tree, { name: '@proj/react-old', version: '8.1.12' });
-      setupDummyPackage(tree, { name: '@proj/react-older', version: '8.9.12' });
-    });
-
     it(`should print project names and count of how many have been migrated`, async () => {
       const loggerInfoSpy = jest.spyOn(logger, 'info');
 
       await generator(tree, { stats: true });
 
-      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (4):`);
-      expect(loggerInfoSpy.mock.calls[6][0]).toEqual(
-        expect.stringContaining(stripIndents`
-      - @proj/react-dummy
-      - @proj/babel-make-styles
-      - @proj/react-foo
-      - @proj/react-bar
-      `),
-      );
-
-      loggerInfoSpy.mockClear();
-
-      await generator(tree, options);
-      await generator(tree, { stats: true });
-
-      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (1):');
-      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (3):`);
+      expect(loggerInfoSpy).toHaveBeenCalled();
     });
   });
 

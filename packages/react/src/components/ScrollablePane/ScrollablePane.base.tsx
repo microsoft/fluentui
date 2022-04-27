@@ -187,7 +187,7 @@ export class ScrollablePaneBase
   }
 
   public render(): JSX.Element {
-    const { className, scrollContainerFocus, scrollContainerAriaLabel, theme, styles } = this.props;
+    const { className, scrollContainerFocus, scrollContainerAriaLabel, theme, styles, onScroll } = this.props;
     const { stickyTopHeight, stickyBottomHeight } = this.state;
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -200,11 +200,26 @@ export class ScrollablePaneBase
           role: 'group',
           tabIndex: 0,
           'aria-label': scrollContainerAriaLabel,
+          onScroll,
         }
-      : {};
+      : {
+          onScroll,
+        };
 
     return (
-      <div {...getNativeProps(this.props, divProperties)} ref={this._root} className={classNames.root}>
+      <div
+        {...getNativeProps(
+          {
+            ...this.props,
+          },
+          divProperties,
+          // on React 17 onScroll is not being invoked on root element,
+          // as a fix this method will be provided to the container element
+          ['onScroll'],
+        )}
+        ref={this._root}
+        className={classNames.root}
+      >
         <div
           ref={this._stickyAboveRef}
           className={classNames.stickyAbove}

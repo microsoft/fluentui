@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { SpinButton } from './SpinButton';
 import { isConformant } from '../../common/isConformant';
 import * as Keys from '@fluentui/keyboard-keys';
+import { SpinButtonStrings } from './SpinButton.types';
 
 const getSpinButtonInput = (): HTMLInputElement => {
   return screen.getByRole('spinbutton') as HTMLInputElement;
@@ -18,7 +19,7 @@ describe('SpinButton', () => {
   });
 
   it('renders a default uncontrolled state', () => {
-    render(<SpinButton defaultValue={10} />);
+    const { getAllByRole } = render(<SpinButton defaultValue={10} />);
 
     const spinButton = getSpinButtonInput();
     expect(spinButton.value).toEqual('10');
@@ -26,10 +27,14 @@ describe('SpinButton', () => {
     expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
+
+    const [incrementButton, decrementButton] = getAllByRole('button');
+    expect(incrementButton.getAttribute('aria-label')).toEqual('Increment by 1');
+    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement by 1');
   });
 
   it('renders a default controlled state', () => {
-    render(<SpinButton value={1} onChange={jest.fn()} />);
+    const { getAllByRole } = render(<SpinButton value={1} onChange={jest.fn()} />);
 
     const spinButton = getSpinButtonInput();
     expect(spinButton.value).toEqual('1');
@@ -37,6 +42,10 @@ describe('SpinButton', () => {
     expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
+
+    const [incrementButton, decrementButton] = getAllByRole('button');
+    expect(incrementButton.getAttribute('aria-label')).toEqual('Increment by 1');
+    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement by 1');
   });
 
   it('does not render `displayValue` when uncontrolled', () => {
@@ -431,74 +440,31 @@ describe('SpinButton', () => {
     expect(decrementButton.disabled).toEqual(true);
   });
 
-  it('respects `inputType="spinners-only"` when uncontrolled', () => {
-    const onChange = jest.fn();
-    const { getAllByRole } = render(<SpinButton inputType="spinners-only" defaultValue={1} onChange={onChange} />);
+  it('applies custom strings', () => {
+    const strings: SpinButtonStrings = {
+      incrementButtonLabel: `Increment SpinButton by {step}`,
+      decrementButtonLabel: `Decrement It`,
+    };
+
+    const { getAllByRole } = render(<SpinButton strings={strings} defaultValue={0} />);
 
     const [incrementButton, decrementButton] = getAllByRole('button');
-    const spinButton = getSpinButtonInput();
-
-    userEvent.click(incrementButton);
-    expect(onChange.mock.calls[0][1]).toEqual({ value: 2, displayValue: undefined });
-    expect(spinButton.value).toEqual('2');
-
-    userEvent.click(decrementButton);
-    expect(onChange.mock.calls[1][1]).toEqual({ value: 1, displayValue: undefined });
-    expect(spinButton.value).toEqual('1');
-
-    fireEvent.keyDown(spinButton, { key: Keys.ArrowUp });
-    expect(onChange.mock.calls[2][1]).toEqual({ value: 2, displayValue: undefined });
-    expect(spinButton.value).toEqual('2');
-
-    fireEvent.keyDown(spinButton, { key: Keys.ArrowDown });
-    expect(onChange.mock.calls[3][1]).toEqual({ value: 1, displayValue: undefined });
-    expect(spinButton.value).toEqual('1');
-
-    fireEvent.keyDown(spinButton, { key: Keys.PageUp });
-    expect(onChange.mock.calls[4][1]).toEqual({ value: 2, displayValue: undefined });
-    expect(spinButton.value).toEqual('2');
-
-    fireEvent.keyDown(spinButton, { key: Keys.PageDown });
-    expect(onChange.mock.calls[5][1]).toEqual({ value: 1, displayValue: undefined });
-    expect(spinButton.value).toEqual('1');
-
-    userEvent.type(spinButton, '23');
-    expect(onChange).toHaveBeenCalledTimes(6); // no change should fire
-    expect(spinButton.value).toEqual('1');
+    expect(incrementButton.getAttribute('aria-label')).toEqual('Increment SpinButton by 1');
+    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement It');
   });
 
-  it('respects `inputType="spinners-only"` when controlled', () => {
-    const onChange = jest.fn();
-    const { getAllByRole, rerender } = render(<SpinButton inputType="spinners-only" value={1} onChange={onChange} />);
+  it('overrides custom strings with slot props', () => {
+    const strings: SpinButtonStrings = {
+      incrementButtonLabel: `Increment SpinButton by {step}`,
+      decrementButtonLabel: `Decrement It`,
+    };
+
+    const { getAllByRole } = render(
+      <SpinButton strings={strings} defaultValue={0} incrementButton={{ 'aria-label': 'Increment Override' }} />,
+    );
 
     const [incrementButton, decrementButton] = getAllByRole('button');
-    const spinButton = getSpinButtonInput();
-
-    userEvent.click(incrementButton);
-    expect(onChange.mock.calls[0][1]).toEqual({ value: 2, displayValue: undefined });
-    rerender(<SpinButton inputType="spinners-only" value={2} onChange={onChange} />);
-
-    userEvent.click(decrementButton);
-    expect(onChange.mock.calls[1][1]).toEqual({ value: 1, displayValue: undefined });
-    rerender(<SpinButton inputType="spinners-only" value={1} onChange={onChange} />);
-
-    fireEvent.keyDown(spinButton, { key: Keys.ArrowUp });
-    expect(onChange.mock.calls[2][1]).toEqual({ value: 2, displayValue: undefined });
-    rerender(<SpinButton inputType="spinners-only" value={2} onChange={onChange} />);
-
-    fireEvent.keyDown(spinButton, { key: Keys.ArrowDown });
-    expect(onChange.mock.calls[3][1]).toEqual({ value: 1, displayValue: undefined });
-    rerender(<SpinButton inputType="spinners-only" value={1} onChange={onChange} />);
-
-    fireEvent.keyDown(spinButton, { key: Keys.PageUp });
-    expect(onChange.mock.calls[4][1]).toEqual({ value: 2, displayValue: undefined });
-    rerender(<SpinButton inputType="spinners-only" value={2} onChange={onChange} />);
-
-    fireEvent.keyDown(spinButton, { key: Keys.PageDown });
-    expect(onChange.mock.calls[5][1]).toEqual({ value: 1, displayValue: undefined });
-    rerender(<SpinButton inputType="spinners-only" value={1} onChange={onChange} />);
-
-    userEvent.type(spinButton, '23');
-    expect(onChange).toHaveBeenCalledTimes(6); // no change should fire
+    expect(incrementButton.getAttribute('aria-label')).toEqual('Increment Override');
+    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement It');
   });
 });

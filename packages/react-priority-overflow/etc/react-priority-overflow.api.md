@@ -26,6 +26,17 @@ export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<ObserveOpt
 } & React_2.RefAttributes<unknown>>;
 
 // @public
+export const OverflowItem: React_2.ForwardRefExoticComponent<OverflowItemProps & React_2.RefAttributes<unknown>>;
+
+// @public
+export type OverflowItemProps = {
+    id: string;
+    groupId?: string;
+    priority?: number;
+    children: React_2.ReactElement;
+};
+
+// @public
 export type OverflowProps = Partial<Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'>> & {
     children: React_2.ReactElement;
 };

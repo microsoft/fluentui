@@ -71,6 +71,9 @@ export function useFluentProviderContextValues_unstable(state: FluentProviderSta
 // @public
 export const useFluentProviderStyles_unstable: (state: FluentProviderState) => FluentProviderState;
 
+// @public
+export const useFluentProviderThemeStyleTag: (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => string;
+
 export { useTheme }
 
 // (No @packageDocumentation comment for this package)

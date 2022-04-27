@@ -8,8 +8,8 @@ const getChangedEntriesInReport = require('../utils/getChangedEntriesInReport');
 const { formatBytes } = require('../utils/helpers');
 
 const icons = {
-  increase: 'IncreaseYellow.svg',
-  decrease: 'Decrease.svg',
+  increase: 'increase.png',
+  decrease: 'decrease.png',
 };
 
 /**
@@ -21,8 +21,7 @@ function getDirectionSymbol(value) {
   /**
    * @param {string} iconName
    */
-  const img = iconName =>
-    `<img aria-hidden="true" src="https://microsoft.github.io/sizeAuditor-website/images/icons/${iconName}" />`;
+  const img = iconName => `<img aria-hidden="true" src="https://microsoft.github.io/monosize/images/${iconName}" />`;
 
   if (value < 0) {
     return img(icons.decrease);

@@ -19,6 +19,11 @@ export interface IDropdown {
    */
   readonly selectedOptions: IDropdownOption[];
 
+  /**
+   * An imperative handle to dismiss the popup if it is open
+   */
+  dismissMenu: () => void;
+
   focus: (shouldOpenOnFocus?: boolean) => void;
 }
 

@@ -14,6 +14,7 @@ import {
   SpinButtonChangeEvent,
   SpinButtonBounds,
 } from './SpinButton.types';
+import { spinButtonDefaultStrings } from './SpinButton.strings';
 import { calculatePrecision, precisionRound, getBound, clampWhenInRange } from '../../utils/index';
 import { ChevronUp16Regular, ChevronDown16Regular } from '@fluentui/react-icons';
 
@@ -47,7 +48,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['onChange', 'size'],
+    excludedPropNames: ['onChange', 'size', 'min', 'max'],
   });
 
   const {
@@ -66,7 +67,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     input,
     incrementButton,
     decrementButton,
-    inputType = 'all',
+    strings = spinButtonDefaultStrings,
   } = props;
 
   const precision = React.useMemo(() => {
@@ -114,6 +115,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         autoComplete: 'off',
         role: 'spinbutton',
         appearance: appearance,
+        type: 'text',
         ...nativeProps.primary,
       },
     }),
@@ -123,6 +125,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         tabIndex: -1,
         children: <ChevronUp16Regular />,
         disabled: nativeProps.primary.disabled,
+        'aria-label': strings.incrementButtonLabel.replace('{step}', step.toString()),
       },
     }),
     decrementButton: resolveShorthand(decrementButton, {
@@ -131,6 +134,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         tabIndex: -1,
         children: <ChevronDown16Regular />,
         disabled: nativeProps.primary.disabled,
+        'aria-label': strings.decrementButtonLabel.replace('{step}', step.toString()),
       },
     }),
   };
@@ -152,10 +156,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   }, [value, displayValue, currentValue, precision, setAtBound, min, max]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (inputType === 'spinners-only') {
-      return;
-    }
-
     if (!internalState.current.previousTextValue) {
       internalState.current.previousTextValue = textValue;
     }

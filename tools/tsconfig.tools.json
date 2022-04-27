@@ -3,8 +3,8 @@
   "compilerOptions": {
     "outDir": "../dist/out-tsc/tools",
     "rootDir": ".",
-    "module": "commonjs",
-    "target": "es5",
+    "module": "CommonJS",
+    "target": "ES2015",
     "types": ["node"],
     "importHelpers": false,
     "downlevelIteration": true

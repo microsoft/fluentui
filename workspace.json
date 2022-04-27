@@ -227,6 +227,11 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/public-docsite-v9": {
+      "root": "apps/public-docsite-v9",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/react": {
       "root": "packages/react",
       "projectType": "library",
@@ -238,6 +243,13 @@
       "sourceRoot": "packages/react-accordion/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-alert": {
+      "root": "packages/react-alert",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-alert/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-aria": {
       "root": "packages/react-aria",
@@ -323,9 +335,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-components": {
-      "root": "packages/react-components",
+      "root": "packages/react-components/react-components",
       "projectType": "library",
-      "sourceRoot": "packages/react-components/src",
+      "sourceRoot": "packages/react-components/react-components/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -337,7 +349,9 @@
     "@fluentui/react-conformance-griffel": {
       "root": "packages/react-conformance-griffel",
       "projectType": "library",
-      "sourceRoot": "packages/react-conformance-griffel/src"
+      "sourceRoot": "packages/react-conformance-griffel/src",
+      "tags": ["vNext", "platform:node"],
+      "implicitDependencies": []
     },
     "@fluentui/react-context-selector": {
       "root": "packages/react-context-selector",
@@ -500,6 +514,20 @@
       "sourceRoot": "packages/react-portal/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-portal-compat": {
+      "root": "packages/react-portal-compat",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-portal-compat/src",
+      "tags": ["vNext", "platform:web"]
+    },
+    "@fluentui/react-portal-compat-context": {
+      "root": "packages/react-portal-compat-context",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-portal-compat-context/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-positioning": {
       "root": "packages/react-positioning",
@@ -734,11 +762,6 @@
       "projectType": "library",
       "sourceRoot": "typings",
       "tags": ["platform:any"]
-    },
-    "@fluentui/upgrade-examples-v8-v9": {
-      "root": "apps/upgrade-examples-v8-v9",
-      "projectType": "application",
-      "implicitDependencies": []
     },
     "@fluentui/utilities": {
       "root": "packages/utilities",

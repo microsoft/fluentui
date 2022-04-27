@@ -18,10 +18,19 @@ import * as path from 'path';
 import * as os from 'os';
 
 import { PackageJson, TsConfig } from '../../types';
-import { arePromptsEnabled, getProjectConfig, getProjects, printUserLogs, prompt, UserLog } from '../../utils';
+import {
+  arePromptsEnabled,
+  getProjectConfig,
+  getProjects,
+  isPackageConverged,
+  printUserLogs,
+  prompt,
+  UserLog,
+} from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 import { addCodeowner } from '../add-codeowners';
+import { printStats } from '../print-stats';
 
 interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
 
@@ -37,7 +46,12 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   const validatedSchema = await validateSchema(tree, schema);
 
   if (hasSchemaFlag(validatedSchema, 'stats')) {
-    printStats(tree, validatedSchema);
+    printStats(tree, {
+      projects: getProjects(tree),
+      title: 'Converged DX',
+      isMigratedCheck: isProjectMigrated,
+      shouldProcessPackage: isPackageConverged,
+    });
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     return () => {};
   }
@@ -83,6 +97,16 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
     addCodeowner(tree, { owner: options.owner, packageName: options.name });
   }
 
+  if (options.projectConfig.projectType === 'application') {
+    logger.warn(
+      stripIndents`
+      NOTE: you're trying to migrate an Application - ${options.name}.
+      We apply limited migration steps at the moment.
+      `,
+    );
+    return;
+  }
+
   // 1. update TsConfigs
   updatedLocalTsConfig(tree, options);
   updatedBaseTsConfig(tree, options);
@@ -111,7 +135,7 @@ const templates = {
   apiExtractorLocal: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
     extends: './api-extractor.json',
-    mainEntryPointFilePath: '<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts',
+    mainEntryPointFilePath: '<projectFolder>/dist/packages/react-components/<unscopedPackageName>/src/index.d.ts',
   },
   apiExtractor: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
@@ -121,7 +145,7 @@ const templates = {
     return {
       main: () => {
         const tsConfig = {
-          extends: '../../tsconfig.base.json',
+          extends: '../../../tsconfig.base.json',
           compilerOptions: {
             target: 'ES2019',
             // by default we gonna use tsc for type checking only
@@ -168,6 +192,7 @@ const templates = {
 
         if (options.platform === 'node') {
           tsConfig.compilerOptions.module = 'CommonJS';
+          tsConfig.compilerOptions.types = uniqueArray([...(tsConfig.compilerOptions.types ?? []), 'node']);
         }
         if (options.platform === 'web') {
           tsConfig.compilerOptions.lib?.push('dom');
@@ -201,16 +226,26 @@ const templates = {
       },
     };
   },
-  babelConfig: (options: { extraPresets: Array<string> }) => {
+  babelConfig: (options: { platform: 'node' | 'web'; extraPresets: Array<string> }) => {
+    const plugins = ['annotate-pure-calls'];
+    if (options.platform === 'web') {
+      plugins.push('@babel/transform-react-pure-annotations');
+    }
+
     return {
       presets: [...options.extraPresets],
-      plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+      plugins,
     };
   },
   jestSetup: stripIndents`
    /** Jest test setup file. */
   `,
-  jest: (options: { pkgName: string; addSnapshotSerializers: boolean; testSetupFilePath: string }) => stripIndents`
+  jest: (options: {
+    platform: 'node' | 'web';
+    pkgName: string;
+    addSnapshotSerializers: boolean;
+    testSetupFilePath: string;
+  }) => stripIndents`
       // @ts-check
 
       /**
@@ -218,7 +253,7 @@ const templates = {
       */
       module.exports = {
         displayName: '${options.pkgName}',
-        preset: '../../jest.preset.js',
+        preset: '../../../jest.preset.js',
         globals: {
           'ts-jest': {
             tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -235,9 +270,9 @@ const templates = {
   `,
   storybook: {
     main: stripIndents`
-      const rootMain = require('../../../.storybook/main');
+      const rootMain = require('../../../../.storybook/main');
 
-      module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+      module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
         stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
@@ -251,7 +286,7 @@ const templates = {
       });
     `,
     preview: stripIndents`
-      import * as rootPreview from '../../../.storybook/preview';
+      import * as rootPreview from '../../../../.storybook/preview';
 
       /** @type {typeof rootPreview.decorators} */
       export const decorators = [...rootPreview.decorators];
@@ -277,7 +312,7 @@ const templates = {
         types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         lib: ['ES2019', 'dom'],
       },
-      include: ['**/*.ts'],
+      include: ['**/*.ts', '**/*.tsx'],
     },
   },
   npmIgnoreConfig:
@@ -401,44 +436,6 @@ async function triggerDynamicPrompts() {
   ]);
 }
 
-function printStats(tree: Tree, options: MigrateConvergedPkgGeneratorSchema) {
-  const allProjects = getProjects(tree);
-  const stats = {
-    migrated: [] as Array<ProjectConfiguration & { projectName: string }>,
-    notMigrated: [] as Array<ProjectConfiguration & { projectName: string }>,
-  };
-
-  allProjects.forEach((project, projectName) => {
-    if (!isPackageConverged(tree, project)) {
-      return;
-    }
-
-    if (isProjectMigrated(tree, project)) {
-      stats.migrated.push({ projectName, ...project });
-
-      return;
-    }
-    stats.notMigrated.push({ projectName, ...project });
-  });
-
-  logger.info('Convergence DX migration stats:');
-  logger.info('='.repeat(80));
-
-  logger.info(`Migrated (${stats.migrated.length}):`);
-  logger.info(stats.migrated.map(projectStat => `- ${projectStat.projectName}`).join('\n'));
-
-  logger.info('='.repeat(80));
-  logger.info(`Not migrated (${stats.notMigrated.length}):`);
-  logger.info(stats.notMigrated.map(projectStat => `- ${projectStat.projectName}`).join('\n'));
-
-  return tree;
-}
-
-function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
-  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
-  return packageJson.version.startsWith('9.');
-}
-
 function isProjectMigrated<T extends ProjectConfiguration>(
   tree: Tree,
   project: T,
@@ -517,8 +514,8 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
   /* eslint-disable @fluentui/max-len */
   const scripts = {
     docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
-    storybook: 'node ../../scripts/storybook/runner',
+    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/${options.normalizedPkgName}/src && yarn docs`,
+    storybook: 'node ../../../scripts/storybook/runner',
     start: 'yarn storybook',
     test: 'jest --passWithNoTests',
     'type-check': 'tsc -b tsconfig.json',
@@ -738,6 +735,7 @@ function shouldSetupE2E(tree: Tree, options: NormalizedSchema) {
 
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   const jestSetupFilePath = options.paths.jestSetupFile;
+  const packageType = getPackageType(tree, options);
   const packagesThatTriggerAddingSnapshots = [`@griffel/react`];
 
   const packageJson = readJson<PackageJson>(tree, options.paths.packageJson);
@@ -745,11 +743,12 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
 
   const config = {
     pkgName: options.normalizedPkgName,
-    addSnapshotSerializers: Object.keys(packageJson.dependencies).some(pkgDepName =>
-      packagesThatTriggerAddingSnapshots.includes(pkgDepName),
-    ),
+    addSnapshotSerializers:
+      packageType === 'web' &&
+      Object.keys(packageJson.dependencies).some(pkgDepName => packagesThatTriggerAddingSnapshots.includes(pkgDepName)),
     testSetupFilePath: `./${path.basename(options.paths.configRoot)}/tests.js`,
-  };
+    platform: packageType,
+  } as const;
 
   tree.write(options.paths.jestConfig, templates.jest(config));
 
@@ -840,12 +839,13 @@ function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
 
 function setupBabel(tree: Tree, options: NormalizedSchema) {
   const pkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
+  const packageType = getPackageType(tree, options);
   pkgJson.dependencies = pkgJson.dependencies || {};
   pkgJson.devDependencies = pkgJson.devDependencies || {};
 
-  const shouldAddGriffelPreset = pkgJson.dependencies['@griffel/react'];
+  const shouldAddGriffelPreset = pkgJson.dependencies['@griffel/react'] && packageType === 'web';
   const extraPresets = shouldAddGriffelPreset ? ['@griffel'] : [];
-  const config = templates.babelConfig({ extraPresets });
+  const config = templates.babelConfig({ extraPresets, platform: packageType });
 
   tree.write(options.paths.babelConfig, serializeJson(config));
   writeJson(tree, options.paths.packageJson, pkgJson);

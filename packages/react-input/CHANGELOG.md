@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Fri, 04 Mar 2022 05:17:37 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Apr 2022 09:32:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.0-beta.7)
+
+Mon, 25 Apr 2022 09:32:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.0.0-beta.6..@fluentui/react-input_v9.0.0-beta.7)
+
+### Changes
+
+- use ::after pseudo element in styles ([PR #22591](https://github.com/microsoft/fluentui/pull/22591) by seanmonahan@microsoft.com)
+
+## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.0-beta.6)
+
+Tue, 19 Apr 2022 19:17:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.0.0-beta.5..@fluentui/react-input_v9.0.0-beta.6)
+
+### Changes
+
+- Removing star exports. ([PR #22140](https://github.com/microsoft/fluentui/pull/22140) by Humberto.Morimoto@microsoft.com)
+- Update onChange event type ([PR #22233](https://github.com/microsoft/fluentui/pull/22233) by seanmonahan@microsoft.com)
+- BREAKING CHANGE: Remove `inline` prop and use `display: inline-flex` by default ([PR #21935](https://github.com/microsoft/fluentui/pull/21935) by elcraig@microsoft.com)
+- chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- Add static classnames to Input ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.5 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.4 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.0-beta.5)
 

@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import { SplitButton, MenuButtonProps } from '../../../index';
 
@@ -22,7 +21,7 @@ export const Disabled = () => {
         <MenuTrigger>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} disabled>
-              Disabled stat
+              Disabled state
             </SplitButton>
           )}
         </MenuTrigger>

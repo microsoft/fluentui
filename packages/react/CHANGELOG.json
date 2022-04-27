@@ -2,6 +2,300 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 27 Apr 2022 07:43:07 GMT",
+      "tag": "@fluentui/react_v8.67.1",
+      "version": "8.67.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4a2a7dd5dc733cd2db4c868ef5272818c0b735cd",
+            "comment": "Fix HCM disabled checkmarks"
+          },
+          {
+            "author": "conniechen@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "04699539cd875348d5fa357e0b01a56e461138ae",
+            "comment": "fix screen reader issues on calendar navigation buttons and combobox"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "9845fe2750b801da0741adb167ca66e396804486",
+            "comment": "change ie11 fix from star selector to span to avoid perf issues"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Apr 2022 07:37:24 GMT",
+      "tag": "@fluentui/react_v8.67.0",
+      "version": "8.67.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "miclo@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "15e9cd77b663bfc839f05b9f5a580bf6556faa59",
+            "comment": "Fix memory leak in makeStyles by counting references"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d02a316b5de5ca273dc39ee101208a70412264bb",
+            "comment": "add focus styles to DocumentCardTitle"
+          }
+        ],
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "7d300d21963cd2530522b14ef0b931bdfde86f12",
+            "comment": "DocumentCard: parent container is no longer focusable and now has role=group to improve a11y experience"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Apr 2022 07:36:48 GMT",
+      "tag": "@fluentui/react_v8.66.2",
+      "version": "8.66.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "14bee91b201e71123a60558f983be2398262fb44",
+            "comment": "update contextmenu to focus submenu containers on click or hover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Apr 2022 07:39:22 GMT",
+      "tag": "@fluentui/react_v8.66.1",
+      "version": "8.66.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "nsavas@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5f759e690f7899c5d85f8ae5d42db482833c56a9",
+            "comment": "Fix issue where focus outline was not showing for toggle button in IE11"
+          },
+          {
+            "author": "15898297@qq.com",
+            "package": "@fluentui/react",
+            "commit": "6da8d2a907c97f4eb2bb1fe09569720f42247bd3",
+            "comment": "icon of group header is not shrink"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d3afef1cf098b14e3ca9bd87f4b724e68ddbcc04",
+            "comment": "Moves onScroll method on ScrollablePane from root to container"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Apr 2022 21:39:15 GMT",
+      "tag": "@fluentui/react_v8.66.0",
+      "version": "8.66.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0c99bdfe1edab478a10b570ba39e045e787f7951",
+            "comment": "add dismissMenu prop to Dropdown"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.3.2",
+            "commit": "959aac722b7a9a4d8d4240e1235dde4694eb3c2d"
+          }
+        ],
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react",
+            "commit": "6e2669cea6ccca3ddcefc83b07a46bcaa90fcd72",
+            "comment": "Adding neutralSecondaryAlt to Theming designer and 'dedeprecating' it from Fabric slots."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Apr 2022 07:38:03 GMT",
+      "tag": "@fluentui/react_v8.65.1",
+      "version": "8.65.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "404cb69951ad07364a933c39b58ffa33593cf698",
+            "comment": "Fixed onRenderOption docs to note that regular AND header types are affected"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "dea5b27d1cb4892ee6a13d716a1cee232b7e39d9",
+            "comment": "Panel: fix extra margin when custom navigation is used"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "fb4d1d2e75a0b1c3bae7ab4ca7e91e5ed0400d0d",
+            "comment": "Nav: Remove duplicative active focus styles from chevron"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6862321040d52855fd2c599a9e6d47641f341fe5",
+            "comment": "ContextualMenu: Fix high contrast colors"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Apr 2022 07:42:46 GMT",
+      "tag": "@fluentui/react_v8.65.0",
+      "version": "8.65.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "8ae039c29850b41be8c05ab0b54c0d4f1a340c3f",
+            "comment": "fix ariaLabel and ariaLabelForGrid weirdness, add deprecation warning for shouldApplyApplicationRole"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.6",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.3.1",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/merge-styles to v8.5.1",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.5.7",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.5.4",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.6.6",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.5",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.8.2",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.0.38",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.18",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          }
+        ],
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react",
+            "commit": "86be45416513c32f337befeadb2b87824741da01",
+            "comment": "Fixing onScrollToItem in ComboBox by using the getPendingSelectedIndex instead of checking state."
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react",
+            "commit": "3b50ece88a35b82d58d4eb4f9e8696e6dec14d55",
+            "comment": "Updating TeachingBubble to follow best practices, with primary action being on the left and secondary action on the right"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028",
+            "comment": "ContextualMenu: Focus container by default when opened by click event."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "58f11e7dec3dcc35951ba18eafbf2af6259f4724",
+            "comment": "Fixed Dialogs ability to be draggable"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1417c1790348258906b1849938ce2bc896bfe1d0",
+            "comment": "Fix makestyles to re-register styles for objects upon theme change, and fix memory leak where we keep copy of window"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Apr 2022 07:38:09 GMT",
+      "tag": "@fluentui/react_v8.64.4",
+      "version": "8.64.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4db219d06e9450976364a3f8af4109ae48320237",
+            "comment": "Moved focus pivot styles to only effect links not in overflow"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b55bed7eaecbe1859164bc05d24d979cc0e9b212",
+            "comment": "Dropdown: Fixing issue where, if previous/next tabbable element is inside FocusZone then tabbing with Dropdown open will skip it."
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react",
+            "commit": "df18b862d5f9cd3bd1780b3cc6a44b4f7c9fda19",
+            "comment": "Added onScroll callback for calloutProps in ComboBox."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Apr 2022 07:39:33 GMT",
       "tag": "@fluentui/react_v8.64.3",
       "version": "8.64.3",

@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Fri, 04 Mar 2022 05:17:38 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Apr 2022 09:32:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-rc.7)
+
+Mon, 25 Apr 2022 09:32:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-rc.6..@fluentui/react-portal_v9.0.0-rc.7)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-rc.7 ([PR #22601](https://github.com/microsoft/fluentui/pull/22601) by beachball)
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-rc.6)
+
+Tue, 19 Apr 2022 19:16:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-rc.5..@fluentui/react-portal_v9.0.0-rc.6)
+
+### Changes
+
+- update `mountNode` types to accept HTMLElement ([PR #22153](https://github.com/microsoft/fluentui/pull/22153) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.5 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-rc.5)
 
