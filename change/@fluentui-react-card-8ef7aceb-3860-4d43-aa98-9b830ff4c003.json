@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Added new focusable property to control the focus behavior inside of the component",
+  "comment": "Added new `focusMode` property to control the focus behavior inside of the component",
   "packageName": "@fluentui/react-card",
   "email": "39736248+andrefcdias@users.noreply.github.com",
   "dependentChangeType": "patch"
