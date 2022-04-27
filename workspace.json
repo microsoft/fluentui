@@ -502,9 +502,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-popover": {
-      "root": "packages/react-popover",
+      "root": "packages/react-components/react-popover",
       "projectType": "library",
-      "sourceRoot": "packages/react-popover/src",
+      "sourceRoot": "packages/react-components/react-popover/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
