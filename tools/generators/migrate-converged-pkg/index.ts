@@ -135,7 +135,7 @@ const templates = {
   apiExtractorLocal: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
     extends: './api-extractor.json',
-    mainEntryPointFilePath: '<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts',
+    mainEntryPointFilePath: '<projectFolder>/dist/packages/react-components/<unscopedPackageName>/src/index.d.ts',
   },
   apiExtractor: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
@@ -514,7 +514,7 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
   /* eslint-disable @fluentui/max-len */
   const scripts = {
     docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
+    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/${options.normalizedPkgName}/src && yarn docs`,
     storybook: 'node ../../../scripts/storybook/runner',
     start: 'yarn storybook',
     test: 'jest --passWithNoTests',

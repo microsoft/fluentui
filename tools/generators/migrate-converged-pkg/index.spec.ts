@@ -762,7 +762,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.scripts).toEqual({
         docs: 'api-extractor run --config=config/api-extractor.local.json --local',
         // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-dummy/src && yarn docs`,
+        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-dummy/src && yarn docs`,
         build: 'just-scripts build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
@@ -804,7 +804,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.scripts).toEqual({
         build: 'just-scripts build',
         // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/babel-make-styles/src && yarn docs`,
+        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/babel-make-styles/src && yarn docs`,
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
         docs: 'api-extractor run --config=config/api-extractor.local.json --local',
