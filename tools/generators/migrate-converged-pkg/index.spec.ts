@@ -233,7 +233,7 @@ describe('migrate-converged-pkg generator', () => {
       const tsConfigTest = getTsConfig.test();
 
       expect(tsConfigMain).toEqual({
-        extends: '../../tsconfig.base.json',
+        extends: '../../../tsconfig.base.json',
         compilerOptions: {
           importHelpers: true,
           isolatedModules: true,
@@ -420,7 +420,7 @@ describe('migrate-converged-pkg generator', () => {
         */
         module.exports = {
         displayName: 'react-dummy',
-        preset: '../../jest.preset.js',
+        preset: '../../../jest.preset.js',
         globals: {
         'ts-jest': {
         tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -554,9 +554,9 @@ describe('migrate-converged-pkg generator', () => {
       );
 
       expect(tree.read(`${projectStorybookConfigPath}/main.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "const rootMain = require('../../../.storybook/main');
+        "const rootMain = require('../../../../.storybook/main');
 
-        module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+        module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
         stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
@@ -571,7 +571,7 @@ describe('migrate-converged-pkg generator', () => {
       `);
 
       expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "import * as rootPreview from '../../../.storybook/preview';
+        "import * as rootPreview from '../../../../.storybook/preview';
 
         /** @type {typeof rootPreview.decorators} */
         export const decorators = [...rootPreview.decorators];
@@ -762,14 +762,14 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.scripts).toEqual({
         docs: 'api-extractor run --config=config/api-extractor.local.json --local',
         // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-dummy/src && yarn docs`,
+        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-dummy/src && yarn docs`,
         build: 'just-scripts build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
         just: 'just-scripts',
         lint: 'just-scripts lint',
         start: 'yarn storybook',
-        storybook: 'node ../../scripts/storybook/runner',
+        storybook: 'node ../../../scripts/storybook/runner',
         test: 'jest --passWithNoTests',
         'type-check': 'tsc -b tsconfig.json',
       });
@@ -804,7 +804,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.scripts).toEqual({
         build: 'just-scripts build',
         // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/babel-make-styles/src && yarn docs`,
+        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/babel-make-styles/src && yarn docs`,
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
         docs: 'api-extractor run --config=config/api-extractor.local.json --local',
