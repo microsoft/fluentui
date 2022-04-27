@@ -3,6 +3,7 @@ import { access, readFileSync } from 'fs';
 import { execSync } from 'child_process';
 import fetch from 'node-fetch';
 import { EpicGeneratorSchema } from './schema';
+import { isPackageConverged } from '../../utils';
 
 function validateSchema(schema: EpicGeneratorSchema): Required<EpicGeneratorSchema> {
   if (schema.repository !== undefined && !schema.repository.match(/[A-z-]+\/[A-z-]+/)) {
@@ -52,7 +53,7 @@ const getConvergedPackages = (tree: Tree) => {
 
   let convergedPackages: Package[] = [];
   projects.forEach((project, key) => {
-    if (project.projectType === 'library' && project.tags?.some(tag => tag === 'vNext')) {
+    if (project.projectType === 'library' && isPackageConverged(tree, project)) {
       convergedPackages.push({
         name: key,
         folder: project.root,
