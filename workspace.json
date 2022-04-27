@@ -465,9 +465,9 @@
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-menu": {
-      "root": "packages/react-menu",
+      "root": "packages/react-components/react-menu",
       "projectType": "library",
-      "sourceRoot": "packages/react-menu/src",
+      "sourceRoot": "packages/react-components/react-menu/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -502,16 +502,16 @@
       "implicitDependencies": []
     },
     "@fluentui/react-popover": {
-      "root": "packages/react-popover",
+      "root": "packages/react-components/react-popover",
       "projectType": "library",
-      "sourceRoot": "packages/react-popover/src",
+      "sourceRoot": "packages/react-components/react-popover/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-portal": {
-      "root": "packages/react-portal",
+      "root": "packages/react-components/react-portal",
       "projectType": "library",
-      "sourceRoot": "packages/react-portal/src",
+      "sourceRoot": "packages/react-components/react-portal/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },

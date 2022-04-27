@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "react-menu: Move to new common folder.",
+  "packageName": "@fluentui/react-menu",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}
