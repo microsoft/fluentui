@@ -465,9 +465,9 @@
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-menu": {
-      "root": "packages/react-menu",
+      "root": "packages/react-components/react-menu",
       "projectType": "library",
-      "sourceRoot": "packages/react-menu/src",
+      "sourceRoot": "packages/react-components/react-menu/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
