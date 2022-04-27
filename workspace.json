@@ -509,9 +509,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-portal": {
-      "root": "packages/react-portal",
+      "root": "packages/react-components/react-portal",
       "projectType": "library",
-      "sourceRoot": "packages/react-portal/src",
+      "sourceRoot": "packages/react-components/react-portal/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },

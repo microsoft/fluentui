@@ -147,7 +147,7 @@ packages/react-label @microsoft/cxe-red
 packages/react-link @microsoft/cxe-red @khmakoto @microsoft/cxe-coastal
 packages/react-components/react-menu @microsoft/teams-prg
 packages/react-components/react-popover @microsoft/teams-prg
-packages/react-portal @microsoft/teams-prg
+packages/react-components/react-portal @microsoft/teams-prg
 packages/react-provider @microsoft/teams-prg
 packages/react-radio @microsoft/cxe-red
 packages/react-select @microsoft/cxe-coastal @smhigley
