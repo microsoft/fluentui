@@ -169,9 +169,10 @@ function updateApiExtractor(tree: Tree, schema: MovePackagesGeneratorSchema) {
   const apiExtractorLocalPath = joinPathFragments(projectConfig.paths.configRoot, 'api-extractor.local.json');
   const apiExtractorLocal = readJson(tree, apiExtractorLocalPath);
   const originalEntryPointPath = apiExtractorLocal.mainEntryPointFilePath;
+  const normalizeFolderDestination = schema.destination.split('/').slice(0, -1);
   const updatedEntryPointPath = originalEntryPointPath.replace(
     'packages/<unscopedPackageName>',
-    `packages/${schema.destination}/<unscopedPackageName>`,
+    `packages/${normalizeFolderDestination}/<unscopedPackageName>`,
   );
   apiExtractorLocal.mainEntryPointFilePath = updatedEntryPointPath;
 

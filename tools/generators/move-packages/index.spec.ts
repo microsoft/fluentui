@@ -12,6 +12,8 @@ import {
   joinPathFragments,
   ProjectConfiguration,
   readJson,
+  updateJson,
+  NxJsonConfiguration,
 } from '@nrwl/devkit';
 
 import generator from './index';
@@ -38,20 +40,13 @@ describe('move-packages generator', () => {
 
     setupCodeowners(tree, { content: `packages/test @dummyOwner` });
 
-    const nxJsonConfig = {
-      npmScope: 'proj',
-      affected: { defaultBase: 'main' },
-      tasksRunnerOptions: {
-        default: {
-          runner: '@nrwl/workspace/tasks-runners/default',
-          options: { cacheableOperations: ['build', 'lint', 'test', 'e2e'] },
-        },
-      },
-      workspaceLayout: {
+    updateJson(tree, '/nx.json', (json: NxJsonConfiguration) => {
+      json.workspaceLayout = {
+        appsDir: 'apps',
         libsDir: 'packages',
-      },
-    };
-    tree.write(`nx.json`, serializeJson(nxJsonConfig));
+      };
+      return json;
+    });
 
     tree = setupDummyPackage(tree, {
       ...options,
@@ -155,6 +150,7 @@ describe('move-packages generator', () => {
       expect(codeOwnersFile.indexOf(oldOwnerDeclaration) !== -1).toBeFalsy();
       expect(codeOwnersFile.indexOf(newOwnerDeclaration) !== -1).toBeTruthy();
     });
+
     it(`should update api-extractor.local.json`, async () => {
       let project = getProjects(tree).get(options.name) as ProjectConfiguration;
       let apiExtractorLocalPath = joinPathFragments(project.root, 'config/api-extractor.local.json');
@@ -179,7 +175,7 @@ describe('move-packages generator', () => {
         Object {
           "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
           "extends": "./api-extractor.json",
-          "mainEntryPointFilePath": "<projectFolder>/dist/packages/testFolder/test/<unscopedPackageName>/src/index.d.ts",
+          "mainEntryPointFilePath": "<projectFolder>/dist/packages/testFolder/<unscopedPackageName>/src/index.d.ts",
         }
       `);
       /* eslint-enable @fluentui/max-len */
