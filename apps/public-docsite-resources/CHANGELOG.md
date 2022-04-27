@@ -1,8 +1,21 @@
 # Change Log - @fluentui/public-docsite-resources
 
-This log was last generated on Mon, 25 Apr 2022 07:37:25 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Apr 2022 07:43:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Wed, 27 Apr 2022 07:43:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.67.1 ([PR #22642](https://github.com/microsoft/fluentui/pull/22642) by beachball)
+- Bump @fluentui/azure-themes to v8.2.27 ([PR #22642](https://github.com/microsoft/fluentui/pull/22642) by beachball)
+- Bump @fluentui/react-docsite-components to v8.7.10 ([PR #22642](https://github.com/microsoft/fluentui/pull/22642) by beachball)
+- Bump @fluentui/theme-samples to v8.4.27 ([PR #22642](https://github.com/microsoft/fluentui/pull/22642) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.4.7 ([PR #22642](https://github.com/microsoft/fluentui/pull/22642) by beachball)
 
 ## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
 

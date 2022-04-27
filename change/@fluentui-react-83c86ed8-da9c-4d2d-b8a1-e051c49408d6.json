@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix screen reader issues on calendar navigation buttons and combobox",
-  "packageName": "@fluentui/react",
-  "email": "conniechen@microsoft.com",
-  "dependentChangeType": "patch"
-}

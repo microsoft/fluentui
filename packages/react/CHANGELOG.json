@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 27 Apr 2022 07:43:07 GMT",
+      "tag": "@fluentui/react_v8.67.1",
+      "version": "8.67.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4a2a7dd5dc733cd2db4c868ef5272818c0b735cd",
+            "comment": "Fix HCM disabled checkmarks"
+          },
+          {
+            "author": "conniechen@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "04699539cd875348d5fa357e0b01a56e461138ae",
+            "comment": "fix screen reader issues on calendar navigation buttons and combobox"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "9845fe2750b801da0741adb167ca66e396804486",
+            "comment": "change ie11 fix from star selector to span to avoid perf issues"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Apr 2022 07:37:24 GMT",
       "tag": "@fluentui/react_v8.67.0",
       "version": "8.67.0",
