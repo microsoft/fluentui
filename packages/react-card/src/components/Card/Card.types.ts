@@ -10,13 +10,13 @@ export type CardCommons = {
   /**
    * Sets the focus behavior for the card. If `true`, the card will use the `noTab` focus behavior.
    *
-   * `noTab`
+   * `no-tab`
    * This behaviour traps the focus inside of the Card when pressing the Enter key and will only release focus when pressing the Escape key.
    *
-   * `tabExit`
+   * `tab-exit`
    * This behaviour traps the focus inside of the Card when pressing the Enter key but will release focus when pressing the Tab key on the last inner element.
    *
-   * `tabOnly`
+   * `tab-only`
    * This behaviour will cycle through all elements inside of the Card when pressing the Tab key and then release focus after the last inner element.
    *
    * @defaultvalue false
