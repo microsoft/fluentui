@@ -1,7 +1,6 @@
 import { getProjects, stripIndents, Tree } from '@nrwl/devkit';
-import { access, readFileSync } from 'fs';
+import { readFileSync } from 'fs';
 import { execSync } from 'child_process';
-import fetch from 'node-fetch';
 import { EpicGeneratorSchema } from './schema';
 import { isPackageConverged } from '../../utils';
 
