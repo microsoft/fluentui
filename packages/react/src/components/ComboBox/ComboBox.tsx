@@ -614,7 +614,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           shouldSelectFullInputValueInComponentDidUpdate={
             this._onShouldSelectFullInputValueInAutofillComponentDidUpdate
           }
-          title={title ? title : this._currentVisibleValue}
+          title={title}
           preventValueSelection={!this._hasFocus()}
           placeholder={placeholder}
           tabIndex={disabled ? -1 : tabIndex}
