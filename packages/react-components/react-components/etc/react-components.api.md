@@ -246,6 +246,9 @@ import { PopoverTriggerState } from '@fluentui/react-popover';
 import { Portal } from '@fluentui/react-portal';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
+import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningShorthand } from '@fluentui/react-positioning';
+import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { presenceBadgeClassName } from '@fluentui/react-badge';
 import { presenceBadgeClassNames } from '@fluentui/react-badge';
@@ -934,6 +937,12 @@ export { Portal }
 export { PortalProps }
 
 export { PortalState }
+
+export { PositioningProps }
+
+export { PositioningShorthand }
+
+export { PositioningShorthandValue }
 
 export { PresenceBadge }
 
