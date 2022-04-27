@@ -112,7 +112,7 @@ Card goes for a more structural and generic approach to a card component and is 
 | selected    | boolean                                                                              | false      | Set to `true` if card is selected                                                |
 | expandable  | boolean                                                                              | false      | Allow card to expand to show whole content                                       |
 | disabled    | boolean                                                                              | false      | Makes the card and card selection disabled (not propagated to children)          |
-| focusMode   | 'off' \| 'no-tab' \| 'tab-exit' \| 'tab-only'                                        | 'off'      | Sets the focus behavior for the card.                                            |
+| focusMode   | `off`, `no-tab`, `tab-exit`, `tab-only`                                              | `off`      | Sets the focus behavior for the card.                                            |
 
 #### `scale` property
 
