@@ -135,7 +135,7 @@ const templates = {
   apiExtractorLocal: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
     extends: './api-extractor.json',
-    mainEntryPointFilePath: '<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts',
+    mainEntryPointFilePath: '<projectFolder>/dist/packages/react-components/<unscopedPackageName>/src/index.d.ts',
   },
   apiExtractor: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
@@ -145,7 +145,7 @@ const templates = {
     return {
       main: () => {
         const tsConfig = {
-          extends: '../../tsconfig.base.json',
+          extends: '../../../tsconfig.base.json',
           compilerOptions: {
             target: 'ES2019',
             // by default we gonna use tsc for type checking only
@@ -253,7 +253,7 @@ const templates = {
       */
       module.exports = {
         displayName: '${options.pkgName}',
-        preset: '../../jest.preset.js',
+        preset: '../../../jest.preset.js',
         globals: {
           'ts-jest': {
             tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -270,9 +270,9 @@ const templates = {
   `,
   storybook: {
     main: stripIndents`
-      const rootMain = require('../../../.storybook/main');
+      const rootMain = require('../../../../.storybook/main');
 
-      module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+      module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
         stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
@@ -286,7 +286,7 @@ const templates = {
       });
     `,
     preview: stripIndents`
-      import * as rootPreview from '../../../.storybook/preview';
+      import * as rootPreview from '../../../../.storybook/preview';
 
       /** @type {typeof rootPreview.decorators} */
       export const decorators = [...rootPreview.decorators];
@@ -514,8 +514,8 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
   /* eslint-disable @fluentui/max-len */
   const scripts = {
     docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
-    storybook: 'node ../../scripts/storybook/runner',
+    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/${options.normalizedPkgName}/src && yarn docs`,
+    storybook: 'node ../../../scripts/storybook/runner',
     start: 'yarn storybook',
     test: 'jest --passWithNoTests',
     'type-check': 'tsc -b tsconfig.json',
