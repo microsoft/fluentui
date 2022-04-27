@@ -14,7 +14,6 @@
   "scripts": {
     "build": "just-scripts build",
     "bundle-size": "bundle-size measure",
-    "chromatic": "npx chromatic@6.4.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -23,8 +22,6 @@
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-components/src && yarn docs",
     "storybook": "node ../../../scripts/storybook/runner --port 3000 -s ./public --no-manager-cache",
-    "storybook:docs": "yarn storybook --docs",
-    "build-storybook": "build-storybook -s ./public -o ./dist/storybook --docs",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json"
   },
