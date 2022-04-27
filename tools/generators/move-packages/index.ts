@@ -1,6 +1,14 @@
-import { Tree, formatFiles, joinPathFragments, updateJson, ProjectConfiguration } from '@nrwl/devkit';
+import {
+  Tree,
+  formatFiles,
+  joinPathFragments,
+  updateJson,
+  ProjectConfiguration,
+  readJson,
+  writeJson,
+} from '@nrwl/devkit';
 import { moveGenerator } from '@nrwl/workspace/generators';
-import { getProjects, hasSchemaFlag, isPackageConverged, isV8Package } from '../../utils';
+import { getProjectConfig, getProjects, hasSchemaFlag, isPackageConverged, isV8Package } from '../../utils';
 
 import { MovePackagesGeneratorSchema } from './schema';
 
@@ -69,6 +77,7 @@ function movePackage(tree: Tree, schema: MovePackagesGeneratorSchema) {
   // the package name with a new name based on the "destination" flag. This check
   // reverts the changes it makes.
   updateReadMe(tree, schema);
+  updateApiExtractor(tree, schema);
   updateStorybookTypeImport(tree, schema);
   updateCodeOwners(tree, schema);
 }
@@ -153,4 +162,18 @@ function updateCodeOwners(tree: Tree, schema: MovePackagesGeneratorSchema) {
     const updatedCodeOwnersFile = codeOwnersFile.replace(pkgName, destination);
     tree.write(codeownersPath, updatedCodeOwnersFile);
   }
+}
+
+function updateApiExtractor(tree: Tree, schema: MovePackagesGeneratorSchema) {
+  const projectConfig = getProjectConfig(tree, { packageName: schema.name! });
+  const apiExtractorLocalPath = joinPathFragments(projectConfig.paths.configRoot, 'api-extractor.local.json');
+  const apiExtractorLocal = readJson(tree, apiExtractorLocalPath);
+  const originalEntryPointPath = apiExtractorLocal.mainEntryPointFilePath;
+  const updatedEntryPointPath = originalEntryPointPath.replace(
+    'packages/<unscopedPackageName>',
+    `packages/${schema.destination}/<unscopedPackageName>`,
+  );
+  apiExtractorLocal.mainEntryPointFilePath = updatedEntryPointPath;
+
+  writeJson(tree, apiExtractorLocalPath, apiExtractorLocal);
 }
