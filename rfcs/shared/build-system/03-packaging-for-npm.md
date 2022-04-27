@@ -118,6 +118,7 @@ e2e/
 etc/
 node_modules/
 src/
+dist/types
 temp/
 __fixtures__
 __mocks__
@@ -229,13 +230,14 @@ New build output structure will look like following:
 
 ```sh
 |- <package-name>/
+|-  dist/
+|-  |-  index.d.ts  # rolluped declaration file
 |-  lib/  # module: ESNext
 |-  |- *.js
 |-  |- *.map.js
 |-  lib-commonjs/ # module: CommonJS
 |-  |- *.js
 |-  |- *.map.js
-|-  index.d.ts  # rolluped declaration file
 |-  package.json
 ```
 
