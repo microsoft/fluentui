@@ -143,6 +143,10 @@ export const workspacePaths = {
 
 export type UserLog = Array<{ type: keyof typeof logger; message: string }>;
 export function printUserLogs(logs: UserLog) {
+  if (logs.length === 0) {
+    return;
+  }
+
   logger.log(`${'='.repeat(80)}\n`);
 
   logs.forEach(log => logger[log.type](log.message));
