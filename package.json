@@ -24,7 +24,6 @@
     "check:modified-files": "yarn workspace @fluentui/scripts just check-for-modified-files",
     "check:affected-package": "node ./scripts/monorepo/checkIfPackagesAffected.js",
     "check:installed-dependencies-versions": "satisfied --skip-invalid --ignore \"prettier|angular|lit|sass|@storybook/web-components|@storybook/html|svelte|@testing-library|vue|@cypress/react\"",
-    "chromatic": "cd apps/public-docsite-v9 && yarn chromatic",
     "clean": "lage clean --verbose",
     "code-style": "lage code-style --verbose",
     "codepen": "cd packages/react && node ../../scripts/local-codepen.js",
