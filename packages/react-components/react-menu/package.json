@@ -13,7 +13,7 @@
   "license": "MIT",
   "scripts": {
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-menu/src && yarn docs",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-menu/src && yarn docs",
     "build": "just-scripts build",
     "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
