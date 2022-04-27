@@ -70,6 +70,7 @@ function movePackage(tree: Tree, schema: MovePackagesGeneratorSchema) {
   // reverts the changes it makes.
   updateReadMe(tree, schema);
   updateStorybookTypeImport(tree, schema);
+  updateBuildLocalScript(tree, schema);
   updateCodeOwners(tree, schema);
 }
 
@@ -142,7 +143,7 @@ function updateStorybookTypeImport(tree: Tree, schema: MovePackagesGeneratorSche
 function updateCodeOwners(tree: Tree, schema: MovePackagesGeneratorSchema) {
   const { name, destination } = schema;
   if (name) {
-    const pkgName = name.split('/')[1];
+    const pkgName = name.split('/').slice(-1).join('/');
     const codeownersPath = joinPathFragments('/.github', 'CODEOWNERS');
 
     if (!tree.exists(codeownersPath)) {
@@ -152,5 +153,20 @@ function updateCodeOwners(tree: Tree, schema: MovePackagesGeneratorSchema) {
     const codeOwnersFile = tree.read(codeownersPath, 'utf8') as string;
     const updatedCodeOwnersFile = codeOwnersFile.replace(pkgName, destination);
     tree.write(codeownersPath, updatedCodeOwnersFile);
+  }
+}
+
+function updateBuildLocalScript(tree: Tree, schema: MovePackagesGeneratorSchema) {
+  const { name, destination } = schema;
+  if (name) {
+    const project = getProjects(tree).get(name) as ProjectConfiguration;
+    const pkgName = name.split('/').slice(-1).join('/');
+    const pkgJsonPath = joinPathFragments(project.root, 'package.json');
+    updateJson(tree, pkgJsonPath, json => {
+      const originalScript = json.scripts['build:local'];
+      const updatedScript = originalScript.replace(pkgName, destination);
+      json.scripts['build:local'] = updatedScript;
+      return json;
+    });
   }
 }
