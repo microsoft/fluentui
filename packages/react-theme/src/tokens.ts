@@ -760,7 +760,7 @@ export const tokens: Record<keyof Theme, string> = {
   spacingHorizontalL: 'var(--spacingHorizontalL)',
   spacingHorizontalXL: 'var(--spacingHorizontalXL)',
   spacingHorizontalXXL: 'var(--spacingHorizontalXXL)',
-  spacingHorizontalXXXl: 'var(--spacingHorizontalXXXl)',
+  spacingHorizontalXXXL: 'var(--spacingHorizontalXXXL)',
 
   spacingVerticalNone: 'var(--spacingVerticalNone)',
   spacingVerticalXXS: 'var(--spacingVerticalXXS)',
@@ -772,7 +772,7 @@ export const tokens: Record<keyof Theme, string> = {
   spacingVerticalL: 'var(--spacingVerticalL)',
   spacingVerticalXL: 'var(--spacingVerticalXL)',
   spacingVerticalXXL: 'var(--spacingVerticalXXL)',
-  spacingVerticalXXXl: 'var(--spacingVerticalXXXl)',
+  spacingVerticalXXXL: 'var(--spacingVerticalXXXL)',
 
   // Durations
   durationUltraFast: 'var(--durationUltraFast)',

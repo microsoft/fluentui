@@ -941,7 +941,7 @@ export type HorizontalSpacingTokens = {
   spacingHorizontalL: string;
   spacingHorizontalXL: string;
   spacingHorizontalXXL: string;
-  spacingHorizontalXXXl: string;
+  spacingHorizontalXXXL: string;
 };
 
 export type VerticalSpacingTokens = {
@@ -955,7 +955,7 @@ export type VerticalSpacingTokens = {
   spacingVerticalL: string;
   spacingVerticalXL: string;
   spacingVerticalXXL: string;
-  spacingVerticalXXXl: string;
+  spacingVerticalXXXL: string;
 };
 
 export type DurationTokens = {

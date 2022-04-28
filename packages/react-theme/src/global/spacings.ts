@@ -25,7 +25,7 @@ export const horizontalSpacings: HorizontalSpacingTokens = {
   spacingHorizontalL: spacings.l,
   spacingHorizontalXL: spacings.xl,
   spacingHorizontalXXL: spacings.xxl,
-  spacingHorizontalXXXl: spacings.xxxl,
+  spacingHorizontalXXXL: spacings.xxxl,
 };
 
 export const verticalSpacings: VerticalSpacingTokens = {
@@ -39,5 +39,5 @@ export const verticalSpacings: VerticalSpacingTokens = {
   spacingVerticalL: spacings.l,
   spacingVerticalXL: spacings.xl,
   spacingVerticalXXL: spacings.xxl,
-  spacingVerticalXXXl: spacings.xxxl,
+  spacingVerticalXXXL: spacings.xxxl,
 };
