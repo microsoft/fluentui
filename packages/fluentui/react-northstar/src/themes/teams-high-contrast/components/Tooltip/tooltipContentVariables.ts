@@ -1,3 +1,4 @@
+import { pxToRem } from '../../../../utils';
 import { TooltipContentVariables } from '../../../teams/components/Tooltip/tooltipContentVariables';
 
 export const tooltipContentVariables = (siteVars): Partial<TooltipContentVariables> => ({
@@ -8,4 +9,8 @@ export const tooltipContentVariables = (siteVars): Partial<TooltipContentVariabl
   borderStyle: 'solid',
   subtleBackgroundColor: siteVars.colors.black,
   subtleForegroundColor: siteVars.colors.white,
+  svgPointer: false,
+  pointerMargin: pxToRem(10),
+  pointerHeight: pxToRem(7),
+  pointerWidth: pxToRem(14),
 });

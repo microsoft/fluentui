@@ -43,7 +43,7 @@ export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentSty
 
       placement: p.basePlacement,
       rtl,
-      svg: pointerSvgUrl(p.subtle ? v.subtleBackgroundColor : v.backgroundColor),
+      svg: v.svgPointer ? pointerSvgUrl(p.subtle ? v.subtleBackgroundColor : v.backgroundColor) : undefined,
     }),
   }),
   content: ({ props: p, variables: v }): ICSSInJSStyle => ({

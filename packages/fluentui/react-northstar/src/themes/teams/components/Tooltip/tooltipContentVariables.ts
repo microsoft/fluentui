@@ -11,6 +11,7 @@ export interface TooltipContentVariables {
 
   maxWidth: string;
 
+  svgPointer: boolean;
   pointerMargin: string;
   pointerGap: string;
   pointerWidth: string;
@@ -37,6 +38,7 @@ export const tooltipContentVariables = (siteVars: any): TooltipContentVariables 
 
   maxWidth: pxToRem(246),
 
+  svgPointer: true,
   pointerMargin: pxToRem(6),
   pointerGap: pxToRem(5),
   pointerWidth: pxToRem(16),
