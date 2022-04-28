@@ -6,7 +6,7 @@ This log was last generated on Mon, 25 Apr 2022 09:32:19 GMT and should not be m
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v9.0.0-rc.1)
 
-Mon, 25 Apr 2022 09:32:19 GMT 
+Mon, 25 Apr 2022 09:32:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v9.0.0-rc.1..@fluentui/react-storybook-addon_v9.0.0-rc.1)
 
 ### Changes
@@ -15,7 +15,7 @@ Mon, 25 Apr 2022 09:32:19 GMT
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v9.0.0-rc.1)
 
-Tue, 19 Apr 2022 19:17:29 GMT 
+Tue, 19 Apr 2022 19:17:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v9.0.0-rc.1..@fluentui/react-storybook-addon_v9.0.0-rc.1)
 
 ### Changes
@@ -25,7 +25,7 @@ Tue, 19 Apr 2022 19:17:29 GMT
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v9.0.0-rc.1)
 
-Fri, 04 Mar 2022 05:17:40 GMT 
+Fri, 04 Mar 2022 05:17:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v9.0.0-rc.1..@fluentui/react-storybook-addon_v9.0.0-rc.1)
 
 ### Changes
@@ -35,7 +35,7 @@ Fri, 04 Mar 2022 05:17:40 GMT
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v9.0.0-rc.1)
 
-Tue, 01 Mar 2022 02:17:40 GMT 
+Tue, 01 Mar 2022 02:17:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v9.0.0-rc.1..@fluentui/react-storybook-addon_v9.0.0-rc.1)
 
 ### Changes
@@ -44,7 +44,7 @@ Tue, 01 Mar 2022 02:17:40 GMT
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v9.0.0-rc.1)
 
-Fri, 18 Feb 2022 13:35:38 GMT 
+Fri, 18 Feb 2022 13:35:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v9.0.0-rc.0..@fluentui/react-storybook-addon_v9.0.0-rc.1)
 
 ### Changes
@@ -54,7 +54,7 @@ Fri, 18 Feb 2022 13:35:38 GMT
 
 ## [9.0.0-rc.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v9.0.0-rc.0)
 
-Thu, 10 Feb 2022 08:52:26 GMT 
+Thu, 10 Feb 2022 08:52:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v9.0.0-beta.0..@fluentui/react-storybook-addon_v9.0.0-rc.0)
 
 ### Changes
@@ -64,7 +64,7 @@ Thu, 10 Feb 2022 08:52:26 GMT
 
 ## [9.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v9.0.0-beta.0)
 
-Thu, 25 Nov 2021 08:34:17 GMT 
+Thu, 25 Nov 2021 08:34:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v9.0.0-beta.0..@fluentui/react-storybook-addon_v9.0.0-beta.0)
 
 ### Changes
@@ -74,7 +74,7 @@ Thu, 25 Nov 2021 08:34:17 GMT
 
 ## [9.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v9.0.0-beta.0)
 
-Fri, 12 Nov 2021 13:25:34 GMT 
+Fri, 12 Nov 2021 13:25:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v9.0.0-alpha.0..@fluentui/react-storybook-addon_v9.0.0-beta.0)
 
 ### Changes

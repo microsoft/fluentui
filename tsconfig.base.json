@@ -52,7 +52,7 @@
       "@fluentui/react-spinbutton": ["packages/react-spinbutton/src/index.ts"],
       "@fluentui/react-spinner": ["packages/react-spinner/src/index.ts"],
       "@fluentui/react-storybook": ["packages/react-components/react-storybook/src/index.ts"],
-      "@fluentui/react-storybook-addon": ["packages/react-storybook-addon/src/index.ts"],
+      "@fluentui/react-storybook-addon": ["packages/react-components/react-storybook-addon/src/index.ts"],
       "@fluentui/react-switch": ["packages/react-switch/src/index.ts"],
       "@fluentui/react-tabs": ["packages/react-components/react-tabs/src/index.ts"],
       "@fluentui/react-tabster": ["packages/react-tabster/src/index.ts"],

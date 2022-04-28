@@ -110,7 +110,7 @@ packages/react-positioning @microsoft/teams-prg
 packages/react-priority-overflow @microsoft/teams-prg
 packages/react-shared-contexts @microsoft/teams-prg
 packages/react-components/react-storybook @microsoft/cxe-prg @microsoft/teams-prg
-packages/react-storybook-addon @microsoft/cxe-prg
+packages/react-components/react-storybook-addon @microsoft/cxe-prg
 packages/react-tabster @microsoft/teams-prg
 packages/react-theme @microsoft/teams-prg
 packages/react-utilities @microsoft/teams-prg

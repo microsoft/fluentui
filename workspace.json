@@ -605,9 +605,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-storybook-addon": {
-      "root": "packages/react-storybook-addon",
+      "root": "packages/react-components/react-storybook-addon",
       "projectType": "library",
-      "sourceRoot": "packages/react-storybook-addon/src",
+      "sourceRoot": "packages/react-components/react-storybook-addon/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
