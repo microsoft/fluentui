@@ -437,9 +437,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-input": {
-      "root": "packages/react-input",
+      "root": "packages/react-components/react-input",
       "projectType": "library",
-      "sourceRoot": "packages/react-input/src",
+      "sourceRoot": "packages/react-components/react-input/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
