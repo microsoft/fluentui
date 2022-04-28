@@ -11,6 +11,9 @@ import {
   getProjects,
   joinPathFragments,
   ProjectConfiguration,
+  readJson,
+  updateJson,
+  NxJsonConfiguration,
 } from '@nrwl/devkit';
 
 import generator from './index';
@@ -23,11 +26,11 @@ const noop = () => null;
 
 describe('move-packages generator', () => {
   let tree: Tree;
-  const options: MovePackagesGeneratorSchema = {
+  const options = {
     name: '@proj/test',
     destination: 'testFolder/test',
     updateImportPath: false,
-  };
+  } as const;
 
   beforeEach(() => {
     jest.restoreAllMocks();
@@ -37,24 +40,17 @@ describe('move-packages generator', () => {
 
     setupCodeowners(tree, { content: `packages/test @dummyOwner` });
 
-    const nxJsonConfig = {
-      npmScope: 'proj',
-      affected: { defaultBase: 'main' },
-      tasksRunnerOptions: {
-        default: {
-          runner: '@nrwl/workspace/tasks-runners/default',
-          options: { cacheableOperations: ['build', 'lint', 'test', 'e2e'] },
-        },
-      },
-      workspaceLayout: {
+    updateJson(tree, '/nx.json', (json: NxJsonConfiguration) => {
+      json.workspaceLayout = {
+        appsDir: 'apps',
         libsDir: 'packages',
-      },
-    };
-    tree.write(`nx.json`, serializeJson(nxJsonConfig));
+      };
+      return json;
+    });
 
     tree = setupDummyPackage(tree, {
       ...options,
-      name: options.name!,
+      name: options.name,
       version: '9.0.0-alpha.0',
       dependencies: {
         '@proj/make-styles': '^9.0.0-alpha.1',
@@ -67,7 +63,7 @@ describe('move-packages generator', () => {
   describe('general', () => {
     it('should run successfully', async () => {
       await generator(tree, options);
-      const config = readProjectConfiguration(tree, options.name!);
+      const config = readProjectConfiguration(tree, options.name);
       expect(config).toBeDefined();
     });
 
@@ -127,7 +123,7 @@ describe('move-packages generator', () => {
     });
     it('should update storybook main.js module.exports type to the new relative path', async () => {
       const newPath = '../../../../.storybook/main';
-      let project = getProjects(tree).get(options.name as string) as ProjectConfiguration;
+      let project = getProjects(tree).get(options.name) as ProjectConfiguration;
       let storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
 
       let storybookMainJsFile = tree.read(storybookMainJsPath, 'utf8') as string;
@@ -135,7 +131,7 @@ describe('move-packages generator', () => {
 
       await generator(tree, options);
 
-      project = getProjects(tree).get(options.name as string) as ProjectConfiguration;
+      project = getProjects(tree).get(options.name) as ProjectConfiguration;
       storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
       storybookMainJsFile = tree.read(storybookMainJsPath, 'utf8') as string;
       expect(storybookMainJsFile.indexOf(newPath) !== -1).toBeTruthy();
@@ -154,6 +150,36 @@ describe('move-packages generator', () => {
       expect(codeOwnersFile.indexOf(oldOwnerDeclaration) !== -1).toBeFalsy();
       expect(codeOwnersFile.indexOf(newOwnerDeclaration) !== -1).toBeTruthy();
     });
+
+    it(`should update api-extractor.local.json`, async () => {
+      let project = getProjects(tree).get(options.name) as ProjectConfiguration;
+      let apiExtractorLocalPath = joinPathFragments(project.root, 'config/api-extractor.local.json');
+      let apiExtractorLocal = readJson(tree, apiExtractorLocalPath);
+
+      expect(apiExtractorLocal).toMatchInlineSnapshot(`
+        Object {
+          "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+          "extends": "./api-extractor.json",
+          "mainEntryPointFilePath": "<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts",
+        }
+      `);
+
+      await generator(tree, options);
+
+      project = getProjects(tree).get(options.name) as ProjectConfiguration;
+      apiExtractorLocalPath = joinPathFragments(project.root, 'config/api-extractor.local.json');
+
+      apiExtractorLocal = readJson(tree, apiExtractorLocalPath);
+      /* eslint-disable @fluentui/max-len */
+      expect(apiExtractorLocal).toMatchInlineSnapshot(`
+        Object {
+          "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+          "extends": "./api-extractor.json",
+          "mainEntryPointFilePath": "<projectFolder>/dist/packages/testFolder/<unscopedPackageName>/src/index.d.ts",
+        }
+      `);
+      /* eslint-enable @fluentui/max-len */
+    });
   });
 
   describe('--allConverged', () => {
@@ -166,7 +192,7 @@ describe('move-packages generator', () => {
 
     it(`should move all v9 packages in batch`, async () => {
       const projects = [
-        options.name!,
+        options.name,
         '@proj/react-foo',
         '@proj/react-bar',
         '@proj/react-moo',
@@ -193,7 +219,7 @@ describe('move-packages generator', () => {
 
     it(`should move all v8 packages in batch`, async () => {
       const projects = [
-        options.name!,
+        options.name,
         '@proj/react-foo',
         '@proj/react-bar',
         '@proj/react-moo',
@@ -277,6 +303,11 @@ function setupDummyPackage(
     babelConfig: {
       ...normalizedOptions.babelConfig,
     },
+    apiExtractorLocal: {
+      $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
+      extends: './api-extractor.json',
+      mainEntryPointFilePath: '<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts',
+    },
   };
 
   const tsConfigBase: TsConfig = parseJson(tree.read('tsconfig.base.json')!.toString('utf8')!);
@@ -318,6 +349,7 @@ function setupDummyPackage(
       });
       `,
   );
+  tree.write(`${paths.root}/config/api-extractor.local.json`, serializeJson(templates.apiExtractorLocal));
 
   addProjectConfiguration(tree, pkgName, {
     root: paths.root,
