@@ -150,7 +150,6 @@ describe('move-packages generator', () => {
       expect(codeOwnersFile.indexOf(oldOwnerDeclaration) !== -1).toBeFalsy();
       expect(codeOwnersFile.indexOf(newOwnerDeclaration) !== -1).toBeTruthy();
     });
-
     it(`should update api-extractor.local.json`, async () => {
       let project = getProjects(tree).get(options.name) as ProjectConfiguration;
       let apiExtractorLocalPath = joinPathFragments(project.root, 'config/api-extractor.local.json');
@@ -179,6 +178,27 @@ describe('move-packages generator', () => {
         }
       `);
       /* eslint-enable @fluentui/max-len */
+    });
+    it('should update the package.json build:local script with the new relative path', async () => {
+      let project = getProjects(tree).get(options.name as string) as ProjectConfiguration;
+      let packageJsonPath = joinPathFragments(project.root, 'package.json');
+      let packageJson = readJson(tree, packageJsonPath);
+
+      expect(packageJson.scripts['build:local']).toEqual(
+        // eslint-disable-next-line @fluentui/max-len
+        'tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/test/src && yarn docs',
+      );
+
+      await generator(tree, options);
+
+      project = getProjects(tree).get(options.name as string) as ProjectConfiguration;
+      packageJsonPath = joinPathFragments(project.root, 'package.json');
+      packageJson = readJson(tree, packageJsonPath);
+
+      expect(packageJson.scripts['build:local']).toEqual(
+        // eslint-disable-next-line @fluentui/max-len
+        `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/${options.destination}/src && yarn docs`,
+      );
     });
   });
 
@@ -291,6 +311,8 @@ function setupDummyPackage(
         test: 'just-scripts test',
         'test:watch': 'just-scripts jest-watch',
         'update-snapshots': 'just-scripts jest -u',
+        // eslint-disable-next-line @fluentui/max-len
+        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${normalizedPkgName}/src && yarn docs`,
       },
       dependencies: normalizedOptions.dependencies,
     },

@@ -6,11 +6,16 @@ import {
   ProjectConfiguration,
   readJson,
   writeJson,
+  logger,
 } from '@nrwl/devkit';
 import { moveGenerator } from '@nrwl/workspace/generators';
 import { getProjectConfig, getProjects, hasSchemaFlag, isPackageConverged, isV8Package } from '../../utils';
 
 import { MovePackagesGeneratorSchema } from './schema';
+
+interface AssertedSchema extends MovePackagesGeneratorSchema {
+  name: string;
+}
 
 export default async function (tree: Tree, schema: MovePackagesGeneratorSchema) {
   validateSchema(schema);
@@ -20,7 +25,7 @@ export default async function (tree: Tree, schema: MovePackagesGeneratorSchema) 
   } else if (hasSchemaFlag(schema, 'allV8')) {
     runBatchMove(tree, schema, isV8Package);
   } else {
-    movePackage(tree, schema);
+    hasSchemaFlag(schema, 'name') && movePackage(tree, schema);
   }
 
   await formatFiles(tree);
@@ -35,7 +40,7 @@ function runBatchMove(
   for (const [projectName, projectConfig] of projects) {
     if (libraryVersionChecker(tree, projectConfig)) {
       const destination = `${schema.destination}/${projectName.split('/')[1]}`;
-      console.log(`Attempting to move ${projectName} to ${destination}`);
+      logger.log(`Attempting to move ${projectName} to ${destination}`);
 
       movePackage(tree, {
         name: projectName,
@@ -46,12 +51,8 @@ function runBatchMove(
   }
 }
 
-function movePackage(tree: Tree, schema: MovePackagesGeneratorSchema) {
+function movePackage(tree: Tree, schema: AssertedSchema) {
   const { name, destination, updateImportPath = false } = schema;
-
-  if (!name) {
-    return;
-  }
 
   moveGenerator(tree, {
     projectName: name,
@@ -79,6 +80,7 @@ function movePackage(tree: Tree, schema: MovePackagesGeneratorSchema) {
   updateReadMe(tree, schema);
   updateApiExtractor(tree, schema);
   updateStorybookTypeImport(tree, schema);
+  updateBuildLocalScript(tree, schema);
   updateCodeOwners(tree, schema);
 }
 
@@ -110,66 +112,57 @@ function getNewProjectName(destinationPath: string) {
  * The moveGenerator automatically renames the package and updates the README.md file to reflect that change.
  * This function restores the contents of the README.md file back to original state.
  */
-function updateReadMe(tree: Tree, schema: MovePackagesGeneratorSchema) {
-  const { name, destination } = schema;
-  if (name) {
-    const project = getProjects(tree).get(name) as ProjectConfiguration;
-    const readMePath = joinPathFragments(project.root, 'README.md');
+function updateReadMe(tree: Tree, schema: AssertedSchema) {
+  const project = getProjects(tree).get(schema.name) as ProjectConfiguration;
+  const readMePath = joinPathFragments(project.root, 'README.md');
 
-    if (!tree.exists(readMePath)) {
-      return;
-    }
-
-    const newName = new RegExp(`${getNewProjectName(destination)}`, 'g');
-    const readMeFile = tree.read(readMePath, 'utf8') as string;
-    const updatedReadMeFile = readMeFile.replace(newName, name);
-    tree.write(readMePath, updatedReadMeFile);
+  if (!tree.exists(readMePath)) {
+    return;
   }
+
+  const newName = new RegExp(`${getNewProjectName(schema.destination)}`, 'g');
+  const readMeFile = tree.read(readMePath, 'utf8') as string;
+  const updatedReadMeFile = readMeFile.replace(newName, schema.name);
+  tree.write(readMePath, updatedReadMeFile);
 }
 
 /**
  * manually update each packages' storybook main.js module.exports type to the new
  * storybook relative path.
  */
-function updateStorybookTypeImport(tree: Tree, schema: MovePackagesGeneratorSchema) {
-  const { name } = schema;
-  if (name) {
-    const project = getProjects(tree).get(name) as ProjectConfiguration;
-    const storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
+function updateStorybookTypeImport(tree: Tree, schema: AssertedSchema) {
+  const project = getProjects(tree).get(schema.name) as ProjectConfiguration;
+  const storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
 
-    if (!tree.exists(storybookMainJsPath)) {
-      return;
-    }
-
-    const storybookMainJsFile = tree.read(storybookMainJsPath, 'utf8') as string;
-    const [newStorybookPath, oldStorybookPath] = storybookMainJsFile.match(/\([^)]*\)/g) as RegExpMatchArray;
-    const updatedStorybookMainJsFile = storybookMainJsFile.replace(oldStorybookPath, newStorybookPath);
-    tree.write(storybookMainJsPath, updatedStorybookMainJsFile);
+  if (!tree.exists(storybookMainJsPath)) {
+    return;
   }
+
+  const storybookMainJsFile = tree.read(storybookMainJsPath, 'utf8') as string;
+  const [newStorybookPath, oldStorybookPath] = storybookMainJsFile.match(/\([^)]*\)/g) as RegExpMatchArray;
+  const updatedStorybookMainJsFile = storybookMainJsFile.replace(oldStorybookPath, newStorybookPath);
+  tree.write(storybookMainJsPath, updatedStorybookMainJsFile);
 }
 
-function updateCodeOwners(tree: Tree, schema: MovePackagesGeneratorSchema) {
-  const { name, destination } = schema;
-  if (name) {
-    const pkgName = name.split('/')[1];
-    const codeownersPath = joinPathFragments('/.github', 'CODEOWNERS');
+function updateCodeOwners(tree: Tree, schema: AssertedSchema) {
+  const projectConfig = getProjectConfig(tree, { packageName: schema.name });
+  const codeownersPath = joinPathFragments('/.github', 'CODEOWNERS');
 
-    if (!tree.exists(codeownersPath)) {
-      return;
-    }
-
-    const codeOwnersFile = tree.read(codeownersPath, 'utf8') as string;
-    const updatedCodeOwnersFile = codeOwnersFile.replace(pkgName, destination);
-    tree.write(codeownersPath, updatedCodeOwnersFile);
+  if (!tree.exists(codeownersPath)) {
+    return;
   }
+
+  const codeOwnersFile = tree.read(codeownersPath, 'utf8') as string;
+  const updatedCodeOwnersFile = codeOwnersFile.replace(projectConfig.normalizedPkgName, schema.destination);
+  tree.write(codeownersPath, updatedCodeOwnersFile);
 }
 
-function updateApiExtractor(tree: Tree, schema: MovePackagesGeneratorSchema) {
-  const projectConfig = getProjectConfig(tree, { packageName: schema.name! });
+function updateApiExtractor(tree: Tree, schema: AssertedSchema) {
+  const projectConfig = getProjectConfig(tree, { packageName: schema.name });
   const apiExtractorLocalPath = joinPathFragments(projectConfig.paths.configRoot, 'api-extractor.local.json');
   const apiExtractorLocal = readJson(tree, apiExtractorLocalPath);
   const originalEntryPointPath = apiExtractorLocal.mainEntryPointFilePath;
-  const normalizeFolderDestination = schema.destination.split('/').slice(0, -1).join("/");
+  const normalizeFolderDestination = schema.destination.split('/').slice(0, -1).join('/');
   const updatedEntryPointPath = originalEntryPointPath.replace(
     'packages/<unscopedPackageName>',
     `packages/${normalizeFolderDestination}/<unscopedPackageName>`,
@@ -177,4 +170,15 @@ function updateApiExtractor(tree: Tree, schema: MovePackagesGeneratorSchema) {
   apiExtractorLocal.mainEntryPointFilePath = updatedEntryPointPath;
 
   writeJson(tree, apiExtractorLocalPath, apiExtractorLocal);
+}
+
+function updateBuildLocalScript(tree: Tree, schema: AssertedSchema) {
+  const projectConfig = getProjectConfig(tree, { packageName: schema.name });
+  updateJson(tree, projectConfig.paths.packageJson, json => {
+    json.scripts = json.scripts ?? {};
+    const originalScript = json.scripts['build:local'];
+    const updatedScript = originalScript.replace(projectConfig.normalizedPkgName, schema.destination);
+    json.scripts['build:local'] = updatedScript;
+    return json;
+  });
 }
