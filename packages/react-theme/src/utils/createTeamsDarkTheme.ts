@@ -4,6 +4,9 @@ import { generateColorTokens } from '../alias/teamsDarkColor';
 import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index';
 import { createShadowTokens } from './shadows';
 import type { BrandVariants, Theme } from '../types';
+import { durations } from '../global/durations';
+import { curves } from '../global/curves';
+import { horizontalSpacings, verticalSpacings } from '../global/spacings';
 
 export const createTeamsDarkTheme: (brand: BrandVariants) => Theme = brand => {
   const colorTokens = generateColorTokens(brand);
@@ -15,6 +18,10 @@ export const createTeamsDarkTheme: (brand: BrandVariants) => Theme = brand => {
     ...fontFamilies,
     ...fontWeights,
     ...strokeWidths,
+    ...horizontalSpacings,
+    ...verticalSpacings,
+    ...durations,
+    ...curves,
 
     ...colorTokens,
     ...colorPaletteTokens,

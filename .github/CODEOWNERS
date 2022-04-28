@@ -107,7 +107,7 @@ packages/react-file-type-icons @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-positioning @microsoft/teams-prg
-packages/react-priority-overflow @microsoft/teams-prg
+packages/react-overflow @microsoft/teams-prg
 packages/react-shared-contexts @microsoft/teams-prg
 packages/react-storybook @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-storybook-addon @microsoft/cxe-prg
@@ -134,14 +134,14 @@ packages/react-accordion @microsoft/teams-prg @microsoft/cxe-coastal
 packages/react-components/react-avatar @microsoft/cxe-red @behowell @khmakoto
 packages/react-badge @microsoft/teams-prg @microsoft/cxe-red @behowell
 packages/react-components/react-button @microsoft/cxe-red @khmakoto
-packages/react-card @microsoft/cxe-prg
+packages/react-components/react-card @microsoft/cxe-prg
 packages/react-components/react-checkbox @microsoft/cxe-red @khmakoto
 packages/react-combobox @microsoft/cxe-coastal @smhigley
 packages/react-components/react-components @microsoft/fluentui-react
-packages/react-dialog @microsoft/cxe-prg
+packages/react-components/react-dialog @microsoft/cxe-prg
 packages/react-divider @microsoft/cxe-coastal
 packages/react-focus @microsoft/cxe-red @khmakoto
-packages/react-image @microsoft/cxe-prg
+packages/react-components/react-image @microsoft/cxe-prg
 packages/react-components/react-input @microsoft/cxe-red
 packages/react-components/react-label @microsoft/cxe-red
 packages/react-components/react-link @microsoft/cxe-red @khmakoto @microsoft/cxe-coastal
@@ -149,7 +149,7 @@ packages/react-components/react-menu @microsoft/teams-prg
 packages/react-components/react-popover @microsoft/teams-prg
 packages/react-components/react-portal @microsoft/teams-prg
 packages/react-provider @microsoft/teams-prg
-packages/react-radio @microsoft/cxe-red
+packages/react-radio @microsoft/cxe-red @behowell @spmonahan
 packages/react-components/react-select @microsoft/cxe-coastal @smhigley
 packages/react-components/react-slider @microsoft/cxe-coastal @micahgodbolt
 packages/react-spinbutton @microsoft/cxe-red @spmonahan
