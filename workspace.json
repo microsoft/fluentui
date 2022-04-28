@@ -451,9 +451,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-link": {
-      "root": "packages/react-link",
+      "root": "packages/react-components/react-link",
       "projectType": "library",
-      "sourceRoot": "packages/react-link/src",
+      "sourceRoot": "packages/react-components/react-link/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },

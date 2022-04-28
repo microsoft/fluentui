@@ -35,7 +35,7 @@
       "@fluentui/react-image": ["packages/react-image/src/index.ts"],
       "@fluentui/react-input": ["packages/react-components/react-input/src/index.ts"],
       "@fluentui/react-label": ["packages/react-components/react-label/src/index.ts"],
-      "@fluentui/react-link": ["packages/react-link/src/index.ts"],
+      "@fluentui/react-link": ["packages/react-components/react-link/src/index.ts"],
       "@fluentui/react-list": ["packages/react-list/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/src/index.ts"],
       "@fluentui/react-popover": ["packages/react-components/react-popover/src/index.ts"],
