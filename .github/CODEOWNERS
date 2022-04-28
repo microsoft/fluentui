@@ -149,7 +149,7 @@ packages/react-components/react-menu @microsoft/teams-prg
 packages/react-components/react-popover @microsoft/teams-prg
 packages/react-components/react-portal @microsoft/teams-prg
 packages/react-provider @microsoft/teams-prg
-packages/react-radio @microsoft/cxe-red
+packages/react-radio @microsoft/cxe-red @behowell @spmonahan
 packages/react-components/react-select @microsoft/cxe-coastal @smhigley
 packages/react-components/react-slider @microsoft/cxe-coastal @micahgodbolt
 packages/react-spinbutton @microsoft/cxe-red @spmonahan
