@@ -80,18 +80,18 @@ In this example, the first Avatar will have a `darkRed` color, while all the oth
 
 #### Color order:
 
-|                       |                       |                       |
-| --------------------- | --------------------- | --------------------- |
-| Avatar 1: Red         | Avatar 11: Lilac      | Avatar 21: Peach      |
-| Avatar 2: Blue        | Avatar 12: Anchor     | Avatar 22: Steel      |
-| Avatar 3: Purple      | Avatar 13: Dark Green | Avatar 23: Navy       |
-| Avatar 4: Forest      | Avatar 14: Pumpkin    | Avatar 24: Seafoam    |
-| Avatar 5: Pink        | Avatar 15: Dark Red   | Avatar 25: Magenta    |
-| Avatar 6: Lavender    | Avatar 16: Mink       | Avatar 26: Beige      |
-| Avatar 7: Teal        | Avatar 17: Grape      | Avatar 27: Light Teal |
-| Avatar 8: Gold        | Avatar 18: Platinum   | Avatar 28: Gold       |
-| Avatar 9: Cranberry   | Avatar 19: Royal Blue | Avatar 29: Plum       |
-| Avatar 10: Cornflower | Avatar 20: Brown      | Avatar 30: Marigold   |
+|                       |                    |                       |
+| --------------------- | ------------------ | --------------------- |
+| Avatar 1: Red         | Avatar 2: Blue     | Avatar 3: Purple      |
+| Avatar 4: Forest      | Avatar 5: Pink     | Avatar 6: Lavender    |
+| Avatar 7: Teal        | Avatar 8: Gold     | Avatar 9: Cranberry   |
+| Avatar 10: Cornflower | Avatar 11: Lilac   | Avatar 12: Anchor     |
+| Avatar 13: Dark Green | Avatar 14: Pumpkin | Avatar 15: Dark Red   |
+| Avatar 16: Mink       | Avatar 17: Grape   | Avatar 18: Platinum   |
+| Avatar 19: Royal Blue | Avatar 20: Brown   | Avatar 21: Peach      |
+| Avatar 22: Steel      | Avatar 23: Navy    | Avatar 24: Seafoam    |
+| Avatar 25: Magenta    | Avatar 26: Beige   | Avatar 27: Light Teal |
+| Avatar 28: Gold       | Avatar 29: Plum    | Avatar 30: Marigold   |
 
 ## Structure
 
