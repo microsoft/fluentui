@@ -31,6 +31,7 @@ import {
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 import { addCodeowner } from '../add-codeowners';
 import { printStats } from '../print-stats';
+import { generateChangeFilesHelp } from '../generate-change-files';
 
 interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
 
@@ -74,6 +75,15 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
 
   return () => {
     printUserLogs(userLog);
+
+    const changedFilesPath = tree.listChanges().map(value => value.path);
+
+    if (changedFilesPath.length > 0) {
+      generateChangeFilesHelp({
+        message: 'chore: update package scaffold',
+        type: 'none',
+      });
+    }
   };
 }
 

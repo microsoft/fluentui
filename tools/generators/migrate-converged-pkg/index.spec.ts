@@ -1,6 +1,7 @@
 import * as Enquirer from 'enquirer';
 import * as fs from 'fs';
 import * as path from 'path';
+import * as chalk from 'chalk';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import {
   Tree,
@@ -20,7 +21,7 @@ import {
 } from '@nrwl/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
-import { setupCodeowners } from '../../utils-testing';
+import { disableChalk, formatMockedCalls, setupCodeowners } from '../../utils-testing';
 
 import generator from './index';
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
@@ -45,6 +46,7 @@ jest.mock(
 describe('migrate-converged-pkg generator', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
+  disableChalk(chalk);
 
   let tree: Tree;
   const options = { name: '@proj/react-dummy' } as const;
@@ -178,12 +180,20 @@ describe('migrate-converged-pkg generator', () => {
 
         await generator(tree, { name: '@proj/my-app' });
 
-        expect(loggerInfoSpy.mock.calls.flat()).toMatchInlineSnapshot(`
-          Array [
-            "NOTE: you're trying to migrate an Application - @proj/my-app.
-          We apply limited migration steps at the moment.",
-          ]
+        expect(formatMockedCalls(loggerInfoSpy.mock.calls)).toMatchInlineSnapshot(`
+          "NOTE: you're trying to migrate an Application - @proj/my-app.
+          We apply limited migration steps at the moment."
         `);
+      });
+    });
+
+    describe(`side effects`, () => {
+      it(`should notify user to generate change files`, async () => {
+        const sideEffects = await generator(tree, { name: options.name });
+
+        sideEffects();
+
+        expect(console.info).toHaveBeenCalled();
       });
     });
   });
