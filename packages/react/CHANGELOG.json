@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 28 Apr 2022 07:39:55 GMT",
+      "tag": "@fluentui/react_v8.67.2",
+      "version": "8.67.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a09b94adedeafc41bf44fd79d12429677b18f68a",
+            "comment": "fix live regions in Calendar for JAWS"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Apr 2022 07:43:07 GMT",
       "tag": "@fluentui/react_v8.67.1",
       "version": "8.67.1",

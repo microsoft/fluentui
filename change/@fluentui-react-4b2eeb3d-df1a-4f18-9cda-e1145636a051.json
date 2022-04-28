@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix live regions in Calendar for JAWS",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

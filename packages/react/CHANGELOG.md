@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 27 Apr 2022 07:43:07 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Apr 2022 07:39:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.67.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.67.2)
+
+Thu, 28 Apr 2022 07:39:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.67.1..@fluentui/react_v8.67.2)
+
+### Patches
+
+- fix live regions in Calendar for JAWS ([PR #22643](https://github.com/microsoft/fluentui/pull/22643) by sarah.higley@microsoft.com)
 
 ## [8.67.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.67.1)
 
