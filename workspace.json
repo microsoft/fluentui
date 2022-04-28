@@ -598,9 +598,9 @@
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-storybook": {
-      "root": "packages/react-storybook",
+      "root": "packages/react-components/react-storybook",
       "projectType": "library",
-      "sourceRoot": "packages/react-storybook/src",
+      "sourceRoot": "packages/react-components/react-storybook/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
