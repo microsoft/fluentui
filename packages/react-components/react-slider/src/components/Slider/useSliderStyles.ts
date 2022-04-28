@@ -70,12 +70,12 @@ const useRootStyles = makeStyles({
     [progressColorVar]: tokens.colorCompoundBrandBackground,
     [thumbColorVar]: tokens.colorCompoundBrandBackground,
     ':hover': {
-      [thumbColorVar]: tokens.colorBrandBackgroundHover,
-      [progressColorVar]: tokens.colorBrandBackgroundHover,
+      [thumbColorVar]: tokens.colorCompoundBrandBackgroundHover,
+      [progressColorVar]: tokens.colorCompoundBrandBackgroundHover,
     },
     ':active': {
-      [thumbColorVar]: tokens.colorBrandBackgroundPressed,
-      [progressColorVar]: tokens.colorBrandBackgroundPressed,
+      [thumbColorVar]: tokens.colorCompoundBrandBackgroundPressed,
+      [progressColorVar]: tokens.colorCompoundBrandBackgroundPressed,
     },
     '@media (forced-colors: active)': {
       [railColorVar]: 'CanvasText',
@@ -101,12 +101,12 @@ const useRootStyles = makeStyles({
 
   focusIndicatorHorizontal: createFocusOutlineStyle({
     selector: 'focus-within',
-    style: { outlineOffset: { top: '6px', bottom: '6px', left: '10px', right: '10px' } },
+    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '8px', right: '8px' } },
   }),
 
   focusIndicatorVertical: createFocusOutlineStyle({
     selector: 'focus-within',
-    style: { outlineOffset: { top: '10px', bottom: '10px', left: '6px', right: '6px' } },
+    style: { outlineOffset: { top: '6px', bottom: '6px', left: '4px', right: '4px' } },
   }),
 });
 
