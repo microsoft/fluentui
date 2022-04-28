@@ -290,9 +290,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-card": {
-      "root": "packages/react-card",
+      "root": "packages/react-components/react-card",
       "projectType": "library",
-      "sourceRoot": "packages/react-card/src",
+      "sourceRoot": "packages/react-components/react-card/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -366,9 +366,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-dialog": {
-      "root": "packages/react-dialog",
+      "root": "packages/react-components/react-dialog",
       "projectType": "library",
-      "sourceRoot": "packages/react-dialog/src",
+      "sourceRoot": "packages/react-components/react-dialog/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -430,9 +430,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-image": {
-      "root": "packages/react-image",
+      "root": "packages/react-components/react-image",
       "projectType": "library",
-      "sourceRoot": "packages/react-image/src",
+      "sourceRoot": "packages/react-components/react-image/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },

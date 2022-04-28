@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "react-image: Move to new common folder.",
+  "packageName": "@fluentui/react-image",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}
