@@ -536,7 +536,7 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react--overflow": {
+    "@fluentui/react-overflow": {
       "root": "packages/react-overflow",
       "projectType": "library",
       "implicitDependencies": [],
