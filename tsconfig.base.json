@@ -34,7 +34,7 @@
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
       "@fluentui/react-image": ["packages/react-image/src/index.ts"],
       "@fluentui/react-input": ["packages/react-components/react-input/src/index.ts"],
-      "@fluentui/react-label": ["packages/react-label/src/index.ts"],
+      "@fluentui/react-label": ["packages/react-components/react-label/src/index.ts"],
       "@fluentui/react-link": ["packages/react-link/src/index.ts"],
       "@fluentui/react-list": ["packages/react-list/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/src/index.ts"],

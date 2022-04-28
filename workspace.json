@@ -444,9 +444,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-label": {
-      "root": "packages/react-label",
+      "root": "packages/react-components/react-label",
       "projectType": "library",
-      "sourceRoot": "packages/react-label/src",
+      "sourceRoot": "packages/react-components/react-label/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },

@@ -143,7 +143,7 @@ packages/react-divider @microsoft/cxe-coastal
 packages/react-focus @microsoft/cxe-red @khmakoto
 packages/react-image @microsoft/cxe-prg
 packages/react-components/react-input @microsoft/cxe-red
-packages/react-label @microsoft/cxe-red
+packages/react-components/react-label @microsoft/cxe-red
 packages/react-link @microsoft/cxe-red @khmakoto @microsoft/cxe-coastal
 packages/react-components/react-menu @microsoft/teams-prg
 packages/react-components/react-popover @microsoft/teams-prg
