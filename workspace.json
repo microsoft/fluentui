@@ -290,9 +290,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-card": {
-      "root": "packages/react-card",
+      "root": "packages/react-components/react-card",
       "projectType": "library",
-      "sourceRoot": "packages/react-card/src",
+      "sourceRoot": "packages/react-components/react-card/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },

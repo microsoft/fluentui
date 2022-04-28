@@ -97,7 +97,7 @@ packages/monaco-editor @microsoft/fluentui-v8-website
 packages/public-docsite-setup @microsoft/fluentui-v8-website
 packages/priority-overflow @microsoft/teams-prg
 packages/react-aria @microsoft/teams-prg
-packages/react-cards @microsoft/cxe-red @khmakoto
+packages/react-components/react-cards @microsoft/cxe-red @khmakoto
 packages/react-charting @microsoft/charting-team
 packages/react-conformance-griffel @microsoft/teams-prg
 packages/react-context-selector @microsoft/teams-prg
