@@ -6,7 +6,7 @@ import {
   Theme as ThemeV9,
   webLightTheme,
 } from '@fluentui/react-components';
-import { blackAlpha, whiteAlpha } from '../../../../../packages/react-theme/src/global';
+import { blackAlpha, whiteAlpha } from './themeDuplicates';
 
 /**
  * Creates v9 color tokens from a v8 palette.

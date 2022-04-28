@@ -11,14 +11,7 @@ import {
 
 import { BrandVariants, Theme as ThemeV9 } from '@fluentui/react-components';
 
-import {
-  black,
-  blackAlpha,
-  grey,
-  sharedColors,
-  white,
-  whiteAlpha,
-} from '../../../../../packages/react-theme/src/global';
+import { black, blackAlpha, grey, sharedColors, white, whiteAlpha } from './themeDuplicates';
 
 /**
  * Creates a v8 palette given a brand ramp
