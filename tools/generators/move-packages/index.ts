@@ -6,6 +6,7 @@ import {
   ProjectConfiguration,
   readJson,
   writeJson,
+  logger,
 } from '@nrwl/devkit';
 import { moveGenerator } from '@nrwl/workspace/generators';
 import { getProjectConfig, getProjects, hasSchemaFlag, isPackageConverged, isV8Package } from '../../utils';
@@ -24,7 +25,7 @@ export default async function (tree: Tree, schema: MovePackagesGeneratorSchema) 
   } else if (hasSchemaFlag(schema, 'allV8')) {
     runBatchMove(tree, schema, isV8Package);
   } else {
-    movePackage(tree, schema);
+    hasSchemaFlag(schema, 'name') && movePackage(tree, schema);
   }
 
   await formatFiles(tree);
@@ -39,7 +40,7 @@ function runBatchMove(
   for (const [projectName, projectConfig] of projects) {
     if (libraryVersionChecker(tree, projectConfig)) {
       const destination = `${schema.destination}/${projectName.split('/')[1]}`;
-      console.log(`Attempting to move ${projectName} to ${destination}`);
+      logger.log(`Attempting to move ${projectName} to ${destination}`);
 
       movePackage(tree, {
         name: projectName,
@@ -50,12 +51,8 @@ function runBatchMove(
   }
 }
 
-function movePackage(tree: Tree, schema: MovePackagesGeneratorSchema) {
+function movePackage(tree: Tree, schema: AssertedSchema) {
   const { name, destination, updateImportPath = false } = schema;
-
-  if (!name) {
-    return;
-  }
 
   moveGenerator(tree, {
     projectName: name,
@@ -80,11 +77,11 @@ function movePackage(tree: Tree, schema: MovePackagesGeneratorSchema) {
   // moveGenerator automatically updates the Readme file of the packages to replace
   // the package name with a new name based on the "destination" flag. This check
   // reverts the changes it makes.
-  updateReadMe(tree, { name, destination });
-  updateApiExtractor(tree, { name, destination });
-  updateStorybookTypeImport(tree, { name, destination });
-  updateBuildLocalScript(tree, { name, destination });
-  updateCodeOwners(tree, { name, destination });
+  updateReadMe(tree, schema);
+  updateApiExtractor(tree, schema);
+  updateStorybookTypeImport(tree, schema);
+  updateBuildLocalScript(tree, schema);
+  updateCodeOwners(tree, schema);
 }
 
 function validateSchema(schema: MovePackagesGeneratorSchema) {
