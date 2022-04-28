@@ -366,9 +366,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-dialog": {
-      "root": "packages/react-dialog",
+      "root": "packages/react-components/react-dialog",
       "projectType": "library",
-      "sourceRoot": "packages/react-dialog/src",
+      "sourceRoot": "packages/react-components/react-dialog/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
