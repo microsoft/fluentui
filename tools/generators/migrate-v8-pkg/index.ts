@@ -12,7 +12,9 @@ import {
 } from '@nrwl/devkit';
 import { fileExists } from '@nrwl/tao/src/utils/app-root';
 
-import { getProjectConfig, getProjects } from '../../utils';
+import { printStats } from '../print-stats';
+
+import { getProjectConfig, getProjects, isV8Package } from '../../utils';
 
 import { MigrateV8PkgGeneratorSchema } from './schema';
 import { PackageJson, TsConfig } from '../../types';
@@ -30,7 +32,23 @@ export default async function (tree: Tree, schema: MigrateV8PkgGeneratorSchema) 
   const validatedSchema = await validateSchema(tree, schema);
 
   if (hasSchemaFlag(validatedSchema, 'stats')) {
-    printStats(tree, validatedSchema);
+    const allProjects = new Map(
+      Array.from(getProjects(tree).entries()).map(([projectName, project]) => {
+        const metadata = getProjectMetadata(tree, project);
+        const extendedProject = { ...project, metadata };
+        return [projectName, extendedProject] as const;
+      }),
+    );
+
+    printStats(tree, {
+      title: 'V8 DX',
+      projects: allProjects,
+      shouldProcessPackage: isV8Package,
+      isMigratedCheck: isProjectMigrated,
+      projectInfoFormat: data => {
+        return `- ${data.projectName} | lint:${data.metadata.eslintConfig?.extends}`;
+      },
+    });
 
     return noop;
   }
@@ -87,7 +105,7 @@ async function validateSchema(tree: Tree, schema: MigrateV8PkgGeneratorSchema) {
     projectNames.forEach(projectName => {
       const projectConfig = readProjectConfiguration(tree, projectName);
 
-      if (!isPackageV8(tree, projectConfig)) {
+      if (!isV8Package(tree, projectConfig)) {
         throw new Error(
           `${newSchema.name} is not v8 package. Make sure to run the migration on packages with version 8.x.x`,
         );
@@ -96,11 +114,6 @@ async function validateSchema(tree: Tree, schema: MigrateV8PkgGeneratorSchema) {
   }
 
   return newSchema;
-}
-
-function isPackageV8(tree: Tree, project: ProjectConfiguration) {
-  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
-  return packageJson.version.startsWith('8.');
 }
 
 function isProjectMigrated<T extends ProjectConfiguration>(
@@ -140,47 +153,4 @@ function getProjectMetadata(tree: Tree, project: ProjectConfiguration) {
       return eslintConfig;
     }
   }
-}
-
-function printStats(tree: Tree, options: MigrateV8PkgGeneratorSchema) {
-  type ProjectStats = ProjectConfiguration & {
-    projectName: string;
-    metadata: ReturnType<typeof getProjectMetadata>;
-  };
-  const allProjects = getProjects(tree);
-  const stats = {
-    migrated: [] as Array<ProjectStats>,
-    notMigrated: [] as Array<ProjectStats>,
-  };
-
-  allProjects.forEach((project, projectName) => {
-    if (!isPackageV8(tree, project)) {
-      return;
-    }
-
-    const metadata = getProjectMetadata(tree, project);
-
-    if (isProjectMigrated(tree, project)) {
-      stats.migrated.push({ projectName, metadata, ...project });
-
-      return;
-    }
-    stats.notMigrated.push({ projectName, metadata, ...project });
-  });
-
-  function createProjectInfoMessage(projectStat: ProjectStats) {
-    return `- ${projectStat.projectName} | lint:${projectStat.metadata.eslintConfig?.extends}`;
-  }
-
-  logger.info('V8 DX migration stats:');
-  logger.info('='.repeat(80));
-
-  logger.info(`Migrated (${stats.migrated.length}):`);
-  logger.info(stats.migrated.map(createProjectInfoMessage).join('\n'));
-
-  logger.info('='.repeat(80));
-  logger.info(`Not migrated (${stats.notMigrated.length}):`);
-  logger.info(stats.notMigrated.map(createProjectInfoMessage).join('\n'));
-
-  return tree;
 }

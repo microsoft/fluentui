@@ -227,6 +227,11 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/public-docsite-v9": {
+      "root": "apps/public-docsite-v9",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/react": {
       "root": "packages/react",
       "projectType": "library",
@@ -239,6 +244,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-alert": {
+      "root": "packages/react-alert",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-alert/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-aria": {
       "root": "packages/react-aria",
       "projectType": "library",
@@ -247,9 +259,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-avatar": {
-      "root": "packages/react-avatar",
+      "root": "packages/react-components/react-avatar",
       "projectType": "library",
-      "sourceRoot": "packages/react-avatar/src",
+      "sourceRoot": "packages/react-components/react-avatar/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -271,9 +283,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-button": {
-      "root": "packages/react-button",
+      "root": "packages/react-components/react-button",
       "projectType": "library",
-      "sourceRoot": "packages/react-button/src",
+      "sourceRoot": "packages/react-components/react-button/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -295,9 +307,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-checkbox": {
-      "root": "packages/react-checkbox",
+      "root": "packages/react-components/react-checkbox",
       "projectType": "library",
-      "sourceRoot": "packages/react-checkbox/src",
+      "sourceRoot": "packages/react-components/react-checkbox/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -323,9 +335,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-components": {
-      "root": "packages/react-components",
+      "root": "packages/react-components/react-components",
       "projectType": "library",
-      "sourceRoot": "packages/react-components/src",
+      "sourceRoot": "packages/react-components/react-components/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -337,7 +349,9 @@
     "@fluentui/react-conformance-griffel": {
       "root": "packages/react-conformance-griffel",
       "projectType": "library",
-      "sourceRoot": "packages/react-conformance-griffel/src"
+      "sourceRoot": "packages/react-conformance-griffel/src",
+      "tags": ["vNext", "platform:node"],
+      "implicitDependencies": []
     },
     "@fluentui/react-context-selector": {
       "root": "packages/react-context-selector",
@@ -451,9 +465,9 @@
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-menu": {
-      "root": "packages/react-menu",
+      "root": "packages/react-components/react-menu",
       "projectType": "library",
-      "sourceRoot": "packages/react-menu/src",
+      "sourceRoot": "packages/react-components/react-menu/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -488,16 +502,16 @@
       "implicitDependencies": []
     },
     "@fluentui/react-popover": {
-      "root": "packages/react-popover",
+      "root": "packages/react-components/react-popover",
       "projectType": "library",
-      "sourceRoot": "packages/react-popover/src",
+      "sourceRoot": "packages/react-components/react-popover/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-portal": {
-      "root": "packages/react-portal",
+      "root": "packages/react-components/react-portal",
       "projectType": "library",
-      "sourceRoot": "packages/react-portal/src",
+      "sourceRoot": "packages/react-components/react-portal/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -506,6 +520,13 @@
       "projectType": "library",
       "implicitDependencies": [],
       "sourceRoot": "packages/react-portal-compat/src",
+      "tags": ["vNext", "platform:web"]
+    },
+    "@fluentui/react-portal-compat-context": {
+      "root": "packages/react-portal-compat-context",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-portal-compat-context/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-positioning": {
@@ -542,9 +563,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-select": {
-      "root": "packages/react-select",
+      "root": "packages/react-components/react-select",
       "projectType": "library",
-      "sourceRoot": "packages/react-select/src",
+      "sourceRoot": "packages/react-components/react-select/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -556,9 +577,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-slider": {
-      "root": "packages/react-slider",
+      "root": "packages/react-components/react-slider",
       "projectType": "library",
-      "sourceRoot": "packages/react-slider/src",
+      "sourceRoot": "packages/react-components/react-slider/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -598,9 +619,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-tabs": {
-      "root": "packages/react-tabs",
+      "root": "packages/react-components/react-tabs",
       "projectType": "library",
-      "sourceRoot": "packages/react-tabs/src",
+      "sourceRoot": "packages/react-components/react-tabs/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -741,11 +762,6 @@
       "projectType": "library",
       "sourceRoot": "typings",
       "tags": ["platform:any"]
-    },
-    "@fluentui/public-docsite-v9": {
-      "root": "apps/public-docsite-v9",
-      "projectType": "application",
-      "implicitDependencies": []
     },
     "@fluentui/utilities": {
       "root": "packages/utilities",

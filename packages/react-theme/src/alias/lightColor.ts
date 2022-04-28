@@ -27,6 +27,10 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorBrandForegroundLinkHover: brand[60], // #005a9e Global.Color.Brand.60
   colorBrandForegroundLinkPressed: brand[40], // #004578 Global.Color.Brand.40
   colorBrandForegroundLinkSelected: brand[70], // #106ebe Global.Color.Brand.70
+  colorNeutralForeground2Link: grey[26], // #424242 Global.Color.Grey.26
+  colorNeutralForeground2LinkHover: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForeground2LinkPressed: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForeground2LinkSelected: grey[14], // #242424 Global.Color.Grey.14
   colorCompoundBrandForeground1: brand[80], // #0078d4 Global.Color.Brand.80
   colorCompoundBrandForeground1Hover: brand[70], // #106ebe Global.Color.Brand.70
   colorCompoundBrandForeground1Pressed: brand[60], // #005a9e Global.Color.Brand.60

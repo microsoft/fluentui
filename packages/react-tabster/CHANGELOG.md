@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 19 Apr 2022 19:16:59 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Apr 2022 09:32:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-rc.7)
+
+Mon, 25 Apr 2022 09:32:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-rc.6..@fluentui/react-tabster_v9.0.0-rc.7)
+
+### Changes
+
+- Adjusting accordion keyboard navigation. ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by marata@microsoft.com)
 
 ## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-rc.6)
 

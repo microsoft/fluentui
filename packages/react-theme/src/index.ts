@@ -3,6 +3,7 @@ export * from './utils/index';
 
 export { themeToTokensObject } from './themeToTokensObject';
 export { tokens } from './tokens';
+export { typographyStyles } from './global/index';
 
 export type {
   Brands,
@@ -73,4 +74,5 @@ export type {
   ColorTokens,
   PartialTheme,
   Theme,
+  TypographyStyles,
 } from './types';

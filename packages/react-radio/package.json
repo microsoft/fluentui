@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-radio",
-  "version": "9.0.0-beta.3",
+  "version": "9.0.0-beta.4",
   "description": "Fluent UI Radio component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,6 +13,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -32,7 +33,7 @@
   "dependencies": {
     "@fluentui/react-icons": "^2.0.166-rc.3",
     "@fluentui/react-label": "9.0.0-beta.10",
-    "@fluentui/react-tabster": "9.0.0-rc.6",
+    "@fluentui/react-tabster": "9.0.0-rc.7",
     "@fluentui/react-theme": "9.0.0-rc.5",
     "@fluentui/react-utilities": "9.0.0-rc.6",
     "@griffel/react": "1.0.3",

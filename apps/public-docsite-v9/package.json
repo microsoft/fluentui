@@ -11,18 +11,22 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook"
+    "start": "just-scripts dev:storybook",
+    "storybook": "node ../../scripts/storybook/runner --port 3000 -s ./public --no-manager-cache",
+    "storybook:docs": "yarn storybook --docs"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-storybook-addon": "9.0.0-rc.1",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.66.2",
+    "@fluentui/react": "^8.67.2",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/storybook": "^1.0.0",
-    "@fluentui/react-components": "^9.0.0-rc.7",
+    "@fluentui/react-components": "^9.0.0-rc.8",
+    "@fluentui/react-storybook-addon": "9.0.0-rc.1",
+    "@fluentui/react-theme": "9.0.0-rc.5",
+    "@griffel/react": "1.0.3",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "tslib": "^2.1.0"
