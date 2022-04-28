@@ -63,7 +63,6 @@ export const getMenuItemStyles = memoizeFunction(
             // ensure disabled text looks different than enabled
             color: 'GrayText',
             opacity: 1,
-            ...getHighContrastNoAdjustStyle(),
           },
         },
       },

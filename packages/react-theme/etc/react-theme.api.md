@@ -197,6 +197,10 @@ export type ColorTokens = {
     colorBrandForegroundLinkHover: string;
     colorBrandForegroundLinkPressed: string;
     colorBrandForegroundLinkSelected: string;
+    colorNeutralForeground2Link: string;
+    colorNeutralForeground2LinkHover: string;
+    colorNeutralForeground2LinkPressed: string;
+    colorNeutralForeground2LinkSelected: string;
     colorCompoundBrandForeground1: string;
     colorCompoundBrandForeground1Hover: string;
     colorCompoundBrandForeground1Pressed: string;
@@ -325,6 +329,30 @@ export const createLightTheme: (brand: BrandVariants) => Theme;
 export const createTeamsDarkTheme: (brand: BrandVariants) => Theme;
 
 // @public (undocumented)
+export type CurveTokens = {
+    curveAccelerateMax: string;
+    curveAccelerateMid: string;
+    curveAccelerateMin: string;
+    curveDecelerateMax: string;
+    curveDecelerateMid: string;
+    curveDecelerateMin: string;
+    curveEasyEaseMax: string;
+    curveEasyEase: string;
+    curveLinear: string;
+};
+
+// @public (undocumented)
+export type DurationTokens = {
+    durationUltraFast: string;
+    durationFaster: string;
+    durationFast: string;
+    durationNormal: string;
+    durationSlow: string;
+    durationSlower: string;
+    durationUltraSlow: string;
+};
+
+// @public (undocumented)
 export type FontFamilyTokens = {
     fontFamilyBase: string;
     fontFamilyMonospace: string;
@@ -350,6 +378,21 @@ export type FontWeightTokens = {
     fontWeightRegular: number;
     fontWeightMedium: number;
     fontWeightSemibold: number;
+};
+
+// @public (undocumented)
+export type HorizontalSpacingTokens = {
+    spacingHorizontalNone: string;
+    spacingHorizontalXXS: string;
+    spacingHorizontalXS: string;
+    spacingHorizontalSNudge: string;
+    spacingHorizontalS: string;
+    spacingHorizontalMNudge: string;
+    spacingHorizontalM: string;
+    spacingHorizontalL: string;
+    spacingHorizontalXL: string;
+    spacingHorizontalXXL: string;
+    spacingHorizontalXXXL: string;
 };
 
 // @public (undocumented)
@@ -390,6 +433,21 @@ export type ShadowTokens = {
 };
 
 // @public (undocumented)
+export type SpacingTokens = {
+    none: string;
+    xxs: string;
+    xs: string;
+    sNudge: string;
+    s: string;
+    mNudge: string;
+    m: string;
+    l: string;
+    xl: string;
+    xxl: string;
+    xxxl: string;
+};
+
+// @public (undocumented)
 export type StrokeWidthTokens = {
     strokeWidthThin: string;
     strokeWidthThick: string;
@@ -407,7 +465,7 @@ export const teamsHighContrastTheme: Theme;
 export const teamsLightTheme: Theme;
 
 // @public (undocumented)
-export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
+export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & HorizontalSpacingTokens & VerticalSpacingTokens & DurationTokens & CurveTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
 
 // @public
 export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record<keyof TTheme, string>;
@@ -416,27 +474,42 @@ export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record
 export const tokens: Record<keyof Theme, string>;
 
 // @public (undocumented)
-export type TypeographyStyles = {
-    body1: TypeographyStyle;
-    body1Strong: TypeographyStyle;
-    body1Stronger: TypeographyStyle;
-    caption1: TypeographyStyle;
-    caption1Strong: TypeographyStyle;
-    caption1Stronger: TypeographyStyle;
-    caption2: TypeographyStyle;
-    caption2Strong: TypeographyStyle;
-    subtitle1: TypeographyStyle;
-    subtitle2: TypeographyStyle;
-    subtitle2Stronger: TypeographyStyle;
-    title1: TypeographyStyle;
-    title2: TypeographyStyle;
-    title3: TypeographyStyle;
-    largeTitle: TypeographyStyle;
-    display: TypeographyStyle;
+export type TypographyStyles = {
+    body1: TypographyStyle;
+    body1Strong: TypographyStyle;
+    body1Stronger: TypographyStyle;
+    caption1: TypographyStyle;
+    caption1Strong: TypographyStyle;
+    caption1Stronger: TypographyStyle;
+    caption2: TypographyStyle;
+    caption2Strong: TypographyStyle;
+    subtitle1: TypographyStyle;
+    subtitle2: TypographyStyle;
+    subtitle2Stronger: TypographyStyle;
+    title1: TypographyStyle;
+    title2: TypographyStyle;
+    title3: TypographyStyle;
+    largeTitle: TypographyStyle;
+    display: TypographyStyle;
 };
 
 // @public
-export const typeographyStyles: TypeographyStyles;
+export const typographyStyles: TypographyStyles;
+
+// @public (undocumented)
+export type VerticalSpacingTokens = {
+    spacingVerticalNone: string;
+    spacingVerticalXXS: string;
+    spacingVerticalXS: string;
+    spacingVerticalSNudge: string;
+    spacingVerticalS: string;
+    spacingVerticalMNudge: string;
+    spacingVerticalM: string;
+    spacingVerticalL: string;
+    spacingVerticalXL: string;
+    spacingVerticalXXL: string;
+    spacingVerticalXXXL: string;
+};
 
 // @public (undocumented)
 export const webDarkTheme: Theme;

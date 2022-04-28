@@ -18,11 +18,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### BREAKING CHANGES
+- Change default Divider color in light and dark theme @yuanboxue-amber ([#22665](https://github.com/microsoft/fluentui/pull/22665))
+
 ### Fixes
 - Align `ChatMessageReadStatus` position with `ChatMessage` @Hirse ([#22494](https://github.com/microsoft/fluentui/pull/22494))
 - Align @fluentui/react-northstar (v0) and @fluentui/react-theme (v9) colors @jurokapsiar ([#22483](https://github.com/microsoft/fluentui/pull/22483))
 - Add missing export for `PortalContext` @layershifter ([#22448](https://github.com/microsoft/fluentui/pull/22448))
 - Do not stop propagation of letter keys if modifier is used in `Tree` @jurokapsiar ([#22603](https://github.com/microsoft/fluentui/pull/22603))
+- fix `Tooltip` constrast style for pointing and subtle=false @yuanboxue-amber ([#22696](https://github.com/microsoft/fluentui/pull/22696))
 
 <!--------------------------------[ v0.62.0 ]------------------------------- -->
 ## [v0.62.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.62.0) (2022-04-08)

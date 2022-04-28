@@ -11,22 +11,26 @@ import {
   getProjects,
   joinPathFragments,
   ProjectConfiguration,
+  readJson,
+  updateJson,
+  NxJsonConfiguration,
 } from '@nrwl/devkit';
 
 import generator from './index';
 import { MovePackagesGeneratorSchema } from './schema';
 import { TsConfig } from '../../types';
+import { setupCodeowners } from '../../utils-testing';
 
 type ReadProjectConfiguration = ReturnType<typeof readProjectConfiguration>;
 const noop = () => null;
 
 describe('move-packages generator', () => {
   let tree: Tree;
-  const options: MovePackagesGeneratorSchema = {
+  const options = {
     name: '@proj/test',
     destination: 'testFolder/test',
     updateImportPath: false,
-  };
+  } as const;
 
   beforeEach(() => {
     jest.restoreAllMocks();
@@ -34,24 +38,19 @@ describe('move-packages generator', () => {
 
     tree = createTreeWithEmptyWorkspace();
 
-    const nxJsonConfig = {
-      npmScope: 'proj',
-      affected: { defaultBase: 'main' },
-      tasksRunnerOptions: {
-        default: {
-          runner: '@nrwl/workspace/tasks-runners/default',
-          options: { cacheableOperations: ['build', 'lint', 'test', 'e2e'] },
-        },
-      },
-      workspaceLayout: {
+    setupCodeowners(tree, { content: `packages/test @dummyOwner` });
+
+    updateJson(tree, '/nx.json', (json: NxJsonConfiguration) => {
+      json.workspaceLayout = {
+        appsDir: 'apps',
         libsDir: 'packages',
-      },
-    };
-    tree.write(`nx.json`, serializeJson(nxJsonConfig));
+      };
+      return json;
+    });
 
     tree = setupDummyPackage(tree, {
       ...options,
-      name: options.name!,
+      name: options.name,
       version: '9.0.0-alpha.0',
       dependencies: {
         '@proj/make-styles': '^9.0.0-alpha.1',
@@ -64,7 +63,7 @@ describe('move-packages generator', () => {
   describe('general', () => {
     it('should run successfully', async () => {
       await generator(tree, options);
-      const config = readProjectConfiguration(tree, options.name!);
+      const config = readProjectConfiguration(tree, options.name);
       expect(config).toBeDefined();
     });
 
@@ -123,12 +122,83 @@ describe('move-packages generator', () => {
       expect(tree.exists(`packages/${options.name}/config/tests.js`)).toBeFalsy();
     });
     it('should update storybook main.js module.exports type to the new relative path', async () => {
-      await generator(tree, options);
       const newPath = '../../../../.storybook/main';
-      const project = getProjects(tree).get(options.name as string) as ProjectConfiguration;
-      const storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
-      const storybookMainJsFile = tree.read(storybookMainJsPath, 'utf8') as string;
-      expect(storybookMainJsFile.split(' ').filter(s => s.includes(newPath))).toHaveLength(2);
+      let project = getProjects(tree).get(options.name) as ProjectConfiguration;
+      let storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
+
+      let storybookMainJsFile = tree.read(storybookMainJsPath, 'utf8') as string;
+      expect(storybookMainJsFile.indexOf(newPath) !== -1).toBeFalsy();
+
+      await generator(tree, options);
+
+      project = getProjects(tree).get(options.name) as ProjectConfiguration;
+      storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
+      storybookMainJsFile = tree.read(storybookMainJsPath, 'utf8') as string;
+      expect(storybookMainJsFile.indexOf(newPath) !== -1).toBeTruthy();
+    });
+    it('should update the CODEOWNERS file with the new relative path', async () => {
+      const oldOwnerDeclaration = `packages/test @dummyOwner`;
+      const newOwnerDeclaration = `packages/${options.destination} @dummyOwner`;
+      const codeOwnersPath = joinPathFragments('/.github', 'CODEOWNERS');
+
+      let codeOwnersFile = tree.read(codeOwnersPath, 'utf8') as string;
+      expect(codeOwnersFile.indexOf(oldOwnerDeclaration) !== -1).toBeTruthy();
+
+      await generator(tree, options);
+
+      codeOwnersFile = tree.read(codeOwnersPath, 'utf8') as string;
+      expect(codeOwnersFile.indexOf(oldOwnerDeclaration) !== -1).toBeFalsy();
+      expect(codeOwnersFile.indexOf(newOwnerDeclaration) !== -1).toBeTruthy();
+    });
+    it(`should update api-extractor.local.json`, async () => {
+      let project = getProjects(tree).get(options.name) as ProjectConfiguration;
+      let apiExtractorLocalPath = joinPathFragments(project.root, 'config/api-extractor.local.json');
+      let apiExtractorLocal = readJson(tree, apiExtractorLocalPath);
+
+      expect(apiExtractorLocal).toMatchInlineSnapshot(`
+        Object {
+          "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+          "extends": "./api-extractor.json",
+          "mainEntryPointFilePath": "<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts",
+        }
+      `);
+
+      await generator(tree, options);
+
+      project = getProjects(tree).get(options.name) as ProjectConfiguration;
+      apiExtractorLocalPath = joinPathFragments(project.root, 'config/api-extractor.local.json');
+
+      apiExtractorLocal = readJson(tree, apiExtractorLocalPath);
+      /* eslint-disable @fluentui/max-len */
+      expect(apiExtractorLocal).toMatchInlineSnapshot(`
+        Object {
+          "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+          "extends": "./api-extractor.json",
+          "mainEntryPointFilePath": "<projectFolder>/dist/packages/testFolder/<unscopedPackageName>/src/index.d.ts",
+        }
+      `);
+      /* eslint-enable @fluentui/max-len */
+    });
+    it('should update the package.json build:local script with the new relative path', async () => {
+      let project = getProjects(tree).get(options.name as string) as ProjectConfiguration;
+      let packageJsonPath = joinPathFragments(project.root, 'package.json');
+      let packageJson = readJson(tree, packageJsonPath);
+
+      expect(packageJson.scripts['build:local']).toEqual(
+        // eslint-disable-next-line @fluentui/max-len
+        'tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/test/src && yarn docs',
+      );
+
+      await generator(tree, options);
+
+      project = getProjects(tree).get(options.name as string) as ProjectConfiguration;
+      packageJsonPath = joinPathFragments(project.root, 'package.json');
+      packageJson = readJson(tree, packageJsonPath);
+
+      expect(packageJson.scripts['build:local']).toEqual(
+        // eslint-disable-next-line @fluentui/max-len
+        `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/${options.destination}/src && yarn docs`,
+      );
     });
   });
 
@@ -142,7 +212,7 @@ describe('move-packages generator', () => {
 
     it(`should move all v9 packages in batch`, async () => {
       const projects = [
-        options.name!,
+        options.name,
         '@proj/react-foo',
         '@proj/react-bar',
         '@proj/react-moo',
@@ -169,7 +239,7 @@ describe('move-packages generator', () => {
 
     it(`should move all v8 packages in batch`, async () => {
       const projects = [
-        options.name!,
+        options.name,
         '@proj/react-foo',
         '@proj/react-bar',
         '@proj/react-moo',
@@ -241,6 +311,8 @@ function setupDummyPackage(
         test: 'just-scripts test',
         'test:watch': 'just-scripts jest-watch',
         'update-snapshots': 'just-scripts jest -u',
+        // eslint-disable-next-line @fluentui/max-len
+        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${normalizedPkgName}/src && yarn docs`,
       },
       dependencies: normalizedOptions.dependencies,
     },
@@ -252,6 +324,11 @@ function setupDummyPackage(
     `,
     babelConfig: {
       ...normalizedOptions.babelConfig,
+    },
+    apiExtractorLocal: {
+      $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
+      extends: './api-extractor.json',
+      mainEntryPointFilePath: '<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts',
     },
   };
 
@@ -294,6 +371,7 @@ function setupDummyPackage(
       });
       `,
   );
+  tree.write(`${paths.root}/config/api-extractor.local.json`, serializeJson(templates.apiExtractorLocal));
 
   addProjectConfiguration(tree, pkgName, {
     root: paths.root,

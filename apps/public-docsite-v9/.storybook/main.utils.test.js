@@ -7,14 +7,14 @@ describe(`main utils`, () => {
       const actual = utils.getVnextStories();
 
       const expected = [
-        expect.stringContaining('../../react-'),
+        expect.stringContaining('../../../packages/react-'),
         expect.stringContaining('/src/**/*.stories.@(ts|tsx|mdx)'),
       ];
 
       expect(actual).toEqual(expect.arrayContaining(expected));
 
       const first = actual[0];
-      expect(first.startsWith('../../react-')).toBeTruthy();
+      expect(first.startsWith('../../../packages/react-')).toBeTruthy();
       expect(first.endsWith('/src/**/*.stories.@(ts|tsx|mdx)')).toBeTruthy();
     });
   });

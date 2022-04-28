@@ -67,7 +67,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     input,
     incrementButton,
     decrementButton,
-    inputType = 'all',
     strings = spinButtonDefaultStrings,
   } = props;
 
@@ -157,10 +156,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   }, [value, displayValue, currentValue, precision, setAtBound, min, max]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (inputType === 'spinners-only') {
-      return;
-    }
-
     if (!internalState.current.previousTextValue) {
       internalState.current.previousTextValue = textValue;
     }

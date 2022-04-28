@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useKeyboardNavAttribute } from './index';
 
-export const Keyborg = () => {
+export const Default = () => {
   return (
     <div ref={useKeyboardNavAttribute()}>
       <button>Start</button>
@@ -11,6 +11,5 @@ export const Keyborg = () => {
 };
 
 export default {
-  title: 'tabster',
-  id: 'Components/tabster',
+  title: 'Components/Tabster',
 };

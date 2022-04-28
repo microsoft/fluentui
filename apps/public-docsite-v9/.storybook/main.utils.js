@@ -9,14 +9,27 @@ const path = require('path');
 function getVnextStories() {
   /** @type {Record<string,unknown>} */
   const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, '../../../packages/react-components/package.json'), 'utf-8'),
+    fs.readFileSync(
+      path.resolve(__dirname, '../../../packages/react-components/react-components/package.json'),
+      'utf-8',
+    ),
   );
 
   const dependencies = /** @type {Record<string,string>} */ (packageJson.dependencies);
 
   return Object.keys({ ...dependencies, '@fluentui/react-components': '' })
     .filter(pkgName => pkgName.startsWith('@fluentui/'))
-    .map(pkgName => '../../../packages/' + pkgName.replace('@fluentui/', '') + '/src/**/*.stories.@(ts|tsx|mdx)');
+    .map(pkgName => {
+      const name = pkgName.replace('@fluentui/', '');
+      const storiesGlob = '/src/**/*.stories.@(ts|tsx|mdx)';
+
+      //TODO: simplify once all v9 packages have been moved to the new react-components subfolder.
+      if (fs.existsSync(`../../packages/${name}/package.json`)) {
+        return `../../../packages/${name}${storiesGlob}`;
+      } else {
+        return `../../../packages/react-components/${name}${storiesGlob}`;
+      }
+    });
 }
 
 exports.getVnextStories = getVnextStories;
