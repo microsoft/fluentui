@@ -118,6 +118,7 @@ e2e/
 etc/
 node_modules/
 src/
+dist/types
 temp/
 __fixtures__
 __mocks__
@@ -174,7 +175,6 @@ This approach significantly improves our current situation:
 
 ### 2. shipping type declarations (TypeScript)
 
-
 #### Problem statement
 
 To be able to provide TypeScript support to our consumers we generate declaration files during `tsc` invocation.
@@ -230,13 +230,14 @@ New build output structure will look like following:
 
 ```sh
 |- <package-name>/
+|-  dist/
+|-  |-  index.d.ts  # rolluped declaration file
 |-  lib/  # module: ESNext
 |-  |- *.js
 |-  |- *.map.js
 |-  lib-commonjs/ # module: CommonJS
 |-  |- *.js
 |-  |- *.map.js
-|-  index.d.ts  # rolluped declaration file
 |-  package.json
 ```
 
