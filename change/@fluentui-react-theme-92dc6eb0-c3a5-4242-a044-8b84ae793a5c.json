@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Added global theme types and tokens",
+  "packageName": "@fluentui/react-theme",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
