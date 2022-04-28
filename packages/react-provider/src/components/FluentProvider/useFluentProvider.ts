@@ -3,7 +3,7 @@ import type { Theme } from '@fluentui/react-theme';
 import { useFluent, useTheme } from '@fluentui/react-shared-contexts';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { useThemeStyleTag } from './useThemeStyleTag';
+import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 
 /**
@@ -46,7 +46,7 @@ export const useFluentProvider_unstable = (
     dir,
     targetDocument,
     theme: mergedTheme,
-    themeClassName: useThemeStyleTag({ theme: mergedTheme, targetDocument }),
+    themeClassName: useFluentProviderThemeStyleTag({ theme: mergedTheme, targetDocument }),
 
     components: {
       root: 'div',

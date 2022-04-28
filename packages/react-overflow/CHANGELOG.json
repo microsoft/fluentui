@@ -2,6 +2,21 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Mon, 25 Apr 2022 09:32:19 GMT",
+      "tag": "@fluentui/react-priority-overflow_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "undefined": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-priority-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.0.0-beta.0",
+            "commit": "02ca1d3c198452c1693067f5f18bd01b2ed5d6e6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:17:29 GMT",
       "tag": "@fluentui/react-overflow_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

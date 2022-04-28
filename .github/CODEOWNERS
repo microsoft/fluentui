@@ -80,13 +80,13 @@ apps/vr-tests-react-components @microsoft/fluentui-react
 apps/ssr-tests @microsoft/fluentui-react
 apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/test-bundles @microsoft/fluentui-react
-apps/upgrade-examples-v8-v9 @microsoft/cxe-red @microsoft/cxe-coastal
+apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-coastal
 apps/theming-designer @microsoft/fluentui-react
 
 #### Packages
 packages/azure-themes @hyoshis @Jacqueline-ms
 packages/bundle-size @microsoft/teams-prg
-packages/date-time-utilities @ermercer @evlevy
+packages/date-time-utilities @ermercer
 packages/eslint-plugin @microsoft/fluentui-react-build
 packages/foundation-legacy @microsoft/cxe-red @khmakoto
 # packages/font-icons-mdl2
@@ -101,7 +101,7 @@ packages/react-cards @microsoft/cxe-red @khmakoto
 packages/react-charting @microsoft/charting-team
 packages/react-conformance-griffel @microsoft/teams-prg
 packages/react-context-selector @microsoft/teams-prg
-packages/react-date-time @ermercer @evlevy
+packages/react-date-time @ermercer
 packages/react-docsite-components @microsoft/fluentui-v8-website
 packages/react-file-type-icons @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
@@ -131,13 +131,13 @@ common/_common.scss @microsoft/cxe-red @phkuo
 ## vNext packages
 packages/keyboard-keys @microsoft/teams-prg
 packages/react-accordion @microsoft/teams-prg @microsoft/cxe-coastal
-packages/react-avatar @microsoft/cxe-red @behowell @khmakoto
+packages/react-components/react-avatar @microsoft/cxe-red @behowell @khmakoto
 packages/react-badge @microsoft/teams-prg @microsoft/cxe-red @behowell
-packages/react-button @microsoft/cxe-red @khmakoto
+packages/react-components/react-button @microsoft/cxe-red @khmakoto
 packages/react-card @microsoft/cxe-prg
-packages/react-checkbox @microsoft/cxe-red @khmakoto
+packages/react-components/react-checkbox @microsoft/cxe-red @khmakoto
 packages/react-combobox @microsoft/cxe-coastal @smhigley
-packages/react-components @microsoft/fluentui-react
+packages/react-components/react-components @microsoft/fluentui-react
 packages/react-dialog @microsoft/cxe-prg
 packages/react-divider @microsoft/cxe-coastal
 packages/react-focus @microsoft/cxe-red @khmakoto
@@ -145,24 +145,27 @@ packages/react-image @microsoft/cxe-prg
 packages/react-input @microsoft/cxe-red
 packages/react-label @microsoft/cxe-red
 packages/react-link @microsoft/cxe-red @khmakoto @microsoft/cxe-coastal
-packages/react-menu @microsoft/teams-prg
-packages/react-popover @microsoft/teams-prg
-packages/react-portal @microsoft/teams-prg
+packages/react-components/react-menu @microsoft/teams-prg
+packages/react-components/react-popover @microsoft/teams-prg
+packages/react-components/react-portal @microsoft/teams-prg
 packages/react-provider @microsoft/teams-prg
-packages/react-radio @microsoft/cxe-red
-packages/react-select @microsoft/cxe-coastal @smhigley
-packages/react-slider @microsoft/cxe-coastal @micahgodbolt
+packages/react-radio @microsoft/cxe-red @behowell @spmonahan
+packages/react-components/react-select @microsoft/cxe-coastal @smhigley
+packages/react-components/react-slider @microsoft/cxe-coastal @micahgodbolt
 packages/react-spinbutton @microsoft/cxe-red @spmonahan
 packages/react-spinner @microsoft/cxe-red @tomi-msft
 packages/react-switch @microsoft/cxe-red @behowell @khmakoto
-packages/react-tabs @microsoft/cxe-coastal @geoffcoxmsft
+packages/react-components/react-tabs @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-text @microsoft/cxe-prg
 packages/react-textarea @microsoft/cxe-red @sopranopillow
 packages/react-tooltip @microsoft/cxe-red @behowell @khmakoto
 packages/react-list @microsoft/teams-prg
 packages/react-toolbar @microsoft/teams-prg @chpalac @ling1726
 packages/react-portal-compat @microsoft/teams-prg
+packages/react-alert @microsoft/teams-prg
+packages/react-portal-compat-context @microsoft/teams-prg
 ## <%= NX-CODEOWNER-PLACEHOLDER %>
+
 
 ## Components
 packages/react @microsoft/cxe-red
@@ -170,14 +173,14 @@ packages/react/src/components/ActivityItem @microsoft/cxe-red @khmakoto
 packages/react/src/components/Announced @microsoft/cxe-red @khmakoto
 packages/react/src/components/Breadcrumb @microsoft/cxe-red @khmakoto
 packages/react/src/components/Button @microsoft/cxe-red @khmakoto
-packages/react/src/components/Calendar @ermercer @evlevy
-packages/react/src/components/CalendarDayGrid @ermercer @evlevy
+packages/react/src/components/Calendar @ermercer
+packages/react/src/components/CalendarDayGrid @ermercer
 packages/react/src/components/Check @microsoft/cxe-red @ThomasMichon @khmakoto
 packages/react/src/components/Checkbox @microsoft/cxe-red @khmakoto
 packages/react/src/components/ChoiceGroup @microsoft/cxe-red
 packages/react/src/components/Coachmark @microsoft/cxe-red @leddie24
 packages/react/src/components/ColorPicker @microsoft/cxe-red
-packages/react/src/components/DatePicker @ermercer @evlevy
+packages/react/src/components/DatePicker @ermercer
 packages/react/src/components/DetailsList @microsoft/cxe-red @ThomasMichon
 packages/react/src/components/DocumentCard @microsoft/cxe-red @yiminwu
 packages/react/src/components/Fabric @microsoft/cxe-red @dzearing
@@ -209,7 +212,7 @@ packages/react/src/components/Text @microsoft/cxe-red @khmakoto
 packages/react/src/components/TextField @microsoft/cxe-red
 packages/react/src/components/Toggle @microsoft/cxe-red @khmakoto
 packages/react/src/components/Tooltip @microsoft/cxe-red @behowell
-packages/react/src/components/WeeklyDayPicker @ermercer @evlevy
+packages/react/src/components/WeeklyDayPicker @ermercer
 
 ## Theming and styling
 packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @dzearing

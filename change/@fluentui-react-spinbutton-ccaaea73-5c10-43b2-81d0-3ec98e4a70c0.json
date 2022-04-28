@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "react-spinbutton: remove private from package.json",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
