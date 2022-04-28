@@ -252,7 +252,6 @@ export const FilterScenario: React.FunctionComponent = () => {
 
   const handleFilterInputKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'ArrowDown') {
-      // alert(document.getElementById('countryItem1'));
       document.getElementById('countryItem0')?.focus();
     }
   };
@@ -272,16 +271,18 @@ export const FilterScenario: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Filter scenario">
       <form autoComplete="off">
-        <Label htmlFor="filterText">Country filter</Label>
-        <Input
-          type="text"
-          input={{ ref: filterInputRef }}
-          id="filterText"
-          name="filterText"
-          value={filterText}
-          onChange={handleFilterInputChange}
-          aria-controls="countriesListbox"
-        />
+        <div>
+          <Label htmlFor="filterText">Country filter</Label>
+          <Input
+            type="text"
+            input={{ ref: filterInputRef }}
+            id="filterText"
+            name="filterText"
+            value={filterText}
+            onChange={handleFilterInputChange}
+            aria-controls="countriesListbox"
+          />
+        </div>
         <Button onClick={handleClearButtonClick}>Clear filter</Button>
         <MenuList id="countriesListbox" role="listbox">
           {countries.filter(filterCountry).map((country, index) => (
