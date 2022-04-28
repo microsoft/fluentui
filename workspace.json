@@ -549,9 +549,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-provider": {
-      "root": "packages/react-provider",
+      "root": "packages/react-components/react-provider",
       "projectType": "library",
-      "sourceRoot": "packages/react-provider/src",
+      "sourceRoot": "packages/react-components/react-provider/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
