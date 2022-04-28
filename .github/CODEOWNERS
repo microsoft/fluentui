@@ -141,7 +141,7 @@ packages/react-components/react-components @microsoft/fluentui-react
 packages/react-components/react-dialog @microsoft/cxe-prg
 packages/react-divider @microsoft/cxe-coastal
 packages/react-focus @microsoft/cxe-red @khmakoto
-packages/react-image @microsoft/cxe-prg
+packages/react-components/react-image @microsoft/cxe-prg
 packages/react-input @microsoft/cxe-red
 packages/react-label @microsoft/cxe-red
 packages/react-link @microsoft/cxe-red @khmakoto @microsoft/cxe-coastal

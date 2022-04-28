@@ -430,9 +430,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-image": {
-      "root": "packages/react-image",
+      "root": "packages/react-components/react-image",
       "projectType": "library",
-      "sourceRoot": "packages/react-image/src",
+      "sourceRoot": "packages/react-components/react-image/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
