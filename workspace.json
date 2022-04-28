@@ -638,9 +638,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-text": {
-      "root": "packages/react-text",
+      "root": "packages/react-components/react-text",
       "projectType": "library",
-      "sourceRoot": "packages/react-text/src",
+      "sourceRoot": "packages/react-components/react-text/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },

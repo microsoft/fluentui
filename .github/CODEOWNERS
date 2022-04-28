@@ -156,7 +156,7 @@ packages/react-spinbutton @microsoft/cxe-red @spmonahan
 packages/react-spinner @microsoft/cxe-red @tomi-msft
 packages/react-switch @microsoft/cxe-red @behowell @khmakoto
 packages/react-components/react-tabs @microsoft/cxe-coastal @geoffcoxmsft
-packages/react-text @microsoft/cxe-prg
+packages/react-components/react-text @microsoft/cxe-prg
 packages/react-textarea @microsoft/cxe-red @sopranopillow
 packages/react-tooltip @microsoft/cxe-red @behowell @khmakoto
 packages/react-list @microsoft/teams-prg
