@@ -20,7 +20,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.67.0",
+    "@fluentui/react": "^8.67.2",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/storybook": "^1.0.0",
     "@fluentui/react-components": "^9.0.0-rc.8",

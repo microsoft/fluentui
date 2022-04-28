@@ -60,11 +60,7 @@ export const CalendarDayBase: React.FunctionComponent<ICalendarDayProps> = props
     <div className={classNames.root}>
       <div className={classNames.header}>
         <HeaderButtonComponentType
-          // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
-          aria-live="polite"
-          aria-atomic="true"
           aria-label={onHeaderSelect ? headerAriaLabel : undefined}
-          key={monthAndYear}
           className={classNames.monthAndYear}
           onClick={onHeaderSelect}
           data-is-focusable={!!onHeaderSelect}
@@ -72,7 +68,9 @@ export const CalendarDayBase: React.FunctionComponent<ICalendarDayProps> = props
           onKeyDown={onButtonKeyDown(onHeaderSelect)}
           type="button"
         >
-          <span id={monthAndYearId}>{monthAndYear}</span>
+          <span id={monthAndYearId} aria-live="polite" aria-atomic="true">
+            {monthAndYear}
+          </span>
         </HeaderButtonComponentType>
         <CalendarDayNavigationButtons {...props} classNames={classNames} />
       </div>
@@ -129,13 +127,6 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
   const prevMonthInBounds = minDate ? compareDatePart(minDate, getMonthStart(navigatedDate)) < 0 : true;
   const nextMonthInBounds = maxDate ? compareDatePart(getMonthEnd(navigatedDate), maxDate) < 0 : true;
 
-  const prevMonthAriaLabel = strings.prevMonthAriaLabel
-    ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()]
-    : undefined;
-  const nextMonthAriaLabel = strings.nextMonthAriaLabel
-    ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()]
-    : undefined;
-
   // use aria-disabled instead of disabled so focus is not lost
   // when a prev/next button becomes disabled after being clicked
   return (
@@ -148,9 +139,12 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
         aria-disabled={!prevMonthInBounds}
         onClick={prevMonthInBounds ? onSelectPrevMonth : undefined}
         onKeyDown={prevMonthInBounds ? onButtonKeyDown(onSelectPrevMonth) : undefined}
-        title={prevMonthAriaLabel}
+        title={
+          strings.prevMonthAriaLabel
+            ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()]
+            : undefined
+        }
         type="button"
-        aria-label={prevMonthAriaLabel}
       >
         <Icon iconName={leftNavigationIcon} />
       </button>
@@ -162,9 +156,12 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
         aria-disabled={!nextMonthInBounds}
         onClick={nextMonthInBounds ? onSelectNextMonth : undefined}
         onKeyDown={nextMonthInBounds ? onButtonKeyDown(onSelectNextMonth) : undefined}
-        title={nextMonthAriaLabel}
+        title={
+          strings.nextMonthAriaLabel
+            ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()]
+            : undefined
+        }
         type="button"
-        aria-label={nextMonthAriaLabel}
       >
         <Icon iconName={rightNavigationIcon} />
       </button>

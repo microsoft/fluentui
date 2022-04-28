@@ -114,15 +114,6 @@ export type SpinButtonCommons = {
   size: 'small' | 'medium';
 
   /**
-   * Controls which input types update the value.
-   *
-   * - 'all': both the spinner buttons and input field are enabled.
-   * - 'spinners-only': only the spinner buttons are enabled.
-   * @default all
-   */
-  inputType: 'all' | 'spinners-only';
-
-  /**
    * Strings for localizing text in the control.
    */
   strings?: SpinButtonStrings;

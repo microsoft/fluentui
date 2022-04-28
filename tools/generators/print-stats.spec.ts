@@ -1,22 +1,14 @@
 import { addProjectConfiguration, getProjects, logger, stripIndents, Tree } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import * as chalk from 'chalk';
+import { disableChalk, formatMockedCalls } from '../utils-testing';
 
 import { printStats } from './print-stats';
 
 describe(`print stats`, () => {
-  // @ts-expect-error - chalk ships wrong types. this is standard public API to turn off chalk
-  chalk.level = 0;
-
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
-
-  function formatMockedCalls(values: string[][]) {
-    return values
-      .flat()
-      .map(line => line.trim())
-      .join('\n');
-  }
+  disableChalk(chalk);
 
   let tree: Tree;
 

@@ -19,7 +19,7 @@ export interface DividerVariables {
 
 export const dividerVariables = (siteVars: any): DividerVariables => ({
   colorScheme: pickValuesFromColorScheme(siteVars.colorScheme, dividerColorAreas),
-  dividerColor: siteVars.colors.grey[150],
+  dividerColor: siteVars.colorScheme.brand.border,
   textColor: siteVars.colors.grey[450],
   textFontSize: siteVars.fontSizeSmall,
   textLineHeight: siteVars.lineHeightSmall,

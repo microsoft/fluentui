@@ -31,6 +31,7 @@ import {
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 import { addCodeowner } from '../add-codeowners';
 import { printStats } from '../print-stats';
+import { generateChangeFilesHelp } from '../generate-change-files';
 
 interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
 
@@ -74,6 +75,15 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
 
   return () => {
     printUserLogs(userLog);
+
+    const changedFilesPath = tree.listChanges().map(value => value.path);
+
+    if (changedFilesPath.length > 0) {
+      generateChangeFilesHelp({
+        message: 'chore: update package scaffold',
+        type: 'none',
+      });
+    }
   };
 }
 
@@ -115,7 +125,7 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
   updateLocalJestConfig(tree, options);
 
   // update package npm scripts
-  updateNpmScripts(tree, options);
+  updatePackageJson(tree, options);
   updateApiExtractorForLocalBuilds(tree, options);
 
   // setup storybook
@@ -135,17 +145,19 @@ const templates = {
   apiExtractorLocal: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
     extends: './api-extractor.json',
-    mainEntryPointFilePath: '<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts',
+    mainEntryPointFilePath: '<projectFolder>/dist/packages/react-components/<unscopedPackageName>/src/index.d.ts',
   },
   apiExtractor: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
     extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
+    // @TODO - remove this once all v9 packages have been migrated to ship rolluped types
+    mainEntryPointFilePath: '<projectFolder>/dist/types/index.d.ts',
   },
   tsconfig: (options: { platform: 'node' | 'web'; js: boolean; hasConformance: boolean }) => {
     return {
       main: () => {
         const tsConfig = {
-          extends: '../../tsconfig.base.json',
+          extends: '../../../tsconfig.base.json',
           compilerOptions: {
             target: 'ES2019',
             // by default we gonna use tsc for type checking only
@@ -184,6 +196,8 @@ const templates = {
             lib: ['ES2019'],
             outDir: 'dist',
             declaration: true,
+            declarationDir: 'dist/types',
+            inlineSources: true,
             types: ['static-assets', 'environment'],
           } as TsConfig['compilerOptions'],
           exclude: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
@@ -253,7 +267,7 @@ const templates = {
       */
       module.exports = {
         displayName: '${options.pkgName}',
-        preset: '../../jest.preset.js',
+        preset: '../../../jest.preset.js',
         globals: {
           'ts-jest': {
             tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -270,9 +284,9 @@ const templates = {
   `,
   storybook: {
     main: stripIndents`
-      const rootMain = require('../../../.storybook/main');
+      const rootMain = require('../../../../.storybook/main');
 
-      module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+      module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
         stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
@@ -286,7 +300,7 @@ const templates = {
       });
     `,
     preview: stripIndents`
-      import * as rootPreview from '../../../.storybook/preview';
+      import * as rootPreview from '../../../../.storybook/preview';
 
       /** @type {typeof rootPreview.decorators} */
       export const decorators = [...rootPreview.decorators];
@@ -326,6 +340,7 @@ const templates = {
     etc/
     node_modules/
     src/
+    dist/types/
     temp/
     __fixtures__
     __mocks__
@@ -510,19 +525,22 @@ function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
+function updatePackageJson(tree: Tree, options: NormalizedSchema) {
   /* eslint-disable @fluentui/max-len */
   const scripts = {
     docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
-    storybook: 'node ../../scripts/storybook/runner',
+    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/${options.normalizedPkgName}/src && yarn docs`,
+    storybook: 'node ../../../scripts/storybook/runner',
     start: 'yarn storybook',
     test: 'jest --passWithNoTests',
     'type-check': 'tsc -b tsconfig.json',
   };
   /* eslint-enable @fluentui/max-len */
 
-  updateJson(tree, options.paths.packageJson, json => {
+  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+    json.scripts = json.scripts || {};
+    json.typings = 'dist/index.d.ts';
+
     delete json.scripts['update-snapshots'];
     delete json.scripts['start-test'];
     delete json.scripts['test:watch'];

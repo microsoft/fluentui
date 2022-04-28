@@ -4,11 +4,12 @@
     "enabled": true
   },
   "docModel": {
-    "apiJsonFilePath": "<projectFolder>/dist/<unscopedPackageName>.api.json",
-    "enabled": true
+    "enabled": true,
+    "apiJsonFilePath": "<projectFolder>/dist/<unscopedPackageName>.api.json"
   },
   "dtsRollup": {
-    "enabled": true
+    "enabled": true,
+    "untrimmedFilePath": "<projectFolder>/dist/index.d.ts"
   },
   "mainEntryPointFilePath": "<projectFolder>/lib/index.d.ts",
   "messages": {

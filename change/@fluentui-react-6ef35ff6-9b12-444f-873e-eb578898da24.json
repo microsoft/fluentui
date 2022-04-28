@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix HCM disabled checkmarks",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
