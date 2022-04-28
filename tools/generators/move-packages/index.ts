@@ -12,6 +12,10 @@ import { getProjectConfig, getProjects, hasSchemaFlag, isPackageConverged, isV8P
 
 import { MovePackagesGeneratorSchema } from './schema';
 
+interface AssertedSchema extends MovePackagesGeneratorSchema {
+  name: string;
+}
+
 export default async function (tree: Tree, schema: MovePackagesGeneratorSchema) {
   validateSchema(schema);
 
@@ -76,11 +80,11 @@ function movePackage(tree: Tree, schema: MovePackagesGeneratorSchema) {
   // moveGenerator automatically updates the Readme file of the packages to replace
   // the package name with a new name based on the "destination" flag. This check
   // reverts the changes it makes.
-  updateReadMe(tree, schema);
-  updateApiExtractor(tree, schema);
-  updateStorybookTypeImport(tree, schema);
-  updateBuildLocalScript(tree, schema);
-  updateCodeOwners(tree, schema);
+  updateReadMe(tree, { name, destination });
+  updateApiExtractor(tree, { name, destination });
+  updateStorybookTypeImport(tree, { name, destination });
+  updateBuildLocalScript(tree, { name, destination });
+  updateCodeOwners(tree, { name, destination });
 }
 
 function validateSchema(schema: MovePackagesGeneratorSchema) {
@@ -111,62 +115,53 @@ function getNewProjectName(destinationPath: string) {
  * The moveGenerator automatically renames the package and updates the README.md file to reflect that change.
  * This function restores the contents of the README.md file back to original state.
  */
-function updateReadMe(tree: Tree, schema: MovePackagesGeneratorSchema) {
-  const { name, destination } = schema;
-  if (name) {
-    const project = getProjects(tree).get(name) as ProjectConfiguration;
-    const readMePath = joinPathFragments(project.root, 'README.md');
+function updateReadMe(tree: Tree, schema: AssertedSchema) {
+  const project = getProjects(tree).get(schema.name) as ProjectConfiguration;
+  const readMePath = joinPathFragments(project.root, 'README.md');
 
-    if (!tree.exists(readMePath)) {
-      return;
-    }
-
-    const newName = new RegExp(`${getNewProjectName(destination)}`, 'g');
-    const readMeFile = tree.read(readMePath, 'utf8') as string;
-    const updatedReadMeFile = readMeFile.replace(newName, name);
-    tree.write(readMePath, updatedReadMeFile);
+  if (!tree.exists(readMePath)) {
+    return;
   }
+
+  const newName = new RegExp(`${getNewProjectName(schema.destination)}`, 'g');
+  const readMeFile = tree.read(readMePath, 'utf8') as string;
+  const updatedReadMeFile = readMeFile.replace(newName, schema.name);
+  tree.write(readMePath, updatedReadMeFile);
 }
 
 /**
  * manually update each packages' storybook main.js module.exports type to the new
  * storybook relative path.
  */
-function updateStorybookTypeImport(tree: Tree, schema: MovePackagesGeneratorSchema) {
-  const { name } = schema;
-  if (name) {
-    const project = getProjects(tree).get(name) as ProjectConfiguration;
-    const storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
+function updateStorybookTypeImport(tree: Tree, schema: AssertedSchema) {
+  const project = getProjects(tree).get(schema.name) as ProjectConfiguration;
+  const storybookMainJsPath = joinPathFragments(project.root, '/.storybook/main.js');
 
-    if (!tree.exists(storybookMainJsPath)) {
-      return;
-    }
-
-    const storybookMainJsFile = tree.read(storybookMainJsPath, 'utf8') as string;
-    const [newStorybookPath, oldStorybookPath] = storybookMainJsFile.match(/\([^)]*\)/g) as RegExpMatchArray;
-    const updatedStorybookMainJsFile = storybookMainJsFile.replace(oldStorybookPath, newStorybookPath);
-    tree.write(storybookMainJsPath, updatedStorybookMainJsFile);
+  if (!tree.exists(storybookMainJsPath)) {
+    return;
   }
+
+  const storybookMainJsFile = tree.read(storybookMainJsPath, 'utf8') as string;
+  const [newStorybookPath, oldStorybookPath] = storybookMainJsFile.match(/\([^)]*\)/g) as RegExpMatchArray;
+  const updatedStorybookMainJsFile = storybookMainJsFile.replace(oldStorybookPath, newStorybookPath);
+  tree.write(storybookMainJsPath, updatedStorybookMainJsFile);
 }
 
-function updateCodeOwners(tree: Tree, schema: MovePackagesGeneratorSchema) {
-  const { name, destination } = schema;
-  if (name) {
-    const pkgName = name.split('/').slice(-1).join('/');
-    const codeownersPath = joinPathFragments('/.github', 'CODEOWNERS');
+function updateCodeOwners(tree: Tree, schema: AssertedSchema) {
+  const projectConfig = getProjectConfig(tree, { packageName: schema.name });
+  const codeownersPath = joinPathFragments('/.github', 'CODEOWNERS');
 
-    if (!tree.exists(codeownersPath)) {
-      return;
-    }
-
-    const codeOwnersFile = tree.read(codeownersPath, 'utf8') as string;
-    const updatedCodeOwnersFile = codeOwnersFile.replace(pkgName, destination);
-    tree.write(codeownersPath, updatedCodeOwnersFile);
+  if (!tree.exists(codeownersPath)) {
+    return;
   }
+
+  const codeOwnersFile = tree.read(codeownersPath, 'utf8') as string;
+  const updatedCodeOwnersFile = codeOwnersFile.replace(projectConfig.normalizedPkgName, schema.destination);
+  tree.write(codeownersPath, updatedCodeOwnersFile);
 }
 
-function updateApiExtractor(tree: Tree, schema: MovePackagesGeneratorSchema) {
-  const projectConfig = getProjectConfig(tree, { packageName: schema.name! });
+function updateApiExtractor(tree: Tree, schema: AssertedSchema) {
+  const projectConfig = getProjectConfig(tree, { packageName: schema.name });
   const apiExtractorLocalPath = joinPathFragments(projectConfig.paths.configRoot, 'api-extractor.local.json');
   const apiExtractorLocal = readJson(tree, apiExtractorLocalPath);
   const originalEntryPointPath = apiExtractorLocal.mainEntryPointFilePath;
@@ -180,17 +175,13 @@ function updateApiExtractor(tree: Tree, schema: MovePackagesGeneratorSchema) {
   writeJson(tree, apiExtractorLocalPath, apiExtractorLocal);
 }
 
-function updateBuildLocalScript(tree: Tree, schema: MovePackagesGeneratorSchema) {
-  const { name, destination } = schema;
-  if (name) {
-    const project = getProjects(tree).get(name) as ProjectConfiguration;
-    const pkgName = name.split('/').slice(-1).join('/');
-    const pkgJsonPath = joinPathFragments(project.root, 'package.json');
-    updateJson(tree, pkgJsonPath, json => {
-      const originalScript = json.scripts['build:local'];
-      const updatedScript = originalScript.replace(pkgName, destination);
-      json.scripts['build:local'] = updatedScript;
-      return json;
-    });
-  }
+function updateBuildLocalScript(tree: Tree, schema: AssertedSchema) {
+  const projectConfig = getProjectConfig(tree, { packageName: schema.name });
+  updateJson(tree, projectConfig.paths.packageJson, json => {
+    json.scripts = json.scripts ?? {};
+    const originalScript = json.scripts['build:local'];
+    const updatedScript = originalScript.replace(projectConfig.normalizedPkgName, schema.destination);
+    json.scripts['build:local'] = updatedScript;
+    return json;
+  });
 }
