@@ -458,10 +458,10 @@
       "implicitDependencies": []
     },
     "@fluentui/react-list": {
-      "root": "packages/react-list",
+      "root": "packages/react-components/react-list",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-list/src",
+      "sourceRoot": "packages/react-components/react-list/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-menu": {
