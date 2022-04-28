@@ -35,7 +35,7 @@ export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentSty
     ...getPointerStyles({
       backgroundColor: p.subtle ? v.subtleBackgroundColor : v.backgroundColor,
       borderSize: v.borderSize,
-      borderColor: p.subtle ? v.subtleBorderColor : 'transparent',
+      borderColor: p.subtle ? v.subtleBorderColor : v.borderColor,
       gap: v.pointerGap,
       padding: v.pointerMargin,
       height: v.pointerHeight,
@@ -55,6 +55,8 @@ export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentSty
     color: v.color,
     background: v.backgroundColor,
     borderRadius: v.borderRadius,
+    borderStyle: v.borderStyle,
+    borderColor: v.borderColor,
     boxShadow: v.boxShadow,
 
     ...(p.subtle && {
