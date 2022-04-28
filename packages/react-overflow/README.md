@@ -1,4 +1,4 @@
-# @fluentui/react-priority-overflow
+# @fluentui/react-overflow
 
 **React Priority Overflow components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 

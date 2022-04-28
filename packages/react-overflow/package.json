@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-priority-overflow",
+  "name": "@fluentui/react-overflow",
   "version": "9.0.0-alpha.0",
   "private": true,
   "description": "React bindings for @fluentui/priority-overflow",
@@ -22,7 +22,7 @@
     "start": "yarn storybook",
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-priority-overflow/src && yarn docs",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-overflow/src && yarn docs",
     "storybook": "node ../../scripts/storybook/runner",
     "type-check": "tsc -b tsconfig.json"
   },

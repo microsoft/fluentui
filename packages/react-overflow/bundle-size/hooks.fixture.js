@@ -5,7 +5,7 @@ import {
   useIsOverflowItemVisible,
   useIsOverflowGroupVisible,
   useOverflowCount,
-} from '@fluentui/react-priority-overflow';
+} from '@fluentui/react-overflow';
 
 console.log(
   useOverflowContainer,

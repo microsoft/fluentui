@@ -536,11 +536,11 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-priority-overflow": {
-      "root": "packages/react-priority-overflow",
+    "@fluentui/react-overflow": {
+      "root": "packages/react-overflow",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-priority-overflow/src",
+      "sourceRoot": "packages/react-overflow/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-proptypes": {
