@@ -160,7 +160,7 @@ packages/react-text @microsoft/cxe-prg
 packages/react-textarea @microsoft/cxe-red @sopranopillow
 packages/react-tooltip @microsoft/cxe-red @behowell @khmakoto
 packages/react-components/react-list @microsoft/teams-prg
-packages/react-toolbar @microsoft/teams-prg @chpalac @ling1726
+packages/react-components/react-toolbar @microsoft/teams-prg @chpalac @ling1726
 packages/react-portal-compat @microsoft/teams-prg
 packages/react-alert @microsoft/teams-prg
 packages/react-portal-compat-context @microsoft/teams-prg

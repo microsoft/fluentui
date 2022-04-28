@@ -659,9 +659,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-toolbar": {
-      "root": "packages/react-toolbar",
+      "root": "packages/react-components/react-toolbar",
       "projectType": "library",
-      "sourceRoot": "packages/react-toolbar/src",
+      "sourceRoot": "packages/react-components/react-toolbar/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
