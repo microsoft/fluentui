@@ -107,7 +107,7 @@ packages/react-file-type-icons @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-positioning @microsoft/teams-prg
-packages/react-priority-overflow @microsoft/teams-prg
+packages/react-overflow @microsoft/teams-prg
 packages/react-shared-contexts @microsoft/teams-prg
 packages/react-storybook @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-storybook-addon @microsoft/cxe-prg
