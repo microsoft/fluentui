@@ -268,10 +268,12 @@ describe('migrate-converged-pkg generator', () => {
       expect(tsConfigLib).toEqual({
         extends: './tsconfig.json',
         compilerOptions: {
-          declaration: true,
-          lib: ['ES2019', 'dom'],
           noEmit: false,
           outDir: 'dist',
+          declaration: true,
+          declarationDir: 'dist/types',
+          inlineSources: true,
+          lib: ['ES2019', 'dom'],
           types: ['static-assets', 'environment'],
         },
         exclude: ['./src/common/**', '**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
@@ -745,7 +747,48 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
+  describe(`api-extractor.json updates`, () => {
+    it(`should create api-extractor.json`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeFalsy();
+
+      await generator(tree, options);
+
+      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeTruthy();
+    });
+
+    it(`should create api-extractor.local.json for scripts:docs task consumption`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(tree.exists(`${projectConfig.root}/config/api-extractor.local.json`)).toBeFalsy();
+
+      await generator(tree, options);
+
+      /* eslint-disable @fluentui/max-len */
+      expect(readJson(tree, `${projectConfig.root}/config/api-extractor.local.json`)).toMatchInlineSnapshot(`
+        Object {
+          "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+          "extends": "./api-extractor.json",
+          "mainEntryPointFilePath": "<projectFolder>/dist/packages/react-components/<unscopedPackageName>/src/index.d.ts",
+        }
+      `);
+      /* eslint-enable @fluentui/max-len */
+    });
+  });
+
   describe('package.json updates', () => {
+    it(`should update rolluped typings source`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+      expect(pkgJson.typings).toEqual('lib/index.d.ts');
+
+      await generator(tree, options);
+
+      pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+      expect(pkgJson.typings).toEqual('dist/index.d.ts');
+    });
+
     it(`should update package npm scripts`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
       let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
@@ -790,20 +833,8 @@ describe('migrate-converged-pkg generator', () => {
       const projectConfig = readProjectConfiguration(tree, nodePackageName);
       let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
 
-      expect(pkgJson.scripts).toMatchInlineSnapshot(`
-        Object {
-          "build": "just-scripts build",
-          "clean": "just-scripts clean",
-          "code-style": "just-scripts code-style",
-          "just": "just-scripts",
-          "lint": "just-scripts lint",
-          "start": "just-scripts dev:storybook",
-          "start-test": "just-scripts jest-watch",
-          "test": "just-scripts test",
-          "test:watch": "just-scripts jest-watch",
-          "update-snapshots": "just-scripts jest -u",
-        }
-      `);
+      expect(pkgJson.scripts.start).toBeDefined();
+      expect(pkgJson.scripts['start-test']).toBeDefined();
 
       await generator(tree, {
         name: nodePackageName,
@@ -811,38 +842,8 @@ describe('migrate-converged-pkg generator', () => {
 
       pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
 
-      expect(pkgJson.scripts).toEqual({
-        build: 'just-scripts build',
-        // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/babel-make-styles/src && yarn docs`,
-        clean: 'just-scripts clean',
-        'code-style': 'just-scripts code-style',
-        docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-        just: 'just-scripts',
-        lint: 'just-scripts lint',
-        test: 'jest --passWithNoTests',
-        'type-check': 'tsc -b tsconfig.json',
-      });
-    });
-
-    it(`should create api-extractor.json`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
-
-      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeFalsy();
-
-      await generator(tree, options);
-
-      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeTruthy();
-    });
-
-    it(`should create api-extractor.local.json for scripts:docs task consumption`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
-
-      expect(tree.exists(`${projectConfig.root}/config/api-extractor.local.json`)).toBeFalsy();
-
-      await generator(tree, options);
-
-      expect(tree.exists(`${projectConfig.root}/config/api-extractor.local.json`)).toBeTruthy();
+      expect(pkgJson.scripts.start).not.toBeDefined();
+      expect(pkgJson.scripts['start-test']).not.toBeDefined();
     });
   });
 
@@ -905,6 +906,7 @@ describe('migrate-converged-pkg generator', () => {
         etc/
         node_modules/
         src/
+        dist/types/
         temp/
         __fixtures__
         __mocks__
@@ -1195,6 +1197,7 @@ function setupDummyPackage(
     packageJson: {
       name: pkgName,
       version: normalizedOptions.version,
+      typings: 'lib/index.d.ts',
       scripts: {
         build: 'just-scripts build',
         clean: 'just-scripts clean',
