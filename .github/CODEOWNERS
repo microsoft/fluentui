@@ -134,14 +134,14 @@ packages/react-accordion @microsoft/teams-prg @microsoft/cxe-coastal
 packages/react-components/react-avatar @microsoft/cxe-red @behowell @khmakoto
 packages/react-badge @microsoft/teams-prg @microsoft/cxe-red @behowell
 packages/react-components/react-button @microsoft/cxe-red @khmakoto
-packages/react-card @microsoft/cxe-prg
+packages/react-components/react-card @microsoft/cxe-prg
 packages/react-components/react-checkbox @microsoft/cxe-red @khmakoto
 packages/react-combobox @microsoft/cxe-coastal @smhigley
 packages/react-components/react-components @microsoft/fluentui-react
-packages/react-dialog @microsoft/cxe-prg
+packages/react-components/react-dialog @microsoft/cxe-prg
 packages/react-divider @microsoft/cxe-coastal
 packages/react-focus @microsoft/cxe-red @khmakoto
-packages/react-image @microsoft/cxe-prg
+packages/react-components/react-image @microsoft/cxe-prg
 packages/react-input @microsoft/cxe-red
 packages/react-label @microsoft/cxe-red
 packages/react-link @microsoft/cxe-red @khmakoto @microsoft/cxe-coastal
