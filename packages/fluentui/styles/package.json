@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/styles",
   "description": "A set of styling utilities for CSS-in-JS.",
-  "version": "0.61.0",
+  "version": "0.62.0",
   "author": "Marija Najdova <mnajdova@gmail.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {

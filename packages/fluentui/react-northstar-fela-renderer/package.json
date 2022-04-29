@@ -1,12 +1,12 @@
 {
   "name": "@fluentui/react-northstar-fela-renderer",
   "description": "A CSS-in-JS renderer based on Fela for FluentUI React Northstar.",
-  "version": "0.61.0",
+  "version": "0.62.0",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
-    "@fluentui/react-northstar-styles-renderer": "^0.61.0",
-    "@fluentui/styles": "^0.61.0",
+    "@fluentui/react-northstar-styles-renderer": "^0.62.0",
+    "@fluentui/styles": "^0.62.0",
     "css-in-js-utils": "^3.0.0",
     "fela": "^10.6.1",
     "fela-plugin-embedded": "^10.6.1",

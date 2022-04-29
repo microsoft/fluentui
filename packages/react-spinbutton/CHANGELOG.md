@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-spinbutton
 
-This log was last generated on Fri, 04 Mar 2022 05:17:40 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Apr 2022 09:32:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.7)
+
+Mon, 25 Apr 2022 09:32:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.0.0-beta.6..@fluentui/react-spinbutton_v9.0.0-beta.7)
+
+### Changes
+
+- use ::after pseudo element in styles ([PR #22591](https://github.com/microsoft/fluentui/pull/22591) by seanmonahan@microsoft.com)
+- react-spinbutton: remove private from package.json ([PR #22568](https://github.com/microsoft/fluentui/pull/22568) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-input to v9.0.0-beta.7 ([PR #22601](https://github.com/microsoft/fluentui/pull/22601) by beachball)
+
+## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.6)
+
+Tue, 19 Apr 2022 19:17:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.0.0-beta.6..@fluentui/react-spinbutton_v9.0.0-beta.6)
+
+### Changes
+
+- Bump @fluentui/react-input to v9.0.0-beta.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.5 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.4 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-label to v9.0.0-beta.10 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.6)
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add onChange event prop to Radio",
-  "packageName": "@fluentui/react-radio",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

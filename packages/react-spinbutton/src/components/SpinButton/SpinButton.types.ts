@@ -114,13 +114,9 @@ export type SpinButtonCommons = {
   size: 'small' | 'medium';
 
   /**
-   * Controls which input types update the value.
-   *
-   * - 'all': both the spinner buttons and input field are enabled.
-   * - 'spinners-only': only the spinner buttons are enabled.
-   * @default all
+   * Strings for localizing text in the control.
    */
-  inputType: 'all' | 'spinners-only';
+  strings?: SpinButtonStrings;
 };
 
 /**
@@ -161,3 +157,17 @@ export type SpinButtonOnChangeData = {
 
 export type SpinButtonSpinState = 'rest' | 'up' | 'down';
 export type SpinButtonBounds = 'none' | 'min' | 'max' | 'both';
+
+export type SpinButtonStrings = {
+  /**
+   * Label applied to the increment button.
+   * Can include the token "\{step\}" which will be replaced with the value of the `step` prop.
+   */
+  incrementButtonLabel: string;
+
+  /**
+   * Label applied to the decrement button.
+   * Can include the token "\{step\}" which will be replaced with the value of the `step` prop.
+   */
+  decrementButtonLabel: string;
+};
