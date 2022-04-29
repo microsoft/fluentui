@@ -81,7 +81,7 @@ export const typographyStyles: TypographyStyles = {
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeHero700,
     fontWeight: tokens.fontWeightSemibold,
-    lineHeight: tokens.fontSizeHero700,
+    lineHeight: tokens.lineHeightHero700,
   },
   title3: {
     fontFamily: tokens.fontFamilyBase,
