@@ -4,8 +4,8 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-link',
-  preset: '../../jest.preset.js',
+  displayName: 'react-label',
+  preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsConfig: '<rootDir>/tsconfig.spec.json',

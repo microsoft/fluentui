@@ -437,23 +437,23 @@
       "implicitDependencies": []
     },
     "@fluentui/react-input": {
-      "root": "packages/react-input",
+      "root": "packages/react-components/react-input",
       "projectType": "library",
-      "sourceRoot": "packages/react-input/src",
+      "sourceRoot": "packages/react-components/react-input/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-label": {
-      "root": "packages/react-label",
+      "root": "packages/react-components/react-label",
       "projectType": "library",
-      "sourceRoot": "packages/react-label/src",
+      "sourceRoot": "packages/react-components/react-label/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-link": {
-      "root": "packages/react-link",
+      "root": "packages/react-components/react-link",
       "projectType": "library",
-      "sourceRoot": "packages/react-link/src",
+      "sourceRoot": "packages/react-components/react-link/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
