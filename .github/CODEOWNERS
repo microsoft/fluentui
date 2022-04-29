@@ -113,7 +113,7 @@ packages/react-components/react-storybook @microsoft/cxe-prg @microsoft/teams-pr
 packages/react-components/react-storybook-addon @microsoft/cxe-prg
 packages/react-tabster @microsoft/teams-prg
 packages/react-theme @microsoft/teams-prg
-packages/react-utilities @microsoft/teams-prg
+packages/react-components/react-utilities @microsoft/teams-prg
 packages/storybook @microsoft/cxe-prg @microsoft/teams-prg
 packages/style-utilities @dzearing
 packages/style-utilities/src/interfaces @phkuo @dzearing
