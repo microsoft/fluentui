@@ -20,8 +20,8 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-provider/src && yarn docs",
-    "storybook": "node ../../scripts/storybook/runner",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-provider/src && yarn docs",
+    "storybook": "node ../../../scripts/storybook/runner",
     "start": "yarn storybook",
     "type-check": "tsc -b tsconfig.json"
   },

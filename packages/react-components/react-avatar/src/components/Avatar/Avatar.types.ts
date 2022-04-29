@@ -57,7 +57,7 @@ type AvatarCommons = {
    *
    * @defaultvalue 32
    */
-  size: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+  size: AvatarSizes;
 
   /**
    * The avatar can have a circular or square shape.
@@ -134,6 +134,11 @@ export type AvatarNamedColor =
   | 'mink'
   | 'platinum'
   | 'anchor';
+
+/**
+ * Sizes that can be used for the Avatar
+ */
+export type AvatarSizes = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 /**
  * Properties for Avatar

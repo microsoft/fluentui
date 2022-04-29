@@ -148,7 +148,7 @@ packages/react-components/react-link @microsoft/cxe-red @khmakoto @microsoft/cxe
 packages/react-components/react-menu @microsoft/teams-prg
 packages/react-components/react-popover @microsoft/teams-prg
 packages/react-components/react-portal @microsoft/teams-prg
-packages/react-provider @microsoft/teams-prg
+packages/react-components/react-provider @microsoft/teams-prg
 packages/react-radio @microsoft/cxe-red @behowell @spmonahan
 packages/react-components/react-select @microsoft/cxe-coastal @smhigley
 packages/react-components/react-slider @microsoft/cxe-coastal @micahgodbolt
@@ -159,8 +159,8 @@ packages/react-components/react-tabs @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-text @microsoft/cxe-prg
 packages/react-textarea @microsoft/cxe-red @sopranopillow
 packages/react-tooltip @microsoft/cxe-red @behowell @khmakoto
-packages/react-list @microsoft/teams-prg
-packages/react-toolbar @microsoft/teams-prg @chpalac @ling1726
+packages/react-components/react-list @microsoft/teams-prg
+packages/react-components/react-toolbar @microsoft/teams-prg @chpalac @ling1726
 packages/react-portal-compat @microsoft/teams-prg
 packages/react-alert @microsoft/teams-prg
 packages/react-portal-compat-context @microsoft/teams-prg

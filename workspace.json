@@ -458,10 +458,10 @@
       "implicitDependencies": []
     },
     "@fluentui/react-list": {
-      "root": "packages/react-list",
+      "root": "packages/react-components/react-list",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-list/src",
+      "sourceRoot": "packages/react-components/react-list/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-menu": {
@@ -549,9 +549,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-provider": {
-      "root": "packages/react-provider",
+      "root": "packages/react-components/react-provider",
       "projectType": "library",
-      "sourceRoot": "packages/react-provider/src",
+      "sourceRoot": "packages/react-components/react-provider/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -659,9 +659,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-toolbar": {
-      "root": "packages/react-toolbar",
+      "root": "packages/react-components/react-toolbar",
       "projectType": "library",
-      "sourceRoot": "packages/react-toolbar/src",
+      "sourceRoot": "packages/react-components/react-toolbar/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
