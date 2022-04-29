@@ -1,8 +1,28 @@
 import * as React from 'react';
 import { Input } from '../index';
+import { Label } from '@fluentui/react-label';
+import { useId } from '@fluentui/react-utilities';
+import { makeStyles } from '@griffel/react';
+
+const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '5px',
+    maxWidth: '300px',
+  },
+});
 
 export const Placeholder = () => {
-  return <Input placeholder="input with placeholder" aria-label="input with placeholder" />;
+  const placeholderId = useId('input-placeholder');
+  const styles = useStyles();
+
+  return (
+    <div className={styles.root}>
+      <Label htmlFor={placeholderId}>Input With a Placeholder</Label>
+      <Input placeholder="This is a placeholder" id={placeholderId} />
+    </div>
+  );
 };
 
 Placeholder.parameters = {
