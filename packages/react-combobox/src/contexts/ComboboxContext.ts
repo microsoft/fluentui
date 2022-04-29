@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { createContext } from '@fluentui/react-context-selector';
 import { ComboboxState } from '../components/Combobox/Combobox.types';
 
@@ -6,20 +7,49 @@ import { ComboboxState } from '../components/Combobox/Combobox.types';
  */
 export type ComboboxContextValue = Pick<
   ComboboxState,
-  'activeOption' | 'appearance' | 'idBase' | 'onOptionClick' | 'open' | 'registerOption' | 'selectedOptions' | 'size'
+  | 'activeOption'
+  | 'idBase'
+  | 'onListboxClick'
+  | 'onListboxMouseDown'
+  | 'onOptionClick'
+  | 'onTriggerBlur'
+  | 'onTriggerClick'
+  | 'onTriggerKeyDown'
+  | 'open'
+  | 'popperContainerRef'
+  | 'registerOption'
+  | 'selectedOptions'
+  | 'triggerRef'
+  | 'value'
 >;
 
 export const ComboboxContext = createContext<ComboboxContextValue>({
   activeOption: undefined,
-  appearance: 'outline',
   idBase: '',
+  onListboxClick() {
+    // noop
+  },
+  onListboxMouseDown() {
+    // noop
+  },
   onOptionClick() {
     // noop
   },
+  onTriggerBlur() {
+    // noop
+  },
+  onTriggerClick() {
+    // noop
+  },
+  onTriggerKeyDown() {
+    // noop
+  },
   open: false,
+  popperContainerRef: ({ current: null } as unknown) as React.MutableRefObject<HTMLDivElement>,
   selectedOptions: [],
   registerOption() {
     // noop
   },
-  size: 'medium',
+  triggerRef: ({ current: null } as unknown) as React.RefObject<HTMLButtonElement>,
+  value: undefined,
 });

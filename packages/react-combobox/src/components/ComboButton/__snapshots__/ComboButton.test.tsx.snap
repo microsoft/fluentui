@@ -6,6 +6,7 @@ exports[`ComboButton renders a default state 1`] = `
     class="fui-ComboButton"
   >
     <button
+      aria-expanded="false"
       class="fui-ComboButton__content"
       role="combobox"
       type="button"

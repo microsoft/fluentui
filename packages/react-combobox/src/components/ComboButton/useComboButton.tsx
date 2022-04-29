@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
-import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ComboButtonProps, ComboButtonState } from './ComboButton.types';
 
@@ -18,17 +18,22 @@ export const useComboButton_unstable = (
   props: ComboButtonProps,
   ref: React.Ref<HTMLButtonElement>,
 ): ComboButtonState => {
-  const { placeholder, value } = props;
+  const { appearance = 'outline', placeholder, size = 'medium' } = props;
 
-  const appearance = useContextSelector(ComboboxContext, ctx => ctx.appearance);
-  const size = useContextSelector(ComboboxContext, ctx => ctx.size);
+  const activeOption = useContextSelector(ComboboxContext, ctx => ctx.activeOption);
+  const open = useContextSelector(ComboboxContext, ctx => ctx.open);
+  const value = useContextSelector(ComboboxContext, ctx => ctx.value);
+  const contextOnBlur = useContextSelector(ComboboxContext, ctx => ctx.onTriggerBlur);
+  const contextOnClick = useContextSelector(ComboboxContext, ctx => ctx.onTriggerClick);
+  const contextOnKeyDown = useContextSelector(ComboboxContext, ctx => ctx.onTriggerKeyDown);
+  const contextRef = useContextSelector(ComboboxContext, ctx => ctx.triggerRef);
 
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'button',
   });
 
-  return {
+  const state: ComboButtonState = {
     components: {
       root: 'div',
       content: 'button',
@@ -41,7 +46,9 @@ export const useComboButton_unstable = (
     content: resolveShorthand(props.content, {
       required: true,
       defaultProps: {
-        ref,
+        ref: useMergedRefs(ref, contextRef),
+        'aria-activedescendant': open ? activeOption?.id : undefined,
+        'aria-expanded': open,
         role: 'combobox',
         type: 'button',
         children: value ? value : placeholder,
@@ -57,4 +64,21 @@ export const useComboButton_unstable = (
     appearance,
     size,
   };
+
+  state.content.onBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
+    contextOnBlur(event);
+    props.onBlur?.(event);
+  };
+
+  state.content.onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    contextOnClick(event);
+    props.onClick?.(event);
+  };
+
+  state.content.onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    contextOnKeyDown(event);
+    props.onKeyDown?.(event);
+  };
+
+  return state;
 };

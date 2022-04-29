@@ -1,5 +1,4 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { ComboboxState } from '../Combobox/Combobox.types';
 
 export type ComboButtonSlots = {
   /* The wrapper slot */
@@ -12,7 +11,12 @@ export type ComboButtonSlots = {
   expandIcon: Slot<'span'>;
 };
 
-type ComboButtonCommons = {
+type ComboButtonCommons = {};
+
+/**
+ * ComboButton Props
+ */
+export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & {
   /**
    * Controls the colors and borders of the combobox.
    * @default 'outline'
@@ -25,19 +29,16 @@ type ComboButtonCommons = {
   placeholder?: string;
 
   /**
-   * Sets the displayed value of the ComboButton
+   * Controls the size of the combobox faceplate
+   * @default 'medium'
    */
-  value?: string;
+  size?: 'small' | 'medium' | 'large';
 };
-
-/**
- * ComboButton Props
- */
-export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & ComboButtonCommons;
 
 /**
  * State used in rendering ComboButton
  */
 export type ComboButtonState = ComponentState<ComboButtonSlots> &
   ComboButtonCommons &
-  Pick<ComboboxState, 'appearance' | 'size'>;
+  Required<Pick<ComboButtonProps, 'appearance' | 'size'>> &
+  Pick<ComboButtonProps, 'placeholder'>;

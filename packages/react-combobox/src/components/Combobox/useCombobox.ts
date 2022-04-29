@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Offset, resolvePositioningShorthand, usePopper } from '@fluentui/react-positioning';
 import {
-  getPartitionedNativeProps,
-  resolveShorthand,
+  getNativeElementProps,
   useControllableState,
   useFirstMount,
   useId,
@@ -12,8 +11,7 @@ import { getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdo
 import { useOptionCollection } from '../../utils/useOptionCollection';
 import { OptionValue } from '../../utils/OptionCollection.types';
 import { useSelection } from '../../utils/useSelection';
-import { Listbox } from '../Listbox/Listbox';
-import { ComboButton } from '../ComboButton/ComboButton';
+import type { ListboxProps } from '../Listbox/Listbox.types';
 import type { ComboboxProps, ComboboxState, ComboboxOpenEvents } from './Combobox.types';
 
 /**
@@ -25,18 +23,10 @@ import type { ComboboxProps, ComboboxState, ComboboxOpenEvents } from './Combobo
  * @param props - props from this instance of Combobox
  * @param ref - reference to root HTMLElement of Combobox
  */
-export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLButtonElement>): ComboboxState => {
+export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLDivElement>): ComboboxState => {
   const optionCollection = useOptionCollection(props.children);
 
-  const {
-    appearance = 'outline',
-    inline = false,
-    multiselect,
-    onOpenChange,
-    placeholder,
-    positioning,
-    size = 'medium',
-  } = props;
+  const { inline = false, multiselect, onOpenChange, positioning } = props;
   const {
     options,
     collectionData: { count, getOptionAtIndex, getIndexOfKey, getOptionByKey },
@@ -106,95 +96,34 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     selectOption(event, option);
   };
 
-  const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'button',
-    excludedPropNames: ['children'],
-  });
-
-  const state: ComboboxState = {
-    components: {
-      root: 'div',
-      listbox: Listbox,
-      trigger: ComboButton,
-    },
-    root: resolveShorthand(props.root, {
-      required: true,
-      defaultProps: {
-        children: props.children,
-        ...rootNativeProps,
-      },
-    }),
-    listbox: resolveShorthand(props.listbox, {
-      required: true,
-      defaultProps: {
-        ref: popperContainerRef,
-        multiselect,
-        tabIndex: undefined,
-      },
-    }),
-    trigger: resolveShorthand(props.trigger, {
-      required: true,
-      defaultProps: {
-        ref: useMergedRefs(ref, triggerRef, popperTargetRef),
-        'aria-expanded': open,
-        'aria-activedescendant': open ? activeOption?.id : undefined,
-        placeholder,
-        value,
-        ...triggerNativeProps,
-      },
-    }),
-    ...optionCollection,
-    activeOption,
-    appearance,
-    idBase,
-    inline,
-    onOptionClick,
-    open,
-    options,
-    selectedOptions,
-    size,
-    value,
-  };
-
   /*
    * Handle focus when clicking the listbox popup:
    * 1. Move focus back to the button/input when the listbox is clicked (otherwise it goes to body)
    * 2. Do not close the listbox on button/input blur when clicking into the listbox
    */
-  const { onClick: onListboxClick, onMouseDown: onListboxMouseDown } = state.listbox;
-  state.listbox.onClick = event => {
+  const onListboxClick = () => {
     triggerRef.current?.focus();
-
-    onListboxClick?.(event);
   };
 
-  state.listbox.onMouseDown = event => {
+  const onListboxMouseDown = () => {
     ignoreTriggerBlur.current = true;
-
-    onListboxMouseDown?.(event);
   };
 
   // the trigger should open/close the popup on click or blur
-  const { onBlur: onTriggerBlur, onClick: onTriggerClick, onKeyDown: onTriggerKeyDown } = state.trigger;
-  state.trigger.onBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
+  const onTriggerBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
     if (!ignoreTriggerBlur.current) {
       setOpen(event, false);
     }
 
     ignoreTriggerBlur.current = false;
-
-    onTriggerBlur?.(event);
   };
 
-  state.trigger.onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onTriggerClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setOpen(event, !open);
-
-    onTriggerClick?.(event);
   };
 
   // handle combobox keyboard interaction
-  state.trigger.onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+  const onTriggerKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     const action = getDropdownActionFromKey(event, { open, multiselect });
     const maxIndex = count - 1;
     const activeIndex = activeOption ? getIndexOfKey(activeOption.key) : -1;
@@ -229,9 +158,58 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
       event.preventDefault();
       setActiveOption(getOptionAtIndex(newIndex));
     }
-
-    onTriggerKeyDown?.(event);
   };
 
-  return state;
+  /* Pull the Listbox node from the children. To work, it must be the last child. */
+  const children = React.Children.toArray(props.children) as React.ReactElement[];
+  const lastChild = children.pop();
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (children.length < 1) {
+      // eslint-disable-next-line no-console
+      console.warn('Combobox must have at least two children, and the last child must be the Listbox.');
+    }
+
+    if (!lastChild || !React.isValidElement(lastChild) || lastChild.type === React.Fragment) {
+      // eslint-disable-next-line no-console
+      console.warn('The Listbox must be a valid element and not a fragment.');
+    }
+  }
+
+  let listbox: React.ReactElement | undefined = undefined;
+  if (lastChild && React.isValidElement(lastChild) && lastChild.type !== React.Fragment) {
+    const listboxOverrideProps: Partial<ListboxProps> = {
+      multiselect,
+      tabIndex: undefined,
+    };
+    listbox = React.cloneElement(lastChild, listboxOverrideProps);
+  }
+
+  return {
+    components: {
+      root: 'div',
+    },
+    root: getNativeElementProps('div', {
+      ref,
+      ...props,
+      children,
+    }),
+    ...optionCollection,
+    activeOption,
+    idBase,
+    inline,
+    listbox,
+    onListboxClick,
+    onListboxMouseDown,
+    onOptionClick,
+    onTriggerBlur,
+    onTriggerClick,
+    onTriggerKeyDown,
+    open,
+    options,
+    popperContainerRef,
+    selectedOptions,
+    triggerRef: useMergedRefs(popperTargetRef, triggerRef),
+    value,
+  };
 };

@@ -1,17 +1,38 @@
 import { ComboboxContextValues, ComboboxState } from '../components/Combobox/Combobox.types';
 
 export function useComboboxContextValues(state: ComboboxState): ComboboxContextValues {
-  const { activeOption, appearance, idBase, onOptionClick, open, registerOption, selectedOptions, size } = state;
+  const {
+    activeOption,
+    idBase,
+    onListboxClick,
+    onListboxMouseDown,
+    onOptionClick,
+    onTriggerBlur,
+    onTriggerClick,
+    onTriggerKeyDown,
+    open,
+    popperContainerRef,
+    registerOption,
+    selectedOptions,
+    triggerRef,
+    value,
+  } = state;
 
   const combobox = {
     activeOption,
-    appearance,
     idBase,
     open,
+    onListboxClick,
+    onListboxMouseDown,
     onOptionClick,
+    onTriggerBlur,
+    onTriggerClick,
+    onTriggerKeyDown,
+    popperContainerRef,
     registerOption,
     selectedOptions,
-    size,
+    triggerRef,
+    value,
   };
 
   return { combobox };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
-import { Combobox, ComboboxProps, Option } from '../index';
+import { ComboButton, Combobox, ComboboxProps, Listbox, Option } from '../index';
 
 export const Default = (props: Partial<ComboboxProps>) => {
   const comboId = useId('combo-default');
@@ -8,12 +8,15 @@ export const Default = (props: Partial<ComboboxProps>) => {
   return (
     <>
       <label id={comboId}>Best pet</label>
-      <Combobox aria-labelledby={comboId} placeholder="Select an animal" {...props}>
-        {options.map(option => (
-          <Option key={option} disabled={option === 'Ferret'}>
-            {option}
-          </Option>
-        ))}
+      <Combobox aria-labelledby={comboId} {...props}>
+        <ComboButton placeholder="Select an animal" />
+        <Listbox>
+          {options.map(option => (
+            <Option key={option} disabled={option === 'Ferret'}>
+              {option}
+            </Option>
+          ))}
+        </Listbox>
       </Combobox>
     </>
   );

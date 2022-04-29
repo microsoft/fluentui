@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
 import { useSelection } from '../../utils/useSelection';
 import { getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
@@ -63,8 +63,10 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   const hasComboboxContext = useHasParentContext(ComboboxContext);
   const comboboxActiveOption = useContextSelector(ComboboxContext, ctx => ctx.activeOption);
   const comboboxIdBase = useContextSelector(ComboboxContext, ctx => ctx.idBase);
+  const comboboxOnListboxClick = useContextSelector(ComboboxContext, ctx => ctx.onListboxClick);
+  const comboboxOnListboxMouseDown = useContextSelector(ComboboxContext, ctx => ctx.onListboxMouseDown);
   const comboboxOnOptionClick = useContextSelector(ComboboxContext, ctx => ctx.onOptionClick);
-  // const comboboxRegisterOption = useContextSelector(ComboboxContext, ctx => ctx.registerOption);
+  const comboboxRef = useContextSelector(ComboboxContext, ctx => ctx.popperContainerRef);
   const comboboxSelectedOptions = useContextSelector(ComboboxContext, ctx => ctx.selectedOptions);
 
   // without a parent combobox context, provide values directly from Listbox
@@ -82,12 +84,12 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
         selectedOptions,
       };
 
-  return {
+  const state: ListboxState = {
     components: {
       root: 'div',
     },
     root: getNativeElementProps('div', {
-      ref,
+      ref: useMergedRefs(ref, comboboxRef),
       role: 'listbox',
       'aria-activedescendant': hasComboboxContext ? undefined : activeOption?.id,
       'aria-multiselectable': multiselect,
@@ -95,8 +97,19 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       onKeyDown,
       ...props,
     }),
-    multiselect,
     ...optionCollection,
     ...optionContextValues,
   };
+
+  state.root.onClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    comboboxOnListboxClick?.();
+    props.onClick?.(event);
+  };
+
+  state.root.onMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+    comboboxOnListboxMouseDown?.();
+    props.onMouseDown?.(event);
+  };
+
+  return state;
 };
