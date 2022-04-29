@@ -50,7 +50,7 @@ type MigrationIssues = Record<string, MigrationIssue>;
 const getConvergedPackages = (tree: Tree) => {
   const projects = getProjects(tree);
 
-  let convergedPackages: Package[] = [];
+  const convergedPackages: Package[] = [];
   projects.forEach((project, key) => {
     if (project.projectType === 'library' && isPackageConverged(tree, project)) {
       convergedPackages.push({
@@ -113,7 +113,7 @@ const createIssue = (repo: string, issue: MigrationIssue, templateTitle: string)
     ${issue.packages.map(pckg => `- ${pckg.name}`).join('\n')}
   `;
 
-  let command = `gh issue create --repo "${repo}" --title "${title}" --body "${message}"`;
+  const command = `gh issue create --repo "${repo}" --title "${title}" --body "${message}"`;
 
   const issueUrl = execSync(command).toString().trim();
 
@@ -161,7 +161,7 @@ const updateEpicWithIssues = (epicUrl: string, issueMap: MigrationIssues, messag
   ${packageList}
 `;
 
-  let command = `gh issue edit ${epicUrl} --body "${updatedMessage}"`;
+  const command = `gh issue edit ${epicUrl} --body "${updatedMessage}"`;
 
   execSync(command);
 };
