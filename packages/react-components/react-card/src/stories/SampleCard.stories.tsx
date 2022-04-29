@@ -6,7 +6,8 @@ import { Body, Caption } from '@fluentui/react-text';
 import { Card, CardHeader, CardFooter } from '../index';
 import type { CardProps } from '../index';
 
-const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-card';
+export const ASSET_URL =
+  'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
 
 const powerpointLogoURL = ASSET_URL + '/assets/powerpoint_logo.svg';
 
