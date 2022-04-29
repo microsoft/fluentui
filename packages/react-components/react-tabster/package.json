@@ -18,10 +18,10 @@
     "e2e": "e2e",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "storybook": "node ../../scripts/storybook/runner",
+    "storybook": "node ../../../scripts/storybook/runner",
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-tabster/src && yarn docs",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-tabster/src && yarn docs",
     "start": "yarn storybook",
     "type-check": "tsc -b tsconfig.json"
   },
