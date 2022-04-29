@@ -7,7 +7,7 @@ export {
   useAvatarStyles_unstable,
   useAvatar_unstable,
 } from './Avatar';
-export type { AvatarNamedColor, AvatarProps, AvatarSlots, AvatarState } from './Avatar';
+export type { AvatarNamedColor, AvatarProps, AvatarSlots, AvatarState, AvatarSizes } from './Avatar';
 export { getInitials } from './utils/index';
 export {
   AvatarGroup,

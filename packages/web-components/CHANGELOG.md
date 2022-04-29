@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 07 Mar 2022 07:41:14 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Apr 2022 07:39:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.4.0)
+
+Thu, 28 Apr 2022 07:39:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.3.1..@fluentui/web-components_v2.4.0)
+
+### Minor changes
+
+- update to latest versions of fast-element and fast-foundation for web components ([PR #22648](https://github.com/microsoft/fluentui/pull/22648) by chhol@microsoft.com)
 
 ## [2.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.3.1)
 

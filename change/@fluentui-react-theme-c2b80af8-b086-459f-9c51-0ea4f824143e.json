@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add base font family per figma",
+  "packageName": "@fluentui/react-theme",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -31,6 +31,7 @@ import {
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 import { addCodeowner } from '../add-codeowners';
 import { printStats } from '../print-stats';
+import { generateChangeFilesHelp } from '../generate-change-files';
 
 interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
 
@@ -74,6 +75,15 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
 
   return () => {
     printUserLogs(userLog);
+
+    const changedFilesPath = tree.listChanges().map(value => value.path);
+
+    if (changedFilesPath.length > 0) {
+      generateChangeFilesHelp({
+        message: 'chore: update package scaffold',
+        type: 'none',
+      });
+    }
   };
 }
 
@@ -115,7 +125,7 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
   updateLocalJestConfig(tree, options);
 
   // update package npm scripts
-  updateNpmScripts(tree, options);
+  updatePackageJson(tree, options);
   updateApiExtractorForLocalBuilds(tree, options);
 
   // setup storybook
@@ -140,6 +150,8 @@ const templates = {
   apiExtractor: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
     extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
+    // @TODO - remove this once all v9 packages have been migrated to ship rolluped types
+    mainEntryPointFilePath: '<projectFolder>/dist/types/index.d.ts',
   },
   tsconfig: (options: { platform: 'node' | 'web'; js: boolean; hasConformance: boolean }) => {
     return {
@@ -184,6 +196,8 @@ const templates = {
             lib: ['ES2019'],
             outDir: 'dist',
             declaration: true,
+            declarationDir: 'dist/types',
+            inlineSources: true,
             types: ['static-assets', 'environment'],
           } as TsConfig['compilerOptions'],
           exclude: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
@@ -326,6 +340,7 @@ const templates = {
     etc/
     node_modules/
     src/
+    dist/types/
     temp/
     __fixtures__
     __mocks__
@@ -510,7 +525,7 @@ function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
+function updatePackageJson(tree: Tree, options: NormalizedSchema) {
   /* eslint-disable @fluentui/max-len */
   const scripts = {
     docs: 'api-extractor run --config=config/api-extractor.local.json --local',
@@ -522,7 +537,10 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
   };
   /* eslint-enable @fluentui/max-len */
 
-  updateJson(tree, options.paths.packageJson, json => {
+  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+    json.scripts = json.scripts || {};
+    json.typings = 'dist/index.d.ts';
+
     delete json.scripts['update-snapshots'];
     delete json.scripts['start-test'];
     delete json.scripts['test:watch'];
