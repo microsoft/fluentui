@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updated react-text to use typography constants",
+  "packageName": "@fluentui/react-text",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
