@@ -16,6 +16,8 @@ storiesOf('Link Converged - Rendered as anchor', module)
         .mouseDown('.fui-Link')
         .snapshot('pressed', { cropTo: '.testWrapper' })
         .mouseUp('.fui-Link')
+        .snapshot('focused', { cropTo: '.testWrapper' })
+        .focus('.fui-Link')
         .end()}
     >
       {story()}
