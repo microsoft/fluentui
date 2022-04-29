@@ -105,7 +105,7 @@ const createEpic = (repo: string, title: string, message: string) => {
 };
 
 const createIssue = (repo: string, issue: MigrationIssue, templateTitle: string) => {
-  const title = `${templateTitle} - ${issue.assignee || 'unknown'}`;
+  const title = `${templateTitle} - ${issue.assignee || 'ownerless'}`;
   const message = stripIndents`
     🚧 This is an auto-generated issue to individually track migration progress.
 
