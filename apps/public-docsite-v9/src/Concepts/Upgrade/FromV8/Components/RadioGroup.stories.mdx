@@ -169,12 +169,12 @@ This table maps v8 `ChoiceGroup` props to the v9 `RadioGroup` equivalent.
 | v8                   | v9                    | Notes                                                                |
 | -------------------- | --------------------- | -------------------------------------------------------------------- |
 | `componentRef`       | `ref`                 | v9 provides access to the underlyig DOM node, not IChoiceGroup       |
-| options              | `children`            | v9 uses React `children` rather than data props                      |
+| `options`            | `children`            | v9 uses React `children` rather than data props                      |
 | `defaultSelectedKey` | `defaultValue`        | Mutually exclusive with `value`                                      |
 | `selectedKey`        | `value`               | Mutually exclusive with `defaultValue`                               |
 | `onChange`           | `onChange`            | The Typescript types have changed in v9                              |
 | `label`              | Use `Label` component | Be sure to associate `Label` with `RadioGroup` via `aria-labelledby` |
-| `theme`              | n/a                   | use `FluentProvider` to customize themes                             |
+| `theme`              | n/a                   | Use `FluentProvider` to customize themes                             |
 | `styles`             | `className`           |                                                                      |
 | `ariaLabelledBy`     | `aria-labelledby`     | In v9 this is the intrinsic HTML prop                                |
 
@@ -191,7 +191,7 @@ This table maps v8 `IChoiceGroupOption` props to the v9 `Radio` equivalent.
 | `imageAlt`         | n/a          | Use slots to customize `Radio`                                                       |
 | `selectedImageSrc` | n/a          | Use slots to customize `Radio`                                                       |
 | `imageSize`        | n/a          | Use slots to customize `Radio`                                                       |
-| `disabled`         | `disabled`   | In v9 this is the intrinsic HTML prop                                                |
+| `disabled`         | `disabled`   |                                                                                      |
 | `id`               | `id`         | In v9 this is the intrinsic HTML prop                                                |
 | `labeldId`         | n/a          | Provide an id to the `label` slot via shorthand props or a custom component          |
 | `ariaLabel`        | `aria-label` | In v9 this is the intrinsic HTML prop                                                |
