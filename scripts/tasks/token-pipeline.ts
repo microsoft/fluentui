@@ -2,15 +2,14 @@ import path from 'path';
 import * as fs from 'fs-extra';
 import * as _ from 'lodash';
 
-import { runPrettierForFolder } from '../prettier/prettier-helpers';
-const findGitRoot = require('../monorepo/findGitRoot');
+import { findGitRoot } from '../monorepo/';
 import execSync from '../exec-sync';
 import { createTempDir } from '../projects-test';
 
-const themes = <const>['light', 'dark', 'teamsDark', 'highContrast'];
-type TupleValues<T> = T extends readonly [infer H, ...infer R] ? T[number] : never;
+const themes = ['light', 'dark', 'teamsDark', 'highContrast'] as const;
+const repoRoot = findGitRoot();
 
-function getGeneratedFiles(tmpDir: string, repoRoot: string) {
+function getGeneratedFiles(tmpDir: string) {
   return [
     {
       src: path.join(tmpDir, 'light/react/global-colors.ts'), // the same global colors are generated for all theme, just use light
@@ -23,31 +22,35 @@ function getGeneratedFiles(tmpDir: string, repoRoot: string) {
   ];
 }
 
-function runPipeline(theme: TupleValues<typeof themes>, pipelineDir: string, outDir: string) {
-  console.log(`npx transform-tokens --in src/global.json --in src/${_.kebabCase(theme)}.json --out ${outDir}/${theme}`);
+function runPipeline(theme: typeof themes[number], pipelineDir: string, outDir: string) {
+  console.log(`Running pipeline for ${theme} theme`);
+
+  // https://github.com/microsoft/fluentui-token-pipeline
   execSync(
     `npx transform-tokens --in src/global.json --in src/${_.kebabCase(theme)}.json --out ${outDir}/${theme}`,
-    'Generate tokens',
+    `Generate tokens for theme:${theme}`,
     pipelineDir,
   );
 }
 
 export const tokenPipeline = () => {
-  const repoRoot = findGitRoot();
-
   const tmpDir = createTempDir('theme');
 
-  execSync('git clone https://github.com/microsoft/fluentui-design-tokens.git', 'Clone design tokens repo', tmpDir);
+  execSync(
+    'git clone --depth 1 https://github.com/microsoft/fluentui-design-tokens.git',
+    'Clone design tokens repo',
+    tmpDir,
+  );
   execSync('npm install', 'Install dependencies', path.join(tmpDir, 'fluentui-design-tokens'));
 
   themes.forEach(theme => {
     runPipeline(theme, path.join(tmpDir, 'fluentui-design-tokens'), tmpDir);
   });
 
-  getGeneratedFiles(tmpDir, repoRoot).forEach(f => {
-    console.log(`Copying generated file ${f.src} -> ${f.dest}`);
-    fs.copySync(f.src, f.dest, { overwrite: true });
+  getGeneratedFiles(tmpDir).forEach(file => {
+    console.log(`Copying generated file ${file.src} -> ${file.dest}`);
+    fs.copySync(file.src, file.dest, { overwrite: true });
   });
 
-  runPrettierForFolder(path.join(repoRoot, 'packages/react-theme'));
+  execSync(`npx prettier --write ${path.join(repoRoot, 'packages/react-theme/src')}`, 'Prettier');
 };
