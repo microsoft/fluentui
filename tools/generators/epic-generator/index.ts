@@ -166,7 +166,7 @@ const updateEpicWithIssues = (epicUrl: string, issueMap: MigrationIssues, messag
   execSync(command);
 };
 
-export default async function (tree: Tree, schema: EpicGeneratorSchema) {
+export default function (tree: Tree, schema: EpicGeneratorSchema) {
   const { title, message, repository } = validateSchema(schema);
 
   checkAuthentication();
