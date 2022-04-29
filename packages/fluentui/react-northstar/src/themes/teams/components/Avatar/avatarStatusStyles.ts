@@ -1,34 +1,15 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
 import { AvatarStatusStylesProps } from '../../../../components/Avatar/AvatarStatus';
+import { getSizeStyles, statusSizeToPxValue } from './avatarSizes';
 import { AvatarVariables } from './avatarVariables';
-import { pxToRem, SizeValue } from '../../../../utils';
-
-const sizeToPxValue: Record<SizeValue, number> = {
-  smallest: 6,
-  smaller: 10,
-  small: 10,
-  medium: 10,
-  large: 10,
-  larger: 16,
-  largest: 0,
-};
-
-export const getSizeStyles = (sizeInPx: number) => {
-  const sizeInRem = pxToRem(sizeInPx);
-
-  return {
-    height: sizeInRem,
-    width: sizeInRem,
-  };
-};
 
 export const avatarStatusStyles: ComponentSlotStylesPrepared<AvatarStatusStylesProps, AvatarVariables> = {
-  root: ({ variables: v, props: { color, size, state } }): ICSSInJSStyle => ({
+  root: ({ props: { color, size, state }, variables: v }): ICSSInJSStyle => ({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    ...getSizeStyles(sizeToPxValue[size]),
+    ...getSizeStyles(statusSizeToPxValue[size]),
     verticalAlign: 'middle',
     borderRadius: '9999px',
     position: 'absolute',
