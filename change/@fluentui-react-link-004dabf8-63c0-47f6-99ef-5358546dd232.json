@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Link: Changing styles of focused links to align with design spec.",
+  "packageName": "@fluentui/react-link",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
