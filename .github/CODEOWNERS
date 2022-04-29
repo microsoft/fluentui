@@ -106,7 +106,7 @@ packages/react-docsite-components @microsoft/fluentui-v8-website
 packages/react-file-type-icons @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
 packages/react-monaco-editor @microsoft/fluentui-v8-website
-packages/react-positioning @microsoft/teams-prg
+packages/react-components/react-positioning @microsoft/teams-prg
 packages/react-overflow @microsoft/teams-prg
 packages/react-shared-contexts @microsoft/teams-prg
 packages/react-components/react-storybook @microsoft/cxe-prg @microsoft/teams-prg

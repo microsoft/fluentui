@@ -501,6 +501,13 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/react-overflow": {
+      "root": "packages/react-overflow",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-overflow/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-popover": {
       "root": "packages/react-components/react-popover",
       "projectType": "library",
@@ -530,18 +537,11 @@
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-positioning": {
-      "root": "packages/react-positioning",
+      "root": "packages/react-components/react-positioning",
       "projectType": "library",
-      "sourceRoot": "packages/react-positioning/src",
+      "sourceRoot": "packages/react-components/react-positioning/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
-    },
-    "@fluentui/react-overflow": {
-      "root": "packages/react-overflow",
-      "projectType": "library",
-      "implicitDependencies": [],
-      "sourceRoot": "packages/react-overflow/src",
-      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-proptypes": {
       "root": "packages/fluentui/react-proptypes",
