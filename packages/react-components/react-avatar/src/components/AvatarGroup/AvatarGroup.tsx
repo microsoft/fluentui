@@ -5,9 +5,6 @@ import { useAvatarGroupStyles_unstable } from './useAvatarGroupStyles';
 import type { AvatarGroupProps } from './AvatarGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
-/**
- * AvatarGroup component - TODO: add more docs
- */
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps> = React.forwardRef((props, ref) => {
   const state = useAvatarGroup_unstable(props, ref);
 

@@ -24,7 +24,7 @@ export const avatarClassName = "fui-Avatar";
 // @public (undocumented)
 export const avatarClassNames: SlotClassNames<AvatarSlots>;
 
-// @public
+// @public (undocumented)
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 
 // @public (undocumented)
@@ -43,6 +43,7 @@ export type AvatarGroupSlots = {
 // @public
 export type AvatarGroupState = ComponentState<AvatarGroupSlots> & AvatarGroupCommons & {
     tooltipContent: TooltipProps['content'];
+    hasOverflow: boolean;
 };
 
 // @public

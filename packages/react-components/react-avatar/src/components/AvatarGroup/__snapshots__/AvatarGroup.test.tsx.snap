@@ -4,8 +4,8 @@ exports[`AvatarGroup renders a default state 1`] = `
 <div>
   <div
     class="fui-AvatarGroup"
-  >
-    Default AvatarGroup
-  </div>
+    id="avatarGroup-7"
+    role="group"
+  />
 </div>
 `;

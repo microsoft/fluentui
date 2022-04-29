@@ -60,7 +60,16 @@ export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & Partial<Avatar
  */
 export type AvatarGroupState = ComponentState<AvatarGroupSlots> &
   AvatarGroupCommons & {
+    /**
+     * Tooltip content for the overflow indicator.
+     */
     tooltipContent: TooltipProps['content'];
+
+    /**
+     * Whether the there are more Avatars than `maxAvatars`.
+     * @default false
+     */
+    hasOverflow: boolean;
   };
 
 export type AvatarGroupStrings = {
