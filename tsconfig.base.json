@@ -36,7 +36,7 @@
       "@fluentui/react-input": ["packages/react-input/src/index.ts"],
       "@fluentui/react-label": ["packages/react-label/src/index.ts"],
       "@fluentui/react-link": ["packages/react-link/src/index.ts"],
-      "@fluentui/react-list": ["packages/react-list/src/index.ts"],
+      "@fluentui/react-list": ["packages/react-components/react-list/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/src/index.ts"],
       "@fluentui/react-popover": ["packages/react-components/react-popover/src/index.ts"],
       "@fluentui/react-portal": ["packages/react-components/react-portal/src/index.ts"],
@@ -44,7 +44,7 @@
       "@fluentui/react-portal-compat-context": ["packages/react-portal-compat-context/src/index.ts"],
       "@fluentui/react-positioning": ["packages/react-positioning/src/index.ts"],
       "@fluentui/react-overflow": ["packages/react-overflow/src/index.ts"],
-      "@fluentui/react-provider": ["packages/react-provider/src/index.ts"],
+      "@fluentui/react-provider": ["packages/react-components/react-provider/src/index.ts"],
       "@fluentui/react-radio": ["packages/react-radio/src/index.ts"],
       "@fluentui/react-select": ["packages/react-components/react-select/src/index.ts"],
       "@fluentui/react-shared-contexts": ["packages/react-shared-contexts/src/index.ts"],
@@ -59,7 +59,7 @@
       "@fluentui/react-text": ["packages/react-text/src/index.ts"],
       "@fluentui/react-textarea": ["packages/react-textarea/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-theme/src/index.ts"],
-      "@fluentui/react-toolbar": ["packages/react-toolbar/src/index.ts"],
+      "@fluentui/react-toolbar": ["packages/react-components/react-toolbar/src/index.ts"],
       "@fluentui/react-tooltip": ["packages/react-tooltip/src/index.ts"],
       "@fluentui/react-utilities": ["packages/react-utilities/src/index.ts"]
     }

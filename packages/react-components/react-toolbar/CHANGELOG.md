@@ -6,7 +6,7 @@ This log was last generated on Mon, 25 Apr 2022 09:32:19 GMT and should not be m
 
 ## [9.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-beta.0)
 
-Mon, 25 Apr 2022 09:32:19 GMT 
+Mon, 25 Apr 2022 09:32:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.0.0-beta.0..@fluentui/react-toolbar_v9.0.0-beta.0)
 
 ### Changes
@@ -16,7 +16,7 @@ Mon, 25 Apr 2022 09:32:19 GMT
 
 ## [9.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-beta.0)
 
-Tue, 19 Apr 2022 19:17:29 GMT 
+Tue, 19 Apr 2022 19:17:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.0.0-rc.1..@fluentui/react-toolbar_v9.0.0-beta.0)
 
 ### Changes
@@ -30,7 +30,7 @@ Tue, 19 Apr 2022 19:17:29 GMT
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-rc.1)
 
-Fri, 04 Mar 2022 05:17:40 GMT 
+Fri, 04 Mar 2022 05:17:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.0.0-rc.1..@fluentui/react-toolbar_v9.0.0-rc.1)
 
 ### Changes
@@ -40,7 +40,7 @@ Fri, 04 Mar 2022 05:17:40 GMT
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-rc.1)
 
-Tue, 01 Mar 2022 02:17:40 GMT 
+Tue, 01 Mar 2022 02:17:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.0.0-rc.1..@fluentui/react-toolbar_v9.0.0-rc.1)
 
 ### Changes
