@@ -245,10 +245,10 @@
       "implicitDependencies": []
     },
     "@fluentui/react-alert": {
-      "root": "packages/react-alert",
+      "root": "packages/react-components/react-alert",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-alert/src",
+      "sourceRoot": "packages/react-components/react-alert/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-aria": {
