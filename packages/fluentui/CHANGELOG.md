@@ -26,7 +26,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Align @fluentui/react-northstar (v0) and @fluentui/react-theme (v9) colors @jurokapsiar ([#22483](https://github.com/microsoft/fluentui/pull/22483))
 - Add missing export for `PortalContext` @layershifter ([#22448](https://github.com/microsoft/fluentui/pull/22448))
 - Do not stop propagation of letter keys if modifier is used in `Tree` @jurokapsiar ([#22603](https://github.com/microsoft/fluentui/pull/22603))
-- fix `Tooltip` constrast style for pointing and subtle=false @yuanboxue-amber ([#22696](https://github.com/microsoft/fluentui/pull/22696))
+- Fix `Tooltip` constrast style for pointing and subtle=false @yuanboxue-amber ([#22696](https://github.com/microsoft/fluentui/pull/22696))
+- Fix `AvatarStatusIcon` sizing @Hirse ([#22714](https://github.com/microsoft/fluentui/pull/22714))
+
+### Features
+- Add `AvatarStatusImage` to use images as `Avatar` status @Hirse ([#22714](https://github.com/microsoft/fluentui/pull/22714))
 
 <!--------------------------------[ v0.62.0 ]------------------------------- -->
 ## [v0.62.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.62.0) (2022-04-08)
