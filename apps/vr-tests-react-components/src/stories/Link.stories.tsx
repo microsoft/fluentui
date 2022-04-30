@@ -13,12 +13,13 @@ storiesOf('Link Converged - Rendered as anchor', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.fui-Link')
         .snapshot('hover', { cropTo: '.testWrapper' })
+        // This needs to be added so that the focus outline is shown correctly
         .executeScript(
           "document.getElementsByClassName('fui-FluentProvider')[0].setAttribute('data-keyboard-nav', true)",
         )
         .focus('.fui-Link')
         .snapshot('focused', { cropTo: '.testWrapper' })
-        .executeScript('document.body.focus()')
+        .executeScript("document.getElementsByClassName('fui-FluentProvider')[0].removeAttribute('data-keyboard-nav')")
         .mouseDown('.fui-Link')
         .snapshot('pressed', { cropTo: '.testWrapper' })
         .mouseUp('.fui-Link')
