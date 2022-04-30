@@ -13,7 +13,9 @@ storiesOf('Link Converged - Rendered as anchor', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.fui-Link')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('fui-Provider')[0].setAttribute('data-keyboard-nav', true)")
+        .executeScript(
+          "document.getElementsByClassName('fui-FluentProvider')[0].setAttribute('data-keyboard-nav', true)",
+        )
         .focus('.fui-Link')
         .snapshot('focused', { cropTo: '.testWrapper' })
         .executeScript('document.body.focus()')
