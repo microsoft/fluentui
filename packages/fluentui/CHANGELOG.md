@@ -28,6 +28,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Do not stop propagation of letter keys if modifier is used in `Tree` @jurokapsiar ([#22603](https://github.com/microsoft/fluentui/pull/22603))
 - Fix `Tooltip` constrast style for pointing and subtle=false @yuanboxue-amber ([#22696](https://github.com/microsoft/fluentui/pull/22696))
 - Fix `AvatarStatusIcon` sizing @Hirse ([#22714](https://github.com/microsoft/fluentui/pull/22714))
+- Fix `Status` icon sizing @Hirse ([#22714](https://github.com/microsoft/fluentui/pull/22714))
 
 ### Features
 - Add `AvatarStatusImage` to use images as `Avatar` status @Hirse ([#22714](https://github.com/microsoft/fluentui/pull/22714))
