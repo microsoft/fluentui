@@ -77,7 +77,7 @@ export type ComboboxState = ComponentState<ComboboxSlots> &
     popperContainerRef: React.MutableRefObject<HTMLDivElement>;
 
     /* Ref to be used by the trigger */
-    triggerRef: React.RefObject<HTMLButtonElement>;
+    triggerRef: React.RefObject<HTMLButtonElement | HTMLInputElement>;
 
     /* Callback when a the listbox is clicked, for internal use */
     onListboxClick(): void;
@@ -89,13 +89,13 @@ export type ComboboxState = ComponentState<ComboboxSlots> &
     onOptionClick(event: React.MouseEvent, option: OptionValue): void;
 
     /* Callback when the trigger is blurred, for internal use */
-    onTriggerBlur(event: React.FocusEvent<HTMLButtonElement>): void;
+    onTriggerBlur(event: React.FocusEvent<HTMLButtonElement | HTMLInputElement>): void;
 
     /* Callback when the trigger is clicked, for internal use */
-    onTriggerClick(event: React.MouseEvent<HTMLButtonElement>): void;
+    onTriggerClick(event: React.MouseEvent<HTMLButtonElement | HTMLInputElement>): void;
 
     /* Callback for the trigger keydown event, for internal use */
-    onTriggerKeyDown(event: React.KeyboardEvent<HTMLButtonElement>): void;
+    onTriggerKeyDown(event: React.KeyboardEvent<HTMLButtonElement | HTMLInputElement>): void;
   };
 
 export type ComboboxContextValues = {

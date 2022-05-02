@@ -11,8 +11,6 @@ export type ComboButtonSlots = {
   expandIcon: Slot<'span'>;
 };
 
-type ComboButtonCommons = {};
-
 /**
  * ComboButton Props
  */
@@ -39,6 +37,5 @@ export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content
  * State used in rendering ComboButton
  */
 export type ComboButtonState = ComponentState<ComboButtonSlots> &
-  ComboButtonCommons &
   Required<Pick<ComboButtonProps, 'appearance' | 'size'>> &
   Pick<ComboButtonProps, 'placeholder'>;

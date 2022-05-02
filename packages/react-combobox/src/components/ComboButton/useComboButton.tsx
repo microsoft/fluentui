@@ -26,7 +26,7 @@ export const useComboButton_unstable = (
   const contextOnBlur = useContextSelector(ComboboxContext, ctx => ctx.onTriggerBlur);
   const contextOnClick = useContextSelector(ComboboxContext, ctx => ctx.onTriggerClick);
   const contextOnKeyDown = useContextSelector(ComboboxContext, ctx => ctx.onTriggerKeyDown);
-  const contextRef = useContextSelector(ComboboxContext, ctx => ctx.triggerRef);
+  const contextRef = useContextSelector(ComboboxContext, ctx => ctx.triggerRef as React.RefObject<HTMLButtonElement>);
 
   const nativeProps = getPartitionedNativeProps({
     props,
