@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: re-exports positioning types at `react-components`",
+  "packageName": "@fluentui/react-components",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
