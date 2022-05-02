@@ -50,7 +50,7 @@
       "@fluentui/react-shared-contexts": ["packages/react-shared-contexts/src/index.ts"],
       "@fluentui/react-slider": ["packages/react-components/react-slider/src/index.ts"],
       "@fluentui/react-spinbutton": ["packages/react-components/react-spinbutton/src/index.ts"],
-      "@fluentui/react-spinner": ["packages/react-spinner/src/index.ts"],
+      "@fluentui/react-spinner": ["packages/react-components/react-spinner/src/index.ts"],
       "@fluentui/react-storybook": ["packages/react-components/react-storybook/src/index.ts"],
       "@fluentui/react-storybook-addon": ["packages/react-components/react-storybook-addon/src/index.ts"],
       "@fluentui/react-switch": ["packages/react-switch/src/index.ts"],
