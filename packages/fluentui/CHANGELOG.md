@@ -30,6 +30,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - fix `Tooltip` constrast style for pointing and subtle=false @yuanboxue-amber ([#22696](https://github.com/microsoft/fluentui/pull/22696))
 - Align `default` scheme colors between v0 and v9 @jurokapsiar ([#22699](https://github.com/microsoft/fluentui/pull/22699))
 
+### Documentation
+- Use https for Embed and Video examples @Hirse ([#22738](https://github.com/microsoft/fluentui/pull/22738))
+
 <!--------------------------------[ v0.62.0 ]------------------------------- -->
 ## [v0.62.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.62.0) (2022-04-08)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.61.0..@fluentui/react-northstar_v0.62.0)
