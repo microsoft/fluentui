@@ -18,104 +18,161 @@ export const cardClassNames: SlotClassNames<CardSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'block',
-    ...shorthands.overflow('clip'),
-    overflowClipMargin: tokens.strokeWidthThin,
-
+    position: 'relative',
+    ...shorthands.overflow('hidden'),
     color: tokens.colorNeutralForeground1,
-    ...shorthands.borderStyle('solid'),
-    ...shorthands.borderWidth(tokens.strokeWidthThin),
-
     // Size: medium
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
+
+    '::after': {
+      content: '""',
+      position: 'absolute',
+      top: '0px',
+      left: '0px',
+      bottom: '0px',
+      right: '0px',
+
+      ...shorthands.borderStyle('solid'),
+      ...shorthands.borderWidth(tokens.strokeWidthThin),
+      // Size: medium
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    },
 
     [`> *:not(.${cardPreviewClassNames.root})`]: {
       // Size: medium
       ...shorthands.margin('12px'),
-    },
-    [`> .${cardPreviewClassNames.root}`]: {
-      ...shorthands.margin(`calc(${tokens.strokeWidthThin} * -1)`),
     },
   },
 
   filledInteractive: {
     cursor: 'pointer',
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
     boxShadow: tokens.shadow4,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    },
 
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
       boxShadow: tokens.shadow8,
+
+      '::after': {
+        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+      },
     },
     ':active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+
+      '::after': {
+        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+      },
     },
   },
   filled: {
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
     boxShadow: tokens.shadow4,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    },
   },
   filledAlternativeInteractive: {
     cursor: 'pointer',
     backgroundColor: tokens.colorNeutralBackground2,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
     boxShadow: tokens.shadow4,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    },
 
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground2Hover,
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
       boxShadow: tokens.shadow8,
+
+      '::after': {
+        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+      },
     },
     ':active': {
       backgroundColor: tokens.colorNeutralBackground2Pressed,
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+
+      '::after': {
+        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+      },
     },
   },
   filledAlternative: {
     backgroundColor: tokens.colorNeutralBackground2,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
     boxShadow: tokens.shadow4,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    },
   },
   outlineInteractive: {
     cursor: 'pointer',
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor(tokens.colorNeutralStroke1),
     boxShadow: 'none',
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    },
 
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+
+      '::after': {
+        ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+      },
     },
     ':active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+
+      '::after': {
+        ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      },
     },
   },
   outline: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor(tokens.colorNeutralStroke1),
     boxShadow: 'none',
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    },
   },
   subtleInteractive: {
     cursor: 'pointer',
     backgroundColor: tokens.colorSubtleBackground,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
     boxShadow: 'none',
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    },
 
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
+
+      '::after': {
+        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+      },
     },
     ':active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
+
+      '::after': {
+        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+      },
     },
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
     boxShadow: 'none',
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    },
   },
 });
 
