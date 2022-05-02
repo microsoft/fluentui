@@ -1686,16 +1686,6 @@
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.166-rc.3.tgz#6a66d104a4809ca9da1982f895bc24abb624e342"
   integrity sha512-mhTti5DcCvG/UxRD+/P5Qjdo/QDOE57eRcRBVooOpfO2N1Q+9sE44NYczOeOHpV2AufNqomX0QYf5iPYZ1lEtg==
 
-"@fluentui/react-textarea@9.0.0-alpha.1":
-  version "9.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-textarea/-/react-textarea-9.0.0-alpha.1.tgz#cfa407fb75ef24f0b6488db2985db330b35413f3"
-  integrity sha512-iNVNu2luoGMv/qZKNHBqlIQWEv254C6sfAV2Wl8d4qug4SrqasDtjrhE4jlCelq5GzIu7wxNZjRRq6ph4CDFlw==
-  dependencies:
-    "@fluentui/react-theme" "9.0.0-rc.5"
-    "@fluentui/react-utilities" "9.0.0-rc.6"
-    "@griffel/react" "1.0.3"
-    tslib "^2.1.0"
-
 "@griffel/babel-preset@1.2.0", "@griffel/babel-preset@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.2.0.tgz#c1a7c9bc4a45d3bed561fb6bad1bcefbc3c01bff"
