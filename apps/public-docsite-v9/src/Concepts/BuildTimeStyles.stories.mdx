@@ -1,0 +1,135 @@
+import { Meta, Source, Link } from '@storybook/addon-docs';
+import imageFile from '../../public/style-resolution.png';
+
+<Meta title="Concepts/Developer/Build time styles" />
+
+## Optimize runtime cost of styles
+
+Fluent UI uses the open source [Griffel.js](https://griffel.js.org/) css-in-js styling engine.
+Make sure to take a look at the following docs to get started with styling in Fluent UI:
+
+- [Quick start](?path=/story/quick-start)
+- [Styling components](?path=/story/concepts-developer-styling-components--page)
+
+While there is nothing wrong with the associated runtime costs of a css-in-js engine, larger and more complex
+applications might want to optimize for performance. Generally, the expensive runtime work only
+happens on the first render of the component.
+
+### Webpack
+
+```sh
+yarn add @griffel/webpack-loader
+```
+
+In your webpack config, simply add the `@griffel/webpack-loader` to the list of modules.
+
+```javascript
+// webpack.config.js
+module: {
+  rules: [
+    {
+      test: /\.(ts|tsx)$/,
+      exclude: /node_modules/,
+      use: {
+        loader: '@griffel/webpack-loader',
+      },
+    },
+  ];
+}
+```
+
+### Babel
+
+The babel preset is used internally by the webpack loader. For most applications the webpack loader should be enough.
+However, library developers might prefer to use the babel preset since it is a better fit for tools such as rollup.
+
+```sh
+yarn add @griffel/babel-preset
+```
+
+Simply create a babel configuration file such as `.babelrc` and add the preset.
+
+```json
+{
+  "presets": ["@griffel"]
+}
+```
+
+#### Importing from a third party package
+
+If Griffel is re-exported from a third party package, it's necessary to configure the preset to use a different
+module source. By default, the preset handles imports from `@fluentui/react-components`.
+
+```js
+import { makeStyles } from 'custom-package';
+```
+
+```json
+{
+  "presets": [
+    [
+      "@griffel/babel",
+      {
+        "modules": [{ "moduleSource": "custom-package", "importName": "makeStyles" }]
+      }
+    ]
+  ]
+}
+```
+
+### What is being optimized
+
+> ⚠️ Style resolution only needs to happen on the initial render of a component. Therefore, without build time
+> optimization, the performance after the initial render is comparable. It is perfectly reasonable to follow the
+> quickstart guide and introduce build time optimization if/when it is required.
+
+Let's start with a simple example:
+
+```tsx
+import { makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  root: { paddingLeft: '1px', display: 'flex' },
+});
+
+function Component() {
+  const classes = useStyles();
+
+  return <div className={classes.root} />;
+}
+```
+
+A correct invocation of `makeStyles` creates a styling hook that can be used inside a component. When the `useStyles`
+hook is invoked inside a component the styles are resolved and applied to the document. You can look at the image below
+which describes what work is done during style resolution.
+
+<img src={imageFile} alt={'Illustration of work done by style resolution'} />;
+
+The final result before the CSS rules are inserted into DOM can be done during build time through
+the methods above. Once the styles of our simple example are transformed at build time the resulting bundle contains
+a result similar to what is in our diagram. The actual runtime code of `makeStyles` is completely stripped from the
+bundle and replaced with a lightweight function that simply concatenates the CSS classes and inserts them to
+DOM.
+
+```tsx
+const useStyles = __styles(
+  {
+    root: {
+      mc9l5x: 'f22iagw',
+      uwmqm3: ['f10xn8zz', 'f136y8j8'],
+    },
+  },
+  {
+    d: [
+      '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}',
+      '.f10xn8zz{padding-left:1px;}',
+      '.f136y8j8{padding-right:1px;}',
+    ],
+  },
+);
+
+function Component() {
+  const classes = useStyles();
+  return <div className={classes.root} />;
+}
+```
