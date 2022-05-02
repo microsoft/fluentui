@@ -232,9 +232,54 @@ const countries = [
   'Zimbabwe',
 ];
 
+const narrate = (message: string, priority = 'polite') => {
+  const element = document.createElement('div');
+  element.setAttribute(
+    'style',
+    'position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;',
+  );
+  element.setAttribute('aria-live', priority);
+  document.body.appendChild(element);
+
+  setTimeout(() => {
+    element.innerText = message;
+
+    setTimeout(() => {
+      document.body.removeChild(element);
+    }, 300);
+  }, 300);
+};
+
 export const FilterScenario: React.FunctionComponent = () => {
+  const isFirstLoad = React.useRef(true);
   const [filterText, setFilterText] = React.useState('');
   const filterTextLowerCase = React.useMemo(() => filterText.toLowerCase(), [filterText]);
+
+  const filterCountry = (country: string) => country.toLowerCase().includes(filterTextLowerCase);
+
+  const filteredCountriesList = React.useMemo(() => {
+    const filteredCountries = countries.filter(filterCountry);
+    const list = filteredCountries.map((country, index) => (
+      <MenuItem key={index} id={`countryItem${index}`} role="option">
+        {country}
+      </MenuItem>
+    ));
+    if (isFirstLoad.current) {
+      isFirstLoad.current = false;
+    } else {
+      const count = filteredCountries.length;
+      let countNarration;
+      if (count === 0) {
+        countNarration = `No items are available`;
+      } else if (count === 1) {
+        countNarration = `${count} item is available`;
+      } else {
+        countNarration = `${count} items are available`;
+      }
+      narrate(countNarration);
+    }
+    return list;
+  }, [filterText]);
 
   const filterInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -264,10 +309,6 @@ export const FilterScenario: React.FunctionComponent = () => {
     setFilterText('');
   };
 
-  const filterCountry = (country: string) => {
-    return country.toLowerCase().includes(filterTextLowerCase);
-  };
-
   return (
     <Scenario pageTitle="Filter scenario">
       <form autoComplete="off">
@@ -285,11 +326,7 @@ export const FilterScenario: React.FunctionComponent = () => {
         </div>
         <Button onClick={handleClearButtonClick}>Clear filter</Button>
         <MenuList id="countriesListbox" role="listbox">
-          {countries.filter(filterCountry).map((country, index) => (
-            <MenuItem key={index} id={`countryItem${index}`} role="option">
-              {country}
-            </MenuItem>
-          ))}
+          {filteredCountriesList}
         </MenuList>
       </form>
     </Scenario>
