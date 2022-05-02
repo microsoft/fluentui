@@ -626,9 +626,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-tabster": {
-      "root": "packages/react-tabster",
+      "root": "packages/react-components/react-tabster",
       "projectType": "library",
-      "sourceRoot": "packages/react-tabster/src",
+      "sourceRoot": "packages/react-components/react-tabster/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
