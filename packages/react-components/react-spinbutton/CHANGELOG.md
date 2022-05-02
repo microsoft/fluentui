@@ -6,7 +6,7 @@ This log was last generated on Mon, 25 Apr 2022 09:32:14 GMT and should not be m
 
 ## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.7)
 
-Mon, 25 Apr 2022 09:32:14 GMT 
+Mon, 25 Apr 2022 09:32:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.0.0-beta.6..@fluentui/react-spinbutton_v9.0.0-beta.7)
 
 ### Changes
@@ -17,7 +17,7 @@ Mon, 25 Apr 2022 09:32:14 GMT
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.6)
 
-Tue, 19 Apr 2022 19:17:29 GMT 
+Tue, 19 Apr 2022 19:17:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.0.0-beta.6..@fluentui/react-spinbutton_v9.0.0-beta.6)
 
 ### Changes
@@ -30,7 +30,7 @@ Tue, 19 Apr 2022 19:17:29 GMT
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.6)
 
-Fri, 04 Mar 2022 05:17:40 GMT 
+Fri, 04 Mar 2022 05:17:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.0.0-beta.6..@fluentui/react-spinbutton_v9.0.0-beta.6)
 
 ### Changes
@@ -39,7 +39,7 @@ Fri, 04 Mar 2022 05:17:40 GMT
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.6)
 
-Tue, 01 Mar 2022 02:17:40 GMT 
+Tue, 01 Mar 2022 02:17:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.0.0-beta.6..@fluentui/react-spinbutton_v9.0.0-beta.6)
 
 ### Changes
@@ -48,7 +48,7 @@ Tue, 01 Mar 2022 02:17:40 GMT
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.6)
 
-Fri, 18 Feb 2022 13:35:38 GMT 
+Fri, 18 Feb 2022 13:35:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.0.0-beta.5..@fluentui/react-spinbutton_v9.0.0-beta.6)
 
 ### Changes
