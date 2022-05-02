@@ -34,7 +34,10 @@
   },
   "dependencies": {
     "@fluentui/react-badge": "9.0.0-rc.6",
+    "@fluentui/react-button": "9.0.0-rc.7",
     "@fluentui/react-icons": "^2.0.166-rc.3",
+    "@fluentui/react-popover": "9.0.0-rc.7",
+    "@fluentui/react-tooltip": "9.0.0-rc.7",
     "@fluentui/react-theme": "9.0.0-rc.5",
     "@fluentui/react-shared-contexts": "9.0.0-rc.5",
     "@fluentui/react-utilities": "9.0.0-rc.6",

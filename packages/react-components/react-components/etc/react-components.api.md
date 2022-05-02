@@ -93,6 +93,7 @@ import { createDOMRenderer } from '@griffel/react';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
+import { CurveTokens } from '@fluentui/react-theme';
 import { Display } from '@fluentui/react-text';
 import { displayClassName } from '@fluentui/react-text';
 import { displayClassNames } from '@fluentui/react-text';
@@ -102,6 +103,7 @@ import { dividerClassNames } from '@fluentui/react-divider';
 import { DividerProps } from '@fluentui/react-divider';
 import { DividerSlots } from '@fluentui/react-divider';
 import { DividerState } from '@fluentui/react-divider';
+import { DurationTokens } from '@fluentui/react-theme';
 import { elementContains } from '@fluentui/react-portal';
 import { FluentProvider } from '@fluentui/react-provider';
 import { fluentProviderClassName } from '@fluentui/react-provider';
@@ -121,6 +123,7 @@ import { getSlots } from '@fluentui/react-utilities';
 import { Headline } from '@fluentui/react-text';
 import { headlineClassName } from '@fluentui/react-text';
 import { headlineClassNames } from '@fluentui/react-text';
+import { HorizontalSpacingTokens } from '@fluentui/react-theme';
 import { Image as Image_2 } from '@fluentui/react-image';
 import { imageClassName } from '@fluentui/react-image';
 import { imageClassNames } from '@fluentui/react-image';
@@ -246,6 +249,9 @@ import { PopoverTriggerState } from '@fluentui/react-popover';
 import { Portal } from '@fluentui/react-portal';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
+import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningShorthand } from '@fluentui/react-positioning';
+import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { presenceBadgeClassName } from '@fluentui/react-badge';
 import { presenceBadgeClassNames } from '@fluentui/react-badge';
@@ -305,6 +311,7 @@ import { SliderState } from '@fluentui/react-slider';
 import { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { SlotPropsRecord } from '@fluentui/react-utilities';
+import { SpacingTokens } from '@fluentui/react-theme';
 import { SplitButton } from '@fluentui/react-button';
 import { splitButtonClassName } from '@fluentui/react-button';
 import { splitButtonClassNames } from '@fluentui/react-button';
@@ -447,6 +454,7 @@ import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { useToggleState } from '@fluentui/react-button';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
+import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webHighContrastTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -629,6 +637,8 @@ export { createLightTheme }
 
 export { createTeamsDarkTheme }
 
+export { CurveTokens }
+
 export { Display }
 
 export { displayClassName }
@@ -646,6 +656,8 @@ export { DividerProps }
 export { DividerSlots }
 
 export { DividerState }
+
+export { DurationTokens }
 
 export { elementContains }
 
@@ -684,6 +696,8 @@ export { Headline }
 export { headlineClassName }
 
 export { headlineClassNames }
+
+export { HorizontalSpacingTokens }
 
 export { Image_2 as Image }
 
@@ -935,6 +949,12 @@ export { PortalProps }
 
 export { PortalState }
 
+export { PositioningProps }
+
+export { PositioningShorthand }
+
+export { PositioningShorthandValue }
+
 export { PresenceBadge }
 
 export { presenceBadgeClassName }
@@ -1052,6 +1072,8 @@ export { Slot }
 export { SlotClassNames }
 
 export { SlotPropsRecord }
+
+export { SpacingTokens }
 
 export { SplitButton }
 
@@ -1336,6 +1358,8 @@ export { useToggleState }
 export { useTooltip_unstable }
 
 export { useTooltipStyles_unstable }
+
+export { VerticalSpacingTokens }
 
 export { webDarkTheme }
 

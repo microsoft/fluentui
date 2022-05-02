@@ -68,6 +68,11 @@ export type {
   ShadowBrandTokens,
   ShadowTokens,
   StrokeWidthTokens,
+  SpacingTokens,
+  HorizontalSpacingTokens,
+  VerticalSpacingTokens,
+  DurationTokens,
+  CurveTokens,
   Theme,
   TypographyStyles,
 } from '@fluentui/react-theme';
@@ -527,3 +532,5 @@ export type {
   TooltipState,
   TooltipTriggerProps,
 } from '@fluentui/react-tooltip';
+
+export type { PositioningProps, PositioningShorthand, PositioningShorthandValue } from '@fluentui/react-positioning';

@@ -4,13 +4,16 @@
 
 ```ts
 
+import { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { PopoverSurface } from '@fluentui/react-popover';
 import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { TooltipProps } from '@fluentui/react-tooltip';
 
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;
@@ -28,21 +31,28 @@ export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
 
 // @public
-export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & AvatarGroupCommons;
+export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & Partial<AvatarGroupCommons>;
 
 // @public (undocumented)
 export type AvatarGroupSlots = {
     root: Slot<'div'>;
+    popoverTrigger?: Slot<typeof Button>;
+    popoverSurface?: Slot<typeof PopoverSurface>;
 };
 
 // @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & AvatarGroupCommons;
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & AvatarGroupCommons & {
+    tooltipContent: TooltipProps['content'];
+};
 
 // @public
 export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
 
 // @public
 export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & Partial<AvatarCommons>;
+
+// @public
+export type AvatarSizes = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 // @public (undocumented)
 export type AvatarSlots = {
