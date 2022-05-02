@@ -6,8 +6,6 @@ With `PortalCompatProvider` components from `@fluentui/react-components` can be 
 
 ### Installation
 
-> **NOTE:** this package is not being published yet
-
 ```sh
 yarn add @fluentui/react-portal-compat
 ```
