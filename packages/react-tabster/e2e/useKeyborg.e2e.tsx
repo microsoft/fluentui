@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KEYBOARD_NAV_ATTRIBUTE } from '../src/symbols';
+import { KEYBOARD_NAV_ATTRIBUTE } from '../src/focus/constants';
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';

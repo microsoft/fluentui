@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add style to make required match text when disabled",
+  "packageName": "@fluentui/react-label",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "remove MIGRATION.md",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

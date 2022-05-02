@@ -2,16 +2,16 @@ import type { HorizontalSpacingTokens, SpacingTokens, VerticalSpacingTokens } fr
 
 export const spacings: SpacingTokens = {
   none: '0',
-  xxs: '2',
-  xs: '4',
-  sNudge: '6',
-  s: '8',
-  mNudge: '10',
-  m: '12',
-  l: '16',
-  xl: '20',
-  xxl: '24',
-  xxxl: '32',
+  xxs: '2px',
+  xs: '4px',
+  sNudge: '6px',
+  s: '8px',
+  mNudge: '10px',
+  m: '12px',
+  l: '16px',
+  xl: '20px',
+  xxl: '24px',
+  xxxl: '32px',
 };
 
 export const horizontalSpacings: HorizontalSpacingTokens = {

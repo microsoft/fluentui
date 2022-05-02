@@ -5,8 +5,7 @@ import { Body, Caption } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
 import { ArrowReplyRegular, ShareRegular } from '@fluentui/react-icons';
 import { Card, CardFooter, CardHeader, CardPreview } from '../index'; // codesandbox-dependency: @fluentui/react-card ^9.0.0-beta
-
-const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-card';
+import { ASSET_URL } from './SampleCard.stories';
 
 const avatarElviaURL = ASSET_URL + '/assets/avatar_elvia.svg';
 const wordLogoURL = ASSET_URL + '/assets/word_logo.svg';
