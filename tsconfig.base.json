@@ -60,7 +60,7 @@
       "@fluentui/react-textarea": ["packages/react-textarea/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-theme/src/index.ts"],
       "@fluentui/react-toolbar": ["packages/react-components/react-toolbar/src/index.ts"],
-      "@fluentui/react-tooltip": ["packages/react-tooltip/src/index.ts"],
+      "@fluentui/react-tooltip": ["packages/react-components/react-tooltip/src/index.ts"],
       "@fluentui/react-utilities": ["packages/react-utilities/src/index.ts"]
     }
   },

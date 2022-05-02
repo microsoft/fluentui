@@ -666,9 +666,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-tooltip": {
-      "root": "packages/react-tooltip",
+      "root": "packages/react-components/react-tooltip",
       "projectType": "library",
-      "sourceRoot": "packages/react-tooltip/src",
+      "sourceRoot": "packages/react-components/react-tooltip/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
