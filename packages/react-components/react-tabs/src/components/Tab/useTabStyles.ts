@@ -154,8 +154,8 @@ const useRootStyles = makeStyles({
  */
 const useFocusStyles = makeStyles({
   // Tab creates a custom focus indicator because the default focus indicator
-  // is applied using an :after pseudo-element on the root. Since the selection
-  // indicator uses an :after pseudo-element on the root, there is a conflict.
+  // is applied using an ::after pseudo-element on the root. Since the selection
+  // indicator uses an ::after pseudo-element on the root, there is a conflict.
   base: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
     outlineWidth: tokens.strokeWidthThick,
@@ -172,7 +172,7 @@ const useFocusStyles = makeStyles({
 /** Indicator styles for when pending selection */
 const usePendingIndicatorStyles = makeStyles({
   base: {
-    ':hover:before': {
+    ':hover::before': {
       backgroundColor: 'none',
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
@@ -181,7 +181,7 @@ const usePendingIndicatorStyles = makeStyles({
       content: '""',
       position: 'absolute',
     },
-    ':active:before': {
+    ':active::before': {
       backgroundColor: 'none',
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
@@ -192,15 +192,15 @@ const usePendingIndicatorStyles = makeStyles({
     },
   },
   disabled: {
-    ':hover:before': {
+    ':hover::before': {
       ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
-    ':active:before': {
+    ':active::before': {
       ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
   },
   mediumHorizontal: {
-    ':before': {
+    '::before': {
       bottom: 0,
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumHorizontal} / 2.0)`),
       height: 0,
@@ -209,7 +209,7 @@ const usePendingIndicatorStyles = makeStyles({
     },
   },
   mediumVertical: {
-    ':before': {
+    '::before': {
       bottom: tabIndicatorPadding.mediumVertical,
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumVertical} / 2.0)`),
       left: 0,
@@ -218,7 +218,7 @@ const usePendingIndicatorStyles = makeStyles({
     },
   },
   smallHorizontal: {
-    ':before': {
+    '::before': {
       bottom: 0,
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallHorizontal} / 2.0)`),
       height: 0,
@@ -227,7 +227,7 @@ const usePendingIndicatorStyles = makeStyles({
     },
   },
   smallVertical: {
-    ':before': {
+    '::before': {
       bottom: tabIndicatorPadding.smallVertical,
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallVertical} / 2.0)`),
       left: 0,
@@ -239,7 +239,7 @@ const usePendingIndicatorStyles = makeStyles({
 
 const useActiveIndicatorStyles = makeStyles({
   base: {
-    ':after': {
+    '::after': {
       ...shorthands.borderColor(tokens.colorTransparentStroke),
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
@@ -250,23 +250,23 @@ const useActiveIndicatorStyles = makeStyles({
     },
   },
   selected: {
-    ':after': {
+    '::after': {
       ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
     },
-    ':hover:after': {
+    ':hover::after': {
       ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
     },
-    ':active:after': {
+    ':active::after': {
       ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
     },
   },
   disabled: {
-    ':after': {
+    '::after': {
       ...shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
     },
   },
   mediumHorizontal: {
-    ':after': {
+    '::after': {
       bottom: '0',
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumHorizontal} / 2.0)`),
       height: 0,
@@ -275,7 +275,7 @@ const useActiveIndicatorStyles = makeStyles({
     },
   },
   mediumVertical: {
-    ':after': {
+    '::after': {
       bottom: tabIndicatorPadding.mediumVertical,
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumVertical} / 2.0)`),
       left: 0,
@@ -284,7 +284,7 @@ const useActiveIndicatorStyles = makeStyles({
     },
   },
   smallHorizontal: {
-    ':after': {
+    '::after': {
       bottom: 0,
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallHorizontal} / 2.0)`),
       height: 0,
@@ -293,7 +293,7 @@ const useActiveIndicatorStyles = makeStyles({
     },
   },
   smallVertical: {
-    ':after': {
+    '::after': {
       bottom: tabIndicatorPadding.smallVertical,
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallVertical} / 2.0)`),
       left: '0',
