@@ -1,6 +1,4 @@
 export {
-  createCustomFocusIndicatorStyle,
-  createFocusOutlineStyle,
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,
@@ -9,10 +7,16 @@ export {
   useTabsterAttributes,
 } from './hooks/index';
 export type {
-  CreateFocusIndicatorStyleRuleOptions,
-  FocusOutlineOffset,
-  FocusOutlineStyleOptions,
   UseArrowNavigationGroupOptions,
   UseFocusableGroupOptions,
   UseModalAttributesOptions,
 } from './hooks/index';
+
+export { createCustomFocusIndicatorStyle, createFocusOutlineStyle } from './focus/index';
+
+export type {
+  CreateCustomFocusIndicatorStyleOptions,
+  CreateFocusOutlineStyleOptions,
+  FocusOutlineOffset,
+  FocusOutlineStyleOptions,
+} from './focus/index';

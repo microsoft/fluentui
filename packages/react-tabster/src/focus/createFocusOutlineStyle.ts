@@ -1,7 +1,11 @@
 import { tokens } from '@fluentui/react-theme';
-import { KEYBOARD_NAV_SELECTOR } from '../symbols';
 import { shorthands } from '@griffel/react';
 import type { GriffelStyle } from '@griffel/react';
+import {
+  createCustomFocusIndicatorStyle,
+  CreateCustomFocusIndicatorStyleOptions,
+} from './createCustomFocusIndicatorStyle';
+import { defaultOptions } from './constants';
 
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
 export type FocusOutlineStyleOptions = {
@@ -14,6 +18,9 @@ export type FocusOutlineStyleOptions = {
   outlineWidth: string;
   outlineOffset?: string | FocusOutlineOffset;
 };
+export interface CreateFocusOutlineStyleOptions extends CreateCustomFocusIndicatorStyleOptions {
+  style?: Partial<FocusOutlineStyleOptions>;
+}
 
 /**
  * NOTE: the element with the focus outline needs to have `position: relative` so that the
@@ -51,14 +58,6 @@ const getFocusOutlineStyles = (options: FocusOutlineStyleOptions): GriffelStyle 
   };
 };
 
-export interface CreateFocusIndicatorStyleRuleOptions {
-  selector?: 'focus' | 'focus-within';
-}
-
-const defaultOptions: CreateFocusIndicatorStyleRuleOptions = {
-  selector: 'focus',
-};
-
 /**
  * NOTE: The element with the focus outline needs to have `position: relative` so that the
  * pseudo element can be properly positioned.
@@ -66,36 +65,17 @@ const defaultOptions: CreateFocusIndicatorStyleRuleOptions = {
  * @param options - Configure the style of the focus outline
  * @returns focus outline styles object for @see makeStyles
  */
-export const createFocusOutlineStyle = (
-  options: {
-    style: Partial<FocusOutlineStyleOptions>;
-  } & CreateFocusIndicatorStyleRuleOptions = { style: {}, ...defaultOptions },
-): GriffelStyle => ({
-  ':focus-visible': {
-    outlineStyle: 'none',
-  },
-  [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]: getFocusOutlineStyles({
-    outlineColor: tokens.colorStrokeFocus2,
-    outlineRadius: tokens.borderRadiusMedium,
-    // FIXME: tokens.strokeWidthThick causes some weird bugs
-    outlineWidth: '2px',
-    ...options.style,
-  }),
-});
-
-/**
- * Creates a style for @see makeStyles that includes the necessary selectors for focus.
- * Should be used only when @see createFocusOutlineStyle does not fit requirements
- *
- * @param style - styling applied on focus, defaults to @see getDefaultFocusOutlineStyes
- * @param options - Configure the style of the focus outline
- */
-export const createCustomFocusIndicatorStyle = (
-  style: GriffelStyle,
-  options: CreateFocusIndicatorStyleRuleOptions = defaultOptions,
-): GriffelStyle => ({
-  ':focus-visible': {
-    outlineStyle: 'none',
-  },
-  [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]: style,
-});
+export const createFocusOutlineStyle = ({
+  selector = defaultOptions.selector,
+  style = defaultOptions.style,
+}: CreateFocusOutlineStyleOptions = defaultOptions): GriffelStyle =>
+  createCustomFocusIndicatorStyle(
+    getFocusOutlineStyles({
+      outlineColor: tokens.colorStrokeFocus2,
+      outlineRadius: tokens.borderRadiusMedium,
+      // FIXME: tokens.strokeWidthThick causes some weird bugs
+      outlineWidth: '2px',
+      ...style,
+    }),
+    { selector },
+  );
