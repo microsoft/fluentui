@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "add strings prop to PresenceBadge and update demos to support new default strings",
+  "packageName": "@fluentui/react-badge",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
