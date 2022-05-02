@@ -139,6 +139,7 @@ const useRootStyles = makeStyles({
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
       borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
     },
+    // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
       borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,

@@ -14,13 +14,13 @@ const useStyles = makeStyles({
 });
 
 export const Placeholder = () => {
-  const placeholderId = useId('input-placeholder');
+  const inputId = useId('input-with-placeholder');
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <Label htmlFor={placeholderId}>Input With a Placeholder</Label>
-      <Input placeholder="This is a placeholder" id={placeholderId} />
+      <Label htmlFor={inputId}>Input With a Placeholder</Label>
+      <Input placeholder="This is a placeholder" id={inputId} />
     </div>
   );
 };
