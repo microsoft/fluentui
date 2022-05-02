@@ -12,6 +12,7 @@ export { SizeSmall } from './TabListSizeSmall.stories';
 export { SizeMedium } from './TabListSizeMedium.stories';
 export { WithIcon } from './TabListWithIcon.stories';
 export { IconOnly } from './TabListIconOnly.stories';
+export { WithPanels } from './TabListWithPanels.stories';
 
 export default {
   title: 'Preview Components/TabList',
