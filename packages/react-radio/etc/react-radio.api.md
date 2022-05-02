@@ -67,7 +67,7 @@ export type RadioOnChangeData = {
 };
 
 // @public
-export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'size'> & {
+export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'onChange' | 'size'> & {
     value?: string;
     labelPosition?: 'after' | 'below';
     disabled?: boolean;
