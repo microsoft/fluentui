@@ -6,7 +6,7 @@ export const Inline = () => (
     This is an{' '}
     <Link href="https://www.bing.com" inline>
       inline link
-    </Link>{' '}
+    </Link>
     used alongside other text
   </div>
 );
