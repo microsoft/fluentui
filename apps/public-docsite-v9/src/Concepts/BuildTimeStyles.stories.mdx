@@ -12,7 +12,7 @@ Make sure to take a look at the following docs to get started with styling in Fl
 - [Styling components](?path=/story/concepts-developer-styling-components--page)
 
 While there is nothing wrong with the associated runtime costs of a css-in-js engine, larger and more complex
-applications might want to optimize for performance. Generally, the expensive runtime work only
+applications might want to optimize for performance. In Fluent UI, the expensive runtime work only
 happens on the first render of the component.
 
 ### Webpack
@@ -21,7 +21,7 @@ happens on the first render of the component.
 yarn add @griffel/webpack-loader
 ```
 
-In your webpack config, simply add the `@griffel/webpack-loader` to the list of modules.
+In your webpack config, simply add the `@griffel/webpack-loader` to the list of rules.
 
 ```javascript
 // webpack.config.js
@@ -40,7 +40,8 @@ module: {
 
 ### Babel
 
-The babel preset is used internally by the webpack loader. For most applications the webpack loader should be enough.
+The babel preset is used internally by the webpack loader. For applications the webpack loader is appropriate because
+since it is the most popular bundler.
 However, library developers might prefer to use the babel preset since it is a better fit for tools such as rollup.
 
 ```sh
@@ -58,7 +59,7 @@ Simply create a babel configuration file such as `.babelrc` and add the preset.
 #### Importing from a third party package
 
 If Griffel is re-exported from a third party package, it's necessary to configure the preset to use a different
-module source. By default, the preset handles imports from `@fluentui/react-components`.
+module source. By default, the preset already handles imports from `@fluentui/react-components`.
 
 ```js
 import { makeStyles } from 'custom-package';
