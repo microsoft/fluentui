@@ -18,7 +18,8 @@ export const cardClassNames: SlotClassNames<CardSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'block',
-    ...shorthands.overflow('hidden'),
+    ...shorthands.overflow('clip'),
+    overflowClipMargin: tokens.strokeWidthThin,
 
     color: tokens.colorNeutralForeground1,
     ...shorthands.borderStyle('solid'),
@@ -30,6 +31,9 @@ const useStyles = makeStyles({
     [`> *:not(.${cardPreviewClassNames.root})`]: {
       // Size: medium
       ...shorthands.margin('12px'),
+    },
+    [`> .${cardPreviewClassNames.root}`]: {
+      ...shorthands.margin(`calc(${tokens.strokeWidthThin} * -1)`),
     },
   },
 

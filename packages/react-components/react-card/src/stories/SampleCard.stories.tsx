@@ -3,7 +3,7 @@ import { makeStyles } from '@griffel/react';
 import { Button } from '@fluentui/react-button';
 import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
 import { Body, Caption } from '@fluentui/react-text';
-import { Card, CardHeader, CardFooter } from '../index';
+import { Card, CardHeader, CardFooter, CardPreview } from '../index';
 import type { CardProps } from '../index';
 
 export const ASSET_URL =
@@ -22,6 +22,12 @@ export const SampleCard = (props: CardProps) => {
 
   return (
     <Card className={styles.card} {...props}>
+      <CardPreview>
+        <img
+          src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4RbvH?ver=6355"
+          alt="preview image"
+        />
+      </CardPreview>
       <CardHeader
         image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
         header={
