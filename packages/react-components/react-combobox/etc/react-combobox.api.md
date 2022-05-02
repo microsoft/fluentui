@@ -7,6 +7,9 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { InputProps } from '@fluentui/react-input';
+import type { InputSlots } from '@fluentui/react-input';
+import type { InputState } from '@fluentui/react-input';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -22,6 +25,23 @@ export const comboboxClassNames: SlotClassNames<ComboboxSlots>;
 export type ComboboxContextValues = {
     combobox: ComboboxContextValue;
 };
+
+// @public
+export const ComboboxInput: ForwardRefComponent<ComboboxInputProps>;
+
+// @public (undocumented)
+export const comboboxInputClassNames: SlotClassNames<ComboboxInputSlots>;
+
+// @public
+export type ComboboxInputProps = Partial<ComponentProps<ComboboxInputSlots>> & Omit<InputProps, 'contentBefore' | 'contentAfter'>;
+
+// @public (undocumented)
+export type ComboboxInputSlots = Pick<InputSlots, 'root' | 'input'> & {
+    expandIcon: Slot<'span'>;
+};
+
+// @public
+export type ComboboxInputState = ComponentState<ComboboxInputSlots> & Omit<InputState, 'components' | 'contentBefore' | 'contentAfter'>;
 
 // @public
 export type ComboboxOpenChangeData = {
@@ -154,6 +174,9 @@ export type OptionState = ComponentState<OptionSlots> & Pick<OptionProps, 'disab
 export const renderCombobox_unstable: (state: ComboboxState, contextValues: ComboboxContextValues) => JSX.Element;
 
 // @public
+export const renderComboboxInput_unstable: (state: ComboboxInputState) => JSX.Element;
+
+// @public
 export const renderComboButton_unstable: (state: ComboButtonState) => JSX.Element;
 
 // @public
@@ -167,6 +190,12 @@ export const renderOptionGroup_unstable: (state: OptionGroupState) => JSX.Elemen
 
 // @public
 export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLButtonElement>) => ComboboxState;
+
+// @public
+export const useComboboxInput_unstable: (props: ComboboxInputProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxInputState;
+
+// @public
+export const useComboboxInputStyles_unstable: (state: ComboboxInputState) => ComboboxInputState;
 
 // @public
 export const useComboboxStyles_unstable: (state: ComboboxState) => ComboboxState;
