@@ -9,18 +9,22 @@ import type { RefObject } from 'react';
 import { Types } from 'tabster';
 
 // @public
-export const createCustomFocusIndicatorStyle: (style: GriffelStyle, options?: CreateFocusIndicatorStyleRuleOptions) => GriffelStyle;
+export const createCustomFocusIndicatorStyle: (style: GriffelStyle, { selector }?: CreateCustomFocusIndicatorStyleOptions) => GriffelStyle;
 
 // @public (undocumented)
-export interface CreateFocusIndicatorStyleRuleOptions {
+export interface CreateCustomFocusIndicatorStyleOptions {
     // (undocumented)
     selector?: 'focus' | 'focus-within';
 }
 
 // @public
-export const createFocusOutlineStyle: (options?: {
-    style: Partial<FocusOutlineStyleOptions>;
-} & CreateFocusIndicatorStyleRuleOptions) => GriffelStyle;
+export const createFocusOutlineStyle: ({ selector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
+
+// @public (undocumented)
+export interface CreateFocusOutlineStyleOptions extends CreateCustomFocusIndicatorStyleOptions {
+    // (undocumented)
+    style?: Partial<FocusOutlineStyleOptions>;
+}
 
 // @public (undocumented)
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
@@ -41,6 +45,7 @@ export interface UseArrowNavigationGroupOptions {
     axis?: 'vertical' | 'horizontal' | 'grid';
     circular?: boolean;
     memorizeCurrent?: boolean;
+    tabbable?: boolean;
 }
 
 // @public

@@ -10,7 +10,7 @@ const options: IChoiceGroupOption[] = [
 export const ChoiceGroupIconExample: React.FunctionComponent = () => {
   return (
     <>
-      <ChoiceGroup label="Pick one icon" defaultSelectedKey="day" options={options} />;
+      <ChoiceGroup label="Pick one icon" defaultSelectedKey="day" options={options} />
       <p>
         Warning: this ChoiceGroup option layout restricts the space that label text has to expand and wrap. This can
         cause issues for accessibility, when zoom and text spacing increase the length of words and lines, and also

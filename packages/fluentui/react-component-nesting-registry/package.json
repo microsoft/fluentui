@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-component-nesting-registry",
   "description": "Registers a DOM nodes within a context.",
-  "version": "0.61.0",
+  "version": "0.62.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {

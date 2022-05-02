@@ -1,6 +1,6 @@
 import { createKeyborg } from 'keyborg';
 import { useEffect, useMemo, useRef } from 'react';
-import { KEYBOARD_NAV_ATTRIBUTE } from '../symbols';
+import { KEYBOARD_NAV_ATTRIBUTE } from '../focus/constants';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import type { KeyborgCallback } from 'keyborg/dist/Keyborg';
 import type { RefObject } from 'react';

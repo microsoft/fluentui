@@ -21,6 +21,8 @@ export interface TsConfig {
 
 export interface PackageJson {
   bin?: string | Record<string, string>;
+  types?: string;
+  typings?: string;
   private?: boolean;
   name: string;
   version: string;

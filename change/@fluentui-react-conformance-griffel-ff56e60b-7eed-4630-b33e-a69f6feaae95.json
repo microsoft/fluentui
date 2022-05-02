@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: move react-conformance to peerDeps to resolve dep issues when RC is bumped",
-  "packageName": "@fluentui/react-conformance-griffel",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

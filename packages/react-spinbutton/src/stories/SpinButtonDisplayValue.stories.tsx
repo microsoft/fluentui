@@ -8,7 +8,7 @@ type ParserFn = (formattedValue: string) => number;
 
 export const DisplayValue = () => {
   const formatter: FormatterFn = value => {
-    return `${value}"`;
+    return `$${value}`;
   };
 
   const parser: ParserFn = formattedValue => {

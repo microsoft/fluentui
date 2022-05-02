@@ -17,6 +17,7 @@ export type DropdownActions =
   | 'PageUp'
   | 'Previous'
   | 'Select'
+  | 'Tab'
   | 'Type';
 
 export interface DropdownActionOptions {
@@ -54,7 +55,7 @@ export function getDropdownActionFromKey(
   if ((code === keys.ArrowUp && altKey) || code === keys.Enter || (!multiselect && code === keys.Space)) {
     return 'CloseSelect';
   }
-  if (code === keys.Tab || (multiselect && code === keys.Space)) {
+  if (multiselect && code === keys.Space) {
     return 'Select';
   }
   if (code === keys.Escape) {
@@ -79,6 +80,9 @@ export function getDropdownActionFromKey(
   }
   if (code === keys.PageDown) {
     return 'PageDown';
+  }
+  if (code === keys.Tab) {
+    return 'Tab';
   }
 
   // if nothing matched, return none
