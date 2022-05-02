@@ -52,7 +52,7 @@ exports[`Button renders ActionButton correctly 1`] = `
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;
@@ -174,7 +174,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
           right: 4px;
           top: 4px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;
@@ -374,7 +374,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;
@@ -518,7 +518,7 @@ exports[`Button renders DefaultButton correctly 1`] = `
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;
@@ -633,7 +633,7 @@ exports[`Button renders IconButton correctly 1`] = `
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;
@@ -756,7 +756,7 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;

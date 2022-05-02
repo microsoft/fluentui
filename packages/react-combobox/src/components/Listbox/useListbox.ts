@@ -95,6 +95,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       onKeyDown,
       ...props,
     }),
+    multiselect,
     ...optionCollection,
     ...optionContextValues,
   };

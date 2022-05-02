@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add static classnames to Accordion",
-  "packageName": "@fluentui/react-accordion",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

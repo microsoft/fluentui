@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "react-button: Move to new common folder.",
+  "packageName": "@fluentui/react-button",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}

@@ -2,6 +2,41 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Tue, 19 Apr 2022 19:17:22 GMT",
+      "tag": "@fluentui/react-context-selector_v9.0.0-rc.6",
+      "version": "9.0.0-rc.6",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "b48c03cff249019cf845af18a7f63dacf46d5218",
+            "comment": "Hoist react-is devDependencies to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Move `scheduler` to a peer dependency and allow appropriate versions for React 16 or 17"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.6",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Mar 2022 05:17:36 GMT",
       "tag": "@fluentui/react-context-selector_v9.0.0-rc.5",
       "version": "9.0.0-rc.5",

@@ -82,7 +82,7 @@ export const colorScheme = {
     foreground3: colors.brand['200'],
     foreground4: colors.white,
 
-    border: colors.grey['450'],
+    border: colors.grey['475'],
     border1: colors.brand['800'],
     border2: colors.brand['800'],
 
@@ -110,7 +110,7 @@ export const colorScheme = {
     backgroundActive: colors.brand['450'],
     backgroundActive1: colors.brand['450'],
 
-    borderActive: colors.grey['450'],
+    borderActive: colors.grey['430'],
     borderActive1: colors.brand['800'],
     borderActive2: colors.brand['800'],
 
