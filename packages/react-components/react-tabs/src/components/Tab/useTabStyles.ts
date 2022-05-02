@@ -203,7 +203,7 @@ const usePendingIndicatorStyles = makeStyles({
     ':before': {
       bottom: 0,
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumHorizontal} / 2.0)`),
-      height: tabIndicatorStrokeWidths.mediumHorizontal,
+      height: 0,
       left: tabIndicatorPadding.mediumHorizontal,
       right: tabIndicatorPadding.mediumHorizontal,
     },
@@ -214,14 +214,14 @@ const usePendingIndicatorStyles = makeStyles({
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumVertical} / 2.0)`),
       left: 0,
       top: tabIndicatorPadding.mediumVertical,
-      width: tabIndicatorStrokeWidths.mediumVertical,
+      width: 0,
     },
   },
   smallHorizontal: {
     ':before': {
       bottom: 0,
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallHorizontal} / 2.0)`),
-      height: tabIndicatorStrokeWidths.smallHorizontal,
+      height: 0,
       left: tabIndicatorPadding.smallHorizontal,
       right: tabIndicatorPadding.smallHorizontal,
     },
@@ -232,7 +232,7 @@ const usePendingIndicatorStyles = makeStyles({
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallVertical} / 2.0)`),
       left: 0,
       top: tabIndicatorPadding.smallVertical,
-      width: tabIndicatorStrokeWidths.smallVertical,
+      width: 0,
     },
   },
 });
@@ -269,7 +269,7 @@ const useActiveIndicatorStyles = makeStyles({
     ':after': {
       bottom: '0',
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumHorizontal} / 2.0)`),
-      height: tabIndicatorStrokeWidths.mediumHorizontal,
+      height: 0,
       left: tabIndicatorPadding.mediumHorizontal,
       right: tabIndicatorPadding.mediumHorizontal,
     },
@@ -280,14 +280,14 @@ const useActiveIndicatorStyles = makeStyles({
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumVertical} / 2.0)`),
       left: 0,
       top: tabIndicatorPadding.mediumVertical,
-      width: tabIndicatorStrokeWidths.mediumVertical,
+      width: 0,
     },
   },
   smallHorizontal: {
     ':after': {
       bottom: 0,
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallHorizontal} / 2.0)`),
-      height: tabIndicatorStrokeWidths.smallHorizontal,
+      height: 0,
       left: tabIndicatorPadding.smallHorizontal,
       right: tabIndicatorPadding.smallHorizontal,
     },
@@ -298,7 +298,7 @@ const useActiveIndicatorStyles = makeStyles({
       ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallVertical} / 2.0)`),
       left: '0',
       top: tabIndicatorPadding.smallVertical,
-      width: tabIndicatorStrokeWidths.smallVertical,
+      width: 0,
     },
   },
 });
