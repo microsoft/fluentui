@@ -30,6 +30,10 @@ const useStyles = makeStyles({
     paddingLeft: '4px', // TODO: Once spacing tokens are added, change this to Horizontal XS
   },
 
+  requiredDisabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+  },
+
   small: {
     fontSize: tokens.fontSizeBase200,
     lineHeight: tokens.lineHeightBase200,
@@ -66,7 +70,12 @@ export const useLabelStyles_unstable = (state: LabelState): LabelState => {
   );
 
   if (state.required) {
-    state.required.className = mergeClasses(labelClassNames.required, styles.required, state.required.className);
+    state.required.className = mergeClasses(
+      labelClassNames.required,
+      styles.required,
+      state.disabled && styles.requiredDisabled,
+      state.required.className,
+    );
   }
 
   return state;
