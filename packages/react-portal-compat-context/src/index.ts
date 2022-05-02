@@ -1,2 +1,2 @@
-// TODO: replace with real exports
-export {};
+export { PortalCompatContextProvider, usePortalCompat } from './PortalCompatContext';
+export type { RegisterPortalFn } from './types';
