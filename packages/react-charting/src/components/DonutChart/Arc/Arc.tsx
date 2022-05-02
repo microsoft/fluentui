@@ -36,6 +36,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
       theme: this.props.theme!,
     });
     const id = this.props.uniqText! + this.props.data!.data.legend!.replace(/\s+/, '') + this.props.data!.data.data;
+    const donutTextId = 'donut-string-id';
     const opacity: number =
       this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '' ? 1 : 0.1;
     return (
@@ -58,7 +59,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           aria-labelledby={this.props.calloutId}
           role="text"
         />
-        <text textAnchor={'middle'} className={classNames.insideDonutString} y={5}>
+        <text id={donutTextId} textAnchor={'middle'} className={classNames.insideDonutString} y={5}>
           {this.props.valueInsideDonut!}
         </text>
       </g>

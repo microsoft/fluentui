@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '@fluentui/react-charting';
+import { mergeStyles } from '@fluentui/merge-styles';
 
 export class DonutChartCustomAccessibilityExample extends React.Component<IDonutChartProps, {}> {
   constructor(props: IDonutChartProps) {
@@ -29,17 +30,25 @@ export class DonutChartCustomAccessibilityExample extends React.Component<IDonut
       chartData: points,
       chartTitleAccessibilityData: { ariaLabel: 'Bar chart depicting about Donut chart' },
     };
+    const className = mergeStyles({
+      '#donut-string-id': {
+        fontSize: '28px',
+      },
+    });
+
     return (
-      <DonutChart
-        data={data}
-        innerRadius={64}
-        href={'https://developer.microsoft.com/en-us/'}
-        legendsOverflowText={'overflow Items'}
-        hideLegend={true}
-        height={220}
-        width={176}
-        valueInsideDonut={39000}
-      />
+      <div className={className}>
+        <DonutChart
+          data={data}
+          innerRadius={64}
+          href={'https://developer.microsoft.com/en-us/'}
+          legendsOverflowText={'overflow Items'}
+          hideLegend={true}
+          height={220}
+          width={176}
+          valueInsideDonut={39000}
+        />
+      </div>
     );
   }
 }
