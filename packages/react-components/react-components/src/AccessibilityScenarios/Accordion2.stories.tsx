@@ -2,8 +2,6 @@ import * as React from 'react';
 
 import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@fluentui/react-accordion';
 
-import { Label } from '@fluentui/react-label';
-
 import { Scenario } from './utils';
 
 export const FAQAccordionAccessibilityScenario: React.FunctionComponent = () => {

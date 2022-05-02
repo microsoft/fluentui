@@ -6,8 +6,6 @@ import { Label } from '@fluentui/react-label';
 
 import { Tooltip, TooltipProps } from '@fluentui/react-tooltip';
 
-import { Menu, MenuTrigger, MenuList, MenuPopover, MenuItem } from '@fluentui/react-menu';
-
 import { TextItalic24Regular, TextUnderline24Regular, TextBold24Regular } from '@fluentui/react-icons';
 
 import { Scenario } from './utils';
