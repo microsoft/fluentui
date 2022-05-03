@@ -673,9 +673,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-utilities": {
-      "root": "packages/react-components/react-utilities",
+      "root": "packages/react-utilities",
       "projectType": "library",
-      "sourceRoot": "packages/react-components/react-utilities/src",
+      "sourceRoot": "packages/react-utilities/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
