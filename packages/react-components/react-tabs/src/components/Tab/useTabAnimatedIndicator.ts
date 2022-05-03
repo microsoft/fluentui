@@ -63,7 +63,8 @@ const calculateTabRect = (element: HTMLElement) => {
 };
 
 const getRegisteredTabRect = (registeredTabs: Record<string, TabRegisterData>, value?: TabValue) => {
-  const element = value ? registeredTabs[JSON.stringify(value)]?.ref.current : undefined;
+  const element =
+    value !== undefined && value !== null ? registeredTabs[JSON.stringify(value)]?.ref.current : undefined;
   return element ? calculateTabRect(element) : undefined;
 };
 

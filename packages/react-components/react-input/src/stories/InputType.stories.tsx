@@ -24,17 +24,17 @@ export const Type = () => {
   return (
     <div className={styles.root}>
       <div>
-        <Label htmlFor={emailId}>Email</Label>
+        <Label htmlFor={emailId}>Email Input</Label>
         <Input type="email" id={emailId} />
       </div>
 
       <div>
-        <Label htmlFor={urlId}>URL</Label>
+        <Label htmlFor={urlId}>URL Input</Label>
         <Input type="url" id={urlId} />
       </div>
 
       <div>
-        <Label htmlFor={passwordId}>Password</Label>
+        <Label htmlFor={passwordId}>Password Input</Label>
         <Input type="password" defaultValue="password" id={passwordId} />
       </div>
     </div>

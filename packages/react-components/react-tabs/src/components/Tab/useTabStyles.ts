@@ -150,8 +150,8 @@ const useRootStyles = makeStyles({
  */
 const useFocusStyles = makeStyles({
   // Tab creates a custom focus indicator because the default focus indicator
-  // is applied using an :after pseudo-element on the root. Since the selection
-  // indicator uses an :after pseudo-element on the root, there is a conflict.
+  // is applied using an ::after pseudo-element on the root. Since the selection
+  // indicator uses an ::after pseudo-element on the root, there is a conflict.
   base: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
     outlineWidth: tokens.strokeWidthThick,
@@ -168,7 +168,7 @@ const useFocusStyles = makeStyles({
 /** Indicator styles for when pending selection */
 const usePendingIndicatorStyles = makeStyles({
   base: {
-    ':hover:before': {
+    ':hover::before': {
       backgroundColor: 'none',
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
@@ -177,7 +177,7 @@ const usePendingIndicatorStyles = makeStyles({
       content: '""',
       position: 'absolute',
     },
-    ':active:before': {
+    ':active::before': {
       backgroundColor: 'none',
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
@@ -188,54 +188,54 @@ const usePendingIndicatorStyles = makeStyles({
     },
   },
   disabled: {
-    ':hover:before': {
+    ':hover::before': {
       ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
-    ':active:before': {
+    ':active::before': {
       ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
   },
   mediumHorizontal: {
-    ':before': {
+    '::before': {
       bottom: 0,
       ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
-      height: tokens.strokeWidthThicker,
+      height: 0,
       left: tokens.spacingHorizontalM,
       right: tokens.spacingHorizontalM,
     },
   },
   mediumVertical: {
-    ':before': {
+    '::before': {
       bottom: tokens.spacingVerticalS,
       ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
       left: 0,
       top: tokens.spacingVerticalS,
-      width: tokens.strokeWidthThicker,
+      width: 0,
     },
   },
   smallHorizontal: {
-    ':before': {
+    '::before': {
       bottom: 0,
       ...shorthands.borderWidth(`calc(${tokens.strokeWidthThick} / 2.0)`),
-      height: tokens.strokeWidthThick,
+      height: 0,
       left: tokens.spacingHorizontalSNudge,
       right: tokens.spacingHorizontalSNudge,
     },
   },
   smallVertical: {
-    ':before': {
+    '::before': {
       bottom: tokens.spacingVerticalXS,
       ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
       left: 0,
       top: tokens.spacingVerticalXS,
-      width: tokens.strokeWidthThicker,
+      width: 0,
     },
   },
 });
 
 const useActiveIndicatorStyles = makeStyles({
   base: {
-    ':after': {
+    '::after': {
       ...shorthands.borderColor(tokens.colorTransparentStroke),
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
@@ -246,55 +246,55 @@ const useActiveIndicatorStyles = makeStyles({
     },
   },
   selected: {
-    ':after': {
+    '::after': {
       ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
     },
-    ':hover:after': {
+    ':hover::after': {
       ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
     },
-    ':active:after': {
+    ':active::after': {
       ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
     },
   },
   disabled: {
-    ':after': {
+    '::after': {
       ...shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
     },
   },
   mediumHorizontal: {
-    ':after': {
+    '::after': {
       bottom: '0',
       ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
-      height: tokens.strokeWidthThicker,
+      height: 0,
       left: tokens.spacingHorizontalM,
       right: tokens.spacingHorizontalM,
     },
   },
   mediumVertical: {
-    ':after': {
+    '::after': {
       bottom: tokens.spacingVerticalS,
       ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
       left: 0,
       top: tokens.spacingVerticalS,
-      width: tokens.strokeWidthThicker,
+      width: 0,
     },
   },
   smallHorizontal: {
-    ':after': {
+    '::after': {
       bottom: 0,
       ...shorthands.borderWidth(`calc(${tokens.strokeWidthThick} / 2.0)`),
-      height: tokens.strokeWidthThick,
+      height: 0,
       left: tokens.spacingHorizontalSNudge,
       right: tokens.spacingHorizontalSNudge,
     },
   },
   smallVertical: {
-    ':after': {
+    '::after': {
       bottom: tokens.spacingVerticalXS,
       ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
       left: '0',
       top: tokens.spacingVerticalXS,
-      width: tokens.strokeWidthThicker,
+      width: 0,
     },
   },
 });

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removed unnecessary width and height from indicators",
+  "packageName": "@fluentui/react-tabs",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
