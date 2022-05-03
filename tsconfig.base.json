@@ -14,7 +14,7 @@
     "baseUrl": ".",
     "paths": {
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
-      "@fluentui/keyboard-keys": ["packages/keyboard-keys/src/index.ts"],
+      "@fluentui/keyboard-keys": ["packages/react-components/keyboard-keys/src/index.ts"],
       "@fluentui/priority-overflow": ["packages/react-components/priority-overflow/src/index.ts"],
       "@fluentui/react-accordion": ["packages/react-accordion/src/index.ts"],
       "@fluentui/react-alert": ["packages/react-components/react-alert/src/index.ts"],

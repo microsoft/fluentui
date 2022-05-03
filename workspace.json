@@ -119,9 +119,9 @@
       "implicitDependencies": []
     },
     "@fluentui/keyboard-keys": {
-      "root": "packages/keyboard-keys",
+      "root": "packages/react-components/keyboard-keys",
       "projectType": "library",
-      "sourceRoot": "packages/keyboard-keys/src",
+      "sourceRoot": "packages/react-components/keyboard-keys/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },

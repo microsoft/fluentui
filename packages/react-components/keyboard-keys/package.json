@@ -18,7 +18,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/keyboard-keys/src && yarn docs",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/keyboard-keys/src && yarn docs",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json"
   },
