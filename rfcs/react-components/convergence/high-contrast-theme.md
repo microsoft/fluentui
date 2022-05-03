@@ -76,7 +76,10 @@ Current HC FUI theme uses the following five colors - `white`, `black`, `hyperli
 The implementation of the hard coded high contrast theme in Fluent UI, is mainly driven by designers. The existence
 of this theme (rather than allowing OS to handle all high contrast theming) is driven by the fact that not all
 platforms can be controlled by the operating system. For example, the Electron browser does not recognize input
-from the operating system about `forced-colors`.
+from the operating system about `forced-colors`. MacOS uses its own propietary color inverting as a means of support
+for high contrast which does not follow Windows. In these scenarios it would be appropriate to use the hard coded
+high contrast theme to either add high contrast support where there is none, or ensure some level of consistency
+with the Windows operating system.
 
 While there are benefits of providing a theme that provides more contrast than others, it is not necessary. The reasons
 for this theme are the result of technical contraints for certain platforms and a certain amount of legacy.
