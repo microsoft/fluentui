@@ -14,7 +14,7 @@ import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
 export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HTMLDivElement>): RadioGroupState => {
   const generatedName = useId('radiogroup-');
 
-  const { name = generatedName, value, defaultValue, disabled, layout = 'vertical', onChange } = props;
+  const { name = generatedName, value, defaultValue, disabled, layout = 'vertical', onChange, required } = props;
 
   return {
     layout,
@@ -22,6 +22,7 @@ export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HT
     value,
     defaultValue,
     disabled,
+    required,
     components: {
       root: 'div',
     },
