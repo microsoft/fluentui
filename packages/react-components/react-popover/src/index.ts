@@ -3,6 +3,7 @@ export type { OnOpenChangeData, OpenPopoverEvents, PopoverProps, PopoverSize, Po
 export {
   PopoverSurface,
   arrowHeights,
+  // eslint-disable-next-line deprecation/deprecation
   popoverSurfaceClassName,
   popoverSurfaceClassNames,
   renderPopoverSurface_unstable,
