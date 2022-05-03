@@ -1,14 +1,22 @@
 import * as React from 'react';
+import { Label } from '@fluentui/react-label';
+import { useId } from '@fluentui/react-utilities';
 import { Radio, RadioGroup } from '../index';
 
-export const UncontrolledValue = () => (
-  <RadioGroup defaultValue="B">
-    <Radio value="A" label="Option A" />
-    <Radio value="B" label="Option B" />
-    <Radio value="C" label="Option C" />
-    <Radio value="D" label="Option D" />
-  </RadioGroup>
-);
+export const UncontrolledValue = () => {
+  const labelId = useId('label');
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <Label id={labelId}>Favorite Fruit</Label>
+      <RadioGroup defaultValue="pear" aria-labelledby={labelId}>
+        <Radio value="apple" label="Apple" />
+        <Radio value="pear" label="Pear" />
+        <Radio value="banana" label="Banana" />
+        <Radio value="orange" label="Orange" />
+      </RadioGroup>
+    </div>
+  );
+};
 UncontrolledValue.parameters = {
   docs: {
     description: {
