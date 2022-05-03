@@ -347,9 +347,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-conformance-griffel": {
-      "root": "packages/react-conformance-griffel",
+      "root": "packages/react-components/react-conformance-griffel",
       "projectType": "library",
-      "sourceRoot": "packages/react-conformance-griffel/src",
+      "sourceRoot": "packages/react-components/react-conformance-griffel/src",
       "tags": ["vNext", "platform:node"],
       "implicitDependencies": []
     },

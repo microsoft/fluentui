@@ -6,7 +6,7 @@ This log was last generated on Tue, 19 Apr 2022 19:17:20 GMT and should not be m
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.4)
 
-Tue, 19 Apr 2022 19:17:20 GMT 
+Tue, 19 Apr 2022 19:17:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.3..@fluentui/react-conformance-griffel_v9.0.0-beta.4)
 
 ### Changes
@@ -17,7 +17,7 @@ Tue, 19 Apr 2022 19:17:20 GMT
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.3)
 
-Fri, 18 Feb 2022 13:35:31 GMT 
+Fri, 18 Feb 2022 13:35:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.1..@fluentui/react-conformance-griffel_v9.0.0-beta.3)
 
 ### Changes
