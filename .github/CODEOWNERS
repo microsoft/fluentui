@@ -96,7 +96,7 @@ packages/merge-styles @dzearing
 packages/monaco-editor @microsoft/fluentui-v8-website
 packages/public-docsite-setup @microsoft/fluentui-v8-website
 packages/priority-overflow @microsoft/teams-prg
-packages/react-aria @microsoft/teams-prg
+packages/react-components/react-aria @microsoft/teams-prg
 packages/react-cards @microsoft/cxe-red @khmakoto
 packages/react-charting @microsoft/charting-team
 packages/react-conformance-griffel @microsoft/teams-prg
@@ -111,7 +111,7 @@ packages/react-overflow @microsoft/teams-prg
 packages/react-shared-contexts @microsoft/teams-prg
 packages/react-components/react-storybook @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-components/react-storybook-addon @microsoft/cxe-prg
-packages/react-tabster @microsoft/teams-prg
+packages/react-components/react-tabster @microsoft/teams-prg
 packages/react-theme @microsoft/teams-prg
 packages/react-components/react-utilities @microsoft/teams-prg
 packages/storybook @microsoft/cxe-prg @microsoft/teams-prg
@@ -152,17 +152,17 @@ packages/react-components/react-provider @microsoft/teams-prg
 packages/react-radio @microsoft/cxe-red @behowell @spmonahan
 packages/react-components/react-select @microsoft/cxe-coastal @smhigley
 packages/react-components/react-slider @microsoft/cxe-coastal @micahgodbolt
-packages/react-spinbutton @microsoft/cxe-red @spmonahan
-packages/react-spinner @microsoft/cxe-red @tomi-msft
+packages/react-components/react-spinbutton @microsoft/cxe-red @spmonahan
+packages/react-components/react-spinner @microsoft/cxe-red @tomi-msft
 packages/react-switch @microsoft/cxe-red @behowell @khmakoto
 packages/react-components/react-tabs @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-components/react-text @microsoft/cxe-prg
 packages/react-textarea @microsoft/cxe-red @sopranopillow
-packages/react-tooltip @microsoft/cxe-red @behowell @khmakoto
+packages/react-components/react-tooltip @microsoft/cxe-red @behowell @khmakoto
 packages/react-components/react-list @microsoft/teams-prg
 packages/react-components/react-toolbar @microsoft/teams-prg @chpalac @ling1726
 packages/react-portal-compat @microsoft/teams-prg
-packages/react-alert @microsoft/teams-prg
+packages/react-components/react-alert @microsoft/teams-prg
 packages/react-portal-compat-context @microsoft/teams-prg
 ## <%= NX-CODEOWNER-PLACEHOLDER %>
 
