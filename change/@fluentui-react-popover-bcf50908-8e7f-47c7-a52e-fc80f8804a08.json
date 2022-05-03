@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "new prop `closeOnScroll` to close popover on scrolling outside",
+  "packageName": "@fluentui/react-popover",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
