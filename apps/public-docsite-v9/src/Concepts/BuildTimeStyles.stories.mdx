@@ -106,7 +106,7 @@ which describes what work is done during style resolution. **Note that this work
 
 <img src={imageFile} alt={'Illustration of work done by style resolution'} />;
 
-The final result before the CSS rules are inserted into DOM can be done during build time through
+The final result before the CSS rules are inserted into DOM can be prepared during build time through
 the methods above. Once the styles of our simple example are transformed at build time the resulting bundle contains
 a result similar to what is in our diagram. The actual runtime code of `makeStyles` is completely stripped from the
 bundle and replaced with a lightweight function that simply concatenates the CSS classes and inserts them to
