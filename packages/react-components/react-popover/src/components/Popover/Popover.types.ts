@@ -25,6 +25,12 @@ type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
    * Flag to open the Popover by hovering the trigger
    */
   openOnHover?: boolean;
+
+  /**
+   * Sets the delay for closing popover on mouse leave
+   */
+  mouseLeaveDelay?: number;
+
   /**
    * Flag to open the Popover as a context menu. Disables all other interactions
    */
@@ -106,6 +112,11 @@ export type PopoverState = PopoverCommons &
     popoverTrigger: React.ReactElement | undefined;
 
     popoverSurface: React.ReactElement | undefined;
+
+    /**
+     * Ref for timeout id that is used to set mouse leave delay
+     */
+    setOpenTimeoutRef: React.MutableRefObject<number>;
   };
 
 /**

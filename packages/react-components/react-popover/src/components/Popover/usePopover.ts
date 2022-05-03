@@ -64,6 +64,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     },
     [setOpen, open],
   );
+  const setOpenTimeoutRef = React.useRef(0);
 
   const popperRefs = usePopoverRefs(initialState);
 
@@ -99,6 +100,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     popoverSurface,
     open,
     setOpen,
+    setOpenTimeoutRef,
     toggleOpen,
     setContextTarget,
     contextTarget,

@@ -27,6 +27,8 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
   const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
   const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
+  const mouseLeaveDelay = usePopoverContext_unstable(context => context.mouseLeaveDelay);
+  const setOpenTimeoutRef = usePopoverContext_unstable(context => context.setOpenTimeoutRef);
   const openOnContext = usePopoverContext_unstable(context => context.openOnContext);
   const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
   const { triggerAttributes } = useModalAttributes();
@@ -56,16 +58,29 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
   };
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+    clearTimeout(setOpenTimeoutRef.current);
     if (openOnHover) {
       setOpen(e, true);
     }
   });
 
   const onMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
+    clearTimeout(setOpenTimeoutRef.current);
     if (openOnHover) {
-      setOpen(e, false);
+      setOpenTimeoutRef.current = setTimeout(() => {
+        setOpen(e, false);
+      }, mouseLeaveDelay);
     }
   };
+
+  // Clear timeout on unmount
+  // Setting state after a component unmounts can cause memory leaks
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(setOpenTimeoutRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return {
     children: applyTriggerPropsToChildren<PopoverTriggerChildProps>(props.children, {

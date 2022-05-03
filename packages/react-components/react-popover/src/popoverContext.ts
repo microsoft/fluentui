@@ -10,6 +10,8 @@ export const PopoverContext: Context<PopoverContextValue> = createContext<Popove
   arrowRef: { current: null },
   openOnContext: false,
   openOnHover: false,
+  mouseLeaveDelay: 500,
+  setOpenTimeoutRef: { current: 0 },
   size: 'medium',
   trapFocus: false,
 });
@@ -24,6 +26,8 @@ export type PopoverContextValue = Pick<
   | 'triggerRef'
   | 'contentRef'
   | 'openOnHover'
+  | 'mouseLeaveDelay'
+  | 'setOpenTimeoutRef'
   | 'openOnContext'
   | 'mountNode'
   | 'noArrow'
