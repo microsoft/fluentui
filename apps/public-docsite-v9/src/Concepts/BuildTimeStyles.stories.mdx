@@ -40,7 +40,7 @@ module: {
 
 ### Babel
 
-The babel preset is used internally by the webpack loader. For applications the webpack loader is appropriate because
+The babel preset is used internally by the webpack loader. For applications the webpack loader is appropriate
 since it is the most popular bundler.
 However, library developers might prefer to use the babel preset since it is a better fit for tools such as rollup.
 
@@ -102,7 +102,7 @@ function Component() {
 
 A correct invocation of `makeStyles` creates a styling hook that can be used inside a component. When the `useStyles`
 hook is invoked inside a component the styles are resolved and applied to the document. You can look at the image below
-which describes what work is done during style resolution.
+which describes what work is done during style resolution. **Note that this work only happens once, during first render**.
 
 <img src={imageFile} alt={'Illustration of work done by style resolution'} />;
 
