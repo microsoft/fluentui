@@ -102,6 +102,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     toggleOpen,
     setContextTarget,
     contextTarget,
+    inline: props.inline ?? false,
   };
 };
 

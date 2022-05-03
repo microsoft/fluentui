@@ -19,6 +19,7 @@ export const renderPopover_unstable = (state: PopoverState) => {
     noArrow,
     appearance,
     trapFocus,
+    inline,
   } = state;
 
   return (
@@ -36,6 +37,7 @@ export const renderPopover_unstable = (state: PopoverState) => {
         noArrow,
         appearance,
         trapFocus,
+        inline,
       }}
     >
       {state.popoverTrigger}

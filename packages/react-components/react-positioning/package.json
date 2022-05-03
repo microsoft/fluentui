@@ -1,7 +1,7 @@
 {
-  "name": "@fluentui/react-theme",
-  "version": "9.0.0-rc.5",
-  "description": "Fluent UI themes",
+  "name": "@fluentui/react-positioning",
+  "version": "9.0.0-rc.6",
+  "description": "A react wrapper around Popper.js for Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -18,11 +18,9 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "yarn storybook",
-    "storybook": "node ../../scripts/storybook/runner",
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-theme/src && yarn docs",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-positioning/src && yarn docs",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
@@ -30,6 +28,11 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@griffel/react": "1.0.3",
+    "@fluentui/react-shared-contexts": "9.0.0-rc.5",
+    "@fluentui/react-theme": "9.0.0-rc.5",
+    "@fluentui/react-utilities": "9.0.0-rc.6",
+    "@popperjs/core": "~2.4.3",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

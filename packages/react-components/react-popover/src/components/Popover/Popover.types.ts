@@ -9,6 +9,11 @@ export type PopoverSize = 'small' | 'medium' | 'large';
 
 type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
   /**
+   * Popovers are rendered out of DOM order on `document.body` by default, use this to render the popover in DOM order
+   */
+  inline: boolean;
+
+  /**
    * Controls the opening of the Popover
    */
   open: boolean;

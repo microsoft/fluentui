@@ -106,14 +106,14 @@ packages/react-docsite-components @microsoft/fluentui-v8-website
 packages/react-file-type-icons @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
 packages/react-monaco-editor @microsoft/fluentui-v8-website
-packages/react-positioning @microsoft/teams-prg
+packages/react-components/react-positioning @microsoft/teams-prg
 packages/react-components/react-overflow @microsoft/teams-prg
 packages/react-shared-contexts @microsoft/teams-prg
 packages/react-components/react-storybook @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-components/react-storybook-addon @microsoft/cxe-prg
 packages/react-components/react-tabster @microsoft/teams-prg
-packages/react-theme @microsoft/teams-prg
-packages/react-utilities @microsoft/teams-prg
+packages/react-components/react-theme @microsoft/teams-prg
+packages/react-components/react-utilities @microsoft/teams-prg
 packages/storybook @microsoft/cxe-prg @microsoft/teams-prg
 packages/style-utilities @dzearing
 packages/style-utilities/src/interfaces @phkuo @dzearing
