@@ -67,7 +67,7 @@
     sans-serif;
   font-size: 18px;
   line-height: 24px;
-  margin: 15px 0 0 0 !important;
+  margin: 25px 0 0 0 !important;
   letter-spacing: -0.01em;
   color: #000000;
 }
@@ -76,8 +76,8 @@
 #docs-root [id] > .sbdocs-h3:before {
   content: '';
   display: block;
-  height: 60px;
-  margin: -60px 0 0;
+  height: 40px;
+  margin: -40px 0 0;
 }
 
 #docs-root .sbdocs-li {
@@ -129,6 +129,12 @@
 
 #docs-root .sbdocs-preview > .os-host {
   display: none;
+}
+
+/* Remove z-index from "show code" button container */
+/* https://github.com/microsoft/fluentui/issues/22773 */
+.docs-story > div:nth-child(2) {
+  z-index: auto;
 }
 
 #docs-root .docblock-code-toggle,
