@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { RadioGroupContextValue } from '../../contexts/RadioGroupContext';
 
 export type RadioGroupSlots = {
   /**
@@ -39,7 +38,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
   /**
    * How the radio items are laid out in the group.
    *
-   * @defaultvalue vertical
+   * @default vertical
    */
   layout?: 'vertical' | 'horizontal' | 'horizontalStacked';
 
@@ -63,6 +62,11 @@ export type RadioGroupOnChangeData = {
  * State used in rendering RadioGroup
  */
 export type RadioGroupState = ComponentState<RadioGroupSlots> &
-  Required<Pick<RadioGroupProps, 'layout'>> & {
-    context: RadioGroupContextValue;
-  };
+  Required<Pick<RadioGroupProps, 'layout'>> &
+  Partial<Exclude<RadioGroupProps, 'onChange' | 'layout'>>;
+
+export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout'>;
+
+export type RadioGroupContextValues = {
+  radioGroup: RadioGroupContextValue;
+};

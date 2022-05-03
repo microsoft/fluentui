@@ -3,6 +3,7 @@ import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { getPartitionedNativeProps, resolveShorthand, useId, useMergedEventCallbacks } from '@fluentui/react-utilities';
 import { RadioGroupContext } from '../../contexts/RadioGroupContext';
+import { useContextSelector } from '@fluentui/react-context-selector';
 import type { RadioProps, RadioState } from './Radio.types';
 
 /**
@@ -15,14 +16,18 @@ import type { RadioProps, RadioState } from './Radio.types';
  * @param ref - reference to `<input>` element of Radio
  */
 export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputElement>): RadioState => {
-  const group = React.useContext(RadioGroupContext);
+  const nameGroup = useContextSelector(RadioGroupContext, ctx => ctx.name);
+  const value = useContextSelector(RadioGroupContext, ctx => ctx.value);
+  const defaultValue = useContextSelector(RadioGroupContext, ctx => ctx.defaultValue);
+  const disabledGroup = useContextSelector(RadioGroupContext, ctx => ctx.disabled);
+  const layout = useContextSelector(RadioGroupContext, ctx => ctx.layout);
 
   const {
-    name = group.name,
-    checked = group.value !== undefined ? group.value === props.value : undefined,
-    defaultChecked = group.defaultValue !== undefined ? group.defaultValue === props.value : undefined,
-    labelPosition = group.layout === 'horizontalStacked' ? 'below' : 'after',
-    disabled = group.disabled,
+    name = nameGroup,
+    checked = value !== undefined ? value === props.value : undefined,
+    defaultChecked = defaultValue !== undefined ? defaultValue === props.value : undefined,
+    labelPosition = layout === 'horizontalStacked' ? 'below' : 'after',
+    disabled = disabledGroup,
     onChange,
   } = props;
 
