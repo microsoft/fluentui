@@ -2,13 +2,7 @@ import type { TabSlots, TabState } from './Tab.types';
 
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
-import {
-  pendingContentSizeTokens,
-  pendingSpacingTokens,
-  tabIndicatorPadding,
-  tabIndicatorStrokeWidths,
-} from '../../tab.constants';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { useTabAnimatedIndicatorStyles_unstable } from './useTabAnimatedIndicator';
 
@@ -43,23 +37,25 @@ const useRootStyles = makeStyles({
     textTransform: 'none',
   },
   mediumHorizontal: {
-    columnGap: pendingSpacingTokens.sNudge,
+    columnGap: tokens.spacingHorizontalSNudge,
     justifyContent: 'center',
-    ...shorthands.padding(pendingSpacingTokens.m, pendingSpacingTokens.mNudge),
+    ...shorthands.padding(tokens.spacingVerticalM, tokens.spacingHorizontalMNudge),
   },
   mediumVertical: {
-    columnGap: pendingSpacingTokens.sNudge,
+    // horizontal spacing is deliberate. This is the gap between icon and content.
+    columnGap: tokens.spacingHorizontalSNudge,
     justifyContent: 'flex-start',
     minWidth: '120px',
-    ...shorthands.padding(pendingSpacingTokens.sNudge, pendingSpacingTokens.mNudge),
+    ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalMNudge),
   },
   smallHorizontal: {
-    columnGap: pendingSpacingTokens.xxs,
-    ...shorthands.padding(pendingSpacingTokens.sNudge, pendingSpacingTokens.sNudge),
+    columnGap: tokens.spacingHorizontalXXS,
+    ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalSNudge),
   },
   smallVertical: {
-    columnGap: pendingSpacingTokens.xxs,
-    ...shorthands.padding(pendingSpacingTokens.xxs, pendingSpacingTokens.sNudge),
+    // horizontal spacing is deliberate. This is the gap between icon and content.
+    columnGap: tokens.spacingHorizontalXXS,
+    ...shorthands.padding(tokens.spacingVerticalXXS, tokens.spacingHorizontalSNudge),
   },
   transparent: {
     backgroundColor: tokens.colorTransparentBackground,
@@ -202,36 +198,36 @@ const usePendingIndicatorStyles = makeStyles({
   mediumHorizontal: {
     '::before': {
       bottom: 0,
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumHorizontal} / 2.0)`),
+      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
       height: 0,
-      left: tabIndicatorPadding.mediumHorizontal,
-      right: tabIndicatorPadding.mediumHorizontal,
+      left: tokens.spacingHorizontalM,
+      right: tokens.spacingHorizontalM,
     },
   },
   mediumVertical: {
     '::before': {
-      bottom: tabIndicatorPadding.mediumVertical,
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumVertical} / 2.0)`),
+      bottom: tokens.spacingVerticalS,
+      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
       left: 0,
-      top: tabIndicatorPadding.mediumVertical,
+      top: tokens.spacingVerticalS,
       width: 0,
     },
   },
   smallHorizontal: {
     '::before': {
       bottom: 0,
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallHorizontal} / 2.0)`),
+      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThick} / 2.0)`),
       height: 0,
-      left: tabIndicatorPadding.smallHorizontal,
-      right: tabIndicatorPadding.smallHorizontal,
+      left: tokens.spacingHorizontalSNudge,
+      right: tokens.spacingHorizontalSNudge,
     },
   },
   smallVertical: {
     '::before': {
-      bottom: tabIndicatorPadding.smallVertical,
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallVertical} / 2.0)`),
+      bottom: tokens.spacingVerticalXS,
+      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
       left: 0,
-      top: tabIndicatorPadding.smallVertical,
+      top: tokens.spacingVerticalXS,
       width: 0,
     },
   },
@@ -268,36 +264,36 @@ const useActiveIndicatorStyles = makeStyles({
   mediumHorizontal: {
     '::after': {
       bottom: '0',
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumHorizontal} / 2.0)`),
+      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
       height: 0,
-      left: tabIndicatorPadding.mediumHorizontal,
-      right: tabIndicatorPadding.mediumHorizontal,
+      left: tokens.spacingHorizontalM,
+      right: tokens.spacingHorizontalM,
     },
   },
   mediumVertical: {
     '::after': {
-      bottom: tabIndicatorPadding.mediumVertical,
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumVertical} / 2.0)`),
+      bottom: tokens.spacingVerticalS,
+      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
       left: 0,
-      top: tabIndicatorPadding.mediumVertical,
+      top: tokens.spacingVerticalS,
       width: 0,
     },
   },
   smallHorizontal: {
     '::after': {
       bottom: 0,
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallHorizontal} / 2.0)`),
+      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThick} / 2.0)`),
       height: 0,
-      left: tabIndicatorPadding.smallHorizontal,
-      right: tabIndicatorPadding.smallHorizontal,
+      left: tokens.spacingHorizontalSNudge,
+      right: tokens.spacingHorizontalSNudge,
     },
   },
   smallVertical: {
     '::after': {
-      bottom: tabIndicatorPadding.smallVertical,
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallVertical} / 2.0)`),
+      bottom: tokens.spacingVerticalXS,
+      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
       left: '0',
-      top: tabIndicatorPadding.smallVertical,
+      top: tokens.spacingVerticalXS,
       width: 0,
     },
   },
@@ -332,13 +328,13 @@ const useIconStyles = makeStyles({
  */
 const useContentStyles = makeStyles({
   base: {
-    ...pendingContentSizeTokens.body1,
+    ...typographyStyles.body1,
     ...shorthands.overflow('hidden'),
     // content padding is the same for medium & small, horiztonal & vertical
-    ...shorthands.padding(0, pendingSpacingTokens.xxs),
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalXXS),
   },
   selected: {
-    ...pendingContentSizeTokens.body1Strong,
+    ...typographyStyles.body1Strong,
   },
 });
 
