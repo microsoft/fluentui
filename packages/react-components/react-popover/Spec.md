@@ -239,6 +239,11 @@ export type PopoverProps = {
   onOpenChange?: (e: OpenPopoverEvents, data: OpenEventData) => void;
 
   /**
+   * Flag to open the Popover by hovering the trigger
+   */
+  openOnHover?: boolean;
+
+  /**
    * Anchor the popover to an element other than the trigger
    */
   target?: HTMLElement;
@@ -284,6 +289,11 @@ export type PopoverProps = {
    * Do not render an arrow pointing to the target element. This is the `PopoverTrigger` unless `target` prop is used
    */
   noArrow?: boolean;
+
+  /**
+   * Sets the delay for closing popover on mouse leave
+   */
+  mouseLeaveDelay?: number;
 };
 ```
 
