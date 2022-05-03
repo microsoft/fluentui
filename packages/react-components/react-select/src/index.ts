@@ -1,6 +1,7 @@
 export {
   Select,
   renderSelect_unstable,
+  // eslint-disable-next-line deprecation/deprecation
   selectClassName,
   selectClassNames,
   useSelectStyles_unstable,
