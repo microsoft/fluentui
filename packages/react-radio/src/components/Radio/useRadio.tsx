@@ -21,6 +21,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
   const defaultValue = useContextSelector(RadioGroupContext, ctx => ctx.defaultValue);
   const disabledGroup = useContextSelector(RadioGroupContext, ctx => ctx.disabled);
   const layout = useContextSelector(RadioGroupContext, ctx => ctx.layout);
+  const requiredGroup = useContextSelector(RadioGroupContext, ctx => ctx.required);
 
   const {
     name = nameGroup,
@@ -28,6 +29,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
     defaultChecked = defaultValue !== undefined ? defaultValue === props.value : undefined,
     labelPosition = layout === 'horizontalStacked' ? 'below' : 'after',
     disabled = disabledGroup,
+    required = requiredGroup,
     onChange,
   } = props;
 
@@ -52,6 +54,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
       checked,
       defaultChecked,
       disabled,
+      required,
       ...nativeProps.primary,
     },
   });

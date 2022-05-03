@@ -35,7 +35,7 @@ export const radioGroupClassNames: SlotClassNames<RadioGroupSlots>;
 export const RadioGroupContext: Context<RadioGroupContextValue>;
 
 // @public (undocumented)
-export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout'>;
+export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required'>;
 
 // @public (undocumented)
 export type RadioGroupContextValues = {
@@ -55,6 +55,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
     onChange?: (ev: React_2.FormEvent<HTMLDivElement>, data: RadioGroupOnChangeData) => void;
     layout?: 'vertical' | 'horizontal' | 'horizontalStacked';
     disabled?: boolean;
+    required?: boolean;
 };
 
 // @public (undocumented)

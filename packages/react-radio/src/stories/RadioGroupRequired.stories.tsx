@@ -10,11 +10,11 @@ export const Required = () => {
       <Label id={labelId} required>
         Favorite Fruit
       </Label>
-      <RadioGroup aria-labelledby={labelId}>
-        <Radio value="apple" label="Apple" required />
-        <Radio value="pear" label="Pear" required />
-        <Radio value="banana" label="Banana" required />
-        <Radio value="orange" label="Orange" required />
+      <RadioGroup aria-labelledby={labelId} required>
+        <Radio value="apple" label="Apple" />
+        <Radio value="pear" label="Pear" />
+        <Radio value="banana" label="Banana" />
+        <Radio value="orange" label="Orange" />
       </RadioGroup>
     </div>
   );
@@ -22,7 +22,7 @@ export const Required = () => {
 Required.parameters = {
   docs: {
     description: {
-      story: 'Use the `required` prop on every `Radio` child of a `RadioGroup` to make the group as required.',
+      story: 'Use the `required` prop on `RadioGroup` to make all child `Radio`s required.',
     },
   },
 };
