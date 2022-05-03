@@ -75,12 +75,15 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     refs: [popperRefs.triggerRef, popperRefs.contentRef],
     disabled: !open,
   });
+
+  // only close on scroll for context, or when closeOnScroll is specified
+  const closeOnScroll = open && (initialState.openOnContext || initialState.closeOnScroll);
   useOnScrollOutside({
     contains: elementContains,
     element: targetDocument,
     callback: ev => setOpen(ev, false),
     refs: [popperRefs.triggerRef, popperRefs.contentRef],
-    disabled: !open || !initialState.openOnContext, // only close on scroll for context
+    disabled: !closeOnScroll,
   });
 
   const { findFirstFocusable } = useFocusFinders();
