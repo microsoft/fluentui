@@ -65,6 +65,9 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     clearTimeout(setOpenTimeoutRef.current);
 
     if (e.type === 'mouseleave') {
+      // FIXME leaking Node timeout type
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       setOpenTimeoutRef.current = setTimeout(() => {
         setOpen(e, shouldOpen);
       }, props.mouseLeaveDelay ?? 500);
