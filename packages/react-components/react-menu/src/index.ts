@@ -10,6 +10,7 @@ export { Menu, renderMenu_unstable, useMenuContextValues_unstable, useMenu_unsta
 export type { MenuContextValues, MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuSlots, MenuState } from './Menu';
 export {
   MenuDivider,
+  // eslint-disable-next-line deprecation/deprecation
   menuDividerClassName,
   menuDividerClassNames,
   renderMenuDivider_unstable,
@@ -19,6 +20,7 @@ export {
 export type { MenuDividerProps, MenuDividerSlots, MenuDividerState } from './MenuDivider';
 export {
   MenuGroup,
+  // eslint-disable-next-line deprecation/deprecation
   menuGroupClassName,
   menuGroupClassNames,
   renderMenuGroup_unstable,
@@ -29,6 +31,7 @@ export {
 export type { MenuGroupContextValues, MenuGroupProps, MenuGroupSlots, MenuGroupState } from './MenuGroup';
 export {
   MenuGroupHeader,
+  // eslint-disable-next-line deprecation/deprecation
   menuGroupHeaderClassName,
   menuGroupHeaderClassNames,
   renderMenuGroupHeader_unstable,
@@ -38,6 +41,7 @@ export {
 export type { MenuGroupHeaderProps, MenuGroupHeaderSlots, MenuGroupHeaderState } from './MenuGroupHeader';
 export {
   MenuItem,
+  // eslint-disable-next-line deprecation/deprecation
   menuItemClassName,
   menuItemClassNames,
   renderMenuItem_unstable,
@@ -47,6 +51,7 @@ export {
 export type { MenuItemProps, MenuItemSlots, MenuItemState } from './MenuItem';
 export {
   MenuItemCheckbox,
+  // eslint-disable-next-line deprecation/deprecation
   menuItemCheckboxClassName,
   menuItemCheckboxClassNames,
   renderMenuItemCheckbox_unstable,
@@ -56,6 +61,7 @@ export {
 export type { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox';
 export {
   MenuItemRadio,
+  // eslint-disable-next-line deprecation/deprecation
   menuItemRadioClassName,
   menuItemRadioClassNames,
   renderMenuItemRadio_unstable,
@@ -65,6 +71,7 @@ export {
 export type { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio';
 export {
   MenuList,
+  // eslint-disable-next-line deprecation/deprecation
   menuListClassName,
   menuListClassNames,
   renderMenuList_unstable,
@@ -83,6 +90,7 @@ export type {
 } from './MenuList';
 export {
   MenuPopover,
+  // eslint-disable-next-line deprecation/deprecation
   menuPopoverClassName,
   menuPopoverClassNames,
   renderMenuPopover_unstable,
@@ -92,6 +100,7 @@ export {
 export type { MenuPopoverProps, MenuPopoverSlots, MenuPopoverState } from './MenuPopover';
 export {
   MenuSplitGroup,
+  // eslint-disable-next-line deprecation/deprecation
   menuSplitGroupClassName,
   menuSplitGroupClassNames,
   renderMenuSplitGroup_unstable,
