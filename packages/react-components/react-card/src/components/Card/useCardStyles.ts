@@ -21,16 +21,18 @@ const useStyles = makeStyles({
     position: 'relative',
     ...shorthands.overflow('hidden'),
     color: tokens.colorNeutralForeground1,
+
     // Size: medium
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
     '::after': {
-      content: '""',
       position: 'absolute',
-      top: '0px',
-      left: '0px',
-      bottom: '0px',
-      right: '0px',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      content: '""',
+      pointerEvents: 'none',
 
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderWidth(tokens.strokeWidthThin),
