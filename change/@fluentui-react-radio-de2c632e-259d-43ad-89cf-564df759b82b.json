@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "update README",
+  "packageName": "@fluentui/react-radio",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

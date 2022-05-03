@@ -14,7 +14,7 @@ export { DisabledItem } from './RadioGroupDisabledItem.stories';
 export { LabelSubtext } from './RadioGroupLabelSubtext.stories';
 
 export default {
-  title: 'Preview Components/RadioGroup',
+  title: 'Components/RadioGroup',
   component: RadioGroup,
   parameters: {
     docs: {
