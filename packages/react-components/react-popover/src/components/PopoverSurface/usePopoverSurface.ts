@@ -19,8 +19,6 @@ export const usePopoverSurface_unstable = (
 ): PopoverSurfaceState => {
   const contentRef = usePopoverContext_unstable(context => context.contentRef);
   const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
-  const mouseLeaveDelay = usePopoverContext_unstable(context => context.mouseLeaveDelay);
-  const setOpenTimeoutRef = usePopoverContext_unstable(context => context.setOpenTimeoutRef);
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const mountNode = usePopoverContext_unstable(context => context.mountNode);
   const arrowRef = usePopoverContext_unstable(context => context.arrowRef);
@@ -55,7 +53,6 @@ export const usePopoverSurface_unstable = (
   } = state.root;
 
   state.root.onMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
-    clearTimeout(setOpenTimeoutRef.current);
     if (openOnHover) {
       setOpen(e, true);
     }
@@ -64,11 +61,8 @@ export const usePopoverSurface_unstable = (
   };
 
   state.root.onMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-    clearTimeout(setOpenTimeoutRef.current);
     if (openOnHover) {
-      setOpenTimeoutRef.current = setTimeout(() => {
-        setOpen(e, false);
-      }, mouseLeaveDelay);
+      setOpen(e, false);
     }
 
     onMouseLeaveOriginal?.(e);
@@ -83,15 +77,6 @@ export const usePopoverSurface_unstable = (
 
     onKeyDownOriginal?.(e);
   };
-
-  // Clear timeout on unmount
-  // Setting state after a component unmounts can cause memory leaks
-  React.useEffect(() => {
-    return () => {
-      clearTimeout(setOpenTimeoutRef.current);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return state;
 };

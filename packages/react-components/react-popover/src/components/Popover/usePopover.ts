@@ -57,14 +57,36 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     popoverSurface = children[0];
   }
 
-  const [open, setOpen] = useOpenState(initialState);
+  const [open, setOpenState] = useOpenState(initialState);
+
+  const setOpenTimeoutRef = React.useRef(0);
+
+  const setOpen = useEventCallback((e: OpenPopoverEvents, shouldOpen: boolean) => {
+    clearTimeout(setOpenTimeoutRef.current);
+
+    if (e.type === 'mouseleave') {
+      setOpenTimeoutRef.current = setTimeout(() => {
+        setOpen(e, shouldOpen);
+      }, props.mouseLeaveDelay ?? 500);
+    } else {
+      setOpenState(e, shouldOpen);
+    }
+  });
+
+  // Clear timeout on unmount
+  // Setting state after a component unmounts can cause memory leaks
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(setOpenTimeoutRef.current);
+    };
+  }, []);
+
   const toggleOpen = React.useCallback<PopoverState['toggleOpen']>(
     e => {
       setOpen(e, !open);
     },
     [setOpen, open],
   );
-  const setOpenTimeoutRef = React.useRef(0);
 
   const popperRefs = usePopoverRefs(initialState);
 
@@ -100,7 +122,6 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     popoverSurface,
     open,
     setOpen,
-    setOpenTimeoutRef,
     toggleOpen,
     setContextTarget,
     contextTarget,

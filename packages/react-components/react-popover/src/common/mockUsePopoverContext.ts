@@ -15,8 +15,6 @@ export const mockPopoverContext = (options: Partial<PopoverContextValue> = {}) =
     arrowRef: { current: null },
     openOnContext: false,
     openOnHover: false,
-    mouseLeaveDelay: 500,
-    setOpenTimeoutRef: { current: 0 },
     size: 'medium',
     ...options,
   };

@@ -112,11 +112,6 @@ export type PopoverState = PopoverCommons &
     popoverTrigger: React.ReactElement | undefined;
 
     popoverSurface: React.ReactElement | undefined;
-
-    /**
-     * Ref for timeout id that is used to set mouse leave delay
-     */
-    setOpenTimeoutRef: React.MutableRefObject<number>;
   };
 
 /**
