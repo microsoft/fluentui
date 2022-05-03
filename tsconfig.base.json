@@ -57,7 +57,7 @@
       "@fluentui/react-tabs": ["packages/react-components/react-tabs/src/index.ts"],
       "@fluentui/react-tabster": ["packages/react-components/react-tabster/src/index.ts"],
       "@fluentui/react-text": ["packages/react-components/react-text/src/index.ts"],
-      "@fluentui/react-textarea": ["packages/react-textarea/src/index.ts"],
+      "@fluentui/react-textarea": ["packages/react-components/react-textarea/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-components/react-theme/src/index.ts"],
       "@fluentui/react-toolbar": ["packages/react-components/react-toolbar/src/index.ts"],
       "@fluentui/react-tooltip": ["packages/react-components/react-tooltip/src/index.ts"],

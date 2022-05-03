@@ -6,7 +6,7 @@ This log was last generated on Tue, 19 Apr 2022 19:17:02 GMT and should not be m
 
 ## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.0.0-alpha.1)
 
-Tue, 19 Apr 2022 19:17:02 GMT 
+Tue, 19 Apr 2022 19:17:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.0.0-alpha.0..@fluentui/react-textarea_v9.0.0-alpha.1)
 
 ### Changes
@@ -18,7 +18,7 @@ Tue, 19 Apr 2022 19:17:02 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.0.0-alpha.0)
 
-Fri, 04 Mar 2022 05:17:40 GMT 
+Fri, 04 Mar 2022 05:17:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.0.0-alpha.0..@fluentui/react-textarea_v9.0.0-alpha.0)
 
 ### Changes

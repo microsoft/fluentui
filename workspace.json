@@ -645,10 +645,10 @@
       "implicitDependencies": []
     },
     "@fluentui/react-textarea": {
-      "root": "packages/react-textarea",
+      "root": "packages/react-components/react-textarea",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-textarea/src",
+      "sourceRoot": "packages/react-components/react-textarea/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-theme": {
