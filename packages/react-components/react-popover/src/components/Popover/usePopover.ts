@@ -83,7 +83,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     element: targetDocument,
     callback: ev => setOpen(ev, false),
     refs: [popperRefs.triggerRef, popperRefs.contentRef],
-    disabled: !closeOnScroll,
+    disabled: !open || !closeOnScroll,
   });
 
   const { findFirstFocusable } = useFocusFinders();
