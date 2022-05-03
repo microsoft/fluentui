@@ -99,8 +99,8 @@ packages/react-components/priority-overflow @microsoft/teams-prg
 packages/react-components/react-aria @microsoft/teams-prg
 packages/react-cards @microsoft/cxe-red @khmakoto
 packages/react-charting @microsoft/charting-team
-packages/react-conformance-griffel @microsoft/teams-prg
-packages/react-context-selector @microsoft/teams-prg
+packages/react-components/react-conformance-griffel @microsoft/teams-prg
+packages/react-components/react-context-selector @microsoft/teams-prg
 packages/react-date-time @microsoft/fluent-date-time
 packages/react-docsite-components @microsoft/fluentui-v8-website
 packages/react-file-type-icons @jahnp @bigbadcapers
@@ -163,7 +163,7 @@ packages/react-components/react-list @microsoft/teams-prg
 packages/react-components/react-toolbar @microsoft/teams-prg @chpalac @ling1726
 packages/react-portal-compat @microsoft/teams-prg
 packages/react-components/react-alert @microsoft/teams-prg
-packages/react-portal-compat-context @microsoft/teams-prg
+packages/react-components/react-portal-compat-context @microsoft/teams-prg
 ## <%= NX-CODEOWNER-PLACEHOLDER %>
 
 

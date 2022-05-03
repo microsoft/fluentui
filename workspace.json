@@ -347,16 +347,16 @@
       "implicitDependencies": []
     },
     "@fluentui/react-conformance-griffel": {
-      "root": "packages/react-conformance-griffel",
+      "root": "packages/react-components/react-conformance-griffel",
       "projectType": "library",
-      "sourceRoot": "packages/react-conformance-griffel/src",
+      "sourceRoot": "packages/react-components/react-conformance-griffel/src",
       "tags": ["vNext", "platform:node"],
       "implicitDependencies": []
     },
     "@fluentui/react-context-selector": {
-      "root": "packages/react-context-selector",
+      "root": "packages/react-components/react-context-selector",
       "projectType": "library",
-      "sourceRoot": "packages/react-context-selector/src",
+      "sourceRoot": "packages/react-components/react-context-selector/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -530,10 +530,10 @@
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-portal-compat-context": {
-      "root": "packages/react-portal-compat-context",
+      "root": "packages/react-components/react-portal-compat-context",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-portal-compat-context/src",
+      "sourceRoot": "packages/react-components/react-portal-compat-context/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-positioning": {

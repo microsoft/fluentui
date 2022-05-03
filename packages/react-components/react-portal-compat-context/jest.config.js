@@ -4,8 +4,8 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-context-selector',
-  preset: '../../jest.preset.js',
+  displayName: 'react-portal-compat-context',
+  preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -17,4 +17,5 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
+  snapshotSerializers: ['@griffel/jest-serializer'],
 };
