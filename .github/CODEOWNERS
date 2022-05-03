@@ -95,7 +95,7 @@ packages/foundation-legacy @microsoft/cxe-red @khmakoto
 packages/merge-styles @dzearing
 packages/monaco-editor @microsoft/fluentui-v8-website
 packages/public-docsite-setup @microsoft/fluentui-v8-website
-packages/priority-overflow @microsoft/teams-prg
+packages/react-components/priority-overflow @microsoft/teams-prg
 packages/react-components/react-aria @microsoft/teams-prg
 packages/react-cards @microsoft/cxe-red @khmakoto
 packages/react-charting @microsoft/charting-team
@@ -107,7 +107,7 @@ packages/react-file-type-icons @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
-packages/react-overflow @microsoft/teams-prg
+packages/react-components/react-overflow @microsoft/teams-prg
 packages/react-shared-contexts @microsoft/teams-prg
 packages/react-components/react-storybook @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-components/react-storybook-addon @microsoft/cxe-prg
@@ -129,7 +129,7 @@ common/_themeOverrides.scss @microsoft/cxe-red @phkuo
 common/_common.scss @microsoft/cxe-red @phkuo
 
 ## vNext packages
-packages/keyboard-keys @microsoft/teams-prg
+packages/react-components/keyboard-keys @microsoft/teams-prg
 packages/react-accordion @microsoft/teams-prg @microsoft/cxe-coastal
 packages/react-components/react-avatar @microsoft/cxe-red @behowell @khmakoto
 packages/react-badge @microsoft/teams-prg @microsoft/cxe-red @behowell

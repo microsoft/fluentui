@@ -4,8 +4,8 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'keyboard-keys',
-  preset: '../../jest.preset.js',
+  displayName: 'priority-overflow',
+  preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -17,4 +17,5 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
+  snapshotSerializers: ['@griffel/jest-serializer'],
 };

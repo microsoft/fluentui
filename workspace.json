@@ -119,9 +119,9 @@
       "implicitDependencies": []
     },
     "@fluentui/keyboard-keys": {
-      "root": "packages/keyboard-keys",
+      "root": "packages/react-components/keyboard-keys",
       "projectType": "library",
-      "sourceRoot": "packages/keyboard-keys/src",
+      "sourceRoot": "packages/react-components/keyboard-keys/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -201,10 +201,10 @@
       "implicitDependencies": []
     },
     "@fluentui/priority-overflow": {
-      "root": "packages/priority-overflow",
+      "root": "packages/react-components/priority-overflow",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/priority-overflow/src",
+      "sourceRoot": "packages/react-components/priority-overflow/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/projects-test": {
@@ -502,10 +502,10 @@
       "implicitDependencies": []
     },
     "@fluentui/react-overflow": {
-      "root": "packages/react-overflow",
+      "root": "packages/react-components/react-overflow",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-overflow/src",
+      "sourceRoot": "packages/react-components/react-overflow/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-popover": {

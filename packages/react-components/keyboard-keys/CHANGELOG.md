@@ -6,7 +6,7 @@ This log was last generated on Fri, 04 Mar 2022 05:17:32 GMT and should not be m
 
 ## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0-rc.4)
 
-Fri, 04 Mar 2022 05:17:32 GMT 
+Fri, 04 Mar 2022 05:17:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.0-rc.3..@fluentui/keyboard-keys_v9.0.0-rc.4)
 
 ### Changes
@@ -16,7 +16,7 @@ Fri, 04 Mar 2022 05:17:32 GMT
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0-rc.3)
 
-Fri, 18 Feb 2022 13:35:37 GMT 
+Fri, 18 Feb 2022 13:35:37 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.0-rc.1..@fluentui/keyboard-keys_v9.0.0-rc.3)
 
 ### Changes
@@ -25,7 +25,7 @@ Fri, 18 Feb 2022 13:35:37 GMT
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0-rc.1)
 
-Thu, 10 Feb 2022 08:52:11 GMT 
+Thu, 10 Feb 2022 08:52:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.0-beta.1..@fluentui/keyboard-keys_v9.0.0-rc.1)
 
 ### Changes
@@ -34,7 +34,7 @@ Thu, 10 Feb 2022 08:52:11 GMT
 
 ## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0-beta.1)
 
-Wed, 06 Oct 2021 10:37:22 GMT 
+Wed, 06 Oct 2021 10:37:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.0-alpha.5..@fluentui/keyboard-keys_v9.0.0-beta.1)
 
 ### Changes
@@ -43,7 +43,7 @@ Wed, 06 Oct 2021 10:37:22 GMT
 
 ## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0-alpha.5)
 
-Fri, 01 Oct 2021 14:13:08 GMT 
+Fri, 01 Oct 2021 14:13:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.0-alpha.3..@fluentui/keyboard-keys_v9.0.0-alpha.5)
 
 ### Changes
@@ -52,7 +52,7 @@ Fri, 01 Oct 2021 14:13:08 GMT
 
 ## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0-alpha.3)
 
-Fri, 20 Aug 2021 07:37:28 GMT 
+Fri, 20 Aug 2021 07:37:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.0-alpha.2..@fluentui/keyboard-keys_v9.0.0-alpha.3)
 
 ### Changes
@@ -61,7 +61,7 @@ Fri, 20 Aug 2021 07:37:28 GMT
 
 ## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0-alpha.2)
 
-Tue, 03 Aug 2021 07:39:30 GMT 
+Tue, 03 Aug 2021 07:39:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.0-alpha.1..@fluentui/keyboard-keys_v9.0.0-alpha.2)
 
 ### Patches
@@ -71,7 +71,7 @@ Tue, 03 Aug 2021 07:39:30 GMT
 
 ## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0-alpha.1)
 
-Tue, 20 Jul 2021 22:23:17 GMT 
+Tue, 20 Jul 2021 22:23:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.0-alpha.0..@fluentui/keyboard-keys_v9.0.0-alpha.1)
 
 ### Changes
