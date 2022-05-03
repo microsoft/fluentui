@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "set specific version of react to be used in cra-template",
-  "packageName": "@fluentui/cra-template",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
