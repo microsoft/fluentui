@@ -652,9 +652,9 @@
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-theme": {
-      "root": "packages/react-components/react-theme",
+      "root": "packages/react-theme",
       "projectType": "library",
-      "sourceRoot": "packages/react-components/react-theme/src",
+      "sourceRoot": "packages/react-theme/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
