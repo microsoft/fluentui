@@ -30,8 +30,7 @@ export const SemanticColors = () => {
         <h3>v8 Semantic</h3>
         <h3>v9 Alias</h3>
         {semanticToAliasMap.map(item => {
-          // eslint-disable-next-line react/jsx-key
-          return <ColorCompare {...item} />;
+          return <ColorCompare key={item.name} {...item} />;
         })}
       </div>
     </div>
