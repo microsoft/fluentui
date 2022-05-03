@@ -201,10 +201,10 @@
       "implicitDependencies": []
     },
     "@fluentui/priority-overflow": {
-      "root": "packages/priority-overflow",
+      "root": "packages/react-components/priority-overflow",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/priority-overflow/src",
+      "sourceRoot": "packages/react-components/priority-overflow/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/projects-test": {
