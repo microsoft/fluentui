@@ -9,14 +9,12 @@ export const ASSET_URL =
   'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
 
 const powerpointLogoURL = ASSET_URL + '/assets/powerpoint_logo.svg';
+const previewURL = ASSET_URL + '/assets/sales_template.png';
 
 export const SampleCard = (props: CardProps) => (
   <Card {...props}>
     <CardPreview>
-      <img
-        src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4RbvH?ver=6355"
-        alt="preview image"
-      />
+      <img src={previewURL} alt="preview image" />
     </CardPreview>
     <CardHeader
       image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
