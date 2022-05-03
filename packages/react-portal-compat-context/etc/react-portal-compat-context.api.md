@@ -4,6 +4,17 @@
 
 ```ts
 
+import * as React_2 from 'react';
+
+// @public (undocumented)
+export const PortalCompatContextProvider: React_2.Provider<RegisterPortalFn>;
+
+// @public (undocumented)
+export type RegisterPortalFn = (el: HTMLElement) => () => void;
+
+// @public (undocumented)
+export function usePortalCompat(): RegisterPortalFn;
+
 // (No @packageDocumentation comment for this package)
 
 ```

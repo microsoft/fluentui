@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "react-aria: Move to new common folder.",
+  "packageName": "@fluentui/react-aria",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}
