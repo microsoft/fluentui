@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-radio: remove required indicator from label",
+  "packageName": "@fluentui/react-radio",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

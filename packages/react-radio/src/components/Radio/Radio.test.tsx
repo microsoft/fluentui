@@ -31,6 +31,11 @@ describe('Radio', () => {
     const { getByRole, getByLabelText } = render(<Radio label="Test Label" />);
     expect(getByRole('radio')).toBe(getByLabelText('Test Label'));
   });
+  it('renders a required radio', () => {
+    const { getByRole, getByLabelText } = render(<Radio label="Required Label" required />);
+    expect(getByRole('radio')).toBe(getByLabelText('Required Label'));
+    expect((getByRole('radio') as HTMLInputElement).required).toBe(true);
+  });
 
   it('forwards ID to input element', () => {
     const { getByRole } = render(<Radio id="test-id" />);
