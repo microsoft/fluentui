@@ -47,6 +47,7 @@ export const getFocusedStyles = ({
       }),
 
     ...(vertical && {
+      background: 'inherit',
       color: v.colorFocus || colors.foregroundFocus,
       border: `${pxToRem(1)} solid transparent`,
       padding: pxToRem(1),
