@@ -8,12 +8,12 @@ export {
   useRadioGroup_unstable,
 } from './RadioGroup';
 export type {
+  RadioGroupContextValue,
+  RadioGroupContextValues,
   RadioGroupOnChangeData,
   RadioGroupProps,
   RadioGroupSlots,
   RadioGroupState,
-  RadioGroupContextValue,
-  RadioGroupContextValues,
 } from './RadioGroup';
 export {
   Radio,
