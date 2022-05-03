@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Allow data argument on onChange",
+  "packageName": "@fluentui/react-radio",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

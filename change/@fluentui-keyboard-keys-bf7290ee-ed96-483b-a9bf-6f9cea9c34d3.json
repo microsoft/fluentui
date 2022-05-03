@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "keyboard-keys: Move to new common folder.",
+  "packageName": "@fluentui/keyboard-keys",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}

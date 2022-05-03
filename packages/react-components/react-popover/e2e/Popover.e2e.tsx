@@ -256,4 +256,33 @@ describe('Popover', () => {
         .should('exist');
     });
   });
+
+  describe('with inline prop', () => {
+    it('should render PopoverSurface in DOM order', () => {
+      mount(
+        <>
+          <div>
+            <Popover inline>
+              <PopoverTrigger>
+                <button>Popover trigger</button>
+              </PopoverTrigger>
+
+              <PopoverSurface>This is a Popover</PopoverSurface>
+            </Popover>
+          </div>
+          <div>Outside content</div>
+        </>,
+      );
+
+      cy.get(popoverTriggerSelector)
+        .click()
+        .get(popoverContentSelector)
+        .prev()
+        .then(popoverSurfacePrev => {
+          cy.get(popoverTriggerSelector).then(popoverTrigger => {
+            expect(popoverTrigger[0]).eq(popoverSurfacePrev[0]);
+          });
+        });
+    });
+  });
 });
