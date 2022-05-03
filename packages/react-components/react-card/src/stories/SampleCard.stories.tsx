@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
 import { Button } from '@fluentui/react-button';
 import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
 import { Body, Caption } from '@fluentui/react-text';
@@ -11,41 +10,31 @@ export const ASSET_URL =
 
 const powerpointLogoURL = ASSET_URL + '/assets/powerpoint_logo.svg';
 
-const useStyles = makeStyles({
-  card: {
-    width: '240px',
-  },
-});
-
-export const SampleCard = (props: CardProps) => {
-  const styles = useStyles();
-
-  return (
-    <Card className={styles.card} {...props}>
-      <CardPreview>
-        <img
-          src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4RbvH?ver=6355"
-          alt="preview image"
-        />
-      </CardPreview>
-      <CardHeader
-        image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
-        header={
-          <Body>
-            <b>App Name</b>
-          </Body>
-        }
-        description={<Caption>Developer</Caption>}
+export const SampleCard = (props: CardProps) => (
+  <Card {...props}>
+    <CardPreview>
+      <img
+        src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4RbvH?ver=6355"
+        alt="preview image"
       />
-      <div>
-        Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
-      </div>
-      <CardFooter>
-        <Button appearance="primary" icon={<Open16Regular />}>
-          Open
-        </Button>
-        <Button icon={<Share16Regular />}>Share</Button>
-      </CardFooter>
-    </Card>
-  );
-};
+    </CardPreview>
+    <CardHeader
+      image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
+      header={
+        <Body>
+          <b>App Name</b>
+        </Body>
+      }
+      description={<Caption>Developer</Caption>}
+    />
+    <div>
+      Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
+    </div>
+    <CardFooter>
+      <Button appearance="primary" icon={<Open16Regular />}>
+        Open
+      </Button>
+      <Button icon={<Share16Regular />}>Share</Button>
+    </CardFooter>
+  </Card>
+);
