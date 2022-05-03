@@ -43,7 +43,7 @@
       "@fluentui/react-portal": ["packages/react-components/react-portal/src/index.ts"],
       "@fluentui/react-portal-compat": ["packages/react-portal-compat/src/index.ts"],
       "@fluentui/react-portal-compat-context": ["packages/react-components/react-portal-compat-context/src/index.ts"],
-      "@fluentui/react-positioning": ["packages/react-positioning/src/index.ts"],
+      "@fluentui/react-positioning": ["packages/react-components/react-positioning/src/index.ts"],
       "@fluentui/react-provider": ["packages/react-components/react-provider/src/index.ts"],
       "@fluentui/react-radio": ["packages/react-radio/src/index.ts"],
       "@fluentui/react-select": ["packages/react-components/react-select/src/index.ts"],
@@ -58,10 +58,10 @@
       "@fluentui/react-tabster": ["packages/react-components/react-tabster/src/index.ts"],
       "@fluentui/react-text": ["packages/react-components/react-text/src/index.ts"],
       "@fluentui/react-textarea": ["packages/react-textarea/src/index.ts"],
-      "@fluentui/react-theme": ["packages/react-theme/src/index.ts"],
+      "@fluentui/react-theme": ["packages/react-components/react-theme/src/index.ts"],
       "@fluentui/react-toolbar": ["packages/react-components/react-toolbar/src/index.ts"],
       "@fluentui/react-tooltip": ["packages/react-components/react-tooltip/src/index.ts"],
-      "@fluentui/react-utilities": ["packages/react-utilities/src/index.ts"]
+      "@fluentui/react-utilities": ["packages/react-components/react-utilities/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]

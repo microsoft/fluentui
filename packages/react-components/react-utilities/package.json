@@ -1,7 +1,7 @@
 {
-  "name": "@fluentui/react-positioning",
+  "name": "@fluentui/react-utilities",
   "version": "9.0.0-rc.6",
-  "description": "A react wrapper around Popper.js for Fluent UI",
+  "description": "A set of general React-specific utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -20,7 +20,8 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-positioning/src && yarn docs",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-utilities/src && yarn docs",
+    "start": "yarn storybook",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
@@ -28,18 +29,12 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@griffel/react": "1.0.3",
-    "@fluentui/react-shared-contexts": "9.0.0-rc.5",
-    "@fluentui/react-theme": "9.0.0-rc.5",
-    "@fluentui/react-utilities": "9.0.0-rc.6",
-    "@popperjs/core": "~2.4.3",
+    "@fluentui/keyboard-keys": "9.0.0-rc.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
-    "@types/react-dom": ">=16.8.0 <18.0.0",
-    "react": ">=16.8.0 <18.0.0",
-    "react-dom": ">=16.8.0 <18.0.0"
+    "react": ">=16.8.0 <18.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
