@@ -18,16 +18,10 @@ export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HT
 
   return {
     layout,
-    context: React.useMemo(
-      () => ({
-        name,
-        value,
-        defaultValue,
-        disabled,
-        layout,
-      }),
-      [name, layout, value, defaultValue, disabled],
-    ),
+    name,
+    value,
+    defaultValue,
+    disabled,
     components: {
       root: 'div',
     },

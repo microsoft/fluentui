@@ -6,6 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { Context } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
@@ -31,10 +32,15 @@ export const radioGroupClassName = "fui-RadioGroup";
 export const radioGroupClassNames: SlotClassNames<RadioGroupSlots>;
 
 // @public
-export const RadioGroupContext: React_2.Context<RadioGroupContextValue>;
+export const RadioGroupContext: Context<RadioGroupContextValue>;
 
 // @public (undocumented)
-export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'layout' | 'value' | 'defaultValue' | 'disabled'>;
+export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout'>;
+
+// @public (undocumented)
+export type RadioGroupContextValues = {
+    radioGroup: RadioGroupContextValue;
+};
 
 // @public
 export type RadioGroupOnChangeData = {
@@ -57,9 +63,7 @@ export type RadioGroupSlots = {
 };
 
 // @public
-export type RadioGroupState = ComponentState<RadioGroupSlots> & Required<Pick<RadioGroupProps, 'layout'>> & {
-    context: RadioGroupContextValue;
-};
+export type RadioGroupState = ComponentState<RadioGroupSlots> & Required<Pick<RadioGroupProps, 'layout'>> & Partial<Exclude<RadioGroupProps, 'onChange' | 'layout'>>;
 
 // @public
 export type RadioOnChangeData = {
@@ -89,7 +93,7 @@ export type RadioState = ComponentState<RadioSlots> & Required<Pick<RadioProps, 
 export const renderRadio_unstable: (state: RadioState) => JSX.Element;
 
 // @public
-export const renderRadioGroup_unstable: (state: RadioGroupState) => JSX.Element;
+export const renderRadioGroup_unstable: (state: RadioGroupState, contextValues: RadioGroupContextValues) => JSX.Element;
 
 // @public
 export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;

@@ -7,7 +7,14 @@ export {
   useRadioGroupStyles_unstable,
   useRadioGroup_unstable,
 } from './RadioGroup';
-export type { RadioGroupOnChangeData, RadioGroupProps, RadioGroupSlots, RadioGroupState } from './RadioGroup';
+export type {
+  RadioGroupOnChangeData,
+  RadioGroupProps,
+  RadioGroupSlots,
+  RadioGroupState,
+  RadioGroupContextValue,
+  RadioGroupContextValues,
+} from './RadioGroup';
 export {
   Radio,
   /* eslint-disable-next-line deprecation/deprecation */
@@ -19,4 +26,3 @@ export {
 } from './Radio';
 export type { RadioProps, RadioSlots, RadioState, RadioOnChangeData } from './Radio';
 export { RadioGroupContext } from './contexts/RadioGroupContext';
-export type { RadioGroupContextValue } from './contexts/RadioGroupContext';
