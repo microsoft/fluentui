@@ -63,13 +63,17 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
 
   const setOpen = useEventCallback((e: OpenPopoverEvents, shouldOpen: boolean) => {
     clearTimeout(setOpenTimeoutRef.current);
+    if (!(e instanceof Event) && e.persist) {
+      // < React 17 still uses pooled synthetic events
+      e.persist();
+    }
 
     if (e.type === 'mouseleave') {
       // FIXME leaking Node timeout type
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       setOpenTimeoutRef.current = setTimeout(() => {
-        setOpen(e, shouldOpen);
+        setOpenState(e, shouldOpen);
       }, props.mouseLeaveDelay ?? 500);
     } else {
       setOpenState(e, shouldOpen);
