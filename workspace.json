@@ -354,9 +354,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-context-selector": {
-      "root": "packages/react-context-selector",
+      "root": "packages/react-components/react-context-selector",
       "projectType": "library",
-      "sourceRoot": "packages/react-context-selector/src",
+      "sourceRoot": "packages/react-components/react-context-selector/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },

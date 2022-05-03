@@ -100,7 +100,7 @@ packages/react-components/react-aria @microsoft/teams-prg
 packages/react-cards @microsoft/cxe-red @khmakoto
 packages/react-charting @microsoft/charting-team
 packages/react-conformance-griffel @microsoft/teams-prg
-packages/react-context-selector @microsoft/teams-prg
+packages/react-components/react-context-selector @microsoft/teams-prg
 packages/react-date-time @microsoft/fluent-date-time
 packages/react-docsite-components @microsoft/fluentui-v8-website
 packages/react-file-type-icons @jahnp @bigbadcapers

@@ -28,7 +28,7 @@
       "@fluentui/react-components": ["packages/react-components/react-components/src/index.ts"],
       "@fluentui/react-conformance": ["packages/react-conformance/src/index.ts"],
       "@fluentui/react-conformance-griffel": ["packages/react-conformance-griffel/src/index.ts"],
-      "@fluentui/react-context-selector": ["packages/react-context-selector/src/index.ts"],
+      "@fluentui/react-context-selector": ["packages/react-components/react-context-selector/src/index.ts"],
       "@fluentui/react-dialog": ["packages/react-components/react-dialog/src/index.ts"],
       "@fluentui/react-divider": ["packages/react-divider/src/index.ts"],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
