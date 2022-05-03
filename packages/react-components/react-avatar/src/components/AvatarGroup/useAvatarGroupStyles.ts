@@ -10,6 +10,7 @@ export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots> = {
 
 export const extraAvatarGroupClassNames = {
   popoverSurfaceItem: 'fui-AvatarGroup__popoverSurfaceItem',
+  popoverSurfaceContainer: 'fui-AvatarGroup__popoverSurfaceContainer',
 };
 
 /**
@@ -62,6 +63,16 @@ const usePopoverTriggerStyles = makeStyles({
   },
 });
 
+const usePopoverSurfaceStyles = makeStyles({
+  base: {
+    [`& > .${extraAvatarGroupClassNames.popoverSurfaceContainer}`]: {
+      listStyleType: 'none',
+      ...shorthands.margin(0),
+      ...shorthands.padding(0),
+    },
+  },
+});
+
 /**
  * Apply styling to the AvatarGroup slots based on the state
  */
@@ -70,11 +81,16 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
   const popoverTriggerStyles = usePopoverTriggerStyles();
+  const popoverSurfaceStyles = usePopoverSurfaceStyles();
 
   state.root.className = mergeClasses(avatarGroupClassNames.root, styles.base, state.root.className);
 
   if (state.popoverSurface) {
-    state.popoverSurface.className = mergeClasses(avatarGroupClassNames.popoverSurface, state.popoverSurface.className);
+    state.popoverSurface.className = mergeClasses(
+      avatarGroupClassNames.popoverSurface,
+      popoverSurfaceStyles.base,
+      state.popoverSurface.className,
+    );
   }
 
   if (state.popoverTrigger) {

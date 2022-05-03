@@ -13,7 +13,7 @@ export const renderAvatarGroup_unstable = (state: AvatarGroupState) => {
   return (
     <slots.root {...slotProps.root}>
       {state.root.children}
-      {state.hasOverflow && slots.popoverSurface && slots.popoverTrigger && (
+      {state.hasOverflow && (
         <Popover trapFocus size="small">
           <PopoverTrigger>
             <Tooltip content={state.tooltipContent} relationship="description" appearance="inverted">

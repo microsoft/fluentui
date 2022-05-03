@@ -81,17 +81,17 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
 
     // Avatars inside PopoverSurface must be size 24
     return (
-      <div className={extraAvatarGroupClassNames.popoverSurfaceItem} key={k}>
+      <li className={extraAvatarGroupClassNames.popoverSurfaceItem} key={k}>
         {React.cloneElement(child, { size: 24, color: child.props.color ?? 'colorful' })}
-        <Label size="medium">{child.props.name}</Label>
-      </div>
+        <Label size="medium">{child.props.name ?? child.props.initials}</Label>
+      </li>
     );
   });
 
   const popoverSurface = resolveShorthand(props.popoverSurface, {
     required: true,
     defaultProps: {
-      children: popoverSurfaceChildren,
+      children: <ul className={extraAvatarGroupClassNames.popoverSurfaceContainer}>{popoverSurfaceChildren}</ul>,
       'aria-label': 'Overflow',
     },
   });
