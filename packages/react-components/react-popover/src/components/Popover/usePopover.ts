@@ -77,7 +77,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   });
 
   // only close on scroll for context, or when closeOnScroll is specified
-  const closeOnScroll = open && (initialState.openOnContext || initialState.closeOnScroll);
+  const closeOnScroll = initialState.openOnContext || initialState.closeOnScroll;
   useOnScrollOutside({
     contains: elementContains,
     element: targetDocument,
