@@ -6,7 +6,7 @@ This log was last generated on Mon, 25 Apr 2022 09:32:19 GMT and should not be m
 
 ## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.7)
 
-Mon, 25 Apr 2022 09:32:19 GMT 
+Mon, 25 Apr 2022 09:32:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-rc.6..@fluentui/react-switch_v9.0.0-rc.7)
 
 ### Changes
@@ -15,7 +15,7 @@ Mon, 25 Apr 2022 09:32:19 GMT
 
 ## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.6)
 
-Tue, 19 Apr 2022 19:16:54 GMT 
+Tue, 19 Apr 2022 19:16:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-rc.5..@fluentui/react-switch_v9.0.0-rc.6)
 
 ### Changes
@@ -33,7 +33,7 @@ Tue, 19 Apr 2022 19:16:54 GMT
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.5)
 
-Fri, 04 Mar 2022 05:17:30 GMT 
+Fri, 04 Mar 2022 05:17:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-rc.4..@fluentui/react-switch_v9.0.0-rc.5)
 
 ### Changes
@@ -47,7 +47,7 @@ Fri, 04 Mar 2022 05:17:30 GMT
 
 ## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.4)
 
-Tue, 01 Mar 2022 02:17:38 GMT 
+Tue, 01 Mar 2022 02:17:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-rc.3..@fluentui/react-switch_v9.0.0-rc.4)
 
 ### Changes
@@ -60,7 +60,7 @@ Tue, 01 Mar 2022 02:17:38 GMT
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.3)
 
-Fri, 18 Feb 2022 13:35:34 GMT 
+Fri, 18 Feb 2022 13:35:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-rc.1..@fluentui/react-switch_v9.0.0-rc.3)
 
 ### Changes
@@ -74,7 +74,7 @@ Fri, 18 Feb 2022 13:35:34 GMT
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.1)
 
-Thu, 10 Feb 2022 08:50:51 GMT 
+Thu, 10 Feb 2022 08:50:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-beta.5..@fluentui/react-switch_v9.0.0-rc.1)
 
 ### Changes
@@ -96,7 +96,7 @@ Thu, 10 Feb 2022 08:50:51 GMT
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-beta.5)
 
-Thu, 25 Nov 2021 08:34:17 GMT 
+Thu, 25 Nov 2021 08:34:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-beta.4..@fluentui/react-switch_v9.0.0-beta.5)
 
 ### Changes
@@ -111,7 +111,7 @@ Thu, 25 Nov 2021 08:34:17 GMT
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-beta.4)
 
-Fri, 12 Nov 2021 13:25:33 GMT 
+Fri, 12 Nov 2021 13:25:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-beta.3..@fluentui/react-switch_v9.0.0-beta.4)
 
 ### Changes
@@ -127,7 +127,7 @@ Fri, 12 Nov 2021 13:25:33 GMT
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-beta.3)
 
-Wed, 27 Oct 2021 12:14:22 GMT 
+Wed, 27 Oct 2021 12:14:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-beta.2..@fluentui/react-switch_v9.0.0-beta.3)
 
 ### Changes
@@ -147,7 +147,7 @@ Wed, 27 Oct 2021 12:14:22 GMT
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-beta.2)
 
-Tue, 12 Oct 2021 19:45:58 GMT 
+Tue, 12 Oct 2021 19:45:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-beta.1..@fluentui/react-switch_v9.0.0-beta.2)
 
 ### Changes
@@ -157,7 +157,7 @@ Tue, 12 Oct 2021 19:45:58 GMT
 
 ## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-beta.1)
 
-Wed, 06 Oct 2021 10:37:22 GMT 
+Wed, 06 Oct 2021 10:37:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.17..@fluentui/react-switch_v9.0.0-beta.1)
 
 ### Changes
@@ -176,7 +176,7 @@ Wed, 06 Oct 2021 10:37:22 GMT
 
 ## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.17)
 
-Tue, 05 Oct 2021 12:47:58 GMT 
+Tue, 05 Oct 2021 12:47:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.16..@fluentui/react-switch_v9.0.0-alpha.17)
 
 ### Changes
@@ -191,7 +191,7 @@ Tue, 05 Oct 2021 12:47:58 GMT
 
 ## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.16)
 
-Tue, 05 Oct 2021 09:28:07 GMT 
+Tue, 05 Oct 2021 09:28:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.15..@fluentui/react-switch_v9.0.0-alpha.16)
 
 ### Changes
@@ -208,7 +208,7 @@ Tue, 05 Oct 2021 09:28:07 GMT
 
 ## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.15)
 
-Fri, 01 Oct 2021 14:13:08 GMT 
+Fri, 01 Oct 2021 14:13:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.13..@fluentui/react-switch_v9.0.0-alpha.15)
 
 ### Changes
@@ -227,7 +227,7 @@ Fri, 01 Oct 2021 14:13:08 GMT
 
 ## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.13)
 
-Fri, 01 Oct 2021 09:44:56 GMT 
+Fri, 01 Oct 2021 09:44:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.12..@fluentui/react-switch_v9.0.0-alpha.13)
 
 ### Changes
@@ -238,7 +238,7 @@ Fri, 01 Oct 2021 09:44:56 GMT
 
 ## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.12)
 
-Wed, 29 Sep 2021 08:06:11 GMT 
+Wed, 29 Sep 2021 08:06:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.11..@fluentui/react-switch_v9.0.0-alpha.12)
 
 ### Changes
@@ -255,7 +255,7 @@ Wed, 29 Sep 2021 08:06:11 GMT
 
 ## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.11)
 
-Mon, 27 Sep 2021 08:06:00 GMT 
+Mon, 27 Sep 2021 08:06:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.10..@fluentui/react-switch_v9.0.0-alpha.11)
 
 ### Changes
@@ -271,7 +271,7 @@ Mon, 27 Sep 2021 08:06:00 GMT
 
 ## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.10)
 
-Fri, 24 Sep 2021 09:17:17 GMT 
+Fri, 24 Sep 2021 09:17:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.9..@fluentui/react-switch_v9.0.0-alpha.10)
 
 ### Changes
@@ -287,7 +287,7 @@ Fri, 24 Sep 2021 09:17:17 GMT
 
 ## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.9)
 
-Thu, 23 Sep 2021 08:21:34 GMT 
+Thu, 23 Sep 2021 08:21:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.8..@fluentui/react-switch_v9.0.0-alpha.9)
 
 ### Changes
@@ -304,7 +304,7 @@ Thu, 23 Sep 2021 08:21:34 GMT
 
 ## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.8)
 
-Wed, 22 Sep 2021 10:10:07 GMT 
+Wed, 22 Sep 2021 10:10:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.7..@fluentui/react-switch_v9.0.0-alpha.8)
 
 ### Changes
@@ -321,7 +321,7 @@ Wed, 22 Sep 2021 10:10:07 GMT
 
 ## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.7)
 
-Tue, 21 Sep 2021 07:42:34 GMT 
+Tue, 21 Sep 2021 07:42:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.6..@fluentui/react-switch_v9.0.0-alpha.7)
 
 ### Changes
@@ -338,7 +338,7 @@ Tue, 21 Sep 2021 07:42:34 GMT
 
 ## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.6)
 
-Mon, 20 Sep 2021 07:36:26 GMT 
+Mon, 20 Sep 2021 07:36:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.5..@fluentui/react-switch_v9.0.0-alpha.6)
 
 ### Changes
@@ -347,7 +347,7 @@ Mon, 20 Sep 2021 07:36:26 GMT
 
 ## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.5)
 
-Fri, 17 Sep 2021 07:35:26 GMT 
+Fri, 17 Sep 2021 07:35:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.4..@fluentui/react-switch_v9.0.0-alpha.5)
 
 ### Changes
@@ -356,7 +356,7 @@ Fri, 17 Sep 2021 07:35:26 GMT
 
 ## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.4)
 
-Thu, 16 Sep 2021 07:38:39 GMT 
+Thu, 16 Sep 2021 07:38:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.3..@fluentui/react-switch_v9.0.0-alpha.4)
 
 ### Changes
@@ -366,7 +366,7 @@ Thu, 16 Sep 2021 07:38:39 GMT
 
 ## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.3)
 
-Tue, 14 Sep 2021 20:09:02 GMT 
+Tue, 14 Sep 2021 20:09:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.2..@fluentui/react-switch_v9.0.0-alpha.3)
 
 ### Changes
@@ -375,7 +375,7 @@ Tue, 14 Sep 2021 20:09:02 GMT
 
 ## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.2)
 
-Fri, 10 Sep 2021 16:31:53 GMT 
+Fri, 10 Sep 2021 16:31:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.1..@fluentui/react-switch_v9.0.0-alpha.2)
 
 ### Changes
@@ -385,7 +385,7 @@ Fri, 10 Sep 2021 16:31:53 GMT
 
 ## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.1)
 
-Fri, 10 Sep 2021 07:39:51 GMT 
+Fri, 10 Sep 2021 07:39:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.0..@fluentui/react-switch_v9.0.0-alpha.1)
 
 ### Changes
@@ -394,7 +394,7 @@ Fri, 10 Sep 2021 07:39:51 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.0)
 
-Mon, 06 Sep 2021 07:34:53 GMT 
+Mon, 06 Sep 2021 07:34:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.0..@fluentui/react-switch_v9.0.0-alpha.0)
 
 ### Changes
@@ -403,7 +403,7 @@ Mon, 06 Sep 2021 07:34:53 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.0)
 
-Thu, 02 Sep 2021 07:36:46 GMT 
+Thu, 02 Sep 2021 07:36:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.0..@fluentui/react-switch_v9.0.0-alpha.0)
 
 ### Patches
@@ -416,7 +416,7 @@ Thu, 02 Sep 2021 07:36:46 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.0)
 
-Wed, 01 Sep 2021 07:39:56 GMT 
+Wed, 01 Sep 2021 07:39:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.0..@fluentui/react-switch_v9.0.0-alpha.0)
 
 ### Changes
@@ -425,7 +425,7 @@ Wed, 01 Sep 2021 07:39:56 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.0)
 
-Tue, 31 Aug 2021 07:37:47 GMT 
+Tue, 31 Aug 2021 07:37:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.0..@fluentui/react-switch_v9.0.0-alpha.0)
 
 ### Changes
@@ -434,7 +434,7 @@ Tue, 31 Aug 2021 07:37:47 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.0)
 
-Fri, 27 Aug 2021 07:33:32 GMT 
+Fri, 27 Aug 2021 07:33:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.0..@fluentui/react-switch_v9.0.0-alpha.0)
 
 ### Changes
@@ -443,7 +443,7 @@ Fri, 27 Aug 2021 07:33:32 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.0)
 
-Thu, 26 Aug 2021 07:35:43 GMT 
+Thu, 26 Aug 2021 07:35:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.0..@fluentui/react-switch_v9.0.0-alpha.0)
 
 ### Changes
@@ -452,7 +452,7 @@ Thu, 26 Aug 2021 07:35:43 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.0)
 
-Fri, 20 Aug 2021 07:37:28 GMT 
+Fri, 20 Aug 2021 07:37:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.0..@fluentui/react-switch_v9.0.0-alpha.0)
 
 ### Changes
@@ -461,7 +461,7 @@ Fri, 20 Aug 2021 07:37:28 GMT
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-alpha.0)
 
-Thu, 19 Aug 2021 07:41:35 GMT 
+Thu, 19 Aug 2021 07:41:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-alpha.0..@fluentui/react-switch_v9.0.0-alpha.0)
 
 ### Changes
