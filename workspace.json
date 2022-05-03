@@ -556,9 +556,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-radio": {
-      "root": "packages/react-radio",
+      "root": "packages/react-components/react-radio",
       "projectType": "library",
-      "sourceRoot": "packages/react-radio/src",
+      "sourceRoot": "packages/react-components/react-radio/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
