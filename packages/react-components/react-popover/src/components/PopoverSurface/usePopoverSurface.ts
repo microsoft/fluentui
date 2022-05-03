@@ -51,7 +51,6 @@ export const usePopoverSurface_unstable = (
     onMouseLeave: onMouseLeaveOriginal,
     onKeyDown: onKeyDownOriginal,
   } = state.root;
-
   state.root.onMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     if (openOnHover) {
       setOpen(e, true);
