@@ -502,10 +502,10 @@
       "implicitDependencies": []
     },
     "@fluentui/react-overflow": {
-      "root": "packages/react-overflow",
+      "root": "packages/react-components/react-overflow",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-overflow/src",
+      "sourceRoot": "packages/react-components/react-overflow/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-popover": {

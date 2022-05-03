@@ -38,7 +38,7 @@
       "@fluentui/react-link": ["packages/react-components/react-link/src/index.ts"],
       "@fluentui/react-list": ["packages/react-components/react-list/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/src/index.ts"],
-      "@fluentui/react-overflow": ["packages/react-overflow/src/index.ts"],
+      "@fluentui/react-overflow": ["packages/react-components/react-overflow/src/index.ts"],
       "@fluentui/react-popover": ["packages/react-components/react-popover/src/index.ts"],
       "@fluentui/react-portal": ["packages/react-components/react-portal/src/index.ts"],
       "@fluentui/react-portal-compat": ["packages/react-portal-compat/src/index.ts"],
