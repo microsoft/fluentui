@@ -72,7 +72,7 @@ describe('Popover', () => {
         cy.get(popoverContentSelector).should('not.exist');
       });
 
-      it('should be visible on scroll outside', () => {
+      it('should keep open state on scroll outside', () => {
         cy.get(popoverTriggerSelector).click().get(popoverContentSelector).should('be.visible');
         cy.get('body').trigger('wheel').get(popoverContentSelector).should('be.visible');
       });
