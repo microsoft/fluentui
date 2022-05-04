@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     ...shorthands.overflow('hidden'),
     color: tokens.colorNeutralForeground1,
 
-    // Size: medium
+    // TODO: Extract this to separate stiles when tackling the `size` prop
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
     '::after': {
@@ -36,12 +36,12 @@ const useStyles = makeStyles({
 
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderWidth(tokens.strokeWidthThin),
-      // Size: medium
+      // TODO: Extract this to separate stiles when tackling the `size` prop
       ...shorthands.borderRadius(tokens.borderRadiusMedium),
     },
 
     [`> *:not(.${cardPreviewClassNames.root})`]: {
-      // Size: medium
+      // TODO: Extract this to separate stiles when tackling the `size` prop
       ...shorthands.margin('12px'),
     },
   },
