@@ -212,7 +212,7 @@ export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =
       {...getA11yProps('root', {
         className: classes.root,
         ref,
-        ...(actionable && { onClick: handleClick }),
+        ...((actionable || selectable) && { onClick: handleClick }),
         ...unhandledProps,
       })}
     >
@@ -255,6 +255,7 @@ export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =
 
 Pill.defaultProps = {
   as: 'span' as const,
+  accessibility: pillBehavior,
 };
 
 Pill.propTypes = {
