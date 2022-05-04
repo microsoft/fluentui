@@ -1,7 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { horizontalSpacing } from '../../utils/internalTokens';
 import type { OptionSlots, OptionState } from './Option.types';
 
 export const optionClassNames: SlotClassNames<OptionSlots> = {
@@ -17,12 +16,12 @@ const useStyles = makeStyles({
     alignItems: 'center',
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     color: tokens.colorNeutralForeground1,
-    columnGap: horizontalSpacing.xs,
+    columnGap: tokens.horizontalSpacing.xs,
     cursor: 'default',
     display: 'flex',
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding(horizontalSpacing.sNudge),
+    ...shorthands.padding(tokens.horizontalSpacing.sNudge),
     position: 'relative',
 
     '&:hover': {
