@@ -154,7 +154,7 @@ packages/react-components/react-select @microsoft/cxe-coastal @smhigley
 packages/react-components/react-slider @microsoft/cxe-coastal @micahgodbolt
 packages/react-components/react-spinbutton @microsoft/cxe-red @spmonahan
 packages/react-components/react-spinner @microsoft/cxe-red @tomi-msft
-packages/react-switch @microsoft/cxe-red @behowell @khmakoto
+packages/react-components/react-switch @microsoft/cxe-red @behowell @khmakoto
 packages/react-components/react-tabs @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-components/react-text @microsoft/cxe-prg
 packages/react-components/react-textarea @microsoft/cxe-red @sopranopillow
