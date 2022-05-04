@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     },
 
     [`> *:not(.${cardPreviewClassNames.root})`]: {
-      // TODO: Extract this to separate stiles when tackling the `size` prop
+      // TODO: Extract this to separate styles when tackling the `size` prop
       ...shorthands.margin('12px'),
     },
   },
