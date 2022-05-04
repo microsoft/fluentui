@@ -115,21 +115,78 @@ Although not in the prototypes, it should be possible to create a global flag th
 Fluent, which means that this feature **should be completely opt-in**, and only intended for partners with complex
 apps and dependency chains.
 
-### Pros and Cons
+### Forwards/Backwards compatibility for context default values
 
-#### Cons
+Backwards compatibility needs to be supported without a question because we need to follow semver.
+However, since there is no guarantee which version of the context gets registered first in the global namespace, the default
+values in our context will be unsafe by default. This introduces the constraint of forward comaptibility for our
+context values.
+
+```tsx
+// v1 context is registered first
+const Contextv1 = React.createContext({ foo: 'xxx' });
+const Contextv11 = React.createContext({ foo: 'xxx', bar: 'yyyy' });
+
+// v1.1 context is not registered and uses v1 context as proposed above
+// ⚠️⚠️⚠️ bar is undefined but typings suggest it is defined
+const { bar } = React.useContex(Contextv11);
+```
+
+In order to work around this problem this RFC proposes practices to follow in Fluent UI with regards to our
+context values:
+
+- Never export contexts from Fluent UI directly
+- Export context providers
+- Context default values should always be undefined
+- Export hook to access context
+- Default values should be assigned in context hooks
+
+```tsx
+interface FooContextValue {
+  foo: string;
+  bar: string;
+}
+
+const FooContext = React.createContext<Partial<FooContextValue>>({});
+
+export const FooContextProvider = FooContext.Provider;
+export const useFooContext: FooContextValue = () => {
+  const ctx = React.useContext(FooContext);
+
+  // We enforce all default react contexts to be empty
+  // if there are any properties we don't need to worry about default value
+  if (Object.keys(ctx).length) {
+    return ctx;
+  }
+
+  const fooContextDefaultValue: FooContextValue = {
+    foo: 'xxx',
+    bar: 'yyy',
+  };
+  return fooContextDefaultValue;
+};
+```
+
+We only care about the cases where the context value is an object since it context values that are primitives
+cannot ever be extended as it would result in a breaking change.
+
+## Pros and Cons
+
+### Cons
 
 - Polluting the global namespace
 - Custom magic when creating contexts in Fluent
 - Generally using window/node globals is an antipattern
+- Enforces stricter practices for using contexts
 
-#### Pros
+### Pros
 
 - One single major version context regardless of duplicate dependencies
 - Not too different from `React.createContext` - we still use React contexts
 - Global contexts are 'obfuscated' on window/node global with `Symbol`
 - Functionality can be explicitly enabled
 - Functionality can be applied with post processing so that we still use `React.createContext` internally
+- Not exporting the actual context is good API encapsulation
 
 ## Discarded Solutions
 
