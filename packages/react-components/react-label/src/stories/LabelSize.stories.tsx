@@ -10,3 +10,11 @@ export const Size = () => {
     </>
   );
 };
+
+Size.parameters = {
+  docs: {
+    description: {
+      story: 'A Label supports `small`, `medium`, and `large` size.',
+    },
+  },
+};
