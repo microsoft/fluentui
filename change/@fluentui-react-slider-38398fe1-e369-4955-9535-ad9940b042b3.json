@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "react-slider: Move to new common folder.",
+  "packageName": "@fluentui/react-slider",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}

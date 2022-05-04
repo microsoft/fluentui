@@ -12,6 +12,7 @@ import {
   writeJson,
   updateProjectConfiguration,
   serializeJson,
+  generateFiles,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
@@ -21,13 +22,16 @@ import {
   arePromptsEnabled,
   getProjectConfig,
   getProjects,
+  isPackageConverged,
   printUserLogs,
   prompt,
-  updateJestConfig,
   UserLog,
 } from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
+import { addCodeowner } from '../add-codeowners';
+import { printStats } from '../print-stats';
+import { generateChangeFilesHelp } from '../generate-change-files';
 
 interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
 
@@ -43,7 +47,12 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   const validatedSchema = await validateSchema(tree, schema);
 
   if (hasSchemaFlag(validatedSchema, 'stats')) {
-    printStats(tree, validatedSchema);
+    printStats(tree, {
+      projects: getProjects(tree),
+      title: 'Converged DX',
+      isMigratedCheck: isProjectMigrated,
+      shouldProcessPackage: isPackageConverged,
+    });
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     return () => {};
   }
@@ -66,6 +75,15 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
 
   return () => {
     printUserLogs(userLog);
+
+    const changedFilesPath = tree.listChanges().map(value => value.path);
+
+    if (changedFilesPath.length > 0) {
+      generateChangeFilesHelp({
+        message: 'chore: update package scaffold',
+        type: 'none',
+      });
+    }
   };
 }
 
@@ -85,16 +103,29 @@ function runBatchMigration(tree: Tree, userLog: UserLog, projectNames?: string[]
 function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: UserLog) {
   const options = normalizeOptions(tree, schema);
 
+  if (options.owner) {
+    addCodeowner(tree, { owner: options.owner, packageName: options.name });
+  }
+
+  if (options.projectConfig.projectType === 'application') {
+    logger.warn(
+      stripIndents`
+      NOTE: you're trying to migrate an Application - ${options.name}.
+      We apply limited migration steps at the moment.
+      `,
+    );
+    return;
+  }
+
   // 1. update TsConfigs
   updatedLocalTsConfig(tree, options);
   updatedBaseTsConfig(tree, options);
 
   // 2. update Jest
   updateLocalJestConfig(tree, options);
-  updateRootJestConfig(tree, options);
 
   // update package npm scripts
-  updateNpmScripts(tree, options);
+  updatePackageJson(tree, options);
   updateApiExtractorForLocalBuilds(tree, options);
 
   // setup storybook
@@ -114,17 +145,19 @@ const templates = {
   apiExtractorLocal: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
     extends: './api-extractor.json',
-    mainEntryPointFilePath: '<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts',
+    mainEntryPointFilePath: '<projectFolder>/dist/packages/react-components/<unscopedPackageName>/src/index.d.ts',
   },
   apiExtractor: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-    extends: '@fluentui/scripts/api-extractor/api-extractor.common.json',
+    extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
+    // @TODO - remove this once all v9 packages have been migrated to ship rolluped types
+    mainEntryPointFilePath: '<projectFolder>/dist/types/index.d.ts',
   },
   tsconfig: (options: { platform: 'node' | 'web'; js: boolean; hasConformance: boolean }) => {
     return {
       main: () => {
         const tsConfig = {
-          extends: '../../tsconfig.base.json',
+          extends: '../../../tsconfig.base.json',
           compilerOptions: {
             target: 'ES2019',
             // by default we gonna use tsc for type checking only
@@ -163,6 +196,8 @@ const templates = {
             lib: ['ES2019'],
             outDir: 'dist',
             declaration: true,
+            declarationDir: 'dist/types',
+            inlineSources: true,
             types: ['static-assets', 'environment'],
           } as TsConfig['compilerOptions'],
           exclude: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
@@ -171,10 +206,10 @@ const templates = {
 
         if (options.platform === 'node') {
           tsConfig.compilerOptions.module = 'CommonJS';
+          tsConfig.compilerOptions.types = uniqueArray([...(tsConfig.compilerOptions.types ?? []), 'node']);
         }
         if (options.platform === 'web') {
           tsConfig.compilerOptions.lib?.push('dom');
-          tsConfig.compilerOptions.types?.push('inline-style-expand-shorthand');
         }
         if (options.hasConformance) {
           tsConfig.exclude.unshift('./src/common/**');
@@ -192,7 +227,7 @@ const templates = {
           compilerOptions: {
             module: 'CommonJS',
             outDir: 'dist',
-            types: ['jest', 'node', 'inline-style-expand-shorthand'],
+            types: ['jest', 'node'],
           } as TsConfig['compilerOptions'],
           include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
         };
@@ -205,23 +240,34 @@ const templates = {
       },
     };
   },
-  babelConfig: (options: { extraPlugins: Array<string> }) => {
+  babelConfig: (options: { platform: 'node' | 'web'; extraPresets: Array<string> }) => {
+    const plugins = ['annotate-pure-calls'];
+    if (options.platform === 'web') {
+      plugins.push('@babel/transform-react-pure-annotations');
+    }
+
     return {
-      plugins: [...options.extraPlugins, 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+      presets: [...options.extraPresets],
+      plugins,
     };
   },
   jestSetup: stripIndents`
    /** Jest test setup file. */
   `,
-  jest: (options: { pkgName: string; addSnapshotSerializers: boolean; testSetupFilePath: string }) => stripIndents`
+  jest: (options: {
+    platform: 'node' | 'web';
+    pkgName: string;
+    addSnapshotSerializers: boolean;
+    testSetupFilePath: string;
+  }) => stripIndents`
       // @ts-check
 
       /**
-      * @type {jest.InitialOptions}
+      * @type {import('@jest/types').Config.InitialOptions}
       */
       module.exports = {
         displayName: '${options.pkgName}',
-        preset: '../../jest.preset.js',
+        preset: '../../../jest.preset.js',
         globals: {
           'ts-jest': {
             tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -233,14 +279,14 @@ const templates = {
         },
         coverageDirectory: './coverage',
         setupFilesAfterEnv: ['${options.testSetupFilePath}'],
-        ${options.addSnapshotSerializers ? `snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],` : ''}
+        ${options.addSnapshotSerializers ? `snapshotSerializers: ['@griffel/jest-serializer'],` : ''}
       };
   `,
   storybook: {
     main: stripIndents`
-      const rootMain = require('../../../.storybook/main');
+      const rootMain = require('../../../../.storybook/main');
 
-      module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+      module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
         stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
@@ -254,7 +300,7 @@ const templates = {
       });
     `,
     preview: stripIndents`
-      import * as rootPreview from '../../../.storybook/preview';
+      import * as rootPreview from '../../../../.storybook/preview';
 
       /** @type {typeof rootPreview.decorators} */
       export const decorators = [...rootPreview.decorators];
@@ -280,7 +326,7 @@ const templates = {
         types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         lib: ['ES2019', 'dom'],
       },
-      include: ['**/*.ts'],
+      include: ['**/*.ts', '**/*.tsx'],
     },
   },
   npmIgnoreConfig:
@@ -294,6 +340,7 @@ const templates = {
     etc/
     node_modules/
     src/
+    dist/types/
     temp/
     __fixtures__
     __mocks__
@@ -404,44 +451,6 @@ async function triggerDynamicPrompts() {
   ]);
 }
 
-function printStats(tree: Tree, options: MigrateConvergedPkgGeneratorSchema) {
-  const allProjects = getProjects(tree);
-  const stats = {
-    migrated: [] as Array<ProjectConfiguration & { projectName: string }>,
-    notMigrated: [] as Array<ProjectConfiguration & { projectName: string }>,
-  };
-
-  allProjects.forEach((project, projectName) => {
-    if (!isPackageConverged(tree, project)) {
-      return;
-    }
-
-    if (isProjectMigrated(tree, project)) {
-      stats.migrated.push({ projectName, ...project });
-
-      return;
-    }
-    stats.notMigrated.push({ projectName, ...project });
-  });
-
-  logger.info('Convergence DX migration stats:');
-  logger.info('='.repeat(80));
-
-  logger.info(`Migrated (${stats.migrated.length}):`);
-  logger.info(stats.migrated.map(projectStat => `- ${projectStat.projectName}`).join('\n'));
-
-  logger.info('='.repeat(80));
-  logger.info(`Not migrated (${stats.notMigrated.length}):`);
-  logger.info(stats.notMigrated.map(projectStat => `- ${projectStat.projectName}`).join('\n'));
-
-  return tree;
-}
-
-function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
-  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
-  return packageJson.version.startsWith('9.');
-}
-
 function isProjectMigrated<T extends ProjectConfiguration>(
   tree: Tree,
   project: T,
@@ -504,6 +513,7 @@ function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
     ...options.projectConfig,
     sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
     tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', tags[packageType]]),
+    implicitDependencies: uniqueArray([...(options.projectConfig.implicitDependencies ?? [])]),
   });
 
   return tree;
@@ -515,19 +525,22 @@ function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
+function updatePackageJson(tree: Tree, options: NormalizedSchema) {
   /* eslint-disable @fluentui/max-len */
   const scripts = {
     docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
-    storybook: 'start-storybook',
+    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/${options.normalizedPkgName}/src && yarn docs`,
+    storybook: 'node ../../../scripts/storybook/runner',
     start: 'yarn storybook',
     test: 'jest --passWithNoTests',
     'type-check': 'tsc -b tsconfig.json',
   };
   /* eslint-enable @fluentui/max-len */
 
-  updateJson(tree, options.paths.packageJson, json => {
+  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+    json.scripts = json.scripts || {};
+    json.typings = 'dist/index.d.ts';
+
     delete json.scripts['update-snapshots'];
     delete json.scripts['start-test'];
     delete json.scripts['test:watch'];
@@ -710,6 +723,9 @@ function setupE2E(tree: Tree, options: NormalizedSchema) {
 
   writeJson<TsConfig>(tree, options.paths.e2e.tsconfig, templates.e2e.tsconfig);
 
+  // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  generateFiles(tree, joinPathFragments(__dirname, 'files', 'e2e'), options.paths.e2e.rootFolder, { tmpl: '' });
+
   updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
     json.references?.push({
       path: `./${path.basename(options.paths.e2e.rootFolder)}/${path.basename(options.paths.e2e.tsconfig)}`,
@@ -737,30 +753,26 @@ function shouldSetupE2E(tree: Tree, options: NormalizedSchema) {
 
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   const jestSetupFilePath = options.paths.jestSetupFile;
-  const packagesThatTriggerAddingSnapshots = [`@${options.workspaceConfig.npmScope}/react-make-styles`];
+  const packageType = getPackageType(tree, options);
+  const packagesThatTriggerAddingSnapshots = [`@griffel/react`];
 
   const packageJson = readJson<PackageJson>(tree, options.paths.packageJson);
   packageJson.dependencies = packageJson.dependencies ?? {};
 
   const config = {
     pkgName: options.normalizedPkgName,
-    addSnapshotSerializers: Object.keys(packageJson.dependencies).some(pkgDepName =>
-      packagesThatTriggerAddingSnapshots.includes(pkgDepName),
-    ),
+    addSnapshotSerializers:
+      packageType === 'web' &&
+      Object.keys(packageJson.dependencies).some(pkgDepName => packagesThatTriggerAddingSnapshots.includes(pkgDepName)),
     testSetupFilePath: `./${path.basename(options.paths.configRoot)}/tests.js`,
-  };
+    platform: packageType,
+  } as const;
 
   tree.write(options.paths.jestConfig, templates.jest(config));
 
   if (!tree.exists(jestSetupFilePath)) {
     tree.write(jestSetupFilePath, templates.jestSetup);
   }
-
-  return tree;
-}
-
-function updateRootJestConfig(tree: Tree, options: NormalizedSchema) {
-  updateJestConfig(tree, { project: options.name });
 
   return tree;
 }
@@ -844,28 +856,14 @@ function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
 }
 
 function setupBabel(tree: Tree, options: NormalizedSchema) {
-  const currentProjectNpmScope = `@${options.workspaceConfig.npmScope}`;
   const pkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
+  const packageType = getPackageType(tree, options);
   pkgJson.dependencies = pkgJson.dependencies || {};
   pkgJson.devDependencies = pkgJson.devDependencies || {};
 
-  const shouldAddMakeStylesPlugin =
-    !options.name.includes('make-styles') &&
-    (pkgJson.dependencies[`${currentProjectNpmScope}/react-make-styles`] ||
-      pkgJson.dependencies[`${currentProjectNpmScope}/make-styles`]);
-
-  const extraPlugins = shouldAddMakeStylesPlugin ? ['module:@fluentui/babel-make-styles'] : [];
-
-  const config = templates.babelConfig({ extraPlugins });
-
-  const babelMakeStylesProjectName = `${currentProjectNpmScope}/babel-make-styles`;
-  if (shouldAddMakeStylesPlugin) {
-    const babelMakeStylesProject = getProjectConfig(tree, { packageName: babelMakeStylesProjectName });
-    const babelMakeStylesPkgJson: PackageJson = readJson(tree, babelMakeStylesProject.paths.packageJson);
-    pkgJson.devDependencies[babelMakeStylesProjectName] = `${babelMakeStylesPkgJson.version}`;
-  } else {
-    delete pkgJson.devDependencies[babelMakeStylesProjectName];
-  }
+  const shouldAddGriffelPreset = pkgJson.dependencies['@griffel/react'] && packageType === 'web';
+  const extraPresets = shouldAddGriffelPreset ? ['@griffel'] : [];
+  const config = templates.babelConfig({ extraPresets, platform: packageType });
 
   tree.write(options.paths.babelConfig, serializeJson(config));
   writeJson(tree, options.paths.packageJson, pkgJson);

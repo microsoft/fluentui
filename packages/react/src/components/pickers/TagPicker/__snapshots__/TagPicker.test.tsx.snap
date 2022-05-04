@@ -4,6 +4,7 @@ exports[`TagPicker renders correctly 1`] = `
 <div
   className="ms-BasePicker"
   onBlur={[Function]}
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
@@ -48,7 +49,6 @@ exports[`TagPicker renders correctly 1`] = `
     role="presentation"
   >
     <div
-      aria-owns=""
       className=
           ms-BasePicker-text
           {
@@ -208,7 +208,7 @@ exports[`TagPicker renders correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -298,9 +298,7 @@ exports[`TagPicker renders correctly 1`] = `
         </div>
       </span>
       <input
-        aria-activedescendant="sug-noResultsFound"
         aria-autocomplete="both"
-        aria-controls=""
         aria-describedby="selected-items-id__0"
         aria-expanded={false}
         aria-haspopup="listbox"
@@ -395,6 +393,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
 <div
   className="ms-BasePicker"
   onBlur={[Function]}
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
@@ -439,7 +438,6 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
     role="presentation"
   >
     <div
-      aria-owns=""
       className=
           ms-BasePicker-text
           {
@@ -599,7 +597,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -689,9 +687,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
         </div>
       </span>
       <input
-        aria-activedescendant="sug-noResultsFound"
         aria-autocomplete="both"
-        aria-controls=""
         aria-describedby="selected-items-id__0"
         aria-expanded={false}
         aria-haspopup="listbox"

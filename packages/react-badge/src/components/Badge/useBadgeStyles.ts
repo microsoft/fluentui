@@ -1,280 +1,294 @@
-import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import type { BadgeState } from './Badge.types';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import type { BadgeSlots, BadgeState } from './Badge.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `badgeClassNames.root` instead.
+ */
 export const badgeClassName = 'fui-Badge';
+export const badgeClassNames: SlotClassNames<BadgeSlots> = {
+  root: 'fui-Badge',
+  icon: 'fui-Badge__icon',
+};
 
-const useStyles = makeStyles({
-  root: theme => ({
+const useRootStyles = makeStyles({
+  base: {
     display: 'inline-flex',
     boxSizing: 'border-box',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: theme.colorBrandBackground,
-    ...shorthands.borderColor(theme.colorBrandBackground),
-    color: theme.colorNeutralForegroundOnBrand,
-    fontWeight: theme.fontWeightSemibold,
-    ...shorthands.borderWidth(theme.strokeWidthThin),
+    fontWeight: tokens.fontWeightSemibold,
+    ...shorthands.borderWidth(tokens.strokeWidthThin),
     ...shorthands.borderStyle('solid'),
-    fontFamily: theme.fontFamilyBase,
+    fontFamily: tokens.fontFamilyBase,
     position: 'relative',
-  }),
-  rootTiny: {
+  },
+
+  // size
+
+  tiny: {
     width: '6px',
     height: '6px',
     fontSize: '4px',
   },
-  rootExtraSmall: {
+  'extra-small': {
     width: '10px',
     height: '10px',
     fontSize: '6px',
   },
-  rootSmall: {
+  small: {
     minWidth: '16px',
     height: '16px',
     ...shorthands.padding('2px'),
     ...shorthands.gap('4px'),
     fontSize: '8px',
   },
-  rootMedium: {
+  medium: {
     height: '20px',
     minWidth: '20px',
     ...shorthands.gap('4px'),
     ...shorthands.padding('4px'),
     fontSize: '10px',
   },
-  rootLarge: {
+  large: {
     minWidth: '24px',
     height: '24px',
     ...shorthands.padding('4px'),
     fontSize: '12px',
     ...shorthands.gap('4px'),
   },
-  rootExtraLarge: theme => ({
+  'extra-large': {
     minWidth: '32px',
     height: '32px',
     ...shorthands.padding('6px'),
     ...shorthands.gap('6px'),
     fontSize: '12px',
-    ...shorthands.borderWidth(theme.strokeWidthThick),
-  }),
-  rootRounded: theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusMedium),
-  }),
-  rootRoundedSmallToTiny: theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusSmall),
-  }),
-  rootCircular: {
+    ...shorthands.borderWidth(tokens.strokeWidthThick),
+  },
+
+  // shape
+
+  square: {
+    // Default border radius
+  },
+  rounded: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  },
+  roundedSmallToTiny: {
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+  },
+  circular: {
     ...shorthands.borderRadius('99px'),
   },
-  rootGhost: theme => ({
-    backgroundColor: 'transparent',
+
+  // appearance: filled
+
+  filled: {
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+  },
+  'filled-brand': {
+    backgroundColor: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForegroundOnBrand,
+    ...shorthands.borderColor(tokens.colorBrandBackground),
+  },
+  'filled-danger': {
+    backgroundColor: tokens.colorPaletteRedBackground3,
+    color: tokens.colorNeutralForegroundOnBrand,
+    ...shorthands.borderColor(tokens.colorPaletteRedBackground3),
+  },
+  'filled-important': {
+    backgroundColor: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralBackground1,
+  },
+  'filled-informative': {
+    backgroundColor: tokens.colorNeutralBackground5,
+    color: tokens.colorNeutralForeground3,
+  },
+  'filled-severe': {
+    backgroundColor: tokens.colorPaletteDarkOrangeBackground3,
+    color: tokens.colorNeutralForegroundOnBrand,
+  },
+  'filled-subtle': {
+    backgroundColor: tokens.colorNeutralBackground1,
+    color: tokens.colorNeutralForeground1,
+  },
+  'filled-success': {
+    backgroundColor: tokens.colorPaletteGreenBackground3,
+    color: tokens.colorNeutralForegroundOnBrand,
+  },
+  'filled-warning': {
+    backgroundColor: tokens.colorPaletteYellowBackground3,
+    color: tokens.colorNeutralForeground1,
+    ...shorthands.borderColor(tokens.colorPaletteYellowBackground3),
+  },
+
+  // appearance: ghost
+
+  ghost: {
     ...shorthands.borderStyle('none'),
-    color: theme.colorBrandBackground,
-  }),
-  rootOutline: theme => ({
-    backgroundColor: 'transparent',
-    ...shorthands.borderColor(theme.colorBrandBackground),
-    color: theme.colorBrandBackground,
-  }),
-  rootTint: theme => ({
-    backgroundColor: theme.colorBrandBackground2,
-    color: theme.colorBrandForeground2,
-    ...shorthands.borderColor(theme.colorBrandStroke2),
-  }),
-  rootFilledDanger: theme => ({
-    backgroundColor: theme.colorPaletteRedBackground3,
-    color: theme.colorNeutralForegroundOnBrand,
-    ...shorthands.borderColor(theme.colorPaletteRedBackground3),
-  }),
-  rootOutlineDanger: theme => ({
-    color: theme.colorPaletteRedForeground3,
-    ...shorthands.borderColor(theme.colorPaletteRedForeground3),
-  }),
-  rootTintDanger: theme => ({
-    backgroundColor: theme.colorPaletteRedBackground1,
-    color: theme.colorPaletteRedForeground1,
-    ...shorthands.borderColor(theme.colorPaletteRedBorder1),
-  }),
-  rootGhostDanger: theme => ({
-    color: theme.colorPaletteRedForeground3,
-  }),
-  rootFilledSevere: theme => ({
-    backgroundColor: theme.colorPaletteDarkOrangeBackground3,
-    color: theme.colorNeutralForegroundOnBrand,
-    ...shorthands.borderColor(theme.colorTransparentStroke),
-  }),
-  rootOutlineSevere: theme => ({
-    color: theme.colorPaletteDarkOrangeForeground3,
-    ...shorthands.borderColor(theme.colorPaletteDarkOrangeForeground3),
-  }),
-  rootTintSevere: theme => ({
-    backgroundColor: theme.colorPaletteDarkOrangeBackground1,
-    color: theme.colorPaletteDarkOrangeForeground1,
-    ...shorthands.borderColor(theme.colorPaletteDarkOrangeForeground2),
-  }),
-  rootGhostSevere: theme => ({
-    color: theme.colorPaletteDarkOrangeForeground3,
-  }),
-  rootFilledWarning: theme => ({
-    backgroundColor: theme.colorPaletteYellowBackground3,
-    color: theme.colorNeutralForeground1,
-    ...shorthands.borderColor(theme.colorPaletteYellowBackground3),
-  }),
-  rootOutlineWarning: theme => ({
-    color: theme.colorPaletteYellowForeground2,
-    ...shorthands.borderColor(theme.colorPaletteYellowForeground2),
-  }),
-  rootTintWarning: theme => ({
-    backgroundColor: theme.colorPaletteYellowBackground1,
-    color: theme.colorPaletteYellowForeground2,
-    ...shorthands.borderColor(theme.colorPaletteYellowBackground2),
-  }),
-  rootGhostWarning: theme => ({
-    color: theme.colorPaletteYellowForeground2,
-  }),
-  rootFilledSuccess: theme => ({
-    backgroundColor: theme.colorPaletteGreenBackground3,
-    color: theme.colorNeutralForegroundOnBrand,
-    ...shorthands.borderColor(theme.colorTransparentStroke),
-  }),
-  rootOutlineSuccess: theme => ({
-    color: theme.colorPaletteGreenForeground2,
-    ...shorthands.borderColor(theme.colorPaletteGreenForeground2),
-  }),
-  rootTintSuccess: theme => ({
-    backgroundColor: theme.colorPaletteGreenBackground1,
-    color: theme.colorPaletteGreenForeground1,
-    ...shorthands.borderColor(theme.colorPaletteGreenBackground2),
-  }),
-  rootGhostSuccess: theme => ({
-    color: theme.colorPaletteGreenForeground3,
-  }),
-  rootFilledImportant: theme => ({
-    backgroundColor: theme.colorNeutralForeground1,
-    color: theme.colorNeutralBackground1,
-    ...shorthands.borderColor(theme.colorTransparentStroke),
-  }),
-  rootOutlineImportant: theme => ({
-    color: theme.colorNeutralForeground3,
-    ...shorthands.borderColor(theme.colorNeutralStrokeAccessible),
-  }),
-  rootTintImportant: theme => ({
-    backgroundColor: theme.colorNeutralForeground3,
-    color: theme.colorNeutralBackground1,
-    ...shorthands.borderColor(theme.colorTransparentStroke),
-  }),
-  rootGhostImportant: theme => ({
-    color: theme.colorNeutralForeground1,
-  }),
-  rootFilledInformative: theme => ({
-    backgroundColor: theme.colorNeutralBackground5,
-    color: theme.colorNeutralForeground3,
-    ...shorthands.borderColor(theme.colorTransparentStroke),
-  }),
-  rootOutlineInformative: theme => ({
-    color: theme.colorNeutralForeground3,
-    ...shorthands.borderColor(theme.colorNeutralStroke2),
-  }),
-  rootTintInformative: theme => ({
-    backgroundColor: theme.colorNeutralBackground4,
-    color: theme.colorNeutralForeground3,
-    ...shorthands.borderColor(theme.colorNeutralStroke2),
-  }),
-  rootGhostInformative: theme => ({
-    color: theme.colorNeutralForeground3,
-  }),
-  rootFilledSubtle: theme => ({
-    backgroundColor: theme.colorNeutralBackground1,
-    color: theme.colorNeutralForeground1,
-    ...shorthands.borderColor(theme.colorTransparentStroke),
-  }),
-  rootOutlineSubtle: theme => ({
-    color: theme.colorNeutralForegroundInverted,
-    ...shorthands.borderColor(theme.colorNeutralForegroundInverted),
-  }),
-  rootTintSubtle: theme => ({
-    backgroundColor: theme.colorNeutralBackground1,
-    color: theme.colorNeutralForeground3,
-    ...shorthands.borderColor(theme.colorNeutralStroke2),
-  }),
-  rootGhostSubtle: theme => ({
-    color: theme.colorNeutralForegroundInverted,
-  }),
-  icon: {
+  },
+  'ghost-brand': {
+    color: tokens.colorBrandBackground,
+  },
+  'ghost-danger': {
+    color: tokens.colorPaletteRedForeground3,
+  },
+  'ghost-important': {
+    color: tokens.colorNeutralForeground1,
+  },
+  'ghost-informative': {
+    color: tokens.colorNeutralForeground3,
+  },
+  'ghost-severe': {
+    color: tokens.colorPaletteDarkOrangeForeground3,
+  },
+  'ghost-subtle': {
+    color: tokens.colorNeutralForegroundInverted,
+  },
+  'ghost-success': {
+    color: tokens.colorPaletteGreenForeground3,
+  },
+  'ghost-warning': {
+    color: tokens.colorPaletteYellowForeground2,
+  },
+
+  // appearance: outline
+
+  outline: {
+    ...shorthands.borderColor('currentColor'),
+  },
+  'outline-brand': {
+    color: tokens.colorBrandBackground,
+  },
+  'outline-danger': {
+    color: tokens.colorPaletteRedForeground3,
+  },
+  'outline-important': {
+    color: tokens.colorNeutralForeground3,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
+  },
+  'outline-informative': {
+    color: tokens.colorNeutralForeground3,
+    ...shorthands.borderColor(tokens.colorNeutralStroke2),
+  },
+  'outline-severe': {
+    color: tokens.colorPaletteDarkOrangeForeground3,
+  },
+  'outline-subtle': {
+    color: tokens.colorNeutralForegroundInverted,
+  },
+  'outline-success': {
+    color: tokens.colorPaletteGreenForeground2,
+  },
+  'outline-warning': {
+    color: tokens.colorPaletteYellowForeground2,
+  },
+
+  // appearance: tint
+
+  tint: {
+    // No shared colors between tint appearances
+  },
+  'tint-brand': {
+    backgroundColor: tokens.colorBrandBackground2,
+    color: tokens.colorBrandForeground2,
+    ...shorthands.borderColor(tokens.colorBrandStroke2),
+  },
+  'tint-danger': {
+    backgroundColor: tokens.colorPaletteRedBackground1,
+    color: tokens.colorPaletteRedForeground1,
+    ...shorthands.borderColor(tokens.colorPaletteRedBorder1),
+  },
+  'tint-important': {
+    backgroundColor: tokens.colorNeutralForeground3,
+    color: tokens.colorNeutralBackground1,
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+  },
+  'tint-informative': {
+    backgroundColor: tokens.colorNeutralBackground4,
+    color: tokens.colorNeutralForeground3,
+    ...shorthands.borderColor(tokens.colorNeutralStroke2),
+  },
+  'tint-severe': {
+    backgroundColor: tokens.colorPaletteDarkOrangeBackground1,
+    color: tokens.colorPaletteDarkOrangeForeground1,
+    ...shorthands.borderColor(tokens.colorPaletteDarkOrangeForeground2),
+  },
+  'tint-subtle': {
+    backgroundColor: tokens.colorNeutralBackground1,
+    color: tokens.colorNeutralForeground3,
+    ...shorthands.borderColor(tokens.colorNeutralStroke2),
+  },
+  'tint-success': {
+    backgroundColor: tokens.colorPaletteGreenBackground1,
+    color: tokens.colorPaletteGreenForeground1,
+    ...shorthands.borderColor(tokens.colorPaletteGreenBackground2),
+  },
+  'tint-warning': {
+    backgroundColor: tokens.colorPaletteYellowBackground1,
+    color: tokens.colorPaletteYellowForeground2,
+    ...shorthands.borderColor(tokens.colorPaletteYellowBackground2),
+  },
+});
+
+const useIconStyles = makeStyles({
+  base: {
     display: 'flex',
     alignContent: 'center',
     alignItems: 'center',
     height: '100%',
+  },
+
+  // size
+
+  tiny: {
+    fontSize: '6px',
+  },
+  'extra-small': {
+    fontSize: '10px',
+  },
+  small: {
+    fontSize: '12px',
+  },
+  medium: {
+    fontSize: '12px',
+  },
+  large: {
+    fontSize: '16px',
+  },
+  'extra-large': {
+    fontSize: '20px',
   },
 });
 
 /**
  * Applies style classnames to slots
  */
-export const useBadgeStyles = (state: BadgeState): BadgeState => {
-  const styles = useStyles();
-  const isGhost = state.appearance === 'ghost';
-  const isOutline = state.appearance === 'outline';
-  const isTint = state.appearance === 'tint';
-  const isFilled = state.appearance === 'filled';
-  const isDanger = state.color === 'danger';
-  const isSevere = state.color === 'severe';
-  const isWarning = state.color === 'warning';
-  const isSuccess = state.color === 'success';
-  const isImportant = state.color === 'important';
-  const isInformative = state.color === 'informative';
-  const isSubtle = state.color === 'subtle';
+export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
+  const rootStyles = useRootStyles();
 
   state.root.className = mergeClasses(
-    badgeClassName,
-    styles.root,
-    state.size === 'tiny' && styles.rootTiny,
-    state.size === 'extra-small' && styles.rootExtraSmall,
-    state.size === 'small' && styles.rootSmall,
-    state.size === 'medium' && styles.rootMedium,
-    state.size === 'large' && styles.rootLarge,
-    state.size === 'extra-large' && styles.rootExtraLarge,
-    state.shape === 'circular' && styles.rootCircular,
-    state.shape === 'rounded' && styles.rootRounded,
+    badgeClassNames.root,
+    rootStyles.base,
+    rootStyles[state.size],
+    rootStyles[state.shape],
     state.shape === 'rounded' &&
       (state.size === 'small' || state.size === 'extra-small' || state.size === 'tiny') &&
-      styles.rootRoundedSmallToTiny,
-    isGhost && styles.rootGhost,
-    isOutline && styles.rootOutline,
-    isTint && styles.rootTint,
-    isFilled && isDanger && styles.rootFilledDanger,
-    isOutline && isDanger && styles.rootOutlineDanger,
-    isTint && isDanger && styles.rootTintDanger,
-    isGhost && isDanger && styles.rootGhostDanger,
-    isFilled && isSevere && styles.rootFilledSevere,
-    isOutline && isSevere && styles.rootOutlineSevere,
-    isTint && isSevere && styles.rootTintSevere,
-    isGhost && isSevere && styles.rootGhostSevere,
-    isFilled && isWarning && styles.rootFilledWarning,
-    isOutline && isWarning && styles.rootOutlineWarning,
-    isTint && isWarning && styles.rootTintWarning,
-    isGhost && isWarning && styles.rootGhostWarning,
-    isFilled && isSuccess && styles.rootFilledSuccess,
-    isOutline && isSuccess && styles.rootOutlineSuccess,
-    isTint && isSuccess && styles.rootTintSuccess,
-    isGhost && isSuccess && styles.rootGhostSuccess,
-    isFilled && isImportant && styles.rootFilledImportant,
-    isOutline && isImportant && styles.rootOutlineImportant,
-    isTint && isImportant && styles.rootTintImportant,
-    isGhost && isImportant && styles.rootGhostImportant,
-    isFilled && isInformative && styles.rootFilledInformative,
-    isOutline && isInformative && styles.rootOutlineInformative,
-    isTint && isInformative && styles.rootTintInformative,
-    isGhost && isInformative && styles.rootGhostInformative,
-    isFilled && isSubtle && styles.rootFilledSubtle,
-    isOutline && isSubtle && styles.rootOutlineSubtle,
-    isTint && isSubtle && styles.rootTintSubtle,
-    isGhost && isSubtle && styles.rootGhostSubtle,
+      rootStyles.roundedSmallToTiny,
+    rootStyles[state.appearance],
+    rootStyles[`${state.appearance}-${state.color}` as const],
     state.root.className,
   );
 
+  const iconStyles = useIconStyles();
   if (state.icon) {
-    state.icon.className = mergeClasses(styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(
+      badgeClassNames.icon,
+      iconStyles.base,
+      iconStyles[state.size],
+      state.icon.className,
+    );
   }
 
   return state;

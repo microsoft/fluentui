@@ -1935,7 +1935,6 @@ exports[`DetailsList renders List correctly 1`] = `
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -2180,7 +2179,6 @@ exports[`DetailsList renders List correctly 1`] = `
             </span>
           </div>
           <div
-            aria-colindex={2}
             aria-labelledby="header1-key-name"
             aria-sort="none"
             className=
@@ -2369,7 +2367,6 @@ exports[`DetailsList renders List correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={3}
             aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
@@ -2558,7 +2555,6 @@ exports[`DetailsList renders List correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={4}
             aria-labelledby="header1-value-name"
             aria-sort="none"
             className=
@@ -2923,7 +2919,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -3168,9 +3163,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             </span>
           </div>
           <div
-            aria-colindex={2}
-            aria-describedby="header1-column_key_0-tooltip"
-            aria-labelledby="header1-column_key_0-name"
+            aria-label="column_0"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3301,33 +3294,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_0-tooltip"
-          >
-            column_0
-          </label>
           <div
-            aria-colindex={3}
-            aria-describedby="header1-column_key_1-tooltip"
-            aria-labelledby="header1-column_key_1-name"
+            aria-label="column_1"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3458,33 +3426,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_1-tooltip"
-          >
-            column_1
-          </label>
           <div
-            aria-colindex={4}
-            aria-describedby="header1-column_key_2-tooltip"
-            aria-labelledby="header1-column_key_2-name"
+            aria-label="column_2"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3615,33 +3558,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_2-tooltip"
-          >
-            column_2
-          </label>
           <div
-            aria-colindex={5}
-            aria-describedby="header1-column_key_3-tooltip"
-            aria-labelledby="header1-column_key_3-name"
+            aria-label="column_3"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3772,33 +3690,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_3-tooltip"
-          >
-            column_3
-          </label>
           <div
-            aria-colindex={6}
-            aria-describedby="header1-column_key_4-tooltip"
-            aria-labelledby="header1-column_key_4-name"
+            aria-label="column_4"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3929,29 +3822,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_4-tooltip"
-          >
-            column_4
-          </label>
         </div>
       </div>
       <div
@@ -4130,7 +4000,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -4375,7 +4244,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             </span>
           </div>
           <div
-            aria-colindex={2}
             aria-labelledby="header1-key-name"
             aria-sort="none"
             className=
@@ -4564,7 +4432,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={3}
             aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
@@ -4753,7 +4620,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={4}
             aria-labelledby="header1-value-name"
             aria-sort="none"
             className=
@@ -5119,7 +4985,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -5364,7 +5229,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             </span>
           </div>
           <div
-            aria-colindex={2}
             aria-labelledby="header1-key-name"
             aria-sort="none"
             className=
@@ -5553,7 +5417,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={3}
             aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
@@ -5742,7 +5605,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={4}
             aria-labelledby="header1-value-name"
             aria-sort="none"
             className=
@@ -6107,7 +5969,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -6352,9 +6213,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             </span>
           </div>
           <div
-            aria-colindex={2}
-            aria-describedby="header1-column_key_0-tooltip"
-            aria-labelledby="header1-column_key_0-name"
+            aria-label="column_0"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -6485,36 +6344,11 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_0-tooltip"
-          >
-            column_0
-          </label>
           <span>
             |
           </span>
           <div
-            aria-colindex={3}
-            aria-describedby="header1-column_key_1-tooltip"
-            aria-labelledby="header1-column_key_1-name"
+            aria-label="column_1"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -6645,36 +6479,11 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_1-tooltip"
-          >
-            column_1
-          </label>
           <span>
             |
           </span>
           <div
-            aria-colindex={4}
-            aria-describedby="header1-column_key_2-tooltip"
-            aria-labelledby="header1-column_key_2-name"
+            aria-label="column_2"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -6805,36 +6614,11 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_2-tooltip"
-          >
-            column_2
-          </label>
           <span>
             |
           </span>
           <div
-            aria-colindex={5}
-            aria-describedby="header1-column_key_3-tooltip"
-            aria-labelledby="header1-column_key_3-name"
+            aria-label="column_3"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -6965,36 +6749,11 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_3-tooltip"
-          >
-            column_3
-          </label>
           <span>
             |
           </span>
           <div
-            aria-colindex={6}
-            aria-describedby="header1-column_key_4-tooltip"
-            aria-labelledby="header1-column_key_4-name"
+            aria-label="column_4"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -7125,29 +6884,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_4-tooltip"
-          >
-            column_4
-          </label>
           <span>
             |
           </span>
@@ -7411,9 +7147,28 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             >
               
             </i>
+            <span
+              className=
+
+                  {
+                    border: 0px;
+                    height: 1px;
+                    margin-bottom: -1px;
+                    margin-left: -1px;
+                    margin-right: -1px;
+                    margin-top: -1px;
+                    overflow: hidden;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: absolute;
+                    white-space: nowrap;
+                    width: 1px;
+                  }
+            />
           </div>
           <div
-            aria-colindex={1}
             aria-labelledby="header1-key-name"
             aria-sort="none"
             className=
@@ -7602,7 +7357,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={2}
             aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
@@ -7791,7 +7545,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={3}
             aria-labelledby="header1-value-name"
             aria-sort="none"
             className=
@@ -8177,6 +7930,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     color: #605e5c;
                                     cursor: default;
                                     display: flex;
+                                    flex-shrink: 0;
                                     font-size: 12px;
                                     height: 48px;
                                     justify-content: center;
@@ -8243,6 +7997,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   font-size: 16px;
                                   font-weight: 600;
                                   outline: 0px;
+                                  overflow: hidden;
                                   padding-left: 12px;
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
@@ -8406,7 +8161,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -8463,7 +8217,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     0
                                   </div>
                                   <div
-                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -8520,7 +8273,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 0
                                   </div>
                                   <div
-                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -8715,7 +8467,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -8772,7 +8523,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     1
                                   </div>
                                   <div
-                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -8829,7 +8579,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 1
                                   </div>
                                   <div
-                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -9048,6 +8797,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     color: #605e5c;
                                     cursor: default;
                                     display: flex;
+                                    flex-shrink: 0;
                                     font-size: 12px;
                                     height: 48px;
                                     justify-content: center;
@@ -9114,6 +8864,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   font-size: 16px;
                                   font-weight: 600;
                                   outline: 0px;
+                                  overflow: hidden;
                                   padding-left: 12px;
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
@@ -9277,7 +9028,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -9334,7 +9084,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     2
                                   </div>
                                   <div
-                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -9391,7 +9140,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 2
                                   </div>
                                   <div
-                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -9586,7 +9334,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -9643,7 +9390,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     3
                                   </div>
                                   <div
-                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -9700,7 +9446,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 3
                                   </div>
                                   <div
-                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -9895,7 +9640,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -9952,7 +9696,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     4
                                   </div>
                                   <div
-                                    aria-colindex={3}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
@@ -10009,7 +9752,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 4
                                   </div>
                                   <div
-                                    aria-colindex={4}
                                     aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell

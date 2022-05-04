@@ -2,6 +2,36 @@
   "name": "@fluentui/monaco-editor",
   "entries": [
     {
+      "date": "Thu, 14 Apr 2022 07:38:08 GMT",
+      "tag": "@fluentui/monaco-editor_v1.3.0",
+      "version": "1.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/monaco-editor",
+            "commit": "399a179957a37480093eaaf5b0ddfb37a97ad7a8",
+            "comment": "Add a way to load editor fonts, and remove back-compat code that's no longer needed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Apr 2022 07:39:33 GMT",
+      "tag": "@fluentui/monaco-editor_v1.2.0",
+      "version": "1.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/monaco-editor",
+            "commit": "e49dc444524e81550e4c7a5206db795ee44ea232",
+            "comment": "Update monaco-editor to 0.33.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Sep 2021 07:36:26 GMT",
       "tag": "@fluentui/monaco-editor_v1.1.4",
       "version": "1.1.4",

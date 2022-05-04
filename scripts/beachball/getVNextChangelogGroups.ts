@@ -11,7 +11,7 @@ export function getVNextChangelogGroups(): ChangelogGroupOptions {
 
   return {
     masterPackageName: '@fluentui/react-components',
-    changelogPath: 'packages/react-components',
+    changelogPath: 'packages/react-components/react-components',
     include: vNextPackagePaths,
   };
 }
@@ -25,7 +25,7 @@ export function getVNextPackagePaths(allPackageInfo: AllPackageInfo) {
 
       // These packages depend on converged packages, but are private
       // Can be included in the publish scope so that dependencies are bumped correctly.
-      const privateNonConverged = ['perf-test', 'vr-tests'];
+      const privateNonConverged = ['@fluentui/perf-test', '@fluentui/vr-tests'];
 
       if (privateNonConverged.includes(packageInfo.packageJson.name)) {
         return packageInfo.packagePath;

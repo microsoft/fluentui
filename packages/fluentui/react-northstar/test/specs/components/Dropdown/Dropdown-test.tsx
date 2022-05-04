@@ -1251,6 +1251,24 @@ describe('Dropdown', () => {
 
       expect(getA11yMessageContainerNode()).toHaveTextContent('');
     });
+
+    it('has items count narration element associated via aria-describedby after an item has been selected', () => {
+      const itemToBeClickedIndex = 1;
+      const { clickOnItemAtIndex, searchInputNode, getItemsCountNode } = renderDropdown({
+        defaultOpen: true,
+        getA11ySelectionMessage: { itemsCount: count => `${count} item is  selected.` },
+        search: true,
+        multiple: true,
+      });
+
+      clickOnItemAtIndex(itemToBeClickedIndex);
+      const itemsCountNode = getItemsCountNode();
+      const itemsCountNodeId = itemsCountNode.getAttribute('id');
+
+      expect(searchInputNode).toHaveAttribute('aria-describedby', itemsCountNodeId);
+
+      expect(itemsCountNode).toHaveTextContent('1 item is selected.');
+    });
   });
 
   describe('searchQuery', () => {
@@ -1997,6 +2015,28 @@ describe('Dropdown', () => {
 
       expect(getItemNodes()).toHaveLength(1);
       expect(getItemNodeAtIndex(0)).toHaveTextContent(items[0]);
+    });
+  });
+
+  describe('accessibility trigger button aria labels', () => {
+    it('trigger button should not have aria-label', () => {
+      const { triggerButtonNode } = renderDropdown({ items });
+      expect(triggerButtonNode).not.toHaveAttribute('aria-label');
+    });
+
+    it('trigger button should not have aria-labelledby', () => {
+      const { triggerButtonNode } = renderDropdown({ items });
+      expect(triggerButtonNode).not.toHaveAttribute('aria-labelledby');
+    });
+
+    it('trigger button should have aria-labelledby from user prop', () => {
+      const { triggerButtonNode } = renderDropdown({ items, 'aria-labelledby': 'form-label' });
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby', 'form-label');
+    });
+
+    it('trigger button should not have aria-describedby', () => {
+      const { triggerButtonNode } = renderDropdown({ items });
+      expect(triggerButtonNode).not.toHaveAttribute('aria-describedby');
     });
   });
 });

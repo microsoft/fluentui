@@ -258,10 +258,9 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     commands: [
       classNames.commands,
       {
-        marginTop: 18,
+        paddingTop: 18,
         selectors: {
           [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
-            backgroundColor: semanticColors.bodyBackground,
             position: 'sticky',
             top: 0,
             zIndex: 1,
@@ -269,7 +268,12 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         },
       },
       hasCustomNavigation && {
-        marginTop: 'inherit',
+        paddingTop: 'inherit',
+      },
+      // - Ensures that the sticky header always has a background to prevent overlaps on scroll.
+      // - Adds consistent behavior with how Footer is being handled
+      isFooterSticky && {
+        backgroundColor: semanticColors.bodyBackground,
       },
     ],
     navigation: [
@@ -353,14 +357,13 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction2}`,
         selectors: {
           [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
-            background: semanticColors.bodyBackground,
             position: 'sticky',
             bottom: 0,
           },
         },
       },
       isFooterSticky && {
-        background: semanticColors.bodyBackground,
+        backgroundColor: semanticColors.bodyBackground,
         borderTopColor: semanticColors.variantBorder,
       },
     ],

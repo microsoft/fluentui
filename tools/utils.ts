@@ -7,7 +7,10 @@ import {
   readWorkspaceConfiguration,
   Tree,
   getProjects as getAllProjects,
+  ProjectConfiguration,
+  readJson,
 } from '@nrwl/devkit';
+import { PackageJson } from './types';
 
 /**
  * CLI prompts abstraction to trigger dynamic prompts within a generator
@@ -107,6 +110,7 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
     },
     e2e: {
       rootFolder: joinPathFragments(projectConfig.root, 'e2e'),
+      support: joinPathFragments(projectConfig.root, 'e2e', 'support.js'),
       tsconfig: joinPathFragments(projectConfig.root, 'e2e', 'tsconfig.json'),
     },
   };
@@ -114,12 +118,35 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
   return {
     projectConfig,
     workspaceConfig,
+    /**
+     * package name without npmScope (@scopeName)
+     */
+    normalizedPkgName: options.packageName.replace(`@${workspaceConfig.npmScope}/`, ''),
     paths,
   };
 }
 
+export const workspacePaths = {
+  workspace: '/workspace.json',
+  nx: '/nx.json',
+  tsconfig: '/tsconfig.base.json',
+  packageJson: '/package.json',
+  jest: { preset: '/jest.preset.js', config: '/jest.config.js' },
+  github: {
+    root: '/.github',
+    codeowners: joinPathFragments('/.github', 'CODEOWNERS'),
+  },
+  storybook: {
+    root: '/.storyboook',
+  },
+};
+
 export type UserLog = Array<{ type: keyof typeof logger; message: string }>;
 export function printUserLogs(logs: UserLog) {
+  if (logs.length === 0) {
+    return;
+  }
+
   logger.log(`${'='.repeat(80)}\n`);
 
   logs.forEach(log => logger[log.type](log.message));
@@ -150,4 +177,18 @@ export function getProjects(tree: Tree, projectNames?: string[]) {
   }
 
   return allProjects;
+}
+
+export function hasSchemaFlag<T, K extends keyof T>(schema: T, flag: K): schema is T & Record<K, NonNullable<T[K]>> {
+  return Boolean(schema[flag]);
+}
+
+export function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
+  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
+  return packageJson.version.startsWith('9.');
+}
+
+export function isV8Package(tree: Tree, project: ProjectConfiguration) {
+  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
+  return packageJson.version.startsWith('8.');
 }

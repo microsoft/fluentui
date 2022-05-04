@@ -1,15 +1,25 @@
-import { mergeClasses, shorthands, makeStyles } from '@fluentui/react-make-styles';
-import { DividerState } from './Divider.types';
+import { mergeClasses, shorthands, makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import { DividerSlots, DividerState } from './Divider.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated Use `dividerClassNames.root` instead.
+ */
 export const dividerClassName = 'fui-Divider';
+export const dividerClassNames: SlotClassNames<DividerSlots> = {
+  root: 'fui-Divider',
+  wrapper: 'fui-Divider__wrapper',
+};
 
 const contentSpacing = '12px';
 const insetSpacing = '12px';
-const startEndMaxHeight = '8px';
+const maxStartEndLength = '8px';
+const minStartEndLength = '8px;';
 
 const useBaseStyles = makeStyles({
   // Base styles
-  base: theme => ({
+  base: {
     alignItems: 'center',
     boxSizing: 'border-box',
     display: 'flex',
@@ -17,29 +27,28 @@ const useBaseStyles = makeStyles({
     flexGrow: 1,
     position: 'relative',
 
-    fontFamily: theme.fontFamilyBase,
-    fontSize: theme.fontSizeBase200,
-    fontWeight: theme.fontWeightRegular,
-    lineHeight: theme.lineHeightBase200,
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase200,
+    fontWeight: tokens.fontWeightRegular,
+    lineHeight: tokens.lineHeightBase200,
+    textAlign: 'center',
 
-    color: theme.colorNeutralForeground2,
+    color: tokens.colorNeutralForeground2,
 
     ':before': {
       boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
-
-      ...shorthands.borderColor(theme.colorNeutralStroke2),
+      ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
 
     ':after': {
       boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
-
-      ...shorthands.borderColor(theme.colorNeutralStroke2),
+      ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
-  }),
+  },
 
   // Childless styles
   childless: {
@@ -75,52 +84,54 @@ const useBaseStyles = makeStyles({
   },
 
   // Appearance variations
-  brand: theme => ({
-    color: theme.colorBrandForeground1,
+  brand: {
+    color: tokens.colorBrandForeground1,
 
     ':before': {
-      ...shorthands.borderColor(theme.colorBrandStroke1),
+      ...shorthands.borderColor(tokens.colorBrandStroke1),
     },
 
     ':after': {
-      ...shorthands.borderColor(theme.colorBrandStroke1),
+      ...shorthands.borderColor(tokens.colorBrandStroke1),
     },
-  }),
-  subtle: theme => ({
+  },
+  subtle: {
     ':before': {
-      ...shorthands.borderColor(theme.colorNeutralStroke3),
+      ...shorthands.borderColor(tokens.colorNeutralStroke3),
     },
 
     ':after': {
-      ...shorthands.borderColor(theme.colorNeutralStroke3),
+      ...shorthands.borderColor(tokens.colorNeutralStroke3),
     },
-  }),
-  strong: theme => ({
+  },
+  strong: {
     ':before': {
-      ...shorthands.borderColor(theme.colorNeutralStroke1),
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
     },
 
     ':after': {
-      ...shorthands.borderColor(theme.colorNeutralStroke1),
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
     },
-  }),
+  },
 });
 
 const useHorizontalStyles = makeStyles({
   // Base styles
-  base: theme => ({
+  base: {
     width: '100%',
 
     ':before': {
       borderTopStyle: 'solid',
-      borderTopWidth: theme.strokeWidthThin,
+      borderTopWidth: tokens.strokeWidthThin,
+      minWidth: minStartEndLength,
     },
 
     ':after': {
       borderTopStyle: 'solid',
-      borderTopWidth: theme.strokeWidthThin,
+      borderTopWidth: tokens.strokeWidthThin,
+      minWidth: minStartEndLength,
     },
-  }),
+  },
 
   // Inset styles
   inset: {
@@ -133,7 +144,7 @@ const useHorizontalStyles = makeStyles({
     ':before': {
       content: '""',
       marginRight: contentSpacing,
-      maxWidth: startEndMaxHeight,
+      maxWidth: maxStartEndLength,
     },
 
     ':after': {
@@ -155,27 +166,29 @@ const useHorizontalStyles = makeStyles({
     ':after': {
       content: '""',
       marginLeft: contentSpacing,
-      maxWidth: startEndMaxHeight,
+      maxWidth: maxStartEndLength,
     },
   },
 });
 
 const useVerticalStyles = makeStyles({
   // Base styles
-  base: theme => ({
+  base: {
     flexDirection: 'column',
     minHeight: '20px',
 
     ':before': {
       borderRightStyle: 'solid',
-      borderRightWidth: theme.strokeWidthThin,
+      borderRightWidth: tokens.strokeWidthThin,
+      minHeight: minStartEndLength,
     },
 
     ':after': {
       borderRightStyle: 'solid',
-      borderRightWidth: theme.strokeWidthThin,
+      borderRightWidth: tokens.strokeWidthThin,
+      minHeight: minStartEndLength,
     },
-  }),
+  },
 
   // Inset styles
   inset: {
@@ -193,7 +206,7 @@ const useVerticalStyles = makeStyles({
     ':before': {
       content: '""',
       marginBottom: contentSpacing,
-      maxHeight: startEndMaxHeight,
+      maxHeight: maxStartEndLength,
     },
 
     ':after': {
@@ -215,12 +228,12 @@ const useVerticalStyles = makeStyles({
     ':after': {
       content: '""',
       marginTop: contentSpacing,
-      maxHeight: startEndMaxHeight,
+      maxHeight: maxStartEndLength,
     },
   },
 });
 
-export const useDividerStyles = (state: DividerState): DividerState => {
+export const useDividerStyles_unstable = (state: DividerState): DividerState => {
   const baseStyles = useBaseStyles();
   const horizontalStyles = useHorizontalStyles();
   const verticalStyles = useVerticalStyles();
@@ -228,7 +241,7 @@ export const useDividerStyles = (state: DividerState): DividerState => {
   const { alignContent, appearance, inset, vertical } = state;
 
   state.root.className = mergeClasses(
-    dividerClassName,
+    dividerClassNames.root,
 
     // Base styles
     baseStyles.base,
@@ -252,6 +265,10 @@ export const useDividerStyles = (state: DividerState): DividerState => {
     // User provided class name
     state.root.className,
   );
+
+  if (state.wrapper) {
+    state.wrapper.className = mergeClasses(dividerClassNames.wrapper, state.wrapper.className);
+  }
 
   return state;
 };

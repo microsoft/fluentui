@@ -104,8 +104,16 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
     const svgClassName = classNames.svg;
 
     // Build an SVG for the cell with the given shape and color properties
+    // Include role="img" and aria-label here for better virtual cursor accessibility,
+    // and for a VoiceOver bug where it skips grid cells that lack inner content
     return (
-      <svg className={svgClassName} viewBox="0 0 20 20" fill={getColorFromString(colorOption.color as string)?.str}>
+      <svg
+        className={svgClassName}
+        role="img"
+        aria-label={colorOption.label}
+        viewBox="0 0 20 20"
+        fill={getColorFromString(colorOption.color as string)?.str}
+      >
         {circle ? <circle cx="50%" cy="50%" r="50%" /> : <rect width="100%" height="100%" />}
       </svg>
     );

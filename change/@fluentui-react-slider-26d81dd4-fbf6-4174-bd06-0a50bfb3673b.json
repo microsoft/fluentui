@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adjust focus rect to match design, and update color tokens to improve dark mode contrast",
+  "packageName": "@fluentui/react-slider",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,6 +1,10 @@
 export * from './themes/index';
 export * from './utils/index';
 
+export { themeToTokensObject } from './themeToTokensObject';
+export { tokens } from './tokens';
+export { typographyStyles } from './global/index';
+
 export type {
   Brands,
   BrandVariants,
@@ -9,6 +13,11 @@ export type {
   LineHeightTokens,
   BorderRadiusTokens,
   StrokeWidthTokens,
+  SpacingTokens,
+  HorizontalSpacingTokens,
+  VerticalSpacingTokens,
+  DurationTokens,
+  CurveTokens,
   ShadowTokens,
   ShadowBrandTokens,
   FontFamilyTokens,
@@ -65,4 +74,5 @@ export type {
   ColorTokens,
   PartialTheme,
   Theme,
+  TypographyStyles,
 } from './types';

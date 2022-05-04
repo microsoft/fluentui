@@ -7,7 +7,6 @@ import _ from 'lodash';
 import chalk from 'chalk';
 import { spawnSync } from 'child_process';
 import { findGitRoot, PackageJson } from '../monorepo/index';
-import { NxJsonConfiguration } from '@nrwl/devkit';
 import { WorkspaceJsonConfiguration } from '@nrwl/tao/src/shared/workspace';
 
 const root = findGitRoot();
@@ -17,7 +16,7 @@ const v8ReferencePackages = {
   node: ['codemods'],
 };
 const convergedReferencePackages = {
-  react: ['react-menu'],
+  react: ['react-provider'],
   node: ['babel-make-styles'],
 };
 
@@ -26,6 +25,7 @@ interface Answers {
   packageName: string;
   target: 'react' | 'node';
   description: string;
+  codeowner: string;
   hasTests?: boolean;
   isConverged?: boolean;
 }
@@ -57,6 +57,18 @@ module.exports = (plop: NodePlopAPI) => {
         validate: (input: string) => !!input || 'Must enter a description',
       },
       {
+        type: 'list',
+        name: 'codeowner',
+        message: 'Provide team that owns this package',
+        choices: [
+          '@microsoft/fluentui-react-build',
+          '@microsoft/teams-prg',
+          '@microsoft/cxe-coastal',
+          '@microsoft/cxe-red',
+          '@microsoft/cxe-prg',
+        ],
+      },
+      {
         type: 'confirm',
         name: 'hasTests',
         message: 'Will this package have tests?',
@@ -74,7 +86,7 @@ module.exports = (plop: NodePlopAPI) => {
       if (answers.target === 'react') answers = { hasTests: true, ...answers };
       const { packageName, target, hasTests } = answers;
 
-      const destination = `packages/${packageName}`;
+      const destination = answers.isConverged ? `packages/react-components/${packageName}` : `packages/${packageName}`;
       const globOptions: AddManyActionConfig['globOptions'] = { dot: true };
 
       // Get derived template parameters
@@ -85,6 +97,7 @@ module.exports = (plop: NodePlopAPI) => {
           /^.|-./g, // first char or char after -
           (substr, index) => (index > 0 ? ' ' : '') + substr.replace('-', '').toUpperCase(),
         ),
+        owner: answers.codeowner,
       };
 
       return [
@@ -132,7 +145,13 @@ module.exports = (plop: NodePlopAPI) => {
           console.log(`\nRunning migrate-converged-pkg...`);
           const migrateResult = spawnSync(
             'yarn',
-            ['nx', 'workspace-generator', 'migrate-converged-pkg', `--name='${data.packageNpmName}'`],
+            [
+              'nx',
+              'workspace-generator',
+              'migrate-converged-pkg',
+              `--name='${data.packageNpmName}'`,
+              `--owner='${data.owner}'`,
+            ],
             { cwd: root, stdio: 'inherit', shell: true },
           );
           if (migrateResult.status !== 0) {
@@ -205,12 +224,10 @@ function replaceVersionsFromReference(
   }
 
   if (answers.isConverged) {
-    // Update the version and beachball config in package.json to match the current v9 ones
-    if (packageJsons[0].version?.[0] === '9') {
-      newPackageJson.version = packageJsons[0].version;
-    } else {
+    if (packageJsons[0].version?.[0] !== '9') {
       throw new Error(`Converged reference package ${packageJsons[0].name} does not appear to have version 9.x`);
     }
+    // Update beachball config in package.json to match the current v9
     if (packageJsons[0].beachball) {
       newPackageJson.beachball = packageJsons[0].beachball;
     }
@@ -261,10 +278,6 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
       [config.projectName]: {
         root: config.projectRoot,
         projectType: 'library',
-      },
-    },
-    config: {
-      [config.projectName]: {
         implicitDependencies: [],
       },
     },
@@ -274,13 +287,7 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
   const nxWorkspace: WorkspaceJsonConfiguration = jju.parse(nxWorkspaceContent);
   Object.assign(nxWorkspace.projects, templates.workspace);
 
-  const nxConfigContent = fs.readFileSync(paths.config, 'utf-8');
-  const nxConfig: NxJsonConfiguration = jju.parse(nxConfigContent);
-  Object.assign(nxConfig.projects, templates.config);
-
   const updatedNxWorkspace = jju.update(nxWorkspaceContent, nxWorkspace, { mode: 'json', indent: 2 });
-  const updatedNxConfig = jju.update(nxConfigContent, nxConfig, { mode: 'json', indent: 2 });
 
   fs.writeFileSync(paths.workspace, updatedNxWorkspace, 'utf-8');
-  fs.writeFileSync(paths.config, updatedNxConfig, 'utf-8');
 }

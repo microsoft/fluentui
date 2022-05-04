@@ -21,7 +21,7 @@ export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}>
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="DonutChart"
+        title="Donut Chart"
         componentName="DonutChartExample"
         exampleCards={
           <div>
@@ -47,6 +47,22 @@ export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}>
           />
         }
         isHeaderVisible={this.props.isHeaderVisible}
+        overview={
+          <div>
+            <p>
+              Donut charts show a percentage of a whole. They are circular statistical graphics divided into slices to
+              illustrate numerical proportion. Donut charts have an empty center where a numerical value can be shown.
+            </p>
+            <p>
+              The arc length of each data set in a donut is proportional to the quantity it represents, which can also
+              be expressed as a horizontal bar chart.
+            </p>
+            <p>
+              <strong>Note:</strong> Donut Charts typically represent two data points. Representing more data in a
+              circular chart (as seen in the second example) is known by the MADS team as a Pie Chart.
+            </p>
+          </div>
+        }
       />
     );
   }

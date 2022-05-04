@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "use CSS shorthands in styles",
-  "packageName": "@fluentui/react-slider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

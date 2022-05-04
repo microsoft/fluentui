@@ -471,6 +471,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
         ...divProps,
         className: css('ms-List', className),
         role: pageElements.length > 0 ? role : undefined,
+        'aria-label': pageElements.length > 0 ? divProps['aria-label'] : undefined,
       },
     });
   }

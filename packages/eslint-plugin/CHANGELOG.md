@@ -1,8 +1,53 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Wed, 15 Dec 2021 07:31:27 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Mar 2022 07:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.7.0)
+
+Wed, 16 Mar 2022 07:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.6.3..@fluentui/eslint-plugin_v1.7.0)
+
+### Minor changes
+
+- feat(eslint-plugin): enable no-export-all:all for all packages public API ([PR #22073](https://github.com/microsoft/fluentui/pull/22073) by martinhochel@microsoft.com)
+
+## [1.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.6.3)
+
+Fri, 11 Mar 2022 07:34:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.6.2..@fluentui/eslint-plugin_v1.6.3)
+
+### Patches
+
+- fix(eslint-plugin): make import/no-extraneous-dependencies work for react config ([PR #21924](https://github.com/microsoft/fluentui/pull/21924) by martinhochel@microsoft.com)
+
+## [1.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.6.2)
+
+Mon, 14 Feb 2022 07:26:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.6.1..@fluentui/eslint-plugin_v1.6.2)
+
+### Patches
+
+- Add ./e2e to list of files allowing devDependencies ([PR #21678](https://github.com/microsoft/fluentui/pull/21678) by elcraig@microsoft.com)
+
+## [1.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.6.1)
+
+Tue, 25 Jan 2022 07:30:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.6.0..@fluentui/eslint-plugin_v1.6.1)
+
+### Patches
+
+- Add naming-convention exception to allow exported hooks with the _unstable suffix ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+
+## [1.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.6.0)
+
+Thu, 13 Jan 2022 07:30:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.5.2..@fluentui/eslint-plugin_v1.6.0)
+
+### Minor changes
+
+- Expand ban-imports rule to also support exports, and support regular expressions for names ([PR #21196](https://github.com/microsoft/fluentui/pull/21196) by elcraig@microsoft.com)
 
 ## [1.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.5.2)
 

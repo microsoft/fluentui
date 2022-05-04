@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Upgrading/from v8/Overview" />
+
+# Upgrading from v8 to v9
+
+If you or your team are currently using version 8 of `@fluentui/react` and are thinking of upgrading to version 9
+then we would first like to **_thank you_** for making the jump and tell you how excited we are for you to experience all the improvements and features we have been working on.
+
+There are several things to keep in mind when upgrading, so we have created these uprade guide topics explaining:
+
+- the new concepts you will encounter and how they map to v8
+- things to consider when planning upgrade work
+- detailed guidance on upgrading components
+- examples and helper code to make upgrading easier
+
+We highly recommend reading through the v9 concepts for developers and the component documentation.
+Knowing how v9 works will provide needed context for upgrading.
+
+## Why should I upgrade from v8 to v9?
+
+Fluent UI React v9 provides significant improvements to components over v8.
+
+Some reasons to upgrade to v9:
+
+- New and improved visual styling, rendering performance, and accessibility
+- Easier to use and more consistent component props
+- Build-time CSS-in-JS
+- Component customization using slots
+- Design token language with an improved theme provider
+- Component composition and re-use leveraging React hooks
+- Reduced bundle size with tree shaking
+
+## Do I have to upgrade all at once?
+
+Absolutely not! **You can upgrade incrementally**.
+
+Fluent UI v9 was built as separate libraries with the intention of support incremental adoption of v9 components alongside v8 components.
+
+## What if I'm on v7 right now?
+
+We recommend first upgrading v7 to v8. The upgrade is mostly fixing a few breaking changes and replacing some deprecated components or props with newer versions.
+
+## What is available in v9?
+
+Version 9 is a "converged" library built from the ground-up that addresses many of the concerns and issues that plagued version 8.
+However, this approach means that the intial number of version 9 components is fewer than existed in version 8.
+Some components have also been renamed and a couple of them have been retired.
+
+At the time of this writing, v9 has an initial set of components shipped as a release candidate.
+There are also some components in preview that are more likely to change than the release candidate components.
+However, **all published components are production ready**.
+
+The v9 RC provides the following v8 equivalents: Avatar (previously Persona), Buttons, Divider, Image, Link, Portal and Popover (previously Layer/Overlay), Text, and Tooltip.
+There are also new components: Accordion, Badges, and Menu.
+
+See the [Component Mapping](/docs/concepts-upgrading-from-v8-component-mapping--page) for a complete list.
+
+## How much effort is required?
+
+We won't sugarcoat it; upgrading from v8 to v9 is more involved than the previous v7 to v8 upgrade.
+There are breaking changes, component differences, and paradigm shifts.
+
+The good news is that you can upgrade incrementally and take it one step at a time.

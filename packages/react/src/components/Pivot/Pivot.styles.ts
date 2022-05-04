@@ -56,14 +56,6 @@ const getLinkStyles = (
         ':focus': {
           outline: 'none',
         },
-        [`.${IsFocusVisibleClassName} &:focus`]: {
-          outline: `1px solid ${semanticColors.focusBorder}`,
-        },
-        [`.${IsFocusVisibleClassName} &:focus:after`]: {
-          content: 'attr(data-content)',
-          position: 'relative',
-          border: 0,
-        },
       },
     },
     !isLinkInOverflowMenu && [
@@ -74,6 +66,15 @@ const getLinkStyles = (
         marginRight: 8,
         textAlign: 'center',
         selectors: {
+          [`.${IsFocusVisibleClassName} &:focus`]: {
+            outline: `1px solid ${semanticColors.focusBorder}`,
+          },
+
+          [`.${IsFocusVisibleClassName} &:focus:after`]: {
+            content: 'attr(data-content)',
+            position: 'relative',
+            border: 0,
+          },
           ':before': {
             backgroundColor: 'transparent',
             bottom: 0,

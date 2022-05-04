@@ -101,6 +101,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
           >
             <div
               aria-hidden={true}
+              data-is-focus-trap-zone-bumper={true}
               data-is-visible={true}
               style={
                 Object {
@@ -147,6 +148,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
             </div>
             <div
               aria-hidden={true}
+              data-is-focus-trap-zone-bumper={true}
               data-is-visible={true}
               style={
                 Object {
@@ -191,6 +193,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -265,6 +268,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -305,6 +309,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -415,6 +420,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 align-self: center;
+                flex-basis: auto;
                 flex-shrink: 1;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -431,6 +437,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                flex-basis: auto;
                 flex-shrink: 1;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -439,141 +446,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 width: auto;
               }
         >
-          <button
-            className=
-                ms-Button
-                ms-Button--default
-                ms-TeachingBubble-secondaryButton
-                secondary-className
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  background-color: #0078d4;
-                  border-color: #ffffff;
-                  border-radius: 2px;
-                  border: 1px solid #8a8886;
-                  box-sizing: border-box;
-                  color: #323130;
-                  cursor: pointer;
-                  display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  height: 32px;
-                  min-width: 80px;
-                  outline: transparent;
-                  padding-bottom: 0;
-                  padding-left: 16px;
-                  padding-right: 16px;
-                  padding-top: 0;
-                  position: relative;
-                  text-align: center;
-                  text-decoration: none;
-                  user-select: none;
-                  white-space: nowrap;
-                }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid transparent;
-                  bottom: 1px;
-                  content: "";
-                  left: 1px;
-                  outline: 1px solid transparent;
-                  position: absolute;
-                  right: 1px;
-                  top: 1px;
-                  z-index: 1;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  bottom: -2px;
-                  left: -2px;
-                  outline-color: ButtonText;
-                  right: -2px;
-                  top: -2px;
-                }
-                &:active > * {
-                  left: 0px;
-                  position: relative;
-                  top: 0px;
-                }
-                &:hover {
-                  background-color: #106ebe;
-                  border-color: #ffffff;
-                  color: #201f1e;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                  border-color: Highlight;
-                  color: Highlight;
-                }
-                &:focus {
-                  background-color: #005a9e;
-                  border: 1px solid #000000;
-                  outline-offset: -2px;
-                  outline: 1px solid #ffffff;
-                }
-                &:active {
-                  background-color: #0078d4;
-                  border-color: #ffffff;
-                  color: #201f1e;
-                }
-                & .ms-Button-label {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #ffffff;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            data-is-focusable={true}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            type="button"
-          >
-            <span
-              className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: center;
-                  }
-              data-automationid="splitbuttonprimary"
-            >
-              <span
-                className=
-                    ms-Button-textContainer
-                    {
-                      display: block;
-                      flex-grow: 1;
-                    }
-              >
-                <span
-                  className=
-                      ms-Button-label
-                      {
-                        display: block;
-                        font-weight: 600;
-                        line-height: 100%;
-                        margin-bottom: 0;
-                        margin-left: 4px;
-                        margin-right: 4px;
-                        margin-top: 0;
-                      }
-                  id="id__3"
-                >
-                  Test Secondary Button
-                </span>
-              </span>
-            </span>
-          </button>
           <button
             className=
                 ms-Button
@@ -629,7 +501,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -720,9 +592,144 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__6"
+                  id="id__3"
                 >
                   Test Primary Button
+                </span>
+              </span>
+            </span>
+          </button>
+          <button
+            className=
+                ms-Button
+                ms-Button--default
+                ms-TeachingBubble-secondaryButton
+                secondary-className
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #0078d4;
+                  border-color: #ffffff;
+                  border-radius: 2px;
+                  border: 1px solid #8a8886;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid transparent;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid transparent;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:active > span {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
+                &:hover {
+                  background-color: #106ebe;
+                  border-color: #ffffff;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:focus {
+                  background-color: #005a9e;
+                  border: 1px solid #000000;
+                  outline-offset: -2px;
+                  outline: 1px solid #ffffff;
+                }
+                &:active {
+                  background-color: #0078d4;
+                  border-color: #ffffff;
+                  color: #201f1e;
+                }
+                & .ms-Button-label {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #ffffff;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            data-is-focusable={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <span
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
+              data-automationid="splitbuttonprimary"
+            >
+              <span
+                className=
+                    ms-Button-textContainer
+                    {
+                      display: block;
+                      flex-grow: 1;
+                    }
+              >
+                <span
+                  className=
+                      ms-Button-label
+                      {
+                        display: block;
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
+                  id="id__6"
+                >
+                  Test Secondary Button
                 </span>
               </span>
             </span>
@@ -786,7 +793,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -870,6 +877,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -910,6 +918,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -956,6 +965,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -996,6 +1006,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1074,6 +1085,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1114,6 +1126,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1193,6 +1206,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 align-self: center;
+                flex-basis: auto;
                 flex-shrink: 1;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -1211,6 +1225,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                flex-basis: auto;
                 flex-shrink: 1;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -1223,6 +1238,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1263,6 +1279,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with generated aria-descri
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1337,6 +1354,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with generated aria-descri
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1414,6 +1432,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1488,6 +1507,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1528,6 +1548,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1608,6 +1629,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {

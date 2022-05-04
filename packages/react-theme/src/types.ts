@@ -27,11 +27,16 @@ export type ColorTokens = {
   colorBrandForegroundLinkHover: string;
   colorBrandForegroundLinkPressed: string;
   colorBrandForegroundLinkSelected: string;
+  colorNeutralForeground2Link: string;
+  colorNeutralForeground2LinkHover: string;
+  colorNeutralForeground2LinkPressed: string;
+  colorNeutralForeground2LinkSelected: string;
   colorCompoundBrandForeground1: string;
   colorCompoundBrandForeground1Hover: string;
   colorCompoundBrandForeground1Pressed: string;
   colorBrandForeground1: string;
   colorBrandForeground2: string;
+  colorNeutralForeground1Static: string;
   colorNeutralForegroundInverted: string;
   colorNeutralForegroundInvertedHover: string;
   colorNeutralForegroundInvertedPressed: string;
@@ -89,6 +94,8 @@ export type ColorTokens = {
   colorNeutralBackgroundInvertedDisabled: string;
   colorNeutralStencil1: string;
   colorNeutralStencil2: string;
+  colorBackgroundOverlay: string;
+  colorScrollbarOverlay: string;
   colorBrandBackground: string;
   colorBrandBackgroundHover: string;
   colorBrandBackgroundPressed: string;
@@ -868,6 +875,32 @@ export type TextAlignments = {
   justify: TextAlignment;
 };
 
+type TypographyStyle = {
+  fontFamily: string;
+  fontSize: string;
+  fontWeight: string;
+  lineHeight: string;
+};
+
+export type TypographyStyles = {
+  body1: TypographyStyle;
+  body1Strong: TypographyStyle;
+  body1Stronger: TypographyStyle;
+  caption1: TypographyStyle;
+  caption1Strong: TypographyStyle;
+  caption1Stronger: TypographyStyle;
+  caption2: TypographyStyle;
+  caption2Strong: TypographyStyle;
+  subtitle1: TypographyStyle;
+  subtitle2: TypographyStyle;
+  subtitle2Stronger: TypographyStyle;
+  title1: TypographyStyle;
+  title2: TypographyStyle;
+  title3: TypographyStyle;
+  largeTitle: TypographyStyle;
+  display: TypographyStyle;
+};
+
 export type BorderRadiusTokens = {
   borderRadiusNone: string;
   borderRadiusSmall: string;
@@ -882,6 +915,70 @@ export type StrokeWidthTokens = {
   strokeWidthThick: string;
   strokeWidthThicker: string;
   strokeWidthThickest: string;
+};
+
+export type SpacingTokens = {
+  none: string;
+  xxs: string;
+  xs: string;
+  sNudge: string;
+  s: string;
+  mNudge: string;
+  m: string;
+  l: string;
+  xl: string;
+  xxl: string;
+  xxxl: string;
+};
+
+export type HorizontalSpacingTokens = {
+  spacingHorizontalNone: string;
+  spacingHorizontalXXS: string;
+  spacingHorizontalXS: string;
+  spacingHorizontalSNudge: string;
+  spacingHorizontalS: string;
+  spacingHorizontalMNudge: string;
+  spacingHorizontalM: string;
+  spacingHorizontalL: string;
+  spacingHorizontalXL: string;
+  spacingHorizontalXXL: string;
+  spacingHorizontalXXXL: string;
+};
+
+export type VerticalSpacingTokens = {
+  spacingVerticalNone: string;
+  spacingVerticalXXS: string;
+  spacingVerticalXS: string;
+  spacingVerticalSNudge: string;
+  spacingVerticalS: string;
+  spacingVerticalMNudge: string;
+  spacingVerticalM: string;
+  spacingVerticalL: string;
+  spacingVerticalXL: string;
+  spacingVerticalXXL: string;
+  spacingVerticalXXXL: string;
+};
+
+export type DurationTokens = {
+  durationUltraFast: string;
+  durationFaster: string;
+  durationFast: string;
+  durationNormal: string;
+  durationSlow: string;
+  durationSlower: string;
+  durationUltraSlow: string;
+};
+
+export type CurveTokens = {
+  curveAccelerateMax: string;
+  curveAccelerateMid: string;
+  curveAccelerateMin: string;
+  curveDecelerateMax: string;
+  curveDecelerateMid: string;
+  curveDecelerateMin: string;
+  curveEasyEaseMax: string;
+  curveEasyEase: string;
+  curveLinear: string;
 };
 
 /**
@@ -966,6 +1063,10 @@ export type Theme = FontSizeTokens &
   LineHeightTokens &
   BorderRadiusTokens &
   StrokeWidthTokens &
+  HorizontalSpacingTokens &
+  VerticalSpacingTokens &
+  DurationTokens &
+  CurveTokens &
   ShadowTokens &
   ShadowBrandTokens &
   FontFamilyTokens &

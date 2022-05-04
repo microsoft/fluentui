@@ -3,5 +3,9 @@
   "video": false,
   "screenshotOnRunFailure": false,
   "integrationFolder": "./tests",
-  "testFiles": "**.spec.ts"
+  "testFiles": "**.spec.ts",
+  "retries": {
+    "runMode": 2,
+    "openMode": 0
+  }
 }

@@ -51,6 +51,9 @@ export interface ICSPSettings {
 }
 
 // @public (undocumented)
+export type ICSSPixelUnitRule = string | number;
+
+// @public (undocumented)
 export type ICSSRule = 'initial' | 'inherit' | 'unset';
 
 // @public
@@ -91,7 +94,6 @@ export interface IRawFontStyle {
     font?: ICSSRule | string;
     fontFamily?: ICSSRule | string;
     fontKerning?: ICSSRule | string;
-    // Warning: (ae-forgotten-export) The symbol "ICSSPixelUnitRule" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "ICSSPercentageRule" needs to be exported by the entry point index.d.ts
     fontSize?: ICSSRule | 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | 'larger' | 'smaller' | ICSSPixelUnitRule | ICSSPercentageRule;
     fontSizeAdjust?: ICSSRule | 'none' | number | string;
@@ -251,7 +253,11 @@ export interface IRawStyleBase extends IRawFontStyle {
     listStylePosition?: ICSSRule | string;
     listStyleType?: ICSSRule | string;
     margin?: ICSSRule | ICSSPixelUnitRule;
+    marginBlockEnd?: ICSSRule | ICSSPixelUnitRule;
+    marginBlockStart?: ICSSRule | ICSSPixelUnitRule;
     marginBottom?: ICSSRule | ICSSPixelUnitRule;
+    marginInlineEnd?: ICSSRule | ICSSPixelUnitRule;
+    marginInlineStart?: ICSSRule | ICSSPixelUnitRule;
     marginLeft?: ICSSRule | ICSSPixelUnitRule;
     marginRight?: ICSSRule | ICSSPixelUnitRule;
     marginTop?: ICSSRule | ICSSPixelUnitRule;

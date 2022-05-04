@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider renders disabled Slider correctly 1`] = `
+<div>
+  <div
+    class="fui-Slider"
+    style="--fui-Slider__rail--direction: 90deg; --fui-Slider__thumb--position: 50%; --fui-Slider__rail--offset: 0%; --fui-Slider__rail--progress: 50%;"
+  >
+    <input
+      class="fui-Slider__input"
+      disabled=""
+      id="slider-1"
+      max="10"
+      min="0"
+      type="range"
+      value="5"
+    />
+    <div
+      class="fui-Slider__rail"
+    />
+    <div
+      class="fui-Slider__thumb"
+    />
+  </div>
+</div>
+`;
+
+exports[`Slider renders horizontal Slider correctly 1`] = `
+<div>
+  <div
+    class="fui-Slider"
+    style="--fui-Slider__rail--direction: 90deg; --fui-Slider__thumb--position: 50%; --fui-Slider__rail--offset: 0%; --fui-Slider__rail--progress: 50%;"
+  >
+    <input
+      class="fui-Slider__input"
+      id="slider-1"
+      max="10"
+      min="0"
+      type="range"
+      value="5"
+    />
+    <div
+      class="fui-Slider__rail"
+    />
+    <div
+      class="fui-Slider__thumb"
+    />
+  </div>
+</div>
+`;
+
+exports[`Slider renders horizontal origin Slider correctly 1`] = `
+<div>
+  <div
+    class="fui-Slider"
+    style="--fui-Slider__rail--direction: 90deg; --fui-Slider__thumb--position: 50%; --fui-Slider__rail--offset: 20%; --fui-Slider__rail--progress: 30%;"
+  >
+    <input
+      class="fui-Slider__input"
+      id="slider-1"
+      max="10"
+      min="0"
+      type="range"
+      value="5"
+    />
+    <div
+      class="fui-Slider__rail"
+    />
+    <div
+      class="fui-Slider__thumb"
+    />
+  </div>
+</div>
+`;
+
+exports[`Slider renders vertical Slider correctly 1`] = `
+<div>
+  <div
+    class="fui-Slider"
+    style="--fui-Slider__rail--direction: 0deg; --fui-Slider__thumb--position: 50%; --fui-Slider__rail--offset: 0%; --fui-Slider__rail--progress: 50%;"
+  >
+    <input
+      class="fui-Slider__input"
+      id="slider-1"
+      max="10"
+      min="0"
+      orient="vertical"
+      type="range"
+      value="5"
+    />
+    <div
+      class="fui-Slider__rail"
+    />
+    <div
+      class="fui-Slider__thumb"
+    />
+  </div>
+</div>
+`;
+
+exports[`Slider renders vertical origin Slider correctly 1`] = `
+<div>
+  <div
+    class="fui-Slider"
+    style="--fui-Slider__rail--direction: 0deg; --fui-Slider__thumb--position: 50%; --fui-Slider__rail--offset: 20%; --fui-Slider__rail--progress: 30%;"
+  >
+    <input
+      class="fui-Slider__input"
+      id="slider-1"
+      max="10"
+      min="0"
+      orient="vertical"
+      type="range"
+      value="5"
+    />
+    <div
+      class="fui-Slider__rail"
+    />
+    <div
+      class="fui-Slider__thumb"
+    />
+  </div>
+</div>
+`;

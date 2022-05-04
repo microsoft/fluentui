@@ -1,4 +1,4 @@
-import { FontWeightProperty } from 'csstype';
+import { Property } from 'csstype';
 
 import { pxToRem } from '../../../../utils';
 import { SiteVariablesPrepared } from '@fluentui/styles';
@@ -10,7 +10,7 @@ export interface AlertVariables {
   backgroundColor: string;
   borderColor: string;
   color: string;
-  fontWeight: FontWeightProperty;
+  fontWeight: Property.FontWeight;
   minHeight: string;
   padding: string;
 
@@ -52,7 +52,7 @@ export interface AlertVariables {
   warningBackgroundColor: string;
   warningBorderColor: string;
 
-  headerFontWeight: FontWeightProperty;
+  headerFontWeight: Property.FontWeight;
   headerMargin: string;
 
   iconMargin: string;
@@ -66,7 +66,7 @@ export interface AlertVariables {
   dismissActionBackgroundColorHover: string;
   dismissActionBorderColorHover: string;
 
-  dismissActionContentFontWeight: FontWeightProperty;
+  dismissActionContentFontWeight: Property.FontWeight;
 
   dismissActionBackgroundColorFocus: string;
   dismissActionBorderColorFocus: string;
@@ -77,6 +77,12 @@ export interface AlertVariables {
   dismissActionBorderColorDisabled: string;
 
   dismissActionIndicatorSize: string;
+
+  focusBorderRadius: string;
+  focusBorderWidth: string;
+  focusInnerBorderColor: string;
+  focusOuterBorderColor: string;
+  focusBorderZIndex: string;
 }
 
 export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables => {
@@ -156,5 +162,11 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
     dismissActionBorderColorDisabled: 'transparent',
 
     dismissActionIndicatorSize: pxToRem(16),
+
+    focusBorderRadius: siteVars.borderRadiusMedium,
+    focusBorderWidth: siteVars.borderWidth,
+    focusInnerBorderColor: siteVars.focusInnerBorderColor,
+    focusOuterBorderColor: siteVars.focusOuterBorderColor,
+    focusBorderZIndex: siteVars.zIndexes.foreground,
   };
 };

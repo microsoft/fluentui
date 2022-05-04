@@ -21,6 +21,12 @@ const Variations = () => (
       description="A Carousel can have actionable elements inside."
       examplePath="components/Carousel/Variations/CarouselExampleWithFocusableElements"
     />
+
+    <ComponentExample
+      title="Carousel with slide in/out animation"
+      description="A Carousel can have configured animations."
+      examplePath="components/Carousel/Variations/CarouselSlideAnimationExample"
+    />
   </ExampleSection>
 );
 

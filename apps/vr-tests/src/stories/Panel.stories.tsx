@@ -83,6 +83,14 @@ storiesOf('Panel', module)
       hasCloseButton={false}
     />
   ))
+  .addStory('With custom navigation', () => (
+    <Panel
+      {...defaultProps}
+      type={PanelType.smallFixedFar}
+      headerText="custom navigation"
+      onRenderNavigation={() => <DefaultButton>clickme</DefaultButton>}
+    />
+  ))
   .addStory('With no header, close button', () => (
     <Panel {...defaultProps} type={PanelType.smallFixedFar} hasCloseButton={true} />
   ))
@@ -97,6 +105,7 @@ storiesOf('Panel', module)
   ));
 
 storiesOf('Panel', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
