@@ -45,7 +45,7 @@
       "@fluentui/react-portal-compat-context": ["packages/react-components/react-portal-compat-context/src/index.ts"],
       "@fluentui/react-positioning": ["packages/react-components/react-positioning/src/index.ts"],
       "@fluentui/react-provider": ["packages/react-components/react-provider/src/index.ts"],
-      "@fluentui/react-radio": ["packages/react-radio/src/index.ts"],
+      "@fluentui/react-radio": ["packages/react-components/react-radio/src/index.ts"],
       "@fluentui/react-select": ["packages/react-components/react-select/src/index.ts"],
       "@fluentui/react-shared-contexts": ["packages/react-shared-contexts/src/index.ts"],
       "@fluentui/react-slider": ["packages/react-components/react-slider/src/index.ts"],
