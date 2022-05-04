@@ -9,6 +9,11 @@ export type PopoverSize = 'small' | 'medium' | 'large';
 
 type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
   /**
+   * Popovers are rendered out of DOM order on `document.body` by default, use this to render the popover in DOM order
+   */
+  inline: boolean;
+
+  /**
    * Controls the opening of the Popover
    */
   open: boolean;
@@ -25,6 +30,12 @@ type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
    * Flag to open the Popover by hovering the trigger
    */
   openOnHover?: boolean;
+
+  /**
+   * Sets the delay for closing popover on mouse leave
+   */
+  mouseLeaveDelay?: number;
+
   /**
    * Flag to open the Popover as a context menu. Disables all other interactions
    */
@@ -54,6 +65,11 @@ type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
    * Configures the position of the Popover
    */
   positioning?: PositioningShorthand;
+
+  /**
+   * Close when scroll outside of it
+   */
+  closeOnScroll?: boolean;
 };
 
 /**

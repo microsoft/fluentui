@@ -1,9 +1,9 @@
 import type { FunctionComponent } from 'react';
 import { makeStyles } from '@griffel/react';
-import { typographyStyles } from '../../typographyStyles/index';
 import { createWrapper, TextWrapperProps } from '../wrapper';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { TextSlots } from '../Text/Text.types';
+import { typographyStyles } from '@fluentui/react-theme';
 
 /**
  * @deprecated Use `subheadlineClassNames.root` instead.
@@ -17,7 +17,7 @@ export const subheadlineClassNames: SlotClassNames<TextSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: typographyStyles.subheadline,
+  root: typographyStyles.subtitle2,
 });
 
 /**

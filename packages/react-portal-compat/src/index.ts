@@ -1,2 +1,1 @@
-// TODO: replace with real exports
-export {};
+export { PortalCompatProvider } from './PortalCompatProvider';

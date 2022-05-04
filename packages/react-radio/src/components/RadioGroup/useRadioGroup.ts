@@ -14,20 +14,15 @@ import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
 export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HTMLDivElement>): RadioGroupState => {
   const generatedName = useId('radiogroup-');
 
-  const { name = generatedName, value, defaultValue, disabled, layout = 'vertical', onChange } = props;
+  const { name = generatedName, value, defaultValue, disabled, layout = 'vertical', onChange, required } = props;
 
   return {
     layout,
-    context: React.useMemo(
-      () => ({
-        name,
-        value,
-        defaultValue,
-        disabled,
-        layout,
-      }),
-      [name, layout, value, defaultValue, disabled],
-    ),
+    name,
+    value,
+    defaultValue,
+    disabled,
+    required,
     components: {
       root: 'div',
     },

@@ -31,6 +31,7 @@
     "@fluentui/react-conformance-griffel": "9.0.0-beta.4"
   },
   "dependencies": {
+    "@fluentui/react-context-selector": "9.0.0-rc.6",
     "@fluentui/react-icons": "^2.0.166-rc.3",
     "@fluentui/react-label": "9.0.0-beta.10",
     "@fluentui/react-tabster": "9.0.0-rc.7",
