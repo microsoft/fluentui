@@ -119,7 +119,7 @@ apps and dependency chains.
 
 Backwards compatibility needs to be supported without a question because we need to follow semver.
 However, since there is no guarantee which version of the context gets registered first in the global namespace, the default
-values in our context will be unsafe by default. This introduces the constraint of forward comaptibility for our
+values in our context will be unsafe by default. This introduces the constraint of forward compatibility for our
 context values.
 
 ```tsx
@@ -129,7 +129,7 @@ const Contextv11 = React.createContext({ foo: 'xxx', bar: 'yyyy' });
 
 // v1.1 context is not registered and uses v1 context as proposed above
 // ⚠️⚠️⚠️ bar is undefined but typings suggest it is defined
-const { bar } = React.useContex(Contextv11);
+const { bar } = React.useContext(Contextv11);
 ```
 
 In order to work around this problem this RFC proposes practices to follow in Fluent UI with regards to our
@@ -178,6 +178,7 @@ cannot ever be extended as it would result in a breaking change.
 - Custom magic when creating contexts in Fluent
 - Generally using window/node globals is an antipattern
 - Enforces stricter practices for using contexts
+- Bundle size increase for any context (+ 18.95 kB minified / + 5.224 kB gzipped)
 
 ### Pros
 
