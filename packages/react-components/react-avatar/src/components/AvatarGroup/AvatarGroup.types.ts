@@ -3,8 +3,6 @@ import { PopoverSurface } from '@fluentui/react-popover';
 import { AvatarSizes } from '../Avatar/Avatar.types';
 import { Button } from '@fluentui/react-button';
 import { TooltipProps } from '@fluentui/react-tooltip';
-import * as React from 'react';
-import { Avatar } from '../Avatar/Avatar';
 
 export type AvatarGroupSlots = {
   root: Slot<'div'>;
