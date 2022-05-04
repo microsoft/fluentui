@@ -36,8 +36,8 @@ export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & Partial<Avatar
 // @public (undocumented)
 export type AvatarGroupSlots = {
     root: Slot<'div'>;
-    popoverTrigger?: Slot<typeof Button>;
-    popoverSurface?: Slot<typeof PopoverSurface>;
+    popoverTrigger: NonNullable<Slot<typeof Button>>;
+    popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
