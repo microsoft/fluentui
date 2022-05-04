@@ -74,5 +74,6 @@ export type {
   ColorTokens,
   PartialTheme,
   Theme,
+  TypographyStyle,
   TypographyStyles,
 } from './types';
