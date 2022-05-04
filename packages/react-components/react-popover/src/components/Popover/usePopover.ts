@@ -10,7 +10,7 @@ import {
   usePositioning,
   resolvePositioningShorthand,
   mergeArrowOffset,
-  useMouseTarget,
+  usePositioningMouseTarget,
 } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -26,7 +26,7 @@ import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.ty
  * @param props - props from this instance of Popover
  */
 export const usePopover_unstable = (props: PopoverProps): PopoverState => {
-  const [contextTarget, setContextTarget] = useMouseTarget();
+  const [contextTarget, setContextTarget] = usePositioningMouseTarget();
   const initialState = {
     size: 'medium',
     contextTarget,

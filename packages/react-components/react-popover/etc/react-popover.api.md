@@ -18,7 +18,7 @@ import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { useMouseTarget } from '@fluentui/react-positioning';
+import type { usePositioningMouseTarget } from '@fluentui/react-positioning';
 
 // @public (undocumented)
 export const arrowHeights: Record<PopoverSize, number>;
@@ -56,7 +56,7 @@ export type PopoverState = PopoverCommons & Pick<PopoverProps, 'children'> & {
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
     contextTarget: PositioningVirtualElement | undefined;
-    setContextTarget: ReturnType<typeof useMouseTarget>[1];
+    setContextTarget: ReturnType<typeof usePositioningMouseTarget>[1];
     size: NonNullable<PopoverProps['size']>;
     popoverTrigger: React_2.ReactElement | undefined;
     popoverSurface: React_2.ReactElement | undefined;

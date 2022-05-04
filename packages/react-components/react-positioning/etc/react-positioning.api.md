@@ -47,7 +47,7 @@ export type OffsetFunction = (param: OffsetFunctionParam) => OffsetObject | Offs
 
 // @public (undocumented)
 export type OffsetFunctionParam = {
-    positionedElement: Rect;
+    positionedRect: Rect;
     target: Rect;
     position: Position;
     alignment?: Alignment;
@@ -102,7 +102,7 @@ export type PositioningVirtualElement = {
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
 // @public
-export const useMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [PositioningVirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
+export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [PositioningVirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
 
 // @public
 export function usePositioning(options?: UsePopperOptions): {

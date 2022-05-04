@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useMouseTarget, usePositioning, resolvePositioningShorthand } from '@fluentui/react-positioning';
+import { usePositioningMouseTarget, usePositioning, resolvePositioningShorthand } from '@fluentui/react-positioning';
 import { useControllableState, useId, useOnClickOutside, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { elementContains } from '@fluentui/react-portal';
@@ -20,7 +20,7 @@ import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from '.
 export const useMenu_unstable = (props: MenuProps): MenuState => {
   const triggerId = useId('menu');
   const isSubmenu = useIsSubmenu();
-  const [contextTarget, setContextTarget] = useMouseTarget();
+  const [contextTarget, setContextTarget] = usePositioningMouseTarget();
 
   const popperState = {
     position: isSubmenu ? ('after' as const) : ('below' as const),

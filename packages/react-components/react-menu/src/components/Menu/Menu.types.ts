@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import type { useMouseTarget, PositioningShorthand } from '@fluentui/react-positioning';
+import type { usePositioningMouseTarget, PositioningShorthand } from '@fluentui/react-positioning';
 import type { MenuListCommons } from '../MenuList/MenuList.types';
 import type { MenuContextValue } from '../../contexts/menuContext';
 
@@ -107,12 +107,12 @@ export type MenuState = MenuCommons &
     /**
      * Anchors the popper to the mouse click for context events
      */
-    contextTarget: ReturnType<typeof useMouseTarget>[0];
+    contextTarget: ReturnType<typeof usePositioningMouseTarget>[0];
 
     /**
      * A callback to set the target of the popper to the mouse click for context events
      */
-    setContextTarget: ReturnType<typeof useMouseTarget>[1];
+    setContextTarget: ReturnType<typeof usePositioningMouseTarget>[1];
   };
 
 /**

@@ -31,7 +31,7 @@ export type PopperOffsetFunction = (args: { popper: Rect; reference: Rect; place
  * @returns An offset value compatible with Popper.js
  */
 export function getPopperOffset(rawOffset: Offset | undefined): PopperOffsetValue | PopperOffsetFunction | undefined {
-  if (rawOffset === undefined) {
+  if (rawOffset === undefined || rawOffset === null) {
     return rawOffset;
   }
 
@@ -45,7 +45,7 @@ export function getPopperOffset(rawOffset: Offset | undefined): PopperOffsetValu
 
   return ({ popper, reference, placement }) => {
     const { position, alignment } = fromPopperPlacement(placement);
-    const computedOffset = rawOffset({ positionedElement: popper, target: reference, position, alignment });
+    const computedOffset = rawOffset({ positionedRect: popper, targetRect: reference, position, alignment });
     if (typeof computedOffset === 'number') {
       return [0, computedOffset];
     }
