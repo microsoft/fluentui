@@ -294,6 +294,11 @@ export type PopoverProps = {
    * Sets the delay for closing popover on mouse leave
    */
   mouseLeaveDelay?: number;
+
+  /**
+   * Close when scrolling outside of it
+   */
+  closeOnScroll?: boolean;
 };
 ```
 
@@ -454,6 +459,11 @@ The popover closes with the escape key when the trigger or popover content has f
 #### Click outside
 
 The popover closes when a click happens outside the popover trigger or content.
+
+#### Scroll outside
+
+The context menu popover closes when scroll happens outside the popover trigger or content.
+When popover is configured with `closeOnScroll`, popover closes when scroll happens outside the popover trigger or content.
 
 ### Focus trap
 

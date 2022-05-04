@@ -33,7 +33,7 @@ export type RadioSlots = {
 /**
  * Radio Props
  */
-export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'size'> & {
+export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'onChange' | 'size'> & {
   /**
    * The value of the RadioGroup when this Radio item is selected.
    */

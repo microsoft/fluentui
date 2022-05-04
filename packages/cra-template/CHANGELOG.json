@@ -2,6 +2,21 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Tue, 03 May 2022 07:35:53 GMT",
+      "tag": "@fluentui/cra-template_v8.1.29",
+      "version": "8.1.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/cra-template",
+            "commit": "d36d823ae024c36d13c1b41764ac5095e7fabe44",
+            "comment": "set specific version of react to be used in cra-template"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Apr 2022 07:39:56 GMT",
       "tag": "@fluentui/cra-template_v8.1.28",
       "version": "8.1.28",

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "react-conformance-griffel: Move to new common folder.",
+  "packageName": "@fluentui/react-conformance-griffel",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}

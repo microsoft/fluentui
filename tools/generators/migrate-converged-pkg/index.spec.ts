@@ -672,7 +672,6 @@ describe('migrate-converged-pkg generator', () => {
       const projectConfig = readProjectConfiguration(tree, config.projectName);
       const paths = {
         e2eRoot: `${projectConfig.root}/e2e`,
-        e2eSupport: `${projectConfig.root}/e2e/support.js`,
         packageJson: `${projectConfig.root}/package.json`,
         tsconfig: {
           main: `${projectConfig.root}/tsconfig.json`,
@@ -734,12 +733,6 @@ describe('migrate-converged-pkg generator', () => {
         include: ['**/*.ts', '**/*.tsx'],
       });
       expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './e2e/tsconfig.json' }]));
-
-      // support.js
-      const supportFile = tree.read(paths.e2eSupport)?.toString('utf-8');
-
-      // Why not inline snapshot? -> this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
-      expect(supportFile).toMatchSnapshot();
 
       // package.json updates
       const packageJson: PackageJson = readJson(tree, paths.packageJson);

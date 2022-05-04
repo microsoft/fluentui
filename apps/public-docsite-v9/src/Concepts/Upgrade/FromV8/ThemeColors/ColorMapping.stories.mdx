@@ -1,0 +1,28 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs';
+import { MonochromeColors } from './MonochromeColors.stories';
+import { NamedColors } from './NamedColors.stories';
+import { BrandColors } from './BrandColors.stories';
+import { SemanticColors } from './SemanticColors.stories';
+
+<Meta title="Concepts/Upgrading/from v8/Color Mapping" />
+
+# Color Mapping
+
+The global and alias colors in v9 differ from those in the default v8 palette and theme.
+Here is our recommended mapping between v8 and v9 colors.
+
+The team of designers and engineers considered several for each color choice:
+
+- The closest color match in HSL (e.g. v8 neutralPrimaryAlt matches v9 grey[22])
+- The semantic name match (e.g. v8 yellow matches v9 sharedColors.yellow.primary)
+- The best intermediate colors in a ramp (e.g. v8 themeTertiary matches v9 brand[120])
+- The best color and contrast perception (e.g. the choices for magenta of shade30, primary, and tint30)
+- The holistic global colors defined in v9 (i.e. v9 colors are more neutral or cooler compared to v8)
+
+We applied this mapping in the theme shim methods.
+These methods help create a v8 theme that closely matches v9 and a v9 theme that closely matches v8.
+
+<MonochromeColors />
+<NamedColors />
+<BrandColors />
+<SemanticColors />
