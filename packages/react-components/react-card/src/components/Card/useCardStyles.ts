@@ -36,7 +36,7 @@ const useStyles = makeStyles({
 
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderWidth(tokens.strokeWidthThin),
-      // TODO: Extract this to separate stiles when tackling the `size` prop
+      // TODO: Extract this to separate styles when tackling the `size` prop
       ...shorthands.borderRadius(tokens.borderRadiusMedium),
     },
 
