@@ -5,7 +5,7 @@
  */
 module.exports = {
   displayName: 'react-radio',
-  preset: '../../../jest.preset.js',
+  preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsConfig: '<rootDir>/tsconfig.spec.json',
