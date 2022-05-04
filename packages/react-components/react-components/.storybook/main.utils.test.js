@@ -13,7 +13,7 @@ describe(`main utils`, () => {
       expect(actual).toEqual(expect.arrayContaining(expected));
 
       const first = actual[0];
-      expect(first.startsWith('../../../react-')).toBeTruthy();
+      expect(first.startsWith('../../react-')).toBeTruthy();
       expect(first.endsWith('/src/**/*.stories.@(ts|tsx|mdx)')).toBeTruthy();
     });
   });
