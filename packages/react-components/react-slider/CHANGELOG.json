@@ -2,6 +2,59 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Wed, 04 May 2022 13:26:50 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-beta.13",
+      "version": "9.0.0-beta.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "cd923be82878c0d4e92bf6b6846b54f215d1877e",
+            "comment": "Adjust focus rect to match design, and update color tokens to improve dark mode contrast"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.6",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.8",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.6",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.7",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-label to v9.0.0-beta.11",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "f1c470c25de01baef3180067fa99dcc10ec9ebd5",
+            "comment": "react-slider: Move to new common folder."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Apr 2022 09:32:19 GMT",
       "tag": "@fluentui/react-slider_v9.0.0-beta.12",
       "version": "9.0.0-beta.12",

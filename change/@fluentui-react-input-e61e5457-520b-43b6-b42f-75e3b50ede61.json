@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update content before/after stories; label usage in stories",
-  "packageName": "@fluentui/react-input",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

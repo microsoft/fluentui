@@ -72,6 +72,20 @@ describe('RadioGroup', () => {
     expect(items[2].disabled).toBe(true);
   });
 
+  it('applies required to every radio item', () => {
+    const { getAllByRole } = render(
+      <RadioGroup required>
+        <Radio />
+        <Radio />
+        <Radio />
+      </RadioGroup>,
+    );
+    const items = getAllByRole('radio') as HTMLInputElement[];
+    expect(items[0].required).toBe(true);
+    expect(items[1].required).toBe(true);
+    expect(items[2].required).toBe(true);
+  });
+
   it('has no radio item selected by default', () => {
     const { getByDisplayValue } = render(
       <RadioGroup>

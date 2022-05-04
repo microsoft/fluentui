@@ -28,7 +28,14 @@ export const parameters = {
           'Upgrading',
           [
             'from v8',
-            ['Overview', 'Important changes', 'Planning your journey', 'Component Mapping', 'Troubleshooting'],
+            [
+              'Overview',
+              'Important changes',
+              'Planning your journey',
+              'Component Mapping',
+              'Color Mapping',
+              'Troubleshooting',
+            ],
           ],
         ],
         'Theme',

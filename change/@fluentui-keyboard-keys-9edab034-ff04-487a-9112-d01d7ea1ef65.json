@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove star exports",
-  "packageName": "@fluentui/keyboard-keys",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

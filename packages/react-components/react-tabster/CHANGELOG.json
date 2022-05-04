@@ -2,6 +2,47 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Wed, 04 May 2022 13:26:53 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-rc.8",
+      "version": "9.0.0-rc.8",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "35dc16cc0ebb2ce181bd802b4b9002b12ea2d86f",
+            "comment": "react-tabster: Move to new common folder."
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "df7387d8394994e1802cb1354a327b86a4d41604",
+            "comment": "chore: moves focus indicator from hooks folder to it's own"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.6",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.6",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.7",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Apr 2022 09:32:15 GMT",
       "tag": "@fluentui/react-tabster_v9.0.0-rc.7",
       "version": "9.0.0-rc.7",

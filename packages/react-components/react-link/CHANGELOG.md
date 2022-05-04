@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Mon, 25 Apr 2022 09:32:19 GMT and should not be manually modified.
+This log was last generated on Wed, 04 May 2022 13:26:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-rc.8)
+
+Wed, 04 May 2022 13:26:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-rc.7..@fluentui/react-link_v9.0.0-rc.8)
+
+### Changes
+
+- Link: Changing styles of focused links to align with design spec. ([PR #22732](https://github.com/microsoft/fluentui/pull/22732) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.5 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.8 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.6 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
 
 ## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-rc.7)
 
