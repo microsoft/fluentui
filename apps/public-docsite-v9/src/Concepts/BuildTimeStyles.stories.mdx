@@ -13,7 +13,11 @@ Make sure to take a look at the following docs to get started with styling in Fl
 
 While there is nothing wrong with the associated runtime costs of a css-in-js engine, larger and more complex
 applications might want to optimize for performance. In Fluent UI, the expensive runtime work only
-happens on the first render of the component.
+happens on the first render of the component. This one-time work can be further optimized at build time by
+pre-computing and transforming styles. You can refer to the [last section](#what-is-being-optimized) of this page for more details
+about what the build time optimization does.
+
+## Setup build time style transforms
 
 ### Webpack
 
