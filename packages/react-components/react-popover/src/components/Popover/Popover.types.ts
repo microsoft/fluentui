@@ -59,6 +59,11 @@ type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
    * Configures the position of the Popover
    */
   positioning?: PositioningShorthand;
+
+  /**
+   * Close when scroll outside of it
+   */
+  closeOnScroll?: boolean;
 };
 
 /**
