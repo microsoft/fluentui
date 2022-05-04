@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Mon, 25 Apr 2022 09:32:19 GMT and should not be manually modified.
+This log was last generated on Wed, 04 May 2022 13:26:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.13)
+
+Wed, 04 May 2022 13:26:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.12..@fluentui/react-slider_v9.0.0-beta.13)
+
+### Changes
+
+- Adjust focus rect to match design, and update color tokens to improve dark mode contrast ([PR #22701](https://github.com/microsoft/fluentui/pull/22701) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.6 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.8 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.6 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-label to v9.0.0-beta.11 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
 
 ## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.12)
 

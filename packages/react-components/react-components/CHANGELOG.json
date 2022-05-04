@@ -2,6 +2,515 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 04 May 2022 13:26:33 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-rc.9",
+      "version": "9.0.0-rc.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "fd41e5b15e3a2f08245cd4e4bbcc0f07a367ce3b",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "7ad290b51135cb84c84e7dd8771bd712892c7484",
+            "comment": "Updated react-text to use typography constants"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "27ba5613b1253801c3ae4e2aba0fc9eb2ae464b8",
+            "comment": "Add px suffix to spacings"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "75ad2567f62e804a8deb3ea6016ba8a674c45627",
+            "comment": "Fixed typo in typography"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "7ad290b51135cb84c84e7dd8771bd712892c7484",
+            "comment": "Fixed line-height in title2"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "57583bfffa6bf28be389dec6c642f36ed253ecdd",
+            "comment": "Added global theme types and tokens"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "3e0ff753cbb3375f28477b2249ecd8b012e2e946",
+            "comment": "fix(react-theme): Update CompoundBrandBackground and BrandStroke1"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "354c4f6290d7957345fd53a8f26c8f5472ff92db",
+            "comment": "Add base font family per figma"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "78da3be7484d156379a105048c535767f7e1b85f",
+            "comment": "Added typeography styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "e45629a0978492d5a8a44934f5263e47862ac8b3",
+            "comment": "feat(react-theme): Add colorNeutralForeground2Link color tokens"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "dd474c75317671a719f125cb2d1fc81db4f9ed7b",
+            "comment": "remove star exports"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "84cf59cd3465e75b1507083b2c270e0146f85d41",
+            "comment": "remove star exports"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "fd41e5b15e3a2f08245cd4e4bbcc0f07a367ce3b",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "045bcb976cb4c2fe70314ac7ccaa99ea25693ed6",
+            "comment": "feat: re-exports positioning types at `react-components`"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c2f2b754a37501d0e61e9375157487514125b8d8",
+            "comment": "feat: export `useThemeClassName` hook"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "2af90d0c5b7c95724a01b71ab9b24d1bd5da2f6d",
+            "comment": "feat: re-export `createFocusOutlineStyle` on `react-components`"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "1519a71043a0f656df2d994485d98fdc9009f883",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "75ad2567f62e804a8deb3ea6016ba8a674c45627",
+            "comment": "Fixed typo in typography"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "78da3be7484d156379a105048c535767f7e1b85f",
+            "comment": "Exported typeography styles"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "57583bfffa6bf28be389dec6c642f36ed253ecdd",
+            "comment": "Exported new theme types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "fd41e5b15e3a2f08245cd4e4bbcc0f07a367ce3b",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "45d7e18b8dd8f9d5a69b2d62c3b5c716268622f2",
+            "comment": "update content before/after stories; label usage in stories"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "65c5c91acea26b129e9ffac6b2b1a8c9808f0141",
+            "comment": "Add style to make required match text when disabled"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "faf92d23bc6c2e21f1769e5ce210e17c7ebc9587",
+            "comment": "Link: Changing styles of focused links to align with design spec."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "773b889cd09d46934feeabdbbc389c678b80f7a0",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "b77905b7980c966769584036828af6c1346aaf9d",
+            "comment": "feat: Add inline prop to Popover"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "773b889cd09d46934feeabdbbc389c678b80f7a0",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "262a1e7d36a615afb763409c8c99bfe432052939",
+            "comment": "feat: Adds prop `closeOnScroll` to close popover on scrolling outside"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd",
+            "comment": "feat: Adds prop `mouseLeaveDelay` to delay closing popover that opens on hover"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "280cf2336d814d7380d5cbf4999ce56da763919c",
+            "comment": "initial release"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "280cf2336d814d7380d5cbf4999ce56da763919c",
+            "comment": "initial release"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "773b889cd09d46934feeabdbbc389c678b80f7a0",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c45f4a6c3dd09c77ce5f5f5e2926ce9494169e99",
+            "comment": "check for styleTag.sheet before performing actions on the sheet"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "773b889cd09d46934feeabdbbc389c678b80f7a0",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "9132814df4b6d40d1f5d93d8324d756c1284b294",
+            "comment": "react-radio: update context usage"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "8d990349b5af2d61057cccda2357412d2f5ab9b9",
+            "comment": "add bundle size fixtures"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "6a017c3b1f2a282fa86c28b675e5ed34a1bb2aee",
+            "comment": "react-radio: add required prop to RadioGroup"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "4bc1c43194cb9f44c5ad40ae43ab26556778157e",
+            "comment": "react-radio: remove required indicator from label"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "5f27c51743f22f08741a75c2c10032a02afdf6fb",
+            "comment": "write readme"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "3be7a89d9e9323780bba5b24d3bcc4342e1f1ec7",
+            "comment": "Allow data argument on onChange"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "cd923be82878c0d4e92bf6b6846b54f215d1877e",
+            "comment": "Adjust focus rect to match design, and update color tokens to improve dark mode contrast"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "c588d86a250e0e4894e41de2e1df273be9a7c866",
+            "comment": "remove MIGRATION.md"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "a7f9a9f47b329e55a36791596b11289c50bb82d3",
+            "comment": "react-spinbutton: remove \"inputType\" prop"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "daf5a7692bce6794dbacf7470cc48e48e1c67252",
+            "comment": "Switch: Fixing disabled styles in high contrast mode."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "97939a4e5f523b3ef05c815f909819701eee92ea",
+            "comment": "Added aria-selected"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "c2562b5382305152a09402a367ec853d603438e7",
+            "comment": "Updated to use correct pseudo-elements"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "6c764b820241483c1a9a6e225f758a4c8d4b060e",
+            "comment": "Updated to use tokens"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "55e2b1b53e81efa510a5bc15c6ab0398b52ace7f",
+            "comment": "Removed unnecessary width and height from indicators"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "17ed5008371df7344540af658209840985dc4754",
+            "comment": "Allow tab to animate when value is numeric zero"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "af6bea84f19cf196b4d17df940e7230cbd9d832d",
+            "comment": "react-text: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "8ec3d32fa26e6cf803ab9d18671fd51ba06c74ab",
+            "comment": "react-theme: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "b69511e4262129a92e34f4bff8b2fe1aba44dd38",
+            "comment": "react-tooltip: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "8ec3d32fa26e6cf803ab9d18671fd51ba06c74ab",
+            "comment": "react-utilities: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "2c0aaae6044f1c0a938704c13749e76b638e2072",
+            "comment": "keyboard-keys: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "35dc16cc0ebb2ce181bd802b4b9002b12ea2d86f",
+            "comment": "react-aria: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "e791a91f5f02b6dc19f178543b6a6b95d49edb46",
+            "comment": "react-avatar: Move to new common folder."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "2a852c82989e92d10a979979c16be97c30a51027",
+            "comment": "Adding AvatarGroup spec to react-avatar."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "e791a91f5f02b6dc19f178543b6a6b95d49edb46",
+            "comment": "react-button: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "b8dde556ff82051c140074a3140e83bfdd56f4dc",
+            "comment": "react-card: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "e791a91f5f02b6dc19f178543b6a6b95d49edb46",
+            "comment": "react-checkbox: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "00d967912b845ab5cbabf22deb6cc6a018433e30",
+            "comment": "react-components: Move to new common folder"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "a1dca96f80f3e36b8836d8701e11a56d1aff572d",
+            "comment": "chore(react-components): fix build:local task"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "ce2398f2d96995250e8168676de60eacfd8e6a20",
+            "comment": "Move custom templates over to v9 storybook."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "f0764e35df36354a86bcf44912a9bf8756df7ddd",
+            "comment": "Remove chromatic command from react-components and move alias up to root pointing at new docsite"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "814d5c1df0951b6c473ba7b7f6cfe793c527881b",
+            "comment": "Add manual decorators for mac which does not work with current addon"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "8997f88bdd280b6831338d6c231b387fd554046e",
+            "comment": "react-conformance-griffel: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "8997f88bdd280b6831338d6c231b387fd554046e",
+            "comment": "react-context-selector: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "b8dde556ff82051c140074a3140e83bfdd56f4dc",
+            "comment": "react-image: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "88fa8f279506c3cfbcc2facff95ecb5b420a217a",
+            "comment": "react-input: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "88fa8f279506c3cfbcc2facff95ecb5b420a217a",
+            "comment": "react-label: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "88fa8f279506c3cfbcc2facff95ecb5b420a217a",
+            "comment": "react-link: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e74b180720cb9aec8df21753a55449849041af82",
+            "comment": "react-menu: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e74b180720cb9aec8df21753a55449849041af82",
+            "comment": "react-popover: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "8997f88bdd280b6831338d6c231b387fd554046e",
+            "comment": "react-portal-compat-context: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "e74b180720cb9aec8df21753a55449849041af82",
+            "comment": "react-portal: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "8ec3d32fa26e6cf803ab9d18671fd51ba06c74ab",
+            "comment": "react-positioning: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "5842ed56a87ffcd6aa607cd98d3c95087221f017",
+            "comment": "react-provider: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "f1c470c25de01baef3180067fa99dcc10ec9ebd5",
+            "comment": "react-slider: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "b69511e4262129a92e34f4bff8b2fe1aba44dd38",
+            "comment": "react-spinbutton: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "b69511e4262129a92e34f4bff8b2fe1aba44dd38",
+            "comment": "react-spinner: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "f1c470c25de01baef3180067fa99dcc10ec9ebd5",
+            "comment": "react-tabs: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "35dc16cc0ebb2ce181bd802b4b9002b12ea2d86f",
+            "comment": "react-tabster: Move to new common folder."
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "df7387d8394994e1802cb1354a327b86a4d41604",
+            "comment": "chore: moves focus indicator from hooks folder to it's own"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Apr 2022 09:32:14 GMT",
       "tag": "@fluentui/react-components_v9.0.0-rc.8",
       "version": "9.0.0-rc.8",

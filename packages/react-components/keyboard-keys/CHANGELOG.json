@@ -2,6 +2,29 @@
   "name": "@fluentui/keyboard-keys",
   "entries": [
     {
+      "date": "Wed, 04 May 2022 13:26:36 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-rc.5",
+      "version": "9.0.0-rc.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "dd474c75317671a719f125cb2d1fc81db4f9ed7b",
+            "comment": "remove star exports"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "2c0aaae6044f1c0a938704c13749e76b638e2072",
+            "comment": "keyboard-keys: Move to new common folder."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:17:06 GMT",
       "tag": "@fluentui/keyboard-keys_v9.0.0-rc.4",
       "version": "9.0.0-rc.4",

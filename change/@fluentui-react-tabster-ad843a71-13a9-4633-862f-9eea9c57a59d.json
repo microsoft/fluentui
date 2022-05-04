@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: moves focus indicator from hooks folder to it's own",
-  "packageName": "@fluentui/react-tabster",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "none"
-}

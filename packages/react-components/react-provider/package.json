@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-provider",
-  "version": "9.0.0-rc.7",
+  "version": "9.0.0-rc.8",
   "description": "Fluent UI React provider component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,10 +33,10 @@
   },
   "dependencies": {
     "@griffel/react": "1.0.3",
-    "@fluentui/react-shared-contexts": "9.0.0-rc.5",
-    "@fluentui/react-tabster": "9.0.0-rc.7",
-    "@fluentui/react-theme": "9.0.0-rc.5",
-    "@fluentui/react-utilities": "9.0.0-rc.6",
+    "@fluentui/react-shared-contexts": "9.0.0-rc.6",
+    "@fluentui/react-tabster": "9.0.0-rc.8",
+    "@fluentui/react-theme": "9.0.0-rc.6",
+    "@fluentui/react-utilities": "9.0.0-rc.7",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

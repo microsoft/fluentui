@@ -2,6 +2,41 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Wed, 04 May 2022 13:26:43 GMT",
+      "tag": "@fluentui/react-input_v9.0.0-beta.8",
+      "version": "9.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "45d7e18b8dd8f9d5a69b2d62c3b5c716268622f2",
+            "comment": "update content before/after stories; label usage in stories"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.6",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.7",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "88fa8f279506c3cfbcc2facff95ecb5b420a217a",
+            "comment": "react-input: Move to new common folder."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Apr 2022 09:32:18 GMT",
       "tag": "@fluentui/react-input_v9.0.0-beta.7",
       "version": "9.0.0-beta.7",

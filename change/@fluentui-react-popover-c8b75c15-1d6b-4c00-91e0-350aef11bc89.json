@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Adds prop `mouseLeaveDelay` to delay closing popover that opens on hover",
-  "packageName": "@fluentui/react-popover",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

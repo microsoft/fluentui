@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-radio
 
-This log was last generated on Mon, 25 Apr 2022 09:32:19 GMT and should not be manually modified.
+This log was last generated on Wed, 04 May 2022 13:26:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.0.0-beta.5)
+
+Wed, 04 May 2022 13:26:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.0.0-beta.4..@fluentui/react-radio_v9.0.0-beta.5)
+
+### Changes
+
+- react-radio: update context usage ([PR #22803](https://github.com/microsoft/fluentui/pull/22803) by seanmonahan@microsoft.com)
+- add bundle size fixtures ([PR #22675](https://github.com/microsoft/fluentui/pull/22675) by seanmonahan@microsoft.com)
+- react-radio: add required prop to RadioGroup ([PR #22809](https://github.com/microsoft/fluentui/pull/22809) by seanmonahan@microsoft.com)
+- react-radio: remove required indicator from label ([PR #22782](https://github.com/microsoft/fluentui/pull/22782) by seanmonahan@microsoft.com)
+- write readme ([PR #22676](https://github.com/microsoft/fluentui/pull/22676) by seanmonahan@microsoft.com)
+- Allow data argument on onChange ([PR #22753](https://github.com/microsoft/fluentui/pull/22753) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-label to v9.0.0-beta.11 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.8 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.6 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.0.0-beta.4)
 

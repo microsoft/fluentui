@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updated to use correct pseudo-elements",
-  "packageName": "@fluentui/react-tabs",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

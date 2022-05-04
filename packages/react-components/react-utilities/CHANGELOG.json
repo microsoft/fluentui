@@ -2,6 +2,29 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 04 May 2022 13:26:36 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-rc.7",
+      "version": "9.0.0-rc.7",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "8ec3d32fa26e6cf803ab9d18671fd51ba06c74ab",
+            "comment": "react-utilities: Move to new common folder."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.0-rc.5",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:17:05 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-rc.6",
       "version": "9.0.0-rc.6",

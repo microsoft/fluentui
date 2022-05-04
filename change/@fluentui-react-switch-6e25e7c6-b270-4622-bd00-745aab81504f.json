@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Switch: Fixing disabled styles in high contrast mode.",
-  "packageName": "@fluentui/react-switch",
-  "email": "humberto_makoto@hotmail.com",
-  "dependentChangeType": "patch"
-}

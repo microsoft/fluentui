@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "react-label: Move to new common folder.",
-  "packageName": "@fluentui/react-label",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}
