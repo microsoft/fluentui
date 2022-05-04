@@ -18,8 +18,8 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     minWidth: '160px',
-    ...shorthands.padding(tokens.horizontalSpacing.xs),
-    rowGap: tokens.horizontalSpacing.xxs,
+    ...shorthands.padding(tokens.spacingHorizontalXS),
+    rowGap: tokens.spacingHorizontalXXS,
   },
 });
 

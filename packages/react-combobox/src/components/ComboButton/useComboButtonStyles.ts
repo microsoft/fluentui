@@ -43,13 +43,13 @@ const useStyles = makeStyles({
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
       transitionDuration: tokens.durationUltraFast,
-      transitionDelay: tokens.motionCurves.accelerateMid,
+      transitionDelay: tokens.curveAccelerateMid,
     },
     ':focus-within::after': {
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
       transitionDuration: tokens.durationNormal,
-      transitionDelay: tokens.motionCurves.decelerateMid,
+      transitionDelay: tokens.curveDecelerateMid,
     },
     ':focus-within:active::after': {
       borderBottomColor: tokens.colorCompoundBrandStrokePressed,
@@ -61,7 +61,7 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border('0'),
     boxSizing: 'border-box',
-    columnGap: tokens.horizontalSpacing.xxs,
+    columnGap: tokens.spacingHorizontalXXS,
     display: 'flex',
     flexWrap: 'nowrap',
     justifyContent: 'space-between',
@@ -77,18 +77,18 @@ const useStyles = makeStyles({
   small: {
     fontSize: tokens.fontSizeBase200,
     lineHeight: tokens.lineHeightBase200,
-    ...shorthands.padding('3px', tokens.horizontalSpacing.sNudge),
+    ...shorthands.padding('3px', tokens.spacingHorizontalSNudge),
   },
   medium: {
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding('5px', tokens.horizontalSpacing.mNudge),
+    ...shorthands.padding('5px', tokens.spacingHorizontalMNudge),
   },
   large: {
-    columnGap: tokens.horizontalSpacing.sNudge,
+    columnGap: tokens.spacingHorizontalSNudge,
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
-    ...shorthands.padding('7px', tokens.horizontalSpacing.m),
+    ...shorthands.padding('7px', tokens.spacingHorizontalM),
   },
 
   // appearance variants

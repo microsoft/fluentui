@@ -15,14 +15,14 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    rowGap: tokens.horizontalSpacing.xxs,
+    rowGap: tokens.spacingHorizontalXXS,
 
     '&:not(:last-child)::after': {
       content: '""',
       ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
       display: 'block',
-      paddingBottom: tokens.horizontalSpacing.xs,
-      marginBottom: tokens.horizontalSpacing.xs,
+      paddingBottom: tokens.spacingHorizontalXS,
+      marginBottom: tokens.spacingHorizontalXS,
     },
   },
 
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightSemibold,
     lineHeight: tokens.lineHeightBase200,
-    ...shorthands.padding(tokens.horizontalSpacing.s, tokens.horizontalSpacing.sNudge),
+    ...shorthands.padding(tokens.spacingHorizontalS, tokens.spacingHorizontalSNudge),
   },
 });
 

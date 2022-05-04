@@ -16,12 +16,12 @@ const useStyles = makeStyles({
     alignItems: 'center',
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     color: tokens.colorNeutralForeground1,
-    columnGap: tokens.horizontalSpacing.xs,
+    columnGap: tokens.spacingHorizontalXS,
     cursor: 'default',
     display: 'flex',
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding(tokens.horizontalSpacing.sNudge),
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
     position: 'relative',
 
     '&:hover': {
