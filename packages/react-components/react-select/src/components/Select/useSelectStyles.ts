@@ -19,7 +19,7 @@ const iconSizes = {
   large: '24px',
 };
 
-// TODO: This 400 style isnot in the typography styles.
+// TODO: This 400 style is not in the typography styles.
 // May need a design change
 const contentSizes = {
   400: {
