@@ -2,6 +2,77 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Wed, 04 May 2022 13:26:52 GMT",
+      "tag": "@fluentui/react-tabs_v9.0.0-beta.11",
+      "version": "9.0.0-beta.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "97939a4e5f523b3ef05c815f909819701eee92ea",
+            "comment": "Added aria-selected"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "c2562b5382305152a09402a367ec853d603438e7",
+            "comment": "Updated to use correct pseudo-elements"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "6c764b820241483c1a9a6e225f758a4c8d4b060e",
+            "comment": "Updated to use tokens"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "55e2b1b53e81efa510a5bc15c6ab0398b52ace7f",
+            "comment": "Removed unnecessary width and height from indicators"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "17ed5008371df7344540af658209840985dc4754",
+            "comment": "Allow tab to animate when value is numeric zero"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.7",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.8",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.6",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.7",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "f1c470c25de01baef3180067fa99dcc10ec9ebd5",
+            "comment": "react-tabs: Move to new common folder."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Apr 2022 09:32:15 GMT",
       "tag": "@fluentui/react-tabs_v9.0.0-beta.10",
       "version": "9.0.0-beta.10",

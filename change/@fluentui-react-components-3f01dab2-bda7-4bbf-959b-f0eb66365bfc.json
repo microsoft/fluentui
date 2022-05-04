@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Move custom templates over to v9 storybook.",
-  "packageName": "@fluentui/react-components",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

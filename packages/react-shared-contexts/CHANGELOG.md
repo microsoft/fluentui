@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Tue, 19 Apr 2022 19:16:52 GMT and should not be manually modified.
+This log was last generated on Wed, 04 May 2022 13:26:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-rc.6)
+
+Wed, 04 May 2022 13:26:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-rc.5..@fluentui/react-shared-contexts_v9.0.0-rc.6)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-rc.6 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-rc.5)
 

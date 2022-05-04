@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Tue, 19 Apr 2022 19:17:02 GMT and should not be manually modified.
+This log was last generated on Wed, 04 May 2022 13:26:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.6)
+
+Wed, 04 May 2022 13:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-rc.5..@fluentui/react-theme_v9.0.0-rc.6)
+
+### Changes
+
+- Add px suffix to spacings ([PR #22722](https://github.com/microsoft/fluentui/pull/22722) by gcox@microsoft.com)
+- Fixed typo in typography ([PR #22625](https://github.com/microsoft/fluentui/pull/22625) by gcox@microsoft.com)
+- Fixed line-height in title2 ([PR #22716](https://github.com/microsoft/fluentui/pull/22716) by gcox@microsoft.com)
+- Added global theme types and tokens ([PR #22607](https://github.com/microsoft/fluentui/pull/22607) by gcox@microsoft.com)
+- fix(react-theme): Update CompoundBrandBackground and BrandStroke1 ([PR #22751](https://github.com/microsoft/fluentui/pull/22751) by miroslav.stastny@microsoft.com)
+- Add base font family per figma ([PR #22627](https://github.com/microsoft/fluentui/pull/22627) by gcox@microsoft.com)
+- Added typeography styles ([PR #22610](https://github.com/microsoft/fluentui/pull/22610) by gcox@microsoft.com)
+- feat(react-theme): Add colorNeutralForeground2Link color tokens ([PR #22570](https://github.com/microsoft/fluentui/pull/22570) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.5)
 

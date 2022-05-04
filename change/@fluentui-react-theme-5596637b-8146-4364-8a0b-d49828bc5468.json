@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add px suffix to spacings",
-  "packageName": "@fluentui/react-theme",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

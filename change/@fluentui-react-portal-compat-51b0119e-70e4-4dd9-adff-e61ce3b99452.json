@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "initial release",
-  "packageName": "@fluentui/react-portal-compat",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

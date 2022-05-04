@@ -2,6 +2,71 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Wed, 04 May 2022 13:26:33 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.6",
+      "version": "9.0.0-rc.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "27ba5613b1253801c3ae4e2aba0fc9eb2ae464b8",
+            "comment": "Add px suffix to spacings"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "75ad2567f62e804a8deb3ea6016ba8a674c45627",
+            "comment": "Fixed typo in typography"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "7ad290b51135cb84c84e7dd8771bd712892c7484",
+            "comment": "Fixed line-height in title2"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "57583bfffa6bf28be389dec6c642f36ed253ecdd",
+            "comment": "Added global theme types and tokens"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "3e0ff753cbb3375f28477b2249ecd8b012e2e946",
+            "comment": "fix(react-theme): Update CompoundBrandBackground and BrandStroke1"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "354c4f6290d7957345fd53a8f26c8f5472ff92db",
+            "comment": "Add base font family per figma"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "78da3be7484d156379a105048c535767f7e1b85f",
+            "comment": "Added typeography styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "e45629a0978492d5a8a44934f5263e47862ac8b3",
+            "comment": "feat(react-theme): Add colorNeutralForeground2Link color tokens"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "8ec3d32fa26e6cf803ab9d18671fd51ba06c74ab",
+            "comment": "react-theme: Move to new common folder."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:17:02 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-rc.5",
       "version": "9.0.0-rc.5",

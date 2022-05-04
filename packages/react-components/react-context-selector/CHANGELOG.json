@@ -2,6 +2,29 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Wed, 04 May 2022 13:26:42 GMT",
+      "tag": "@fluentui/react-context-selector_v9.0.0-rc.7",
+      "version": "9.0.0-rc.7",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "8997f88bdd280b6831338d6c231b387fd554046e",
+            "comment": "react-context-selector: Move to new common folder."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.7",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:17:22 GMT",
       "tag": "@fluentui/react-context-selector_v9.0.0-rc.6",
       "version": "9.0.0-rc.6",
