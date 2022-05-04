@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Added export of FileTypeIconMap",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
