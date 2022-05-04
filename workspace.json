@@ -314,9 +314,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-combobox": {
-      "root": "packages/react-combobox",
+      "root": "packages/react-components/react-combobox",
       "projectType": "library",
-      "sourceRoot": "packages/react-combobox/src",
+      "sourceRoot": "packages/react-components/react-combobox/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-component-event-listener": {
