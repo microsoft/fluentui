@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { InputSlots, InputState } from './Input.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -15,32 +15,9 @@ export const inputClassNames: SlotClassNames<InputSlots> = {
 };
 
 // TODO(sharing) use theme values once available
-const horizontalSpacing = {
-  xxs: '2px',
-  xs: '4px',
-  sNudge: '6px',
-  s: '8px',
-  mNudge: '10px',
-  m: '12px',
-};
-const motionDurations = {
-  ultraFast: '0.05s',
-  normal: '0.2s',
-};
-const motionCurves = {
-  accelerateMid: 'cubic-bezier(0.7,0,1,0.5)',
-  decelerateMid: 'cubic-bezier(0.1,0.9,0.2,1)',
-};
 const contentSizes = {
-  // TODO(sharing) shouldn't these be in the theme?
-  body1: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-  },
-  caption1: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-  },
+  // TODO: This 400 style isnot in the typography styles.
+  // May need a design change
   400: {
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
@@ -58,7 +35,7 @@ const useRootStyles = makeStyles({
     display: 'inline-flex',
     alignItems: 'center',
     flexWrap: 'nowrap',
-    ...shorthands.gap(horizontalSpacing.xxs),
+    ...shorthands.gap(tokens.spacingHorizontalXXS),
     fontFamily: tokens.fontFamilyBase,
     ...shorthands.borderRadius(tokens.borderRadiusMedium), // used for all but underline
     position: 'relative',
@@ -93,15 +70,15 @@ const useRootStyles = makeStyles({
       // Animation for focus OUT
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
-      transitionDuration: motionDurations.ultraFast,
-      transitionDelay: motionCurves.accelerateMid,
+      transitionDuration: tokens.durationUltraFast,
+      transitionDelay: tokens.curveAccelerateMid,
     },
     ':focus-within::after': {
       // Animation for focus IN
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
-      transitionDuration: motionDurations.normal,
-      transitionDelay: motionCurves.decelerateMid,
+      transitionDuration: tokens.durationNormal,
+      transitionDelay: tokens.curveDecelerateMid,
     },
     ':focus-within:active::after': {
       // This is if the user clicks the field again while it's already focused
@@ -115,19 +92,19 @@ const useRootStyles = makeStyles({
   },
   small: {
     minHeight: fieldHeights.small,
-    ...shorthands.padding('0', horizontalSpacing.sNudge),
-    ...contentSizes.caption1,
+    ...shorthands.padding('0', tokens.spacingHorizontalSNudge),
+    ...typographyStyles.caption1,
   },
   medium: {
     minHeight: fieldHeights.medium,
-    ...shorthands.padding('0', horizontalSpacing.mNudge),
-    ...contentSizes.body1,
+    ...shorthands.padding('0', tokens.spacingHorizontalMNudge),
+    ...typographyStyles.body1,
   },
   large: {
     minHeight: fieldHeights.large,
-    ...shorthands.padding('0', horizontalSpacing.m),
+    ...shorthands.padding('0', tokens.spacingHorizontalM),
     ...contentSizes[400],
-    ...shorthands.gap(horizontalSpacing.sNudge),
+    ...shorthands.gap(tokens.spacingHorizontalSNudge),
   },
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
@@ -194,7 +171,7 @@ const useInputElementStyles = makeStyles({
     flexGrow: 1,
     minWidth: 0, // required to make the input shrink to fit the wrapper
     ...shorthands.borderStyle('none'), // input itself never has a border (this is handled by inputWrapper)
-    ...shorthands.padding('0', horizontalSpacing.xxs),
+    ...shorthands.padding('0', tokens.spacingHorizontalXXS),
     color: tokens.colorNeutralForeground1,
     // Use literal "transparent" (not from the theme) to always let the color from the root show through
     backgroundColor: 'transparent',
@@ -209,14 +186,14 @@ const useInputElementStyles = makeStyles({
   },
   small: {
     // This is set on root but doesn't inherit
-    ...contentSizes.caption1,
+    ...typographyStyles.caption1,
   },
   medium: {
-    ...contentSizes.body1,
+    ...typographyStyles.body1,
   },
   large: {
     ...contentSizes[400],
-    ...shorthands.padding('0', horizontalSpacing.sNudge),
+    ...shorthands.padding('0', tokens.spacingHorizontalSNudge),
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
