@@ -2,6 +2,237 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Thu, 28 Apr 2022 07:39:56 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.4.8",
+      "version": "1.4.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.67.2",
+            "commit": "5f27c51743f22f08741a75c2c10032a02afdf6fb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Apr 2022 07:43:07 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.4.7",
+      "version": "1.4.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.67.1",
+            "commit": "9845fe2750b801da0741adb167ca66e396804486"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Apr 2022 07:37:25 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.4.6",
+      "version": "1.4.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.67.0",
+            "commit": "9b558cf266817f6499fece14e71bd90e98385a6b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Apr 2022 07:36:48 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.4.5",
+      "version": "1.4.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.66.2",
+            "commit": "14bee91b201e71123a60558f983be2398262fb44"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Apr 2022 07:39:23 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.4.4",
+      "version": "1.4.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.66.1",
+            "commit": "4b81713ae85eb859fd0b597e7ae81979589a28dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Apr 2022 21:39:15 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.4.3",
+      "version": "1.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.66.0",
+            "commit": "959aac722b7a9a4d8d4240e1235dde4694eb3c2d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Apr 2022 07:38:04 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.4.2",
+      "version": "1.4.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.65.1",
+            "commit": "dea5b27d1cb4892ee6a13d716a1cee232b7e39d9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Apr 2022 07:42:48 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.4.1",
+      "version": "1.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.65.0",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-hooks to v8.5.4",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Apr 2022 07:38:10 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.4.0",
+      "version": "1.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "399a179957a37480093eaaf5b0ddfb37a97ad7a8",
+            "comment": "Remove UMD bundle"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.64.4",
+            "commit": "df18b862d5f9cd3bd1780b3cc6a44b4f7c9fda19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/monaco-editor to v1.3.0",
+            "commit": "df18b862d5f9cd3bd1780b3cc6a44b4f7c9fda19"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Apr 2022 07:39:33 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.3.19",
+      "version": "1.3.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "e49dc444524e81550e4c7a5206db795ee44ea232",
+            "comment": "Update internal type usage to reflect new monaco-editor version"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "c1502884f4f422e6e7c3beba1cd07a2318efd37e",
+            "comment": "Add types for all `@fluentui/react` dependencies, and wrap exported examples with `ThemeProvider` rather than `Fabric`"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.64.3",
+            "commit": "72fa867ab6b084656b53c8f644df74b31077ae15"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/monaco-editor to v1.2.0",
+            "commit": "72fa867ab6b084656b53c8f644df74b31077ae15"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 Apr 2022 07:40:58 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.3.18",
+      "version": "1.3.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.64.2",
+            "commit": "09dc74f8c3586eb7320b8ae296621acd6ebe3505"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Apr 2022 07:34:58 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.3.17",
+      "version": "1.3.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.64.1",
+            "commit": "3690657ff5d10c2ab954554943a8fa1fe5866d8d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 Apr 2022 20:01:04 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.3.16",
+      "version": "1.3.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.64.0",
+            "commit": "ddbf6041c6d19d952e2779550d4fd03f4c9869cf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 31 Mar 2022 07:38:07 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.3.15",
       "version": "1.3.15",

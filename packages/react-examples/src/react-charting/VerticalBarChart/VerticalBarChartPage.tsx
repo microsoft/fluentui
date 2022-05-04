@@ -23,7 +23,7 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="VerticalBarChart"
+        title="Vertical Bar Chart"
         componentName="VerticalBarChartExample"
         exampleCards={
           <div>
@@ -55,6 +55,16 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
           />
         }
         isHeaderVisible={this.props.isHeaderVisible}
+        overview={
+          <div>
+            <p>
+              A vertical bar chart is used to show comparisons between categories of data, usually over a period of
+              time. Categories and time are typically shown along the horizontal axis, while the data values are shown
+              along the vertical axis.
+            </p>
+            <p>The bar widths are proportional to the number of bars and space available within the charting area.</p>
+          </div>
+        }
       />
     );
   }

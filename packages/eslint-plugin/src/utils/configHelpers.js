@@ -5,7 +5,7 @@ const path = require('path');
 const jju = require('jju');
 
 const testFiles = [
-  '**/*{.,-}{test,spec}.{ts,tsx}',
+  '**/*{.,-}{test,spec,e2e}.{ts,tsx}',
   '**/{test,tests}/**',
   '**/testUtilities.{ts,tsx}',
   '**/common/{isConformant,snapshotSerializers}.{ts,tsx}',

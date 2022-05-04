@@ -1,8 +1,134 @@
 # Change Log - @fluentui/cra-template
 
-This log was last generated on Thu, 31 Mar 2022 07:38:07 GMT and should not be manually modified.
+This log was last generated on Tue, 03 May 2022 07:35:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.29](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.29)
+
+Tue, 03 May 2022 07:35:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.28..@fluentui/cra-template_v8.1.29)
+
+### Patches
+
+- set specific version of react to be used in cra-template ([PR #22733](https://github.com/microsoft/fluentui/pull/22733) by mgodbolt@microsoft.com)
+
+## [8.1.28](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.28)
+
+Thu, 28 Apr 2022 07:39:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.27..@fluentui/cra-template_v8.1.28)
+
+### Patches
+
+- Bump @fluentui/react to v8.67.2 ([PR #22676](https://github.com/microsoft/fluentui/pull/22676) by beachball)
+
+## [8.1.27](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.27)
+
+Wed, 27 Apr 2022 07:43:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.26..@fluentui/cra-template_v8.1.27)
+
+### Patches
+
+- Bump @fluentui/react to v8.67.1 ([PR #22642](https://github.com/microsoft/fluentui/pull/22642) by beachball)
+
+## [8.1.26](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.26)
+
+Mon, 25 Apr 2022 07:37:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.25..@fluentui/cra-template_v8.1.26)
+
+### Patches
+
+- Bump @fluentui/react to v8.67.0 ([PR #22548](https://github.com/microsoft/fluentui/pull/22548) by beachball)
+
+## [8.1.25](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.25)
+
+Thu, 21 Apr 2022 07:36:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.24..@fluentui/cra-template_v8.1.25)
+
+### Patches
+
+- Bump @fluentui/react to v8.66.2 ([PR #22577](https://github.com/microsoft/fluentui/pull/22577) by beachball)
+
+## [8.1.24](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.24)
+
+Wed, 20 Apr 2022 07:39:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.23..@fluentui/cra-template_v8.1.24)
+
+### Patches
+
+- Bump @fluentui/react to v8.66.1 ([PR #22539](https://github.com/microsoft/fluentui/pull/22539) by beachball)
+
+## [8.1.23](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.23)
+
+Tue, 19 Apr 2022 21:39:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.22..@fluentui/cra-template_v8.1.23)
+
+### Patches
+
+- Bump @fluentui/react to v8.66.0 ([PR #22550](https://github.com/microsoft/fluentui/pull/22550) by beachball)
+
+## [8.1.22](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.22)
+
+Mon, 18 Apr 2022 07:38:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.21..@fluentui/cra-template_v8.1.22)
+
+### Patches
+
+- Bump @fluentui/react to v8.65.1 ([PR #22524](https://github.com/microsoft/fluentui/pull/22524) by beachball)
+
+## [8.1.21](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.21)
+
+Fri, 15 Apr 2022 07:42:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.20..@fluentui/cra-template_v8.1.21)
+
+### Patches
+
+- Bump @fluentui/react to v8.65.0 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+
+## [8.1.20](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.20)
+
+Thu, 14 Apr 2022 07:38:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.19..@fluentui/cra-template_v8.1.20)
+
+### Patches
+
+- Bump @fluentui/react to v8.64.4 ([PR #22501](https://github.com/microsoft/fluentui/pull/22501) by beachball)
+
+## [8.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.19)
+
+Tue, 12 Apr 2022 07:39:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.18..@fluentui/cra-template_v8.1.19)
+
+### Patches
+
+- Bump @fluentui/react to v8.64.3 ([PR #22439](https://github.com/microsoft/fluentui/pull/22439) by beachball)
+
+## [8.1.18](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.18)
+
+Mon, 11 Apr 2022 07:40:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.17..@fluentui/cra-template_v8.1.18)
+
+### Patches
+
+- Bump @fluentui/react to v8.64.2 ([PR #22446](https://github.com/microsoft/fluentui/pull/22446) by beachball)
+
+## [8.1.17](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.17)
+
+Wed, 06 Apr 2022 07:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.16..@fluentui/cra-template_v8.1.17)
+
+### Patches
+
+- Bump @fluentui/react to v8.64.1 ([PR #22266](https://github.com/microsoft/fluentui/pull/22266) by beachball)
+
+## [8.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.16)
+
+Mon, 04 Apr 2022 20:01:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.1.15..@fluentui/cra-template_v8.1.16)
+
+### Patches
+
+- Bump @fluentui/react to v8.64.0 ([PR #22295](https://github.com/microsoft/fluentui/pull/22295) by beachball)
 
 ## [8.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.1.15)
 

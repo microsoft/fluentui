@@ -10,7 +10,9 @@ yarn.lock
 
 # generated folders
 node_modules
-lib
+# looks like prettier doesn't process this file as advertised
+**/lib/**
+!tools/**/lib/**
 lib-amd
 lib-esm
 lib-commonjs
@@ -26,7 +28,6 @@ __snapshots__
 # package specific files
 apps/vr-tests/dndSim.js
 packages/monaco-editor/esm
-packages/monaco-editor/monaco-typescript.d.ts
 packages/font-icons-mdl2/**/fabric-icons-*
 packages/fluentui/**/componentInfo
 packages/fluentui/docs/src/behaviorMenu.json

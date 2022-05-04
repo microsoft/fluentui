@@ -7,14 +7,12 @@ export const Labeled = () => {
   const labelId = useId('label-');
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-      <Label id={labelId} required>
-        Option
-      </Label>
+      <Label id={labelId}>Favorite Fruit</Label>
       <RadioGroup aria-labelledby={labelId}>
-        <Radio value="A" label="A" />
-        <Radio value="B" label="B" />
-        <Radio value="C" label="C" />
-        <Radio value="D" label="D" />
+        <Radio value="apple" label="Apple" />
+        <Radio value="pear" label="Pear" />
+        <Radio value="banana" label="Banana" />
+        <Radio value="orange" label="Orange" />
       </RadioGroup>
     </div>
   );

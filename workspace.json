@@ -119,9 +119,9 @@
       "implicitDependencies": []
     },
     "@fluentui/keyboard-keys": {
-      "root": "packages/keyboard-keys",
+      "root": "packages/react-components/keyboard-keys",
       "projectType": "library",
-      "sourceRoot": "packages/keyboard-keys/src",
+      "sourceRoot": "packages/react-components/keyboard-keys/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -201,10 +201,10 @@
       "implicitDependencies": []
     },
     "@fluentui/priority-overflow": {
-      "root": "packages/priority-overflow",
+      "root": "packages/react-components/priority-overflow",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/priority-overflow/src",
+      "sourceRoot": "packages/react-components/priority-overflow/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/projects-test": {
@@ -227,6 +227,11 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/public-docsite-v9": {
+      "root": "apps/public-docsite-v9",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/react": {
       "root": "packages/react",
       "projectType": "library",
@@ -239,17 +244,24 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-aria": {
-      "root": "packages/react-aria",
+    "@fluentui/react-alert": {
+      "root": "packages/react-components/react-alert",
       "projectType": "library",
-      "sourceRoot": "packages/react-aria/src",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-alert/src",
+      "tags": ["vNext", "platform:web"]
+    },
+    "@fluentui/react-aria": {
+      "root": "packages/react-components/react-aria",
+      "projectType": "library",
+      "sourceRoot": "packages/react-components/react-aria/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-avatar": {
-      "root": "packages/react-avatar",
+      "root": "packages/react-components/react-avatar",
       "projectType": "library",
-      "sourceRoot": "packages/react-avatar/src",
+      "sourceRoot": "packages/react-components/react-avatar/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -271,16 +283,16 @@
       "implicitDependencies": []
     },
     "@fluentui/react-button": {
-      "root": "packages/react-button",
+      "root": "packages/react-components/react-button",
       "projectType": "library",
-      "sourceRoot": "packages/react-button/src",
+      "sourceRoot": "packages/react-components/react-button/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-card": {
-      "root": "packages/react-card",
+      "root": "packages/react-components/react-card",
       "projectType": "library",
-      "sourceRoot": "packages/react-card/src",
+      "sourceRoot": "packages/react-components/react-card/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -295,9 +307,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-checkbox": {
-      "root": "packages/react-checkbox",
+      "root": "packages/react-components/react-checkbox",
       "projectType": "library",
-      "sourceRoot": "packages/react-checkbox/src",
+      "sourceRoot": "packages/react-components/react-checkbox/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -323,9 +335,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-components": {
-      "root": "packages/react-components",
+      "root": "packages/react-components/react-components",
       "projectType": "library",
-      "sourceRoot": "packages/react-components/src",
+      "sourceRoot": "packages/react-components/react-components/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -335,14 +347,16 @@
       "implicitDependencies": []
     },
     "@fluentui/react-conformance-griffel": {
-      "root": "packages/react-conformance-griffel",
+      "root": "packages/react-components/react-conformance-griffel",
       "projectType": "library",
-      "sourceRoot": "packages/react-conformance-griffel/src"
+      "sourceRoot": "packages/react-components/react-conformance-griffel/src",
+      "tags": ["vNext", "platform:node"],
+      "implicitDependencies": []
     },
     "@fluentui/react-context-selector": {
-      "root": "packages/react-context-selector",
+      "root": "packages/react-components/react-context-selector",
       "projectType": "library",
-      "sourceRoot": "packages/react-context-selector/src",
+      "sourceRoot": "packages/react-components/react-context-selector/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -352,9 +366,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-dialog": {
-      "root": "packages/react-dialog",
+      "root": "packages/react-components/react-dialog",
       "projectType": "library",
-      "sourceRoot": "packages/react-dialog/src",
+      "sourceRoot": "packages/react-components/react-dialog/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -416,37 +430,44 @@
       "implicitDependencies": []
     },
     "@fluentui/react-image": {
-      "root": "packages/react-image",
+      "root": "packages/react-components/react-image",
       "projectType": "library",
-      "sourceRoot": "packages/react-image/src",
+      "sourceRoot": "packages/react-components/react-image/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-input": {
-      "root": "packages/react-input",
+      "root": "packages/react-components/react-input",
       "projectType": "library",
-      "sourceRoot": "packages/react-input/src",
+      "sourceRoot": "packages/react-components/react-input/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-label": {
-      "root": "packages/react-label",
+      "root": "packages/react-components/react-label",
       "projectType": "library",
-      "sourceRoot": "packages/react-label/src",
+      "sourceRoot": "packages/react-components/react-label/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-link": {
-      "root": "packages/react-link",
+      "root": "packages/react-components/react-link",
       "projectType": "library",
-      "sourceRoot": "packages/react-link/src",
+      "sourceRoot": "packages/react-components/react-link/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-menu": {
-      "root": "packages/react-menu",
+    "@fluentui/react-list": {
+      "root": "packages/react-components/react-list",
       "projectType": "library",
-      "sourceRoot": "packages/react-menu/src",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-list/src",
+      "tags": ["vNext", "platform:web"]
+    },
+    "@fluentui/react-menu": {
+      "root": "packages/react-components/react-menu",
+      "projectType": "library",
+      "sourceRoot": "packages/react-components/react-menu/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -480,33 +501,47 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/react-popover": {
-      "root": "packages/react-popover",
+    "@fluentui/react-overflow": {
+      "root": "packages/react-components/react-overflow",
       "projectType": "library",
-      "sourceRoot": "packages/react-popover/src",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-overflow/src",
+      "tags": ["vNext", "platform:web"]
+    },
+    "@fluentui/react-popover": {
+      "root": "packages/react-components/react-popover",
+      "projectType": "library",
+      "sourceRoot": "packages/react-components/react-popover/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-portal": {
-      "root": "packages/react-portal",
+      "root": "packages/react-components/react-portal",
       "projectType": "library",
-      "sourceRoot": "packages/react-portal/src",
+      "sourceRoot": "packages/react-components/react-portal/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-positioning": {
-      "root": "packages/react-positioning",
-      "projectType": "library",
-      "sourceRoot": "packages/react-positioning/src",
-      "tags": ["vNext", "platform:web"],
-      "implicitDependencies": []
-    },
-    "@fluentui/react-priority-overflow": {
-      "root": "packages/react-priority-overflow",
+    "@fluentui/react-portal-compat": {
+      "root": "packages/react-portal-compat",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-priority-overflow/src",
+      "sourceRoot": "packages/react-portal-compat/src",
       "tags": ["vNext", "platform:web"]
+    },
+    "@fluentui/react-portal-compat-context": {
+      "root": "packages/react-components/react-portal-compat-context",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-portal-compat-context/src",
+      "tags": ["vNext", "platform:web"]
+    },
+    "@fluentui/react-positioning": {
+      "root": "packages/react-components/react-positioning",
+      "projectType": "library",
+      "sourceRoot": "packages/react-components/react-positioning/src",
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
     },
     "@fluentui/react-proptypes": {
       "root": "packages/fluentui/react-proptypes",
@@ -514,9 +549,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-provider": {
-      "root": "packages/react-provider",
+      "root": "packages/react-components/react-provider",
       "projectType": "library",
-      "sourceRoot": "packages/react-provider/src",
+      "sourceRoot": "packages/react-components/react-provider/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -528,14 +563,11 @@
       "implicitDependencies": []
     },
     "@fluentui/react-select": {
-      "root": "packages/react-select",
+      "root": "packages/react-components/react-select",
       "projectType": "library",
-      "sourceRoot": "packages/react-select/src"
-    },
-    "@fluentui/react-select": {
-      "root": "packages/react-select",
-      "projectType": "library",
-      "sourceRoot": "packages/react-select/src"
+      "sourceRoot": "packages/react-components/react-select/src",
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
     },
     "@fluentui/react-shared-contexts": {
       "root": "packages/react-shared-contexts",
@@ -545,37 +577,37 @@
       "implicitDependencies": []
     },
     "@fluentui/react-slider": {
-      "root": "packages/react-slider",
+      "root": "packages/react-components/react-slider",
       "projectType": "library",
-      "sourceRoot": "packages/react-slider/src",
+      "sourceRoot": "packages/react-components/react-slider/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-spinbutton": {
-      "root": "packages/react-spinbutton",
+      "root": "packages/react-components/react-spinbutton",
       "projectType": "library",
-      "sourceRoot": "packages/react-spinbutton/src",
+      "sourceRoot": "packages/react-components/react-spinbutton/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-spinner": {
-      "root": "packages/react-spinner",
+      "root": "packages/react-components/react-spinner",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-spinner/src",
+      "sourceRoot": "packages/react-components/react-spinner/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-storybook": {
-      "root": "packages/react-storybook",
+      "root": "packages/react-components/react-storybook",
       "projectType": "library",
-      "sourceRoot": "packages/react-storybook/src",
+      "sourceRoot": "packages/react-components/react-storybook/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-storybook-addon": {
-      "root": "packages/react-storybook-addon",
+      "root": "packages/react-components/react-storybook-addon",
       "projectType": "library",
-      "sourceRoot": "packages/react-storybook-addon/src",
+      "sourceRoot": "packages/react-components/react-storybook-addon/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -587,16 +619,16 @@
       "implicitDependencies": []
     },
     "@fluentui/react-tabs": {
-      "root": "packages/react-tabs",
+      "root": "packages/react-components/react-tabs",
       "projectType": "library",
-      "sourceRoot": "packages/react-tabs/src",
+      "sourceRoot": "packages/react-components/react-tabs/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-tabster": {
-      "root": "packages/react-tabster",
+      "root": "packages/react-components/react-tabster",
       "projectType": "library",
-      "sourceRoot": "packages/react-tabster/src",
+      "sourceRoot": "packages/react-components/react-tabster/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -606,9 +638,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-text": {
-      "root": "packages/react-text",
+      "root": "packages/react-components/react-text",
       "projectType": "library",
-      "sourceRoot": "packages/react-text/src",
+      "sourceRoot": "packages/react-components/react-text/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -620,30 +652,30 @@
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-theme": {
-      "root": "packages/react-theme",
+      "root": "packages/react-components/react-theme",
       "projectType": "library",
-      "sourceRoot": "packages/react-theme/src",
+      "sourceRoot": "packages/react-components/react-theme/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-toolbar": {
-      "root": "packages/react-toolbar",
+      "root": "packages/react-components/react-toolbar",
       "projectType": "library",
-      "sourceRoot": "packages/react-toolbar/src",
+      "sourceRoot": "packages/react-components/react-toolbar/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-tooltip": {
-      "root": "packages/react-tooltip",
+      "root": "packages/react-components/react-tooltip",
       "projectType": "library",
-      "sourceRoot": "packages/react-tooltip/src",
+      "sourceRoot": "packages/react-components/react-tooltip/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-utilities": {
-      "root": "packages/react-utilities",
+      "root": "packages/react-components/react-utilities",
       "projectType": "library",
-      "sourceRoot": "packages/react-utilities/src",
+      "sourceRoot": "packages/react-components/react-utilities/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -734,11 +766,6 @@
     "@fluentui/utilities": {
       "root": "packages/utilities",
       "projectType": "library",
-      "implicitDependencies": []
-    },
-    "@fluentui/upgrade-examples-v8-v9": {
-      "root": "apps/upgrade-examples-v8-v9",
-      "projectType": "application",
       "implicitDependencies": []
     },
     "@fluentui/vr-tests": {

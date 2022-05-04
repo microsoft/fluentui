@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/local-sandbox",
-  "version": "0.61.0",
+  "version": "0.62.0",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -10,7 +10,7 @@
     "serve": "node ./server.js"
   },
   "dependencies": {
-    "@fluentui/react-northstar": "^0.61.0"
+    "@fluentui/react-northstar": "^0.62.0"
   },
   "devDependencies": {
     "source-map-loader": "2.0.0"

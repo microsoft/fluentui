@@ -31,10 +31,10 @@ var siteInfo = [
     title: 'react-northstar',
   },
   {
-    package: '@fluentui/react-components',
-    link: './react-components/storybook/index.html',
+    package: '@fluentui/public-docsite-v9',
+    link: './public-docsite-v9/storybook/index.html',
     icon: 'Teamwork',
-    title: 'Converged (@fluentui/react-components)',
+    title: 'Converged (@fluentui/public-docsite-v9)',
   },
   {
     package: '@fluentui/web-components',

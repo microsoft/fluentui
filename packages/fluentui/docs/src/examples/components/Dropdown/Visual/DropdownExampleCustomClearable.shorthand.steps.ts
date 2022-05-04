@@ -1,7 +1,7 @@
-import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
+import { ScreenerTestsConfig, ALL_THEMES } from '@fluentui/scripts/screener';
 
 const config: ScreenerTestsConfig = {
-  themes: ['teams', 'teamsDark', 'teamsHighContrast'],
+  themes: ALL_THEMES,
 };
 
 export default config;

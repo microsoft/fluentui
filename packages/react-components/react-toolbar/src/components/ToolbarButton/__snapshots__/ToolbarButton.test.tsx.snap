@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolbarButton renders a default state 1`] = `
+<div>
+  <button
+    class="fui-Button"
+    type="button"
+  >
+    Default ToolbarButton
+  </button>
+</div>
+`;
