@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { CardCommons, CardProps, CardState } from './Card.types';
-import { useFocusableGroup, UseFocusableGroupOptions } from '@fluentui/react-tabster';
+import type { CardProps, CardState } from './Card.types';
+import { useFocusableGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Card.
