@@ -612,9 +612,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-switch": {
-      "root": "packages/react-components/react-switch",
+      "root": "packages/react-switch",
       "projectType": "library",
-      "sourceRoot": "packages/react-components/react-switch/src",
+      "sourceRoot": "packages/react-switch/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
