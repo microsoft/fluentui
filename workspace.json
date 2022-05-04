@@ -523,10 +523,10 @@
       "implicitDependencies": []
     },
     "@fluentui/react-portal-compat": {
-      "root": "packages/react-portal-compat",
+      "root": "packages/react-components/react-portal-compat",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-portal-compat/src",
+      "sourceRoot": "packages/react-components/react-portal-compat/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-portal-compat-context": {
