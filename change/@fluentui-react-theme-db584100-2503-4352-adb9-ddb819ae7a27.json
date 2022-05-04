@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Added ms suffix to durations",
+  "packageName": "@fluentui/react-theme",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
