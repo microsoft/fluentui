@@ -88,8 +88,11 @@ import { counterBadgeClassNames } from '@fluentui/react-badge';
 import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { CreateCustomFocusIndicatorStyleOptions } from '@fluentui/react-tabster';
 import { createDarkTheme } from '@fluentui/react-theme';
 import { createDOMRenderer } from '@griffel/react';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { CreateFocusOutlineStyleOptions } from '@fluentui/react-tabster';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
@@ -627,9 +630,15 @@ export { CounterBadgeState }
 
 export { createCustomFocusIndicatorStyle }
 
+export { CreateCustomFocusIndicatorStyleOptions }
+
 export { createDarkTheme }
 
 export { createDOMRenderer }
+
+export { createFocusOutlineStyle }
+
+export { CreateFocusOutlineStyleOptions }
 
 export { createHighContrastTheme }
 

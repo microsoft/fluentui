@@ -4,7 +4,7 @@
   "description": "Text is a typography and styling abstraction component that can be used to ensure the consistency of all text across your application.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "typings": "dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
