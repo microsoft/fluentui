@@ -78,19 +78,19 @@ The Label component should be simple as shown below. It will just need the text 
 export type LabelCommons = {
   /**
    * Renders the label as disabled
-   * @defaultvalue false
+   * @default false
    */
   disabled: boolean;
 
   /**
    * A label supports different sizes.
-   * @defaultvalue 'medium'
+   * @default 'medium'
    */
   size: 'small' | 'medium' | 'large';
 
   /**
    * A label supports semibold/strong fontweight.
-   * @defaultvalue false
+   * @default false
    */
   strong: boolean;
 };
@@ -111,11 +111,11 @@ export type LabelState = ComponentState<LabelSlots> & LabelCommons;
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
   Partial<LabelCommons> & {
     /**
-     * Displays and indicator that the label is for a required field. The required prop can be set to true to display
+     * Displays an indicator that the label is for a required field. The required prop can be set to true to display
      * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
-     * @defaultvalue false
+     * @default false
      */
-    required?: boolean | IntrinsicSlotProps<'span'> | React.ReactNode;
+    required?: boolean | Slot<'span'>;
   };
 ```
 
@@ -166,3 +166,4 @@ _Keyboard, Cursor, Touch, and Screen Readers_
 - Label will use the native `label` element to render.
 - Label cannot receive focus.
 - Label will have no focusable elements.
+- When a Label is disabled, the required contrast ratio won't be met. This is acceptable behavior due to the nature of the styling. This state should be used sparingly and make it clear that there's no interaction with the control associated with it.

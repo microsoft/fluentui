@@ -6,7 +6,7 @@ This log was last generated on Wed, 04 May 2022 13:26:46 GMT and should not be m
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.0-rc.1)
 
-Wed, 04 May 2022 13:26:46 GMT 
+Wed, 04 May 2022 13:26:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.0-alpha.0..@fluentui/react-portal-compat_v9.0.0-rc.1)
 
 ### Changes

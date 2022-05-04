@@ -25,4 +25,4 @@ export {
   useRadio_unstable,
 } from './Radio';
 export type { RadioProps, RadioSlots, RadioState, RadioOnChangeData } from './Radio';
-export { RadioGroupContext } from './contexts/RadioGroupContext';
+export { RadioGroupContext, useRadioGroupContextValues } from './contexts/index';
