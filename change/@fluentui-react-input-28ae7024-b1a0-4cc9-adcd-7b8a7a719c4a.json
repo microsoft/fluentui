@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updated to use new theme tokens",
+  "packageName": "@fluentui/react-input",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
