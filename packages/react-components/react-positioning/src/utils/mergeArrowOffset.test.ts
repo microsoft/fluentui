@@ -48,7 +48,7 @@ describe('mergeArrowOffset', () => {
         positionedRect: { height: 0, x: 0, y: 0, width: 0 },
         position: 'above',
         alignment: 'start',
-        target: { height: 0, x: 0, y: 0, width: 0 },
+        targetRect: { height: 0, x: 0, y: 0, width: 0 },
       }),
     ).toEqual(expectedOffset);
   });
