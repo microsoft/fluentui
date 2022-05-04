@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "react-accordion: Move to new common folder.",
+  "packageName": "@fluentui/react-accordion",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}
