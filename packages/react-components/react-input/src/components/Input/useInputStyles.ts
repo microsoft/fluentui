@@ -16,7 +16,7 @@ export const inputClassNames: SlotClassNames<InputSlots> = {
 
 // TODO(sharing) use theme values once available
 const contentSizes = {
-  // TODO: This 400 style isnot in the typography styles.
+  // TODO: This 400 style is not in the typography styles.
   // May need a design change
   400: {
     fontSize: tokens.fontSizeBase400,
