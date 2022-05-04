@@ -2,9 +2,9 @@ import path from 'path';
 import * as fs from 'fs-extra';
 import * as _ from 'lodash';
 
-import { findGitRoot } from '../monorepo/';
-import execSync from '../exec-sync';
-import { createTempDir } from '../projects-test';
+import { findGitRoot } from './monorepo';
+import execSync from './exec-sync';
+import { createTempDir } from './projects-test';
 
 const themes = ['light', 'dark', 'teamsDark', 'highContrast'] as const;
 const repoRoot = findGitRoot();
@@ -54,3 +54,5 @@ export const tokenPipeline = () => {
 
   execSync(`npx prettier --write ${path.join(repoRoot, 'packages/react-theme/src')}`, 'Prettier');
 };
+
+tokenPipeline();
