@@ -178,7 +178,8 @@ cannot ever be extended as it would result in a breaking change.
 - Custom magic when creating contexts in Fluent
 - Generally using window/node globals is an antipattern
 - Enforces stricter practices for using contexts
-- Bundle size increase for any context (+ 18.95 kB minified / + 5.224 kB gzipped)
+- Bundle size increase (+ 18.95 kB minified / + 5.224 kB gzipped)
+  - mainly caused by `semver` package
 
 ### Pros
 
