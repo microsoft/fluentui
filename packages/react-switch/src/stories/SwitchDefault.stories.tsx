@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Switch } from '../index';
 import type { SwitchProps } from '../index';
 
-export const Default = (props: SwitchProps) => <Switch {...props} />;
+export const Default = (props: SwitchProps) => <Switch label="This is a switch" {...props} />;
 
 Default.argTypes = {
   checked: {

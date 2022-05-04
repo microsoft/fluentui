@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-avatar",
-  "version": "9.0.0-rc.6",
+  "version": "9.0.0-rc.7",
   "description": "React components for building Microsoft web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,16 +33,14 @@
     "es6-weak-map": "^2.0.2"
   },
   "dependencies": {
-    "@fluentui/react-badge": "9.0.0-rc.6",
-    "@fluentui/react-button": "9.0.0-rc.7",
+    "@fluentui/react-badge": "9.0.0-rc.7",
+    "@fluentui/react-button": "9.0.0-rc.8",
     "@fluentui/react-icons": "^2.0.166-rc.3",
-    "@fluentui/react-label": "9.0.0-beta.10",
-    "@fluentui/react-popover": "9.0.0-rc.7",
-    "@fluentui/react-tooltip": "9.0.0-rc.7",
-    "@fluentui/react-theme": "9.0.0-rc.5",
-    "@fluentui/react-shared-contexts": "9.0.0-rc.5",
-    "@fluentui/react-utilities": "9.0.0-rc.6",
-    "@griffel/react": "1.0.3",
+    "@fluentui/react-label": "9.0.0-beta.11",
+    "@fluentui/react-tooltip": "9.0.0-rc.8",
+    "@fluentui/react-theme": "9.0.0-rc.6",
+    "@fluentui/react-shared-contexts": "9.0.0-rc.6",
+    "@fluentui/react-utilities": "9.0.0-rc.7",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -1,7 +1,8 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "ES5",
+    "lib": ["es5", "dom"],
     "noEmit": true,
     "isolatedModules": true,
     "importHelpers": true,
