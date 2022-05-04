@@ -6,8 +6,8 @@ export const pillBehavior: Accessibility<PillBehaviorProps> = p => ({
   attributes: {
     root: {
       role: p.actionable ? 'button' : 'none',
-      tabIndex: p.actionable ? 0 : -1,
-      [IS_FOCUSABLE_ATTRIBUTE]: p.actionable || p.role === 'option',
+      tabIndex: p.actionable || p.selectable ? 0 : -1,
+      [IS_FOCUSABLE_ATTRIBUTE]: p.actionable || p.selectable || p.role === 'option',
       ...(p.selectable && {
         'aria-selected': p.selected,
       }),
@@ -19,6 +19,8 @@ export const pillBehavior: Accessibility<PillBehaviorProps> = p => ({
         performDismiss: {
           keyCombinations: [{ keyCode: keyboardKey.Delete }, { keyCode: keyboardKey.Backspace }],
         },
+      }),
+      ...(p.selectable && {
         performClick: {
           keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
         },
