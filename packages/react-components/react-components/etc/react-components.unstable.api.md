@@ -48,19 +48,6 @@ import { labelClassNames } from '@fluentui/react-label';
 import { LabelProps } from '@fluentui/react-label';
 import { LabelSlots } from '@fluentui/react-label';
 import { LabelState } from '@fluentui/react-label';
-import { Radio } from '@fluentui/react-radio';
-import { radioClassName } from '@fluentui/react-radio';
-import { radioClassNames } from '@fluentui/react-radio';
-import { RadioGroup } from '@fluentui/react-radio';
-import { radioGroupClassName } from '@fluentui/react-radio';
-import { radioGroupClassNames } from '@fluentui/react-radio';
-import { RadioGroupOnChangeData } from '@fluentui/react-radio';
-import { RadioGroupProps } from '@fluentui/react-radio';
-import { RadioGroupSlots } from '@fluentui/react-radio';
-import { RadioGroupState } from '@fluentui/react-radio';
-import { RadioProps } from '@fluentui/react-radio';
-import { RadioSlots } from '@fluentui/react-radio';
-import { RadioState } from '@fluentui/react-radio';
 import { RegisterTabEventHandler } from '@fluentui/react-tabs';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
@@ -69,8 +56,6 @@ import { renderCardPreview_unstable } from '@fluentui/react-card';
 import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
 import { renderInput_unstable } from '@fluentui/react-input';
 import { renderLabel_unstable } from '@fluentui/react-label';
-import { renderRadio_unstable } from '@fluentui/react-radio';
-import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSwitch_unstable } from '@fluentui/react-switch';
@@ -136,10 +121,6 @@ import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
 import { useLabel_unstable } from '@fluentui/react-label';
 import { useLabelStyles_unstable } from '@fluentui/react-label';
-import { useRadio_unstable } from '@fluentui/react-radio';
-import { useRadioGroup_unstable } from '@fluentui/react-radio';
-import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
-import { useRadioStyles_unstable } from '@fluentui/react-radio';
 import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
 import { useSpinner_unstable } from '@fluentui/react-spinner';
@@ -241,32 +222,6 @@ export { LabelSlots }
 
 export { LabelState }
 
-export { Radio }
-
-export { radioClassName }
-
-export { radioClassNames }
-
-export { RadioGroup }
-
-export { radioGroupClassName }
-
-export { radioGroupClassNames }
-
-export { RadioGroupOnChangeData }
-
-export { RadioGroupProps }
-
-export { RadioGroupSlots }
-
-export { RadioGroupState }
-
-export { RadioProps }
-
-export { RadioSlots }
-
-export { RadioState }
-
 export { RegisterTabEventHandler }
 
 export { renderCard_unstable }
@@ -282,10 +237,6 @@ export { renderCheckbox_unstable }
 export { renderInput_unstable }
 
 export { renderLabel_unstable }
-
-export { renderRadio_unstable }
-
-export { renderRadioGroup_unstable }
 
 export { renderSpinButton_unstable }
 
@@ -416,14 +367,6 @@ export { useInputStyles_unstable }
 export { useLabel_unstable }
 
 export { useLabelStyles_unstable }
-
-export { useRadio_unstable }
-
-export { useRadioGroup_unstable }
-
-export { useRadioGroupStyles_unstable }
-
-export { useRadioStyles_unstable }
 
 export { useSpinButton_unstable }
 

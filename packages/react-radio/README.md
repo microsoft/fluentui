@@ -11,6 +11,10 @@ A Radio allows a user to select a single value from two or more options. All Rad
 Import `Radio` and `RadioGroup`:
 
 ```js
+// From @fluentui/react-components
+import { Radio, RadioGroup } from '@fluentui/react-components';
+
+// Directly from @fluentui/react-radio
 import { Radio, RadioGroup } from '@fluentui/react-radio';
 ```
 

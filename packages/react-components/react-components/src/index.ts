@@ -27,6 +27,36 @@ export type {
   FluentProviderState,
 } from '@fluentui/react-provider';
 export {
+  Radio,
+  /* eslint-disable-next-line deprecation/deprecation */
+  radioClassName,
+  radioClassNames,
+  RadioGroup,
+  /* eslint-disable-next-line deprecation/deprecation */
+  radioGroupClassName,
+  radioGroupClassNames,
+  RadioGroupContext,
+  renderRadio_unstable,
+  renderRadioGroup_unstable,
+  useRadio_unstable,
+  useRadioGroupContextValues,
+  useRadioGroup_unstable,
+  useRadioGroupStyles_unstable,
+  useRadioStyles_unstable,
+} from '@fluentui/react-radio';
+export type {
+  RadioGroupContextValue,
+  RadioGroupContextValues,
+  RadioGroupOnChangeData,
+  RadioGroupProps,
+  RadioGroupSlots,
+  RadioGroupState,
+  RadioOnChangeData,
+  RadioProps,
+  RadioSlots,
+  RadioState,
+} from '@fluentui/react-radio';
+export {
   createCustomFocusIndicatorStyle,
   createFocusOutlineStyle,
   useArrowNavigationGroup,

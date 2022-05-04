@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-radio: move to release candidate",
+  "packageName": "@fluentui/react-components",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
