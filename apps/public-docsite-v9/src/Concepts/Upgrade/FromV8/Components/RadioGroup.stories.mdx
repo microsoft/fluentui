@@ -40,7 +40,7 @@ import { Label, Radio, RadioGroup } from '@fluentui/react-components/unstable';
 import { useId } from '@fluentui/react-utilities';
 
 const RadioGroupBasicExample = () => {
-  const labelId = useId('label-');
+  const labelId = useId('label');
 
   return (
     <>
@@ -48,10 +48,10 @@ const RadioGroupBasicExample = () => {
         Pick One
       </Label>
       <RadioGroup aria-labelledby={labelId} defaultValue="B">
-        <Radio value="A" label="A" />
-        <Radio value="B" label="B" />
-        <Radio value="C" label="C" disabled />
-        <Radio value="D" label="D" />
+        <Radio value="A" label="Option A" required />
+        <Radio value="B" label="Option B" required />
+        <Radio value="C" label="Option C" disabled required />
+        <Radio value="D" label="Option D" required />
       </RadioGroup>
     </>
   );
@@ -129,7 +129,7 @@ const useGreenBorderOptionStyles = makeStyles({
 });
 
 const RadioGroupCustomOptionExample = () => {
-  const labelId = useId('label-');
+  const labelId = useId('label');
   const iconOptionStyles = useIconOptionStyles();
   const labelStyles = useLabelStyles();
   const greenBorderOptionStyles = useGreenBorderOptionStyles();
@@ -153,9 +153,9 @@ const RadioGroupCustomOptionExample = () => {
             }}
           />
         </div>
-        <Radio value="B" label="B" className={greenBorderOptionStyles.root} />
-        <Radio value="C" label="C" disabled />
-        <Radio value="D" label="D" />
+        <Radio value="B" label="Option B" className={greenBorderOptionStyles.root} />
+        <Radio value="C" label="Option C" disabled />
+        <Radio value="D" label="Option D" />
       </RadioGroup>
     </>
   );
@@ -180,19 +180,28 @@ This table maps v8 `ChoiceGroup` props to the v9 `RadioGroup` equivalent.
 
 This table maps v8 `IChoiceGroupOption` props to the v9 `Radio` equivalent.
 
-| v8                 | v9           | Notes                                                                                |
-| ------------------ | ------------ | ------------------------------------------------------------------------------------ |
-| `key`              | `key`        | This is only necessary if you `.map()` an array to generate the list of `Radio`s.    |
-| `text`             | `label`      | In v9 this is a slot so this prop can be a string, a component or a shorthand object |
-| `onRenderField`    | n/a          | Provide a custom child to `RadioGroup`                                               |
-| `onRenderLabel`    | `label`      | Provide a custom component to the `label` slot                                       |
-| `iconProps`        | n/a          | Use slots to customize `Radio`                                                       |
-| `imageSRc`         | n/a          | Use slots to customize `Radio`                                                       |
-| `imageAlt`         | n/a          | Use slots to customize `Radio`                                                       |
-| `selectedImageSrc` | n/a          | Use slots to customize `Radio`                                                       |
-| `imageSize`        | n/a          | Use slots to customize `Radio`                                                       |
-| `disabled`         | `disabled`   |                                                                                      |
-| `id`               | `id`         | In v9 this is the intrinsic HTML prop                                                |
-| `labeldId`         | n/a          | Provide an id to the `label` slot via shorthand props or a custom component          |
-| `ariaLabel`        | `aria-label` | In v9 this is the intrinsic HTML prop                                                |
-| `styles`           | `className`  |                                                                                      |
+| v8                 | v9           | Notes                                                                                                          |
+| ------------------ | ------------ | -------------------------------------------------------------------------------------------------------------- |
+| `key`              | `key`        | This is only necessary if you `.map()` an array to generate the list of `Radio`s.                              |
+| `text`             | `label`      | In v9 this is a slot so this prop can be a string, a component or a shorthand object                           |
+| `onRenderField`    | n/a          | Provide a custom child to `RadioGroup`                                                                         |
+| `onRenderLabel`    | `label`      | Provide a custom component to the `label` slot                                                                 |
+| `iconProps`        | n/a          | Use slots to customize `Radio`                                                                                 |
+| `imageSrc`         | n/a          | Use slots to customize `Radio`                                                                                 |
+| `imageAlt`         | n/a          | Use slots to customize `Radio`                                                                                 |
+| `selectedImageSrc` | n/a          | Use slots to customize `Radio`                                                                                 |
+| `imageSize`        | n/a          | Use slots to customize `Radio`                                                                                 |
+| `disabled`         | `disabled`   |                                                                                                                |
+| `id`               | `id`         | In v9 this is the intrinsic HTML prop                                                                          |
+| `labeldId`         | n/a          | Provide an id to the `label` slot via shorthand props or a custom component                                    |
+| `ariaLabel`        | `aria-label` | In v9 this is the intrinsic HTML prop                                                                          |
+| `styles`           | `className`  |                                                                                                                |
+| `itemKey`          | n/a          |                                                                                                                |
+| `checked`          | `checked`    | When used in a `RadioGroup` use the `value` prop on `RadioGroup` instead                                       |
+| `onChange`         | `onChange`   | Typescript types have changed                                                                                  |
+| `onFocus`          | `onFocus`    | v9 uses native `onFocus`                                                                                       |
+| `onBlur`           | `onBlur`     | v9 uses native `onBlur`                                                                                        |
+| `focused`          | n/a          |                                                                                                                |
+| `theme`            | n/a          | Use `FluentProvider` to customize themes                                                                       |
+| `required`         | `required`   |                                                                                                                |
+| `name`             | `name`       | v9 uses native HTML prop. When used in a `RadioGroup` this prop is inherited from the `RadioGroup` by default. |

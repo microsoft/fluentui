@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-input",
-  "version": "9.0.0-beta.7",
+  "version": "9.0.0-beta.8",
   "description": "Fluent UI React Input component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,8 +32,8 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-theme": "9.0.0-rc.5",
-    "@fluentui/react-utilities": "9.0.0-rc.6",
+    "@fluentui/react-theme": "9.0.0-rc.6",
+    "@fluentui/react-utilities": "9.0.0-rc.7",
     "@griffel/react": "1.0.3",
     "tslib": "^2.1.0"
   },

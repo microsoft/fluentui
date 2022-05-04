@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/react-popover",
-  "version": "9.0.0-rc.7",
+  "version": "9.0.0-rc.8",
   "description": "Popover component for Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "typings": "dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -33,14 +33,14 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-context-selector": "9.0.0-rc.6",
+    "@fluentui/react-context-selector": "9.0.0-rc.7",
     "@griffel/react": "1.0.3",
-    "@fluentui/react-portal": "9.0.0-rc.7",
-    "@fluentui/react-positioning": "9.0.0-rc.6",
-    "@fluentui/react-shared-contexts": "9.0.0-rc.5",
-    "@fluentui/react-tabster": "9.0.0-rc.7",
-    "@fluentui/react-theme": "9.0.0-rc.5",
-    "@fluentui/react-utilities": "9.0.0-rc.6",
+    "@fluentui/react-portal": "9.0.0-rc.8",
+    "@fluentui/react-positioning": "9.0.0-rc.7",
+    "@fluentui/react-shared-contexts": "9.0.0-rc.6",
+    "@fluentui/react-tabster": "9.0.0-rc.8",
+    "@fluentui/react-theme": "9.0.0-rc.6",
+    "@fluentui/react-utilities": "9.0.0-rc.7",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

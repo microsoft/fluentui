@@ -178,6 +178,21 @@ const useInputStyles = makeStyles({
       },
     },
   },
+
+  highContrast: {
+    '@media (forced-colors: active)': {
+      ':disabled': {
+        [`& ~ .${switchClassNames.indicator}`]: {
+          color: 'GrayText',
+          ...shorthands.borderColor('GrayText'),
+        },
+
+        [`& ~ .${switchClassNames.label}`]: {
+          color: 'GrayText',
+        },
+      },
+    },
+  },
 });
 
 const useLabelStyles = makeStyles({
@@ -206,7 +221,12 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
 
   state.indicator.className = mergeClasses(switchClassNames.indicator, indicatorStyles.base, state.indicator.className);
 
-  state.input.className = mergeClasses(switchClassNames.input, inputStyles.base, state.input.className);
+  state.input.className = mergeClasses(
+    switchClassNames.input,
+    inputStyles.base,
+    inputStyles.highContrast,
+    state.input.className,
+  );
 
   if (state.label) {
     state.label.className = mergeClasses(switchClassNames.label, labelStyles.base, state.label.className);

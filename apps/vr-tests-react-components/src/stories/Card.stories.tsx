@@ -7,7 +7,7 @@ import { Body, Caption } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
 import { action } from '@storybook/addon-actions';
 
-const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-card';
+const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
 
 const powerpointLogoURL = ASSET_URL + '/assets/powerpoint_logo.svg';
 

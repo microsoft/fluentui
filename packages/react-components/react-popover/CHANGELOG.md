@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Mon, 25 Apr 2022 09:32:19 GMT and should not be manually modified.
+This log was last generated on Wed, 04 May 2022 13:26:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-rc.8)
+
+Wed, 04 May 2022 13:26:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-rc.7..@fluentui/react-popover_v9.0.0-rc.8)
+
+### Changes
+
+- feat: Add inline prop to Popover ([PR #22789](https://github.com/microsoft/fluentui/pull/22789) by lingfangao@hotmail.com)
+- feat: ship rolluped only dts ([PR #22791](https://github.com/microsoft/fluentui/pull/22791) by martinhochel@microsoft.com)
+- feat: Adds prop `closeOnScroll` to close popover on scrolling outside ([PR #22784](https://github.com/microsoft/fluentui/pull/22784) by yuanboxue@microsoft.com)
+- feat: Adds prop `mouseLeaveDelay` to delay closing popover that opens on hover ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-portal to v9.0.0-rc.8 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.6 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.8 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.6 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
 
 ## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-rc.7)
 

@@ -2,6 +2,53 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Wed, 04 May 2022 13:26:38 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-rc.8",
+      "version": "9.0.0-rc.8",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "e791a91f5f02b6dc19f178543b6a6b95d49edb46",
+            "comment": "react-button: Move to new common folder."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.0-rc.5",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-aria to v9.0.0-rc.7",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.8",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.6",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.7",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Apr 2022 09:32:16 GMT",
       "tag": "@fluentui/react-button_v9.0.0-rc.7",
       "version": "9.0.0-rc.7",

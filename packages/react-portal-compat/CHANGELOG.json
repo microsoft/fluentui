@@ -2,6 +2,39 @@
   "name": "@fluentui/react-portal-compat",
   "entries": [
     {
+      "date": "Wed, 04 May 2022 13:26:46 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "280cf2336d814d7380d5cbf4999ce56da763919c",
+            "comment": "initial release"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-portal-compat-context to v9.0.0-rc.1",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.0.0-rc.9",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.6",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:17:29 GMT",
       "tag": "@fluentui/react-portal-compat_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

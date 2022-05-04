@@ -2,6 +2,41 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Wed, 04 May 2022 13:26:43 GMT",
+      "tag": "@fluentui/react-label_v9.0.0-beta.11",
+      "version": "9.0.0-beta.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "65c5c91acea26b129e9ffac6b2b1a8c9808f0141",
+            "comment": "Add style to make required match text when disabled"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.6",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.7",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "88fa8f279506c3cfbcc2facff95ecb5b420a217a",
+            "comment": "react-label: Move to new common folder."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:17:27 GMT",
       "tag": "@fluentui/react-label_v9.0.0-beta.10",
       "version": "9.0.0-beta.10",
