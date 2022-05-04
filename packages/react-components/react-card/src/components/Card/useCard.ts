@@ -15,12 +15,12 @@ import { useFocusableGroup, UseFocusableGroupOptions } from '@fluentui/react-tab
 export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>): CardState => {
   const { appearance = 'filled', focusMode = 'off' } = props;
 
-  const focusMap: Record<CardCommons['focusMode'], UseFocusableGroupOptions['tabBehavior']> = {
+  const focusMap = {
     off: undefined,
     'no-tab': 'limitedTrapFocus',
     'tab-exit': 'limited',
     'tab-only': 'unlimited',
-  };
+  } as const;
 
   const groupperAttrs = useFocusableGroup({
     tabBehavior: focusMap[focusMode],
