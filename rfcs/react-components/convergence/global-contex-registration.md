@@ -201,6 +201,7 @@ Peer dependencies have been discarded because:
 - Hard to determine version compatibility
 - Sometimes apps want duplicate versions (e.g. during upgrades)
 - No partner currently uses Fluent as a peer dependency -> lots of work to migrate
+- Peer deps will only solve the problem, once all dependencies in the tree use Fluent as a peer dep
 
 ## Open Issues
 
