@@ -57,7 +57,37 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     popoverSurface = children[0];
   }
 
-  const [open, setOpen] = useOpenState(initialState);
+  const [open, setOpenState] = useOpenState(initialState);
+
+  const setOpenTimeoutRef = React.useRef(0);
+
+  const setOpen = useEventCallback((e: OpenPopoverEvents, shouldOpen: boolean) => {
+    clearTimeout(setOpenTimeoutRef.current);
+    if (!(e instanceof Event) && e.persist) {
+      // < React 17 still uses pooled synthetic events
+      e.persist();
+    }
+
+    if (e.type === 'mouseleave') {
+      // FIXME leaking Node timeout type
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      setOpenTimeoutRef.current = setTimeout(() => {
+        setOpenState(e, shouldOpen);
+      }, props.mouseLeaveDelay ?? 500);
+    } else {
+      setOpenState(e, shouldOpen);
+    }
+  });
+
+  // Clear timeout on unmount
+  // Setting state after a component unmounts can cause memory leaks
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(setOpenTimeoutRef.current);
+    };
+  }, []);
+
   const toggleOpen = React.useCallback<PopoverState['toggleOpen']>(
     e => {
       setOpen(e, !open);

@@ -79,6 +79,25 @@ describe('Popover', () => {
     });
   });
 
+  describe('Open on hover', () => {
+    beforeEach(() => {
+      mount(
+        <Popover openOnHover>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>This is a popover</PopoverSurface>
+        </Popover>,
+      );
+      cy.get('body').click('bottomRight');
+    });
+
+    it('should open on hover, and keep open on mouse move to content', () => {
+      cy.get(popoverTriggerSelector).trigger('mouseover').get(popoverContentSelector).should('be.visible');
+      cy.get(popoverContentSelector).trigger('mouseover').get(popoverContentSelector).should('be.visible');
+    });
+  });
+
   describe('With custom trigger', () => {
     const CustomTrigger = React.forwardRef<HTMLButtonElement, {}>((props, ref) => {
       return (

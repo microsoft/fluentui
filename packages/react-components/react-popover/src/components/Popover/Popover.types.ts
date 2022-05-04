@@ -30,6 +30,12 @@ type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
    * Flag to open the Popover by hovering the trigger
    */
   openOnHover?: boolean;
+
+  /**
+   * Sets the delay for closing popover on mouse leave
+   */
+  mouseLeaveDelay?: number;
+
   /**
    * Flag to open the Popover as a context menu. Disables all other interactions
    */
