@@ -21,7 +21,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   const { multiselect } = props;
   const optionCollection = useOptionCollection();
   const {
-    collectionData: { count, getOptionAtIndex, getOptionById, getIndexOfId },
+    collectionAPI: { getCount, getOptionAtIndex, getOptionById, getIndexOfId },
   } = optionCollection;
 
   const { selectedOptions, selectOption } = useSelection(props);
@@ -38,7 +38,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     const action = getDropdownActionFromKey(event, { open: true });
-    const maxIndex = count() - 1;
+    const maxIndex = getCount() - 1;
     const activeIndex = activeOption ? getIndexOfId(activeOption.id) : -1;
     let newIndex = activeIndex;
 
@@ -62,7 +62,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   const hasComboboxContext = useHasParentContext(ComboboxContext);
   const comboboxActiveOption = useContextSelector(ComboboxContext, ctx => ctx.activeOption);
   const comboboxOnOptionClick = useContextSelector(ComboboxContext, ctx => ctx.onOptionClick);
-  // const comboboxRegisterOption = useContextSelector(ComboboxContext, ctx => ctx.registerOption);
   const comboboxSelectedOptions = useContextSelector(ComboboxContext, ctx => ctx.selectedOptions);
 
   // without a parent combobox context, provide values directly from Listbox

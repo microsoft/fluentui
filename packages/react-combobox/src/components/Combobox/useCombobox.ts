@@ -37,7 +37,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     size = 'medium',
   } = props;
   const {
-    collectionData: { count, getOptionAtIndex, getIndexOfId, getOptionById },
+    collectionAPI: { getCount, getOptionAtIndex, getIndexOfId, getOptionById },
   } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
@@ -191,7 +191,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   // handle combobox keyboard interaction
   state.trigger.onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     const action = getDropdownActionFromKey(event, { open, multiselect });
-    const maxIndex = count() - 1;
+    const maxIndex = getCount() - 1;
     const activeIndex = activeOption ? getIndexOfId(activeOption.id) : -1;
     let newIndex = activeIndex;
 

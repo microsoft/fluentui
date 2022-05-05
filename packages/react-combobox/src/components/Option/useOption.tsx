@@ -32,30 +32,28 @@ function getValueString(value: string | undefined, children: React.ReactNode) {
 export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
   const { disabled, value } = props;
   const optionRef = React.useRef<HTMLElement>(null);
+  const optionValue = getValueString(value, props.children);
 
   // context values
   const multiselect = useContextSelector(ListboxContext, ctx => ctx.multiselect);
   const onOptionClick = useContextSelector(ListboxContext, ctx => ctx.onOptionClick);
   const registerOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
-  const selectedOptions = useContextSelector(ListboxContext, ctx => ctx.selectedOptions);
+  const selected = useContextSelector(ListboxContext, ctx => {
+    const selectedOptions = ctx.selectedOptions;
+
+    return !!optionValue && !!selectedOptions.find(option => option.value === optionValue);
+  });
 
   // use the id if provided, otherwise use a generated id
   const defaultId = useId('fluent-option');
   const id = React.useMemo(() => {
     return props.id || defaultId;
-
-    // we only want the id to change if props.id changes
-    // otherwise it needs to be consistent across renders for screen readers
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.id]);
+  }, [props.id, defaultId]);
 
   // current active option?
   const active = useContextSelector(ListboxContext, ctx => {
     return ctx.activeOption?.id !== undefined && ctx.activeOption?.id === id;
   });
-
-  const optionValue = getValueString(value, props.children);
-  const selected = !!optionValue && !!selectedOptions.find(option => option.value === optionValue);
 
   // check icon
   let CheckIcon = <CheckmarkFilled />;
@@ -76,9 +74,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   // register option data with context
   React.useEffect(() => {
     if (id && optionRef.current) {
-      const unregister = registerOption({ id, value: optionValue }, optionRef.current);
-
-      return () => unregister(id);
+      return registerOption({ id, value: optionValue }, optionRef.current);
     }
   }, [registerOption, id, optionValue]);
 
