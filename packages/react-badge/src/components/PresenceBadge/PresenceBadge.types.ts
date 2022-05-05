@@ -23,7 +23,7 @@ type PresenceBadgeCommons = {
    */
   outOfOffice: boolean;
 
-  strings: Record<PresenceBadgeStatus, string>;
+  strings: Partial<Record<PresenceBadgeStatus, string>>;
 } & BadgeCommons;
 
 export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root'>>, 'color'> &
