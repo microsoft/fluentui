@@ -10,7 +10,7 @@ export { Disabled } from './LabelDisabled.stories';
 export { Required } from './LabelRequired.stories';
 
 const meta: Meta = {
-  title: 'Preview Components/Label',
+  title: 'Components/Label',
   component: Label,
   parameters: {
     docs: {

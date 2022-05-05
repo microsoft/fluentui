@@ -42,12 +42,6 @@ import { InputOnChangeData } from '@fluentui/react-input';
 import { InputProps } from '@fluentui/react-input';
 import { InputSlots } from '@fluentui/react-input';
 import { InputState } from '@fluentui/react-input';
-import { Label } from '@fluentui/react-label';
-import { labelClassName } from '@fluentui/react-label';
-import { labelClassNames } from '@fluentui/react-label';
-import { LabelProps } from '@fluentui/react-label';
-import { LabelSlots } from '@fluentui/react-label';
-import { LabelState } from '@fluentui/react-label';
 import { RegisterTabEventHandler } from '@fluentui/react-tabs';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
@@ -55,7 +49,6 @@ import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
 import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
 import { renderInput_unstable } from '@fluentui/react-input';
-import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSwitch_unstable } from '@fluentui/react-switch';
@@ -119,8 +112,6 @@ import { useCheckbox_unstable } from '@fluentui/react-checkbox';
 import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
-import { useLabel_unstable } from '@fluentui/react-label';
-import { useLabelStyles_unstable } from '@fluentui/react-label';
 import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
 import { useSpinner_unstable } from '@fluentui/react-spinner';
@@ -210,18 +201,6 @@ export { InputSlots }
 
 export { InputState }
 
-export { Label }
-
-export { labelClassName }
-
-export { labelClassNames }
-
-export { LabelProps }
-
-export { LabelSlots }
-
-export { LabelState }
-
 export { RegisterTabEventHandler }
 
 export { renderCard_unstable }
@@ -235,8 +214,6 @@ export { renderCardPreview_unstable }
 export { renderCheckbox_unstable }
 
 export { renderInput_unstable }
-
-export { renderLabel_unstable }
 
 export { renderSpinButton_unstable }
 
@@ -363,10 +340,6 @@ export { useCheckboxStyles_unstable }
 export { useInput_unstable }
 
 export { useInputStyles_unstable }
-
-export { useLabel_unstable }
-
-export { useLabelStyles_unstable }
 
 export { useSpinButton_unstable }
 

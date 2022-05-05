@@ -1686,6 +1686,16 @@
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.166-rc.3.tgz#6a66d104a4809ca9da1982f895bc24abb624e342"
   integrity sha512-mhTti5DcCvG/UxRD+/P5Qjdo/QDOE57eRcRBVooOpfO2N1Q+9sE44NYczOeOHpV2AufNqomX0QYf5iPYZ1lEtg==
 
+"@fluentui/react-label@9.0.0-beta.12":
+  version "9.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-label/-/react-label-9.0.0-beta.12.tgz#1b839792f4d593e7837bb87618c9a6891d744200"
+  integrity sha512-9rwT83XRG25aJZcJZdYzSJbGBwlQk5ix+/kyRz4gd32wI+KrHprxhv7CBmyql6yEuMBGGRnCOG2PO46RRCneoA==
+  dependencies:
+    "@fluentui/react-theme" "9.0.0-rc.7"
+    "@fluentui/react-utilities" "9.0.0-rc.8"
+    "@griffel/react" "1.0.3"
+    tslib "^2.1.0"
+
 "@griffel/babel-preset@1.2.0", "@griffel/babel-preset@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.2.0.tgz#c1a7c9bc4a45d3bed561fb6bad1bcefbc3c01bff"
@@ -27010,7 +27020,7 @@ y18n@^3.2.1:
   integrity sha512-uGZHXkHnhF0XeeAPgnKfPv1bgKAYyVvmNL1xlKsPYZPaIHxGti2hHqvOCQv71XMsLxu1QjergkqogUnms5D3YQ==
 
 y18n@^4.0.0:
-  version "4.0.1"
+  version "4.0.0"
   resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.0.tgz#95ef94f85ecc81d007c264e190a120f0a3c8566b"
   integrity sha512-r9S/ZyXu/Xu9q1tYlpsLIsa3EeLXXk0VwlxqTcFRfg9EhMW+17kbt9G0NrgCmhGb5vT2hyhJZLfDGx+7+5Uj/w==
 
