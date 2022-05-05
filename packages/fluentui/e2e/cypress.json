@@ -1,4 +1,5 @@
 {
+  "ignoreTestFiles": "*?ialog*.spec.ts",
   "video": false,
   "screenshotOnRunFailure": false,
   "integrationFolder": "./tests",
