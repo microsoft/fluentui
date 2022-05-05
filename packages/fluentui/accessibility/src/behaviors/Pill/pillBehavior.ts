@@ -15,12 +15,12 @@ export const pillBehavior: Accessibility<PillBehaviorProps> = p => ({
   },
   keyActions: {
     root: {
-      ...(p.actionable && {
+      ...(p.dismissible && {
         performDismiss: {
           keyCombinations: [{ keyCode: keyboardKey.Delete }, { keyCode: keyboardKey.Backspace }],
         },
       }),
-      ...(p.selectable && {
+      ...((p.selectable || p.actionable) && {
         performClick: {
           keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
         },
@@ -34,4 +34,5 @@ export type PillBehaviorProps = {
   selectable: boolean;
   selected: boolean;
   role: AriaRole;
+  dismissible: boolean;
 };

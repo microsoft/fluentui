@@ -111,7 +111,7 @@ export interface PillProps extends UIComponentProps, ContentComponentProps<Short
 }
 
 export type PillStylesProps = Required<
-  Pick<PillProps, 'appearance' | 'size' | 'rectangular' | 'disabled' | 'selectable' | 'selected'>
+  Pick<PillProps, 'appearance' | 'size' | 'rectangular' | 'disabled' | 'selectable' | 'selected' | 'actionable'>
 >;
 
 export const pillClassName = 'ui-pill';
@@ -144,6 +144,7 @@ export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =
     selectable,
     selectedIndicator,
     role,
+    onDismiss,
   } = props;
 
   const [selected, setSelected] = useAutoControlled({
@@ -178,6 +179,7 @@ export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =
       selectable,
       selected,
       role,
+      dismissible: Boolean(onDismiss),
     }),
     rtl: context.rtl,
   });
@@ -191,6 +193,7 @@ export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =
       disabled,
       selectable,
       selected,
+      actionable,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -242,7 +245,7 @@ export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =
           actionable,
         }),
       })}
-      {actionable &&
+      {Boolean(onDismiss) &&
         createShorthand(PillAction, action || {}, {
           overrideProps: (prevProps: PillActionProps & { onClick: (e: React.MouseEvent) => void }) => ({
             onClick: e => {
