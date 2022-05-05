@@ -3,13 +3,12 @@ import { DOCS_RENDERED } from '@storybook/core-events';
 import * as Fluent from '../src/index-rollup';
 import { fillColor, neutralLayer1, neutralLayer2 } from '../src/design-tokens';
 import webcomponentsTheme from './theme';
-import { changeWeight, toggleBgMode, toggleLtr } from '../public/switches';
+import { toggleBgMode, toggleLtr } from '../public/switches';
 
 Fluent;
 
 document.getElementById('luminance-switch').addEventListener('change', toggleBgMode, false);
 document.getElementById('direction-switch').addEventListener('change', toggleLtr, false);
-document.getElementById('font-weight').addEventListener('change', changeWeight, false);
 
 export const parameters = {
   layout: 'fullscreen',
