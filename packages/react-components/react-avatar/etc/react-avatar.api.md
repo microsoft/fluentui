@@ -31,7 +31,13 @@ export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
 
 // @public
-export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & Partial<AvatarGroupCommons>;
+export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
+    layout?: 'spread' | 'stack' | 'pie';
+    maxAvatars?: number;
+    overflowIndicator?: 'number-overflowed' | 'icon';
+    size?: AvatarSizes;
+    strings?: AvatarGroupStrings;
+};
 
 // @public (undocumented)
 export type AvatarGroupSlots = {
@@ -41,7 +47,7 @@ export type AvatarGroupSlots = {
 };
 
 // @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & AvatarGroupCommons & {
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & {
     tooltipContent: TooltipProps['content'];
 };
 
@@ -49,7 +55,15 @@ export type AvatarGroupState = ComponentState<AvatarGroupSlots> & AvatarGroupCom
 export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
 
 // @public
-export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & Partial<AvatarCommons>;
+export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
+    active?: 'active' | 'inactive' | 'unset';
+    activeAppearance?: 'ring' | 'shadow' | 'ring-shadow';
+    color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
+    idForColor?: string | undefined;
+    name?: string;
+    shape?: 'circular' | 'square';
+    size?: AvatarSizes;
+};
 
 // @public
 export type AvatarSizes = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
@@ -64,8 +78,8 @@ export type AvatarSlots = {
 };
 
 // @public
-export type AvatarState = ComponentState<AvatarSlots> & AvatarCommons & {
-    color: Exclude<AvatarCommons['color'], 'colorful'>;
+export type AvatarState = ComponentState<AvatarSlots> & Required<Pick<AvatarProps, 'active' | 'activeAppearance' | 'shape' | 'size'>> & {
+    color: 'neutral' | 'brand' | AvatarNamedColor;
 };
 
 // @public
