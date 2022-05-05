@@ -73,6 +73,7 @@ export const FontWeight = () => (
 );
 
 export const TypographyStyles = () => {
+  // var(--tokenName) => tokenName
   function formatTypographyStyleValue(typographyStyleValue: TypographyStyle) {
     return (
       <div>
@@ -83,6 +84,7 @@ export const TypographyStyles = () => {
     );
   }
 
+  // caption1Strong => Caption 1 Strong
   function formatTypographyStyleName(typographyStyleName: string) {
     return typographyStyleName.replace(/([A-Z\d])/g, ' $1').replace(/^(.)/, firstChar => firstChar.toUpperCase());
   }
