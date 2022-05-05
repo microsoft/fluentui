@@ -36,7 +36,7 @@ describe('Dialog with dropdown', () => {
     cy.clickOn(dialogTrigger);
     cy.clickOn(dropdownIndicator);
 
-    cy.exist(dropdownList);
+    cy.visible(dropdownList);
     cy.waitForSelectorAndPressKey(dropdownList, '{esc}');
     cy.visible(dropdownSelector);
   });
@@ -45,7 +45,7 @@ describe('Dialog with dropdown', () => {
     cy.clickOn(dialogTrigger);
     cy.clickOn(dropdownIndicator);
 
-    cy.exist(dropdownList);
+    cy.visible(dropdownList);
     cy.waitForSelectorAndPressKey(dropdownList, '{esc}');
     cy.visible(dropdownSelector);
 
