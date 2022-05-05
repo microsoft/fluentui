@@ -46,6 +46,15 @@ const useStyles = makeStyles({
     },
   },
 
+  interactiveNoOutline: {
+    ':hover::after': {
+      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+    },
+    ':active::after': {
+      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+    },
+  },
+
   filledInteractive: {
     cursor: 'pointer',
     backgroundColor: tokens.colorNeutralBackground1,
@@ -58,17 +67,9 @@ const useStyles = makeStyles({
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
       boxShadow: tokens.shadow8,
-
-      '::after': {
-        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-      },
     },
     ':active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
-
-      '::after': {
-        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-      },
     },
   },
   filled: {
@@ -91,17 +92,9 @@ const useStyles = makeStyles({
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground2Hover,
       boxShadow: tokens.shadow8,
-
-      '::after': {
-        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-      },
     },
     ':active': {
       backgroundColor: tokens.colorNeutralBackground2Pressed,
-
-      '::after': {
-        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-      },
     },
   },
   filledAlternative: {
@@ -155,17 +148,9 @@ const useStyles = makeStyles({
 
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
-
-      '::after': {
-        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-      },
     },
     ':active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
-
-      '::after': {
-        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-      },
     },
   },
   subtle: {
@@ -204,6 +189,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     interactive && state.appearance === 'filled-alternative' && styles.filledAlternativeInteractive,
     interactive && state.appearance === 'outline' && styles.outlineInteractive,
     interactive && state.appearance === 'subtle' && styles.subtleInteractive,
+    interactive && state.appearance !== 'outline' && styles.interactiveNoOutline,
     state.root.className,
   );
 
