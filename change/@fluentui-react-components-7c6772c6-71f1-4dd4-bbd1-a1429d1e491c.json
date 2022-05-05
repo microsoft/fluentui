@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Re-exporting GriffelStyle.",
+  "packageName": "@fluentui/react-components",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
