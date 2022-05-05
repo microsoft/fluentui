@@ -108,6 +108,7 @@ export type {
   DurationTokens,
   CurveTokens,
   Theme,
+  TypographyStyle,
   TypographyStyles,
 } from '@fluentui/react-theme';
 export { useThemeClassName } from '@fluentui/react-shared-contexts';
