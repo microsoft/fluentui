@@ -169,37 +169,38 @@ const useFocusStyles = makeStyles({
 const usePendingIndicatorStyles = makeStyles({
   base: {
     ':hover::before': {
-      backgroundColor: 'none',
-      ...shorthands.borderStyle('solid'),
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+      backgroundColor: tokens.colorNeutralStroke1Hover,
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
     },
     ':active::before': {
-      backgroundColor: 'none',
-      ...shorthands.borderStyle('solid'),
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      backgroundColor: tokens.colorNeutralStroke1Pressed,
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
+    },
+    '@media (forced-colors: active)': {
+      ':hover::before': {
+        backgroundColor: 'Highlight',
+      },
+      ':active::before': {
+        backgroundColor: 'Highlight',
+      },
     },
   },
   disabled: {
     ':hover::before': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      backgroundColor: tokens.colorTransparentStroke,
     },
     ':active::before': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      backgroundColor: tokens.colorTransparentStroke,
     },
   },
   mediumHorizontal: {
     '::before': {
       bottom: 0,
-      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
-      height: 0,
+      height: tokens.strokeWidthThicker,
       left: tokens.spacingHorizontalM,
       right: tokens.spacingHorizontalM,
     },
@@ -207,17 +208,15 @@ const usePendingIndicatorStyles = makeStyles({
   mediumVertical: {
     '::before': {
       bottom: tokens.spacingVerticalS,
-      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
       left: 0,
       top: tokens.spacingVerticalS,
-      width: 0,
+      width: tokens.strokeWidthThicker,
     },
   },
   smallHorizontal: {
     '::before': {
       bottom: 0,
-      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThick} / 2.0)`),
-      height: 0,
+      height: tokens.strokeWidthThick,
       left: tokens.spacingHorizontalSNudge,
       right: tokens.spacingHorizontalSNudge,
     },
@@ -225,10 +224,9 @@ const usePendingIndicatorStyles = makeStyles({
   smallVertical: {
     '::before': {
       bottom: tokens.spacingVerticalXS,
-      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
       left: 0,
       top: tokens.spacingVerticalXS,
-      width: 0,
+      width: tokens.strokeWidthThicker,
     },
   },
 });
@@ -236,10 +234,8 @@ const usePendingIndicatorStyles = makeStyles({
 const useActiveIndicatorStyles = makeStyles({
   base: {
     '::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
-      ...shorthands.borderStyle('solid'),
+      backgroundColor: tokens.colorTransparentStroke,
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
       zIndex: 1,
@@ -247,25 +243,35 @@ const useActiveIndicatorStyles = makeStyles({
   },
   selected: {
     '::after': {
-      ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
+      backgroundColor: tokens.colorCompoundBrandStroke,
     },
     ':hover::after': {
-      ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
+      backgroundColor: tokens.colorCompoundBrandStrokeHover,
     },
     ':active::after': {
-      ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
+      backgroundColor: tokens.colorCompoundBrandStrokePressed,
+    },
+    '@media (forced-colors: active)': {
+      '::after': {
+        backgroundColor: 'ButtonText',
+      },
+      ':hover::after': {
+        backgroundColor: 'ButtonText',
+      },
+      ':active::after': {
+        backgroundColor: 'ButtonText',
+      },
     },
   },
   disabled: {
     '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
+      backgroundColor: tokens.colorNeutralForegroundDisabled,
     },
   },
   mediumHorizontal: {
     '::after': {
       bottom: '0',
-      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
-      height: 0,
+      height: tokens.strokeWidthThicker,
       left: tokens.spacingHorizontalM,
       right: tokens.spacingHorizontalM,
     },
@@ -273,17 +279,15 @@ const useActiveIndicatorStyles = makeStyles({
   mediumVertical: {
     '::after': {
       bottom: tokens.spacingVerticalS,
-      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
       left: 0,
       top: tokens.spacingVerticalS,
-      width: 0,
+      width: tokens.strokeWidthThicker,
     },
   },
   smallHorizontal: {
     '::after': {
       bottom: 0,
-      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThick} / 2.0)`),
-      height: 0,
+      height: tokens.strokeWidthThick,
       left: tokens.spacingHorizontalSNudge,
       right: tokens.spacingHorizontalSNudge,
     },
@@ -291,10 +295,9 @@ const useActiveIndicatorStyles = makeStyles({
   smallVertical: {
     '::after': {
       bottom: tokens.spacingVerticalXS,
-      ...shorthands.borderWidth(`calc(${tokens.strokeWidthThicker} / 2.0)`),
       left: '0',
       top: tokens.spacingVerticalXS,
-      width: 0,
+      width: tokens.strokeWidthThicker,
     },
   },
 });
