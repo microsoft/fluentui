@@ -71,7 +71,7 @@ module.exports = (plop: NodePlopAPI) => {
       const globOptions: AddManyActionConfig['globOptions'] = { dot: true };
 
       const packageName = answers.packageNpmName.replace('@fluentui/', '');
-      const packagePath = path.join(root, 'packages', packageName);
+      const packagePath = path.join(root, 'packages/react-components', packageName);
       const componentPath = path.join(packagePath, 'src/components', answers.componentName);
       const componentNames = names(answers.componentName);
       const data: Data = {
