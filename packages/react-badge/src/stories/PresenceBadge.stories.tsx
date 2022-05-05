@@ -7,6 +7,7 @@ export { Default } from './PresenceBadgeDefault.stories';
 export { Sizes } from './PresenceBadgeSizes.stories';
 export { Status } from './PresenceBadgeStatus.stories';
 export { OutOfOffice } from './PresenceBadgeOutOfOffice.stories';
+export { Strings } from './PresenceBadgeStrings.stories';
 
 export default {
   title: 'Components/Presence Badge',
