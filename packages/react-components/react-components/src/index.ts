@@ -9,6 +9,7 @@ export {
   renderToStyleElements,
   shorthands,
 } from '@griffel/react';
+export type { GriffelStyle } from '@griffel/react';
 export {
   FluentProvider,
   /* eslint-disable-next-line deprecation/deprecation */

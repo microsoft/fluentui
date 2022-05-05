@@ -123,6 +123,7 @@ import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getNativeProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
+import { GriffelStyle } from '@griffel/react';
 import { Headline } from '@fluentui/react-text';
 import { headlineClassName } from '@fluentui/react-text';
 import { headlineClassNames } from '@fluentui/react-text';
@@ -723,6 +724,8 @@ export { getNativeProps }
 export { getPartitionedNativeProps }
 
 export { getSlots }
+
+export { GriffelStyle }
 
 export { Headline }
 
