@@ -5,7 +5,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 export const pillBehavior: Accessibility<PillBehaviorProps> = p => ({
   attributes: {
     root: {
-      role: p.actionable ? 'button' : 'none',
+      role: p.actionable || p.selectable ? 'button' : 'none',
       tabIndex: p.actionable || p.selectable ? 0 : -1,
       [IS_FOCUSABLE_ATTRIBUTE]: p.actionable || p.selectable || p.role === 'option',
       ...(p.selectable && {
