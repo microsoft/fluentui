@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Focus = () => {
+export const FocusMode = () => {
   const styles = useStyles();
 
   return (
@@ -49,7 +49,7 @@ export const Focus = () => {
   );
 };
 
-Focus.parameters = {
+FocusMode.parameters = {
   docs: {
     description: {
       story:
