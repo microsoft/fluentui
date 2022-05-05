@@ -16,13 +16,13 @@ There are two actions authors should consider taking when using Badge to improve
 
 1. If the badge contains a custom icon, that icon must be given alternative text with `aria-label`, unless it is purely presentational:
 
-```tsx
-<Badge size="medium" icon={<PasteIcon aria-label="paste" />} />
+```jsx
+<Badge icon={<PasteIcon aria-label="paste" />} />
 ```
 
 2. If the text of the badge itself is not sufficient to convey its meaning, it can either be given additional hidden text, or the parent element given an explicit label:
 
-```tsx
+```jsx
 <button>
   Inbox
   <Badge>6<span class="visuallyHidden"> unread messages</span></Badge>
@@ -36,7 +36,11 @@ There are two actions authors should consider taking when using Badge to improve
 
 ### Badge shouldn't rely only on color information
 
-- Include meaningful descriptions when using color to represent meaning in a badge. If relying on color only [unread dot] ensure that non-visual information is included using aria-describedby
+- Include meaningful descriptions when using color to represent meaning in a badge. If relying on color only [unread dot] ensure that non-visual information is included in the parent's label or description. Alternatively, mark up the Badge as an image with a label:
+
+```jsx
+<Badge role="img" aria-label="Active" appearance="filled" color="brand" />} />
+```
 
 ### Text on Badge
 
