@@ -96,8 +96,7 @@ export const accordionItemClassNames: SlotClassNames<AccordionItemSlots>;
 export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
 
 // @public (undocumented)
-export type AccordionItemContextValue = {
-    disabled: boolean;
+export type AccordionItemContextValue = Required<Pick<AccordionItemProps, 'disabled'>> & {
     onHeaderClick(ev: React_2.MouseEvent | React_2.KeyboardEvent): void;
     open: boolean;
 };

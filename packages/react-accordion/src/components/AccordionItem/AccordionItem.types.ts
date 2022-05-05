@@ -1,8 +1,7 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-export type AccordionItemContextValue = {
-  disabled: boolean;
+export type AccordionItemContextValue = Required<Pick<AccordionItemProps, 'disabled'>> & {
   onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
   open: boolean;
 };
