@@ -14,7 +14,7 @@ export const Size = () => {
 Size.parameters = {
   docs: {
     description: {
-      story: 'A Label supports `small`, `medium`, and `large` size.',
+      story: 'A Label supports `small`, `medium`, and `large` sizes.',
     },
   },
 };
