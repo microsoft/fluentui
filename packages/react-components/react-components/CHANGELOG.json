@@ -2,6 +2,191 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 05 May 2022 18:26:23 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-rc.10",
+      "version": "9.0.0-rc.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "e465622ca241f3dd0534da50823a51e7311fd9ef",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "982f68bd9b216ed71dc5e4fb7e77b56e73a8a468",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "7ba7e55a61136859e16222c67f82dd1f67da9af0",
+            "comment": "Updated to use new theme tokens"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "cd02e6f37fd8430b41d121ff1e1436bd593e84d1",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "ea944be958019f06cb83f1674546056619eead28",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "5524a739358b616484c838819a5e89531aca1c1f",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "de4f22fd2febb817c720c59c5798200bb56fbe06",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "f628da463f8a12f39e32785e086ef7a2687275f6",
+            "comment": "update README"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "9bdbc24ef90d53679a8a65574146b1528054a04e",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "cb0b4bd7ac79ccf27539a12104f651f5d330e464",
+            "comment": "Export TypographyStyle type"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "975977d075e01a9091fcf2b9b84c14f829135fa7",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "d325a31bcd5d144e2a40ee4bf085e8ef6b3f5d73",
+            "comment": "Added ms suffix to durations"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "378e25474622fdeb0891bb3c0a644e88098d8c3f",
+            "comment": "feat: add time element on nativeElementMap"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "e465622ca241f3dd0534da50823a51e7311fd9ef",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "44e0945655df57a0986376ac8732e605f0378f22",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "e465622ca241f3dd0534da50823a51e7311fd9ef",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "e465622ca241f3dd0534da50823a51e7311fd9ef",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "e465622ca241f3dd0534da50823a51e7311fd9ef",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "6f5126ab390def986bda1c95c1540c20e8b0ddd9",
+            "comment": "Added new `focusMode` property to control the focus behavior inside of the component"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "f628da463f8a12f39e32785e086ef7a2687275f6",
+            "comment": "react-radio: move to release candidate"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "0989ed224b8791b120783e7f7b3418458289c651",
+            "comment": "Re-exporting GriffelStyle."
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "cb0b4bd7ac79ccf27539a12104f651f5d330e464",
+            "comment": "Export TypographyStyle type"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e465622ca241f3dd0534da50823a51e7311fd9ef",
+            "comment": "feat: ship rolluped only dts"
+          }
+        ],
+        "none": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "700e11e12b3e06cb10a0196e91e64b5ee4867405",
+            "comment": "Updating spec, fixing typos in types, and adding descriptions in stories."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "4484d1149800ff1062b085ce01cd093c04268dc4",
+            "comment": "react-portal-compat: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "ad3dfcc6d85a8dba3c183612fe552280cd33c20e",
+            "comment": "react-radio: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "ad3dfcc6d85a8dba3c183612fe552280cd33c20e",
+            "comment": "react-switch: Move to new common folder."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "ad3dfcc6d85a8dba3c183612fe552280cd33c20e",
+            "comment": "react-textarea: Move to new common folder."
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "00a4a1dd582f5695b7cb9bba48fb8537534bbec0",
+            "comment": "Generate theme tokens using token pipeline"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 May 2022 13:26:33 GMT",
       "tag": "@fluentui/react-components_v9.0.0-rc.9",
       "version": "9.0.0-rc.9",

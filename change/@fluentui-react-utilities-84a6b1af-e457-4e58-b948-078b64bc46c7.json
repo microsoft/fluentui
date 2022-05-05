@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: add time element on nativeElementMap",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
