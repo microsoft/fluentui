@@ -23,6 +23,7 @@
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-theme/src && yarn docs",
+    "token-pipeline": "node -r ../../../scripts/ts-node-register ../../../scripts/token-pipeline.ts",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
