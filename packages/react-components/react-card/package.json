@@ -17,6 +17,7 @@
     "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "e2e": "e2e",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
