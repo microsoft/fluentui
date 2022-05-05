@@ -26,7 +26,7 @@ export const accordionClassNames: SlotClassNames<AccordionSlots>;
 export const AccordionContext: Context<AccordionContextValue>;
 
 // @public (undocumented)
-export type AccordionContextValue = Omit<AccordionCommons, 'multiple'> & {
+export type AccordionContextValue = Required<Pick<AccordionProps, 'collapsible'>> & Pick<AccordionProps, 'navigation'> & {
     openItems: AccordionItemValue[];
     requestToggle: (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 };
@@ -46,11 +46,9 @@ export const accordionHeaderClassName = "fui-AccordionHeader";
 export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots>;
 
 // @public (undocumented)
-export type AccordionHeaderContextValue = {
+export type AccordionHeaderContextValue = Required<Pick<AccordionHeaderProps, 'expandIconPosition' | 'size'>> & {
     disabled: boolean;
     open: boolean;
-    expandIconPosition: AccordionHeaderExpandIconPosition;
-    size: AccordionHeaderSize;
 };
 
 // @public (undocumented)
@@ -62,7 +60,11 @@ export type AccordionHeaderContextValues = {
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
 // @public (undocumented)
-export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & Partial<AccordionHeaderCommons>;
+export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & {
+    expandIconPosition?: AccordionHeaderExpandIconPosition;
+    inline?: boolean;
+    size?: AccordionHeaderSize;
+};
 
 // @public (undocumented)
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
@@ -76,7 +78,7 @@ export type AccordionHeaderSlots = {
 };
 
 // @public (undocumented)
-export type AccordionHeaderState = ComponentState<AccordionHeaderSlots> & AccordionHeaderCommons & AccordionHeaderContextValue;
+export type AccordionHeaderState = ComponentState<AccordionHeaderSlots> & Required<Pick<AccordionHeaderProps, 'inline'>> & AccordionHeaderContextValue;
 
 // @public (undocumented)
 export type AccordionIndex = number | number[];
@@ -94,7 +96,8 @@ export const accordionItemClassNames: SlotClassNames<AccordionItemSlots>;
 export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
 
 // @public (undocumented)
-export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
+export type AccordionItemContextValue = {
+    disabled: boolean;
     open: boolean;
     onHeaderClick(ev: React_2.MouseEvent | React_2.KeyboardEvent): void;
 };
@@ -105,7 +108,10 @@ export type AccordionItemContextValues = {
 };
 
 // @public (undocumented)
-export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<AccordionItemCommons> & Pick<AccordionItemCommons, 'value'>;
+export type AccordionItemProps = ComponentProps<AccordionItemSlots> & {
+    disabled?: boolean;
+    value: AccordionItemValue;
+};
 
 // @public (undocumented)
 export type AccordionItemSlots = {
@@ -113,7 +119,7 @@ export type AccordionItemSlots = {
 };
 
 // @public (undocumented)
-export type AccordionItemState = ComponentState<AccordionItemSlots> & AccordionItemCommons & AccordionItemContextValue;
+export type AccordionItemState = ComponentState<AccordionItemSlots> & AccordionItemContextValue;
 
 // @public (undocumented)
 export type AccordionItemValue = unknown;
@@ -141,10 +147,13 @@ export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
 };
 
 // @public (undocumented)
-export type AccordionProps = ComponentProps<AccordionSlots> & Partial<AccordionCommons> & {
-    openItems?: AccordionItemValue | AccordionItemValue[];
+export type AccordionProps = ComponentProps<AccordionSlots> & {
     defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
+    collapsible?: boolean;
+    multiple?: boolean;
+    navigation?: 'linear' | 'circular';
     onToggle?: AccordionToggleEventHandler;
+    openItems?: AccordionItemValue | AccordionItemValue[];
 };
 
 // @public (undocumented)
@@ -153,7 +162,7 @@ export type AccordionSlots = {
 };
 
 // @public (undocumented)
-export type AccordionState = ComponentState<AccordionSlots> & AccordionCommons & AccordionContextValue;
+export type AccordionState = ComponentState<AccordionSlots> & AccordionContextValue;
 
 // @public (undocumented)
 export type AccordionToggleData = {

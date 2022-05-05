@@ -25,7 +25,6 @@ export const useAccordionItem_unstable = (
 
   return {
     open,
-    value,
     disabled,
     onHeaderClick: onAccordionHeaderClick,
     components: {
