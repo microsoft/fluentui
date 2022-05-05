@@ -4,16 +4,12 @@ export type AlertSlots = {
   root: Slot<'div'>;
 };
 
-type AlertCommons = {
-  // TODO Add things shared between props and state here
-};
-
 /**
  * Alert Props
  */
-export type AlertProps = ComponentProps<AlertSlots> & AlertCommons;
+export type AlertProps = ComponentProps<AlertSlots>;
 
 /**
  * State used in rendering Alert
  */
-export type AlertState = ComponentState<AlertSlots> & AlertCommons;
+export type AlertState = ComponentState<AlertSlots>;
