@@ -2,7 +2,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
-import { Accessibility, pillBehavior, PillBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, AriaRole, pillBehavior, PillBehaviorProps } from '@fluentui/accessibility';
 import { UIComponentProps, ContentComponentProps, commonPropTypes, SizeValue, createShorthand } from '../../utils';
 import { ShorthandValue, FluentComponentStaticProps, ComponentEventHandler } from '../../types';
 import { BoxProps } from '../Box/Box';
@@ -103,6 +103,11 @@ export interface PillProps extends UIComponentProps, ContentComponentProps<Short
    * @param data - All props.
    */
   onSelectionChange?: ComponentEventHandler<PillProps>;
+
+  /**
+   * Role to be set in the pill root element
+   */
+  role?: AriaRole;
 }
 
 export type PillStylesProps = Required<
@@ -138,6 +143,7 @@ export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =
     icon,
     selectable,
     selectedIndicator,
+    role,
   } = props;
 
   const [selected, setSelected] = useAutoControlled({
@@ -171,6 +177,7 @@ export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =
       actionable,
       selectable,
       selected,
+      role,
     }),
     rtl: context.rtl,
   });
