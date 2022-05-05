@@ -112,7 +112,6 @@ export type PillStylesProps = Required<
 export const pillClassName = 'ui-pill';
 
 /**
- * THIS COMPONENT IS UNSTABLE
  * Pills should be used when representing an input, as a way to filter content, or to represent an attribute.
  */
 export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) => {
