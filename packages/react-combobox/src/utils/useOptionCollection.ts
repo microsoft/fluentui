@@ -61,7 +61,7 @@ export const useOptionCollection = (): OptionCollectionState => {
   }, []);
 
   return {
-    collectionAPI,
+    ...collectionAPI,
     options: nodes.current.map(node => node.option),
     registerOption,
   };

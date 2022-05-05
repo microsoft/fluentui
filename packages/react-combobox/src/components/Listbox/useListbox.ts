@@ -20,9 +20,7 @@ import { OptionValue } from '../../utils/OptionCollection.types';
 export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
   const { multiselect } = props;
   const optionCollection = useOptionCollection();
-  const {
-    collectionAPI: { getCount, getOptionAtIndex, getOptionById, getIndexOfId },
-  } = optionCollection;
+  const { getCount, getOptionAtIndex, getOptionById, getIndexOfId } = optionCollection;
 
   const { selectedOptions, selectOption } = useSelection(props);
 

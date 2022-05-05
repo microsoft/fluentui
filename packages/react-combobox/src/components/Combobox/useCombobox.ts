@@ -4,6 +4,7 @@ import {
   getPartitionedNativeProps,
   resolveShorthand,
   useControllableState,
+  useEventCallback,
   useFirstMount,
   useMergedRefs,
 } from '@fluentui/react-utilities';
@@ -36,9 +37,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     positioning,
     size = 'medium',
   } = props;
-  const {
-    collectionAPI: { getCount, getOptionAtIndex, getIndexOfId, getOptionById },
-  } = optionCollection;
+  const { getCount, getOptionAtIndex, getIndexOfId, getOptionById } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
   const { selectedOptions, selectOption } = useSelection(props);
@@ -92,7 +91,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     setOpenState(newState);
   };
 
-  const onOptionClick = (event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
+  const onOptionClick = useEventCallback((event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
     // clicked option should always become active option
     setActiveOption(getOptionById(option.id));
 
@@ -101,7 +100,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
 
     // handle selection change
     selectOption(event, option);
-  };
+  });
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,

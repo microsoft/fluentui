@@ -6,7 +6,7 @@ export type OptionValue = {
   value: string;
 };
 
-export type OptionCollectionValue = {
+export type OptionCollectionState = {
   /** The total number of options in the collection. */
   getCount: () => number;
 
@@ -18,11 +18,6 @@ export type OptionCollectionValue = {
 
   /** Returns the option data by key. */
   getOptionById(id: string): OptionValue | undefined;
-};
-
-export type OptionCollectionState = {
-  /** A set collection utilities for accessing options by index or key. */
-  collectionAPI: OptionCollectionValue;
 
   /** The unordered option data. */
   options: OptionValue[];
