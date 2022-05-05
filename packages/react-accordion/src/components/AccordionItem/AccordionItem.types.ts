@@ -3,8 +3,8 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type AccordionItemContextValue = {
   disabled: boolean;
-  open: boolean;
   onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
+  open: boolean;
 };
 
 export type AccordionItemContextValues = {

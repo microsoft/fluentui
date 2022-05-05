@@ -98,8 +98,8 @@ export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
 // @public (undocumented)
 export type AccordionItemContextValue = {
     disabled: boolean;
-    open: boolean;
     onHeaderClick(ev: React_2.MouseEvent | React_2.KeyboardEvent): void;
+    open: boolean;
 };
 
 // @public (undocumented)
