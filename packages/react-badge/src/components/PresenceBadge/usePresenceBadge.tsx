@@ -37,6 +37,16 @@ const iconMap = (
   }
 };
 
+export const DEFAULT_STRINGS: PresenceBadgeProps['strings'] = {
+  busy: 'busy',
+  outOfOffice: 'out of office',
+  away: 'away',
+  available: 'available',
+  offline: 'offline',
+  doNotDisturb: 'do not disturb',
+  unknown: 'unknown',
+};
+
 /**
  * Returns the props and state required to render the component
  */
@@ -55,13 +65,17 @@ export const usePresenceBadge_unstable = (
       },
       ref,
     ),
+    strings: {
+      ...DEFAULT_STRINGS,
+      ...props.strings,
+    },
     status: props.status ?? 'available',
     outOfOffice: props.outOfOffice ?? false,
   };
 
   const IconElement = iconMap(state.status, state.outOfOffice, state.size);
   if (IconElement) {
-    state.icon!.children = <IconElement />;
+    state.icon!.children = <IconElement aria-label={state.strings[state.status]} />;
   }
 
   return state;
