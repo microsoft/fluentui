@@ -48,18 +48,18 @@ export const counterBadgeClassName = "fui-CounterBadge";
 export const counterBadgeClassNames: SlotClassNames<BadgeSlots>;
 
 // @public (undocumented)
-export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape' | 'color'> & {
-    appearance: 'filled' | 'ghost';
-    color: Extract<BadgeProps['color'], 'brand' | 'danger' | 'important' | 'informative'>;
-    count: number;
-    dot: boolean;
-    overflowCount: number;
-    shape: 'circular' | 'rounded';
-    showZero: boolean;
+export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape'> & {
+    appearance?: 'filled' | 'ghost';
+    color?: Extract<BadgeProps['color'], 'brand' | 'danger' | 'important' | 'informative'>;
+    count?: number;
+    dot?: boolean;
+    overflowCount?: number;
+    shape?: 'circular' | 'rounded';
+    showZero?: boolean;
 };
 
 // @public (undocumented)
-export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'shape' | 'color'> & Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>>;
+export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape'> & Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>>;
 
 // @public
 export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
