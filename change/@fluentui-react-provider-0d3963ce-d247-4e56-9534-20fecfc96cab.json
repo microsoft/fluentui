@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "react-provider: Move to new common folder.",
-  "packageName": "@fluentui/react-provider",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "check for styleTag.sheet before performing actions on the sheet",
-  "packageName": "@fluentui/react-provider",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
