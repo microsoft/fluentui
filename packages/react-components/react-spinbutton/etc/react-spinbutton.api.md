@@ -34,18 +34,18 @@ export type SpinButtonOnChangeData = {
 
 // @public
 export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'input'>, 'onChange' | 'size'> & {
+    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
     defaultValue?: number;
-    value?: number;
     displayValue?: string;
-    min?: number;
     max?: number;
-    step?: number;
-    stepPage?: number;
+    min?: number;
     onChange?: (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => void;
     precision?: number;
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
     size?: 'small' | 'medium';
+    step?: number;
+    stepPage?: number;
     strings?: SpinButtonStrings;
+    value?: number;
 };
 
 // @public (undocumented)
@@ -60,7 +60,7 @@ export type SpinButtonSlots = {
 export type SpinButtonSpinState = 'rest' | 'up' | 'down';
 
 // @public
-export type SpinButtonState = ComponentState<SpinButtonSlots> & Partial<Exclude<SpinButtonProps, keyof SpinButtonSlots>> & Required<Pick<SpinButtonProps, 'appearance' | 'size'>> & {
+export type SpinButtonState = ComponentState<SpinButtonSlots> & Required<Pick<SpinButtonProps, 'appearance' | 'size'>> & {
     spinState: SpinButtonSpinState;
     atBound: SpinButtonBounds;
 };
