@@ -37,7 +37,10 @@ export type SliderSlots = {
   };
 };
 
-type SliderCommons = {
+export type SliderProps = Omit<
+  ComponentProps<Partial<SliderSlots>, 'input'>,
+  'defaultValue' | 'onChange' | 'size' | 'value'
+> & {
   /**
    * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
@@ -104,10 +107,8 @@ export type SliderOnChangeData = {
   value: number;
 };
 
-export type SliderProps = Omit<
-  ComponentProps<Partial<SliderSlots>, 'input'>,
-  'defaultValue' | 'onChange' | 'size' | 'value'
-> &
-  SliderCommons;
-
-export type SliderState = ComponentState<SliderSlots> & SliderCommons;
+export type SliderState = ComponentState<SliderSlots> &
+  Pick<
+    SliderProps,
+    'value' | 'defaultValue' | 'disabled' | 'max' | 'min' | 'origin' | 'size' | 'step' | 'vertical' | 'onChange'
+  >;
