@@ -315,6 +315,16 @@ export {
 } from '@fluentui/react-image';
 export type { ImageProps, ImageSlots, ImageState } from '@fluentui/react-image';
 export {
+  Label,
+  /* eslint-disable-next-line deprecation/deprecation */
+  labelClassName,
+  labelClassNames,
+  renderLabel_unstable,
+  useLabel_unstable,
+  useLabelStyles_unstable,
+} from '@fluentui/react-label';
+export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
+export {
   Link,
   /* eslint-disable-next-line deprecation/deprecation */
   linkClassName,
