@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "react-tooltip: Move to new common folder.",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

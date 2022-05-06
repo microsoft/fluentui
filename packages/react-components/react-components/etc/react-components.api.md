@@ -123,6 +123,7 @@ import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getNativeProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
+import { GriffelStyle } from '@griffel/react';
 import { Headline } from '@fluentui/react-text';
 import { headlineClassName } from '@fluentui/react-text';
 import { headlineClassNames } from '@fluentui/react-text';
@@ -261,6 +262,23 @@ import { presenceBadgeClassNames } from '@fluentui/react-badge';
 import { PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
+import { Radio } from '@fluentui/react-radio';
+import { radioClassName } from '@fluentui/react-radio';
+import { radioClassNames } from '@fluentui/react-radio';
+import { RadioGroup } from '@fluentui/react-radio';
+import { radioGroupClassName } from '@fluentui/react-radio';
+import { radioGroupClassNames } from '@fluentui/react-radio';
+import { RadioGroupContext } from '@fluentui/react-radio';
+import { RadioGroupContextValue } from '@fluentui/react-radio';
+import { RadioGroupContextValues } from '@fluentui/react-radio';
+import { RadioGroupOnChangeData } from '@fluentui/react-radio';
+import { RadioGroupProps } from '@fluentui/react-radio';
+import { RadioGroupSlots } from '@fluentui/react-radio';
+import { RadioGroupState } from '@fluentui/react-radio';
+import { RadioOnChangeData } from '@fluentui/react-radio';
+import { RadioProps } from '@fluentui/react-radio';
+import { RadioSlots } from '@fluentui/react-radio';
+import { RadioState } from '@fluentui/react-radio';
 import { renderAccordion_unstable } from '@fluentui/react-accordion';
 import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
 import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
@@ -290,6 +308,8 @@ import { renderPopover_unstable } from '@fluentui/react-popover';
 import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
 import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
 import { renderPortal_unstable } from '@fluentui/react-portal';
+import { renderRadio_unstable } from '@fluentui/react-radio';
+import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSlider_unstable } from '@fluentui/react-slider';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
 import { renderText_unstable } from '@fluentui/react-text';
@@ -359,6 +379,7 @@ import { TooltipProps } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
 import { TooltipState } from '@fluentui/react-tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-tooltip';
+import { TypographyStyle } from '@fluentui/react-theme';
 import { TypographyStyles } from '@fluentui/react-theme';
 import { typographyStyles } from '@fluentui/react-theme';
 import { UninitializedMenuListState } from '@fluentui/react-menu';
@@ -443,6 +464,11 @@ import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
 import { usePortal_unstable } from '@fluentui/react-portal';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
+import { useRadio_unstable } from '@fluentui/react-radio';
+import { useRadioGroup_unstable } from '@fluentui/react-radio';
+import { useRadioGroupContextValues } from '@fluentui/react-radio';
+import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
+import { useRadioStyles_unstable } from '@fluentui/react-radio';
 import { useSlider_unstable } from '@fluentui/react-slider';
 import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
@@ -699,6 +725,8 @@ export { getNativeProps }
 export { getPartitionedNativeProps }
 
 export { getSlots }
+
+export { GriffelStyle }
 
 export { Headline }
 
@@ -976,6 +1004,40 @@ export { PresenceBadgeState }
 
 export { PresenceBadgeStatus }
 
+export { Radio }
+
+export { radioClassName }
+
+export { radioClassNames }
+
+export { RadioGroup }
+
+export { radioGroupClassName }
+
+export { radioGroupClassNames }
+
+export { RadioGroupContext }
+
+export { RadioGroupContextValue }
+
+export { RadioGroupContextValues }
+
+export { RadioGroupOnChangeData }
+
+export { RadioGroupProps }
+
+export { RadioGroupSlots }
+
+export { RadioGroupState }
+
+export { RadioOnChangeData }
+
+export { RadioProps }
+
+export { RadioSlots }
+
+export { RadioState }
+
 export { renderAccordion_unstable }
 
 export { renderAccordionHeader_unstable }
@@ -1033,6 +1095,10 @@ export { renderPopoverSurface_unstable }
 export { renderPopoverTrigger_unstable }
 
 export { renderPortal_unstable }
+
+export { renderRadio_unstable }
+
+export { renderRadioGroup_unstable }
 
 export { renderSlider_unstable }
 
@@ -1171,6 +1237,8 @@ export { TooltipSlots }
 export { TooltipState }
 
 export { TooltipTriggerProps }
+
+export { TypographyStyle }
 
 export { TypographyStyles }
 
@@ -1339,6 +1407,16 @@ export { usePopoverTrigger_unstable }
 export { usePortal_unstable }
 
 export { usePresenceBadge_unstable }
+
+export { useRadio_unstable }
+
+export { useRadioGroup_unstable }
+
+export { useRadioGroupContextValues }
+
+export { useRadioGroupStyles_unstable }
+
+export { useRadioStyles_unstable }
 
 export { useSlider_unstable }
 

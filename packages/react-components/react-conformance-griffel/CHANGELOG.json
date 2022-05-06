@@ -2,6 +2,36 @@
   "name": "@fluentui/react-conformance-griffel",
   "entries": [
     {
+      "date": "Thu, 05 May 2022 18:26:30 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.5",
+      "version": "9.0.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e465622ca241f3dd0534da50823a51e7311fd9ef",
+            "comment": "feat: ship rolluped only dts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 May 2022 13:26:42 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.4",
+      "version": "9.0.0-beta.4",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "8997f88bdd280b6831338d6c231b387fd554046e",
+            "comment": "react-conformance-griffel: Move to new common folder."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Apr 2022 19:17:20 GMT",
       "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.4",
       "version": "9.0.0-beta.4",

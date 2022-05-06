@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "react-utilities: Move to new common folder.",
-  "packageName": "@fluentui/react-utilities",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

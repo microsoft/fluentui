@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Tue, 19 Apr 2022 19:17:24 GMT and should not be manually modified.
+This log was last generated on Thu, 05 May 2022 18:26:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-rc.8)
+
+Thu, 05 May 2022 18:26:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-rc.7..@fluentui/react-image_v9.0.0-rc.8)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.7 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.5 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+
+## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-rc.7)
+
+Wed, 04 May 2022 13:26:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-rc.6..@fluentui/react-image_v9.0.0-rc.7)
+
+### Changes
+
+- feat: ship rolluped only dts ([PR #22708](https://github.com/microsoft/fluentui/pull/22708) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.6 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
 
 ## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-rc.6)
 
