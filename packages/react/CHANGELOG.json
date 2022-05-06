@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 06 May 2022 21:32:17 GMT",
+      "tag": "@fluentui/react_v7.185.4",
+      "version": "7.185.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update fabric-core to 11.0.1",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "1ed54ef49794f49db6caf20f389d4fedae759f57",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 Apr 2022 12:25:50 GMT",
       "tag": "@fluentui/react_v7.185.0",
       "version": "7.185.0",
