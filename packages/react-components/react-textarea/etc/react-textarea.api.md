@@ -21,7 +21,10 @@ export const Textarea: ForwardRefComponent<TextareaProps>;
 export const textareaClassNames: SlotClassNames<TextareaSlots>;
 
 // @public
-export type TextareaProps = Omit<ComponentProps<Partial<TextareaSlots>, 'textarea'>, 'value' | 'defaultValue' | 'onChange' | 'size'> & Partial<TextareaCommons> & {
+export type TextareaProps = Omit<ComponentProps<Partial<TextareaSlots>, 'textarea'>, 'value' | 'defaultValue' | 'onChange' | 'size'> & {
+    resize: 'none' | 'horizontal' | 'vertical' | 'both';
+    size: 'small' | 'medium' | 'large';
+    appearance: 'outline' | 'filledDarker' | 'filledLighter';
     value?: string;
     defaultValue?: string;
     onChange?: (ev: React_2.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
@@ -34,7 +37,7 @@ export type TextareaSlots = {
 };
 
 // @public
-export type TextareaState = ComponentState<TextareaSlots> & TextareaCommons;
+export type TextareaState = ComponentState<TextareaSlots> & Pick<TextareaProps, 'resize' | 'size' | 'appearance'>;
 
 // @public
 export const useTextarea_unstable: (props: TextareaProps, ref: React_2.Ref<HTMLTextAreaElement>) => TextareaState;

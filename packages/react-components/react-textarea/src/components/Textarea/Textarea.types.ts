@@ -16,7 +16,13 @@ export type TextareaSlots = {
   textarea: NonNullable<Slot<'textarea'>>;
 };
 
-type TextareaCommons = {
+/**
+ * Textarea Props
+ */
+export type TextareaProps = Omit<
+  ComponentProps<Partial<TextareaSlots>, 'textarea'>,
+  'value' | 'defaultValue' | 'onChange' | 'size'
+> & {
   /**
    * Which direction the Textarea is allowed to be resized.
    *
@@ -37,36 +43,27 @@ type TextareaCommons = {
    * @default outline
    */
   appearance: 'outline' | 'filledDarker' | 'filledLighter';
+
+  /**
+   * The value of the Textarea.
+   */
+  value?: string;
+
+  /**
+   * The default value of the Textarea.
+   */
+  defaultValue?: string;
+
+  /**
+   * Callback for when the user changes the value.
+   */
+  onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
 };
-
-/**
- * Textarea Props
- */
-export type TextareaProps = Omit<
-  ComponentProps<Partial<TextareaSlots>, 'textarea'>,
-  'value' | 'defaultValue' | 'onChange' | 'size'
-> &
-  Partial<TextareaCommons> & {
-    /**
-     * The value of the Textarea.
-     */
-    value?: string;
-
-    /**
-     * The default value of the Textarea.
-     */
-    defaultValue?: string;
-
-    /**
-     * Callback for when the user changes the value.
-     */
-    onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
-  };
 
 /**
  * State used in rendering Textarea
  */
-export type TextareaState = ComponentState<TextareaSlots> & TextareaCommons;
+export type TextareaState = ComponentState<TextareaSlots> & Pick<TextareaProps, 'resize' | 'size' | 'appearance'>;
 
 /**
  * Data passed to the `onChange` callback when the textarea's value changes.
