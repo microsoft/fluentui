@@ -523,10 +523,10 @@
       "implicitDependencies": []
     },
     "@fluentui/react-portal-compat": {
-      "root": "packages/react-portal-compat",
+      "root": "packages/react-components/react-portal-compat",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-portal-compat/src",
+      "sourceRoot": "packages/react-components/react-portal-compat/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-portal-compat-context": {
@@ -556,9 +556,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-radio": {
-      "root": "packages/react-radio",
+      "root": "packages/react-components/react-radio",
       "projectType": "library",
-      "sourceRoot": "packages/react-radio/src",
+      "sourceRoot": "packages/react-components/react-radio/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -612,9 +612,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-switch": {
-      "root": "packages/react-switch",
+      "root": "packages/react-components/react-switch",
       "projectType": "library",
-      "sourceRoot": "packages/react-switch/src",
+      "sourceRoot": "packages/react-components/react-switch/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -645,10 +645,10 @@
       "implicitDependencies": []
     },
     "@fluentui/react-textarea": {
-      "root": "packages/react-textarea",
+      "root": "packages/react-components/react-textarea",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-textarea/src",
+      "sourceRoot": "packages/react-components/react-textarea/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-theme": {

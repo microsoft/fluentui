@@ -1,8 +1,17 @@
 # Change Log - @fluentui/keyboard-keys
 
-This log was last generated on Wed, 04 May 2022 13:26:36 GMT and should not be manually modified.
+This log was last generated on Thu, 05 May 2022 18:26:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0-rc.6)
+
+Thu, 05 May 2022 18:26:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.0-rc.5..@fluentui/keyboard-keys_v9.0.0-rc.6)
+
+### Changes
+
+- feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0-rc.5)
 
