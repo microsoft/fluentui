@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "react-badge: Move to new common folder.",
+  "packageName": "@fluentui/react-badge",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}
