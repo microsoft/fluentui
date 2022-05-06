@@ -2,11 +2,10 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { DropdownSlots, DropdownState } from './Dropdown.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const dropdownClassName = 'fui-Dropdown';
 export const dropdownClassNames: SlotClassNames<DropdownSlots> = {
   root: 'fui-Dropdown',
-  // TODO: add class names for all slots on DropdownSlots.
-  // Should be of the form `<slotName>: 'fui-Dropdown__<slotName>`
+  listbox: 'fui-Dropdown__listbox',
+  input: 'fui-Dropdown__input',
 };
 
 /**
@@ -25,7 +24,7 @@ const useStyles = makeStyles({
  */
 export const useDropdownStyles_unstable = (state: DropdownState): DropdownState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(dropdownClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(dropdownClassNames.root, styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

@@ -1,11 +1,11 @@
 import { createContext } from '@fluentui/react-context-selector';
-import { ComboboxState } from '../components/Combobox/Combobox.types';
+import { ComboboxBaseState } from '../components/ComboboxBase/ComboboxBase.types';
 
 /**
  * Context shared with Combobox, Listbox, & Options
  */
 export type ComboboxContextValue = Pick<
-  ComboboxState,
+  ComboboxBaseState,
   'activeOption' | 'appearance' | 'onOptionClick' | 'open' | 'registerOption' | 'selectedOptions' | 'size'
 >;
 

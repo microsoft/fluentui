@@ -13,8 +13,8 @@ export const ComboboxBase: ForwardRefComponent<ComboboxBaseProps> = React.forwar
   const state = useComboboxBase_unstable(props, ref);
   const contextValues = useComboboxContextValues(state);
 
-  useComboboxBaseStyles_unstable(state, contextValues);
-  return renderComboboxBase_unstable(state);
+  useComboboxBaseStyles_unstable(state);
+  return renderComboboxBase_unstable(state, contextValues);
 });
 
 ComboboxBase.displayName = 'ComboboxBase';

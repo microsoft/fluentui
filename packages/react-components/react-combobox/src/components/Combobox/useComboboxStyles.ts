@@ -5,7 +5,7 @@ import type { ComboboxSlots, ComboboxState } from './Combobox.types';
 export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
   root: 'fui-Combobox',
   listbox: 'fui-Combobox__listbox',
-  trigger: 'fui-Combobox__trigger',
+  input: 'fui-Combobox__input',
 };
 
 /**
@@ -14,7 +14,7 @@ export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
 const useStyles = makeStyles({
   root: {},
   listbox: {},
-  trigger: {},
+  input: {},
 });
 
 /**
@@ -24,7 +24,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   const styles = useStyles();
   state.root.className = mergeClasses(comboboxClassNames.root, styles.root, state.root.className);
   state.listbox.className = mergeClasses(comboboxClassNames.listbox, styles.listbox, state.listbox.className);
-  state.trigger.className = mergeClasses(comboboxClassNames.trigger, styles.trigger, state.trigger.className);
+  state.input.className = mergeClasses(comboboxClassNames.trigger, styles.trigger, state.trigger.className);
 
   return state;
 };
