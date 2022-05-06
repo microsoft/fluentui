@@ -1549,9 +1549,9 @@ export { FabricPerformance }
 // @public (undocumented)
 export enum FabricSlots {
     // (undocumented)
-    black = 20,
+    black = 21,
     // (undocumented)
-    neutralDark = 19,
+    neutralDark = 20,
     // (undocumented)
     neutralLight = 11,
     // (undocumented)
@@ -1559,15 +1559,17 @@ export enum FabricSlots {
     // (undocumented)
     neutralLighterAlt = 9,
     // (undocumented)
-    neutralPrimary = 18,
+    neutralPrimary = 19,
     // (undocumented)
-    neutralPrimaryAlt = 17,
+    neutralPrimaryAlt = 18,
     // (undocumented)
     neutralQuaternary = 13,
     // (undocumented)
     neutralQuaternaryAlt = 12,
     // (undocumented)
-    neutralSecondary = 16,
+    neutralSecondary = 17,
+    // (undocumented)
+    neutralSecondaryAlt = 16,
     // (undocumented)
     neutralTertiary = 15,
     // (undocumented)
@@ -1591,7 +1593,7 @@ export enum FabricSlots {
     // (undocumented)
     themeTertiary = 4,
     // (undocumented)
-    white = 21
+    white = 22
 }
 
 // @public
@@ -5062,6 +5064,14 @@ export interface IDocumentCardActivityStyles {
 }
 
 // @public (undocumented)
+export interface IDocumentCardContext {
+    // (undocumented)
+    role?: string;
+    // (undocumented)
+    tabIndex?: number;
+}
+
+// @public (undocumented)
 export interface IDocumentCardDetails {
 }
 
@@ -5409,6 +5419,7 @@ export interface IDragOptions {
 
 // @public (undocumented)
 export interface IDropdown {
+    dismissMenu: () => void;
     // (undocumented)
     focus: (shouldOpenOnFocus?: boolean) => void;
     readonly selectedOptions: IDropdownOption[];
@@ -9627,9 +9638,7 @@ export function makeStyles<TStyleSet extends {
     [key in keyof TStyleSet]: IStyle;
 } = {
     [key: string]: IStyle;
-}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => {
-    [key in keyof TStyleSet]: string;
-};
+}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => StylesClassMapping<TStyleSet>;
 
 export { mapEnumByName }
 
@@ -10654,6 +10663,13 @@ export enum StickyPositionType {
 export { styled }
 
 export { StyleFunction }
+
+// @public (undocumented)
+export type StylesClassMapping<TStyleSet extends {
+    [key in keyof TStyleSet]: IStyle;
+}> = {
+    [key in keyof TStyleSet]: string;
+};
 
 export { Stylesheet }
 

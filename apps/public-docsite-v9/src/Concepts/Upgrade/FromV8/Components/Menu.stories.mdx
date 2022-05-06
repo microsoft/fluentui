@@ -1,0 +1,130 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Upgrading/from v8/Components/Menu Upgrade" />
+
+# Menu Upgrade
+
+**v8**
+
+- A menu can be displayed by passing menuProps to Button, or by showing/hiding a ContextualMenu.
+  In both cases, the menu items are specified as an IContextualMenuItem array passed in props.
+- Different types of menu items are created by setting the IContextualMenuItem.itemType property.
+
+**v9**
+
+- A menu can be displayed by creating a hierarchy of children under Menu.
+- There are children that act as containers and coordinate behavior including MenuTrigger, MenuPopover, MenuList, and MenuGroup.
+- There are individual components for different types of items including MenuItem, MenuDivider, MenuItemCheckbox, MenuItemRadio, MenuGroup, and MenuSplitGroup.
+
+## Types -> Component props
+
+| v8 menu type                                  | v9 props                                |
+| --------------------------------------------- | --------------------------------------- |
+| IContextualMenuProps                          | MenuProps, MenuListProps (for submenus) |
+| IContextualMenuItemProps, IContextualMenuItem | MenuItemProps                           |
+| IContextualMenuItem itemType=Normal           | MenuItemProps                           |
+| IContextualMenuItem itemType=Divider          | MenuDividerProps                        |
+| IContextualMenuItem itemType=Header           | MenuGroupHeaderProps                    |
+| IContextualMenuItem itemType=Section          | MenuGroupProps                          |
+| IContextualMenuProps.hidden                   | MenuTrigger, MenuPopover                |
+| Button menuProps={...}                        | MenuButton                              |
+
+## IContextualMenuProps -> MenuProps
+
+| v8 IContextualMenuProps | v9 MenuProps (replacements) |
+| ----------------------- | --------------------------- |
+| alignTargetEdge         |                             |
+| ariaLabel               |                             |
+| beakWidth               |                             |
+| bounds                  |                             |
+| className               |                             |
+| componentRef            |                             |
+| contextualMenuItemAs    |                             |
+| coverTarget             |                             |
+| delayUpdateFocusOnHover |                             |
+| directionalHint         | positioning                 |
+| directionalHintFixed    |                             |
+| directionalHintForRTL   |                             |
+| focusZoneAs             |                             |
+| focusZoneProps          |                             |
+| gapSpace                |                             |
+| getMenuClassNames       |                             |
+| hidden                  |                             |
+| id                      |                             |
+| labelElementId          |                             |
+| isBeakVisible           |                             |
+| isSubMenu               |                             |
+| items                   |                             |
+| onDismiss               |                             |
+| onItemClick             |                             |
+| onRenderMenuList        |                             |
+| onRenderSubMenu         |                             |
+| onRestoreFocus          |                             |
+| doNotLayer              |                             |
+| onMenuOpened            |                             |
+| onMenuDismissed         |                             |
+| calloutProps            |                             |
+| shouldFocusOnMount      |                             |
+| shouldFocusOnContainer  |                             |
+| shouldUpdateWhenHidden  |                             |
+| styles                  |                             |
+| subMenuHoverDelay       |                             |
+| target                  |                             |
+| theme                   |                             |
+| title                   |                             |
+| useTargetAsMinWidth     |                             |
+| useTargetWidth          |                             |
+
+## IContextualMenuItem -> MenuItemProps
+
+| v8 IContextualMenuItem                  | v9 MenuItemProps+                                                  |
+| --------------------------------------- | ------------------------------------------------------------------ |
+| ariaDescribedBy                         | (removed)                                                          |
+| ariaDescription                         | (removed)                                                          |
+| ariaLabel                               | HTML aria-label                                                    |
+| canCheck                                | (use MenuItemRadio, MenuItemCheckbox)                              |
+| checked                                 | (use MenuItemRadio, MenuItemCheckbox)                              |
+| className                               | className                                                          |
+| componentRef                            | ref                                                                |
+| customOnRenderListLength                |                                                                    |
+| data                                    |                                                                    |
+| disabled                                | disabled                                                           |
+| getItemClassNames                       |                                                                    |
+| getSplitButtonVerticalDividerClassNames |                                                                    |
+| href                                    |                                                                    |
+| iconProps                               | icon (slot)                                                        |
+| inactive                                | (removed)                                                          |
+| itemProps                               | (use makeStyles and className)                                     |
+| items                                   | children                                                           |
+| itemType                                | children (MenuDivider, MenuGroup, MenuGroupHeader, MenuSplitGroup) |
+| key                                     |                                                                    |
+| keytipProps                             |                                                                    |
+| name (deprecated)                       | name & value (MenuItemCheckbox, MenuItemRadio)                     |
+| onClick                                 | onClick                                                            |
+| onMouseDown                             | onMouseDown                                                        |
+| onRender                                | children                                                           |
+| onRenderContent                         | children                                                           |
+| onRenderIcon                            | icon (slot)                                                        |
+| preferMenuTargetAsEventTarget           |                                                                    |
+| primaryDisabled                         |                                                                    |
+| rel                                     |                                                                    |
+| role                                    | (removed - set by component)                                       |
+| secondaryText                           | secondaryContent (slot)                                            |
+| sectionProps                            | (MenuGroup, MenuGroupHeader)                                       |
+| split                                   | children (MenuSplitGroup)                                          |
+| style                                   | (use makeStyles and className)                                     |
+| subMenuIconProps                        |                                                                    |
+| subMenuProps                            | children (Menu), hasSubmenu                                        |
+| target                                  |                                                                    |
+| text                                    | children                                                           |
+| title                                   | title                                                              |
+| [propertyName: string]                  | (removed)                                                          |
+
+## IContextualMenuSection -> MenuGroupProps
+
+| v8 IContextualMenuSection | v9 MenuGroupProps, MenuGroupHeaderProps |
+| ------------------------- | --------------------------------------- |
+| items                     | (use MenuGroup children)                |
+| title                     | (use MenuGroupHeader children)          |
+| topDivider                | (removed)                               |
+| bottomDivider             | (removed)                               |

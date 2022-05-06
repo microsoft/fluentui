@@ -4,6 +4,11 @@
 
 ```ts
 
+import * as React_2 from 'react';
+
+// @public (undocumented)
+export const PortalCompatProvider: React_2.FC;
+
 // (No @packageDocumentation comment for this package)
 
 ```

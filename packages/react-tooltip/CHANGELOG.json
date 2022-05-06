@@ -2,6 +2,110 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Mon, 25 Apr 2022 09:32:19 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-rc.7",
+      "version": "9.0.0-rc.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-rc.7",
+            "commit": "02ca1d3c198452c1693067f5f18bd01b2ed5d6e6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Apr 2022 19:17:03 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-rc.6",
+      "version": "9.0.0-rc.6",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-tooltip",
+            "commit": "df80d6f3552e939c7eee343876251a873313139a",
+            "comment": "Updated documenation for guidance on interactive content in a Tooltip."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "36aea1f643cc8a18befeff397dd9147aea591040",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "f10cc045484b962652a400ef2ef4f3412c8d168b",
+            "comment": "Add mountNode prop"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Tooltip"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-rc.6",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-rc.6",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.5",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.5",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.6",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.4",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Mar 2022 05:17:31 GMT",
       "tag": "@fluentui/react-tooltip_v9.0.0-rc.5",
       "version": "9.0.0-rc.5",

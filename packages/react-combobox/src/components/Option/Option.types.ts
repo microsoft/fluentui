@@ -42,6 +42,9 @@ export type OptionState = ComponentState<OptionSlots> &
     /* If true, this is the currently highlighted option */
     active: boolean;
 
+    /* If true, the option is part of a multiselect combobox or listbox */
+    multiselect?: boolean;
+
     /* If true, the option is selected */
     selected: boolean;
   };

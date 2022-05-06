@@ -161,6 +161,7 @@ export * from './components/Popup/PopupContent';
 
 export * from './components/Portal/Portal';
 
+export { PortalContext } from './components/Provider/portalContext';
 export * from './components/Provider/Provider';
 export * from './components/Provider/ProviderConsumer';
 

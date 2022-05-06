@@ -13,12 +13,13 @@ export const colorScheme = {
     foreground5: colors.grey['450'],
     foreground6: colors.grey['550'],
     foreground7: colors.grey['220'],
+    foreground8: colors.white,
 
     background: colors.grey['700'],
     background1: colors.grey['750'],
     background2: colors.grey['800'],
     background3: colors.grey['870'],
-    background4: colors.grey['550'],
+    background4: colors.grey['600'],
     background5: colors.grey['600'],
     background6: colors.grey['910'],
     background7: colors.grey['850'],
@@ -38,24 +39,32 @@ export const colorScheme = {
     backgroundHover1: colors.grey['750'],
     backgroundHover2: 'transparent',
     backgroundHover3: colors.grey['650'],
-    backgroundHover4: colors.grey['750'],
+    backgroundHover4: colors.grey['700'],
     backgroundHover6: colors.grey['550'],
     borderHover: colors.grey['430'],
 
     foregroundPressed: colors.white,
     backgroundPressed: colors.grey['650'],
     backgroundPressed2: colors.grey['850'],
+    backgroundPressed3: colors.grey['800'],
 
     foregroundActive: colors.white,
     foregroundActive1: colors.white,
 
     backgroundActive: colors.grey['600'],
     backgroundActive1: colors.grey['800'],
+    backgroundActive2: colors.grey['575'],
 
     borderActive: colors.grey['440'],
 
     // foregroundFocus: not specified,
+    foregroundFocus1: colors.grey['220'],
+    foregroundFocus2: colors.grey['220'],
+
     // backgroundFocus: not specified,
+    backgroundFocus1: colors.grey['700'],
+    backgroundFocus2: colors.grey['800'],
+    backgroundFocus3: colors.grey['600'],
 
     borderFocus: colors.white,
     borderFocusWithin: colors.black,
@@ -82,7 +91,7 @@ export const colorScheme = {
     foreground3: colors.brand['200'],
     foreground4: colors.white,
 
-    border: colors.grey['450'],
+    border: colors.grey['475'],
     border1: colors.brand['800'],
     border2: colors.brand['800'],
 
@@ -110,7 +119,7 @@ export const colorScheme = {
     backgroundActive: colors.brand['450'],
     backgroundActive1: colors.brand['450'],
 
-    borderActive: colors.grey['450'],
+    borderActive: colors.grey['430'],
     borderActive1: colors.brand['800'],
     borderActive2: colors.brand['800'],
 

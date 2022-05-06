@@ -7,6 +7,8 @@ describe('OptionGroup', () => {
   isConformant({
     Component: OptionGroup,
     displayName: 'OptionGroup',
+    // don't test deprecated className export on new components
+    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {
