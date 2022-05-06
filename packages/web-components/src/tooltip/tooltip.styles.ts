@@ -6,15 +6,13 @@ import {
 } from '@microsoft/fast-foundation';
 import { elevationShadowTooltip } from '../styles/index';
 import {
-  bodyFont,
   controlCornerRadius,
   fillColor,
   neutralForegroundRest,
   neutralStrokeLayerRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const tooltipStyles: (
   context: ElementDefinitionContext,
@@ -39,9 +37,7 @@ export const tooltipStyles: (
       padding: 4px 12px;
       height: fit-content;
       width: fit-content;
-      font-family: ${bodyFont};
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
+      ${typeRampBase}
       white-space: nowrap;
       box-shadow: ${elevationShadowTooltip};
     }

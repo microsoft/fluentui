@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 04 May 2022 13:26:33 GMT and should not be manually modified.
+This log was last generated on Thu, 05 May 2022 18:26:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.10)
+
+Thu, 05 May 2022 18:26:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.9..@fluentui/react-components_v9.0.0-rc.10)
+
+### Changes
+
+- `@fluentui/react-context-selector`
+  - feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
+  - Removing star exports. ([PR #22801](https://github.com/microsoft/fluentui/pull/22801) by humberto_makoto@hotmail.com)
+- `@fluentui/react-input`
+  - Updated to use new theme tokens ([PR #22836](https://github.com/microsoft/fluentui/pull/22836) by gcox@microsoft.com)
+- `@fluentui/react-menu`
+  - Removing star exports. ([PR #22804](https://github.com/microsoft/fluentui/pull/22804) by humberto_makoto@hotmail.com)
+- `@fluentui/react-popover`
+  - Removing star exports. ([PR #22805](https://github.com/microsoft/fluentui/pull/22805) by humberto_makoto@hotmail.com)
+- `@fluentui/react-portal`
+  - Removing star exports. ([PR #22806](https://github.com/microsoft/fluentui/pull/22806) by humberto_makoto@hotmail.com)
+- `@fluentui/react-positioning`
+  - Removing star exports. ([PR #22807](https://github.com/microsoft/fluentui/pull/22807) by humberto_makoto@hotmail.com)
+- `@fluentui/react-radio`
+  - update README ([PR #22819](https://github.com/microsoft/fluentui/pull/22819) by seanmonahan@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - Removing star exports. ([PR #22808](https://github.com/microsoft/fluentui/pull/22808) by humberto_makoto@hotmail.com)
+- `@fluentui/react-theme`
+  - Export TypographyStyle type ([PR #22832](https://github.com/microsoft/fluentui/pull/22832) by miroslav.stastny@microsoft.com)
+  - Removing star exports. ([PR #22810](https://github.com/microsoft/fluentui/pull/22810) by humberto_makoto@hotmail.com)
+  - Added ms suffix to durations ([PR #22831](https://github.com/microsoft/fluentui/pull/22831) by gcox@microsoft.com)
+- `@fluentui/react-utilities`
+  - feat: add time element on nativeElementMap ([PR #22848](https://github.com/microsoft/fluentui/pull/22848) by bsunderhus@microsoft.com)
+- `@fluentui/keyboard-keys`
+  - feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
+- `@fluentui/react-aria`
+  - Removing star exports. ([PR #22798](https://github.com/microsoft/fluentui/pull/22798) by humberto_makoto@hotmail.com)
+  - feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
+- `@fluentui/react-avatar`
+  - feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
+- `@fluentui/react-button`
+  - feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
+- `@fluentui/react-card`
+  - Added new `focusMode` property to control the focus behavior inside of the component ([PR #22312](https://github.com/microsoft/fluentui/pull/22312) by 39736248+andrefcdias@users.noreply.github.com)
+- `@fluentui/react-components`
+  - react-radio: move to release candidate ([PR #22819](https://github.com/microsoft/fluentui/pull/22819) by seanmonahan@microsoft.com)
+  - Re-exporting GriffelStyle. ([PR #22845](https://github.com/microsoft/fluentui/pull/22845) by Humberto.Morimoto@microsoft.com)
+  - Export TypographyStyle type ([PR #22832](https://github.com/microsoft/fluentui/pull/22832) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
 
 ## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.9)
 

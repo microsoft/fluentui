@@ -28,10 +28,9 @@ import {
   neutralFillStealthRest,
   neutralForegroundRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
 import { Swatch } from '../color/swatch';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 const ltr = css`
   .expand-collapse-button svg {
@@ -142,9 +141,7 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       width: 100%;
       height: calc(${heightNumber} * 1px);
       margin-inline-start: calc(${designUnit} * 2px + 8px);
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
-      font-weight: 400;
+      ${typeRampBase}
     }
 
     .items {

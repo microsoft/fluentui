@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Wed, 04 May 2022 13:26:47 GMT and should not be manually modified.
+This log was last generated on Thu, 05 May 2022 18:26:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-rc.9)
+
+Thu, 05 May 2022 18:26:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-rc.8..@fluentui/react-portal_v9.0.0-rc.9)
+
+### Changes
+
+- Removing star exports. ([PR #22806](https://github.com/microsoft/fluentui/pull/22806) by humberto_makoto@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.7 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.9 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
 
 ## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-rc.8)
 
