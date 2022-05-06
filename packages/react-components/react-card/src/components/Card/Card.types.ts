@@ -4,8 +4,11 @@ export type CardSlots = {
   root: Slot<'div'>;
 };
 
-export type CardCommons = {
-  appearance: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
+/**
+ * Card Props
+ */
+export type CardProps = ComponentProps<CardSlots> & {
+  appearance?: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
 
   /**
    * Sets the focus behavior for the card. If `true`, the card will use the `noTab` focus behavior.
@@ -27,15 +30,10 @@ export type CardCommons = {
    *
    * @defaultvalue off
    */
-  focusMode: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
+  focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
 };
-
-/**
- * Card Props
- */
-export type CardProps = ComponentProps<CardSlots> & Partial<CardCommons>;
 
 /**
  * State used in rendering Card
  */
-export type CardState = ComponentState<CardSlots> & CardCommons;
+export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance'>>;

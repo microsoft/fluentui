@@ -28,7 +28,6 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
 
   return {
     appearance,
-    focusMode,
 
     components: { root: 'div' },
     root: getNativeElementProps(props.as || 'div', {
