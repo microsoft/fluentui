@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update fabric-core to 11.0.1",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
