@@ -42,5 +42,5 @@ export const MenuWithSplitItemAccessibilityScenario: React.FunctionComponent = (
 
 export default {
   title: 'Accessibility Scenarios / Menu with split item',
-  id: 'menu2-accessibility-scenario',
+  id: 'menu-splitgroup-accessibility-scenario',
 };

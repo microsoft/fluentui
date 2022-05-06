@@ -66,5 +66,5 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
 
 export default {
   title: 'Accessibility Scenarios / Personal form accordion',
-  id: 'accordion1-accessibility-scenario',
+  id: 'accordion-accessibility-scenario',
 };

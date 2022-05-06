@@ -56,5 +56,5 @@ export const FAQAccordionAccessibilityScenario: React.FunctionComponent = () => 
 
 export default {
   title: 'Accessibility Scenarios / FAQ accordion',
-  id: 'accordion2-accessibility-scenario',
+  id: 'accordion-faq-accessibility-scenario',
 };
