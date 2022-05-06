@@ -15,19 +15,19 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
    * Renders the label as disabled
    * @default false
    */
-  disabled: boolean;
+  disabled?: boolean;
 
   /**
    * A label supports different sizes.
    * @default 'medium'
    */
-  size: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 
   /**
    * A label supports semibold/strong fontweight.
    * @default false
    */
-  strong: boolean;
+  strong?: boolean;
 };
 
 export type LabelSlots = {
@@ -38,4 +38,4 @@ export type LabelSlots = {
 /**
  * State used in rendering Label
  */
-export type LabelState = ComponentState<LabelSlots> & Pick<LabelProps, 'disabled' | 'size' | 'strong'>;
+export type LabelState = ComponentState<LabelSlots> & Required<Pick<LabelProps, 'disabled' | 'size' | 'strong'>>;

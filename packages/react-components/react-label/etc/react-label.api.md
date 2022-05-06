@@ -23,9 +23,9 @@ export const labelClassNames: SlotClassNames<LabelSlots>;
 // @public
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
     required?: boolean | Slot<'span'>;
-    disabled: boolean;
-    size: 'small' | 'medium' | 'large';
-    strong: boolean;
+    disabled?: boolean;
+    size?: 'small' | 'medium' | 'large';
+    strong?: boolean;
 };
 
 // @public (undocumented)
@@ -35,7 +35,7 @@ export type LabelSlots = {
 };
 
 // @public
-export type LabelState = ComponentState<LabelSlots> & Pick<LabelProps, 'disabled' | 'size' | 'strong'>;
+export type LabelState = ComponentState<LabelSlots> & Required<Pick<LabelProps, 'disabled' | 'size' | 'strong'>>;
 
 // @public
 export const renderLabel_unstable: (state: LabelState) => JSX.Element;
