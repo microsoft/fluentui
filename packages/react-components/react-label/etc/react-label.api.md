@@ -22,8 +22,8 @@ export const labelClassNames: SlotClassNames<LabelSlots>;
 
 // @public
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
-    required?: boolean | Slot<'span'>;
     disabled?: boolean;
+    required?: boolean | Slot<'span'>;
     size?: 'small' | 'medium' | 'large';
     strong?: boolean;
 };

@@ -5,17 +5,17 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
  */
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
   /**
+   * Renders the label as disabled
+   * @default false
+   */
+  disabled?: boolean;
+
+  /**
    * Displays an indicator that the label is for a required field. The required prop can be set to true to display
    * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
    * @default false
    */
   required?: boolean | Slot<'span'>;
-
-  /**
-   * Renders the label as disabled
-   * @default false
-   */
-  disabled?: boolean;
 
   /**
    * A label supports different sizes.
