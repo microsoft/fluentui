@@ -6,7 +6,7 @@ This log was last generated on Wed, 04 May 2022 13:26:54 GMT and should not be m
 
 ## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-rc.7)
 
-Wed, 04 May 2022 13:26:54 GMT
+Wed, 04 May 2022 13:26:54 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-rc.6..@fluentui/react-badge_v9.0.0-rc.7)
 
 ### Changes
@@ -16,7 +16,7 @@ Wed, 04 May 2022 13:26:54 GMT
 
 ## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-rc.6)
 
-Tue, 19 Apr 2022 19:17:10 GMT
+Tue, 19 Apr 2022 19:17:10 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-rc.5..@fluentui/react-badge_v9.0.0-rc.6)
 
 ### Changes
@@ -32,7 +32,7 @@ Tue, 19 Apr 2022 19:17:10 GMT
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-rc.5)
 
-Fri, 04 Mar 2022 05:17:34 GMT
+Fri, 04 Mar 2022 05:17:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-rc.4..@fluentui/react-badge_v9.0.0-rc.5)
 
 ### Changes
@@ -43,7 +43,7 @@ Fri, 04 Mar 2022 05:17:34 GMT
 
 ## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-rc.4)
 
-Tue, 01 Mar 2022 02:17:40 GMT
+Tue, 01 Mar 2022 02:17:40 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-rc.3..@fluentui/react-badge_v9.0.0-rc.4)
 
 ### Changes
@@ -52,7 +52,7 @@ Tue, 01 Mar 2022 02:17:40 GMT
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-rc.3)
 
-Fri, 18 Feb 2022 13:35:28 GMT
+Fri, 18 Feb 2022 13:35:28 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-rc.1..@fluentui/react-badge_v9.0.0-rc.3)
 
 ### Changes
@@ -64,7 +64,7 @@ Fri, 18 Feb 2022 13:35:28 GMT
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-rc.1)
 
-Thu, 10 Feb 2022 08:51:40 GMT
+Thu, 10 Feb 2022 08:51:40 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-beta.4..@fluentui/react-badge_v9.0.0-rc.1)
 
 ### Changes
@@ -86,7 +86,7 @@ Thu, 10 Feb 2022 08:51:40 GMT
 - update @fluentui/react-icons package ([PR #21498](https://github.com/microsoft/fluentui/pull/21498) by olfedias@microsoft.com)
 - use Griffel packages ([PR #21437](https://github.com/microsoft/fluentui/pull/21437) by olfedias@microsoft.com)
 - react-badge: Replacing use of functions in makeStyles with direct use of tokens. ([PR #21038](https://github.com/microsoft/fluentui/pull/21038) by Humberto.Morimoto@microsoft.com)
-- BREAKING: Rename component hooks add the suffix \_unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+- BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
 - fix: Add uniform padding and modify gaps ([PR #20974](https://github.com/microsoft/fluentui/pull/20974) by lingfangao@hotmail.com)
 - Bump @fluentui/react-theme to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
 - Bump @fluentui/react-utilities to v9.0.0-rc.1 ([commit](https://github.com/microsoft/fluentui/commit/e6c855f6d9019d6c73668d15fc9bc3a13291a6c8) by beachball)
@@ -94,7 +94,7 @@ Thu, 10 Feb 2022 08:51:40 GMT
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-beta.4)
 
-Thu, 25 Nov 2021 08:34:11 GMT
+Thu, 25 Nov 2021 08:34:11 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-beta.3..@fluentui/react-badge_v9.0.0-beta.4)
 
 ### Changes
@@ -112,7 +112,7 @@ Thu, 25 Nov 2021 08:34:11 GMT
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-beta.3)
 
-Fri, 12 Nov 2021 13:25:15 GMT
+Fri, 12 Nov 2021 13:25:15 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-beta.2..@fluentui/react-badge_v9.0.0-beta.3)
 
 ### Changes
@@ -128,7 +128,7 @@ Fri, 12 Nov 2021 13:25:15 GMT
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-beta.2)
 
-Wed, 27 Oct 2021 12:14:14 GMT
+Wed, 27 Oct 2021 12:14:14 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-beta.1..@fluentui/react-badge_v9.0.0-beta.2)
 
 ### Changes
@@ -144,7 +144,7 @@ Wed, 27 Oct 2021 12:14:14 GMT
 
 ## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-beta.1)
 
-Wed, 06 Oct 2021 10:37:22 GMT
+Wed, 06 Oct 2021 10:37:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.92..@fluentui/react-badge_v9.0.0-beta.1)
 
 ### Changes
@@ -159,7 +159,7 @@ Wed, 06 Oct 2021 10:37:22 GMT
 
 ## [9.0.0-alpha.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.92)
 
-Tue, 05 Oct 2021 12:47:58 GMT
+Tue, 05 Oct 2021 12:47:58 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.91..@fluentui/react-badge_v9.0.0-alpha.92)
 
 ### Changes
@@ -171,7 +171,7 @@ Tue, 05 Oct 2021 12:47:58 GMT
 
 ## [9.0.0-alpha.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.91)
 
-Tue, 05 Oct 2021 09:28:07 GMT
+Tue, 05 Oct 2021 09:28:07 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.90..@fluentui/react-badge_v9.0.0-alpha.91)
 
 ### Changes
@@ -185,7 +185,7 @@ Tue, 05 Oct 2021 09:28:07 GMT
 
 ## [9.0.0-alpha.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.90)
 
-Fri, 01 Oct 2021 14:13:08 GMT
+Fri, 01 Oct 2021 14:13:08 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.88..@fluentui/react-badge_v9.0.0-alpha.90)
 
 ### Changes
@@ -200,7 +200,7 @@ Fri, 01 Oct 2021 14:13:08 GMT
 
 ## [9.0.0-alpha.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.88)
 
-Wed, 29 Sep 2021 08:06:11 GMT
+Wed, 29 Sep 2021 08:06:11 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.87..@fluentui/react-badge_v9.0.0-alpha.88)
 
 ### Changes
@@ -214,7 +214,7 @@ Wed, 29 Sep 2021 08:06:11 GMT
 
 ## [9.0.0-alpha.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.87)
 
-Mon, 27 Sep 2021 08:06:00 GMT
+Mon, 27 Sep 2021 08:06:00 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.86..@fluentui/react-badge_v9.0.0-alpha.87)
 
 ### Changes
@@ -228,7 +228,7 @@ Mon, 27 Sep 2021 08:06:00 GMT
 
 ## [9.0.0-alpha.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.86)
 
-Fri, 24 Sep 2021 09:17:17 GMT
+Fri, 24 Sep 2021 09:17:17 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.85..@fluentui/react-badge_v9.0.0-alpha.86)
 
 ### Changes
@@ -242,7 +242,7 @@ Fri, 24 Sep 2021 09:17:17 GMT
 
 ## [9.0.0-alpha.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.85)
 
-Thu, 23 Sep 2021 08:21:34 GMT
+Thu, 23 Sep 2021 08:21:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.84..@fluentui/react-badge_v9.0.0-alpha.85)
 
 ### Changes
@@ -255,7 +255,7 @@ Thu, 23 Sep 2021 08:21:34 GMT
 
 ## [9.0.0-alpha.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.84)
 
-Wed, 22 Sep 2021 10:10:07 GMT
+Wed, 22 Sep 2021 10:10:07 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.83..@fluentui/react-badge_v9.0.0-alpha.84)
 
 ### Changes
@@ -269,7 +269,7 @@ Wed, 22 Sep 2021 10:10:07 GMT
 
 ## [9.0.0-alpha.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.83)
 
-Tue, 21 Sep 2021 07:42:34 GMT
+Tue, 21 Sep 2021 07:42:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.82..@fluentui/react-badge_v9.0.0-alpha.83)
 
 ### Changes
@@ -283,7 +283,7 @@ Tue, 21 Sep 2021 07:42:34 GMT
 
 ## [9.0.0-alpha.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.82)
 
-Mon, 20 Sep 2021 07:36:26 GMT
+Mon, 20 Sep 2021 07:36:26 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.81..@fluentui/react-badge_v9.0.0-alpha.82)
 
 ### Changes
@@ -292,7 +292,7 @@ Mon, 20 Sep 2021 07:36:26 GMT
 
 ## [9.0.0-alpha.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.81)
 
-Fri, 17 Sep 2021 07:35:26 GMT
+Fri, 17 Sep 2021 07:35:26 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.80..@fluentui/react-badge_v9.0.0-alpha.81)
 
 ### Changes
@@ -301,7 +301,7 @@ Fri, 17 Sep 2021 07:35:26 GMT
 
 ## [9.0.0-alpha.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.80)
 
-Thu, 16 Sep 2021 07:38:39 GMT
+Thu, 16 Sep 2021 07:38:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.79..@fluentui/react-badge_v9.0.0-alpha.80)
 
 ### Changes
@@ -310,7 +310,7 @@ Thu, 16 Sep 2021 07:38:39 GMT
 
 ## [9.0.0-alpha.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.79)
 
-Tue, 14 Sep 2021 20:09:02 GMT
+Tue, 14 Sep 2021 20:09:02 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.78..@fluentui/react-badge_v9.0.0-alpha.79)
 
 ### Changes
@@ -319,7 +319,7 @@ Tue, 14 Sep 2021 20:09:02 GMT
 
 ## [9.0.0-alpha.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.78)
 
-Fri, 10 Sep 2021 16:31:53 GMT
+Fri, 10 Sep 2021 16:31:53 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.77..@fluentui/react-badge_v9.0.0-alpha.78)
 
 ### Changes
@@ -329,7 +329,7 @@ Fri, 10 Sep 2021 16:31:53 GMT
 
 ## [9.0.0-alpha.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.77)
 
-Fri, 10 Sep 2021 07:39:51 GMT
+Fri, 10 Sep 2021 07:39:51 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.76..@fluentui/react-badge_v9.0.0-alpha.77)
 
 ### Changes
@@ -338,7 +338,7 @@ Fri, 10 Sep 2021 07:39:51 GMT
 
 ## [9.0.0-alpha.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.76)
 
-Mon, 06 Sep 2021 07:34:53 GMT
+Mon, 06 Sep 2021 07:34:53 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.75..@fluentui/react-badge_v9.0.0-alpha.76)
 
 ### Changes
@@ -347,7 +347,7 @@ Mon, 06 Sep 2021 07:34:53 GMT
 
 ## [9.0.0-alpha.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.75)
 
-Thu, 02 Sep 2021 07:36:46 GMT
+Thu, 02 Sep 2021 07:36:46 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.74..@fluentui/react-badge_v9.0.0-alpha.75)
 
 ### Patches
@@ -360,7 +360,7 @@ Thu, 02 Sep 2021 07:36:46 GMT
 
 ## [9.0.0-alpha.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.74)
 
-Wed, 01 Sep 2021 07:39:56 GMT
+Wed, 01 Sep 2021 07:39:56 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.73..@fluentui/react-badge_v9.0.0-alpha.74)
 
 ### Changes
@@ -369,7 +369,7 @@ Wed, 01 Sep 2021 07:39:56 GMT
 
 ## [9.0.0-alpha.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.73)
 
-Tue, 31 Aug 2021 07:37:47 GMT
+Tue, 31 Aug 2021 07:37:47 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.72..@fluentui/react-badge_v9.0.0-alpha.73)
 
 ### Changes
@@ -378,7 +378,7 @@ Tue, 31 Aug 2021 07:37:47 GMT
 
 ## [9.0.0-alpha.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.72)
 
-Mon, 30 Aug 2021 07:35:05 GMT
+Mon, 30 Aug 2021 07:35:05 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.71..@fluentui/react-badge_v9.0.0-alpha.72)
 
 ### Changes
@@ -387,7 +387,7 @@ Mon, 30 Aug 2021 07:35:05 GMT
 
 ## [9.0.0-alpha.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.71)
 
-Fri, 27 Aug 2021 07:33:32 GMT
+Fri, 27 Aug 2021 07:33:32 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.70..@fluentui/react-badge_v9.0.0-alpha.71)
 
 ### Changes
@@ -396,7 +396,7 @@ Fri, 27 Aug 2021 07:33:32 GMT
 
 ## [9.0.0-alpha.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.70)
 
-Thu, 26 Aug 2021 07:35:43 GMT
+Thu, 26 Aug 2021 07:35:43 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.69..@fluentui/react-badge_v9.0.0-alpha.70)
 
 ### Changes
@@ -405,7 +405,7 @@ Thu, 26 Aug 2021 07:35:43 GMT
 
 ## [9.0.0-alpha.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.69)
 
-Fri, 20 Aug 2021 07:37:28 GMT
+Fri, 20 Aug 2021 07:37:28 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.68..@fluentui/react-badge_v9.0.0-alpha.69)
 
 ### Changes
@@ -414,7 +414,7 @@ Fri, 20 Aug 2021 07:37:28 GMT
 
 ## [9.0.0-alpha.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.68)
 
-Thu, 19 Aug 2021 07:41:35 GMT
+Thu, 19 Aug 2021 07:41:35 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.67..@fluentui/react-badge_v9.0.0-alpha.68)
 
 ### Changes
@@ -423,7 +423,7 @@ Thu, 19 Aug 2021 07:41:35 GMT
 
 ## [9.0.0-alpha.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.67)
 
-Fri, 13 Aug 2021 07:36:34 GMT
+Fri, 13 Aug 2021 07:36:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.66..@fluentui/react-badge_v9.0.0-alpha.67)
 
 ### Changes
@@ -432,7 +432,7 @@ Fri, 13 Aug 2021 07:36:34 GMT
 
 ## [9.0.0-alpha.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.66)
 
-Wed, 11 Aug 2021 07:34:54 GMT
+Wed, 11 Aug 2021 07:34:54 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.65..@fluentui/react-badge_v9.0.0-alpha.66)
 
 ### Changes
@@ -441,7 +441,7 @@ Wed, 11 Aug 2021 07:34:54 GMT
 
 ## [9.0.0-alpha.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.65)
 
-Fri, 06 Aug 2021 07:35:14 GMT
+Fri, 06 Aug 2021 07:35:14 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.64..@fluentui/react-badge_v9.0.0-alpha.65)
 
 ### Changes
@@ -450,7 +450,7 @@ Fri, 06 Aug 2021 07:35:14 GMT
 
 ## [9.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.64)
 
-Tue, 03 Aug 2021 07:39:30 GMT
+Tue, 03 Aug 2021 07:39:30 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.63..@fluentui/react-badge_v9.0.0-alpha.64)
 
 ### Patches
@@ -465,7 +465,7 @@ Tue, 03 Aug 2021 07:39:30 GMT
 
 ## [9.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.63)
 
-Mon, 02 Aug 2021 07:36:20 GMT
+Mon, 02 Aug 2021 07:36:20 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.62..@fluentui/react-badge_v9.0.0-alpha.63)
 
 ### Changes
@@ -474,7 +474,7 @@ Mon, 02 Aug 2021 07:36:20 GMT
 
 ## [9.0.0-alpha.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.62)
 
-Mon, 26 Jul 2021 07:37:30 GMT
+Mon, 26 Jul 2021 07:37:30 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.61..@fluentui/react-badge_v9.0.0-alpha.62)
 
 ### Changes
@@ -483,7 +483,7 @@ Mon, 26 Jul 2021 07:37:30 GMT
 
 ## [9.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.61)
 
-Fri, 23 Jul 2021 07:38:19 GMT
+Fri, 23 Jul 2021 07:38:19 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.60..@fluentui/react-badge_v9.0.0-alpha.61)
 
 ### Changes
@@ -492,7 +492,7 @@ Fri, 23 Jul 2021 07:38:19 GMT
 
 ## [9.0.0-alpha.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.60)
 
-Thu, 22 Jul 2021 07:36:55 GMT
+Thu, 22 Jul 2021 07:36:55 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.59..@fluentui/react-badge_v9.0.0-alpha.60)
 
 ### Changes
@@ -501,7 +501,7 @@ Thu, 22 Jul 2021 07:36:55 GMT
 
 ## [9.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.59)
 
-Tue, 20 Jul 2021 22:23:17 GMT
+Tue, 20 Jul 2021 22:23:17 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.58..@fluentui/react-badge_v9.0.0-alpha.59)
 
 ### Changes
@@ -510,7 +510,7 @@ Tue, 20 Jul 2021 22:23:17 GMT
 
 ## [9.0.0-alpha.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.58)
 
-Fri, 16 Jul 2021 22:53:17 GMT
+Fri, 16 Jul 2021 22:53:17 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.57..@fluentui/react-badge_v9.0.0-alpha.58)
 
 ### Changes
@@ -519,7 +519,7 @@ Fri, 16 Jul 2021 22:53:17 GMT
 
 ## [9.0.0-alpha.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.57)
 
-Thu, 15 Jul 2021 07:36:18 GMT
+Thu, 15 Jul 2021 07:36:18 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.56..@fluentui/react-badge_v9.0.0-alpha.57)
 
 ### Changes
@@ -528,7 +528,7 @@ Thu, 15 Jul 2021 07:36:18 GMT
 
 ## [9.0.0-alpha.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.56)
 
-Tue, 13 Jul 2021 22:32:58 GMT
+Tue, 13 Jul 2021 22:32:58 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.55..@fluentui/react-badge_v9.0.0-alpha.56)
 
 ### Patches
@@ -537,7 +537,7 @@ Tue, 13 Jul 2021 22:32:58 GMT
 
 ## [9.0.0-alpha.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.55)
 
-Tue, 13 Jul 2021 07:35:36 GMT
+Tue, 13 Jul 2021 07:35:36 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.54..@fluentui/react-badge_v9.0.0-alpha.55)
 
 ### Changes
@@ -546,7 +546,7 @@ Tue, 13 Jul 2021 07:35:36 GMT
 
 ## [9.0.0-alpha.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.54)
 
-Fri, 09 Jul 2021 07:39:31 GMT
+Fri, 09 Jul 2021 07:39:31 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.53..@fluentui/react-badge_v9.0.0-alpha.54)
 
 ### Patches
@@ -561,7 +561,7 @@ Fri, 09 Jul 2021 07:39:31 GMT
 
 ## [9.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.53)
 
-Fri, 02 Jul 2021 23:15:55 GMT
+Fri, 02 Jul 2021 23:15:55 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.52..@fluentui/react-badge_v9.0.0-alpha.53)
 
 ### Changes
@@ -570,7 +570,7 @@ Fri, 02 Jul 2021 23:15:55 GMT
 
 ## [9.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.52)
 
-Fri, 02 Jul 2021 07:37:06 GMT
+Fri, 02 Jul 2021 07:37:06 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.51..@fluentui/react-badge_v9.0.0-alpha.52)
 
 ### Changes
@@ -579,7 +579,7 @@ Fri, 02 Jul 2021 07:37:06 GMT
 
 ## [9.0.0-alpha.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.51)
 
-Thu, 01 Jul 2021 07:35:05 GMT
+Thu, 01 Jul 2021 07:35:05 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.50..@fluentui/react-badge_v9.0.0-alpha.51)
 
 ### Changes
@@ -588,7 +588,7 @@ Thu, 01 Jul 2021 07:35:05 GMT
 
 ## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.50)
 
-Wed, 30 Jun 2021 07:38:35 GMT
+Wed, 30 Jun 2021 07:38:35 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.49..@fluentui/react-badge_v9.0.0-alpha.50)
 
 ### Changes
@@ -597,7 +597,7 @@ Wed, 30 Jun 2021 07:38:35 GMT
 
 ## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.49)
 
-Tue, 29 Jun 2021 07:33:32 GMT
+Tue, 29 Jun 2021 07:33:32 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.48..@fluentui/react-badge_v9.0.0-alpha.49)
 
 ### Changes
@@ -606,7 +606,7 @@ Tue, 29 Jun 2021 07:33:32 GMT
 
 ## [9.0.0-alpha.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.48)
 
-Tue, 22 Jun 2021 07:35:11 GMT
+Tue, 22 Jun 2021 07:35:11 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.47..@fluentui/react-badge_v9.0.0-alpha.48)
 
 ### Changes
@@ -615,7 +615,7 @@ Tue, 22 Jun 2021 07:35:11 GMT
 
 ## [9.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.47)
 
-Tue, 15 Jun 2021 07:40:20 GMT
+Tue, 15 Jun 2021 07:40:20 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.46..@fluentui/react-badge_v9.0.0-alpha.47)
 
 ### Changes
@@ -624,7 +624,7 @@ Tue, 15 Jun 2021 07:40:20 GMT
 
 ## [9.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.46)
 
-Mon, 07 Jun 2021 07:38:15 GMT
+Mon, 07 Jun 2021 07:38:15 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.45..@fluentui/react-badge_v9.0.0-alpha.46)
 
 ### Patches
@@ -639,7 +639,7 @@ Mon, 07 Jun 2021 07:38:15 GMT
 
 ## [9.0.0-alpha.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.45)
 
-Fri, 04 Jun 2021 07:37:23 GMT
+Fri, 04 Jun 2021 07:37:23 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.44..@fluentui/react-badge_v9.0.0-alpha.45)
 
 ### Changes
@@ -648,7 +648,7 @@ Fri, 04 Jun 2021 07:37:23 GMT
 
 ## [9.0.0-alpha.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.44)
 
-Thu, 03 Jun 2021 07:36:03 GMT
+Thu, 03 Jun 2021 07:36:03 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.43..@fluentui/react-badge_v9.0.0-alpha.44)
 
 ### Changes
@@ -657,7 +657,7 @@ Thu, 03 Jun 2021 07:36:03 GMT
 
 ## [9.0.0-alpha.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.43)
 
-Wed, 02 Jun 2021 07:37:15 GMT
+Wed, 02 Jun 2021 07:37:15 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.42..@fluentui/react-badge_v9.0.0-alpha.43)
 
 ### Changes
@@ -666,7 +666,7 @@ Wed, 02 Jun 2021 07:37:15 GMT
 
 ## [9.0.0-alpha.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.42)
 
-Wed, 26 May 2021 07:35:43 GMT
+Wed, 26 May 2021 07:35:43 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.41..@fluentui/react-badge_v9.0.0-alpha.42)
 
 ### Changes
@@ -675,7 +675,7 @@ Wed, 26 May 2021 07:35:43 GMT
 
 ## [9.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.41)
 
-Fri, 21 May 2021 07:34:54 GMT
+Fri, 21 May 2021 07:34:54 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.40..@fluentui/react-badge_v9.0.0-alpha.41)
 
 ### Changes
@@ -684,7 +684,7 @@ Fri, 21 May 2021 07:34:54 GMT
 
 ## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.40)
 
-Thu, 20 May 2021 07:41:54 GMT
+Thu, 20 May 2021 07:41:54 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.39..@fluentui/react-badge_v9.0.0-alpha.40)
 
 ### Patches
@@ -699,7 +699,7 @@ Thu, 20 May 2021 07:41:54 GMT
 
 ## [9.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.39)
 
-Wed, 19 May 2021 07:34:20 GMT
+Wed, 19 May 2021 07:34:20 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.38..@fluentui/react-badge_v9.0.0-alpha.39)
 
 ### Patches
@@ -712,7 +712,7 @@ Wed, 19 May 2021 07:34:20 GMT
 
 ## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.38)
 
-Tue, 18 May 2021 07:34:38 GMT
+Tue, 18 May 2021 07:34:38 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.37..@fluentui/react-badge_v9.0.0-alpha.38)
 
 ### Changes
@@ -721,7 +721,7 @@ Tue, 18 May 2021 07:34:38 GMT
 
 ## [9.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.37)
 
-Thu, 13 May 2021 07:36:55 GMT
+Thu, 13 May 2021 07:36:55 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.36..@fluentui/react-badge_v9.0.0-alpha.37)
 
 ### Changes
@@ -730,7 +730,7 @@ Thu, 13 May 2021 07:36:55 GMT
 
 ## [9.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.36)
 
-Wed, 12 May 2021 07:36:20 GMT
+Wed, 12 May 2021 07:36:20 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.35..@fluentui/react-badge_v9.0.0-alpha.36)
 
 ### Changes
@@ -739,7 +739,7 @@ Wed, 12 May 2021 07:36:20 GMT
 
 ## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.35)
 
-Mon, 10 May 2021 07:36:07 GMT
+Mon, 10 May 2021 07:36:07 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.34..@fluentui/react-badge_v9.0.0-alpha.35)
 
 ### Changes
@@ -748,7 +748,7 @@ Mon, 10 May 2021 07:36:07 GMT
 
 ## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.34)
 
-Wed, 05 May 2021 07:36:50 GMT
+Wed, 05 May 2021 07:36:50 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.33..@fluentui/react-badge_v9.0.0-alpha.34)
 
 ### Changes
@@ -757,7 +757,7 @@ Wed, 05 May 2021 07:36:50 GMT
 
 ## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.33)
 
-Mon, 03 May 2021 07:45:19 GMT
+Mon, 03 May 2021 07:45:19 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.32..@fluentui/react-badge_v9.0.0-alpha.33)
 
 ### Changes
@@ -766,7 +766,7 @@ Mon, 03 May 2021 07:45:19 GMT
 
 ## [9.0.0-alpha.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.32)
 
-Fri, 30 Apr 2021 07:42:23 GMT
+Fri, 30 Apr 2021 07:42:23 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.31..@fluentui/react-badge_v9.0.0-alpha.32)
 
 ### Patches
@@ -781,7 +781,7 @@ Fri, 30 Apr 2021 07:42:23 GMT
 
 ## [9.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.31)
 
-Tue, 27 Apr 2021 07:34:03 GMT
+Tue, 27 Apr 2021 07:34:03 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.30..@fluentui/react-badge_v9.0.0-alpha.31)
 
 ### Changes
@@ -790,7 +790,7 @@ Tue, 27 Apr 2021 07:34:03 GMT
 
 ## [9.0.0-alpha.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.30)
 
-Mon, 26 Apr 2021 07:34:31 GMT
+Mon, 26 Apr 2021 07:34:31 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.29..@fluentui/react-badge_v9.0.0-alpha.30)
 
 ### Changes
@@ -799,7 +799,7 @@ Mon, 26 Apr 2021 07:34:31 GMT
 
 ## [9.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.29)
 
-Fri, 23 Apr 2021 07:37:10 GMT
+Fri, 23 Apr 2021 07:37:10 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.28..@fluentui/react-badge_v9.0.0-alpha.29)
 
 ### Patches
@@ -814,7 +814,7 @@ Fri, 23 Apr 2021 07:37:10 GMT
 
 ## [9.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.28)
 
-Thu, 22 Apr 2021 07:33:28 GMT
+Thu, 22 Apr 2021 07:33:28 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.27..@fluentui/react-badge_v9.0.0-alpha.28)
 
 ### Changes
@@ -823,7 +823,7 @@ Thu, 22 Apr 2021 07:33:28 GMT
 
 ## [9.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.27)
 
-Wed, 21 Apr 2021 07:31:50 GMT
+Wed, 21 Apr 2021 07:31:50 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.26..@fluentui/react-badge_v9.0.0-alpha.27)
 
 ### Changes
@@ -832,7 +832,7 @@ Wed, 21 Apr 2021 07:31:50 GMT
 
 ## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.26)
 
-Tue, 20 Apr 2021 07:31:35 GMT
+Tue, 20 Apr 2021 07:31:35 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.25..@fluentui/react-badge_v9.0.0-alpha.26)
 
 ### Changes
@@ -841,7 +841,7 @@ Tue, 20 Apr 2021 07:31:35 GMT
 
 ## [9.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.25)
 
-Fri, 16 Apr 2021 18:08:21 GMT
+Fri, 16 Apr 2021 18:08:21 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.24..@fluentui/react-badge_v9.0.0-alpha.25)
 
 ### Changes
@@ -850,7 +850,7 @@ Fri, 16 Apr 2021 18:08:21 GMT
 
 ## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.24)
 
-Wed, 14 Apr 2021 07:34:12 GMT
+Wed, 14 Apr 2021 07:34:12 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.23..@fluentui/react-badge_v9.0.0-alpha.24)
 
 ### Changes
@@ -859,7 +859,7 @@ Wed, 14 Apr 2021 07:34:12 GMT
 
 ## [9.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.23)
 
-Fri, 09 Apr 2021 07:31:06 GMT
+Fri, 09 Apr 2021 07:31:06 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.22..@fluentui/react-badge_v9.0.0-alpha.23)
 
 ### Changes
@@ -868,7 +868,7 @@ Fri, 09 Apr 2021 07:31:06 GMT
 
 ## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.22)
 
-Thu, 08 Apr 2021 07:33:06 GMT
+Thu, 08 Apr 2021 07:33:06 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.21..@fluentui/react-badge_v9.0.0-alpha.22)
 
 ### Changes
@@ -877,7 +877,7 @@ Thu, 08 Apr 2021 07:33:06 GMT
 
 ## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.21)
 
-Thu, 01 Apr 2021 20:13:37 GMT
+Thu, 01 Apr 2021 20:13:37 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.20..@fluentui/react-badge_v9.0.0-alpha.21)
 
 ### Changes
@@ -886,7 +886,7 @@ Thu, 01 Apr 2021 20:13:37 GMT
 
 ## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.20)
 
-Wed, 31 Mar 2021 00:53:43 GMT
+Wed, 31 Mar 2021 00:53:43 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.19..@fluentui/react-badge_v9.0.0-alpha.20)
 
 ### Patches
@@ -901,7 +901,7 @@ Wed, 31 Mar 2021 00:53:43 GMT
 
 ## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.19)
 
-Tue, 30 Mar 2021 07:34:45 GMT
+Tue, 30 Mar 2021 07:34:45 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.18..@fluentui/react-badge_v9.0.0-alpha.19)
 
 ### Changes
@@ -910,7 +910,7 @@ Tue, 30 Mar 2021 07:34:45 GMT
 
 ## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.18)
 
-Fri, 26 Mar 2021 07:32:34 GMT
+Fri, 26 Mar 2021 07:32:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.17..@fluentui/react-badge_v9.0.0-alpha.18)
 
 ### Changes
@@ -919,7 +919,7 @@ Fri, 26 Mar 2021 07:32:34 GMT
 
 ## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.17)
 
-Thu, 25 Mar 2021 07:33:24 GMT
+Thu, 25 Mar 2021 07:33:24 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.16..@fluentui/react-badge_v9.0.0-alpha.17)
 
 ### Changes
@@ -928,7 +928,7 @@ Thu, 25 Mar 2021 07:33:24 GMT
 
 ## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.16)
 
-Wed, 24 Mar 2021 07:32:21 GMT
+Wed, 24 Mar 2021 07:32:21 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.15..@fluentui/react-badge_v9.0.0-alpha.16)
 
 ### Changes
@@ -937,7 +937,7 @@ Wed, 24 Mar 2021 07:32:21 GMT
 
 ## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.15)
 
-Tue, 23 Mar 2021 07:31:43 GMT
+Tue, 23 Mar 2021 07:31:43 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.14..@fluentui/react-badge_v9.0.0-alpha.15)
 
 ### Changes
@@ -946,7 +946,7 @@ Tue, 23 Mar 2021 07:31:43 GMT
 
 ## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.14)
 
-Thu, 18 Mar 2021 20:15:34 GMT
+Thu, 18 Mar 2021 20:15:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.13..@fluentui/react-badge_v9.0.0-alpha.14)
 
 ### Changes
@@ -955,7 +955,7 @@ Thu, 18 Mar 2021 20:15:34 GMT
 
 ## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.13)
 
-Wed, 17 Mar 2021 18:08:23 GMT
+Wed, 17 Mar 2021 18:08:23 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.12..@fluentui/react-badge_v9.0.0-alpha.13)
 
 ### Changes
@@ -964,7 +964,7 @@ Wed, 17 Mar 2021 18:08:23 GMT
 
 ## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.12)
 
-Wed, 17 Mar 2021 07:35:44 GMT
+Wed, 17 Mar 2021 07:35:44 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.11..@fluentui/react-badge_v9.0.0-alpha.12)
 
 ### Changes
@@ -974,7 +974,7 @@ Wed, 17 Mar 2021 07:35:44 GMT
 
 ## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.11)
 
-Tue, 16 Mar 2021 07:32:44 GMT
+Tue, 16 Mar 2021 07:32:44 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.10..@fluentui/react-badge_v9.0.0-alpha.11)
 
 ### Patches
@@ -987,7 +987,7 @@ Tue, 16 Mar 2021 07:32:44 GMT
 
 ## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.10)
 
-Mon, 15 Mar 2021 07:36:20 GMT
+Mon, 15 Mar 2021 07:36:20 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.9..@fluentui/react-badge_v9.0.0-alpha.10)
 
 ### Changes
@@ -996,7 +996,7 @@ Mon, 15 Mar 2021 07:36:20 GMT
 
 ## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.9)
 
-Fri, 12 Mar 2021 20:04:27 GMT
+Fri, 12 Mar 2021 20:04:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.8..@fluentui/react-badge_v9.0.0-alpha.9)
 
 ### Patches
@@ -1009,7 +1009,7 @@ Fri, 12 Mar 2021 20:04:27 GMT
 
 ## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.8)
 
-Wed, 10 Mar 2021 07:34:39 GMT
+Wed, 10 Mar 2021 07:34:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.7..@fluentui/react-badge_v9.0.0-alpha.8)
 
 ### Changes
@@ -1018,7 +1018,7 @@ Wed, 10 Mar 2021 07:34:39 GMT
 
 ## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.7)
 
-Fri, 05 Mar 2021 20:30:59 GMT
+Fri, 05 Mar 2021 20:30:59 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.6..@fluentui/react-badge_v9.0.0-alpha.7)
 
 ### Changes
@@ -1027,7 +1027,7 @@ Fri, 05 Mar 2021 20:30:59 GMT
 
 ## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.6)
 
-Wed, 03 Mar 2021 00:10:09 GMT
+Wed, 03 Mar 2021 00:10:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.5..@fluentui/react-badge_v9.0.0-alpha.6)
 
 ### Changes
@@ -1036,7 +1036,7 @@ Wed, 03 Mar 2021 00:10:09 GMT
 
 ## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.5)
 
-Tue, 02 Mar 2021 07:24:27 GMT
+Tue, 02 Mar 2021 07:24:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.4..@fluentui/react-badge_v9.0.0-alpha.5)
 
 ### Changes
@@ -1045,7 +1045,7 @@ Tue, 02 Mar 2021 07:24:27 GMT
 
 ## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.4)
 
-Fri, 26 Feb 2021 01:16:27 GMT
+Fri, 26 Feb 2021 01:16:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.3..@fluentui/react-badge_v9.0.0-alpha.4)
 
 ### Patches
@@ -1061,7 +1061,7 @@ Fri, 26 Feb 2021 01:16:27 GMT
 
 ## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.3)
 
-Thu, 25 Feb 2021 20:16:39 GMT
+Thu, 25 Feb 2021 20:16:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.2..@fluentui/react-badge_v9.0.0-alpha.3)
 
 ### Changes
@@ -1070,7 +1070,7 @@ Thu, 25 Feb 2021 20:16:39 GMT
 
 ## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.2)
 
-Thu, 25 Feb 2021 01:15:27 GMT
+Thu, 25 Feb 2021 01:15:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.1..@fluentui/react-badge_v9.0.0-alpha.2)
 
 ### Patches
@@ -1079,7 +1079,7 @@ Thu, 25 Feb 2021 01:15:27 GMT
 
 ## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.1)
 
-Wed, 24 Feb 2021 00:05:29 GMT
+Wed, 24 Feb 2021 00:05:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v0.2.0..@fluentui/react-badge_v9.0.0-alpha.1)
 
 ### Changes

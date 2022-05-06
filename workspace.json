@@ -266,9 +266,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-badge": {
-      "root": "packages/react-components/react-badge",
+      "root": "packages/react-badge",
       "projectType": "library",
-      "sourceRoot": "packages/react-components/react-badge/src",
+      "sourceRoot": "packages/react-badge/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
