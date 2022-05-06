@@ -26,7 +26,18 @@ export type SliderOnChangeData = {
 };
 
 // @public (undocumented)
-export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommons;
+export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & {
+    defaultValue?: number;
+    value?: number;
+    min?: number;
+    max?: number;
+    step?: number;
+    disabled?: boolean;
+    vertical?: boolean;
+    origin?: number;
+    size?: 'small' | 'medium';
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
+};
 
 // @public (undocumented)
 export type SliderSlots = {
@@ -39,7 +50,7 @@ export type SliderSlots = {
 };
 
 // @public (undocumented)
-export type SliderState = ComponentState<SliderSlots> & SliderCommons;
+export type SliderState = ComponentState<SliderSlots> & Pick<SliderProps, 'value' | 'defaultValue' | 'disabled' | 'max' | 'min' | 'origin' | 'size' | 'step' | 'vertical' | 'onChange'>;
 
 // @public
 export const useSlider_unstable: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
