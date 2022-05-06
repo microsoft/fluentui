@@ -28,21 +28,21 @@ export type TextareaProps = Omit<
    *
    * @default none
    */
-  resize: 'none' | 'horizontal' | 'vertical' | 'both';
+  resize?: 'none' | 'horizontal' | 'vertical' | 'both';
 
   /**
    * Size of the Textarea.
    *
    * @default medium
    */
-  size: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 
   /**
    * Styling the Textarea should use.
    *
    * @default outline
    */
-  appearance: 'outline' | 'filledDarker' | 'filledLighter';
+  appearance?: 'outline' | 'filledDarker' | 'filledLighter';
 
   /**
    * The value of the Textarea.
@@ -63,7 +63,8 @@ export type TextareaProps = Omit<
 /**
  * State used in rendering Textarea
  */
-export type TextareaState = ComponentState<TextareaSlots> & Pick<TextareaProps, 'resize' | 'size' | 'appearance'>;
+export type TextareaState = ComponentState<TextareaSlots> &
+  Required<Pick<TextareaProps, 'appearance' | 'resize' | 'size'>>;
 
 /**
  * Data passed to the `onChange` callback when the textarea's value changes.
