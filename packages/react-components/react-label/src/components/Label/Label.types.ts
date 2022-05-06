@@ -1,6 +1,16 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-type LabelCommons = {
+/**
+ * Label Props
+ */
+export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
+  /**
+   * Displays an indicator that the label is for a required field. The required prop can be set to true to display
+   * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
+   * @default false
+   */
+  required?: boolean | Slot<'span'>;
+
   /**
    * Renders the label as disabled
    * @default false
@@ -28,17 +38,4 @@ export type LabelSlots = {
 /**
  * State used in rendering Label
  */
-export type LabelState = ComponentState<LabelSlots> & LabelCommons;
-
-/**
- * Label Props
- */
-export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
-  Partial<LabelCommons> & {
-    /**
-     * Displays an indicator that the label is for a required field. The required prop can be set to true to display
-     * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
-     * @default false
-     */
-    required?: boolean | Slot<'span'>;
-  };
+export type LabelState = ComponentState<LabelSlots> & Pick<LabelProps, 'disabled' | 'size' | 'strong'>;
