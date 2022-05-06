@@ -24,7 +24,7 @@ export const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, Avatar
       verticalAlign: 'middle',
       height: sizeInRem,
       width: sizeInRem,
-      fontWeight: v.fontWeightSemibold,
+      fontWeight: v.initialsFontWeight,
     };
   },
 };

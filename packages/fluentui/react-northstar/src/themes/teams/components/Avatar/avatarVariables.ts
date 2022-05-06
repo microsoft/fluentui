@@ -8,7 +8,7 @@ export type LabelColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeo
 export interface AvatarVariables {
   avatarBorderColor: string;
   avatarBorderWidth: string;
-  fontWeightSemibold: string;
+  initialsFontWeight: string;
   squareAvatarBorderRadius: string;
   iconColor: string;
   iconBackgroundColor: string;
@@ -42,7 +42,7 @@ export interface AvatarVariables {
 export const avatarVariables = (siteVariables): AvatarVariables => ({
   avatarBorderColor: '',
   avatarBorderWidth: '0',
-  fontWeightSemibold: siteVariables.fontWeightSemibold,
+  initialsFontWeight: siteVariables.fontWeightSemibold,
   squareAvatarBorderRadius: siteVariables.borderRadiusMedium,
   iconColor: siteVariables.colors.white,
   iconBackgroundColor: siteVariables.colors.brand[600],
