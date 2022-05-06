@@ -28,7 +28,8 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "^1.0.0",
+    "react-hook-form": "^5.7.2"
   },
   "dependencies": {
     "@fluentui/react-accordion": "9.0.0-rc.9",
