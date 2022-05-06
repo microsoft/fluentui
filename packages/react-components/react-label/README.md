@@ -8,7 +8,7 @@ Labels provide a name or title to a component or group of components, e.g., text
 
 ## Usage
 
-To use the `Label` component import it from ` and use it as shown below.
+To use the `Label` component import it from `@fluentui/react-components` and use it as shown below.
 
 ```tsx
 import * as React from 'react';

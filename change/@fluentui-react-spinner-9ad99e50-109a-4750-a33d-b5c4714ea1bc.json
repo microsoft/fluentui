@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "updated react-label package version",
+  "comment": "Updated react-label package version to RC.",
   "packageName": "@fluentui/react-spinner",
   "email": "esteban.230@hotmail.com",
   "dependentChangeType": "patch"
