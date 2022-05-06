@@ -27,29 +27,26 @@ export type SpinButtonChangeEvent = React_2.MouseEvent<HTMLButtonElement> | Reac
 export const spinButtonClassNames: SlotClassNames<SpinButtonSlots>;
 
 // @public (undocumented)
-export type SpinButtonCommons = {
-    defaultValue: number;
-    value: number;
-    displayValue: string;
-    min: number;
-    max: number;
-    step: number;
-    stepPage: number;
-    onChange: (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => void;
-    precision: number;
-    appearance: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-    size: 'small' | 'medium';
-    strings?: SpinButtonStrings;
-};
-
-// @public (undocumented)
 export type SpinButtonOnChangeData = {
     value?: number;
     displayValue?: string;
 };
 
 // @public
-export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'input'>, 'onChange' | 'size'> & Partial<SpinButtonCommons>;
+export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'input'>, 'onChange' | 'size'> & {
+    defaultValue?: number;
+    value?: number;
+    displayValue?: string;
+    min?: number;
+    max?: number;
+    step?: number;
+    stepPage?: number;
+    onChange?: (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => void;
+    precision?: number;
+    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    size?: 'small' | 'medium';
+    strings?: SpinButtonStrings;
+};
 
 // @public (undocumented)
 export type SpinButtonSlots = {
@@ -63,7 +60,7 @@ export type SpinButtonSlots = {
 export type SpinButtonSpinState = 'rest' | 'up' | 'down';
 
 // @public
-export type SpinButtonState = ComponentState<SpinButtonSlots> & Partial<SpinButtonCommons> & Pick<SpinButtonCommons, 'appearance' | 'size'> & {
+export type SpinButtonState = ComponentState<SpinButtonSlots> & Partial<Exclude<SpinButtonProps, keyof SpinButtonSlots>> & Required<Pick<SpinButtonProps, 'appearance' | 'size'>> & {
     spinState: SpinButtonSpinState;
     atBound: SpinButtonBounds;
 };

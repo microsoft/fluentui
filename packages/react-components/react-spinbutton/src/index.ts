@@ -8,7 +8,6 @@ export {
 export type {
   SpinButtonOnChangeData,
   SpinButtonChangeEvent,
-  SpinButtonCommons,
   SpinButtonProps,
   SpinButtonSlots,
   SpinButtonState,
