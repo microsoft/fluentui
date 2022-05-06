@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { Combobox } from './Combobox';
+import { ComboboxBase } from './ComboboxBase';
 import { isConformant } from '../../common/isConformant';
 
-describe('Combobox', () => {
+describe('ComboboxBase', () => {
   isConformant({
-    Component: Combobox,
-    displayName: 'Combobox',
+    Component: ComboboxBase,
+    displayName: 'ComboboxBase',
     primarySlot: 'input',
-    // don't test derpecated className export on new components
+    // don't test deprecated className export on new components
     disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
@@ -26,7 +26,7 @@ describe('Combobox', () => {
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<Combobox>Default Combobox</Combobox>);
+    const result = render(<ComboboxBase>Default ComboboxBase</ComboboxBase>);
     expect(result.container).toMatchSnapshot();
   });
 });

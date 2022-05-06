@@ -3,7 +3,7 @@ import type { ComboboxState } from '../Combobox/Combobox.types';
 
 export type ComboButtonSlots = {
   /* The wrapper slot */
-  root: NonNullable<Slot<'div'>>;
+  root: NonNullable<Slot<'span'>>;
 
   /* The primary slot, a `<button>` with `role="combobox"` */
   content: NonNullable<Slot<'button'>>;

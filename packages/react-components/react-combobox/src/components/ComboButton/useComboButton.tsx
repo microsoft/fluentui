@@ -30,7 +30,7 @@ export const useComboButton_unstable = (
 
   return {
     components: {
-      root: 'div',
+      root: 'span',
       content: 'button',
       expandIcon: 'span',
     },

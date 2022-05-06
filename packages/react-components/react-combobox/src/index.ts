@@ -14,21 +14,23 @@ export {
   useOption_unstable,
 } from './Option';
 export type { OptionProps, OptionSlots, OptionState } from './Option';
+export { Combobox, comboboxClassNames, useComboboxStyles_unstable, useCombobox_unstable } from './Combobox';
+export type { ComboboxProps, ComboboxSlots, ComboboxState } from './Combobox';
 export {
-  Combobox,
-  comboboxClassNames,
-  renderCombobox_unstable,
-  useComboboxStyles_unstable,
-  useCombobox_unstable,
-} from './Combobox';
+  ComboboxBase,
+  comboboxBaseClassNames,
+  renderComboboxBase_unstable,
+  useComboboxBaseStyles_unstable,
+  useComboboxBase_unstable,
+} from './ComboboxBase';
 export type {
   ComboboxContextValues,
   ComboboxOpenChangeData,
   ComboboxOpenEvents,
-  ComboboxProps,
-  ComboboxSlots,
-  ComboboxState,
-} from './Combobox';
+  ComboboxBaseProps,
+  ComboboxBaseSlots,
+  ComboboxBaseState,
+} from './ComboboxBase';
 export {
   ComboButton,
   comboButtonClassNames,
@@ -37,6 +39,8 @@ export {
   useComboButton_unstable,
 } from './ComboButton';
 export type { ComboButtonProps, ComboButtonSlots, ComboButtonState } from './ComboButton';
+export { Dropdown, dropdownClassNames, useDropdownStyles_unstable, useDropdown_unstable } from './Dropdown';
+export type { DropdownProps, DropdownSlots, DropdownState } from './Dropdown';
 export {
   OptionGroup,
   optionGroupClassNames,
