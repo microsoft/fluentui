@@ -1,0 +1,1160 @@
+{
+  "name": "@fluentui/react-theme",
+  "entries": [
+    {
+      "date": "Thu, 05 May 2022 18:26:27 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.7",
+      "version": "9.0.0-rc.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "cb0b4bd7ac79ccf27539a12104f651f5d330e464",
+            "comment": "Export TypographyStyle type"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "975977d075e01a9091fcf2b9b84c14f829135fa7",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "d325a31bcd5d144e2a40ee4bf085e8ef6b3f5d73",
+            "comment": "Added ms suffix to durations"
+          }
+        ],
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "00a4a1dd582f5695b7cb9bba48fb8537534bbec0",
+            "comment": "Generate theme tokens using token pipeline"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 May 2022 13:26:33 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.6",
+      "version": "9.0.0-rc.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "27ba5613b1253801c3ae4e2aba0fc9eb2ae464b8",
+            "comment": "Add px suffix to spacings"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "75ad2567f62e804a8deb3ea6016ba8a674c45627",
+            "comment": "Fixed typo in typography"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "7ad290b51135cb84c84e7dd8771bd712892c7484",
+            "comment": "Fixed line-height in title2"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "57583bfffa6bf28be389dec6c642f36ed253ecdd",
+            "comment": "Added global theme types and tokens"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "3e0ff753cbb3375f28477b2249ecd8b012e2e946",
+            "comment": "fix(react-theme): Update CompoundBrandBackground and BrandStroke1"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "354c4f6290d7957345fd53a8f26c8f5472ff92db",
+            "comment": "Add base font family per figma"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "78da3be7484d156379a105048c535767f7e1b85f",
+            "comment": "Added typeography styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "e45629a0978492d5a8a44934f5263e47862ac8b3",
+            "comment": "feat(react-theme): Add colorNeutralForeground2Link color tokens"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "8ec3d32fa26e6cf803ab9d18671fd51ba06c74ab",
+            "comment": "react-theme: Move to new common folder."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Apr 2022 19:17:02 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.5",
+      "version": "9.0.0-rc.5",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "d7e4ddf20d1ecb71d3dfc450c65ffde8c7394e3b",
+            "comment": "fix(react-theme): Update yellow shared color"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "a91094de0bcf0467126052b6785fcbddd5ef0045",
+            "comment": "feat(react-theme): update color tokens"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Mar 2022 05:17:31 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Feb 2022 13:35:36 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Feb 2022 08:51:02 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "636b848aa2323fd5d450e2206a71afad93aaa578",
+            "comment": "chore(react-theme) Add theme tokens bundle size fixture"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "fa3937813e6587d90ab5c43579321004fc37d6e9",
+            "comment": "feat(react-theme): Add colorNeutralForeground1Static token"
+          },
+          {
+            "author": "andmarti@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "3ca42a594827a2ce3d5d18fcd4a399c92fda3bd7",
+            "comment": "updating brand colors"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "b382d0421440e0854673a7967137d6c667544f91",
+            "comment": "feat: Export tokens as mapping to CSS variables"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "d7479a7414e636731b678aebb6bf6295fd607fda",
+            "comment": "Extend brand ramp from 13 to 16 tokens"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "1dba2fca2365f1a748505896679ae160a6fec270",
+            "comment": "remove mergeThemes API"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "1c2a4410205d3c86bc885fb74d6aede75d9bd99d",
+            "comment": "Theme: Adding function to programmatically generate tokens object based on a theme."
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c9a03954ffd5d1a85284fb36ef4cd103ed8aa927",
+            "comment": "Remove `themeToCSSVariables` function"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "8985d65f0aac448c6766d27800922224555be0f4",
+            "comment": "feat(react-theme) Add border1 color token for shared colors"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c00913d50e2dd15bbfbb0757cefe43b192ff1d7f",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 08:34:16 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-beta.4",
+      "version": "9.0.0-beta.4",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "66670cf47c716e284c7ac7ae5f25d1f77f3aced3",
+            "comment": "update tooling configs"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "0a328c7a57bfa78ff9a4cd896f17e2887da64bec",
+            "comment": "feat(react-theme): update shadow design tokens"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Nov 2021 13:25:09 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "fe9829e4818f9bb7206df37747d5da332706ae4b",
+            "comment": "feat(react-theme): add/update design tokens"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Oct 2021 12:14:23 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-beta.2",
+      "version": "9.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "f81b28ceb3d5d5d52a4f7e7ce50f99aed9832109",
+            "comment": "fix(reat-theme): Remove template literal types for color palette"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-theme",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Oct 2021 10:37:22 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "comment": "Bump all v9 components to beta prerelease tag",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Oct 2021 14:13:08 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.26",
+      "version": "9.0.0-alpha.26",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "comment": "Bump v9 prerelease versions to rerelease",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          }
+        ],
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "comment": "docs(react-theme): fix shadows story",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Sep 2021 08:06:11 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.24",
+      "version": "9.0.0-alpha.24",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "comment": "Use direct values in alias tokens",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Sep 2021 07:42:34 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.23",
+      "version": "9.0.0-alpha.23",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "comment": "Theme: Updating value of borderRadius global token.",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.22",
+      "version": "9.0.0-alpha.22",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.22",
+      "version": "9.0.0-alpha.22",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating TypeScript type-only imports/exports to use import/export type syntax.",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-theme"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.21",
+      "version": "9.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update .npmignore",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-theme"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Enable exhaustive-deps rule for useIsomorphicLayoutEffect",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-theme"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.3",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add global alpha tokens",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "aa570c511fdcef015696f07182af8bb251311406",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update tokens",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "5d812148593dc574a6f3a343a5657614b4d10456",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Jul 2021 07:37:06 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "chore(react-theme): Migrate to new DX",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7222c057ece8a528431a1860223d9d920685f975",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 07:34:33 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.15",
+      "version": "9.0.0-alpha.15",
+      "comments": {
+        "none": [
+          {
+            "comment": "doc(react-theme): Improve alias color tokens story",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Jun 2021 07:38:15 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.15",
+      "version": "9.0.0-alpha.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Jun 2021 07:36:03 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.14",
+      "version": "9.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update theme tokens",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "32aed1a91b19ac1beb161a7a2ab43e78b51f53d1",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Jun 2021 07:31:58 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "Revert \"chore: enable Jest aliases for converged packages (#18337)\"",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 May 2021 07:33:57 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "enable Jest aliases",
+            "author": "olfedias@microsoft.com",
+            "commit": "5379823a6f53bd36a936806153d228b9a0ef0543",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 May 2021 07:34:54 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(react-theme): Collocate stories",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "3f78f90075ae78bfd28f7d498ae8f012f0221279",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 May 2021 07:41:54 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 May 2021 07:34:20 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "chore: add more Babel plugins",
+            "author": "olfedias@microsoft.com",
+            "commit": "975140887c6ad2391f8db63003ed440239ec9c25",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 May 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "perf: avoid deep merge in mergeThemes() if possible",
+            "author": "olfedias@microsoft.com",
+            "commit": "d1d73e5ea7be50ad93077fad7d3b05af4db1cc94",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Upgrade to ts 4.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-theme"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Apr 2021 07:33:33 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unneeded react-app-polyfill devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "fdc32557d49e5d70ea7e4af8957102d415b44547",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Apr 2021 07:33:06 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Renaming all instances of ghost to subtle per the latest design guidelines.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "25e841e469f1a7b33278f8a5dccd2f7865b3a557",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 00:53:43 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove set-version references",
+            "author": "elcraig@microsoft.com",
+            "commit": "b0bef818ea07833d9b9797ef26a4b24200ed0307",
+            "package": "@fluentui/react-theme"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove unneeded scripts",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove set-version dependency from converged components",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "712ca04cd82ad2b3426762a409cdce05a7cc80fc",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Mar 2021 07:24:27 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix cranberry color alias",
+            "author": "behowell@microsoft.com",
+            "commit": "b97a96052d0b4c0c1d2f280bdb01f443f8d9bc63",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "remove dependency on @fluentui/utilities",
+            "author": "olfedias@microsoft.com",
+            "commit": "529d34473f30680fa35928e0d977434ab2ed2173",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update references to major-bumped packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-theme"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Changing incorrect value for brandForegroundPressed token from brand.shade30 to brand.shade40.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "40e4e2ed855e0b2a4ac67a462f2b79919aef868b",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "bump version to v9",
+            "author": "olfedias@microsoft.com",
+            "commit": "74da15f2f1fb10fe089fcaef24a47ac5dba89ad2",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/react-theme_v0.3.3",
+      "version": "0.3.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add SizeValues type",
+            "author": "junioassuncaocharles@gmail.com",
+            "commit": "aafa83d81733e74a141773df6fd38d935739ff17",
+            "package": "@fluentui/react-theme"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.15",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-theme_v0.3.2",
+      "version": "0.3.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find.",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-theme"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.14",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/react-theme_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.13",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/react-theme_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.0-beta.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/react-theme_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.12",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/react-theme_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.11",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/react-theme_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.11",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/react-theme_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix mergeThemes() to avoid object's mutation",
+            "author": "olfedias@microsoft.com",
+            "commit": "e6a1c491a67b911cc285fcc9d89b6fca152aacd9",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Feb 2021 12:23:08 GMT",
+      "tag": "@fluentui/react-theme_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update converged theme shape",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-theme_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "add missing Jest config",
+            "author": "olfedias@microsoft.com",
+            "commit": "e68a6c887cbc45ddb111b6a0c3c8a21ab4a17256",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Remove .npmrc files except at root",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Feb 2021 12:21:54 GMT",
+      "tag": "@fluentui/react-theme_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: add basic theme utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "026320cfc0408dbc2d25d3959856d787ef21d344",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    }
+  ]
+}

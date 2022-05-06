@@ -2,7 +2,7 @@
 
 ---
 
-_List contributors to the proposal here_: @miroslavstastny
+_List contributors to the proposal here_: @miroslavstastny @ling1726
 
 ## Summary
 
@@ -10,26 +10,20 @@ High contrast theme should use system colors if user enables forced colors in th
 
 ## Problem statement
 
-<!--
-Why are we making this change? What problem are we solving? What do we expect to gain from this?
-
-This section is important as the motivation or problem statement is indepenent from the proposed change. Even if this RFC is not accepted this Motivation can be used for alternative solutions.
-
-In the end, please make sure to present a neutral Problem statement, rather than one that motivates a particular solution
--->
-
-`react-components` support High Contrast theme. There are currently two problems with the theme:
-
-1. Even if user configures their Windows to use high contrast, they need to explicitly set High Contrast (HC) theme in Fluent UI (FUI) application.
-2. Fluent UI High Contrast theme uses colors chosen by designers. Those are always light on dark with hardcoded colors - users cannot choose to use dark on light HC theme or customise the colors used - this might limit users with specific visual impairments.
-
-This RFC does not address the first issue - after the change, users will still need to opt-in to use HC theme in FUI application. This can be discussed and addressed in a separate RFC.
-
-The main topic of the RFC is the second issue - HC FUI theme driven by System HC color theme.
+`react-components` contains a hard coded color theme that matches the colour palette of the default dark Windows 10 High Contrast theme.
+Since the addition of this theme can cause confusion for users, this RFC tries to clarify the approach taken by `@fluentui/react-components`
+to support high contrast modes.
 
 ## Detailed Design or Proposal
 
+It is important to state that **Windows high contrast mode is supported by default in Fluent UI**. Furthermore,
+using Windows high contrast mode is recommended to all customers that are using Fluent UI. The sections below
+will explain the implementation and the reasoning behind a separate hard coded high contrast theme withith Fluent UI.
+
 ### Windows implementation
+
+> The general guidance for Windows high contrast mode is to do as little as possible and only intervene when the OS color palette is insufficient.
+> Fluent UI has first class accessibility support in Windows high contrast mode.
 
 In Windows 10 (version 1909) user can enable HC theme in system settings and also customize colors used. These settings are reflected in modern browsers (tested in Chrome 89 and Edge 89) by using `forced-colors` and `prefers-color-scheme` media queries:
 
@@ -79,49 +73,18 @@ The screenshots are from a [codesandbox showing the usage of CSS system colors](
 Current HC FUI theme uses the following five colors - `white`, `black`, `hyperlink`, `disabled`, `selected`:
 ![Current HC colors](../../assets/high-contrast-theme-current-colors.png).
 
-A simple solution would be to create five new color tokens and, using a combination of `forced-colors` media query and css variables, map them to the FUI colors if `forced-colors` are not active and to system colors if `forced-colors` are active.
-After discussion with design, we decided to use all the eight colors currently available in Windows High Contrast theme. That adds HighlightText, ButtonText and ButtonFace to the 5 colors which are currently used in the high contrast theme.
+The implementation of the hard coded high contrast theme in Fluent UI, is mainly driven by designers. The existence
+of this theme (rather than allowing OS to handle all high contrast theming) is driven by the fact that not all
+platforms can be controlled by the operating system. For example, the Electron browser does not recognize input
+from the operating system about `forced-colors`. MacOS uses its own propietary color inverting as a means of support
+for high contrast which does not follow Windows. In these scenarios it would be appropriate to use the hard coded
+high contrast theme to either add high contrast support where there is none, or ensure some level of consistency
+with the Windows operating system.
 
-#### Mapping table
-
-| Token        | FUI color     | System color  |
-| ------------ | ------------- | ------------- |
-| hcCanvas     | black         | Canvas        |
-| hcCanvasText | white         | CanvasText    |
-| hcHyperlink  | hyperlink     | LinkText      |
-| hcDisabled   | disabled      | GrayText      |
-| hcSelected   | selected      | Highlight     |
-| tbd          | not available | HighlightText |
-| tbd          | not available | ButtonText    |
-| tbd          | not available | ButtonFace    |
-
-#### Example code
-
-```css
-/* FUI colors */
-:root {
-  --global-color-hc-canvas: var(--global-color-black); /* #000000 */
-  --global-color-hc-canvas-text: var(--global-color-white); /* #FFFFFF */
-  --global-color-hc-hyperlink: var(--global-color-hyperlink); /* #FFFF00 */
-  --global-color-hc-disabled: var(--global-color-selected); /* #1AEBFF */
-  --global-color-hc-selected: var(--global-color-disabled); /* #3FF23F */
-}
-
-@media (forced-colors: active) {
-  /* System colors */
-  :root {
-    --global-color-hc-canvas: Canvas;
-    --global-color-hc-canvas-text: CanvasText;
-    --global-color-hc-hyperlink: LinkText;
-    --global-color-hc-disabled: GrayText;
-    --global-color-hc-selected: Highlight;
-  }
-}
-```
-
-### Allowing custom colors
-
-When HC theme is enabled in Windows, browsers enforce the system colors based on semantics. In that case styling options are quite limited. To avoid the limitation, a web application can set `forced-color-adjust: none` CSS property. FUI theme will set it on its root.
+While there are benefits of providing a theme that provides more contrast than others, it is not necessary. The reasons
+for this theme are the result of technical contraints for certain platforms and a certain amount of legacy.
+Users should be warned that for the highest class of accessibility support, apps need to fully support windows high
+contrast mode. This theme does not contribute to that goal.
 
 ### Other operating systems
 

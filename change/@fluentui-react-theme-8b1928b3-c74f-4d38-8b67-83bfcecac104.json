@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fixed typo in typography",
-  "packageName": "@fluentui/react-theme",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

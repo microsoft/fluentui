@@ -1,11 +1,9 @@
 import * as React from 'react';
 
 import { Button } from '@fluentui/react-button';
+
 import { Tooltip } from '@fluentui/react-tooltip';
 
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { TextItalic24Regular, TextUnderline24Regular, TextBold24Regular } from '@fluentui/react-icons';
 
 import { Scenario } from './utils';
