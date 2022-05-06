@@ -47,11 +47,9 @@ With a defined browser matrix, the Fluent team will now have better guidance on 
 
 ### Cons
 
-- Incompatible CSS features (`flex gap`) are already present in the library and will need to be refactored.
+- Incompatible CSS features (`flex gap`) are already present in the library and will need to be removed and refactored.
 
 ## Open Issues
-
----
 
 - [#22704](https://github.com/microsoft/fluentui/issues/22704)
 - [#22273](https://github.com/microsoft/fluentui/issues/22273)
