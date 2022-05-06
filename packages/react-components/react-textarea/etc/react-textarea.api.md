@@ -21,13 +21,13 @@ export const Textarea: ForwardRefComponent<TextareaProps>;
 export const textareaClassNames: SlotClassNames<TextareaSlots>;
 
 // @public
-export type TextareaProps = Omit<ComponentProps<Partial<TextareaSlots>, 'textarea'>, 'value' | 'defaultValue' | 'onChange' | 'size'> & {
-    resize?: 'none' | 'horizontal' | 'vertical' | 'both';
-    size?: 'small' | 'medium' | 'large';
+export type TextareaProps = Omit<ComponentProps<Partial<TextareaSlots>, 'textarea'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & {
     appearance?: 'outline' | 'filledDarker' | 'filledLighter';
-    value?: string;
     defaultValue?: string;
     onChange?: (ev: React_2.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
+    resize?: 'none' | 'horizontal' | 'vertical' | 'both';
+    size?: 'small' | 'medium' | 'large';
+    value?: string;
 };
 
 // @public (undocumented)

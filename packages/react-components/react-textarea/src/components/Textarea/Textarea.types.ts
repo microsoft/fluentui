@@ -21,8 +21,25 @@ export type TextareaSlots = {
  */
 export type TextareaProps = Omit<
   ComponentProps<Partial<TextareaSlots>, 'textarea'>,
-  'value' | 'defaultValue' | 'onChange' | 'size'
+  'defaultValue' | 'onChange' | 'size' | 'value'
 > & {
+  /**
+   * Styling the Textarea should use.
+   *
+   * @default outline
+   */
+  appearance?: 'outline' | 'filledDarker' | 'filledLighter';
+
+  /**
+   * The default value of the Textarea.
+   */
+  defaultValue?: string;
+
+  /**
+   * Callback for when the user changes the value.
+   */
+  onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
+
   /**
    * Which direction the Textarea is allowed to be resized.
    *
@@ -38,26 +55,9 @@ export type TextareaProps = Omit<
   size?: 'small' | 'medium' | 'large';
 
   /**
-   * Styling the Textarea should use.
-   *
-   * @default outline
-   */
-  appearance?: 'outline' | 'filledDarker' | 'filledLighter';
-
-  /**
    * The value of the Textarea.
    */
   value?: string;
-
-  /**
-   * The default value of the Textarea.
-   */
-  defaultValue?: string;
-
-  /**
-   * Callback for when the user changes the value.
-   */
-  onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
 };
 
 /**
