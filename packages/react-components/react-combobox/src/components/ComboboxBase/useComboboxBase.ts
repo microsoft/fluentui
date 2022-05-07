@@ -26,7 +26,7 @@ import type { ComboboxBaseProps, ComboboxBaseState, ComboboxOpenEvents } from '.
  */
 export const useComboboxBase_unstable = (
   props: ComboboxBaseProps,
-  ref: React.Ref<HTMLButtonElement>,
+  ref: React.Ref<HTMLButtonElement> | React.Ref<HTMLInputElement>,
 ): ComboboxBaseState => {
   const optionCollection = useOptionCollection(props.children);
 
@@ -179,7 +179,7 @@ export const useComboboxBase_unstable = (
 
   // the trigger should open/close the popup on click or blur
   const { onBlur: onTriggerBlur, onClick: onTriggerClick, onKeyDown: onTriggerKeyDown } = state.input;
-  state.input.onBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
+  state.input.onBlur = (event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
     if (!ignoreTriggerBlur.current) {
       setOpen(event, false);
     }
@@ -189,14 +189,14 @@ export const useComboboxBase_unstable = (
     onTriggerBlur?.(event);
   };
 
-  state.input.onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  state.input.onClick = (event: React.MouseEvent<HTMLButtonElement> & React.MouseEvent<HTMLInputElement>) => {
     setOpen(event, !open);
 
     onTriggerClick?.(event);
   };
 
   // handle combobox keyboard interaction
-  state.input.onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+  state.input.onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement> & React.KeyboardEvent<HTMLInputElement>) => {
     const action = getDropdownActionFromKey(event, { open, multiselect });
     const maxIndex = count - 1;
     const activeIndex = activeOption ? getIndexOfKey(activeOption.key) : -1;

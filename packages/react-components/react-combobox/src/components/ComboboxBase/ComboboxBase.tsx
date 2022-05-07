@@ -10,7 +10,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * ComboboxBase component - TODO: add more docs
  */
 export const ComboboxBase: ForwardRefComponent<ComboboxBaseProps> = React.forwardRef((props, ref) => {
-  const state = useComboboxBase_unstable(props, ref);
+  const state = useComboboxBase_unstable(props, ref as React.Ref<HTMLInputElement>);
   const contextValues = useComboboxContextValues(state);
 
   useComboboxBaseStyles_unstable(state);
