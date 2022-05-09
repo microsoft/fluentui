@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "pass in icon props to presence badge icon slot, and use default strings",
+  "packageName": "@fluentui/react-badge",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
