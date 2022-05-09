@@ -11,6 +11,7 @@ export const Status = () => {
       <PresenceBadge status="doNotDisturb" />
       <PresenceBadge status="offline" />
       <PresenceBadge status="outOfOffice" />
+      <PresenceBadge icon={{ 'aria-label': 'OOF' }} status="outOfOffice" />
       <PresenceBadge status="unknown" />
     </>
   );

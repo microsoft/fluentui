@@ -11,8 +11,9 @@ import {
   presenceOofRegular,
   presenceUnknownRegular,
 } from './presenceIcons';
-import { useBadge_unstable, BadgeProps } from '../Badge/index';
+import { useBadge_unstable } from '../Badge/index';
 import type { PresenceBadgeProps, PresenceBadgeState } from './PresenceBadge.types';
+import { StatusRegular } from '@fluentui/react-icons';
 
 const iconMap = (
   status: PresenceBadgeState['status'],
@@ -37,6 +38,16 @@ const iconMap = (
   }
 };
 
+export const DEFAULT_STRINGS = {
+  busy: 'busy',
+  outOfOffice: 'out of office',
+  away: 'away',
+  available: 'available',
+  offline: 'offline',
+  doNotDisturb: 'do not disturb',
+  unknown: 'unknown',
+};
+
 /**
  * Returns the props and state required to render the component
  */
@@ -49,8 +60,11 @@ export const usePresenceBadge_unstable = (
       {
         size: 'medium',
         ...props,
-        icon: resolveShorthand(undefined as BadgeProps['icon'], {
+        icon: resolveShorthand(props.icon, {
           required: true,
+          defaultProps: {
+            'aria-label': props.status && DEFAULT_STRINGS[props.status],
+          },
         }),
       },
       ref,
