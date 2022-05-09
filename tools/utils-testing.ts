@@ -1,4 +1,5 @@
 import { stripIndents, Tree } from '@nrwl/devkit';
+import type { Chalk } from 'chalk';
 
 import { workspacePaths } from './utils';
 
@@ -14,4 +15,15 @@ export function setupCodeowners(tree: Tree, options: { withPlaceholder?: boolean
   );
 
   return tree;
+}
+
+export function disableChalk(chalkInstance: Chalk) {
+  chalkInstance.level = 0;
+}
+
+export function formatMockedCalls(values: string[][]) {
+  return values
+    .flat()
+    .map(line => line.trim())
+    .join('\n');
 }

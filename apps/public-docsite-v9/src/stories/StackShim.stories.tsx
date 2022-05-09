@@ -209,7 +209,7 @@ export const StackShimStory = () => {
 };
 
 export default {
-  title: 'Concepts/Upgrading/from v8/Stack/Shims',
+  title: 'Concepts/Upgrading/from v8/Shims/Stack',
   component: Button,
   decorators: [
     Story => (

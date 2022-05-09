@@ -78,6 +78,7 @@
     "@babel/preset-typescript": "7.14.5",
     "@babel/register": "7.14.5",
     "@babel/standalone": "7.14.8",
+    "@cactuslab/usepubsub": "^1.0.2",
     "@ctrl/tinycolor": "3.3.4",
     "@cypress/react": "5.12.4",
     "@cypress/webpack-dev-server": "1.8.3",
@@ -264,6 +265,7 @@
       "apps/*",
       "packages/*",
       "packages/fluentui/*",
+      "packages/react-components/*",
       "scripts",
       "tools",
       "typings"
@@ -300,6 +302,7 @@
       "package.json",
       "apps/*/package.json",
       "packages/!(web-components)/package.json",
+      "packages/react-components/*/package.json",
       "packages/fluentui/*/package.json",
       "scripts/package.json"
     ],

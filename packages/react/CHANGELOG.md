@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 25 Apr 2022 07:37:24 GMT and should not be manually modified.
+This log was last generated on Mon, 09 May 2022 07:37:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.67.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.67.3)
+
+Mon, 09 May 2022 07:37:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.67.2..@fluentui/react_v8.67.3)
+
+### Patches
+
+- Combobox: Fix issue where the ariaLabel was intended to be used as the preview text but it wasn't showing up ([PR #22826](https://github.com/microsoft/fluentui/pull/22826) by nameraj@microsoft.com)
+
+## [8.67.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.67.2)
+
+Thu, 28 Apr 2022 07:39:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.67.1..@fluentui/react_v8.67.2)
+
+### Patches
+
+- fix live regions in Calendar for JAWS ([PR #22643](https://github.com/microsoft/fluentui/pull/22643) by sarah.higley@microsoft.com)
+
+## [8.67.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.67.1)
+
+Wed, 27 Apr 2022 07:43:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.67.0..@fluentui/react_v8.67.1)
+
+### Patches
+
+- Fix HCM disabled checkmarks ([PR #22641](https://github.com/microsoft/fluentui/pull/22641) by mgodbolt@microsoft.com)
+- fix screen reader issues on calendar navigation buttons and combobox ([PR #22613](https://github.com/microsoft/fluentui/pull/22613) by conniechen@microsoft.com)
+- change ie11 fix from star selector to span to avoid perf issues ([PR #22642](https://github.com/microsoft/fluentui/pull/22642) by mgodbolt@microsoft.com)
 
 ## [8.67.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.67.0)
 

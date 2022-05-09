@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+  "extends": "./api-extractor.json",
+  "mainEntryPointFilePath": "<projectFolder>/dist/types/packages/react-components/<unscopedPackageName>/src/index.d.ts",
+  "compiler": {
+    /**
+     * This is a quickfix to make build:local work
+     * - @see https://github.com/microsoft/fluentui/issues/19360
+     * - config uses standard tsconfig.lib.json and overrides path aliases
+     */
+    "overrideTsconfig": {
+      "extends": "./tsconfig.lib.json",
+      "compilerOptions": {
+        "paths": {
+          "@fluentui/*": ["dist/*/src/index.d.ts"]
+        }
+      }
+    }
+  }
+}

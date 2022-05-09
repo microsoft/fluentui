@@ -331,7 +331,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       right: -2px;
                       top: -2px;
                     }
-                    &:active > * {
+                    &:active > span {
                       left: 0px;
                       position: relative;
                       top: 0px;
@@ -840,7 +840,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       right: -2px;
                       top: -2px;
                     }
-                    &:active > * {
+                    &:active > span {
                       left: 0px;
                       position: relative;
                       top: 0px;
