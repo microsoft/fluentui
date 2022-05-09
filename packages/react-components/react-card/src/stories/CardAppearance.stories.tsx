@@ -1,16 +1,20 @@
 import * as React from 'react';
-
 import { action } from '@storybook/addon-actions';
-import { Headline } from '@fluentui/react-text';
+import { Headline, Title3 } from '@fluentui/react-text';
 import { makeStyles, shorthands } from '@griffel/react';
-
 import { SampleCard } from './SampleCard.stories';
+import { FluentProvider } from '@fluentui/react-provider';
+import { webDarkTheme, webHighContrastTheme, webLightTheme } from '@fluentui/react-theme';
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'wrap',
+  },
+  themeContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.padding('16px'),
     ...shorthands.gap('16px'),
   },
   header: {
@@ -28,11 +32,12 @@ const Title = (props: { children: React.ReactNode }) => {
   );
 };
 
-export const Appearance = () => {
+const AppearanceExamples = (props: { title: string }) => {
   const styles = useStyles();
 
   return (
-    <div className={styles.container}>
+    <div className={styles.themeContainer}>
+      <Title3>{props.title}</Title3>
       <div>
         <Title>Filled (default)</Title>
         <SampleCard appearance="filled" />
@@ -65,6 +70,24 @@ export const Appearance = () => {
         <Title>Subtle - Interactive</Title>
         <SampleCard onClick={action('Subtle Card clicked')} appearance="subtle" />
       </div>
+    </div>
+  );
+};
+
+export const Appearance = () => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.container}>
+      <FluentProvider theme={webLightTheme}>
+        <AppearanceExamples title="Light theme" />
+      </FluentProvider>
+      <FluentProvider theme={webDarkTheme}>
+        <AppearanceExamples title="Dark theme" />
+      </FluentProvider>
+      <FluentProvider theme={webHighContrastTheme}>
+        <AppearanceExamples title="High contrast theme" />
+      </FluentProvider>
     </div>
   );
 };

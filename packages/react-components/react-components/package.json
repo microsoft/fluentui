@@ -28,7 +28,8 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "^1.0.0",
+    "react-hook-form": "^5.7.2"
   },
   "dependencies": {
     "@fluentui/react-accordion": "9.0.0-rc.9",
@@ -40,7 +41,7 @@
     "@fluentui/react-divider": "9.0.0-rc.8",
     "@fluentui/react-image": "9.0.0-rc.8",
     "@fluentui/react-input": "9.0.0-beta.9",
-    "@fluentui/react-label": "9.0.0-beta.12",
+    "@fluentui/react-label": "9.0.0-rc.1",
     "@fluentui/react-link": "9.0.0-rc.9",
     "@fluentui/react-menu": "9.0.0-rc.9",
     "@fluentui/react-popover": "9.0.0-rc.9",

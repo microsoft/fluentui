@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { Button } from '@fluentui/react-button';
-
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 
 import { Scenario } from './utils';

@@ -16,57 +16,55 @@ export type TextareaSlots = {
   textarea: NonNullable<Slot<'textarea'>>;
 };
 
-type TextareaCommons = {
+/**
+ * Textarea Props
+ */
+export type TextareaProps = Omit<
+  ComponentProps<Partial<TextareaSlots>, 'textarea'>,
+  'defaultValue' | 'onChange' | 'size' | 'value'
+> & {
+  /**
+   * Styling the Textarea should use.
+   *
+   * @default outline
+   */
+  appearance?: 'outline' | 'filledDarker' | 'filledLighter';
+
+  /**
+   * The default value of the Textarea.
+   */
+  defaultValue?: string;
+
+  /**
+   * Callback for when the user changes the value.
+   */
+  onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
+
   /**
    * Which direction the Textarea is allowed to be resized.
    *
    * @default none
    */
-  resize: 'none' | 'horizontal' | 'vertical' | 'both';
+  resize?: 'none' | 'horizontal' | 'vertical' | 'both';
 
   /**
    * Size of the Textarea.
    *
    * @default medium
    */
-  size: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 
   /**
-   * Styling the Textarea should use.
-   *
-   * @default outline
+   * The value of the Textarea.
    */
-  appearance: 'outline' | 'filledDarker' | 'filledLighter';
+  value?: string;
 };
-
-/**
- * Textarea Props
- */
-export type TextareaProps = Omit<
-  ComponentProps<Partial<TextareaSlots>, 'textarea'>,
-  'value' | 'defaultValue' | 'onChange' | 'size'
-> &
-  Partial<TextareaCommons> & {
-    /**
-     * The value of the Textarea.
-     */
-    value?: string;
-
-    /**
-     * The default value of the Textarea.
-     */
-    defaultValue?: string;
-
-    /**
-     * Callback for when the user changes the value.
-     */
-    onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
-  };
 
 /**
  * State used in rendering Textarea
  */
-export type TextareaState = ComponentState<TextareaSlots> & TextareaCommons;
+export type TextareaState = ComponentState<TextareaSlots> &
+  Required<Pick<TextareaProps, 'appearance' | 'resize' | 'size'>>;
 
 /**
  * Data passed to the `onChange` callback when the textarea's value changes.

@@ -68,17 +68,6 @@ export {
 export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
 
 export {
-  Label,
-  /* eslint-disable-next-line deprecation/deprecation */
-  labelClassName,
-  labelClassNames,
-  renderLabel_unstable,
-  useLabel_unstable,
-  useLabelStyles_unstable,
-} from '@fluentui/react-label';
-export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
-
-export {
   SpinButton,
   renderSpinButton_unstable,
   spinButtonClassNames,
