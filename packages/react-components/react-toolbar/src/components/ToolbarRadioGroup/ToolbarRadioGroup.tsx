@@ -1,18 +1,17 @@
 import * as React from 'react';
-import { useToolbarRadioGroup_unstable } from './useToolbarRadioGroup';
-import { renderToolbarRadioGroup_unstable } from './renderToolbarRadioGroup';
-import { useToolbarRadioGroupStyles_unstable } from './useToolbarRadioGroupStyles';
 import type { ToolbarRadioGroupProps } from './ToolbarRadioGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useRadioGroup_unstable, useRadioGroupStyles_unstable, renderRadioGroup_unstable } from '@fluentui/react-radio';
+import { useRadioGroupContextValues } from './contexts/useRadioGroupContextValues';
 
 /**
  * ToolbarRadioGroup component - TODO: add more docs
  */
 export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps> = React.forwardRef((props, ref) => {
-  const state = useToolbarRadioGroup_unstable(props, ref);
-
-  useToolbarRadioGroupStyles_unstable(state);
-  return renderToolbarRadioGroup_unstable(state);
+  const state = useRadioGroup_unstable({ layout: 'horizontal', ...props }, ref);
+  const contextValues = useRadioGroupContextValues(state);
+  useRadioGroupStyles_unstable(state);
+  return renderRadioGroup_unstable(state, contextValues);
 });
 
 ToolbarRadioGroup.displayName = 'ToolbarRadioGroup';

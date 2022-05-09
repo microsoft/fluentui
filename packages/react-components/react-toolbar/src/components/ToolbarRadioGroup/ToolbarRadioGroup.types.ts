@@ -1,19 +1,20 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-
-export type ToolbarRadioGroupSlots = {
-  root: Slot<'div'>;
-};
-
-type ToolbarRadioGroupCommons = {
-  // TODO Add things shared between props and state here
-};
+import { RadioGroupProps, RadioGroupState } from '@fluentui/react-radio';
 
 /**
  * ToolbarRadioGroup Props
  */
-export type ToolbarRadioGroupProps = ComponentProps<ToolbarRadioGroupSlots> & ToolbarRadioGroupCommons;
+export type ToolbarRadioGroupProps = RadioGroupProps;
 
 /**
  * State used in rendering ToolbarRadioGroup
  */
-export type ToolbarRadioGroupState = ComponentState<ToolbarRadioGroupSlots> & ToolbarRadioGroupCommons;
+export type ToolbarRadioGroupState = RadioGroupState;
+
+export type RadioGroupContextValue = Pick<
+  RadioGroupProps,
+  'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required'
+>;
+
+export type RadioGroupContextValues = {
+  radioGroup: RadioGroupContextValue;
+};
