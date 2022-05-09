@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { MenuButton } from '@fluentui/react-button';
-
 import { Menu, MenuTrigger, MenuList, MenuPopover, MenuItem, MenuSplitGroup } from '@fluentui/react-menu';
 
 import { Scenario } from './utils';
@@ -43,5 +42,5 @@ export const MenuWithSplitItemAccessibilityScenario: React.FunctionComponent = (
 
 export default {
   title: 'Accessibility Scenarios / Menu with split item',
-  id: 'menu2-accessibility-scenario',
+  id: 'menu-splitgroup-accessibility-scenario',
 };
