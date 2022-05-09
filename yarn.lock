@@ -1686,42 +1686,10 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
-"@fluentui/keyboard-keys@9.0.0-rc.5":
-  version "9.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@fluentui/keyboard-keys/-/keyboard-keys-9.0.0-rc.5.tgz#68359aae8765465db5b8b0a4b290bab06f11f959"
-  integrity sha512-r6ddFxpWKR8QeT9G1mF9+T0Vo2UBHWJEzRcEijgSTUPw/TcpiFEV5BfhilR3H57088KjtqzBBdqLPb7VuNVPrg==
-  dependencies:
-    tslib "^2.1.0"
-
 "@fluentui/react-icons@^2.0.166-rc.3":
   version "2.0.166-rc.3"
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.166-rc.3.tgz#6a66d104a4809ca9da1982f895bc24abb624e342"
   integrity sha512-mhTti5DcCvG/UxRD+/P5Qjdo/QDOE57eRcRBVooOpfO2N1Q+9sE44NYczOeOHpV2AufNqomX0QYf5iPYZ1lEtg==
-
-"@fluentui/react-label@9.0.0-beta.11":
-  version "9.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-label/-/react-label-9.0.0-beta.11.tgz#94ed586cb6d65d5960ebf252ffa5e756c8c57b78"
-  integrity sha512-lywl7ju1ByABT9zRnHzKlTrTRneBg5nv7dlSSS5uA/aqjkJwYzdX2rdWzwQj1NuW5LqRECGUgQKrcNA+KiAyYw==
-  dependencies:
-    "@fluentui/react-theme" "9.0.0-rc.6"
-    "@fluentui/react-utilities" "9.0.0-rc.7"
-    "@griffel/react" "1.0.3"
-    tslib "^2.1.0"
-
-"@fluentui/react-theme@9.0.0-rc.6":
-  version "9.0.0-rc.6"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-theme/-/react-theme-9.0.0-rc.6.tgz#1bc5ed1268991dd8142e1eb5c7f5219b97e43145"
-  integrity sha512-h4wQdd53MZGTf3veix/bd1iJrv1uqeidWpywnGAx5toXG20wgbpp4+3lRxglsFBuPxLpqZnuSoeCavI3yqnw8Q==
-  dependencies:
-    tslib "^2.1.0"
-
-"@fluentui/react-utilities@9.0.0-rc.7":
-  version "9.0.0-rc.7"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-utilities/-/react-utilities-9.0.0-rc.7.tgz#ea6b127fca08f6ae759e2007f4cfa44c008b8cb1"
-  integrity sha512-irLQr1Dienh0NQm2E302aQAej/Mm+oBCUdgq2h1bm77w4PkLyd/rERVgYPCMvhUMrO0KFjdH8iXECs/VdAJGsw==
-  dependencies:
-    "@fluentui/keyboard-keys" "9.0.0-rc.5"
-    tslib "^2.1.0"
 
 "@griffel/babel-preset@1.2.0", "@griffel/babel-preset@^1.2.0":
   version "1.2.0"
