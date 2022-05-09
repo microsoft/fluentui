@@ -67,6 +67,12 @@ export type SliderProps = Omit<
   min?: number;
 
   /**
+   * The starting origin point for the Slider.
+   * @default min
+   */
+  origin?: number;
+
+  /**
    * The size of the Slider.
    * @default 'medium'
    */
@@ -78,12 +84,6 @@ export type SliderProps = Omit<
    * @default 1
    */
   step?: number;
-
-  /**
-   * The starting origin point for the Slider.
-   * @default min
-   */
-  origin?: number;
 
   /**
    * The current value of the controlled Slider.
