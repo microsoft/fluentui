@@ -41,7 +41,7 @@ export const WithPanels = () => {
   };
 
   const Arrivals = React.memo(() => (
-    <div role="tabpanel" aria-labelledby="Arrivals" tabIndex={0}>
+    <div role="tabpanel" aria-labelledby="Arrivals">
       <table>
         <thead>
           <th>Origin</th>
@@ -70,7 +70,7 @@ export const WithPanels = () => {
   ));
 
   const Departures = React.memo(() => (
-    <div role="tabpanel" aria-labelledby="Departures" tabIndex={0}>
+    <div role="tabpanel" aria-labelledby="Departures">
       <table>
         <thead>
           <th>Destination</th>
@@ -99,7 +99,7 @@ export const WithPanels = () => {
   ));
 
   const Conditions = React.memo(() => (
-    <div role="tabpanel" aria-labelledby="Conditions" tabIndex={0}>
+    <div role="tabpanel" aria-labelledby="Conditions">
       <table className={styles.propsTable}>
         <tbody>
           <tr>
