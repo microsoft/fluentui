@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 28 Apr 2022 07:39:56 GMT and should not be manually modified.
+This log was last generated on Fri, 06 May 2022 07:36:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.0)
+
+Fri, 06 May 2022 07:36:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.4.0..@fluentui/web-components_v2.5.0)
+
+### Minor changes
+
+- Added support for Segoe UI Variable font with variant configurations Added type ramp helpers to conveniently and consistently apply all necessary font attributes. ([PR #22079](https://github.com/microsoft/fluentui/pull/22079) by 47367562+bheston@users.noreply.github.com)
 
 ## [2.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.4.0)
 

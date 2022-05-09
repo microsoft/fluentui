@@ -5,6 +5,8 @@
     "lib": ["DOM", "ES2019"],
     "outDir": "dist",
     "declaration": true,
+    "declarationDir": "dist/types",
+    "inlineSources": true,
     "types": ["static-assets", "environment", "jest", "node"],
     "module": "CommonJS"
   },

@@ -68,43 +68,6 @@ export {
 export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
 
 export {
-  Label,
-  /* eslint-disable-next-line deprecation/deprecation */
-  labelClassName,
-  labelClassNames,
-  renderLabel_unstable,
-  useLabel_unstable,
-  useLabelStyles_unstable,
-} from '@fluentui/react-label';
-export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
-
-export {
-  Radio,
-  /* eslint-disable-next-line deprecation/deprecation */
-  radioClassName,
-  radioClassNames,
-  RadioGroup,
-  /* eslint-disable-next-line deprecation/deprecation */
-  radioGroupClassName,
-  radioGroupClassNames,
-  renderRadio_unstable,
-  renderRadioGroup_unstable,
-  useRadio_unstable,
-  useRadioGroup_unstable,
-  useRadioGroupStyles_unstable,
-  useRadioStyles_unstable,
-} from '@fluentui/react-radio';
-export type {
-  RadioGroupOnChangeData,
-  RadioGroupProps,
-  RadioGroupSlots,
-  RadioGroupState,
-  RadioProps,
-  RadioSlots,
-  RadioState,
-} from '@fluentui/react-radio';
-
-export {
   SpinButton,
   renderSpinButton_unstable,
   spinButtonClassNames,

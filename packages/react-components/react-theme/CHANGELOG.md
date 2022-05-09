@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Wed, 04 May 2022 13:26:33 GMT and should not be manually modified.
+This log was last generated on Thu, 05 May 2022 18:26:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.7)
+
+Thu, 05 May 2022 18:26:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-rc.6..@fluentui/react-theme_v9.0.0-rc.7)
+
+### Changes
+
+- Export TypographyStyle type ([PR #22832](https://github.com/microsoft/fluentui/pull/22832) by miroslav.stastny@microsoft.com)
+- Removing star exports. ([PR #22810](https://github.com/microsoft/fluentui/pull/22810) by humberto_makoto@hotmail.com)
+- Added ms suffix to durations ([PR #22831](https://github.com/microsoft/fluentui/pull/22831) by gcox@microsoft.com)
 
 ## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.6)
 

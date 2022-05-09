@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Upgrading/from v8/Components/Label Upgrade" />
+
+# Label Upgrade
+
+Fluent UI v8 provides the `Label` control that gives a name or title to a control or group of controls. Fluent UI v9 also provides a `Label` with a slightly different API.
+
+The main difference with v8's and v9's `Label` is that v9 allows the user to use a custom indicator.
+
+## Examples
+
+### Basic Upgrade
+
+Basic usage of `Label` v8
+
+```tsx
+import * as React from 'react';
+import { Label } from '@fluentui/react/lib/Label';
+import { useId } from '@fluentui/react-hooks';
+
+export const LabelBasicExample = () => {
+  const inputId = useId('anInput');
+
+  return (
+    <>
+      <Label htmlFor={inputId}>A Label for an input</Label>
+      <input id={inputId} type="text" />
+    </>
+  );
+};
+```
+
+An equivalent `Label` in v9 is
+
+```tsx
+import * as React from 'react';
+import { Label } from '@fluentui/react-components';
+import { useId } from '@fluentui/react-utilities';
+
+const LabelV9BasicExample = () => {
+  const inputId = useId('anInput');
+
+  return (
+    <>
+      <Label htmlFor={inputId}>A Label for an input</Label>
+      <input id={inputId} type="text" />
+    </>
+  );
+};
+```
+
+## Prop Mapping
+
+This table maps `Label` v8 props to the `Label` v9 equivalent.
+
+| v8             | v9          | Notes                                    |
+| -------------- | ----------- | ---------------------------------------- |
+| `as`           | n/a         |                                          |
+| `componentRef` | `ref`       |                                          |
+| `disabled`     | `disabled`  |                                          |
+| `required`     | `required`  |                                          |
+| `styles`       | `className` |                                          |
+| `theme`        | n/a         | use `FluentProvider` to customize themes |

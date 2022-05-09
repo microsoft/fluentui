@@ -9,6 +9,7 @@ export {
   renderToStyleElements,
   shorthands,
 } from '@griffel/react';
+export type { GriffelStyle } from '@griffel/react';
 export {
   FluentProvider,
   /* eslint-disable-next-line deprecation/deprecation */
@@ -26,6 +27,36 @@ export type {
   FluentProviderSlots,
   FluentProviderState,
 } from '@fluentui/react-provider';
+export {
+  Radio,
+  /* eslint-disable-next-line deprecation/deprecation */
+  radioClassName,
+  radioClassNames,
+  RadioGroup,
+  /* eslint-disable-next-line deprecation/deprecation */
+  radioGroupClassName,
+  radioGroupClassNames,
+  RadioGroupContext,
+  renderRadio_unstable,
+  renderRadioGroup_unstable,
+  useRadio_unstable,
+  useRadioGroupContextValues,
+  useRadioGroup_unstable,
+  useRadioGroupStyles_unstable,
+  useRadioStyles_unstable,
+} from '@fluentui/react-radio';
+export type {
+  RadioGroupContextValue,
+  RadioGroupContextValues,
+  RadioGroupOnChangeData,
+  RadioGroupProps,
+  RadioGroupSlots,
+  RadioGroupState,
+  RadioOnChangeData,
+  RadioProps,
+  RadioSlots,
+  RadioState,
+} from '@fluentui/react-radio';
 export {
   createCustomFocusIndicatorStyle,
   createFocusOutlineStyle,
@@ -77,6 +108,7 @@ export type {
   DurationTokens,
   CurveTokens,
   Theme,
+  TypographyStyle,
   TypographyStyles,
 } from '@fluentui/react-theme';
 export { useThemeClassName } from '@fluentui/react-shared-contexts';
@@ -282,6 +314,16 @@ export {
   useImageStyles_unstable,
 } from '@fluentui/react-image';
 export type { ImageProps, ImageSlots, ImageState } from '@fluentui/react-image';
+export {
+  Label,
+  /* eslint-disable-next-line deprecation/deprecation */
+  labelClassName,
+  labelClassNames,
+  renderLabel_unstable,
+  useLabel_unstable,
+  useLabelStyles_unstable,
+} from '@fluentui/react-label';
+export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
 export {
   Link,
   /* eslint-disable-next-line deprecation/deprecation */
