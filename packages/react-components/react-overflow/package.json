@@ -35,7 +35,7 @@
     "@fluentui/react-context-selector": "9.0.0-rc.8",
     "@fluentui/react-theme": "9.0.0-rc.7",
     "@fluentui/react-utilities": "9.0.0-rc.8",
-    "@griffel/react": "1.0.3",
+    "@griffel/react": "1.0.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

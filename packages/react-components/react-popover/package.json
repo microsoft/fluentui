@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@fluentui/react-context-selector": "9.0.0-rc.8",
-    "@griffel/react": "1.0.3",
+    "@griffel/react": "1.0.4",
     "@fluentui/react-portal": "9.0.0-rc.9",
     "@fluentui/react-positioning": "9.0.0-rc.8",
     "@fluentui/react-shared-contexts": "9.0.0-rc.7",
