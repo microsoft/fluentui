@@ -108,7 +108,7 @@ packages/react-hooks @microsoft/cxe-red
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
 packages/react-components/react-overflow @microsoft/teams-prg
-packages/react-shared-contexts @microsoft/teams-prg
+packages/react-components/react-shared-contexts @microsoft/teams-prg
 packages/react-components/react-storybook @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-components/react-storybook-addon @microsoft/cxe-prg
 packages/react-components/react-tabster @microsoft/teams-prg
