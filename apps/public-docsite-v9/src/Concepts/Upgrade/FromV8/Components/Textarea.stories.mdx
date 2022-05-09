@@ -4,9 +4,9 @@ import { Meta } from '@storybook/addon-docs';
 
 # Textarea Upgrade
 
-Fluent UI v8 provides the `TextField` control to allow users to enter and edit text. Fluen UI v9 provides a `Textarea` control, but has a different API.
+Fluent UI v8 provides the `TextField` control to allow users to enter and edit text. Fluent UI v9 provides a `Textarea` control, but has a different API.
 
-v9 has takes a different approach on the `TextField` component and uses the `Input` and `Textarea` components. `Input` in this case is the general `TextField` component and `Textarea` is a `TextField` with the `multiline` prop set to `true`.
+v9 takes a different approach than v8 with respect to text inputs, and instead of using a single `TextField` component instaed uses separate `Input` and `Textarea` components. v9's `Input` in this case is equivalent to the general v8's `TextField`, while v9's `Textarea` is equivalent to v8's `TextField` with the `multiline` prop set to `true`.
 
 ## Examples
 
@@ -51,10 +51,10 @@ const TextareaV9BasicExample = () => {
         <Textarea id={standardTextareaId} />
       </div>
       <div>
-        <Label disabled defaultValue={dummyText} htmlFor={disabledTextareaId}>
+        <Label disabled htmlFor={disabledTextareaId}>
           Disabled
         </Label>
-        <Textarea disabled id={disabledTextareaId} />
+        <Textarea defaultValue={dummyText} disabled id={disabledTextareaId} />
       </div>
       <div>
         <Label htmlFor={nonResizableTextareaId}>Non-resizable</Label>
@@ -108,4 +108,4 @@ This table maps `TextField` v8 props to the `Textarea` v9 equivalent.
 | `validateOnFocusIn`        | n/a            |                                                                                                                  |
 | `validateOnFocusOut`       | n/a            |                                                                                                                  |
 | `validateOnLoad`           | n/a            |                                                                                                                  |
-| `value`                    | n/a            | Mutually exclusive with `defaultValue`                                                                           |
+| `value`                    | `value`        | Mutually exclusive with `defaultValue`                                                                           |
