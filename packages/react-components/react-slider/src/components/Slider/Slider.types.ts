@@ -48,10 +48,17 @@ export type SliderProps = Omit<
   defaultValue?: number;
 
   /**
-   * The current value of the controlled Slider.
-   * Mutually exclusive with `defaultValue` prop.
+   *  Whether to render the Slider as disabled.
+   *
+   * @default `false` (renders enabled)
    */
-  value?: number;
+  disabled?: boolean;
+
+  /**
+   * The max value of the Slider.
+   * @default 100
+   */
+  max?: number;
 
   /**
    * The min value of the Slider.
@@ -60,10 +67,10 @@ export type SliderProps = Omit<
   min?: number;
 
   /**
-   * The max value of the Slider.
-   * @default 100
+   * The size of the Slider.
+   * @default 'medium'
    */
-  max?: number;
+  size?: 'small' | 'medium';
 
   /**
    * The number of steps that the Slider's `value` will increment upon change. When provided, the Slider
@@ -73,29 +80,22 @@ export type SliderProps = Omit<
   step?: number;
 
   /**
-   *  Whether to render the Slider as disabled.
-   *
-   * @default `false` (renders enabled)
-   */
-  disabled?: boolean;
-
-  /**
-   * Render the Slider in a vertical orientation, smallest value on the bottom.
-   * @default `false`
-   */
-  vertical?: boolean;
-
-  /**
    * The starting origin point for the Slider.
    * @default min
    */
   origin?: number;
 
   /**
-   * The size of the Slider.
-   * @default 'medium'
+   * The current value of the controlled Slider.
+   * Mutually exclusive with `defaultValue` prop.
    */
-  size?: 'small' | 'medium';
+  value?: number;
+
+  /**
+   * Render the Slider in a vertical orientation, smallest value on the bottom.
+   * @default `false`
+   */
+  vertical?: boolean;
 
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
@@ -107,8 +107,4 @@ export type SliderOnChangeData = {
   value: number;
 };
 
-export type SliderState = ComponentState<SliderSlots> &
-  Pick<
-    SliderProps,
-    'value' | 'defaultValue' | 'disabled' | 'max' | 'min' | 'origin' | 'size' | 'step' | 'vertical' | 'onChange'
-  >;
+export type SliderState = ComponentState<SliderSlots> & Pick<SliderProps, 'disabled' | 'size' | 'vertical'>;
