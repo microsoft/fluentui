@@ -12,7 +12,6 @@ import {
   writeJson,
   updateProjectConfiguration,
   serializeJson,
-  generateFiles,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
@@ -100,7 +99,7 @@ function runBatchMigration(tree: Tree, userLog: UserLog, projectNames?: string[]
   });
 }
 
-function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: UserLog) {
+function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: UserLog) {
   const options = normalizeOptions(tree, schema);
 
   if (options.owner) {
@@ -566,10 +565,6 @@ function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchema)
 }
 
 function setupStorybook(tree: Tree, options: NormalizedSchema) {
-  function transformRelativePath(_path: string) {
-    return joinPathFragments('..', _path);
-  }
-
   const sbAction = shouldSetupStorybook(tree, options);
 
   const template = {
