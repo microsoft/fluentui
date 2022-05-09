@@ -26,7 +26,7 @@ import type { ComboboxBaseProps, ComboboxBaseState, ComboboxOpenEvents } from '.
  */
 export const useComboboxBase_unstable = (
   props: ComboboxBaseProps,
-  ref: React.Ref<HTMLButtonElement> | React.Ref<HTMLInputElement>,
+  ref: React.RefObject<HTMLButtonElement | HTMLInputElement>,
 ): ComboboxBaseState => {
   const optionCollection = useOptionCollection(props.children);
 
@@ -54,7 +54,7 @@ export const useComboboxBase_unstable = (
   });
 
   // handle trigger focus/blur
-  const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const triggerRef = React.useRef<HTMLButtonElement | HTMLInputElement>(null);
   const ignoreTriggerBlur = React.useRef(false);
 
   // popper
@@ -69,7 +69,7 @@ export const useComboboxBase_unstable = (
     targetRef: popperTargetRef,
     containerRef: popperContainerRef,
   }: {
-    targetRef: React.MutableRefObject<HTMLButtonElement>;
+    targetRef: React.MutableRefObject<HTMLButtonElement | HTMLInputElement>;
     containerRef: React.MutableRefObject<HTMLDivElement>;
   } = usePopper(popperOptions);
 
