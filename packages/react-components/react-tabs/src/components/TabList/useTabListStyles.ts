@@ -18,7 +18,6 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     flexShrink: 0,
     flexWrap: 'nowrap',
-    ...shorthands.overflow('hidden'),
     position: 'relative',
   },
   horizontal: {
