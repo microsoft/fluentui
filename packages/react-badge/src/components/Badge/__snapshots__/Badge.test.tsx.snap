@@ -2,7 +2,6 @@
 
 exports[`Badge renders a default state 1`] = `
 <div
-  aria-hidden={true}
   className="fui-Badge"
 >
   Default Badge
