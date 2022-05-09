@@ -34,7 +34,6 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
   const childrenArray = React.Children.toArray(children);
   const numOfAvatarsToShow = layout === 'pie' ? 3 : maxAvatars;
   const hasOverflow = childrenCount > numOfAvatarsToShow;
-  const tooltipContent = strings.tooltipContent.replace('{numOverflowedAvatars}', String(childrenCount - maxAvatars));
 
   const rootChildren = childrenArray.slice(0, numOfAvatarsToShow).map(child => {
     if (!React.isValidElement(child)) {
@@ -81,7 +80,7 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
 
     // Avatars inside PopoverSurface must be size 24
     return (
-      <li className={extraAvatarGroupClassNames.popoverSurfaceItem} key={k}>
+      <li className={extraAvatarGroupClassNames.popoverSurfaceItem} key={k} tabIndex={0}>
         {React.cloneElement(child, { size: 24, color: child.props.color ?? 'colorful' })}
         <Label size="medium">{child.props.name ?? child.props.initials}</Label>
       </li>
@@ -97,13 +96,13 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
   });
 
   const state: AvatarGroupState = {
+    hasOverflow: hasOverflow,
     layout,
     maxAvatars: numOfAvatarsToShow,
+    overflowIndicator,
     size,
     strings: strings,
-    overflowIndicator,
-    hasOverflow: hasOverflow,
-    tooltipContent: tooltipContent,
+    tooltipContent: strings.tooltipContent,
 
     components: {
       root: 'div',

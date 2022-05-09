@@ -31,7 +31,13 @@ export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
 
 // @public
-export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & Partial<AvatarGroupCommons>;
+export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
+    layout?: 'spread' | 'stack' | 'pie';
+    maxAvatars?: number;
+    overflowIndicator?: 'number-overflowed' | 'icon';
+    size?: AvatarSizes;
+    strings?: AvatarGroupStrings;
+};
 
 // @public (undocumented)
 export type AvatarGroupSlots = {
@@ -41,7 +47,7 @@ export type AvatarGroupSlots = {
 };
 
 // @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & AvatarGroupCommons & {
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'strings' | 'overflowIndicator'>> & {
     tooltipContent: TooltipProps['content'];
     hasOverflow: boolean;
 };
