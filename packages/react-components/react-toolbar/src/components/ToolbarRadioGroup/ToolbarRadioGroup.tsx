@@ -5,7 +5,8 @@ import { useRadioGroup_unstable, useRadioGroupStyles_unstable, renderRadioGroup_
 import { useRadioGroupContextValues } from './contexts/useRadioGroupContextValues';
 
 /**
- * ToolbarRadioGroup component - TODO: add more docs
+ * ToolbarRadioGroup component is a RadioGroup to be used inside Toolbar
+ * which will keep always horizontal layout
  */
 export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps> = React.forwardRef((props, ref) => {
   const state = useRadioGroup_unstable({ layout: 'horizontal', ...props }, ref);
