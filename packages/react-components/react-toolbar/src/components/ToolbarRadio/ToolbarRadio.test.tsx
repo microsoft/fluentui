@@ -7,12 +7,17 @@ describe('ToolbarRadio', () => {
   isConformant({
     Component: ToolbarRadio,
     displayName: 'ToolbarRadio',
+    disabledTests: [
+      'component-has-static-classname',
+      'component-has-static-classname-exported',
+      'component-has-static-classnames-object',
+    ],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<ToolbarRadio>Default ToolbarRadio</ToolbarRadio>);
+    const result = render(<ToolbarRadio />);
     expect(result.container).toMatchSnapshot();
   });
 });
