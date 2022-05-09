@@ -20,10 +20,10 @@ export const IconOnly = () => {
   const renderTabs = () => {
     return (
       <>
-        <Tab icon={<CalendarMonthRegular />} value="tab1" />
-        <Tab icon={<CalendarMonthRegular />} value="tab2" />
-        <Tab icon={<CalendarMonthRegular />} value="tab3" />
-        <Tab icon={<CalendarMonthRegular />} value="tab4" />
+        <Tab icon={<CalendarMonthRegular />} value="tab1" aria-label="First Tab" />
+        <Tab icon={<CalendarMonthRegular />} value="tab2" aria-label="Second Tab" />
+        <Tab icon={<CalendarMonthRegular />} value="tab3" aria-label="Third Tab" />
+        <Tab icon={<CalendarMonthRegular />} value="tab4" aria-label="Fourth Tab" />
       </>
     );
   };
