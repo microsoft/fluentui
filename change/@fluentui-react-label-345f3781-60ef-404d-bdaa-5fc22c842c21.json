@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing commons type from Label.",
+  "packageName": "@fluentui/react-label",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

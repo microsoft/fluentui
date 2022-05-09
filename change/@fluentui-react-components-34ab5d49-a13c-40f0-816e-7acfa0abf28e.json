@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: re-export `createFocusOutlineStyle` on `react-components`",
-  "packageName": "@fluentui/react-components",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

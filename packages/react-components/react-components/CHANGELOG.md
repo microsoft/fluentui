@@ -1,8 +1,134 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 25 Apr 2022 09:32:14 GMT and should not be manually modified.
+This log was last generated on Thu, 05 May 2022 18:26:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.10)
+
+Thu, 05 May 2022 18:26:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.9..@fluentui/react-components_v9.0.0-rc.10)
+
+### Changes
+
+- `@fluentui/react-context-selector`
+  - feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
+  - Removing star exports. ([PR #22801](https://github.com/microsoft/fluentui/pull/22801) by humberto_makoto@hotmail.com)
+- `@fluentui/react-input`
+  - Updated to use new theme tokens ([PR #22836](https://github.com/microsoft/fluentui/pull/22836) by gcox@microsoft.com)
+- `@fluentui/react-menu`
+  - Removing star exports. ([PR #22804](https://github.com/microsoft/fluentui/pull/22804) by humberto_makoto@hotmail.com)
+- `@fluentui/react-popover`
+  - Removing star exports. ([PR #22805](https://github.com/microsoft/fluentui/pull/22805) by humberto_makoto@hotmail.com)
+- `@fluentui/react-portal`
+  - Removing star exports. ([PR #22806](https://github.com/microsoft/fluentui/pull/22806) by humberto_makoto@hotmail.com)
+- `@fluentui/react-positioning`
+  - Removing star exports. ([PR #22807](https://github.com/microsoft/fluentui/pull/22807) by humberto_makoto@hotmail.com)
+- `@fluentui/react-radio`
+  - update README ([PR #22819](https://github.com/microsoft/fluentui/pull/22819) by seanmonahan@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - Removing star exports. ([PR #22808](https://github.com/microsoft/fluentui/pull/22808) by humberto_makoto@hotmail.com)
+- `@fluentui/react-theme`
+  - Export TypographyStyle type ([PR #22832](https://github.com/microsoft/fluentui/pull/22832) by miroslav.stastny@microsoft.com)
+  - Removing star exports. ([PR #22810](https://github.com/microsoft/fluentui/pull/22810) by humberto_makoto@hotmail.com)
+  - Added ms suffix to durations ([PR #22831](https://github.com/microsoft/fluentui/pull/22831) by gcox@microsoft.com)
+- `@fluentui/react-utilities`
+  - feat: add time element on nativeElementMap ([PR #22848](https://github.com/microsoft/fluentui/pull/22848) by bsunderhus@microsoft.com)
+- `@fluentui/keyboard-keys`
+  - feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
+- `@fluentui/react-aria`
+  - Removing star exports. ([PR #22798](https://github.com/microsoft/fluentui/pull/22798) by humberto_makoto@hotmail.com)
+  - feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
+- `@fluentui/react-avatar`
+  - feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
+- `@fluentui/react-button`
+  - feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
+- `@fluentui/react-card`
+  - Added new `focusMode` property to control the focus behavior inside of the component ([PR #22312](https://github.com/microsoft/fluentui/pull/22312) by 39736248+andrefcdias@users.noreply.github.com)
+- `@fluentui/react-components`
+  - react-radio: move to release candidate ([PR #22819](https://github.com/microsoft/fluentui/pull/22819) by seanmonahan@microsoft.com)
+  - Re-exporting GriffelStyle. ([PR #22845](https://github.com/microsoft/fluentui/pull/22845) by Humberto.Morimoto@microsoft.com)
+  - Export TypographyStyle type ([PR #22832](https://github.com/microsoft/fluentui/pull/22832) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
+
+## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.9)
+
+Wed, 04 May 2022 13:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.8..@fluentui/react-components_v9.0.0-rc.9)
+
+### Changes
+
+- `@fluentui/react-text`
+  - feat: ship rolluped only dts ([PR #22708](https://github.com/microsoft/fluentui/pull/22708) by martinhochel@microsoft.com)
+  - Updated react-text to use typography constants ([PR #22716](https://github.com/microsoft/fluentui/pull/22716) by gcox@microsoft.com)
+- `@fluentui/react-theme`
+  - Add px suffix to spacings ([PR #22722](https://github.com/microsoft/fluentui/pull/22722) by gcox@microsoft.com)
+  - Fixed typo in typography ([PR #22625](https://github.com/microsoft/fluentui/pull/22625) by gcox@microsoft.com)
+  - Fixed line-height in title2 ([PR #22716](https://github.com/microsoft/fluentui/pull/22716) by gcox@microsoft.com)
+  - Added global theme types and tokens ([PR #22607](https://github.com/microsoft/fluentui/pull/22607) by gcox@microsoft.com)
+  - fix(react-theme): Update CompoundBrandBackground and BrandStroke1 ([PR #22751](https://github.com/microsoft/fluentui/pull/22751) by miroslav.stastny@microsoft.com)
+  - Add base font family per figma ([PR #22627](https://github.com/microsoft/fluentui/pull/22627) by gcox@microsoft.com)
+  - Added typeography styles ([PR #22610](https://github.com/microsoft/fluentui/pull/22610) by gcox@microsoft.com)
+  - feat(react-theme): Add colorNeutralForeground2Link color tokens ([PR #22570](https://github.com/microsoft/fluentui/pull/22570) by miroslav.stastny@microsoft.com)
+- `@fluentui/keyboard-keys`
+  - remove star exports ([PR #22681](https://github.com/microsoft/fluentui/pull/22681) by seanmonahan@microsoft.com)
+- `@fluentui/react-accordion`
+  - remove star exports ([PR #22682](https://github.com/microsoft/fluentui/pull/22682) by seanmonahan@microsoft.com)
+- `@fluentui/react-card`
+  - feat: ship rolluped only dts ([PR #22708](https://github.com/microsoft/fluentui/pull/22708) by martinhochel@microsoft.com)
+- `@fluentui/react-components`
+  - feat: re-exports positioning types at `react-components` ([PR #22666](https://github.com/microsoft/fluentui/pull/22666) by bsunderhus@microsoft.com)
+  - feat: export `useThemeClassName` hook ([PR #22639](https://github.com/microsoft/fluentui/pull/22639) by olfedias@microsoft.com)
+  - feat: re-export `createFocusOutlineStyle` on `react-components` ([PR #22747](https://github.com/microsoft/fluentui/pull/22747) by bsunderhus@microsoft.com)
+  - feat: ship rolluped only dts ([PR #22746](https://github.com/microsoft/fluentui/pull/22746) by martinhochel@microsoft.com)
+  - Fixed typo in typography ([PR #22625](https://github.com/microsoft/fluentui/pull/22625) by gcox@microsoft.com)
+  - Exported typeography styles ([PR #22610](https://github.com/microsoft/fluentui/pull/22610) by gcox@microsoft.com)
+  - Exported new theme types ([PR #22607](https://github.com/microsoft/fluentui/pull/22607) by gcox@microsoft.com)
+- `@fluentui/react-image`
+  - feat: ship rolluped only dts ([PR #22708](https://github.com/microsoft/fluentui/pull/22708) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - update content before/after stories; label usage in stories ([PR #22731](https://github.com/microsoft/fluentui/pull/22731) by seanmonahan@microsoft.com)
+- `@fluentui/react-label`
+  - Add style to make required match text when disabled ([PR #22715](https://github.com/microsoft/fluentui/pull/22715) by mgodbolt@microsoft.com)
+- `@fluentui/react-link`
+  - Link: Changing styles of focused links to align with design spec. ([PR #22732](https://github.com/microsoft/fluentui/pull/22732) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: ship rolluped only dts ([PR #22791](https://github.com/microsoft/fluentui/pull/22791) by martinhochel@microsoft.com)
+- `@fluentui/react-popover`
+  - feat: Add inline prop to Popover ([PR #22789](https://github.com/microsoft/fluentui/pull/22789) by lingfangao@hotmail.com)
+  - feat: ship rolluped only dts ([PR #22791](https://github.com/microsoft/fluentui/pull/22791) by martinhochel@microsoft.com)
+  - feat: Adds prop `closeOnScroll` to close popover on scrolling outside ([PR #22784](https://github.com/microsoft/fluentui/pull/22784) by yuanboxue@microsoft.com)
+  - feat: Adds prop `mouseLeaveDelay` to delay closing popover that opens on hover ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by yuanboxue@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - initial release ([PR #22510](https://github.com/microsoft/fluentui/pull/22510) by olfedias@microsoft.com)
+- `@fluentui/react-portal-compat-context`
+  - initial release ([PR #22510](https://github.com/microsoft/fluentui/pull/22510) by olfedias@microsoft.com)
+- `@fluentui/react-portal`
+  - feat: ship rolluped only dts ([PR #22791](https://github.com/microsoft/fluentui/pull/22791) by martinhochel@microsoft.com)
+- `@fluentui/react-provider`
+  - check for styleTag.sheet before performing actions on the sheet ([PR #22684](https://github.com/microsoft/fluentui/pull/22684) by mgodbolt@microsoft.com)
+  - feat: ship rolluped only dts ([PR #22791](https://github.com/microsoft/fluentui/pull/22791) by martinhochel@microsoft.com)
+- `@fluentui/react-radio`
+  - react-radio: update context usage ([PR #22803](https://github.com/microsoft/fluentui/pull/22803) by seanmonahan@microsoft.com)
+  - add bundle size fixtures ([PR #22675](https://github.com/microsoft/fluentui/pull/22675) by seanmonahan@microsoft.com)
+  - react-radio: add required prop to RadioGroup ([PR #22809](https://github.com/microsoft/fluentui/pull/22809) by seanmonahan@microsoft.com)
+  - react-radio: remove required indicator from label ([PR #22782](https://github.com/microsoft/fluentui/pull/22782) by seanmonahan@microsoft.com)
+  - write readme ([PR #22676](https://github.com/microsoft/fluentui/pull/22676) by seanmonahan@microsoft.com)
+  - Allow data argument on onChange ([PR #22753](https://github.com/microsoft/fluentui/pull/22753) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-slider`
+  - Adjust focus rect to match design, and update color tokens to improve dark mode contrast ([PR #22701](https://github.com/microsoft/fluentui/pull/22701) by mgodbolt@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - remove MIGRATION.md ([PR #22737](https://github.com/microsoft/fluentui/pull/22737) by seanmonahan@microsoft.com)
+  - react-spinbutton: remove "inputType" prop ([PR #22652](https://github.com/microsoft/fluentui/pull/22652) by seanmonahan@microsoft.com)
+- `@fluentui/react-switch`
+  - Switch: Fixing disabled styles in high contrast mode. ([PR #22817](https://github.com/microsoft/fluentui/pull/22817) by humberto_makoto@hotmail.com)
+- `@fluentui/react-tabs`
+  - Added aria-selected ([PR #22742](https://github.com/microsoft/fluentui/pull/22742) by gcox@microsoft.com)
+  - Updated to use correct pseudo-elements ([PR #22768](https://github.com/microsoft/fluentui/pull/22768) by gcox@microsoft.com)
+  - Updated to use tokens ([PR #22717](https://github.com/microsoft/fluentui/pull/22717) by gcox@microsoft.com)
+  - Removed unnecessary width and height from indicators ([PR #22744](https://github.com/microsoft/fluentui/pull/22744) by gcox@microsoft.com)
+  - Allow tab to animate when value is numeric zero ([PR #22754](https://github.com/microsoft/fluentui/pull/22754) by gcox@microsoft.com)
 
 ## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.8)
 

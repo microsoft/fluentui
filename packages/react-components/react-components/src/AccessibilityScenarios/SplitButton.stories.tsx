@@ -2,12 +2,7 @@ import * as React from 'react';
 
 import { Menu, MenuTrigger, MenuList, MenuPopover, MenuItem } from '@fluentui/react-menu';
 
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { MenuButtonProps } from '@fluentui/react-menubutton';
-
-import { Button, SplitButton } from '@fluentui/react-button';
+import { Button, MenuButtonProps, SplitButton } from '@fluentui/react-button';
 
 import { Scenario } from './utils';
 
