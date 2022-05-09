@@ -70,6 +70,17 @@ describe('SpinButton', () => {
     expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
   });
 
+  it('respects `aria-valuetext` when alongside `displayValue`', () => {
+    render(<SpinButton value={1} displayValue="$1.00" aria-valuetext="Custom value text" onChange={jest.fn()} />);
+
+    const spinButton = getSpinButtonInput();
+    expect(spinButton.value).toEqual('$1.00');
+    expect(spinButton.getAttribute('aria-valuenow')).toEqual('1');
+    expect(spinButton.getAttribute('aria-valuetext')).toEqual('Custom value text');
+    expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
+    expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
+  });
+
   it('applies the correct min and max value when both are specified', () => {
     render(<SpinButton value={1} min={0} max={10} onChange={jest.fn()} />);
 

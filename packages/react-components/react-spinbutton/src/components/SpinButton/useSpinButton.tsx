@@ -275,7 +275,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   state.input['aria-valuemin'] = min;
   state.input['aria-valuemax'] = max;
   state.input['aria-valuenow'] = currentValue;
-  state.input['aria-valuetext'] = (value !== undefined && displayValue) || undefined;
+  state.input['aria-valuetext'] = state.input['aria-valuetext'] ?? ((value !== undefined && displayValue) || undefined);
   state.input.onChange = useMergedEventCallbacks(state.input.onChange, handleInputChange);
   state.input.onBlur = useMergedEventCallbacks(state.input.onBlur, handleBlur);
   state.input.onKeyDown = useMergedEventCallbacks(state.input.onKeyDown, handleKeyDown);
