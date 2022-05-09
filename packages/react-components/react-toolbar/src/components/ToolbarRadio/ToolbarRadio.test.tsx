@@ -7,6 +7,7 @@ describe('ToolbarRadio', () => {
   isConformant({
     Component: ToolbarRadio,
     displayName: 'ToolbarRadio',
+    primarySlot: 'input',
     disabledTests: [
       'component-has-static-classname',
       'component-has-static-classname-exported',

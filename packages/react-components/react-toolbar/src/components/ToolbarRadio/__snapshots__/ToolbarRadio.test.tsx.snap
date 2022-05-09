@@ -7,7 +7,7 @@ exports[`ToolbarRadio renders a default state 1`] = `
   >
     <input
       class="fui-Radio__input"
-      id="radio-7"
+      id="radio-8"
       type="radio"
     />
     <div
