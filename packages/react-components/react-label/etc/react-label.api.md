@@ -21,8 +21,11 @@ export const labelClassName = "fui-Label";
 export const labelClassNames: SlotClassNames<LabelSlots>;
 
 // @public
-export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommons> & {
+export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
+    disabled?: boolean;
     required?: boolean | Slot<'span'>;
+    size?: 'small' | 'medium' | 'large';
+    strong?: boolean;
 };
 
 // @public (undocumented)
@@ -32,7 +35,7 @@ export type LabelSlots = {
 };
 
 // @public
-export type LabelState = ComponentState<LabelSlots> & LabelCommons;
+export type LabelState = ComponentState<LabelSlots> & Required<Pick<LabelProps, 'disabled' | 'size' | 'strong'>>;
 
 // @public
 export const renderLabel_unstable: (state: LabelState) => JSX.Element;
