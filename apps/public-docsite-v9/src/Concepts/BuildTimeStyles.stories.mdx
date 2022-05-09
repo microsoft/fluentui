@@ -5,13 +5,13 @@ import imageFile from '../../public/style-resolution.png';
 
 ## Optimize runtime cost of styles
 
-Fluent UI uses the open source [Griffel.js](https://griffel.js.org/) css-in-js styling engine.
+Fluent UI uses the open source [Griffel.js](https://griffel.js.org/) CSS-in-JS styling engine.
 Make sure to take a look at the following docs to get started with styling in Fluent UI:
 
-- [Quick start](?path=/story/quick-start)
+- [Quick start](?path=/docs/concepts-developer-quick-start--page)
 - [Styling components](?path=/story/concepts-developer-styling-components--page)
 
-While there is nothing wrong with the associated runtime costs of a css-in-js engine, larger and more complex
+While there is nothing wrong with the associated runtime costs of a CSS-in-JS engine, larger and more complex
 applications might want to optimize for performance. In Fluent UI, the expensive runtime work only
 happens on the first render of the component. This one-time work can be further optimized at build time by
 pre-computing and transforming styles. You can refer to the [last section](#what-is-being-optimized) of this page for more details
@@ -19,13 +19,16 @@ about what the build time optimization does.
 
 ## Setup build time style transforms
 
+- For application developers please use the [Webpack loader](#webpack)
+- For library developers please use the [Babel preset](#babel)
+
 ### Webpack
 
 ```sh
 yarn add @griffel/webpack-loader
 ```
 
-In your webpack config, simply add the `@griffel/webpack-loader` to the list of rules.
+In your Webpack config, simply add the `@griffel/webpack-loader` to the list of rules.
 
 ```javascript
 // webpack.config.js
@@ -38,27 +41,69 @@ module: {
         loader: '@griffel/webpack-loader',
       },
     },
+    {
+      test: /\.(ts|tsx)$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          babelOptions: {
+            presets: ['@babel/preset-typescript'],
+          },
+        },
+        // loader: 'ts-loader',
+      },
+    },
   ];
 }
 ```
 
+**We recommend adding the Griffel webpack loader after babel-loader or ts-loader.**. The underlying babel transforms
+used by the webpack loader are configured by default to use the most basic language features. Therefore to avoid
+extra configuration or parsing errors, using the webpack loader after transpilation is the recommended approach.
+
+#### Typescript (and additional transpilation) support
+
+The Webpack loader evaluate styles at runtime using [Linaria](https://github.com/callstack/linaria). For typescript
+it's necessary to install `@babel/preset-typescript` and configure it in the `babelOptions` of the loader. Similarly
+any other language features that might be required can also be configured here. While the order of loaders will
+ensure that the webpack loader will run on transpiled code (for a specific module), runtime evaluation can potentially require other
+modules that are not transpiled. Any additional language features can also be configured in the same way.
+
 ### Babel
 
-The babel preset is used internally by the webpack loader. For applications the webpack loader is appropriate
+The Babel preset is used internally by the Webpack loader. For applications the Webpack loader is appropriate
 since it is the most popular bundler.
-However, library developers might prefer to use the babel preset since it is a better fit for tools such as rollup.
+However, library developers might prefer to use the Babel preset since it is a better fit for tools such as [Rollup](https://rollupjs.org/guide/en/).
 
 ```sh
 yarn add @griffel/babel-preset
 ```
 
-Simply create a babel configuration file such as `.babelrc` and add the preset.
+Simply create a Babel configuration file such as `.babelrc` and add the preset.
 
 ```json
 {
-  "presets": ["@griffel"]
+  "presets": [
+    [
+      "@griffel",
+      {
+        "babelOptions": {
+          "presets": ["@babel/preset-typescript"]
+        }
+      }
+    ]
+  ]
 }
 ```
+
+#### Typescript (and additional transpilation) support
+
+The Babel preset will evaluate stlyes at runtime using [Linaria](https://github.com/callstack/linaria). For typescript
+it's necessary to install `@babel/preset-typescript` and configure it in the preset. Similarly
+any other language features that might be required can also be configured here. While the order of loaders will
+ensure that the webpack loader will run on transpiled code (for a specific module), runtime evaluation can potentially require other
+modules that are not transpiled. Any additional language features can also be configured in the same way.
 
 #### Importing from a third party package
 
@@ -108,7 +153,7 @@ A correct invocation of `makeStyles` creates a styling hook that can be used ins
 hook is invoked inside a component the styles are resolved and applied to the document. You can look at the image below
 which describes what work is done during style resolution. **Note that this work only happens once, during first render**.
 
-<img src={imageFile} alt={'Illustration of work done by style resolution'} />;
+<img src={imageFile} alt={'Illustration of work done by style resolution'} />
 
 The final result before the CSS rules are inserted into DOM can be prepared during build time through
 the methods above. Once the styles of our simple example are transformed at build time the resulting bundle contains
