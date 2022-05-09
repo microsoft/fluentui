@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Card, CardHeader, CardFooter, CardPreview } from '@fluentui/react-card';
-import { Open16Regular, Share16Regular, MoreVertical16Regular } from '@fluentui/react-icons';
+import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
 import { Body, Caption } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
 import { action } from '@storybook/addon-actions';
