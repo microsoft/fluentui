@@ -199,6 +199,15 @@ export const anchorProperties = toObjectMap(htmlElementProperties, [
 ]);
 
 /**
+ * An array of TIME tag properties and events.
+ *
+ * @public
+ */
+export const timeProperties = toObjectMap(htmlElementProperties, [
+  'dateTime', // time
+]);
+
+/**
  * An array of BUTTON tag properties and events.
  *
  * @public

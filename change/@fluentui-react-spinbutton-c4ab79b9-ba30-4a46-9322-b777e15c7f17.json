@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "react-spinbutton: Move to new common folder.",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}
