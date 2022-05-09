@@ -1,7 +1,7 @@
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { horizontalSpacing, iconSizes, motionCurves, motionDurations } from '../../utils/internalTokens';
+import { iconSizes } from '../../utils/internalTokens';
 import type { ComboButtonSlots, ComboButtonState } from './ComboButton.types';
 
 export const comboButtonClassNames: SlotClassNames<ComboButtonSlots> = {
@@ -42,14 +42,14 @@ const useStyles = makeStyles({
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
-      transitionDuration: motionDurations.ultraFast,
-      transitionDelay: motionCurves.accelerateMid,
+      transitionDuration: tokens.durationUltraFast,
+      transitionDelay: tokens.curveAccelerateMid,
     },
     ':focus-within::after': {
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
-      transitionDuration: motionDurations.normal,
-      transitionDelay: motionCurves.decelerateMid,
+      transitionDuration: tokens.durationNormal,
+      transitionDelay: tokens.curveDecelerateMid,
     },
     ':focus-within:active::after': {
       borderBottomColor: tokens.colorCompoundBrandStrokePressed,
@@ -61,7 +61,7 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border('0'),
     boxSizing: 'border-box',
-    columnGap: horizontalSpacing.xxs,
+    columnGap: tokens.spacingHorizontalXXS,
     display: 'flex',
     flexWrap: 'nowrap',
     justifyContent: 'space-between',
@@ -77,18 +77,18 @@ const useStyles = makeStyles({
   small: {
     fontSize: tokens.fontSizeBase200,
     lineHeight: tokens.lineHeightBase200,
-    ...shorthands.padding('3px', horizontalSpacing.sNudge),
+    ...shorthands.padding('3px', tokens.spacingHorizontalSNudge),
   },
   medium: {
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding('5px', horizontalSpacing.mNudge),
+    ...shorthands.padding('5px', tokens.spacingHorizontalMNudge),
   },
   large: {
-    columnGap: horizontalSpacing.sNudge,
+    columnGap: tokens.spacingHorizontalSNudge,
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
-    ...shorthands.padding('7px', horizontalSpacing.m),
+    ...shorthands.padding('7px', tokens.spacingHorizontalM),
   },
 
   // appearance variants
