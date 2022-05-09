@@ -2,13 +2,7 @@ import type { TabSlots, TabState } from './Tab.types';
 
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
-import {
-  pendingContentSizeTokens,
-  pendingSpacingTokens,
-  tabIndicatorPadding,
-  tabIndicatorStrokeWidths,
-} from '../../tab.constants';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { useTabAnimatedIndicatorStyles_unstable } from './useTabAnimatedIndicator';
 
@@ -43,23 +37,25 @@ const useRootStyles = makeStyles({
     textTransform: 'none',
   },
   mediumHorizontal: {
-    columnGap: pendingSpacingTokens.sNudge,
+    columnGap: tokens.spacingHorizontalSNudge,
     justifyContent: 'center',
-    ...shorthands.padding(pendingSpacingTokens.m, pendingSpacingTokens.mNudge),
+    ...shorthands.padding(tokens.spacingVerticalM, tokens.spacingHorizontalMNudge),
   },
   mediumVertical: {
-    columnGap: pendingSpacingTokens.sNudge,
+    // horizontal spacing is deliberate. This is the gap between icon and content.
+    columnGap: tokens.spacingHorizontalSNudge,
     justifyContent: 'flex-start',
     minWidth: '120px',
-    ...shorthands.padding(pendingSpacingTokens.sNudge, pendingSpacingTokens.mNudge),
+    ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalMNudge),
   },
   smallHorizontal: {
-    columnGap: pendingSpacingTokens.xxs,
-    ...shorthands.padding(pendingSpacingTokens.sNudge, pendingSpacingTokens.sNudge),
+    columnGap: tokens.spacingHorizontalXXS,
+    ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalSNudge),
   },
   smallVertical: {
-    columnGap: pendingSpacingTokens.xxs,
-    ...shorthands.padding(pendingSpacingTokens.xxs, pendingSpacingTokens.sNudge),
+    // horizontal spacing is deliberate. This is the gap between icon and content.
+    columnGap: tokens.spacingHorizontalXXS,
+    ...shorthands.padding(tokens.spacingVerticalXXS, tokens.spacingHorizontalSNudge),
   },
   transparent: {
     backgroundColor: tokens.colorTransparentBackground,
@@ -154,8 +150,8 @@ const useRootStyles = makeStyles({
  */
 const useFocusStyles = makeStyles({
   // Tab creates a custom focus indicator because the default focus indicator
-  // is applied using an :after pseudo-element on the root. Since the selection
-  // indicator uses an :after pseudo-element on the root, there is a conflict.
+  // is applied using an ::after pseudo-element on the root. Since the selection
+  // indicator uses an ::after pseudo-element on the root, there is a conflict.
   base: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
     outlineWidth: tokens.strokeWidthThick,
@@ -172,133 +168,136 @@ const useFocusStyles = makeStyles({
 /** Indicator styles for when pending selection */
 const usePendingIndicatorStyles = makeStyles({
   base: {
-    ':hover:before': {
-      backgroundColor: 'none',
-      ...shorthands.borderStyle('solid'),
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+    ':hover::before': {
+      backgroundColor: tokens.colorNeutralStroke1Hover,
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
     },
-    ':active:before': {
-      backgroundColor: 'none',
-      ...shorthands.borderStyle('solid'),
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+    ':active::before': {
+      backgroundColor: tokens.colorNeutralStroke1Pressed,
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
+    },
+    '@media (forced-colors: active)': {
+      ':hover::before': {
+        backgroundColor: 'Highlight',
+      },
+      ':active::before': {
+        backgroundColor: 'Highlight',
+      },
     },
   },
   disabled: {
-    ':hover:before': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    ':hover::before': {
+      backgroundColor: tokens.colorTransparentStroke,
     },
-    ':active:before': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    ':active::before': {
+      backgroundColor: tokens.colorTransparentStroke,
     },
   },
   mediumHorizontal: {
-    ':before': {
+    '::before': {
       bottom: 0,
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumHorizontal} / 2.0)`),
-      height: tabIndicatorStrokeWidths.mediumHorizontal,
-      left: tabIndicatorPadding.mediumHorizontal,
-      right: tabIndicatorPadding.mediumHorizontal,
+      height: tokens.strokeWidthThicker,
+      left: tokens.spacingHorizontalM,
+      right: tokens.spacingHorizontalM,
     },
   },
   mediumVertical: {
-    ':before': {
-      bottom: tabIndicatorPadding.mediumVertical,
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumVertical} / 2.0)`),
+    '::before': {
+      bottom: tokens.spacingVerticalS,
       left: 0,
-      top: tabIndicatorPadding.mediumVertical,
-      width: tabIndicatorStrokeWidths.mediumVertical,
+      top: tokens.spacingVerticalS,
+      width: tokens.strokeWidthThicker,
     },
   },
   smallHorizontal: {
-    ':before': {
+    '::before': {
       bottom: 0,
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallHorizontal} / 2.0)`),
-      height: tabIndicatorStrokeWidths.smallHorizontal,
-      left: tabIndicatorPadding.smallHorizontal,
-      right: tabIndicatorPadding.smallHorizontal,
+      height: tokens.strokeWidthThick,
+      left: tokens.spacingHorizontalSNudge,
+      right: tokens.spacingHorizontalSNudge,
     },
   },
   smallVertical: {
-    ':before': {
-      bottom: tabIndicatorPadding.smallVertical,
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallVertical} / 2.0)`),
+    '::before': {
+      bottom: tokens.spacingVerticalXS,
       left: 0,
-      top: tabIndicatorPadding.smallVertical,
-      width: tabIndicatorStrokeWidths.smallVertical,
+      top: tokens.spacingVerticalXS,
+      width: tokens.strokeWidthThicker,
     },
   },
 });
 
 const useActiveIndicatorStyles = makeStyles({
   base: {
-    ':after': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
-      ...shorthands.borderStyle('solid'),
+    '::after': {
+      backgroundColor: tokens.colorTransparentStroke,
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
       zIndex: 1,
     },
   },
   selected: {
-    ':after': {
-      ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
+    '::after': {
+      backgroundColor: tokens.colorCompoundBrandStroke,
     },
-    ':hover:after': {
-      ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
+    ':hover::after': {
+      backgroundColor: tokens.colorCompoundBrandStrokeHover,
     },
-    ':active:after': {
-      ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
+    ':active::after': {
+      backgroundColor: tokens.colorCompoundBrandStrokePressed,
+    },
+    '@media (forced-colors: active)': {
+      '::after': {
+        backgroundColor: 'ButtonText',
+      },
+      ':hover::after': {
+        backgroundColor: 'ButtonText',
+      },
+      ':active::after': {
+        backgroundColor: 'ButtonText',
+      },
     },
   },
   disabled: {
-    ':after': {
-      ...shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
+    '::after': {
+      backgroundColor: tokens.colorNeutralForegroundDisabled,
     },
   },
   mediumHorizontal: {
-    ':after': {
+    '::after': {
       bottom: '0',
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumHorizontal} / 2.0)`),
-      height: tabIndicatorStrokeWidths.mediumHorizontal,
-      left: tabIndicatorPadding.mediumHorizontal,
-      right: tabIndicatorPadding.mediumHorizontal,
+      height: tokens.strokeWidthThicker,
+      left: tokens.spacingHorizontalM,
+      right: tokens.spacingHorizontalM,
     },
   },
   mediumVertical: {
-    ':after': {
-      bottom: tabIndicatorPadding.mediumVertical,
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.mediumVertical} / 2.0)`),
+    '::after': {
+      bottom: tokens.spacingVerticalS,
       left: 0,
-      top: tabIndicatorPadding.mediumVertical,
-      width: tabIndicatorStrokeWidths.mediumVertical,
+      top: tokens.spacingVerticalS,
+      width: tokens.strokeWidthThicker,
     },
   },
   smallHorizontal: {
-    ':after': {
+    '::after': {
       bottom: 0,
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallHorizontal} / 2.0)`),
-      height: tabIndicatorStrokeWidths.smallHorizontal,
-      left: tabIndicatorPadding.smallHorizontal,
-      right: tabIndicatorPadding.smallHorizontal,
+      height: tokens.strokeWidthThick,
+      left: tokens.spacingHorizontalSNudge,
+      right: tokens.spacingHorizontalSNudge,
     },
   },
   smallVertical: {
-    ':after': {
-      bottom: tabIndicatorPadding.smallVertical,
-      ...shorthands.borderWidth(`calc(${tabIndicatorStrokeWidths.smallVertical} / 2.0)`),
+    '::after': {
+      bottom: tokens.spacingVerticalXS,
       left: '0',
-      top: tabIndicatorPadding.smallVertical,
-      width: tabIndicatorStrokeWidths.smallVertical,
+      top: tokens.spacingVerticalXS,
+      width: tokens.strokeWidthThicker,
     },
   },
 });
@@ -332,13 +331,13 @@ const useIconStyles = makeStyles({
  */
 const useContentStyles = makeStyles({
   base: {
-    ...pendingContentSizeTokens.body1,
+    ...typographyStyles.body1,
     ...shorthands.overflow('hidden'),
     // content padding is the same for medium & small, horiztonal & vertical
-    ...shorthands.padding(0, pendingSpacingTokens.xxs),
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalXXS),
   },
   selected: {
-    ...pendingContentSizeTokens.body1Strong,
+    ...typographyStyles.body1Strong,
   },
 });
 

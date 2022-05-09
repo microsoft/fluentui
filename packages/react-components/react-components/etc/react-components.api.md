@@ -88,8 +88,11 @@ import { counterBadgeClassNames } from '@fluentui/react-badge';
 import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { CreateCustomFocusIndicatorStyleOptions } from '@fluentui/react-tabster';
 import { createDarkTheme } from '@fluentui/react-theme';
 import { createDOMRenderer } from '@griffel/react';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { CreateFocusOutlineStyleOptions } from '@fluentui/react-tabster';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
@@ -120,6 +123,7 @@ import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getNativeProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
+import { GriffelStyle } from '@griffel/react';
 import { Headline } from '@fluentui/react-text';
 import { headlineClassName } from '@fluentui/react-text';
 import { headlineClassNames } from '@fluentui/react-text';
@@ -130,6 +134,12 @@ import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
+import { Label } from '@fluentui/react-label';
+import { labelClassName } from '@fluentui/react-label';
+import { labelClassNames } from '@fluentui/react-label';
+import { LabelProps } from '@fluentui/react-label';
+import { LabelSlots } from '@fluentui/react-label';
+import { LabelState } from '@fluentui/react-label';
 import { LargeTitle } from '@fluentui/react-text';
 import { largeTitleClassName } from '@fluentui/react-text';
 import { largeTitleClassNames } from '@fluentui/react-text';
@@ -249,12 +259,32 @@ import { PopoverTriggerState } from '@fluentui/react-popover';
 import { Portal } from '@fluentui/react-portal';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
+import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningShorthand } from '@fluentui/react-positioning';
+import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { presenceBadgeClassName } from '@fluentui/react-badge';
 import { presenceBadgeClassNames } from '@fluentui/react-badge';
 import { PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
+import { Radio } from '@fluentui/react-radio';
+import { radioClassName } from '@fluentui/react-radio';
+import { radioClassNames } from '@fluentui/react-radio';
+import { RadioGroup } from '@fluentui/react-radio';
+import { radioGroupClassName } from '@fluentui/react-radio';
+import { radioGroupClassNames } from '@fluentui/react-radio';
+import { RadioGroupContext } from '@fluentui/react-radio';
+import { RadioGroupContextValue } from '@fluentui/react-radio';
+import { RadioGroupContextValues } from '@fluentui/react-radio';
+import { RadioGroupOnChangeData } from '@fluentui/react-radio';
+import { RadioGroupProps } from '@fluentui/react-radio';
+import { RadioGroupSlots } from '@fluentui/react-radio';
+import { RadioGroupState } from '@fluentui/react-radio';
+import { RadioOnChangeData } from '@fluentui/react-radio';
+import { RadioProps } from '@fluentui/react-radio';
+import { RadioSlots } from '@fluentui/react-radio';
+import { RadioState } from '@fluentui/react-radio';
 import { renderAccordion_unstable } from '@fluentui/react-accordion';
 import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
 import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
@@ -267,6 +297,7 @@ import { renderDivider_unstable } from '@fluentui/react-divider';
 import { RendererProvider } from '@griffel/react';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
+import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
 import { renderMenu_unstable } from '@fluentui/react-menu';
 import { renderMenuButton_unstable } from '@fluentui/react-button';
@@ -284,6 +315,8 @@ import { renderPopover_unstable } from '@fluentui/react-popover';
 import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
 import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
 import { renderPortal_unstable } from '@fluentui/react-portal';
+import { renderRadio_unstable } from '@fluentui/react-radio';
+import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSlider_unstable } from '@fluentui/react-slider';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
 import { renderText_unstable } from '@fluentui/react-text';
@@ -353,6 +386,7 @@ import { TooltipProps } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
 import { TooltipState } from '@fluentui/react-tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-tooltip';
+import { TypographyStyle } from '@fluentui/react-theme';
 import { TypographyStyles } from '@fluentui/react-theme';
 import { typographyStyles } from '@fluentui/react-theme';
 import { UninitializedMenuListState } from '@fluentui/react-menu';
@@ -395,6 +429,8 @@ import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
 import { useIsSSR } from '@fluentui/react-utilities';
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
+import { useLabel_unstable } from '@fluentui/react-label';
+import { useLabelStyles_unstable } from '@fluentui/react-label';
 import { useLink_unstable } from '@fluentui/react-link';
 import { useLinkState_unstable } from '@fluentui/react-link';
 import { useLinkStyles_unstable } from '@fluentui/react-link';
@@ -437,6 +473,11 @@ import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
 import { usePortal_unstable } from '@fluentui/react-portal';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
+import { useRadio_unstable } from '@fluentui/react-radio';
+import { useRadioGroup_unstable } from '@fluentui/react-radio';
+import { useRadioGroupContextValues } from '@fluentui/react-radio';
+import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
+import { useRadioStyles_unstable } from '@fluentui/react-radio';
 import { useSlider_unstable } from '@fluentui/react-slider';
 import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
@@ -624,9 +665,15 @@ export { CounterBadgeState }
 
 export { createCustomFocusIndicatorStyle }
 
+export { CreateCustomFocusIndicatorStyleOptions }
+
 export { createDarkTheme }
 
 export { createDOMRenderer }
+
+export { createFocusOutlineStyle }
+
+export { CreateFocusOutlineStyleOptions }
 
 export { createHighContrastTheme }
 
@@ -688,6 +735,8 @@ export { getPartitionedNativeProps }
 
 export { getSlots }
 
+export { GriffelStyle }
+
 export { Headline }
 
 export { headlineClassName }
@@ -707,6 +756,18 @@ export { ImageProps }
 export { ImageSlots }
 
 export { ImageState }
+
+export { Label }
+
+export { labelClassName }
+
+export { labelClassNames }
+
+export { LabelProps }
+
+export { LabelSlots }
+
+export { LabelState }
 
 export { LargeTitle }
 
@@ -946,6 +1007,12 @@ export { PortalProps }
 
 export { PortalState }
 
+export { PositioningProps }
+
+export { PositioningShorthand }
+
+export { PositioningShorthandValue }
+
 export { PresenceBadge }
 
 export { presenceBadgeClassName }
@@ -957,6 +1024,40 @@ export { PresenceBadgeProps }
 export { PresenceBadgeState }
 
 export { PresenceBadgeStatus }
+
+export { Radio }
+
+export { radioClassName }
+
+export { radioClassNames }
+
+export { RadioGroup }
+
+export { radioGroupClassName }
+
+export { radioGroupClassNames }
+
+export { RadioGroupContext }
+
+export { RadioGroupContextValue }
+
+export { RadioGroupContextValues }
+
+export { RadioGroupOnChangeData }
+
+export { RadioGroupProps }
+
+export { RadioGroupSlots }
+
+export { RadioGroupState }
+
+export { RadioOnChangeData }
+
+export { RadioProps }
+
+export { RadioSlots }
+
+export { RadioState }
 
 export { renderAccordion_unstable }
 
@@ -981,6 +1082,8 @@ export { RendererProvider }
 export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
+
+export { renderLabel_unstable }
 
 export { renderLink_unstable }
 
@@ -1015,6 +1118,10 @@ export { renderPopoverSurface_unstable }
 export { renderPopoverTrigger_unstable }
 
 export { renderPortal_unstable }
+
+export { renderRadio_unstable }
+
+export { renderRadioGroup_unstable }
 
 export { renderSlider_unstable }
 
@@ -1154,6 +1261,8 @@ export { TooltipState }
 
 export { TooltipTriggerProps }
 
+export { TypographyStyle }
+
 export { TypographyStyles }
 
 export { typographyStyles }
@@ -1238,6 +1347,10 @@ export { useIsSSR }
 
 export { useKeyboardNavAttribute }
 
+export { useLabel_unstable }
+
+export { useLabelStyles_unstable }
+
 export { useLink_unstable }
 
 export { useLinkState_unstable }
@@ -1321,6 +1434,16 @@ export { usePopoverTrigger_unstable }
 export { usePortal_unstable }
 
 export { usePresenceBadge_unstable }
+
+export { useRadio_unstable }
+
+export { useRadioGroup_unstable }
+
+export { useRadioGroupContextValues }
+
+export { useRadioGroupStyles_unstable }
+
+export { useRadioStyles_unstable }
 
 export { useSlider_unstable }
 

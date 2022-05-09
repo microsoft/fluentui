@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Tue, 19 Apr 2022 19:17:27 GMT and should not be manually modified.
+This log was last generated on Thu, 05 May 2022 18:26:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-beta.12)
+
+Thu, 05 May 2022 18:26:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-beta.11..@fluentui/react-label_v9.0.0-beta.12)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-rc.7 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.5 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+
+## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-beta.11)
+
+Wed, 04 May 2022 13:26:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-beta.10..@fluentui/react-label_v9.0.0-beta.11)
+
+### Changes
+
+- Add style to make required match text when disabled ([PR #22715](https://github.com/microsoft/fluentui/pull/22715) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.6 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
 
 ## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-beta.10)
 

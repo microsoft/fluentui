@@ -1325,6 +1325,11 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@cactuslab/usepubsub@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@cactuslab/usepubsub/-/usepubsub-1.0.2.tgz#08877905242d2e1b6053ffc6d0efbb097dd5a32b"
+  integrity sha512-xNl3YemJ+aTDgs7MRlmGla7TGDVowtZ/FAF5DaHfR5EJaM4tV5EvK0FIk9hz/lt3AHXL+vxnBoyf4z2Z1sYzJA==
+
 "@charlietango/use-client-hydrated@^1.8.2":
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/@charlietango/use-client-hydrated/-/use-client-hydrated-1.8.2.tgz#7066f4c9966233dcb3dcc755351570e62b101a4f"
@@ -19856,9 +19861,9 @@ octokit-pagination-methods@^1.1.0:
   integrity sha512-fZ4qZdQ2nxJvtcasX7Ghl+WlWS/d9IgnBIwFZXVNNZUmzpno91SX5bc5vuxiuKoCtK78XxGGNuSCrDC7xYB3OQ==
 
 office-ui-fabric-core@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/office-ui-fabric-core/-/office-ui-fabric-core-11.0.0.tgz#73f43c8d1bd40e87971c7cda0ff1aa7bfa246410"
-  integrity sha512-K6+KGnBXXjfSxxZpp+4oDXVLgUc//7OnXrn8F08VoJnGhEz27WUf4ZuMa32SjGoqirWlb4JlKkXbOpC9cis6dQ==
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/office-ui-fabric-core/-/office-ui-fabric-core-11.0.1.tgz#f4769680afae49f067ab4d177c985fc4727a55d4"
+  integrity sha512-jcfycbVOm2aUoI+AGtHW24HvM7nUVFr44hR5NIE56EobK67bVwbNAQL15CJj3vNz5PBrnitsV9ROOB+KOEWn8g==
 
 on-finished@~2.3.0:
   version "2.3.0"

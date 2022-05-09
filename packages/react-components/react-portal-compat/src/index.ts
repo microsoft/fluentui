@@ -1,0 +1,1 @@
+export { PortalCompatProvider } from './PortalCompatProvider';

@@ -1,0 +1,28 @@
+{
+  "name": "@fluentui/react-portal-compat-context",
+  "entries": [
+    {
+      "date": "Wed, 04 May 2022 13:26:46 GMT",
+      "tag": "@fluentui/react-portal-compat-context_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "8997f88bdd280b6831338d6c231b387fd554046e",
+            "comment": "react-portal-compat-context: Move to new common folder."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "280cf2336d814d7380d5cbf4999ce56da763919c",
+            "comment": "initial release"
+          }
+        ]
+      }
+    }
+  ]
+}
