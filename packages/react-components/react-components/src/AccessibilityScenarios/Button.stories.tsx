@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Button } from '@fluentui/react-button';
+
 import { Scenario } from './utils';
 
 export const MessengerButtonsAccessibilityScenario: React.FunctionComponent = () => {

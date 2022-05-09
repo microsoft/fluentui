@@ -730,7 +730,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     return currentPendingValue !== null && currentPendingValue !== undefined
       ? currentPendingValue
       : indexWithinBounds(currentOptions, index)
-      ? currentOptions[index].text
+      ? getPreviewText(currentOptions[index])
       : '';
   }
 

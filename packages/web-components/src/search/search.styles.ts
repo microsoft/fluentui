@@ -16,7 +16,8 @@ import {
   inputStyles,
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
-import { bodyFont, controlCornerRadius, density, designUnit, neutralFillInputRecipe, neutralFillStealthRecipe, neutralForegroundRest, typeRampBaseFontSize, typeRampBaseLineHeight } from '../design-tokens';
+import { controlCornerRadius, density, designUnit, neutralFillInputRecipe, neutralFillStealthRecipe, neutralForegroundRest } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 import { Swatch } from '../color/swatch';
 
 
@@ -85,10 +86,8 @@ export const searchStyles = (context, definition) =>
       border: none;
       border-radius: calc(${controlCornerRadius} * 1px);
       min-width: calc(${heightNumber} * 1px);
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
+      ${typeRampBase}
       outline: none;
-      font-family: ${bodyFont};
       padding: 0 calc((10 + (${designUnit} * 2 * ${density})) * 1px);
     }
     .clear-button:hover {

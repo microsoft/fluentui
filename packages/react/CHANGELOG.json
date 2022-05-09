@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 09 May 2022 07:37:41 GMT",
+      "tag": "@fluentui/react_v8.67.3",
+      "version": "8.67.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "nameraj@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4ac120133744ee07facb0429d5794bdea92a9619",
+            "comment": "Combobox: Fix issue where the ariaLabel was intended to be used as the preview text but it wasn't showing up"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Apr 2022 07:39:55 GMT",
       "tag": "@fluentui/react_v8.67.2",
       "version": "8.67.2",

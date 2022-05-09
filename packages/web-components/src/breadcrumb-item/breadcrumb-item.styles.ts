@@ -8,7 +8,6 @@ import {
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
-  bodyFont,
   controlCornerRadius,
   focusStrokeOuter,
   focusStrokeWidth,
@@ -16,9 +15,8 @@ import {
   neutralForegroundHover,
   neutralForegroundRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 import { heightNumber } from '../styles/index';
 
 export const breadcrumbItemStyles: (
@@ -31,9 +29,7 @@ export const breadcrumbItemStyles: (
       color: ${neutralForegroundRest};
       fill: currentcolor;
       box-sizing: border-box;
-      font-family: ${bodyFont};
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
+      ${typeRampBase};
       min-width: calc(${heightNumber} * 1px);
       border-radius: calc(${controlCornerRadius} * 1px);
       outline: none;
