@@ -74,6 +74,9 @@ const useRootStyles = makeStyles({
       },
     },
   },
+  secondary: {
+    /* The secondary styles are exactly the same as the base styles. */
+  },
   subtle: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
       borderRightColor: tokens.colorNeutralStroke1Hover,
