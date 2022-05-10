@@ -28,7 +28,7 @@ export interface CheckboxOnChangeData {
 }
 
 // @public
-export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & {
+export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'checked' | 'defaultChecked' | 'onChange' | 'size'> & {
     checked?: 'mixed' | boolean;
     children?: never;
     defaultChecked?: 'mixed' | boolean;
