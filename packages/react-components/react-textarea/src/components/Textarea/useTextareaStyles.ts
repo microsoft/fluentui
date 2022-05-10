@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TextareaSlots, TextareaState } from './Textarea.types';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 export const textareaClassNames: SlotClassNames<TextareaSlots> = {
@@ -8,37 +8,6 @@ export const textareaClassNames: SlotClassNames<TextareaSlots> = {
   textarea: 'fui-Textarea__textarea',
 };
 
-// TODO(sharing) use theme values once available
-const spacingTokens = {
-  horizontal: {
-    sNudge: '6px',
-    mNudge: '10px',
-    xss: '2px',
-    m: '12px',
-  },
-};
-const contentSizeTokens = {
-  body1: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-  },
-  caption1: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-  },
-  base400: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-  },
-};
-const motionDurations = {
-  ultraFast: '0.05s',
-  normal: '0.2s',
-};
-const motionCurves = {
-  accelerateMid: 'cubic-bezier(0.7,0,1,0.5)',
-  decelerateMid: 'cubic-bezier(0.1,0.9,0.2,1)',
-};
 const textareaHeight = {
   small: '24px',
   medium: '32px',
@@ -99,15 +68,15 @@ const useRootStyles = makeStyles({
       // Animation for focus OUT
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
-      transitionDuration: motionDurations.ultraFast,
-      transitionDelay: motionCurves.accelerateMid,
+      transitionDuration: tokens.durationUltraFast,
+      transitionDelay: tokens.curveAccelerateMid,
     },
     ':focus-within:after': {
       // Animation for focus IN
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
-      transitionDuration: motionDurations.normal,
-      transitionDelay: motionCurves.decelerateMid,
+      transitionDuration: tokens.durationNormal,
+      transitionDelay: tokens.curveDecelerateMid,
     },
     ':focus-within:active:after': {
       // This is if the user clicks the field again while it's already focused
@@ -185,21 +154,22 @@ const useTextareaStyles = makeStyles({
     height: textareaHeight.small,
     ...shorthands.padding(
       '0',
-      `calc(${spacingTokens.horizontal.mNudge} + ${spacingTokens.horizontal.xss})`,
+      `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
       '0',
-      `calc(${spacingTokens.horizontal.sNudge} + ${spacingTokens.horizontal.xss})`,
+      `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
     ),
-    ...contentSizeTokens.caption1,
+    ...typographyStyles.caption1,
   },
   medium: {
     height: textareaHeight.medium,
-    ...shorthands.padding('0', `calc(${spacingTokens.horizontal.mNudge} + ${spacingTokens.horizontal.xss})`),
-    ...contentSizeTokens.body1,
+    ...shorthands.padding('0', `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`),
+    ...typographyStyles.body1,
   },
   large: {
     height: textareaHeight.large,
-    ...shorthands.padding('0', `calc(${spacingTokens.horizontal.m} + ${spacingTokens.horizontal.xss})`),
-    ...contentSizeTokens.base400,
+    ...shorthands.padding('0', `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`),
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
   },
 });
 

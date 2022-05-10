@@ -1,7 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { horizontalSpacing } from '../../utils/internalTokens';
 import type { ListboxSlots, ListboxState } from './Listbox.types';
 
 export const listboxClassNames: SlotClassNames<ListboxSlots> = {
@@ -19,8 +18,8 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     minWidth: '160px',
-    ...shorthands.padding(horizontalSpacing.xs),
-    rowGap: horizontalSpacing.xxs,
+    ...shorthands.padding(tokens.spacingHorizontalXS),
+    rowGap: tokens.spacingHorizontalXXS,
   },
 });
 

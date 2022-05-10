@@ -1,7 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { horizontalSpacing } from '../../utils/internalTokens';
 import type { OptionGroupSlots, OptionGroupState } from './OptionGroup.types';
 
 export const optionGroupClassNames: SlotClassNames<OptionGroupSlots> = {
@@ -16,14 +15,14 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    rowGap: horizontalSpacing.xxs,
+    rowGap: tokens.spacingHorizontalXXS,
 
     '&:not(:last-child)::after': {
       content: '""',
       ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
       display: 'block',
-      paddingBottom: horizontalSpacing.xs,
-      marginBottom: horizontalSpacing.xs,
+      paddingBottom: tokens.spacingHorizontalXS,
+      marginBottom: tokens.spacingHorizontalXS,
     },
   },
 
@@ -34,7 +33,7 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightSemibold,
     lineHeight: tokens.lineHeightBase200,
-    ...shorthands.padding(horizontalSpacing.s, horizontalSpacing.sNudge),
+    ...shorthands.padding(tokens.spacingHorizontalS, tokens.spacingHorizontalSNudge),
   },
 });
 
