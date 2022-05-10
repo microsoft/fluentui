@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update React compatibility to support React 18.1.0",
+  "packageName": "@fluentui/react-compose",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
