@@ -34,6 +34,7 @@ describe('Dialog', () => {
     cy.clickOn(trigger);
     cy.visible(cancelButton);
 
+    // press click within Dialog content, drag mouse outside of Dialog content
     cy.get(cancelButton).trigger('mousedown', { eventConstructor: 'MouseEvent', button: 0 }).trigger('mousemove', {
       eventConstructor: 'MouseEvent',
       clientX: 1,
