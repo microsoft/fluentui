@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "refactor: move package under react-components folder",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
