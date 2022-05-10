@@ -129,7 +129,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                       right: -2px;
                       top: -2px;
                     }
-                    &:active > * {
+                    &:active > span {
                       left: 0px;
                       position: relative;
                       top: 0px;
@@ -1507,7 +1507,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       right: -2px;
                       top: -2px;
                     }
-                    &:active > * {
+                    &:active > span {
                       left: 0px;
                       position: relative;
                       top: 0px;
@@ -1739,7 +1739,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       right: -2px;
                       top: -2px;
                     }
-                    &:active > * {
+                    &:active > span {
                       left: 0px;
                       position: relative;
                       top: 0px;
@@ -1971,7 +1971,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                       right: -2px;
                       top: -2px;
                     }
-                    &:active > * {
+                    &:active > span {
                       left: 0px;
                       position: relative;
                       top: 0px;
@@ -2521,7 +2521,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                       right: -2px;
                       top: -2px;
                     }
-                    &:active > * {
+                    &:active > span {
                       left: 0px;
                       position: relative;
                       top: 0px;

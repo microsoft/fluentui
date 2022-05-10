@@ -212,7 +212,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -348,7 +348,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -504,7 +504,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;

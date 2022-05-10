@@ -107,7 +107,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -466,7 +466,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -655,7 +655,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -1014,7 +1014,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -1210,7 +1210,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -1569,7 +1569,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -1758,7 +1758,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -2117,7 +2117,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
