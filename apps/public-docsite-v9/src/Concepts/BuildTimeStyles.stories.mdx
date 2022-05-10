@@ -209,7 +209,7 @@ const useStyles = makeStyles({
 });
 ```
 
-It's perfectly fine, and recommended even to reuse common tokens and create style helpers across an application. It's
+It's perfectly fine, and even recommended to reuse common tokens and create style helpers across an application. It's
 one of the main benefits of using CSS-in-JS. However, this means that the build time transforms which are described
 above are not trivial to compute because code needs to be evaluated to know what styles to transform. In the example
 above, in order to transform the `styles.ts` file, the code needs to be executed/evaluated by importing the extra
