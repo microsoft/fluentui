@@ -7,6 +7,9 @@ module.exports = {
   },
   addons: [
     {
+      name: '@storybook/addon-docs',
+    },
+    {
       name: '@storybook/addon-essentials',
       options: {
         backgrounds: false,
@@ -14,9 +17,6 @@ module.exports = {
         toolbars: false,
         actions: false,
       },
-    },
-    {
-      name: '@storybook/addon-docs',
     },
   ],
   webpackFinal: async config => {
@@ -28,8 +28,20 @@ module.exports = {
         },
       ],
     });
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: require.resolve('svg-inline-loader'),
+          options: {
+            removeSVGTagAttrs: false,
+          },
+        },
+      ],
+    });
     config.resolve.extensions.push('.ts');
     config.resolve.extensions.push('.js');
+    config.resolve.extensions.push('.svg');
     config.plugins.push(
       new CircularDependencyPlugin({
         exclude: /node_modules/,
