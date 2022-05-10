@@ -23,7 +23,11 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
 
   const innerRef = React.useRef<HTMLElement>(null);
 
-  const focusAttributes = useArrowNavigationGroup({ circular: true, axis: vertical ? 'vertical' : 'horizontal' });
+  const focusAttributes = useArrowNavigationGroup({
+    circular: true,
+    axis: vertical ? 'vertical' : 'horizontal',
+    memorizeCurrent: true,
+  });
 
   const [selectedValue, setSelectedValue] = useControllableState({
     state: props.selectedValue,
