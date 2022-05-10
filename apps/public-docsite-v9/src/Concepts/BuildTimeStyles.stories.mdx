@@ -64,7 +64,7 @@ extra configuration or parsing errors, using the webpack loader after transpilat
 
 #### Typescript (and additional transpilation) support
 
-The Webpack loader evaluate styles at runtime using [Linaria](https://github.com/callstack/linaria). For typescript
+The Webpack loader [evaluate styles at runtime using Linaria](#build-time-style-evaluation). For typescript
 it's necessary to install `@babel/preset-typescript` and configure it in the `babelOptions` of the loader. Similarly
 any other language features that might be required can also be configured here. While the order of loaders will
 ensure that the webpack loader will run on transpiled code (for a specific module), runtime evaluation can potentially require other
@@ -99,7 +99,7 @@ Simply create a Babel configuration file such as `.babelrc` and add the preset.
 
 #### Typescript (and additional transpilation) support
 
-The Babel preset will evaluate stlyes at runtime using [Linaria](https://github.com/callstack/linaria). For typescript
+The Babel preset will [evaluate stlyes at runtime using Linaria](#build-time-style-evaluation). For typescript
 it's necessary to install `@babel/preset-typescript` and configure it in the preset. Similarly
 any other language features that might be required can also be configured here. While the order of loaders will
 ensure that the webpack loader will run on transpiled code (for a specific module), runtime evaluation can potentially require other
@@ -183,3 +183,42 @@ function Component() {
   return <div className={classes.root} />;
 }
 ```
+
+### Build time style evaluation
+
+Let's consider the following scenario:
+
+```ts
+// constants.ts
+export const PADDING_TOKEN = '1px';
+
+// common.ts
+export const commonStyles = () => ({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
+// styles.ts
+import { makeStyles } from '@fluentui/react-components';
+import { PADDING_TOKEN } from './constants';
+import { commonStyles } from './common';
+
+const useStyles = makeStyles({
+  root: { paddingLeft: PADDING_TOKEN, ...commonStyles() },
+});
+```
+
+It's perfectly fine, and recommended even to reuse common tokens and create style helpers across an application. It's
+one of the main benefits of using CSS-in-JS. However, this means that the build time transforms which are described
+above are not trivial to compute because code needs to be evaluated to know what styles to transform. In the example
+above, in order to transform the `styles.ts` file, the code needs to be executed/evaluated by importing the extra
+modules that it depends on (`constants.ts` and `common.ts`).
+
+Griffel uses
+[style evaluation from Linaria](https://github.com/callstack/linaria).
+The build-time evaluation happens as a part of the Griffel Babel preset. All styles that require evaluation will be
+batched and done in single evaluation context.**Linaria** Babel config separate to any config used by the application.
+Therefore any additional language features
+might require extra configuration. How to do this configuration is described in the sections above. One common
+language feature that will require extra configuration is Typescript.
