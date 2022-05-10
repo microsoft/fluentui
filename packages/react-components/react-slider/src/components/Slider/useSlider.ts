@@ -3,9 +3,6 @@ import { getPartitionedNativeProps, resolveShorthand, useId } from '@fluentui/re
 import { useSliderState_unstable } from './useSliderState';
 import { SliderProps, SliderState } from './Slider.types';
 
-/**
- * Given user props, returns state and render function for a Slider.
- */
 export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputElement>): SliderState => {
   const nativeProps = getPartitionedNativeProps({
     props,
@@ -14,17 +11,9 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
   });
 
   const {
-    // Props
-    value,
-    defaultValue,
-    min = 0,
-    max = 100,
-    step,
     disabled,
     vertical,
     size = 'medium',
-    origin,
-    onChange,
     // Slots
     root,
     input,
@@ -33,16 +22,9 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
   } = props;
 
   const state: SliderState = {
-    defaultValue,
     disabled,
-    max,
-    min,
-    origin,
     size,
-    step,
     vertical,
-    value,
-    onChange,
     components: {
       input: 'input',
       rail: 'div',
@@ -69,7 +51,7 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
     thumb: resolveShorthand(thumb, { required: true }),
   };
 
-  useSliderState_unstable(state);
+  useSliderState_unstable(state, props);
 
   return state;
 };
