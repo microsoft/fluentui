@@ -31,9 +31,9 @@ export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'd
     disabled?: boolean;
     max?: number;
     min?: number;
+    origin?: number;
     size?: 'small' | 'medium';
     step?: number;
-    origin?: number;
     value?: number;
     vertical?: boolean;
     onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
