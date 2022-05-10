@@ -125,7 +125,7 @@ Component props:
 
 ### Checkbox Props
 
-See [Checkbox.types.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-checkbox/src/components/Checkbox/Checkbox.types.ts)
+See [Checkbox.types.ts](./src/components/Checkbox/Checkbox.types.ts)
 
 ## Structure
 
@@ -147,22 +147,22 @@ See [Checkbox.types.ts](https://github.com/microsoft/fluentui/blob/master/packag
 
 ```tsx
 <slots.root {...slotProps.root}>
-  {state.labelPosition === 'before' && <slots.label {...slotProps.label} />}
-  <slots.indicator {...slotProps.indicator} />
   <slots.input {...slotProps.input} />
-  {state.labelPosition === 'after' && <slots.label {...slotProps.label} />}
+  {state.labelPosition === 'before' && slots.label && <slots.label {...slotProps.label} />}
+  <slots.indicator {...slotProps.indicator} />
+  {state.labelPosition === 'after' && slots.label && <slots.label {...slotProps.label} />}
 </slots.root>
 ```
 
 ### **DOM**
 
 ```html
-<span class="fui-Checkbox root">
-  <div aria-hidden="true" class="indicator">
+<span class="fui-Checkbox">
+  <div aria-hidden="true" class="fui-Checkbox__indicator">
     <CheckmarkRegular />
   </div>
-  <input type="checkbox" id="checkbox-1" class="input" />
-  <label for="checkbox-1" className="label">Example Checkbox</label>
+  <input type="checkbox" id="checkbox-1" class="fui-Checkbox__input" />
+  <label for="checkbox-1" className="fui-Checkbox__label">Example Checkbox</label>
 </span>
 ```
 
