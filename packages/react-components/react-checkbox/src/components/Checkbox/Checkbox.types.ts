@@ -35,7 +35,7 @@ export type CheckboxSlots = {
  */
 export type CheckboxProps = Omit<
   ComponentProps<Partial<CheckboxSlots>, 'input'>,
-  'size' | 'checked' | 'defaultChecked' | 'onChange'
+  'checked' | 'defaultChecked' | 'onChange' | 'size'
 > & {
   /**
    * The controlled value for the checkbox.
