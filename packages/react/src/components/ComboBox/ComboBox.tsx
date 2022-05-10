@@ -224,8 +224,8 @@ function findFirstDescendant(element: HTMLElement, match: (element: HTMLElement)
   // For loop is used because forEach cannot be stopped.
   for (let index = 0; index < children.length; index++) {
     const child = children[index];
-    if (match(children[index])) {
-      return children[index];
+    if (match(child)) {
+      return child;
     }
     const candidate = findFirstDescendant(child, match);
     if (candidate) {
