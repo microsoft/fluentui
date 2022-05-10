@@ -14,11 +14,13 @@ As it stands, Fluent v9 does not currently adhere to a specific browser support 
 
 ### Browser Support Matrix
 
-The proposed browser support matrix will be loosely based off the [Resize Observer](https://caniuse.com/mdn-api_resizeobserver) support matrix. This decision was driven by the current usage of the `ResizeObserver` in Fluent v9 as well as the current business goals of our partner teams. Along with that, being able to maintain our current ES2019 target and eventually move to ES2020 without the need to transpile down was also a factor. As it stands, the lack of adequate polyfill capabilities for CSS features in tandem with the goals of our partners is the biggest detriment to the support matrix not being higher.
+The proposed browser support matrix will be loosely based off the [Resize Observer](https://caniuse.com/mdn-api_resizeobserver) support matrix . This decision was driven by the current usage of the `ResizeObserver` in Fluent v9 as well as the current business goals of our partner teams. Along with that, being able to maintain our current ES2019 target and eventually move to ES2020 without the need to transpile down was also a factor. As it stands, the lack of adequate polyfill capabilities for CSS features in tandem with the goals of our partners is the biggest detriment to the support matrix not being higher.
 
 | Edge | Firefox | Chrome | Safari | Opera | Internet Explorer |
 | ---- | ------- | ------ | ------ | ----- | ----------------- |
 | >=80 | >=74    | >=80   | >=14   | >=67  | Not Supported     |
+
+This browser support matrix will be available through all relevant public docsite and/or wikis for maximum visibility.
 
 ### ECMAScript Syntax & Expectations
 
@@ -32,10 +34,13 @@ Fluent developers are expected to adhere to the proposed browser matrix thus any
 
 With a defined browser matrix, the Fluent team will now have better guidance on what CSS features can and cannot be used. Using polyfills is not a real option in this case because the current ecosystem around CSS polyfills results in egregious amounts of code that increase bundle size while also degrading performance. This puts the responsibility squarely on the Fluent team to ensure that no unsupported CSS features are introduced to the library.
 
+### Browser Support Going Forward
+
+With an eye towards being a modern library, Fluent will follow a yearly audit process to evaluate and update the current browser support matrix to keep pace with the ever evolving ecosystem of the web. This will allow the team to utilize modern tools and improve overall engineering efficiency while also providing consumers with performance and bundlesize improvements. Due to the nature of how Safari browser updates are tied to MacOS versions, Safari will be the browser that ultimately holds the library back from fully adopting modern browser versions across the board. Because of this, the proposed timeframe for when these audits occur should be whenever a Safari major release occurs. These tend to happen annually during the month of September so Fluent can target an annual audit around that time.
+
 ## Out of Scope
 
 - The specifics on how to prevent the addition of ES syntax, browser APIs or CSS features that don't conform to this matrix.
-- Strategy on moving browser support forward for future releases of v10, v11, and so on.
 
 ## Pros and Cons
 
