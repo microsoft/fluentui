@@ -156,7 +156,7 @@ const useMenuOpenState = (
     clearTimeout(setOpenTimeout.current);
     if (!(e instanceof Event) && e.persist) {
       // < React 17 still uses pooled synthetic events
-      e.persist();
+      // e.persist();
     }
 
     if (e.type === 'mouseleave' || e.type === 'mouseenter' || e.type === 'mousemove' || e.type === MENU_ENTER_EVENT) {
