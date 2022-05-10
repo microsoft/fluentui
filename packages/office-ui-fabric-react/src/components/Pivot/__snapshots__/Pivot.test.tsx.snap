@@ -92,7 +92,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -258,7 +258,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -482,7 +482,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -648,7 +648,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -861,7 +861,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -1027,7 +1027,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -1195,7 +1195,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -1428,7 +1428,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -1594,7 +1594,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -1808,7 +1808,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -1985,7 +1985,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -2203,7 +2203,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -2369,7 +2369,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -2582,7 +2582,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -2759,7 +2759,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -2976,7 +2976,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -3133,7 +3133,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;

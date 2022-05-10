@@ -268,7 +268,7 @@ exports[`Panel allows the consumer to pass through popup props 1`] = `
                       right: -2px;
                       top: -2px;
                     }
-                    &:active > * {
+                    &:active > span {
                       left: 0px;
                       position: relative;
                       top: 0px;
@@ -666,7 +666,7 @@ exports[`Panel renders Panel correctly 1`] = `
                       right: -2px;
                       top: -2px;
                     }
-                    &:active > * {
+                    &:active > span {
                       left: 0px;
                       position: relative;
                       top: 0px;

@@ -221,7 +221,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         right: -2px;
                         top: -2px;
                       }
-                      &:active > * {
+                      &:active > span {
                         left: 0px;
                         position: relative;
                         top: 0px;
@@ -378,7 +378,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         right: -2px;
                         top: -2px;
                       }
-                      &:active > * {
+                      &:active > span {
                         left: 0px;
                         position: relative;
                         top: 0px;
@@ -597,7 +597,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       right: -2px;
                       top: -2px;
                     }
-                    &:active > * {
+                    &:active > span {
                       left: 0px;
                       position: relative;
                       top: 0px;

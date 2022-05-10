@@ -55,7 +55,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         right: -2px;
         top: -2px;
       }
-      &:active > * {
+      &:active > span {
         left: 0px;
         position: relative;
         top: 0px;

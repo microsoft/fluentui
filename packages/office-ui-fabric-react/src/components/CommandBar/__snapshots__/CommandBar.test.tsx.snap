@@ -120,7 +120,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                     right: 4px;
                     top: 4px;
                   }
-                  &:active > * {
+                  &:active > span {
                     left: 0px;
                     position: relative;
                     top: 0px;
@@ -262,7 +262,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                     right: 4px;
                     top: 4px;
                   }
-                  &:active > * {
+                  &:active > span {
                     left: 0px;
                     position: relative;
                     top: 0px;
@@ -469,7 +469,7 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                     right: 4px;
                     top: 4px;
                   }
-                  &:active > * {
+                  &:active > span {
                     left: 0px;
                     position: relative;
                     top: 0px;
@@ -611,7 +611,7 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                     right: 4px;
                     top: 4px;
                   }
-                  &:active > * {
+                  &:active > span {
                     left: 0px;
                     position: relative;
                     top: 0px;
