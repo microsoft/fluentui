@@ -2,6 +2,34 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
+export type CheckboxSlots = {
+  /**
+   * The root element of the Checkbox.
+   *
+   * The root slot receives the `className` and `style` specified directly on the `<Checkbox>`.
+   * All other native props will be applied to the primary slot: `input`
+   */
+  root: NonNullable<Slot<'span'>>;
+
+  /**
+   * The Checkbox's label.
+   */
+  label?: Slot<typeof Label>;
+
+  /**
+   * Hidden input that handles the checkbox's functionality.
+   *
+   * This is the PRIMARY slot: all native properties specified directly on `<Checkbox>` will be applied to this slot,
+   * except `className` and `style`, which remain on the root slot.
+   */
+  input: NonNullable<Slot<'input'>>;
+
+  /**
+   * The checkbox, with the checkmark icon as its child when checked.
+   */
+  indicator: Slot<'div'>;
+};
+
 /**
  * Checkbox Props
  */
@@ -62,34 +90,6 @@ export type CheckboxProps = Omit<
 export interface CheckboxOnChangeData {
   checked: 'mixed' | boolean;
 }
-
-export type CheckboxSlots = {
-  /**
-   * The root element of the Checkbox.
-   *
-   * The root slot receives the `className` and `style` specified directly on the `<Checkbox>`.
-   * All other native props will be applied to the primary slot: `input`
-   */
-  root: NonNullable<Slot<'span'>>;
-
-  /**
-   * The Checkbox's label.
-   */
-  label?: Slot<typeof Label>;
-
-  /**
-   * Hidden input that handles the checkbox's functionality.
-   *
-   * This is the PRIMARY slot: all native properties specified directly on `<Checkbox>` will be applied to this slot,
-   * except `className` and `style`, which remain on the root slot.
-   */
-  input: NonNullable<Slot<'input'>>;
-
-  /**
-   * The checkbox, with the checkmark icon as its child when checked.
-   */
-  indicator: Slot<'div'>;
-};
 
 /**
  * State used in rendering Checkbox
