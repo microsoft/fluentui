@@ -6,6 +6,84 @@ exports[`AvatarGroup renders a default state 1`] = `
     class="fui-AvatarGroup"
     id="avatarGroup-7"
     role="group"
-  />
+  >
+    <span
+      aria-label="Katri Athokas"
+      class="fui-Avatar"
+      id="avatar-8"
+      role="img"
+    >
+      <span
+        aria-hidden="true"
+        class="fui-Avatar__initials"
+      >
+        KA
+      </span>
+    </span>
+    <span
+      aria-label="Elvia Atkins"
+      class="fui-Avatar"
+      id="avatar-9"
+      role="img"
+    >
+      <span
+        aria-hidden="true"
+        class="fui-Avatar__initials"
+      >
+        EA
+      </span>
+    </span>
+    <span
+      aria-label="Cameron Evans"
+      class="fui-Avatar"
+      id="avatar-10"
+      role="img"
+    >
+      <span
+        aria-hidden="true"
+        class="fui-Avatar__initials"
+      >
+        CE
+      </span>
+    </span>
+    <span
+      aria-label="Wanda Howard"
+      class="fui-Avatar"
+      id="avatar-11"
+      role="img"
+    >
+      <span
+        aria-hidden="true"
+        class="fui-Avatar__initials"
+      >
+        WH
+      </span>
+    </span>
+    <span
+      aria-label="Mona Kane"
+      class="fui-Avatar"
+      id="avatar-12"
+      role="img"
+    >
+      <span
+        aria-hidden="true"
+        class="fui-Avatar__initials"
+      >
+        MK
+      </span>
+    </span>
+    <button
+      aria-describedby="tooltip-14"
+      aria-haspopup="dialog"
+      class="fui-Button fui-AvatarGroup__popoverTrigger"
+      data-tabster="{\\"deloser\\":{}}"
+      type="button"
+    >
+      +4
+    </button>
+    <span
+      hidden=""
+    />
+  </div>
 </div>
 `;

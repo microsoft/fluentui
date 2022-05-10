@@ -31,7 +31,7 @@ export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
 
 // @public
-export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
+export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
     layout?: 'spread' | 'stack' | 'pie';
     maxAvatars?: number;
     overflowIndicator?: 'number-overflowed' | 'icon';

@@ -31,24 +31,24 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
   } = props;
   const id = useId('avatarGroup-', props.id);
   const childrenCount = React.Children.count(children);
-  const childrenArray = React.Children.toArray(children);
   const numOfAvatarsToShow = layout === 'pie' ? 3 : maxAvatars;
   const hasOverflow = childrenCount > numOfAvatarsToShow;
+  const childrenArray = React.Children.toArray(children);
 
   const rootChildren = childrenArray.slice(0, numOfAvatarsToShow).map(child => {
-    if (!React.isValidElement(child)) {
-      return null;
-    }
+    if (React.isValidElement(child)) {
+      // If the layout is pie and the size is less than 40, the Avatar should only display the first initial
+      let initials = child.props.initials;
 
-    // If the layout is pie and the size is less than 40, the Avatar should only display the first initial
-    let initials = child.props.initials;
-    if (layout === 'pie' && child.props.name && size < 40) {
-      // No need to check if it's rtl since we will use only the first letter.
-      initials = getInitials(child.props.name, false)[0];
-    }
+      if (layout === 'pie' && child.props.name && size < 40) {
+        // No need to check if it's rtl since we will use only the first letter.
+        initials = getInitials(child.props.name, false)[0];
+      }
 
-    // Overwritting size to the one given in the props.
-    return React.cloneElement(child, { size: size, initials: initials, color: child.props.color ?? 'colorful' });
+      // Overwritting size to the one given in the props.
+      return React.cloneElement(child, { size: size, initials: initials, color: child.props.color ?? 'colorful' });
+    }
+    return child;
   });
 
   const root = getNativeElementProps('div', {
@@ -73,24 +73,25 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     },
   });
 
-  const popoverSurfaceChildren = childrenArray.slice(numOfAvatarsToShow).map((child, k) => {
-    if (!React.isValidElement(child)) {
-      return null;
-    }
-
-    // Avatars inside PopoverSurface must be size 24
-    return (
-      <li className={extraAvatarGroupClassNames.popoverSurfaceItem} key={k} tabIndex={0}>
-        {React.cloneElement(child, { size: 24, color: child.props.color ?? 'colorful' })}
-        <Label size="medium">{child.props.name ?? child.props.initials}</Label>
-      </li>
-    );
-  });
+  const popoverChildren =
+    hasOverflow &&
+    childrenArray.slice(numOfAvatarsToShow).map((child, k) => {
+      if (React.isValidElement(child)) {
+        // Avatars inside PopoverSurface must be size 24
+        return (
+          <li className={extraAvatarGroupClassNames.popoverSurfaceItem} key={k} tabIndex={0}>
+            {React.cloneElement(child, { size: 24, color: child.props.color ?? 'colorful' })}
+            <Label size="medium">{child.props.name ?? child.props.initials}</Label>
+          </li>
+        );
+      }
+      return child;
+    });
 
   const popoverSurface = resolveShorthand(props.popoverSurface, {
     required: true,
     defaultProps: {
-      children: <ul className={extraAvatarGroupClassNames.popoverSurfaceContainer}>{popoverSurfaceChildren}</ul>,
+      children: <ul className={extraAvatarGroupClassNames.popoverSurfaceContainer}>{popoverChildren}</ul>,
       'aria-label': 'Overflow',
     },
   });
