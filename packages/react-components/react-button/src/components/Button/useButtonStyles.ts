@@ -122,6 +122,9 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForegroundOnBrand,
     },
   },
+  secondary: {
+    /* The secondary styles are exactly the same as the base styles. */
+  },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
     ...shorthands.borderColor('transparent'),
@@ -294,6 +297,9 @@ const useRootDisabledStyles = makeStyles({
     ':hover:active': {
       ...shorthands.borderColor('transparent'),
     },
+  },
+  secondary: {
+    /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
     backgroundColor: 'transparent',
