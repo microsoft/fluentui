@@ -23,7 +23,10 @@ export type TabSlots = {
   content: NonNullable<Slot<'span'>>;
 };
 
-type TabCommons = {
+/**
+ * Tab Props
+ */
+export type TabProps = ComponentProps<Partial<TabSlots>> & {
   /**
    * A tab can be set to disable interaction.
    * @default false
@@ -36,16 +39,11 @@ type TabCommons = {
 };
 
 /**
- * Tab Props
- */
-export type TabProps = ComponentProps<Partial<TabSlots>> & TabCommons;
-
-/**
  * State used in rendering Tab
  */
 export type TabState = ComponentState<TabSlots> &
-  Omit<TabCommons, 'disabled'> &
-  Required<Pick<TabCommons, 'disabled'>> & {
+  Pick<TabProps, 'value'> &
+  Required<Pick<TabProps, 'disabled'>> & {
     /**
      * A tab supports 'transparent' and 'subtle' appearance.
      */
