@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Added the Color Explorer as a web components Storybook page",
+  "packageName": "@fluentui/web-components",
+  "email": "47367562+bheston@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
