@@ -39,19 +39,20 @@ module: {
       exclude: /node_modules/,
       use: {
         loader: '@griffel/webpack-loader',
+        options: {
+          // see https://github.com/microsoft/griffel/tree/main/packages/webpack-loader#configuring-babel-settings
+          babelOptions: {
+            presets: ['@babel/preset-typescript'],
+          },
+        },
       },
     },
     {
       test: /\.(ts|tsx)$/,
       exclude: /node_modules/,
       use: {
+        // or 'ts-loader'
         loader: 'babel-loader',
-        options: {
-          babelOptions: {
-            presets: ['@babel/preset-typescript'],
-          },
-        },
-        // loader: 'ts-loader',
       },
     },
   ];
@@ -64,8 +65,8 @@ extra configuration or parsing errors, using the webpack loader after transpilat
 
 #### Typescript (and additional transpilation) support
 
-The Webpack loader [evaluate styles at runtime using Linaria](#build-time-style-evaluation). For typescript
-it's necessary to install `@babel/preset-typescript` and configure it in the `babelOptions` of the loader. Similarly
+The Webpack loader [evaluate styles at runtime](#build-time-style-evaluation). For typescript
+it's necessary to install `@babel/preset-typescript` and configure it in the [babelOptions](https://github.com/microsoft/griffel/tree/main/packages/webpack-loader#configuring-babel-settings) of the loader. Similarly
 any other language features that might be required can also be configured here. While the order of loaders will
 ensure that the webpack loader will run on transpiled code (for a specific module), runtime evaluation can potentially require other
 modules that are not transpiled. Any additional language features can also be configured in the same way.
@@ -82,28 +83,25 @@ yarn add @griffel/babel-preset
 
 Simply create a Babel configuration file such as `.babelrc` and add the preset.
 
-```json
-{
-  "presets": [
+```js
+module.exports = {
+  presets: [
     [
-      "@griffel",
+      '@griffel',
       {
-        "babelOptions": {
-          "presets": ["@babel/preset-typescript"]
-        }
-      }
-    ]
-  ]
-}
+        // see https://github.com/microsoft/griffel/tree/main/packages/webpack-loader#configuring-babel-settings
+        babelOptions: {
+          presets: ['@babel/preset-typescript'],
+        },
+      },
+    ],
+  ],
+};
 ```
 
 #### Typescript (and additional transpilation) support
 
-The Babel preset will [evaluate stlyes at runtime using Linaria](#build-time-style-evaluation). For typescript
-it's necessary to install `@babel/preset-typescript` and configure it in the preset. Similarly
-any other language features that might be required can also be configured here. While the order of loaders will
-ensure that the webpack loader will run on transpiled code (for a specific module), runtime evaluation can potentially require other
-modules that are not transpiled. Any additional language features can also be configured in the same way.
+[Similar to above](#typescript-and-additional-transpilation-support)
 
 #### Importing from a third party package
 
@@ -217,7 +215,7 @@ modules that it depends on (`constants.ts` and `common.ts`).
 
 Griffel uses
 [style evaluation from Linaria](https://github.com/callstack/linaria).
-The build-time evaluation happens as a part of the Griffel Babel preset. All styles that require evaluation will be
+The build-time evaluation happens as a part of the Babel transforms in Griffel. All styles that require evaluation will be
 batched and done in single evaluation context. **Linaria's Babel config is separate to any config used by the application**.
 Therefore, additional language features
 may require extra configuration. How to do this configuration is described in the sections above. One common
