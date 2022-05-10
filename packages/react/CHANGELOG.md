@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 04 Apr 2022 12:25:50 GMT and should not be manually modified.
+This log was last generated on Fri, 06 May 2022 21:32:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.185.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.185.4)
+
+Fri, 06 May 2022 21:32:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.185.0..@fluentui/react_v7.185.4)
+
+### Patches
+
+- Update fabric-core to 11.0.1 ([PR #22886](https://github.com/microsoft/fluentui/pull/22886) by mgodbolt@microsoft.com)
 
 ## [7.185.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.185.0)
 
