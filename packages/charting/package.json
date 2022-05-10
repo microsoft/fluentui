@@ -69,10 +69,10 @@
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
+    "@types/react": ">=16.8.0 <=18.1.0",
     "office-ui-fabric-react": "^7.185.5",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
+    "@types/react-dom": ">=16.8.0 <=18.1.0",
+    "react": ">=16.8.0 <=18.1.0",
+    "react-dom": ">=16.8.0 <=18.1.0"
   }
 }
