@@ -7,19 +7,18 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const cardClassNames: SlotClassNames<CardSlots> = {
   root: 'fui-Card',
 };
+const cardSizeVar = '--fui-Card__size';
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: {
-    display: 'block',
+    display: 'flex',
+    flexDirection: 'column',
     position: 'relative',
     ...shorthands.overflow('hidden'),
     color: tokens.colorNeutralForeground1,
-
-    // TODO: Extract this to separate stiles when tackling the `size` prop
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
     '::after': {
       position: 'absolute',
@@ -32,14 +31,31 @@ const useStyles = makeStyles({
 
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderWidth(tokens.strokeWidthThin),
-      // TODO: Extract this to separate styles when tackling the `size` prop
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
     },
 
-    [`> *:not(.${cardPreviewClassNames.root})`]: {
-      // TODO: Extract this to separate styles when tackling the `size` prop
-      ...shorthands.margin('12px'),
+    ...shorthands.padding(`var(${cardSizeVar})`),
+    ...shorthands.gap(`var(${cardSizeVar})`),
+
+    [`> .${cardPreviewClassNames.root}`]: {
+      marginLeft: `calc(var(${cardSizeVar}) * -1)`,
+      marginRight: `calc(var(${cardSizeVar}) * -1)`,
     },
+    [`> :not([aria-hidden="true"]):first-of-type.${cardPreviewClassNames.root}`]: {
+      marginTop: `calc(var(${cardSizeVar}) * -1)`,
+    },
+  },
+
+  sizeSmall: {
+    [cardSizeVar]: '8px',
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+  },
+  sizeMedium: {
+    [cardSizeVar]: '12px',
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  },
+  sizeLarge: {
+    [cardSizeVar]: '16px',
+    ...shorthands.borderRadius(tokens.borderRadiusLarge),
   },
 
   interactiveNoOutline: {
@@ -165,6 +181,12 @@ const useStyles = makeStyles({
 export const useCardStyles_unstable = (state: CardState): CardState => {
   const styles = useStyles();
 
+  const sizeMap = {
+    small: styles.sizeSmall,
+    medium: styles.sizeMedium,
+    large: styles.sizeLarge,
+  } as const;
+
   const interactive =
     state.root.onClick ||
     state.root.onMouseUp ||
@@ -177,6 +199,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   state.root.className = mergeClasses(
     cardClassNames.root,
     styles.root,
+    sizeMap[state.size],
     state.appearance === 'filled' && styles.filled,
     state.appearance === 'filled-alternative' && styles.filledAlternative,
     state.appearance === 'outline' && styles.outline,
