@@ -2,38 +2,59 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-interface CheckboxCommons {
+/**
+ * Checkbox Props
+ */
+export type CheckboxProps = Omit<
+  ComponentProps<Partial<CheckboxSlots>, 'input'>,
+  'size' | 'checked' | 'defaultChecked' | 'onChange'
+> & {
+  /**
+   * The controlled value for the checkbox.
+   *
+   * @default false
+   */
+  checked?: 'mixed' | boolean;
+
+  /**
+   * Checkboxes don't support children. To add a label, use the `label` prop.
+   */
+  children?: never;
+
+  /**
+   * Whether the checkbox should be rendered as checked by default.
+   */
+  defaultChecked?: 'mixed' | boolean;
+
+  /**
+   * The position of the label relative to the checkbox indicator.
+   *
+   * @default after
+   */
+  labelPosition?: 'before' | 'after';
+
+  /**
+   * Callback to be called when the checked state value changes.
+   */
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+
   /**
    * The shape of the checkbox indicator.
    *
    * The `circular` variant is only recommended to be used in a tasks-style UI (checklist),
    * since it otherwise could be confused for a `RadioItem`.
    *
-   * @defaultvalue square
+   * @default square
    */
-  shape: 'square' | 'circular';
-
-  /**
-   * The controlled value for the checkbox.
-   *
-   * @defaultvalue false
-   */
-  checked: 'mixed' | boolean;
+  shape?: 'square' | 'circular';
 
   /**
    * The size of the checkbox indicator.
    *
-   * @defaultvalue medium
+   * @default medium
    */
-  size: 'medium' | 'large';
-
-  /**
-   * The position of the label relative to the checkbox indicator.
-   *
-   * @defaultvalue after
-   */
-  labelPosition: 'before' | 'after';
-}
+  size?: 'medium' | 'large';
+};
 
 /**
  * Data for the onChange event for checkbox.
@@ -71,30 +92,7 @@ export type CheckboxSlots = {
 };
 
 /**
- * Checkbox Props
- */
-export type CheckboxProps = Omit<
-  ComponentProps<Partial<CheckboxSlots>, 'input'>,
-  'size' | 'checked' | 'defaultChecked' | 'onChange'
-> &
-  Partial<CheckboxCommons> & {
-    /**
-     * Checkboxes don't support children. To add a label, use the `label` prop.
-     */
-    children?: never;
-
-    /**
-     * Callback to be called when the checked state value changes.
-     */
-    onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
-
-    /**
-     * Whether the checkbox should be rendered as checked by default.
-     */
-    defaultChecked?: 'mixed' | boolean;
-  };
-
-/**
  * State used in rendering Checkbox
  */
-export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;
+export type CheckboxState = ComponentState<CheckboxSlots> &
+  Required<Pick<CheckboxProps, 'checked' | 'labelPosition' | 'shape' | 'size'>>;
