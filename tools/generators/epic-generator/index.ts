@@ -21,7 +21,13 @@ function validateSchema(schema: EpicGeneratorSchema): Required<EpicGeneratorSche
 }
 
 const checkAuthentication = () => {
-  const authStatus = execSync('gh auth status').toString();
+  let authStatus;
+
+  try {
+    authStatus = execSync('ghz auth status', { stdio: [] }).toString();
+  } catch (e) {
+    throw new Error(`Error calling GitHub CLI (gh). Please make sure it's installed correctly.\n${e.message}`);
+  }
 
   if (authStatus.includes('You are not logged into any GitHub hosts')) {
     throw new Error('You are not logged into GitHub CLI (gh).');

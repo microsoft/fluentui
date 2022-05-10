@@ -104,20 +104,21 @@ describe('epic-generator', () => {
   describe('authentication', () => {
     it('requires gh to be installed', () => {
       execSyncMock.mockImplementationOnce(() => {
-        throw new Error('command not found');
+        throw new Error('command not found.');
       });
       const tree = createTreeWithEmptyWorkspace();
 
-      expect(() => epicGenerator(tree, { title: 'test title' })).toThrowError('command not found');
+      expect(() => epicGenerator(tree, { title: 'test title' })).toThrow(
+        stripIndents`Error calling GitHub CLI (gh). Please make sure it's installed correctly.
+          command not found.`,
+      );
     });
 
     it('requires you to have logged in with gh', () => {
       execSyncMock.mockReturnValueOnce('You are not logged into any GitHub hosts. Run gh auth login to authenticate.');
       const tree = createTreeWithEmptyWorkspace();
 
-      expect(() => epicGenerator(tree, { title: 'test title' })).toThrowError(
-        'You are not logged into GitHub CLI (gh).',
-      );
+      expect(() => epicGenerator(tree, { title: 'test title' })).toThrow('You are not logged into GitHub CLI (gh).');
     });
   });
 
