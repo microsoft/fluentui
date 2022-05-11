@@ -21,7 +21,12 @@ export const linkClassName = "fui-Link";
 export const linkClassNames: SlotClassNames<LinkSlots>;
 
 // @public (undocumented)
-export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
+export type LinkProps = ComponentProps<LinkSlots> & {
+    appearance?: 'default' | 'subtle';
+    disabled?: boolean;
+    disabledFocusable?: boolean;
+    inline?: boolean;
+};
 
 // @public (undocumented)
 export type LinkSlots = {
@@ -29,7 +34,7 @@ export type LinkSlots = {
 };
 
 // @public (undocumented)
-export type LinkState = ComponentState<LinkSlots> & LinkCommons;
+export type LinkState = ComponentState<LinkSlots> & Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>>;
 
 // @public
 export const renderLink_unstable: (state: LinkState) => JSX.Element;
