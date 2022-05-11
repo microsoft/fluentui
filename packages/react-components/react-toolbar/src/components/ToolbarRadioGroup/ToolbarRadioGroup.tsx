@@ -1,7 +1,8 @@
 import * as React from 'react';
 import type { ToolbarRadioGroupProps } from './ToolbarRadioGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useRadioGroup_unstable, useRadioGroupStyles_unstable, renderRadioGroup_unstable } from '@fluentui/react-radio';
+import { useRadioGroup_unstable, renderRadioGroup_unstable } from '@fluentui/react-radio';
+import { useToolbarRadioGroupStyles_unstable } from './useToolbarRadioGroupStyles';
 import { useRadioGroupContextValues } from './contexts/useRadioGroupContextValues';
 
 /**
@@ -11,7 +12,7 @@ import { useRadioGroupContextValues } from './contexts/useRadioGroupContextValue
 export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps> = React.forwardRef((props, ref) => {
   const state = useRadioGroup_unstable({ layout: 'horizontal', ...props }, ref);
   const contextValues = useRadioGroupContextValues(state);
-  useRadioGroupStyles_unstable(state);
+  useToolbarRadioGroupStyles_unstable(state);
   return renderRadioGroup_unstable(state, contextValues);
 });
 
