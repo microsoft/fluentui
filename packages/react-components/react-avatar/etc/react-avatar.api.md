@@ -36,7 +36,6 @@ export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
     maxAvatars?: number;
     overflowIndicator?: 'number-overflowed' | 'icon';
     size?: AvatarSizes;
-    strings?: AvatarGroupStrings;
 };
 
 // @public (undocumented)
@@ -47,7 +46,7 @@ export type AvatarGroupSlots = {
 };
 
 // @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'strings' | 'overflowIndicator'>> & {
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'overflowIndicator'>> & {
     tooltipContent: TooltipProps['content'];
     hasOverflow: boolean;
 };

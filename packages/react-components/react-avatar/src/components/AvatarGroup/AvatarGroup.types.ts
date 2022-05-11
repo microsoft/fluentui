@@ -46,18 +46,13 @@ export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
    * @default 32
    */
   size?: AvatarSizes;
-
-  /**
-   * Strings for localizing text in the tooltip.
-   */
-  strings?: AvatarGroupStrings;
 };
 
 /**
  * State used in rendering AvatarGroup
  */
 export type AvatarGroupState = ComponentState<AvatarGroupSlots> &
-  Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'strings' | 'overflowIndicator'>> & {
+  Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'overflowIndicator'>> & {
     /**
      * Tooltip content for the overflow indicator.
      */

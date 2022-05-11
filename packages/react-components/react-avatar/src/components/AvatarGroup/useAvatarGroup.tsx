@@ -25,7 +25,6 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     layout = 'spread',
     maxAvatars = 5,
     size = 32,
-    strings = avatarGroupDefaultStrings,
     overflowIndicator = 'number-overflowed',
     ...rest
   } = props;
@@ -102,8 +101,7 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     maxAvatars: numOfAvatarsToShow,
     overflowIndicator,
     size,
-    strings: strings,
-    tooltipContent: strings.tooltipContent,
+    tooltipContent: avatarGroupDefaultStrings.tooltipContent,
 
     components: {
       root: 'div',
