@@ -49,7 +49,6 @@ export type ComboboxSlots = {
 // @public
 export type ComboboxState = ComponentState<ComboboxSlots> & Required<Pick<ComboboxCommons, 'appearance' | 'open' | 'inline' | 'size'>> & Pick<ComboboxCommons, 'placeholder' | 'value'> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
-    idBase: string;
     onOptionClick(event: React_2.MouseEvent, option: OptionValue): void;
 };
 
@@ -94,23 +93,18 @@ export type ListboxSlots = {
 // @public
 export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
-    idBase: string;
     onOptionClick(event: React_2.MouseEvent, option: OptionValue): void;
 };
 
 // @public
-const Option_2: ForwardRefComponent<OptionProps> & {
-    fluentComponentType?: string;
-};
+const Option_2: ForwardRefComponent<OptionProps>;
 export { Option_2 as Option }
 
 // @public (undocumented)
 export const optionClassNames: SlotClassNames<OptionSlots>;
 
 // @public
-export const OptionGroup: ForwardRefComponent<OptionGroupProps> & {
-    fluentComponentType?: string;
-};
+export const OptionGroup: ForwardRefComponent<OptionGroupProps>;
 
 // @public (undocumented)
 export const optionGroupClassNames: SlotClassNames<OptionGroupSlots>;
@@ -129,7 +123,6 @@ export type OptionGroupState = ComponentState<OptionGroupSlots>;
 
 // @public
 export type OptionProps = ComponentProps<Partial<OptionSlots>> & OptionCommons & {
-    fluentKey?: string;
     value?: string;
 };
 

@@ -6,18 +6,17 @@ import { ListboxState } from '../components/Listbox/Listbox.types';
  */
 export type ListboxContextValue = Pick<
   ListboxState,
-  'activeOption' | 'idBase' | 'multiselect' | 'onOptionClick' | 'registerOption' | 'selectedOptions'
+  'activeOption' | 'multiselect' | 'onOptionClick' | 'registerOption' | 'selectedOptions'
 >;
 
 export const ListboxContext = createContext<ListboxContextValue>({
   activeOption: undefined,
-  idBase: '',
   multiselect: false,
   onOptionClick() {
     // noop
   },
   registerOption() {
-    // noop
+    return () => undefined;
   },
   selectedOptions: [],
 });
