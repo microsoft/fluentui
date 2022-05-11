@@ -36,6 +36,7 @@
     "@fluentui/react-divider": "9.0.0-rc.8",
     "@fluentui/react-theme": "9.0.0-rc.7",
     "@fluentui/react-utilities": "9.0.0-rc.8",
+    "@fluentui/react-radio": "9.0.0-rc.2",
     "@fluentui/react-tabster": "9.0.0-rc.9",
     "@griffel/react": "1.0.3",
     "tslib": "^2.1.0"
