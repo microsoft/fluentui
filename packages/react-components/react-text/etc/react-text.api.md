@@ -31,6 +31,15 @@ export const caption1ClassName = "fui-Caption1";
 export const caption1ClassNames: SlotClassNames<TextSlots>;
 
 // @public
+export const Caption2: FunctionComponent<TextWrapperProps>;
+
+// @public (undocumented)
+export const caption2ClassName = "fui-Caption2";
+
+// @public (undocumented)
+export const caption2ClassNames: SlotClassNames<TextSlots>;
+
+// @public
 export const Display: FunctionComponent<TextWrapperProps>;
 
 // @public @deprecated (undocumented)

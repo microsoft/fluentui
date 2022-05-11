@@ -518,6 +518,7 @@ export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '
 export {
   Body1,
   Caption1,
+  Caption2,
   Display,
   Subtitle1,
   LargeTitle,
@@ -531,6 +532,8 @@ export {
   /* eslint-disable-next-line deprecation/deprecation */
   caption1ClassName,
   /* eslint-disable-next-line deprecation/deprecation */
+  caption2ClassName,
+  /* eslint-disable-next-line deprecation/deprecation */
   displayClassName,
   /* eslint-disable-next-line deprecation/deprecation */
   subtitle1ClassName,
@@ -538,6 +541,7 @@ export {
   largeTitleClassName,
   body1ClassNames,
   caption1ClassNames,
+  caption2ClassNames,
   displayClassNames,
   subtitle1ClassNames,
   largeTitleClassNames,

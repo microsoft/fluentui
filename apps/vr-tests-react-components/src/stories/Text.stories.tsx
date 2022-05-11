@@ -12,6 +12,7 @@ import {
   Title1,
   Title2,
   Title3,
+  Caption2,
 } from '@fluentui/react-text';
 
 storiesOf('Text Converged', module)
@@ -149,6 +150,7 @@ storiesOf('Text Converged', module)
         <Subtitle2 block>Subtitle2</Subtitle2>
         <Body1 block>Body1</Body1>
         <Caption1 block>Caption1</Caption1>
+        <Caption2 block>Caption2</Caption2>
       </>
     ),
     { includeRtl: true },
