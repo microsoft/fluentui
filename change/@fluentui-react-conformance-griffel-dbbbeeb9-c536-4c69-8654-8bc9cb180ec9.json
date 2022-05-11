@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: update mock of mergeClasses() to return an empty string",
+  "packageName": "@fluentui/react-conformance-griffel",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

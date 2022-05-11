@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 09 May 2022 07:37:41 GMT and should not be manually modified.
+This log was last generated on Wed, 11 May 2022 07:42:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.67.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.67.4)
+
+Wed, 11 May 2022 07:42:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.67.3..@fluentui/react_v8.67.4)
+
+### Patches
+
+- Updated to scroll to pending selected element ([PR #22907](https://github.com/microsoft/fluentui/pull/22907) by gcox@microsoft.com)
 
 ## [8.67.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.67.3)
 

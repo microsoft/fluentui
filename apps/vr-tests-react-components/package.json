@@ -39,7 +39,7 @@
     "@fluentui/react-spinner": "9.0.0-beta.9",
     "@fluentui/react-spinbutton": "9.0.0-beta.9",
     "@fluentui/react-switch": "9.0.0-rc.9",
-    "@fluentui/react-tabs": "9.0.0-beta.12",
+    "@fluentui/react-tabs": "9.0.0-rc.1",
     "@fluentui/react-text": "9.0.0-rc.8",
     "@fluentui/react-textarea": "9.0.0-alpha.3",
     "@fluentui/react-theme": "9.0.0-rc.7",
