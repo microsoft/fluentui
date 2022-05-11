@@ -7,7 +7,7 @@ import {
   Display,
   Subtitle1,
   LargeTitle,
-  Subheadline,
+  Subtitle2,
   Text,
   Title1,
   Title2,
@@ -146,7 +146,7 @@ storiesOf('Text Converged', module)
         <Title2 block>Title2</Title2>
         <Title3 block>Title3</Title3>
         <Subtitle1 block>Subtitle1</Subtitle1>
-        <Subheadline block>Subheadline</Subheadline>
+        <Subtitle2 block>Subtitle2</Subtitle2>
         <Body block>Body</Body>
         <Caption block>Caption</Caption>
       </>

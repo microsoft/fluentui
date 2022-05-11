@@ -347,12 +347,12 @@ import { SplitButtonSlots } from '@fluentui/react-button';
 import { SplitButtonState } from '@fluentui/react-button';
 import { SSRProvider } from '@fluentui/react-utilities';
 import { StrokeWidthTokens } from '@fluentui/react-theme';
-import { Subheadline } from '@fluentui/react-text';
-import { subheadlineClassName } from '@fluentui/react-text';
-import { subheadlineClassNames } from '@fluentui/react-text';
 import { Subtitle1 } from '@fluentui/react-text';
 import { subtitle1ClassName } from '@fluentui/react-text';
 import { subtitle1ClassNames } from '@fluentui/react-text';
+import { Subtitle2 } from '@fluentui/react-text';
+import { subtitle2ClassName } from '@fluentui/react-text';
+import { subtitle2ClassNames } from '@fluentui/react-text';
 import { teamsDarkTheme } from '@fluentui/react-theme';
 import { teamsHighContrastTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
@@ -1183,17 +1183,17 @@ export { SSRProvider }
 
 export { StrokeWidthTokens }
 
-export { Subheadline }
-
-export { subheadlineClassName }
-
-export { subheadlineClassNames }
-
 export { Subtitle1 }
 
 export { subtitle1ClassName }
 
 export { subtitle1ClassNames }
+
+export { Subtitle2 }
+
+export { subtitle2ClassName }
+
+export { subtitle2ClassNames }
 
 export { teamsDarkTheme }
 

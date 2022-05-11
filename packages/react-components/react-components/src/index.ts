@@ -521,7 +521,7 @@ export {
   Display,
   Subtitle1,
   LargeTitle,
-  Subheadline,
+  Subtitle2,
   Text,
   Title1,
   Title2,
@@ -543,7 +543,7 @@ export {
   largeTitleClassNames,
   renderText_unstable,
   /* eslint-disable-next-line deprecation/deprecation */
-  subheadlineClassName,
+  subtitle2ClassName,
   /* eslint-disable-next-line deprecation/deprecation */
   textClassName,
   /* eslint-disable-next-line deprecation/deprecation */
@@ -552,7 +552,7 @@ export {
   title2ClassName,
   /* eslint-disable-next-line deprecation/deprecation */
   title3ClassName,
-  subheadlineClassNames,
+  subtitle2ClassNames,
   textClassNames,
   title1ClassNames,
   title2ClassNames,

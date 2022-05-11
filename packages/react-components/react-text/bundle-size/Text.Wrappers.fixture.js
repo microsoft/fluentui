@@ -1,16 +1,6 @@
-import {
-  Display,
-  LargeTitle,
-  Title1,
-  Title2,
-  Title3,
-  Subtitle1,
-  Subheadline,
-  Body,
-  Caption,
-} from '@fluentui/react-text';
+import { Display, LargeTitle, Title1, Title2, Title3, Subtitle1, Subtitle2, Body, Caption } from '@fluentui/react-text';
 
-console.log(Display, LargeTitle, Title1, Title2, Title3, Subtitle1, Subheadline, Body, Caption);
+console.log(Display, LargeTitle, Title1, Title2, Title3, Subtitle1, Subtitle2, Body, Caption);
 
 export default {
   name: 'Text - Wrappers',

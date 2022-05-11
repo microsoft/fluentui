@@ -75,7 +75,7 @@ By default, Text and all the typography wrappers render a `<span>` element. You 
 ```html
 <div>
   <Subtitle1 as="h1">Subtitle1</Subtitle1>
-  <Subheadline as="h2">Subheadline</Subheadline>
+  <Subtitle2 as="h2">Subtitle2</Subtitle2>
   <Text as="p">This is simple example</Text>
 </div>
 ```
@@ -85,7 +85,7 @@ This will result in the following DOM structure:
 ```html
 <div>
   <h1>Subtitle1</h1>
-  <h2>Subheadline</h2>
+  <h2>Subtitle2</h2>
   <p>This is simple example</p>
 </div>
 ```

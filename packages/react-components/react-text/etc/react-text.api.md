@@ -53,15 +53,6 @@ export const largeTitleClassNames: SlotClassNames<TextSlots>;
 export const renderText_unstable: (state: TextState) => JSX.Element;
 
 // @public
-export const Subheadline: FunctionComponent<TextWrapperProps>;
-
-// @public @deprecated (undocumented)
-export const subheadlineClassName = "fui-Subheadline";
-
-// @public (undocumented)
-export const subheadlineClassNames: SlotClassNames<TextSlots>;
-
-// @public
 export const Subtitle1: FunctionComponent<TextWrapperProps>;
 
 // @public @deprecated (undocumented)
@@ -69,6 +60,15 @@ export const subtitle1ClassName = "fui-Subtitle1";
 
 // @public (undocumented)
 export const subtitle1ClassNames: SlotClassNames<TextSlots>;
+
+// @public
+export const Subtitle2: FunctionComponent<TextWrapperProps>;
+
+// @public @deprecated (undocumented)
+export const subtitle2ClassName = "fui-Subtitle2";
+
+// @public (undocumented)
+export const subtitle2ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 const Text_2: ForwardRefComponent<TextProps>;
