@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 11 May 2022 07:42:46 GMT",
+      "tag": "@fluentui/react_v8.67.4",
+      "version": "8.67.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f3b3c4fd6ec7b93ff61a7cf5a1d9e7fc55e8985c",
+            "comment": "Updated to scroll to pending selected element"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 May 2022 07:37:41 GMT",
       "tag": "@fluentui/react_v8.67.3",
       "version": "8.67.3",
