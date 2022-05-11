@@ -138,7 +138,7 @@ storiesOf('Text Converged', module)
     { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
   .addStory(
-    'Display',
+    'Typography wrappers',
     () => (
       <>
         <Display block>Display</Display>
