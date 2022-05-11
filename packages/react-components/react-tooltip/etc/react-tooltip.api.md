@@ -31,10 +31,18 @@ export const tooltipClassName = "fui-Tooltip";
 export const tooltipClassNames: SlotClassNames<TooltipSlots>;
 
 // @public
-export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'relationship'>> & Pick<TooltipCommons, 'relationship'> & {
+export type TooltipProps = ComponentProps<TooltipSlots> & Pick<PortalProps, 'mountNode'> & {
+    appearance?: 'normal' | 'inverted';
     children?: (React_2.ReactElement & {
         ref?: React_2.Ref<unknown>;
     }) | ((props: TooltipTriggerProps) => React_2.ReactElement | null) | null;
+    hideDelay?: number;
+    onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
+    positioning?: PositioningShorthand;
+    relationship: 'label' | 'description' | 'inaccessible';
+    showDelay: number;
+    visible?: boolean;
+    withArrow?: boolean;
 };
 
 // @public
@@ -43,7 +51,7 @@ export type TooltipSlots = {
 };
 
 // @public
-export type TooltipState = ComponentState<TooltipSlots> & TooltipCommons & {
+export type TooltipState = ComponentState<TooltipSlots> & Pick<TooltipProps, 'mountNode' | 'relationship'> & Required<Pick<TooltipProps, 'appearance' | 'hideDelay' | 'positioning' | 'showDelay' | 'visible' | 'withArrow'>> & {
     children?: React_2.ReactElement | null;
     shouldRenderTooltip?: boolean;
     arrowRef?: React_2.Ref<HTMLDivElement>;
@@ -53,7 +61,7 @@ export type TooltipState = ComponentState<TooltipSlots> & TooltipCommons & {
 // @public
 export type TooltipTriggerProps = {
     ref?: React_2.Ref<never>;
-} & Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
+} & Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-describedby' | 'aria-label' | 'aria-labelledby' | 'onBlur' | 'onFocus' | 'onPointerEnter' | 'onPointerLeave'>;
 
 // @public
 export const useTooltip_unstable: (props: TooltipProps) => TooltipState;
