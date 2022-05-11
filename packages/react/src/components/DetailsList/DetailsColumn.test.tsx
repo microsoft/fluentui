@@ -4,6 +4,7 @@ import { ColumnActionsMode } from './DetailsList.types';
 import { mount } from 'enzyme';
 import { DetailsList } from './DetailsList';
 import { TooltipHost } from '../../Tooltip';
+import * as renderer from 'react-test-renderer';
 import type { IColumn, IDetailsHeaderProps } from './DetailsList.types';
 import type { IRenderFunction } from '../../Utilities';
 import type { ITooltipHostProps } from '../../Tooltip';
@@ -258,5 +259,26 @@ describe('DetailsColumn', () => {
     const columnHeaderTitle = columnHeader.find('.ms-DetailsHeader-cellTitle');
 
     expect(columnHeaderTitle.getDOMNode().getAttribute('aria-expanded')).toBe('true');
+  });
+
+  it('renders a sortable icon on an unsorted column is isSortable is set to true', () => {
+    const column: IColumn = { ...baseColumn, isSortable: true, sortableAriaLabel: 'Foo' };
+
+    const columns = [column];
+    let component: any;
+
+    component = renderer.create(
+      <DetailsList
+        items={[]}
+        setKey={'key1'}
+        initialFocusedIndex={0}
+        skipViewportMeasures={true}
+        columns={columns}
+        componentRef={ref => (component = ref)}
+        onShouldVirtualize={() => false}
+      />,
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });

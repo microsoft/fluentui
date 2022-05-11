@@ -292,7 +292,8 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       column.filterAriaLabel ||
       column.sortAscendingAriaLabel ||
       column.sortDescendingAriaLabel ||
-      column.groupAriaLabel
+      column.groupAriaLabel ||
+      column.sortableAriaLabel
     );
   }
 
