@@ -285,6 +285,7 @@ import { RadioOnChangeData } from '@fluentui/react-radio';
 import { RadioProps } from '@fluentui/react-radio';
 import { RadioSlots } from '@fluentui/react-radio';
 import { RadioState } from '@fluentui/react-radio';
+import { RegisterTabEventHandler } from '@fluentui/react-tabs';
 import { renderAccordion_unstable } from '@fluentui/react-accordion';
 import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
 import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
@@ -319,6 +320,8 @@ import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSlider_unstable } from '@fluentui/react-slider';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
+import { renderTab_unstable } from '@fluentui/react-tabs';
+import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderText_unstable } from '@fluentui/react-text';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
@@ -328,6 +331,9 @@ import { resolveShorthand } from '@fluentui/react-utilities';
 import { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import { SelectableHandler } from '@fluentui/react-menu';
+import { SelectTabData } from '@fluentui/react-tabs';
+import { SelectTabEvent } from '@fluentui/react-tabs';
+import { SelectTabEventHandler } from '@fluentui/react-tabs';
 import { setVirtualParent } from '@fluentui/react-portal';
 import { ShadowBrandTokens } from '@fluentui/react-theme';
 import { ShadowTokens } from '@fluentui/react-theme';
@@ -353,6 +359,22 @@ import { StrokeWidthTokens } from '@fluentui/react-theme';
 import { Subheadline } from '@fluentui/react-text';
 import { subheadlineClassName } from '@fluentui/react-text';
 import { subheadlineClassNames } from '@fluentui/react-text';
+import { Tab } from '@fluentui/react-tabs';
+import { tabClassName } from '@fluentui/react-tabs';
+import { tabClassNames } from '@fluentui/react-tabs';
+import { TabList } from '@fluentui/react-tabs';
+import { tabListClassName } from '@fluentui/react-tabs';
+import { tabListClassNames } from '@fluentui/react-tabs';
+import { TabListContextValue } from '@fluentui/react-tabs';
+import { TabListContextValues } from '@fluentui/react-tabs';
+import { TabListProps } from '@fluentui/react-tabs';
+import { TabListSlots } from '@fluentui/react-tabs';
+import { TabListState } from '@fluentui/react-tabs';
+import { TabProps } from '@fluentui/react-tabs';
+import { TabRegisterData } from '@fluentui/react-tabs';
+import { TabSlots } from '@fluentui/react-tabs';
+import { TabState } from '@fluentui/react-tabs';
+import { TabValue } from '@fluentui/react-tabs';
 import { teamsDarkTheme } from '@fluentui/react-theme';
 import { teamsHighContrastTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
@@ -484,6 +506,10 @@ import { useSliderStyles_unstable } from '@fluentui/react-slider';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
 import { useSSRContext } from '@fluentui/react-utilities';
+import { useTab_unstable } from '@fluentui/react-tabs';
+import { useTabList_unstable } from '@fluentui/react-tabs';
+import { useTabListStyles_unstable } from '@fluentui/react-tabs';
+import { useTabStyles_unstable } from '@fluentui/react-tabs';
 import { useText_unstable } from '@fluentui/react-text';
 import { useTextStyles_unstable } from '@fluentui/react-text';
 import { useThemeClassName } from '@fluentui/react-shared-contexts';
@@ -1059,6 +1085,8 @@ export { RadioSlots }
 
 export { RadioState }
 
+export { RegisterTabEventHandler }
+
 export { renderAccordion_unstable }
 
 export { renderAccordionHeader_unstable }
@@ -1127,6 +1155,10 @@ export { renderSlider_unstable }
 
 export { renderSplitButton_unstable }
 
+export { renderTab_unstable }
+
+export { renderTabList_unstable }
+
 export { renderText_unstable }
 
 export { renderToggleButton_unstable }
@@ -1144,6 +1176,12 @@ export { ResolveShorthandFunction }
 export { ResolveShorthandOptions }
 
 export { SelectableHandler }
+
+export { SelectTabData }
+
+export { SelectTabEvent }
+
+export { SelectTabEventHandler }
 
 export { setVirtualParent }
 
@@ -1194,6 +1232,38 @@ export { Subheadline }
 export { subheadlineClassName }
 
 export { subheadlineClassNames }
+
+export { Tab }
+
+export { tabClassName }
+
+export { tabClassNames }
+
+export { TabList }
+
+export { tabListClassName }
+
+export { tabListClassNames }
+
+export { TabListContextValue }
+
+export { TabListContextValues }
+
+export { TabListProps }
+
+export { TabListSlots }
+
+export { TabListState }
+
+export { TabProps }
+
+export { TabRegisterData }
+
+export { TabSlots }
+
+export { TabState }
+
+export { TabValue }
 
 export { teamsDarkTheme }
 
@@ -1456,6 +1526,14 @@ export { useSplitButton_unstable }
 export { useSplitButtonStyles_unstable }
 
 export { useSSRContext }
+
+export { useTab_unstable }
+
+export { useTabList_unstable }
+
+export { useTabListStyles_unstable }
+
+export { useTabStyles_unstable }
 
 export { useText_unstable }
 
