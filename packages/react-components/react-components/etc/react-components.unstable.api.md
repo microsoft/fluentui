@@ -42,7 +42,6 @@ import { InputOnChangeData } from '@fluentui/react-input';
 import { InputProps } from '@fluentui/react-input';
 import { InputSlots } from '@fluentui/react-input';
 import { InputState } from '@fluentui/react-input';
-import { RegisterTabEventHandler } from '@fluentui/react-tabs';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
@@ -52,12 +51,7 @@ import { renderInput_unstable } from '@fluentui/react-input';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSwitch_unstable } from '@fluentui/react-switch';
-import { renderTab_unstable } from '@fluentui/react-tabs';
-import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderTextarea_unstable } from '@fluentui/react-textarea';
-import { SelectTabData } from '@fluentui/react-tabs';
-import { SelectTabEvent } from '@fluentui/react-tabs';
-import { SelectTabEventHandler } from '@fluentui/react-tabs';
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { SpinButtonBounds } from '@fluentui/react-spinbutton';
 import { SpinButtonChangeEvent } from '@fluentui/react-spinbutton';
@@ -79,22 +73,6 @@ import { SwitchOnChangeData } from '@fluentui/react-switch';
 import { SwitchProps } from '@fluentui/react-switch';
 import { SwitchSlots } from '@fluentui/react-switch';
 import { SwitchState } from '@fluentui/react-switch';
-import { Tab } from '@fluentui/react-tabs';
-import { tabClassName } from '@fluentui/react-tabs';
-import { tabClassNames } from '@fluentui/react-tabs';
-import { TabList } from '@fluentui/react-tabs';
-import { tabListClassName } from '@fluentui/react-tabs';
-import { tabListClassNames } from '@fluentui/react-tabs';
-import { TabListContextValue } from '@fluentui/react-tabs';
-import { TabListContextValues } from '@fluentui/react-tabs';
-import { TabListProps } from '@fluentui/react-tabs';
-import { TabListSlots } from '@fluentui/react-tabs';
-import { TabListState } from '@fluentui/react-tabs';
-import { TabProps } from '@fluentui/react-tabs';
-import { TabRegisterData } from '@fluentui/react-tabs';
-import { TabSlots } from '@fluentui/react-tabs';
-import { TabState } from '@fluentui/react-tabs';
-import { TabValue } from '@fluentui/react-tabs';
 import { Textarea } from '@fluentui/react-textarea';
 import { textareaClassNames } from '@fluentui/react-textarea';
 import { TextareaProps } from '@fluentui/react-textarea';
@@ -118,10 +96,6 @@ import { useSpinner_unstable } from '@fluentui/react-spinner';
 import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
-import { useTab_unstable } from '@fluentui/react-tabs';
-import { useTabList_unstable } from '@fluentui/react-tabs';
-import { useTabListStyles_unstable } from '@fluentui/react-tabs';
-import { useTabStyles_unstable } from '@fluentui/react-tabs';
 import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 
@@ -201,8 +175,6 @@ export { InputSlots }
 
 export { InputState }
 
-export { RegisterTabEventHandler }
-
 export { renderCard_unstable }
 
 export { renderCardFooter_unstable }
@@ -221,17 +193,7 @@ export { renderSpinner_unstable }
 
 export { renderSwitch_unstable }
 
-export { renderTab_unstable }
-
-export { renderTabList_unstable }
-
 export { renderTextarea_unstable }
-
-export { SelectTabData }
-
-export { SelectTabEvent }
-
-export { SelectTabEventHandler }
 
 export { SpinButton }
 
@@ -274,38 +236,6 @@ export { SwitchProps }
 export { SwitchSlots }
 
 export { SwitchState }
-
-export { Tab }
-
-export { tabClassName }
-
-export { tabClassNames }
-
-export { TabList }
-
-export { tabListClassName }
-
-export { tabListClassNames }
-
-export { TabListContextValue }
-
-export { TabListContextValues }
-
-export { TabListProps }
-
-export { TabListSlots }
-
-export { TabListState }
-
-export { TabProps }
-
-export { TabRegisterData }
-
-export { TabSlots }
-
-export { TabState }
-
-export { TabValue }
 
 export { Textarea }
 
@@ -352,14 +282,6 @@ export { useSpinnerStyles_unstable }
 export { useSwitch_unstable }
 
 export { useSwitchStyles_unstable }
-
-export { useTab_unstable }
-
-export { useTabList_unstable }
-
-export { useTabListStyles_unstable }
-
-export { useTabStyles_unstable }
 
 export { useTextarea_unstable }
 
