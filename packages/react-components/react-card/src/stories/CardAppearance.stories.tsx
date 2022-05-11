@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { action } from '@storybook/addon-actions';
-import { Headline, Title3 } from '@fluentui/react-text';
+import { Subtitle1, Title3 } from '@fluentui/react-text';
 import { makeStyles, shorthands } from '@griffel/react';
 import { SampleCard } from './SampleCard.stories';
 import { FluentProvider } from '@fluentui/react-provider';
@@ -26,9 +26,9 @@ const Title = (props: { children: React.ReactNode }) => {
   const styles = useStyles();
 
   return (
-    <Headline as="h4" block className={styles.header}>
+    <Subtitle1 as="h4" block className={styles.header}>
       {props.children}
-    </Headline>
+    </Subtitle1>
   );
 };
 

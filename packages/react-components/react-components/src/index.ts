@@ -519,7 +519,7 @@ export {
   Body,
   Caption,
   Display,
-  Headline,
+  Subtitle1,
   LargeTitle,
   Subheadline,
   Text,
@@ -533,13 +533,13 @@ export {
   /* eslint-disable-next-line deprecation/deprecation */
   displayClassName,
   /* eslint-disable-next-line deprecation/deprecation */
-  headlineClassName,
+  subtitle1ClassName,
   /* eslint-disable-next-line deprecation/deprecation */
   largeTitleClassName,
   bodyClassNames,
   captionClassNames,
   displayClassNames,
-  headlineClassNames,
+  subtitle1ClassNames,
   largeTitleClassNames,
   renderText_unstable,
   /* eslint-disable-next-line deprecation/deprecation */

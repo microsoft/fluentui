@@ -124,9 +124,6 @@ import { getNativeProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelStyle } from '@griffel/react';
-import { Headline } from '@fluentui/react-text';
-import { headlineClassName } from '@fluentui/react-text';
-import { headlineClassNames } from '@fluentui/react-text';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
 import { Image as Image_2 } from '@fluentui/react-image';
 import { imageClassName } from '@fluentui/react-image';
@@ -353,6 +350,9 @@ import { StrokeWidthTokens } from '@fluentui/react-theme';
 import { Subheadline } from '@fluentui/react-text';
 import { subheadlineClassName } from '@fluentui/react-text';
 import { subheadlineClassNames } from '@fluentui/react-text';
+import { Subtitle1 } from '@fluentui/react-text';
+import { subtitle1ClassName } from '@fluentui/react-text';
+import { subtitle1ClassNames } from '@fluentui/react-text';
 import { teamsDarkTheme } from '@fluentui/react-theme';
 import { teamsHighContrastTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
@@ -736,12 +736,6 @@ export { getPartitionedNativeProps }
 export { getSlots }
 
 export { GriffelStyle }
-
-export { Headline }
-
-export { headlineClassName }
-
-export { headlineClassNames }
 
 export { HorizontalSpacingTokens }
 
@@ -1194,6 +1188,12 @@ export { Subheadline }
 export { subheadlineClassName }
 
 export { subheadlineClassNames }
+
+export { Subtitle1 }
+
+export { subtitle1ClassName }
+
+export { subtitle1ClassNames }
 
 export { teamsDarkTheme }
 

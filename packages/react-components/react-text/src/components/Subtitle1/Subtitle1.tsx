@@ -6,11 +6,11 @@ import { TextSlots } from '../Text/Text.types';
 import { typographyStyles } from '@fluentui/react-theme';
 
 /**
- * @deprecated Use `headlineClassNames.root` instead.
+ * @deprecated Use `subtitle1ClassNames.root` instead.
  */
-export const headlineClassName = 'fui-Headline';
-export const headlineClassNames: SlotClassNames<TextSlots> = {
-  root: 'fui-Headline',
+export const subtitle1ClassName = 'fui-Subtitle1';
+export const subtitle1ClassNames: SlotClassNames<TextSlots> = {
+  root: 'fui-Subtitle1',
 };
 
 /**
@@ -21,10 +21,10 @@ const useStyles = makeStyles({
 });
 
 /**
- * Text wrapper component for the Headline typography variant
+ * Text wrapper component for the Subtitle1 typography variant
  */
-export const Headline: FunctionComponent<TextWrapperProps> = createWrapper({
+export const Subtitle1: FunctionComponent<TextWrapperProps> = createWrapper({
   useStyles,
-  className: headlineClassNames.root,
-  displayName: 'Headline',
+  className: subtitle1ClassNames.root,
+  displayName: 'Subtitle1',
 });

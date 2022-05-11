@@ -41,15 +41,6 @@ export const displayClassName = "fui-Display";
 export const displayClassNames: SlotClassNames<TextSlots>;
 
 // @public
-export const Headline: FunctionComponent<TextWrapperProps>;
-
-// @public @deprecated (undocumented)
-export const headlineClassName = "fui-Headline";
-
-// @public (undocumented)
-export const headlineClassNames: SlotClassNames<TextSlots>;
-
-// @public
 export const LargeTitle: FunctionComponent<TextWrapperProps>;
 
 // @public @deprecated (undocumented)
@@ -69,6 +60,15 @@ export const subheadlineClassName = "fui-Subheadline";
 
 // @public (undocumented)
 export const subheadlineClassNames: SlotClassNames<TextSlots>;
+
+// @public
+export const Subtitle1: FunctionComponent<TextWrapperProps>;
+
+// @public @deprecated (undocumented)
+export const subtitle1ClassName = "fui-Subtitle1";
+
+// @public (undocumented)
+export const subtitle1ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 const Text_2: ForwardRefComponent<TextProps>;

@@ -4,13 +4,13 @@ import {
   Title1,
   Title2,
   Title3,
-  Headline,
+  Subtitle1,
   Subheadline,
   Body,
   Caption,
 } from '@fluentui/react-text';
 
-console.log(Display, LargeTitle, Title1, Title2, Title3, Headline, Subheadline, Body, Caption);
+console.log(Display, LargeTitle, Title1, Title2, Title3, Subtitle1, Subheadline, Body, Caption);
 
 export default {
   name: 'Text - Wrappers',
