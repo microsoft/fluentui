@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update glob for collecting reports",
+  "packageName": "@fluentui/bundle-size",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
