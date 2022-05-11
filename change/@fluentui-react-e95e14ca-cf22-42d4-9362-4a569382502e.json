@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updated to scroll to pending selected element",
-  "packageName": "@fluentui/react",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

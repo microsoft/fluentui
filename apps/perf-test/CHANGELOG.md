@@ -1,8 +1,17 @@
 # Change Log - @fluentui/perf-test
 
-This log was last generated on Mon, 09 May 2022 07:37:42 GMT and should not be manually modified.
+This log was last generated on Wed, 11 May 2022 07:42:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/perf-test_v1.0.0)
+
+Wed, 11 May 2022 07:42:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/perf-test_v1.0.0..@fluentui/perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.67.4 ([PR #22572](https://github.com/microsoft/fluentui/pull/22572) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/perf-test_v1.0.0)
 
