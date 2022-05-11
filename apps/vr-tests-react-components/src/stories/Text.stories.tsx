@@ -2,7 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import Screener from 'screener-storybook/src/screener';
 import {
-  Body,
+  Body1,
   Caption,
   Display,
   Subtitle1,
@@ -147,7 +147,7 @@ storiesOf('Text Converged', module)
         <Title3 block>Title3</Title3>
         <Subtitle1 block>Subtitle1</Subtitle1>
         <Subtitle2 block>Subtitle2</Subtitle2>
-        <Body block>Body</Body>
+        <Body1 block>Body1</Body1>
         <Caption block>Caption</Caption>
       </>
     ),

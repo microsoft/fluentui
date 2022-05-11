@@ -13,14 +13,13 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-const Body_2: FunctionComponent<TextWrapperProps>;
-export { Body_2 as Body }
+export const Body1: FunctionComponent<TextWrapperProps>;
 
 // @public @deprecated (undocumented)
-export const bodyClassName = "fui-Body";
+export const body1ClassName = "fui-Body1";
 
 // @public (undocumented)
-export const bodyClassNames: SlotClassNames<TextSlots>;
+export const body1ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Caption: FunctionComponent<TextWrapperProps>;

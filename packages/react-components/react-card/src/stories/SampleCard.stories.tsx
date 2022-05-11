@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
-import { Body, Caption } from '@fluentui/react-text';
+import { Body1, Caption } from '@fluentui/react-text';
 import { Card, CardHeader, CardFooter, CardPreview } from '../index';
 import type { CardProps } from '../index';
 
@@ -19,9 +19,9 @@ export const SampleCard = (props: CardProps) => (
     <CardHeader
       image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
       header={
-        <Body>
+        <Body1>
           <b>App Name</b>
-        </Body>
+        </Body1>
       }
       description={<Caption>Developer</Caption>}
     />

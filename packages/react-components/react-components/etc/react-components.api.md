@@ -58,9 +58,9 @@ import { badgeClassNames } from '@fluentui/react-badge';
 import { BadgeProps } from '@fluentui/react-badge';
 import { BadgeSlots } from '@fluentui/react-badge';
 import { BadgeState } from '@fluentui/react-badge';
-import { Body as Body_2 } from '@fluentui/react-text';
-import { bodyClassName } from '@fluentui/react-text';
-import { bodyClassNames } from '@fluentui/react-text';
+import { Body1 } from '@fluentui/react-text';
+import { body1ClassName } from '@fluentui/react-text';
+import { body1ClassNames } from '@fluentui/react-text';
 import { BorderRadiusTokens } from '@fluentui/react-theme';
 import { BrandVariants } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
@@ -605,11 +605,11 @@ export { BadgeSlots }
 
 export { BadgeState }
 
-export { Body_2 as Body }
+export { Body1 }
 
-export { bodyClassName }
+export { body1ClassName }
 
-export { bodyClassNames }
+export { body1ClassNames }
 
 export { BorderRadiusTokens }
 

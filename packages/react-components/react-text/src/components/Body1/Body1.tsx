@@ -6,11 +6,11 @@ import { TextSlots } from '../Text/Text.types';
 import { typographyStyles } from '@fluentui/react-theme';
 
 /**
- * @deprecated Use `bodyClassNames.root` instead.
+ * @deprecated Use `body1ClassNames.root` instead.
  */
-export const bodyClassName = 'fui-Body';
-export const bodyClassNames: SlotClassNames<TextSlots> = {
-  root: 'fui-Body',
+export const body1ClassName = 'fui-Body1';
+export const body1ClassNames: SlotClassNames<TextSlots> = {
+  root: 'fui-Body1',
 };
 
 /**
@@ -21,10 +21,10 @@ const useStyles = makeStyles({
 });
 
 /**
- * Text wrapper component for the Body typography variant
+ * Text wrapper component for the Body1 typography variant
  */
-export const Body: FunctionComponent<TextWrapperProps> = createWrapper({
+export const Body1: FunctionComponent<TextWrapperProps> = createWrapper({
   useStyles,
-  className: bodyClassNames.root,
-  displayName: 'Body',
+  className: body1ClassNames.root,
+  displayName: 'Body1',
 });
