@@ -13,7 +13,6 @@ import {
 } from './presenceIcons';
 import { useBadge_unstable } from '../Badge/index';
 import type { PresenceBadgeProps, PresenceBadgeState } from './PresenceBadge.types';
-import { StatusRegular } from '@fluentui/react-icons';
 
 const iconMap = (
   status: PresenceBadgeState['status'],
