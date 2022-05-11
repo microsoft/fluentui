@@ -433,6 +433,9 @@ export interface IColumn {
   /** If true, allow the column to be collapsed when rendered in justified layout. */
   isCollapsible?: boolean;
 
+  /** If true, column header will render a icon indicating column is sortable while unsorted */
+  isSortable?: boolean;
+
   /** Determines if the column is currently sorted. Renders a sort arrow in the column header. */
   isSorted?: boolean;
 

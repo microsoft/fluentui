@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "allow for showing a sortable icon on an unsorted but sortable column in a DetailsList",
+  "packageName": "@fluentui/react",
+  "email": "paruther@microsoft.com",
+  "dependentChangeType": "patch"
+}

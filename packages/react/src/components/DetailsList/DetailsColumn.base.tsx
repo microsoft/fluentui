@@ -165,10 +165,10 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
 
                   {column.isFiltered && <IconComponent className={classNames.nearIcon} iconName="Filter" />}
 
-                  {column.isSorted && (
+                  {(column.isSorted || column.isSortable) && (
                     <IconComponent
                       className={classNames.sortIcon}
-                      iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'}
+                      iconName={column.isSorted ? (column.isSortedDescending ? 'SortDown' : 'SortUp') : 'Sort'}
                     />
                   )}
 

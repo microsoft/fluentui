@@ -3640,6 +3640,7 @@ export interface IColumn {
     isPadded?: boolean;
     isResizable?: boolean;
     isRowHeader?: boolean;
+    isSortable?: boolean;
     isSorted?: boolean;
     isSortedDescending?: boolean;
     key: string;
