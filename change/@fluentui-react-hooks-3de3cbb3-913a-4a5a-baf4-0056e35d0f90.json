@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update React support to 18.1.0",
+  "packageName": "@fluentui/react-hooks",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}

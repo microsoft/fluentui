@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update React support to 18.1.0",
+  "packageName": "@fluentui/react-text",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
