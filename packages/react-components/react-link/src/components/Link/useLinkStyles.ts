@@ -99,7 +99,7 @@ const useStyles = makeStyles({
 
 export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   const styles = useStyles();
-  const { appearance, inline, root } = state;
+  const { appearance, disabled, inline, root } = state;
 
   state.root.className = mergeClasses(
     linkClassNames.root,
@@ -109,7 +109,7 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
     appearance === 'subtle' && styles.subtle,
     inline && styles.inline,
     appearance === 'subtle' && inline && styles.inlineSubtle,
-    root['aria-disabled'] && styles.disabled,
+    disabled && styles.disabled,
     state.root.className,
   );
 
