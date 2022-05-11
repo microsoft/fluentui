@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 06 May 2022 21:32:17 GMT and should not be manually modified.
+This log was last generated on Wed, 11 May 2022 12:26:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.42.20](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.42.20)
+
+Wed, 11 May 2022 12:26:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.42.19..@uifabric/experiments_v7.42.20)
+
+### Patches
+
+- cherrypick 22642 into 7.0 ([PR #22908](https://github.com/microsoft/fluentui/pull/22908) by mgodbolt@microsoft.com)
 
 ## [7.42.19](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.42.19)
 

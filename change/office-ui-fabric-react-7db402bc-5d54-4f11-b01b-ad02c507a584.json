@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "cherrypick 22642 into 7.0",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

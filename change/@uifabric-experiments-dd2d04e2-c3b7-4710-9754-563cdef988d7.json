@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "cherrypick 22642 into 7.0",
-  "packageName": "@uifabric/experiments",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
