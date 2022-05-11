@@ -1,4 +1,5 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/core';
+import { useRenderer_unstable } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { FluentProviderSlots, FluentProviderState } from './FluentProvider.types';
 import { SlotClassNames } from '@fluentui/react-utilities';
@@ -14,12 +15,14 @@ const useStyles = makeStyles({
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase300,
     fontWeight: tokens.fontWeightRegular,
+    textAlign: 'left',
   },
 });
 
 /** Applies style classnames to slots */
 export const useFluentProviderStyles_unstable = (state: FluentProviderState) => {
-  const styles = useStyles();
+  const renderer = useRenderer_unstable();
+  const styles = useStyles({ dir: state.dir, renderer });
 
   state.root.className = mergeClasses(
     fluentProviderClassNames.root,
