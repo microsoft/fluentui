@@ -31,6 +31,9 @@ export async function screener() {
     affectedPackages = getAffectedPackages(previousMasterCommit);
   }
 
+  // debugging
+  console.log(Array.from(affectedPackages.values()));
+
   try {
     if (!affectedPackages.has(affectedPackageInfo.packageJson.name)) {
       await cancelScreenerRun(screenerConfig, 'skipped');

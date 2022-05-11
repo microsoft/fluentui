@@ -48,6 +48,9 @@ task('screener:runner', cb => {
     affectedPackages = getAffectedPackages(previousMasterCommit);
   }
 
+  // debugging
+  console.log(Array.from(affectedPackages.values()));
+
   if (!affectedPackages.has(docsPackageName)) {
     handlePromiseExit(cancelScreenerRun(screenerConfig, 'skipped'));
   } else {
