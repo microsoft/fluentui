@@ -19,6 +19,8 @@ While not universally true, a lot of these strings are specifically for screen r
 
 ## Background
 
+### Other component libraries
+
 I looked at how other component libraries do this, and both [Material UI](https://material-ui.com/guides/localization/) and [Ant Design](https://ant.design/docs/react/i18n) take a similar approach:
 
 They both have a utility to provide or define custom locale objects that include all the strings for all applicable components. For example, this is a sample of how the [exported spanish locale object for MUI](https://unpkg.com/browse/antd@4.16.9/lib/locale/es_ES.js) is defined:
@@ -46,7 +48,37 @@ var localeValues = {
 
 Material UI includes the locale strings in their ThemeProvider, and Ant Design puts it in their ConfigProvider.
 
-Libraries where I found no tools or defined patterns for localization include Lightning Design System, Semantic UI, React Bootstrap, and Carbon Design System.
+Among other libraries, there are a variety of approaches to built-in string values that range from hardcoded values to per-string props:
+
+#### Libraries with no localization approach:
+
+- **Semantic UI**: didn't find built-in strings, in multiple places accnames were missing (e.g. +/- on Dimmer)
+- **FAST**: did not find built-in strings, in multiple places accnames were missing (e.g. the flipper button)
+- **Evergreen**: Hardcoded English strings, or missing labels (e.g. browse/drag copy in FileUploader, missing prev/next labels in Pagination)
+- **React Bootstrap**: English strings hardcoded (e.g. "Next", "Last" in Pagination)
+
+#### Libraries with only per-string props:
+
+- **Spectrum**: individual props (e.g. "labelX", "labelY" on ColorArea)
+- **Carbon**: a `locale` prop on datepicker, `translationIds` + `translationKeys` on other components, misc props on simpler components (e.g. `backwardText` on pagination)
+- **Atlassian**: misc props (e.g. `nextLabel`, `previousLabel` on Pagination)
+
+#### Libraries with only a provider (no props):
+
+- **Ant** (sort of): some Ant components like Upload or Table only accept localized strings through a LocaleReceiver + ConfigProvider
+
+#### Libraries with a combination of props and a provider:
+
+- **Ant**: Date/time components have `locale` prop that includes strings in addition to the LocaleReceiver + ConfigProvider approach.
+- **Material UI**: misc props on components + locale support on the theme provider (e.g. `clearText`, `closeText` on Autocomplete)
+
+### Learnings from Fluent v8
+
+The Fluent v8 approach has largely been piecemeal, with per-component props added for internal strings. There is no standard naming schema, and for authors to implement proper a11y and localization, they've needed to hunt down the string props for each component.
+
+We've had feedback, largely related to accessibility bugs, that this approach is onerous and frustrating to authors. There has been some frustration expressed specifically around the experience of feeling like there is a "gotcha" nature to accessibility where our components technically support accessible labels, but authors need to really dig to find out how to implement them.
+
+### i18n libraries
 
 Two of the most common i18n packages for React independent of component libraries are `react-i18next` (a react wrapper for i18next), and `react-intl`. Both provide a helper function to format a string -- at the most basic, they take a key and return a localized string. The most basic usage looks like this for each library:
 
@@ -78,17 +110,59 @@ Both also provide extras like React components as an alternative to the function
 
 ## Proposal
 
-While we don't have plans to provide actual translations for the strings in any of our components, it'd be nice to create a pattern for defining custom strings that makes it easy for authors to:
+We can split work on this into three phases:
 
-- Easily propagate app-level locale strings down to Fluent components without needing to manually map them to multiple separate component props
-- Easily include all necessary component strings when they create a new locale definition/JSON file (i.e. not need to manually remember that TagPicker needs `selectionAriaLabel` defined).
-- Use 3rd party i18n tools with Fluent components without too much extra work
+### 1. A prop for overriding internal strings
 
-To do this, I think it makes sense to add locale data to Fluent's `ProviderContext`, since it already includes `dir`.
+Most other libraries that have i18n solutions include some sort of props-based approach. Based on the feedback received from Fluent v8, it seems best to make this a standard prop across all components that have internal strings.
+
+The specific name for this prop could be `strings` (which matches the Fluent v8 Datepicker), `locale` (which matches a couple other libraries), or something else entirely.
+
+The benefits to providing a prop on individual components vs. a provider-only solution include:
+
+- It is easier to use a few Fluent controls in isolation, e.g. within an app that also uses controls from another library
+- It provides greater control and flexibility. For example, if a team were using a third-party solution with more complex logic than a built-in Fluent string provider, they could always override strings at a component level.
+- We can ship components with internal strings now, and then integrate a string provider in the future
+
+The benefits of a single `strings`/`locale`/`someSortOfLabel` prop over requiring authors to manually figure out `aria-*`/`<label htmlFor>`/etc. props include:
+
+- It is very clear what strings are internally needed for a control to function accessibly (something we've had complaints about in v8)
+- It is consistent across all components
+- It frees us to change semantics down the line. For example, a string that is currently used as a label might be better as a description, or vice versa. This has happened multiple times in v8, and resulted in weird side effects like an `ariaLabel` prop actually setting `aria-describedby`.
+
+### 2. Investigate supporting string templates or functions
+
+We already have some cases where a simple string might work, but a template string would be better: for example `"{count} more people"` vs. `"more people"` in `AvatarGroup`.
+
+There are more factors to consider than just template format, since different languages have different requirements for changing strings based on pluralization and other factors. We should explore several options to support string + value calculation, including (but not limited to) these:
+
+1. The strings prop can accept either a string or function:
+
+```ts
+// not sure if we'd pass in state, or some more limited set of values
+type stringValue<T extends ComponentState> = string | (state: T) => string;
+```
+
+2. In addition to a strings prop, we also have an additional formatter function prop:
+
+```ts
+type AvatarGroupProps = etc & {
+  strings: {
+    tooltipContent: string;
+  };
+  stringFormatter: (key: string, values: { [key: string]: any }) => string;
+};
+```
+
+3. We support templates in the format `{value} text`, and are very careful about including keys for all needed strings. This seems the most difficult to support long-term.
+
+### 3. Investigate a Locale(?)Provider-style component
+
+It's generally much more ergonomic to provide locale strings to a single top-level component rather than pass them in to all components separately. It seems worth looking into including a Fluent Locale/String Provider that is consumed by our components that have internal strings.
 
 One straightforward option for how to do this would be to provide a locale object with static key/value pairs for each string. We could provide a minimal set of global strings in the top-level provider, similar to how Material and Ant differentiate global vs. component strings. Based on current Fluent v8 and N\* strings, it would look like this:
 
-react-shared-contexts/src/ProviderContext/defaultStrings.ts
+react-shared-contexts/src/LocaleContext/defaultStrings.ts
 
 ```js
 export const defaultLocale {
@@ -106,39 +180,15 @@ export const defaultLocale {
 }
 ```
 
-react-shared-contexts/src/ProviderContext/ProviderContext.ts
-
-```js
-import { defaultLocale } from './defaultStrings.ts';
-
-export const ProviderContext =
-  React.createContext <
-  ProviderContextValue >
-  {
-    targetDocument: typeof document === 'object' ? document : undefined,
-    dir: 'ltr',
-    locale: defaultLocale,
-  };
-```
-
-Then, each component would take a `strings` prop where strings could be directly passed in, and also provide component-specific defaults when needed. The `strings` prop would also be used for the author to pass in strings that don't have a default, e.g. error messaging and instance-specific labels.
-
-react-dropdown/src/localeStrings.ts (specific strings are just for this example)
-
-```js
-export const dropdownDefaultStrings: Partial<DropdownStrings> {
-  loadMore: 'Load more options',
-  invalidEntryError: 'Your search did not match any options'
-}
-```
+Each component's `strings` prop would still allow overriding context values, or defining strings when a context is absent:
 
 react-dropdown/src/components/useDropdown.tsx (very simplified)
 
 ```js
 import { dropdownDefaultStrings } from '../localeStrings';
 export const useDropdown = props => {
-  const { locale } = useFluent();
   const dropdownStrings = {
+    ...dropdownDefaultStrings,
     ...locale.strings.global, // only if this component actually uses global strings
     ...locale.strings.Dropdown,
     ...props.strings,
@@ -148,9 +198,9 @@ export const useDropdown = props => {
 };
 ```
 
-## Concrete actions for vNext beta
+## Concrete actions for release
 
-The only action needed for beta release should be to ensure all strings provided through component props (excluding children/child content) are defined in a single `strings` property.
+The action needed for release should be to ensure all human-facing strings provided through component props (excluding children/child content) are defined in a single `strings` property.
 
 For example, the `PresenceBadge` (and also components like `Avatar` that use it) would need something like this for the strings prop (likely with defaults in a component-specific file for `PresenceBadge`):
 
@@ -175,7 +225,7 @@ interface AvatarStrings extends PresenceBadgeStrings {
   inactive: string;
 }
 
-// defined in a default strings file
+// defined in a default strings object
 const presenceDefaultStrings: PresenceBadgeStrings = {
   statusBusy: 'busy',
   statusOutOfOffice: 'out of office',
@@ -186,7 +236,7 @@ const presenceDefaultStrings: PresenceBadgeStrings = {
 };
 ```
 
-## Future possibilities
+## Other possibilities
 
 Another possibility is that we could also provide a way to (optionally) pass a function (e.g. `localizeString`) through `ProviderContext` to better support libraries like `react-i18next` and `react-intl`. Then, if that function is provided, we call it with any given string as an argument. That would mean someone using `react-i18next` could do something like this:
 
