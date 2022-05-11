@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(react-text): Change typography wrapper component names to match new design spec",
+  "packageName": "@fluentui/react-components",
+  "email": "39736248+andrefcdias@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
