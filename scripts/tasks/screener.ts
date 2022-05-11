@@ -32,7 +32,7 @@ export async function screener() {
   }
 
   try {
-    if (!affectedPackages.has(affectedPackageInfo.packageJson.name) && isPrBuild) {
+    if (!affectedPackages.has(affectedPackageInfo.packageJson.name)) {
       await cancelScreenerRun(screenerConfig, 'skipped');
     } else {
       await screenerRunner(screenerConfig);
