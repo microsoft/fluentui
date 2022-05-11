@@ -69,9 +69,9 @@ import { buttonClassNames } from '@fluentui/react-button';
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
-import { Caption } from '@fluentui/react-text';
-import { captionClassName } from '@fluentui/react-text';
-import { captionClassNames } from '@fluentui/react-text';
+import { Caption1 } from '@fluentui/react-text';
+import { caption1ClassName } from '@fluentui/react-text';
+import { caption1ClassNames } from '@fluentui/react-text';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
 import { ColorTokens } from '@fluentui/react-theme';
 import { ComponentProps } from '@fluentui/react-utilities';
@@ -627,11 +627,11 @@ export { ButtonSlots }
 
 export { ButtonState }
 
-export { Caption }
+export { Caption1 }
 
-export { captionClassName }
+export { caption1ClassName }
 
-export { captionClassNames }
+export { caption1ClassNames }
 
 export { ColorPaletteTokens }
 

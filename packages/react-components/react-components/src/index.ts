@@ -517,7 +517,7 @@ export {
 export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
 export {
   Body1,
-  Caption,
+  Caption1,
   Display,
   Subtitle1,
   LargeTitle,
@@ -529,7 +529,7 @@ export {
   /* eslint-disable-next-line deprecation/deprecation */
   body1ClassName,
   /* eslint-disable-next-line deprecation/deprecation */
-  captionClassName,
+  caption1ClassName,
   /* eslint-disable-next-line deprecation/deprecation */
   displayClassName,
   /* eslint-disable-next-line deprecation/deprecation */
@@ -537,7 +537,7 @@ export {
   /* eslint-disable-next-line deprecation/deprecation */
   largeTitleClassName,
   body1ClassNames,
-  captionClassNames,
+  caption1ClassNames,
   displayClassNames,
   subtitle1ClassNames,
   largeTitleClassNames,

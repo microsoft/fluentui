@@ -6,11 +6,11 @@ import { TextSlots } from '../Text/Text.types';
 import { typographyStyles } from '@fluentui/react-theme';
 
 /**
- * @deprecated Use `captionClassNames.root` instead.
+ * @deprecated Use `caption1ClassNames.root` instead.
  */
-export const captionClassName = 'fui-Caption';
-export const captionClassNames: SlotClassNames<TextSlots> = {
-  root: 'fui-Caption',
+export const caption1ClassName = 'fui-Caption1';
+export const caption1ClassNames: SlotClassNames<TextSlots> = {
+  root: 'fui-Caption1',
 };
 
 /**
@@ -21,10 +21,10 @@ const useStyles = makeStyles({
 });
 
 /**
- * Text wrapper component for the Caption typography variant
+ * Text wrapper component for the Caption1 typography variant
  */
-export const Caption: FunctionComponent<TextWrapperProps> = createWrapper({
+export const Caption1: FunctionComponent<TextWrapperProps> = createWrapper({
   useStyles,
-  className: captionClassNames.root,
-  displayName: 'Caption',
+  className: caption1ClassNames.root,
+  displayName: 'Caption1',
 });

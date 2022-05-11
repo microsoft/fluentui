@@ -16,4 +16,4 @@ export { Title3, title3ClassName, title3ClassNames } from './Title3';
 export { Subtitle1, subtitle1ClassName, subtitle1ClassNames } from './Subtitle1';
 export { Subtitle2, subtitle2ClassName, subtitle2ClassNames } from './Subtitle2';
 export { Body1, body1ClassName, body1ClassNames } from './Body1';
-export { Caption, captionClassName, captionClassNames } from './Caption';
+export { Caption1, caption1ClassName, caption1ClassNames } from './Caption1';

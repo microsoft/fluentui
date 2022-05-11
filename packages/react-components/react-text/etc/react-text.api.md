@@ -22,13 +22,13 @@ export const body1ClassName = "fui-Body1";
 export const body1ClassNames: SlotClassNames<TextSlots>;
 
 // @public
-export const Caption: FunctionComponent<TextWrapperProps>;
+export const Caption1: FunctionComponent<TextWrapperProps>;
 
 // @public @deprecated (undocumented)
-export const captionClassName = "fui-Caption";
+export const caption1ClassName = "fui-Caption1";
 
 // @public (undocumented)
-export const captionClassNames: SlotClassNames<TextSlots>;
+export const caption1ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Display: FunctionComponent<TextWrapperProps>;

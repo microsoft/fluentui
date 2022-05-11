@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
-import { Body1, Caption } from '@fluentui/react-text';
+import { Body1, Caption1 } from '@fluentui/react-text';
 import { Card, CardHeader, CardFooter, CardPreview } from '../index';
 import type { CardProps } from '../index';
 
@@ -23,7 +23,7 @@ export const SampleCard = (props: CardProps) => (
           <b>App Name</b>
         </Body1>
       }
-      description={<Caption>Developer</Caption>}
+      description={<Caption1>Developer</Caption1>}
     />
     <div>
       Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
