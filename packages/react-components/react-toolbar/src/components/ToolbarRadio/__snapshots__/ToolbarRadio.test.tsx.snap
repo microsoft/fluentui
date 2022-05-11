@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolbarRadio renders a default state 1`] = `
+<div>
+  <span
+    class="fui-Radio"
+  >
+    <input
+      class="fui-Radio__input"
+      id="radio-8"
+      type="radio"
+    />
+    <div
+      aria-hidden="true"
+      class="fui-Radio__indicator"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10 2a8 8 0 100 16 8 8 0 000-16z"
+        />
+      </svg>
+    </div>
+  </span>
+</div>
+`;
