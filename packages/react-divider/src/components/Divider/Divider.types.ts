@@ -12,32 +12,36 @@ export type DividerSlots = {
   wrapper: Slot<'div'>;
 };
 
-type DividerCommons = {
+export type DividerProps = ComponentProps<Partial<DividerSlots>> & {
   /**
    * Determines the alignment of the content within the divider.
-   * @defaultvalue 'center'
+   *
+   * @default 'center'
    */
-  alignContent: 'start' | 'center' | 'end';
+  alignContent?: 'start' | 'center' | 'end';
 
   /**
    * A divider can have one of the preset appearances.
    * When not specified, the divider has its default appearance.
+   *
+   * @default 'default'
    */
-  appearance?: 'brand' | 'strong' | 'subtle';
+  appearance?: 'brand' | 'default' | 'strong' | 'subtle';
 
   /**
    * Adds padding to the beginning and end of the divider.
+   *
    * @default false
    */
-  inset: boolean;
+  inset?: boolean;
 
   /**
    * A divider can be horizontal (default) or vertical.
+   *
    * @default false
    */
-  vertical: boolean;
+  vertical?: boolean;
 };
 
-export type DividerProps = ComponentProps<Partial<DividerSlots>> & Partial<DividerCommons>;
-
-export type DividerState = ComponentState<DividerSlots> & DividerCommons;
+export type DividerState = ComponentState<DividerSlots> &
+  Required<Pick<DividerProps, 'alignContent' | 'appearance' | 'inset' | 'vertical'>>;
