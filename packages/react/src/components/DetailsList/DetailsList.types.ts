@@ -517,7 +517,7 @@ export interface IColumn {
   sortDescendingAriaLabel?: string;
 
   /**
-   * Accessible label for indicating that the list could be sorted by this column but isn't currently
+   * Accessible label for indicating that the list could be sorted by this column but isn't currently.
    * This will be read after the main column header label.
    */
   sortableAriaLabel?: string;
