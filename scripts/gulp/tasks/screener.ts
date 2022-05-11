@@ -49,6 +49,7 @@ task('screener:runner', cb => {
   }
 
   // debugging
+  console.log('affected package tree');
   console.log(Array.from(affectedPackages.values()));
 
   if (!affectedPackages.has(docsPackageName)) {

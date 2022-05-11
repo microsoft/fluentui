@@ -32,6 +32,7 @@ export async function screener() {
   }
 
   // debugging
+  console.log('affected package tree');
   console.log(Array.from(affectedPackages.values()));
 
   try {
