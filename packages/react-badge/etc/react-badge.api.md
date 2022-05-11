@@ -57,7 +57,7 @@ export const presenceBadgeClassName = "fui-PresenceBadge";
 export const presenceBadgeClassNames: SlotClassNames<BadgeSlots>;
 
 // @public (undocumented)
-export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root'>>, 'color'> & Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
+export type PresenceBadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
 
 // @public (undocumented)
 export type PresenceBadgeState = PresenceBadgeCommons & ComponentState<BadgeSlots>;
