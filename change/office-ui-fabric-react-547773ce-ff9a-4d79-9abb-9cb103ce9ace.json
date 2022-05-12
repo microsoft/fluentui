@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update React compatibility to support React 17",
+  "packageName": "office-ui-fabric-react",
+  "email": "leji@microsoft.com",
+  "dependentChangeType": "patch"
+}
