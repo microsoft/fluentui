@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing PortalCommons type.",
+  "packageName": "@fluentui/react-portal",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
