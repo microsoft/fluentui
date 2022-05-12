@@ -22,12 +22,6 @@ type OptionCommons = {
 export type OptionProps = ComponentProps<Partial<OptionSlots>> &
   OptionCommons & {
     /*
-     * Internal use only: used to associate Options with their parent Combobox context.
-     * Manually setting this prop is not recommended.
-     */
-    fluentKey?: string;
-
-    /*
      * Defines a string value for the option, used for the parent Combobox's value.
      * Use this if the children are not a string, or you wish the value to differ from the displayed text.
      */

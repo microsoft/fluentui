@@ -14,7 +14,6 @@ import {
   SpinButtonChangeEvent,
   SpinButtonBounds,
 } from './SpinButton.types';
-import { spinButtonDefaultStrings } from './SpinButton.strings';
 import { calculatePrecision, precisionRound, getBound, clampWhenInRange } from '../../utils/index';
 import { ChevronUp16Regular, ChevronDown16Regular } from '@fluentui/react-icons';
 
@@ -67,7 +66,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     input,
     incrementButton,
     decrementButton,
-    strings = spinButtonDefaultStrings,
   } = props;
 
   const precision = React.useMemo(() => {
@@ -125,7 +123,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         tabIndex: -1,
         children: <ChevronUp16Regular />,
         disabled: nativeProps.primary.disabled,
-        'aria-label': strings.incrementButtonLabel.replace('{step}', step.toString()),
+        'aria-label': 'Increment value',
       },
     }),
     decrementButton: resolveShorthand(decrementButton, {
@@ -134,7 +132,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         tabIndex: -1,
         children: <ChevronDown16Regular />,
         disabled: nativeProps.primary.disabled,
-        'aria-label': strings.decrementButtonLabel.replace('{step}', step.toString()),
+        'aria-label': 'Decrement value',
       },
     }),
   };
@@ -275,7 +273,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   state.input['aria-valuemin'] = min;
   state.input['aria-valuemax'] = max;
   state.input['aria-valuenow'] = currentValue;
-  state.input['aria-valuetext'] = (value !== undefined && displayValue) || undefined;
+  state.input['aria-valuetext'] = state.input['aria-valuetext'] ?? ((value !== undefined && displayValue) || undefined);
   state.input.onChange = useMergedEventCallbacks(state.input.onChange, handleInputChange);
   state.input.onBlur = useMergedEventCallbacks(state.input.onBlur, handleBlur);
   state.input.onKeyDown = useMergedEventCallbacks(state.input.onKeyDown, handleKeyDown);

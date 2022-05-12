@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { CheckmarkFilled, CheckboxUncheckedFilled, CheckboxCheckedFilled } from '@fluentui/react-icons';
 import { ListboxContext } from '../../contexts/ListboxContext';
@@ -30,25 +30,30 @@ function getValueString(value: string | undefined, children: React.ReactNode) {
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
-  const { id, fluentKey: key, disabled, value } = props;
+  const { disabled, value } = props;
+  const optionRef = React.useRef<HTMLElement>(null);
+  const optionValue = getValueString(value, props.children);
 
   // context values
-  const idBase = useContextSelector(ListboxContext, ctx => ctx.idBase);
   const multiselect = useContextSelector(ListboxContext, ctx => ctx.multiselect);
   const onOptionClick = useContextSelector(ListboxContext, ctx => ctx.onOptionClick);
   const registerOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
-  const selectedOptions = useContextSelector(ListboxContext, ctx => ctx.selectedOptions);
+  const selected = useContextSelector(ListboxContext, ctx => {
+    const selectedOptions = ctx.selectedOptions;
 
-  // use the id if provided, otherwise construct id from key & idBase
-  const optionId = id || key ? `${idBase}-${key}` : '';
+    return !!optionValue && !!selectedOptions.find(option => option.value === optionValue);
+  });
+
+  // use the id if provided, otherwise use a generated id
+  const defaultId = useId('fluent-option');
+  const id = React.useMemo(() => {
+    return props.id || defaultId;
+  }, [props.id, defaultId]);
 
   // current active option?
   const active = useContextSelector(ListboxContext, ctx => {
-    return ctx.activeOption?.id !== undefined && ctx.activeOption?.id === optionId;
+    return ctx.activeOption?.id !== undefined && ctx.activeOption?.id === id;
   });
-
-  const selected = key ? !!selectedOptions.find(option => option.key === key) : false;
-  const optionValue = getValueString(value, props.children);
 
   // check icon
   let CheckIcon = <CheckmarkFilled />;
@@ -62,16 +67,16 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       return;
     }
 
-    key && onOptionClick(event, { key, id: optionId, value: optionValue });
+    onOptionClick(event, { id, value: optionValue });
     props.onClick?.(event);
   };
 
   // register option data with context
   React.useEffect(() => {
-    if (key && optionId) {
-      return registerOption({ key, id: optionId, value: optionValue });
+    if (id && optionRef.current) {
+      return registerOption({ id, value: optionValue }, optionRef.current);
     }
-  }, [registerOption, optionId, key, optionValue]);
+  }, [registerOption, id, optionValue]);
 
   return {
     components: {
@@ -79,11 +84,11 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       checkIcon: 'span',
     },
     root: getNativeElementProps('div', {
-      ref,
+      ref: useMergedRefs(ref, optionRef),
       role: 'option',
       'aria-disabled': disabled ? 'true' : undefined,
       'aria-selected': `${selected}`,
-      id: optionId,
+      id,
       ...props,
       onClick,
     }),

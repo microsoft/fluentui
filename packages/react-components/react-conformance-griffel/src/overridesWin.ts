@@ -34,7 +34,7 @@ export const overridesWin: ConformanceTest = (componentInfo, testInfo) => {
     | undefined;
 
   let container: HTMLDivElement | null = null;
-  const mergeClasses = jest.fn();
+  const mergeClasses = jest.fn().mockImplementation(() => '');
 
   jest.mock('@griffel/react', () => {
     const module = jest.requireActual('@griffel/react');
@@ -43,7 +43,7 @@ export const overridesWin: ConformanceTest = (componentInfo, testInfo) => {
   });
 
   beforeEach(() => {
-    jest.resetAllMocks();
+    jest.clearAllMocks();
     jest.resetModules();
 
     container = document.createElement('div');

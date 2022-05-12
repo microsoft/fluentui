@@ -5,7 +5,7 @@ exports[`Option renders a default state 1`] = `
   <div
     aria-selected="false"
     class="fui-Option"
-    id=""
+    id="fluent-option1"
     role="option"
   >
     <span

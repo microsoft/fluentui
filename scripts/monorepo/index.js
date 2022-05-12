@@ -5,4 +5,5 @@ module.exports = {
   getAllPackageInfo: require('./getAllPackageInfo'),
   isConvergedPackage: require('./isConvergedPackage'),
   getAffectedPackages: require('./getAffectedPackages'),
+  getNthCommit: require('./getNthCommit'),
 };
