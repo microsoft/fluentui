@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DetailsColumn renders a sortable icon on an unsorted column is isSortable is set to true 1`] = `
+exports[`DetailsColumn renders a sortable icon on an unsorted column when showSortIconWhenUnsorted is set to true 1`] = `
 <div
   className="ms-Viewport"
   style={
@@ -516,7 +516,9 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column is isSortab
                 }
             hidden={true}
             id="header43-1-tooltip"
-          />
+          >
+            Foo
+          </label>
         </div>
       </div>
       <div

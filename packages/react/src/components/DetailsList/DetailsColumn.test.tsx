@@ -261,7 +261,7 @@ describe('DetailsColumn', () => {
     expect(columnHeaderTitle.getDOMNode().getAttribute('aria-expanded')).toBe('true');
   });
 
-  it('renders a sortable icon on an unsorted column is isSortable is set to true', () => {
+  it('renders a sortable icon on an unsorted column when showSortIconWhenUnsorted is set to true', () => {
     const column: IColumn = { ...baseColumn, showSortIconWhenUnsorted: true, sortableAriaLabel: 'Foo' };
 
     const columns = [column];
