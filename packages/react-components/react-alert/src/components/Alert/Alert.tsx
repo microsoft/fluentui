@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { useAlert_unstable } from './useAlert';
+
 import { renderAlert_unstable } from './renderAlert';
+import { useAlert_unstable } from './useAlert';
 import { useAlertStyles_unstable } from './useAlertStyles';
+
 import type { AlertProps } from './Alert.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -13,6 +15,6 @@ export const Alert: ForwardRefComponent<AlertProps> = React.forwardRef((props, r
 
   useAlertStyles_unstable(state);
   return renderAlert_unstable(state);
-});
+}) as ForwardRefComponent<AlertProps>;
 
 Alert.displayName = 'Alert';

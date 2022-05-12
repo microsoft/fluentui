@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import { Button } from '@fluentui/react-button';
 import {
-  CheckmarkCircle20Regular,
-  DismissCircle20Regular,
-  ErrorCircle20Regular,
-  Warning20Regular,
+  CheckmarkCircle16Filled,
+  DismissCircle16Filled,
+  ErrorCircle16Filled,
+  Warning16Filled,
 } from '@fluentui/react-icons';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 
@@ -25,17 +25,17 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
   let iconToUse;
   switch (intent) {
     case 'success':
-      iconToUse = <CheckmarkCircle20Regular />;
+      iconToUse = <CheckmarkCircle16Filled />;
       break;
     case 'error':
-      iconToUse = <DismissCircle20Regular />;
+      iconToUse = <DismissCircle16Filled />;
       break;
     case 'warning':
-      iconToUse = <Warning20Regular />;
+      iconToUse = <Warning16Filled />;
       break;
     case 'info':
     default:
-      iconToUse = <ErrorCircle20Regular />;
+      iconToUse = <ErrorCircle16Filled />;
       break;
   }
 
@@ -59,8 +59,12 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
     content: resolveShorthand(props.content, {
       required: true,
     }),
-    action: resolveShorthand(props.action, {
-      required: true,
-    }),
+    // todo - fix types here
+    action:
+      props.action &&
+      resolveShorthand(props.action, {
+        required: true,
+      }),
+    intent,
   };
 };

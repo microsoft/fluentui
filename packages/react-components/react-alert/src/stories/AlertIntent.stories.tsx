@@ -1,22 +1,46 @@
 import * as React from 'react';
 
-import { Button } from '@fluentui/react-button';
-import { DismissCircle20Regular } from '@fluentui/react-icons';
-
 import { Alert } from '../index';
 
-export const Intent = () => {
-  const btn = <Button shape="circular" appearance="transparent" icon={<DismissCircle20Regular />} />;
-
-  return (
-    <>
-      <Alert intent="success" content="success text" action={btn} />
-      <Alert intent="error" content="error text" action={btn} />
-      <Alert intent="warning" content="warning text" action={btn} />
-      <Alert intent="info" content="info text" action={btn} />
-    </>
-  );
-};
+export const Intent = () => (
+  <>
+    <Alert
+      intent="success"
+      content="Success text"
+      action={{
+        appearance: 'transparent',
+        children: 'Undo',
+      }}
+    />
+    <br />
+    <Alert
+      intent="error"
+      content="Error text"
+      action={{
+        appearance: 'transparent',
+        children: 'Retry',
+      }}
+    />
+    <br />
+    <Alert
+      intent="warning"
+      content="Warning text"
+      action={{
+        appearance: 'transparent',
+        children: 'Review',
+      }}
+    />
+    <br />
+    <Alert
+      intent="info"
+      content="Info text"
+      action={{
+        appearance: 'transparent',
+        children: 'Dismiss',
+      }}
+    />
+  </>
+);
 
 Intent.storyName = 'Intent';
 Intent.parameters = {

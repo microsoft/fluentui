@@ -1,9 +1,10 @@
 import { Alert } from '../index';
-
 import descriptionMd from './AlertDescription.md';
 
 export { Default } from './AlertDefault.stories';
 export { Intent } from './AlertIntent.stories';
+export { Icon } from './AlertIcon.stories';
+export { Action } from './AlertAction.stories';
 
 export default {
   title: 'Components/Alert',
