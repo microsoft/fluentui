@@ -84,11 +84,11 @@ const getCodeowners = (): Ownership[] => {
 };
 
 const mapOwnerships = (packages: Package[], ownerships: Ownership[]): Package[] => {
-  return packages.map(pckg => {
-    const owners = ownerships.find(ownership => ownership.path === pckg.folder)?.owners || [];
+  return packages.map(pkg => {
+    const owners = ownerships.find(ownership => ownership.path === pkg.folder)?.owners || [];
 
     return {
-      ...pckg,
+      ...pkg,
       owners,
     };
   });
@@ -116,7 +116,7 @@ const createIssue = (repo: string, issue: MigrationIssue, templateTitle: string)
     🚧 This is an auto-generated issue to individually track migration progress.
 
     ### Packages to migrate:
-    ${issue.packages.map(pckg => `- ${pckg.name}`).join('\n')}
+    ${issue.packages.map(pkg => `- ${pkg.name}`).join('\n')}
   `;
 
   const command = `gh issue create --repo "${repo}" --title "${title}" --body "${message}"`;
@@ -127,16 +127,16 @@ const createIssue = (repo: string, issue: MigrationIssue, templateTitle: string)
 };
 
 const generateIssues = (repo: string, templateTitle: string, packages: Package[]) => {
-  const migrationIssues = packages.reduce<MigrationIssues>((acc, pckg) => {
-    const teamOwner = pckg.owners.find(owner => owner.startsWith('@microsoft/'));
+  const migrationIssues = packages.reduce<MigrationIssues>((acc, pkg) => {
+    const teamOwner = pkg.owners.find(owner => owner.startsWith('@microsoft/'));
     const key = teamOwner || 'ownerless';
 
     if (key in acc) {
-      acc[key].packages.push(pckg);
+      acc[key].packages.push(pkg);
     } else {
       acc[key] = {
         assignee: teamOwner,
-        packages: [pckg],
+        packages: [pkg],
       };
     }
 
@@ -155,7 +155,7 @@ const updateEpicWithIssues = (epicUrl: string, issueMap: MigrationIssues, messag
     .map(issue => {
       return stripIndents`
     - [ ] ${issue.issueUrl}
-    ${issue.packages.map(pckg => `  - ${pckg.name}`).join('\n')}
+    ${issue.packages.map(pkg => `  - ${pkg.name}`).join('\n')}
     `;
     })
     .join('\n');
