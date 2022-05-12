@@ -13,5 +13,4 @@ export type {
   SpinButtonState,
   SpinButtonSpinState,
   SpinButtonBounds,
-  SpinButtonStrings,
 } from './SpinButton';

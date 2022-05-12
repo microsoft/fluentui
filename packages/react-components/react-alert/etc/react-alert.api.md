@@ -21,7 +21,7 @@ export const alertClassName = "fui-Alert";
 export const alertClassNames: SlotClassNames<AlertSlots>;
 
 // @public
-export type AlertProps = ComponentProps<AlertSlots> & AlertCommons;
+export type AlertProps = ComponentProps<AlertSlots>;
 
 // @public (undocumented)
 export type AlertSlots = {
@@ -29,7 +29,7 @@ export type AlertSlots = {
 };
 
 // @public
-export type AlertState = ComponentState<AlertSlots> & AlertCommons;
+export type AlertState = ComponentState<AlertSlots>;
 
 // @public
 export const renderAlert_unstable: (state: AlertState) => JSX.Element;

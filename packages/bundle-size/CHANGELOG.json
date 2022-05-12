@@ -2,6 +2,21 @@
   "name": "@fluentui/bundle-size",
   "entries": [
     {
+      "date": "Thu, 12 May 2022 07:41:44 GMT",
+      "tag": "@fluentui/bundle-size_v1.1.6",
+      "version": "1.1.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/bundle-size",
+            "commit": "6cc697e86b48eddb8bdadd3bcff72594305c72de",
+            "comment": "fix: update glob for collecting reports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Apr 2022 07:36:48 GMT",
       "tag": "@fluentui/bundle-size_v1.1.5",
       "version": "1.1.5",

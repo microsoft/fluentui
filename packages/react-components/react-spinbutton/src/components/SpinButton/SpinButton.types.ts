@@ -108,11 +108,6 @@ export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'inp
   stepPage?: number;
 
   /**
-   * Strings for localizing text in the control.
-   */
-  strings?: SpinButtonStrings;
-
-  /**
    * Current value of the control (assumed to be valid).
    *
    * Only provide this if the SpinButton is a controlled component where you are maintaining its
@@ -153,17 +148,3 @@ export type SpinButtonOnChangeData = {
 
 export type SpinButtonSpinState = 'rest' | 'up' | 'down';
 export type SpinButtonBounds = 'none' | 'min' | 'max' | 'both';
-
-export type SpinButtonStrings = {
-  /**
-   * Label applied to the increment button.
-   * Can include the token "\{step\}" which will be replaced with the value of the `step` prop.
-   */
-  incrementButtonLabel: string;
-
-  /**
-   * Label applied to the decrement button.
-   * Can include the token "\{step\}" which will be replaced with the value of the `step` prop.
-   */
-  decrementButtonLabel: string;
-};
