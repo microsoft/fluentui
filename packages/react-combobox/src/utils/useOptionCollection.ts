@@ -15,12 +15,22 @@ export const useOptionCollection = (): OptionCollectionState => {
       const item = nodes.current.find(node => node.option.id === id);
       return item?.option;
     };
+    const getOptionsMatchingValue = (matcher: (value: string) => boolean) => {
+      console.log('get options matching value, from nodes', nodes.current);
+      return nodes.current
+        .filter(node => {
+          console.log('testing against option value', node.option.value, 'returning', matcher(node.option.value));
+          return matcher(node.option.value);
+        })
+        .map(node => node.option);
+    };
 
     return {
       getCount,
       getOptionAtIndex,
       getIndexOfId,
       getOptionById,
+      getOptionsMatchingValue,
     };
   }, []);
 

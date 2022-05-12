@@ -37,7 +37,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     positioning,
     size = 'medium',
   } = props;
-  const { getCount, getOptionAtIndex, getIndexOfId, getOptionById } = optionCollection;
+  const { getCount, getOptionAtIndex, getIndexOfId, getOptionById, getOptionsMatchingValue } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
   const { selectedOptions, selectOption } = useSelection(props);
@@ -80,15 +80,23 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     }
 
     if (multiselect) {
-      return selectedOptions.map(option => option.value).join(', ');
+      return selectedOptions.join(', ');
     }
 
-    return selectedOptions[0]?.value;
+    return selectedOptions[0];
   }, [isFirstMount, multiselect, props.defaultValue, props.value, selectedOptions]);
 
   const setOpen = (event: ComboboxOpenEvents, newState: boolean) => {
     onOpenChange?.(event, { open: newState });
     setOpenState(newState);
+
+    // reset active option
+    if (newState && selectedOptions.length > 0) {
+      const lastSelectedOption = getOptionsMatchingValue(v => v === selectedOptions[0]).pop();
+      lastSelectedOption && setActiveOption(lastSelectedOption);
+    } else {
+      setActiveOption(undefined);
+    }
   };
 
   const onOptionClick = useEventCallback((event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
@@ -99,7 +107,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     !multiselect && setOpen(event, false);
 
     // handle selection change
-    selectOption(event, option);
+    selectOption(event, option.value);
   });
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
@@ -209,11 +217,11 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
         !multiselect && setOpen(event, false);
       // fallthrough
       case 'Select':
-        activeOption && selectOption(event, activeOption);
+        activeOption && selectOption(event, activeOption.value);
         event.preventDefault();
         break;
       case 'Tab':
-        activeOption && selectOption(event, activeOption);
+        activeOption && selectOption(event, activeOption.value);
         break;
       default:
         newIndex = getIndexFromAction(action, activeIndex, maxIndex);

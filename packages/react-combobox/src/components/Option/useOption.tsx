@@ -41,7 +41,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   const selected = useContextSelector(ListboxContext, ctx => {
     const selectedOptions = ctx.selectedOptions;
 
-    return !!optionValue && !!selectedOptions.find(option => option.value === optionValue);
+    return !!optionValue && !!selectedOptions.find(o => o === optionValue);
   });
 
   // use the id if provided, otherwise use a generated id

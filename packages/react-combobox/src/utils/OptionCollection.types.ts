@@ -19,6 +19,9 @@ export type OptionCollectionState = {
   /** Returns the option data by key. */
   getOptionById(id: string): OptionValue | undefined;
 
+  /** Returns an array of options filtered by a value matching function. */
+  getOptionsMatchingValue(matcher: (value: string) => boolean): OptionValue[];
+
   /** The unordered option data. */
   options: OptionValue[];
 
