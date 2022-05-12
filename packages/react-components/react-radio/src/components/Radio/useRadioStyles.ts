@@ -150,15 +150,17 @@ const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
     userSelect: 'none',
-
-    // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
-    // This prevents the label from expanding the height of the Radio, but preserves line height if the label wraps.
-    ...shorthands.margin(`calc((${indicatorSize} - ${tokens.lineHeightBase300}) / 2)`, 0),
   },
 
   after: {
     marginLeft: spacingHorizontalM,
+
+    // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
+    // This prevents the label from expanding the height of the Radio, but preserves line height if the label wraps.
+    marginTop: `calc((${indicatorSize} - ${tokens.lineHeightBase300}) / 2)`,
+    marginBottom: `calc((${indicatorSize} - ${tokens.lineHeightBase300}) / 2)`,
   },
+
   below: {
     marginTop: spacingHorizontalM,
     textAlign: 'center',
