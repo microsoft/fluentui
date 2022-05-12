@@ -42,7 +42,7 @@ const useRootStyles = makeStyles({
     justifyContent: 'center',
   },
   vertical: {
-    justifyContent: 'flex-start',
+    justifyContent: 'start',
   },
   mediumHorizontal: {
     columnGap: tokens.spacingHorizontalSNudge,
