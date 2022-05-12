@@ -7,12 +7,13 @@ export type LinkSlots = {
   root: Slot<'a', 'button'>;
 };
 
-type LinkCommons = {
+export type LinkProps = ComponentProps<LinkSlots> & {
   /**
    * A link can appear either with its default style or subtle.
    * If not specified, the link appears with its default styling.
+   * @default 'default'
    */
-  appearance?: 'subtle';
+  appearance?: 'default' | 'subtle';
 
   /**
    * Whether the link is disabled.
@@ -34,6 +35,5 @@ type LinkCommons = {
   inline?: boolean;
 };
 
-export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
-
-export type LinkState = ComponentState<LinkSlots> & LinkCommons;
+export type LinkState = ComponentState<LinkSlots> &
+  Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>>;

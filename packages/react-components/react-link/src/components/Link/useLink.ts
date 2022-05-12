@@ -12,7 +12,7 @@ export const useLink_unstable = (
   props: LinkProps,
   ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>,
 ): LinkState => {
-  const { appearance, disabled, disabledFocusable, inline } = props;
+  const { appearance = 'default', disabled = false, disabledFocusable = false, inline = false } = props;
   const as = props.as || (props.href ? 'a' : 'button');
 
   const state: LinkState = {
